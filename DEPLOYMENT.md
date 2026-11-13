@@ -5,7 +5,7 @@ and Resend secrets; production runs older code with checkout off and no data. Th
 webhook destinations exist in both modes (step 3). The access rule was verified on the test Worker with synthetic
 data, since deleted. The first live staging import succeeded on 13 Nov 2026 (run 43496288531): all 13 tabs,
 1,361 customer rows and 1 internal row, one snapshot. Signed-in checks passed on that data. Production runs the
-same build (version `94b763d3`) with checkout off and no data. Still to apply: Javier's production approvals
+same build (version `f208b4bd`) with checkout off and no data. Still to apply: Javier's production approvals
 (section 6), the production import and checks, then go-live.
 
 Verified on 13 Nov 2026 in the test environment: sign-in email delivered by Resend; sign-in links are redeemed
@@ -42,7 +42,7 @@ Test environment, applied on 13 Nov 2026 through the Cloudflare dashboard (no Wr
   applied in the D1 console (8 tables).
 - Worker `whyhumanoid-premium-test` at `https://whyhumanoid-premium-test.javier-198.workers.dev`, binding `DB` to
   that database, plain-text variables as in `[env.test.vars]`. The code is `dist/worker.dashboard.js` built from
-  commit `732e42d` and pasted into the dashboard editor (version `f16120a7`), with `IMPORT_ENVIRONMENT=test`.
+  commit `872dbe8` and pasted into the dashboard editor (version `4c649512`), with `IMPORT_ENVIRONMENT=test`.
 - Verified on the live URL: `/health` 200; 13 datasets; plan "€100 per year", EUR 10000, yearly, checkout not
   available; previews 200 with 0 rows (D1 reachable, nothing imported yet); full data, `/v1/me`, checkout and task
   plan 401 without a session; webhook 503 until its secret exists; admin import 401 without the token; sign-in 503
@@ -69,8 +69,8 @@ Production environment, created on 13 Nov 2026 the same way, checkout off:
 - D1 `whyhumanoid-premium`, EU jurisdiction, id `ba8ed181-22c6-40d4-b77d-f4bcbf238274`, same schema.
 - Worker `whyhumanoid-premium` at `https://whyhumanoid-premium.javier-198.workers.dev`, binding `DB`, variables as in
   `[env.production.vars]` (`IMPORT_ENVIRONMENT=production`, checkout and live checkout `false`), the `WORKBOOK_ID`
-  secret, no cron. Since 13 Nov 2026 it runs the verified staging build (bundle sha256 `bf42693b…a6a6`, commit
-  `732e42d`), version `94b763d3`. Verified then: `/health` 200; 13 datasets, every preview 0 rows; full data, rows
+  secret, no cron. Since 13 Nov 2026 it runs the verified staging build (bundle sha256 `60bf11d7…dd35`, commit
+  `872dbe8`), version `f208b4bd`; the previous verified build ran as `94b763d3`. Verified then: `/health` 200; 13 datasets, every preview 0 rows; full data, rows
   past 10, search, `/v1/me`, checkout, API keys, task plan and admin import 401; plan €100 per year, checkout not
   available; webhook 503 until its secret exists. The catalogue links to this URL (`PREMIUM_APP_URL` in
   `tools/build-site.mjs`).
@@ -182,6 +182,10 @@ ignores webhook events from the other mode.
    The Worker crons are removed: a Worker cannot import without a key. Imports are all-or-nothing; header drift
    keeps the last snapshot. An import makes about 8 D1 calls whatever its size: a Worker invocation allows about
    1,000, and the first attempt stopped there when identity registration made two calls per row.
+
+   Staging re-import after the duplicate-row fix (run 43507989819, snapshot 2026-11-13T21:08:39Z): humanoids 133
+   (plus 2 internal: the Genesis duplicate at sheet row 38 and the editorial resource), the other 12 tabs unchanged.
+   The free catalogue equals that preview: 133 records, same order, no field differences.
 
    First staging import, 13 Nov 2026, customer rows per tab: humanoids 134 (plus 1 internal), deployments 119,
    integrators 7, evidence-links 15, task-evaluations 4, container-handling 22, entities 24, stocks 276,
