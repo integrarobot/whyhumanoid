@@ -4,7 +4,9 @@ Status on 13 Nov 2026: the PR is open (step 1). The test Worker runs the current
 and Resend secrets; production runs older code with checkout off and no data. The Stripe products, prices and
 webhook destinations exist in both modes (step 3). The access rule was verified on the test Worker with synthetic
 data, since deleted. The first live staging import succeeded on 13 Nov 2026 (run 43496288531): all 13 tabs,
-1,361 customer rows and 1 internal row, one snapshot. Still to apply: production and go-live.
+1,361 customer rows and 1 internal row, one snapshot. Signed-in checks passed on that data. Production runs the
+same build (version `94b763d3`) with checkout off and no data. Still to apply: Javier's production approvals
+(section 6), the production import and checks, then go-live.
 
 Verified on 13 Nov 2026 in the test environment: sign-in email delivered by Resend; sign-in links are redeemed
 only after a click (a link was used up 26 seconds after delivery before this change); test Checkout session
@@ -56,13 +58,21 @@ Test environment, applied on 13 Nov 2026 through the Cloudflare dashboard (no Wr
   of 12; full data, rows past 10 and search 401 without a session and 403 with a session but no entitlement, while
   the free catalogue stays public; with an entitlement, full values for all 12 rows of both datasets and search 200;
   internal rows never returned; logout then 401. All synthetic rows, the account and its session were deleted.
+- Signed-in checks on the imported data (13 Nov 2026, synthetic account, session and entitlement, deleted
+  afterwards): without an entitlement every tab's preview stays public and full data, rows past 10, search, API
+  keys and task plan return 403; with one, each of the 13 tabs returns exactly its imported customer row count from
+  one snapshot (the internal Humanoids row is never returned), all 134 Humanoids records carry fuller values than
+  the public ones, search 200, an agent key reads past row 10 (200); logout then 401.
 
 Production environment, created on 13 Nov 2026 the same way, checkout off:
 
 - D1 `whyhumanoid-premium`, EU jurisdiction, id `ba8ed181-22c6-40d4-b77d-f4bcbf238274`, same schema.
-- Worker `whyhumanoid-premium` at `https://whyhumanoid-premium.javier-198.workers.dev`, same bundle, binding `DB`,
-  variables as in `[env.production.vars]` except `STRIPE_PRICE_ID` (set when the live price exists), the
-  `WORKBOOK_ID` secret, cron `17 3 * * *`. The catalogue links to this URL (`PREMIUM_APP_URL` in
+- Worker `whyhumanoid-premium` at `https://whyhumanoid-premium.javier-198.workers.dev`, binding `DB`, variables as in
+  `[env.production.vars]` (`IMPORT_ENVIRONMENT=production`, checkout and live checkout `false`), the `WORKBOOK_ID`
+  secret, no cron. Since 13 Nov 2026 it runs the verified staging build (bundle sha256 `bf42693b…a6a6`, commit
+  `732e42d`), version `94b763d3`. Verified then: `/health` 200; 13 datasets, every preview 0 rows; full data, rows
+  past 10, search, `/v1/me`, checkout, API keys, task plan and admin import 401; plan €100 per year, checkout not
+  available; webhook 503 until its secret exists. The catalogue links to this URL (`PREMIUM_APP_URL` in
   `tools/build-site.mjs`).
 
 To redeploy from the dashboard: `node server/scripts/build-dashboard.mjs <esbuild>` (esbuild 0.27.7), then replace
@@ -140,8 +150,22 @@ ignores webhook events from the other mode.
      --member="$POOL/repo:integrarobot/whyhumanoid:environment:test"
    ```
 
-   For production, after merge: the condition's workflow_ref becomes `@refs/heads/main` (or accepts both refs)
-   and the subject `...@1456468940:environment:production` gets its own binding.
+   For production (prepared 13 Nov 2026, to be applied by Javier or Codex): keep the attribute mapping and replace
+   the condition with
+
+   ```
+   assertion.repository_id == '1456468940' && (
+     (assertion.workflow_ref == 'integrarobot/whyhumanoid/.github/workflows/import-workbook.yml@refs/heads/feat/premium-preview'
+       && assertion.sub == 'repo:integrarobot@282541415/whyhumanoid@1456468940:environment:test') ||
+     (assertion.workflow_ref == 'integrarobot/whyhumanoid/.github/workflows/import-workbook.yml@refs/heads/main'
+       && assertion.sub in ['repo:integrarobot@282541415/whyhumanoid@1456468940:environment:test',
+                            'repo:integrarobot@282541415/whyhumanoid@1456468940:environment:production']))
+   ```
+
+   then grant `roles/iam.workloadIdentityUser` on `whyhumanoid-importer` to
+   `principal://iam.googleapis.com/projects/186224274362/locations/global/workloadIdentityPools/why-humanoid-github/subject/repo:integrarobot@282541415/whyhumanoid@1456468940:environment:production`.
+   The GitHub `production` environment exists (deployment branches: `main` only; variable
+   `GOOGLE_WORKLOAD_IDENTITY_PROVIDER`).
 2. `.github/workflows/import-workbook.yml` gets a read-only Google access token through that provider, then calls
    `POST /v1/admin/import` on the Worker of its GitHub environment with its own GitHub OIDC token (audience
    `whyhumanoid-premium-import`). The Worker verifies GitHub's signature and requires repository ID `1456468940`,
@@ -166,10 +190,37 @@ ignores webhook events from the other mode.
    first 10 sheet rows, which hold two side-by-side lists, so 19 and 20 entries). Full data, rows past 10 and
    search return 401 without a session.
 3. Resend: verify `whyhumanoid.com` as a sending domain (DNS records at the DNS host) and use
-   `premium@whyhumanoid.com` as sender.
+   `premium@whyhumanoid.com` as sender (the Worker's default `EMAIL_FROM`). The domain exists in Resend
+   (eu-west-1, status Not Started). Records, all on subdomains, so the root MX and SPF stay untouched: TXT
+   `resend._domainkey` (DKIM public key shown in Resend), MX `send` `feedback-smtp.eu-west-1.amazonses.com`
+   priority 10, TXT `send` `v=spf1 include:amazonses.com ~all`. Resend's "IONOS Auto configure" adds them after
+   Javier approves in IONOS. Then a sending key restricted to `whyhumanoid.com` goes into the production Worker as
+   the `RESEND_API_KEY` secret.
 
 ## 5. Close the workbook bypass
 
 After step 4.2 succeeds, set the workbook's General access to Restricted (Share, General access, Restricted).
 Named editors keep access; the service account keeps Viewer. Then repeat, without a Google session, the
 anonymous gviz CSV request for `sheet=Deployments` used in the 13 Nov audit: it must return a sign-in page, not rows.
+
+## 6. Production approvals for Javier (prepared 13 Nov 2026)
+
+Each screen is open in Chrome and stops before the action. Order matters only where noted.
+
+1. Google, provider `github-actions`: replace the attribute condition with the production version in 4.1, Save.
+2. Google, service account `whyhumanoid-importer`, Permissions, Grant access: the production principal in 4.1,
+   role Workload Identity User, Save.
+3. GitHub PR #2 (dispatch-only workflow for `main`): review and merge. Then Actions, Import private workbook,
+   Run workflow, branch `main`, target `production` (after 1 and 2).
+4. Resend, `whyhumanoid.com`: IONOS Auto configure, approve in IONOS, then Verify DNS records.
+5. Resend, API keys: create a sending key for `whyhumanoid.com`; Cloudflare `whyhumanoid-premium`, Settings,
+   Variables and secrets, Add, type Secret, `RESEND_API_KEY`.
+6. Stripe live, Desarrolladores, Claves de API, Crear clave restringida: write Checkout Sessions, read Prices;
+   Cloudflare secret `STRIPE_SECRET_KEY` on `whyhumanoid-premium`.
+7. Stripe live, webhook `we_1UbOuzAcMngkWs5CyMeDbKN3`: reveal the signing secret; Cloudflare secret
+   `STRIPE_WEBHOOK_SECRET` on `whyhumanoid-premium`.
+
+After 1 to 7, the production checks: import counts for all 13 tabs, previews and 401/403/200 boundaries, a
+sign-in email delivered from `premium@whyhumanoid.com` and redeemed, the live price check (one unpaid Checkout
+session, no charge), and the workbook restricted with the anonymous link returning no data. Only then: live
+checkout on and PR #1 merged.
