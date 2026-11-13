@@ -19,13 +19,14 @@ w.fetch = async (path, opts = {}) => {
 w.eval(js);
 await new Promise((r) => setTimeout(r, 200));
 const d = w.document;
-const before = { confirmVisible: !d.getElementById('confirm-login').hidden, signinHidden: d.getElementById('signin').hidden, redeemCalled: calls.some((c) => c.includes('redeem')), hashCleared: !w.location.hash };
+const before = { confirmVisible: !d.getElementById('confirm-login').hidden, signinHidden: d.getElementById('signin').hidden, subscribeHidden: d.getElementById('subscribe').hidden, redeemCalled: calls.some((c) => c.includes('redeem')), hashCleared: !w.location.hash };
 d.getElementById('confirm-login-btn').click();
 await new Promise((r) => setTimeout(r, 200));
 const after = { redeemCalled: calls.filter((c) => c.includes('redeem')).length, confirmHidden: d.getElementById('confirm-login').hidden, sessionStored: w.sessionStorage.getItem('wh_session') === 'whs_fake', who: d.getElementById('who').textContent };
 const failures = [];
 if (!before.confirmVisible) failures.push('confirm panel not shown');
 if (!before.signinHidden) failures.push('sign-in form shown while a link is pending');
+if (!before.subscribeHidden) failures.push('subscribe panel shown before sign-in');
 if (before.redeemCalled) failures.push('link redeemed without a click');
 if (!before.hashCleared) failures.push('token left in the address bar');
 if (after.redeemCalled !== 1 || !after.sessionStored || !after.confirmHidden) failures.push(`click did not sign in: ${JSON.stringify(after)}`);

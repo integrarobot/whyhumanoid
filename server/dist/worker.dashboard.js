@@ -257,7 +257,7 @@ td{color:var(--bone-2)}
         store.clear();
       }
     }
-    if (!state.session && !state.pendingLogin) $('signin').hidden = false;
+    if (!state.session) $('signin').hidden = Boolean(state.pendingLogin);
     else if (!full()) $('subscribe').hidden = false;
     $('checkout').disabled = !state.plan?.checkout_available;
     await openDataset(state.current ?? state.datasets[0]?.id);
