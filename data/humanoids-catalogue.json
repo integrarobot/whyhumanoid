@@ -1,7 +1,7 @@
 {
  "dataset": "humanoids",
  "access": "free",
- "snapshot": "2026-11-13T19:52:46.000Z",
+ "snapshot": "2026-11-13T21:08:39.000Z",
  "fields": [
   "Lab",
   "Robot",
@@ -3110,7 +3110,7 @@
    "Careers": "Not found",
    "B2B Client": "Not disclosed",
    "Stock": "NASDAQ:TSLA",
-   "Valuation": "1,547,069,953,620.00",
+   "Valuation": "1,542,445,226,760.00",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "2023",
