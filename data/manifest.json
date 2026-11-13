@@ -2,13 +2,55 @@
   "dataset": "humanoids",
   "access": "free",
   "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
-  "source": "Humanoids tab of the private Integrarobot workbook, via the snapshot embedded in efca179:index.html",
-  "snapshot": "2026-10-29",
-  "record_count": 133,
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the verified import of 2026-11-13T19:52:46.000Z",
+  "snapshot": "2026-11-13T19:52:46.000Z",
+  "record_count": 134,
+  "verified_import": {
+    "environment": "staging",
+    "snapshot": "2026-11-13T19:52:46.000Z",
+    "import_run": "https://github.com/integrarobot/whyhumanoid/actions/runs/43496288531",
+    "updated": [
+      {
+        "id": 26,
+        "field": "Linkedin"
+      },
+      {
+        "id": 56,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 71,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 72,
+        "field": "Valuation"
+      },
+      {
+        "id": 75,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 85,
+        "field": "Web"
+      },
+      {
+        "id": 86,
+        "field": "Valuation"
+      }
+    ],
+    "inserted": [
+      {
+        "id": 134,
+        "sheet_row": 38
+      }
+    ]
+  },
   "full_database": {
-    "humanoid_records": 133,
+    "humanoid_records": 134,
     "other_datasets": 12,
     "other_datasets_public_rows": 10,
+    "other_datasets_public_rule": "the first 10 source sheet rows of each tab; tabs that hold side-by-side lists show every entry in those rows",
     "access": "subscription, €100 per year: full values, all 13 datasets in full, full search, agent API keys"
   },
   "fields": [
@@ -238,12 +280,12 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "ea573f381bdc68cb82a73730568c4d7dde14fb71460f5f5c43a0268d4de9276f",
-      "bytes": 193375
+      "sha256": "d45b7a2243762fed610ee495036bc1bb38ab9b10a4b4df94246ebcefd2b95d50",
+      "bytes": 194661
     },
     "humanoids-catalogue.csv": {
-      "sha256": "48854d46a5293cdbb8f25ac319d9a978ccda79189d00f5e0456f19aef44b91dd",
-      "bytes": 99884
+      "sha256": "a13bf7292133cad8f7735efd8fd1f4367e921a3eb0d19263fad51852f6243221",
+      "bytes": 100446
     }
   }
 }

@@ -126,22 +126,31 @@ export function buildData(exported, overrides, access) {
   return { cols: fields, models, excluded, snapshot: exported.snapshot, ...(access ? { access } : {}) };
 }
 
-// Parity: every facet and field must equal the legacy page, except fields changed by the cleaning step.
+// Parity: every facet and field must equal the legacy page, except fields changed by the cleaning step and the
+// public values the verified import changed since the legacy snapshot (manifest.verified_import).
 const changedFields = (manifest) =>
-  new Set(
-    ['stripped', 'excluded_unverified', 'rewritten'].flatMap((k) => (manifest.cleaning[k] ?? []).map((s) => `${s.id}|${s.field}`)),
-  );
+  new Set([
+    ...['stripped', 'excluded_unverified', 'rewritten'].flatMap((k) => (manifest.cleaning[k] ?? []).map((s) => `${s.id}|${s.field}`)),
+    ...(manifest.verified_import?.updated ?? []).map((u) => `${u.id}|${u.field}`),
+  ]);
+const insertedRecords = (manifest) => new Map((manifest.verified_import?.inserted ?? []).map((i) => [i.id, i.sheet_row]));
 
 export function parity(built, legacy, manifest) {
   const cleaned = changedFields(manifest);
+  const inserted = insertedRecords(manifest);
   const legacyById = new Map(legacy.models.map((m) => [m.id, m]));
   const unexpected = [];
   const expected = [];
-  const legacyRows = legacy.models.map((m) => m.row).sort((a, b) => a - b);
+  const legacyRows = [...legacy.models.map((m) => m.row), ...inserted.values()].sort((a, b) => a - b);
   const builtRows = [...built.models.map((m) => m.row), ...built.excluded.map((e) => e.row)].sort((a, b) => a - b);
-  if (!isDeepStrictEqual(builtRows, legacyRows)) unexpected.push('the catalogue does not hold exactly the legacy customer rows');
+  if (!isDeepStrictEqual(builtRows, legacyRows)) unexpected.push('the catalogue does not hold exactly the legacy customer rows plus the verified inserts');
   for (const m of built.models) {
     const old = legacyById.get(m.id);
+    if (inserted.has(m.id)) {
+      if (old || inserted.get(m.id) !== m.row) unexpected.push(`inserted record ${m.id} clashes with the legacy page`);
+      else expected.push(`record ${m.id} inserted by the verified import`);
+      continue;
+    }
     if (!old) {
       unexpected.push(`record ${m.id} not in legacy page`);
       continue;
@@ -156,7 +165,11 @@ export function parity(built, legacy, manifest) {
       if ((m.f[i] ?? '') !== (old.f[i] ?? '')) (cleaned.has(`${m.id}|${field}`) ? expected : unexpected).push(`record ${m.id} field ${field}`);
     });
   }
-  const legacyExcluded = legacy.excluded.filter((e) => legacyRows.includes(e.row));
+  const insertedRows = new Set(inserted.values());
+  for (const e of legacy.excluded.filter((x) => insertedRows.has(x.row))) {
+    expected.push(`sheet row ${e.row} was excluded on the legacy page (${e.reason.split(':')[0]}) and is published by the verified import`);
+  }
+  const legacyExcluded = legacy.excluded.filter((e) => legacyRows.includes(e.row) && !insertedRows.has(e.row));
   if (!isDeepStrictEqual(built.excluded, legacyExcluded)) unexpected.push('excluded rows differ');
   return { unexpected, expected };
 }
@@ -214,5 +227,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       process.exit(1);
     }
   } else writeFileSync(indexUrl, next);
-  console.log(`Parity passed: ${data.models.length} catalogue records identical to the legacy page except ${expected.length} cleaned values`);
+  console.log(`Parity passed: ${data.models.length} catalogue records identical to the legacy page except ${expected.length} cleaned or verified-import changes`);
 }

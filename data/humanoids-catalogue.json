@@ -1,7 +1,7 @@
 {
  "dataset": "humanoids",
  "access": "free",
- "snapshot": "2026-10-29",
+ "snapshot": "2026-11-13T19:52:46.000Z",
  "fields": [
   "Lab",
   "Robot",
@@ -944,7 +944,7 @@
    "Robot": "Mirokai",
    "Web": "https://enchanted.tools/",
    "X": "https://x.com/EnchantedTools",
-   "Linkedin": "https://www.linkedin.com/company/enchantedtools/ ",
+   "Linkedin": "https://www.linkedin.com/company/enchantedtools/",
    "Youtube": "Not found",
    "Country": "France",
    "Careers": "Not found",
@@ -1332,6 +1332,42 @@
    "Autonomy / supervision": null,
    "Buyer checks": null,
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Inherited specifications not revalidated | Website not retrieved\nhttps://gbionics.ai/downloads/PRESS_RELEASE.pdf\nhttps://gbionics.ai/"
+  },
+  {
+   "id": 134,
+   "sheet_row": 38,
+   "Lab": "Genesis",
+   "Robot": null,
+   "Web": "https://www.genesis.ai/",
+   "X": "Not found",
+   "Linkedin": "Not found",
+   "Youtube": "Not found",
+   "Country": "Not disclosed",
+   "Careers": "Not found",
+   "B2B Client": "Not disclosed",
+   "Stock": "Same entity as Genesis / Eno",
+   "Valuation": null,
+   "Investors": null,
+   "Rounds": "same Genesis AI funding",
+   "Release": "Not disclosed",
+   "Height (cm)": "Not disclosed",
+   "Weight (kg)": "Not disclosed",
+   "Walk (km/h)": "Not disclosed",
+   "Run (km/h)": "Not disclosed",
+   "Payload/carry (kg)": "Not disclosed",
+   "Power (hours)": "Not disclosed",
+   "Software": "Not found",
+   "Voice": "Not disclosed",
+   "Clothed?": "Not disclosed",
+   "Model checked": null,
+   "Platform / mobility": "Duplicate reference; not a second robot",
+   "DoF / grippers": null,
+   "Sensors / compute": null,
+   "Battery / charging": null,
+   "Price / availability": null,
+   "Autonomy / supervision": null,
+   "Buyer checks": "Exclude this row from company and funding counts",
+   "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website not retrieved\nhttps://www.genesis.ai/\nhttps://genesis-ai.company/"
   },
   {
    "id": 37,
@@ -2051,7 +2087,7 @@
    "Price / availability": null,
    "Autonomy / supervision": null,
    "Buyer checks": null,
-   "Sources / checked": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified\n"
+   "Sources / checked": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified"
   },
   {
    "id": 57,
@@ -2591,7 +2627,7 @@
    "Price / availability": null,
    "Autonomy / supervision": null,
    "Buyer checks": null,
-   "Sources / checked": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified\n"
+   "Sources / checked": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified"
   },
   {
    "id": 72,
@@ -2606,7 +2642,7 @@
    "Careers": "Not found",
    "B2B Client": "Service sector, companionship, human interaction",
    "Stock": "TSXV:XBOT",
-   "Valuation": "43,987,600.00",
+   "Valuation": "41,788,220.00",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "Not disclosed",
@@ -2735,7 +2771,7 @@
    "Price / availability": null,
    "Autonomy / supervision": null,
    "Buyer checks": null,
-   "Sources / checked": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified\n"
+   "Sources / checked": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified"
   },
   {
    "id": 76,
@@ -3066,7 +3102,7 @@
    "sheet_row": 87,
    "Lab": "Tangible",
    "Robot": "Eggie",
-   "Web": " https://tangiblerobots.ai/",
+   "Web": "https://tangiblerobots.ai/",
    "X": "https://x.com/tangiblerobots",
    "Linkedin": "Not found",
    "Youtube": "Not found",
@@ -3110,7 +3146,7 @@
    "Careers": "Not found",
    "B2B Client": "Not disclosed",
    "Stock": "NASDAQ:TSLA",
-   "Valuation": "1,571,023,667,100.00",
+   "Valuation": "1,547,069,953,620.00",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "2023",

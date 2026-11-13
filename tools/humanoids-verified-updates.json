@@ -1,0 +1,58 @@
+{
+  "note": "Public Humanoids values that changed in the workbook after the legacy snapshot, taken from the verified staging import. tools/export-humanoids.mjs applies them on top of the cleaned legacy snapshot, and tools/build-site.mjs accepts exactly these differences in its parity check. Public values only. Regenerate with tools/sync-humanoids.mjs from a saved copy of the public preview.",
+  "source": {
+    "environment": "staging",
+    "snapshot": "2026-11-13T19:52:46.000Z",
+    "import_run": "https://github.com/integrarobot/whyhumanoid/actions/runs/43496288531",
+    "verified": "2026-11-13: public Humanoids preview of the test Worker, 134 records; 133 matched the legacy records by Lab and Robot in the same order, 1 new"
+  },
+  "updated": [
+    { "id": 26, "field": "Linkedin", "value": "https://www.linkedin.com/company/enchantedtools/" },
+    { "id": 56, "field": "Sources / checked", "value": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified" },
+    { "id": 71, "field": "Sources / checked", "value": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified" },
+    { "id": 72, "field": "Valuation", "value": "41,788,220.00" },
+    { "id": 75, "field": "Sources / checked", "value": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified" },
+    { "id": 85, "field": "Web", "value": "https://tangiblerobots.ai/" },
+    { "id": 86, "field": "Valuation", "value": "1,547,069,953,620.00" }
+  ],
+  "inserted": [
+    {
+      "id": 134,
+      "sheet_row": 38,
+      "values": {
+        "Lab": "Genesis",
+        "Robot": null,
+        "Web": "https://www.genesis.ai/",
+        "X": "Not found",
+        "Linkedin": "Not found",
+        "Youtube": "Not found",
+        "Country": "Not disclosed",
+        "Careers": "Not found",
+        "B2B Client": "Not disclosed",
+        "Stock": "Same entity as Genesis / Eno",
+        "Valuation": null,
+        "Investors": null,
+        "Rounds": "same Genesis AI funding",
+        "Release": "Not disclosed",
+        "Height (cm)": "Not disclosed",
+        "Weight (kg)": "Not disclosed",
+        "Walk (km/h)": "Not disclosed",
+        "Run (km/h)": "Not disclosed",
+        "Payload/carry (kg)": "Not disclosed",
+        "Power (hours)": "Not disclosed",
+        "Software": "Not found",
+        "Voice": "Not disclosed",
+        "Clothed?": "Not disclosed",
+        "Model checked": null,
+        "Platform / mobility": "Duplicate reference; not a second robot",
+        "DoF / grippers": null,
+        "Sensors / compute": null,
+        "Battery / charging": null,
+        "Price / availability": null,
+        "Autonomy / supervision": null,
+        "Buyer checks": "Exclude this row from company and funding counts",
+        "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website not retrieved\nhttps://www.genesis.ai/\nhttps://genesis-ai.company/"
+      }
+    }
+  ]
+}

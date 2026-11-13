@@ -8,7 +8,7 @@ agents preparing enterprise deployment plans.
 | What | Who | Where |
 |---|---|---|
 | The complete Humanoids catalogue: every robot row, 32 public fields, public (cleaned) values | Anyone | GitHub Pages (`index.html`, `data/humanoids-catalogue.*`); `GET /v1/datasets/humanoids/preview` on the backend |
-| The first 10 non-empty data rows of each of the 12 other workbook tabs, in workbook order | Anyone | `GET /v1/datasets/{id}/preview` on the backend |
+| The first 10 non-empty source sheet rows of each of the 12 other workbook tabs, in workbook order (tabs with side-by-side lists show every entry in those rows: 19 for Software, 20 for Other robots) | Anyone | `GET /v1/datasets/{id}/preview` on the backend |
 | Full database: full values, all rows of all 13 tabs, full search, agent API keys | Subscribers, €100 per year (one recurring Stripe price, EUR 10000 minor units, yearly) | Backend only (`server/`) |
 
 Nothing else may reach this repository, the Pages build, page source, downloadable files or any anonymous URL:
@@ -34,7 +34,7 @@ DEPLOYMENT.md              exact remaining settings for test and production
 ```
 node tools/export-humanoids.mjs --check     # free catalogue export is current
 node tools/build-site.mjs --check           # index.html is the build of data/, parity with the legacy page
-(cd tools && npm ci && node verify-site.mjs) # headless render: 10 rows, search and filters work
+(cd tools && npm ci && node verify-site.mjs) # headless render: the whole free catalogue, search and filters work
 node tools/check-public.mjs                 # public data guard
 (cd server && npm ci && npm test)           # API tests
 node server/scripts/dev.mjs                 # local app and catalogue with synthetic data, port 8787
