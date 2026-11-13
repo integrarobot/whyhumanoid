@@ -3,7 +3,7 @@
 //   - the page runs without script errors
 //   - exactly the preview rows are rendered (10), and the hero shows the full-database total
 //   - search and filters work on the visible rows
-//   - the preview notice states the price
+//   - the preview notice states the price and links to the premium app
 // Usage: cd tools && npm ci && node verify-site.mjs
 
 import { readFileSync } from 'node:fs';
@@ -42,6 +42,9 @@ expect(errors.length === 0, `script errors: ${errors.join(' | ')}`);
 expect(rows() === manifest.preview_record_count, `rendered rows ${rows()} != preview ${manifest.preview_record_count}`);
 expect(text('#h-n') === String(manifest.full_database.humanoid_records), `hero total "${text('#h-n')}"`);
 expect(/€100 per year/.test(text('#preview-note')), 'preview notice missing the price');
+const buyLink = document.querySelector('#preview-note a');
+const pageData = JSON.parse(document.getElementById('data').textContent);
+expect(Boolean(buyLink) && buyLink.getAttribute('href') === pageData.preview.url && /^https:\/\//.test(pageData.preview.url), 'preview notice has no link to the premium app');
 expect(/free preview/i.test(text('#a-rows')), 'FAQ does not explain the preview');
 
 const search = document.querySelector('input[type="search"]');

@@ -17,6 +17,10 @@ import { isDeepStrictEqual } from 'node:util';
 import { readLegacySnapshot } from './export-humanoids.mjs';
 import { PLAN } from '../server/src/pricing.js';
 
+// Where the catalogue sends buyers: the premium app on the production backend. Change it here when
+// premium.whyhumanoid.com is set up as a custom domain.
+export const PREMIUM_APP_URL = 'https://whyhumanoid-premium.javier-198.workers.dev/';
+
 const root = new URL('../', import.meta.url);
 const OVERRIDES_FILE = new URL('tools/humanoids-facet-overrides.json', root);
 const sha = (v) => createHash('sha256').update(String(v ?? '')).digest('hex').slice(0, 16);
@@ -194,7 +198,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log(`Wrote ${Object.values(fresh).reduce((n, o) => n + Object.keys(o).length, 0)} overrides for ${Object.keys(fresh).length} records`);
   }
 
-  const preview = { rows: exported.preview_rows, total_records: manifest.full_database.humanoid_records, price: PLAN.display };
+  const preview = { rows: exported.preview_rows, total_records: manifest.full_database.humanoid_records, price: PLAN.display, url: PREMIUM_APP_URL };
   const data = buildData(exported, overrides, preview);
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {

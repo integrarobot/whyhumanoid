@@ -37,22 +37,25 @@ ALLOW_LIVE_CHECKOUT = "false"
 STRIPE_PRICE_ID = "price_1UbL1PAcMngkWs5CH3IDosFb"  # Integrarobot test mode: "Why Humanoid? full database", EUR 100.00 / year (prod_VcaBEvd49gwki2)
 ALLOWED_ORIGINS = "https://whyhumanoid-premium-test.javier-198.workers.dev"
 PREMIUM_URL = "https://whyhumanoid-premium-test.javier-198.workers.dev/"
-EMAIL_FROM = "Why Humanoid? <premium@whyhumanoid.com>"
+EMAIL_FROM = "Why Humanoid? test <onboarding@resend.dev>"  # Resend test sender: delivers only to the Resend account owner
 
 [env.production]
+# Created on 13 Nov 2026 from the dashboard; these values match the dashboard settings. It runs on workers.dev
+# until whyhumanoid.com moves to Cloudflare DNS; then set workers_dev = false and add
+# routes = [{ pattern = "premium.whyhumanoid.com", custom_domain = true }], and update the two URLs below.
 name = "whyhumanoid-premium"
-workers_dev = false
-routes = [{ pattern = "premium.whyhumanoid.com", custom_domain = true }]
+workers_dev = true
 triggers = { crons = ["17 3 * * *"] }
 d1_databases = [
-  { binding = "DB", database_name = "whyhumanoid-premium", database_id = "REPLACE_WITH_PRODUCTION_D1_ID", migrations_dir = "migrations" },
+  # EU jurisdiction (customer emails).
+  { binding = "DB", database_name = "whyhumanoid-premium", database_id = "ba8ed181-22c6-40d4-b77d-f4bcbf238274", migrations_dir = "migrations" },
 ]
 
 [env.production.vars]
 STRIPE_MODE = "live"
-CHECKOUT_ENABLED = "false"   # Javier enables after the test lifecycle passes and the live price is verified
+CHECKOUT_ENABLED = "false"   # enabled only after the test lifecycle and the production checks pass
 ALLOW_LIVE_CHECKOUT = "false"
-STRIPE_PRICE_ID = ""         # price_... of the live-mode recurring price
-ALLOWED_ORIGINS = "https://premium.whyhumanoid.com"
-PREMIUM_URL = "https://premium.whyhumanoid.com/"
+STRIPE_PRICE_ID = ""         # price_... of the live-mode recurring price, created after the test lifecycle passes
+ALLOWED_ORIGINS = "https://whyhumanoid-premium.javier-198.workers.dev"
+PREMIUM_URL = "https://whyhumanoid-premium.javier-198.workers.dev/"
 EMAIL_FROM = "Why Humanoid? <premium@whyhumanoid.com>"

@@ -1,7 +1,9 @@
 # Deployment settings
 
-Status on 13 Nov 2026: the PR is open (step 1), the test backend is live without secrets (step 2), the Stripe
-test product and price exist (step 3.1). Everything else below is still to apply. Keys and secrets are entered by Javier in each service's own console or with
+Status on 13 Nov 2026: the PR is open (step 1). The test and production backends run without secrets (step 2),
+production with checkout off and no data. The Stripe test product, price and webhook destination exist (steps 3.1
+and 3.2). The staging read paths were verified on Cloudflare with synthetic data, since deleted. Still to apply:
+the secrets, the first import, the test purchase, the live price and webhook, and the go-live. Keys and secrets are entered by Javier in each service's own console or with
 `wrangler secret put`, never in chat, tickets or Git. No real card is used for testing: Stripe test mode only,
 with Stripe's test cards.
 
@@ -10,7 +12,8 @@ with Stripe's test cards.
 1. Done: the Claude GitHub App is installed on `integrarobot`.
 2. Done: draft PR #1 from `feat/premium-preview` to `main`. CI must pass (guard, export, build parity, headless render, API tests).
 3. Do not push `feat/premium-foundation` (commit `5cc9262`): it carries the full 133-record export.
-4. Merge only after step 4 below is live. Merging changes whyhumanoid.com to the 10-row preview.
+4. Merge only at go-live, after step 4 below is live and the production checks pass. Merging changes
+   whyhumanoid.com to the 10-row preview with the link to the full database.
 
 ## 2. Cloudflare (backend host)
 
@@ -36,8 +39,20 @@ Test environment, applied on 13 Nov 2026 through the Cloudflare dashboard (no Wr
   available; previews 200 with 0 rows (D1 reachable, nothing imported yet); full data, `/v1/me`, checkout and task
   plan 401 without a session; webhook 503 until its secret exists; admin import 401 without the token; sign-in 503
   until the email key exists.
-- Not on the dashboard version: the nightly cron (add `17 3 * * *` under Settings, Trigger events, once the import
-  secrets exist) and the `nodejs_compat` flag (the bundle does not need it).
+- Also set: cron `17 3 * * *`, `EMAIL_FROM` (Resend test sender) and the `WORKBOOK_ID` secret. Not set: the
+  `nodejs_compat` flag (the bundle does not need it).
+- Staging check with synthetic rows, account, session and entitlement inserted in the D1 console: preview 10 rows
+  with preview values and no internal rows; 401 without session; 403 without entitlement; 200 with it (full
+  values, search, paging); agent key 200; 403 for session and agent key after the period end; logout then 401.
+  All synthetic rows were deleted afterwards.
+
+Production environment, created on 13 Nov 2026 the same way, checkout off:
+
+- D1 `whyhumanoid-premium`, EU jurisdiction, id `ba8ed181-22c6-40d4-b77d-f4bcbf238274`, same schema.
+- Worker `whyhumanoid-premium` at `https://whyhumanoid-premium.javier-198.workers.dev`, same bundle, binding `DB`,
+  variables as in `[env.production.vars]` except `STRIPE_PRICE_ID` (set when the live price exists), the
+  `WORKBOOK_ID` secret, cron `17 3 * * *`. The catalogue links to this URL (`PREMIUM_APP_URL` in
+  `tools/build-site.mjs`).
 
 To redeploy from the dashboard: `node server/scripts/build-dashboard.mjs <esbuild>` (esbuild 0.27.7), then replace
 `worker.js` in Edit code and Deploy. `wrangler deploy --env test` with a token Javier creates also works and uses
@@ -68,8 +83,9 @@ ignores webhook events from the other mode.
 1. Product "Why Humanoid? full database", one recurring price: EUR, 10000 minor units, yearly, licensed, active.
    Test mode: done on 13 Nov 2026 in the Integrarobot account (`prod_VcaBEvd49gwki2`, `price_1UbL1PAcMngkWs5CH3IDosFb`),
    already set in `[env.test]`. Live mode: create it separately when Javier decides, and set it in `[env.production]`.
-2. Webhook endpoint per mode: `<environment URL>/v1/stripe/webhook` (test:
-   `https://whyhumanoid-premium-test.javier-198.workers.dev/v1/stripe/webhook`), events `checkout.session.completed`,
+2. Webhook endpoint per mode: `<environment URL>/v1/stripe/webhook`. Test mode: done, destination
+   `whyhumanoid-premium-test` (`we_1UbMQ0AcMngkWs5CsEPdvkXG`), snapshot payloads. Live mode: after the test
+   lifecycle passes. Events `checkout.session.completed`,
    `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`.
 3. Before each checkout, the API retrieves the price and refuses (`price_mismatch`) unless it is active, recurring,
    EUR, 10000, yearly, interval count 1, and in the same mode as the key.
@@ -84,8 +100,8 @@ ignores webhook events from the other mode.
 
 1. Google Cloud: create a service account, enable the Sheets API, create a key, share the workbook with the
    service account as Viewer. Store its email and key as secrets.
-2. Run the first import: `curl -X POST -H "x-admin-token: $ADMIN_TOKEN" <environment URL>/v1/admin/import`.
-   The nightly cron (03:17 UTC) keeps it current. Imports are all-or-nothing; header drift keeps the last snapshot.
+2. First import: the nightly cron (03:17 UTC) runs it, or a temporary cron for a quicker first run. `ADMIN_TOKEN`
+   is optional; without it the admin endpoint stays closed. Imports are all-or-nothing; header drift keeps the last snapshot.
 3. Resend: verify `whyhumanoid.com` as a sending domain (DNS records at the DNS host) and use
    `premium@whyhumanoid.com` as sender.
 
