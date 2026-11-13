@@ -46,7 +46,8 @@ ignores webhook events from the other mode.
 ## 3. Stripe
 
 1. Product "Why Humanoid? full database", one recurring price: EUR, 10000 minor units, yearly, licensed, active.
-   Create it in test mode and, separately, in live mode. Put each price id in its environment's `STRIPE_PRICE_ID`.
+   Test mode: done on 13 Nov 2026 in the Integrarobot account (`prod_VcaBEvd49gwki2`, `price_1UbL1PAcMngkWs5CH3IDosFb`),
+   already set in `[env.test]`. Live mode: create it separately when Javier decides, and set it in `[env.production]`.
 2. Webhook endpoint per mode: `<environment URL>/v1/stripe/webhook`, events `checkout.session.completed`,
    `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`.
 3. Before each checkout, the API retrieves the price and refuses (`price_mismatch`) unless it is active, recurring,
