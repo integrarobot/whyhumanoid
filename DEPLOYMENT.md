@@ -3,9 +3,8 @@
 Status on 13 Nov 2026: the PR is open (step 1). The test Worker runs the current code (step 2) with its Stripe test
 and Resend secrets; production runs older code with checkout off and no data. The Stripe products, prices and
 webhook destinations exist in both modes (step 3). The access rule was verified on the test Worker with synthetic
-data, since deleted. The first live import is blocked at Google Workload Identity Federation: GitHub now issues
-the immutable subject format, which the provider condition and the service-account binding do not yet accept
-(step 4.1 gives the exact change). Still to apply after that: the staging import, then production and go-live.
+data, since deleted. The first live staging import succeeded on 13 Nov 2026 (run 43496288531): all 13 tabs,
+1,361 customer rows and 1 internal row, one snapshot. Still to apply: production and go-live.
 
 Verified on 13 Nov 2026 in the test environment: sign-in email delivered by Resend; sign-in links are redeemed
 only after a click (a link was used up 26 seconds after delivery before this change); test Checkout session
@@ -41,7 +40,7 @@ Test environment, applied on 13 Nov 2026 through the Cloudflare dashboard (no Wr
   applied in the D1 console (8 tables).
 - Worker `whyhumanoid-premium-test` at `https://whyhumanoid-premium-test.javier-198.workers.dev`, binding `DB` to
   that database, plain-text variables as in `[env.test.vars]`. The code is `dist/worker.dashboard.js` built from
-  commit `8ab1a69` and pasted into the dashboard editor (version `b5e48b11`), with `IMPORT_ENVIRONMENT=test`.
+  commit `732e42d` and pasted into the dashboard editor (version `f16120a7`), with `IMPORT_ENVIRONMENT=test`.
 - Verified on the live URL: `/health` 200; 13 datasets; plan "€100 per year", EUR 10000, yearly, checkout not
   available; previews 200 with 0 rows (D1 reachable, nothing imported yet); full data, `/v1/me`, checkout and task
   plan 401 without a session; webhook 503 until its secret exists; admin import 401 without the token; sign-in 503
@@ -123,7 +122,9 @@ ignores webhook events from the other mode.
    GitHub issues the immutable subject format (owner and repository ids included), seen in the job log of run
    `43491305616`: `repo:integrarobot@282541415/whyhumanoid@1456468940:environment:test`. The provider condition
    and binding applied on 13 Nov 2026 name the older `repo:integrarobot/whyhumanoid:environment:test`, so Google
-   rejects the exchange ("rejected by the attribute condition"). The change, in project `why-humanoid`:
+   rejects the exchange ("rejected by the attribute condition"). Applied for staging on 13 Nov 2026: the provider
+   condition accepts the numeric-id subject for this repository, workflow and branch, and maps it to the existing
+   staging principal, so the binding was unchanged. The equivalent change with a new binding:
 
    ```sh
    gcloud iam workload-identity-pools providers update-oidc github-actions \
@@ -155,7 +156,15 @@ ignores webhook events from the other mode.
    wanted before go-live; it needs a reviewer to merge. When PR #1 merges, the branch file with the 03:17 UTC
    schedule takes over and the nightly production import starts, so the production binding must exist first.
    The Worker crons are removed: a Worker cannot import without a key. Imports are all-or-nothing; header drift
-   keeps the last snapshot.
+   keeps the last snapshot. An import makes about 8 D1 calls whatever its size: a Worker invocation allows about
+   1,000, and the first attempt stopped there when identity registration made two calls per row.
+
+   First staging import, 13 Nov 2026, customer rows per tab: humanoids 134 (plus 1 internal), deployments 119,
+   integrators 7, evidence-links 15, task-evaluations 4, container-handling 22, entities 24, stocks 276,
+   software 144, datasets 28, hardware 11, other-robots 547, data-space 30; 39 warnings. Public previews: all
+   134 Humanoids records; 10 rows elsewhere (fewer where the tab is shorter; Software and Other robots show the
+   first 10 sheet rows, which hold two side-by-side lists, so 19 and 20 entries). Full data, rows past 10 and
+   search return 401 without a session.
 3. Resend: verify `whyhumanoid.com` as a sending domain (DNS records at the DNS host) and use
    `premium@whyhumanoid.com` as sender.
 
