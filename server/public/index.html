@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Why Humanoid? Premium</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=JetBrains+Mono:wght@300..600&display=swap">
+<style>
+:root{
+  --ink-0:#0B0C0E; --ink-1:#111316; --ink-2:#171A1E; --ink-3:#20242A;
+  --bone:#EAE6DD; --bone-2:color-mix(in srgb, var(--bone) 72%, transparent);
+  --bone-3:color-mix(in srgb, var(--bone) 58%, transparent);
+  --line:color-mix(in srgb, var(--bone) 10%, transparent);
+  --line-2:color-mix(in srgb, var(--bone) 22%, transparent);
+  --amber:#F0A23B; --amber-3:color-mix(in srgb, var(--amber) 9%, transparent);
+  --crit:#DE8574; --ok:#8CC7A1;
+  --f-sans:"Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --gut:clamp(16px, 3.4vw, 52px);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink-0);color:var(--bone);font:15px/1.5 var(--f-sans)}
+a{color:var(--amber)}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);border-bottom:1px solid var(--line)}
+.brand{font-weight:600;letter-spacing:.01em;text-decoration:none;color:var(--bone)}
+.brand span{color:var(--amber)}
+.label{font:500 10.5px/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--bone-3)}
+main{padding:28px var(--gut) 64px;display:grid;grid-template-columns:minmax(200px,260px) 1fr;gap:28px}
+@media (max-width:820px){main{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line);background:var(--ink-1);padding:18px;border-radius:2px}
+.notice{border-left:2px solid var(--amber);background:var(--amber-3);padding:12px 14px;margin:0 0 18px}
+.notice.error{border-color:var(--crit)}
+nav ol{list-style:none;margin:10px 0 0;padding:0}
+nav button{all:unset;cursor:pointer;display:block;width:100%;padding:8px 10px;border-left:2px solid transparent;color:var(--bone-2)}
+nav button[aria-current="true"]{border-color:var(--amber);color:var(--bone);background:var(--ink-2)}
+nav button:disabled{cursor:default;opacity:.55}
+form{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+input{flex:1;min-width:200px;background:var(--ink-0);border:1px solid var(--line-2);color:var(--bone);padding:9px 10px;font:inherit}
+.btn{background:var(--amber);color:var(--ink-0);border:0;padding:9px 14px;font:600 13px var(--f-sans);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--bone-2);border:1px solid var(--line-2)}
+h1{font-size:clamp(26px,2.8vw,40px);font-weight:500;margin:0 0 6px}
+.table-wrap{overflow:auto;border:1px solid var(--line);max-height:70vh}
+table{border-collapse:collapse;font-size:13px;min-width:100%}
+th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--line);max-width:380px}
+th{position:sticky;top:0;background:var(--ink-2);font:500 11px var(--f-mono);letter-spacing:.04em;color:var(--bone-3);white-space:nowrap}
+td{color:var(--bone-2)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}
+.muted{color:var(--bone-3)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="https://whyhumanoid.com/">Why Humanoid? <span>Full database</span></a>
+  <div class="row" style="margin:0">
+    <span id="who" class="label" hidden></span>
+    <button id="signout" class="btn ghost" type="button" hidden>Sign out</button>
+  </div>
+</header>
+<main>
+  <aside>
+    <nav class="panel" aria-label="Datasets">
+      <div class="label">Datasets</div>
+      <ol id="datasets"></ol>
+    </nav>
+  </aside>
+  <section>
+    <div id="status" class="notice" role="status" hidden></div>
+
+    <div id="confirm-login" class="panel" hidden>
+      <h1>Finish signing in</h1>
+      <p class="muted">Your sign-in link works once. Click to sign in on this device.</p>
+      <button id="confirm-login-btn" class="btn" type="button">Sign in</button>
+    </div>
+
+    <div id="signin" class="panel" hidden>
+      <h1>Sign in</h1>
+      <p class="muted">The Humanoids catalogue is free in full, and every other dataset shows its first 10 rows. The full database, with every dataset in full, full search and agent API keys, is <strong id="price-copy">€100 per year</strong>.</p>
+      <form id="signin-form">
+        <input id="email" type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email">
+        <button class="btn" type="submit">Email me a sign-in link</button>
+      </form>
+    </div>
+
+    <div id="subscribe" class="panel" hidden>
+      <h1>Full database: <span id="price-copy-2">€100 per year</span></h1>
+      <p class="muted">All 13 datasets in full, full search and agent API keys. Your account has no active subscription, so you are seeing the free Humanoids catalogue and the free previews.</p>
+      <button id="checkout" class="btn" type="button">Subscribe for €100 per year</button>
+    </div>
+
+    <div id="viewer" hidden>
+      <h1 id="dataset-title"></h1>
+      <p id="dataset-description" class="muted"></p>
+      <div class="row">
+        <input id="search" type="search" placeholder="Search all rows" aria-label="Search all rows">
+        <span id="count" class="label"></span>
+      </div>
+      <div class="table-wrap"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
+      <div class="row">
+        <button id="prev" class="btn ghost" type="button">Previous</button>
+        <button id="next" class="btn ghost" type="button">Next</button>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="premium.js"></script>
+</body>
+</html>

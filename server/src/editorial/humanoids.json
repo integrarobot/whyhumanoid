@@ -1,0 +1,4 @@
+{
+  "note": "Verified neutral rewrites of instruction-like clauses, keyed by clauseKey(field, clause). An entry is applied only when verified_at and source_url are set after checking the source. Proposed rewrites awaiting a source check live in the private review report, not here.",
+  "rewrites": {}
+}

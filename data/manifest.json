@@ -1,0 +1,286 @@
+{
+  "dataset": "humanoids",
+  "access": "free",
+  "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the verified import of 2026-11-13T21:08:39.000Z",
+  "snapshot": "2026-11-13T21:08:39.000Z",
+  "record_count": 133,
+  "verified_import": {
+    "environment": "staging",
+    "snapshot": "2026-11-13T21:08:39.000Z",
+    "import_run": "https://github.com/integrarobot/whyhumanoid/actions/runs/43507989819",
+    "updated": [
+      {
+        "id": 26,
+        "field": "Linkedin"
+      },
+      {
+        "id": 56,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 71,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 72,
+        "field": "Valuation"
+      },
+      {
+        "id": 75,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 85,
+        "field": "Web"
+      },
+      {
+        "id": 86,
+        "field": "Valuation"
+      }
+    ],
+    "inserted": []
+  },
+  "full_database": {
+    "humanoid_records": 133,
+    "other_datasets": 12,
+    "other_datasets_public_rows": 10,
+    "other_datasets_public_rule": "the first 10 source sheet rows of each tab; tabs that hold side-by-side lists show every entry in those rows",
+    "access": "subscription, €100 per year: full values, all 13 datasets in full, full search, agent API keys"
+  },
+  "fields": [
+    "Lab",
+    "Robot",
+    "Web",
+    "X",
+    "Linkedin",
+    "Youtube",
+    "Country",
+    "Careers",
+    "B2B Client",
+    "Stock",
+    "Valuation",
+    "Investors",
+    "Rounds",
+    "Release",
+    "Height (cm)",
+    "Weight (kg)",
+    "Walk (km/h)",
+    "Run (km/h)",
+    "Payload/carry (kg)",
+    "Power (hours)",
+    "Software",
+    "Voice",
+    "Clothed?",
+    "Model checked",
+    "Platform / mobility",
+    "DoF / grippers",
+    "Sensors / compute",
+    "Battery / charging",
+    "Price / availability",
+    "Autonomy / supervision",
+    "Buyer checks",
+    "Sources / checked"
+  ],
+  "cleaning": {
+    "rules": {
+      "strip": [
+        "private_link",
+        "personal_contact_email",
+        "personal_contact_phone",
+        "internal_sheet_reference",
+        "internal_editor_task",
+        "internal_marker"
+      ],
+      "flag": [
+        "instruction_wording"
+      ]
+    },
+    "stripped": [
+      {
+        "id": 4,
+        "field": "Buyer checks",
+        "reason": "internal_editor_task"
+      },
+      {
+        "id": 17,
+        "field": "Buyer checks",
+        "reason": "internal_editor_task"
+      },
+      {
+        "id": 117,
+        "field": "Model checked",
+        "reason": "internal_sheet_reference"
+      },
+      {
+        "id": 117,
+        "field": "Buyer checks",
+        "reason": "internal_sheet_reference"
+      }
+    ],
+    "excluded_unverified": [
+      {
+        "id": 4,
+        "field": "Investors",
+        "key": "522ec10e"
+      },
+      {
+        "id": 4,
+        "field": "Buyer checks",
+        "key": "890c44c2"
+      },
+      {
+        "id": 6,
+        "field": "Buyer checks",
+        "key": "3573469c"
+      },
+      {
+        "id": 7,
+        "field": "Model checked",
+        "key": "b7d3f4cc"
+      },
+      {
+        "id": 7,
+        "field": "Buyer checks",
+        "key": "add5ea8c"
+      },
+      {
+        "id": 10,
+        "field": "Platform / mobility",
+        "key": "5167601c"
+      },
+      {
+        "id": 14,
+        "field": "Model checked",
+        "key": "f7c03588"
+      },
+      {
+        "id": 14,
+        "field": "Buyer checks",
+        "key": "49730545"
+      },
+      {
+        "id": 17,
+        "field": "Buyer checks",
+        "key": "a97a10c8"
+      },
+      {
+        "id": 28,
+        "field": "Buyer checks",
+        "key": "dd357e3f"
+      },
+      {
+        "id": 32,
+        "field": "Buyer checks",
+        "key": "3ec999b6"
+      },
+      {
+        "id": 46,
+        "field": "Price / availability",
+        "key": "87e4e037"
+      },
+      {
+        "id": 48,
+        "field": "Buyer checks",
+        "key": "d0fd7e0a"
+      },
+      {
+        "id": 58,
+        "field": "Buyer checks",
+        "key": "1dbf9a56"
+      },
+      {
+        "id": 64,
+        "field": "Buyer checks",
+        "key": "aa05a826"
+      },
+      {
+        "id": 65,
+        "field": "Buyer checks",
+        "key": "efbf44ab"
+      },
+      {
+        "id": 67,
+        "field": "Rounds",
+        "key": "41bc8b4d"
+      },
+      {
+        "id": 69,
+        "field": "Buyer checks",
+        "key": "4f3746a9"
+      },
+      {
+        "id": 81,
+        "field": "Buyer checks",
+        "key": "a3688981"
+      },
+      {
+        "id": 82,
+        "field": "Buyer checks",
+        "key": "4e5c2a71"
+      },
+      {
+        "id": 93,
+        "field": "Payload/carry (kg)",
+        "key": "4fd13cef"
+      },
+      {
+        "id": 110,
+        "field": "Platform / mobility",
+        "key": "61e941f5"
+      },
+      {
+        "id": 110,
+        "field": "Buyer checks",
+        "key": "a080039a"
+      },
+      {
+        "id": 111,
+        "field": "Model checked",
+        "key": "395b612b"
+      },
+      {
+        "id": 113,
+        "field": "Buyer checks",
+        "key": "340c1f1d"
+      },
+      {
+        "id": 116,
+        "field": "Battery / charging",
+        "key": "c4257daf"
+      },
+      {
+        "id": 118,
+        "field": "Buyer checks",
+        "key": "7409373c"
+      },
+      {
+        "id": 123,
+        "field": "Buyer checks",
+        "key": "b5f6772a"
+      },
+      {
+        "id": 124,
+        "field": "Buyer checks",
+        "key": "e4f720bf"
+      },
+      {
+        "id": 130,
+        "field": "Buyer checks",
+        "key": "304e8359"
+      }
+    ],
+    "rewritten": []
+  },
+  "license": null,
+  "files": {
+    "humanoids-catalogue.json": {
+      "sha256": "c6360dc5f76034c89f1b53465d9ab539cce58892746216007b073e6846544b65",
+      "bytes": 193381
+    },
+    "humanoids-catalogue.csv": {
+      "sha256": "d50b7c6828604338a2ede6f62c41ce1b94149214ff2c2db8797bd9a686fe6d86",
+      "bytes": 99873
+    }
+  }
+}

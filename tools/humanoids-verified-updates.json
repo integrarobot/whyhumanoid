@@ -1,0 +1,47 @@
+{
+  "note": "Public Humanoids values that changed in the workbook after the legacy snapshot, taken from the verified staging import. tools/export-humanoids.mjs applies them on top of the cleaned legacy snapshot, and tools/build-site.mjs accepts exactly these differences in its parity check. Public values only. Regenerate with tools/sync-humanoids.mjs from a saved copy of the public preview.",
+  "source": {
+    "environment": "staging",
+    "snapshot": "2026-11-13T21:08:39.000Z",
+    "import_run": "https://github.com/integrarobot/whyhumanoid/actions/runs/43507989819",
+    "verified": "2026-11-13: public Humanoids preview of the test Worker (version 4c649512) after the duplicate-row fix: 133 records, same order and values as this catalogue. Valuation values that come from live market data move between imports; resync before a release."
+  },
+  "updated": [
+    {
+      "id": 26,
+      "field": "Linkedin",
+      "value": "https://www.linkedin.com/company/enchantedtools/"
+    },
+    {
+      "id": 56,
+      "field": "Sources / checked",
+      "value": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified"
+    },
+    {
+      "id": 71,
+      "field": "Sources / checked",
+      "value": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified"
+    },
+    {
+      "id": 72,
+      "field": "Valuation",
+      "value": "41,788,220.00"
+    },
+    {
+      "id": 75,
+      "field": "Sources / checked",
+      "value": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified"
+    },
+    {
+      "id": 85,
+      "field": "Web",
+      "value": "https://tangiblerobots.ai/"
+    },
+    {
+      "id": 86,
+      "field": "Valuation",
+      "value": "1,542,445,226,760.00"
+    }
+  ],
+  "inserted": []
+}
