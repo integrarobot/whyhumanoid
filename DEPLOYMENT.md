@@ -3,7 +3,12 @@
 Status on 13 Nov 2026: the PR is open (step 1). The test and production backends run without secrets (step 2),
 production with checkout off and no data. The Stripe test product, price and webhook destination exist (steps 3.1
 and 3.2). The staging read paths were verified on Cloudflare with synthetic data, since deleted. Still to apply:
-the secrets, the first import, the test purchase, the live price and webhook, and the go-live. Keys and secrets are entered by Javier in each service's own console or with
+the remaining secrets, the first import, and the go-live.
+
+Verified on 13 Nov 2026 in the test environment: sign-in email delivered by Resend; sign-in links are redeemed
+only after a click (a link was used up 26 seconds after delivery before this change); test Checkout session
+created with the restricted key after the server's price check; access granted, kept after cancellation at
+period end, and removed at period end, through signed Stripe webhooks from a test-clock subscription. Keys and secrets are entered by Javier in each service's own console or with
 `wrangler secret put`, never in chat, tickets or Git. No real card is used for testing: Stripe test mode only,
 with Stripe's test cards.
 
@@ -81,11 +86,12 @@ ignores webhook events from the other mode.
 ## 3. Stripe
 
 1. Product "Why Humanoid? full database", one recurring price: EUR, 10000 minor units, yearly, licensed, active.
-   Test mode: done on 13 Nov 2026 in the Integrarobot account (`prod_VcaBEvd49gwki2`, `price_1UbL1PAcMngkWs5CH3IDosFb`),
-   already set in `[env.test]`. Live mode: create it separately when Javier decides, and set it in `[env.production]`.
+   Test mode: `prod_VcaBEvd49gwki2`, `price_1UbL1PAcMngkWs5CH3IDosFb`. Live mode (13 Nov 2026):
+   `prod_VceC4S2gQeLhOT`, `price_1UbOtjAcMngkWs5CR8qXNPGn`, set on the production Worker.
 2. Webhook endpoint per mode: `<environment URL>/v1/stripe/webhook`. Test mode: done, destination
    `whyhumanoid-premium-test` (`we_1UbMQ0AcMngkWs5CsEPdvkXG`), snapshot payloads. Live mode: after the test
-   lifecycle passes. Events `checkout.session.completed`,
+   lifecycle passes. Live mode: destination `whyhumanoid-premium` (`we_1UbOuzAcMngkWs5CyMeDbKN3`) to the
+   production Worker; its signing secret goes into the production Worker. Events `checkout.session.completed`,
    `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`.
 3. Before each checkout, the API retrieves the price and refuses (`price_mismatch`) unless it is active, recurring,
    EUR, 10000, yearly, interval count 1, and in the same mode as the key.
