@@ -1,0 +1,51 @@
+name: Import private workbook
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Cloudflare environment
+        type: choice
+        options: [test, production]
+        default: test
+        required: true
+  schedule:
+    - cron: '17 3 * * *'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  import:
+    if: github.repository_id == '1456468940' && (github.ref == 'refs/heads/main' || (github.ref == 'refs/heads/feat/premium-preview' && inputs.target == 'test'))
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target || 'production' }}
+    concurrency: workbook-import-${{ inputs.target || 'production' }}
+    steps:
+      - name: Obtain read-only Google access token
+        id: auth
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GOOGLE_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: whyhumanoid-importer@why-humanoid.iam.gserviceaccount.com
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/spreadsheets.readonly
+          create_credentials_file: false
+          export_environment_variables: false
+      - name: Import into Cloudflare D1
+        env:
+          TARGET: ${{ inputs.target || 'production' }}
+          ADMIN_TOKEN: ${{ secrets.IMPORT_ADMIN_TOKEN }}
+          GOOGLE_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
+        run: |
+          case "$TARGET" in
+            test) worker=whyhumanoid-premium-test ;;
+            production) worker=whyhumanoid-premium ;;
+            *) exit 1 ;;
+          esac
+          test -n "$ADMIN_TOKEN" && test -n "$GOOGLE_ACCESS_TOKEN" || exit 1
+          curl --fail --silent --show-error --max-time 180 --output /dev/null \
+            --header "X-Admin-Token: $ADMIN_TOKEN" \
+            --header "X-Google-Access-Token: $GOOGLE_ACCESS_TOKEN" \
+            --request POST "https://${worker}.javier-198.workers.dev/v1/admin/import"

@@ -27,8 +27,8 @@ export function configFromEnv(env) {
   };
 }
 
-export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000)) {
-  if (!env.WORKBOOK_ID || !env.GOOGLE_SA_EMAIL || !env.GOOGLE_SA_PRIVATE_KEY) {
+export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000), accessToken) {
+  if (!env.WORKBOOK_ID || (!accessToken && (!env.GOOGLE_SA_EMAIL || !env.GOOGLE_SA_PRIVATE_KEY))) {
     return { ok: false, error: 'import_not_configured' };
   }
   const values = await fetchWorkbookValues({
@@ -37,6 +37,7 @@ export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000
     clientEmail: env.GOOGLE_SA_EMAIL,
     privateKeyPem: env.GOOGLE_SA_PRIVATE_KEY,
     now,
+    accessToken,
   });
   return runImport(env.DB, values, now);
 }
@@ -53,7 +54,7 @@ export default {
       mailer: env.RESEND_API_KEY
         ? createResendMailer({ apiKey: env.RESEND_API_KEY, from: env.EMAIL_FROM ?? 'Why Humanoid? <premium@whyhumanoid.com>' })
         : disabledMailer,
-      importNow: () => importFromWorkbook(env),
+      importNow: (accessToken) => importFromWorkbook(env, undefined, accessToken),
     });
     return app(request);
   },

@@ -140,3 +140,17 @@ test('Sheets API source signs a service-account JWT and reads the requested tabs
   assert.deepEqual(values['Relaciones evidencia'], []);
   assert.deepEqual(new URL(calls[1].url).searchParams.getAll('ranges'), ["'Integrators'", "'Relaciones evidencia'"]);
 });
+
+test('a federated access token can read the workbook without a private key', async () => {
+  const values = await fetchWorkbookValues({
+    sheetId: 'fixture-sheet',
+    tabs: ['Humanoids'],
+    accessToken: 'temporary-fixture-token',
+    fetchImpl: async (url, init) => {
+      assert.equal(new URL(url).hostname, 'sheets.googleapis.com');
+      assert.equal(init.headers.authorization, 'Bearer temporary-fixture-token');
+      return new Response(JSON.stringify({ valueRanges: [{ values: [['NAME']] }] }));
+    },
+  });
+  assert.deepEqual(values, { Humanoids: [['NAME']] });
+});

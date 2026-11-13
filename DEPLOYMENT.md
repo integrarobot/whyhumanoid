@@ -104,10 +104,21 @@ ignores webhook events from the other mode.
 
 ## 4. Data and identity
 
-1. Google Cloud: create a service account, enable the Sheets API, create a key, share the workbook with the
-   service account as Viewer. Store its email and key as secrets.
-2. First import: the nightly cron (03:17 UTC) runs it, or a temporary cron for a quicker first run. `ADMIN_TOKEN`
-   is optional; without it the admin endpoint stays closed. Imports are all-or-nothing; header drift keeps the last snapshot.
+1. Google Cloud: enable the Sheets, Security Token Service and IAM Service Account Credentials APIs. Share the workbook
+   with `whyhumanoid-importer@why-humanoid.iam.gserviceaccount.com` as Viewer. Configure a Workload Identity
+   Federation provider for `https://token.actions.githubusercontent.com` and map `google.subject=assertion.sub`.
+   Restrict admission to repository ID `1456468940` and workflow `.github/workflows/import-workbook.yml`.
+   Allow the `production` job only on `refs/heads/main` and the `test` job only on `refs/heads/main` or
+   `refs/heads/feat/premium-preview`. Bind `roles/iam.workloadIdentityUser` on the importer service account
+   to the exact subjects `repo:integrarobot/whyhumanoid:environment:test` and
+   `repo:integrarobot/whyhumanoid:environment:production`.
+2. Install `server/scripts/import-workbook.workflow.yml` as `.github/workflows/import-workbook.yml` using GitHub
+   access with workflow write permission. Configure the `test` and `production` GitHub environments with the provider resource name in
+   `GOOGLE_WORKLOAD_IDENTITY_PROVIDER` and the matching Worker's `ADMIN_TOKEN` as the environment secret
+   `IMPORT_ADMIN_TOKEN`. Deploy the updated Worker and run **Import private workbook** for `test` first.
+   Check the latest `import_runs` record and the public preview counts. Once production is ready and the
+   workflow is on `main`, the automatic run targets production at 03:17 UTC. Remove the old Worker cron
+   in environments using federation. Imports are all-or-nothing; header drift keeps the last snapshot.
 3. Resend: verify `whyhumanoid.com` as a sending domain (DNS records at the DNS host) and use
    `premium@whyhumanoid.com` as sender.
 

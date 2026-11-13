@@ -1,5 +1,5 @@
 // Authenticated read of the private workbook with a Google service account (read-only scope).
-// The workbook must be shared with the service account as Viewer. No anonymous endpoint is used.
+// The workbook must be shared with the service account as Viewer.
 
 import { base64url } from '../crypto.js';
 
@@ -45,12 +45,12 @@ export async function getAccessToken({ clientEmail, privateKeyPem, now, fetchImp
 }
 
 // Returns { [tabName]: string[][] } for the requested tabs.
-export async function fetchWorkbookValues({ sheetId, tabs, clientEmail, privateKeyPem, now, fetchImpl = fetch }) {
-  const accessToken = await getAccessToken({ clientEmail, privateKeyPem, now, fetchImpl });
+export async function fetchWorkbookValues({ sheetId, tabs, clientEmail, privateKeyPem, now, accessToken, fetchImpl = fetch }) {
+  const token = accessToken ?? await getAccessToken({ clientEmail, privateKeyPem, now, fetchImpl });
   const params = new URLSearchParams({ valueRenderOption: 'FORMATTED_VALUE', majorDimension: 'ROWS' });
   for (const tab of tabs) params.append('ranges', `'${tab.replace(/'/g, "''")}'`);
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values:batchGet?${params}`;
-  const response = await fetchImpl(url, { headers: { authorization: `Bearer ${accessToken}` } });
+  const response = await fetchImpl(url, { headers: { authorization: `Bearer ${token}` } });
   if (!response.ok) throw new Error(`Sheets API returned ${response.status}`);
   const body = await response.json();
   const result = {};

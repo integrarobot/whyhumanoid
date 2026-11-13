@@ -209,7 +209,8 @@ export function createApp({ db, config, gateway, mailer, importNow, clock = () =
           throw new HttpError(401, 'admin_token_required');
         }
         if (!importNow) throw new HttpError(503, 'import_not_configured');
-        const result = await importNow();
+        const accessToken = request.headers.get('x-google-access-token') || undefined;
+        const result = await importNow(accessToken);
         return json(result.ok ? 200 : 422, { ok: result.ok, counts: result.counts, error: result.error, warnings: result.warnings?.length ?? 0 });
       },
     ],
