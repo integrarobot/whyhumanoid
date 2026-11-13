@@ -1,0 +1,123 @@
+{
+  "dataset": "humanoids",
+  "access": "preview",
+  "preview_rule": "first 10 non-empty data rows of the Humanoids tab in workbook order; header separate",
+  "source": "Humanoids tab of the private Integrarobot workbook, via the snapshot embedded in efca179:index.html",
+  "snapshot": "2026-10-29",
+  "preview_sheet_rows": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "preview_record_count": 10,
+  "full_database": {
+    "humanoid_records": 133,
+    "access": "subscription, €100 per year"
+  },
+  "fields": [
+    "Lab",
+    "Robot",
+    "Web",
+    "X",
+    "Linkedin",
+    "Youtube",
+    "Country",
+    "Careers",
+    "B2B Client",
+    "Stock",
+    "Valuation",
+    "Investors",
+    "Rounds",
+    "Release",
+    "Height (cm)",
+    "Weight (kg)",
+    "Walk (km/h)",
+    "Run (km/h)",
+    "Payload/carry (kg)",
+    "Power (hours)",
+    "Software",
+    "Voice",
+    "Clothed?",
+    "Model checked",
+    "Platform / mobility",
+    "DoF / grippers",
+    "Sensors / compute",
+    "Battery / charging",
+    "Price / availability",
+    "Autonomy / supervision",
+    "Buyer checks",
+    "Sources / checked"
+  ],
+  "cleaning": {
+    "rules": {
+      "strip": [
+        "private_link",
+        "personal_contact_email",
+        "personal_contact_phone",
+        "internal_sheet_reference",
+        "internal_editor_task",
+        "internal_marker"
+      ],
+      "flag": [
+        "instruction_wording"
+      ]
+    },
+    "stripped": [
+      {
+        "id": 4,
+        "field": "Buyer checks",
+        "reason": "internal_editor_task"
+      }
+    ],
+    "flagged_for_review": [
+      {
+        "id": 4,
+        "field": "Investors",
+        "reason": "instruction_wording"
+      },
+      {
+        "id": 4,
+        "field": "Buyer checks",
+        "reason": "instruction_wording"
+      },
+      {
+        "id": 6,
+        "field": "Buyer checks",
+        "reason": "instruction_wording"
+      },
+      {
+        "id": 7,
+        "field": "Model checked",
+        "reason": "instruction_wording"
+      },
+      {
+        "id": 7,
+        "field": "Buyer checks",
+        "reason": "instruction_wording"
+      },
+      {
+        "id": 10,
+        "field": "Platform / mobility",
+        "reason": "instruction_wording"
+      }
+    ]
+  },
+  "license": null,
+  "files": {
+    "humanoids-preview.json": {
+      "sha256": "d36e554525eece61089fc471e5d3af28f7ee98d6fab388922839b9cf2c9bdbce",
+      "bytes": 17155
+    },
+    "humanoids-preview.csv": {
+      "sha256": "f3702e3a671ff54ff4666d35b42fc86d96ee33dad449c3a3684f9e40d8b1bc7e",
+      "bytes": 9917
+    }
+  }
+}

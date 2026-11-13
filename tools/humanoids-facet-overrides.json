@@ -1,0 +1,4 @@
+{
+  "note": "Curated presentation facets from the legacy page that the rules in tools/build-site.mjs do not reproduce. Each value is pinned to a hash of its source field; a changed source makes the build fail until the override is reviewed.",
+  "overrides": {}
+}

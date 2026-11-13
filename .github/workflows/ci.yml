@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the parity check reads the legacy page from efca179
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Public data guard (preview only, no workbook links, no premium rows)
+        run: node tools/check-public.mjs
+      - name: Preview export is current
+        run: node tools/export-humanoids.mjs --check
+      - name: Page is the verified build of the preview, with parity
+        run: node tools/build-site.mjs --check
+      - name: Headless render of the page
+        working-directory: tools
+        run: npm ci && node verify-site.mjs
+      - name: API tests
+        working-directory: server
+        run: npm ci && npm test

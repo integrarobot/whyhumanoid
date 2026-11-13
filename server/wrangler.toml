@@ -1,0 +1,57 @@
+# Cloudflare Workers configuration: premium app (public/) and API on one origin.
+# Two isolated environments. Each has its own D1 database, its own Stripe keys and its own webhook secret.
+#   wrangler deploy --env test         -> whyhumanoid-premium-test   (Stripe test mode only)
+#   wrangler deploy --env production   -> whyhumanoid-premium        (Stripe live mode, checkout off until enabled)
+#
+# Secrets per environment (wrangler secret put NAME --env test|production), never in this file or in Git:
+#   STRIPE_SECRET_KEY      test env: sk_test_... or rk_test_...   production env: sk_live_... or rk_live_...
+#   STRIPE_WEBHOOK_SECRET  whsec_... of that environment's webhook endpoint
+#   RESEND_API_KEY         email provider for sign-in links
+#   ADMIN_TOKEN            long random string for POST /v1/admin/import
+#   WORKBOOK_ID            id of the private master workbook
+#   GOOGLE_SA_EMAIL        read-only service account, shared on the workbook as Viewer
+#   GOOGLE_SA_PRIVATE_KEY  that service account's private key
+
+name = "whyhumanoid-premium"
+main = "src/worker.js"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./public"
+run_worker_first = ["/v1/*", "/health"]
+
+[env.test]
+name = "whyhumanoid-premium-test"
+workers_dev = true
+triggers = { crons = ["17 3 * * *"] }
+d1_databases = [
+  { binding = "DB", database_name = "whyhumanoid-premium-test", database_id = "REPLACE_WITH_TEST_D1_ID", migrations_dir = "migrations" },
+]
+
+[env.test.vars]
+STRIPE_MODE = "test"
+CHECKOUT_ENABLED = "false"   # set to "true" once the test price is verified (EUR 10000 / year)
+ALLOW_LIVE_CHECKOUT = "false"
+STRIPE_PRICE_ID = ""         # price_... of the test-mode recurring price
+ALLOWED_ORIGINS = "https://whyhumanoid-premium-test.REPLACE_WITH_ACCOUNT_SUBDOMAIN.workers.dev"
+PREMIUM_URL = "https://whyhumanoid-premium-test.REPLACE_WITH_ACCOUNT_SUBDOMAIN.workers.dev/"
+EMAIL_FROM = "Why Humanoid? <premium@whyhumanoid.com>"
+
+[env.production]
+name = "whyhumanoid-premium"
+workers_dev = false
+routes = [{ pattern = "premium.whyhumanoid.com", custom_domain = true }]
+triggers = { crons = ["17 3 * * *"] }
+d1_databases = [
+  { binding = "DB", database_name = "whyhumanoid-premium", database_id = "REPLACE_WITH_PRODUCTION_D1_ID", migrations_dir = "migrations" },
+]
+
+[env.production.vars]
+STRIPE_MODE = "live"
+CHECKOUT_ENABLED = "false"   # Javier enables after the test lifecycle passes and the live price is verified
+ALLOW_LIVE_CHECKOUT = "false"
+STRIPE_PRICE_ID = ""         # price_... of the live-mode recurring price
+ALLOWED_ORIGINS = "https://premium.whyhumanoid.com"
+PREMIUM_URL = "https://premium.whyhumanoid.com/"
+EMAIL_FROM = "Why Humanoid? <premium@whyhumanoid.com>"
