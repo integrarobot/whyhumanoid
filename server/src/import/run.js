@@ -30,11 +30,15 @@ export async function runImport(db, valuesByTab, now) {
     throw error;
   }
 
+  // Identity registrations commit in the same transaction as the rows: a failed import registers nothing.
+  const statements = [];
   for (const { spec, rows } of normalised) {
-    if (!spec.idFields) warnings.push(...(await resolveIdentities(db, spec.id, spec.idPrefix, rows, now)));
+    if (spec.idFields) continue;
+    const identities = await resolveIdentities(db, spec.id, spec.idPrefix, rows, now);
+    warnings.push(...identities.warnings);
+    statements.push(...identities.statements);
   }
 
-  const statements = [];
   const counts = {};
   for (const { spec, rows } of normalised) {
     counts[spec.id] = rows.filter((r) => r.visibility === 'customer').length;

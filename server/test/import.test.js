@@ -69,6 +69,45 @@ test('integrator ids are persistent, opaque and keyed on the official domain, ne
   assert.deepEqual(JSON.parse(registry.aliases), ['Example integrator 1', 'Example Integrator Renamed GmbH']);
 });
 
+// Cloudflare allows about 1,000 D1 calls per Worker invocation; the first live import failed at 999.
+function countingDb() {
+  const db = createTestDb();
+  const counter = { calls: 0 };
+  const wrap = (stmt) => ({
+    bind: (...p) => wrap(stmt.bind(...p)),
+    first: () => (counter.calls++, stmt.first()),
+    all: () => (counter.calls++, stmt.all()),
+    run: () => (counter.calls++, stmt.run()),
+    runSync: () => stmt.runSync(),
+  });
+  return {
+    counter,
+    prepare: (sql) => wrap(db.prepare(sql)),
+    batch: (statements) => (counter.calls++, db.batch(statements)),
+  };
+}
+
+test('an import makes a fixed number of D1 calls, whatever the number of rows', async () => {
+  for (const rowsPerTab of [12, 1500]) {
+    const db = countingDb();
+    const first = await runImport(db, fixtureWorkbook({ rowsPerTab }), T0);
+    assert.equal(first.ok, true);
+    const again = await runImport(db, fixtureWorkbook({ rowsPerTab }), T0 + 86400);
+    assert.equal(again.ok, true);
+    assert.ok(db.counter.calls <= 2 * 12, `${db.counter.calls} D1 calls for two imports of ${rowsPerTab} rows per tab`);
+    const ids = await db.prepare('SELECT COUNT(*) AS n FROM identity_registry').first();
+    assert.ok(ids.n > rowsPerTab, 'identities registered');
+  }
+});
+
+test('identities are registered only when the import commits', async () => {
+  const db = createTestDb();
+  const failing = { prepare: db.prepare, batch: async () => { throw new Error('simulated D1 failure'); } };
+  await assert.rejects(runImport(failing, fixtureWorkbook(), T0), /simulated/);
+  assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM identity_registry').first()).n, 0);
+  assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM premium_rows').first()).n, 0);
+});
+
 test('integrators without a URL or sharing a domain stay unresolved instead of getting a name-based id', async () => {
   const values = fixtureWorkbook();
   values.Integrators[1][1] = '';
