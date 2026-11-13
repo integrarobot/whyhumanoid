@@ -18,7 +18,7 @@ with Stripe's test cards.
 2. Done: draft PR #1 from `feat/premium-preview` to `main`. CI must pass (guard, export, build parity, headless render, API tests).
 3. Do not push `feat/premium-foundation` (commit `5cc9262`): it carries the full 133-record export.
 4. Merge only at go-live, after step 4 below is live and the production checks pass. Merging changes
-   whyhumanoid.com to the 10-row preview with the link to the full database.
+   whyhumanoid.com to the cleaned free catalogue (all 133 records) with the link to the full database.
 
 ## 2. Cloudflare (backend host)
 
@@ -76,7 +76,7 @@ Variables and secrets, Add, type Secret). None is set yet on the test Worker:
 | `STRIPE_SECRET_KEY` | restricted test key `rk_test_...` (write: Checkout Sessions; read: Prices) | restricted live key `rk_live_...`, same permissions |
 | `STRIPE_WEBHOOK_SECRET` | `whsec_...` of the test endpoint | `whsec_...` of the live endpoint |
 | `RESEND_API_KEY` | Resend key | separate Resend key |
-| `ADMIN_TOKEN` | random 32+ bytes | different random value |
+| `ADMIN_TOKEN` | optional: only for a manual import; the workflow uses its OIDC token | optional |
 | `WORKBOOK_ID` | master workbook id | same |
 | `GOOGLE_SA_EMAIL`, `GOOGLE_SA_PRIVATE_KEY` | read-only service account | same or a separate one |
 
@@ -112,13 +112,18 @@ ignores webhook events from the other mode.
    `refs/heads/feat/premium-preview`. Bind `roles/iam.workloadIdentityUser` on the importer service account
    to the exact subjects `repo:integrarobot/whyhumanoid:environment:test` and
    `repo:integrarobot/whyhumanoid:environment:production`.
-2. Install `server/scripts/import-workbook.workflow.yml` as `.github/workflows/import-workbook.yml` using GitHub
-   access with workflow write permission. Configure the `test` and `production` GitHub environments with the provider resource name in
-   `GOOGLE_WORKLOAD_IDENTITY_PROVIDER` and the matching Worker's `ADMIN_TOKEN` as the environment secret
-   `IMPORT_ADMIN_TOKEN`. Deploy the updated Worker and run **Import private workbook** for `test` first.
-   Check the latest `import_runs` record and the public preview counts. Once production is ready and the
-   workflow is on `main`, the automatic run targets production at 03:17 UTC. Remove the old Worker cron
-   in environments using federation. Imports are all-or-nothing; header drift keeps the last snapshot.
+2. `.github/workflows/import-workbook.yml` gets a read-only Google access token through that provider, then calls
+   `POST /v1/admin/import` on the Worker of its GitHub environment with its own GitHub OIDC token (audience
+   `whyhumanoid-premium-import`). The Worker verifies GitHub's signature and requires repository ID `1456468940`,
+   that workflow, the GitHub environment named in its `IMPORT_ENVIRONMENT` variable (`test` or `production`) and
+   an allowed branch (`test`: main or feat/premium-preview; `production`: main). No shared secret exists;
+   `ADMIN_TOKEN` stays optional for a manual run. Each GitHub environment needs only the variable
+   `GOOGLE_WORKLOAD_IDENTITY_PROVIDER`. The job log shows the HTTP status and row counts only.
+   `workflow_dispatch` works only for workflows present on the default branch, so `main` carries a
+   dispatch-only copy of the workflow (no schedule, no site change); runs are dispatched with
+   `ref=feat/premium-preview` and use the branch's file. When PR #1 merges, the branch file with the 03:17 UTC
+   schedule replaces it and the nightly production import starts. The Worker crons are removed: a Worker
+   cannot import without a key. Imports are all-or-nothing; header drift keeps the last snapshot.
 3. Resend: verify `whyhumanoid.com` as a sending domain (DNS records at the DNS host) and use
    `premium@whyhumanoid.com` as sender.
 

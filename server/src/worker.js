@@ -21,6 +21,8 @@ export function configFromEnv(env) {
     allowLiveCheckout: env.ALLOW_LIVE_CHECKOUT === 'true',
     stripePriceId: env.STRIPE_PRICE_ID || null,
     adminToken: env.ADMIN_TOKEN || null,
+    // GitHub environment whose import workflow may run imports here: 'test' or 'production'.
+    importEnvironment: ['test', 'production'].includes(env.IMPORT_ENVIRONMENT) ? env.IMPORT_ENVIRONMENT : null,
     loginTtlSeconds: 900,
     loginMaxPerHour: 5,
     sessionTtlSeconds: 30 * 24 * 3600,

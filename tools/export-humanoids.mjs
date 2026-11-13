@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-// Builds the public Humanoids preview: the first 10 non-empty data rows of the Humanoids tab, in workbook
-// order (header separate, empty rows not counted). Nothing beyond those rows is written to the public repo.
-// Writes data/humanoids-preview.json, data/humanoids-preview.csv and data/manifest.json.
+// Builds the free public Humanoids catalogue: every customer row of the Humanoids tab, in workbook order, with
+// the 32 public fields and public (cleaned) values. Rows the sheet itself marks as internal (a duplicate, an
+// editorial entry) are never published. Full values and the 12 other tabs are paid and never written here.
+// Writes data/humanoids-catalogue.json, data/humanoids-catalogue.csv and data/manifest.json.
 //
 // Source: the legacy snapshot embedded in efca179:index.html (built by the old pipeline from the Humanoids
 // tab), or --from <file>. Values are cleaned clause by clause with server/src/import/clean.js, the same rules
@@ -19,7 +20,6 @@ import { HUMANOIDS_FIELDS } from '../server/src/humanoids-fields.js';
 
 const root = new URL('../', import.meta.url);
 export const LEGACY_REF = 'efca179';
-export const PREVIEW_ROWS = 10;
 
 export function readLegacySnapshot(fromFile) {
   const text = fromFile
@@ -37,13 +37,10 @@ const csvCell = (value) => {
 };
 const sha256 = (text) => createHash('sha256').update(text).digest('hex');
 
-// Customer-facing robots in workbook order; take the first 10. Rows the sheet itself excludes (duplicates,
-// editorial resources) are internal provenance: they never count towards the preview and are never published.
-export function previewRows(snapshot) {
-  return snapshot.models
-    .map((m) => ({ kind: 'model', row: m.row, model: m }))
-    .sort((a, b) => a.row - b.row)
-    .slice(0, PREVIEW_ROWS);
+// Customer-facing robots in workbook order. Rows the sheet itself excludes (duplicates, editorial resources)
+// are internal provenance: the snapshot keeps them apart and they are never published.
+export function catalogueRows(snapshot) {
+  return snapshot.models.map((m) => ({ kind: 'model', row: m.row, model: m })).sort((a, b) => a.row - b.row);
 }
 
 export function buildExport(snapshot) {
@@ -65,25 +62,29 @@ export function buildExport(snapshot) {
   };
   snapshot.models.forEach((m) => clean(m, 'full')); // full review (private): what the paid import strips or flags
   const fullReview = review.splice(0);
-  const shown = previewRows(snapshot);
+  const shown = catalogueRows(snapshot);
   const records = shown.map((r) => clean(r.model, 'preview'));
   const excluded = [];
-  const previewIds = new Set(records.map((r) => r.id));
+  const catalogueIds = new Set(records.map((r) => r.id));
 
-  const json = `${JSON.stringify({ dataset: 'humanoids', access: 'preview', snapshot: snapshot.snapshot, preview_rows: PREVIEW_ROWS, fields, records, excluded }, null, 1)}\n`;
+  const json = `${JSON.stringify({ dataset: 'humanoids', access: 'free', snapshot: snapshot.snapshot, fields, records, excluded }, null, 1)}\n`;
   const csv = `${[['id', 'sheet_row', ...fields], ...records.map((r) => [r.id, r.sheet_row, ...fields.map((f) => r[f])])]
     .map((row) => row.map(csvCell).join(','))
     .join('\n')}\n`;
   const manifest = `${JSON.stringify(
     {
       dataset: 'humanoids',
-      access: 'preview',
-      preview_rule: `first ${PREVIEW_ROWS} non-empty data rows of the Humanoids tab in workbook order; header separate`,
+      access: 'free',
+      rule: 'complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published',
       source: `Humanoids tab of the private Integrarobot workbook, via the snapshot embedded in ${LEGACY_REF}:index.html`,
       snapshot: snapshot.snapshot,
-      preview_sheet_rows: shown.map((r) => r.row),
-      preview_record_count: records.length,
-      full_database: { humanoid_records: snapshot.models.length, access: 'subscription, €100 per year' },
+      record_count: records.length,
+      full_database: {
+        humanoid_records: snapshot.models.length,
+        other_datasets: 12,
+        other_datasets_public_rows: 10,
+        access: 'subscription, €100 per year: full values, all 13 datasets in full, full search, agent API keys',
+      },
       fields,
       cleaning: {
         rules: { strip: STRIP_RULES.map(([r]) => r), flag: FLAG_RULES.map(([r]) => r) },
@@ -93,14 +94,14 @@ export function buildExport(snapshot) {
       },
       license: null,
       files: {
-        'humanoids-preview.json': { sha256: sha256(json), bytes: Buffer.byteLength(json) },
-        'humanoids-preview.csv': { sha256: sha256(csv), bytes: Buffer.byteLength(csv) },
+        'humanoids-catalogue.json': { sha256: sha256(json), bytes: Buffer.byteLength(json) },
+        'humanoids-catalogue.csv': { sha256: sha256(csv), bytes: Buffer.byteLength(csv) },
       },
     },
     null,
     2,
   )}\n`;
-  return { json, csv, manifest, review: fullReview, previewIds, count: records.length };
+  return { json, csv, manifest, review: fullReview, catalogueIds, count: records.length };
 }
 
 function reviewMarkdown(review) {
@@ -120,7 +121,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
   const out = buildExport(readLegacySnapshot(arg('--from')));
   const dataDir = new URL('data/', root);
-  const files = { 'humanoids-preview.json': out.json, 'humanoids-preview.csv': out.csv, 'manifest.json': out.manifest };
+  const files = { 'humanoids-catalogue.json': out.json, 'humanoids-catalogue.csv': out.csv, 'manifest.json': out.manifest };
   if (arg('--review')) writeFileSync(arg('--review'), reviewMarkdown(out.review));
   if (process.argv.includes('--check')) {
     const stale = Object.entries(files).filter(([n, t]) => !existsSync(new URL(n, dataDir)) || readFileSync(new URL(n, dataDir), 'utf8') !== t);
@@ -128,10 +129,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       console.error(`data/ is out of date: ${stale.map(([n]) => n).join(', ')}. Run node tools/export-humanoids.mjs`);
       process.exit(1);
     }
-    console.log(`data/ is current: preview of ${out.count} records`);
+    console.log(`data/ is current: free catalogue of ${out.count} records`);
   } else {
     mkdirSync(dataDir, { recursive: true });
     for (const [name, text] of Object.entries(files)) writeFileSync(new URL(name, dataDir), text);
-    console.log(`Wrote data/: preview of ${out.count} records (sheet rows ${JSON.parse(out.manifest).preview_sheet_rows.join(', ')})`);
+    console.log(`Wrote data/: free catalogue of ${out.count} records`);
   }
 }

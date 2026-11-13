@@ -34,9 +34,11 @@ jobs:
           create_credentials_file: false
           export_environment_variables: false
       - name: Import into Cloudflare D1
+        # The Worker accepts this job's own GitHub OIDC token (audience whyhumanoid-premium-import) only for this
+        # repository, this workflow, the Worker's GitHub environment and an allowed branch. No shared secret.
+        # Only the import outcome and row counts are printed; workbook data never reaches the log.
         env:
           TARGET: ${{ inputs.target || 'production' }}
-          ADMIN_TOKEN: ${{ secrets.IMPORT_ADMIN_TOKEN }}
           GOOGLE_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
         run: |
           case "$TARGET" in
@@ -44,8 +46,17 @@ jobs:
             production) worker=whyhumanoid-premium ;;
             *) exit 1 ;;
           esac
-          test -n "$ADMIN_TOKEN" && test -n "$GOOGLE_ACCESS_TOKEN" || exit 1
-          curl --fail --silent --show-error --max-time 180 --output /dev/null \
-            --header "X-Admin-Token: $ADMIN_TOKEN" \
+          test -n "$GOOGLE_ACCESS_TOKEN" || exit 1
+          id_token=$(curl --fail --silent --show-error \
+            --header "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=whyhumanoid-premium-import" | jq -r .value)
+          echo "::add-mask::$id_token"
+          test -n "$id_token" && test "$id_token" != null || exit 1
+          status=$(curl --silent --show-error --max-time 180 --output result.json --write-out '%{http_code}' \
+            --header "Authorization: Bearer $id_token" \
             --header "X-Google-Access-Token: $GOOGLE_ACCESS_TOKEN" \
-            --request POST "https://${worker}.javier-198.workers.dev/v1/admin/import"
+            --request POST "https://${worker}.javier-198.workers.dev/v1/admin/import")
+          echo "HTTP $status"
+          jq '{ok, error, warnings, counts}' result.json || true
+          rm -f result.json
+          test "$status" = 200

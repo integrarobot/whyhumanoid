@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { DATASETS } from '../src/datasets.js';
 import { sendWebhook, setup, signIn, subscriptionEvent } from './helpers.js';
 
-test('every one of the 13 tabs has a public preview of its first 10 data rows, in workbook order', async () => {
+test('the Humanoids catalogue is public in full; the 12 other tabs show their first 10 data rows', async () => {
   const ctx = await setup();
   for (const spec of DATASETS) {
     const res = await ctx.call('GET', `/v1/datasets/${spec.id}/preview`);
@@ -11,6 +11,12 @@ test('every one of the 13 tabs has a public preview of its first 10 data rows, i
     assert.match(res.headers.get('cache-control'), /public/);
     const body = await res.json();
     const sheetRows = new Set(body.rows.map((r) => r.id)).size;
+    if (spec.id === 'humanoids') {
+      assert.equal(body.preview_rows, 'all');
+      assert.equal(body.rows.length, body.total_rows);
+      assert.equal(body.total_rows, 12);
+      continue;
+    }
     assert.equal(body.preview_rows, 10);
     if (spec.kind === 'lists' && spec.lists.length > 1) {
       // Side-by-side tabs hold two items per sheet row: 10 sheet rows, up to 20 items.
@@ -30,17 +36,19 @@ test('the empty sheet row does not count: the preview reaches the 10th data row'
     rows.map((r) => r.id),
     Array.from({ length: 10 }, (_, i) => `fx_record_id_${i + 1}`),
   );
+  const { rows: integrators } = await (await ctx.call('GET', '/v1/datasets/integrators/preview')).json();
+  assert.equal(new Set(integrators.map((r) => r.id)).size, 10);
   const { rows: humanoids } = await (await ctx.call('GET', '/v1/datasets/humanoids/preview')).json();
-  assert.equal(humanoids.at(-1).Robot, 'Example Robot 10');
+  assert.deepEqual(humanoids.map((r) => r.Robot), Array.from({ length: 12 }, (_, i) => `Example Robot ${i + 1}`));
 });
 
-test('rows beyond the preview, and search, need a subscription', async () => {
+test('rows beyond the preview, full values, and search, need a subscription', async () => {
   const ctx = await setup();
   assert.equal((await ctx.call('GET', '/v1/datasets/humanoids')).status, 401);
   assert.equal((await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%2011')).status, 401);
-  assert.equal((await ctx.call('GET', '/v1/datasets/humanoids/preview?q=Robot%2011')).status, 200);
-  const preview = await (await ctx.call('GET', '/v1/datasets/humanoids/preview?q=Robot%2011&limit=500&offset=10')).json();
-  assert.ok(!preview.rows.some((r) => r.Robot === 'Example Robot 11'), 'preview ignores search and paging');
+  assert.equal((await ctx.call('GET', '/v1/datasets/deployments')).status, 401);
+  const preview = await (await ctx.call('GET', '/v1/datasets/deployments/preview?q=fx_record_id_11&limit=500&offset=10')).json();
+  assert.deepEqual(preview.rows.map((r) => r.id), Array.from({ length: 10 }, (_, i) => `fx_record_id_${i + 1}`), 'preview ignores search and paging');
   const { session, accountId } = await signIn(ctx);
   assert.equal((await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%2011', { token: session })).status, 403);
   await sendWebhook(ctx, subscriptionEvent({ accountId }));
@@ -61,7 +69,7 @@ test('preview drops unverified instruction-like clauses; the paid rows keep them
 test('sheet-excluded Humanoids rows are internal provenance: not in previews, totals, full rows or search', async () => {
   const ctx = await setup();
   const preview = await (await ctx.call('GET', '/v1/datasets/humanoids/preview')).json();
-  assert.equal(preview.rows.length, 10);
+  assert.equal(preview.rows.length, 12);
   assert.equal(preview.total_rows, 12);
   assert.ok(!preview.rows.some((r) => /^(Duplicate|Resource)/.test(r.Robot)));
   const { session, accountId } = await signIn(ctx);

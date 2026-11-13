@@ -4,7 +4,7 @@
 
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
-import { DATASETS, PREVIEW_ROWS } from '../server/src/datasets.js';
+import { DATASETS, DATASETS_BY_ID } from '../server/src/datasets.js';
 
 const root = new URL('../', import.meta.url);
 const read = (path) => readFileSync(new URL(path, root), 'utf8');
@@ -52,20 +52,35 @@ for (const dir of ['server', 'tools', '.github']) {
   if (tracked.some((f) => f.startsWith(`${dir}/`) && isPublished(f))) fail('_config.yml', `does not exclude ${dir}/`);
 }
 
-// Rule 5: only the preview is public. At most PREVIEW_ROWS Humanoids rows in the export and in the page,
-// allowlisted fields only, and no full export files.
-for (const full of ['data/humanoids.json', 'data/humanoids.csv']) if (tracked.includes(full)) fail(full, 'full export must not be public');
-const exported = JSON.parse(read('data/humanoids-preview.json'));
+// Rule 5: the only public rows are the free Humanoids catalogue: allowlisted fields, public (cleaned) values,
+// no row the sheet marks as internal, and nothing from the 12 other tabs or the paid values.
+for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-preview.json', 'data/humanoids-preview.csv']) {
+  if (tracked.includes(old)) fail(old, 'only data/humanoids-catalogue.* may hold public rows');
+}
+for (const file of tracked.filter((f) => f.startsWith('data/'))) {
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json'].includes(file)) fail(file, 'unexpected public data file');
+}
+const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));
+const isInternal = DATASETS_BY_ID.get('humanoids').internalRow;
+if (exported.dataset !== 'humanoids' || exported.access !== 'free') fail('data/humanoids-catalogue.json', 'is not the free Humanoids catalogue');
 const extraFields = exported.records.flatMap((r) => Object.keys(r)).filter((k) => !['id', 'sheet_row'].includes(k) && !humanoidFields.has(k));
-if (extraFields.length) fail('data/humanoids-preview.json', 'fields outside the allowlist', [...new Set(extraFields)].join(', '));
-if (exported.records.length + exported.excluded.length > PREVIEW_ROWS) fail('data/humanoids-preview.json', `more than ${PREVIEW_ROWS} rows`);
-if (exported.records.length !== manifest.preview_record_count) fail('data/manifest.json', 'preview_record_count mismatch');
-const csvRows = read('data/humanoids-preview.csv').match(/^\d+,\d+,/gm)?.length ?? 0;
-if (csvRows > PREVIEW_ROWS) fail('data/humanoids-preview.csv', `more than ${PREVIEW_ROWS} rows`);
+if (extraFields.length) fail('data/humanoids-catalogue.json', 'fields outside the allowlist', [...new Set(extraFields)].join(', '));
+const internal = exported.records.filter((r) => isInternal(r));
+if (internal.length || exported.excluded.length) fail('data/humanoids-catalogue.json', 'publishes rows the sheet marks as internal', internal.map((r) => r.id).join(', '));
+if (exported.records.length !== manifest.record_count) fail('data/manifest.json', 'record_count mismatch');
+if (exported.records.length > manifest.full_database.humanoid_records) fail('data/manifest.json', 'more public records than the catalogue holds');
+const csvRows = read('data/humanoids-catalogue.csv').match(/^\d+,\d+,/gm)?.length ?? 0;
+if (csvRows !== exported.records.length) fail('data/humanoids-catalogue.csv', `holds ${csvRows} rows, the catalogue ${exported.records.length}`);
 const page = JSON.parse(/<script[^>]*id="data"[^>]*>([\s\S]*?)<\/script>/.exec(read('index.html'))[1]);
-if (page.models.length + page.excluded.length > PREVIEW_ROWS) fail('index.html', `embeds ${page.models.length} records, more than the preview`);
-for (const m of page.models) if (!exported.records.some((r) => r.id === m.id)) fail('index.html', `record ${m.id} is not in the preview export`);
+if (page.excluded.length) fail('index.html', 'embeds rows the sheet marks as internal');
+const catalogue = new Map(exported.records.map((r) => [r.id, r]));
+for (const m of page.models) {
+  const record = catalogue.get(m.id);
+  if (!record) fail('index.html', `record ${m.id} is not in the free catalogue`);
+  else if (page.cols.some((field, i) => (m.f[i] ?? '') !== (record[field] ?? ''))) fail('index.html', `record ${m.id} differs from its public values`);
+}
+if (page.models.length !== exported.records.length) fail('index.html', `embeds ${page.models.length} of ${exported.records.length} catalogue records`);
 
 if (failures.length) {
   console.error(`Public data guard FAILED:\n- ${failures.join('\n- ')}`);
@@ -73,5 +88,5 @@ if (failures.length) {
 }
 console.log(
   `Public data guard passed: ${tracked.length} tracked files, ${tracked.filter(isPublished).length} published, ` +
-    `${exported.records.length} preview records (limit ${PREVIEW_ROWS}), ${premiumColumns.length} premium column names checked.`,
+    `${exported.records.length} free Humanoids records (public values only), ${premiumColumns.length} premium column names checked.`,
 );

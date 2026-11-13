@@ -1,4 +1,108 @@
 {
   "note": "Curated presentation facets from the legacy page that the rules in tools/build-site.mjs do not reproduce. Each value is pinned to a hash of its source field; a changed source makes the build fail until the override is reviewed.",
-  "overrides": {}
+  "overrides": {
+    "39": {
+      "c": {
+        "value": [
+          "China",
+          "United States"
+        ],
+        "source_hash": "662b9cc77cbc29ae"
+      }
+    },
+    "58": {
+      "mob": {
+        "value": "Bipedal or wheeled",
+        "source_hash": "080ec276a01882fd"
+      }
+    },
+    "82": {
+      "mob": {
+        "value": "Software or other",
+        "source_hash": "5cf27769b1554b93"
+      }
+    },
+    "119": {
+      "c": {
+        "value": [
+          "United States"
+        ],
+        "source_hash": "4548bef0d8674edb"
+      }
+    },
+    "126": {
+      "mob": {
+        "value": "Wheeled",
+        "source_hash": "9bcc063bbf010f1c"
+      }
+    },
+    "127": {
+      "mob": {
+        "value": "Wheeled",
+        "source_hash": "f2160da89c8fe881"
+      }
+    },
+    "128": {
+      "mob": {
+        "value": "DIY or open",
+        "source_hash": "73ce8e1d3ccfe53d"
+      }
+    },
+    "131": {
+      "c": {
+        "value": [
+          "United States"
+        ],
+        "source_hash": "ce3edb7e6b4106a2"
+      }
+    },
+    "132": {
+      "c": {
+        "value": [
+          "China"
+        ],
+        "source_hash": "5b4d9f22486cff71"
+      },
+      "mob": {
+        "value": "Bipedal or wheeled",
+        "source_hash": "1f8d048f28f3c152"
+      },
+      "chk": {
+        "value": {
+          "date": "2026-10-30",
+          "statements": [
+            "Funding checked (Pre-A amount undisclosed",
+            "investor conflict noted)",
+            "Specifications not published"
+          ],
+          "website": "Website captured",
+          "funding": "checked",
+          "specs": "unpublished",
+          "urls": [
+            "https://pokebot.com/",
+            "https://www.tmtpost.com/8091178.html",
+            "https://news.qq.com/rain/a/20260903A0AVBL00",
+            "https://eu.36kr.com/en/p/3784365164322055",
+            "https://www.caixinglobal.com/2026-08-05/chinese-robotics-startup-pokebot-raises-hundreds-of-millions-of-dollars-102471583.html",
+            "https://www.manilatimes.net/2026/10/30/tmt-newswire/globenewswire/pokebot-launches-roboapi-for-real-world-testing-of-its-poke-aurora-world-action-model/2457856",
+            "https://www.techtimes.com/articles/322782/20260803/pokebot-lands-100m-four-months-to-attack-robotics-last-hard-problem-robot-manipulation.htm"
+          ]
+        },
+        "source_hash": "55386162a9816d2a"
+      }
+    },
+    "133": {
+      "chk": {
+        "value": {
+          "date": "",
+          "statements": [],
+          "website": "",
+          "funding": "unknown",
+          "specs": "unknown",
+          "urls": []
+        },
+        "source_hash": "e3b0c44298fc1c14"
+      }
+    }
+  }
 }

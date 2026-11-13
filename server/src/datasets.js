@@ -1,8 +1,9 @@
 // Registry of the thirteen workbook tabs served by the paid product. Headers are the exact header rows of the
 // private workbook, validated on 2026-11-13 through an authenticated Google Drive read. Any header drift makes
 // the import fail loudly instead of publishing misaligned data.
-// Access: the first PREVIEW_ROWS non-empty data rows of each tab (workbook order) are public; everything else,
-// and search, needs an active subscription.
+// Access: the Humanoids catalogue is free in full (its public, cleaned values); every other tab shows its first
+// PREVIEW_ROWS non-empty data rows (workbook order). Full values, all other rows, search and agent API keys
+// need an active subscription.
 
 import { hostKey, urlKey } from './import/identity.js';
 import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
@@ -65,6 +66,8 @@ export const DATASETS = [
     headers: HUMANOIDS_FIELDS,
     clean: true,
     editorial: editorial.rewrites,
+    // The complete Humanoids catalogue stays free; subscribers get the full values, search and the API.
+    publicRows: 'all',
     // The sheet marks some rows as duplicates or editorial resources: kept as internal provenance, never served.
     internalRow: (d) =>
       /^(duplicate|resource)\b/i.test(d.Robot ?? '') ||
@@ -211,25 +214,31 @@ export const DATASETS = [
 export const PREMIUM_DATASETS = DATASETS; // kept for tooling that scans premium column names
 export const DATASETS_BY_ID = new Map(DATASETS.map((d) => [d.id, d]));
 
+// Public rows per tab: null means every customer row (the free Humanoids catalogue).
+export const publicRowLimit = (spec) => (spec.publicRows === 'all' ? null : PREVIEW_ROWS);
+
 export function publicDatasetList() {
-  return DATASETS.map(({ id, title, description }) => ({
-    id,
-    title,
-    description,
-    access: { preview_rows: PREVIEW_ROWS, full: 'subscription' },
+  return DATASETS.map((spec) => ({
+    id: spec.id,
+    title: spec.title,
+    description: spec.description,
+    access: { preview_rows: publicRowLimit(spec) ?? 'all', full: 'subscription' },
   }));
 }
 
 const toRow = (r) => ({ id: r.row_id, ...JSON.parse(r.data) });
 
-// Public preview: rows whose sheet row is among the first PREVIEW_ROWS non-empty data rows, workbook order.
-export async function queryPreview(db, datasetId) {
+// Public rows: the first PREVIEW_ROWS non-empty data rows in workbook order, or every customer row for the free
+// Humanoids catalogue. Always the public (preview) values; no search, no paging.
+export async function queryPreview(db, spec) {
+  const datasetId = spec.id;
+  const limit = publicRowLimit(spec);
   const page = await db
     .prepare(
       `SELECT row_id, COALESCE(preview_data, data) AS data, snapshot_id FROM premium_rows
-        WHERE dataset = ? AND visibility = 'customer' AND preview_rank <= ? ORDER BY position`,
+        WHERE dataset = ? AND visibility = 'customer' ${limit === null ? '' : 'AND preview_rank <= ?'} ORDER BY position`,
     )
-    .bind(datasetId, PREVIEW_ROWS)
+    .bind(...(limit === null ? [datasetId] : [datasetId, limit]))
     .all();
   const total = await db
     .prepare("SELECT COUNT(*) AS n FROM premium_rows WHERE dataset = ? AND visibility = 'customer'")

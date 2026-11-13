@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // Verified build: renders index.html headlessly (jsdom, no network) and checks what a visitor gets.
 //   - the page runs without script errors
-//   - exactly the preview rows are rendered (10), and the hero shows the full-database total
+//   - every record of the free Humanoids catalogue is rendered, and the hero shows that total
 //   - search and filters work on the visible rows
-//   - the preview notice states the price and links to the premium app
+//   - the notice says the catalogue is free, states the full-database price and links to the premium app
 // Usage: cd tools && npm ci && node verify-site.mjs
 
 import { readFileSync } from 'node:fs';
@@ -39,13 +39,13 @@ const rows = () => document.querySelectorAll('#rows .row').length;
 const text = (sel) => document.querySelector(sel)?.textContent?.trim() ?? '';
 
 expect(errors.length === 0, `script errors: ${errors.join(' | ')}`);
-expect(rows() === manifest.preview_record_count, `rendered rows ${rows()} != preview ${manifest.preview_record_count}`);
-expect(text('#h-n') === String(manifest.full_database.humanoid_records), `hero total "${text('#h-n')}"`);
-expect(/€100 per year/.test(text('#preview-note')), 'preview notice missing the price');
+expect(rows() === manifest.record_count, `rendered rows ${rows()} != catalogue ${manifest.record_count}`);
+expect(text('#h-n') === String(manifest.record_count), `hero total "${text('#h-n')}"`);
+expect(/complete catalogue is free/i.test(text('#preview-note')) && /€100 per year/.test(text('#preview-note')), 'notice does not say the catalogue is free and the price of the full database');
 const buyLink = document.querySelector('#preview-note a');
 const pageData = JSON.parse(document.getElementById('data').textContent);
-expect(Boolean(buyLink) && buyLink.getAttribute('href') === pageData.preview.url && /^https:\/\//.test(pageData.preview.url), 'preview notice has no link to the premium app');
-expect(/free preview/i.test(text('#a-rows')), 'FAQ does not explain the preview');
+expect(Boolean(buyLink) && buyLink.getAttribute('href') === pageData.access.url && /^https:\/\//.test(pageData.access.url), 'notice has no link to the premium app');
+expect(/internal/i.test(text('#a-rows')), 'FAQ does not explain which rows the catalogue leaves out');
 
 const search = document.querySelector('input[type="search"]');
 expect(Boolean(search), 'no search box');
@@ -56,7 +56,7 @@ if (search) {
   search.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
   await new Promise((r) => setTimeout(r, 400));
   const shown = rows();
-  expect(shown >= 1 && shown < manifest.preview_record_count, `search "${target}" shows ${shown} rows`);
+  expect(shown >= 1 && shown < manifest.record_count, `search "${target}" shows ${shown} rows`);
   search.value = 'zzzz-no-such-robot';
   search.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
   await new Promise((r) => setTimeout(r, 400));
@@ -64,7 +64,7 @@ if (search) {
   search.value = '';
   search.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
   await new Promise((r) => setTimeout(r, 400));
-  expect(rows() === manifest.preview_record_count, 'clearing search does not restore the preview rows');
+  expect(rows() === manifest.record_count, 'clearing search does not restore every catalogue row');
 }
 
 const filters = [...document.querySelectorAll('select')];
@@ -75,7 +75,7 @@ if (filters.length) {
     select.value = option.value;
     select.dispatchEvent(new dom.window.Event('change', { bubbles: true }));
     await new Promise((r) => setTimeout(r, 200));
-    expect(rows() <= manifest.preview_record_count, 'filter shows more than the preview');
+    expect(rows() <= manifest.record_count, 'filter shows more than the catalogue');
   }
 }
 
@@ -84,5 +84,5 @@ if (failures.length) {
   console.error(`Site verification FAILED:\n- ${failures.join('\n- ')}`);
   process.exit(1);
 }
-console.log(`Site verification passed: ${manifest.preview_record_count} preview rows rendered, search and filters work on them, no script errors.`);
+console.log(`Site verification passed: ${manifest.record_count} catalogue rows rendered, search and filters work on them, no script errors.`);
 process.exit(0);

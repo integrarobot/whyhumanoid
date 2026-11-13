@@ -1,5 +1,5 @@
 // Full-database app, served by the backend on the same origin as the API. It holds no data: anonymous visitors
-// get each dataset's public 10-row preview; subscribers get full rows and search after a server-side
+// get the free Humanoids catalogue and each other dataset's 10-row preview; subscribers get full rows and search after a server-side
 // entitlement check on every request.
 (() => {
   const PAGE = 100;
@@ -81,7 +81,9 @@
     const total = full() ? data.total : data.total_rows;
     $('count').textContent = full()
       ? `${total} rows${data.snapshot ? ` · snapshot ${data.snapshot.slice(0, 10)}` : ''}`
-      : `Free preview: first ${data.rows.length ? Math.min(data.preview_rows, data.rows.length) : 0} sheet rows of ${total}`;
+      : data.preview_rows === 'all'
+        ? `Free catalogue: all ${total} records`
+        : `Free preview: first ${data.rows.length ? Math.min(data.preview_rows, data.rows.length) : 0} sheet rows of ${total}`;
     $('search').hidden = !full();
     $('prev').hidden = !full();
     $('next').hidden = !full();

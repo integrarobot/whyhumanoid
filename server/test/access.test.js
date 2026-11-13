@@ -17,7 +17,9 @@ test('dataset list is public and contains no rows', async () => {
   const { datasets } = await res.json();
   assert.equal(datasets.length, 13);
   assert.deepEqual(datasets.slice(0, 3).map((d) => d.id), ['humanoids', 'deployments', 'integrators']);
-  assert.ok(datasets.every((d) => d.access.preview_rows === 10 && d.access.full === 'subscription' && !('rows' in d)));
+  assert.ok(datasets.every((d) => d.access.full === 'subscription' && !('rows' in d)));
+  assert.equal(datasets[0].access.preview_rows, 'all', 'the Humanoids catalogue is free in full');
+  assert.ok(datasets.slice(1).every((d) => d.access.preview_rows === 10));
 });
 
 test('no session: premium rows are refused with 401', async () => {

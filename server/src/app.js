@@ -10,11 +10,12 @@ import {
   revokeCredential,
 } from './auth.js';
 import { describeAccess, getEntitlement, hasAccess } from './entitlements.js';
-import { DATASETS_BY_ID, PREVIEW_ROWS, publicDatasetList, queryDatasetRows, queryPreview } from './datasets.js';
+import { DATASETS_BY_ID, publicDatasetList, publicRowLimit, queryDatasetRows, queryPreview } from './datasets.js';
 import { checkoutReadiness, handleStripeWebhook, startCheckout } from './billing.js';
 import { PLAN } from './pricing.js';
 import { buildTaskPlan, validateInputs } from './agent/task-plan.js';
 import { sha256Hex } from './crypto.js';
+import { verifyImportToken } from './import/github-oidc.js';
 
 const MAX_API_KEYS = 5;
 
@@ -23,7 +24,7 @@ const clampInt = (raw, min, max, fallback) => {
   return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
 };
 
-export function createApp({ db, config, gateway, mailer, importNow, clock = () => Math.floor(Date.now() / 1000), log = console }) {
+export function createApp({ db, config, gateway, mailer, importNow, importAuth = verifyImportToken, clock = () => Math.floor(Date.now() / 1000), log = console }) {
   async function requireAuth(request, now) {
     const account = await authenticate(request, db, now);
     if (!account) throw new HttpError(401, 'authentication_required');
@@ -42,17 +43,18 @@ export function createApp({ db, config, gateway, mailer, importNow, clock = () =
 
     ['GET', /^\/v1\/datasets$/, async () => json(200, { datasets: publicDatasetList() })],
 
-    // Public preview: first PREVIEW_ROWS non-empty data rows of the tab in workbook order. No search.
+    // Public rows: the whole free Humanoids catalogue, or the first 10 non-empty data rows of any other tab in
+    // workbook order. Public values only. No search.
     [
       'GET',
       /^\/v1\/datasets\/([a-z0-9-]+)\/preview$/,
       async (_request, _now, match) => {
         const spec = DATASETS_BY_ID.get(match[1]);
         if (!spec) throw new HttpError(404, 'unknown_dataset');
-        const preview = await queryPreview(db, spec.id);
+        const preview = await queryPreview(db, spec);
         return json(
           200,
-          { dataset: { id: spec.id, title: spec.title, description: spec.description }, preview_rows: PREVIEW_ROWS, ...preview },
+          { dataset: { id: spec.id, title: spec.title, description: spec.description }, preview_rows: publicRowLimit(spec) ?? 'all', ...preview },
           { 'cache-control': 'public, max-age=300' },
         );
       },
@@ -199,13 +201,22 @@ export function createApp({ db, config, gateway, mailer, importNow, clock = () =
       },
     ],
 
-    // Operator-only: run the workbook import now. Needs the ADMIN_TOKEN secret.
+    // Operator-only: run the workbook import now. Accepted credentials: the GitHub Actions OIDC token of
+    // .github/workflows/import-workbook.yml for this Worker's environment (no shared secret), or the optional
+    // ADMIN_TOKEN secret for a manual run.
     [
       'POST',
       /^\/v1\/admin\/import$/,
-      async (request) => {
+      async (request, now) => {
+        const bearer = /^Bearer\s+(\S+)$/i.exec(request.headers.get('authorization') ?? '')?.[1];
         const given = request.headers.get('x-admin-token') ?? '';
-        if (!config.adminToken || !given || (await sha256Hex(given)) !== (await sha256Hex(config.adminToken))) {
+        if (bearer && config.importEnvironment) {
+          const verdict = await importAuth(bearer, { environment: config.importEnvironment, now });
+          if (!verdict.ok) {
+            log.warn?.('import token rejected', verdict.reason);
+            throw new HttpError(401, 'import_token_rejected');
+          }
+        } else if (!config.adminToken || !given || (await sha256Hex(given)) !== (await sha256Hex(config.adminToken))) {
           throw new HttpError(401, 'admin_token_required');
         }
         if (!importNow) throw new HttpError(503, 'import_not_configured');

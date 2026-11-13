@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Builds the data block of index.html from the isolated public preview (data/humanoids-preview.json) only:
-// the first 10 Humanoids rows in workbook order. No other row reaches the page.
+// Builds the data block of index.html from the free public catalogue (data/humanoids-catalogue.json) only:
+// every customer row of the Humanoids tab with public values. No paid value and no other tab reaches the page.
 //
 // The page needs presentation facets (country list, mobility class, numeric height and weight, year, listing
 // status, check log). They are derived here by rules from the public fields. Where the legacy pipeline made a
@@ -106,7 +106,7 @@ export const RULES = {
   },
 };
 
-export function buildData(exported, overrides, preview) {
+export function buildData(exported, overrides, access) {
   const { fields } = exported;
   const models = exported.records.map((record) => {
     const model = { id: record.id, row: record.sheet_row };
@@ -123,7 +123,7 @@ export function buildData(exported, overrides, preview) {
     return model;
   });
   const excluded = exported.excluded.map(({ sheet_row: row, lab, robot, reason }) => ({ row, lab, robot, reason }));
-  return { cols: fields, models, excluded, snapshot: exported.snapshot, ...(preview ? { preview } : {}) };
+  return { cols: fields, models, excluded, snapshot: exported.snapshot, ...(access ? { access } : {}) };
 }
 
 // Parity: every facet and field must equal the legacy page, except fields changed by the cleaning step.
@@ -137,9 +137,9 @@ export function parity(built, legacy, manifest) {
   const legacyById = new Map(legacy.models.map((m) => [m.id, m]));
   const unexpected = [];
   const expected = [];
-  const legacyRows = legacy.models.map((m) => m.row).sort((a, b) => a - b).slice(0, built.preview?.rows ?? Infinity);
+  const legacyRows = legacy.models.map((m) => m.row).sort((a, b) => a - b);
   const builtRows = [...built.models.map((m) => m.row), ...built.excluded.map((e) => e.row)].sort((a, b) => a - b);
-  if (!isDeepStrictEqual(builtRows, legacyRows)) unexpected.push(`sheet rows ${builtRows} != first rows of legacy ${legacyRows}`);
+  if (!isDeepStrictEqual(builtRows, legacyRows)) unexpected.push('the catalogue does not hold exactly the legacy customer rows');
   for (const m of built.models) {
     const old = legacyById.get(m.id);
     if (!old) {
@@ -169,7 +169,7 @@ export function renderIndex(html, data) {
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const exported = JSON.parse(readFileSync(new URL('data/humanoids-preview.json', root), 'utf8'));
+  const exported = JSON.parse(readFileSync(new URL('data/humanoids-catalogue.json', root), 'utf8'));
   const manifest = JSON.parse(readFileSync(new URL('data/manifest.json', root), 'utf8'));
   const legacy = readLegacySnapshot();
   let overrides = JSON.parse(readFileSync(OVERRIDES_FILE, 'utf8')).overrides;
@@ -198,8 +198,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log(`Wrote ${Object.values(fresh).reduce((n, o) => n + Object.keys(o).length, 0)} overrides for ${Object.keys(fresh).length} records`);
   }
 
-  const preview = { rows: exported.preview_rows, total_records: manifest.full_database.humanoid_records, price: PLAN.display, url: PREMIUM_APP_URL };
-  const data = buildData(exported, overrides, preview);
+  const access = { free: 'all', total_records: exported.records.length, price: PLAN.display, url: PREMIUM_APP_URL };
+  const data = buildData(exported, overrides, access);
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {
     console.error(`Parity FAILED (${unexpected.length}):\n- ${unexpected.slice(0, 40).join('\n- ')}`);
@@ -214,6 +214,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       process.exit(1);
     }
   } else writeFileSync(indexUrl, next);
-  if (data.models.length + data.excluded.length > preview.rows) throw new Error('more rows than the preview allows');
-  console.log(`Parity passed: ${data.models.length} preview records identical to the first legacy rows except ${expected.length} cleaned values (${expected.join(', ') || 'none'})`);
+  console.log(`Parity passed: ${data.models.length} catalogue records identical to the legacy page except ${expected.length} cleaned values`);
 }
