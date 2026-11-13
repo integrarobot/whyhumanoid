@@ -592,7 +592,7 @@ button{cursor:pointer}
     for (let v = 100; v <= 200; v += 20) s += `<line x1="${G.l}" x2="${G.W - G.r}" y1="${sy(v)}" y2="${sy(v)}"/><text x="${G.l - 8}" y="${sy(v) + 3.5}" text-anchor="end">${v}</text>`;
     for (let v = 0; v <= 140; v += 20) s += `<line x1="${sx(v)}" x2="${sx(v)}" y1="${G.t}" y2="${G.H - G.b}"/><text x="${sx(v)}" y="${G.H - G.b + 16}" text-anchor="middle">${v}</text>`;
     s += `<line class="base" x1="${G.l}" x2="${G.W - G.r}" y1="${G.H - G.b}" y2="${G.H - G.b}"/>`;
-    s += `<text x="${G.W - G.r}" y="${G.H - 6}" text-anchor="end">MASA (KG)</text><text x="${G.l - 8}" y="${G.t - 14}" text-anchor="start">ALTURA (CM)</text></g>`;
+    s += `<text x="${G.W - G.r}" y="${G.H - 6}" text-anchor="end">MASS (KG)</text><text x="${G.l - 8}" y="${G.t - 14}" text-anchor="start">HEIGHT (CM)</text></g>`;
     s += `<g class="band"><rect x="${sx(50)}" y="${sy(190)}" width="${sx(100) - sx(50)}" height="${sy(150) - sy(190)}"/></g>`;
     const order = [...hw].sort((a, b) => match(a) - match(b));
     let sel = null;
