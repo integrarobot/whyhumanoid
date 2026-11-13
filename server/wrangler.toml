@@ -22,11 +22,12 @@ directory = "./public"
 run_worker_first = ["/v1/*", "/health"]
 
 [env.test]
+# Deployed on 13 Nov 2026 from the dashboard (scripts/build-dashboard.mjs); these values match the dashboard settings.
 name = "whyhumanoid-premium-test"
 workers_dev = true
 triggers = { crons = ["17 3 * * *"] }
 d1_databases = [
-  { binding = "DB", database_name = "whyhumanoid-premium-test", database_id = "REPLACE_WITH_TEST_D1_ID", migrations_dir = "migrations" },
+  { binding = "DB", database_name = "whyhumanoid-premium-test", database_id = "4cadeb6e-56ca-48e9-9adf-e666c4d2befd", migrations_dir = "migrations" },
 ]
 
 [env.test.vars]
@@ -34,8 +35,8 @@ STRIPE_MODE = "test"
 CHECKOUT_ENABLED = "false"   # set to "true" once the test price is verified (EUR 10000 / year)
 ALLOW_LIVE_CHECKOUT = "false"
 STRIPE_PRICE_ID = "price_1UbL1PAcMngkWs5CH3IDosFb"  # Integrarobot test mode: "Why Humanoid? full database", EUR 100.00 / year (prod_VcaBEvd49gwki2)
-ALLOWED_ORIGINS = "https://whyhumanoid-premium-test.REPLACE_WITH_ACCOUNT_SUBDOMAIN.workers.dev"
-PREMIUM_URL = "https://whyhumanoid-premium-test.REPLACE_WITH_ACCOUNT_SUBDOMAIN.workers.dev/"
+ALLOWED_ORIGINS = "https://whyhumanoid-premium-test.javier-198.workers.dev"
+PREMIUM_URL = "https://whyhumanoid-premium-test.javier-198.workers.dev/"
 EMAIL_FROM = "Why Humanoid? <premium@whyhumanoid.com>"
 
 [env.production]

@@ -1,13 +1,14 @@
-# Deployment settings still to apply
+# Deployment settings
 
-Nothing here has been applied yet. Keys and secrets are entered by Javier in each service's own console or with
+Status on 13 Nov 2026: the PR is open (step 1), the test backend is live without secrets (step 2), the Stripe
+test product and price exist (step 3.1). Everything else below is still to apply. Keys and secrets are entered by Javier in each service's own console or with
 `wrangler secret put`, never in chat, tickets or Git. No real card is used for testing: Stripe test mode only,
 with Stripe's test cards.
 
 ## 1. Repository
 
-1. Install the Claude GitHub App on the `integrarobot` account, or push the branch yourself.
-2. Push `feat/premium-preview` and open a PR to `main`. CI must pass (guard, export, build parity, headless render, API tests).
+1. Done: the Claude GitHub App is installed on `integrarobot`.
+2. Done: draft PR #1 from `feat/premium-preview` to `main`. CI must pass (guard, export, build parity, headless render, API tests).
 3. Do not push `feat/premium-foundation` (commit `5cc9262`): it carries the full 133-record export.
 4. Merge only after step 4 below is live. Merging changes whyhumanoid.com to the 10-row preview.
 
@@ -24,12 +25,31 @@ with Stripe's test cards.
 | `ALLOW_LIVE_CHECKOUT` | `false` | `true` only when Javier enables live checkout |
 | `STRIPE_PRICE_ID` | test-mode price id | live-mode price id |
 
+Test environment, applied on 13 Nov 2026 through the Cloudflare dashboard (no Wrangler token was created):
+
+- D1 `whyhumanoid-premium-test`, id `4cadeb6e-56ca-48e9-9adf-e666c4d2befd`, schema from `migrations/0001_init.sql`
+  applied in the D1 console (8 tables).
+- Worker `whyhumanoid-premium-test` at `https://whyhumanoid-premium-test.javier-198.workers.dev`, binding `DB` to
+  that database, plain-text variables as in `[env.test.vars]`. The code is `dist/worker.dashboard.js` built from
+  commit `44982a2` (sha256 `b659a635…e2332`) and pasted into the dashboard editor.
+- Verified on the live URL: `/health` 200; 13 datasets; plan "€100 per year", EUR 10000, yearly, checkout not
+  available; previews 200 with 0 rows (D1 reachable, nothing imported yet); full data, `/v1/me`, checkout and task
+  plan 401 without a session; webhook 503 until its secret exists; admin import 401 without the token; sign-in 503
+  until the email key exists.
+- Not on the dashboard version: the nightly cron (add `17 3 * * *` under Settings, Trigger events, once the import
+  secrets exist) and the `nodejs_compat` flag (the bundle does not need it).
+
+To redeploy from the dashboard: `node server/scripts/build-dashboard.mjs <esbuild>` (esbuild 0.27.7), then replace
+`worker.js` in Edit code and Deploy. `wrangler deploy --env test` with a token Javier creates also works and uses
+the same settings, because `[env.test]` matches the dashboard.
+
 `premium.whyhumanoid.com` as a Workers custom domain requires the `whyhumanoid.com` zone on Cloudflare: change the
 nameservers at IONOS (registrar stays IONOS) after copying every existing record (GitHub Pages A records for `@`,
 `www` CNAME to `integrarobot.github.io`, MX, SPF, DKIM, DMARC, Google verification). Until then, production can run
 on its `workers.dev` URL.
 
-Secrets, per environment (`wrangler secret put NAME --env test|production`):
+Secrets, per environment (`wrangler secret put NAME --env test|production`, or in the dashboard: Worker, Settings,
+Variables and secrets, Add, type Secret). None is set yet on the test Worker:
 
 | Secret | Test | Production |
 |---|---|---|
@@ -48,7 +68,8 @@ ignores webhook events from the other mode.
 1. Product "Why Humanoid? full database", one recurring price: EUR, 10000 minor units, yearly, licensed, active.
    Test mode: done on 13 Nov 2026 in the Integrarobot account (`prod_VcaBEvd49gwki2`, `price_1UbL1PAcMngkWs5CH3IDosFb`),
    already set in `[env.test]`. Live mode: create it separately when Javier decides, and set it in `[env.production]`.
-2. Webhook endpoint per mode: `<environment URL>/v1/stripe/webhook`, events `checkout.session.completed`,
+2. Webhook endpoint per mode: `<environment URL>/v1/stripe/webhook` (test:
+   `https://whyhumanoid-premium-test.javier-198.workers.dev/v1/stripe/webhook`), events `checkout.session.completed`,
    `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`.
 3. Before each checkout, the API retrieves the price and refuses (`price_mismatch`) unless it is active, recurring,
    EUR, 10000, yearly, interval count 1, and in the same mode as the key.
