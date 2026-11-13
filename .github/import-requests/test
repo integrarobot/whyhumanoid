@@ -1,2 +1,3 @@
 # Each change to this file on feat/premium-preview runs one staging import into the test Worker.
 2026-11-13 first live-data staging import of all 13 tabs (second attempt, with identity claims shown)
+2026-11-13 staging import after the provider accepted GitHub's immutable subject
