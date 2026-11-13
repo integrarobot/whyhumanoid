@@ -28,6 +28,13 @@ jobs:
     environment: ${{ inputs.target || (github.event_name == 'push' && 'test') || 'production' }}
     concurrency: workbook-import-${{ inputs.target || (github.event_name == 'push' && 'test') || 'production' }}
     steps:
+      - name: Show the identity claims presented to Google (no token)
+        run: |
+          token=$(curl --fail --silent --show-error --header "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=claims-check" | jq -r .value)
+          echo "::add-mask::$token"
+          echo "$token" | cut -d. -f2 | tr '_-' '/+' | base64 -d 2>/dev/null \
+            | jq '{sub, repository_id, workflow_ref, job_workflow_ref, ref, event_name, environment}' || true
       - name: Obtain read-only Google access token
         id: auth
         uses: google-github-actions/auth@v3
