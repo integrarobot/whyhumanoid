@@ -93,6 +93,9 @@ export function fixtureWorkbook({ rowsPerTab = 12 } = {}) {
       if (i === 4) rows.push([]);
       if (spec.id === 'humanoids') {
         rows.push(humanoidRow(spec, i));
+        // Rows the sheet itself excludes: kept as internal provenance, never served or counted.
+        if (i === 2) rows.push(spec.headers.map((f) => (f === 'Lab' ? 'Example Labs 1' : f === 'Robot' ? 'Duplicate: see Example Robot 1' : '')));
+        if (i === rowsPerTab) rows.push(spec.headers.map((f) => (f === 'Lab' ? 'Example Publisher' : f === 'Robot' ? 'Resource' : '')));
         continue;
       }
       if (spec.kind === 'lists') {
@@ -120,6 +123,7 @@ export async function setup({
   allowLiveCheckout = false,
   priceId = TEST_PRICE,
   price = VALID_PRICE,
+  workbook = null,
 } = {}) {
   const db = createTestDb();
   let now = T0;
@@ -159,7 +163,7 @@ export async function setup({
         body: body === undefined ? undefined : typeof body === 'string' ? body : JSON.stringify(body),
       }),
     );
-  await runImport(db, fixtureWorkbook(), now);
+  await runImport(db, workbook ?? fixtureWorkbook(), now);
   return {
     db,
     call,

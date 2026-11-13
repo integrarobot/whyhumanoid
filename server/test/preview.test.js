@@ -48,11 +48,31 @@ test('rows beyond the preview, and search, need a subscription', async () => {
   assert.deepEqual(found.rows.map((r) => r.Robot), ['Example Robot 11']);
 });
 
-test('the paid Humanoids rows are cleaned like the public preview', async () => {
+test('preview drops unverified instruction-like clauses; the paid rows keep them; internal tasks go everywhere', async () => {
   const ctx = await setup();
   const { rows } = await (await ctx.call('GET', '/v1/datasets/humanoids/preview')).json();
-  const second = rows.find((r) => r.Robot === 'Example Robot 2');
-  assert.equal(second['Buyer checks'], 'Measure interventions per hour; do not infer runtime');
+  assert.equal(rows.find((r) => r.Robot === 'Example Robot 2')['Buyer checks'], 'Measure interventions per hour');
+  const { session, accountId } = await signIn(ctx);
+  await sendWebhook(ctx, subscriptionEvent({ accountId }));
+  const full = await (await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%202%22', { token: session })).json();
+  assert.equal(full.rows[0]['Buyer checks'], 'Measure interventions per hour; do not infer runtime');
+});
+
+test('sheet-excluded Humanoids rows are internal provenance: not in previews, totals, full rows or search', async () => {
+  const ctx = await setup();
+  const preview = await (await ctx.call('GET', '/v1/datasets/humanoids/preview')).json();
+  assert.equal(preview.rows.length, 10);
+  assert.equal(preview.total_rows, 12);
+  assert.ok(!preview.rows.some((r) => /^(Duplicate|Resource)/.test(r.Robot)));
+  const { session, accountId } = await signIn(ctx);
+  await sendWebhook(ctx, subscriptionEvent({ accountId }));
+  const all = await (await ctx.call('GET', '/v1/datasets/humanoids?limit=500', { token: session })).json();
+  assert.equal(all.total, 12);
+  assert.ok(!all.rows.some((r) => /^(Duplicate|Resource)/.test(r.Robot)));
+  const search = await (await ctx.call('GET', '/v1/datasets/humanoids?q=Duplicate', { token: session })).json();
+  assert.equal(search.total, 0);
+  const internal = await ctx.db.prepare("SELECT COUNT(*) AS n FROM premium_rows WHERE dataset = 'humanoids' AND visibility = 'internal'").first();
+  assert.equal(internal.n, 2);
 });
 
 test('stock quotes stay out of previews and full rows', async () => {

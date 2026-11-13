@@ -123,12 +123,17 @@ export function buildData(exported, overrides, preview) {
 }
 
 // Parity: every facet and field must equal the legacy page, except fields changed by the cleaning step.
+const changedFields = (manifest) =>
+  new Set(
+    ['stripped', 'excluded_unverified', 'rewritten'].flatMap((k) => (manifest.cleaning[k] ?? []).map((s) => `${s.id}|${s.field}`)),
+  );
+
 export function parity(built, legacy, manifest) {
-  const cleaned = new Set(manifest.cleaning.stripped.map((s) => `${s.id}|${s.field}`));
+  const cleaned = changedFields(manifest);
   const legacyById = new Map(legacy.models.map((m) => [m.id, m]));
   const unexpected = [];
   const expected = [];
-  const legacyRows = [...legacy.models.map((m) => m.row), ...legacy.excluded.map((e) => e.row)].sort((a, b) => a - b).slice(0, built.preview?.rows ?? Infinity);
+  const legacyRows = legacy.models.map((m) => m.row).sort((a, b) => a - b).slice(0, built.preview?.rows ?? Infinity);
   const builtRows = [...built.models.map((m) => m.row), ...built.excluded.map((e) => e.row)].sort((a, b) => a - b);
   if (!isDeepStrictEqual(builtRows, legacyRows)) unexpected.push(`sheet rows ${builtRows} != first rows of legacy ${legacyRows}`);
   for (const m of built.models) {
@@ -169,7 +174,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const fresh = {};
     const rulesOnly = buildData(exported, {}, null);
     const legacyById = new Map(legacy.models.map((m) => [m.id, m]));
-    const cleaned = new Set(manifest.cleaning.stripped.map((s) => `${s.id}|${s.field}`));
+    const cleaned = changedFields(manifest);
     const records = new Map(exported.records.map((r) => [r.id, r]));
     for (const m of rulesOnly.models) {
       for (const [facet, field] of Object.entries(FACET_SOURCE)) {

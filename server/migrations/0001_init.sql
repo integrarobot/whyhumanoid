@@ -61,8 +61,10 @@ CREATE TABLE IF NOT EXISTS premium_rows (
   row_id TEXT NOT NULL,
   position INTEGER NOT NULL,
   sheet_row INTEGER NOT NULL,
-  preview_rank INTEGER NOT NULL,
-  data TEXT NOT NULL,
+  preview_rank INTEGER,                              -- NULL for internal rows
+  visibility TEXT NOT NULL DEFAULT 'customer' CHECK (visibility IN ('customer', 'internal')),
+  data TEXT NOT NULL,                                -- full-product values
+  preview_data TEXT,                                 -- public-preview values when they differ (Humanoids)
   snapshot_id TEXT NOT NULL,
   PRIMARY KEY (dataset, row_id)
 );

@@ -6,6 +6,7 @@
 
 import { hostKey, urlKey } from './import/identity.js';
 import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
+import editorial from './editorial/humanoids.json' with { type: 'json' };
 
 export const PREVIEW_ROWS = 10;
 const directoryKey = (d) => (d.url ? `${d.list}|${urlKey(d.url)}` : null);
@@ -63,6 +64,11 @@ export const DATASETS = [
     kind: 'table',
     headers: HUMANOIDS_FIELDS,
     clean: true,
+    editorial: editorial.rewrites,
+    // The sheet marks some rows as duplicates or editorial resources: kept as internal provenance, never served.
+    internalRow: (d) =>
+      /^(duplicate|resource)\b/i.test(d.Robot ?? '') ||
+      /\bexclude[sd]?\b[^.;]{0,30}\b(counts|catalogue|catalog)\b/i.test(Object.values(d).join(' ')),
     idPrefix: 'hum',
     // A robot's own page identifies it; rows that share or lack a page stay unresolved for review.
     naturalKey: (d) => (d.Web ? `web|${urlKey(d.Web)}` : null),
@@ -219,16 +225,22 @@ const toRow = (r) => ({ id: r.row_id, ...JSON.parse(r.data) });
 // Public preview: rows whose sheet row is among the first PREVIEW_ROWS non-empty data rows, workbook order.
 export async function queryPreview(db, datasetId) {
   const page = await db
-    .prepare('SELECT row_id, data, snapshot_id FROM premium_rows WHERE dataset = ? AND preview_rank <= ? ORDER BY position')
+    .prepare(
+      `SELECT row_id, COALESCE(preview_data, data) AS data, snapshot_id FROM premium_rows
+        WHERE dataset = ? AND visibility = 'customer' AND preview_rank <= ? ORDER BY position`,
+    )
     .bind(datasetId, PREVIEW_ROWS)
     .all();
-  const total = await db.prepare('SELECT COUNT(*) AS n FROM premium_rows WHERE dataset = ?').bind(datasetId).first();
+  const total = await db
+    .prepare("SELECT COUNT(*) AS n FROM premium_rows WHERE dataset = ? AND visibility = 'customer'")
+    .bind(datasetId)
+    .first();
   const results = page.results ?? [];
   return { snapshot: results[0]?.snapshot_id ?? null, total_rows: Number(total?.n ?? 0), rows: results.map(toRow) };
 }
 
 export async function queryDatasetRows(db, datasetId, { limit, offset, q }) {
-  const where = q ? 'dataset = ? AND data LIKE ?' : 'dataset = ?';
+  const where = q ? "dataset = ? AND visibility = 'customer' AND data LIKE ?" : "dataset = ? AND visibility = 'customer'";
   const params = q ? [datasetId, `%${q}%`] : [datasetId];
   const total = await db.prepare(`SELECT COUNT(*) AS n FROM premium_rows WHERE ${where}`).bind(...params).first();
   const page = await db

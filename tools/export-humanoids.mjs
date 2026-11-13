@@ -14,6 +14,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { FLAG_RULES, STRIP_RULES, cleanValue } from '../server/src/import/clean.js';
+const editorial = JSON.parse(readFileSync(new URL('../server/src/editorial/humanoids.json', import.meta.url), 'utf8')).rewrites;
 import { HUMANOIDS_FIELDS } from '../server/src/humanoids-fields.js';
 
 const root = new URL('../', import.meta.url);
@@ -36,34 +37,37 @@ const csvCell = (value) => {
 };
 const sha256 = (text) => createHash('sha256').update(text).digest('hex');
 
-// All sheet rows (models and rows the sheet itself excludes) in workbook order; take the first 10.
+// Customer-facing robots in workbook order; take the first 10. Rows the sheet itself excludes (duplicates,
+// editorial resources) are internal provenance: they never count towards the preview and are never published.
 export function previewRows(snapshot) {
-  const rows = [
-    ...snapshot.models.map((m) => ({ kind: 'model', row: m.row, model: m })),
-    ...snapshot.excluded.map((e) => ({ kind: 'excluded', row: e.row, excluded: e })),
-  ].sort((a, b) => a.row - b.row);
-  return rows.slice(0, PREVIEW_ROWS);
+  return snapshot.models
+    .map((m) => ({ kind: 'model', row: m.row, model: m }))
+    .sort((a, b) => a.row - b.row)
+    .slice(0, PREVIEW_ROWS);
 }
 
 export function buildExport(snapshot) {
   if (JSON.stringify(snapshot.cols) !== JSON.stringify(HUMANOIDS_FIELDS)) throw new Error('snapshot columns differ from the 32 public fields');
   const fields = HUMANOIDS_FIELDS;
   const review = [];
-  const clean = (model) => {
+  const clean = (model, mode) => {
     const record = { id: model.id, sheet_row: model.row };
     fields.forEach((field, i) => {
-      const { value, stripped, flagged } = cleanValue(model.f[i]);
-      record[field] = value;
-      for (const s of stripped) review.push({ id: model.id, lab: model.lab, robot: model.robot, field, action: 'stripped', ...s });
-      for (const f of flagged) review.push({ id: model.id, lab: model.lab, robot: model.robot, field, action: 'flagged', ...f });
+      const r = cleanValue(model.f[i], { field, mode, editorial });
+      record[field] = r.value;
+      const who = { id: model.id, lab: model.lab, robot: model.robot, field };
+      for (const s of r.stripped) review.push({ ...who, action: 'stripped', ...s });
+      for (const s of r.rewritten) review.push({ ...who, action: 'rewritten', ...s });
+      for (const s of r.excluded) review.push({ ...who, action: 'excluded_unverified', ...s });
+      for (const s of r.flagged) review.push({ ...who, action: 'flagged', ...s });
     });
     return record;
   };
-  snapshot.models.forEach(clean); // full review (private), so editors see every clause the paid import strips
+  snapshot.models.forEach((m) => clean(m, 'full')); // full review (private): what the paid import strips or flags
   const fullReview = review.splice(0);
   const shown = previewRows(snapshot);
-  const records = shown.filter((r) => r.kind === 'model').map((r) => clean(r.model));
-  const excluded = shown.filter((r) => r.kind === 'excluded').map(({ excluded: e }) => ({ sheet_row: e.row, lab: e.lab, robot: e.robot, reason: e.reason }));
+  const records = shown.map((r) => clean(r.model, 'preview'));
+  const excluded = [];
   const previewIds = new Set(records.map((r) => r.id));
 
   const json = `${JSON.stringify({ dataset: 'humanoids', access: 'preview', snapshot: snapshot.snapshot, preview_rows: PREVIEW_ROWS, fields, records, excluded }, null, 1)}\n`;
@@ -84,7 +88,8 @@ export function buildExport(snapshot) {
       cleaning: {
         rules: { strip: STRIP_RULES.map(([r]) => r), flag: FLAG_RULES.map(([r]) => r) },
         stripped: review.filter((r) => r.action === 'stripped').map(({ id, field, reason }) => ({ id, field, reason })),
-        flagged_for_review: review.filter((r) => r.action === 'flagged').map(({ id, field, reason }) => ({ id, field, reason })),
+        excluded_unverified: review.filter((r) => r.action === 'excluded_unverified').map(({ id, field, key }) => ({ id, field, key })),
+        rewritten: review.filter((r) => r.action === 'rewritten').map(({ id, field, key }) => ({ id, field, key })),
       },
       license: null,
       files: {

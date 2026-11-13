@@ -30,13 +30,14 @@ export function normalizeTab(spec, values) {
   const review = [];
   const items = [];
   const withheld = new Set(spec.withheld ?? []);
+  const editorial = spec.editorial ?? {};
   let rank = 0;
 
   values.slice(1).forEach((row, i) => {
     const sheetRow = i + 2;
     if (!(row ?? []).some((v) => String(v ?? '').trim() !== '')) return; // empty rows do not count
-    rank += 1;
     if (spec.kind === 'lists') {
+      rank += 1;
       for (const def of spec.lists) {
         const name = cell(row, def.columns.name);
         if (!name) continue;
@@ -47,18 +48,26 @@ export function normalizeTab(spec, values) {
       return;
     }
     const data = {};
+    const previewData = {};
     (spec.fields ?? spec.headers).forEach((field, c) => {
       if (withheld.has(field)) return;
-      let value = cell(row, c);
+      const value = cell(row, c);
       if (spec.clean && value !== null) {
-        const result = cleanValue(value);
-        value = result.value;
-        for (const s of result.stripped) review.push({ sheetRow, field, action: 'stripped', reason: s.reason });
-        for (const f of result.flagged) review.push({ sheetRow, field, action: 'flagged', reason: f.reason });
+        const full = cleanValue(value, { field, mode: 'full', editorial });
+        data[field] = full.value;
+        previewData[field] = cleanValue(value, { field, mode: 'preview', editorial }).value;
+        for (const s of full.stripped) review.push({ sheetRow, field, action: 'stripped', reason: s.reason });
+        for (const r of full.rewritten) review.push({ sheetRow, field, action: 'rewritten', reason: r.reason });
+        for (const f of full.flagged) review.push({ sheetRow, field, action: 'flagged', reason: f.reason, key: f.key });
+      } else {
+        data[field] = value;
+        previewData[field] = value;
       }
-      data[field] = value;
     });
-    items.push({ sheetRow, rank, data });
+    // Rows the sheet itself excludes (duplicates, editorial resources) stay as internal provenance only.
+    const internal = Boolean(spec.internalRow?.(data));
+    if (!internal) rank += 1;
+    items.push({ sheetRow, rank: internal ? null : rank, data, previewData: spec.clean ? previewData : null, visibility: internal ? 'internal' : 'customer' });
   });
 
   const seen = new Set();
@@ -85,6 +94,8 @@ export function normalizeTab(spec, values) {
       alias: item.alias ?? null,
       sheetRow: item.sheetRow,
       previewRank: item.rank,
+      visibility: item.visibility ?? 'customer',
+      previewData: item.previewData ?? null,
       position,
       data: item.data,
     })),

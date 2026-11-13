@@ -13,6 +13,7 @@ import { describeAccess, getEntitlement, hasAccess } from './entitlements.js';
 import { DATASETS_BY_ID, PREVIEW_ROWS, publicDatasetList, queryDatasetRows, queryPreview } from './datasets.js';
 import { checkoutReadiness, handleStripeWebhook, startCheckout } from './billing.js';
 import { PLAN } from './pricing.js';
+import { buildTaskPlan, validateInputs } from './agent/task-plan.js';
 import { sha256Hex } from './crypto.js';
 
 const MAX_API_KEYS = 5;
@@ -180,6 +181,21 @@ export function createApp({ db, config, gateway, mailer, importNow, clock = () =
         if (account.kind !== 'session') throw new HttpError(403, 'session_required');
         if (hasAccess(await getEntitlement(db, account.accountId), now)) throw new HttpError(409, 'already_subscribed');
         return json(200, await startCheckout({ config, gateway, account, now, log }));
+      },
+    ],
+
+    // Agent workflow: evidence-based task plan. Same entitlement check as every full-data request.
+    [
+      'POST',
+      /^\/v1\/agent\/task-plan$/,
+      async (request, now) => {
+        await requireAccess(request, now);
+        const body = await readJson(request);
+        const taskId = String(body.task_id ?? '').trim();
+        if (!/^[a-z0-9_]{3,80}$/.test(taskId)) throw new HttpError(400, 'invalid_task_id');
+        const { inputs, error } = validateInputs(body.inputs);
+        if (error) throw new HttpError(400, error);
+        return privateJson(200, await buildTaskPlan(db, { taskId, inputs }));
       },
     ],
 

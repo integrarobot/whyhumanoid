@@ -160,7 +160,7 @@
    "B2B Client": "Not disclosed",
    "Stock": "Private",
    "Valuation": "RMB ~50,000M: reported valuation under negotiation (2026-10-14), closing NOT confirmed",
-   "Investors": "A complete investor syndicate for the new round was not verified; do not confuse with Suzhou-based AGIBOT Medical",
+   "Investors": "A complete investor syndicate for the new round was not verified",
    "Rounds": "RMB 1,000–1,500M under negotiation, according to Caijing / TechNode (2026-10-14). Do not record as raised or add to totals.",
    "Release": "Not disclosed",
    "Height (cm)": "130",
@@ -179,7 +179,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": "do not extrapolate deployments from other families",
+   "Buyer checks": null,
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://technode.com/2026/10/14/robot-maker-agibot-nears-new-funding-round-at-rmb-50-billion-valuation/\nhttps://agibot.com/products/X1\nhttps://www.agibot.com/"
   },
   {
@@ -251,7 +251,7 @@
    "Battery / charging": "90 min use / 9 min charging announced; >20 h/day includes recharging",
    "Price / availability": "Early access planned H1 2027; general availability planned late 2027",
    "Autonomy / supervision": "Task autonomy; independent safety controller; Arc platform",
-   "Buyer checks": "Do not transfer Digit 4 results to Digit 5; certifications/CE still planned",
+   "Buyer checks": "certifications/CE still planned",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi\nhttps://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale\nhttps://www.agilityrobotics.com/solutions"
   },
   {
@@ -280,14 +280,14 @@
    "Software": "Artemis; Fleet Connect; Google DeepMind / Gemini Robotics collaboration",
    "Voice": "Voice, listening and LED indicators",
    "Clothed?": "No",
-   "Model checked": "Apollo 2; do not reuse original Apollo dimensions",
+   "Model checked": "Apollo 2",
    "Platform / mobility": "Modular mobility: bipedal or wheeled base",
    "DoF / grippers": "Dexterous manipulation; DoF count unpublished on page",
    "Sensors / compute": "Artemis perception and planning; chip unspecified",
    "Battery / charging": "Swappable batteries; opportunity charging and tethered power",
    "Price / availability": "Commercial contact; public price not found in specifications",
    "Autonomy / supervision": "Artemis coordinates perception, planning, control and safety; validate autonomy per task",
-   "Buyer checks": "Request Apollo 2 specifications and configuration; do not carry over original 172 cm / 72 kg / 25 kg / 4 h",
+   "Buyer checks": "Request Apollo 2 specifications and configuration",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website not retrieved\nhttps://apptronik.com/news-collection/apptronik-closes-over-935-million-series-a\nhttps://apptronik.com/apollo/apollo-2\nhttps://apptronik.com/product-page"
   },
   {
@@ -389,7 +389,7 @@
    "Voice": "Not disclosed",
    "Clothed?": "No",
    "Model checked": "Astribot S1; current research specifications",
-   "Platform / mobility": "Manipulation platform; do not infer bipedal walking",
+   "Platform / mobility": "Manipulation platform",
    "DoF / grippers": "7 DoF per arm; 194 cm span between hands",
    "Sensors / compute": null,
    "Battery / charging": "4–6 h claimed; tethered power supported",

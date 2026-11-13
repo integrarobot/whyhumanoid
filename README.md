@@ -49,4 +49,5 @@ node server/scripts/dev.mjs                 # local app and catalogue with synth
 | POST | `/v1/billing/checkout` | browser session; Stripe price verified as EUR 10000 / year first |
 | POST | `/v1/stripe/webhook` | Stripe signature, same mode (test or live) as the environment |
 | GET / POST | `/v1/me`, `/v1/auth/*`, `/v1/api-keys` | sign-in flow, agent keys |
+| POST | `/v1/agent/task-plan` | active subscription: candidates, dated source-linked claims with stage and conditions, missing measurements, pilot checks, evidence gaps |
 | POST | `/v1/admin/import` | `x-admin-token` |

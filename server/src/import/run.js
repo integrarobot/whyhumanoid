@@ -37,15 +37,26 @@ export async function runImport(db, valuesByTab, now) {
   const statements = [];
   const counts = {};
   for (const { spec, rows } of normalised) {
-    counts[spec.id] = rows.length;
+    counts[spec.id] = rows.filter((r) => r.visibility === 'customer').length;
+    if (rows.some((r) => r.visibility === 'internal')) counts[`${spec.id}_internal`] = rows.filter((r) => r.visibility === 'internal').length;
     statements.push(db.prepare('DELETE FROM premium_rows WHERE dataset = ?').bind(spec.id));
     for (const row of rows) {
       statements.push(
         db
           .prepare(
-            'INSERT INTO premium_rows (dataset, row_id, position, sheet_row, preview_rank, data, snapshot_id) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            'INSERT INTO premium_rows (dataset, row_id, position, sheet_row, preview_rank, visibility, data, preview_data, snapshot_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
           )
-          .bind(spec.id, row.id, row.position, row.sheetRow, row.previewRank, JSON.stringify(row.data), snapshotId),
+          .bind(
+            spec.id,
+            row.id,
+            row.position,
+            row.sheetRow,
+            row.previewRank,
+            row.visibility,
+            JSON.stringify(row.data),
+            row.previewData ? JSON.stringify(row.previewData) : null,
+            snapshotId,
+          ),
       );
     }
   }

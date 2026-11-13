@@ -76,48 +76,49 @@
         "reason": "internal_editor_task"
       }
     ],
-    "flagged_for_review": [
+    "excluded_unverified": [
       {
         "id": 4,
         "field": "Investors",
-        "reason": "instruction_wording"
+        "key": "522ec10e"
       },
       {
         "id": 4,
         "field": "Buyer checks",
-        "reason": "instruction_wording"
+        "key": "890c44c2"
       },
       {
         "id": 6,
         "field": "Buyer checks",
-        "reason": "instruction_wording"
+        "key": "3573469c"
       },
       {
         "id": 7,
         "field": "Model checked",
-        "reason": "instruction_wording"
+        "key": "b7d3f4cc"
       },
       {
         "id": 7,
         "field": "Buyer checks",
-        "reason": "instruction_wording"
+        "key": "add5ea8c"
       },
       {
         "id": 10,
         "field": "Platform / mobility",
-        "reason": "instruction_wording"
+        "key": "5167601c"
       }
-    ]
+    ],
+    "rewritten": []
   },
   "license": null,
   "files": {
     "humanoids-preview.json": {
-      "sha256": "d36e554525eece61089fc471e5d3af28f7ee98d6fab388922839b9cf2c9bdbce",
-      "bytes": 17155
+      "sha256": "af68c49ec00b2a8c293a0a6ba4f4d1b8aec158de6c3bdd7b386178e005ff306d",
+      "bytes": 16886
     },
     "humanoids-preview.csv": {
-      "sha256": "f3702e3a671ff54ff4666d35b42fc86d96ee33dad449c3a3684f9e40d8b1bc7e",
-      "bytes": 9917
+      "sha256": "10890f4260c7f4fb01133cbeb3f108a1e7dd5f9881cb1ccf46072d9cddadcca7",
+      "bytes": 9646
     }
   }
 }
