@@ -214,8 +214,8 @@ Each screen is open in Chrome and stops before the action. Order matters only wh
 1. Google, provider `github-actions`: replace the attribute condition with the production version in 4.1, Save.
 2. Google, service account `whyhumanoid-importer`, Permissions, Grant access: the production principal in 4.1,
    role Workload Identity User, Save.
-3. GitHub PR #2 (dispatch-only workflow for `main`): review and merge. Then Actions, Import private workbook,
-   Run workflow, branch `main`, target `production` (after 1 and 2).
+3. Done 13 Nov 2026 with Javier's approval: PR #2 merged (`0bb37c6`, only the dispatch-only workflow on `main`).
+   After 1 and 2: Actions, Import private workbook, Run workflow, branch `main`, target `production`.
 4. Resend, `whyhumanoid.com`: IONOS Auto configure, approve in IONOS, then Verify DNS records.
 5. Resend, API keys: create a sending key for `whyhumanoid.com`; Cloudflare `whyhumanoid-premium`, Settings,
    Variables and secrets, Add, type Secret, `RESEND_API_KEY`.
