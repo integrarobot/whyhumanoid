@@ -26,7 +26,7 @@ jobs:
         run: node tools/build-site.mjs --check
       - name: Headless render of the page
         working-directory: tools
-        run: npm ci && node verify-site.mjs
+        run: npm ci && node verify-site.mjs && node verify-premium-app.mjs
       - name: API tests
         working-directory: server
         run: npm ci && npm test

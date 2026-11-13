@@ -9,7 +9,7 @@
     set(v) { try { sessionStorage.setItem('wh_session', v); } catch { /* storage unavailable */ } },
     clear() { try { sessionStorage.removeItem('wh_session'); } catch { /* storage unavailable */ } },
   };
-  const state = { session: store.get(), me: null, datasets: [], current: null, offset: 0, q: '', plan: null };
+  const state = { session: store.get(), me: null, datasets: [], current: null, offset: 0, q: '', plan: null, pendingLogin: null };
   const full = () => Boolean(state.me?.access?.active);
 
   function notice(text, isError = false) {
@@ -105,7 +105,7 @@
         store.clear();
       }
     }
-    if (!state.session) $('signin').hidden = false;
+    if (!state.session && !state.pendingLogin) $('signin').hidden = false;
     else if (!full()) $('subscribe').hidden = false;
     $('checkout').disabled = !state.plan?.checkout_available;
     await openDataset(state.current ?? state.datasets[0]?.id);
@@ -123,12 +123,12 @@
   }
 
   async function init() {
+    // The one-time link is redeemed only on a click, so mail scanners that open links cannot use it up.
     const login = /[#&]login=([^&]+)/.exec(location.hash)?.[1];
     if (login) {
       history.replaceState(null, '', location.pathname + location.search);
-      const { status, data } = await api('/v1/auth/redeem', { method: 'POST', body: { token: login }, auth: false });
-      if (status === 200) { state.session = data.token; store.set(data.token); }
-      else notice('This sign-in link is invalid or has expired. Request a new one.', true);
+      state.pendingLogin = login;
+      $('confirm-login').hidden = false;
     }
     const checkout = new URLSearchParams(location.search).get('checkout');
     if (checkout === 'success') notice('Payment received. Full access opens as soon as Stripe confirms the subscription.');
@@ -152,6 +152,16 @@
     if (status === 200 && data.url) location.assign(data.url);
     else if (data.error === 'checkout_disabled') notice('Subscriptions open soon.');
     else notice('Checkout is not available right now.', true);
+  });
+  $('confirm-login-btn').addEventListener('click', async () => {
+    $('confirm-login-btn').disabled = true;
+    const token = state.pendingLogin;
+    state.pendingLogin = null;
+    $('confirm-login').hidden = true;
+    const { status, data } = await api('/v1/auth/redeem', { method: 'POST', body: { token }, auth: false });
+    if (status === 200) { state.session = data.token; store.set(data.token); notice(''); }
+    else notice('This sign-in link is invalid or has expired. Request a new one.', true);
+    await refresh();
   });
   $('signout').addEventListener('click', () => signOut());
   $('prev').addEventListener('click', () => openDataset(state.current, Math.max(0, state.offset - PAGE)));
