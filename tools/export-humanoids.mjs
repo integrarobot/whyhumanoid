@@ -19,6 +19,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { FLAG_RULES, STRIP_RULES, cleanValue } from '../server/src/import/clean.js';
 const editorial = JSON.parse(readFileSync(new URL('../server/src/editorial/humanoids.json', import.meta.url), 'utf8')).rewrites;
 import { HUMANOIDS_FIELDS } from '../server/src/humanoids-fields.js';
+import { isInternalHumanoidRow } from '../server/src/datasets.js';
 
 const root = new URL('../', import.meta.url);
 export const LEGACY_REF = 'efca179';
@@ -84,7 +85,10 @@ export function buildExport(snapshot, updates = readVerifiedUpdates()) {
   snapshot.models.forEach((m) => clean(m, 'full')); // full review (private): what the paid import strips or flags
   const fullReview = review.splice(0);
   const shown = catalogueRows(snapshot);
-  const records = applyVerifiedUpdates(shown.map((r) => clean(r.model, 'preview')), updates, fields);
+  // Rows the sheet marks as duplicates or editorial resources are withheld by the same rule the import applies.
+  const candidates = applyVerifiedUpdates(shown.map((r) => clean(r.model, 'preview')), updates, fields);
+  const withheld = candidates.filter((r) => isInternalHumanoidRow(Object.fromEntries(fields.map((f) => [f, r[f]]))));
+  const records = candidates.filter((r) => !withheld.includes(r));
   const updatedKeys = new Set(updates.updated.map((u) => `${u.id}|${u.field}`));
   const notUpdated = (r) => !updatedKeys.has(`${r.id}|${r.field}`);
   const excluded = [];
@@ -132,7 +136,7 @@ export function buildExport(snapshot, updates = readVerifiedUpdates()) {
     null,
     2,
   )}\n`;
-  return { json, csv, manifest, review: fullReview, catalogueIds, count: records.length };
+  return { json, csv, manifest, review: fullReview, catalogueIds, count: records.length, withheld: withheld.map((r) => r.id) };
 }
 
 function reviewMarkdown(review) {

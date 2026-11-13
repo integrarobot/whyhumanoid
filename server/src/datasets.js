@@ -10,6 +10,20 @@ import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
 import editorial from './editorial/humanoids.json' with { type: 'json' };
 
 export const PREVIEW_ROWS = 10;
+
+// A Humanoids row the sheet itself marks as a duplicate or an editorial resource. Also used by the free catalogue
+// export (tools/export-humanoids.mjs), so the site and the backend withhold the same rows. The duplicate Genesis
+// row (sheet row 38) lost its "Duplicate:" robot label but still says "Duplicate reference; not a second robot" and
+// "Exclude this row from company and funding counts".
+export const isInternalHumanoidRow = (d) => {
+  const text = Object.values(d).join(' ');
+  return (
+    /^(duplicate|resource)\b/i.test(d.Robot ?? '') ||
+    /\bexclude[sd]?\b[^.;]{0,30}\b(counts|catalogue|catalog)\b/i.test(text) ||
+    /\bexclude (this|the) row\b/i.test(text) ||
+    /\bduplicate reference\b|\bnot a second robot\b/i.test(text)
+  );
+};
 const directoryKey = (d) => (d.url ? `${d.list}|${urlKey(d.url)}` : null);
 
 const DIRECTORY = ['NAME', 'URL', 'DESCRIPTION'];
@@ -69,9 +83,7 @@ export const DATASETS = [
     // The complete Humanoids catalogue stays free; subscribers get the full values, search and the API.
     publicRows: 'all',
     // The sheet marks some rows as duplicates or editorial resources: kept as internal provenance, never served.
-    internalRow: (d) =>
-      /^(duplicate|resource)\b/i.test(d.Robot ?? '') ||
-      /\bexclude[sd]?\b[^.;]{0,30}\b(counts|catalogue|catalog)\b/i.test(Object.values(d).join(' ')),
+    internalRow: (d) => isInternalHumanoidRow(d),
     idPrefix: 'hum',
     // A robot's own page identifies it; rows that share or lack a page stay unresolved for review.
     naturalKey: (d) => (d.Web ? `web|${urlKey(d.Web)}` : null),

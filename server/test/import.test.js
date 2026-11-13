@@ -193,3 +193,25 @@ test('a federated access token can read the workbook without a private key', asy
   });
   assert.deepEqual(values, { Humanoids: [['NAME']] });
 });
+
+// Regression: the Genesis duplicate (sheet row 38) lost its "Duplicate:" robot label but still says so in its own
+// cells. It must stay internal provenance: never in the free catalogue, the previews, the full rows or the counts.
+test('a Humanoids row the sheet calls a duplicate reference is internal even without a Duplicate: label', async () => {
+  const db = createTestDb();
+  const values = fixtureWorkbook();
+  const spec = DATASETS.find((d) => d.id === 'humanoids');
+  values.Humanoids.splice(4, 0, spec.headers.map((f) => ({
+    Lab: 'Example Labs 3',
+    Web: 'https://example.com/robots/3-duplicate',
+    'Platform / mobility': 'Duplicate reference; not a second robot',
+    'Buyer checks': 'Exclude this row from company and funding counts',
+  })[f] ?? null));
+  const result = await runImport(db, values, T0);
+  assert.equal(result.ok, true);
+  assert.equal(result.counts.humanoids, 12, 'customer count unchanged');
+  assert.equal(result.counts.humanoids_internal, 3);
+  const served = await db
+    .prepare("SELECT COUNT(*) AS n FROM premium_rows WHERE dataset = 'humanoids' AND visibility = 'customer' AND data LIKE '%Duplicate reference%'")
+    .first();
+  assert.equal(served.n, 0);
+});
