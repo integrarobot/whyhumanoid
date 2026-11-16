@@ -1,0 +1,64 @@
+{
+  "id": "WH-20261116-1547-cierres-de-entregas",
+  "tarea": "Sistema para informar a Javier cada vez que Claude termina un trabajo: cierre obligatorio para todas las entregas en el skill y en las instrucciones del proyecto, con registro persistente para Codex",
+  "origen": "Petición de Javier transmitida por Codex (16/11/2026)",
+  "fecha": "2026-11-16T15:47:41+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Registro de entregas fuera de la web en ops/entregas/: un JSON inmutable por cierre en cierres/<ID>.json, con ID estable WH-AAAAMMDD-HHMM-slug, y las confirmaciones de aviso (Codex) y de entrega (Javier) aparte, en confirmaciones/<ID>.<tipo>.json.",
+    "tools/entregas.mjs: nuevo (asigna ID y hora de Europe/Madrid), informe (el informe en español para el chat), pendientes --tipo aviso-codex --json (para Codex), confirmar (rechaza confirmaciones firmadas por Claude y duplicadas) y --check, que con --base rechaza editar o borrar cierres ya fusionados. Seis pruebas en tools/test-entregas.mjs.",
+    "Skill .claude/skills/whyhumanoid-weekly-update/SKILL.md: nueva sección «Cierre obligatorio de cada entrega», aplicable a todo trabajo de Why Humanoid?; paso 12 de la actualización semanal; descripción ampliada.",
+    "Instrucciones del proyecto en el repositorio: AGENTS.md (Codex y Claude) y CLAUDE.md, excluidos de la web en _config.yml y vigilados por tools/check-public.mjs. README con el registro y su comando.",
+    "CI: pruebas del registro, validación y comprobación de que no se modifican cierres ya fusionados.",
+    "Tarea programada existente «Newsletter Integrarobot a base de datos de robots»: prompt actualizado para cerrar siempre (también bloqueado o sin novedades) y enviar el informe del cierre; misma programación, ninguna tarea nueva.",
+    "Memoria OKF del proyecto de claude.ai: decisión d-0006, índice de decisiones, log y una sección «Cierre de entregas» en okf/convenciones.md, que las instrucciones del proyecto obligan a leer.",
+    "Primer cierre registrado: WH-20261116-1543-deployments-status (arreglo de STATUS en Deployments)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Skill actualizado",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    },
+    {
+      "etiqueta": "Instrucciones del proyecto",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/AGENTS.md"
+    },
+    {
+      "etiqueta": "Protocolo del registro (Claude y Codex)",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/entregas/README.md"
+    },
+    {
+      "etiqueta": "Registro de cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/tree/main/ops/entregas/cierres"
+    },
+    {
+      "etiqueta": "PR #10",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/10"
+    },
+    {
+      "etiqueta": "Commit en main",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/459754c203baa9786ebdba8218e1149a2dd3e276"
+    }
+  ],
+  "despliegue": [
+    "PR #10 fusionado en main (squash 459754c) tras CI en verde: pruebas del registro 6 de 6 y «Registro de entregas válido: 1 cierres, 0 confirmaciones, ninguno modificado».",
+    "CI y pages-build-deployment del commit 459754c terminados con éxito.",
+    "La web no cambia: en https://whyhumanoid.com/ AGENTS.md, CLAUDE.md, ops/entregas y tools responden 404 y la página y data/manifest.json responden 200 con el arreglo de Deployments activo.",
+    "Memoria OKF subida a los documentos del proyecto: d-0006, okf/proyecto/decisiones/index.md, okf/log.md y okf/convenciones.md."
+  ],
+  "verificaciones": [
+    "Guardia pública: 89 ficheros versionados y 21 publicados (los nuevos no se publican); build --check, export-database --check, verify-site y 61 pruebas del servidor en verde.",
+    "La guardia falla si se quita AGENTS.md de la exclusión de _config.yml (comprobado) y rechaza URLs del libro maestro también en las pruebas.",
+    "node tools/entregas.mjs --check en main: registro válido.",
+    "Validador OKF: 9 conceptos, 0 errores, 0 avisos.",
+    "Tarea programada: sigue siendo la única, CRON_TZ=Europe/Madrid 0 14 * * 3, próxima ejecución el miércoles 18/11/2026 a las 14:00 de Madrid."
+  ],
+  "pendientes": [
+    "Aviso de Codex y confirmación de entrega de los cierres WH-20261116-1543-deployments-status y de este: los registran Codex y Javier.",
+    "Las instrucciones personalizadas del proyecto «Why Humanoid?» de claude.ai solo las puede editar Javier; la regla llega a esos chats por okf/convenciones.md.",
+    "Las entregas anteriores a este sistema (por ejemplo, la vista previa social o la navegación por categorías) no se han registrado como cierres para no generar avisos repetidos; si Javier quiere el histórico, se añaden."
+  ],
+  "siguiente_accion": "Codex, en su revisión horaria: node tools/entregas.mjs pendientes --tipo aviso-codex --json sobre main, aviso a Javier y confirmación con node tools/entregas.mjs confirmar. La tarea del miércoles 18/11 a las 14:00 será la primera ejecución programada que cierre con este sistema."
+}
