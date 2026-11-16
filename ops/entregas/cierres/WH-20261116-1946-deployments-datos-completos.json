@@ -1,0 +1,55 @@
+{
+  "id": "WH-20261116-1946-deployments-datos-completos",
+  "tarea": "Auditoría y corrección de extremo a extremo de Deployments (hoja actual, export y web): publicar y hacer accesibles todos los datos de cada fila, con ficha «View all data»",
+  "origen": "Prioridad máxima de Javier, transmitida por Codex (16/11/2026)",
+  "fecha": "2026-11-16T19:46:44+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Diagnóstico: la hoja actual (descargada del libro maestro, última edición 13/11/2026 18:33 UTC) tiene 119 filas, 47 columnas y 4.817 valores no vacíos; las filas 121 a 200 están vacías y no hay filas ni columnas ocultas ni filtros. El fichero adjunto y data/database/deployments.json coinciden con ella celda por celda (0 diferencias). No faltaban datos ni el snapshot estaba desactualizado: la tabla solo mostraba 6 de los 47 campos y los otros 41 estaban en un detalle que se abría pulsando la fila sin ninguna señal, dentro de la tabla con desplazamiento lateral en móvil. Además, un enlace de las notas de la fila 118 incluía el punto final y no abría la página.",
+    "Cada fila de cada pestaña tiene el botón «View all data», que abre una ficha con todos los campos declarados (47 en Deployments, agrupados), valores íntegros, vacíos marcados como «Empty in the sheet», enlaces completos, bloque de fuentes y fechas, y navegación al registro anterior y siguiente. En móvil ocupa toda la pantalla. Un campo nuevo no agrupado aparece en «Other fields».",
+    "Tabla de Deployments orientada a negocio: estado, organización y robot, tarea, lugar, resultado o métrica y fuente con fecha de publicación. Hasta 1240 px cada fila es un bloque sin desplazamiento lateral; en escritorio, columnas con anchura mínima para que el texto no se parta letra a letra.",
+    "Los enlaces dentro de textos terminan antes de la puntuación final.",
+    "Control reutilizable: tools/audit-deployments.mjs compara la exportación de la hoja con los datos publicados celda por celda (filas, columnas, valores, orden). tools/verify-site.mjs, en CI, abre la ficha de cada fila de las 12 pestañas y compara cada campo, cada valor y cada enlace con data/database.",
+    "Prioridad y criterio guardados en AGENTS.md, en el skill de la actualización semanal (sección «Deployments: criterio de publicación», pasos 9 y 10) y en la tarea programada de los miércoles (misma programación, ninguna tarea nueva). Decisión d-0007 en la memoria OKF del proyecto."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Web",
+      "url": "https://whyhumanoid.com/#db-deployments"
+    },
+    {
+      "etiqueta": "PR #16",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/16"
+    },
+    {
+      "etiqueta": "Commit en main",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/bf785ce8eb81de697f78d70c3e86e43e6ecaf262"
+    },
+    {
+      "etiqueta": "Auditoría de Deployments",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/tools/audit-deployments.mjs"
+    },
+    {
+      "etiqueta": "Skill actualizado",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "PR #16 fusionado en main (squash bf785ce) tras CI en verde; CI y pages-build-deployment del commit bf785ce terminados con éxito.",
+    "Producción comprobada en el navegador sobre https://whyhumanoid.com/#db-deployments con las fuentes reales: 119 filas y 119 botones «View all data»."
+  ],
+  "verificaciones": [
+    "Hoja actual contra export publicado: 119 filas, 47 columnas, 4.817 valores no vacíos, 0 diferencias (tools/audit-deployments.mjs y comparación directa con el libro descargado). Codex lo confirmó por separado leyendo Deployments!A1:AU200.",
+    "Producción, las 119 fichas abiertas una a una a 1440 px: 5.593 campos mostrados (119 × 47) y 0 discrepancias con los 4.817 valores del JSON servido ni en sus enlaces.",
+    "Fichas de las filas 1, 59, 100, 105, 118 y 119 (primera, última y las de más texto) a 390, 768 y 1440 px en producción: 47 campos, 0 valores distintos, 0 enlaces rotos, la ficha cabe en pantalla, sin desplazamiento lateral ni texto desbordado, cabecera y botones visibles. El enlace de la fila 118 ya abre sin el punto final.",
+    "Tabla en producción: a 390 y 768 px, bloques sin desplazamiento lateral, sin solapes y botón de 44 px de alto; a 1440 px, tabla sin desplazamiento lateral ni celdas desbordadas.",
+    "Repositorio: tools/verify-site.mjs abre las 1.227 fichas de las 12 pestañas y comprueba 12.352 valores y 1.878 enlaces; guardia pública, build --check, export-database --check, registro de entregas, 6 pruebas del registro y 61 del servidor en verde. Las pruebas negativas fallan como deben (campo quitado de la ficha; celda cambiada, fila y columna añadidas en la hoja).",
+    "Memoria OKF: validador con 10 conceptos, 0 errores y 0 avisos."
+  ],
+  "pendientes": [
+    "Observación para Javier: en móvil cada fila ocupa unos 400 px, así que las 119 filas forman una página larga; los filtros de estado y la búsqueda ayudan a acotarla. Si se quiere más compacta, se puede ajustar sin ocultar datos."
+  ],
+  "siguiente_accion": "Javier revisa Deployments en su móvil y en escritorio. La tarea del miércoles 18/11 a las 14:00 aplicará la auditoría antes de publicar. Codex lo incluye en su revisión horaria."
+}
