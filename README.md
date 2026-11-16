@@ -3,28 +3,33 @@
 Source of [whyhumanoid.com](https://whyhumanoid.com): a sourced database of humanoid robotics for people and
 agents preparing enterprise deployment plans.
 
-## Access model: open database (Javier, 16 Nov 2026)
+## Access model: paywall (Javier, 16 Nov 2026)
 
-Decision of 16 Nov 2026: the whole database is open to every visitor on whyhumanoid.com, without payment or
-sign-in, until the paywall phase. This replaces the 10-row previews of 13 Nov; do not go back to them unless Javier
-decides to start the paywall. Stripe and the subscription stay prepared in the backend, with checkout closed.
+Decision of 16 Nov 2026 (d-0008), replacing the temporary open database: Humanoids is free; the other 12 tabs are
+premium at €100 per year through Stripe, with no free trial. The site shows the first 10 sheet rows of each premium
+tab; full rows exist only in the backend database (Cloudflare D1) and are served after a server-side subscription
+check on every request. Never publish full rows of a premium tab in Git, the site or any public file again: the
+guard (`tools/check-public.mjs`), the export tests and CI fail if one comes back.
 
 | What | Who | Where |
 |---|---|---|
-| Humanoids: every robot row the sheet publishes, 32 fields, the values the paid product shows | Anyone | `index.html`, `data/humanoids-catalogue.*` |
-| The 12 other tabs: every row and content field, with record ids | Anyone | `data/database/<tab>.json`, loaded by the Database section of `index.html` |
+| Humanoids: every robot row the sheet publishes, 32 fields, public values | Anyone | `index.html`, `data/humanoids-catalogue.*` |
+| The 12 other tabs: first 10 sheet rows of each, every field; counts and field names | Anyone | `data/preview/<tab>.json`, Database section of `index.html` |
+| The 12 other tabs in full (all rows and fields), Humanoids with full values, search, agent API keys | Active subscribers | premium app and API on the Cloudflare Worker, data in D1 |
 | Left out everywhere | Nobody | rows the sheet marks as duplicates or not for publication; private links (workbook, Drive, mailto:, local addresses), personal contacts and internal editor notes; the backend row key, raw sheet-row pointers (`source_rows`) and importer bookkeeping; third-party GOOGLEFINANCE quote columns of Stocks |
-| Backend (`server/`): same data behind sign-in and a €100/year subscription, checkout closed | Prepared for the paywall phase | Cloudflare Worker |
 
-Refresh: `node --no-warnings tools/export-database.mjs --from <private export>` and `tools/sync-humanoids.mjs`
-(see the scripts' headers), then `tools/export-humanoids.mjs` and `tools/build-site.mjs`. The private export
-stays outside Git.
+Refresh: the site preview with `node --no-warnings tools/export-database.mjs --from <private export>`, then
+`tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs` and `tools/build-site.mjs`; the full data with the
+`Import private workbook` workflow (target `production`). The private export stays outside Git.
+
+The full rows published between 16 Nov 2026 (open database) and the paywall stay in this repository's history and in
+copies made then; they cannot be made secret again. See DEPLOYMENT.md, "Exposure of the open-database period".
 
 ## Layout
 
 ```
 index.html, CNAME          public catalogue page, built from data/ (complete free Humanoids catalogue)
-data/                      humanoids-catalogue.json, humanoids-catalogue.csv, manifest.json
+data/                      humanoids-catalogue.json, humanoids-catalogue.csv, manifest.json, preview/ (10-row previews)
 tools/                     export-humanoids.mjs, build-site.mjs, verify-site.mjs, check-public.mjs
 server/public/             full-database app (served by the backend, holds no data)
 server/src/                API: sign-in, sessions, API keys, entitlements, Stripe, previews, full data
@@ -57,7 +62,8 @@ node server/scripts/dev.mjs                 # local app and catalogue with synth
 | GET | `/v1/datasets/{id}/preview` | public: the whole Humanoids catalogue (public values), or the first 10 data rows of another tab in workbook order; no search |
 | GET | `/v1/datasets/{id}?limit&offset&q` | active subscription, checked on every request |
 | GET | `/v1/billing/plan` | public: €100 per year, whether checkout is available |
-| POST | `/v1/billing/checkout` | browser session; Stripe price verified as EUR 10000 / year first |
+| POST | `/v1/billing/checkout` | browser session; Stripe price verified as EUR 10000 / year, no trial, first; refused while a payment is pending |
+| POST | `/v1/billing/portal` | browser session of a paying account: Stripe customer portal (card, invoices, cancellation) |
 | POST | `/v1/stripe/webhook` | Stripe signature, same mode (test or live) as the environment |
 | GET / POST | `/v1/me`, `/v1/auth/*`, `/v1/api-keys` | sign-in flow, agent keys |
 | POST | `/v1/agent/task-plan` | active subscription: candidates, dated source-linked claims with stage and conditions, missing measurements, pilot checks, evidence gaps |

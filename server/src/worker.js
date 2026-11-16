@@ -20,6 +20,7 @@ export function configFromEnv(env) {
     checkoutEnabled: env.CHECKOUT_ENABLED === 'true',
     allowLiveCheckout: env.ALLOW_LIVE_CHECKOUT === 'true',
     stripePriceId: env.STRIPE_PRICE_ID || null,
+    stripePortalConfiguration: env.STRIPE_PORTAL_CONFIGURATION || null,
     adminToken: env.ADMIN_TOKEN || null,
     // GitHub environment whose import workflow may run imports here: 'test' or 'production'.
     importEnvironment: ['test', 'production'].includes(env.IMPORT_ENVIRONMENT) ? env.IMPORT_ENVIRONMENT : null,

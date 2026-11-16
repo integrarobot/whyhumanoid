@@ -4,8 +4,8 @@
 //   - every record of the free Humanoids catalogue is rendered, and the hero shows that total
 //   - search and filters work on the visible rows
 //   - the notice says the catalogue is free and the rest of the database is open (decision of 16 Nov 2026)
-//   - every row of the 12 other tabs renders from data/database, with search; every row's card (View all data)
-//     shows every declared field and every value in full, exactly as in data/database, with sources and dates
+//   - paywall: the 12 other tabs show only their first 10 sheet rows (data/preview) and link to the full database;
+//     every preview row's card (View all data) shows every field and value in full, with sources and dates
 //   - 13 categories with their own URLs; a shared #db-<tab> URL restores the category
 //   - deployment status filters count only what operational_status supports
 // Usage: cd tools && npm ci && node verify-site.mjs
@@ -17,6 +17,7 @@ const root = new URL('../', import.meta.url);
 const html = readFileSync(new URL('index.html', root), 'utf8');
 const manifest = JSON.parse(readFileSync(new URL('data/manifest.json', root), 'utf8'));
 const errors = [];
+const fetched = [];
 const virtualConsole = new VirtualConsole();
 virtualConsole.on('jsdomError', (e) => errors.push(e.message));
 virtualConsole.on('error', (e) => errors.push(String(e)));
@@ -32,8 +33,9 @@ const dom = new JSDOM(html, {
     window.IntersectionObserver = class { observe() {} unobserve() {} disconnect() {} takeRecords() { return []; } };
     window.scrollTo = () => {};
     window.HTMLElement.prototype.scrollIntoView = () => {};
-    // The open database loads each tab from data/database/<tab>.json; serve the committed files.
+    // The database section loads each tab's free preview from data/preview/<tab>.json; serve the committed files.
     window.fetch = async (url) => {
+      fetched.push(String(url));
       const file = new URL(String(url).replace(/^https:\/\/whyhumanoid\.com\//, ''), root);
       return { ok: true, status: 200, json: async () => JSON.parse(readFileSync(file, 'utf8')) };
     };
@@ -69,9 +71,8 @@ expect(/complete catalogue is free/i.test(text('#preview-note')), 'notice does n
 const buyLink = document.querySelector('#preview-note a');
 const pageData = JSON.parse(document.getElementById('data').textContent);
 expect(
-  Boolean(buyLink) && buyLink.getAttribute('href') === pageData.access.url &&
-    (pageData.access.checkout_open ? /^https:\/\//.test(pageData.access.url) : pageData.access.url === '#database'),
-  'notice does not link to the full-database offer (premium app when checkout is open, the database section otherwise)',
+  Boolean(buyLink) && buyLink.getAttribute('href') === pageData.access.url && pageData.access.url === pageData.access.app_url && /^https:\/\//.test(pageData.access.url),
+  'notice does not link to the full database in the premium app',
 );
 expect(/internal/i.test(text('#a-rows')), 'FAQ does not explain which rows the catalogue leaves out');
 
@@ -102,20 +103,22 @@ const go = async (hash) => { dom.window.location.hash = hash; dom.window.dispatc
 const indexLinks = [...document.querySelectorAll('#db-index a[data-id]')];
 expect(indexLinks.length === 13 && document.querySelectorAll('#db-index .grp').length === 5, `category index: ${indexLinks.length} links in ${document.querySelectorAll('#db-index .grp').length} groups`);
 expect(indexLinks.find((a) => a.dataset.id === 'humanoids')?.getAttribute('href') === '#humanoids', 'index does not link Humanoids to #humanoids');
-expect(pageData.access.open === true, 'page is not in open-database mode');
-expect(/rest of the database is open/i.test(text('#preview-note')), 'catalogue notice does not say the database is open');
+expect(pageData.access.open === false, 'page is not in paywall mode');
+expect(/full database adds 12 more datasets/i.test(text('#preview-note')) && document.querySelector('#preview-note a')?.getAttribute('href') === pageData.access.app_url, 'catalogue notice does not offer the full database');
 for (const t of dbIndex?.tabs ?? []) {
   const a = indexLinks.find((x) => x.dataset.id === t.id);
   expect(a?.getAttribute('href') === `#db-${t.id}` && a.querySelector('.n')?.textContent === String(t.entries_total), `${t.id}: index link or count wrong`);
   await go(`#db-${t.id}`);
   const shown = document.querySelectorAll('#db-rows tr.r').length;
-  expect(shown === t.entries_total && shown > 0, `${t.id}: ${shown} rows shown, ${t.entries_total} in the tab`);
+  expect(shown === t.preview_entries && shown > 0, `${t.id}: ${shown} rows shown, preview has ${t.preview_entries}`);
+  const lock = document.querySelector('#db-rows tr.lock a.db-buy');
+  expect(t.entries_total > t.preview_entries ? lock?.getAttribute('href') === `${pageData.access.app_url}#${t.id}` : !lock, `${t.id}: link to the full database missing or wrong`);
   expect(text('#db-title') === t.title, `${t.id}: panel title "${text('#db-title')}"`);
   expect(a?.getAttribute('aria-current') === 'true', `${t.id}: index does not mark the open category`);
 }
 // Deployment status: counts come only from operational_status.
 await go('#db-deployments');
-const dep = JSON.parse(readFileSync(new URL('data/database/deployments.json', root), 'utf8')).rows;
+const dep = JSON.parse(readFileSync(new URL('data/preview/deployments.json', root), 'utf8')).rows;
 const want = { op: 0, pilot: 0, ann: 0, unc: 0 };
 for (const r of dep) want[{ operational: 'op', pilot: 'pilot', testing: 'pilot', planned: 'ann' }[String(r.operational_status ?? '').toLowerCase()] ?? 'unc']++;
 for (const [k, n] of Object.entries(want)) {
@@ -124,13 +127,12 @@ for (const [k, n] of Object.entries(want)) {
   expect(rowsNow.length === n && rowsNow.every((tr) => tr.querySelector(`.dst.${k}`)), `deployments status ${k}: ${rowsNow.length} rows, expected ${n}`);
 }
 document.querySelector('#db-status [data-st="all"]')?.click();
-// Record cards (View all data): for EVERY row of EVERY tab, the card lists every declared field once and shows each
-// value in full, exactly as in data/database (which the export checks against the workbook); URLs are full links.
-// This is the control that a field or a value can no longer get lost between the data and the page.
+// Record cards (View all data): for EVERY preview row of EVERY tab, the card lists every declared field once and shows
+// each value in full, exactly as in data/preview; URLs are full links. Full rows are premium (premium app).
 let cardsChecked = 0, valuesChecked = 0, linksChecked = 0;
 for (const t of dbIndex.tabs) {
   await go(`#db-${t.id}`);
-  const data = JSON.parse(readFileSync(new URL(`data/database/${t.id}.json`, root), 'utf8')).rows;
+  const data = JSON.parse(readFileSync(new URL(`data/preview/${t.id}.json`, root), 'utf8')).rows;
   const trs = [...document.querySelectorAll('#db-rows tr.r')];
   expect(trs.length === data.length && trs.every((tr) => tr.querySelector('button.db-open')?.textContent === 'View all data'), `${t.id}: not every row has a View all data button`);
   for (let i = 0; i < trs.length; i++) {
@@ -158,7 +160,7 @@ for (const t of dbIndex.tabs) {
     if (failures.length > 40) break;
   }
 }
-const totalRows = dbIndex.tabs.reduce((n, t) => n + t.entries_total, 0);
+const totalRows = dbIndex.tabs.reduce((n, t) => n + t.preview_entries, 0);
 expect(cardsChecked === totalRows, `record cards checked: ${cardsChecked} of ${totalRows}`);
 // Deployments: the summary table shows status, organization, task, site, result and source for business readers.
 await go('#db-deployments');
@@ -167,9 +169,12 @@ expect(JSON.stringify(depHead) === JSON.stringify(['Row', 'Status', 'Record', 'O
 expect(/View all data/.test(text('#db-panel .db-hint')), 'deployments panel does not explain View all data');
 const lastBtn = [...document.querySelectorAll('#db-rows button.db-open')].pop();
 lastBtn?.click();
-expect(document.getElementById('db-dlg-next')?.disabled === true && /Record 119 of 119/.test(text('#db-dlg-pos')), 'last deployment card: navigation wrong');
+const depPreview = dbIndex.tabs.find((t) => t.id === 'deployments').preview_entries;
+expect(document.getElementById('db-dlg-next')?.disabled === true && text('#db-dlg-pos') === `Record ${depPreview} of ${depPreview}`, 'last deployment card: navigation wrong');
 document.getElementById('db-dlg-prev')?.click();
-expect(/Record 118 of 119/.test(text('#db-dlg-pos')), 'previous record does not move back');
+expect(text('#db-dlg-pos') === `Record ${depPreview - 1} of ${depPreview}`, 'previous record does not move back');
+// Paywall: the page never asks for full rows.
+expect(fetched.length > 0 && fetched.every((u) => /^data\/preview\/[a-z-]+\.json$/.test(u)), `page fetched something other than the previews: ${fetched.filter((u) => !/^data\/preview\//.test(u)).join(', ')}`);
 document.getElementById('db-dlg-close')?.click();
 const dbq = document.getElementById('db-q');
 dbq.value = 'zzzz-no-such-entry';
@@ -218,5 +223,5 @@ if (failures.length) {
   console.error(`Site verification FAILED:\n- ${failures.join('\n- ')}`);
   process.exit(1);
 }
-console.log(`Site verification passed: ${manifest.record_count} catalogue rows rendered, search and filters work on them, ${cardsChecked} record cards with every field (${valuesChecked} values, ${linksChecked} links) match data/database, no script errors.`);
+console.log(`Site verification passed: ${manifest.record_count} catalogue rows rendered, search and filters work on them, ${cardsChecked} preview cards with every field (${valuesChecked} values, ${linksChecked} links) match data/preview, only previews fetched, no script errors.`);
 process.exit(0);

@@ -10,8 +10,8 @@ import {
   revokeCredential,
 } from './auth.js';
 import { describeAccess, getEntitlement, hasAccess } from './entitlements.js';
-import { DATASETS_BY_ID, publicDatasetList, publicRowLimit, queryDatasetRows, queryPreview } from './datasets.js';
-import { checkoutReadiness, handleStripeWebhook, startCheckout } from './billing.js';
+import { DATASETS, DATASETS_BY_ID, publicDatasetList, publicRowLimit, queryDatasetRows, queryPreview } from './datasets.js';
+import { checkoutState, handleStripeWebhook, startCheckout, startPortal } from './billing.js';
 import { PLAN } from './pricing.js';
 import { buildTaskPlan, validateInputs } from './agent/task-plan.js';
 import { sha256Hex } from './crypto.js';
@@ -30,6 +30,9 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
     if (!account) throw new HttpError(401, 'authentication_required');
     return account;
   }
+  const checkoutStatus = () => checkoutState({ config, gateway, db, mailer, datasetCount: DATASETS.length });
+  const customerOf = async (accountId) =>
+    (await db.prepare('SELECT stripe_customer_id FROM accounts WHERE id = ?').bind(accountId).first())?.stripe_customer_id ?? null;
 
   // Checked on every premium request, for browser sessions and agent API keys alike.
   async function requireAccess(request, now) {
@@ -74,7 +77,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
             unit_amount: PLAN.unitAmount,
             interval: PLAN.interval,
           },
-          checkout_available: checkoutReadiness({ config, gateway }) === 'ready',
+          checkout_available: (await checkoutStatus()) === 'ready',
         }),
     ],
 
@@ -109,6 +112,8 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
           credential: account.kind,
           access: describeAccess(entitlement, now),
           checkout_enabled: Boolean(config.checkoutEnabled),
+          checkout_available: (await checkoutStatus()) === 'ready',
+          billing_portal: Boolean(await customerOf(account.accountId)),
         });
       },
     ],
@@ -181,8 +186,24 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       async (request, now) => {
         const account = await requireAuth(request, now);
         if (account.kind !== 'session') throw new HttpError(403, 'session_required');
-        if (hasAccess(await getEntitlement(db, account.accountId), now)) throw new HttpError(409, 'already_subscribed');
-        return json(200, await startCheckout({ config, gateway, account, now, log }));
+        const entitlement = await getEntitlement(db, account.accountId);
+        if (hasAccess(entitlement, now)) throw new HttpError(409, 'already_subscribed');
+        // A subscription waiting for payment is fixed in the customer portal, never doubled by a second checkout.
+        if (entitlement && ['past_due', 'unpaid', 'incomplete'].includes(entitlement.status) && Number(entitlement.current_period_end) > now) {
+          throw new HttpError(409, 'payment_pending');
+        }
+        return json(200, await startCheckout({ config, gateway, account: { ...account, stripeCustomerId: await customerOf(account.accountId) }, now, log, db, mailer, datasetCount: DATASETS.length }));
+      },
+    ],
+
+    // Stripe customer portal: update the card, see invoices, cancel at period end. Sessions only.
+    [
+      'POST',
+      /^\/v1\/billing\/portal$/,
+      async (request, now) => {
+        const account = await requireAuth(request, now);
+        if (account.kind !== 'session') throw new HttpError(403, 'session_required');
+        return json(200, await startPortal({ config, gateway, account: { ...account, stripeCustomerId: await customerOf(account.accountId) } }));
       },
     ],
 

@@ -238,7 +238,9 @@ export function publicDatasetList() {
   }));
 }
 
-const toRow = (r) => ({ id: r.row_id, ...JSON.parse(r.data) });
+// Importer bookkeeping (identity_status, raw sheet-row pointers) is internal: never served, not even to subscribers.
+const INTERNAL_KEYS = new Set(['identity_status', 'source_rows']);
+const toRow = (r) => ({ id: r.row_id, ...Object.fromEntries(Object.entries(JSON.parse(r.data)).filter(([k]) => !INTERNAL_KEYS.has(k))) });
 
 // Public rows: the first PREVIEW_ROWS non-empty data rows in workbook order, or every customer row for the free
 // Humanoids catalogue. Always the public (preview) values; no search, no paging.

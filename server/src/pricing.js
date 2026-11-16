@@ -24,5 +24,7 @@ export function checkStripePrice(price, { mode }) {
   if ((price.recurring?.interval_count ?? 1) !== PLAN.intervalCount) problems.push(`interval_count is ${price.recurring?.interval_count}, expected 1`);
   if (price.recurring?.usage_type && price.recurring.usage_type !== 'licensed') problems.push('price is metered');
   if (price.livemode !== (mode === 'live')) problems.push(`price livemode is ${price.livemode}, key mode is ${mode}`);
+  // No free trial (Javier, 16 Nov 2026).
+  if (Number(price.recurring?.trial_period_days ?? 0) > 0) problems.push(`price has a ${price.recurring.trial_period_days}-day trial`);
   return problems;
 }

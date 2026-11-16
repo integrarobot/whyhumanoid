@@ -11,7 +11,7 @@ La sección «Cierre obligatorio de cada entrega» se aplica a TODO trabajo de W
 
 ## Reglas que no se negocian
 
-- La base de datos está abierta (decisión d-0004, 16 nov 2026): no vuelvas a vistas previas de 10 filas ni actives el muro de pago. Stripe sigue desactivado.
+- Muro de pago (d-0008, 16/11/2026): Humanoids gratis; las otras 12 pestañas son premium (100 € al año, sin prueba). La web y Git solo llevan Humanoids y las 10 primeras filas de cada pestaña premium (`data/preview/`). Las filas completas van SOLO a producción con el workflow «Import private workbook» (target `production`). Nunca escribas filas completas en el repositorio ni en un JSON público; si `tools/check-public.mjs` falla por eso, no lo sortees. No toques la configuración de cobro de Stripe.
 - No inventes. Sin ediciones nuevas o sin hechos con fuente, no hay cambios: informa «sin novedades».
 - Nunca pongas en Git ni en la web credenciales, enlaces al libro maestro o a Drive, contactos personales ni notas internas. El identificador y la URL del libro van solo en el prompt de la tarea programada.
 - Anuncio, piloto y operación son estados distintos. Una demo, un contrato o una nota de prensa del fabricante no son operación real.
@@ -56,13 +56,13 @@ Decisión d-0006 (16/11/2026). Protocolo completo y referencia de campos: `ops/e
 
 Prioridad máxima de Javier (16/11/2026). Se aplica a cualquier trabajo que toque esa pestaña o la web, no solo a la actualización semanal.
 
-- Se publica TODO: cada fila, cada columna y cada valor no vacío de la hoja Deployments, íntegro, sin resumir ni recortar textos largos, tareas, ubicaciones, métricas, cantidades, fechas, evidencias, fuentes ni notas.
+- Los suscriptores reciben TODO: cada fila, cada columna y cada valor no vacío de la hoja Deployments, íntegro, sin resumir ni recortar textos largos, tareas, ubicaciones, métricas, cantidades, fechas, evidencias, fuentes ni notas. La web pública muestra las 10 primeras filas con su ficha completa.
 - No se eliminan filas por parecer duplicadas: distintas afirmaciones o evidencias sobre un mismo despliegue son filas distintas y se conservan. Fuera solo credenciales o datos personales internos, si los hubiera, con exclusión explícita y documentada.
-- La tabla resume (estado, organización y robot, tarea, lugar, resultado o métrica, fuente) y cada fila tiene el botón «View all data», que abre la ficha con todos los campos y los enlaces completos. Un campo nuevo en la hoja que no esté en los grupos de la ficha aparece en «Other fields»; añádelo a su grupo (`GROUPS_DEP` en `index.html`) y a la cabecera del importador (`server/src/datasets.js`), que rechaza cabeceras distintas.
+- La tabla resume (estado, organización y robot, tarea, lugar, resultado o métrica, fuente) y cada fila tiene el botón «View all data», que abre la ficha con todos los campos y los enlaces completos. Un campo nuevo en la hoja que no esté en los grupos de la ficha aparece en «Other fields»; añádelo a su grupo (`GROUPS_DEP` en `index.html` y en `server/public/premium.js`) y a la cabecera del importador (`server/src/datasets.js`), que rechaza cabeceras distintas.
 - Contar 119 entradas, o las que haya, no basta. Antes de publicar, y otra vez sobre lo publicado:
-  1. `node tools/audit-deployments.mjs --from <export>`: hoja contra `data/database/deployments.json`, celda por celda. Debe dar 0 diferencias.
-  2. `cd tools && node verify-site.mjs`: abre la ficha de cada fila de cada pestaña y comprueba que muestra todos los campos y todos los valores exactos, con los enlaces completos.
-  3. En producción, abre las fichas de la primera y la última fila y de las de textos más largos a 390, 768 y 1440 px.
+  1. `node tools/audit-deployments.mjs --from <export>`: hoja contra lo que sirve la importación del backend (todas las filas) y contra la vista previa de la web (10 primeras filas), celda por celda. Debe dar 0 diferencias.
+  2. `cd tools && node verify-site.mjs`: abre la ficha de cada fila de la vista previa de cada pestaña y comprueba campos, valores y enlaces, y que la página no pide nada fuera de `data/preview/`.
+  3. Tras la importación a producción: el recuento de Deployments del backend coincide con la hoja, y en la aplicación de suscriptores las fichas de la primera y la última fila y de las de textos más largos están completas a 390, 768 y 1440 px (con una sesión de suscriptor existente, nunca con un pago nuevo).
 - El cierre lleva filas, columnas, valores no vacíos y diferencias (0 o la lista exacta justificada).
 
 ## Estado
@@ -98,12 +98,13 @@ Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json`.
 
 9. **Exporta y publica por el flujo probado** (README, «Refresh»):
    1. Exporta el libro actualizado a un fichero privado fuera de Git (pestaña → filas, cabecera primero).
-   2. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <fecha ISO>`
+   2. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <fecha ISO>` (escribe solo las vistas previas en `data/preview/`).
    3. Humanoids: genera la vista con el código de importación (ver cabecera de `tools/sync-humanoids.mjs`) y ejecuta `tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs` y `tools/build-site.mjs`.
    4. Comprueba: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/check-public.mjs`, `node tools/export-database.mjs --check`, `cd server && npm test`, `cd tools && node verify-site.mjs`.
    5. Rama `weekly-update/<fecha>`, PR contra `main`, CI en verde, fusión, espera al despliegue de Pages.
+   6. Datos completos a producción: Actions, «Import private workbook», Run workflow en `main`, target `production`. Comprueba en el registro del job HTTP 200 y los recuentos de las 13 pestañas. Si falla (por ejemplo, identidad de Google), el cierre es `bloqueado` con el error exacto.
 
-10. **Verifica producción** en https://whyhumanoid.com/: recuentos por categoría iguales a la exportación, los registros nuevos o cambiados visibles con su fuente y fecha, la ficha «View all data» de Deployments completa (primera, última y textos largos, a 390, 768 y 1440 px), sin enlaces privados, base abierta y cobro desactivado.
+10. **Verifica producción** en https://whyhumanoid.com/: recuentos por categoría iguales a la exportación, los registros nuevos o cambiados visibles con su fuente y fecha, la vista previa de 10 filas por pestaña premium con su enlace a la base completa, ningún JSON con filas completas accesible en la web, la ficha «View all data» completa, y en la aplicación de suscriptores los recuentos del backend iguales a la exportación.
 
 11. **Registra como procesado** solo ahora: actualiza `last_processed_edition`, vacía de `known_pending` lo publicado y añade la línea en `runs`. Commit por el mismo flujo.
 
