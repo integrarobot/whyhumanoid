@@ -324,8 +324,11 @@ button{cursor:pointer}
 .db-status{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
 .db-status button{background:transparent;border:1px solid var(--line-2);padding:6px 10px;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-2);cursor:pointer}
 .db-status button[aria-pressed="true"]{color:var(--amber);border-color:var(--amber-2);background:var(--amber-3)}
-.st{display:inline-block;padding:2px 6px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line-2);white-space:nowrap}
-.st.op{color:var(--ok);border-color:var(--ok)}.st.pilot{color:var(--warn);border-color:var(--warn)}.st.ann{color:var(--bone-2)}.st.unc{color:var(--crit);border-color:var(--crit)}
+/* Deployment status badge. Own class: .st is the 20 px F/S mark of the Humanoids rows. */
+.dst{display:inline-block;width:auto;height:auto;box-sizing:border-box;padding:3px 8px;font-family:var(--f-mono);font-size:10.5px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line-2);white-space:nowrap}
+.dst.op{color:var(--ok);border-color:var(--ok)}.dst.pilot{color:var(--warn);border-color:var(--warn)}.dst.ann{color:var(--bone-2)}.dst.unc{color:var(--crit);border-color:var(--crit)}
+.db-table td.stc{width:1%;white-space:nowrap;padding-right:18px}
+.db-table th.stc{width:1%;padding-right:18px}
 .trace{margin:0 0 14px;padding:10px 12px;border-left:2px solid var(--amber);background:var(--amber-3)}
 .trace .lbl{display:block;margin-bottom:6px;color:var(--amber)}
 .trace ul{margin:0;padding:0;list-style:none;display:grid;gap:4px;font-size:13px}
@@ -1040,7 +1043,7 @@ button{cursor:pointer}
       '<p class="lbl" id="db-count">' + meta.entries_total + ' entries' + sources + '</p></div>' +
       '<label class="db-search"><span class="lbl">Search ' + esc(meta.title.toLowerCase()) + '</span><br><input id="db-q" type="search" autocomplete="off" placeholder="Filter every row"></label></div>' +
       (isDep ? '<div class="db-status" id="db-status" role="group" aria-label="Filter deployments by status"></div>' : '') +
-      '<div class="db-scroll"><table class="db-table"><thead><tr><th scope="col">Row</th>' + (isDep ? '<th scope="col">Status</th>' : '') + cols.map(function (c) { return '<th scope="col">' + esc(label(c)) + '</th>'; }).join('') +
+      '<div class="db-scroll"><table class="db-table"><thead><tr><th scope="col">Row</th>' + (isDep ? '<th scope="col" class="stc">Status</th>' : '') + cols.map(function (c) { return '<th scope="col">' + esc(label(c)) + '</th>'; }).join('') +
       '<th scope="col">Source</th></tr></thead><tbody id="db-rows"><tr><td class="db-empty" colspan="9">Loading…</td></tr></tbody></table></div>';
     var body = document.getElementById('db-rows'), countLine = document.getElementById('db-count');
     var ncol = cols.length + 2 + (isDep ? 1 : 0);
@@ -1060,7 +1063,7 @@ button{cursor:pointer}
         countLine.textContent = (shown.length !== rows.length ? shown.length + ' of ' : '') + meta.entries_total + ' entries' + sources;
         body.innerHTML = shown.length ? shown.map(function (r) {
           return '<tr class="r" tabindex="0" aria-expanded="false" data-i="' + rows.indexOf(r) + '"><td class="src">' + r._row + '</td>' +
-            (isDep ? '<td><span class="st ' + status(r) + '">' + stLabel(status(r)) + '</span></td>' : '') +
+            (isDep ? '<td class="stc"><span class="dst ' + status(r) + '">' + stLabel(status(r)) + '</span></td>' : '') +
             cols.map(function (c) { return '<td>' + fmt(r[c]) + '</td>'; }).join('') + '<td>' + srcOf(r) + '</td></tr>';
         }).join('') : '<tr><td class="db-empty" colspan="' + ncol + '">No rows match.</td></tr>';
       }

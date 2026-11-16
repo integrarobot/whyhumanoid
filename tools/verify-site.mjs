@@ -120,7 +120,7 @@ for (const r of dep) want[{ operational: 'op', pilot: 'pilot', testing: 'pilot',
 for (const [k, n] of Object.entries(want)) {
   document.querySelector(`#db-status [data-st="${k}"]`)?.click();
   const rowsNow = [...document.querySelectorAll('#db-rows tr.r')];
-  expect(rowsNow.length === n && rowsNow.every((tr) => tr.querySelector(`.st.${k}`)), `deployments status ${k}: ${rowsNow.length} rows, expected ${n}`);
+  expect(rowsNow.length === n && rowsNow.every((tr) => tr.querySelector(`.dst.${k}`)), `deployments status ${k}: ${rowsNow.length} rows, expected ${n}`);
 }
 document.querySelector('#db-status [data-st="all"]')?.click();
 document.querySelector('#db-rows tr.r')?.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
