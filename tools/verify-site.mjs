@@ -3,7 +3,8 @@
 //   - the page runs without script errors
 //   - every record of the free Humanoids catalogue is rendered, and the hero shows that total
 //   - search and filters work on the visible rows
-//   - the notice says the catalogue is free, states the full-database price and links to the premium app
+//   - the notice says the catalogue is free and the rest of the database is open (decision of 16 Nov 2026)
+//   - every row of the 12 other tabs renders from data/database, with detail and search
 // Usage: cd tools && npm ci && node verify-site.mjs
 
 import { readFileSync } from 'node:fs';
@@ -28,6 +29,11 @@ const dom = new JSDOM(html, {
     window.IntersectionObserver = class { observe() {} unobserve() {} disconnect() {} takeRecords() { return []; } };
     window.scrollTo = () => {};
     window.HTMLElement.prototype.scrollIntoView = () => {};
+    // The open database loads each tab from data/database/<tab>.json; serve the committed files.
+    window.fetch = async (url) => {
+      const file = new URL(String(url).replace(/^https:\/\/whyhumanoid\.com\//, ''), root);
+      return { ok: true, status: 200, json: async () => JSON.parse(readFileSync(file, 'utf8')) };
+    };
   },
 });
 const { document } = dom.window;
@@ -41,7 +47,7 @@ const text = (sel) => document.querySelector(sel)?.textContent?.trim() ?? '';
 expect(errors.length === 0, `script errors: ${errors.join(' | ')}`);
 expect(rows() === manifest.record_count, `rendered rows ${rows()} != catalogue ${manifest.record_count}`);
 expect(text('#h-n') === String(manifest.record_count), `hero total "${text('#h-n')}"`);
-expect(/complete catalogue is free/i.test(text('#preview-note')) && /€100 per year/.test(text('#preview-note')), 'notice does not say the catalogue is free and the price of the full database');
+expect(/complete catalogue is free/i.test(text('#preview-note')), 'notice does not say the catalogue is free');
 const buyLink = document.querySelector('#preview-note a');
 const pageData = JSON.parse(document.getElementById('data').textContent);
 expect(
@@ -71,30 +77,29 @@ if (search) {
   expect(rows() === manifest.record_count, 'clearing search does not restore every catalogue row');
 }
 
-// Database section: the 12 other tabs, first 10 source rows each, detail on click, search, honest offer.
-const previews = pageData.previews;
+// Database section (open access, 16 Nov 2026): the 12 other tabs, every row, detail on click, search.
+const dbIndex = pageData.database;
 const tabButtons = [...document.querySelectorAll('#db-tabs [role="tab"]')];
-expect(previews?.datasets?.length === 12 && tabButtons.length === 12, `database tabs: ${tabButtons.length} buttons, ${previews?.datasets?.length} datasets`);
-for (const d of previews?.datasets ?? []) {
-  tabButtons.find((b) => b.dataset.id === d.id)?.click();
-  await new Promise((r) => setTimeout(r, 20));
+expect(dbIndex?.tabs?.length === 12 && tabButtons.length === 12, `database tabs: ${tabButtons.length} buttons, ${dbIndex?.tabs?.length} in the index`);
+expect(pageData.access.open === true, 'page is not in open-database mode');
+expect(/rest of the database is open/i.test(text('#preview-note')), 'catalogue notice does not say the database is open');
+for (const t of dbIndex?.tabs ?? []) {
+  tabButtons.find((b) => b.dataset.id === t.id)?.click();
+  await new Promise((r) => setTimeout(r, 60));
   const shown = document.querySelectorAll('#db-rows tr.r').length;
-  expect(shown === d.rows.length && shown > 0, `${d.id}: ${shown} rows shown, ${d.rows.length} in the preview`);
-  expect(text('#db-title') === d.title, `${d.id}: panel title "${text('#db-title')}"`);
-  expect(new RegExp(`^${d.rows.length} of ${d.entries_total} entries`).test(text('#db-count')), `${d.id}: count line "${text('#db-count')}"`);
-  const lock = document.querySelector('#db-panel .db-lock');
-  expect(Boolean(lock) === d.entries_total > d.rows.length, `${d.id}: locked-rows notice ${lock ? 'shown' : 'missing'}`);
+  expect(shown === t.entries_total && shown > 0, `${t.id}: ${shown} rows shown, ${t.entries_total} in the tab`);
+  expect(text('#db-title') === t.title, `${t.id}: panel title "${text('#db-title')}"`);
+  expect(new RegExp(`^${t.entries_total} entries`).test(text('#db-count')), `${t.id}: count line "${text('#db-count')}"`);
 }
+expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements still on the page');
 tabButtons[0]?.click();
-const firstRow = document.querySelector('#db-rows tr.r');
-firstRow?.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
-expect(document.querySelectorAll('#db-rows tr.det dt').length === previews.datasets[0].fields.length, 'row detail does not list every public field');
+await new Promise((r) => setTimeout(r, 60));
+document.querySelector('#db-rows tr.r')?.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
+expect(document.querySelectorAll('#db-rows tr.det dt').length === dbIndex.tabs[0].fields.length, 'row detail does not list every field');
 const dbq = document.getElementById('db-q');
 dbq.value = 'zzzz-no-such-entry';
 dbq.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
 expect(document.querySelectorAll('#db-rows tr.r').length === 0, 'database search for a missing entry still shows rows');
-document.getElementById('db-buy').click();
-expect(pageData.access.checkout_open || /not open yet/i.test(text('#db-buy-note')), 'closed checkout is not explained honestly');
 expect([...document.querySelectorAll('.hud-nav a')].some((a) => a.getAttribute('href') === '#database'), 'no navigation link to the database');
 
 const filters = [...document.querySelectorAll('select')];

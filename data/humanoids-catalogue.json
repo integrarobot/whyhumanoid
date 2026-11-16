@@ -159,7 +159,7 @@
    "B2B Client": "Not disclosed",
    "Stock": "Private",
    "Valuation": "RMB ~50,000M: reported valuation under negotiation (2026-10-14), closing NOT confirmed",
-   "Investors": "A complete investor syndicate for the new round was not verified",
+   "Investors": "A complete investor syndicate for the new round was not verified; do not confuse with Suzhou-based AGIBOT Medical",
    "Rounds": "RMB 1,000–1,500M under negotiation, according to Caijing / TechNode (2026-10-14). Do not record as raised or add to totals.",
    "Release": "Not disclosed",
    "Height (cm)": "130",
@@ -178,7 +178,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": null,
+   "Buyer checks": "do not extrapolate deployments from other families",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://technode.com/2026/10/14/robot-maker-agibot-nears-new-funding-round-at-rmb-50-billion-valuation/\nhttps://agibot.com/products/X1\nhttps://www.agibot.com/"
   },
   {
@@ -250,7 +250,7 @@
    "Battery / charging": "90 min use / 9 min charging announced; >20 h/day includes recharging",
    "Price / availability": "Early access planned H1 2027; general availability planned late 2027",
    "Autonomy / supervision": "Task autonomy; independent safety controller; Arc platform",
-   "Buyer checks": "certifications/CE still planned",
+   "Buyer checks": "Do not transfer Digit 4 results to Digit 5; certifications/CE still planned",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi\nhttps://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale\nhttps://www.agilityrobotics.com/solutions"
   },
   {
@@ -279,14 +279,14 @@
    "Software": "Artemis; Fleet Connect; Google DeepMind / Gemini Robotics collaboration",
    "Voice": "Voice, listening and LED indicators",
    "Clothed?": "No",
-   "Model checked": "Apollo 2",
+   "Model checked": "Apollo 2; do not reuse original Apollo dimensions",
    "Platform / mobility": "Modular mobility: bipedal or wheeled base",
    "DoF / grippers": "Dexterous manipulation; DoF count unpublished on page",
    "Sensors / compute": "Artemis perception and planning; chip unspecified",
    "Battery / charging": "Swappable batteries; opportunity charging and tethered power",
    "Price / availability": "Commercial contact; public price not found in specifications",
    "Autonomy / supervision": "Artemis coordinates perception, planning, control and safety; validate autonomy per task",
-   "Buyer checks": "Request Apollo 2 specifications and configuration",
+   "Buyer checks": "Request Apollo 2 specifications and configuration; do not carry over original 172 cm / 72 kg / 25 kg / 4 h",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website not retrieved\nhttps://apptronik.com/news-collection/apptronik-closes-over-935-million-series-a\nhttps://apptronik.com/apollo/apollo-2\nhttps://apptronik.com/product-page"
   },
   {
@@ -388,7 +388,7 @@
    "Voice": "Not disclosed",
    "Clothed?": "No",
    "Model checked": "Astribot S1; current research specifications",
-   "Platform / mobility": "Manipulation platform",
+   "Platform / mobility": "Manipulation platform; do not infer bipedal walking",
    "DoF / grippers": "7 DoF per arm; 194 cm span between hands",
    "Sensors / compute": null,
    "Battery / charging": "4–6 h claimed; tethered power supported",
@@ -531,14 +531,14 @@
    "Software": "Open-source developer platform; Booster SDK",
    "Voice": "Not disclosed",
    "Clothed?": "No",
-   "Model checked": "Standard T1",
+   "Model checked": "Standard T1; do not assume competition variants",
    "Platform / mobility": "Bipedal humanoid for development",
    "DoF / grippers": "23 DoF: head 2; arms 4×2; waist 1; legs 6×2",
    "Sensors / compute": "Depth camera, microphone array and speaker in head",
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": "inherited mass/battery need a specification sheet",
+   "Buyer checks": "Do not assign extended-version hands to standard model; inherited mass/battery need a specification sheet",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.booster.tech/\nhttps://docs.booster.tech/docs/product-manual/t1/getting-started/overview/\nhttps://www.booster.tech/?target=en&utm_source=chatgpt.com"
   },
   {
@@ -646,7 +646,7 @@
    "Battery / charging": null,
    "Price / availability": "Current availability unverified",
    "Autonomy / supervision": null,
-   "Buyer checks": null,
+   "Buyer checks": "do not use figures from unrelated content",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.cartwheelrobotics.com/"
   },
   {
@@ -1042,7 +1042,7 @@
    "Battery / charging": null,
    "Price / availability": "Sales, rental and quotations by configuration",
    "Autonomy / supervision": "AI interaction and configurable roles; does not imply autonomous industrial manipulation",
-   "Buyer checks": "confirm cloud connectivity and privacy",
+   "Buyer checks": "Do not transfer Ameca Desktop specifications; confirm cloud connectivity and privacy",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://app.dealroom.co/companies/engineered_arts\nhttps://engineeredarts.com/tritium/robots/ameca\nhttps://engineeredarts.com/"
   },
   {
@@ -1186,7 +1186,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": "Pro weighs ~60 kg",
+   "Buyer checks": "Do not use 50 kg as hand payload: commercial sheet states 3 kg per hand; Pro weighs ~60 kg",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.fftai.com/uploads/upload/files/20250515/3f8dfafee28ab3d5c6688016d8e36eaf.pdf\nhttps://fftai.com/"
   },
   {
@@ -1688,7 +1688,7 @@
    "DoF / grippers": null,
    "Sensors / compute": null,
    "Battery / charging": null,
-   "Price / availability": null,
+   "Price / availability": "Do not assume availability: secondary source reports order cancellations and closure in 2025",
    "Autonomy / supervision": null,
    "Buyer checks": "Verify K-Scale repositories and announcement before reserving; shop domain failed to resolve",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website not retrieved\nhttps://www.humanoidrobots.systems/kscale/kbot\nhttps://shop.kscale.dev/"
@@ -1762,7 +1762,7 @@
    "Battery / charging": "Full-shift duration claimed; capacity and charging unspecified",
    "Price / availability": "Commercial contact / pilot",
    "Autonomy / supervision": null,
-   "Buyer checks": "Current specifications leave payload and reach unconfirmed",
+   "Buyer checks": "Current specifications leave payload and reach unconfirmed; do not retain 25 kg as current data",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.bearrobotics.ai/kinisi\nhttps://www.bearrobotics.ai/kinisi?utm_source=kinisi&utm_medium=301"
   },
   {
@@ -2122,7 +2122,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": "Local multimodal model; teleoperation available",
-   "Buyer checks": "request signed configuration specifications",
+   "Buyer checks": "Do not automatically assign 180 cm / 80 kg to Gen 4; request signed configuration specifications",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://neura-robotics.com/record-series-c/\nhttps://neura-robotics.com/products/4ne1/\nhttps://neura-robotics.com/"
   },
   {
@@ -2338,7 +2338,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": null,
+   "Buyer checks": "Do not attribute Physical Intelligence funding to this Norwegian company",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.physicalrobotics.com/"
   },
   {
@@ -2374,7 +2374,7 @@
    "Battery / charging": null,
    "Price / availability": "Self-assembly; no single complete-robot price",
    "Autonomy / supervision": null,
-   "Buyer checks": null,
+   "Buyer checks": "Do not compare mass/DoF without exact component list and version",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://pib.rocks/"
   },
   {
@@ -2428,7 +2428,7 @@
    "Stock": "Acquired by Hugging Face (2025)",
    "Valuation": "Acquisition price not disclosed",
    "Investors": "Hugging Face (acquirer, 2025)",
-   "Rounds": "Acquisition announced 2025-04-14",
+   "Rounds": "Acquisition announced 2025-04-14; do not confuse Hugging Face's funding with capital raised by Pollen.",
    "Release": "Not disclosed",
    "Height (cm)": "136–166 (adjustable height)",
    "Weight (kg)": "Up to 50 (complete system)",
@@ -2518,7 +2518,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": "RMB 1,000M registered capital is not a funding round",
+   "Buyer checks": "RMB 1,000M registered capital is not a funding round; do not confuse with Rainbow Robotics",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://technode.com/2024/07/05/qinglong-chinas-first-full-sized-general-purpose-humanoid-robot-unveiled-at-world-artificial-intelligence-conference-2024/"
   },
   {
@@ -2950,7 +2950,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": "Native teleoperation and manipulation models",
-   "Buyer checks": "specify W01/W02",
+   "Buyer checks": "Do not use >10.5 m/s as running speed: it is manipulation performance; specify W01/W02",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.sharpa.com/"
   },
   {
@@ -2986,7 +2986,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": null,
+   "Buyer checks": "Do not attribute third-party robot dimensions or payload to Skild Brain",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.skild.ai/blogs/series-c\nhttps://www.skild.ai/"
   },
   {
@@ -3370,7 +3370,7 @@
    "Weight (kg)": "47",
    "Walk (km/h)": "Not separately identified as walking",
    "Run (km/h)": "11.88 movement; >18 only claimed potential",
-   "Payload/carry (kg)": "Not published for H1",
+   "Payload/carry (kg)": "Not published for H1; do not use H1-2",
    "Power (hours)": "Not published in hours",
    "Software": "Standard Intel i5/i7; optional Orin NX; Unitree SDK",
    "Voice": "Not disclosed",
@@ -3988,13 +3988,13 @@
    "Voice": "Not disclosed",
    "Clothed?": "Not disclosed",
    "Model checked": "Mind Robotics: industrial platform; proprietary biped unconfirmed",
-   "Platform / mobility": "Industrial robotics",
+   "Platform / mobility": "Industrial robotics; do not assume humanoid form",
    "DoF / grippers": null,
    "Sensors / compute": null,
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": null,
+   "Buyer checks": "Do not fill dimensions using Rivian or third-party robots",
    "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.businesswire.com/news/home/20260513731983/en/\nhttps://www.mindrobotics.com/"
   },
   {
@@ -4023,7 +4023,7 @@
    "Software": "Manipulation model; claimed simulation training",
    "Voice": "Not disclosed",
    "Clothed?": "Not disclosed",
-   "Model checked": "R1 manipulation system",
+   "Model checked": "R1 manipulation system; do not confuse with Unitree R1",
    "Platform / mobility": "Manipulation robot; bipedal form unconfirmed",
    "DoF / grippers": null,
    "Sensors / compute": null,
@@ -4102,7 +4102,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": null,
+   "Buyer checks": "Do not classify as a commercial terrestrial humanoid without an identifiable model/specification sheet",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.orbitrobotics.ch/"
   },
   {
@@ -4207,7 +4207,7 @@
    "Platform / mobility": "Arms for table / cart / optional Jelly Mobile base",
    "DoF / grippers": "Two 7-DoF arms; 860 mm reach each",
    "Sensors / compute": null,
-   "Battery / charging": "Optional Jelly Mobile: 2.4 kWh",
+   "Battery / charging": "Optional Jelly Mobile: 2.4 kWh; do not assign its battery to fixed Axol",
    "Price / availability": "Configuration and accessories by order; no single price found",
    "Autonomy / supervision": "VR teleoperation; policy deployment; SDK control",
    "Buyer checks": "19.5 kg is the Axol module; distinguish 4 kg rated / 6.5 kg peak; base priced separately",
@@ -4282,7 +4282,7 @@
    "Battery / charging": null,
    "Price / availability": "Request pilot; general availability unconfirmed",
    "Autonomy / supervision": "Manufacturer demonstrates autonomous folding; some scenes are renders",
-   "Buyer checks": null,
+   "Buyer checks": "Do not mistake 2× video for real time or demo duration for sustained throughput",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.viberobotics.co/"
   },
   {
@@ -4462,7 +4462,7 @@
    "Battery / charging": "421 Wh; claimed 2.5–3.5 h",
    "Price / availability": "USD 39,990; reservation; 2026 shipping announced",
    "Autonomy / supervision": "Voice interaction and developer tools",
-   "Buyer checks": "confirm deliveries and support",
+   "Buyer checks": "Do not attribute Lumi specifications to standard Unitree G1; confirm deliveries and support",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://lightberry.com/lumi"
   },
   {
@@ -4498,7 +4498,7 @@
    "Battery / charging": null,
    "Price / availability": "Prototype; no verified commercial offer",
    "Autonomy / supervision": null,
-   "Buyer checks": "Confirm reach and duration of 8 kg rating",
+   "Buyer checks": "Confirm reach and duration of 8 kg rating; do not infer runtime or availability",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.pink-robotics.com/"
   },
   {
@@ -4714,7 +4714,7 @@
    "Battery / charging": null,
    "Price / availability": null,
    "Autonomy / supervision": null,
-   "Buyer checks": null,
+   "Buyer checks": "Do not fill weight/payload using robots in demos",
    "Sources / checked": "2026-10-29 | Funding verification pending; Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.naturewill.ai/"
   },
   {
