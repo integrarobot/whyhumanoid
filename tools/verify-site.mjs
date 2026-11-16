@@ -101,6 +101,11 @@ dbq.value = 'zzzz-no-such-entry';
 dbq.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
 expect(document.querySelectorAll('#db-rows tr.r').length === 0, 'database search for a missing entry still shows rows');
 expect([...document.querySelectorAll('.hud-nav a')].some((a) => a.getAttribute('href') === '#database'), 'no navigation link to the database');
+const humanoidsLink = [...document.querySelectorAll('.hud-nav a')].find((a) => a.getAttribute('href') === '#humanoids');
+expect(humanoidsLink?.textContent.trim() === 'Humanoids', 'navigation does not name the Humanoids section');
+expect(text('#humanoids .h2') === 'Humanoids', `Humanoids section title "${text('#humanoids .h2')}"`);
+expect(Boolean(document.getElementById('catalogue')), 'old #catalogue links no longer have a target');
+expect(![...document.querySelectorAll('.hud-nav a, .h2, label, [aria-label]')].some((e) => /^catalogue$/i.test(e.textContent.trim()) || /catalogue/i.test(e.getAttribute('aria-label') ?? '')), 'a section label still says Catalogue');
 
 const filters = [...document.querySelectorAll('select')];
 if (filters.length) {

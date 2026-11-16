@@ -278,6 +278,7 @@ button{cursor:pointer}
 
 /* Responsive */
 /* Database: the 12 other tabs, first 10 source rows public */
+.anchor-alias{display:block;height:0}
 .db{padding-block:clamp(56px,7vw,104px) 0}
 .db-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,64px);align-items:end;margin-bottom:22px}
 .db-intro{margin:0;color:var(--bone-2);max-width:68ch}
@@ -369,7 +370,7 @@ button{cursor:pointer}
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Why Humanoid?, home"><span class="sq"></span>Why Humanoid?</a>
     <nav class="hud-nav" aria-label="Sections">
-      <a href="#catalogue">Catalogue</a><a href="#database">Database</a><a href="#countries">Countries</a><a href="#method">Method</a>
+      <a href="#humanoids">Humanoids</a><a href="#database">Database</a><a href="#countries">Countries</a><a href="#method">Method</a>
     </nav>
     <div class="hud-r"><span><b id="clock" class="tn">--:--:--</b> UTC</span><span class="age" id="age">Last checked 30 Oct 2026</span></div>
   </div>
@@ -383,7 +384,7 @@ button{cursor:pointer}
         <h1 class="display"><span class="ln"><span id="h-n">133</span> humanoids,</span><span class="ln"><em>every record</em></span><span class="ln">with its sources.</span></h1>
         <p class="lede">Makers, bodies, funding and verification status of the robots Integrarobot tracks. When a figure is missing, the record says so: not disclosed, not verified or pending revalidation.</p>
         <div class="search">
-          <label class="lbl" for="q">Search the catalogue</label>
+          <label class="lbl" for="q">Search humanoids</label>
           <div class="field">
             <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M11 11l3.6 3.6" stroke="currentColor" stroke-width="1.3"/></svg>
             <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Robot, lab or country">
@@ -412,7 +413,7 @@ button{cursor:pointer}
       </figure>
     </section>
 
-    <section class="readouts" aria-label="Catalogue summary">
+    <section class="readouts" aria-label="Humanoids summary">
       <div><span class="lbl">Records</span><span class="v" id="r-n">133</span></div>
       <div><span class="lbl">Countries of origin</span><span class="v" id="r-c">19</span></div>
       <div><span class="lbl">Height and mass published</span><span class="v" id="r-hw">64</span></div>
@@ -420,10 +421,11 @@ button{cursor:pointer}
       <div><span class="lbl">Specs reviewed</span><span class="v" id="r-s">54</span></div>
     </section>
 
-    <section class="bench" id="catalogue">
+    <span id="catalogue" class="anchor-alias" aria-hidden="true"></span>
+    <section class="bench" id="humanoids">
       <div class="ledger">
         <div class="sec-head">
-          <h2 class="h2">Catalogue</h2>
+          <h2 class="h2">Humanoids</h2>
           <p class="lbl" id="count">133 of 133 records</p>
         </div>
         <div class="filters">
@@ -452,7 +454,7 @@ button{cursor:pointer}
         <div class="thead grid-cols" aria-hidden="true">
           <span class="lbl">Robot</span><span class="lbl">Country</span><span class="lbl">Platform</span><span class="lbl r">Height cm</span><span class="lbl r">Mass kg</span><span class="lbl r">Payload kg</span><span class="lbl r">Status</span>
         </div>
-        <div class="rows" id="rows" role="list" aria-label="Robots in the catalogue"></div>
+        <div class="rows" id="rows" role="list" aria-label="Humanoid robots"></div>
         <p class="preview-note" id="preview-note"></p>
         <p class="empty" id="empty" hidden>No records match these filters. <button type="button" id="empty-reset">Clear filters</button></p>
       </div>
@@ -703,13 +705,13 @@ button{cursor:pointer}
 
   // Países
   const maxC = Math.max(...countries.values());
-  $('#bars').innerHTML = cList.map(([c, n]) => `<button class="bar" type="button" data-c="${esc(c)}" aria-pressed="false" aria-label="${esc(c)}: ${n} records. Filter the catalogue"><span class="nm">${esc(c)}</span><span class="tr"><span class="fl" style="width:${(n / maxC * 100).toFixed(1)}%"></span></span><span class="ct">${n}</span></button>`).join('');
+  $('#bars').innerHTML = cList.map(([c, n]) => `<button class="bar" type="button" data-c="${esc(c)}" aria-pressed="false" aria-label="${esc(c)}: ${n} records. Filter humanoids"><span class="nm">${esc(c)}</span><span class="tr"><span class="fl" style="width:${(n / maxC * 100).toFixed(1)}%"></span></span><span class="ct">${n}</span></button>`).join('');
   $('#bars').addEventListener('click', e => {
     const b = e.target.closest('.bar'); if (!b) return;
     st.country = st.country === b.dataset.c ? 'all' : b.dataset.c;
     $('#f-country').value = st.country;
     renderRows();
-    document.getElementById('catalogue').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    document.getElementById('humanoids').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   });
 
   // Años
@@ -827,7 +829,7 @@ button{cursor:pointer}
     renderDossier(m); renderChart();
     if (opts.hash !== false && location.hash !== '#' + m.slug) { try { history.replaceState(null, '', '#' + m.slug); } catch (e) { location.hash = m.slug; } }
     if (opts.open !== false) openSheet();
-    if (opts.scroll && !sheetMode()) document.getElementById('catalogue').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    if (opts.scroll && !sheetMode()) document.getElementById('humanoids').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   }
 
   // Eventos
