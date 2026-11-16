@@ -32,11 +32,14 @@ server/src/import/         13-tab import (service account, read-only), cleaning,
 server/migrations/         D1 / SQLite schema
 server/test/               tests, synthetic fixtures only
 DEPLOYMENT.md              exact remaining settings for test and production
+AGENTS.md, CLAUDE.md       agent instructions (Spanish), including the mandatory close of every delivery
+ops/entregas/              delivery register: one immutable close per piece of work, read by Codex (README inside)
 ```
 
 ## Commands
 
 ```
+node tools/entregas.mjs --check             # delivery register is valid (ops/entregas)
 node tools/export-humanoids.mjs --check     # free catalogue export is current
 node tools/build-site.mjs --check           # index.html is the build of data/, parity with the legacy page
 (cd tools && npm ci && node verify-site.mjs) # headless render: the whole free catalogue, search and filters work

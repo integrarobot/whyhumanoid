@@ -6,3 +6,5 @@ exclude:
   - README.md
   - SECURITY.md
   - DEPLOYMENT.md
+  - AGENTS.md
+  - CLAUDE.md

@@ -20,6 +20,10 @@ jobs:
           node-version: 22
       - name: Public data guard (preview only, no workbook links, no premium rows)
         run: node tools/check-public.mjs
+      - name: Delivery register (ops/entregas) is valid and append-only
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: node --test tools/test-entregas.mjs && node tools/entregas.mjs --check --base "$BASE"
       - name: Preview export is current
         run: node tools/export-humanoids.mjs --check
       - name: Page is the verified build of the preview, with parity

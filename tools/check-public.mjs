@@ -57,6 +57,10 @@ for (const file of tracked.filter(isText)) {
 for (const dir of ['server', 'tools', '.github', 'ops']) {
   if (tracked.some((f) => f.startsWith(`${dir}/`) && isPublished(f))) fail('_config.yml', `does not exclude ${dir}/`);
 }
+// Agent instructions and the delivery register (ops/entregas) are internal too.
+for (const file of ['AGENTS.md', 'CLAUDE.md']) {
+  if (tracked.includes(file) && isPublished(file)) fail('_config.yml', `does not exclude ${file}`);
+}
 
 // Rule 5: Humanoids rows are published only as the free catalogue: allowlisted fields, cleaned values (no private
 // links, contacts or editor notes), no row the sheet marks as internal.
