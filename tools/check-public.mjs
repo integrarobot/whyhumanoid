@@ -4,7 +4,7 @@
 
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
-import { validatePreviews } from './export-previews.mjs';
+import { isInternalField, readDatabase, validateDatabase } from './export-database.mjs';
 import { DATASETS, DATASETS_BY_ID } from '../server/src/datasets.js';
 
 const root = new URL('../', import.meta.url);
@@ -33,27 +33,22 @@ const workbookUrl = /docs\.google\.com\/(spreadsheets|document)\/d\//;
 const premiumId = /\b(?:rec|clm|dep|lnk|src|mdl|res)_[a-z0-9]+_[a-z0-9_]+\b/;
 // Rule 3 (published site): no premium column names, which would indicate premium rows in page source.
 const humanoidFields = new Set(JSON.parse(read('tools/humanoids-allowlist.json')).fields);
-// Field names of the public previews (data/previews.json, checked by rule 6) are public by the access rule.
-const previews = JSON.parse(read('data/previews.json'));
-const previewFields = new Set(previews.datasets.flatMap((d) => d.fields));
+// Open database (decision of 16 Nov 2026): every content column is public; only the backend row key, raw sheet-row
+// pointers and importer bookkeeping stay internal, so those column names must not appear in published pages.
+const database = readDatabase();
 const premiumColumns = [
-  ...new Set(DATASETS.flatMap((d) => d.fields ?? d.headers).filter((h) => h.includes('_'))),
-].filter((h) => !humanoidFields.has(h) && !previewFields.has(h));
+  ...new Set(DATASETS.flatMap((d) => d.fields ?? d.headers).filter((h) => h.includes('_') && isInternalField(h))),
+].filter((h) => !humanoidFields.has(h));
 
-const withoutPreviews = (html) =>
-  html.replace(/(<script[^>]*id="data"[^>]*>)([\s\S]*?)(<\/script>)/, (_, open, json, close) => {
-    const { previews: _previews, ...rest } = JSON.parse(json);
-    return `${open}${JSON.stringify(rest)}${close}`;
-  });
 for (const file of tracked.filter(isText)) {
   const text = read(file);
   if (driveId.test(text)) fail(file, 'contains a Google Drive file id', driveId.find(text).slice(0, 8));
   if (workbookUrl.test(text)) fail(file, 'contains a Google Docs/Sheets URL');
-  if (premiumId.test(text)) fail(file, 'contains a premium-style record id', text.match(premiumId)[0]);
-  if ((isPublished(file) || file.startsWith('server/public/')) && file !== 'data/previews.json') {
-    // Preview values may mention column names in prose; rule 6 polices the previews themselves.
-    const scanned = file === 'index.html' ? withoutPreviews(text) : text;
-    const leaked = premiumColumns.filter((c) => new RegExp(`\\b${c}\\b`).test(scanned));
+  // Record ids are content of the open database (16 Nov 2026); elsewhere fixtures use the fx_ prefix.
+  if (premiumId.test(text) && !file.startsWith('data/database/')) fail(file, 'contains a premium-style record id', text.match(premiumId)[0]);
+  if ((isPublished(file) || file.startsWith('server/public/')) && !file.startsWith('data/database/')) {
+    // Database values may mention column names in prose; rule 6 polices the database files themselves.
+    const leaked = premiumColumns.filter((c) => new RegExp(`\\b${c}\\b`).test(text));
     if (leaked.length) fail(file, 'published file mentions premium columns', leaked.slice(0, 5).join(', '));
   }
 }
@@ -63,13 +58,14 @@ for (const dir of ['server', 'tools', '.github']) {
   if (tracked.some((f) => f.startsWith(`${dir}/`) && isPublished(f))) fail('_config.yml', `does not exclude ${dir}/`);
 }
 
-// Rule 5: the only public rows are the free Humanoids catalogue: allowlisted fields, public (cleaned) values,
-// no row the sheet marks as internal, and nothing from the 12 other tabs or the paid values.
+// Rule 5: Humanoids rows are published only as the free catalogue: allowlisted fields, cleaned values (no private
+// links, contacts or editor notes), no row the sheet marks as internal.
 for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-preview.json', 'data/humanoids-preview.csv']) {
   if (tracked.includes(old)) fail(old, 'only data/humanoids-catalogue.* may hold public rows');
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/previews.json'].includes(file)) fail(file, 'unexpected public data file');
+  const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/database/${n}.json`);
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));
@@ -93,11 +89,10 @@ for (const m of page.models) {
 }
 if (page.models.length !== exported.records.length) fail('index.html', `embeds ${page.models.length} of ${exported.records.length} catalogue records`);
 
-// Rule 6: the other 12 tabs are public only as previews: the first 10 source sheet rows of each, public values,
-// no identifier columns that join to the paid rows, and the page embeds exactly data/previews.json.
-for (const problem of validatePreviews(previews)) fail('data/previews.json', problem);
-if (JSON.stringify(page.previews) !== JSON.stringify(previews)) fail('index.html', 'embedded previews differ from data/previews.json');
-if (page.access?.checkout_open && !/^https:\/\//.test(page.access.url)) fail('index.html', 'checkout is open but the page does not link to the premium app');
+// Rule 6: the other 12 tabs are published in full (open database, 16 Nov 2026): every customer row and content
+// field, without identifier columns or importer bookkeeping, and the page embeds exactly data/database/index.json.
+for (const problem of validateDatabase(database.index, database.tabs)) fail('data/database', problem);
+if (JSON.stringify(page.database) !== JSON.stringify(database.index)) fail('index.html', 'embedded database index differs from data/database/index.json');
 
 if (failures.length) {
   console.error(`Public data guard FAILED:\n- ${failures.join('\n- ')}`);

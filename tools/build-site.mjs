@@ -21,6 +21,7 @@ import { PLAN } from '../server/src/pricing.js';
 // premium.whyhumanoid.com is set up as a custom domain.
 export const PREMIUM_APP_URL = 'https://whyhumanoid-premium.javier-198.workers.dev/';
 export const CHECKOUT_OPEN = false;
+export const OPEN_DATABASE = true;
 
 const root = new URL('../', import.meta.url);
 const OVERRIDES_FILE = new URL('tools/humanoids-facet-overrides.json', root);
@@ -223,8 +224,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     checkout_open: CHECKOUT_OPEN,
   };
   const data = buildData(exported, overrides, access);
-  // Public previews of the 12 other tabs (data/previews.json, built by tools/export-previews.mjs).
-  data.previews = JSON.parse(readFileSync(new URL('data/previews.json', root), 'utf8'));
+  // Open database (decision of 16 Nov 2026): the page embeds the index of the 12 other tabs and loads each tab's rows
+  // from data/database/<tab>.json (built by tools/export-database.mjs). Do not go back to 10-row previews.
+  data.database = JSON.parse(readFileSync(new URL('data/database/index.json', root), 'utf8'));
+  data.access.open = OPEN_DATABASE;
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {
     console.error(`Parity FAILED (${unexpected.length}):\n- ${unexpected.slice(0, 40).join('\n- ')}`);

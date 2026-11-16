@@ -1,0 +1,259 @@
+{
+ "note": "Open database: every row and content field of the 12 workbook tabs other than Humanoids, free to read (decision of 16 Nov 2026). Rows the sheet marks as internal, the backend row key, raw sheet-row pointers and importer bookkeeping are left out.",
+ "snapshot": "2026-11-16T11:42:00Z",
+ "tabs": [
+  {
+   "id": "deployments",
+   "title": "Deployments",
+   "description": "One claim per row about a humanoid robot deployment, with evidence level, source and dates.",
+   "entries_total": 119,
+   "source_rows_total": 119,
+   "fields": [
+    "record_id",
+    "organization_id",
+    "organization_name",
+    "organization_role",
+    "organization_country",
+    "deployment_id",
+    "manufacturer",
+    "robot_model",
+    "robot_version",
+    "site_name",
+    "city",
+    "region",
+    "country",
+    "sector",
+    "environment",
+    "relationship_type",
+    "commercial_status",
+    "operational_status",
+    "observed_start",
+    "observed_end",
+    "task_id",
+    "task_category",
+    "task_description",
+    "workflow_from",
+    "workflow_to",
+    "integration_dependencies",
+    "metric_name",
+    "metric_operator",
+    "metric_value",
+    "metric_unit",
+    "metric_period",
+    "claim_id",
+    "claim_text",
+    "claim_type",
+    "evidence_level",
+    "confidence",
+    "verification_status",
+    "source_id",
+    "source_title",
+    "source_url",
+    "source_publisher",
+    "source_role",
+    "source_type",
+    "publication_date",
+    "accessed_at",
+    "language",
+    "open_questions_notes"
+   ]
+  },
+  {
+   "id": "integrators",
+   "title": "Integrators",
+   "description": "System integrators and service providers that deploy humanoid and service robots.",
+   "entries_total": 7,
+   "source_rows_total": 7,
+   "fields": [
+    "list",
+    "name",
+    "url",
+    "description"
+   ]
+  },
+  {
+   "id": "evidence-links",
+   "title": "Evidence links",
+   "description": "Links between robot models, tasks, deployments and claims, with stage and limitations.",
+   "entries_total": 15,
+   "source_rows_total": 15,
+   "fields": [
+    "link_id",
+    "model_id",
+    "task_id",
+    "source_task_id",
+    "deployment_id",
+    "claim_id",
+    "statement",
+    "task_relevance",
+    "stage_at_source_date",
+    "source_role",
+    "source_url",
+    "source_publication_date",
+    "source_rechecked_at",
+    "raw_record_ids",
+    "resource_ids",
+    "integrator_id",
+    "metric_name",
+    "metric_operator",
+    "metric_value",
+    "metric_unit",
+    "metric_period",
+    "limitations"
+   ]
+  },
+  {
+   "id": "task-evaluations",
+   "title": "Task evaluations",
+   "description": "Per-task eligibility of each robot model against documented evidence.",
+   "entries_total": 4,
+   "source_rows_total": 4,
+   "fields": [
+    "task_id",
+    "model_id",
+    "model",
+    "identity_resolved",
+    "task_performed_documented",
+    "operator_primary_source",
+    "field_environment",
+    "commercial_operation_documented",
+    "economic_protocol_complete",
+    "eligible_task_evidence",
+    "eligible_commercial",
+    "eligible_economic",
+    "exact_amr_to_conveyor",
+    "decision_reason",
+    "evidence_ids"
+   ]
+  },
+  {
+   "id": "container-handling",
+   "title": "Container handling analysis",
+   "description": "Task analysis for container handling in intralogistics, with traceability.",
+   "entries_total": 22,
+   "source_rows_total": 22,
+   "fields": [
+    "layer",
+    "element",
+    "result",
+    "traceability"
+   ]
+  },
+  {
+   "id": "entities",
+   "title": "Entities",
+   "description": "Canonical organisations, models and resources with identity scope and review date.",
+   "entries_total": 24,
+   "source_rows_total": 24,
+   "fields": [
+    "entity_id",
+    "entity_type",
+    "canonical_name",
+    "manufacturer_id",
+    "parent_entity_id",
+    "source_sheet",
+    "source_label",
+    "reference_url",
+    "identity_scope",
+    "reviewed_at",
+    "notes"
+   ]
+  },
+  {
+   "id": "stocks",
+   "title": "Listed companies",
+   "description": "Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.",
+   "entries_total": 276,
+   "source_rows_total": 276,
+   "fields": [
+    "name",
+    "url",
+    "description",
+    "ticker",
+    "exchange",
+    "country",
+    "segment",
+    "source",
+    "verified_at",
+    "gf_symbol",
+    "finance_url",
+    "currency",
+    "etf_membership",
+    "etf_as_of",
+    "etf_sources",
+    "isin"
+   ]
+  },
+  {
+   "id": "software",
+   "title": "Software and world models",
+   "description": "Robot foundation models, VLA models, world models and robotics software.",
+   "entries_total": 144,
+   "source_rows_total": 124,
+   "fields": [
+    "list",
+    "name",
+    "url",
+    "description"
+   ]
+  },
+  {
+   "id": "datasets",
+   "title": "Datasets",
+   "description": "Robot learning datasets relevant to humanoids.",
+   "entries_total": 28,
+   "source_rows_total": 28,
+   "fields": [
+    "list",
+    "name",
+    "url",
+    "description"
+   ]
+  },
+  {
+   "id": "hardware",
+   "title": "Hardware",
+   "description": "Compute, actuators and other hardware used in humanoid robots.",
+   "entries_total": 11,
+   "source_rows_total": 11,
+   "fields": [
+    "list",
+    "name",
+    "url",
+    "description"
+   ]
+  },
+  {
+   "id": "other-robots",
+   "title": "Other robots",
+   "description": "Non-humanoid and educational robots tracked alongside the humanoid catalogue.",
+   "entries_total": 547,
+   "source_rows_total": 488,
+   "fields": [
+    "list",
+    "name",
+    "url",
+    "description"
+   ]
+  },
+  {
+   "id": "data-space",
+   "title": "Data space design notes",
+   "description": "Findings and proposals for the humanoid robotics data space.",
+   "entries_total": 30,
+   "source_rows_total": 30,
+   "fields": [
+    "record_id",
+    "workstream",
+    "topic",
+    "finding_or_proposal",
+    "implementation_detail",
+    "target",
+    "priority",
+    "epistemic_status",
+    "source_url",
+    "next_step"
+   ]
+  }
+ ]
+}

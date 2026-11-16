@@ -23,6 +23,9 @@ import { isInternalHumanoidRow } from '../server/src/datasets.js';
 
 const root = new URL('../', import.meta.url);
 export const LEGACY_REF = 'efca179';
+// Open database (decision of 16 Nov 2026): the free catalogue carries the values the paid product would show.
+// The cleaning still removes private links, personal contacts and internal editor notes in this mode.
+export const CATALOGUE_MODE = 'full';
 export const readVerifiedUpdates = () =>
   JSON.parse(readFileSync(new URL('tools/humanoids-verified-updates.json', root), 'utf8'));
 
@@ -86,7 +89,7 @@ export function buildExport(snapshot, updates = readVerifiedUpdates()) {
   const fullReview = review.splice(0);
   const shown = catalogueRows(snapshot);
   // Rows the sheet marks as duplicates or editorial resources are withheld by the same rule the import applies.
-  const candidates = applyVerifiedUpdates(shown.map((r) => clean(r.model, 'preview')), updates, fields);
+  const candidates = applyVerifiedUpdates(shown.map((r) => clean(r.model, CATALOGUE_MODE)), updates, fields);
   const withheld = candidates.filter((r) => isInternalHumanoidRow(Object.fromEntries(fields.map((f) => [f, r[f]]))));
   const records = candidates.filter((r) => !withheld.includes(r));
   const updatedKeys = new Set(updates.updated.map((u) => `${u.id}|${u.field}`));

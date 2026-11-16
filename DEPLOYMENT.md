@@ -1,5 +1,9 @@
 # Deployment settings
 
+Decision of 16 Nov 2026 (Javier): the whole database is open on whyhumanoid.com (README, access model). The site
+is a static export built from a private workbook export with the backend's own import code; it does not depend on
+the production import. The backend and the steps below stay for the later paywall phase.
+
 Status on 13 Nov 2026: the PR is open (step 1). The test Worker runs the current code (step 2) with its Stripe test
 and Resend secrets; production runs older code with checkout off and no data. The Stripe products, prices and
 webhook destinations exist in both modes (step 3). The access rule was verified on the test Worker with synthetic

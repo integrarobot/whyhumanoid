@@ -37,3 +37,30 @@ test('all 13 tabs stay; Humanoids is free in full and the others show 10 source 
   assert.equal(DATASETS.length, 13);
   for (const spec of DATASETS) assert.equal(publicRowLimit(spec), spec.id === 'humanoids' ? null : 10);
 });
+
+// Open database (decision of 16 Nov 2026): every customer row and content field of the 12 other tabs is published.
+// This guards against going back to 10-row previews on the site.
+test('the open database export holds every customer row of the 12 other tabs, without internal fields', async () => {
+  const { writeFileSync, mkdtempSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const { fixtureWorkbook } = await import('./helpers.js');
+  const { buildDatabase, validateDatabase, isInternalField } = await import('../../tools/export-database.mjs');
+  const file = join(mkdtempSync(join(tmpdir(), 'wh-')), 'workbook.json');
+  writeFileSync(file, JSON.stringify(fixtureWorkbook({ rowsPerTab: 14 })));
+  const { index, tabs, counts } = await buildDatabase(file, '2026-11-16T00:00:00Z');
+  assert.deepEqual(validateDatabase(index, tabs), []);
+  assert.equal(index.tabs.length, 12);
+  for (const t of index.tabs) {
+    assert.equal(tabs[t.id].rows.length, counts[t.id], `${t.id}: every imported row`);
+    assert.ok(tabs[t.id].rows.length > 10 || counts[t.id] <= 10, `${t.id}: not cut to a preview`);
+    assert.ok(!t.fields.some(isInternalField), `${t.id}: no internal fields`);
+  }
+});
+
+test('the committed open database matches its index', async () => {
+  const { readDatabase, validateDatabase } = await import('../../tools/export-database.mjs');
+  const { index, tabs } = readDatabase();
+  assert.deepEqual(validateDatabase(index, tabs), []);
+  assert.ok(index.tabs.some((t) => t.entries_total > 10), 'more than preview-sized tabs');
+});

@@ -3,17 +3,22 @@
 Source of [whyhumanoid.com](https://whyhumanoid.com): a sourced database of humanoid robotics for people and
 agents preparing enterprise deployment plans.
 
-## Access model (Javier, 13 Nov 2026; Humanoids catalogue kept free in full)
+## Access model: open database (Javier, 16 Nov 2026)
+
+Decision of 16 Nov 2026: the whole database is open to every visitor on whyhumanoid.com, without payment or
+sign-in, until the paywall phase. This replaces the 10-row previews of 13 Nov; do not go back to them unless Javier
+decides to start the paywall. Stripe and the subscription stay prepared in the backend, with checkout closed.
 
 | What | Who | Where |
 |---|---|---|
-| The complete Humanoids catalogue: every robot row, 32 public fields, public (cleaned) values | Anyone | GitHub Pages (`index.html`, `data/humanoids-catalogue.*`); `GET /v1/datasets/humanoids/preview` on the backend |
-| The first 10 non-empty source sheet rows of each of the 12 other workbook tabs, in workbook order (tabs with side-by-side lists show every entry in those rows: 19 for Software, 20 for Other robots) | Anyone | `GET /v1/datasets/{id}/preview` on the backend |
-| Full database: full values, all rows of all 13 tabs, full search, agent API keys | Subscribers, €100 per year (one recurring Stripe price, EUR 10000 minor units, yearly) | Backend only (`server/`) |
+| Humanoids: every robot row the sheet publishes, 32 fields, the values the paid product shows | Anyone | `index.html`, `data/humanoids-catalogue.*` |
+| The 12 other tabs: every row and content field, with record ids | Anyone | `data/database/<tab>.json`, loaded by the Database section of `index.html` |
+| Left out everywhere | Nobody | rows the sheet marks as duplicates or not for publication; private links (workbook, Drive, mailto:, local addresses), personal contacts and internal editor notes; the backend row key, raw sheet-row pointers (`source_rows`) and importer bookkeeping; third-party GOOGLEFINANCE quote columns of Stocks |
+| Backend (`server/`): same data behind sign-in and a €100/year subscription, checkout closed | Prepared for the paywall phase | Cloudflare Worker |
 
-Nothing else may reach this repository, the Pages build, page source, downloadable files or any anonymous URL:
-no paid values, no rows the sheet marks as internal, no rows of the other tabs. `tools/check-public.mjs`
-enforces it in CI.
+Refresh: `node --no-warnings tools/export-database.mjs --from <private export>` and `tools/sync-humanoids.mjs`
+(see the scripts' headers), then `tools/export-humanoids.mjs` and `tools/build-site.mjs`. The private export
+stays outside Git.
 
 ## Layout
 
