@@ -1,0 +1,46 @@
+{
+  "id": "WH-20261116-1614-menu-superior-25",
+  "tarea": "Aumentar un 25 % el tamaño de los textos del menú superior (HUMANOIDS, DATABASE, COUNTRIES, METHOD) de whyhumanoid.com",
+  "origen": "Petición de Javier transmitida por Codex (16/11/2026)",
+  "fecha": "2026-11-16T16:14:36+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Tamaño de los cuatro enlaces: 1,25 veces la etiqueta monoespaciada. Escritorio y tableta (más de 760 px): de 10,5 px a 13,125 px. Móvil (760 px o menos): de 11 px a 13,75 px. Misma fuente (JetBrains Mono), mayúsculas, color y espaciado de letra (0,09 em).",
+    "Zona de pulsación de cada enlace: 44 px de alto (antes, unos 16 px).",
+    "Hasta 680 px, el menú pasa a su propia fila a todo el ancho bajo la marca, con una línea de separación; la cabecera mide 98 px. Antes, a 390 px, HUMANOIDS y DATABASE quedaban cortados y no se podían alcanzar (justify-content:flex-end dentro de un contenedor con desplazamiento).",
+    "Entre 680 y 980 px, el menú se alinea a la derecha con un margen automático, así que si algo no cabe se desplaza en vez de quedar oculto. Por debajo de 360 px los enlaces pasan a una segunda línea en lugar de recortarse.",
+    "El desplazamiento a las secciones (scroll-padding-top) tiene en cuenta la cabecera más alta en móvil."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Web",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "PR #14",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/14"
+    },
+    {
+      "etiqueta": "Commit en main",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/eeba3102013550a86d3bb3e1e28eb29d84c3040b"
+    }
+  ],
+  "despliegue": [
+    "PR #14 fusionado en main (squash eeba310) tras CI en verde.",
+    "CI y pages-build-deployment del commit eeba310 terminados con éxito.",
+    "Producción comprobada en el navegador sobre https://whyhumanoid.com/ con JetBrains Mono cargada: 13,125 px a 1440 y 768 px, 13,75 px a 390 y 360 px."
+  ],
+  "verificaciones": [
+    "1440 px en producción: una fila, enlaces de 90, 80, 90 y 62 px de ancho por 44 de alto, 22 px entre textos, 272 px libres a cada lado (marca y reloj), sin recortes ni desplazamiento lateral.",
+    "768 px en producción: una fila, 16 px entre textos, sin recortes, sin solapes con la marca, cabecera de 57 px.",
+    "390 px en producción: los cuatro enlaces visibles en su fila (de 16 a 374 px), 18 px entre textos, 44 px de alto, sin solapes ni desplazamiento lateral. Pulsar DATABASE lleva a la sección con su título visible bajo la cabecera (cabecera hasta 98 px, sección desde 112 px).",
+    "360 px en producción: los cuatro enlaces en una fila, 8 px entre textos, sin recortes.",
+    "Navegador sin interfaz a 320, 360, 390, 680, 681, 768, 980 y 1440 px: ningún enlace recortado, solapado ni fuera de pantalla; a 320 px pasan a dos líneas.",
+    "Comprobaciones del repositorio en verde: guardia pública, build --check, export-database --check, verify-site y registro de entregas.",
+    "Capturas de antes y después a 390, 768 y 1440 px enviadas en el chat."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Ninguna de Claude. Javier revisa el menú en su dispositivo; Codex lo incluye en su revisión horaria."
+}
