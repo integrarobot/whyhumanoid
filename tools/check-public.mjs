@@ -54,7 +54,7 @@ for (const file of tracked.filter(isText)) {
 }
 
 // Rule 4: published server, tooling and test code must stay out of the Pages artifact.
-for (const dir of ['server', 'tools', '.github']) {
+for (const dir of ['server', 'tools', '.github', 'ops']) {
   if (tracked.some((f) => f.startsWith(`${dir}/`) && isPublished(f))) fail('_config.yml', `does not exclude ${dir}/`);
 }
 
