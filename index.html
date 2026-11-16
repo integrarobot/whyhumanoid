@@ -344,19 +344,67 @@ button{cursor:pointer}
 .db-table tbody tr.r{cursor:pointer}
 .db-table tbody tr.r:hover td,.db-table tbody tr.r[aria-expanded="true"] td{background:color-mix(in srgb,var(--amber) 6%,transparent)}
 .db-table td.src{font-family:var(--f-mono);color:var(--bone-3);white-space:nowrap}
-.db-table tr.det td{background:color-mix(in srgb,var(--bone) 3%,transparent);padding:14px 16px}
+.db-table .sub{display:block;margin-top:3px;color:var(--bone-3);font-size:12px}
+.db-table td.opc{width:1%;white-space:nowrap}
+.db-table .cw-l > div{min-width:24ch}
+.db-table .cw-m > div{min-width:16ch}
+.db-table .cw-s > div{min-width:13ch}
+.db-open{background:transparent;border:1px solid var(--amber-2);color:var(--amber);font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;padding:7px 10px;min-height:36px;white-space:nowrap;cursor:pointer}
+.db-open:hover,.db-open:focus-visible{background:var(--amber-3);border-color:var(--amber)}
+.db-hint{margin:8px 0 0;color:var(--bone-2);font-size:var(--fs-small);max-width:72ch}
+.db-hint b{color:var(--amber);font-weight:500}
+/* Record card (View all data): every field of one row, in full. Full screen on phones. */
+html.dlg-open{overflow:hidden}
+.db-dlg{padding:0;border:1px solid var(--line-2);background:var(--ink-1);color:var(--bone);width:min(960px,calc(100vw - 48px));max-width:none;max-height:calc(100dvh - 48px);margin:auto}
+.db-dlg[open]{display:flex;flex-direction:column}
+.db-dlg::backdrop{background:rgba(5,6,8,.74)}
+.db-dlg-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:16px 20px 12px;border-bottom:1px solid var(--line)}
+.db-dlg-id{min-width:0}
+.db-dlg-head h4{margin:6px 0 4px;font-size:clamp(18px,2vw,24px);font-weight:560;letter-spacing:-.01em;line-height:1.25;overflow-wrap:anywhere}
+.db-dlg-head p{margin:0}
+.db-dlg-body{flex:1 1 auto;overflow-y:auto;padding:16px 20px 22px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.db-dlg-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 20px;border-top:1px solid var(--line)}
+.db-dlg button{background:transparent;border:1px solid var(--line-2);color:var(--bone-2);font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;padding:8px 12px;min-height:40px;cursor:pointer;white-space:nowrap}
+.db-dlg button:hover:not(:disabled),.db-dlg button:focus-visible{color:var(--amber);border-color:var(--amber-2)}
+.db-dlg button:disabled{opacity:.4;cursor:default}
+.db-dlg-st{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.db-sec{margin:18px 0 0}
+.db-sec h5{margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line);color:var(--amber);font-weight:400}
+.db-kv dd.nil{color:var(--bone-3);font-style:italic}
+.db-dlg .db-kv{grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:8px 18px}
 .db-kv{display:grid;grid-template-columns:minmax(140px,max-content) minmax(0,1fr);gap:6px 18px;margin:0}
 .db-kv dt{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3)}
 .db-kv dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
 .db-kv a,.db-table a{color:var(--amber)}
 .db-empty{padding:16px 12px;color:var(--bone-3);font-size:var(--fs-small)}
+@media (max-width:1240px){
+  /* Deployments on phones and tablets: one block per claim (row and status, then organization, task, site, result, source),
+     with the View all data button full width. No sideways scrolling to read the business fields. */
+  .db-table.dep,.db-table.dep tbody{display:block}
+  .db-table.dep thead{display:none}
+  .db-table.dep tr.r{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px 12px;padding:14px 12px;border-bottom:1px solid var(--line)}
+  .db-table.dep tr.r td{display:block;padding:0;border:0;max-width:none;width:auto;background:none}
+  .db-table.dep td.src::before{content:'Row ';}
+  .db-table.dep td[data-label]{grid-column:1 / -1}
+  .db-table.dep td[data-label]::before{content:attr(data-label);display:block;margin-bottom:2px;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3)}
+  .db-table.dep .cw-l > div,.db-table.dep .cw-m > div,.db-table.dep .cw-s > div{min-width:0;max-width:90ch}
+  .db-table.dep td.opc{grid-column:1 / -1;order:9;width:auto}
+  .db-table.dep .db-open{width:100%;min-height:44px}
+  .db-table.dep td.db-empty{display:block}
+}
 @media (max-width:760px){
   .db-head{grid-template-columns:minmax(0,1fr)}
   .db-search input{min-width:0;width:100%}
   .db-search{width:100%}
-  .db-kv{grid-template-columns:minmax(0,1fr);gap:2px 0}
+  .db-kv,.db-dlg .db-kv{grid-template-columns:minmax(0,1fr);gap:2px 0}
   .db-kv dd{margin-bottom:8px}
   .db-table td{max-width:60vw}
+  .db-dlg{width:100vw;height:100dvh;max-height:100dvh;margin:0;border:0}
+  .db-dlg-head{padding:calc(12px + env(safe-area-inset-top,0px)) 16px 10px}
+  .db-dlg-body{padding:12px 16px 20px}
+  .db-dlg-foot{padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+  .db-dlg-foot button{flex:1 1 0}
+  .db-dlg-foot .lbl{display:none}
 }
 @media (max-width:1180px){
   .bench{grid-template-columns:minmax(0,1fr)}
@@ -952,7 +1000,12 @@ button{cursor:pointer}
   var link = function (u, text) { return '<a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + esc(text || u) + '</a>'; };
   var fmt = function (v) {
     if (v === null || v === undefined || v === '') return '<span class="lbl">·</span>';
-    return esc(v).replace(/https?:\/\/[^\s<]+/g, function (u) { return '<a href="' + u + '" target="_blank" rel="noopener noreferrer">' + u + '</a>'; });
+    // A URL ends before trailing punctuation (".", ",", ";", ")" without "(") so the link opens the real page.
+    return esc(v).replace(/https?:\/\/[^\s<]+/g, function (u) {
+      var tail = '';
+      for (var m; (m = u.match(/(&quot;|[.,;:!?\]]|\))$/)) && !(m[1] === ')' && u.indexOf('(') >= 0);) { tail = m[1] + tail; u = u.slice(0, -m[1].length); }
+      return '<a href="' + u + '" target="_blank" rel="noopener noreferrer">' + u + '</a>' + tail;
+    });
   };
   var day = function (iso) { var d = new Date(iso); return isNaN(d) ? '' : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }); };
   var exported = day(DB.snapshot);
@@ -1043,40 +1096,154 @@ button{cursor:pointer}
   function mark(id) {
     [].forEach.call(index.querySelectorAll('a'), function (a) { if (a.dataset.id === id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
   }
+  // Record card ("View all data"): every declared field of the row, in full, grouped. Deployments is the main
+  // section (Javier, 16 Nov 2026): its table shows what a business reader needs and the card shows all 47 fields.
+  var GROUPS_DEP = [
+    ['Record', ['record_id', 'claim_id', 'deployment_id']],
+    ['Organization', ['organization_name', 'organization_id', 'organization_role', 'organization_country']],
+    ['Robot', ['manufacturer', 'robot_model', 'robot_version']],
+    ['Site and sector', ['site_name', 'city', 'region', 'country', 'sector', 'environment']],
+    ['Relationship and status', ['operational_status', 'commercial_status', 'relationship_type', 'observed_start', 'observed_end']],
+    ['Task', ['task_description', 'task_category', 'task_id', 'workflow_from', 'workflow_to', 'integration_dependencies']],
+    ['Result or metric', ['metric_name', 'metric_operator', 'metric_value', 'metric_unit', 'metric_period']],
+    ['Claim and evidence', ['claim_text', 'claim_type', 'evidence_level', 'confidence', 'verification_status']],
+    ['Source', ['source_title', 'source_url', 'source_publisher', 'source_role', 'source_type', 'source_id', 'publication_date', 'accessed_at', 'language']],
+    ['Notes and open questions', ['open_questions_notes']]
+  ];
+  // Each declared field appears exactly once: the groups first, then any field they do not name (a new sheet column).
+  function groupsOf(meta) {
+    var seen = {};
+    var out = (meta.id === 'deployments' ? GROUPS_DEP : [['Fields', meta.fields]]).map(function (g) {
+      var fs = g[1].filter(function (f) { return meta.fields.indexOf(f) >= 0 && !seen[f]; });
+      fs.forEach(function (f) { seen[f] = 1; });
+      return [g[0], fs];
+    }).filter(function (g) { return g[1].length; });
+    var rest = meta.fields.filter(function (f) { return !seen[f]; });
+    if (rest.length) out.push(['Other fields', rest]);
+    return out;
+  }
+  var nz = function (v) { return v !== null && v !== undefined && String(v).trim() !== ''; };
+  var human = function (v) { return String(v).replace(/_/g, ' '); };
+  var sub = function (s) { return s ? '<span class="sub">' + s + '</span>' : ''; };
+  function metric(r) {
+    if (!nz(r.metric_name)) return '';
+    var op = nz(r.metric_operator) && r.metric_operator !== '=' ? r.metric_operator + ' ' : '';
+    return esc(human(r.metric_name)) + ': ' + esc(op + (r.metric_value == null ? '' : r.metric_value) + (nz(r.metric_unit) ? ' ' + human(r.metric_unit) : '')) + sub(nz(r.metric_period) ? esc(human(r.metric_period)) : '');
+  }
+  // Deployments table: status, who, task, where, result and source. The card has everything else.
+  // [header, cell, width class]. Minimum widths keep text from wrapping letter by letter when the table scrolls.
+  var DEP_COLS = [
+    ['Organization and robot', function (r) { return esc(r.organization_name || '') + sub(esc([r.manufacturer, r.robot_model].filter(nz).join(' · '))); }, 'cw-m'],
+    ['Task', function (r) { return nz(r.task_description) ? esc(r.task_description) : esc(human(r.task_category || '')) + sub('No task description in the sheet'); }, 'cw-l'],
+    ['Site', function (r) { return esc(r.site_name || '') + sub(esc([r.city, r.region, r.country].filter(nz).join(', '))); }, 'cw-m'],
+    ['Result or metric', function (r) { return metric(r) || '<span class="lbl">No metric in the sheet</span>'; }, 'cw-m'],
+    ['Source', function (r) {
+      var u = String(r.source_url || '').match(/https?:\/\/[^\s|,;]+/);
+      var who = esc(r.source_publisher || r.source_title || 'Source');
+      return (u ? link(u[0], r.source_publisher || r.source_title || u[0]) : who + sub('No URL in the sheet')) + sub(nz(r.publication_date) ? 'Published ' + esc(r.publication_date) : 'Publication date not recorded');
+    }, 'cw-s']
+  ];
+
+  var dlg = null, dlgMeta = null, dlgList = [], dlgPos = 0, opener = null;
+  function closeDlg() {
+    if (!dlg) return;
+    if (typeof dlg.close === 'function') { try { dlg.close(); return; } catch (e) { /* fall through */ } }
+    dlg.removeAttribute('open');
+    dlg.dispatchEvent(new Event('close'));
+  }
+  function dialog() {
+    if (dlg) return dlg;
+    dlg = document.createElement('dialog');
+    dlg.className = 'db-dlg';
+    dlg.id = 'db-dlg';
+    dlg.setAttribute('aria-labelledby', 'db-dlg-title');
+    dlg.innerHTML = '<div class="db-dlg-head"><div class="db-dlg-id"><span class="lbl" id="db-dlg-kicker"></span><h4 id="db-dlg-title"></h4><p class="lbl" id="db-dlg-count"></p></div>' +
+      '<button type="button" id="db-dlg-close">Close</button></div><div class="db-dlg-body" id="db-dlg-body"></div>' +
+      '<div class="db-dlg-foot"><button type="button" id="db-dlg-prev">Previous record</button><span class="lbl" id="db-dlg-pos"></span><button type="button" id="db-dlg-next">Next record</button></div>';
+    document.body.appendChild(dlg);
+    dlg.querySelector('#db-dlg-close').addEventListener('click', closeDlg);
+    dlg.querySelector('#db-dlg-prev').addEventListener('click', function () { fill(dlgPos - 1); });
+    dlg.querySelector('#db-dlg-next').addEventListener('click', function () { fill(dlgPos + 1); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) closeDlg(); });
+    dlg.addEventListener('close', function () {
+      if (dlg.open) return; // the close event is queued; a card reopened meanwhile keeps the page locked
+      document.documentElement.classList.remove('dlg-open');
+      if (opener && document.body.contains(opener)) opener.focus();
+    });
+    return dlg;
+  }
+  function fill(pos) {
+    if (pos < 0 || pos >= dlgList.length) return;
+    dlgPos = pos;
+    var meta = dlgMeta, r = dlgList[pos], isDep = meta.id === 'deployments';
+    var withData = meta.fields.filter(function (f) { return nz(r[f]); }).length;
+    var name = isDep ? [r.organization_name, [r.manufacturer, r.robot_model].filter(nz).join(' ')].filter(nz).join(' · ')
+      : (meta.fields.filter(function (f) { return f !== 'list' && nz(r[f]); }).map(function (f) { return r[f]; })[0] || meta.title);
+    dlg.querySelector('#db-dlg-kicker').textContent = meta.title + ' · row ' + r._row + (isDep && nz(r.record_id) ? ' · ' + r.record_id : '');
+    dlg.querySelector('#db-dlg-title').textContent = name;
+    dlg.querySelector('#db-dlg-count').textContent = meta.fields.length + ' fields · ' + withData + ' with data · ' + (meta.fields.length - withData) + ' empty in the sheet';
+    var body = dlg.querySelector('#db-dlg-body');
+    body.innerHTML = (isDep ? '<p class="db-dlg-st"><span class="dst ' + status(r) + '">' + stLabel(status(r)) + '</span><span class="lbl">operational status in the sheet: ' + esc(r.operational_status || 'empty') + '</span></p>' : '') +
+      trace(meta.id, r) +
+      groupsOf(meta).map(function (g) {
+        return '<section class="db-sec"><h5 class="lbl">' + esc(g[0]) + '</h5><dl class="db-kv">' + g[1].map(function (k) {
+          return '<dt>' + esc(label(k)) + '</dt>' + (nz(r[k]) ? '<dd data-f="' + esc(k) + '">' + fmt(r[k]) + '</dd>' : '<dd data-f="' + esc(k) + '" class="nil">Empty in the sheet</dd>');
+        }).join('') + '</dl></section>';
+      }).join('');
+    body.scrollTop = 0;
+    dlg.querySelector('#db-dlg-pos').textContent = 'Record ' + (pos + 1) + ' of ' + dlgList.length + (dlgList.length !== cache[meta.id].rows.length ? ' shown' : '');
+    dlg.querySelector('#db-dlg-prev').disabled = pos === 0;
+    dlg.querySelector('#db-dlg-next').disabled = pos === dlgList.length - 1;
+  }
+  function openRecord(meta, list, pos, from) {
+    dialog();
+    dlgMeta = meta; dlgList = list; opener = from || null;
+    fill(pos);
+    if (!dlg.open) {
+      if (typeof dlg.showModal === 'function') { try { dlg.showModal(); } catch (e) { dlg.setAttribute('open', ''); } } else dlg.setAttribute('open', '');
+    }
+    document.documentElement.classList.add('dlg-open');
+    var x = dlg.querySelector('#db-dlg-close'); if (x && x.focus) x.focus();
+  }
+
   function show(id) {
     var meta = byId[id] || DB.tabs[0];
     current = meta;
     mark(meta.id);
+    if (dlg && dlg.open) closeDlg();
     var isDep = meta.id === 'deployments';
-    var cols = (isDep ? ['organization_name', 'manufacturer', 'robot_model', 'publication_date'] : meta.fields.filter(function (f) { return f !== 'list'; }).slice(0, 4));
+    var cols = isDep ? DEP_COLS : meta.fields.filter(function (f) { return f !== 'list'; }).slice(0, 4).map(function (f) { return [label(f), function (r) { return fmt(r[f]); }]; });
     var sources = meta.source_rows_total === meta.entries_total ? '' : ' · from ' + meta.source_rows_total + ' source rows';
     panel.innerHTML =
       '<div class="db-panel-head"><div><h3 id="db-title">' + esc(meta.title) + '</h3><p>' + esc(meta.description || '') + '</p>' +
+      '<p class="db-hint">The table is a summary. <b>View all data</b> opens every field of the row (' + meta.fields.length + ' fields), in full, as it is in the workbook.</p>' +
       '<p class="lbl" id="db-count">' + meta.entries_total + ' entries' + sources + '</p></div>' +
-      '<label class="db-search"><span class="lbl">Search ' + esc(meta.title.toLowerCase()) + '</span><br><input id="db-q" type="search" autocomplete="off" placeholder="Filter every row"></label></div>' +
+      '<label class="db-search"><span class="lbl">Search ' + esc(meta.title.toLowerCase()) + '</span><br><input id="db-q" type="search" autocomplete="off" placeholder="Filter every field"></label></div>' +
       (isDep ? '<div class="db-status" id="db-status" role="group" aria-label="Filter deployments by status"></div>' : '') +
-      '<div class="db-scroll"><table class="db-table"><thead><tr><th scope="col">Row</th>' + (isDep ? '<th scope="col" class="stc">Status</th>' : '') + cols.map(function (c) { return '<th scope="col">' + esc(label(c)) + '</th>'; }).join('') +
-      '<th scope="col">Source</th></tr></thead><tbody id="db-rows"><tr><td class="db-empty" colspan="9">Loading…</td></tr></tbody></table></div>';
+      '<div class="db-scroll"><table class="db-table' + (isDep ? ' dep' : '') + '"><thead><tr><th scope="col">Row</th>' + (isDep ? '<th scope="col" class="stc">Status</th>' : '') + '<th scope="col" class="opc">Record</th>' +
+      cols.map(function (c) { return '<th scope="col">' + esc(c[0]) + '</th>'; }).join('') + (isDep ? '' : '<th scope="col">Source</th>') +
+      '</tr></thead><tbody id="db-rows"><tr><td class="db-empty" colspan="12">Loading…</td></tr></tbody></table></div>';
     var body = document.getElementById('db-rows'), countLine = document.getElementById('db-count');
-    var ncol = cols.length + 2 + (isDep ? 1 : 0);
+    var ncol = cols.length + 3;
     load(meta.id).then(function (tab) {
       if (current !== meta) return;
-      var rows = tab.rows, q = '', st = 'all';
+      var rows = tab.rows, q = '', st = 'all', shown = rows;
       var srcOf = function (r) {
         var t = TRACE[meta.id] || { src: meta.fields.filter(function (f) { return /(^|_)url$/.test(f); }) };
         for (var i = 0; i < (t.src || []).length; i++) { var u = String(r[t.src[i]] || '').match(/https?:\/\/[^\s|,;]+/); if (u) return link(u[0], new URL(u[0]).hostname.replace(/^www\./, '')); }
         return '<span class="lbl">not recorded</span>';
       };
       function render() {
-        var shown = rows.filter(function (r) {
+        shown = rows.filter(function (r) {
           if (isDep && st !== 'all' && status(r) !== st) return false;
           return !q || Object.keys(r).some(function (k) { return k !== '_row' && String(r[k] == null ? '' : r[k]).toLowerCase().indexOf(q) >= 0; });
         });
         countLine.textContent = (shown.length !== rows.length ? shown.length + ' of ' : '') + meta.entries_total + ' entries' + sources;
         body.innerHTML = shown.length ? shown.map(function (r) {
-          return '<tr class="r" tabindex="0" aria-expanded="false" data-i="' + rows.indexOf(r) + '"><td class="src">' + r._row + '</td>' +
+          return '<tr class="r" data-i="' + rows.indexOf(r) + '"><td class="src">' + r._row + '</td>' +
             (isDep ? '<td class="stc"><span class="dst ' + status(r) + '">' + stLabel(status(r)) + '</span></td>' : '') +
-            cols.map(function (c) { return '<td>' + fmt(r[c]) + '</td>'; }).join('') + '<td>' + srcOf(r) + '</td></tr>';
+            '<td class="opc"><button type="button" class="db-open" aria-haspopup="dialog" aria-label="View all data, row ' + r._row + '">View all data</button></td>' +
+            cols.map(function (c) { return '<td data-label="' + esc(c[0]) + '"' + (c[2] ? ' class="' + c[2] + '"' : '') + '>' + (c[2] ? '<div>' + c[1](r) + '</div>' : c[1](r)) + '</td>'; }).join('') + (isDep ? '' : '<td>' + srcOf(r) + '</td>') + '</tr>';
         }).join('') : '<tr><td class="db-empty" colspan="' + ncol + '">No rows match.</td></tr>';
       }
       if (isDep) {
@@ -1090,19 +1257,13 @@ button{cursor:pointer}
           render();
         });
       }
-      function toggle(tr) {
-        var open = tr.getAttribute('aria-expanded') === 'true', next = tr.nextElementSibling;
-        if (next && next.classList.contains('det')) next.remove();
-        tr.setAttribute('aria-expanded', String(!open));
-        if (open) return;
-        var r = rows[+tr.dataset.i], det = document.createElement('tr');
-        det.className = 'det';
-        det.innerHTML = '<td colspan="' + ncol + '">' + trace(meta.id, r) + (isDep ? '<p class="lbl">Status: ' + stLabel(status(r)) + ' (operational status in the sheet: ' + esc(r.operational_status || 'empty') + ')</p>' : '') +
-          '<dl class="db-kv">' + meta.fields.map(function (k) { return '<dt>' + esc(label(k)) + '</dt><dd>' + fmt(r[k]) + '</dd>'; }).join('') + '</dl></td>';
-        tr.after(det);
-      }
-      body.addEventListener('click', function (e) { var tr = e.target.closest('tr.r'); if (tr && !e.target.closest('a')) toggle(tr); });
-      body.addEventListener('keydown', function (e) { var tr = e.target.closest('tr.r'); if (tr && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); toggle(tr); } });
+      // The button is the visible way in; a click anywhere else on the row opens the same card.
+      body.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        var tr = e.target.closest('tr.r'); if (!tr) return;
+        var r = rows[+tr.dataset.i];
+        openRecord(meta, shown, shown.indexOf(r), tr.querySelector('.db-open'));
+      });
       document.getElementById('db-q').addEventListener('input', function (e) { q = e.target.value.toLowerCase(); render(); });
       render();
     }).catch(function () {

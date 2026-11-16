@@ -7,6 +7,7 @@ Why Humanoid? (whyhumanoid.com), de Integrarobot. Decide Javier; ejecuta Claude;
 - Base de datos abierta: las 13 pestañas, todos sus registros y campos de contenido, sin pago ni registro (d-0004). Stripe desactivado. No volver a vistas previas de 10 filas.
 - Nunca en Git ni en la web: credenciales, enlaces o identificadores del libro maestro o de Drive, contactos personales, cuentas de usuario ni notas internas.
 - Cambios por rama, PR contra `main`, CI en verde, fusión y verificación en producción (README). La web la sirve GitHub Pages desde `main`.
+- Deployments es la sección más importante (Javier, 16/11/2026): se publican todas las filas, columnas y valores de la hoja, íntegros; no se quitan filas por parecer duplicadas; cada fila tiene «View all data» con la ficha completa. Antes de publicar, `node tools/audit-deployments.mjs --from <export>` con 0 diferencias y `node tools/verify-site.mjs` en verde. Criterio completo en el skill, sección «Deployments: criterio de publicación».
 - Actualización semanal y su procedimiento: `.claude/skills/whyhumanoid-weekly-update/SKILL.md` (tarea programada de los miércoles a las 14:00, Europe/Madrid; no se duplica).
 
 ## Cierre obligatorio de cada entrega
