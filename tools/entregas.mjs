@@ -160,15 +160,19 @@ const lista = (xs, vacio = 'Ninguno.') => (xs.length ? xs.map((x) => `- ${x}`).j
 
 export function informe(c, avisos = { 'aviso-codex': null, 'entrega-usuario': null }) {
   const conf = (x, quien) => (x ? `confirmado por ${x.por} el ${fechaLegible(x.fecha)}` : `pendiente de confirmación de ${quien}`);
+  // Metadata as a table: no "Label: Value" lines, so the house style (lower case after a colon) holds.
+  const celda = (s) => String(s).replace(/\|/g, '\\|').replace(/\n/g, ' ');
   return [
     `## Cierre ${c.id}`,
     '',
-    `- Tarea: ${c.tarea}`,
-    `- Fecha: ${fechaLegible(c.fecha)}`,
-    `- Estado: ${c.estado.replace('_', ' ')}`,
-    `- Origen: ${c.origen}`,
-    `- Ejecuta: ${c.ejecuta}`,
-    ...(c.corrige ? [`- Corrige: ${c.corrige}`] : []),
+    '| Campo | Valor |',
+    '|---|---|',
+    `| Tarea | ${celda(c.tarea)} |`,
+    `| Fecha | ${fechaLegible(c.fecha)} |`,
+    `| Estado | ${c.estado.replace('_', ' ')} |`,
+    `| Origen | ${celda(c.origen)} |`,
+    `| Ejecuta | ${celda(c.ejecuta)} |`,
+    ...(c.corrige ? [`| Corrige | ${c.corrige} |`] : []),
     '',
     '### Cambios',
     lista(c.cambios, 'Sin cambios.'),
