@@ -30,6 +30,25 @@ then: import counts for the 13 tabs, a sign-in email from `premium@whyhumanoid.c
 401/403/200 boundaries, the live price check through one unpaid Checkout session (no card entered, no charge), and
 the portal link for a paying account. No real card is used for testing.
 
+### State on 16 Nov 2026, 20:35 Madrid
+
+- whyhumanoid.com (commit `f4bd2db`, PR #18): previews only; the 13 old `/data/database/*.json` URLs answer 404.
+- Production Worker `whyhumanoid-premium`: paywall code from `f4bd2db` (dashboard bundle sha256 `1659cea9…7d8b`),
+  version `38f8d8ab`, then `CHECKOUT_ENABLED=true` and `ALLOW_LIVE_CHECKOUT=true`. Checked without a session:
+  `/health` 200; previews 200 with 0 rows (empty D1); full rows, `/v1/me`, checkout and portal 401; sign-in 503
+  `email_not_configured`; webhook 503 `webhook_not_configured`; `/v1/billing/plan` `checkout_available: false`.
+  Secrets: only `WORKBOOK_ID`. Nothing can be charged yet.
+- Test Worker `whyhumanoid-premium-test`: same build, version `7912c960`, staging data of 13 Nov. Without a session
+  every premium tab previews at most its first 10 sheet rows (Software 19 and Other robots 20 entries), Humanoids
+  133 in full, and full rows answer 401. `checkout_available: true` there (test keys, test email, data present),
+  which shows the gate opening once the prerequisites exist.
+- Production import, run `43940173562` (main, target production): Google answers `unauthorized_client`, "The given
+  credential is rejected by the attribute condition". Claims presented: `sub`
+  `repo:integrarobot@282541415/whyhumanoid@1456468940:environment:production`, `workflow_ref`
+  `integrarobot/whyhumanoid/.github/workflows/import-workbook.yml@refs/heads/main`. Step 1 of the table (4.1) fixes it.
+- Branch `deploy/worker-bundle-f4bd2db` (the temporary bundle used by the dashboard editor; public server code, no
+  data) could not be deleted through the agent proxy: delete it in GitHub, Branches.
+
 ### Exposure of the open-database period
 
 - Repository `integrarobot/whyhumanoid` is public. The commits from PR #4 (open database, 16 Nov 2026) to `bf785ce`
