@@ -1,5 +1,5 @@
 {
- "note": "Open database: every row and content field of the 12 workbook tabs other than Humanoids, free to read (decision of 16 Nov 2026). Rows the sheet marks as internal, the backend row key, raw sheet-row pointers and importer bookkeeping are left out.",
+ "note": "Free preview: the first 10 sheet rows of each of the 12 workbook tabs other than Humanoids, with counts and field names. Full rows are premium (EUR 100 per year) and served only by the backend after a subscription check (decision of 16 Nov 2026).",
  "snapshot": "2026-11-16T11:42:00Z",
  "tabs": [
   {
@@ -8,6 +8,8 @@
    "description": "One claim per row about a humanoid robot deployment, with evidence level, source and dates.",
    "entries_total": 119,
    "source_rows_total": 119,
+   "preview_entries": 10,
+   "preview_source_rows": 10,
    "fields": [
     "record_id",
     "organization_id",
@@ -64,6 +66,8 @@
    "description": "System integrators and service providers that deploy humanoid and service robots.",
    "entries_total": 7,
    "source_rows_total": 7,
+   "preview_entries": 7,
+   "preview_source_rows": 7,
    "fields": [
     "list",
     "name",
@@ -80,6 +84,8 @@
    "description": "Links between robot models, tasks, deployments and claims, with stage and limitations.",
    "entries_total": 15,
    "source_rows_total": 15,
+   "preview_entries": 10,
+   "preview_source_rows": 10,
    "fields": [
     "link_id",
     "model_id",
@@ -111,6 +117,8 @@
    "description": "Per-task eligibility of each robot model against documented evidence.",
    "entries_total": 4,
    "source_rows_total": 4,
+   "preview_entries": 4,
+   "preview_source_rows": 4,
    "fields": [
     "task_id",
     "model_id",
@@ -135,6 +143,8 @@
    "description": "Task analysis for container handling in intralogistics, with traceability.",
    "entries_total": 22,
    "source_rows_total": 22,
+   "preview_entries": 10,
+   "preview_source_rows": 10,
    "fields": [
     "layer",
     "element",
@@ -148,6 +158,8 @@
    "description": "Canonical organisations, models and resources with identity scope and review date.",
    "entries_total": 24,
    "source_rows_total": 24,
+   "preview_entries": 10,
+   "preview_source_rows": 10,
    "fields": [
     "entity_id",
     "entity_type",
@@ -168,6 +180,8 @@
    "description": "Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.",
    "entries_total": 276,
    "source_rows_total": 276,
+   "preview_entries": 10,
+   "preview_source_rows": 10,
    "fields": [
     "name",
     "url",
@@ -193,6 +207,8 @@
    "description": "Robot foundation models, VLA models, world models and robotics software.",
    "entries_total": 144,
    "source_rows_total": 124,
+   "preview_entries": 19,
+   "preview_source_rows": 10,
    "fields": [
     "list",
     "name",
@@ -210,6 +226,8 @@
    "description": "Robot learning datasets relevant to humanoids.",
    "entries_total": 28,
    "source_rows_total": 28,
+   "preview_entries": 10,
+   "preview_source_rows": 10,
    "fields": [
     "list",
     "name",
@@ -226,6 +244,8 @@
    "description": "Compute, actuators and other hardware used in humanoid robots.",
    "entries_total": 11,
    "source_rows_total": 11,
+   "preview_entries": 10,
+   "preview_source_rows": 10,
    "fields": [
     "list",
     "name",
@@ -242,6 +262,8 @@
    "description": "Non-humanoid and educational robots tracked alongside the humanoid catalogue.",
    "entries_total": 547,
    "source_rows_total": 488,
+   "preview_entries": 20,
+   "preview_source_rows": 10,
    "fields": [
     "list",
     "name",
@@ -259,6 +281,8 @@
    "description": "Findings and proposals for the humanoid robotics data space.",
    "entries_total": 30,
    "source_rows_total": 30,
+   "preview_entries": 10,
+   "preview_source_rows": 10,
    "fields": [
     "record_id",
     "workstream",

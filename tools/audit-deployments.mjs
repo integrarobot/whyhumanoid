@@ -1,17 +1,21 @@
 #!/usr/bin/env node
-// Deployments audit: the workbook's Deployments sheet against what the site publishes, cell by cell.
-// Deployments is the main section of whyhumanoid.com (Javier, 16 Nov 2026): every row, every column and every
-// non-empty value of the sheet must be published unchanged. Nothing is dropped for looking like a duplicate:
-// different claims and evidence about one deployment are different rows.
+// Deployments audit: the workbook's Deployments sheet against what is served, cell by cell.
+// Deployments is the main section (Javier, 16 Nov 2026): every row, every column and every non-empty value of the
+// sheet must reach subscribers unchanged, and nothing is dropped for looking like a duplicate. Since the paywall
+// (16 Nov 2026) full rows live only in the backend database; the site publishes the first 10 sheet rows.
 //
 //   node tools/audit-deployments.mjs --from <export.json> [--json]
 //
-// <export.json> is the same private export export-database.mjs reads (tab name -> rows, header row first, as the
-// Sheets API returns them). It stays outside Git. Exits 1 on any difference and lists each one.
-// The page side (every field and value of every row shown in its "View all data" card) is checked by
-// tools/verify-site.mjs, so sheet -> data/database -> page is covered end to end.
+// Checks, on the same private export export-database.mjs reads (it stays outside Git):
+//   1. the backend import of the export (in memory, the code production runs) holds every sheet row, column and
+//      value of Deployments, in order: what subscribers get from GET /v1/datasets/deployments;
+//   2. data/preview/deployments.json holds exactly the first 10 sheet rows, unchanged, and nothing more.
+// Exits 1 on any difference and lists each one. The page side (every field and value in each "View all data" card)
+// is checked by tools/verify-site.mjs for the site and by the premium app checks for subscribers.
 
 import { readFileSync } from 'node:fs';
+import { importInMemory } from './export-database.mjs';
+import { queryDatasetRows } from '../server/src/datasets.js';
 
 const root = new URL('../', import.meta.url);
 const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
@@ -63,13 +67,23 @@ if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
     process.exit(2);
   }
   const values = JSON.parse(readFileSync(from, 'utf8'));
-  const published = JSON.parse(readFileSync(new URL('data/database/deployments.json', root), 'utf8')).rows;
-  const index = JSON.parse(readFileSync(new URL('data/database/index.json', root), 'utf8'));
-  const r = auditDeployments(values, published, index);
-  if (process.argv.includes('--json')) console.log(JSON.stringify({ rows: r.rows, columns: r.columns, values: r.values, differences: r.problems }, null, 2));
-  if (r.problems.length) {
-    console.error(`Deployments audit FAILED (${r.problems.length}):\n- ${r.problems.slice(0, 200).join('\n- ')}`);
+  const index = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8'));
+  const meta = index.tabs.find((t) => t.id === 'deployments');
+  // 1. What subscribers get: the backend import, every row, in order.
+  const { db } = await importInMemory(from);
+  const page = await queryDatasetRows(db, 'deployments', { limit: 100000, offset: 0, q: null });
+  const served = page.rows.map(({ id, ...r }, i) => ({ _row: i + 1, ...r }));
+  const full = auditDeployments(values, served, { tabs: [{ ...meta, entries_total: served.length, source_rows_total: served.length }] });
+  // 2. What the site publishes: exactly the first 10 sheet rows.
+  const preview = JSON.parse(readFileSync(new URL('data/preview/deployments.json', root), 'utf8')).rows;
+  const firstTen = { ...values, [SHEET]: values[SHEET].slice(0, 11) };
+  const pre = auditDeployments(firstTen, preview, { tabs: [{ ...meta, entries_total: preview.length, source_rows_total: preview.length }] });
+  if (meta.entries_total !== full.rows) full.problems.push(`index says ${meta.entries_total} entries, the sheet has ${full.rows}`);
+  const problems = [...full.problems.map((p) => `served: ${p}`), ...pre.problems.map((p) => `preview: ${p}`)];
+  if (process.argv.includes('--json')) console.log(JSON.stringify({ rows: full.rows, columns: full.columns, values: full.values, preview_rows: pre.rows, differences: problems }, null, 2));
+  if (problems.length) {
+    console.error(`Deployments audit FAILED (${problems.length}):\n- ${problems.slice(0, 200).join('\n- ')}`);
     process.exit(1);
   }
-  console.log(`Deployments audit passed: ${r.rows} rows, ${r.columns} columns, ${r.values} non-empty values in the sheet, all published unchanged (0 differences).`);
+  console.log(`Deployments audit passed: ${full.rows} rows, ${full.columns} columns, ${full.values} non-empty values in the sheet, all served to subscribers unchanged; the site preview holds exactly the first ${pre.rows} sheet rows (0 differences).`);
 }

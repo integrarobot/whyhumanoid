@@ -1,9 +1,10 @@
 // Access to premium data is decided here and nowhere else.
-// A subscription grants access only while Stripe reports it active or trialing
-// AND its paid period has not ended. Cancelled-at-period-end keeps access until that date.
+// A subscription grants access only while Stripe reports it active AND its paid period has not ended.
+// There is no free trial (Javier, 16 Nov 2026): a trialing, incomplete, past_due, unpaid or canceled subscription
+// gives no access. Cancelled-at-period-end keeps access until that date.
 
 export const PRODUCT = 'premium';
-const ACTIVE_STATUSES = new Set(['active', 'trialing']);
+const ACTIVE_STATUSES = new Set(['active']);
 
 export async function getEntitlement(db, accountId, product = PRODUCT) {
   return db

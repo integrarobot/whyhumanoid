@@ -27,21 +27,33 @@ export function createStripeGateway({ secretKey, webhookSecret }) {
     verifyWebhook(rawBody, signature) {
       return stripe.webhooks.constructEventAsync(rawBody, signature, webhookSecret, 300, cryptoProvider);
     },
-    async createCheckoutSession({ priceId, accountId, email, successUrl, cancelUrl, idempotencyKey }) {
+    async createCheckoutSession({ priceId, accountId, email, customerId, successUrl, cancelUrl, idempotencyKey }) {
       const session = await stripe.checkout.sessions.create(
         {
           mode: 'subscription',
           line_items: [{ price: priceId, quantity: 1 }],
           client_reference_id: accountId,
-          customer_email: email,
+          // A returning subscriber keeps one Stripe customer; a new one is created from the account email.
+          ...(customerId ? { customer: customerId } : { customer_email: email }),
           metadata: { wh_account_id: accountId },
+          // No trial: the first year is paid at checkout.
           subscription_data: { metadata: { wh_account_id: accountId } },
+          payment_method_collection: 'always',
           success_url: successUrl,
           cancel_url: cancelUrl,
         },
         { idempotencyKey },
       );
       return { id: session.id, url: session.url };
+    },
+    // Stripe customer portal: payment method, invoices and cancellation, hosted by Stripe.
+    async createPortalSession({ customerId, returnUrl, configuration }) {
+      const session = await stripe.billingPortal.sessions.create({
+        customer: customerId,
+        return_url: returnUrl,
+        ...(configuration ? { configuration } : {}),
+      });
+      return { url: session.url };
     },
   };
 }
@@ -66,27 +78,54 @@ export async function verifyConfiguredPrice({ config, gateway, now, log = consol
   return problems;
 }
 
+// Checkout opens only when a payment can actually turn into access: the key matches the mode, live is allowed, and the
+// signed webhook that grants access can be verified. Data and sign-in are checked in checkoutState (they need I/O).
 export function checkoutReadiness({ config, gateway }) {
   if (!config.checkoutEnabled) return 'checkout_disabled';
   if (gateway.mode === 'unconfigured' || !config.stripePriceId) return 'checkout_not_configured';
   if (gateway.mode !== config.stripeMode) return 'stripe_mode_mismatch';
   if (gateway.mode === 'live' && !config.allowLiveCheckout) return 'live_checkout_disabled';
+  if (!gateway.webhookConfigured) return 'webhook_not_configured';
   return 'ready';
 }
 
-export async function startCheckout({ config, gateway, account, now, log }) {
+// Never charge for an empty product: every dataset must hold imported rows. Never sell what nobody can sign in to use.
+export async function checkoutState({ config, gateway, db, mailer, datasetCount }) {
   const readiness = checkoutReadiness({ config, gateway });
+  if (readiness !== 'ready') return readiness;
+  if (!mailer?.configured) return 'email_not_configured';
+  const loaded = await db.prepare("SELECT COUNT(DISTINCT dataset) AS n FROM premium_rows WHERE visibility = 'customer'").first();
+  if (Number(loaded?.n ?? 0) < datasetCount) return 'data_not_imported';
+  return 'ready';
+}
+
+export async function startCheckout({ config, gateway, account, now, log, db, mailer, datasetCount }) {
+  const readiness = db ? await checkoutState({ config, gateway, db, mailer, datasetCount }) : checkoutReadiness({ config, gateway });
   if (readiness !== 'ready') throw new HttpError(503, readiness);
   if ((await verifyConfiguredPrice({ config, gateway, now, log })).length) throw new HttpError(503, 'price_mismatch');
   const session = await gateway.createCheckoutSession({
     priceId: config.stripePriceId,
     accountId: account.accountId,
     email: account.email,
+    customerId: account.stripeCustomerId ?? null,
     successUrl: `${config.premiumUrl}?checkout=success`,
     cancelUrl: `${config.premiumUrl}?checkout=cancelled`,
     idempotencyKey: `checkout:${account.accountId}:${Math.floor(now / 600)}`,
   });
   return { url: session.url };
+}
+
+// Customer portal for an account that has paid at least once (it has a Stripe customer). Same key and mode rules as
+// checkout, but it does not depend on CHECKOUT_ENABLED: a subscriber must always be able to manage or cancel.
+export async function startPortal({ config, gateway, account }) {
+  if (gateway.mode === 'unconfigured') throw new HttpError(503, 'billing_not_configured');
+  if (gateway.mode !== config.stripeMode) throw new HttpError(503, 'stripe_mode_mismatch');
+  if (!account.stripeCustomerId) throw new HttpError(409, 'no_billing_account');
+  return gateway.createPortalSession({
+    customerId: account.stripeCustomerId,
+    returnUrl: `${config.premiumUrl}?billing=returned`,
+    configuration: config.stripePortalConfiguration ?? null,
+  });
 }
 
 export async function handleStripeWebhook({ db, gateway, config, rawBody, signature, now }) {

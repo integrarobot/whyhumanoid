@@ -33,8 +33,8 @@ const workbookUrl = /docs\.google\.com\/(spreadsheets|document)\/d\//;
 const premiumId = /\b(?:rec|clm|dep|lnk|src|mdl|res)_[a-z0-9]+_[a-z0-9_]+\b/;
 // Rule 3 (published site): no premium column names, which would indicate premium rows in page source.
 const humanoidFields = new Set(JSON.parse(read('tools/humanoids-allowlist.json')).fields);
-// Open database (decision of 16 Nov 2026): every content column is public; only the backend row key, raw sheet-row
-// pointers and importer bookkeeping stay internal, so those column names must not appear in published pages.
+// Only the backend row key, raw sheet-row pointers and importer bookkeeping are internal column names; they must not
+// appear in published pages. (Content columns are public in the 10-row previews; full rows are premium, rule 6.)
 const database = readDatabase();
 const premiumColumns = [
   ...new Set(DATASETS.flatMap((d) => d.fields ?? d.headers).filter((h) => h.includes('_') && isInternalField(h))),
@@ -44,9 +44,9 @@ for (const file of tracked.filter(isText)) {
   const text = read(file);
   if (driveId.test(text)) fail(file, 'contains a Google Drive file id', driveId.find(text).slice(0, 8));
   if (workbookUrl.test(text)) fail(file, 'contains a Google Docs/Sheets URL');
-  // Record ids are content of the open database (16 Nov 2026); elsewhere fixtures use the fx_ prefix.
-  if (premiumId.test(text) && !file.startsWith('data/database/')) fail(file, 'contains a premium-style record id', text.match(premiumId)[0]);
-  if ((isPublished(file) || file.startsWith('server/public/')) && !file.startsWith('data/database/')) {
+  // Record ids appear only in the free previews (data/preview); elsewhere fixtures use the fx_ prefix.
+  if (premiumId.test(text) && !file.startsWith('data/preview/')) fail(file, 'contains a premium-style record id', text.match(premiumId)[0]);
+  if ((isPublished(file) || file.startsWith('server/public/')) && !file.startsWith('data/preview/')) {
     // Database values may mention column names in prose; rule 6 polices the database files themselves.
     const leaked = premiumColumns.filter((c) => new RegExp(`\\b${c}\\b`).test(text));
     if (leaked.length) fail(file, 'published file mentions premium columns', leaked.slice(0, 5).join(', '));
@@ -68,7 +68,7 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
   if (tracked.includes(old)) fail(old, 'only data/humanoids-catalogue.* may hold public rows');
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
-  const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/database/${n}.json`);
+  const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
   if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
@@ -93,10 +93,15 @@ for (const m of page.models) {
 }
 if (page.models.length !== exported.records.length) fail('index.html', `embeds ${page.models.length} of ${exported.records.length} catalogue records`);
 
-// Rule 6: the other 12 tabs are published in full (open database, 16 Nov 2026): every customer row and content
-// field, without identifier columns or importer bookkeeping, and the page embeds exactly data/database/index.json.
-for (const problem of validateDatabase(database.index, database.tabs)) fail('data/database', problem);
-if (JSON.stringify(page.database) !== JSON.stringify(database.index)) fail('index.html', 'embedded database index differs from data/database/index.json');
+// Rule 6 (paywall, 16 Nov 2026): the other 12 tabs are published only as free previews, the first 10 sheet rows of
+// each, without internal columns; full rows are premium and live only in the backend database. No file of the old
+// open export (data/database/) may come back, and the page may only load the previews.
+for (const problem of validateDatabase(database.index, database.tabs)) fail('data/preview', problem);
+if (JSON.stringify(page.database) !== JSON.stringify(database.index)) fail('index.html', 'embedded database index differs from data/preview/index.json');
+for (const file of tracked.filter((f) => f.startsWith('data/database/'))) fail(file, 'full rows of a premium tab must not be published (paywall)');
+if (/data\/database\//.test(read('index.html'))) fail('index.html', 'loads the old full export (data/database)');
+if (page.access?.open !== false) fail('index.html', 'page is still in open-database mode');
+for (const t of page.database.tabs) if (page.database.tabs && t.rows) fail('index.html', `embeds rows of ${t.id}`);
 
 if (failures.length) {
   console.error(`Public data guard FAILED:\n- ${failures.join('\n- ')}`);

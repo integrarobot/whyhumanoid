@@ -1,8 +1,53 @@
 # Deployment settings
 
-Decision of 16 Nov 2026 (Javier): the whole database is open on whyhumanoid.com (README, access model). The site
-is a static export built from a private workbook export with the backend's own import code; it does not depend on
-the production import. The backend and the steps below stay for the later paywall phase.
+## 0. Paywall go-live (Javier, 16 Nov 2026, d-0008)
+
+Humanoids free; the other 12 tabs premium at €100 per year (Stripe live, no free trial). The site publishes only the
+first 10 sheet rows of each premium tab (`data/preview/`); full rows live only in the production D1 and are served
+by the Worker after a server-side subscription check. This replaces the open database of 16 Nov 2026.
+
+Checkout is armed in code, not by a person remembering an order: `/v1/billing/checkout` refuses (503) unless the
+Stripe key matches `STRIPE_MODE`, live is allowed, the webhook signing secret is set, sign-in email works and all 13
+datasets hold imported rows. So `CHECKOUT_ENABLED=true` and `ALLOW_LIVE_CHECKOUT=true` can be set before the last
+secrets: nothing can be charged until a payment can become access. Each session also re-checks the live price
+(EUR 10000, yearly, no trial).
+
+What only Javier (or Codex for Google) can do, in this order. Keys and secrets go straight into each service's
+console, never into chat, tickets or Git:
+
+| # | Where | Action |
+|---|---|---|
+| 1 | Google Cloud, provider `github-actions` and service account `whyhumanoid-importer` | Production identity, exact condition and binding in 4.1. Then Actions, "Import private workbook", Run workflow on `main`, target `production` |
+| 2 | Resend, domain `whyhumanoid.com` | IONOS Auto configure, approve in IONOS, Verify DNS records (section 4.3). Then a sending key restricted to `whyhumanoid.com` as Cloudflare secret `RESEND_API_KEY` on `whyhumanoid-premium` |
+| 3 | Stripe live, Developers, API keys, Create restricted key | Write: Checkout Sessions, Customer portal. Read: Prices. Cloudflare secret `STRIPE_SECRET_KEY` on `whyhumanoid-premium` |
+| 4 | Stripe live, webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` | Reveal the signing secret; Cloudflare secret `STRIPE_WEBHOOK_SECRET` on `whyhumanoid-premium` |
+| 5 | Stripe live, Settings, Billing, Customer portal | Make sure the default configuration is saved with cancellation (at period end) and payment-method updates on; or set its id as variable `STRIPE_PORTAL_CONFIGURATION` |
+| 6 | Google Drive | Master workbook and its April copy "... para Codex": General access, Restricted (section 5). Named editors and the importer keep access |
+| 7 | GitHub, organisation `integrarobot` | Close the history exposure (below): make this repository private and serve the site from a public repository that holds only the built site, or from Cloudflare once DNS moves there |
+
+After 1 to 4, `GET /v1/billing/plan` answers `checkout_available: true` without any other change. Production checks
+then: import counts for the 13 tabs, a sign-in email from `premium@whyhumanoid.com` redeemed, previews and
+401/403/200 boundaries, the live price check through one unpaid Checkout session (no card entered, no charge), and
+the portal link for a paying account. No real card is used for testing.
+
+### Exposure of the open-database period
+
+- Repository `integrarobot/whyhumanoid` is public. The commits from PR #4 (open database, 16 Nov 2026) to `bf785ce`
+  hold `data/database/*.json`: every row of the 12 premium tabs. They stay reachable by commit and raw URLs, in clones
+  and in the Pages artifacts of those builds. The full Humanoids catalogue (free anyway) is in older commits.
+- whyhumanoid.com served the same files at `/data/database/<tab>.json` until the paywall merge; they now return 404.
+  Search engines and web archives may hold copies; data already published cannot be made secret again.
+- The master workbook and its April copy are readable by anyone with the link; the link is in newsletter drafts,
+  decks and a course sheet. This is the largest open path to the full data until step 6.
+- No history is rewritten or deleted (irreversible). Recommended, reversible: make this repository private (history
+  kept, nothing deleted) and publish the site from a new public repository `integrarobot/whyhumanoid-site` that holds
+  only the built files (`index.html`, `CNAME`, `assets/`, `data/humanoids-catalogue.*`, `data/manifest.json`,
+  `data/preview/`), deployed from here by CI; or from Cloudflare once `whyhumanoid.com` moves to Cloudflare DNS (also
+  needed for `premium.whyhumanoid.com`). GitHub Pages from a private repository needs a paid GitHub plan.
+- From the paywall on, no full row reaches Git or the site: `tools/check-public.mjs` (rule 6), the export tests and
+  CI refuse `data/database/` and any preview row past sheet row 10.
+
+## Earlier deployment record (13 Nov 2026)
 
 Status on 13 Nov 2026: the PR is open (step 1). The test Worker runs the current code (step 2) with its Stripe test
 and Resend secrets; production runs older code with checkout off and no data. The Stripe products, prices and
@@ -94,7 +139,7 @@ Variables and secrets, Add, type Secret). On the test Worker, `STRIPE_SECRET_KEY
 
 | Secret | Test | Production |
 |---|---|---|
-| `STRIPE_SECRET_KEY` | restricted test key `rk_test_...` (write: Checkout Sessions; read: Prices) | restricted live key `rk_live_...`, same permissions |
+| `STRIPE_SECRET_KEY` | restricted test key `rk_test_...` (write: Checkout Sessions, Customer portal; read: Prices) | restricted live key `rk_live_...`, same permissions |
 | `STRIPE_WEBHOOK_SECRET` | `whsec_...` of the test endpoint | `whsec_...` of the live endpoint |
 | `RESEND_API_KEY` | Resend key | separate Resend key |
 | `ADMIN_TOKEN` | optional: only for a manual import; the workflow uses its OIDC token | optional |

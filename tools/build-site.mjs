@@ -21,7 +21,8 @@ import { PLAN } from '../server/src/pricing.js';
 // premium.whyhumanoid.com is set up as a custom domain.
 export const PREMIUM_APP_URL = 'https://whyhumanoid-premium.javier-198.workers.dev/';
 export const CHECKOUT_OPEN = false;
-export const OPEN_DATABASE = true;
+// Paywall (Javier, 16 Nov 2026): the 12 tabs other than Humanoids show their first 10 sheet rows; the rest is premium.
+export const OPEN_DATABASE = false;
 
 const root = new URL('../', import.meta.url);
 const OVERRIDES_FILE = new URL('tools/humanoids-facet-overrides.json', root);
@@ -213,20 +214,20 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log(`Wrote ${Object.values(fresh).reduce((n, o) => n + Object.keys(o).length, 0)} overrides for ${Object.keys(fresh).length} records`);
   }
 
-  // Checkout stays closed until the production billing checks pass; the page then says so honestly and links to
-  // the database section instead of the premium app. Set CHECKOUT_OPEN when checkout is enabled in production.
+  // The full database lives in the premium app (sign in, subscribe, read). CHECKOUT_OPEN says whether live checkout
+  // is enabled in production, so the page never promises a purchase that cannot be made yet.
   const access = {
     free: 'all',
     total_records: exported.records.length,
     price: PLAN.display,
-    url: CHECKOUT_OPEN ? PREMIUM_APP_URL : '#database',
+    url: PREMIUM_APP_URL,
     app_url: PREMIUM_APP_URL,
     checkout_open: CHECKOUT_OPEN,
   };
   const data = buildData(exported, overrides, access);
-  // Open database (decision of 16 Nov 2026): the page embeds the index of the 12 other tabs and loads each tab's rows
-  // from data/database/<tab>.json (built by tools/export-database.mjs). Do not go back to 10-row previews.
-  data.database = JSON.parse(readFileSync(new URL('data/database/index.json', root), 'utf8'));
+  // Paywall (16 Nov 2026): the page embeds the index of the 12 other tabs (counts and field names) and loads each tab's
+  // free preview, its first 10 sheet rows, from data/preview/<tab>.json. Full rows never reach the site or Git.
+  data.database = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8'));
   data.access.open = OPEN_DATABASE;
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {

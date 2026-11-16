@@ -4,10 +4,10 @@ Why Humanoid? (whyhumanoid.com), de Integrarobot. Decide Javier; ejecuta Claude;
 
 ## Reglas vigentes
 
-- Base de datos abierta: las 13 pestañas, todos sus registros y campos de contenido, sin pago ni registro (d-0004). Stripe desactivado. No volver a vistas previas de 10 filas.
+- Muro de pago (d-0008, 16/11/2026; sustituye la apertura temporal de d-0004): Humanoids gratis; las otras 12 pestañas, 100 € al año con Stripe, sin prueba gratuita. La web solo publica las 10 primeras filas de cada pestaña premium (`data/preview/`); las filas completas viven solo en la base de datos del backend (Cloudflare D1) y se sirven tras comprobar la suscripción en el servidor. Nunca vuelvas a poner filas completas de una pestaña premium en Git, en la web ni en ningún JSON público (`data/database/` está prohibido; la guardia y CI lo bloquean).
 - Nunca en Git ni en la web: credenciales, enlaces o identificadores del libro maestro o de Drive, contactos personales, cuentas de usuario ni notas internas.
 - Cambios por rama, PR contra `main`, CI en verde, fusión y verificación en producción (README). La web la sirve GitHub Pages desde `main`.
-- Deployments es la sección más importante (Javier, 16/11/2026): se publican todas las filas, columnas y valores de la hoja, íntegros; no se quitan filas por parecer duplicadas; cada fila tiene «View all data» con la ficha completa. Antes de publicar, `node tools/audit-deployments.mjs --from <export>` con 0 diferencias y `node tools/verify-site.mjs` en verde. Criterio completo en el skill, sección «Deployments: criterio de publicación».
+- Deployments es la sección más importante (Javier, 16/11/2026): los suscriptores reciben todas las filas, columnas y valores de la hoja, íntegros; no se quitan filas por parecer duplicadas; cada fila tiene «View all data» con la ficha completa, en la web (vista previa) y en la aplicación de suscriptores. Antes de publicar, `node tools/audit-deployments.mjs --from <export>` con 0 diferencias y `node tools/verify-site.mjs` en verde. Criterio completo en el skill, sección «Deployments: criterio de publicación».
 - Actualización semanal y su procedimiento: `.claude/skills/whyhumanoid-weekly-update/SKILL.md` (tarea programada de los miércoles a las 14:00, Europe/Madrid; no se duplica).
 
 ## Cierre obligatorio de cada entrega
