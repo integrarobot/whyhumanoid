@@ -1,0 +1,39 @@
+{
+  "id": "WH-20261116-1551-formato-informe-cierres",
+  "tarea": "Ajuste del informe de cierre al estilo de Javier: sin mayúscula tras dos puntos en los datos de cabecera",
+  "origen": "Revisión propia de Claude al presentar los cierres de la petición de Javier del 16/11/2026",
+  "fecha": "2026-11-16T15:51:34+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "node tools/entregas.mjs informe muestra tarea, fecha, estado, origen y ejecutor en una tabla de dos columnas en lugar de líneas «Etiqueta: Valor», que dejaban mayúscula tras los dos puntos.",
+    "Los cierres guardados no cambian; solo su presentación."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #12",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/12"
+    },
+    {
+      "etiqueta": "Commit en main",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/f76193031f1fe9dd8cf15211bfae2036062078b2"
+    },
+    {
+      "etiqueta": "Herramienta",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/tools/entregas.mjs"
+    }
+  ],
+  "despliegue": [
+    "PR #12 fusionado en main (squash f761930) tras CI en verde; CI y pages-build-deployment del commit terminados con éxito.",
+    "No aplica a la web: tools/ no se publica."
+  ],
+  "verificaciones": [
+    "Pruebas del registro: 6 de 6.",
+    "Informe de WH-20261116-1543-deployments-status generado de nuevo con la tabla y revisado."
+  ],
+  "pendientes": [
+    "Aviso de Codex y confirmación de entrega de este cierre: los registran Codex y Javier."
+  ],
+  "siguiente_accion": "Ninguna de Claude. Codex lo incluye en su revisión horaria."
+}
