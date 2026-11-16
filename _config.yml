@@ -1,0 +1,7 @@
+# GitHub Pages (Jekyll) publishes the public catalogue only. Code, tooling and tests stay out of the site.
+exclude:
+  - server
+  - tools
+  - README.md
+  - SECURITY.md
+  - DEPLOYMENT.md

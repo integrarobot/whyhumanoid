@@ -1,0 +1,6 @@
+# Each change to this file on feat/premium-preview runs one staging import into the test Worker.
+2026-11-13 first live-data staging import of all 13 tabs (second attempt, with identity claims shown)
+2026-11-13 staging import after the provider accepted GitHub's immutable subject
+2026-11-13 staging import retry after the D1 call-limit fix (test Worker version f16120a7)
+2026-11-13 staging re-import with the duplicate-row rule (test Worker version 4c649512)
+2026-11-16 staging re-import with private links removed from every tab (test Worker e807bb1e)

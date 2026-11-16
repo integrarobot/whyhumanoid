@@ -1,0 +1,12 @@
+{
+  "name": "whyhumanoid-site-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build and verification tooling for the public catalogue. Not published.",
+  "scripts": {
+    "verify": "node verify-site.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "31.0.1"
+  }
+}

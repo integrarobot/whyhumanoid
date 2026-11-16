@@ -1,6 +1,3 @@
-# Dispatch-only copy so GitHub can dispatch this workflow (workflow_dispatch needs the file on the default
-# branch). Runs are dispatched with ref=feat/premium-preview and use that branch's file. The scheduled nightly
-# production import arrives with PR #1, which replaces this file.
 name: Import private workbook
 
 on:
@@ -12,6 +9,15 @@ on:
         options: [test, production]
         default: test
         required: true
+  # Nightly production import (03:17 UTC): switched on once Google accepts the production identity
+  # (DEPLOYMENT.md 4.1). Until then it would fail every night.
+  # schedule:
+  #   - cron: '17 3 * * *'
+  # Staging imports from the PR branch while this workflow is not on main yet (workflow_dispatch needs the file on
+  # the default branch): a commit that changes .github/import-requests/test on feat/premium-preview runs a test import.
+  push:
+    branches: [feat/premium-preview]
+    paths: ['.github/import-requests/test']
 
 permissions:
   id-token: write
@@ -19,11 +25,18 @@ permissions:
 
 jobs:
   import:
-    if: github.repository_id == '1456468940' && (github.ref == 'refs/heads/main' || (github.ref == 'refs/heads/feat/premium-preview' && inputs.target == 'test'))
+    if: github.repository_id == '1456468940' && (github.ref == 'refs/heads/main' || (github.ref == 'refs/heads/feat/premium-preview' && (inputs.target == 'test' || github.event_name == 'push')))
     runs-on: ubuntu-latest
-    environment: ${{ inputs.target || 'production' }}
-    concurrency: workbook-import-${{ inputs.target || 'production' }}
+    environment: ${{ inputs.target || (github.event_name == 'push' && 'test') || 'production' }}
+    concurrency: workbook-import-${{ inputs.target || (github.event_name == 'push' && 'test') || 'production' }}
     steps:
+      - name: Show the identity claims presented to Google (no token)
+        run: |
+          token=$(curl --fail --silent --show-error --header "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=claims-check" | jq -r .value)
+          echo "::add-mask::$token"
+          echo "$token" | cut -d. -f2 | tr '_-' '/+' | base64 -d 2>/dev/null \
+            | jq '{sub, repository_id, workflow_ref, job_workflow_ref, ref, event_name, environment}' || true
       - name: Obtain read-only Google access token
         id: auth
         uses: google-github-actions/auth@v3
@@ -39,7 +52,7 @@ jobs:
         # repository, this workflow, the Worker's GitHub environment and an allowed branch. No shared secret.
         # Only the import outcome and row counts are printed; workbook data never reaches the log.
         env:
-          TARGET: ${{ inputs.target || 'production' }}
+          TARGET: ${{ inputs.target || (github.event_name == 'push' && 'test') || 'production' }}
           GOOGLE_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
         run: |
           case "$TARGET" in

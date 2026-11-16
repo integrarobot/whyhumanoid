@@ -1,0 +1,16 @@
+{
+  "name": "whyhumanoid-premium-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Server-side authentication, entitlements, Stripe billing and premium data for Why Humanoid?",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "test": "node --no-warnings --test --test-reporter=spec test/*.test.js"
+  },
+  "dependencies": {
+    "stripe": "23.1.0"
+  }
+}

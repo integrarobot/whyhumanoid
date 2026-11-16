@@ -1,0 +1,52 @@
+{
+  "note": "Public Humanoids values that changed in the workbook after the legacy snapshot, taken from the verified staging import. tools/export-humanoids.mjs applies them on top of the cleaned legacy snapshot, and tools/build-site.mjs accepts exactly these differences in its parity check. Public values only. Regenerate with tools/sync-humanoids.mjs from a saved copy of the public preview.",
+  "source": {
+    "environment": "workbook export",
+    "snapshot": "2026-11-16T11:42:00Z",
+    "import_run": "workbook export of 2026-11-16, imported locally with the backend import code (server/src/import/run.js); the same code produced the staging import of 2026-11-13 with identical counts",
+    "verified": "2026-11-16: 133 public Humanoids records, same order as the legacy records; 13 tabs with the same counts as staging run 43507989819. Valuation values from live market data move between snapshots."
+  },
+  "updated": [
+    {
+      "id": 26,
+      "field": "Linkedin",
+      "value": "https://www.linkedin.com/company/enchantedtools/"
+    },
+    {
+      "id": 56,
+      "field": "Sources / checked",
+      "value": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified"
+    },
+    {
+      "id": 71,
+      "field": "Sources / checked",
+      "value": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified"
+    },
+    {
+      "id": 72,
+      "field": "Valuation",
+      "value": "41,788,220.00"
+    },
+    {
+      "id": 75,
+      "field": "Sources / checked",
+      "value": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website not identified"
+    },
+    {
+      "id": 85,
+      "field": "Web",
+      "value": "https://tangiblerobots.ai/"
+    },
+    {
+      "id": 86,
+      "field": "Valuation",
+      "value": "1,542,445,226,760.00"
+    },
+    {
+      "id": 91,
+      "field": "Valuation",
+      "value": "28,249,224,678.40"
+    }
+  ],
+  "inserted": []
+}

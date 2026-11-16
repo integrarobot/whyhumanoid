@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+.dev.vars
+*.local
+.env*
+# Real workbook exports must never enter this public repository.
+*.xlsx
+private-data/
