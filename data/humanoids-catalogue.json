@@ -1,7 +1,7 @@
 {
  "dataset": "humanoids",
  "access": "free",
- "snapshot": "2026-11-13T21:08:39.000Z",
+ "snapshot": "2026-11-16T11:42:00Z",
  "fields": [
   "Lab",
   "Robot",
@@ -3290,7 +3290,7 @@
    "Careers": "Not found",
    "B2B Client": "Foxconn",
    "Stock": "HKG:9880",
-   "Valuation": "29,031,696,100.60",
+   "Valuation": "28,249,224,678.40",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "Not disclosed",

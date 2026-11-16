@@ -1,10 +1,10 @@
 {
   "note": "Public Humanoids values that changed in the workbook after the legacy snapshot, taken from the verified staging import. tools/export-humanoids.mjs applies them on top of the cleaned legacy snapshot, and tools/build-site.mjs accepts exactly these differences in its parity check. Public values only. Regenerate with tools/sync-humanoids.mjs from a saved copy of the public preview.",
   "source": {
-    "environment": "staging",
-    "snapshot": "2026-11-13T21:08:39.000Z",
-    "import_run": "https://github.com/integrarobot/whyhumanoid/actions/runs/43507989819",
-    "verified": "2026-11-13: public Humanoids preview of the test Worker (version 4c649512) after the duplicate-row fix: 133 records, same order and values as this catalogue. Valuation values that come from live market data move between imports; resync before a release."
+    "environment": "workbook export",
+    "snapshot": "2026-11-16T11:42:00Z",
+    "import_run": "workbook export of 2026-11-16, imported locally with the backend import code (server/src/import/run.js); the same code produced the staging import of 2026-11-13 with identical counts",
+    "verified": "2026-11-16: 133 public Humanoids records, same order as the legacy records; 13 tabs with the same counts as staging run 43507989819. Valuation values from live market data move between snapshots."
   },
   "updated": [
     {
@@ -41,6 +41,11 @@
       "id": 86,
       "field": "Valuation",
       "value": "1,542,445,226,760.00"
+    },
+    {
+      "id": 91,
+      "field": "Valuation",
+      "value": "28,249,224,678.40"
     }
   ],
   "inserted": []

@@ -9,8 +9,10 @@ on:
         options: [test, production]
         default: test
         required: true
-  schedule:
-    - cron: '17 3 * * *'
+  # Nightly production import (03:17 UTC): switched on once Google accepts the production identity
+  # (DEPLOYMENT.md 4.1). Until then it would fail every night.
+  # schedule:
+  #   - cron: '17 3 * * *'
   # Staging imports from the PR branch while this workflow is not on main yet (workflow_dispatch needs the file on
   # the default branch): a commit that changes .github/import-requests/test on feat/premium-preview runs a test import.
   push:

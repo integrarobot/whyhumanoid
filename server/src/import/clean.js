@@ -44,6 +44,17 @@ export function clauseKey(field, clause) {
 
 // options.mode: 'preview' drops unverified flagged clauses; 'full' keeps them.
 // options.editorial: { [clauseKey]: { text, source_url, verified_at } } with verified neutral rewrites.
+// Private links (the master workbook or other Google Docs/Drive files, mailto:, file:, local addresses) never leave
+// the import, in any tab or mode: a workbook link would bypass every access rule. Tabs that skip clause cleaning
+// still go through this.
+const PRIVATE_LINK = /https?:\/\/(?:docs|drive)\.google\.com\/\S*|\bmailto:\S+|\bfile:\/\/\S+|https?:\/\/(?:localhost|127\.0\.0\.1|10\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+)\S*/gi;
+export function redactPrivateLinks(value) {
+  if (value == null || value === '') return { value: value === '' ? null : value, redacted: false };
+  const text = String(value);
+  const out = text.replace(PRIVATE_LINK, '').replace(/[ \t]{2,}/g, ' ').trim();
+  return { value: out === '' ? null : out, redacted: out !== text.trim() };
+}
+
 export function cleanValue(value, { field = '', mode = 'full', editorial = {} } = {}) {
   if (value == null || value === '') return { value: null, stripped: [], flagged: [], rewritten: [], excluded: [] };
   const stripped = [];

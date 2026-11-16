@@ -44,7 +44,11 @@ expect(text('#h-n') === String(manifest.record_count), `hero total "${text('#h-n
 expect(/complete catalogue is free/i.test(text('#preview-note')) && /€100 per year/.test(text('#preview-note')), 'notice does not say the catalogue is free and the price of the full database');
 const buyLink = document.querySelector('#preview-note a');
 const pageData = JSON.parse(document.getElementById('data').textContent);
-expect(Boolean(buyLink) && buyLink.getAttribute('href') === pageData.access.url && /^https:\/\//.test(pageData.access.url), 'notice has no link to the premium app');
+expect(
+  Boolean(buyLink) && buyLink.getAttribute('href') === pageData.access.url &&
+    (pageData.access.checkout_open ? /^https:\/\//.test(pageData.access.url) : pageData.access.url === '#database'),
+  'notice does not link to the full-database offer (premium app when checkout is open, the database section otherwise)',
+);
 expect(/internal/i.test(text('#a-rows')), 'FAQ does not explain which rows the catalogue leaves out');
 
 const search = document.querySelector('input[type="search"]');
@@ -66,6 +70,32 @@ if (search) {
   await new Promise((r) => setTimeout(r, 400));
   expect(rows() === manifest.record_count, 'clearing search does not restore every catalogue row');
 }
+
+// Database section: the 12 other tabs, first 10 source rows each, detail on click, search, honest offer.
+const previews = pageData.previews;
+const tabButtons = [...document.querySelectorAll('#db-tabs [role="tab"]')];
+expect(previews?.datasets?.length === 12 && tabButtons.length === 12, `database tabs: ${tabButtons.length} buttons, ${previews?.datasets?.length} datasets`);
+for (const d of previews?.datasets ?? []) {
+  tabButtons.find((b) => b.dataset.id === d.id)?.click();
+  await new Promise((r) => setTimeout(r, 20));
+  const shown = document.querySelectorAll('#db-rows tr.r').length;
+  expect(shown === d.rows.length && shown > 0, `${d.id}: ${shown} rows shown, ${d.rows.length} in the preview`);
+  expect(text('#db-title') === d.title, `${d.id}: panel title "${text('#db-title')}"`);
+  expect(new RegExp(`^${d.rows.length} of ${d.entries_total} entries`).test(text('#db-count')), `${d.id}: count line "${text('#db-count')}"`);
+  const lock = document.querySelector('#db-panel .db-lock');
+  expect(Boolean(lock) === d.entries_total > d.rows.length, `${d.id}: locked-rows notice ${lock ? 'shown' : 'missing'}`);
+}
+tabButtons[0]?.click();
+const firstRow = document.querySelector('#db-rows tr.r');
+firstRow?.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
+expect(document.querySelectorAll('#db-rows tr.det dt').length === previews.datasets[0].fields.length, 'row detail does not list every public field');
+const dbq = document.getElementById('db-q');
+dbq.value = 'zzzz-no-such-entry';
+dbq.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
+expect(document.querySelectorAll('#db-rows tr.r').length === 0, 'database search for a missing entry still shows rows');
+document.getElementById('db-buy').click();
+expect(pageData.access.checkout_open || /not open yet/i.test(text('#db-buy-note')), 'closed checkout is not explained honestly');
+expect([...document.querySelectorAll('.hud-nav a')].some((a) => a.getAttribute('href') === '#database'), 'no navigation link to the database');
 
 const filters = [...document.querySelectorAll('select')];
 if (filters.length) {

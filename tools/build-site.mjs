@@ -20,6 +20,7 @@ import { PLAN } from '../server/src/pricing.js';
 // Where the catalogue sends buyers: the premium app on the production backend. Change it here when
 // premium.whyhumanoid.com is set up as a custom domain.
 export const PREMIUM_APP_URL = 'https://whyhumanoid-premium.javier-198.workers.dev/';
+export const CHECKOUT_OPEN = false;
 
 const root = new URL('../', import.meta.url);
 const OVERRIDES_FILE = new URL('tools/humanoids-facet-overrides.json', root);
@@ -211,8 +212,19 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log(`Wrote ${Object.values(fresh).reduce((n, o) => n + Object.keys(o).length, 0)} overrides for ${Object.keys(fresh).length} records`);
   }
 
-  const access = { free: 'all', total_records: exported.records.length, price: PLAN.display, url: PREMIUM_APP_URL };
+  // Checkout stays closed until the production billing checks pass; the page then says so honestly and links to
+  // the database section instead of the premium app. Set CHECKOUT_OPEN when checkout is enabled in production.
+  const access = {
+    free: 'all',
+    total_records: exported.records.length,
+    price: PLAN.display,
+    url: CHECKOUT_OPEN ? PREMIUM_APP_URL : '#database',
+    app_url: PREMIUM_APP_URL,
+    checkout_open: CHECKOUT_OPEN,
+  };
   const data = buildData(exported, overrides, access);
+  // Public previews of the 12 other tabs (data/previews.json, built by tools/export-previews.mjs).
+  data.previews = JSON.parse(readFileSync(new URL('data/previews.json', root), 'utf8'));
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {
     console.error(`Parity FAILED (${unexpected.length}):\n- ${unexpected.slice(0, 40).join('\n- ')}`);

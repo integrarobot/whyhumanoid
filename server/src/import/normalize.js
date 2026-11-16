@@ -3,7 +3,7 @@
 // Every row keeps its sheet row and its preview rank: the position of its sheet row among the non-empty data
 // rows of the tab, in workbook order. The public preview is rank <= 10.
 
-import { cleanValue } from './clean.js';
+import { cleanValue, redactPrivateLinks } from './clean.js';
 
 export class ImportError extends Error {}
 
@@ -41,8 +41,8 @@ export function normalizeTab(spec, values) {
       for (const def of spec.lists) {
         const name = cell(row, def.columns.name);
         if (!name) continue;
-        const data = { list: def.list, name, url: cell(row, def.columns.url) };
-        data.description = def.columns.description === undefined ? null : cell(row, def.columns.description);
+        const data = { list: def.list, name, url: redactPrivateLinks(cell(row, def.columns.url)).value };
+        data.description = def.columns.description === undefined ? null : redactPrivateLinks(cell(row, def.columns.description)).value;
         items.push({ sheetRow, rank, data });
       }
       return;
@@ -60,8 +60,10 @@ export function normalizeTab(spec, values) {
         for (const r of full.rewritten) review.push({ sheetRow, field, action: 'rewritten', reason: r.reason });
         for (const f of full.flagged) review.push({ sheetRow, field, action: 'flagged', reason: f.reason, key: f.key });
       } else {
-        data[field] = value;
-        previewData[field] = value;
+        const safe = redactPrivateLinks(value);
+        if (safe.redacted) review.push({ sheetRow, field, action: 'stripped', reason: 'private_link' });
+        data[field] = safe.value;
+        previewData[field] = safe.value;
       }
     });
     // Rows the sheet itself excludes (duplicates, editorial resources) stay as internal provenance only.

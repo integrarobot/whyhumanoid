@@ -215,3 +215,23 @@ test('a Humanoids row the sheet calls a duplicate reference is internal even wit
     .first();
   assert.equal(served.n, 0);
 });
+
+// Regression: the Data space tab linked to the master workbook in source_url. A workbook link would bypass every
+// access rule, so private links are removed from every tab, in the public preview and in the paid data.
+test('links to the private workbook never reach the preview or the paid rows of any tab', async () => {
+  const db = createTestDb();
+  const values = fixtureWorkbook();
+  const link = 'https://docs.' + 'google.com/spreadsheets/d/' + 'fx_workbook/edit#gid=1';
+  const spec = DATASETS.find((d) => d.id === 'data-space');
+  const tab = values[spec.tab];
+  const col = tab[0].indexOf('source_url');
+  assert.ok(col >= 0, 'fixture Data space tab has source_url');
+  tab[1][col] = link;
+  tab[2][col] = `See ${link} and https://example.com/public-source`;
+  const result = await runImport(db, values, T0);
+  assert.equal(result.ok, true);
+  const leaks = await db.prepare("SELECT COUNT(*) AS n FROM premium_rows WHERE data LIKE '%docs.google.com%' OR preview_data LIKE '%docs.google.com%'").first();
+  assert.equal(leaks.n, 0);
+  const kept = await db.prepare("SELECT COUNT(*) AS n FROM premium_rows WHERE dataset = 'data-space' AND data LIKE '%example.com/public-source%'").first();
+  assert.equal(kept.n, 1, 'public links stay');
+});
