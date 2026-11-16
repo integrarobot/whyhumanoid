@@ -1,7 +1,7 @@
 # Cloudflare Workers configuration: premium app (public/) and API on one origin.
 # Two isolated environments. Each has its own D1 database, its own Stripe keys and its own webhook secret.
 #   wrangler deploy --env test         -> whyhumanoid-premium-test   (Stripe test mode only)
-#   wrangler deploy --env production   -> whyhumanoid-premium        (Stripe live mode, checkout off until enabled)
+#   wrangler deploy --env production   -> whyhumanoid-premium        (Stripe live mode, checkout armed in code)
 #
 # Secrets per environment (wrangler secret put NAME --env test|production), never in this file or in Git:
 #   STRIPE_SECRET_KEY      test env: sk_test_... or rk_test_...   production env: sk_live_... or rk_live_...
@@ -56,8 +56,8 @@ d1_databases = [
 [env.production.vars]
 IMPORT_ENVIRONMENT = "production"
 STRIPE_MODE = "live"
-CHECKOUT_ENABLED = "false"   # enabled only after the test lifecycle and the production checks pass
-ALLOW_LIVE_CHECKOUT = "false"
+CHECKOUT_ENABLED = "true"     # armed 16 Nov 2026 (d-0008): checkout still answers 503 until the live Stripe key,
+ALLOW_LIVE_CHECKOUT = "true"  # the webhook secret, sign-in email and all 13 imported tabs exist (billing.checkoutState)
 STRIPE_PRICE_ID = "price_1UbOtjAcMngkWs5CR8qXNPGn"  # live: "Why Humanoid? full database", EUR 100.00 / year (prod_VceC4S2gQeLhOT)
 ALLOWED_ORIGINS = "https://whyhumanoid-premium.javier-198.workers.dev"
 PREMIUM_URL = "https://whyhumanoid-premium.javier-198.workers.dev/"

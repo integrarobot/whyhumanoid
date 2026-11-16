@@ -1,0 +1,74 @@
+{
+  "id": "WH-20261116-2036-muro-de-pago",
+  "tarea": "Muro de pago real hasta producción (d-0008): Humanoids gratis; las otras 12 pestañas, 100 € al año con Stripe, sin prueba gratuita; vista previa de 10 filas y acceso íntegro para suscriptores",
+  "origen": "Orden de Javier transmitida por Codex (16/11/2026): «cuando termine pídele que implemente el muro de pago, sin versiones de prueba, del tirón»",
+  "fecha": "2026-11-16T20:36:39+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Web (PR #18, commit f4bd2db): whyhumanoid.com solo publica Humanoids completo y las 10 primeras filas de la hoja de cada pestaña premium (data/preview/, 130 filas de origen). data/database/ se elimina; las 13 URLs antiguas /data/database/*.json dan 404. Cada pestaña premium muestra la fila de bloqueo «N more entries… Get the full database» con enlace a la aplicación de suscriptores.",
+    "Servidor (Cloudflare Worker y D1): acceso solo con suscripción active y periodo vigente; trialing no da acceso y se rechaza un precio con días de prueba. Cancelación: acceso hasta el fin del periodo. past_due, unpaid e incomplete: sin acceso, con portal. Webhooks de Stripe firmados e idempotentes (tabla stripe_events). Nueva ruta POST /v1/billing/portal (portal de Stripe para gestionar o cancelar) y reutilización del cliente de Stripe. El pago se niega (409) a quien ya está suscrito o tiene un pago pendiente. El cobro solo se abre cuando hay clave live, secreto del webhook, correo de inicio de sesión y las 13 pestañas importadas. La API ya no devuelve campos internos (source_rows, identity_status).",
+    "Aplicación de suscriptores reescrita: inicio de sesión por enlace mágico, estados de cuenta (sin pago, suscrito, cancelado con fecha, pago pendiente, caducado), botón de pago y de portal, índice de las 13 categorías, tabla de negocio de Deployments y ficha «View all data» con los 47 campos.",
+    "Guardias: tools/check-public.mjs (regla 6) y CI rechazan cualquier fichero en data/database/, cualquier fila de vista previa más allá de la fila 10 y access.open distinto de false. tools/audit-deployments.mjs compara la hoja con lo que sirve la importación (todas las filas) y con la vista previa.",
+    "Producción: Worker whyhumanoid-premium con el código del muro (versión 38f8d8ab) y cobro armado (CHECKOUT_ENABLED=true, ALLOW_LIVE_CHECKOUT=true). Worker de pruebas con el mismo código (versión 7912c960).",
+    "Instrucciones: AGENTS.md (regla d-0008), skill de la actualización semanal (reglas, criterio de Deployments, pasos 9.6 y 10), README, DEPLOYMENT.md (sección 0 con los pasos de Javier, estado de producción y exposición del historial) y server/wrangler.toml alineado con el panel. Tarea programada de los miércoles actualizada (misma programación, sin tareas nuevas): ya no dice «base de datos abierta» y prohíbe publicar JSON premium y tocar el cobro.",
+    "Memoria OKF: d-0008 creada, d-0004 obsoleta, d-0002 vigente de nuevo, d-0007 ajustada a suscriptores; índice y registro actualizados."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Web",
+      "url": "https://whyhumanoid.com/#db-deployments"
+    },
+    {
+      "etiqueta": "Aplicación de suscriptores",
+      "url": "https://whyhumanoid-premium.javier-198.workers.dev/"
+    },
+    {
+      "etiqueta": "PR #18",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/18"
+    },
+    {
+      "etiqueta": "Commit en main",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/f4bd2db50bbd997b71a8991285ab8826feaf08d1"
+    },
+    {
+      "etiqueta": "Pasos pendientes de Javier",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/DEPLOYMENT.md#0-paywall-go-live-javier-16-nov-2026-d-0008"
+    },
+    {
+      "etiqueta": "Importación de producción rechazada",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/43940173562"
+    },
+    {
+      "etiqueta": "Skill actualizado",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "PR #18 fusionado en main (squash f4bd2db) con CI en verde; GitHub Pages desplegado.",
+    "Worker de producción desplegado desde el editor de Cloudflare con el paquete de f4bd2db (sha256 comprobado en el navegador antes de pegar): versión 38f8d8ab; después, las dos variables de cobro a true.",
+    "Worker de pruebas desplegado con el mismo paquete: versión 7912c960."
+  ],
+  "verificaciones": [
+    "whyhumanoid.com en producción: las 13 rutas /data/database/*.json dan 404; las vistas previas dan 200 con 10 filas de origen como máximo; la página no contiene data/database y access.open es false; Deployments muestra 10 filas y el bloqueo «109 more entries» con su enlace.",
+    "Servidor de producción sin sesión: /health 200; vistas previas 200 con 0 filas (D1 vacía); filas completas, /v1/me, pago y portal 401; inicio de sesión 503 email_not_configured; webhook 503 webhook_not_configured; /v1/billing/plan checkout_available false. No puede cobrar.",
+    "Worker de pruebas (datos de staging del 13/11) sin sesión: las 12 pestañas premium sirven como máximo sus 10 primeras filas (Software 19 y Other robots 20 entradas), Humanoids 133 completas, filas completas 401 y sin campos internos; ahí checkout_available es true, lo que confirma que la puerta se abre al existir los requisitos.",
+    "Estados de acceso con el código nuevo y la exportación real en el entorno local: visitante 10 filas y formulario; sin pago 10 filas, 403 en la API y pago ofrecido; suscriptor 119 filas, 119 fichas, 5.593 campos, 4.817 valores, 0 diferencias y portal; cancelado 119 filas con «activo hasta…»; pago pendiente 10 filas y solo portal; caducado 10 filas, 403, pago y portal. Otras pestañas completas para el suscriptor (547, 144, 276, 133). A 390, 768 y 1440 px sin desplazamiento lateral ni desbordes.",
+    "Auditoría de Deployments: 119 filas, 47 columnas, 4.817 valores, 0 diferencias contra la importación y contra la vista previa. 69 pruebas del servidor, guardia pública, verify-site (130 fichas de vista previa) y verify-premium-app en verde.",
+    "Sin cargos ni datos de pago: no se ha creado ninguna sesión de pago live ni se ha introducido ninguna tarjeta.",
+    "Memoria OKF: validador con 11 conceptos, 0 errores y 0 avisos."
+  ],
+  "pendientes": [
+    "Estado real del cobro: NO operativo. Producción no tiene datos, ni correo, ni claves de Stripe; nadie puede pagar ni acceder todavía.",
+    "1. Google (Javier o Codex): condición de la identidad federada y permiso de producción de DEPLOYMENT.md 4.1; después, Actions, «Import private workbook», main, production. Error actual: unauthorized_client, «The given credential is rejected by the attribute condition» (sub repo:integrarobot@282541415/whyhumanoid@1456468940:environment:production).",
+    "2. Resend: verificar el dominio whyhumanoid.com (IONOS) y guardar la clave de envío como secreto RESEND_API_KEY en whyhumanoid-premium.",
+    "3. Stripe live: clave restringida (escritura de Checkout Sessions y Customer portal, lectura de Prices) como secreto STRIPE_SECRET_KEY.",
+    "4. Stripe live: secreto de firma del webhook ya creado como secreto STRIPE_WEBHOOK_SECRET.",
+    "5. Stripe live: configuración por defecto del portal de clientes guardada, con cancelación al final del periodo y cambio de método de pago.",
+    "6. Libro maestro y su copia «para Codex»: acceso general Restringido. Hoy cualquiera con el enlace lee todos los datos; es la mayor vía abierta. No lo he cambiado porque rompe el enlace publicado en newsletters, presentaciones y el curso, y la lectura de Codex si usa el enlace: decide Javier.",
+    "7. Repositorio público: hacerlo privado y publicar la web desde un repositorio público solo con el sitio construido (propuesta en DEPLOYMENT.md). El historial entre el PR #4 y el PR #18 contiene las filas completas de las 12 pestañas; no se ha reescrito ni borrado nada.",
+    "Rama temporal deploy/worker-bundle-f4bd2db (código público del servidor, sin datos): borrarla en GitHub, el proxy del agente no permite borrar ramas."
+  ],
+  "siguiente_accion": "Javier completa los pasos 1 a 5 de DEPLOYMENT.md sección 0 (y decide 6 y 7). En cuanto /v1/billing/plan diga checkout_available true, Claude o Codex hacen las comprobaciones de producción sin cargos: recuentos de la importación, correo de inicio de sesión canjeado, límites 401/403/200, una sesión de pago live sin introducir tarjeta y el portal."
+}
