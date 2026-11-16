@@ -1,0 +1,47 @@
+{
+  "id": "WH-20261116-1543-deployments-status",
+  "tarea": "Corrección visual de la columna STATUS en whyhumanoid.com/#db-deployments: los badges se salían de su caja y se montaban sobre ORGANIZATION NAME",
+  "origen": "Petición prioritaria de Javier, transmitida por Codex (16/11/2026)",
+  "fecha": "2026-11-16T15:43:01+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Causa: los badges de estado usaban la clase .st, que es también la marca F/S de 20 px de las filas de Humanoids (width:20px; height:20px; display:inline-grid). La caja del badge medía 20 px y el texto se desbordaba sobre la columna siguiente.",
+    "Los badges usan ahora su propia clase .dst (ancho automático, padding 3px 8px, borde, sin salto de línea, 10,5 px) y la celda y la cabecera de estado usan .stc (ancho al contenido, 18 px de separación).",
+    "Eliminada la regla .st genérica que también alteraba las marcas F/S de Humanoids; vuelven a su regla original.",
+    "tools/verify-site.mjs comprueba el estado con .dst."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Web",
+      "url": "https://whyhumanoid.com/#db-deployments"
+    },
+    {
+      "etiqueta": "PR #9",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/9"
+    },
+    {
+      "etiqueta": "Commit en main",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/faf87eed9c6a7cd288bf1ec7ac086bb265b47d40"
+    }
+  ],
+  "despliegue": [
+    "PR #9 fusionado en main (squash faf87ee) tras CI en verde.",
+    "GitHub Pages: pages-build-deployment del commit faf87ee terminado con éxito.",
+    "Producción comprobada en el navegador sobre https://whyhumanoid.com/: la hoja servida contiene las reglas .dst y .stc, y se cargan Instrument Sans, Instrument Serif y JetBrains Mono."
+  ],
+  "verificaciones": [
+    "Geometría en producción a 390, 768 y 1440 px: 0 de 119 badges desbordan su caja, se salen de la celda o tocan el texto de la organización (antes, 119 de 119). Separación mínima con la organización: 28 px. Columna de estado 143 px, badge mayor 115 px, cabecera alineada con la celda (0 px de diferencia), letra de 10,5 px.",
+    "Filtros: los cinco botones caben en pantalla a las tres anchuras (pasan a varias líneas en 390 px); cada filtro muestra solo su estado: en operación 12, piloto o prueba 48, anunciado 24, sin confirmar 35, todos 119, sin solapes.",
+    "Búsqueda «Toyota Motor Manufacturing»: 2 filas sin solapes. Nombre de organización más largo (BYD; Geely Auto; ... ; SF Express, ocho entidades) sin solape. Detalle de la fila 1: abre con 47 campos y el bloque de fechas y fuentes.",
+    "Sin desplazamiento lateral de la página; en 390 y 768 px la tabla se desplaza dentro de su caja (757 y 736 px de contenido).",
+    "Sin regresiones: las otras 11 pestañas sin celdas desbordadas a 390 px y las 266 marcas F/S de Humanoids siguen en 20x20 px.",
+    "Comprobaciones del repositorio en verde: guardia pública, build --check, export-database --check, verify-site y 61 pruebas del servidor.",
+    "Capturas antes y después a 1440 px (navegador sin interfaz) y en producción a 390 y 768 px enviadas en el chat."
+  ],
+  "pendientes": [
+    "Observación, no corregida: en 768 y 390 px los dominios de la columna SOURCE se parten por caracteres (por ejemplo «gxo.co / m»). Ya pasaba antes del arreglo; no oculta información."
+  ],
+  "siguiente_accion": "Javier decide si quiere que los dominios de SOURCE no se partan en pantallas estrechas; si es así, lo hace Claude en un PR aparte."
+}

@@ -1,11 +1,13 @@
 ---
 name: whyhumanoid-weekly-update
-description: Actualización semanal de Why Humanoid? desde la newsletter de Integrarobot. Lee completas las ediciones nuevas, contrasta con fuentes primarias, actualiza el libro maestro sin duplicados y publica whyhumanoid.com por el flujo probado. Úsala en la tarea programada de los miércoles o cuando Javier o Codex pidan la actualización semanal.
+description: Actualización semanal de Why Humanoid? desde la newsletter de Integrarobot y cierre obligatorio de cualquier entrega del proyecto. Lee completas las ediciones nuevas, contrasta con fuentes primarias, actualiza el libro maestro sin duplicados y publica whyhumanoid.com por el flujo probado. Úsala en la tarea programada de los miércoles, cuando Javier o Codex pidan la actualización semanal y al terminar, bloquear o cerrar sin novedades cualquier trabajo de Why Humanoid?, para registrar y presentar su cierre.
 ---
 
 # Actualización semanal de Why Humanoid?
 
 Ejecuta Claude; coordina Codex; decide Javier. Todo el informe final, en español de España.
+
+La sección «Cierre obligatorio de cada entrega» se aplica a TODO trabajo de Why Humanoid?, no solo a esta actualización: encargos de Javier o de Codex, correcciones de la web, cambios de datos o de código y cualquier tarea programada.
 
 ## Reglas que no se negocian
 
@@ -14,6 +16,40 @@ Ejecuta Claude; coordina Codex; decide Javier. Todo el informe final, en españo
 - Nunca pongas en Git ni en la web credenciales, enlaces al libro maestro o a Drive, contactos personales ni notas internas. El identificador y la URL del libro van solo en el prompt de la tarea programada.
 - Anuncio, piloto y operación son estados distintos. Una demo, un contrato o una nota de prensa del fabricante no son operación real.
 - Solo se marca algo como procesado cuando el libro está actualizado y la web publicada y verificada.
+- Ningún trabajo termina sin su cierre registrado y presentado en el chat (sección siguiente).
+
+## Cierre obligatorio de cada entrega
+
+Decisión d-0006 (16/11/2026). Protocolo completo y referencia de campos: `ops/entregas/README.md`.
+
+**Cuándo.** Cada vez que un trabajo de Why Humanoid? termina (`completado`), se queda bloqueado (`bloqueado`) o es una revisión sin cambios (`sin_novedades`). Un cierre por trabajo. Si una petición incluye varios trabajos independientes, un cierre por cada uno.
+
+**Qué lleva**, en español de España, sin rayas largas ni la palabra «crucial»:
+
+- ID estable y único `WH-AAAAMMDD-HHMM-slug`, fecha y hora de Europe/Madrid (los pone la herramienta);
+- tarea y origen (quién lo pidió o qué lo lanzó);
+- estado;
+- cambios hechos;
+- URLs (web, PR, commit, fichero de la ejecución, skill);
+- evidencia de despliegue (PR fusionado, commit, CI, Pages, comprobación en producción) o «No aplica» con su motivo;
+- verificaciones hechas y su resultado;
+- pendientes;
+- siguiente acción concreta y quién la hace.
+
+**Cómo.**
+
+1. Escribe el borrador fuera de Git (`/tmp/cierre.json`) con esos campos y un `slug` corto. No pongas `id`, `fecha`, `zona` ni nada sobre avisos o entregas.
+2. `node tools/entregas.mjs nuevo --desde /tmp/cierre.json`. Crea `ops/entregas/cierres/<ID>.json` e imprime el informe.
+3. `node tools/entregas.mjs --check` y guárdalo en `main` por el flujo de siempre (rama `entregas/<ID>`, PR, CI en verde, fusión). Si el trabajo se despliega, registra el cierre después de verificar producción, para que la evidencia sea la final.
+4. Presenta en el chat, al terminar, el informe de `node tools/entregas.mjs informe <ID>` tal cual. Es el informe final de la sesión; en ejecuciones sin nadie mirando, envíalo también como mensaje.
+
+**Lo que no se hace.**
+
+- No marcar «avisado por Codex» ni «entregado a Javier»: lo confirman ellos en `ops/entregas/confirmaciones/`. La herramienta rechaza confirmaciones firmadas por Claude.
+- No prometer avisos instantáneos: Codex revisa el registro cada hora y avisa a Javier de los cierres nuevos.
+- No editar un cierre ya fusionado: se corrige con un cierre nuevo con `corrige: <ID>`. CI rechaza cambios o borrados.
+- No crear tareas programadas nuevas para avisar: la del miércoles es la única.
+- Si no puedes escribir en el repositorio, presenta el cierre completo en el chat con su ID, di que el registro queda pendiente y guárdalo en la siguiente sesión con acceso.
 
 ## Estado
 
@@ -57,9 +93,11 @@ Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json`.
 
 11. **Registra como procesado** solo ahora: actualiza `last_processed_edition`, vacía de `known_pending` lo publicado y añade la línea en `runs`. Commit por el mismo flujo.
 
+12. **Cierra** según «Cierre obligatorio de cada entrega», siempre, también si la ejecución se bloquea (`bloqueado`, por ejemplo `pending_sheets`) o no hay ediciones ni hechos nuevos (`sin_novedades`). Añade el ID del cierre a la línea de `runs` del estado.
+
 ## Informe de cada ejecución
 
-En español, breve:
+Es el cierre de la ejecución. Además de los campos comunes, en `cambios`, `verificaciones` y `pendientes` incluye:
 - ediciones leídas (URL y fecha);
 - añadidos, actualizados, descartados (con motivo) y pendientes, cada uno con su fuente;
 - recuentos por categoría antes y después;
