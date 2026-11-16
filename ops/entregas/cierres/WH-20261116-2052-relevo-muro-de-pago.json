@@ -1,0 +1,58 @@
+{
+  "id": "WH-20261116-2052-relevo-muro-de-pago",
+  "tarea": "Retomar el lanzamiento del muro de pago desde WH-20261116-2036: comprobar accesos y estado real de Google, Cloudflare, Resend y Stripe, resolver lo autorizado y preparar el relevo a Claude Code",
+  "origen": "Orden de Javier transmitida por Codex (16/11/2026), al reabrir el ordenador",
+  "fecha": "2026-11-16T20:52:58+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Stripe live: guardada la configuración por defecto del portal de clientes, que no existía (bpc_1UcVsIAcMngkWs5C9X4Xkwf0): cancelación al final del periodo, cambio de método de pago y facturas; sin cambios de plan. Sin ella, el botón de gestionar o cancelar de los suscriptores habría fallado.",
+    "Relevo para Claude Code en ops/relevo-claude-code.md: quién escribe, estado de cada pieza, comandos pendientes en orden y comprobaciones sin cargos.",
+    "DEPLOYMENT.md: paso 5 (portal) marcado como hecho y comprobación de las 20:50 registrada.",
+    "No se ha creado ni ampliado ninguna credencial ni permiso, no se ha escrito ningún secreto y no se ha cambiado el acceso del libro ni la visibilidad del repositorio."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Relevo para Claude Code",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/relevo-claude-code.md"
+    },
+    {
+      "etiqueta": "Pasos de lanzamiento",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/DEPLOYMENT.md#0-paywall-go-live-javier-16-nov-2026-d-0008"
+    },
+    {
+      "etiqueta": "Importación de producción rechazada (20:50)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/43943484249"
+    },
+    {
+      "etiqueta": "Web",
+      "url": "https://whyhumanoid.com/#db-deployments"
+    },
+    {
+      "etiqueta": "Aplicación de suscriptores",
+      "url": "https://whyhumanoid-premium.javier-198.workers.dev/"
+    }
+  ],
+  "despliegue": [
+    "Sin despliegue de código: la web sigue en f4bd2db (más documentación en main) y el Worker de producción en la versión 38f8d8ab.",
+    "Cambio en Stripe live: portal de clientes por defecto creado desde el panel (guardar cambios), comprobado al recargar: aparece «Configuración del portal: Predeterminada» con su ID."
+  ],
+  "verificaciones": [
+    "Navegadores: Claude in Chrome y el navegador integrado conectados de nuevo.",
+    "Cloudflare: variables del Worker de producción sin cambios (cobro armado, modo live, precio live) y un único secreto, WORKBOOK_ID; faltan STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET y RESEND_API_KEY.",
+    "Google: importación a producción de nuevo rechazada (run 43943484249, 19:50 UTC, unauthorized_client, «rejected by the attribute condition»). La consola de Google Cloud pide la llave de acceso de Javier; no se ha podido leer la condición actual.",
+    "Stripe live: webhook activo con la URL del Worker y exactamente los 4 eventos que procesa el servidor (versión de API 2024-12-18.acacia, admitida por el código); precio de 100 € al año en EUR, sin días de prueba y 0 suscripciones; ninguna clave restringida creada.",
+    "Resend: dominio whyhumanoid.com en «Not Started» (región Irlanda, proveedor IONOS); ninguna clave para producción.",
+    "Producción tras los cambios: la web solo sirve vistas previas (deployments.json 10 filas, fila máxima 10; /data/database/deployments.json 404) y el servidor responde checkout_available false. El cobro NO está operativo."
+  ],
+  "pendientes": [
+    "1. Google, aprobación de Javier y su llave de acceso (o Codex con gcloud): condición del proveedor github-actions y permiso Workload Identity User del principal de producción sobre whyhumanoid-importer (DEPLOYMENT.md 4.1). Alcance: el entorno production de GitHub, solo en main, obtiene el mismo token de solo lectura de Sheets que ya tiene test. Después, la importación (comando en el relevo).",
+    "2. Resend, aprobación de Javier: Auto configure en IONOS (DKIM y SPF en subdominios; la raíz no cambia) y clave «Sending access» solo para whyhumanoid.com como secreto RESEND_API_KEY. Autoriza a Resend a enviar como @whyhumanoid.com.",
+    "3. Stripe live, Javier: clave restringida (escritura en Checkout Sessions y Customer portal, lectura en Prices) como STRIPE_SECRET_KEY y secreto de firma del webhook como STRIPE_WEBHOOK_SECRET, escritos por él en Cloudflare. Un agente no puede escribir claves ni secretos en ningún campo.",
+    "4. Decisión sobre el libro maestro y su copia: restringirlo cierra la mayor vía a los datos completos, pero rompe el enlace para quien lo tenga (borradores de la newsletter, presentaciones, hoja del curso) y para Codex si lee por el enlace público. Los editores con nombre, la cuenta del importador y el conector de Drive de Javier (tarea de los miércoles) siguen funcionando. Es reversible.",
+    "5. Decisión sobre el repositorio: hacerlo privado oculta al público el historial con filas completas (no lo borra; los clones y copias ya hechos siguen existiendo). Pero GitHub Pages desde un repositorio privado de organización requiere un plan de pago (Team o superior): si integrarobot está en el plan gratuito, que no he podido comprobar, whyhumanoid.com dejaría de servirse. Por eso antes hay que crear un repositorio público solo con la web construida (o mover el DNS a Cloudflare) y desplegar desde CI. Es reversible y necesita la aprobación de Javier para crear el repositorio nuevo.",
+    "6. Borrar en GitHub la rama temporal deploy/worker-bundle-f4bd2db."
+  ],
+  "siguiente_accion": "Javier aprueba y ejecuta 1 a 3; Claude Code retoma desde main con ops/relevo-claude-code.md, lanza la importación y hace las comprobaciones de producción sin cargos. Esta sesión deja de escribir tras fusionar este cierre."
+}

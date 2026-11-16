@@ -21,7 +21,7 @@ console, never into chat, tickets or Git:
 | 2 | Resend, domain `whyhumanoid.com` | IONOS Auto configure, approve in IONOS, Verify DNS records (section 4.3). Then a sending key restricted to `whyhumanoid.com` as Cloudflare secret `RESEND_API_KEY` on `whyhumanoid-premium` |
 | 3 | Stripe live, Developers, API keys, Create restricted key | Write: Checkout Sessions, Customer portal. Read: Prices. Cloudflare secret `STRIPE_SECRET_KEY` on `whyhumanoid-premium` |
 | 4 | Stripe live, webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` | Reveal the signing secret; Cloudflare secret `STRIPE_WEBHOOK_SECRET` on `whyhumanoid-premium` |
-| 5 | Stripe live, Settings, Billing, Customer portal | Make sure the default configuration is saved with cancellation (at period end) and payment-method updates on; or set its id as variable `STRIPE_PORTAL_CONFIGURATION` |
+| 5 | Stripe live, Settings, Billing, Customer portal | Done 16 Nov 2026: default configuration `bpc_1UcVsIAcMngkWs5C9X4Xkwf0` saved (cancellation at period end, payment-method updates, invoices; no plan changes). `STRIPE_PORTAL_CONFIGURATION` stays unset, so the default is used |
 | 6 | Google Drive | Master workbook and its April copy "... para Codex": General access, Restricted (section 5). Named editors and the importer keep access |
 | 7 | GitHub, organisation `integrarobot` | Close the history exposure (below): make this repository private and serve the site from a public repository that holds only the built site, or from Cloudflare once DNS moves there |
 
@@ -46,6 +46,10 @@ the portal link for a paying account. No real card is used for testing.
   credential is rejected by the attribute condition". Claims presented: `sub`
   `repo:integrarobot@282541415/whyhumanoid@1456468940:environment:production`, `workflow_ref`
   `integrarobot/whyhumanoid/.github/workflows/import-workbook.yml@refs/heads/main`. Step 1 of the table (4.1) fixes it.
+- 20:50 Madrid re-check: Cloudflare unchanged (secret `WORKBOOK_ID` only); import run `43943484249` rejected the same
+  way; the Google Cloud console asks for Javier's passkey; Stripe live webhook active with the 4 handled events and the
+  price at EUR 100 a year without trial; no live restricted key; Resend domain still Not Started. Handoff for Claude
+  Code: `ops/relevo-claude-code.md`.
 - Branch `deploy/worker-bundle-f4bd2db` (the temporary bundle used by the dashboard editor; public server code, no
   data) could not be deleted through the agent proxy: delete it in GitHub, Branches.
 
