@@ -97,8 +97,9 @@ button{cursor:pointer}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:21px;letter-spacing:-.015em;white-space:nowrap}
 .brand .sq{width:9px;height:9px;background:var(--amber);display:inline-block}
 .brand .sub{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3);font-weight:400}
-.hud-nav{display:flex;gap:22px}
-.hud-nav a{text-decoration:none;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-2);transition:color .12s}
+/* Section links: 25% larger than the other mono labels (Javier, 16 Nov 2026); 44 px tall to tap comfortably. */
+.hud-nav{display:flex;gap:14px}
+.hud-nav a{display:inline-flex;align-items:center;min-height:44px;padding-inline:4px;text-decoration:none;font-family:var(--f-mono);font-size:calc(var(--fs-label) * 1.25);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-2);transition:color .12s}
 .hud-nav a:hover{color:var(--amber)}
 .hud-r{display:flex;flex-direction:column;align-items:flex-end;gap:1px;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3);white-space:nowrap}
 .hud-r b{color:var(--bone);font-weight:500}
@@ -373,10 +374,21 @@ button{cursor:pointer}
   .readouts{grid-template-columns:repeat(3,minmax(0,1fr))}
   .readouts > div:nth-child(4){border-left:0;padding-left:0}
   .readouts > div:nth-child(n+4){border-top:1px solid var(--line)}
-  .hud-nav{gap:14px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1 1 auto;justify-content:flex-end}
+  /* Right-aligned with an auto margin, not justify-content:flex-end, so links that do not fit scroll instead of being cut off. */
+  .hud-nav{gap:8px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1 1 auto}
   .hud-nav::-webkit-scrollbar{display:none}
   .hud-nav a{white-space:nowrap}
+  .hud-nav a:first-child{margin-left:auto}
   .hud-r{display:none}
+}
+@media (max-width:680px){
+  /* Brand and the four section links do not fit on one line: the links get their own full-width row. */
+  html{scroll-padding-top:calc(var(--hud-h) + 44px + 16px)}
+  .hud .wrap{height:auto;flex-wrap:wrap;column-gap:20px;row-gap:0}
+  .brand{min-height:var(--hud-h)}
+  .hud-nav{flex:1 1 100%;flex-wrap:wrap;justify-content:space-between;gap:0 6px;border-top:1px solid var(--line)}
+  .hud-nav a{padding-inline:0}
+  .hud-nav a:first-child{margin-left:0}
 }
 @media (max-width:760px){
   :root{--bezel:7px;--fs-label:11px;--hud-h:52px}
