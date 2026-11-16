@@ -17,6 +17,7 @@ La sección «Cierre obligatorio de cada entrega» se aplica a TODO trabajo de W
 - Anuncio, piloto y operación son estados distintos. Una demo, un contrato o una nota de prensa del fabricante no son operación real.
 - Solo se marca algo como procesado cuando el libro está actualizado y la web publicada y verificada.
 - Ningún trabajo termina sin su cierre registrado y presentado en el chat (sección siguiente).
+- Deployments es la sección más importante de la web (Javier, 16/11/2026). Ver «Deployments: criterio de publicación».
 
 ## Cierre obligatorio de cada entrega
 
@@ -50,6 +51,19 @@ Decisión d-0006 (16/11/2026). Protocolo completo y referencia de campos: `ops/e
 - No editar un cierre ya fusionado: se corrige con un cierre nuevo con `corrige: <ID>`. CI rechaza cambios o borrados.
 - No crear tareas programadas nuevas para avisar: la del miércoles es la única.
 - Si no puedes escribir en el repositorio, presenta el cierre completo en el chat con su ID, di que el registro queda pendiente y guárdalo en la siguiente sesión con acceso.
+
+## Deployments: criterio de publicación
+
+Prioridad máxima de Javier (16/11/2026). Se aplica a cualquier trabajo que toque esa pestaña o la web, no solo a la actualización semanal.
+
+- Se publica TODO: cada fila, cada columna y cada valor no vacío de la hoja Deployments, íntegro, sin resumir ni recortar textos largos, tareas, ubicaciones, métricas, cantidades, fechas, evidencias, fuentes ni notas.
+- No se eliminan filas por parecer duplicadas: distintas afirmaciones o evidencias sobre un mismo despliegue son filas distintas y se conservan. Fuera solo credenciales o datos personales internos, si los hubiera, con exclusión explícita y documentada.
+- La tabla resume (estado, organización y robot, tarea, lugar, resultado o métrica, fuente) y cada fila tiene el botón «View all data», que abre la ficha con todos los campos y los enlaces completos. Un campo nuevo en la hoja que no esté en los grupos de la ficha aparece en «Other fields»; añádelo a su grupo (`GROUPS_DEP` en `index.html`) y a la cabecera del importador (`server/src/datasets.js`), que rechaza cabeceras distintas.
+- Contar 119 entradas, o las que haya, no basta. Antes de publicar, y otra vez sobre lo publicado:
+  1. `node tools/audit-deployments.mjs --from <export>`: hoja contra `data/database/deployments.json`, celda por celda. Debe dar 0 diferencias.
+  2. `cd tools && node verify-site.mjs`: abre la ficha de cada fila de cada pestaña y comprueba que muestra todos los campos y todos los valores exactos, con los enlaces completos.
+  3. En producción, abre las fichas de la primera y la última fila y de las de textos más largos a 390, 768 y 1440 px.
+- El cierre lleva filas, columnas, valores no vacíos y diferencias (0 o la lista exacta justificada).
 
 ## Estado
 
@@ -86,10 +100,10 @@ Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json`.
    1. Exporta el libro actualizado a un fichero privado fuera de Git (pestaña → filas, cabecera primero).
    2. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <fecha ISO>`
    3. Humanoids: genera la vista con el código de importación (ver cabecera de `tools/sync-humanoids.mjs`) y ejecuta `tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs` y `tools/build-site.mjs`.
-   4. Comprueba: `node tools/check-public.mjs`, `node tools/export-database.mjs --check`, `cd server && npm test`, `cd tools && node verify-site.mjs`.
+   4. Comprueba: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/check-public.mjs`, `node tools/export-database.mjs --check`, `cd server && npm test`, `cd tools && node verify-site.mjs`.
    5. Rama `weekly-update/<fecha>`, PR contra `main`, CI en verde, fusión, espera al despliegue de Pages.
 
-10. **Verifica producción** en https://whyhumanoid.com/: recuentos por categoría iguales a la exportación, los registros nuevos o cambiados visibles con su fuente y fecha, sin enlaces privados, base abierta y cobro desactivado.
+10. **Verifica producción** en https://whyhumanoid.com/: recuentos por categoría iguales a la exportación, los registros nuevos o cambiados visibles con su fuente y fecha, la ficha «View all data» de Deployments completa (primera, última y textos largos, a 390, 768 y 1440 px), sin enlaces privados, base abierta y cobro desactivado.
 
 11. **Registra como procesado** solo ahora: actualiza `last_processed_edition`, vacía de `known_pending` lo publicado y añade la línea en `runs`. Commit por el mismo flujo.
 

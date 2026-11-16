@@ -4,7 +4,8 @@
 //   - every record of the free Humanoids catalogue is rendered, and the hero shows that total
 //   - search and filters work on the visible rows
 //   - the notice says the catalogue is free and the rest of the database is open (decision of 16 Nov 2026)
-//   - every row of the 12 other tabs renders from data/database, with detail, sources and dates, and search
+//   - every row of the 12 other tabs renders from data/database, with search; every row's card (View all data)
+//     shows every declared field and every value in full, exactly as in data/database, with sources and dates
 //   - 13 categories with their own URLs; a shared #db-<tab> URL restores the category
 //   - deployment status filters count only what operational_status supports
 // Usage: cd tools && npm ci && node verify-site.mjs
@@ -123,10 +124,53 @@ for (const [k, n] of Object.entries(want)) {
   expect(rowsNow.length === n && rowsNow.every((tr) => tr.querySelector(`.dst.${k}`)), `deployments status ${k}: ${rowsNow.length} rows, expected ${n}`);
 }
 document.querySelector('#db-status [data-st="all"]')?.click();
-document.querySelector('#db-rows tr.r')?.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
-const det = document.querySelector('#db-rows tr.det');
-expect(Boolean(det?.querySelector('.trace')) && /Export date: .*not a new check/.test(det?.querySelector('.trace')?.textContent ?? ''), 'detail lacks the sources and dates block');
-expect(det?.querySelectorAll('dt').length === dbIndex.tabs.find((t) => t.id === 'deployments').fields.length, 'row detail does not list every field');
+// Record cards (View all data): for EVERY row of EVERY tab, the card lists every declared field once and shows each
+// value in full, exactly as in data/database (which the export checks against the workbook); URLs are full links.
+// This is the control that a field or a value can no longer get lost between the data and the page.
+let cardsChecked = 0, valuesChecked = 0, linksChecked = 0;
+for (const t of dbIndex.tabs) {
+  await go(`#db-${t.id}`);
+  const data = JSON.parse(readFileSync(new URL(`data/database/${t.id}.json`, root), 'utf8')).rows;
+  const trs = [...document.querySelectorAll('#db-rows tr.r')];
+  expect(trs.length === data.length && trs.every((tr) => tr.querySelector('button.db-open')?.textContent === 'View all data'), `${t.id}: not every row has a View all data button`);
+  for (let i = 0; i < trs.length; i++) {
+    trs[i].querySelector('button.db-open').click();
+    const card = document.getElementById('db-dlg');
+    if (!card?.hasAttribute('open')) { failures.push(`${t.id} row ${i + 1}: View all data does not open the card`); break; }
+    const r = data[+trs[i].dataset.i];
+    const dds = [...card.querySelectorAll('#db-dlg-body dd[data-f]')];
+    const fieldsShown = dds.map((d) => d.dataset.f);
+    if (fieldsShown.length !== t.fields.length || new Set(fieldsShown).size !== t.fields.length || t.fields.some((f) => !fieldsShown.includes(f))) failures.push(`${t.id} row ${r._row}: card shows ${fieldsShown.length} of ${t.fields.length} fields`);
+    for (const dd of dds) {
+      const v = r[dd.dataset.f];
+      const has = v !== null && v !== undefined && String(v).trim() !== '';
+      if (has ? dd.textContent !== String(v) : !(dd.classList.contains('nil') && dd.textContent === 'Empty in the sheet')) failures.push(`${t.id} row ${r._row} ${dd.dataset.f}: card shows "${dd.textContent.slice(0, 60)}"`);
+      if (has) valuesChecked++;
+      for (const u of String(has ? v : '').match(/https?:\/\/[^\s<]+/g) ?? []) {
+        const clean = u.replace(/(["]|[.,;:!?\]]|\))+$/, (m) => (m === ')' && u.includes('(') ? m : ''));
+        if (![...dd.querySelectorAll('a')].some((a) => a.getAttribute('href') === clean && a.textContent === clean)) failures.push(`${t.id} row ${r._row} ${dd.dataset.f}: URL is not a full link: ${clean}`);
+        linksChecked++;
+      }
+    }
+    expect(Boolean(card.querySelector('.trace')) && /Export date: .*not a new check/.test(card.querySelector('.trace')?.textContent ?? ''), `${t.id} row ${r._row}: card lacks the sources and dates block`);
+    card.querySelector('#db-dlg-close').click();
+    cardsChecked++;
+    if (failures.length > 40) break;
+  }
+}
+const totalRows = dbIndex.tabs.reduce((n, t) => n + t.entries_total, 0);
+expect(cardsChecked === totalRows, `record cards checked: ${cardsChecked} of ${totalRows}`);
+// Deployments: the summary table shows status, organization, task, site, result and source for business readers.
+await go('#db-deployments');
+const depHead = [...document.querySelectorAll('#db-panel thead th')].map((th) => th.textContent);
+expect(JSON.stringify(depHead) === JSON.stringify(['Row', 'Status', 'Record', 'Organization and robot', 'Task', 'Site', 'Result or metric', 'Source']), `deployments table columns: ${depHead.join(', ')}`);
+expect(/View all data/.test(text('#db-panel .db-hint')), 'deployments panel does not explain View all data');
+const lastBtn = [...document.querySelectorAll('#db-rows button.db-open')].pop();
+lastBtn?.click();
+expect(document.getElementById('db-dlg-next')?.disabled === true && /Record 119 of 119/.test(text('#db-dlg-pos')), 'last deployment card: navigation wrong');
+document.getElementById('db-dlg-prev')?.click();
+expect(/Record 118 of 119/.test(text('#db-dlg-pos')), 'previous record does not move back');
+document.getElementById('db-dlg-close')?.click();
 const dbq = document.getElementById('db-q');
 dbq.value = 'zzzz-no-such-entry';
 dbq.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
@@ -174,5 +218,5 @@ if (failures.length) {
   console.error(`Site verification FAILED:\n- ${failures.join('\n- ')}`);
   process.exit(1);
 }
-console.log(`Site verification passed: ${manifest.record_count} catalogue rows rendered, search and filters work on them, no script errors.`);
+console.log(`Site verification passed: ${manifest.record_count} catalogue rows rendered, search and filters work on them, ${cardsChecked} record cards with every field (${valuesChecked} values, ${linksChecked} links) match data/database, no script errors.`);
 process.exit(0);
