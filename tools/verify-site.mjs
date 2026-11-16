@@ -4,7 +4,9 @@
 //   - every record of the free Humanoids catalogue is rendered, and the hero shows that total
 //   - search and filters work on the visible rows
 //   - the notice says the catalogue is free and the rest of the database is open (decision of 16 Nov 2026)
-//   - every row of the 12 other tabs renders from data/database, with detail and search
+//   - every row of the 12 other tabs renders from data/database, with detail, sources and dates, and search
+//   - 13 categories with their own URLs; a shared #db-<tab> URL restores the category
+//   - deployment status filters count only what operational_status supports
 // Usage: cd tools && npm ci && node verify-site.mjs
 
 import { readFileSync } from 'node:fs';
@@ -77,30 +79,63 @@ if (search) {
   expect(rows() === manifest.record_count, 'clearing search does not restore every catalogue row');
 }
 
-// Database section (open access, 16 Nov 2026): the 12 other tabs, every row, detail on click, search.
+// Database section (open access, 16 Nov 2026): 13 categories with their own URLs, every row, detail, search.
 const dbIndex = pageData.database;
-const tabButtons = [...document.querySelectorAll('#db-tabs [role="tab"]')];
-expect(dbIndex?.tabs?.length === 12 && tabButtons.length === 12, `database tabs: ${tabButtons.length} buttons, ${dbIndex?.tabs?.length} in the index`);
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+const go = async (hash) => { dom.window.location.hash = hash; dom.window.dispatchEvent(new dom.window.HashChangeEvent('hashchange')); await wait(80); };
+const indexLinks = [...document.querySelectorAll('#db-index a[data-id]')];
+expect(indexLinks.length === 13 && document.querySelectorAll('#db-index .grp').length === 5, `category index: ${indexLinks.length} links in ${document.querySelectorAll('#db-index .grp').length} groups`);
+expect(indexLinks.find((a) => a.dataset.id === 'humanoids')?.getAttribute('href') === '#humanoids', 'index does not link Humanoids to #humanoids');
 expect(pageData.access.open === true, 'page is not in open-database mode');
 expect(/rest of the database is open/i.test(text('#preview-note')), 'catalogue notice does not say the database is open');
 for (const t of dbIndex?.tabs ?? []) {
-  tabButtons.find((b) => b.dataset.id === t.id)?.click();
-  await new Promise((r) => setTimeout(r, 60));
+  const a = indexLinks.find((x) => x.dataset.id === t.id);
+  expect(a?.getAttribute('href') === `#db-${t.id}` && a.querySelector('.n')?.textContent === String(t.entries_total), `${t.id}: index link or count wrong`);
+  await go(`#db-${t.id}`);
   const shown = document.querySelectorAll('#db-rows tr.r').length;
   expect(shown === t.entries_total && shown > 0, `${t.id}: ${shown} rows shown, ${t.entries_total} in the tab`);
   expect(text('#db-title') === t.title, `${t.id}: panel title "${text('#db-title')}"`);
-  expect(new RegExp(`^${t.entries_total} entries`).test(text('#db-count')), `${t.id}: count line "${text('#db-count')}"`);
+  expect(a?.getAttribute('aria-current') === 'true', `${t.id}: index does not mark the open category`);
 }
-expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements still on the page');
-tabButtons[0]?.click();
-await new Promise((r) => setTimeout(r, 60));
+// Deployment status: counts come only from operational_status.
+await go('#db-deployments');
+const dep = JSON.parse(readFileSync(new URL('data/database/deployments.json', root), 'utf8')).rows;
+const want = { op: 0, pilot: 0, ann: 0, unc: 0 };
+for (const r of dep) want[{ operational: 'op', pilot: 'pilot', testing: 'pilot', planned: 'ann' }[String(r.operational_status ?? '').toLowerCase()] ?? 'unc']++;
+for (const [k, n] of Object.entries(want)) {
+  document.querySelector(`#db-status [data-st="${k}"]`)?.click();
+  const rowsNow = [...document.querySelectorAll('#db-rows tr.r')];
+  expect(rowsNow.length === n && rowsNow.every((tr) => tr.querySelector(`.st.${k}`)), `deployments status ${k}: ${rowsNow.length} rows, expected ${n}`);
+}
+document.querySelector('#db-status [data-st="all"]')?.click();
 document.querySelector('#db-rows tr.r')?.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
-expect(document.querySelectorAll('#db-rows tr.det dt').length === dbIndex.tabs[0].fields.length, 'row detail does not list every field');
+const det = document.querySelector('#db-rows tr.det');
+expect(Boolean(det?.querySelector('.trace')) && /Export date: .*not a new check/.test(det?.querySelector('.trace')?.textContent ?? ''), 'detail lacks the sources and dates block');
+expect(det?.querySelectorAll('dt').length === dbIndex.tabs.find((t) => t.id === 'deployments').fields.length, 'row detail does not list every field');
 const dbq = document.getElementById('db-q');
 dbq.value = 'zzzz-no-such-entry';
 dbq.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
 expect(document.querySelectorAll('#db-rows tr.r').length === 0, 'database search for a missing entry still shows rows');
+// Hero: real counts linking to their categories, and the two calls to action.
+const eco = [...document.querySelectorAll('#eco a')];
+expect(eco.length >= 8 && eco.every((a) => /^#(humanoids|db-[a-z-]+)$/.test(a.getAttribute('href'))), `hero counts: ${eco.length}`);
+for (const a of eco.filter((x) => x.getAttribute('href').startsWith('#db-'))) {
+  const t = dbIndex.tabs.find((x) => `#db-${x.id}` === a.getAttribute('href'));
+  expect(a.querySelector('b')?.textContent === String(t?.entries_total), `hero count for ${t?.id} is not the data's`);
+}
+expect(document.querySelector('#cta-h')?.getAttribute('href') === '#humanoids' && document.querySelector('#cta-db')?.getAttribute('href') === '#database', 'hero calls to action missing');
+expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements still on the page');
 expect([...document.querySelectorAll('.hud-nav a')].some((a) => a.getAttribute('href') === '#database'), 'no navigation link to the database');
+// Opening a shared category URL restores it.
+const shared = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true, url: 'https://whyhumanoid.com/#db-stocks', beforeParse(w) {
+  w.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} });
+  w.ResizeObserver = class { observe() {} unobserve() {} disconnect() {} };
+  w.IntersectionObserver = class { observe() {} unobserve() {} disconnect() {} takeRecords() { return []; } };
+  w.scrollTo = () => {}; w.HTMLElement.prototype.scrollIntoView = () => {};
+  w.fetch = async (url) => ({ ok: true, status: 200, json: async () => JSON.parse(readFileSync(new URL(String(url).replace(/^https:\/\/whyhumanoid\.com\//, ''), root), 'utf8')) });
+} });
+await wait(400);
+expect(shared.window.document.getElementById('db-title')?.textContent === dbIndex.tabs.find((t) => t.id === 'stocks').title, 'opening #db-stocks does not restore that category');
 const humanoidsLink = [...document.querySelectorAll('.hud-nav a')].find((a) => a.getAttribute('href') === '#humanoids');
 expect(humanoidsLink?.textContent.trim() === 'Humanoids', 'navigation does not name the Humanoids section');
 expect(text('#humanoids .h2') === 'Humanoids', `Humanoids section title "${text('#humanoids .h2')}"`);

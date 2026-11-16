@@ -69,7 +69,10 @@
     "name",
     "url",
     "description"
-   ]
+   ],
+   "lists": {
+    "integrator": 7
+   }
   },
   {
    "id": "evidence-links",
@@ -195,7 +198,11 @@
     "name",
     "url",
     "description"
-   ]
+   ],
+   "lists": {
+    "software": 124,
+    "world_model": 20
+   }
   },
   {
    "id": "datasets",
@@ -208,7 +215,10 @@
     "name",
     "url",
     "description"
-   ]
+   ],
+   "lists": {
+    "dataset": 28
+   }
   },
   {
    "id": "hardware",
@@ -221,7 +231,10 @@
     "name",
     "url",
     "description"
-   ]
+   ],
+   "lists": {
+    "hardware": 11
+   }
   },
   {
    "id": "other-robots",
@@ -234,7 +247,11 @@
     "name",
     "url",
     "description"
-   ]
+   ],
+   "lists": {
+    "other_robot": 59,
+    "edubot": 488
+   }
   },
   {
    "id": "data-space",

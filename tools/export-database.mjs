@@ -74,6 +74,7 @@ async function build(from, snapshot) {
       entries_total: rows.length,
       source_rows_total: new Set(rows.map((r) => r._row)).size,
       fields,
+      ...(fields.includes('list') ? { lists: rows.reduce((m, r) => ({ ...m, [r.list]: (m[r.list] ?? 0) + 1 }), {}) } : {}),
     });
     tabs[spec.id] = { id: spec.id, snapshot, rows };
     if (rows.length !== result.counts[spec.id]) throw new Error(`${spec.id}: exported ${rows.length}, imported ${result.counts[spec.id]}`);
