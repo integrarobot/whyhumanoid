@@ -46,6 +46,21 @@ const expect = (ok, message) => { if (!ok) failures.push(message); };
 const rows = () => document.querySelectorAll('#rows .row').length;
 const text = (sel) => document.querySelector(sel)?.textContent?.trim() ?? '';
 
+// Social preview: static tags in the initial HTML (crawlers do not run scripts).
+const head = html.slice(0, html.indexOf('</head>'));
+const meta = (attr, key) => (head.match(new RegExp(`<meta ${attr}="${key}" content="([^"]*)"`)) || [])[1];
+const OG_IMAGE = /^https:\/\/whyhumanoid\.com\/assets\/og\/whyhumanoid-og-v\d+\.png$/;
+expect(OG_IMAGE.test(meta('property', 'og:image') ?? '') && meta('name', 'twitter:image') === meta('property', 'og:image'), 'og:image / twitter:image missing or different');
+expect(meta('name', 'twitter:card') === 'summary_large_image', 'twitter:card is not summary_large_image');
+expect(meta('property', 'og:image:width') === '1200' && meta('property', 'og:image:height') === '630' && Boolean(meta('property', 'og:image:alt')), 'og:image size or alt missing');
+expect(meta('property', 'og:url') === 'https://whyhumanoid.com/' && /<link rel="canonical" href="https:\/\/whyhumanoid\.com\/">/.test(head), 'canonical and og:url differ');
+expect(meta('property', 'og:description') === meta('name', 'twitter:description') && meta('property', 'og:title') === meta('name', 'twitter:title'), 'Open Graph and Twitter texts differ');
+{
+  const file = new URL(meta('property', 'og:image').replace('https://whyhumanoid.com/', ''), root);
+  const png = readFileSync(file);
+  expect(png.readUInt32BE(16) === 1200 && png.readUInt32BE(20) === 630, `social image is ${png.readUInt32BE(16)}x${png.readUInt32BE(20)}, not 1200x630`);
+}
+expect(/^User-agent: \*\nAllow: \//.test(readFileSync(new URL('robots.txt', root), 'utf8')), 'robots.txt does not allow crawlers');
 expect(errors.length === 0, `script errors: ${errors.join(' | ')}`);
 expect(rows() === manifest.record_count, `rendered rows ${rows()} != catalogue ${manifest.record_count}`);
 expect(text('#h-n') === String(manifest.record_count), `hero total "${text('#h-n')}"`);
