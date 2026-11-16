@@ -330,7 +330,10 @@ button{cursor:pointer}
   .readouts{grid-template-columns:repeat(3,minmax(0,1fr))}
   .readouts > div:nth-child(4){border-left:0;padding-left:0}
   .readouts > div:nth-child(n+4){border-top:1px solid var(--line)}
-  .hud-nav{display:none}
+  .hud-nav{gap:14px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1 1 auto;justify-content:flex-end}
+  .hud-nav::-webkit-scrollbar{display:none}
+  .hud-nav a{white-space:nowrap}
+  .hud-r{display:none}
 }
 @media (max-width:760px){
   :root{--bezel:7px;--fs-label:11px;--hud-h:52px}
