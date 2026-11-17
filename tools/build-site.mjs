@@ -17,6 +17,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { readLegacySnapshot } from './export-humanoids.mjs';
 import { PLAN } from '../server/src/pricing.js';
 import { pageRelations } from './relations.mjs';
+import { pageLinks } from './build-pages.mjs';
 
 // Where the catalogue sends buyers: the premium app on the production backend. Change it here when
 // premium.whyhumanoid.com is set up as a custom domain.
@@ -232,6 +233,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   data.database = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8'));
   // Relations for the free robot pages: only the public preview rows of Deployments (tools/relations.mjs).
   data.relations = pageRelations();
+  // Addresses of the permanent robot and company pages (tools/build-pages.mjs), for links from the catalogue.
+  data.pages = pageLinks();
   data.access.open = OPEN_DATABASE;
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {

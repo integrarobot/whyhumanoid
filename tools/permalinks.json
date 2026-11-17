@@ -1,0 +1,1651 @@
+{
+  "note": "Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects.",
+  "robots": {
+    "1": [
+      "1x-neo-home-robot-1"
+    ],
+    "2": [
+      "aeirobot-alice-2"
+    ],
+    "3": [
+      "aeolus-aeo-3"
+    ],
+    "4": [
+      "agibot-x1-4"
+    ],
+    "5": [
+      "agile-one-5"
+    ],
+    "6": [
+      "agility-digit-5-in-development-6"
+    ],
+    "7": [
+      "apptronik-apollo-2-7"
+    ],
+    "8": [
+      "argon-one-8"
+    ],
+    "9": [
+      "arx-x7-9"
+    ],
+    "10": [
+      "astribot-s1-10"
+    ],
+    "11": [
+      "axibo-undisclosed-model-11"
+    ],
+    "12": [
+      "beyond-imagination-beomni-12"
+    ],
+    "13": [
+      "boardwalk-alex-13"
+    ],
+    "14": [
+      "booster-t1-14"
+    ],
+    "15": [
+      "borg-borg-01-15"
+    ],
+    "16": [
+      "boston-dynamics-atlas-industrial-electric-16"
+    ],
+    "17": [
+      "cartwheel-yogi-17"
+    ],
+    "18": [
+      "clone-clone-18"
+    ],
+    "19": [
+      "cobot-proxie-19"
+    ],
+    "20": [
+      "deep-dr01-20"
+    ],
+    "21": [
+      "devanthro-robody-21"
+    ],
+    "22": [
+      "dexmate-vega-22"
+    ],
+    "23": [
+      "diligent-moxi-23"
+    ],
+    "24": [
+      "dobot-atom-24"
+    ],
+    "25": [
+      "enactic-openarm-2-0-arms-25"
+    ],
+    "26": [
+      "enchanted-mirokai-26"
+    ],
+    "27": [
+      "engineai-se01-27"
+    ],
+    "28": [
+      "engineered-arts-ameca-28"
+    ],
+    "29": [
+      "estun-codroid-codroid-02-29"
+    ],
+    "30": [
+      "figure-figure-03-30"
+    ],
+    "31": [
+      "foundation-phantom-mk1-31"
+    ],
+    "32": [
+      "fourier-gr-1-32"
+    ],
+    "33": [
+      "gac-group-gomate-33"
+    ],
+    "34": [
+      "galaxea-r1-34"
+    ],
+    "35": [
+      "galbot-g1-35"
+    ],
+    "36": [
+      "generative-bionics-gene-01-36"
+    ],
+    "37": [
+      "goblin-gbln-01-37"
+    ],
+    "38": [
+      "hanson-sophia-38"
+    ],
+    "39": [
+      "heima-a-d-a-m-39"
+    ],
+    "40": [
+      "hexagon-aeon-40"
+    ],
+    "41": [
+      "holiday-friday-41"
+    ],
+    "42": [
+      "igus-iggy-rob-42"
+    ],
+    "43": [
+      "ihmc-robotics-nadia-43"
+    ],
+    "44": [
+      "inmoov-inmoov-44"
+    ],
+    "45": [
+      "intbot-nylo-45"
+    ],
+    "46": [
+      "k-scale-labs-k-bot-46"
+    ],
+    "47": [
+      "kepler-forerunner-47"
+    ],
+    "48": [
+      "kinisi-kinisi-bear-robotics-offering-48"
+    ],
+    "49": [
+      "leju-kuavo-49"
+    ],
+    "50": [
+      "lg-kapex-co-developed-with-kist-and-lg-ai-research-50"
+    ],
+    "51": [
+      "limx-oli-51"
+    ],
+    "52": [
+      "lumos-lus-52"
+    ],
+    "53": [
+      "lux-undisclosed-model-53"
+    ],
+    "54": [
+      "magiclab-magicbot-54"
+    ],
+    "55": [
+      "mentee-menteebot-55"
+    ],
+    "56": [
+      "mindon-undisclosed-model-56"
+    ],
+    "57": [
+      "model-undisclosed-model-57"
+    ],
+    "58": [
+      "neura-4ne1-gen-4-announced-58"
+    ],
+    "59": [
+      "noetix-dora-59"
+    ],
+    "60": [
+      "oversonic-robee-60"
+    ],
+    "61": [
+      "pal-talos-61"
+    ],
+    "62": [
+      "persona-inc-undisclosed-model-62"
+    ],
+    "63": [
+      "phybot-m1-63"
+    ],
+    "64": [
+      "physical-robotics-pi-64"
+    ],
+    "65": [
+      "pib-pib-65"
+    ],
+    "66": [
+      "pndbotics-adam-66"
+    ],
+    "67": [
+      "pollen-reachy-2-67"
+    ],
+    "68": [
+      "pudu-d7-68"
+    ],
+    "69": [
+      "qinglong-qinglong-69"
+    ],
+    "70": [
+      "rainbow-hubo-70"
+    ],
+    "71": [
+      "rapid-undisclosed-model-71"
+    ],
+    "72": [
+      "realbotix-aria-72"
+    ],
+    "73": [
+      "reflex-reflex-73"
+    ],
+    "74": [
+      "revobots-taskbot-74"
+    ],
+    "75": [
+      "rhoda-undisclosed-model-75"
+    ],
+    "76": [
+      "robotera-star-1-76"
+    ],
+    "77": [
+      "robot-com-r-noid-77"
+    ],
+    "78": [
+      "robotis-k0-78"
+    ],
+    "79": [
+      "robros-igris-79"
+    ],
+    "80": [
+      "sanctuary-ai-phoenix-80"
+    ],
+    "81": [
+      "sharpa-droid-d01-wave-hands-81"
+    ],
+    "82": [
+      "skild-skild-brain-s1-software-82"
+    ],
+    "83": [
+      "spirit-moz-83"
+    ],
+    "84": [
+      "switch-onero-h1-84"
+    ],
+    "85": [
+      "tangible-eggie-85"
+    ],
+    "86": [
+      "tesla-optimus-gen-2-86"
+    ],
+    "87": [
+      "the-bot-company-undisclosed-model-87"
+    ],
+    "88": [
+      "the-humanoid-hmnd-01-alpha-wheeled-bipedal-88"
+    ],
+    "89": [
+      "ti5robot-t230a-89"
+    ],
+    "90": [
+      "tokyo-torobo-90"
+    ],
+    "91": [
+      "ubtech-walker-s1-91"
+    ],
+    "92": [
+      "uma-undisclosed-model-92"
+    ],
+    "93": [
+      "unitree-h1-93"
+    ],
+    "94": [
+      "unix-wanda-94"
+    ],
+    "95": [
+      "vanar-generation-1-95"
+    ],
+    "96": [
+      "vinmotion-motion-96"
+    ],
+    "97": [
+      "wandercraft-calvin-97"
+    ],
+    "98": [
+      "weave-isaac-98"
+    ],
+    "99": [
+      "westwood-themis-99"
+    ],
+    "100": [
+      "wirobotics-allex-100"
+    ],
+    "101": [
+      "x-square-quanta-x2-101"
+    ],
+    "102": [
+      "xiaomi-cyber-one-102"
+    ],
+    "103": [
+      "fauna-sprout-103"
+    ],
+    "104": [
+      "xpeng-iron-104"
+    ],
+    "105": [
+      "addverb-elixis-105"
+    ],
+    "106": [
+      "faraday-future-ff-futurist-106"
+    ],
+    "107": [
+      "noble-machines-undisclosed-model-107"
+    ],
+    "108": [
+      "peritas-peri-108"
+    ],
+    "109": [
+      "khameleon-undisclosed-model-109"
+    ],
+    "110": [
+      "mind-industrial-platform-model-unconfirmed-110"
+    ],
+    "111": [
+      "sudo-sudo-r1-111"
+    ],
+    "112": [
+      "kinetix-kaibot-112"
+    ],
+    "113": [
+      "orbit-space-platform-model-unpublished-113"
+    ],
+    "114": [
+      "eden-undisclosed-model-114"
+    ],
+    "115": [
+      "twolabs-tobi-115"
+    ],
+    "116": [
+      "almond-axol-116"
+    ],
+    "117": [
+      "genesis-eno-117"
+    ],
+    "118": [
+      "vibe-robotics-vibe-01-118"
+    ],
+    "119": [
+      "nori-nori-a3-119"
+    ],
+    "120": [
+      "sunday-memo-120"
+    ],
+    "121": [
+      "walden-general-purpose-platform-name-unconfirmed-121"
+    ],
+    "122": [
+      "xyz-deux-122"
+    ],
+    "123": [
+      "lightberry-lumi-123"
+    ],
+    "124": [
+      "pink-robotics-p0-124"
+    ],
+    "125": [
+      "nucleus-humanoid-service-model-unconfirmed-125"
+    ],
+    "126": [
+      "feather-feather-126"
+    ],
+    "127": [
+      "o-id-o-id-modular-platform-127"
+    ],
+    "128": [
+      "roboparty-roboto-01-roboto-origin-128"
+    ],
+    "129": [
+      "flourish-flourish-robot-model-name-unconfirmed-129"
+    ],
+    "130": [
+      "nature-will-natura-1-ai-model-130"
+    ],
+    "131": [
+      "tuesday-labs-voxel-series-1-131"
+    ],
+    "132": [
+      "pokebot-home-robot-model-name-not-disclosed-132"
+    ],
+    "133": [
+      "mabel-mabel-133"
+    ],
+    "134": [
+      "darwin-darwin-0-134"
+    ]
+  },
+  "companies": {
+    "mfr_1x": {
+      "slugs": [
+        "1x"
+      ],
+      "robots": [
+        1
+      ],
+      "organization_ids": []
+    },
+    "mfr_aeirobot": {
+      "slugs": [
+        "aeirobot"
+      ],
+      "robots": [
+        2
+      ],
+      "organization_ids": []
+    },
+    "mfr_aeolus": {
+      "slugs": [
+        "aeolus"
+      ],
+      "robots": [
+        3
+      ],
+      "organization_ids": []
+    },
+    "mfr_agibot": {
+      "slugs": [
+        "agibot"
+      ],
+      "robots": [
+        4
+      ],
+      "organization_ids": []
+    },
+    "mfr_agile": {
+      "slugs": [
+        "agile"
+      ],
+      "robots": [
+        5
+      ],
+      "organization_ids": []
+    },
+    "org_agility_robotics": {
+      "slugs": [
+        "agility-robotics"
+      ],
+      "robots": [
+        6
+      ],
+      "organization_ids": []
+    },
+    "org_apptronik": {
+      "slugs": [
+        "apptronik"
+      ],
+      "robots": [
+        7
+      ],
+      "organization_ids": []
+    },
+    "mfr_argon": {
+      "slugs": [
+        "argon"
+      ],
+      "robots": [
+        8
+      ],
+      "organization_ids": []
+    },
+    "mfr_arx": {
+      "slugs": [
+        "arx"
+      ],
+      "robots": [
+        9
+      ],
+      "organization_ids": []
+    },
+    "mfr_astribot": {
+      "slugs": [
+        "astribot"
+      ],
+      "robots": [
+        10
+      ],
+      "organization_ids": []
+    },
+    "mfr_axibo": {
+      "slugs": [
+        "axibo"
+      ],
+      "robots": [
+        11
+      ],
+      "organization_ids": []
+    },
+    "mfr_beyond_imagination": {
+      "slugs": [
+        "beyond-imagination"
+      ],
+      "robots": [
+        12
+      ],
+      "organization_ids": []
+    },
+    "mfr_boardwalk": {
+      "slugs": [
+        "boardwalk"
+      ],
+      "robots": [
+        13
+      ],
+      "organization_ids": []
+    },
+    "mfr_booster": {
+      "slugs": [
+        "booster"
+      ],
+      "robots": [
+        14
+      ],
+      "organization_ids": []
+    },
+    "mfr_borg": {
+      "slugs": [
+        "borg"
+      ],
+      "robots": [
+        15
+      ],
+      "organization_ids": []
+    },
+    "mfr_boston_dynamics": {
+      "slugs": [
+        "boston-dynamics"
+      ],
+      "robots": [
+        16
+      ],
+      "organization_ids": []
+    },
+    "mfr_cartwheel": {
+      "slugs": [
+        "cartwheel"
+      ],
+      "robots": [
+        17
+      ],
+      "organization_ids": []
+    },
+    "mfr_clone": {
+      "slugs": [
+        "clone"
+      ],
+      "robots": [
+        18
+      ],
+      "organization_ids": []
+    },
+    "mfr_cobot": {
+      "slugs": [
+        "cobot"
+      ],
+      "robots": [
+        19
+      ],
+      "organization_ids": []
+    },
+    "mfr_deep": {
+      "slugs": [
+        "deep"
+      ],
+      "robots": [
+        20
+      ],
+      "organization_ids": []
+    },
+    "mfr_devanthro": {
+      "slugs": [
+        "devanthro"
+      ],
+      "robots": [
+        21
+      ],
+      "organization_ids": []
+    },
+    "mfr_dexmate": {
+      "slugs": [
+        "dexmate"
+      ],
+      "robots": [
+        22
+      ],
+      "organization_ids": []
+    },
+    "mfr_diligent": {
+      "slugs": [
+        "diligent"
+      ],
+      "robots": [
+        23
+      ],
+      "organization_ids": []
+    },
+    "mfr_dobot": {
+      "slugs": [
+        "dobot"
+      ],
+      "robots": [
+        24
+      ],
+      "organization_ids": []
+    },
+    "mfr_enactic": {
+      "slugs": [
+        "enactic"
+      ],
+      "robots": [
+        25
+      ],
+      "organization_ids": []
+    },
+    "mfr_enchanted": {
+      "slugs": [
+        "enchanted"
+      ],
+      "robots": [
+        26
+      ],
+      "organization_ids": []
+    },
+    "mfr_engineai": {
+      "slugs": [
+        "engineai"
+      ],
+      "robots": [
+        27
+      ],
+      "organization_ids": []
+    },
+    "mfr_engineered_arts": {
+      "slugs": [
+        "engineered-arts"
+      ],
+      "robots": [
+        28
+      ],
+      "organization_ids": []
+    },
+    "mfr_estun_codroid": {
+      "slugs": [
+        "estun-codroid"
+      ],
+      "robots": [
+        29
+      ],
+      "organization_ids": []
+    },
+    "org_figure_ai": {
+      "slugs": [
+        "figure-ai"
+      ],
+      "robots": [
+        30
+      ],
+      "organization_ids": []
+    },
+    "mfr_foundation": {
+      "slugs": [
+        "foundation"
+      ],
+      "robots": [
+        31
+      ],
+      "organization_ids": []
+    },
+    "mfr_fourier": {
+      "slugs": [
+        "fourier"
+      ],
+      "robots": [
+        32
+      ],
+      "organization_ids": []
+    },
+    "mfr_gac_group": {
+      "slugs": [
+        "gac-group"
+      ],
+      "robots": [
+        33
+      ],
+      "organization_ids": []
+    },
+    "mfr_galaxea": {
+      "slugs": [
+        "galaxea"
+      ],
+      "robots": [
+        34
+      ],
+      "organization_ids": []
+    },
+    "mfr_galbot": {
+      "slugs": [
+        "galbot"
+      ],
+      "robots": [
+        35
+      ],
+      "organization_ids": []
+    },
+    "mfr_generative_bionics": {
+      "slugs": [
+        "generative-bionics"
+      ],
+      "robots": [
+        36
+      ],
+      "organization_ids": []
+    },
+    "mfr_goblin": {
+      "slugs": [
+        "goblin"
+      ],
+      "robots": [
+        37
+      ],
+      "organization_ids": []
+    },
+    "mfr_hanson": {
+      "slugs": [
+        "hanson"
+      ],
+      "robots": [
+        38
+      ],
+      "organization_ids": []
+    },
+    "mfr_heima": {
+      "slugs": [
+        "heima"
+      ],
+      "robots": [
+        39
+      ],
+      "organization_ids": []
+    },
+    "mfr_hexagon": {
+      "slugs": [
+        "hexagon"
+      ],
+      "robots": [
+        40
+      ],
+      "organization_ids": []
+    },
+    "mfr_holiday": {
+      "slugs": [
+        "holiday"
+      ],
+      "robots": [
+        41
+      ],
+      "organization_ids": []
+    },
+    "mfr_igus": {
+      "slugs": [
+        "igus"
+      ],
+      "robots": [
+        42
+      ],
+      "organization_ids": []
+    },
+    "mfr_ihmc_robotics": {
+      "slugs": [
+        "ihmc-robotics"
+      ],
+      "robots": [
+        43
+      ],
+      "organization_ids": []
+    },
+    "mfr_inmoov": {
+      "slugs": [
+        "inmoov"
+      ],
+      "robots": [
+        44
+      ],
+      "organization_ids": []
+    },
+    "mfr_intbot": {
+      "slugs": [
+        "intbot"
+      ],
+      "robots": [
+        45
+      ],
+      "organization_ids": []
+    },
+    "mfr_k_scale_labs": {
+      "slugs": [
+        "k-scale-labs"
+      ],
+      "robots": [
+        46
+      ],
+      "organization_ids": []
+    },
+    "mfr_kepler": {
+      "slugs": [
+        "kepler"
+      ],
+      "robots": [
+        47
+      ],
+      "organization_ids": []
+    },
+    "mfr_kinisi": {
+      "slugs": [
+        "kinisi"
+      ],
+      "robots": [
+        48
+      ],
+      "organization_ids": []
+    },
+    "mfr_leju": {
+      "slugs": [
+        "leju"
+      ],
+      "robots": [
+        49
+      ],
+      "organization_ids": []
+    },
+    "mfr_lg": {
+      "slugs": [
+        "lg"
+      ],
+      "robots": [
+        50
+      ],
+      "organization_ids": []
+    },
+    "mfr_limx": {
+      "slugs": [
+        "limx"
+      ],
+      "robots": [
+        51
+      ],
+      "organization_ids": []
+    },
+    "mfr_lumos": {
+      "slugs": [
+        "lumos"
+      ],
+      "robots": [
+        52
+      ],
+      "organization_ids": []
+    },
+    "mfr_lux": {
+      "slugs": [
+        "lux"
+      ],
+      "robots": [
+        53
+      ],
+      "organization_ids": []
+    },
+    "mfr_magiclab": {
+      "slugs": [
+        "magiclab"
+      ],
+      "robots": [
+        54
+      ],
+      "organization_ids": []
+    },
+    "mfr_mentee": {
+      "slugs": [
+        "mentee"
+      ],
+      "robots": [
+        55
+      ],
+      "organization_ids": []
+    },
+    "mfr_mindon": {
+      "slugs": [
+        "mindon"
+      ],
+      "robots": [
+        56
+      ],
+      "organization_ids": []
+    },
+    "mfr_model": {
+      "slugs": [
+        "model"
+      ],
+      "robots": [
+        57
+      ],
+      "organization_ids": []
+    },
+    "mfr_neura": {
+      "slugs": [
+        "neura"
+      ],
+      "robots": [
+        58
+      ],
+      "organization_ids": []
+    },
+    "mfr_noetix": {
+      "slugs": [
+        "noetix"
+      ],
+      "robots": [
+        59
+      ],
+      "organization_ids": []
+    },
+    "mfr_oversonic": {
+      "slugs": [
+        "oversonic"
+      ],
+      "robots": [
+        60
+      ],
+      "organization_ids": []
+    },
+    "mfr_pal": {
+      "slugs": [
+        "pal"
+      ],
+      "robots": [
+        61
+      ],
+      "organization_ids": []
+    },
+    "mfr_persona_inc": {
+      "slugs": [
+        "persona-inc"
+      ],
+      "robots": [
+        62
+      ],
+      "organization_ids": []
+    },
+    "mfr_phybot": {
+      "slugs": [
+        "phybot"
+      ],
+      "robots": [
+        63
+      ],
+      "organization_ids": []
+    },
+    "mfr_physical_robotics": {
+      "slugs": [
+        "physical-robotics"
+      ],
+      "robots": [
+        64
+      ],
+      "organization_ids": []
+    },
+    "mfr_pib": {
+      "slugs": [
+        "pib"
+      ],
+      "robots": [
+        65
+      ],
+      "organization_ids": []
+    },
+    "mfr_pndbotics": {
+      "slugs": [
+        "pndbotics"
+      ],
+      "robots": [
+        66
+      ],
+      "organization_ids": []
+    },
+    "mfr_pollen": {
+      "slugs": [
+        "pollen"
+      ],
+      "robots": [
+        67
+      ],
+      "organization_ids": []
+    },
+    "mfr_pudu": {
+      "slugs": [
+        "pudu"
+      ],
+      "robots": [
+        68
+      ],
+      "organization_ids": []
+    },
+    "mfr_qinglong": {
+      "slugs": [
+        "qinglong"
+      ],
+      "robots": [
+        69
+      ],
+      "organization_ids": []
+    },
+    "mfr_rainbow": {
+      "slugs": [
+        "rainbow"
+      ],
+      "robots": [
+        70
+      ],
+      "organization_ids": []
+    },
+    "mfr_rapid": {
+      "slugs": [
+        "rapid"
+      ],
+      "robots": [
+        71
+      ],
+      "organization_ids": []
+    },
+    "mfr_realbotix": {
+      "slugs": [
+        "realbotix"
+      ],
+      "robots": [
+        72
+      ],
+      "organization_ids": []
+    },
+    "mfr_reflex": {
+      "slugs": [
+        "reflex"
+      ],
+      "robots": [
+        73
+      ],
+      "organization_ids": []
+    },
+    "mfr_revobots": {
+      "slugs": [
+        "revobots"
+      ],
+      "robots": [
+        74
+      ],
+      "organization_ids": []
+    },
+    "mfr_rhoda": {
+      "slugs": [
+        "rhoda"
+      ],
+      "robots": [
+        75
+      ],
+      "organization_ids": []
+    },
+    "mfr_robotera": {
+      "slugs": [
+        "robotera"
+      ],
+      "robots": [
+        76
+      ],
+      "organization_ids": []
+    },
+    "mfr_robot_com": {
+      "slugs": [
+        "robot-com"
+      ],
+      "robots": [
+        77
+      ],
+      "organization_ids": []
+    },
+    "mfr_robotis": {
+      "slugs": [
+        "robotis"
+      ],
+      "robots": [
+        78
+      ],
+      "organization_ids": []
+    },
+    "mfr_robros": {
+      "slugs": [
+        "robros"
+      ],
+      "robots": [
+        79
+      ],
+      "organization_ids": []
+    },
+    "mfr_sanctuary_ai": {
+      "slugs": [
+        "sanctuary-ai"
+      ],
+      "robots": [
+        80
+      ],
+      "organization_ids": []
+    },
+    "mfr_sharpa": {
+      "slugs": [
+        "sharpa"
+      ],
+      "robots": [
+        81
+      ],
+      "organization_ids": []
+    },
+    "mfr_skild": {
+      "slugs": [
+        "skild"
+      ],
+      "robots": [
+        82
+      ],
+      "organization_ids": []
+    },
+    "mfr_spirit": {
+      "slugs": [
+        "spirit"
+      ],
+      "robots": [
+        83
+      ],
+      "organization_ids": []
+    },
+    "mfr_switch": {
+      "slugs": [
+        "switch"
+      ],
+      "robots": [
+        84
+      ],
+      "organization_ids": []
+    },
+    "mfr_tangible": {
+      "slugs": [
+        "tangible"
+      ],
+      "robots": [
+        85
+      ],
+      "organization_ids": []
+    },
+    "mfr_tesla": {
+      "slugs": [
+        "tesla"
+      ],
+      "robots": [
+        86
+      ],
+      "organization_ids": []
+    },
+    "mfr_the_bot_company": {
+      "slugs": [
+        "the-bot-company"
+      ],
+      "robots": [
+        87
+      ],
+      "organization_ids": []
+    },
+    "org_humanoid": {
+      "slugs": [
+        "humanoid"
+      ],
+      "robots": [
+        88
+      ],
+      "organization_ids": []
+    },
+    "mfr_ti5robot": {
+      "slugs": [
+        "ti5robot"
+      ],
+      "robots": [
+        89
+      ],
+      "organization_ids": []
+    },
+    "mfr_tokyo": {
+      "slugs": [
+        "tokyo"
+      ],
+      "robots": [
+        90
+      ],
+      "organization_ids": []
+    },
+    "mfr_ubtech": {
+      "slugs": [
+        "ubtech"
+      ],
+      "robots": [
+        91
+      ],
+      "organization_ids": []
+    },
+    "mfr_uma": {
+      "slugs": [
+        "uma"
+      ],
+      "robots": [
+        92
+      ],
+      "organization_ids": []
+    },
+    "mfr_unitree": {
+      "slugs": [
+        "unitree"
+      ],
+      "robots": [
+        93
+      ],
+      "organization_ids": []
+    },
+    "mfr_unix": {
+      "slugs": [
+        "unix"
+      ],
+      "robots": [
+        94
+      ],
+      "organization_ids": []
+    },
+    "mfr_vanar": {
+      "slugs": [
+        "vanar"
+      ],
+      "robots": [
+        95
+      ],
+      "organization_ids": []
+    },
+    "mfr_vinmotion": {
+      "slugs": [
+        "vinmotion"
+      ],
+      "robots": [
+        96
+      ],
+      "organization_ids": []
+    },
+    "mfr_wandercraft": {
+      "slugs": [
+        "wandercraft"
+      ],
+      "robots": [
+        97
+      ],
+      "organization_ids": []
+    },
+    "mfr_weave": {
+      "slugs": [
+        "weave"
+      ],
+      "robots": [
+        98
+      ],
+      "organization_ids": []
+    },
+    "mfr_westwood": {
+      "slugs": [
+        "westwood"
+      ],
+      "robots": [
+        99
+      ],
+      "organization_ids": []
+    },
+    "mfr_wirobotics": {
+      "slugs": [
+        "wirobotics"
+      ],
+      "robots": [
+        100
+      ],
+      "organization_ids": []
+    },
+    "mfr_x_square": {
+      "slugs": [
+        "x-square"
+      ],
+      "robots": [
+        101
+      ],
+      "organization_ids": []
+    },
+    "mfr_xiaomi": {
+      "slugs": [
+        "xiaomi"
+      ],
+      "robots": [
+        102
+      ],
+      "organization_ids": []
+    },
+    "mfr_fauna": {
+      "slugs": [
+        "fauna"
+      ],
+      "robots": [
+        103
+      ],
+      "organization_ids": []
+    },
+    "mfr_xpeng": {
+      "slugs": [
+        "xpeng"
+      ],
+      "robots": [
+        104
+      ],
+      "organization_ids": []
+    },
+    "mfr_addverb": {
+      "slugs": [
+        "addverb"
+      ],
+      "robots": [
+        105
+      ],
+      "organization_ids": []
+    },
+    "mfr_faraday_future": {
+      "slugs": [
+        "faraday-future"
+      ],
+      "robots": [
+        106
+      ],
+      "organization_ids": []
+    },
+    "mfr_noble_machines": {
+      "slugs": [
+        "noble-machines"
+      ],
+      "robots": [
+        107
+      ],
+      "organization_ids": []
+    },
+    "mfr_peritas": {
+      "slugs": [
+        "peritas"
+      ],
+      "robots": [
+        108
+      ],
+      "organization_ids": []
+    },
+    "mfr_khameleon": {
+      "slugs": [
+        "khameleon"
+      ],
+      "robots": [
+        109
+      ],
+      "organization_ids": []
+    },
+    "mfr_mind": {
+      "slugs": [
+        "mind"
+      ],
+      "robots": [
+        110
+      ],
+      "organization_ids": []
+    },
+    "mfr_sudo": {
+      "slugs": [
+        "sudo"
+      ],
+      "robots": [
+        111
+      ],
+      "organization_ids": []
+    },
+    "mfr_kinetix": {
+      "slugs": [
+        "kinetix"
+      ],
+      "robots": [
+        112
+      ],
+      "organization_ids": []
+    },
+    "mfr_orbit": {
+      "slugs": [
+        "orbit"
+      ],
+      "robots": [
+        113
+      ],
+      "organization_ids": []
+    },
+    "mfr_eden": {
+      "slugs": [
+        "eden"
+      ],
+      "robots": [
+        114
+      ],
+      "organization_ids": []
+    },
+    "mfr_twolabs": {
+      "slugs": [
+        "twolabs"
+      ],
+      "robots": [
+        115
+      ],
+      "organization_ids": []
+    },
+    "mfr_almond": {
+      "slugs": [
+        "almond"
+      ],
+      "robots": [
+        116
+      ],
+      "organization_ids": []
+    },
+    "mfr_genesis": {
+      "slugs": [
+        "genesis"
+      ],
+      "robots": [
+        117
+      ],
+      "organization_ids": []
+    },
+    "mfr_vibe_robotics": {
+      "slugs": [
+        "vibe-robotics"
+      ],
+      "robots": [
+        118
+      ],
+      "organization_ids": []
+    },
+    "mfr_nori": {
+      "slugs": [
+        "nori"
+      ],
+      "robots": [
+        119
+      ],
+      "organization_ids": []
+    },
+    "mfr_sunday": {
+      "slugs": [
+        "sunday"
+      ],
+      "robots": [
+        120
+      ],
+      "organization_ids": []
+    },
+    "mfr_walden": {
+      "slugs": [
+        "walden"
+      ],
+      "robots": [
+        121
+      ],
+      "organization_ids": []
+    },
+    "mfr_xyz": {
+      "slugs": [
+        "xyz"
+      ],
+      "robots": [
+        122
+      ],
+      "organization_ids": []
+    },
+    "mfr_lightberry": {
+      "slugs": [
+        "lightberry"
+      ],
+      "robots": [
+        123
+      ],
+      "organization_ids": []
+    },
+    "mfr_pink_robotics": {
+      "slugs": [
+        "pink-robotics"
+      ],
+      "robots": [
+        124
+      ],
+      "organization_ids": []
+    },
+    "mfr_nucleus": {
+      "slugs": [
+        "nucleus"
+      ],
+      "robots": [
+        125
+      ],
+      "organization_ids": []
+    },
+    "mfr_feather": {
+      "slugs": [
+        "feather"
+      ],
+      "robots": [
+        126
+      ],
+      "organization_ids": []
+    },
+    "mfr_o_id": {
+      "slugs": [
+        "o-id"
+      ],
+      "robots": [
+        127
+      ],
+      "organization_ids": []
+    },
+    "mfr_roboparty": {
+      "slugs": [
+        "roboparty"
+      ],
+      "robots": [
+        128
+      ],
+      "organization_ids": []
+    },
+    "mfr_flourish": {
+      "slugs": [
+        "flourish"
+      ],
+      "robots": [
+        129
+      ],
+      "organization_ids": []
+    },
+    "mfr_nature_will": {
+      "slugs": [
+        "nature-will"
+      ],
+      "robots": [
+        130
+      ],
+      "organization_ids": []
+    },
+    "mfr_tuesday_labs": {
+      "slugs": [
+        "tuesday-labs"
+      ],
+      "robots": [
+        131
+      ],
+      "organization_ids": []
+    },
+    "mfr_pokebot": {
+      "slugs": [
+        "pokebot"
+      ],
+      "robots": [
+        132
+      ],
+      "organization_ids": []
+    },
+    "mfr_mabel": {
+      "slugs": [
+        "mabel"
+      ],
+      "robots": [
+        133
+      ],
+      "organization_ids": []
+    },
+    "org_darwin_robotics": {
+      "slugs": [
+        "darwin-robotics"
+      ],
+      "robots": [
+        134
+      ],
+      "organization_ids": []
+    },
+    "org_gxo": {
+      "slugs": [
+        "gxo"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_gxo"
+      ]
+    },
+    "org_schaeffler": {
+      "slugs": [
+        "schaeffler"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_schaeffler"
+      ]
+    },
+    "org_tmmc": {
+      "slugs": [
+        "tmmc"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_tmmc"
+      ]
+    },
+    "org_amazon": {
+      "slugs": [
+        "amazon"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_amazon"
+      ]
+    }
+  }
+}

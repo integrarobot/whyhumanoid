@@ -32,9 +32,11 @@ jobs:
         run: node tools/build-app.mjs --check
       - name: Relations config matches the catalogue; the page links only public preview rows
         run: node tools/relations.mjs --check
+      - name: Robot and company pages, sitemap and 404 are the build of public inputs
+        run: node tools/build-pages.mjs --check
       - name: Headless render of the page
         working-directory: tools
-        run: npm ci && node verify-site.mjs && node verify-premium-app.mjs
+        run: npm ci && node verify-site.mjs && node verify-premium-app.mjs && node verify-pages.mjs
       - name: API tests
         working-directory: server
         run: npm ci && npm test
