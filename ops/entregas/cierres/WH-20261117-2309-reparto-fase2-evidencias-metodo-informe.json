@@ -1,0 +1,56 @@
+{
+  "id": "WH-20261117-2309-reparto-fase2-evidencias-metodo-informe",
+  "tarea": "Tarea 7, fase 2 del reparto aprobado: evidencia seleccionada por ficha, página de metodología e informe agregado de registros de despliegue",
+  "origen": "Javier (17/11/2026, por la noche), transmitido por Codex: «me parece bien el plan, dile que lo haga», con las opciones recomendadas (una evidencia seleccionada por ficha con la regla propuesta; E0 a E5 solo con definiciones existentes).",
+  "fecha": "2026-11-17T23:09:28+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Evidencia seleccionada: un registro por empresa y por robot del catálogo, elegido en server/src/public/projection.js con la regla aprobada. Orden: estado más avanzado, fuente primaria, confirmación del cliente, publicación más reciente, con métrica y orden de hoja; solo registros con enlace y verificación distinta de «no resuelta». Se muestran emplazamiento, tarea, estado, métrica, nivel de evidencia, etiqueta de verificación y fuente, con una lista blanca propia. Nunca el texto de la afirmación, las notas, la confianza ni identificadores. Resultado: 45 de 130 registros (35 %) visibles así; se avisó a Javier de la cifra antes de publicar.",
+    "Metodología pública en /method/: estados tal como constan, etiquetas de verificación, regla de enlace entre robots, empresas y registros, actualización semanal, regla de selección de la evidencia y qué es público y qué es de suscriptores. E0 a E5: no hay definiciones en el libro (13 hojas) ni en la documentación; solo dos menciones a una escala «E0-E6». La página los muestra tal como constan y dice que sus definiciones no están publicadas.",
+    "Informe público en /reports/deployment-records/: registros por estado, sector, país del despliegue y año, sin JavaScript. Cualquier grupo con menos de 3 registros pasa a «Other». Los dos enlaces están en la portada, en la navegación de las páginas y en el sitemap (320 URL).",
+    "Hoja de estilos con versión en la URL (pages.css?v=<hash>), para que un cambio de estilo no quede oculto por la caché del navegador."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Informe de registros de despliegue",
+      "url": "https://whyhumanoid.com/reports/deployment-records/"
+    },
+    {
+      "etiqueta": "Metodología",
+      "url": "https://whyhumanoid.com/method/"
+    },
+    {
+      "etiqueta": "Evidencia seleccionada: GlobalFoundries",
+      "url": "https://whyhumanoid.com/companies/globalfoundries/"
+    },
+    {
+      "etiqueta": "Evidencia seleccionada: Atlas",
+      "url": "https://whyhumanoid.com/robots/boston-dynamics-atlas-industrial-electric-16/"
+    },
+    {
+      "etiqueta": "PR de la fase 2",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/50"
+    },
+    {
+      "etiqueta": "PR de la hoja de estilos",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/51"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main con los PR #50 (719cd81) y #51 (ad06f67): CI y despliegue en verde. Sin cambios en D1. El Worker 63e26e71 no necesita cambiar: el buscador no usa la evidencia ni los agregados; su copia del módulo se pone al día en el siguiente despliegue del Worker."
+  ],
+  "verificaciones": [
+    "Producción sin JavaScript: el informe responde 200 sin etiquetas script. Dice «130 deployment records about 71 deployments: 12 recorded as in operation, 50 as pilots or trials, 27 as announced and 41 unconfirmed» y ninguna celda baja de 3. /method/ explica la regla de selección y que E0 a E5 se muestran sin definir. La portada enlaza ambas páginas y el sitemap tiene 320 URL.",
+    "Evidencia en producción: GlobalFoundries muestra Spot en Singapur (más de 90.000 inspecciones, informado por el fabricante, Boston Dynamics 17/11/2026) sin el texto de la afirmación; Atlas muestra el piloto de Hyundai en el RMAC (The Robot Report, 21/09/2026). Coinciden con las fichas de ejemplo de la propuesta.",
+    "Móvil a 375 px: sin desbordamiento horizontal; las barras se ven con la hoja de estilos nueva. La barra más larga empuja su número fuera de la vista y se corrige en la fase 3.",
+    "Comprobaciones: 81 pruebas de la API (nueva: la evidencia sigue la regla, solo usa claves permitidas y nunca lleva texto de la afirmación, notas ni identificadores), verify-pages (celdas de 3 o más, enlaces, organizaciones de las tarjetas solo de la vista previa o de la evidencia), guardia de datos públicos, export-public --check y comprobación privada de valores reservados sobre la exportación real en verde."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Javier: definir los niveles E0 a E5 (o E0 a E6, según la nota de Data Space) si quiere publicarlos; la lista editorial de excepciones de la evidencia necesita una clave pública por registro, que hoy no existe (los identificadores de registro son de pago).",
+    "Fase 3 en curso: Stocks básico, directorios públicos, Data space fuera de la oferta, mensaje del muro de pago, analítica sin cookies y la barra del informe en móvil."
+  ],
+  "siguiente_accion": "Fase 3 del reparto."
+}
