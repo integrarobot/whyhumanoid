@@ -146,7 +146,9 @@ for (const t of dbIndex.tabs) {
     for (const dd of dds) {
       const v = r[dd.dataset.f];
       const has = v !== null && v !== undefined && String(v).trim() !== '';
-      if (has ? dd.textContent !== String(v) : !(dd.classList.contains('nil') && dd.textContent === 'Empty in the sheet')) failures.push(`${t.id} row ${r._row} ${dd.dataset.f}: card shows "${dd.textContent.slice(0, 60)}"`);
+      // A field the row does not publish (listed companies beyond row 10, approved split phase 3) says where it is.
+      const nil = dd.dataset.f in r ? 'Empty in the sheet' : 'In the full database';
+      if (has ? dd.textContent !== String(v) : !(dd.classList.contains('nil') && dd.textContent === nil)) failures.push(`${t.id} row ${r._row} ${dd.dataset.f}: card shows "${dd.textContent.slice(0, 60)}"`);
       if (has) valuesChecked++;
       for (const u of String(has ? v : '').match(/https?:\/\/[^\s<]+/g) ?? []) {
         const clean = u.replace(/(["]|[.,;:!?\]]|\))+$/, (m) => (m === ')' && u.includes('(') ? m : ''));

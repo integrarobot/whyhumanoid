@@ -84,7 +84,7 @@
     } else if (a.status && a.status !== 'none') {
       [title, text, cls, st] = ['Subscription ended', 'Your subscription is no longer active' + (end ? ' (paid period ended ' + end + ')' : '') + '. Subscribe again to reopen the full database.', 'bad', 'Expired'];
     } else {
-      [title, text, cls, st] = ['No subscription yet', 'You are seeing the free Humanoids catalogue and the free previews. Subscribe for ' + price + ', paid yearly, no free trial, cancel any time.', '', 'No subscription'];
+      [title, text, cls, st] = ['No subscription yet', 'You are seeing the free data: the Humanoids catalogue, the directories, basic fields of listed companies and the first 10 rows of the other categories. Subscribe for ' + price + ' to get every deployment record in full, with its site, task, results, verification and source; paid yearly, no free trial, cancel any time.', '', 'No subscription'];
     }
     $('acc-title').textContent = title;
     $('acc-text').textContent = text;
@@ -112,7 +112,7 @@
     const known = new Set(GROUPS.flatMap((g) => g[1]));
     const groups = GROUPS.concat([['More', state.datasets.map((d) => d.id).filter((id) => !known.has(id))]]);
     $('db-index').innerHTML = groups.map(([name, ids]) => {
-      const items = ids.filter((id) => by[id]).map((id) => `<a href="#${id}" data-id="${id}"${state.current === id ? ' aria-current="true"' : ''}>${esc(by[id].title)}<span class="n" data-n="${id}">${totals[id] ?? ''}</span></a>`).join('');
+      const items = ids.filter((id) => by[id]).map((id) => `<a href="#${id}" data-id="${id}"${state.current === id ? ' aria-current="true"' : ''}>${esc(by[id].title)}${by[id].offer === false ? ' <span class="lbl">not in the subscription offer</span>' : ''}<span class="n" data-n="${id}">${totals[id] ?? ''}</span></a>`).join('');
       return items ? `<div class="grp"><span class="lbl">${esc(name)}</span>${items}</div>` : '';
     }).join('');
   }
@@ -348,7 +348,7 @@
     }
     body.innerHTML = (isDep ? `<p class="db-dlg-st"><span class="dst ${status(r)}">${stLabel(status(r))}</span><span class="lbl">operational status in the sheet: ${esc(r.operational_status || 'empty')}</span></p>` : '') + links +
       groupsOf(id, fields).map(([g, fs]) => `<section class="db-sec"><h4 class="lbl">${esc(g)}</h4><dl class="db-kv">` +
-        fs.map((k) => `<dt>${esc(label(k))}</dt>` + (nz(r[k]) ? `<dd data-f="${esc(k)}">${fmt(r[k])}</dd>` : `<dd data-f="${esc(k)}" class="nil">Empty in the sheet</dd>`)).join('') + '</dl></section>').join('');
+        fs.map((k) => `<dt>${esc(label(k))}</dt>` + (nz(r[k]) ? `<dd data-f="${esc(k)}">${fmt(r[k])}</dd>` : `<dd data-f="${esc(k)}" class="nil">${data.mode === 'preview' && !(k in r) ? 'In the full database' : 'Empty in the sheet'}</dd>`)).join('') + '</dl></section>').join('');
     body.scrollTop = 0;
     dlg.querySelector('#db-dlg-pos').textContent = `Record ${pos + 1} of ${list.length}`;
     if (r.id) setHash(`${id}/${encodeURIComponent(r.id)}`, false);

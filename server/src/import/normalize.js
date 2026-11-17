@@ -4,6 +4,7 @@
 // rows of the tab, in workbook order. The public preview is rank <= 10.
 
 import { cleanValue, redactPrivateLinks } from './clean.js';
+import { PREVIEW_ROWS } from '../datasets.js';
 
 export class ImportError extends Error {}
 
@@ -69,7 +70,10 @@ export function normalizeTab(spec, values) {
     // Rows the sheet itself excludes (duplicates, editorial resources) stay as internal provenance only.
     const internal = Boolean(spec.internalRow?.(data));
     if (!internal) rank += 1;
-    items.push({ sheetRow, rank: internal ? null : rank, data, previewData: spec.clean ? previewData : null, visibility: internal ? 'internal' : 'customer' });
+    // Basic public fields (approved split, phase 3): beyond the first PREVIEW_ROWS rows, only spec.publicFields are public.
+    let pub = spec.clean ? previewData : null;
+    if (spec.publicFields && !internal && rank > PREVIEW_ROWS) pub = Object.fromEntries(spec.publicFields.map((f) => [f, (spec.clean ? previewData : data)[f] ?? null]));
+    items.push({ sheetRow, rank: internal ? null : rank, data, previewData: pub, visibility: internal ? 'internal' : 'customer' });
   });
 
   const seen = new Set();

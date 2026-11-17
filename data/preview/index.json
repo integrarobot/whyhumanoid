@@ -1,5 +1,5 @@
 {
- "note": "Free preview: the first 10 sheet rows of each of the 12 workbook tabs other than Humanoids, with counts and field names. Full rows are premium (EUR 100 per year) and served only by the backend after a subscription check (decision of 16 Nov 2026).",
+ "note": "Public data of the 12 workbook tabs other than Humanoids, with counts and field names: the first 10 sheet rows of each tab; every row of the link directories; name, ticker, exchange and country of every listed company. Everything else is for subscribers (EUR 100 per year), served only by the backend after a subscription check (paywall of 16 Nov 2026; approved split of 17 Nov 2026).",
  "snapshot": "2026-11-17T20:58:00Z",
  "tabs": [
   {
@@ -74,6 +74,7 @@
     "url",
     "description"
    ],
+   "public": "all",
    "lists": {
     "integrator": 7
    }
@@ -180,8 +181,8 @@
    "description": "Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.",
    "entries_total": 276,
    "source_rows_total": 276,
-   "preview_entries": 10,
-   "preview_source_rows": 10,
+   "preview_entries": 276,
+   "preview_source_rows": 276,
    "fields": [
     "name",
     "url",
@@ -199,6 +200,13 @@
     "etf_as_of",
     "etf_sources",
     "isin"
+   ],
+   "public": "basic_fields",
+   "public_fields": [
+    "name",
+    "ticker",
+    "exchange",
+    "country"
    ]
   },
   {
@@ -207,14 +215,15 @@
    "description": "Robot foundation models, VLA models, world models and robotics software.",
    "entries_total": 144,
    "source_rows_total": 124,
-   "preview_entries": 19,
-   "preview_source_rows": 10,
+   "preview_entries": 144,
+   "preview_source_rows": 124,
    "fields": [
     "list",
     "name",
     "url",
     "description"
    ],
+   "public": "all",
    "lists": {
     "software": 124,
     "world_model": 20
@@ -226,14 +235,15 @@
    "description": "Robot learning datasets relevant to humanoids.",
    "entries_total": 28,
    "source_rows_total": 28,
-   "preview_entries": 10,
-   "preview_source_rows": 10,
+   "preview_entries": 28,
+   "preview_source_rows": 28,
    "fields": [
     "list",
     "name",
     "url",
     "description"
    ],
+   "public": "all",
    "lists": {
     "dataset": 28
    }
@@ -244,14 +254,15 @@
    "description": "Compute, actuators and other hardware used in humanoid robots.",
    "entries_total": 11,
    "source_rows_total": 11,
-   "preview_entries": 10,
-   "preview_source_rows": 10,
+   "preview_entries": 11,
+   "preview_source_rows": 11,
    "fields": [
     "list",
     "name",
     "url",
     "description"
    ],
+   "public": "all",
    "lists": {
     "hardware": 11
    }
@@ -262,14 +273,15 @@
    "description": "Non-humanoid and educational robots tracked alongside the humanoid catalogue.",
    "entries_total": 547,
    "source_rows_total": 488,
-   "preview_entries": 20,
-   "preview_source_rows": 10,
+   "preview_entries": 547,
+   "preview_source_rows": 488,
    "fields": [
     "list",
     "name",
     "url",
     "description"
    ],
+   "public": "all",
    "lists": {
     "other_robot": 59,
     "edubot": 488
@@ -294,7 +306,8 @@
     "epistemic_status",
     "source_url",
     "next_step"
-   ]
+   ],
+   "offer": false
   }
  ]
 }

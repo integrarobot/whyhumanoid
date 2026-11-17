@@ -14,7 +14,7 @@ guard (`tools/check-public.mjs`), the export tests and CI fail if one comes back
 | What | Who | Where |
 |---|---|---|
 | Humanoids: every robot row the sheet publishes, 32 fields, public values | Anyone | `index.html`, `data/humanoids-catalogue.*` |
-| The 12 other tabs: first 10 sheet rows of each, every field; counts and field names; global search over these public rows and the Humanoids catalogue | Anyone | `data/preview/<tab>.json`, Database section of `index.html` |
+| The 12 other tabs: first 10 sheet rows of each, every field; the link directories (Integrators, Software, Datasets, Hardware, Other robots) in full; name, ticker, exchange and country of every listed company (Stocks); counts and field names; a page per robot and company with record summaries and one selected record; global search over these public data (approved split, 17 Nov 2026) | Anyone | `data/preview/<tab>.json`, Database section of `index.html` |
 | The 12 other tabs in full (all rows and fields), Humanoids with full values, global search over every row, agent API keys | Active subscribers | premium app at `https://whyhumanoid.com/app/` (static, holds no data), API on the Cloudflare Worker, data in D1 |
 | Left out everywhere | Nobody | rows the sheet marks as duplicates or not for publication; private links (workbook, Drive, mailto:, local addresses), personal contacts and internal editor notes; the backend row key, raw sheet-row pointers (`source_rows`) and importer bookkeeping; third-party GOOGLEFINANCE quote columns of Stocks |
 
@@ -80,7 +80,7 @@ node server/scripts/dev.mjs                 # local app and catalogue with synth
 | Method | Path | Access |
 |---|---|---|
 | GET | `/v1/datasets` | public: the 13 datasets, no rows |
-| GET | `/v1/datasets/{id}/preview` | public: the whole Humanoids catalogue (public values), or the first 10 data rows of another tab in workbook order; no search |
+| GET | `/v1/datasets/{id}/preview` | public: the whole Humanoids catalogue (public values), every row of the link directories, every listed company with basic fields beyond row 10, or the first 10 data rows of another tab in workbook order; no search |
 | GET | `/v1/datasets/{id}?limit&offset&q` | active subscription, checked on every request |
 | GET | `/v1/billing/plan` | public: €100 per year, whether checkout is available |
 | POST | `/v1/billing/checkout` | browser session; Stripe price verified as EUR 10000 / year, no trial, first; refused while a payment is pending |

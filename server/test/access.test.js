@@ -19,7 +19,12 @@ test('dataset list is public and contains no rows', async () => {
   assert.deepEqual(datasets.slice(0, 3).map((d) => d.id), ['humanoids', 'deployments', 'integrators']);
   assert.ok(datasets.every((d) => d.access.full === 'subscription' && !('rows' in d)));
   assert.equal(datasets[0].access.preview_rows, 'all', 'the Humanoids catalogue is free in full');
-  assert.ok(datasets.slice(1).every((d) => d.access.preview_rows === 10));
+  // Approved split, phase 3 (17 Nov 2026): link directories and listed companies are public in every row (listed
+  // companies with basic fields only beyond row 10); the other tabs keep their 10-row preview.
+  const ALL = ['integrators', 'software', 'datasets', 'hardware', 'other-robots', 'stocks'];
+  for (const d of datasets.slice(1)) assert.equal(d.access.preview_rows, ALL.includes(d.id) ? 'all' : 10, d.id);
+  assert.deepEqual(datasets.find((d) => d.id === 'stocks').access.public_fields, ['name', 'ticker', 'exchange', 'country']);
+  assert.equal(datasets.find((d) => d.id === 'data-space').offer, false);
 });
 
 test('no session: premium rows are refused with 401', async () => {

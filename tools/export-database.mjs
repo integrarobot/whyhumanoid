@@ -13,7 +13,7 @@
 // internal, the backend's row key (id), raw sheet-row pointers (source_rows) and identity_status bookkeeping.
 
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
-import { DATASETS, publicDatasetList } from '../server/src/datasets.js';
+import { DATASETS_BY_ID, DATASETS, publicDatasetList } from '../server/src/datasets.js';
 
 const root = new URL('../', import.meta.url);
 const DIR = new URL('data/preview/', root);
@@ -32,12 +32,16 @@ export function validateDatabase(index, tabs) {
   for (const meta of index.tabs) {
     const tab = tabs[meta.id];
     if (!tab) { problems.push(`${meta.id}: data/preview/${meta.id}.json missing`); continue; }
-    // Preview only: at most the first 10 sheet rows of the tab, never more (paywall, 16 Nov 2026).
+    // Preview: the first 10 sheet rows of the tab, never more (paywall, 16 Nov 2026), except the tabs the approved split
+    // made public (phase 3, 17 Nov 2026): every row, and beyond row 10 only the tab's public fields when it has them.
+    const spec = DATASETS_BY_ID.get(meta.id);
+    const all = spec?.publicRows === 'all';
     const sourceRows = new Set(tab.rows.map((r) => r._row));
-    if (tab.rows.some((r) => !(Number.isInteger(r._row) && r._row >= 1 && r._row <= PREVIEW_SOURCE_ROWS))) problems.push(`${meta.id}: a row beyond sheet row ${PREVIEW_SOURCE_ROWS} is published`);
-    if (sourceRows.size > PREVIEW_SOURCE_ROWS) problems.push(`${meta.id}: ${sourceRows.size} sheet rows published, the preview allows ${PREVIEW_SOURCE_ROWS}`);
+    if (!all && tab.rows.some((r) => !(Number.isInteger(r._row) && r._row >= 1 && r._row <= PREVIEW_SOURCE_ROWS))) problems.push(`${meta.id}: a row beyond sheet row ${PREVIEW_SOURCE_ROWS} is published`);
+    if (!all && sourceRows.size > PREVIEW_SOURCE_ROWS) problems.push(`${meta.id}: ${sourceRows.size} sheet rows published, the preview allows ${PREVIEW_SOURCE_ROWS}`);
+    if (all && spec.publicFields) for (const r of tab.rows.filter((x) => x._row > PREVIEW_SOURCE_ROWS)) for (const k of Object.keys(r)) if (k !== '_row' && !spec.publicFields.includes(k)) problems.push(`${meta.id}: field ${k} published beyond row ${PREVIEW_SOURCE_ROWS}`);
     if (tab.rows.length !== meta.preview_entries) problems.push(`${meta.id}: ${tab.rows.length} preview rows, index says ${meta.preview_entries}`);
-    if (sourceRows.size !== Math.min(PREVIEW_SOURCE_ROWS, meta.source_rows_total)) problems.push(`${meta.id}: preview does not hold the first ${PREVIEW_SOURCE_ROWS} sheet rows`);
+    if (sourceRows.size !== (all ? meta.source_rows_total : Math.min(PREVIEW_SOURCE_ROWS, meta.source_rows_total))) problems.push(`${meta.id}: preview does not hold the ${all ? 'all' : `first ${PREVIEW_SOURCE_ROWS}`} sheet rows`);
     if (meta.entries_total < tab.rows.length) problems.push(`${meta.id}: total smaller than the preview`);
     const keys = new Set(tab.rows.flatMap((r) => Object.keys(r)));
     keys.delete('_row');
@@ -63,16 +67,19 @@ async function build(from, snapshot) {
   const result = await runImport(db, values, Math.floor(Date.parse(snapshot) / 1000));
   if (!result.ok) throw new Error(`import failed: ${result.error}`);
   const list = new Map(publicDatasetList().map((d) => [d.id, d]));
-  const index = { note: 'Free preview: the first 10 sheet rows of each of the 12 workbook tabs other than Humanoids, with counts and field names. Full rows are premium (EUR 100 per year) and served only by the backend after a subscription check (decision of 16 Nov 2026).', snapshot, tabs: [] };
+  const index = { note: 'Public data of the 12 workbook tabs other than Humanoids, with counts and field names: the first 10 sheet rows of each tab; every row of the link directories; name, ticker, exchange and country of every listed company. Everything else is for subscribers (EUR 100 per year), served only by the backend after a subscription check (paywall of 16 Nov 2026; approved split of 17 Nov 2026).', snapshot, tabs: [] };
   const tabs = {};
   for (const spec of DATASETS.filter((d) => d.id !== 'humanoids')) {
     const { results } = await db
-      .prepare("SELECT preview_rank, data FROM premium_rows WHERE dataset = ? AND visibility = 'customer' ORDER BY position")
+      .prepare("SELECT preview_rank, data, preview_data FROM premium_rows WHERE dataset = ? AND visibility = 'customer' ORDER BY position")
       .bind(spec.id)
       .all();
     const all = results.map((r) => ({ _row: r.preview_rank, ...Object.fromEntries(Object.entries(JSON.parse(r.data)).filter(([k]) => !isInternalField(k))) }));
     if (all.length !== result.counts[spec.id]) throw new Error(`${spec.id}: read ${all.length}, imported ${result.counts[spec.id]}`);
-    const rows = all.filter((r) => r._row <= PREVIEW_SOURCE_ROWS);
+    // Public tabs (approved split, phase 3): every row; beyond row 10, the public values (preview_data) only.
+    const rows = spec.publicRows === 'all'
+      ? results.map((r, i) => (all[i]._row <= PREVIEW_SOURCE_ROWS || !r.preview_data ? all[i] : { _row: r.preview_rank, ...JSON.parse(r.preview_data) }))
+      : all.filter((r) => r._row <= PREVIEW_SOURCE_ROWS);
     const fields = [...new Set(all.flatMap((r) => Object.keys(r)))].filter((k) => k !== '_row');
     const meta = list.get(spec.id);
     index.tabs.push({
@@ -84,6 +91,9 @@ async function build(from, snapshot) {
       preview_entries: rows.length,
       preview_source_rows: new Set(rows.map((r) => r._row)).size,
       fields,
+      ...(spec.publicRows === 'all' ? { public: spec.publicFields ? 'basic_fields' : 'all' } : {}),
+      ...(spec.publicFields ? { public_fields: spec.publicFields } : {}),
+      ...(spec.offer === false ? { offer: false } : {}),
       ...(fields.includes('list') ? { lists: all.reduce((m, r) => ({ ...m, [r.list]: (m[r.list] ?? 0) + 1 }), {}) } : {}),
     });
     tabs[spec.id] = { id: spec.id, snapshot, preview: true, rows };
