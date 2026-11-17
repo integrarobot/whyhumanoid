@@ -1,6 +1,6 @@
 # Relevo a Claude Code: muro de pago de Why Humanoid?
 
-Actualizado: 17/11/2026, 08:20 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
+Actualizado: 17/11/2026, 08:50 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
 
 ## Quién escribe
 
@@ -11,10 +11,11 @@ El 16/11 por la noche y el 17/11 la sesión de claude.ai volvió a ser la ejecut
 | Pieza | Estado real |
 |---|---|
 | whyhumanoid.com | PR #18 (`f4bd2db`): Humanoids completo y 10 primeras filas de cada pestaña premium (`data/preview/`). Las 13 URLs `/data/database/*.json` dan 404. Hecho. |
-| Worker de producción `whyhumanoid-premium` | Código del muro, versión `38f8d8ab`. Secretos `WORKBOOK_ID`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` y `RESEND_API_KEY` (los tres últimos los puso Javier el 17/11). `checkout_available: true`: el pago live está abierto. |
+| Aplicación premium | Desde el 17/11 en `https://whyhumanoid.com/app/` (PR #24, `48d4214`): página estática generada desde `server/public` con `tools/build-app.mjs`, servida por GitHub Pages; la API sigue en `whyhumanoid-premium.javier-198.workers.dev` por CORS. `ALLOWED_ORIGINS` incluye whyhumanoid.com y, durante la transición, el origen antiguo; `PREMIUM_URL` es la nueva URL (enlace de acceso, retornos de Checkout y portal). Worker versión `7e8d9e1c`: la página antigua redirige con 302 a `/app/` conservando el `#fragmento`; `/v1/*` no se redirige (webhook intacto). Las sesiones van por origen: cada suscriptor inicia sesión una vez más en la nueva URL. DNS y correo sin tocar. |
+| Worker de producción `whyhumanoid-premium` | Código del muro con la redirección de la página antigua, versión `7e8d9e1c` (17/11). Secretos `WORKBOOK_ID`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` y `RESEND_API_KEY` (los tres últimos los puso Javier el 17/11). `checkout_available: true`: el pago live está abierto. |
 | Worker de pruebas `whyhumanoid-premium-test` | Mismo código, versión `7912c960`, datos de staging del 13/11, `checkout_available: true` (claves de prueba). |
 | Importación a producción | Hecha el 16/11 a las 21:39 (run 43951964181, HTTP 200): Humanoids 133 (y 2 internas), Deployments 119, Integrators 7, Evidence links 15, Task evaluations 4, Container handling 22, Entities 24, Stocks 276, Software 144, Datasets 28, Hardware 11, Other robots 547, Data space 30. D1 de producción coincide con la importación de la exportación auditada (filas, campos, valores no vacíos y caracteres por pestaña); la hoja no ha cambiado desde el 13/11 18:33 UTC. Google: condición del proveedor y Workload Identity User del principal de producción, hechos el 16/11 con la llave de acceso de Javier. |
-| Stripe live | Webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` activo con sus 4 eventos (`checkout.session.completed`, `customer.subscription.created`, `.updated`, `.deleted`). Precio `price_1UbOtjAcMngkWs5CR8qXNPGn`: 100 € al año, sin prueba. Portal por defecto `bpc_1UcVsIAcMngkWs5C9X4Xkwf0`. Clave restringida `whyhumanoid-premium-production` creada por Javier. Firma del webhook con el secreto real: comprobada el 17/11 sin cargos (2 entregas firmadas live, HTTP 200, `ignored_type`). Compra completa: sin probar (no se hacen cargos). |
+| Stripe live | Webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` activo con sus 4 eventos (`checkout.session.completed`, `customer.subscription.created`, `.updated`, `.deleted`). Precio `price_1UbOtjAcMngkWs5CR8qXNPGn`: 100 € al año, sin prueba. Portal por defecto `bpc_1UcVsIAcMngkWs5C9X4Xkwf0`. Clave restringida `whyhumanoid-premium-production` creada por Javier. Firma del webhook con el secreto real: comprobada el 17/11 sin cargos (2 entregas firmadas live, HTTP 200, `ignored_type`). Compra completa: comprobada por Javier con su propia compra real el 17/11 a las 08:24 (prueba del usuario, no del agente): pago de 100 €, acceso completo hasta el 17/11/2027; en D1, `entitlements` premium activo hasta 2027-11-17 07:24:26 UTC y los eventos `checkout.session.completed` y `customer.subscription.created` procesados. Su suscripción no se cancela ni se reembolsa. |
 | Resend | Dominio `whyhumanoid.com` Verified. Clave `whyhumanoid-premium-production` (solo envío, solo este dominio). Correo de acceso comprobado el 17/11: enviado desde `premium@whyhumanoid.com` y entregado. |
 | Libro maestro y copia «para Codex» | Legibles por cualquiera con el enlace. Decisión pendiente de Javier. |
 | Repositorio | Público; el historial entre el PR #4 y el PR #18 contiene las filas completas. Decisión pendiente de Javier. |
@@ -38,16 +39,17 @@ Nada de esto lo puede hacer un agente sin la aprobación concreta de Javier: cre
    npx wrangler secret put STRIPE_WEBHOOK_SECRET --env production
    npx wrangler secret put RESEND_API_KEY --env production
    ```
-5. **Hecho el 17/11, salvo la compra completa (sin probar); firma del webhook comprobada.** **Comprobar producción sin cargos**:
+5. **Hecho el 17/11; firma del webhook comprobada; compra completa comprobada por Javier con su compra real.** **Comprobar producción sin cargos**:
    ```sh
    B=https://whyhumanoid-premium.javier-198.workers.dev
    curl -s $B/v1/billing/plan            # checkout_available: true
    curl -s $B/v1/datasets/deployments/preview | head -c 300   # total_rows 119, 10 filas
    curl -s -o /dev/null -w "%{http_code}\n" "$B/v1/datasets/deployments?limit=5"   # 401
    ```
-   Luego: correo de inicio de sesión desde `premium@whyhumanoid.com` canjeado; con esa cuenta sin pago, 403 en filas completas; una sesión de Checkout live creada y abandonada sin introducir tarjeta; `node tools/audit-deployments.mjs --from <export>` con 0 diferencias. El acceso de suscriptor en producción solo se comprueba con un pago real que Javier decida hacer y cancelar; nunca con datos de pago introducidos por un agente.
+   Luego: correo de inicio de sesión desde `premium@whyhumanoid.com` canjeado; con esa cuenta sin pago, 403 en filas completas; una sesión de Checkout live creada y abandonada sin introducir tarjeta; `node tools/audit-deployments.mjs --from <export>` con 0 diferencias. El acceso de suscriptor en producción quedó comprobado con la compra real de Javier; un agente nunca introduce datos de pago.
 6. **Decisiones de Javier** (consecuencias en el cierre `relevo-muro-de-pago` de `ops/entregas/cierres/`): restringir el libro maestro y su copia; repositorio privado con la web en un repositorio público aparte.
-7. **Limpieza:** borrar en GitHub la rama `deploy/worker-bundle-f4bd2db` (el proxy del agente no deja borrar ramas).
+7. **Limpieza:** borrar en GitHub la rama `deploy/worker-bundle-f4bd2db` (el proxy del agente no deja borrar ramas; ahora guarda también el commit `4a075ee` del paquete de la versión `7e8d9e1c`).
+8. **Fase 2, decisión de Javier:** API bajo `whyhumanoid.com/v1/*` con cabeceras de seguridad reales. Exige pasar los nameservers de whyhumanoid.com a Cloudflare (registrador y correo siguen en IONOS) copiando antes todos los registros. Plan exacto e inventario en DEPLOYMENT.md, sección 0, «Proposal, phase 2». No se ejecuta sin su aprobación.
 
 ## Notas para Claude Code
 

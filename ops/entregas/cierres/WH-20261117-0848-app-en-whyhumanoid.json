@@ -1,0 +1,50 @@
+{
+  "id": "WH-20261117-0848-app-en-whyhumanoid",
+  "tarea": "Llevar la zona premium de whyhumanoid-premium.javier-198.workers.dev a whyhumanoid.com/app/ y registrar la compra real de Javier",
+  "origen": "Javier (17/11/2026), transmitido por Codex: compra real confirmada por él y zona premium dentro de whyhumanoid.com",
+  "fecha": "2026-11-17T08:48:00+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Corrección del estado anterior: la compra completa ya no está «sin probar». Javier hizo una compra real el 17/11 a las 08:24 y confirmó que todo funciona (pago de 100 €, acceso completo hasta el 17/11/2027, Deployments 119). Es una prueba real del usuario, no del agente. Su suscripción no se ha cancelado ni reembolsado.",
+    "Aplicación premium en https://whyhumanoid.com/app/ (misma marca y dominio): página estática generada desde server/public con tools/build-app.mjs y servida por GitHub Pages, con CSP en meta, conexiones solo a la API, sin referer y sin poder cargarse dentro de un marco. CI comprueba que app/ es la compilación de server/public (PR #24, 48d4214).",
+    "La API sigue en el Worker y responde al nuevo origen por CORS. Variables de producción: ALLOWED_ORIGINS con whyhumanoid.com y, durante la transición, el origen antiguo; PREMIUM_URL igual a https://whyhumanoid.com/app/, que fija el enlace del correo de acceso, los retornos de Checkout (éxito y cancelación) y el retorno del portal.",
+    "Worker versión 7e8d9e1c: GET y HEAD de la página antigua (/ e /index.html) redirigen con 302 a la nueva URL conservando el #fragmento, así que siguen valiendo marcadores, enlaces directos y enlaces de acceso antiguos. /v1/* no se redirige: el POST de Stripe al webhook sigue llegando al Worker.",
+    "Botones del catálogo público apuntando a /app/ y /app/#deployments. DNS y correo sin tocar. Mismo D1, mismas cuentas y suscripciones; permisos premium sin cambios.",
+    "DEPLOYMENT.md, README y relevo al día, con la propuesta de fase 2 (API bajo whyhumanoid.com) sin ejecutar."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Aplicación premium",
+      "url": "https://whyhumanoid.com/app/#deployments"
+    },
+    {
+      "etiqueta": "PR de la migración",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/24"
+    },
+    {
+      "etiqueta": "Estado y propuesta de fase 2",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/DEPLOYMENT.md#proposal-phase-2-api-under-whyhumanoidcom-not-executed-needs-javier"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main con el PR #24 (48d4214): CI y Pages en verde.",
+    "Worker whyhumanoid-premium versión 7e8d9e1c desde el editor del panel (paquete sha256 b234b112...704c, commit temporal 4a075ee en la rama deploy/worker-bundle-f4bd2db), con ALLOWED_ORIGINS y PREMIUM_URL nuevos."
+  ],
+  "verificaciones": [
+    "TLS: whyhumanoid.com y /app/ cargan por HTTPS sin avisos; URL canónica https://whyhumanoid.com/app/.",
+    "Visitante: Deployments muestra 10 de 119 filas con el candado y los recuentos de cada pestaña; Humanoids completo. La portada pública enlaza a /app/ y /app/#deployments (copia sin caché).",
+    "Enlace antiguo: whyhumanoid-premium.javier-198.workers.dev/#integrators acaba en whyhumanoid.com/app/#integrators. POST sin firma al webhook antiguo: 400 missing_signature, sin redirección.",
+    "Acceso: correo desde el remitente premium de whyhumanoid.com a la dirección de prueba de Resend, con enlace https://whyhumanoid.com/app/#login=…; canjeado con el clic: /v1/me 200 sin acceso, filas completas 403, portal 409.",
+    "Checkout live abierto desde la nueva URL: «100,00 € por año», volver lleva a whyhumanoid.com/app/?checkout=cancelled y la app dice «Checkout was cancelled. Nothing was charged.». Sin tarjeta ni cargo.",
+    "Móvil 375 px sin desbordamiento horizontal. Cuenta de prueba desconectada al terminar.",
+    "D1 tras las pruebas: la suscripción de Javier sigue igual (premium, Stripe, activa hasta 2027-11-17 07:24:26 UTC, sin cancelación programada); 4 eventos de Stripe, ninguno nuevo; ningún pago nuevo."
+  ],
+  "pendientes": [
+    "Javier tiene que iniciar sesión una vez en https://whyhumanoid.com/app/: las sesiones se guardan por origen en el navegador. Su suscripción no cambia. Ahí puede probar «Manage subscription» (el retorno del portal a la nueva URL está probado en local, no en producción con su cuenta).",
+    "Fase 2, decisión de Javier: API bajo whyhumanoid.com/v1/* con cabeceras de seguridad reales. Exige pasar los nameservers a Cloudflare (registrador y correo siguen en IONOS), copiando antes todos los registros; un subdominio no lo evita. Plan e inventario en DEPLOYMENT.md.",
+    "Siguen pendientes de Javier: el nombre «INTEGRAROB» en el checkout de Stripe, el acceso general del libro maestro, la visibilidad del repositorio y borrar la rama deploy/worker-bundle-f4bd2db. RoboticsMap sigue aplazado."
+  ],
+  "siguiente_accion": "Javier inicia sesión una vez en la nueva URL y decide si aprueba la fase 2 (cambio de nameservers)."
+}
