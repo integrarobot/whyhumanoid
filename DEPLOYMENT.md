@@ -118,6 +118,13 @@ the portal link for a paying account. No real card is used for testing.
   (16 records), 30 (3, plus 8 maker-only records not attributed), 88 (24), 64 and 76 without records, BMW Group (12),
   Toyota as maker and organisation, a Figure 02 record not attributed to Figure 03. Webhook POST still 400
   `missing_signature`. The workers.dev page in the bundle predates #27; it only redirects to the app.
+- 17 Nov, afternoon (Madrid): Darwin Robotics update (PR #32, import `44092011587`: Humanoids 134 public, Entities
+  26; relations config `6bbf2dc8095cd81d`). Then global search and common tags (PR #34 `d86f432`, follow-ups #35 and
+  #36). Production D1: table `search_docs` created in the console from `migrations/0003_search.sql`. Worker version
+  `26cc1be4` (bundle sha256 `59436492…d882`, temporary commit `8a4f190` on `deploy/worker-bundle-f4bd2db`):
+  `GET /v1/search` with the scope decided by the entitlement check, and the import rebuilding the index. Import run
+  `44096182826` from `main`: the 13 tabs unchanged, relations `ok`, search 1,363 documents (full) and 264 (preview),
+  0 unknown vocabulary values. Webhook POST still 400 `missing_signature`.
 - Branch `deploy/worker-bundle-f4bd2db` (the temporary bundle used by the dashboard editor; public server code, no
   data) could not be deleted through the agent proxy: delete it in GitHub, Branches.
 
