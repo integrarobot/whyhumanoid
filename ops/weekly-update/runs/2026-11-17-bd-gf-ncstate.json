@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-17",
+  "kind": "manual",
+  "note": "Two queued tasks authorised by Javier (ops/backlog.md, «Cola autorizada», items 3 and 4). Not a newsletter run: last_processed_edition is not changed. Public summary only; the premium rows stay in the workbook and the backend.",
+  "dedupe": {
+    "searched": ["GlobalFoundries", "Boston Dynamics", "Atlas", "Spot", "Howl", "NC State", "poultry", "egg", "Unitree G1"],
+    "tabs": "all 13",
+    "result": "Boston Dynamics existed in Humanoids (Atlas) and in two Deployments records (Hyundai Motor Group); no GlobalFoundries, Spot, Howl or NC State records. Unitree has no G1 record in Humanoids."
+  },
+  "inventory": {
+    "before": { "Humanoids": 136, "Deployments": 119, "Entidades limpias": 26 },
+    "after": { "Humanoids": 136, "Deployments": 130, "Entidades limpias": 28 },
+    "unit": "sheet rows without the header; the other 10 tabs unchanged",
+    "free_catalogue": { "before": 134, "after": 134 }
+  },
+  "changes": [
+    { "tab": "Humanoids", "sheet_row": 17, "public_id": 16, "fields": ["B2B Client", "Sources / checked"], "summary": "Atlas: announced testing customers Hyundai Motor Group and GlobalFoundries (onsite testing planned from early 2027); Boston Dynamics release added to the sources." },
+    { "tab": "Deployments", "sheet_rows": "121-129", "summary": "GlobalFoundries with Boston Dynamics: Spot (Burlington operating for over four years per the vendor, 2022 case study; Singapore since April 2026 with three vendor-reported metrics; an inspection programme of 875 routine inspections; announced expansion to Malta and Dresden) and Atlas (testing planned from early 2027). Spot and Atlas are separate records; plans are recorded as planned." },
+    { "tab": "Deployments", "sheet_rows": "130-131", "summary": "NC State University AIR Lab, Howl (Unitree G1 per media citing NC State): research and development for floor-egg collection, not a commercial or operating deployment; one record from CALS Magazine, one from Interesting Engineering." },
+    { "tab": "Entidades limpias", "sheet_rows": "28-29", "summary": "GlobalFoundries and NC State University as customer or operator entities." }
+  ],
+  "sources": [
+    { "url": "https://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/", "publisher": "Boston Dynamics", "published": "2026-11-17", "reviewed": "2026-11-17" },
+    { "url": "https://resources.bostondynamics.com/hubfs/Content%20Files/Global_Foundries_Case_Study%20%282%29.pdf", "publisher": "Boston Dynamics", "published": "2022 (per the 2026 release)", "reviewed": "2026-11-17" },
+    { "url": "https://magazine.cals.ncsu.edu/code-to-coop/", "publisher": "NC State CALS Magazine (Olivia Rogers)", "published": "2026-08-25", "reviewed": "2026-11-17" },
+    { "url": "https://interestingengineering.com/ai-robotics/us-humanoid-robot-collect-floor-eggs", "publisher": "Interesting Engineering", "published": "2026-11-17", "reviewed": "2026-11-17" },
+    { "url": "https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3725/2026-04-24/1320060/ams_3725_00128.pdf", "publisher": "USDA AMS (Egg Markets Overview)", "published": "2026-04-24", "reviewed": "2026-11-17", "supports": "cage-free share of the US table-egg flock: 47.7% as of April 2026, series back to 9.6%; context only, not stored in the database" }
+  ],
+  "not_found": ["a GlobalFoundries-published release on the collaboration", "Atlas sites, tasks, robot count and version at GlobalFoundries", "whether Spot already operates at Malta or Dresden", "the G1 version used by Howl", "a primary source for the early 2027 aim of the Howl project", "Howl funding, test site or robot performance"],
+  "vocabulary": "Sectors semiconductor_manufacturing (electronics, manufacturing) and poultry_farming (agriculture, a new sector tag) added to server/src/search/vocabulary.js, with Spanish synonyms.",
+  "status": "in_progress"
+}

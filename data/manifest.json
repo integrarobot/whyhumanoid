@@ -2,14 +2,22 @@
   "dataset": "humanoids",
   "access": "free",
   "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
-  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the verified import of 2026-11-17T13:15:00Z",
-  "snapshot": "2026-11-17T13:15:00Z",
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the verified import of 2026-11-17T20:58:00Z",
+  "snapshot": "2026-11-17T20:58:00Z",
   "record_count": 134,
   "verified_import": {
     "environment": "workbook export",
-    "snapshot": "2026-11-17T13:15:00Z",
-    "import_run": "workbook export of 2026-11-17 (Darwin update), imported locally with the backend import code; paid-product values",
+    "snapshot": "2026-11-17T20:58:00Z",
+    "import_run": "workbook export of 2026-11-17 (Boston Dynamics-GlobalFoundries and NC State Howl update), imported locally with the backend import code; paid-product values",
     "updated": [
+      {
+        "id": 16,
+        "field": "B2B Client"
+      },
+      {
+        "id": 16,
+        "field": "Sources / checked"
+      },
       {
         "id": 26,
         "field": "Linkedin"
@@ -133,12 +141,12 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "3833ee1f60f7aa8e16e5a68e9f696d8f0988b3b386b8f3de4497eb3e5b989038",
-      "bytes": 197523
+      "sha256": "8c3ba29d7e871d98c9a2a5bb051011253b9008c75c6bf929c7fa59b52552af9e",
+      "bytes": 197857
     },
     "humanoids-catalogue.csv": {
-      "sha256": "ec02b8356468bfdb6e7c0a3a591db08d674a07f78fcc7b9e2e133c07ff8cf0a9",
-      "bytes": 103359
+      "sha256": "3b2dfccb3cc01410fb1db315d2569cb97b382bfb3d07fe092e30255f92f6b355",
+      "bytes": 103694
     }
   }
 }

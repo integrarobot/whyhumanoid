@@ -11,6 +11,14 @@
       "result": "completed",
       "file": "ops/weekly-update/runs/2026-11-17-darwin.json",
       "close": "WH-20261117-1427-darwin-actualizacion-completa"
+    },
+    {
+      "date": "2026-11-17",
+      "kind": "manual",
+      "subject": "Boston Dynamics-GlobalFoundries and NC State Howl (queued tasks 3 and 4)",
+      "editions": [],
+      "result": "in_progress",
+      "file": "ops/weekly-update/runs/2026-11-17-bd-gf-ncstate.json"
     }
   ]
 }

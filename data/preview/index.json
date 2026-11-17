@@ -1,13 +1,13 @@
 {
  "note": "Free preview: the first 10 sheet rows of each of the 12 workbook tabs other than Humanoids, with counts and field names. Full rows are premium (EUR 100 per year) and served only by the backend after a subscription check (decision of 16 Nov 2026).",
- "snapshot": "2026-11-17T13:15:00Z",
+ "snapshot": "2026-11-17T20:58:00Z",
  "tabs": [
   {
    "id": "deployments",
    "title": "Deployments",
    "description": "One claim per row about a humanoid robot deployment, with evidence level, source and dates.",
-   "entries_total": 119,
-   "source_rows_total": 119,
+   "entries_total": 130,
+   "source_rows_total": 130,
    "preview_entries": 10,
    "preview_source_rows": 10,
    "fields": [
@@ -156,8 +156,8 @@
    "id": "entities",
    "title": "Entities",
    "description": "Canonical organisations, models and resources with identity scope and review date.",
-   "entries_total": 26,
-   "source_rows_total": 26,
+   "entries_total": 28,
+   "source_rows_total": 28,
    "preview_entries": 10,
    "preview_source_rows": 10,
    "fields": [
