@@ -17,6 +17,7 @@
 //   node tools/build-pages.mjs          write robots/, companies/, sitemap.xml, 404.html, data/pages.json, registry
 //   node tools/build-pages.mjs --check  fail if any of them differs from the build or a stale page is left behind
 
+import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -29,6 +30,8 @@ const APP = `${SITE}/app/`;
 const root = new URL('../', import.meta.url);
 const read = (p) => JSON.parse(readFileSync(new URL(p, root), 'utf8'));
 const REGISTRY = 'tools/permalinks.json';
+// The stylesheet URL carries a hash of its content, so a changed stylesheet is never served from a browser's cache.
+const CSS_VERSION = createHash('sha256').update(readFileSync(new URL('assets/pages.css', root))).digest('hex').slice(0, 10);
 const GENERATED_DIRS = ['robots', 'companies', 'reports', 'method'];
 
 // ---------- helpers ----------
@@ -137,7 +140,7 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta h
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
-<link rel="stylesheet" href="/assets/pages.css">
+<link rel="stylesheet" href="/assets/pages.css?v=${CSS_VERSION}">
 </head>
 <body>
 <header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><nav aria-label="Site"><a href="/robots/">Robots</a><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Report</a><a href="/method/">Method</a><a href="/app/">Full database</a></nav></header>
