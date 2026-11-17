@@ -1,6 +1,6 @@
 # Relevo a Claude Code: muro de pago de Why Humanoid?
 
-Actualizado: 17/11/2026, 07:55 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
+Actualizado: 17/11/2026, 08:20 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
 
 ## Quién escribe
 
@@ -14,7 +14,7 @@ El 16/11 por la noche y el 17/11 la sesión de claude.ai volvió a ser la ejecut
 | Worker de producción `whyhumanoid-premium` | Código del muro, versión `38f8d8ab`. Secretos `WORKBOOK_ID`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` y `RESEND_API_KEY` (los tres últimos los puso Javier el 17/11). `checkout_available: true`: el pago live está abierto. |
 | Worker de pruebas `whyhumanoid-premium-test` | Mismo código, versión `7912c960`, datos de staging del 13/11, `checkout_available: true` (claves de prueba). |
 | Importación a producción | Hecha el 16/11 a las 21:39 (run 43951964181, HTTP 200): Humanoids 133 (y 2 internas), Deployments 119, Integrators 7, Evidence links 15, Task evaluations 4, Container handling 22, Entities 24, Stocks 276, Software 144, Datasets 28, Hardware 11, Other robots 547, Data space 30. D1 de producción coincide con la importación de la exportación auditada (filas, campos, valores no vacíos y caracteres por pestaña); la hoja no ha cambiado desde el 13/11 18:33 UTC. Google: condición del proveedor y Workload Identity User del principal de producción, hechos el 16/11 con la llave de acceso de Javier. |
-| Stripe live | Webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` activo, 5 eventos (`checkout.session.completed`, `customer.subscription.created`, `.updated`, `.deleted` y `checkout.session.expired`, que solo sirve para comprobar la firma). Precio `price_1UbOtjAcMngkWs5CR8qXNPGn`: 100 € al año, sin prueba. Portal por defecto `bpc_1UcVsIAcMngkWs5C9X4Xkwf0`. Clave restringida `whyhumanoid-premium-production` creada por Javier. Firma del webhook con el secreto real: comprobación programada el 18/11 a las 08:05. Compra completa: sin probar (no se hacen cargos). |
+| Stripe live | Webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` activo con sus 4 eventos (`checkout.session.completed`, `customer.subscription.created`, `.updated`, `.deleted`). Precio `price_1UbOtjAcMngkWs5CR8qXNPGn`: 100 € al año, sin prueba. Portal por defecto `bpc_1UcVsIAcMngkWs5C9X4Xkwf0`. Clave restringida `whyhumanoid-premium-production` creada por Javier. Firma del webhook con el secreto real: comprobada el 17/11 sin cargos (2 entregas firmadas live, HTTP 200, `ignored_type`). Compra completa: sin probar (no se hacen cargos). |
 | Resend | Dominio `whyhumanoid.com` Verified. Clave `whyhumanoid-premium-production` (solo envío, solo este dominio). Correo de acceso comprobado el 17/11: enviado desde `premium@whyhumanoid.com` y entregado. |
 | Libro maestro y copia «para Codex» | Legibles por cualquiera con el enlace. Decisión pendiente de Javier. |
 | Repositorio | Público; el historial entre el PR #4 y el PR #18 contiene las filas completas. Decisión pendiente de Javier. |
@@ -38,7 +38,7 @@ Nada de esto lo puede hacer un agente sin la aprobación concreta de Javier: cre
    npx wrangler secret put STRIPE_WEBHOOK_SECRET --env production
    npx wrangler secret put RESEND_API_KEY --env production
    ```
-5. **Hecho el 17/11, salvo la firma del webhook (programada el 18/11) y la compra completa (sin probar).** **Comprobar producción sin cargos**:
+5. **Hecho el 17/11, salvo la compra completa (sin probar); firma del webhook comprobada.** **Comprobar producción sin cargos**:
    ```sh
    B=https://whyhumanoid-premium.javier-198.workers.dev
    curl -s $B/v1/billing/plan            # checkout_available: true
