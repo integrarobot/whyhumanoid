@@ -28,6 +28,8 @@ jobs:
         run: node tools/export-humanoids.mjs --check
       - name: Page is the verified build of the preview, with parity
         run: node tools/build-site.mjs --check
+      - name: Premium app at whyhumanoid.com/app/ is the build of server/public
+        run: node tools/build-app.mjs --check
       - name: Headless render of the page
         working-directory: tools
         run: npm ci && node verify-site.mjs && node verify-premium-app.mjs

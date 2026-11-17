@@ -1,8 +1,13 @@
-// Full-database app, served by the backend on the same origin as the API. It holds no data. Visitors and signed-in
+// Full-database app. It holds no data. It runs at https://whyhumanoid.com/app/ (GitHub Pages, built by
+// tools/build-app.mjs, which names the API origin in <meta name="wh-api">) and, for local tests and the old address,
+// on the backend's own origin, where the meta tag is absent and the API is same-origin. Visitors and signed-in
 // users without a subscription get the free Humanoids catalogue and each other category's first 10 sheet rows;
 // subscribers get every row and field, after a server-side entitlement check on every request (Javier, 16 Nov 2026:
 // paywall, EUR 100 per year, no free trial). Same table and "View all data" card as whyhumanoid.com.
 (() => {
+  // Never inside a frame: the page is static, so this replaces the frame-ancestors header the backend used to send.
+  if (window.top !== window.self) { document.documentElement.hidden = true; return; }
+  const API = (document.querySelector('meta[name="wh-api"]')?.getAttribute('content') || '').replace(/\/$/, '');
   const PAGE = 500;
   const $ = (id) => document.getElementById(id);
   const store = {
@@ -43,7 +48,7 @@
     if (auth && state.session) headers.authorization = `Bearer ${state.session}`;
     if (body) headers['content-type'] = 'application/json';
     try {
-      const res = await fetch(path, { method, headers, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
+      const res = await fetch(API + path, { method, headers, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
       return { status: res.status, data: await res.json().catch(() => ({})) };
     } catch {
       return { status: 0, data: {} };

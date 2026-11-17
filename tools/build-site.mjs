@@ -19,8 +19,9 @@ import { PLAN } from '../server/src/pricing.js';
 
 // Where the catalogue sends buyers: the premium app on the production backend. Change it here when
 // premium.whyhumanoid.com is set up as a custom domain.
-export const PREMIUM_APP_URL = 'https://whyhumanoid-premium.javier-198.workers.dev/';
-export const CHECKOUT_OPEN = false;
+// The premium app on the brand's domain (17 Nov 2026), published by tools/build-app.mjs.
+export const PREMIUM_APP_URL = 'https://whyhumanoid.com/app/';
+export const CHECKOUT_OPEN = true; // live checkout open since 17 Nov 2026
 // Paywall (Javier, 16 Nov 2026): the 12 tabs other than Humanoids show their first 10 sheet rows; the rest is premium.
 export const OPEN_DATABASE = false;
 
