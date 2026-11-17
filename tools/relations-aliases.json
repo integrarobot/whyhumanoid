@@ -45,6 +45,14 @@
         "Agile Robots"
       ]
     },
+    "Darwin": {
+      "id": "org_darwin_robotics",
+      "entity_id": "org_darwin_robotics",
+      "name": "Darwin Robotics",
+      "names": [
+        "Darwin Robotics"
+      ]
+    },
     "Diligent": {
       "name": "Diligent Robotics",
       "names": [

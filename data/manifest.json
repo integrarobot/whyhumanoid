@@ -2,13 +2,13 @@
   "dataset": "humanoids",
   "access": "free",
   "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
-  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the verified import of 2026-11-16T11:42:00Z",
-  "snapshot": "2026-11-16T11:42:00Z",
-  "record_count": 133,
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the verified import of 2026-11-17T13:15:00Z",
+  "snapshot": "2026-11-17T13:15:00Z",
+  "record_count": 134,
   "verified_import": {
     "environment": "workbook export",
-    "snapshot": "2026-11-16T11:42:00Z",
-    "import_run": "workbook export of 2026-11-16, imported locally with the backend import code; paid-product values",
+    "snapshot": "2026-11-17T13:15:00Z",
+    "import_run": "workbook export of 2026-11-17 (Darwin update), imported locally with the backend import code; paid-product values",
     "updated": [
       {
         "id": 26,
@@ -43,10 +43,15 @@
         "field": "Valuation"
       }
     ],
-    "inserted": []
+    "inserted": [
+      {
+        "id": 134,
+        "sheet_row": 137
+      }
+    ]
   },
   "full_database": {
-    "humanoid_records": 133,
+    "humanoid_records": 134,
     "other_datasets": 12,
     "other_datasets_public_rows": 10,
     "other_datasets_public_rule": "the first 10 source sheet rows of each tab; tabs that hold side-by-side lists show every entry in those rows",
@@ -128,12 +133,12 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "6358d1967e7336c71f20b4f0a8e6b68057881801feacae98196f3f1727e31e80",
-      "bytes": 194953
+      "sha256": "3833ee1f60f7aa8e16e5a68e9f696d8f0988b3b386b8f3de4497eb3e5b989038",
+      "bytes": 197523
     },
     "humanoids-catalogue.csv": {
-      "sha256": "a23fa38382e17d4d9466a8a0e71ce742cffd77628f187af9b08d130db427f7ed",
-      "bytes": 101469
+      "sha256": "ec02b8356468bfdb6e7c0a3a591db08d674a07f78fcc7b9e2e133c07ff8cf0a9",
+      "bytes": 103359
     }
   }
 }
