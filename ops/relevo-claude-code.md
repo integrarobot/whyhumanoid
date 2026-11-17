@@ -1,6 +1,6 @@
 # Relevo a Claude Code: muro de pago de Why Humanoid?
 
-Actualizado: 17/11/2026, 13:40 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
+Actualizado: 17/11/2026, 14:20 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
 
 ## Quién escribe
 
@@ -11,6 +11,7 @@ El 16/11 por la noche y el 17/11 la sesión de claude.ai volvió a ser la ejecut
 | Pieza | Estado real |
 |---|---|
 | whyhumanoid.com | PR #18 (`f4bd2db`): Humanoids completo y 10 primeras filas de cada pestaña premium (`data/preview/`). Las 13 URLs `/data/database/*.json` dan 404. Hecho. |
+| Trabajo en curso y siguiente | 1) Prueba real de actualización con Darwin Robotics (libro maestro, web, producción, cierre). 2) Después, sin esperar otro permiso: buscador global y etiquetas comunes. Alcance completo en `ops/backlog.md`, «Secuencia autorizada». Corrección pendiente de registrar en el siguiente cierre: el cierre WH-20261117-1359-altura-estado-cuenta atribuye a Javier la lectura del cierre de relaciones; fue Codex quien lo leyó. |
 | Relaciones Deployments-robots-empresas | Desde el 17/11 (PR #26 y #27). Las genera el servidor en cada importación con la configuración que envía el workflow (`tools/relations.mjs --config`); tablas D1 `relation_graphs` y `relation_config`. Cobertura: 69 de 119 registros enlazados a un robot del catálogo (46 por modelo, 23 por línea de modelo), 41 solo al fabricante, 9 sin fabricante resoluble; 113 organizaciones enlazadas. Criterio en el skill, sección «Relaciones de Deployments». |
 | Aplicación premium | Desde el 17/11 en `https://whyhumanoid.com/app/` (PR #24, `48d4214`): página estática generada desde `server/public` con `tools/build-app.mjs`, servida por GitHub Pages; la API sigue en `whyhumanoid-premium.javier-198.workers.dev` por CORS. `ALLOWED_ORIGINS` incluye whyhumanoid.com y, durante la transición, el origen antiguo; `PREMIUM_URL` es la nueva URL (enlace de acceso, retornos de Checkout y portal). Worker versión `7e8d9e1c`: la página antigua redirige con 302 a `/app/` conservando el `#fragmento`; `/v1/*` no se redirige (webhook intacto). Las sesiones van por origen: cada suscriptor inicia sesión una vez más en la nueva URL. DNS y correo sin tocar. |
 | Worker de producción `whyhumanoid-premium` | Código del muro con la redirección de la página antigua y las relaciones, versión `d231b0f5` (17/11, 13:18). Secretos `WORKBOOK_ID`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` y `RESEND_API_KEY` (los tres últimos los puso Javier el 17/11). `checkout_available: true`: el pago live está abierto. |
