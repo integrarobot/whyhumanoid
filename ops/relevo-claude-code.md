@@ -1,21 +1,21 @@
 # Relevo a Claude Code: muro de pago de Why Humanoid?
 
-Actualizado: 16/11/2026, 20:52 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
+Actualizado: 17/11/2026, 07:05 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
 
 ## Quién escribe
 
-Esta sesión deja de escribir en el repositorio y en los servicios en cuanto se fusiona el PR que añade este fichero. Claude Code continúa desde `main` en ese commit o después (`git pull` en `main`). Nunca dos sesiones escribiendo a la vez: si esta sesión tuviera que volver, primero lo anota aquí.
+El 16/11 por la noche y el 17/11 la sesión de claude.ai volvió a ser la ejecutora con la aprobación de Javier, porque Claude Code no llegó a iniciarse. Sigue siéndolo hasta que este apartado diga lo contrario. Si Claude Code toma el relevo, la sesión de claude.ai deja de escribir antes y lo anota aquí. Claude Code empieza desde `main` (`git pull`). Nunca dos sesiones escribiendo a la vez.
 
 ## Estado
 
 | Pieza | Estado real |
 |---|---|
 | whyhumanoid.com | PR #18 (`f4bd2db`): Humanoids completo y 10 primeras filas de cada pestaña premium (`data/preview/`). Las 13 URLs `/data/database/*.json` dan 404. Hecho. |
-| Worker de producción `whyhumanoid-premium` | Código del muro, versión `38f8d8ab`. `CHECKOUT_ENABLED=true` y `ALLOW_LIVE_CHECKOUT=true`. Único secreto: `WORKBOOK_ID`. D1 vacía. `checkout_available: false`. |
+| Worker de producción `whyhumanoid-premium` | Código del muro, versión `38f8d8ab`. `CHECKOUT_ENABLED=true` y `ALLOW_LIVE_CHECKOUT=true`. Único secreto: `WORKBOOK_ID` (faltan `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` y `RESEND_API_KEY`). D1 con los datos de las 13 pestañas. `checkout_available: false` hasta que estén los 3 secretos. |
 | Worker de pruebas `whyhumanoid-premium-test` | Mismo código, versión `7912c960`, datos de staging del 13/11, `checkout_available: true` (claves de prueba). |
-| Importación a producción | Rechazada por Google: run 43943484249, «The given credential is rejected by the attribute condition». |
-| Stripe live | Webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` activo, URL `/v1/stripe/webhook`, 4 eventos (`checkout.session.completed`, `customer.subscription.created`, `.updated`, `.deleted`). Precio `price_1UbOtjAcMngkWs5CR8qXNPGn`: 100 € al año, sin prueba. Portal de clientes por defecto guardado el 16/11 (`bpc_1UcVsIAcMngkWs5C9X4Xkwf0`: cancelación al final del periodo, método de pago, facturas). No hay ninguna clave restringida. |
-| Resend | Dominio `whyhumanoid.com` en «Not Started» (DNS sin configurar). Sin clave para producción. |
+| Importación a producción | Hecha el 16/11 a las 21:39 (run 43951964181, HTTP 200): Humanoids 133 (y 2 internas), Deployments 119, Integrators 7, Evidence links 15, Task evaluations 4, Container handling 22, Entities 24, Stocks 276, Software 144, Datasets 28, Hardware 11, Other robots 547, Data space 30. D1 de producción coincide con la importación de la exportación auditada (filas, campos, valores no vacíos y caracteres por pestaña); la hoja no ha cambiado desde el 13/11 18:33 UTC. Google: condición del proveedor y Workload Identity User del principal de producción, hechos el 16/11 con la llave de acceso de Javier. |
+| Stripe live | Webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` activo, URL `/v1/stripe/webhook`, 4 eventos (`checkout.session.completed`, `customer.subscription.created`, `.updated`, `.deleted`). Precio `price_1UbOtjAcMngkWs5CR8qXNPGn`: 100 € al año, sin prueba. Portal de clientes por defecto guardado el 16/11 (`bpc_1UcVsIAcMngkWs5C9X4Xkwf0`: cancelación al final del periodo, método de pago, facturas). Formulario de la clave restringida `whyhumanoid-premium-production` preparado (escritura en Checkout Sessions y Customer portal, lectura en Prices), sin crear. |
+| Resend | Dominio `whyhumanoid.com` **Verified** (DKIM TXT `resend._domainkey`, MX y TXT SPF en `send`, añadidos en IONOS el 16/11). Formulario de la clave `whyhumanoid-premium-production` (Sending access, solo whyhumanoid.com) preparado, sin crear. |
 | Libro maestro y copia «para Codex» | Legibles por cualquiera con el enlace. Decisión pendiente de Javier. |
 | Repositorio | Público; el historial entre el PR #4 y el PR #18 contiene las filas completas. Decisión pendiente de Javier. |
 
@@ -23,15 +23,15 @@ Esta sesión deja de escribir en el repositorio y en los servicios en cuanto se 
 
 Nada de esto lo puede hacer un agente sin la aprobación concreta de Javier: crea o amplía credenciales o permisos, y los secretos se escriben solo en el panel de cada servicio o con `wrangler secret put`, nunca en chat, Git ni registros.
 
-1. **Google (Javier con su llave de acceso, o Codex con gcloud).** Permiso: el entorno `production` de GitHub (solo rama `main`) de este repositorio recibe el mismo token de solo lectura de Sheets que ya tiene el entorno `test`. Comandos exactos en DEPLOYMENT.md 4.1: nueva condición del proveedor `github-actions` y `roles/iam.workloadIdentityUser` sobre `whyhumanoid-importer` para el principal de producción. Antes de conceder, comprueba en el proveedor que la asignación de `google.subject` produce ese principal.
-2. **Importar** (cualquier sesión, sin secretos):
+1. **Hecho el 16/11.** **Google (Javier con su llave de acceso, o Codex con gcloud).** Permiso: el entorno `production` de GitHub (solo rama `main`) de este repositorio recibe el mismo token de solo lectura de Sheets que ya tiene el entorno `test`. Comandos exactos en DEPLOYMENT.md 4.1: nueva condición del proveedor `github-actions` y `roles/iam.workloadIdentityUser` sobre `whyhumanoid-importer` para el principal de producción. Antes de conceder, comprueba en el proveedor que la asignación de `google.subject` produce ese principal.
+2. **Hecho el 16/11 (run 43951964181); repetir cuando cambie la hoja.** **Importar** (cualquier sesión, sin secretos):
    ```sh
    gh workflow run "Import private workbook" --ref main -f target=production
    gh run list --workflow "Import private workbook" --limit 1
    gh run view <id> --log | grep -E "HTTP|rows|warnings"
    ```
    Esperado: HTTP 200 y las 13 pestañas con filas (referencia de staging: Deployments 119, Other robots 547, Stocks 276, Software 144, Humanoids 133).
-3. **Resend (Javier).** Permiso: autoriza a Resend (Amazon SES, eu-west-1) a enviar correo como `@whyhumanoid.com`; el MX y el SPF de la raíz no cambian. En Resend, Domains, whyhumanoid.com, «Auto configure» y aprobar en IONOS (TXT `resend._domainkey`, MX `send` a `feedback-smtp.eu-west-1.amazonses.com` prioridad 10, TXT `send` `v=spf1 include:amazonses.com ~all`), luego «Verify DNS records». Después, API keys, clave con permiso «Sending access» solo para `whyhumanoid.com`, como secreto `RESEND_API_KEY` en `whyhumanoid-premium`.
+3. **DNS hecho y dominio verificado el 16/11; falta la clave.** **Resend (Javier).** Permiso: autoriza a Resend (Amazon SES, eu-west-1) a enviar correo como `@whyhumanoid.com`; el MX y el SPF de la raíz no cambian. En Resend, Domains, whyhumanoid.com, «Auto configure» y aprobar en IONOS (TXT `resend._domainkey`, MX `send` a `feedback-smtp.eu-west-1.amazonses.com` prioridad 10, TXT `send` `v=spf1 include:amazonses.com ~all`), luego «Verify DNS records». Después, API keys, clave con permiso «Sending access» solo para `whyhumanoid.com`, como secreto `RESEND_API_KEY` en `whyhumanoid-premium`.
 4. **Stripe live (Javier).** Clave restringida `whyhumanoid-premium-production` con escritura en Checkout Sessions y Customer portal y lectura en Prices (son las únicas llamadas del servidor), como secreto `STRIPE_SECRET_KEY`. Secreto de firma del webhook `we_1UbOuz…` como secreto `STRIPE_WEBHOOK_SECRET`. Panel de Cloudflare (Workers, whyhumanoid-premium, Settings, Variables and secrets, Add, tipo Secret) o, desde `server/` con la sesión de Wrangler de Javier:
    ```sh
    npx wrangler secret put STRIPE_SECRET_KEY --env production
