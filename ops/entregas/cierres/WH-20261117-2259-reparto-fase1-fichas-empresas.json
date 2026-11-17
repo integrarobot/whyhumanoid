@@ -1,0 +1,69 @@
+{
+  "id": "WH-20261117-2259-reparto-fase1-fichas-empresas",
+  "tarea": "Tarea 7, fase 1 del reparto público y de pago aprobado: proyección pública por lista blanca, ficha pública para todas las empresas, resumen de registros en fichas de robot y empresa, y empresas en el buscador de visitantes",
+  "origen": "Javier (17/11/2026, por la noche), transmitido por Codex: «me parece bien el plan, dile que lo haga». Autoriza implementar y publicar el reparto recomendado por fases, con verificación en producción y un cierre por fase.",
+  "fecha": "2026-11-17T22:59:32+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Proyección pública con lista blanca (server/src/public/projection.js), compartida por el Worker y tools/export-public.mjs. Por registro solo organización, fabricante y modelo registrados, país, sector, etiqueta de estado y año, siempre como recuentos y contrapartes. Identidad: nombre canónico, tipo, URL de referencia y fecha de revisión. Nunca emplazamiento, tarea, métricas, texto de la afirmación, verificación, fuentes, notas ni identificadores de registro.",
+    "data/public/projection.json generado desde la exportación privada; la guardia de datos públicos (regla 8) y export-public --check solo admiten claves de la lista blanca.",
+    "Fichas: todas las empresas de la base tienen página, 181 frente a 138 (se suman, entre otras, GlobalFoundries, BMW Group y Ford). Fichas de robot y de empresa con la sección «Deployment records»: recuentos por estado tal como consta, contrapartes, sectores, países y años. Cada resumen dice que los registros son afirmaciones de fuentes con su estado tal como consta, no verificación independiente. Se mantienen las vistas previas de 10 filas.",
+    "Buscador: categoría nueva «Companies» construida desde la proyección. A los visitantes les lleva a la ficha pública y a los suscriptores a la vista de empresa de la aplicación. La aplicación enlaza la ficha pública de cualquier empresa.",
+    "Comprobación privada nueva, tools/check-reserved.mjs --from <export>: busca cada valor reservado de cada registro en todo lo publicado y solo informa de nombres de campo.",
+    "Reglas en AGENTS, procedimiento semanal (export-public y check-reserved), README y CI actualizados."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Empresa nueva: GlobalFoundries",
+      "url": "https://whyhumanoid.com/companies/globalfoundries/"
+    },
+    {
+      "etiqueta": "Empresa nueva: BMW Group",
+      "url": "https://whyhumanoid.com/companies/bmw-group/"
+    },
+    {
+      "etiqueta": "Robot con resumen de registros: Atlas",
+      "url": "https://whyhumanoid.com/robots/boston-dynamics-atlas-industrial-electric-16/"
+    },
+    {
+      "etiqueta": "Índice de empresas",
+      "url": "https://whyhumanoid.com/companies/"
+    },
+    {
+      "etiqueta": "Buscador de visitantes: GlobalFoundries",
+      "url": "https://whyhumanoid.com/app/#search?q=GlobalFoundries"
+    },
+    {
+      "etiqueta": "PR de la fase 1",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/48"
+    },
+    {
+      "etiqueta": "PR del registro de la aprobación",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/47"
+    },
+    {
+      "etiqueta": "Importación de producción",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/44185188765"
+    }
+  ],
+  "despliegue": [
+    "Worker whyhumanoid-premium versión 63e26e71 desde el editor del panel (paquete sha256 242aa7e1…42d1f2, commit temporal 593e51b en deploy/worker-bundle-f4bd2db).",
+    "GitHub Pages desde main con el PR #48 (3ae164c): CI y despliegue en verde.",
+    "Importación de producción 44185188765: ok; índice de búsqueda con 1.557 documentos (completo) y 445 (visitantes), 181 de ellos fichas de empresa en cada alcance, 0 valores desconocidos."
+  ],
+  "verificaciones": [
+    "Visitante en producción: /companies/globalfoundries/ responde 200, sin JavaScript, con 9 registros resumidos y la advertencia de que no son verificación independiente; ninguno de sus valores reservados (sub-fab, Burlington, 90.000, Malta, Dresde, inspecciones) aparece en la página. /companies/ lista 181 y sitemap.xml tiene 318 URL.",
+    "Buscador de visitantes: «GlobalFoundries» devuelve su ficha (/companies/globalfoundries/), la de Boston Dynamics y Atlas; «BMW» y «Ford» encuentran sus fichas. «sub-fab», «Burlington», «90000» y «predictive maintenance» devuelven 0. GET /v1/datasets/deployments sin sesión responde 401 y /v1/relations/preview sigue con 10 registros.",
+    "Suscriptor (sesión de Javier, solo lectura): «GlobalFoundries» devuelve 13 resultados de alcance completo, con las empresas enlazadas a la aplicación; «sub-fab» devuelve 3; los datos completos responden 200; la vista de GlobalFoundries enlaza su ficha pública.",
+    "Móvil a 375 px: la ficha de GlobalFoundries no desborda y la tabla de contrapartes cabe.",
+    "Comprobaciones: 80 pruebas de la API (nueva: la proyección solo tiene claves de la lista blanca y ningún valor reservado; el buscador de visitantes encuentra la ficha y no los valores reservados), guardia de datos públicos con la regla 8, build-pages, export-public, build-site, build-app y relations en modo --check, verify-site, verify-premium-app y verify-pages. Comprobación privada sobre la exportación real: 1.626 valores reservados de 130 registros, ninguno en lo publicado; un emplazamiento sembrado a propósito se detecta."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Fase 2 (en curso): evidencia seleccionada por ficha, metodología con las definiciones de E0 a E5 que existan y primer informe agregado. Fase 3: Stocks básico, directorios públicos, Data space fuera de la oferta, mensaje del muro de pago y analítica sin cookies.",
+    "Siguen pendientes de Javier los puntos de los cierres anteriores (G1 en el catálogo, categoría de inspección, estado para investigación, rama temporal, Stripe, acceso del libro maestro, visibilidad del repositorio, «Star Era», Stocks y alta del sitemap en buscadores)."
+  ],
+  "siguiente_accion": "Fase 2 del reparto: evidencia seleccionada, metodología e informe agregado."
+}
