@@ -17,8 +17,9 @@
       "kind": "manual",
       "subject": "Boston Dynamics-GlobalFoundries and NC State Howl (queued tasks 3 and 4)",
       "editions": [],
-      "result": "in_progress",
-      "file": "ops/weekly-update/runs/2026-11-17-bd-gf-ncstate.json"
+      "result": "completed",
+      "file": "ops/weekly-update/runs/2026-11-17-bd-gf-ncstate.json",
+      "close": "WH-20261117-2212-bd-globalfoundries-ncstate-howl"
     }
   ]
 }

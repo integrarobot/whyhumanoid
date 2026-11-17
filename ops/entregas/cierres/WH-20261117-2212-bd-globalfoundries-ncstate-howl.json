@@ -1,0 +1,92 @@
+{
+  "id": "WH-20261117-2212-bd-globalfoundries-ncstate-howl",
+  "tarea": "Tareas 3 y 4 de la cola autorizada: colaboración Boston Dynamics y GlobalFoundries, y Howl de NC State (Unitree G1) en avicultura",
+  "origen": "Javier (17/11/2026, por la tarde), transmitido por Codex: «Añade al final de la cola de trabajo de Why Humanoid? estas dos tareas autorizadas por Javier». Libro maestro primero, fuentes y fechas por afirmación, sin duplicados, publicación por el flujo habitual y verificación de fichas, buscador, relaciones y permisos premium. Sin compra de créditos.",
+  "fecha": "2026-11-17T22:12:25+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Libro maestro, Humanoids fila 17 (Atlas, id público 16): B2B Client pasa a «Announced testing customers: Hyundai Motor Group (…) and GlobalFoundries (onsite testing planned from early 2027; first customer outside automotive, per Boston Dynamics 2026-11-17)»; la nota de prensa de Boston Dynamics se añade a Sources / checked. Sigue en el catálogo gratuito.",
+    "Libro maestro, Deployments filas 121 a 129 (GlobalFoundries con Boston Dynamics, 9 registros nuevos, premium): Spot en Burlington (más de cuatro años en servicio según el fabricante, y el caso de 2022), Spot en Singapur desde abril de 2026 con tres métricas del fabricante (más de 90.000 inspecciones, 99 % de misiones completadas, unos 900 km), un programa de 875 inspecciones rutinarias reasignadas en dos semanas, ampliación anunciada a Malta (Nueva York) y Dresde, y Atlas con pruebas en planta previstas desde principios de 2027. Spot y Atlas van en registros separados; lo anunciado figura como planned y lo afirmado por el fabricante como vendor_claimed_operational. Tarea de Spot: unspecified, porque el desplegable no tiene inspección.",
+    "Libro maestro, Deployments filas 130 y 131 (NC State University, AIR Lab, 2 registros nuevos, premium): Howl, Unitree G1 con versión no revelada, para detectar y recoger huevos del suelo en naves sin jaulas. Investigación y desarrollo, prueba de concepto, sin acuerdo comercial; objetivo de investigación aún no demostrado en una nave. Fila 130 desde CALS Magazine (25/08/2026, confirmada por el cliente); fila 131 desde Interesting Engineering (17/11/2026, prensa, confianza baja). El 2-15 % de huevos en el suelo queda como contexto del problema, no como rendimiento del robot; el 47,7 % frente al 9,6 % (USDA AMS, abril de 2026) se comprobó, pero no se guarda en la base. Poultry Talk y la monitorización 2D/3D no se registran como integradas.",
+    "Libro maestro, Entidades limpias filas 28 y 29: org_globalfoundries y org_nc_state_university como cliente u operador.",
+    "Buscador: sectores semiconductor_manufacturing (electrónica y fabricación) y poultry_farming (agricultura, etiqueta de sector nueva), con sinónimos en español (semiconductores, chips, fab; granja, avícola, gallinas, huevos; inspección, mantenimiento predictivo). PR #40.",
+    "Aplicación de suscriptores: en la página de cada empresa, «Robots it uses» pasa a «Robots in its records», con el mejor estado registrado de cada robot. Así GlobalFoundries muestra Atlas como Announced y no como robot en uso. La comprobación de la aplicación cubre el caso. PR #42.",
+    "Cola: la revisión del modelo de «las diez primeras filas gratis» queda registrada como tarea 6, después de las URL permanentes (PR #41). Solo propuesta; no cambia acceso, permisos ni precios."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Atlas en la web pública (B2B Client y fuente nueva)",
+      "url": "https://whyhumanoid.com/#r-boston-dynamics-atlas-industrial-electric-16"
+    },
+    {
+      "etiqueta": "Atlas en la aplicación (registros por robot)",
+      "url": "https://whyhumanoid.com/app/#robot/16"
+    },
+    {
+      "etiqueta": "Empresa: GlobalFoundries",
+      "url": "https://whyhumanoid.com/app/#company/org_globalfoundries"
+    },
+    {
+      "etiqueta": "Empresa: NC State University",
+      "url": "https://whyhumanoid.com/app/#company/org_nc_state_university"
+    },
+    {
+      "etiqueta": "Búsqueda: GlobalFoundries",
+      "url": "https://whyhumanoid.com/app/#search?q=GlobalFoundries"
+    },
+    {
+      "etiqueta": "Búsqueda: granja avícola",
+      "url": "https://whyhumanoid.com/app/#search?q=granja%20av%C3%ADcola"
+    },
+    {
+      "etiqueta": "Etiqueta de sector: agricultura",
+      "url": "https://whyhumanoid.com/app/#search?tags=sector:agriculture"
+    },
+    {
+      "etiqueta": "Fuente: Boston Dynamics, 17/11/2026",
+      "url": "https://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/"
+    },
+    {
+      "etiqueta": "Fuente: CALS Magazine, «From Code to Coop»",
+      "url": "https://magazine.cals.ncsu.edu/code-to-coop/"
+    },
+    {
+      "etiqueta": "PR de datos y vocabulario",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/40"
+    },
+    {
+      "etiqueta": "PR de la cola (tarea 6)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/41"
+    },
+    {
+      "etiqueta": "PR de la página de empresa",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/42"
+    },
+    {
+      "etiqueta": "Importación de producción",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/44175920502"
+    }
+  ],
+  "despliegue": [
+    "Worker whyhumanoid-premium versión 3135330f desde el editor del panel (paquete sha256 29d4e32b…c764ef, commit temporal e334235 en deploy/worker-bundle-f4bd2db). /health ok; webhook de Stripe intacto: POST sin firma, 400 missing_signature.",
+    "GitHub Pages desde main con los PR #40 (f4b4bc9), #41 (32ef9bf) y #42 (60602e0): CI y despliegue en verde; aplicación con premium.js?v=82465a6129c1.",
+    "Importación de producción 44175920502 desde main: ok, Deployments 130, Entities 28, Humanoids 134, relaciones ok (130 registros, 14 robots y 70 empresas con registros), búsqueda con 1.376 documentos (completo) y 264 (vista previa), 0 valores desconocidos."
+  ],
+  "verificaciones": [
+    "Libro maestro: 541 de 541 celdas escritas iguales al plan; búsqueda previa de duplicados en las 13 pestañas (Boston Dynamics ya tenía Atlas y dos registros con Hyundai; no había GlobalFoundries, Spot, Howl ni NC State).",
+    "Visitante en producción: «GlobalFoundries» devuelve solo la ficha pública de Atlas en Humanoids (1 resultado); «Howl», «NC State», «granja avícola» y «poultry» devuelven 0; la vista previa pública de Deployments no contiene GlobalFoundries ni Howl. El catálogo público y el HTML de la portada llevan el B2B Client y la fuente nuevos (instantánea 2026-11-17T20:58:00Z).",
+    "Suscriptor en producción (sesión de Javier, solo lectura): «GlobalFoundries» 11 (1 en Humanoids, 9 en Deployments, 1 en Entities); «Howl» 3; «granja avícola» 2; «semiconductores» 15; «poultry eggs» 2; la etiqueta sector:agriculture filtra los 2 registros de Howl; los registros de GlobalFoundries llevan Electronics y Manufacturing.",
+    "Relaciones: el registro de Atlas en GlobalFoundries enlaza con el robot 16 (nivel modelo) y con org_globalfoundries; los 8 registros de Spot no enlazan con ningún robot del catálogo (Spot no es un humanoide del catálogo), solo con el fabricante y con GlobalFoundries; los 2 de Howl enlazan con Unitree como fabricante y con NC State, sin robot del catálogo porque el G1 no tiene ficha. La página de Atlas muestra el registro de GlobalFoundries como Announced y ningún registro de Spot.",
+    "Pruebas: 79 de la API, comprobación de la aplicación (con el caso nuevo de la página de empresa, que falla con el código anterior), guardia de datos públicos, paridad del catálogo y verificación de la web en verde."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Para decidir: añadir el Unitree G1 al catálogo de Humanoids (hoy los registros de Howl no enlazan con un robot), añadir inspección al desplegable de tareas de Deployments y al vocabulario (hoy los registros de Spot van como unspecified) y si el trabajo de laboratorio necesita un estado propio: Howl figura como «Pilot or trial» porque la hoja dice testing, aunque la tarea y la relación aclaran que es investigación.",
+    "Sin fuente todavía: nota de GlobalFoundries sobre la colaboración, sitios, tareas, número y versión de Atlas en GlobalFoundries, si Spot ya funciona en Malta o Dresde, versión del G1 de Howl, fuente primaria del objetivo de principios de 2027 de Howl, y su financiación, lugar de pruebas o rendimiento.",
+    "La copia de la aplicación dentro del Worker (solo en la dirección antigua, que redirige a /app/) recoge el cambio de la página de empresa en el siguiente despliegue del Worker.",
+    "Siguen pendientes de Javier: borrar la rama deploy/worker-bundle-f4bd2db (lleva también este paquete), nombre del comercio en Stripe, acceso del libro maestro, visibilidad del repositorio, «Star Era» y el enlace con Stocks."
+  ],
+  "siguiente_accion": "Tarea 5 de la cola: URL permanente por robot y empresa. Después, tarea 6: propuesta de reparto público y premium para que Javier decida."
+}
