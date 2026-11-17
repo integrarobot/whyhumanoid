@@ -1,7 +1,7 @@
 {
  "dataset": "humanoids",
  "access": "free",
- "snapshot": "2026-11-17T13:15:00Z",
+ "snapshot": "2026-11-17T20:58:00Z",
  "fields": [
   "Lab",
   "Robot",
@@ -588,7 +588,7 @@
    "Youtube": "https://youtu.be/-e1_QhJ1EhQ",
    "Country": "USA",
    "Careers": "Not found",
-   "B2B Client": "Not disclosed",
+   "B2B Client": "Announced testing customers: Hyundai Motor Group (parent company; Atlas training at its Metaplant Application Center, 2026) and GlobalFoundries (onsite testing planned from early 2027; first customer outside automotive, per Boston Dynamics 2026-11-17)",
    "Stock": "Private",
    "Valuation": "USD 1,100M (2021 transaction value; historical)",
    "Investors": "Hyundai Motor Group (control); SoftBank (selling shareholder). Purchase of the remaining stake announced in 2026; closing unverified.",
@@ -611,7 +611,7 @@
    "Price / availability": "Commercial contact; no price in specification sheet",
    "Autonomy / supervision": "Autonomous, VR teleoperation and tablet control",
    "Buyer checks": "IP67; −20 to 40 °C claimed; distinguish instantaneous/sustained loads and specification-sheet CE claim",
-   "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.hyundai.com/worldwide/en/newsroom/detail/0000001225.html\nhttps://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf\nhttps://bostondynamics.com/products/atlas/"
+   "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.hyundai.com/worldwide/en/newsroom/detail/0000001225.html\nhttps://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf\nhttps://bostondynamics.com/products/atlas/\nhttps://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/"
   },
   {
    "id": 17,
@@ -2606,7 +2606,7 @@
    "Careers": "Not found",
    "B2B Client": "Service sector, companionship, human interaction",
    "Stock": "TSXV:XBOT",
-   "Valuation": "39,588,840.00",
+   "Valuation": "37,389,460.00",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "Not disclosed",
@@ -3110,7 +3110,7 @@
    "Careers": "Not found",
    "B2B Client": "Not disclosed",
    "Stock": "NASDAQ:TSLA",
-   "Valuation": "1,501,020,322,920.00",
+   "Valuation": "1,498,609,140,540.00",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "2023",

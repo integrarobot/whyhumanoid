@@ -59,6 +59,9 @@ test('tags come only from the controlled vocabulary: company country apart from 
   tagsFor('deployments', { ...DEP(1), sector: 'space_mining', country: 'Atlantis' }, unmapped);
   assert.deepEqual(unmapped, [['sector', 'space mining'], ['country', 'atlantis']]);
   assert.deepEqual(tagsFor('stocks', { country: 'EE. UU.', segment: 'Reductores / actuadores' }), ['hq:united_states', 'sector:components', 'type:listed_company']);
+  assert.deepEqual(tagsFor('deployments', { ...DEP(1), sector: 'semiconductor_manufacturing' }).filter((x) => x.startsWith('sector:')), ['sector:electronics', 'sector:manufacturing']);
+  assert.deepEqual(tagsFor('deployments', { ...DEP(1), sector: 'poultry_farming' }).filter((x) => x.startsWith('sector:')), ['sector:agriculture']);
+  assert.ok(parseQuery('granja avícola')[0].alts.includes('agriculture'));
   assert.deepEqual(tagsFor('stocks', { country: 'Japón', segment: 'Automatización / tecnología (RBOT)' }), ['hq:japan', 'type:listed_company']);
   assert.deepEqual(tagsFor('humanoids', { Country: 'USA (New York City)', 'Platform / mobility': 'Not stated by the company' }), ['hq:united_states', 'type:humanoid_robot']);
 });

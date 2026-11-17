@@ -21,7 +21,7 @@ export const FACET_LABELS = Object.fromEntries(FACETS);
 const SECTORS = {
   automotive: 'Automotive', electronics: 'Electronics', batteries: 'Batteries', manufacturing: 'Manufacturing',
   logistics: 'Logistics and warehousing', retail: 'Retail', healthcare: 'Healthcare', energy: 'Energy and utilities',
-  rail: 'Railways', research: 'Research', components: 'Components and sensors',
+  rail: 'Railways', research: 'Research', components: 'Components and sensors', agriculture: 'Agriculture',
 };
 const TASKS = { material_handling: 'Material handling', machine_tending: 'Machine tending', internal_transport: 'Internal transport', assembly: 'Assembly' };
 const STATUS = {
@@ -88,6 +88,8 @@ const SECTOR_OF = {
   logistics: ['logistics'], ecommerce_logistics: ['logistics', 'retail'], retail_logistics: ['logistics', 'retail'],
   retail: ['retail'], pharmacy_retail: ['retail', 'healthcare'], healthcare: ['healthcare'],
   electricity_transmission: ['energy'], railway: ['rail'], robotics_research: ['research'],
+  // 17 Nov 2026: GlobalFoundries fabs (semiconductors are electronics manufacturing) and NC State's poultry research.
+  semiconductor_manufacturing: ['electronics', 'manufacturing'], poultry_farming: ['agriculture'],
   multiple: [], not_disclosed: [], '': [],
 };
 // Listed companies: the SEGMENT column (Spanish). ETF labels such as "Automatización / tecnología (RBOT)" are fund
@@ -182,6 +184,9 @@ const SYNONYM_LIST = [
   [['logistica', 'almacen', 'almacenes', 'warehouse', 'warehouses', 'warehousing', 'intralogistica', 'intralogistics', 'distribucion', 'fulfillment', 'fulfilment'], ['logistics', 'warehouse', 'distribution']],
   [['fabrica', 'fabricas', 'factory', 'factories', 'planta', 'plantas', 'fabricacion', 'industria', 'industrial', 'manufactura'], ['manufacturing', 'factory', 'plant']],
   [['electronica'], ['electronics']],
+  [['semiconductores', 'semiconductor', 'semiconductors', 'chips', 'fab', 'fabs', 'foundry'], ['semiconductor']],
+  [['agricultura', 'agricola', 'granja', 'granjas', 'avicultura', 'avicola', 'gallinas', 'huevos', 'farm', 'farms', 'farming', 'poultry', 'eggs'], ['agriculture', 'poultry', 'egg']],
+  [['inspeccion', 'inspecciones', 'mantenimiento predictivo'], ['inspection', 'predictive maintenance']],
   [['bateria', 'baterias', 'battery'], ['battery', 'batteries']],
   [['salud', 'sanidad', 'hospital', 'hospitales', 'farmacia', 'farmacias', 'pharmacy'], ['healthcare', 'hospital', 'pharmacy']],
   [['comercio', 'tienda', 'tiendas', 'store', 'stores', 'supermercado', 'supermercados', 'supermarket', 'minorista'], ['retail', 'store']],
