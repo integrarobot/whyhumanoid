@@ -1,0 +1,73 @@
+{
+  "id": "WH-20261117-2227-urls-permanentes-robots-empresas",
+  "tarea": "Tarea 5 de la cola autorizada: URL permanente por robot y por empresa, con el contenido principal legible sin interacción",
+  "origen": "Javier (17/11/2026, por la tarde), transmitido por Codex: «crear una URL permanente por robot y empresa, con contenido principal legible sin interacción», con brief en inglés en ops/backlog.md (tarea 5). Ejecutar al terminar las tareas 3 y 4; no darla por completada sin verificar producción. Confirmado después con «que siga».",
+  "fecha": "2026-11-17T22:27:59+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Páginas de robot: /robots/<slug>/ para los 134 robots del catálogo gratuito. El slug termina en el id del catálogo (por ejemplo, /robots/boston-dynamics-atlas-industrial-electric-16/). En el HTML, sin JavaScript: nombre y fabricante enlazado, resumen hecho solo con campos registrados, datos clave, mercado, campos de empresa, vista previa gratuita de despliegues, fuentes y registro de comprobación.",
+    "Páginas de empresa: /companies/<slug>/ para las 138 empresas con información pública: los 134 fabricantes del catálogo y las 4 organizaciones de la vista previa de Deployments (GXO, Schaeffler, TMMC y Amazon). Datos de empresa tomados de las filas del catálogo de sus robots; identidad desde la vista previa de Entities cuando está enlazada; robots y registros de la vista previa con su estado. Las empresas que solo aparecen en filas premium (por ejemplo, GlobalFoundries o NC State) no tienen página pública: es la decisión de la tarea 6.",
+    "Índices /robots/ y /companies/, sitemap.xml con 275 URL, línea Sitemap en robots.txt, 404.html propio y data/pages.json (mapa público de id a dirección). Títulos, descripciones y URL canónicas únicos en cada página.",
+    "Enlaces antiguos y cambios de nombre: siguen funcionando las anclas del catálogo (/#r-…-16) y las de la aplicación (#robot/16, #company/<id>). tools/permalinks.json guarda todas las direcciones publicadas y solo admite añadidos. Si cambia un nombre, la dirección antigua recibe una página de redirección que funciona sin JavaScript (noindex); si un robot o empresa sale del catálogo, su dirección lo dice. 404.html lleva /robots/<lo-que-sea>-<id>/ a la página actual.",
+    "Enlaces desde el catálogo y la búsqueda: la portada tiene enlaces fijos a los dos índices, y cada ficha enlaza su página permanente y la de su fabricante. En la aplicación, la vista de robot enlaza la página pública nueva y la de empresa enlaza la suya cuando existe. La aplicación marca ahora «model line only» cuando los registros nombran la línea de modelo y no esa versión (caso de GXO con Digit 5).",
+    "Protección: tools/build-pages.mjs solo lee entradas públicas (catálogo gratuito, vistas previas de 10 filas y su grafo de relaciones). La guardia de datos públicos tiene una regla 7 nueva: las páginas deben ser exactamente esa construcción. CI ejecuta build-pages --check y el nuevo tools/verify-pages.mjs. El procedimiento semanal, AGENTS, README y el skill recogen el paso nuevo."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Robot: Atlas (industrial electric)",
+      "url": "https://whyhumanoid.com/robots/boston-dynamics-atlas-industrial-electric-16/"
+    },
+    {
+      "etiqueta": "Empresa fabricante: Boston Dynamics",
+      "url": "https://whyhumanoid.com/companies/boston-dynamics/"
+    },
+    {
+      "etiqueta": "Empresa organización: GXO Logistics",
+      "url": "https://whyhumanoid.com/companies/gxo/"
+    },
+    {
+      "etiqueta": "Índice de robots",
+      "url": "https://whyhumanoid.com/robots/"
+    },
+    {
+      "etiqueta": "Índice de empresas",
+      "url": "https://whyhumanoid.com/companies/"
+    },
+    {
+      "etiqueta": "Sitemap",
+      "url": "https://whyhumanoid.com/sitemap.xml"
+    },
+    {
+      "etiqueta": "Enlace antiguo que sigue funcionando",
+      "url": "https://whyhumanoid.com/#r-boston-dynamics-atlas-industrial-electric-16"
+    },
+    {
+      "etiqueta": "Dirección con nombre desconocido e id válido (redirige)",
+      "url": "https://whyhumanoid.com/robots/some-old-name-16/"
+    },
+    {
+      "etiqueta": "PR",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/44"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main con el PR #44 (ae43012): CI y despliegue en verde; aplicación con premium.js?v=401ecf1355f0. Sin cambios en el Worker ni en D1."
+  ],
+  "verificaciones": [
+    "Producción, HTML sin JavaScript (descarga directa): la página de Atlas responde 200, sin ninguna etiqueta script, con título, canónica, datos clave (190 cm), el B2B Client con GlobalFoundries, la fuente de Boston Dynamics y el enlace al fabricante; la de Boston Dynamics enlaza a Atlas; sin identificadores de registro.",
+    "Producción, navegación: entrada directa y recarga de las páginas de robot y empresa; /robots/ con 134 filas y /companies/ con 138; sin barra final, redirección del propio GitHub Pages; /robots/some-old-name-16/ responde 404 y lleva a la página actual de Atlas; el ancla antigua del catálogo abre la ficha, que enlaza la página permanente y la del fabricante; sitemap.xml con 275 URL; robots.txt con la línea Sitemap.",
+    "Producción, público frente a premium: /companies/globalfoundries/ y /companies/nc-state-university/ responden 404 (solo están en filas premium); la página de GXO solo muestra los registros de la vista previa. En la aplicación, con la sesión de suscriptor de Javier en solo lectura: el robot 16 enlaza su página pública nueva, Boston Dynamics y GXO enlazan la suya, GlobalFoundries no enlaza ninguna y GXO marca Digit 5 y Apollo 2 como «model line only».",
+    "Producción, móvil a 375 px: páginas de robot, de empresa y el índice de empresas sin desbordamiento horizontal; datos clave en una columna.",
+    "Comprobaciones locales y en CI: guardia de datos públicos (regla 7 nueva), build-pages, build-site, build-app y relations en modo --check, verify-site, verify-premium-app, verify-pages (títulos, descripciones y canónicas únicos, enlaces en los dos sentidos, datos iguales al catálogo, organizaciones solo de la vista previa, sitemap, redirecciones y 404; una prueba negativa con un dato cambiado y un enlace roto falla como debe) y 79 pruebas de la API."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Decisión de Javier (tarea 6): si las empresas que hoy solo aparecen en filas premium tienen ficha pública básica y con qué campos. Hasta entonces no tienen página.",
+    "Opcional, de Javier: dar de alta el sitemap en Google Search Console o Bing Webmaster Tools; no tengo acceso y no lo he hecho.",
+    "Límites conocidos: el índice de la aplicación puede tardar hasta 10 minutos en renovarse en navegadores con caché; la redirección de direcciones desconocidas con id necesita JavaScript (las direcciones antiguas registradas redirigen sin él); la imagen para redes es la general del sitio; la copia de la aplicación dentro del Worker se pone al día en su siguiente despliegue.",
+    "Siguen pendientes de Javier los puntos del cierre WH-20261117-2212-bd-globalfoundries-ncstate-howl (G1 en el catálogo, categoría de inspección, estado para investigación, rama temporal, Stripe, acceso del libro maestro, visibilidad del repositorio, «Star Era» y Stocks)."
+  ],
+  "siguiente_accion": "Tarea 6: propuesta de reparto público y premium, con matriz de acceso y fichas de ejemplo, para que Javier decida antes de cambiar el acceso actual."
+}
