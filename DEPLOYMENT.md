@@ -17,10 +17,10 @@ console, never into chat, tickets or Git:
 
 | # | Where | Action |
 |---|---|---|
-| 1 | Google Cloud, provider `github-actions` and service account `whyhumanoid-importer` | Production identity, exact condition and binding in 4.1. Then Actions, "Import private workbook", Run workflow on `main`, target `production` |
-| 2 | Resend, domain `whyhumanoid.com` | IONOS Auto configure, approve in IONOS, Verify DNS records (section 4.3). Then a sending key restricted to `whyhumanoid.com` as Cloudflare secret `RESEND_API_KEY` on `whyhumanoid-premium` |
-| 3 | Stripe live, Developers, API keys, Create restricted key | Write: Checkout Sessions, Customer portal. Read: Prices. Cloudflare secret `STRIPE_SECRET_KEY` on `whyhumanoid-premium` |
-| 4 | Stripe live, webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` | Reveal the signing secret; Cloudflare secret `STRIPE_WEBHOOK_SECRET` on `whyhumanoid-premium` |
+| 1 | Google Cloud, provider `github-actions` and service account `whyhumanoid-importer` | Production identity, exact condition and binding in 4.1. Then Actions, "Import private workbook", Run workflow on `main`, target `production` Done 16 Nov 2026 with Javier's passkey. |
+| 2 | Resend, domain `whyhumanoid.com` | IONOS Auto configure, approve in IONOS, Verify DNS records (section 4.3). Then a sending key restricted to `whyhumanoid.com` as Cloudflare secret `RESEND_API_KEY` on `whyhumanoid-premium` Done: domain Verified 16 Nov; key `whyhumanoid-premium-production` (sending, this domain only) added by Javier 17 Nov. |
+| 3 | Stripe live, Developers, API keys, Create restricted key | Write: Checkout Sessions, Customer portal. Read: Prices. Cloudflare secret `STRIPE_SECRET_KEY` on `whyhumanoid-premium` Done 17 Nov: key `whyhumanoid-premium-production` created and stored by Javier. |
+| 4 | Stripe live, webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` | Reveal the signing secret; Cloudflare secret `STRIPE_WEBHOOK_SECRET` on `whyhumanoid-premium` Done 17 Nov (Javier). The destination also listens to `checkout.session.expired` (verified by signature, then ignored), so an abandoned checkout proves the secret without a charge. |
 | 5 | Stripe live, Settings, Billing, Customer portal | Done 16 Nov 2026: default configuration `bpc_1UcVsIAcMngkWs5C9X4Xkwf0` saved (cancellation at period end, payment-method updates, invoices; no plan changes). `STRIPE_PORTAL_CONFIGURATION` stays unset, so the default is used |
 | 6 | Google Drive | Master workbook and its April copy "... para Codex": General access, Restricted (section 5). Named editors and the importer keep access |
 | 7 | GitHub, organisation `integrarobot` | Close the history exposure (below): make this repository private and serve the site from a public repository that holds only the built site, or from Cloudflare once DNS moves there |
@@ -57,6 +57,14 @@ the portal link for a paying account. No real card is used for testing.
 - 17 Nov, 06:50 Madrid: Resend domain Verified; production D1 matches the import of the audited export tab by tab
   (rows, fields per row, non-empty values, characters; Deployments 119 x 47, 4,817 values); the workbook is unchanged
   since 13 Nov 18:33 UTC. Still missing: the three secrets (steps 2 to 4), whose forms are prepared for Javier.
+- 17 Nov, 07:40 to 07:52 Madrid, after Javier stored the three secrets: `/v1/billing/plan` `checkout_available: true`
+  (live key reads the price: EUR 100 a year, no trial); webhook 400 without a signature or with a bad one; sign-in
+  email to Resend's test address `delivered@resend.dev` sent from `premium@whyhumanoid.com` and Delivered; after the
+  click-to-confirm sign-in: `/v1/me` 200 with no access, full rows 403 `subscription_required`, portal 409
+  `no_billing_account`; Stripe Checkout live opened (`cs_live_…`, "100,00 € por año", no trial) and left without a card:
+  back in the app "Checkout was cancelled. Nothing was charged."; price still 0 subscriptions, no new payment. Mobile
+  375 px without horizontal overflow. Not tested on purpose: a completed purchase and the subscriber state in
+  production. The first signed delivery is expected when that checkout expires (about 07:46 Madrid, 18 Nov).
 - Branch `deploy/worker-bundle-f4bd2db` (the temporary bundle used by the dashboard editor; public server code, no
   data) could not be deleted through the agent proxy: delete it in GitHub, Branches.
 
