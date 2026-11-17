@@ -17,6 +17,13 @@ test('the Humanoids catalogue is public in full; the 12 other tabs show their fi
       assert.equal(body.total_rows, 12);
       continue;
     }
+    if (spec.publicRows === 'all') {
+      // Approved split, phase 3: every row public; listed companies with basic fields only beyond row 10.
+      assert.equal(body.preview_rows, 'all');
+      assert.equal(body.rows.length, body.total_rows, spec.id);
+      if (spec.publicFields) for (const r of body.rows.slice(10)) assert.deepEqual(Object.keys(r).filter((k) => k !== 'id').sort(), [...spec.publicFields].sort(), spec.id);
+      continue;
+    }
     assert.equal(body.preview_rows, 10);
     if (spec.kind === 'lists' && spec.lists.length > 1) {
       // Side-by-side tabs hold two items per sheet row: 10 sheet rows, up to 20 items.
@@ -36,8 +43,8 @@ test('the empty sheet row does not count: the preview reaches the 10th data row'
     rows.map((r) => r.id),
     Array.from({ length: 10 }, (_, i) => `fx_record_id_${i + 1}`),
   );
-  const { rows: integrators } = await (await ctx.call('GET', '/v1/datasets/integrators/preview')).json();
-  assert.equal(new Set(integrators.map((r) => r.id)).size, 10);
+  const { rows: hardware } = await (await ctx.call('GET', '/v1/datasets/evidence-links/preview')).json();
+  assert.equal(new Set(hardware.map((r) => r.id)).size, 10);
   const { rows: humanoids } = await (await ctx.call('GET', '/v1/datasets/humanoids/preview')).json();
   assert.deepEqual(humanoids.map((r) => r.Robot), Array.from({ length: 12 }, (_, i) => `Example Robot ${i + 1}`));
 });

@@ -99,6 +99,7 @@ export const DATASETS = [
   },
   {
     id: 'integrators',
+    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Integrators',
     title: 'Integrators',
     description: 'System integrators and service providers that deploy humanoid and service robots.',
@@ -151,6 +152,8 @@ export const DATASETS = [
   },
   {
     id: 'stocks',
+    publicRows: 'all', // approved split, phase 3: basic fields public for every row; rows 1 to 10 stay public in full
+    publicFields: ['name', 'ticker', 'exchange', 'country'],
     tab: 'Stocks',
     title: 'Listed companies',
     description: 'Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.',
@@ -164,6 +167,7 @@ export const DATASETS = [
   },
   {
     id: 'software',
+    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Software',
     title: 'Software and world models',
     description: 'Robot foundation models, VLA models, world models and robotics software.',
@@ -178,6 +182,7 @@ export const DATASETS = [
   },
   {
     id: 'datasets',
+    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Datasets',
     title: 'Datasets',
     description: 'Robot learning datasets relevant to humanoids.',
@@ -189,6 +194,7 @@ export const DATASETS = [
   },
   {
     id: 'hardware',
+    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Hardware',
     title: 'Hardware',
     description: 'Compute, actuators and other hardware used in humanoid robots.',
@@ -200,6 +206,7 @@ export const DATASETS = [
   },
   {
     id: 'other-robots',
+    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Other Robots',
     title: 'Other robots',
     description: 'Non-humanoid and educational robots tracked alongside the humanoid catalogue.',
@@ -214,6 +221,7 @@ export const DATASETS = [
   },
   {
     id: 'data-space',
+    offer: false, // approved split, phase 3: not part of the subscription offer; data kept and imported as before
     tab: 'Data Space',
     title: 'Data space design notes',
     description: 'Findings and proposals for the humanoid robotics data space.',
@@ -234,7 +242,8 @@ export function publicDatasetList() {
     id: spec.id,
     title: spec.title,
     description: spec.description,
-    access: { preview_rows: publicRowLimit(spec) ?? 'all', full: 'subscription' },
+    access: { preview_rows: publicRowLimit(spec) ?? 'all', public_fields: spec.publicFields ?? null, full: 'subscription' },
+    offer: spec.offer !== false,
   }));
 }
 
