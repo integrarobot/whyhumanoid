@@ -1,0 +1,39 @@
+{
+  "id": "WH-20261117-2237-propuesta-reparto-publico-pago",
+  "tarea": "Tarea 6 de la cola autorizada: propuesta de reparto público y de pago que revisa el modelo de las diez primeras filas gratis (primera entrega: definición y propuesta, sin cambiar acceso)",
+  "origen": "Javier (17/11/2026, por la tarde), transmitido por Codex: revisar el modelo de «las diez primeras filas gratis» con su propuesta de partida (público y descubrible; de pago). Autoriza preparar la definición y la propuesta, no cambiar permisos, precios ni acceso en producción. Confirmado después con «que siga».",
+  "fecha": "2026-11-17T22:37:37+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Propuesta para Javier, en español, en un documento privado de claude.ai: recomendación razonada, punto de partida con los campos y capacidades reales de las 13 pestañas, diagnóstico del modelo de diez filas, principio de reparto y criterio comercial, matriz de acceso por tipo de entidad y pestaña, criterios de selección de resúmenes, evidencias e informes, dos fichas de ejemplo con datos actuales (robot Atlas y empresa GlobalFoundries), qué cambia respecto a Humanoids gratis y las vistas previas, funciones disponibles frente a futuras, fases con comprobaciones y 9 decisiones con opciones y recomendación.",
+    "Recomendación: aprobar el reparto de Javier con un ajuste. Lo público muestra existencia, identidad y una muestra verificable (ficha básica de cada robot y empresa, recuentos de despliegues por estado con contrapartes, países, sectores y años, una evidencia seleccionada por ficha, informes agregados y metodología). El pago cubre el detalle, la cadena de evidencia completa, la cobertura total y las herramientas. Nada gratuito pasa a ser de pago.",
+    "Funciones: de las 12 capacidades de la lista de Javier, 1 existe completa (datos completos), 5 a medias (fichas, informes, metodología, filtros y API sin producto alrededor) y 6 no existen (resúmenes y evidencias seleccionadas, histórico, seguimiento, comparaciones, exportaciones y alertas). No se anuncian hasta que existan.",
+    "Resumen operativo en inglés, sin datos premium: ops/access-model-proposal.md (estado: propuesta, no vigente). Cola actualizada: tarea 6, propuesta entregada y pendiente de decisión."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Propuesta para Javier (documento privado)",
+      "url": "https://claude.ai/artifact/4Pzyz8CGeeggq8yBz5yxz8"
+    },
+    {
+      "etiqueta": "Resumen operativo en el repositorio",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/access-model-proposal.md"
+    }
+  ],
+  "despliegue": [
+    "Sin despliegue: la tarea solo autoriza la propuesta. Acceso, permisos y precio en producción sin cambios."
+  ],
+  "verificaciones": [
+    "Inventario del producto contra el código y los datos: recuentos y campos de las 13 pestañas desde data/preview/index.json; vistas previas reales (Integrators 7 de 7 y Task evaluations 4 de 4 ya públicas enteras; Deployments con un solo robot y 4 organizaciones); rutas de la API (claves de API, lectura paginada de hasta 500 filas, plan de tarea para agentes) y la aplicación (sin exportación, alertas, histórico ni comparaciones).",
+    "Cifras de las fichas de ejemplo y del diagnóstico calculadas desde la exportación privada del 17/11/2026, fuera de Git: 130 registros de 71 despliegues, 47 organizaciones, 116 con fuente enlazada; Atlas con 3 registros y GlobalFoundries con 9. La evidencia de cada ejemplo sale de aplicar la regla propuesta, no de una elección a mano.",
+    "El resumen en inglés no contiene valores de filas premium; guardia de datos públicos y registro de entregas en verde."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Javier: decidir las 9 preguntas de la propuesta (las 1 a 3 bastan para empezar la fase 1): fichas para todas las empresas, nivel del resumen de despliegues, evidencia seleccionada, vistas previas, Stocks, directorios de enlaces, Data space, analítica y definiciones de E0 a E5.",
+    "Sin aplicar hasta esa decisión: ningún cambio de acceso, permisos ni precio. Siguen pendientes los puntos de Javier de los cierres WH-20261117-2212-bd-globalfoundries-ncstate-howl y WH-20261117-2227-urls-permanentes-robots-empresas."
+  ],
+  "siguiente_accion": "Javier decide el reparto. Con su respuesta, fase 1 (proyección pública con lista blanca y fichas para todas las empresas), registrada antes de ejecutarla."
+}
