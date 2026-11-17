@@ -29,7 +29,7 @@ const APP = `${SITE}/app/`;
 const root = new URL('../', import.meta.url);
 const read = (p) => JSON.parse(readFileSync(new URL(p, root), 'utf8'));
 const REGISTRY = 'tools/permalinks.json';
-const GENERATED_DIRS = ['robots', 'companies'];
+const GENERATED_DIRS = ['robots', 'companies', 'reports', 'method'];
 
 // ---------- helpers ----------
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -109,7 +109,7 @@ export function publicModel() {
     c.asOrg = recs.filter((r) => ids.has(r.operator) && r.maker !== c.id);
   }
   void entities;
-  return { robots, robotById, companies, companyById, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal, totals: projection.totals, projSnapshot: projection.snapshot };
+  return { robots, robotById, companies, companyById, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal, totals: projection.totals, aggregates: projection.aggregates, projSnapshot: projection.snapshot };
 }
 
 // ---------- layout ----------
@@ -140,7 +140,7 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta h
 <link rel="stylesheet" href="/assets/pages.css">
 </head>
 <body>
-<header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><nav aria-label="Site"><a href="/robots/">Robots</a><a href="/companies/">Companies</a><a href="/app/">Full database</a></nav></header>
+<header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><nav aria-label="Site"><a href="/robots/">Robots</a><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Report</a><a href="/method/">Method</a><a href="/app/">Full database</a></nav></header>
 <main>
 ${body}
 </main>
@@ -193,6 +193,17 @@ const RECORDS_NOTE = '<p class="key">Each deployment record is a claim from a na
 const statusText = (st) => STATUS_KEYS_ORDER.filter((k) => st[k]).map((k) => `${st[k]} ${STATUS_LABEL[k].toLowerCase()}`).join(', ');
 const STATUS_KEYS_ORDER = ['op', 'pilot', 'ann', 'unc'];
 const yearsText = (y) => (y ? (y[0] === y[1] ? String(y[0]) : `${y[0]} to ${y[1]}`) : 'not recorded');
+// One selected record per robot and company (approved split, phase 2), with the fields the projection allows.
+function evidenceHtml(e) {
+  if (!e) return '';
+  const where = [e.site_name, [e.city, e.region, e.country].filter(nz).join(', ')].filter(nz).join(' · ');
+  const metric = nz(e.metric_name) ? `${human(e.metric_name)}: ${nz(e.metric_operator) && e.metric_operator !== '=' ? `${e.metric_operator} ` : ''}${e.metric_value ?? ''}${nz(e.metric_unit) ? ` ${human(e.metric_unit)}` : ''}${nz(e.metric_period) ? ` (${e.metric_period})` : ''}` : '';
+  const facts = [metric && esc(metric), nz(e.evidence_level) ? `Evidence level ${esc(e.evidence_level)}` : '', nz(e.verification_status) ? esc(human(e.verification_status)) : '',
+    nz(e.observed_start) ? `Observed ${esc(e.observed_start)}` : '', `${ext(e.source_url, `${e.source_publisher || 'Source'} ↗`)}${nz(e.publication_date) ? `, published ${esc(e.publication_date)}` : ''}`].filter(Boolean);
+  return `<section><h2>Selected evidence</h2><article class="dep"><header><p><b>${esc(e.organization_name || 'Organisation not recorded')}</b> <span class="dim">· robot as recorded: ${esc(e.robot_recorded || 'not recorded')}</span></p>${where ? `<p class="where">${esc(where)}</p>` : ''}</header><ul><li><span class="st ${e.status}">${STATUS_LABEL[e.status]}</span> ${esc(e.task_description || 'Task not described')}<p class="facts">${facts.join(' · ')}</p></li></ul></article>
+<p class="key">One record chosen by a fixed rule (<a href="/method/">method</a>): the most advanced status as recorded, then a primary source, then customer confirmation, then the latest publication. It is one claim as recorded, not verification.</p></section>`;
+}
+
 // A summary of the projection (counts and counterparts only) and its table of counterparts.
 function summaryHtml(sum, model, { head, otherLabel }) {
   if (!sum) return '';
@@ -249,6 +260,7 @@ ${known(r['Buyer checks']) ? `<p class="note"><b>Before comparing:</b> ${text(r[
 <section><h2>Market</h2>${kv(MARKET_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
 <section><h2>Company</h2>${kv([['Maker', m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab)], ...COMPANY_FIELDS.map(([l, f]) => [l, text(r[f])])])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
 <section><h2>Deployment records</h2>${rb.summary ? summaryHtml(rb.summary, model, { head: `${rb.summary.records} deployment record${rb.summary.records === 1 ? '' : 's'} in the database ${rb.summary.records === 1 ? 'names' : 'name'} ${rb.summary.model_line_only ? 'the model line of this robot, not necessarily this version' : 'this robot or its model line'}.`, otherLabel: 'Organisation' }) + RECORDS_NOTE : '<p>No deployment record in the database names this robot or its model line. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that the robot has no deployments.</p>'}</section>
+${evidenceHtml(rb.summary?.evidence)}
 <section><h2>Free preview records</h2>${previewNote(model, rb.records.length, 'this robot or its model line')}${recordsHtml(rb.records, model, { showRobot: false })}${rb.records.length ? STATUS_KEY : ''}
 <p class="cta"><a href="${APP}#robot/${rb.id}">Every record for this robot in full, with sites, tasks, claims, verification and sources, is in the full database (${esc(price())}) →</a></p></section>
 <section><h2>Sources and checks</h2>${kv([['Last checked', text(chk.date)], ['Checks recorded', chk.statements.length ? esc(chk.statements.join('; ')) : '<span class="na">Not recorded</span>'], ['Model identity', text(r['Model checked'])]])}${sources ? `<ul class="sources">${sources}</ul>` : '<p class="na">No linked sources.</p>'}</section>
@@ -296,6 +308,7 @@ function companyPage(c, model) {
     ...c.robotList.flatMap((rb) => rb.facet.chk.urls),
     ...[...c.asOrg, ...c.asMaker].map((r) => firstUrl(r.source_url)).filter(Boolean),
     ...(e?.reference_url ? [e.reference_url] : []),
+    ...(c.evidence?.source_url ? [c.evidence.source_url] : []),
   ])];
   const roles = Object.entries(c.roles || {}).map(([k, n]) => `${ROLE[k] || human(k)} (${n} record${n === 1 ? '' : 's'})`);
   const preview = c.asOrg.length + c.asMaker.length;
@@ -314,6 +327,7 @@ function companyPage(c, model) {
   ])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
 ${c.robotList.length ? `<section><h2>Robots</h2><ul class="cards">${c.robotList.map((rb) => `<li><a href="${rb.path}"><b>${esc(rb.name)}</b></a><span>${esc(robotSummary(rb))}</span></li>`).join('')}</ul></section>` : ''}
 <section><h2>Deployment records</h2>${c.as_organisation || c.as_maker ? `${c.as_organisation ? summaryHtml(c.as_organisation, model, { head: `As organisation: ${c.as_organisation.records} record${c.as_organisation.records === 1 ? '' : 's'}.`, otherLabel: 'Maker' }) : ''}${c.as_maker ? summaryHtml(c.as_maker, model, { head: `As maker: ${c.as_maker.records} record${c.as_maker.records === 1 ? '' : 's'}.`, otherLabel: 'Organisation' }) : ''}${RECORDS_NOTE}` : '<p>No deployment record in the database names this company. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that it has none.</p>'}</section>
+${evidenceHtml(c.evidence)}
 ${preview ? `<section><h2>Free preview records</h2>${previewNote(model, preview, 'this company')}
 ${c.asMaker.length ? `<h3>As maker</h3>${recordsHtml(c.asMaker, model, { showRobot: true, showOrg: true })}` : ''}
 ${c.asOrg.length ? `<h3>As organisation</h3>${recordsHtml(c.asOrg, model, { showRobot: true, showOrg: false })}` : ''}
@@ -360,9 +374,52 @@ function notFound() {
 </script>`;
   return page({ title: 'Page not found · Why Humanoid?', description: 'Page not found.', path: '/404.html', body, noindex: true });
 }
+// ---------- method and report (approved split, phase 2) ----------
+const SECTOR = (k) => (k === 'other' ? 'Other (sectors with fewer than 3 records)' : human(k).replace(/^./, (c) => c.toUpperCase()));
+function bars(rows, label) {
+  const max = Math.max(1, ...rows.map((r) => r.records));
+  return `<div class="scroll"><table class="bars"><thead><tr><th scope="col">${esc(label)}</th><th scope="col">Records</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc(r.label)}</td><td><span class="bar" style="width:${Math.round((r.records / max) * 100)}%"></span> ${r.records}</td></tr>`).join('')}</tbody></table></div>`;
+}
+function reportPage(model) {
+  const a = model.aggregates;
+  const other = (k, what) => (k === 'other' ? `Other (${what} with fewer than ${a.min_cell} records, or not recorded)` : k);
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Report: deployment records']])}
+<article class="entity">
+<p class="kicker">Report · snapshot ${esc(String(model.projSnapshot).slice(0, 10))}</p>
+<h1>Humanoid robot deployment records</h1>
+<p class="lede">The database holds ${model.totals.records} deployment records about ${model.totals.deployments} deployments: ${a.by_status.op} recorded as in operation, ${a.by_status.pilot} as pilots or trials, ${a.by_status.ann} as announced and ${a.by_status.unc} unconfirmed. Records are claims from named sources with their status as recorded, not verified facts, and one deployment can have several records.</p>
+<section><h2>By status as recorded</h2>${bars(STATUS_KEYS_ORDER.map((k) => ({ label: STATUS_LABEL[k], records: a.by_status[k] })), 'Status as recorded')}<p class="key">Announced means planned or agreed, not evidence of work. Unconfirmed means claimed by a vendor or unresolved.</p></section>
+<section><h2>By sector</h2>${bars(a.by_sector.map((r) => ({ label: SECTOR(r.key), records: r.records })), 'Sector')}</section>
+<section><h2>By deployment country</h2>${bars(a.by_country.map((r) => ({ label: other(r.key, 'countries'), records: r.records })), 'Country')}</section>
+<section><h2>By year</h2>${bars(a.by_year.map((r) => ({ label: other(r.key, 'years'), records: r.records })), 'Year observed or published')}</section>
+<section><h2>How to read it</h2><p>Counts are of records, not of robots or sites. Every group with fewer than ${a.min_cell} records is added to «Other», so no number points at a single record. The year is the year the record was observed or, if that is missing, published. How records are collected and labelled is in the <a href="/method/">method</a>; who and where, record by record, is on each <a href="/companies/">company</a> and <a href="/robots/">robot</a> page; the records in full are in the <a href="/app/">full database</a> (${esc(price())}).</p></section>
+</article>`;
+  return page({ title: 'Humanoid robot deployment records: status, sectors, countries and years · Why Humanoid?', description: clip(`${model.totals.records} humanoid robot deployment records by status as recorded, sector, country and year. Records are claims from named sources, not verified facts.`), path: '/reports/deployment-records/', body, type: 'article' });
+}
+function methodPage(model) {
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Method']])}
+<article class="entity">
+<p class="kicker">Method and sources</p>
+<h1>How Why Humanoid? records robots and deployments</h1>
+<p class="lede">Why Humanoid? records what named sources say about humanoid robots, the companies that make them and the organisations that test or use them. Every value is shown as recorded, with its source; a record is a claim, not a verified fact.</p>
+<section><h2>Robots</h2><p>The catalogue holds ${model.robots.length} humanoid robots with their specifications, company and market fields, links and the date their sources were last checked. All of it is free. A value the sources do not give is shown as not published or not disclosed, never estimated.</p></section>
+<section><h2>Deployment records</h2><p>A deployment record is one claim from one source about an organisation, a robot and a task. One deployment can have several records: an announcement, a pilot, a later report. Each record keeps who made the claim and when, its status as recorded, a verification label and an evidence level.</p>
+${kv([['In operation', 'The source says the robot is working in operation.'], ['Pilot or trial', 'The source describes a pilot, trial or test.'], ['Announced', 'Planned or agreed, not evidence of work.'], ['Unconfirmed', 'Claimed by a vendor, or unresolved.']])}
+<p>Verification labels say who reported the claim, as recorded: customer confirmed, partner reported, vendor reported, media reported or unresolved. The evidence level is a code from E0 to E5, shown as recorded; its definitions are not published.</p></section>
+<section><h2>Selected evidence</h2><p>Each robot and company page shows one of its records with its site, task, status, metric, evidence level, verification label and source. The record is chosen by a fixed rule among those with a source link and a verification other than unresolved: the most advanced status as recorded (in operation, then pilot or trial, then a vendor's claim of operation, then announced), then a primary source (customer, maker or partner) before the press, then customer confirmation, then the latest publication, then a record with a metric. The claim text, notes and the other records stay in the full database.</p></section>
+<section><h2>Robots, companies and records</h2><p>A record is linked to a catalogue robot only when it names that model or its model line, never because it names the maker alone. When it names the model line, the page says the record may concern another version. Companies are identified by the organisation id of the sheet or by the maker's name; no corporate data is added.</p></section>
+<section><h2>Updates</h2><p>The database is updated every week from the Integrarobot newsletter, checked against primary sources. Each page shows the snapshot date of its data.</p></section>
+<section><h2>What is public and what is for subscribers</h2>${kv([
+    ['Public', 'The robot catalogue in full; a page for every robot and company; counts and summaries of deployment records (organisation, robot as recorded, country, sector, status and year); one selected record per robot and company; the first 10 rows of each other category; this report and method.'],
+    ['Full database', `Every record in full: site, task, metrics, claim text, verification, evidence level, sources and notes; search with tags over every category; relations between robots, companies and records (${esc(price())}).`],
+  ])}<p>Public counts never reveal a single record: the report groups anything under ${model.aggregates.min_cell} records.</p></section>
+</article>`;
+  return page({ title: 'Method and sources · Why Humanoid?', description: 'How Why Humanoid? records humanoid robots and deployment records: statuses as recorded, verification labels, links between robots and companies, updates and public data.', path: '/method/', body, type: 'article' });
+}
+
 function sitemap(model) {
   const lastmod = String(model.snapshot).slice(0, 10);
-  const urls = ['/', '/robots/', '/companies/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path)];
+  const urls = ['/', '/robots/', '/companies/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path)];
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')}\n</urlset>\n`;
 }
 
@@ -385,6 +442,8 @@ export function buildPages(registry = existsSync(new URL(REGISTRY, root)) ? read
   for (const c of model.companies) files.set(`${c.path.slice(1)}index.html`, companyPage(c, model));
   files.set('robots/index.html', robotsIndex(model));
   files.set('companies/index.html', companiesIndex(model));
+  files.set('reports/deployment-records/index.html', reportPage(model));
+  files.set('method/index.html', methodPage(model));
   files.set('sitemap.xml', sitemap(model));
   files.set('404.html', notFound());
   files.set('data/pages.json', `${JSON.stringify(pageLinks(model))}\n`);
@@ -452,5 +511,5 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     writeFileSync(new URL(REGISTRY, root), regText);
   }
   const redirects = [...files.keys()].filter((f) => /^(robots|companies)\/[^/]+\/index\.html$/.test(f)).length - model.robots.length - model.companies.length;
-  console.log(`Public pages ${process.argv.includes('--check') ? 'are current' : 'written'}: ${model.robots.length} robots, ${model.companies.length} companies, ${redirects} retired addresses, sitemap with ${model.robots.length + model.companies.length + 3} URLs.`);
+  console.log(`Public pages ${process.argv.includes('--check') ? 'are current' : 'written'}: ${model.robots.length} robots, ${model.companies.length} companies, ${redirects} retired addresses, sitemap with ${model.robots.length + model.companies.length + 5} URLs.`);
 }

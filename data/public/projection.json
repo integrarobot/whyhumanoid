@@ -6,6 +6,125 @@
   "deployments": 71,
   "organisations": 43
  },
+ "aggregates": {
+  "min_cell": 3,
+  "by_status": {
+   "op": 12,
+   "pilot": 50,
+   "ann": 27,
+   "unc": 41
+  },
+  "by_sector": [
+   {
+    "key": "automotive_manufacturing",
+    "records": 35
+   },
+   {
+    "key": "manufacturing",
+    "records": 16
+   },
+   {
+    "key": "logistics",
+    "records": 12
+   },
+   {
+    "key": "semiconductor_manufacturing",
+    "records": 9
+   },
+   {
+    "key": "automotive_components",
+    "records": 7
+   },
+   {
+    "key": "consumer_electronics_manufacturing",
+    "records": 7
+   },
+   {
+    "key": "electronics_manufacturing",
+    "records": 6
+   },
+   {
+    "key": "retail",
+    "records": 5
+   },
+   {
+    "key": "battery_manufacturing",
+    "records": 4
+   },
+   {
+    "key": "ecommerce_logistics",
+    "records": 3
+   },
+   {
+    "key": "healthcare",
+    "records": 3
+   },
+   {
+    "key": "multiple",
+    "records": 3
+   },
+   {
+    "key": "pharmacy_retail",
+    "records": 3
+   },
+   {
+    "key": "retail_logistics",
+    "records": 3
+   },
+   {
+    "key": "other",
+    "records": 14
+   }
+  ],
+  "by_country": [
+   {
+    "key": "United States",
+    "records": 39
+   },
+   {
+    "key": "China",
+    "records": 35
+   },
+   {
+    "key": "Germany",
+    "records": 19
+   },
+   {
+    "key": "Multiple",
+    "records": 6
+   },
+   {
+    "key": "Singapore",
+    "records": 3
+   },
+   {
+    "key": "other",
+    "records": 28
+   }
+  ],
+  "by_year": [
+   {
+    "key": "2023",
+    "records": 6
+   },
+   {
+    "key": "2024",
+    "records": 14
+   },
+   {
+    "key": "2025",
+    "records": 31
+   },
+   {
+    "key": "2026",
+    "records": 65
+   },
+   {
+    "key": "other",
+    "records": 14
+   }
+  ]
+ },
  "companies": [
   {
    "id": "mfr_1x",
@@ -60,7 +179,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "EQT",
+    "robot_recorded": "1X NEO",
+    "site_name": "EQT portfolio companies (not named)",
+    "city": null,
+    "region": null,
+    "country": "Multiple",
+    "task_description": null,
+    "status": "ann",
+    "metric_name": "max_units_made_available",
+    "metric_operator": "<=",
+    "metric_value": "10000",
+    "metric_unit": "robots",
+    "metric_period": "2026-2030",
+    "evidence_level": "E1",
+    "verification_status": "vendor_reported",
+    "observed_start": "2025-12-11",
+    "source_publisher": "1X",
+    "source_url": "https://www.businesswire.com/news/home/20251211360340/en",
+    "publication_date": "2025-12-11"
+   }
   },
   {
    "id": "mfr_aeirobot",
@@ -75,7 +215,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_aeolus",
@@ -90,7 +231,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_agibot",
@@ -164,7 +306,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "ASD",
+    "robot_recorded": "AGIBOT X2",
+    "site_name": "ASD retail-store network; individual sites not enumerated",
+    "city": "Multiple; livestream examples Wenling, Shanghai and Wuxi",
+    "region": null,
+    "country": "China",
+    "task_description": "Greet visitors, elicit needs, explain and recommend cookware; hand promotions, stock and final sales to human staff",
+    "status": "unc",
+    "metric_name": "robots_deployed",
+    "metric_operator": "=",
+    "metric_value": "100",
+    "metric_unit": "robots",
+    "metric_period": "Network rollout reported 2026-09-28",
+    "evidence_level": "E4",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-09-28",
+    "source_publisher": "AGIBOT",
+    "source_url": "https://www.agibot.com/article/231/detail/124.html",
+    "publication_date": "2026-09-28"
+   }
   },
   {
    "id": "mfr_agile",
@@ -219,7 +382,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Audi AG",
+    "robot_recorded": "Agile Robots Mobile humanoid (model not disclosed)",
+    "site_name": "Audi Production Lab, Ingolstadt",
+    "city": "Ingolstadt",
+    "region": "Bavaria",
+    "country": "Germany",
+    "task_description": "Pick parts from material containers and place them in the correct sequence for final vehicle assembly",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-10-21",
+    "source_publisher": "Audi AG",
+    "source_url": "https://www.audi.com/en/media-releases/agile-robots-and-audi-to-transform-automotive-logistics-with-mobile-humanoids-supported-by-dassault-systemes-and-nvidia-18390",
+    "publication_date": "2026-10-21"
+   }
   },
   {
    "id": "org_agility_robotics",
@@ -355,7 +539,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "GXO Logistics",
+    "robot_recorded": "Agility Robotics Digit",
+    "site_name": "SPANX fulfillment center",
+    "city": "Flowery Branch",
+    "region": "Georgia",
+    "country": "United States",
+    "task_description": "Move totes and place them onto conveyors alongside existing automation",
+    "status": "op",
+    "metric_name": "cumulative_totes_moved",
+    "metric_operator": ">",
+    "metric_value": "100000",
+    "metric_unit": "totes",
+    "metric_period": "cumulative_to_source_date",
+    "evidence_level": "E5",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2024-06-27",
+    "source_publisher": "GXO Logistics and Agility Robotics",
+    "source_url": "https://gxo.com/news_article/gxo-and-agility-robotics-expand-partnership-to-accelerate-deployment-of-humanoids-in-u-s-operations/",
+    "publication_date": "2026-10-26"
+   }
   },
   {
    "id": "org_apptronik",
@@ -454,7 +659,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "GXO Logistics",
+    "robot_recorded": "Apptronik Apollo",
+    "site_name": "Laboratory setting (not disclosed)",
+    "city": null,
+    "region": null,
+    "country": "United States",
+    "task_description": "Evaluate Apollo for warehouse work; candidate capabilities include transporting boxes and totes, picking items and scanning barcodes",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2024-06-20",
+    "source_publisher": "GXO Logistics",
+    "source_url": "https://investors.gxo.com/news-releases/news-release-details/gxo-advances-humanoid-strategy-announces-multi-phase-rd/",
+    "publication_date": "2024-06-20"
+   }
   },
   {
    "id": "mfr_argon",
@@ -469,7 +695,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_arx",
@@ -484,7 +711,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_astribot",
@@ -499,7 +727,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_axibo",
@@ -514,7 +743,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_beyond_imagination",
@@ -529,7 +759,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_boardwalk",
@@ -544,7 +775,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_booster",
@@ -559,7 +791,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_borg",
@@ -574,7 +807,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_boston_dynamics",
@@ -668,7 +902,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Hyundai Motor Group",
+    "robot_recorded": "Boston Dynamics Atlas",
+    "site_name": "Robotics Metaplant Application Center (RMAC), Hyundai Motor Group Metaplant America",
+    "city": "Ellabell (Bryan County)",
+    "region": "Georgia",
+    "country": "United States",
+    "task_description": "Parts logistics, sorting and sequencing of automotive parts before placing them in assembly order; later heavy lifting and component assembly",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-06",
+    "source_publisher": "The Robot Report",
+    "source_url": "https://www.therobotreport.com/boston-dynamics-opens-metaplant-application-center-train-atlas-humanoid-robots/",
+    "publication_date": "2026-09-21"
+   }
   },
   {
    "id": "mfr_cartwheel",
@@ -683,7 +938,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_clone",
@@ -698,7 +954,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_cobot",
@@ -713,7 +970,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_deep",
@@ -728,7 +986,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_devanthro",
@@ -743,7 +1002,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_dexmate",
@@ -758,7 +1018,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_diligent",
@@ -831,7 +1092,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Children's Hospital Los Angeles",
+    "robot_recorded": "Diligent Robotics Moxi",
+    "site_name": "Children's Hospital Los Angeles",
+    "city": "Los Angeles",
+    "region": "California",
+    "country": "United States",
+    "task_description": "Deliver medications and pharmaceutical items on hospital routes",
+    "status": "unc",
+    "metric_name": "robots_deployed",
+    "metric_operator": "=",
+    "metric_value": "2",
+    "metric_unit": "robots",
+    "metric_period": "Snapshot in source dated 2023-09-21",
+    "evidence_level": "E4",
+    "verification_status": "vendor_reported",
+    "observed_start": "2023-09-21",
+    "source_publisher": "Diligent Robotics",
+    "source_url": "https://www.diligentrobots.com/blog/diligent-robotics-closes-25-million-to-advance-systemwide-expansions-of-socially-intelligent-service-robots-empower-healthcare-professionals",
+    "publication_date": "2023-09-21"
+   }
   },
   {
    "id": "mfr_dobot",
@@ -846,7 +1128,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_enactic",
@@ -861,7 +1144,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_enchanted",
@@ -876,7 +1160,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_engineai",
@@ -925,7 +1210,8 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_engineered_arts",
@@ -940,7 +1226,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_estun_codroid",
@@ -955,7 +1242,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "org_figure_ai",
@@ -1052,7 +1340,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "BMW Group (Plant Spartanburg)",
+    "robot_recorded": "Figure AI Figure 02",
+    "site_name": "BMW Group Plant Spartanburg, body shop",
+    "city": "Spartanburg",
+    "region": "South Carolina",
+    "country": "United States",
+    "task_description": "Pick sheet-metal parts from bins and load three parts onto welding fixtures within a 5 mm tolerance during 10-hour shifts",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E4",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2025",
+    "source_publisher": "BMW Group",
+    "source_url": "https://www.bmwgroup.com/en/news/general/2026/humanoid-robot-in-leipzig.html",
+    "publication_date": "2026-02-27"
+   }
   },
   {
    "id": "mfr_foundation",
@@ -1067,7 +1376,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_fourier",
@@ -1082,7 +1392,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_gac_group",
@@ -1097,7 +1408,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_galaxea",
@@ -1112,7 +1424,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_galbot",
@@ -1199,7 +1512,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "CATL",
+    "robot_recorded": "Galbot Galbot S1",
+    "site_name": "CATL smart production lines (plant not identified)",
+    "city": null,
+    "region": null,
+    "country": "China",
+    "task_description": "Long-distance autonomous tasks in battery module and pack manufacturing",
+    "status": "op",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E4",
+    "verification_status": "media_reported",
+    "observed_start": "2026-06-24",
+    "source_publisher": "CnEVPost",
+    "source_url": "https://cnevpost.com/2026/06/24/catl-galbot-scale-humanoid-robots-battery-factories/",
+    "publication_date": "2026-06-24"
+   }
   },
   {
    "id": "mfr_generative_bionics",
@@ -1214,7 +1548,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_goblin",
@@ -1229,7 +1564,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_hanson",
@@ -1244,7 +1580,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_heima",
@@ -1259,7 +1596,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_hexagon",
@@ -1351,7 +1689,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "BMW Group (Plant Leipzig)",
+    "robot_recorded": "Hexagon Robotics AEON",
+    "site_name": "BMW Group Plant Leipzig",
+    "city": "Leipzig",
+    "region": "Saxony",
+    "country": "Germany",
+    "task_description": "High-voltage battery assembly and component manufacturing; multifunctional use with interchangeable grippers and scanning tools on a wheeled base",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2025-12",
+    "source_publisher": "BMW Group",
+    "source_url": "https://www.bmwgroup.com/en/news/general/2026/humanoid-robot-in-leipzig.html",
+    "publication_date": "2026-02-27"
+   }
   },
   {
    "id": "mfr_holiday",
@@ -1366,7 +1725,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_igus",
@@ -1381,7 +1741,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_ihmc_robotics",
@@ -1396,7 +1757,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_inmoov",
@@ -1411,7 +1773,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_intbot",
@@ -1426,7 +1789,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_k_scale_labs",
@@ -1441,7 +1805,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_kepler",
@@ -1456,7 +1821,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_kinisi",
@@ -1471,7 +1837,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_leju",
@@ -1542,7 +1909,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "FAW Hongqi",
+    "robot_recorded": "Leju Kuavo",
+    "site_name": "FAW Hongqi factory (plant not identified)",
+    "city": null,
+    "region": null,
+    "country": "China",
+    "task_description": "Factory logistics: picking and carrying boxes; the shop handles about 130 box types of different sizes and materials",
+    "status": "unc",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "media_reported",
+    "observed_start": "2024-11",
+    "source_publisher": "The Paper (澎湃新闻)",
+    "source_url": "https://www.thepaper.cn/newsDetail_forward_30582771",
+    "publication_date": "2025-04-07"
+   }
   },
   {
    "id": "mfr_lg",
@@ -1557,7 +1945,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_limx",
@@ -1572,7 +1961,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_lumos",
@@ -1587,7 +1977,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_lux",
@@ -1602,7 +1993,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_magiclab",
@@ -1617,7 +2009,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_mentee",
@@ -1632,7 +2025,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_mindon",
@@ -1647,7 +2041,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_model",
@@ -1662,7 +2057,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_neura",
@@ -1736,7 +2132,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Technical University of Munich (TUM)",
+    "robot_recorded": "NEURA Robotics 4NE1",
+    "site_name": "TUM RoboGym at LabCampus, Munich Airport",
+    "city": "Munich Airport",
+    "region": "Bavaria",
+    "country": "Germany",
+    "task_description": "Use of 4NE1 Gen 4 at the launch of a research and training centre.",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-10-22",
+    "source_publisher": "NEURA Robotics",
+    "source_url": "https://neura-robotics.com/tum-robogym-munich-4ne1-gen4-launch/",
+    "publication_date": "2026-10-22"
+   }
   },
   {
    "id": "mfr_noetix",
@@ -1751,7 +2168,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_oversonic",
@@ -1766,7 +2184,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_pal",
@@ -1781,7 +2200,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_persona_inc",
@@ -1836,7 +2256,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "HD Hyundai",
+    "robot_recorded": "Persona AI",
+    "site_name": "Shipyard sites not disclosed",
+    "city": null,
+    "region": null,
+    "country": "South Korea (partner country; deployment site not confirmed)",
+    "task_description": "Planned demanding industrial and shipbuilding work; precise workflow not established by this release",
+    "status": "ann",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E1",
+    "verification_status": "vendor_reported",
+    "observed_start": "2025-05-14",
+    "source_publisher": "Persona AI",
+    "source_url": "https://www.prnewswire.co.uk/news-releases/persona-ai-raises-27m-oversubscribed-pre-seed-to-deliver-the-future-of-humanoid-robotics-302455384.html",
+    "publication_date": "2025-05-14"
+   }
   },
   {
    "id": "mfr_phybot",
@@ -1851,7 +2292,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_physical_robotics",
@@ -1866,7 +2308,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_pib",
@@ -1881,7 +2324,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_pndbotics",
@@ -1896,7 +2340,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_pollen",
@@ -1911,7 +2356,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_pudu",
@@ -1926,7 +2372,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_qinglong",
@@ -1941,7 +2388,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_rainbow",
@@ -1956,7 +2404,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_rapid",
@@ -1971,7 +2420,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_realbotix",
@@ -1986,7 +2436,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_reflex",
@@ -2001,7 +2452,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_revobots",
@@ -2016,7 +2468,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_rhoda",
@@ -2031,7 +2484,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_robotera",
@@ -2080,7 +2534,8 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_robot_com",
@@ -2095,7 +2550,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_robotis",
@@ -2110,7 +2566,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_robros",
@@ -2125,7 +2582,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_sanctuary_ai",
@@ -2140,7 +2598,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_sharpa",
@@ -2155,7 +2614,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_skild",
@@ -2170,7 +2630,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_spirit",
@@ -2225,7 +2686,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "CATL",
+    "robot_recorded": "Spirit AI Moz (deployed as 'Xiaomo')",
+    "site_name": "CATL Zhongzhou base, battery-pack production line",
+    "city": "Luoyang",
+    "region": "Henan",
+    "country": "China",
+    "task_description": "Insert battery connectors on a power-battery pack line, check wire-harness connection status and report anomalies; patrol mode during breaks",
+    "status": "op",
+    "metric_name": "insertion_success_rate",
+    "metric_operator": ">",
+    "metric_value": "99",
+    "metric_unit": "percent",
+    "metric_period": null,
+    "evidence_level": "E5",
+    "verification_status": "media_reported",
+    "observed_start": "2025-12",
+    "source_publisher": "Gasgoo",
+    "source_url": "https://autonews.gasgoo.com/articles/news/galbots-galbot-s1-begins-operations-at-catls-factory-2070399392245612544",
+    "publication_date": "2026-06"
+   }
   },
   {
    "id": "mfr_switch",
@@ -2240,7 +2722,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_tangible",
@@ -2255,7 +2738,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_tesla",
@@ -2270,7 +2754,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_the_bot_company",
@@ -2285,7 +2770,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "org_humanoid",
@@ -2459,7 +2945,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Siemens",
+    "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+    "site_name": "Siemens Electronics Factory Erlangen",
+    "city": "Erlangen",
+    "region": "Bavaria",
+    "country": "Germany",
+    "task_description": "Autonomously pick, transport and place containers for human operators",
+    "status": "pilot",
+    "metric_name": "tote_moves_throughput",
+    "metric_operator": "=",
+    "metric_value": "60",
+    "metric_unit": "tote_moves_per_hour",
+    "metric_period": "factory_pilot",
+    "evidence_level": "E5",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026",
+    "source_publisher": "Siemens",
+    "source_url": "https://press.siemens.com/jp/en/pressrelease/pr-20260416",
+    "publication_date": "2026-04-16"
+   }
   },
   {
    "id": "mfr_ti5robot",
@@ -2474,7 +2981,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_tokyo",
@@ -2489,7 +2997,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_ubtech",
@@ -2598,7 +3107,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Foxconn",
+    "robot_recorded": "UBTECH Robotics Walker S1",
+    "site_name": "Foxconn Longhua factory",
+    "city": "Shenzhen",
+    "region": "Guangdong",
+    "country": "China",
+    "task_description": "Logistics carrying during first-stage factory training; parcel handling shown in vendor-supplied photographs.",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": null,
+    "source_publisher": "UBTECH Robotics",
+    "source_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0430/2025043002530.pdf",
+    "publication_date": "2025-04-30"
+   }
   },
   {
    "id": "mfr_uma",
@@ -2613,7 +3143,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_unitree",
@@ -2732,7 +3263,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "NC State University (AIR Lab)",
+    "robot_recorded": "Unitree Robotics G1",
+    "site_name": "NC State Artificial Intelligence & Robotics (AIR) Lab; test site not disclosed",
+    "city": "Raleigh",
+    "region": "North Carolina",
+    "country": "United States",
+    "task_description": "Detect and collect floor eggs in cage-free poultry houses (research goal; not yet demonstrated in a poultry house)",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E1",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-08-25",
+    "source_publisher": "NC State College of Agriculture and Life Sciences (CALS Magazine)",
+    "source_url": "https://magazine.cals.ncsu.edu/code-to-coop/",
+    "publication_date": "2026-08-25"
+   }
   },
   {
    "id": "mfr_unix",
@@ -2747,7 +3299,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_vanar",
@@ -2762,7 +3315,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_vinmotion",
@@ -2777,7 +3331,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_wandercraft",
@@ -2832,7 +3387,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Renault Group",
+    "robot_recorded": "Wandercraft Calvin",
+    "site_name": "Douai wheel workshop",
+    "city": "Douai",
+    "region": "Hauts-de-France",
+    "country": "France",
+    "task_description": "Lift two tyres together during factory testing",
+    "status": "pilot",
+    "metric_name": "load_per_lift",
+    "metric_operator": "~",
+    "metric_value": "30",
+    "metric_unit": "kg",
+    "metric_period": "Test described at source date",
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-06-26",
+    "source_publisher": "Renault Group",
+    "source_url": "https://www.renaultgroup.com/en/magazine/technology/calvin-a-new-generation-robot-is-born/",
+    "publication_date": "2026-06-26"
+   }
   },
   {
    "id": "mfr_weave",
@@ -2847,7 +3423,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_westwood",
@@ -2862,7 +3439,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_wirobotics",
@@ -2877,7 +3455,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_x_square",
@@ -2892,7 +3471,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_xiaomi",
@@ -2952,7 +3532,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Xiaomi",
+    "robot_recorded": "Xiaomi Full-size humanoid (model not disclosed)",
+    "site_name": "Xiaomi Auto Factory - center console side-cover sorting workstation",
+    "city": null,
+    "region": null,
+    "country": "China",
+    "task_description": "Sort center-console side covers from bins into storage racks.",
+    "status": "pilot",
+    "metric_name": "reported_task_duration",
+    "metric_operator": "=",
+    "metric_value": "8",
+    "metric_unit": "hours",
+    "metric_period": "Run announced 2026-11-03; execution date not disclosed",
+    "evidence_level": "E5",
+    "verification_status": "media_reported",
+    "observed_start": "2026-11-03",
+    "source_publisher": "Electrek",
+    "source_url": "https://electrek.co/2026/11/04/xiaomi-humanoid-robot-8-hour-shift-ev-factory/",
+    "publication_date": "2026-11-04"
+   }
   },
   {
    "id": "mfr_fauna",
@@ -2967,7 +3568,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_xpeng",
@@ -3027,7 +3629,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "XPeng",
+    "robot_recorded": "XPeng IRON",
+    "site_name": "XPeng stores and commercial settings (individual sites not named)",
+    "city": null,
+    "region": null,
+    "country": "Multiple",
+    "task_description": "Planned shopping assistance and product introductions in commercial stores",
+    "status": "ann",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E1",
+    "verification_status": "media_reported",
+    "observed_start": "2026-10-28",
+    "source_publisher": "CnEVPost",
+    "source_url": "https://cnevpost.com/2026/10/28/solid-state-batteries-xpeng-iron-small-batch-production/",
+    "publication_date": "2026-10-28"
+   }
   },
   {
    "id": "mfr_addverb",
@@ -3042,7 +3665,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_faraday_future",
@@ -3057,7 +3681,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_noble_machines",
@@ -3072,7 +3697,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_peritas",
@@ -3087,7 +3713,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_khameleon",
@@ -3102,7 +3729,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_mind",
@@ -3117,7 +3745,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_sudo",
@@ -3132,7 +3761,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_kinetix",
@@ -3147,7 +3777,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_orbit",
@@ -3162,7 +3793,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_eden",
@@ -3177,7 +3809,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_twolabs",
@@ -3192,7 +3825,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_almond",
@@ -3207,7 +3841,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_genesis",
@@ -3222,7 +3857,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_vibe_robotics",
@@ -3237,7 +3873,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_nori",
@@ -3252,7 +3889,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_sunday",
@@ -3267,7 +3905,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_walden",
@@ -3320,7 +3959,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Toyota",
+    "robot_recorded": "Walden Robotics",
+    "site_name": "Toyota plant in North America (not identified)",
+    "city": null,
+    "region": null,
+    "country": null,
+    "task_description": "Production tasks not identified in the funding release",
+    "status": "unc",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E4",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-02",
+    "source_publisher": "Walden Robotics",
+    "source_url": "https://www.waldenrobotics.com/news/walden-robotics-launches-from-stealth",
+    "publication_date": "2026-07-15"
+   }
   },
   {
    "id": "mfr_xyz",
@@ -3335,7 +3995,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_lightberry",
@@ -3350,7 +4011,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_pink_robotics",
@@ -3365,7 +4027,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_nucleus",
@@ -3380,7 +4043,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_feather",
@@ -3395,7 +4059,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_o_id",
@@ -3410,7 +4075,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_roboparty",
@@ -3425,7 +4091,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_flourish",
@@ -3440,7 +4107,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_nature_will",
@@ -3455,7 +4123,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_tuesday_labs",
@@ -3470,7 +4139,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_pokebot",
@@ -3485,7 +4155,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_mabel",
@@ -3500,7 +4171,8 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "org_darwin_robotics",
@@ -3520,7 +4192,8 @@
     "reviewed_at": "2026-11-17"
    },
    "as_maker": null,
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_star_era",
@@ -3567,7 +4240,8 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_realman",
@@ -3614,7 +4288,8 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": null
   },
   {
    "id": "mfr_anybotics",
@@ -3667,7 +4342,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "RTE",
+    "robot_recorded": "ANYbotics ANYmal",
+    "site_name": "Campus Transfo replica installations",
+    "city": null,
+    "region": null,
+    "country": "France",
+    "task_description": "Collect visual, thermal and acoustic data during inspection missions in representative replica installations.",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2023-02-13",
+    "source_publisher": "ANYbotics",
+    "source_url": "https://www.anybotics.com/news/anymal-autodiagnostics-high-voltage-transmission-rte/",
+    "publication_date": "2023-02-13"
+   }
   },
   {
    "id": "mfr_toyota",
@@ -3762,6 +4458,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Toyota",
+    "robot_recorded": "Walden Robotics",
+    "site_name": "Toyota plant in North America (not identified)",
+    "city": null,
+    "region": null,
+    "country": null,
+    "task_description": "Production tasks not identified in the funding release",
+    "status": "unc",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E4",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-02",
+    "source_publisher": "Walden Robotics",
+    "source_url": "https://www.waldenrobotics.com/news/walden-robotics-launches-from-stealth",
+    "publication_date": "2026-07-15"
    }
   },
   {
@@ -3815,7 +4532,28 @@
      }
     ]
    },
-   "as_organisation": null
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Walmart Inc.",
+    "robot_recorded": "Symbotic Symbotic automation systems (program-level)",
+    "site_name": "Walmart US regional distribution-center network (25 centers not individually named)",
+    "city": null,
+    "region": null,
+    "country": "United States",
+    "task_description": "Add automation for upstream e-commerce inventory, storage and product movement in the distribution network",
+    "status": "ann",
+    "metric_name": "initial_additional_spend_commitment",
+    "metric_operator": "~",
+    "metric_value": "6000000000",
+    "metric_unit": "USD",
+    "metric_period": "Over several years; multiple locations",
+    "evidence_level": "E3",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-10-29",
+    "source_publisher": "Symbotic (joint announcement with Walmart)",
+    "source_url": "https://symbotic.gcs-web.com/news-releases/news-release-details/walmart-and-symbotic-expand-commercial-agreement-support-supply",
+    "publication_date": "2026-10-29"
+   }
   },
   {
    "id": "org_gxo",
@@ -3895,6 +4633,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "GXO Logistics",
+    "robot_recorded": "Agility Robotics Digit",
+    "site_name": "SPANX fulfillment center",
+    "city": "Flowery Branch",
+    "region": "Georgia",
+    "country": "United States",
+    "task_description": "Move totes and place them onto conveyors alongside existing automation",
+    "status": "op",
+    "metric_name": "cumulative_totes_moved",
+    "metric_operator": ">",
+    "metric_value": "100000",
+    "metric_unit": "totes",
+    "metric_period": "cumulative_to_source_date",
+    "evidence_level": "E5",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2024-06-27",
+    "source_publisher": "GXO Logistics and Agility Robotics",
+    "source_url": "https://gxo.com/news_article/gxo-and-agility-robotics-expand-partnership-to-accelerate-deployment-of-humanoids-in-u-s-operations/",
+    "publication_date": "2026-10-26"
    }
   },
   {
@@ -4045,6 +4804,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Schaeffler Group",
+    "robot_recorded": null,
+    "site_name": "Schaeffler humanoid robotics lighthouse factory",
+    "city": "Taicang",
+    "region": null,
+    "country": "China",
+    "task_description": "Stage and sort parts, join them, inspect, label and package humanoid joint modules including linear and rotary actuators",
+    "status": "op",
+    "metric_name": "robots_deployed",
+    "metric_operator": "=",
+    "metric_value": "6",
+    "metric_unit": "robots",
+    "metric_period": "Snapshot reported at factory opening, 2026-10-20",
+    "evidence_level": "E4",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-10-20",
+    "source_publisher": "Schaeffler Technologies AG & Co. KG",
+    "source_url": "https://www.schaeffler.de/en/news_media/press_releases/press_releases_detail.jsp?id=88222851",
+    "publication_date": "2026-10-20"
    }
   },
   {
@@ -4102,6 +4882,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Toyota Motor Manufacturing Canada",
+    "robot_recorded": "Agility Robotics Digit",
+    "site_name": null,
+    "city": null,
+    "region": null,
+    "country": "Canada",
+    "task_description": "Manufacturing, supply-chain and logistics support; precise workflow not disclosed",
+    "status": "unc",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E4",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026",
+    "source_publisher": "Agility Robotics",
+    "source_url": "https://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi",
+    "publication_date": "2026"
    }
   },
   {
@@ -4164,6 +4965,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Amazon",
+    "robot_recorded": "Agility Robotics Digit",
+    "site_name": "Amazon robotics R&D site",
+    "city": "South of Seattle",
+    "region": "Washington",
+    "country": "United States",
+    "task_description": "Tote recycling: move empty totes after inventory has been removed",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2023",
+    "source_publisher": "Amazon",
+    "source_url": "https://www.aboutamazon.com/news/operations/amazon-introduces-new-robotics-solutions",
+    "publication_date": "2023"
    }
   },
   {
@@ -4263,6 +5085,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "BMW Group (Plant Spartanburg)",
+    "robot_recorded": "Figure AI Figure 02",
+    "site_name": "BMW Group Plant Spartanburg, body shop",
+    "city": "Spartanburg",
+    "region": "South Carolina",
+    "country": "United States",
+    "task_description": "Pick sheet-metal parts from bins and load three parts onto welding fixtures within a 5 mm tolerance during 10-hour shifts",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E4",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2025",
+    "source_publisher": "BMW Group",
+    "source_url": "https://www.bmwgroup.com/en/news/general/2026/humanoid-robot-in-leipzig.html",
+    "publication_date": "2026-02-27"
    }
   },
   {
@@ -4321,6 +5164,27 @@
       "records": 3
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Mercedes-Benz",
+    "robot_recorded": "Apptronik Apollo",
+    "site_name": "Mercedes-Benz Digital Factory Campus Berlin-Marienfelde; Mercedes-Benz Kecskemét plant",
+    "city": "Berlin; Kecskemét",
+    "region": "Berlin; Bács-Kiskun",
+    "country": "Germany; Hungary",
+    "task_description": "Move components to the production line and carry out quality checks; skills taught by teleoperation and AR",
+    "status": "pilot",
+    "metric_name": "robots_deployed",
+    "metric_operator": "<",
+    "metric_value": "10",
+    "metric_unit": "robots",
+    "metric_period": "Snapshot at source date",
+    "evidence_level": "E5",
+    "verification_status": "media_reported",
+    "observed_start": "2024",
+    "source_publisher": "heise online",
+    "source_url": "https://heise.de/-10320691",
+    "publication_date": "2025-03-18"
    }
   },
   {
@@ -4376,6 +5240,27 @@
       "records": 7
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Martur Fompak International",
+    "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+    "site_name": "Martur Fompak automotive manufacturing site (not disclosed)",
+    "city": null,
+    "region": null,
+    "country": null,
+    "task_description": "Remove materials across the shop floor using real-time SAP warehouse context; per Humanoid, pick KLT boxes from a pallet and deliver them to a trolley for order fulfillment",
+    "status": "pilot",
+    "metric_name": "throughput_improvement",
+    "metric_operator": "<=",
+    "metric_value": "5",
+    "metric_unit": "x_baseline",
+    "metric_period": "early_poc_findings",
+    "evidence_level": "E5",
+    "verification_status": "partner_reported",
+    "observed_start": "2026-01",
+    "source_publisher": "SAP",
+    "source_url": "https://news.sap.com/2025/11/sap-physical-ai-partnerships-new-robotics-pilots/",
+    "publication_date": "2026-06-18"
    }
   },
   {
@@ -4433,6 +5318,27 @@
       "records": 7
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Ford Motor Company",
+    "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+    "site_name": "Ford Innovation Centre Cologne",
+    "city": "Cologne",
+    "region": "North Rhine-Westphalia",
+    "country": "Germany",
+    "task_description": "Tote handling for kitting and dual-arm manipulation of large metal car-body parts",
+    "status": "pilot",
+    "metric_name": "payload_used",
+    "metric_operator": "<=",
+    "metric_value": "8",
+    "metric_unit": "kg",
+    "metric_period": "six_week_poc",
+    "evidence_level": "E5",
+    "verification_status": "vendor_reported",
+    "observed_start": "2025",
+    "source_publisher": "Humanoid",
+    "source_url": "https://thehumanoid.ai/humanoid-shows-how-robots-will-work-in-tomorrows-factories/",
+    "publication_date": "2026-01-20"
    }
   },
   {
@@ -4495,6 +5401,27 @@
       "records": 4
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Siemens",
+    "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+    "site_name": "Siemens Electronics Factory Erlangen",
+    "city": "Erlangen",
+    "region": "Bavaria",
+    "country": "Germany",
+    "task_description": "Autonomously pick, transport and place containers for human operators",
+    "status": "pilot",
+    "metric_name": "tote_moves_throughput",
+    "metric_operator": "=",
+    "metric_value": "60",
+    "metric_unit": "tote_moves_per_hour",
+    "metric_period": "factory_pilot",
+    "evidence_level": "E5",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026",
+    "source_publisher": "Siemens",
+    "source_url": "https://press.siemens.com/jp/en/pressrelease/pr-20260416",
+    "publication_date": "2026-04-16"
    }
   },
   {
@@ -4576,6 +5503,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Bosch",
+    "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+    "site_name": "Bosch Bühl site",
+    "city": "Bühl",
+    "region": "Baden-Württemberg",
+    "country": "Germany",
+    "task_description": "Transfer boxes from conveyors to a trolley",
+    "status": "pilot",
+    "metric_name": "box_sizes_tested",
+    "metric_operator": "=",
+    "metric_value": "5",
+    "metric_unit": "box_sizes",
+    "metric_period": "proof_of_concept",
+    "evidence_level": "E5",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-03",
+    "source_publisher": "Humanoid",
+    "source_url": "https://thehumanoid.ai/humanoid-secures-partnership-with-bosch-following-a-successful-poc/",
+    "publication_date": "2026-05-21"
    }
   },
   {
@@ -4633,6 +5581,27 @@
       "records": 7
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Longcheer Technology",
+    "robot_recorded": "AgiBot G2",
+    "site_name": "Longcheer Technology Nanchang factory",
+    "city": "Nanchang",
+    "region": "Jiangxi",
+    "country": "China",
+    "task_description": "Tablet-production quality inspection: load and unload devices, place them in test fixtures and sort finished or defective units",
+    "status": "unc",
+    "metric_name": "observed_operation_duration",
+    "metric_operator": ">",
+    "metric_value": "64",
+    "metric_unit": "hours",
+    "metric_period": "six_day_factory_livestream",
+    "evidence_level": "E5",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026",
+    "source_publisher": "AgiBot",
+    "source_url": "https://www.agibot.com/article/231/detail/83.html",
+    "publication_date": "2026-06-29"
    }
   },
   {
@@ -4684,7 +5653,8 @@
       "records": 2
      }
     ]
-   }
+   },
+   "evidence": null
   },
   {
    "id": "org_guoda",
@@ -4735,7 +5705,8 @@
       "records": 1
      }
     ]
-   }
+   },
+   "evidence": null
   },
   {
    "id": "org_catl",
@@ -4810,6 +5781,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "CATL",
+    "robot_recorded": "Galbot Galbot S1",
+    "site_name": "CATL smart production lines (plant not identified)",
+    "city": null,
+    "region": null,
+    "country": "China",
+    "task_description": "Long-distance autonomous tasks in battery module and pack manufacturing",
+    "status": "op",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E4",
+    "verification_status": "media_reported",
+    "observed_start": "2026-06-24",
+    "source_publisher": "CnEVPost",
+    "source_url": "https://cnevpost.com/2026/06/24/catl-galbot-scale-humanoid-robots-battery-factories/",
+    "publication_date": "2026-06-24"
    }
   },
   {
@@ -4861,7 +5853,8 @@
       "records": 1
      }
     ]
-   }
+   },
+   "evidence": null
   },
   {
    "id": "org_luxshare",
@@ -4912,7 +5905,8 @@
       "records": 1
      }
     ]
-   }
+   },
+   "evidence": null
   },
   {
    "id": "org_faw_hongqi",
@@ -4969,6 +5963,27 @@
       "records": 3
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "FAW Hongqi",
+    "robot_recorded": "Leju Kuavo",
+    "site_name": "FAW Hongqi factory (plant not identified)",
+    "city": null,
+    "region": null,
+    "country": "China",
+    "task_description": "Factory logistics: picking and carrying boxes; the shop handles about 130 box types of different sizes and materials",
+    "status": "unc",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "media_reported",
+    "observed_start": "2024-11",
+    "source_publisher": "The Paper (澎湃新闻)",
+    "source_url": "https://www.thepaper.cn/newsDetail_forward_30582771",
+    "publication_date": "2025-04-07"
    }
   },
   {
@@ -5026,6 +6041,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Network Rail",
+    "robot_recorded": "Unitree Eric (Unitree quadruped; model not disclosed)",
+    "site_name": "Culvert beneath railway in Essex (specific site not disclosed)",
+    "city": null,
+    "region": "Essex",
+    "country": "United Kingdom",
+    "task_description": "Capture video and images inside a hard-to-access culvert under the railway.",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2025-02-07",
+    "source_publisher": "Network Rail",
+    "source_url": "https://www.networkrail.co.uk/stories/inspecting-our-railway-with-the-help-of-robots/",
+    "publication_date": "2025-03-11"
    }
   },
   {
@@ -5083,6 +6119,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "RTE",
+    "robot_recorded": "ANYbotics ANYmal",
+    "site_name": "Campus Transfo replica installations",
+    "city": null,
+    "region": null,
+    "country": "France",
+    "task_description": "Collect visual, thermal and acoustic data during inspection missions in representative replica installations.",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2023-02-13",
+    "source_publisher": "ANYbotics",
+    "source_url": "https://www.anybotics.com/news/anymal-autodiagnostics-high-voltage-transmission-rte/",
+    "publication_date": "2023-02-13"
    }
   },
   {
@@ -5140,6 +6197,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Nishinihon Electric System (JR-West Group)",
+    "robot_recorded": "JR-West; Man-Machine Synergy Effectors; Nippon Signal (joint development) Multifunctional railway heavy machinery",
+    "site_name": "Commercial railway lines (specific sites not disclosed)",
+    "city": null,
+    "region": null,
+    "country": "Japan",
+    "task_description": "Operator-controlled railway equipment maintenance at height using a vehicle, boom, humanoid upper body and tools.",
+    "status": "op",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E4",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2024-07",
+    "source_publisher": "JR-West Group",
+    "source_url": "https://www.westjr.co.jp/global/en/ir/library/annual-report/2024/pdf/jr_west_integrated_report_2024.pdf",
+    "publication_date": "2024"
    }
   },
   {
@@ -5197,6 +6275,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Renault Group",
+    "robot_recorded": "Wandercraft Calvin",
+    "site_name": "Douai wheel workshop",
+    "city": "Douai",
+    "region": "Hauts-de-France",
+    "country": "France",
+    "task_description": "Lift two tyres together during factory testing",
+    "status": "pilot",
+    "metric_name": "load_per_lift",
+    "metric_operator": "~",
+    "metric_value": "30",
+    "metric_unit": "kg",
+    "metric_period": "Test described at source date",
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-06-26",
+    "source_publisher": "Renault Group",
+    "source_url": "https://www.renaultgroup.com/en/magazine/technology/calvin-a-new-generation-robot-is-born/",
+    "publication_date": "2026-06-26"
    }
   },
   {
@@ -5254,6 +6353,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Children's Hospital Los Angeles",
+    "robot_recorded": "Diligent Robotics Moxi",
+    "site_name": "Children's Hospital Los Angeles",
+    "city": "Los Angeles",
+    "region": "California",
+    "country": "United States",
+    "task_description": "Deliver medications and pharmaceutical items on hospital routes",
+    "status": "unc",
+    "metric_name": "robots_deployed",
+    "metric_operator": "=",
+    "metric_value": "2",
+    "metric_unit": "robots",
+    "metric_period": "Snapshot in source dated 2023-09-21",
+    "evidence_level": "E4",
+    "verification_status": "vendor_reported",
+    "observed_start": "2023-09-21",
+    "source_publisher": "Diligent Robotics",
+    "source_url": "https://www.diligentrobots.com/blog/diligent-robotics-closes-25-million-to-advance-systemwide-expansions-of-socially-intelligent-service-robots-empower-healthcare-professionals",
+    "publication_date": "2023-09-21"
    }
   },
   {
@@ -5311,6 +6431,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Northwestern Medicine",
+    "robot_recorded": "Diligent Robotics Moxi",
+    "site_name": "Northwestern Memorial Hospital",
+    "city": "Chicago",
+    "region": "Illinois",
+    "country": "United States",
+    "task_description": "Schedule and carry lab specimens unsuitable for tube transport and medications",
+    "status": "unc",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E4",
+    "verification_status": "vendor_reported",
+    "observed_start": "2023-09-21",
+    "source_publisher": "Diligent Robotics",
+    "source_url": "https://www.diligentrobots.com/blog/diligent-robotics-closes-25-million-to-advance-systemwide-expansions-of-socially-intelligent-service-robots-empower-healthcare-professionals",
+    "publication_date": "2023-09-21"
    }
   },
   {
@@ -5368,6 +6509,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "HD Hyundai",
+    "robot_recorded": "Persona AI",
+    "site_name": "Shipyard sites not disclosed",
+    "city": null,
+    "region": null,
+    "country": "South Korea (partner country; deployment site not confirmed)",
+    "task_description": "Planned demanding industrial and shipbuilding work; precise workflow not established by this release",
+    "status": "ann",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E1",
+    "verification_status": "vendor_reported",
+    "observed_start": "2025-05-14",
+    "source_publisher": "Persona AI",
+    "source_url": "https://www.prnewswire.co.uk/news-releases/persona-ai-raises-27m-oversubscribed-pre-seed-to-deliver-the-future-of-humanoid-robotics-302455384.html",
+    "publication_date": "2025-05-14"
    }
   },
   {
@@ -5423,6 +6585,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Pilatus",
+    "robot_recorded": "Hexagon Robotics AEON",
+    "site_name": null,
+    "city": null,
+    "region": null,
+    "country": null,
+    "task_description": "Announced pilot across manipulation, machine tending, inspection and reality capture; task allocation to each partner not specified",
+    "status": "ann",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E1",
+    "verification_status": "vendor_reported",
+    "observed_start": "2025-06-17",
+    "source_publisher": "Hexagon",
+    "source_url": "https://hexagon.com/about/news-media/press-releases/2340225/hexagon-launches-aeon-a-humanoid-built-for-industry",
+    "publication_date": "2025-06-17"
    }
   },
   {
@@ -5480,6 +6663,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "ASD",
+    "robot_recorded": "AGIBOT X2",
+    "site_name": "ASD retail-store network; individual sites not enumerated",
+    "city": "Multiple; livestream examples Wenling, Shanghai and Wuxi",
+    "region": null,
+    "country": "China",
+    "task_description": "Greet visitors, elicit needs, explain and recommend cookware; hand promotions, stock and final sales to human staff",
+    "status": "unc",
+    "metric_name": "robots_deployed",
+    "metric_operator": "=",
+    "metric_value": "100",
+    "metric_unit": "robots",
+    "metric_period": "Network rollout reported 2026-09-28",
+    "evidence_level": "E4",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-09-28",
+    "source_publisher": "AGIBOT",
+    "source_url": "https://www.agibot.com/article/231/detail/124.html",
+    "publication_date": "2026-09-28"
    }
   },
   {
@@ -5537,6 +6741,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Mercado Libre",
+    "robot_recorded": "Agility Robotics Digit",
+    "site_name": "Mercado Libre fulfillment facility",
+    "city": "San Antonio",
+    "region": "Texas",
+    "country": "United States",
+    "task_description": "Tasks supporting commerce fulfillment (not specified); further use cases to be explored in Latin American warehouses",
+    "status": "ann",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E3",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2025-12-10",
+    "source_publisher": "Mercado Libre and Agility Robotics",
+    "source_url": "https://www.businesswire.com/news/home/20251210209226/en/Mercado-Libre-and-Agility-Robotics-Announce-Commercial-Agreement-to-Deploy-Humanoid-Robots",
+    "publication_date": "2025-12-10"
    }
   },
   {
@@ -5594,6 +6819,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Hyundai Motor Group",
+    "robot_recorded": "Boston Dynamics Atlas",
+    "site_name": "Robotics Metaplant Application Center (RMAC), Hyundai Motor Group Metaplant America",
+    "city": "Ellabell (Bryan County)",
+    "region": "Georgia",
+    "country": "United States",
+    "task_description": "Parts logistics, sorting and sequencing of automotive parts before placing them in assembly order; later heavy lifting and component assembly",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-06",
+    "source_publisher": "The Robot Report",
+    "source_url": "https://www.therobotreport.com/boston-dynamics-opens-metaplant-application-center-train-atlas-humanoid-robots/",
+    "publication_date": "2026-09-21"
    }
   },
   {
@@ -5649,6 +6895,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Airbus",
+    "robot_recorded": "UBTech Walker S2",
+    "site_name": "Airbus manufacturing facilities (not identified)",
+    "city": null,
+    "region": null,
+    "country": null,
+    "task_description": null,
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-01-21",
+    "source_publisher": "Reuters (syndicated by MarketScreener)",
+    "source_url": "https://www.marketscreener.com/news/ubtech-agrees-airbus-deal-to-expand-robot-use-in-aviation-manufacturing-ce7e58ddde8bfe2c",
+    "publication_date": "2026-01-21"
    }
   },
   {
@@ -5706,6 +6973,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "BYD; Geely Auto; FAW-Volkswagen; Dongfeng Liuzhou Motor; Audi FAW; BAIC New Energy; Foxconn; SF Express",
+    "robot_recorded": "UBTech Walker S2",
+    "site_name": "Multiple customer sites (not named)",
+    "city": null,
+    "region": null,
+    "country": "China",
+    "task_description": null,
+    "status": "unc",
+    "metric_name": "orders_value",
+    "metric_operator": ">",
+    "metric_value": "800000000",
+    "metric_unit": "CNY",
+    "metric_period": "2025 year to source date",
+    "evidence_level": "E3",
+    "verification_status": "vendor_reported",
+    "observed_start": "2025-11",
+    "source_publisher": "AI Business",
+    "source_url": "https://aibusiness.com/robotics/chinese-company-completes-first-mass-humanoid-robot-delivery",
+    "publication_date": "2025-11"
    }
   },
   {
@@ -5763,6 +7051,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "EQT",
+    "robot_recorded": "1X NEO",
+    "site_name": "EQT portfolio companies (not named)",
+    "city": null,
+    "region": null,
+    "country": "Multiple",
+    "task_description": null,
+    "status": "ann",
+    "metric_name": "max_units_made_available",
+    "metric_operator": "<=",
+    "metric_value": "10000",
+    "metric_unit": "robots",
+    "metric_period": "2026-2030",
+    "evidence_level": "E1",
+    "verification_status": "vendor_reported",
+    "observed_start": "2025-12-11",
+    "source_publisher": "1X",
+    "source_url": "https://www.businesswire.com/news/home/20251211360340/en",
+    "publication_date": "2025-12-11"
    }
   },
   {
@@ -5818,6 +7127,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "SAP SE",
+    "robot_recorded": "Humanoid HMND 01",
+    "site_name": null,
+    "city": null,
+    "region": null,
+    "country": null,
+    "task_description": "Candidate use cases named by Humanoid: inventory counts, photographing produced parts for quality assurance, and data exchange with ERP, WMS and other machines; cold-storage warehouses cited as a labour-constrained setting",
+    "status": "ann",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E1",
+    "verification_status": "partner_reported",
+    "observed_start": "2026-04",
+    "source_publisher": "SAP (Richard Howells)",
+    "source_url": "https://www.sap.com/blogs/sap-embodied-ai",
+    "publication_date": "2026-06-08"
    }
   },
   {
@@ -5871,6 +7201,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Dandelion Chocolate",
+    "robot_recorded": "Physical Intelligence (policy provider; hardware manufacturer not disclosed)",
+    "site_name": "Dandelion Chocolate Factory (specific site not disclosed)",
+    "city": null,
+    "region": null,
+    "country": null,
+    "task_description": "Assemble boxes used to package chocolates in an experimental real-world learning deployment",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-02-26",
+    "source_publisher": "Association for Advancing Automation (A3)",
+    "source_url": "https://www.automate.org/ai/industry-insights/on-the-job-learning-how-physical-intelligence-is-putting-robots-to-work",
+    "publication_date": "2026-02-26"
    }
   },
   {
@@ -5928,6 +7279,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Audi AG",
+    "robot_recorded": "Agile Robots Mobile humanoid (model not disclosed)",
+    "site_name": "Audi Production Lab, Ingolstadt",
+    "city": "Ingolstadt",
+    "region": "Bavaria",
+    "country": "Germany",
+    "task_description": "Pick parts from material containers and place them in the correct sequence for final vehicle assembly",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-10-21",
+    "source_publisher": "Audi AG",
+    "source_url": "https://www.audi.com/en/media-releases/agile-robots-and-audi-to-transform-automotive-logistics-with-mobile-humanoids-supported-by-dassault-systemes-and-nvidia-18390",
+    "publication_date": "2026-10-21"
    }
   },
   {
@@ -5985,6 +7357,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Walmart Inc.",
+    "robot_recorded": "Symbotic Symbotic automation systems (program-level)",
+    "site_name": "Walmart US regional distribution-center network (25 centers not individually named)",
+    "city": null,
+    "region": null,
+    "country": "United States",
+    "task_description": "Add automation for upstream e-commerce inventory, storage and product movement in the distribution network",
+    "status": "ann",
+    "metric_name": "initial_additional_spend_commitment",
+    "metric_operator": "~",
+    "metric_value": "6000000000",
+    "metric_unit": "USD",
+    "metric_period": "Over several years; multiple locations",
+    "evidence_level": "E3",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-10-29",
+    "source_publisher": "Symbotic (joint announcement with Walmart)",
+    "source_url": "https://symbotic.gcs-web.com/news-releases/news-release-details/walmart-and-symbotic-expand-commercial-agreement-support-supply",
+    "publication_date": "2026-10-29"
    }
   },
   {
@@ -6042,6 +7435,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Dimensional",
+    "robot_recorded": "Unitree Quadruped (model not disclosed)",
+    "site_name": "Public walking routes, San Francisco (Dogpatch base)",
+    "city": "San Francisco",
+    "region": "California",
+    "country": "United States",
+    "task_description": "Human operators steer quadrupeds on outdoor routes to collect real-world navigation data",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "media_reported",
+    "observed_start": "2026-10-28",
+    "source_publisher": "UPI",
+    "source_url": "https://www.upi.com/amp/Odd_News/2026/10/28/dimension-san-francisco-robot-dog-walkers/9021793207168/",
+    "publication_date": "2026-10-28"
    }
   },
   {
@@ -6097,6 +7511,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Jabil",
+    "robot_recorded": "Apptronik Apollo",
+    "site_name": "Jabil manufacturing operations (site not disclosed)",
+    "city": null,
+    "region": null,
+    "country": null,
+    "task_description": "Proposed pilot tasks: inspection, sorting, kitting, lineside delivery, fixture placement and sub-assembly before deployment to Apptronik customer sites.",
+    "status": "ann",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E1",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2025-02-25",
+    "source_publisher": "Jabil",
+    "source_url": "https://investors.jabil.com/news/news-details/2025/Apptronik-and-Jabil-Collaborate-to-Scale-Production-of-Apollo-Humanoid-Robots-and-Deploy-in-Manufacturing-Operations/default.aspx",
+    "publication_date": "2025-02-25"
    }
   },
   {
@@ -6154,6 +7589,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Catalyst Brands",
+    "robot_recorded": "Figure AI Humanoid (model not disclosed)",
+    "site_name": "Catalyst Brands Reno Distribution Logistics Center",
+    "city": "Reno",
+    "region": "Nevada",
+    "country": "United States",
+    "task_description": "Initially assist associates with sequencing on the Joey Pouch sorting system; broader sorting and packing tasks are targeted.",
+    "status": "ann",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E3",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-05-26",
+    "source_publisher": "Catalyst Brands",
+    "source_url": "https://corporate.jcpenney.com/2026/05/26/catalyst-brands-taps-figure-ai-for-humanoid-automation/",
+    "publication_date": "2026-05-26"
    }
   },
   {
@@ -6211,6 +7667,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Technical University of Munich (TUM)",
+    "robot_recorded": "NEURA Robotics 4NE1",
+    "site_name": "TUM RoboGym at LabCampus, Munich Airport",
+    "city": "Munich Airport",
+    "region": "Bavaria",
+    "country": "Germany",
+    "task_description": "Use of 4NE1 Gen 4 at the launch of a research and training centre.",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-10-22",
+    "source_publisher": "NEURA Robotics",
+    "source_url": "https://neura-robotics.com/tum-robogym-munich-4ne1-gen4-launch/",
+    "publication_date": "2026-10-22"
    }
   },
   {
@@ -6268,6 +7745,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "Foxconn",
+    "robot_recorded": "UBTECH Robotics Walker S1",
+    "site_name": "Foxconn Longhua factory",
+    "city": "Shenzhen",
+    "region": "Guangdong",
+    "country": "China",
+    "task_description": "Logistics carrying during first-stage factory training; parcel handling shown in vendor-supplied photographs.",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": null,
+    "source_publisher": "UBTECH Robotics",
+    "source_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0430/2025043002530.pdf",
+    "publication_date": "2025-04-30"
    }
   },
   {
@@ -6350,6 +7848,27 @@
       "records": 1
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "GlobalFoundries",
+    "robot_recorded": "Boston Dynamics Spot",
+    "site_name": "GlobalFoundries fabs in Singapore (sub-fab areas)",
+    "city": "Singapore",
+    "region": null,
+    "country": "Singapore",
+    "task_description": "Autonomous enterprise asset management: routine visual inspections of fab equipment feeding predictive maintenance",
+    "status": "unc",
+    "metric_name": "cumulative_inspections",
+    "metric_operator": ">",
+    "metric_value": "90000",
+    "metric_unit": "inspections",
+    "metric_period": "Since April (2026), two Spot robots",
+    "evidence_level": "E5",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-04",
+    "source_publisher": "Boston Dynamics",
+    "source_url": "https://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/",
+    "publication_date": "2026-11-17"
    }
   },
   {
@@ -6412,6 +7931,27 @@
       "records": 2
      }
     ]
+   },
+   "evidence": {
+    "organization_name": "NC State University (AIR Lab)",
+    "robot_recorded": "Unitree Robotics G1",
+    "site_name": "NC State Artificial Intelligence & Robotics (AIR) Lab; test site not disclosed",
+    "city": "Raleigh",
+    "region": "North Carolina",
+    "country": "United States",
+    "task_description": "Detect and collect floor eggs in cage-free poultry houses (research goal; not yet demonstrated in a poultry house)",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E1",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-08-25",
+    "source_publisher": "NC State College of Agriculture and Life Sciences (CALS Magazine)",
+    "source_url": "https://magazine.cals.ncsu.edu/code-to-coop/",
+    "publication_date": "2026-08-25"
    }
   }
  ],
@@ -6454,7 +7994,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "EQT",
+    "robot_recorded": "1X NEO",
+    "site_name": "EQT portfolio companies (not named)",
+    "city": null,
+    "region": null,
+    "country": "Multiple",
+    "task_description": null,
+    "status": "ann",
+    "metric_name": "max_units_made_available",
+    "metric_operator": "<=",
+    "metric_value": "10000",
+    "metric_unit": "robots",
+    "metric_period": "2026-2030",
+    "evidence_level": "E1",
+    "verification_status": "vendor_reported",
+    "observed_start": "2025-12-11",
+    "source_publisher": "1X",
+    "source_url": "https://www.businesswire.com/news/home/20251211360340/en",
+    "publication_date": "2025-12-11"
+   }
   },
   "6": {
    "records": 16,
@@ -6570,7 +8131,28 @@
      "records": 1
     }
    ],
-   "model_line_only": true
+   "model_line_only": true,
+   "evidence": {
+    "organization_name": "GXO Logistics",
+    "robot_recorded": "Agility Robotics Digit",
+    "site_name": "SPANX fulfillment center",
+    "city": "Flowery Branch",
+    "region": "Georgia",
+    "country": "United States",
+    "task_description": "Move totes and place them onto conveyors alongside existing automation",
+    "status": "op",
+    "metric_name": "cumulative_totes_moved",
+    "metric_operator": ">",
+    "metric_value": "100000",
+    "metric_unit": "totes",
+    "metric_period": "cumulative_to_source_date",
+    "evidence_level": "E5",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2024-06-27",
+    "source_publisher": "GXO Logistics and Agility Robotics",
+    "source_url": "https://gxo.com/news_article/gxo-and-agility-robotics-expand-partnership-to-accelerate-deployment-of-humanoids-in-u-s-operations/",
+    "publication_date": "2026-10-26"
+   }
   },
   "7": {
    "records": 5,
@@ -6649,7 +8231,28 @@
      "records": 1
     }
    ],
-   "model_line_only": true
+   "model_line_only": true,
+   "evidence": {
+    "organization_name": "GXO Logistics",
+    "robot_recorded": "Apptronik Apollo",
+    "site_name": "Laboratory setting (not disclosed)",
+    "city": null,
+    "region": null,
+    "country": "United States",
+    "task_description": "Evaluate Apollo for warehouse work; candidate capabilities include transporting boxes and totes, picking items and scanning barcodes",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2024-06-20",
+    "source_publisher": "GXO Logistics",
+    "source_url": "https://investors.gxo.com/news-releases/news-release-details/gxo-advances-humanoid-strategy-announces-multi-phase-rd/",
+    "publication_date": "2024-06-20"
+   }
   },
   "16": {
    "records": 3,
@@ -6708,7 +8311,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "Hyundai Motor Group",
+    "robot_recorded": "Boston Dynamics Atlas",
+    "site_name": "Robotics Metaplant Application Center (RMAC), Hyundai Motor Group Metaplant America",
+    "city": "Ellabell (Bryan County)",
+    "region": "Georgia",
+    "country": "United States",
+    "task_description": "Parts logistics, sorting and sequencing of automotive parts before placing them in assembly order; later heavy lifting and component assembly",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-06",
+    "source_publisher": "The Robot Report",
+    "source_url": "https://www.therobotreport.com/boston-dynamics-opens-metaplant-application-center-train-atlas-humanoid-robots/",
+    "publication_date": "2026-09-21"
+   }
   },
   "23": {
    "records": 3,
@@ -6766,7 +8390,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "Children's Hospital Los Angeles",
+    "robot_recorded": "Diligent Robotics Moxi",
+    "site_name": "Children's Hospital Los Angeles",
+    "city": "Los Angeles",
+    "region": "California",
+    "country": "United States",
+    "task_description": "Deliver medications and pharmaceutical items on hospital routes",
+    "status": "unc",
+    "metric_name": "robots_deployed",
+    "metric_operator": "=",
+    "metric_value": "2",
+    "metric_unit": "robots",
+    "metric_period": "Snapshot in source dated 2023-09-21",
+    "evidence_level": "E4",
+    "verification_status": "vendor_reported",
+    "observed_start": "2023-09-21",
+    "source_publisher": "Diligent Robotics",
+    "source_url": "https://www.diligentrobots.com/blog/diligent-robotics-closes-25-million-to-advance-systemwide-expansions-of-socially-intelligent-service-robots-empower-healthcare-professionals",
+    "publication_date": "2023-09-21"
+   }
   },
   "30": {
    "records": 3,
@@ -6806,7 +8451,28 @@
      "records": 3
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "BMW Group (Plant Spartanburg)",
+    "robot_recorded": "Figure AI Figure 03",
+    "site_name": "BMW Group Plant Spartanburg, Hall 52",
+    "city": "Spartanburg",
+    "region": "South Carolina",
+    "country": "United States",
+    "task_description": "Sequence parts with coordinated grasping, stepping and pulling a cart on caster wheels",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-06-30",
+    "source_publisher": "Figure AI",
+    "source_url": "https://www.figure.ai/news/f-03-at-bmw",
+    "publication_date": "2026-06-30"
+   }
   },
   "40": {
    "records": 4,
@@ -6883,7 +8549,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "BMW Group (Plant Leipzig)",
+    "robot_recorded": "Hexagon Robotics AEON",
+    "site_name": "BMW Group Plant Leipzig",
+    "city": "Leipzig",
+    "region": "Saxony",
+    "country": "Germany",
+    "task_description": "High-voltage battery assembly and component manufacturing; multifunctional use with interchangeable grippers and scanning tools on a wheeled base",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2025-12",
+    "source_publisher": "BMW Group",
+    "source_url": "https://www.bmwgroup.com/en/news/general/2026/humanoid-robot-in-leipzig.html",
+    "publication_date": "2026-02-27"
+   }
   },
   "49": {
    "records": 4,
@@ -6939,7 +8626,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "FAW Hongqi",
+    "robot_recorded": "Leju Kuavo",
+    "site_name": "FAW Hongqi factory (plant not identified)",
+    "city": null,
+    "region": null,
+    "country": "China",
+    "task_description": "Factory logistics: picking and carrying boxes; the shop handles about 130 box types of different sizes and materials",
+    "status": "unc",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "media_reported",
+    "observed_start": "2024-11",
+    "source_publisher": "The Paper (澎湃新闻)",
+    "source_url": "https://www.thepaper.cn/newsDetail_forward_30582771",
+    "publication_date": "2025-04-07"
+   }
   },
   "58": {
    "records": 2,
@@ -6998,7 +8706,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "Technical University of Munich (TUM)",
+    "robot_recorded": "NEURA Robotics 4NE1",
+    "site_name": "TUM RoboGym at LabCampus, Munich Airport",
+    "city": "Munich Airport",
+    "region": "Bavaria",
+    "country": "Germany",
+    "task_description": "Use of 4NE1 Gen 4 at the launch of a research and training centre.",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": "2026-10-22",
+    "source_publisher": "NEURA Robotics",
+    "source_url": "https://neura-robotics.com/tum-robogym-munich-4ne1-gen4-launch/",
+    "publication_date": "2026-10-22"
+   }
   },
   "83": {
    "records": 2,
@@ -7038,7 +8767,28 @@
      "records": 2
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "CATL",
+    "robot_recorded": "Spirit AI Moz (deployed as 'Xiaomo')",
+    "site_name": "CATL Zhongzhou base, battery-pack production line",
+    "city": "Luoyang",
+    "region": "Henan",
+    "country": "China",
+    "task_description": "Insert battery connectors on a power-battery pack line, check wire-harness connection status and report anomalies; patrol mode during breaks",
+    "status": "op",
+    "metric_name": "insertion_success_rate",
+    "metric_operator": ">",
+    "metric_value": "99",
+    "metric_unit": "percent",
+    "metric_period": null,
+    "evidence_level": "E5",
+    "verification_status": "media_reported",
+    "observed_start": "2025-12",
+    "source_publisher": "Gasgoo",
+    "source_url": "https://autonews.gasgoo.com/articles/news/galbots-galbot-s1-begins-operations-at-catls-factory-2070399392245612544",
+    "publication_date": "2026-06"
+   }
   },
   "88": {
    "records": 24,
@@ -7192,7 +8942,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "Siemens",
+    "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+    "site_name": "Siemens Electronics Factory Erlangen",
+    "city": "Erlangen",
+    "region": "Bavaria",
+    "country": "Germany",
+    "task_description": "Autonomously pick, transport and place containers for human operators",
+    "status": "pilot",
+    "metric_name": "tote_moves_throughput",
+    "metric_operator": "=",
+    "metric_value": "60",
+    "metric_unit": "tote_moves_per_hour",
+    "metric_period": "factory_pilot",
+    "evidence_level": "E5",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026",
+    "source_publisher": "Siemens",
+    "source_url": "https://press.siemens.com/jp/en/pressrelease/pr-20260416",
+    "publication_date": "2026-04-16"
+   }
   },
   "91": {
    "records": 1,
@@ -7232,7 +9003,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "Foxconn",
+    "robot_recorded": "UBTECH Robotics Walker S1",
+    "site_name": "Foxconn Longhua factory",
+    "city": "Shenzhen",
+    "region": "Guangdong",
+    "country": "China",
+    "task_description": "Logistics carrying during first-stage factory training; parcel handling shown in vendor-supplied photographs.",
+    "status": "pilot",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E2",
+    "verification_status": "vendor_reported",
+    "observed_start": null,
+    "source_publisher": "UBTECH Robotics",
+    "source_url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0430/2025043002530.pdf",
+    "publication_date": "2025-04-30"
+   }
   },
   "97": {
    "records": 1,
@@ -7272,7 +9064,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "Renault Group",
+    "robot_recorded": "Wandercraft Calvin",
+    "site_name": "Douai wheel workshop",
+    "city": "Douai",
+    "region": "Hauts-de-France",
+    "country": "France",
+    "task_description": "Lift two tyres together during factory testing",
+    "status": "pilot",
+    "metric_name": "load_per_lift",
+    "metric_operator": "~",
+    "metric_value": "30",
+    "metric_unit": "kg",
+    "metric_period": "Test described at source date",
+    "evidence_level": "E2",
+    "verification_status": "customer_confirmed",
+    "observed_start": "2026-06-26",
+    "source_publisher": "Renault Group",
+    "source_url": "https://www.renaultgroup.com/en/magazine/technology/calvin-a-new-generation-robot-is-born/",
+    "publication_date": "2026-06-26"
+   }
   },
   "104": {
    "records": 1,
@@ -7312,7 +9125,28 @@
      "records": 1
     }
    ],
-   "model_line_only": false
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "XPeng",
+    "robot_recorded": "XPeng IRON",
+    "site_name": "XPeng stores and commercial settings (individual sites not named)",
+    "city": null,
+    "region": null,
+    "country": "Multiple",
+    "task_description": "Planned shopping assistance and product introductions in commercial stores",
+    "status": "ann",
+    "metric_name": null,
+    "metric_operator": null,
+    "metric_value": null,
+    "metric_unit": null,
+    "metric_period": null,
+    "evidence_level": "E1",
+    "verification_status": "media_reported",
+    "observed_start": "2026-10-28",
+    "source_publisher": "CnEVPost",
+    "source_url": "https://cnevpost.com/2026/10/28/solid-state-batteries-xpeng-iron-small-batch-production/",
+    "publication_date": "2026-10-28"
+   }
   }
  }
 }

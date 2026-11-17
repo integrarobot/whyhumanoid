@@ -66,12 +66,73 @@ function summary(items, other) {
   };
 }
 
+// Aggregates for the public report (approved split, phase 2): records by status, sector, deployment country and year.
+// A cell with fewer than MIN_CELL records goes into "other", so no count points at a single record.
+export const MIN_CELL = 3;
+function tally(values) {
+  const counts = new Map();
+  for (const v of values) counts.set(v, (counts.get(v) ?? 0) + 1);
+  const kept = [...counts].filter(([k, n]) => k !== null && n >= MIN_CELL).sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(String(b[0])));
+  const other = values.length - kept.reduce((n, [, x]) => n + x, 0);
+  return [...kept.map(([key, records]) => ({ key, records })), ...(other ? [{ key: 'other', records: other }] : [])];
+}
+function aggregates(items) {
+  const status = Object.fromEntries(STATUS_KEYS.map((k) => [k, 0]));
+  for (const { r } of items) status[statusKey(r.operational_status)] += 1;
+  return {
+    min_cell: MIN_CELL,
+    by_status: status,
+    by_sector: tally(items.map(({ r }) => (has(r.sector) ? String(r.sector).trim() : null))),
+    by_country: tally(items.map(({ r }) => (has(r.country) ? String(r.country).trim() : null))),
+    by_year: tally(items.map(({ r }) => yearOf(r))).sort((a, b) => (a.key === 'other') - (b.key === 'other') || String(a.key).localeCompare(String(b.key))),
+  };
+}
+
+// Selected evidence (approved split, phase 2): one record per company and per catalogue robot, picked by a fixed rule,
+// shown with these fields only. Eligible: a source URL and a verification other than unresolved. Order: most advanced
+// status (operation, pilot or testing, vendor-claimed operation, planned), primary source (customer, maker or partner)
+// before press, customer confirmation before partner, vendor and media reports, latest publication, with a metric,
+// sheet order. Never the claim text, open questions, confidence, integration notes or record ids.
+const STATUS_RANK = { operational: 0, pilot: 1, testing: 1, vendor_claimed_operational: 2, planned: 3 };
+const PRIMARY = new Set(['customer_operator', 'manufacturer', 'technology_partner']);
+const VERIFY_RANK = { customer_confirmed: 0, partner_reported: 1, vendor_reported: 2, media_reported: 3 };
+export const EVIDENCE_KEYS = new Set(['organization_name', 'robot_recorded', 'site_name', 'city', 'region', 'country', 'task_description',
+  'status', 'metric_name', 'metric_operator', 'metric_value', 'metric_unit', 'metric_period', 'evidence_level', 'verification_status',
+  'observed_start', 'source_publisher', 'source_url', 'publication_date']);
+function pickEvidence(items, order) {
+  const ok = items.filter(({ r }) => /^https?:\/\//.test(String(r.source_url ?? '').trim()) && String(r.verification_status ?? '') !== 'unresolved');
+  if (!ok.length) return null;
+  const rank = (x) => [
+    STATUS_RANK[String(x.r.operational_status ?? '').toLowerCase()] ?? 4,
+    PRIMARY.has(String(x.r.source_role ?? '')) ? 0 : 1,
+    VERIFY_RANK[String(x.r.verification_status ?? '')] ?? 4,
+  ];
+  const best = [...ok].sort((a, b) => {
+    const [x, y] = [rank(a), rank(b)];
+    for (let i = 0; i < x.length; i += 1) if (x[i] !== y[i]) return x[i] - y[i];
+    const d = String(b.r.publication_date ?? '').localeCompare(String(a.r.publication_date ?? ''));
+    if (d) return d;
+    const m = (has(b.r.metric_name) ? 1 : 0) - (has(a.r.metric_name) ? 1 : 0);
+    return m || order.get(a.r.record_id) - order.get(b.r.record_id);
+  })[0].r;
+  const val = (k) => (has(best[k]) ? String(best[k]).trim() : null);
+  return {
+    organization_name: val('organization_name'), robot_recorded: recordedRobot(best) || null, site_name: val('site_name'), city: val('city'),
+    region: val('region'), country: val('country'), task_description: val('task_description'), status: statusKey(best.operational_status),
+    metric_name: val('metric_name'), metric_operator: val('metric_operator'), metric_value: val('metric_value'), metric_unit: val('metric_unit'),
+    metric_period: val('metric_period'), evidence_level: val('evidence_level'), verification_status: val('verification_status'),
+    observed_start: val('observed_start'), source_publisher: val('source_publisher'), source_url: String(best.source_url).match(/https?:\/\/[^\s|,;]+/)[0],
+    publication_date: val('publication_date'),
+  };
+}
+
 // graph: the full relations graph (server/src/relations/graph.js); rows: full Deployments rows; entities: full
 // Entities rows. Returns only allowlisted values.
 export function publicProjection({ graph, rows, entities = [] }) {
   const byRecord = new Map(rows.map((r) => [r.record_id, r]));
   const entity = new Map(entities.map((e) => [e.entity_id, e]));
   const items = graph.records.map((g) => ({ g, r: byRecord.get(g.record_id) })).filter((x) => x.r);
+  const order = new Map(rows.map((r, i) => [r.record_id, i]));
   const companies = assignSlugs(graph.companies.map((c) => ({ id: c.id, name: c.name, identity: c.identity, roles: c.roles ?? {}, countries: uniq(c.countries ?? []), robots: c.robots ?? [], organization_ids: c.organization_ids ?? [], entity_id: c.entity_id })));
   const byId = new Map();
   for (const c of companies) { byId.set(c.id, c); for (const o of c.organization_ids) if (!byId.has(o)) byId.set(o, c); }
@@ -93,12 +154,13 @@ export function publicProjection({ graph, rows, entities = [] }) {
       entity: e ? { canonical_name: e.canonical_name ?? null, entity_type: e.entity_type ?? null, reference_url: /^https?:\/\//.test(e.reference_url ?? '') ? e.reference_url : null, reviewed_at: e.reviewed_at ?? null } : null,
       as_maker: asMaker.length ? summary(asMaker, (g, r) => ({ id: byId.get(g.operator)?.id ?? null, name: nameOf(g.operator, r.organization_name) })) : null,
       as_organisation: asOrg.length ? summary(asOrg, (g, r) => ({ id: byId.get(g.maker)?.id ?? null, name: nameOf(g.maker, r.manufacturer) })) : null,
+      evidence: pickEvidence([...asOrg, ...asMaker], order),
     };
   });
   const robots = {};
   for (const rb of graph.robots) {
     const mine = items.filter(({ g }) => g.robot === rb.id);
-    if (mine.length) robots[rb.id] = { ...summary(mine, (g, r) => ({ id: byId.get(g.operator)?.id ?? null, name: nameOf(g.operator, r.organization_name) })), model_line_only: mine.every(({ g }) => g.level === 'family') };
+    if (mine.length) robots[rb.id] = { ...summary(mine, (g, r) => ({ id: byId.get(g.operator)?.id ?? null, name: nameOf(g.operator, r.organization_name) })), model_line_only: mine.every(({ g }) => g.level === 'family'), evidence: pickEvidence(mine, order) };
   }
   return {
     version: 1,
@@ -108,6 +170,7 @@ export function publicProjection({ graph, rows, entities = [] }) {
       deployments: new Set(items.map(({ g, r }) => g.deployment_id ?? r.deployment_id ?? g.record_id)).size,
       organisations: out.filter((c) => c.as_organisation).length,
     },
+    aggregates: aggregates(items),
     companies: out,
     robots,
   };
@@ -119,4 +182,5 @@ export const ALLOWED_KEYS = new Set([
   'id', 'slug', 'name', 'identity', 'roles', 'countries', 'organization_ids', 'entity', 'canonical_name', 'entity_type',
   'reference_url', 'reviewed_at', 'as_maker', 'as_organisation', 'status', 'sectors', 'site_countries', 'years',
   'counterparts', 'company', 'robot_recorded', 'robot', 'level', 'model_line_only', ...STATUS_KEYS,
+  'aggregates', 'min_cell', 'by_status', 'by_sector', 'by_country', 'by_year', 'key', 'evidence',
 ]);
