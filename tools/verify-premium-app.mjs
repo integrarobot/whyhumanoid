@@ -46,6 +46,7 @@ function app({ url, active, session }) {
     return { status: 200, json: async () => body };
   };
   w.HTMLDialogElement && (w.HTMLDialogElement.prototype.showModal ??= function () { this.setAttribute('open', ''); });
+  w.Element.prototype.scrollIntoView ??= function () {}; // jsdom has no layout
   w.eval(js);
   return { w, d: w.document, calls, dom };
 }
@@ -110,6 +111,7 @@ function app({ url, active, session }) {
   if (!sc.length || sc.some((c) => c.auth)) failures.push('search: visitor search missing or sent with a session');
   if (d.querySelectorAll('.gs-res li').length !== 3) failures.push('search: visitor results not shown');
   if (!/Free search covers/.test(d.getElementById('db-panel').textContent)) failures.push('search: free-data note missing for visitors');
+  if (d.getElementById('gs-jump').hidden || !/^3 results below/.test(d.getElementById('gs-jump').textContent)) failures.push('search: result count under the search box missing');
   if (d.querySelector('.gs-snip mark')?.textContent !== 'totes' || d.querySelector('.gs-snip b')) failures.push('search: snippet not highlighted or not escaped');
   d.querySelector('[data-tag="sector:automotive"]').click();
   await wait(200);

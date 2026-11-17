@@ -520,6 +520,7 @@
   const TRY = ['BMW', 'Figure 02', 'logistics Germany', 'almacén', 'machine tending', 'Agility'];
   async function renderSearch(s) {
     state.current = 'search';
+    $('gs-jump').hidden = true;
     renderIndex();
     if (dlg && dlg.open) closeDlg();
     const input = $('gs-q');
@@ -574,6 +575,10 @@
       (data.total ? `<ol class="gs-res" start="${from}">${results}</ol>${pager}` : none);
     const memo = scrollMemo.get(key);
     if (memo !== undefined) { window.scrollTo(0, memo); scrollMemo.delete(key); }
+    // Under the search box: how many results there are, and a way down to them (they sit below the categories).
+    const jump = $('gs-jump');
+    jump.textContent = `${data.total} result${data.total === 1 ? '' : 's'} below ↓`;
+    jump.hidden = false;
   }
   $('db-panel').addEventListener('click', (e) => {
     if (state.current !== 'search') return;
@@ -604,8 +609,9 @@
     e.preventDefault();
     clearTimeout(typing);
     const s = currentSearch();
-    goSearch({ ...s, q: $('gs-q').value.trim(), page: 1 }, true);
+    goSearch({ ...s, q: $('gs-q').value.trim(), page: 1 }, true).then(() => $('db-panel').scrollIntoView({ block: 'start' }));
   });
+  $('gs-jump').addEventListener('click', () => { $('db-panel').scrollIntoView({ block: 'start' }); $('gs-head')?.focus({ preventScroll: true }); });
   $('gs-q').addEventListener('input', () => {
     clearTimeout(typing);
     typing = setTimeout(() => {
@@ -652,6 +658,7 @@
     else if (r.view === 'record') await showRecord(r.dataset, r.id);
     else if (r.view === 'search') await renderSearch(r);
     else await show(r.id);
+    if (r.view !== 'search') $('gs-jump').hidden = true;
   }
 
   async function refreshMe() {
@@ -693,7 +700,7 @@
     if (!parseHash()) history.replaceState(null, '', location.pathname + location.search + '#deployments');
     await refresh();
     // A robot or company link opened directly lands on its view, below the account panel.
-    if (['robot', 'company'].includes(parseHash()?.view)) $('db-panel').scrollIntoView({ block: 'start' });
+    if (['robot', 'company'].includes(parseHash()?.view) || (parseHash()?.view === 'search' && location.hash.includes('='))) $('db-panel').scrollIntoView({ block: 'start' });
     // Entry counts in the category list, from the public previews (cached by the API for 5 minutes).
     state.datasets.filter((d) => d.id !== 'humanoids' && !cache[d.id]).forEach((d) => api(`/v1/datasets/${d.id}/preview`, { auth: false }).then(({ status, data }) => {
       if (status !== 200) return;

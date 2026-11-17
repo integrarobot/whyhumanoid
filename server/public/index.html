@@ -219,7 +219,7 @@ html.dlg-open{overflow:hidden}
   <section id="access" class="panel" aria-live="polite">
     <div id="acc-anon" hidden>
       <h1>The full Why Humanoid? database</h1>
-      <p>The Humanoids catalogue is free. The other 12 categories show their first 10 sheet rows for free. A subscription opens all 13 categories in full: every row and every field, search, and agent API keys.</p>
+      <p>The Humanoids catalogue is free. The other 12 categories show their first 10 sheet rows for free. A subscription opens all 13 categories in full: every row and every field, search over all of them, and agent API keys.</p>
       <p><b id="price">€100 per year</b>, paid yearly, no free trial, cancel any time from your account. Sign in with your email to subscribe or to open your subscription.</p>
       <form id="signin-form">
         <input id="email" type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email">
@@ -241,6 +241,7 @@ html.dlg-open{overflow:hidden}
     <label for="gs-q"><span class="lbl">Search all 13 categories</span>
       <input id="gs-q" type="search" autocomplete="off" spellcheck="false" placeholder="Robot, company, place, sector or task" aria-describedby="gs-hint"></label>
     <button class="btn" type="submit">Search</button>
+    <button type="button" id="gs-jump" class="btn ghost" hidden></button>
     <p class="hint" id="gs-hint">Names, aliases and every field, in English or Spanish. Press <kbd>/</kbd> to search from anywhere.</p>
   </form>
 
