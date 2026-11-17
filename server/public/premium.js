@@ -240,6 +240,7 @@
 
   // Deployments: business columns and grouped card, as on whyhumanoid.com.
   const STATUS = [['op', 'In operation'], ['pilot', 'Pilot or trial'], ['ann', 'Announced'], ['unc', 'Unconfirmed']];
+  const STATUS_RANK = { op: 0, pilot: 1, ann: 2, unc: 3 };
   const status = (r) => { const v = String(r.operational_status || '').toLowerCase(); return v === 'operational' ? 'op' : v === 'pilot' || v === 'testing' ? 'pilot' : v === 'planned' ? 'ann' : 'unc'; };
   const stLabel = (k) => STATUS.find((s) => s[0] === k)[1];
   const GROUPS_DEP = [
@@ -454,14 +455,20 @@
       ? `Organisation id in the Deployments sheet: ${orgs}`
       : (c.identity === 'catalogue_lab' ? 'Maker in the Humanoids catalogue' : 'Maker outside the Humanoids catalogue, grouped by its name as recorded') +
         (orgs ? `; the organisation ${orgs} in the Deployments sheet has the same name, so it is the same company` : '');
-    const used = [...new Set(asOrg.filter((r) => r.robot !== null).map((r) => r.robot))];
+    // A robot linked only by planned or unconfirmed records is not a robot the company uses: show its best recorded status.
+    const used = new Map();
+    asOrg.forEach((rr) => {
+      if (rr.robot === null) return;
+      const row = rows.get(rr.record_id), s = row ? status(row) : 'unc', prev = used.get(rr.robot);
+      if (prev === undefined || STATUS_RANK[s] < STATUS_RANK[prev]) used.set(rr.robot, s);
+    });
     const kv = [
       ['Roles', roles || (rel.mode === 'full' ? 'No Deployments record names this company' : 'None in the 10 free preview records')],
       ['Identity', identity],
       ['Names as recorded', (c.names || []).map(esc).join('; ') || esc(c.name)],
       ['Countries as recorded', (c.countries || []).map(esc).join('; ') || '<span class="lbl">Not recorded</span>'],
       ['Catalogue robots', (c.robots || []).map((r) => robotLink(r)).join('; ') || '<span class="lbl">None</span>'],
-      ['Robots it uses', used.map((r) => robotLink(r)).join('; ') || '<span class="lbl">None linked</span>'],
+      ['Robots in its records', [...used].map(([r, s]) => `${robotLink(r)} <span class="lbl">${stLabel(s)}</span>`).join('; ') || '<span class="lbl">None linked</span>'],
       ['Entities record', c.entity_id ? `<a href="#entities/${encodeURIComponent(c.entity_id)}">${esc(c.entity_id)}</a>` : '<span class="lbl">None</span>'],
     ];
     $('db-panel').innerHTML = `<div class="db-panel-head"><div><p class="lbl">Company</p><h2>${esc(c.name)}</h2><p>Only what the records say: no corporate data is added.</p></div></div>` +
