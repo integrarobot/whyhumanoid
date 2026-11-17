@@ -10,7 +10,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { relationsConfig } from './relations.mjs';
 import { buildGraph, compileConfig } from '../server/src/relations/graph.js';
-import { ALLOWED_KEYS, publicProjection } from '../server/src/public/projection.js';
+import { ALLOWED_KEYS, EVIDENCE_KEYS, publicProjection } from '../server/src/public/projection.js';
 
 const root = new URL('../', import.meta.url);
 const FILE = new URL('data/public/projection.json', root);
@@ -23,7 +23,8 @@ export function projectionProblems(p) {
     if (!v || typeof v !== 'object') return;
     for (const [k, x] of Object.entries(v)) {
       const dynamic = (parent === 'roles' && /^[a-z_]+$/.test(k)) || (path === '.robots' && /^\d+$/.test(k));
-      if (!dynamic && !ALLOWED_KEYS.has(k)) problems.push(`${path}.${k}: key not in the allowlist`);
+      const allowed = parent === 'evidence' ? EVIDENCE_KEYS.has(k) : ALLOWED_KEYS.has(k);
+      if (!dynamic && !allowed) problems.push(`${path}.${k}: key not in the allowlist`);
       walk(x, k, `${path}.${k}`);
     }
   };

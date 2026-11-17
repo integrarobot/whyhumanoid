@@ -114,7 +114,7 @@ for (const problem of projectionProblems(JSON.parse(read('data/public/projection
 // build of tools/build-pages.mjs, which reads only public inputs (free catalogue, 10-row previews, preview relations).
 // Any hand edit, or a page for a company seen only in premium rows, fails here.
 const pageBuild = buildPages().files;
-for (const file of tracked.filter((f) => /^(robots|companies)\//.test(f) || ['sitemap.xml', '404.html', 'data/pages.json'].includes(f))) {
+for (const file of tracked.filter((f) => /^(robots|companies|reports|method)\//.test(f) || ['sitemap.xml', '404.html', 'data/pages.json'].includes(f))) {
   if (!pageBuild.has(file)) fail(file, 'is not produced by tools/build-pages.mjs');
   else if (read(file) !== pageBuild.get(file)) fail(file, 'differs from the build of public inputs (node tools/build-pages.mjs)');
 }

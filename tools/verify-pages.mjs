@@ -28,6 +28,9 @@ const exists = (href) => {
 // 1 and 2: every page, as HTML only.
 const titles = new Map(), descs = new Map();
 const previewOrgs = new Set(JSON.parse(read('data/preview/deployments.json')).rows.map((r) => r.organization_name));
+// Organisations a page may name in a record card: the free preview's and those of the selected evidence (projection).
+const proj = JSON.parse(read('data/public/projection.json'));
+const cardOrgs = new Set([...previewOrgs, ...proj.companies.map((c) => c.evidence?.organization_name), ...Object.values(proj.robots).map((r) => r.evidence?.organization_name)].filter(Boolean));
 const pages = [...model.robots.map((r) => ['robot', r]), ...model.companies.map((c) => ['company', c])];
 for (const [kind, x] of pages) {
   const d = doc(x.path);
@@ -54,7 +57,7 @@ for (const [kind, x] of pages) {
       const v = x.record[field];
       if (field && (v ?? '').trim() && dt.nextElementSibling.textContent.replace(/\s+/g, ' ').trim() !== String(v).replace(/\s+/g, ' ').trim()) fail(`${x.path}: ${dt.textContent} differs from the catalogue`);
     }
-    for (const b of d.querySelectorAll('.dep header b')) if (!previewOrgs.has(b.textContent)) fail(`${x.path}: organisation "${b.textContent}" is not in the free preview`);
+    for (const b of d.querySelectorAll('.dep header b')) if (!cardOrgs.has(b.textContent)) fail(`${x.path}: organisation "${b.textContent}" is neither in the free preview nor a selected evidence`);
   } else {
     for (const rb of x.robotList) {
       if (!d.querySelector(`a[href="${rb.path}"]`)) fail(`${x.path}: no link to its robot ${rb.path}`);
@@ -71,6 +74,14 @@ for (const idx of ['/robots/', '/companies/']) {
   if (n !== want) fail(`${idx}: lists ${n} of ${want}`);
   for (const a of d.querySelectorAll('a[href^="/"]')) if (!exists(a.getAttribute('href'))) fail(`${idx}: broken link ${a.getAttribute('href')}`);
 }
+for (const pth of ['/reports/deployment-records/', '/method/']) {
+  const d = doc(pth);
+  if (d.querySelector('link[rel=canonical]')?.href !== SITE + pth) fail(`${pth}: canonical`);
+  for (const a of d.querySelectorAll('a[href^="/"]')) if (!exists(a.getAttribute('href'))) fail(`${pth}: broken link ${a.getAttribute('href')}`);
+  if (!/not verified facts|a record is a claim/.test(d.querySelector('main').textContent)) fail(`${pth}: does not say records are claims`);
+}
+const rep = doc('/reports/deployment-records/');
+for (const td of rep.querySelectorAll('table.bars td:last-child')) if (Number(td.textContent.trim()) < 3) fail(`report: a cell under 3 records (${td.textContent.trim()})`);
 const home = read('index.html');
 if (!/href="\/robots\/"/.test(home) || !/href="\/companies\/"/.test(home)) fail('index.html: no static links to the robot and company pages');
 
@@ -79,7 +90,7 @@ if (model.companies.length !== JSON.parse(read('data/public/projection.json')).c
 
 // 4. Sitemap, redirects, 404.
 const locs = new Set([...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]));
-const want = new Set([`${SITE}/`, `${SITE}/robots/`, `${SITE}/companies/`, ...pages.map(([, x]) => SITE + x.path)]);
+const want = new Set([`${SITE}/`, `${SITE}/robots/`, `${SITE}/companies/`, `${SITE}/reports/deployment-records/`, `${SITE}/method/`, ...pages.map(([, x]) => SITE + x.path)]);
 if (locs.size !== want.size || [...want].some((u) => !locs.has(u))) fail(`sitemap.xml: ${locs.size} URLs, expected ${want.size}`);
 if (!/^Sitemap: https:\/\/whyhumanoid\.com\/sitemap\.xml$/m.test(read('robots.txt'))) fail('robots.txt: no Sitemap line');
 const rb = model.robotById.get(16) ?? model.robots[0];

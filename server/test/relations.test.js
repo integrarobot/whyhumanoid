@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildGraph, compileConfig, robotSlug } from '../src/relations/graph.js';
-import { ALLOWED_KEYS, publicProjection } from '../src/public/projection.js';
+import { ALLOWED_KEYS, EVIDENCE_KEYS, publicProjection } from '../src/public/projection.js';
 import { DATASETS_BY_ID } from '../src/datasets.js';
 import { runImport } from '../src/import/run.js';
 import { upsertStripeEntitlement } from '../src/entitlements.js';
@@ -231,4 +231,25 @@ test('public projection: every company, allowlisted values only; visitor search 
   const full = await (await ctx.call('GET', '/v1/search?q=Operator%2012', { token: session })).json();
   assert.equal(full.scope, 'full');
   assert.equal(full.results.find((r) => r.category === 'companies')?.link, 'company/org_fx_op_12');
+});
+
+test('selected evidence: one record by the fixed rule, allowlisted fields only, never claim text, notes or ids', () => {
+  const spec = DATASETS_BY_ID.get('deployments');
+  const mk = (i, over) => { const r = row(i, { organization_id: 'org_fx_ev', organization_name: 'Evidence Org', source_url: `https://example.com/src/${i}`, verification_status: 'vendor_reported', source_role: 'manufacturer', ...over }); return Object.fromEntries(spec.headers.map((h) => [h, r[h] ?? `fx_${h}_${i}`])); };
+  const rows = [
+    mk(1, { operational_status: 'planned', publication_date: '2026-05-01' }),
+    mk(2, { operational_status: 'pilot', publication_date: '2025-01-01', source_role: 'news_media' }),
+    mk(3, { operational_status: 'pilot', publication_date: '2024-01-01' }),
+    mk(4, { operational_status: 'operational', verification_status: 'unresolved' }),
+    mk(5, { operational_status: 'operational', source_url: 'not a link' }),
+  ];
+  const { graph } = buildGraph(compileConfig(config), { rows, entities: [], scope: 'full' });
+  const e = publicProjection({ graph, rows }).companies.find((c) => c.id === 'org_fx_ev').evidence;
+  // Unresolved and link-less records are not eligible; among pilots, the primary source beats the newer press report.
+  assert.equal(e.source_url, 'https://example.com/src/3');
+  assert.equal(e.status, 'pilot');
+  for (const k of Object.keys(e)) assert.ok(EVIDENCE_KEYS.has(k), `evidence key ${k}`);
+  const text = JSON.stringify(e);
+  for (const f of ['claim_text', 'open_questions_notes', 'confidence', 'integration_dependencies', 'claim_id', 'task_id', 'source_id']) assert.ok(!text.includes(`fx_${f}_`), f);
+  assert.ok(!/fx_rec_|fx_dep_/.test(text));
 });
