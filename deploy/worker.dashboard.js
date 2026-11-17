@@ -215,11 +215,16 @@ html.dlg-open{overflow:hidden}
 <script src="premium.js"><\/script>
 </body>
 </html>
-`,Na=`// Full-database app, served by the backend on the same origin as the API. It holds no data. Visitors and signed-in
+`,Na=`// Full-database app. It holds no data. It runs at https://whyhumanoid.com/app/ (GitHub Pages, built by
+// tools/build-app.mjs, which names the API origin in <meta name="wh-api">) and, for local tests and the old address,
+// on the backend's own origin, where the meta tag is absent and the API is same-origin. Visitors and signed-in
 // users without a subscription get the free Humanoids catalogue and each other category's first 10 sheet rows;
 // subscribers get every row and field, after a server-side entitlement check on every request (Javier, 16 Nov 2026:
 // paywall, EUR 100 per year, no free trial). Same table and "View all data" card as whyhumanoid.com.
 (() => {
+  // Never inside a frame: the page is static, so this replaces the frame-ancestors header the backend used to send.
+  if (window.top !== window.self) { document.documentElement.hidden = true; return; }
+  const API = (document.querySelector('meta[name="wh-api"]')?.getAttribute('content') || '').replace(/\\/$/, '');
   const PAGE = 500;
   const $ = (id) => document.getElementById(id);
   const store = {
@@ -260,7 +265,7 @@ html.dlg-open{overflow:hidden}
     if (auth && state.session) headers.authorization = \`Bearer \${state.session}\`;
     if (body) headers['content-type'] = 'application/json';
     try {
-      const res = await fetch(path, { method, headers, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
+      const res = await fetch(API + path, { method, headers, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
       return { status: res.status, data: await res.json().catch(() => ({})) };
     } catch {
       return { status: 0, data: {} };
@@ -590,4 +595,4 @@ html.dlg-open{overflow:hidden}
 
   init();
 })();
-`;var Rl="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",La=(i,e)=>new Response(i,{headers:{"content-type":e,"content-security-policy":Rl,"x-content-type-options":"nosniff","referrer-policy":"no-referrer","x-robots-tag":"noindex","cache-control":"no-cache"}}),Lx={async fetch(i,e,t){let{pathname:n}=new URL(i.url);return i.method==="GET"&&(n==="/"||n==="/index.html")?La(Ga,"text/html; charset=utf-8"):i.method==="GET"&&n==="/premium.js"?La(Na,"text/javascript; charset=utf-8"):Rs.fetch(i,e,t)},scheduled:Rs.scheduled};export{Lx as default};
+`;var Rl="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",La=(i,e)=>new Response(i,{headers:{"content-type":e,"content-security-policy":Rl,"x-content-type-options":"nosniff","referrer-policy":"no-referrer","x-robots-tag":"noindex","cache-control":"no-cache"}}),xl=(i,e)=>{try{return!!e.PREMIUM_URL&&new URL(e.PREMIUM_URL).origin!==new URL(i.url).origin}catch{return!1}},Mx={async fetch(i,e,t){let{pathname:n}=new URL(i.url);return(n==="/"||n==="/index.html")&&(i.method==="GET"||i.method==="HEAD")&&xl(i,e)?new Response(null,{status:302,headers:{location:e.PREMIUM_URL,"cache-control":"no-store"}}):i.method==="GET"&&(n==="/"||n==="/index.html")?La(Ga,"text/html; charset=utf-8"):i.method==="GET"&&n==="/premium.js"?La(Na,"text/javascript; charset=utf-8"):Rs.fetch(i,e,t)},scheduled:Rs.scheduled};export{Mx as default};
