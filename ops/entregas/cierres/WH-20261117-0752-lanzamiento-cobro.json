@@ -1,0 +1,51 @@
+{
+  "id": "WH-20261117-0752-lanzamiento-cobro",
+  "tarea": "Lanzamiento del muro de pago: verificar en producción secretos, correo de acceso, checkout live de 100 € al año sin prueba, webhook y controles de acceso, sin cargos",
+  "origen": "Javier confirma «hecho» tras guardar STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET y RESEND_API_KEY en Cloudflare (17/11/2026), transmitido por Codex",
+  "fecha": "2026-11-17T07:52:32+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Ninguno en el código. Stripe live: el destino del webhook escucha también checkout.session.expired. El servidor verifica su firma y lo ignora, y así un checkout abandonado comprueba el secreto sin ningún cargo. Configuración autorizada de webhook.",
+    "DEPLOYMENT.md y ops/relevo-claude-code.md con el estado verificado. Comprobación programada para el 18/11 a las 08:05 (Madrid): entrega firmada del webhook."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Aplicación de suscriptores",
+      "url": "https://whyhumanoid-premium.javier-198.workers.dev/"
+    },
+    {
+      "etiqueta": "Web",
+      "url": "https://whyhumanoid.com/#db-deployments"
+    },
+    {
+      "etiqueta": "Estado de lanzamiento",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/DEPLOYMENT.md#0-paywall-go-live-javier-16-nov-2026-d-0008"
+    },
+    {
+      "etiqueta": "Relevo",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/relevo-claude-code.md"
+    }
+  ],
+  "despliegue": [
+    "Secretos guardados por Javier y desplegados en whyhumanoid-premium; comprobados por nombre en el panel de Cloudflare (RESEND_API_KEY, STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET y WORKBOOK_ID, valores cifrados). Código sin cambios: versión 38f8d8ab del Worker y web en main."
+  ],
+  "verificaciones": [
+    "Configuración: /v1/billing/plan responde checkout_available true. La clave live lee el precio y el servidor lo acepta: EUR, 10.000 céntimos, anual, sin días de prueba.",
+    "Webhook: 400 missing_signature sin firma y 400 invalid_signature con firma falsa (antes, 503 sin secreto).",
+    "Correo de acceso: pedido desde la aplicación con la dirección de entrega simulada de Resend (no es de nadie). Resend lo registra como enviado desde el remitente premium del dominio whyhumanoid.com y entregado («Your Why Humanoid? sign-in link»). El enlace pide un clic para entrar y funciona.",
+    "Usuario sin pago, con sesión: /v1/me 200 sin acceso, filas completas 403 subscription_required, portal 409 no_billing_account, panel «No subscription yet» con «Subscribe for €100 per year».",
+    "Checkout abierto: el botón lleva a Stripe Checkout live (cs_live_…), «Suscribirse a Why Humanoid? full database, 100,00 € por año», sin periodo de prueba y con el correo de la cuenta de prueba. Abandonado sin introducir tarjeta: la aplicación muestra «Checkout was cancelled. Nothing was charged.». En Stripe, el precio sigue con 0 suscripciones y no hay pagos nuevos.",
+    "Visitante sin sesión: 10 primeras filas por pestaña premium y Humanoids 133 completo; filas completas 401. Datos de las 13 pestañas en D1 verificados esta mañana contra la importación de la exportación auditada (Deployments 119 × 47, 4.817 valores).",
+    "Móvil (375 px): sin desplazamiento lateral; 10 filas y la fila de bloqueo; botón de suscripción visible.",
+    "Sin cargos, sin tarjetas y sin pagos simulados."
+  ],
+  "pendientes": [
+    "Firma del webhook con el secreto real: aún sin entrega firmada. La sesión de Checkout abandonada caduca hacia las 07:46 (Madrid) del 18/11; la comprobación de las 08:05 mira que Stripe reciba 200 y que D1 registre el evento. Si diera 400 invalid_signature, Javier tendría que volver a pegar STRIPE_WEBHOOK_SECRET.",
+    "Compra completa y estado de suscriptor en producción: sin probar a propósito (exigen un pago real). Probados en local con la exportación real y en pruebas el 13/11. Si Javier quiere confirmarlo, puede hacer una compra real y cancelarla o reembolsarla cuando decida.",
+    "Stripe muestra «INTEGRAROB» como nombre del comercio en el checkout. La marca es «Integrarobot»: se cambia en Stripe, Configuración, Datos públicos de la empresa, si Javier lo aprueba.",
+    "Decisiones de Javier sin cambios: acceso general del libro maestro y visibilidad del repositorio. Borrar la rama deploy/worker-bundle-f4bd2db."
+  ],
+  "siguiente_accion": "18/11 a las 08:05 (Madrid): comprobar la entrega firmada del webhook y registrar su cierre. Después, el backlog de RoboticsMap queda a la espera de que Javier lo priorice."
+}

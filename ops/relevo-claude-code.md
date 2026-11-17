@@ -1,6 +1,6 @@
 # Relevo a Claude Code: muro de pago de Why Humanoid?
 
-Actualizado: 17/11/2026, 07:05 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
+Actualizado: 17/11/2026, 07:55 (Europe/Madrid). Escribe: sesión de Claude en claude.ai. Coordina: Codex. Decide: Javier.
 
 ## Quién escribe
 
@@ -11,11 +11,11 @@ El 16/11 por la noche y el 17/11 la sesión de claude.ai volvió a ser la ejecut
 | Pieza | Estado real |
 |---|---|
 | whyhumanoid.com | PR #18 (`f4bd2db`): Humanoids completo y 10 primeras filas de cada pestaña premium (`data/preview/`). Las 13 URLs `/data/database/*.json` dan 404. Hecho. |
-| Worker de producción `whyhumanoid-premium` | Código del muro, versión `38f8d8ab`. `CHECKOUT_ENABLED=true` y `ALLOW_LIVE_CHECKOUT=true`. Único secreto: `WORKBOOK_ID` (faltan `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` y `RESEND_API_KEY`). D1 con los datos de las 13 pestañas. `checkout_available: false` hasta que estén los 3 secretos. |
+| Worker de producción `whyhumanoid-premium` | Código del muro, versión `38f8d8ab`. Secretos `WORKBOOK_ID`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` y `RESEND_API_KEY` (los tres últimos los puso Javier el 17/11). `checkout_available: true`: el pago live está abierto. |
 | Worker de pruebas `whyhumanoid-premium-test` | Mismo código, versión `7912c960`, datos de staging del 13/11, `checkout_available: true` (claves de prueba). |
 | Importación a producción | Hecha el 16/11 a las 21:39 (run 43951964181, HTTP 200): Humanoids 133 (y 2 internas), Deployments 119, Integrators 7, Evidence links 15, Task evaluations 4, Container handling 22, Entities 24, Stocks 276, Software 144, Datasets 28, Hardware 11, Other robots 547, Data space 30. D1 de producción coincide con la importación de la exportación auditada (filas, campos, valores no vacíos y caracteres por pestaña); la hoja no ha cambiado desde el 13/11 18:33 UTC. Google: condición del proveedor y Workload Identity User del principal de producción, hechos el 16/11 con la llave de acceso de Javier. |
-| Stripe live | Webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` activo, URL `/v1/stripe/webhook`, 4 eventos (`checkout.session.completed`, `customer.subscription.created`, `.updated`, `.deleted`). Precio `price_1UbOtjAcMngkWs5CR8qXNPGn`: 100 € al año, sin prueba. Portal de clientes por defecto guardado el 16/11 (`bpc_1UcVsIAcMngkWs5C9X4Xkwf0`: cancelación al final del periodo, método de pago, facturas). Formulario de la clave restringida `whyhumanoid-premium-production` preparado (escritura en Checkout Sessions y Customer portal, lectura en Prices), sin crear. |
-| Resend | Dominio `whyhumanoid.com` **Verified** (DKIM TXT `resend._domainkey`, MX y TXT SPF en `send`, añadidos en IONOS el 16/11). Formulario de la clave `whyhumanoid-premium-production` (Sending access, solo whyhumanoid.com) preparado, sin crear. |
+| Stripe live | Webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` activo, 5 eventos (`checkout.session.completed`, `customer.subscription.created`, `.updated`, `.deleted` y `checkout.session.expired`, que solo sirve para comprobar la firma). Precio `price_1UbOtjAcMngkWs5CR8qXNPGn`: 100 € al año, sin prueba. Portal por defecto `bpc_1UcVsIAcMngkWs5C9X4Xkwf0`. Clave restringida `whyhumanoid-premium-production` creada por Javier. Firma del webhook con el secreto real: comprobación programada el 18/11 a las 08:05. Compra completa: sin probar (no se hacen cargos). |
+| Resend | Dominio `whyhumanoid.com` Verified. Clave `whyhumanoid-premium-production` (solo envío, solo este dominio). Correo de acceso comprobado el 17/11: enviado desde `premium@whyhumanoid.com` y entregado. |
 | Libro maestro y copia «para Codex» | Legibles por cualquiera con el enlace. Decisión pendiente de Javier. |
 | Repositorio | Público; el historial entre el PR #4 y el PR #18 contiene las filas completas. Decisión pendiente de Javier. |
 
@@ -31,14 +31,14 @@ Nada de esto lo puede hacer un agente sin la aprobación concreta de Javier: cre
    gh run view <id> --log | grep -E "HTTP|rows|warnings"
    ```
    Esperado: HTTP 200 y las 13 pestañas con filas (referencia de staging: Deployments 119, Other robots 547, Stocks 276, Software 144, Humanoids 133).
-3. **DNS hecho y dominio verificado el 16/11; falta la clave.** **Resend (Javier).** Permiso: autoriza a Resend (Amazon SES, eu-west-1) a enviar correo como `@whyhumanoid.com`; el MX y el SPF de la raíz no cambian. En Resend, Domains, whyhumanoid.com, «Auto configure» y aprobar en IONOS (TXT `resend._domainkey`, MX `send` a `feedback-smtp.eu-west-1.amazonses.com` prioridad 10, TXT `send` `v=spf1 include:amazonses.com ~all`), luego «Verify DNS records». Después, API keys, clave con permiso «Sending access» solo para `whyhumanoid.com`, como secreto `RESEND_API_KEY` en `whyhumanoid-premium`.
-4. **Stripe live (Javier).** Clave restringida `whyhumanoid-premium-production` con escritura en Checkout Sessions y Customer portal y lectura en Prices (son las únicas llamadas del servidor), como secreto `STRIPE_SECRET_KEY`. Secreto de firma del webhook `we_1UbOuz…` como secreto `STRIPE_WEBHOOK_SECRET`. Panel de Cloudflare (Workers, whyhumanoid-premium, Settings, Variables and secrets, Add, tipo Secret) o, desde `server/` con la sesión de Wrangler de Javier:
+3. **Hecho (16 y 17/11).** **Resend (Javier).** Permiso: autoriza a Resend (Amazon SES, eu-west-1) a enviar correo como `@whyhumanoid.com`; el MX y el SPF de la raíz no cambian. En Resend, Domains, whyhumanoid.com, «Auto configure» y aprobar en IONOS (TXT `resend._domainkey`, MX `send` a `feedback-smtp.eu-west-1.amazonses.com` prioridad 10, TXT `send` `v=spf1 include:amazonses.com ~all`), luego «Verify DNS records». Después, API keys, clave con permiso «Sending access» solo para `whyhumanoid.com`, como secreto `RESEND_API_KEY` en `whyhumanoid-premium`.
+4. **Hecho el 17/11.** **Stripe live (Javier).** Clave restringida `whyhumanoid-premium-production` con escritura en Checkout Sessions y Customer portal y lectura en Prices (son las únicas llamadas del servidor), como secreto `STRIPE_SECRET_KEY`. Secreto de firma del webhook `we_1UbOuz…` como secreto `STRIPE_WEBHOOK_SECRET`. Panel de Cloudflare (Workers, whyhumanoid-premium, Settings, Variables and secrets, Add, tipo Secret) o, desde `server/` con la sesión de Wrangler de Javier:
    ```sh
    npx wrangler secret put STRIPE_SECRET_KEY --env production
    npx wrangler secret put STRIPE_WEBHOOK_SECRET --env production
    npx wrangler secret put RESEND_API_KEY --env production
    ```
-5. **Comprobar producción sin cargos** (cuando 1 a 4 estén hechos):
+5. **Hecho el 17/11, salvo la firma del webhook (programada el 18/11) y la compra completa (sin probar).** **Comprobar producción sin cargos**:
    ```sh
    B=https://whyhumanoid-premium.javier-198.workers.dev
    curl -s $B/v1/billing/plan            # checkout_available: true
