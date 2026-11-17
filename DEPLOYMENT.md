@@ -63,16 +63,79 @@ the portal link for a paying account. No real card is used for testing.
   click-to-confirm sign-in: `/v1/me` 200 with no access, full rows 403 `subscription_required`, portal 409
   `no_billing_account`; Stripe Checkout live opened (`cs_live_…`, "100,00 € por año", no trial) and left without a card:
   back in the app "Checkout was cancelled. Nothing was charged."; price still 0 subscriptions, no new payment. Mobile
-  375 px without horizontal overflow. Not tested on purpose: a completed purchase and the subscriber state in
-  production.
+  375 px without horizontal overflow. Not tested by the agent on purpose: a completed purchase and the subscriber
+  state in production (since covered by Javier's own purchase, 08:24 note below).
 - 17 Nov, 08:14 to 08:18 Madrid: webhook signature proven with the real secret and no charge. Expiring the abandoned
   checkout was not possible from the Dashboard (the live Workbench shell and API explorer are read-only) and the live
   key lives only in the Worker, so the destination temporarily listened to `product.updated` and a metadata key was
   added to and removed from the product "Why Humanoid? full database": two live signed deliveries, both HTTP 200,
   response `{"received": true, "outcome": "ignored_type"}`; `stripe_events` holds `evt_1UcgbVAcMngkWs5CK2RGe4t5`
   (`product.updated`, `ignored_type`); `entitlements` 0. Product metadata and the destination's 4 events restored.
+- 17 Nov, 08:24 Madrid: completed purchase, a real test made and confirmed by Javier himself, not by an agent (his
+  screenshots: EUR 100 paid, Full access until 17 Nov 2027, Deployments 119). D1 shows it: `entitlements` premium,
+  source stripe, active until 2027-11-17 07:24:26 UTC, `cancel_at_period_end` 0; `stripe_events` in order
+  `product.updated` `ignored_type` (x2, the signature proof), `checkout.session.completed` `customer_linked`,
+  `customer.subscription.created` `entitlement_updated`. This corrects the earlier status "completed purchase not
+  tested": purchase, webhook and unlock work end to end in production. The subscription is Javier's; it is not
+  cancelled or refunded.
+- 17 Nov, 08:30 to 08:45 Madrid: premium app moved from the `workers.dev` URL to `https://whyhumanoid.com/app/`
+  (same brand and domain; DNS and mail untouched). How: `app/` is the static build of `server/public`
+  (`tools/build-app.mjs`, checked in CI) served by GitHub Pages with a CSP meta tag, `connect-src` limited to the API
+  origin, no referrer and a frame-buster; the API stays on the Worker and answers the new origin over CORS. Production
+  variables: `ALLOWED_ORIGINS` = `https://whyhumanoid.com,https://whyhumanoid-premium.javier-198.workers.dev` (old
+  origin kept for the transition) and `PREMIUM_URL` = `https://whyhumanoid.com/app/`, which also sets the sign-in
+  link, Checkout success and cancel URLs and the portal return. PR #24 (`48d4214`) published `app/` and the catalogue
+  buttons; Worker version `7e8d9e1c` (bundle sha256 `b234b112…704c`, temporary commit `4a075ee` on
+  `deploy/worker-bundle-f4bd2db`) redirects GET and HEAD of the old app page (`/`, `/index.html`) to the new URL with
+  302, keeping the `#fragment` (old bookmarks, deep links and sign-in links still work); `/v1/*` is never redirected,
+  so Stripe's POST to `/v1/stripe/webhook` still lands on the Worker (400 `missing_signature` without a signature,
+  no redirect). Checked in production without any charge: TLS on whyhumanoid.com and `/app/`; canonical
+  `https://whyhumanoid.com/app/`; anonymous Deployments 10 of 119 rows with the lock; catalogue buttons point to
+  `/app/` and `/app/#deployments`; old URL `/#integrators` lands on `/app/#integrators`; sign-in email from
+  `premium@whyhumanoid.com` to `delivered@resend.dev` with link `https://whyhumanoid.com/app/#login=…`, redeemed with
+  the click: `/v1/me` 200 without access, full rows 403, portal 409; Checkout live opened ("100,00 € por año") with
+  cancel URL `https://whyhumanoid.com/app/?checkout=cancelled`, left without a card: "Checkout was cancelled. Nothing
+  was charged."; 375 px without overflow; test account signed out. D1 after the checks: the same entitlement (active
+  until 2027-11-17), 4 Stripe events, no new payment. Sessions live in the browser per origin, so a subscriber signs
+  in once more at `whyhumanoid.com/app/`; the subscription is unchanged. Not tested by the agent: the portal and the
+  success return for a paying account (verified locally; Javier can open "Manage subscription").
 - Branch `deploy/worker-bundle-f4bd2db` (the temporary bundle used by the dashboard editor; public server code, no
   data) could not be deleted through the agent proxy: delete it in GitHub, Branches.
+
+### Proposal, phase 2: API under whyhumanoid.com (not executed, needs Javier)
+
+Today the page is on whyhumanoid.com and only the API calls go to `whyhumanoid-premium.javier-198.workers.dev`
+(visible in the browser's network panel and the CSP). Putting the API on the same origin (`whyhumanoid.com/v1/*`)
+and sending real security headers (CSP, HSTS, `frame-ancestors`) needs a Worker route, and Cloudflare only runs
+routes and custom domains on zones whose DNS it serves. A subdomain such as `api.whyhumanoid.com` would need the same
+zone move, so it is no shortcut. IONOS stays the registrar and the mail provider; only the nameservers change.
+
+1. Cloudflare, Add a site `whyhumanoid.com`, Free plan; import and then check record by record against the inventory
+   (IONOS panel, 16 Nov 2026), all of them DNS only (grey) at first:
+   - A `@` 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 (GitHub Pages); CNAME `www`
+     `integrarobot.github.io`.
+   - Mail: MX `@` `mx00.ionos.es` and `mx01.ionos.es` (same priorities as IONOS); TXT `@`
+     `v=spf1 include:_spf-eu.ionos.com ~all`; CNAME `s1-ionos._domainkey` `s1.dkim.ionos.com`,
+     `s2-ionos._domainkey` `s2.dkim.ionos.com`, `s42582890._domainkey` `s42582890.dkim.ionos.com`; CNAME `_dmarc`
+     `dmarc.ionos.es`; CNAME `autodiscover` `adsredir.ionos.info`; CNAME `_domainconnect` `_domainconnect.ionos.com`.
+   - Resend: TXT `resend._domainkey` (current DKIM value), MX `send` `feedback-smtp.eu-west-1.amazonses.com` priority
+     10, TXT `send` `v=spf1 include:amazonses.com ~all`.
+   - TXT `@` `google-site-verification=…` (current value).
+2. IONOS: check DNSSEC (if on, turn it off before the change and enable Cloudflare's DS afterwards); domain protection
+   is on, so Javier confirms the nameserver change there with the two Cloudflare nameservers.
+3. During propagation both sets of nameservers answer the same records, so the site and mail keep working. Checks:
+   MX, SPF, DKIM and DMARC by `dig` against the Cloudflare nameservers before switching and after; Resend still
+   Verified; a test email to an IONOS mailbox; GitHub Pages certificate still valid.
+4. Only then, Worker route `whyhumanoid.com/v1/*` to `whyhumanoid-premium` (that hostname proxied, SSL Full
+   (strict)), `wh-api` set to the same origin and `connect-src 'self'`, and headers for `/app/*` from the Worker or a
+   Transform Rule. Keep `ALLOWED_ORIGINS` and the old URL redirect during the transition. The Stripe webhook stays on
+   `workers.dev` until a test delivery to the new path is verified; then edit the endpoint URL in Stripe (the signing
+   secret does not change), never redirect Stripe's POST.
+
+Risk: a missed record breaks mail or verification; the inventory and the `dig` comparison before the switch cover it.
+GitHub Pages behind a proxied hostname must keep renewing its certificate; if it does not, keep `@` DNS only and
+route only through a proxied path on a dedicated hostname. The app's URL does not change in phase 2, so no new
+sign-in is needed.
 
 ### Exposure of the open-database period
 
@@ -123,7 +186,7 @@ with Stripe's test cards.
 | Worker | `whyhumanoid-premium-test` (`wrangler deploy --env test`) | `whyhumanoid-premium` (`wrangler deploy --env production`) |
 | D1 | `wrangler d1 create whyhumanoid-premium-test`, id into `[env.test]` | `wrangler d1 create whyhumanoid-premium`, id into `[env.production]` |
 | Schema | `wrangler d1 migrations apply whyhumanoid-premium-test --remote --env test` | same with `whyhumanoid-premium --env production` |
-| URL | `https://whyhumanoid-premium-test.<account>.workers.dev` (fill `ALLOWED_ORIGINS`, `PREMIUM_URL`) | `https://premium.whyhumanoid.com` |
+| URL | `https://whyhumanoid-premium-test.<account>.workers.dev` (fill `ALLOWED_ORIGINS`, `PREMIUM_URL`) | app `https://whyhumanoid.com/app/` (GitHub Pages), API `https://whyhumanoid-premium.javier-198.workers.dev` |
 | `STRIPE_MODE` | `test` | `live` |
 | `CHECKOUT_ENABLED` | `true` after step 3 passes | `false` until Javier enables it |
 | `ALLOW_LIVE_CHECKOUT` | `false` | `true` only when Javier enables live checkout |
@@ -165,8 +228,9 @@ Production environment, created on 13 Nov 2026 the same way, checkout off:
   secret, no cron. Since 13 Nov 2026 it runs the verified staging build (bundle sha256 `60bf11d7…dd35`, commit
   `872dbe8`), version `f208b4bd`; the previous verified build ran as `94b763d3`. Verified then: `/health` 200; 13 datasets, every preview 0 rows; full data, rows
   past 10, search, `/v1/me`, checkout, API keys, task plan and admin import 401; plan €100 per year, checkout not
-  available; webhook 503 until its secret exists. The catalogue links to this URL (`PREMIUM_APP_URL` in
-  `tools/build-site.mjs`).
+  available; webhook 503 until its secret exists. Since 17 Nov 2026 the app page is `https://whyhumanoid.com/app/`
+  (`PREMIUM_APP_URL` in `tools/build-site.mjs`, `app/` built by `tools/build-app.mjs`); this URL serves the API and
+  redirects its old page there.
 
 To redeploy from the dashboard: `node server/scripts/build-dashboard.mjs <esbuild>` (esbuild 0.27.7), then replace
 `worker.js` in Edit code and Deploy. `wrangler deploy --env test` with a token Javier creates also works and uses
@@ -174,8 +238,8 @@ the same settings, because `[env.test]` matches the dashboard.
 
 `premium.whyhumanoid.com` as a Workers custom domain requires the `whyhumanoid.com` zone on Cloudflare: change the
 nameservers at IONOS (registrar stays IONOS) after copying every existing record (GitHub Pages A records for `@`,
-`www` CNAME to `integrarobot.github.io`, MX, SPF, DKIM, DMARC, Google verification). Until then, production can run
-on its `workers.dev` URL.
+`www` CNAME to `integrarobot.github.io`, MX, SPF, DKIM, DMARC, Google verification). Until then, the API runs on
+its `workers.dev` URL and the app on `whyhumanoid.com/app/`; the exact plan is "Proposal, phase 2" in section 0.
 
 Secrets, per environment (`wrangler secret put NAME --env test|production`, or in the dashboard: Worker, Settings,
 Variables and secrets, Add, type Secret). On the test Worker, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`,
