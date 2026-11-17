@@ -50,6 +50,13 @@ the portal link for a paying account. No real card is used for testing.
   way; the Google Cloud console asks for Javier's passkey; Stripe live webhook active with the 4 handled events and the
   price at EUR 100 a year without trial; no live restricted key; Resend domain still Not Started. Handoff for Claude
   Code: `ops/relevo-claude-code.md`.
+- 16 Nov, 21:30 to 21:40 Madrid, with Javier's approval and passkey: provider condition extended to the production
+  subject on `main` only; `roles/iam.workloadIdentityUser` on `whyhumanoid-importer` for the production principal;
+  Resend DNS added in IONOS (TXT `resend._domainkey`, MX and TXT on `send`). Import run `43951964181`: HTTP 200, the 13
+  tabs (Deployments 119).
+- 17 Nov, 06:50 Madrid: Resend domain Verified; production D1 matches the import of the audited export tab by tab
+  (rows, fields per row, non-empty values, characters; Deployments 119 x 47, 4,817 values); the workbook is unchanged
+  since 13 Nov 18:33 UTC. Still missing: the three secrets (steps 2 to 4), whose forms are prepared for Javier.
 - Branch `deploy/worker-bundle-f4bd2db` (the temporary bundle used by the dashboard editor; public server code, no
   data) could not be deleted through the agent proxy: delete it in GitHub, Branches.
 

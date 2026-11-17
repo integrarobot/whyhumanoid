@@ -1,0 +1,57 @@
+{
+  "id": "WH-20261117-0657-importacion-produccion-y-correo",
+  "tarea": "Muro de pago, avance: datos completos en producción, dominio de correo verificado y formularios de claves preparados; backlog de ideas de RoboticsMap",
+  "origen": "Orden de Javier transmitida por Codex (16 y 17/11/2026), con su aprobación de permisos y credenciales limitados a Why Humanoid",
+  "fecha": "2026-11-17T06:57:50+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Google (16/11, con la llave de acceso de Javier): la condición del proveedor github-actions acepta además el entorno production en main, y el principal de producción tiene Workload Identity User sobre whyhumanoid-importer. No se ha tocado nada más.",
+    "Importación a producción (run 43951964181, HTTP 200): las 13 pestañas en D1. Humanoids 133 (y 2 internas), Deployments 119, Integrators 7, Evidence links 15, Task evaluations 4, Container handling 22, Entities 24, Stocks 276, Software 144, Datasets 28, Hardware 11, Other robots 547, Data space 30.",
+    "Resend: añadidos en IONOS el TXT resend._domainkey (DKIM, comprobado con hash contra Resend) y el MX y el TXT SPF de send; la raíz del dominio no cambia. Dominio verificado.",
+    "Formularios preparados para Javier, sin crear ni escribir ninguna clave: clave restringida live de Stripe (escritura en Checkout Sessions y Customer portal, lectura en Prices), clave de Resend (Sending access solo para whyhumanoid.com) y panel de Cloudflare con los 3 secretos.",
+    "ops/backlog.md: ideas de RoboticsMap guardadas para después, sin implementar. Relevo y DEPLOYMENT.md al día."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Importación de producción",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/43951964181"
+    },
+    {
+      "etiqueta": "Aplicación de suscriptores",
+      "url": "https://whyhumanoid-premium.javier-198.workers.dev/"
+    },
+    {
+      "etiqueta": "Web",
+      "url": "https://whyhumanoid.com/#db-deployments"
+    },
+    {
+      "etiqueta": "Backlog",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/backlog.md"
+    },
+    {
+      "etiqueta": "Relevo",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/relevo-claude-code.md"
+    }
+  ],
+  "despliegue": [
+    "Sin despliegue de código: Worker de producción en la versión 38f8d8ab y web en f4bd2db. Cambios de configuración en Google Cloud, IONOS y Resend descritos arriba."
+  ],
+  "verificaciones": [
+    "Servidor de producción (17/11 05:50 UTC), sin sesión: vistas previas con el total real de cada pestaña (Deployments 119, Other robots 547, Stocks 276…) y como máximo las 10 primeras filas de la hoja (Software 19 y Other robots 20 entradas), Humanoids 133 completas; filas completas de las 13 pestañas 401.",
+    "D1 de producción contra la importación de la exportación auditada el 16/11, pestaña a pestaña: mismas filas, mismos campos por fila, mismos valores no vacíos y mismos caracteres. Deployments: 119 filas, 47 campos en cada una, 4.817 valores, 249.660 caracteres.",
+    "Libro maestro sin cambios desde el 13/11 18:33 UTC (Drive), así que la auditoría de Deployments del 16/11 contra la hoja actual (0 diferencias) sigue valiendo.",
+    "Resend: dominio whyhumanoid.com Verified; registros visibles en IONOS.",
+    "CI en verde en main (8a272d6) y Pages desplegado.",
+    "Sin cargos ni datos de pago."
+  ],
+  "pendientes": [
+    "Cobro y correo NO operativos todavía: el servidor responde checkout_available false, inicio de sesión 503 email_not_configured y webhook 503 webhook_not_configured.",
+    "Javier: crear la clave de Stripe y la de Resend en los formularios preparados y pegarlas, junto con el secreto del webhook, en el panel de Cloudflare ya abierto (STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, RESEND_API_KEY), y desplegar.",
+    "Después: comprobar inicio de sesión real, checkout live sin introducir tarjeta, firma del webhook y portal.",
+    "Decisiones de Javier sin cambios: acceso general del libro maestro y visibilidad del repositorio.",
+    "Borrar en GitHub la rama deploy/worker-bundle-f4bd2db."
+  ],
+  "siguiente_accion": "En cuanto Javier confirme los 3 secretos, Claude verifica correo, checkout y webhook en producción sin cargos y registra el cierre del lanzamiento."
+}
