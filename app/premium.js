@@ -448,11 +448,15 @@
     const recs = rel.byCompany.get(c.id) || [];
     const asMaker = recs.filter((r) => r.maker === c.id), asOrg = recs.filter((r) => r.operator === c.id);
     const roles = Object.entries(c.roles || {}).map(([k, n]) => `${esc(ROLE[k] || human(k))} (${n} ${n === 1 ? 'record' : 'records'})`).join(' · ');
-    const identity = c.identity === 'catalogue_lab' ? 'Maker in the Humanoids catalogue' : c.identity === 'name_as_recorded' ? 'Maker outside the Humanoids catalogue, grouped by its name as recorded' : 'Organisation id in the Deployments sheet';
+    const orgs = (c.organization_ids || []).map(esc).join(', ');
+    const identity = c.identity === 'sheet_organization_id'
+      ? `Organisation id in the Deployments sheet: ${orgs}`
+      : (c.identity === 'catalogue_lab' ? 'Maker in the Humanoids catalogue' : 'Maker outside the Humanoids catalogue, grouped by its name as recorded') +
+        (orgs ? `; the organisation ${orgs} in the Deployments sheet has the same name, so it is the same company` : '');
     const used = [...new Set(asOrg.filter((r) => r.robot !== null).map((r) => r.robot))];
     const kv = [
       ['Roles', roles || (rel.mode === 'full' ? 'No Deployments record names this company' : 'None in the 10 free preview records')],
-      ['Identity', `${identity}${(c.organization_ids || []).length ? ': ' + c.organization_ids.map(esc).join(', ') : ''}`],
+      ['Identity', identity],
       ['Names as recorded', (c.names || []).map(esc).join('; ') || esc(c.name)],
       ['Countries as recorded', (c.countries || []).map(esc).join('; ') || '<span class="lbl">Not recorded</span>'],
       ['Catalogue robots', (c.robots || []).map((r) => robotLink(r)).join('; ') || '<span class="lbl">None</span>'],
@@ -544,6 +548,8 @@
     if (state.plan) $('price').textContent = state.plan.plan.price;
     if (!parseHash()) history.replaceState(null, '', location.pathname + location.search + '#deployments');
     await refresh();
+    // A robot or company link opened directly lands on its view, below the account panel.
+    if (['robot', 'company'].includes(parseHash()?.view)) $('db-panel').scrollIntoView({ block: 'start' });
     // Entry counts in the category list, from the public previews (cached by the API for 5 minutes).
     state.datasets.filter((d) => d.id !== 'humanoids' && !cache[d.id]).forEach((d) => api(`/v1/datasets/${d.id}/preview`, { auth: false }).then(({ status, data }) => {
       if (status !== 200) return;

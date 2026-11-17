@@ -8,6 +8,7 @@
 //   node tools/build-app.mjs           write app/index.html and app/premium.js
 //   node tools/build-app.mjs --check   fail if app/ differs from what would be written
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 export const APP_URL = 'https://whyhumanoid.com/app/';
 // Until whyhumanoid.com's DNS moves to Cloudflare (DEPLOYMENT.md, section 0.1), the API keeps its workers.dev address.
@@ -39,9 +40,14 @@ export function buildApp() {
     `<link rel="canonical" href="${APP_URL}">`,
     '<!-- Built by tools/build-app.mjs from server/public/index.html. Do not edit here. -->',
   ].join('\n');
+  const js = `// Built by tools/build-app.mjs from server/public/premium.js. Do not edit here.\n${src('premium.js')}`;
+  // The script URL carries a hash of its content, so a new version is never served from a browser's cached copy.
+  const version = createHash('sha256').update(js).digest('hex').slice(0, 12);
+  const tag = '<script src="premium.js"></script>';
+  if (!html.includes(tag)) throw new Error(`server/public/index.html: ${tag} not found`);
   return {
-    'index.html': html.replace(anchor, head),
-    'premium.js': `// Built by tools/build-app.mjs from server/public/premium.js. Do not edit here.\n${src('premium.js')}`,
+    'index.html': html.replace(anchor, head).replace(tag, `<script src="premium.js?v=${version}"></script>`),
+    'premium.js': js,
   };
 }
 
