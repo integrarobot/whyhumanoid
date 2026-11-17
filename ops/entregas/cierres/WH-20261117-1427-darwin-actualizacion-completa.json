@@ -1,0 +1,93 @@
+{
+  "id": "WH-20261117-1427-darwin-actualizacion-completa",
+  "tarea": "Prueba real del proceso completo de actualización con Darwin Robotics (https://darwinrobotics.ai): investigar, actualizar primero el libro maestro, publicar Why Humanoid? con el flujo habitual, verificar producción y documentar el caso como ejemplo reproducible",
+  "origen": "Javier (17/11/2026), transmitido por Codex como actualización real autorizada. La corrección de atribución pedida en el mismo mensaje va en el cierre WH-20261117-1426-correccion-origen-altura.",
+  "fecha": "2026-11-17T14:27:00+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Inventario de la hoja antes y después (filas sin cabecera): Humanoids 135 → 136 (catálogo gratuito 133 → 134), Entidades limpias 24 → 26. Sin cambios: Deployments 119, Software 126, Datasets 28, Hardware 11, Other Robots 488, Stocks 276, Integrators 7, Data Space 30, Producto - Contenedores 22, Relaciones evidencia 15, Evaluacion tarea 4.",
+    "Libro maestro, Humanoids fila 137 (32 celdas): Darwin | Darwin-0 con web, X, LinkedIn, empleo y país; ronda presemilla de 3,6 M USD del 05/11/2026 liderada por Link Ventures, con Y Combinator, Liquid 2, Rebel Fund, Globivest y Script Capital; ángeles descritos como fundadores de OpenAI, xAI e Y Combinator, sin nombre; NVIDIA Inception anotado como programa, no como inversión; primeros despliegues previstos a principios de 2027 como anuncio, sin cliente ni planta; aprendizaje por demostraciones con supervisión en el centro; cautelas para el comprador y fuentes con fecha.",
+    "Sin dato y sin deducir nada de la imagen: altura, peso, velocidades, carga, autonomía energética, grados de libertad, sensores, batería, precio, voz, software comercial y morfología quedan como «Not disclosed» o «Not found». La plataforma dice que la empresa no la declara y que no se suponga forma humanoide ni movilidad.",
+    "Libro maestro, Entidades limpias filas 26 y 27: el fabricante (org_darwin_robotics, identidad de marca resuelta sin validar la razón social, con la nota de Thesis) y el modelo Darwin-0 (identidad de modelo resuelta, morfología no declarada). Es contenido premium: solo en el libro y en el backend.",
+    "Sin filas en Deployments (no hay contraparte, lugar ni acuerdo; el cableado en un rack es una demostración), Relaciones evidencia (esquema propio de la tarea de contenedores), Software (no hay producto comercial), Stocks (empresa privada) ni Other Robots (se mantiene en Humanoids, donde la empresa se presenta, con la morfología marcada). Ninguna celda existente se editó; solo cambiaron por su fórmula las valoraciones de dos empresas cotizadas (filas 88 y 93).",
+    "Duplicados: «Darwin», «Darwin Robotics», «Darwin-0» y «Thesis» en las 13 pestañas, sin coincidencias. La ficha de Y Combinator de Thesis lleva hoy a Darwin Robotics con los mismos fundadores y lote: mismo registro renombrado, no otra empresa. Ninguna fuente actual habla de un robot para el hogar.",
+    "Relaciones: alias de fabricante Darwin → org_darwin_robotics en tools/relations-aliases.json (solo el nombre público), así el robot, la empresa y su ficha de Entities se enlazan con id estable. Ningún registro de Deployments nombra a Darwin: la cobertura no cambia.",
+    "Web (PR #32): catálogo gratuito con Darwin-0 (id público 134, fila 137); vistas previas regeneradas (instantánea 2026-11-17T13:15:00Z, solo cambia el total de Entities); valoraciones en vivo al día. Nuevo tools/workbook-xlsx-to-json.py para sacar la exportación privada de la descarga .xlsx con comparación contra la anterior; la prueba del catálogo sigue a las inserciones verificadas en lugar de un 133 fijo.",
+    "Ejemplo reproducible: ops/weekly-update/ejemplo-darwin.md y registro ops/weekly-update/runs/2026-11-17-darwin.json. El skill semanal y el README explican la escritura en Sheets desde el navegador y la exportación. No se tocó last_processed_edition: no es una ejecución de la newsletter."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Ficha pública de Darwin-0",
+      "url": "https://whyhumanoid.com/#r-darwin-darwin-0-134"
+    },
+    {
+      "etiqueta": "Robot en la base completa",
+      "url": "https://whyhumanoid.com/app/#robot/134"
+    },
+    {
+      "etiqueta": "Empresa en la base completa",
+      "url": "https://whyhumanoid.com/app/#company/org_darwin_robotics"
+    },
+    {
+      "etiqueta": "PR",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/32"
+    },
+    {
+      "etiqueta": "Importación de producción",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/44092011587"
+    },
+    {
+      "etiqueta": "Ejemplo reproducible",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/ejemplo-darwin.md"
+    },
+    {
+      "etiqueta": "Fuente: anuncio de la ronda (05/11/2026)",
+      "url": "https://darwinrobotics.ai/research/darwin-raises-3-6m-pre-seed"
+    },
+    {
+      "etiqueta": "Fuente: ficha de Y Combinator",
+      "url": "https://www.ycombinator.com/companies/darwin"
+    },
+    {
+      "etiqueta": "Fuente: lanzamiento en Y Combinator (02/11/2026)",
+      "url": "https://www.ycombinator.com/launches/WnO-darwin-robotics-robot-technicians-for-ai-infrastructure"
+    },
+    {
+      "etiqueta": "Fuente: equipo",
+      "url": "https://darwinrobotics.ai/team"
+    },
+    {
+      "etiqueta": "Fuente: web de la empresa",
+      "url": "https://darwinrobotics.ai/"
+    },
+    {
+      "etiqueta": "Fuente: empleo",
+      "url": "https://darwinrobotics.ai/careers"
+    },
+    {
+      "etiqueta": "Fuente: organización de GitHub",
+      "url": "https://github.com/Darwin-Robotics-Inc"
+    }
+  ],
+  "despliegue": [
+    "Libro maestro escrito el 17/11/2026 desde Google Sheets en el navegador de Javier (Autosheet pedía volver a iniciar sesión): fila insertada dentro de la tabla de Humanoids, pegado como valores, fechas de Entidades como texto. Lectura posterior desde una exportación nueva: 56 de 56 celdas iguales al plan.",
+    "GitHub Pages desde main con el PR #32 (5f9488a): test, build y deploy en verde.",
+    "Importación de producción 44092011587 desde main: HTTP 200; Humanoids 134 públicas y 2 internas, Entities 26; el resto igual que antes (Deployments 119, Integrators 7, Evidence links 15, Task evaluations 4, Container handling 22, Stocks 276, Software 144, Datasets 28, Hardware 11, Other robots 547, Data space 30); relaciones ok con la configuración 6bbf2dc8095cd81d y la misma cobertura."
+  ],
+  "verificaciones": [
+    "Exportación nueva comparada con la del 16/11: solo Humanoids fila 137 y Entidades 26 y 27 añadidas, y dos valoraciones en vivo. Las columnas en vivo de Stocks no se importan.",
+    "Local: audit-deployments con 0 diferencias (119 filas, 47 columnas), relations --check, check-public, export-database --check, export-humanoids --check, paridad de build-site con 134 registros, 74 pruebas de la API, verify-site y verify-premium-app en verde.",
+    "Producción como visitante: el buscador del catálogo da 1 de 134; la ficha de Darwin-0 muestra fuentes, comprobación del 17/11/2026 y ningún despliegue en la vista previa con el texto de que eso no prueba que no los haya; móvil a 375 px sin desbordamiento; en la aplicación, robot 134 con su fabricante y empresa sin ficha de Entities (es premium); la vista previa de Entities sigue con 10 filas, total 26 y sin Darwin; /data/database/ responde 404.",
+    "Producción como suscriptor, con la sesión existente de Javier y solo lectura (sin cobros ni cambios de cuenta): robot 134 sin registros de Deployments con el texto correcto; empresa con su ficha de Entities; fichas 25 y 26 de Entities completas; «View all data» de Humanoids 134 con 32 de 32 campos, incluido el objetivo de 2027, la cautela de plataforma y las conversaciones con hiperescaladores; volver atrás conserva la vista."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Para Javier, conflictos y datos no encontrados: morfología no declarada (GitHub dice «Humanoid Robots» y la única imagen muestra dos brazos sobre un soporte); forma jurídica ambigua (terceros dicen LLC, GitHub dice Inc.), no registrada; sin canal de YouTube; sin especificaciones, precio, clientes ni software comercial; ángeles sin nombre.",
+    "En la web pública, una celda que empieza por «Not ...» se muestra como etiqueta y su texto completo queda en la ayuda emergente. Por eso el objetivo de 2027, la cautela de plataforma y la nota de hiperescaladores de Darwin-0 no se ven a primera vista (están en las descargas y completas en la aplicación). Es el comportamiento de todo el catálogo y no se cambió. Opciones para Javier: redactar esas celdas empezando por el dato, o que la ficha muestre el texto que sigue a «Not disclosed;».",
+    "Entidades limpias: las filas 26 y 27 quedan fuera del rango del filtro de la hoja (llega a la 25). No afecta a la importación; ampliarlo es decisión de Javier si usa ese filtro.",
+    "Siguen pendientes de Javier: borrar la rama deploy/worker-bundle-f4bd2db, nombre del comercio en Stripe, acceso del libro maestro, visibilidad del repositorio, «Star Era» y el enlace con Stocks."
+  ],
+  "siguiente_accion": "Codex registra el aviso. Claude empieza ya el buscador global y las etiquetas comunes, autorizados para después de Darwin."
+}
