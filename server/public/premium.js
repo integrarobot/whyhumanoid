@@ -8,6 +8,8 @@
 // links to its robot, maker and organisation; each company lists its robots and records by role. The server builds
 // the graph; visitors get the graph of the 10 public Deployments rows only. Stable links: #robot/<catalogue id>,
 // #company/<id>, #<category>/<record id> (any "View all data" card), all surviving reloads and back/forward.
+// Global search (Javier, 17 Nov 2026): #search?q=&tags=&category=&page= across the 13 categories, with common tags.
+// The server picks what may be searched (public rows for visitors, every row for subscribers) before searching.
 (() => {
   // Never inside a frame: the page is static, so this replaces the frame-ancestors header the backend used to send.
   if (window.top !== window.self) { document.documentElement.hidden = true; return; }
@@ -484,10 +486,149 @@
     openRecord({ id: datasetId, title: meta.title, data, list: data.rows }, i, null);
   }
 
+  // Global search. The hash holds the whole state (query, tags, category, page), so links, reloads and Back keep it.
+  const searchMemo = new Map();
+  const scrollMemo = new Map();
+  let searchSeq = 0;
+  let typing = null;
+  const searchParams = (raw) => {
+    const i = raw.indexOf('?');
+    const p = new URLSearchParams(i < 0 ? '' : raw.slice(i + 1));
+    return { q: p.get('q') ?? '', tags: (p.get('tags') ?? '').split(',').filter(Boolean), category: p.get('category') ?? '', page: Math.max(1, Number.parseInt(p.get('page') ?? '1', 10) || 1) };
+  };
+  function searchHash(s) {
+    const p = new URLSearchParams();
+    if (s.q) p.set('q', s.q);
+    if (s.tags.length) p.set('tags', s.tags.join(','));
+    if (s.category) p.set('category', s.category);
+    if (s.page > 1) p.set('page', String(s.page));
+    const qs = p.toString();
+    return `search${qs ? `?${qs}` : ''}`;
+  }
+  const currentSearch = () => (parseHash()?.view === 'search' ? parseHash() : { q: '', tags: [], category: '', page: 1 });
+  function goSearch(s, pushEntry) {
+    setHash(searchHash(s), pushEntry);
+    return renderSearch(s);
+  }
+  const marked = (snip) => {
+    if (!snip) return '';
+    let out = '', at = 0;
+    for (const [a, b] of snip.marks || []) { out += esc(snip.text.slice(at, a)) + `<mark>${esc(snip.text.slice(a, b))}</mark>`; at = b; }
+    return `<p class="gs-snip"><span class="lbl">${esc(snip.label)}</span> ${out + esc(snip.text.slice(at))}</p>`;
+  };
+  const TRY = ['BMW', 'Figure 02', 'logistics Germany', 'almacén', 'machine tending', 'Agility'];
+  async function renderSearch(s) {
+    state.current = 'search';
+    renderIndex();
+    if (dlg && dlg.open) closeDlg();
+    const input = $('gs-q');
+    if (document.activeElement !== input) input.value = s.q;
+    const panel = $('db-panel');
+    const freeNote = 'Free search covers the Humanoids catalogue in full and the first 10 sheet rows of each other category.';
+    if (!s.q.trim() && !s.tags.length && !s.category) {
+      panel.innerHTML = `<div class="db-panel-head"><div><h2>Search the database</h2><p>Robots, companies, deployments, tasks, places and sectors across the 13 categories, with names, aliases and every field. Spanish words such as almacén, logística or EE. UU. work too.</p>` +
+        `<p class="db-hint">${full() ? 'You search every row of the full database.' : `${freeNote} <b>Subscribers search every row.</b>`}</p></div></div>` +
+        `<div class="gs-try"><span class="lbl">Try</span>${TRY.map((t) => `<a class="gs-chip" href="#${esc(searchHash({ q: t, tags: [], category: '', page: 1 }))}">${esc(t)}</a>`).join('')}</div>`;
+      return;
+    }
+    const key = `${full() ? 'full' : 'preview'}|${searchHash(s)}`;
+    let data = searchMemo.get(key);
+    if (!data) {
+      const seq = ++searchSeq;
+      panel.setAttribute('aria-busy', 'true');
+      if (!panel.querySelector('.gs-res, .gs-none')) panel.innerHTML = '<p class="db-empty">Searching…</p>';
+      const qs = new URLSearchParams({ q: s.q, tags: s.tags.join(','), category: s.category, page: String(s.page) });
+      const { status, data: body } = await api(`/v1/search?${qs}`);
+      panel.removeAttribute('aria-busy');
+      if (seq !== searchSeq || parseHash()?.view !== 'search') return;
+      if (status !== 200) { panelError('Search is not available right now. Try again in a moment.'); return; }
+      data = body;
+      searchMemo.set(key, data);
+      if (searchMemo.size > 60) searchMemo.delete(searchMemo.keys().next().value);
+    }
+    const visitor = data.scope !== 'full';
+    const from = (data.page - 1) * data.page_size + 1, to = from + data.results.length - 1;
+    const anyFilter = data.active.length || data.category;
+    const catTitle = (id) => state.datasets.find((d) => d.id === id)?.title || id;
+    const activeChips = anyFilter
+      ? `<div class="gs-active" aria-label="Active filters">${data.category ? `<button type="button" class="gs-chip" data-rm-cat aria-label="Remove filter Category: ${esc(catTitle(data.category))}">Category: ${esc(catTitle(data.category))} <span aria-hidden="true">×</span></button>` : ''}` +
+        data.active.map((t) => `<button type="button" class="gs-chip" data-rm-tag="${esc(t.id)}" aria-label="Remove filter ${esc(t.facet)}: ${esc(t.label)}">${esc(t.facet)}: ${esc(t.label)} <span aria-hidden="true">×</span></button>`).join('') +
+        '<button type="button" class="btn ghost" data-clear>Clear all filters</button></div>'
+      : '';
+    const cats = data.categories.length
+      ? `<div class="gs-group" role="group" aria-label="Category"><span class="lbl">Category</span>${data.categories.map((c) => `<button type="button" class="gs-chip" data-cat="${esc(c.id)}" aria-pressed="${c.active}">${esc(c.title)} <span class="n">${c.count}</span></button>`).join('')}</div>`
+      : '';
+    const facets = data.facets.map((f) => `<div class="gs-group" role="group" aria-label="${esc(f.label)}"><span class="lbl">${esc(f.label)}</span>${f.values.map((v) => `<button type="button" class="gs-chip" data-tag="${esc(v.id)}" aria-pressed="${v.active}">${esc(v.label)} <span class="n">${v.count}</span></button>`).join('')}</div>`).join('');
+    const openFilters = anyFilter || (window.matchMedia?.('(min-width: 701px)').matches ?? true);
+    const filters = cats || facets ? `<details class="gs-filters"${openFilters ? ' open' : ''}><summary>Filters${anyFilter ? ` · ${data.active.length + (data.category ? 1 : 0)} active` : ''}</summary><div class="gs-groups">${cats}${facets}</div></details>` : '';
+    const results = data.results.map((r) => `<li><div class="gs-meta"><span class="lbl">${esc(r.category_title)}</span></div><a class="gs-title" href="#${esc(r.link)}" data-res>${esc(r.title)}</a>${r.subtitle ? `<div class="gs-sub">${esc(r.subtitle)}</div>` : ''}${marked(r.snippet)}</li>`).join('');
+    const none = `<div class="gs-none db-empty"><p>No results${s.q ? ` for “${esc(s.q)}”` : ''}${anyFilter ? ' with these filters' : ''}.</p><p>${anyFilter ? 'Remove a filter or ' : ''}try fewer or other words: a robot, a company, a place, a sector or a task.${visitor ? ` ${freeNote} The full database may hold more.` : ''}</p></div>`;
+    const pager = data.pages > 1
+      ? `<nav class="gs-pager" aria-label="Result pages"><button type="button" class="btn ghost" data-page="${data.page - 1}"${data.page <= 1 ? ' disabled' : ''}>Previous</button><span class="lbl">${from}–${to} of ${data.total} · page ${data.page} of ${data.pages}</span><button type="button" class="btn ghost" data-page="${data.page + 1}"${data.page >= data.pages ? ' disabled' : ''}>Next</button></nav>`
+      : '';
+    panel.innerHTML =
+      `<div class="db-panel-head"><div><span class="lbl">Search · ${visitor ? 'free data' : 'full database'}</span><h2 id="gs-head" tabindex="-1">${data.total} result${data.total === 1 ? '' : 's'}${s.q ? ` for “${esc(s.q)}”` : ''}</h2>` +
+      `<p class="db-hint">${visitor ? `${freeNote} <b>Subscribers search every row of all 13 categories.</b> <button type="button" class="btn ghost" data-access>${state.me ? 'Subscribe' : 'Sign in or subscribe'}</button>` : 'Every row and field of the full database.'}</p></div></div>` +
+      activeChips + filters +
+      (data.total ? `<ol class="gs-res" start="${from}">${results}</ol>${pager}` : none);
+    const memo = scrollMemo.get(key);
+    if (memo !== undefined) { window.scrollTo(0, memo); scrollMemo.delete(key); }
+  }
+  $('db-panel').addEventListener('click', (e) => {
+    if (state.current !== 'search') return;
+    const s = currentSearch();
+    const el = e.target.closest('[data-tag],[data-cat],[data-rm-tag],[data-rm-cat],[data-clear],[data-page],[data-res],[data-access]');
+    if (!el) return;
+    if (el.hasAttribute('data-access')) { $('access').scrollIntoView({ block: 'start' }); ($('email').offsetParent ? $('email') : $('checkout')).focus({ preventScroll: true }); return; }
+    if (el.hasAttribute('data-res')) { scrollMemo.set(`${full() ? 'full' : 'preview'}|${searchHash(s)}`, window.scrollY); return; }
+    e.preventDefault();
+    if (el.dataset.tag) { const t = el.dataset.tag; s.tags = s.tags.includes(t) ? s.tags.filter((x) => x !== t) : [...s.tags, t]; s.page = 1; }
+    else if (el.dataset.cat) { s.category = s.category === el.dataset.cat ? '' : el.dataset.cat; s.page = 1; }
+    else if (el.dataset.rmTag) { s.tags = s.tags.filter((x) => x !== el.dataset.rmTag); s.page = 1; }
+    else if (el.hasAttribute('data-rm-cat')) { s.category = ''; s.page = 1; }
+    else if (el.hasAttribute('data-clear')) { s.tags = []; s.category = ''; s.page = 1; }
+    else if (el.dataset.page) {
+      s.page = Number(el.dataset.page);
+      goSearch(s, true).then(() => { $('db-panel').scrollIntoView({ block: 'start' }); $('gs-head')?.focus({ preventScroll: true }); });
+      return;
+    }
+    const focusKey = el.dataset.tag || el.dataset.cat;
+    goSearch(s, true).then(() => {
+      // Keep the keyboard where it was: on the same chip, or on the search box when the chip went away.
+      const again = focusKey && $('db-panel').querySelector(`[data-tag="${CSS.escape(focusKey)}"],[data-cat="${CSS.escape(focusKey)}"]`);
+      (again || $('gs-q')).focus({ preventScroll: true });
+    });
+  });
+  $('gs-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearTimeout(typing);
+    const s = currentSearch();
+    goSearch({ ...s, q: $('gs-q').value.trim(), page: 1 }, true);
+  });
+  $('gs-q').addEventListener('input', () => {
+    clearTimeout(typing);
+    typing = setTimeout(() => {
+      const onSearch = parseHash()?.view === 'search';
+      const s = currentSearch();
+      const q = $('gs-q').value.trim();
+      if (!onSearch && !q) return;
+      goSearch({ ...s, q, page: 1 }, !onSearch);
+    }, 300);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.target.closest('input, textarea, select, [contenteditable="true"]') || (dlg && dlg.open)) return;
+    e.preventDefault();
+    $('gs-q').focus();
+    $('gs-q').select();
+  });
+
   // Router. Plain links change the hash (one history entry each); cards update it in place.
   let rendered = null;
   function parseHash() {
-    let h = location.hash.slice(1);
+    const raw = location.hash.slice(1);
+    if (/^search(\?|$)/.test(raw)) return { view: 'search', ...searchParams(raw) };
+    let h = raw;
     try { h = decodeURIComponent(h); } catch { /* keep raw */ }
     let m;
     if ((m = /^robot\/(\d+)$/.exec(h))) return { view: 'robot', id: Number(m[1]) };
@@ -508,6 +649,7 @@
     if (r.view === 'robot') await showRobot(r.id);
     else if (r.view === 'company') await showCompany(r.id);
     else if (r.view === 'record') await showRecord(r.dataset, r.id);
+    else if (r.view === 'search') await renderSearch(r);
     else await show(r.id);
   }
 
@@ -540,6 +682,8 @@
       $('confirm-login').hidden = false;
     }
     const params = new URLSearchParams(location.search);
+    // The home page's search form sends /app/?q=...: open the search with it.
+    if (params.has('q') && !location.hash) history.replaceState(null, '', `${location.pathname}#${searchHash({ q: params.get('q').trim(), tags: [], category: '', page: 1 })}`);
     const [list, plan] = await Promise.all([api('/v1/datasets', { auth: false }), api('/v1/billing/plan', { auth: false })]);
     if (list.status !== 200) return notice('The service is not available right now.', true);
     state.datasets = list.data.datasets;
@@ -600,7 +744,7 @@
   $('signout').addEventListener('click', () => signOut());
   $('db-index').addEventListener('click', (e) => { const a = e.target.closest('a[data-id]'); if (!a) return; e.preventDefault(); setHash(a.dataset.id, true); show(a.dataset.id); });
   // Relation links are plain #links: each click is a history entry, so Back returns to the previous view.
-  const go = () => render().then(() => { if (parseHash()?.view !== 'dataset') $('db-panel').scrollIntoView({ block: 'start' }); });
+  const go = () => render().then(() => { if (!['dataset', 'search'].includes(parseHash()?.view)) $('db-panel').scrollIntoView({ block: 'start' }); });
   window.addEventListener('popstate', go);
   window.addEventListener('hashchange', go);
 

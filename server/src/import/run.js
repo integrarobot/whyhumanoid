@@ -1,13 +1,15 @@
 // All-or-nothing import of the thirteen workbook tabs into the private store.
 // If any tab fails validation nothing is replaced and the previous snapshot keeps serving.
 // The relation graphs (Deployments, robots, companies) are rebuilt in the same transaction, from the imported rows and
-// the reviewed relations config sent with the import (or the last one received).
+// the reviewed relations config sent with the import (or the last one received), and so is the search index (public
+// scope from the public rows and values only, full scope from every customer row).
 
 import { DATASETS, publicRowLimit } from '../datasets.js';
 import { newId } from '../crypto.js';
 import { ImportError, normalizeTab } from './normalize.js';
 import { resolveIdentities } from './identity.js';
 import { relationStatements } from '../relations/store.js';
+import { searchStatements } from '../search/index.js';
 
 export async function runImport(db, valuesByTab, now, { relationsConfig = null } = {}) {
   const runId = newId('imp');
@@ -88,11 +90,21 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
   else if (relations.report.config_problems) warnings.push(`relations: ${relations.report.config_problems} config problems (run node tools/relations.mjs --check)`);
   statements.push(...relations.statements);
 
+  const searchRowsOf = (id, scope) => {
+    const { spec, rows } = byId.get(id);
+    const limit = publicRowLimit(spec);
+    return rows
+      .filter((r) => r.visibility === 'customer' && (scope === 'full' || limit === null || r.previewRank <= limit))
+      .map((r) => ({ id: r.id, position: r.position, data: scope === 'full' ? r.data : (r.previewData ?? r.data) }));
+  };
+  const search = searchStatements(db, { rowsOf: searchRowsOf, config: relations.config ?? null });
+  statements.push(...search.statements);
+
   statements.push(
     db
       .prepare('UPDATE import_runs SET finished_at = ?, status = ?, counts = ?, warnings = ? WHERE id = ?')
-      .bind(now, 'succeeded', JSON.stringify({ ...counts, relations: relations.report.coverage ?? null }), JSON.stringify({ warnings, review }), runId),
+      .bind(now, 'succeeded', JSON.stringify({ ...counts, relations: relations.report.coverage ?? null, search: search.report }), JSON.stringify({ warnings, review }), runId),
   );
   await db.batch(statements);
-  return { ok: true, runId, snapshotId, counts, warnings, review, relations: relations.report };
+  return { ok: true, runId, snapshotId, counts, warnings, review, relations: relations.report, search: search.report, searchUnmapped: search.unmapped };
 }

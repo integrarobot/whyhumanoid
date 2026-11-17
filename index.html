@@ -133,6 +133,8 @@ button{cursor:pointer}
 .search svg{flex:none;color:var(--bone-3)}
 .search input{flex:1;min-width:0;height:100%;background:transparent;border:0;outline:none;font-family:var(--f-mono);font-size:19px;font-weight:300;caret-color:var(--amber);letter-spacing:-.01em}
 .search input::placeholder{color:var(--bone-3)}
+.qall{display:inline-block;margin-top:10px;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--amber);text-decoration:none}
+.qall:hover,.qall:focus-visible{text-decoration:underline}
 .kbd{font-family:var(--f-mono);font-size:10px;color:var(--bone-3);border:1px solid var(--line-2);padding:2px 6px;line-height:1.3}
 .search .clear{background:none;border:0;color:var(--bone-3);font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;padding:6px 0}
 .search .clear:hover{color:var(--amber)}
@@ -498,6 +500,7 @@ html.dlg-open{overflow:hidden}
         <div class="cta-row">
           <a class="btn primary" href="#humanoids" id="cta-h">Browse the humanoids</a>
           <a class="btn" href="#database" id="cta-db">Explore all 13 categories</a>
+          <a class="btn" href="/app/#search" id="cta-search">Search the whole database</a>
         </div>
         <div class="search">
           <label class="lbl" for="q">Search humanoids</label>
@@ -507,6 +510,7 @@ html.dlg-open{overflow:hidden}
             <button class="clear" id="q-clear" type="button" hidden>Clear</button>
             <span class="kbd" aria-hidden="true">/</span>
           </div>
+          <a class="qall" id="q-all" href="/app/#search">Search all 13 categories: robots, companies, deployments, sectors and places →</a>
         </div>
         <div class="quick" id="quick">
           <span class="lbl">Or open</span>
@@ -989,6 +993,8 @@ html.dlg-open{overflow:hidden}
   // Eventos
   let qT;
   $('#q').addEventListener('input', e => { clearTimeout(qT); qT = setTimeout(() => { st.q = e.target.value.trim(); renderRows(); }, 90); });
+  // The same words in the global search of the full database app (visitors search the free data there).
+  $('#q').addEventListener('input', e => { const v = e.target.value.trim(); $('#q-all').href = v ? `/app/#search?${new URLSearchParams({ q: v })}` : '/app/#search'; });
   $('#q').addEventListener('keydown', e => {
     if (e.key === 'Enter') { const first = sorted(MODELS.filter(match))[0]; if (first) select(first.id, { scroll: true }); }
     if (e.key === 'Escape') { e.target.value = ''; st.q = ''; renderRows(); }

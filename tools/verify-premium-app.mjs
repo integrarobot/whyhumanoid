@@ -12,6 +12,21 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const FIELDS = ['record_id', 'organization_name', 'manufacturer', 'robot_model', 'operational_status', 'task_description', 'site_name', 'country', 'source_url', 'open_questions_notes'];
 const row = (i) => Object.fromEntries([['id', `fx_row_${i}`], ...FIELDS.map((f) => [f, f === 'source_url' ? `https://example.com/${i}` : f === 'operational_status' ? 'pilot' : `fx_${f}_${i}`])]);
 
+// What the API answers to a search: 25 synthetic results for a subscriber, 3 public ones otherwise; none for "zzz".
+function searchBody(p, isFull) {
+  const total = p.get('q') === 'zzz' ? 0 : isFull ? 25 : 3;
+  const page = Number(p.get('page') || 1);
+  const n = Math.max(0, Math.min(20, total - (page - 1) * 20));
+  const tags = (p.get('tags') || '').split(',').filter(Boolean);
+  return {
+    scope: isFull ? 'full' : 'preview', query: p.get('q'), terms: [], total, page, pages: Math.max(1, Math.ceil(total / 20)), page_size: 20,
+    results: Array.from({ length: n }, (_, i) => ({ category: 'deployments', category_title: 'Deployments', id: `fx_${i}`, title: `Result ${(page - 1) * 20 + i + 1}`, subtitle: 'fx', link: `deployments/fx_${i}`, snippet: { label: 'task description', text: 'Move totes <b>', marks: [[5, 10]] } })),
+    facets: total ? [{ id: 'sector', label: 'Sector', values: [{ id: 'sector:automotive', label: 'Automotive', count: 2, active: tags.includes('sector:automotive') }] }] : [],
+    categories: total ? [{ id: 'deployments', title: 'Deployments', count: total, active: false }] : [],
+    active: tags.map((t) => ({ id: t, label: 'Automotive', facet: 'Sector' })), category: null,
+  };
+}
+
 function app({ url, active, session }) {
   const calls = [];
   const dom = new JSDOM(html, { url, runScripts: 'outside-only' });
@@ -26,6 +41,7 @@ function app({ url, active, session }) {
       : path === '/v1/me' ? { email: 'a@example.com', access: active ? { active: true, status: 'active', current_period_end: 1893456000 } : { active: false, status: 'none' }, checkout_available: true, billing_portal: Boolean(active) }
       : path.startsWith('/v1/datasets/deployments/preview') ? { rows: Array.from({ length: 10 }, (_, i) => row(i + 1)), total_rows: 119, preview_rows: 10, dataset: datasets[0] }
       : path.startsWith('/v1/datasets/deployments?') ? { rows: Array.from({ length: 119 }, (_, i) => row(i + 1)), total: 119, dataset: datasets[0] }
+      : path.startsWith('/v1/search?') ? searchBody(new URLSearchParams(path.split('?')[1]), Boolean(opts.headers?.authorization) && active)
       : { rows: [], total_rows: 0, dataset: datasets[1] };
     return { status: 200, json: async () => body };
   };
@@ -84,9 +100,46 @@ function app({ url, active, session }) {
   dom.window.close();
 }
 
+// 3. Search: visitors ask without a session and see the free-data note; subscribers ask with it. The hash keeps the
+// query, tags and page; chips toggle filters; snippets are escaped; no results says so; Back restores the search.
+{
+  const { w, d, calls, dom } = app({ url: 'https://test.example/app/?q=totes', active: false });
+  await wait(300);
+  const sc = calls.filter((c) => c.path.startsWith('/v1/search?'));
+  if (!w.location.hash.startsWith('#search?q=totes')) failures.push(`search: ?q= did not open the search (${w.location.hash})`);
+  if (!sc.length || sc.some((c) => c.auth)) failures.push('search: visitor search missing or sent with a session');
+  if (d.querySelectorAll('.gs-res li').length !== 3) failures.push('search: visitor results not shown');
+  if (!/Free search covers/.test(d.getElementById('db-panel').textContent)) failures.push('search: free-data note missing for visitors');
+  if (d.querySelector('.gs-snip mark')?.textContent !== 'totes' || d.querySelector('.gs-snip b')) failures.push('search: snippet not highlighted or not escaped');
+  d.querySelector('[data-tag="sector:automotive"]').click();
+  await wait(200);
+  if (!decodeURIComponent(w.location.hash).includes('tags=sector:automotive')) failures.push('search: tag chip did not update the address');
+  if (!d.querySelector('[data-rm-tag="sector:automotive"]')) failures.push('search: active chip missing');
+  d.querySelector('[data-clear]').click();
+  await wait(200);
+  if (w.location.hash.includes('tags=')) failures.push('search: clear all did not remove the filters');
+  d.getElementById('gs-q').value = 'zzz';
+  d.getElementById('gs-form').dispatchEvent(new w.Event('submit', { cancelable: true }));
+  await wait(200);
+  if (!d.querySelector('.gs-none')) failures.push('search: no-results state missing');
+  w.history.back();
+  await wait(300);
+  if (!w.location.hash.startsWith('#search?q=totes') || d.querySelectorAll('.gs-res li').length !== 3) failures.push(`search: Back did not restore the previous search (${w.location.hash})`);
+  dom.window.close();
+}
+{
+  const { d, calls, dom } = app({ url: 'https://test.example/#search?q=totes&page=2', session: 'whs_fake', active: true });
+  await wait(300);
+  const sc = calls.filter((c) => c.path.startsWith('/v1/search?'));
+  if (!sc.length || sc.some((c) => c.auth !== 'Bearer whs_fake') || !sc.at(-1).path.includes('page=2')) failures.push('search: subscriber search not sent with the session and page');
+  if (d.querySelectorAll('.gs-res li').length !== 5 || !d.querySelector('.gs-pager')) failures.push('search: subscriber page 2 not shown with its pager');
+  if (/Free search covers/.test(d.getElementById('db-panel').textContent)) failures.push('search: free-data note shown to a subscriber');
+  dom.window.close();
+}
+
 if (failures.length) {
   console.error(`Premium app check FAILED:\n- ${failures.join('\n- ')}`);
   process.exit(1);
 }
-console.log('Premium app check passed: sign-in links are redeemed only on click; previews for non-subscribers, full rows and complete cards for subscribers.');
+console.log('Premium app check passed: sign-in links are redeemed only on click; previews for non-subscribers, full rows and complete cards for subscribers; search sends the session only when there is one, keeps its state in the address and restores it on Back.');
 process.exit(0);

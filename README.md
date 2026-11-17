@@ -14,8 +14,8 @@ guard (`tools/check-public.mjs`), the export tests and CI fail if one comes back
 | What | Who | Where |
 |---|---|---|
 | Humanoids: every robot row the sheet publishes, 32 fields, public values | Anyone | `index.html`, `data/humanoids-catalogue.*` |
-| The 12 other tabs: first 10 sheet rows of each, every field; counts and field names | Anyone | `data/preview/<tab>.json`, Database section of `index.html` |
-| The 12 other tabs in full (all rows and fields), Humanoids with full values, search, agent API keys | Active subscribers | premium app at `https://whyhumanoid.com/app/` (static, holds no data), API on the Cloudflare Worker, data in D1 |
+| The 12 other tabs: first 10 sheet rows of each, every field; counts and field names; global search over these public rows and the Humanoids catalogue | Anyone | `data/preview/<tab>.json`, Database section of `index.html` |
+| The 12 other tabs in full (all rows and fields), Humanoids with full values, global search over every row, agent API keys | Active subscribers | premium app at `https://whyhumanoid.com/app/` (static, holds no data), API on the Cloudflare Worker, data in D1 |
 | Left out everywhere | Nobody | rows the sheet marks as duplicates or not for publication; private links (workbook, Drive, mailto:, local addresses), personal contacts and internal editor notes; the backend row key, raw sheet-row pointers (`source_rows`) and importer bookkeeping; third-party GOOGLEFINANCE quote columns of Stocks |
 
 Refresh: the site preview with `node --no-warnings tools/export-database.mjs --from <private export>`, then
@@ -33,6 +33,7 @@ data/                      humanoids-catalogue.json, humanoids-catalogue.csv, ma
 tools/                     export-humanoids.mjs, build-site.mjs, verify-site.mjs, check-public.mjs
 app/                       premium app served at whyhumanoid.com/app/, built from server/public by tools/build-app.mjs
 server/src/relations/      Deployments-robot-company relations, rebuilt by every import (graph.js)
+server/src/search/         global search and common tags, rebuilt by every import (index.js, vocabulary.js)
 tools/relations-aliases.json  reviewed aliases: public maker and robot model names only
 server/public/             full-database app source (holds no data; calls the API on the Worker over CORS)
 server/src/                API: sign-in, sessions, API keys, entitlements, Stripe, previews, full data
@@ -55,6 +56,7 @@ node tools/build-site.mjs --check           # index.html is the build of data/, 
 node tools/build-app.mjs --check            # app/ is the build of server/public (premium app at whyhumanoid.com/app/)
 node tools/relations.mjs --check            # aliases match the catalogue; robot pages link only public preview rows
 node tools/relations.mjs --from <export>    # private review report of the relations (stdout only)
+node --no-warnings tools/search-tags.mjs --from <export>   # private review of search tags (stdout only)
 python3 -I tools/workbook-xlsx-to-json.py <book.xlsx> <export.json> [--compare <old export>]
                                             # private export from the workbook's .xlsx download (needs openpyxl)
 (cd tools && npm ci && node verify-site.mjs) # headless render: the whole free catalogue, search and filters work
