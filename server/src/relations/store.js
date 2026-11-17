@@ -40,16 +40,18 @@ export async function relationStatements(db, { config, rowsOf, snapshotId, now }
   if (!stored) return { statements, report: { ok: false, error: 'relations_not_configured' }, config: null };
   const compiled = compileConfig(stored.config);
   const coverage = {};
+  const graphs = {};
   for (const scope of ['full', 'preview']) {
     const { graph } = buildGraph(compiled, { rows: rowsOf('deployments', scope), entities: rowsOf('entities', scope), scope, snapshot: snapshotId });
     coverage[scope] = graph.coverage;
+    graphs[scope] = graph;
     statements.push(
       db
         .prepare('INSERT INTO relation_graphs (scope, snapshot_id, data, coverage, config_version, created_at) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (scope) DO UPDATE SET snapshot_id = excluded.snapshot_id, data = excluded.data, coverage = excluded.coverage, config_version = excluded.config_version, created_at = excluded.created_at')
         .bind(scope, snapshotId, JSON.stringify(graph), JSON.stringify(graph.coverage), stored.version, now),
     );
   }
-  return { statements, report: { ok: true, config_version: stored.version, config_problems: compiled.problems.length, coverage: coverage.full }, config: stored.config };
+  return { statements, report: { ok: true, config_version: stored.version, config_problems: compiled.problems.length, coverage: coverage.full }, config: stored.config, graphs };
 }
 
 export async function readGraph(db, scope) {

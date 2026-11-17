@@ -11,6 +11,7 @@
 import { JSDOM } from 'jsdom';
 import { existsSync, readFileSync } from 'node:fs';
 import { SITE, buildPages } from './build-pages.mjs';
+import { projectionProblems } from './export-public.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
@@ -59,7 +60,8 @@ for (const [kind, x] of pages) {
       if (!d.querySelector(`a[href="${rb.path}"]`)) fail(`${x.path}: no link to its robot ${rb.path}`);
       if (!doc(rb.path).querySelector(`a[href="${x.path}"]`)) fail(`${rb.path}: no link back to ${x.path}`);
     }
-    if (!x.robotList.length && !previewOrgs.has(x.name) && !(x.names || []).some((n) => previewOrgs.has(n))) fail(`${x.path}: company is neither a catalogue maker nor in the free preview`);
+    if ((x.as_organisation || x.as_maker) && !/Counting records is not independent verification/.test(main)) fail(`${x.path}: records counted without saying they are claims as recorded`);
+    for (const reserved of ['site_name', 'task_description', 'claim_text', 'source_url', 'open_questions_notes']) if (d.querySelector('main').outerHTML.includes(reserved)) fail(`${x.path}: names the reserved field ${reserved}`);
   }
 }
 for (const idx of ['/robots/', '/companies/']) {
@@ -71,6 +73,9 @@ for (const idx of ['/robots/', '/companies/']) {
 }
 const home = read('index.html');
 if (!/href="\/robots\/"/.test(home) || !/href="\/companies\/"/.test(home)) fail('index.html: no static links to the robot and company pages');
+
+for (const problem of projectionProblems(JSON.parse(read('data/public/projection.json')))) fail(`data/public/projection.json: ${problem}`);
+if (model.companies.length !== JSON.parse(read('data/public/projection.json')).companies.length) fail('not every company of the projection has a page');
 
 // 4. Sitemap, redirects, 404.
 const locs = new Set([...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]));

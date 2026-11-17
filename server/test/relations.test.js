@@ -2,6 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildGraph, compileConfig, robotSlug } from '../src/relations/graph.js';
+import { ALLOWED_KEYS, publicProjection } from '../src/public/projection.js';
 import { DATASETS_BY_ID } from '../src/datasets.js';
 import { runImport } from '../src/import/run.js';
 import { upsertStripeEntitlement } from '../src/entitlements.js';
@@ -180,4 +181,54 @@ test('import builds both graphs; the preview graph holds only the 10 public rows
   const bad = await runImport(ctx.db, workbookWithDeployments(14), T0 + 120, { relationsConfig: { aliases: {}, catalogue: [] } });
   assert.deepEqual([bad.ok, bad.error], [false, 'invalid_relations_config']);
   assert.equal((await (await ctx.call('GET', '/v1/relations/preview')).json()).records.length, 10);
+});
+
+// Approved split, phase 1 (17 Nov 2026): the public projection holds every company, with allowlisted values only, and
+// the visitor search finds company dossiers through it, never a reserved value.
+const RESERVED = ['site_name', 'city', 'region', 'environment', 'relationship_type', 'commercial_status', 'observed_end', 'task_id', 'task_description',
+  'workflow_from', 'workflow_to', 'integration_dependencies', 'metric_name', 'metric_value', 'metric_unit', 'metric_period', 'claim_id', 'claim_text',
+  'claim_type', 'evidence_level', 'confidence', 'verification_status', 'source_id', 'source_title', 'source_url', 'source_publisher', 'source_role',
+  'source_type', 'publication_date', 'accessed_at', 'language', 'open_questions_notes'];
+test('public projection: every company, allowlisted values only; visitor search finds dossiers, never reserved values', async () => {
+  const spec = DATASETS_BY_ID.get('deployments');
+  const rows = Array.from({ length: 14 }, (_, k) => {
+    const r = row(k + 1, { robot_model: (k + 1) % 2 ? 'Strider 5' : 'Strider 4X', operational_status: k === 11 ? 'planned' : 'pilot' });
+    return Object.fromEntries(spec.headers.map((h) => [h, r[h] ?? `fx_${h}_${k + 1}`]));
+  });
+  const { graph } = buildGraph(compileConfig(config), { rows, entities: [], scope: 'full' });
+  const p = publicProjection({ graph, rows });
+  const text = JSON.stringify(p);
+  for (const f of RESERVED) assert.ok(!text.includes(`fx_${f}_`), `projection holds ${f}`);
+  assert.ok(!/fx_rec_|fx_dep_/.test(text), 'projection holds record or deployment ids');
+  const walk = (v, parent) => {
+    if (Array.isArray(v)) return v.forEach((x) => walk(x, parent));
+    if (!v || typeof v !== 'object') return;
+    for (const [k, x] of Object.entries(v)) {
+      if (parent !== 'roles' && parent !== 'robots') assert.ok(ALLOWED_KEYS.has(k), `key ${k} not allowlisted`);
+      walk(x, k);
+    }
+  };
+  walk(p, null);
+  assert.equal(p.totals.records, 14);
+  assert.equal(p.companies.filter((c) => c.as_organisation).length, 14);
+  const op12 = p.companies.find((c) => c.id === 'org_fx_op_12');
+  assert.deepEqual([op12.slug, op12.as_organisation.records, op12.as_organisation.status.ann], ['fx-op-12', 1, 1]);
+  assert.equal(op12.as_organisation.counterparts[0].name, 'Example One Robotics');
+
+  const ctx = await setup({ workbook: workbookWithDeployments(14) });
+  const res = await runImport(ctx.db, workbookWithDeployments(14), T0 + 60, { relationsConfig: config });
+  assert.equal(res.ok, true);
+  const vis = await (await ctx.call('GET', '/v1/search?q=Operator%2012')).json();
+  assert.equal(vis.scope, 'preview');
+  const hit = vis.results.find((r) => r.category === 'companies');
+  assert.equal(hit?.link, '/companies/fx-op-12/');
+  assert.equal(hit.category_title, 'Companies');
+  for (const q of ['fx_site_name_12', 'fx_task_description_12', 'fx_claim_text_12', 'fx_open_questions_notes_12']) {
+    assert.equal((await (await ctx.call('GET', `/v1/search?q=${q}`)).json()).total, 0, `visitor finds ${q}`);
+  }
+  const { session, accountId } = await signIn(ctx);
+  await upsertStripeEntitlement(ctx.db, { accountId, subscriptionId: 'sub_fx', status: 'active', currentPeriodEnd: T0 + 365 * 86400, cancelAtPeriodEnd: false, eventCreated: T0, now: T0 });
+  const full = await (await ctx.call('GET', '/v1/search?q=Operator%2012', { token: session })).json();
+  assert.equal(full.scope, 'full');
+  assert.equal(full.results.find((r) => r.category === 'companies')?.link, 'company/org_fx_op_12');
 });
