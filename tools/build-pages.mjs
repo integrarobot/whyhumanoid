@@ -30,6 +30,8 @@ const APP = `${SITE}/app/`;
 const root = new URL('../', import.meta.url);
 const read = (p) => JSON.parse(readFileSync(new URL(p, root), 'utf8'));
 const REGISTRY = 'tools/permalinks.json';
+// Visit counts without cookies (approved split, phase 3): Cloudflare Web Analytics, free; the token is a public site id.
+const ANALYTICS = `<!-- Cloudflare Web Analytics: visit counts without cookies (approved split, phase 3) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76de8d3b4a534b91bd808e724f9c1594"}'></script><!-- End Cloudflare Web Analytics -->`;
 // The stylesheet URL carries a hash of its content, so a changed stylesheet is never served from a browser's cache.
 const CSS_VERSION = createHash('sha256').update(readFileSync(new URL('assets/pages.css', root))).digest('hex').slice(0, 10);
 const GENERATED_DIRS = ['robots', 'companies', 'reports', 'method'];
@@ -148,6 +150,7 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta h
 ${body}
 </main>
 <footer class="foot"><p>Why Humanoid? by Integrarobot. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
+${ANALYTICS}
 </body>
 </html>
 `;
@@ -381,7 +384,7 @@ function notFound() {
 const SECTOR = (k) => (k === 'other' ? 'Other (sectors with fewer than 3 records)' : human(k).replace(/^./, (c) => c.toUpperCase()));
 function bars(rows, label) {
   const max = Math.max(1, ...rows.map((r) => r.records));
-  return `<div class="scroll"><table class="bars"><thead><tr><th scope="col">${esc(label)}</th><th scope="col">Records</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc(r.label)}</td><td><span class="bar" style="width:${Math.round((r.records / max) * 100)}%"></span> ${r.records}</td></tr>`).join('')}</tbody></table></div>`;
+  return `<div class="scroll"><table class="bars"><thead><tr><th scope="col">${esc(label)}</th><th scope="col">Records</th></tr></thead><tbody>${rows.map((r) => `<tr><td>${esc(r.label)}</td><td><span class="bar" style="width:${Math.round((r.records / max) * 75)}%"></span> ${r.records}</td></tr>`).join('')}</tbody></table></div>`;
 }
 function reportPage(model) {
   const a = model.aggregates;
@@ -412,6 +415,7 @@ ${kv([['In operation', 'The source says the robot is working in operation.'], ['
 <section><h2>Selected evidence</h2><p>Each robot and company page shows one of its records with its site, task, status, metric, evidence level, verification label and source. The record is chosen by a fixed rule among those with a source link and a verification other than unresolved: the most advanced status as recorded (in operation, then pilot or trial, then a vendor's claim of operation, then announced), then a primary source (customer, maker or partner) before the press, then customer confirmation, then the latest publication, then a record with a metric. The claim text, notes and the other records stay in the full database.</p></section>
 <section><h2>Robots, companies and records</h2><p>A record is linked to a catalogue robot only when it names that model or its model line, never because it names the maker alone. When it names the model line, the page says the record may concern another version. Companies are identified by the organisation id of the sheet or by the maker's name; no corporate data is added.</p></section>
 <section><h2>Updates</h2><p>The database is updated every week from the Integrarobot newsletter, checked against primary sources. Each page shows the snapshot date of its data.</p></section>
+<section><h2>Visits</h2><p>The public pages count visits with Cloudflare Web Analytics, which sets no cookies and does not track individual visitors.</p></section>
 <section><h2>What is public and what is for subscribers</h2>${kv([
     ['Public', 'The robot catalogue in full; a page for every robot and company; counts and summaries of deployment records (organisation, robot as recorded, country, sector, status and year); one selected record per robot and company; the first 10 rows of each other category; this report and method.'],
     ['Full database', `Every record in full: site, task, metrics, claim text, verification, evidence level, sources and notes; search with tags over every category; relations between robots, companies and records (${esc(price())}).`],
