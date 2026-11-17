@@ -1,0 +1,80 @@
+{
+  "id": "WH-20261117-1456-buscador-global-etiquetas",
+  "tarea": "Buscador global y etiquetas comunes en las 13 categorías de Why Humanoid?, respetando el muro de pago",
+  "origen": "Javier (17/11/2026), transmitido por Codex: «Añadir buscador global y etiquetas comunes. Es lo que más facilitaría encontrar información comercial». Autorizado para empezar en cuanto terminara Darwin, sin otro permiso.",
+  "fecha": "2026-11-17T14:56:07+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Seguridad: GET /v1/search decide el alcance en el servidor antes de buscar, filtrar, contar o generar fragmentos. Solo una suscripción activa (sesión o clave de API) busca en todas las filas; visitantes, cuentas sin suscripción y tokens no válidos buscan solo en Humanoids y en las 10 filas de vista previa de cada pestaña, con sus valores públicos. Resultados, fragmentos, etiquetas, sugerencias de filtro y recuentos salen de ese conjunto. Respuestas públicas en caché 60 s; las completas, privadas y sin caché.",
+    "Índice: tabla search_docs en D1 (migración 0003) con dos alcances, regenerada en cada importación en la misma transacción que las filas. No hay índice en la web ni en Git.",
+    "Búsqueda: nombres, alias públicos revisados (fabricantes y modelos) y todos los campos servidos, sin distinguir mayúsculas, acentos ni signos. Palabras que se buscan desde el inicio (las de 3 letras o menos, enteras). Términos comerciales habituales en español llevan al vocabulario (almacén, logística, automoción, fábrica, piloto, EE. UU., Alemania…). Orden: nombre exacto, luego nombres que empiezan o contienen la búsqueda, luego cualquier campo; sin duplicados; 20 por página.",
+    "Etiquetas comunes, solo desde campos reales de la hoja y un vocabulario controlado: sector, tarea, país del despliegue, país de la empresa (separados), tipo o rol, estado del despliegue y nivel de evidencia (solo en Deployments y Relaciones evidencia) y plataforma del robot. Sinónimos normalizados (por ejemplo, USA, EE. UU. y United States). Lo desconocido no se etiqueta; un país marcado como no confirmado o como país socio no se etiqueta. No hay etiqueta de madurez de producto porque la hoja no tiene ese campo.",
+    "Aplicación (/app/): barra «Search all 13 categories», vista #search?q=&tags=&category=&page= con categorías y etiquetas combinables con recuentos, filtros activos que se quitan uno a uno o todos, resultados con categoría, nombre, contexto y fragmento resaltado, enlace estable a la ficha (robot, registro o «View all data»), paginación, estado sin resultados, atajo «/», y consulta, filtros y página conservados al recargar, volver y avanzar. En móvil, filtros plegados, recuento con salto a los resultados y llegada directa a ellos.",
+    "Portada: botón «Search the whole database» y enlace bajo el buscador de humanoides que lleva la misma búsqueda a la base completa.",
+    "Mantenimiento: el workflow de importación muestra search (documentos por alcance y valores desconocidos, solo recuentos); tools/search-tags.mjs --from <export> revisa en privado la cobertura y lo desconocido; el skill semanal, AGENTS, README y DEPLOYMENT lo recogen."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Buscador (portada de la búsqueda)",
+      "url": "https://whyhumanoid.com/app/#search"
+    },
+    {
+      "etiqueta": "Ejemplo empresa: BMW",
+      "url": "https://whyhumanoid.com/app/#search?q=BMW"
+    },
+    {
+      "etiqueta": "Ejemplo robot: Figure 02",
+      "url": "https://whyhumanoid.com/app/#search?q=Figure+02"
+    },
+    {
+      "etiqueta": "Ejemplo sector y tarea: logística y manipulación de materiales",
+      "url": "https://whyhumanoid.com/app/#search?tags=sector:logistics,task:material_handling"
+    },
+    {
+      "etiqueta": "Ejemplo país y estado: despliegues en Alemania en piloto",
+      "url": "https://whyhumanoid.com/app/#search?tags=site:germany,status:pilot"
+    },
+    {
+      "etiqueta": "Ejemplo en español: almacén",
+      "url": "https://whyhumanoid.com/app/#search?q=almac%C3%A9n"
+    },
+    {
+      "etiqueta": "PR principal",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/34"
+    },
+    {
+      "etiqueta": "PR de seguimiento (móvil)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/35"
+    },
+    {
+      "etiqueta": "PR de seguimiento (cabecera)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/36"
+    },
+    {
+      "etiqueta": "Importación de producción",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/44096182826"
+    }
+  ],
+  "despliegue": [
+    "D1 de producción: tabla search_docs creada en la consola desde migrations/0003_search.sql (solo se añade una tabla).",
+    "Worker whyhumanoid-premium versión 26cc1be4 desde el editor del panel (paquete sha256 59436492…d882, commit temporal 8a4f190 en deploy/worker-bundle-f4bd2db). Webhook de Stripe intacto: POST sin firma, 400 missing_signature.",
+    "GitHub Pages desde main con los PR #34 (d86f432), #35 (a074b24) y #36 (bbc35c7): test, build y deploy en verde; aplicación con premium.js?v=63700e3b19e1.",
+    "Importación de producción 44096182826 desde main: HTTP 200, las 13 pestañas iguales, relaciones ok, búsqueda con 1.363 documentos (completo) y 264 (vista previa), 0 valores desconocidos."
+  ],
+  "verificaciones": [
+    "Pruebas: 79 de la API (5 nuevas: aislamiento del alcance, sin resultados, fragmentos, etiquetas ni recuentos premium para visitantes; vocabulario; orden; filtros; páginas; comodines de LIKE), comprobación de la aplicación con el flujo de búsqueda, comprobaciones de la web y guardia de datos públicos en verde.",
+    "Producción, visitante frente a suscriptor: BMW 5 frente a 19; Figure 02 7 frente a 18; logística con manipulación de materiales 5 frente a 16; almacén 14 frente a 50; EE. UU. 51 frente a 146. Nombres que solo están en filas premium (Martur, Ford, Hall 52): 0 para el visitante; Martur 9 para el suscriptor. Despliegues en Alemania en piloto: 16 para el suscriptor; alimentación de máquinas (machine tending) con despliegue en Estados Unidos: 8.",
+    "Producción en la interfaz: portada con su enlace; /app/?q= abre la búsqueda; chips, quitar uno, limpiar todo, sin resultados, recarga, volver y avanzar; resultado de BMW abre su ficha y volver recupera la búsqueda con el filtro; móvil a 375 px sin desbordamiento, con filtros plegados y salto a los resultados; teclado: «/» enfoca el buscador y el foco vuelve al chip tras filtrar.",
+    "Rendimiento medido desde el navegador de Javier: visitante 90 a 510 ms por búsqueda; suscriptor 300 a 770 ms (red hasta Cloudflare y D1). En local, mediana de 3 ms por consulta.",
+    "Cobertura de etiquetas en el alcance completo (recuentos): sector en 114 registros de Deployments y 31 empresas cotizadas; tarea en 83 de Deployments y en las pestañas de manipulación de contenedores; país del despliegue en 95 de 119 registros; país de la empresa en 106 humanoides, 118 registros y 187 cotizadas; plataforma en 35 de 134 humanoides; tipo o rol en 9 categorías; Data Space sin etiquetas."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Límites: sin tolerancia a erratas ni coincidencias aproximadas; los sinónimos en español son una lista revisada, no una traducción completa; la interfaz y las etiquetas están en inglés; sin etiqueta de madurez de producto (la hoja no la recoge); 24 registros de Deployments sin país de despliegue etiquetable (no declarado, varios o no confirmado) y 99 humanoides sin plataforma declarada; las categorías de los fondos cotizados (RBOT, BOTZ, ROBO, KOID) no se tratan como sectores.",
+    "Mejoras posibles si Javier las prioriza: etiquetas en español en la interfaz, sugerencias mientras se escribe, guardar búsquedas y la búsqueda desde la API de agentes documentada.",
+    "Siguen pendientes de Javier: borrar la rama deploy/worker-bundle-f4bd2db (lleva ahora también el paquete de este despliegue), nombre del comercio en Stripe, acceso del libro maestro, visibilidad del repositorio, «Star Era» y el enlace con Stocks."
+  ],
+  "siguiente_accion": "Codex registra el aviso. La secuencia autorizada queda terminada; lo siguiente lo decide Javier."
+}
