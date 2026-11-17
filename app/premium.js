@@ -87,7 +87,7 @@
     $('acc-title').textContent = title;
     $('acc-text').textContent = text;
     $('acc-state').textContent = st;
-    $('acc-state').className = 'state ' + cls;
+    $('acc-state').className = 'state acc-state ' + cls;
     // A failed renewal is fixed in the portal (update the card), not with a second subscription.
     const canBuy = !a.active && !['past_due', 'unpaid', 'incomplete'].includes(a.status);
     $('checkout').hidden = !canBuy;
