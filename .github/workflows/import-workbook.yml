@@ -30,6 +30,16 @@ jobs:
     environment: ${{ inputs.target || (github.event_name == 'push' && 'test') || 'production' }}
     concurrency: workbook-import-${{ inputs.target || (github.event_name == 'push' && 'test') || 'production' }}
     steps:
+      # The reviewed relations config (aliases and the public robot index) comes from this commit and travels with the
+      # import, so relations are rebuilt from the same rows every time. It holds public names only.
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Relations config from this commit
+        run: |
+          node tools/relations.mjs --config | jq -c '{relations_config: .}' > relations-body.json
+          jq -r '"aliases: \(.relations_config.aliases.makers | length) makers, \(.relations_config.aliases.robots | length) robots; catalogue: \(.relations_config.catalogue | length) robots"' relations-body.json
       - name: Show the identity claims presented to Google (no token)
         run: |
           token=$(curl --fail --silent --show-error --header "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
@@ -50,7 +60,7 @@ jobs:
       - name: Import into Cloudflare D1
         # The Worker accepts this job's own GitHub OIDC token (audience whyhumanoid-premium-import) only for this
         # repository, this workflow, the Worker's GitHub environment and an allowed branch. No shared secret.
-        # Only the import outcome and row counts are printed; workbook data never reaches the log.
+        # Only the import outcome, row counts and relation counts are printed; workbook data never reaches the log.
         env:
           TARGET: ${{ inputs.target || (github.event_name == 'push' && 'test') || 'production' }}
           GOOGLE_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
@@ -69,8 +79,9 @@ jobs:
           status=$(curl --silent --show-error --max-time 180 --output result.json --write-out '%{http_code}' \
             --header "Authorization: Bearer $id_token" \
             --header "X-Google-Access-Token: $GOOGLE_ACCESS_TOKEN" \
+            --header "Content-Type: application/json" --data @relations-body.json \
             --request POST "https://${worker}.javier-198.workers.dev/v1/admin/import")
           echo "HTTP $status"
-          jq '{ok, error, warnings, counts}' result.json || true
+          jq '{ok, error, warnings, counts, relations}' result.json || true
           rm -f result.json
           test "$status" = 200

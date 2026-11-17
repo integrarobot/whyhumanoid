@@ -16,6 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { isDeepStrictEqual } from 'node:util';
 import { readLegacySnapshot } from './export-humanoids.mjs';
 import { PLAN } from '../server/src/pricing.js';
+import { pageRelations } from './relations.mjs';
 
 // Where the catalogue sends buyers: the premium app on the production backend. Change it here when
 // premium.whyhumanoid.com is set up as a custom domain.
@@ -229,6 +230,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   // Paywall (16 Nov 2026): the page embeds the index of the 12 other tabs (counts and field names) and loads each tab's
   // free preview, its first 10 sheet rows, from data/preview/<tab>.json. Full rows never reach the site or Git.
   data.database = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8'));
+  // Relations for the free robot pages: only the public preview rows of Deployments (tools/relations.mjs).
+  data.relations = pageRelations();
   data.access.open = OPEN_DATABASE;
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {

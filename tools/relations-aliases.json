@@ -1,0 +1,261 @@
+{
+  "note": "Reviewed aliases for linking Deployments records to the free Humanoids catalogue (server/src/relations/graph.js). Only public names: catalogue labs, makers' other names and robot model names. No organisation, site, task, source or record of the premium tabs belongs here. Matching is exact after normalisation (case, accents, spacing, parenthetical notes); a name not listed never links. A record that names only the maker, or a model that is not the catalogue record's, stays at the maker and never links a robot.",
+  "reviewed_at": "2026-11-17",
+  "reviewed_by": "claude/opus-5.5",
+  "makers": {
+    "Agility": {
+      "id": "org_agility_robotics",
+      "entity_id": "org_agility_robotics",
+      "name": "Agility Robotics",
+      "names": [
+        "Agility Robotics"
+      ]
+    },
+    "Apptronik": {
+      "id": "org_apptronik",
+      "entity_id": "org_apptronik",
+      "name": "Apptronik"
+    },
+    "Figure": {
+      "id": "org_figure_ai",
+      "entity_id": "org_figure_ai",
+      "name": "Figure AI",
+      "names": [
+        "Figure AI"
+      ]
+    },
+    "The Humanoid": {
+      "id": "org_humanoid",
+      "entity_id": "org_humanoid",
+      "name": "Humanoid (The Humanoid)",
+      "names": [
+        "Humanoid"
+      ]
+    },
+    "Agibot": {
+      "name": "AgiBot",
+      "names": [
+        "AgiBot",
+        "AGIBOT"
+      ]
+    },
+    "Agile": {
+      "name": "Agile Robots",
+      "names": [
+        "Agile Robots"
+      ]
+    },
+    "Diligent": {
+      "name": "Diligent Robotics",
+      "names": [
+        "Diligent Robotics"
+      ]
+    },
+    "Engineai": {
+      "name": "EngineAI",
+      "names": [
+        "EngineAI"
+      ]
+    },
+    "Hexagon": {
+      "name": "Hexagon Robotics",
+      "names": [
+        "Hexagon Robotics"
+      ]
+    },
+    "Neura": {
+      "name": "NEURA Robotics",
+      "names": [
+        "NEURA Robotics"
+      ]
+    },
+    "Persona Inc": {
+      "name": "Persona AI",
+      "names": [
+        "Persona AI"
+      ]
+    },
+    "Robotera": {
+      "name": "Robotera (Robot Era)",
+      "names": [
+        "Robot Era",
+        "RobotEra"
+      ]
+    },
+    "Spirit": {
+      "name": "Spirit AI",
+      "names": [
+        "Spirit AI"
+      ]
+    },
+    "Ubtech": {
+      "name": "UBTech",
+      "names": [
+        "UBTech",
+        "UBTECH Robotics"
+      ]
+    },
+    "Unitree": {
+      "name": "Unitree Robotics",
+      "names": [
+        "Unitree Robotics"
+      ]
+    },
+    "Walden": {
+      "name": "Walden Robotics",
+      "names": [
+        "Walden Robotics"
+      ]
+    },
+    "Xpeng": {
+      "name": "XPeng",
+      "names": [
+        "XPeng"
+      ]
+    }
+  },
+  "robots": {
+    "1": {
+      "lab": "1X",
+      "robot": "NEO (Home Robot)",
+      "model": [
+        "NEO",
+        "NEO Home Robot"
+      ]
+    },
+    "4": {
+      "lab": "Agibot",
+      "robot": "X1",
+      "model": [
+        "X1",
+        "AgiBot X1",
+        "Lingxi X1"
+      ],
+      "note": "The record is X1 only (catalogue: \"not X2 / A2 / G2\")."
+    },
+    "6": {
+      "lab": "Agility",
+      "robot": "Digit 5 (in development)",
+      "model": [
+        "Digit 5"
+      ],
+      "family": [
+        "Digit"
+      ],
+      "note": "The record describes Digit 5. Digit 4 or an unstated Digit version is the same model line, not this record's version."
+    },
+    "7": {
+      "lab": "Apptronik",
+      "robot": "Apollo 2",
+      "model": [
+        "Apollo 2"
+      ],
+      "family": [
+        "Apollo"
+      ],
+      "note": "The record describes Apollo 2; the original or an unstated Apollo is the same model line."
+    },
+    "16": {
+      "lab": "Boston Dynamics",
+      "robot": "Atlas (industrial electric)",
+      "model": [
+        "Atlas (industrial electric)",
+        "Electric Atlas"
+      ],
+      "family": [
+        "Atlas"
+      ],
+      "model_versions": [
+        "Production version (CES 2026)"
+      ],
+      "note": "Atlas with the CES 2026 production version is the industrial electric Atlas of the record; Atlas without a version is the model line."
+    },
+    "30": {
+      "lab": "Figure",
+      "robot": "Figure 03",
+      "model": [
+        "Figure 03"
+      ],
+      "note": "The record is Figure 03 only (catalogue: \"not Figure 02\")."
+    },
+    "35": {
+      "lab": "Galbot",
+      "robot": "G1",
+      "model": [
+        "G1",
+        "Galbot G1"
+      ]
+    },
+    "40": {
+      "lab": "Hexagon",
+      "robot": "AEON",
+      "model": [
+        "AEON"
+      ]
+    },
+    "49": {
+      "lab": "Leju",
+      "robot": "Kuavo",
+      "model": [
+        "Kuavo"
+      ],
+      "family": [
+        "Kuavo 5-W",
+        "Kuavo 5W"
+      ],
+      "note": "Kuavo variants such as 5-W are the same model line."
+    },
+    "58": {
+      "lab": "Neura",
+      "robot": "4NE1 (Gen 4 announced)",
+      "model": [
+        "4NE1"
+      ],
+      "family": [
+        "Humanoid (4NE1 programme)"
+      ],
+      "note": "The record covers 4NE1 (Gen 4 announced and the unversioned table); a 4NE1 programme without a named robot is the model line."
+    },
+    "76": {
+      "lab": "Robotera",
+      "robot": "Star 1",
+      "model": [
+        "Star 1",
+        "STAR1"
+      ]
+    },
+    "88": {
+      "lab": "The Humanoid",
+      "robot": "HMND 01 (Alpha Wheeled / Bipedal)",
+      "model": [
+        "HMND 01",
+        "HMND 01 Alpha Wheeled",
+        "HMND 01 Alpha Bipedal"
+      ],
+      "note": "The record names both Alpha variants of HMND 01."
+    },
+    "91": {
+      "lab": "Ubtech",
+      "robot": "Walker S1",
+      "model": [
+        "Walker S1"
+      ]
+    },
+    "93": {
+      "lab": "Unitree",
+      "robot": "H1",
+      "model": [
+        "H1"
+      ],
+      "note": "The record is the original H1; any other Unitree model stays at the maker."
+    },
+    "102": {
+      "lab": "Xiaomi",
+      "robot": "Cyber One",
+      "model": [
+        "Cyber One",
+        "CyberOne"
+      ]
+    }
+  }
+}

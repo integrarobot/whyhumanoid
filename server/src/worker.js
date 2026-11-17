@@ -30,7 +30,7 @@ export function configFromEnv(env) {
   };
 }
 
-export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000), accessToken) {
+export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000), accessToken, relationsConfig = null) {
   if (!env.WORKBOOK_ID || (!accessToken && (!env.GOOGLE_SA_EMAIL || !env.GOOGLE_SA_PRIVATE_KEY))) {
     return { ok: false, error: 'import_not_configured' };
   }
@@ -42,7 +42,7 @@ export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000
     now,
     accessToken,
   });
-  return runImport(env.DB, values, now);
+  return runImport(env.DB, values, now, { relationsConfig });
 }
 
 export default {
@@ -57,7 +57,7 @@ export default {
       mailer: env.RESEND_API_KEY
         ? createResendMailer({ apiKey: env.RESEND_API_KEY, from: env.EMAIL_FROM ?? 'Why Humanoid? <premium@whyhumanoid.com>' })
         : disabledMailer,
-      importNow: (accessToken) => importFromWorkbook(env, undefined, accessToken),
+      importNow: (accessToken, relationsConfig) => importFromWorkbook(env, undefined, accessToken, relationsConfig),
     });
     return app(request);
   },
