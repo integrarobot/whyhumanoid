@@ -16,6 +16,13 @@ Orden de Javier transmitido por Codex. Se ejecuta en este orden, sin esperar otr
    - Verificación con datos reales (empresa, robot, sector con tarea, país con estado), como visitante y como suscriptor, en móvil y con teclado, con enlaces, recarga y vuelta atrás, sin resultados y con medida de rendimiento. Publicar con CI en verde, comprobar producción y entregar URL, ejemplos, cobertura y límites.
    - Fuera de alcance: mapa del ecosistema, DNS y cambios en Stripe.
 
+## Cola autorizada (17/11/2026, por la tarde)
+
+Javier, a través de Codex, añade dos tareas al final de la cola, en este orden y sin esperar otro permiso entre ellas. No autoriza comprar créditos adicionales (Autosheet incluido). Para las dos: libro maestro primero, fuentes y fechas por afirmación, sin duplicados, publicación por el flujo habitual cuando proceda, verificación de fichas, buscador, relaciones y permisos premium, y cierre con registros cambiados, URLs, evidencias y pendientes. Producto y datos en inglés; coordinación en español.
+
+3. **Pendiente: Boston Dynamics y GlobalFoundries.** Investigar e incorporar la ampliación de su colaboración (https://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/). Leer la fuente primaria y separar por robot (Atlas, Spot u otros si aparecen), tarea, planta, fechas y estado. No atribuir a Atlas operaciones de Spot ni convertir acuerdos o planes en operación verificada. Buscar registros existentes antes de añadir y actualizar las categorías y relaciones que correspondan.
+4. **Pendiente: Howl de NC State (Unitree G1 según la noticia).** Proyecto de recogida de huevos del suelo en avicultura sin jaulas. Fuente aportada: https://x.com/CyberRobooo/status/2122713920851128802; localizar la fuente primaria de NC State / CALS Magazine, «From Code to Coop», de Olivia Rogers. Teleoperación con realidad virtual, aprendizaje por imitación y por refuerzo, y objetivo actual de validar detección y recogida en simulación: es investigación y desarrollo, no un despliegue comercial operativo. Confirmar modelo y versión del robot. El 2-15 % de huevos en el suelo es contexto, no rendimiento del robot. Comprobar por separado el 47,7 % de gallinas sin jaulas en abril de 2026 frente al 9,6 % de 2012, y omitirlo si no hay fuente. Poultry Talk (RAG) y la monitorización 2D/3D son proyectos aparte: no afirmar que ya están integrados.
+
 ## Ideas inspiradas en RoboticsMap (Javier, 17/11/2026)
 
 Guardadas para después; NO implementar mientras el lanzamiento del muro de pago siga abierto.
