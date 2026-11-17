@@ -16,6 +16,7 @@ import { PLAN } from './pricing.js';
 import { buildTaskPlan, validateInputs } from './agent/task-plan.js';
 import { sha256Hex } from './crypto.js';
 import { verifyImportToken } from './import/github-oidc.js';
+import { readGraph } from './relations/store.js';
 
 const MAX_API_KEYS = 5;
 
@@ -60,6 +61,28 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
           { dataset: { id: spec.id, title: spec.title, description: spec.description }, preview_rows: publicRowLimit(spec) ?? 'all', ...preview },
           { 'cache-control': 'public, max-age=300' },
         );
+      },
+    ],
+
+    // Relations between Deployments records, catalogue robots and companies. The preview graph is built only from
+    // the public preview rows (first 10 sheet rows of Deployments and Entities) and the free catalogue.
+    [
+      'GET',
+      /^\/v1\/relations\/preview$/,
+      async () => {
+        const data = await readGraph(db, 'preview');
+        if (!data) throw new HttpError(503, 'relations_not_ready');
+        return new Response(data, { status: 200, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'public, max-age=300', 'x-content-type-options': 'nosniff' } });
+      },
+    ],
+    [
+      'GET',
+      /^\/v1\/relations$/,
+      async (request, now) => {
+        await requireAccess(request, now);
+        const data = await readGraph(db, 'full');
+        if (!data) throw new HttpError(503, 'relations_not_ready');
+        return new Response(data, { status: 200, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'private, no-store', vary: 'Authorization', 'x-content-type-options': 'nosniff' } });
       },
     ],
 
@@ -242,8 +265,16 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
         }
         if (!importNow) throw new HttpError(503, 'import_not_configured');
         const accessToken = request.headers.get('x-google-access-token') || undefined;
-        const result = await importNow(accessToken);
-        return json(result.ok ? 200 : 422, { ok: result.ok, counts: result.counts, error: result.error, warnings: result.warnings?.length ?? 0 });
+        // Optional body: the reviewed relations config (node tools/relations.mjs --config). Counts only come back.
+        const body = await readJson(request, 512_000);
+        const result = await importNow(accessToken, body.relations_config ?? null);
+        return json(result.ok ? 200 : 422, {
+          ok: result.ok,
+          counts: result.counts,
+          error: result.error,
+          warnings: result.warnings?.length ?? 0,
+          relations: result.relations ? { ok: result.relations.ok, error: result.relations.error, config_version: result.relations.config_version, coverage: result.relations.coverage } : undefined,
+        });
       },
     ],
 

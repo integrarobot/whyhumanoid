@@ -32,6 +32,8 @@ index.html, CNAME          public catalogue page, built from data/ (complete fre
 data/                      humanoids-catalogue.json, humanoids-catalogue.csv, manifest.json, preview/ (10-row previews)
 tools/                     export-humanoids.mjs, build-site.mjs, verify-site.mjs, check-public.mjs
 app/                       premium app served at whyhumanoid.com/app/, built from server/public by tools/build-app.mjs
+server/src/relations/      Deployments-robot-company relations, rebuilt by every import (graph.js)
+tools/relations-aliases.json  reviewed aliases: public maker and robot model names only
 server/public/             full-database app source (holds no data; calls the API on the Worker over CORS)
 server/src/                API: sign-in, sessions, API keys, entitlements, Stripe, previews, full data
 server/src/import/         13-tab import (service account, read-only), cleaning, persistent ids
@@ -50,6 +52,8 @@ node tools/audit-deployments.mjs --from <export.json>   # Deployments sheet vs p
 node tools/export-humanoids.mjs --check     # free catalogue export is current
 node tools/build-site.mjs --check           # index.html is the build of data/, parity with the legacy page
 node tools/build-app.mjs --check            # app/ is the build of server/public (premium app at whyhumanoid.com/app/)
+node tools/relations.mjs --check            # aliases match the catalogue; robot pages link only public preview rows
+node tools/relations.mjs --from <export>    # private review report of the relations (stdout only)
 (cd tools && npm ci && node verify-site.mjs) # headless render: the whole free catalogue, search and filters work
 node tools/check-public.mjs                 # public data guard
 (cd server && npm ci && npm test)           # API tests

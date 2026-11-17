@@ -1,12 +1,15 @@
 // All-or-nothing import of the thirteen workbook tabs into the private store.
 // If any tab fails validation nothing is replaced and the previous snapshot keeps serving.
+// The relation graphs (Deployments, robots, companies) are rebuilt in the same transaction, from the imported rows and
+// the reviewed relations config sent with the import (or the last one received).
 
-import { DATASETS } from '../datasets.js';
+import { DATASETS, publicRowLimit } from '../datasets.js';
 import { newId } from '../crypto.js';
 import { ImportError, normalizeTab } from './normalize.js';
 import { resolveIdentities } from './identity.js';
+import { relationStatements } from '../relations/store.js';
 
-export async function runImport(db, valuesByTab, now) {
+export async function runImport(db, valuesByTab, now, { relationsConfig = null } = {}) {
   const runId = newId('imp');
   const snapshotId = new Date(now * 1000).toISOString();
   await db.prepare('INSERT INTO import_runs (id, started_at, status) VALUES (?, ?, ?)').bind(runId, now, 'running').run();
@@ -64,11 +67,32 @@ export async function runImport(db, valuesByTab, now) {
       );
     }
   }
+  // Relations: full scope from every customer row; preview scope from the public rows and values only.
+  const byId = new Map(normalised.map(({ spec, rows }) => [spec.id, { spec, rows }]));
+  const rowsOf = (id, scope) => {
+    const { spec, rows } = byId.get(id);
+    const limit = publicRowLimit(spec);
+    return rows
+      .filter((r) => r.visibility === 'customer' && (scope === 'full' || limit === null || r.previewRank <= limit))
+      .map((r) => (scope === 'full' ? r.data : (r.previewData ?? r.data)));
+  };
+  const relations = await relationStatements(db, { config: relationsConfig, rowsOf, snapshotId, now });
+  if (!relations.report.ok && relations.report.error === 'invalid_relations_config') {
+    await db
+      .prepare('UPDATE import_runs SET finished_at = ?, status = ?, error = ? WHERE id = ?')
+      .bind(now, 'failed', 'invalid_relations_config', runId)
+      .run();
+    return { ok: false, runId, error: 'invalid_relations_config' };
+  }
+  if (!relations.report.ok) warnings.push(`relations: ${relations.report.error}`);
+  else if (relations.report.config_problems) warnings.push(`relations: ${relations.report.config_problems} config problems (run node tools/relations.mjs --check)`);
+  statements.push(...relations.statements);
+
   statements.push(
     db
       .prepare('UPDATE import_runs SET finished_at = ?, status = ?, counts = ?, warnings = ? WHERE id = ?')
-      .bind(now, 'succeeded', JSON.stringify(counts), JSON.stringify({ warnings, review }), runId),
+      .bind(now, 'succeeded', JSON.stringify({ ...counts, relations: relations.report.coverage ?? null }), JSON.stringify({ warnings, review }), runId),
   );
   await db.batch(statements);
-  return { ok: true, runId, snapshotId, counts, warnings, review };
+  return { ok: true, runId, snapshotId, counts, warnings, review, relations: relations.report };
 }

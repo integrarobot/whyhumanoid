@@ -65,6 +65,22 @@ Prioridad máxima de Javier (16/11/2026). Se aplica a cualquier trabajo que toqu
   3. Tras la importación a producción: el recuento de Deployments del backend coincide con la hoja, y en la aplicación de suscriptores las fichas de la primera y la última fila y de las de textos más largos están completas a 390, 768 y 1440 px (con una sesión de suscriptor existente, nunca con un pago nuevo).
 - El cierre lleva filas, columnas, valores no vacíos y diferencias (0 o la lista exacta justificada).
 
+## Relaciones de Deployments con robots y empresas
+
+Orden de Javier (17/11/2026): desde cada robot se ve dónde trabaja, haciendo qué y con qué evidencia; cada registro enlaza a su robot, fabricante y organización; cada empresa lista sus robots y registros por rol. Las relaciones no se editan a mano:
+
+- Las genera el servidor en cada importación (`server/src/relations/graph.js`), a partir de las filas importadas y de la configuración revisada que el workflow «Import private workbook» envía desde `main` (`node tools/relations.mjs --config`): alias de `tools/relations-aliases.json` y el índice público del catálogo. Así nunca quedan desfasadas respecto a los datos.
+- Identidad: `organization_id` de la hoja para organizaciones; número del catálogo público para robots; id de Entities o id fijo del alias para fabricantes. Nombres solo por igualdad exacta normalizada con el catálogo o con un alias revisado; nunca por subcadenas. Un registro que solo da el fabricante, o un modelo distinto del de la ficha, se queda en el fabricante (`model_not_disclosed`, `model_not_in_catalogue`): jamás se atribuye a un robot. Nivel `model` (nombra el modelo de la ficha) o `family` (misma línea, otra versión o sin versión). Fabricante, operador o cliente, cliente e inversor, y socio tecnológico o integrador son roles distintos.
+- `tools/relations-aliases.json` es público: solo nombres de fabricantes y de modelos del catálogo y sus variantes de producto. Nunca organizaciones, lugares, tareas, fuentes ni registros premium.
+- Los visitantes solo ven relaciones de las 10 filas de vista previa (`/v1/relations/preview` y la sección «Deployments» de cada robot en la web); las completas, con suscripción comprobada en el servidor (`/v1/relations`).
+
+En cada actualización, antes de publicar:
+
+1. `node tools/relations.mjs --from <export>` (solo en pantalla, nunca en Git): cobertura y combinaciones fabricante | modelo | versión con su resultado. Revisa las nuevas en «Makers outside the catalogue» y en `model_not_in_catalogue`: si un nombre es una variante real de un fabricante o modelo del catálogo, añade el alias (solo nombres públicos) y razónalo en el PR; si es ambiguo (como «Star Era»), no lo enlaces y anótalo en el cierre como pendiente.
+2. `node tools/relations.mjs --check` (también en CI): los alias coinciden con el catálogo y la página solo enlaza filas de la vista previa. Si cambian la vista previa o el catálogo, `node tools/build-site.mjs`.
+3. Tras importar a producción, el registro del job muestra `relations.ok: true` y la cobertura (solo recuentos). Comprueba en la aplicación un robot con registros, uno sin ellos y una empresa, como visitante y con una sesión de suscriptor existente.
+4. El cierre lleva la cobertura exacta (registros enlazados a robot por nivel, solo fabricante, sin fabricante, organizaciones enlazadas) y los nombres ambiguos o no enlazados.
+
 ## Estado
 
 `ops/weekly-update/state.json` en el repositorio `integrarobot/whyhumanoid`:
@@ -100,9 +116,9 @@ Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json`.
    1. Exporta el libro actualizado a un fichero privado fuera de Git (pestaña → filas, cabecera primero).
    2. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <fecha ISO>` (escribe solo las vistas previas en `data/preview/`).
    3. Humanoids: genera la vista con el código de importación (ver cabecera de `tools/sync-humanoids.mjs`) y ejecuta `tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs` y `tools/build-site.mjs`.
-   4. Comprueba: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/check-public.mjs`, `node tools/export-database.mjs --check`, `cd server && npm test`, `cd tools && node verify-site.mjs`.
+   4. Comprueba: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/relations.mjs --from <export>` y `--check` (sección «Relaciones de Deployments»), `node tools/check-public.mjs`, `node tools/export-database.mjs --check`, `cd server && npm test`, `cd tools && node verify-site.mjs`.
    5. Rama `weekly-update/<fecha>`, PR contra `main`, CI en verde, fusión, espera al despliegue de Pages.
-   6. Datos completos a producción: Actions, «Import private workbook», Run workflow en `main`, target `production`. Comprueba en el registro del job HTTP 200 y los recuentos de las 13 pestañas. Si falla (por ejemplo, identidad de Google), el cierre es `bloqueado` con el error exacto.
+   6. Datos completos a producción: Actions, «Import private workbook», Run workflow en `main`, target `production`. Comprueba en el registro del job HTTP 200, los recuentos de las 13 pestañas y `relations.ok: true` con su cobertura. Si falla (por ejemplo, identidad de Google), el cierre es `bloqueado` con el error exacto.
 
 10. **Verifica producción** en https://whyhumanoid.com/: recuentos por categoría iguales a la exportación, los registros nuevos o cambiados visibles con su fuente y fecha, la vista previa de 10 filas por pestaña premium con su enlace a la base completa, ningún JSON con filas completas accesible en la web, la ficha «View all data» completa, y en la aplicación de suscriptores los recuentos del backend iguales a la exportación.
 

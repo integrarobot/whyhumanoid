@@ -4,6 +4,10 @@
 // users without a subscription get the free Humanoids catalogue and each other category's first 10 sheet rows;
 // subscribers get every row and field, after a server-side entitlement check on every request (Javier, 16 Nov 2026:
 // paywall, EUR 100 per year, no free trial). Same table and "View all data" card as whyhumanoid.com.
+// Relations (Javier, 17 Nov 2026): each robot shows where it works, doing what and with which evidence; each record
+// links to its robot, maker and organisation; each company lists its robots and records by role. The server builds
+// the graph; visitors get the graph of the 10 public Deployments rows only. Stable links: #robot/<catalogue id>,
+// #company/<id>, #<category>/<record id> (any "View all data" card), all surviving reloads and back/forward.
 (() => {
   // Never inside a frame: the page is static, so this replaces the frame-ancestors header the backend used to send.
   if (window.top !== window.self) { document.documentElement.hidden = true; return; }
@@ -136,6 +140,102 @@
     return cache[id];
   }
 
+  // Relations graph from the server: full for subscribers, the 10 public Deployments rows for everyone else.
+  const rel = { mode: null, g: null, error: null, rec: new Map(), co: new Map(), robots: new Map(), byRobot: new Map(), byCompany: new Map() };
+  const push = (m, k, v) => { if (!m.has(k)) m.set(k, []); m.get(k).push(v); };
+  async function relations(retry = true) {
+    const mode = full() ? 'full' : 'preview';
+    if (rel.mode === mode && rel.g) return rel;
+    const res = await api(mode === 'full' ? '/v1/relations' : '/v1/relations/preview', { auth: mode === 'full' });
+    if (mode === 'full' && (res.status === 401 || res.status === 403) && retry) { await refreshMe(); return relations(false); }
+    if (res.status !== 200 || !res.data?.records) { Object.assign(rel, { mode: null, g: null, error: res.status }); return rel; }
+    const g = res.data;
+    Object.assign(rel, { mode: g.scope === 'full' ? 'full' : 'preview', g, error: null, rec: new Map(), co: new Map(), robots: new Map(), byRobot: new Map(), byCompany: new Map() });
+    g.robots.forEach((r) => rel.robots.set(r.id, r));
+    g.companies.forEach((c) => { rel.co.set(c.id, c); (c.organization_ids || []).forEach((o) => { if (!rel.co.has(o)) rel.co.set(o, c); }); });
+    g.records.forEach((r) => {
+      rel.rec.set(r.record_id, r);
+      if (r.robot !== null) push(rel.byRobot, r.robot, r);
+      if (r.maker) push(rel.byCompany, r.maker, r);
+      if (r.operator && r.operator !== r.maker) push(rel.byCompany, r.operator, r);
+    });
+    return rel;
+  }
+  const ROLE = { maker: 'Maker', customer_operator: 'Operator or customer', customer_investor: 'Customer and investor', technology_partner: 'Technology partner or integrator' };
+  const REASON = {
+    model_not_disclosed: 'the record does not name the model',
+    model_not_in_catalogue: 'the record names a model that has no record of its own in the Humanoids catalogue',
+    maker_not_in_catalogue: 'the maker has no robot in the Humanoids catalogue',
+    maker_not_disclosed: 'the record does not name the maker',
+    maker_missing: 'the record does not name the maker',
+    several_makers: 'the record names several makers',
+    several_catalogue_robots: 'several catalogue robots match the name, so none is linked',
+    no_organization_id: 'the sheet gives no organisation id for it',
+  };
+  const robotLabel = (rb) => rb ? `${rb.robot} by ${rb.lab}` : '';
+  const companyLink = (id, text) => { const c = id && rel.co.get(id); return c ? `<a href="#company/${encodeURIComponent(c.id)}">${esc(text || c.name)}</a>` : esc(text || ''); };
+  const robotLink = (id) => { const rb = rel.robots.get(id); return rb ? `<a href="#robot/${rb.id}">${esc(robotLabel(rb))}</a>` : ''; };
+  const levelNote = (rr) => (rr.level === 'model' ? 'names this model' : rr.level === 'family' ? 'names the same model line with another or an unstated version' : '');
+  const recordedRobot = (r) => [r.manufacturer, r.robot_model].filter(nz).join(' · ') + (nz(r.robot_version) && !/^not disclosed$/i.test(r.robot_version) ? ` (version: ${r.robot_version})` : '');
+  function relLock() {
+    if (rel.mode === 'full') return '';
+    const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'Subscriptions open soon';
+    const n = totals.deployments;
+    return `<p class="rel-lock"><b>Free preview.</b> Only the first 10${n ? ` of ${n}` : ''} Deployments records are linked here. The full database links every record to its robot, maker and organisation, with its sources (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</p>`;
+  }
+  // One deployment: its records (claims) in date order, each with status, task, evidence, source and its own card.
+  function depGroups(list, rows, { robot = true, org = true, maker = false } = {}) {
+    const groups = new Map();
+    list.forEach((rr) => { const r = rows.get(rr.record_id); if (r) push(groups, rr.deployment_id || rr.record_id, [rr, r]); });
+    return [...groups.values()].map((items) => {
+      items.sort((a, b) => String(a[1].publication_date || a[1].observed_start || '').localeCompare(String(b[1].publication_date || b[1].observed_start || '')));
+      const [rr, r] = items[0];
+      const where = [r.site_name, [r.city, r.region, r.country].filter(nz).join(', ')].filter(nz).join(' · ');
+      const head = [];
+      if (org) head.push(rr.operator ? `${companyLink(rr.operator, r.organization_name)} <span class="lbl">${esc(ROLE[rr.role] || human(rr.role || 'organisation'))}</span>` : `${esc(r.organization_name || 'Organisation not recorded')} <span class="lbl">not linked: ${esc(REASON[rr.operator_reason] || 'no organisation id')}</span>`);
+      if (maker) head.push(rr.maker ? `<span class="lbl">Maker</span> ${companyLink(rr.maker, r.manufacturer)}` : `<span class="lbl">Maker not linked: ${esc(REASON[rr.maker_reason] || 'not recorded')}</span>`);
+      if (robot) head.push(rr.robot !== null ? `<span class="lbl">Robot</span> ${robotLink(rr.robot)}` : `<span class="lbl">Robot as recorded</span> ${esc(recordedRobot(r) || 'not recorded')}`);
+      const claims = items.map(([x, y]) => {
+        const s = status(y);
+        const u = String(y.source_url || '').match(/https?:\/\/[^\s|,;]+/);
+        const src = u ? link(u[0], (y.source_publisher || y.source_title || 'Source') + ' ↗') : `${esc(y.source_publisher || y.source_title || 'Source')} (no URL in the sheet)`;
+        const facts = [
+          `Robot as recorded: ${esc(recordedRobot(y) || 'not recorded')}`,
+          nz(y.evidence_level) ? `Evidence level ${esc(y.evidence_level)}` : 'Evidence level not recorded',
+          nz(y.verification_status) ? esc(human(y.verification_status)) : '',
+          nz(y.observed_start) ? `Observed ${esc(y.observed_start)}${nz(y.observed_end) ? ' to ' + esc(y.observed_end) : ''}` : '',
+          `Source: ${src}, ${nz(y.publication_date) ? 'published ' + esc(y.publication_date) : 'publication date not recorded'}`,
+        ].filter(Boolean);
+        const m = metric(y);
+        return `<li class="claim"><div class="claim-h"><span class="dst ${s}">${stLabel(s)}</span><span class="task">${nz(y.task_description) ? esc(y.task_description) : esc(human(y.task_category || 'Task not described'))}</span></div>` +
+          (m ? `<p class="metric">${m}</p>` : '') + `<p class="facts">${facts.join(' · ')}</p>` +
+          `<a class="db-open" href="#deployments/${encodeURIComponent(x.record_id)}">View all data</a></li>`;
+      }).join('');
+      return `<article class="dep"><header>${head.map((h) => `<div>${h}</div>`).join('')}${where ? `<p class="where">${esc(where)}</p>` : ''}</header><ul>${claims}</ul></article>`;
+    }).join('');
+  }
+  const STATUS_KEY = '<p class="rel-key lbl">Status as recorded: In operation · Pilot or trial · Announced (planned or agreed, not evidence of work) · Unconfirmed (claimed by a vendor or unresolved)</p>';
+  function robotDeployments(id, rows) {
+    const rb = rel.robots.get(id);
+    const recs = rel.byRobot.get(id) || [];
+    const model = recs.filter((r) => r.level === 'model'), line = recs.filter((r) => r.level === 'family');
+    const others = rb ? (rel.byCompany.get(rb.maker) || []).filter((r) => r.maker === rb.maker && r.robot === null) : [];
+    const n = totals.deployments;
+    let html = '';
+    if (model.length) html += `<h4 class="lbl">Records that name this model (${model.length})</h4>${depGroups(model, rows, { robot: false })}`;
+    if (line.length) html += `<h4 class="lbl">Same model line, another or unstated version (${line.length})</h4><p class="rel-note">These records name the model line, not the version this catalogue record describes (${esc(rb?.robot || '')}). Specifications and results are not interchangeable between versions.</p>${depGroups(line, rows, { robot: false })}`;
+    if (!recs.length) {
+      html += rel.mode === 'full'
+        ? `<p class="rel-empty">No Deployments record names this robot or its model line. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that the robot has no deployments.</p>`
+        : `<p class="rel-empty">None of the 10 free preview records names this robot or its model line. That is not evidence that it has no deployments${n ? `: ${n - 10} more records are in the full database` : ''}.</p>`;
+    }
+    if (others.length && rb) html += `<p class="rel-note">${others.length} ${others.length === 1 ? 'record' : 'records'} from ${companyLink(rb.maker)} ${others.length === 1 ? 'names' : 'name'} another model or none, so ${others.length === 1 ? 'it is' : 'they are'} not attributed to this robot. <a href="#company/${encodeURIComponent(rb.maker)}">See the maker</a>.</p>`;
+    return html + (recs.length ? STATUS_KEY : '') + relLock();
+  }
+  // The Humanoids row for a catalogue robot (same Lab and Robot as the public catalogue record).
+  const sameRobot = (row, rb) => rb && String(row.Lab ?? '').trim() === String(rb.Lab ?? '').trim() && String(row.Robot ?? '').trim() === String(rb.Robot ?? '').trim();
+  const robotOfRow = (row) => [...rel.robots.values()].find((rb) => sameRobot(row, rb)) || null;
+
   // Deployments: business columns and grouped card, as on whyhumanoid.com.
   const STATUS = [['op', 'In operation'], ['pilot', 'Pilot or trial'], ['ann', 'Announced'], ['unc', 'Unconfirmed']];
   const status = (r) => { const v = String(r.operational_status || '').toLowerCase(); return v === 'operational' ? 'op' : v === 'pilot' || v === 'testing' ? 'pilot' : v === 'planned' ? 'ann' : 'unc'; };
@@ -169,7 +269,12 @@
     return esc(human(r.metric_name)) + ': ' + esc(op + (r.metric_value ?? '') + (nz(r.metric_unit) ? ' ' + human(r.metric_unit) : '')) + sub(nz(r.metric_period) ? esc(human(r.metric_period)) : '');
   };
   const DEP_COLS = [
-    ['Organization and robot', (r) => esc(r.organization_name || '') + sub(esc([r.manufacturer, r.robot_model].filter(nz).join(' · '))), 'cw-m'],
+    ['Organization and robot', (r) => {
+      const rr = rel.rec.get(r.record_id);
+      const org = rr?.operator ? companyLink(rr.operator, r.organization_name) : esc(r.organization_name || '');
+      const rob = rr && rr.robot !== null ? `${esc([r.manufacturer, r.robot_model].filter(nz).join(' · '))} → ${robotLink(rr.robot)}` : esc([r.manufacturer, r.robot_model].filter(nz).join(' · '));
+      return org + sub(rob);
+    }, 'cw-m'],
     ['Task', (r) => (nz(r.task_description) ? esc(r.task_description) : esc(human(r.task_category || '')) + sub('No task description in the sheet')), 'cw-l'],
     ['Site', (r) => esc(r.site_name || '') + sub(esc([r.city, r.region, r.country].filter(nz).join(', '))), 'cw-m'],
     ['Result or metric', (r) => metric(r) || '<span class="lbl">No metric in the sheet</span>', 'cw-m'],
@@ -201,6 +306,8 @@
     dlg.addEventListener('close', () => {
       if (dlg.open) return;
       document.documentElement.classList.remove('dlg-open');
+      const r = parseHash();
+      if (r && r.view === 'record' && dlgCtx && r.dataset === dlgCtx.id) setHash(dlgCtx.id, false);
       if (opener && document.body.contains(opener)) opener.focus();
     });
     return dlg;
@@ -217,11 +324,25 @@
     dlg.querySelector('#db-dlg-title').textContent = name;
     dlg.querySelector('#db-dlg-count').textContent = `${fields.length} fields · ${withData} with data · ${fields.length - withData} empty in the sheet`;
     const body = dlg.querySelector('#db-dlg-body');
-    body.innerHTML = (isDep ? `<p class="db-dlg-st"><span class="dst ${status(r)}">${stLabel(status(r))}</span><span class="lbl">operational status in the sheet: ${esc(r.operational_status || 'empty')}</span></p>` : '') +
+    let links = '';
+    if (isDep && rel.g) {
+      const rr = rel.rec.get(r.record_id);
+      links = rr ? `<section class="db-sec rel-links"><h4 class="lbl">Links</h4><dl class="db-kv">` +
+        `<dt>Robot</dt><dd>${rr.robot !== null ? `${robotLink(rr.robot)} <span class="lbl">the record ${levelNote(rr)}</span>` : `Not linked to a catalogue robot: ${esc(REASON[rr.robot_reason] || 'not resolved')}. As recorded: ${esc(recordedRobot(r) || 'nothing')}`}</dd>` +
+        `<dt>Maker</dt><dd>${rr.maker ? companyLink(rr.maker, r.manufacturer) : `Not linked: ${esc(REASON[rr.maker_reason] || 'not resolved')}`}</dd>` +
+        `<dt>${esc(ROLE[rr.role] || 'Organisation')}</dt><dd>${rr.operator ? companyLink(rr.operator, r.organization_name) : `${esc(r.organization_name || '')} (not linked: ${esc(REASON[rr.operator_reason] || 'not resolved')})`}</dd>` +
+        (rr.deployment_id ? `<dt>Deployment</dt><dd>${esc(rr.deployment_id)}</dd>` : '') + '</dl></section>' : '';
+    }
+    if (id === 'humanoids' && rel.g) {
+      const rb = robotOfRow(r);
+      links = rb ? `<section class="db-sec rel-links"><h4 class="lbl">Deployments</h4>${dlgDeployments(rb)}<p><a href="#robot/${rb.id}">Open this robot's deployments page</a> · <a href="https://whyhumanoid.com/#${esc(rb.slug)}">Public robot page ↗</a></p></section>` : '';
+    }
+    body.innerHTML = (isDep ? `<p class="db-dlg-st"><span class="dst ${status(r)}">${stLabel(status(r))}</span><span class="lbl">operational status in the sheet: ${esc(r.operational_status || 'empty')}</span></p>` : '') + links +
       groupsOf(id, fields).map(([g, fs]) => `<section class="db-sec"><h4 class="lbl">${esc(g)}</h4><dl class="db-kv">` +
         fs.map((k) => `<dt>${esc(label(k))}</dt>` + (nz(r[k]) ? `<dd data-f="${esc(k)}">${fmt(r[k])}</dd>` : `<dd data-f="${esc(k)}" class="nil">Empty in the sheet</dd>`)).join('') + '</dl></section>').join('');
     body.scrollTop = 0;
     dlg.querySelector('#db-dlg-pos').textContent = `Record ${pos + 1} of ${list.length}`;
+    if (r.id) setHash(`${id}/${encodeURIComponent(r.id)}`, false);
     dlg.querySelector('#db-dlg-prev').disabled = pos === 0;
     dlg.querySelector('#db-dlg-next').disabled = pos === list.length - 1;
   }
@@ -241,7 +362,7 @@
     const panel = $('db-panel');
     panel.innerHTML = '<p class="db-empty">Loading…</p>';
     let data;
-    try { data = await load(meta.id); } catch { panel.innerHTML = '<p class="db-empty">This category could not be loaded. Reload the page to try again.</p>'; return; }
+    try { [data] = await Promise.all([load(meta.id), ['deployments', 'humanoids'].includes(meta.id) ? relations() : null, meta.id === 'humanoids' ? load('deployments').catch(() => null) : null]); } catch { panel.innerHTML = '<p class="db-empty">This category could not be loaded. Reload the page to try again.</p>'; return; }
     if (state.current !== meta.id) return;
     const isDep = meta.id === 'deployments';
     const cols = isDep ? DEP_COLS : data.fields.filter((f) => f !== 'list').slice(0, 4).map((f) => [label(f), (r) => fmt(r[f])]);
@@ -287,6 +408,105 @@
     render();
   }
 
+  function dlgDeployments(rb) {
+    const dep = cache.deployments;
+    if (!dep) return '<p class="rel-note">Open the robot\'s deployments page to see them.</p>';
+    return robotDeployments(rb.id, new Map(dep.rows.map((r) => [r.record_id, r])));
+  }
+  const panelError = (text) => { $('db-panel').innerHTML = `<p class="db-empty">${text}</p>`; };
+  async function relView(current) {
+    state.current = current;
+    renderIndex();
+    if (dlg && dlg.open) closeDlg();
+    $('db-panel').innerHTML = '<p class="db-empty">Loading…</p>';
+    const [R, dep] = await Promise.all([relations(), load('deployments').catch(() => null)]);
+    if (!R.g || !dep) { panelError('Relations could not be loaded. Reload the page to try again.'); return null; }
+    return new Map(dep.rows.map((r) => [r.record_id, r]));
+  }
+
+  // A catalogue robot: where it works, doing what, with which evidence.
+  async function showRobot(id) {
+    const rows = await relView('humanoids');
+    if (!rows) return;
+    const rb = rel.robots.get(id);
+    if (!rb) return panelError(`No robot with catalogue number ${esc(id)}. <a href="#humanoids">See the Humanoids catalogue</a>.`);
+    const hum = await load('humanoids').catch(() => null);
+    const row = hum?.rows.find((r) => sameRobot(r, rb));
+    $('db-panel').innerHTML = `<div class="db-panel-head"><div><p class="lbl">Robot · Humanoids catalogue record ${rb.id}</p><h2>${esc(rb.robot)} <span class="by">by ${esc(rb.lab)}</span></h2>` +
+      `<p class="rel-meta"><span class="lbl">Maker</span> ${companyLink(rb.maker)}` + (row ? ` · <a href="#humanoids/${encodeURIComponent(row.id)}">All catalogue data</a>` : '') + ` · <a href="https://whyhumanoid.com/#${esc(rb.slug)}">Public robot page ↗</a></p></div></div>` +
+      `<section class="rel"><h3>Deployments</h3>${robotDeployments(id, rows)}</section>`;
+  }
+
+  // A company: its roles, its robots and its records, as maker and as organisation.
+  async function showCompany(id) {
+    const rows = await relView(null);
+    if (!rows) return;
+    const c = rel.co.get(id);
+    if (!c) return panelError(rel.mode === 'full' ? 'No company with this id in the database.' : `This company is not among the 10 free preview records.${relLock()}`);
+    if (c.id !== id) setHash(`company/${encodeURIComponent(c.id)}`, false);
+    const recs = rel.byCompany.get(c.id) || [];
+    const asMaker = recs.filter((r) => r.maker === c.id), asOrg = recs.filter((r) => r.operator === c.id);
+    const roles = Object.entries(c.roles || {}).map(([k, n]) => `${esc(ROLE[k] || human(k))} (${n} ${n === 1 ? 'record' : 'records'})`).join(' · ');
+    const identity = c.identity === 'catalogue_lab' ? 'Maker in the Humanoids catalogue' : c.identity === 'name_as_recorded' ? 'Maker outside the Humanoids catalogue, grouped by its name as recorded' : 'Organisation id in the Deployments sheet';
+    const used = [...new Set(asOrg.filter((r) => r.robot !== null).map((r) => r.robot))];
+    const kv = [
+      ['Roles', roles || (rel.mode === 'full' ? 'No Deployments record names this company' : 'None in the 10 free preview records')],
+      ['Identity', `${identity}${(c.organization_ids || []).length ? ': ' + c.organization_ids.map(esc).join(', ') : ''}`],
+      ['Names as recorded', (c.names || []).map(esc).join('; ') || esc(c.name)],
+      ['Countries as recorded', (c.countries || []).map(esc).join('; ') || '<span class="lbl">Not recorded</span>'],
+      ['Catalogue robots', (c.robots || []).map((r) => robotLink(r)).join('; ') || '<span class="lbl">None</span>'],
+      ['Robots it uses', used.map((r) => robotLink(r)).join('; ') || '<span class="lbl">None linked</span>'],
+      ['Entities record', c.entity_id ? `<a href="#entities/${encodeURIComponent(c.entity_id)}">${esc(c.entity_id)}</a>` : '<span class="lbl">None</span>'],
+    ];
+    $('db-panel').innerHTML = `<div class="db-panel-head"><div><p class="lbl">Company</p><h2>${esc(c.name)}</h2><p>Only what the records say: no corporate data is added.</p></div></div>` +
+      `<dl class="db-kv rel-kv">${kv.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>` +
+      (asMaker.length ? `<section class="rel"><h3>As maker (${asMaker.length} ${asMaker.length === 1 ? 'record' : 'records'})</h3>${depGroups(asMaker, rows, { robot: true, org: true })}</section>` : '') +
+      (asOrg.length ? `<section class="rel"><h3>As organisation (${asOrg.length} ${asOrg.length === 1 ? 'record' : 'records'})</h3>${depGroups(asOrg, rows, { robot: true, org: false, maker: true })}</section>` : '') +
+      (recs.length ? STATUS_KEY : '') + relLock();
+  }
+
+  // Any "View all data" card by its record id: #<category>/<id>.
+  async function showRecord(datasetId, rowId) {
+    await show(datasetId);
+    const data = cache[datasetId];
+    if (!data || state.current !== datasetId) return;
+    const i = data.rows.findIndex((r) => String(r.id) === rowId);
+    if (i < 0) {
+      notice(data.mode === 'full' ? 'That record is not in the current copy of the database.' : 'That record is in the full database. Subscribers can open it; the free preview shows the first 10 sheet rows.');
+      setHash(datasetId, false);
+      return;
+    }
+    const meta = state.datasets.find((d) => d.id === datasetId);
+    openRecord({ id: datasetId, title: meta.title, data, list: data.rows }, i, null);
+  }
+
+  // Router. Plain links change the hash (one history entry each); cards update it in place.
+  let rendered = null;
+  function parseHash() {
+    let h = location.hash.slice(1);
+    try { h = decodeURIComponent(h); } catch { /* keep raw */ }
+    let m;
+    if ((m = /^robot\/(\d+)$/.exec(h))) return { view: 'robot', id: Number(m[1]) };
+    if ((m = /^company\/([A-Za-z0-9_.-]+)$/.exec(h))) return { view: 'company', id: m[1] };
+    if ((m = /^([a-z0-9-]+)\/(.+)$/.exec(h)) && state.datasets.some((d) => d.id === m[1])) return { view: 'record', dataset: m[1], id: m[2] };
+    if (/^[a-z0-9-]+$/.test(h) && (!state.datasets.length || state.datasets.some((d) => d.id === h))) return { view: 'dataset', id: h };
+    return null;
+  }
+  function setHash(h, pushEntry) {
+    if (location.hash === '#' + h) return;
+    try { history[pushEntry ? 'pushState' : 'replaceState'](null, '', location.pathname + location.search + '#' + h); } catch { location.hash = h; }
+    rendered = location.hash;
+  }
+  async function render(force = false) {
+    if (!force && rendered === location.hash) return;
+    rendered = location.hash;
+    const r = parseHash() || { view: 'dataset', id: 'deployments' };
+    if (r.view === 'robot') await showRobot(r.id);
+    else if (r.view === 'company') await showCompany(r.id);
+    else if (r.view === 'record') await showRecord(r.dataset, r.id);
+    else await show(r.id);
+  }
+
   async function refreshMe() {
     if (!state.session) { state.me = null; return; }
     const { status, data } = await api('/v1/me');
@@ -297,8 +517,8 @@
     const before = full();
     await refreshMe();
     renderAccess();
-    if (before !== full()) Object.keys(cache).forEach((k) => delete cache[k]);
-    await show(state.current || location.hash.slice(1) || 'deployments');
+    if (before !== full()) { Object.keys(cache).forEach((k) => delete cache[k]); rel.mode = null; rel.g = null; }
+    await render(true);
   }
   function signOut(message = '') {
     if (state.session) api('/v1/auth/logout', { method: 'POST' });
@@ -321,8 +541,7 @@
     state.datasets = list.data.datasets;
     state.plan = plan.status === 200 ? plan.data : null;
     if (state.plan) $('price').textContent = state.plan.plan.price;
-    if (!/^[a-z0-9-]+$/.test(location.hash.slice(1))) history.replaceState(null, '', location.pathname + location.search + '#deployments');
-    state.current = location.hash.slice(1);
+    if (!parseHash()) history.replaceState(null, '', location.pathname + location.search + '#deployments');
     await refresh();
     // Entry counts in the category list, from the public previews (cached by the API for 5 minutes).
     state.datasets.filter((d) => d.id !== 'humanoids' && !cache[d.id]).forEach((d) => api(`/v1/datasets/${d.id}/preview`, { auth: false }).then(({ status, data }) => {
@@ -373,8 +592,11 @@
     await refresh();
   });
   $('signout').addEventListener('click', () => signOut());
-  $('db-index').addEventListener('click', (e) => { const a = e.target.closest('a[data-id]'); if (!a) return; e.preventDefault(); history.pushState(null, '', '#' + a.dataset.id); show(a.dataset.id); });
-  window.addEventListener('popstate', () => { const id = location.hash.slice(1); if (id && id !== state.current) show(id); });
+  $('db-index').addEventListener('click', (e) => { const a = e.target.closest('a[data-id]'); if (!a) return; e.preventDefault(); setHash(a.dataset.id, true); show(a.dataset.id); });
+  // Relation links are plain #links: each click is a history entry, so Back returns to the previous view.
+  const go = () => render().then(() => { if (parseHash()?.view !== 'dataset') $('db-panel').scrollIntoView({ block: 'start' }); });
+  window.addEventListener('popstate', go);
+  window.addEventListener('hashchange', go);
 
   init();
 })();
