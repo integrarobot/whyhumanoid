@@ -20,7 +20,7 @@ console, never into chat, tickets or Git:
 | 1 | Google Cloud, provider `github-actions` and service account `whyhumanoid-importer` | Production identity, exact condition and binding in 4.1. Then Actions, "Import private workbook", Run workflow on `main`, target `production` Done 16 Nov 2026 with Javier's passkey. |
 | 2 | Resend, domain `whyhumanoid.com` | IONOS Auto configure, approve in IONOS, Verify DNS records (section 4.3). Then a sending key restricted to `whyhumanoid.com` as Cloudflare secret `RESEND_API_KEY` on `whyhumanoid-premium` Done: domain Verified 16 Nov; key `whyhumanoid-premium-production` (sending, this domain only) added by Javier 17 Nov. |
 | 3 | Stripe live, Developers, API keys, Create restricted key | Write: Checkout Sessions, Customer portal. Read: Prices. Cloudflare secret `STRIPE_SECRET_KEY` on `whyhumanoid-premium` Done 17 Nov: key `whyhumanoid-premium-production` created and stored by Javier. |
-| 4 | Stripe live, webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` | Reveal the signing secret; Cloudflare secret `STRIPE_WEBHOOK_SECRET` on `whyhumanoid-premium` Done 17 Nov (Javier). The destination also listens to `checkout.session.expired` (verified by signature, then ignored), so an abandoned checkout proves the secret without a charge. |
+| 4 | Stripe live, webhook `we_1UbOuzAcMngkWs5CyMeDbKN3` | Reveal the signing secret; Cloudflare secret `STRIPE_WEBHOOK_SECRET` on `whyhumanoid-premium` Done 17 Nov (Javier). Signature proven on 17 Nov without a charge (see the state notes); the destination listens to its 4 original events. |
 | 5 | Stripe live, Settings, Billing, Customer portal | Done 16 Nov 2026: default configuration `bpc_1UcVsIAcMngkWs5C9X4Xkwf0` saved (cancellation at period end, payment-method updates, invoices; no plan changes). `STRIPE_PORTAL_CONFIGURATION` stays unset, so the default is used |
 | 6 | Google Drive | Master workbook and its April copy "... para Codex": General access, Restricted (section 5). Named editors and the importer keep access |
 | 7 | GitHub, organisation `integrarobot` | Close the history exposure (below): make this repository private and serve the site from a public repository that holds only the built site, or from Cloudflare once DNS moves there |
@@ -64,7 +64,13 @@ the portal link for a paying account. No real card is used for testing.
   `no_billing_account`; Stripe Checkout live opened (`cs_live_…`, "100,00 € por año", no trial) and left without a card:
   back in the app "Checkout was cancelled. Nothing was charged."; price still 0 subscriptions, no new payment. Mobile
   375 px without horizontal overflow. Not tested on purpose: a completed purchase and the subscriber state in
-  production. The first signed delivery is expected when that checkout expires (about 07:46 Madrid, 18 Nov).
+  production.
+- 17 Nov, 08:14 to 08:18 Madrid: webhook signature proven with the real secret and no charge. Expiring the abandoned
+  checkout was not possible from the Dashboard (the live Workbench shell and API explorer are read-only) and the live
+  key lives only in the Worker, so the destination temporarily listened to `product.updated` and a metadata key was
+  added to and removed from the product "Why Humanoid? full database": two live signed deliveries, both HTTP 200,
+  response `{"received": true, "outcome": "ignored_type"}`; `stripe_events` holds `evt_1UcgbVAcMngkWs5CK2RGe4t5`
+  (`product.updated`, `ignored_type`); `entitlements` 0. Product metadata and the destination's 4 events restored.
 - Branch `deploy/worker-bundle-f4bd2db` (the temporary bundle used by the dashboard editor; public server code, no
   data) could not be deleted through the agent proxy: delete it in GitHub, Branches.
 

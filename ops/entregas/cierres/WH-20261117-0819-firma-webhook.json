@@ -1,0 +1,38 @@
+{
+  "id": "WH-20261117-0819-firma-webhook",
+  "tarea": "Comprobar ya, sin cargos, la firma real del webhook de Stripe live con el secreto guardado por Javier",
+  "origen": "Javier pide «haz la prueba ahora» (17/11/2026), transmitido por Codex",
+  "fecha": "2026-11-17T08:19:07+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Expirar la sesión de Checkout abandonada no fue posible: en modo live el Shell y el explorador de API del Workbench de Stripe son de solo lectura, y la clave live con permiso de escritura solo está en el Worker.",
+    "Vía alternativa, sin cargos y reversible: el destino del webhook escuchó product.updated durante la prueba y se añadió y luego se quitó una clave de metadatos (webhook_check) en el producto «Why Humanoid? full database». Stripe envió dos eventos live firmados al Worker.",
+    "Todo restaurado: el producto sin metadatos y el webhook con sus 4 eventos originales. Borrada la comprobación programada de mañana, ya redundante. DEPLOYMENT.md y el relevo al día."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Aplicación de suscriptores",
+      "url": "https://whyhumanoid-premium.javier-198.workers.dev/"
+    },
+    {
+      "etiqueta": "Estado de lanzamiento",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/DEPLOYMENT.md#0-paywall-go-live-javier-16-nov-2026-d-0008"
+    }
+  ],
+  "despliegue": [
+    "Sin despliegue de código. Cambios temporales en Stripe live (evento suscrito y metadatos del producto), ya revertidos."
+  ],
+  "verificaciones": [
+    "Stripe, entregas del destino we_1UbOuzAcMngkWs5CyMeDbKN3: product.updated a las 07:14:58 y 07:16:59 UTC, las dos «Entregado» con HTTP 200. Respuesta del Worker: received true, outcome ignored_type. Esto confirma que STRIPE_WEBHOOK_SECRET corresponde al destino.",
+    "D1 de producción: stripe_events registra evt_1UcgbVAcMngkWs5CK2RGe4t5 (product.updated, ignored_type, 07:14:57 UTC); entitlements sigue en 0, así que no se ha desbloqueado ningún acceso.",
+    "Producto «Why Humanoid? full database» de nuevo sin metadatos; destino del webhook con 4 eventos (checkout.session.completed y customer.subscription.created, updated y deleted).",
+    "Sin pagos, sin tarjetas y sin eventos de pago fabricados."
+  ],
+  "pendientes": [
+    "Lo comprobado es la firma y la entrega. El tratamiento de un evento de pago real (checkout.session.completed y customer.subscription.*) con la cuenta de un comprador solo se ve con una compra real; está probado en local y en pruebas. Compra completa: sin probar.",
+    "Sigue pendiente de Javier: el nombre «INTEGRAROB» en el checkout de Stripe, el acceso general del libro maestro, la visibilidad del repositorio y borrar la rama deploy/worker-bundle-f4bd2db."
+  ],
+  "siguiente_accion": "Ninguna técnica pendiente para cobrar. Javier decide cuándo anunciarlo y los puntos pendientes; el backlog de RoboticsMap espera su prioridad."
+}
