@@ -45,7 +45,7 @@ class Statement {
 
 export function createTestDb() {
   const sqlite = new DatabaseSync(':memory:');
-  for (const m of ['0001_init.sql', '0002_relations.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
+  for (const m of ['0001_init.sql', '0002_relations.sql', '0003_search.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
   return {
     prepare: (sql) => new Statement(sqlite, sql),
     async batch(statements) {

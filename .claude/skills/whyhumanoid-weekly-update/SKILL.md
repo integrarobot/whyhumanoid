@@ -81,6 +81,16 @@ En cada actualización, antes de publicar:
 3. Tras importar a producción, el registro del job muestra `relations.ok: true` y la cobertura (solo recuentos). Comprueba en la aplicación un robot con registros, uno sin ellos y una empresa, como visitante y con una sesión de suscriptor existente.
 4. El cierre lleva la cobertura exacta (registros enlazados a robot por nivel, solo fabricante, sin fabricante, organizaciones enlazadas) y los nombres ambiguos o no enlazados.
 
+## Buscador global y etiquetas
+
+Desde el 17/11/2026 (Javier) la aplicación tiene un buscador sobre las 13 categorías (`/app/#search`, también desde la portada) con etiquetas comunes: sector, tarea, país de despliegue, país de la empresa, tipo o rol, estado del despliegue, nivel de evidencia y plataforma del robot.
+
+- Seguridad: el servidor decide el alcance antes de buscar. Visitantes y cuentas sin suscripción solo buscan en Humanoids y en las 10 filas de vista previa de cada pestaña (valores públicos): resultados, fragmentos, etiquetas y recuentos salen de ese conjunto. Los suscriptores buscan en todo.
+- El índice y las etiquetas se regeneran en cada importación (tabla `search_docs`). No hay ningún índice en la web ni en Git.
+- Las etiquetas salen solo de campos de la hoja y del vocabulario controlado (`server/src/search/vocabulary.js`): país de sede separado del país de despliegue, estado del despliegue separado de la madurez del producto (que la hoja no recoge, así que no hay etiqueta de madurez). Un valor desconocido no se etiqueta.
+- En cada actualización: `node --no-warnings tools/search-tags.mjs --from <export>` (solo en pantalla, nunca en Git) muestra la cobertura y los valores que el vocabulario no conoce. Si uno es un sinónimo real de un término existente (por ejemplo, otra forma de escribir un país), añádelo al vocabulario y explícalo en el PR; si no, se queda sin etiqueta y se anota en el cierre.
+- Tras importar a producción, el registro del job muestra `search` (documentos por alcance y valores desconocidos, solo recuentos). Comprueba en producción una búsqueda como visitante y otra como suscriptor (sesión existente, solo lectura).
+
 ## Estado
 
 `ops/weekly-update/state.json` en el repositorio `integrarobot/whyhumanoid`:
@@ -117,9 +127,9 @@ Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json`.
    1. Exporta el libro actualizado a un fichero privado fuera de Git (pestaña → filas, cabecera primero): descarga .xlsx con el conector de Google Drive y `python3 -I tools/workbook-xlsx-to-json.py <libro.xlsx> <export.json> --compare <exportación anterior>`. Solo deben aparecer tus filas y los valores en vivo de Valuation.
    2. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <fecha ISO>` (escribe solo las vistas previas en `data/preview/`).
    3. Humanoids: genera la vista con el código de importación (ver cabecera de `tools/sync-humanoids.mjs`) y ejecuta `tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs` y `tools/build-site.mjs`.
-   4. Comprueba: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/relations.mjs --from <export>` y `--check` (sección «Relaciones de Deployments»), `node tools/check-public.mjs`, `node tools/export-database.mjs --check`, `cd server && npm test`, `cd tools && node verify-site.mjs`.
+   4. Comprueba: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/relations.mjs --from <export>` y `--check` (sección «Relaciones de Deployments»), `node --no-warnings tools/search-tags.mjs --from <export>` (sección «Buscador global y etiquetas»), `node tools/check-public.mjs`, `node tools/export-database.mjs --check`, `cd server && npm test`, `cd tools && node verify-site.mjs`.
    5. Rama `weekly-update/<fecha>`, PR contra `main`, CI en verde, fusión, espera al despliegue de Pages.
-   6. Datos completos a producción: Actions, «Import private workbook», Run workflow en `main`, target `production`. Comprueba en el registro del job HTTP 200, los recuentos de las 13 pestañas y `relations.ok: true` con su cobertura. Si falla (por ejemplo, identidad de Google), el cierre es `bloqueado` con el error exacto.
+   6. Datos completos a producción: Actions, «Import private workbook», Run workflow en `main`, target `production`. Comprueba en el registro del job HTTP 200, los recuentos de las 13 pestañas, `relations.ok: true` con su cobertura y `search` con sus documentos y valores desconocidos. Si falla (por ejemplo, identidad de Google), el cierre es `bloqueado` con el error exacto.
 
 10. **Verifica producción** en https://whyhumanoid.com/: recuentos por categoría iguales a la exportación, los registros nuevos o cambiados visibles con su fuente y fecha, la vista previa de 10 filas por pestaña premium con su enlace a la base completa, ningún JSON con filas completas accesible en la web, la ficha «View all data» completa, y en la aplicación de suscriptores los recuentos del backend iguales a la exportación.
 

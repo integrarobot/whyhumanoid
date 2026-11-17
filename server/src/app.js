@@ -17,6 +17,7 @@ import { buildTaskPlan, validateInputs } from './agent/task-plan.js';
 import { sha256Hex } from './crypto.js';
 import { verifyImportToken } from './import/github-oidc.js';
 import { readGraph } from './relations/store.js';
+import { search } from './search/index.js';
 
 const MAX_API_KEYS = 5;
 
@@ -42,8 +43,33 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
     return account;
   }
 
+  // Search scope from the server-side entitlement check, decided before anything is searched: 'full' only for an
+  // active subscription (browser session or agent API key), the public preview for everyone else.
+  async function searchScope(request, now) {
+    if (!request.headers.get('authorization')) return 'preview';
+    const account = await authenticate(request, db, now).catch(() => null);
+    return account && hasAccess(await getEntitlement(db, account.accountId), now) ? 'full' : 'preview';
+  }
+
   const routes = [
     ['GET', /^\/health$/, async () => json(200, { ok: true })],
+
+    // Global search over the 13 categories with common tags (Javier, 17 Nov 2026). Visitors and accounts without a
+    // subscription search the public rows only (the free Humanoids catalogue and the first 10 sheet rows of each other
+    // category, public values): results, snippets, tags and counts all come from that set.
+    [
+      'GET',
+      /^\/v1\/search$/,
+      async (request, now, _match, url) => {
+        const scope = await searchScope(request, now);
+        const p = url.searchParams;
+        const result = await search(db, { scope, q: (p.get('q') ?? '').slice(0, 200), tags: p.get('tags') ?? '', category: p.get('category') ?? '', page: p.get('page') ?? '1' });
+        const headers = scope === 'full'
+          ? { 'cache-control': 'private, no-store', vary: 'Authorization' }
+          : { 'cache-control': 'public, max-age=60', vary: 'Authorization' };
+        return json(200, result, headers);
+      },
+    ],
 
     ['GET', /^\/v1\/datasets$/, async () => json(200, { datasets: publicDatasetList() })],
 
@@ -274,6 +300,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
           error: result.error,
           warnings: result.warnings?.length ?? 0,
           relations: result.relations ? { ok: result.relations.ok, error: result.relations.error, config_version: result.relations.config_version, coverage: result.relations.coverage } : undefined,
+          search: result.search,
         });
       },
     ],

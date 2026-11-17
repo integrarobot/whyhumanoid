@@ -37,7 +37,7 @@ export async function relationStatements(db, { config, rowsOf, snapshotId, now }
   } else {
     stored = await loadConfig(db);
   }
-  if (!stored) return { statements, report: { ok: false, error: 'relations_not_configured' } };
+  if (!stored) return { statements, report: { ok: false, error: 'relations_not_configured' }, config: null };
   const compiled = compileConfig(stored.config);
   const coverage = {};
   for (const scope of ['full', 'preview']) {
@@ -49,7 +49,7 @@ export async function relationStatements(db, { config, rowsOf, snapshotId, now }
         .bind(scope, snapshotId, JSON.stringify(graph), JSON.stringify(graph.coverage), stored.version, now),
     );
   }
-  return { statements, report: { ok: true, config_version: stored.version, config_problems: compiled.problems.length, coverage: coverage.full } };
+  return { statements, report: { ok: true, config_version: stored.version, config_problems: compiled.problems.length, coverage: coverage.full }, config: stored.config };
 }
 
 export async function readGraph(db, scope) {

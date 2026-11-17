@@ -205,7 +205,7 @@ with Stripe's test cards.
 | Worker | `whyhumanoid-premium-test` (`wrangler deploy --env test`) | `whyhumanoid-premium` (`wrangler deploy --env production`) |
 | D1 | `wrangler d1 create whyhumanoid-premium-test`, id into `[env.test]` | `wrangler d1 create whyhumanoid-premium`, id into `[env.production]` |
 | Schema | `wrangler d1 migrations apply whyhumanoid-premium-test --remote --env test` | same with `whyhumanoid-premium --env production` |
-| Schema without Wrangler | D1 console: `migrations/0001_init.sql`, then `0002_relations.sql` (two relation tables; `CREATE TABLE IF NOT EXISTS`, safe to rerun). Apply `0002` before deploying a Worker that imports relations. | same |
+| Schema without Wrangler | D1 console: `migrations/0001_init.sql`, then `0002_relations.sql` (two relation tables) and `0003_search.sql` (`search_docs`, the global search index); all `CREATE TABLE IF NOT EXISTS`, safe to rerun. Apply each before deploying a Worker that uses it. | same |
 | URL | `https://whyhumanoid-premium-test.<account>.workers.dev` (fill `ALLOWED_ORIGINS`, `PREMIUM_URL`) | app `https://whyhumanoid.com/app/` (GitHub Pages), API `https://whyhumanoid-premium.javier-198.workers.dev` |
 | `STRIPE_MODE` | `test` | `live` |
 | `CHECKOUT_ENABLED` | `true` after step 3 passes | `false` until Javier enables it |

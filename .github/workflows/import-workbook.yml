@@ -82,6 +82,6 @@ jobs:
             --header "Content-Type: application/json" --data @relations-body.json \
             --request POST "https://${worker}.javier-198.workers.dev/v1/admin/import")
           echo "HTTP $status"
-          jq '{ok, error, warnings, counts, relations}' result.json || true
+          jq '{ok, error, warnings, counts, relations, search}' result.json || true
           rm -f result.json
           test "$status" = 200

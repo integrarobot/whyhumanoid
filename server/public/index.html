@@ -92,6 +92,35 @@ input[type=email],input[type=search]{flex:1 1 240px;min-width:0;background:var(-
 .db-open{background:transparent;border:1px solid var(--amber-2);color:var(--amber);font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;padding:7px 10px;min-height:36px;white-space:nowrap;cursor:pointer}
 .db-open:hover,.db-open:focus-visible{background:var(--amber-3);border-color:var(--amber)}
 .db-empty{padding:16px 12px;color:var(--bone-3)}
+.gs-bar{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;border:1px solid var(--amber-2);background:var(--ink-1);padding:14px 16px;margin:0 0 18px}
+.gs-bar label{flex:1 1 320px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.gs-bar input{flex:none;width:100%}
+.gs-bar .hint{flex-basis:100%;margin:0;color:var(--bone-3);font-size:12.5px}
+.gs-bar kbd{font-family:var(--f-mono);font-size:11px;border:1px solid var(--line-2);padding:0 5px}
+.gs-groups{display:grid;gap:10px;margin:0 0 14px}
+.gs-filters{border:1px solid var(--line);padding:10px 12px;margin:0 0 14px}
+.gs-filters > summary{cursor:pointer;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-2);min-height:32px;display:flex;align-items:center}
+.gs-group{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.gs-group > .lbl{flex:0 0 100%;margin-top:6px}
+.gs-chip{background:transparent;border:1px solid var(--line-2);color:var(--bone-2);padding:5px 9px;min-height:34px;font:13px var(--f-sans);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.gs-chip .n{font-family:var(--f-mono);font-size:11px;color:var(--bone-3)}
+.gs-chip:hover,.gs-chip:focus-visible{border-color:var(--amber-2);color:var(--amber)}
+.gs-chip[aria-pressed="true"]{color:var(--amber);border-color:var(--amber);background:var(--amber-3)}
+.gs-chip:focus-visible,.gs-res a:focus-visible,.gs-pager button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.gs-active{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px}
+.gs-active .gs-chip{color:var(--amber);border-color:var(--amber-2);background:var(--amber-3)}
+.gs-res{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.gs-res li{padding:12px 4px;border-bottom:1px solid var(--line)}
+.gs-res .gs-title{font-size:16px;font-weight:560;text-decoration:none;color:var(--bone)}
+.gs-res .gs-title:hover,.gs-res .gs-title:focus-visible{color:var(--amber);text-decoration:underline}
+.gs-res .gs-meta{display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;margin-bottom:3px}
+.gs-res .gs-sub{color:var(--bone-3);font-size:13px;margin-top:2px;overflow-wrap:anywhere}
+.gs-res .gs-snip{margin:6px 0 0;color:var(--bone-2);font-size:13.5px;overflow-wrap:anywhere}
+.gs-res mark{background:var(--amber-2);color:var(--bone);padding:0 1px}
+.gs-pager{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:14px}
+.gs-pager button[disabled]{opacity:.4;cursor:default}
+.gs-try{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+@media (max-width:700px){.gs-res .gs-title{font-size:15px}}
 .db-kv{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:8px 18px;margin:0}
 .db-kv dt{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3)}
 .db-kv dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
@@ -207,6 +236,13 @@ html.dlg-open{overflow:hidden}
       </div>
     </div>
   </section>
+
+  <form id="gs-form" class="gs-bar" role="search" aria-label="Search the database">
+    <label for="gs-q"><span class="lbl">Search all 13 categories</span>
+      <input id="gs-q" type="search" autocomplete="off" spellcheck="false" placeholder="Robot, company, place, sector or task" aria-describedby="gs-hint"></label>
+    <button class="btn" type="submit">Search</button>
+    <p class="hint" id="gs-hint">Names, aliases and every field, in English or Spanish. Press <kbd>/</kbd> to search from anywhere.</p>
+  </form>
 
   <div class="layout">
     <nav class="db-index" id="db-index" aria-label="Categories"></nav>
