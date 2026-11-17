@@ -2,6 +2,7 @@
 //   1. A one-time sign-in link is redeemed only after a click, so mail scanners that open links cannot use it up.
 //   2. Paywall (16 Nov 2026): without an active subscription the app asks only for the public preview and shows the
 //      locked remainder; with one it asks for the full rows with the session, and every card shows every field.
+//   3. Global search.  4. Company pages list each linked robot with its best recorded status (plans are not use).
 import { JSDOM } from 'jsdom';
 import { readFileSync } from 'node:fs';
 
@@ -10,7 +11,7 @@ const js = readFileSync(new URL('../server/public/premium.js', import.meta.url),
 const failures = [];
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const FIELDS = ['record_id', 'organization_name', 'manufacturer', 'robot_model', 'operational_status', 'task_description', 'site_name', 'country', 'source_url', 'open_questions_notes'];
-const row = (i) => Object.fromEntries([['id', `fx_row_${i}`], ...FIELDS.map((f) => [f, f === 'source_url' ? `https://example.com/${i}` : f === 'operational_status' ? 'pilot' : `fx_${f}_${i}`])]);
+const row = (i) => Object.fromEntries([['id', `fx_row_${i}`], ...FIELDS.map((f) => [f, f === 'source_url' ? `https://example.com/${i}` : f === 'operational_status' ? (i === 2 ? 'planned' : 'pilot') : `fx_${f}_${i}`])]);
 
 // What the API answers to a search: 25 synthetic results for a subscriber, 3 public ones otherwise; none for "zzz".
 function searchBody(p, isFull) {
@@ -24,6 +25,18 @@ function searchBody(p, isFull) {
     facets: total ? [{ id: 'sector', label: 'Sector', values: [{ id: 'sector:automotive', label: 'Automotive', count: 2, active: tags.includes('sector:automotive') }] }] : [],
     categories: total ? [{ id: 'deployments', title: 'Deployments', count: total, active: false }] : [],
     active: tags.map((t) => ({ id: t, label: 'Automotive', facet: 'Sector' })), category: null,
+  };
+}
+
+// Relations graph: one company runs robot 1 in a pilot (row 1) and has only a planned record for robot 2 (row 2).
+function relationsBody() {
+  return {
+    scope: 'full', snapshot: 'fx',
+    robots: [{ id: 1, robot: 'FxBot One', lab: 'FxLab', maker: 'mfr_fx', slug: 'fx-1' }, { id: 2, robot: 'FxBot Two', lab: 'FxLab', maker: 'mfr_fx', slug: 'fx-2' }],
+    companies: [{ id: 'org_fx_user', name: 'Fx User Co', roles: { customer_operator: 2 }, organization_ids: ['org_fx_user'], identity: 'sheet_organization_id' },
+      { id: 'mfr_fx', name: 'FxLab', roles: { maker: 2 }, identity: 'catalogue_lab', robots: [1, 2] }],
+    records: [1, 2].map((i) => ({ record_id: `fx_record_id_${i}`, deployment_id: `fx_dep_${i}`, robot: i, level: 'model', maker: 'mfr_fx', operator: 'org_fx_user', role: 'customer_operator' })),
+    coverage: {},
   };
 }
 
@@ -41,6 +54,7 @@ function app({ url, active, session }) {
       : path === '/v1/me' ? { email: 'a@example.com', access: active ? { active: true, status: 'active', current_period_end: 1893456000 } : { active: false, status: 'none' }, checkout_available: true, billing_portal: Boolean(active) }
       : path.startsWith('/v1/datasets/deployments/preview') ? { rows: Array.from({ length: 10 }, (_, i) => row(i + 1)), total_rows: 119, preview_rows: 10, dataset: datasets[0] }
       : path.startsWith('/v1/datasets/deployments?') ? { rows: Array.from({ length: 119 }, (_, i) => row(i + 1)), total: 119, dataset: datasets[0] }
+      : path === '/v1/relations' ? relationsBody()
       : path.startsWith('/v1/search?') ? searchBody(new URLSearchParams(path.split('?')[1]), Boolean(opts.headers?.authorization) && active)
       : { rows: [], total_rows: 0, dataset: datasets[1] };
     return { status: 200, json: async () => body };
@@ -139,9 +153,20 @@ function app({ url, active, session }) {
   dom.window.close();
 }
 
+// 4. Company view (17 Nov 2026): a robot linked only by a planned record is listed with that status, never as in use.
+{
+  const { d, dom } = app({ url: 'https://test.example/#company/org_fx_user', session: 'whs_fake', active: true });
+  await wait(400);
+  const kv = [...d.querySelectorAll('#db-panel .rel-kv dt')].map((dt) => [dt.textContent, dt.nextElementSibling?.textContent ?? '']);
+  const robots = kv.find(([k]) => k === 'Robots in its records')?.[1] ?? '';
+  if (kv.some(([k]) => /it uses/i.test(k))) failures.push('company: robots still labelled as in use');
+  if (!/FxBot One by FxLab Pilot or trial/.test(robots) || !/FxBot Two by FxLab Announced/.test(robots)) failures.push(`company: robots not shown with their recorded status: ${robots}`);
+  dom.window.close();
+}
+
 if (failures.length) {
   console.error(`Premium app check FAILED:\n- ${failures.join('\n- ')}`);
   process.exit(1);
 }
-console.log('Premium app check passed: sign-in links are redeemed only on click; previews for non-subscribers, full rows and complete cards for subscribers; search sends the session only when there is one, keeps its state in the address and restores it on Back.');
+console.log('Premium app check passed: sign-in links are redeemed only on click; previews for non-subscribers, full rows and complete cards for subscribers; search sends the session only when there is one, keeps its state in the address and restores it on Back; company pages show each robot with its recorded status.');
 process.exit(0);
