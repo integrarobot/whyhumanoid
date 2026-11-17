@@ -59,6 +59,8 @@ STRIPE_MODE = "live"
 CHECKOUT_ENABLED = "true"     # armed 16 Nov 2026 (d-0008): checkout still answers 503 until the live Stripe key,
 ALLOW_LIVE_CHECKOUT = "true"  # the webhook secret, sign-in email and all 13 imported tabs exist (billing.checkoutState)
 STRIPE_PRICE_ID = "price_1UbOtjAcMngkWs5CR8qXNPGn"  # live: "Why Humanoid? full database", EUR 100.00 / year (prod_VceC4S2gQeLhOT)
-ALLOWED_ORIGINS = "https://whyhumanoid-premium.javier-198.workers.dev"
-PREMIUM_URL = "https://whyhumanoid-premium.javier-198.workers.dev/"
+# Since 17 Nov 2026 the app is served at https://whyhumanoid.com/app/ (GitHub Pages, tools/build-app.mjs) and calls this
+# API over CORS; the workers.dev pages redirect there (scripts/dashboard-entry.js). The webhook stays on workers.dev.
+ALLOWED_ORIGINS = "https://whyhumanoid.com,https://whyhumanoid-premium.javier-198.workers.dev"
+PREMIUM_URL = "https://whyhumanoid.com/app/"
 EMAIL_FROM = "Why Humanoid? <premium@whyhumanoid.com>"

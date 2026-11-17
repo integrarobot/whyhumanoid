@@ -16,9 +16,24 @@ const page = (body, type) =>
     },
   });
 
+// The app lives at PREMIUM_URL (https://whyhumanoid.com/app/ in production since 17 Nov 2026). When that is another
+// origin, the old pages answer with a temporary redirect for GET and HEAD only: the browser keeps the #fragment, so old
+// links (#deployments, one-time #login=...) still work. API routes and the Stripe webhook (POST /v1/...) are untouched.
+const elsewhere = (request, env) => {
+  try {
+    return Boolean(env.PREMIUM_URL) && new URL(env.PREMIUM_URL).origin !== new URL(request.url).origin;
+  } catch {
+    return false;
+  }
+};
+
 export default {
   async fetch(request, env, ctx) {
     const { pathname } = new URL(request.url);
+    const isPage = pathname === '/' || pathname === '/index.html';
+    if (isPage && (request.method === 'GET' || request.method === 'HEAD') && elsewhere(request, env)) {
+      return new Response(null, { status: 302, headers: { location: env.PREMIUM_URL, 'cache-control': 'no-store' } });
+    }
     if (request.method === 'GET' && (pathname === '/' || pathname === '/index.html')) return page(indexHtml, 'text/html; charset=utf-8');
     if (request.method === 'GET' && pathname === '/premium.js') return page(premiumJs, 'text/javascript; charset=utf-8');
     return worker.fetch(request, env, ctx);
