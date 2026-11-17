@@ -28,5 +28,7 @@
   ],
   "not_found": ["a GlobalFoundries-published release on the collaboration", "Atlas sites, tasks, robot count and version at GlobalFoundries", "whether Spot already operates at Malta or Dresden", "the G1 version used by Howl", "a primary source for the early 2027 aim of the Howl project", "Howl funding, test site or robot performance"],
   "vocabulary": "Sectors semiconductor_manufacturing (electronics, manufacturing) and poultry_farming (agriculture, a new sector tag) added to server/src/search/vocabulary.js, with Spanish synonyms.",
-  "status": "in_progress"
+  "production": { "import_run": "44175920502", "worker_version": "3135330f", "pages_commits": ["f4b4bc9", "32ef9bf", "60602e0"] },
+  "status": "completed",
+  "close": "WH-20261117-2212-bd-globalfoundries-ncstate-howl"
 }
