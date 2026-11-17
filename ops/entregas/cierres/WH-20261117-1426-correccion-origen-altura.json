@@ -1,0 +1,30 @@
+{
+  "id": "WH-20261117-1426-correccion-origen-altura",
+  "tarea": "Corregir la atribución del origen en el cierre WH-20261117-1359-altura-estado-cuenta",
+  "origen": "Codex (17/11/2026), en el mensaje que autorizó la prueba de actualización con Darwin Robotics.",
+  "fecha": "2026-11-17T14:26:29+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "El origen del cierre WH-20261117-1359-altura-estado-cuenta dice que Javier confirmó haber leído el cierre WH-20261117-1335-relaciones-deployments. No es así: quien leyó el cierre de relaciones fue Codex. No consta ninguna confirmación ni aceptación de Javier de ese cierre.",
+    "Los cierres no se editan: este cierre deja la corrección en el registro. El resto del cierre 1359 (alturas iguales del indicador y del botón de la tarjeta de cuenta, y su verificación) sigue siendo válido."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Cierre corregido",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/entregas/cierres/WH-20261117-1359-altura-estado-cuenta.json"
+    }
+  ],
+  "despliegue": [
+    "Sin despliegue: solo el registro de entregas."
+  ],
+  "verificaciones": [
+    "node tools/entregas.mjs --check en verde, con el campo corrige apuntando a un cierre existente."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de esta corrección. La entrega a Javier del cierre WH-20261117-1335-relaciones-deployments sigue sin confirmar mientras él no la confirme."
+  ],
+  "siguiente_accion": "Codex registra el aviso de la corrección.",
+  "corrige": "WH-20261117-1359-altura-estado-cuenta"
+}

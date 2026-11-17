@@ -8,8 +8,9 @@
       "kind": "manual",
       "subject": "Darwin Robotics (one company, full process test)",
       "editions": [],
-      "result": "in_progress",
-      "file": "ops/weekly-update/runs/2026-11-17-darwin.json"
+      "result": "completed",
+      "file": "ops/weekly-update/runs/2026-11-17-darwin.json",
+      "close": "WH-20261117-1427-darwin-actualizacion-completa"
     }
   ]
 }

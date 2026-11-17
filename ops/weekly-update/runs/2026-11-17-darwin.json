@@ -5,16 +5,52 @@
   "request": "https://darwinrobotics.ai",
   "editions_read": [],
   "dedupe": {
-    "searched": ["Darwin", "Darwin Robotics", "Darwin-0", "Thesis"],
+    "searched": [
+      "Darwin",
+      "Darwin Robotics",
+      "Darwin-0",
+      "Thesis"
+    ],
     "tabs": "all 13",
     "result": "no existing row in any tab",
     "thesis": "The Y Combinator page /companies/thesis now resolves to Darwin Robotics with the same founders and batch; an earlier version described Thesis as an applied AI lab. Same YC record renamed, not a second company. No home-robot claim found in current sources."
   },
   "inventory": {
-    "before": { "Humanoids": 135, "Deployments": 119, "Software": 126, "Datasets": 28, "Hardware": 11, "Other Robots": 488, "Stocks": 276, "Integrators": 7, "Data Space": 30, "Producto - Contenedores": 22, "Entidades limpias": 24, "Relaciones evidencia": 15, "Evaluacion tarea": 4 },
-    "after": { "Humanoids": 136, "Deployments": 119, "Software": 126, "Datasets": 28, "Hardware": 11, "Other Robots": 488, "Stocks": 276, "Integrators": 7, "Data Space": 30, "Producto - Contenedores": 22, "Entidades limpias": 26, "Relaciones evidencia": 15, "Evaluacion tarea": 4 },
+    "before": {
+      "Humanoids": 135,
+      "Deployments": 119,
+      "Software": 126,
+      "Datasets": 28,
+      "Hardware": 11,
+      "Other Robots": 488,
+      "Stocks": 276,
+      "Integrators": 7,
+      "Data Space": 30,
+      "Producto - Contenedores": 22,
+      "Entidades limpias": 24,
+      "Relaciones evidencia": 15,
+      "Evaluacion tarea": 4
+    },
+    "after": {
+      "Humanoids": 136,
+      "Deployments": 119,
+      "Software": 126,
+      "Datasets": 28,
+      "Hardware": 11,
+      "Other Robots": 488,
+      "Stocks": 276,
+      "Integrators": 7,
+      "Data Space": 30,
+      "Producto - Contenedores": 22,
+      "Entidades limpias": 26,
+      "Relaciones evidencia": 15,
+      "Evaluacion tarea": 4
+    },
     "unit": "sheet rows without the header",
-    "free_catalogue": { "before": 133, "after": 134 }
+    "free_catalogue": {
+      "before": 133,
+      "after": 134
+    }
   },
   "added": [
     {
@@ -23,29 +59,88 @@
       "public_id": 134,
       "record": "Darwin | Darwin-0: the 32 cells are public, see data/humanoids-catalogue.json id 134",
       "sources": [
-        { "url": "https://darwinrobotics.ai/research/darwin-raises-3-6m-pre-seed", "publisher": "Darwin Robotics", "published": "2026-11-05", "reviewed": "2026-11-17", "supports": "USD 3.6M pre-seed led by Link Ventures with Y Combinator, Liquid 2, Rebel Fund, Globivest, Script Capital and unnamed angels; learning from human demonstrations under onsite supervision" },
-        { "url": "https://www.ycombinator.com/companies/darwin", "publisher": "Y Combinator", "reviewed": "2026-11-17", "supports": "founded 2025, San Francisco, batch F25, team of 4, initial deployments targeted for early 2027" },
-        { "url": "https://www.ycombinator.com/launches/WnO-darwin-robotics-robot-technicians-for-ai-infrastructure", "publisher": "Y Combinator (company launch post)", "published": "2026-11-02", "reviewed": "2026-11-17", "supports": "data centers first; in discussions with hyperscalers and data-center operators; video of learned cable manipulation" },
-        { "url": "https://darwinrobotics.ai/team", "publisher": "Darwin Robotics", "reviewed": "2026-11-17", "supports": "published team" },
-        { "url": "https://darwinrobotics.ai/", "publisher": "Darwin Robotics", "reviewed": "2026-11-17", "supports": "Darwin-0 named only in the image alt text; NVIDIA Inception programme logo" }
+        {
+          "url": "https://darwinrobotics.ai/research/darwin-raises-3-6m-pre-seed",
+          "publisher": "Darwin Robotics",
+          "published": "2026-11-05",
+          "reviewed": "2026-11-17",
+          "supports": "USD 3.6M pre-seed led by Link Ventures with Y Combinator, Liquid 2, Rebel Fund, Globivest, Script Capital and unnamed angels; learning from human demonstrations under onsite supervision"
+        },
+        {
+          "url": "https://www.ycombinator.com/companies/darwin",
+          "publisher": "Y Combinator",
+          "reviewed": "2026-11-17",
+          "supports": "founded 2025, San Francisco, batch F25, team of 4, initial deployments targeted for early 2027"
+        },
+        {
+          "url": "https://www.ycombinator.com/launches/WnO-darwin-robotics-robot-technicians-for-ai-infrastructure",
+          "publisher": "Y Combinator (company launch post)",
+          "published": "2026-11-02",
+          "reviewed": "2026-11-17",
+          "supports": "data centers first; in discussions with hyperscalers and data-center operators; video of learned cable manipulation"
+        },
+        {
+          "url": "https://darwinrobotics.ai/team",
+          "publisher": "Darwin Robotics",
+          "reviewed": "2026-11-17",
+          "supports": "published team"
+        },
+        {
+          "url": "https://darwinrobotics.ai/",
+          "publisher": "Darwin Robotics",
+          "reviewed": "2026-11-17",
+          "supports": "Darwin-0 named only in the image alt text; NVIDIA Inception programme logo"
+        }
       ]
     },
     {
       "tab": "Entidades limpias",
-      "sheet_rows": [26, 27],
+      "sheet_rows": [
+        26,
+        27
+      ],
       "record": "one manufacturer entity (org_darwin_robotics) and one robot-model entity for Darwin-0; premium tab, contents only in the workbook and the backend"
     }
   ],
   "updated": [],
   "live_values": "Valuation formulas of two existing Humanoids rows recalculated from market data (sheet rows 88 and 93); no existing cell was edited.",
   "discarded": [
-    { "tab": "Deployments", "reason": "No counterparty, site or agreement is named. Talks with hyperscalers and a 2027 target are an intention, not a deployment; the cable work is a demonstration. The 2027 target is recorded in Humanoids (Release)." },
-    { "tab": "Relaciones evidencia", "reason": "Its schema is specific to the container-handling task; no Darwin evidence fits it." },
-    { "tab": "Software", "reason": "No commercial software product; learning from demonstrations is a method, not a product." },
-    { "tab": "Stocks", "reason": "Private company." },
-    { "tab": "Other Robots", "reason": "Kept in Humanoids, where the company presents itself (GitHub organisation: Humanoid Robots), with the morphology flagged as not stated." }
+    {
+      "tab": "Deployments",
+      "reason": "No counterparty, site or agreement is named. Talks with hyperscalers and a 2027 target are an intention, not a deployment; the cable work is a demonstration. The 2027 target is recorded in Humanoids (Release)."
+    },
+    {
+      "tab": "Relaciones evidencia",
+      "reason": "Its schema is specific to the container-handling task; no Darwin evidence fits it."
+    },
+    {
+      "tab": "Software",
+      "reason": "No commercial software product; learning from demonstrations is a method, not a product."
+    },
+    {
+      "tab": "Stocks",
+      "reason": "Private company."
+    },
+    {
+      "tab": "Other Robots",
+      "reason": "Kept in Humanoids, where the company presents itself (GitHub organisation: Humanoid Robots), with the morphology flagged as not stated."
+    }
   ],
-  "not_found": ["height", "weight", "walking and running speed", "payload", "runtime", "degrees of freedom", "sensors and compute", "battery", "price", "named customer or site", "commercial software", "YouTube channel", "legal entity (third parties say LLC, GitHub says Inc.)"],
+  "not_found": [
+    "height",
+    "weight",
+    "walking and running speed",
+    "payload",
+    "runtime",
+    "degrees of freedom",
+    "sensors and compute",
+    "battery",
+    "price",
+    "named customer or site",
+    "commercial software",
+    "YouTube channel",
+    "legal entity (third parties say LLC, GitHub says Inc.)"
+  ],
   "conflicts": [
     "Morphology: GitHub says Humanoid Robots while the only image shows two arms on a stand at a server rack. Recorded as not stated; no humanoid form, mobility or specification inferred.",
     "NVIDIA: Inception programme logo on the website and a citation of an NVIDIA technical post; no NVIDIA investment.",
@@ -55,5 +150,18 @@
   "relations": "Maker alias Darwin -> org_darwin_robotics added to tools/relations-aliases.json (public name only). No Deployments record names Darwin, so coverage is unchanged.",
   "workbook_write": "Google Sheets in Javier's browser (Autosheet needed a new sign-in): one row inserted inside the Humanoids table, clipboard paste as values, entity dates typed as text; every cell read back from a new export and compared with the plan (56 of 56 equal).",
   "export": "Google Drive download as .xlsx, then python3 -I tools/workbook-xlsx-to-json.py <book.xlsx> <export.json> --compare <previous export>.",
-  "status": "in_progress"
+  "status": "completed",
+  "published": {
+    "pr": "https://github.com/integrarobot/whyhumanoid/pull/32",
+    "commit": "5f9488a",
+    "import_run": "https://github.com/integrarobot/whyhumanoid/actions/runs/44092011587",
+    "import_counts": {
+      "humanoids": 134,
+      "humanoids_internal": 2,
+      "entities": 26,
+      "deployments": 119
+    },
+    "relations_config": "6bbf2dc8095cd81d",
+    "close": "WH-20261117-1427-darwin-actualizacion-completa"
+  }
 }
