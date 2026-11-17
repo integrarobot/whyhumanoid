@@ -42,6 +42,7 @@ server/test/               tests, synthetic fixtures only
 DEPLOYMENT.md              exact remaining settings for test and production
 AGENTS.md, CLAUDE.md       agent instructions (Spanish), including the mandatory close of every delivery
 ops/entregas/              delivery register: one immutable close per piece of work, read by Codex (README inside)
+ops/weekly-update/         state and public run records of the update; ejemplo-darwin.md is the worked example
 ```
 
 ## Commands
@@ -54,6 +55,8 @@ node tools/build-site.mjs --check           # index.html is the build of data/, 
 node tools/build-app.mjs --check            # app/ is the build of server/public (premium app at whyhumanoid.com/app/)
 node tools/relations.mjs --check            # aliases match the catalogue; robot pages link only public preview rows
 node tools/relations.mjs --from <export>    # private review report of the relations (stdout only)
+python3 -I tools/workbook-xlsx-to-json.py <book.xlsx> <export.json> [--compare <old export>]
+                                            # private export from the workbook's .xlsx download (needs openpyxl)
 (cd tools && npm ci && node verify-site.mjs) # headless render: the whole free catalogue, search and filters work
 node tools/check-public.mjs                 # public data guard
 (cd server && npm ci && npm test)           # API tests

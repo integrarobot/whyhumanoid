@@ -2,5 +2,14 @@
   "note": "State of the weekly update (skill .claude/skills/whyhumanoid-weekly-update). Update last_processed_edition only after the workbook is updated and whyhumanoid.com is published and verified.",
   "last_processed_edition": null,
   "known_pending": [],
-  "runs": []
+  "runs": [
+    {
+      "date": "2026-11-17",
+      "kind": "manual",
+      "subject": "Darwin Robotics (one company, full process test)",
+      "editions": [],
+      "result": "in_progress",
+      "file": "ops/weekly-update/runs/2026-11-17-darwin.json"
+    }
+  ]
 }

@@ -7,12 +7,16 @@ import { DATASETS, publicRowLimit } from '../src/datasets.js';
 const legacy = readLegacySnapshot();
 const updates = readVerifiedUpdates();
 
-test('the committed free catalogue holds 133 distinct public robots', () => {
+// 133 legacy robots plus each verified insertion (Darwin-0, 17 Nov 2026, is the first). Ids and sheet rows stay unique.
+const EXPECTED_PUBLIC = 133 + updates.inserted.length;
+
+test('the committed free catalogue holds every legacy and inserted public robot once', () => {
   const out = buildExport(legacy, updates);
   const records = JSON.parse(out.json).records;
-  assert.equal(records.length, 133);
-  assert.equal(new Set(records.map((r) => r.id)).size, 133);
-  assert.equal(new Set(records.map((r) => r.sheet_row)).size, 133);
+  assert.ok(updates.inserted.length >= 1);
+  assert.equal(records.length, EXPECTED_PUBLIC);
+  assert.equal(new Set(records.map((r) => r.id)).size, EXPECTED_PUBLIC);
+  assert.equal(new Set(records.map((r) => r.sheet_row)).size, EXPECTED_PUBLIC);
   assert.ok(!records.some((r) => /duplicate reference|exclude this row/i.test(Object.values(r).join(' '))));
 });
 
@@ -30,7 +34,7 @@ test('an inserted row the sheet marks as a duplicate is withheld from the free c
   };
   const out = buildExport(legacy, { ...updates, inserted: [...updates.inserted, duplicate] });
   assert.deepEqual(out.withheld, [999]);
-  assert.equal(out.count, 133);
+  assert.equal(out.count, EXPECTED_PUBLIC);
 });
 
 test('all 13 tabs stay; Humanoids is free in full and the others show 10 source sheet rows', () => {

@@ -110,10 +110,11 @@ Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json`.
 7. **Guarda el plan** en `ops/weekly-update/runs/<fecha>.json`: añadidos, actualizados (campo, valor anterior y nuevo), descartados con motivo y pendientes, cada uno con fuentes y fechas.
 
 8. **Escribe en el libro maestro.** Preferencia: Autosheet, con instrucciones exactas por pestaña, fila y columna; si no, el navegador de Javier. Vuelve a leer las filas escritas y compáralas con el plan.
+   - En el navegador: Humanoids es una tabla que termina en la última fila (inserta la fila nueva con «Insertar 1 fila debajo» de la última para que quede dentro); pega una tabla HTML con «pegar solo valores» (Cmd+Mayús+V), que conserva el formato y los saltos de línea; escribe como texto las fechas que la hoja guarda como texto (`'2026-11-17`). Caso completo: `ops/weekly-update/ejemplo-darwin.md`.
    - Si falla Sheets o la lectura no cuadra: marca la ejecución `pending_sheets`, mueve los cambios a `known_pending`, no exportes ni publiques, no declares sincronización e informa del bloqueo exacto.
 
 9. **Exporta y publica por el flujo probado** (README, «Refresh»):
-   1. Exporta el libro actualizado a un fichero privado fuera de Git (pestaña → filas, cabecera primero).
+   1. Exporta el libro actualizado a un fichero privado fuera de Git (pestaña → filas, cabecera primero): descarga .xlsx con el conector de Google Drive y `python3 -I tools/workbook-xlsx-to-json.py <libro.xlsx> <export.json> --compare <exportación anterior>`. Solo deben aparecer tus filas y los valores en vivo de Valuation.
    2. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <fecha ISO>` (escribe solo las vistas previas en `data/preview/`).
    3. Humanoids: genera la vista con el código de importación (ver cabecera de `tools/sync-humanoids.mjs`) y ejecuta `tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs` y `tools/build-site.mjs`.
    4. Comprueba: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/relations.mjs --from <export>` y `--check` (sección «Relaciones de Deployments»), `node tools/check-public.mjs`, `node tools/export-database.mjs --check`, `cd server && npm test`, `cd tools && node verify-site.mjs`.
