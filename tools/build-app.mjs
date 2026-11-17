@@ -9,6 +9,7 @@
 //   node tools/build-app.mjs --check   fail if app/ differs from what would be written
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { pageLinks } from './build-pages.mjs';
 
 export const APP_URL = 'https://whyhumanoid.com/app/';
 // Until whyhumanoid.com's DNS moves to Cloudflare (DEPLOYMENT.md, section 0.1), the API keeps its workers.dev address.
@@ -45,8 +46,10 @@ export function buildApp() {
   const version = createHash('sha256').update(js).digest('hex').slice(0, 12);
   const tag = '<script src="premium.js"></script>';
   if (!html.includes(tag)) throw new Error(`server/public/index.html: ${tag} not found`);
+  // Public company pages the app may link to (ids and paths only, all public). A JSON block is data, not script.
+  const pages = JSON.stringify({ companies: pageLinks().companies }).replace(/</g, '\\u003c');
   return {
-    'index.html': html.replace(anchor, head).replace(tag, `<script src="premium.js?v=${version}"></script>`),
+    'index.html': html.replace(anchor, head).replace(tag, `<script type="application/json" id="wh-pages">${pages}</script>\n<script src="premium.js?v=${version}"></script>`),
     'premium.js': js,
   };
 }

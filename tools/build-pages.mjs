@@ -1,0 +1,441 @@
+#!/usr/bin/env node
+// Permanent public pages (Javier, 17 Nov 2026): one static page per catalogue robot (/robots/<slug>/) and one per
+// public company (/companies/<slug>/), with the main content in the HTML itself, readable without JavaScript.
+//
+// Built only from public inputs: the free Humanoids catalogue (data/humanoids-catalogue.json), the 10-row previews of
+// Deployments and Entities (data/preview/) and the public relations graph of those previews (tools/relations.mjs).
+// Premium rows never reach these pages; companies that appear only in premium rows get no public page yet (that
+// split is task 6 of ops/backlog.md, for Javier to decide). Nothing is invented: every value is shown as recorded.
+//
+// Addresses are stable. A robot's slug ends with its catalogue id; a company's slug is its id without the prefix.
+// tools/permalinks.json records every slug ever published (append-only). When a name changes, the old address gets
+// a small redirect page to the new one (it works without JavaScript); an address whose robot or company left the
+// public catalogue gets a page saying so. 404.html sends any other /robots/<anything>-<id>/ to the current page.
+//
+//   node tools/build-pages.mjs          write robots/, companies/, sitemap.xml, 404.html, data/pages.json, registry
+//   node tools/build-pages.mjs --check  fail if any of them differs from the build or a stale page is left behind
+
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { buildData } from './build-site.mjs';
+import { PAGE_FIELDS, catalogueIndex, previewGraph } from './relations.mjs';
+import { PLAN } from '../server/src/pricing.js';
+
+export const SITE = 'https://whyhumanoid.com';
+const APP = `${SITE}/app/`;
+const root = new URL('../', import.meta.url);
+const read = (p) => JSON.parse(readFileSync(new URL(p, root), 'utf8'));
+const REGISTRY = 'tools/permalinks.json';
+const GENERATED_DIRS = ['robots', 'companies'];
+
+// ---------- helpers ----------
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const nz = (v) => v !== null && v !== undefined && String(v).trim() !== '';
+const human = (v) => String(v ?? '').replace(/_/g, ' ');
+const NA = /^(not\b|n\/a\b|unknown\b|undisclosed\b|none\b|no\b|tbd\b|to be\b|pending\b|unverified\b)/i;
+const known = (v) => nz(v) && !NA.test(String(v).trim());
+const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
+// Text with URLs as links that stop before trailing punctuation; line breaks kept.
+function text(v) {
+  if (!nz(v)) return '<span class="na">Not recorded</span>';
+  return esc(v).replace(/https?:\/\/[^\s<]+/g, (u) => {
+    let tail = '';
+    for (let m; (m = u.match(/(&quot;|&#39;|[.,;:!?\]]|\))$/)) && !(m[1] === ')' && u.includes('('));) { tail = m[1] + tail; u = u.slice(0, -m[1].length); }
+    return `<a href="${u}" rel="noopener noreferrer">${u}</a>${tail}`;
+  }).replace(/\n/g, '<br>');
+}
+const ext = (u, label) => `<a href="${esc(u)}" rel="noopener noreferrer">${esc(label ?? host(u))}</a>`;
+const clip = (s, n = 158) => { s = s.replace(/\s+/g, ' ').trim(); if (s.length <= n) return s; const cut = s.slice(0, n - 1); return `${cut.slice(0, cut.lastIndexOf(' ') > 80 ? cut.lastIndexOf(' ') : cut.length).replace(/[,;:.\s]+$/, '')}…`; };
+const list = (xs) => (xs.length <= 1 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
+const STATUS = (v) => { v = String(v || '').toLowerCase(); return v === 'operational' ? ['op', 'In operation'] : v === 'pilot' || v === 'testing' ? ['pilot', 'Pilot or trial'] : v === 'planned' ? ['ann', 'Announced'] : ['unc', 'Unconfirmed']; };
+const RANK = { op: 0, pilot: 1, ann: 2, unc: 3 };
+const STATUS_LABEL = { op: 'In operation', pilot: 'Pilot or trial', ann: 'Announced', unc: 'Unconfirmed' };
+const ROLE = { maker: 'Maker', customer_operator: 'Operator or customer', customer_investor: 'Customer and investor', technology_partner: 'Technology partner or integrator' };
+const firstUrl = (v) => String(v || '').match(/https?:\/\/[^\s|,;]+/)?.[0] ?? null;
+
+export const robotPath = (slug) => `/robots/${slug.replace(/^r-/, '')}/`;
+export const companySlug = (id) => id.replace(/^(mfr|org)_/, '').replace(/_/g, '-');
+
+// ---------- model: what is public ----------
+export function publicModel() {
+  const exported = read('data/humanoids-catalogue.json');
+  const overrides = read('tools/humanoids-facet-overrides.json').overrides;
+  const { models } = buildData(exported, overrides, null);
+  const facets = new Map(models.map((m) => [m.id, m]));
+  const records = new Map(exported.records.map((r) => [r.id, r]));
+  const index = catalogueIndex();
+  const { graph } = previewGraph();
+  const depPreview = read('data/preview/deployments.json');
+  const rows = new Map(depPreview.rows.map((r) => [r.record_id, r]));
+  const entities = new Map(read('data/preview/entities.json').rows.map((r) => [r.entity_id, r]));
+  const tabs = read('data/preview/index.json').tabs;
+  const depTotal = tabs.find((t) => t.id === 'deployments')?.entries_total ?? null;
+
+  const makerOf = new Map(graph.robots.map((r) => [r.id, r.maker]));
+  const companies = graph.companies.map((c) => ({ ...c, slug: companySlug(c.id) }));
+  const bySlug = new Map();
+  for (const c of companies) {
+    if (bySlug.has(c.slug)) c.slug = c.id.replace(/_/g, '-'); // two ids with the same name: keep the prefix
+    if (bySlug.has(c.slug)) throw new Error(`company slug clash: ${c.id} and ${bySlug.get(c.slug).id}`);
+    bySlug.set(c.slug, c);
+  }
+  const companyById = new Map();
+  for (const c of companies) { companyById.set(c.id, c); for (const o of c.organization_ids || []) if (!companyById.has(o)) companyById.set(o, c); }
+
+  // Public preview records, in sheet order, with only the fields a page shows (no record identifiers).
+  const groups = [...new Set(graph.records.map((r) => r.deployment_id ?? r.record_id))];
+  const recs = graph.records.map((g) => {
+    const row = rows.get(g.record_id);
+    return {
+      row: row._row, group: groups.indexOf(g.deployment_id ?? g.record_id), robot: g.robot, level: g.level,
+      maker: g.maker, operator: g.operator, role: g.role,
+      ...Object.fromEntries(PAGE_FIELDS.map((f) => [f, row[f] ?? null])),
+    };
+  }).sort((a, b) => a.row - b.row);
+
+  const robots = index.map((ix) => ({
+    id: ix.id, slug: ix.slug, path: robotPath(ix.slug), name: ix.robot, lab: ix.lab,
+    record: records.get(ix.id), facet: facets.get(ix.id),
+    maker: companyById.get(makerOf.get(ix.id)) ?? null,
+    records: recs.filter((r) => r.robot === ix.id),
+  }));
+  const robotById = new Map(robots.map((r) => [r.id, r]));
+  for (const c of companies) {
+    c.path = `/companies/${c.slug}/`;
+    const ids = new Set([c.id, ...(c.organization_ids || [])]);
+    c.robotList = (c.robots || []).map((id) => robotById.get(id)).filter(Boolean);
+    c.asMaker = recs.filter((r) => r.maker === c.id);
+    c.asOrg = recs.filter((r) => ids.has(r.operator) && r.maker !== c.id);
+    c.entity = c.entity_id && /^org_/.test(c.entity_id) ? entities.get(c.entity_id) ?? null : null;
+  }
+  return { robots, robotById, companies, companyById, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal };
+}
+
+// ---------- layout ----------
+const FONTS = 'https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap';
+const ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E";
+function page({ title, description, path, body, type = 'website', noindex = false, refresh = null }) {
+  const url = SITE + path;
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(description)}">
+<link rel="canonical" href="${esc(url)}">
+${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta http-equiv="refresh" content="0; url=${esc(refresh)}">\n` : ''}<meta name="theme-color" content="#0B0C0E">
+<meta property="og:type" content="${type}">
+<meta property="og:site_name" content="Why Humanoid?">
+<meta property="og:url" content="${esc(url)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+<meta property="og:image" content="${SITE}/assets/og/whyhumanoid-og-v1.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="${ICON}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="${FONTS}">
+<link rel="stylesheet" href="/assets/pages.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><nav aria-label="Site"><a href="/robots/">Robots</a><a href="/companies/">Companies</a><a href="/app/">Full database</a></nav></header>
+<main>
+${body}
+</main>
+<footer class="foot"><p>Why Humanoid? by Integrarobot. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
+</body>
+</html>
+`;
+}
+const kv = (pairs) => `<dl class="kv">${pairs.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join('')}</dl>`;
+const crumbs = (items) => `<nav class="crumbs" aria-label="Breadcrumb">${items.map(([href, label]) => (href ? `<a href="${href}">${esc(label)}</a>` : `<span aria-current="page">${esc(label)}</span>`)).join(' <span aria-hidden="true">/</span> ')}</nav>`;
+
+// The free preview records of a robot or company, grouped by deployment, as on the catalogue page.
+function recordsHtml(items, model, { showRobot = true, showOrg = true } = {}) {
+  const groups = new Map();
+  for (const r of items) { if (!groups.has(r.group)) groups.set(r.group, []); groups.get(r.group).push(r); }
+  return [...groups.values()].map((g) => {
+    const r = g[0];
+    const where = [r.site_name, [r.city, r.region, r.country].filter(nz).join(', ')].filter(nz).join(' · ');
+    const head = [];
+    if (showOrg) {
+      const c = r.operator ? model.companyById.get(r.operator) : null;
+      head.push(`<b>${c ? `<a href="${c.path}">${esc(r.organization_name || c.name)}</a>` : esc(r.organization_name || 'Organisation not recorded')}</b> <span class="dim">${esc((ROLE[r.organization_role] || human(r.organization_role || 'organisation')).toLowerCase())}</span>`);
+    }
+    if (showRobot) {
+      const rb = r.robot !== null ? model.robotById.get(r.robot) : null;
+      const recorded = [r.manufacturer, r.robot_model].filter(nz).join(' ') + (nz(r.robot_version) && !/^not disclosed$/i.test(r.robot_version) ? ` (version ${r.robot_version})` : '');
+      head.push(`<span class="dim">Robot as recorded:</span> ${esc(recorded || 'not recorded')}${rb ? ` → <a href="${rb.path}">${esc(rb.name)} by ${esc(rb.lab)}</a>` : ''}`);
+    }
+    const line = g.some((x) => x.level === 'family');
+    const claims = g.map((x) => {
+      const [k, l] = STATUS(x.operational_status);
+      const u = firstUrl(x.source_url);
+      const metric = nz(x.metric_name) ? `${human(x.metric_name)}: ${nz(x.metric_operator) && x.metric_operator !== '=' ? `${x.metric_operator} ` : ''}${x.metric_value ?? ''}${nz(x.metric_unit) ? ` ${human(x.metric_unit)}` : ''}${nz(x.metric_period) ? ` (${human(x.metric_period)})` : ''}` : '';
+      const facts = [
+        metric && esc(metric),
+        nz(x.evidence_level) ? `Evidence ${esc(x.evidence_level)}` : 'Evidence level not recorded',
+        nz(x.verification_status) ? esc(human(x.verification_status)) : '',
+        nz(x.observed_start) ? `Observed ${esc(x.observed_start)}${nz(x.observed_end) ? ` to ${esc(x.observed_end)}` : ''}` : '',
+        `${u ? ext(u, `${x.source_publisher || x.source_title || 'Source'} ↗`) : `${esc(x.source_publisher || x.source_title || 'Source')} (no URL)`}${nz(x.publication_date) ? `, published ${esc(x.publication_date)}` : ', publication date not recorded'}`,
+      ].filter(Boolean);
+      return `<li><span class="st ${k}">${l}</span> ${esc(x.task_description || human(x.task_category || 'Task not described'))}<p class="facts">${facts.join(' · ')}</p></li>`;
+    }).join('');
+    return `<article class="dep"><header>${head.map((h) => `<p>${h}</p>`).join('')}${where ? `<p class="where">${esc(where)}</p>` : ''}${line ? '<p class="note">The record names the same model line, not necessarily the version described here.</p>' : ''}</header><ul>${claims}</ul></article>`;
+  }).join('');
+}
+const STATUS_KEY = '<p class="key">Status as recorded: In operation · Pilot or trial · Announced (planned or agreed, not evidence of work) · Unconfirmed (claimed by a vendor or unresolved).</p>';
+const price = () => PLAN.display || '€100 per year';
+function previewNote(model, n, what) {
+  const total = model.depTotal ? `the first 10 of ${model.depTotal} Deployments records` : 'the first 10 Deployments records';
+  return n
+    ? `<p>${n} of the 10 free preview records (${total}) ${n === 1 ? 'names' : 'name'} ${what}.</p>`
+    : `<p>None of the 10 free preview records (${total}) names ${what}. That is not evidence that there are no deployments.</p>`;
+}
+
+// ---------- robot page ----------
+const SPEC_FIELDS = [
+  ['Height (cm)', 'Height (cm)'], ['Weight (kg)', 'Weight (kg)'], ['Payload or carry (kg)', 'Payload/carry (kg)'], ['Runtime (hours)', 'Power (hours)'],
+  ['Walking speed (km/h)', 'Walk (km/h)'], ['Running speed (km/h)', 'Run (km/h)'], ['Unveiled', 'Release'], ['Platform and mobility', 'Platform / mobility'],
+  ['Degrees of freedom and grippers', 'DoF / grippers'], ['Sensors and compute', 'Sensors / compute'], ['Battery and charging', 'Battery / charging'],
+  ['Software', 'Software'], ['Voice', 'Voice'], ['Clothed', 'Clothed?'], ['Autonomy and supervision', 'Autonomy / supervision'],
+];
+const MARKET_FIELDS = [['Price and availability', 'Price / availability'], ['B2B clients', 'B2B Client']];
+const COMPANY_FIELDS = [['Company country', 'Country'], ['Listing', 'Stock'], ['Valuation', 'Valuation'], ['Rounds', 'Rounds'], ['Investors', 'Investors'], ['Careers', 'Careers']];
+const LINK_FIELDS = [['Website', 'Web'], ['X', 'X'], ['LinkedIn', 'Linkedin'], ['YouTube', 'Youtube']];
+
+function robotSummary(rb) {
+  const r = rb.record;
+  const parts = [`${rb.name} is a humanoid robot by ${rb.lab}${known(r.Country) ? ` (${r.Country})` : ''}.`];
+  if (known(r['Platform / mobility'])) parts.push(`Platform: ${r['Platform / mobility']}.`);
+  // Only plain numbers go into the summary sentence; every value, as recorded, is in Key facts.
+  const nums = [['height', 'Height (cm)', 'cm'], ['weight', 'Weight (kg)', 'kg'], ['payload', 'Payload/carry (kg)', 'kg'], ['runtime', 'Power (hours)', 'h']]
+    .filter(([, f]) => /^~?\d+(\.\d+)?$/.test(String(r[f] ?? '').trim())).map(([l, f, u]) => `${l} ${String(r[f]).trim()} ${u}`);
+  if (nums.length) parts.push(`Recorded ${list(nums)}.`);
+  if (known(r['Price / availability'])) parts.push(`Price and availability: ${r['Price / availability']}.`);
+  return parts.join(' ');
+}
+
+function robotPage(rb, model) {
+  const r = rb.record, chk = rb.facet.chk, m = rb.maker;
+  const summary = robotSummary(rb);
+  const links = LINK_FIELDS.filter(([, f]) => /^https?:\/\//.test(r[f] ?? '')).map(([l, f]) => ext(r[f], `${l} ↗`));
+  const sources = chk.urls.map((u) => `<li>${ext(u, u)}</li>`).join('');
+  const body = `${crumbs([['/', 'Why Humanoid?'], ['/robots/', 'Robots'], [null, rb.name]])}
+<article class="entity">
+<p class="kicker">Humanoid robot · catalogue record ${rb.id}</p>
+<h1>${esc(rb.name)} <em>by ${m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</em></h1>
+<p class="lede">${esc(summary)}</p>
+${known(r['Buyer checks']) ? `<p class="note"><b>Before comparing:</b> ${text(r['Buyer checks'])}</p>` : ''}
+<section><h2>Key facts</h2>${kv(SPEC_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
+<section><h2>Market</h2>${kv(MARKET_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
+<section><h2>Company</h2>${kv([['Maker', m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab)], ...COMPANY_FIELDS.map(([l, f]) => [l, text(r[f])])])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
+<section><h2>Deployments: free preview</h2>${previewNote(model, rb.records.length, 'this robot or its model line')}${recordsHtml(rb.records, model, { showRobot: false })}${rb.records.length ? STATUS_KEY : ''}
+<p class="cta"><a href="${APP}#robot/${rb.id}">Every Deployments record checked for this robot, with operators, tasks, status and sources, is in the full database (${esc(price())}) →</a></p></section>
+<section><h2>Sources and checks</h2>${kv([['Last checked', text(chk.date)], ['Checks recorded', chk.statements.length ? esc(chk.statements.join('; ')) : '<span class="na">Not recorded</span>'], ['Model identity', text(r['Model checked'])]])}${sources ? `<ul class="sources">${sources}</ul>` : '<p class="na">No linked sources.</p>'}</section>
+<p class="meta">Values as recorded in row ${r.sheet_row} of the Humanoids tab, free catalogue snapshot ${esc(model.snapshot)}. Also on the <a href="/#${esc(rb.slug)}">catalogue page</a>.</p>
+</article>`;
+  return page({ title: `${rb.name} by ${rb.lab}: specifications and sources · Why Humanoid?`, description: clip(`${summary} Specifications, sources and deployment preview.`), path: rb.path, body, type: 'article' });
+}
+
+// ---------- company page ----------
+// Company facts come from its robots' catalogue rows; when they differ between robots, each value names its robot.
+function companyFacts(c) {
+  const out = [];
+  for (const [l, f] of COMPANY_FIELDS) {
+    const vals = c.robotList.map((rb) => [rb, rb.record[f]]).filter(([, v]) => nz(v));
+    const distinct = [...new Set(vals.map(([, v]) => v))];
+    if (!vals.length) continue;
+    out.push([l, distinct.length === 1 ? text(distinct[0]) : vals.map(([rb, v]) => `${text(v)} <span class="dim">(row for ${esc(rb.name)})</span>`).join('<br>')]);
+  }
+  return out;
+}
+function companySummary(c, model) {
+  const parts = [];
+  if (c.robotList.length) {
+    const country = [...new Set(c.robotList.map((rb) => rb.record.Country).filter(known))];
+    parts.push(`${c.name} makes ${list(c.robotList.map((rb) => rb.name))}, ${c.robotList.length === 1 ? 'a humanoid robot' : 'humanoid robots'} in the Why Humanoid? catalogue${country.length ? `; company country as recorded: ${country.join(', ')}` : ''}.`);
+  }
+  if (c.asOrg.length) {
+    const roles = [...new Set(c.asOrg.map((r) => (ROLE[r.organization_role] || human(r.organization_role || 'organisation')).toLowerCase()))];
+    parts.push(`${c.name} appears as ${list(roles)} in ${c.asOrg.length} of the 10 free preview Deployments records${c.countries?.length ? ` (${c.countries.join(', ')})` : ''}.`);
+  }
+  if (c.asMaker.length) parts.push(`${c.asMaker.length} of the 10 free preview Deployments records name ${c.name} as the maker.`);
+  if (!parts.length) parts.push(`${c.name} is in the Why Humanoid? database.`);
+  return parts.join(' ');
+}
+function companyPage(c, model) {
+  const summary = companySummary(c, model);
+  const facts = companyFacts(c);
+  const link = (f) => [...new Set(c.robotList.map((rb) => rb.record[f]).filter((u) => /^https?:\/\//.test(u ?? '')))];
+  const links = LINK_FIELDS.flatMap(([l, f]) => link(f).map((u) => ext(u, `${l} ↗`)));
+  const used = new Map();
+  const line = new Map(); // robot -> true while every record names only its model line
+  for (const r of c.asOrg) {
+    if (r.robot === null) continue;
+    const s = STATUS(r.operational_status)[0];
+    if (!used.has(r.robot) || RANK[s] < RANK[used.get(r.robot)]) used.set(r.robot, s);
+    line.set(r.robot, (line.get(r.robot) ?? true) && r.level === 'family');
+  }
+  const e = c.entity;
+  const sources = [...new Set([
+    ...c.robotList.flatMap((rb) => rb.facet.chk.urls),
+    ...[...c.asOrg, ...c.asMaker].map((r) => firstUrl(r.source_url)).filter(Boolean),
+    ...(e && /^https?:\/\//.test(e.reference_url ?? '') ? [e.reference_url] : []),
+  ])];
+  const roles = Object.entries(c.roles || {}).map(([k, n]) => `${ROLE[k] || human(k)} (${n} of the free preview records)`);
+  const body = `${crumbs([['/', 'Why Humanoid?'], ['/companies/', 'Companies'], [null, c.name]])}
+<article class="entity">
+<p class="kicker">Company${c.robotList.length ? ' · humanoid robot maker' : ''}</p>
+<h1>${esc(c.name)}</h1>
+<p class="lede">${esc(summary)}</p>
+<section><h2>Key facts</h2>${kv([
+    ...(c.robotList.length ? [['Robots in the catalogue', c.robotList.map((rb) => `<a href="${rb.path}">${esc(rb.name)}</a>`).join('<br>')]] : []),
+    ...(used.size ? [['Robots in its preview records', [...used].map(([id, s]) => { const rb = model.robotById.get(id); return `<a href="${rb.path}">${esc(rb.name)} by ${esc(rb.lab)}</a> <span class="dim">${STATUS_LABEL[s]}${line.get(id) ? ' · the records name its model line, not this version' : ''}</span>`; }).join('<br>')]] : []),
+    ...(roles.length ? [['Roles in the free preview', esc(roles.join('; '))]] : []),
+    ...facts,
+    ...(e ? [['Identity record', `${esc(e.canonical_name || c.name)}${nz(e.entity_type) ? ` · ${esc(human(e.entity_type))}` : ''}${nz(e.reviewed_at) ? ` · reviewed ${esc(e.reviewed_at)}` : ''}`]] : []),
+  ])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
+${c.robotList.length ? `<section><h2>Robots</h2><ul class="cards">${c.robotList.map((rb) => `<li><a href="${rb.path}"><b>${esc(rb.name)}</b></a><span>${esc(robotSummary(rb))}</span></li>`).join('')}</ul></section>` : ''}
+<section><h2>Deployments: free preview</h2>${previewNote(model, c.asOrg.length + c.asMaker.length, 'this company')}
+${c.asMaker.length ? `<h3>As maker</h3>${recordsHtml(c.asMaker, model, { showRobot: true, showOrg: true })}` : ''}
+${c.asOrg.length ? `<h3>As organisation</h3>${recordsHtml(c.asOrg, model, { showRobot: true, showOrg: false })}` : ''}
+${c.asOrg.length + c.asMaker.length ? STATUS_KEY : ''}
+<p class="cta"><a href="${APP}#company/${encodeURIComponent(c.id)}">Every record that names this company, by role, is in the full database (${esc(price())}) →</a></p></section>
+<section><h2>Sources</h2>${sources.length ? `<ul class="sources">${sources.map((u) => `<li>${ext(u, u)}</li>`).join('')}</ul>` : '<p class="na">No linked sources.</p>'}</section>
+<p class="meta">Only what the public records say: the free Humanoids catalogue (snapshot ${esc(model.snapshot)}) and the free previews of Deployments and Entities (snapshot ${esc(model.depSnapshot)}). No corporate data is added.</p>
+</article>`;
+  return page({ title: `${c.name}: ${c.robotList.length ? 'humanoid robots, facts and sources' : 'humanoid robot deployments and sources'} · Why Humanoid?`, description: clip(`${summary} Public facts and sources.`), path: c.path, body, type: 'article' });
+}
+
+// ---------- index pages, redirects, sitemap, 404 ----------
+function robotsIndex(model) {
+  const rows = [...model.robots].sort((a, b) => a.lab.localeCompare(b.lab) || a.name.localeCompare(b.name)).map((rb) =>
+    `<tr><td><a href="${rb.path}">${esc(rb.name)}</a></td><td>${rb.maker ? `<a href="${rb.maker.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</td><td>${esc(rb.facet.c.join(' / ') || '')}</td><td>${esc(rb.record['Platform / mobility'] || '')}</td></tr>`).join('');
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Robots']])}<h1>Humanoid robots</h1><p class="lede">All ${model.robots.length} robots in the free Why Humanoid? catalogue, each with its own page: specifications, maker, sources and the free preview of deployments.</p>
+<div class="scroll"><table><thead><tr><th scope="col">Robot</th><th scope="col">Maker</th><th scope="col">Company country</th><th scope="col">Platform</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  return page({ title: 'Humanoid robots: all catalogue pages · Why Humanoid?', description: `All ${model.robots.length} humanoid robots in the free Why Humanoid? catalogue, each with specifications, maker, sources and a deployment preview.`, path: '/robots/', body });
+}
+function companiesIndex(model) {
+  const rows = [...model.companies].sort((a, b) => a.name.localeCompare(b.name)).map((c) =>
+    `<tr><td><a href="${c.path}">${esc(c.name)}</a></td><td>${c.robotList.length ? `Maker of ${c.robotList.map((rb) => `<a href="${rb.path}">${esc(rb.name)}</a>`).join(', ')}` : esc(Object.keys(c.roles || {}).map((k) => ROLE[k] || human(k)).join(', ') || 'In the free preview')}</td><td>${esc([...new Set([...c.robotList.map((rb) => rb.record.Country).filter(known), ...(c.countries || [])])].join(', '))}</td></tr>`).join('');
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Companies']])}<h1>Companies</h1><p class="lede">${model.companies.length} companies with public information in Why Humanoid?: the makers of the catalogue robots and the organisations named in the free preview of deployments. Companies that appear only in subscriber records have no public page yet.</p>
+<div class="scroll"><table><thead><tr><th scope="col">Company</th><th scope="col">In the public data</th><th scope="col">Country as recorded</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  return page({ title: 'Companies: humanoid robot makers and operators · Why Humanoid?', description: `${model.companies.length} companies with public information in Why Humanoid?: humanoid robot makers and the organisations in the free deployment preview.`, path: '/companies/', body });
+}
+function redirectPage(to, label) {
+  const body = `<h1>This page has moved</h1><p class="lede">The page for ${esc(label)} is now at <a href="${to}">${esc(SITE + to)}</a>.</p>`;
+  return page({ title: `Moved: ${label} · Why Humanoid?`, description: `The page for ${label} has moved.`, path: to, body, noindex: true, refresh: to });
+}
+function gonePage(path, kind) {
+  const body = `<h1>No longer in the public catalogue</h1><p class="lede">This ${kind} page is no longer published. See all <a href="/${kind === 'robot' ? 'robots' : 'companies'}/">${kind === 'robot' ? 'robots' : 'companies'}</a>.</p>`;
+  return page({ title: `Not in the public catalogue · Why Humanoid?`, description: `This ${kind} is no longer in the public catalogue.`, path, body, noindex: true });
+}
+function notFound() {
+  const body = `<h1>Page not found</h1><p class="lede">See all <a href="/robots/">robots</a>, all <a href="/companies/">companies</a> or the <a href="/">catalogue</a>.</p>
+<script>
+// A robot address with an unknown or old name but a known catalogue id goes to the current page.
+(function () {
+  var m = location.pathname.match(/^\\/robots\\/[a-z0-9-]*?-?(\\d+)\\/?$/);
+  if (!m) return;
+  fetch('/data/pages.json').then(function (r) { return r.json(); }).then(function (p) { var to = p.robots && p.robots[m[1]]; if (to && to !== location.pathname) location.replace(to); }).catch(function () {});
+})();
+</script>`;
+  return page({ title: 'Page not found · Why Humanoid?', description: 'Page not found.', path: '/404.html', body, noindex: true });
+}
+function sitemap(model) {
+  const lastmod = String(model.snapshot).slice(0, 10);
+  const urls = ['/', '/robots/', '/companies/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path)];
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')}\n</urlset>\n`;
+}
+
+// ---------- build ----------
+// Public map of current addresses: robot id -> path; company id (and its organisation ids) -> path.
+export function pageLinks(model = publicModel()) {
+  const companies = {};
+  for (const c of model.companies) { companies[c.id] = c.path; for (const o of c.organization_ids || []) companies[o] ??= c.path; }
+  return {
+    robots: Object.fromEntries(model.robots.map((r) => [r.id, r.path])),
+    makers: Object.fromEntries(model.robots.filter((r) => r.maker).map((r) => [r.id, r.maker.path])),
+    companies,
+  };
+}
+
+export function buildPages(registry = existsSync(new URL(REGISTRY, root)) ? read(REGISTRY) : { robots: {}, companies: {} }) {
+  const model = publicModel();
+  const files = new Map();
+  for (const rb of model.robots) files.set(`${rb.path.slice(1)}index.html`, robotPage(rb, model));
+  for (const c of model.companies) files.set(`${c.path.slice(1)}index.html`, companyPage(c, model));
+  files.set('robots/index.html', robotsIndex(model));
+  files.set('companies/index.html', companiesIndex(model));
+  files.set('sitemap.xml', sitemap(model));
+  files.set('404.html', notFound());
+  files.set('data/pages.json', `${JSON.stringify(pageLinks(model))}\n`);
+
+  // Registry: every slug ever published stays reachable.
+  const next = { note: registry.note ?? 'Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects.', robots: {}, companies: {} };
+  for (const [id, slugs] of Object.entries(registry.robots ?? {})) next.robots[id] = [...slugs];
+  for (const [id, v] of Object.entries(registry.companies ?? {})) next.companies[id] = { slugs: [...v.slugs], robots: [...(v.robots ?? [])], organization_ids: [...(v.organization_ids ?? [])] };
+  for (const rb of model.robots) { const s = rb.path.split('/')[2]; (next.robots[rb.id] ??= []).includes(s) || next.robots[rb.id].push(s); }
+  for (const c of model.companies) {
+    const e = (next.companies[c.id] ??= { slugs: [], robots: [], organization_ids: [] });
+    if (!e.slugs.includes(c.slug)) e.slugs.push(c.slug);
+    for (const id of c.robots || []) if (!e.robots.includes(id)) e.robots.push(id);
+    for (const o of c.organization_ids || []) if (!e.organization_ids.includes(o)) e.organization_ids.push(o);
+  }
+  const current = new Set([...files.keys()].filter((f) => /^(robots|companies)\/[^/]+\/index\.html$/.test(f)).map((f) => f.split('/')[1]));
+  const add = (file, html) => { if (files.has(file)) throw new Error(`retired address clashes with a current page: ${file}`); files.set(file, html); };
+  for (const [id, slugs] of Object.entries(next.robots)) {
+    const rb = model.robotById.get(Number(id));
+    for (const s of slugs) {
+      if (rb && rb.path === `/robots/${s}/`) continue;
+      if (current.has(s) && files.has(`robots/${s}/index.html`)) throw new Error(`retired robot slug ${s} is now another robot's page`);
+      add(`robots/${s}/index.html`, rb ? redirectPage(rb.path, `${rb.name} by ${rb.lab}`) : gonePage(`/robots/${s}/`, 'robot'));
+    }
+  }
+  for (const [id, v] of Object.entries(next.companies)) {
+    let c = model.companies.find((x) => x.id === id);
+    // A renamed company keeps its robots or organisation ids: its old addresses follow it.
+    c ??= model.companies.find((x) => (x.robots || []).some((r) => v.robots.includes(r)) || (x.organization_ids || []).some((o) => v.organization_ids.includes(o)));
+    for (const s of v.slugs) {
+      if (c && c.slug === s) continue;
+      add(`companies/${s}/index.html`, c ? redirectPage(c.path, c.name) : gonePage(`/companies/${s}/`, 'company'));
+    }
+  }
+  return { files, registry: next, model };
+}
+
+function listGenerated() {
+  const out = [];
+  for (const dir of GENERATED_DIRS) {
+    const base = new URL(`${dir}/`, root);
+    if (!existsSync(base)) continue;
+    const walk = (rel) => { for (const e of readdirSync(new URL(rel, base), { withFileTypes: true })) { const p = `${rel}${e.name}`; if (e.isDirectory()) walk(`${p}/`); else out.push(`${dir}/${p}`); } };
+    walk('');
+  }
+  return out;
+}
+
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  const { files, registry, model } = buildPages();
+  const regText = `${JSON.stringify(registry, null, 2)}\n`;
+  const stale = listGenerated().filter((f) => !files.has(f));
+  if (process.argv.includes('--check')) {
+    const problems = [];
+    for (const [f, body] of files) if (!existsSync(new URL(f, root)) || readFileSync(new URL(f, root), 'utf8') !== body) problems.push(`${f} is not the build`);
+    if (!existsSync(new URL(REGISTRY, root)) || readFileSync(new URL(REGISTRY, root), 'utf8') !== regText) problems.push(`${REGISTRY} lacks addresses of the current build`);
+    for (const f of stale) problems.push(`${f} is not produced by the build`);
+    if (problems.length) {
+      console.error(`Public pages check FAILED (${problems.length}): run node tools/build-pages.mjs\n- ${problems.slice(0, 20).join('\n- ')}`);
+      process.exit(1);
+    }
+  } else {
+    for (const f of stale) rmSync(new URL(f, root));
+    for (const [f, body] of files) { mkdirSync(dirname(fileURLToPath(new URL(f, root))), { recursive: true }); writeFileSync(new URL(f, root), body); }
+    writeFileSync(new URL(REGISTRY, root), regText);
+  }
+  const redirects = [...files.keys()].filter((f) => /^(robots|companies)\/[^/]+\/index\.html$/.test(f)).length - model.robots.length - model.companies.length;
+  console.log(`Public pages ${process.argv.includes('--check') ? 'are current' : 'written'}: ${model.robots.length} robots, ${model.companies.length} companies, ${redirects} retired addresses, sitemap with ${model.robots.length + model.companies.length + 3} URLs.`);
+}

@@ -19,7 +19,8 @@ guard (`tools/check-public.mjs`), the export tests and CI fail if one comes back
 | Left out everywhere | Nobody | rows the sheet marks as duplicates or not for publication; private links (workbook, Drive, mailto:, local addresses), personal contacts and internal editor notes; the backend row key, raw sheet-row pointers (`source_rows`) and importer bookkeeping; third-party GOOGLEFINANCE quote columns of Stocks |
 
 Refresh: the site preview with `node --no-warnings tools/export-database.mjs --from <private export>`, then
-`tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs` and `tools/build-site.mjs`; the full data with the
+`tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs`, `tools/build-pages.mjs`, `tools/build-site.mjs` and
+`tools/build-app.mjs`; the full data with the
 `Import private workbook` workflow (target `production`). The private export stays outside Git.
 
 The full rows published between 16 Nov 2026 (open database) and the paywall stay in this repository's history and in
@@ -29,6 +30,9 @@ copies made then; they cannot be made secret again. See DEPLOYMENT.md, "Exposure
 
 ```
 index.html, CNAME          public catalogue page, built from data/ (complete free Humanoids catalogue)
+robots/, companies/        permanent public pages, one per catalogue robot and per company with public information,
+                           readable without JavaScript; with sitemap.xml, 404.html and data/pages.json, built by
+                           tools/build-pages.mjs from public inputs only (tools/permalinks.json keeps old addresses)
 data/                      humanoids-catalogue.json, humanoids-catalogue.csv, manifest.json, preview/ (10-row previews)
 tools/                     export-humanoids.mjs, build-site.mjs, verify-site.mjs, check-public.mjs
 app/                       premium app served at whyhumanoid.com/app/, built from server/public by tools/build-app.mjs
@@ -54,6 +58,8 @@ node tools/audit-deployments.mjs --from <export.json>   # Deployments sheet vs p
 node tools/export-humanoids.mjs --check     # free catalogue export is current
 node tools/build-site.mjs --check           # index.html is the build of data/, parity with the legacy page
 node tools/build-app.mjs --check            # app/ is the build of server/public (premium app at whyhumanoid.com/app/)
+node tools/build-pages.mjs --check          # robot and company pages, sitemap and 404 are the build of public inputs
+(cd tools && node verify-pages.mjs)         # pages read without JavaScript: titles, canonicals, links, redirects
 node tools/relations.mjs --check            # aliases match the catalogue; robot pages link only public preview rows
 node tools/relations.mjs --from <export>    # private review report of the relations (stdout only)
 node --no-warnings tools/search-tags.mjs --from <export>   # private review of search tags (stdout only)

@@ -176,6 +176,11 @@
   };
   const robotLabel = (rb) => rb ? `${rb.robot} by ${rb.lab}` : '';
   const companyLink = (id, text) => { const c = id && rel.co.get(id); return c ? `<a href="#company/${encodeURIComponent(c.id)}">${esc(text || c.name)}</a>` : esc(text || ''); };
+  // Permanent public pages (tools/build-pages.mjs): robots by slug; companies only when they have public information
+  // (the map is embedded by tools/build-app.mjs; companies seen only in subscriber records have no public page).
+  const PAGES = (() => { try { return JSON.parse(document.getElementById('wh-pages')?.textContent || '{}'); } catch { return {}; } })();
+  const publicRobot = (rb) => `https://whyhumanoid.com/robots/${esc(String(rb.slug).replace(/^r-/, ''))}/`;
+  const publicCompany = (c) => { const p = PAGES.companies?.[c.id] || (c.organization_ids || []).map((o) => PAGES.companies?.[o]).find(Boolean); return p ? `https://whyhumanoid.com${p}` : ''; };
   const robotLink = (id) => { const rb = rel.robots.get(id); return rb ? `<a href="#robot/${rb.id}">${esc(robotLabel(rb))}</a>` : ''; };
   const levelNote = (rr) => (rr.level === 'model' ? 'names this model' : rr.level === 'family' ? 'names the same model line with another or an unstated version' : '');
   const recordedRobot = (r) => [r.manufacturer, r.robot_model].filter(nz).join(' · ') + (nz(r.robot_version) && !/^not disclosed$/i.test(r.robot_version) ? ` (version: ${r.robot_version})` : '');
@@ -338,7 +343,7 @@
     }
     if (id === 'humanoids' && rel.g) {
       const rb = robotOfRow(r);
-      links = rb ? `<section class="db-sec rel-links"><h4 class="lbl">Deployments</h4>${dlgDeployments(rb)}<p><a href="#robot/${rb.id}">Open this robot's deployments page</a> · <a href="https://whyhumanoid.com/#${esc(rb.slug)}">Public robot page ↗</a></p></section>` : '';
+      links = rb ? `<section class="db-sec rel-links"><h4 class="lbl">Deployments</h4>${dlgDeployments(rb)}<p><a href="#robot/${rb.id}">Open this robot's deployments page</a> · <a href="${publicRobot(rb)}">Public robot page ↗</a></p></section>` : '';
     }
     body.innerHTML = (isDep ? `<p class="db-dlg-st"><span class="dst ${status(r)}">${stLabel(status(r))}</span><span class="lbl">operational status in the sheet: ${esc(r.operational_status || 'empty')}</span></p>` : '') + links +
       groupsOf(id, fields).map(([g, fs]) => `<section class="db-sec"><h4 class="lbl">${esc(g)}</h4><dl class="db-kv">` +
@@ -436,7 +441,7 @@
     const hum = await load('humanoids').catch(() => null);
     const row = hum?.rows.find((r) => sameRobot(r, rb));
     $('db-panel').innerHTML = `<div class="db-panel-head"><div><p class="lbl">Robot · Humanoids catalogue record ${rb.id}</p><h2>${esc(rb.robot)} <span class="by">by ${esc(rb.lab)}</span></h2>` +
-      `<p class="rel-meta"><span class="lbl">Maker</span> ${companyLink(rb.maker)}` + (row ? ` · <a href="#humanoids/${encodeURIComponent(row.id)}">All catalogue data</a>` : '') + ` · <a href="https://whyhumanoid.com/#${esc(rb.slug)}">Public robot page ↗</a></p></div></div>` +
+      `<p class="rel-meta"><span class="lbl">Maker</span> ${companyLink(rb.maker)}` + (row ? ` · <a href="#humanoids/${encodeURIComponent(row.id)}">All catalogue data</a>` : '') + ` · <a href="${publicRobot(rb)}">Public robot page ↗</a></p></div></div>` +
       `<section class="rel"><h3>Deployments</h3>${robotDeployments(id, rows)}</section>`;
   }
 
@@ -456,11 +461,12 @@
       : (c.identity === 'catalogue_lab' ? 'Maker in the Humanoids catalogue' : 'Maker outside the Humanoids catalogue, grouped by its name as recorded') +
         (orgs ? `; the organisation ${orgs} in the Deployments sheet has the same name, so it is the same company` : '');
     // A robot linked only by planned or unconfirmed records is not a robot the company uses: show its best recorded status.
-    const used = new Map();
+    const used = new Map(), line = new Map(); // line: every record names only the robot's model line
     asOrg.forEach((rr) => {
       if (rr.robot === null) return;
       const row = rows.get(rr.record_id), s = row ? status(row) : 'unc', prev = used.get(rr.robot);
       if (prev === undefined || STATUS_RANK[s] < STATUS_RANK[prev]) used.set(rr.robot, s);
+      line.set(rr.robot, (line.get(rr.robot) ?? true) && rr.level === 'family');
     });
     const kv = [
       ['Roles', roles || (rel.mode === 'full' ? 'No Deployments record names this company' : 'None in the 10 free preview records')],
@@ -468,10 +474,10 @@
       ['Names as recorded', (c.names || []).map(esc).join('; ') || esc(c.name)],
       ['Countries as recorded', (c.countries || []).map(esc).join('; ') || '<span class="lbl">Not recorded</span>'],
       ['Catalogue robots', (c.robots || []).map((r) => robotLink(r)).join('; ') || '<span class="lbl">None</span>'],
-      ['Robots in its records', [...used].map(([r, s]) => `${robotLink(r)} <span class="lbl">${stLabel(s)}</span>`).join('; ') || '<span class="lbl">None linked</span>'],
+      ['Robots in its records', [...used].map(([r, s]) => `${robotLink(r)} <span class="lbl">${stLabel(s)}${line.get(r) ? ' · model line only' : ''}</span>`).join('; ') || '<span class="lbl">None linked</span>'],
       ['Entities record', c.entity_id ? `<a href="#entities/${encodeURIComponent(c.entity_id)}">${esc(c.entity_id)}</a>` : '<span class="lbl">None</span>'],
     ];
-    $('db-panel').innerHTML = `<div class="db-panel-head"><div><p class="lbl">Company</p><h2>${esc(c.name)}</h2><p>Only what the records say: no corporate data is added.</p></div></div>` +
+    $('db-panel').innerHTML = `<div class="db-panel-head"><div><p class="lbl">Company</p><h2>${esc(c.name)}</h2><p>Only what the records say: no corporate data is added.${publicCompany(c) ? ` <a href="${esc(publicCompany(c))}">Public company page ↗</a>` : ''}</p></div></div>` +
       `<dl class="db-kv rel-kv">${kv.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>` +
       (asMaker.length ? `<section class="rel"><h3>As maker (${asMaker.length} ${asMaker.length === 1 ? 'record' : 'records'})</h3>${depGroups(asMaker, rows, { robot: true, org: true })}</section>` : '') +
       (asOrg.length ? `<section class="rel"><h3>As organisation (${asOrg.length} ${asOrg.length === 1 ? 'record' : 'records'})</h3>${depGroups(asOrg, rows, { robot: true, org: false, maker: true })}</section>` : '') +
