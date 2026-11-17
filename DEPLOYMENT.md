@@ -99,6 +99,25 @@ the portal link for a paying account. No real card is used for testing.
   until 2027-11-17), 4 Stripe events, no new payment. Sessions live in the browser per origin, so a subscriber signs
   in once more at `whyhumanoid.com/app/`; the subscription is unchanged. Not tested by the agent: the portal and the
   success return for a paying account (verified locally; Javier can open "Manage subscription").
+- 17 Nov, 13:10 to 13:35 Madrid: relations between Deployments, catalogue robots and companies (PR #26 `576e4e0`,
+  follow-up PR #27 `6f9c75e`). Javier had confirmed, through Codex, that signing in at whyhumanoid.com/app/ works.
+  Production D1: tables `relation_graphs` and `relation_config` created in the console from
+  `migrations/0002_relations.sql`. Worker version `d231b0f5` (bundle sha256 `f61289ce…d948`, temporary commit
+  `68eb721` on `deploy/worker-bundle-f4bd2db`): `GET /v1/relations` after the entitlement check, `GET
+  /v1/relations/preview` from the 10 public rows only, and the import accepting the relations config. Import run
+  `44082503677` from `main` (12:22 UTC): the 13 tabs identical to the previous import (Deployments 119), relations
+  `ok` with config `c116b189b4aa6dbf`. Coverage (119 records): 69 linked to a catalogue robot (46 name its model, 23
+  its model line with another or an unstated version), 41 only at the maker (13 model not disclosed, 22 a model with
+  no catalogue record of its own, 6 maker outside the catalogue), 9 without a resolvable maker (7 not disclosed, 2
+  several makers); 113 organisations linked by sheet id, 6 without one; 14 catalogue robots and 68 companies with
+  records; 4 organisations recognised as their maker by exact name. Public preview: the 10 rows, all linked to
+  robot 6 at model-line level. Checked in production without any charge or account change: as a visitor, robot,
+  company and record links, the free-preview lock, records outside the preview refused, back, forward and reload,
+  375 px; the free robot pages (`#r-agility-digit-5-in-development-6` with 4 deployments and 10 records, Figure 03
+  with the "not evidence of no deployments" text); as a subscriber with Javier's existing session, read-only: robot 6
+  (16 records), 30 (3, plus 8 maker-only records not attributed), 88 (24), 64 and 76 without records, BMW Group (12),
+  Toyota as maker and organisation, a Figure 02 record not attributed to Figure 03. Webhook POST still 400
+  `missing_signature`. The workers.dev page in the bundle predates #27; it only redirects to the app.
 - Branch `deploy/worker-bundle-f4bd2db` (the temporary bundle used by the dashboard editor; public server code, no
   data) could not be deleted through the agent proxy: delete it in GitHub, Branches.
 

@@ -1,0 +1,74 @@
+{
+  "id": "WH-20261117-1335-relaciones-deployments",
+  "tarea": "Relacionar Deployments con robots y empresas: desde cada robot, dónde trabaja, haciendo qué y con qué evidencia; navegación robot, registro y empresa en ambos sentidos",
+  "origen": "Javier (17/11/2026), transmitido por Codex. En el mismo mensaje, Javier confirma que el acceso en el nuevo dominio funciona y que recibió el cierre WH-20261117-0848-app-en-whyhumanoid; la confirmación formal la registra Codex en ops/entregas/confirmaciones/.",
+  "fecha": "2026-11-17T13:35:02+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Auditoría de las 13 hojas: Deployments trae organization_id (113 de 119 filas), organization_role, manufacturer, robot_model, robot_version, deployment_id y la evidencia de cada afirmación; Entidades limpias aporta ids revisados de 4 fabricantes, 5 modelos, 5 organizaciones y 6 integradores; Relaciones evidencia y Evaluacion tarea usan model_id. Fabricante y modelo de Deployments son texto libre, sin id del catálogo.",
+    "Grafo de relaciones generado por el servidor en cada importación (server/src/relations/graph.js) a partir de las filas importadas y de una configuración revisada que envía el workflow desde main: alias de tools/relations-aliases.json (solo nombres públicos de fabricantes y modelos del catálogo) e índice público del catálogo. Identidad por id estable: organization_id de la hoja, número del catálogo público para robots, id de Entities o id fijo para fabricantes. Nombres solo por igualdad exacta normalizada, nunca por subcadenas.",
+    "Un robot solo se enlaza si el registro nombra su modelo (nivel modelo) o su línea de modelo con otra versión o sin versión (nivel línea, avisado como «no es la versión de esta ficha»). Conocer solo el fabricante nunca atribuye un robot: esos registros quedan en el fabricante con el motivo. Roles distintos: fabricante, operador o cliente, cliente e inversor, socio tecnológico o integrador. Los datos originales no se tocan; cada registro guarda el motivo de lo no enlazado.",
+    "API: GET /v1/relations con suscripción comprobada en el servidor; GET /v1/relations/preview construido solo con las 10 filas públicas de Deployments y de Entidades. Tablas D1 relation_graphs y relation_config (migración 0002).",
+    "Aplicación (whyhumanoid.com/app/): vista de robot con sección Deployments (organización, lugar, planta y país si constan, tarea, estado, evidencia, fuentes enlazadas, fechas y métricas), vista de empresa agregada solo con lo que dicen los registros, enlaces en cada ficha de Deployments y en la tabla, y sección Deployments en la ficha de cada robot de Humanoids. Enlaces estables #robot/<número>, #company/<id> y #<categoría>/<id de registro> que sobreviven a la recarga y permiten volver.",
+    "Visitantes: solo relaciones de las 10 filas de vista previa, aviso claro de vista previa y llamada al acceso completo; un registro o empresa fuera de la vista previa no se muestra. «Announced» se explica como plan o acuerdo, no trabajo; la ausencia de registros se explica como no prueba de ausencia de despliegues.",
+    "Web pública: cada ficha de robot tiene la sección «Deployments · free preview» con las filas públicas que lo nombran (sin identificadores de registro) y el enlace a su vista en la base completa.",
+    "Actualización recurrente: el workflow de importación envía la configuración y el registro del job muestra solo recuentos de relaciones; CI ejecuta tools/relations.mjs --check; el skill semanal incluye la revisión con tools/relations.mjs --from <export>. AGENTS, README y DEPLOYMENT al día.",
+    "Seguimiento (PR #27): texto claro para empresas que son fabricante y organización a la vez, los enlaces directos llevan a la vista y el script de la aplicación lleva versión para que el navegador no use una copia vieja."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Robot con registros de su línea de modelo (Digit, 16 registros para suscriptores, 10 de vista previa)",
+      "url": "https://whyhumanoid.com/app/#robot/6"
+    },
+    {
+      "etiqueta": "Robot con registros de su modelo (HMND 01, 24 registros)",
+      "url": "https://whyhumanoid.com/app/#robot/88"
+    },
+    {
+      "etiqueta": "Robot con registros del modelo y otros del fabricante no atribuidos (Figure 03)",
+      "url": "https://whyhumanoid.com/app/#robot/30"
+    },
+    {
+      "etiqueta": "Empresa como organización (BMW Group, 12 registros)",
+      "url": "https://whyhumanoid.com/app/#company/org_bmw_group"
+    },
+    {
+      "etiqueta": "Ficha pública del robot con su sección Deployments",
+      "url": "https://whyhumanoid.com/#r-agility-digit-5-in-development-6"
+    },
+    {
+      "etiqueta": "PR principal",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/26"
+    },
+    {
+      "etiqueta": "PR de seguimiento",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/27"
+    }
+  ],
+  "despliegue": [
+    "D1 de producción: tablas relation_graphs y relation_config creadas en la consola (migración 0002, sin tocar las existentes).",
+    "Worker whyhumanoid-premium versión d231b0f5 desde el editor del panel (paquete sha256 f61289ce...d948, commit temporal 68eb721 en deploy/worker-bundle-f4bd2db).",
+    "GitHub Pages desde main con los PR #26 (576e4e0) y #27 (6f9c75e): CI, compilación y despliegue en verde.",
+    "Importación de producción 44082503677 desde main: HTTP 200, 13 pestañas iguales a la importación anterior (Deployments 119, 47 campos), relaciones ok con la configuración c116b189b4aa6dbf."
+  ],
+  "verificaciones": [
+    "Cobertura exacta en producción (119 registros): 69 enlazados a un robot del catálogo (46 por modelo, 23 por línea de modelo); 41 solo al fabricante (13 sin modelo declarado, 22 con un modelo sin ficha propia en el catálogo, 6 de fabricantes fuera del catálogo); 9 sin fabricante resoluble (7 no declarado, 2 con varios fabricantes). Organizaciones: 113 enlazadas por id de la hoja, 6 sin id. 14 robots del catálogo y 68 empresas con registros; 4 organizaciones reconocidas como su propio fabricante por nombre exacto; 9 empresas con registros enlazan a su ficha de Entidades.",
+    "Vista previa pública: las 10 filas, todas enlazadas al robot 6 por línea de modelo; el JSON público y la web no contienen relaciones, fuentes ni registros fuera de esas 10 filas (tools/check-public.mjs y tools/relations.mjs --check en verde).",
+    "Pruebas: 74 pruebas de la API (5 nuevas de relaciones: niveles, homónimos, nombres casi iguales, fabricantes no declarados o varios, organizaciones y roles, alcance de la vista previa, 401, 403 y 200), comprobaciones de la web y de la aplicación en verde.",
+    "Local con la exportación real: visitante y suscriptor, escritorio y 390 px, recarga, atrás y adelante, sin errores de script.",
+    "Producción como visitante: robot 6 con 10 registros y aviso de vista previa; Figure 03 sin registros en la vista previa con el texto de no prueba de ausencia; empresa con ficha de Entidades; empresa y registro fuera de la vista previa rechazados; navegación ficha, robot, atrás, adelante y recarga; móvil 375 px sin desbordamiento; ficha pública del robot 6 con 4 despliegues y 10 registros y enlace a la base.",
+    "Producción como suscriptor, con la sesión existente de Javier y solo lectura (sin cobros ni cambios de cuenta o suscripción): robot 6 con 16 registros; robot 30 con 3 y 8 del fabricante no atribuidos; robot 88 con 24; robots 64 y 76 sin registros, con el texto correcto; BMW Group con 12 registros y los robots que usa; Toyota como fabricante y organización; un registro de otro modelo del mismo fabricante que no se atribuye a la ficha.",
+    "Webhook de Stripe intacto: POST sin firma, 400 missing_signature."
+  ],
+  "pendientes": [
+    "Codex: registrar la confirmación de Javier del cierre WH-20261117-0848-app-en-whyhumanoid (tipo entrega-usuario) y el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Ambiguos o no enlazados, para revisión de Javier: un fabricante con nombre que podría ser una variante de un fabricante del catálogo, sin fuente que lo confirme (no enlazado); 9 registros sin fabricante resoluble; 6 registros sin organization_id en la hoja; 22 registros con modelos sin ficha propia en el catálogo. El detalle va en el informe del chat, no en Git.",
+    "Organizaciones con empresa cotizada en Stocks: no se enlazan, porque exigiría un mapa explícito de ids que no conviene publicar en el repositorio público. Decisión de Javier: dónde mantenerlo (por ejemplo, una referencia en Entidades limpias).",
+    "Robots fuera de Humanoids (Other Robots) e integradores de la pestaña Integrators: Deployments no los referencia con ids; el rol de integrador sale de organization_role.",
+    "Tras cada despliegue de la web, un navegador puede tardar hasta 10 minutos en ver la página nueva (caché de GitHub Pages); el script ya lleva versión.",
+    "Siguen pendientes: borrar la rama deploy/worker-bundle-f4bd2db, nombre del comercio en Stripe, acceso del libro maestro y visibilidad del repositorio. Fase 2 de DNS y el resto de RoboticsMap siguen aplazados."
+  ],
+  "siguiente_accion": "Codex registra las confirmaciones; Javier revisa los ejemplos y decide sobre los ambiguos y el enlace con Stocks."
+}
