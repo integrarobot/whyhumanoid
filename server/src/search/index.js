@@ -6,6 +6,7 @@
 import { DATASETS, DATASETS_BY_ID, publicRowLimit } from '../datasets.js';
 import { norm, normMap, likeEscape } from './normalize.js';
 import { FACETS, FACET_LABELS, SYNONYMS, STOPWORDS, isKnownTag, tagLabel, tagsFor } from './vocabulary.js';
+import { STATUS_LABELS } from '../public/projection.js';
 
 export const PAGE_SIZE = 20;
 const MAX_TERMS = 8;
@@ -15,7 +16,43 @@ const nz = (v) => v !== null && v !== undefined && String(v).trim() !== '' && !N
 const human = (v) => String(v ?? '').replace(/_/g, ' ');
 const short = (v, n = 110) => { const s = String(v ?? '').replace(/\s+/g, ' ').trim(); return s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s; };
 const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return ''; } };
-const ORDER = new Map(DATASETS.map((d, i) => [d.id, i]));
+// Company dossiers (approved split, phase 1) are a search category of their own, built from the public projection
+// only (server/src/public/projection.js), so the same allowlisted values serve visitors and subscribers.
+const CATEGORIES = [{ id: 'companies', title: 'Companies' }, ...DATASETS];
+const CATEGORY_BY_ID = new Map(CATEGORIES.map((d) => [d.id, d]));
+const ORDER = new Map(CATEGORIES.map((d, i) => [d.id, i]));
+const ROLE_LABELS = { maker: 'Maker', customer_operator: 'Operator or customer', customer_investor: 'Customer and investor', technology_partner: 'Technology partner or integrator' };
+
+// One document per company of the projection. Visitors are sent to the public company page; subscribers to the
+// company view of the app.
+export function companyDocs(projection, scope) {
+  return (projection?.companies ?? []).map((c, i) => {
+    const sums = [c.as_organisation, c.as_maker].filter(Boolean);
+    const records = sums.reduce((n, x) => n + x.records, 0);
+    const roles = Object.keys(c.roles ?? {}).map((k) => ROLE_LABELS[k] || human(k));
+    const values = [
+      c.name, ...roles, ...(c.countries ?? []), c.entity?.canonical_name, human(c.entity?.entity_type ?? ''),
+      ...sums.flatMap((x) => [...x.sectors.map(human), ...x.site_countries, ...x.counterparts.flatMap((p) => [p.name, p.robot_recorded, ...Object.entries(p.status).filter(([, n]) => n).map(([k]) => STATUS_LABELS[k])])]),
+    ].filter(nz);
+    const tags = new Set();
+    for (const x of sums) {
+      for (const sector of x.sectors) for (const t of tagsFor('deployments', { sector })) tags.add(t);
+      for (const country of x.site_countries) for (const t of tagsFor('deployments', { country })) tags.add(t);
+    }
+    for (const country of c.countries ?? []) for (const t of tagsFor('deployments', { organization_country: country })) tags.add(t);
+    return {
+      dataset: 'companies',
+      row_id: c.id,
+      position: i,
+      title: c.name,
+      subtitle: [roles.join(', '), (c.countries ?? []).join(', '), records ? `${records} deployment record${records === 1 ? '' : 's'}` : ''].filter(Boolean).join(' · '),
+      names: `|${[...new Set([c.name, c.entity?.canonical_name].filter(nz).map(norm))].join('|')}|`,
+      haystack: ` ${norm(values.join(' '))} `,
+      tags: `|${[...tags].join('|')}|`,
+      link: scope === 'full' ? `company/${c.id}` : `/companies/${c.slug}/`,
+    };
+  });
+}
 
 // Title, subtitle, names (for exact matches) and the default context field of a row, per category.
 function describe(datasetId, d) {
@@ -68,7 +105,7 @@ export function searchDoc(datasetId, row, { catalogueId = null, aliases = [] } =
 
 // Statements that replace both scopes. rowsOf(datasetId, scope) gives the imported rows ({ id, position, data });
 // config is the reviewed relations config (catalogue index and aliases), used for robot links and aliases.
-export function searchStatements(db, { rowsOf, config }) {
+export function searchStatements(db, { rowsOf, config, projection = null }) {
   const catalogue = new Map((config?.catalogue ?? []).map((c) => [`${c.Lab}|${c.Robot}`, c]));
   const makers = config?.aliases?.makers ?? {};
   const robots = config?.aliases?.robots ?? {};
@@ -76,7 +113,7 @@ export function searchStatements(db, { rowsOf, config }) {
   const statements = [db.prepare('DELETE FROM search_docs')];
   const counts = {};
   for (const scope of ['full', 'preview']) {
-    const docs = [];
+    const docs = companyDocs(projection, scope);
     for (const spec of DATASETS) {
       for (const row of rowsOf(spec.id, scope)) {
         let extra = {};
@@ -177,7 +214,7 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
   if (scope !== 'full' && scope !== 'preview') throw new Error('search scope required');
   const terms = parseQuery(q);
   const active = parseTags(tags);
-  const cat = DATASETS_BY_ID.has(category) ? category : '';
+  const cat = CATEGORY_BY_ID.has(category) ? category : '';
   const phrase = norm(q);
   if (!terms.length && !active.length && !cat) return { scope, query: String(q ?? ''), terms: [], total: 0, page: 1, page_size: PAGE_SIZE, results: [], facets: [], categories: [], active: [] };
 
@@ -216,7 +253,7 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
   }).filter((f) => f.values.length);
   const catCounts = new Map();
   for (const doc of results) if (passes(doc, null, true)) catCounts.set(doc.dataset, (catCounts.get(doc.dataset) ?? 0) + 1);
-  const categories = DATASETS.filter((d) => catCounts.has(d.id) || d.id === cat).map((d) => ({ id: d.id, title: d.title, count: catCounts.get(d.id) ?? 0, active: d.id === cat }));
+  const categories = CATEGORIES.filter((d) => catCounts.has(d.id) || d.id === cat).map((d) => ({ id: d.id, title: d.title, count: catCounts.get(d.id) ?? 0, active: d.id === cat }));
 
   const total = matched.length;
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -239,7 +276,7 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
     const data = dataOf.get(`${doc.dataset}|${doc.row_id}`);
     return {
       category: doc.dataset,
-      category_title: DATASETS_BY_ID.get(doc.dataset).title,
+      category_title: CATEGORY_BY_ID.get(doc.dataset).title,
       id: doc.row_id,
       title: doc.title,
       subtitle: doc.subtitle,

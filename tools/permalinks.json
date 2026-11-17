@@ -1240,7 +1240,9 @@
       "robots": [
         93
       ],
-      "organization_ids": []
+      "organization_ids": [
+        "org_unitree"
+      ]
     },
     "mfr_unix": {
       "slugs": [
@@ -1321,7 +1323,9 @@
       "robots": [
         102
       ],
-      "organization_ids": []
+      "organization_ids": [
+        "org_xiaomi"
+      ]
     },
     "mfr_fauna": {
       "slugs": [
@@ -1339,7 +1343,9 @@
       "robots": [
         104
       ],
-      "organization_ids": []
+      "organization_ids": [
+        "org_xpeng"
+      ]
     },
     "mfr_addverb": {
       "slugs": [
@@ -1645,6 +1651,385 @@
       "robots": [],
       "organization_ids": [
         "org_amazon"
+      ]
+    },
+    "mfr_star_era": {
+      "slugs": [
+        "star-era"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "mfr_realman": {
+      "slugs": [
+        "realman"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "mfr_anybotics": {
+      "slugs": [
+        "anybotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "mfr_toyota": {
+      "slugs": [
+        "toyota"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_toyota"
+      ]
+    },
+    "mfr_symbotic": {
+      "slugs": [
+        "symbotic"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_bmw_group": {
+      "slugs": [
+        "bmw-group"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_bmw_group"
+      ]
+    },
+    "org_mercedes_benz": {
+      "slugs": [
+        "mercedes-benz"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_mercedes_benz"
+      ]
+    },
+    "org_martur_fompak": {
+      "slugs": [
+        "martur-fompak"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_martur_fompak"
+      ]
+    },
+    "org_ford": {
+      "slugs": [
+        "ford"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_ford"
+      ]
+    },
+    "org_siemens": {
+      "slugs": [
+        "siemens"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_siemens"
+      ]
+    },
+    "org_bosch": {
+      "slugs": [
+        "bosch"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_bosch"
+      ]
+    },
+    "org_longcheer": {
+      "slugs": [
+        "longcheer"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_longcheer"
+      ]
+    },
+    "org_china_post_sf_express": {
+      "slugs": [
+        "china-post-sf-express"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_china_post_sf_express"
+      ]
+    },
+    "org_guoda": {
+      "slugs": [
+        "guoda"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_guoda"
+      ]
+    },
+    "org_catl": {
+      "slugs": [
+        "catl"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_catl"
+      ]
+    },
+    "org_jd": {
+      "slugs": [
+        "jd"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_jd"
+      ]
+    },
+    "org_luxshare": {
+      "slugs": [
+        "luxshare"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_luxshare"
+      ]
+    },
+    "org_faw_hongqi": {
+      "slugs": [
+        "faw-hongqi"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_faw_hongqi"
+      ]
+    },
+    "org_network_rail": {
+      "slugs": [
+        "network-rail"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_network_rail"
+      ]
+    },
+    "org_rte": {
+      "slugs": [
+        "rte"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_rte"
+      ]
+    },
+    "org_nishinihon_electric_system": {
+      "slugs": [
+        "nishinihon-electric-system"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_nishinihon_electric_system"
+      ]
+    },
+    "org_renault_group": {
+      "slugs": [
+        "renault-group"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_renault_group"
+      ]
+    },
+    "org_chla": {
+      "slugs": [
+        "chla"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_chla"
+      ]
+    },
+    "org_northwestern_medicine": {
+      "slugs": [
+        "northwestern-medicine"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_northwestern_medicine"
+      ]
+    },
+    "org_hd_hyundai": {
+      "slugs": [
+        "hd-hyundai"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_hd_hyundai"
+      ]
+    },
+    "org_pilatus": {
+      "slugs": [
+        "pilatus"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_pilatus"
+      ]
+    },
+    "org_asd": {
+      "slugs": [
+        "asd"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_asd"
+      ]
+    },
+    "org_mercado_libre": {
+      "slugs": [
+        "mercado-libre"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_mercado_libre"
+      ]
+    },
+    "org_hyundai_motor_group": {
+      "slugs": [
+        "hyundai-motor-group"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_hyundai_motor_group"
+      ]
+    },
+    "org_airbus": {
+      "slugs": [
+        "airbus"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_airbus"
+      ]
+    },
+    "org_ubtech_named_customers_2025": {
+      "slugs": [
+        "ubtech-named-customers-2025"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_ubtech_named_customers_2025"
+      ]
+    },
+    "org_eqt": {
+      "slugs": [
+        "eqt"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_eqt"
+      ]
+    },
+    "org_sap": {
+      "slugs": [
+        "sap"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_sap"
+      ]
+    },
+    "org_dandelion_chocolate": {
+      "slugs": [
+        "dandelion-chocolate"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_dandelion_chocolate"
+      ]
+    },
+    "org_audi": {
+      "slugs": [
+        "audi"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_audi"
+      ]
+    },
+    "org_walmart": {
+      "slugs": [
+        "walmart"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_walmart"
+      ]
+    },
+    "org_dimensional": {
+      "slugs": [
+        "dimensional"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_dimensional"
+      ]
+    },
+    "org_jabil": {
+      "slugs": [
+        "jabil"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_jabil"
+      ]
+    },
+    "org_catalyst_brands": {
+      "slugs": [
+        "catalyst-brands"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_catalyst_brands"
+      ]
+    },
+    "org_tum": {
+      "slugs": [
+        "tum"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_tum"
+      ]
+    },
+    "org_foxconn": {
+      "slugs": [
+        "foxconn"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_foxconn"
+      ]
+    },
+    "org_globalfoundries": {
+      "slugs": [
+        "globalfoundries"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_globalfoundries"
+      ]
+    },
+    "org_nc_state_university": {
+      "slugs": [
+        "nc-state-university"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_nc_state_university"
       ]
     }
   }

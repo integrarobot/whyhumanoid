@@ -3,9 +3,11 @@
 // public company (/companies/<slug>/), with the main content in the HTML itself, readable without JavaScript.
 //
 // Built only from public inputs: the free Humanoids catalogue (data/humanoids-catalogue.json), the 10-row previews of
-// Deployments and Entities (data/preview/) and the public relations graph of those previews (tools/relations.mjs).
-// Premium rows never reach these pages; companies that appear only in premium rows get no public page yet (that
-// split is task 6 of ops/backlog.md, for Javier to decide). Nothing is invented: every value is shown as recorded.
+// Deployments and Entities (data/preview/), the public relations graph of those previews (tools/relations.mjs) and
+// the public projection (data/public/projection.json: allowlisted counts and summaries of every record, written by
+// tools/export-public.mjs with server/src/public/projection.js; approved split, phase 1, 17 Nov 2026). Every company
+// in the database gets a page. Nothing is invented: every value is shown as recorded; records are claims as recorded,
+// not verified facts.
 //
 // Addresses are stable. A robot's slug ends with its catalogue id; a company's slug is its id without the prefix.
 // tools/permalinks.json records every slug ever published (append-only). When a name changes, the old address gets
@@ -72,14 +74,11 @@ export function publicModel() {
   const tabs = read('data/preview/index.json').tabs;
   const depTotal = tabs.find((t) => t.id === 'deployments')?.entries_total ?? null;
 
+  const projection = read('data/public/projection.json');
   const makerOf = new Map(graph.robots.map((r) => [r.id, r.maker]));
-  const companies = graph.companies.map((c) => ({ ...c, slug: companySlug(c.id) }));
-  const bySlug = new Map();
-  for (const c of companies) {
-    if (bySlug.has(c.slug)) c.slug = c.id.replace(/_/g, '-'); // two ids with the same name: keep the prefix
-    if (bySlug.has(c.slug)) throw new Error(`company slug clash: ${c.id} and ${bySlug.get(c.slug).id}`);
-    bySlug.set(c.slug, c);
-  }
+  const previewNames = new Map(graph.companies.map((c) => [c.id, c.names]));
+  // Every company of the projection, with its slug from server/src/public/projection.js.
+  const companies = projection.companies.map((c) => ({ ...c, names: previewNames.get(c.id) ?? [c.name] }));
   const companyById = new Map();
   for (const c of companies) { companyById.set(c.id, c); for (const o of c.organization_ids || []) if (!companyById.has(o)) companyById.set(o, c); }
 
@@ -99,6 +98,7 @@ export function publicModel() {
     record: records.get(ix.id), facet: facets.get(ix.id),
     maker: companyById.get(makerOf.get(ix.id)) ?? null,
     records: recs.filter((r) => r.robot === ix.id),
+    summary: projection.robots[ix.id] ?? null,
   }));
   const robotById = new Map(robots.map((r) => [r.id, r]));
   for (const c of companies) {
@@ -107,9 +107,9 @@ export function publicModel() {
     c.robotList = (c.robots || []).map((id) => robotById.get(id)).filter(Boolean);
     c.asMaker = recs.filter((r) => r.maker === c.id);
     c.asOrg = recs.filter((r) => ids.has(r.operator) && r.maker !== c.id);
-    c.entity = c.entity_id && /^org_/.test(c.entity_id) ? entities.get(c.entity_id) ?? null : null;
   }
-  return { robots, robotById, companies, companyById, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal };
+  void entities;
+  return { robots, robotById, companies, companyById, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal, totals: projection.totals, projSnapshot: projection.snapshot };
 }
 
 // ---------- layout ----------
@@ -188,6 +188,22 @@ function recordsHtml(items, model, { showRobot = true, showOrg = true } = {}) {
 }
 const STATUS_KEY = '<p class="key">Status as recorded: In operation · Pilot or trial · Announced (planned or agreed, not evidence of work) · Unconfirmed (claimed by a vendor or unresolved).</p>';
 const price = () => PLAN.display || '€100 per year';
+// Records are claims from named sources with a status as recorded; the page says so wherever it counts them.
+const RECORDS_NOTE = '<p class="key">Each deployment record is a claim from a named source, with its status as recorded: In operation, Pilot or trial, Announced (planned or agreed, not evidence of work) or Unconfirmed (claimed by a vendor or unresolved). Counting records is not independent verification. Sites, tasks, metrics, claim texts, verification and sources are in the full database.</p>';
+const statusText = (st) => STATUS_KEYS_ORDER.filter((k) => st[k]).map((k) => `${st[k]} ${STATUS_LABEL[k].toLowerCase()}`).join(', ');
+const STATUS_KEYS_ORDER = ['op', 'pilot', 'ann', 'unc'];
+const yearsText = (y) => (y ? (y[0] === y[1] ? String(y[0]) : `${y[0]} to ${y[1]}`) : 'not recorded');
+// A summary of the projection (counts and counterparts only) and its table of counterparts.
+function summaryHtml(sum, model, { head, otherLabel }) {
+  if (!sum) return '';
+  const rows = sum.counterparts.map((x) => {
+    const c = x.company ? model.companyById.get(x.company) : null;
+    const rb = x.robot !== null && x.robot !== undefined ? model.robotById.get(x.robot) : null;
+    return `<tr><td>${c ? `<a href="${c.path}">${esc(x.name)}</a>` : esc(x.name || 'Not recorded')}</td><td>${esc(x.robot_recorded || 'Not recorded')}${rb ? `<br><a href="${rb.path}">${esc(rb.name)} by ${esc(rb.lab)}</a>${x.level === 'family' ? ' <span class="dim">(model line, not this version)</span>' : ''}` : ''}</td><td>${x.records}</td><td>${esc(statusText(x.status))}</td><td>${esc(yearsText(x.years))}</td></tr>`;
+  }).join('');
+  return `<p>${head} Status as recorded: ${esc(statusText(sum.status))}. Sectors: ${esc(sum.sectors.map(human).join(', ') || 'not recorded')}. Deployment countries: ${esc(sum.site_countries.join(', ') || 'not recorded')}. Years: ${esc(yearsText(sum.years))}.</p>
+<div class="scroll"><table><thead><tr><th scope="col">${esc(otherLabel)}</th><th scope="col">Robot as recorded</th><th scope="col">Records</th><th scope="col">Status as recorded</th><th scope="col">Years</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
 function previewNote(model, n, what) {
   const total = model.depTotal ? `the first 10 of ${model.depTotal} Deployments records` : 'the first 10 Deployments records';
   return n
@@ -232,8 +248,9 @@ ${known(r['Buyer checks']) ? `<p class="note"><b>Before comparing:</b> ${text(r[
 <section><h2>Key facts</h2>${kv(SPEC_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
 <section><h2>Market</h2>${kv(MARKET_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
 <section><h2>Company</h2>${kv([['Maker', m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab)], ...COMPANY_FIELDS.map(([l, f]) => [l, text(r[f])])])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
-<section><h2>Deployments: free preview</h2>${previewNote(model, rb.records.length, 'this robot or its model line')}${recordsHtml(rb.records, model, { showRobot: false })}${rb.records.length ? STATUS_KEY : ''}
-<p class="cta"><a href="${APP}#robot/${rb.id}">Every Deployments record checked for this robot, with operators, tasks, status and sources, is in the full database (${esc(price())}) →</a></p></section>
+<section><h2>Deployment records</h2>${rb.summary ? summaryHtml(rb.summary, model, { head: `${rb.summary.records} deployment record${rb.summary.records === 1 ? '' : 's'} in the database ${rb.summary.records === 1 ? 'names' : 'name'} ${rb.summary.model_line_only ? 'the model line of this robot, not necessarily this version' : 'this robot or its model line'}.`, otherLabel: 'Organisation' }) + RECORDS_NOTE : '<p>No deployment record in the database names this robot or its model line. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that the robot has no deployments.</p>'}</section>
+<section><h2>Free preview records</h2>${previewNote(model, rb.records.length, 'this robot or its model line')}${recordsHtml(rb.records, model, { showRobot: false })}${rb.records.length ? STATUS_KEY : ''}
+<p class="cta"><a href="${APP}#robot/${rb.id}">Every record for this robot in full, with sites, tasks, claims, verification and sources, is in the full database (${esc(price())}) →</a></p></section>
 <section><h2>Sources and checks</h2>${kv([['Last checked', text(chk.date)], ['Checks recorded', chk.statements.length ? esc(chk.statements.join('; ')) : '<span class="na">Not recorded</span>'], ['Model identity', text(r['Model checked'])]])}${sources ? `<ul class="sources">${sources}</ul>` : '<p class="na">No linked sources.</p>'}</section>
 <p class="meta">Values as recorded in row ${r.sheet_row} of the Humanoids tab, free catalogue snapshot ${esc(model.snapshot)}. Also on the <a href="/#${esc(rb.slug)}">catalogue page</a>.</p>
 </article>`;
@@ -252,40 +269,36 @@ function companyFacts(c) {
   }
   return out;
 }
-function companySummary(c, model) {
+function companySummary(c) {
   const parts = [];
   if (c.robotList.length) {
     const country = [...new Set(c.robotList.map((rb) => rb.record.Country).filter(known))];
     parts.push(`${c.name} makes ${list(c.robotList.map((rb) => rb.name))}, ${c.robotList.length === 1 ? 'a humanoid robot' : 'humanoid robots'} in the Why Humanoid? catalogue${country.length ? `; company country as recorded: ${country.join(', ')}` : ''}.`);
   }
-  if (c.asOrg.length) {
-    const roles = [...new Set(c.asOrg.map((r) => (ROLE[r.organization_role] || human(r.organization_role || 'organisation')).toLowerCase()))];
-    parts.push(`${c.name} appears as ${list(roles)} in ${c.asOrg.length} of the 10 free preview Deployments records${c.countries?.length ? ` (${c.countries.join(', ')})` : ''}.`);
+  const o = c.as_organisation, m = c.as_maker;
+  if (o) {
+    const roles = Object.keys(c.roles || {}).filter((k) => k !== 'maker').map((k) => (ROLE[k] || human(k)).toLowerCase());
+    parts.push(`${c.name}${c.countries?.length ? ` (${c.countries.join(', ')})` : ''} appears as ${list(roles.length ? roles : ['organisation'])} in ${o.records} deployment record${o.records === 1 ? '' : 's'}; status as recorded: ${statusText(o.status)}.`);
   }
-  if (c.asMaker.length) parts.push(`${c.asMaker.length} of the 10 free preview Deployments records name ${c.name} as the maker.`);
+  if (m) parts.push(`${m.records} deployment record${m.records === 1 ? '' : 's'} name ${c.name} as the maker; status as recorded: ${statusText(m.status)}.`);
   if (!parts.length) parts.push(`${c.name} is in the Why Humanoid? database.`);
   return parts.join(' ');
 }
 function companyPage(c, model) {
-  const summary = companySummary(c, model);
+  const summary = companySummary(c);
   const facts = companyFacts(c);
   const link = (f) => [...new Set(c.robotList.map((rb) => rb.record[f]).filter((u) => /^https?:\/\//.test(u ?? '')))];
   const links = LINK_FIELDS.flatMap(([l, f]) => link(f).map((u) => ext(u, `${l} ↗`)));
-  const used = new Map();
-  const line = new Map(); // robot -> true while every record names only its model line
-  for (const r of c.asOrg) {
-    if (r.robot === null) continue;
-    const s = STATUS(r.operational_status)[0];
-    if (!used.has(r.robot) || RANK[s] < RANK[used.get(r.robot)]) used.set(r.robot, s);
-    line.set(r.robot, (line.get(r.robot) ?? true) && r.level === 'family');
-  }
+  // Robots in its records, from the projection: each with its statuses as recorded, never as robots "in use".
+  const used = (c.as_organisation?.counterparts ?? []).filter((x) => x.robot !== null && x.robot !== undefined && model.robotById.get(x.robot));
   const e = c.entity;
   const sources = [...new Set([
     ...c.robotList.flatMap((rb) => rb.facet.chk.urls),
     ...[...c.asOrg, ...c.asMaker].map((r) => firstUrl(r.source_url)).filter(Boolean),
-    ...(e && /^https?:\/\//.test(e.reference_url ?? '') ? [e.reference_url] : []),
+    ...(e?.reference_url ? [e.reference_url] : []),
   ])];
-  const roles = Object.entries(c.roles || {}).map(([k, n]) => `${ROLE[k] || human(k)} (${n} of the free preview records)`);
+  const roles = Object.entries(c.roles || {}).map(([k, n]) => `${ROLE[k] || human(k)} (${n} record${n === 1 ? '' : 's'})`);
+  const preview = c.asOrg.length + c.asMaker.length;
   const body = `${crumbs([['/', 'Why Humanoid?'], ['/companies/', 'Companies'], [null, c.name]])}
 <article class="entity">
 <p class="kicker">Company${c.robotList.length ? ' · humanoid robot maker' : ''}</p>
@@ -293,21 +306,23 @@ function companyPage(c, model) {
 <p class="lede">${esc(summary)}</p>
 <section><h2>Key facts</h2>${kv([
     ...(c.robotList.length ? [['Robots in the catalogue', c.robotList.map((rb) => `<a href="${rb.path}">${esc(rb.name)}</a>`).join('<br>')]] : []),
-    ...(used.size ? [['Robots in its preview records', [...used].map(([id, s]) => { const rb = model.robotById.get(id); return `<a href="${rb.path}">${esc(rb.name)} by ${esc(rb.lab)}</a> <span class="dim">${STATUS_LABEL[s]}${line.get(id) ? ' · the records name its model line, not this version' : ''}</span>`; }).join('<br>')]] : []),
-    ...(roles.length ? [['Roles in the free preview', esc(roles.join('; '))]] : []),
+    ...(used.length ? [['Catalogue robots in its records', used.map((x) => { const rb = model.robotById.get(x.robot); return `<a href="${rb.path}">${esc(rb.name)} by ${esc(rb.lab)}</a> <span class="dim">${esc(statusText(x.status))}${x.level === 'family' ? ' · the records name its model line, not this version' : ''}</span>`; }).join('<br>')]] : []),
+    ...(roles.length ? [['Roles in the records', esc(roles.join('; '))]] : []),
+    ...(c.countries?.length && !c.robotList.length ? [['Country as recorded', esc(c.countries.join(', '))]] : []),
     ...facts,
     ...(e ? [['Identity record', `${esc(e.canonical_name || c.name)}${nz(e.entity_type) ? ` · ${esc(human(e.entity_type))}` : ''}${nz(e.reviewed_at) ? ` · reviewed ${esc(e.reviewed_at)}` : ''}`]] : []),
   ])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
 ${c.robotList.length ? `<section><h2>Robots</h2><ul class="cards">${c.robotList.map((rb) => `<li><a href="${rb.path}"><b>${esc(rb.name)}</b></a><span>${esc(robotSummary(rb))}</span></li>`).join('')}</ul></section>` : ''}
-<section><h2>Deployments: free preview</h2>${previewNote(model, c.asOrg.length + c.asMaker.length, 'this company')}
+<section><h2>Deployment records</h2>${c.as_organisation || c.as_maker ? `${c.as_organisation ? summaryHtml(c.as_organisation, model, { head: `As organisation: ${c.as_organisation.records} record${c.as_organisation.records === 1 ? '' : 's'}.`, otherLabel: 'Maker' }) : ''}${c.as_maker ? summaryHtml(c.as_maker, model, { head: `As maker: ${c.as_maker.records} record${c.as_maker.records === 1 ? '' : 's'}.`, otherLabel: 'Organisation' }) : ''}${RECORDS_NOTE}` : '<p>No deployment record in the database names this company. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that it has none.</p>'}</section>
+${preview ? `<section><h2>Free preview records</h2>${previewNote(model, preview, 'this company')}
 ${c.asMaker.length ? `<h3>As maker</h3>${recordsHtml(c.asMaker, model, { showRobot: true, showOrg: true })}` : ''}
 ${c.asOrg.length ? `<h3>As organisation</h3>${recordsHtml(c.asOrg, model, { showRobot: true, showOrg: false })}` : ''}
-${c.asOrg.length + c.asMaker.length ? STATUS_KEY : ''}
-<p class="cta"><a href="${APP}#company/${encodeURIComponent(c.id)}">Every record that names this company, by role, is in the full database (${esc(price())}) →</a></p></section>
-<section><h2>Sources</h2>${sources.length ? `<ul class="sources">${sources.map((u) => `<li>${ext(u, u)}</li>`).join('')}</ul>` : '<p class="na">No linked sources.</p>'}</section>
-<p class="meta">Only what the public records say: the free Humanoids catalogue (snapshot ${esc(model.snapshot)}) and the free previews of Deployments and Entities (snapshot ${esc(model.depSnapshot)}). No corporate data is added.</p>
+${STATUS_KEY}</section>` : ''}
+<p class="cta"><a href="${APP}#company/${encodeURIComponent(c.id)}">Every record that names this company in full, with sites, tasks, claims, verification and sources, is in the full database (${esc(price())}) →</a></p>
+<section><h2>Sources</h2>${sources.length ? `<ul class="sources">${sources.map((u) => `<li>${ext(u, u)}</li>`).join('')}</ul>` : ''}${c.as_organisation || c.as_maker ? '<p class="na">The source of each deployment record is in the full database.</p>' : sources.length ? '' : '<p class="na">No linked sources.</p>'}</section>
+<p class="meta">Only what the public data say: the free Humanoids catalogue (snapshot ${esc(model.snapshot)}), counts and summaries of every deployment record (snapshot ${esc(model.projSnapshot)}) and the free previews of Deployments and Entities. No corporate data is added.</p>
 </article>`;
-  return page({ title: `${c.name}: ${c.robotList.length ? 'humanoid robots, facts and sources' : 'humanoid robot deployments and sources'} · Why Humanoid?`, description: clip(`${summary} Public facts and sources.`), path: c.path, body, type: 'article' });
+  return page({ title: `${c.name}: ${c.robotList.length ? 'humanoid robots, facts and sources' : 'humanoid robot deployment records'} · Why Humanoid?`, description: clip(`${summary} Public facts and sources.`), path: c.path, body, type: 'article' });
 }
 
 // ---------- index pages, redirects, sitemap, 404 ----------
@@ -320,10 +335,10 @@ function robotsIndex(model) {
 }
 function companiesIndex(model) {
   const rows = [...model.companies].sort((a, b) => a.name.localeCompare(b.name)).map((c) =>
-    `<tr><td><a href="${c.path}">${esc(c.name)}</a></td><td>${c.robotList.length ? `Maker of ${c.robotList.map((rb) => `<a href="${rb.path}">${esc(rb.name)}</a>`).join(', ')}` : esc(Object.keys(c.roles || {}).map((k) => ROLE[k] || human(k)).join(', ') || 'In the free preview')}</td><td>${esc([...new Set([...c.robotList.map((rb) => rb.record.Country).filter(known), ...(c.countries || [])])].join(', '))}</td></tr>`).join('');
-  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Companies']])}<h1>Companies</h1><p class="lede">${model.companies.length} companies with public information in Why Humanoid?: the makers of the catalogue robots and the organisations named in the free preview of deployments. Companies that appear only in subscriber records have no public page yet.</p>
-<div class="scroll"><table><thead><tr><th scope="col">Company</th><th scope="col">In the public data</th><th scope="col">Country as recorded</th></tr></thead><tbody>${rows}</tbody></table></div>`;
-  return page({ title: 'Companies: humanoid robot makers and operators · Why Humanoid?', description: `${model.companies.length} companies with public information in Why Humanoid?: humanoid robot makers and the organisations in the free deployment preview.`, path: '/companies/', body });
+    `<tr><td><a href="${c.path}">${esc(c.name)}</a></td><td>${[c.robotList.length ? `Maker of ${c.robotList.map((rb) => `<a href="${rb.path}">${esc(rb.name)}</a>`).join(', ')}` : '', esc(Object.keys(c.roles || {}).filter((k) => k !== 'maker' || !c.robotList.length).map((k) => ROLE[k] || human(k)).join(', '))].filter(Boolean).join('; ')}</td><td>${(c.as_organisation?.records ?? 0) + (c.as_maker?.records ?? 0)}</td><td>${esc([...new Set([...c.robotList.map((rb) => rb.record.Country).filter(known), ...(c.countries || [])])].join(', '))}</td></tr>`).join('');
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Companies']])}<h1>Companies</h1><p class="lede">All ${model.companies.length} companies in Why Humanoid?: the makers of the catalogue robots, the organisations named in deployment records and the makers those records name. Each page shows public facts and a summary of its deployment records; the records in full are in the full database.</p>
+<div class="scroll"><table><thead><tr><th scope="col">Company</th><th scope="col">Role</th><th scope="col">Deployment records</th><th scope="col">Country as recorded</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  return page({ title: 'Companies: humanoid robot makers and operators · Why Humanoid?', description: `All ${model.companies.length} companies in Why Humanoid?: humanoid robot makers and the organisations in deployment records, with public facts and record summaries.`, path: '/companies/', body });
 }
 function redirectPage(to, label) {
   const body = `<h1>This page has moved</h1><p class="lede">The page for ${esc(label)} is now at <a href="${to}">${esc(SITE + to)}</a>.</p>`;

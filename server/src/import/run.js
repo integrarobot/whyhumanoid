@@ -10,6 +10,7 @@ import { ImportError, normalizeTab } from './normalize.js';
 import { resolveIdentities } from './identity.js';
 import { relationStatements } from '../relations/store.js';
 import { searchStatements } from '../search/index.js';
+import { publicProjection } from '../public/projection.js';
 
 export async function runImport(db, valuesByTab, now, { relationsConfig = null } = {}) {
   const runId = newId('imp');
@@ -97,7 +98,9 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
       .filter((r) => r.visibility === 'customer' && (scope === 'full' || limit === null || r.previewRank <= limit))
       .map((r) => ({ id: r.id, position: r.position, data: scope === 'full' ? r.data : (r.previewData ?? r.data) }));
   };
-  const search = searchStatements(db, { rowsOf: searchRowsOf, config: relations.config ?? null });
+  // Public projection (approved split, phase 1): company dossiers built from every row through an allowlist.
+  const projection = relations.graphs?.full ? publicProjection({ graph: relations.graphs.full, rows: rowsOf('deployments', 'full'), entities: rowsOf('entities', 'full') }) : null;
+  const search = searchStatements(db, { rowsOf: searchRowsOf, config: relations.config ?? null, projection });
   statements.push(...search.statements);
 
   statements.push(

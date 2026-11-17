@@ -7,6 +7,7 @@ import { readFileSync } from 'node:fs';
 import { isInternalField, readDatabase, validateDatabase } from './export-database.mjs';
 import { DATASETS, DATASETS_BY_ID } from '../server/src/datasets.js';
 import { buildPages } from './build-pages.mjs';
+import { projectionProblems } from './export-public.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = (path) => readFileSync(new URL(path, root), 'utf8');
@@ -70,7 +71,7 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
   const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));
@@ -103,6 +104,11 @@ for (const file of tracked.filter((f) => f.startsWith('data/database/'))) fail(f
 if (/data\/database\//.test(read('index.html'))) fail('index.html', 'loads the old full export (data/database)');
 if (page.access?.open !== false) fail('index.html', 'page is still in open-database mode');
 for (const t of page.database.tabs) if (page.database.tabs && t.rows) fail('index.html', `embeds rows of ${t.id}`);
+
+// Rule 8 (approved split, phase 1, 17 Nov 2026): data/public/projection.json holds only allowlisted keys of
+// server/src/public/projection.js (counts and summaries of every record; never sites, tasks, metrics, claims,
+// verification, sources, notes or record ids).
+for (const problem of projectionProblems(JSON.parse(read('data/public/projection.json')))) fail('data/public/projection.json', problem);
 
 // Rule 7 (permanent pages, 17 Nov 2026): robots/, companies/, sitemap.xml, 404.html and data/pages.json are exactly the
 // build of tools/build-pages.mjs, which reads only public inputs (free catalogue, 10-row previews, preview relations).

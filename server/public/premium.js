@@ -563,7 +563,7 @@
     const visitor = data.scope !== 'full';
     const from = (data.page - 1) * data.page_size + 1, to = from + data.results.length - 1;
     const anyFilter = data.active.length || data.category;
-    const catTitle = (id) => state.datasets.find((d) => d.id === id)?.title || id;
+    const catTitle = (id) => state.datasets.find((d) => d.id === id)?.title || data.categories?.find((c) => c.id === id)?.title || id;
     const activeChips = anyFilter
       ? `<div class="gs-active" aria-label="Active filters">${data.category ? `<button type="button" class="gs-chip" data-rm-cat aria-label="Remove filter Category: ${esc(catTitle(data.category))}">Category: ${esc(catTitle(data.category))} <span aria-hidden="true">×</span></button>` : ''}` +
         data.active.map((t) => `<button type="button" class="gs-chip" data-rm-tag="${esc(t.id)}" aria-label="Remove filter ${esc(t.facet)}: ${esc(t.label)}">${esc(t.facet)}: ${esc(t.label)} <span aria-hidden="true">×</span></button>`).join('') +
@@ -575,7 +575,7 @@
     const facets = data.facets.map((f) => `<div class="gs-group" role="group" aria-label="${esc(f.label)}"><span class="lbl">${esc(f.label)}</span>${f.values.map((v) => `<button type="button" class="gs-chip" data-tag="${esc(v.id)}" aria-pressed="${v.active}">${esc(v.label)} <span class="n">${v.count}</span></button>`).join('')}</div>`).join('');
     const openFilters = anyFilter || (window.matchMedia?.('(min-width: 701px)').matches ?? true);
     const filters = cats || facets ? `<details class="gs-filters"${openFilters ? ' open' : ''}><summary>Filters${anyFilter ? ` · ${data.active.length + (data.category ? 1 : 0)} active` : ''}</summary><div class="gs-groups">${cats}${facets}</div></details>` : '';
-    const results = data.results.map((r) => `<li><div class="gs-meta"><span class="lbl">${esc(r.category_title)}</span></div><a class="gs-title" href="#${esc(r.link)}" data-res>${esc(r.title)}</a>${r.subtitle ? `<div class="gs-sub">${esc(r.subtitle)}</div>` : ''}${marked(r.snippet)}</li>`).join('');
+    const results = data.results.map((r) => `<li><div class="gs-meta"><span class="lbl">${esc(r.category_title)}</span></div><a class="gs-title" href="${r.link.startsWith('/') ? `https://whyhumanoid.com${esc(r.link)}` : `#${esc(r.link)}`}" data-res>${esc(r.title)}</a>${r.subtitle ? `<div class="gs-sub">${esc(r.subtitle)}</div>` : ''}${marked(r.snippet)}</li>`).join('');
     const none = `<div class="gs-none db-empty"><p>No results${s.q ? ` for “${esc(s.q)}”` : ''}${anyFilter ? ' with these filters' : ''}.</p><p>${anyFilter ? 'Remove a filter or ' : ''}try fewer or other words: a robot, a company, a place, a sector or a task.${visitor ? ` ${freeNote} The full database may hold more.` : ''}</p></div>`;
     const pager = data.pages > 1
       ? `<nav class="gs-pager" aria-label="Result pages"><button type="button" class="btn ghost" data-page="${data.page - 1}"${data.page <= 1 ? ' disabled' : ''}>Previous</button><span class="lbl">${from}–${to} of ${data.total} · page ${data.page} of ${data.pages}</span><button type="button" class="btn ghost" data-page="${data.page + 1}"${data.page >= data.pages ? ' disabled' : ''}>Next</button></nav>`
