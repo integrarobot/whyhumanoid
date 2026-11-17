@@ -1,0 +1,39 @@
+{
+  "id": "WH-20261117-1359-altura-estado-cuenta",
+  "tarea": "Igualar la altura del indicador ACTIVE UNTIL y del botón MANAGE SUBSCRIPTION en la tarjeta de cuenta de /app/",
+  "origen": "Javier (17/11/2026), transmitido por Codex. Javier confirma haber leído el cierre WH-20261117-1335-relaciones-deployments.",
+  "fecha": "2026-11-17T13:59:19+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Clases específicas acc-actions (fila) y acc-state (indicador); .state, .dst y los distintivos de Deployments no cambian.",
+    "Indicador y botones con altura mínima de 40 px, texto centrado, relleno de 8 px y 14 px y la misma altura que la fila; separación regular de 10 px.",
+    "El indicador sigue siendo una etiqueta no interactiva (punto de estado, sin hover ni foco); los botones tienen hover y contorno visible al enfocarlos con teclado.",
+    "Por debajo de 520 px ambos se apilan a todo el ancho; el texto largo hace salto de línea sin recortes ni desbordamiento.",
+    "Sin cambios en fechas, datos, lógica de acceso ni Stripe."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Aplicación (tarjeta de cuenta)",
+      "url": "https://whyhumanoid.com/app/"
+    },
+    {
+      "etiqueta": "PR",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/29"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main con el PR #29 (f9d08dc): CI, compilación y despliegue en verde; la aplicación carga premium.js?v=58719472c2ae."
+  ],
+  "verificaciones": [
+    "Producción, escritorio, sesión de suscriptor existente y solo lectura: ACTIVE UNTIL 17 NOV 2027 y MANAGE SUBSCRIPTION miden 40 px, con el mismo borde superior, relleno 8 px 14 px y 10 px entre ellos.",
+    "Producción, cuenta de prueba sin suscripción: NO SUBSCRIPTION y el botón de suscripción miden 40 px en escritorio (misma línea) y en 375 px (apilados a 301 px de ancho, 10 px de separación), sin desbordamiento; sesión cerrada al terminar.",
+    "Local con datos reales: texto largo del indicador en escritorio, 40 px en una línea; en 390 px, 45 px en dos líneas sin recorte; los distintivos de Deployments siguen con 3 px 8 px.",
+    "Comprobaciones de la aplicación y guardia pública en verde."
+  ],
+  "pendientes": [
+    "Ninguno de este ajuste. Lo publicado en WH-20261117-1335-relaciones-deployments se conserva."
+  ],
+  "siguiente_accion": "Ninguna para este ajuste; sigue la prueba de actualización con Darwin."
+}
