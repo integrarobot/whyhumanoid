@@ -1,7 +1,72 @@
 {
   "note": "State of the weekly update (skill .claude/skills/whyhumanoid-weekly-update). Update last_processed_edition only after the workbook is updated and whyhumanoid.com is published and verified.",
   "last_processed_edition": null,
-  "known_pending": [],
+  "known_pending": [
+    {
+      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "item": "ASUS Gallop: new Humanoids row (138), Deployments row (testing at an ASUS group EMS factory) and two Entidades limpias rows",
+      "source": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
+      "source_date": "2026-11-13",
+      "found": "2026-11-18",
+      "plan": "ops/weekly-update/runs/2026-11-18.json"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "item": "LG CLOiD: new Humanoids row (139) with the KIRIA safety MOU in its notes, and two Entidades limpias rows (LG Electronics, CLOiD); no Deployments row",
+      "source": "https://www.lg.co.kr/media/release/30790",
+      "source_date": "2026-11-16",
+      "found": "2026-11-18",
+      "plan": "ops/weekly-update/runs/2026-11-18.json"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "item": "Agile Robots Series F (USD 500M, USD 8.5B valuation, SoftBank Group lead): update Humanoids row 6 (Valuation, Investors, Rounds, Sources / checked)",
+      "source": "https://www.agile-robots.com/en/news/detail/physical-ai-leader-agile-robots-raises-500-million-series-f-funding/",
+      "source_date": "2026-11-12",
+      "found": "2026-11-18",
+      "plan": "ops/weekly-update/runs/2026-11-18.json"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "item": "Genesis AI Series A (USD 500M, USD 3.5B post-money): update Humanoids row 119 (Valuation, Investors, Rounds, Price / availability, DoF / grippers, Buyer checks, Sources / checked)",
+      "source": "https://www.prnewswire.com/news-releases/genesis-ai-raises-500m-series-a-at-3-5b-valuation-to-master-human-level-dexterity-in-general-purpose-robots-and-deploy-at-scale-302941249.html",
+      "source_date": "2026-11-17",
+      "found": "2026-11-18",
+      "plan": "ops/weekly-update/runs/2026-11-18.json"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "item": "GXO and Apptronik: three Deployments rows (completed 2026 U.S. pilot; letter of intent, planned, not contracted; Robot Park testing)",
+      "source": "https://gxo.com/news_article/gxo-apptronik-expand-humanoid-robotics-partnership/",
+      "source_date": "2026-11-12",
+      "found": "2026-11-18",
+      "plan": "ops/weekly-update/runs/2026-11-18.json"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "item": "FLUX-mimic (mimic robotics): Software row 129, SOFTWARE list; no Deployments row for BMW",
+      "source": "https://www.mimicrobotics.com/en/blog/introducing-flux-mimic",
+      "source_date": "2026-07-23",
+      "found": "2026-11-18",
+      "plan": "ops/weekly-update/runs/2026-11-18.json"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "item": "HubEgo-100K (Hub Labs): Datasets row 30",
+      "source": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+      "source_date": "2026",
+      "found": "2026-11-18",
+      "plan": "ops/weekly-update/runs/2026-11-18.json"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "item": "Mosaic Intelligence Labs: Other Robots row 61, NAME list",
+      "source": "https://www.businesswire.com/news/home/20261110289756/en/Mosaic-Emerges-from-Stealth-with-%2447-Million-to-Build-Intelligent-Surgical-Machines---Treating-the-Body-from-Inside",
+      "source_date": "2026-11-10",
+      "found": "2026-11-18",
+      "plan": "ops/weekly-update/runs/2026-11-18.json"
+    }
+  ],
   "runs": [
     {
       "date": "2026-11-17",
@@ -20,6 +85,17 @@
       "result": "completed",
       "file": "ops/weekly-update/runs/2026-11-17-bd-gf-ncstate.json",
       "close": "WH-20261117-2212-bd-globalfoundries-ncstate-howl"
+    },
+    {
+      "date": "2026-11-18",
+      "kind": "scheduled",
+      "subject": "Edition of 2026-11-18, news section only",
+      "editions": [
+        "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor"
+      ],
+      "result": "pending_sheets",
+      "file": "ops/weekly-update/runs/2026-11-18.json",
+      "close": "PENDING_ID"
     }
   ]
 }
