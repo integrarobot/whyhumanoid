@@ -1,0 +1,445 @@
+{
+  "date": "2026-11-18",
+  "kind": "scheduled",
+  "note": "Weekly scheduled run. Javier's decision of 18/11/2026: process only the edition's news section. Public record only: Humanoids and the link directories are public tabs, so their planned cells are listed in full; Deployments and Entidades limpias are premium, so only a summary at the level of the public projection is kept here. Status pending_sheets: nothing was written to the workbook, nothing was exported or published, and the edition is NOT marked as processed.",
+  "editions": [
+    {
+      "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "title": "Si aún no usas Agentes de IA mejor no compres un robot",
+      "published": "2026-11-18",
+      "section_processed": "Más noticias de IA Física y robótica (12 items; the edition has no heading literally named «Noticias de la semana», this is its news section)",
+      "url_given_by": "Javier, during the run"
+    }
+  ],
+  "status": "pending_sheets",
+  "blocker": "No way to write to the master workbook from this cloud run: no browser of Javier's (Claude in Chrome needs the desktop), the Google Drive connector only reads and downloads (no cell editing), and the task excludes Autosheet. A full .xlsx download through the Google Drive connector worked (read-only).",
+  "inventory": {
+    "before": {
+      "Humanoids": 136,
+      "Deployments": 130,
+      "Software": 127,
+      "Datasets": 28,
+      "Hardware": 11,
+      "Other Robots": 488,
+      "Stocks": 276,
+      "Integrators": 7,
+      "Data Space": 30,
+      "Producto - Contenedores": 22,
+      "Entidades limpias": 28,
+      "Relaciones evidencia": 15,
+      "Evaluacion tarea": 4
+    },
+    "planned_after": {
+      "Humanoids": 138,
+      "Deployments": 134,
+      "Software": 128,
+      "Datasets": 29,
+      "Other Robots": "488 sheet rows (547 to 548 entries)",
+      "Entidades limpias": 32,
+      "others": "unchanged"
+    },
+    "unit": "sheet rows without the header, from the workbook download of 2026-11-18 (unchanged since the 2026-11-17 run)"
+  },
+  "dedupe": {
+    "searched": [
+      "ASUS",
+      "Gallop",
+      "Agile Robots",
+      "Genesis",
+      "Eno",
+      "Apptronik",
+      "GXO",
+      "Mimic",
+      "FLUX",
+      "HubLabs",
+      "HubEgo",
+      "Darwin",
+      "Mosaic",
+      "CLOiD",
+      "LG",
+      "Reflex",
+      "HongShan",
+      "Unitree",
+      "BMW"
+    ],
+    "tabs": "all 13",
+    "result": "No rows for ASUS, Gallop, CLOiD, FLUX-mimic, HubEgo-100K or Mosaic. Agile (row 6) and Genesis Eno (row 119) exist and get funding updates. GXO and Apptronik have a 2024 lab proof of concept in Deployments; the 2026 claims are new. Darwin-0 (row 137) and Reflex (Software) already hold the edition's items."
+  },
+  "planned": {
+    "humanoids_new": [
+      {
+        "sheet_row": 138,
+        "insert": "Insertar 1 fila debajo de la fila 137 (Darwin-0)",
+        "cells": {
+          "Lab": "ASUS",
+          "Robot": "Gallop",
+          "Web": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
+          "X": "https://twitter.com/asuspressroom",
+          "Linkedin": "https://www.linkedin.com/company/asus",
+          "Youtube": "https://www.youtube.com/user/ASUS",
+          "Country": "Taiwan",
+          "Careers": "Not found",
+          "B2B Client": "Not disclosed; customer pilots planned for 2027, no customer named (ASUS, 2026-11-13)",
+          "Stock": "TWSE:2357",
+          "Valuation": "Not verified",
+          "Investors": "Not verified; developed in-house by ASUS's Humanoid Robotics BU",
+          "Rounds": "Not verified",
+          "Release": "Not released; programme started early 2026; customer pilots planned 2027; market availability targeted 2H 2028",
+          "Height (cm)": "Not disclosed",
+          "Weight (kg)": "Not disclosed",
+          "Walk (km/h)": "Not disclosed",
+          "Run (km/h)": "Not disclosed",
+          "Payload/carry (kg)": "Not disclosed",
+          "Power (hours)": "Not disclosed",
+          "Software": "Four layers (planner, supervisor AI, skills, control); starts from leading open models, not named",
+          "Voice": "Not disclosed",
+          "Clothed?": "Not disclosed",
+          "Model checked": "Gallop, ASUS's first humanoid (Humanoid Robotics BU, Physical AI Solutions Business Group); no version or specification sheet published",
+          "Platform / mobility": "Fixed base with two arms today; wheeled version announced as next",
+          "DoF / grippers": "Two arms with dexterous hands built in-house, with a sense of touch; DoF not disclosed",
+          "Sensors / compute": "Single onboard NVIDIA Jetson AGX Thor; sensors not disclosed",
+          "Battery / charging": "Not disclosed",
+          "Price / availability": "Price not disclosed; Computex 2027 showcase; customer pilots 2027; availability targeted 2H 2028",
+          "Autonomy / supervision": "Supervisor AI checks each step and re-plans; control layer stops on faults; trained from worker head-camera video (with consent), simulation and VR/glove teleoperation",
+          "Buyer checks": "Training and testing at an ASUS group EMS station, not production. 99.5% within 20 s is a target, not a result. Factory and customers not disclosed. Social links are ASUS corporate accounts, not the robot's.",
+          "Sources / checked": "2026-11-18 | Specifications / identity reviewed (limitations in notes); Listing checked (ASUS investor profile) | Website captured\nhttps://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot\nhttps://www.asus.com/EVENT/Investor/about_profile"
+        }
+      },
+      {
+        "sheet_row": 139,
+        "insert": "Insertar 1 fila debajo de la fila 138",
+        "cells": {
+          "Lab": "LG",
+          "Robot": "CLOiD",
+          "Web": "https://www.lg.com/global/newsroom/news/home-appliance-solution/lg-electronics-presents-lg-cloid-home-robot-to-demonstrate-zero-labor-home-at-ces-2026/",
+          "X": "Not found",
+          "Linkedin": "https://www.linkedin.com/company/lg-electronics/",
+          "Youtube": "https://www.youtube.com/@LGGlobal",
+          "Country": "South Korea",
+          "Careers": "Not found",
+          "B2B Client": "Not disclosed",
+          "Stock": "KRX:066570",
+          "Valuation": "Not verified",
+          "Investors": "Not verified",
+          "Rounds": "Not verified",
+          "Release": "Unveiled at CES 2026 (Las Vegas, January 2026); no commercial launch date",
+          "Height (cm)": "105-143 (adjustable via waist angle)",
+          "Weight (kg)": "Not disclosed",
+          "Walk (km/h)": "Not disclosed",
+          "Run (km/h)": "Not disclosed",
+          "Payload/carry (kg)": "Not disclosed",
+          "Power (hours)": "Not disclosed",
+          "Software": "LG in-house VLM and VLA on the chipset, trained on tens of thousands of hours of household task data; Affectionate Intelligence; ThinQ / ThinQ ON",
+          "Voice": "Voice-based generative AI; speaker and display",
+          "Clothed?": "Not disclosed",
+          "Model checked": "LG CLOiD home robot (CES 2026); distinct from KAPEX (row 52)",
+          "Platform / mobility": "Head, torso with two arms, wheeled base with autonomous navigation; tilting torso adjusts height; no legs",
+          "DoF / grippers": "7 DoF per arm (shoulder 3, elbow 1, wrist 3); five individually actuated fingers per hand; arm length about 87 cm",
+          "Sensors / compute": "Head chipset; cameras and various sensors, not specified",
+          "Battery / charging": "Not disclosed",
+          "Price / availability": "Price and launch date not disclosed; LG to pursue domestic pilot safety certification with KIRIA (MOU signed 2026-11-13, no timeline)",
+          "Autonomy / supervision": "Autonomous navigation; VLA plans and executes actions; CES household tasks were demonstrations, not deployments",
+          "Buyer checks": "LG's CES releases call it a home robot; LG lists it among its humanoid robots in the KIRIA release (2026-11-16). Do not carry over KAPEX specifications. LG does not say CLOiD uses AXIUM actuators.",
+          "Sources / checked": "2026-11-18 | Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://lg.co.kr/media/release/29743\nhttps://www.lg.com/global/newsroom/news/home-appliance-solution/lg-electronics-presents-lg-cloid-home-robot-to-demonstrate-zero-labor-home-at-ces-2026/\nhttps://www.lg.co.kr/media/release/30790"
+        }
+      }
+    ],
+    "humanoids_updates": [
+      {
+        "sheet_row": 6,
+        "robot": "Agile / One",
+        "cells": {
+          "Valuation": {
+            "old": ">USD 1,000M (2021-09; historical)",
+            "new": "USD 8,500M (2026-11; Series F, stated by the company). Earlier: >USD 1,000M (2021-09; historical)"
+          },
+          "Investors": {
+            "old": "SoftBank Vision Fund 2 (Series C lead); Chimera; GL Ventures; Sequoia China; Linear Capital; Xiaomi; Foxconn Industrial Internet; Midas",
+            "new": "SoftBank Group (Series F lead); NVIDIA; Hitachi Group (Hitachi; Hitachi Ventures); T.Capital; other Series F investors not named; SoftBank Vision Fund 2 (Series C lead); Chimera; GL Ventures; Sequoia China; Linear Capital; Xiaomi; Foxconn Industrial Internet; Midas"
+          },
+          "Rounds": {
+            "old": "Series C: USD 220M (2021-09). Funding was not exclusively for the humanoid.",
+            "new": "Series F: USD 500M (2026-11-12); total invested capital USD 2,000M (company). Series C: USD 220M (2021-09). Funding was not exclusively for the humanoid."
+          },
+          "Sources / checked": {
+            "old": "2026-10-29 | Funding checked (scope in notes); Inherited specifications not revalidated | Website captured\nhttps://www.prnewswire.com/news-releases/agile-robots-announces-the-completion-of-series-c-financing-led-by-softbank-vision-fund-2-301373152.html\nhttps://www.agile-robots.com/en/",
+            "new": "2026-11-18 | Funding checked (Series F company release 2026-11-12; Series C 2021); Inherited specifications not revalidated | Website captured\nhttps://www.agile-robots.com/en/news/detail/physical-ai-leader-agile-robots-raises-500-million-series-f-funding/\nhttps://www.prnewswire.com/news-releases/agile-robots-announces-the-completion-of-series-c-financing-led-by-softbank-vision-fund-2-301373152.html\nhttps://www.agile-robots.com/en/"
+          }
+        }
+      },
+      {
+        "sheet_row": 119,
+        "robot": "Genesis / Eno",
+        "cells": {
+          "Valuation": {
+            "old": "Not disclosed in the confirmed funding announcement",
+            "new": "USD 3,500M post-money (2026-11-17; Series A, stated by the company)"
+          },
+          "Investors": {
+            "old": "Eclipse and Khosla Ventures (co-leads); Bpifrance; HSG; Eric Schmidt; Xavier Niel",
+            "new": "Premji Invest, Khosla Ventures and Eclipse (Series A co-leads); Eclipse and Khosla Ventures (2025 co-leads); Durable Capital Partners; accounts advised by T. Rowe Price Associates; Bpifrance; HSG; NVIDIA; AMD Ventures; Zoom; Samsung Next; Ericsson; Eric Schmidt; Eric Yuan; Jerry Yang; Xavier Niel; Zach Kirkhorn"
+          },
+          "Rounds": {
+            "old": "USD 105M (2025-07-01; emergence-from-stealth announcement). Republishing the announcement does not create another round.",
+            "new": "Series A: USD 500M (2026-11-17). Earlier: USD 105M (2025-07-01; emergence-from-stealth announcement). Republishing the announcement does not create another round."
+          },
+          "Price / availability": {
+            "old": "Selective deployments planned for late 2026; waitlist",
+            "new": "Production ramping up (company, 2026-11-17); targeted customer deployments planned by end of 2026 (website); waitlist; price not disclosed"
+          },
+          "DoF / grippers": {
+            "old": "",
+            "new": "Dexterous hand mapped 1:1:1 to a data-collection glove and the human hand; DoF not disclosed"
+          },
+          "Buyer checks": {
+            "old": "Do not duplicate USD 105M with row 38 or treat deployment plans as operation",
+            "new": "Do not duplicate USD 105M with row 38 or treat deployment plans as operation. The USD 500M Series A (2026-11-17) is a separate round; no named customer in the release."
+          },
+          "Sources / checked": {
+            "old": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.prnewswire.com/news-releases/genesis-ai-emerges-from-stealth-with-105m-to-build-universal-robotics-foundation-model-and-horizontal-platform-for-general-purpose-physical-ai-302495016.html\nhttps://www.genesis.ai/",
+            "new": "2026-11-18 | Funding checked (Series A company release 2026-11-17; scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.prnewswire.com/news-releases/genesis-ai-raises-500m-series-a-at-3-5b-valuation-to-master-human-level-dexterity-in-general-purpose-robots-and-deploy-at-scale-302941249.html\nhttps://www.genesis.ai/news/genesis-raises-dollar500m-series-a-to-fund-its-next-chapter\nhttps://www.prnewswire.com/news-releases/genesis-ai-emerges-from-stealth-with-105m-to-build-universal-robotics-foundation-model-and-horizontal-platform-for-general-purpose-physical-ai-302495016.html\nhttps://www.genesis.ai/"
+          }
+        }
+      }
+    ],
+    "directories_new": [
+      {
+        "tab": "Software",
+        "sheet_row": 129,
+        "column": "SOFTWARE list (A:C)",
+        "cells": {
+          "SOFTWARE": "FLUX-mimic (mimic robotics)",
+          "URL": "https://www.mimicrobotics.com/en/blog/introducing-flux-mimic",
+          "DESCRIPTION": "Video-action model trained on top of Black Forest Labs' FLUX 3 for data-efficient dexterous industrial manipulation"
+        }
+      },
+      {
+        "tab": "Datasets",
+        "sheet_row": 30,
+        "cells": {
+          "NAME": "HubEgo-100K",
+          "URL": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+          "DESCRIPTION": "Egocentric video dataset of skilled manual work by Hub Labs, planned at 100,000 hours; its first release has 10,124 hours of head-mounted RGB video with 100 Hz IMU from 12,227 contributors, in LeRobot format under CC BY 4.0."
+        }
+      },
+      {
+        "tab": "Other Robots",
+        "sheet_row": 61,
+        "column": "NAME list (A:C)",
+        "cells": {
+          "NAME": "Mosaic Intelligence Labs",
+          "URL": "https://mosaicintelligence.xyz/",
+          "DESCRIPTION": "San Francisco start-up developing sensing-enabled intelligent surgical machines, starting with endovascular procedures."
+        }
+      }
+    ],
+    "deployments_new_summary": [
+      {
+        "sheet_rows": "132-134",
+        "organization": "GXO Logistics",
+        "maker": "Apptronik",
+        "model": "Apollo (version not disclosed)",
+        "country": "United States",
+        "sector": "logistics",
+        "records": [
+          "Pilot completed earlier in 2026 in the U.S. (autonomous picking of small consumer goods), confirmed by GXO; site, dates and robot count not disclosed. Status pilot.",
+          "Letter of intent (not a contract) to expand trials in live operations from 2027 and, subject to agreed KPIs, a rollout over four years starting in North America in late 2027 under an expected RaaS structure. Status planned; commercial status not contracted.",
+          "Data collection and autonomous evaluations at Apptronik's Robot Park training facility (Austin, Texas), not a GXO site. Status testing."
+        ],
+        "source": {
+          "url": "https://gxo.com/news_article/gxo-apptronik-expand-humanoid-robotics-partnership/",
+          "publisher": "GXO Logistics",
+          "published": "2026-11-12",
+          "reviewed": "2026-11-18"
+        },
+        "context_source": {
+          "url": "https://apptronik.com/news-collection/welcome-to-robot-park-where-apptroniks-apollo-goes-to-work",
+          "publisher": "Apptronik",
+          "published": "2026-06-30",
+          "supports": "Robot Park location"
+        }
+      },
+      {
+        "sheet_rows": "135",
+        "organization": "ASUS (maker and internal operator)",
+        "maker": "ASUS",
+        "model": "Gallop",
+        "country": "Not disclosed",
+        "sector": "electronics manufacturing",
+        "records": [
+          "Gallop learning a motherboard-accessory packing station at an unnamed ASUS group EMS factory, tested on the line; the success figure is a target, not a result. Status testing, vendor reported."
+        ],
+        "source": {
+          "url": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
+          "publisher": "ASUS",
+          "published": "2026-11-13",
+          "reviewed": "2026-11-18"
+        }
+      }
+    ],
+    "entities_new_summary": "Entidades limpias rows 30-33: ASUS (manufacturer) and Gallop (model); LG Electronics (manufacturer of KAPEX and CLOiD) and CLOiD (model).",
+    "full_cells": "The premium cells (Deployments and Entidades limpias) were prepared outside Git; they are rebuilt from the sources above when the workbook is written."
+  },
+  "discarded": [
+    {
+      "item": "Darwin Robotics, pre-seed USD 3.6M",
+      "reason": "duplicate: already in Humanoids row 137 (added 2026-11-17 from the same 2026-11-05 announcement, URL already in its sources); nothing new on the page",
+      "source": "https://darwinrobotics.ai/research/darwin-raises-3-6m-pre-seed"
+    },
+    {
+      "item": "Reflex (Unitree G1 catching boxes, 65% at 2.5 m, 40% at 5 m)",
+      "reason": "duplicate: already in Software row 113 with the same URL and title; figures match the paper (arXiv 2610.12772, 2026-10-08)",
+      "source": "https://toberj.github.io/reflex/"
+    },
+    {
+      "item": "J.P. Morgan forecast of US humanoid production (300,000-400,000 by 2030)",
+      "reason": "out of scope: market forecast, no tab fits; secondary source (Reuters)",
+      "source": "https://www.reuters.com/business/us-humanoid-robot-production-could-hit-400000-by-2030-deployment-ramps-jp-morgan-2026-11-12/"
+    },
+    {
+      "item": "HongShan and Unitree «Shanyu·Chuang» programme for early-stage startups",
+      "reason": "out of scope: joint startup-investment programme, not an investment in Unitree; adding HongShan to Unitree investors would be inference",
+      "source": "HongShan article dated 2026-10-28 (hongshan.com)"
+    },
+    {
+      "item": "Mimic robotics and BMW: deployment",
+      "reason": "no Deployments row: BMW appears only as co-author affiliation of a research paper; no site, pilot or customer use is described. Only the Software row is proposed.",
+      "source": "https://www.mimicrobotics.com/blog/video-action-models-for-data-efficient-industrial-manipulation"
+    },
+    {
+      "item": "LG and KIRIA safety MOU: deployment",
+      "reason": "not a deployment (no site, customer or operation); recorded only in the CLOiD row",
+      "source": "https://www.lg.co.kr/media/release/30790"
+    }
+  ],
+  "leads_not_processed": [
+    "Genesis AI and LG CNS joint release (2026-06-16) on evaluation and pilots at LG operations in the U.S.: outside this edition; verify before using for B2B Client.",
+    "mimic robotics blog (2026-07-23): 'testing and deploying FLUX-mimic with manufacturing leaders like Audi': vendor claim without site, date or task; outside this item.",
+    "mimic hand M1 (mimic robotics) could fit Hardware; not in this edition's item.",
+    "Agile ONE release year: secondary press says unveiled November 2025, row 6 says 2026; unverified, not changed."
+  ],
+  "sources": [
+    {
+      "url": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
+      "publisher": "ASUS",
+      "published": "2026-11-13",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://www.asus.com/EVENT/Investor/about_profile",
+      "publisher": "ASUS (investor profile)",
+      "published": "undated",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://www.agile-robots.com/en/news/detail/physical-ai-leader-agile-robots-raises-500-million-series-f-funding/",
+      "publisher": "Agile Robots",
+      "published": "2026-11-12 (dateline; page header shows 10.11.2026)",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://www.prnewswire.com/news-releases/genesis-ai-raises-500m-series-a-at-3-5b-valuation-to-master-human-level-dexterity-in-general-purpose-robots-and-deploy-at-scale-302941249.html",
+      "publisher": "Genesis AI via PR Newswire",
+      "published": "2026-11-17",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://www.genesis.ai/news/genesis-raises-dollar500m-series-a-to-fund-its-next-chapter",
+      "publisher": "Genesis AI",
+      "published": "2026-11-17",
+      "reviewed": "2026-11-18",
+      "note": "page body did not render (waitlist overlay only); the PR Newswire copy is the company's own release"
+    },
+    {
+      "url": "https://gxo.com/news_article/gxo-apptronik-expand-humanoid-robotics-partnership/",
+      "publisher": "GXO Logistics",
+      "published": "2026-11-12",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://www.mimicrobotics.com/blog/video-action-models-for-data-efficient-industrial-manipulation",
+      "publisher": "mimic robotics",
+      "published": "2026-09-23",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://www.mimicrobotics.com/en/blog/introducing-flux-mimic",
+      "publisher": "mimic robotics",
+      "published": "2026-07-23",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.15974",
+      "publisher": "arXiv (mimic robotics, ETH, BMW Group co-authors)",
+      "published": "2026-11-11",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+      "publisher": "Hub Labs (Hub Data, Inc.)",
+      "published": "release 1, 2026 (no date on the card)",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://www.businesswire.com/news/home/20261110289756/en/Mosaic-Emerges-from-Stealth-with-%2447-Million-to-Build-Intelligent-Surgical-Machines---Treating-the-Body-from-Inside",
+      "publisher": "Mosaic Intelligence Labs via Business Wire",
+      "published": "2026-11-10",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://mosaicintelligence.xyz/",
+      "publisher": "Mosaic Intelligence Labs",
+      "published": "undated",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://www.lg.co.kr/media/release/30790",
+      "publisher": "LG Electronics",
+      "published": "2026-11-16",
+      "reviewed": "2026-11-18",
+      "supports": "MOU with KIRIA signed 2026-11-13; domestic pilot safety certification for humanoids such as CLOiD"
+    },
+    {
+      "url": "https://lg.co.kr/media/release/29743",
+      "publisher": "LG",
+      "published": "2026-01-05",
+      "reviewed": "2026-11-18",
+      "supports": "CLOiD height range and arm DoF"
+    },
+    {
+      "url": "https://www.lg.com/global/newsroom/news/home-appliance-solution/lg-electronics-presents-lg-cloid-home-robot-to-demonstrate-zero-labor-home-at-ces-2026/",
+      "publisher": "LG Electronics",
+      "published": "2026-01-04",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://kiria.org/eng/",
+      "publisher": "Korea Institute for Robot Industry Advancement",
+      "published": "undated",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://darwinrobotics.ai/research/darwin-raises-3-6m-pre-seed",
+      "publisher": "Darwin Robotics",
+      "published": "2026-11-05",
+      "reviewed": "2026-11-18"
+    },
+    {
+      "url": "https://toberj.github.io/reflex/",
+      "publisher": "Reflex project (University of Washington and others)",
+      "published": "2026-10-08 (arXiv 2610.12772)",
+      "reviewed": "2026-11-18"
+    }
+  ],
+  "not_found": [
+    "ASUS Gallop specifications (height, weight, DoF, battery, price), factory name and location, any customer",
+    "LG CLOiD weight, battery, price, launch date and the timeline of the pilot certification",
+    "GXO pilot site, dates, robot count and Apollo version; an Apptronik release on the letter of intent",
+    "a SoftBank release on the Agile Robots Series F",
+    "Genesis Eno specifications and named customers",
+    "a BMW source on FLUX-mimic; open weights or code",
+    "a release date on the HubEgo-100K card"
+  ],
+  "pre_checks_on_simulated_export": "tools/search-tags.mjs on the download with the plan applied: 0 unknown values (full 1572, preview 1389 documents). tools/relations.mjs: no config problems; ASUS | Gallop shows as a maker outside the catalogue until the public catalogue includes the new row. Both outputs stayed on screen only.",
+  "production": "none: no workbook write, export, publish or import"
+}

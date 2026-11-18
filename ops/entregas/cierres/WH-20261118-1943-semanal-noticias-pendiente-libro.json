@@ -1,0 +1,96 @@
+{
+  "id": "WH-20261118-1943-semanal-noticias-pendiente-libro",
+  "tarea": "Actualización semanal de Why Humanoid? con la sección de noticias de la edición del 18/11/2026 de la newsletter de Integrarobot",
+  "origen": "Tarea programada de los miércoles a las 14:00, hora de Madrid (decisión de Javier del 18/11/2026: procesar solo «Noticias de la semana»). Durante la ejecución, Javier facilitó la URL exacta de la edición.",
+  "fecha": "2026-11-18T19:43:52+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Edición leída: «Si aún no usas Agentes de IA mejor no compres un robot», 18/11/2026, https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor . La edición no tiene un apartado con el título literal «Noticias de la semana»; su sección de noticias es «Más noticias de IA Física y robótica», con 12 piezas, y es la que se ha procesado.",
+    "Las 12 piezas se han contrastado con fuentes primarias y con una descarga completa del libro (13 pestañas, sin cambios desde la ejecución del 17/11).",
+    "Plan de altas, sin escribir: Humanoids, 2 filas nuevas (ASUS Gallop, fila 138; LG CLOiD, fila 139). Deployments, 4 filas nuevas, de la 132 a la 135: GXO con Apptronik Apollo en tres registros (piloto completado en EE. UU. en 2026, confirmado por GXO; carta de intenciones, planned y sin contrato; pruebas en el Robot Park de Apptronik, testing) y ASUS Gallop en pruebas en una fábrica EMS del grupo ASUS (testing, lo dice el fabricante). Software: FLUX-mimic de mimic robotics, fila 129. Datasets: HubEgo-100K de Hub Labs, fila 30. Other Robots: Mosaic Intelligence Labs, fila 61. Entidades limpias: 4 filas, de la 30 a la 33 (ASUS, Gallop, LG Electronics y CLOiD).",
+    "Plan de actualizaciones, sin escribir: Humanoids fila 6 (Agile One), Serie F de 500 M USD con valoración de 8.500 M USD liderada por SoftBank Group (Valuation, Investors, Rounds y Sources / checked). Humanoids fila 119 (Genesis Eno), Serie A de 500 M USD con valoración post-money de 3.500 M USD (Valuation, Investors, Rounds, Price / availability, DoF / grippers, Buyer checks y Sources / checked).",
+    "Descartados, con motivo: Darwin Robotics (ya está en la fila 137 desde el 17/11, con la misma fuente) y Reflex (ya está en Software, con la misma URL); previsión de J.P. Morgan (previsión de mercado, sin pestaña donde encaje); programa de HongShan y Unitree (programa de inversión en startups, no inversión en Unitree); despliegue de FLUX-mimic en BMW (BMW solo figura como coautora de un artículo, sin planta ni piloto); acuerdo de LG con KIRIA como despliegue (no describe emplazamiento ni operación; va solo en la fila de CLOiD).",
+    "Recuentos antes, en filas de la hoja sin cabecera: Humanoids 136, Deployments 130, Software 127, Datasets 28, Hardware 11, Other Robots 488, Stocks 276, Integrators 7, Data Space 30, Producto - Contenedores 22, Entidades limpias 28, Relaciones evidencia 15, Evaluacion tarea 4. Después: iguales, porque no se ha escrito nada. Previstos cuando se aplique el plan: Humanoids 138, Deployments 134, Software 128, Datasets 29, Entidades limpias 32, Other Robots 488 filas (de 547 a 548 entradas) y el resto sin cambios.",
+    "Repositorio (PR #57): registro público de la ejecución en ops/weekly-update/runs/2026-11-18.json, con las celdas previstas completas de Humanoids y de los directorios, que son públicos, y solo un resumen de Deployments y Entidades limpias, que son de pago. En ops/weekly-update/state.json, 8 piezas en known_pending y la línea de la ejecución con el resultado pending_sheets. last_processed_edition sigue en null.",
+    "Sin cambios en el libro, la web, la base de datos de producción ni la configuración de cobro."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Edición procesada (18/11/2026)",
+      "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor"
+    },
+    {
+      "etiqueta": "PR de la ejecución",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/57"
+    },
+    {
+      "etiqueta": "Fichero de la ejecución",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/runs/2026-11-18.json"
+    },
+    {
+      "etiqueta": "Estado de la actualización semanal",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/state.json"
+    },
+    {
+      "etiqueta": "Web (sin cambios)",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "Fuente: ASUS Gallop, 13/11/2026",
+      "url": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot"
+    },
+    {
+      "etiqueta": "Fuente: GXO y Apptronik, 12/11/2026",
+      "url": "https://gxo.com/news_article/gxo-apptronik-expand-humanoid-robotics-partnership/"
+    },
+    {
+      "etiqueta": "Fuente: Agile Robots, Serie F, 12/11/2026",
+      "url": "https://www.agile-robots.com/en/news/detail/physical-ai-leader-agile-robots-raises-500-million-series-f-funding/"
+    },
+    {
+      "etiqueta": "Fuente: Genesis AI, Serie A, 17/11/2026",
+      "url": "https://www.prnewswire.com/news-releases/genesis-ai-raises-500m-series-a-at-3-5b-valuation-to-master-human-level-dexterity-in-general-purpose-robots-and-deploy-at-scale-302941249.html"
+    },
+    {
+      "etiqueta": "Fuente: LG y KIRIA, 16/11/2026",
+      "url": "https://www.lg.co.kr/media/release/30790"
+    },
+    {
+      "etiqueta": "Fuente: FLUX-mimic, 23/07/2026",
+      "url": "https://www.mimicrobotics.com/en/blog/introducing-flux-mimic"
+    },
+    {
+      "etiqueta": "Fuente: HubEgo-100K",
+      "url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K"
+    },
+    {
+      "etiqueta": "Fuente: Mosaic Intelligence Labs, 10/11/2026",
+      "url": "https://www.businesswire.com/news/home/20261110289756/en/Mosaic-Emerges-from-Stealth-with-%2447-Million-to-Build-Intelligent-Surgical-Machines---Treating-the-Body-from-Inside"
+    }
+  ],
+  "despliegue": [
+    "No aplica: no se ha escrito en el libro, así que no se ha exportado ni publicado nada y no se ha lanzado «Import private workbook». La web y producción siguen con los datos del 17/11/2026 (instantánea 2026-11-17T20:58:00Z).",
+    "PR #57 solo con ficheros de ops/ (registro de la ejecución, estado y este cierre), que GitHub Pages no publica."
+  ],
+  "verificaciones": [
+    "Repositorio integrarobot/whyhumanoid disponible con escritura en esta ejecución (push de la rama weekly-update/2026-11-18 correcto).",
+    "Descarga completa del libro con el conector de Google Drive (solo lectura) y conversión con tools/workbook-xlsx-to-json.py: recuentos iguales a los del cierre del 17/11, así que el libro no ha cambiado desde entonces.",
+    "Búsqueda de duplicados en las 13 pestañas: no hay filas de ASUS, Gallop, CLOiD, FLUX-mimic, HubEgo-100K ni Mosaic. Agile (fila 6) y Genesis Eno (fila 119) ya existen y se actualizan. GXO y Apptronik solo tenían la prueba de laboratorio de 2024. Identificadores nuevos comprobados: ninguno repetido.",
+    "Auditoría de Deployments sobre la descarga actual (node tools/audit-deployments.mjs): 130 filas, 47 columnas, 5.260 valores no vacíos, 0 diferencias con lo que reciben los suscriptores y con la vista previa de 10 filas.",
+    "node --no-warnings tools/check-reserved.mjs sobre la descarga actual: correcto, 1.626 valores reservados de 130 registros, ninguno publicado. node tools/check-public.mjs con los ficheros nuevos: correcto.",
+    "Prueba sobre una exportación simulada con el plan aplicado, solo en pantalla: tools/search-tags.mjs, 0 valores desconocidos (1.572 documentos completos, 1.389 de vista previa); tools/relations.mjs, sin problemas de configuración. ASUS | Gallop sale como fabricante fuera del catálogo hasta que el catálogo público incluya la fila nueva.",
+    "No se han ejecutado verify-site, verify-pages ni la importación porque no hay nada que publicar."
+  ],
+  "pendientes": [
+    "Bloqueo: desde esta ejecución en la nube no se puede escribir en el libro maestro. No hay navegador de Javier (Claude in Chrome necesita el ordenador), el conector de Google Drive solo lee y descarga (no edita celdas) y la tarea excluye Autosheet. Por eso la ejecución queda pending_sheets y no se publica nada.",
+    "Escribir el plan en el libro con el navegador de Javier, siguiendo el paso 8 del skill: Humanoids filas 138 y 139 y cambios en las filas 6 y 119 (celdas exactas en ops/weekly-update/runs/2026-11-18.json y en el fichero privado); Software fila 129, Datasets fila 30 y Other Robots fila 61 (también en ese fichero); Deployments filas 132 a 135 y Entidades limpias filas 30 a 33, que están solo en el fichero privado porque no van en Git. Después: exportar, publicar, importar a producción y marcar la edición como procesada.",
+    "Plan celda a celda completo (las 13 actualizaciones y altas, también Deployments y Entidades limpias): a petición de Javier, entregado como fichero privado descargable en la conversación de esta ejecución (plan-2026-11-18.json), fuera de Git, para que Codex lo aplique con su conector de escritura. No se pudo guardar en el proyecto de Claude porque el modo automático denegó la escritura. Antes de aplicarlo, volver a exportar y comprobar que las filas de destino siguen libres y que los valores anteriores de las filas 6 y 119 no han cambiado; después, releer y comparar celda a celda.",
+    "Por confirmar al escribir: niveles de evidencia E1 y E2, elegidos por analogía con filas existentes porque la escala no está definida por escrito; si hace falta un alias para Gallop o CLOiD en tools/relations-aliases.json cuando estén en el catálogo.",
+    "Pistas fuera de esta edición, sin procesar: Genesis AI con LG CNS (pilotos en instalaciones de LG en EE. UU., junio de 2026); mimic robotics dice que prueba FLUX-mimic con Audi; la mano M1 de mimic robotics podría ir en Hardware; año de presentación de Agile One sin verificar.",
+    "Decidir si la tarea programada debe escribir en el libro: hoy no puede sin Autosheet ni el ordenador de Javier. Las opciones son activar «Require this computer» en la tarea, desde la aplicación de escritorio, o permitirle Autosheet.",
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude."
+  ],
+  "siguiente_accion": "Codex, con su conector de escritura: aplicar en el libro el plan del fichero privado plan-2026-11-18.json (8 piezas de known_pending), releer y comparar; después Claude o Codex publican por el flujo del skill, importan a producción y marcan como procesada la edición del 18/11/2026. Si no se hace antes, la ejecución del miércoles 25/11/2026 las revisará junto con la edición nueva."
+}
