@@ -1,0 +1,36 @@
+{
+  "id": "WH-20261118-1835-acceso-tarea-semanal",
+  "tarea": "Recuperar el acceso de escritura de la tarea programada «Newsletter Integrarobot a base de datos de robots» (trig_014uvKoqEvNMMkQfq2xPggKY) a integrarobot/whyhumanoid, con una prueba de solo lectura desde el programador",
+  "origen": "Javier (18/11/2026), transmitido por Codex: asociar el repo desde esta sesión, sustituir la programación si hace falta, conservar miércoles 14:00 Europe/Madrid y las instrucciones originales con la decisión vigente de procesar solo «Noticias de la semana», una única prueba de solo lectura sin ingesta y una sola tarea semanal activa con la edición del 18 pendiente. Sin tocar libro, web ni producción.",
+  "fecha": "2026-11-18T18:35:00+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Ninguno en la tarea programada, el libro, la web ni producción.",
+    "Repositorio integrarobot/whyhumanoid confirmado como adjunto a esta sesión interactiva con escritura (add_repo: already_present)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Última ejecución de la tarea (18/11/2026, 13:01 UTC)",
+      "url": "https://claude.ai/code/session_01Bb9AL9wS6XD8wnSj9zNmp1"
+    }
+  ],
+  "despliegue": [
+    "Sin despliegue."
+  ],
+  "verificaciones": [
+    "Estado de la tarea trig_014uvKoqEvNMMkQfq2xPggKY: desactivada desde el 18/11/2026 a las 13:02:34 UTC; programación CRON_TZ=Europe/Madrid 0 14 * * 3 intacta; aprobación automática; última ejecución el 18/11/2026 de 13:01:04 a 13:01:49 UTC (45 s, sesión cse_01Bb9AL9wS6XD8wnSj9zNmp1). Su configuración no muestra ningún repositorio adjunto: solo conectores (Drive, Gmail, Calendar, Docs, Lovable, Spotify y el de sesiones remotas).",
+    "Leído desde esta sesión, no desde el programador: HEAD de main 6898b15bc9fd0ff3f2ef4c4e40d9f6d14b7e9421; last_processed_edition en ops/weekly-update/state.json: null; known_pending vacío. La edición del 18/11/2026 sigue sin procesar.",
+    "La decisión de procesar solo «Noticias de la semana» no está escrita en el repositorio ni en la memoria del proyecto: el skill (paso 3) y d-0005 siguen diciendo que se lea la edición completa."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Bloqueo: el clasificador del modo automático de esta sesión deniega escribir tareas programadas («Cowork Scheduled Task Write»). Sin ese permiso no puedo crear la tarea de sustitución con el repositorio adjunto, ni cambiar o activar la actual, ni lanzar la prueba de solo lectura desde el programador. El navegador tampoco puede actuar en claude.ai en modo automático. Falta que Javier apruebe esa acción en esta conversación (o la saque del modo automático) o que adjunte él el repositorio a la tarea en su pantalla de edición, en claude.ai.",
+    "Preparado para aplicar en cuanto haya permiso: una tarea con el repositorio adjunto, la misma programación (miércoles 14:00 Europe/Madrid) y las instrucciones originales. Cambios sobre ellas: procesar solo «Noticias de la semana», por encima del paso 3 del skill; la edición del 18/11/2026 como pendiente; AGENTS.md y el skill prevalecen en lo demás (reparto aprobado del 17/11). Antes, una única ejecución de solo lectura que devuelva el SHA de HEAD, last_processed_edition y el ID de la ejecución. La tarea actual quedaría desactivada sin borrarla, para conservar su historial.",
+    "Hipótesis sobre el fallo de las 13:01: la ejecución no tenía el repositorio adjunto y, sin nadie que aprobara el add_repo, no pudo obtenerlo. Se comprueba con la prueba de solo lectura.",
+    "Si Javier lo confirma, recoger la decisión «solo Noticias de la semana» en el skill y en d-0005 para que no contradigan la tarea.",
+    "Sigue pendiente el cierre de la fase 3 del reparto: desplegada y verificada como visitante; falta la comprobación con la sesión de suscriptor."
+  ],
+  "siguiente_accion": "Con la aprobación de Javier, crear la tarea con el repositorio adjunto, hacer la prueba de solo lectura desde el programador, restaurar las instrucciones y dejar una sola tarea semanal activa."
+}
