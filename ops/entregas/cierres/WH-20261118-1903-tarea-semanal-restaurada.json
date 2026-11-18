@@ -1,0 +1,37 @@
+{
+  "id": "WH-20261118-1903-tarea-semanal-restaurada",
+  "tarea": "Sustituir la tarea programada semanal de Why Humanoid? por una creada desde esta sesión, con el repositorio integrarobot/whyhumanoid disponible con escritura, y hacer una prueba de solo lectura desde el programador",
+  "origen": "Javier (18/11/2026, por la tarde): «Adelante con la tarea de Why Humanoid? que has preparado. Pídeme el permiso para crearla y ejecuta la prueba de solo lectura desde el programador. Deja una sola tarea activa los miércoles a las 14:00, hora de Madrid, y conserva pendiente la edición del día 18».",
+  "fecha": "2026-11-18T19:03:51+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Tarea nueva trig_01QFs7wPNjvLpGRRn7mexRyi, «Newsletter Integrarobot a base de datos de robots», creada desde esta sesión, que tiene integrarobot/whyhumanoid adjunto con escritura: activa, CRON_TZ=Europe/Madrid 0 14 * * 3, aprobación automática, solo en la nube, aviso al móvil. Próxima ejecución: miércoles 25/11/2026 a las 14:00, hora de Madrid.",
+    "Instrucciones restauradas sobre las originales, con estos cambios: procesar solo «Noticias de la semana», por encima del paso 3 del skill y de d-0005; la edición del 18/11/2026, pendiente; si falta el repositorio, un solo add_repo y, si falla, cierre «bloqueado»; AGENTS.md y el skill prevalecen en lo demás (reparto aprobado del 17/11, comprobaciones check-reserved y verify-pages); no usar Autosheet ni ElevenLabs, que la tarea nueva heredó de esta sesión y consumen créditos.",
+    "La tarea anterior, trig_014uvKoqEvNMMkQfq2xPggKY, ya no figura en la cuenta (ni activa, ni desactivada, ni completada), así que la nueva es la única tarea semanal.",
+    "Sin cambios en el libro, la web, producción ni ops/weekly-update/state.json."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Prueba de solo lectura desde el programador",
+      "url": "https://claude.ai/code/session_01Bb9AL8C66dUeRXqHHSWsYc"
+    }
+  ],
+  "despliegue": [
+    "Sin despliegue."
+  ],
+  "verificaciones": [
+    "Prueba lanzada desde el programador con la tarea nueva: ejecución cse_01Bb9AL8C66dUeRXqHHSWsYc, de 17:48:33 a 17:49:08 UTC (35 s), estado SUCCEEDED. Sus instrucciones solo permitían lecturas (sin newsletter, libro, workflows, commits ni push). El SHA, last_processed_edition y el permiso que comprobó están en el mensaje final de esa ejecución; desde esta sesión no puedo leerlo.",
+    "Referencia leída desde esta sesión justo después: HEAD de main d203dca7ab298b8ab42c506dfb53f2392e1fbd2b (incluye el cierre de las 18:35); last_processed_edition: null. La edición del 18/11/2026 sigue pendiente.",
+    "Lista de tareas tras los cambios: una sola tarea semanal activa (trig_01QFs7wPNjvLpGRRn7mexRyi). Los otros tres registros de Why Humanoid? son recordatorios de una sola vez ya cumplidos en noviembre."
+  ],
+  "pendientes": [
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude.",
+    "Javier o Codex: abrir la ejecución de prueba y confirmar que informa del SHA, de last_processed_edition y de push: sí. Si dice que no tuvo el repositorio, la ejecución del 25/11 cerrará como «bloqueado» con el error exacto, sin tocar nada.",
+    "Si Javier lo confirma, recoger la decisión «solo Noticias de la semana» en el skill y en d-0005.",
+    "Sigue pendiente el cierre de la fase 3 del reparto (falta la comprobación con la sesión de suscriptor)."
+  ],
+  "siguiente_accion": "Ejecución semanal del miércoles 25/11/2026 a las 14:00, hora de Madrid, con la edición del 18/11 pendiente.",
+  "corrige": "WH-20261118-1835-acceso-tarea-semanal"
+}
