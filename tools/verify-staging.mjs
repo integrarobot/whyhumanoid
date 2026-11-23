@@ -147,8 +147,8 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     const back = await page.evaluate(() => ({ cols: [...document.querySelectorAll('#cmp-out thead th')].map((t) => t.textContent).slice(1).map((x) => x.split('Commercial')[0].split('Discontinued')[0]), q: document.getElementById('f-q').value, shown: [...document.querySelectorAll('#pcs .pc')].filter((c) => !c.hidden).length }));
     check(back.cols.length === 2 && back.q === 'hall' && back.shown === 1, `${label} components: a shared address restores the comparison and the search (${JSON.stringify(back)})`);
     for (const id of [...COMPONENTS.ids.products, ...COMPONENTS.ids.software]) {
-      const res = await page.request.get(`${BASE}/components/${id.toLowerCase()}/`);
-      if (res.status() !== 200) check(false, `${label} components: /components/${id.toLowerCase()}/ answers ${res.status()}`);
+      const res = await fetch(`${BASE}/components/${id.toLowerCase()}/`);
+      if (res.status !== 200) check(false, `${label} components: /components/${id.toLowerCase()}/ answers ${res.status}`);
     }
     check(true, `${label} components: all ${COMPONENTS.ids.products.length + COMPONENTS.ids.software.length} product addresses answer`);
     const locked = COMPONENTS.ids.products.find((id) => !COMPONENT_ROWS.some((r) => r.component_id === id));
