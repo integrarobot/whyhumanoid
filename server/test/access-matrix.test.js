@@ -29,7 +29,12 @@ test('the nine confirmed categories, in order, then Reports, each at its own add
   assert.deepEqual(CATEGORIES.filter((c) => c.access === 'subscription').map((c) => c.id), ['deployments', 'components']);
   assert.deepEqual(DATASETS.map((d) => d.id).sort(), Object.keys(DATASET_ACCESS).sort(), 'every tab has exactly one entry');
   // Gaps are stated, not filled: categories without a dedicated tab say so.
-  for (const id of ['components', 'benchmarks', 'investment']) assert.match(CATEGORIES.find((c) => c.id === id).gap, /no dedicated|no components table/);
+  for (const id of ['components', 'investment']) assert.match(CATEGORIES.find((c) => c.id === id).gap, /no dedicated|no components table/);
+  // Benchmarks has its own tabs since 23 Nov 2026 and states the gap it has: most resources have no extracted results.
+  assert.deepEqual(CATEGORIES.find((c) => c.id === 'benchmarks').datasets, ['benchmarks', 'benchmark-results']);
+  assert.match(CATEGORIES.find((c) => c.id === 'benchmarks').gap, /extracted/);
+  assert.equal(DATASET_ACCESS['task-evaluations'].category, null, 'Task Evaluation is an internal operational assessment, not the Benchmarks category');
+  assert.equal(DATASET_ACCESS['task-evaluations'].access, 'free', 'its access is unchanged');
   assert.match(CATEGORIES.find((c) => c.id === 'components').gap, /sparse hardware directory/, 'Components says what it is today');
 });
 

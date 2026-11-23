@@ -120,8 +120,8 @@
   },
   {
    "id": "task-evaluations",
-   "title": "Benchmarks: task evaluations",
-   "description": "Per-task eligibility of each robot model against documented evidence.",
+   "title": "Task evaluations",
+   "description": "Internal operational assessment: per-task eligibility of each robot model against documented evidence.",
    "entries_total": 4,
    "source_rows_total": 4,
    "preview_entries": 4,
@@ -144,7 +144,7 @@
     "evidence_ids"
    ],
    "access": "free",
-   "category": "benchmarks",
+   "category": null,
    "public": "all"
   },
   {
@@ -216,14 +216,14 @@
    ],
    "access": "free",
    "category": "investment",
+   "snapshot_fields": "Beyond row 10 this snapshot holds the basic fields only; the other fields are free and arrive with the next export.",
    "public": "basic_fields",
    "public_fields": [
     "name",
     "ticker",
     "exchange",
     "country"
-   ],
-   "snapshot_fields": "Beyond row 10 this snapshot holds the basic fields only; the other fields are free and arrive with the next export."
+   ]
   },
   {
    "id": "software",
@@ -271,7 +271,7 @@
   {
    "id": "hardware",
    "title": "Components",
-   "description": "Compute, sensors, actuators and other hardware used in humanoid robots (Hardware tab).",
+   "description": "Compute, sensors, actuators and other hardware used in humanoid robots.",
    "entries_total": 11,
    "source_rows_total": 11,
    "preview_entries": 10,

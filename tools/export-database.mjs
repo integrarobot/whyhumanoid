@@ -26,7 +26,8 @@ const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.i
 // The backend's own row key, raw sheet-row pointers and the importer's bookkeeping. Record ids (record_id,
 // deployment_id, claim_id...) are content: they are how the tabs refer to each other.
 export const isInternalField = (k) => k === 'id' || k === 'source_rows' || k === 'identity_status';
-export const OTHER_TABS = DATASETS.filter((d) => d.id !== 'humanoids').map((d) => d.id);
+// Tabs published through their own snapshot (spec.publicSnapshot, e.g. the Robotics Evaluation Atlas) have no preview file.
+export const OTHER_TABS = DATASETS.filter((d) => d.id !== 'humanoids' && !d.publicSnapshot).map((d) => d.id);
 
 export function validateDatabase(index, tabs) {
   const problems = [];
@@ -72,7 +73,7 @@ async function build(from, snapshot) {
   const list = new Map(publicDatasetList().map((d) => [d.id, d]));
   const index = { note: INDEX_NOTE, snapshot, tabs: [] };
   const tabs = {};
-  for (const spec of DATASETS.filter((d) => d.id !== 'humanoids')) {
+  for (const spec of DATASETS.filter((d) => d.id !== 'humanoids' && !d.publicSnapshot)) {
     const { results } = await db
       .prepare("SELECT preview_rank, data, preview_data FROM premium_rows WHERE dataset = ? AND visibility = 'customer' ORDER BY position")
       .bind(spec.id)

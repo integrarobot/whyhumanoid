@@ -24,6 +24,7 @@ import { fileURLToPath } from 'node:url';
 import { buildData } from './build-site.mjs';
 import { PAGE_FIELDS, catalogueIndex, previewGraph } from './relations.mjs';
 import { robotPresentation } from './robot-presentation.mjs';
+import { renderAtlas } from './atlas-view.mjs';
 import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
@@ -37,6 +38,8 @@ const REGISTRY = 'tools/permalinks.json';
 const ANALYTICS = `<!-- Cloudflare Web Analytics: visit counts without cookies (approved split, phase 3) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76de8d3b4a534b91bd808e724f9c1594"}'></script><!-- End Cloudflare Web Analytics -->`;
 // The stylesheet URL carries a hash of its content, so a changed stylesheet is never served from a browser's cache.
 const CSS_VERSION = createHash('sha256').update(readFileSync(new URL('assets/pages.css', root))).digest('hex').slice(0, 10);
+// Robotics Evaluation Atlas assets, loaded on /benchmarks/ only (their own cache keys, so other pages do not change).
+const assetVersion = (f) => createHash('sha256').update(readFileSync(new URL(f, root))).digest('hex').slice(0, 10);
 const GENERATED_DIRS = ['robots', 'companies', 'reports', 'method', 'subscribe', ...CATEGORIES.map((c) => c.path.slice(1, -1))];
 
 // ---------- helpers ----------
@@ -245,7 +248,7 @@ export function publicModel(registry = readRegistry()) {
 const nav = (section) => CATEGORIES.map((c) => `<a href="${c.path}"${c.id === section ? ' aria-current="page"' : ''}>${esc(c.label)}${c.access === 'subscription' ? '<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span>' : ''}</a>`).join('');
 const FONTS = 'https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap';
 const ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E";
-function page({ title, description, path, body, type = 'website', noindex = false, refresh = null, section = null }) {
+function page({ title, description, path, body, type = 'website', noindex = false, refresh = null, section = null, head = '', wide = false, tail = '' }) {
   const url = SITE + path;
   return `<!doctype html>
 <html lang="en">
@@ -268,12 +271,12 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta h
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
 <link rel="stylesheet" href="/assets/pages.css?v=${CSS_VERSION}">
-</head>
+${head}</head>
 <body>
 <header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><nav class="cats" aria-label="Categories">${nav(section)}</nav></header>
-<main>
+<main${wide ? ' class="wide"' : ''}>
 ${body}
-</main>
+</main>${tail}
 ${section ? "<script>(function(){var a=document.querySelector('nav.cats [aria-current]');if(a&&a.parentNode.scrollWidth>a.parentNode.clientWidth)a.parentNode.scrollLeft=a.offsetLeft-a.parentNode.offsetLeft-16;})();</script>" : ''}
 <footer class="foot"><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/method/">Method</a><a href="/subscribe/">Subscription</a><a href="/app/">Subscriber app</a></nav><p>Why Humanoid? by Integrarobot. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
 ${ANALYTICS}
@@ -546,7 +549,7 @@ function categoryHead(c, model, extra = '') {
 <p class="lede">${esc(c.summary)}</p>
 ${c.gap ? `<p class="gap"><b>Coverage:</b> ${esc(c.gap)}</p>` : ''}${extra}`;
 }
-const catPage = (c, model, body, description) => page({ title: `${c.label}: ${c.summary.replace(/[.:].*$/, '').toLowerCase()} · Why Humanoid?`, description: clip(description), path: c.path, body: `${body}\n</article>`, section: c.id });
+const catPage = (c, model, body, description, opts = {}) => page({ title: opts.title ?? `${c.label}: ${c.summary.replace(/[.:].*$/, '').toLowerCase()} · Why Humanoid?`, description: clip(description), path: c.path, body: `${body}\n</article>`, section: c.id, ...opts });
 const dirTable = (rows, cols) => `<div class="scroll"><table class="dir"><thead><tr>${cols.map(([h]) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${cols.map(([, f]) => `<td>${f(r)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 const nameLink = (r) => (nz(r.url) ? ext(r.url, r.name) : esc(r.name));
 const descr = (r) => (r._pending?.includes('description') ? PENDING : nz(r.description) ? text(r.description) : '<span class="na">No description recorded</span>');
@@ -607,16 +610,21 @@ ${sections}
   return catPage(c, model, body, `${c.summary} ${counted(meta)}, free.`);
 }
 
-function benchmarksCategory(model) {
+// Robotics Evaluation Atlas (Javier, 23 Nov 2026): the Benchmarks catalogue and selected source-reported results, from
+// the public snapshot data/benchmarks/atlas.json (tools/export-benchmarks.mjs). Task Evaluation is no longer shown here.
+function benchmarksCategory() {
   const c = CATEGORIES_BY_ID.get('benchmarks');
-  const { meta, rows } = model.directory('task-evaluations');
-  const yes = (v) => (/^(true|1)$/i.test(String(v ?? '')) ? 'Yes' : /^(false|0)$/i.test(String(v ?? '')) ? 'No' : esc(v ?? 'Not recorded'));
-  const body = `${categoryHead(c, model)}
-<p>${counted(meta)}, free. Each row checks one robot model against the evidence documented for one task.</p>
-${dirTable(rows, [['Model', (r) => esc(r.model || r.model_id)], ['Task', (r) => esc(human(r.task_id))], ['Task evidence', (r) => yes(r.eligible_task_evidence)], ['Commercial', (r) => yes(r.eligible_commercial)], ['Economic', (r) => yes(r.eligible_economic)], ['Reason as recorded', (r) => shown(r, 'decision_reason')]])}
-<p class="key">Task evidence, Commercial and Economic say whether the documented evidence meets each bar, as recorded; they are not scores.</p>
-<p class="meta">Snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}.</p>`;
-  return catPage(c, model, body, `Task evaluations of humanoid robot models against documented evidence: ${counted(meta)}, free.`);
+  const atlas = read('data/benchmarks/atlas.json');
+  const n = atlas.counts;
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, c.label]])}
+<article class="entity atlas-page">
+${renderAtlas(atlas, { index: CATEGORIES.indexOf(c) + 1, total: CATEGORIES.length, badge: accessBadge(c) })}`;
+  return catPage(c, null, body, `Robotics Evaluation Atlas: what ${n.resources} robotics benchmark resources test, ${n.observations} source-reported model results from ${n.resources_with_results} of them, and where evidence is still missing. Free.`, {
+    title: 'Robotics Evaluation Atlas: what robotics benchmarks test and what models achieve · Why Humanoid?',
+    head: `<link rel="stylesheet" href="/assets/atlas.css?v=${assetVersion('assets/atlas.css')}">\n`,
+    tail: `\n<script src="/assets/atlas.js?v=${assetVersion('assets/atlas.js')}" defer></script>`,
+    wide: true,
+  });
 }
 
 function investmentCategory(model) {

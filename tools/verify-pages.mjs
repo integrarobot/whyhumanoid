@@ -77,7 +77,10 @@ for (const c of CATEGORIES) {
   const d = doc(c.path);
   if (d.querySelector('link[rel=canonical]')?.href !== SITE + c.path) fail(`${c.path}: canonical`);
   if (d.querySelector('meta[name=robots]')) fail(`${c.path}: category page marked noindex`);
-  if (d.querySelector('h1')?.textContent !== c.label) fail(`${c.path}: h1 is not "${c.label}"`);
+  // Benchmarks is the Robotics Evaluation Atlas (23 Nov 2026): its h1 is the atlas title and its kicker names the category.
+  const h1 = c.id === 'benchmarks' ? 'Robotics Evaluation Atlas' : c.label;
+  if (d.querySelector('h1')?.textContent !== h1) fail(`${c.path}: h1 is not "${h1}"`);
+  if (c.id === 'benchmarks' && !/Benchmarks/.test(d.querySelector('.kicker')?.textContent ?? '')) fail(`${c.path}: kicker does not name the category`);
   const navLabels = [...d.querySelectorAll('nav.cats a')].map((a) => a.textContent.trim());
   if (JSON.stringify(navLabels) !== JSON.stringify(LABELS)) fail(`${c.path}: navigation is not the ten categories in order (${navLabels.join(', ')})`);
   if (d.querySelector('nav.cats a[aria-current="page"]')?.getAttribute('href') !== c.path) fail(`${c.path}: navigation does not mark the current category`);
@@ -188,6 +191,40 @@ await new Function('location', 'fetch', script)(
 await new Promise((r) => setTimeout(r, 20));
 if (went !== rb.path) fail(`404.html: /robots/any-old-name-${rb.id}/ went to ${went}`);
 
+// Robotics Evaluation Atlas (23 Nov 2026): /benchmarks/ shows the public snapshot, readable without JavaScript: every
+// resource with its anchor, every observation with its value, source and stable id, counts computed from the rows, and
+// nothing of Task Evaluation or of private links.
+{
+  const atlas = JSON.parse(read('data/benchmarks/atlas.json'));
+  const d = doc('/benchmarks/');
+  const p = '/benchmarks/';
+  const c = atlas.counts;
+  const counts = [...d.querySelectorAll('.atlas-counts dd')].map((x) => Number(x.textContent));
+  if (JSON.stringify(counts) !== JSON.stringify([c.resources, c.resources_with_results, c.observations, c.resources_awaiting_results])) fail(`${p}: headline counts ${counts} differ from the snapshot`);
+  if (d.querySelectorAll('#matrix tbody tr').length !== atlas.benchmarks.length) fail(`${p}: the landscape does not list every resource`);
+  for (const b of atlas.benchmarks) {
+    const card = d.getElementById(b.id);
+    if (!card || card.tagName !== 'DETAILS') fail(`${p}: no resource card #${b.id}`);
+    const row = d.getElementById(`row-${b.id}`);
+    const marks = row ? [...row.querySelectorAll('td.cv .g.on')].length : -1;
+    if (marks !== b.capabilities.length) fail(`${p}: ${b.id} shows ${marks} capability marks for ${b.capabilities.length} groups`);
+  }
+  if (d.querySelectorAll('#obs tbody tr').length !== atlas.results.length) fail(`${p}: the table does not list every observation`);
+  for (const r of atlas.results) {
+    const tr = d.getElementById(r.id);
+    if (!tr) { fail(`${p}: no table row #${r.id}`); continue; }
+    const val = r.value === null ? 'Not reported' : `${r.value}${r.unit === '%' ? '%' : ''}`;
+    if (!tr.querySelector('td.num')?.textContent.startsWith(val)) fail(`${p}: ${r.id} does not show ${val}`);
+    if (r.source_url && !tr.querySelector(`a[href="${r.source_url}"]`)) fail(`${p}: ${r.id} has no source link`);
+    if (r.value !== null && r.unit === '%' && !d.querySelector(`.panels .dot[data-res="${r.id}"], #cmp-out .dot[data-res="${r.id}"], template`)) fail(`${p}: ${r.id} is not drawn`);
+  }
+  for (const r of atlas.results) if (r.benchmark_id === 'bm-paw' || r.benchmark_id === 'bm-physics-iq') if (r.value !== null && !d.querySelector(`.panels [data-res="${r.id}"]`)) fail(`${p}: ${r.id} missing from its results panel`);
+  const html = read('benchmarks/index.html');
+  if (/eligible_task_evidence|Task evaluations? of humanoid/i.test(html)) fail(`${p}: still shows Task Evaluation`);
+  if (/docs\.google\.com|drive\.google\.com/.test(html)) fail(`${p}: links a private Google file`);
+  if (/class="[^"]*\b(err|whisker)\b/.test(html)) fail(`${p}: draws error bars the data does not have`);
+  if (!d.querySelector('script[src^="/assets/atlas.js?v="]') || !d.querySelector('link[href^="/assets/atlas.css?v="]')) fail(`${p}: atlas assets missing`);
+}
 if (failures.length) {
   console.error(`Public pages check FAILED (${failures.length}):\n- ${failures.slice(0, 40).join('\n- ')}`);
   process.exit(1);

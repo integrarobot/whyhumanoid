@@ -15,7 +15,7 @@ test('dataset list is public and contains no rows', async () => {
   const res = await ctx.call('GET', '/v1/datasets');
   assert.equal(res.status, 200);
   const { datasets } = await res.json();
-  assert.equal(datasets.length, 13);
+  assert.equal(datasets.length, 15); // 13 tabs plus the two Robotics Evaluation Atlas tabs (23 Nov 2026)
   assert.deepEqual(datasets.slice(0, 3).map((d) => d.id), ['humanoids', 'deployments', 'integrators']);
   assert.ok(datasets.every((d) => !('rows' in d)));
   assert.equal(datasets[0].access.preview_rows, 'all', 'the Humanoids catalogue is free in full');
@@ -29,7 +29,9 @@ test('dataset list is public and contains no rows', async () => {
   }
   assert.equal(datasets.find((d) => d.id === 'hardware').category, 'components');
   assert.equal(datasets.find((d) => d.id === 'stocks').category, 'investment');
-  assert.equal(datasets.find((d) => d.id === 'task-evaluations').category, 'benchmarks');
+  assert.equal(datasets.find((d) => d.id === 'benchmarks').category, 'benchmarks');
+  assert.equal(datasets.find((d) => d.id === 'benchmark-results').category, 'benchmarks');
+  assert.equal(datasets.find((d) => d.id === 'task-evaluations').category, null, 'internal operational assessment since 23 Nov 2026');
   assert.equal(datasets.find((d) => d.id === 'data-space').offer, false);
 });
 

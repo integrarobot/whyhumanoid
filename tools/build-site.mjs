@@ -190,8 +190,10 @@ const escHtml = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;
 export function renderCategories(data) {
   const tabs = new Map((data.database?.tabs ?? []).map((t) => [t.id, t]));
   const reports = JSON.parse(readFileSync(new URL('data/reports/catalogue.json', root), 'utf8')).reports.length + 1; // + Why Humanoid?'s deployment records analysis
-  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
-  const unit = { humanoids: 'robots', deployments: 'records', components: 'entries', integrators: 'integrators', software: 'entries', datasets: 'datasets', benchmarks: 'evaluations', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
+  // Benchmarks: the resources of the Robotics Evaluation Atlas snapshot (data/benchmarks/atlas.json), not a preview tab.
+  const atlas = JSON.parse(readFileSync(new URL('data/benchmarks/atlas.json', root), 'utf8')).counts;
+  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
+  const unit = { humanoids: 'robots', deployments: 'records', components: 'entries', integrators: 'integrators', software: 'entries', datasets: 'datasets', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
   const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? '<span class="sub">Subscription</span> · first 10 free' : 'Free'}</span></li>`).join('');
   const services = SERVICES.map((sv) => `<div><p class="lbl">Service · proposal</p><h3>${escHtml(sv.name)}</h3><p>${escHtml(sv.summary)}</p><p class="lbl">${escHtml(sv.price)} · not included in the subscription · not available to order yet</p></div>`).join('');
   return `<!-- categories:start -->

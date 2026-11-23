@@ -42,7 +42,8 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     check(res.status() === 200, `${label} ${c.path}: direct load ${res.status()}`);
     const again = await page.reload({ waitUntil: 'domcontentloaded' });
     check(again.status() === 200, `${label} ${c.path}: reload ${again.status()}`);
-    check((await page.textContent('h1'))?.trim() === c.label, `${label} ${c.path}: h1 is ${c.label}`);
+    const h1 = c.id === 'benchmarks' ? 'Robotics Evaluation Atlas' : c.label; // Benchmarks is the atlas (23 Nov 2026)
+    check((await page.textContent('h1'))?.trim() === h1, `${label} ${c.path}: h1 is ${h1}`);
     const nav = await page.$$eval('nav.cats a', (as) => as.map((a) => [a.textContent.trim(), a.getAttribute('href')]));
     check(JSON.stringify(nav) === JSON.stringify(CATEGORIES.map((x) => [x.label, x.path])), `${label} ${c.path}: navigation is the nine categories in order`);
     check((await page.$eval('link[rel=canonical]', (l) => l.href)) === `https://whyhumanoid.com${c.path}`, `${label} ${c.path}: canonical`);
@@ -101,6 +102,29 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     check(r && r.loaded && r.alt === pr.image.alt, `${label} robot ${id}: full-body image loads with its alt text`);
     if (r) check(Math.abs(r.ratio - r.natural) < 0.01 && r.inside && r.h >= 300 && r.overflow <= 1, `${label} robot ${id}: shown whole, proportions kept, no sideways scroll (${r.ratio.toFixed(3)} vs ${r.natural.toFixed(3)}, ${Math.round(r.h)}px)`);
   }
+  // Robotics Evaluation Atlas (23 Nov 2026): evidence near the top, the same detail for pointer and keyboard, honest
+  // controls, shareable state and no sideways page scroll.
+  await page.goto(`${BASE}/benchmarks/`, { waitUntil: 'networkidle' });
+  const at = await page.evaluate(() => ({ js: document.getElementById('atlas')?.classList.contains('js'), results: document.getElementById('results').getBoundingClientRect().top + scrollY, overflow: document.documentElement.scrollWidth - innerWidth, counts: [...document.querySelectorAll('.atlas-counts dd')].map((d) => d.textContent).join('/') }));
+  check(at.js && at.counts === '22/2/34/20', `${label} benchmarks: the atlas starts and shows 22 resources, 2 with results, 34 observations, 20 awaiting (${at.counts})`);
+  check(at.results < (label === 'phone' ? 1100 : 900), `${label} benchmarks: results start near the top (${Math.round(at.results)}px)`);
+  check(at.overflow <= 1, `${label} benchmarks: no horizontal page scroll (${at.overflow}px)`);
+  await page.focus('#panel-paw .dot.ext');
+  await page.keyboard.press('Enter');
+  const det = await page.evaluate(() => ({ open: !document.getElementById('res-detail').hidden, text: document.getElementById('res-detail').textContent, url: location.search }));
+  check(det.open && /Extrapolation/.test(det.text) && /pokeandwiggle\.com/.test(det.text) && /not a replication/.test(det.text) && /res=res-paw-agentic-d10-/.test(det.url), `${label} benchmarks: a mark opens by keyboard with conditions, source, check date and a shareable link`);
+  await page.keyboard.press('Escape');
+  check(await page.evaluate(() => document.getElementById('res-detail').hidden && !location.search.includes('res=')), `${label} benchmarks: Escape closes the detail and clears it from the address`);
+  await page.click('#panel-piq label:has(input[value="verified"])');
+  const piq = await page.$$eval('#panel-piq .facet', (fs) => fs.filter((f) => !f.hidden).map((f) => `${f.dataset.variant}/${f.dataset.mode}:${f.querySelectorAll('.dot').length}`).join(' '));
+  check(piq === 'verified/i2v:0 verified/v2v:2', `${label} benchmarks: Verified is shown apart from Original, with its empty i2v state (${piq})`);
+  await page.click('.cap-f[data-cap="whole-body"]');
+  const wb = await page.$$eval('#matrix tbody tr', (trs) => trs.filter((t) => !t.hidden).map((t) => t.dataset.bm).join(','));
+  check(wb === 'bm-maniskill3,bm-humanoidbench', `${label} benchmarks: the whole-body filter keeps the two whole-body resources (${wb})`);
+  await page.goto(`${BASE}/benchmarks/?res=res-physics-verified-1&grp=physics-original-v2v-base#results`, { waitUntil: 'networkidle' });
+  const dl = await page.evaluate(() => ({ t: document.querySelector('#res-detail .d-t')?.textContent, grp: document.getElementById('cmp-group').value, pm: document.getElementById('res-detail').textContent.includes('± 2.2 as published') }));
+  check(dl.t === 'Cosmos3-Super · multiframe (v2v)' && dl.grp === 'physics-original-v2v-base' && dl.pm, `${label} benchmarks: a deep link restores the observation, its published ± text and the comparison`);
+  if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_benchmarks.png` });
   // Adoption view (23 Nov 2026): the hero answers at a glance; the explorer filters and opens a case.
   await page.goto(`${BASE}/`, { waitUntil: 'load' });
   check(await page.isVisible('.hero .adopt-hero .stage-bars'), `${label} home: adoption view in the hero`);

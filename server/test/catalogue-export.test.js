@@ -37,9 +37,9 @@ test('an inserted row the sheet marks as a duplicate is withheld from the free c
   assert.equal(out.count, EXPECTED_PUBLIC);
 });
 
-const PUBLIC_ALL = ['humanoids', 'integrators', 'software', 'datasets', 'task-evaluations', 'other-robots', 'stocks'];
-test('all 13 tabs stay; the free categories are public in every row, Deployments, Components and the rest show 10', () => {
-  assert.equal(DATASETS.length, 13);
+const PUBLIC_ALL = ['benchmarks', 'benchmark-results', 'humanoids', 'integrators', 'software', 'datasets', 'task-evaluations', 'other-robots', 'stocks'];
+test('all 15 tabs stay; the free categories are public in every row, Deployments, Components and the rest show 10', () => {
+  assert.equal(DATASETS.length, 15);
   for (const spec of DATASETS) assert.equal(publicRowLimit(spec), PUBLIC_ALL.includes(spec.id) ? null : 10, spec.id);
 });
 

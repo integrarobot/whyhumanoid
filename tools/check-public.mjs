@@ -71,7 +71,7 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
   const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/catalogue.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/catalogue.json', 'data/benchmarks/atlas.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));
@@ -119,6 +119,11 @@ for (const file of tracked.filter((f) => /^(robots|companies|reports|method|subs
   if (!pageBuild.has(file)) fail(file, 'is not produced by tools/build-pages.mjs');
   else if (read(file) !== pageBuild.get(file)) fail(file, 'differs from the build of public inputs (node tools/build-pages.mjs)');
 }
+
+// Rule 9 (Robotics Evaluation Atlas, 23 Nov 2026): the Benchmarks snapshot holds only the allowlisted public fields of
+// the Benchmarks and Benchmark Results tabs (server/src/benchmarks/atlas.js), never the workbook link or editorial history.
+const { snapshotProblems } = await import('../server/src/benchmarks/atlas.js');
+for (const problem of snapshotProblems(JSON.parse(read('data/benchmarks/atlas.json')))) fail('data/benchmarks/atlas.json', problem);
 
 // Rule 8 (Reports, 23 Nov 2026): the catalogue lists only records verified against the public original, with no private
 // Google sheet, Drive or Docs link; extractions and findings of the staging sheet never reach the repository.
