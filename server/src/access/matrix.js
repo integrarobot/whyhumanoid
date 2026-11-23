@@ -35,10 +35,11 @@ export const CATEGORIES = Object.freeze([
     summary: 'Who is testing or using humanoid robots, where, for which task, with what status and source.',
   },
   {
+    // Product catalogue since 23 Nov 2026 (server/src/components/catalogue.js); the related software block is supporting.
     id: 'components', label: 'Components', path: '/components/', access: 'subscription', datasets: ['hardware'],
-    service: 'component-manufacturing-study',
-    summary: 'Compute, sensors, actuators and other hardware used in humanoid robots.',
-    gap: 'Components is for now a sparse hardware directory (the Components tab: a name, a link and a short description per entry), not yet the directory of component makers and their capabilities this category is meant to become. The master workbook has no components table with that information.',
+    supporting: ['component-software'], service: 'component-manufacturing-study',
+    summary: 'The building blocks of embodied intelligence: products, how they sense, what they measure, and their constraints.',
+    gap: 'Detailed coverage currently focuses on touch: tactile sensors and one tactile research hand. Actuators, reducers, batteries, compute and other families have not been researched for this catalogue yet.',
   },
   {
     id: 'integrators', label: 'Integrators', path: '/integrators/', access: 'free', datasets: ['integrators'],
@@ -85,6 +86,8 @@ export const DATASET_ACCESS = Object.freeze({
   humanoids: { category: 'humanoids', access: 'free' },
   deployments: { category: 'deployments', access: 'subscription' },
   hardware: { category: 'components', access: 'subscription' },
+  // Related software block of the Components tab (TACTO), with the Components category and its access.
+  'component-software': { category: 'components', access: 'subscription', supporting: true },
   integrators: { category: 'integrators', access: 'free' },
   software: { category: 'software', access: 'free' },
   datasets: { category: 'datasets', access: 'free' },

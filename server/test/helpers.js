@@ -110,11 +110,33 @@ function dataAtlasFixtureValue(dataset, field, i, n) {
   return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
 }
 
+// Components tab (23 Nov 2026): one tab, two blocks. Synthetic products that pass server/src/components/catalogue.js,
+// then the notes block and the related software block with its own header row.
+function componentFixtureRow(spec, i, software = false) {
+  const v = {
+    no: String(i), name: software ? `Example simulator ${i}` : `Example sensor ${i}`, group: software ? 'Software (simulator)' : (i % 3 ? 'Commercial' : 'Research / open hardware'),
+    component_id: `CMP-${software ? 'SWT' : 'TST'}-${String(i).padStart(3, '0')}`, family: software ? 'Tactile simulator (software)' : 'Tactile sensor',
+    principle: 'Synthetic optical principle with a camera', list_price: i % 2 ? `${100 + i} USD (example.com, accessed 23 Nov 2026)` : 'Not available',
+    weight: 'Not available', bom_cost: 'N/A', review_status: 'Imported from Grok workbook; original-source review pending',
+    source_workbook: ['https://docs.google', '.com/spreadsheets/d/fixture/edit'].join(''),
+    sources: `Product page\nhttps://sensor-${i}.example.com/\nAccessed: 23 Nov 2026\nReview status: Imported reference; original-source review pending\n\nPaper\nhttps://paper-${i}.example.com/\nAccessed: 23 Nov 2026\nReview status: Imported reference; original-source review pending`,
+  };
+  return spec.fields.map((f) => (f in v ? v[f] : `Synthetic ${f.replace(/_/g, ' ')} ${i}`));
+}
+function componentsTab(spec, rowsPerTab) {
+  const rows = [[...spec.headers]];
+  for (let i = 1; i <= rowsPerTab; i += 1) rows.push(componentFixtureRow(spec, i));
+  rows.push([], [], ['CATALOGUE NOTES', '', 'Source notes and import history'], ['Research date', '', '23 November 2026'], []);
+  rows.push(['RELATED SOFTWARE — NOT A PHYSICAL COMPONENT'], [...spec.headers], componentFixtureRow(spec, 1, true));
+  return rows;
+}
+
 // Synthetic workbook with the real header rows and fake values. An empty sheet row sits after the third data
 // row of every tab: it must not count towards the 10-row preview.
 export function fixtureWorkbook({ rowsPerTab = 12 } = {}) {
   const values = {};
   for (const spec of DATASETS) {
+    if (spec.tab === 'Components') { values.Components ??= componentsTab(spec, rowsPerTab); continue; }
     const rows = [[...spec.headers]];
     for (let i = 1; i <= rowsPerTab; i += 1) {
       if (i === 4) rows.push([]);

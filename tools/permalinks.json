@@ -3952,7 +3952,8 @@
     },
     "cmp_paxini.com": {
       "slugs": [
-        "paxini"
+        "paxini",
+        "paxini-tech"
       ],
       "robots": [],
       "organization_ids": []
@@ -3974,6 +3975,62 @@
     "cmp_en.tesollo.com": {
       "slugs": [
         "tesollo"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_carnegie-mellon-university": {
+      "slugs": [
+        "carnegie-mellon-university"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_contactile.com": {
+      "slugs": [
+        "contactile"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_fingervision.jp": {
+      "slugs": [
+        "fingervision-inc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_gelsight.com": {
+      "slugs": [
+        "gelsight-inc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_meta-ai-fair": {
+      "slugs": [
+        "meta-ai-fair"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_pressureprofile.com": {
+      "slugs": [
+        "pressure-profile-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_syntouchllc.com": {
+      "slugs": [
+        "syntouch"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_xelarobotics.com": {
+      "slugs": [
+        "xela-robotics"
       ],
       "robots": [],
       "organization_ids": []

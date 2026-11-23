@@ -11,6 +11,8 @@ import { PRODUCT } from '../src/entitlements.js';
 
 const DAY = 24 * 3600;
 const SUBSCRIPTION_TABS = ['deployments', 'hardware', 'evidence-links', 'entities', 'container-handling', 'data-space'];
+// Components' related software block (one row in the fixture), with the Components access.
+const COMPONENT_SOFTWARE = 'component-software';
 const FREE_TABS = ['humanoids', 'integrators', 'software', 'datasets', 'task-evaluations', 'stocks', 'other-robots'];
 
 test('the nine confirmed categories, in order, then Reports, each at its own address and mapped to real sources', () => {
@@ -28,14 +30,16 @@ test('the nine confirmed categories, in order, then Reports, each at its own add
   for (const c of CATEGORIES) for (const d of c.datasets) assert.ok(ids.has(d), `${c.id} maps to the real tab ${d}`);
   assert.deepEqual(CATEGORIES.filter((c) => c.access === 'subscription').map((c) => c.id), ['deployments', 'components']);
   assert.deepEqual(DATASETS.map((d) => d.id).sort(), Object.keys(DATASET_ACCESS).sort(), 'every tab has exactly one entry');
-  // Gaps are stated, not filled: categories without a dedicated tab say so.
-  for (const id of ['components', 'investment']) assert.match(CATEGORIES.find((c) => c.id === id).gap, /no dedicated|no components table/);
+  // Gaps are stated, not filled: Investment has no dedicated private-investment table; Components says which families
+  // have not been researched yet (23 Nov 2026), and its related software block supports the category.
+  assert.match(CATEGORIES.find((c) => c.id === 'investment').gap, /no dedicated/);
+  assert.match(CATEGORIES.find((c) => c.id === 'components').gap, /focuses on touch.*not been researched/);
+  assert.deepEqual(CATEGORIES.find((c) => c.id === 'components').supporting, ['component-software']);
   // Benchmarks has its own tabs since 23 Nov 2026 and states the gap it has: most resources have no extracted results.
   assert.deepEqual(CATEGORIES.find((c) => c.id === 'benchmarks').datasets, ['benchmarks', 'benchmark-results']);
   assert.match(CATEGORIES.find((c) => c.id === 'benchmarks').gap, /extracted/);
   assert.equal(DATASET_ACCESS['task-evaluations'].category, null, 'Task Evaluation is an internal operational assessment, not the Benchmarks category');
   assert.equal(DATASET_ACCESS['task-evaluations'].access, 'free', 'its access is unchanged');
-  assert.match(CATEGORIES.find((c) => c.id === 'components').gap, /sparse hardware directory/, 'Components says what it is today');
 });
 
 test('one subscription unlocks Deployments and Components; the services are separate and not for sale yet', () => {
@@ -69,15 +73,15 @@ test('GET /v1/access and /v1/billing/plan describe the rules and the plan, never
 // Who reads what: status of GET /v1/datasets/{id}, rows returned, and whether the 11th row is reachable by search.
 async function probe(ctx, token) {
   const out = {};
-  for (const id of [...SUBSCRIPTION_TABS, ...FREE_TABS]) {
+  for (const id of [...SUBSCRIPTION_TABS, COMPONENT_SOFTWARE, ...FREE_TABS]) {
     const res = await ctx.call('GET', `/v1/datasets/${id}?limit=500`, { token });
     out[id] = res.status === 200 ? (await res.json()).rows.length : res.status;
   }
   const search = await (await ctx.call('GET', '/v1/search?q=fx_record_id_11', { token })).json();
-  const comp = await (await ctx.call('GET', '/v1/search?q=hardware+11', { token })).json();
+  const comp = await (await ctx.call('GET', '/v1/search?q=Example+sensor+11', { token })).json();
   out.search_scope = search.scope;
   out.deployment_11_found = search.total > 0;
-  out.component_11_found = comp.results.some((r) => /Example hardware 11/.test(r.title));
+  out.component_11_found = comp.results.some((r) => /Example sensor 11/.test(r.title));
   // Past the entitlement check the full graph answers (503 here only because this fixture builds no relations).
   const rel = (await ctx.call('GET', '/v1/relations', { token })).status;
   out.relations = rel === 401 || rel === 403 ? rel : 'allowed';
@@ -88,7 +92,7 @@ test('anonymous, unpaid, active, cancelled-at-period-end and expired accounts se
   const ctx = await setup();
   // Two side-by-side lists per sheet row in Software and Other Robots: 24 entries from 12 rows.
   const free = Object.fromEntries(FREE_TABS.map((id) => [id, ['software', 'other-robots'].includes(id) ? 24 : 12]));
-  const locked = (status) => Object.fromEntries(SUBSCRIPTION_TABS.map((id) => [id, status]));
+  const locked = (status) => Object.fromEntries([...SUBSCRIPTION_TABS, COMPONENT_SOFTWARE].map((id) => [id, status]));
   const closed = { search_scope: 'preview', deployment_11_found: false, component_11_found: false };
 
   // Anonymous: free categories in full, subscription categories 401.
@@ -100,7 +104,7 @@ test('anonymous, unpaid, active, cancelled-at-period-end and expired accounts se
 
   // Active (test-mode event, signed): everything, Deployments and Components together.
   await sendWebhook(ctx, subscriptionEvent({ accountId, id: 'evt_m1', status: 'active', periodEnd: T0 + 365 * DAY }));
-  const open = { ...Object.fromEntries(SUBSCRIPTION_TABS.map((id) => [id, 12])), ...free, search_scope: 'full', deployment_11_found: true, component_11_found: true, relations: 'allowed' };
+  const open = { ...Object.fromEntries(SUBSCRIPTION_TABS.map((id) => [id, 12])), [COMPONENT_SOFTWARE]: 1, ...free, search_scope: 'full', deployment_11_found: true, component_11_found: true, relations: 'allowed' };
   assert.deepEqual(await probe(ctx, session), open);
 
   // Cancelled at period end: still paid, still open.

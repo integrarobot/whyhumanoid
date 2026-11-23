@@ -26,6 +26,8 @@ import { PAGE_FIELDS, catalogueIndex, previewGraph } from './relations.mjs';
 import { robotPresentation } from './robot-presentation.mjs';
 import { renderAtlas } from './atlas-view.mjs';
 import { renderDataAtlas } from './data-atlas-view.mjs';
+import { componentsModel, renderComponentsCategory, renderLockedPage, renderProductPage } from './components-view.mjs';
+import { API_ORIGIN } from './build-app.mjs';
 import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
@@ -202,16 +204,19 @@ export function publicModel(registry = readRegistry()) {
     c.listings.push(r);
     c.categories.add('investment');
   }
-  // Components (subscription; only its public first rows are here): an entry joins the company whose name it carries
-  // ("NVIDIA Jetson Thor" -> NVIDIA) or whose website it shares; otherwise it is a company under the name as recorded.
-  for (const r of read('data/preview/hardware.json').rows) {
-    const key = companyNameKey(r.name);
-    const h = companyHost(r.url);
-    let c = byName.get(key) ?? (h ? byHost.get(h) : null);
-    if (!c) for (const [k, x] of byName) if (k && key.startsWith(`${k} `)) { c = x; break; }
-    c ??= join(r.name, r.url, () => ({ id: `cmp_${h ?? slugify(r.name)}`, name: r.name }));
-    (c.components ??= []).push(r);
-    c.categories.add('components');
+  // Components (subscription; product catalogue since 23 Nov 2026): the organisations of the public products, as the
+  // reviewed tools/components-makers.json names them (public products only). An organisation joins the company with
+  // the same name or website; otherwise it is a company under the name as recorded. Roles are the record's own.
+  const cm = componentsModel();
+  const makerPath = new Map();
+  for (const r of [...cm.products, ...cm.software]) {
+    for (const m of cm.makers[r.component_id] ?? []) {
+      const h = m.url ? companyHost(m.url) : null;
+      const c = join(m.name, m.url, () => ({ id: `cmp_${h ?? slugify(m.name)}`, name: m.name }));
+      (c.components ??= []).push({ id: r.component_id, name: r.name, role: m.role, software: cm.software.includes(r) });
+      c.categories.add('components');
+      makerPath.set(m.name, c);
+    }
   }
   for (const r of englishRows('integrators', read('data/preview/integrators.json').rows)) {
     const c = join(r.name, r.url, () => ({ id: `int_${companyHost(r.url) ?? slugify(r.name)}`, name: r.name }));
@@ -241,7 +246,7 @@ export function publicModel(registry = readRegistry()) {
   for (const r of otherRobots) r.label = nameCount.get(r.name.toLowerCase()) > 1 ? `${r.name} (${hostKey(r.url) ? (urlKey(r.url) ?? r.url) : `row ${r.row}`})` : r.name;
   const directory = (id) => ({ meta: tabMeta.get(id), rows: englishRows(id, read(`data/preview/${id}.json`).rows) });
 
-  return { robots, robotById, companies, companyById, otherRobots, directory, stocks, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal, depPreview: depPreview.rows, totals: projection.totals, aggregates: projection.aggregates, projSnapshot: projection.snapshot, previewSnapshot: read('data/preview/index.json').snapshot };
+  return { robots, robotById, companies, companyById, otherRobots, directory, stocks, cm, makerPath, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal, depPreview: depPreview.rows, totals: projection.totals, aggregates: projection.aggregates, projSnapshot: projection.snapshot, previewSnapshot: read('data/preview/index.json').snapshot };
 }
 
 // ---------- layout ----------
@@ -445,7 +450,7 @@ function companySummary(c) {
   if (m) parts.push(`${m.records} deployment record${m.records === 1 ? '' : 's'} name ${c.name} as the maker; status as recorded: ${statusText(m.status)}.`);
   for (const l of c.listings || []) parts.push(`${c.name} is listed${nz(l.ticker) ? ` as ${l.ticker}` : ''}${nz(l.exchange) ? ` on ${l.exchange}` : ''}${nz(l.country) ? ` (${l.country})` : ''}.`);
   if (c.integrator) parts.push(`${c.name} is in the Why Humanoid? directory of integrators.`);
-  if (c.components?.length) parts.push(`${c.components.map((r) => r.name).join(', ')} ${c.components.length === 1 ? 'is' : 'are'} in the Components category.`);
+  if (c.components?.length) parts.push(`${c.name} is recorded for ${c.components.map((r) => `${r.name} (${r.role.toLowerCase()})`).join(', ')} in the Components category.`);
   if (!parts.length) parts.push(`${c.name} is in the Why Humanoid? database.`);
   return parts.join(' ');
 }
@@ -486,7 +491,7 @@ ${c.listings?.length ? `<section><h2>Listing</h2>${c.listings.map((l) => kv([
     ...(nz(l.description) ? [['Description as recorded', shown(l, 'description')]] : []),
     ...(nz(l.url) ? [['Website', ext(l.url)]] : []),
   ])).join('')}<p class="key">From the Investment category (listed companies, snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}). Market quotes are not published.</p></section>` : ''}
-${c.components?.length ? `<section><h2>Components</h2>${c.components.map((r) => kv([['Entry as recorded', esc(r.name)], ['Description as recorded', nz(r.description) ? text(r.description) : '<span class="na">Not recorded</span>'], ['Website', nz(r.url) ? ext(r.url) : '<span class="na">Not recorded</span>']])).join('')}<p class="key">From the public first rows of the <a href="/components/">Components</a> category${c.directoryOnly ? '; the database records this name and website, not a legal name' : ''}.</p></section>` : ''}
+${c.components?.length ? `<section><h2>Components</h2><ul class="links">${c.components.map((r) => `<li><a href="/components/${esc(r.id.toLowerCase())}/">${esc(r.name)}</a> <span class="dim">${esc(r.role)}${r.software ? ' · related software' : ''}</span></li>`).join('')}</ul><p class="key">Public products of the <a href="/components/">Components</a> category, with the role their record states${c.directoryOnly ? '; the database records this name, not a legal name' : ''}.</p></section>` : ''}
 ${c.integrator ? `<section><h2>Integrator</h2>${kv([['Description as recorded', shown(c.integrator, 'description')], ['Website', nz(c.integrator.url) ? ext(c.integrator.url) : '<span class="na">Not recorded</span>']])}<p class="key">From the <a href="/integrators/">Integrators</a> category.</p></section>` : ''}
 ${c.robotList.length ? `<section><h2>Robots</h2><ul class="cards">${c.robotList.map((rb) => `<li><a href="${rb.path}"><b>${esc(rb.name)}</b></a><span>${esc(robotSummary(rb))}</span></li>`).join('')}</ul></section>` : ''}
 <section><h2>Deployment records</h2>${c.directoryOnly ? '<p>No deployment record is linked to this company page. Records are linked to a company by the organisation id of the sheet or by the maker\'s name as recorded, so a record that names it differently is not linked here.</p>' : c.as_organisation || c.as_maker ? `${c.as_organisation ? summaryHtml(c.as_organisation, model, { head: `As organisation: ${c.as_organisation.records} record${c.as_organisation.records === 1 ? '' : 's'}.`, otherLabel: 'Maker' }) : ''}${c.as_maker ? summaryHtml(c.as_maker, model, { head: `As maker: ${c.as_maker.records} record${c.as_maker.records === 1 ? '' : 's'}.`, otherLabel: 'Organisation' }) : ''}${RECORDS_NOTE}` : '<p>No deployment record in the database names this company. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that it has none.</p>'}</section>
@@ -582,17 +587,43 @@ ${serviceHtml(c.service)}
   return catPage(c, model, body, `${model.totals.records} humanoid robot deployment records: who is testing or using humanoid robots, where and for which task, with status and source. Summaries free; records in full with the subscription.`);
 }
 
+// Components explorer (Javier, 23 Nov 2026): the public first product rows, coverage counts for every row, and the
+// subscriber view rendered by assets/components.js after the API's entitlement check (tools/components-view.mjs).
 function componentsCategory(model) {
   const c = CATEGORIES_BY_ID.get('components');
-  const { meta, rows } = model.directory('hardware');
-  const locked = meta.entries_total - rows.length;
-  const body = `${categoryHead(c, model)}
-<section><h2>First ${rows.length} entries</h2>${dirTable(rows, [['Component', nameLink], ['Company page', (r) => { const co = model.companies.find((x) => x.components?.some((y) => y._row === r._row && y.name === r.name)); return co ? `<a href="${co.path}">${esc(co.name)}</a>` : '<span class="na">None</span>'; }], ['Description as recorded', descr]])}
-${locked > 0 ? `<p>${locked} more ${locked === 1 ? 'entry is' : 'entries are'} in the complete Components category.</p>` : ''}</section>
-<section><h2>With the subscription</h2><p>The complete Components category: all ${counted(meta)}, every field, with search.</p>${subscriptionCta('Complete Components')}</section>
-${serviceHtml(c.service)}
-<p class="meta">Snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}.</p>`;
-  return catPage(c, model, body, `Compute, sensors, actuators and other hardware used in humanoid robots: ${counted(meta)}. First ${rows.length} free; complete Components with the subscription.`);
+  const cm = model.cm;
+  const companyPath = (name) => model.makerPath.get(name)?.path ?? null;
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, c.label]])}
+<article class="entity atlas-page">
+${renderComponentsCategory(cm, { index: CATEGORIES.indexOf(c) + 1, total: CATEGORIES.length, badge: accessBadge(c) }, companyPath, API_ORIGIN)}
+<section class="atlas-sec"><h2>With the subscription</h2><p>All ${cm.total} product passports with every field, search across them, comparisons between any of them, and the same view in the subscriber app.</p>${subscriptionCta('Complete Components')}</section>
+${serviceHtml(c.service)}`;
+  return catPage(c, model, body, `Components: the building blocks of embodied intelligence. ${cm.total} tactile sensing products and related software, with sensing approach, specifications, availability and sources; ${cm.products.length} passports public, all with the subscription.`, {
+    title: 'Components: the building blocks of embodied intelligence · Why Humanoid?',
+    head: componentsHead(),
+    tail: componentsTail(),
+    wide: true,
+  });
+}
+const componentsHead = () => `<link rel="stylesheet" href="/assets/atlas.css?v=${assetVersion('assets/atlas.css')}">\n<link rel="stylesheet" href="/assets/components.css?v=${assetVersion('assets/components.css')}">\n`;
+const componentsTail = () => `\n<script src="/assets/components-core.js?v=${assetVersion('assets/components-core.js')}" defer></script>\n<script src="/assets/components.js?v=${assetVersion('assets/components.js')}" defer></script>`;
+function componentPages(model) {
+  const cm = model.cm;
+  const out = new Map();
+  const companyPath = (name) => model.makerPath.get(name)?.path ?? null;
+  const pub = new Set([...cm.products, ...cm.software].map((r) => r.component_id));
+  const crumb = (name) => crumbs([['/', 'Why Humanoid?'], ['/components/', 'Components'], [null, name]]);
+  for (const r of [...cm.products, ...cm.software]) {
+    const path = `/components/${r.component_id.toLowerCase()}/`;
+    const body = `${crumb(r.name)}\n<article class="entity atlas-page">\n${renderProductPage(cm, r, companyPath)}`;
+    out.set(`components/${r.component_id.toLowerCase()}/index.html`, page({ title: `${r.name}: ${r.family ?? 'component'} passport · Why Humanoid?`, description: clip(`${r.name}: ${r.principle ?? ''} ${r.measured ?? ''}`), path, body: `${body}\n</article>`, section: 'components', head: componentsHead(), tail: componentsTail(), wide: true }));
+  }
+  for (const id of [...cm.coverage.ids.products, ...cm.coverage.ids.software].filter((x) => !pub.has(x))) {
+    const path = `/components/${id.toLowerCase()}/`;
+    const body = `${crumb(id)}\n<article class="entity atlas-page">\n${renderLockedPage(id, API_ORIGIN)}`;
+    out.set(`components/${id.toLowerCase()}/index.html`, page({ title: `Component ${id} · Why Humanoid?`, description: `Component ${id}: a product passport of the complete Components category, for subscribers.`, path, body: `${body}\n</article>`, section: 'components', noindex: true, head: componentsHead(), tail: componentsTail(), wide: true }));
+  }
+  return out;
 }
 
 function directoryCategory(id, datasetId, model, { lists = null, intro = '', companyLinks = false } = {}) {
@@ -788,7 +819,7 @@ ${kv([['In operation', 'The source says the robot is working in operation.'], ['
 }
 
 export function sitemapUrls(model) {
-  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath)];
+  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`)];
 }
 function sitemap(model) {
   const lastmod = String(model.snapshot).slice(0, 10);
@@ -818,6 +849,7 @@ export function buildPages(registry = readRegistry()) {
   files.set('humanoids/index.html', humanoidsCategory(model));
   files.set('deployments/index.html', deploymentsCategory(model));
   files.set('components/index.html', componentsCategory(model));
+  for (const [f, html] of componentPages(model)) files.set(f, html);
   files.set('integrators/index.html', directoryCategory('integrators', 'integrators', model, { companyLinks: true, intro: 'Each integrator has a company page. ' }));
   files.set('software/index.html', directoryCategory('software', 'software', model, { lists: [['software', 'Software and robot foundation models'], ['world_model', 'World models']] }));
   files.set('datasets/index.html', datasetsCategory());

@@ -9,11 +9,13 @@ const rowsOf = async (db, dataset) =>
   (await db.prepare('SELECT row_id, sheet_row, preview_rank, data FROM premium_rows WHERE dataset = ? ORDER BY position').bind(dataset).all())
     .results.map((r) => ({ id: r.row_id, sheet_row: r.sheet_row, preview_rank: r.preview_rank, ...JSON.parse(r.data) }));
 
-test('imports all sixteen workbook tabs, Humanoids included', async () => {
-  assert.equal(DATASETS.length, 16);
+test('imports all seventeen workbook datasets, Humanoids included', async () => {
+  assert.equal(DATASETS.length, 17);
   const result = await runImport(createTestDb(), fixtureWorkbook(), T0);
   assert.equal(result.ok, true);
-  assert.equal(Object.keys(result.counts).filter((k) => !k.endsWith('_internal')).length, 16);
+  assert.equal(Object.keys(result.counts).filter((k) => !k.endsWith('_internal')).length, 17);
+  assert.equal(result.counts.hardware, 12, 'Components: the product table only');
+  assert.equal(result.counts['component-software'], 1, 'Components: the related software block, apart');
   assert.equal(result.counts.humanoids, 12);
   assert.equal(result.counts.humanoids_internal, 2);
   assert.equal(result.counts.deployments, 12);

@@ -71,7 +71,7 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
   const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/catalogue.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/catalogue.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', 'data/components/coverage.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));
@@ -129,6 +129,16 @@ for (const problem of snapshotProblems(JSON.parse(read('data/benchmarks/atlas.js
 // the matrix reference or a clause about the private editorial material.
 const { snapshotProblems: dataSnapshotProblems } = await import('../server/src/data-atlas/atlas.js');
 for (const problem of dataSnapshotProblems(JSON.parse(read('data/datasets/atlas.json')))) fail('data/datasets/atlas.json', problem);
+// Rule 11 (Components, 23 Nov 2026): the coverage file holds counts and component ids only, and the public Components
+// rows (the first 10 products and the related software) never carry the row number, the research workbook link, the
+// import history or the compilation's prompt notes.
+const { coverageProblems } = await import('./export-components.mjs');
+for (const problem of coverageProblems(JSON.parse(read('data/components/coverage.json')))) fail('data/components/coverage.json', problem);
+for (const f of ['data/preview/hardware.json', 'data/preview/component-software.json']) {
+  const t = read(f);
+  if (/"(no|source_workbook)":/.test(t)) fail(f, 'publishes a withheld Components column');
+  if (/\bGrok\b|the query asked|check periodically|manufacturer verified/i.test(t)) fail(f, 'publishes import history or a prompt note');
+}
 
 // Rule 8 (Reports, 23 Nov 2026): the catalogue lists only records verified against the public original, with no private
 // Google sheet, Drive or Docs link; extractions and findings of the staging sheet never reach the repository.

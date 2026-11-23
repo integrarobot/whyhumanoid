@@ -15,19 +15,20 @@ test('dataset list is public and contains no rows', async () => {
   const res = await ctx.call('GET', '/v1/datasets');
   assert.equal(res.status, 200);
   const { datasets } = await res.json();
-  assert.equal(datasets.length, 16); // 13 tabs, the two Robotics Evaluation Atlas tabs and Dataset Metrics (23 Nov 2026)
+  assert.equal(datasets.length, 17); // 13 tabs, the two Robotics Evaluation Atlas tabs, Dataset Metrics and Components' related software (23 Nov 2026)
   assert.deepEqual(datasets.slice(0, 3).map((d) => d.id), ['humanoids', 'deployments', 'integrators']);
   assert.ok(datasets.every((d) => !('rows' in d)));
   assert.equal(datasets[0].access.preview_rows, 'all', 'the Humanoids catalogue is free in full');
   // Access matrix of 23 Nov 2026: Deployments and Components (Hardware tab) for subscribers, with their supporting
   // tabs; every other category free in every row; tabs outside the nine categories unchanged (10-row preview).
-  const SUBSCRIPTION = ['deployments', 'hardware', 'evidence-links', 'entities', 'container-handling', 'data-space'];
+  const SUBSCRIPTION = ['deployments', 'hardware', 'component-software', 'evidence-links', 'entities', 'container-handling', 'data-space'];
   for (const d of datasets) {
     assert.equal(d.access.preview_rows, SUBSCRIPTION.includes(d.id) ? 10 : 'all', d.id);
     assert.equal(d.access.full, SUBSCRIPTION.includes(d.id) ? 'subscription' : 'public', d.id);
     assert.equal(d.access.public_fields, null, `${d.id}: no partial-field rule left`);
   }
   assert.equal(datasets.find((d) => d.id === 'hardware').category, 'components');
+  assert.equal(datasets.find((d) => d.id === 'component-software').category, 'components');
   assert.equal(datasets.find((d) => d.id === 'stocks').category, 'investment');
   assert.equal(datasets.find((d) => d.id === 'benchmarks').category, 'benchmarks');
   assert.equal(datasets.find((d) => d.id === 'benchmark-results').category, 'benchmarks');

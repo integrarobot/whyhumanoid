@@ -90,9 +90,9 @@ for (const c of CATEGORIES) {
   for (const a of d.querySelectorAll('a[href^="/"]')) if (!exists(a.getAttribute('href'))) fail(`${c.path}: broken link ${a.getAttribute('href')}`);
 }
 if (doc('/deployments/').querySelectorAll('article.dep li').length > PREVIEW_ROWS) fail('/deployments/: more records than the public preview');
-if (doc('/components/').querySelectorAll('tbody tr').length > PREVIEW_ROWS) fail('/components/: more entries than the public preview');
-// Every company in the public data has a page: each public Components entry links to one (maker or company as recorded).
-for (const tr of doc('/components/').querySelectorAll('tbody tr')) if (!tr.querySelector('a[href^="/companies/"]')) fail(`/components/: ${tr.textContent.trim().slice(0, 40)} has no company page`);
+if (doc('/components/').querySelectorAll('#pcs .pc').length > PREVIEW_ROWS) fail('/components/: more products than the public preview');
+// Every organisation of a public Components product has a company page (reviewed makers, tools/components-makers.json).
+for (const card of doc('/components/').querySelectorAll('#pcs .pc')) if (!card.querySelector('.pc-m a[href^="/companies/"]')) fail(`/components/: ${card.dataset.id} has no company page`);
 for (const id of ['investment', 'integrators']) for (const a of doc(`/${id}/`).querySelector('article section table').querySelectorAll('tbody tr td:first-child a')) if (!a.getAttribute('href').startsWith('/companies/')) fail(`/${id}/: ${a.textContent} does not link to its company page`);
 if (doc('/humanoids/').querySelectorAll('tbody tr').length !== model.robots.length) fail('/humanoids/: does not list every robot');
 // Reports: the existing analysis stays at /reports/deployment-records/; each verified external report has its page and a
@@ -224,6 +224,32 @@ if (went !== rb.path) fail(`404.html: /robots/any-old-name-${rb.id}/ went to ${w
   if (/docs\.google\.com|drive\.google\.com/.test(html)) fail(`${p}: links a private Google file`);
   if (/class="[^"]*\b(err|whisker)\b/.test(html)) fail(`${p}: draws error bars the data does not have`);
   if (!d.querySelector('script[src^="/assets/atlas.js?v="]') || !d.querySelector('link[href^="/assets/atlas.css?v="]')) fail(`${p}: atlas assets missing`);
+}
+// Components (23 Nov 2026): /components/ shows the public first product rows and the coverage counts; every component
+// id has its address; public products have their full passport in the HTML, subscriber-only ones carry no product data.
+{
+  const cov = JSON.parse(read('data/components/coverage.json'));
+  const hw = JSON.parse(read('data/preview/hardware.json')).rows;
+  const sw = JSON.parse(read('data/preview/component-software.json')).rows;
+  const d = doc('/components/');
+  const p = '/components/';
+  const counts = [...d.querySelectorAll('.cx-counts dd')].map((x) => Number(x.textContent));
+  if (counts[0] !== cov.counts.products || counts.at(-1) !== cov.counts.references) fail(`${p}: counts ${counts} differ from the coverage file`);
+  if (d.querySelectorAll('#pcs .pc').length !== hw.length) fail(`${p}: the catalogue does not list every public product`);
+  for (const r of hw) if (!d.querySelector(`#pcs .pc[data-id="${r.component_id}"] a[href="/components/${r.component_id.toLowerCase()}/"]`)) fail(`${p}: ${r.component_id} has no card linking its passport`);
+  if (!d.querySelector('#cmp-out table.cmp')) fail(`${p}: no default comparison`);
+  for (const id of [...cov.ids.products, ...cov.ids.software]) {
+    const path = `/components/${id.toLowerCase()}/`;
+    const pd = doc(path);
+    const pub = [...hw, ...sw].find((r) => r.component_id === id);
+    if (pub) {
+      if (pd.querySelector('h1')?.textContent !== pub.name) fail(`${path}: h1 is not ${pub.name}`);
+      if (pd.querySelectorAll('.srcs li').length !== (pub.sources.match(/^https?:\/\//gm) ?? []).length) fail(`${path}: not every reference entry is listed`);
+    } else if (pd.querySelector('.pp, .pp-kv') || !pd.querySelector('meta[name="robots"][content="noindex"]')) fail(`${path}: a subscriber-only address shows product data or is indexable`);
+  }
+  const html = read('components/index.html');
+  if (/docs\.google\.com|drive\.google\.com|spreadsheets\/d\//.test(html)) fail(`${p}: links a private Google file`);
+  if (!d.querySelector('script[src^="/assets/components.js?v="]') || !d.querySelector('script[src^="/assets/components-core.js?v="]')) fail(`${p}: explorer scripts missing`);
 }
 // Robot Learning Data Atlas (23 Nov 2026): /datasets/ shows the public snapshot, readable without JavaScript: every
 // resource in its lane and with its passport card (stable anchor), every quantity with its value, unit and scope, the
