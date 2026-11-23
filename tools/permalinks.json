@@ -1,5 +1,5 @@
 {
-  "note": "Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects.",
+  "note": "Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects. Robots are served at /humanoids/<slug>/ since 23 Nov 2026; every robot slug also answers at /robots/<slug>/ with a redirect.",
   "robots": {
     "1": [
       "1x-neo-home-robot-1"
@@ -2031,6 +2031,3546 @@
       "organization_ids": [
         "org_nc_state_university"
       ]
+    },
+    "lst_3d-systems": {
+      "slugs": [
+        "3d-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_abb": {
+      "slugs": [
+        "abb"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_addnode-group": {
+      "slugs": [
+        "addnode-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_advanced-micro-devices": {
+      "slugs": [
+        "advanced-micro-devices"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_advantech": {
+      "slugs": [
+        "advantech"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_advantest": {
+      "slugs": [
+        "advantest"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_aehr-test-systems": {
+      "slugs": [
+        "aehr-test-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_aevex": {
+      "slugs": [
+        "aevex"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_airoha-technology": {
+      "slugs": [
+        "airoha-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_airtac-international-group": {
+      "slugs": [
+        "airtac-international-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_alchip-technologies": {
+      "slugs": [
+        "alchip-technologies"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_allegro-microsystems": {
+      "slugs": [
+        "allegro-microsystems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_allient": {
+      "slugs": [
+        "allient"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_alphabet": {
+      "slugs": [
+        "alphabet"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ambarella": {
+      "slugs": [
+        "ambarella"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_amc-robotics": {
+      "slugs": [
+        "amc-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_amerevo.com": {
+      "slugs": [
+        "amerevo"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_amphenol": {
+      "slugs": [
+        "amphenol"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_analog-devices": {
+      "slugs": [
+        "analog-devices"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_angel-robotics": {
+      "slugs": [
+        "angel-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_aptiv": {
+      "slugs": [
+        "aptiv"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_asana": {
+      "slugs": [
+        "asana"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_asmedia-technology": {
+      "slugs": [
+        "asmedia-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_astera-labs": {
+      "slugs": [
+        "astera-labs"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ats": {
+      "slugs": [
+        "ats"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_aurora-innovation": {
+      "slugs": [
+        "aurora-innovation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_autodesk": {
+      "slugs": [
+        "autodesk"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_autostore": {
+      "slugs": [
+        "autostore"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_avic-chengdu-uas": {
+      "slugs": [
+        "avic-chengdu-uas"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_azbil": {
+      "slugs": [
+        "azbil"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_baidu-inc": {
+      "slugs": [
+        "baidu-inc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_beijing-geekplus-technology-class": {
+      "slugs": [
+        "beijing-geekplus-technology-class"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_beijing-roborock-technolog": {
+      "slugs": [
+        "beijing-roborock-technolog"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_bentley-systems": {
+      "slugs": [
+        "bentley-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_bigbear-ai-holdings": {
+      "slugs": [
+        "bigbear-ai-holdings"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_bravorobots.com": {
+      "slugs": [
+        "bravo"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_broadleaf": {
+      "slugs": [
+        "broadleaf"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_bumerania.com": {
+      "slugs": [
+        "bumerania"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_cadence-design-systems": {
+      "slugs": [
+        "cadence-design-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_celestica": {
+      "slugs": [
+        "celestica"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ceva": {
+      "slugs": [
+        "ceva"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_china-leadshine-technology": {
+      "slugs": [
+        "china-leadshine-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_china-northern-rare-earth": {
+      "slugs": [
+        "china-northern-rare-earth"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_cidi": {
+      "slugs": [
+        "cidi"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_cognex": {
+      "slugs": [
+        "cognex"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_coherent": {
+      "slugs": [
+        "coherent"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_constellation-software": {
+      "slugs": [
+        "constellation-software"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_credo-technology-group-holding": {
+      "slugs": [
+        "credo-technology-group-holding"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_cyberdyne": {
+      "slugs": [
+        "cyberdyne"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_cybozu": {
+      "slugs": [
+        "cybozu"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_daifuku": {
+      "slugs": [
+        "daifuku"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_daihen": {
+      "slugs": [
+        "daihen"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_dassault-systemes": {
+      "slugs": [
+        "dassault-systemes"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_deere-and-co": {
+      "slugs": [
+        "deere-and-co"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_delta-electronics": {
+      "slugs": [
+        "delta-electronics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_doosan": {
+      "slugs": [
+        "doosan"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_doosan-robotics": {
+      "slugs": [
+        "doosan-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_duerr": {
+      "slugs": [
+        "duerr"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ecovacs-robotics": {
+      "slugs": [
+        "ecovacs-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_efort-intelligent-robot-co": {
+      "slugs": [
+        "efort-intelligent-robot-co"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ehang-holdings-ltd-sps": {
+      "slugs": [
+        "ehang-holdings-ltd-sps"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_elastic": {
+      "slugs": [
+        "elastic"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_elekta-ab": {
+      "slugs": [
+        "elekta-ab"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_emerson-electric": {
+      "slugs": [
+        "emerson-electric"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_epam-systems": {
+      "slugs": [
+        "epam-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_esab": {
+      "slugs": [
+        "esab"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_estun-automation": {
+      "slugs": [
+        "estun-automation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_exail-technologies": {
+      "slugs": [
+        "exail-technologies"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_fanuc": {
+      "slugs": [
+        "fanuc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_faraday-technology": {
+      "slugs": [
+        "faraday-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_fittech": {
+      "slugs": [
+        "fittech"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_fixstars": {
+      "slugs": [
+        "fixstars"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_formula-systems": {
+      "slugs": [
+        "formula-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_fortive": {
+      "slugs": [
+        "fortive"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_fuji-corp-aichi": {
+      "slugs": [
+        "fuji-corp-aichi"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_furuno-electric": {
+      "slugs": [
+        "furuno-electric"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_garmin": {
+      "slugs": [
+        "garmin"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_gea-group": {
+      "slugs": [
+        "gea-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_genius-sports": {
+      "slugs": [
+        "genius-sports"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_global-unichip": {
+      "slugs": [
+        "global-unichip"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_globant": {
+      "slugs": [
+        "globant"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_globus-med": {
+      "slugs": [
+        "globus-med"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_guangdong-huayan-robotics": {
+      "slugs": [
+        "guangdong-huayan-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_halma": {
+      "slugs": [
+        "halma"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_han-s-laser-technology-industry-group": {
+      "slugs": [
+        "han-s-laser-technology-industry-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_harmonic-drive-systems": {
+      "slugs": [
+        "harmonic-drive-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_heidelberger-druckmaschinen": {
+      "slugs": [
+        "heidelberger-druckmaschinen"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hesai-group": {
+      "slugs": [
+        "hesai-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hexagon": {
+      "slugs": [
+        "hexagon-2"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hiab-corporation": {
+      "slugs": [
+        "hiab-corporation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hirata": {
+      "slugs": [
+        "hirata"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hiwin-technologies": {
+      "slugs": [
+        "hiwin-technologies"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hl-mando": {
+      "slugs": [
+        "hl-mando"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_holtek-semiconductor": {
+      "slugs": [
+        "holtek-semiconductor"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hon-hai-precision-industry": {
+      "slugs": [
+        "hon-hai-precision-industry"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_honprecision": {
+      "slugs": [
+        "honprecision"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_horiba": {
+      "slugs": [
+        "horiba"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_horizon-robotics": {
+      "slugs": [
+        "horizon-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hyster-yale-inc": {
+      "slugs": [
+        "hyster-yale-inc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hyundai-mobis": {
+      "slugs": [
+        "hyundai-mobis"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_hyundai-motor": {
+      "slugs": [
+        "hyundai-motor"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_idec": {
+      "slugs": [
+        "idec"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_illumina": {
+      "slugs": [
+        "illumina"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_imdex": {
+      "slugs": [
+        "imdex"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_indie-semiconductor-inc": {
+      "slugs": [
+        "indie-semiconductor-inc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_inficon-holding": {
+      "slugs": [
+        "inficon-holding"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_infineon-technologies": {
+      "slugs": [
+        "infineon-technologies"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_intecrobots.com": {
+      "slugs": [
+        "intec"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_intel": {
+      "slugs": [
+        "intel"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_interroll-holding": {
+      "slugs": [
+        "interroll-holding"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_intuitive-surgical": {
+      "slugs": [
+        "intuitive-surgical"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ipg-photonics": {
+      "slugs": [
+        "ipg-photonics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_japan-steel-works": {
+      "slugs": [
+        "japan-steel-works"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_jbt-marel": {
+      "slugs": [
+        "jbt-marel"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_jenoptik": {
+      "slugs": [
+        "jenoptik"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_jiangsu-hengli-hydraulic-c": {
+      "slugs": [
+        "jiangsu-hengli-hydraulic-c"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_joby-aviation": {
+      "slugs": [
+        "joby-aviation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_jungheinrich-pref": {
+      "slugs": [
+        "jungheinrich-pref"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_kadant": {
+      "slugs": [
+        "kadant"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_kalmar-corporation": {
+      "slugs": [
+        "kalmar-corporation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_kardex-holding": {
+      "slugs": [
+        "kardex-holding"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_keli-sensing-technology": {
+      "slugs": [
+        "keli-sensing-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_keyence": {
+      "slugs": [
+        "keyence"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_kinco-automation-shanghai": {
+      "slugs": [
+        "kinco-automation-shanghai"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_kion-group": {
+      "slugs": [
+        "kion-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_kla": {
+      "slugs": [
+        "kla"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_kodiak-ai": {
+      "slugs": [
+        "kodiak-ai"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_koh-young-technology": {
+      "slugs": [
+        "koh-young-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_konecranes": {
+      "slugs": [
+        "konecranes"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_krones": {
+      "slugs": [
+        "krones"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_largan-precision": {
+      "slugs": [
+        "largan-precision"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_lasertec": {
+      "slugs": [
+        "lasertec"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_lattice-semiconductor": {
+      "slugs": [
+        "lattice-semiconductor"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_leader-harmonious-drive-systems": {
+      "slugs": [
+        "leader-harmonious-drive-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_lincoln-electric-holdings": {
+      "slugs": [
+        "lincoln-electric-holdings"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_lynas-rare-earths-limited": {
+      "slugs": [
+        "lynas-rare-earths-limited"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_marvell-technology": {
+      "slugs": [
+        "marvell-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_maxlinear": {
+      "slugs": [
+        "maxlinear"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_melexis": {
+      "slugs": [
+        "melexis"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_mesa-laboratories": {
+      "slugs": [
+        "mesa-laboratories"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_metso": {
+      "slugs": [
+        "metso"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_microchip-technology": {
+      "slugs": [
+        "microchip-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_minetechnology.io": {
+      "slugs": [
+        "mine"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_minieye-technology": {
+      "slugs": [
+        "minieye-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_mirle-automation": {
+      "slugs": [
+        "mirle-automation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_mitsubishi-electric": {
+      "slugs": [
+        "mitsubishi-electric"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_mobileye-global-inc": {
+      "slugs": [
+        "mobileye-global-inc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_monday-com": {
+      "slugs": [
+        "monday-com"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_monolithic-power-systems": {
+      "slugs": [
+        "monolithic-power-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_moog": {
+      "slugs": [
+        "moog"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_mp-materials": {
+      "slugs": [
+        "mp-materials"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nabtesco": {
+      "slugs": [
+        "nabtesco"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nagano-keiki": {
+      "slugs": [
+        "nagano-keiki"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nagarro-n": {
+      "slugs": [
+        "nagarro-n"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nemetschek": {
+      "slugs": [
+        "nemetschek"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_neuromeka": {
+      "slugs": [
+        "neuromeka"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nextin": {
+      "slugs": [
+        "nextin"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nidec": {
+      "slugs": [
+        "nidec"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nihon-dengi": {
+      "slugs": [
+        "nihon-dengi"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ningbo-tuopu-group": {
+      "slugs": [
+        "ningbo-tuopu-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ningbo-zhongda-leader-intelligent-transmission": {
+      "slugs": [
+        "ningbo-zhongda-leader-intelligent-transmission"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nissei-asb-machine": {
+      "slugs": [
+        "nissei-asb-machine"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nordson": {
+      "slugs": [
+        "nordson"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nova": {
+      "slugs": [
+        "nova"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_novanta": {
+      "slugs": [
+        "novanta"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nsd": {
+      "slugs": [
+        "nsd"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nuvoton-technology": {
+      "slugs": [
+        "nuvoton-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nvidia": {
+      "slugs": [
+        "nvidia"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_nxp-semiconductors": {
+      "slugs": [
+        "nxp-semiconductors"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_obara-group": {
+      "slugs": [
+        "obara-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_obic": {
+      "slugs": [
+        "obic"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_obic-business-consultants": {
+      "slugs": [
+        "obic-business-consultants"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_oc-oerlikon": {
+      "slugs": [
+        "oc-oerlikon"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_octave-intelligence": {
+      "slugs": [
+        "octave-intelligence"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_omnicell": {
+      "slugs": [
+        "omnicell"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_omron": {
+      "slugs": [
+        "omron"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ondas": {
+      "slugs": [
+        "ondas"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_onto-innovation": {
+      "slugs": [
+        "onto-innovation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_open-text": {
+      "slugs": [
+        "open-text"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_opt-machine-vision-tech-co": {
+      "slugs": [
+        "opt-machine-vision-tech-co"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_optex-group": {
+      "slugs": [
+        "optex-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ouster": {
+      "slugs": [
+        "ouster"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_parksystems": {
+      "slugs": [
+        "parksystems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_parsons": {
+      "slugs": [
+        "parsons"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_pentamaster": {
+      "slugs": [
+        "pentamaster"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_planisware-sa": {
+      "slugs": [
+        "planisware-sa"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_pony-ai": {
+      "slugs": [
+        "pony-ai"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_posco-m-tech": {
+      "slugs": [
+        "posco-m-tech"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_procept-biorobotics": {
+      "slugs": [
+        "procept-biorobotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_proto-labs": {
+      "slugs": [
+        "proto-labs"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ptc": {
+      "slugs": [
+        "ptc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_qualcomm": {
+      "slugs": [
+        "qualcomm"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_qualitau": {
+      "slugs": [
+        "qualitau"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_rainbow-robotics": {
+      "slugs": [
+        "rainbow-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ralliant": {
+      "slugs": [
+        "ralliant"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_ranpak-holdings": {
+      "slugs": [
+        "ranpak-holdings"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_raspberry-pi-holdings": {
+      "slugs": [
+        "raspberry-pi-holdings"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_rbc-bearings": {
+      "slugs": [
+        "rbc-bearings"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_regal-rexnord": {
+      "slugs": [
+        "regal-rexnord"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_renesas-electronics": {
+      "slugs": [
+        "renesas-electronics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_renishaw": {
+      "slugs": [
+        "renishaw"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_rh-bots.com": {
+      "slugs": [
+        "rh-bots"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_richtech-robotics": {
+      "slugs": [
+        "richtech-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_rigaku-holdings": {
+      "slugs": [
+        "rigaku-holdings"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_riken-keiki": {
+      "slugs": [
+        "riken-keiki"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_robosense": {
+      "slugs": [
+        "robosense"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_robostar": {
+      "slugs": [
+        "robostar"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_robotechnik-intelligent-te": {
+      "slugs": [
+        "robotechnik-intelligent-te"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_rockwell-automation": {
+      "slugs": [
+        "rockwell-automation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_roper-technologies": {
+      "slugs": [
+        "roper-technologies"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_samsara": {
+      "slugs": [
+        "samsara"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_santec-holdings": {
+      "slugs": [
+        "santec-holdings"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_schaeffler": {
+      "slugs": [
+        "schaeffler-2"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_schneider-electric-se": {
+      "slugs": [
+        "schneider-electric-se"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_sensata-technologies-holdplc": {
+      "slugs": [
+        "sensata-technologies-holdplc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_serve-robotics": {
+      "slugs": [
+        "serve-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_servicenow": {
+      "slugs": [
+        "servicenow"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_servicetitan": {
+      "slugs": [
+        "servicetitan"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shanghai-baosight-software-ltd-b": {
+      "slugs": [
+        "shanghai-baosight-software-ltd-b"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shanghai-microport-medbot": {
+      "slugs": [
+        "shanghai-microport-medbot"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shanghai-moons-electric": {
+      "slugs": [
+        "shanghai-moons-electric"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shenzhen-dobot-technology-corp": {
+      "slugs": [
+        "shenzhen-dobot-technology-corp"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shenzhen-edge-medical-co": {
+      "slugs": [
+        "shenzhen-edge-medical-co"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shenzhen-inovance-technology": {
+      "slugs": [
+        "shenzhen-inovance-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shenzhen-zhaowei-machinery-and-electronics": {
+      "slugs": [
+        "shenzhen-zhaowei-machinery-and-electronics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shibaura-machine": {
+      "slugs": [
+        "shibaura-machine"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shift": {
+      "slugs": [
+        "shift"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_shuanglin": {
+      "slugs": [
+        "shuanglin"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_siasun-robot-and-automation": {
+      "slugs": [
+        "siasun-robot-and-automation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_silicon-laboratories": {
+      "slugs": [
+        "silicon-laboratories"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_simplex-holdings": {
+      "slugs": [
+        "simplex-holdings"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_smc": {
+      "slugs": [
+        "smc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_snowflake": {
+      "slugs": [
+        "snowflake"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_socionext": {
+      "slugs": [
+        "socionext"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_softbank-group": {
+      "slugs": [
+        "softbank-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_spg": {
+      "slugs": [
+        "spg"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_stmicroelectronics": {
+      "slugs": [
+        "stmicroelectronics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_stratasys": {
+      "slugs": [
+        "stratasys"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_strategy-inc": {
+      "slugs": [
+        "strategy-inc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_unitreespain.com": {
+      "slugs": [
+        "syntech"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_te-connectivity": {
+      "slugs": [
+        "te-connectivity"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_tecan-group": {
+      "slugs": [
+        "tecan-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_techman-robot": {
+      "slugs": [
+        "techman-robot"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_technology-one": {
+      "slugs": [
+        "technology-one"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_teledyne-technologies": {
+      "slugs": [
+        "teledyne-technologies"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_teradata": {
+      "slugs": [
+        "teradata"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_teradyne": {
+      "slugs": [
+        "teradyne"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_terra-drone": {
+      "slugs": [
+        "terra-drone"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_texas-instruments": {
+      "slugs": [
+        "texas-instruments"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_thk": {
+      "slugs": [
+        "thk"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_tieto": {
+      "slugs": [
+        "tieto"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_tinavi-medical-technologie": {
+      "slugs": [
+        "tinavi-medical-technologie"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_tkh-group": {
+      "slugs": [
+        "tkh-group"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_totvs": {
+      "slugs": [
+        "totvs"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_trimble": {
+      "slugs": [
+        "trimble"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_txt-e-solutions": {
+      "slugs": [
+        "txt-e-solutions"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_uipath-inc": {
+      "slugs": [
+        "uipath-inc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_unusual-machines": {
+      "slugs": [
+        "unusual-machines"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_valmet": {
+      "slugs": [
+        "valmet"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_via-technologies": {
+      "slugs": [
+        "via-technologies"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_weride-inc-adr": {
+      "slugs": [
+        "weride-inc-adr"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_workday": {
+      "slugs": [
+        "workday"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_yaskawa-electric": {
+      "slugs": [
+        "yaskawa-electric"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_yc": {
+      "slugs": [
+        "yc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_yijiahe-technology": {
+      "slugs": [
+        "yijiahe-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_yokogawa-electric": {
+      "slugs": [
+        "yokogawa-electric"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_yuil-robotics": {
+      "slugs": [
+        "yuil-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_zebra-technologies": {
+      "slugs": [
+        "zebra-technologies"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_zhejiang-galaxis-technolo": {
+      "slugs": [
+        "zhejiang-galaxis-technolo"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_zhejiang-sanhua-intelligent-controls": {
+      "slugs": [
+        "zhejiang-sanhua-intelligent-controls"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "lst_zhejiang-shuanghuan-driveline": {
+      "slugs": [
+        "zhejiang-shuanghuan-driveline"
+      ],
+      "robots": [],
+      "organization_ids": []
     }
+  },
+  "other_robots": {
+    "other_robot|rtr.ai": [
+      "realtime"
+    ],
+    "edubot|bambot.org": [
+      "bambot"
+    ],
+    "other_robot|harmonicdrive.net": [
+      "harmonic-drive"
+    ],
+    "edubot|pollen-robotics.com": [
+      "pollen"
+    ],
+    "other_robot|maticrobots.com": [
+      "matic"
+    ],
+    "edubot|zeroth0.com": [
+      "zeroth"
+    ],
+    "other_robot|robonomics.network": [
+      "robonomics"
+    ],
+    "edubot|pib.rocks": [
+      "pib"
+    ],
+    "other_robot|robotnik.eu": [
+      "robotnik"
+    ],
+    "edubot|lego.com/en-es/themes/mindstorms": [
+      "mindstorms"
+    ],
+    "other_robot|navigantis.co": [
+      "navegantis"
+    ],
+    "edubot|openpyro-a1.github.io": [
+      "openpyro"
+    ],
+    "other_robot|vitestro.com": [
+      "vitestro"
+    ],
+    "edubot|poppy-project.org/en": [
+      "poppy"
+    ],
+    "other_robot|intuitive.com": [
+      "intuitive"
+    ],
+    "edubot|lite.berkeley-humanoid.org": [
+      "berkeley-humanoid-lite"
+    ],
+    "other_robot|richtechrobotics.com": [
+      "richtech"
+    ],
+    "edubot|shop.wowrobo.com": [
+      "so-arm101"
+    ],
+    "other_robot|serverobotics.com": [
+      "serve"
+    ],
+    "edubot|innate.bot": [
+      "innate"
+    ],
+    "other_robot|gitai.tech": [
+      "gitai"
+    ],
+    "edubot|openarm.dev": [
+      "openarm"
+    ],
+    "other_robot|agilex.ai": [
+      "agilex"
+    ],
+    "edubot|pupper-v3-documentation.readthedocs.io/en/latest": [
+      "pupper"
+    ],
+    "other_robot|atimotors.com": [
+      "ati-motors"
+    ],
+    "edubot|github.com/unitreerobotics/qmini/tree/main": [
+      "unitree-qmini"
+    ],
+    "other_robot|theker.eu": [
+      "theker"
+    ],
+    "edubot|quori.org": [
+      "quori"
+    ],
+    "other_robot|bumerania.com": [
+      "bumerania"
+    ],
+    "edubot|starbot.mx": [
+      "starbot"
+    ],
+    "other_robot|keybotic.com/es": [
+      "keybotic"
+    ],
+    "edubot|asimov.inc/diy-kit": [
+      "asimov"
+    ],
+    "other_robot|es.bearrobotics.ai": [
+      "bear"
+    ],
+    "edubot|rotaku.ai": [
+      "rotaku"
+    ],
+    "other_robot|keyirobot.com": [
+      "keyirobot"
+    ],
+    "edubot|viberobotics.co/vibe-a1": [
+      "vibe"
+    ],
+    "other_robot|star-robotics.com": [
+      "star"
+    ],
+    "edubot|github.com/rhoban/microban": [
+      "microban"
+    ],
+    "other_robot|shadowrobot.com": [
+      "shadow"
+    ],
+    "edubot|robotheca.org/robots/giraffe": [
+      "giraffe"
+    ],
+    "other_robot|jizai.ai/en": [
+      "jizai"
+    ],
+    "edubot|robotheca.org/robots/hand-exoskeleton": [
+      "hand-exoskeleton"
+    ],
+    "other_robot|nomagic.ai": [
+      "nomagic"
+    ],
+    "edubot|robotheca.org/robots/jpl-open-source-rover": [
+      "jpl-open-source-rover"
+    ],
+    "other_robot|ailos-robotics.com": [
+      "ailos"
+    ],
+    "edubot|robotheca.org/robots/koriobots": [
+      "koriobots"
+    ],
+    "other_robot|franka.de": [
+      "franka"
+    ],
+    "edubot|robotheca.org/robots/lekiwi": [
+      "lekiwi"
+    ],
+    "other_robot|yourhuskk.com": [
+      "huskk"
+    ],
+    "edubot|robotheca.org/robots/just1": [
+      "just1"
+    ],
+    "other_robot|agile-robots.com/en": [
+      "agilex-2"
+    ],
+    "edubot|robotheca.org/robots/physical-ant": [
+      "physical-ant"
+    ],
+    "other_robot|liriobionics.com": [
+      "lirio"
+    ],
+    "edubot|robotheca.org/robots/sawppy-the-rover": [
+      "sawppy-the-rover"
+    ],
+    "other_robot|piaggiofastforward.com": [
+      "piaggio"
+    ],
+    "edubot|robotheca.org/robots/koch-v1-1": [
+      "koch-v1-1"
+    ],
+    "other_robot|laelaps.ai": [
+      "laelaps"
+    ],
+    "edubot|robotheca.org/robots/manuel-1-0": [
+      "manuel-1-0"
+    ],
+    "other_robot|stanhope.ai": [
+      "stanhope"
+    ],
+    "edubot|robotheca.org/robots/pingti-arm": [
+      "pingti-arm"
+    ],
+    "other_robot|microfactory.com": [
+      "microfactory"
+    ],
+    "edubot|robotheca.org/robots/agrofelis-agricultural-robot": [
+      "agrofelis-agricultural-robot"
+    ],
+    "other_robot|intrinsic.ai": [
+      "intrinsic"
+    ],
+    "edubot|robotheca.org/robots/amazinghand": [
+      "amazinghand"
+    ],
+    "other_robot|nio-robotics.com": [
+      "nio"
+    ],
+    "edubot|robotheca.org/robots/lazybot-wro-2025": [
+      "lazybot-wro-2025"
+    ],
+    "other_robot|armstrong.ai": [
+      "armstrong"
+    ],
+    "edubot|robotheca.org/robots/sesame-robot": [
+      "sesame-robot"
+    ],
+    "other_robot|realman-robotics.com": [
+      "realman"
+    ],
+    "edubot|robotheca.org/robots/watney": [
+      "watney"
+    ],
+    "other_robot|mujin-corp.com": [
+      "mujin"
+    ],
+    "edubot|robotheca.org/robots/roboto-origin": [
+      "roboto-origin"
+    ],
+    "other_robot|cavalla.ai": [
+      "cavalla"
+    ],
+    "edubot|robotheca.org/robots/am-arm200": [
+      "am-arm200"
+    ],
+    "other_robot|path-robotics.com": [
+      "path"
+    ],
+    "edubot|robotheca.org/robots/hack-fly-32": [
+      "hack-fly-32"
+    ],
+    "other_robot|aethon.com": [
+      "aethon"
+    ],
+    "edubot|robotheca.org/robots/jetracer": [
+      "jetracer"
+    ],
+    "other_robot|hiopos.com": [
+      "hiopos"
+    ],
+    "edubot|robotheca.org/robots/digiarm-prosthetic-hand": [
+      "digiarm-prosthetic-hand"
+    ],
+    "other_robot|burro.ai": [
+      "burro"
+    ],
+    "edubot|robotheca.org/robots/open-duck-mini-v2": [
+      "open-duck-mini-v2"
+    ],
+    "other_robot|robot-learning.co": [
+      "the-robot-learning-company"
+    ],
+    "edubot|robotheca.org/robots/thor": [
+      "thor"
+    ],
+    "other_robot|normacore.dev": [
+      "norma"
+    ],
+    "edubot|robotheca.org/robots/hexapod": [
+      "hexapod"
+    ],
+    "other_robot|zeonsystems.ai": [
+      "zeon"
+    ],
+    "edubot|robotheca.org/robots/rapid-hand": [
+      "rapid-hand"
+    ],
+    "other_robot|budbreakinnovations.com": [
+      "budbreak"
+    ],
+    "edubot|robotheca.org/robots/so-arm-102": [
+      "so-arm-102"
+    ],
+    "other_robot|motivss.com": [
+      "motiv-space-sistems"
+    ],
+    "edubot|robotheca.org/robots/armsync": [
+      "armsync"
+    ],
+    "other_robot|rhoda.ai": [
+      "rhoda"
+    ],
+    "edubot|robotheca.org/robots/yertle": [
+      "yertle"
+    ],
+    "other_robot|ascento.ai": [
+      "ascento"
+    ],
+    "edubot|robotheca.org/robots/jat-self-driving-car-wro-2025": [
+      "jat-self-driving-car-wro-2025"
+    ],
+    "other_robot|robust.ai": [
+      "robust"
+    ],
+    "edubot|robotheca.org/robots/marpy": [
+      "marpy"
+    ],
+    "other_robot|seeedstudio.com": [
+      "seed-studio"
+    ],
+    "edubot|robotheca.org/robots/r-o-b-i-n-ornithopter": [
+      "r-o-b-i-n-ornithopter"
+    ],
+    "other_robot|sancho.com": [
+      "sancho"
+    ],
+    "edubot|robotheca.org/robots/venus-1-four-link-wheel-legged-robot": [
+      "venus-1-four-link-wheel-legged-robot"
+    ],
+    "other_robot|ekarobotics.com": [
+      "eka"
+    ],
+    "edubot|robotheca.org/robots/toddlerbot": [
+      "toddlerbot"
+    ],
+    "other_robot|tutorintelligence.com": [
+      "tutor"
+    ],
+    "edubot|robotheca.org/robots/floatingface": [
+      "floatingface"
+    ],
+    "other_robot|ace.ai.sony": [
+      "sony-ace"
+    ],
+    "edubot|robotheca.org/robots/alohamini2": [
+      "alohamini2"
+    ],
+    "other_robot|omron.com/global/en/technology/forpheus": [
+      "omron-forpheus"
+    ],
+    "edubot|robotheca.org/robots/robotic-arm": [
+      "robotic-arm"
+    ],
+    "other_robot|procept-biorobotics.com": [
+      "procept-biorobotics"
+    ],
+    "edubot|robotheca.org/robots/rebot-devarm-b601-dm": [
+      "rebot-devarm-b601-dm"
+    ],
+    "other_robot|hello-robot.com": [
+      "hello-robot"
+    ],
+    "edubot|robotheca.org/robots/2-1-korobo-2-1-gen": [
+      "korobo-2-1-gen"
+    ],
+    "other_robot|co.bot/proxie": [
+      "co-bot"
+    ],
+    "edubot|robotheca.org/robots/alohascorpion": [
+      "alohascorpion"
+    ],
+    "other_robot|proception.ai": [
+      "proception"
+    ],
+    "edubot|robotheca.org/robots/hex-b12-hexapod": [
+      "hex-b12-hexapod"
+    ],
+    "edubot|robotheca.org/robots/omnix": [
+      "omnix"
+    ],
+    "edubot|robotheca.org/robots/rc-wheelleg": [
+      "rc-wheelleg"
+    ],
+    "edubot|robotheca.org/robots/humblearm": [
+      "humblearm"
+    ],
+    "edubot|robotheca.org/robots/openeai-arm": [
+      "openeai-arm"
+    ],
+    "edubot|robotheca.org/robots/zuko": [
+      "zuko"
+    ],
+    "edubot|robotheca.org/robots/agipix-quadrotor": [
+      "agipix-quadrotor"
+    ],
+    "edubot|robotheca.org/robots/inverted-pendulum-balancing-robot-esp32": [
+      "inverted-pendulum-balancing-robot-esp32"
+    ],
+    "edubot|robotheca.org/robots/ball-balancing-robot": [
+      "ball-balancing-robot"
+    ],
+    "edubot|robotheca.org/robots/ce2t-6-dof-robotic-arm": [
+      "ce2t-6-dof-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/diy-6-dof-servo-robotic-arm": [
+      "diy-6-dof-servo-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/dual-scorpion": [
+      "dual-scorpion"
+    ],
+    "edubot|robotheca.org/robots/librerover": [
+      "librerover"
+    ],
+    "edubot|robotheca.org/robots/lokabot": [
+      "lokabot"
+    ],
+    "edubot|robotheca.org/robots/quadruped-bai-servo-v1": [
+      "quadruped-bai-servo-v1"
+    ],
+    "edubot|robotheca.org/robots/rc-drone-and-controller-nano-esp32": [
+      "rc-drone-and-controller-nano-esp32"
+    ],
+    "edubot|robotheca.org/robots/slef-self-driving-car-wro-2025": [
+      "slef-self-driving-car-wro-2025"
+    ],
+    "edubot|robotheca.org/robots/ukmarsbot": [
+      "ukmarsbot"
+    ],
+    "edubot|robotheca.org/robots/vvs-ballers-robocup-soccer-robots": [
+      "vvs-ballers-robocup-soccer-robots"
+    ],
+    "edubot|robotheca.org/robots/d1-quadruped": [
+      "d1-quadruped"
+    ],
+    "edubot|robotheca.org/robots/par6-collaborative-robot-arm": [
+      "par6-collaborative-robot-arm"
+    ],
+    "edubot|robotheca.org/robots/popi": [
+      "popi"
+    ],
+    "edubot|robotheca.org/robots/super-mav": [
+      "super-mav"
+    ],
+    "edubot|robotheca.org/robots/el-a3": [
+      "el-a3"
+    ],
+    "edubot|robotheca.org/robots/forrc-robot-car": [
+      "forrc-robot-car"
+    ],
+    "edubot|robotheca.org/robots/mini-arm": [
+      "mini-arm"
+    ],
+    "edubot|robotheca.org/robots/panther-robot-arm": [
+      "panther-robot-arm"
+    ],
+    "edubot|robotheca.org/robots/project-quiver": [
+      "project-quiver"
+    ],
+    "edubot|robotheca.org/robots/jetbot": [
+      "jetbot"
+    ],
+    "edubot|robotheca.org/robots/kmids-gfm-self-driving-car-wro-2025": [
+      "kmids-gfm-self-driving-car-wro-2025"
+    ],
+    "edubot|robotheca.org/robots/astra": [
+      "astra"
+    ],
+    "edubot|robotheca.org/robots/open-yta-hand": [
+      "open-yta-hand"
+    ],
+    "edubot|robotheca.org/robots/acrobot-workshop-bot": [
+      "acrobot-workshop-bot"
+    ],
+    "edubot|robotheca.org/robots/antagonistic-tendon-driven-continuum-robot": [
+      "antagonistic-tendon-driven-continuum-robot"
+    ],
+    "edubot|robotheca.org/robots/arduino-simplefoc-balancer": [
+      "arduino-simplefoc-balancer"
+    ],
+    "edubot|robotheca.org/robots/ax2wdrobot-esp32-rover": [
+      "ax2wdrobot-esp32-rover"
+    ],
+    "edubot|robotheca.org/robots/bcn3d-moveo": [
+      "bcn3d-moveo"
+    ],
+    "edubot|robotheca.org/robots/berkeley-humanoid-lite-arm-bhl-v1-5": [
+      "berkeley-humanoid-lite-arm-bhl-v1-5"
+    ],
+    "edubot|robotheca.org/robots/bipedal-self-balancing-robot": [
+      "bipedal-self-balancing-robot"
+    ],
+    "edubot|robotheca.org/robots/calou": [
+      "calou"
+    ],
+    "edubot|robotheca.org/robots/cenk-ai-desk-robot": [
+      "cenk-ai-desk-robot"
+    ],
+    "edubot|robotheca.org/robots/cosi-measure": [
+      "cosi-measure"
+    ],
+    "edubot|robotheca.org/robots/cubli-armonia-reaction-wheel-cube": [
+      "cubli-armonia-reaction-wheel-cube"
+    ],
+    "edubot|robotheca.org/robots/dengfoc-inverted-pendulum": [
+      "dengfoc-inverted-pendulum"
+    ],
+    "edubot|robotheca.org/robots/esp32-stepper-self-balancing-robot": [
+      "esp32-stepper-self-balancing-robot"
+    ],
+    "edubot|robotheca.org/robots/ewu-asme-sdc-2026-robot": [
+      "ewu-asme-sdc-2026-robot"
+    ],
+    "edubot|robotheca.org/robots/g-arm": [
+      "g-arm"
+    ],
+    "edubot|robotheca.org/robots/m5stack-walk-chan": [
+      "m5stack-walk-chan"
+    ],
+    "edubot|robotheca.org/robots/micro-wheeled-leg-robot": [
+      "micro-wheeled-leg-robot"
+    ],
+    "edubot|robotheca.org/robots/onesarm": [
+      "onesarm"
+    ],
+    "edubot|robotheca.org/robots/openbot": [
+      "openbot"
+    ],
+    "edubot|robotheca.org/robots/papaya-pathfinder": [
+      "papaya-pathfinder"
+    ],
+    "edubot|robotheca.org/robots/reasonable-outdoor-mobile-robot": [
+      "reasonable-outdoor-mobile-robot"
+    ],
+    "edubot|robotheca.org/robots/scribbot": [
+      "scribbot"
+    ],
+    "edubot|robotheca.org/robots/simplefoc-balance-car": [
+      "simplefoc-balance-car"
+    ],
+    "edubot|robotheca.org/robots/spot-micro-leika": [
+      "spot-micro-leika"
+    ],
+    "edubot|robotheca.org/robots/stm32-blackpill-quadcopter": [
+      "stm32-blackpill-quadcopter"
+    ],
+    "edubot|robotheca.org/robots/tiny-engineer": [
+      "tiny-engineer"
+    ],
+    "edubot|robotheca.org/robots/u-arm": [
+      "u-arm"
+    ],
+    "edubot|robotheca.org/robots/vls-agv": [
+      "vls-agv"
+    ],
+    "edubot|robotheca.org/robots/zooids": [
+      "zooids"
+    ],
+    "edubot|robotheca.org/robots/acromonk": [
+      "acromonk"
+    ],
+    "edubot|robotheca.org/robots/armikochan-v2-8-axis-arm": [
+      "armikochan-v2-8-axis-arm"
+    ],
+    "edubot|robotheca.org/robots/open-quadruped": [
+      "open-quadruped"
+    ],
+    "edubot|robotheca.org/robots/thing-tendon-hand": [
+      "thing-tendon-hand"
+    ],
+    "edubot|robotheca.org/robots/parol6": [
+      "parol6"
+    ],
+    "edubot|robotheca.org/robots/aira": [
+      "aira"
+    ],
+    "edubot|robotheca.org/robots/bumperbot": [
+      "bumperbot"
+    ],
+    "edubot|robotheca.org/robots/flix": [
+      "flix"
+    ],
+    "edubot|robotheca.org/robots/openscout-robot": [
+      "openscout-robot"
+    ],
+    "edubot|robotheca.org/robots/borinot": [
+      "borinot"
+    ],
+    "edubot|robotheca.org/robots/botzo": [
+      "botzo"
+    ],
+    "edubot|robotheca.org/robots/hightorque-minidog": [
+      "hightorque-minidog"
+    ],
+    "edubot|robotheca.org/robots/homebot": [
+      "homebot"
+    ],
+    "edubot|robotheca.org/robots/jeno-3-and-3-5-fpv-drone": [
+      "jeno-3-and-3-5-fpv-drone"
+    ],
+    "edubot|robotheca.org/robots/k2-biped": [
+      "k2-biped"
+    ],
+    "edubot|robotheca.org/robots/lelamp": [
+      "lelamp"
+    ],
+    "edubot|robotheca.org/robots/miniloong": [
+      "miniloong"
+    ],
+    "edubot|robotheca.org/robots/nanoloong-bipedal": [
+      "nanoloong-bipedal"
+    ],
+    "edubot|robotheca.org/robots/tinkerv2": [
+      "tinkerv2"
+    ],
+    "edubot|robotheca.org/robots/4t-pom-x4": [
+      "4t-pom-x4"
+    ],
+    "edubot|robotheca.org/robots/autonomous-self-balancing-vehicle": [
+      "autonomous-self-balancing-vehicle"
+    ],
+    "edubot|robotheca.org/robots/balanceball": [
+      "balance-ball"
+    ],
+    "edubot|robotheca.org/robots/balance-tech-self-balancing-bike": [
+      "balance-tech-self-balancing-bike"
+    ],
+    "edubot|robotheca.org/robots/barkour-robot": [
+      "barkour-robot"
+    ],
+    "edubot|robotheca.org/robots/cubotino-autonomous": [
+      "cubotino-autonomous"
+    ],
+    "edubot|robotheca.org/robots/cyberrcore-self-driving-car-wro-2026": [
+      "cyberrcore-self-driving-car-wro-2026"
+    ],
+    "edubot|robotheca.org/robots/dagor-biped": [
+      "dagor-biped"
+    ],
+    "edubot|robotheca.org/robots/desk-roomba": [
+      "desk-roomba"
+    ],
+    "edubot|robotheca.org/robots/electronbot": [
+      "electronbot"
+    ],
+    "edubot|robotheca.org/robots/endeavor-ii": [
+      "endeavor-ii"
+    ],
+    "edubot|robotheca.org/robots/equicycle": [
+      "equicycle"
+    ],
+    "edubot|robotheca.org/robots/esp32-encoder-motor-self-balancing-robot": [
+      "esp32-encoder-motor-self-balancing-robot"
+    ],
+    "edubot|robotheca.org/robots/finsrov": [
+      "finsrov"
+    ],
+    "edubot|robotheca.org/robots/forgevolt-hexapod": [
+      "forgevolt-hexapod"
+    ],
+    "edubot|robotheca.org/robots/four-legged-robot": [
+      "four-legged-robot"
+    ],
+    "edubot|robotheca.org/robots/hexapod-4": [
+      "hexapod-hexapod-4"
+    ],
+    "edubot|robotheca.org/robots/hexapod-3": [
+      "hexapod-hexapod-3"
+    ],
+    "edubot|robotheca.org/robots/hsiwu-bat-flapping-wing-robot": [
+      "hsiwu-bat-flapping-wing-robot"
+    ],
+    "edubot|robotheca.org/robots/kmids-veloz-self-driving-car-wro-2026": [
+      "kmids-veloz-self-driving-car-wro-2026"
+    ],
+    "edubot|robotheca.org/robots/logobot": [
+      "logobot"
+    ],
+    "edubot|robotheca.org/robots/mabel": [
+      "mabel"
+    ],
+    "edubot|robotheca.org/robots/mushr": [
+      "mushr"
+    ],
+    "edubot|robotheca.org/robots/niko": [
+      "niko"
+    ],
+    "edubot|robotheca.org/robots/novaq-quadruped-robot": [
+      "novaq-quadruped-robot"
+    ],
+    "edubot|robotheca.org/robots/oldx-fc-open-source-multicopter-flight-controller": [
+      "oldx-fc-open-source-multicopter-flight-controller"
+    ],
+    "edubot|robotheca.org/robots/open-source-turtle-robot": [
+      "open-source-turtle-robot"
+    ],
+    "edubot|robotheca.org/robots/openk-arm": [
+      "openk-arm"
+    ],
+    "edubot|robotheca.org/robots/openmover": [
+      "openmover"
+    ],
+    "edubot|robotheca.org/robots/openperseverance": [
+      "openperseverance"
+    ],
+    "edubot|robotheca.org/robots/openscara-light-painting-arm": [
+      "openscara-light-painting-arm"
+    ],
+    "edubot|robotheca.org/robots/orca-hand": [
+      "orca-hand"
+    ],
+    "edubot|robotheca.org/robots/penbot-mini": [
+      "penbot-mini"
+    ],
+    "edubot|robotheca.org/robots/playbot": [
+      "playbot"
+    ],
+    "edubot|robotheca.org/robots/rhinov2-0-adaptive-gripper": [
+      "rhinov2-0-adaptive-gripper"
+    ],
+    "edubot|robotheca.org/robots/roboprime": [
+      "roboprime"
+    ],
+    "edubot|robotheca.org/robots/robot-pet-v1-esp32-cam-face-tracker": [
+      "robot-pet-v1-esp32-cam-face-tracker"
+    ],
+    "edubot|robotheca.org/robots/robotheater": [
+      "robotheater"
+    ],
+    "edubot|robotheca.org/robots/robotic-ball": [
+      "robotic-ball"
+    ],
+    "edubot|robotheca.org/robots/robotling-2": [
+      "robotling-2"
+    ],
+    "edubot|robotheca.org/robots/roomi": [
+      "roomi"
+    ],
+    "edubot|robotheca.org/robots/scara-rrp-welding-robot": [
+      "scara-rrp-welding-robot"
+    ],
+    "edubot|robotheca.org/robots/sixi-2-robot-arm": [
+      "sixi-2-robot-arm"
+    ],
+    "edubot|robotheca.org/robots/softrobotetf": [
+      "softrobotetf"
+    ],
+    "edubot|robotheca.org/robots/spotmicro-esp32": [
+      "spotmicro-esp32"
+    ],
+    "edubot|robotheca.org/robots/t-robot": [
+      "t-robot"
+    ],
+    "edubot|robotheca.org/robots/t-top": [
+      "t-top"
+    ],
+    "edubot|robotheca.org/robots/trlc-dk1": [
+      "trlc-dk1"
+    ],
+    "edubot|robotheca.org/robots/balancio-kit": [
+      "balancio-kit"
+    ],
+    "edubot|robotheca.org/robots/faze4-robotic-arm": [
+      "faze4-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/langostino": [
+      "langostino"
+    ],
+    "edubot|robotheca.org/robots/yao": [
+      "yao"
+    ],
+    "edubot|robotheca.org/robots/mockway-robot": [
+      "mockway-robot"
+    ],
+    "edubot|robotheca.org/robots/anti-self-driving-car": [
+      "anti-self-driving-car"
+    ],
+    "edubot|robotheca.org/robots/kayra": [
+      "kayra"
+    ],
+    "edubot|robotheca.org/robots/otto-esp32": [
+      "otto-esp32"
+    ],
+    "edubot|robotheca.org/robots/really-useful-robot": [
+      "really-useful-robot"
+    ],
+    "edubot|robotheca.org/robots/shoggoth-mini": [
+      "shoggoth-mini"
+    ],
+    "edubot|robotheca.org/robots/2dof-drawing-robotic-arm": [
+      "2dof-drawing-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/3d-printed-arduino-rover": [
+      "3d-printed-arduino-rover"
+    ],
+    "edubot|robotheca.org/robots/6-dof-articulated-robot-arm-v1": [
+      "6-dof-articulated-robot-arm-v1"
+    ],
+    "edubot|robotheca.org/robots/alto-3d-printed-6-axis-robotic-arm": [
+      "alto-3d-printed-6-axis-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/andino": [
+      "andino"
+    ],
+    "edubot|robotheca.org/robots/arduinobot": [
+      "arduinobot"
+    ],
+    "edubot|robotheca.org/robots/cambot": [
+      "cambot"
+    ],
+    "edubot|robotheca.org/robots/delta-bot": [
+      "delta-bot"
+    ],
+    "edubot|robotheca.org/robots/dengfoc-balance-bot": [
+      "dengfoc-balance-bot"
+    ],
+    "edubot|robotheca.org/robots/desktop-robot": [
+      "desktop-robot"
+    ],
+    "edubot|robotheca.org/robots/desktop-robot-arm": [
+      "desktop-robot-arm"
+    ],
+    "edubot|robotheca.org/robots/escornabot-makech": [
+      "escornabot-makech"
+    ],
+    "edubot|robotheca.org/robots/full-scratch-drone": [
+      "full-scratch-drone"
+    ],
+    "edubot|robotheca.org/robots/hexapod-v2-linkit-7697": [
+      "hexapod-v2-linkit-7697"
+    ],
+    "edubot|robotheca.org/robots/hopejr": [
+      "hopejr"
+    ],
+    "edubot|robotheca.org/robots/k-a-d-ballers-genie-firefighter-robot": [
+      "k-a-d-ballers-genie-firefighter-robot"
+    ],
+    "edubot|robotheca.org/robots/line-following-robot-with-ball-putting-mechanism": [
+      "line-following-robot-with-ball-putting-mechanism"
+    ],
+    "edubot|robotheca.org/robots/lis-vision-flight": [
+      "lis-vision-flight"
+    ],
+    "edubot|robotheca.org/robots/m5stack-qspider": [
+      "m5stack-qspider"
+    ],
+    "edubot|robotheca.org/robots/mcar": [
+      "mcar"
+    ],
+    "edubot|robotheca.org/robots/mindpaw": [
+      "mindpaw"
+    ],
+    "edubot|robotheca.org/robots/minibots": [
+      "minibots"
+    ],
+    "edubot|robotheca.org/robots/nova-desktop-humanoid": [
+      "nova-desktop-humanoid"
+    ],
+    "edubot|robotheca.org/robots/obo-mouse-v4": [
+      "obo-mouse-v4"
+    ],
+    "edubot|robotheca.org/robots/omnirobot": [
+      "omnirobot"
+    ],
+    "edubot|robotheca.org/robots/opendog-v3": [
+      "opendog-v3"
+    ],
+    "edubot|robotheca.org/robots/openrover": [
+      "openrover"
+    ],
+    "edubot|robotheca.org/robots/pacer-v1-track-pacer-car": [
+      "pacer-v1-track-pacer-car"
+    ],
+    "edubot|robotheca.org/robots/pogobot": [
+      "pogobot"
+    ],
+    "edubot|robotheca.org/robots/poppy-ergo-jr": [
+      "poppy-ergo-jr"
+    ],
+    "edubot|robotheca.org/robots/probe-lx-3": [
+      "probe-lx-3"
+    ],
+    "edubot|robotheca.org/robots/project-quad": [
+      "project-quad"
+    ],
+    "edubot|robotheca.org/robots/protobot-2": [
+      "protobot"
+    ],
+    "edubot|robotheca.org/robots/puguette": [
+      "puguette"
+    ],
+    "edubot|robotheca.org/robots/qitous-hybrid-vtol-drone": [
+      "qitous-hybrid-vtol-drone"
+    ],
+    "edubot|robotheca.org/robots/quadruped-robot-2": [
+      "quadruped-robot"
+    ],
+    "edubot|robotheca.org/robots/raven": [
+      "raven"
+    ],
+    "edubot|robotheca.org/robots/real-drone-400": [
+      "real-drone-400"
+    ],
+    "edubot|robotheca.org/robots/remi-3-micromouse": [
+      "remi-3-micromouse"
+    ],
+    "edubot|robotheca.org/robots/seven-3-dof-robotic-arm": [
+      "seven-3-dof-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/softrafts": [
+      "softrafts"
+    ],
+    "edubot|robotheca.org/robots/stack-chan": [
+      "stack-chan"
+    ],
+    "edubot|robotheca.org/robots/stanford-doggo": [
+      "stanford-doggo"
+    ],
+    "edubot|robotheca.org/robots/storper": [
+      "storper"
+    ],
+    "edubot|robotheca.org/robots/tvc-drone": [
+      "tvc-drone"
+    ],
+    "edubot|robotheca.org/robots/uq-mars-starter-micromouse": [
+      "uq-mars-starter-micromouse"
+    ],
+    "edubot|robotheca.org/robots/wheelleg-fullstack-challenge-robot": [
+      "wheelleg-fullstack-challenge-robot"
+    ],
+    "edubot|robotheca.org/robots/hexapod-robot": [
+      "hexapod-robot"
+    ],
+    "edubot|robotheca.org/robots/openkidcar-ganbei-no-1": [
+      "openkidcar-ganbei-no-1"
+    ],
+    "edubot|robotheca.org/robots/6-dof-robotic-arm": [
+      "6-dof-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/upkie": [
+      "upkie"
+    ],
+    "edubot|robotheca.org/robots/aharobot": [
+      "aharobot"
+    ],
+    "edubot|robotheca.org/robots/coconuts": [
+      "coconuts"
+    ],
+    "edubot|robotheca.org/robots/4dof-robot-arm": [
+      "4dof-robot-arm"
+    ],
+    "edubot|robotheca.org/robots/ardupod": [
+      "ardupod"
+    ],
+    "edubot|robotheca.org/robots/atlas-rover-mk-1": [
+      "atlas-rover-mk-1"
+    ],
+    "edubot|robotheca.org/robots/balancecar": [
+      "balance-car"
+    ],
+    "edubot|robotheca.org/robots/betabots-robot-arm": [
+      "betabots-robot-arm"
+    ],
+    "edubot|robotheca.org/robots/bluecube-line-follower-v2": [
+      "bluecube-line-follower-v2"
+    ],
+    "edubot|robotheca.org/robots/cyocrawler": [
+      "cyocrawler"
+    ],
+    "edubot|robotheca.org/robots/darkchess-robot": [
+      "darkchess-robot"
+    ],
+    "edubot|robotheca.org/robots/delta-robot-act-vs-diffusion-policy": [
+      "delta-robot-act-vs-diffusion-policy"
+    ],
+    "edubot|robotheca.org/robots/diy-delta-robot": [
+      "diy-delta-robot"
+    ],
+    "edubot|robotheca.org/robots/drawbot": [
+      "drawbot"
+    ],
+    "edubot|robotheca.org/robots/dreamingrobot": [
+      "dreamingrobot"
+    ],
+    "edubot|robotheca.org/robots/easy-quadruped-robot": [
+      "easy-quadruped-robot"
+    ],
+    "edubot|robotheca.org/robots/electric-sheep-humanoid-robot-platform-v1": [
+      "electric-sheep-humanoid-robot-platform-v1"
+    ],
+    "edubot|robotheca.org/robots/esp-drone": [
+      "esp-drone"
+    ],
+    "edubot|robotheca.org/robots/explora-tailsitter-vtol": [
+      "explora-tailsitter-vtol"
+    ],
+    "edubot|robotheca.org/robots/ezrover": [
+      "ezrover"
+    ],
+    "edubot|robotheca.org/robots/fast-drone-250": [
+      "fast-drone-250"
+    ],
+    "edubot|robotheca.org/robots/fcs-4-dof-robot-hand": [
+      "fcs-4-dof-robot-hand"
+    ],
+    "edubot|robotheca.org/robots/foldable-rover": [
+      "foldable-rover"
+    ],
+    "edubot|robotheca.org/robots/forge-1": [
+      "forge-1"
+    ],
+    "edubot|robotheca.org/robots/geardrones": [
+      "geardrones"
+    ],
+    "edubot|robotheca.org/robots/gretchen": [
+      "gretchen"
+    ],
+    "edubot|robotheca.org/robots/h1-6-axis-3d-printed-manipulator": [
+      "h1-6-axis-3d-printed-manipulator"
+    ],
+    "edubot|robotheca.org/robots/heroswarm-v2": [
+      "heroswarm-v2"
+    ],
+    "edubot|robotheca.org/robots/hexapod-2": [
+      "hexapod-hexapod-2"
+    ],
+    "edubot|robotheca.org/robots/hyun": [
+      "hyun"
+    ],
+    "edubot|robotheca.org/robots/kumo-2-5-fpv-drone": [
+      "kumo-2-5-fpv-drone"
+    ],
+    "edubot|robotheca.org/robots/lerobot-humanoid-biped": [
+      "lerobot-humanoid-biped"
+    ],
+    "edubot|robotheca.org/robots/lzu-ascento": [
+      "lzu-ascento"
+    ],
+    "edubot|robotheca.org/robots/micro-racer-car": [
+      "micro-racer-car"
+    ],
+    "edubot|robotheca.org/robots/open-decabot": [
+      "open-decabot"
+    ],
+    "edubot|robotheca.org/robots/open-mobile-robotic-manipulator": [
+      "open-mobile-robotic-manipulator"
+    ],
+    "edubot|robotheca.org/robots/opendog": [
+      "opendog"
+    ],
+    "edubot|robotheca.org/robots/penny-3": [
+      "penny-3"
+    ],
+    "edubot|robotheca.org/robots/pico-mars-rover": [
+      "pico-mars-rover"
+    ],
+    "edubot|robotheca.org/robots/printpupper": [
+      "printpupper"
+    ],
+    "edubot|robotheca.org/robots/protobot": [
+      "protobot-2"
+    ],
+    "edubot|robotheca.org/robots/psi1-quadruped": [
+      "psi1-quadruped"
+    ],
+    "edubot|robotheca.org/robots/py-apple-bldc-quadruped-robot": [
+      "py-apple-bldc-quadruped-robot"
+    ],
+    "edubot|robotheca.org/robots/q8bot-quadruped": [
+      "q8bot-quadruped"
+    ],
+    "edubot|robotheca.org/robots/robart": [
+      "robart"
+    ],
+    "edubot|robotheca.org/robots/roverling-mk-ii": [
+      "roverling-mk-ii"
+    ],
+    "edubot|robotheca.org/robots/rush-mog": [
+      "rush-mog"
+    ],
+    "edubot|robotheca.org/robots/smallrobotarm": [
+      "smallrobotarm"
+    ],
+    "edubot|robotheca.org/robots/smart-dexterous-hand-gesture-recognition-music-control-system": [
+      "smart-dexterous-hand-gesture-recognition-music-control-syste"
+    ],
+    "edubot|robotheca.org/robots/spider-robot": [
+      "spider-robot"
+    ],
+    "edubot|robotheca.org/robots/spot-micro-quadruped-robot": [
+      "spot-micro-quadruped-robot"
+    ],
+    "edubot|robotheca.org/robots/stackforce-wheel-legged-robot": [
+      "stackforce-wheel-legged-robot"
+    ],
+    "edubot|robotheca.org/robots/tatamiracer": [
+      "tatamiracer"
+    ],
+    "edubot|robotheca.org/robots/teleoperated-snake-robot": [
+      "teleoperated-snake-robot"
+    ],
+    "edubot|robotheca.org/robots/underwater-vehicle": [
+      "underwater-vehicle"
+    ],
+    "edubot|robotheca.org/robots/veilink-arm": [
+      "veilink-arm"
+    ],
+    "edubot|robotheca.org/robots/whalebot": [
+      "whalebot"
+    ],
+    "edubot|robotheca.org/robots/zerobug": [
+      "zerobug"
+    ],
+    "edubot|robotheca.org/robots/zgps-01": [
+      "zgps-01"
+    ],
+    "edubot|robotheca.org/robots/zippy": [
+      "zippy"
+    ],
+    "edubot|robotheca.org/robots/little-red-rover": [
+      "little-red-rover"
+    ],
+    "edubot|robotheca.org/robots/micro-dog": [
+      "micro-dog"
+    ],
+    "edubot|robotheca.org/robots/maker-s-pet-loki": [
+      "maker-s-pet-loki"
+    ],
+    "edubot|robotheca.org/robots/maker-s-pet-snoopy": [
+      "maker-s-pet-snoopy"
+    ],
+    "edubot|robotheca.org/robots/oomwoo": [
+      "oomwoo"
+    ],
+    "edubot|robotheca.org/robots/quadruped-robot": [
+      "12-dof-quadruped-robot"
+    ],
+    "edubot|robotheca.org/robots/arachnobot": [
+      "arachnobot"
+    ],
+    "edubot|robotheca.org/robots/cm6-v2-robotic-arm": [
+      "cm6-v2-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/combat-robot": [
+      "combat-robot"
+    ],
+    "edubot|robotheca.org/robots/creative-mini-car-modification": [
+      "creative-mini-car-modification"
+    ],
+    "edubot|robotheca.org/robots/dirt-cheap-robot": [
+      "dirt-cheap-robot"
+    ],
+    "edubot|robotheca.org/robots/eezybotarm": [
+      "eezybotarm"
+    ],
+    "edubot|robotheca.org/robots/foc-dual-wheel-legged-robot": [
+      "foc-dual-wheel-legged-robot"
+    ],
+    "edubot|robotheca.org/robots/headneckcontrol": [
+      "head-neck-control"
+    ],
+    "edubot|robotheca.org/robots/hexapod-robot-2": [
+      "hexapod-robot-hexapod-robot-2"
+    ],
+    "edubot|robotheca.org/robots/holy-guacamole": [
+      "holy-guacamole"
+    ],
+    "edubot|robotheca.org/robots/jyker-arm": [
+      "jyker-arm"
+    ],
+    "edubot|robotheca.org/robots/kani-quadruped": [
+      "kani-quadruped"
+    ],
+    "edubot|robotheca.org/robots/langpie": [
+      "langpie"
+    ],
+    "edubot|robotheca.org/robots/linco-robot-arm": [
+      "linco-robot-arm"
+    ],
+    "edubot|robotheca.org/robots/litewing": [
+      "litewing"
+    ],
+    "edubot|robotheca.org/robots/mars-rover": [
+      "mars-rover"
+    ],
+    "edubot|robotheca.org/robots/mcdgf-self-balancing-car": [
+      "mcdgf-self-balancing-car"
+    ],
+    "edubot|robotheca.org/robots/mech-butterfly": [
+      "mech-butterfly"
+    ],
+    "edubot|robotheca.org/robots/microduck-replica": [
+      "microduck-replica"
+    ],
+    "edubot|robotheca.org/robots/mini-pupper": [
+      "mini-pupper"
+    ],
+    "edubot|robotheca.org/robots/mujina": [
+      "mujina"
+    ],
+    "edubot|robotheca.org/robots/nanosaur": [
+      "nanosaur"
+    ],
+    "edubot|robotheca.org/robots/nodehexa": [
+      "nodehexa"
+    ],
+    "edubot|robotheca.org/robots/nodequad-v1": [
+      "nodequad-v1"
+    ],
+    "edubot|robotheca.org/robots/nova2-rover": [
+      "nova2-rover"
+    ],
+    "edubot|robotheca.org/robots/pedro": [
+      "pedro"
+    ],
+    "edubot|robotheca.org/robots/pegasus-robot-dog": [
+      "pegasus-robot-dog"
+    ],
+    "edubot|robotheca.org/robots/quickbrick-delta-robot": [
+      "quickbrick-delta-robot"
+    ],
+    "edubot|robotheca.org/robots/roboparty-rp1": [
+      "roboparty-rp1"
+    ],
+    "edubot|robotheca.org/robots/robot-butterfly": [
+      "robot-butterfly"
+    ],
+    "edubot|robotheca.org/robots/rosmo": [
+      "rosmo"
+    ],
+    "edubot|robotheca.org/robots/roverlite32": [
+      "roverlite32"
+    ],
+    "edubot|robotheca.org/robots/scara-parallel": [
+      "scara-parallel"
+    ],
+    "edubot|robotheca.org/robots/smabo": [
+      "smabo"
+    ],
+    "edubot|robotheca.org/robots/stm32-balance-car": [
+      "stm32-balance-car"
+    ],
+    "edubot|robotheca.org/robots/tars-ai": [
+      "tars-ai"
+    ],
+    "edubot|robotheca.org/robots/tdrone": [
+      "tdrone"
+    ],
+    "edubot|robotheca.org/robots/tiptap": [
+      "tiptap"
+    ],
+    "edubot|robotheca.org/robots/triangle-reaction-wheel-balancer": [
+      "triangle-reaction-wheel-balancer"
+    ],
+    "edubot|robotheca.org/robots/uniquad": [
+      "uniquad"
+    ],
+    "edubot|robotheca.org/robots/wheel-legged": [
+      "wheel-legged"
+    ],
+    "edubot|robotheca.org/robots/woodpecker-writing-machine": [
+      "woodpecker-writing-machine"
+    ],
+    "edubot|robotheca.org/robots/x-bot": [
+      "x-bot"
+    ],
+    "edubot|robotheca.org/robots/zifly-quadcopter-flight-controller": [
+      "zifly-quadcopter-flight-controller"
+    ],
+    "edubot|robotheca.org/robots/zorobot3-micromouse": [
+      "zorobot3-micromouse"
+    ],
+    "edubot|robotheca.org/robots/akari": [
+      "akari"
+    ],
+    "edubot|robotheca.org/robots/openfigure": [
+      "openfigure"
+    ],
+    "edubot|robotheca.org/robots/airplane": [
+      "airplane"
+    ],
+    "edubot|robotheca.org/robots/b-robot": [
+      "b-robot"
+    ],
+    "edubot|robotheca.org/robots/dummy-robotic-arm": [
+      "dummy-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/educational-rover": [
+      "educational-rover"
+    ],
+    "edubot|robotheca.org/robots/electronbot-3": [
+      "electronbot-electronbot-3"
+    ],
+    "edubot|robotheca.org/robots/electronbot-peripheral": [
+      "electronbot-peripheral"
+    ],
+    "edubot|robotheca.org/robots/explorer-eod-rescue-robot": [
+      "explorer-eod-rescue-robot"
+    ],
+    "edubot|robotheca.org/robots/grasshopper": [
+      "grasshopper"
+    ],
+    "edubot|robotheca.org/robots/hand-exoskeleton-for-climbing": [
+      "hand-exoskeleton-for-climbing"
+    ],
+    "edubot|robotheca.org/robots/icebot": [
+      "icebot"
+    ],
+    "edubot|robotheca.org/robots/jetson-nano-mouse": [
+      "jetson-nano-mouse"
+    ],
+    "edubot|robotheca.org/robots/leap-ros2": [
+      "leap-ros2"
+    ],
+    "edubot|robotheca.org/robots/mars-rover-2020": [
+      "mars-rover-2020"
+    ],
+    "edubot|robotheca.org/robots/mickrobot": [
+      "mickrobot"
+    ],
+    "edubot|robotheca.org/robots/microduck": [
+      "microduck"
+    ],
+    "edubot|robotheca.org/robots/moco-minitaur-lts": [
+      "moco-minitaur-lts"
+    ],
+    "edubot|robotheca.org/robots/modular-biped": [
+      "modular-biped"
+    ],
+    "edubot|robotheca.org/robots/naviton": [
+      "naviton"
+    ],
+    "edubot|robotheca.org/robots/omninxt": [
+      "omninxt"
+    ],
+    "edubot|robotheca.org/robots/onionbot": [
+      "onionbot"
+    ],
+    "edubot|robotheca.org/robots/openmower": [
+      "openmower"
+    ],
+    "edubot|robotheca.org/robots/peeqo": [
+      "peeqo"
+    ],
+    "edubot|robotheca.org/robots/picomnirover": [
+      "picomnirover"
+    ],
+    "edubot|robotheca.org/robots/pihexa-v1": [
+      "pihexa-v1"
+    ],
+    "edubot|robotheca.org/robots/pinto": [
+      "pinto"
+    ],
+    "edubot|robotheca.org/robots/pokrion-speed-drone": [
+      "pokrion-speed-drone"
+    ],
+    "edubot|robotheca.org/robots/py-apple-dog": [
+      "py-apple-dog"
+    ],
+    "edubot|robotheca.org/robots/py-apple-structure-quadruped": [
+      "py-apple-structure-quadruped"
+    ],
+    "edubot|robotheca.org/robots/raspberry-pi-cat": [
+      "raspberry-pi-cat"
+    ],
+    "edubot|robotheca.org/robots/raspberry-pi-mouse": [
+      "raspberry-pi-mouse"
+    ],
+    "edubot|robotheca.org/robots/robochassis-f427": [
+      "robochassis-f427"
+    ],
+    "edubot|robotheca.org/robots/rr1-real-robot-one": [
+      "rr1-real-robot-one"
+    ],
+    "edubot|robotheca.org/robots/stm32-quadruped-robot": [
+      "stm32-quadruped-robot"
+    ],
+    "edubot|robotheca.org/robots/tiny-drone": [
+      "tiny-drone"
+    ],
+    "edubot|robotheca.org/robots/training-tracer-ver-3": [
+      "training-tracer-ver-3"
+    ],
+    "edubot|robotheca.org/robots/venom": [
+      "venom"
+    ],
+    "edubot|robotheca.org/robots/verhobot": [
+      "verhobot"
+    ],
+    "edubot|robotheca.org/robots/wheel-legged-robot": [
+      "wheel-legged-robot"
+    ],
+    "edubot|robotheca.org/robots/wheel-legged-robot-balance-leg-v2": [
+      "wheel-legged-robot-balance-leg-v2"
+    ],
+    "edubot|robotheca.org/robots/wheelbot": [
+      "wheelbot"
+    ],
+    "edubot|robotheca.org/robots/acme-flight": [
+      "acme-flight"
+    ],
+    "edubot|robotheca.org/robots/alaris-hand": [
+      "alaris-hand"
+    ],
+    "edubot|robotheca.org/robots/avem": [
+      "avem"
+    ],
+    "edubot|robotheca.org/robots/coglet": [
+      "coglet"
+    ],
+    "edubot|robotheca.org/robots/cybergear-mechanical-dog": [
+      "cybergear-mechanical-dog"
+    ],
+    "edubot|robotheca.org/robots/dingo": [
+      "dingo"
+    ],
+    "edubot|robotheca.org/robots/doubibot": [
+      "doubibot"
+    ],
+    "edubot|robotheca.org/robots/esp-fly": [
+      "esp-fly"
+    ],
+    "edubot|robotheca.org/robots/exomy": [
+      "exomy"
+    ],
+    "edubot|robotheca.org/robots/flash-cat": [
+      "flash-cat"
+    ],
+    "edubot|robotheca.org/robots/gldrone": [
+      "gldrone"
+    ],
+    "edubot|robotheca.org/robots/hcrt-dog": [
+      "hcrt-dog"
+    ],
+    "edubot|robotheca.org/robots/hexapod-robot-stc15-controller": [
+      "hexapod-robot-stc15-controller"
+    ],
+    "edubot|robotheca.org/robots/hrvl-gbot-gazebot": [
+      "hrvl-gbot-gazebot"
+    ],
+    "edubot|robotheca.org/robots/jbr-001-desktop-companion": [
+      "jbr-001-desktop-companion"
+    ],
+    "edubot|robotheca.org/robots/kunpeng": [
+      "kunpeng"
+    ],
+    "edubot|robotheca.org/robots/lqr-self-balancing-two-wheel-robot": [
+      "lqr-self-balancing-two-wheel-robot"
+    ],
+    "edubot|robotheca.org/robots/moss": [
+      "moss"
+    ],
+    "edubot|robotheca.org/robots/oldx-mocomoco-quadruped": [
+      "oldx-mocomoco-quadruped"
+    ],
+    "edubot|robotheca.org/robots/one-robot": [
+      "one-robot"
+    ],
+    "edubot|robotheca.org/robots/open-source-quadruped-robot-dog-with-manipulator": [
+      "open-source-quadruped-robot-dog-with-manipulator"
+    ],
+    "edubot|robotheca.org/robots/panthera-ht": [
+      "panthera-ht"
+    ],
+    "edubot|robotheca.org/robots/pure-inertial-navigation-car": [
+      "pure-inertial-navigation-car"
+    ],
+    "edubot|robotheca.org/robots/qingloong": [
+      "qingloong"
+    ],
+    "edubot|robotheca.org/robots/robot-nano-hand": [
+      "robot-nano-hand"
+    ],
+    "edubot|robotheca.org/robots/robotics-101": [
+      "robotics-101"
+    ],
+    "edubot|robotheca.org/robots/ruishi-modular-exoskeleton": [
+      "ruishi-modular-exoskeleton"
+    ],
+    "edubot|robotheca.org/robots/smartcar-unicycle-q-car-hardware-20th": [
+      "smartcar-unicycle-q-car-hardware-20th"
+    ],
+    "edubot|robotheca.org/robots/sprite-humanoid": [
+      "sprite-humanoid"
+    ],
+    "edubot|robotheca.org/robots/tensegrity-quadrotor-model": [
+      "tensegrity-quadrotor-model"
+    ],
+    "edubot|robotheca.org/robots/viam-rover": [
+      "viam-rover"
+    ],
+    "edubot|robotheca.org/robots/xuan-bike": [
+      "xuan-bike"
+    ],
+    "edubot|robotheca.org/robots/openzero": [
+      "openzero"
+    ],
+    "edubot|robotheca.org/robots/400mm-quadcopter-model": [
+      "400mm-quadcopter-model"
+    ],
+    "edubot|robotheca.org/robots/7-inch-ducted-fan-uav": [
+      "7-inch-ducted-fan-uav"
+    ],
+    "edubot|robotheca.org/robots/alexbot": [
+      "alexbot"
+    ],
+    "edubot|robotheca.org/robots/cube-solver": [
+      "cube-solver"
+    ],
+    "edubot|robotheca.org/robots/electronbot-voice": [
+      "electronbot-voice"
+    ],
+    "edubot|robotheca.org/robots/enterprise-e-smart-car": [
+      "enterprise-e-smart-car"
+    ],
+    "edubot|robotheca.org/robots/little-doggy-run": [
+      "little-doggy-run"
+    ],
+    "edubot|robotheca.org/robots/minirover": [
+      "minirover"
+    ],
+    "edubot|robotheca.org/robots/moco-8": [
+      "moco-8"
+    ],
+    "edubot|robotheca.org/robots/mybalancecar": [
+      "my-balance-car"
+    ],
+    "edubot|robotheca.org/robots/otto-diy-humanoid-robot": [
+      "otto-diy-humanoid-robot"
+    ],
+    "edubot|robotheca.org/robots/balancecar-2": [
+      "pid-self-balancing-car"
+    ],
+    "edubot|robotheca.org/robots/py-apple-controller": [
+      "py-apple-controller"
+    ],
+    "edubot|robotheca.org/robots/quadcopter": [
+      "quadcopter"
+    ],
+    "edubot|robotheca.org/robots/rhino-gripper": [
+      "rhino-gripper"
+    ],
+    "edubot|robotheca.org/robots/robot-benben": [
+      "robot-benben"
+    ],
+    "edubot|robotheca.org/robots/stepping-balancer": [
+      "stepping-balancer"
+    ],
+    "edubot|robotheca.org/robots/uni-wr2": [
+      "uni-wr2"
+    ],
+    "edubot|robotheca.org/robots/roboticarm-of-ur5-like": [
+      "ur5-like-robotic-arm"
+    ],
+    "edubot|robotheca.org/robots/wall-e-desktop-robot": [
+      "wall-e-desktop-robot"
+    ],
+    "edubot|robotheca.org/robots/wuhu-takeoff-quadcopter": [
+      "wuhu-takeoff-quadcopter"
+    ],
+    "edubot|robotheca.org/robots/mearm": [
+      "mearm"
+    ],
+    "edubot|robotheca.org/robots/robotcup-home": [
+      "robotcup-home"
+    ],
+    "edubot|robotheca.org/robots/six-legged-robot": [
+      "six-legged-robot"
+    ],
+    "edubot|robotheca.org/robots/swashplateless-twin-rotor-micro-aircraft": [
+      "swashplateless-twin-rotor-micro-aircraft"
+    ],
+    "edubot|robotheca.org/robots/triple-j-uav": [
+      "triple-j-uav"
+    ],
+    "edubot|robotheca.org/robots/ugv-lidar-platform": [
+      "ugv-lidar-platform"
+    ],
+    "edubot|robotheca.org/robots/zhuge-liang-four-wheel-car-kart-hardware": [
+      "zhuge-liang-four-wheel-car-kart-hardware"
+    ],
+    "edubot|robotheca.org/robots/f4-flight-controller-esc": [
+      "f4-flight-controller-esc"
+    ],
+    "edubot|robotheca.org/robots/f405-pcb-fpv": [
+      "f405-pcb-fpv"
+    ],
+    "edubot|robotheca.org/robots/heiguan": [
+      "heiguan"
+    ],
+    "edubot|robotheca.org/robots/omnit-hand": [
+      "omnit-hand"
+    ],
+    "edubot|robotheca.org/robots/stm32-balance-car-2": [
+      "stm32-balance-car-stm32-balance-car-2"
+    ],
+    "edubot|robotheca.org/robots/tabv-platform": [
+      "tabv-platform"
+    ],
+    "edubot|robotheca.org/robots/two-wheel-rc-smart-car": [
+      "two-wheel-rc-smart-car"
+    ],
+    "edubot|robotheca.org/robots/agibot-x1-lingxi-x1": [
+      "agibot-x1-lingxi-x1"
+    ],
+    "edubot|robotheca.org/robots/balancecar2": [
+      "balance-car-2"
+    ],
+    "edubot|robotheca.org/robots/hoverboard": [
+      "hoverboard"
+    ],
+    "edubot|robotheca.org/robots/pcb-quadrotor": [
+      "pcb-quadrotor"
+    ],
+    "edubot|robotheca.org/robots/smartcar": [
+      "smartcar"
+    ],
+    "edubot|robotheca.org/robots/105-underwater-robot-sea-version": [
+      "105-underwater-robot-sea-version"
+    ],
+    "edubot|robotheca.org/robots/quadrotor-main-control-board": [
+      "quadrotor-main-control-board"
+    ],
+    "edubot|robotheca.org/robots/tc264-all-in-one-board": [
+      "tc264-all-in-one-board"
+    ],
+    "edubot|robotheca.org/robots/hypercar": [
+      "hypercar"
+    ],
+    "edubot|robotheca.org/robots/res-q": [
+      "res-q"
+    ],
+    "edubot|robotheca.org/robots/smartcar-2023-off-road-speed-group": [
+      "smartcar-2023-off-road-speed-group"
+    ],
+    "edubot|robotheca.org/robots/dolphin-arm": [
+      "dolphin-arm"
+    ],
+    "edubot|robotheca.org/robots/eda-robot-dog": [
+      "eda-robot-dog"
+    ],
+    "edubot|robotheca.org/robots/esp-hi-ai-robot-dog": [
+      "esp-hi-ai-robot-dog"
+    ],
+    "edubot|robotheca.org/robots/letian-robot-2-wheel-legged-robot": [
+      "letian-robot-2-wheel-legged-robot"
+    ],
+    "edubot|robotheca.org/robots/mini-foc-brushless-balancing-car-v2-0": [
+      "mini-foc-brushless-balancing-car-v2-0"
+    ],
+    "edubot|robotheca.org/robots/mini-quadruped-esp32-c3": [
+      "mini-quadruped-esp32-c3"
+    ],
+    "edubot|robotheca.org/robots/minibot-palm-sized-balancing-robot": [
+      "minibot-palm-sized-balancing-robot"
+    ],
+    "edubot|robotheca.org/robots/stm32-quadcopter": [
+      "stm32-quadcopter"
+    ],
+    "edubot|robotheca.org/robots/stm32-smart-desktop-pet": [
+      "stm32-smart-desktop-pet"
+    ],
+    "edubot|robotheca.org/robots/tracked-quadruped-hybrid-robot": [
+      "tracked-quadruped-hybrid-robot"
+    ]
   }
 }

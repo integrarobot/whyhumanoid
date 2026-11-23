@@ -82,7 +82,7 @@
     } else if (a.status === 'past_due' || a.status === 'unpaid') {
       [title, text, cls, st] = ['Payment needed', 'The last payment failed, so full access is paused. Update your card in the Stripe portal to restore it.', 'bad', 'Payment failed'];
     } else if (a.status && a.status !== 'none') {
-      [title, text, cls, st] = ['Subscription ended', 'Your subscription is no longer active' + (end ? ' (paid period ended ' + end + ')' : '') + '. Subscribe again to reopen the full database.', 'bad', 'Expired'];
+      [title, text, cls, st] = ['Subscription ended', 'Your subscription is no longer active' + (end ? ' (paid period ended ' + end + ')' : '') + '. Subscribe again to reopen complete Deployments and Components.', 'bad', 'Expired'];
     } else {
       [title, text, cls, st] = ['No subscription yet', 'You are seeing the free data: the Humanoids catalogue, the directories, basic fields of listed companies and the first 10 rows of the other categories. Subscribe for ' + price + ' to get every deployment record in full, with its site, task, results, verification and source; paid yearly, no free trial, cancel any time.', '', 'No subscription'];
     }
@@ -189,7 +189,7 @@
     if (rel.mode === 'full') return '';
     const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'Subscriptions open soon';
     const n = totals.deployments;
-    return `<p class="rel-lock"><b>Free preview.</b> Only the first 10${n ? ` of ${n}` : ''} Deployments records are linked here. The full database links every record to its robot, maker and organisation, with its sources (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</p>`;
+    return `<p class="rel-lock"><b>Free preview.</b> Only the first 10${n ? ` of ${n}` : ''} Deployments records are linked here. The subscription links every record to its robot, maker and organisation, with its sources (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</p>`;
   }
   // One deployment: its records (claims) in date order, each with status, task, evidence, source and its own card.
   function depGroups(list, rows, { robot = true, org = true, maker = false } = {}) {
@@ -235,7 +235,7 @@
     if (!recs.length) {
       html += rel.mode === 'full'
         ? `<p class="rel-empty">No Deployments record names this robot or its model line. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that the robot has no deployments.</p>`
-        : `<p class="rel-empty">None of the 10 free preview records names this robot or its model line. That is not evidence that it has no deployments${n ? `: ${n - 10} more records are in the full database` : ''}.</p>`;
+        : `<p class="rel-empty">None of the 10 free preview records names this robot or its model line. That is not evidence that it has no deployments${n ? `: ${n - 10} more records come with the subscription` : ''}.</p>`;
     }
     if (others.length && rb) html += `<p class="rel-note">${others.length} ${others.length === 1 ? 'record' : 'records'} from ${companyLink(rb.maker)} ${others.length === 1 ? 'names' : 'name'} another model or none, so ${others.length === 1 ? 'it is' : 'they are'} not attributed to this robot. <a href="#company/${encodeURIComponent(rb.maker)}">See the maker</a>.</p>`;
     return html + (recs.length ? STATUS_KEY : '') + relLock();
@@ -348,7 +348,7 @@
     }
     body.innerHTML = (isDep ? `<p class="db-dlg-st"><span class="dst ${status(r)}">${stLabel(status(r))}</span><span class="lbl">operational status in the sheet: ${esc(r.operational_status || 'empty')}</span></p>` : '') + links +
       groupsOf(id, fields).map(([g, fs]) => `<section class="db-sec"><h4 class="lbl">${esc(g)}</h4><dl class="db-kv">` +
-        fs.map((k) => `<dt>${esc(label(k))}</dt>` + (nz(r[k]) ? `<dd data-f="${esc(k)}">${fmt(r[k])}</dd>` : `<dd data-f="${esc(k)}" class="nil">${data.mode === 'preview' && !(k in r) ? 'In the full database' : 'Empty in the sheet'}</dd>`)).join('') + '</dl></section>').join('');
+        fs.map((k) => `<dt>${esc(label(k))}</dt>` + (nz(r[k]) ? `<dd data-f="${esc(k)}">${fmt(r[k])}</dd>` : `<dd data-f="${esc(k)}" class="nil">${data.mode === 'preview' && !(k in r) ? 'With the subscription' : 'Empty in the sheet'}</dd>`)).join('') + '</dl></section>').join('');
     body.scrollTop = 0;
     dlg.querySelector('#db-dlg-pos').textContent = `Record ${pos + 1} of ${list.length}`;
     if (r.id) setHash(`${id}/${encodeURIComponent(r.id)}`, false);
@@ -379,7 +379,7 @@
     const locked = preview ? Math.max(0, data.total - data.rows.length) : 0;
     panel.innerHTML =
       `<div class="db-panel-head"><div><h2>${esc(meta.title)}</h2><p>${esc(meta.description || '')}</p>` +
-      `<p class="db-hint">${preview ? `Free preview: the first 10 sheet rows (${data.rows.length} entries) of ${data.total}.` : `${data.total} entries${data.mode === 'full' ? ', full database' : ''}.`} <b>View all data</b> opens every field of an entry (${data.fields.length} fields), in full.</p>` +
+      `<p class="db-hint">${preview ? `Free preview: the first 10 sheet rows (${data.rows.length} entries) of ${data.total}.` : `${data.total} entries${data.mode === 'full' ? ', complete' : ''}.`} <b>View all data</b> opens every field of an entry (${data.fields.length} fields), in full.</p>` +
       `<p class="lbl" id="db-count"></p></div><label class="db-search"><span class="lbl">Search ${preview ? 'the preview' : 'every field'}</span><br><input id="db-q" type="search" autocomplete="off" placeholder="Filter every field"></label></div>` +
       (isDep ? '<div class="db-status" id="db-status" role="group" aria-label="Filter by status"></div>' : '') +
       `<div class="db-scroll"><table class="db-table${isDep ? ' dep' : ''}"><thead><tr><th scope="col">#</th>${isDep ? '<th scope="col">Status</th>' : ''}<th scope="col">Record</th>` +
@@ -389,7 +389,7 @@
     const lockRow = () => {
       if (!locked) return '';
       const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'Subscriptions open soon';
-      return `<tr class="lock"><td colspan="${ncol}"><b>${locked} more entries</b> are in the full database (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</td></tr>`;
+      return `<tr class="lock"><td colspan="${ncol}"><b>${locked} more entries</b> come with the subscription (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</td></tr>`;
     };
     function render() {
       shown = data.rows.filter((r) => (!isDep || st === 'all' || status(r) === st) && (!q || Object.keys(r).some((k) => !HIDDEN.has(k) && String(r[k] ?? '').toLowerCase().includes(q))));
@@ -492,7 +492,7 @@
     if (!data || state.current !== datasetId) return;
     const i = data.rows.findIndex((r) => String(r.id) === rowId);
     if (i < 0) {
-      notice(data.mode === 'full' ? 'That record is not in the current copy of the database.' : 'That record is in the full database. Subscribers can open it; the free preview shows the first 10 sheet rows.');
+      notice(data.mode === 'full' ? 'That record is not in the current copy of the database.' : 'That record comes with the subscription. Subscribers can open it; the free preview shows the first 10 sheet rows.');
       setHash(datasetId, false);
       return;
     }
@@ -539,10 +539,10 @@
     const input = $('gs-q');
     if (document.activeElement !== input) input.value = s.q;
     const panel = $('db-panel');
-    const freeNote = 'Free search covers the Humanoids catalogue in full and the first 10 sheet rows of each other category.';
+    const freeNote = 'Free search covers every free category in full and the first 10 sheet rows of Deployments and Components.';
     if (!s.q.trim() && !s.tags.length && !s.category) {
-      panel.innerHTML = `<div class="db-panel-head"><div><h2>Search the database</h2><p>Robots, companies, deployments, tasks, places and sectors across the 13 categories, with names, aliases and every field. Spanish words such as almacén, logística or EE. UU. work too.</p>` +
-        `<p class="db-hint">${full() ? 'You search every row of the full database.' : `${freeNote} <b>Subscribers search every row.</b>`}</p></div></div>` +
+      panel.innerHTML = `<div class="db-panel-head"><div><h2>Search the database</h2><p>Robots, companies, deployments, tasks, places and sectors across every category, with names, aliases and every field. Spanish words such as almacén, logística or EE. UU. work too.</p>` +
+        `<p class="db-hint">${full() ? 'You search every row of every category.' : `${freeNote} <b>Subscribers search every row.</b>`}</p></div></div>` +
         `<div class="gs-try"><span class="lbl">Try</span>${TRY.map((t) => `<a class="gs-chip" href="#${esc(searchHash({ q: t, tags: [], category: '', page: 1 }))}">${esc(t)}</a>`).join('')}</div>`;
       return;
     }
@@ -582,8 +582,8 @@
       ? `<nav class="gs-pager" aria-label="Result pages"><button type="button" class="btn ghost" data-page="${data.page - 1}"${data.page <= 1 ? ' disabled' : ''}>Previous</button><span class="lbl">${from}–${to} of ${data.total} · page ${data.page} of ${data.pages}</span><button type="button" class="btn ghost" data-page="${data.page + 1}"${data.page >= data.pages ? ' disabled' : ''}>Next</button></nav>`
       : '';
     panel.innerHTML =
-      `<div class="db-panel-head"><div><span class="lbl">Search · ${visitor ? 'free data' : 'full database'}</span><h2 id="gs-head" tabindex="-1">${data.total} result${data.total === 1 ? '' : 's'}${s.q ? ` for “${esc(s.q)}”` : ''}</h2>` +
-      `<p class="db-hint">${visitor ? `${freeNote} <b>Subscribers search every row of all 13 categories.</b> <button type="button" class="btn ghost" data-access>${state.me ? 'Subscribe' : 'Sign in or subscribe'}</button>` : 'Every row and field of the full database.'}</p></div></div>` +
+      `<div class="db-panel-head"><div><span class="lbl">Search · ${visitor ? 'free data' : 'every row'}</span><h2 id="gs-head" tabindex="-1">${data.total} result${data.total === 1 ? '' : 's'}${s.q ? ` for “${esc(s.q)}”` : ''}</h2>` +
+      `<p class="db-hint">${visitor ? `${freeNote} <b>Subscribers also search every row of Deployments and Components.</b> <button type="button" class="btn ghost" data-access>${state.me ? 'Subscribe' : 'Sign in or subscribe'}</button>` : 'Every row and field of every category.'}</p></div></div>` +
       activeChips + filters +
       (data.total ? `<ol class="gs-res" start="${from}">${results}</ol>${pager}` : none);
     const memo = scrollMemo.get(key);
@@ -724,7 +724,7 @@
     if (params.get('checkout') === 'success') {
       notice('Payment received. Full access opens as soon as Stripe confirms the subscription.');
       for (let i = 0; i < 20 && !full(); i++) { await new Promise((r) => setTimeout(r, 3000)); await refresh(); }
-      notice(full() ? 'Your subscription is active. Welcome to the full database.' : 'Stripe has not confirmed the subscription yet. Reload this page in a minute.');
+      notice(full() ? 'Your subscription is active: complete Deployments and Components are open.' : 'Stripe has not confirmed the subscription yet. Reload this page in a minute.');
     }
     if (params.has('checkout') || params.has('billing')) history.replaceState(null, '', location.pathname + location.hash);
   }

@@ -104,7 +104,7 @@ const indexLinks = [...document.querySelectorAll('#db-index a[data-id]')];
 expect(indexLinks.length === 13 && document.querySelectorAll('#db-index .grp').length === 5, `category index: ${indexLinks.length} links in ${document.querySelectorAll('#db-index .grp').length} groups`);
 expect(indexLinks.find((a) => a.dataset.id === 'humanoids')?.getAttribute('href') === '#humanoids', 'index does not link Humanoids to #humanoids');
 expect(pageData.access.open === false, 'page is not in paywall mode');
-expect(/full database adds 12 more datasets/i.test(text('#preview-note')) && document.querySelector('#preview-note a')?.getAttribute('href') === pageData.access.app_url, 'catalogue notice does not offer the full database');
+expect(/subscription adds complete Deployments and complete Components/i.test(text('#preview-note')) && document.querySelector('#preview-note a')?.getAttribute('href') === pageData.access.app_url, 'catalogue notice does not offer the subscription');
 for (const t of dbIndex?.tabs ?? []) {
   const a = indexLinks.find((x) => x.dataset.id === t.id);
   expect(a?.getAttribute('href') === `#db-${t.id}` && a.querySelector('.n')?.textContent === String(t.entries_total), `${t.id}: index link or count wrong`);
@@ -112,7 +112,7 @@ for (const t of dbIndex?.tabs ?? []) {
   const shown = document.querySelectorAll('#db-rows tr.r').length;
   expect(shown === t.preview_entries && shown > 0, `${t.id}: ${shown} rows shown, preview has ${t.preview_entries}`);
   const lock = document.querySelector('#db-rows tr.lock a.db-buy');
-  expect(t.entries_total > t.preview_entries ? lock?.getAttribute('href') === `${pageData.access.app_url}#${t.id}` : !lock, `${t.id}: link to the full database missing or wrong`);
+  expect(t.entries_total > t.preview_entries ? t.access === 'subscription' && lock?.getAttribute('href') === '/subscribe/' : !lock, `${t.id}: link to the subscription missing or wrong`);
   expect(text('#db-title') === t.title, `${t.id}: panel title "${text('#db-title')}"`);
   expect(a?.getAttribute('aria-current') === 'true', `${t.id}: index does not mark the open category`);
 }
@@ -147,7 +147,7 @@ for (const t of dbIndex.tabs) {
       const v = r[dd.dataset.f];
       const has = v !== null && v !== undefined && String(v).trim() !== '';
       // A field the row does not publish (listed companies beyond row 10, approved split phase 3) says where it is.
-      const nil = dd.dataset.f in r ? 'Empty in the sheet' : 'In the full database';
+      const nil = dd.dataset.f in r ? 'Empty in the sheet' : t.access === 'free' ? 'Free, in the next public export' : 'With the subscription';
       if (has ? dd.textContent !== String(v) : !(dd.classList.contains('nil') && dd.textContent === nil)) failures.push(`${t.id} row ${r._row} ${dd.dataset.f}: card shows "${dd.textContent.slice(0, 60)}"`);
       if (has) valuesChecked++;
       for (const u of String(has ? v : '').match(/https?:\/\/[^\s<]+/g) ?? []) {
@@ -189,9 +189,14 @@ for (const a of eco.filter((x) => x.getAttribute('href').startsWith('#db-'))) {
   const t = dbIndex.tabs.find((x) => `#db-${x.id}` === a.getAttribute('href'));
   expect(a.querySelector('b')?.textContent === String(t?.entries_total), `hero count for ${t?.id} is not the data's`);
 }
-expect(document.querySelector('#cta-h')?.getAttribute('href') === '#humanoids' && document.querySelector('#cta-db')?.getAttribute('href') === '#database', 'hero calls to action missing');
+expect(document.querySelector('#cta-h')?.getAttribute('href') === '#humanoids' && document.querySelector('#cta-db')?.getAttribute('href') === '#categories', 'hero calls to action missing');
 expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements still on the page');
-expect([...document.querySelectorAll('.hud-nav a')].some((a) => a.getAttribute('href') === '#database'), 'no navigation link to the database');
+// Navigation (23 Nov 2026): the nine confirmed categories, in order, each at its own address.
+const { CATEGORIES } = await import('../server/src/access/matrix.js');
+const navLinks = [...document.querySelectorAll('.hud-nav a')];
+expect(JSON.stringify(navLinks.map((a) => [a.textContent.trim(), a.getAttribute('href')])) === JSON.stringify(CATEGORIES.map((c) => [c.label, c.path])), `navigation is not the nine categories in order: ${navLinks.map((a) => a.textContent.trim()).join(', ')}`);
+expect([...document.querySelectorAll('#categories .catgrid a')].map((a) => a.getAttribute('href')).join() === CATEGORIES.map((c) => c.path).join(), 'home page categories block is not the nine categories in order');
+expect([...document.querySelectorAll('a')].some((a) => a.getAttribute('href') === '#database'), 'no link to the database section');
 // Opening a shared category URL restores it.
 const shared = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true, url: 'https://whyhumanoid.com/#db-stocks', beforeParse(w) {
   w.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} });
@@ -202,7 +207,7 @@ const shared = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: t
 } });
 await wait(400);
 expect(shared.window.document.getElementById('db-title')?.textContent === dbIndex.tabs.find((t) => t.id === 'stocks').title, 'opening #db-stocks does not restore that category');
-const humanoidsLink = [...document.querySelectorAll('.hud-nav a')].find((a) => a.getAttribute('href') === '#humanoids');
+const humanoidsLink = [...document.querySelectorAll('.hud-nav a')].find((a) => a.getAttribute('href') === '/humanoids/');
 expect(humanoidsLink?.textContent.trim() === 'Humanoids', 'navigation does not name the Humanoids section');
 expect(text('#humanoids .h2') === 'Humanoids', `Humanoids section title "${text('#humanoids .h2')}"`);
 expect(Boolean(document.getElementById('catalogue')), 'old #catalogue links no longer have a target');
