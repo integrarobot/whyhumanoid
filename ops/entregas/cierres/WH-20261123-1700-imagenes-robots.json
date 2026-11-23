@@ -1,0 +1,66 @@
+{
+  "id": "WH-20261123-1700-imagenes-robots",
+  "tarea": "Ampliar las imágenes de cuerpo completo con fondo transparente a robots populares (lote de Codex: NEO, Digit 5, Apollo 2, Atlas industrial electric, Figure 03, Optimus Gen 2, H1 y G1) con el soporte de tools/robot-presentation.json",
+  "origen": "Javier, 23/11/2026, autorización del lote; Codex entregó los recortes locales en dos mensajes",
+  "fecha": "2026-11-23T17:00:16+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Seis fichas con imagen nueva, identidad comprobada contra el catálogo publicado y el maestro actual (23/11):\n- Digit 5 (in development), id 6;\n- Apollo 2, id 7;\n- Atlas (industrial electric), id 16;\n- Figure 03, id 30;\n- Optimus Gen 2, id 86;\n- H1, id 93.\nSin botones de compra, precios nuevos, fichas nuevas ni cambios en el maestro.",
+    "NEO conserva el recorte publicado: el de Codex (u2net) muestra un halo gris ancho. Se guarda para comparar en ops/media/robots/1x-neo/.",
+    "G1 de Unitree no se publica. No tiene id en el catálogo publicado: está en la fila 141 del maestro, sin revisar ni publicar, y «G1» también nombra robots de Galbot (id 35) y de Agibot. Queda guardado y refinado en ops/media/robots/unitree-g1/; nunca va en la ficha de H1.",
+    "Los ocho archivos recibidos conservan alfa real (comprobado; el chat no los aplanó).",
+    "Refinado solo de alfa (ops/media/robots/refine.py, con argumentos y registro por robot). No se repinta ningún píxel del robot ni se aplica un umbral de color a toda la imagen.\n- Niveles del mate en Figure 03 (halo), Optimus (sombra semitransparente) y H1, G1 y Digit 5 (interior no opaco).\n- Apollo 2: el gris del estudio quedaba opaco entre los muslos y entre cada brazo y el torso. Se limpia con crecimiento acotado de regiones planas y se desmezcla su borde.\n- Atlas conserva el alfa original del PDF.",
+    "WebP con alfa (de 20 a 78 KB) y PNG sin pérdida de respaldo, con un máximo de 1200 px de alto. Se muestran con contain, texto alternativo y crédito «Image: <fabricante>». La procedencia de cada robot está en ops/media/robots/*/PROVENANCE.md.",
+    "verify-staging comprueba en navegador real cada imagen presentada: carga, texto alternativo, proporción, dentro de la pantalla y sin desplazamiento lateral. El mínimo de alto del validador baja a 500 px porque la imagen oficial de H1 mide 505 px."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #68 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/68"
+    },
+    {
+      "etiqueta": "Digit 5",
+      "url": "https://whyhumanoid.com/humanoids/agility-digit-5-in-development-6/"
+    },
+    {
+      "etiqueta": "Apollo 2",
+      "url": "https://whyhumanoid.com/humanoids/apptronik-apollo-2-7/"
+    },
+    {
+      "etiqueta": "Atlas (industrial electric)",
+      "url": "https://whyhumanoid.com/humanoids/boston-dynamics-atlas-industrial-electric-16/"
+    },
+    {
+      "etiqueta": "Figure 03",
+      "url": "https://whyhumanoid.com/humanoids/figure-figure-03-30/"
+    },
+    {
+      "etiqueta": "Optimus Gen 2",
+      "url": "https://whyhumanoid.com/humanoids/tesla-optimus-gen-2-86/"
+    },
+    {
+      "etiqueta": "H1",
+      "url": "https://whyhumanoid.com/humanoids/unitree-h1-93/"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main dc05e7e (CI del PR en verde sobre 084b518). Servida en whyhumanoid.com tras 6 comprobaciones de espera. Los 12 archivos de imagen responden 200 con image/webp o image/png; ops/ responde 404. Sin cambios en el Worker ni en D1."
+  ],
+  "verificaciones": [
+    "Producción con navegador real: verify-staging 290 de 290 en whyhumanoid.com con la API del Worker, incluidas las comprobaciones de las siete imágenes presentadas en escritorio y móvil.",
+    "Capturas de producción de las siete fichas a 1366 px y en iPhone 13. En todas, la imagen carga en WebP, conserva su proporción exacta, queda dentro de la pantalla y no hay desbordamiento.",
+    "Revisión visual de cada recorte, antes y después del refinado, sobre el fondo oscuro de la web y sobre blanco, con ampliaciones de cabeza, manos, entrepierna y pies.",
+    "En local pasan: verify-staging --local 299 de 299, 94 de 94 pruebas de API, robot-presentation --check (7 robots), verify-site, verify-pages, verify-premium-app, check-public, check-reserved y las comprobaciones de compilación.",
+    "Solo cambia el contenido de las seis fichas y del dossier de la portada."
+  ],
+  "pendientes": [
+    "Originales: el proxy de esta sesión rechaza los hosts de origen (403: tesla.com, website-files, ctfassets, shopify, bostondynamics.com). Las carpetas locales de Codex no están montadas en la nube. Codex debe añadir los originales junto a cada recorte en ops/media/robots/<robot>/.",
+    "Figure 03 sale de un fotograma de vídeo y se ve más blando que una foto fija. La imagen oficial de H1 es pequeña (505 px). Ambas mejorarían con originales mayores.",
+    "Unitree G1 se activará solo cuando tenga id propio en el catálogo publicado, tras revisar y publicar el maestro nuevo.",
+    "Licencias: no se presume ninguna licencia abierta. Las imágenes son de cada fabricante y llevan crédito.",
+    "Revisión de Codex y de Javier antes de confirmar el cierre."
+  ],
+  "siguiente_accion": "Codex añade los originales y revisa las siete fichas. Javier decide si amplía la lista de robots con imagen o si sustituye Figure 03 y H1 por originales de mayor resolución."
+}
