@@ -382,14 +382,17 @@
       `<p class="lbl" id="db-count"></p></div><label class="db-search"><span class="lbl">Search ${preview ? 'the preview' : 'every field'}</span><br><input id="db-q" type="search" autocomplete="off" placeholder="Filter every field"></label></div>` +
       (isDep ? '<div class="db-status" id="db-status" role="group" aria-label="Filter by status"></div>' : '') +
       `<div class="db-scroll"><table class="db-table${isDep ? ' dep' : ''}"><thead><tr><th scope="col">#</th>${isDep ? '<th scope="col">Status</th>' : ''}<th scope="col">Record</th>` +
-      cols.map((c) => `<th scope="col">${esc(c[0])}</th>`).join('') + '</tr></thead><tbody id="db-rows"></tbody></table></div>';
+      cols.map((c) => `<th scope="col">${esc(c[0])}</th>`).join('') + '</tr></thead><tbody id="db-rows"></tbody></table></div>' +
+      // The subscription notice sits below the table, outside its horizontal scroll, with the panel's full width.
+      '<div class="db-more" id="db-more" role="note" hidden></div>';
     const body = $('db-rows'), ncol = cols.length + (isDep ? 3 : 2);
     let q = '', st = 'all', shown = data.rows;
-    const lockRow = () => {
-      if (!locked) return '';
+    const more = $('db-more');
+    if (locked) {
       const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'Subscriptions open soon';
-      return `<tr class="lock"><td colspan="${ncol}"><b>${locked} more entries</b> come with the subscription (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</td></tr>`;
-    };
+      more.innerHTML = `<p><b>${locked} more entries</b> come with the subscription (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</p>`;
+      more.hidden = false;
+    }
     function render() {
       shown = data.rows.filter((r) => (!isDep || st === 'all' || status(r) === st) && (!q || Object.keys(r).some((k) => !HIDDEN.has(k) && String(r[k] ?? '').toLowerCase().includes(q))));
       $('db-count').textContent = (shown.length !== data.rows.length ? shown.length + ' of ' : '') + data.rows.length + ' entries shown' + (data.snapshot ? ' · workbook copy ' + String(data.snapshot).slice(0, 10) : '');
@@ -398,7 +401,7 @@
         return `<tr class="r" data-i="${n - 1}"><td class="num">${n}</td>` + (isDep ? `<td class="stc"><span class="dst ${status(r)}">${stLabel(status(r))}</span></td>` : '') +
           `<td class="opc"><button type="button" class="db-open" aria-haspopup="dialog" aria-label="View all data, entry ${n}">View all data</button></td>` +
           cols.map((c) => `<td data-label="${esc(c[0])}"${c[2] ? ` class="${c[2]}"` : ''}>${c[2] ? '<div>' + c[1](r) + '</div>' : c[1](r)}</td>`).join('') + '</tr>';
-      }).join('') : `<tr><td class="db-empty" colspan="${ncol}">No entries match.</td></tr>`) + lockRow();
+      }).join('') : `<tr><td class="db-empty" colspan="${ncol}">No entries match.</td></tr>`);
     }
     if (isDep) {
       const bar = $('db-status');

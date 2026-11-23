@@ -66,6 +66,22 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     await page.screenshot({ path: `${SHOTS}/${label}_home.png` });
     await page.locator('#categories').screenshot({ path: `${SHOTS}/${label}_home_categories.png` });
   }
+  // Paywall notice of the database panel (regression of 23 Nov 2026: a bare .lock rule shrank it to a 28 px column).
+  // For every tab with a subscription remainder: below the table and outside its horizontal scroll, at least 90% of
+  // the panel's width, the call to action on one line with a 44 px touch target.
+  for (const tab of ['deployments', 'hardware', 'evidence-links', 'entities', 'container-handling', 'data-space']) {
+    await page.goto(`${BASE}/#db-${tab}`, { waitUntil: 'load' });
+    await page.waitForSelector('#db-more .db-buy', { timeout: 5000 }).catch(() => {});
+    const m = await page.evaluate(() => {
+      const more = document.getElementById('db-more'); const panel = document.getElementById('db-panel'); const a = more?.querySelector('.db-buy');
+      if (!more || !a) return null;
+      const r = more.getBoundingClientRect(), pr = panel.getBoundingClientRect(), ar = a.getBoundingClientRect();
+      return { ratio: r.width / pr.width, h: r.height, inScroll: Boolean(more.closest('.db-scroll')), aw: ar.width, ah: ar.height, aLines: a.scrollWidth <= a.clientWidth + 1 && ar.height < 64, inTable: Boolean(document.querySelector('#db-rows tr.lock')) };
+    });
+    check(m && m.ratio >= 0.9 && !m.inScroll && !m.inTable, `${label} #db-${tab}: notice spans the panel outside the table scroll (${m && m.ratio.toFixed(2)})`);
+    check(m && m.ah >= 44 && m.aw >= 44 && m.aLines, `${label} #db-${tab}: call to action on one line, touch target ${m && Math.round(m.aw)}x${m && Math.round(m.ah)}`);
+    check(m && m.h < 400, `${label} #db-${tab}: notice height ${m && Math.round(m.h)} px`);
+  }
   // Old links.
   await page.goto(`${BASE}/robots/agibot-x1-4/`, { waitUntil: 'load' });
   await page.waitForURL(/\/humanoids\/agibot-x1-4\/$/, { timeout: 5000 }).catch(() => {});

@@ -111,7 +111,7 @@ for (const t of dbIndex?.tabs ?? []) {
   await go(`#db-${t.id}`);
   const shown = document.querySelectorAll('#db-rows tr.r').length;
   expect(shown === t.preview_entries && shown > 0, `${t.id}: ${shown} rows shown, preview has ${t.preview_entries}`);
-  const lock = document.querySelector('#db-rows tr.lock a.db-buy');
+  const lock = document.querySelector('#db-more a.db-buy');
   expect(t.entries_total > t.preview_entries ? t.access === 'subscription' && lock?.getAttribute('href') === '/subscribe/' : !lock, `${t.id}: link to the subscription missing or wrong`);
   expect(text('#db-title') === t.title, `${t.id}: panel title "${text('#db-title')}"`);
   expect(a?.getAttribute('aria-current') === 'true', `${t.id}: index does not mark the open category`);

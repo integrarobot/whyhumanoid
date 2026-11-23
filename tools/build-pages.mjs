@@ -238,7 +238,7 @@ export function publicModel(registry = readRegistry()) {
 
 // ---------- layout ----------
 // The ten categories, in the confirmed order, on every page.
-const nav = (section) => CATEGORIES.map((c) => `<a href="${c.path}"${c.id === section ? ' aria-current="page"' : ''}>${esc(c.label)}${c.access === 'subscription' ? '<span class="lock" aria-label=" (subscription)" title="Complete data with the subscription"></span>' : ''}</a>`).join('');
+const nav = (section) => CATEGORIES.map((c) => `<a href="${c.path}"${c.id === section ? ' aria-current="page"' : ''}>${esc(c.label)}${c.access === 'subscription' ? '<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span>' : ''}</a>`).join('');
 const FONTS = 'https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap';
 const ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E";
 function page({ title, description, path, body, type = 'website', noindex = false, refresh = null, section = null }) {
