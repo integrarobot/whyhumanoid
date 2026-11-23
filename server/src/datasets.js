@@ -157,7 +157,9 @@ export const DATASETS = [
   },
   {
     id: 'stocks',
-    tab: 'Stocks',
+    // Sheet renamed from 'Stocks' on 23 Nov 2026 (same sheetId 1211512398, gid, columns; native table StocksCatalog).
+    tab: 'Investment',
+    formerTabs: ['Stocks'],
     title: 'Investment: listed companies',
     description: 'Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.',
     kind: 'table',
@@ -195,9 +197,11 @@ export const DATASETS = [
   },
   {
     id: 'hardware',
-    tab: 'Hardware',
+    // Sheet renamed from 'Hardware' on 23 Nov 2026 (same sheetId 100173846, gid, columns; native table HardwareCatalog).
+    tab: 'Components',
+    formerTabs: ['Hardware'],
     title: 'Components',
-    description: 'Compute, sensors, actuators and other hardware used in humanoid robots (Hardware tab).',
+    description: 'Compute, sensors, actuators and other hardware used in humanoid robots.',
     kind: 'lists',
     headers: DIRECTORY,
     lists: [{ list: 'hardware', columns: { name: 0, url: 1, description: 2 } }],

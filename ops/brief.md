@@ -10,7 +10,9 @@ Javier's latest instruction wins; record it here.
 ## Sources of truth
 
 - Master workbook: Google Sheets file "Why Humanoid?" (same file id as before; link only in private channels, never
-  in Git or on the site). Translated to English on 20 Nov 2026.
+  in Git or on the site). Partly translated to English on 20 Nov 2026 (see the baseline). Sheet titles on 23 Nov 2026
+  (Codex, title-only renames, same sheets and gids): Hardware is now Components, Stocks is now Investment; the
+  native tables keep their names (HardwareCatalog, StocksCatalog). Dataset ids in code stay `hardware` and `stocks`.
 - Repository: `integrarobot/whyhumanoid` (not `why-humanoid`). GitHub Pages serves `main` at https://whyhumanoid.com.
 - Backend: Cloudflare Worker `whyhumanoid-premium` (production, Stripe live) and `whyhumanoid-premium-test` (test,
   Stripe test mode), each with its own D1. Deploys need Javier's Cloudflare access (no token in agent sessions).
@@ -38,12 +40,12 @@ page generator and the catalogue page read it.
 |---|---|---|---|---|---|
 | 1 | Humanoids | /humanoids/ | Humanoids | Free | |
 | 2 | Deployments | /deployments/ | Deployments (+ Evidence Relations, Clean Entities as supporting tabs) | Subscription; first 10 rows public, plus counts and summaries | |
-| 3 | Components | /components/ | Hardware | Subscription; first 10 rows public | No dedicated components table: 11 rows, name, link and description only |
+| 3 | Components | /components/ | Components (renamed from Hardware on 23 Nov 2026; dataset id `hardware`) | Subscription; first 10 rows public | Sparse directory: 11 entries with name, link and, in the live master, an English description each; no component-maker capability data |
 | 4 | Integrators | /integrators/ | Integrators | Free | 7 rows |
 | 5 | Software | /software/ | Software | Free | |
 | 6 | Datasets | /datasets/ | Datasets | Free | |
 | 7 | Benchmarks | /benchmarks/ | Task Evaluation | Free | No dedicated benchmarks table: 4 task evaluations |
-| 8 | Investment | /investment/ | Stocks (+ Valuation, Investors, Rounds of Humanoids) | Free (quote columns withheld for licensing) | No private-investment table |
+| 8 | Investment | /investment/ | Investment (renamed from Stocks on 23 Nov 2026; dataset id `stocks`) + Valuation, Investors, Rounds of Humanoids | Free (quote columns withheld for licensing) | No private-investment table; descriptions and segments still in Spanish in the master |
 | 9 | Other Robots | /other-robots/ | Other Robots | Free | |
 
 Tabs outside the nine: Product - Container Handling (first 10 rows public, unchanged pending a decision) and Data
@@ -64,7 +66,11 @@ Entity URLs: `/humanoids/<slug>/` (old `/robots/<slug>/` redirect), `/other-robo
 - Production data: last import 17 Nov 2026 22:16 UTC (Humanoids 134, Deployments 130, Other Robots 547, Stocks 276).
 - Master workbook, last modified 20 Nov 2026 11:08 UTC: Humanoids 217 rows (215 public), Deployments 184, Software 128
   rows (146 entries), Other Robots 488 rows (559 entries), Datasets 29, Clean Entities 32. Four tabs were renamed and
-  values translated to English. The importer on `main` rejects this workbook (tab names). Fixed on the branch.
+  many values are in English, but not all: on 23 Nov the live master still has Spanish in Investment (DESCRIPTION
+  276 rows, SEGMENT about 260), Integrators (DESCRIPTION 6), Clean Entities notes and some Humanoids and Deployments
+  fields (`tools/check-workbook.mjs` lists them). Components has an English description for all 11 entries in the
+  master (the published 17 Nov snapshot has none). The importer on `main` rejects this workbook (tab titles). Fixed on
+  the branch; `tools/check-workbook.mjs --from <export>` passes on the master of 23 Nov 2026 after the two renames.
 - HIRO Industries Origin: one master row (Humanoids row 140), no duplicate; not published (it arrived after the 17
   Nov import).
 - A content refresh is not mechanical: two published robots were renamed in the master (Kepler "Forerunner" to
@@ -171,8 +177,8 @@ node tools/verify-staging.mjs --base http://localhost:8788 --local --shots /tmp/
 
 ## Decisions pending (Javier)
 
-1. Components content: today a sparse hardware directory (11 rows, names and links, no descriptions in the 10 public
-   rows), not the component-maker capability directory the offer implies. Selling it needs real component data (a
+1. Components content: today a sparse hardware directory (11 entries: name, link and, in the live master, a short
+   English description), not the component-maker capability directory the offer implies. Selling it needs real component data (a
    schema in the master, filled by Grok) or a change to what the subscription promises. Making it premium also hides
    1 entry that was public until now.
 2. Previews of the two premium categories: keep the first 10 rows, or choose another rule.

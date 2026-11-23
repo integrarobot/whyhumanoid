@@ -23,6 +23,8 @@ import openpyxl
 
 KNOWN = {'General', '#,##0.00', 'm-d', 'M/d/yyyy H:mm:ss'}
 LIVE_STOCK_COLUMNS = {'PRICE', 'CHANGE_PCT', 'MARKET_CAP', 'LAST_TRADE', 'DATA_DELAY_MIN', 'QUOTE_STATUS'}
+# The listed-companies tab: 'Investment' since 23 Nov 2026 (renamed from 'Stocks', same sheet and columns).
+STOCK_TABS = {'Investment', 'Stocks'}
 
 
 def display(value, fmt):
@@ -56,7 +58,7 @@ def convert(path):
             values = []
             header = rows[0] if rows else []
             for j, cell in enumerate(row):
-                live = sheet.title == 'Stocks' and j < len(header) and header[j] in LIVE_STOCK_COLUMNS
+                live = sheet.title in STOCK_TABS and j < len(header) and header[j] in LIVE_STOCK_COLUMNS
                 if cell.value is not None and not isinstance(cell.value, str) and cell.number_format not in KNOWN and not live:
                     other_formats[(sheet.title, cell.number_format)] += 1
                 values.append(display(cell.value, cell.number_format))
@@ -83,7 +85,7 @@ def compare(new, old):
                 continue
             cols = [header[j] if j < len(header) else str(j) for j in range(max(len(ra), len(rb)))
                     if (ra[j] if j < len(ra) else '') != (rb[j] if j < len(rb) else '')]
-            if tab == 'Stocks' and set(cols) <= LIVE_STOCK_COLUMNS:
+            if tab in STOCK_TABS and set(cols) <= LIVE_STOCK_COLUMNS:
                 continue
             print(f'{tab}: sheet row {i + 1} changed in {", ".join(cols)}')
 

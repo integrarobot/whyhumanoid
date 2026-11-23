@@ -79,6 +79,19 @@ const companyHost = (u) => { const h = hostKey(u); return h && !SHARED_HOSTS.tes
 export const companySlug = (id) => id.replace(/^(mfr|org)_/, '').replace(/_/g, '-');
 
 // ---------- model: what is public ----------
+// English on every page (23 Nov 2026): snapshot values still in Spanish are shown as pending, countries in English.
+const DISPLAY = read('tools/display-translations.json');
+const PENDING = '<span class="na">English text pending</span>';
+export function englishRows(datasetId, rows) {
+  const pending = DISPLAY.pending[datasetId] ?? [];
+  return rows.map((r) => {
+    const o = { ...r, _pending: pending.filter((f) => nz(r[f])) };
+    if (nz(o.country)) o.country = DISPLAY.countries[o.country] ?? o.country;
+    return o;
+  });
+}
+const shown = (r, f, fmt = text) => (r?._pending?.includes(f) ? PENDING : fmt(r?.[f]));
+
 const readRegistry = () => (existsSync(new URL(REGISTRY, root)) ? read(REGISTRY) : { robots: {}, companies: {}, other_robots: {} });
 
 // A slug for a key: the registry's latest slug while the name still gives it, else a new one, never one in use.
@@ -175,7 +188,7 @@ export function publicModel(registry = readRegistry()) {
     } else if (h && !c.hosts.includes(h)) { c.hosts.push(h); byHost.set(h, c); }
     return c;
   };
-  const stocks = read('data/preview/stocks.json').rows;
+  const stocks = englishRows('stocks', read('data/preview/stocks.json').rows);
   for (const r of stocks) {
     const c = join(r.name, r.url, () => ({ id: `lst_${slugify(r.name)}`, name: r.name }));
     c.listings.push(r);
@@ -192,7 +205,7 @@ export function publicModel(registry = readRegistry()) {
     (c.components ??= []).push(r);
     c.categories.add('components');
   }
-  for (const r of read('data/preview/integrators.json').rows) {
+  for (const r of englishRows('integrators', read('data/preview/integrators.json').rows)) {
     const c = join(r.name, r.url, () => ({ id: `int_${companyHost(r.url) ?? slugify(r.name)}`, name: r.name }));
     c.integrator = r;
     c.categories.add('integrators');
@@ -218,7 +231,7 @@ export function publicModel(registry = readRegistry()) {
   const nameCount = new Map();
   for (const r of otherRobots) nameCount.set(r.name.toLowerCase(), (nameCount.get(r.name.toLowerCase()) ?? 0) + 1);
   for (const r of otherRobots) r.label = nameCount.get(r.name.toLowerCase()) > 1 ? `${r.name} (${hostKey(r.url) ? (urlKey(r.url) ?? r.url) : `row ${r.row}`})` : r.name;
-  const directory = (id) => ({ meta: tabMeta.get(id), rows: read(`data/preview/${id}.json`).rows });
+  const directory = (id) => ({ meta: tabMeta.get(id), rows: englishRows(id, read(`data/preview/${id}.json`).rows) });
 
   return { robots, robotById, companies, companyById, otherRobots, directory, stocks, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal, depPreview: depPreview.rows, totals: projection.totals, aggregates: projection.aggregates, projSnapshot: projection.snapshot, previewSnapshot: read('data/preview/index.json').snapshot };
 }
@@ -447,12 +460,12 @@ ${c.categories?.length ? `<p class="meta">In ${c.categories.map((id) => { const 
   ])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
 ${c.listings?.length ? `<section><h2>Listing</h2>${c.listings.map((l) => kv([
     ['Ticker', text(l.ticker)], ['Exchange', text(l.exchange)], ['Country as recorded', text(l.country)],
-    ...[['Segment', 'segment'], ['ISIN', 'isin'], ['Currency', 'currency'], ['ETF membership', 'etf_membership'], ['ETF membership as of', 'etf_as_of'], ['Verified', 'verified_at']].filter(([, f]) => nz(l[f])).map(([k, f]) => [k, text(l[f])]),
-    ...(nz(l.description) ? [['Description as recorded', text(l.description)]] : []),
+    ...[['Segment', 'segment'], ['ISIN', 'isin'], ['Currency', 'currency'], ['ETF membership', 'etf_membership'], ['ETF membership as of', 'etf_as_of'], ['Verified', 'verified_at']].filter(([, f]) => nz(l[f])).map(([k, f]) => [k, shown(l, f)]),
+    ...(nz(l.description) ? [['Description as recorded', shown(l, 'description')]] : []),
     ...(nz(l.url) ? [['Website', ext(l.url)]] : []),
-  ])).join('')}<p class="key">From the Investment category (Stocks tab, snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}). Market quotes are not published.</p></section>` : ''}
+  ])).join('')}<p class="key">From the Investment category (listed companies, snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}). Market quotes are not published.</p></section>` : ''}
 ${c.components?.length ? `<section><h2>Components</h2>${c.components.map((r) => kv([['Entry as recorded', esc(r.name)], ['Description as recorded', nz(r.description) ? text(r.description) : '<span class="na">Not recorded</span>'], ['Website', nz(r.url) ? ext(r.url) : '<span class="na">Not recorded</span>']])).join('')}<p class="key">From the public first rows of the <a href="/components/">Components</a> category${c.directoryOnly ? '; the database records this name and website, not a legal name' : ''}.</p></section>` : ''}
-${c.integrator ? `<section><h2>Integrator</h2>${kv([['Description as recorded', text(c.integrator.description)], ['Website', nz(c.integrator.url) ? ext(c.integrator.url) : '<span class="na">Not recorded</span>']])}<p class="key">From the <a href="/integrators/">Integrators</a> category.</p></section>` : ''}
+${c.integrator ? `<section><h2>Integrator</h2>${kv([['Description as recorded', shown(c.integrator, 'description')], ['Website', nz(c.integrator.url) ? ext(c.integrator.url) : '<span class="na">Not recorded</span>']])}<p class="key">From the <a href="/integrators/">Integrators</a> category.</p></section>` : ''}
 ${c.robotList.length ? `<section><h2>Robots</h2><ul class="cards">${c.robotList.map((rb) => `<li><a href="${rb.path}"><b>${esc(rb.name)}</b></a><span>${esc(robotSummary(rb))}</span></li>`).join('')}</ul></section>` : ''}
 <section><h2>Deployment records</h2>${c.directoryOnly ? '<p>No deployment record is linked to this company page. Records are linked to a company by the organisation id of the sheet or by the maker\'s name as recorded, so a record that names it differently is not linked here.</p>' : c.as_organisation || c.as_maker ? `${c.as_organisation ? summaryHtml(c.as_organisation, model, { head: `As organisation: ${c.as_organisation.records} record${c.as_organisation.records === 1 ? '' : 's'}.`, otherLabel: 'Maker' }) : ''}${c.as_maker ? summaryHtml(c.as_maker, model, { head: `As maker: ${c.as_maker.records} record${c.as_maker.records === 1 ? '' : 's'}.`, otherLabel: 'Organisation' }) : ''}${RECORDS_NOTE}` : '<p>No deployment record in the database names this company. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that it has none.</p>'}</section>
 ${evidenceHtml(c.evidence)}
@@ -518,7 +531,7 @@ ${c.gap ? `<p class="gap"><b>Coverage:</b> ${esc(c.gap)}</p>` : ''}${extra}`;
 const catPage = (c, model, body, description) => page({ title: `${c.label}: ${c.summary.replace(/[.:].*$/, '').toLowerCase()} · Why Humanoid?`, description: clip(description), path: c.path, body: `${body}\n</article>`, section: c.id });
 const dirTable = (rows, cols) => `<div class="scroll"><table class="dir"><thead><tr>${cols.map(([h]) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${cols.map(([, f]) => `<td>${f(r)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 const nameLink = (r) => (nz(r.url) ? ext(r.url, r.name) : esc(r.name));
-const descr = (r) => (nz(r.description) ? text(r.description) : '<span class="na">No description recorded</span>');
+const descr = (r) => (r._pending?.includes('description') ? PENDING : nz(r.description) ? text(r.description) : '<span class="na">No description recorded</span>');
 const counted = (meta) => `${meta.entries_total} ${meta.entries_total === 1 ? 'entry' : 'entries'}`;
 
 function humanoidsCategory(model) {
@@ -582,7 +595,7 @@ function benchmarksCategory(model) {
   const yes = (v) => (/^(true|1)$/i.test(String(v ?? '')) ? 'Yes' : /^(false|0)$/i.test(String(v ?? '')) ? 'No' : esc(v ?? 'Not recorded'));
   const body = `${categoryHead(c, model)}
 <p>${counted(meta)}, free. Each row checks one robot model against the evidence documented for one task.</p>
-${dirTable(rows, [['Model', (r) => esc(r.model || r.model_id)], ['Task', (r) => esc(human(r.task_id))], ['Task evidence', (r) => yes(r.eligible_task_evidence)], ['Commercial', (r) => yes(r.eligible_commercial)], ['Economic', (r) => yes(r.eligible_economic)], ['Reason as recorded', (r) => text(r.decision_reason)]])}
+${dirTable(rows, [['Model', (r) => esc(r.model || r.model_id)], ['Task', (r) => esc(human(r.task_id))], ['Task evidence', (r) => yes(r.eligible_task_evidence)], ['Commercial', (r) => yes(r.eligible_commercial)], ['Economic', (r) => yes(r.eligible_economic)], ['Reason as recorded', (r) => shown(r, 'decision_reason')]])}
 <p class="key">Task evidence, Commercial and Economic say whether the documented evidence meets each bar, as recorded; they are not scores.</p>
 <p class="meta">Snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}.</p>`;
   return catPage(c, model, body, `Task evaluations of humanoid robot models against documented evidence: ${counted(meta)}, free.`);

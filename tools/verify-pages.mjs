@@ -120,6 +120,14 @@ if (!/href="\/companies\/"/.test(home)) fail('index.html: no static link to the 
 for (const problem of projectionProblems(JSON.parse(read('data/public/projection.json')))) fail(`data/public/projection.json: ${problem}`);
 const withPage = new Set(model.companies.map((c) => c.id));
 if (JSON.parse(read('data/public/projection.json')).companies.some((c) => !withPage.has(c.id))) fail('not every company of the projection has a page');
+// English only: no Spanish country label of the snapshot, and no value of a field still pending translation, on any page.
+const display = JSON.parse(read('tools/display-translations.json'));
+const pendingValues = Object.entries(display.pending).flatMap(([id, fs]) => JSON.parse(read(`data/preview/${id}.json`)).rows.flatMap((r) => fs.map((f) => r[f]).filter((v) => typeof v === 'string' && v.length > 20)));
+for (const f of [...files.keys()].filter((x) => x.endsWith('.html'))) {
+  const html = files.get(f);
+  for (const label of Object.keys(display.countries)) if (html.includes(`>${label}<`) || html.includes(`(${label})`)) { fail(`${f}: Spanish country label ${label}`); break; }
+  for (const v of pendingValues) if (html.includes(v.replace(/&/g, '&amp;').slice(0, 60))) { fail(`${f}: shows a value still pending English`); break; }
+}
 // One canonical page per company: no two company pages for the same name.
 const seenNames = new Map();
 for (const c of model.companies) { const k = c.name.toLowerCase(); if (seenNames.has(k)) fail(`two company pages named ${c.name}: ${seenNames.get(k)} and ${c.path}`); else seenNames.set(k, c.path); }

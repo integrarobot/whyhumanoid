@@ -38,7 +38,7 @@ export const CATEGORIES = Object.freeze([
     id: 'components', label: 'Components', path: '/components/', access: 'subscription', datasets: ['hardware'],
     service: 'component-manufacturing-study',
     summary: 'Compute, sensors, actuators and other hardware used in humanoid robots.',
-    gap: 'Components is for now a sparse hardware directory (the Hardware tab: a name and a link per entry, rarely a description), not yet the directory of component makers and their capabilities this category is meant to become. The master workbook has no components table with that information.',
+    gap: 'Components is for now a sparse hardware directory (the Components tab: a name, a link and a short description per entry), not yet the directory of component makers and their capabilities this category is meant to become. The master workbook has no components table with that information.',
   },
   {
     id: 'integrators', label: 'Integrators', path: '/integrators/', access: 'free', datasets: ['integrators'],
@@ -60,7 +60,7 @@ export const CATEGORIES = Object.freeze([
   {
     id: 'investment', label: 'Investment', path: '/investment/', access: 'free', datasets: ['stocks'],
     summary: 'Listed companies exposed to humanoid robotics, and the funding recorded for each humanoid maker.',
-    gap: 'The master workbook has no dedicated private-investment table: this category shows the Stocks tab and the Valuation, Investors and Rounds fields of the Humanoids catalogue.',
+    gap: 'The master workbook has no dedicated private-investment table: this category shows the Investment tab (listed companies) and the Valuation, Investors and Rounds fields of the Humanoids catalogue.',
   },
   {
     id: 'other-robots', label: 'Other Robots', path: '/other-robots/', access: 'free', datasets: ['other-robots'],
