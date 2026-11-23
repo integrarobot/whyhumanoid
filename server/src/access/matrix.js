@@ -38,7 +38,7 @@ export const CATEGORIES = Object.freeze([
     id: 'components', label: 'Components', path: '/components/', access: 'subscription', datasets: ['hardware'],
     service: 'component-manufacturing-study',
     summary: 'Compute, sensors, actuators and other hardware used in humanoid robots.',
-    gap: 'The master workbook has no dedicated components table yet: this category shows the Hardware tab (name, link and description per entry).',
+    gap: 'Components is for now a sparse hardware directory (the Hardware tab: a name and a link per entry, rarely a description), not yet the directory of component makers and their capabilities this category is meant to become. The master workbook has no components table with that information.',
   },
   {
     id: 'integrators', label: 'Integrators', path: '/integrators/', access: 'free', datasets: ['integrators'],

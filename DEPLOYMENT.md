@@ -64,20 +64,18 @@ the portal link for a paying account. No real card is used for testing.
   `no_billing_account`; Stripe Checkout live opened (`cs_live_…`, "100,00 € por año", no trial) and left without a card:
   back in the app "Checkout was cancelled. Nothing was charged."; price still 0 subscriptions, no new payment. Mobile
   375 px without horizontal overflow. Not tested by the agent on purpose: a completed purchase and the subscriber
-  state in production (since covered by Javier's own purchase, 08:24 note below).
+  state in production (since covered by a real purchase made by a person, 08:24 note below).
 - 17 Nov, 08:14 to 08:18 Madrid: webhook signature proven with the real secret and no charge. Expiring the abandoned
   checkout was not possible from the Dashboard (the live Workbench shell and API explorer are read-only) and the live
   key lives only in the Worker, so the destination temporarily listened to `product.updated` and a metadata key was
   added to and removed from the product "Why Humanoid? full database": two live signed deliveries, both HTTP 200,
   response `{"received": true, "outcome": "ignored_type"}`; `stripe_events` holds `evt_1UcgbVAcMngkWs5CK2RGe4t5`
   (`product.updated`, `ignored_type`); `entitlements` 0. Product metadata and the destination's 4 events restored.
-- 17 Nov, 08:24 Madrid: completed purchase, a real test made and confirmed by Javier himself, not by an agent (his
-  screenshots: EUR 100 paid, Full access until 17 Nov 2027, Deployments 119). D1 shows it: `entitlements` premium,
-  source stripe, active until 2027-11-17 07:24:26 UTC, `cancel_at_period_end` 0; `stripe_events` in order
-  `product.updated` `ignored_type` (x2, the signature proof), `checkout.session.completed` `customer_linked`,
-  `customer.subscription.created` `entitlement_updated`. This corrects the earlier status "completed purchase not
-  tested": purchase, webhook and unlock work end to end in production. The subscription is Javier's; it is not
-  cancelled or refunded.
+- 17 Nov, 08:24 Madrid: completed purchase, a real purchase made and confirmed by a person, not by an agent: EUR 100
+  paid and access unlocked; D1 recorded a premium entitlement from Stripe and the events `checkout.session.completed`
+  (`customer_linked`) and `customer.subscription.created` (`entitlement_updated`) after the two signature-proof
+  `product.updated` deliveries. Purchase, webhook and unlock work end to end in production. That subscription is not
+  cancelled or refunded (account details removed on 23 Nov 2026: no customer account data in the repository).
 - 17 Nov, 08:30 to 08:45 Madrid: premium app moved from the `workers.dev` URL to `https://whyhumanoid.com/app/`
   (same brand and domain; DNS and mail untouched). How: `app/` is the static build of `server/public`
   (`tools/build-app.mjs`, checked in CI) served by GitHub Pages with a CSP meta tag, `connect-src` limited to the API
@@ -95,8 +93,8 @@ the portal link for a paying account. No real card is used for testing.
   `premium@whyhumanoid.com` to `delivered@resend.dev` with link `https://whyhumanoid.com/app/#login=…`, redeemed with
   the click: `/v1/me` 200 without access, full rows 403, portal 409; Checkout live opened ("100,00 € por año") with
   cancel URL `https://whyhumanoid.com/app/?checkout=cancelled`, left without a card: "Checkout was cancelled. Nothing
-  was charged."; 375 px without overflow; test account signed out. D1 after the checks: the same entitlement (active
-  until 2027-11-17), 4 Stripe events, no new payment. Sessions live in the browser per origin, so a subscriber signs
+  was charged."; 375 px without overflow; test account signed out. D1 after the checks: the same single entitlement,
+  4 Stripe events, no new payment. Sessions live in the browser per origin, so a subscriber signs
   in once more at `whyhumanoid.com/app/`; the subscription is unchanged. Not tested by the agent: the portal and the
   success return for a paying account (verified locally; Javier can open "Manage subscription").
 - 17 Nov, 13:10 to 13:35 Madrid: relations between Deployments, catalogue robots and companies (PR #26 `576e4e0`,

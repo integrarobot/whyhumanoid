@@ -60,7 +60,7 @@ Entity URLs: `/humanoids/<slug>/` (old `/robots/<slug>/` redirect), `/other-robo
   `/companies/<slug>/` (181), `/reports/deployment-records/`, `/method/`, `/app/`. `/humanoids`, `/deployments/` and
   the other category paths answered 404.
 - Production API: Stripe live checkout open (`checkout_available: true`) under the old plan "Why Humanoid? full
-  database, all 13 datasets". Javier's own subscription is active until 17 Nov 2027.
+  database, all 13 datasets". At least one live subscription exists; account data stays out of the repository.
 - Production data: last import 17 Nov 2026 22:16 UTC (Humanoids 134, Deployments 130, Other Robots 547, Stocks 276).
 - Master workbook, last modified 20 Nov 2026 11:08 UTC: Humanoids 217 rows (215 public), Deployments 184, Software 128
   rows (146 entries), Other Robots 488 rows (559 entries), Datasets 29, Clean Entities 32. Four tabs were renamed and
@@ -79,77 +79,85 @@ Done on the branch, on the published 17 Nov snapshot:
   Deployments and Components 401 without a session, 403 without an active subscription; `GET /v1/access`.
 - Importer accepts the 20 Nov workbook (current and former tab names).
 - Nine category pages, nine-category navigation on every page and on the home page, `/subscribe/` with the two
-  services as proposals, 547 Other Robots pages, 452 company pages, redirects for `/robots/`, sitemap of 1,147 URLs.
-- Wording on the site, app and method: the subscription covers Deployments and Components.
-- Checks: `server` tests (86), `tools/verify-pages.mjs`, `tools/verify-site.mjs`, `tools/verify-premium-app.mjs`,
-  `tools/verify-staging.mjs --local` (184 checks: routes, reloads, mobile, old links, exposure, the five account
-  states with signed test-mode events).
+  services as proposals, 547 Other Robots pages, 459 company pages (robot makers, organisations in records, listed
+  companies, integrators and the companies of the public Components entries), redirects for `/robots/`, sitemap of
+  1,154 URLs.
+- Wording on the site, app and method: the subscription covers Deployments and Components; Components is described
+  as what it is today, a sparse hardware directory, not yet a directory of component makers and their capabilities.
+- New live sales of the new offer closed in code (`LIVE_SALES_OPEN = false`) until its terms are final; Stripe test
+  mode, existing subscriptions and the portal unaffected. Search applies the matrix at query time as well.
+- Staging for the dashboard path: `server/scripts/staging-entry.js` (test Worker only).
 
 Not done: hosted staging on Cloudflare (Javier deploys; agents hold no Cloudflare credential), the sandbox purchase
 through Stripe test Checkout, the content refresh to the 20 Nov workbook, live billing changes. The milestone is not
 complete until hosted staging is verified.
 
-### Staging deploy paths (checked on 23 Nov 2026)
+### Deployment paths (checked on 23 Nov 2026)
 
-What exists: no workflow deploys a Worker. `ci.yml` only tests; `import-workbook.yml` authenticates with GitHub OIDC and
-Google Workload Identity (repository variable `GOOGLE_WORKLOAD_IDENTITY_PROVIDER`; no secret is referenced) and calls
-`POST /v1/admin/import` on the Worker of the chosen environment. No Cloudflare credential exists in GitHub workflows or
-in agent sessions; secret values were not read. Earlier Worker deploys were pasted by Javier into the Cloudflare
-dashboard editor. Agents must not request or create Cloudflare tokens (Codex, 23 Nov 2026).
+No workflow deploys a Worker. `ci.yml` only tests; `import-workbook.yml` authenticates with GitHub OIDC and Google
+Workload Identity (repository variable `GOOGLE_WORKLOAD_IDENTITY_PROVIDER`; no secret is referenced) and calls
+`POST /v1/admin/import` on the Worker of the chosen environment. Agent sessions hold no Cloudflare credential and must
+not request one (Codex, 23 Nov 2026). The authorised path is the Cloudflare dashboard, operated by Javier or Codex
+from the Mac, as for every earlier Worker deploy. Wrangler with Javier's own login is an equivalent alternative.
 
-Target: Worker `whyhumanoid-premium-test`, D1 `whyhumanoid-premium-test`, Stripe test mode, origin
-https://whyhumanoid-premium-test.javier-198.workers.dev. Production (`whyhumanoid-premium`) is never touched.
+State found on 23 Nov 2026: the test Worker runs the 13 Nov build (no `/v1/search`, `/v1/relations`, `/v1/access`),
+so its D1 most likely lacks migrations 0002 and 0003. The production Worker runs the 17 Nov build.
 
-**Path A, full staging (site, app and API on one origin). Recommended.** Javier, with his existing Wrangler login
-(`npx wrangler login`, browser OAuth, no new token):
+### Runbook: hosted staging on the test Worker (dashboard)
 
-```sh
-git fetch origin claude/stoic-maxwell-432hsy && git checkout claude/stoic-maxwell-432hsy
-node tools/build-staging.mjs
-cd server && npm ci
-npx wrangler d1 migrations list whyhumanoid-premium-test --remote --env test
-npx wrangler d1 migrations apply whyhumanoid-premium-test --remote --env test
-npx wrangler deploy --env test --assets .staging
-```
+Artifacts are pinned in the branch at the commit named in the PR (folder `server/dist/`, removed again before merge)
+and are reproducible with `node server/scripts/build-dashboard.mjs [--staging] <esbuild 0.27.7>`; check the sha256
+the PR states before pasting.
 
-`wrangler.toml [env.test]` sets the test variables (Stripe test mode, `CHECKOUT_ENABLED=true`, app at `/app/`);
-secrets already on the test Worker are kept. If Javier prefers an API token over the OAuth login, the minimum is
-an account token with Workers Scripts: Edit and D1: Edit on his account (plus Account Settings: Read); he creates and
-uses it himself, never in chat or Git.
+1. D1, database `whyhumanoid-premium-test`, Console: paste `server/migrations/0002_relations.sql`, run; paste
+   `server/migrations/0003_search.sql`, run (both are `CREATE TABLE IF NOT EXISTS`).
+2. Workers, `whyhumanoid-premium-test`, Edit code: replace the whole script with `server/dist/worker.staging.js`,
+   Deploy. It is the regular API plus the public site of one commit, read from this public repository.
+3. Same Worker, Settings, Variables and secrets, plain-text variables (leave every secret as it is):
+   `STAGING_SITE_COMMIT` = the full commit id the PR states; `PREMIUM_URL` =
+   `https://whyhumanoid-premium-test.javier-198.workers.dev/app/`; check `STRIPE_MODE=test`,
+   `CHECKOUT_ENABLED=true`, `IMPORT_ENVIRONMENT=test`, `ALLOWED_ORIGINS` =
+   `https://whyhumanoid-premium-test.javier-198.workers.dev`. Deploy.
+4. Tell the Claude session. It runs "Import private workbook" from `main` with target `test` (imports the master as it
+   is now into the test D1 only) and `node tools/verify-staging.mjs --base https://whyhumanoid-premium-test.javier-198.workers.dev`.
+5. Sandbox purchase by a person, Stripe test mode only, at https://whyhumanoid-premium-test.javier-198.workers.dev/app/:
+   sign in with an address the test sender can deliver to (the test Worker sends from Resend's test sender, which
+   reaches only the Resend account owner), subscribe with card 4242 4242 4242 4242 (any future date, any CVC), back in
+   the app check "Active" and that complete Deployments and Components open; in Stripe (test mode) Developers,
+   Webhooks, check the deliveries for that session answered 200; cancel in the billing portal and check access stays
+   until the period end. Report the test session id, never card data.
 
-**Path B, API only, through the dashboard editor (the path used before).** It cannot upload the 1,308 static files,
-so the site stays on local staging; it serves the API and the app root of the test Worker:
+Staging serves the 23 Nov master through its API (test D1) but the 17 Nov public snapshot as its site files: counts
+differ between them on purpose. Staging is noindex and carries a banner; it is a review copy, not a publication.
 
-```sh
-node server/scripts/build-dashboard.mjs <esbuild 0.27.7>   # dist/worker.dashboard.js
-```
+### Runbook: release after staging is verified
 
-Built from commit `04ad501` on 23 Nov 2026: 410,848 bytes, sha256
-`0d4522169c8dde8b3f8384a3b5b5ad89a68f49716c116f1dd36e9534c3cea555`; a Node smoke test answered 200 on `/health`,
-`/v1/access` and `/v1/billing/plan` (new plan name). Paste into whyhumanoid-premium-test, Edit code, Deploy; set
-`PREMIUM_URL` as in `[env.test.vars]` if the app should live at `/app/` (with path B leave it at `/`). Apply
-`migrations/0002_relations.sql` and `0003_search.sql` in the D1 console if `d1_migrations` lacks them.
+Order, compatible in both directions: the new API accepts the old site and the new site works with the old API.
 
-After either path:
+1. Production API first (dashboard, Workers, `whyhumanoid-premium`, Edit code): replace the script with
+   `server/dist/worker.dashboard.js` from the same commit, Deploy. Do not change variables or secrets. New live sales
+   stay closed in code (`LIVE_SALES_OPEN = false`: checkout answers 503 `offer_in_review`); existing subscriptions,
+   renewals, the webhook and the billing portal keep working.
+2. Do NOT run a production import: the 20 Nov master has unreviewed changes (renamed robots, new rows); production D1
+   keeps the 17 Nov data until the content review. Production D1 already has migrations 0002 and 0003.
+3. Merge PR #58 (squash) after the pinned bundles are removed; GitHub Pages publishes the site.
+4. Checks: `node tools/verify-staging.mjs --base https://whyhumanoid.com` (routes, reloads, mobile, old links, sitemap,
+   exposure); `/v1/access` 200; `/v1/billing/plan` shows the new plan with `checkout_available: false`;
+   `/v1/datasets/hardware` 401 and `/v1/datasets/stocks` 200 without a session; an existing subscriber still sees
+   "Active" and complete Deployments (a person checks with their own session; no account data is written down).
+5. Closing record in `main`.
 
-1. Actions, "Import private workbook", Run workflow on `main`, target `test` (the Worker's branch code imports the
-   20 Nov workbook; the job prints HTTP 200 and counts only).
-2. `node tools/verify-staging.mjs --base https://whyhumanoid-premium-test.javier-198.workers.dev` (routes, reloads,
-   mobile, old links, sitemap, exposure). Path B: run only the API part, or check `/v1/access`, `/v1/datasets/hardware`
-   (401) and `/v1/datasets/stocks` (200) by hand.
-3. Sandbox purchase by a person (Javier or Codex), Stripe test mode only: sign in with an address Resend's test sender
-   can reach, subscribe with test card 4242 4242 4242 4242, confirm Deployments and Components open, the test
-   webhook delivery succeeded, then cancel in the test portal and check access until period end. A real card is
-   never used; the live Worker is not involved.
+Opening live sales later is one change (`LIVE_SALES_OPEN = true`) after Javier settles the Stripe live product name,
+tax presentation and purchase terms.
 
-### Evidence so far, by kind
+### Evidence, by kind
 
-| Kind | Status on 23 Nov 2026 |
+| Kind | Status |
 |---|---|
-| Unit and API tests over synthetic fixtures (86) | Passed |
-| Local staging: built bundle, real API code, synthetic data, simulated signed test-mode events (`verify-staging --local`, 184 checks) | Passed |
-| Real hosted staging on the test Worker | Not done: needs Path A or B by Javier |
-| Import of the 20 Nov workbook into test D1 | Not done (local dry run of the importer on the export: all tabs read) |
+| API tests over synthetic fixtures (91) and every CI step | Passed locally; CI green on the PR |
+| Local staging: built bundle, real API code, synthetic data, simulated signed test-mode events (`verify-staging --local`) | Passed |
+| Dashboard bundles: build from the branch and Node smoke test (site from a mocked pinned commit, API routes, live refusal) | Passed |
+| Hosted staging on the test Worker, test import, `verify-staging` against it | Not done: waits for the dashboard runbook |
 | Sandbox purchase through Stripe test Checkout and the test webhook | Not done: needs hosted staging and a person |
 | Production | Unchanged |
 
@@ -163,12 +171,14 @@ node tools/verify-staging.mjs --base http://localhost:8788 --local --shots /tmp/
 
 ## Decisions pending (Javier)
 
-1. Components content: the Hardware tab has 11 rows with names and links and no descriptions in the 10 public rows.
-   Selling it inside the subscription needs real component data (a schema in the master, filled by Grok) or a
-   change to what the subscription promises. Making it premium also hides 1 entry that is public today.
+1. Components content: today a sparse hardware directory (11 rows, names and links, no descriptions in the 10 public
+   rows), not the component-maker capability directory the offer implies. Selling it needs real component data (a
+   schema in the master, filled by Grok) or a change to what the subscription promises. Making it premium also hides
+   1 entry that was public until now.
 2. Previews of the two premium categories: keep the first 10 rows, or choose another rule.
 3. Live billing: the Stripe live product is still "Why Humanoid? full database"; rename, update the description,
-   tax presentation (VAT shown, B2B), purchase terms and refund policy before the new offer is sold live.
+   tax presentation (VAT shown, B2B), purchase terms and refund policy before the new offer is sold live. Until then
+   new live sales stay closed in code; opening them is `LIVE_SALES_OPEN = true` plus a deploy.
 4. Existing subscribers: keep full access to what stays premium (current code does this; nothing else changes).
 5. Container Handling tab: keep it with Deployments (10-row preview) or make it public with Benchmarks.
 6. Service names, scope and order flow for the two EUR 1,000 services.

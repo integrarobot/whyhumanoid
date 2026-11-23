@@ -24,7 +24,8 @@ test('the nine confirmed categories, in order, each at its own address and mappe
   assert.deepEqual(CATEGORIES.filter((c) => c.access === 'subscription').map((c) => c.id), ['deployments', 'components']);
   assert.deepEqual(DATASETS.map((d) => d.id).sort(), Object.keys(DATASET_ACCESS).sort(), 'every tab has exactly one entry');
   // Gaps are stated, not filled: categories without a dedicated tab say so.
-  for (const id of ['components', 'benchmarks', 'investment']) assert.match(CATEGORIES.find((c) => c.id === id).gap, /no dedicated/);
+  for (const id of ['components', 'benchmarks', 'investment']) assert.match(CATEGORIES.find((c) => c.id === id).gap, /no dedicated|no components table/);
+  assert.match(CATEGORIES.find((c) => c.id === 'components').gap, /sparse hardware directory/, 'Components says what it is today');
 });
 
 test('one subscription unlocks Deployments and Components; the services are separate and not for sale yet', () => {
@@ -120,4 +121,33 @@ test('free categories answer visitors with public, cacheable values; subscriptio
   const previewOnly = await (await ctx.call('GET', '/v1/datasets/hardware/preview')).json();
   assert.equal(previewOnly.rows.length, 10, 'Components preview: the first 10 rows');
   assert.equal(previewOnly.total_rows, 12);
+});
+
+test('live sales of the new offer stay closed until its terms are final; existing subscribers and test mode are unaffected', async () => {
+  const live = await setup({ checkoutEnabled: true, stripeKey: 'sk_live_fixture', stripeMode: 'live', allowLiveCheckout: true, price: { ...(await import('./helpers.js')).VALID_PRICE, livemode: true } });
+  assert.equal((await (await live.call('GET', '/v1/billing/plan')).json()).checkout_available, false);
+  const { session, accountId } = await signIn(live, 'renewing@example.com');
+  const res = await live.call('POST', '/v1/billing/checkout', { token: session });
+  assert.equal(res.status, 503);
+  assert.deepEqual(await res.json(), { error: 'offer_in_review' });
+  assert.equal(live.checkoutCalls.length, 0, 'Stripe is never asked for a live session');
+  // An existing live subscription keeps working: its signed live events still grant access to both categories.
+  await sendWebhook(live, subscriptionEvent({ accountId, livemode: true, status: 'active', periodEnd: T0 + 300 * DAY }));
+  assert.equal((await live.call('GET', '/v1/datasets/deployments', { token: session })).status, 200);
+  assert.equal((await live.call('GET', '/v1/datasets/hardware', { token: session })).status, 200);
+  // Test mode (staging) sells the same plan with test keys.
+  const test = await setup({ checkoutEnabled: true });
+  assert.equal((await (await test.call('GET', '/v1/billing/plan')).json()).checkout_available, true);
+});
+
+test('visitor search ignores a stale index entry past the preview of a subscription category', async () => {
+  const ctx = await setup();
+  const row = await ctx.db.prepare("SELECT row_id FROM premium_rows WHERE dataset = 'hardware' AND preview_rank = 11").first();
+  assert.ok(row, 'fixture has an 11th Components row');
+  // An index built under older rules could hold it in the public scope.
+  await ctx.db.prepare("INSERT INTO search_docs (scope, dataset, row_id, position, title, subtitle, names, haystack, tags, link) VALUES ('preview', 'hardware', ?, 99, 'Stale component', '', '|Stale component|', ' stale component ', '||', '')").bind(row.row_id).run();
+  const visitor = await (await ctx.call('GET', '/v1/search?q=stale+component')).json();
+  assert.equal(visitor.total, 0);
+  const free = await (await ctx.call('GET', '/v1/search?q=hardware')).json();
+  assert.ok(free.results.every((r) => r.category !== 'hardware' || !/ 11$/.test(r.title)), 'only the first 10 Components rows');
 });

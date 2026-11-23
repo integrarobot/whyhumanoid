@@ -3,7 +3,7 @@
 // other tab) and 'full' from every customer row. The API picks the scope from the server-side entitlement check
 // BEFORE it searches, filters, counts or builds a snippet, so visitors never get premium content in any form.
 
-import { DATASETS, DATASETS_BY_ID, publicRowLimit } from '../datasets.js';
+import { DATASETS, DATASETS_BY_ID, PREVIEW_ROWS, publicRowLimit } from '../datasets.js';
 import { norm, normMap, likeEscape } from './normalize.js';
 import { FACETS, FACET_LABELS, SYNONYMS, STOPWORDS, isKnownTag, tagLabel, tagsFor } from './vocabulary.js';
 import { STATUS_LABELS } from '../public/projection.js';
@@ -220,6 +220,13 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
 
   const where = ['scope = ?'];
   const params = [scope];
+  // Access matrix at query time too (23 Nov 2026): outside the full scope, a row of a subscription tab is searchable
+  // only while it is one of the tab's first PREVIEW_ROWS rows, whatever an older index holds.
+  if (scope !== 'full') {
+    const gated = DATASETS.filter((d) => publicRowLimit(d) !== null).map((d) => d.id);
+    where.push(`(dataset NOT IN (${gated.map(() => '?').join(', ')}) OR row_id IN (SELECT row_id FROM premium_rows WHERE premium_rows.dataset = search_docs.dataset AND visibility = 'customer' AND preview_rank <= ?))`);
+    params.push(...gated, PREVIEW_ROWS);
+  }
   for (const t of terms) {
     where.push(`(${t.alts.map(() => "haystack LIKE ? ESCAPE '\\'").join(' OR ')})`);
     // Words match from their start ("tend" finds "tending", not "attending"); words of up to 3 characters match whole.

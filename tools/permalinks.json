@@ -3928,6 +3928,55 @@
       ],
       "robots": [],
       "organization_ids": []
+    },
+    "cmp_dmrobot.com": {
+      "slugs": [
+        "daimon"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_myactuator.com": {
+      "slugs": [
+        "myactuator"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_orcahand.com": {
+      "slugs": [
+        "orca"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_paxini.com": {
+      "slugs": [
+        "paxini"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_intelrealsense.com": {
+      "slugs": [
+        "realsense"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_shadowrobot.com": {
+      "slugs": [
+        "shadow"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_en.tesollo.com": {
+      "slugs": [
+        "tesollo"
+      ],
+      "robots": [],
+      "organization_ids": []
     }
   },
   "other_robots": {

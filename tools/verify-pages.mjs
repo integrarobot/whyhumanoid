@@ -88,6 +88,9 @@ for (const c of CATEGORIES) {
 }
 if (doc('/deployments/').querySelectorAll('article.dep li').length > PREVIEW_ROWS) fail('/deployments/: more records than the public preview');
 if (doc('/components/').querySelectorAll('tbody tr').length > PREVIEW_ROWS) fail('/components/: more entries than the public preview');
+// Every company in the public data has a page: each public Components entry links to one (maker or company as recorded).
+for (const tr of doc('/components/').querySelectorAll('tbody tr')) if (!tr.querySelector('a[href^="/companies/"]')) fail(`/components/: ${tr.textContent.trim().slice(0, 40)} has no company page`);
+for (const id of ['investment', 'integrators']) for (const a of doc(`/${id}/`).querySelector('article section table').querySelectorAll('tbody tr td:first-child a')) if (!a.getAttribute('href').startsWith('/companies/')) fail(`/${id}/: ${a.textContent} does not link to its company page`);
 if (doc('/humanoids/').querySelectorAll('tbody tr').length !== model.robots.length) fail('/humanoids/: does not list every robot');
 if (doc('/other-robots/').querySelectorAll('tbody tr').length !== model.otherRobots.length) fail('/other-robots/: does not list every entry');
 for (const rbx of model.robots) {

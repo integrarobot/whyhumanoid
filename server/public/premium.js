@@ -94,7 +94,7 @@
     $('checkout').hidden = !canBuy;
     $('checkout').textContent = 'Subscribe for ' + price;
     $('checkout').disabled = !me.checkout_available;
-    if (canBuy && !me.checkout_available) $('acc-text').textContent += ' Subscriptions are not open yet.';
+    if (canBuy && !me.checkout_available) $('acc-text').textContent += ' New subscriptions open once the purchase terms of this offer are final.';
     $('portal').hidden = !me.billing_portal;
   }
 

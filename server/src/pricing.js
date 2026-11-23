@@ -5,6 +5,11 @@
 
 import { SUBSCRIPTION } from './access/matrix.js';
 
+// New live sales of this offer wait for its purchase terms, tax presentation and the Stripe live product name
+// (Javier, 23 Nov 2026: review before enabling new live sales). While false, live checkout answers 503
+// 'offer_in_review'; Stripe test mode, existing subscriptions, the webhook and the billing portal are unaffected.
+export const LIVE_SALES_OPEN = false;
+
 export const PLAN = Object.freeze({
   id: 'deployments-components-annual',
   name: SUBSCRIPTION.name,

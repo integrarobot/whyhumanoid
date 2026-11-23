@@ -15,7 +15,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { isDeepStrictEqual } from 'node:util';
 import { readLegacySnapshot } from './export-humanoids.mjs';
-import { PLAN } from '../server/src/pricing.js';
+import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { pageRelations } from './relations.mjs';
 import { pageLinks } from './build-pages.mjs';
 import { CATEGORIES, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
@@ -24,7 +24,8 @@ import { CATEGORIES, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.
 // premium.whyhumanoid.com is set up as a custom domain.
 // The premium app on the brand's domain (17 Nov 2026), published by tools/build-app.mjs.
 export const PREMIUM_APP_URL = 'https://whyhumanoid.com/app/';
-export const CHECKOUT_OPEN = true; // live checkout open since 17 Nov 2026
+// Live checkout of the new offer waits for its purchase terms (server/src/pricing.js, LIVE_SALES_OPEN).
+export const CHECKOUT_OPEN = LIVE_SALES_OPEN;
 // Paywall (Javier, 16 Nov 2026): the 12 tabs other than Humanoids show their first 10 sheet rows; the rest is premium.
 export const OPEN_DATABASE = false;
 
@@ -194,7 +195,7 @@ export function renderCategories(data) {
     <section class="cats-sec" id="categories" aria-labelledby="cats-h">
       <div class="cats-head"><h2 class="h2" id="cats-h">Nine <em>categories</em></h2><p class="lbl">Humanoids and seven more free · Deployments and Components with the subscription</p></div>
       <ul class="catgrid">${items}</ul>
-      <div class="offer"><div><p class="lbl">Subscription · ${escHtml(data.access?.price ?? '')}</p><h3>${escHtml(SUBSCRIPTION.name)}</h3><p>Complete Deployments and complete Components, with search and agent API keys over them.</p><p><a class="btn" href="/subscribe/">See the subscription</a></p></div>${services}</div>
+      <div class="offer"><div><p class="lbl">Subscription · ${escHtml(data.access?.price ?? '')}</p><h3>${escHtml(SUBSCRIPTION.name)}</h3><p>Complete Deployments and complete Components, with search and agent API keys over them.</p>${CHECKOUT_OPEN ? '' : '<p class="lbl">New subscriptions open once the purchase terms are final · existing subscribers keep full access</p>'}<p><a class="btn" href="/subscribe/">See the subscription</a></p></div>${services}</div>
       <p class="lbl">Also: <a href="#database">browse the workbook tabs</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>
     </section>
     <!-- categories:end -->`;

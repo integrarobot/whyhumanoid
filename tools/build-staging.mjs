@@ -14,6 +14,9 @@ import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statS
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { API_ORIGIN } from './build-app.mjs';
+import { PRODUCTION_API_ORIGIN, STAGING_ROBOTS, stagingText } from '../server/src/staging/site.js';
+
+if (API_ORIGIN !== PRODUCTION_API_ORIGIN) throw new Error('server/src/staging/site.js must name the API origin of tools/build-app.mjs');
 
 const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
 const ORIGIN = (arg('--origin') ?? 'https://whyhumanoid-premium-test.javier-198.workers.dev').replace(/\/$/, '');
@@ -30,26 +33,21 @@ for (const name of readdirSync(root)) {
 }
 if (existsSync(join(out, 'data/database'))) throw new Error('data/database must not exist (paywall)');
 
-const BANNER = '<div role="note" style="position:sticky;top:0;z-index:99;background:#F0A23B;color:#0B0C0E;font:600 13px/1.4 system-ui,sans-serif;padding:6px 12px;text-align:center">Staging for review · not the live site · payments in Stripe test mode only</div>';
 let pages = 0;
 const walk = (dir) => {
   for (const e of readdirSync(dir)) {
     const p = join(dir, e);
     if (statSync(p).isDirectory()) { walk(p); continue; }
     if (!/\.(html|js)$/.test(e)) continue;
-    let s = readFileSync(p, 'utf8');
-    const before = s;
-    // The app and its API: the same origin here. Links to the production app become relative.
-    s = s.split(API_ORIGIN).join(ORIGIN).split('https://whyhumanoid.com/app/').join('/app/');
-    if (e.endsWith('.html')) {
-      s = s.replace(/<body([^>]*)>/, (m) => `${m}\n${BANNER}`).replace('<head>', '<head>\n<meta name="robots" content="noindex, nofollow">');
-      pages += 1;
-    }
+    const before = readFileSync(p, 'utf8');
+    // Same changes as the dashboard staging entry (server/src/staging/site.js).
+    const s = stagingText(before, e, ORIGIN);
+    if (e.endsWith('.html')) pages += 1;
     if (s !== before) writeFileSync(p, s);
   }
 };
 walk(out);
-writeFileSync(join(out, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
+writeFileSync(join(out, 'robots.txt'), STAGING_ROBOTS);
 // Workers static assets read _headers: no indexing anywhere on staging; the app keeps its own CSP.
 writeFileSync(join(out, '_headers'), [
   '/*', '  X-Robots-Tag: noindex, nofollow', '  X-Content-Type-Options: nosniff', '  Referrer-Policy: strict-origin-when-cross-origin', '',
