@@ -101,7 +101,10 @@ const dbIndex = pageData.database;
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const go = async (hash) => { dom.window.location.hash = hash; dom.window.dispatchEvent(new dom.window.HashChangeEvent('hashchange')); await wait(80); };
 const indexLinks = [...document.querySelectorAll('#db-index a[data-id]')];
-expect(indexLinks.length === 13 && document.querySelectorAll('#db-index .grp').length === 5, `category index: ${indexLinks.length} links in ${document.querySelectorAll('#db-index .grp').length} groups`);
+expect(indexLinks.length === 12 && document.querySelectorAll('#db-index .grp').length === 5, `category index: ${indexLinks.length} links in ${document.querySelectorAll('#db-index .grp').length} groups`);
+// Datasets is the Robot Learning Data Atlas (23 Nov 2026): the index links its page with the atlas count, never a preview.
+const atlasLink = document.querySelector('#db-index a[href="/datasets/"]');
+expect(atlasLink && atlasLink.querySelector('.n')?.textContent === String(pageData.dataAtlas?.resources), 'category index: Datasets does not link the atlas with its count');
 expect(indexLinks.find((a) => a.dataset.id === 'humanoids')?.getAttribute('href') === '#humanoids', 'index does not link Humanoids to #humanoids');
 expect(pageData.access.open === false, 'page is not in paywall mode');
 expect(/subscription adds complete Deployments and complete Components/i.test(text('#preview-note')) && document.querySelector('#preview-note a')?.getAttribute('href') === pageData.access.app_url, 'catalogue notice does not offer the subscription');
@@ -184,7 +187,9 @@ dbq.dispatchEvent(new dom.window.Event('input', { bubbles: true }));
 expect(document.querySelectorAll('#db-rows tr.r').length === 0, 'database search for a missing entry still shows rows');
 // Hero: real counts linking to their categories, and the two calls to action.
 const eco = [...document.querySelectorAll('#eco a')];
-expect(eco.length >= 8 && eco.every((a) => /^#(humanoids|db-[a-z-]+)$/.test(a.getAttribute('href'))), `hero counts: ${eco.length}`);
+expect(eco.length >= 8 && eco.every((a) => /^(#(humanoids|db-[a-z-]+)|\/datasets\/)$/.test(a.getAttribute('href'))), `hero counts: ${eco.length}`);
+const ecoAtlas = eco.find((a) => a.getAttribute('href') === '/datasets/');
+expect(ecoAtlas?.querySelector('b')?.textContent === String(pageData.dataAtlas?.resources), 'hero count for Datasets is not the atlas count');
 for (const a of eco.filter((x) => x.getAttribute('href').startsWith('#db-'))) {
   const t = dbIndex.tabs.find((x) => `#db-${x.id}` === a.getAttribute('href'));
   expect(a.querySelector('b')?.textContent === String(t?.entries_total), `hero count for ${t?.id} is not the data's`);

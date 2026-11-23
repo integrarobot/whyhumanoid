@@ -71,7 +71,7 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
   const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/catalogue.json', 'data/benchmarks/atlas.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/catalogue.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));
@@ -124,6 +124,11 @@ for (const file of tracked.filter((f) => /^(robots|companies|reports|method|subs
 // the Benchmarks and Benchmark Results tabs (server/src/benchmarks/atlas.js), never the workbook link or editorial history.
 const { snapshotProblems } = await import('../server/src/benchmarks/atlas.js');
 for (const problem of snapshotProblems(JSON.parse(read('data/benchmarks/atlas.json')))) fail('data/benchmarks/atlas.json', problem);
+// Rule 10 (Robot Learning Data Atlas, 23 Nov 2026): the Datasets snapshot holds only the allowlisted public fields of the
+// Datasets and Dataset Metrics tabs (server/src/data-atlas/atlas.js): never the workbook link, the classification note,
+// the matrix reference or a clause about the private editorial material.
+const { snapshotProblems: dataSnapshotProblems } = await import('../server/src/data-atlas/atlas.js');
+for (const problem of dataSnapshotProblems(JSON.parse(read('data/datasets/atlas.json')))) fail('data/datasets/atlas.json', problem);
 
 // Rule 8 (Reports, 23 Nov 2026): the catalogue lists only records verified against the public original, with no private
 // Google sheet, Drive or Docs link; extractions and findings of the staging sheet never reach the repository.

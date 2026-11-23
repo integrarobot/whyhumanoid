@@ -78,7 +78,7 @@ for (const c of CATEGORIES) {
   if (d.querySelector('link[rel=canonical]')?.href !== SITE + c.path) fail(`${c.path}: canonical`);
   if (d.querySelector('meta[name=robots]')) fail(`${c.path}: category page marked noindex`);
   // Benchmarks is the Robotics Evaluation Atlas (23 Nov 2026): its h1 is the atlas title and its kicker names the category.
-  const h1 = c.id === 'benchmarks' ? 'Robotics Evaluation Atlas' : c.label;
+  const h1 = { benchmarks: 'Robotics Evaluation Atlas', datasets: 'Robot Learning Data Atlas' }[c.id] ?? c.label;
   if (d.querySelector('h1')?.textContent !== h1) fail(`${c.path}: h1 is not "${h1}"`);
   if (c.id === 'benchmarks' && !/Benchmarks/.test(d.querySelector('.kicker')?.textContent ?? '')) fail(`${c.path}: kicker does not name the category`);
   const navLabels = [...d.querySelectorAll('nav.cats a')].map((a) => a.textContent.trim());
@@ -224,6 +224,41 @@ if (went !== rb.path) fail(`404.html: /robots/any-old-name-${rb.id}/ went to ${w
   if (/docs\.google\.com|drive\.google\.com/.test(html)) fail(`${p}: links a private Google file`);
   if (/class="[^"]*\b(err|whisker)\b/.test(html)) fail(`${p}: draws error bars the data does not have`);
   if (!d.querySelector('script[src^="/assets/atlas.js?v="]') || !d.querySelector('link[href^="/assets/atlas.css?v="]')) fail(`${p}: atlas assets missing`);
+}
+// Robot Learning Data Atlas (23 Nov 2026): /datasets/ shows the public snapshot, readable without JavaScript: every
+// resource in its lane and with its passport card (stable anchor), every quantity with its value, unit and scope, the
+// set-apart figures outside the default scale view, counts computed from the rows, and no private link or editorial note.
+{
+  const atlas = JSON.parse(read('data/datasets/atlas.json'));
+  const d = doc('/datasets/');
+  const p = '/datasets/';
+  const c = atlas.counts;
+  const counts = [...d.querySelectorAll('.atlas-counts dd')].map((x) => Number(x.textContent));
+  if (JSON.stringify(counts) !== JSON.stringify([c.resources, c.corpora, c.resources_with_quantities, c.quantities, c.resources_awaiting_quantities])) fail(`${p}: headline counts ${counts} differ from the snapshot`);
+  if (d.querySelectorAll('.lanes .dtile').length !== atlas.resources.length) fail(`${p}: the origins map does not show every resource`);
+  if (d.querySelectorAll('.mx tbody tr[data-ds]').length !== atlas.resources.length) fail(`${p}: the modality matrix does not list every resource`);
+  for (const r of atlas.resources) {
+    const card = d.getElementById(r.id);
+    if (!card || card.tagName !== 'DETAILS') fail(`${p}: no passport card #${r.id}`);
+    const tile = d.querySelector(`.dtile[data-ds="${r.id}"]`);
+    if (!tile || tile.closest('.lane')?.dataset.lane !== r.lane) fail(`${p}: ${r.id} is not in its ${r.lane} lane`);
+    if (r.source_url && !card?.querySelector(`a[href="${r.source_url}"]`)) fail(`${p}: ${r.id} has no source link`);
+    for (const b of r.related_benchmarks) if (!card?.querySelector(`a[href="/benchmarks/#${b.id}"]`)) fail(`${p}: ${r.id} does not link ${b.id}`);
+  }
+  const fmt = (q) => `${{ approximate: 'about ', more_than: 'more than ' }[q.qualifier] ?? ''}${Number(q.value).toLocaleString('en-GB', { maximumFractionDigits: 2 })} ${q.unit}`;
+  for (const q of atlas.quantities) {
+    const card = d.getElementById(q.dataset_id);
+    if (q.value !== null && !card?.textContent.includes(fmt(q))) fail(`${p}: ${q.id} (${fmt(q)}) is not in the ${q.dataset_id} passport`);
+    if (q.scale && !q.part && q.value !== null) {
+      const inApart = Boolean(d.querySelector(`#set-apart .sr-row[data-ds="${q.dataset_id}"]`)) && Boolean(d.querySelector(`#set-apart [data-group="${q.comparison_group}"]`));
+      const inMain = Boolean(d.querySelector(`#scale .slane [data-group="${q.comparison_group}"] .sr-row[data-ds="${q.dataset_id}"]`));
+      if (q.set_apart ? !inApart || inMain : !inMain) fail(`${p}: ${q.id} is drawn in the wrong place (set apart: ${q.set_apart ?? 'no'})`);
+    }
+  }
+  const html = read('datasets/index.html');
+  if (/docs\.google\.com|drive\.google\.com|spreadsheets\/d\//.test(html)) fail(`${p}: links a private Google file`);
+  if (/\battachment\b|matrix row|classification_note|attachment_ref/i.test(html)) fail(`${p}: shows an internal editorial note`);
+  if (!d.querySelector('script[src^="/assets/datasets.js?v="]') || !d.querySelector('link[href^="/assets/datasets.css?v="]') || !d.querySelector('link[href^="/assets/atlas.css?v="]')) fail(`${p}: atlas assets missing`);
 }
 if (failures.length) {
   console.error(`Public pages check FAILED (${failures.length}):\n- ${failures.slice(0, 40).join('\n- ')}`);

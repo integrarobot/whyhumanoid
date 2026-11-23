@@ -248,27 +248,6 @@
    "public": "all"
   },
   {
-   "id": "datasets",
-   "title": "Datasets",
-   "description": "Robot learning datasets relevant to humanoids.",
-   "entries_total": 28,
-   "source_rows_total": 28,
-   "preview_entries": 28,
-   "preview_source_rows": 28,
-   "fields": [
-    "list",
-    "name",
-    "url",
-    "description"
-   ],
-   "lists": {
-    "dataset": 28
-   },
-   "access": "free",
-   "category": "datasets",
-   "public": "all"
-  },
-  {
    "id": "hardware",
    "title": "Components",
    "description": "Compute, sensors, actuators and other hardware used in humanoid robots.",

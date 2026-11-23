@@ -81,6 +81,12 @@ function describe(datasetId, d) {
       return { title: [d.model, d.task_id].filter(nz).map(human).join(' · '), subtitle: short(d.decision_reason, 90), names: [d.model, d.model_id], context: 'decision_reason' };
     case 'container-handling':
       return { title: d.element || d.layer, subtitle: human(d.layer), names: [d.element], context: 'result' };
+    case 'datasets':
+      return { title: d.name || d.dataset_id, subtitle: join(d.resource_class, d.data_origin, d.embodiment), names: [d.name, d.dataset_id], context: 'description' };
+    case 'dataset-metrics': {
+      const qual = { more_than: 'more than ', approximate: 'about ' }[d.qualifier] ?? '';
+      return { title: [d.dataset_id, nz(d.value) ? `${qual}${d.value} ${d.unit ?? ''}`.trim() : human(d.metric)].filter(nz).join(' · '), subtitle: join(d.metric, d.scope, d.release_status), names: [d.metric_id], context: 'limitations' };
+    }
     case 'data-space':
       return { title: d.topic || d.record_id, subtitle: join(d.workstream, d.epistemic_status), names: [d.topic, d.record_id], context: 'finding_or_proposal' };
     default: {

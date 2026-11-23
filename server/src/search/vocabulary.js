@@ -164,9 +164,11 @@ export function tagsFor(datasetId, d, unmapped = []) {
       add('sector', SEGMENT_RULES.filter(([re]) => re.test(seg)).map(([, s]) => s));
       break;
     }
+    case 'datasets':
+      add('type', ['dataset']);
+      break;
     case 'integrators':
     case 'software':
-    case 'datasets':
     case 'hardware':
     case 'other-robots':
       add('type', [LIST_TYPE[d.list]]);

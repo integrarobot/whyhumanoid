@@ -235,7 +235,7 @@ ${b.key_finding ? `<p class="d-f"><b>Key finding as recorded:</b> ${esc(b.key_fi
 <dl class="d-kv">
 ${kv('Evaluates', t(b.evaluates))}${kv('Embodiment', t(b.embodiment))}${kv('Environment', t(b.environment))}${kv('Tasks', t(b.tasks))}${kv('Metrics', t(b.metrics))}${kv('Protocol', t(b.protocol))}${kv('Limitations', t(b.limitations))}
 ${kv('Results', b.observations ? `${b.observations} source-reported observations, ${b.models} models, ${b.groups} comparability groups. <a href="?bm=${esc(b.id)}#results" data-goto-res="${esc(b.id)}">See them</a>` : `None extracted yet${b.results_coverage ? ` (${esc(b.results_coverage)})` : ''}.`)}
-${kv('Related datasets', b.related_datasets.length ? b.related_datasets.map((d) => (d.url ? ext(d.url, d.name ?? d.id) : esc(d.name ?? d.id))).join(', ') : null)}
+${kv('Related datasets', b.related_datasets.length ? b.related_datasets.map((d) => `<a href="/datasets/#${esc(d.id)}">${esc(d.name ?? d.id)}</a>${d.url ? ` (${ext(d.url)})` : ''}`).join(', ') : null)}
 ${kv('Links', links || null)}${kv('Source checked', `${esc(fmtDate(b.checked_at))}${b.source_locator ? ` · ${esc(b.source_locator)}` : ''}`)}${kv('Review', t(b.review_status))}
 </dl>`;
 }

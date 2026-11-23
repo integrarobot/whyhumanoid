@@ -65,8 +65,11 @@ export function normalizeTab(spec, values) {
       } else {
         const safe = redactPrivateLinks(value);
         if (safe.redacted) review.push({ sheetRow, field, action: 'stripped', reason: 'private_link' });
-        data[field] = safe.value;
-        previewData[field] = safe.value;
+        // Tabs with internal editorial clauses in their texts remove them before anything is stored (spec.scrub).
+        const kept = spec.scrub && safe.value !== null ? spec.scrub(field, safe.value) : safe.value;
+        if (kept !== safe.value) review.push({ sheetRow, field, action: 'stripped', reason: 'editorial_note' });
+        data[field] = kept;
+        previewData[field] = kept;
       }
     });
     // Rows the sheet itself excludes (duplicates, editorial resources) stay as internal provenance only.

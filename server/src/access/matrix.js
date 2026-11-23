@@ -49,8 +49,10 @@ export const CATEGORIES = Object.freeze([
     summary: 'Robot foundation models, vision-language-action models, world models and robotics software.',
   },
   {
-    id: 'datasets', label: 'Datasets', path: '/datasets/', access: 'free', datasets: ['datasets'],
-    summary: 'Robot learning datasets relevant to humanoid robots.',
+    // Robot Learning Data Atlas (23 Nov 2026): the Datasets catalogue and the reported quantities of Dataset Metrics.
+    id: 'datasets', label: 'Datasets', path: '/datasets/', access: 'free', datasets: ['datasets', 'dataset-metrics'],
+    summary: 'Where robot learning data comes from, what it contains, and how it can be used.',
+    gap: 'Quantities are extracted resource by resource from primary sources: some resources have none yet, and licences are often not established.',
   },
   {
     // Robotics Evaluation Atlas (23 Nov 2026): the Benchmarks tab and selected source-reported results.
@@ -86,6 +88,7 @@ export const DATASET_ACCESS = Object.freeze({
   integrators: { category: 'integrators', access: 'free' },
   software: { category: 'software', access: 'free' },
   datasets: { category: 'datasets', access: 'free' },
+  'dataset-metrics': { category: 'datasets', access: 'free' },
   benchmarks: { category: 'benchmarks', access: 'free' },
   'benchmark-results': { category: 'benchmarks', access: 'free' },
   // Internal operational assessment since the Robotics Evaluation Atlas (23 Nov 2026): no longer the Benchmarks

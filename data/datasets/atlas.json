@@ -1,0 +1,3691 @@
+{
+ "title": "Robot Learning Data Atlas",
+ "subtitle": "Where robot learning data comes from, what it contains, and how it can be used.",
+ "note": "Datasets catalogue and reported quantities from the Why Humanoid? master workbook. Quantities are transcribed from public sources as stated, not independently counted. Sizes are compared only within a compatible group and unit; they are not a ranking of quality, and nothing is summed across resources because collections overlap. Aggregates, provider claims and training mixtures are kept apart from open-corpus sizes. Access and licence notes are summaries: check the original terms before use.",
+ "snapshot": {
+  "exported_at": "2026-11-23T19:29:29.000Z",
+  "built_at": "2026-11-23T21:24:28.785Z"
+ },
+ "vocabulary": {
+  "lanes": [
+   {
+    "key": "robot",
+    "label": "Robot-recorded",
+    "note": "Recorded on physical robots: teleoperation, scripted or policy rollouts."
+   },
+   {
+    "key": "human",
+    "label": "Human observation and motion",
+    "note": "Human video, motion capture and hand or body pose. No robot actions unless a resource retargets them."
+   },
+   {
+    "key": "synthetic",
+    "label": "Synthetic, simulated and retargeted",
+    "note": "Generated in simulation, or derived from other data such as human motion retargeted to robots."
+   },
+   {
+    "key": "assets",
+    "label": "Environment assets",
+    "note": "Scenes and objects for generating data or evaluating, not recorded episodes."
+   },
+   {
+    "key": "mixed",
+    "label": "Mixed origins",
+    "note": "Robot, human and simulated data combined in one resource or training mixture."
+   },
+   {
+    "key": "other",
+    "label": "Origin not established or not applicable",
+    "note": "Services and portals whose data origin the public pages do not establish, or that hold no data of their own."
+   }
+  ],
+  "origins": {
+   "real_robot": "Real robot",
+   "human_capture": "Human capture",
+   "simulation": "Simulation",
+   "derived": "Derived or retargeted",
+   "mixed": "Mixed",
+   "not_applicable": "Not applicable",
+   "unknown": "Not established"
+  },
+  "classes": {
+   "corpus": {
+    "label": "Corpus",
+    "shape": "corpus"
+   },
+   "synthetic_data_resource": {
+    "label": "Synthetic data resource",
+    "shape": "corpus"
+   },
+   "aggregate": {
+    "label": "Aggregate of other datasets",
+    "shape": "aggregate"
+   },
+   "collection": {
+    "label": "Collection of datasets",
+    "shape": "aggregate"
+   },
+   "evaluation_corpus": {
+    "label": "Evaluation data",
+    "shape": "evaluation"
+   },
+   "simulation_assets": {
+    "label": "Environment assets",
+    "shape": "assets"
+   },
+   "model_data_resource": {
+    "label": "Model training mixture",
+    "shape": "mixture"
+   },
+   "commercial_data_service": {
+    "label": "Commercial data service",
+    "shape": "service"
+   },
+   "search_portal": {
+    "label": "Search portal",
+    "shape": "service"
+   }
+  },
+  "modalities": {
+   "rgb": "RGB video",
+   "depth": "Depth",
+   "point_cloud": "Point clouds",
+   "human_video": "Human video",
+   "audio": "Audio",
+   "gaze": "Gaze",
+   "imu": "IMU",
+   "camera_pose": "Camera pose",
+   "joint_state": "Joint states",
+   "effort": "Joint effort",
+   "action": "Robot actions",
+   "trajectory": "End-effector trajectories",
+   "motion": "Motion data",
+   "body_pose": "Body pose",
+   "hand_pose": "Hand pose",
+   "grasp_pose": "Grasp poses",
+   "object_pose": "Object pose",
+   "tactile": "Tactile",
+   "force": "Force",
+   "language": "Language",
+   "planning": "Planning labels",
+   "affordance": "Affordances",
+   "task_metadata": "Task metadata",
+   "object_mesh": "Object meshes",
+   "object_assets": "Object assets",
+   "scene_geometry": "Scene geometry"
+  },
+  "modality_states": {
+   "unknown": "Not established",
+   "not_applicable": "Not applicable"
+  },
+  "learning_uses": [
+   {
+    "key": "manipulation",
+    "label": "Manipulation"
+   },
+   {
+    "key": "bimanual",
+    "label": "Bimanual"
+   },
+   {
+    "key": "dexterity",
+    "label": "Dexterity"
+   },
+   {
+    "key": "grasping",
+    "label": "Grasping"
+   },
+   {
+    "key": "contact",
+    "label": "Contact"
+   },
+   {
+    "key": "precision",
+    "label": "Precision"
+   },
+   {
+    "key": "deformable objects",
+    "label": "Deformable objects"
+   },
+   {
+    "key": "mobile manipulation",
+    "label": "Mobile manipulation"
+   },
+   {
+    "key": "whole-body",
+    "label": "Whole-body"
+   },
+   {
+    "key": "locomotion",
+    "label": "Locomotion"
+   },
+   {
+    "key": "motion",
+    "label": "Motion"
+   },
+   {
+    "key": "navigation",
+    "label": "Navigation"
+   },
+   {
+    "key": "human-to-robot",
+    "label": "Human-to-robot"
+   },
+   {
+    "key": "human-object interaction",
+    "label": "Human-object interaction"
+   },
+   {
+    "key": "cross-embodiment",
+    "label": "Cross-embodiment"
+   },
+   {
+    "key": "generalization",
+    "label": "Generalization"
+   },
+   {
+    "key": "long-horizon",
+    "label": "Long-horizon"
+   },
+   {
+    "key": "lifelong learning",
+    "label": "Lifelong learning"
+   },
+   {
+    "key": "planning",
+    "label": "Planning"
+   },
+   {
+    "key": "reasoning",
+    "label": "Reasoning"
+   },
+   {
+    "key": "memory",
+    "label": "Memory"
+   },
+   {
+    "key": "VLA",
+    "label": "Vision-language-action (VLA)"
+   },
+   {
+    "key": "policy learning",
+    "label": "Policy learning"
+   },
+   {
+    "key": "visual pretraining",
+    "label": "Visual pretraining"
+   },
+   {
+    "key": "multimodal learning",
+    "label": "Multimodal learning"
+   },
+   {
+    "key": "egocentric perception",
+    "label": "Egocentric perception"
+   },
+   {
+    "key": "skilled activity understanding",
+    "label": "Skilled activity understanding"
+   },
+   {
+    "key": "world models",
+    "label": "World models"
+   },
+   {
+    "key": "dynamics",
+    "label": "Dynamics"
+   },
+   {
+    "key": "physical understanding",
+    "label": "Physical understanding"
+   },
+   {
+    "key": "embodied learning",
+    "label": "Embodied learning"
+   },
+   {
+    "key": "simulation",
+    "label": "Simulation"
+   },
+   {
+    "key": "evaluation",
+    "label": "Evaluation"
+   },
+   {
+    "key": "diagnostics",
+    "label": "Diagnostics"
+   },
+   {
+    "key": "policy analysis",
+    "label": "Policy analysis"
+   },
+   {
+    "key": "data discovery",
+    "label": "Data discovery"
+   }
+  ],
+  "access": {
+   "download_instructions": "Download instructions published",
+   "dataset_card": "Dataset card",
+   "dataset_link": "Dataset link",
+   "partial_release": "Partial release",
+   "project_link": "Project page",
+   "paper_and_release_links": "Paper and release links",
+   "collection_link": "Collection page",
+   "gated_download": "Gated download (access request)",
+   "generation_code": "Generation code only",
+   "project_download_terms": "Download under project terms",
+   "contact_provider": "Contact the provider",
+   "search_portal": "Search portal"
+  },
+  "body_families": [
+   {
+    "key": "humanoid",
+    "label": "Humanoid"
+   },
+   {
+    "key": "dual_arm",
+    "label": "Dual-arm or bimanual"
+   },
+   {
+    "key": "arm",
+    "label": "Single arm"
+   },
+   {
+    "key": "robot_hand",
+    "label": "Dexterous robot hand"
+   },
+   {
+    "key": "mobile",
+    "label": "Mobile base"
+   },
+   {
+    "key": "multi",
+    "label": "Several robot bodies"
+   },
+   {
+    "key": "human",
+    "label": "Human body or hands"
+   },
+   {
+    "key": "none",
+    "label": "No robot"
+   }
+  ],
+  "qualifiers": {
+   "reported": "as reported",
+   "approximate": "about",
+   "more_than": "more than"
+  },
+  "release_statuses": {
+   "reported_release": "Reported release",
+   "paper_scope": "Paper scope",
+   "aggregate_scope": "Aggregate scope: overlaps its sources",
+   "provider_claim": "Provider claim",
+   "training_mix": "Training mixture"
+  },
+  "scale_metrics": [
+   "trajectories",
+   "episodes",
+   "sequences",
+   "duration",
+   "frames",
+   "clips"
+  ]
+ },
+ "counts": {
+  "resources": 35,
+  "resources_outside_atlas": 0,
+  "corpora": 21,
+  "resources_with_quantities": 21,
+  "resources_awaiting_quantities": 14,
+  "quantities": 62,
+  "quantities_withheld": 0,
+  "quantities_without_value": 0,
+  "scale_groups": 26,
+  "by_lane": {
+   "robot": 10,
+   "human": 12,
+   "synthetic": 7,
+   "assets": 1,
+   "mixed": 2,
+   "other": 3
+  },
+  "by_class": {
+   "corpus": 21,
+   "synthetic_data_resource": 1,
+   "aggregate": 3,
+   "collection": 4,
+   "evaluation_corpus": 1,
+   "simulation_assets": 1,
+   "model_data_resource": 1,
+   "commercial_data_service": 2,
+   "search_portal": 1
+  },
+  "benchmark_links": 6
+ },
+ "resources": [
+  {
+   "name": "PHUMA",
+   "url": "https://github.com/DAVIAN-Robotics/PHUMA",
+   "description": "Code and pre-built motion data for PHUMA: Physically Reliable Humanoid Locomotion Dataset; human motion curated and retargeted to humanoids.",
+   "data_origin": "derived",
+   "resource_class": "corpus",
+   "embodiment": "Unitree G1; H1-2 retargeted motion",
+   "capture_method": "Physics-constrained human motion retargeting",
+   "data_format": "Robot-specific motion files",
+   "access_status": "download_instructions",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Curates physically plausible humanoid motion.",
+   "limitations": "Source is human motion; not collected robot-action episodes.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://github.com/DAVIAN-Robotics/PHUMA",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-phuma",
+   "lane": "synthetic",
+   "modalities": [
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "motion",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "locomotion",
+    "whole-body"
+   ],
+   "body_families": [
+    "humanoid"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "Egocentrik 10K",
+   "url": "https://huggingface.co/datasets/builddotai/Egocentric-10K",
+   "description": "Publisher-reported industrial egocentric human video collection: 10,000 hours and 192,900 clips in the current dataset card; not robot-action demonstrations.",
+   "data_origin": "human_capture",
+   "resource_class": "corpus",
+   "embodiment": "Human industrial workers",
+   "capture_method": "Head-mounted industrial video",
+   "data_format": "H.265/MP4",
+   "access_status": "dataset_card",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "10K card snapshot 2026-11-23",
+   "key_takeaway": "Industrial egocentric video with explicit hours and clip counts.",
+   "limitations": "Human video is not robot-action supervision; largest/first claims are not independently established.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://huggingface.co/datasets/builddotai/Egocentric-10K",
+   "source_locator": "Dataset Statistics",
+   "id": "ds-egocentrik-10k",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "visual pretraining",
+    "world models"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 4,
+   "evaluation": false
+  },
+  {
+   "name": "LAFAN1",
+   "url": "https://github.com/ubisoft/ubisoft-laforge-animation-dataset",
+   "description": "Ubisoft La Forge Animation Dataset",
+   "data_origin": "human_capture",
+   "resource_class": "corpus",
+   "embodiment": "Human skeleton",
+   "capture_method": "Optical motion capture",
+   "data_format": "BVH",
+   "access_status": "download_instructions",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "LAFAN1 BVH corpus",
+   "key_takeaway": "A human animation corpus that can support retargeting.",
+   "limitations": "Retargeting and physical correction are separate; raw LAFAN1 is not a physically validated robot dataset.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://github.com/ubisoft/ubisoft-laforge-animation-dataset",
+   "source_locator": "README: Data",
+   "id": "ds-lafan1",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "motion",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "motion",
+    "locomotion"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 4,
+   "evaluation": false
+  },
+  {
+   "name": "Motiontrans",
+   "url": "https://motiontrans.github.io/",
+   "description": "Human VR Data Enable Motion-Level Learning for Robotic Manipulation Policies",
+   "data_origin": "human_capture",
+   "resource_class": "corpus",
+   "embodiment": "Human VR demonstrations; target robot arm",
+   "capture_method": "Human VR motion collection",
+   "data_format": "See project release",
+   "access_status": "dataset_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Human motion knowledge is auxiliary training data.",
+   "limitations": "Collection-speed comparisons are experiment-specific; no universal speedup imported.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://motiontrans.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-motiontrans",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "motion",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "manipulation",
+    "human-to-robot"
+   ],
+   "body_families": [
+    "arm",
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "Galaxea",
+   "url": "https://opengalaxea.github.io/GalaxeaVLA/",
+   "description": "Galaxea Open-World Dataset and G0 Dual-System VLA Model",
+   "data_origin": "real_robot",
+   "resource_class": "corpus",
+   "embodiment": "Galaxea R1 Lite mobile dual arm",
+   "capture_method": "Whole-body robot teleoperation",
+   "data_format": "See dataset release",
+   "access_status": "dataset_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Uniform embodiment and subtask language support coordinated mobile tasks.",
+   "limitations": "G0 model performance is not a measure of dataset quality.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://opengalaxea.github.io/GalaxeaVLA/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-galaxea",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "bimanual",
+    "mobile manipulation"
+   ],
+   "body_families": [
+    "dual_arm",
+    "mobile"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 1,
+   "evaluation": false
+  },
+  {
+   "name": "Open X-Embodiment",
+   "url": "https://robotics-transformer-x.github.io/",
+   "description": "Robotic Learning Datasets and RT-X Models",
+   "data_origin": "real_robot",
+   "resource_class": "aggregate",
+   "embodiment": "22 robot embodiments (project scope)",
+   "capture_method": "Aggregation of robot datasets",
+   "data_format": "RLDS",
+   "access_status": "dataset_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Pools robot experience across bodies.",
+   "limitations": "Constituent datasets and releases overlap other catalogue entries; no grand trajectory total.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://robotics-transformer-x.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-open-x-embodiment",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    },
+    {
+     "key": "depth",
+     "partial": true
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "cross-embodiment",
+    "manipulation"
+   ],
+   "body_families": [
+    "multi"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 3,
+   "evaluation": false
+  },
+  {
+   "name": "Droid",
+   "url": "https://droid-dataset.github.io/",
+   "description": "A Large-Scale In-the-Wild Robot Manipulation Dataset",
+   "data_origin": "real_robot",
+   "resource_class": "corpus",
+   "embodiment": "Franka Panda; standardized mobile desk setup",
+   "capture_method": "Distributed VR teleoperation",
+   "data_format": "TFDS/RLDS",
+   "access_status": "download_instructions",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Diversity of physical scenes under one collection setup.",
+   "limitations": "Language and calibration updates have their own release scope.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://droid-dataset.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-droid",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "depth",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "manipulation",
+    "generalization"
+   ],
+   "body_families": [
+    "arm"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 4,
+   "evaluation": false
+  },
+  {
+   "name": "OpenEgo",
+   "url": "https://github.com/physicalinc/openego",
+   "description": "A Multimodal Egocentric Dataset for Dexterous Manipulation",
+   "data_origin": "human_capture",
+   "resource_class": "aggregate",
+   "embodiment": "Human hands",
+   "capture_method": "Aggregation and annotation of six human datasets",
+   "data_format": "Unified metadata; optional LeRobot conversion",
+   "access_status": "partial_release",
+   "license_note": "Code MIT; constituent datasets retain their own licences",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Adds common hand-pose and action annotation to existing corpora.",
+   "limitations": "Contains EgoDex; do not add their sizes. Code MIT does not override source-data licences.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://github.com/ahadjawaid/openego",
+   "source_locator": "Overview; Dataset Composition; Download; License",
+   "id": "ds-openego",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "hand_pose",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "dexterity",
+    "human-to-robot"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [
+    "ds-egodex"
+   ],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 1,
+   "evaluation": false
+  },
+  {
+   "name": "ShareRobot",
+   "url": "https://huggingface.co/datasets/BAAI/ShareRobot",
+   "description": "A high-quality heterogeneous dataset that labels multi-dimensional information, including task planning, object affordance, and end-effector trajectory, effectively enhancing various robotic capabilities.",
+   "data_origin": "derived",
+   "resource_class": "aggregate",
+   "embodiment": "Heterogeneous source robot data",
+   "capture_method": "Annotation of existing demonstrations",
+   "data_format": "JSON and underlying source data",
+   "access_status": "dataset_card",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Adds planning, affordance and trajectory supervision.",
+   "limitations": "Annotation counts are not independent newly collected episodes.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://huggingface.co/datasets/BAAI/ShareRobot",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-sharerobot",
+   "lane": "synthetic",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "planning",
+     "partial": false
+    },
+    {
+     "key": "affordance",
+     "partial": false
+    },
+    {
+     "key": "trajectory",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "planning",
+    "manipulation",
+    "reasoning"
+   ],
+   "body_families": [
+    "multi"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "HUMOTO",
+   "url": "https://jiaxin-lu.github.io/humoto/",
+   "description": "HUMOTO contains 4D data of human-object interactions, including 3D human poses and artists-made object meshes, and their temporal evolution. It features 735 sequences (7,875 seconds at 30fps), and 72 articulated parts. HUMOTO features Mixamo-compatible rigging and can be combined with eixisting Mixamo data.",
+   "data_origin": "human_capture",
+   "resource_class": "corpus",
+   "embodiment": "Human whole body and articulated objects",
+   "capture_method": "4D motion capture",
+   "data_format": "See public data instructions",
+   "access_status": "partial_release",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Captures temporal body-object geometry.",
+   "limitations": "Public subset and full dataset access differ; no guarantee of robot contact validity.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://jiaxin-lu.github.io/humoto/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-humoto",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "body_pose",
+     "partial": false
+    },
+    {
+     "key": "object_mesh",
+     "partial": false
+    },
+    {
+     "key": "motion",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "whole-body",
+    "human-object interaction"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 3,
+   "evaluation": false
+  },
+  {
+   "name": "LIBERO demonstrations",
+   "url": "https://github.com/Lifelong-Robot-Learning/LIBERO",
+   "description": "Human teleoperation demonstration datasets for the LIBERO task suites; the evaluation protocol is catalogued separately in Benchmarks.",
+   "data_origin": "simulation",
+   "resource_class": "corpus",
+   "embodiment": "Robot arm in simulation",
+   "capture_method": "Human teleoperation in simulation",
+   "data_format": "See linked repository",
+   "access_status": "download_instructions",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Training demonstrations paired with separately catalogued evaluation.",
+   "limitations": "Existing data-facet classification retained; release-specific quantities not re-extracted.",
+   "review_status": "Existing benchmark-linked data facet retained; no new numerical audit",
+   "checked_at": "2026-11-23",
+   "source_url": "https://github.com/Lifelong-Robot-Learning/LIBERO",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-libero",
+   "lane": "synthetic",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "manipulation",
+    "lifelong learning"
+   ],
+   "body_families": [
+    "arm"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [
+    {
+     "id": "bm-libero",
+     "name": "LIBERO"
+    }
+   ],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "CALVIN play dataset",
+   "url": "https://github.com/mees/calvin",
+   "description": "Recorded robot interaction data with language annotations and environment splits for policy learning; CALVIN evaluation is a linked benchmark.",
+   "data_origin": "simulation",
+   "resource_class": "corpus",
+   "embodiment": "Robot arm in simulation",
+   "capture_method": "Play-data collection in simulation",
+   "data_format": "See linked repository",
+   "access_status": "download_instructions",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Interaction sequences and language support long-horizon learning.",
+   "limitations": "Split and environment conditions matter; not a humanoid corpus.",
+   "review_status": "Existing benchmark-linked data facet retained; no new numerical audit",
+   "checked_at": "2026-11-23",
+   "source_url": "https://github.com/mees/calvin",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-calvin",
+   "lane": "synthetic",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "manipulation",
+    "long-horizon"
+   ],
+   "body_families": [
+    "arm"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [
+    {
+     "id": "bm-calvin",
+     "name": "CALVIN"
+    }
+   ],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "RoboEval demonstrations",
+   "url": "https://robo-eval.github.io/",
+   "description": "Human demonstration data accompanying the bimanual manipulation tasks; benchmark stages and diagnostic metrics are in the linked benchmark record.",
+   "data_origin": "simulation",
+   "resource_class": "corpus",
+   "embodiment": "Dual-arm robot in simulation",
+   "capture_method": "Human demonstration collection",
+   "data_format": "See linked project",
+   "access_status": "project_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Demonstrations accompany structured bimanual tasks.",
+   "limitations": "Data facet retained; no fresh release/quantity audit for this resource.",
+   "review_status": "Existing benchmark-linked data facet retained; no new numerical audit",
+   "checked_at": "2026-11-23",
+   "source_url": "https://robo-eval.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-roboeval",
+   "lane": "synthetic",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "bimanual",
+    "diagnostics"
+   ],
+   "body_families": [
+    "dual_arm"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [
+    {
+     "id": "bm-roboeval",
+     "name": "RoboEval"
+    }
+   ],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "Physics IQ evaluation dataset",
+   "url": "https://physics-iq.github.io/",
+   "description": "Video evaluation dataset for testing physical understanding across five physics categories; scoring is defined by the linked Physics IQ benchmark.",
+   "data_origin": "human_capture",
+   "resource_class": "evaluation_corpus",
+   "embodiment": "No robot; physical scene videos",
+   "capture_method": "Recorded physical scenes for evaluation",
+   "data_format": "See benchmark release",
+   "access_status": "project_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Video test data for physics evaluation.",
+   "limitations": "Evaluation data must not be treated as training data for improving test scores.",
+   "review_status": "Existing benchmark-linked data facet retained; no new numerical audit",
+   "checked_at": "2026-11-23",
+   "source_url": "https://physics-iq.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-physics-iq",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "physical understanding",
+    "evaluation"
+   ],
+   "body_families": [
+    "none"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [
+    {
+     "id": "bm-physics-iq",
+     "name": "Physics IQ"
+    }
+   ],
+   "quantities": 0,
+   "evaluation": true
+  },
+  {
+   "name": "Egoscale",
+   "url": "https://www.egoscale.ai/",
+   "description": "The Egocentric Data Engine for Robotics. Scaled real-world egocentric demonstrations for high-quality VLA training",
+   "data_origin": "human_capture",
+   "resource_class": "commercial_data_service",
+   "embodiment": "Human demonstrations",
+   "capture_method": "Commercial continuous collection",
+   "data_format": "Not established",
+   "access_status": "contact_provider",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "A data supply service rather than a fixed public dataset.",
+   "limitations": "Provider volume claims are not downloadable open-corpus size.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://www.egoscale.ai/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-egoscale",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "visual pretraining",
+    "human-to-robot"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 1,
+   "evaluation": false
+  },
+  {
+   "name": "Human Archive",
+   "url": "https://www.humanarchive.ai/",
+   "description": "Archiving the physical world for embodied intelligence.",
+   "data_origin": "unknown",
+   "resource_class": "commercial_data_service",
+   "embodiment": "Human physical activity",
+   "capture_method": "Provider-operated physical-data infrastructure",
+   "data_format": "Not established",
+   "access_status": "contact_provider",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Infrastructure/provider resource.",
+   "limitations": "No public corpus scope, sensor specification or volume established from accessible page.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://www.humanarchive.ai/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-human-archive",
+   "lane": "other",
+   "modalities": [],
+   "modality_state": "unknown",
+   "learning_uses": [
+    "embodied learning"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "MolmoSpaces environments and assets",
+   "url": "https://molmospaces.allen.ai/",
+   "description": "Open environment and object-asset ecosystem for data generation and policy training; MolmoSpaces-Bench leaderboard and evaluation are catalogued separately.",
+   "data_origin": "simulation",
+   "resource_class": "simulation_assets",
+   "embodiment": "Task-dependent robots; environment assets",
+   "capture_method": "Procedural generation and asset curation",
+   "data_format": "See project distribution",
+   "access_status": "project_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Reusable scenes and assets enable training and evaluation.",
+   "limitations": "Scene/object inventory is not an episode count; numeric scope needs native-page confirmation.",
+   "review_status": "Existing source retained; numerical scope pending native-page review",
+   "checked_at": "2026-11-23",
+   "source_url": "https://molmospaces.allen.ai/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-molmospaces",
+   "lane": "assets",
+   "modalities": [
+    {
+     "key": "scene_geometry",
+     "partial": false
+    },
+    {
+     "key": "object_assets",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "simulation",
+    "navigation",
+    "manipulation"
+   ],
+   "body_families": [
+    "multi"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [
+    {
+     "id": "bm-molmospaces",
+     "name": "MolmoSpaces-Bench"
+    }
+   ],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "LDA -1B",
+   "url": "https://pku-epic.github.io/LDA/",
+   "description": "LDA-1B model project and its EI-30k training-data mixture: over 30,000 hours of heterogeneous human and robot interaction data; standalone full-corpus availability not established.",
+   "data_origin": "mixed",
+   "resource_class": "model_data_resource",
+   "embodiment": "Human and robot interaction data",
+   "capture_method": "Heterogeneous data ingestion",
+   "data_format": "Not established for full training mix",
+   "access_status": "project_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "EI-30k training mixture",
+   "key_takeaway": "EI-30k is the associated training collection; LDA-1B is a model.",
+   "limitations": "Training-mixture hours do not establish a separately downloadable dataset or independent unique hours.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://pku-epic.github.io/LDA/",
+   "source_locator": "Large-scale Heterogeneous Embodied Data (EI-30k)",
+   "id": "ds-lda-1b",
+   "lane": "mixed",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": true
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "dynamics",
+    "world models",
+    "policy learning"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 1,
+   "evaluation": false
+  },
+  {
+   "name": "UnifoLM WBT Dataset (Unitree)",
+   "url": "https://huggingface.co/collections/unitreerobotics/unifolm-wbt-dataset",
+   "description": "UnifoLM_WBT_Dataset",
+   "data_origin": "real_robot",
+   "resource_class": "collection",
+   "embodiment": "Unitree humanoids; subdataset-specific",
+   "capture_method": "Whole-body teleoperation",
+   "data_format": "Subdataset-specific",
+   "access_status": "collection_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "A growing collection of robot datasets.",
+   "limitations": "Do not infer G1/H1 coverage, format or licence uniformly from collection title.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://huggingface.co/collections/unitreerobotics/unifolm-wbt-dataset",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-unifolm-wbt-dataset-unitree",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "whole-body",
+    "manipulation"
+   ],
+   "body_families": [
+    "humanoid"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "HumanNet",
+   "url": "https://dagroup-pku.github.io/HumanNet/",
+   "description": "HumanNet aims to provide a comprehensive human-centric dataset, designed as scalable data infrastructure for training, evaluating, and advancing embodied learning models.",
+   "data_origin": "unknown",
+   "resource_class": "collection",
+   "embodiment": "Human-centric data",
+   "capture_method": "Scalable human-data infrastructure",
+   "data_format": "Not established",
+   "access_status": "project_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Human-centric data infrastructure.",
+   "limitations": "Current page is JS-rendered; detailed scope and quantities remain unverified.",
+   "review_status": "Existing source retained; numerical scope pending native-page review",
+   "checked_at": "2026-11-23",
+   "source_url": "https://dagroup-pku.github.io/HumanNet/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-humannet",
+   "lane": "other",
+   "modalities": [],
+   "modality_state": "unknown",
+   "learning_uses": [
+    "embodied learning"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "SynData",
+   "url": "https://huggingface.co/datasets/PsiBotAI/SynData",
+   "description": "Human egocentric and exoskeleton-glove manipulation data with subset-specific vision, pose and tactile signals; Zarr volumes and Parquet clip metadata.",
+   "data_origin": "human_capture",
+   "resource_class": "corpus",
+   "embodiment": "Human hands/arms; exoskeleton and bare-hand subsets",
+   "capture_method": "Exoskeleton glove and human egocentric capture",
+   "data_format": "Zarr volumes; Parquet clip metadata",
+   "access_status": "dataset_card",
+   "license_note": "CC BY 4.0 as stated in dataset card; third-party rights remain",
+   "version_scope": "Four-subset card snapshot 2026-11-23",
+   "key_takeaway": "Human multimodal data with subset-specific sensing.",
+   "limitations": "Not simply robot-arm demonstrations. Tactile is subset-specific; HF preview rows are clips.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://huggingface.co/datasets/PsiBotAI/SynData",
+   "source_locator": "Overview; Dataset Subsets; Storage Format; License",
+   "id": "ds-syndata",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "depth",
+     "partial": false
+    },
+    {
+     "key": "imu",
+     "partial": false
+    },
+    {
+     "key": "hand_pose",
+     "partial": false
+    },
+    {
+     "key": "tactile",
+     "partial": true
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "dexterity",
+    "human-to-robot",
+    "multimodal learning"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": true,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 4,
+   "evaluation": false
+  },
+  {
+   "name": "Dataset.bot",
+   "url": "https://datasets.bot/",
+   "description": "Search engine over 51,955+ hours of open robot data: describe a behaviour to find datasets whose footage shows it, then export the episodes as LeRobot, RLDS or MCAP.",
+   "data_origin": "not_applicable",
+   "resource_class": "search_portal",
+   "embodiment": "Indexed heterogeneous resources",
+   "capture_method": "Search and indexing",
+   "data_format": "Exports depend on indexed resource",
+   "access_status": "search_portal",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "A discovery portal rather than another independent corpus.",
+   "limitations": "Indexed hours overlap upstream datasets; never add portal volume to corpus volumes.",
+   "review_status": "Existing source retained; numerical scope pending native-page review",
+   "checked_at": "2026-11-23",
+   "source_url": "https://datasets.bot/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-dataset-bot",
+   "lane": "other",
+   "modalities": [],
+   "modality_state": "not_applicable",
+   "learning_uses": [
+    "data discovery"
+   ],
+   "body_families": [
+    "multi"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "RoboColosseum rollout data",
+   "url": "https://huggingface.co/RoboColosseum",
+   "description": "Portal to rollout datasets accompanying distributed real-world robot evaluations. Individual datasets and licences differ; benchmark protocol is linked separately.",
+   "data_origin": "real_robot",
+   "resource_class": "collection",
+   "embodiment": "Multiple embodiments",
+   "capture_method": "Distributed real-robot rollout evaluation",
+   "data_format": "Repository-specific",
+   "access_status": "collection_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Portal to rollout data associated with evaluation.",
+   "limitations": "Not a single uniformly licensed corpus; failures and tracks need explicit scope.",
+   "review_status": "Existing benchmark-linked data facet retained; no new numerical audit",
+   "checked_at": "2026-11-23",
+   "source_url": "https://huggingface.co/RoboColosseum",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-robocolosseum",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "task_metadata",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "evaluation",
+    "policy analysis"
+   ],
+   "body_families": [
+    "multi"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [
+    {
+     "id": "bm-robocolosseum",
+     "name": "RoboColosseum"
+    }
+   ],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "HubEgo-100K",
+   "url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+   "description": "Egocentric human skilled-work video. Current card reports 20,113 cumulative hours across releases 1+2; 100K is a target/name, not current released hours. LeRobot v3 and MCAP; CC BY 4.0 as stated.",
+   "data_origin": "human_capture",
+   "resource_class": "corpus",
+   "embodiment": "Human skilled manual work",
+   "capture_method": "Head-mounted recording",
+   "data_format": "LeRobot v3; MCAP",
+   "access_status": "dataset_card",
+   "license_note": "CC BY 4.0 as stated in dataset card",
+   "version_scope": "Releases 1+2; card snapshot 2026-11-23",
+   "key_takeaway": "Versioned releases distinguish current data from the 100K goal.",
+   "limitations": "Current card total and release sums differ by 1 hour after rounding; preserve reported values.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+   "source_locator": "Releases table; Sensors; Format",
+   "id": "ds-hubego-100k",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "imu",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "visual pretraining",
+    "human-to-robot"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": true,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 4,
+   "evaluation": false
+  },
+  {
+   "name": "AgiBot World (Colosseo)",
+   "url": "https://arxiv.org/abs/2503.06669",
+   "description": "Large-scale real-robot manipulation collection; scope varies across releases and sensor configurations.",
+   "data_origin": "real_robot",
+   "resource_class": "corpus",
+   "embodiment": "AgiBot manipulation platform; release-dependent hands",
+   "capture_method": "Large-scale robot demonstration collection",
+   "data_format": "Release-specific",
+   "access_status": "paper_and_release_links",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Colosseo; arXiv v5",
+   "key_takeaway": "Large-scale task coverage with a standardized collection pipeline.",
+   "limitations": "Dexterous/tactile extension does not prove every trajectory has tactile or dexterous-hand data.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://arxiv.org/abs/2503.06669",
+   "source_locator": "Abstract",
+   "id": "ds-agibot-world",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    },
+    {
+     "key": "tactile",
+     "partial": true
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "bimanual",
+    "manipulation",
+    "VLA"
+   ],
+   "body_families": [],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 2,
+   "evaluation": false
+  },
+  {
+   "name": "BridgeData V2",
+   "url": "https://rail-berkeley.github.io/bridgedata/",
+   "description": "Robot manipulation collection with 50,365 teleoperated demonstrations and 9,731 scripted rollouts.",
+   "data_origin": "real_robot",
+   "resource_class": "corpus",
+   "embodiment": "WidowX manipulation arm",
+   "capture_method": "Teleoperation and scripted policy rollouts",
+   "data_format": "See native release; RLDS conversions exist",
+   "access_status": "download_instructions",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "V2",
+   "key_takeaway": "Explicitly separates teleoperated and scripted data.",
+   "limitations": "Not all 60,096 trajectories are teleoperated; source overlap with aggregates must be checked.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://rail-berkeley.github.io/bridgedata/",
+   "source_locator": "Dataset Composition",
+   "id": "ds-bridgedata-v2",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "manipulation",
+    "generalization"
+   ],
+   "body_families": [
+    "arm"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 4,
+   "evaluation": false
+  },
+  {
+   "name": "RH20T",
+   "url": "https://rh20t.github.io/",
+   "description": "Contact-rich robot manipulation sequences paired with human demonstration videos and multimodal sensor data.",
+   "data_origin": "real_robot",
+   "resource_class": "corpus",
+   "embodiment": "Multiple robot arms",
+   "capture_method": "Contact-rich teleoperation",
+   "data_format": "See RH20T release",
+   "access_status": "dataset_link",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Source snapshot 2026-11-23; exact release not pinned",
+   "key_takeaway": "Pairs robot sensor data with human demonstrations.",
+   "limitations": "Tactile sensor coverage should not be generalized to every sequence.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://rh20t.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "id": "ds-rh20t",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "depth",
+     "partial": false
+    },
+    {
+     "key": "force",
+     "partial": false
+    },
+    {
+     "key": "audio",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "human_video",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "contact",
+    "manipulation"
+   ],
+   "body_families": [
+    "arm",
+    "multi"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 1,
+   "evaluation": false
+  },
+  {
+   "name": "RoboMIND 2.0",
+   "url": "https://arxiv.org/abs/2512.24653",
+   "description": "Bimanual robot data collection with tactile, mobile and separate simulated subsets.",
+   "data_origin": "mixed",
+   "resource_class": "corpus",
+   "embodiment": "Six robot embodiments; dual-arm/mobile subsets",
+   "capture_method": "Real teleoperation plus digital twins",
+   "data_format": "Release-specific",
+   "access_status": "paper_and_release_links",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "2.0; arXiv v3",
+   "key_takeaway": "Separates physical, tactile, mobile and simulated subsets.",
+   "limitations": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://arxiv.org/abs/2512.24653",
+   "source_locator": "Abstract",
+   "id": "ds-robomind2",
+   "lane": "mixed",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "tactile",
+     "partial": true
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "bimanual",
+    "mobile manipulation",
+    "contact"
+   ],
+   "body_families": [
+    "dual_arm",
+    "mobile",
+    "multi"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 6,
+   "evaluation": false
+  },
+  {
+   "name": "LingYu Real-World",
+   "url": "https://huggingface.co/datasets/LingYu-Robotics/lingyu-realworld-robotics-dataset",
+   "description": "First-release tabletop bimanual teleoperation data, synchronized at 45 Hz; future retail data is separate.",
+   "data_origin": "real_robot",
+   "resource_class": "corpus",
+   "embodiment": "LingYu TA2 wheeled dual-arm; parallel grippers",
+   "capture_method": "VR first-person teleoperation",
+   "data_format": "LeRobot v2.1 (Parquet + MP4/HEVC)",
+   "access_status": "dataset_card",
+   "license_note": "CC BY-NC-SA 4.0 (data card); retail access separate",
+   "version_scope": "First public tabletop release",
+   "key_takeaway": "Synchronized tabletop data with explicit release/access terms.",
+   "limitations": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://huggingface.co/datasets/LingYu-Robotics/lingyu-realworld-robotics-dataset",
+   "source_locator": "Dataset at a Glance; Data Description; Task Coverage",
+   "id": "ds-lingyu",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "effort",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "bimanual",
+    "deformable objects",
+    "precision"
+   ],
+   "body_families": [
+    "dual_arm",
+    "mobile"
+   ],
+   "licence_stated": true,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 5,
+   "evaluation": false
+  },
+  {
+   "name": "RoboCOIN",
+   "url": "https://github.com/FlagOpen/RoboCOIN",
+   "description": "Multi-platform bimanual data collection with LeRobot tooling and access-controlled downloads.",
+   "data_origin": "real_robot",
+   "resource_class": "collection",
+   "embodiment": "Multiple bimanual platforms",
+   "capture_method": "Multi-lab collection",
+   "data_format": "LeRobot v2.1",
+   "access_status": "gated_download",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Current release not pinned",
+   "key_takeaway": "Shared schema and tooling across bimanual platforms.",
+   "limitations": "Paper headline and released subset counts have differed; no unverified 180K download total imported.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://github.com/FlagOpen/RoboCOIN",
+   "source_locator": "README dataset access and LeRobot format; issue #26",
+   "id": "ds-robocoin",
+   "lane": "robot",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "bimanual",
+    "cross-embodiment"
+   ],
+   "body_families": [
+    "dual_arm",
+    "multi"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 0,
+   "evaluation": false
+  },
+  {
+   "name": "DexManipNet",
+   "url": "https://huggingface.co/datasets/LiKailin/DexManipNet",
+   "description": "Simulated dexterous robot trajectories generated by transferring human hand-object motion with ManipTrans.",
+   "data_origin": "simulation",
+   "resource_class": "corpus",
+   "embodiment": "Simulated Inspire Hand; hand variants",
+   "capture_method": "ManipTrans transfer from human motion",
+   "data_format": "See ManipTrans release",
+   "access_status": "dataset_card",
+   "license_note": "HF card says GPL-3.0; assets/source-motion terms require separate checks",
+   "version_scope": "CVPR 2025 paper scope",
+   "key_takeaway": "Human-derived robot demonstrations executed in simulation.",
+   "limitations": "HF file rows are not episode counts.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Li_ManipTrans_Efficient_Dexterous_Bimanual_Manipulation_Transfer_via_Residual_Learning_CVPR_2025_paper.pdf",
+   "source_locator": "Section 3.4 DexManipNet Dataset",
+   "id": "ds-dexmanipnet",
+   "lane": "synthetic",
+   "modalities": [
+    {
+     "key": "hand_pose",
+     "partial": false
+    },
+    {
+     "key": "object_pose",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "dexterity",
+    "bimanual"
+   ],
+   "body_families": [
+    "robot_hand"
+   ],
+   "licence_stated": true,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 4,
+   "evaluation": false
+  },
+  {
+   "name": "UltraDexGrasp-20M",
+   "url": "https://arxiv.org/abs/2603.05312",
+   "description": "Synthetic dexterous grasping data reported as 20 million frames over 1,000 objects; generation code released.",
+   "data_origin": "simulation",
+   "resource_class": "synthetic_data_resource",
+   "embodiment": "Bimanual dexterous robot hands",
+   "capture_method": "Optimization and planning-based synthesis",
+   "data_format": "Generation pipeline available",
+   "access_status": "generation_code",
+   "license_note": "Code Apache-2.0; dataset terms not established",
+   "version_scope": "UltraDexGrasp-20M; arXiv v1",
+   "key_takeaway": "Scale is frames, not 20 million grasps or episodes.",
+   "limitations": "Generation code availability does not establish a full corpus download or dataset licence.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://arxiv.org/abs/2603.05312",
+   "source_locator": "Abstract; repository Highlight/Usage",
+   "id": "ds-ultradexgrasp20m",
+   "lane": "synthetic",
+   "modalities": [
+    {
+     "key": "point_cloud",
+     "partial": false
+    },
+    {
+     "key": "grasp_pose",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "grasping",
+    "dexterity",
+    "bimanual"
+   ],
+   "body_families": [
+    "dual_arm",
+    "robot_hand"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 2,
+   "evaluation": false
+  },
+  {
+   "name": "EgoDex",
+   "url": "https://github.com/apple-aiml-research/ml-egodex",
+   "description": "Egocentric human tabletop manipulation video with 3D upper-body/hand poses and language annotations.",
+   "data_origin": "human_capture",
+   "resource_class": "corpus",
+   "embodiment": "Human upper body and hands",
+   "capture_method": "Apple Vision Pro / ARKit",
+   "data_format": "HDF5 + MP4",
+   "access_status": "download_instructions",
+   "license_note": "Dataset-specific Apple terms; do not infer code licence as data licence",
+   "version_scope": "Train/test/additional release",
+   "key_takeaway": "Pairs egocentric video with 3D pose and language.",
+   "limitations": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://github.com/apple-aiml-research/ml-egodex",
+   "source_locator": "README: Dataset Access; Structure; annotations",
+   "id": "ds-egodex",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "body_pose",
+     "partial": false
+    },
+    {
+     "key": "hand_pose",
+     "partial": false
+    },
+    {
+     "key": "language",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "dexterity",
+    "human-to-robot"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": true,
+   "parents": [],
+   "children": [
+    "ds-openego"
+   ],
+   "related_benchmarks": [],
+   "quantities": 6,
+   "evaluation": false
+  },
+  {
+   "name": "Ego4D",
+   "url": "https://ego4d-data.org/",
+   "description": "Human egocentric daily-activity video collection; additional modalities cover subsets.",
+   "data_origin": "human_capture",
+   "resource_class": "corpus",
+   "embodiment": "Human daily activities",
+   "capture_method": "Multiple head-mounted camera types",
+   "data_format": "Release-specific",
+   "access_status": "project_download_terms",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Website 3,670-hour overview",
+   "key_takeaway": "Broad first-person activity coverage.",
+   "limitations": "Not all recorded with Project Aria; subset modalities and licences/consent apply.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://ego4d-data.org/",
+   "source_locator": "Massive Scale; Diverse",
+   "id": "ds-ego4d",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "audio",
+     "partial": true
+    },
+    {
+     "key": "gaze",
+     "partial": true
+    },
+    {
+     "key": "scene_geometry",
+     "partial": true
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "visual pretraining",
+    "memory",
+    "egocentric perception"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 1,
+   "evaluation": false
+  },
+  {
+   "name": "Ego-Exo4D",
+   "url": "https://ego-exo4d-data.org/",
+   "description": "Synchronized human egocentric and third-person video of skilled activities with multimodal observations.",
+   "data_origin": "human_capture",
+   "resource_class": "corpus",
+   "embodiment": "Human skilled activities",
+   "capture_method": "Synchronized Aria plus external GoPro cameras",
+   "data_format": "Release-specific",
+   "access_status": "project_download_terms",
+   "license_note": "Dataset licence not established in this pass; check original terms",
+   "version_scope": "Website 1,286.3-hour overview",
+   "key_takeaway": "Synchronized first- and third-person views.",
+   "limitations": "Multiview footage duration is not interchangeable with unique interaction time or robot-action hours.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-23",
+   "source_url": "https://ego-exo4d-data.org/",
+   "source_locator": "Overview; Multi-view; Multi-modal",
+   "id": "ds-ego-exo4d",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "audio",
+     "partial": false
+    },
+    {
+     "key": "imu",
+     "partial": false
+    },
+    {
+     "key": "gaze",
+     "partial": false
+    },
+    {
+     "key": "camera_pose",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "visual pretraining",
+    "skilled activity understanding"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 1,
+   "evaluation": false
+  }
+ ],
+ "quantities": [
+  {
+   "dataset_id": "ds-agibot-world",
+   "data_version": "Colosseo; arXiv v5",
+   "metric": "trajectories",
+   "unit": "trajectories",
+   "qualifier": "more_than",
+   "scope": "Colosseo overall",
+   "data_origin": "real_robot",
+   "release_status": "paper_scope",
+   "comparison_group": "real_robot_trajectories",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Dexterous/tactile extension does not prove every trajectory has tactile or dexterous-hand data.",
+   "limitations": "Dexterous/tactile extension does not prove every trajectory has tactile or dexterous-hand data.",
+   "source_url": "https://arxiv.org/abs/2503.06669",
+   "source_locator": "Abstract",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-agibot-world-1",
+   "value": 1000000,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-agibot-world",
+   "data_version": "Colosseo; arXiv v5",
+   "metric": "tasks",
+   "unit": "tasks",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Dexterous/tactile extension does not prove every trajectory has tactile or dexterous-hand data.",
+   "limitations": "Dexterous/tactile extension does not prove every trajectory has tactile or dexterous-hand data.",
+   "source_url": "https://arxiv.org/abs/2503.06669",
+   "source_locator": "Abstract",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-agibot-world-2",
+   "value": 217,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-open-x-embodiment",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "trajectories",
+   "unit": "trajectories",
+   "qualifier": "more_than",
+   "scope": "Pooled corpus",
+   "data_origin": "real_robot",
+   "release_status": "aggregate_scope",
+   "comparison_group": "aggregate_robot_trajectories",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Constituent datasets and releases overlap other catalogue entries; no grand trajectory total.",
+   "limitations": "Constituent datasets and releases overlap other catalogue entries; no grand trajectory total.",
+   "source_url": "https://robotics-transformer-x.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-open-x-embodiment-1",
+   "value": 1000000,
+   "scale": true,
+   "part": false,
+   "set_apart": "Aggregate"
+  },
+  {
+   "dataset_id": "ds-open-x-embodiment",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "embodiments",
+   "unit": "embodiments",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Constituent datasets and releases overlap other catalogue entries; no grand trajectory total.",
+   "limitations": "Constituent datasets and releases overlap other catalogue entries; no grand trajectory total.",
+   "source_url": "https://robotics-transformer-x.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-open-x-embodiment-2",
+   "value": 22,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-open-x-embodiment",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "skills",
+   "unit": "skills",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Constituent datasets and releases overlap other catalogue entries; no grand trajectory total.",
+   "limitations": "Constituent datasets and releases overlap other catalogue entries; no grand trajectory total.",
+   "source_url": "https://robotics-transformer-x.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-open-x-embodiment-3",
+   "value": 527,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-droid",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "trajectories",
+   "unit": "trajectories",
+   "qualifier": "approximate",
+   "scope": "DROID overall",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": "real_robot_trajectories",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Language and calibration updates have their own release scope.",
+   "limitations": "Language and calibration updates have their own release scope.",
+   "source_url": "https://droid-dataset.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-droid-1",
+   "value": 76000,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-droid",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "approximate",
+   "scope": "Robot interaction",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": "real_robot_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Language and calibration updates have their own release scope.",
+   "limitations": "Language and calibration updates have their own release scope.",
+   "source_url": "https://droid-dataset.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-droid-2",
+   "value": 350,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-droid",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "scenes",
+   "unit": "scenes",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Language and calibration updates have their own release scope.",
+   "limitations": "Language and calibration updates have their own release scope.",
+   "source_url": "https://droid-dataset.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-droid-3",
+   "value": 564,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-droid",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "tasks",
+   "unit": "tasks",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Language and calibration updates have their own release scope.",
+   "limitations": "Language and calibration updates have their own release scope.",
+   "source_url": "https://droid-dataset.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-droid-4",
+   "value": 86,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-bridgedata-v2",
+   "data_version": "V2",
+   "metric": "trajectories",
+   "unit": "trajectories",
+   "qualifier": "reported",
+   "scope": "Full V2: teleoperation plus scripted",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": "real_robot_trajectories",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Not all 60,096 trajectories are teleoperated; source overlap with aggregates must be checked.",
+   "limitations": "Not all 60,096 trajectories are teleoperated; source overlap with aggregates must be checked.",
+   "source_url": "https://rail-berkeley.github.io/bridgedata/",
+   "source_locator": "Dataset Composition",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-bridgedata-v2-1",
+   "value": 60096,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-bridgedata-v2",
+   "data_version": "V2",
+   "metric": "trajectories",
+   "unit": "trajectories",
+   "qualifier": "reported",
+   "scope": "Teleoperated subset",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": "real_robot_teleop_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Not all 60,096 trajectories are teleoperated; source overlap with aggregates must be checked.",
+   "limitations": "Not all 60,096 trajectories are teleoperated; source overlap with aggregates must be checked.",
+   "source_url": "https://rail-berkeley.github.io/bridgedata/",
+   "source_locator": "Dataset Composition",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-bridgedata-v2-2",
+   "value": 50365,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-bridgedata-v2",
+   "data_version": "V2",
+   "metric": "trajectories",
+   "unit": "trajectories",
+   "qualifier": "reported",
+   "scope": "Scripted-policy subset",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": "real_robot_scripted_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Not all 60,096 trajectories are teleoperated; source overlap with aggregates must be checked.",
+   "limitations": "Not all 60,096 trajectories are teleoperated; source overlap with aggregates must be checked.",
+   "source_url": "https://rail-berkeley.github.io/bridgedata/",
+   "source_locator": "Dataset Composition",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-bridgedata-v2-3",
+   "value": 9731,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-bridgedata-v2",
+   "data_version": "V2",
+   "metric": "environments",
+   "unit": "environments",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Not all 60,096 trajectories are teleoperated; source overlap with aggregates must be checked.",
+   "limitations": "Not all 60,096 trajectories are teleoperated; source overlap with aggregates must be checked.",
+   "source_url": "https://rail-berkeley.github.io/bridgedata/",
+   "source_locator": "Dataset Composition",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-bridgedata-v2-4",
+   "value": 24,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-rh20t",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "sequences",
+   "unit": "sequences",
+   "qualifier": "more_than",
+   "scope": "Contact-rich robot sequences",
+   "data_origin": "real_robot",
+   "release_status": "paper_scope",
+   "comparison_group": "robot_sequences",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Tactile sensor coverage should not be generalized to every sequence.",
+   "limitations": "Tactile sensor coverage should not be generalized to every sequence.",
+   "source_url": "https://rh20t.github.io/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-rh20t-1",
+   "value": 110000,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-robomind2",
+   "data_version": "2.0; arXiv v3",
+   "metric": "trajectories",
+   "unit": "trajectories",
+   "qualifier": "more_than",
+   "scope": "Real dual-arm collection",
+   "data_origin": "real_robot",
+   "release_status": "paper_scope",
+   "comparison_group": "real_robot_trajectories",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "limitations": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "source_url": "https://arxiv.org/abs/2512.24653",
+   "source_locator": "Abstract",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-robomind2-1",
+   "value": 310000,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-robomind2",
+   "data_version": "2.0; arXiv v3",
+   "metric": "episodes",
+   "unit": "episodes",
+   "qualifier": "approximate",
+   "scope": "Tactile-enhanced real subset",
+   "data_origin": "real_robot",
+   "release_status": "paper_scope",
+   "comparison_group": "tactile_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "limitations": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "source_url": "https://arxiv.org/abs/2512.24653",
+   "source_locator": "Abstract",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-robomind2-2",
+   "value": 12000,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-robomind2",
+   "data_version": "2.0; arXiv v3",
+   "metric": "trajectories",
+   "unit": "trajectories",
+   "qualifier": "approximate",
+   "scope": "Mobile real subset",
+   "data_origin": "real_robot",
+   "release_status": "paper_scope",
+   "comparison_group": "mobile_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "limitations": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "source_url": "https://arxiv.org/abs/2512.24653",
+   "source_locator": "Abstract",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-robomind2-3",
+   "value": 20000,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-robomind2",
+   "data_version": "2.0; arXiv v3",
+   "metric": "trajectories",
+   "unit": "trajectories",
+   "qualifier": "approximate",
+   "scope": "Additional simulated digital-twin data",
+   "data_origin": "simulation",
+   "release_status": "paper_scope",
+   "comparison_group": "simulation_trajectories",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "limitations": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "source_url": "https://arxiv.org/abs/2512.24653",
+   "source_locator": "Abstract",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-robomind2-4",
+   "value": 20000,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-robomind2",
+   "data_version": "2.0; arXiv v3",
+   "metric": "embodiments",
+   "unit": "embodiments",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "limitations": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "source_url": "https://arxiv.org/abs/2512.24653",
+   "source_locator": "Abstract",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-robomind2-5",
+   "value": 6,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-robomind2",
+   "data_version": "2.0; arXiv v3",
+   "metric": "tasks",
+   "unit": "tasks",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "limitations": "12K tactile and 20K mobile are subsets of real data, not additions to the 310K headline.",
+   "source_url": "https://arxiv.org/abs/2512.24653",
+   "source_locator": "Abstract",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-robomind2-6",
+   "value": 739,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-lingyu",
+   "data_version": "First public tabletop release",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "reported",
+   "scope": "Public tabletop release",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": "real_robot_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "limitations": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "source_url": "https://huggingface.co/datasets/LingYu-Robotics/lingyu-realworld-robotics-dataset",
+   "source_locator": "Dataset at a Glance; Data Description; Task Coverage",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lingyu-1",
+   "value": 139.4,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-lingyu",
+   "data_version": "First public tabletop release",
+   "metric": "episodes",
+   "unit": "episodes",
+   "qualifier": "reported",
+   "scope": "Successful tabletop episodes",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": "real_robot_episodes",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "limitations": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "source_url": "https://huggingface.co/datasets/LingYu-Robotics/lingyu-realworld-robotics-dataset",
+   "source_locator": "Dataset at a Glance; Data Description; Task Coverage",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lingyu-2",
+   "value": 13263,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-lingyu",
+   "data_version": "First public tabletop release",
+   "metric": "subsets",
+   "unit": "subsets",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "limitations": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "source_url": "https://huggingface.co/datasets/LingYu-Robotics/lingyu-realworld-robotics-dataset",
+   "source_locator": "Dataset at a Glance; Data Description; Task Coverage",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lingyu-3",
+   "value": 22,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-lingyu",
+   "data_version": "First public tabletop release",
+   "metric": "task_families",
+   "unit": "task_families",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "limitations": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "source_url": "https://huggingface.co/datasets/LingYu-Robotics/lingyu-realworld-robotics-dataset",
+   "source_locator": "Dataset at a Glance; Data Description; Task Coverage",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lingyu-4",
+   "value": 15,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-lingyu",
+   "data_version": "First public tabletop release",
+   "metric": "sample_rate",
+   "unit": "Hz",
+   "qualifier": "reported",
+   "scope": "Synchronized recordings",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": "synchronized_recording_rate",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "limitations": "Three stereo RGB views in card. Retail data is outside public first release.",
+   "source_url": "https://huggingface.co/datasets/LingYu-Robotics/lingyu-realworld-robotics-dataset",
+   "source_locator": "Dataset at a Glance; Data Description; Task Coverage",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lingyu-5",
+   "value": 45,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-dexmanipnet",
+   "data_version": "CVPR 2025 paper scope",
+   "metric": "episodes",
+   "unit": "episodes",
+   "qualifier": "approximate",
+   "scope": "Isaac Gym robot-hand episodes",
+   "data_origin": "simulation",
+   "release_status": "paper_scope",
+   "comparison_group": "simulation_episodes",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "HF file rows are not episode counts.",
+   "limitations": "HF file rows are not episode counts.",
+   "source_url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Li_ManipTrans_Efficient_Dexterous_Bimanual_Manipulation_Transfer_via_Residual_Learning_CVPR_2025_paper.pdf",
+   "source_locator": "Section 3.4 DexManipNet Dataset",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-dexmanipnet-1",
+   "value": 3300,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-dexmanipnet",
+   "data_version": "CVPR 2025 paper scope",
+   "metric": "tasks",
+   "unit": "tasks",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "simulation",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "HF file rows are not episode counts.",
+   "limitations": "HF file rows are not episode counts.",
+   "source_url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Li_ManipTrans_Efficient_Dexterous_Bimanual_Manipulation_Transfer_via_Residual_Learning_CVPR_2025_paper.pdf",
+   "source_locator": "Section 3.4 DexManipNet Dataset",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-dexmanipnet-2",
+   "value": 61,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-dexmanipnet",
+   "data_version": "CVPR 2025 paper scope",
+   "metric": "objects",
+   "unit": "objects",
+   "qualifier": "approximate",
+   "scope": "headline",
+   "data_origin": "simulation",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "HF file rows are not episode counts.",
+   "limitations": "HF file rows are not episode counts.",
+   "source_url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Li_ManipTrans_Efficient_Dexterous_Bimanual_Manipulation_Transfer_via_Residual_Learning_CVPR_2025_paper.pdf",
+   "source_locator": "Section 3.4 DexManipNet Dataset",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-dexmanipnet-3",
+   "value": 1200,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-dexmanipnet",
+   "data_version": "CVPR 2025 paper scope",
+   "metric": "frames",
+   "unit": "frames",
+   "qualifier": "approximate",
+   "scope": "Simulated manipulation frames",
+   "data_origin": "simulation",
+   "release_status": "paper_scope",
+   "comparison_group": "simulation_frames",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "HF file rows are not episode counts.",
+   "limitations": "HF file rows are not episode counts.",
+   "source_url": "https://openaccess.thecvf.com/content/CVPR2025/papers/Li_ManipTrans_Efficient_Dexterous_Bimanual_Manipulation_Transfer_via_Residual_Learning_CVPR_2025_paper.pdf",
+   "source_locator": "Section 3.4 DexManipNet Dataset",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-dexmanipnet-4",
+   "value": 1340000,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-ultradexgrasp20m",
+   "data_version": "UltraDexGrasp-20M; arXiv v1",
+   "metric": "frames",
+   "unit": "frames",
+   "qualifier": "reported",
+   "scope": "Synthetic multi-strategy grasp data",
+   "data_origin": "simulation",
+   "release_status": "paper_scope",
+   "comparison_group": "simulation_frames",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Generation code availability does not establish a full corpus download or dataset licence.",
+   "limitations": "Generation code availability does not establish a full corpus download or dataset licence.",
+   "source_url": "https://arxiv.org/abs/2603.05312",
+   "source_locator": "Abstract; repository Highlight/Usage",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-ultradexgrasp20m-1",
+   "value": 20000000,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-ultradexgrasp20m",
+   "data_version": "UltraDexGrasp-20M; arXiv v1",
+   "metric": "objects",
+   "unit": "objects",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "simulation",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Generation code availability does not establish a full corpus download or dataset licence.",
+   "limitations": "Generation code availability does not establish a full corpus download or dataset licence.",
+   "source_url": "https://arxiv.org/abs/2603.05312",
+   "source_locator": "Abstract; repository Highlight/Usage",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-ultradexgrasp20m-2",
+   "value": 1000,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egodex",
+   "data_version": "Train/test/additional release",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "reported",
+   "scope": "Full train/test/additional corpus",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "limitations": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "source_url": "https://github.com/apple-aiml-research/ml-egodex",
+   "source_locator": "README: Dataset Access; Structure; annotations",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egodex-1",
+   "value": 829,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egodex",
+   "data_version": "Train/test/additional release",
+   "metric": "tasks",
+   "unit": "tasks",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "limitations": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "source_url": "https://github.com/apple-aiml-research/ml-egodex",
+   "source_locator": "README: Dataset Access; Structure; annotations",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egodex-2",
+   "value": 194,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egodex",
+   "data_version": "Train/test/additional release",
+   "metric": "sample_rate",
+   "unit": "Hz",
+   "qualifier": "reported",
+   "scope": "Egocentric video",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "video_frame_rate",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "limitations": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "source_url": "https://github.com/apple-aiml-research/ml-egodex",
+   "source_locator": "README: Dataset Access; Structure; annotations",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egodex-3",
+   "value": 30,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egodex",
+   "data_version": "Train/test/additional release",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "approximate",
+   "scope": "Training split",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_hours_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "limitations": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "source_url": "https://github.com/apple-aiml-research/ml-egodex",
+   "source_locator": "README: Dataset Access; Structure; annotations",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egodex-4",
+   "value": 725,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egodex",
+   "data_version": "Train/test/additional release",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "approximate",
+   "scope": "Test split",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_hours_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "limitations": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "source_url": "https://github.com/apple-aiml-research/ml-egodex",
+   "source_locator": "README: Dataset Access; Structure; annotations",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egodex-5",
+   "value": 7,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egodex",
+   "data_version": "Train/test/additional release",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "approximate",
+   "scope": "Additional data after frozen split",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_hours_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "limitations": "ARKit confidence/occlusion and auto-generated language can introduce errors; train/test/additional split explicit.",
+   "source_url": "https://github.com/apple-aiml-research/ml-egodex",
+   "source_locator": "README: Dataset Access; Structure; annotations",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egodex-6",
+   "value": 97,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egocentrik-10k",
+   "data_version": "10K card snapshot 2026-11-23",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "reported",
+   "scope": "Industrial human video",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Human video is not robot-action supervision; largest/first claims are not independently established.",
+   "limitations": "Human video is not robot-action supervision; largest/first claims are not independently established.",
+   "source_url": "https://huggingface.co/datasets/builddotai/Egocentric-10K",
+   "source_locator": "Dataset Statistics",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egocentrik-10k-1",
+   "value": 10000,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egocentrik-10k",
+   "data_version": "10K card snapshot 2026-11-23",
+   "metric": "clips",
+   "unit": "clips",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Human video is not robot-action supervision; largest/first claims are not independently established.",
+   "limitations": "Human video is not robot-action supervision; largest/first claims are not independently established.",
+   "source_url": "https://huggingface.co/datasets/builddotai/Egocentric-10K",
+   "source_locator": "Dataset Statistics",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egocentrik-10k-2",
+   "value": 192900,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egocentrik-10k",
+   "data_version": "10K card snapshot 2026-11-23",
+   "metric": "frames",
+   "unit": "frames",
+   "qualifier": "reported",
+   "scope": "Human video frames",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_frames",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Human video is not robot-action supervision; largest/first claims are not independently established.",
+   "limitations": "Human video is not robot-action supervision; largest/first claims are not independently established.",
+   "source_url": "https://huggingface.co/datasets/builddotai/Egocentric-10K",
+   "source_locator": "Dataset Statistics",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egocentrik-10k-3",
+   "value": 1080000000,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-egocentrik-10k",
+   "data_version": "10K card snapshot 2026-11-23",
+   "metric": "sample_rate",
+   "unit": "fps",
+   "qualifier": "reported",
+   "scope": "Head-mounted camera",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "video_frame_rate",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Human video is not robot-action supervision; largest/first claims are not independently established.",
+   "limitations": "Human video is not robot-action supervision; largest/first claims are not independently established.",
+   "source_url": "https://huggingface.co/datasets/builddotai/Egocentric-10K",
+   "source_locator": "Dataset Statistics",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egocentrik-10k-4",
+   "value": 30,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-lafan1",
+   "data_version": "LAFAN1 BVH corpus",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "approximate",
+   "scope": "Motion-capture frame duration",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_motion_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Retargeting and physical correction are separate; raw LAFAN1 is not a physically validated robot dataset.",
+   "limitations": "Retargeting and physical correction are separate; raw LAFAN1 is not a physically validated robot dataset.",
+   "source_url": "https://github.com/ubisoft/ubisoft-laforge-animation-dataset",
+   "source_locator": "README: Data",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lafan1-1",
+   "value": 4.6,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-lafan1",
+   "data_version": "LAFAN1 BVH corpus",
+   "metric": "frames",
+   "unit": "frames",
+   "qualifier": "reported",
+   "scope": "Motion capture",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "motion_frames",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Retargeting and physical correction are separate; raw LAFAN1 is not a physically validated robot dataset.",
+   "limitations": "Retargeting and physical correction are separate; raw LAFAN1 is not a physically validated robot dataset.",
+   "source_url": "https://github.com/ubisoft/ubisoft-laforge-animation-dataset",
+   "source_locator": "README: Data",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lafan1-2",
+   "value": 496672,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-lafan1",
+   "data_version": "LAFAN1 BVH corpus",
+   "metric": "sequences",
+   "unit": "sequences",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Retargeting and physical correction are separate; raw LAFAN1 is not a physically validated robot dataset.",
+   "limitations": "Retargeting and physical correction are separate; raw LAFAN1 is not a physically validated robot dataset.",
+   "source_url": "https://github.com/ubisoft/ubisoft-laforge-animation-dataset",
+   "source_locator": "README: Data",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lafan1-3",
+   "value": 77,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-lafan1",
+   "data_version": "LAFAN1 BVH corpus",
+   "metric": "sample_rate",
+   "unit": "fps",
+   "qualifier": "reported",
+   "scope": "Motion capture",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "motion_sample_rate",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Retargeting and physical correction are separate; raw LAFAN1 is not a physically validated robot dataset.",
+   "limitations": "Retargeting and physical correction are separate; raw LAFAN1 is not a physically validated robot dataset.",
+   "source_url": "https://github.com/ubisoft/ubisoft-laforge-animation-dataset",
+   "source_locator": "README: Data",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lafan1-4",
+   "value": 30,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-humoto",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "sequences",
+   "unit": "sequences",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Public subset and full dataset access differ; no guarantee of robot contact validity.",
+   "limitations": "Public subset and full dataset access differ; no guarantee of robot contact validity.",
+   "source_url": "https://jiaxin-lu.github.io/humoto/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-humoto-1",
+   "value": 735,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-humoto",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "duration",
+   "unit": "seconds",
+   "qualifier": "reported",
+   "scope": "4D human-object sequences",
+   "data_origin": "human_capture",
+   "release_status": "paper_scope",
+   "comparison_group": "human_motion_seconds",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Public subset and full dataset access differ; no guarantee of robot contact validity.",
+   "limitations": "Public subset and full dataset access differ; no guarantee of robot contact validity.",
+   "source_url": "https://jiaxin-lu.github.io/humoto/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-humoto-2",
+   "value": 7875,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-humoto",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "articulated_parts",
+   "unit": "parts",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Public subset and full dataset access differ; no guarantee of robot contact validity.",
+   "limitations": "Public subset and full dataset access differ; no guarantee of robot contact validity.",
+   "source_url": "https://jiaxin-lu.github.io/humoto/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-humoto-3",
+   "value": 72,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-ego4d",
+   "data_version": "Website 3,670-hour overview",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "reported",
+   "scope": "Daily-life activity video overview",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Not all recorded with Project Aria; subset modalities and licences/consent apply.",
+   "limitations": "Not all recorded with Project Aria; subset modalities and licences/consent apply.",
+   "source_url": "https://ego4d-data.org/",
+   "source_locator": "Massive Scale; Diverse",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-ego4d-1",
+   "value": 3670,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-ego-exo4d",
+   "data_version": "Website 1,286.3-hour overview",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "reported",
+   "scope": "Multi-view skilled activity video",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "multiview_human_video_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Multiview footage duration is not interchangeable with unique interaction time or robot-action hours.",
+   "limitations": "Multiview footage duration is not interchangeable with unique interaction time or robot-action hours.",
+   "source_url": "https://ego-exo4d-data.org/",
+   "source_locator": "Overview; Multi-view; Multi-modal",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-ego-exo4d-1",
+   "value": 1286.3,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-openego",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "reported",
+   "scope": "Aggregated human datasets; includes EgoDex",
+   "data_origin": "human_capture",
+   "release_status": "aggregate_scope",
+   "comparison_group": "aggregate_human_video_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Contains EgoDex; do not add their sizes. Code MIT does not override source-data licences. ds-egodex",
+   "limitations": "Contains EgoDex; do not add their sizes. Code MIT does not override source-data licences.",
+   "source_url": "https://github.com/ahadjawaid/openego",
+   "source_locator": "Overview; Dataset Composition; Download; License",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-openego-1",
+   "value": 1107,
+   "scale": true,
+   "part": false,
+   "set_apart": "Aggregate"
+  },
+  {
+   "dataset_id": "ds-egoscale",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "more_than",
+   "scope": "Provider-wide claimed egocentric supply",
+   "data_origin": "human_capture",
+   "release_status": "provider_claim",
+   "comparison_group": "commercial_provider_hours",
+   "display_status": "provider_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Provider volume claims are not downloadable open-corpus size.",
+   "limitations": "Provider volume claims are not downloadable open-corpus size.",
+   "source_url": "https://www.egoscale.ai/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-egoscale-1",
+   "value": 140000,
+   "scale": true,
+   "part": false,
+   "set_apart": "Provider claim"
+  },
+  {
+   "dataset_id": "ds-lda-1b",
+   "data_version": "EI-30k training mixture",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "more_than",
+   "scope": "EI-30k heterogeneous training mixture",
+   "data_origin": "mixed",
+   "release_status": "training_mix",
+   "comparison_group": "mixed_training_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Training-mixture hours do not establish a separately downloadable dataset or independent unique hours.",
+   "limitations": "Training-mixture hours do not establish a separately downloadable dataset or independent unique hours.",
+   "source_url": "https://pku-epic.github.io/LDA/",
+   "source_locator": "Large-scale Heterogeneous Embodied Data (EI-30k)",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-lda-1b-1",
+   "value": 30000,
+   "scale": true,
+   "part": false,
+   "set_apart": "Training mixture"
+  },
+  {
+   "dataset_id": "ds-hubego-100k",
+   "data_version": "Releases 1+2; card snapshot 2026-11-23",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "reported",
+   "scope": "Release 1",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_hours_historical",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Current card total and release sums differ by 1 hour after rounding; preserve reported values.",
+   "limitations": "Current card total and release sums differ by 1 hour after rounding; preserve reported values.",
+   "source_url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+   "source_locator": "Releases table; Sensors; Format",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-hubego-100k-1",
+   "value": 10124,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-hubego-100k",
+   "data_version": "Releases 1+2; card snapshot 2026-11-23",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "reported",
+   "scope": "Release 2 incremental",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_hours_increment",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Current card total and release sums differ by 1 hour after rounding; preserve reported values.",
+   "limitations": "Current card total and release sums differ by 1 hour after rounding; preserve reported values.",
+   "source_url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+   "source_locator": "Releases table; Sensors; Format",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-hubego-100k-2",
+   "value": 9990,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-hubego-100k",
+   "data_version": "Releases 1+2; card snapshot 2026-11-23",
+   "metric": "duration",
+   "unit": "hours",
+   "qualifier": "reported",
+   "scope": "Releases 1+2 cumulative total as stated",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_video_hours",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Current card total and release sums differ by 1 hour after rounding; preserve reported values.",
+   "limitations": "Source table gives 20,113 total although displayed release hours sum to 20,114; preserve rounding discrepancy, do not silently recompute.",
+   "source_url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+   "source_locator": "Releases table; Sensors; Format",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-hubego-100k-3",
+   "value": 20113,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-hubego-100k",
+   "data_version": "Releases 1+2; card snapshot 2026-11-23",
+   "metric": "episodes",
+   "unit": "episodes",
+   "qualifier": "reported",
+   "scope": "Human recording episodes across releases 1+2",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_recording_episodes",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Current card total and release sums differ by 1 hour after rounding; preserve reported values.",
+   "limitations": "Current card total and release sums differ by 1 hour after rounding; preserve reported values.",
+   "source_url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
+   "source_locator": "Releases table; Sensors; Format",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-hubego-100k-4",
+   "value": 124991,
+   "scale": true,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-syndata",
+   "data_version": "Four-subset card snapshot 2026-11-23",
+   "metric": "clips",
+   "unit": "clips",
+   "qualifier": "reported",
+   "scope": "ego",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_clip_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Not simply robot-arm demonstrations. Tactile is subset-specific; HF preview rows are clips.",
+   "limitations": "Not simply robot-arm demonstrations. Tactile is subset-specific; HF preview rows are clips.",
+   "source_url": "https://huggingface.co/datasets/PsiBotAI/SynData",
+   "source_locator": "Overview; Dataset Subsets; Storage Format; License",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-syndata-1",
+   "value": 313674,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-syndata",
+   "data_version": "Four-subset card snapshot 2026-11-23",
+   "metric": "clips",
+   "unit": "clips",
+   "qualifier": "reported",
+   "scope": "glove-origin",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_clip_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Not simply robot-arm demonstrations. Tactile is subset-specific; HF preview rows are clips.",
+   "limitations": "Not simply robot-arm demonstrations. Tactile is subset-specific; HF preview rows are clips.",
+   "source_url": "https://huggingface.co/datasets/PsiBotAI/SynData",
+   "source_locator": "Overview; Dataset Subsets; Storage Format; License",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-syndata-2",
+   "value": 95383,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-syndata",
+   "data_version": "Four-subset card snapshot 2026-11-23",
+   "metric": "clips",
+   "unit": "clips",
+   "qualifier": "reported",
+   "scope": "glove-rep-bg",
+   "data_origin": "derived",
+   "release_status": "reported_release",
+   "comparison_group": "human_clip_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Not simply robot-arm demonstrations. Tactile is subset-specific; HF preview rows are clips.",
+   "limitations": "Not simply robot-arm demonstrations. Tactile is subset-specific; HF preview rows are clips.",
+   "source_url": "https://huggingface.co/datasets/PsiBotAI/SynData",
+   "source_locator": "Overview; Dataset Subsets; Storage Format; License",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-syndata-3",
+   "value": 3526,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-syndata",
+   "data_version": "Four-subset card snapshot 2026-11-23",
+   "metric": "clips",
+   "unit": "clips",
+   "qualifier": "reported",
+   "scope": "glove-with-tactile",
+   "data_origin": "human_capture",
+   "release_status": "reported_release",
+   "comparison_group": "human_clip_subset",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Not simply robot-arm demonstrations. Tactile is subset-specific; HF preview rows are clips.",
+   "limitations": "Not simply robot-arm demonstrations. Tactile is subset-specific; HF preview rows are clips.",
+   "source_url": "https://huggingface.co/datasets/PsiBotAI/SynData",
+   "source_locator": "Overview; Dataset Subsets; Storage Format; License",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-syndata-4",
+   "value": 36780,
+   "scale": true,
+   "part": true,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-galaxea",
+   "data_version": "Source snapshot 2026-11-23; exact release not pinned",
+   "metric": "physical_sites",
+   "unit": "sites",
+   "qualifier": "reported",
+   "scope": "Collection sites",
+   "data_origin": "real_robot",
+   "release_status": "reported_release",
+   "comparison_group": "robot_collection_sites",
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "G0 model performance is not a measure of dataset quality.",
+   "limitations": "G0 model performance is not a measure of dataset quality.",
+   "source_url": "https://opengalaxea.github.io/GalaxeaVLA/",
+   "source_locator": "Project overview / README / dataset card",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-23",
+   "id": "dm-galaxea-1",
+   "value": 11,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  }
+ ]
+}
