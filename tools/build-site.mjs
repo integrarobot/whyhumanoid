@@ -20,6 +20,7 @@ import { pageRelations } from './relations.mjs';
 import { pageLinks } from './build-pages.mjs';
 import { CATEGORIES, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { renderAdoption } from './adoption-view.mjs';
+import { robotPresentation } from './robot-presentation.mjs';
 
 // Where the catalogue sends buyers: the premium app on the production backend. Change it here when
 // premium.whyhumanoid.com is set up as a custom domain.
@@ -266,6 +267,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   data.relations = pageRelations();
   // Addresses of the permanent robot and company pages (tools/build-pages.mjs), for links from the catalogue.
   data.pages = pageLinks();
+  // Reviewed display names, full-body images and maker order links, by catalogue id (tools/robot-presentation.json).
+  data.present = Object.fromEntries(robotPresentation());
   data.access.open = OPEN_DATABASE;
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {

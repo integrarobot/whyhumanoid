@@ -95,3 +95,22 @@ th{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--bone-3);
 table.dir td{vertical-align:top}
 table.dir td:first-child{white-space:nowrap}
 @media (max-width:640px){table.dir td:first-child{white-space:normal}}
+/* Robot head with a reviewed full-body image and the maker's order link (tools/robot-presentation.json, 23 Nov 2026).
+   The image is a real cutout with alpha: no white box, no blend modes; contain keeps its proportions. */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.robot-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,5vw,56px);align-items:center;margin:0 0 8px}
+.robot-head-text{min-width:0}
+.robot-figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px clamp(18px,3vw,32px) 12px;background:radial-gradient(closest-side,color-mix(in srgb,var(--bone) 7%,transparent),transparent);}
+.robot-figure picture{display:block}
+.robot-figure img{display:block;height:clamp(360px,62vh,560px);width:auto;max-width:100%;object-fit:contain}
+.robot-figure figcaption{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--bone-3)}
+.order{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:20px 0 6px}
+.order-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 20px;background:var(--amber);color:var(--ink-0);font-weight:600;text-decoration:none;border:1px solid var(--amber);white-space:nowrap}
+.order-btn:hover{background:var(--amber-hi);border-color:var(--amber-hi)}
+.order-btn:focus-visible{outline:2px solid var(--bone);outline-offset:3px}
+.order-note{font-size:13.5px;color:var(--bone-3);max-width:44ch}
+@media (max-width:720px){
+  .robot-head{grid-template-columns:minmax(0,1fr)}
+  .robot-figure{order:2}
+  .robot-figure img{height:min(68vh,440px)}
+}

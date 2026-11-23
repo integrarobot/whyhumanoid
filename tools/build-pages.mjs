@@ -23,6 +23,7 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildData } from './build-site.mjs';
 import { PAGE_FIELDS, catalogueIndex, previewGraph } from './relations.mjs';
+import { robotPresentation } from './robot-presentation.mjs';
 import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
@@ -137,8 +138,11 @@ export function publicModel(registry = readRegistry()) {
     };
   }).sort((a, b) => a.row - b.row);
 
+  // Display name, image and order link come from tools/robot-presentation.json; the slug keeps the recorded name.
+  const presentation = robotPresentation();
   const robots = index.map((ix) => ({
-    id: ix.id, slug: ix.slug, path: robotPath(ix.slug), name: ix.robot, lab: ix.lab,
+    id: ix.id, slug: ix.slug, path: robotPath(ix.slug), name: presentation.get(String(ix.id))?.name ?? ix.robot, lab: ix.lab,
+    present: presentation.get(String(ix.id)) ?? null,
     record: records.get(ix.id), facet: facets.get(ix.id),
     maker: companyById.get(makerOf.get(ix.id)) ?? null,
     records: recs.filter((r) => r.robot === ix.id),
@@ -373,6 +377,22 @@ function robotSummary(rb) {
   return parts.join(' ');
 }
 
+// Heading block of a robot page. With a reviewed image (tools/robot-presentation.json) it is a two-column head: text
+// and the maker's order link on one side, the full-body cutout on the other (one column on phones).
+function robotHead(rb, m, summary) {
+  const p = rb.present;
+  const by = m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab);
+  const text = `<p class="kicker">Humanoid robot · catalogue record ${rb.id}</p>
+<h1>${esc(rb.name)} <em>by ${by}</em></h1>
+<p class="lede">${esc(summary)}</p>${p?.order ? orderLink(p.order, rb) : ''}`;
+  if (!p?.image) return text;
+  const im = p.image;
+  return `<div class="robot-head"><div class="robot-head-text">${text}</div>
+<figure class="robot-figure"><picture><source type="image/webp" srcset="${esc(im.src)}"><img src="${esc(im.fallback ?? im.src)}" width="${im.width}" height="${im.height}" alt="${esc(im.alt)}" decoding="async" fetchpriority="high"></picture><figcaption>${esc(im.credit)}</figcaption></figure></div>`;
+}
+// An outbound link to the maker's own order page: no purchase or payment happens on Why Humanoid?.
+const orderLink = (o, rb) => `<p class="order"><a class="order-btn" href="${esc(o.url)}" target="_blank" rel="noopener noreferrer external">${esc(o.label)}<span class="sr"> on ${esc(rb.lab)}'s website (opens in a new tab)</span> <span aria-hidden="true">↗</span></a><span class="order-note">${esc(o.note ?? `On ${rb.lab}'s website.`)}</span></p>`;
+
 function robotPage(rb, model) {
   const r = rb.record, chk = rb.facet.chk, m = rb.maker;
   const summary = robotSummary(rb);
@@ -380,9 +400,7 @@ function robotPage(rb, model) {
   const sources = chk.urls.map((u) => `<li>${ext(u, u)}</li>`).join('');
   const body = `${crumbs([['/', 'Why Humanoid?'], ['/humanoids/', 'Humanoids'], [null, rb.name]])}
 <article class="entity">
-<p class="kicker">Humanoid robot · catalogue record ${rb.id}</p>
-<h1>${esc(rb.name)} <em>by ${m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</em></h1>
-<p class="lede">${esc(summary)}</p>
+${robotHead(rb, m, summary)}
 ${known(r['Buyer checks']) ? `<p class="note"><b>Before comparing:</b> ${text(r['Buyer checks'])}</p>` : ''}
 <section><h2>Key facts</h2>${kv(SPEC_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
 <section><h2>Market</h2>${kv(MARKET_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>

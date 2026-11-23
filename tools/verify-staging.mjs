@@ -66,6 +66,26 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     await page.screenshot({ path: `${SHOTS}/${label}_home.png` });
     await page.locator('#categories').screenshot({ path: `${SHOTS}/${label}_home_categories.png` });
   }
+  // NEO (23 Nov 2026), the first robot with a reviewed presentation: display name, full-body cutout shown whole with its
+  // proportions (contain), and the outbound order link to 1X.
+  await page.goto(`${BASE}/humanoids/1x-neo-home-robot-1/`, { waitUntil: 'networkidle' });
+  const neo = await page.evaluate(() => {
+    const img = document.querySelector('.robot-figure img'), a = document.querySelector('a.order-btn');
+    if (!img || !a) return null;
+    const r = img.getBoundingClientRect(), ar = a.getBoundingClientRect();
+    return { h1: document.querySelector('h1').firstChild.textContent.trim(), loaded: img.complete && img.naturalWidth > 0, webp: /\.webp$/.test(img.currentSrc),
+      ratio: r.width / r.height, natural: img.naturalWidth / img.naturalHeight, inside: r.left >= 0 && r.right <= innerWidth + 1, h: r.height,
+      href: a.getAttribute('href'), target: a.target, rel: a.rel, ah: ar.height, overflow: document.documentElement.scrollWidth - innerWidth };
+  });
+  check(Boolean(neo), `${label} NEO page: image and order link present`);
+  if (neo) {
+    check(neo.h1 === 'NEO', `${label} NEO page: heading is the display name (${neo.h1})`);
+    check(neo.loaded && neo.webp, `${label} NEO page: the WebP cutout loads`);
+    check(Math.abs(neo.ratio - neo.natural) < 0.01 && neo.inside && neo.h >= 300, `${label} NEO page: full body shown whole, proportions kept (${neo.ratio.toFixed(3)} vs ${neo.natural.toFixed(3)}, ${Math.round(neo.h)}px tall)`);
+    check(neo.href === 'https://www.1x.tech/order' && neo.target === '_blank' && /noopener/.test(neo.rel) && neo.ah >= 44, `${label} NEO page: Buy NEO links to 1X's order page, 44px tall`);
+    check(neo.overflow <= 1, `${label} NEO page: no horizontal page scroll (${neo.overflow}px)`);
+    if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_neo.png` });
+  }
   // Adoption view (23 Nov 2026): the hero answers at a glance; the explorer filters and opens a case.
   await page.goto(`${BASE}/`, { waitUntil: 'load' });
   check(await page.isVisible('.hero .adopt-hero .stage-bars'), `${label} home: adoption view in the hero`);
