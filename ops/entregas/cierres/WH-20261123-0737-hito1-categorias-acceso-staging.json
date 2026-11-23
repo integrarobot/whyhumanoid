@@ -1,0 +1,61 @@
+{
+  "id": "WH-20261123-0737-hito1-categorias-acceso-staging",
+  "tarea": "Hito 1 de Why Humanoid? en Claude Code: línea base, nueve categorías con URL propia, matriz central de acceso y una suscripción de 100 € al año para Deployments y Components, en staging revisable",
+  "origen": "Javier, 23/11/2026 (migración a Claude Code; coordina y verifica Codex)",
+  "fecha": "2026-11-23T07:37:49+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Línea base del 23/11/2026 en ops/brief.md: main en #57, sin PR abiertos ni trabajo pendiente de la sesión anterior de claude.ai; en producción, rutas por hash, /robots/ y /companies/, y /humanoids o /deployments/ dan 404; cobro live abierto con el plan antiguo (13 pestañas); última importación el 17/11 a las 22:16 UTC.",
+    "Libro maestro modificado el 20/11: traducido al inglés, 4 pestañas renombradas, Humanoids 215 públicas (antes 134) y Deployments 184 (antes 130). El importador de main lo rechaza; en la rama ya lo acepta.",
+    "HIRO Industries Origin: una sola fila en el maestro (Humanoids, fila 140), sin duplicado; no está publicada porque entró después de la importación del 17/11.",
+    "Matriz central de acceso (server/src/access/matrix.js): nueve categorías confirmadas en orden, cada una con su pestaña real; Humanoids y otras seis, gratis; una suscripción de 100 € al año abre Deployments y Components completos; dos servicios de 1.000 € como propuesta, sin compra. La usan la API, el buscador, las relaciones, los exportadores, las páginas y la aplicación.",
+    "API: las categorías gratuitas se leen sin sesión y con valores públicos; Deployments y Components dan 401 sin sesión y 403 sin suscripción; nuevo GET /v1/access. Los suscriptores actuales conservan el acceso.",
+    "Rutas: nueve páginas de categoría en HTML; los robots pasan a /humanoids/<slug>/ y las 134 direcciones /robots/ redirigen; 547 páginas /other-robots/<slug>/; 452 empresas con una ficha canónica cada una (cotizadas e integradores unidos por nombre o web); /subscribe/; sitemap de 1.147 URLs.",
+    "Navegación con las nueve categorías en todas las páginas y bloque de categorías en la portada; textos de la web, la aplicación y la metodología con la oferta nueva.",
+    "Datos: se mantiene la instantánea del 17/11; solo Components (pestaña Hardware) queda en sus 10 primeras filas.",
+    "Staging: tools/build-staging.mjs, server/scripts/staging-local.mjs y tools/verify-staging.mjs; wrangler.toml de test con la aplicación en /app/.",
+    "PR borrador #58 con 3 commits (875639e, 5100bea, 7a893ff)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR borrador del hito 1",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/58"
+    },
+    {
+      "etiqueta": "Brief en la rama",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/claude/stoic-maxwell-432hsy/ops/brief.md"
+    },
+    {
+      "etiqueta": "Matriz de acceso en la rama",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/claude/stoic-maxwell-432hsy/server/src/access/matrix.js"
+    },
+    {
+      "etiqueta": "Web en producción (sin cambios)",
+      "url": "https://whyhumanoid.com/"
+    }
+  ],
+  "despliegue": [
+    "No aplica: staging no desplegado. Javier no aceptó facilitar una credencial de Cloudflare a la sesión, así que el despliegue en el Worker de test queda preparado con sus comandos en ops/brief.md. Producción, cobro live y libro sin tocar."
+  ],
+  "verificaciones": [
+    "Pasos de CI en local, en verde: guardia pública, registro de entregas, exportaciones, builds de web, aplicación y páginas, relaciones, proyección, verify-site, verify-premium-app y verify-pages.",
+    "Pruebas de la API: 86 de 86, con access-matrix.test.js nuevo para visitante, sin pago, activo, cancelado al final del periodo y caducado.",
+    "tools/verify-staging.mjs --local: 184 de 184 comprobaciones, con navegador a 1366 y 375 px.",
+    "  - Las nueve rutas, con carga directa y recarga, en orden y con canónica; sin desplazamiento horizontal.",
+    "  - Los enlaces antiguos /robots/ y #db-<pestaña> siguen funcionando.",
+    "  - El sitemap no lista ninguna dirección /robots/.",
+    "  - No existe data/database; los ficheros públicos de Deployments y Components tienen 10 filas o menos, y su API da 401.",
+    "  - Eventos de prueba firmados (simulados, sin cobro): sin pago, 403; activo, 200 en las dos categorías; duplicado ignorado; cancelado al final del periodo, 200; periodo vencido y baja, 403.",
+    "Exportación de prueba del libro del 23/11 con el importador nuevo: todas las pestañas se leen; la sincronización de Humanoids se para en dos robots renombrados (Kepler Forerunner y Xpeng Iron)."
+  ],
+  "pendientes": [
+    "Desplegar staging: con la sesión de Wrangler de Javier, aplicar migraciones y desplegar en el Worker de test con el paquete de tools/build-staging.mjs; importar el libro en test y ejecutar verify-staging contra https://whyhumanoid-premium-test.javier-198.workers.dev.",
+    "Decisión de Javier: Components solo tiene 11 filas con nombre y enlace, sin descripción en las 10 públicas; falta una tabla real de componentes o cambiar lo que promete la suscripción.",
+    "Decisión de Javier: regla de vista previa de Deployments y Components; nombre y descripción del producto en Stripe live; IVA y presentación de impuestos; condiciones de compra antes de vender la oferta nueva.",
+    "Decisión de Javier: destino de la pestaña Product - Container Handling; nombres y alcance de los dos servicios de 1.000 €.",
+    "Contenido (Grok o Codex): revisar los dos robots renombrados y las filas nuevas del 20/11 antes de refrescar la web; la fila 26 de Other Robots, «Agilex», enlaza a agile-robots.com."
+  ],
+  "siguiente_accion": "Codex revisa el PR #58 y coordina con Javier el despliegue de staging en el Worker de test (comandos en ops/brief.md); con staging verificado, Javier decide sobre Components, la vista previa y el cobro live antes de fusionar."
+}
