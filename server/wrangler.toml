@@ -34,11 +34,13 @@ d1_databases = [
 [env.test.vars]
 IMPORT_ENVIRONMENT = "test"
 STRIPE_MODE = "test"
-CHECKOUT_ENABLED = "false"   # set to "true" once the test price is verified (EUR 10000 / year)
+CHECKOUT_ENABLED = "true"    # test price verified (EUR 10000 / year); the test /v1/billing/plan answered checkout_available: true on 23 Nov 2026
 ALLOW_LIVE_CHECKOUT = "false"
 STRIPE_PRICE_ID = "price_1UbL1PAcMngkWs5CH3IDosFb"  # Integrarobot test mode: "Why Humanoid? full database", EUR 100.00 / year (prod_VcaBEvd49gwki2)
 ALLOWED_ORIGINS = "https://whyhumanoid-premium-test.javier-198.workers.dev"
-PREMIUM_URL = "https://whyhumanoid-premium-test.javier-198.workers.dev/"
+# Staging (23 Nov 2026): the test Worker serves the whole site from server/.staging (node tools/build-staging.mjs),
+# with the app at /app/: npx wrangler deploy --env test --assets .staging
+PREMIUM_URL = "https://whyhumanoid-premium-test.javier-198.workers.dev/app/"
 EMAIL_FROM = "Why Humanoid? test <onboarding@resend.dev>"  # Resend test sender: delivers only to the Resend account owner
 
 [env.production]

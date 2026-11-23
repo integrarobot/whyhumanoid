@@ -1064,8 +1064,8 @@ html.dlg-open{overflow:hidden}
 </script>
 
 <script>
-// Database section (paywall, decision of 16 Nov 2026): 13 categories; Humanoids is free in full, the other 12 show
-// their first 10 sheet rows (data/preview) and link to the full database in the premium app.
+// Database section (access matrix, 23 Nov 2026): the workbook tabs behind the nine categories; free tabs in full,
+// Deployments, Components and the tabs that support Deployments in their first 10 sheet rows (data/preview).
 // Each category has its own URL (#humanoids, #db-<tab>) that survives reloads and works with back/forward.
 (function () {
   var DATA = JSON.parse(document.getElementById('data').textContent);
@@ -1122,7 +1122,7 @@ html.dlg-open{overflow:hidden}
     if (byId.integrators) items.push(item('integrators', byId.integrators.entries_total, 'integrators'));
     eco.insertAdjacentHTML('beforeend', items.join(''));
     var kick = document.getElementById('kick');
-    if (kick && exported) kick.textContent = 'Integrarobot database · ' + (DB.tabs.length + 1) + ' categories · free catalogue and previews · exported ' + exported;
+    if (kick && exported) kick.textContent = 'Integrarobot database · nine categories · Humanoids free · exported ' + exported;
   }
   var ex = document.getElementById('db-export'); if (ex && exported) ex.textContent = exported;
 
