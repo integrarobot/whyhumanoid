@@ -71,7 +71,7 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
   const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/catalogue.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));
@@ -114,10 +114,17 @@ for (const problem of projectionProblems(JSON.parse(read('data/public/projection
 // build of tools/build-pages.mjs, which reads only public inputs (free catalogue, 10-row previews, preview relations).
 // Any hand edit, or a page for a company seen only in premium rows, fails here.
 const pageBuild = buildPages().files;
-for (const file of tracked.filter((f) => /^(robots|companies|reports|method)\//.test(f) || ['sitemap.xml', '404.html', 'data/pages.json'].includes(f))) {
+// Every generated directory of the ten categories, Other Robots, the subscription page and Reports is checked too.
+for (const file of tracked.filter((f) => /^(robots|companies|reports|method|subscribe|humanoids|deployments|components|integrators|software|datasets|benchmarks|investment|other-robots)\//.test(f) || ['sitemap.xml', '404.html', 'data/pages.json'].includes(f))) {
   if (!pageBuild.has(file)) fail(file, 'is not produced by tools/build-pages.mjs');
   else if (read(file) !== pageBuild.get(file)) fail(file, 'differs from the build of public inputs (node tools/build-pages.mjs)');
 }
+
+// Rule 8 (Reports, 23 Nov 2026): the catalogue lists only records verified against the public original, with no private
+// Google sheet, Drive or Docs link; extractions and findings of the staging sheet never reach the repository.
+const { checkCatalogue } = await import('./reports-source.mjs');
+for (const problem of checkCatalogue(JSON.parse(read('data/reports/catalogue.json')))) fail('data/reports/catalogue.json', problem);
+for (const file of tracked) if (/\.(html|json|js|csv|xml|txt)$/.test(file) && isPublished(file) && /docs\.google\.com\/(spreadsheets|document)\/d\/|drive\.google\.com\/(file|drive|open)/.test(read(file))) fail(file, 'links a private Google sheet, document or Drive file');
 
 if (failures.length) {
   console.error(`Public data guard FAILED:\n- ${failures.join('\n- ')}`);

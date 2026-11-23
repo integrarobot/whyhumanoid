@@ -10,7 +10,8 @@
 //      404.html sends an unknown robot slug with a known id to the current page.
 import { JSDOM } from 'jsdom';
 import { existsSync, readFileSync } from 'node:fs';
-import { SITE, buildPages } from './build-pages.mjs';
+import { SITE, buildPages, publishedReports, reportPath, sitemapUrls } from './build-pages.mjs';
+import { CATEGORIES, PREVIEW_ROWS } from '../server/src/access/matrix.js';
 import { projectionProblems } from './export-public.mjs';
 
 const root = new URL('../', import.meta.url);
@@ -31,7 +32,7 @@ const previewOrgs = new Set(JSON.parse(read('data/preview/deployments.json')).ro
 // Organisations a page may name in a record card: the free preview's and those of the selected evidence (projection).
 const proj = JSON.parse(read('data/public/projection.json'));
 const cardOrgs = new Set([...previewOrgs, ...proj.companies.map((c) => c.evidence?.organization_name), ...Object.values(proj.robots).map((r) => r.evidence?.organization_name)].filter(Boolean));
-const pages = [...model.robots.map((r) => ['robot', r]), ...model.companies.map((c) => ['company', c])];
+const pages = [...model.robots.map((r) => ['robot', r]), ...model.companies.map((c) => ['company', c]), ...model.otherRobots.map((r) => ['other', r]), ...publishedReports().map((r) => ['report', { ...r, name: r.title, path: reportPath(r) }])];
 for (const [kind, x] of pages) {
   const d = doc(x.path);
   const title = d.title, desc = d.querySelector('meta[name=description]')?.content ?? '';
@@ -46,7 +47,8 @@ for (const [kind, x] of pages) {
   const main = d.querySelector('main')?.textContent ?? '';
   if (!h1.includes(x.name)) fail(`${x.path}: h1 lacks the name`);
   if (!/\S/.test(d.querySelector('.lede')?.textContent ?? '')) fail(`${x.path}: no summary`);
-  if (!/Sources/.test(main)) fail(`${x.path}: no sources section`);
+  if (kind !== 'other' && !/Sources/.test(main)) fail(`${x.path}: no sources section`);
+  if (kind === 'other' && x.url && !d.querySelector(`main a[href="${x.url.replace(/"/g, '&quot;')}"]`)) fail(`${x.path}: no link to the entry's website`);
   for (const a of d.querySelectorAll('a[href^="/"]')) if (!exists(a.getAttribute('href'))) fail(`${x.path}: broken link ${a.getAttribute('href')}`);
   if (/\b(?:rec|clm|dep|lnk|src|mdl|res)_[a-z0-9]+_[a-z0-9_]+\b/.test(d.documentElement.outerHTML)) fail(`${x.path}: contains a record identifier`);
   if (kind === 'robot') {
@@ -58,7 +60,7 @@ for (const [kind, x] of pages) {
       if (field && (v ?? '').trim() && dt.nextElementSibling.textContent.replace(/\s+/g, ' ').trim() !== String(v).replace(/\s+/g, ' ').trim()) fail(`${x.path}: ${dt.textContent} differs from the catalogue`);
     }
     for (const b of d.querySelectorAll('.dep header b')) if (!cardOrgs.has(b.textContent)) fail(`${x.path}: organisation "${b.textContent}" is neither in the free preview nor a selected evidence`);
-  } else {
+  } else if (kind === 'company') {
     for (const rb of x.robotList) {
       if (!d.querySelector(`a[href="${rb.path}"]`)) fail(`${x.path}: no link to its robot ${rb.path}`);
       if (!doc(rb.path).querySelector(`a[href="${x.path}"]`)) fail(`${rb.path}: no link back to ${x.path}`);
@@ -67,10 +69,47 @@ for (const [kind, x] of pages) {
     for (const reserved of ['site_name', 'task_description', 'claim_text', 'source_url', 'open_questions_notes']) if (d.querySelector('main').outerHTML.includes(reserved)) fail(`${x.path}: names the reserved field ${reserved}`);
   }
 }
-for (const idx of ['/robots/', '/companies/']) {
+// The ten categories (access matrix, 23 Nov 2026): directly loadable, in the confirmed order in every page's
+// navigation, labelled free or subscription as the matrix says; subscription categories never show more than the
+// public preview in their HTML.
+const LABELS = CATEGORIES.map((c) => c.label);
+for (const c of CATEGORIES) {
+  const d = doc(c.path);
+  if (d.querySelector('link[rel=canonical]')?.href !== SITE + c.path) fail(`${c.path}: canonical`);
+  if (d.querySelector('meta[name=robots]')) fail(`${c.path}: category page marked noindex`);
+  if (d.querySelector('h1')?.textContent !== c.label) fail(`${c.path}: h1 is not "${c.label}"`);
+  const navLabels = [...d.querySelectorAll('nav.cats a')].map((a) => a.textContent.trim());
+  if (JSON.stringify(navLabels) !== JSON.stringify(LABELS)) fail(`${c.path}: navigation is not the ten categories in order (${navLabels.join(', ')})`);
+  if (d.querySelector('nav.cats a[aria-current="page"]')?.getAttribute('href') !== c.path) fail(`${c.path}: navigation does not mark the current category`);
+  const badge = d.querySelector('.kicker .badge')?.textContent;
+  if (badge !== (c.access === 'subscription' ? 'Subscription' : 'Free')) fail(`${c.path}: access badge ${badge}`);
+  if (titles.has(d.title)) fail(`${c.path}: title also used by ${titles.get(d.title)}`); else titles.set(d.title, c.path);
+  for (const a of d.querySelectorAll('a[href^="/"]')) if (!exists(a.getAttribute('href'))) fail(`${c.path}: broken link ${a.getAttribute('href')}`);
+}
+if (doc('/deployments/').querySelectorAll('article.dep li').length > PREVIEW_ROWS) fail('/deployments/: more records than the public preview');
+if (doc('/components/').querySelectorAll('tbody tr').length > PREVIEW_ROWS) fail('/components/: more entries than the public preview');
+// Every company in the public data has a page: each public Components entry links to one (maker or company as recorded).
+for (const tr of doc('/components/').querySelectorAll('tbody tr')) if (!tr.querySelector('a[href^="/companies/"]')) fail(`/components/: ${tr.textContent.trim().slice(0, 40)} has no company page`);
+for (const id of ['investment', 'integrators']) for (const a of doc(`/${id}/`).querySelector('article section table').querySelectorAll('tbody tr td:first-child a')) if (!a.getAttribute('href').startsWith('/companies/')) fail(`/${id}/: ${a.textContent} does not link to its company page`);
+if (doc('/humanoids/').querySelectorAll('tbody tr').length !== model.robots.length) fail('/humanoids/: does not list every robot');
+// Reports: the existing analysis stays at /reports/deployment-records/; each verified external report has its page and a
+// link to its public original; nothing links a private sheet, Drive or Docs file.
+const reportsDoc = doc('/reports/');
+if (!reportsDoc.querySelector('a[href="/reports/deployment-records/"]')) fail('/reports/: no link to the deployment records analysis');
+if (reportsDoc.querySelectorAll('tbody tr').length !== publishedReports().length) fail('/reports/: does not list every verified report');
+for (const r of publishedReports()) if (!doc(reportPath(r)).querySelector(`a[href="${r.original_url}"]`)) fail(`${reportPath(r)}: no link to the original`);
+if (doc('/reports/deployment-records/').querySelector('nav.cats a[aria-current="page"]')?.getAttribute('href') !== '/reports/') fail('/reports/deployment-records/: not shown under Reports');
+for (const [f, html] of files) if (/docs\.google\.com|drive\.google\.com|\/spreadsheets\/d\//.test(html)) fail(`${f}: links a private Google file`);
+if (doc('/other-robots/').querySelectorAll('tbody tr').length !== model.otherRobots.length) fail('/other-robots/: does not list every entry');
+for (const rbx of model.robots) {
+  const legacy = files.get(`robots/${rbx.path.split('/')[2]}/index.html`) ?? '';
+  if (!legacy.includes(`content="0; url=${rbx.path}"`)) fail(`/robots/${rbx.path.split('/')[2]}/ does not redirect to ${rbx.path}`);
+}
+if (!(files.get('robots/index.html') ?? '').includes('content="0; url=/humanoids/"')) fail('/robots/ does not redirect to /humanoids/');
+for (const idx of ['/humanoids/', '/companies/']) {
   const d = doc(idx);
   const n = d.querySelectorAll('tbody tr').length;
-  const want = idx === '/robots/' ? model.robots.length : model.companies.length;
+  const want = idx === '/humanoids/' ? model.robots.length : model.companies.length;
   if (n !== want) fail(`${idx}: lists ${n} of ${want}`);
   for (const a of d.querySelectorAll('a[href^="/"]')) if (!exists(a.getAttribute('href'))) fail(`${idx}: broken link ${a.getAttribute('href')}`);
 }
@@ -83,14 +122,29 @@ for (const pth of ['/reports/deployment-records/', '/method/']) {
 const rep = doc('/reports/deployment-records/');
 for (const td of rep.querySelectorAll('table.bars td:last-child')) if (Number(td.textContent.trim()) < 3) fail(`report: a cell under 3 records (${td.textContent.trim()})`);
 const home = read('index.html');
-if (!/href="\/robots\/"/.test(home) || !/href="\/companies\/"/.test(home)) fail('index.html: no static links to the robot and company pages');
+for (const c of CATEGORIES) if (!home.includes(`href="${c.path}"`)) fail(`index.html: no static link to ${c.path}`);
+if (!/href="\/companies\/"/.test(home)) fail('index.html: no static link to the company pages');
 
 for (const problem of projectionProblems(JSON.parse(read('data/public/projection.json')))) fail(`data/public/projection.json: ${problem}`);
-if (model.companies.length !== JSON.parse(read('data/public/projection.json')).companies.length) fail('not every company of the projection has a page');
+const withPage = new Set(model.companies.map((c) => c.id));
+if (JSON.parse(read('data/public/projection.json')).companies.some((c) => !withPage.has(c.id))) fail('not every company of the projection has a page');
+// English only: no Spanish country label of the snapshot, and no value of a field still pending translation, on any page.
+const display = JSON.parse(read('tools/display-translations.json'));
+const pendingValues = Object.entries(display.pending).flatMap(([id, fs]) => JSON.parse(read(`data/preview/${id}.json`)).rows.flatMap((r) => fs.map((f) => r[f]).filter((v) => typeof v === 'string' && v.length > 20)));
+for (const f of [...files.keys()].filter((x) => x.endsWith('.html'))) {
+  const html = files.get(f);
+  for (const label of Object.keys(display.countries)) if (html.includes(`>${label}<`) || html.includes(`(${label})`)) { fail(`${f}: Spanish country label ${label}`); break; }
+  for (const v of pendingValues) if (html.includes(v.replace(/&/g, '&amp;').slice(0, 60))) { fail(`${f}: shows a value still pending English`); break; }
+}
+// One canonical page per company: no two company pages for the same name.
+const seenNames = new Map();
+for (const c of model.companies) { const k = c.name.toLowerCase(); if (seenNames.has(k)) fail(`two company pages named ${c.name}: ${seenNames.get(k)} and ${c.path}`); else seenNames.set(k, c.path); }
 
 // 4. Sitemap, redirects, 404.
 const locs = new Set([...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]));
-const want = new Set([`${SITE}/`, `${SITE}/robots/`, `${SITE}/companies/`, `${SITE}/reports/deployment-records/`, `${SITE}/method/`, ...pages.map(([, x]) => SITE + x.path)]);
+const want = new Set(sitemapUrls(model).map((u) => SITE + u));
+for (const [, x] of pages) if (!want.has(SITE + x.path)) fail(`sitemap.xml: ${x.path} not listed`);
+if ([...locs].some((u) => u.startsWith(`${SITE}/robots/`))) fail('sitemap.xml: lists a /robots/ redirect address');
 if (locs.size !== want.size || [...want].some((u) => !locs.has(u))) fail(`sitemap.xml: ${locs.size} URLs, expected ${want.size}`);
 if (!/^Sitemap: https:\/\/whyhumanoid\.com\/sitemap\.xml$/m.test(read('robots.txt'))) fail('robots.txt: no Sitemap line');
 const rb = model.robotById.get(16) ?? model.robots[0];
@@ -113,4 +167,4 @@ if (failures.length) {
   console.error(`Public pages check FAILED (${failures.length}):\n- ${failures.slice(0, 40).join('\n- ')}`);
   process.exit(1);
 }
-console.log(`Public pages check passed: ${model.robots.length} robot and ${model.companies.length} company pages readable without JavaScript, unique titles, descriptions and canonical URLs, links both ways, public values only, sitemap of ${locs.size} URLs, retired addresses redirect, 404 resolves robot ids.`);
+console.log(`Public pages check passed: ${CATEGORIES.length} category pages, ${model.robots.length} humanoid, ${model.otherRobots.length} other-robot and ${model.companies.length} company pages readable without JavaScript, unique titles, descriptions and canonical URLs, links both ways, public values only, sitemap of ${locs.size} URLs, retired addresses redirect, 404 resolves robot ids.`);

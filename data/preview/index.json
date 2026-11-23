@@ -1,5 +1,5 @@
 {
- "note": "Public data of the 12 workbook tabs other than Humanoids, with counts and field names: the first 10 sheet rows of each tab; every row of the link directories; name, ticker, exchange and country of every listed company. Everything else is for subscribers (EUR 100 per year), served only by the backend after a subscription check (paywall of 16 Nov 2026; approved split of 17 Nov 2026).",
+ "note": "Public data of the 12 workbook tabs other than Humanoids, with counts and field names. Free categories (Integrators, Software, Datasets, Benchmarks, Investment, Other Robots): every row. Deployments, Components (Hardware tab) and the tabs that support Deployments: the first 10 sheet rows; every row and field only for subscribers (EUR 100 per year), served by the backend after a subscription check (access matrix of 23 Nov 2026).",
  "snapshot": "2026-11-17T20:58:00Z",
  "tabs": [
   {
@@ -58,7 +58,9 @@
     "accessed_at",
     "language",
     "open_questions_notes"
-   ]
+   ],
+   "access": "subscription",
+   "category": "deployments"
   },
   {
    "id": "integrators",
@@ -74,10 +76,12 @@
     "url",
     "description"
    ],
-   "public": "all",
    "lists": {
     "integrator": 7
-   }
+   },
+   "access": "free",
+   "category": "integrators",
+   "public": "all"
   },
   {
    "id": "evidence-links",
@@ -110,11 +114,13 @@
     "metric_unit",
     "metric_period",
     "limitations"
-   ]
+   ],
+   "access": "subscription",
+   "category": "deployments"
   },
   {
    "id": "task-evaluations",
-   "title": "Task evaluations",
+   "title": "Benchmarks: task evaluations",
    "description": "Per-task eligibility of each robot model against documented evidence.",
    "entries_total": 4,
    "source_rows_total": 4,
@@ -136,7 +142,10 @@
     "exact_amr_to_conveyor",
     "decision_reason",
     "evidence_ids"
-   ]
+   ],
+   "access": "free",
+   "category": "benchmarks",
+   "public": "all"
   },
   {
    "id": "container-handling",
@@ -151,7 +160,9 @@
     "element",
     "result",
     "traceability"
-   ]
+   ],
+   "access": "subscription",
+   "category": null
   },
   {
    "id": "entities",
@@ -173,11 +184,13 @@
     "identity_scope",
     "reviewed_at",
     "notes"
-   ]
+   ],
+   "access": "subscription",
+   "category": "deployments"
   },
   {
    "id": "stocks",
-   "title": "Listed companies",
+   "title": "Investment: listed companies",
    "description": "Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.",
    "entries_total": 276,
    "source_rows_total": 276,
@@ -201,13 +214,16 @@
     "etf_sources",
     "isin"
    ],
+   "access": "free",
+   "category": "investment",
    "public": "basic_fields",
    "public_fields": [
     "name",
     "ticker",
     "exchange",
     "country"
-   ]
+   ],
+   "snapshot_fields": "Beyond row 10 this snapshot holds the basic fields only; the other fields are free and arrive with the next export."
   },
   {
    "id": "software",
@@ -223,11 +239,13 @@
     "url",
     "description"
    ],
-   "public": "all",
    "lists": {
     "software": 124,
     "world_model": 20
-   }
+   },
+   "access": "free",
+   "category": "software",
+   "public": "all"
   },
   {
    "id": "datasets",
@@ -243,29 +261,32 @@
     "url",
     "description"
    ],
-   "public": "all",
    "lists": {
     "dataset": 28
-   }
+   },
+   "access": "free",
+   "category": "datasets",
+   "public": "all"
   },
   {
    "id": "hardware",
-   "title": "Hardware",
-   "description": "Compute, actuators and other hardware used in humanoid robots.",
+   "title": "Components",
+   "description": "Compute, sensors, actuators and other hardware used in humanoid robots (Hardware tab).",
    "entries_total": 11,
    "source_rows_total": 11,
-   "preview_entries": 11,
-   "preview_source_rows": 11,
+   "preview_entries": 10,
+   "preview_source_rows": 10,
    "fields": [
     "list",
     "name",
     "url",
     "description"
    ],
-   "public": "all",
    "lists": {
     "hardware": 11
-   }
+   },
+   "access": "subscription",
+   "category": "components"
   },
   {
    "id": "other-robots",
@@ -281,11 +302,13 @@
     "url",
     "description"
    ],
-   "public": "all",
    "lists": {
     "other_robot": 59,
     "edubot": 488
-   }
+   },
+   "access": "free",
+   "category": "other-robots",
+   "public": "all"
   },
   {
    "id": "data-space",
@@ -307,7 +330,9 @@
     "source_url",
     "next_step"
    ],
-   "offer": false
+   "offer": false,
+   "access": "subscription",
+   "category": null
   }
  ]
 }

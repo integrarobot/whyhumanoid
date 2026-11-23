@@ -13,6 +13,7 @@ import { describeAccess, getEntitlement, hasAccess } from './entitlements.js';
 import { DATASETS, DATASETS_BY_ID, publicDatasetList, publicRowLimit, queryDatasetRows, queryPreview } from './datasets.js';
 import { checkoutState, handleStripeWebhook, startCheckout, startPortal } from './billing.js';
 import { PLAN } from './pricing.js';
+import { canReadFull, publicMatrix } from './access/matrix.js';
 import { buildTaskPlan, validateInputs } from './agent/task-plan.js';
 import { sha256Hex } from './crypto.js';
 import { verifyImportToken } from './import/github-oidc.js';
@@ -46,13 +47,21 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
   // Search scope from the server-side entitlement check, decided before anything is searched: 'full' only for an
   // active subscription (browser session or agent API key), the public preview for everyone else.
   async function searchScope(request, now) {
-    if (!request.headers.get('authorization')) return 'preview';
+    return (await isEntitled(request, now)) ? 'full' : 'preview';
+  }
+
+  // Entitlement of an optional credential: false for visitors and for a missing, expired or revoked credential.
+  async function isEntitled(request, now) {
+    if (!request.headers.get('authorization')) return false;
     const account = await authenticate(request, db, now).catch(() => null);
-    return account && hasAccess(await getEntitlement(db, account.accountId), now) ? 'full' : 'preview';
+    return Boolean(account && hasAccess(await getEntitlement(db, account.accountId), now));
   }
 
   const routes = [
     ['GET', /^\/health$/, async () => json(200, { ok: true })],
+
+    // The central access matrix (server/src/access/matrix.js): rules only, no data.
+    ['GET', /^\/v1\/access$/, async () => json(200, publicMatrix(), { 'cache-control': 'public, max-age=300' })],
 
     // Global search over the 13 categories with common tags (Javier, 17 Nov 2026). Visitors and accounts without a
     // subscription search the public rows only (the free Humanoids catalogue and the first 10 sheet rows of each other
@@ -136,17 +145,15 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       async (request, now, match, url) => {
         const spec = DATASETS_BY_ID.get(match[1]);
         if (!spec) throw new HttpError(404, 'unknown_dataset');
-        await requireAccess(request, now);
+        // Access matrix: a free category is read by anyone with its public values; a subscription category only
+        // after the entitlement check (401 without a credential, 403 without an active subscription).
+        const entitled = canReadFull(spec.id, { entitled: false }) ? await isEntitled(request, now) : (await requireAccess(request, now), true);
         const limit = clampInt(url.searchParams.get('limit'), 1, 500, 100);
         const offset = clampInt(url.searchParams.get('offset'), 0, 1_000_000, 0);
         const q = (url.searchParams.get('q') ?? '').trim().slice(0, 100) || null;
-        const page = await queryDatasetRows(db, spec.id, { limit, offset, q });
-        return privateJson(200, {
-          dataset: { id: spec.id, title: spec.title, description: spec.description },
-          ...page,
-          limit,
-          offset,
-        });
+        const page = await queryDatasetRows(db, spec.id, { limit, offset, q, publicValues: !entitled });
+        const body = { dataset: { id: spec.id, title: spec.title, description: spec.description }, access: spec.access, ...page, limit, offset };
+        return entitled ? privateJson(200, body) : json(200, body, { 'cache-control': 'public, max-age=60', vary: 'Authorization' });
       },
     ],
 

@@ -1,0 +1,64 @@
+{
+  "id": "WH-20261123-0737-hito1-categorias-acceso-staging",
+  "tarea": "Hito 1 de Why Humanoid? en Claude Code: diez categorías con URL propia (las nueve confirmadas y Reports), matriz central de acceso, una suscripción de 100 € al año para Deployments y Components con la venta live cerrada en código, títulos nuevos del libro y staging alojado",
+  "origen": "Javier, 23/11/2026 (migración a Claude Code; coordina y verifica Codex)",
+  "fecha": "2026-11-23T07:37:49+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Línea base del 23/11/2026 en ops/brief.md: main en #57, sin PR abiertos ni trabajo pendiente de la sesión anterior de claude.ai; en producción, rutas por hash, /robots/ y /companies/, y /humanoids o /deployments/ dan 404; cobro live abierto con el plan antiguo (13 pestañas); última importación el 17/11 a las 22:16 UTC.",
+    "Libro maestro modificado el 20/11: traducido al inglés, 4 pestañas renombradas, Humanoids 215 públicas (antes 134) y Deployments 184 (antes 130). El importador de main lo rechaza; en la rama ya lo acepta.",
+    "HIRO Industries Origin: una sola fila en el maestro (Humanoids, fila 140), sin duplicado; no está publicada porque entró después de la importación del 17/11.",
+    "Matriz central de acceso (server/src/access/matrix.js): nueve categorías confirmadas en orden, cada una con su pestaña real; Humanoids y otras seis, gratis; una suscripción de 100 € al año abre Deployments y Components completos; dos servicios de 1.000 € como propuesta, sin compra. La usan la API, el buscador, las relaciones, los exportadores, las páginas y la aplicación.",
+    "API: las categorías gratuitas se leen sin sesión y con valores públicos; Deployments y Components dan 401 sin sesión y 403 sin suscripción; nuevo GET /v1/access. Los suscriptores actuales conservan el acceso.",
+    "Rutas: nueve páginas de categoría en HTML; los robots pasan a /humanoids/<slug>/ y las 134 direcciones /robots/ redirigen; 547 páginas /other-robots/<slug>/; 452 empresas con una ficha canónica cada una (cotizadas e integradores unidos por nombre o web); /subscribe/; sitemap de 1.147 URLs.",
+    "Navegación con las nueve categorías en todas las páginas y bloque de categorías en la portada; textos de la web, la aplicación y la metodología con la oferta nueva.",
+    "Datos: se mantiene la instantánea del 17/11; solo Components (pestaña Hardware) queda en sus 10 primeras filas.",
+    "Staging: tools/build-staging.mjs, server/scripts/staging-local.mjs y tools/verify-staging.mjs; wrangler.toml de test con la aplicación en /app/.",
+    "PR borrador #58 con los commits 875639e, 5100bea, 7a893ff, 04ad501 y el de este cierre corregido."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR borrador del hito 1",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/58"
+    },
+    {
+      "etiqueta": "Brief en la rama",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/claude/stoic-maxwell-432hsy/ops/brief.md"
+    },
+    {
+      "etiqueta": "Matriz de acceso en la rama",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/claude/stoic-maxwell-432hsy/server/src/access/matrix.js"
+    },
+    {
+      "etiqueta": "Web en producción (sin cambios)",
+      "url": "https://whyhumanoid.com/"
+    }
+  ],
+  "despliegue": [
+    "No aplica: staging no desplegado. La petición de credencial de Cloudflare se descartó desde la coordinación de Codex («Now not») y los agentes no deben pedir ni crear tokens. No existe ningún workflow de despliegue de Workers: ci.yml solo prueba e import-workbook.yml usa OIDC de GitHub y Workload Identity de Google (variable GOOGLE_WORKLOAD_IDENTITY_PROVIDER, sin secretos). Caminos preparados en ops/brief.md: A, wrangler con el inicio de sesión que ya tiene Javier (web, aplicación y API en el Worker de test); B, paquete para el editor del panel (solo API). Producción, cobro live y libro sin tocar."
+  ],
+  "verificaciones": [
+    "Pasos de CI en local, en verde: guardia pública, registro de entregas, exportaciones, builds de web, aplicación y páginas, relaciones, proyección, verify-site, verify-premium-app y verify-pages.",
+    "Pruebas de la API: 86 de 86, con access-matrix.test.js nuevo para visitante, sin pago, activo, cancelado al final del periodo y caducado.",
+    "tools/verify-staging.mjs --local: 184 de 184 comprobaciones, con navegador a 1366 y 375 px.",
+    "  - Las nueve rutas, con carga directa y recarga, en orden y con canónica; sin desplazamiento horizontal.",
+    "  - Los enlaces antiguos /robots/ y #db-<pestaña> siguen funcionando.",
+    "  - El sitemap no lista ninguna dirección /robots/.",
+    "  - No existe data/database; los ficheros públicos de Deployments y Components tienen 10 filas o menos, y su API da 401.",
+    "  - Eventos de prueba firmados (simulados, sin cobro): sin pago, 403; activo, 200 en las dos categorías; duplicado ignorado; cancelado al final del periodo, 200; periodo vencido y baja, 403.",
+    "Exportación de prueba del libro del 23/11 con el importador nuevo: todas las pestañas se leen; la sincronización de Humanoids se para en dos robots renombrados (Kepler Forerunner y Xpeng Iron).",
+    "Solo en local o con datos sintéticos: todo lo anterior. Sin hacer: staging alojado, importación del libro en test y compra de prueba con Stripe test Checkout.",
+    "Paquete del camino B desde la rama, con esbuild 0.27.7: 410.848 bytes, sha256 0d4522169c8dde8b3f8384a3b5b5ad89a68f49716c116f1dd36e9534c3cea555; prueba en Node: /health, /v1/access y /v1/billing/plan dan 200 con el plan nuevo.",
+    "Staging alojado en whyhumanoid-premium-test (worker.staging.js de 43cb8e5, sitio de 861e0b5, desplegado por Codex): verify-staging con navegador a 1366 y 375 px y por HTTP, 196 de 196 comprobaciones (diez rutas con carga directa y recarga, enlaces antiguos, sitemap, canónicas, exposición de Deployments y Components).",
+    "Importación de test desde main (run 45131888020): rechazada por Google antes de tocar datos («The given credential is rejected by the attribute condition»): la condición del proveedor de identidad no admite el entorno test desde main. El D1 de test sigue con los datos del 13/11. Recuentos de identidad y relaciones solo en local (check-workbook sobre el maestro del 23/11): Humanoids 215, Deployments 184, Investment 276, Components 11; identidades sin resolver: Product - Container Handling 22, Humanoids 12, Software 12; relaciones: 63 por modelo, 27 por línea, 84 solo fabricante, 10 sin fabricante."
+  ],
+  "pendientes": [
+    "Compra de prueba con Stripe test Checkout y webhook de test: la hace Codex en el navegador; hasta entonces el flujo de pago nuevo queda sin probar en alojado. La venta live está cerrada en código (LIVE_SALES_OPEN = false).",
+    "Importación de test: Javier amplía la condición del proveedor github-actions de Google para el entorno test desde main (o se importa por otra vía autorizada); después, recuentos e identidades en el D1 de test.",
+    "Decisiones de Javier: contenido de Components, vista previa de las categorías de pago, nombre del producto en Stripe live, IVA y condiciones antes de abrir la venta live, pestaña Product - Container Handling y servicios de 1.000 €.",
+    "Contenido: 11 informes de Reports por comprobar contra su original; traducir Investment e Integrators en el maestro; revisar los robots renombrados y los alias nuevos antes de refrescar la web."
+  ],
+  "siguiente_accion": "Codex despliega worker.dashboard.js (commit 43cb8e5) en whyhumanoid-premium y lo confirma; Claude fusiona #58, verifica whyhumanoid.com y registra el cierre de la publicación."
+}

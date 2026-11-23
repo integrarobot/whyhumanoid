@@ -1,0 +1,51 @@
+{
+  "note": "Reviewed catalogue of external reports for the Reports category (tools/build-pages.mjs). Only records whose bibliographic data were checked against the public original are listed here; candidates and findings extracted in the staging sheet stay outside Git until reviewed (tools/reports-source.mjs). Link the publisher's public original; never a private sheet, a Drive file or a rehosted PDF.",
+  "schema": {
+    "id": "stable id, rpt_<publisher>_<year>_<key>; never reused",
+    "slug": "address under /reports/; never 'deployment-records'",
+    "title": "title as printed on the original",
+    "publisher": "organisation as printed",
+    "authors": "as printed, or null",
+    "published": "YYYY, YYYY-MM or YYYY-MM-DD as printed",
+    "edition": "edition or version as printed, or null",
+    "format": "for example PDF, 22 pages",
+    "scope": "one or two English sentences on scope and method, checked against the original, with its locator",
+    "original_url": "public URL of the original on the publisher's domain (or the host the publisher uses, named in host_note)",
+    "host_note": "who hosts the file when it is not the publisher, or null",
+    "access": "public | public-redacted | public-summary-of-paid-report",
+    "restrictions": "what the public original does not include, or null",
+    "review": "{ status: verified, checked_on: YYYY-MM-DD, checked: [title, publisher, date, url, scope], by }",
+    "findings": "in-review until normalised findings are checked page by page"
+  },
+  "reports": [
+    {
+      "id": "rpt_anthropic_2026_what-work-can-robots-do",
+      "slug": "anthropic-what-work-can-robots-do-2026",
+      "title": "What work can robots do?",
+      "publisher": "Anthropic",
+      "authors": "Russell Legate-Yang and Maxim Massenkoff",
+      "published": "2026-09-30",
+      "edition": null,
+      "format": "Web article with a PDF version",
+      "scope": "Builds a task-level index of which US work tasks robots could perform, scoring each task with Claude and cited robot sources, and compares job exposure with historical wage and employment data (section \"Measuring exposure\"). It covers robots in general, defined as autonomous physical machines that sense and act, not only humanoid robots.",
+      "original_url": "https://www.anthropic.com/research/what-work-can-robots-do",
+      "host_note": null,
+      "access": "public",
+      "restrictions": null,
+      "review": {
+        "status": "verified",
+        "checked_on": "2026-11-23",
+        "checked": [
+          "title",
+          "publisher",
+          "authors",
+          "date",
+          "url",
+          "scope"
+        ],
+        "by": "Claude, against the public original"
+      },
+      "findings": "in-review"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "note": "Display rules for public pages built from the published snapshot (tools/build-pages.mjs). All site text is English. countries: Spanish country labels of the 17 Nov 2026 Stocks snapshot and the English label the master workbook holds for the same rows on 23 Nov 2026 (checked row by row by name and ticker; no value added). pending: public fields whose snapshot values are still Spanish; pages show 'English text pending' until the content workflow translates them in the master and a reviewed export replaces the snapshot.",
+  "countries": {
+    "EE. UU.": "United States",
+    "Corea del Sur": "South Korea",
+    "Canadá / EE. UU.": "Canada / United States",
+    "Alemania": "Germany",
+    "Japón": "Japan",
+    "Noruega": "Norway",
+    "Suecia": "Sweden",
+    "Taiwán": "Taiwan",
+    "Reino Unido": "United Kingdom",
+    "Suiza": "Switzerland",
+    "Canadá": "Canada",
+    "Finlandia": "Finland",
+    "Francia": "France",
+    "Brasil": "Brazil",
+    "Países Bajos": "Netherlands",
+    "Malasia": "Malaysia",
+    "Italia": "Italy"
+  },
+  "pending": {
+    "stocks": ["description", "segment"],
+    "integrators": ["description"],
+    "task-evaluations": ["decision_reason"]
+  }
+}

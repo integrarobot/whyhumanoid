@@ -139,7 +139,7 @@ test('duplicate or missing identifiers, or a missing tab, abort the import', asy
   dup.Deployments[2][0] = dup.Deployments[1][0];
   assert.match((await runImport(createTestDb(), dup, T0)).error, /duplicate id/);
   const missing = fixtureWorkbook();
-  missing['Relaciones evidencia'][1][0] = '';
+  missing['Evidence Relations'][1][0] = '';
   assert.match((await runImport(createTestDb(), missing, T0)).error, /missing link_id/);
   const absent = fixtureWorkbook();
   delete absent.Humanoids;
@@ -169,15 +169,15 @@ test('Sheets API source signs a service-account JWT and reads the requested tabs
   };
   const values = await fetchWorkbookValues({
     sheetId: 'fixture-sheet',
-    tabs: ['Integrators', 'Relaciones evidencia'],
+    tabs: ['Integrators', 'Evidence Relations'],
     clientEmail: 'importer@example.iam.gserviceaccount.com',
     privateKeyPem: pem,
     now: T0,
     fetchImpl: fakeFetch,
   });
   assert.deepEqual(values.Integrators, [['NAME', 'URL', 'DESCRIPTION']]);
-  assert.deepEqual(values['Relaciones evidencia'], []);
-  assert.deepEqual(new URL(calls[1].url).searchParams.getAll('ranges'), ["'Integrators'", "'Relaciones evidencia'"]);
+  assert.deepEqual(values['Evidence Relations'], []);
+  assert.deepEqual(new URL(calls[1].url).searchParams.getAll('ranges'), ["'Integrators'", "'Evidence Relations'"]);
 });
 
 test('a federated access token can read the workbook without a private key', async () => {

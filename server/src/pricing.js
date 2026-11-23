@@ -1,10 +1,19 @@
-// The single paid plan, as decided by Javier on 2026-11-13: full database, EUR 100 per year.
-// Checkout is refused unless the Stripe price behind STRIPE_PRICE_ID matches this exactly.
+// The single paid plan: EUR 100 per year (price decided 13 Nov 2026). Since 23 Nov 2026 it unlocks complete
+// Deployments and complete Components (server/src/access/matrix.js); every other category is free.
+// Checkout is refused unless the Stripe price behind STRIPE_PRICE_ID matches this exactly. The Stripe product keeps
+// its own name until Javier renames it in the Stripe dashboard; this name is what the site and the API show.
+
+import { SUBSCRIPTION } from './access/matrix.js';
+
+// New live sales of this offer wait for its purchase terms, tax presentation and the Stripe live product name
+// (Javier, 23 Nov 2026: review before enabling new live sales). While false, live checkout answers 503
+// 'offer_in_review'; Stripe test mode, existing subscriptions, the webhook and the billing portal are unaffected.
+export const LIVE_SALES_OPEN = false;
 
 export const PLAN = Object.freeze({
-  id: 'full-database',
-  name: 'Why Humanoid? full database',
-  description: 'All 13 datasets in full, full search and agent API keys.',
+  id: 'deployments-components-annual',
+  name: SUBSCRIPTION.name,
+  description: 'Complete Deployments and complete Components, with search and agent API keys over them. Every other category is free.',
   currency: 'eur',
   unitAmount: 10000,
   interval: 'year',

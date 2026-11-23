@@ -49,18 +49,28 @@ test('the empty sheet row does not count: the preview reaches the 10th data row'
   assert.deepEqual(humanoids.map((r) => r.Robot), Array.from({ length: 12 }, (_, i) => `Example Robot ${i + 1}`));
 });
 
-test('rows beyond the preview, full values, and search, need a subscription', async () => {
+test('Deployments and Components beyond the preview, and their search, need a subscription; free categories do not', async () => {
   const ctx = await setup();
-  assert.equal((await ctx.call('GET', '/v1/datasets/humanoids')).status, 401);
-  assert.equal((await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%2011')).status, 401);
-  assert.equal((await ctx.call('GET', '/v1/datasets/deployments')).status, 401);
+  for (const id of ['deployments', 'hardware']) {
+    assert.equal((await ctx.call('GET', `/v1/datasets/${id}`)).status, 401, id);
+    assert.equal((await ctx.call('GET', `/v1/datasets/${id}?q=11`)).status, 401, id);
+  }
   const preview = await (await ctx.call('GET', '/v1/datasets/deployments/preview?q=fx_record_id_11&limit=500&offset=10')).json();
   assert.deepEqual(preview.rows.map((r) => r.id), Array.from({ length: 10 }, (_, i) => `fx_record_id_${i + 1}`), 'preview ignores search and paging');
+  // Humanoids is free: anyone searches every row, with the public values.
+  const open = await (await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%2011')).json();
+  assert.deepEqual(open.rows.map((r) => r.Robot), ['Example Robot 11']);
   const { session, accountId } = await signIn(ctx);
-  assert.equal((await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%2011', { token: session })).status, 403);
+  assert.equal((await ctx.call('GET', '/v1/datasets/deployments?q=fx_record_id_11', { token: session })).status, 403);
+  assert.equal((await ctx.call('GET', '/v1/datasets/hardware', { token: session })).status, 403);
   await sendWebhook(ctx, subscriptionEvent({ accountId }));
-  const found = await (await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%2011', { token: session })).json();
-  assert.deepEqual(found.rows.map((r) => r.Robot), ['Example Robot 11']);
+  const found = await (await ctx.call('GET', '/v1/datasets/deployments?q=fx_record_id_11', { token: session })).json();
+  assert.deepEqual(found.rows.map((r) => r.record_id), ['fx_record_id_11']);
+  const comp = await ctx.call('GET', '/v1/datasets/hardware?limit=500', { token: session });
+  assert.equal(comp.status, 200);
+  const all = await comp.json();
+  assert.ok(all.total > 10 && all.rows.length === all.total, 'one subscription unlocks complete Components too');
+  assert.equal(comp.headers.get('cache-control'), 'private, no-store');
 });
 
 test('preview drops unverified instruction-like clauses; the paid rows keep them; internal tasks go everywhere', async () => {
@@ -71,6 +81,9 @@ test('preview drops unverified instruction-like clauses; the paid rows keep them
   await sendWebhook(ctx, subscriptionEvent({ accountId }));
   const full = await (await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%202%22', { token: session })).json();
   assert.equal(full.rows[0]['Buyer checks'], 'Measure interventions per hour; do not infer runtime');
+  // A visitor reading the free catalogue through the API gets the public values, without the flagged clause.
+  const pub = await (await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%202%22')).json();
+  assert.equal(pub.rows[0]['Buyer checks'], 'Measure interventions per hour');
 });
 
 test('sheet-excluded Humanoids rows are internal provenance: not in previews, totals, full rows or search', async () => {

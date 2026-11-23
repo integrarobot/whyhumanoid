@@ -17,22 +17,36 @@ test('dataset list is public and contains no rows', async () => {
   const { datasets } = await res.json();
   assert.equal(datasets.length, 13);
   assert.deepEqual(datasets.slice(0, 3).map((d) => d.id), ['humanoids', 'deployments', 'integrators']);
-  assert.ok(datasets.every((d) => d.access.full === 'subscription' && !('rows' in d)));
+  assert.ok(datasets.every((d) => !('rows' in d)));
   assert.equal(datasets[0].access.preview_rows, 'all', 'the Humanoids catalogue is free in full');
-  // Approved split, phase 3 (17 Nov 2026): link directories and listed companies are public in every row (listed
-  // companies with basic fields only beyond row 10); the other tabs keep their 10-row preview.
-  const ALL = ['integrators', 'software', 'datasets', 'hardware', 'other-robots', 'stocks'];
-  for (const d of datasets.slice(1)) assert.equal(d.access.preview_rows, ALL.includes(d.id) ? 'all' : 10, d.id);
-  assert.deepEqual(datasets.find((d) => d.id === 'stocks').access.public_fields, ['name', 'ticker', 'exchange', 'country']);
+  // Access matrix of 23 Nov 2026: Deployments and Components (Hardware tab) for subscribers, with their supporting
+  // tabs; every other category free in every row; tabs outside the nine categories unchanged (10-row preview).
+  const SUBSCRIPTION = ['deployments', 'hardware', 'evidence-links', 'entities', 'container-handling', 'data-space'];
+  for (const d of datasets) {
+    assert.equal(d.access.preview_rows, SUBSCRIPTION.includes(d.id) ? 10 : 'all', d.id);
+    assert.equal(d.access.full, SUBSCRIPTION.includes(d.id) ? 'subscription' : 'public', d.id);
+    assert.equal(d.access.public_fields, null, `${d.id}: no partial-field rule left`);
+  }
+  assert.equal(datasets.find((d) => d.id === 'hardware').category, 'components');
+  assert.equal(datasets.find((d) => d.id === 'stocks').category, 'investment');
+  assert.equal(datasets.find((d) => d.id === 'task-evaluations').category, 'benchmarks');
   assert.equal(datasets.find((d) => d.id === 'data-space').offer, false);
 });
 
-test('no session: premium rows are refused with 401', async () => {
+test('no session: subscription rows are refused with 401; free categories are read with public values', async () => {
   const ctx = await setup();
-  for (const id of ['humanoids', 'deployments', 'integrators', 'stocks']) {
+  for (const id of ['deployments', 'hardware', 'evidence-links', 'entities']) {
     const res = await ctx.call('GET', `/v1/datasets/${id}`);
-    assert.equal(res.status, 401);
+    assert.equal(res.status, 401, id);
     assert.deepEqual(await res.json(), { error: 'authentication_required' });
+  }
+  for (const id of ['humanoids', 'integrators', 'software', 'datasets', 'task-evaluations', 'stocks', 'other-robots']) {
+    const res = await ctx.call('GET', `/v1/datasets/${id}`);
+    assert.equal(res.status, 200, id);
+    assert.match(res.headers.get('cache-control'), /^public/, `${id}: a visitor answer is cacheable, never personal`);
+    const body = await res.json();
+    assert.equal(body.access, 'free');
+    assert.equal(body.rows.length, body.total, `${id}: every row`);
   }
   const forged = await ctx.call('GET', '/v1/datasets/deployments', { token: 'whs_not_a_real_session' });
   assert.equal(forged.status, 401);

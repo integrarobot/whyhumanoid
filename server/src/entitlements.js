@@ -3,7 +3,10 @@
 // There is no free trial (Javier, 16 Nov 2026): a trialing, incomplete, past_due, unpaid or canceled subscription
 // gives no access. Cancelled-at-period-end keeps access until that date.
 
-export const PRODUCT = 'premium';
+import { SUBSCRIPTION } from './access/matrix.js';
+
+// The one subscription product (server/src/access/matrix.js): it unlocks complete Deployments and Components.
+export const PRODUCT = SUBSCRIPTION.product;
 const ACTIVE_STATUSES = new Set(['active']);
 
 export async function getEntitlement(db, accountId, product = PRODUCT) {

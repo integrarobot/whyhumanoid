@@ -1,2 +1,3 @@
 dist/
 scripts/.dashboard-assets.js
+.staging/

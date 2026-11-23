@@ -7,7 +7,7 @@
 import Stripe from 'stripe';
 import { HttpError } from './http.js';
 import { PRODUCT, upsertStripeEntitlement } from './entitlements.js';
-import { checkStripePrice } from './pricing.js';
+import { LIVE_SALES_OPEN, checkStripePrice } from './pricing.js';
 
 export function stripeKeyMode(secretKey) {
   if (!secretKey) return 'unconfigured';
@@ -85,6 +85,7 @@ export function checkoutReadiness({ config, gateway }) {
   if (gateway.mode === 'unconfigured' || !config.stripePriceId) return 'checkout_not_configured';
   if (gateway.mode !== config.stripeMode) return 'stripe_mode_mismatch';
   if (gateway.mode === 'live' && !config.allowLiveCheckout) return 'live_checkout_disabled';
+  if (gateway.mode === 'live' && !LIVE_SALES_OPEN) return 'offer_in_review';
   if (!gateway.webhookConfigured) return 'webhook_not_configured';
   return 'ready';
 }

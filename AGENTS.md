@@ -4,6 +4,8 @@ Why Humanoid? (whyhumanoid.com), de Integrarobot. Decide Javier; ejecuta Claude;
 
 ## Reglas vigentes
 
+- Decisión comercial del 23/11/2026, en revisión en staging (rama `claude/stoic-maxwell-432hsy`, brief en `ops/brief.md`): Humanoids gratis; una suscripción de 100 € al año abre Deployments y Components completos; el resto de categorías, gratis; dos servicios de 1.000 € aparte. El acceso lo decide solo `server/src/access/matrix.js`. Hasta que Javier apruebe la fusión, en producción sigue la regla de abajo.
+
 - Muro de pago (d-0008, 16/11/2026; sustituye la apertura temporal de d-0004): Humanoids gratis; las otras 12 pestañas, 100 € al año con Stripe, sin prueba gratuita. La web publica las 10 primeras filas de cada pestaña premium (`data/preview/`), salvo lo que el reparto aprobado hizo público (fase 3, 17/11/2026): los directorios de enlaces enteros (Integrators, Software, Datasets, Hardware, Other robots) y nombre, ticker, bolsa y país de todas las cotizadas (Stocks); Data space queda fuera de la oferta de pago, con sus datos conservados; las filas completas viven solo en la base de datos del backend (Cloudflare D1) y se sirven tras comprobar la suscripción en el servidor. Nunca vuelvas a poner filas completas de una pestaña premium en Git, en la web ni en ningún JSON público (`data/database/` está prohibido; la guardia y CI lo bloquean).
 - Nunca en Git ni en la web: credenciales, enlaces o identificadores del libro maestro o de Drive, contactos personales, cuentas de usuario ni notas internas.
 - Cambios por rama, PR contra `main`, CI en verde, fusión y verificación en producción (README). La web la sirve GitHub Pages desde `main`.

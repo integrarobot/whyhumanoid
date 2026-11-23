@@ -17,13 +17,13 @@ function scenario() {
     dep({ record_id: 'fx_rec_b1', manufacturer: 'Example Humanoids', robot_model: 'Beta', robot_version: 'Not disclosed', operational_status: 'announced', claim_id: 'fx_clm_b1', source_url: 'https://example.org/beta', source_role: 'manufacturer' }),
   ];
   const link = (v) => rowOf('evidence-links', { task_id: TASK, integrator_id: 'unknown', metric_name: 'not_applicable', ...v });
-  wb['Relaciones evidencia'] = [wb['Relaciones evidencia'][0],
+  wb['Evidence Relations'] = [wb['Evidence Relations'][0],
     link({ link_id: 'fx_link_1', model_id: 'fx_model_alpha', claim_id: 'fx_clm_a1', deployment_id: 'fx_dep_a1', statement: 'Example Logistics runs Alpha moving totes from AMRs to conveyors.', stage_at_source_date: 'commercial_operation', source_role: 'customer_operator', source_url: 'https://example.com/a1', source_publication_date: '2026-05-01', limitations: 'Fleet size not disclosed.' }),
     link({ link_id: 'fx_link_2', model_id: 'fx_model_alpha', claim_id: 'fx_clm_a2', deployment_id: 'fx_dep_a1', statement: 'Integrator pilot of Alpha at the same site.', stage_at_source_date: 'pilot', source_role: 'system_integrator', source_url: 'https://example.com/a2', source_publication_date: '2025-11-02', metric_name: 'interventions_per_hour', metric_operator: '<=', metric_value: '0.5', metric_unit: 'per hour' }),
     link({ link_id: 'fx_link_3', model_id: 'fx_model_beta', claim_id: 'fx_clm_b1', statement: 'Example Humanoids announces Beta for logistics.', stage_at_source_date: 'announced', source_role: 'manufacturer', source_url: 'https://example.org/beta' }),
   ];
-  wb['Evaluacion tarea'] = [wb['Evaluacion tarea'][0], rowOf('task-evaluations', { task_id: TASK, model_id: 'fx_model_alpha', model: 'Alpha', eligible_task_evidence: 'TRUE', eligible_commercial: 'TRUE', eligible_economic: 'FALSE', decision_reason: 'Operational evidence; costs missing.' })];
-  wb['Producto - Contenedores'] = [wb['Producto - Contenedores'][0], rowOf('container-handling', { Capa: 'Alcance', Elemento: 'Demonstration case', 'Resultado / implicación': 'Container handling in intralogistics: pick, carry, place.', Trazabilidad: TASK })];
+  wb['Task Evaluation'] = [wb['Task Evaluation'][0], rowOf('task-evaluations', { task_id: TASK, model_id: 'fx_model_alpha', model: 'Alpha', eligible_task_evidence: 'TRUE', eligible_commercial: 'TRUE', eligible_economic: 'FALSE', decision_reason: 'Operational evidence; costs missing.' })];
+  wb['Product - Container Handling'] = [wb['Product - Container Handling'][0], rowOf('container-handling', { Layer: 'Alcance', Element: 'Demonstration case', 'Outcome / implication': 'Container handling in intralogistics: pick, carry, place.', Traceability: TASK })];
   return wb;
 }
 

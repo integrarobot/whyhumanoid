@@ -10,11 +10,18 @@ test('test-mode purchase and access lifecycle', async () => {
   const ctx = await setup({ checkoutEnabled: true });
   let { session, accountId } = await signIn(ctx, 'lifecycle@example.com');
   const signInAgain = async () => { ({ session } = await signIn(ctx, 'lifecycle@example.com')); };
-  const full = () => ctx.call('GET', '/v1/datasets/humanoids?limit=500', { token: session });
+  // The one subscription unlocks complete Deployments and complete Components together (access matrix, 23 Nov 2026).
+  const full = async () => {
+    const dep = await ctx.call('GET', '/v1/datasets/deployments?limit=500', { token: session });
+    const comp = await ctx.call('GET', '/v1/datasets/hardware?limit=500', { token: session });
+    assert.equal(dep.status, comp.status, 'Deployments and Components share one entitlement');
+    return dep;
+  };
   const step = async (overrides) => (await (await sendWebhook(ctx, subscriptionEvent({ accountId, customer: 'cus_life', subscriptionId: 'sub_life', ...overrides }))).json()).outcome;
 
   // 1. Preview only before paying.
-  assert.equal((await ctx.call('GET', '/v1/datasets/humanoids/preview')).status, 200);
+  assert.equal((await ctx.call('GET', '/v1/datasets/deployments/preview')).status, 200);
+  assert.equal((await ctx.call('GET', '/v1/datasets/humanoids', { token: session })).status, 200, 'Humanoids is free');
   assert.equal((await full()).status, 403);
 
   // 2. Checkout session created after the price check; the redirect back grants nothing.
