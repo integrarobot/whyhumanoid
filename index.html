@@ -1308,7 +1308,7 @@ html.dlg-open{overflow:hidden}
     var locked = Math.max(0, meta.entries_total - meta.preview_entries);
     var app = (DATA.access && DATA.access.app_url) || 'https://whyhumanoid.com/app/';
     // The paywall notice sits below the table, outside its horizontal scroll, so it always has the panel's width.
-    var moreHtml = locked ? '<p><b>' + locked + ' more entries</b> of ' + esc(meta.title) + ', with every field, come with the subscription (Deployments and Components, ' + esc((DATA.access && DATA.access.price) || '€100 per year') + ').</p>' +
+    var moreHtml = locked ? '<p><b>' + locked + (locked === 1 ? ' more entry</b> of ' : ' more entries</b> of ') + esc(meta.title) + ', with every field, ' + (locked === 1 ? 'comes' : 'come') + ' with the subscription (Deployments and Components, ' + esc((DATA.access && DATA.access.price) || '€100 per year') + ').</p>' +
       '<a class="db-buy" href="/subscribe/">Subscribe</a>' : '';
     panel.innerHTML =
       '<div class="db-panel-head"><div><h3 id="db-title">' + esc(meta.title) + '</h3><p>' + esc(meta.description || '') + '</p>' +

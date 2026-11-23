@@ -1,0 +1,47 @@
+{
+  "id": "WH-20261123-1215-aviso-suscripcion-movil",
+  "tarea": "Prioridad 0: corregir el bloque de suscripción del panel de la base de datos en la portada (columna estrechísima, CTA partido letra a letra)",
+  "origen": "Javier, 23/11/2026 (captura de las 08:48 Europe/Madrid), transmitido por Codex",
+  "fecha": "2026-11-23T12:15:22+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Causa reproducida en whyhumanoid.com a 375 px, en inglés y sin traducción: la clase global .lock del marcador de suscripción de la barra de categorías (añadida en #58: display inline-block, 6 px) también se aplicaba a la fila <tr class=\"lock\"> del aviso; la fila quedaba en 6 px, la celda en 28 px y 2.278 px de alto, y el CTA se partía letra a letra. El colspan (8 de 8) era correcto. Afectaba a todas las pestañas con aviso y a todos los anchos; la traducción del navegador no era la causa.",
+    "PR #61 (2c4e4ee): el marcador pasa a .nav-lock; el aviso sale de la tabla y va en un bloque propio (#db-more) bajo el scroll horizontal, con el ancho del panel, texto que corta por palabras y CTA en una línea con objetivo táctil de 44 px y foco visible. Mismo cambio en la aplicación de suscriptores, donde el aviso se salía del área visible dentro del scroll.",
+    "Diseños estrechos (zoom del 200 % en móvil): el bloque de categorías, las tarjetas de la oferta, el índice de pestañas y los filtros del catálogo se ajustan al ancho en vez de ensanchar la página.",
+    "tools/verify-staging.mjs mide el aviso en navegador real en las seis pestañas con aviso, en escritorio y móvil: al menos el 90 % del panel, fuera del scroll de la tabla, CTA en una línea y de 44×44 px como mínimo.",
+    "Este PR: singular y plural del aviso («1 more entry comes...») en la portada y la aplicación.",
+    "Permisos, precios y venta live cerrada, sin cambios."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #61 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/61"
+    },
+    {
+      "etiqueta": "Portada",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "Panel de Deployments",
+      "url": "https://whyhumanoid.com/#db-deployments"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 2c4e4ee (CI del PR en verde, run 45162546758); en whyhumanoid.com tras 10 comprobaciones de espera. Sin cambios en el Worker."
+  ],
+  "verificaciones": [
+    "Antes, en producción (DOM y CSS calculado): celda del aviso de 28 px de ancho y 2.278 px de alto dentro de una fila de 6 px; las nuevas comprobaciones fallaban 36 de 36 contra la web anterior.",
+    "Después, en producción con navegador real: verify-staging 232 de 232 (incluidas las 36 del aviso) en whyhumanoid.com con la API del Worker.",
+    "Capturas del bloque exacto en producción a 320, 375, 390, 430, 768 y 1366 px, en inglés y con una traducción al español simulada (textos más largos en los mismos elementos), en Deployments y Components: aviso al 100 % del ancho del panel, de 77 a 167 px de alto, CTA en una línea de 44 px de alto y sin desbordamiento de página.",
+    "Zoom del 200 % (viewport de la mitad de ancho): con 375 px, sin desbordamiento; con 320 px, el aviso y el CTA están bien, pero la página desborda 5 px por la gráfica de países, ya existente.",
+    "Aplicación de suscriptores en staging local: aviso al 100 % del panel (343 de 343 px en móvil, 1.273 de 1.273 en escritorio). verify-site, verify-premium-app, verify-pages y 93 pruebas de API en verde."
+  ],
+  "pendientes": [
+    "La traducción real del navegador (Chrome) no se pudo ejecutar en headless; se simuló con textos españoles más largos en los mismos elementos.",
+    "Zoom del 200 % en un móvil de 320 px: 5 px de desbordamiento en la gráfica de países de la portada, anterior a este trabajo.",
+    "Revisión de Codex antes de confirmar el cierre."
+  ],
+  "siguiente_accion": "Codex revisa la portada en su navegador (incluida la traducción al español) y confirma; Claude continúa con la visualización de adopción que sustituye a Height × Mass."
+}

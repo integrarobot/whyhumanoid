@@ -391,7 +391,7 @@
     const more = $('db-more');
     if (locked) {
       const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'Subscriptions open soon';
-      more.innerHTML = `<p><b>${locked} more entries</b> come with the subscription (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</p>`;
+      more.innerHTML = `<p><b>${locked} more ${locked === 1 ? 'entry</b> comes' : 'entries</b> come'} with the subscription (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</p>`;
       more.hidden = false;
     }
     function render() {
