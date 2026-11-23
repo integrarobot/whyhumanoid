@@ -1,0 +1,53 @@
+{
+  "id": "WH-20261123-1237-escala-adopcion",
+  "tarea": "Sustituir la gráfica Height × Mass de la portada por una visualización de la madurez de los despliegues empresariales a partir de los datos reales de Deployments, y refinar después su espaciado a petición de Javier",
+  "origen": "Javier, 23/11/2026, transmitido por Codex (visualización); Javier, 23/11/2026, tras ver la captura de las 12:29 (espaciado)",
+  "fecha": "2026-11-23T12:37:35+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Decisión visual: gráfico de unidades, una marca por caso de despliegue (deduplicado por el identificador de despliegue de la hoja, que no se publica). Cada caso se coloca en su estado más avanzado tal como consta, con el orden que ya usa el método (en operación > piloto o prueba > afirmación del fabricante sin confirmar > anunciado). No hay puntuación de madurez inventada.",
+    "Portada: un resumen compacto («7 of 71 recorded deployment cases are recorded as in operation»), barras por etapa con casos y organizaciones, los 7 casos en operación con nombre y un enlace al explorador.",
+    "Explorador a todo el ancho (#adoption): los 71 casos con organización usuaria y fabricante, filtro por sector con recuentos que se actualizan, panel de detalle (robot tal como consta, sector, país, años, registros y sus estados, enlaces a empresa y robot), vista en tabla y reglas de recuento: casos (71), registros (130) y organizaciones (43) por separado; sin suma de flota; lo desconocido no es cero; no es un censo del mercado; fecha de instantánea y enlace al método.",
+    "Datos: nuevo agregado `cases` en la lista blanca de la proyección pública (server/src/public/projection.js). Lleva organización, fabricante, robot registrado, sector, países, años, número de registros y etiquetas de estado. No lleva emplazamiento, tarea, métricas, texto de la afirmación, verificación, fuentes ni identificadores. data/public/projection.json se regeneró desde la instantánea publicada del 17/11: solo se añade `cases` y no se publica nada nuevo del maestro.",
+    "Altura y masa siguen en cada ficha de robot. El HTML se lee sin JavaScript: cada caso enlaza a su página de empresa.",
+    "#64, defectos vistos en las capturas de producción: el panel de detalle había perdido su relleno interior; el robot salía como «Galbot Galbot S1».",
+    "#64, espaciado pedido por Javier, con el mismo concepto, la misma tipografía y el mismo contenido:\n- un único ritmo de espacios entre resumen, barras, encabezado, tarjetas, botón y nota;\n- filas de barras separadas, apiladas en móvil (antes, la barra quedaba en unos 80 px);\n- tarjetas con más separación y relleno, y fabricante hasta en tres líneas, para que ningún nombre se corte;\n- panel de detalle con 20 px de relleno y en una columna en móvil."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #63 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/63"
+    },
+    {
+      "etiqueta": "PR #64 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/64"
+    },
+    {
+      "etiqueta": "Portada",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "Explorador de adopción",
+      "url": "https://whyhumanoid.com/#adoption"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 08e1be3 (#63, CI en verde sobre d8ee05e) y 7a4de00 (#64, CI en verde sobre 2d1e4b3). Las dos versiones estaban servidas en whyhumanoid.com tras 3 comprobaciones de espera. Sin cambios en el Worker ni en D1."
+  ],
+  "verificaciones": [
+    "Producción tras #64: verify-staging con navegador real en whyhumanoid.com y la API del Worker, 250 de 250, incluidas las comprobaciones del bloque:\n- hero, filtro y detalle;\n- espaciado medido;\n- nombres sin cortar;\n- relleno del detalle.",
+    "Contraprueba: las 10 comprobaciones de espaciado y relleno fallaban contra la portada anterior a #64 y pasan después.",
+    "Capturas de producción a 1366, 1024, 768, 390 y 320 px: sin desbordamiento de página y sin nombres recortados.",
+    "En local: 94 de 94 pruebas de API (incluida la nueva de deduplicación, regla de etapa y lista blanca) y verify-staging --local 259 de 259. Además pasan:\n- verify-site (recuentos contra la proyección, enlaces, claves incrustadas, ningún nombre doble en los 71 casos);\n- check-public;\n- check-reserved (ninguno de los 1.626 valores reservados aparece publicado);\n- export-public --check.",
+    "La paleta ordinal ámbar (#5C4526, #8E6430, #C4863A, #FFBA5E) pasa el validador de paletas en modo oscuro sobre la superficie de la página. La etapa también se da por posición y etiqueta, no solo por color."
+  ],
+  "pendientes": [
+    "Límite de la visualización: refleja la instantánea publicada del 17/11 (130 registros). Los datos nuevos del maestro (20/11 en adelante) no están publicados y no se publican sin revisión.",
+    "Límite de la visualización: las etapas reflejan afirmaciones tal como constan, no hechos verificados. «Unconfirmed» agrupa afirmaciones de operación del fabricante sin confirmación independiente.",
+    "La comprobación de nombre doble en navegador abre el primer caso tras filtrar por automoción. La revisión de los 71 casos la hace verify-site sobre el HTML generado.",
+    "Revisión de Codex y de Javier antes de confirmar el cierre."
+  ],
+  "siguiente_accion": "Codex y Javier revisan la portada y confirman; Claude sigue con las tres mejoras de la ficha de NEO (quitar «Home Robot», imagen con transparencia real y botón Buy NEO)."
+}
