@@ -9,7 +9,7 @@
 //   - Two services at EUR 1,000 each, NOT included in the subscription: a humanoid adoption assessment (with
 //     Deployments) and a component-manufacturing study (with Components). Names are proposals; purchase is not built.
 //
-// The nine category labels and their order are confirmed by Javier. A category maps only to tabs that exist in the
+// The nine category labels and their order are confirmed by Javier; Reports is the tenth (Javier, 23 Nov 2026), free. A category maps only to tabs that exist in the
 // master workbook; where no dedicated tab exists the gap is stated, never filled with invented records.
 
 export const PREVIEW_ROWS = 10;
@@ -65,6 +65,13 @@ export const CATEGORIES = Object.freeze([
   {
     id: 'other-robots', label: 'Other Robots', path: '/other-robots/', access: 'free', datasets: ['other-robots'],
     summary: 'Non-humanoid, service and educational robots tracked alongside the humanoid catalogue.',
+  },
+  {
+    // Not a workbook tab: a reviewed catalogue of external reports (data/reports/catalogue.json) plus Why Humanoid?'s
+    // own analyses. The external source is a staging sheet of extractions; only checked bibliographic records publish.
+    id: 'reports', label: 'Reports', path: '/reports/', access: 'free', datasets: [], source: 'data/reports/catalogue.json',
+    summary: 'Research reports on humanoid robots, with their publisher, date, scope and a link to the original, and Why Humanoid? analyses.',
+    gap: 'Findings from these reports (forecasts, costs, adoption) are being checked against each original, page by page, and are not published yet.',
   },
 ]);
 

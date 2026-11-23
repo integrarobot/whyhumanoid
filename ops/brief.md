@@ -34,7 +34,7 @@ Supersedes the 10-row paywall of 16 Nov 2026 (d-0008) and the USD pricing.
 Code: `server/src/access/matrix.js` is the only place that decides access. The Worker, the exporters, search, the
 page generator and the catalogue page read it.
 
-## Confirmed categories (order and labels confirmed by Javier)
+## Categories (nine confirmed by Javier in this order, plus Reports added on 23 Nov 2026)
 
 | # | Category | URL | Workbook tab | Access | Gap |
 |---|---|---|---|---|---|
@@ -47,6 +47,7 @@ page generator and the catalogue page read it.
 | 7 | Benchmarks | /benchmarks/ | Task Evaluation | Free | No dedicated benchmarks table: 4 task evaluations |
 | 8 | Investment | /investment/ | Investment (renamed from Stocks on 23 Nov 2026; dataset id `stocks`) + Valuation, Investors, Rounds of Humanoids | Free (quote columns withheld for licensing) | No private-investment table; descriptions and segments still in Spanish in the master |
 | 9 | Other Robots | /other-robots/ | Other Robots | Free | |
+| 10 | Reports | /reports/ | Not a workbook tab: `data/reports/catalogue.json` (reviewed) and Why Humanoid? analyses (`/reports/deployment-records/`) | Free | External catalogue: 1 of 12 reports verified so far; findings not published |
 
 Tabs outside the nine: Product - Container Handling (first 10 rows public, unchanged pending a decision) and Data
 Space (out of the offer, unchanged).
@@ -160,7 +161,7 @@ tax presentation and purchase terms.
 
 | Kind | Status |
 |---|---|
-| API tests over synthetic fixtures (91) and every CI step | Passed locally; CI green on the PR |
+| API tests over synthetic fixtures (93) and every CI step | Passed locally; CI green on the PR |
 | Local staging: built bundle, real API code, synthetic data, simulated signed test-mode events (`verify-staging --local`) | Passed |
 | Dashboard bundles: build from the branch and Node smoke test (site from a mocked pinned commit, API routes, live refusal) | Passed |
 | Hosted staging on the test Worker, test import, `verify-staging` against it | Not done: waits for the dashboard runbook |
@@ -174,6 +175,29 @@ node tools/build-staging.mjs --origin http://localhost:8788
 node server/scripts/staging-local.mjs
 node tools/verify-staging.mjs --base http://localhost:8788 --local --shots /tmp/shots
 ```
+
+## Reports (Javier, 23 Nov 2026)
+
+Source: Grok's staging sheet "Humanoid Reports - Key Findings" (one tab, 18 columns, 12 reports on 23 Nov 2026). It is
+an extraction, not verified evidence, and stays an external staging source: no new master tab until a compatible
+schema and a reviewed batch are ready. Its id and links never go into Git or onto the site.
+
+- Publication rule: a report is listed only after its title, publisher, authors, date, address and scope are checked
+  against the public original (`data/reports/catalogue.json`, checked by `tools/reports-source.mjs --check`, by the
+  public data guard and in CI). Link the publisher's public original; never rehost a PDF.
+- Findings: `tools/reports-source.mjs --from <sheet export> --out <private file>` validates the 18 columns, proposes a
+  stable id per report and splits every finding cell into one stub per claim (report_id, topic, text, locator) with
+  the fields a reviewer fills: metric, value, unit, geography or population, reference period or horizon, scenario,
+  limitations, checked locator. On 23 Nov: 174 stubs, 142 with a locator in the cell, all unreviewed. No figure is
+  published, compared or averaged until checked page by page; cited forecasts are not independent sources. The
+  findings explorer and comparisons come in a separate PR.
+- Verified so far: Anthropic, "What work can robots do?" (30 Sep 2026; Russell Legate-Yang and Maxim Massenkoff),
+  checked on anthropic.com. The other 11 could not be opened from the cloud session (its network allows only the
+  Why Humanoid? hosts) and wait for a person or agent with web access: Binh Pham study, Bank of America Institute,
+  Morgan Stanley (the sheet links a copy on an adviser's page, not the research site), Barclays, Intel, Fayd Capital,
+  RBC BlueBay, Capgemini Research Institute (the sheet links a copy hosted by MEO; prefer Capgemini's own page),
+  NEXERY / consult-ing, Berg Insight (public brochure of a paid report) and Goldman Sachs (redacted public version).
+  The adapter's private review file holds the checklist for each.
 
 ## Decisions pending (Javier)
 

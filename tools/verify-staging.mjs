@@ -4,7 +4,7 @@
 //   node tools/verify-staging.mjs --base http://localhost:8788 [--local] [--shots <dir>]
 //
 // Checks, with a real browser (Playwright, Chromium), at desktop and phone width:
-//   1. The nine categories load directly and on reload, in order in the navigation, with no horizontal scroll;
+//   1. The ten categories load directly and on reload, in order in the navigation, with no horizontal scroll;
 //      /humanoids (no slash) reaches /humanoids/; representative robot, company and other-robot pages load.
 //   2. Old links: /robots/<slug>/ and /robots/ lead to /humanoids/...; old #db-<tab> links still open the panel.
 //   3. Canonical URLs point at whyhumanoid.com; the sitemap lists the categories and no /robots/ address.
@@ -30,7 +30,7 @@ const check = (cond, msg) => (cond ? ok.push(msg) : failures.push(msg));
 if (SHOTS) mkdirSync(SHOTS, { recursive: true });
 
 const browser = await chromium.launch();
-const SAMPLE = ['/humanoids/agibot-x1-4/', '/companies/tesla/', '/companies/agility-robotics/', '/other-robots/realtime/', '/subscribe/', '/companies/', '/method/', '/reports/deployment-records/'];
+const SAMPLE = ['/reports/deployment-records/', '/reports/anthropic-what-work-can-robots-do-2026/', '/humanoids/agibot-x1-4/', '/companies/tesla/', '/companies/agility-robotics/', '/other-robots/realtime/', '/subscribe/', '/companies/', '/method/', '/reports/deployment-records/'];
 for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['phone', { width: 375, height: 812 }]]) {
   const ctx = await browser.newContext({ viewport, deviceScaleFactor: 1 });
   const page = await ctx.newPage();
@@ -58,8 +58,8 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   const home = await page.goto(`${BASE}/`, { waitUntil: 'load' });
   check(home.status() === 200, `${label} home ${home.status()}`);
   const homeNav = await page.$$eval('.hud-nav a', (as) => as.map((a) => a.getAttribute('href')));
-  check(JSON.stringify(homeNav) === JSON.stringify(CATEGORIES.map((x) => x.path)), `${label} home: navigation is the nine categories`);
-  check((await page.$$('#categories .catgrid li')).length === 9, `${label} home: categories block has nine entries`);
+  check(JSON.stringify(homeNav) === JSON.stringify(CATEGORIES.map((x) => x.path)), `${label} home: navigation is the ten categories`);
+  check((await page.$$('#categories .catgrid li')).length === CATEGORIES.length, `${label} home: categories block has ${CATEGORIES.length} entries`);
   const homeOverflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   check(homeOverflow <= 1, `${label} home: no horizontal page scroll (${homeOverflow}px)`);
   if (SHOTS) {

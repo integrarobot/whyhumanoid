@@ -10,7 +10,7 @@
 //      404.html sends an unknown robot slug with a known id to the current page.
 import { JSDOM } from 'jsdom';
 import { existsSync, readFileSync } from 'node:fs';
-import { SITE, buildPages, sitemapUrls } from './build-pages.mjs';
+import { SITE, buildPages, publishedReports, reportPath, sitemapUrls } from './build-pages.mjs';
 import { CATEGORIES, PREVIEW_ROWS } from '../server/src/access/matrix.js';
 import { projectionProblems } from './export-public.mjs';
 
@@ -32,7 +32,7 @@ const previewOrgs = new Set(JSON.parse(read('data/preview/deployments.json')).ro
 // Organisations a page may name in a record card: the free preview's and those of the selected evidence (projection).
 const proj = JSON.parse(read('data/public/projection.json'));
 const cardOrgs = new Set([...previewOrgs, ...proj.companies.map((c) => c.evidence?.organization_name), ...Object.values(proj.robots).map((r) => r.evidence?.organization_name)].filter(Boolean));
-const pages = [...model.robots.map((r) => ['robot', r]), ...model.companies.map((c) => ['company', c]), ...model.otherRobots.map((r) => ['other', r])];
+const pages = [...model.robots.map((r) => ['robot', r]), ...model.companies.map((c) => ['company', c]), ...model.otherRobots.map((r) => ['other', r]), ...publishedReports().map((r) => ['report', { ...r, name: r.title, path: reportPath(r) }])];
 for (const [kind, x] of pages) {
   const d = doc(x.path);
   const title = d.title, desc = d.querySelector('meta[name=description]')?.content ?? '';
@@ -69,7 +69,7 @@ for (const [kind, x] of pages) {
     for (const reserved of ['site_name', 'task_description', 'claim_text', 'source_url', 'open_questions_notes']) if (d.querySelector('main').outerHTML.includes(reserved)) fail(`${x.path}: names the reserved field ${reserved}`);
   }
 }
-// The nine categories (access matrix, 23 Nov 2026): directly loadable, in the confirmed order in every page's
+// The ten categories (access matrix, 23 Nov 2026): directly loadable, in the confirmed order in every page's
 // navigation, labelled free or subscription as the matrix says; subscription categories never show more than the
 // public preview in their HTML.
 const LABELS = CATEGORIES.map((c) => c.label);
@@ -79,7 +79,7 @@ for (const c of CATEGORIES) {
   if (d.querySelector('meta[name=robots]')) fail(`${c.path}: category page marked noindex`);
   if (d.querySelector('h1')?.textContent !== c.label) fail(`${c.path}: h1 is not "${c.label}"`);
   const navLabels = [...d.querySelectorAll('nav.cats a')].map((a) => a.textContent.trim());
-  if (JSON.stringify(navLabels) !== JSON.stringify(LABELS)) fail(`${c.path}: navigation is not the nine categories in order (${navLabels.join(', ')})`);
+  if (JSON.stringify(navLabels) !== JSON.stringify(LABELS)) fail(`${c.path}: navigation is not the ten categories in order (${navLabels.join(', ')})`);
   if (d.querySelector('nav.cats a[aria-current="page"]')?.getAttribute('href') !== c.path) fail(`${c.path}: navigation does not mark the current category`);
   const badge = d.querySelector('.kicker .badge')?.textContent;
   if (badge !== (c.access === 'subscription' ? 'Subscription' : 'Free')) fail(`${c.path}: access badge ${badge}`);
@@ -92,6 +92,14 @@ if (doc('/components/').querySelectorAll('tbody tr').length > PREVIEW_ROWS) fail
 for (const tr of doc('/components/').querySelectorAll('tbody tr')) if (!tr.querySelector('a[href^="/companies/"]')) fail(`/components/: ${tr.textContent.trim().slice(0, 40)} has no company page`);
 for (const id of ['investment', 'integrators']) for (const a of doc(`/${id}/`).querySelector('article section table').querySelectorAll('tbody tr td:first-child a')) if (!a.getAttribute('href').startsWith('/companies/')) fail(`/${id}/: ${a.textContent} does not link to its company page`);
 if (doc('/humanoids/').querySelectorAll('tbody tr').length !== model.robots.length) fail('/humanoids/: does not list every robot');
+// Reports: the existing analysis stays at /reports/deployment-records/; each verified external report has its page and a
+// link to its public original; nothing links a private sheet, Drive or Docs file.
+const reportsDoc = doc('/reports/');
+if (!reportsDoc.querySelector('a[href="/reports/deployment-records/"]')) fail('/reports/: no link to the deployment records analysis');
+if (reportsDoc.querySelectorAll('tbody tr').length !== publishedReports().length) fail('/reports/: does not list every verified report');
+for (const r of publishedReports()) if (!doc(reportPath(r)).querySelector(`a[href="${r.original_url}"]`)) fail(`${reportPath(r)}: no link to the original`);
+if (doc('/reports/deployment-records/').querySelector('nav.cats a[aria-current="page"]')?.getAttribute('href') !== '/reports/') fail('/reports/deployment-records/: not shown under Reports');
+for (const [f, html] of files) if (/docs\.google\.com|drive\.google\.com|\/spreadsheets\/d\//.test(html)) fail(`${f}: links a private Google file`);
 if (doc('/other-robots/').querySelectorAll('tbody tr').length !== model.otherRobots.length) fail('/other-robots/: does not list every entry');
 for (const rbx of model.robots) {
   const legacy = files.get(`robots/${rbx.path.split('/')[2]}/index.html`) ?? '';

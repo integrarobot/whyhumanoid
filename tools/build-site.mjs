@@ -182,18 +182,19 @@ export function parity(built, legacy, manifest) {
   return { unexpected, expected };
 }
 
-// The nine confirmed categories, in order, as static HTML on the home page (access matrix, 23 Nov 2026): each with
+// The ten categories (nine confirmed plus Reports), in order, as static HTML on the home page (access matrix, 23 Nov 2026): each with
 // its real address, what it holds, how many entries the public data has and whether it is free or by subscription.
 const escHtml = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 export function renderCategories(data) {
   const tabs = new Map((data.database?.tabs ?? []).map((t) => [t.id, t]));
-  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
-  const unit = { humanoids: 'robots', deployments: 'records', components: 'entries', integrators: 'integrators', software: 'entries', datasets: 'datasets', benchmarks: 'evaluations', investment: 'listed companies', 'other-robots': 'entries' };
+  const reports = JSON.parse(readFileSync(new URL('data/reports/catalogue.json', root), 'utf8')).reports.length + 1; // + Why Humanoid?'s deployment records analysis
+  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
+  const unit = { humanoids: 'robots', deployments: 'records', components: 'entries', integrators: 'integrators', software: 'entries', datasets: 'datasets', benchmarks: 'evaluations', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
   const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? '<span class="sub">Subscription</span> · first 10 free' : 'Free'}</span></li>`).join('');
   const services = SERVICES.map((sv) => `<div><p class="lbl">Service · proposal</p><h3>${escHtml(sv.name)}</h3><p>${escHtml(sv.summary)}</p><p class="lbl">${escHtml(sv.price)} · not included in the subscription · not available to order yet</p></div>`).join('');
   return `<!-- categories:start -->
     <section class="cats-sec" id="categories" aria-labelledby="cats-h">
-      <div class="cats-head"><h2 class="h2" id="cats-h">Nine <em>categories</em></h2><p class="lbl">Humanoids and seven more free · Deployments and Components with the subscription</p></div>
+      <div class="cats-head"><h2 class="h2" id="cats-h">Ten <em>categories</em></h2><p class="lbl">Humanoids and eight more free · Deployments and Components with the subscription</p></div>
       <ul class="catgrid">${items}</ul>
       <div class="offer"><div><p class="lbl">Subscription · ${escHtml(data.access?.price ?? '')}</p><h3>${escHtml(SUBSCRIPTION.name)}</h3><p>Complete Deployments and complete Components, with search and agent API keys over them.</p>${CHECKOUT_OPEN ? '' : '<p class="lbl">New subscriptions open once the purchase terms are final · existing subscribers keep full access</p>'}<p><a class="btn" href="/subscribe/">See the subscription</a></p></div>${services}</div>
       <p class="lbl">Also: <a href="#database">browse the workbook tabs</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>

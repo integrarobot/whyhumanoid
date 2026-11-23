@@ -101,7 +101,7 @@ button{cursor:pointer}
 .hud-nav{display:flex;gap:14px}
 .hud-nav a{display:inline-flex;align-items:center;min-height:44px;padding-inline:4px;text-decoration:none;font-family:var(--f-mono);font-size:calc(var(--fs-label) * 1.25);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-2);transition:color .12s}
 .hud-nav a:hover{color:var(--amber)}
-/* Nine categories (23 Nov 2026): one line that scrolls sideways when it does not fit, never wraps or clips. */
+/* Ten categories (23 Nov 2026): one line that scrolls sideways when it does not fit, never wraps or clips. */
 .hud-nav.cats{overflow-x:auto;scrollbar-width:none;min-width:0;flex:1 1 auto;gap:12px;justify-content:flex-start}
 .hud-nav.cats::-webkit-scrollbar{display:none}
 .hud-nav.cats a{white-space:nowrap;font-size:var(--fs-label)}
@@ -504,7 +504,7 @@ html.dlg-open{overflow:hidden}
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Why Humanoid?, home"><span class="sq"></span>Why Humanoid?</a>
     <nav class="hud-nav cats" aria-label="Categories">
-      <a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a>
+      <a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a><a href="/reports/">Reports</a>
     </nav>
     <div class="hud-r"><span><b id="clock" class="tn">--:--:--</b> UTC</span><span class="age" id="age">Last checked 30 Oct 2026</span></div>
   </div>
@@ -514,7 +514,7 @@ html.dlg-open{overflow:hidden}
   <div class="wrap">
     <section class="hero">
       <div class="hero-text">
-        <p class="kicker lbl"><span class="rule"></span><span id="kick">Integrarobot database · nine categories · Humanoids free</span></p>
+        <p class="kicker lbl"><span class="rule"></span><span id="kick">Integrarobot database · ten categories · Humanoids free</span></p>
         <h1 class="display"><span class="ln">Humanoid robots</span><span class="ln"><em>and their ecosystem,</em></span><span class="ln">in one database.</span></h1>
         <p class="lede">The robots, the software and AI models that run them, where they are deployed, the components and datasets behind them, and the companies involved, from Integrarobot's research workbook. Records link their sources where the sheet has them; a missing figure stays marked as not disclosed or not verified.</p>
         <ul class="eco" id="eco" aria-label="What the database holds">
@@ -522,7 +522,7 @@ html.dlg-open{overflow:hidden}
         </ul>
         <div class="cta-row">
           <a class="btn primary" href="#humanoids" id="cta-h">Browse the humanoids</a>
-          <a class="btn" href="#categories" id="cta-db">See the nine categories</a>
+          <a class="btn" href="#categories" id="cta-db">See the ten categories</a>
           <a class="btn" href="/app/#search" id="cta-search">Search every category</a>
         </div>
         <div class="search">
@@ -558,8 +558,8 @@ html.dlg-open{overflow:hidden}
 
     <!-- categories:start -->
     <section class="cats-sec" id="categories" aria-labelledby="cats-h">
-      <div class="cats-head"><h2 class="h2" id="cats-h">Nine <em>categories</em></h2><p class="lbl">Humanoids and seven more free · Deployments and Components with the subscription</p></div>
-      <ul class="catgrid"><li><a href="/humanoids/">Humanoids</a><p>Every humanoid robot in the catalogue: specifications, maker, funding, buyer checks and sources.</p><span class="meta"><b>134</b> robots · Free</span></li><li><a href="/deployments/">Deployments</a><p>Who is testing or using humanoid robots, where, for which task, with what status and source.</p><span class="meta"><b>130</b> records · <span class="sub">Subscription</span> · first 10 free</span></li><li><a href="/components/">Components</a><p>Compute, sensors, actuators and other hardware used in humanoid robots.</p><span class="meta"><b>11</b> entries · <span class="sub">Subscription</span> · first 10 free</span></li><li><a href="/integrators/">Integrators</a><p>System integrators and service providers that deploy humanoid and service robots.</p><span class="meta"><b>7</b> integrators · Free</span></li><li><a href="/software/">Software</a><p>Robot foundation models, vision-language-action models, world models and robotics software.</p><span class="meta"><b>144</b> entries · Free</span></li><li><a href="/datasets/">Datasets</a><p>Robot learning datasets relevant to humanoid robots.</p><span class="meta"><b>28</b> datasets · Free</span></li><li><a href="/benchmarks/">Benchmarks</a><p>How robot models measure up against documented evidence for a defined task.</p><span class="meta"><b>4</b> evaluations · Free</span></li><li><a href="/investment/">Investment</a><p>Listed companies exposed to humanoid robotics, and the funding recorded for each humanoid maker.</p><span class="meta"><b>276</b> listed companies · Free</span></li><li><a href="/other-robots/">Other Robots</a><p>Non-humanoid, service and educational robots tracked alongside the humanoid catalogue.</p><span class="meta"><b>547</b> entries · Free</span></li></ul>
+      <div class="cats-head"><h2 class="h2" id="cats-h">Ten <em>categories</em></h2><p class="lbl">Humanoids and eight more free · Deployments and Components with the subscription</p></div>
+      <ul class="catgrid"><li><a href="/humanoids/">Humanoids</a><p>Every humanoid robot in the catalogue: specifications, maker, funding, buyer checks and sources.</p><span class="meta"><b>134</b> robots · Free</span></li><li><a href="/deployments/">Deployments</a><p>Who is testing or using humanoid robots, where, for which task, with what status and source.</p><span class="meta"><b>130</b> records · <span class="sub">Subscription</span> · first 10 free</span></li><li><a href="/components/">Components</a><p>Compute, sensors, actuators and other hardware used in humanoid robots.</p><span class="meta"><b>11</b> entries · <span class="sub">Subscription</span> · first 10 free</span></li><li><a href="/integrators/">Integrators</a><p>System integrators and service providers that deploy humanoid and service robots.</p><span class="meta"><b>7</b> integrators · Free</span></li><li><a href="/software/">Software</a><p>Robot foundation models, vision-language-action models, world models and robotics software.</p><span class="meta"><b>144</b> entries · Free</span></li><li><a href="/datasets/">Datasets</a><p>Robot learning datasets relevant to humanoid robots.</p><span class="meta"><b>28</b> datasets · Free</span></li><li><a href="/benchmarks/">Benchmarks</a><p>How robot models measure up against documented evidence for a defined task.</p><span class="meta"><b>4</b> evaluations · Free</span></li><li><a href="/investment/">Investment</a><p>Listed companies exposed to humanoid robotics, and the funding recorded for each humanoid maker.</p><span class="meta"><b>276</b> listed companies · Free</span></li><li><a href="/other-robots/">Other Robots</a><p>Non-humanoid, service and educational robots tracked alongside the humanoid catalogue.</p><span class="meta"><b>547</b> entries · Free</span></li><li><a href="/reports/">Reports</a><p>Research reports on humanoid robots, with their publisher, date, scope and a link to the original, and Why Humanoid? analyses.</p><span class="meta"><b>2</b> reports · Free</span></li></ul>
       <div class="offer"><div><p class="lbl">Subscription · €100 per year</p><h3>Why Humanoid? Deployments and Components</h3><p>Complete Deployments and complete Components, with search and agent API keys over them.</p><p class="lbl">New subscriptions open once the purchase terms are final · existing subscribers keep full access</p><p><a class="btn" href="/subscribe/">See the subscription</a></p></div><div><p class="lbl">Service · proposal</p><h3>Humanoid adoption assessment</h3><p>An assessment of whether, where and how humanoid robots fit your operation, built on the Deployments evidence.</p><p class="lbl">€1,000 · not included in the subscription · not available to order yet</p></div><div><p class="lbl">Service · proposal</p><h3>Component manufacturing study</h3><p>A study of the components humanoid robots need and the opportunity to manufacture them.</p><p class="lbl">€1,000 · not included in the subscription · not available to order yet</p></div></div>
       <p class="lbl">Also: <a href="#database">browse the workbook tabs</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>
     </section>
@@ -1064,7 +1064,7 @@ html.dlg-open{overflow:hidden}
 </script>
 
 <script>
-// Database section (access matrix, 23 Nov 2026): the workbook tabs behind the nine categories; free tabs in full,
+// Database section (access matrix, 23 Nov 2026): the workbook tabs behind the categories; free tabs in full,
 // Deployments, Components and the tabs that support Deployments in their first 10 sheet rows (data/preview).
 // Each category has its own URL (#humanoids, #db-<tab>) that survives reloads and works with back/forward.
 (function () {
@@ -1122,7 +1122,7 @@ html.dlg-open{overflow:hidden}
     if (byId.integrators) items.push(item('integrators', byId.integrators.entries_total, 'integrators'));
     eco.insertAdjacentHTML('beforeend', items.join(''));
     var kick = document.getElementById('kick');
-    if (kick && exported) kick.textContent = 'Integrarobot database · nine categories · Humanoids free · exported ' + exported;
+    if (kick && exported) kick.textContent = 'Integrarobot database · ten categories · Humanoids free · exported ' + exported;
   }
   var ex = document.getElementById('db-export'); if (ex && exported) ex.textContent = exported;
 

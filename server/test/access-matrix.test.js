@@ -13,12 +13,17 @@ const DAY = 24 * 3600;
 const SUBSCRIPTION_TABS = ['deployments', 'hardware', 'evidence-links', 'entities', 'container-handling', 'data-space'];
 const FREE_TABS = ['humanoids', 'integrators', 'software', 'datasets', 'task-evaluations', 'stocks', 'other-robots'];
 
-test('the nine confirmed categories, in order, each at its own address and mapped to real workbook tabs', () => {
+test('the nine confirmed categories, in order, then Reports, each at its own address and mapped to real sources', () => {
   assert.deepEqual(CATEGORIES.map((c) => [c.label, c.path]), [
     ['Humanoids', '/humanoids/'], ['Deployments', '/deployments/'], ['Components', '/components/'],
     ['Integrators', '/integrators/'], ['Software', '/software/'], ['Datasets', '/datasets/'],
     ['Benchmarks', '/benchmarks/'], ['Investment', '/investment/'], ['Other Robots', '/other-robots/'],
+    ['Reports', '/reports/'],
   ]);
+  const reports = CATEGORIES.find((c) => c.id === 'reports');
+  assert.equal(reports.access, 'free');
+  assert.deepEqual(reports.datasets, [], 'Reports is not a workbook tab');
+  assert.equal(reports.source, 'data/reports/catalogue.json');
   const ids = new Set(DATASETS.map((d) => d.id));
   for (const c of CATEGORIES) for (const d of c.datasets) assert.ok(ids.has(d), `${c.id} maps to the real tab ${d}`);
   assert.deepEqual(CATEGORIES.filter((c) => c.access === 'subscription').map((c) => c.id), ['deployments', 'components']);

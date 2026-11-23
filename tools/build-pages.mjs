@@ -237,7 +237,7 @@ export function publicModel(registry = readRegistry()) {
 }
 
 // ---------- layout ----------
-// The nine categories, in the confirmed order, on every page.
+// The ten categories, in the confirmed order, on every page.
 const nav = (section) => CATEGORIES.map((c) => `<a href="${c.path}"${c.id === section ? ' aria-current="page"' : ''}>${esc(c.label)}${c.access === 'subscription' ? '<span class="lock" aria-label=" (subscription)" title="Complete data with the subscription"></span>' : ''}</a>`).join('');
 const FONTS = 'https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap';
 const ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E";
@@ -271,7 +271,7 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta h
 ${body}
 </main>
 ${section ? "<script>(function(){var a=document.querySelector('nav.cats [aria-current]');if(a&&a.parentNode.scrollWidth>a.parentNode.clientWidth)a.parentNode.scrollLeft=a.offsetLeft-a.parentNode.offsetLeft-16;})();</script>" : ''}
-<footer class="foot"><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Report</a><a href="/method/">Method</a><a href="/subscribe/">Subscription</a><a href="/app/">Subscriber app</a></nav><p>Why Humanoid? by Integrarobot. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
+<footer class="foot"><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/method/">Method</a><a href="/subscribe/">Subscription</a><a href="/app/">Subscriber app</a></nav><p>Why Humanoid? by Integrarobot. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
 ${ANALYTICS}
 </body>
 </html>
@@ -493,7 +493,7 @@ function redirectPage(to, label) {
   return page({ title: `Moved: ${label} · Why Humanoid?`, description: `The page for ${label} has moved.`, path: to, body, noindex: true, refresh: to });
 }
 function gonePage(path, kind) {
-  const index = kind === 'robot' ? ['/humanoids/', 'humanoid robots'] : kind === 'other robot' ? ['/other-robots/', 'other robots'] : ['/companies/', 'companies'];
+  const index = kind === 'robot' ? ['/humanoids/', 'humanoid robots'] : kind === 'other robot' ? ['/other-robots/', 'other robots'] : kind === 'report' ? ['/reports/', 'reports'] : ['/companies/', 'companies'];
   const body = `<h1>No longer in the public catalogue</h1><p class="lede">This ${kind} page is no longer published. See all <a href="${index[0]}">${index[1]}</a>.</p>`;
   return page({ title: `Not in the public catalogue · Why Humanoid?`, description: `This ${kind} is no longer in the public catalogue.`, path, body, noindex: true });
 }
@@ -641,6 +641,45 @@ function otherRobotPage(r, model) {
   return page({ title: `${r.label}: ${label.toLowerCase()} · Why Humanoid?`, description: clip(summary), path: r.path, body, type: 'article', section: 'other-robots' });
 }
 
+// ---------- Reports (Javier, 23 Nov 2026): Why Humanoid? analyses and a reviewed catalogue of external reports ----------
+// Only records whose bibliographic data were checked against the public original are listed (data/reports/catalogue.json,
+// checked by tools/reports-source.mjs); findings stay in review and are not published.
+const REPORTS = read('data/reports/catalogue.json').reports;
+export const reportPath = (r) => `/reports/${r.slug}/`;
+export const publishedReports = () => REPORTS;
+const ACCESS_LABEL = { public: 'Public original', 'public-redacted': 'Public redacted version', 'public-summary-of-paid-report': 'Public summary of a paid report' };
+const dateText = (d) => { const [y, m, day] = String(d).split('-'); const M = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; return day ? `${Number(day)} ${M[m - 1]} ${y}` : m ? `${M[m - 1]} ${y}` : y; };
+function reportsCategory(model) {
+  const c = CATEGORIES_BY_ID.get('reports');
+  const rows = REPORTS.map((r) => `<tr><td><a href="${reportPath(r)}">${esc(r.title)}</a></td><td>${esc(r.publisher)}</td><td>${esc(dateText(r.published))}</td><td>${ext(r.original_url, 'Original ↗')}</td></tr>`).join('');
+  const body = `${categoryHead(c, model)}
+<section><h2>Why Humanoid? analyses</h2><ul class="cards"><li><a href="/reports/deployment-records/"><b>Humanoid robot deployment records</b></a><span>${model.totals.records} deployment records by status as recorded, sector, country and year. Snapshot ${esc(String(model.projSnapshot).slice(0, 10))}.</span></li></ul></section>
+<section><h2>External reports <span class="dim">(${REPORTS.length})</span></h2>
+<p>Research reports on humanoid robots and physical AI, each with its publisher, date, scope and a link to the original. A report is listed once its title, publisher, date, address and scope have been checked against the original; more are in that review.</p>
+${REPORTS.length ? `<div class="scroll"><table class="dir"><thead><tr><th scope="col">Report</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Original</th></tr></thead><tbody>${rows}</tbody></table></div>` : '<p class="na">No external report has completed the check yet.</p>'}
+<p class="key">Findings (forecasts, costs, adoption timelines) are being checked one claim at a time against each original, with page or section, and are not published yet. Forecasts from different reports use different scopes, definitions and horizons and are never averaged here.</p></section>`;
+  return catPage(c, model, body, `${c.summary}`);
+}
+function externalReportPage(r) {
+  const summary = `${r.title}, by ${r.publisher}${r.authors ? ` (${r.authors})` : ''}, published ${dateText(r.published)}.`;
+  const body = `${crumbs([['/', 'Why Humanoid?'], ['/reports/', 'Reports'], [null, r.title]])}
+<article class="entity">
+<p class="kicker">Report · ${esc(r.publisher)}</p>
+<h1>${esc(r.title)}</h1>
+<p class="lede">${esc(r.scope)}</p>
+<section><h2>Bibliographic record</h2>${kv([
+    ['Title', esc(r.title)], ['Publisher', esc(r.publisher)], ['Authors', r.authors ? esc(r.authors) : '<span class="na">Not stated</span>'],
+    ['Published', esc(dateText(r.published))], ['Edition', r.edition ? esc(r.edition) : '<span class="na">Not stated</span>'], ['Format', esc(r.format)],
+    ['Access', esc(ACCESS_LABEL[r.access])], ...(r.restrictions ? [['Restrictions', esc(r.restrictions)]] : []), ...(r.host_note ? [['Hosted by', esc(r.host_note)]] : []),
+    ['Original', ext(r.original_url, `${host(r.original_url)} ↗`)],
+  ])}</section>
+<section><h2>Findings</h2><p>The findings of this report are being checked claim by claim against the original, with page or section, and are not published yet. Read them in the original.</p></section>
+<section><h2>Sources</h2><ul class="sources"><li>${ext(r.original_url, r.original_url)}</li></ul></section>
+<p class="meta">Bibliographic record checked against the public original on ${esc(r.review.checked_on)}. Why Humanoid? links to the publisher's original and does not host the report.</p>
+</article>`;
+  return page({ title: `${r.title} (${r.publisher}, ${String(r.published).slice(0, 4)}) · Why Humanoid?`, description: clip(summary), path: reportPath(r), body, type: 'article', section: 'reports' });
+}
+
 function subscribePage(model) {
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Subscription']])}
 <article class="entity">
@@ -669,7 +708,7 @@ function bars(rows, label) {
 function reportPage(model) {
   const a = model.aggregates;
   const other = (k, what) => (k === 'other' ? `Other (${what} with fewer than ${a.min_cell} records, or not recorded)` : k);
-  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Report: deployment records']])}
+  const body = `${crumbs([['/', 'Why Humanoid?'], ['/reports/', 'Reports'], [null, 'Deployment records']])}
 <article class="entity">
 <p class="kicker">Report · snapshot ${esc(String(model.projSnapshot).slice(0, 10))}</p>
 <h1>Humanoid robot deployment records</h1>
@@ -680,7 +719,7 @@ function reportPage(model) {
 <section><h2>By year</h2>${bars(a.by_year.map((r) => ({ label: other(r.key, 'years'), records: r.records })), 'Year observed or published')}</section>
 <section><h2>How to read it</h2><p>Counts are of records, not of robots or sites. Every group with fewer than ${a.min_cell} records is added to «Other», so no number points at a single record. The year is the year the record was observed or, if that is missing, published. How records are collected and labelled is in the <a href="/method/">method</a>; who and where, record by record, is on each <a href="/companies/">company</a> and <a href="/robots/">robot</a> page; the records in full are in the <a href="/subscribe/">Deployments subscription</a> (${esc(price())}).</p></section>
 </article>`;
-  return page({ title: 'Humanoid robot deployment records: status, sectors, countries and years · Why Humanoid?', description: clip(`${model.totals.records} humanoid robot deployment records by status as recorded, sector, country and year. Records are claims from named sources, not verified facts.`), path: '/reports/deployment-records/', body, type: 'article' });
+  return page({ title: 'Humanoid robot deployment records: status, sectors, countries and years · Why Humanoid?', description: clip(`${model.totals.records} humanoid robot deployment records by status as recorded, sector, country and year. Records are claims from named sources, not verified facts.`), path: '/reports/deployment-records/', body, type: 'article', section: 'reports' });
 }
 function methodPage(model) {
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Method']])}
@@ -705,7 +744,7 @@ ${kv([['In operation', 'The source says the robot is working in operation.'], ['
 }
 
 export function sitemapUrls(model) {
-  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path)];
+  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath)];
 }
 function sitemap(model) {
   const lastmod = String(model.snapshot).slice(0, 10);
@@ -731,7 +770,7 @@ export function buildPages(registry = readRegistry()) {
   for (const rb of model.robots) files.set(`${rb.path.slice(1)}index.html`, robotPage(rb, model));
   for (const c of model.companies) files.set(`${c.path.slice(1)}index.html`, companyPage(c, model));
   for (const r of model.otherRobots) files.set(`${r.path.slice(1)}index.html`, otherRobotPage(r, model));
-  // The nine categories, in the confirmed order (access matrix, 23 Nov 2026).
+  // The ten categories, in the confirmed order (access matrix, 23 Nov 2026).
   files.set('humanoids/index.html', humanoidsCategory(model));
   files.set('deployments/index.html', deploymentsCategory(model));
   files.set('components/index.html', componentsCategory(model));
@@ -741,6 +780,8 @@ export function buildPages(registry = readRegistry()) {
   files.set('benchmarks/index.html', benchmarksCategory(model));
   files.set('investment/index.html', investmentCategory(model));
   files.set('other-robots/index.html', otherRobotsCategory(model));
+  files.set('reports/index.html', reportsCategory(model));
+  for (const r of REPORTS) files.set(`${reportPath(r).slice(1)}index.html`, externalReportPage(r));
   files.set('subscribe/index.html', subscribePage(model));
   // /robots/ was the index of robot pages until 23 Nov 2026: it now points to the Humanoids category.
   files.set('robots/index.html', redirectPage('/humanoids/', 'the humanoid robots'));
@@ -752,7 +793,10 @@ export function buildPages(registry = readRegistry()) {
   files.set('data/pages.json', `${JSON.stringify(pageLinks(model))}\n`);
 
   // Registry: every slug ever published stays reachable.
-  const next = { note: 'Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects. Robots are served at /humanoids/<slug>/ since 23 Nov 2026; every robot slug also answers at /robots/<slug>/ with a redirect.', robots: {}, companies: {}, other_robots: {} };
+  const nextReports = {};
+  for (const [id, slugs] of Object.entries(registry.reports ?? {})) nextReports[id] = [...slugs];
+  for (const r of REPORTS) { (nextReports[r.id] ??= []).includes(r.slug) || nextReports[r.id].push(r.slug); }
+  const next = { note: 'Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects. Robots are served at /humanoids/<slug>/ since 23 Nov 2026; every robot slug also answers at /robots/<slug>/ with a redirect.', robots: {}, companies: {}, other_robots: {}, reports: nextReports };
   for (const [id, slugs] of Object.entries(registry.robots ?? {})) next.robots[id] = [...slugs];
   for (const [id, v] of Object.entries(registry.companies ?? {})) next.companies[id] = { slugs: [...v.slugs], robots: [...(v.robots ?? [])], organization_ids: [...(v.organization_ids ?? [])] };
   for (const [key, slugs] of Object.entries(registry.other_robots ?? {})) next.other_robots[key] = [...slugs];
@@ -783,6 +827,14 @@ export function buildPages(registry = readRegistry()) {
     for (const s of v.slugs) {
       if (c && c.slug === s) continue;
       add(`companies/${s}/index.html`, c ? redirectPage(c.path, c.name) : gonePage(`/companies/${s}/`, 'company'));
+    }
+  }
+  const reportById = new Map(REPORTS.map((r) => [r.id, r]));
+  for (const [id, slugs] of Object.entries(next.reports)) {
+    const r = reportById.get(id);
+    for (const s of slugs) {
+      if (r && r.slug === s) continue;
+      add(`reports/${s}/index.html`, r ? redirectPage(reportPath(r), r.title) : gonePage(`/reports/${s}/`, 'report'));
     }
   }
   const otherByKey = new Map(model.otherRobots.map((r) => [r.key, r]));

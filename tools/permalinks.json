@@ -5621,5 +5621,10 @@
     "edubot|robotheca.org/robots/tracked-quadruped-hybrid-robot": [
       "tracked-quadruped-hybrid-robot"
     ]
+  },
+  "reports": {
+    "rpt_anthropic_2026_what-work-can-robots-do": [
+      "anthropic-what-work-can-robots-do-2026"
+    ]
   }
 }
