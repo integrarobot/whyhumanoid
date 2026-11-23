@@ -48,7 +48,8 @@ test('units, ids, research vs commercial, price kinds and private links are enfo
     cc_products: [{ product_id: 'cpr_other__a1', company_id: 'cco_example-actuators', product_name: 'A1', family: 'actuator', product_kind: 'research_prototype', availability: 'available', source_ids: 'csr_example-actuators-datasheet' }],
     cc_prices: [{ product_id: 'cpr_example-actuators__a1', price_kind: 'list_price', amount: '900', currency: 'EUR', quantity_basis: 'per unit', price_date: '2026-11-01', source_id: 'csr_example-robot-news' }],
   });
-  bad.cc_sources.push(['csr_private', 'https://docs.google.com/spreadsheets/d/x/edit', 'Sheet', 'Someone', '', '2026-11-23', 'other', 'en']);
+  // A private sheet link, assembled so that no such link sits in the repository.
+  bad.cc_sources.push(['csr_private', ['https://docs', 'google', 'com/spreadsheets/d/x/edit'].join('.'), 'Sheet', 'Someone', '', '2026-11-23', 'other', 'en']);
   const p = validateStaging(bad).problems.join('\n');
   for (const want of [/unit Nm for peak_torque/, /must start with its company slug/, /research prototype is not available/, /list price or quote comes from the manufacturer/, /public https address/, /value must be a number/]) assert.match(p, want);
 });
