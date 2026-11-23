@@ -161,7 +161,13 @@ span.cls.cls-discontinued{opacity:1;background:color-mix(in srgb,var(--bone-3) 4
   .cmp th:nth-child(4),.cmp td:nth-child(4){display:block}
 }
 @media (max-width:420px){
-  .cx-filters{grid-template-columns:minmax(0,1fr)}
+  /* Phones: two filters per row, so the products start sooner; one per row only on the narrowest screens. */
+  .cx-filters{gap:6px}
+  .cx-filters .fl{font-size:10px}
+  .cx-filters .clear-f{grid-column:1 / -1}
   .pc-f{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:340px){
+  .cx-filters{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){.cx *{transition:none!important;scroll-behavior:auto!important}}
