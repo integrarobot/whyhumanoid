@@ -1,0 +1,51 @@
+{
+  "id": "WH-20261123-2244-atlas-datasets",
+  "tarea": "Datasets: Robot Learning Data Atlas en /datasets/, a partir de las pestañas Datasets y Dataset Metrics del maestro en vivo: mapa de orígenes y usos, vistas de escala por grupo compatible y pasaportes de datos",
+  "origen": "Javier vía Codex, 23/11/2026: encargo aprobado y reanudado al recuperar créditos («Resume the pending Robot Learning Data Atlas… complete the established publication workflow and verify the live page on desktop/mobile»)",
+  "fecha": "2026-11-23T22:44:41+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Datos del maestro en vivo (modificado el 23/11 a las 19:29:29 UTC): Datasets (DatasetsCatalog A1:AA36, 35 recursos, 27 columnas) y Dataset Metrics (DatasetMetrics A1:T63, 62 cantidades de 21 recursos), unidas por DATASET_ID.",
+    "Contrato de importación: Datasets pasa del directorio de 3 columnas a la tabla de 27, con DATASET_ID como ID estable; nueva pestaña dataset-metrics, gratis, en la categoría Datasets. RELATED_BENCHMARK_URL (enlaces al libro), CLASSIFICATION_NOTE y ATTACHMENT_REF no se guardan ni se sirven, y las frases que remiten al material editorial privado («attachment», «matrix row») se eliminan al importar.",
+    "Validación común (server/src/data-atlas/atlas.js); la importación falla ante cualquier incoherencia:\n- IDs únicos y claves ajenas de métricas, padres y benchmarks;\n- número o vacío (desconocido, nunca cero) y fechas vacías como desconocidas;\n- calificadores more_than y approximate, y unidades por métrica;\n- grupos compatibles con una sola métrica y unidad, y ninguna parte mayor que su total;\n- vocabulario revisado de orígenes, clases, modalidades (con _subset), usos y acceso; INCLUDED_IN_ATLAS leído de forma explícita.",
+    "Instantánea pública data/datasets/atlas.json (tools/export-datasets.mjs), solo con campos de una lista blanca y recuentos calculados de los datos: 35 recursos, 21 corpus, 62 cantidades de 21 recursos, 14 pendientes de extracción y 6 enlaces a benchmarks. Datasets sale de data/preview; la portada enlaza el atlas con su recuento (35 recursos de datos), sin el 28 antiguo.",
+    "Página /datasets/ (HTML estático legible sin JavaScript, más assets/datasets.css y assets/datasets.js):\n- orígenes y usos: carriles explícitos (robot, humano, sintético o reorientado, activos de entorno, mixto, no establecido) y glifos con etiqueta por clase;\n- filtros compartidos y cinco preguntas de ejemplo; las respuestas separan coincidencias conocidas, parciales y desconocidas, y los datos de evaluación aparte, sin puntuación;\n- escala en paneles por grupo y unidad, eje lineal o logarítmico, divisiones exactas apiladas (BridgeData, EgoDex), subconjuntos anidados (RoboMIND), la discrepancia de HubEgo explicada y los agregados, reclamaciones de proveedor y mezclas de entrenamiento aparte y cerrados por defecto;\n- pasaportes comparados lado a lado, matriz de modalidades, 35 fichas con anclas estables #ds-… y estado compartible en la URL.",
+    "Benchmarks: la instantánea regenerada con el mismo maestro sale idéntica y se conserva; sus datasets relacionados enlazan ahora a /datasets/#<id>. No cambian precios, permisos, la venta live cerrada ni las reglas de pago."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #75 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/75"
+    },
+    {
+      "etiqueta": "Robot Learning Data Atlas",
+      "url": "https://whyhumanoid.com/datasets/"
+    },
+    {
+      "etiqueta": "Pregunta de ejemplo",
+      "url": "https://whyhumanoid.com/datasets/?mod=tactile&body=dual_arm#passports"
+    },
+    {
+      "etiqueta": "Ficha de ejemplo",
+      "url": "https://whyhumanoid.com/datasets/#ds-bridgedata-v2"
+    }
+  ],
+  "despliegue": [
+    "Commit de fusión 5b33df5 en main (CI del PR en verde sobre 0a35fac).",
+    "GitHub Pages lo servía en whyhumanoid.com tras 3 comprobaciones de espera. Responden 200 data/datasets/atlas.json y assets/datasets.js; data/preview/datasets.json ya da 404.",
+    "Sin cambios en el Worker ni en D1."
+  ],
+  "verificaciones": [
+    "Producción con navegador real: verify-staging 322 de 322 en whyhumanoid.com con la API del Worker, incluidas 16 comprobaciones nuevas del atlas en escritorio y móvil (recuentos, preguntas con coincidencias parciales y desconocidas aparte, datos de evaluación aparte, detalle por teclado, Escape con retorno del foco, bloque aparte cerrado por defecto y enlaces compartidos que restauran eje, comparación y ficha). Sin regresiones en Benchmarks, las demás categorías ni el acceso de pago.",
+    "Capturas en vivo a 1440, 390 y 320 px: sin desbordamiento horizontal de la página.",
+    "Antes de fusionar, en local:\n- 16 pruebas nuevas (IDs, claves ajenas, vacío frente a cero, calificadores, unidades mezcladas, solapamiento de agregados, partes frente a total, reclamaciones excluidas por defecto, modalidades parciales, acceso y licencias desconocidos, datos de evaluación, enlaces privados y notas editoriales) y 123 de 123 pruebas de API;\n- verify-staging --local 331 de 331;\n- check-public (regla 10 nueva), check-reserved, verify-pages, verify-site, verify-premium-app y todas las comprobaciones de compilación."
+  ],
+  "pendientes": [
+    "El Worker debe desplegarse e importar (Codex) para que la API sirva el contrato nuevo de Datasets y Dataset Metrics. El maestro en vivo ya tiene 27 columnas, así que la importación desplegada lo rechaza por cambio de cabecera hasta entonces; la web no depende de ello.",
+    "Huecos de fuente: 14 recursos sin cantidades extraídas; la mayoría de las licencias de datos no están establecidas; PARENT_DATASET_IDS solo confirma OpenEgo→EgoDex; AgiBot World queda sin familia de cuerpo porque su texto de EMBODIMENT no la indica; el nombre consta como «LDA -1B» en el maestro.",
+    "Revisión posterior de Codex y confirmación de Javier."
+  ],
+  "siguiente_accion": "Codex revisa el atlas publicado y despliega el Worker con la importación; Javier confirma la entrega. La siguiente ampliación es extraer cantidades y licencias de los recursos pendientes en el maestro."
+}
