@@ -125,6 +125,2016 @@
    }
   ]
  },
+ "cases": [
+  {
+   "stage": "op",
+   "status": {
+    "op": 1,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_catl",
+    "name": "CATL"
+   },
+   "maker": {
+    "company": "mfr_galbot",
+    "name": "Galbot"
+   },
+   "robot_recorded": "Galbot Galbot S1",
+   "robot": null,
+   "level": null,
+   "sector": "battery_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "op",
+   "status": {
+    "op": 2,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_catl",
+    "name": "CATL"
+   },
+   "maker": {
+    "company": "mfr_spirit",
+    "name": "Spirit AI"
+   },
+   "robot_recorded": "Spirit AI Moz (deployed as 'Xiaomo')",
+   "robot": 83,
+   "level": "model",
+   "sector": "battery_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "op",
+   "status": {
+    "op": 2,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 3
+   },
+   "records": 6,
+   "organisation": {
+    "company": "org_gxo",
+    "name": "GXO Logistics"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "logistics",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2023,
+    2024
+   ]
+  },
+  {
+   "stage": "op",
+   "status": {
+    "op": 1,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_nishinihon_electric_system",
+    "name": "Nishinihon Electric System (JR-West Group)"
+   },
+   "maker": {
+    "company": null,
+    "name": "JR-West; Man-Machine Synergy Effectors; Nippon Signal (joint development)"
+   },
+   "robot_recorded": "JR-West; Man-Machine Synergy Effectors; Nippon Signal (joint development) Multifunctional railway heavy machinery",
+   "robot": null,
+   "level": null,
+   "sector": "railway",
+   "countries": [
+    "Japan"
+   ],
+   "years": [
+    2024,
+    2024
+   ]
+  },
+  {
+   "stage": "op",
+   "status": {
+    "op": 2,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 3,
+   "organisation": {
+    "company": "org_schaeffler",
+    "name": "Schaeffler Group"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "manufacturing",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2024,
+    2025
+   ]
+  },
+  {
+   "stage": "op",
+   "status": {
+    "op": 1,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_schaeffler",
+    "name": "Schaeffler Group"
+   },
+   "maker": {
+    "company": null,
+    "name": "Multiple / not disclosed"
+   },
+   "robot_recorded": "Multiple / not disclosed Humanoid systems",
+   "robot": null,
+   "level": null,
+   "sector": "manufacturing",
+   "countries": [
+    "Multiple"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "op",
+   "status": {
+    "op": 3,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 4,
+   "organisation": {
+    "company": "org_schaeffler",
+    "name": "Schaeffler Group"
+   },
+   "maker": {
+    "company": null,
+    "name": "Not disclosed"
+   },
+   "robot_recorded": null,
+   "robot": null,
+   "level": null,
+   "sector": "manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_airbus",
+    "name": "Airbus"
+   },
+   "maker": {
+    "company": "mfr_ubtech",
+    "name": "UBTech"
+   },
+   "robot_recorded": "UBTech Walker S2",
+   "robot": null,
+   "level": null,
+   "sector": "aerospace_manufacturing",
+   "countries": [],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_amazon",
+    "name": "Amazon"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "ecommerce_logistics",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2023,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_audi",
+    "name": "Audi AG"
+   },
+   "maker": {
+    "company": "mfr_agile",
+    "name": "Agile Robots"
+   },
+   "robot_recorded": "Agile Robots Mobile humanoid (model not disclosed)",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "Germany"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_bmw_group",
+    "name": "BMW Group"
+   },
+   "maker": {
+    "company": "org_figure_ai",
+    "name": "Figure AI"
+   },
+   "robot_recorded": "Figure AI Figure 02",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2024,
+    2024
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 5,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 5,
+   "organisation": {
+    "company": "org_bmw_group",
+    "name": "BMW Group"
+   },
+   "maker": {
+    "company": "org_figure_ai",
+    "name": "Figure AI"
+   },
+   "robot_recorded": "Figure AI Figure 02",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 2,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 3,
+   "organisation": {
+    "company": "org_bmw_group",
+    "name": "BMW Group"
+   },
+   "maker": {
+    "company": "org_figure_ai",
+    "name": "Figure AI"
+   },
+   "robot_recorded": "Figure AI Figure 03",
+   "robot": 30,
+   "level": "model",
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 2,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_bmw_group",
+    "name": "BMW Group"
+   },
+   "maker": {
+    "company": "mfr_hexagon",
+    "name": "Hexagon Robotics"
+   },
+   "robot_recorded": "Hexagon Robotics AEON",
+   "robot": 40,
+   "level": "model",
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "Germany"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 2,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_bosch",
+    "name": "Bosch"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+   "robot": 88,
+   "level": "model",
+   "sector": "manufacturing",
+   "countries": [
+    "Germany"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_dandelion_chocolate",
+    "name": "Dandelion Chocolate"
+   },
+   "maker": {
+    "company": null,
+    "name": "Physical Intelligence (policy provider; hardware manufacturer not disclosed)"
+   },
+   "robot_recorded": "Physical Intelligence (policy provider; hardware manufacturer not disclosed)",
+   "robot": null,
+   "level": null,
+   "sector": "food_manufacturing",
+   "countries": [],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_dimensional",
+    "name": "Dimensional"
+   },
+   "maker": {
+    "company": "mfr_unitree",
+    "name": "Unitree Robotics"
+   },
+   "robot_recorded": "Unitree Quadruped (model not disclosed)",
+   "robot": null,
+   "level": null,
+   "sector": "robotics_research",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 7,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 7,
+   "organisation": {
+    "company": "org_ford",
+    "name": "Ford Motor Company"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+   "robot": 88,
+   "level": "model",
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "Germany"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_foxconn",
+    "name": "Foxconn"
+   },
+   "maker": {
+    "company": "mfr_ubtech",
+    "name": "UBTech"
+   },
+   "robot_recorded": "UBTECH Robotics Walker S1",
+   "robot": 91,
+   "level": "model",
+   "sector": "electronics_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_guoda",
+    "name": "Guoda Pharmacy"
+   },
+   "maker": {
+    "company": null,
+    "name": "Leju; Stardust; Ant (RobbyAnt)"
+   },
+   "robot_recorded": "Leju; Stardust; Ant (RobbyAnt) Multiple platforms; Ant R-2 mentioned",
+   "robot": null,
+   "level": null,
+   "sector": "pharmacy_retail",
+   "countries": [
+    "China"
+   ],
+   "years": null
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_gxo",
+    "name": "GXO Logistics"
+   },
+   "maker": {
+    "company": "org_apptronik",
+    "name": "Apptronik"
+   },
+   "robot_recorded": "Apptronik Apollo",
+   "robot": 7,
+   "level": "family",
+   "sector": "logistics",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2024,
+    2024
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_hyundai_motor_group",
+    "name": "Hyundai Motor Group"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Atlas",
+   "robot": 16,
+   "level": "model",
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_jd",
+    "name": "JD"
+   },
+   "maker": {
+    "company": "mfr_star_era",
+    "name": "Star Era"
+   },
+   "robot_recorded": "Star Era",
+   "robot": null,
+   "level": null,
+   "sector": "logistics",
+   "countries": [
+    "China"
+   ],
+   "years": null
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 5,
+    "ann": 0,
+    "unc": 2
+   },
+   "records": 7,
+   "organisation": {
+    "company": "org_martur_fompak",
+    "name": "Martur Fompak International"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+   "robot": 88,
+   "level": "model",
+   "sector": "automotive_components",
+   "countries": [],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 2,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_mercedes_benz",
+    "name": "Mercedes-Benz"
+   },
+   "maker": {
+    "company": "org_apptronik",
+    "name": "Apptronik"
+   },
+   "robot_recorded": "Apptronik Apollo",
+   "robot": 7,
+   "level": "family",
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "Germany; Hungary"
+   ],
+   "years": [
+    2024,
+    2024
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 2,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_nc_state_university",
+    "name": "NC State University"
+   },
+   "maker": {
+    "company": "mfr_unitree",
+    "name": "Unitree Robotics"
+   },
+   "robot_recorded": "Unitree Robotics G1",
+   "robot": null,
+   "level": null,
+   "sector": "poultry_farming",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_network_rail",
+    "name": "Network Rail"
+   },
+   "maker": {
+    "company": "mfr_unitree",
+    "name": "Unitree Robotics"
+   },
+   "robot_recorded": "Unitree Eric (Unitree quadruped; model not disclosed)",
+   "robot": null,
+   "level": null,
+   "sector": "railway",
+   "countries": [
+    "United Kingdom"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_renault_group",
+    "name": "Renault Group"
+   },
+   "maker": {
+    "company": "mfr_wandercraft",
+    "name": "Wandercraft"
+   },
+   "robot_recorded": "Wandercraft Calvin",
+   "robot": 97,
+   "level": "model",
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "France"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_rte",
+    "name": "RTE"
+   },
+   "maker": {
+    "company": "mfr_anybotics",
+    "name": "ANYbotics"
+   },
+   "robot_recorded": "ANYbotics ANYmal",
+   "robot": null,
+   "level": null,
+   "sector": "electricity_transmission",
+   "countries": [
+    "France"
+   ],
+   "years": [
+    2023,
+    2023
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 4,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 4,
+   "organisation": {
+    "company": "org_siemens",
+    "name": "Siemens"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+   "robot": 88,
+   "level": "model",
+   "sector": "electronics_manufacturing",
+   "countries": [
+    "Germany"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_tum",
+    "name": "Technical University of Munich (TUM)"
+   },
+   "maker": {
+    "company": "mfr_neura",
+    "name": "NEURA Robotics"
+   },
+   "robot_recorded": "NEURA Robotics 4NE1",
+   "robot": 58,
+   "level": "model",
+   "sector": "robotics_research",
+   "countries": [
+    "Germany"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "mfr_unitree",
+    "name": "Unitree Robotics"
+   },
+   "maker": {
+    "company": "mfr_unitree",
+    "name": "Unitree Robotics"
+   },
+   "robot_recorded": "Unitree Robotics G1",
+   "robot": null,
+   "level": null,
+   "sector": "robot_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "mfr_xiaomi",
+    "name": "Xiaomi"
+   },
+   "maker": {
+    "company": "mfr_xiaomi",
+    "name": "Xiaomi"
+   },
+   "robot_recorded": "Xiaomi Full-size humanoid (model not disclosed)",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 2
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_asd",
+    "name": "ASD"
+   },
+   "maker": {
+    "company": "mfr_agibot",
+    "name": "AgiBot"
+   },
+   "robot_recorded": "AGIBOT X2",
+   "robot": null,
+   "level": null,
+   "sector": "retail",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_ubtech_named_customers_2025",
+    "name": "BYD; Geely Auto; FAW-Volkswagen; Dongfeng Liuzhou Motor; Audi FAW; BAIC New Energy; Foxconn; SF Express"
+   },
+   "maker": {
+    "company": "mfr_ubtech",
+    "name": "UBTech"
+   },
+   "robot_recorded": "UBTech Walker S2",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 2
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_chla",
+    "name": "Children's Hospital Los Angeles"
+   },
+   "maker": {
+    "company": "mfr_diligent",
+    "name": "Diligent Robotics"
+   },
+   "robot_recorded": "Diligent Robotics Moxi",
+   "robot": 23,
+   "level": "model",
+   "sector": "healthcare",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2023,
+    2023
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 2
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_china_post_sf_express",
+    "name": "China Post; SF Express"
+   },
+   "maker": {
+    "company": "mfr_robotera",
+    "name": "Robotera (Robot Era)"
+   },
+   "robot_recorded": "Robot Era",
+   "robot": null,
+   "level": null,
+   "sector": "logistics",
+   "countries": [
+    "China"
+   ],
+   "years": null
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 3
+   },
+   "records": 3,
+   "organisation": {
+    "company": "org_faw_hongqi",
+    "name": "FAW Hongqi"
+   },
+   "maker": {
+    "company": "mfr_leju",
+    "name": "Leju"
+   },
+   "robot_recorded": "Leju Kuavo",
+   "robot": 49,
+   "level": "model",
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2024,
+    2025
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": null,
+    "name": "Fuao Wei Taike (as supplied)"
+   },
+   "maker": {
+    "company": "mfr_ubtech",
+    "name": "UBTech"
+   },
+   "robot_recorded": "UBTech Cruzr Y1 (as supplied)",
+   "robot": null,
+   "level": null,
+   "sector": "not_disclosed",
+   "countries": [
+    "China"
+   ],
+   "years": null
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 2
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_globalfoundries",
+    "name": "GlobalFoundries"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Spot",
+   "robot": null,
+   "level": null,
+   "sector": "semiconductor_manufacturing",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2022,
+    2022
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 3
+   },
+   "records": 3,
+   "organisation": {
+    "company": "org_globalfoundries",
+    "name": "GlobalFoundries"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Spot",
+   "robot": null,
+   "level": null,
+   "sector": "semiconductor_manufacturing",
+   "countries": [
+    "Singapore"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_globalfoundries",
+    "name": "GlobalFoundries"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Spot",
+   "robot": null,
+   "level": null,
+   "sector": "semiconductor_manufacturing",
+   "countries": [],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 7
+   },
+   "records": 7,
+   "organisation": {
+    "company": "org_longcheer",
+    "name": "Longcheer Technology"
+   },
+   "maker": {
+    "company": "mfr_agibot",
+    "name": "AgiBot"
+   },
+   "robot_recorded": "AgiBot G2",
+   "robot": null,
+   "level": null,
+   "sector": "consumer_electronics_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_luxshare",
+    "name": "Luxshare"
+   },
+   "maker": {
+    "company": "mfr_engineai",
+    "name": "EngineAI"
+   },
+   "robot_recorded": "EngineAI",
+   "robot": null,
+   "level": null,
+   "sector": "electronics_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "years": null
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_northwestern_medicine",
+    "name": "Northwestern Medicine"
+   },
+   "maker": {
+    "company": "mfr_diligent",
+    "name": "Diligent Robotics"
+   },
+   "robot_recorded": "Diligent Robotics Moxi",
+   "robot": 23,
+   "level": "model",
+   "sector": "healthcare",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2023,
+    2023
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": null,
+    "name": "Not disclosed"
+   },
+   "maker": {
+    "company": "mfr_leju",
+    "name": "Leju"
+   },
+   "robot_recorded": "Leju Kuavo 5-W (excerpt also says Kuafu 5W)",
+   "robot": 49,
+   "level": "family",
+   "sector": "not_disclosed",
+   "countries": [
+    "China"
+   ],
+   "years": null
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": null,
+    "name": "Not disclosed (pharmacy operator)"
+   },
+   "maker": {
+    "company": "mfr_realman",
+    "name": "RealMan"
+   },
+   "robot_recorded": "RealMan",
+   "robot": null,
+   "level": null,
+   "sector": "pharmacy_retail",
+   "countries": [
+    "China"
+   ],
+   "years": null
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": null,
+    "name": "Not disclosed (pharmacy operators)"
+   },
+   "maker": {
+    "company": "mfr_galbot",
+    "name": "Galbot"
+   },
+   "robot_recorded": "Galbot",
+   "robot": null,
+   "level": null,
+   "sector": "pharmacy_retail",
+   "countries": [
+    "China"
+   ],
+   "years": null
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 2
+   },
+   "records": 2,
+   "organisation": {
+    "company": null,
+    "name": "Not disclosed (retail operators)"
+   },
+   "maker": {
+    "company": "mfr_galbot",
+    "name": "Galbot"
+   },
+   "robot_recorded": "Galbot",
+   "robot": null,
+   "level": null,
+   "sector": "retail",
+   "countries": [
+    "China"
+   ],
+   "years": null
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": "mfr_toyota",
+    "name": "Toyota"
+   },
+   "maker": {
+    "company": "mfr_walden",
+    "name": "Walden Robotics"
+   },
+   "robot_recorded": "Walden Robotics",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_manufacturing",
+   "countries": [],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "unc",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 1
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_tmmc",
+    "name": "Toyota Motor Manufacturing Canada"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "Canada"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_bosch",
+    "name": "Bosch"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01",
+   "robot": 88,
+   "level": "model",
+   "sector": "robot_manufacturing",
+   "countries": [
+    "Germany"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_catalyst_brands",
+    "name": "Catalyst Brands"
+   },
+   "maker": {
+    "company": "org_figure_ai",
+    "name": "Figure AI"
+   },
+   "robot_recorded": "Figure AI Humanoid (model not disclosed)",
+   "robot": null,
+   "level": null,
+   "sector": "retail_logistics",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_eqt",
+    "name": "EQT"
+   },
+   "maker": {
+    "company": "mfr_1x",
+    "name": "1X"
+   },
+   "robot_recorded": "1X NEO",
+   "robot": 1,
+   "level": "model",
+   "sector": "multiple",
+   "countries": [
+    "Multiple"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_globalfoundries",
+    "name": "GlobalFoundries"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Atlas",
+   "robot": 16,
+   "level": "model",
+   "sector": "semiconductor_manufacturing",
+   "countries": [],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_globalfoundries",
+    "name": "GlobalFoundries"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Spot",
+   "robot": null,
+   "level": null,
+   "sector": "semiconductor_manufacturing",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_globalfoundries",
+    "name": "GlobalFoundries"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Spot",
+   "robot": null,
+   "level": null,
+   "sector": "semiconductor_manufacturing",
+   "countries": [
+    "Germany"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_gxo",
+    "name": "GXO Logistics"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "logistics",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_gxo",
+    "name": "GXO Logistics"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "logistics",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_hd_hyundai",
+    "name": "HD Hyundai"
+   },
+   "maker": {
+    "company": "mfr_persona_inc",
+    "name": "Persona AI"
+   },
+   "robot_recorded": "Persona AI",
+   "robot": null,
+   "level": null,
+   "sector": "shipbuilding",
+   "countries": [
+    "South Korea (partner country; deployment site not confirmed)"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_jabil",
+    "name": "Jabil"
+   },
+   "maker": {
+    "company": "org_apptronik",
+    "name": "Apptronik"
+   },
+   "robot_recorded": "Apptronik Apollo",
+   "robot": 7,
+   "level": "family",
+   "sector": "manufacturing",
+   "countries": [],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_mercado_libre",
+    "name": "Mercado Libre"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "ecommerce_logistics",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_mercedes_benz",
+    "name": "Mercedes-Benz"
+   },
+   "maker": {
+    "company": "org_apptronik",
+    "name": "Apptronik"
+   },
+   "robot_recorded": "Apptronik Apollo",
+   "robot": 7,
+   "level": "family",
+   "sector": "automotive_manufacturing",
+   "countries": [],
+   "years": [
+    2024,
+    2024
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_pilatus",
+    "name": "Pilatus"
+   },
+   "maker": {
+    "company": "mfr_hexagon",
+    "name": "Hexagon Robotics"
+   },
+   "robot_recorded": "Hexagon Robotics AEON",
+   "robot": 40,
+   "level": "model",
+   "sector": "manufacturing",
+   "countries": [],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 2,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_sap",
+    "name": "SAP SE"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01",
+   "robot": 88,
+   "level": "model",
+   "sector": "multiple",
+   "countries": [],
+   "years": [
+    2025,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_schaeffler",
+    "name": "Schaeffler Group"
+   },
+   "maker": {
+    "company": "mfr_hexagon",
+    "name": "Hexagon Robotics"
+   },
+   "robot_recorded": "Hexagon Robotics AEON",
+   "robot": 40,
+   "level": "model",
+   "sector": "manufacturing",
+   "countries": [],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_schaeffler",
+    "name": "Schaeffler Group"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+   "robot": 88,
+   "level": "model",
+   "sector": "manufacturing",
+   "countries": [
+    "Multiple"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_schaeffler",
+    "name": "Schaeffler Group"
+   },
+   "maker": {
+    "company": "mfr_neura",
+    "name": "NEURA Robotics"
+   },
+   "robot_recorded": "NEURA Robotics Humanoid (4NE1 programme)",
+   "robot": 58,
+   "level": "family",
+   "sector": "manufacturing",
+   "countries": [],
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "mfr_toyota",
+    "name": "Toyota"
+   },
+   "maker": {
+    "company": "mfr_toyota",
+    "name": "Toyota"
+   },
+   "robot_recorded": "Toyota (in-house) ELEY",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "Multiple"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 2,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_walmart",
+    "name": "Walmart Inc."
+   },
+   "maker": {
+    "company": "mfr_symbotic",
+    "name": "Symbotic"
+   },
+   "robot_recorded": "Symbotic Symbotic automation systems (program-level)",
+   "robot": null,
+   "level": null,
+   "sector": "retail_logistics",
+   "countries": [
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "mfr_xpeng",
+    "name": "XPeng"
+   },
+   "maker": {
+    "company": "mfr_xpeng",
+    "name": "XPeng"
+   },
+   "robot_recorded": "XPeng IRON",
+   "robot": 104,
+   "level": "model",
+   "sector": "retail",
+   "countries": [
+    "Multiple"
+   ],
+   "years": [
+    2026,
+    2026
+   ]
+  }
+ ],
  "companies": [
   {
    "id": "mfr_1x",

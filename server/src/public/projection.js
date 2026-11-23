@@ -126,6 +126,42 @@ function pickEvidence(items, order) {
   };
 }
 
+// Deployment cases (Javier, 23 Nov 2026: the adoption view of the home page). One entry per deployment, deduplicated
+// by the sheet's deployment id (never published), with only public fields: organisation and maker (company ids of the
+// public pages), robot as recorded, sector, deployment countries, years, the number of records and their status labels.
+// `stage` is the most advanced status among its records by the method's existing order (in operation, then pilot or
+// trial, then a vendor's claim of operation, then announced); a case whose records are all unresolved is "unc".
+const CASE_RANK = { op: 0, pilot: 1, unc: 2, ann: 3 };
+function deploymentCases(items, byId, nameOf) {
+  const groups = new Map();
+  for (const x of items) {
+    const k = x.g.deployment_id ?? x.r.deployment_id ?? x.g.record_id;
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(x);
+  }
+  const mostCommon = (vals) => { const c = new Map(); for (const v of vals.filter(has)) c.set(String(v).trim(), (c.get(String(v).trim()) ?? 0) + 1); return [...c].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? null; };
+  return [...groups.values()].map((xs) => {
+    const status = Object.fromEntries(STATUS_KEYS.map((k) => [k, 0]));
+    for (const { r } of xs) status[statusKey(r.operational_status)] += 1;
+    const stage = STATUS_KEYS.filter((k) => status[k]).sort((a, b) => CASE_RANK[a] - CASE_RANK[b])[0];
+    const first = xs[0];
+    const robotOf = xs.find(({ g }) => g.robot !== null && g.robot !== undefined)?.g ?? null;
+    return {
+      stage,
+      status,
+      records: xs.length,
+      organisation: { company: byId.get(first.g.operator)?.id ?? null, name: nameOf(first.g.operator, first.r.organization_name) },
+      maker: { company: byId.get(first.g.maker)?.id ?? null, name: nameOf(first.g.maker, first.r.manufacturer) },
+      robot_recorded: mostCommon(xs.map(({ r }) => recordedRobot(r))),
+      robot: robotOf ? robotOf.robot : null,
+      level: robotOf ? robotOf.level : null,
+      sector: mostCommon(xs.map(({ r }) => r.sector)),
+      countries: uniq(xs.map(({ r }) => r.country)),
+      years: span(xs.map(({ r }) => yearOf(r))),
+    };
+  }).sort((a, b) => CASE_RANK[a.stage] - CASE_RANK[b.stage] || String(a.organisation.name).localeCompare(String(b.organisation.name)) || String(a.robot_recorded).localeCompare(String(b.robot_recorded)));
+}
+
 // graph: the full relations graph (server/src/relations/graph.js); rows: full Deployments rows; entities: full
 // Entities rows. Returns only allowlisted values.
 export function publicProjection({ graph, rows, entities = [] }) {
@@ -171,6 +207,7 @@ export function publicProjection({ graph, rows, entities = [] }) {
       organisations: out.filter((c) => c.as_organisation).length,
     },
     aggregates: aggregates(items),
+    cases: deploymentCases(items, byId, nameOf),
     companies: out,
     robots,
   };
@@ -183,4 +220,5 @@ export const ALLOWED_KEYS = new Set([
   'reference_url', 'reviewed_at', 'as_maker', 'as_organisation', 'status', 'sectors', 'site_countries', 'years',
   'counterparts', 'company', 'robot_recorded', 'robot', 'level', 'model_line_only', ...STATUS_KEYS,
   'aggregates', 'min_cell', 'by_status', 'by_sector', 'by_country', 'by_year', 'key', 'evidence',
+  'cases', 'stage', 'organisation', 'maker', 'sector',
 ]);
