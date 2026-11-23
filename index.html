@@ -106,10 +106,11 @@ button{cursor:pointer}
 .hud-nav.cats::-webkit-scrollbar{display:none}
 .hud-nav.cats a{white-space:nowrap;font-size:var(--fs-label)}
 .hud-nav.cats a:first-child{margin-left:auto}
-.lock{display:inline-block;width:6px;height:6px;margin-left:5px;border:1px solid var(--amber);border-radius:1px}
+/* Subscription marker in the category bar. Its own class: a bare .lock rule once also styled the paywall notice. */
+.nav-lock{display:inline-block;width:6px;height:6px;margin-left:5px;border:1px solid var(--amber);border-radius:1px}
 .cats-sec{padding:28px 0;border-top:1px solid var(--line)}
 .cats-sec .cats-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;align-items:end;margin-bottom:16px}
-.catgrid{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.catgrid{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr))}
 .catgrid li{background:var(--ink-0);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
 .catgrid a{color:var(--bone);text-decoration:none;font-weight:600;font-size:17px}
 .catgrid a:hover,.catgrid a:focus-visible{color:var(--amber)}
@@ -117,7 +118,7 @@ button{cursor:pointer}
 .catgrid .meta{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3)}
 .catgrid .meta b{color:var(--bone-2);font-weight:500}
 .catgrid .meta .sub{color:var(--amber)}
-.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:16px}
+.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));margin-top:16px}
 .offer > div{border:1px solid var(--line-2);padding:14px 16px}
 .offer h3{margin:0 0 6px;font-size:16px}
 .offer p{margin:0 0 6px;color:var(--bone-2);font-size:14px}
@@ -128,7 +129,7 @@ button{cursor:pointer}
 .hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(24px,4vw,72px);padding-block:clamp(36px,6vw,84px) clamp(28px,4vw,56px);align-items:start}
 .kicker{display:flex;align-items:center;gap:12px;margin:0 0 28px;flex-wrap:wrap}
 .kicker .rule{width:36px;height:1px;background:var(--bone-4)}
-.eco{list-style:none;margin:-14px 0 22px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.eco{list-style:none;margin:-14px 0 22px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
 .eco li{background:var(--ink-0)}
 .eco a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;text-decoration:none;color:var(--bone-2);height:100%}
 .eco a:hover,.eco a:focus-visible{background:var(--amber-3);color:var(--bone)}
@@ -335,7 +336,7 @@ button{cursor:pointer}
 .db-tabs button:hover{color:var(--amber)}
 .db-tabs button[aria-selected="true"]{color:var(--amber);border-color:var(--amber-2);background:var(--amber-3)}
 .db-tabs button .n{color:var(--bone-3);margin-left:6px}
-.db-index{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px 18px;margin:0 0 16px;padding:14px;border:1px solid var(--line)}
+.db-index{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:12px 18px;margin:0 0 16px;padding:14px;border:1px solid var(--line)}
 .db-index .grp > .lbl{display:block;margin-bottom:6px}
 .db-index .grp{display:flex;flex-direction:column;gap:4px}
 .db-index a{display:flex;justify-content:space-between;gap:10px;padding:6px 8px;text-decoration:none;color:var(--bone-2);font-size:13.5px;border-left:2px solid transparent}
@@ -377,9 +378,11 @@ button{cursor:pointer}
 .db-open:hover,.db-open:focus-visible{background:var(--amber-3);border-color:var(--amber)}
 .db-hint{margin:8px 0 0;color:var(--bone-2);font-size:var(--fs-small);max-width:72ch}
 .db-hint b{color:var(--amber);font-weight:500}
-.db-table tr.lock td{background:var(--amber-3);color:var(--bone-2);padding:16px 14px;max-width:none}
-.db-buy{display:inline-flex;align-items:center;min-height:40px;margin-left:6px;padding:6px 14px;background:var(--amber);color:var(--ink-0)!important;font-weight:600;text-decoration:none}
+.db-more{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:0;padding:16px;background:var(--amber-3);border:1px solid var(--line);border-top:0;color:var(--bone-2);font-size:var(--fs-small);line-height:1.5}
+.db-more p{margin:0;flex:1 1 28ch;min-width:0;overflow-wrap:break-word}
+.db-buy{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:44px;min-width:44px;padding:8px 18px;background:var(--amber);color:var(--ink-0)!important;font-weight:600;text-decoration:none;white-space:nowrap}
 .db-buy:hover,.db-buy:focus-visible{background:var(--amber-hi)}
+.db-buy:focus-visible{outline:2px solid var(--bone);outline-offset:3px}
 /* Record card (View all data): every field of one row, in full. Full screen on phones. */
 html.dlg-open{overflow:hidden}
 .db-dlg{padding:0;border:1px solid var(--line-2);background:var(--ink-1);color:var(--bone);width:min(960px,calc(100vw - 48px));max-width:none;max-height:calc(100dvh - 48px);margin:auto}
@@ -418,8 +421,9 @@ html.dlg-open{overflow:hidden}
   .db-table.dep td.opc{grid-column:1 / -1;order:9;width:auto}
   .db-table.dep .db-open{width:100%;min-height:44px}
   .db-table.dep td.db-empty{display:block}
-  .db-table.dep tr.lock,.db-table.dep tr.lock td{display:block}
-  .db-buy{margin:10px 0 0;width:100%;justify-content:center}
+  .db-more{flex-direction:column;align-items:stretch}
+  .db-more p{flex:0 1 auto}
+  .db-buy{width:100%}
 }
 @media (max-width:760px){
   .db-head{grid-template-columns:minmax(0,1fr)}
@@ -443,6 +447,14 @@ html.dlg-open{overflow:hidden}
   .dossier.open{transform:none;visibility:visible}
   .d-close{display:inline-block}
   body.locked{overflow:hidden}
+}
+/* Very narrow layouts (200% zoom on a 320 to 375 px phone): nothing may widen the page. */
+@media (max-width:240px){
+  .brand{font-size:16px;white-space:normal}
+  .display{font-size:clamp(28px,15vw,40px)}
+  .display em{overflow-wrap:anywhere}
+  .sel,.sel select{min-width:0;max-width:100%;width:100%}
+  .bar{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 30px;gap:6px}
 }
 @media (max-width:980px){
   .hero{grid-template-columns:minmax(0,1fr)}
@@ -504,7 +516,7 @@ html.dlg-open{overflow:hidden}
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Why Humanoid?, home"><span class="sq"></span>Why Humanoid?</a>
     <nav class="hud-nav cats" aria-label="Categories">
-      <a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a><a href="/reports/">Reports</a>
+      <a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a><a href="/reports/">Reports</a>
     </nav>
     <div class="hud-r"><span><b id="clock" class="tn">--:--:--</b> UTC</span><span class="age" id="age">Last checked 30 Oct 2026</span></div>
   </div>
@@ -1295,10 +1307,9 @@ html.dlg-open{overflow:hidden}
     var cols = isDep ? DEP_COLS : meta.fields.filter(function (f) { return f !== 'list'; }).slice(0, 4).map(function (f) { return [label(f), function (r) { return fmt(r[f]); }]; });
     var locked = Math.max(0, meta.entries_total - meta.preview_entries);
     var app = (DATA.access && DATA.access.app_url) || 'https://whyhumanoid.com/app/';
-    var lockRow = function () {
-      return locked ? '<tr class="lock"><td colspan="' + ncol + '"><b>' + locked + ' more entries</b> of ' + esc(meta.title) + ', with every field, come with the subscription (Deployments and Components, ' + esc((DATA.access && DATA.access.price) || '€100 per year') + '). ' +
-        '<a class="db-buy" href="/subscribe/">Subscribe</a></td></tr>' : '';
-    };
+    // The paywall notice sits below the table, outside its horizontal scroll, so it always has the panel's width.
+    var moreHtml = locked ? '<p><b>' + locked + ' more entries</b> of ' + esc(meta.title) + ', with every field, come with the subscription (Deployments and Components, ' + esc((DATA.access && DATA.access.price) || '€100 per year') + ').</p>' +
+      '<a class="db-buy" href="/subscribe/">Subscribe</a>' : '';
     panel.innerHTML =
       '<div class="db-panel-head"><div><h3 id="db-title">' + esc(meta.title) + '</h3><p>' + esc(meta.description || '') + '</p>' +
       '<p class="db-hint">' + (meta.public === 'all' ? 'Free in full: all ' + meta.entries_total + ' entries, with every field.' : meta.public === 'basic_fields' ? 'Free: ' + (meta.public_fields || []).join(', ') + ' of all ' + meta.entries_total + ' entries, and every field of the first 10 sheet rows. The other fields are free too and arrive with the next public export.' : 'Free preview: the first ' + meta.preview_source_rows + ' sheet rows (' + meta.preview_entries + ' entries) of ' + meta.entries_total + '. <b>View all data</b> opens every field of a row (' + meta.fields.length + ' fields), in full.') +
@@ -1308,7 +1319,8 @@ html.dlg-open{overflow:hidden}
       (isDep ? '<div class="db-status" id="db-status" role="group" aria-label="Filter deployments by status"></div>' : '') +
       '<div class="db-scroll"><table class="db-table' + (isDep ? ' dep' : '') + '"><thead><tr><th scope="col">Row</th>' + (isDep ? '<th scope="col" class="stc">Status</th>' : '') + '<th scope="col" class="opc">Record</th>' +
       cols.map(function (c) { return '<th scope="col">' + esc(c[0]) + '</th>'; }).join('') + (isDep ? '' : '<th scope="col">Source</th>') +
-      '</tr></thead><tbody id="db-rows"><tr><td class="db-empty" colspan="12">Loading…</td></tr></tbody></table></div>';
+      '</tr></thead><tbody id="db-rows"><tr><td class="db-empty" colspan="12">Loading…</td></tr></tbody></table></div>' +
+      (locked ? '<div class="db-more" id="db-more" role="note">' + moreHtml + '</div>' : '');
     var body = document.getElementById('db-rows'), countLine = document.getElementById('db-count');
     var ncol = cols.length + 3;
     load(meta.id).then(function (tab) {
@@ -1330,7 +1342,7 @@ html.dlg-open{overflow:hidden}
             (isDep ? '<td class="stc"><span class="dst ' + status(r) + '">' + stLabel(status(r)) + '</span></td>' : '') +
             '<td class="opc"><button type="button" class="db-open" aria-haspopup="dialog" aria-label="View all data, row ' + r._row + '">View all data</button></td>' +
             cols.map(function (c) { return '<td data-label="' + esc(c[0]) + '"' + (c[2] ? ' class="' + c[2] + '"' : '') + '>' + (c[2] ? '<div>' + c[1](r) + '</div>' : c[1](r)) + '</td>'; }).join('') + (isDep ? '' : '<td>' + srcOf(r) + '</td>') + '</tr>';
-        }).join('') : '<tr><td class="db-empty" colspan="' + ncol + '">No rows of the preview match.</td></tr>') + lockRow();
+        }).join('') : '<tr><td class="db-empty" colspan="' + ncol + '">No rows of the preview match.</td></tr>');
       }
       if (isDep) {
         var bar = document.getElementById('db-status');

@@ -78,7 +78,7 @@ th{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--bone-3);
 .top nav.cats{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:thin;gap:16px;padding-bottom:2px}
 .top nav.cats a{white-space:nowrap}
 .top nav.cats a[aria-current="page"]{color:var(--amber-hi)}
-.lock{display:inline-block;width:6px;height:6px;margin-left:5px;vertical-align:2px;border:1px solid var(--amber);border-radius:1px}
+.nav-lock{display:inline-block;width:6px;height:6px;margin-left:5px;vertical-align:2px;border:1px solid var(--amber);border-radius:1px}
 .foot .more{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 10px;font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
 .foot .more a{color:var(--bone-2);text-decoration:none}
 .badge{display:inline-block;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--line-2);color:var(--bone-2);margin-left:6px;vertical-align:3px}
@@ -87,7 +87,7 @@ th{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--bone-3);
 .service{border:1px solid var(--line-2);padding:12px 14px;margin:14px 0;background:var(--ink-1)}
 .service h3{margin:0 0 4px;font-size:16px}
 .service p{margin:4px 0}
-.catgrid{list-style:none;padding:0;margin:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.catgrid{list-style:none;padding:0;margin:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}
 .catgrid li{border:1px solid var(--line-2);padding:12px 14px}
 .catgrid a{font-weight:600;text-decoration:none}
 .catgrid span{display:block;color:var(--bone-2);font-size:14px;margin-top:4px}

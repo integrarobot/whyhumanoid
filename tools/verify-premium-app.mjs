@@ -88,7 +88,8 @@ function app({ url, active, session }) {
   await wait(300);
   const rows = d.querySelectorAll('#db-rows tr.r').length;
   if (rows !== 10) failures.push(`unpaid: ${rows} rows shown, expected the 10-row preview`);
-  if (!/109 more entries/.test(d.querySelector('#db-rows tr.lock')?.textContent ?? '')) failures.push('unpaid: locked remainder not shown');
+  if (!/109 more entries/.test(d.querySelector('#db-more:not([hidden])')?.textContent ?? '')) failures.push('unpaid: locked remainder not shown');
+  if (d.querySelector('#db-more')?.closest('.db-scroll, table')) failures.push('unpaid: subscription notice inside the table scroll');
   if (calls.some((c) => /^\/v1\/datasets\/deployments\?/.test(c.path))) failures.push('unpaid: full rows requested');
   if (d.getElementById('checkout').hidden || d.getElementById('checkout').disabled) failures.push('unpaid: subscribe button not offered');
   dom.window.close();
@@ -101,7 +102,7 @@ function app({ url, active, session }) {
   const trs = [...d.querySelectorAll('#db-rows tr.r')];
   if (trs.length !== 119) failures.push(`subscriber: ${trs.length} rows shown, expected 119`);
   if (!calls.some((c) => /^\/v1\/datasets\/deployments\?limit=/.test(c.path) && c.auth === 'Bearer whs_fake')) failures.push('subscriber: full rows not requested with the session');
-  if (d.querySelector('#db-rows tr.lock')) failures.push('subscriber: locked row shown');
+  if (d.querySelector('#db-more:not([hidden])')) failures.push('subscriber: subscription notice shown');
   if (d.getElementById('portal').hidden) failures.push('subscriber: manage subscription not offered');
   let bad = 0;
   for (const tr of [trs[0], trs[118]]) {

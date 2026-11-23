@@ -88,7 +88,8 @@ input[type=email],input[type=search]{flex:1 1 240px;min-width:0;background:var(-
 .db-table tbody tr.r:hover td{background:color-mix(in srgb,var(--amber) 6%,transparent)}
 .db-table .sub{display:block;margin-top:3px;color:var(--bone-3);font-size:12px}
 .db-table .cw-l > div{min-width:24ch}.db-table .cw-m > div{min-width:16ch}.db-table .cw-s > div{min-width:13ch}
-.db-table tr.lock td{background:var(--amber-3);color:var(--bone-2);padding:16px}
+.db-more{padding:16px;background:var(--amber-3);border:1px solid var(--line);border-top:0;color:var(--bone-2);line-height:1.5}
+.db-more p{margin:0;overflow-wrap:break-word}
 .db-open{background:transparent;border:1px solid var(--amber-2);color:var(--amber);font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;padding:7px 10px;min-height:36px;white-space:nowrap;cursor:pointer}
 .db-open:hover,.db-open:focus-visible{background:var(--amber-3);border-color:var(--amber)}
 .db-empty{padding:16px 12px;color:var(--bone-3)}
@@ -177,7 +178,6 @@ html.dlg-open{overflow:hidden}
   .db-table.dep .cw-l > div,.db-table.dep .cw-m > div,.db-table.dep .cw-s > div{min-width:0;max-width:90ch}
   .db-table.dep td.opc{grid-column:1 / -1;order:9}
   .db-table.dep .db-open{width:100%;min-height:44px}
-  .db-table.dep tr.lock,.db-table.dep tr.lock td{display:block}
 }
 @media (max-width:760px){
   .db-table td{max-width:60vw}
