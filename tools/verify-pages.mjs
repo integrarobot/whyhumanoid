@@ -106,6 +106,31 @@ for (const rbx of model.robots) {
   if (!legacy.includes(`content="0; url=${rbx.path}"`)) fail(`/robots/${rbx.path.split('/')[2]}/ does not redirect to ${rbx.path}`);
 }
 if (!(files.get('robots/index.html') ?? '').includes('content="0; url=/humanoids/"')) fail('/robots/ does not redirect to /humanoids/');
+// Reviewed presentation (tools/robot-presentation.json): display name, full-body cutout and the maker's order link appear
+// on exactly the robots that have them; the image is a real file of its stated size; the link is the reviewed URL.
+const { robotPresentation, presentationProblems } = await import('./robot-presentation.mjs');
+for (const problem of presentationProblems()) fail(`tools/robot-presentation.json: ${problem}`);
+const presented = robotPresentation();
+for (const rbx of model.robots) {
+  const d = doc(rbx.path), pr = presented.get(String(rbx.id));
+  const img = d.querySelector('.robot-figure img'), buy = d.querySelector('a.order-btn');
+  if (!pr) { if (img || buy) fail(`${rbx.path}: has an image or order link without a reviewed entry`); continue; }
+  if (pr.name && d.querySelector('h1')?.firstChild?.textContent.trim() !== pr.name) fail(`${rbx.path}: heading is not the display name ${pr.name}`);
+  if (pr.name && d.querySelector('.crumbs [aria-current]')?.textContent !== pr.name) fail(`${rbx.path}: breadcrumb is not the display name`);
+  if (pr.image) {
+    if (!img) fail(`${rbx.path}: reviewed image missing`);
+    else {
+      if (img.getAttribute('alt') !== pr.image.alt) fail(`${rbx.path}: image alt differs`);
+      if (+img.getAttribute('width') !== pr.image.width || +img.getAttribute('height') !== pr.image.height) fail(`${rbx.path}: image width/height attributes differ`);
+      if (!exists(img.getAttribute('src')) && !existsSync(new URL(img.getAttribute('src').slice(1), root))) fail(`${rbx.path}: image file missing`);
+      if (d.querySelector('.robot-figure source')?.getAttribute('srcset') !== pr.image.src) fail(`${rbx.path}: WebP source missing`);
+    }
+  }
+  if (pr.order) {
+    if (!buy || buy.getAttribute('href') !== pr.order.url) fail(`${rbx.path}: order link is not ${pr.order.url}`);
+    else if (buy.getAttribute('target') !== '_blank' || !/noopener/.test(buy.getAttribute('rel') ?? '') || !buy.textContent.includes(pr.order.label)) fail(`${rbx.path}: order link attributes or label`);
+  }
+}
 for (const idx of ['/humanoids/', '/companies/']) {
   const d = doc(idx);
   const n = d.querySelectorAll('tbody tr').length;

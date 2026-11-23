@@ -1,0 +1,24 @@
+{
+  "note": "Per-robot presentation for the public site, reviewed by hand (Javier, 23 Nov 2026). Keyed by catalogue id; 'recorded' must equal the Lab and Robot values of that catalogue record, or the entry stops applying and the check fails, so a reordered master never moves an image or a link to another robot. 'display_name' replaces only the name shown (titles, headings, lists); slugs, permanent URLs, relations and the master keep the recorded name. 'order' links to the maker's own order page: an outbound link, no purchase or payment on Why Humanoid?, and no claim about availability or delivery; its host must be the host of the record's Web field. Add an entry only with values supplied or checked for that robot; never infer one. Checked by node tools/robot-presentation.mjs --check.",
+  "robots": {
+    "1": {
+      "recorded": { "Lab": "1X", "Robot": "NEO (Home Robot)" },
+      "display_name": "NEO",
+      "display_name_reason": "The visible name drops the descriptor \"(Home Robot)\" carried in the Robot cell (row 2 of the Humanoids tab since the first catalogue export of 16 Nov 2026); the master keeps it.",
+      "image": {
+        "src": "/assets/robots/1x-neo/neo-full-body.webp",
+        "fallback": "/assets/robots/1x-neo/neo-full-body.png",
+        "width": 291,
+        "height": 971,
+        "alt": "NEO by 1X, full body, standing, in its grey knitted suit",
+        "credit": "Image: 1X",
+        "provenance": "ops/media/robots/1x-neo/PROVENANCE.md"
+      },
+      "order": {
+        "url": "https://www.1x.tech/order",
+        "label": "Buy NEO",
+        "note": "On 1X's website. Price, availability and delivery are set there."
+      }
+    }
+  }
+}
