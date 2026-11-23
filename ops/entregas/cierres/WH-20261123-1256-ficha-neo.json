@@ -1,0 +1,51 @@
+{
+  "id": "WH-20261123-1256-ficha-neo",
+  "tarea": "Ficha de NEO (1X), primer modelo de la mejora de fichas de robots: quitar «Home Robot» del nombre visible, añadir la imagen de cuerpo completo con transparencia real y añadir el botón Buy NEO hacia la página de pedido de 1X",
+  "origen": "Javier, 23/11/2026, transmitido por Codex (imagen adjunta neo-1x-original.png)",
+  "fecha": "2026-11-23T12:56:09+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Origen de «Home Robot»: es el valor de la celda Robot, fila 2 de la pestaña Humanoids del maestro («NEO (Home Robot)»). Aparece en las exportaciones del 17 y del 23/11 y en la primera exportación del catálogo en Git (5de4223, 16/11). No lo añade ninguna plantilla ni paso de compilación.",
+    "Nombre visible: la web muestra «NEO» en títulos, H1, migas, listados (Humanoids, 1X, EQT, Investment, índice de empresas) y en el dossier de la portada. No cambian el maestro, data/humanoids-catalogue.*, el slug ni la URL /humanoids/1x-neo-home-robot-1/, las relaciones ni la búsqueda, que sigue encontrando «home robot».",
+    "Imagen: recorte fiel de la foto elegida por Javier, de cuerpo completo (cabeza y pies), con canal alfa real. Solo se calcula la transparencia y los píxeles opacos son exactamente los originales. Se vuelven transparentes el fondo, el hueco entre la mano izquierda y el muslo y la sombra del suelo. El color de los bordes se desmezcla del fondo de estudio para evitar halo blanco. Sin rectángulo blanco ni modos de fusión.",
+    "Formato web: WebP con alfa (56 KB) y PNG sin pérdida de respaldo (275 KB), de 291×971. Se muestra con contain y su proporción, con atributos de tamaño (sin saltos de maquetación), texto alternativo y crédito «Image: 1X».",
+    "Procedencia en ops/media/robots/1x-neo/ (fuera de la web): el original tal como llegó, la máscara, cutout.py (reproduce el PNG publicado byte a byte) y PROVENANCE.md.",
+    "Buy NEO: enlace externo exacto a https://www.1x.tech/order, en pestaña nueva, con nombre accesible y objetivo de 44 px. Nota: «On 1X's website. Price, availability and delivery are set there.» No hay compra ni cobro en Why Humanoid? y no se afirma disponibilidad ni entrega.",
+    "Soporte mantenible por robot: tools/robot-presentation.json (nombre visible, imagen y enlace de pedido) por id de catálogo. La entrada deja de aplicarse si Lab y Robot no coinciden, y el host del enlace de pedido debe ser el de la web del fabricante en el registro. Sin columnas nuevas en el maestro ni cambios en importadores. Ninguna otra ficha cambia.",
+    "Comprobaciones nuevas: tools/robot-presentation.mjs --check (también en CI), verify-pages (nombre, imagen y enlace; nada en robots sin entrada) y verify-staging (en navegador real)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #66 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/66"
+    },
+    {
+      "etiqueta": "Ficha de NEO",
+      "url": "https://whyhumanoid.com/humanoids/1x-neo-home-robot-1/"
+    },
+    {
+      "etiqueta": "Dossier de NEO en la portada",
+      "url": "https://whyhumanoid.com/#r-1x-neo-home-robot-1"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 296c98a (CI del PR en verde sobre fbbfed7); servida en whyhumanoid.com tras 4 comprobaciones de espera. La imagen se sirve como image/webp de 56.068 bytes. Sin cambios en el Worker ni en D1."
+  ],
+  "verificaciones": [
+    "Producción con navegador real: verify-staging 262 de 262 en whyhumanoid.com con la API del Worker, incluidas las 12 comprobaciones nuevas de NEO en escritorio y móvil: nombre, carga del WebP, proporción 0,30 conservada, cuerpo completo dentro de la pantalla, enlace y objetivo de 44 px, sin desbordamiento.",
+    "Capturas en producción a 1366 px, iPhone 13 y 320 px de la ficha y del dossier: imagen de 558, 440 y 435 px de alto; botón de 136×47 y 133×46 px; foco de teclado visible; sin desbordamiento.",
+    "Recorte revisado en ampliación de cabeza, manos y pies sobre los dos fondos oscuros de la web (#0B0C0E y #111316), damero y blanco. Esquinas con alfa 0.",
+    "El validador detecta los cuatro errores provocados: host ajeno, registro que no coincide, tamaño falso y entrada aplicada a otro robot.",
+    "En local pasan: verify-staging --local 271 de 271, 94 de 94 pruebas de API, verify-site, verify-premium-app, verify-pages, check-public, check-reserved, y build-site, build-pages, export-public y relations en modo --check.",
+    "Fuera de la huella de caché de pages.css, solo cambian las 8 páginas donde aparece NEO."
+  ],
+  "pendientes": [
+    "Bloqueo parcial de resolución: llegó la conversión del chat (WebP de 2000×1125, 39.592 bytes), no el PNG neo-1x-original.png. El robot mide unos 950 px de alto en esa copia y ese es el techo de la imagen publicada. Si el PNG de Javier tiene más detalle, basta con sustituir el original en ops/media/robots/1x-neo/ y volver a ejecutar cutout.py. La URL de origen de la foto no se aportó y no se ha inventado.",
+    "Quedan dos valores de la hoja que contienen «NEO Home Robot»: Unveiled y Model identity. Son datos registrados, no la etiqueta, y se conservan. Si Javier quiere quitarlos, hay que corregir el maestro o añadir una regla explícita.",
+    "La búsqueda de la API (/v1/search) y la aplicación de suscriptores leen D1, así que siguen mostrando el nombre registrado «NEO (Home Robot)». Cambiarlo exige aplicar la misma presentación en el Worker y desplegarlo (Codex).",
+    "Revisión de Codex y de Javier antes de confirmar el cierre."
+  ],
+  "siguiente_accion": "Javier y Codex revisan la ficha de NEO y deciden si es la plantilla para las demás fichas. Las siguientes solo se añaden con imagen y URL de pedido aportadas o comprobadas para cada robot."
+}
