@@ -66,6 +66,17 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     await page.screenshot({ path: `${SHOTS}/${label}_home.png` });
     await page.locator('#categories').screenshot({ path: `${SHOTS}/${label}_home_categories.png` });
   }
+  // Adoption view (23 Nov 2026): the hero answers at a glance; the explorer filters and opens a case.
+  await page.goto(`${BASE}/`, { waitUntil: 'load' });
+  check(await page.isVisible('.hero .adopt-hero .stage-bars'), `${label} home: adoption view in the hero`);
+  const auto = await page.$('#adoption .adopt-filters button[data-fam="automotive"]');
+  if (auto) {
+    await auto.click();
+    const n = await page.$$eval('#adoption .case:not(.off)', (xs) => xs.length);
+    check(n > 0 && n < 71, `${label} home: sector filter narrows the cases (${n})`);
+    const first = await page.$('#adoption .rung[open] .case:not(.off)');
+    if (first) { await first.click(); check(await page.isVisible('#adopt-detail'), `${label} home: choosing a case opens its details`); }
+  } else check(false, `${label} home: adoption filters missing`);
   // Paywall notice of the database panel (regression of 23 Nov 2026: a bare .lock rule shrank it to a 28 px column).
   // For every tab with a subscription remainder: below the table and outside its horizontal scroll, at least 90% of
   // the panel's width, the call to action on one line with a 44 px touch target.

@@ -253,3 +253,24 @@ test('selected evidence: one record by the fixed rule, allowlisted fields only, 
   for (const f of ['claim_text', 'open_questions_notes', 'confidence', 'integration_dependencies', 'claim_id', 'task_id', 'source_id']) assert.ok(!text.includes(`fx_${f}_`), f);
   assert.ok(!/fx_rec_|fx_dep_/.test(text));
 });
+
+test('deployment cases: one per deployment, at its most advanced status by the method order, public fields only', () => {
+  const spec = DATASETS_BY_ID.get('deployments');
+  // Three deployments: A has an announcement and later an operation; B a vendor claim and a pilot; C only unresolved.
+  const plan = [['dep_a', 'planned'], ['dep_a', 'operational'], ['dep_b', 'vendor_claimed_operational'], ['dep_b', 'testing'], ['dep_c', 'unresolved']];
+  const rows = plan.map(([dep, status], k) => {
+    const r = row(k + 1, { robot_model: 'Strider 5', operational_status: status });
+    return Object.fromEntries(spec.headers.map((h) => [h, h === 'deployment_id' ? `fx_${dep}` : r[h] ?? `fx_${h}_${k + 1}`]));
+  });
+  const { graph } = buildGraph(compileConfig(config), { rows, entities: [], scope: 'full' });
+  const p = publicProjection({ graph, rows });
+  assert.equal(p.cases.length, 3, 'deduplicated by deployment');
+  assert.deepEqual(p.cases.map((c) => [c.stage, c.records]), [['op', 2], ['pilot', 2], ['unc', 1]]);
+  assert.deepEqual(p.cases[0].status, { op: 1, pilot: 0, ann: 1, unc: 0 });
+  assert.equal(p.cases.reduce((n, c) => n + c.records, 0), p.totals.records);
+  assert.equal(p.cases.length, p.totals.deployments);
+  const text = JSON.stringify(p.cases);
+  assert.ok(!/fx_dep_|fx_rec_/.test(text), 'no deployment or record ids');
+  for (const f of RESERVED) assert.ok(!text.includes(`fx_${f}_`), `cases hold ${f}`);
+  for (const c of p.cases) for (const k of Object.keys(c)) assert.ok(ALLOWED_KEYS.has(k), `case key ${k}`);
+});

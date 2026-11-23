@@ -10,7 +10,7 @@
 //   - deployment status filters count only what operational_status supports
 // Usage: cd tools && npm ci && node verify-site.mjs
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { JSDOM, VirtualConsole } from 'jsdom';
 
 const root = new URL('../', import.meta.url);
@@ -191,6 +191,24 @@ for (const a of eco.filter((x) => x.getAttribute('href').startsWith('#db-'))) {
 }
 expect(document.querySelector('#cta-h')?.getAttribute('href') === '#humanoids' && document.querySelector('#cta-db')?.getAttribute('href') === '#categories', 'hero calls to action missing');
 expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements still on the page');
+// Adoption view (23 Nov 2026): replaces the Height × mass chart; built from the public projection only.
+{
+  const proj = JSON.parse(readFileSync(new URL('data/public/projection.json', root), 'utf8'));
+  const cases = proj.cases;
+  expect(!document.getElementById('cuerpos') && !document.getElementById('bc'), 'the Height × mass chart is still in the hero');
+  expect(Boolean(document.querySelector('.hero .adopt-hero')), 'adoption view missing from the hero');
+  const op = cases.filter((c) => c.stage === 'op').length;
+  expect(new RegExp(`^${op} of ${cases.length} recorded deployment cases`).test(text('.adopt-lede')), `hero sentence does not match the projection (${op} of ${cases.length})`);
+  const chips = [...document.querySelectorAll('#adoption .case')];
+  expect(chips.length === cases.length && new Set(chips.map((a) => a.dataset.case)).size === cases.length, `explorer shows ${chips.length} marks for ${cases.length} cases`);
+  for (const stage of ['op', 'pilot', 'unc', 'ann']) expect(document.querySelectorAll(`#adoption .r-${stage} .case`).length === cases.filter((c) => c.stage === stage).length, `stage ${stage}: marks differ from the projection`);
+  for (const a of chips) { const h = a.getAttribute('href'); expect(h === '/deployments/' || existsSync(new URL(`${h.slice(1)}index.html`, root)), `case links to a missing page ${h}`); }
+  const data = JSON.parse(document.getElementById('adoption-data').textContent);
+  const KEYS = new Set(['stage', 'status', 'records', 'org', 'orgPath', 'maker', 'makerPath', 'model', 'robotPath', 'family', 'sector', 'fam', 'countries', 'years']);
+  expect(data.every((c) => Object.keys(c).every((k) => KEYS.has(k))), 'adoption data holds a key outside the public list');
+  expect(!/site_name|task_description|claim_text|metric_value|source_url|verification_status|evidence_level|fx_|rec_|dep_/.test(JSON.stringify(data)), 'adoption data holds a reserved field or an id');
+  expect(document.querySelectorAll('#adoption .adopt-table tbody tr').length === cases.length, 'adoption table view does not list every case');
+}
 // Navigation (23 Nov 2026): the nine confirmed categories, in order, each at its own address.
 const { CATEGORIES } = await import('../server/src/access/matrix.js');
 const navLinks = [...document.querySelectorAll('.hud-nav a')];
