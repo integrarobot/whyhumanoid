@@ -1,0 +1,48 @@
+{
+  "id": "WH-20261123-1946-atlas-benchmarks",
+  "tarea": "Benchmarks: Robotics Evaluation Atlas en /benchmarks/, a partir de las pestañas Benchmarks y Benchmark Results del maestro, con resultados numéricos honestos de PAW y Physics-IQ",
+  "origen": "Javier, 23/11/2026: encargo aprobado; publicación autorizada expresamente («que lo publique»), en lugar del paso de aprobación aparte de Codex",
+  "fecha": "2026-11-23T19:46:11+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Datos del maestro en vivo (exportación del 23/11 a las 15:28 UTC): Benchmarks (BenchmarksCatalog A1:X23, 22 recursos, 24 columnas) y Benchmark Results (BenchmarkResults A1:Z35, 34 observaciones, 26 columnas), unidas por BENCHMARK_ID.",
+    "Importación (server/src/datasets.js) y validación común (server/src/benchmarks/atlas.js). La importación falla ante cualquier incoherencia:\n- IDs únicos y claves ajenas, incluida Datasets en ambos sentidos;\n- número o vacío (nulo, nunca cero) y escala nativa 0–100;\n- grupos de comparabilidad sin mezclar versión, pista, métrica, unidad ni dirección;\n- vocabulario revisado: 5 grupos de capacidad desde etiquetas explícitas y 4 entornos de evaluación desde valores exactos de ENVIRONMENT.",
+    "Instantánea pública data/benchmarks/atlas.json (tools/export-benchmarks.mjs):\n- solo campos de una lista blanca; nunca el enlace al libro (RELATED_DATASETS_URL) ni la descripción anterior;\n- recuentos calculados a partir de las filas;\n- fecha de exportación separada de las fechas de las fuentes.\nNo se republica ninguna otra pestaña.",
+    "Task Evaluation sale de la categoría Benchmarks y queda como evaluación operativa interna, con el mismo acceso. Benchmarks sigue gratis; no cambian precios, permisos, la venta live cerrada ni las reglas de pago.",
+    "Página /benchmarks/ (HTML estático legible sin JavaScript, más assets/atlas.css y assets/atlas.js):\n- cabecera con los recuentos y una tira de los 22 recursos;\n- resultados de Poke and Wiggle (PAW-GEN-10-Agentic, D10): nominal frente a extrapolación, interpolación opcional, diferencia en puntos porcentuales y Overall aparte con n = 900;\n- resultados de Physics-IQ: Original y Verified separados, con selector de modo de entrada;\n- paisaje de capacidades con filtros y detalle;\n- comparación solo dentro de un grupo;\n- tabla accesible de las 34 observaciones, una ficha por recurso y estado compartible en la URL."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #73 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/73"
+    },
+    {
+      "etiqueta": "Robotics Evaluation Atlas",
+      "url": "https://whyhumanoid.com/benchmarks/"
+    },
+    {
+      "etiqueta": "Enlace profundo de ejemplo",
+      "url": "https://whyhumanoid.com/benchmarks/?res=res-physics-verified-1#results"
+    }
+  ],
+  "despliegue": [
+    "Commit de fusión 55f40a4 en main (CI del PR en verde sobre ac7ae4b, con main b47f7ef ya integrado).",
+    "GitHub Pages lo servía en whyhumanoid.com tras 3 comprobaciones de espera. Responden 200 assets/atlas.css, assets/atlas.js y data/benchmarks/atlas.json.",
+    "Sin cambios en el Worker ni en D1."
+  ],
+  "verificaciones": [
+    "Producción con navegador real: verify-staging 306 de 306 en whyhumanoid.com con la API del Worker, incluidas las comprobaciones del atlas en escritorio y móvil; sin regresiones en las demás categorías ni en el acceso de pago.",
+    "Comprobación en vivo a 1440 y 390 px:\n- recuentos 22 / 2 / 34 / 20;\n- las 34 cifras de la tabla coinciden con la instantánea y todas enlazan a su fuente (pokeandwiggle.com/leaderboard y el repositorio de Physics-IQ);\n- valores de PAW del maestro (por ejemplo, Claude Fable 5.2: nominal 73 %, extrapolación 52 %, Overall 65 %);\n- Physics-IQ separa Original i2v (5), Original v2v (3) y Verified v2v (2), y Verified i2v aparece vacío de forma explícita;\n- funcionan el filtro de robot real, el detalle de recurso y observación (con «tamaño de muestra no publicado») y los enlaces profundos, con el ± publicado como texto;\n- sin errores de script y sin desbordamiento.",
+    "La portada de producción muestra Benchmarks con 22 recursos.",
+    "Antes de fusionar, en local:\n- 13 pruebas nuevas y 107 de 107 pruebas de API;\n- verify-staging --local 315 de 315;\n- verify-pages con las comprobaciones del atlas y una contraprueba;\n- check-public, check-reserved y las comprobaciones de compilación;\n- estados sin JavaScript, movimiento reducido y error."
+  ],
+  "pendientes": [
+    "Extraer los resultados de los otros 20 benchmarks es una tarea de contenido aparte, con revisión de fuente y protocolo y sin estimaciones.",
+    "Migrar el contrato de la pestaña Datasets (DATASET_ID, RELATED_BENCHMARK_IDS) es otra tarea. Hasta entonces, el enlace de vuelta de dataset a benchmark se valida, pero no se muestra en /datasets/.",
+    "El Worker servirá las pestañas nuevas solo tras desplegarlo e importar; la web no depende de ello.",
+    "Revisión posterior de Codex y confirmación de Javier."
+  ],
+  "siguiente_accion": "Codex revisa el atlas publicado y Javier confirma la entrega. La siguiente ampliación es extraer más resultados, benchmark a benchmark, en el maestro."
+}
