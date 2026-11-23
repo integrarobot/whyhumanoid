@@ -1,0 +1,282 @@
+/* Components explorer core (23 Nov 2026). One classic script shared by the page builder (tools/build-pages.mjs runs
+   it in Node) and the browser (assets/components.js), so the static pages and the subscriber view classify and render
+   a product the same way.
+
+   Rules (see server/src/components/catalogue.js):
+   - Classes come from explicit rules over the recorded text. When no rule matches, the value is "not classified";
+     nothing is guessed. Each facet says what it is: a mention in a field, not a measured capability.
+   - "Not available", "N/A" and empty are three different states and are never shown as zero or as a dash that could
+     be read as zero. Values with model or configuration scope are flagged as varying.
+   - Prices, quotes, third-party figures and BOM estimates stay separate, in their currency, never converted, never
+     used to sort. Nothing is ranked: no score, no "best" by pixels, rate or price.
+   - Product copy is the research compilation's, attributed as such; its review state is shown with every passport. */
+(function (root) {
+  'use strict';
+
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var linkify = function (s) {
+    return esc(s).replace(/https?:\/\/[^\s<;]+/g, function (u) {
+      var tail = '';
+      while (/[.,)\]]$/.test(u) && !(u.slice(-1) === ')' && u.indexOf('(') >= 0)) { tail = u.slice(-1) + tail; u = u.slice(0, -1); }
+      return '<a href="' + u + '" rel="noopener noreferrer">' + u.replace(/^https?:\/\/(www\.)?/, '') + '</a>' + tail;
+    });
+  };
+
+  var GROUPS = {
+    'Commercial': { key: 'commercial', label: 'Commercial product' },
+    'Commercial (early access)': { key: 'early_access', label: 'Early access, not on open sale' },
+    'Commercial (discontinued)': { key: 'discontinued', label: 'Discontinued' },
+    'Research / open hardware': { key: 'research', label: 'Research or open hardware' },
+    'Software (simulator)': { key: 'software', label: 'Related software' }
+  };
+  var CLASS_ORDER = ['commercial', 'early_access', 'research', 'discontinued', 'software', 'unclassified'];
+  var CLASS_LABEL = { commercial: 'Commercial product', early_access: 'Early access, not on open sale', research: 'Research or open hardware', discontinued: 'Discontinued', software: 'Related software', unclassified: 'Not classified' };
+  var classOf = function (group) { return (GROUPS[group] || { key: 'unclassified' }).key; };
+
+  // Sensing approach: first matching rule wins; the order puts explicit statements before generic words.
+  var PRINCIPLES = [
+    { key: 'not_stated', label: 'Principle not stated by the maker', re: /does not detail the physical principle|principle (is )?not stated/i,
+      gives: 'The maker publishes what the sensor reports, not how it senses.', limits: 'Any statement about the physics is an inference and is marked as such in the record.' },
+    { key: 'simulation', label: 'Simulation (software)', re: /^rendering|simulat/i,
+      gives: 'Synthetic tactile images and depth maps for learning and testing without hardware.', limits: 'A simulator is not a sensor: the gap to real contact remains, and forces are not calibrated.' },
+    { key: 'multimodal', label: 'Multimodal fingertip', re: /^multimodal/i,
+      gives: 'Several channels in one part, such as contact images, pressure, vibration, temperature or motion.', limits: 'Each channel has its own rate and conditions; availability and integration effort can differ from single-channel parts.' },
+    { key: 'optical_camera', label: 'Optical, camera-based', re: /camera|vision/i,
+      gives: 'An image of the contact: geometry, texture and, with markers, shear and slip.', limits: 'Pixels are image resolution, not calibrated taxels; force is usually estimated by a model unless the part is calibrated; frame rate is set by the camera; optics take volume and gels wear.' },
+    { key: 'optical_photodiode', label: 'Optical, photodiode-based', re: /photodiode/i,
+      gives: 'Displacement and force per element from light inside soft elements.', limits: 'Few, larger elements; resolution is set by the element pitch.' },
+    { key: 'magnetic', label: 'Magnetic or Hall effect', re: /magnet|hall effect/i,
+      gives: 'Changes of a magnetic field under a soft layer: thin parts and fast signals.', limits: 'Few channels; external magnetic fields and temperature interfere; force comes from calibration or learned models.' },
+    { key: 'capacitive', label: 'Capacitive', re: /capacitive/i,
+      gives: 'Pressure distribution over an array of elements.', limits: 'Spatial resolution is set by element size; shear per element is not always reported.' },
+    { key: 'fluid', label: 'Fluid and impedance (biomimetic)', re: /conductive fluid|impedance/i,
+      gives: 'A finger-like part combining force, vibration and temperature.', limits: 'Complex to build and maintain; in this catalogue the only record is discontinued.' }
+  ];
+  var principleOf = function (text) {
+    for (var i = 0; i < PRINCIPLES.length; i += 1) if (PRINCIPLES[i].re.test(String(text || ''))) return PRINCIPLES[i].key;
+    return 'unclassified';
+  };
+  var principleLabel = function (key) {
+    for (var i = 0; i < PRINCIPLES.length; i += 1) if (PRINCIPLES[i].key === key) return PRINCIPLES[i].label;
+    return 'Not classified';
+  };
+
+  // Words in "Measured quantities". A mention, not a calibrated capability: the record says how each is obtained.
+  var QUANTITIES = [
+    { key: 'geometry', label: 'Contact geometry or shape', re: /geometr|topograph|shape|deformation|depth/i },
+    { key: 'force', label: 'Force', re: /force/i },
+    { key: 'shear', label: 'Shear or tangential force', re: /shear|tangential|x\/y/i },
+    { key: 'torque', label: 'Torque', re: /torque/i },
+    { key: 'slip', label: 'Slip', re: /slip/i },
+    { key: 'vibration', label: 'Vibration', re: /vibration/i },
+    { key: 'temperature', label: 'Temperature or heat', re: /temperature|heat/i },
+    { key: 'texture', label: 'Texture', re: /texture/i },
+    { key: 'location', label: 'Contact location', re: /location|contact point|position/i },
+    { key: 'proximity', label: 'Proximity vision', re: /proximity|nearby object/i }
+  ];
+  var quantitiesOf = function (text) { return QUANTITIES.filter(function (q) { return q.re.test(String(text || '')); }).map(function (q) { return q.key; }); };
+
+  var INTERFACES = [
+    { key: 'usb', label: 'USB', re: /\bUSB/i }, { key: 'can', label: 'CAN', re: /\bCAN\b/ }, { key: 'i2c', label: 'I2C', re: /\bI2C\b/i },
+    { key: 'spi', label: 'SPI', re: /\bSPI\b/i }, { key: 'serial', label: 'Serial', re: /\bserial\b/i }, { key: 'bluetooth', label: 'Bluetooth', re: /bluetooth/i },
+    { key: 'library', label: 'Software library', re: /python library|pip install/i }
+  ];
+  // A parenthesis about an earlier generation ("(GEN3: USB converter)") never describes this product.
+  var currentOnly = function (text) { return String(text || '').replace(/\(GEN\d[^)]*\)/gi, ''); };
+  var interfacesOf = function (text) { var t = currentOnly(text); return INTERFACES.filter(function (q) { return q.re.test(t); }).map(function (q) { return q.key; }); };
+
+  // ROS: mentioned for this product, only through community drivers of an earlier generation, or not mentioned.
+  var rosOf = function (text) {
+    var s = String(text || '');
+    if (/community drivers for GEN\d/i.test(s)) return 'earlier_generation';
+    return /\bROS\b|ROS ?2|ROS2/.test(s) ? 'mentioned' : 'not_mentioned';
+  };
+  var ROS_LABEL = { mentioned: 'ROS mentioned for this product', earlier_generation: 'ROS only via community drivers for an earlier generation', not_mentioned: 'No ROS mention' };
+
+  var licenceOf = function (text) {
+    var s = String(text || '');
+    if (!s.trim() || /^not available|no spdx|license not available/i.test(s) || /code license not available/i.test(s)) return 'not_stated';
+    if (/proprietary|eula/i.test(s)) return 'proprietary';
+    if (/\bMIT\b|GPL|CC BY|Apache|BSD/i.test(s)) return 'published';
+    return 'not_stated';
+  };
+  var LICENCE_LABEL = { published: 'Published licence (read its scope)', proprietary: 'Proprietary', not_stated: 'Licence not stated' };
+
+  // Price: what kind of figure the record holds. Never parsed into a number, never compared or sorted.
+  var priceOf = function (text) {
+    var s = String(text || '').trim();
+    var flags = [];
+    if (!s) return { state: 'not_recorded', flags: flags };
+    if (/^N\/A\b|not sold/i.test(s)) return { state: 'not_sold', flags: flags };
+    if (/^free\b/i.test(s)) return { state: 'free', flags: flags };
+    if (/third[- ]part|not verified|wowrobo/i.test(s)) flags.push('third_party');
+    if (/distributor/i.test(s)) flags.push('distributor');
+    if (/historical/i.test(s)) flags.push('historical');
+    if (/^no (public|official) price/i.test(s)) return { state: 'no_public_price', flags: flags };
+    if (/^on (request|enquiry)/i.test(s)) return { state: 'quote', flags: flags };
+    if (/\d[\d,.]*\s*(USD|EUR|CNY|AUD|JPY|GBP)\b/.test(s)) return { state: 'listed', flags: flags };
+    return { state: 'other', flags: flags };
+  };
+  var PRICE_LABEL = { listed: 'Price stated', quote: 'Quote on request', no_public_price: 'No public price', not_sold: 'Not sold', free: 'Free', not_recorded: 'Not recorded', other: 'See the record' };
+  var PRICE_FLAG = { third_party: 'Third-party or unverified figure', distributor: 'Distributor figure', historical: 'Historical reference' };
+
+  // A field value's state: a value, not available in the source, not applicable, or not recorded at all.
+  var stateOf = function (v) {
+    var s = v == null ? '' : String(v).trim();
+    if (!s || s === 'undefined') return 'not_recorded';
+    if (/^N\/A\b/.test(s)) return 'not_applicable';
+    if (/^not available\b/i.test(s)) return 'not_available';
+    return 'value';
+  };
+  var STATE_LABEL = { not_recorded: 'Not recorded', not_applicable: 'Not applicable', not_available: 'Not available in the source' };
+  var varies = function (v) {
+    var s = String(v || '');
+    var prefixes = s.match(/(^|;\s*)[A-Za-z][A-Za-z0-9 .-]{1,24}:\s/g) || [];
+    return prefixes.length >= 2 || /depending on model|variants?\b|other models|depends on the mode|kits?:/i.test(s);
+  };
+  var evidenceTags = function (v) {
+    var s = String(v || ''), t = [];
+    if (/\(manufacturer\)|according to the manufacturer|manufacturer only/i.test(s)) t.push('Maker-stated');
+    if (/third[- ]part|not verified|cited by a search engine/i.test(s)) t.push('Unverified third-party figure');
+    if (/\(paper\)|in the experiments|in the paper|according to the paper/i.test(s)) t.push('Paper conditions');
+    if (/estimate|≈|approx/i.test(s)) t.push('Estimate or approximate');
+    return t;
+  };
+
+  // Passport sections: every meaningful source field, grouped by meaning.
+  var SECTIONS = [
+    { key: 'identity', title: 'Identity and status', fields: [['component_id', 'Component ID'], ['family', 'Family'], ['group', 'Group as recorded'], ['manufacturer', 'Manufacturer or laboratory'], ['country', 'Country'], ['year', 'Launch or publication'], ['status', 'Current status']] },
+    { key: 'sensing', title: 'What it senses', fields: [['principle', 'Sensing principle'], ['measured', 'Measured quantities'], ['resolution_count', 'Taxels or camera resolution'], ['spatial_resolution', 'Spatial resolution'], ['force_range', 'Force range'], ['force_resolution', 'Force resolution'], ['sampling_rate', 'Sampling rate or frame rate']] },
+    { key: 'physical', title: 'Form and durability', fields: [['dimensions', 'Dimensions'], ['weight', 'Weight'], ['surface', 'Sensing surface or shape'], ['durability', 'Durability and replaceable skin']] },
+    { key: 'integration', title: 'Interfaces and software', fields: [['interface', 'Interface and connectivity'], ['software', 'Software, SDK and ROS'], ['integrations', 'Known users and integrations']] },
+    { key: 'availability', title: 'Availability, price and licence', fields: [['where_to_buy', 'Where to get it'], ['list_price', 'List price (currency, date, source)'], ['bom_cost', 'Estimated BOM (open hardware)'], ['licence', 'Licence']] },
+    { key: 'research', title: 'Research and design', fields: [['key_paper', 'Key paper'], ['repository', 'Repository or design files']] },
+    { key: 'assessment', title: 'Advantages and drawbacks', fields: [['advantages', 'Advantages'], ['drawbacks', 'Drawbacks']], note: 'As summarised in the research compilation, not an independent assessment.' },
+    { key: 'caveats', title: 'Notes and uncertainties', fields: [['notes', 'Notes and uncertainties']] }
+  ];
+  var CAUTION = {
+    resolution_count: 'Camera pixels are image resolution, not effective calibrated taxels.',
+    spatial_resolution: 'Spatial resolution, localisation error and smallest feature are different quantities: read the wording.',
+    force_resolution: 'Resolution, error and accuracy are different quantities.',
+    sampling_rate: 'A rate can describe a different stream (internal sampling, output, camera) or a different mode.',
+    list_price: 'Original currency, date and channel as recorded; not converted, not compared.',
+    bom_cost: 'An author or third-party estimate of parts, not a sale price.',
+    licence: 'Code, hardware design and the sale of a finished product can have different terms.'
+  };
+  // Reviewed cautions for products whose public record mixes conditions, models or claims.
+  var PRODUCT_CAUTIONS = {
+    'CMP-TAC-001': '60 fps is the paper\'s figure; the default interface streams VGA at 30 fps. The tactile image is not a calibrated force measurement by default.',
+    'CMP-TAC-003': 'Early access is not open sale. The USD 1,200 to 2,500 range comes from third parties and is not an official price; it is never used in price comparisons.',
+    'CMP-TAC-004': 'uSPa44, uSCu ALHA and the assembled hand kits have different taxel counts, rates and prices: each figure applies only to the model it names.',
+    'CMP-TAC-005': 'Internal sampling (1 MHz) is not the output rate (up to 1,000 Hz). The record spans several models and form factors. The physical principle is inferred from the maker\'s "Magnetic Armour" name, not confirmed. Community drivers refer to GEN3, and the Western distributor figure does not name a GEN4 configuration: neither is equivalent to GEN4.',
+    'CMP-TAC-010': 'Discontinued in the source: kept for reference and for existing datasets, not as a purchase recommendation.'
+  };
+
+  var valueHtml = function (field, v) {
+    var st = stateOf(v);
+    if (st === 'not_recorded') return '<span class="na">Not recorded</span>';
+    var text = String(v).trim();
+    var tags = [];
+    if (st !== 'value') tags.push('<span class="st st-' + st + '">' + STATE_LABEL[st] + '</span>');
+    if (st === 'value' && varies(text)) tags.push('<span class="st st-varies">Varies by model or configuration</span>');
+    evidenceTags(text).forEach(function (t) { tags.push('<span class="st">' + esc(t) + '</span>'); });
+    if (field === 'list_price') {
+      var p = priceOf(text);
+      tags.unshift('<span class="st st-price">' + PRICE_LABEL[p.state] + '</span>');
+      p.flags.forEach(function (f) { tags.push('<span class="st">' + PRICE_FLAG[f] + '</span>'); });
+    }
+    return '<span class="val' + (st !== 'value' ? ' muted' : '') + '">' + linkify(text) + '</span>' + (tags.length ? '<span class="sts">' + tags.join('') + '</span>' : '');
+  };
+
+  var parseSources = function (text) {
+    if (!text) return [];
+    return String(text).split(/\n\s*\n/).map(function (block) {
+      var lines = block.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+      var url = lines.filter(function (l) { return /^https?:\/\//.test(l); })[0] || null;
+      var get = function (re) { var l = lines.filter(function (x) { return re.test(x); })[0]; return l ? l.replace(re, '').trim() : null; };
+      var subject = lines.filter(function (l) { return l !== url && !/^Accessed:|^Review status:/i.test(l); })[0] || null;
+      return { subject: subject, url: url, accessed: get(/^Accessed:\s*/i), review: get(/^Review status:\s*/i) };
+    }).filter(function (e) { return e.subject || e.url; });
+  };
+
+  var reviewBadge = function (r) {
+    var s = String(r.review_status || '');
+    var pending = /pending/i.test(s);
+    return '<span class="ev' + (pending ? ' ev-pending' : '') + '">' + (pending ? 'Imported research · original-source review pending' : esc(s || 'Review state not recorded')) + '</span>';
+  };
+
+  // The full passport of one product as HTML (sections as <section>, fields as a description list).
+  var passportHtml = function (r, opts) {
+    opts = opts || {};
+    var h = opts.level || 2;
+    var cls = classOf(r.group);
+    var sections = SECTIONS.map(function (sec) {
+      var rows = sec.fields.map(function (f) {
+        var caution = CAUTION[f[0]] ? '<small class="cau">' + esc(CAUTION[f[0]]) + '</small>' : '';
+        return '<dt>' + esc(f[1]) + caution + '</dt><dd data-f="' + f[0] + '">' + valueHtml(f[0], r[f[0]]) + '</dd>';
+      }).join('');
+      return '<section class="pp-sec" data-sec="' + sec.key + '"><h' + h + '>' + esc(sec.title) + '</h' + h + '>' + (sec.note ? '<p class="pp-note">' + esc(sec.note) + '</p>' : '') + '<dl class="pp-kv">' + rows + '</dl></section>';
+    }).join('');
+    var sources = parseSources(r.sources);
+    var src = '<section class="pp-sec" data-sec="sources"><h' + h + '>Sources and evidence</h' + h + '>'
+      + '<p class="pp-note">' + reviewBadge(r) + ' A reachable link is not a verified claim: each reference keeps the subject it supports and its own review state.</p>'
+      + (r.main_source_url ? '<p class="pp-main">Main source: ' + linkify(r.main_source_url) + '</p>' : '')
+      + '<ol class="srcs">' + sources.map(function (s) {
+        return '<li><b>' + esc(s.subject || 'Reference') + '</b>' + (s.url ? ' ' + linkify(s.url) : '') + '<small>' + (s.accessed ? 'Accessed ' + esc(s.accessed) : 'Access date not recorded') + (s.review ? ' · ' + esc(s.review) : '') + '</small></li>';
+      }).join('') + '</ol></section>';
+    var caution = PRODUCT_CAUTIONS[r.component_id] ? '<p class="pp-caution"><b>Read with care.</b> ' + esc(PRODUCT_CAUTIONS[r.component_id]) + '</p>' : '';
+    return '<div class="pp" data-id="' + esc(r.component_id) + '" data-class="' + cls + '">' + caution + sections + src + '</div>';
+  };
+
+  // Facets of one product for the catalogue filters.
+  var facetsOf = function (r) {
+    return {
+      cls: classOf(r.group), principle: principleOf(r.principle), quantities: quantitiesOf(r.measured), interfaces: interfacesOf(r.interface),
+      ros: rosOf(r.software), licence: licenceOf(r.licence), price: priceOf(r.list_price).state
+    };
+  };
+
+  // Comparison matrix for up to three products: every passport field, grouped, with value states.
+  var compareHtml = function (rows) {
+    if (!rows.length) return '<p class="empty">Choose up to three products to compare.</p>';
+    var head = '<thead><tr><th scope="col" class="ck">Field</th>' + rows.map(function (r) { return '<th scope="col"><a href="/components/' + esc(String(r.component_id).toLowerCase()) + '/">' + esc(r.name) + '</a><small>' + esc(CLASS_LABEL[classOf(r.group)]) + '</small></th>'; }).join('') + '</tr></thead>';
+    var body = SECTIONS.map(function (sec) {
+      return '<tbody><tr class="cg"><th scope="colgroup" colspan="' + (rows.length + 1) + '">' + esc(sec.title) + '</th></tr>' + sec.fields.map(function (f) {
+        return '<tr><th scope="row" class="ck">' + esc(f[1]) + (CAUTION[f[0]] ? '<small class="cau">' + esc(CAUTION[f[0]]) + '</small>' : '') + '</th>' + rows.map(function (r) { return '<td data-p="' + esc(r.name) + '">' + valueHtml(f[0], r[f[0]]) + '</td>'; }).join('') + '</tr>';
+      }).join('') + '</tbody>';
+    }).join('');
+    var cautions = rows.filter(function (r) { return PRODUCT_CAUTIONS[r.component_id]; }).map(function (r) { return '<li><b>' + esc(r.name) + ':</b> ' + esc(PRODUCT_CAUTIONS[r.component_id]) + '</li>'; }).join('');
+    return (cautions ? '<ul class="cmp-cautions">' + cautions + '</ul>' : '') + '<table class="cmp"><caption class="sr">Products compared field by field, as recorded</caption>' + head + body + '</table>';
+  };
+
+  var pathOf = function (id) { return '/components/' + String(id).toLowerCase() + '/'; };
+  var clip = function (v, n) { var s = String(v == null ? '' : v).trim(); return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : s; };
+
+  // One catalogue card. `makers` is ready HTML (public company links on static pages, the recorded text otherwise).
+  var cardHtml = function (r, makers) {
+    var f = facetsOf(r);
+    var quick = [['Taxels or camera', r.resolution_count], ['Rate', r.sampling_rate], ['Interface', r.interface]].map(function (q) {
+      var st = stateOf(q[1]);
+      return '<div><dt>' + q[0] + '</dt><dd' + (st !== 'value' ? ' class="muted"' : '') + '>' + (st === 'value' ? esc(clip(q[1], 90)) : STATE_LABEL[st]) + '</dd></div>';
+    }).join('');
+    var p = priceOf(r.list_price);
+    return '<li class="pc" data-id="' + esc(r.component_id) + '" data-class="' + f.cls + '" data-principle="' + f.principle + '" data-q="' + f.quantities.join(' ') + '" data-if="' + f.interfaces.join(' ') + '" data-ros="' + f.ros + '" data-licence="' + f.licence + '">'
+      + '<p class="pc-k"><span class="cls cls-' + f.cls + '">' + esc(CLASS_LABEL[f.cls]) + '</span><span>' + esc(principleLabel(f.principle)) + '</span></p>'
+      + '<h3><a href="' + pathOf(r.component_id) + '">' + esc(r.name) + '</a></h3>'
+      + '<p class="pc-m">' + (makers || esc(r.manufacturer || 'Maker not recorded')) + '</p>'
+      + '<p class="pc-q">' + esc(clip(r.measured, 170)) + '</p>'
+      + '<dl class="pc-f">' + quick + '</dl>'
+      + '<p class="pc-b"><span class="st st-price">' + PRICE_LABEL[p.state] + '</span>' + p.flags.map(function (x) { return '<span class="st">' + PRICE_FLAG[x] + '</span>'; }).join('') + (PRODUCT_CAUTIONS[r.component_id] ? '<span class="st st-care">Read with care</span>' : '') + '</p>'
+      + '<p class="pc-a"><a href="' + pathOf(r.component_id) + '">Passport</a><button type="button" class="pc-cmp" data-id="' + esc(r.component_id) + '" aria-pressed="false">Compare</button></p></li>';
+  };
+
+  root.WHComponents = {
+    pathOf: pathOf, clip: clip, cardHtml: cardHtml,
+    esc: esc, linkify: linkify, GROUPS: GROUPS, CLASS_ORDER: CLASS_ORDER, CLASS_LABEL: CLASS_LABEL, classOf: classOf,
+    PRINCIPLES: PRINCIPLES, principleOf: principleOf, principleLabel: principleLabel, QUANTITIES: QUANTITIES, quantitiesOf: quantitiesOf,
+    INTERFACES: INTERFACES, interfacesOf: interfacesOf, rosOf: rosOf, ROS_LABEL: ROS_LABEL, licenceOf: licenceOf, LICENCE_LABEL: LICENCE_LABEL,
+    priceOf: priceOf, PRICE_LABEL: PRICE_LABEL, stateOf: stateOf, varies: varies, evidenceTags: evidenceTags, SECTIONS: SECTIONS, CAUTION: CAUTION,
+    PRODUCT_CAUTIONS: PRODUCT_CAUTIONS, valueHtml: valueHtml, parseSources: parseSources, reviewBadge: reviewBadge, passportHtml: passportHtml,
+    facetsOf: facetsOf, compareHtml: compareHtml
+  };
+}(typeof window !== 'undefined' ? window : globalThis));

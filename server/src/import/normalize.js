@@ -20,7 +20,7 @@ function checkHeaders(spec, values) {
   while (actual.length < spec.headers.length) actual.push('');
   const extra = actual.slice(spec.headers.length).filter((h) => h !== '');
   // A former header row (the workbook before its translation to English) is accepted only with the same columns.
-  const matches = (headers) => headers.every((h, i) => h === actual[i]);
+  const matches = (headers) => headers.every((h, i) => h === actual[i]) && actual.slice(headers.length).every((h) => h === '');
   if (!(matches(spec.headers) || (spec.formerHeaders ?? []).some(matches)) || extra.length) {
     throw new ImportError(`Tab "${spec.tab}": header drift. Expected ${JSON.stringify(spec.headers)}, got ${JSON.stringify(actual)}`);
   }
@@ -28,7 +28,15 @@ function checkHeaders(spec, values) {
 
 export function normalizeTab(spec, values) {
   if (!Array.isArray(values) || values.length === 0) throw new ImportError(`Tab "${spec.tab}" is empty or missing`);
-  checkHeaders(spec, values);
+  // A tab with several blocks (Components since 23 Nov 2026: the product table, notes, related software) names the
+  // block this dataset reads: spec.select(values) -> { header, rows: [{ sheetRow, row }] }, or throws on any surprise.
+  let block;
+  try {
+    block = spec.select ? spec.select(values) : { header: values[0], rows: values.slice(1).map((row, i) => ({ sheetRow: i + 2, row })) };
+  } catch (error) {
+    throw new ImportError(error.message);
+  }
+  checkHeaders(spec, [block.header]);
   const warnings = [];
   const review = [];
   const items = [];
@@ -36,8 +44,7 @@ export function normalizeTab(spec, values) {
   const editorial = spec.editorial ?? {};
   let rank = 0;
 
-  values.slice(1).forEach((row, i) => {
-    const sheetRow = i + 2;
+  block.rows.forEach(({ row, sheetRow }) => {
     if (!(row ?? []).some((v) => String(v ?? '').trim() !== '')) return; // empty rows do not count
     if (spec.kind === 'lists') {
       rank += 1;

@@ -9,6 +9,7 @@ import { hostKey, urlKey } from './import/identity.js';
 import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
 import editorial from './editorial/humanoids.json' with { type: 'json' };
 import { scrubEditorial } from './data-atlas/atlas.js';
+import { COMPONENT_FIELDS, COMPONENT_HEADERS, COMPONENT_WITHHELD, scrubComponentText, selectProducts, selectSoftware } from './components/catalogue.js';
 import { DATASET_ACCESS, PREVIEW_ROWS, categoryOfDataset, isFreeDataset } from './access/matrix.js';
 
 // Access comes from the central access matrix (server/src/access/matrix.js, 23 Nov 2026), never from this file.
@@ -102,6 +103,12 @@ const STOCKS = [
   'NAME', 'URL', 'DESCRIPTION', 'TICKER', 'EXCHANGE', 'COUNTRY', 'SEGMENT', 'SOURCE', 'VERIFIED_AT', 'GF_SYMBOL',
   'FINANCE_URL', 'PRICE', 'CURRENCY', 'CHANGE_PCT', 'MARKET_CAP', 'LAST_TRADE', 'DATA_DELAY_MIN', 'QUOTE_STATUS',
   'ETF_MEMBERSHIP', 'ETF_AS_OF', 'ETF_SOURCES', 'ISIN',
+];
+// Appended to the Investment table on 23 Nov 2026 (StocksCatalog A1:AD277): publisher theses per company. Not part of
+// any approved public or paid view yet, and THESIS_RECORDS links into the private workbook: accepted, never stored.
+const STOCKS_THESES = [
+  'THESIS_COUNT', 'INVESTMENT_THESES', 'THESIS_PUBLISHERS', 'THESIS_DATES', 'THESIS_SOURCES', 'THESIS_RECORDS',
+  'THESIS_VERIFIED_AT', 'THESIS_COVERAGE',
 ];
 
 export const DATASETS = [
@@ -219,12 +226,14 @@ export const DATASETS = [
     title: 'Investment: listed companies',
     description: 'Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.',
     kind: 'table',
-    headers: STOCKS,
-    fields: lower(STOCKS),
+    headers: [...STOCKS, ...STOCKS_THESES],
+    fields: lower([...STOCKS, ...STOCKS_THESES]),
+    formerHeaders: [STOCKS],
     idFields: ['isin'],
     fallbackIdFields: ['ticker', 'exchange'],
-    // Quote data comes from GOOGLEFINANCE and is withheld until data licensing is decided.
-    withheld: ['price', 'change_pct', 'market_cap', 'last_trade', 'data_delay_min', 'quote_status'],
+    // Quote data comes from GOOGLEFINANCE and is withheld until data licensing is decided; the appended thesis columns
+    // are withheld until Javier decides how theses are published.
+    withheld: ['price', 'change_pct', 'market_cap', 'last_trade', 'data_delay_min', 'quote_status', ...lower(STOCKS_THESES)],
   },
   {
     id: 'software',
@@ -269,16 +278,36 @@ export const DATASETS = [
   },
   {
     id: 'hardware',
-    // Sheet renamed from 'Hardware' on 23 Nov 2026 (same sheetId 100173846, gid, columns; native table HardwareCatalog).
+    // Sheet renamed from 'Hardware' on 23 Nov 2026 (same sheetId 100173846, gid, native table HardwareCatalog). Since
+    // 23 Nov 2026 a product catalogue (server/src/components/catalogue.js): one product per row, keyed by Component ID,
+    // read from the product table block only. The former three-column directory is archived in the workbook.
     tab: 'Components',
     formerTabs: ['Hardware'],
     title: 'Components',
-    description: 'Compute, sensors, actuators and other hardware used in humanoid robots.',
-    kind: 'lists',
-    headers: DIRECTORY,
-    lists: [{ list: 'hardware', columns: { name: 0, url: 1, description: 2 } }],
-    idPrefix: 'hw',
-    naturalKey: directoryKey,
+    description: 'Robot components as products: sensing principle, specifications, interfaces, availability, price and sources.',
+    kind: 'table',
+    headers: COMPONENT_HEADERS,
+    fields: COMPONENT_FIELDS,
+    select: selectProducts,
+    idFields: ['component_id'],
+    withheld: COMPONENT_WITHHELD,
+    scrub: scrubComponentText,
+  },
+  {
+    // The related software block of the Components tab (TACTO): software that works with the products, never counted
+    // as hardware.
+    id: 'component-software',
+    tab: 'Components',
+    formerTabs: ['Hardware'],
+    title: 'Components: related software',
+    description: 'Software related to the component products, such as simulators of tactile sensors.',
+    kind: 'table',
+    headers: COMPONENT_HEADERS,
+    fields: COMPONENT_FIELDS,
+    select: selectSoftware,
+    idFields: ['component_id'],
+    withheld: COMPONENT_WITHHELD,
+    scrub: scrubComponentText,
   },
   {
     id: 'other-robots',

@@ -13,6 +13,7 @@ import { searchStatements } from '../search/index.js';
 import { publicProjection } from '../public/projection.js';
 import { atlasProblems } from '../benchmarks/atlas.js';
 import { atlasProblems as dataAtlasProblems } from '../data-atlas/atlas.js';
+import { componentProblems } from '../components/catalogue.js';
 
 export async function runImport(db, valuesByTab, now, { relationsConfig = null } = {}) {
   const runId = newId('imp');
@@ -39,6 +40,12 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
       // Datasets links are checked both ways (DATASET_ID and RELATED_BENCHMARK_IDS against RELATED_DATASET_IDS).
       const problems = atlasProblems(catalogue, rowsOf('benchmark-results') ?? [], datasets ?? null);
       if (problems.length) throw new ImportError(`Benchmarks: ${first(problems)}`);
+    }
+    // Components: product ids, the reviewed group vocabulary, software kept out of the product table, sources.
+    const products = rowsOf('hardware');
+    if (products) {
+      const problems = componentProblems(products, rowsOf('component-software') ?? []);
+      if (problems.length) throw new ImportError(`Components: ${first(problems)}`);
     }
     // Robot Learning Data Atlas: the Datasets catalogue and Dataset Metrics, validated together the same way.
     if (datasets) {

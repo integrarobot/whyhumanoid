@@ -167,9 +167,12 @@ export function tagsFor(datasetId, d, unmapped = []) {
     case 'datasets':
       add('type', ['dataset']);
       break;
+    case 'hardware':
+    case 'component-software':
+      add('type', ['hardware']);
+      break;
     case 'integrators':
     case 'software':
-    case 'hardware':
     case 'other-robots':
       add('type', [LIST_TYPE[d.list]]);
       break;

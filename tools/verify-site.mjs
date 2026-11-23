@@ -101,7 +101,7 @@ const dbIndex = pageData.database;
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const go = async (hash) => { dom.window.location.hash = hash; dom.window.dispatchEvent(new dom.window.HashChangeEvent('hashchange')); await wait(80); };
 const indexLinks = [...document.querySelectorAll('#db-index a[data-id]')];
-expect(indexLinks.length === 12 && document.querySelectorAll('#db-index .grp').length === 5, `category index: ${indexLinks.length} links in ${document.querySelectorAll('#db-index .grp').length} groups`);
+expect(indexLinks.length === 13 && document.querySelectorAll('#db-index .grp').length === 5, `category index: ${indexLinks.length} links in ${document.querySelectorAll('#db-index .grp').length} groups`);
 // Datasets is the Robot Learning Data Atlas (23 Nov 2026): the index links its page with the atlas count, never a preview.
 const atlasLink = document.querySelector('#db-index a[href="/datasets/"]');
 expect(atlasLink && atlasLink.querySelector('.n')?.textContent === String(pageData.dataAtlas?.resources), 'category index: Datasets does not link the atlas with its count');

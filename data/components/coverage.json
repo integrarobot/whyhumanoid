@@ -1,0 +1,58 @@
+{
+ "title": "Components coverage",
+ "note": "Counts only, from every row of the Components tab; product details are for subscribers except the public first rows. Classes and sensing approaches come from explicit rules over the recorded text (assets/components-core.js).",
+ "snapshot": {
+  "exported_at": "2026-11-23T21:49:11.000Z"
+ },
+ "counts": {
+  "products": 19,
+  "software": 1,
+  "references": 97,
+  "by_class": {
+   "commercial": 7,
+   "early_access": 1,
+   "discontinued": 1,
+   "research": 10
+  },
+  "by_principle": {
+   "optical_camera": 10,
+   "multimodal": 1,
+   "magnetic": 4,
+   "not_stated": 1,
+   "optical_photodiode": 1,
+   "capacitive": 1,
+   "fluid": 1
+  },
+  "by_family": {
+   "Tactile sensor": 18,
+   "Tactile robotic hand": 1
+  },
+  "notes_rows": 24
+ },
+ "ids": {
+  "products": [
+   "CMP-TAC-001",
+   "CMP-TAC-002",
+   "CMP-TAC-003",
+   "CMP-TAC-004",
+   "CMP-TAC-005",
+   "CMP-TAC-006",
+   "CMP-TAC-007",
+   "CMP-TAC-009",
+   "CMP-TAC-010",
+   "CMP-TAC-011",
+   "CMP-TAC-012",
+   "CMP-TAC-013",
+   "CMP-TAC-014",
+   "CMP-TAC-015",
+   "CMP-TAC-016",
+   "CMP-TAC-017",
+   "CMP-TAC-018",
+   "CMP-TAC-019",
+   "CMP-TAC-020"
+  ],
+  "software": [
+   "CMP-TAC-008"
+  ]
+ }
+}

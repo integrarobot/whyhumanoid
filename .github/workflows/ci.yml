@@ -38,6 +38,8 @@ jobs:
         run: node tools/export-benchmarks.mjs --check
       - name: Robot Learning Data Atlas snapshot holds allowlisted fields and counts that match its rows
         run: node tools/export-datasets.mjs --check
+      - name: Components coverage holds counts and component ids only
+        run: node tools/export-components.mjs --check
       - name: Reviewed robot presentation (display name, cutout image, maker order link) matches the catalogue
         run: node tools/robot-presentation.mjs --check
       - name: Robot and company pages, sitemap and 404 are the build of public inputs

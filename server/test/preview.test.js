@@ -28,6 +28,10 @@ test('the Humanoids catalogue is public in full; the 12 other tabs show their fi
     if (spec.kind === 'lists' && spec.lists.length > 1) {
       // Side-by-side tabs hold two items per sheet row: 10 sheet rows, up to 20 items.
       assert.ok(body.rows.length <= 20 && body.rows.length > 10, `${spec.id}: ${body.rows.length}`);
+    } else if (spec.id === 'component-software') {
+      // The related software block of Components holds one row in the fixture: the preview is that row.
+      assert.equal(body.rows.length, body.total_rows, spec.id);
+      continue;
     } else {
       assert.equal(body.rows.length, 10, spec.id);
       assert.equal(sheetRows, 10, spec.id);

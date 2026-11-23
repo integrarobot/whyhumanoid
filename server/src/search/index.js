@@ -87,6 +87,9 @@ function describe(datasetId, d) {
       const qual = { more_than: 'more than ', approximate: 'about ' }[d.qualifier] ?? '';
       return { title: [d.dataset_id, nz(d.value) ? `${qual}${d.value} ${d.unit ?? ''}`.trim() : human(d.metric)].filter(nz).join(' · '), subtitle: join(d.metric, d.scope, d.release_status), names: [d.metric_id], context: 'limitations' };
     }
+    case 'hardware':
+    case 'component-software':
+      return { title: d.name || d.component_id, subtitle: join(d.family, d.group, d.principle), names: [d.name, d.component_id], context: 'measured' };
     case 'data-space':
       return { title: d.topic || d.record_id, subtitle: join(d.workstream, d.epistemic_status), names: [d.topic, d.record_id], context: 'finding_or_proposal' };
     default: {

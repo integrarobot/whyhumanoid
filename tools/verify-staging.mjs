@@ -18,6 +18,8 @@ import { mkdirSync, readFileSync } from 'node:fs';
 import { CATEGORIES } from '../server/src/access/matrix.js';
 import { robotPresentation } from './robot-presentation.mjs';
 const DATA_ATLAS = JSON.parse(readFileSync(new URL('../data/datasets/atlas.json', import.meta.url), 'utf8'));
+const COMPONENTS = JSON.parse(readFileSync(new URL('../data/components/coverage.json', import.meta.url), 'utf8'));
+const COMPONENT_ROWS = JSON.parse(readFileSync(new URL('../data/preview/hardware.json', import.meta.url), 'utf8')).rows;
 
 // Playwright from the project if installed, else the machine's preinstalled copy (NODE_PATH).
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -126,6 +128,37 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   const dl = await page.evaluate(() => ({ t: document.querySelector('#res-detail .d-t')?.textContent, grp: document.getElementById('cmp-group').value, pm: document.getElementById('res-detail').textContent.includes('± 2.2 as published') }));
   check(dl.t === 'Cosmos3-Super · multiframe (v2v)' && dl.grp === 'physics-original-v2v-base' && dl.pm, `${label} benchmarks: a deep link restores the observation, its published ± text and the comparison`);
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_benchmarks.png` });
+  // Components (23 Nov 2026): the public first products, coverage counts, filters and comparison in the address, every
+  // product address, and no product data on a subscriber-only address without a session.
+  {
+    await page.goto(`${BASE}/components/`, { waitUntil: 'networkidle' });
+    const cx = await page.evaluate(() => ({ ready: !document.getElementById('cx-filters').hidden && document.getElementById('cx-error').hidden, cards: document.querySelectorAll('#pcs .pc').length, first: document.querySelector('.cx-counts dd')?.textContent, overflow: document.documentElement.scrollWidth - innerWidth }));
+    check(cx.ready && cx.cards === COMPONENT_ROWS.length && cx.first === String(COMPONENTS.counts.products), `${label} components: the explorer starts with ${COMPONENT_ROWS.length} public products of ${COMPONENTS.counts.products} (${JSON.stringify(cx)})`);
+    check(cx.overflow <= 1, `${label} components: no horizontal page scroll (${cx.overflow}px)`);
+    await page.selectOption('#f-principle', 'magnetic');
+    const mag = await page.evaluate(() => ({ shown: [...document.querySelectorAll('#pcs .pc')].filter((c) => !c.hidden).map((c) => c.dataset.id), url: location.search }));
+    check(mag.shown.join(',') === 'CMP-TAC-004,CMP-TAC-011' && /principle=magnetic/.test(mag.url), `${label} components: the magnetic filter keeps uSkin and ReSkin and is in the address (${mag.shown})`);
+    await page.click('#f-clear');
+    await page.focus('.pc[data-id="CMP-TAC-003"] .pc-cmp');
+    await page.keyboard.press('Enter');
+    const cmp = await page.evaluate(() => ({ cols: [...document.querySelectorAll('#cmp-out thead th')].map((t) => t.textContent), url: location.search, care: document.querySelector('#cmp-out .cmp-cautions')?.textContent ?? '' }));
+    check(cmp.cols.length === 4 && /DIGIT 360/.test(cmp.cols.join('|')) && /cmp=.*CMP-TAC-003/.test(decodeURIComponent(cmp.url)) && /not an official price/.test(cmp.care), `${label} components: a product joins the comparison by keyboard, with its caution and a shareable address`);
+    await page.goto(`${BASE}/components/?cmp=CMP-TAC-005,CMP-TAC-010&q=hall#compare`, { waitUntil: 'networkidle' });
+    const back = await page.evaluate(() => ({ cols: [...document.querySelectorAll('#cmp-out thead th')].map((t) => t.textContent).slice(1).map((x) => x.split('Commercial')[0].split('Discontinued')[0]), q: document.getElementById('f-q').value, shown: [...document.querySelectorAll('#pcs .pc')].filter((c) => !c.hidden).length }));
+    check(back.cols.length === 2 && back.q === 'hall' && back.shown === 1, `${label} components: a shared address restores the comparison and the search (${JSON.stringify(back)})`);
+    for (const id of [...COMPONENTS.ids.products, ...COMPONENTS.ids.software]) {
+      const res = await page.request.get(`${BASE}/components/${id.toLowerCase()}/`);
+      if (res.status() !== 200) check(false, `${label} components: /components/${id.toLowerCase()}/ answers ${res.status()}`);
+    }
+    check(true, `${label} components: all ${COMPONENTS.ids.products.length + COMPONENTS.ids.software.length} product addresses answer`);
+    const locked = COMPONENTS.ids.products.find((id) => !COMPONENT_ROWS.some((r) => r.component_id === id));
+    await page.goto(`${BASE}/components/${locked.toLowerCase()}/`, { waitUntil: 'networkidle' });
+    check(await page.evaluate(() => !document.querySelector('.pp') && /for subscribers|complete Components/.test(document.body.textContent)), `${label} components: a subscriber-only address shows no product data without a session`);
+    await page.goto(`${BASE}/components/cmp-tac-001/`, { waitUntil: 'networkidle' });
+    const pp = await page.evaluate(() => ({ h1: document.querySelector('h1')?.textContent, secs: document.querySelectorAll('.pp-sec').length, src: document.querySelectorAll('.srcs li').length, maker: !!document.querySelector('.pc-m a[href="/companies/gelsight-inc/"]'), overflow: document.documentElement.scrollWidth - innerWidth }));
+    check(pp.h1 === 'DIGIT' && pp.secs >= 9 && pp.src === 6 && pp.maker && pp.overflow <= 1, `${label} components: DIGIT's passport has every section, its 6 references and its maker's page (${JSON.stringify(pp)})`);
+    if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_components_digit.png` });
+  }
   // Robot Learning Data Atlas (23 Nov 2026): counts from the snapshot, a question answered with known, partial and
   // unknown matches kept apart, the same detail for keyboard and pointer, Escape, set-apart figures, shareable state.
   {
@@ -258,6 +291,25 @@ if (LOCAL) {
   const now = Math.floor(Date.now() / 1000);
   check((await event({ id: `evt_${RUN}_s1`, type: 'customer.subscription.created', status: 'active', period_end: now + 365 * 86400 })).outcome === 'entitlement_updated', 'signed test-mode event: subscription active');
   check(JSON.stringify(await state()) === '[200,200]', 'active: Deployments and Components 200 with one subscription');
+  {
+    // The subscriber's own session (as the app stores it) upgrades /components/ to every product of the API.
+    const total = (await (await get('/v1/datasets/hardware?limit=500', auth)).json()).rows.length;
+    const sub = await chromium.launch();
+    const sp = await (await sub.newContext()).newPage();
+    await sp.goto(`${BASE}/components/`, { waitUntil: 'domcontentloaded' });
+    await sp.evaluate((t) => localStorage.setItem('wh_session', t), session);
+    await sp.goto(`${BASE}/components/`, { waitUntil: 'networkidle' });
+    await sp.waitForFunction(() => /Subscriber view/.test(document.getElementById('cx-access')?.textContent ?? ''), null, { timeout: 10000 }).catch(() => null);
+    const v = await sp.evaluate(() => ({ cards: document.querySelectorAll('#pcs .pc').length, access: document.getElementById('cx-access').textContent, lock: document.getElementById('pc-lock')?.hidden, opts: document.querySelectorAll('.cmp-s')[0].options.length - 1 }));
+    check(v.cards === total && /Subscriber view/.test(v.access) && v.lock === true && v.opts === total, `subscriber: /components/ lists all ${total} products from the API with the subscription (${JSON.stringify(v)})`);
+    // A shared comparison that names subscriber-only products keeps them once the complete rows arrive.
+    const ids = (await (await get('/v1/datasets/hardware?limit=500', auth)).json()).rows.slice(-2).map((r) => r.component_id);
+    await sp.goto(`${BASE}/components/?cmp=${ids.join(',')}#compare`, { waitUntil: 'networkidle' });
+    await sp.waitForFunction(() => /Subscriber view/.test(document.getElementById('cx-access')?.textContent ?? ''), null, { timeout: 10000 }).catch(() => null);
+    const cols = await sp.evaluate(() => document.querySelectorAll('#cmp-out thead th').length - 1);
+    check(cols === 2, `subscriber: a shared comparison of subscriber-only products is restored (${cols} columns)`);
+    await sub.close();
+  }
   check((await event({ id: `evt_${RUN}_s1`, type: 'customer.subscription.created', status: 'active', period_end: now + 365 * 86400 })).duplicate === true, 'duplicate delivery recognised and not applied twice');
   await event({ id: `evt_${RUN}_s2`, status: 'active', cancel_at_period_end: true, period_end: now + 365 * 86400 });
   check(JSON.stringify(await state()) === '[200,200]', 'cancelled at period end: still open until the paid year ends');

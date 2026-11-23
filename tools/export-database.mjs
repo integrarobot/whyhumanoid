@@ -167,6 +167,23 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       process.exit(1);
     }
     console.log(`data/preview is valid: ${index.tabs.length} tabs, ${index.tabs.reduce((n, t) => n + t.preview_entries, 0)} preview rows (first ${PREVIEW_SOURCE_ROWS} sheet rows each) of ${index.tabs.reduce((n, t) => n + t.entries_total, 0)}, no internal fields`);
+  } else if (arg('--only')) {
+    // A controlled refresh (Components, 23 Nov 2026): rebuild only the named tabs from the export (the whole workbook
+    // is still imported and validated in memory, exactly as production would) and keep every other committed preview,
+    // with its own snapshot, untouched. Each refreshed tab records its own export time.
+    const only = arg('--only').split(',').map((x) => x.trim()).filter(Boolean);
+    for (const id of only) if (!OTHER_TABS.includes(id)) throw new Error(`--only: ${id} is not a preview tab`);
+    const snapshot = arg('--snapshot') ?? new Date().toISOString();
+    const fresh = await build(arg('--from'), snapshot);
+    const current = readDatabase();
+    const keep = new Map((current?.index.tabs ?? []).map((t) => [t.id, t]));
+    const index = { ...(current?.index ?? fresh.index), tabs: OTHER_TABS.map((id) => (only.includes(id) ? { ...fresh.index.tabs.find((t) => t.id === id), snapshot } : keep.get(id))).filter(Boolean) };
+    const tabs = Object.fromEntries(index.tabs.map((t) => [t.id, only.includes(t.id) ? fresh.tabs[t.id] : current.tabs[t.id]]));
+    const problems = validateDatabase(index, tabs);
+    if (problems.length) throw new Error(problems.join('; '));
+    writeFileSync(new URL('index.json', DIR), `${JSON.stringify(index, null, 1)}\n`);
+    for (const id of only) writeFileSync(new URL(`${id}.json`, DIR), `${JSON.stringify(tabs[id])}\n`);
+    for (const id of only) { const t = index.tabs.find((x) => x.id === id); console.log(`${id.padEnd(19)} preview ${String(t.preview_entries).padStart(3)} of ${String(t.entries_total).padStart(4)}  fields ${t.fields.length}`); }
   } else {
     const { index, tabs, counts } = await build(arg('--from'), arg('--snapshot') ?? new Date().toISOString());
     const problems = validateDatabase(index, tabs);
