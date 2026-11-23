@@ -485,19 +485,22 @@ html.dlg-open{overflow:hidden}
 .db-kv a,.db-table a{color:var(--amber)}
 .db-empty{padding:16px 12px;color:var(--bone-3);font-size:var(--fs-small)}
 @media (max-width:1240px){
-  /* Deployments on phones and tablets: one block per claim (row and status, then organization, task, site, result, source),
-     with the View all data button full width. No sideways scrolling to read the business fields. */
-  .db-table.dep,.db-table.dep tbody{display:block}
-  .db-table.dep thead{display:none}
-  .db-table.dep tr.r{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px 12px;padding:14px 12px;border-bottom:1px solid var(--line)}
-  .db-table.dep tr.r td{display:block;padding:0;border:0;max-width:none;width:auto;background:none}
-  .db-table.dep td.src::before{content:'Row ';}
-  .db-table.dep td[data-label]{grid-column:1 / -1}
-  .db-table.dep td[data-label]::before{content:attr(data-label);display:block;margin-bottom:2px;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3)}
-  .db-table.dep .cw-l > div,.db-table.dep .cw-m > div,.db-table.dep .cw-s > div{min-width:0;max-width:90ch}
-  .db-table.dep td.opc{grid-column:1 / -1;order:9;width:auto}
-  .db-table.dep .db-open{width:100%;min-height:44px}
-  .db-table.dep td.db-empty{display:block}
+  /* Every preview table on phones and tablets: one block per row (row number, then each field under its label, then the
+     View all data button full width). Deployments read as one block per claim (row and status, then organization, task,
+     site, result, source). No sideways scrolling and no words broken letter by letter in narrow columns. */
+  .db-table,.db-table tbody{display:block}
+  .db-table thead{display:none}
+  .db-table tr.r{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px 12px;padding:14px 12px;border-bottom:1px solid var(--line)}
+  .db-table tr.r td{display:block;padding:0;border:0;max-width:none;width:auto;background:none;overflow-wrap:break-word;min-width:0}
+  .db-table td.src::before{content:'Row ';}
+  .db-table td[data-label]{grid-column:1 / -1}
+  .db-table td[data-label]::before{content:attr(data-label);display:block;margin-bottom:2px;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3)}
+  /* A long URL keeps its full link and stays on one line, shortened with an ellipsis; View all data shows it whole. */
+  .db-table tr.r td a{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
+  .db-table .cw-l > div,.db-table .cw-m > div,.db-table .cw-s > div{min-width:0;max-width:90ch}
+  .db-table td.opc{grid-column:1 / -1;order:9;width:auto}
+  .db-table .db-open{width:100%;min-height:44px}
+  .db-table td.db-empty{display:block}
   .db-more{flex-direction:column;align-items:stretch}
   .db-more p{flex:0 1 auto}
   .db-buy{width:100%}
@@ -1447,7 +1450,7 @@ html.dlg-open{overflow:hidden}
           return '<tr class="r" data-i="' + rows.indexOf(r) + '"><td class="src">' + r._row + '</td>' +
             (isDep ? '<td class="stc"><span class="dst ' + status(r) + '">' + stLabel(status(r)) + '</span></td>' : '') +
             '<td class="opc"><button type="button" class="db-open" aria-haspopup="dialog" aria-label="View all data, row ' + r._row + '">View all data</button></td>' +
-            cols.map(function (c) { return '<td data-label="' + esc(c[0]) + '"' + (c[2] ? ' class="' + c[2] + '"' : '') + '>' + (c[2] ? '<div>' + c[1](r) + '</div>' : c[1](r)) + '</td>'; }).join('') + (isDep ? '' : '<td>' + srcOf(r) + '</td>') + '</tr>';
+            cols.map(function (c) { return '<td data-label="' + esc(c[0]) + '"' + (c[2] ? ' class="' + c[2] + '"' : '') + '>' + (c[2] ? '<div>' + c[1](r) + '</div>' : c[1](r)) + '</td>'; }).join('') + (isDep ? '' : '<td data-label="Source">' + srcOf(r) + '</td>') + '</tr>';
         }).join('') : '<tr><td class="db-empty" colspan="' + ncol + '">No rows of the preview match.</td></tr>');
       }
       if (isDep) {

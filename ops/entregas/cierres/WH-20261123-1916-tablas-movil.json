@@ -1,0 +1,40 @@
+{
+  "id": "WH-20261123-1916-tablas-movil",
+  "tarea": "Tablas de vista previa legibles en móvil: Components (#db-hardware) y el resto de pestañas mostraban todas las columnas a la vez y partían las palabras cada 3 o 4 letras («Paxi ni», «https:// paxi ni.co m/»)",
+  "origen": "Javier, 23/11/2026, incidencia vista en producción a 390x844",
+  "fecha": "2026-11-23T19:16:20+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "El diagnóstico con navegador real mostró el fallo en las 11 pestañas de vista previa distintas de Deployments (Components, Integrators, Software, Datasets, Other robots, Stocks, Entities, Evidence links, Task evaluations, Container handling y Data space), a 320, 375, 390 y 430 px. Deployments ya estaba bien.",
+    "El diseño en tarjetas de Deployments (hasta 1240 px) se aplica ahora a todas las tablas de vista previa: número de fila, cada campo bajo su etiqueta, Source con etiqueta y el botón View all data a todo el ancho. Solo cambia index.html (CSS y la etiqueta de la columna Source).",
+    "En las tarjetas, una URL larga conserva su enlace completo y se muestra en una sola línea con puntos suspensivos; la ficha View all data la muestra entera.",
+    "Sin cambios: datos, límite de 10 filas de vista previa, reglas de acceso (server/src/access/matrix.js), anclas #db-<id>, el aviso de suscripción bajo la tabla y la tabla de escritorio por encima de 1240 px."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #71 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/71"
+    },
+    {
+      "etiqueta": "Components en la portada",
+      "url": "https://whyhumanoid.com/#db-hardware"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 5e2a47e (CI del PR en verde sobre 9e558a7). Servido en whyhumanoid.com a la tercera comprobación. Sin cambios en el Worker ni en D1."
+  ],
+  "verificaciones": [
+    "Auditoría con navegador real (Playwright, Chromium) de las 12 pestañas de vista previa a 320, 375, 390 y 430 px, que mide cada palabra de cada celda. Antes: 44 de 48 combinaciones con palabras partidas y desplazamiento lateral dentro de la tabla. Después, en local, en staging local y en producción: 0 palabras partidas a mitad, 0 desbordamiento de página y 0 dentro de la tabla. Los cortes justo tras un guion («Self-driving») cuentan como ajuste normal.",
+    "Mismo resultado a 600, 800, 1024 y 1240 px.",
+    "Capturas a 320, 390 y 430 px de cada pestaña afectada, antes y después, y de producción en Components (Paxini y el aviso de suscripción).",
+    "verify-site en verde (1066 fichas de vista previa con todos sus campos); build-site --check, paridad en verde; verify-staging --local 299 de 299; verify-staging en producción con la API del Worker, 290 de 290."
+  ],
+  "pendientes": [
+    "En escritorio (más de 1240 px), las URLs largas de Software, Datasets, Other robots y Stocks se siguen partiendo en varias líneas dentro de la tabla clásica. Es comportamiento previo que este encargo no tocaba; se puede aplicar la misma elipsis si Javier lo quiere.",
+    "La aplicación de suscriptores (app/) tiene su propia tabla y no se ha revisado en móvil en este encargo.",
+    "Revisión de Codex y de Javier antes de confirmar el cierre."
+  ],
+  "siguiente_accion": "Javier revisa Components en su móvil y decide si se aplica la elipsis de URLs también en escritorio y si se revisa la aplicación de suscriptores."
+}
