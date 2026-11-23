@@ -60,6 +60,29 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   check(home.status() === 200, `${label} home ${home.status()}`);
   const homeNav = await page.$$eval('.hud-nav a', (as) => as.map((a) => a.getAttribute('href')));
   check(JSON.stringify(homeNav) === JSON.stringify(CATEGORIES.map((x) => x.path)), `${label} home: navigation is the ten categories`);
+  // Find first (23 Nov 2026): search and the primary action come before the statistics and sit in the first viewport
+  // on phones; every category is reachable without sideways discovery: inline when the bar fits, else an explicit menu.
+  const hero = await page.evaluate(() => {
+    const r = (s) => document.querySelector(s).getBoundingClientRect();
+    const nav = document.getElementById('cat-menu'), btn = document.getElementById('cat-toggle');
+    return { search: r('.search .field').bottom, primary: r('#cta-h').bottom, eco: r('#eco').top, vh: innerHeight,
+      menu: !btn.hidden, fits: nav.scrollWidth <= nav.clientWidth + 1 };
+  });
+  check(hero.search < hero.eco && hero.primary < hero.eco, `${label} home: search and the primary action come before the statistics`);
+  if (label === 'phone') check(hero.search <= hero.vh && hero.primary <= hero.vh, `${label} home: search and the primary action are in the first viewport (${Math.round(hero.search)}, ${Math.round(hero.primary)} of ${hero.vh}px)`);
+  check(hero.menu || hero.fits, `${label} home: all ten categories fit the bar or sit behind the Categories menu`);
+  if (hero.menu) {
+    await page.focus('#cat-toggle');
+    await page.keyboard.press('Enter');
+    const open = await page.evaluate(() => ({ expanded: document.getElementById('cat-toggle').getAttribute('aria-expanded'),
+      links: [...document.querySelectorAll('#cat-menu a')].filter((a) => { const b = a.getBoundingClientRect(); return b.height >= 44 && b.left >= 0 && b.right <= innerWidth + 1; }).map((a) => a.getAttribute('href')) }));
+    check(open.expanded === 'true' && JSON.stringify(open.links) === JSON.stringify(CATEGORIES.map((x) => x.path)), `${label} home: the Categories menu opens by keyboard and shows all ten links, 44px or taller`);
+    await page.keyboard.press('Tab');
+    check(await page.evaluate(() => document.activeElement.getAttribute('href')) === CATEGORIES[0].path, `${label} home: Tab moves from the menu button into the first category`);
+    await page.keyboard.press('Escape');
+    check(await page.evaluate(() => document.getElementById('cat-toggle').getAttribute('aria-expanded') === 'false' && document.activeElement.id === 'cat-toggle'), `${label} home: Escape closes the menu and returns focus to its button`);
+    if (SHOTS) { await page.click('#cat-toggle'); await page.screenshot({ path: `${SHOTS}/${label}_home_menu.png` }); await page.keyboard.press('Escape'); }
+  }
   check((await page.$$('#categories .catgrid li')).length === CATEGORIES.length, `${label} home: categories block has ${CATEGORIES.length} entries`);
   const homeOverflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   check(homeOverflow <= 1, `${label} home: no horizontal page scroll (${homeOverflow}px)`);
