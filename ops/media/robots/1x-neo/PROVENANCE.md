@@ -47,5 +47,14 @@ This is the chat attachment as it reached the session. The chat re-encoded it to
 
 ## Where the site uses them
 
-- `data/robots/presentation.json` holds the image, its alt text and credit.
+- `tools/robot-presentation.json` holds the image, its alt text and credit.
 - The robot page and the homepage dossier display it with `object-fit: contain`, at its own aspect ratio, never cropped.
+
+## Comparison with Codex's batch cutout (23 Nov 2026)
+
+`neo-codex-cutout-as-received.png` is kept here for comparison, unmodified:
+- 421 × 1240 px, RGBA;
+- sha256 `c8cc94228dbdb271dcc59b3d171a0a6cb5dd57bf7f977958efb63436b051472b`;
+- made with rembg u2net.
+
+On the site's dark surface and on white it shows a wide soft grey halo around the whole body: 248k semi-transparent pixels against 11.5k in the published cutout. The published cutout (BiRefNet mask, hand gap and contact shadow cleared, edges un-mixed) is cleaner, so it stays. As Javier asked, NEO is not changed or duplicated.

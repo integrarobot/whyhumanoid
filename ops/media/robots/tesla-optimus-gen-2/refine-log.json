@@ -1,0 +1,19 @@
+{
+ "levels": [
+  0.35,
+  0.9
+ ],
+ "islands_cleared": 9,
+ "crop_box_in_source": [
+  37,
+  36,
+  433,
+  1210
+ ],
+ "size": [
+  396,
+  1174
+ ],
+ "opaque": 225191,
+ "semi": 16525
+}

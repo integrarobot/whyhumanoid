@@ -1,0 +1,1 @@
+figure-03 --lo 0.6 --hi 0.95 --unpremultiply

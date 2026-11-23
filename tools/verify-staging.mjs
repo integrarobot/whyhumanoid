@@ -14,8 +14,9 @@
 //      events: signed in without paying (403), active (200 for both), duplicate event (no change), cancelled at
 //      period end (still 200), period ended (403), deletion (403).
 import { createRequire } from 'node:module';
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, readFileSync } from 'node:fs';
 import { CATEGORIES } from '../server/src/access/matrix.js';
+import { robotPresentation } from './robot-presentation.mjs';
 
 // Playwright from the project if installed, else the machine's preinstalled copy (NODE_PATH).
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -85,6 +86,20 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     check(neo.href === 'https://www.1x.tech/order' && neo.target === '_blank' && /noopener/.test(neo.rel) && neo.ah >= 44, `${label} NEO page: Buy NEO links to 1X's order page, 44px tall`);
     check(neo.overflow <= 1, `${label} NEO page: no horizontal page scroll (${neo.overflow}px)`);
     if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_neo.png` });
+  }
+  // Every robot with a reviewed full-body image (tools/robot-presentation.json): it loads, is shown whole at its own
+  // proportions (contain) inside the viewport, and the page does not scroll sideways.
+  const robotPaths = JSON.parse(readFileSync(new URL('../data/pages.json', import.meta.url), 'utf8')).robots;
+  for (const [id, pr] of robotPresentation()) {
+    if (!pr.image) continue;
+    await page.goto(`${BASE}${robotPaths[id]}`, { waitUntil: 'networkidle' });
+    const r = await page.evaluate(() => {
+      const img = document.querySelector('.robot-figure img'); if (!img) return null;
+      const b = img.getBoundingClientRect();
+      return { loaded: img.complete && img.naturalWidth > 0, ratio: b.width / b.height, natural: img.naturalWidth / img.naturalHeight, inside: b.left >= 0 && b.right <= innerWidth + 1, h: b.height, alt: img.alt, overflow: document.documentElement.scrollWidth - innerWidth };
+    });
+    check(r && r.loaded && r.alt === pr.image.alt, `${label} robot ${id}: full-body image loads with its alt text`);
+    if (r) check(Math.abs(r.ratio - r.natural) < 0.01 && r.inside && r.h >= 300 && r.overflow <= 1, `${label} robot ${id}: shown whole, proportions kept, no sideways scroll (${r.ratio.toFixed(3)} vs ${r.natural.toFixed(3)}, ${Math.round(r.h)}px)`);
   }
   // Adoption view (23 Nov 2026): the hero answers at a glance; the explorer filters and opens a case.
   await page.goto(`${BASE}/`, { waitUntil: 'load' });

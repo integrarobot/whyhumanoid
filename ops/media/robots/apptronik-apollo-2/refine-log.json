@@ -1,0 +1,27 @@
+{
+ "levels": [
+  0.35,
+  0.9
+ ],
+ "cleared": [
+  22777
+ ],
+ "seeded": [
+  18424,
+  16098
+ ],
+ "edge_band_unmixed": 5664,
+ "islands_cleared": 275,
+ "crop_box_in_source": [
+  53,
+  54,
+  597,
+  1546
+ ],
+ "size": [
+  544,
+  1492
+ ],
+ "opaque": 384531,
+ "semi": 28047
+}
