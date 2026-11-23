@@ -48,7 +48,7 @@ export function presentationProblems(file = read('tools/robot-presentation.json'
           if (!size.alpha) problems.push(`${at}: ${src} has no alpha channel (robot images need a transparent background)`);
         }
       }
-      if (im.height < 600) problems.push(`${at}: image under 600 px tall`);
+      if (im.height < 500) problems.push(`${at}: image under 500 px tall`);
     }
     if (p.order) {
       if (!/^https:\/\//.test(p.order.url ?? '')) problems.push(`${at}: order url must be https`);

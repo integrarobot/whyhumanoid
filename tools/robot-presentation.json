@@ -1,8 +1,11 @@
 {
-  "note": "Per-robot presentation for the public site, reviewed by hand (Javier, 23 Nov 2026). Keyed by catalogue id; 'recorded' must equal the Lab and Robot values of that catalogue record, or the entry stops applying and the check fails, so a reordered master never moves an image or a link to another robot. 'display_name' replaces only the name shown (titles, headings, lists); slugs, permanent URLs, relations and the master keep the recorded name. 'order' links to the maker's own order page: an outbound link, no purchase or payment on Why Humanoid?, and no claim about availability or delivery; its host must be the host of the record's Web field. Add an entry only with values supplied or checked for that robot; never infer one. Checked by node tools/robot-presentation.mjs --check.",
+  "note": "Per-robot presentation for the public site, reviewed by hand (Javier, 23 Nov 2026; images for popular robots authorised the same day). Keyed by catalogue id; 'recorded' must equal the Lab and Robot values of that catalogue record, or the entry stops applying and the check fails, so a reordered master never moves an image or a link to another robot. 'display_name' replaces only the name shown (titles, headings, lists); slugs, permanent URLs, relations and the master keep the recorded name. 'order' links to the maker's own order page: an outbound link, no purchase or payment on Why Humanoid?, and no claim about availability or delivery; its host must be the host of the record's Web field. Add an entry only with values supplied or checked for that robot; never infer one. Checked by node tools/robot-presentation.mjs --check.",
   "robots": {
     "1": {
-      "recorded": { "Lab": "1X", "Robot": "NEO (Home Robot)" },
+      "recorded": {
+        "Lab": "1X",
+        "Robot": "NEO (Home Robot)"
+      },
       "display_name": "NEO",
       "display_name_reason": "The visible name drops the descriptor \"(Home Robot)\" carried in the Robot cell (row 2 of the Humanoids tab since the first catalogue export of 16 Nov 2026); the master keeps it.",
       "image": {
@@ -18,6 +21,96 @@
         "url": "https://www.1x.tech/order",
         "label": "Buy NEO",
         "note": "On 1X's website. Price, availability and delivery are set there."
+      }
+    },
+    "6": {
+      "recorded": {
+        "Lab": "Agility",
+        "Robot": "Digit 5 (in development)"
+      },
+      "image": {
+        "src": "/assets/robots/agility-digit-5/digit-5-full-body.webp",
+        "fallback": "/assets/robots/agility-digit-5/digit-5-full-body.png",
+        "width": 501,
+        "height": 889,
+        "alt": "Digit 5 by Agility Robotics, full body, front view, standing",
+        "credit": "Image: Agility Robotics",
+        "provenance": "ops/media/robots/agility-digit-5/PROVENANCE.md"
+      }
+    },
+    "7": {
+      "recorded": {
+        "Lab": "Apptronik",
+        "Robot": "Apollo 2"
+      },
+      "image": {
+        "src": "/assets/robots/apptronik-apollo-2/apollo-2-full-body.webp",
+        "fallback": "/assets/robots/apptronik-apollo-2/apollo-2-full-body.png",
+        "width": 438,
+        "height": 1200,
+        "alt": "Apollo 2 by Apptronik, full body, front view, standing",
+        "credit": "Image: Apptronik",
+        "provenance": "ops/media/robots/apptronik-apollo-2/PROVENANCE.md"
+      }
+    },
+    "16": {
+      "recorded": {
+        "Lab": "Boston Dynamics",
+        "Robot": "Atlas (industrial electric)"
+      },
+      "image": {
+        "src": "/assets/robots/boston-dynamics-atlas-industrial-electric/atlas-industrial-electric-full-body.webp",
+        "fallback": "/assets/robots/boston-dynamics-atlas-industrial-electric/atlas-industrial-electric-full-body.png",
+        "width": 292,
+        "height": 846,
+        "alt": "Atlas by Boston Dynamics, the electric industrial version, full body, side view, walking",
+        "credit": "Image: Boston Dynamics",
+        "provenance": "ops/media/robots/boston-dynamics-atlas-industrial-electric/PROVENANCE.md"
+      }
+    },
+    "30": {
+      "recorded": {
+        "Lab": "Figure",
+        "Robot": "Figure 03"
+      },
+      "image": {
+        "src": "/assets/robots/figure-03/figure-03-full-body.webp",
+        "fallback": "/assets/robots/figure-03/figure-03-full-body.png",
+        "width": 294,
+        "height": 1171,
+        "alt": "Figure 03 by Figure, full body, side view, mid-stride",
+        "credit": "Image: Figure",
+        "provenance": "ops/media/robots/figure-03/PROVENANCE.md"
+      }
+    },
+    "86": {
+      "recorded": {
+        "Lab": "Tesla",
+        "Robot": "Optimus Gen 2"
+      },
+      "image": {
+        "src": "/assets/robots/tesla-optimus-gen-2/optimus-gen-2-full-body.webp",
+        "fallback": "/assets/robots/tesla-optimus-gen-2/optimus-gen-2-full-body.png",
+        "width": 396,
+        "height": 1174,
+        "alt": "Optimus Gen 2 by Tesla, full body, three-quarter view, standing",
+        "credit": "Image: Tesla",
+        "provenance": "ops/media/robots/tesla-optimus-gen-2/PROVENANCE.md"
+      }
+    },
+    "93": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "H1"
+      },
+      "image": {
+        "src": "/assets/robots/unitree-h1/unitree-h1-full-body.webp",
+        "fallback": "/assets/robots/unitree-h1/unitree-h1-full-body.png",
+        "width": 251,
+        "height": 505,
+        "alt": "H1 by Unitree, full body, front view, standing with one arm raised",
+        "credit": "Image: Unitree",
+        "provenance": "ops/media/robots/unitree-h1/PROVENANCE.md"
       }
     }
   }
