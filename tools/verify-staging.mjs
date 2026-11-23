@@ -84,7 +84,9 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
 await browser.close();
 
 // Exposure and sitemap over HTTP.
-const get = (p, init) => fetch(BASE + p, init);
+// The API is on the same origin in staging; in production it is the Worker (--api https://whyhumanoid-premium.javier-198.workers.dev).
+const API = (arg('--api') ?? BASE).replace(/\/$/, '');
+const get = (p, init) => fetch((p.startsWith('/v1/') || p.startsWith('/dev/') ? API : BASE) + p, init);
 const sitemap = await (await get('/sitemap.xml')).text();
 for (const c of CATEGORIES) check(sitemap.includes(`<loc>https://whyhumanoid.com${c.path}</loc>`), `sitemap lists ${c.path}`);
 check(!sitemap.includes('https://whyhumanoid.com/robots/'), 'sitemap lists no /robots/ redirect');
