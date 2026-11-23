@@ -26,16 +26,28 @@ export const FAMILIES = [
 ];
 export const familyOf = (sector) => FAMILIES.find(([, , re]) => re.test(String(sector ?? 'other')))[0];
 
+// The robot as recorded is "<maker> <model>" from the sheet. Drop a repeated maker ("Galbot Galbot S1" -> "Galbot S1");
+// otherwise keep the recorded text as it is, whatever its capitalisation.
+export function robotLabel(maker, recorded) {
+  const text = String(recorded ?? '').trim();
+  const m = String(maker ?? '').trim();
+  if (!text) return m || null;
+  if (!m || !text.toLowerCase().startsWith(m.toLowerCase())) return text;
+  const rest = text.slice(m.length).trim();
+  if (!rest) return m;
+  return rest.toLowerCase().startsWith(m.toLowerCase()) ? rest : text;
+}
+
 export function adoptionModel(projection, links) {
   const slugOf = new Map(projection.companies.map((c) => [c.id, c.slug]));
   const cases = projection.cases.map((c, i) => {
     const maker = String(c.maker?.name ?? '');
-    const model = String(c.robot_recorded ?? '').startsWith(maker) ? String(c.robot_recorded).slice(maker.length).trim() : String(c.robot_recorded ?? '');
+    const robot = robotLabel(maker, c.robot_recorded);
     return {
       i, stage: c.stage, status: c.status, records: c.records, org: c.organisation?.name ?? 'Organisation not recorded',
       orgPath: c.organisation?.company && slugOf.has(c.organisation.company) ? `/companies/${slugOf.get(c.organisation.company)}/` : null,
       maker, makerPath: c.maker?.company && slugOf.has(c.maker.company) ? `/companies/${slugOf.get(c.maker.company)}/` : null,
-      model: model || null, robotPath: c.robot !== null && c.robot !== undefined ? links.robots?.[c.robot] ?? null : null, family: c.level === 'family',
+      robot, robotPath: c.robot !== null && c.robot !== undefined ? links.robots?.[c.robot] ?? null : null, family: c.level === 'family',
       sector: c.sector ? human(c.sector) : 'Sector not recorded', fam: familyOf(c.sector), countries: c.countries ?? [], years: c.years,
     };
   });
@@ -45,7 +57,7 @@ export function adoptionModel(projection, links) {
 
 const yearsText = (y) => (!y ? 'year not recorded' : y[0] === y[1] ? String(y[0]) : `${y[0]} to ${y[1]}`);
 export function caseSummary(c) {
-  return `${c.org} · ${[c.maker, c.model].filter(Boolean).join(' ') || 'robot not recorded'} · ${c.sector} · ${c.countries.join(', ') || 'country not recorded'} · ${yearsText(c.years)} · ${c.records} record${c.records === 1 ? '' : 's'}`;
+  return `${c.org} · ${c.robot || 'robot not recorded'} · ${c.sector} · ${c.countries.join(', ') || 'country not recorded'} · ${yearsText(c.years)} · ${c.records} record${c.records === 1 ? '' : 's'}`;
 }
 
 export function renderAdoption(projection, links) {
@@ -73,7 +85,7 @@ export function renderAdoption(projection, links) {
     return `<details class="rung r-${s.key}" data-stage="${s.key}" open><summary class="rung-h"><span class="sw s-${s.key}" aria-hidden="true"></span><b>${esc(s.label)}</b><span class="rung-n"><span class="nc">${xs.length}</span> of ${n} cases · <span class="no">${plural(m.orgs(xs), 'organisation')}</span></span><span class="rung-note">${esc(s.note)}</span></summary><ul class="cases">${xs.map(chip).join('')}</ul></details>`;
   }).join('');
   const share = STAGES.map((s) => `<span class="seg s-${s.key}" style="flex:${by[s.key].length}" title="${esc(s.label)}: ${by[s.key].length} of ${n} cases"></span>`).join('');
-  const table = m.cases.map((c) => `<tr><td>${esc(STAGES.find((s) => s.key === c.stage).label)}</td><td>${c.orgPath ? `<a href="${c.orgPath}">${esc(c.org)}</a>` : esc(c.org)}</td><td>${esc([c.maker, c.model].filter(Boolean).join(' ') || 'Not recorded')}</td><td>${esc(c.sector)}</td><td>${esc(c.countries.join(', ') || 'Not recorded')}</td><td>${esc(yearsText(c.years))}</td><td>${c.records}</td></tr>`).join('');
+  const table = m.cases.map((c) => `<tr><td>${esc(STAGES.find((s) => s.key === c.stage).label)}</td><td>${c.orgPath ? `<a href="${c.orgPath}">${esc(c.org)}</a>` : esc(c.org)}</td><td>${esc(c.robot || 'Not recorded')}</td><td>${esc(c.sector)}</td><td>${esc(c.countries.join(', ') || 'Not recorded')}</td><td>${esc(yearsText(c.years))}</td><td>${c.records}</td></tr>`).join('');
   const data = JSON.stringify(m.cases.map(({ i, ...c }) => c)).replace(/</g, '\\u003c');
   const section = `<!-- adoption-explorer:start -->
     <section class="adopt adopt-sec" id="adoption" aria-labelledby="adoption-h">

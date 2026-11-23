@@ -69,13 +69,42 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   // Adoption view (23 Nov 2026): the hero answers at a glance; the explorer filters and opens a case.
   await page.goto(`${BASE}/`, { waitUntil: 'load' });
   check(await page.isVisible('.hero .adopt-hero .stage-bars'), `${label} home: adoption view in the hero`);
+  // Spacing Javier asked for (23 Nov 2026): the hero breathes; measured, not eyeballed.
+  const sp = await page.$eval('.hero .adopt-hero', (hero) => {
+    const r = (s) => hero.querySelector(s).getBoundingClientRect();
+    const pad = (s, side) => parseFloat(getComputedStyle(hero.querySelector(s))[`padding${side}`]);
+    const li = [...hero.querySelectorAll('.stage-bars li')].map((e) => e.getBoundingClientRect());
+    const cs = [...hero.querySelectorAll('.case')].map((e) => e.getBoundingClientRect());
+    const rowGap = Math.min(...li.slice(1).map((x, i) => x.top - li[i].bottom));
+    const sameRow = cs.slice(1).map((x, i) => [cs[i], x]).filter(([a, b]) => Math.abs(a.top - b.top) < 2);
+    const nextRow = cs.slice(1).map((x, i) => [cs[i], x]).filter(([a, b]) => b.top > a.bottom - 1);
+    const clipped = [...hero.querySelectorAll('.case .o, .case .r')].filter((e) => e.scrollHeight > e.clientHeight + 1).length;
+    return {
+      side: pad('.adopt-lede', 'Left'), barsTop: pad('.stage-bars', 'Top'), opTop: pad('.adopt-op', 'Top'), goTop: pad('.adopt-go', 'Top'), goBottom: pad('.adopt-go', 'Bottom'),
+      rowGap, caseGapX: sameRow.length ? Math.min(...sameRow.map(([a, b]) => b.left - a.right)) : 99, caseGapY: nextRow.length ? Math.min(...nextRow.map(([a, b]) => b.top - a.bottom)) : 99,
+      casePad: pad('.case', 'Top'), casePadL: pad('.case', 'Left'), caseInner: parseFloat(getComputedStyle(hero.querySelector('.case')).rowGap), clipped,
+    };
+  });
+  check(sp.side >= 20 && sp.barsTop >= 20 && sp.opTop >= 24 && sp.goTop >= 20 && sp.goBottom >= 20, `${label} home: adoption hero spacing between summary, bars, cases, button and note (${JSON.stringify([sp.side, sp.barsTop, sp.opTop, sp.goTop, sp.goBottom])})`);
+  check(sp.rowGap >= 12, `${label} home: adoption bar rows are apart (${sp.rowGap}px)`);
+  check(sp.caseGapX >= 8 && sp.caseGapY >= 8 && sp.casePad >= 8 && sp.casePadL >= 12 && sp.caseInner >= 4, `${label} home: adoption case cards have room (${JSON.stringify([sp.caseGapX, sp.caseGapY, sp.casePad, sp.casePadL, sp.caseInner])})`);
+  check(sp.clipped === 0, `${label} home: no organisation or maker name is cut short in the hero (${sp.clipped})`);
   const auto = await page.$('#adoption .adopt-filters button[data-fam="automotive"]');
   if (auto) {
     await auto.click();
     const n = await page.$$eval('#adoption .case:not(.off)', (xs) => xs.length);
     check(n > 0 && n < 71, `${label} home: sector filter narrows the cases (${n})`);
     const first = await page.$('#adoption .rung[open] .case:not(.off)');
-    if (first) { await first.click(); check(await page.isVisible('#adopt-detail'), `${label} home: choosing a case opens its details`); }
+    if (first) {
+      await first.click();
+      check(await page.isVisible('#adopt-detail'), `${label} home: choosing a case opens its details`);
+      const d = await page.$eval('#adopt-detail', (el) => {
+        const dt = [...el.querySelectorAll('dt')].find((x) => /robot as recorded/i.test(x.textContent));
+        return { pad: parseFloat(getComputedStyle(el).paddingLeft), robot: dt?.nextElementSibling?.textContent ?? '' };
+      });
+      check(d.pad >= 16, `${label} home: the case details keep their inner padding (${d.pad}px)`);
+      check(d.robot && !/\b([\w-]+) \1\b/i.test(d.robot), `${label} home: the robot is not named with its maker twice ("${d.robot}")`);
+    }
   } else check(false, `${label} home: adoption filters missing`);
   // Paywall notice of the database panel (regression of 23 Nov 2026: a bare .lock rule shrank it to a 28 px column).
   // For every tab with a subscription remainder: below the table and outside its horizontal scroll, at least 90% of
