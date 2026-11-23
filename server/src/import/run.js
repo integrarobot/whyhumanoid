@@ -11,6 +11,7 @@ import { resolveIdentities } from './identity.js';
 import { relationStatements } from '../relations/store.js';
 import { searchStatements } from '../search/index.js';
 import { publicProjection } from '../public/projection.js';
+import { atlasProblems } from '../benchmarks/atlas.js';
 
 export async function runImport(db, valuesByTab, now, { relationsConfig = null } = {}) {
   const runId = newId('imp');
@@ -26,6 +27,14 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
       normalised.push({ spec, rows: result.rows });
       warnings.push(...result.warnings);
       review.push(...result.review.map((r) => ({ dataset: spec.id, ...r })));
+    }
+    // Robotics Evaluation Atlas: the catalogue and its results are validated together (ids, foreign keys, numbers,
+    // native scales, comparability groups, reviewed vocabulary). Any problem stops the import, like header drift.
+    const rowsOf = (id) => normalised.find((n) => n.spec.id === id)?.rows.filter((r) => r.visibility === 'customer').map((r) => r.data);
+    const catalogue = rowsOf('benchmarks');
+    if (catalogue) {
+      const problems = atlasProblems(catalogue, rowsOf('benchmark-results') ?? []);
+      if (problems.length) throw new ImportError(`Benchmarks: ${problems.slice(0, 5).join('; ')}${problems.length > 5 ? ` (and ${problems.length - 5} more)` : ''}`);
     }
   } catch (error) {
     await db

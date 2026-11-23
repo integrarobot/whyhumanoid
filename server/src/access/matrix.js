@@ -53,9 +53,10 @@ export const CATEGORIES = Object.freeze([
     summary: 'Robot learning datasets relevant to humanoid robots.',
   },
   {
-    id: 'benchmarks', label: 'Benchmarks', path: '/benchmarks/', access: 'free', datasets: ['task-evaluations'],
-    summary: 'How robot models measure up against documented evidence for a defined task.',
-    gap: 'The master workbook has no dedicated benchmarks table: this category shows the Task Evaluation tab (per-task eligibility of each robot model against documented evidence).',
+    // Robotics Evaluation Atlas (23 Nov 2026): the Benchmarks tab and selected source-reported results.
+    id: 'benchmarks', label: 'Benchmarks', path: '/benchmarks/', access: 'free', datasets: ['benchmarks', 'benchmark-results'],
+    summary: 'What robotics benchmarks test, what models achieve, and where evidence is still missing.',
+    gap: 'Numerical results are extracted benchmark by benchmark, after a source and protocol check: most resources have none yet.',
   },
   {
     id: 'investment', label: 'Investment', path: '/investment/', access: 'free', datasets: ['stocks'],
@@ -85,7 +86,11 @@ export const DATASET_ACCESS = Object.freeze({
   integrators: { category: 'integrators', access: 'free' },
   software: { category: 'software', access: 'free' },
   datasets: { category: 'datasets', access: 'free' },
-  'task-evaluations': { category: 'benchmarks', access: 'free' },
+  benchmarks: { category: 'benchmarks', access: 'free' },
+  'benchmark-results': { category: 'benchmarks', access: 'free' },
+  // Internal operational assessment since the Robotics Evaluation Atlas (23 Nov 2026): no longer the Benchmarks
+  // category; access unchanged.
+  'task-evaluations': { category: null, access: 'free' },
   stocks: { category: 'investment', access: 'free' },
   'other-robots': { category: 'other-robots', access: 'free' },
   // Supporting tabs of Deployments: their rows describe deployment records and claims.

@@ -83,6 +83,19 @@ function humanoidRow(spec, i) {
   });
 }
 
+// Robotics Evaluation Atlas tabs: synthetic values that pass the atlas validation (server/src/benchmarks/atlas.js).
+function atlasFixtureValue(dataset, field, i, n) {
+  if (dataset === 'benchmarks') {
+    const v = { benchmark_id: `bm-example-${i}`, name: `Example benchmark ${i}`, url: `https://bench-${i}.example.com/`, environment: 'Simulation',
+      capability_tags: 'manipulation; generalization', related_dataset_ids: '', checked_at: '2026-11-23', source_url: `https://bench-${i}.example.com/` };
+    return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
+  }
+  const v = { result_id: `res-example-${i}`, benchmark_id: `bm-example-${((i - 1) % n) + 1}`, model: `Example model ${i}`, metric: 'Success',
+    value: String((i % 90) + 5), unit: '%', direction: 'higher', n_evals: '', comparability_group: `example-group-${i}`, result_date: '2026-11-20',
+    checked_at: '2026-11-23', source_url: `https://results-${i}.example.com/`, display_status: 'source_reported', date_meaning: 'Synthetic date' };
+  return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
+}
+
 // Synthetic workbook with the real header rows and fake values. An empty sheet row sits after the third data
 // row of every tab: it must not count towards the 10-row preview.
 export function fixtureWorkbook({ rowsPerTab = 12 } = {}) {
@@ -106,6 +119,8 @@ export function fixtureWorkbook({ rowsPerTab = 12 } = {}) {
           if (def.columns.description !== undefined) row[def.columns.description] = `Synthetic ${def.list} ${i}`;
         }
         rows.push(row);
+      } else if (spec.id === 'benchmarks' || spec.id === 'benchmark-results') {
+        rows.push((spec.fields ?? spec.headers).map((field) => atlasFixtureValue(spec.id, field, i, rowsPerTab)));
       } else {
         rows.push((spec.fields ?? spec.headers).map((field) => `fx_${field}_${i}`));
       }

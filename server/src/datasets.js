@@ -56,6 +56,22 @@ const TASK_EVALUATIONS = [
   'decision_reason', 'evidence_ids',
 ];
 
+// Robotics Evaluation Atlas (23 Nov 2026): table BenchmarksCatalog (the first 20 columns as before, four appended) and
+// table BenchmarkResults. Joined on BENCHMARK_ID; validated together by server/src/benchmarks/atlas.js.
+const BENCHMARKS = [
+  'NAME', 'URL', 'DESCRIPTION', 'BENCHMARK_ID', 'CATEGORY', 'EVALUATES', 'ENVIRONMENT', 'TASKS', 'METRICS', 'PROTOCOL',
+  'RELATED_DATASET_IDS', 'RELATED_DATASETS_URL', 'LEADERBOARD_URL', 'CODE_URL', 'SOURCE_URL', 'SOURCE_LOCATOR',
+  'CHECKED_AT', 'REVIEW_STATUS', 'LIMITATIONS', 'PREVIOUS_CATALOGUE_DESCRIPTION', 'EMBODIMENT', 'CAPABILITY_TAGS',
+  'KEY_FINDING', 'RESULTS_COVERAGE',
+];
+
+const BENCHMARK_RESULTS = [
+  'RESULT_ID', 'BENCHMARK_ID', 'BENCHMARK_VERSION', 'MODEL', 'MODEL_CONFIGURATION', 'TRACK', 'ENVIRONMENT', 'EMBODIMENT',
+  'TASK_SCOPE', 'METRIC', 'VALUE', 'UNIT', 'DIRECTION', 'N_EVALS', 'UNCERTAINTY', 'TRAINING_DATA', 'CONDITIONS',
+  'COMPARABILITY_GROUP', 'RESULT_DATE', 'DATE_MEANING', 'SOURCE_URL', 'SOURCE_LOCATOR', 'CHECKED_AT', 'EVIDENCE_STATUS',
+  'LIMITATIONS', 'DISPLAY_STATUS',
+];
+
 const ENTITIES = [
   'entity_id', 'entity_type', 'canonical_name', 'manufacturer_id', 'parent_entity_id', 'source_sheet',
   'source_rows', 'source_label', 'reference_url', 'identity_scope', 'reviewed_at', 'notes',
@@ -121,11 +137,35 @@ export const DATASETS = [
     idFields: ['link_id'],
   },
   {
+    id: 'benchmarks',
+    tab: 'Benchmarks',
+    title: 'Benchmarks',
+    description: 'Robotics evaluation resources: what each tests, in which setting, with which metrics, protocol and limitations.',
+    kind: 'table',
+    headers: BENCHMARKS,
+    fields: lower(BENCHMARKS),
+    idFields: ['benchmark_id'],
+    // Published as the Robotics Evaluation Atlas snapshot (tools/export-benchmarks.mjs), not as a preview file.
+    publicSnapshot: 'data/benchmarks/atlas.json',
+  },
+  {
+    id: 'benchmark-results',
+    tab: 'Benchmark Results',
+    title: 'Benchmark results',
+    description: 'Selected source-reported model results on benchmark resources, with version, track, conditions and source.',
+    kind: 'table',
+    headers: BENCHMARK_RESULTS,
+    fields: lower(BENCHMARK_RESULTS),
+    idFields: ['result_id'],
+    publicSnapshot: 'data/benchmarks/atlas.json',
+  },
+  {
     id: 'task-evaluations',
     tab: 'Task Evaluation',
     formerTabs: ['Evaluacion tarea'],
-    title: 'Benchmarks: task evaluations',
-    description: 'Per-task eligibility of each robot model against documented evidence.',
+    // Internal operational assessment since 23 Nov 2026: Benchmarks now shows the Benchmarks tab and its results.
+    title: 'Task evaluations',
+    description: 'Internal operational assessment: per-task eligibility of each robot model against documented evidence.',
     kind: 'table',
     headers: TASK_EVALUATIONS,
     idFields: ['task_id', 'model_id'],

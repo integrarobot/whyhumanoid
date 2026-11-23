@@ -34,6 +34,8 @@ jobs:
         run: node tools/relations.mjs --check
       - name: Reports catalogue holds only verified bibliographic records and no private links
         run: node tools/reports-source.mjs --check
+      - name: Robotics Evaluation Atlas snapshot holds allowlisted fields and counts that match its rows
+        run: node tools/export-benchmarks.mjs --check
       - name: Reviewed robot presentation (display name, cutout image, maker order link) matches the catalogue
         run: node tools/robot-presentation.mjs --check
       - name: Robot and company pages, sitemap and 404 are the build of public inputs
