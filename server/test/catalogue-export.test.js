@@ -37,15 +37,15 @@ test('an inserted row the sheet marks as a duplicate is withheld from the free c
   assert.equal(out.count, EXPECTED_PUBLIC);
 });
 
-const PUBLIC_ALL = ['benchmarks', 'benchmark-results', 'humanoids', 'integrators', 'software', 'datasets', 'task-evaluations', 'other-robots', 'stocks'];
-test('all 15 tabs stay; the free categories are public in every row, Deployments, Components and the rest show 10', () => {
-  assert.equal(DATASETS.length, 15);
+const PUBLIC_ALL = ['benchmarks', 'benchmark-results', 'humanoids', 'integrators', 'software', 'datasets', 'dataset-metrics', 'task-evaluations', 'other-robots', 'stocks'];
+test('all 16 tabs stay; the free categories are public in every row, Deployments, Components and the rest show 10', () => {
+  assert.equal(DATASETS.length, 16);
   for (const spec of DATASETS) assert.equal(publicRowLimit(spec), PUBLIC_ALL.includes(spec.id) ? null : 10, spec.id);
 });
 
-// Paywall (decision of 16 Nov 2026): the site publishes only the first 10 sheet rows of each of the 12 other tabs;
+// Paywall (decision of 16 Nov 2026): the site publishes only the first 10 sheet rows of each of the 11 other tabs;
 // full rows are premium and live only in the backend database. This guards against publishing full rows again.
-test('the public export holds only the first 10 sheet rows of each of the 12 other tabs, with full counts', async () => {
+test('the public export holds only the first 10 sheet rows of each of the 11 other tabs, with full counts', async () => {
   const { writeFileSync, mkdtempSync } = await import('node:fs');
   const { tmpdir } = await import('node:os');
   const { join } = await import('node:path');
@@ -55,7 +55,9 @@ test('the public export holds only the first 10 sheet rows of each of the 12 oth
   writeFileSync(file, JSON.stringify(fixtureWorkbook({ rowsPerTab: 14 })));
   const { index, tabs, counts } = await buildDatabase(file, '2026-11-16T00:00:00Z');
   assert.deepEqual(validateDatabase(index, tabs), []);
-  assert.equal(index.tabs.length, 12);
+  // Datasets and the two Atlas tabs of Benchmarks publish through their own snapshots, not previews.
+  assert.equal(index.tabs.length, 11);
+  assert.ok(!index.tabs.some((t) => ['datasets', 'dataset-metrics', 'benchmarks', 'benchmark-results'].includes(t.id)));
   for (const t of index.tabs) {
     assert.equal(t.entries_total, counts[t.id], `${t.id}: total counts every imported row`);
     if (PUBLIC_ALL.includes(t.id)) {

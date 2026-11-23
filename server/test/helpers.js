@@ -96,6 +96,20 @@ function atlasFixtureValue(dataset, field, i, n) {
   return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
 }
 
+// Robot Learning Data Atlas tabs: synthetic values that pass the data atlas validation (server/src/data-atlas/atlas.js).
+function dataAtlasFixtureValue(dataset, field, i, n) {
+  if (dataset === 'datasets') {
+    const v = { dataset_id: `ds-example-${i}`, name: `Example dataset ${i}`, url: `https://data-${i}.example.com/`, related_benchmark_ids: '',
+      related_benchmark_url: '', checked_at: '2026-11-23', data_origin: 'real_robot', modalities: 'rgb; action', learning_uses: 'manipulation',
+      access_status: 'dataset_link', source_url: `https://data-${i}.example.com/`, parent_dataset_ids: '', resource_class: 'corpus', included_in_atlas: 'true' };
+    return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
+  }
+  const v = { metric_id: `dm-example-${i}`, dataset_id: `ds-example-${((i - 1) % n) + 1}`, metric: 'trajectories', value: String(1000 + i), unit: 'trajectories',
+    qualifier: 'reported', data_origin: 'real_robot', release_status: 'reported_release', source_url: `https://data-${i}.example.com/`, source_date: '',
+    checked_at: '2026-11-23', comparison_group: `example_group_${i}`, display_status: 'source_reported' };
+  return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
+}
+
 // Synthetic workbook with the real header rows and fake values. An empty sheet row sits after the third data
 // row of every tab: it must not count towards the 10-row preview.
 export function fixtureWorkbook({ rowsPerTab = 12 } = {}) {
@@ -121,6 +135,8 @@ export function fixtureWorkbook({ rowsPerTab = 12 } = {}) {
         rows.push(row);
       } else if (spec.id === 'benchmarks' || spec.id === 'benchmark-results') {
         rows.push((spec.fields ?? spec.headers).map((field) => atlasFixtureValue(spec.id, field, i, rowsPerTab)));
+      } else if (spec.id === 'datasets' || spec.id === 'dataset-metrics') {
+        rows.push((spec.fields ?? spec.headers).map((field) => dataAtlasFixtureValue(spec.id, field, i, rowsPerTab)));
       } else {
         rows.push((spec.fields ?? spec.headers).map((field) => `fx_${field}_${i}`));
       }

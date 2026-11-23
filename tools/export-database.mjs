@@ -12,7 +12,7 @@
 // preview is exactly what GET /v1/datasets/<tab>/preview returns. Left out, as internal data: rows the sheet marks as
 // internal, the backend's row key (id), raw sheet-row pointers (source_rows) and identity_status bookkeeping.
 
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { DATASETS_BY_ID, DATASETS, publicDatasetList } from '../server/src/datasets.js';
 
 const root = new URL('../', import.meta.url);
@@ -32,7 +32,7 @@ export const OTHER_TABS = DATASETS.filter((d) => d.id !== 'humanoids' && !d.publ
 export function validateDatabase(index, tabs) {
   const problems = [];
   const ids = index.tabs.map((t) => t.id);
-  if (JSON.stringify(ids) !== JSON.stringify(OTHER_TABS)) problems.push(`tabs must be the 12 other tabs in order, got ${ids.join(', ')}`);
+  if (JSON.stringify(ids) !== JSON.stringify(OTHER_TABS)) problems.push(`tabs must be the ${OTHER_TABS.length} other tabs in order, got ${ids.join(', ')}`);
   for (const meta of index.tabs) {
     const tab = tabs[meta.id];
     if (!tab) { problems.push(`${meta.id}: data/preview/${meta.id}.json missing`); continue; }
@@ -124,7 +124,8 @@ export function reapplyAccess({ index, tabs }) {
   const list = new Map(publicDatasetList().map((d) => [d.id, d]));
   const next = { ...index, note: INDEX_NOTE, tabs: [] };
   const out = {};
-  for (const meta of index.tabs) {
+  // A tab that now has its own public snapshot (spec.publicSnapshot) leaves the previews; its file is removed below.
+  for (const meta of index.tabs.filter((t) => OTHER_TABS.includes(t.id))) {
     const spec = DATASETS_BY_ID.get(meta.id);
     const tab = tabs[meta.id];
     const rows = spec.publicRows === 'all' ? tab.rows : tab.rows.filter((r) => r._row <= PREVIEW_SOURCE_ROWS);
@@ -151,6 +152,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     if (problems.length) throw new Error(problems.join('; '));
     writeFileSync(new URL('index.json', DIR), `${JSON.stringify(index, null, 1)}\n`);
     for (const [id, tab] of Object.entries(tabs)) writeFileSync(new URL(`${id}.json`, DIR), `${JSON.stringify(tab)}\n`);
+    for (const f of readdirSync(DIR).filter((x) => x !== 'index.json' && !OTHER_TABS.includes(x.replace(/\.json$/, '')))) {
+      unlinkSync(new URL(f, DIR));
+      console.log(`${f} removed: the tab is published through its own snapshot`);
+    }
     for (const t of index.tabs) console.log(`${t.id.padEnd(19)} ${t.access.padEnd(12)} public ${String(t.preview_entries).padStart(3)} of ${String(t.entries_total).padStart(4)}`);
   } else if (process.argv.includes('--check')) {
     const { index, tabs } = readDatabase();
@@ -161,7 +166,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       console.error(`data/preview is invalid:\n- ${problems.join('\n- ')}`);
       process.exit(1);
     }
-    console.log(`data/preview is valid: 12 tabs, ${index.tabs.reduce((n, t) => n + t.preview_entries, 0)} preview rows (first ${PREVIEW_SOURCE_ROWS} sheet rows each) of ${index.tabs.reduce((n, t) => n + t.entries_total, 0)}, no internal fields`);
+    console.log(`data/preview is valid: ${index.tabs.length} tabs, ${index.tabs.reduce((n, t) => n + t.preview_entries, 0)} preview rows (first ${PREVIEW_SOURCE_ROWS} sheet rows each) of ${index.tabs.reduce((n, t) => n + t.entries_total, 0)}, no internal fields`);
   } else {
     const { index, tabs, counts } = await build(arg('--from'), arg('--snapshot') ?? new Date().toISOString());
     const problems = validateDatabase(index, tabs);

@@ -187,13 +187,20 @@ export function parity(built, legacy, manifest) {
 // The ten categories (nine confirmed plus Reports), in order, as static HTML on the home page (access matrix, 23 Nov 2026): each with
 // its real address, what it holds, how many entries the public data has and whether it is free or by subscription.
 const escHtml = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+// Counts of the Robot Learning Data Atlas for the home page (category card, hero and the database panel's link).
+export function dataAtlasSummary() {
+  const c = JSON.parse(readFileSync(new URL('data/datasets/atlas.json', root), 'utf8')).counts;
+  return { resources: c.resources, corpora: c.corpora, quantities: c.quantities, path: '/datasets/' };
+}
 export function renderCategories(data) {
   const tabs = new Map((data.database?.tabs ?? []).map((t) => [t.id, t]));
   const reports = JSON.parse(readFileSync(new URL('data/reports/catalogue.json', root), 'utf8')).reports.length + 1; // + Why Humanoid?'s deployment records analysis
   // Benchmarks: the resources of the Robotics Evaluation Atlas snapshot (data/benchmarks/atlas.json), not a preview tab.
   const atlas = JSON.parse(readFileSync(new URL('data/benchmarks/atlas.json', root), 'utf8')).counts;
-  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
-  const unit = { humanoids: 'robots', deployments: 'records', components: 'entries', integrators: 'integrators', software: 'entries', datasets: 'datasets', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
+  // Datasets: the resources of the Robot Learning Data Atlas snapshot (data/datasets/atlas.json), also not a preview tab.
+  const dataAtlas = dataAtlasSummary();
+  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
+  const unit = { humanoids: 'robots', deployments: 'records', components: 'entries', integrators: 'integrators', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
   const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? '<span class="sub">Subscription</span> · first 10 free' : 'Free'}</span></li>`).join('');
   const services = SERVICES.map((sv) => `<div><p class="lbl">Service · proposal</p><h3>${escHtml(sv.name)}</h3><p>${escHtml(sv.summary)}</p><p class="lbl">${escHtml(sv.price)} · not included in the subscription · not available to order yet</p></div>`).join('');
   return `<!-- categories:start -->
@@ -265,6 +272,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   // Paywall (16 Nov 2026): the page embeds the index of the 12 other tabs (counts and field names) and loads each tab's
   // free preview, its first 10 sheet rows, from data/preview/<tab>.json. Full rows never reach the site or Git.
   data.database = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8'));
+  // Datasets left the previews for its own snapshot (Robot Learning Data Atlas, 23 Nov 2026): the panel links to it.
+  data.dataAtlas = dataAtlasSummary();
   // Relations for the free robot pages: only the public preview rows of Deployments (tools/relations.mjs).
   data.relations = pageRelations();
   // Addresses of the permanent robot and company pages (tools/build-pages.mjs), for links from the catalogue.

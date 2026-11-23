@@ -17,6 +17,7 @@ import { createRequire } from 'node:module';
 import { mkdirSync, readFileSync } from 'node:fs';
 import { CATEGORIES } from '../server/src/access/matrix.js';
 import { robotPresentation } from './robot-presentation.mjs';
+const DATA_ATLAS = JSON.parse(readFileSync(new URL('../data/datasets/atlas.json', import.meta.url), 'utf8'));
 
 // Playwright from the project if installed, else the machine's preinstalled copy (NODE_PATH).
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -42,7 +43,7 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     check(res.status() === 200, `${label} ${c.path}: direct load ${res.status()}`);
     const again = await page.reload({ waitUntil: 'domcontentloaded' });
     check(again.status() === 200, `${label} ${c.path}: reload ${again.status()}`);
-    const h1 = c.id === 'benchmarks' ? 'Robotics Evaluation Atlas' : c.label; // Benchmarks is the atlas (23 Nov 2026)
+    const h1 = { benchmarks: 'Robotics Evaluation Atlas', datasets: 'Robot Learning Data Atlas' }[c.id] ?? c.label; // atlases (23 Nov 2026)
     check((await page.textContent('h1'))?.trim() === h1, `${label} ${c.path}: h1 is ${h1}`);
     const nav = await page.$$eval('nav.cats a', (as) => as.map((a) => [a.textContent.trim(), a.getAttribute('href')]));
     check(JSON.stringify(nav) === JSON.stringify(CATEGORIES.map((x) => [x.label, x.path])), `${label} ${c.path}: navigation is the nine categories in order`);
@@ -125,6 +126,35 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   const dl = await page.evaluate(() => ({ t: document.querySelector('#res-detail .d-t')?.textContent, grp: document.getElementById('cmp-group').value, pm: document.getElementById('res-detail').textContent.includes('± 2.2 as published') }));
   check(dl.t === 'Cosmos3-Super · multiframe (v2v)' && dl.grp === 'physics-original-v2v-base' && dl.pm, `${label} benchmarks: a deep link restores the observation, its published ± text and the comparison`);
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_benchmarks.png` });
+  // Robot Learning Data Atlas (23 Nov 2026): counts from the snapshot, a question answered with known, partial and
+  // unknown matches kept apart, the same detail for keyboard and pointer, Escape, set-apart figures, shareable state.
+  {
+    const dc = DATA_ATLAS.counts;
+    await page.goto(`${BASE}/datasets/`, { waitUntil: 'networkidle' });
+    const da = await page.evaluate(() => ({ ready: !document.getElementById('filters').hidden && document.getElementById('atlas-error').hidden, overflow: document.documentElement.scrollWidth - innerWidth, counts: [...document.querySelectorAll('.atlas-counts dd')].map((d) => d.textContent).join('/'), tiles: document.querySelectorAll('.dtile').length }));
+    const want = [dc.resources, dc.corpora, dc.resources_with_quantities, dc.quantities, dc.resources_awaiting_quantities].join('/');
+    check(da.ready && da.counts === want && da.tiles === dc.resources, `${label} datasets: the data atlas starts with the snapshot counts ${want} (${da.counts}) and every resource in a lane`);
+    check(da.overflow <= 1, `${label} datasets: no horizontal page scroll (${da.overflow}px)`);
+    await page.click('button.preset[data-q^="body=dual_arm"]');
+    const qa = await page.evaluate(() => ({ url: location.search, cols: [...document.querySelectorAll('#q-out > div')].map((d) => d.querySelector('h4').firstChild.textContent.trim() + ':' + [...d.querySelectorAll('.sn')].map((x) => x.dataset.ds).join(',')) }));
+    check(/mod=tactile/.test(qa.url) && qa.cols.includes('Known matches:') && qa.cols.includes('Partial matches:ds-robomind2'), `${label} datasets: "bimanual with tactile data" keeps partial and unknown matches apart, with no score (${qa.cols.join(' | ')})`);
+    await page.selectOption('#f-mod', 'rgb');
+    await page.selectOption('#f-body', '');
+    check(await page.evaluate(() => [...document.querySelectorAll('#q-out h4')].some((h) => /^Evaluation data/.test(h.textContent)) && ![...document.querySelectorAll('#q-out > div')].slice(0, 3).some((d) => d.querySelector('[data-ds="ds-physics-iq"]'))), `${label} datasets: evaluation data is listed apart from training data`);
+    await page.click('#f-clear');
+    await page.focus('.dtile[data-ds="ds-bridgedata-v2"]');
+    await page.keyboard.press('Enter');
+    const dd = await page.evaluate(() => ({ t: document.querySelector('#ds-detail .d-t')?.textContent, url: location.search, text: document.getElementById('ds-detail').textContent }));
+    check(dd.t === 'BridgeData V2' && /ds=ds-bridgedata-v2/.test(dd.url) && /60,096 trajectories/.test(dd.text) && /Lineage is incomplete/.test(dd.text), `${label} datasets: a resource opens by keyboard with its passport and a shareable link`);
+    await page.keyboard.press('Escape');
+    check(await page.evaluate(() => !location.search.includes('ds=') && document.activeElement?.dataset?.ds === 'ds-bridgedata-v2'), `${label} datasets: Escape closes the passport, clears it from the address and returns focus`);
+    const apart = await page.evaluate(() => ({ open: document.getElementById('set-apart').open, main: [...document.querySelectorAll('#scale .slane [data-group]')].map((e) => e.dataset.group), apart: [...document.querySelectorAll('#set-apart [data-group]')].map((e) => e.dataset.group) }));
+    check(!apart.open && !apart.main.some((g) => /aggregate|commercial|training/.test(g)) && apart.apart.length === 4, `${label} datasets: aggregates, provider claims and training mixtures are set apart and closed by default (${apart.apart.join(', ')})`);
+    await page.goto(`${BASE}/datasets/?scale=log&cmp=ds-egodex,ds-ego4d&ds=ds-hubego-100k#scale`, { waitUntil: 'networkidle' });
+    const dl = await page.evaluate(() => ({ scale: document.getElementById('scale').dataset.scale, cmp: [...document.querySelectorAll('#pp-out thead th')].map((t) => t.textContent).join(','), t: document.querySelector('#ds-detail .d-t')?.textContent }));
+    check(dl.scale === 'log' && dl.cmp === 'Field,EgoDex,Ego4D' && dl.t === 'HubEgo-100K', `${label} datasets: a shared address restores the log axis, the comparison and the open passport (${JSON.stringify(dl)})`);
+    if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_datasets.png` });
+  }
   // Adoption view (23 Nov 2026): the hero answers at a glance; the explorer filters and opens a case.
   await page.goto(`${BASE}/`, { waitUntil: 'load' });
   check(await page.isVisible('.hero .adopt-hero .stage-bars'), `${label} home: adoption view in the hero`);

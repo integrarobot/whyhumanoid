@@ -12,6 +12,7 @@ import { relationStatements } from '../relations/store.js';
 import { searchStatements } from '../search/index.js';
 import { publicProjection } from '../public/projection.js';
 import { atlasProblems } from '../benchmarks/atlas.js';
+import { atlasProblems as dataAtlasProblems } from '../data-atlas/atlas.js';
 
 export async function runImport(db, valuesByTab, now, { relationsConfig = null } = {}) {
   const runId = newId('imp');
@@ -31,10 +32,18 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
     // Robotics Evaluation Atlas: the catalogue and its results are validated together (ids, foreign keys, numbers,
     // native scales, comparability groups, reviewed vocabulary). Any problem stops the import, like header drift.
     const rowsOf = (id) => normalised.find((n) => n.spec.id === id)?.rows.filter((r) => r.visibility === 'customer').map((r) => r.data);
+    const first = (problems) => `${problems.slice(0, 5).join('; ')}${problems.length > 5 ? ` (and ${problems.length - 5} more)` : ''}`;
     const catalogue = rowsOf('benchmarks');
+    const datasets = rowsOf('datasets');
     if (catalogue) {
-      const problems = atlasProblems(catalogue, rowsOf('benchmark-results') ?? []);
-      if (problems.length) throw new ImportError(`Benchmarks: ${problems.slice(0, 5).join('; ')}${problems.length > 5 ? ` (and ${problems.length - 5} more)` : ''}`);
+      // Datasets links are checked both ways (DATASET_ID and RELATED_BENCHMARK_IDS against RELATED_DATASET_IDS).
+      const problems = atlasProblems(catalogue, rowsOf('benchmark-results') ?? [], datasets ?? null);
+      if (problems.length) throw new ImportError(`Benchmarks: ${first(problems)}`);
+    }
+    // Robot Learning Data Atlas: the Datasets catalogue and Dataset Metrics, validated together the same way.
+    if (datasets) {
+      const problems = dataAtlasProblems(datasets, rowsOf('dataset-metrics') ?? [], { benchmarkIds: catalogue?.map((b) => b.benchmark_id) ?? null });
+      if (problems.length) throw new ImportError(`Datasets: ${first(problems)}`);
     }
   } catch (error) {
     await db

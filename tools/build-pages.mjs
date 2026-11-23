@@ -25,6 +25,7 @@ import { buildData } from './build-site.mjs';
 import { PAGE_FIELDS, catalogueIndex, previewGraph } from './relations.mjs';
 import { robotPresentation } from './robot-presentation.mjs';
 import { renderAtlas } from './atlas-view.mjs';
+import { renderDataAtlas } from './data-atlas-view.mjs';
 import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
@@ -610,6 +611,23 @@ ${sections}
   return catPage(c, model, body, `${c.summary} ${counted(meta)}, free.`);
 }
 
+// Robot Learning Data Atlas (Javier, 23 Nov 2026): the Datasets catalogue and its reported quantities, from the public
+// snapshot data/datasets/atlas.json (tools/export-datasets.mjs). Loads the Atlas styles shared with /benchmarks/.
+function datasetsCategory() {
+  const c = CATEGORIES_BY_ID.get('datasets');
+  const atlas = read('data/datasets/atlas.json');
+  const n = atlas.counts;
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, c.label]])}
+<article class="entity atlas-page">
+${renderDataAtlas(atlas, { index: CATEGORIES.indexOf(c) + 1, total: CATEGORIES.length, badge: accessBadge(c) })}`;
+  return catPage(c, null, body, `Robot Learning Data Atlas: where ${n.resources} robot learning data resources come from, what they contain and how they can be used, with ${n.quantities} reported quantities from ${n.resources_with_quantities} of them. Free.`, {
+    title: 'Robot Learning Data Atlas: where robot learning data comes from and how it can be used · Why Humanoid?',
+    head: `<link rel="stylesheet" href="/assets/atlas.css?v=${assetVersion('assets/atlas.css')}">\n<link rel="stylesheet" href="/assets/datasets.css?v=${assetVersion('assets/datasets.css')}">\n`,
+    tail: `\n<script src="/assets/datasets.js?v=${assetVersion('assets/datasets.js')}" defer></script>`,
+    wide: true,
+  });
+}
+
 // Robotics Evaluation Atlas (Javier, 23 Nov 2026): the Benchmarks catalogue and selected source-reported results, from
 // the public snapshot data/benchmarks/atlas.json (tools/export-benchmarks.mjs). Task Evaluation is no longer shown here.
 function benchmarksCategory() {
@@ -802,7 +820,7 @@ export function buildPages(registry = readRegistry()) {
   files.set('components/index.html', componentsCategory(model));
   files.set('integrators/index.html', directoryCategory('integrators', 'integrators', model, { companyLinks: true, intro: 'Each integrator has a company page. ' }));
   files.set('software/index.html', directoryCategory('software', 'software', model, { lists: [['software', 'Software and robot foundation models'], ['world_model', 'World models']] }));
-  files.set('datasets/index.html', directoryCategory('datasets', 'datasets', model));
+  files.set('datasets/index.html', datasetsCategory());
   files.set('benchmarks/index.html', benchmarksCategory(model));
   files.set('investment/index.html', investmentCategory(model));
   files.set('other-robots/index.html', otherRobotsCategory(model));

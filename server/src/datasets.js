@@ -8,6 +8,7 @@
 import { hostKey, urlKey } from './import/identity.js';
 import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
 import editorial from './editorial/humanoids.json' with { type: 'json' };
+import { scrubEditorial } from './data-atlas/atlas.js';
 import { DATASET_ACCESS, PREVIEW_ROWS, categoryOfDataset, isFreeDataset } from './access/matrix.js';
 
 // Access comes from the central access matrix (server/src/access/matrix.js, 23 Nov 2026), never from this file.
@@ -70,6 +71,21 @@ const BENCHMARK_RESULTS = [
   'TASK_SCOPE', 'METRIC', 'VALUE', 'UNIT', 'DIRECTION', 'N_EVALS', 'UNCERTAINTY', 'TRAINING_DATA', 'CONDITIONS',
   'COMPARABILITY_GROUP', 'RESULT_DATE', 'DATE_MEANING', 'SOURCE_URL', 'SOURCE_LOCATOR', 'CHECKED_AT', 'EVIDENCE_STATUS',
   'LIMITATIONS', 'DISPLAY_STATUS',
+];
+
+// Robot Learning Data Atlas (23 Nov 2026): table DatasetsCatalog (the former NAME, URL, DESCRIPTION directory plus 24
+// appended columns) and table DatasetMetrics. Joined on DATASET_ID; validated together by server/src/data-atlas/atlas.js.
+const DATASETS_CATALOG = [
+  'NAME', 'URL', 'DESCRIPTION', 'DATASET_ID', 'RESOURCE_TYPE', 'RELATED_BENCHMARK_IDS', 'RELATED_BENCHMARK_URL',
+  'CLASSIFICATION_NOTE', 'CHECKED_AT', 'DATA_ORIGIN', 'EMBODIMENT', 'MODALITIES', 'CAPTURE_METHOD', 'LEARNING_USES',
+  'DATA_FORMAT', 'ACCESS_STATUS', 'LICENSE_NOTE', 'VERSION_SCOPE', 'KEY_TAKEAWAY', 'SOURCE_URL', 'SOURCE_LOCATOR',
+  'REVIEW_STATUS', 'LIMITATIONS', 'PARENT_DATASET_IDS', 'RESOURCE_CLASS', 'ATTACHMENT_REF', 'INCLUDED_IN_ATLAS',
+];
+
+const DATASET_METRICS = [
+  'METRIC_ID', 'DATASET_ID', 'DATA_VERSION', 'METRIC', 'VALUE', 'UNIT', 'QUALIFIER', 'SCOPE', 'DATA_ORIGIN',
+  'RELEASE_STATUS', 'SOURCE_URL', 'SOURCE_LOCATOR', 'SOURCE_DATE', 'DATE_MEANING', 'CHECKED_AT', 'EVIDENCE_STATUS',
+  'OVERLAP_NOTE', 'COMPARISON_GROUP', 'DISPLAY_STATUS', 'LIMITATIONS',
 ];
 
 const ENTITIES = [
@@ -228,12 +244,28 @@ export const DATASETS = [
     id: 'datasets',
     tab: 'Datasets',
     title: 'Datasets',
-    description: 'Robot learning datasets relevant to humanoids.',
-    kind: 'lists',
-    headers: DIRECTORY,
-    lists: [{ list: 'dataset', columns: { name: 0, url: 1, description: 2 } }],
-    idPrefix: 'ds',
-    naturalKey: directoryKey,
+    description: 'Robot learning data resources: origin, bodies, modalities, uses, access and licence notes.',
+    kind: 'table',
+    headers: DATASETS_CATALOG,
+    fields: lower(DATASETS_CATALOG),
+    idFields: ['dataset_id'],
+    // Editorial bookkeeping of the workbook, never stored or served: a link into the private workbook, the review note
+    // of the classification pass and the reference to the supplied matrix.
+    withheld: ['related_benchmark_url', 'classification_note', 'attachment_ref'],
+    scrub: (field, value) => scrubEditorial(value),
+    publicSnapshot: 'data/datasets/atlas.json',
+  },
+  {
+    id: 'dataset-metrics',
+    tab: 'Dataset Metrics',
+    title: 'Dataset metrics',
+    description: 'Reported quantities of the data resources, with unit, qualifier, scope, release status and source.',
+    kind: 'table',
+    headers: DATASET_METRICS,
+    fields: lower(DATASET_METRICS),
+    idFields: ['metric_id'],
+    scrub: (field, value) => scrubEditorial(value),
+    publicSnapshot: 'data/datasets/atlas.json',
   },
   {
     id: 'hardware',
