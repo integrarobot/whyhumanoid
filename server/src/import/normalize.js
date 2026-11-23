@@ -19,7 +19,9 @@ function checkHeaders(spec, values) {
   const actual = (values[0] ?? []).map((h) => String(h ?? '').trim());
   while (actual.length < spec.headers.length) actual.push('');
   const extra = actual.slice(spec.headers.length).filter((h) => h !== '');
-  if (spec.headers.some((h, i) => h !== actual[i]) || extra.length) {
+  // A former header row (the workbook before its translation to English) is accepted only with the same columns.
+  const matches = (headers) => headers.every((h, i) => h === actual[i]);
+  if (!(matches(spec.headers) || (spec.formerHeaders ?? []).some(matches)) || extra.length) {
     throw new ImportError(`Tab "${spec.tab}": header drift. Expected ${JSON.stringify(spec.headers)}, got ${JSON.stringify(actual)}`);
   }
 }

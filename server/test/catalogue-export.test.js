@@ -37,8 +37,8 @@ test('an inserted row the sheet marks as a duplicate is withheld from the free c
   assert.equal(out.count, EXPECTED_PUBLIC);
 });
 
-const PUBLIC_ALL = ['humanoids', 'integrators', 'software', 'datasets', 'hardware', 'other-robots', 'stocks'];
-test('all 13 tabs stay; Humanoids, the directories and listed companies are public in every row, the others show 10', () => {
+const PUBLIC_ALL = ['humanoids', 'integrators', 'software', 'datasets', 'task-evaluations', 'other-robots', 'stocks'];
+test('all 13 tabs stay; the free categories are public in every row, Deployments, Components and the rest show 10', () => {
   assert.equal(DATASETS.length, 13);
   for (const spec of DATASETS) assert.equal(publicRowLimit(spec), PUBLIC_ALL.includes(spec.id) ? null : 10, spec.id);
 });
@@ -60,7 +60,7 @@ test('the public export holds only the first 10 sheet rows of each of the 12 oth
     assert.equal(t.entries_total, counts[t.id], `${t.id}: total counts every imported row`);
     if (PUBLIC_ALL.includes(t.id)) {
       assert.equal(tabs[t.id].rows.length, counts[t.id], `${t.id}: every row is public`);
-      if (t.id === 'stocks') for (const r of tabs[t.id].rows.filter((x) => x._row > PREVIEW_SOURCE_ROWS)) assert.deepEqual(Object.keys(r).sort(), ['_row', 'country', 'exchange', 'name', 'ticker'], 'stocks: basic fields only beyond row 10');
+      if (t.id === 'stocks') for (const r of tabs[t.id].rows) assert.ok(!('price' in r) && !('market_cap' in r), 'stocks: third-party quote columns stay withheld');
       continue;
     }
     assert.ok(tabs[t.id].rows.every((r) => r._row <= PREVIEW_SOURCE_ROWS), `${t.id}: no row past sheet row 10`);
@@ -70,9 +70,9 @@ test('the public export holds only the first 10 sheet rows of each of the 12 oth
   // A full tab fails validation.
   const full = { ...tabs.deployments, rows: [...tabs.deployments.rows, { ...tabs.deployments.rows[0], _row: 11 }] };
   assert.ok(validateDatabase(index, { ...tabs, deployments: full }).length > 0, 'a row past the preview is refused');
-  // A reserved Stocks field beyond row 10 fails validation too.
-  const leak = { ...tabs.stocks, rows: tabs.stocks.rows.map((r) => (r._row > PREVIEW_SOURCE_ROWS ? { ...r, segment: 'fx' } : r)) };
-  assert.ok(validateDatabase(index, { ...tabs, stocks: leak }).length > 0, 'a reserved Stocks field past row 10 is refused');
+  // Components (Hardware tab) is a subscription category: a row past the preview is refused too.
+  const comp = { ...tabs.hardware, rows: [...tabs.hardware.rows, { ...tabs.hardware.rows[0], _row: 11 }] };
+  assert.ok(validateDatabase(index, { ...tabs, hardware: comp }).length > 0, 'a Components row past the preview is refused');
 });
 
 test('the committed previews match their index and hold no full tab', async () => {

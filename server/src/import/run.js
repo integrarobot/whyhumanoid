@@ -4,7 +4,7 @@
 // the reviewed relations config sent with the import (or the last one received), and so is the search index (public
 // scope from the public rows and values only, full scope from every customer row).
 
-import { DATASETS, publicRowLimit } from '../datasets.js';
+import { DATASETS, publicRowLimit, tabValues } from '../datasets.js';
 import { newId } from '../crypto.js';
 import { ImportError, normalizeTab } from './normalize.js';
 import { resolveIdentities } from './identity.js';
@@ -22,7 +22,7 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
   const review = [];
   try {
     for (const spec of DATASETS) {
-      const result = normalizeTab(spec, valuesByTab[spec.tab]);
+      const result = normalizeTab(spec, tabValues(valuesByTab, spec));
       normalised.push({ spec, rows: result.rows });
       warnings.push(...result.warnings);
       review.push(...result.review.map((r) => ({ dataset: spec.id, ...r })));

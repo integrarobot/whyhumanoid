@@ -8,8 +8,10 @@
 import { hostKey, urlKey } from './import/identity.js';
 import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
 import editorial from './editorial/humanoids.json' with { type: 'json' };
+import { DATASET_ACCESS, PREVIEW_ROWS, categoryOfDataset, isFreeDataset } from './access/matrix.js';
 
-export const PREVIEW_ROWS = 10;
+// Access comes from the central access matrix (server/src/access/matrix.js, 23 Nov 2026), never from this file.
+export { PREVIEW_ROWS };
 
 // A Humanoids row the sheet itself marks as a duplicate or an editorial resource. Also used by the free catalogue
 // export (tools/export-humanoids.mjs), so the site and the backend withhold the same rows. The duplicate Genesis
@@ -80,8 +82,6 @@ export const DATASETS = [
     headers: HUMANOIDS_FIELDS,
     clean: true,
     editorial: editorial.rewrites,
-    // The complete Humanoids catalogue stays free; subscribers get the full values, search and the API.
-    publicRows: 'all',
     // The sheet marks some rows as duplicates or editorial resources: kept as internal provenance, never served.
     internalRow: (d) => isInternalHumanoidRow(d),
     idPrefix: 'hum',
@@ -99,7 +99,6 @@ export const DATASETS = [
   },
   {
     id: 'integrators',
-    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Integrators',
     title: 'Integrators',
     description: 'System integrators and service providers that deploy humanoid and service robots.',
@@ -113,7 +112,8 @@ export const DATASETS = [
   },
   {
     id: 'evidence-links',
-    tab: 'Relaciones evidencia',
+    tab: 'Evidence Relations',
+    formerTabs: ['Relaciones evidencia'],
     title: 'Evidence links',
     description: 'Links between robot models, tasks, deployments and claims, with stage and limitations.',
     kind: 'table',
@@ -122,8 +122,9 @@ export const DATASETS = [
   },
   {
     id: 'task-evaluations',
-    tab: 'Evaluacion tarea',
-    title: 'Task evaluations',
+    tab: 'Task Evaluation',
+    formerTabs: ['Evaluacion tarea'],
+    title: 'Benchmarks: task evaluations',
     description: 'Per-task eligibility of each robot model against documented evidence.',
     kind: 'table',
     headers: TASK_EVALUATIONS,
@@ -131,11 +132,14 @@ export const DATASETS = [
   },
   {
     id: 'container-handling',
-    tab: 'Producto - Contenedores',
+    tab: 'Product - Container Handling',
+    formerTabs: ['Producto - Contenedores'],
     title: 'Container handling analysis',
     description: 'Task analysis for container handling in intralogistics, with traceability.',
     kind: 'table',
-    headers: ['Capa', 'Elemento', 'Resultado / implicación', 'Trazabilidad'],
+    headers: ['Layer', 'Element', 'Outcome / implication', 'Traceability'],
+    // Header row before the workbook was translated to English (20 Nov 2026); same columns, same order.
+    formerHeaders: [['Capa', 'Elemento', 'Resultado / implicación', 'Trazabilidad']],
     fields: ['layer', 'element', 'result', 'traceability'],
     idPrefix: 'ch',
     // Analysis lines have no natural identity yet: served with unstable pending ids until Codex defines one.
@@ -143,7 +147,8 @@ export const DATASETS = [
   },
   {
     id: 'entities',
-    tab: 'Entidades limpias',
+    tab: 'Clean Entities',
+    formerTabs: ['Entidades limpias'],
     title: 'Entities',
     description: 'Canonical organisations, models and resources with identity scope and review date.',
     kind: 'table',
@@ -152,10 +157,8 @@ export const DATASETS = [
   },
   {
     id: 'stocks',
-    publicRows: 'all', // approved split, phase 3: basic fields public for every row; rows 1 to 10 stay public in full
-    publicFields: ['name', 'ticker', 'exchange', 'country'],
     tab: 'Stocks',
-    title: 'Listed companies',
+    title: 'Investment: listed companies',
     description: 'Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.',
     kind: 'table',
     headers: STOCKS,
@@ -167,7 +170,6 @@ export const DATASETS = [
   },
   {
     id: 'software',
-    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Software',
     title: 'Software and world models',
     description: 'Robot foundation models, VLA models, world models and robotics software.',
@@ -182,7 +184,6 @@ export const DATASETS = [
   },
   {
     id: 'datasets',
-    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Datasets',
     title: 'Datasets',
     description: 'Robot learning datasets relevant to humanoids.',
@@ -194,10 +195,9 @@ export const DATASETS = [
   },
   {
     id: 'hardware',
-    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Hardware',
-    title: 'Hardware',
-    description: 'Compute, actuators and other hardware used in humanoid robots.',
+    title: 'Components',
+    description: 'Compute, sensors, actuators and other hardware used in humanoid robots (Hardware tab).',
     kind: 'lists',
     headers: DIRECTORY,
     lists: [{ list: 'hardware', columns: { name: 0, url: 1, description: 2 } }],
@@ -206,7 +206,6 @@ export const DATASETS = [
   },
   {
     id: 'other-robots',
-    publicRows: 'all', // approved split, phase 3 (17 Nov 2026): public directory
     tab: 'Other Robots',
     title: 'Other robots',
     description: 'Non-humanoid and educational robots tracked alongside the humanoid catalogue.',
@@ -221,7 +220,6 @@ export const DATASETS = [
   },
   {
     id: 'data-space',
-    offer: false, // approved split, phase 3: not part of the subscription offer; data kept and imported as before
     tab: 'Data Space',
     title: 'Data space design notes',
     description: 'Findings and proposals for the humanoid robotics data space.',
@@ -230,6 +228,18 @@ export const DATASETS = [
     idFields: ['record_id'],
   },
 ];
+
+// Access from the matrix: publicRows 'all' marks a free tab (every customer row, public values, to anyone).
+for (const spec of DATASETS) {
+  if (!DATASET_ACCESS[spec.id]) throw new Error(`dataset ${spec.id} has no entry in the access matrix`);
+  spec.access = isFreeDataset(spec.id) ? 'free' : 'subscription';
+  spec.category = categoryOfDataset(spec.id)?.id ?? null;
+  if (spec.access === 'free') spec.publicRows = 'all';
+  if (DATASET_ACCESS[spec.id].offer === false) spec.offer = false;
+}
+
+// The rows of a tab in a workbook export or a Sheets API read, under its current name or a former one.
+export const tabValues = (values, spec) => values?.[spec.tab] ?? (spec.formerTabs ?? []).map((t) => values?.[t]).find(Boolean);
 
 export const PREMIUM_DATASETS = DATASETS; // kept for tooling that scans premium column names
 export const DATASETS_BY_ID = new Map(DATASETS.map((d) => [d.id, d]));
@@ -242,7 +252,8 @@ export function publicDatasetList() {
     id: spec.id,
     title: spec.title,
     description: spec.description,
-    access: { preview_rows: publicRowLimit(spec) ?? 'all', public_fields: spec.publicFields ?? null, full: 'subscription' },
+    category: spec.category,
+    access: { preview_rows: publicRowLimit(spec) ?? 'all', public_fields: spec.publicFields ?? null, full: spec.access === 'free' ? 'public' : 'subscription' },
     offer: spec.offer !== false,
   }));
 }
@@ -271,12 +282,15 @@ export async function queryPreview(db, spec) {
   return { snapshot: results[0]?.snapshot_id ?? null, total_rows: Number(total?.n ?? 0), rows: results.map(toRow) };
 }
 
-export async function queryDatasetRows(db, datasetId, { limit, offset, q }) {
-  const where = q ? "dataset = ? AND visibility = 'customer' AND data LIKE ?" : "dataset = ? AND visibility = 'customer'";
+// Paged rows of a tab. publicValues: the public values (free tabs read without a subscription); otherwise the full
+// values, which the caller serves only after the entitlement check.
+export async function queryDatasetRows(db, datasetId, { limit, offset, q, publicValues = false }) {
+  const col = publicValues ? 'COALESCE(preview_data, data)' : 'data';
+  const where = q ? `dataset = ? AND visibility = 'customer' AND ${col} LIKE ?` : "dataset = ? AND visibility = 'customer'";
   const params = q ? [datasetId, `%${q}%`] : [datasetId];
   const total = await db.prepare(`SELECT COUNT(*) AS n FROM premium_rows WHERE ${where}`).bind(...params).first();
   const page = await db
-    .prepare(`SELECT row_id, data, snapshot_id FROM premium_rows WHERE ${where} ORDER BY position LIMIT ? OFFSET ?`)
+    .prepare(`SELECT row_id, ${col} AS data, snapshot_id FROM premium_rows WHERE ${where} ORDER BY position LIMIT ? OFFSET ?`)
     .bind(...params, limit, offset)
     .all();
   const rows = (page.results ?? []).map(toRow);

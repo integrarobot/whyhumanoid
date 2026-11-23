@@ -88,12 +88,12 @@ function check() {
 }
 
 async function report(file) {
-  const { DATASETS_BY_ID } = await import('../server/src/datasets.js');
+  const { DATASETS_BY_ID, tabValues } = await import('../server/src/datasets.js');
   const { normalizeTab } = await import('../server/src/import/normalize.js');
   const values = JSON.parse(readFileSync(file, 'utf8'));
   const tab = (id) => {
     const spec = DATASETS_BY_ID.get(id);
-    return normalizeTab(spec, values[spec.tab]).rows.filter((r) => r.visibility === 'customer').map((r) => r.data);
+    return normalizeTab(spec, tabValues(values, spec)).rows.filter((r) => r.visibility === 'customer').map((r) => r.data);
   };
   const config = relationsConfig();
   const { graph, report: rep } = buildGraph(compileConfig(config), { rows: tab('deployments'), entities: tab('entities'), scope: 'full' });

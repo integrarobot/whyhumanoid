@@ -27,11 +27,11 @@ function files(dir) {
 
 const at = process.argv.indexOf('--from');
 if (at < 0) { console.error('usage: node tools/check-reserved.mjs --from <export.json>'); process.exit(2); }
-const { DATASETS_BY_ID } = await import('../server/src/datasets.js');
+const { DATASETS_BY_ID, tabValues } = await import('../server/src/datasets.js');
 const { normalizeTab } = await import('../server/src/import/normalize.js');
 const values = JSON.parse(readFileSync(process.argv[at + 1], 'utf8'));
 const spec = DATASETS_BY_ID.get('deployments');
-const rows = normalizeTab(spec, values[spec.tab]).rows.filter((r) => r.visibility === 'customer').map((r) => r.data);
+const rows = normalizeTab(spec, tabValues(values, spec)).rows.filter((r) => r.visibility === 'customer').map((r) => r.data);
 
 const publicText = [
   'data/humanoids-catalogue.json', ...files('data/preview/'),

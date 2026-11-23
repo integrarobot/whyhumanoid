@@ -18,6 +18,9 @@ import { DATASETS_BY_ID, DATASETS, publicDatasetList } from '../server/src/datas
 const root = new URL('../', import.meta.url);
 const DIR = new URL('data/preview/', root);
 export const PREVIEW_SOURCE_ROWS = 10;
+// Access matrix of 23 Nov 2026 (server/src/access/matrix.js): the free categories in every row; Deployments, Components
+// and their supporting tabs in their first 10 sheet rows; the rest only for subscribers (EUR 100 per year).
+export const INDEX_NOTE = 'Public data of the 12 workbook tabs other than Humanoids, with counts and field names. Free categories (Integrators, Software, Datasets, Benchmarks, Investment, Other Robots): every row. Deployments, Components (Hardware tab) and the tabs that support Deployments: the first 10 sheet rows; every row and field only for subscribers (EUR 100 per year), served by the backend after a subscription check (access matrix of 23 Nov 2026).';
 const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
 
 // The backend's own row key, raw sheet-row pointers and the importer's bookkeeping. Record ids (record_id,
@@ -67,7 +70,7 @@ async function build(from, snapshot) {
   const result = await runImport(db, values, Math.floor(Date.parse(snapshot) / 1000));
   if (!result.ok) throw new Error(`import failed: ${result.error}`);
   const list = new Map(publicDatasetList().map((d) => [d.id, d]));
-  const index = { note: 'Public data of the 12 workbook tabs other than Humanoids, with counts and field names: the first 10 sheet rows of each tab; every row of the link directories; name, ticker, exchange and country of every listed company. Everything else is for subscribers (EUR 100 per year), served only by the backend after a subscription check (paywall of 16 Nov 2026; approved split of 17 Nov 2026).', snapshot, tabs: [] };
+  const index = { note: INDEX_NOTE, snapshot, tabs: [] };
   const tabs = {};
   for (const spec of DATASETS.filter((d) => d.id !== 'humanoids')) {
     const { results } = await db
@@ -91,6 +94,8 @@ async function build(from, snapshot) {
       preview_entries: rows.length,
       preview_source_rows: new Set(rows.map((r) => r._row)).size,
       fields,
+      access: spec.access,
+      category: spec.category,
       ...(spec.publicRows === 'all' ? { public: spec.publicFields ? 'basic_fields' : 'all' } : {}),
       ...(spec.publicFields ? { public_fields: spec.publicFields } : {}),
       ...(spec.offer === false ? { offer: false } : {}),
@@ -111,8 +116,42 @@ export async function importInMemory(from, snapshot = new Date().toISOString()) 
   return { db, counts: result.counts };
 }
 
+// Re-applies the access matrix to the committed previews without a new export: a subscription tab is cut to its first
+// 10 sheet rows and the index takes the matrix's titles, access and category. It never adds a value: a free tab keeps
+// the fields its snapshot already published (Stocks beyond row 10: basic fields until the next export), marked so.
+export function reapplyAccess({ index, tabs }) {
+  const list = new Map(publicDatasetList().map((d) => [d.id, d]));
+  const next = { ...index, note: INDEX_NOTE, tabs: [] };
+  const out = {};
+  for (const meta of index.tabs) {
+    const spec = DATASETS_BY_ID.get(meta.id);
+    const tab = tabs[meta.id];
+    const rows = spec.publicRows === 'all' ? tab.rows : tab.rows.filter((r) => r._row <= PREVIEW_SOURCE_ROWS);
+    const { public: wasPublic, public_fields: basic, ...rest } = meta;
+    const entry = {
+      ...rest, title: list.get(meta.id).title, description: list.get(meta.id).description, access: spec.access, category: spec.category,
+      preview_entries: rows.length, preview_source_rows: new Set(rows.map((r) => r._row)).size,
+    };
+    if (spec.publicRows === 'all') {
+      entry.public = wasPublic === 'basic_fields' ? 'basic_fields' : 'all';
+      if (wasPublic === 'basic_fields') { entry.public_fields = basic; entry.snapshot_fields = 'Beyond row 10 this snapshot holds the basic fields only; the other fields are free and arrive with the next export.'; }
+    }
+    if (spec.offer === false) entry.offer = false; else delete entry.offer;
+    next.tabs.push(entry);
+    out[meta.id] = { ...tab, rows };
+  }
+  return { index: next, tabs: out };
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
-  if (process.argv.includes('--check')) {
+  if (process.argv.includes('--reapply-access')) {
+    const { index, tabs } = reapplyAccess(readDatabase());
+    const problems = validateDatabase(index, tabs);
+    if (problems.length) throw new Error(problems.join('; '));
+    writeFileSync(new URL('index.json', DIR), `${JSON.stringify(index, null, 1)}\n`);
+    for (const [id, tab] of Object.entries(tabs)) writeFileSync(new URL(`${id}.json`, DIR), `${JSON.stringify(tab)}\n`);
+    for (const t of index.tabs) console.log(`${t.id.padEnd(19)} ${t.access.padEnd(12)} public ${String(t.preview_entries).padStart(3)} of ${String(t.entries_total).padStart(4)}`);
+  } else if (process.argv.includes('--check')) {
     const { index, tabs } = readDatabase();
     const problems = validateDatabase(index, tabs);
     const extra = readdirSync(DIR).filter((f) => f !== 'index.json' && !OTHER_TABS.includes(f.replace(/\.json$/, '')));
