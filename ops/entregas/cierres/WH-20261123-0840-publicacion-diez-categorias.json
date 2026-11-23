@@ -1,0 +1,57 @@
+{
+  "id": "WH-20261123-0840-publicacion-diez-categorias",
+  "tarea": "Publicar en whyhumanoid.com las diez categorías, la matriz central de acceso y la suscripción de 100 € al año para Deployments y Components (venta live cerrada), con Reports",
+  "origen": "Javier, 23/11/2026, a través de Codex («publicar antes de agotar los créditos»)",
+  "fecha": "2026-11-23T08:40:01+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR #58 fusionado en main como 0b684e0: diez categorías con URL propia (Humanoids, Deployments, Components, Integrators, Software, Datasets, Benchmarks, Investment, Other Robots y Reports), matriz central de acceso, una suscripción de 100 € al año para Deployments y Components con la venta live del nuevo plan cerrada en código, títulos nuevos del libro (Components, Investment), robots en /humanoids/<slug>/ con redirección desde /robots/, 547 páginas de Other Robots, 459 fichas de empresa, Reports con el análisis de registros y 1 informe externo verificado.",
+    "Worker de producción whyhumanoid-premium desplegado por Codex (versión 727f5b3b) con el paquete de 43cb8e5 (sha256 9ae07b8066df525412a740cd7d7673d231909a32658f3e24a96e760325bda4a7); sin cambios de variables ni secretos.",
+    "Datos: se mantiene la instantánea pública del 17/11; no hubo importación de producción.",
+    "tools/verify-staging.mjs admite --api para verificar producción con la API en su propio origen."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #58 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/58"
+    },
+    {
+      "etiqueta": "Web",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "Categoría Reports",
+      "url": "https://whyhumanoid.com/reports/"
+    },
+    {
+      "etiqueta": "Suscripción",
+      "url": "https://whyhumanoid.com/subscribe/"
+    },
+    {
+      "etiqueta": "Matriz de acceso (API)",
+      "url": "https://whyhumanoid-premium.javier-198.workers.dev/v1/access"
+    },
+    {
+      "etiqueta": "PR #59, contrato de Components (sin fusionar)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/59"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 0b684e0; CI de main en verde antes de la fusión (PR, run 45132134487).",
+    "Worker de producción 727f5b3b (paquete de 43cb8e5), confirmado por Codex; Worker de test con worker.staging.js de 43cb8e5 y sitio de 861e0b5."
+  ],
+  "verificaciones": [
+    "Producción, whyhumanoid.com con la API del Worker: verify-staging 196 de 196 (diez rutas con carga directa y recarga a 1366 y 375 px, sin desplazamiento horizontal, navegación en orden, canónicas, enlaces antiguos /robots/ y #db-, sitemap sin /robots/, sin data/database, Deployments y Components con 10 filas públicas como máximo y 401 sin sesión, Investment abierto, buscador de visitantes en alcance público).",
+    "API de producción antes de fusionar: /v1/access con las diez categorías; /v1/billing/plan con el plan nuevo y checkout_available false; /v1/datasets/hardware 401; /v1/datasets/stocks 200.",
+    "Staging alojado: 196 de 196. CI y 93 pruebas de API en verde; staging local 205 de 205 con eventos de prueba firmados y simulados."
+  ],
+  "pendientes": [
+    "Compra de prueba con Stripe test Checkout y webhook de test sin hacer: el flujo de pago del plan nuevo no está probado en alojado (Codex en el navegador). La venta live sigue cerrada en código hasta que Javier fije el nombre del producto en Stripe, el IVA y las condiciones.",
+    "Importación de test rechazada por la condición del proveedor de Google para el entorno test desde main (run 45131888020); el D1 de test conserva los datos del 13/11. Lo amplía Javier si quiere probar la importación del maestro del 23/11.",
+    "Contenido antes de refrescar la web: 11 informes de Reports por comprobar, traducción de Investment e Integrators en el maestro, robots renombrados (Kepler, Xpeng) y alias nuevos de Deployments.",
+    "PR #59 (contrato de datos de Components) pendiente de revisión; no fusionado."
+  ],
+  "siguiente_accion": "Codex hace la compra de prueba en modo test en el staging y avisa a Javier; Javier decide las condiciones de la venta live y la ampliación de la condición de Google para la importación de test."
+}
