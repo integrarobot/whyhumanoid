@@ -75,7 +75,16 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     const n = await page.$$eval('#adoption .case:not(.off)', (xs) => xs.length);
     check(n > 0 && n < 71, `${label} home: sector filter narrows the cases (${n})`);
     const first = await page.$('#adoption .rung[open] .case:not(.off)');
-    if (first) { await first.click(); check(await page.isVisible('#adopt-detail'), `${label} home: choosing a case opens its details`); }
+    if (first) {
+      await first.click();
+      check(await page.isVisible('#adopt-detail'), `${label} home: choosing a case opens its details`);
+      const d = await page.$eval('#adopt-detail', (el) => {
+        const dt = [...el.querySelectorAll('dt')].find((x) => /robot as recorded/i.test(x.textContent));
+        return { pad: parseFloat(getComputedStyle(el).paddingLeft), robot: dt?.nextElementSibling?.textContent ?? '' };
+      });
+      check(d.pad >= 8, `${label} home: the case details keep their inner padding (${d.pad}px)`);
+      check(d.robot && !/\b([\w-]+) \1\b/i.test(d.robot), `${label} home: the robot is not named with its maker twice ("${d.robot}")`);
+    }
   } else check(false, `${label} home: adoption filters missing`);
   // Paywall notice of the database panel (regression of 23 Nov 2026: a bare .lock rule shrank it to a 28 px column).
   // For every tab with a subscription remainder: below the table and outside its horizontal scroll, at least 90% of

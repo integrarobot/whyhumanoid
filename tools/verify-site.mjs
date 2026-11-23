@@ -204,10 +204,12 @@ expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements
   for (const stage of ['op', 'pilot', 'unc', 'ann']) expect(document.querySelectorAll(`#adoption .r-${stage} .case`).length === cases.filter((c) => c.stage === stage).length, `stage ${stage}: marks differ from the projection`);
   for (const a of chips) { const h = a.getAttribute('href'); expect(h === '/deployments/' || existsSync(new URL(`${h.slice(1)}index.html`, root)), `case links to a missing page ${h}`); }
   const data = JSON.parse(document.getElementById('adoption-data').textContent);
-  const KEYS = new Set(['stage', 'status', 'records', 'org', 'orgPath', 'maker', 'makerPath', 'model', 'robotPath', 'family', 'sector', 'fam', 'countries', 'years']);
+  const KEYS = new Set(['stage', 'status', 'records', 'org', 'orgPath', 'maker', 'makerPath', 'robot', 'robotPath', 'family', 'sector', 'fam', 'countries', 'years']);
   expect(data.every((c) => Object.keys(c).every((k) => KEYS.has(k))), 'adoption data holds a key outside the public list');
   expect(!/site_name|task_description|claim_text|metric_value|source_url|verification_status|evidence_level|fx_|rec_|dep_/.test(JSON.stringify(data)), 'adoption data holds a reserved field or an id');
   expect(document.querySelectorAll('#adoption .adopt-table tbody tr').length === cases.length, 'adoption table view does not list every case');
+  const doubled = data.filter((c) => c.robot && /\b([\w-]+) \1\b/i.test(c.robot)).map((c) => c.robot);
+  expect(!doubled.length, `adoption: robot named with its maker twice: ${doubled.join(', ')}`);
 }
 // Navigation (23 Nov 2026): the nine confirmed categories, in order, each at its own address.
 const { CATEGORIES } = await import('../server/src/access/matrix.js');
