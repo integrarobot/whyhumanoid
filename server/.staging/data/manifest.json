@@ -1,0 +1,152 @@
+{
+  "dataset": "humanoids",
+  "access": "free",
+  "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the verified import of 2026-11-17T20:58:00Z",
+  "snapshot": "2026-11-17T20:58:00Z",
+  "record_count": 134,
+  "verified_import": {
+    "environment": "workbook export",
+    "snapshot": "2026-11-17T20:58:00Z",
+    "import_run": "workbook export of 2026-11-17 (Boston Dynamics-GlobalFoundries and NC State Howl update), imported locally with the backend import code; paid-product values",
+    "updated": [
+      {
+        "id": 16,
+        "field": "B2B Client"
+      },
+      {
+        "id": 16,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 26,
+        "field": "Linkedin"
+      },
+      {
+        "id": 56,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 71,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 72,
+        "field": "Valuation"
+      },
+      {
+        "id": 75,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 85,
+        "field": "Web"
+      },
+      {
+        "id": 86,
+        "field": "Valuation"
+      },
+      {
+        "id": 91,
+        "field": "Valuation"
+      }
+    ],
+    "inserted": [
+      {
+        "id": 134,
+        "sheet_row": 137
+      }
+    ]
+  },
+  "full_database": {
+    "humanoid_records": 134,
+    "other_datasets": 12,
+    "other_datasets_public_rows": 10,
+    "other_datasets_public_rule": "the first 10 source sheet rows of each tab; tabs that hold side-by-side lists show every entry in those rows",
+    "access": "subscription, €100 per year: full values, all 13 datasets in full, full search, agent API keys"
+  },
+  "fields": [
+    "Lab",
+    "Robot",
+    "Web",
+    "X",
+    "Linkedin",
+    "Youtube",
+    "Country",
+    "Careers",
+    "B2B Client",
+    "Stock",
+    "Valuation",
+    "Investors",
+    "Rounds",
+    "Release",
+    "Height (cm)",
+    "Weight (kg)",
+    "Walk (km/h)",
+    "Run (km/h)",
+    "Payload/carry (kg)",
+    "Power (hours)",
+    "Software",
+    "Voice",
+    "Clothed?",
+    "Model checked",
+    "Platform / mobility",
+    "DoF / grippers",
+    "Sensors / compute",
+    "Battery / charging",
+    "Price / availability",
+    "Autonomy / supervision",
+    "Buyer checks",
+    "Sources / checked"
+  ],
+  "cleaning": {
+    "rules": {
+      "strip": [
+        "private_link",
+        "personal_contact_email",
+        "personal_contact_phone",
+        "internal_sheet_reference",
+        "internal_editor_task",
+        "internal_marker"
+      ],
+      "flag": [
+        "instruction_wording"
+      ]
+    },
+    "stripped": [
+      {
+        "id": 4,
+        "field": "Buyer checks",
+        "reason": "internal_editor_task"
+      },
+      {
+        "id": 17,
+        "field": "Buyer checks",
+        "reason": "internal_editor_task"
+      },
+      {
+        "id": 117,
+        "field": "Model checked",
+        "reason": "internal_sheet_reference"
+      },
+      {
+        "id": 117,
+        "field": "Buyer checks",
+        "reason": "internal_sheet_reference"
+      }
+    ],
+    "excluded_unverified": [],
+    "rewritten": []
+  },
+  "license": null,
+  "files": {
+    "humanoids-catalogue.json": {
+      "sha256": "8c3ba29d7e871d98c9a2a5bb051011253b9008c75c6bf929c7fa59b52552af9e",
+      "bytes": 197857
+    },
+    "humanoids-catalogue.csv": {
+      "sha256": "3b2dfccb3cc01410fb1db315d2569cb97b382bfb3d07fe092e30255f92f6b355",
+      "bytes": 103694
+    }
+  }
+}
