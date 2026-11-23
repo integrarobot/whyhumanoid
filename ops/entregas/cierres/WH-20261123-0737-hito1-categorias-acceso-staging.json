@@ -1,6 +1,6 @@
 {
   "id": "WH-20261123-0737-hito1-categorias-acceso-staging",
-  "tarea": "Hito 1 de Why Humanoid? en Claude Code: línea base, nueve categorías con URL propia, matriz central de acceso y una suscripción de 100 € al año para Deployments y Components, en staging revisable",
+  "tarea": "Hito 1 de Why Humanoid? en Claude Code: diez categorías con URL propia (las nueve confirmadas y Reports), matriz central de acceso, una suscripción de 100 € al año para Deployments y Components con la venta live cerrada en código, títulos nuevos del libro y staging alojado",
   "origen": "Javier, 23/11/2026 (migración a Claude Code; coordina y verifica Codex)",
   "fecha": "2026-11-23T07:37:49+01:00",
   "zona": "Europe/Madrid",
@@ -50,14 +50,15 @@
     "  - Eventos de prueba firmados (simulados, sin cobro): sin pago, 403; activo, 200 en las dos categorías; duplicado ignorado; cancelado al final del periodo, 200; periodo vencido y baja, 403.",
     "Exportación de prueba del libro del 23/11 con el importador nuevo: todas las pestañas se leen; la sincronización de Humanoids se para en dos robots renombrados (Kepler Forerunner y Xpeng Iron).",
     "Solo en local o con datos sintéticos: todo lo anterior. Sin hacer: staging alojado, importación del libro en test y compra de prueba con Stripe test Checkout.",
-    "Paquete del camino B desde la rama, con esbuild 0.27.7: 410.848 bytes, sha256 0d4522169c8dde8b3f8384a3b5b5ad89a68f49716c116f1dd36e9534c3cea555; prueba en Node: /health, /v1/access y /v1/billing/plan dan 200 con el plan nuevo."
+    "Paquete del camino B desde la rama, con esbuild 0.27.7: 410.848 bytes, sha256 0d4522169c8dde8b3f8384a3b5b5ad89a68f49716c116f1dd36e9534c3cea555; prueba en Node: /health, /v1/access y /v1/billing/plan dan 200 con el plan nuevo.",
+    "Staging alojado en whyhumanoid-premium-test (worker.staging.js de 43cb8e5, sitio de 861e0b5, desplegado por Codex): verify-staging con navegador a 1366 y 375 px y por HTTP, 196 de 196 comprobaciones (diez rutas con carga directa y recarga, enlaces antiguos, sitemap, canónicas, exposición de Deployments y Components).",
+    "Importación de test desde main (run 45131888020): rechazada por Google antes de tocar datos («The given credential is rejected by the attribute condition»): la condición del proveedor de identidad no admite el entorno test desde main. El D1 de test sigue con los datos del 13/11. Recuentos de identidad y relaciones solo en local (check-workbook sobre el maestro del 23/11): Humanoids 215, Deployments 184, Investment 276, Components 11; identidades sin resolver: Product - Container Handling 22, Humanoids 12, Software 12; relaciones: 63 por modelo, 27 por línea, 84 solo fabricante, 10 sin fabricante."
   ],
   "pendientes": [
-    "Desplegar staging en whyhumanoid-premium-test (Javier, camino A o B de ops/brief.md); importar el libro en test desde main; ejecutar verify-staging contra https://whyhumanoid-premium-test.javier-198.workers.dev; compra de prueba en modo test hecha por una persona. El hito no está completo sin esa verificación externa.",
-    "Decisión de Javier: Components solo tiene 11 filas con nombre y enlace, sin descripción en las 10 públicas; falta una tabla real de componentes o cambiar lo que promete la suscripción.",
-    "Decisión de Javier: regla de vista previa de Deployments y Components; nombre y descripción del producto en Stripe live; IVA y presentación de impuestos; condiciones de compra antes de vender la oferta nueva.",
-    "Decisión de Javier: destino de la pestaña Product - Container Handling; nombres y alcance de los dos servicios de 1.000 €.",
-    "Contenido (Grok o Codex): revisar los dos robots renombrados y las filas nuevas del 20/11 antes de refrescar la web; la fila 26 de Other Robots, «Agilex», enlaza a agile-robots.com."
+    "Compra de prueba con Stripe test Checkout y webhook de test: la hace Codex en el navegador; hasta entonces el flujo de pago nuevo queda sin probar en alojado. La venta live está cerrada en código (LIVE_SALES_OPEN = false).",
+    "Importación de test: Javier amplía la condición del proveedor github-actions de Google para el entorno test desde main (o se importa por otra vía autorizada); después, recuentos e identidades en el D1 de test.",
+    "Decisiones de Javier: contenido de Components, vista previa de las categorías de pago, nombre del producto en Stripe live, IVA y condiciones antes de abrir la venta live, pestaña Product - Container Handling y servicios de 1.000 €.",
+    "Contenido: 11 informes de Reports por comprobar contra su original; traducir Investment e Integrators en el maestro; revisar los robots renombrados y los alias nuevos antes de refrescar la web."
   ],
-  "siguiente_accion": "Codex revisa el PR #58 y coordina con Javier el despliegue de staging en el Worker de test (comandos en ops/brief.md); con staging verificado, Javier decide sobre Components, la vista previa y el cobro live antes de fusionar."
+  "siguiente_accion": "Codex despliega worker.dashboard.js (commit 43cb8e5) en whyhumanoid-premium y lo confirma; Claude fusiona #58, verifica whyhumanoid.com y registra el cierre de la publicación."
 }
