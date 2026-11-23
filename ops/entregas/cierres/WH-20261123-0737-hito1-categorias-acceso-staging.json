@@ -16,7 +16,7 @@
     "Navegación con las nueve categorías en todas las páginas y bloque de categorías en la portada; textos de la web, la aplicación y la metodología con la oferta nueva.",
     "Datos: se mantiene la instantánea del 17/11; solo Components (pestaña Hardware) queda en sus 10 primeras filas.",
     "Staging: tools/build-staging.mjs, server/scripts/staging-local.mjs y tools/verify-staging.mjs; wrangler.toml de test con la aplicación en /app/.",
-    "PR borrador #58 con 3 commits (875639e, 5100bea, 7a893ff)."
+    "PR borrador #58 con los commits 875639e, 5100bea, 7a893ff, 04ad501 y el de este cierre corregido."
   ],
   "urls": [
     {
@@ -37,7 +37,7 @@
     }
   ],
   "despliegue": [
-    "No aplica: staging no desplegado. Javier no aceptó facilitar una credencial de Cloudflare a la sesión, así que el despliegue en el Worker de test queda preparado con sus comandos en ops/brief.md. Producción, cobro live y libro sin tocar."
+    "No aplica: staging no desplegado. La petición de credencial de Cloudflare se descartó desde la coordinación de Codex («Now not») y los agentes no deben pedir ni crear tokens. No existe ningún workflow de despliegue de Workers: ci.yml solo prueba e import-workbook.yml usa OIDC de GitHub y Workload Identity de Google (variable GOOGLE_WORKLOAD_IDENTITY_PROVIDER, sin secretos). Caminos preparados en ops/brief.md: A, wrangler con el inicio de sesión que ya tiene Javier (web, aplicación y API en el Worker de test); B, paquete para el editor del panel (solo API). Producción, cobro live y libro sin tocar."
   ],
   "verificaciones": [
     "Pasos de CI en local, en verde: guardia pública, registro de entregas, exportaciones, builds de web, aplicación y páginas, relaciones, proyección, verify-site, verify-premium-app y verify-pages.",
@@ -48,10 +48,12 @@
     "  - El sitemap no lista ninguna dirección /robots/.",
     "  - No existe data/database; los ficheros públicos de Deployments y Components tienen 10 filas o menos, y su API da 401.",
     "  - Eventos de prueba firmados (simulados, sin cobro): sin pago, 403; activo, 200 en las dos categorías; duplicado ignorado; cancelado al final del periodo, 200; periodo vencido y baja, 403.",
-    "Exportación de prueba del libro del 23/11 con el importador nuevo: todas las pestañas se leen; la sincronización de Humanoids se para en dos robots renombrados (Kepler Forerunner y Xpeng Iron)."
+    "Exportación de prueba del libro del 23/11 con el importador nuevo: todas las pestañas se leen; la sincronización de Humanoids se para en dos robots renombrados (Kepler Forerunner y Xpeng Iron).",
+    "Solo en local o con datos sintéticos: todo lo anterior. Sin hacer: staging alojado, importación del libro en test y compra de prueba con Stripe test Checkout.",
+    "Paquete del camino B desde la rama, con esbuild 0.27.7: 410.848 bytes, sha256 0d4522169c8dde8b3f8384a3b5b5ad89a68f49716c116f1dd36e9534c3cea555; prueba en Node: /health, /v1/access y /v1/billing/plan dan 200 con el plan nuevo."
   ],
   "pendientes": [
-    "Desplegar staging: con la sesión de Wrangler de Javier, aplicar migraciones y desplegar en el Worker de test con el paquete de tools/build-staging.mjs; importar el libro en test y ejecutar verify-staging contra https://whyhumanoid-premium-test.javier-198.workers.dev.",
+    "Desplegar staging en whyhumanoid-premium-test (Javier, camino A o B de ops/brief.md); importar el libro en test desde main; ejecutar verify-staging contra https://whyhumanoid-premium-test.javier-198.workers.dev; compra de prueba en modo test hecha por una persona. El hito no está completo sin esa verificación externa.",
     "Decisión de Javier: Components solo tiene 11 filas con nombre y enlace, sin descripción en las 10 públicas; falta una tabla real de componentes o cambiar lo que promete la suscripción.",
     "Decisión de Javier: regla de vista previa de Deployments y Components; nombre y descripción del producto en Stripe live; IVA y presentación de impuestos; condiciones de compra antes de vender la oferta nueva.",
     "Decisión de Javier: destino de la pestaña Product - Container Handling; nombres y alcance de los dos servicios de 1.000 €.",

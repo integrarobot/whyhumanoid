@@ -85,22 +85,73 @@ Done on the branch, on the published 17 Nov snapshot:
   `tools/verify-staging.mjs --local` (184 checks: routes, reloads, mobile, old links, exposure, the five account
   states with signed test-mode events).
 
-Not done: staging deployment on Cloudflare (needs Javier's Cloudflare access), content refresh to the 20 Nov workbook,
-live billing changes.
+Not done: hosted staging on Cloudflare (Javier deploys; agents hold no Cloudflare credential), the sandbox purchase
+through Stripe test Checkout, the content refresh to the 20 Nov workbook, live billing changes. The milestone is not
+complete until hosted staging is verified.
 
-### Staging deploy (Javier or Codex, with Wrangler logged in to Javier's account)
+### Staging deploy paths (checked on 23 Nov 2026)
+
+What exists: no workflow deploys a Worker. `ci.yml` only tests; `import-workbook.yml` authenticates with GitHub OIDC and
+Google Workload Identity (repository variable `GOOGLE_WORKLOAD_IDENTITY_PROVIDER`; no secret is referenced) and calls
+`POST /v1/admin/import` on the Worker of the chosen environment. No Cloudflare credential exists in GitHub workflows or
+in agent sessions; secret values were not read. Earlier Worker deploys were pasted by Javier into the Cloudflare
+dashboard editor. Agents must not request or create Cloudflare tokens (Codex, 23 Nov 2026).
+
+Target: Worker `whyhumanoid-premium-test`, D1 `whyhumanoid-premium-test`, Stripe test mode, origin
+https://whyhumanoid-premium-test.javier-198.workers.dev. Production (`whyhumanoid-premium`) is never touched.
+
+**Path A, full staging (site, app and API on one origin). Recommended.** Javier, with his existing Wrangler login
+(`npx wrangler login`, browser OAuth, no new token):
 
 ```sh
-git checkout claude/stoic-maxwell-432hsy
+git fetch origin claude/stoic-maxwell-432hsy && git checkout claude/stoic-maxwell-432hsy
 node tools/build-staging.mjs
 cd server && npm ci
+npx wrangler d1 migrations list whyhumanoid-premium-test --remote --env test
 npx wrangler d1 migrations apply whyhumanoid-premium-test --remote --env test
 npx wrangler deploy --env test --assets .staging
 ```
 
-Then run "Import private workbook" from `main` with target `test` (the Worker on the branch code imports the 20 Nov
-workbook), and `node tools/verify-staging.mjs --base https://whyhumanoid-premium-test.javier-198.workers.dev`.
-Payment events in staging: Stripe test mode only, with test cards and the test webhook; never live keys.
+`wrangler.toml [env.test]` sets the test variables (Stripe test mode, `CHECKOUT_ENABLED=true`, app at `/app/`);
+secrets already on the test Worker are kept. If Javier prefers an API token over the OAuth login, the minimum is
+an account token with Workers Scripts: Edit and D1: Edit on his account (plus Account Settings: Read); he creates and
+uses it himself, never in chat or Git.
+
+**Path B, API only, through the dashboard editor (the path used before).** It cannot upload the 1,308 static files,
+so the site stays on local staging; it serves the API and the app root of the test Worker:
+
+```sh
+node server/scripts/build-dashboard.mjs <esbuild 0.27.7>   # dist/worker.dashboard.js
+```
+
+Built from commit `04ad501` on 23 Nov 2026: 410,848 bytes, sha256
+`0d4522169c8dde8b3f8384a3b5b5ad89a68f49716c116f1dd36e9534c3cea555`; a Node smoke test answered 200 on `/health`,
+`/v1/access` and `/v1/billing/plan` (new plan name). Paste into whyhumanoid-premium-test, Edit code, Deploy; set
+`PREMIUM_URL` as in `[env.test.vars]` if the app should live at `/app/` (with path B leave it at `/`). Apply
+`migrations/0002_relations.sql` and `0003_search.sql` in the D1 console if `d1_migrations` lacks them.
+
+After either path:
+
+1. Actions, "Import private workbook", Run workflow on `main`, target `test` (the Worker's branch code imports the
+   20 Nov workbook; the job prints HTTP 200 and counts only).
+2. `node tools/verify-staging.mjs --base https://whyhumanoid-premium-test.javier-198.workers.dev` (routes, reloads,
+   mobile, old links, sitemap, exposure). Path B: run only the API part, or check `/v1/access`, `/v1/datasets/hardware`
+   (401) and `/v1/datasets/stocks` (200) by hand.
+3. Sandbox purchase by a person (Javier or Codex), Stripe test mode only: sign in with an address Resend's test sender
+   can reach, subscribe with test card 4242 4242 4242 4242, confirm Deployments and Components open, the test
+   webhook delivery succeeded, then cancel in the test portal and check access until period end. A real card is
+   never used; the live Worker is not involved.
+
+### Evidence so far, by kind
+
+| Kind | Status on 23 Nov 2026 |
+|---|---|
+| Unit and API tests over synthetic fixtures (86) | Passed |
+| Local staging: built bundle, real API code, synthetic data, simulated signed test-mode events (`verify-staging --local`, 184 checks) | Passed |
+| Real hosted staging on the test Worker | Not done: needs Path A or B by Javier |
+| Import of the 20 Nov workbook into test D1 | Not done (local dry run of the importer on the export: all tabs read) |
+| Sandbox purchase through Stripe test Checkout and the test webhook | Not done: needs hosted staging and a person |
+| Production | Unchanged |
 
 ### Local staging (no credentials)
 
