@@ -27,6 +27,7 @@ import { robotPresentation } from './robot-presentation.mjs';
 import { renderAtlas } from './atlas-view.mjs';
 import { renderDataAtlas } from './data-atlas-view.mjs';
 import { componentsModel, renderComponentsCategory, renderLockedPage, renderProductPage } from './components-view.mjs';
+import { renderReportPage, renderReportsAtlas } from './reports-view.mjs';
 import { API_ORIGIN } from './build-app.mjs';
 import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
@@ -717,42 +718,35 @@ function otherRobotPage(r, model) {
 }
 
 // ---------- Reports (Javier, 23 Nov 2026): Why Humanoid? analyses and a reviewed catalogue of external reports ----------
-// Only records whose bibliographic data were checked against the public original are listed (data/reports/catalogue.json,
-// checked by tools/reports-source.mjs); findings stay in review and are not published.
-const REPORTS = read('data/reports/catalogue.json').reports;
+// Research Conclusions Atlas (Javier, 24 Nov 2026): the reports, their findings and the coverage matrix, from the public
+// snapshot data/reports/atlas.json (tools/export-reports.mjs, validated against the master and the originals). Every
+// report keeps its address; its page id is the key of the permanent-address registry.
+const REPORTS_ATLAS = read('data/reports/atlas.json');
+const REPORTS = REPORTS_ATLAS.reports;
 export const reportPath = (r) => `/reports/${r.slug}/`;
 export const publishedReports = () => REPORTS;
-const ACCESS_LABEL = { public: 'Public original', 'public-redacted': 'Public redacted version', 'public-summary-of-paid-report': 'Public summary of a paid report' };
-const dateText = (d) => { const [y, m, day] = String(d).split('-'); const M = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; return day ? `${Number(day)} ${M[m - 1]} ${y}` : m ? `${M[m - 1]} ${y}` : y; };
+const reportsHead = () => `<link rel="stylesheet" href="/assets/atlas.css?v=${assetVersion('assets/atlas.css')}">\n<link rel="stylesheet" href="/assets/reports.css?v=${assetVersion('assets/reports.css')}">\n`;
+const reportsTail = () => `\n<script src="/assets/reports-core.js?v=${assetVersion('assets/reports-core.js')}" defer></script>\n<script src="/assets/reports.js?v=${assetVersion('assets/reports.js')}" defer></script>`;
 function reportsCategory(model) {
   const c = CATEGORIES_BY_ID.get('reports');
-  const rows = REPORTS.map((r) => `<tr><td><a href="${reportPath(r)}">${esc(r.title)}</a></td><td>${esc(r.publisher)}</td><td>${esc(dateText(r.published))}</td><td>${ext(r.original_url, 'Original ↗')}</td></tr>`).join('');
-  const body = `${categoryHead(c, model)}
-<section><h2>Why Humanoid? analyses</h2><ul class="cards"><li><a href="/reports/deployment-records/"><b>Humanoid robot deployment records</b></a><span>${model.totals.records} deployment records by status as recorded, sector, country and year. Snapshot ${esc(String(model.projSnapshot).slice(0, 10))}.</span></li></ul></section>
-<section><h2>External reports <span class="dim">(${REPORTS.length})</span></h2>
-<p>Research reports on humanoid robots and physical AI, each with its publisher, date, scope and a link to the original. A report is listed once its title, publisher, date, address and scope have been checked against the original; more are in that review.</p>
-${REPORTS.length ? `<div class="scroll"><table class="dir"><thead><tr><th scope="col">Report</th><th scope="col">Publisher</th><th scope="col">Published</th><th scope="col">Original</th></tr></thead><tbody>${rows}</tbody></table></div>` : '<p class="na">No external report has completed the check yet.</p>'}
-<p class="key">Findings (forecasts, costs, adoption timelines) are being checked one claim at a time against each original, with page or section, and are not published yet. Forecasts from different reports use different scopes, definitions and horizons and are never averaged here.</p></section>`;
-  return catPage(c, model, body, `${c.summary}`);
+  const n = REPORTS_ATLAS.counts;
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, c.label]])}
+<article class="entity atlas-page">
+${renderReportsAtlas(REPORTS_ATLAS, { index: CATEGORIES.indexOf(c) + 1, total: CATEGORIES.length, badge: accessBadge(c) })}`;
+  return catPage(c, model, body, `Research Conclusions Atlas: what ${n.reports} research reports on humanoid robots agree on, where they diverge and which assumptions drive their numbers. ${n.findings} findings, ${n.findings_checked} checked against the originals. Free.`, {
+    title: 'Research Conclusions Atlas: what humanoid robot reports agree on and where they diverge · Why Humanoid?',
+    head: reportsHead(),
+    tail: reportsTail(),
+    wide: true,
+  });
 }
 function externalReportPage(r) {
-  const summary = `${r.title}, by ${r.publisher}${r.authors ? ` (${r.authors})` : ''}, published ${dateText(r.published)}.`;
+  const fs = REPORTS_ATLAS.findings.filter((f) => f.report === r.id);
   const body = `${crumbs([['/', 'Why Humanoid?'], ['/reports/', 'Reports'], [null, r.title]])}
-<article class="entity">
-<p class="kicker">Report · ${esc(r.publisher)}</p>
-<h1>${esc(r.title)}</h1>
-<p class="lede">${esc(r.scope)}</p>
-<section><h2>Bibliographic record</h2>${kv([
-    ['Title', esc(r.title)], ['Publisher', esc(r.publisher)], ['Authors', r.authors ? esc(r.authors) : '<span class="na">Not stated</span>'],
-    ['Published', esc(dateText(r.published))], ['Edition', r.edition ? esc(r.edition) : '<span class="na">Not stated</span>'], ['Format', esc(r.format)],
-    ['Access', esc(ACCESS_LABEL[r.access])], ...(r.restrictions ? [['Restrictions', esc(r.restrictions)]] : []), ...(r.host_note ? [['Hosted by', esc(r.host_note)]] : []),
-    ['Original', ext(r.original_url, `${host(r.original_url)} ↗`)],
-  ])}</section>
-<section><h2>Findings</h2><p>The findings of this report are being checked claim by claim against the original, with page or section, and are not published yet. Read them in the original.</p></section>
-<section><h2>Sources</h2><ul class="sources"><li>${ext(r.original_url, r.original_url)}</li></ul></section>
-<p class="meta">Bibliographic record checked against the public original on ${esc(r.review.checked_on)}. Why Humanoid? links to the publisher's original and does not host the report.</p>
+<article class="entity rp-page">
+${renderReportPage(REPORTS_ATLAS, r)}
 </article>`;
-  return page({ title: `${r.title} (${r.publisher}, ${String(r.published).slice(0, 4)}) · Why Humanoid?`, description: clip(summary), path: reportPath(r), body, type: 'article', section: 'reports' });
+  return page({ title: `${r.title} (${r.publisher}, ${String(r.published).slice(0, 4)}): findings · Why Humanoid?`, description: clip(`${r.title}, by ${r.publisher}: scope, access and ${fs.length} findings, each with its page in the original, units, years and check. ${r.scope}`), path: reportPath(r), body, type: 'article', section: 'reports', head: reportsHead(), tail: reportsTail() });
 }
 
 function subscribePage(model) {
@@ -871,7 +865,7 @@ export function buildPages(registry = readRegistry()) {
   // Registry: every slug ever published stays reachable.
   const nextReports = {};
   for (const [id, slugs] of Object.entries(registry.reports ?? {})) nextReports[id] = [...slugs];
-  for (const r of REPORTS) { (nextReports[r.id] ??= []).includes(r.slug) || nextReports[r.id].push(r.slug); }
+  for (const r of REPORTS) { (nextReports[r.page_id] ??= []).includes(r.slug) || nextReports[r.page_id].push(r.slug); }
   const next = { note: 'Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects. Robots are served at /humanoids/<slug>/ since 23 Nov 2026; every robot slug also answers at /robots/<slug>/ with a redirect.', robots: {}, companies: {}, other_robots: {}, reports: nextReports };
   for (const [id, slugs] of Object.entries(registry.robots ?? {})) next.robots[id] = [...slugs];
   for (const [id, v] of Object.entries(registry.companies ?? {})) next.companies[id] = { slugs: [...v.slugs], robots: [...(v.robots ?? [])], organization_ids: [...(v.organization_ids ?? [])] };
@@ -905,7 +899,7 @@ export function buildPages(registry = readRegistry()) {
       add(`companies/${s}/index.html`, c ? redirectPage(c.path, c.name) : gonePage(`/companies/${s}/`, 'company'));
     }
   }
-  const reportById = new Map(REPORTS.map((r) => [r.id, r]));
+  const reportById = new Map(REPORTS.map((r) => [r.page_id, r]));
   for (const [id, slugs] of Object.entries(next.reports)) {
     const r = reportById.get(id);
     for (const s of slugs) {

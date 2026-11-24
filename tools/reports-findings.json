@@ -1,0 +1,4011 @@
+{
+ "version": 1,
+ "note": "Reviewed findings of the Reports tab (Research Conclusions Atlas). Each finding cites the master cell it comes from (report id, column, exact excerpt) and, when checked, the page of the public original with a short phrase found there. Checked against originals downloaded on 2026-11-24; originals are not stored in Git.",
+ "checked_on": "2026-11-24",
+ "reports": [
+  {
+   "id": "RPT-001",
+   "page_id": "rpt_pham_2026_robotics-design-study",
+   "slug": "pham-robotics-design-study-2026",
+   "title": "What robotics companies look like, and what they’re betting on",
+   "short": "Pham · Robotics Design Study",
+   "publisher": "Binh Pham (flower and bolt)",
+   "authors": "Binh Pham",
+   "published": "2026-11",
+   "published_note": "Data as of 19 November 2026",
+   "format": "Interactive web study with a Markdown report",
+   "url": "https://pham-tuan-binh.github.io/robotics-design-study/viewer/#report",
+   "host_note": null,
+   "access": "public",
+   "scope": "An independent study of 652 robot companies in 44 countries: their robots, brands and words, the money behind them (912 funding rounds of 411 venture-backed companies) and the AI models they release. Covers robots of all kinds, with humanoids and robot AI as one group.",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "author",
+     "data date",
+     "url",
+     "scope"
+    ],
+    "locator": "report.md, title and \"Method\""
+   }
+  },
+  {
+   "id": "RPT-002",
+   "page_id": "rpt_bofa_2026_physical-ai-part-2",
+   "slug": "bofa-physical-ai-part-2-2026",
+   "title": "Physical AI, part 2: Humanoid robots",
+   "short": "Bank of America · Physical AI part 2",
+   "publisher": "Bank of America Institute",
+   "authors": null,
+   "published": "2026-03-12",
+   "format": "PDF, 8 pages",
+   "url": "https://institute.bankofamerica.com/content/dam/transformation/physical-ai-part-2.pdf",
+   "host_note": null,
+   "access": "public",
+   "scope": "An eight-page explainer by the Bank of America Institute. Its forecasts (shipments, population, bill of materials) are BofA Global Research's; the 2027 sector split is Counterpoint Research's.",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "date",
+     "url",
+     "scope"
+    ],
+    "locator": "PDF p.1-8"
+   }
+  },
+  {
+   "id": "RPT-003",
+   "page_id": "rpt_morgan-stanley_2025_humanoid-100",
+   "slug": "morgan-stanley-humanoid-100-2025",
+   "title": "The Humanoid 100: Mapping the Humanoid Robot Value Chain",
+   "short": "Morgan Stanley · Humanoid 100",
+   "publisher": "Morgan Stanley Research",
+   "authors": null,
+   "published": "2025-02-06",
+   "published_note": "As extracted; not yet checked against the original",
+   "format": "PDF (86 pages, as extracted)",
+   "url": "https://advisor.morganstanley.com/john.howard/documents/field/j/jo/john-howard/The_Humanoid_100_-_Mapping_the_Humanoid_Robot_Value_Chain.pdf",
+   "host_note": "Hosted on a Morgan Stanley adviser page",
+   "access": "public",
+   "scope": "Equity research listing 100 public companies across the humanoid value chain, with US and China market models (as extracted).",
+   "check": {
+    "status": "pending_unreachable",
+    "checked": [],
+    "locator": null,
+    "note": "The original could not be opened from the review environment (the server closed the connection). Its findings are shown as extracted and are not plotted."
+   }
+  },
+  {
+   "id": "RPT-004",
+   "page_id": "rpt_barclays_2026_ai-gets-physical",
+   "slug": "barclays-ai-gets-physical-2026",
+   "title": "AI Gets Physical (Impact Series 14)",
+   "short": "Barclays · AI Gets Physical",
+   "publisher": "Barclays Research",
+   "authors": null,
+   "published": "2026-01-14",
+   "format": "PDF, 23 pages",
+   "url": "https://www.ib.barclays/content/dam/barclaysmicrosites/ibpublic/documents/our-insights/impactseries14/Barclays_Impact_Series_14_AI_Gets_Physical.pdf",
+   "host_note": null,
+   "access": "public",
+   "scope": "A thematic report on humanoid robots and physical AI, with a market model in low, base and high cases built from AlphaSense sources (PDF p.17).",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "date",
+     "url",
+     "scope"
+    ],
+    "locator": "PDF p.1-2, p.17"
+   }
+  },
+  {
+   "id": "RPT-005",
+   "page_id": "rpt_intel_2026_robotics-readiness-gap",
+   "slug": "intel-robotics-readiness-gap-2026",
+   "title": "The Robotics Readiness Gap",
+   "short": "Intel · Robotics Readiness Gap",
+   "publisher": "Intel",
+   "authors": null,
+   "published": "2026",
+   "published_note": "Month not stated; PDF dated August 2026 (as extracted)",
+   "format": "PDF (as extracted)",
+   "url": "https://www.intel.com/content/www/us/en/content-details/926360/the-robotics-readiness-gap-report.html",
+   "host_note": null,
+   "access": "public",
+   "scope": "An opinion survey of 800 senior leaders in organisations with revenue of at least US$500 million in Germany, Japan, South Korea and China, about robotics broadly (as extracted).",
+   "check": {
+    "status": "pending_unreachable",
+    "checked": [],
+    "locator": null,
+    "note": "The publisher's page refused the review environment (HTTP 403). Its findings are shown as extracted and are not plotted."
+   }
+  },
+  {
+   "id": "RPT-006",
+   "page_id": "rpt_anthropic_2026_what-work-can-robots-do",
+   "slug": "anthropic-what-work-can-robots-do-2026",
+   "title": "What work can robots do?",
+   "short": "Anthropic · What work can robots do?",
+   "publisher": "Anthropic",
+   "authors": "Russell Legate-Yang and Maxim Massenkoff",
+   "published": "2026-09-30",
+   "format": "Web article with a PDF version",
+   "url": "https://www.anthropic.com/research/what-work-can-robots-do",
+   "host_note": null,
+   "access": "public",
+   "scope": "Builds a task-level index of which US work tasks robots could perform, scoring about 19,000 O*NET tasks with Claude and cited robot sources, and compares job exposure with historical wage and employment data and with robot costs. Covers robots in general, not only humanoids.",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "authors",
+     "date",
+     "url",
+     "scope"
+    ],
+    "locator": "Sections \"Introduction\", \"Measuring exposure\""
+   }
+  },
+  {
+   "id": "RPT-007",
+   "page_id": "rpt_fayd_2026_humanoid-robotics-physical-ai",
+   "slug": "fayd-humanoid-robotics-physical-ai-2026",
+   "title": "Humanoid Robotics & Physical AI",
+   "short": "Fayd Capital · Sector report",
+   "publisher": "Fayd Capital Group",
+   "authors": "Oleg Godun",
+   "published": "2026-09",
+   "format": "PDF, 17 pages",
+   "url": "https://faydcapitalgroup.com/__l5e/assets-v1/1f594db2-ce33-461b-99ba-ed0707fbe048/humanoid-robotics-sector-report.pdf",
+   "host_note": null,
+   "access": "public",
+   "scope": "Part I of a sector series. It makes no market forecast of its own: it compares other publishers' forecasts, noting they answer different questions, and models cost per productive robot-hour.",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "date",
+     "url",
+     "scope"
+    ],
+    "locator": "PDF p.1, p.7, p.10"
+   }
+  },
+  {
+   "id": "RPT-008",
+   "page_id": "rpt_bluebay_2026_physical-ai-rise-of-the-machines",
+   "slug": "bluebay-physical-ai-rise-of-the-machines-2026",
+   "title": "Physical AI – the rise of the machines",
+   "short": "RBC BlueBay · Rise of the machines",
+   "publisher": "RBC BlueBay Asset Management",
+   "authors": "Richard Farrell",
+   "published": "2026-09",
+   "format": "PDF, 7 pages",
+   "url": "https://www.rbcbluebay.com/globalassets/documents/physical-ai-the-rise-of-the-machines.pdf",
+   "host_note": null,
+   "access": "public",
+   "scope": "A seven-page investor note. Most of its figures cite BofA Global Research, McKinsey and Morgan Stanley; it repeats them rather than adding new estimates.",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "date",
+     "url",
+     "scope"
+    ],
+    "locator": "PDF p.1-5"
+   }
+  },
+  {
+   "id": "RPT-009",
+   "page_id": "rpt_capgemini_2026_physical-ai",
+   "slug": "capgemini-physical-ai-2026",
+   "title": "Physical AI: Taking human-robot collaboration to the next level",
+   "short": "Capgemini · Physical AI",
+   "publisher": "Capgemini Research Institute",
+   "authors": null,
+   "published": "2026",
+   "published_note": "Month not printed; survey January–February 2026",
+   "format": "PDF, 140 pages",
+   "url": "https://conteudos.meo.pt/empresarial/Documentos/Outros/CRI_Physical-AI-Report.pdf",
+   "host_note": "The PDF is hosted by MEO; the publisher is Capgemini Research Institute.",
+   "access": "public",
+   "scope": "A survey of 1,678 executives across 15 industries (January–February 2026) plus expert interviews, about physical AI in robotics broadly, with a chapter on humanoids.",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "survey dates",
+     "sample",
+     "url",
+     "scope"
+    ],
+    "locator": "PDF p.4, p.38"
+   }
+  },
+  {
+   "id": "RPT-010",
+   "page_id": "rpt_nexery_2026_humanoid-robot-study",
+   "slug": "nexery-humanoid-robot-study-2026",
+   "title": "2026 Humanoid Robot Study",
+   "short": "NEXERY · Humanoid Robot Study",
+   "publisher": "NEXERY",
+   "authors": "Tobias Bock",
+   "published": "2026-04",
+   "format": "PDF, 31 pages",
+   "url": "https://consult-ing.ag/uploads/pdfs/2026_ING.-Humanoid-Robot-Study.pdf",
+   "host_note": "Hosted on consult-ing.ag",
+   "access": "public",
+   "scope": "A market analysis of about 90 commercial humanoid vendors and a survey of 152 industry participants about deploying embodied AI (humanoids).",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "author",
+     "date",
+     "url",
+     "scope"
+    ],
+    "locator": "PDF p.1, p.7, p.10, p.30"
+   }
+  },
+  {
+   "id": "RPT-011",
+   "page_id": "rpt_berg_2026_future-of-humanoid-robots",
+   "slug": "berg-insight-future-of-humanoid-robots-2026",
+   "title": "The Future of Humanoid Robots (1st Edition)",
+   "short": "Berg Insight · Future of Humanoid Robots",
+   "publisher": "Berg Insight",
+   "authors": "Martin Apelgren, Emilia Rickard and Julia Wahlén",
+   "published": "2026-09",
+   "format": "Public 6-page summary of a 160-page paid report",
+   "url": "https://media.berginsight.com/2026/09/03192912/bi-humanoid1-ps.pdf",
+   "host_note": null,
+   "access": "public-summary-of-paid-report",
+   "restrictions": "Only the public summary was reviewed; the paid report and its models were not seen.",
+   "scope": "A strategy report with 15-year forecasts of shipments, installed base and market value. Only the public summary is available.",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "authors",
+     "date",
+     "url",
+     "scope"
+    ],
+    "locator": "PDF p.1, p.5"
+   }
+  },
+  {
+   "id": "RPT-012",
+   "page_id": "rpt_goldman-sachs_2024_humanoid-robot-ai-accelerant",
+   "slug": "goldman-sachs-humanoid-robot-ai-accelerant-2024",
+   "title": "Global Automation: Humanoid Robot: The AI accelerant",
+   "short": "Goldman Sachs · The AI accelerant",
+   "publisher": "Goldman Sachs Equity Research",
+   "authors": "Jacqueline Du and others",
+   "published": "2024-01-08",
+   "format": "Redacted public version, 22 of 39 pages",
+   "url": "https://www.goldmansachs.com/pdfs/insights/pages/gs-research/global-automation-humanoid-robot-the-ai-accelerant/report.pdf",
+   "host_note": null,
+   "access": "public-redacted",
+   "restrictions": "Many exhibits are redacted in the public edition.",
+   "scope": "Equity research raising Goldman Sachs' humanoid forecasts in January 2024. Its figures are forecasts made in that edition, not later outcomes.",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "date",
+     "url",
+     "scope"
+    ],
+    "locator": "PDF p.1"
+   }
+  }
+ ],
+ "findings": [
+  {
+   "id": "bofa-ship-2025",
+   "report": "RPT-002",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "estimate",
+   "statement": "About 20,000 humanoid robots shipped worldwide in 2025.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "20,000 units in 2025"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "from 20,000 units in 2025 to 10 million by 2035",
+    "page": 2
+   },
+   "value": 20000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2025,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-shipments"
+  },
+  {
+   "id": "bofa-ship-2026",
+   "report": "RPT-002",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "forecast",
+   "statement": "Annual shipments of 90,000 humanoid robots expected in 2026.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "90,000 in 2026"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "In 2026 alone, sales are expected to reach 90,000",
+    "page": 2
+   },
+   "value": 90000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2026,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-shipments"
+  },
+  {
+   "id": "bofa-ship-2030",
+   "report": "RPT-002",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "forecast",
+   "statement": "Annual shipments projected at 1.2 million in 2030.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "1.2 million in 2030"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "1.2 million in 2030",
+    "page": 2
+   },
+   "value": 1200000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2030,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-shipments"
+  },
+  {
+   "id": "bofa-ship-2035",
+   "report": "RPT-002",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "forecast",
+   "statement": "Annual shipments of 10 million humanoid robots by 2035, an 86% compound annual growth rate from 2025.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "10 million by 2035 (86% CAGR)"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "to 10 million by 2035, implying an 86% compound annual growth rate",
+    "page": 2
+   },
+   "value": 10000000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2035,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-shipments"
+  },
+  {
+   "id": "bluebay-ship-2035",
+   "report": "RPT-008",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "forecast",
+   "statement": "Repeats BofA Global Research: about 20,000 units in 2025 rising to 10 million a year by 2035.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "~20,000 units in 2025 to 10 million annually by 2035E, 86% CAGR (BofA)"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "approximately 20,000 units in 2025 to",
+    "page": 2
+   },
+   "value": 10000000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2035,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-shipments",
+   "limits": "A repetition of the BofA Global Research forecast, not an independent estimate."
+  },
+  {
+   "id": "fayd-bofa-ship-2035",
+   "report": "RPT-007",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "forecast",
+   "statement": "Cites BofA (March 2026): 90,000 units in 2026, 1.2 million in 2030 and 10 million in 2035, about seven times Goldman Sachs' 2035 figure.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "BofA (Mar 2026) 90,000 in 2026E, 1.2 million 2030E, 10 million 2035E"
+   },
+   "locator": "PDF p.10",
+   "check": {
+    "status": "verified",
+    "phrase": "and 10 million in 2035E, roughly seven times Goldman",
+    "page": 10
+   },
+   "value": 10000000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2035,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-shipments",
+   "limits": "A citation of the BofA forecast, not an independent estimate."
+  },
+  {
+   "id": "gs-ship-2035",
+   "report": "RPT-012",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "forecast",
+   "statement": "Base case: 1.4 million humanoid robots shipped in 2035, four times the previous estimate.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "Base case: 1.4mn units shipped by 2035 (4x prior estimate)"
+   },
+   "locator": "PDF p.1",
+   "check": {
+    "status": "verified",
+    "phrase": "4-fold increase in our shipments estimate to 1.4mn units",
+    "page": 1
+   },
+   "value": 1400000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2035,
+   "scenario": "Base",
+   "reference_year": 2024,
+   "attribution": "Goldman Sachs Global Investment Research",
+   "estimate": "gs-2024-shipments-2035",
+   "limits": "A forecast made in January 2024; the public edition is redacted."
+  },
+  {
+   "id": "gs-ship-bull-2031",
+   "report": "RPT-012",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "scenario",
+   "statement": "Bull case: shipments reach 1 million units by 2031, four years earlier than previously expected.",
+   "cell": {
+    "column": "Scenarios (base / bull / bear)",
+    "excerpt": "Bull: 1mn units shipped by 2031E"
+   },
+   "locator": "PDF p.4",
+   "check": {
+    "status": "verified",
+    "phrase": "robot shipment to hit 1mn units by 2031E",
+    "page": 4
+   },
+   "value": 1000000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2031,
+   "scenario": "Bull",
+   "reference_year": 2024,
+   "attribution": "Goldman Sachs Global Investment Research",
+   "estimate": "gs-2024-bull-2031"
+  },
+  {
+   "id": "fayd-gs-ship-2035",
+   "report": "RPT-007",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "forecast",
+   "statement": "Cites Goldman Sachs (February 2024): roughly 1.4 million annual shipments by 2035.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "Goldman Sachs (Feb 2024) ~1.4 million annual shipments by 2035"
+   },
+   "locator": "PDF p.10",
+   "check": {
+    "status": "verified",
+    "phrase": "roughly 1.4 million annual shipments by that year",
+    "page": 10
+   },
+   "value": 1400000,
+   "unit": "units",
+   "qualifier": "about",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2035,
+   "attribution": "Goldman Sachs",
+   "estimate": "gs-2024-shipments-2035",
+   "limits": "A citation of the Goldman Sachs forecast, not an independent estimate."
+  },
+  {
+   "id": "fayd-gs-ship-2030",
+   "report": "RPT-007",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "forecast",
+   "statement": "Cites Goldman Sachs: more than 250,000 annual shipments by 2030.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": ">250,000 by 2030"
+   },
+   "locator": "PDF p.10",
+   "check": {
+    "status": "verified",
+    "phrase": "more than 250,000 annual shipments by 2030",
+    "page": 10
+   },
+   "value": 250000,
+   "unit": "units",
+   "qualifier": "more than",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2030,
+   "attribution": "Goldman Sachs",
+   "estimate": "gs-2024-shipments-2030",
+   "limits": "Known here only through Fayd's citation; not in the redacted Goldman edition reviewed."
+  },
+  {
+   "id": "fayd-bcg-span-2030",
+   "report": "RPT-007",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "estimate",
+   "statement": "Cites BCG (April 2026): published forecasts for 2030 span from below 1 million to above 6 million annual units.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "BCG (Apr 2026): published 2030 forecasts span <1 million to >6 million annual units"
+   },
+   "locator": "PDF p.10",
+   "check": {
+    "status": "verified",
+    "phrase": "published 2030 forecasts span from below 1 million to above 6 million annual units",
+    "page": 10
+   },
+   "min": 1000000,
+   "max": 6000000,
+   "unit": "units",
+   "qualifier": "span of published forecasts",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2030,
+   "attribution": "BCG",
+   "estimate": "bcg-2026-forecast-span-2030",
+   "limits": "The spread of other publishers' forecasts, not a forecast and not a confidence interval."
+  },
+  {
+   "id": "berg-ship-2025",
+   "report": "RPT-011",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "estimate",
+   "statement": "Annual humanoid robot shipments of 16,000 units in 2025.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "16,000 units in 2025"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "from 16,000 units in 2025 to 26 million units by 2040",
+    "page": 2
+   },
+   "value": 16000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2025,
+   "attribution": "Berg Insight",
+   "estimate": "berg-2026-shipments"
+  },
+  {
+   "id": "berg-ship-2040",
+   "report": "RPT-011",
+   "theme": "market",
+   "metric": "shipments_annual",
+   "kind": "forecast",
+   "statement": "Annual shipments growing to 26 million units by 2040 (63.7% compound annual growth).",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "26 million by 2040 (63.7% CAGR)"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "to 26 million units by 2040",
+    "page": 2
+   },
+   "value": 26000000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots",
+   "target_year": 2040,
+   "attribution": "Berg Insight",
+   "estimate": "berg-2026-shipments",
+   "limits": "From the public summary of a paid 160-page report; the full model is not public."
+  },
+  {
+   "id": "ubtech-walker-2027",
+   "report": "RPT-004",
+   "theme": "market",
+   "metric": "company_target",
+   "kind": "forecast",
+   "statement": "Company target reported by Barclays: UBTECH aims for 500 Walker S2 units in 2025 and 10,000 a year by 2027.",
+   "cell": {
+    "column": "Humanoid unit sales / shipments forecast",
+    "excerpt": "UBTECH Walker S2 targeting 500 units in 2025 and 10K annually by 2027"
+   },
+   "locator": "PDF p.14",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "geography": "China",
+   "scope": "One company (UBTECH Walker S2)",
+   "target_year": 2027,
+   "attribution": "UBTECH (company target)",
+   "limits": "A company target, not a market forecast."
+  },
+  {
+   "id": "bofa-pop-2040",
+   "report": "RPT-002",
+   "theme": "market",
+   "metric": "installed_base",
+   "kind": "forecast",
+   "statement": "The global humanoid robot population could reach 300 million by 2040.",
+   "cell": {
+    "column": "Installed base / units in operation",
+    "excerpt": "could reach 300 million by 2040"
+   },
+   "locator": "PDF p.3",
+   "check": {
+    "status": "verified",
+    "phrase": "could reach 300 million by 2040",
+    "page": 3
+   },
+   "value": 300000000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots in operation",
+   "target_year": 2040,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-population"
+  },
+  {
+   "id": "bofa-pop-2060",
+   "report": "RPT-002",
+   "theme": "market",
+   "metric": "installed_base",
+   "kind": "forecast",
+   "statement": "Humanoid units in operation could reach three billion by 2060, more than cars per capita; household robots would be the largest share (62%, about two billion).",
+   "cell": {
+    "column": "Installed base / units in operation",
+    "excerpt": "3 billion by 2060"
+   },
+   "locator": "PDF p.1, p.3",
+   "check": {
+    "status": "verified",
+    "phrase": "could reach three billion by 2060",
+    "page": 1
+   },
+   "value": 3000000000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Humanoid robots in operation",
+   "target_year": 2060,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-population"
+  },
+  {
+   "id": "berg-base-2025",
+   "report": "RPT-011",
+   "theme": "market",
+   "metric": "installed_base",
+   "kind": "estimate",
+   "statement": "Active installed base of 21,000 humanoid robots at the end of 2025.",
+   "cell": {
+    "column": "Installed base / units in operation",
+    "excerpt": "from 21,000 units at end of 2025"
+   },
+   "locator": "PDF p.5",
+   "check": {
+    "status": "verified",
+    "phrase": "from 21,000 units at the end of 2025",
+    "page": 5
+   },
+   "value": 21000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Active humanoid robots",
+   "target_year": 2025,
+   "attribution": "Berg Insight",
+   "estimate": "berg-2026-installed-base"
+  },
+  {
+   "id": "berg-base-2040",
+   "report": "RPT-011",
+   "theme": "market",
+   "metric": "installed_base",
+   "kind": "forecast",
+   "statement": "Active installed base reaching 83.0 million units by 2040 (73.7% compound annual growth).",
+   "cell": {
+    "column": "Installed base / units in operation",
+    "excerpt": "83.0 million by 2040 (73.7% CAGR)"
+   },
+   "locator": "PDF p.5",
+   "check": {
+    "status": "verified",
+    "phrase": "to 83.0 million units by 2040",
+    "page": 5
+   },
+   "value": 83000000,
+   "unit": "units",
+   "geography": "Global",
+   "scope": "Active humanoid robots",
+   "target_year": 2040,
+   "attribution": "Berg Insight",
+   "estimate": "berg-2026-installed-base"
+  },
+  {
+   "id": "fayd-ms-inuse-2050",
+   "report": "RPT-007",
+   "theme": "market",
+   "metric": "installed_base",
+   "kind": "forecast",
+   "statement": "Cites Morgan Stanley (May 2025): more than 1 billion humanoids in use by 2050, around 90% industrial or commercial.",
+   "cell": {
+    "column": "Installed base / units in operation",
+    "excerpt": ">1 billion humanoids in use by 2050"
+   },
+   "locator": "PDF p.10",
+   "check": {
+    "status": "verified",
+    "phrase": "more than 1 billion humanoids in use by 2050",
+    "page": 10
+   },
+   "value": 1000000000,
+   "unit": "units",
+   "qualifier": "more than",
+   "geography": "Global",
+   "scope": "Humanoid robots in use",
+   "target_year": 2050,
+   "attribution": "Morgan Stanley (May 2025)",
+   "estimate": "ms-2025-in-use-2050",
+   "limits": "A different Morgan Stanley publication from The Humanoid 100; known here through Fayd's citation."
+  },
+  {
+   "id": "ms-us-pop",
+   "report": "RPT-003",
+   "theme": "market",
+   "metric": "installed_base",
+   "kind": "forecast",
+   "statement": "US humanoid population (installed base) of 8 million units by 2040 and 63 million by 2050, as extracted.",
+   "cell": {
+    "column": "Installed base / units in operation",
+    "excerpt": "US humanoid population (cumulative/installed base): 8 million units by 2040, 63 million by 2050"
+   },
+   "locator": "p.28 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "geography": "United States",
+   "scope": "Humanoid robots, installed base",
+   "target_year": 2050,
+   "attribution": "Morgan Stanley Research"
+  },
+  {
+   "id": "gs-lifecycle",
+   "report": "RPT-012",
+   "theme": "market",
+   "metric": "installed_base",
+   "kind": "qualitative",
+   "statement": "Installed-base forecasts assume a five-year robot life cycle; the figures themselves are redacted in the public edition.",
+   "cell": {
+    "column": "Installed base / units in operation",
+    "excerpt": "Assumes a 5-year life cycle in install-base forecasts (figures redacted)"
+   },
+   "locator": "PDF p.7",
+   "check": {
+    "status": "verified",
+    "phrase": "We assume a 5-year life cycle in our installbase forecasts",
+    "page": 7
+   },
+   "attribution": "Goldman Sachs Global Investment Research",
+   "limits": "Redacted public edition."
+  },
+  {
+   "id": "nexery-millions-2030",
+   "report": "RPT-010",
+   "theme": "market",
+   "metric": "installed_base",
+   "kind": "qualitative",
+   "statement": "Cites unnamed \"current projections\" that the market could reach millions of deployed units by 2030; NEXERY makes no forecast of its own.",
+   "cell": {
+    "column": "Installed base / units in operation",
+    "excerpt": "Millions of deployed units by 2030 (external projections, as stated)"
+   },
+   "locator": "PDF p.5",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "geography": "Global",
+   "target_year": 2030,
+   "attribution": "Unnamed external projections",
+   "limits": "Origin not identified; not plotted."
+  },
+  {
+   "id": "berg-rev-2025",
+   "report": "RPT-011",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "estimate",
+   "statement": "Humanoid robot market value of US$890 million in 2025.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "US$890 million (2025)"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "from US$ 890 million",
+    "page": 2
+   },
+   "value": 890000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "geography": "Global",
+   "scope": "Humanoid robot market",
+   "target_year": 2025,
+   "attribution": "Berg Insight",
+   "estimate": "berg-2026-market"
+  },
+  {
+   "id": "berg-rev-2040",
+   "report": "RPT-011",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "forecast",
+   "statement": "Market value forecast at about US$554 billion in 2040.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "~US$554 billion (2040)"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "approximately US$ 554 billion",
+    "page": 2
+   },
+   "value": 554000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "qualifier": "about",
+   "geography": "Global",
+   "scope": "Humanoid robot market",
+   "target_year": 2040,
+   "attribution": "Berg Insight",
+   "estimate": "berg-2026-market"
+  },
+  {
+   "id": "bluebay-rev-2025",
+   "report": "RPT-008",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "estimate",
+   "statement": "Market of roughly US$7 billion in 2025 (BofA).",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "~USD7bn in 2025"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "from roughly USD7bn in 2025",
+    "page": 2
+   },
+   "value": 7000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "qualifier": "about",
+   "geography": "Global",
+   "scope": "Humanoid robot market",
+   "target_year": 2025,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-market"
+  },
+  {
+   "id": "bluebay-rev-2033",
+   "report": "RPT-008",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "forecast",
+   "statement": "Market expanding to US$100 billion by 2033, a 40% compound annual growth rate (BofA).",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "USD100bn by 2033E, 40% CAGR 2025-33E (BofA)"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "to USD100bn by 2033E",
+    "page": 2
+   },
+   "value": 100000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "geography": "Global",
+   "scope": "Humanoid robot market",
+   "target_year": 2033,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-market"
+  },
+  {
+   "id": "barclays-rev-today",
+   "report": "RPT-004",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "estimate",
+   "statement": "The humanoid market is just US$2 to 3 billion today.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "Market $2-3 billion today"
+   },
+   "locator": "PDF p.3, p.17",
+   "check": {
+    "status": "verified",
+    "phrase": "just $2-3 billion today",
+    "page": 17
+   },
+   "min": 2000000000.0,
+   "max": 3000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "geography": "Global",
+   "scope": "Humanoid robot market",
+   "target_year": 2025,
+   "reference_year": 2026,
+   "attribution": "Barclays Research",
+   "estimate": "barclays-2026-market",
+   "limits": "\"Today\" in a report dated January 2026; plotted at 2025."
+  },
+  {
+   "id": "barclays-rev-2030",
+   "report": "RPT-004",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "forecast",
+   "statement": "Adoption gradual until 2030, when projections range from US$10 to 25 billion.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "2030 projections range $10-25 billion"
+   },
+   "locator": "PDF p.17",
+   "check": {
+    "status": "verified",
+    "phrase": "when projections range from $10- 25 billion",
+    "page": 17
+   },
+   "min": 10000000000.0,
+   "max": 25000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "qualifier": "range",
+   "geography": "Global",
+   "scope": "Humanoid robot market",
+   "target_year": 2030,
+   "attribution": "Barclays Research (AlphaSense sources)",
+   "estimate": "barclays-2026-market"
+  },
+  {
+   "id": "barclays-rev-2035-base",
+   "report": "RPT-004",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "forecast",
+   "statement": "Baseline forecast of around US$40 billion by 2035.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "2035 baseline ~$40 billion"
+   },
+   "locator": "PDF p.17",
+   "check": {
+    "status": "verified",
+    "phrase": "our baseline forecast reaches around $40 billion",
+    "page": 17
+   },
+   "value": 40000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "qualifier": "about",
+   "geography": "Global",
+   "scope": "Humanoid robot market",
+   "target_year": 2035,
+   "scenario": "Baseline",
+   "attribution": "Barclays Research",
+   "estimate": "barclays-2026-market"
+  },
+  {
+   "id": "barclays-rev-2035-high",
+   "report": "RPT-004",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "scenario",
+   "statement": "Most optimistic scenarios reach as much as US$200 billion by 2035.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "up to $200 billion in most-optimistic scenarios"
+   },
+   "locator": "PDF p.17",
+   "check": {
+    "status": "verified",
+    "phrase": "it climbs as high as $200 billion",
+    "page": 17
+   },
+   "value": 200000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "qualifier": "up to",
+   "geography": "Global",
+   "scope": "Humanoid robot market",
+   "target_year": 2035,
+   "scenario": "Most optimistic",
+   "attribution": "Barclays Research",
+   "estimate": "barclays-2026-market"
+  },
+  {
+   "id": "gs-tam-2035",
+   "report": "RPT-012",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "forecast",
+   "statement": "Raises its 2035 global humanoid robot market estimate (which it calls TAM) to US$38 billion from US$6 billion.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "2035 global humanoid TAM US$38bn (up from US$6bn)"
+   },
+   "locator": "PDF p.1",
+   "check": {
+    "status": "verified",
+    "phrase": "we raise our 2035 TAM forecast to US$38bn",
+    "page": 1
+   },
+   "value": 38000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "geography": "Global",
+   "scope": "Humanoid robot market (the source calls it TAM)",
+   "target_year": 2035,
+   "scenario": "Base",
+   "reference_year": 2024,
+   "attribution": "Goldman Sachs Global Investment Research",
+   "estimate": "gs-2024-market-2035",
+   "limits": "A forecast made in January 2024; plotted as an annual market estimate, which is how the report builds it from shipments."
+  },
+  {
+   "id": "fayd-gs-rev-2035",
+   "report": "RPT-007",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "forecast",
+   "statement": "Cites Goldman Sachs (February 2024): a humanoid market of about US$38 billion by 2035.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "Cites Goldman Sachs ~$38 billion by 2035"
+   },
+   "locator": "PDF p.10",
+   "check": {
+    "status": "verified",
+    "phrase": "a humanoid market of approximately $38 billion by 2035",
+    "page": 10
+   },
+   "value": 38000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "qualifier": "about",
+   "geography": "Global",
+   "scope": "Humanoid robot market",
+   "target_year": 2035,
+   "attribution": "Goldman Sachs",
+   "estimate": "gs-2024-market-2035",
+   "limits": "A citation of the Goldman Sachs estimate."
+  },
+  {
+   "id": "ms-us-rev",
+   "report": "RPT-003",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "forecast",
+   "statement": "US humanoid revenue of about US$4 billion by 2030, US$240 billion by 2040 and US$1 trillion by 2050, as extracted.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "US humanoid revenue ~$4bn by 2030, ~$240bn by 2040, ~$1 trillion by 2050"
+   },
+   "locator": "p.53 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "geography": "United States",
+   "scope": "Humanoid robot revenue",
+   "attribution": "Morgan Stanley Research"
+  },
+  {
+   "id": "ms-china-ambiguous",
+   "report": "RPT-003",
+   "theme": "market",
+   "metric": "market_revenue",
+   "kind": "forecast",
+   "statement": "China market and volume figures are listed against more years than values (Rmb12bn / Rmb216bn / Rmb6tr against 2030, 2035, 2040 and 2050), so years cannot be assigned. Withheld until checked against the original.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "China market Rmb12bn / Rmb216bn / Rmb6tr 'by 2030e/35e/40e/50e' (as written in report)"
+   },
+   "locator": "p.54 (as extracted)",
+   "check": {
+    "status": "withheld",
+    "phrase": null,
+    "page": null
+   },
+   "geography": "China",
+   "attribution": "Morgan Stanley Research",
+   "limits": "Ambiguous year mapping; never assigned positionally."
+  },
+  {
+   "id": "capg-physical-gdp",
+   "report": "RPT-009",
+   "theme": "market",
+   "metric": "broad_opportunity",
+   "kind": "estimate",
+   "statement": "Physical industries add up to somewhere between US$50 and 80 trillion of global GDP (an NVIDIA interview in the report).",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "Physical industries add up to $50-80 trillion of GDP (NVIDIA interview)"
+   },
+   "locator": "PDF p.20",
+   "check": {
+    "status": "verified",
+    "phrase": "somewhere between $50–80 trillion",
+    "page": 20
+   },
+   "min": 50000000000000.0,
+   "max": 80000000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "geography": "Global",
+   "scope": "GDP of physical industries, not robot sales",
+   "attribution": "NVIDIA (interview)",
+   "estimate": "nvidia-physical-industries-gdp",
+   "limits": "A measure of economic activity that robots could address, not a market for robots."
+  },
+  {
+   "id": "fayd-ms-ecosystem-2050",
+   "report": "RPT-007",
+   "theme": "market",
+   "metric": "broad_opportunity",
+   "kind": "forecast",
+   "statement": "Cites Morgan Stanley (May 2025): a broader ecosystem estimate above US$5 trillion, including supply chains, repair, maintenance and support.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "Morgan Stanley >$5 trillion ecosystem estimate"
+   },
+   "locator": "PDF p.10",
+   "check": {
+    "status": "verified",
+    "phrase": "Its broader ecosystem estimate exceeds $5 trillion",
+    "page": 10
+   },
+   "value": 5000000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "qualifier": "more than",
+   "geography": "Global",
+   "scope": "Humanoid ecosystem incl. supply chain, repair, maintenance and support",
+   "target_year": 2050,
+   "attribution": "Morgan Stanley (May 2025)",
+   "estimate": "ms-2025-ecosystem-2050",
+   "limits": "Includes related services; not annual robot sales."
+  },
+  {
+   "id": "ms-60tn-tam",
+   "report": "RPT-003",
+   "theme": "market",
+   "metric": "broad_opportunity",
+   "kind": "estimate",
+   "statement": "The physical embodiment of AI \"touches a $60tn TAM\", as extracted.",
+   "cell": {
+    "column": "Market size / revenue forecast",
+    "excerpt": "Physical embodiment of AI 'touches a $60tn TAM'"
+   },
+   "locator": "p.1 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "geography": "Global",
+   "scope": "Total addressable market as framed by the source",
+   "attribution": "Morgan Stanley Research"
+  },
+  {
+   "id": "ms-labor-market",
+   "report": "RPT-003",
+   "theme": "work",
+   "metric": "labour_value",
+   "kind": "estimate",
+   "statement": "US labour market just short of US$10 trillion; global about US$30 trillion, as extracted.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "US labor market just shy of $10 trillion; global ~$30 trillion"
+   },
+   "locator": "p.28 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Morgan Stanley Research"
+  },
+  {
+   "id": "fayd-industrial-robots",
+   "report": "RPT-007",
+   "theme": "market",
+   "metric": "context_industrial_robots",
+   "kind": "observed",
+   "statement": "Context, not humanoids: more than 600,000 industrial robots installed worldwide in 2025 (up 11%), an operational stock of about 5 million; China installed 354,000 (59%).",
+   "cell": {
+    "column": "Other key figures",
+    "excerpt": ">600,000 industrial robots installed in 2025 (+11%), operational stock ~5 million; China 354,000 (59%)"
+   },
+   "locator": "PDF p.1",
+   "check": {
+    "status": "verified",
+    "phrase": "Global factories installed more than 600,000 industrial robots in 2025",
+    "page": 1
+   },
+   "value": 600000,
+   "unit": "units",
+   "qualifier": "more than",
+   "geography": "Global",
+   "scope": "Industrial robots (all types)",
+   "target_year": 2025,
+   "attribution": "Fayd Capital Group (industry data)"
+  },
+  {
+   "id": "anth-tasks-74",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "technical_exposure",
+   "kind": "estimate",
+   "statement": "Robots can already perform 74% of US physical tasks in some setting, mostly in limited settings.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "Robots can perform 74% of US physical tasks"
+   },
+   "locator": "Section \"Introduction\"",
+   "check": {
+    "status": "verified",
+    "phrase": "robots can already perform 74% of physical tasks in the US",
+    "page": null
+   },
+   "value": 74,
+   "unit": "%",
+   "denominator": "US physical job tasks",
+   "geography": "United States",
+   "scope": "Robots in general, not only humanoids",
+   "reference_year": 2026,
+   "attribution": "Anthropic",
+   "limits": "Technical capability in some setting, not cost-competitive and not jobs lost."
+  },
+  {
+   "id": "anth-hours-34",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "technical_exposure",
+   "kind": "estimate",
+   "statement": "Those physical tasks make up 34% of all US working hours.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "= 34% of working hours"
+   },
+   "locator": "Section \"Introduction\"",
+   "check": {
+    "status": "verified",
+    "phrase": "making up 34% of working hours",
+    "page": null
+   },
+   "value": 34,
+   "unit": "%",
+   "denominator": "All US working hours",
+   "geography": "United States",
+   "scope": "Robots in general",
+   "reference_year": 2026,
+   "attribution": "Anthropic",
+   "limits": "Hours technically exposed, not hours automated."
+  },
+  {
+   "id": "anth-exposed-80",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "technical_exposure",
+   "kind": "estimate",
+   "statement": "About 80% of job tasks by working time are exposed to robots or to language models.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "~80% of tasks by time exposed to robots or LLMs"
+   },
+   "locator": "Section \"Key findings\"",
+   "check": {
+    "status": "verified",
+    "phrase": "about 80% of job tasks by working time are exposed to either robots or LLMs",
+    "page": null
+   },
+   "value": 80,
+   "unit": "%",
+   "qualifier": "about",
+   "denominator": "US job tasks by working time",
+   "geography": "United States",
+   "scope": "Robots and language models together",
+   "reference_year": 2026,
+   "attribution": "Anthropic",
+   "limits": "Exposure, not automation; combines two technologies."
+  },
+  {
+   "id": "anth-costcomp-03",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "economic_exposure",
+   "kind": "estimate",
+   "statement": "Robots are cost-competitive with people for just 0.3% of job tasks today.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Robots cost-competitive for just 0.3% of job tasks today"
+   },
+   "locator": "Section \"Key findings\"",
+   "check": {
+    "status": "verified",
+    "phrase": "Robots are cost-competitive for just 0.3% of job tasks",
+    "page": null
+   },
+   "value": 0.3,
+   "unit": "%",
+   "denominator": "US job tasks",
+   "geography": "United States",
+   "scope": "Robots in general",
+   "reference_year": 2026,
+   "attribution": "Anthropic",
+   "limits": "Cost comparison under the report's cost model."
+  },
+  {
+   "id": "anth-workers-300k",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "economic_exposure",
+   "kind": "estimate",
+   "statement": "About 300,000 US workers have jobs where robots can do 95% of their tasks and are already cost-competitive.",
+   "cell": {
+    "column": "Other key figures",
+    "excerpt": "~300,000 workers for whom robots can do 95% of tasks are cost-competitive today"
+   },
+   "locator": "Section \"Robot costs and adoption\"",
+   "check": {
+    "status": "verified",
+    "phrase": "roughly 300,000 workers for whom robots can do 95% of their tasks",
+    "page": null
+   },
+   "value": 300000,
+   "unit": "workers",
+   "qualifier": "about",
+   "denominator": "US workers",
+   "geography": "United States",
+   "scope": "Robots in general",
+   "reference_year": 2026,
+   "attribution": "Anthropic",
+   "limits": "Workers in occupations where robots are cost-competitive; not a count of jobs lost."
+  },
+  {
+   "id": "anth-workers-28m",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "economic_exposure",
+   "kind": "scenario",
+   "statement": "If robots cost 20% less today, they would be cost-competitive for the physical work done by 2.8 million workers.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "A 20% cost cut would make robots cost-competitive for the physical work of 2.8 million workers"
+   },
+   "locator": "Section \"Robot costs and adoption\"",
+   "check": {
+    "status": "verified",
+    "phrase": "they would be cost-competitive for the physical work done by 2.8 million workers",
+    "page": null
+   },
+   "value": 2800000,
+   "unit": "workers",
+   "denominator": "US workers",
+   "geography": "United States",
+   "scope": "Robots in general",
+   "scenario": "20% lower robot cost",
+   "attribution": "Anthropic",
+   "limits": "Hypothetical cost reduction; those workers spend on average 42% of their time on robot-exposed work."
+  },
+  {
+   "id": "anth-half-2085",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "time_to_cost_competitive",
+   "kind": "scenario",
+   "statement": "At past rates (about 3% a year cost declines), robots are not cost-competitive for half of today's physical work until 2085.",
+   "cell": {
+    "column": "Scenarios (base / bull / bear)",
+    "excerpt": "not cost-competitive for half of today's physical work until 2085"
+   },
+   "locator": "Section \"Robot costs and adoption\"",
+   "check": {
+    "status": "verified",
+    "phrase": "robots aren’t cost-competitive for half of physical work today until 2085",
+    "page": null
+   },
+   "value": 50,
+   "unit": "%",
+   "denominator": "Today's US physical work",
+   "geography": "United States",
+   "target_year": 2085,
+   "scenario": "Past trends (about 3% a year cost decline)",
+   "attribution": "Anthropic"
+  },
+  {
+   "id": "anth-half-2050",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "time_to_cost_competitive",
+   "kind": "scenario",
+   "statement": "In a fast scenario (costs falling up to four times faster, new tasks twice as fast), half of today's physical work becomes cost-competitive by 2050; 90% still takes 53 years.",
+   "cell": {
+    "column": "Scenarios (base / bull / bear)",
+    "excerpt": "fast scenario (costs falling up to 4x faster, new tasks 2x faster): half by 2050"
+   },
+   "locator": "Section \"Robot costs and adoption\"",
+   "check": {
+    "status": "verified",
+    "phrase": "robots become cost-competitive for half of physical work by 2050",
+    "page": null
+   },
+   "value": 50,
+   "unit": "%",
+   "denominator": "Today's US physical work",
+   "geography": "United States",
+   "target_year": 2050,
+   "scenario": "Fast adoption",
+   "attribution": "Anthropic"
+  },
+  {
+   "id": "anth-ten-40y",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "time_to_cost_competitive",
+   "kind": "scenario",
+   "statement": "At past price declines it takes 40 years for the cost-competitive share to reach 10% of tasks; costs would have to fall about 70%.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "~70% cost decline needed to reach 10%, ~40 years at the historical ~3%/yr decline"
+   },
+   "locator": "Section \"Key findings\"",
+   "check": {
+    "status": "verified",
+    "phrase": "it will take 40 years for that share to reach 10%",
+    "page": null
+   },
+   "value": 10,
+   "unit": "%",
+   "denominator": "US job tasks",
+   "geography": "United States",
+   "target_year": 2066,
+   "scenario": "Past trends",
+   "attribution": "Anthropic",
+   "limits": "Target year = publication year plus 40, as the report states the horizon in years."
+  },
+  {
+   "id": "anth-history",
+   "report": "RPT-006",
+   "theme": "work",
+   "metric": "observed_employment",
+   "kind": "observed",
+   "statement": "Over the past 50 years, more robot-exposed jobs saw larger wage and employment declines.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "More exposed jobs saw greater wage and employment declines over 50 years"
+   },
+   "locator": "Section \"Key findings\"",
+   "check": {
+    "status": "verified",
+    "phrase": "jobs more exposed to robots experienced",
+    "page": null
+   },
+   "geography": "United States",
+   "attribution": "Anthropic",
+   "limits": "A historical association, not a forecast."
+  },
+  {
+   "id": "nexery-theoretical-60",
+   "report": "RPT-010",
+   "theme": "work",
+   "metric": "theoretical_task_potential",
+   "kind": "estimate",
+   "statement": "More than 60% of manual operational tasks in manufacturing and logistics could theoretically be supported or partially automated by humanoids over the next decade.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": ">60% of manual operational tasks in manufacturing and logistics could theoretically be supported or partially automated over the next decade"
+   },
+   "locator": "PDF p.5",
+   "check": {
+    "status": "verified",
+    "phrase": "more than 60% of manual operational tasks could theoretically be supported or partially automated",
+    "page": 5
+   },
+   "value": 60,
+   "unit": "%",
+   "qualifier": "more than",
+   "denominator": "Manual operational tasks in manufacturing and logistics",
+   "scope": "Humanoid robots",
+   "target_year": 2036,
+   "reference_year": 2026,
+   "attribution": "NEXERY (\"early analyses\")",
+   "limits": "Theoretical support or partial automation, not achieved automation."
+  },
+  {
+   "id": "nexery-cases-40",
+   "report": "RPT-010",
+   "theme": "work",
+   "metric": "theoretical_task_potential",
+   "kind": "scenario",
+   "statement": "In NEXERY's production-support and logistics project cases, automation potentials above 40% of current manual tasks are considered achievable.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": ">40% of current manual tasks achievable in production support and logistics scenarios"
+   },
+   "locator": "PDF p.25",
+   "check": {
+    "status": "verified",
+    "phrase": "of more than 40% of current manual tasks",
+    "page": 25
+   },
+   "value": 40,
+   "unit": "%",
+   "qualifier": "more than",
+   "denominator": "Current manual tasks in the project cases",
+   "scope": "Humanoid robots",
+   "attribution": "NEXERY project cases",
+   "limits": "Case scenarios, not a market-wide estimate."
+  },
+  {
+   "id": "gs-roles",
+   "report": "RPT-012",
+   "theme": "work",
+   "metric": "role_substitution_scenario",
+   "kind": "scenario",
+   "statement": "The 2035 shipment estimate would cover 10% to 15% of hazardous, dangerous and auto manufacturing roles; 5% to 15% substitution of those roles implies 1.1 to 3.5 million units of demand.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "Shipment estimate would cover 10%-15% of hazardous, dangerous and auto manufacturing roles; 5-15% substitution implies 1.1mn-3.5mn units of demand"
+   },
+   "locator": "PDF p.1, p.15",
+   "check": {
+    "status": "verified",
+    "phrase": "would cover 10%-15% of hazardous, dangerous and auto manufacturing roles",
+    "page": 1
+   },
+   "min": 10,
+   "max": 15,
+   "unit": "%",
+   "denominator": "Hazardous, dangerous and auto manufacturing roles (a subset)",
+   "geography": "Global",
+   "target_year": 2035,
+   "reference_year": 2024,
+   "attribution": "Goldman Sachs Global Investment Research",
+   "limits": "A sensitivity on a selected subset of roles, not all employment."
+  },
+  {
+   "id": "capg-shortage-74",
+   "report": "RPT-009",
+   "theme": "work",
+   "metric": "labour_shortage_driver",
+   "kind": "survey",
+   "statement": "Labour shortages (74%) and rising labour costs (69%) are the adoption catalysts executives cite most.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "labor shortages (74%), rising labor costs (69%)"
+   },
+   "locator": "PDF p.11",
+   "check": {
+    "status": "verified",
+    "phrase": "and rising labor costs (69%)",
+    "page": 11
+   },
+   "value": 74,
+   "unit": "%",
+   "denominator": "Surveyed executives (n = 1,678)",
+   "scope": "Physical AI and robotics",
+   "reference_year": 2026,
+   "attribution": "Capgemini Research Institute survey",
+   "sample": "1,678 executives, 15 industries, January–February 2026"
+  },
+  {
+   "id": "nexery-jobloss-36",
+   "report": "RPT-010",
+   "theme": "work",
+   "metric": "survey_concern",
+   "kind": "survey",
+   "statement": "36% of surveyed industry participants anticipate employee concerns about job losses.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "36% of surveyed firms anticipate employee concerns about job losses"
+   },
+   "locator": "PDF p.12",
+   "check": {
+    "status": "verified",
+    "phrase": "36% anticipate concerns",
+    "page": 12
+   },
+   "value": 36,
+   "unit": "%",
+   "denominator": "Surveyed industry participants (n = 152)",
+   "scope": "Embodied AI (humanoids)",
+   "reference_year": 2026,
+   "attribution": "NEXERY survey",
+   "sample": "152 industry participants"
+  },
+  {
+   "id": "fayd-openings",
+   "report": "RPT-007",
+   "theme": "work",
+   "metric": "labour_shortage_driver",
+   "kind": "observed",
+   "statement": "US manufacturing faces nearly 1 million production-occupation openings a year through 2034, largely from retirements (BLS).",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "~1 million production-occupation openings per year through 2034 (BLS)"
+   },
+   "locator": "PDF p.1",
+   "check": {
+    "status": "verified",
+    "phrase": "nearly 1 million production- occupation openings per year through 2034",
+    "page": 1
+   },
+   "value": 1000000,
+   "unit": "openings per year",
+   "qualifier": "about",
+   "denominator": "US manufacturing production occupations",
+   "geography": "United States",
+   "target_year": 2034,
+   "attribution": "US Bureau of Labor Statistics"
+  },
+  {
+   "id": "barclays-genz",
+   "report": "RPT-004",
+   "theme": "work",
+   "metric": "labour_shortage_driver",
+   "kind": "survey",
+   "statement": "Only 14% of Gen Z would consider industrial work (Soter Analytics).",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "Only 14% of Gen Z would consider industrial work"
+   },
+   "locator": "PDF p.9",
+   "check": {
+    "status": "verified",
+    "phrase": "only 14% of Gen Z would consider",
+    "page": 9
+   },
+   "value": 14,
+   "unit": "%",
+   "denominator": "Gen Z respondents",
+   "attribution": "Soter Analytics (cited by Barclays)"
+  },
+  {
+   "id": "barclays-output",
+   "report": "RPT-004",
+   "theme": "work",
+   "metric": "productivity_model",
+   "kind": "model",
+   "statement": "At half of human efficiency a humanoid delivers 25% more output per day; at parity, up to 150% more (longer operating hours).",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "Even at half human efficiency a humanoid delivers 25% more output per day; at parity up to 150% more"
+   },
+   "locator": "PDF p.6",
+   "check": {
+    "status": "verified",
+    "phrase": "humanoid can deliver 25% more output per day",
+    "page": 6
+   },
+   "min": 25,
+   "max": 150,
+   "unit": "% more output per day",
+   "attribution": "Barclays Research",
+   "limits": "An illustrative calculation of operating hours, not observed output."
+  },
+  {
+   "id": "barclays-augment",
+   "report": "RPT-004",
+   "theme": "work",
+   "metric": "augmentation",
+   "kind": "qualitative",
+   "statement": "Humanoids are set to augment the workforce rather than replace it.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "Augment, not replace"
+   },
+   "locator": "PDF p.1, p.3",
+   "check": {
+    "status": "verified",
+    "phrase": "set to augment the workforce",
+    "page": 1
+   },
+   "attribution": "Barclays Research"
+  },
+  {
+   "id": "bluebay-augment",
+   "report": "RPT-008",
+   "theme": "work",
+   "metric": "augmentation",
+   "kind": "qualitative",
+   "statement": "Humanoids are more likely to augment than replace workers, and could help with persistent shortages in repetitive, physically demanding jobs.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "more likely to augment than replace workers"
+   },
+   "locator": "PDF p.5",
+   "check": {
+    "status": "verified",
+    "phrase": "more likely to augment rather than replace",
+    "page": 5
+   },
+   "attribution": "BlueBay Asset Management"
+  },
+  {
+   "id": "bofa-shortage",
+   "report": "RPT-002",
+   "theme": "work",
+   "metric": "labour_shortage_driver",
+   "kind": "qualitative",
+   "statement": "Labour shortages, ageing workforces, wage inflation and high turnover make robotic labour economically appealing even before humanoids match human abilities.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "Labor shortages, aging workforces, wage inflation and high turnover"
+   },
+   "locator": "PDF p.1",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Bank of America Institute"
+  },
+  {
+   "id": "berg-shortage",
+   "report": "RPT-011",
+   "theme": "work",
+   "metric": "labour_shortage_driver",
+   "kind": "qualitative",
+   "statement": "Labour shortages, ageing populations and the need for flexible automation are long-term adoption drivers.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "Labour shortages, ageing populations and need for flexible automation are long-term adoption drivers"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Berg Insight"
+  },
+  {
+   "id": "capg-concern",
+   "report": "RPT-009",
+   "theme": "work",
+   "metric": "survey_concern",
+   "kind": "qualitative",
+   "statement": "Societal concern about job impacts is particularly strong for humanoids.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "Societal concern about job impacts, particularly for humanoids"
+   },
+   "locator": "p.97 (as extracted)",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Capgemini Research Institute"
+  },
+  {
+   "id": "intel-capability",
+   "report": "RPT-005",
+   "theme": "work",
+   "metric": "survey_expectation",
+   "kind": "survey",
+   "statement": "14% of current workforce capability freed up or redeployed by robotics, rising to 24% by 2030, as extracted.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "14% of current workforce capability freed up or redeployed by robotics, rising to 24% by 2030"
+   },
+   "locator": "p.10 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "denominator": "Respondent organisations' workforce capability",
+   "scope": "Robotics broadly",
+   "attribution": "Intel survey (Coleman Parkes)"
+  },
+  {
+   "id": "ms-humanoidability",
+   "report": "RPT-003",
+   "theme": "work",
+   "metric": "technical_exposure",
+   "kind": "estimate",
+   "statement": "About 75% of occupations and 40% of US employees have some \"humanoidability\", as extracted.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "~75% of occupations and ~40% of US employees have some 'humanoidability'"
+   },
+   "locator": "p.51 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "geography": "United States",
+   "attribution": "Morgan Stanley Research"
+  },
+  {
+   "id": "barclays-cost-decade",
+   "report": "RPT-004",
+   "theme": "costs",
+   "metric": "production_cost",
+   "kind": "estimate",
+   "statement": "Unit production cost fell about 30-fold in a decade, from around US$3 million to about US$100,000, with a wide range between configurations.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Unit production cost fell ~30x in a decade, from ~$3mn to ~$100K"
+   },
+   "locator": "PDF p.13",
+   "check": {
+    "status": "verified",
+    "phrase": "from approximately $3mn to around $100K per unit",
+    "page": 13
+   },
+   "value": 100000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "qualifier": "about",
+   "target_year": 2025,
+   "attribution": "Barclays Research",
+   "estimate": "cost-3mn-to-100k",
+   "history": {
+    "year": 2015,
+    "value": 3000000
+   },
+   "limits": "A decade-long change; configurations differ widely."
+  },
+  {
+   "id": "capg-cost-decade",
+   "report": "RPT-009",
+   "theme": "costs",
+   "metric": "production_cost",
+   "kind": "estimate",
+   "statement": "Humanoid production costs fell about 30-fold in a decade, from about US$3 million to around US$100,000; actuators are about half of production costs.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Humanoid production costs fell ~30-fold in a decade, from ~$3 million to ~$100,000"
+   },
+   "locator": "PDF p.29",
+   "check": {
+    "status": "verified",
+    "phrase": "from about $3 million to around",
+    "page": 29
+   },
+   "value": 100000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "qualifier": "about",
+   "target_year": 2025,
+   "attribution": "Capgemini Research Institute (source not named)",
+   "estimate": "cost-3mn-to-100k",
+   "limits": "Same figure as Barclays; the original estimate is not identified, so it is counted once."
+  },
+  {
+   "id": "gs-bom-2023",
+   "report": "RPT-012",
+   "theme": "costs",
+   "metric": "bom",
+   "kind": "observed",
+   "statement": "High-spec bill of materials fell by about 40% to US$150,000 per unit in 2023, from about US$250,000 a year earlier.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "High-spec BOM down ~40% to $150k per unit in 2023 from ~$250k"
+   },
+   "locator": "PDF p.1, p.3",
+   "check": {
+    "status": "verified",
+    "phrase": "to $150k per unit in 2023 from c.",
+    "page": 1
+   },
+   "value": 150000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "target_year": 2023,
+   "scope": "High-spec humanoid",
+   "attribution": "Goldman Sachs Global Investment Research",
+   "history": {
+    "year": 2022,
+    "value": 250000
+   }
+  },
+  {
+   "id": "bofa-bom-pilot",
+   "report": "RPT-002",
+   "theme": "costs",
+   "metric": "bom",
+   "kind": "estimate",
+   "statement": "Pilot-stage development costs range from US$90,000 to 100,000 per unit.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Pilot-stage BOM $90,000-100,000 per unit"
+   },
+   "locator": "PDF p.3",
+   "check": {
+    "status": "verified",
+    "phrase": "pilot-stage development ranging from $90,000 to 100,000 per unit",
+    "page": 3
+   },
+   "min": 90000,
+   "max": 100000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "target_year": 2026,
+   "scope": "Pilot-stage humanoid",
+   "attribution": "Bank of America Institute"
+  },
+  {
+   "id": "bofa-bom-china-2025",
+   "report": "RPT-002",
+   "theme": "costs",
+   "metric": "bom",
+   "kind": "estimate",
+   "statement": "A China-built humanoid robot's bill of materials was about US$35,000 in 2025.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "China-built humanoid BOM $35,000 in 2025"
+   },
+   "locator": "PDF p.3",
+   "check": {
+    "status": "verified",
+    "phrase": "BOM cost was $35,000 in 2025",
+    "page": 3
+   },
+   "value": 35000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "target_year": 2025,
+   "geography": "China (built in)",
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-bom-china"
+  },
+  {
+   "id": "bofa-bom-china-2030",
+   "report": "RPT-002",
+   "theme": "costs",
+   "metric": "bom",
+   "kind": "forecast",
+   "statement": "Expected to be roughly halved to below US$17,000 by 2030.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "expected below $17,000 by 2030"
+   },
+   "locator": "PDF p.3",
+   "check": {
+    "status": "verified",
+    "phrase": "below $17,000 by 2030",
+    "page": 3
+   },
+   "value": 17000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "qualifier": "below",
+   "target_year": 2030,
+   "geography": "China (built in)",
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-bom-china"
+  },
+  {
+   "id": "bluebay-bom-2035",
+   "report": "RPT-008",
+   "theme": "costs",
+   "metric": "bom",
+   "kind": "forecast",
+   "statement": "BofA estimates unit bill of materials could fall below US$13,000 by 2035, particularly with China-based sourcing.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "BOM below USD13,000 by 2035E"
+   },
+   "locator": "PDF p.2-3",
+   "check": {
+    "status": "verified",
+    "phrase": "could fall below USD13,000 by 2035E",
+    "page": 2
+   },
+   "value": 13000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "qualifier": "below",
+   "target_year": 2035,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-bom-2035"
+  },
+  {
+   "id": "fayd-mck-bom",
+   "report": "RPT-007",
+   "theme": "costs",
+   "metric": "bom",
+   "kind": "estimate",
+   "statement": "Cites McKinsey: a current humanoid bill of materials of roughly US$30,000 to 150,000; a sub-US$20,000 threshold is often discussed for broad adoption.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "McKinsey current BOM ~$30,000-150,000; sub-$20,000 often discussed for broad adoption"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "roughly $30,000 to $150,000",
+    "page": 2
+   },
+   "min": 30000,
+   "max": 150000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "target_year": 2026,
+   "attribution": "McKinsey",
+   "estimate": "mckinsey-bom-range"
+  },
+  {
+   "id": "nexery-price-55k",
+   "report": "RPT-010",
+   "theme": "costs",
+   "metric": "selling_price",
+   "kind": "forecast",
+   "statement": "The average unit price of industrial humanoid robots could fall to around US$55,000 by the end of the decade.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Average industrial humanoid unit price could fall to ~$55,000 by end of decade"
+   },
+   "locator": "PDF p.5, p.22",
+   "check": {
+    "status": "verified",
+    "phrase": "could fall to around $55,000",
+    "page": 5
+   },
+   "value": 55000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "qualifier": "about",
+   "target_year": 2030,
+   "scope": "Industrial humanoid robots, selling price",
+   "attribution": "NEXERY"
+  },
+  {
+   "id": "barclays-unitree-prices",
+   "report": "RPT-004",
+   "theme": "costs",
+   "metric": "list_price",
+   "kind": "observed",
+   "statement": "Unitree list prices: H1 at US$90,000 at launch in 2024, then G1 at US$16,000 and R1 at US$5,900.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Unitree H1 $90K (2024), G1 $16K, R1 $5.9K"
+   },
+   "locator": "PDF p.14",
+   "check": {
+    "status": "verified",
+    "phrase": "launched in 2024 at $90K",
+    "page": 14
+   },
+   "value": 90000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "target_year": 2024,
+   "scope": "One maker's launch prices (Unitree)",
+   "attribution": "Barclays Research",
+   "points": [
+    {
+     "label": "Unitree H1",
+     "value": 90000,
+     "year": 2024
+    },
+    {
+     "label": "Unitree G1",
+     "value": 16000,
+     "year": null
+    },
+    {
+     "label": "Unitree R1",
+     "value": 5900,
+     "year": null
+    }
+   ],
+   "limits": "Launch prices of different models, not a cost trend; G1 and R1 launch years are not stated in the report."
+  },
+  {
+   "id": "bofa-bom-shares-2030",
+   "report": "RPT-002",
+   "theme": "costs",
+   "metric": "bom_structure",
+   "kind": "forecast",
+   "statement": "2030 bill of materials by module: linear actuators 27%, rotary actuators 24%, dexterous hands 19%, vision and other sensors 12%, control system 10%, energy system 4%, others 4%.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "2030 BOM: linear actuators 27%, rotary actuators 24%, dexterous hands 19%"
+   },
+   "locator": "PDF p.4-5 (Exhibit 6)",
+   "check": {
+    "status": "verified",
+    "phrase": "will account for the largest BOM share (27%)",
+    "page": 4
+   },
+   "unit": "% of BOM",
+   "target_year": 2030,
+   "attribution": "BofA Global Research",
+   "estimate": "bofa-gr-bom-structure",
+   "parts": [
+    [
+     "Linear actuators",
+     27
+    ],
+    [
+     "Rotary actuators",
+     24
+    ],
+    [
+     "Dexterous hands",
+     19
+    ],
+    [
+     "Vision and other sensors",
+     12
+    ],
+    [
+     "Control system",
+     10
+    ],
+    [
+     "Energy system",
+     4
+    ],
+    [
+     "Others",
+     4
+    ]
+   ],
+   "parts_check": "Exhibit 6 lists these seven modules and they add up to 100%."
+  },
+  {
+   "id": "barclays-three-bs",
+   "report": "RPT-004",
+   "theme": "costs",
+   "metric": "bom_structure",
+   "kind": "estimate",
+   "statement": "Production costs split into brawn (mechanical systems and actuators) about 50%, brains 35% and batteries 15%.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "BOM: brawn ~50%, brains 35%, batteries 15%"
+   },
+   "locator": "PDF p.10 (Figure 7)",
+   "check": {
+    "status": "verified",
+    "phrase": "for “brains” and 15% for “batteries.”",
+    "page": 10
+   },
+   "unit": "% of production cost",
+   "attribution": "Barclays Research",
+   "parts": [
+    [
+     "Brawn (mechanics and actuators)",
+     50
+    ],
+    [
+     "Brains (AI, compute, sensing)",
+     35
+    ],
+    [
+     "Batteries",
+     15
+    ]
+   ],
+   "parts_check": "Figure 7 gives three exhaustive groups adding up to 100%."
+  },
+  {
+   "id": "nexery-price-stack",
+   "report": "RPT-010",
+   "theme": "costs",
+   "metric": "price_structure",
+   "kind": "estimate",
+   "statement": "NEXERY itemises about US$43,000 of hardware and software inside a selling price of about US$55,000; the rest is R&D costs and margins, not itemised.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Breakdown: hardware+software ~$43,000"
+   },
+   "locator": "PDF p.22 (Fig 16)",
+   "check": {
+    "status": "verified",
+    "phrase": "Σ Hard- & Software = transmission expected to reduce unit costs greatly. In general, the ~$43,000",
+    "page": 22
+   },
+   "value": 55000,
+   "unit": "USD per unit",
+   "currency": "USD",
+   "qualifier": "about",
+   "target_year": 2030,
+   "attribution": "NEXERY",
+   "parts": [
+    [
+     "Motors and transmission",
+     18900
+    ],
+    [
+     "Sensors",
+     7400
+    ],
+    [
+     "Precision servomotors for degrees of freedom",
+     5500
+    ],
+    [
+     "Control and learning software (AI)",
+     3900
+    ],
+    [
+     "IT hardware and chips",
+     2700
+    ],
+    [
+     "Navigation (camera, LIDAR, radar)",
+     2700
+    ],
+    [
+     "Body parts",
+     1000
+    ],
+    [
+     "Battery and self-charging",
+     900
+    ]
+   ],
+   "parts_total": 43000,
+   "parts_check": "The eight items add up to the stated ~$43,000 hardware-and-software subtotal; R&D and margins make up the rest of the ~$55,000 price and are not itemised."
+  },
+  {
+   "id": "bluebay-actuators",
+   "report": "RPT-008",
+   "theme": "costs",
+   "metric": "bom_structure",
+   "kind": "forecast",
+   "statement": "Actuators are expected to exceed 50% of the bill of materials by 2030; planetary roller screws about 15%, the highest-value single component.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Actuators >50% of BOM by 2030E; planetary roller screws ~15% of BOM by 2030E"
+   },
+   "locator": "PDF p.5",
+   "check": {
+    "status": "verified",
+    "phrase": "approximately 15% of total BOM by 2030E",
+    "page": 5
+   },
+   "unit": "% of BOM",
+   "target_year": 2030,
+   "attribution": "BofA Global Research",
+   "limits": "Partial shares; not stacked with other sources."
+  },
+  {
+   "id": "fayd-actuation",
+   "report": "RPT-007",
+   "theme": "costs",
+   "metric": "bom_structure",
+   "kind": "estimate",
+   "statement": "Actuation can represent 40% to 60% of a humanoid's bill of materials.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Actuation 40-60% of BOM"
+   },
+   "locator": "PDF p.1-2",
+   "check": {
+    "status": "verified",
+    "phrase": "roughly 40–60% of humanoid bill of materials",
+    "page": 1
+   },
+   "min": 40,
+   "max": 60,
+   "unit": "% of BOM",
+   "attribution": "Fayd Capital Group"
+  },
+  {
+   "id": "fayd-cost-hour",
+   "report": "RPT-007",
+   "theme": "costs",
+   "metric": "cost_per_hour",
+   "kind": "model",
+   "statement": "Fayd's model: a US$100,000 robot working 6,000 productive hours a year costs about US$5.83 per productive hour; a US$50,000 robot working 2,000 hours, about US$8.75. Both exclude financing, integration and supervision.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "$100,000 robot at 6,000 productive h/yr = $5.83/h; $50,000 at 2,000 h = $8.75/h"
+   },
+   "locator": "PDF p.7",
+   "check": {
+    "status": "verified",
+    "phrase": "costs about $5.83 per productive hour",
+    "page": 7
+   },
+   "min": 5.83,
+   "max": 8.75,
+   "unit": "USD per productive hour",
+   "currency": "USD",
+   "attribution": "Fayd Capital Group",
+   "points": [
+    {
+     "label": "US$100,000 robot, 6,000 h/yr",
+     "value": 5.83
+    },
+    {
+     "label": "US$50,000 robot, 2,000 h/yr",
+     "value": 8.75
+    }
+   ],
+   "assumptions": "Depreciation and operating assumptions of the Fayd model; financing, integration and supervision excluded."
+  },
+  {
+   "id": "fayd-wage",
+   "report": "RPT-007",
+   "theme": "costs",
+   "metric": "labour_cost_reference",
+   "kind": "observed",
+   "statement": "US manufacturing employer compensation averaged US$48.62 per hour in June 2026 (BLS), of which US$32.50 wages.",
+   "cell": {
+    "column": "Labor impact (jobs, tasks, labor shortage)",
+    "excerpt": "US manufacturing employer compensation $48.62/h (June 2026)"
+   },
+   "locator": "PDF p.7",
+   "check": {
+    "status": "verified",
+    "phrase": "average manufacturing employer compensation at $48.62 per hour",
+    "page": 7
+   },
+   "value": 48.62,
+   "unit": "USD per hour",
+   "currency": "USD",
+   "geography": "United States",
+   "target_year": 2026,
+   "attribution": "US Bureau of Labor Statistics"
+  },
+  {
+   "id": "anth-packers",
+   "report": "RPT-006",
+   "theme": "costs",
+   "metric": "annual_cost_comparison",
+   "kind": "estimate",
+   "statement": "Packers and packagers: a robot costs about US$45,000 a year to replace one worker, against about US$49,000 for the worker, about US$2,500 less.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Packers: robots ~$45,000/yr vs $49,000 compensation"
+   },
+   "locator": "Section \"Robot costs and adoption\"",
+   "check": {
+    "status": "verified",
+    "phrase": "bring annual costs to around $45,000 to replace one human worker per year",
+    "page": null
+   },
+   "min": 45000,
+   "max": 49000,
+   "unit": "USD per year",
+   "currency": "USD",
+   "geography": "United States",
+   "scope": "One occupation (packers and packagers)",
+   "attribution": "Anthropic",
+   "points": [
+    {
+     "label": "Robot, per year",
+     "value": 45000
+    },
+    {
+     "label": "Worker, per year",
+     "value": 49000
+    }
+   ]
+  },
+  {
+   "id": "intel-cost-3y",
+   "report": "RPT-005",
+   "theme": "costs",
+   "metric": "survey_expectation",
+   "kind": "survey",
+   "statement": "Leaders expect deploying a robot to become more cost-effective than hiring a human within about three years on average, as extracted.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Leaders expect deploying a robot to become more cost-effective than hiring a human within about three years on average"
+   },
+   "locator": "p.5, p.7 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Intel survey (Coleman Parkes)"
+  },
+  {
+   "id": "ms-optimus-bom",
+   "report": "RPT-003",
+   "theme": "costs",
+   "metric": "bom",
+   "kind": "estimate",
+   "statement": "Tesla Optimus Gen2 bill of materials of US$50,000 to 60,000 excluding software; build cost US$10,000 to 300,000 depending on configuration, as extracted.",
+   "cell": {
+    "column": "Unit cost / BOM & price trajectory",
+    "excerpt": "Tesla Optimus Gen2 BoM $50-60k ex-software"
+   },
+   "locator": "p.35, p.42 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Morgan Stanley Research"
+  },
+  {
+   "id": "capg-engaging",
+   "report": "RPT-009",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "79% of organisations are engaging with physical AI.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "79% engaging with physical AI"
+   },
+   "locator": "PDF p.11",
+   "check": {
+    "status": "verified",
+    "phrase": "eight in ten organizations (79%) are already",
+    "page": 11
+   },
+   "value": 79,
+   "unit": "%",
+   "denominator": "Surveyed organisations (n = 1,678)",
+   "scope": "Physical AI in robotics (all robot types)",
+   "stage": "Engaging",
+   "attribution": "Capgemini Research Institute survey",
+   "sample": "1,678 executives, 15 industries, January–February 2026"
+  },
+  {
+   "id": "capg-deploying",
+   "report": "RPT-009",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "27% are deploying or scaling physical AI.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "27% deploying/scaling"
+   },
+   "locator": "PDF p.11",
+   "check": {
+    "status": "verified",
+    "phrase": "with 27% deploying or scaling",
+    "page": 11
+   },
+   "value": 27,
+   "unit": "%",
+   "denominator": "Surveyed organisations (n = 1,678)",
+   "scope": "Physical AI in robotics (all robot types)",
+   "stage": "Deploying or scaling",
+   "attribution": "Capgemini Research Institute survey",
+   "sample": "1,678 executives, 15 industries, January–February 2026"
+  },
+  {
+   "id": "capg-scale5",
+   "report": "RPT-009",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "65% expect to reach scale within five years.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "65% expect scale within five years"
+   },
+   "locator": "PDF p.11",
+   "check": {
+    "status": "verified",
+    "phrase": "expecting to reach scale within five years",
+    "page": 11
+   },
+   "value": 65,
+   "unit": "%",
+   "denominator": "Surveyed organisations (n = 1,678)",
+   "scope": "Physical AI in robotics (all robot types)",
+   "stage": "Expect scale within 5 years",
+   "attribution": "Capgemini Research Institute survey",
+   "sample": "1,678 executives, 15 industries, January–February 2026"
+  },
+  {
+   "id": "capg-hum-invest",
+   "report": "RPT-009",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "53% of organisations are investing (16%) or planning to invest (37%) in humanoids.",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "53% of organizations investing (16%) or planning to invest (37%) in humanoids"
+   },
+   "locator": "PDF p.12, p.82",
+   "check": {
+    "status": "verified",
+    "phrase": "(16%) or planning to invest (37%) in humanoids",
+    "page": 82
+   },
+   "value": 53,
+   "unit": "%",
+   "denominator": "Surveyed organisations (n = 1,678)",
+   "scope": "Humanoid robots",
+   "stage": "Investing or planning to invest",
+   "attribution": "Capgemini Research Institute survey",
+   "sample": "1,678 executives, 15 industries, January–February 2026"
+  },
+  {
+   "id": "capg-hum-2030",
+   "report": "RPT-009",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "45% expect humanoids to work alongside employees by 2030.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "45% expect them alongside employees by 2030"
+   },
+   "locator": "PDF p.83",
+   "check": {
+    "status": "verified",
+    "phrase": "45% of organizations expect humanoids to",
+    "page": 83
+   },
+   "value": 45,
+   "unit": "%",
+   "denominator": "Surveyed organisations (n = 1,678)",
+   "scope": "Humanoid robots",
+   "stage": "Expect humanoids alongside employees by 2030",
+   "target_year": 2030,
+   "attribution": "Capgemini Research Institute survey",
+   "sample": "1,678 executives, 15 industries, January–February 2026"
+  },
+  {
+   "id": "capg-hum-scale",
+   "report": "RPT-009",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "78% expect to deploy humanoids at scale eventually, on average in about seven years; only 30% see them as viable general-purpose workers within three to five years.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "78% expect scale eventually, average ~7 years; only 30% see viable general-purpose workers in 3-5 years"
+   },
+   "locator": "PDF p.12, p.86",
+   "check": {
+    "status": "verified",
+    "phrase": "While 78% expect to deploy humanoids at scale eventually",
+    "page": 12
+   },
+   "value": 78,
+   "unit": "%",
+   "denominator": "Surveyed organisations (n = 1,678)",
+   "scope": "Humanoid robots",
+   "stage": "Expect humanoids at scale eventually",
+   "attribution": "Capgemini Research Institute survey",
+   "sample": "1,678 executives, 15 industries, January–February 2026"
+  },
+  {
+   "id": "capg-hum-viable",
+   "report": "RPT-009",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "Only 30% believe humanoids will become viable general-purpose workers within three to five years.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "only 30% see viable general-purpose workers in 3-5 years"
+   },
+   "locator": "PDF p.86",
+   "check": {
+    "status": "verified",
+    "phrase": "only 30% believe humanoids",
+    "page": 86
+   },
+   "value": 30,
+   "unit": "%",
+   "denominator": "Surveyed organisations (n = 1,678)",
+   "scope": "Humanoid robots",
+   "stage": "See general-purpose humanoids viable in 3–5 years",
+   "attribution": "Capgemini Research Institute survey",
+   "sample": "1,678 executives, 15 industries, January–February 2026"
+  },
+  {
+   "id": "nexery-plan",
+   "report": "RPT-010",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "73% of surveyed industry participants plan to deploy embodied AI (humanoids); 12% are already piloting and 15% have no plans.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "73% plan to deploy embodied AI, 12% already piloting, 15% no plans"
+   },
+   "locator": "PDF p.10",
+   "check": {
+    "status": "verified",
+    "phrase": "73% of respondents state that they plan to deploy",
+    "page": 10
+   },
+   "value": 73,
+   "unit": "%",
+   "denominator": "Surveyed industry participants (n = 152)",
+   "scope": "Embodied AI (humanoids), industrial companies",
+   "stage": "Plan to deploy",
+   "attribution": "NEXERY survey",
+   "sample": "152 industry participants"
+  },
+  {
+   "id": "nexery-pilot",
+   "report": "RPT-010",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "12% of surveyed industry participants are already piloting embodied AI.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "12% already piloting"
+   },
+   "locator": "PDF p.10",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "value": 12,
+   "unit": "%",
+   "denominator": "Surveyed industry participants (n = 152)",
+   "scope": "Embodied AI (humanoids)",
+   "stage": "Piloting",
+   "attribution": "NEXERY survey"
+  },
+  {
+   "id": "bofa-sectors-2027",
+   "report": "RPT-002",
+   "theme": "adoption",
+   "metric": "sector_share",
+   "kind": "forecast",
+   "statement": "By 2027, 72% of humanoid installations are expected in logistics, manufacturing and automotive (Counterpoint Research): warehousing and logistics 33%, automotive 24%, manufacturing 15%, retail and service 12%, special purpose 8%, others 8%.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "By 2027, 72% of installations in logistics, manufacturing and automotive (Counterpoint)"
+   },
+   "locator": "PDF p.5-6 (Exhibit 7)",
+   "check": {
+    "status": "verified",
+    "phrase": "Counterpoint Research estimates that 72% of installations",
+    "page": 5
+   },
+   "unit": "% of installations",
+   "target_year": 2027,
+   "geography": "Global",
+   "attribution": "Counterpoint Research",
+   "estimate": "counterpoint-sectors-2027",
+   "parts": [
+    [
+     "Warehousing and logistics",
+     33
+    ],
+    [
+     "Automotive",
+     24
+    ],
+    [
+     "Manufacturing",
+     15
+    ],
+    [
+     "Retail and service",
+     12
+    ],
+    [
+     "Special purpose",
+     8
+    ],
+    [
+     "Others",
+     8
+    ]
+   ],
+   "parts_check": "The exhibit lists six sectors adding up to 100%."
+  },
+  {
+   "id": "intel-fleet",
+   "report": "RPT-005",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "6 in 10 leaders expect a robot fleet within five years; 67% expect to be ready for a mixed human-robot workforce by 2030 but only 40% have a formal strategy, as extracted.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "6 in 10 expect a robot fleet within five years"
+   },
+   "locator": "p.5, p.7 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "denominator": "Surveyed senior leaders (n = 800)",
+   "scope": "Robotics broadly",
+   "attribution": "Intel survey (Coleman Parkes)"
+  },
+  {
+   "id": "intel-never",
+   "report": "RPT-005",
+   "theme": "adoption",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "4 in 10 leaders believe humanoids will never be viable for mass deployment, as extracted.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "4 in 10 leaders believe humanoids will never be viable for mass deployment"
+   },
+   "locator": "p.13 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "denominator": "Surveyed senior leaders (n = 800)",
+   "scope": "Humanoid robots",
+   "attribution": "Intel survey (Coleman Parkes)"
+  },
+  {
+   "id": "industrial-first",
+   "report": "RPT-008",
+   "theme": "adoption",
+   "metric": "sequence",
+   "kind": "qualitative",
+   "statement": "Near-term use is industrial (manufacturing, automotive, warehouses); retail, hospitality, healthcare, homes and education come later.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "Near term industrial (manufacturing, automotive, warehouse); long run retail, hospitality, healthcare, homes, education"
+   },
+   "locator": "PDF p.3",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "BlueBay Asset Management"
+  },
+  {
+   "id": "fayd-sequence",
+   "report": "RPT-007",
+   "theme": "adoption",
+   "metric": "sequence",
+   "kind": "qualitative",
+   "statement": "Near term: manufacturing, automotive, material movement, warehousing, inspection and hazardous work; medium term: retail, healthcare logistics, construction, security; long term: home cleaning, cooking, elder assistance.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "Near term: manufacturing, automotive, material movement, warehousing, inspection, hazardous work"
+   },
+   "locator": "PDF p.12",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Fayd Capital Group"
+  },
+  {
+   "id": "berg-sequence",
+   "report": "RPT-011",
+   "theme": "adoption",
+   "metric": "sequence",
+   "kind": "qualitative",
+   "statement": "Manufacturing, logistics and warehousing account for most deployments through 2040; domestic use emerges gradually.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "Manufacturing, logistics and warehousing account for most deployments through 2040"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Berg Insight"
+  },
+  {
+   "id": "anth-capability-growth",
+   "report": "RPT-006",
+   "theme": "adoption",
+   "metric": "capability_trend",
+   "kind": "observed",
+   "statement": "Each year robots have become able to do about 2% of the physical work they previously could not.",
+   "cell": {
+    "column": "Key adoption sectors & timeline",
+    "excerpt": "Each year robots can do ~2% more of the physical work they previously could not"
+   },
+   "locator": "Section \"Key findings\"",
+   "check": {
+    "status": "verified",
+    "phrase": "about 2% of the physical work they previously couldn",
+    "page": null
+   },
+   "value": 2,
+   "unit": "% per year",
+   "qualifier": "about",
+   "denominator": "Physical work robots previously could not do",
+   "geography": "United States",
+   "attribution": "Anthropic"
+  },
+  {
+   "id": "bofa-invest",
+   "report": "RPT-002",
+   "theme": "investment",
+   "metric": "funding_flow",
+   "kind": "observed",
+   "statement": "Investment in humanoid robotics rose from US$0.7 billion in 2018 to US$4.3 billion in 2025; over 50 companies were building their own humanoids by January 2026.",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "Investment rose from $0.7 billion in 2018 to $4.3 billion in 2025"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "from $0.7 billion in 2018 to $4.3 billion in 2025",
+    "page": 2
+   },
+   "value": 4300000000.0,
+   "unit": "USD per year",
+   "currency": "USD",
+   "target_year": 2025,
+   "scope": "Humanoid robotics investment",
+   "attribution": "Bank of America Institute (footnoted source)",
+   "history": {
+    "year": 2018,
+    "value": 700000000.0
+   }
+  },
+  {
+   "id": "barclays-vc-q2",
+   "report": "RPT-004",
+   "theme": "investment",
+   "metric": "funding_flow",
+   "kind": "observed",
+   "statement": "Venture capital for robotics start-ups reached US$8.8 billion in the second quarter of 2025, 15 times the 2017 level (PitchBook).",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "Robotics VC $8.8 billion in Q2 2025, 15x vs $0.6 billion in 2017 (PitchBook)"
+   },
+   "locator": "PDF p.5, p.17",
+   "check": {
+    "status": "verified",
+    "phrase": "reached $8.8 billion in Q2 2025",
+    "page": 17
+   },
+   "value": 8800000000.0,
+   "unit": "USD per quarter",
+   "currency": "USD",
+   "target_year": 2025,
+   "scope": "Robotics start-ups (all robot types), one quarter",
+   "attribution": "PitchBook"
+  },
+  {
+   "id": "capg-vc-2025",
+   "report": "RPT-009",
+   "theme": "investment",
+   "metric": "funding_flow",
+   "kind": "observed",
+   "statement": "Robotics companies raised a record US$40.7 billion of venture capital in 2025, 9% of all VC funding.",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "Robotics VC record $40.7 billion in 2025 (9% of total VC)"
+   },
+   "locator": "PDF p.31",
+   "check": {
+    "status": "verified",
+    "phrase": "raising a record",
+    "page": 31
+   },
+   "value": 40700000000.0,
+   "unit": "USD per year",
+   "currency": "USD",
+   "target_year": 2025,
+   "scope": "Robotics companies (all robot types)",
+   "attribution": "Capgemini Research Institute (data source cited in report)"
+  },
+  {
+   "id": "pham-share",
+   "report": "RPT-001",
+   "theme": "investment",
+   "metric": "funding_share",
+   "kind": "observed",
+   "statement": "Humanoid makers and robot AI model companies took 42% of the venture money raised in 2024–26, up from 2% in 2015–20.",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "humanoid makers + robot AI model companies took 42% of 2024-26 venture money vs 2% in 2015-20"
+   },
+   "locator": "Section \"Robot money moved to humanoids and robot brains\"",
+   "check": {
+    "status": "verified",
+    "phrase": "took 42% of the venture money raised in 2024–26, up from 2%",
+    "page": null
+   },
+   "value": 42,
+   "unit": "%",
+   "denominator": "Venture money traced (912 rounds, 411 companies)",
+   "target_year": 2026,
+   "scope": "Humanoid makers and robot AI model companies",
+   "attribution": "Binh Pham (study data)",
+   "history": {
+    "year": 2020,
+    "value": 2
+   }
+  },
+  {
+   "id": "pham-seed",
+   "report": "RPT-001",
+   "theme": "investment",
+   "metric": "funding_share",
+   "kind": "observed",
+   "statement": "Humanoid and robot AI companies took 72% of the seed dollars traced, while defense took 64% of Series D and later money.",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "Humanoid + robot AI took 72% of seed dollars; defense took 64% of Series D+"
+   },
+   "locator": "Section \"Seed money bets on humanoids and robot AI\"",
+   "check": {
+    "status": "verified",
+    "phrase": "took 72% of the seed dollars we traced",
+    "page": null
+   },
+   "value": 72,
+   "unit": "%",
+   "denominator": "Seed dollars traced",
+   "attribution": "Binh Pham (study data)"
+  },
+  {
+   "id": "barclays-figure-valuation",
+   "report": "RPT-004",
+   "theme": "investment",
+   "metric": "valuation",
+   "kind": "observed",
+   "statement": "Figure AI's valuation jumped from US$2.6 billion in February 2025 to US$39 billion by September 2025.",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "Figure valuation $2.6bn (Feb 2025) to $39bn (Sep 2025)"
+   },
+   "locator": "PDF p.17",
+   "check": {
+    "status": "verified",
+    "phrase": "$2.6 billion in February 2025 to $39 billion by September 2025",
+    "page": 17
+   },
+   "value": 39000000000.0,
+   "unit": "USD",
+   "currency": "USD",
+   "target_year": 2025,
+   "scope": "One company (Figure AI), private valuation",
+   "attribution": "Barclays Research",
+   "history": {
+    "year": 2025,
+    "value": 2600000000.0
+   }
+  },
+  {
+   "id": "bluebay-beneficiaries",
+   "report": "RPT-008",
+   "theme": "investment",
+   "metric": "value_chain",
+   "kind": "qualitative",
+   "statement": "Suppliers of sensors and actuators are the key beneficiaries; reducers and screws the most compelling stock-picking opportunities.",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "reducers and screws the most compelling stock-picking opportunities"
+   },
+   "locator": "PDF p.5",
+   "check": {
+    "status": "verified",
+    "phrase": "The key beneficiaries are likely to be major suppliers",
+    "page": 5
+   },
+   "attribution": "BlueBay Asset Management",
+   "limits": "Potential beneficiaries, not verified supply-chain participation."
+  },
+  {
+   "id": "barclays-europe-actuators",
+   "report": "RPT-004",
+   "theme": "investment",
+   "metric": "value_chain",
+   "kind": "observed",
+   "statement": "Europe accounts for 34% of global trade in actuator components, ahead of China (26%); Germany is about a third of Europe (UN Comtrade).",
+   "cell": {
+    "column": "China vs US / regional view",
+    "excerpt": "Europe leads actuator supply with 34% vs China 26%"
+   },
+   "locator": "PDF p.15 (Figure 16)",
+   "check": {
+    "status": "verified",
+    "phrase": "Europe accounts for 34% of global",
+    "page": 15
+   },
+   "value": 34,
+   "unit": "%",
+   "denominator": "Global trade flows of actuator components",
+   "geography": "Europe",
+   "attribution": "UN Comtrade (cited by Barclays)"
+  },
+  {
+   "id": "bluebay-screws-24",
+   "report": "RPT-008",
+   "theme": "investment",
+   "metric": "value_chain",
+   "kind": "forecast",
+   "statement": "Humanoid adoption could expand the global precision screw market by about 24% by 2030 (Daiwa).",
+   "cell": {
+    "column": "Other key figures",
+    "excerpt": "expand the global precision screw market by ~24% by 2030E (Daiwa)"
+   },
+   "locator": "PDF p.5",
+   "check": {
+    "status": "verified",
+    "phrase": "precision screw market by as at February 2026. approximately 24% by 2030E",
+    "page": 5
+   },
+   "value": 24,
+   "unit": "% market expansion",
+   "target_year": 2030,
+   "attribution": "Daiwa (cited by BlueBay)"
+  },
+  {
+   "id": "intel-edge",
+   "report": "RPT-005",
+   "theme": "investment",
+   "metric": "survey_stage",
+   "kind": "survey",
+   "statement": "42% have a funded edge or on-device AI strategy for robotics and 39% are developing one, as extracted.",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "42% have a funded edge/on-device AI strategy for robotics"
+   },
+   "locator": "p.15 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Intel survey (Coleman Parkes)"
+  },
+  {
+   "id": "ms-valuations",
+   "report": "RPT-003",
+   "theme": "investment",
+   "metric": "valuation",
+   "kind": "observed",
+   "statement": "Figure AI and Agility valued at US$2.6 billion and US$1.2 billion in 2024 private rounds, as extracted.",
+   "cell": {
+    "column": "Investment / funding",
+    "excerpt": "Figure AI and Agility valued at $2.6 billion and $1.2 billion in 2024 private rounds"
+   },
+   "locator": "p.30 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Morgan Stanley Research"
+  },
+  {
+   "id": "bofa-r-roi",
+   "report": "RPT-002",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Economics, return on investment and payback remain a barrier.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Economics/ROI and payback"
+   },
+   "locator": "PDF p.6",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "constraint": "economics"
+  },
+  {
+   "id": "bofa-r-supply",
+   "report": "RPT-002",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Supply chains for actuators, sensors, reducers and batteries lack the volume, reliability and cost structure for large-scale production.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "supply chain maturity (actuators, sensors, reducers, batteries)"
+   },
+   "locator": "PDF p.6",
+   "check": {
+    "status": "verified",
+    "phrase": "lack the volume, reliability and cost structure needed for large-scale humanoid production",
+    "page": 6
+   },
+   "constraint": "supply_chain"
+  },
+  {
+   "id": "bofa-r-safety",
+   "report": "RPT-002",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Standards for safe human-robot co-working are still emerging, slowing approvals.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "safety certification"
+   },
+   "locator": "PDF p.6",
+   "check": {
+    "status": "verified",
+    "phrase": "Standards for safe human-robot co-working are still emerging",
+    "page": 6
+   },
+   "constraint": "safety_regulation"
+  },
+  {
+   "id": "bofa-r-reliability",
+   "report": "RPT-002",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Humanoids remain too fragile and maintenance-intensive for 24/7 industrial use.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "reliability/uptime for 24/7 use"
+   },
+   "locator": "PDF p.6",
+   "check": {
+    "status": "verified",
+    "phrase": "too fragile and maintenance-intensive for 24/7 industrial environments",
+    "page": 6
+   },
+   "constraint": "reliability"
+  },
+  {
+   "id": "barclays-r-actuators",
+   "report": "RPT-004",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Actuator systems could be a critical bottleneck as production scales; dependence on Chinese rare earths is a risk.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Actuator systems could be a critical bottleneck as production scales"
+   },
+   "locator": "PDF p.3, p.5",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "constraint": "supply_chain"
+  },
+  {
+   "id": "barclays-r-battery",
+   "report": "RPT-004",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Batteries give run times of about 4 to 5 hours, and high-intensity motion drains power faster.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "battery runtime (4-5 hours)"
+   },
+   "locator": "PDF p.12",
+   "check": {
+    "status": "verified",
+    "phrase": "of about 4–5 hours",
+    "page": 12
+   },
+   "constraint": "power"
+  },
+  {
+   "id": "gs-r-ai",
+   "report": "RPT-012",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Whether a general-purpose AI robot is viable is still an open question.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Whether a general-purpose AI robot is viable is still a question"
+   },
+   "locator": "PDF p.1, p.17",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "constraint": "autonomy_ai"
+  },
+  {
+   "id": "gs-r-screws",
+   "report": "RPT-012",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Planetary roller screw capacity and cost; 95% of the high-precision grinding equipment comes from overseas.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "planetary roller screw capacity and cost"
+   },
+   "locator": "PDF p.13",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "constraint": "supply_chain"
+  },
+  {
+   "id": "fayd-r-list",
+   "report": "RPT-007",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Thesis would weaken if pilots repeatedly failed to convert into paid, expanded deployments; reliability, autonomy, dexterity, battery duty cycle and safety certification are watch points.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "pilots not converting"
+   },
+   "locator": "PDF p.13",
+   "check": {
+    "status": "verified",
+    "phrase": "if pilots repeatedly failed to convert into paid, expanded deployments",
+    "page": 13
+   },
+   "constraint": "reliability",
+   "constraints_also": [
+    "autonomy_ai",
+    "dexterity",
+    "power",
+    "safety_regulation"
+   ]
+  },
+  {
+   "id": "bluebay-r-supply",
+   "report": "RPT-008",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Actuators and sensors are likely the key supply-chain bottlenecks (McKinsey).",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Actuators and sensors likely key supply-chain bottlenecks (McKinsey)"
+   },
+   "locator": "PDF p.4",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "constraint": "supply_chain"
+  },
+  {
+   "id": "capg-r-tech",
+   "report": "RPT-009",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Top humanoid barriers among surveyed executives: technology immaturity (72%), high cost (63%), unclear ROI (62%).",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "technology immaturity 72%, high cost 63%, unclear ROI 62%"
+   },
+   "locator": "PDF p.88-89",
+   "check": {
+    "status": "verified",
+    "phrase": "technology immaturity (72%)",
+    "page": 88
+   },
+   "constraint": "reliability",
+   "value": 72,
+   "unit": "%",
+   "denominator": "Surveyed organisations (n = 1,678), top-five barriers",
+   "sample": "1,678 executives, 15 industries, January–February 2026",
+   "constraints_also": [
+    "economics"
+   ]
+  },
+  {
+   "id": "capg-r-cost",
+   "report": "RPT-009",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "High upfront cost compared with other automation is a top-five barrier for 63%, unclear ROI for 62%.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "high cost 63%, unclear ROI 62%"
+   },
+   "locator": "PDF p.88-89",
+   "check": {
+    "status": "verified",
+    "phrase": "high cost (63%), unclear ROI (62%)",
+    "page": 88
+   },
+   "constraint": "economics",
+   "value": 63,
+   "unit": "%",
+   "denominator": "Surveyed organisations (n = 1,678), top-five barriers",
+   "sample": "1,678 executives, 15 industries, January–February 2026"
+  },
+  {
+   "id": "nexery-r-data",
+   "report": "RPT-010",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Data quality is a key challenge for 64% of respondents, integration into existing systems for 61%, cost for 60%.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Survey barriers: data quality 64%, integration 61%, cost 60%"
+   },
+   "locator": "PDF p.11",
+   "check": {
+    "status": "verified",
+    "phrase": "followed by integration into existing systems and processes, cited by 61%",
+    "page": 11
+   },
+   "constraint": "data",
+   "value": 64,
+   "unit": "%",
+   "denominator": "Surveyed industry participants (n = 152)",
+   "constraints_also": [
+    "integration",
+    "economics"
+   ]
+  },
+  {
+   "id": "nexery-r-autonomy",
+   "report": "RPT-010",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Autonomy for unstructured environments is not yet available; energy efficiency, manipulation and reliability remain open.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Autonomy for unstructured environments not yet available"
+   },
+   "locator": "PDF p.2, p.17",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "constraint": "autonomy_ai"
+  },
+  {
+   "id": "berg-r-list",
+   "report": "RPT-011",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Challenges remain in reliability, dexterity, battery performance and safety.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Reliability, dexterity, battery performance and safety"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "challenges related to reliability, dexterity, battery performance",
+    "page": 2
+   },
+   "constraint": "reliability",
+   "constraints_also": [
+    "dexterity",
+    "power",
+    "safety_regulation"
+   ]
+  },
+  {
+   "id": "anth-r-capability",
+   "report": "RPT-006",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Capabilities prevent adoption for around 70% of physical tasks; manipulation alone limits about half.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Capabilities block ~70% of physical tasks (manipulation alone half)"
+   },
+   "locator": "Section \"Robot and LLM exposure\"",
+   "check": {
+    "status": "verified",
+    "phrase": "Capabilities prevent adoption for around 70% of physical tasks",
+    "page": null
+   },
+   "constraint": "dexterity",
+   "value": 70,
+   "unit": "%",
+   "qualifier": "about",
+   "denominator": "US physical tasks"
+  },
+  {
+   "id": "anth-r-preferences",
+   "report": "RPT-006",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Human preferences and regulations further limit robot adoption for a significant share of tasks.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "regulation 14%; human preferences a quarter"
+   },
+   "locator": "Section \"Key findings\"",
+   "check": {
+    "status": "verified",
+    "phrase": "Human preferences and regulations further limit robot adoption",
+    "page": null
+   },
+   "constraint": "safety_regulation"
+  },
+  {
+   "id": "pham-r-data",
+   "report": "RPT-001",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Robot data is slow and expensive to collect: in the ten largest training sets, human footage outweighs robot data 18 to 1 (2.1 million against 120,000 hours).",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "human footage outweighs robot data 18 to 1 (2.1M hours vs 120k hours)"
+   },
+   "locator": "Section \"The biggest robot models learn from people\"",
+   "check": {
+    "status": "verified",
+    "phrase": "2.1M hours of human data outweigh 120k hours of robot data by 18 to 1",
+    "page": null
+   },
+   "constraint": "data"
+  },
+  {
+   "id": "intel-r-list",
+   "report": "RPT-005",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Top blockers: upfront capex, integration with existing systems, technical complexity, maintenance and ROI uncertainty, as extracted.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Top blockers: upfront capex, integration with existing systems"
+   },
+   "locator": "p.14 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "constraint": "integration",
+   "constraints_also": [
+    "economics",
+    "reliability"
+   ]
+  },
+  {
+   "id": "ms-r-hardware",
+   "report": "RPT-003",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "qualitative",
+   "statement": "Precision actuators, sensors and battery capacity, and the limited supply and cost of planetary roller screws, as extracted.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "Limited supply and cost of planetary roller screws"
+   },
+   "locator": "p.12, p.34 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   },
+   "constraint": "supply_chain",
+   "constraints_also": [
+    "power"
+   ]
+  },
+  {
+   "id": "nexery-china-vendors",
+   "report": "RPT-010",
+   "theme": "regions",
+   "metric": "china_share",
+   "kind": "observed",
+   "statement": "China accounts for 48 of about 90 commercial humanoid vendors in 2026 (53%), up from 25 in 2025; the US is stable at about 15.",
+   "cell": {
+    "column": "China vs US / regional view",
+    "excerpt": "China 48 vendors (53%) vs 25 in 2025"
+   },
+   "locator": "PDF p.7",
+   "check": {
+    "status": "verified",
+    "phrase": "25 companies in 2025 to 48 companies in 2026",
+    "page": 7
+   },
+   "value": 53,
+   "unit": "%",
+   "denominator": "Commercial humanoid vendors identified (n = 90)",
+   "geography": "China",
+   "target_year": 2026,
+   "attribution": "NEXERY market analysis"
+  },
+  {
+   "id": "barclays-china-models",
+   "report": "RPT-004",
+   "theme": "regions",
+   "metric": "china_share",
+   "kind": "observed",
+   "statement": "Close to 70% of the new humanoid models unveiled in 2025 come from Chinese companies.",
+   "cell": {
+    "column": "China vs US / regional view",
+    "excerpt": "~70% of new 2025 models are Chinese"
+   },
+   "locator": "PDF p.13",
+   "check": {
+    "status": "verified",
+    "phrase": "close to 70% of the new models unveiled in 2025 originate from Chinese companies",
+    "page": 13
+   },
+   "value": 70,
+   "unit": "%",
+   "qualifier": "about",
+   "denominator": "New humanoid models unveiled in 2025",
+   "geography": "China",
+   "target_year": 2025,
+   "attribution": "Barclays Research"
+  },
+  {
+   "id": "pham-unicorns",
+   "report": "RPT-001",
+   "theme": "regions",
+   "metric": "china_vs_west",
+   "kind": "observed",
+   "statement": "Of humanoid makers valued at US$1 billion or more, 9 of the 13 Chinese ones have robots with paying customers, against 1 of the 7 Western ones.",
+   "cell": {
+    "column": "China vs US / regional view",
+    "excerpt": "9 of 13 Chinese humanoid unicorns (valued $1B+) have robots with paying customers vs 1 of 7 Western"
+   },
+   "locator": "Section \"Most of China's humanoid unicorns deliver\"",
+   "check": {
+    "status": "verified",
+    "phrase": "9 of the 13 Chinese ones have robots with paying",
+    "page": null
+   },
+   "unit": "companies with paying customers",
+   "geography": "China vs West",
+   "attribution": "Binh Pham (study data)",
+   "points": [
+    {
+     "label": "Chinese humanoid unicorns",
+     "value": 9,
+     "of": 13
+    },
+    {
+     "label": "Western humanoid unicorns",
+     "value": 1,
+     "of": 7
+    }
+   ]
+  },
+  {
+   "id": "pham-models",
+   "report": "RPT-001",
+   "theme": "regions",
+   "metric": "china_vs_west",
+   "kind": "observed",
+   "statement": "In 2026, 28 Chinese companies released 78 robot AI models with a public write-up, against 30 models from 15 US companies; 59% of the Chinese models have open weights, against 20% of US ones.",
+   "cell": {
+    "column": "China vs US / regional view",
+    "excerpt": "2026: 28 Chinese companies released 78 robot AI models vs 15 US companies 30"
+   },
+   "locator": "Section \"China now publishes most of the world's robot AI models\"",
+   "check": {
+    "status": "verified",
+    "phrase": "In 2026, 28 Chinese companies released 78 robot AI models",
+    "page": null
+   },
+   "unit": "robot AI models",
+   "geography": "China vs United States",
+   "target_year": 2026,
+   "attribution": "Binh Pham (study data)",
+   "points": [
+    {
+     "label": "Chinese companies (28)",
+     "value": 78
+    },
+    {
+     "label": "US companies (15)",
+     "value": 30
+    }
+   ]
+  },
+  {
+   "id": "bluebay-patents",
+   "report": "RPT-008",
+   "theme": "regions",
+   "metric": "china_vs_west",
+   "kind": "observed",
+   "statement": "About 7,700 humanoid-related patents were filed in China over five years, against 1,560 in the US and 1,100 in Japan.",
+   "cell": {
+    "column": "China vs US / regional view",
+    "excerpt": "China ~7,700 humanoid patents in five years vs 1,560 US, 1,100 Japan"
+   },
+   "locator": "PDF p.4",
+   "check": {
+    "status": "verified",
+    "phrase": "approximately 7,700 humanoid-related",
+    "page": 4
+   },
+   "value": 7700,
+   "unit": "patents",
+   "geography": "China, United States, Japan",
+   "attribution": "BlueBay Asset Management (cited source)",
+   "points": [
+    {
+     "label": "China",
+     "value": 7700
+    },
+    {
+     "label": "United States",
+     "value": 1560
+    },
+    {
+     "label": "Japan",
+     "value": 1100
+    }
+   ]
+  },
+  {
+   "id": "capg-china",
+   "report": "RPT-009",
+   "theme": "regions",
+   "metric": "china_scale",
+   "kind": "observed",
+   "statement": "China: 2025 its first year of humanoid mass production, more than 140 domestic manufacturers releasing more than 330 models.",
+   "cell": {
+    "column": "China vs US / regional view",
+    "excerpt": ">140 domestic manufacturers, >330 models"
+   },
+   "locator": "PDF p.92",
+   "check": {
+    "status": "verified",
+    "phrase": "domestic manufacturers releasing more than 330",
+    "page": 92
+   },
+   "value": 330,
+   "unit": "models",
+   "qualifier": "more than",
+   "geography": "China",
+   "target_year": 2025,
+   "attribution": "Capgemini Research Institute"
+  },
+  {
+   "id": "fayd-china-products",
+   "report": "RPT-007",
+   "theme": "regions",
+   "metric": "china_scale",
+   "kind": "observed",
+   "statement": "Chinese official data counted more than 400 complete humanoid products by mid-2026, more than half of the global total.",
+   "cell": {
+    "column": "China vs US / regional view",
+    "excerpt": ">400 humanoid products by mid-2026 (more than half of global)"
+   },
+   "locator": "PDF p.11",
+   "check": {
+    "status": "verified",
+    "phrase": "more than 400 complete humanoid products, more than half of the global total",
+    "page": 11
+   },
+   "value": 400,
+   "unit": "products",
+   "qualifier": "more than",
+   "geography": "China",
+   "target_year": 2026,
+   "attribution": "Chinese official data (cited by Fayd)"
+  },
+  {
+   "id": "berg-regions",
+   "report": "RPT-011",
+   "theme": "regions",
+   "metric": "regional_ranking",
+   "kind": "qualitative",
+   "statement": "China is the largest market, followed by the US and Europe.",
+   "cell": {
+    "column": "China vs US / regional view",
+    "excerpt": "China largest market, then US and Europe"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   },
+   "attribution": "Berg Insight"
+  },
+  {
+   "id": "head-rpt-001",
+   "report": "RPT-001",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "Robot money moved to humanoids and robot AI; most of China's humanoid unicorns deliver while most of the West's do not; China now publishes and opens most robot AI models.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "Robot money moved to humanoids and robot AI"
+   },
+   "locator": "Findings",
+   "check": {
+    "status": "verified",
+    "phrase": "Robot money moved to humanoids and robot brains",
+    "page": null
+   }
+  },
+  {
+   "id": "head-rpt-002",
+   "report": "RPT-002",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "The humanoid robot population is poised for take-off, with industrial and service uses first and households largest by 2060.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "The humanoid robot population is poised for take-off"
+   },
+   "locator": "PDF p.1",
+   "check": {
+    "status": "verified",
+    "phrase": "household humanoids are projected to accelerate quickly",
+    "page": 1
+   }
+  },
+  {
+   "id": "head-rpt-004",
+   "report": "RPT-004",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "AI-powered humanoids are set to augment the workforce; physical AI could be the next big investment theme, a tailwind for industrial suppliers.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "AI-powered humanoids are set to augment the workforce"
+   },
+   "locator": "PDF p.1, p.3",
+   "check": {
+    "status": "verified",
+    "phrase": "humanoid robots are set to augment the workforce",
+    "page": 1
+   }
+  },
+  {
+   "id": "head-rpt-006",
+   "report": "RPT-006",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "Robots can already do most physical work in some setting but are much more expensive than human labour; automation will first reach jobs where robots already have a foothold.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "Robots can already do most physical work in some setting but are much more expensive than human labor"
+   },
+   "locator": "Section \"Key findings\"",
+   "check": {
+    "status": "verified",
+    "phrase": "they are much more expensive than human labor",
+    "page": null
+   }
+  },
+  {
+   "id": "head-rpt-007",
+   "report": "RPT-007",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "Constructive with qualification: adoption is industrial-first and the core economic test is cost per productive robot-hour.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "the core economic metric is cost per productive robot-hour"
+   },
+   "locator": "PDF p.1",
+   "check": {
+    "status": "verified",
+    "phrase": "Cost per productive robot-hour",
+    "page": 1
+   }
+  },
+  {
+   "id": "head-rpt-008",
+   "report": "RPT-008",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "Humanoids are emerging as one of the most visible applications of physical AI; falling hardware costs should narrow the gap with human labour costs.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "Humanoids are emerging as one of the most visible and scalable applications of physical AI"
+   },
+   "locator": "PDF p.1",
+   "check": {
+    "status": "verified",
+    "phrase": "most visible and potentially",
+    "page": 1
+   }
+  },
+  {
+   "id": "head-rpt-009",
+   "report": "RPT-009",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "Physical AI is at an inflection point, but humanoids remain a longer-term bet; near-term growth comes from established, task-specific robots.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "humanoids, despite substantial investment, remain a longer-term bet"
+   },
+   "locator": "PDF p.10-12",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   }
+  },
+  {
+   "id": "head-rpt-010",
+   "report": "RPT-010",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "Humanoid robotics is no longer a distant topic; the first broad wave of scaling will be industrial, and wheeled humanoids are a pragmatic early option.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "the first broad wave of scaling will be industrial"
+   },
+   "locator": "PDF p.3, p.9",
+   "check": {
+    "status": "pending",
+    "phrase": null,
+    "page": null
+   }
+  },
+  {
+   "id": "head-rpt-011",
+   "report": "RPT-011",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "Humanoid robotics has moved beyond the experimental stage into early commercialisation.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "Humanoid robotics has moved beyond the experimental stage into early commercialisation"
+   },
+   "locator": "PDF p.2",
+   "check": {
+    "status": "verified",
+    "phrase": "moved beyond the experimental stage and entered the early",
+    "page": 2
+   }
+  },
+  {
+   "id": "head-rpt-012",
+   "report": "RPT-012",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "AI progress surprised the most; hardware is mostly ready, with a much faster path to profitability on a 40% lower bill of materials.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "much faster path to profitability on 40% lower BOM"
+   },
+   "locator": "PDF p.1",
+   "check": {
+    "status": "verified",
+    "phrase": "with a much faster path to profitability on a 40% reduction in bill of materials",
+    "page": 1
+   }
+  },
+  {
+   "id": "head-rpt-003",
+   "report": "RPT-003",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "The physical embodiment of AI touches a very large addressable market; the Humanoid 100 maps the listed companies across the value chain, as extracted.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "the Humanoid 100 maps the equities"
+   },
+   "locator": "p.1 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   }
+  },
+  {
+   "id": "head-rpt-005",
+   "report": "RPT-005",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "Ambition outpaces readiness among surveyed leaders, as extracted.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "Ambition outpaces readiness"
+   },
+   "locator": "p.5 (as extracted)",
+   "check": {
+    "status": "pending_unreachable",
+    "phrase": null,
+    "page": null
+   }
+  }
+ ]
+}

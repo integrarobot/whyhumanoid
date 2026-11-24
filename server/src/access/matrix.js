@@ -71,11 +71,11 @@ export const CATEGORIES = Object.freeze([
     summary: 'Non-humanoid, service and educational robots tracked alongside the humanoid catalogue.',
   },
   {
-    // Not a workbook tab: a reviewed catalogue of external reports (data/reports/catalogue.json) plus Why Humanoid?'s
-    // own analyses. The external source is a staging sheet of extractions; only checked bibliographic records publish.
-    id: 'reports', label: 'Reports', path: '/reports/', access: 'free', datasets: [], source: 'data/reports/catalogue.json',
-    summary: 'Research reports on humanoid robots, with their publisher, date, scope and a link to the original, and Why Humanoid? analyses.',
-    gap: 'Findings from these reports (forecasts, costs, adoption) are being checked against each original, page by page, and are not published yet.',
+    // Not imported into the backend: the Reports tab of the workbook plus a reviewed mapping of findings, published as the
+    // Research Conclusions Atlas (data/reports/atlas.json, tools/export-reports.mjs), and Why Humanoid?'s own analyses.
+    id: 'reports', label: 'Reports', path: '/reports/', access: 'free', datasets: [], source: 'data/reports/atlas.json',
+    summary: 'What research reports on humanoid robots agree on, where they diverge, and which assumptions drive their numbers.',
+    gap: 'Findings are checked claim by claim against each original. Some are still pending, and two originals could not be reached for review; those findings are listed but not drawn.',
   },
 ]);
 

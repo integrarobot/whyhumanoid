@@ -5682,6 +5682,39 @@
   "reports": {
     "rpt_anthropic_2026_what-work-can-robots-do": [
       "anthropic-what-work-can-robots-do-2026"
+    ],
+    "rpt_pham_2026_robotics-design-study": [
+      "pham-robotics-design-study-2026"
+    ],
+    "rpt_bofa_2026_physical-ai-part-2": [
+      "bofa-physical-ai-part-2-2026"
+    ],
+    "rpt_morgan-stanley_2025_humanoid-100": [
+      "morgan-stanley-humanoid-100-2025"
+    ],
+    "rpt_barclays_2026_ai-gets-physical": [
+      "barclays-ai-gets-physical-2026"
+    ],
+    "rpt_intel_2026_robotics-readiness-gap": [
+      "intel-robotics-readiness-gap-2026"
+    ],
+    "rpt_fayd_2026_humanoid-robotics-physical-ai": [
+      "fayd-humanoid-robotics-physical-ai-2026"
+    ],
+    "rpt_bluebay_2026_physical-ai-rise-of-the-machines": [
+      "bluebay-physical-ai-rise-of-the-machines-2026"
+    ],
+    "rpt_capgemini_2026_physical-ai": [
+      "capgemini-physical-ai-2026"
+    ],
+    "rpt_nexery_2026_humanoid-robot-study": [
+      "nexery-humanoid-robot-study-2026"
+    ],
+    "rpt_berg_2026_future-of-humanoid-robots": [
+      "berg-insight-future-of-humanoid-robots-2026"
+    ],
+    "rpt_goldman-sachs_2024_humanoid-robot-ai-accelerant": [
+      "goldman-sachs-humanoid-robot-ai-accelerant-2024"
     ]
   }
 }

@@ -194,7 +194,7 @@ export function dataAtlasSummary() {
 }
 export function renderCategories(data) {
   const tabs = new Map((data.database?.tabs ?? []).map((t) => [t.id, t]));
-  const reports = JSON.parse(readFileSync(new URL('data/reports/catalogue.json', root), 'utf8')).reports.length + 1; // + Why Humanoid?'s deployment records analysis
+  const reports = JSON.parse(readFileSync(new URL('data/reports/atlas.json', root), 'utf8')).reports.length + 1; // + Why Humanoid?'s deployment records analysis
   // Benchmarks: the resources of the Robotics Evaluation Atlas snapshot (data/benchmarks/atlas.json), not a preview tab.
   const atlas = JSON.parse(readFileSync(new URL('data/benchmarks/atlas.json', root), 'utf8')).counts;
   // Datasets: the resources of the Robot Learning Data Atlas snapshot (data/datasets/atlas.json), also not a preview tab.
