@@ -77,7 +77,7 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
   const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/atlas.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', 'data/integrators/atlas.json', 'data/components/coverage.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/atlas.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', 'data/integrators/atlas.json', 'data/components/coverage.json', 'data/evolution/charts.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));

@@ -36,6 +36,7 @@ import { API_ORIGIN } from './build-app.mjs';
 import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
+import { renderEvolutionSection } from './evolution-view.mjs';
 
 export const SITE = 'https://whyhumanoid.com';
 const APP = `${SITE}/app/`;
@@ -557,9 +558,22 @@ function categoryHead(c, model, extra = '') {
 <p class="kicker">Category ${CATEGORIES.indexOf(c) + 1} of ${CATEGORIES.length}${accessBadge(c)}</p>
 <h1>${esc(c.label)}</h1>
 <p class="lede">${esc(c.summary)}</p>
-${c.gap ? `<p class="gap"><b>Coverage:</b> ${esc(c.gap)}</p>` : ''}${extra}`;
+${c.gap ? `<p class="gap"><b>Coverage:</b> ${esc(c.gap)}</p>` : ''}${extra}${EVOLUTION.has(c.id) ? `\n${renderEvolutionSection(EVOLUTION.get(c.id))}` : ''}`;
 }
-const catPage = (c, model, body, description, opts = {}) => page({ title: opts.title ?? `${c.label}: ${c.summary.replace(/[.:].*$/, '').toLowerCase()} · Why Humanoid?`, description: clip(description), path: c.path, body: `${body}\n</article>`, section: c.id, ...opts });
+// Evolution charts (Javier, 24 Nov 2026): the large chart of each of the seven sections, first after the page header,
+// from data/evolution/charts.json (tools/export-evolution.mjs). The same chart model feeds the home carousel.
+const EVOLUTION = new Map(JSON.parse(readFileSync(new URL('data/evolution/charts.json', root), 'utf8')).charts.map((c) => [c.id, c]));
+const evolutionHead = () => `<link rel="stylesheet" href="/assets/evolution.css?v=${assetVersion('assets/evolution.css')}">\n`;
+const evolutionTail = () => `\n<script src="/assets/evolution.js?v=${assetVersion('assets/evolution.js')}" defer></script>`;
+function withEvolution(c, body) {
+  const evo = EVOLUTION.get(c.id);
+  if (!evo || body.includes('id="evolution"')) return body;
+  const section = renderEvolutionSection(evo);
+  const at = body.indexOf('</header>');
+  if (at < 0) throw new Error(`${c.id}: no page header to place the evolution chart after`);
+  return `${body.slice(0, at + 9)}\n${section}${body.slice(at + 9)}`;
+}
+const catPage = (c, model, body, description, opts = {}) => (EVOLUTION.has(c.id) ? page({ title: opts.title ?? `${c.label}: ${c.summary.replace(/[.:].*$/, '').toLowerCase()} · Why Humanoid?`, description: clip(description), path: c.path, body: `${withEvolution(c, body)}\n</article>`, section: c.id, ...opts, head: `${opts.head ?? ''}${evolutionHead()}`, tail: `${opts.tail ?? ''}${evolutionTail()}` }) : page({ title: opts.title ?? `${c.label}: ${c.summary.replace(/[.:].*$/, '').toLowerCase()} · Why Humanoid?`, description: clip(description), path: c.path, body: `${body}\n</article>`, section: c.id, ...opts }));
 const dirTable = (rows, cols) => `<div class="scroll"><table class="dir"><thead><tr>${cols.map(([h]) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${cols.map(([, f]) => `<td>${f(r)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 const nameLink = (r) => (nz(r.url) ? ext(r.url, r.name) : esc(r.name));
 const descr = (r) => (r._pending?.includes('description') ? PENDING : nz(r.description) ? text(r.description) : '<span class="na">No description recorded</span>');

@@ -100,6 +100,14 @@ Gratis entero (AGENTS.md, regla «Integrators»). Cuando cambie la pestaña Inte
 3. `node tools/build-pages.mjs`, `node --no-warnings --test tools/test-integrators.mjs` y, con el sitio servido, `node tools/verify-integrators.mjs --base <url>`.
 4. Tras la importación de producción, `node tools/verify-integrators.mjs --base https://whyhumanoid.com --api <worker>` comprueba que la API sirve los mismos proveedores.
 
+## Gráficos de evolución
+
+Siete gráficos, uno por sección (Humanoids, Deployments, Components, Integrators, Datasets, Benchmarks, Reports), y el carrusel de la portada (AGENTS.md, regla «Gráficos de evolución»). Salen de las instantáneas públicas y de `tools/evolution-review.json`:
+
+1. Después de regenerar cualquier instantánea pública (catálogo, `data/preview/`, atlas), `node tools/export-evolution.mjs`. Si falla porque un extracto citado ya no está en su celda, o porque un producto nuevo de Components no tiene decisión de fecha, se actualiza `tools/evolution-review.json` con el texto vigente. Nunca se inventa una fecha ni se usa la de revisión o la de la instantánea como historia.
+2. `node tools/build-pages.mjs`, `node tools/build-site.mjs` y `node --no-warnings --test tools/test-evolution.mjs`.
+3. Con Playwright, `node tools/verify-evolution.mjs` (local; `--quick` acorta la rotación) y, tras publicar, `node tools/verify-evolution.mjs --base https://whyhumanoid.com`.
+
 ## Estado
 
 `ops/weekly-update/state.json` en el repositorio `integrarobot/whyhumanoid`:

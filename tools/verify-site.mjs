@@ -216,9 +216,10 @@ expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements
   const proj = JSON.parse(readFileSync(new URL('data/public/projection.json', root), 'utf8'));
   const cases = proj.cases;
   expect(!document.getElementById('cuerpos') && !document.getElementById('bc'), 'the Height × mass chart is still in the hero');
-  expect(Boolean(document.querySelector('.hero .adopt-hero')), 'adoption view missing from the hero');
-  const op = cases.filter((c) => c.stage === 'op').length;
-  expect(new RegExp(`^${op} of ${cases.length} recorded deployment cases`).test(text('.adopt-lede')), `hero sentence does not match the projection (${op} of ${cases.length})`);
+  // The hero's featured chart is the evolution carousel (24 Nov 2026): seven charts in the section order.
+  expect(!document.querySelector('.hero .adopt-hero'), 'the static adoption figure is still in the hero');
+  expect([...document.querySelectorAll('.hero #evo-car [role="tab"]')].map((t) => t.textContent).join() === 'Humanoids,Deployments,Components,Integrators,Datasets,Benchmarks,Reports', 'evolution carousel missing from the hero or out of order');
+  expect(document.querySelectorAll('.hero #evo-car .evo-slide').length === 7 && document.querySelectorAll('.hero #evo-car .evo-slide.on').length === 1, 'evolution carousel slides');
   const chips = [...document.querySelectorAll('#adoption .case')];
   expect(chips.length === cases.length && new Set(chips.map((a) => a.dataset.case)).size === cases.length, `explorer shows ${chips.length} marks for ${cases.length} cases`);
   for (const stage of ['op', 'pilot', 'unc', 'ann']) expect(document.querySelectorAll(`#adoption .r-${stage} .case`).length === cases.filter((c) => c.stage === stage).length, `stage ${stage}: marks differ from the projection`);
