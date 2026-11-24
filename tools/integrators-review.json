@@ -1,0 +1,148 @@
+{
+  "note": "Reviewed reading of the Integrators tab (24 Nov 2026). Every grouping cites a literal excerpt of the provider's own cell, checked by tools/export-integrators.mjs; nothing here adds a claim the sheet does not make. Groups describe the kind of evidence, not a ranking or a quality score.",
+  "evidence_groups": [
+    { "id": "corroborated_project", "status": "humanoid", "label": "Named project, corroborated", "explanation": "A named customer or partner project confirmed by the customer, a partner or a joint announcement. Pilot or proof-of-concept scale unless the sources say more." },
+    { "id": "provider_project", "status": "humanoid", "label": "Named project, provider-reported", "explanation": "A named project or operated robot described by the provider itself, without customer or partner corroboration in the reviewed sources." },
+    { "id": "partnership", "status": "humanoid", "label": "Partnership announced", "explanation": "An integration or service partnership or agreement announced by the provider, the manufacturer or both. No named end-customer completion." },
+    { "id": "technical", "status": "humanoid", "label": "Published technical or research work", "explanation": "Published documentation, code, lab engineering or a university-confirmed collaboration. Not a customer deployment." },
+    { "id": "offering", "status": "humanoid", "label": "Commercial offering", "explanation": "A described humanoid product or service offering, sometimes with a demonstrator or a proposed protocol. No named completed humanoid project." },
+    { "id": "simulation", "status": "exception", "label": "Simulated tests only", "explanation": "Requested specialist exception: provider-reported simulated tests. No humanoid validation, no completed humanoid integration and no safety or unlearning guarantee." },
+    { "id": "unconfirmed", "status": "unconfirmed", "label": "Humanoid scope unconfirmed", "explanation": "Historical record kept for continuity. Reviewed sources show service-robot work but do not establish humanoid work." }
+  ],
+  "providers": {
+    "int_accenture": { "group": "corroborated_project", "basis": "Named customer pilot reported by participating partners" },
+    "int_capgemini": { "group": "corroborated_project", "basis": "Jointly announced proof of concept" },
+    "int_innov8": { "group": "corroborated_project", "basis": "Named industrial customer PoC" },
+    "int_bleu": { "group": "corroborated_project", "basis": "Customer-confirmed participation in PoC" },
+    "int_gmo_air": { "group": "corroborated_project", "basis": "jointly announced airport demonstration" },
+    "int_mine": { "group": "provider_project", "basis": "Named provider-reported project and tests" },
+    "int_mera": { "group": "provider_project", "basis": "provider-reported operated robot and software users" },
+    "int_zion": { "group": "partnership", "basis": "Partner-confirmed integration offering" },
+    "int_tompkins": { "group": "partnership", "basis": "Announced integration partnership and offering" },
+    "int_ricoh_usa": { "group": "partnership", "basis": "Joint partner announcement; service relationship" },
+    "int_rovimatica": { "group": "partnership", "basis": "Company-declared integration agreement" },
+    "int_syntech": { "group": "technical", "basis": "university-confirmed collaboration; no production deployment established" },
+    "int_reply": { "group": "technical", "basis": "Provider-reported lab engineering and R&D" },
+    "int_mybotshop": { "group": "technical", "basis": "Published implementation documentation and teleoperation examples" },
+    "int_techshare": { "group": "technical", "basis": "Published developer documentation/code" },
+    "int_intec": { "group": "offering", "basis": "Product and integration-service offering" },
+    "int_bravo": { "group": "offering", "basis": "named customer deployment unconfirmed" },
+    "int_probot": { "group": "offering", "basis": "Integration offering and company demonstrator" },
+    "int_dart": { "group": "offering", "basis": "no named humanoid customer deployment established" },
+    "int_robotlab": { "group": "offering", "basis": "Commercial offering and service documentation" },
+    "int_robothaus": { "group": "offering", "basis": "Detailed commercial integration offering" },
+    "int_cosmicbrain": { "group": "offering", "basis": "Proposed pilot protocol; no measured deployment results published" },
+    "int_saphai": { "group": "offering", "basis": "Product/service offering" },
+    "int_generation_robots": { "group": "offering", "basis": "Commercial research-platform offering" },
+    "int_ca3": { "group": "simulation", "basis": "Provider-reported simulation; proposed pilot scope" },
+    "int_bumerania": { "group": "unconfirmed", "basis": "Adjacent service robotics offering" },
+    "int_amerevo": { "group": "unconfirmed", "basis": "Adjacent service robotics offering" },
+    "int_rh_bots": { "group": "unconfirmed", "basis": "Adjacent cleaning integration offering" }
+  },
+  "project_types": {
+    "customer_project": "Customer project or pilot",
+    "announced_programme": "Announced programme",
+    "provider_project": "Provider-reported project",
+    "operated_robot": "Operated robot (operator-controlled)",
+    "research_collaboration": "University collaboration",
+    "partnership": "Provider partnership"
+  },
+  "projects": [
+    {
+      "id": "novares-sesena",
+      "name": "Novares Lens/Seseña humanoid proof of concept",
+      "type": "customer_project",
+      "summary": "One shared proof of concept at the automotive supplier Novares: Innov8 Robotics as system integrator and Bleu Robotics for the learning software, on Unitree hardware. Counted once.",
+      "providers": [
+        { "id": "int_innov8", "role": "System integration: selection, on-site integration, functional safety, operator training and support", "field": "humanoid_project", "excerpt": "Novares Lens/Seseña humanoid PoC with Bleu Robotics; same case as Bleu entry" },
+        { "id": "int_bleu", "role": "Learning software: on-site policy adaptation", "field": "humanoid_project", "excerpt": "Novares Seseña PoC with Innov8; shared case, not a second deployment" }
+      ],
+      "results_note": "Each source reports its own figures, with different denominators and durations; they are shown separately and never combined.",
+      "results": [
+        { "id": "int_innov8", "field": "limitations", "excerpt": "Novares reports 99.5% part handling and 60 min/200 cycles; not a long-run uptime or commercial rollout measure." },
+        { "id": "int_bleu", "field": "limitations", "excerpt": "Bleu reports 206/207 parts packed over 65 min and 97.2% grasp-attempt success; these are distinct denominators." }
+      ]
+    },
+    {
+      "id": "vodafone-duisburg",
+      "name": "Vodafone Procure & Connect warehouse pilot, Duisburg",
+      "type": "customer_project",
+      "summary": "Humanoid pilot in a Vodafone Germany warehouse with Vodafone Procure & Connect and SAP. The humanoid manufacturer is not disclosed.",
+      "providers": [
+        { "id": "int_accenture", "role": "Robot intelligence, operational framework, digital-twin training and workflow integration", "field": "humanoid_project", "excerpt": "Vodafone Procure & Connect; Vodafone Germany warehouse in Duisburg; visual inspection" }
+      ],
+      "deployment_case": "accenture-vodafone-duisburg"
+    },
+    {
+      "id": "orano-hoxo",
+      "name": "Hoxo at Orano Melox École des Métiers",
+      "type": "customer_project",
+      "summary": "Jointly announced proof of concept and training-site testing with Orano. Not autonomous radioactive-zone production.",
+      "providers": [
+        { "id": "int_capgemini", "role": "Digital twins, simulation, VLA integration and sim-to-real", "field": "humanoid_project", "excerpt": "Hoxo; Orano Melox Ecole des Metiers" }
+      ]
+    },
+    {
+      "id": "asahi-kasei",
+      "name": "Asahi Kasei experimental-film carrier transport",
+      "type": "customer_project",
+      "summary": "Trial in February 2026 at Asahi Kasei Moriyama Works on Unitree G1: lifting and carrying an approximately 0.8-kg carrier between tables.",
+      "providers": [
+        { "id": "int_gmo_air", "role": "Model selection, control tuning, motion programming and on-site PoC", "field": "humanoid_project", "excerpt": "Asahi Kasei experimental-film carrier transport (February 2026)" }
+      ]
+    },
+    {
+      "id": "jal-ground-service",
+      "name": "JAL Ground Service humanoid programme",
+      "type": "announced_programme",
+      "summary": "Airport ground-handling verification announced by JAL for May 2026, in phases. The reviewed release does not establish the robot model or a production outcome.",
+      "providers": [
+        { "id": "int_gmo_air", "role": "Humanoid solution provider in the announced programme", "field": "humanoid_project", "excerpt": "JAL Ground Service programme announced for May 2026" }
+      ]
+    },
+    {
+      "id": "txistu",
+      "name": "TXISTU visitor-guidance humanoid (NASERTIC, Polo IRIS Navarra)",
+      "type": "provider_project",
+      "summary": "Provider-described Unitree G1 project with perception, navigation and conversation software. No independent validation, task-success denominator or operating hours.",
+      "providers": [
+        { "id": "int_mine", "role": "Physical AI and software integration", "field": "humanoid_project", "excerpt": "TXISTU; NASERTIC; Polo IRIS Navarra; visitor guidance" }
+      ]
+    },
+    {
+      "id": "edward-warchocki",
+      "name": "Edward Warchocki",
+      "type": "operated_robot",
+      "summary": "A humanoid run by MERA Robotics at events. An operator controls movement and gestures through a phone app: not autonomous physical work.",
+      "providers": [
+        { "id": "int_mera", "role": "Owner and operator", "field": "humanoid_project", "excerpt": "Edward Warchocki (operated humanoid)" }
+      ]
+    },
+    {
+      "id": "upv-humantech",
+      "name": "UPV (Universitat Politècnica de València) humanoid demonstration and chair",
+      "type": "research_collaboration",
+      "summary": "A UPV HumanTech humanoid demonstration (2025) and a Synergy Tech chair at the university (2026). Not a customer deployment.",
+      "providers": [
+        { "id": "int_syntech", "role": "Platform supply and research collaboration", "field": "humanoid_project", "excerpt": "UPV HumanTech humanoid demonstration (2025); Synergy Tech UPV Chair (2026)" }
+      ]
+    },
+    {
+      "id": "gmo-techshare",
+      "name": "GMO AI & Robotics and TechShare cooperation",
+      "type": "partnership",
+      "summary": "Two distinct providers announced maintenance and solution cooperation. A partnership announcement, not proof that all planned work completed.",
+      "providers": [
+        { "id": "int_gmo_air", "role": "Humanoid solution integrator", "field": "support", "excerpt": "maintenance/solution cooperation with TechShare announced" },
+        { "id": "int_techshare", "role": "Developer-platform integrator and technical support", "field": "humanoid_project", "excerpt": "GMO AIR partnership" }
+      ]
+    }
+  ],
+  "robot_links": [
+    { "platform": "unitree-h1", "lab": "Unitree", "robot": "H1" },
+    { "provider": "int_intec", "field": "humanoid_platforms", "excerpt": "D7 and FlashBot Arm (semi-humanoid)", "lab": "Pudu", "robot": "D7" }
+  ],
+  "software_links": [
+    { "provider": "int_cosmicbrain", "field": "limitations", "excerpt": "Existing Software record is cross-category context, not a second provider", "software_host": "cosmicbrain.ai" }
+  ]
+}

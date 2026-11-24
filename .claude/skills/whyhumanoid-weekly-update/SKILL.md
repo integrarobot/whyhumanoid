@@ -91,6 +91,15 @@ Desde el 17/11/2026 (Javier) la aplicación tiene un buscador sobre las 13 categ
 - En cada actualización: `node --no-warnings tools/search-tags.mjs --from <export>` (solo en pantalla, nunca en Git) muestra la cobertura y los valores que el vocabulario no conoce. Si uno es un sinónimo real de un término existente (por ejemplo, otra forma de escribir un país), añádelo al vocabulario y explícalo en el PR; si no, se queda sin etiqueta y se anota en el cierre.
 - Tras importar a producción, el registro del job muestra `search` (documentos por alcance y valores desconocidos, solo recuentos). Comprueba en producción una búsqueda como visitante y otra como suscriptor (sesión existente, solo lectura).
 
+## Integrators: catálogo de proveedores
+
+Gratis entero (AGENTS.md, regla «Integrators»). Cuando cambie la pestaña Integrators del maestro:
+
+1. `node --no-warnings tools/export-database.mjs --from <export> --only integrators --snapshot <ISO>`. Si falla, la hoja tiene una incoherencia (cabecera, ID, estado de catálogo, URL o fecha): se informa y no se publica.
+2. `node tools/export-integrators.mjs`. Si falla porque un extracto citado ya no está en su celda, se actualiza `tools/integrators-review.json` para citar el texto vigente. Nunca se cambia el maestro para encajar en la web. Un proveedor nuevo necesita su grupo de evidencia revisado.
+3. `node tools/build-pages.mjs`, `node --no-warnings --test tools/test-integrators.mjs` y, con el sitio servido, `node tools/verify-integrators.mjs --base <url>`.
+4. Tras la importación de producción, `node tools/verify-integrators.mjs --base https://whyhumanoid.com --api <worker>` comprueba que la API sirve los mismos proveedores.
+
 ## Estado
 
 `ops/weekly-update/state.json` en el repositorio `integrarobot/whyhumanoid`:

@@ -49,7 +49,7 @@ export const CATEGORIES = Object.freeze([
   },
   {
     id: 'integrators', label: 'Integrators', path: '/integrators/', access: 'free', datasets: ['integrators'],
-    summary: 'System integrators and service providers that deploy humanoid and service robots.',
+    summary: 'Who delivers humanoid integration, software, training and support services, on which platforms and where, with the evidence behind each claim.',
   },
   {
     id: 'software', label: 'Software', path: '/software/', access: 'free', datasets: ['software'],

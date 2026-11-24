@@ -21,7 +21,6 @@
   },
   "pending": {
     "stocks": ["description", "segment"],
-    "integrators": ["description"],
     "task-evaluations": ["decision_reason"]
   }
 }

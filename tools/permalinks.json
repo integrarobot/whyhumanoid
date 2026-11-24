@@ -4526,6 +4526,153 @@
       "organization_ids": [
         "org_zhaofeng"
       ]
+    },
+    "int_accenture.com": {
+      "slugs": [
+        "accenture"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_bleu-robotics.com": {
+      "slugs": [
+        "bleu-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_ca3.si": {
+      "slugs": [
+        "ca3"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_capgemini.com": {
+      "slugs": [
+        "capgemini"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_cosmicbrain.ai": {
+      "slugs": [
+        "cosmicbrain"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_dartsolutions.tech": {
+      "slugs": [
+        "dart-solutions"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_generationrobots.com": {
+      "slugs": [
+        "generation-robots"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_ai-robotics.gmo": {
+      "slugs": [
+        "gmo-ai-and-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_innov8.fr": {
+      "slugs": [
+        "innov8-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_merarobotics.com": {
+      "slugs": [
+        "mera-robotics"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_mybotshop.com": {
+      "slugs": [
+        "mybotshop"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_probot.fi": {
+      "slugs": [
+        "probot-oy"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_reply.com": {
+      "slugs": [
+        "reply"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_ricoh-usa.com": {
+      "slugs": [
+        "ricoh-usa"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_robothaus.com.au": {
+      "slugs": [
+        "robothaus"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_robotlab.com": {
+      "slugs": [
+        "robotlab"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_rovimatica.com": {
+      "slugs": [
+        "rovimatica"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_saphai.se": {
+      "slugs": [
+        "saphai"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_techshare.co.jp": {
+      "slugs": [
+        "techshare"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_tompkinsinc.com": {
+      "slugs": [
+        "tompkins-solutions"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "int_thezsg.com": {
+      "slugs": [
+        "zion-solutions-group"
+      ],
+      "robots": [],
+      "organization_ids": []
     }
   },
   "other_robots": {

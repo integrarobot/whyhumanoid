@@ -54,21 +54,22 @@ test('Humanoids rows are cleaned: internal editor tasks stripped, ambiguous clau
   );
 });
 
-test('integrator ids are persistent, opaque and keyed on the official domain, never on the name', async () => {
+test('directory ids are persistent, opaque and keyed on the entry link, never on the name', async () => {
+  // Integrators carry their own PROVIDER ID since 24 Nov 2026 (server/test/integrators.test.js); the keyless link
+  // directories (Software, Other robots...) keep identity-registry ids keyed on list and link.
   const db = createTestDb();
   await runImport(db, fixtureWorkbook(), T0);
-  const before = await rowsOf(db, 'integrators');
-  assert.match(before[0].id, /^int_[A-Za-z0-9_-]{16}$/);
+  const before = (await rowsOf(db, 'software')).filter((r) => r.list === 'software');
+  assert.match(before[0].id, /^sw_[A-Za-z0-9_-]{16}$/);
   assert.ok(!before[0].id.includes('example'));
   const renamed = fixtureWorkbook();
-  renamed.Integrators[1][0] = 'Example Integrator Renamed GmbH';
-  renamed.Integrators[1][1] = 'https://www.integrator-1.example.com/about';
+  renamed.Software[1][0] = 'Example Software Renamed';
   await runImport(db, renamed, T0 + 86400);
-  const after = await rowsOf(db, 'integrators');
-  assert.equal(after[0].id, before[0].id, 'same official domain keeps the id');
-  assert.equal(after[0].name, 'Example Integrator Renamed GmbH');
+  const after = (await rowsOf(db, 'software')).filter((r) => r.list === 'software');
+  assert.equal(after[0].id, before[0].id, 'same link keeps the id');
+  assert.equal(after[0].name, 'Example Software Renamed');
   const registry = await db.prepare("SELECT aliases FROM identity_registry WHERE id = ?").bind(before[0].id).first();
-  assert.deepEqual(JSON.parse(registry.aliases), ['Example integrator 1', 'Example Integrator Renamed GmbH']);
+  assert.deepEqual(JSON.parse(registry.aliases), ['Example software 1', 'Example Software Renamed']);
 });
 
 // Cloudflare allows about 1,000 D1 calls per Worker invocation; the first live import failed at 999.
@@ -110,17 +111,17 @@ test('identities are registered only when the import commits', async () => {
   assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM premium_rows').first()).n, 0);
 });
 
-test('integrators without a URL or sharing a domain stay unresolved instead of getting a name-based id', async () => {
+test('directory entries without a link or sharing one stay unresolved instead of getting a name-based id', async () => {
   const values = fixtureWorkbook();
-  values.Integrators[1][1] = '';
-  values.Integrators[2][1] = 'https://integrator-3.example.com/';
+  values.Software[1][1] = '';
+  values.Software[2][1] = 'https://software-3.example.com/';
   const db = createTestDb();
   const result = await runImport(db, values, T0);
-  const [first, second, third, fourth] = await rowsOf(db, 'integrators');
+  const [first, second, third, fourth] = (await rowsOf(db, 'software')).filter((r) => r.list === 'software');
   assert.equal(first.identity_status, 'unresolved');
-  assert.match(first.id, /^pending_integrators_r2/);
-  assert.equal(second.identity_status, 'unresolved', 'shares integrator-3.example.com');
-  assert.equal(third.identity_status, 'unresolved', 'shares integrator-3.example.com');
+  assert.match(first.id, /^pending_software_r2/);
+  assert.equal(second.identity_status, 'unresolved', 'shares software-3.example.com');
+  assert.equal(third.identity_status, 'unresolved', 'shares software-3.example.com');
   assert.equal(fourth.identity_status, 'resolved');
   assert.ok(result.warnings.some((w) => w.includes('no natural key')));
 });
