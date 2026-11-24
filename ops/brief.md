@@ -1,6 +1,7 @@
 # Why Humanoid? implementation brief
 
-Updated: 23 Nov 2026 (Claude Code, branch `claude/stoic-maxwell-432hsy`). Decides: Javier. Builds and publishes the
+Updated: 24 Nov 2026 (Claude Code, branch `claude/stoic-maxwell-432hsy`). The offer in force is the section
+"Two-path offer and complete public listings (Javier, 24 Nov 2026)"; dated sections before it are history. Decides: Javier. Builds and publishes the
 website: Claude. Coordinates and verifies: Codex. Content research and enrichment: Grok.
 
 This brief carries the current requirements in the repository, because the project wiki
@@ -20,7 +21,8 @@ Javier's latest instruction wins; record it here.
 
 ## Commercial decision (Javier, 23 Nov 2026)
 
-Supersedes the 10-row paywall of 16 Nov 2026 (d-0008) and the USD pricing.
+Supersedes the 10-row paywall of 16 Nov 2026 (d-0008). Itself superseded on 24 Nov 2026 by the two-path offer below
+(US$100 per year, public summaries of every case and product, reports at US$1,000 not orderable).
 
 - Humanoids: entirely free.
 - One subscription, EUR 100 per year, unlocks both complete Deployments and complete Components.
@@ -39,8 +41,8 @@ page generator and the catalogue page read it.
 | # | Category | URL | Workbook tab | Access | Gap |
 |---|---|---|---|---|---|
 | 1 | Humanoids | /humanoids/ | Humanoids | Free | |
-| 2 | Deployments | /deployments/ | Deployments (+ Evidence Relations, Clean Entities as supporting tabs) | Subscription; first 10 rows public, plus counts and summaries | |
-| 3 | Components | /components/ | Components (renamed from Hardware on 23 Nov 2026; dataset id `hardware`) | Subscription; first 10 rows public | Sparse directory: 11 entries with name, link and, in the live master, an English description each; no component-maker capability data |
+| 2 | Deployments | /deployments/ | Deployments (+ Evidence Relations, Clean Entities as supporting tabs) | Subscription; every case public at its public fields (fields.js), detail paid | |
+| 3 | Components | /components/ | Components (renamed from Hardware on 23 Nov 2026; dataset id `hardware`) | Subscription; every product public at its public fields, full passport paid | Sparse directory (23 Nov; 19 products since the native table): 11 entries with name, link and, in the live master, an English description each; no component-maker capability data |
 | 4 | Integrators | /integrators/ | Integrators | Free | 7 rows |
 | 5 | Software | /software/ | Software | Free | |
 | 6 | Datasets | /datasets/ | Datasets | Free | |
@@ -49,8 +51,8 @@ page generator and the catalogue page read it.
 | 9 | Other Robots | /other-robots/ | Other Robots | Free | |
 | 10 | Reports | /reports/ | Reports tab of the master (not imported into D1) plus the reviewed mapping `tools/reports-findings.json`, published as `data/reports/atlas.json`; Why Humanoid? analyses (`/reports/deployment-records/`) | Free | Research Conclusions Atlas: 12 editions, 151 findings, 116 checked against 10 originals; Morgan Stanley and Intel originals unreachable |
 
-Tabs outside the nine: Product - Container Handling (first 10 rows public, unchanged pending a decision) and Data
-Space (out of the offer, unchanged).
+Tabs outside the nine: Product - Container Handling and Data Space (out of the offer; counted, not listed, since
+24 Nov 2026).
 
 Entity URLs: `/humanoids/<slug>/` (old `/robots/<slug>/` redirect), `/other-robots/<slug>/`, `/companies/<slug>/`
 (one canonical page per company across categories). Stable addresses live in `tools/permalinks.json`
@@ -207,20 +209,22 @@ excerpt that must be literally in that cell) and, when checked, the page of the 
    English description), not the component-maker capability directory the offer implies. Selling it needs real component data (a
    schema in the master, filled by Grok) or a change to what the subscription promises. Making it premium also hides
    1 entry that was public until now.
-2. Previews of the two premium categories: keep the first 10 rows, or choose another rule.
-3. Live billing: the Stripe live product is still "Why Humanoid? full database"; rename, update the description,
-   tax presentation (VAT shown, B2B), purchase terms and refund policy before the new offer is sold live. Until then
-   new live sales stay closed in code; opening them is `LIVE_SALES_OPEN = true` plus a deploy.
+2. Resolved 24 Nov 2026: every case and product is public at its public fields; the detail is paid.
+3. Live billing: resolved 24 Nov 2026 except tax. Products renamed "Why Humanoid? Deployments and Components",
+   USD 100 / year prices live and test, new live sales open. Still Javier's decision, with his tax adviser: whether
+   the subscription must charge VAT (for example to EU consumers of digital services, through OSS) and how prices
+   show it. Today checkout computes and collects no tax; nothing has been reviewed legally or in Stripe Tax.
 4. Existing subscribers: keep full access to what stays premium (current code does this; nothing else changes).
-5. Container Handling tab: keep it with Deployments (10-row preview) or make it public with Benchmarks.
-6. Service names, scope and order flow for the two EUR 1,000 services.
+5. Container Handling tab: counted, not listed, since 24 Nov 2026; making it public with Benchmarks is still open.
+6. Reports (Robot integration diagnostic, Industrial diversification report, US$1,000 each): named and shown, not
+   orderable. Order flow, payment and delivery terms are a separate decision.
 7. Content refresh to the 20 Nov workbook (Humanoids 215, Deployments 184): who reviews the two renamed robots and
    the new rows before publication.
 
 ## Next milestones
 
 2. Content refresh from the 20 Nov workbook and live verification of the staging.
-3. Live billing switch for the new offer after decisions 3 to 4.
+3. Live billing switch for the new offer: done 24 Nov 2026 (tax treatment pending, decision 3).
 4. Service purchase and delivery flow.
 
 ## Two-path offer and complete public listings (Javier, 24 Nov 2026)
@@ -243,7 +247,8 @@ excerpt that must be literally in that cell) and, when checked, the page of the 
   price_1UfGNgAcMngkWs5CkdCMYC1j, legacy EUR price_1UbOtjAcMngkWs5CR8qXNPGn (server/wrangler.toml).
 - New live sales opened on 24 Nov 2026 (LIVE_SALES_OPEN = true) after the format was published and verified, the
   production import ran and the live USD price was configured; test-mode checkout verified with the USD test price.
-  The Worker must run a bundle built from that commit for live checkout to answer. Checkout computes and collects no
+  Production Worker version b3fda34c (bundle a0727faf…dbe8, main 33fae3c) runs it: `/v1/billing/plan` reports
+  `checkout_available: true`. Checkout computes and collects no
   tax (no Stripe Tax, no address or tax ID): the charge is the price. Custom company reports stay not orderable.
 - Private leak check before publishing: `node --no-warnings tools/check-reserved.mjs --from <export>` (paid values of
   Deployments and Components never in published files).

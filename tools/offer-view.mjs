@@ -3,7 +3,7 @@
 //      Research and data, not a personalised recommendation.
 //   B. Custom company reports: Integrarobot's analysis and judgement for one company, US$1,000 each, separate from the
 //      subscription, no subscription prerequisite, and NOT available to order yet: no form, checkout or delivery promise.
-// Whether new subscriptions can be bought is LIVE_SALES_OPEN; until then the subscription says it opens soon.
+// Whether new subscriptions can be bought is LIVE_SALES_OPEN (open since 24 Nov 2026); when false the subscription says it opens soon.
 
 import { SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';

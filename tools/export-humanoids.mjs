@@ -13,6 +13,7 @@
 //
 // Usage: node tools/export-humanoids.mjs [--check] [--review <file>] [--from <file>]
 
+import { PLAN } from '../server/src/pricing.js';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -119,9 +120,9 @@ export function buildExport(snapshot, updates = readVerifiedUpdates()) {
       full_database: {
         humanoid_records: records.length,
         other_datasets: 12,
-        other_datasets_public_rows: 10,
-        other_datasets_public_rule: 'the first 10 source sheet rows of each tab; tabs that hold side-by-side lists show every entry in those rows',
-        access: 'subscription, €100 per year: full values, all 13 datasets in full, full search, agent API keys',
+        // Access matrix of 24 Nov 2026 (server/src/access/matrix.js and fields.js); the price comes from pricing.js.
+        other_datasets_public_rule: 'free tabs: every row and field; Deployments and Components: every row at its public fields (server/src/access/fields.js); claim-to-evidence links and tabs outside the offer: counted, not listed',
+        access: `data subscription, ${PLAN.display}, billed annually, no free trial: every field of complete Deployments and complete Components, with search and agent API keys over them; every other category is free`,
       },
       fields,
       cleaning: {

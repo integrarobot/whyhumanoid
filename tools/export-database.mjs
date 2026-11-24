@@ -33,6 +33,8 @@ export const OTHER_TABS = DATASETS.filter((d) => d.id !== 'humanoids' && !d.publ
 export function validateDatabase(index, tabs) {
   const problems = [];
   const ids = index.tabs.map((t) => t.id);
+  // The note describes the access matrix in force; a stale one would tell visitors and agents the old rule.
+  if (index.note !== INDEX_NOTE) problems.push('index note is not the current access note (INDEX_NOTE); run --reapply-access');
   if (JSON.stringify(ids) !== JSON.stringify(OTHER_TABS)) problems.push(`tabs must be the ${OTHER_TABS.length} other tabs in order, got ${ids.join(', ')}`);
   for (const meta of index.tabs) {
     const tab = tabs[meta.id];
@@ -189,7 +191,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const fresh = await build(arg('--from'), snapshot);
     const current = readDatabase();
     const keep = new Map((current?.index.tabs ?? []).map((t) => [t.id, t]));
-    const index = { ...(current?.index ?? fresh.index), tabs: OTHER_TABS.map((id) => (only.includes(id) ? { ...fresh.index.tabs.find((t) => t.id === id), snapshot } : keep.get(id))).filter(Boolean) };
+    const index = { ...(current?.index ?? fresh.index), note: INDEX_NOTE, tabs: OTHER_TABS.map((id) => (only.includes(id) ? { ...fresh.index.tabs.find((t) => t.id === id), snapshot } : keep.get(id))).filter(Boolean) };
     const tabs = Object.fromEntries(index.tabs.map((t) => [t.id, only.includes(t.id) ? fresh.tabs[t.id] : current.tabs[t.id]]));
     const problems = validateDatabase(index, tabs);
     if (problems.length) throw new Error(problems.join('; '));
