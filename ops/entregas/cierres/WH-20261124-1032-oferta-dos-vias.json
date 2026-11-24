@@ -1,0 +1,69 @@
+{
+  "id": "WH-20261124-1032-oferta-dos-vias",
+  "tarea": "Oferta de dos vías (datos a US$100/año e informes a medida a US$1,000 no disponibles), listados públicos completos de Deployments y Components con detalle de pago, contrato central de campos en todas las capas y suscripción en USD sin tocar a los clientes en EUR",
+  "origen": "Javier, 24/11/2026: plan aprobado y autorizado para implementar y publicar; reabrir la venta en USD solo tras publicar y verificar; los informes siguen desactivados",
+  "fecha": "2026-11-24T10:32:52+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Dos vías en inglés:\n- Full data access a US$100 al año, facturado anualmente, sin prueba gratuita y sin recomendación personalizada;\n- Custom company reports a US$1,000 cada uno (Robot integration diagnostic y Industrial diversification report), marcados «Not available to order yet», sin formulario ni checkout.\nSe muestran en la cabecera de la portada (visibles en la primera pantalla del móvil), en un bloque completo tras ella, y en Deployments, Components y /subscribe/.",
+    "Contrato central de campos (server/src/access/fields.js). Lo aplican:\n- la importación (valores públicos de cada fila);\n- la API pública;\n- la búsqueda de visitantes, con sus fragmentos, etiquetas y recuentos;\n- el grafo público de relaciones;\n- data/preview/, las páginas y la app.\nLas relaciones de evidencia y las pestañas fuera de la oferta solo se cuentan. Ningún valor de pago llega al navegador de un visitante.",
+    "Deployments: los 122 casos son públicos (191 registros agrupados por deployment_id). Cada caso muestra:\n- organización y rol, y robot tal como consta;\n- sector, país y categoría de tarea;\n- último estado registrado y quién lo informa;\n- fuentes con fecha.\nTienen filtros en la dirección, vistas de adopción y una página permanente por caso (/deployments/<slug>/). La «evidencia seleccionada» de la proyección queda reducida a campos públicos.",
+    "Components: los 19 productos son públicos, más TACTO como software aparte. Cada uno muestra fabricante o laboratorio, país, familia, año, estado, principio, qué mide, fuente principal y estado de revisión; el hardware abierto, además, su licencia y repositorio. Los campos de pago dicen «With the subscription». El suscriptor recibe el pasaporte completo, los filtros técnicos y la comparación completa desde la API. Revisados los fabricantes públicos de los 9 productos nuevos.",
+    "Facturación:\n- plan de USD 10000 al año;\n- el webhook reconoce el precio actual y los heredados (STRIPE_LEGACY_PRICE_IDS), así que las suscripciones en EUR conservan su acceso al renovarse, cancelarse o borrarse;\n- la app ya no dice a quien renueva que paga US$100;\n- STRIPE_PRICE_ID sigue en EUR hasta que exista el precio USD, y el checkout lo rechaza (price_mismatch) en lugar de venderlo como USD;\n- LIVE_SALES_OPEN sigue en false.",
+    "Datos regenerados desde el maestro actual (sin cambios desde el 23/11 a las 21:49:26 UTC). Actualizados AGENTS.md, README, DEPLOYMENT.md y ops/brief.md."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #83 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/83"
+    },
+    {
+      "etiqueta": "Portada (dos vías)",
+      "url": "https://whyhumanoid.com/#paths"
+    },
+    {
+      "etiqueta": "Deployments: todos los casos",
+      "url": "https://whyhumanoid.com/deployments/"
+    },
+    {
+      "etiqueta": "Caso de ejemplo",
+      "url": "https://whyhumanoid.com/deployments/agility-digit-gxo-spanx/"
+    },
+    {
+      "etiqueta": "Components",
+      "url": "https://whyhumanoid.com/components/"
+    },
+    {
+      "etiqueta": "Producto de ejemplo",
+      "url": "https://whyhumanoid.com/components/cmp-tac-012/"
+    },
+    {
+      "etiqueta": "Suscripción e informes",
+      "url": "https://whyhumanoid.com/subscribe/"
+    }
+  ],
+  "despliegue": [
+    "Interfaz publicada: el commit de fusión 629f729 (PR #83) está servido por GitHub Pages en whyhumanoid.com. Responden 200 /deployments/, las 122 páginas de caso, /components/ y las 20 fichas, y /subscribe/.",
+    "Backend NO sincronizado (comprobado el 24/11): el Worker de producción sigue con el código anterior al 23/11. Sirve a los visitantes 10 de 130 filas de Deployments y 10 de 11 del directorio antiguo de Components, de una importación previa. La web y la app muestran solo los campos públicos; la API antigua sigue dando esas 10 filas completas, que ya eran públicas, hasta que se despliegue.",
+    "Paquete del Worker generado sobre main 629f729 con esbuild 0.27.7: dist/worker.dashboard.js, sha256 31060e45…21cc.",
+    "Venta en USD NO activada: no existe precio USD en Stripe y LIVE_SALES_OPEN sigue en false. Los informes siguen desactivados."
+  ],
+  "verificaciones": [
+    "Producción con navegador real: verify-staging pasa 364 de 366 en whyhumanoid.com, en escritorio y en móvil con toque. Comprueba:\n- los 122 casos con filtros que sobreviven a recargar y volver atrás;\n- la página de caso con fuentes, salvedad y lo que es de pago;\n- las dos vías cerca del principio, sin euros;\n- /subscribe/ en USD, con los informes no pedibles;\n- el resumen público de cada producto;\n- sin regresiones en el resto.\nLas 2 que fallan son el contrato de la API pública, por el Worker antiguo (backend no sincronizado).",
+    "Capturas en vivo a 1440, 430, 390, 375 y 320 px de la portada, Deployments, un caso, Components, un producto y /subscribe/: sin desbordamiento horizontal.",
+    "CI del PR #83 en verde.",
+    "En local:\n- 144 de 144 pruebas de API (nuevas: casos públicos y eventos heredados en EUR, duplicados, retrasados y fallidos);\n- verify-site, verify-premium-app (incluido el caso de API antigua), verify-pages y test-reports: correctos;\n- check-public y todos los --check: correctos;\n- verify-staging --local 382 de 382, con una suscripción heredada en EUR en sandbox (acceso, renovación y segundo checkout rechazado con 409).",
+    "Comprobación privada check-reserved sobre el maestro actual: 1.313 valores de pago de Deployments y Components revisados y ninguno publicado."
+  ],
+  "pendientes": [
+    "Codex, con acceso a Cloudflare, despliega el Worker whyhumanoid-premium desde main 629f729:\n1. node server/scripts/build-dashboard.mjs <esbuild 0.27.7> (sha256 31060e45…21cc) y sustituir worker.js en el panel, o wrangler deploy --env production;\n2. las variables de server/wrangler.toml incluyen STRIPE_LEGACY_PRICE_IDS: hay que fijarla en el panel si no se despliega con wrangler;\n3. no hay migraciones de D1 nuevas;\n4. comprobar que GET /v1/datasets lista 17 pestañas y que /v1/datasets/deployments/preview devuelve todas las filas con public_fields.",
+    "Después lanzo yo el flujo «Import private workbook» con destino production (relleno de preview_data y búsqueda pública). Recuentos esperados: deployments 191, hardware 19, component-software 1. Luego verifico la vista de suscriptor y un pasaporte completo.",
+    "Codex, con acceso a Stripe:\n1. crear un precio recurrente USD 10000 al año, sin prueba, en test y en live, para el producto existente;\n2. ponerlo en STRIPE_PRICE_ID de cada entorno, manteniendo el EUR en STRIPE_LEGACY_PRICE_IDS;\n3. alinear la descripción del producto en Stripe con «Why Humanoid? Deployments and Components».\nNo se toca ninguna suscripción existente.",
+    "Venta en USD: abrir LIVE_SALES_OPEN solo cuando el Worker y la importación estén verificados y el precio USD en vivo esté configurado. Es un cambio de una línea con PR y verificación del checkout en modo test, sin tarjeta real.",
+    "Presentación fiscal y condiciones: la web describe facturación anual, renovación al precio de cada suscripción y cancelación en el portal de Stripe. No he añadido datos fiscales: hay que confirmar el tratamiento de impuestos configurado en Stripe antes de abrir la venta.",
+    "Sin relación con este plan: la dependencia del Worker de Components (cierre del 24/11) queda resuelta con el mismo despliegue."
+  ],
+  "siguiente_accion": "Codex despliega el Worker y crea el precio USD en Stripe; Claude lanza la importación de producción, verifica suscriptor y visitante, y abre la venta en USD con su verificación; Javier confirma la entrega."
+}
