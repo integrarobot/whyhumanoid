@@ -153,5 +153,8 @@ test('wrangler.toml lists the EUR price of each environment as a legacy entitled
     const legacy = (block.match(/STRIPE_LEGACY_PRICE_IDS = "([^"]*)"/) ?? [])[1] ?? '';
     assert.ok(legacy.split(',').filter(Boolean).length >= 1, `${env}: legacy EUR price listed`);
     assert.match(block, /EUR 100\.00 \/ year/, `${env}: the EUR price is documented`);
+    const current = (block.match(/STRIPE_PRICE_ID = "([^"]*)"/) ?? [])[1];
+    assert.ok(current && !legacy.split(',').includes(current), `${env}: new checkouts use a price that is not a legacy one`);
+    assert.match(block, /STRIPE_PRICE_ID = "[^"]+"\s+# [^\n]*USD 100\.00 \/ year, no trial/, `${env}: the current price is the USD plan`);
   }
 });
