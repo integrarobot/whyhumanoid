@@ -34,9 +34,12 @@ d1_databases = [
 [env.test.vars]
 IMPORT_ENVIRONMENT = "test"
 STRIPE_MODE = "test"
-CHECKOUT_ENABLED = "true"    # test price verified (EUR 10000 / year); the test /v1/billing/plan answered checkout_available: true on 23 Nov 2026
+CHECKOUT_ENABLED = "true"    # needs a test USD 10000 / year price as STRIPE_PRICE_ID (24 Nov 2026); EUR answers price_mismatch
 ALLOW_LIVE_CHECKOUT = "false"
+# Test mode, 24 Nov 2026: new checkouts need a USD 10000 / year price (pricing.js). Until it exists and replaces this id,
+# test checkout answers 503 price_mismatch: the EUR price is never sold as the new plan.
 STRIPE_PRICE_ID = "price_1UbL1PAcMngkWs5CH3IDosFb"  # Integrarobot test mode: "Why Humanoid? full database", EUR 100.00 / year (prod_VcaBEvd49gwki2)
+STRIPE_LEGACY_PRICE_IDS = "price_1UbL1PAcMngkWs5CH3IDosFb"  # EUR subscriptions keep their access (billing.entitledPriceIds)
 ALLOWED_ORIGINS = "https://whyhumanoid-premium-test.javier-198.workers.dev"
 # Staging (23 Nov 2026): the test Worker serves the whole site from server/.staging (node tools/build-staging.mjs),
 # with the app at /app/: npx wrangler deploy --env test --assets .staging
@@ -60,7 +63,11 @@ IMPORT_ENVIRONMENT = "production"
 STRIPE_MODE = "live"
 CHECKOUT_ENABLED = "true"     # armed 16 Nov 2026 (d-0008): checkout still answers 503 until the live Stripe key,
 ALLOW_LIVE_CHECKOUT = "true"  # the webhook secret, sign-in email and all 13 imported tabs exist (billing.checkoutState)
+# Live, 24 Nov 2026: new subscriptions are US$100 / year. Until a live USD 10000 / year price exists and replaces this id,
+# live checkout answers 503 (offer_in_review while LIVE_SALES_OPEN is false, price_mismatch after): the EUR price is
+# never sold as the new plan. Existing EUR subscriptions keep their contract and access through the legacy list.
 STRIPE_PRICE_ID = "price_1UbOtjAcMngkWs5CR8qXNPGn"  # live: "Why Humanoid? full database", EUR 100.00 / year (prod_VceC4S2gQeLhOT)
+STRIPE_LEGACY_PRICE_IDS = "price_1UbOtjAcMngkWs5CR8qXNPGn"  # EUR subscriptions keep their access (billing.entitledPriceIds)
 # Since 17 Nov 2026 the app is served at https://whyhumanoid.com/app/ (GitHub Pages, tools/build-app.mjs) and calls this
 # API over CORS; the workers.dev pages redirect there (scripts/dashboard-entry.js). The webhook stays on workers.dev.
 ALLOWED_ORIGINS = "https://whyhumanoid.com,https://whyhumanoid-premium.javier-198.workers.dev"

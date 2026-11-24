@@ -64,8 +64,8 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
     ['GET', /^\/v1\/access$/, async () => json(200, publicMatrix(), { 'cache-control': 'public, max-age=300' })],
 
     // Global search over the 13 categories with common tags (Javier, 17 Nov 2026). Visitors and accounts without a
-    // subscription search the public rows only (the free Humanoids catalogue and the first 10 sheet rows of each other
-    // category, public values): results, snippets, tags and counts all come from that set.
+    // subscription search the public values only (free tabs in full, Deployments and Components at their public
+    // fields): results, snippets, tags and counts all come from that set.
     [
       'GET',
       /^\/v1\/search$/,
@@ -82,8 +82,8 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
 
     ['GET', /^\/v1\/datasets$/, async () => json(200, { datasets: publicDatasetList() })],
 
-    // Public rows: the whole free Humanoids catalogue, or the first 10 non-empty data rows of any other tab in
-    // workbook order. Public values only. No search.
+    // Public rows: every row of a free tab with all its values; every row of Deployments and Components at the public
+    // fields of server/src/access/fields.js; none of a counted-only tab. Workbook order, no search.
     [
       'GET',
       /^\/v1\/datasets\/([a-z0-9-]+)\/preview$/,
@@ -93,14 +93,14 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
         const preview = await queryPreview(db, spec);
         return json(
           200,
-          { dataset: { id: spec.id, title: spec.title, description: spec.description }, preview_rows: publicRowLimit(spec) ?? 'all', ...preview },
+          { dataset: { id: spec.id, title: spec.title, description: spec.description }, preview_rows: publicRowLimit(spec) === 0 ? 'none' : 'all', public_fields: spec.publicFields ?? null, ...preview },
           { 'cache-control': 'public, max-age=300' },
         );
       },
     ],
 
-    // Relations between Deployments records, catalogue robots and companies. The preview graph is built only from
-    // the public preview rows (first 10 sheet rows of Deployments and Entities) and the free catalogue.
+    // Relations between Deployments records, catalogue robots and companies. The public graph is built only from the
+    // public values of Deployments and Entities (server/src/access/fields.js) and the free catalogue.
     [
       'GET',
       /^\/v1\/relations\/preview$/,

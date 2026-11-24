@@ -97,11 +97,13 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
   }
   // Relations: full scope from every customer row; preview scope from the public rows and values only.
   const byId = new Map(normalised.map(({ spec, rows }) => [spec.id, { spec, rows }]));
+  // Public scope: a free tab's rows with their public values; a subscription tab's rows only through their stored public
+  // values (fields.js), never their full values.
+  const isPublic = (spec, r) => spec.access === 'free' || Boolean(r.previewData);
   const rowsOf = (id, scope) => {
     const { spec, rows } = byId.get(id);
-    const limit = publicRowLimit(spec);
     return rows
-      .filter((r) => r.visibility === 'customer' && (scope === 'full' || limit === null || r.previewRank <= limit))
+      .filter((r) => r.visibility === 'customer' && (scope === 'full' || isPublic(spec, r)))
       .map((r) => (scope === 'full' ? r.data : (r.previewData ?? r.data)));
   };
   const relations = await relationStatements(db, { config: relationsConfig, rowsOf, snapshotId, now });
@@ -118,9 +120,8 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
 
   const searchRowsOf = (id, scope) => {
     const { spec, rows } = byId.get(id);
-    const limit = publicRowLimit(spec);
     return rows
-      .filter((r) => r.visibility === 'customer' && (scope === 'full' || limit === null || r.previewRank <= limit))
+      .filter((r) => r.visibility === 'customer' && (scope === 'full' || isPublic(spec, r)))
       .map((r) => ({ id: r.id, position: r.position, data: scope === 'full' ? r.data : (r.previewData ?? r.data) }));
   };
   // Public projection (approved split, phase 1): company dossiers built from every row through an allowlist.

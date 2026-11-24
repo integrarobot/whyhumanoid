@@ -1,4 +1,5 @@
-/* Components explorer (23 Nov 2026). Progressive enhancement over the static pages:
+/* Components explorer (23 Nov 2026; every product public at its public fields since 24 Nov 2026). Progressive
+   enhancement over the static pages:
    - /components/: filters and search over the products (?q, ?class, ?principle, ?q2, ?if, ?ros, ?licence), the
      comparison of up to three (?cmp=ID,ID,ID), all kept in the address so a view can be shared.
    - Subscribers: with a session from the subscriber app (same site), the page asks the API for the complete rows;
@@ -43,7 +44,21 @@
     }).catch(fail);
     return;
   }
-  if (root.classList.contains('cx-prod')) return; // public product pages are complete without JavaScript
+  // A product page shows the public summary without JavaScript; a subscriber's session upgrades it to the full passport.
+  if (root.classList.contains('cx-prod')) {
+    if (!session) return;
+    var pid = root.getAttribute('data-id');
+    Promise.all([fetchRows('hardware'), fetchRows('component-software')]).then(function (res) {
+      if (!res[0]) return;
+      var r = res[0].concat(res[1] || []).filter(function (x) { return x.component_id === pid; })[0];
+      var pp = $('.pp');
+      if (!r || !pp) return;
+      pp.outerHTML = W.passportHtml(r, { level: 2 }).replace(/<section class="pp-sec" data-sec="([a-z]+)">/g, '<section class="pp-sec" data-sec="$1" id="sec-$1">');
+      var box = $('.pp-lockbox'); if (box) box.hidden = true;
+      var acc = $('.pp-access'); if (acc) acc.textContent = 'Subscriber view: the full passport, from the complete Components category.';
+    }).catch(fail);
+    return;
+  }
 
   // ---------- the catalogue page ----------
   try {
@@ -152,6 +167,7 @@
         // The comparison the address asked for, including products that only subscribers can see.
         setCompare(cmp.length ? cmp : keep, false);
         var lock = $('#pc-lock'); if (lock) lock.hidden = true;
+        $$('.cx-filters .adv').forEach(function (el) { el.hidden = false; });
         $$('.locked').forEach(function (el) { el.textContent = '+ ' + el.getAttribute('data-more') + ' more in the catalogue below'; });
         var acc = $('#cx-access');
         if (acc) acc.innerHTML = '<b>Subscriber view:</b> all ' + products.length + ' product passports, from the complete Components category.';

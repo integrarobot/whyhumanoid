@@ -28,7 +28,7 @@ import { robotPresentation } from './robot-presentation.mjs';
 export const PREMIUM_APP_URL = 'https://whyhumanoid.com/app/';
 // Live checkout of the new offer waits for its purchase terms (server/src/pricing.js, LIVE_SALES_OPEN).
 export const CHECKOUT_OPEN = LIVE_SALES_OPEN;
-// Paywall (Javier, 16 Nov 2026): the 12 tabs other than Humanoids show their first 10 sheet rows; the rest is premium.
+// Access (Javier, 24 Nov 2026): free tabs in full; Deployments and Components list every entry at its public fields.
 export const OPEN_DATABASE = false;
 
 const root = new URL('../', import.meta.url);
@@ -192,6 +192,23 @@ export function dataAtlasSummary() {
   const c = JSON.parse(readFileSync(new URL('data/datasets/atlas.json', root), 'utf8')).counts;
   return { resources: c.resources, corpora: c.corpora, quantities: c.quantities, path: '/datasets/' };
 }
+// The two premium paths (Javier, 24 Nov 2026), first after the hero, then the ten categories. Same words and prices as
+// tools/offer-view.mjs; report ordering stays disabled.
+const PATHS_CSS = `<style>
+.paths-sec{padding:26px 0 22px;border-top:1px solid var(--line)}
+.paths-sec .cats-head{margin-bottom:14px}
+.paths{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.path{border:1px solid var(--line);background:var(--ink-1,#111316);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.path.p-data{border-color:color-mix(in srgb,var(--amber) 55%,transparent);box-shadow:inset 0 3px 0 var(--amber)}
+.path.p-rep{box-shadow:inset 0 3px 0 var(--bone-3)}
+.path h3{font-family:var(--f-serif);font-weight:400;font-size:clamp(22px,2.6vw,28px);line-height:1.15;margin:0;color:var(--bone)}
+.path .pp{margin:0;font-size:15px;color:var(--bone-2)}
+.path .pp b{font-family:var(--f-serif);font-weight:400;font-size:30px;color:var(--bone);margin-right:4px}
+.path ul{margin:0;padding-left:18px;color:var(--bone-2);font-size:14px;display:grid;gap:4px}
+.path .pn{margin:0;font-size:13px;color:var(--bone-3)}
+.path .pa{margin:auto 0 0;padding-top:6px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.path .soon{display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border:1px dashed var(--line-2,rgba(234,230,221,.22));font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;color:var(--bone-2)}
+</style>`;
 export function renderCategories(data) {
   const tabs = new Map((data.database?.tabs ?? []).map((t) => [t.id, t]));
   const reports = JSON.parse(readFileSync(new URL('data/reports/atlas.json', root), 'utf8')).reports.length + 1; // + Why Humanoid?'s deployment records analysis
@@ -199,21 +216,48 @@ export function renderCategories(data) {
   const atlas = JSON.parse(readFileSync(new URL('data/benchmarks/atlas.json', root), 'utf8')).counts;
   // Datasets: the resources of the Robot Learning Data Atlas snapshot (data/datasets/atlas.json), also not a preview tab.
   const dataAtlas = dataAtlasSummary();
-  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
-  const unit = { humanoids: 'robots', deployments: 'records', components: 'entries', integrators: 'integrators', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
-  const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? '<span class="sub">Subscription</span> · first 10 free' : 'Free'}</span></li>`).join('');
-  const services = SERVICES.map((sv) => `<div><p class="lbl">Service · proposal</p><h3>${escHtml(sv.name)}</h3><p>${escHtml(sv.summary)}</p><p class="lbl">${escHtml(sv.price)} · not included in the subscription · not available to order yet</p></div>`).join('');
+  // Deployments: its public cases (one per deployment id of the public rows); Components: its physical products.
+  const cases = new Set(JSON.parse(readFileSync(new URL('data/preview/deployments.json', root), 'utf8')).rows.map((r) => r.deployment_id ?? r.record_id)).size;
+  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.id === 'deployments' ? cases : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
+  const unit = { humanoids: 'robots', deployments: 'cases', components: 'products', integrators: 'integrators', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
+  const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? 'All listed free · <span class="sub">detail with the subscription</span>' : 'Free'}</span></li>`).join('');
+  const reportsList = SERVICES.map((sv) => `<li><b>${escHtml(sv.name)}</b> (${sv.category === 'deployments' ? 'Deployments' : 'Components'}): ${escHtml(sv.summary)}</li>`).join('');
   return `<!-- categories:start -->
+    ${PATHS_CSS}
+    <section class="paths-sec" id="paths" aria-labelledby="paths-h">
+      <div class="cats-head"><h2 class="h2" id="paths-h">Two ways to <em>go further</em></h2><p class="lbl">Every category stays free to browse</p></div>
+      <div class="paths">
+        <article class="path p-data"><p class="lbl hi">Full data access</p><h3>Use the evidence to make your own decisions.</h3>
+          <p class="pp"><b>US$100</b> per year · billed annually · no free trial</p>
+          <ul><li>Complete Deployments: every case with its sites, tasks, timeline, metrics, claims and evidence.</li><li>Complete Components: full technical passports, side-by-side comparison and technical filters.</li><li>Detailed search across both, and the existing API keys for agents.</li></ul>
+          <p class="pn">Access to research and data. It does not include a personalised recommendation.</p>
+          <p class="pa">${CHECKOUT_OPEN ? '<a class="btn primary" href="/app/#subscribe">Subscribe for US$100 a year</a>' : '<span class="soon">New subscriptions open soon</span>'} <a href="/subscribe/">What the subscription includes</a></p></article>
+        <article class="path p-rep"><p class="lbl">Custom company reports</p><h3>Our expertise, applied to your company’s decisions.</h3>
+          <p class="pp"><b>US$1,000</b> per report · separate from the subscription · no subscription needed</p>
+          <ul>${reportsList}</ul>
+          <p class="pn">Reports tailored to one company’s needs, where Integrarobot provides the analysis and judgement. Not included in the subscription.</p>
+          <p class="pa"><span class="soon">Not available to order yet</span> <a href="/subscribe/#reports">How reports differ from the subscription</a></p></article>
+      </div>
+    </section>
     <section class="cats-sec" id="categories" aria-labelledby="cats-h">
-      <div class="cats-head"><h2 class="h2" id="cats-h">Ten <em>categories</em></h2><p class="lbl">Humanoids and eight more free · Deployments and Components with the subscription</p></div>
+      <div class="cats-head"><h2 class="h2" id="cats-h">Ten <em>categories</em></h2><p class="lbl">Free to browse · Deployments and Components list every entry, with their detail in the subscription</p></div>
       <ul class="catgrid">${items}</ul>
-      <div class="offer"><div><p class="lbl">Subscription · ${escHtml(data.access?.price ?? '')}</p><h3>${escHtml(SUBSCRIPTION.name)}</h3><p>Complete Deployments and complete Components, with search and agent API keys over them.</p>${CHECKOUT_OPEN ? '' : '<p class="lbl">New subscriptions open once the purchase terms are final · existing subscribers keep full access</p>'}<p><a class="btn" href="/subscribe/">See the subscription</a></p></div>${services}</div>
       <p class="lbl">Also: <a href="#database">browse the workbook tabs</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>
     </section>
     <!-- categories:end -->`;
 }
 
+// Compact two paths inside the hero, so both are visible in the first screen on phones too; the full block follows.
+export function renderPathsMini() {
+  return `<!-- paths-mini:start --><div class="hero-paths" aria-label="Two ways to go further">
+          <a class="hp hp-data" href="#paths"><span class="lbl hi">Full data access</span><b>Use the evidence to make your own decisions.</b><span>US$100 per year, billed annually${CHECKOUT_OPEN ? '' : ' · opening soon'}</span></a>
+          <a class="hp hp-rep" href="#paths"><span class="lbl">Custom company reports</span><b>Our expertise, applied to your company’s decisions.</b><span>US$1,000 per report · not available to order yet</span></a>
+        </div><style>.hero-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px;margin:14px 0 18px}.hp{display:grid;gap:3px;padding:10px 12px;border:1px solid var(--line);text-decoration:none;color:var(--bone-2);font-size:13px;line-height:1.35}.hp b{color:var(--bone);font-weight:600;font-size:14px}.hp-data{border-color:color-mix(in srgb,var(--amber) 55%,transparent);box-shadow:inset 3px 0 0 var(--amber)}.hp:hover,.hp:focus-visible{border-color:var(--amber)}</style><!-- paths-mini:end -->`;
+}
 export function renderIndex(html, data) {
+  const mini = /<!-- paths-mini:start -->[\s\S]*?<!-- paths-mini:end -->/;
+  if (!mini.test(html)) throw new Error('index.html has no paths-mini block');
+  html = html.replace(mini, () => renderPathsMini());
   const block = /(<script[^>]*id="data"[^>]*>)[\s\S]*?(<\/script>)/;
   if (!block.test(html)) throw new Error('index.html has no data block');
   const cats = /<!-- categories:start -->[\s\S]*?<!-- categories:end -->/;
@@ -269,12 +313,13 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     checkout_open: CHECKOUT_OPEN,
   };
   const data = buildData(exported, overrides, access);
-  // Paywall (16 Nov 2026): the page embeds the index of the 12 other tabs (counts and field names) and loads each tab's
-  // free preview, its first 10 sheet rows, from data/preview/<tab>.json. Full rows never reach the site or Git.
+  // The page embeds the index of the 12 other tabs (counts, field names and public fields) and loads each tab's public
+  // rows from data/preview/<tab>.json: free tabs in full, Deployments and Components at their public fields (24 Nov
+  // 2026). Full rows of those two never reach the site or Git.
   data.database = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8'));
   // Datasets left the previews for its own snapshot (Robot Learning Data Atlas, 23 Nov 2026): the panel links to it.
   data.dataAtlas = dataAtlasSummary();
-  // Relations for the free robot pages: only the public preview rows of Deployments (tools/relations.mjs).
+  // Relations for the free robot panels: the public fields of every Deployments row (tools/relations.mjs).
   data.relations = pageRelations();
   // Addresses of the permanent robot and company pages (tools/build-pages.mjs), for links from the catalogue.
   data.pages = pageLinks();

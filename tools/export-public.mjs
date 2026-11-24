@@ -43,7 +43,9 @@ async function exportFrom(file) {
   };
   const rows = tab('deployments');
   const entities = tab('entities');
-  const snapshot = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8')).snapshot ?? null;
+  // The export time of the Deployments tab the projection is built from (a tab refreshed alone keeps its own time).
+  const pindex = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8'));
+  const snapshot = pindex.tabs?.find((t) => t.id === 'deployments')?.snapshot ?? pindex.snapshot ?? null;
   const { graph } = buildGraph(compileConfig(relationsConfig()), { rows, entities, scope: 'full', snapshot });
   const p = publicProjection({ graph, rows, entities });
   const problems = projectionProblems(p);

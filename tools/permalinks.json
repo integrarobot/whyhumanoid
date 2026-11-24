@@ -1,5 +1,5 @@
 {
-  "note": "Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects. Robots are served at /humanoids/<slug>/ since 23 Nov 2026; every robot slug also answers at /robots/<slug>/ with a redirect.",
+  "note": "Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects. Robots are served at /humanoids/<slug>/ since 23 Nov 2026; every robot slug also answers at /robots/<slug>/ with a redirect. Deployment cases (/deployments/<slug>/, since 24 Nov 2026) are keyed by the deployment id of the Deployments tab.",
   "robots": {
     "1": [
       "1x-neo-home-robot-1"
@@ -1177,7 +1177,9 @@
       "robots": [
         86
       ],
-      "organization_ids": []
+      "organization_ids": [
+        "org_tesla"
+      ]
     },
     "mfr_the_bot_company": {
       "slugs": [
@@ -4034,6 +4036,496 @@
       ],
       "robots": [],
       "organization_ids": []
+    },
+    "org_agco": {
+      "slugs": [
+        "agco"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_agco"
+      ]
+    },
+    "mfr_aimoga": {
+      "slugs": [
+        "aimoga"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_aisin": {
+      "slugs": [
+        "aisin"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_aisin"
+      ]
+    },
+    "mfr_aitu_technology": {
+      "slugs": [
+        "aitu-technology"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_aphp": {
+      "slugs": [
+        "aphp"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_aphp"
+      ]
+    },
+    "org_aptiv": {
+      "slugs": [
+        "aptiv"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_aptiv"
+      ]
+    },
+    "mfr_asus": {
+      "slugs": [
+        "asus"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_asus"
+      ]
+    },
+    "org_baic_offroad": {
+      "slugs": [
+        "baic-offroad"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_baic_offroad"
+      ]
+    },
+    "org_baweitong": {
+      "slugs": [
+        "baweitong"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_baweitong"
+      ]
+    },
+    "org_bayer": {
+      "slugs": [
+        "bayer"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_bayer"
+      ]
+    },
+    "org_foton_cummins": {
+      "slugs": [
+        "foton-cummins"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_foton_cummins"
+      ]
+    },
+    "cmp_beijing-institute-for-general-artificial-intelligence-bigai": {
+      "slugs": [
+        "beijing-institute-for-general-artificial-intelligence-bigai"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_bosch_toyota": {
+      "slugs": [
+        "bosch-toyota"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_bosch_toyota"
+      ]
+    },
+    "cmp_bristol-robotics-laboratory": {
+      "slugs": [
+        "bristol-robotics-laboratory"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_byd": {
+      "slugs": [
+        "byd"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_byd"
+      ]
+    },
+    "org_canadian_tire": {
+      "slugs": [
+        "canadian-tire"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_canadian_tire"
+      ]
+    },
+    "org_chery_dealers": {
+      "slugs": [
+        "chery-dealers"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_chery_dealers"
+      ]
+    },
+    "org_cepri": {
+      "slugs": [
+        "cepri"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_cepri"
+      ]
+    },
+    "org_china_mobile_hangzhou": {
+      "slugs": [
+        "china-mobile-hangzhou"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_china_mobile_hangzhou"
+      ]
+    },
+    "org_china_post_guangdong": {
+      "slugs": [
+        "china-post-guangdong"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_china_post_guangdong"
+      ]
+    },
+    "org_china_post_hangzhou": {
+      "slugs": [
+        "china-post-hangzhou"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_china_post_hangzhou"
+      ]
+    },
+    "cmp_columbia-university": {
+      "slugs": [
+        "columbia-university"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_dongfeng_liuzhou": {
+      "slugs": [
+        "dongfeng-liuzhou"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_dongfeng_liuzhou"
+      ]
+    },
+    "org_everon": {
+      "slugs": [
+        "everon"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_everon"
+      ]
+    },
+    "org_fangchenggang_robot_centre": {
+      "slugs": [
+        "fangchenggang-robot-centre"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_fangchenggang_robot_centre"
+      ]
+    },
+    "org_fulin_precision": {
+      "slugs": [
+        "fulin-precision"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_fulin_precision"
+      ]
+    },
+    "mfr_honda": {
+      "slugs": [
+        "honda"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_honda"
+      ]
+    },
+    "org_hengtong": {
+      "slugs": [
+        "hengtong"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_hengtong"
+      ]
+    },
+    "org_lining": {
+      "slugs": [
+        "lining"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_lining"
+      ]
+    },
+    "org_magna": {
+      "slugs": [
+        "magna"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_magna"
+      ]
+    },
+    "cmp_max-planck-institute-for-intelligent-systems": {
+      "slugs": [
+        "max-planck-institute-for-intelligent-systems"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_new-york-university": {
+      "slugs": [
+        "new-york-university"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_nio": {
+      "slugs": [
+        "nio"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_nio"
+      ]
+    },
+    "org_gac_gomate_customers": {
+      "slugs": [
+        "gac-gomate-customers"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_gac_gomate_customers"
+      ]
+    },
+    "org_galbot_pharmacy_operators": {
+      "slugs": [
+        "galbot-pharmacy-operators"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_galbot_pharmacy_operators"
+      ]
+    },
+    "org_ubtech_zigong_customer": {
+      "slugs": [
+        "ubtech-zigong-customer"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_ubtech_zigong_customer"
+      ]
+    },
+    "org_galbot_retail_operators": {
+      "slugs": [
+        "galbot-retail-operators"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_galbot_retail_operators"
+      ]
+    },
+    "org_ubtech_undisclosed_250m": {
+      "slugs": [
+        "ubtech-undisclosed-250m"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_ubtech_undisclosed_250m"
+      ]
+    },
+    "org_peacebird": {
+      "slugs": [
+        "peacebird"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_peacebird"
+      ]
+    },
+    "cmp_peking-university": {
+      "slugs": [
+        "peking-university"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_perkeso": {
+      "slugs": [
+        "perkeso"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_perkeso"
+      ]
+    },
+    "org_posco": {
+      "slugs": [
+        "posco"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_posco"
+      ]
+    },
+    "cmp_queen-mary-university-of-london": {
+      "slugs": [
+        "queen-mary-university-of-london"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_saic_gm": {
+      "slugs": [
+        "saic-gm"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_saic_gm"
+      ]
+    },
+    "org_sf_express": {
+      "slugs": [
+        "sf-express"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_sf_express"
+      ]
+    },
+    "cmp_shanghai-qi-zhi-institute": {
+      "slugs": [
+        "shanghai-qi-zhi-institute"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_sse_steel": {
+      "slugs": [
+        "sse-steel"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_sse_steel"
+      ]
+    },
+    "org_stmicro": {
+      "slugs": [
+        "stmicro"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_stmicro"
+      ]
+    },
+    "mfr_tarsbot": {
+      "slugs": [
+        "tarsbot"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_tsinghua-university": {
+      "slugs": [
+        "tsinghua-university"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_uc-berkeley": {
+      "slugs": [
+        "uc-berkeley"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_university-of-bristol": {
+      "slugs": [
+        "university-of-bristol"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_university-of-michigan": {
+      "slugs": [
+        "university-of-michigan"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_vodafone_pc": {
+      "slugs": [
+        "vodafone-pc"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_vodafone_pc"
+      ]
+    },
+    "mfr_x_humanoid": {
+      "slugs": [
+        "x-humanoid"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "org_yongda_auto": {
+      "slugs": [
+        "yongda-auto"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_yongda_auto"
+      ]
+    },
+    "org_zeekr": {
+      "slugs": [
+        "zeekr"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_zeekr"
+      ]
+    },
+    "org_zhaofeng": {
+      "slugs": [
+        "zhaofeng"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_zhaofeng"
+      ]
     }
   },
   "other_robots": {
@@ -5715,6 +6207,374 @@
     ],
     "rpt_goldman-sachs_2024_humanoid-robot-ai-accelerant": [
       "goldman-sachs-humanoid-robot-ai-accelerant-2024"
+    ]
+  },
+  "deployments": {
+    "dep_agility_digit_gxo_spanx": [
+      "agility-digit-gxo-spanx"
+    ],
+    "dep_agility_digit_schaeffler_cheraw": [
+      "agility-digit-schaeffler-cheraw"
+    ],
+    "dep_agility_digit_tmmc": [
+      "agility-digit-tmmc"
+    ],
+    "dep_agility_digit_amazon_rd": [
+      "agility-digit-amazon-rd"
+    ],
+    "dep_figure_bmw_spartanburg_2024": [
+      "figure-bmw-spartanburg-2024"
+    ],
+    "dep_apptronik_mercedes_2024": [
+      "apptronik-mercedes-2024"
+    ],
+    "dep_apptronik_gxo_lab_2024": [
+      "apptronik-gxo-lab-2024"
+    ],
+    "dep_humanoid_sap_martur_2025": [
+      "humanoid-sap-martur-2025"
+    ],
+    "dep_humanoid_ford_cologne_2026": [
+      "humanoid-ford-cologne-2026"
+    ],
+    "dep_humanoid_siemens_erlangen_2026": [
+      "humanoid-siemens-erlangen-2026"
+    ],
+    "dep_humanoid_schaeffler_global_2026": [
+      "humanoid-schaeffler-global-2026"
+    ],
+    "dep_schaeffler_multi_oem_factories": [
+      "schaeffler-multi-oem-factories"
+    ],
+    "dep_humanoid_bosch_buehl_2026": [
+      "humanoid-bosch-buehl-2026"
+    ],
+    "dep_humanoid_bosch_contract_manufacturing": [
+      "humanoid-bosch-contract-manufacturing"
+    ],
+    "dep_agibot_longcheer_nanchang_2026": [
+      "agibot-longcheer-nanchang-2026"
+    ],
+    "dep_robot_era_logistics_network_wrc": [
+      "robot-era-logistics-network-wrc"
+    ],
+    "dep_ant_guoda_shanghai_trial": [
+      "ant-guoda-shanghai-trial"
+    ],
+    "dep_galbot_pharmacy_network_wrc": [
+      "galbot-pharmacy-network-wrc"
+    ],
+    "dep_galbot_retail_network_wrc": [
+      "galbot-retail-network-wrc"
+    ],
+    "dep_galbot_catl_production_wrc": [
+      "galbot-catl-production-wrc"
+    ],
+    "dep_star_era_jd_wrc_exhibition": [
+      "star-era-jd-wrc-exhibition"
+    ],
+    "dep_engineai_luxshare_suzhou_reported": [
+      "engineai-luxshare-suzhou-reported"
+    ],
+    "dep_ubtech_cruzr_y1_fuao_reported": [
+      "ubtech-cruzr-y1-fuao-reported"
+    ],
+    "dep_leju_kuavo_5w_unidentified_wrc": [
+      "leju-kuavo-5w-unidentified-wrc"
+    ],
+    "dep_leju_faw_hongqi_2025": [
+      "leju-faw-hongqi-2025"
+    ],
+    "dep_realman_remote_pharmacy_reported": [
+      "realman-remote-pharmacy-reported"
+    ],
+    "dep_schaeffler_taicang_lighthouse_2026": [
+      "schaeffler-taicang-lighthouse-2026"
+    ],
+    "dep_agility_digit_gxo_statesville_2027": [
+      "agility-digit-gxo-statesville-2027"
+    ],
+    "dep_agility_digit_gxo_lebanon_2027": [
+      "agility-digit-gxo-lebanon-2027"
+    ],
+    "dep_networkrail_eric_essex_culvert": [
+      "networkrail-eric-essex-culvert"
+    ],
+    "dep_rte_anymal_campus_transfo": [
+      "rte-anymal-campus-transfo"
+    ],
+    "dep_jrwest_multifunctional_railway_machinery": [
+      "jrwest-multifunctional-railway-machinery"
+    ],
+    "dep_wandercraft_calvin_renault_douai": [
+      "wandercraft-calvin-renault-douai"
+    ],
+    "dep_diligent_moxi_chla": [
+      "diligent-moxi-chla"
+    ],
+    "dep_diligent_moxi_northwestern_memorial": [
+      "diligent-moxi-northwestern-memorial"
+    ],
+    "dep_persona_hdhyundai_shipyards": [
+      "persona-hdhyundai-shipyards"
+    ],
+    "dep_hexagon_aeon_schaeffler_pilot_2025": [
+      "hexagon-aeon-schaeffler-pilot-2025"
+    ],
+    "dep_hexagon_aeon_pilatus_pilot_2025": [
+      "hexagon-aeon-pilatus-pilot-2025"
+    ],
+    "dep_walden_toyota_north_america_2026": [
+      "walden-toyota-north-america-2026"
+    ],
+    "dep_agibot_asd_retail_network_2026": [
+      "agibot-asd-retail-network-2026"
+    ],
+    "dep_figure03_bmw_hall52_2026": [
+      "figure03-bmw-hall52-2026"
+    ],
+    "dep_figure_bmw_spartanburg_2025": [
+      "figure-bmw-spartanburg-2025"
+    ],
+    "dep_hexagon_aeon_bmw_leipzig_2025": [
+      "hexagon-aeon-bmw-leipzig-2025"
+    ],
+    "dep_agility_digit_mercadolibre_sanantonio": [
+      "agility-digit-mercadolibre-sanantonio"
+    ],
+    "dep_apptronik_mercedes_berlin_kecskemet": [
+      "apptronik-mercedes-berlin-kecskemet"
+    ],
+    "dep_bd_atlas_hmgma_rmac_2026": [
+      "bd-atlas-hmgma-rmac-2026"
+    ],
+    "dep_ubtech_walker_s2_airbus_2026": [
+      "ubtech-walker-s2-airbus-2026"
+    ],
+    "dep_ubtech_walker_s2_mass_delivery_2025": [
+      "ubtech-walker-s2-mass-delivery-2025"
+    ],
+    "dep_spiritai_catl_zhongzhou_2025": [
+      "spiritai-catl-zhongzhou-2025"
+    ],
+    "dep_1x_neo_eqt_portfolio_2026": [
+      "1x-neo-eqt-portfolio-2026"
+    ],
+    "dep_toyota_eley_global_plan_2028": [
+      "toyota-eley-global-plan-2028"
+    ],
+    "dep_humanoid_sap_embodied_ai_partnership": [
+      "humanoid-sap-embodied-ai-partnership"
+    ],
+    "dep_pi_dandelion_box_assembly_2026": [
+      "pi-dandelion-box-assembly-2026"
+    ],
+    "dep_agile_audi_ingolstadt_production_lab": [
+      "agile-audi-ingolstadt-production-lab"
+    ],
+    "dep_symbotic_walmart_expansion_20261029": [
+      "symbotic-walmart-expansion-20261029"
+    ],
+    "dep_xpeng_iron_stores_plan_2027": [
+      "xpeng-iron-stores-plan-2027"
+    ],
+    "dep_dimensional_unitree_sf_data_202610": [
+      "dimensional-unitree-sf-data-202610"
+    ],
+    "dep_apptronik_jabil_pilot_2025": [
+      "apptronik-jabil-pilot-2025"
+    ],
+    "dep_figure_catalyst_reno": [
+      "figure-catalyst-reno"
+    ],
+    "dep_unitree_x1_own_factory_2026": [
+      "unitree-x1-own-factory-2026"
+    ],
+    "dep_neura_schaeffler_global_2025": [
+      "neura-schaeffler-global-2025"
+    ],
+    "dep_neura_tum_robogym_gen4_2026": [
+      "neura-tum-robogym-gen4-2026"
+    ],
+    "dep_ubtech_walker_s1_foxconn_longhua": [
+      "ubtech-walker-s1-foxconn-longhua"
+    ],
+    "dep_xiaomi_ev_factory_side_cover_sorting": [
+      "xiaomi-ev-factory-side-cover-sorting"
+    ],
+    "dep_bd_spot_gf_burlington": [
+      "bd-spot-gf-burlington"
+    ],
+    "dep_bd_spot_gf_singapore": [
+      "bd-spot-gf-singapore"
+    ],
+    "dep_bd_spot_gf_inspection_program": [
+      "bd-spot-gf-inspection-program"
+    ],
+    "dep_bd_spot_gf_malta": [
+      "bd-spot-gf-malta"
+    ],
+    "dep_bd_spot_gf_dresden": [
+      "bd-spot-gf-dresden"
+    ],
+    "dep_bd_atlas_gf_2027": [
+      "bd-atlas-gf-2027"
+    ],
+    "dep_unitree_g1_ncstate_howl": [
+      "unitree-g1-ncstate-howl"
+    ],
+    "dep_apptronik_gxo_us_pilot_2026": [
+      "apptronik-gxo-us-pilot-2026"
+    ],
+    "dep_apptronik_gxo_loi_rollout_2027": [
+      "apptronik-gxo-loi-rollout-2027"
+    ],
+    "dep_apptronik_gxo_robot_park": [
+      "apptronik-gxo-robot-park"
+    ],
+    "dep_asus_gallop_ems_packing_2026": [
+      "asus-gallop-ems-packing-2026"
+    ],
+    "dep_robotera_chinapost_guangdong_2026": [
+      "robotera-chinapost-guangdong-2026"
+    ],
+    "dep_robotera_chinapost_hangzhou": [
+      "robotera-chinapost-hangzhou"
+    ],
+    "dep_robotera_sf_chengdu": [
+      "robotera-sf-chengdu"
+    ],
+    "dep_engineai_t800_luxshare_suzhou": [
+      "engineai-t800-luxshare-suzhou"
+    ],
+    "dep_galbot_g1_beijing_pharmacies": [
+      "galbot-g1-beijing-pharmacies"
+    ],
+    "dep_galbot_g1_space_capsule_retail": [
+      "galbot-g1-space-capsule-retail"
+    ],
+    "dep_galbot_bosch_toyota_lines": [
+      "galbot-bosch-toyota-lines"
+    ],
+    "dep_ubtech_walker_s_nio_f2": [
+      "ubtech-walker-s-nio-f2"
+    ],
+    "dep_ubtech_zeekr_5g_factory": [
+      "ubtech-zeekr-5g-factory"
+    ],
+    "dep_ubtech_walker_s1_byd_changsha": [
+      "ubtech-walker-s1-byd-changsha"
+    ],
+    "dep_ubtech_walker_s1_dongfeng_liuzhou": [
+      "ubtech-walker-s1-dongfeng-liuzhou"
+    ],
+    "dep_ubtech_walker_s2_fangchenggang": [
+      "ubtech-walker-s2-fangchenggang"
+    ],
+    "dep_ubtech_walker_s2_zigong": [
+      "ubtech-walker-s2-zigong"
+    ],
+    "dep_ubtech_walker_s2_250m_order": [
+      "ubtech-walker-s2-250m-order"
+    ],
+    "dep_ubtech_u1pro_yongda": [
+      "ubtech-u1pro-yongda"
+    ],
+    "dep_tesla_optimus_internal_battery": [
+      "tesla-optimus-internal-battery"
+    ],
+    "dep_sanctuary_marks_langley": [
+      "sanctuary-marks-langley"
+    ],
+    "dep_sanctuary_phoenix_magna": [
+      "sanctuary-phoenix-magna"
+    ],
+    "dep_xpeng_iron_guangzhou_factory": [
+      "xpeng-iron-guangzhou-factory"
+    ],
+    "dep_agibot_a2w_fulin_mianyang": [
+      "agibot-a2w-fulin-mianyang"
+    ],
+    "dep_chinamobile_humanoid_procurement_2025": [
+      "chinamobile-humanoid-procurement-2025"
+    ],
+    "dep_tarsbot_aptiv_shanghai": [
+      "tarsbot-aptiv-shanghai"
+    ],
+    "dep_accenture_vodafone_duisburg": [
+      "accenture-vodafone-duisburg"
+    ],
+    "dep_kepler_k2_saicgm_shanghai": [
+      "kepler-k2-saicgm-shanghai"
+    ],
+    "dep_leju_kuavo_zhaofeng_hangzhou": [
+      "leju-kuavo-zhaofeng-hangzhou"
+    ],
+    "dep_leju_kuavo_baic_offroad": [
+      "leju-kuavo-baic-offroad"
+    ],
+    "dep_leju_kuavo_nio_poc": [
+      "leju-kuavo-nio-poc"
+    ],
+    "dep_leju_kuavo_hengtong": [
+      "leju-kuavo-hengtong"
+    ],
+    "dep_xhumanoid_foton_cummins_beijing": [
+      "xhumanoid-foton-cummins-beijing"
+    ],
+    "dep_xhumanoid_cepri_grid_inspection": [
+      "xhumanoid-cepri-grid-inspection"
+    ],
+    "dep_xhumanoid_lining_shoe_testing": [
+      "xhumanoid-lining-shoe-testing"
+    ],
+    "dep_xhumanoid_bayer_pharma": [
+      "xhumanoid-bayer-pharma"
+    ],
+    "dep_unitree_h2_baweitong_substation": [
+      "unitree-h2-baweitong-substation"
+    ],
+    "dep_oversonic_robee_st": [
+      "oversonic-robee-st"
+    ],
+    "dep_gac_gomate_mini_projects": [
+      "gac-gomate-mini-projects"
+    ],
+    "dep_aimoga_mornine_chery_dealers": [
+      "aimoga-mornine-chery-dealers"
+    ],
+    "dep_honda_avatar_robot_japan_plants": [
+      "honda-avatar-robot-japan-plants"
+    ],
+    "dep_toyota_eley_japan_plants": [
+      "toyota-eley-japan-plants"
+    ],
+    "dep_agility_digit_agco_hesston": [
+      "agility-digit-agco-hesston"
+    ],
+    "dep_persona_posco_steelworks": [
+      "persona-posco-steelworks"
+    ],
+    "dep_persona_sse_steel_louisiana": [
+      "persona-sse-steel-louisiana"
+    ],
+    "dep_fourier_grx_perkeso": [
+      "fourier-grx-perkeso"
+    ],
+    "dep_magiclab_aisin_tote_handling": [
+      "magiclab-aisin-tote-handling"
+    ],
+    "dep_reflex_gxo_raas_pilot": [
+      "reflex-gxo-raas-pilot"
+    ],
+    "dep_enchanted_mirokai_aphp": [
+      "enchanted-mirokai-aphp"
+    ],
+    "dep_1x_eve_everon_security": [
+      "1x-eve-everon-security"
+    ],
+    "dep_aitu_peacebird_ningbo": [
+      "aitu-peacebird-ningbo"
     ]
   }
 }

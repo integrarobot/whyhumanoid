@@ -33,8 +33,8 @@ export function relationsConfig() {
   return { aliases: read('tools/relations-aliases.json'), catalogue: catalogueIndex() };
 }
 
-// The free robot pages may show only what the public preview rows say: the first 10 Deployments sheet rows and the
-// first 10 Entities rows, both already published in data/preview/.
+// The free robot pages may show only what the public rows say: every Deployments and Entities row at its public
+// fields (server/src/access/fields.js), already published in data/preview/.
 export function previewGraph(config = relationsConfig()) {
   const deployments = read('data/preview/deployments.json');
   const entities = read('data/preview/entities.json');
@@ -46,11 +46,10 @@ export function previewGraph(config = relationsConfig()) {
 // What index.html embeds: per catalogue robot, the preview records linked to it, with the public fields its page shows.
 // Records are referred to by their preview row (1 to 10) and grouped by deployment with a small number, so the page
 // carries no record identifiers (tools/check-public.mjs keeps those to data/preview/).
+// Public fields only (server/src/access/fields.js, 24 Nov 2026): what a public page may show of a Deployments record.
 export const PAGE_FIELDS = [
-  'organization_name', 'organization_role', 'site_name', 'city', 'region', 'country',
-  'task_description', 'task_category', 'operational_status', 'relationship_type', 'observed_start', 'observed_end',
-  'metric_name', 'metric_operator', 'metric_value', 'metric_unit', 'metric_period', 'evidence_level',
-  'verification_status', 'claim_type', 'source_url', 'source_publisher', 'source_title', 'publication_date',
+  'organization_name', 'organization_role', 'country', 'task_category', 'operational_status',
+  'verification_status', 'source_url', 'source_publisher', 'source_title', 'publication_date',
   'manufacturer', 'robot_model', 'robot_version',
 ];
 export function pageRelations() {

@@ -144,7 +144,7 @@ function workbookWithDeployments(n) {
   return values;
 }
 
-test('import builds both graphs; the preview graph holds only the 10 public rows; access is checked', async () => {
+test('import builds both graphs; the public graph holds every record from its public values; access is checked', async () => {
   const ctx = await setup({ workbook: workbookWithDeployments(14) });
   // Imported without a config: relations are not ready.
   assert.equal((await ctx.call('GET', '/v1/relations/preview')).status, 503);
@@ -158,8 +158,8 @@ test('import builds both graphs; the preview graph holds only the 10 public rows
   assert.match(preview.headers.get('cache-control'), /public/);
   const pg = await preview.json();
   assert.equal(pg.scope, 'preview');
-  assert.deepEqual(pg.records.map((r) => r.record_id), Array.from({ length: 10 }, (_, i) => `fx_rec_${i + 1}`));
-  assert.ok(!JSON.stringify(pg).includes('fx_rec_11') && !JSON.stringify(pg).includes('org_fx_op_12'));
+  assert.deepEqual(pg.records.map((r) => r.record_id), Array.from({ length: 14 }, (_, i) => `fx_rec_${i + 1}`));
+  assert.doesNotMatch(JSON.stringify(pg), /fx_(site_name|claim_text|task_description|metric_value|open_questions_notes)_/, 'built from public values only');
   assert.equal(pg.robots.length, catalogue.length);
 
   assert.equal((await ctx.call('GET', '/v1/relations')).status, 401);
@@ -180,7 +180,7 @@ test('import builds both graphs; the preview graph holds only the 10 public rows
   assert.equal(again.relations.ok, true);
   const bad = await runImport(ctx.db, workbookWithDeployments(14), T0 + 120, { relationsConfig: { aliases: {}, catalogue: [] } });
   assert.deepEqual([bad.ok, bad.error], [false, 'invalid_relations_config']);
-  assert.equal((await (await ctx.call('GET', '/v1/relations/preview')).json()).records.length, 10);
+  assert.equal((await (await ctx.call('GET', '/v1/relations/preview')).json()).records.length, 14);
 });
 
 // Approved split, phase 1 (17 Nov 2026): the public projection holds every company, with allowlisted values only, and

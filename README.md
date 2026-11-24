@@ -6,7 +6,7 @@ agents preparing enterprise deployment plans.
 ## Access model: paywall (Javier, 16 Nov 2026)
 
 Decision of 16 Nov 2026 (d-0008), replacing the temporary open database: Humanoids is free; the other 12 tabs are
-premium at €100 per year through Stripe, with no free trial. The site shows the first 10 sheet rows of each premium
+premium at US$100 per year (new subscriptions, billed annually; existing EUR subscriptions keep their price) through Stripe, with no free trial. Since 24 Nov 2026 the site lists every Deployments case and Components product at its public fields (server/src/access/fields.js); before, it showed the first 10 sheet rows of each premium
 tab; full rows exist only in the backend database (Cloudflare D1) and are served after a server-side subscription
 check on every request. Never publish full rows of a premium tab in Git, the site or any public file again: the
 guard (`tools/check-public.mjs`), the export tests and CI fail if one comes back.
@@ -82,8 +82,8 @@ node server/scripts/dev.mjs                 # local app and catalogue with synth
 | GET | `/v1/datasets` | public: the 13 datasets, no rows |
 | GET | `/v1/datasets/{id}/preview` | public: the whole Humanoids catalogue (public values), every row of the link directories, every listed company with basic fields beyond row 10, or the first 10 data rows of another tab in workbook order; no search |
 | GET | `/v1/datasets/{id}?limit&offset&q` | active subscription, checked on every request |
-| GET | `/v1/billing/plan` | public: €100 per year, whether checkout is available |
-| POST | `/v1/billing/checkout` | browser session; Stripe price verified as EUR 10000 / year, no trial, first; refused while a payment is pending |
+| GET | `/v1/billing/plan` | public: US$100 per year, whether checkout is available |
+| POST | `/v1/billing/checkout` | browser session; Stripe price verified as USD 10000 / year, no trial, first; refused while a payment is pending |
 | POST | `/v1/billing/portal` | browser session of a paying account: Stripe customer portal (card, invoices, cancellation) |
 | POST | `/v1/stripe/webhook` | Stripe signature, same mode (test or live) as the environment |
 | GET / POST | `/v1/me`, `/v1/auth/*`, `/v1/api-keys` | sign-in flow, agent keys |

@@ -8,6 +8,7 @@
 //   node tools/build-app.mjs           write app/index.html and app/premium.js
 //   node tools/build-app.mjs --check   fail if app/ differs from what would be written
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { PUBLIC_FIELDS } from '../server/src/access/fields.js';
 import { createHash } from 'node:crypto';
 import { pageLinks } from './build-pages.mjs';
 
@@ -47,7 +48,9 @@ export function buildApp() {
   const tag = '<script src="premium.js"></script>';
   if (!html.includes(tag)) throw new Error(`server/public/index.html: ${tag} not found`);
   // Public company pages the app may link to (ids and paths only, all public). A JSON block is data, not script.
-  const pages = JSON.stringify({ companies: pageLinks().companies }).replace(/</g, '\\u003c');
+  // The public field contract (server/src/access/fields.js), so the app shows visitors the same fields as the site even
+  // while an older API still answers with more (it never adds a field).
+  const pages = JSON.stringify({ companies: pageLinks().companies, public_fields: PUBLIC_FIELDS }).replace(/</g, '\\u003c');
   return {
     'index.html': html.replace(anchor, head).replace(tag, `<script type="application/json" id="wh-pages">${pages}</script>\n<script src="premium.js?v=${version}"></script>`),
     'premium.js': js,

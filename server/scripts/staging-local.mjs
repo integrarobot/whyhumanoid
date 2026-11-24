@@ -6,7 +6,8 @@
 // code as in Stripe test mode. No network, no Stripe account, no real charge. Never deploy this file.
 //
 //   node tools/build-staging.mjs --origin http://localhost:8788 && node server/scripts/staging-local.mjs
-//   POST /dev/event {"email","id","type","status","period_end","cancel_at_period_end"}  signed test-mode event
+//   POST /dev/event {"email","id","type","status","period_end","cancel_at_period_end","price"}  signed test-mode event
+//                  (price: "price_local_legacy_eur" for a subscription at the former EUR price)
 //   GET  /dev/magic?email=  the last sign-in link sent to that address (the mailer prints nothing elsewhere)
 
 import { createServer } from 'node:http';
@@ -23,6 +24,7 @@ const PORT = Number(process.env.PORT ?? 8788);
 const ORIGIN = `http://localhost:${PORT}`;
 const SECRET = 'whsec_local_staging_only';
 const PRICE = 'price_local_staging';
+const LEGACY = 'price_local_legacy_eur'; // a subscription bought at the former EUR price keeps its access
 const site = fileURLToPath(new URL('../.staging/', import.meta.url));
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.json': 'application/json', '.csv': 'text/csv', '.css': 'text/css', '.xml': 'application/xml', '.txt': 'text/plain', '.png': 'image/png' };
 
@@ -36,16 +38,16 @@ gateway.createCheckoutSession = async () => ({ id: 'cs_test_local', url: `${ORIG
 gateway.createPortalSession = async () => ({ url: `${ORIGIN}/dev/portal` });
 const app = createApp({
   db, mailer, gateway,
-  config: { allowedOrigins: [ORIGIN], premiumUrl: `${ORIGIN}/app/`, stripeMode: 'test', checkoutEnabled: true, allowLiveCheckout: false, stripePriceId: PRICE, loginTtlSeconds: 900, loginMaxPerHour: 50, sessionTtlSeconds: 86400 },
+  config: { allowedOrigins: [ORIGIN], premiumUrl: `${ORIGIN}/app/`, stripeMode: 'test', checkoutEnabled: true, allowLiveCheckout: false, stripePriceId: PRICE, stripeLegacyPriceIds: [LEGACY], loginTtlSeconds: 900, loginMaxPerHour: 50, sessionTtlSeconds: 86400 },
 });
 
-async function signedEvent({ email, id, type = 'customer.subscription.updated', status = 'active', period_end, cancel_at_period_end = false }) {
+async function signedEvent({ email, id, type = 'customer.subscription.updated', status = 'active', period_end, cancel_at_period_end = false, price = null }) {
   const account = await db.prepare('SELECT id FROM accounts WHERE email = ?').bind(String(email).toLowerCase()).first();
   if (!account) return { status: 404, body: 'sign in first' };
   const now = Math.floor(Date.now() / 1000);
   const event = {
     id, object: 'event', type, created: now, livemode: false,
-    data: { object: { id: `sub_${account.id}`, object: 'subscription', customer: `cus_${account.id}`, status, cancel_at_period_end, metadata: { wh_account_id: account.id }, items: { object: 'list', data: [{ id: 'si_local', price: { id: PRICE }, current_period_end: period_end ?? now + 365 * 86400 }] } } },
+    data: { object: { id: `sub_${account.id}`, object: 'subscription', customer: `cus_${account.id}`, status, cancel_at_period_end, metadata: { wh_account_id: account.id }, items: { object: 'list', data: [{ id: 'si_local', price: { id: price ?? PRICE }, current_period_end: period_end ?? now + 365 * 86400 }] } } },
   };
   const payload = JSON.stringify(event);
   const sig = await hmacSha256Hex(SECRET, `${now}.${payload}`);

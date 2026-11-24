@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Components coverage snapshot (23 Nov 2026). Components is a subscription category: the site publishes the first 10
+// Components coverage snapshot (23 Nov 2026). Components is a subscription category: the site publishes every product at its public fields (24 Nov 2026); before, the first 10
 // product rows (data/preview/hardware.json, tools/export-database.mjs) and, from every row, only counts. This tool
 // reads a PRIVATE workbook export (kept outside Git), normalises the Components tab exactly as the import does
 // (product table and related software block, server/src/components/catalogue.js), validates it and writes

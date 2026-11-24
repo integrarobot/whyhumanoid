@@ -4,7 +4,8 @@
 //   - every record of the free Humanoids catalogue is rendered, and the hero shows that total
 //   - search and filters work on the visible rows
 //   - the notice says the catalogue is free and the rest of the database is open (decision of 16 Nov 2026)
-//   - paywall: the 12 other tabs show only their first 10 sheet rows (data/preview) and link to the full database;
+//   - access (24 Nov 2026): the 12 other tabs show their public rows (data/preview): free tabs in full, Deployments and
+//     Components in every row at their public fields, counted-only tabs none; the two paths sit at the top of the page;
 //     every preview row's card (View all data) shows every field and value in full, with sources and dates
 //   - 13 categories with their own URLs; a shared #db-<tab> URL restores the category
 //   - deployment status filters count only what operational_status supports
@@ -113,9 +114,10 @@ for (const t of dbIndex?.tabs ?? []) {
   expect(a?.getAttribute('href') === `#db-${t.id}` && a.querySelector('.n')?.textContent === String(t.entries_total), `${t.id}: index link or count wrong`);
   await go(`#db-${t.id}`);
   const shown = document.querySelectorAll('#db-rows tr.r').length;
-  expect(shown === t.preview_entries && shown > 0, `${t.id}: ${shown} rows shown, preview has ${t.preview_entries}`);
+  expect(shown === t.preview_entries && (shown > 0 || t.public === 'none'), `${t.id}: ${shown} rows shown, public rows ${t.preview_entries}`);
+  if (t.public === 'summary') expect(t.preview_entries === t.entries_total, `${t.id}: not every entry is listed`);
   const lock = document.querySelector('#db-more a.db-buy');
-  expect(t.entries_total > t.preview_entries ? t.access === 'subscription' && lock?.getAttribute('href') === '/subscribe/' : !lock, `${t.id}: link to the subscription missing or wrong`);
+  expect(t.access === 'subscription' ? lock?.getAttribute('href') === '/subscribe/' : !lock, `${t.id}: link to the subscription missing or wrong`);
   expect(text('#db-title') === t.title, `${t.id}: panel title "${text('#db-title')}"`);
   expect(a?.getAttribute('aria-current') === 'true', `${t.id}: index does not mark the open category`);
 }
@@ -170,7 +172,7 @@ expect(cardsChecked === totalRows, `record cards checked: ${cardsChecked} of ${t
 // Deployments: the summary table shows status, organization, task, site, result and source for business readers.
 await go('#db-deployments');
 const depHead = [...document.querySelectorAll('#db-panel thead th')].map((th) => th.textContent);
-expect(JSON.stringify(depHead) === JSON.stringify(['Row', 'Status', 'Record', 'Organization and robot', 'Task', 'Site', 'Result or metric', 'Source']), `deployments table columns: ${depHead.join(', ')}`);
+expect(JSON.stringify(depHead) === JSON.stringify(['Row', 'Status', 'Record', 'Organization and robot', 'Task', 'Sector and country', 'Reported by', 'Source']), `deployments table columns: ${depHead.join(', ')}`);
 expect(/View all data/.test(text('#db-panel .db-hint')), 'deployments panel does not explain View all data');
 const lastBtn = [...document.querySelectorAll('#db-rows button.db-open')].pop();
 lastBtn?.click();
@@ -195,6 +197,19 @@ for (const a of eco.filter((x) => x.getAttribute('href').startsWith('#db-'))) {
   expect(a.querySelector('b')?.textContent === String(t?.entries_total), `hero count for ${t?.id} is not the data's`);
 }
 expect(document.querySelector('#cta-h')?.getAttribute('href') === '#humanoids' && document.querySelector('#cta-db')?.getAttribute('href') === '#categories', 'hero calls to action missing');
+// The two premium paths (24 Nov 2026): both in the hero and in full right after it; the data subscription at US$100 a
+// year billed annually; reports at US$1,000, not available to order, with no order or checkout link of their own.
+{
+  const mini = document.querySelector('.hero-paths');
+  const paths = document.getElementById('paths');
+  expect(Boolean(mini) && /US\$100 per year, billed annually/.test(mini.textContent) && /not available to order yet/.test(mini.textContent), 'hero: the two paths are missing');
+  expect(Boolean(paths) && paths.compareDocumentPosition(document.getElementById('categories')) & 4, 'two paths block is not before the categories');
+  const data = paths?.querySelector('.p-data')?.textContent ?? '', rep = paths?.querySelector('.p-rep')?.textContent ?? '';
+  expect(/US\$100/.test(data) && /billed annually/.test(data) && /no free trial/.test(data) && /not include a personalised recommendation/.test(data), 'data path: price, billing or scope missing');
+  expect(/US\$1,000/.test(rep) && /Not available to order yet/.test(rep) && /Robot integration diagnostic/.test(rep) && /Industrial diversification report/.test(rep), 'reports path: price, names or availability missing');
+  expect(![...(paths?.querySelectorAll('.p-rep a') ?? [])].some((a) => /checkout|order|app\/#/.test(a.getAttribute('href'))), 'reports path links an order or checkout');
+  expect(!/€/.test(document.body.textContent), 'a euro price is still on the page');
+}
 expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements still on the page');
 // Adoption view (23 Nov 2026): replaces the Height × mass chart; built from the public projection only.
 {

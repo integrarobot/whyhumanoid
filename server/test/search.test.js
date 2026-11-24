@@ -9,7 +9,8 @@ import { parseQuery, search } from '../src/search/index.js';
 import { tagsFor } from '../src/search/vocabulary.js';
 import { createTestDb, fixtureWorkbook, setup, signIn, T0 } from './helpers.js';
 
-// Deployments rows 1-10 are the public preview; rows 11-14 are premium and carry words and tags found nowhere else.
+// Deployments rows 11-14 carry words and tags found nowhere else. Since 24 Nov 2026 every row is public at its public
+// fields (organisation, country, sector, task category, status...); the site, task description and evidence level are paid.
 const DEP = (i) => ({
   record_id: `fx_rec_${i}`,
   organization_name: i <= 10 ? `Acme Motors ${i}` : `Zetacorp Secret ${i}`,
@@ -66,31 +67,37 @@ test('tags come only from the controlled vocabulary: company country apart from 
   assert.deepEqual(tagsFor('humanoids', { Country: 'USA (New York City)', 'Platform / mobility': 'Not stated by the company' }), ['hq:united_states', 'type:humanoid_robot']);
 });
 
-test('visitors search only the public rows: no premium result, snippet, tag or count, whatever they ask', async () => {
+test('visitors search every case by its public values, never by a paid value: no paid result, snippet, tag or count', async () => {
   const ctx = await setup({ workbook: workbook() });
   const get = async (qs, token) => { const r = await ctx.call('GET', `/v1/search?${qs}`, { token }); assert.equal(r.status, 200); return { body: await r.json(), headers: r.headers }; };
 
-  for (const qs of ['q=zetacorp', 'q=zetaword', 'q=hidden+plant', 'q=japan', 'tags=sector:healthcare', 'tags=task:assembly', 'tags=status:operational', 'q=fx_rec_11', 'q=e5']) {
+  // Paid values: the site, the task description and the evidence level (and its tag) find nothing.
+  for (const qs of ['q=zetaword', 'q=hidden+plant', 'q=e5', 'tags=evidence:e5', 'q=confidential+workflow']) {
     const { body, headers } = await get(qs);
     assert.equal(body.scope, 'preview');
     assert.equal(body.total, 0, qs);
     assert.match(headers.get('cache-control'), /public/);
     // The request itself is echoed (query, terms, chosen tags with a count of 0): everything else is what was found.
     const { query, terms, active, ...served } = body;
-    served.facets = served.facets.map((f) => ({ ...f, values: f.values.filter((v) => !v.active) }));
     assert.ok(body.facets.every((f) => f.values.every((v) => !v.active || v.count === 0)), qs);
-    assert.doesNotMatch(JSON.stringify(served), /zetacorp|zetaword|hidden plant|fx_rec_1[1-4]|japan|healthcare|assembly/i, qs);
+    assert.doesNotMatch(JSON.stringify(served), /zetaword|hidden plant|confidential workflow/i, qs);
+  }
+  // Public values of every case are findable, and their results carry public values only.
+  for (const qs of ['q=zetacorp', 'q=japan', 'tags=sector:healthcare', 'tags=task:assembly', 'tags=status:operational']) {
+    const { body } = await get(qs);
+    assert.equal(body.total, 4, qs);
+    assert.doesNotMatch(JSON.stringify(body), /zetaword|hidden plant|confidential workflow|evidence:e5/i, qs);
   }
   const { body } = await get('q=acme');
   assert.equal(body.total, 10);
-  const facetTags = body.facets.flatMap((f) => f.values.map((v) => v.id));
-  assert.ok(!facetTags.includes('sector:healthcare') && !facetTags.includes('hq:japan'));
+  assert.ok(!body.facets.flatMap((f) => f.values.map((v) => v.id)).some((t) => t.startsWith('evidence:')), 'no evidence-level facet for visitors');
   assert.equal(body.categories.find((c) => c.id === 'deployments').count, 10);
 
   // An account without a subscription, or a broken token, gets the same public scope.
   const { session } = await signIn(ctx, 'free@example.com');
-  assert.equal((await get('q=zetacorp', session)).body.total, 0);
-  assert.equal((await get('q=zetacorp', 'whs_not_a_session')).body.total, 0);
+  assert.equal((await get('q=zetaword', session)).body.total, 0);
+  assert.equal((await get('q=zetaword', 'whs_not_a_session')).body.total, 0);
+  assert.equal((await get('q=zetacorp', session)).body.total, 4);
 });
 
 test('subscribers search every row, with tags, filters, counts, ranking, snippets and pages', async () => {
@@ -150,9 +157,12 @@ test('the import rebuilds both scopes and reports counts only', async () => {
   const preview = await n('preview');
   assert.equal(full, r.search.full);
   assert.ok(preview < full);
-  // Preview documents are exactly the public rows.
-  const deps = await db.prepare("SELECT row_id FROM search_docs WHERE scope = 'preview' AND dataset = 'deployments'").all();
-  assert.equal(deps.results.length, 10);
-  assert.equal((await search(db, { scope: 'preview', q: 'zetacorp' })).total, 0);
+  // Public documents: every Deployments row, built from its public values only.
+  const deps = await db.prepare("SELECT row_id, haystack FROM search_docs WHERE scope = 'preview' AND dataset = 'deployments'").all();
+  assert.equal(deps.results.length, 14);
+  assert.ok(deps.results.every((d) => !/zetaword|hidden plant/.test(d.haystack)));
+  assert.equal((await search(db, { scope: 'preview', q: 'zetaword' })).total, 0);
+  assert.equal((await search(db, { scope: 'preview', q: 'zetacorp' })).total, 4);
+  assert.equal(await (await db.prepare("SELECT COUNT(*) AS n FROM search_docs WHERE scope = 'preview' AND dataset = 'evidence-links'").first()).n, 0, 'claim-to-evidence links: counted, never indexed publicly');
   await assert.rejects(() => search(db, { q: 'x' }), /scope/);
 });

@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { buildExport, readLegacySnapshot, readVerifiedUpdates } from '../../tools/export-humanoids.mjs';
 import { DATASETS, publicRowLimit } from '../src/datasets.js';
+import { PUBLIC_FIELDS } from '../src/access/fields.js';
 
 const legacy = readLegacySnapshot();
 const updates = readVerifiedUpdates();
@@ -38,14 +39,17 @@ test('an inserted row the sheet marks as a duplicate is withheld from the free c
 });
 
 const PUBLIC_ALL = ['benchmarks', 'benchmark-results', 'humanoids', 'integrators', 'software', 'datasets', 'dataset-metrics', 'task-evaluations', 'other-robots', 'stocks'];
-test('all 17 datasets stay; the free categories are public in every row, Deployments, Components and the rest show 10', () => {
+const COUNTED_ONLY = ['evidence-links', 'container-handling', 'data-space'];
+test('all 17 datasets stay; every row public (free tabs in full, Deployments and Components at public fields); three counted only', () => {
   assert.equal(DATASETS.length, 17);
-  for (const spec of DATASETS) assert.equal(publicRowLimit(spec), PUBLIC_ALL.includes(spec.id) ? null : 10, spec.id);
+  for (const spec of DATASETS) assert.equal(publicRowLimit(spec), COUNTED_ONLY.includes(spec.id) ? 0 : null, spec.id);
+  for (const spec of DATASETS) assert.equal(spec.access === 'free', PUBLIC_ALL.includes(spec.id), spec.id);
 });
 
-// Paywall (decision of 16 Nov 2026): the site publishes only the first 10 sheet rows of each of the 12 other tabs;
-// full rows are premium and live only in the backend database. This guards against publishing full rows again.
-test('the public export holds only the first 10 sheet rows of each of the 12 other tabs, with full counts', async () => {
+// Access (24 Nov 2026): the site publishes every row of the free tabs, and every row of Deployments and Components at
+// the public fields of server/src/access/fields.js; full rows of those tabs live only in the backend database. This
+// guards against publishing a paid field.
+test('the public export: free tabs in full, subscription tabs at their public fields only, counted-only tabs empty', async () => {
   const { writeFileSync, mkdtempSync } = await import('node:fs');
   const { tmpdir } = await import('node:os');
   const { join } = await import('node:path');
@@ -65,21 +69,25 @@ test('the public export holds only the first 10 sheet rows of each of the 12 oth
       if (t.id === 'stocks') for (const r of tabs[t.id].rows) assert.ok(!('price' in r) && !('market_cap' in r), 'stocks: third-party quote columns stay withheld');
       continue;
     }
-    assert.ok(tabs[t.id].rows.every((r) => r._row <= PREVIEW_SOURCE_ROWS), `${t.id}: no row past sheet row 10`);
-    assert.ok(tabs[t.id].rows.length < counts[t.id] || counts[t.id] <= 10, `${t.id}: cut to the preview`);
+    const allowed = PUBLIC_FIELDS[t.id];
+    if (!allowed.length) { assert.equal(tabs[t.id].rows.length, 0, `${t.id}: counted only`); continue; }
+    assert.equal(tabs[t.id].rows.length, counts[t.id], `${t.id}: every row listed`);
+    for (const r of tabs[t.id].rows) for (const k of Object.keys(r)) assert.ok(k === '_row' || allowed.includes(k), `${t.id}.${k} is paid`);
     assert.ok(!t.fields.some(isInternalField), `${t.id}: no internal fields`);
+    assert.doesNotMatch(JSON.stringify(tabs[t.id]), /fx_(claim_text|site_name|task_description|metric_value)_/);
   }
-  // A full tab fails validation.
-  const full = { ...tabs.deployments, rows: [...tabs.deployments.rows, { ...tabs.deployments.rows[0], _row: 11 }] };
-  assert.ok(validateDatabase(index, { ...tabs, deployments: full }).length > 0, 'a row past the preview is refused');
-  // Components (Hardware tab) is a subscription category: a row past the preview is refused too.
-  const comp = { ...tabs.hardware, rows: [...tabs.hardware.rows, { ...tabs.hardware.rows[0], _row: 11 }] };
-  assert.ok(validateDatabase(index, { ...tabs, hardware: comp }).length > 0, 'a Components row past the preview is refused');
+  // A paid field fails validation, in Deployments and in Components.
+  const leak = { ...tabs.deployments, rows: tabs.deployments.rows.map((r, i) => (i ? r : { ...r, claim_text: 'x' })) };
+  assert.ok(validateDatabase(index, { ...tabs, deployments: leak }).some((p) => /paid field claim_text/.test(p)), 'a paid Deployments field is refused');
+  const comp = { ...tabs.hardware, rows: tabs.hardware.rows.map((r, i) => (i ? r : { ...r, list_price: '1 USD' })) };
+  assert.ok(validateDatabase(index, { ...tabs, hardware: comp }).some((p) => /paid field list_price/.test(p)), 'a paid Components field is refused');
+  const cut = { ...tabs.deployments, rows: tabs.deployments.rows.slice(1) };
+  assert.ok(validateDatabase(index, { ...tabs, deployments: { ...cut } }).length > 0, 'a missing case is refused: every row is listed');
 });
 
-test('the committed previews match their index and hold no full tab', async () => {
+test('the committed public rows match their index and hold no paid field', async () => {
   const { readDatabase, validateDatabase } = await import('../../tools/export-database.mjs');
   const { index, tabs } = readDatabase();
   assert.deepEqual(validateDatabase(index, tabs), []);
-  assert.ok(index.tabs.some((t) => t.entries_total > tabs[t.id].rows.length), 'totals larger than the previews');
+  assert.ok(index.tabs.filter((t) => t.public === 'none').every((t) => t.entries_total > 0 && !tabs[t.id].rows.length), 'counted-only tabs list nothing');
 });

@@ -2,9 +2,10 @@
 // Full-database app. It holds no data. It runs at https://whyhumanoid.com/app/ (GitHub Pages, built by
 // tools/build-app.mjs, which names the API origin in <meta name="wh-api">) and, for local tests and the old address,
 // on the backend's own origin, where the meta tag is absent and the API is same-origin. Visitors and signed-in
-// users without a subscription get the free Humanoids catalogue and each other category's first 10 sheet rows;
-// subscribers get every row and field, after a server-side entitlement check on every request (Javier, 16 Nov 2026:
-// paywall, EUR 100 per year, no free trial). Same table and "View all data" card as whyhumanoid.com.
+// users without a subscription get every free category in full and every Deployments and Components entry at its
+// public fields (server/src/access/fields.js); subscribers get every row and field, after a server-side entitlement
+// check on every request (Javier, 24 Nov 2026: US$100 per year billed annually for new subscriptions, no free trial;
+// existing EUR subscriptions keep their price). Same table and "View all data" card as whyhumanoid.com.
 // Relations (Javier, 17 Nov 2026): each robot shows where it works, doing what and with which evidence; each record
 // links to its robot, maker and organisation; each company lists its robots and records by role. The server builds
 // the graph; visitors get the graph of the 10 public Deployments rows only. Stable links: #robot/<catalogue id>,
@@ -73,18 +74,19 @@
     $('who').textContent = me.email;
     const a = me.access || {};
     const end = a.current_period_end ? day(a.current_period_end) : '';
-    const price = state.plan?.plan?.price || '€100 per year';
+    const price = state.plan?.plan?.price || 'US$100 per year';
     let title, text, cls, st;
     if (a.active && a.cancel_at_period_end) {
       [title, text, cls, st] = ['Full access until ' + end, 'Your subscription is cancelled and will not renew. You keep full access until ' + end + '.', 'warn', 'Cancelled, active until ' + end];
     } else if (a.active) {
-      [title, text, cls, st] = ['Full access', 'Your subscription renews on ' + end + ' (' + price + '). Manage your card, invoices or cancellation in the Stripe portal.', 'ok', 'Active until ' + end];
+      // Renewal at the subscription's own price: a subscription bought in EUR keeps its currency and amount.
+      [title, text, cls, st] = ['Full access', 'Your subscription renews on ' + end + ' at the price of your subscription. Manage your card, invoices or cancellation in the Stripe portal.', 'ok', 'Active until ' + end];
     } else if (a.status === 'past_due' || a.status === 'unpaid') {
       [title, text, cls, st] = ['Payment needed', 'The last payment failed, so full access is paused. Update your card in the Stripe portal to restore it.', 'bad', 'Payment failed'];
     } else if (a.status && a.status !== 'none') {
       [title, text, cls, st] = ['Subscription ended', 'Your subscription is no longer active' + (end ? ' (paid period ended ' + end + ')' : '') + '. Subscribe again to reopen complete Deployments and Components.', 'bad', 'Expired'];
     } else {
-      [title, text, cls, st] = ['No subscription yet', 'You are seeing the free data: the Humanoids catalogue, the directories, basic fields of listed companies and the first 10 rows of the other categories. Subscribe for ' + price + ' to get every deployment record in full, with its site, task, results, verification and source; paid yearly, no free trial, cancel any time.', '', 'No subscription'];
+      [title, text, cls, st] = ['No subscription yet', 'You are seeing the free data: every free category in full, and every Deployments case and Components product with its public summary. The data subscription, ' + price + ' billed annually with no free trial, adds the detail of every case and the full technical passport of every product; cancel any time.', '', 'No subscription'];
     }
     $('acc-title').textContent = title;
     $('acc-text').textContent = text;
@@ -117,11 +119,12 @@
     }).join('');
   }
 
-  // Rows: every row for a subscriber (paged API), the public preview otherwise.
+  // Rows: every row for a subscriber (paged API); otherwise the public rows (free tabs in full, Deployments and
+  // Components at their public fields).
   async function load(id) {
     const mode = full() ? 'full' : 'preview';
     if (cache[id] && cache[id].mode === mode) return cache[id];
-    let rows = [], total = 0, snapshot = null, previewRows = null;
+    let rows = [], total = 0, snapshot = null, previewRows = null, publicFields = null;
     if (mode === 'full') {
       for (let offset = 0; ; offset += PAGE) {
         const { status, data } = await api(`/v1/datasets/${id}?limit=${PAGE}&offset=${offset}`);
@@ -134,10 +137,17 @@
     } else {
       const { status, data } = await api(`/v1/datasets/${id}/preview`, { auth: false });
       if (status !== 200) throw new Error('load');
-      rows = data.rows; total = data.total_rows; snapshot = data.snapshot; previewRows = data.preview_rows;
+      rows = data.rows; total = data.total_rows; snapshot = data.snapshot; previewRows = data.preview_rows; publicFields = data.public_fields ?? null;
+      // An API older than 24 Nov 2026 answers visitors with the first rows in full and no field contract: show them at
+      // the public fields embedded by tools/build-app.mjs, like the rest of the site (the subscriber view is unchanged).
+      const contract = PAGES.public_fields?.[id];
+      if (!publicFields && Array.isArray(contract)) {
+        publicFields = contract;
+        rows = contract.length ? rows.map((r) => Object.fromEntries(Object.entries(r).filter(([k]) => k === 'id' || contract.includes(k)))) : [];
+      }
     }
     const fields = [...new Set(rows.flatMap((r) => Object.keys(r)))].filter((k) => !HIDDEN.has(k));
-    cache[id] = { mode, rows, total, snapshot, previewRows, fields };
+    cache[id] = { mode, rows, total, snapshot, previewRows, publicFields, fields };
     totals[id] = total;
     const n = document.querySelector(`[data-n="${id}"]`); if (n) n.textContent = total;
     return cache[id];
@@ -189,7 +199,7 @@
     if (rel.mode === 'full') return '';
     const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'Subscriptions open soon';
     const n = totals.deployments;
-    return `<p class="rel-lock"><b>Free preview.</b> Only the first 10${n ? ` of ${n}` : ''} Deployments records are linked here. The subscription links every record to its robot, maker and organisation, with its sources (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</p>`;
+    return `<p class="rel-lock"><b>Public summary.</b> Every${n ? ` one of the ${n}` : ''} Deployments records is linked here with its public fields and source. The data subscription adds each record's site, task description, timeline, metrics, claim and evidence (${esc(state.plan?.plan?.price || 'US$100 per year')}). ${cta}.</p>`;
   }
   // One deployment: its records (claims) in date order, each with status, task, evidence, source and its own card.
   function depGroups(list, rows, { robot = true, org = true, maker = false } = {}) {
@@ -235,7 +245,7 @@
     if (!recs.length) {
       html += rel.mode === 'full'
         ? `<p class="rel-empty">No Deployments record names this robot or its model line. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that the robot has no deployments.</p>`
-        : `<p class="rel-empty">None of the 10 free preview records names this robot or its model line. That is not evidence that it has no deployments${n ? `: ${n - 10} more records come with the subscription` : ''}.</p>`;
+        : `<p class="rel-empty">No Deployments record names this robot or its model line. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that the robot has no deployments.</p>`;
     }
     if (others.length && rb) html += `<p class="rel-note">${others.length} ${others.length === 1 ? 'record' : 'records'} from ${companyLink(rb.maker)} ${others.length === 1 ? 'names' : 'name'} another model or none, so ${others.length === 1 ? 'it is' : 'they are'} not attributed to this robot. <a href="#company/${encodeURIComponent(rb.maker)}">See the maker</a>.</p>`;
     return html + (recs.length ? STATUS_KEY : '') + relLock();
@@ -293,6 +303,24 @@
         sub(nz(r.publication_date) ? 'Published ' + esc(r.publication_date) : 'Publication date not recorded');
     }, 'cw-s'],
   ];
+  // Visitors see every record at its public fields (24 Nov 2026): no column pretends a paid field is missing.
+  const REVIEW_LBL = { customer_confirmed: 'Confirmed by the customer or operator', partner_reported: 'Reported by a partner', vendor_reported: 'Reported by the vendor', media_reported: 'Reported by the media', unresolved: 'Unresolved' };
+  const DEP_PUBLIC_COLS = [
+    ['Organization and robot', (r) => {
+      const rr = rel.rec.get(r.record_id);
+      const org = rr?.operator ? companyLink(rr.operator, r.organization_name) : esc(r.organization_name || '');
+      const rob = rr && rr.robot !== null ? `${esc([r.manufacturer, r.robot_model].filter(nz).join(' · '))} → ${robotLink(rr.robot)}` : esc([r.manufacturer, r.robot_model].filter(nz).join(' · '));
+      return org + sub(rob);
+    }, 'cw-m'],
+    ['Task', (r) => esc(human(r.task_category && r.task_category !== 'unspecified' ? r.task_category : 'Task not specified in the sources')), 'cw-m'],
+    ['Sector and country', (r) => esc(human(r.sector || '')) + sub(esc(r.country || '')), 'cw-m'],
+    ['Reported by', (r) => esc(REVIEW_LBL[r.verification_status] || human(r.verification_status || 'Not recorded')), 'cw-m'],
+    ['Source', (r) => {
+      const u = String(r.source_url || '').match(/https?:\/\/[^\s|,;]+/);
+      return (u ? link(u[0], r.source_publisher || r.source_title || u[0]) : esc(r.source_publisher || r.source_title || 'Source') + sub('No URL in the sheet')) +
+        sub(nz(r.publication_date) ? 'Published ' + esc(r.publication_date) : 'Publication date not recorded');
+    }, 'cw-s'],
+    ];
 
   let dlg = null, dlgCtx = null, opener = null;
   function closeDlg() {
@@ -374,13 +402,15 @@
     try { [data] = await Promise.all([load(meta.id), ['deployments', 'humanoids'].includes(meta.id) ? relations() : null, meta.id === 'humanoids' ? load('deployments').catch(() => null) : null]); } catch { panel.innerHTML = '<p class="db-empty">This category could not be loaded. Reload the page to try again.</p>'; return; }
     if (state.current !== meta.id) return;
     const isDep = meta.id === 'deployments';
-    const cols = isDep ? DEP_COLS : data.fields.filter((f) => f !== 'list').slice(0, 4).map((f) => [label(f), (r) => fmt(r[f])]);
-    const preview = data.mode === 'preview' && data.previewRows !== 'all';
+    // Visitors: Deployments and Components list every entry at its public fields (24 Nov 2026); a counted-only tab none.
+    const summary = data.mode === 'preview' && Array.isArray(data.publicFields);
+    const cols = isDep ? (summary ? DEP_PUBLIC_COLS : DEP_COLS) : (summary ? data.publicFields.filter((f) => f !== 'list') : data.fields.filter((f) => f !== 'list')).slice(0, 4).map((f) => [label(f), (r) => fmt(r[f])]);
+    const preview = data.mode === 'preview' && data.previewRows === 'none';
     const locked = preview ? Math.max(0, data.total - data.rows.length) : 0;
     panel.innerHTML =
       `<div class="db-panel-head"><div><h2>${esc(meta.title)}</h2><p>${esc(meta.description || '')}</p>` +
-      `<p class="db-hint">${preview ? `Free preview: the first 10 sheet rows (${data.rows.length} entries) of ${data.total}.` : `${data.total} entries${data.mode === 'full' ? ', complete' : ''}.`} <b>View all data</b> opens every field of an entry (${data.fields.length} fields), in full.</p>` +
-      `<p class="lbl" id="db-count"></p></div><label class="db-search"><span class="lbl">Search ${preview ? 'the preview' : 'every field'}</span><br><input id="db-q" type="search" autocomplete="off" placeholder="Filter every field"></label></div>` +
+      `<p class="db-hint">${preview ? `Counted, not listed: ${data.total} entries come with the subscription.` : summary ? `Free: ${data.rows.length === data.total ? `all ${data.total}` : `${data.rows.length} of ${data.total}`} entries, each with its public fields. <b>View all data</b> shows them and names the fields that come with the subscription.` : `${data.total} entries${data.mode === 'full' ? ', complete' : ''}. <b>View all data</b> opens every field of an entry (${data.fields.length} fields), in full.`}</p>` +
+      `<p class="lbl" id="db-count"></p></div><label class="db-search"><span class="lbl">Search ${summary ? 'the public fields' : preview ? 'the free entries' : 'every field'}</span><br><input id="db-q" type="search" autocomplete="off" placeholder="Filter every field"></label></div>` +
       (isDep ? '<div class="db-status" id="db-status" role="group" aria-label="Filter by status"></div>' : '') +
       `<div class="db-scroll"><table class="db-table${isDep ? ' dep' : ''}"><thead><tr><th scope="col">#</th>${isDep ? '<th scope="col">Status</th>' : ''}<th scope="col">Record</th>` +
       cols.map((c) => `<th scope="col">${esc(c[0])}</th>`).join('') + '</tr></thead><tbody id="db-rows"></tbody></table></div>' +
@@ -389,9 +419,12 @@
     const body = $('db-rows'), ncol = cols.length + (isDep ? 3 : 2);
     let q = '', st = 'all', shown = data.rows;
     const more = $('db-more');
-    if (locked) {
+    if (locked || summary) {
       const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'Subscriptions open soon';
-      more.innerHTML = `<p><b>${locked} more ${locked === 1 ? 'entry</b> comes' : 'entries</b> come'} with the subscription (${esc(state.plan?.plan?.price || '€100 per year')}). ${cta}.</p>`;
+      const price = esc(state.plan?.plan?.price || 'US$100 per year');
+      more.innerHTML = summary
+        ? `<p><b>Every field</b> of these ${data.total} entries comes with the data subscription (${price}, billed annually). ${cta}.</p>`
+        : `<p><b>${locked} more ${locked === 1 ? 'entry</b> comes' : 'entries</b> come'} with the subscription (${price}). ${cta}.</p>`;
       more.hidden = false;
     }
     function render() {
@@ -454,7 +487,7 @@
     const rows = await relView(null);
     if (!rows) return;
     const c = rel.co.get(id);
-    if (!c) return panelError(rel.mode === 'full' ? 'No company with this id in the database.' : `This company is not among the 10 free preview records.${relLock()}`);
+    if (!c) return panelError(rel.mode === 'full' ? 'No company with this id in the database.' : `No public record names this company.${relLock()}`);
     if (c.id !== id) setHash(`company/${encodeURIComponent(c.id)}`, false);
     const recs = rel.byCompany.get(c.id) || [];
     const asMaker = recs.filter((r) => r.maker === c.id), asOrg = recs.filter((r) => r.operator === c.id);
@@ -473,7 +506,7 @@
       line.set(rr.robot, (line.get(rr.robot) ?? true) && rr.level === 'family');
     });
     const kv = [
-      ['Roles', roles || (rel.mode === 'full' ? 'No Deployments record names this company' : 'None in the 10 free preview records')],
+      ['Roles', roles || (rel.mode === 'full' ? 'No Deployments record names this company' : 'No public record names this company')],
       ['Identity', identity],
       ['Names as recorded', (c.names || []).map(esc).join('; ') || esc(c.name)],
       ['Countries as recorded', (c.countries || []).map(esc).join('; ') || '<span class="lbl">Not recorded</span>'],
@@ -495,7 +528,7 @@
     if (!data || state.current !== datasetId) return;
     const i = data.rows.findIndex((r) => String(r.id) === rowId);
     if (i < 0) {
-      notice(data.mode === 'full' ? 'That record is not in the current copy of the database.' : 'That record comes with the subscription. Subscribers can open it; the free preview shows the first 10 sheet rows.');
+      notice(data.mode === 'full' ? 'That record is not in the current copy of the database.' : 'That record is not public. Subscribers can open every record of Deployments and Components.');
       setHash(datasetId, false);
       return;
     }
@@ -542,7 +575,7 @@
     const input = $('gs-q');
     if (document.activeElement !== input) input.value = s.q;
     const panel = $('db-panel');
-    const freeNote = 'Free search covers every free category in full and the first 10 sheet rows of Deployments and Components.';
+    const freeNote = 'Free search covers every free category in full and the public fields of every Deployments case and Components product. Subscribers search every field.';
     if (!s.q.trim() && !s.tags.length && !s.category) {
       panel.innerHTML = `<div class="db-panel-head"><div><h2>Search the database</h2><p>Robots, companies, deployments, tasks, places and sectors across every category, with names, aliases and every field. Spanish words such as almacén, logística or EE. UU. work too.</p>` +
         `<p class="db-hint">${full() ? 'You search every row of every category.' : `${freeNote} <b>Subscribers search every row.</b>`}</p></div></div>` +

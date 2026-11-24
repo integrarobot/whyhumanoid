@@ -1,11 +1,12 @@
-// Components explorer (23 Nov 2026): the static HTML of /components/ and of every product address, built from the
-// public first rows (data/preview/hardware.json, data/preview/component-software.json), the coverage counts
+// Components explorer (23 Nov 2026; complete public listing since 24 Nov 2026): the static HTML of /components/ and of
+// every product address, built from the public summary of every product (data/preview/hardware.json and
+// component-software.json: the fields of server/src/access/fields.js), the coverage counts
 // (data/components/coverage.json) and the reviewed public makers (tools/components-makers.json). The product view
-// itself comes from assets/components-core.js, the same code the browser runs for subscribers, so a passport looks
-// the same whether it was built here or rendered from the API after the entitlement check.
+// comes from assets/components-core.js, the same code the browser runs for subscribers: public rows carry
+// _summary: true, so every paid field says "With the subscription" instead of pretending the source lacks it.
 //
-// Nothing beyond the public rows reaches these pages: subscriber-only products appear as counts and as addresses that
-// render only after sign-in (assets/components.js asks the API with the visitor's own session).
+// Nothing beyond the public fields reaches these pages: the full passports render only after sign-in
+// (assets/components.js asks the API with the visitor's own session, and the server checks the subscription).
 
 import { readFileSync } from 'node:fs';
 import { componentsCore } from './export-components.mjs';
@@ -22,8 +23,9 @@ export function componentsModel() {
   const index = read('data/preview/index.json').tabs;
   const coverage = read('data/components/coverage.json');
   const cfg = read('tools/components-makers.json');
-  const products = hw.rows;
-  const software = sw.rows;
+  // Public summaries: flagged so the shared renderer marks every absent paid field as such.
+  const products = hw.rows.map((r) => ({ ...r, _summary: true }));
+  const software = sw.rows.map((r) => ({ ...r, _summary: true }));
   const publicIds = new Set([...products, ...software].map((r) => r.component_id));
   for (const id of Object.keys(cfg.makers)) if (!publicIds.has(id)) throw new Error(`tools/components-makers.json names ${id}, which is not a public Components row`);
   for (const r of [...products, ...software]) if (!cfg.makers[r.component_id]?.length) throw new Error(`tools/components-makers.json has no reviewed maker for public product ${r.component_id} (${r.name})`);
@@ -65,7 +67,7 @@ function head(cm, c) {
 <div><dt>Source references</dt><dd>${n.references}</dd><small>entries, not all independent</small></div>
 </dl>
 <p class="cx-ev"><span class="ev ev-pending">Imported research · original-source review pending</span> Every record comes from one research compilation, imported on ${esc(fmtDay(cm.coverage.snapshot.exported_at))}. The import was checked; the individual claims were not independently verified. Values are shown as the sources state them, with their conditions.</p>
-<p class="cx-access" id="cx-access" data-public="${pub}" data-total="${n.products}"><b>${pub} of ${n.products}</b> product passports are public. The other ${n.products - pub}, search across all of them and comparisons with every product come with the subscription.</p>
+<p class="cx-access" id="cx-access" data-public="${pub}" data-total="${n.products}"><b>All ${n.products} products</b> are listed with a public summary: maker, country, year, status, sensing principle, what it measures and the main source. The full technical passports (resolution, force, rates, size and mass, interfaces and software, durability, prices and BOM estimates, papers, users, advantages and drawbacks, the source of every field), the technical filters and the full side-by-side comparison come with the subscription.</p>
 <nav class="views" aria-label="Components views"><a href="#approaches">Sensing approaches</a><a href="#catalogue">Catalogue</a><a href="#compare">Compare</a><a href="#software">Related software</a><a href="#method">Coverage and method</a></nav>
 </header>`;
 }
@@ -101,6 +103,8 @@ function approaches(cm, companyPath) {
 function catalogue(cm, companyPath) {
   const opt = (v, l) => `<option value="${esc(v)}">${esc(l)}</option>`;
   const sel = (id, label, all, opts) => `<label class="fsel"><span class="fl">${label}</span><select id="${id}" data-f="${id.slice(2)}"><option value="">${all}</option>${opts}</select></label>`;
+  // Technical filters read paid fields: they appear for subscribers, once the full rows have loaded.
+  const adv = (html) => html.replace('<label class="fsel">', '<label class="fsel adv" hidden>');
   const cards = cm.products.map((r) => W.cardHtml(r, makersHtml(cm, r.component_id, companyPath))).join('');
   const locked = cm.total - cm.products.length;
   return `<section class="atlas-sec" id="catalogue" aria-labelledby="cat-h">
@@ -111,9 +115,9 @@ function catalogue(cm, companyPath) {
 ${sel('f-class', 'Availability', 'Any availability', W.CLASS_ORDER.filter((k) => k !== 'software').map((k) => opt(k, W.CLASS_LABEL[k])).join(''))}
 ${sel('f-principle', 'Sensing approach', 'Any approach', W.PRINCIPLES.filter((p) => p.key !== 'simulation').map((p) => opt(p.key, p.label)).join(''))}
 ${sel('f-q2', 'Mentions', 'Any quantity', W.QUANTITIES.map((q) => opt(q.key, q.label)).join(''))}
-${sel('f-if', 'Interface', 'Any interface', W.INTERFACES.filter((i) => i.key !== 'library').map((i) => opt(i.key, i.label)).join(''))}
-${sel('f-ros', 'ROS', 'Any', Object.entries(W.ROS_LABEL).map(([k, l]) => opt(k, l)).join(''))}
-${sel('f-licence', 'Licence', 'Any licence', Object.entries(W.LICENCE_LABEL).map(([k, l]) => opt(k, l)).join(''))}
+${adv(sel('f-if', 'Interface', 'Any interface', W.INTERFACES.filter((i) => i.key !== 'library').map((i) => opt(i.key, i.label)).join('')))}
+${adv(sel('f-ros', 'ROS', 'Any', Object.entries(W.ROS_LABEL).map(([k, l]) => opt(k, l)).join('')))}
+${adv(sel('f-licence', 'Licence', 'Any licence', Object.entries(W.LICENCE_LABEL).map(([k, l]) => opt(k, l)).join('')))}
 <button type="button" class="clear-f" id="f-clear">Clear</button>
 </div>
 <p class="fstat" id="f-stat" role="status" aria-live="polite">${cm.products.length} public products${locked > 0 ? `; ${locked} more with the subscription` : ''}.</p>
@@ -204,10 +208,11 @@ export function renderProductPage(cm, r, companyPath) {
 <p class="lede">${esc(r.principle ?? 'Sensing principle not recorded')}</p>
 <p class="pc-m">${makersHtml(cm, r.component_id, companyPath)}</p>
 ${sw ? '<p class="cx-ev">Software, not a physical component: it is not counted in the Components products.</p>' : ''}
-<p class="cx-ev">${W.reviewBadge(r)} Values as the sources state them, with their conditions; see the sources at the end.</p>
+<p class="cx-ev pp-access">${W.reviewBadge(r)} Public summary: values as the sources state them; the full passport is with the subscription.</p>
 <nav class="views" aria-label="On this page">${W.SECTIONS.map((s) => `<a href="#sec-${s.key}">${esc(s.title)}</a>`).join('')}<a href="#sec-sources">Sources</a></nav>
 </header>
 ${W.passportHtml(r, { level: 2 }).replace(/<section class="pp-sec" data-sec="([a-z]+)">/g, '<section class="pp-sec" data-sec="$1" id="sec-$1">')}
+<aside class="pp-lockbox" aria-label="Full passport"><p><b>Public summary.</b> The full technical passport of ${esc(r.name)} (every specification with its conditions and units, interfaces and software, prices and BOM estimates with currency and date, papers, users, advantages and drawbacks, uncertainties and the source of every field) comes with the data subscription. Subscribers see it on this page after signing in.</p><p><a class="btn" href="/subscribe/">See the subscription</a> <a href="/app/">Sign in</a></p></aside>
 ${related.length ? `<section class="pp-sec"><h2>Related</h2><ul class="rel">${related.join('')}</ul></section>` : ''}
 <p class="pp-acts">${sw ? '' : `<a href="/components/?cmp=${esc(r.component_id)}#compare">Compare with other products</a> · `}<a href="/components/">All components</a></p>
 <p class="meta">Component ID ${esc(r.component_id)} · snapshot ${esc(fmtDay(cm.snapshot))}.</p>

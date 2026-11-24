@@ -28,6 +28,9 @@ import { renderAtlas } from './atlas-view.mjs';
 import { renderDataAtlas } from './data-atlas-view.mjs';
 import { componentsModel, renderComponentsCategory, renderLockedPage, renderProductPage } from './components-view.mjs';
 import { renderReportPage, renderReportsAtlas } from './reports-view.mjs';
+import { casePath, casesHtml, renderCasePage, renderDeploymentsCategory } from './deployments-view.mjs';
+import { offerHtml, offerLine } from './offer-view.mjs';
+import { publicCases } from '../server/src/public/cases.js';
 import { API_ORIGIN } from './build-app.mjs';
 import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
@@ -247,7 +250,29 @@ export function publicModel(registry = readRegistry()) {
   for (const r of otherRobots) r.label = nameCount.get(r.name.toLowerCase()) > 1 ? `${r.name} (${hostKey(r.url) ? (urlKey(r.url) ?? r.url) : `row ${r.row}`})` : r.name;
   const directory = (id) => ({ meta: tabMeta.get(id), rows: englishRows(id, read(`data/preview/${id}.json`).rows) });
 
-  return { robots, robotById, companies, companyById, otherRobots, directory, stocks, cm, makerPath, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal, depPreview: depPreview.rows, totals: projection.totals, aggregates: projection.aggregates, projSnapshot: projection.snapshot, previewSnapshot: read('data/preview/index.json').snapshot };
+  // ---- Deployment cases (24 Nov 2026): every case, from the public rows only, linked to robot and company pages through
+  // the public relations graph (record id -> catalogue robot, maker, organisation).
+  const graphByRecord = new Map(graph.records.map((g) => [g.record_id, g]));
+  const cases = publicCases(depPreview.rows);
+  const caseLinks = {
+    company: (id) => (id ? companyById.get(id)?.path ?? null : null),
+    robots: (c) => {
+      const seen = new Map();
+      for (const id of c.record_ids) {
+        const g = graphByRecord.get(id);
+        const rb = g && g.robot !== null && g.robot !== undefined ? robotById.get(g.robot) : null;
+        if (rb && !seen.has(rb.id)) seen.set(rb.id, { path: rb.path, name: `${rb.name} by ${rb.lab}`, family: g.level === 'family' });
+      }
+      return [...seen.values()];
+    },
+  };
+  for (const rb of robots) rb.cases = cases.filter((c) => c.record_ids.some((id) => graphByRecord.get(id)?.robot === rb.id));
+  for (const c of companies) {
+    const ids = new Set([c.id, ...(c.organization_ids || [])]);
+    c.cases = cases.filter((k) => k.record_ids.some((id) => { const g = graphByRecord.get(id); return g && (ids.has(g.operator) || ids.has(g.maker)); }));
+  }
+
+  return { cases, caseLinks, robots, robotById, companies, companyById, otherRobots, directory, stocks, cm, makerPath, snapshot: exported.snapshot, depSnapshot: depPreview.snapshot, depTotal, depPreview: depPreview.rows, totals: projection.totals, aggregates: projection.aggregates, projSnapshot: projection.snapshot, previewSnapshot: read('data/preview/index.json').snapshot };
 }
 
 // ---------- layout ----------
@@ -294,55 +319,17 @@ ${ANALYTICS}
 const kv = (pairs) => `<dl class="kv">${pairs.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join('')}</dl>`;
 const crumbs = (items) => `<nav class="crumbs" aria-label="Breadcrumb">${items.map(([href, label]) => (href ? `<a href="${href}">${esc(label)}</a>` : `<span aria-current="page">${esc(label)}</span>`)).join(' <span aria-hidden="true">/</span> ')}</nav>`;
 
-// The free preview records of a robot or company, grouped by deployment, as on the catalogue page.
-function recordsHtml(items, model, { showRobot = true, showOrg = true } = {}) {
-  const groups = new Map();
-  for (const r of items) { if (!groups.has(r.group)) groups.set(r.group, []); groups.get(r.group).push(r); }
-  return [...groups.values()].map((g) => {
-    const r = g[0];
-    const where = [r.site_name, [r.city, r.region, r.country].filter(nz).join(', ')].filter(nz).join(' · ');
-    const head = [];
-    if (showOrg) {
-      const c = r.operator ? model.companyById.get(r.operator) : null;
-      head.push(`<b>${c ? `<a href="${c.path}">${esc(r.organization_name || c.name)}</a>` : esc(r.organization_name || 'Organisation not recorded')}</b> <span class="dim">${esc((ROLE[r.organization_role] || human(r.organization_role || 'organisation')).toLowerCase())}</span>`);
-    }
-    if (showRobot) {
-      const rb = r.robot !== null ? model.robotById.get(r.robot) : null;
-      const recorded = [r.manufacturer, r.robot_model].filter(nz).join(' ') + (nz(r.robot_version) && !/^not disclosed$/i.test(r.robot_version) ? ` (version ${r.robot_version})` : '');
-      head.push(`<span class="dim">Robot as recorded:</span> ${esc(recorded || 'not recorded')}${rb ? ` → <a href="${rb.path}">${esc(rb.name)} by ${esc(rb.lab)}</a>` : ''}`);
-    }
-    const line = g.some((x) => x.level === 'family');
-    const claims = g.map((x) => {
-      const [k, l] = STATUS(x.operational_status);
-      const u = firstUrl(x.source_url);
-      const metric = nz(x.metric_name) ? `${human(x.metric_name)}: ${nz(x.metric_operator) && x.metric_operator !== '=' ? `${x.metric_operator} ` : ''}${x.metric_value ?? ''}${nz(x.metric_unit) ? ` ${human(x.metric_unit)}` : ''}${nz(x.metric_period) ? ` (${human(x.metric_period)})` : ''}` : '';
-      const facts = [
-        metric && esc(metric),
-        nz(x.evidence_level) ? `Evidence ${esc(x.evidence_level)}` : 'Evidence level not recorded',
-        nz(x.verification_status) ? esc(human(x.verification_status)) : '',
-        nz(x.observed_start) ? `Observed ${esc(x.observed_start)}${nz(x.observed_end) ? ` to ${esc(x.observed_end)}` : ''}` : '',
-        `${u ? ext(u, `${x.source_publisher || x.source_title || 'Source'} ↗`) : `${esc(x.source_publisher || x.source_title || 'Source')} (no URL)`}${nz(x.publication_date) ? `, published ${esc(x.publication_date)}` : ', publication date not recorded'}`,
-      ].filter(Boolean);
-      return `<li><span class="st ${k}">${l}</span> ${esc(x.task_description || human(x.task_category || 'Task not described'))}<p class="facts">${facts.join(' · ')}</p></li>`;
-    }).join('');
-    return `<article class="dep"><header>${head.map((h) => `<p>${h}</p>`).join('')}${where ? `<p class="where">${esc(where)}</p>` : ''}${line ? '<p class="note">The record names the same model line, not necessarily the version described here.</p>' : ''}</header><ul>${claims}</ul></article>`;
-  }).join('');
-}
-const STATUS_KEY = '<p class="key">Status as recorded: In operation · Pilot or trial · Announced (planned or agreed, not evidence of work) · Unconfirmed (claimed by a vendor or unresolved).</p>';
-const price = () => PLAN.display || '€100 per year';
+const price = () => PLAN.display;
 // Records are claims from named sources with a status as recorded; the page says so wherever it counts them.
-const RECORDS_NOTE = '<p class="key">Each deployment record is a claim from a named source, with its status as recorded: In operation, Pilot or trial, Announced (planned or agreed, not evidence of work) or Unconfirmed (claimed by a vendor or unresolved). Counting records is not independent verification. Sites, tasks, metrics, claim texts, verification and sources are with the Deployments subscription.</p>';
+const RECORDS_NOTE = '<p class="key">Each deployment record is a claim from a named source, with its status as recorded: In operation, Pilot or trial, Announced (planned or agreed, not evidence of work) or Unconfirmed (claimed by a vendor or unresolved). Counting records is not independent verification. Every case is listed below with its public summary and sources; sites, task descriptions, timelines, metrics, claims and evidence relations come with the data subscription.</p>';
 const statusText = (st) => STATUS_KEYS_ORDER.filter((k) => st[k]).map((k) => `${st[k]} ${STATUS_LABEL[k].toLowerCase()}`).join(', ');
 const STATUS_KEYS_ORDER = ['op', 'pilot', 'ann', 'unc'];
 const yearsText = (y) => (y ? (y[0] === y[1] ? String(y[0]) : `${y[0]} to ${y[1]}`) : 'not recorded');
 // One selected record per robot and company (approved split, phase 2), with the fields the projection allows.
 function evidenceHtml(e) {
   if (!e) return '';
-  const where = [e.site_name, [e.city, e.region, e.country].filter(nz).join(', ')].filter(nz).join(' · ');
-  const metric = nz(e.metric_name) ? `${human(e.metric_name)}: ${nz(e.metric_operator) && e.metric_operator !== '=' ? `${e.metric_operator} ` : ''}${e.metric_value ?? ''}${nz(e.metric_unit) ? ` ${human(e.metric_unit)}` : ''}${nz(e.metric_period) ? ` (${e.metric_period})` : ''}` : '';
-  const facts = [metric && esc(metric), nz(e.evidence_level) ? `Evidence level ${esc(e.evidence_level)}` : '', nz(e.verification_status) ? esc(human(e.verification_status)) : '',
-    nz(e.observed_start) ? `Observed ${esc(e.observed_start)}` : '', `${ext(e.source_url, `${e.source_publisher || 'Source'} ↗`)}${nz(e.publication_date) ? `, published ${esc(e.publication_date)}` : ''}`].filter(Boolean);
-  return `<section><h2>Selected evidence</h2><article class="dep"><header><p><b>${esc(e.organization_name || 'Organisation not recorded')}</b> <span class="dim">· robot as recorded: ${esc(e.robot_recorded || 'not recorded')}</span></p>${where ? `<p class="where">${esc(where)}</p>` : ''}</header><ul><li><span class="st ${e.status}">${STATUS_LABEL[e.status]}</span> ${esc(e.task_description || 'Task not described')}<p class="facts">${facts.join(' · ')}</p></li></ul></article>
+  const facts = [nz(e.verification_status) ? esc(human(e.verification_status)) : '', `${ext(e.source_url, `${e.source_publisher || 'Source'} ↗`)}${nz(e.publication_date) ? `, published ${esc(e.publication_date)}` : ''}`].filter(Boolean);
+  return `<section><h2>Selected evidence</h2><article class="dep"><header><p><b>${esc(e.organization_name || 'Organisation not recorded')}</b> <span class="dim">· robot as recorded: ${esc(e.robot_recorded || 'not recorded')}${nz(e.country) ? ` · ${esc(e.country)}` : ''}</span></p></header><ul><li><span class="st ${e.status}">${STATUS_LABEL[e.status]}</span><p class="facts">${facts.join(' · ')}</p></li></ul></article>
 <p class="key">One record chosen by a fixed rule (<a href="/method/">method</a>): the most advanced status as recorded, then a primary source, then customer confirmation, then the latest publication. It is one claim as recorded, not verification.</p></section>`;
 }
 
@@ -356,12 +343,6 @@ function summaryHtml(sum, model, { head, otherLabel }) {
   }).join('');
   return `<p>${head} Status as recorded: ${esc(statusText(sum.status))}. Sectors: ${esc(sum.sectors.map(human).join(', ') || 'not recorded')}. Deployment countries: ${esc(sum.site_countries.join(', ') || 'not recorded')}. Years: ${esc(yearsText(sum.years))}.</p>
 <div class="scroll"><table><thead><tr><th scope="col">${esc(otherLabel)}</th><th scope="col">Robot as recorded</th><th scope="col">Records</th><th scope="col">Status as recorded</th><th scope="col">Years</th></tr></thead><tbody>${rows}</tbody></table></div>`;
-}
-function previewNote(model, n, what) {
-  const total = model.depTotal ? `the first 10 of ${model.depTotal} Deployments records` : 'the first 10 Deployments records';
-  return n
-    ? `<p>${n} of the 10 free preview records (${total}) ${n === 1 ? 'names' : 'name'} ${what}.</p>`
-    : `<p>None of the 10 free preview records (${total}) names ${what}. That is not evidence that there are no deployments.</p>`;
 }
 
 // ---------- robot page ----------
@@ -417,12 +398,12 @@ ${known(r['Buyer checks']) ? `<p class="note"><b>Before comparing:</b> ${text(r[
 <section><h2>Company</h2>${kv([['Maker', m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab)], ...COMPANY_FIELDS.map(([l, f]) => [l, text(r[f])])])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
 <section><h2>Deployment records</h2>${rb.summary ? summaryHtml(rb.summary, model, { head: `${rb.summary.records} deployment record${rb.summary.records === 1 ? '' : 's'} in the database ${rb.summary.records === 1 ? 'names' : 'name'} ${rb.summary.model_line_only ? 'the model line of this robot, not necessarily this version' : 'this robot or its model line'}.`, otherLabel: 'Organisation' }) + RECORDS_NOTE : '<p>No deployment record in the database names this robot or its model line. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that the robot has no deployments.</p>'}</section>
 ${evidenceHtml(rb.summary?.evidence)}
-<section><h2>Free preview records</h2>${previewNote(model, rb.records.length, 'this robot or its model line')}${recordsHtml(rb.records, model, { showRobot: false })}${rb.records.length ? STATUS_KEY : ''}
-<p class="cta"><a href="${APP}#robot/${rb.id}">Every Deployments record for this robot in full, with sites, tasks, claims, verification and sources, comes with the subscription (${esc(price())}) →</a></p></section>
+${casesHtml(rb.cases, model.caseLinks, { heading: 'Deployment cases that name this robot' })}
+${rb.cases.length ? `<p class="cta"><a href="${APP}#robot/${rb.id}">The detail of every case (sites, task descriptions, timelines, metrics, claims and evidence) comes with the data subscription, ${esc(price())} →</a></p>` : ''}
 <section><h2>Sources and checks</h2>${kv([['Last checked', text(chk.date)], ['Checks recorded', chk.statements.length ? esc(chk.statements.join('; ')) : '<span class="na">Not recorded</span>'], ['Model identity', text(r['Model checked'])]])}${sources ? `<ul class="sources">${sources}</ul>` : '<p class="na">No linked sources.</p>'}</section>
 <p class="meta">Values as recorded in row ${r.sheet_row} of the Humanoids tab, free catalogue snapshot ${esc(model.snapshot)}. Also on the <a href="/#${esc(rb.slug)}">catalogue page</a>.</p>
 </article>`;
-  return page({ title: `${rb.name} by ${rb.lab}: specifications and sources · Why Humanoid?`, description: clip(`${summary} Specifications, sources and deployment preview.`), path: rb.path, body, type: 'article', section: 'humanoids' });
+  return page({ title: `${rb.name} by ${rb.lab}: specifications and sources · Why Humanoid?`, description: clip(`${summary} Specifications, sources and deployment cases.`), path: rb.path, body, type: 'article', section: 'humanoids' });
 }
 
 // ---------- company page ----------
@@ -471,7 +452,6 @@ function companyPage(c, model) {
     ...(c.listings || []).flatMap((l) => [l.source, ...String(l.etf_sources ?? '').split(/[\s|,;]+/)].filter((u) => /^https?:\/\//.test(u ?? ''))),
   ])];
   const roles = Object.entries(c.roles || {}).map(([k, n]) => `${ROLE[k] || human(k)} (${n} record${n === 1 ? '' : 's'})`);
-  const preview = c.asOrg.length + c.asMaker.length;
   const body = `${crumbs([['/', 'Why Humanoid?'], ['/companies/', 'Companies'], [null, c.name]])}
 <article class="entity">
 <p class="kicker">Company${c.robotList.length ? ' · humanoid robot maker' : ''}${c.listings?.length ? ' · listed' : ''}${c.integrator ? ' · integrator' : ''}${c.components?.length ? ' · components' : ''}</p>
@@ -497,13 +477,10 @@ ${c.integrator ? `<section><h2>Integrator</h2>${kv([['Description as recorded', 
 ${c.robotList.length ? `<section><h2>Robots</h2><ul class="cards">${c.robotList.map((rb) => `<li><a href="${rb.path}"><b>${esc(rb.name)}</b></a><span>${esc(robotSummary(rb))}</span></li>`).join('')}</ul></section>` : ''}
 <section><h2>Deployment records</h2>${c.directoryOnly ? '<p>No deployment record is linked to this company page. Records are linked to a company by the organisation id of the sheet or by the maker\'s name as recorded, so a record that names it differently is not linked here.</p>' : c.as_organisation || c.as_maker ? `${c.as_organisation ? summaryHtml(c.as_organisation, model, { head: `As organisation: ${c.as_organisation.records} record${c.as_organisation.records === 1 ? '' : 's'}.`, otherLabel: 'Maker' }) : ''}${c.as_maker ? summaryHtml(c.as_maker, model, { head: `As maker: ${c.as_maker.records} record${c.as_maker.records === 1 ? '' : 's'}.`, otherLabel: 'Organisation' }) : ''}${RECORDS_NOTE}` : '<p>No deployment record in the database names this company. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that it has none.</p>'}</section>
 ${evidenceHtml(c.evidence)}
-${preview ? `<section><h2>Free preview records</h2>${previewNote(model, preview, 'this company')}
-${c.asMaker.length ? `<h3>As maker</h3>${recordsHtml(c.asMaker, model, { showRobot: true, showOrg: true })}` : ''}
-${c.asOrg.length ? `<h3>As organisation</h3>${recordsHtml(c.asOrg, model, { showRobot: true, showOrg: false })}` : ''}
-${STATUS_KEY}</section>` : ''}
-${c.as_organisation || c.as_maker ? `<p class="cta"><a href="${APP}#company/${encodeURIComponent(c.id)}">Every Deployments record that names this company in full, with sites, tasks, claims, verification and sources, comes with the subscription (${esc(price())}) →</a></p>` : ''}
-<section><h2>Sources</h2>${sources.length ? `<ul class="sources">${sources.map((u) => `<li>${ext(u, u)}</li>`).join('')}</ul>` : ''}${c.as_organisation || c.as_maker ? '<p class="na">The source of each deployment record is with the Deployments subscription.</p>' : sources.length ? '' : '<p class="na">No linked sources.</p>'}</section>
-<p class="meta">Only what the public data say: the free Humanoids catalogue (snapshot ${esc(model.snapshot)}), counts and summaries of every deployment record (snapshot ${esc(model.projSnapshot)}), the free previews of Deployments and Entities and the free Investment and Integrators categories. No corporate data is added.</p>
+${casesHtml(c.cases ?? [], model.caseLinks, { heading: 'Deployment cases that name this company' })}
+${c.cases?.length ? `<p class="cta"><a href="${APP}#company/${encodeURIComponent(c.id)}">The detail of every case (sites, task descriptions, timelines, metrics, claims and evidence) comes with the data subscription, ${esc(price())} →</a></p>` : ''}
+<section><h2>Sources</h2>${sources.length ? `<ul class="sources">${sources.map((u) => `<li>${ext(u, u)}</li>`).join('')}</ul>` : '<p class="na">No linked sources.</p>'}</section>
+<p class="meta">Only what the public data say: the free Humanoids catalogue (snapshot ${esc(model.snapshot)}), the public summary of every deployment case (snapshot ${esc(model.projSnapshot)}), the public identity register and the free Investment and Integrators categories. No corporate data is added.</p>
 </article>`;
   return page({ title: `${c.name}: ${c.robotList.length ? 'humanoid robots, facts and sources' : c.directoryOnly ? 'company facts and sources' : 'humanoid robot deployment records'} · Why Humanoid?`, description: clip(`${summary} Public facts and sources.`), path: c.path, body, type: 'article' });
 }
@@ -521,7 +498,7 @@ function redirectPage(to, label) {
   return page({ title: `Moved: ${label} · Why Humanoid?`, description: `The page for ${label} has moved.`, path: to, body, noindex: true, refresh: to });
 }
 function gonePage(path, kind) {
-  const index = kind === 'robot' ? ['/humanoids/', 'humanoid robots'] : kind === 'other robot' ? ['/other-robots/', 'other robots'] : kind === 'report' ? ['/reports/', 'reports'] : ['/companies/', 'companies'];
+  const index = kind === 'robot' ? ['/humanoids/', 'humanoid robots'] : kind === 'other robot' ? ['/other-robots/', 'other robots'] : kind === 'report' ? ['/reports/', 'reports'] : kind === 'deployment case' ? ['/deployments/', 'deployment cases'] : ['/companies/', 'companies'];
   const body = `<h1>No longer in the public catalogue</h1><p class="lede">This ${kind} page is no longer published. See all <a href="${index[0]}">${index[1]}</a>.</p>`;
   return page({ title: `Not in the public catalogue · Why Humanoid?`, description: `This ${kind} is no longer in the public catalogue.`, path, body, noindex: true });
 }
@@ -542,11 +519,11 @@ function notFound() {
 // Deployments and Components show their public preview and say what the subscription adds. Gaps in the master
 // workbook are stated, never filled.
 const accessBadge = (c) => (c.access === 'subscription' ? '<span class="badge sub">Subscription</span>' : '<span class="badge">Free</span>');
-const subscriptionCta = (what) => `<p class="cta"><a href="/subscribe/">${esc(what)} comes with the ${esc(SUBSCRIPTION.name)} subscription, ${esc(price())}${LIVE_SALES_OPEN ? '' : ' (new subscriptions opening soon)'} →</a></p>`;
+const subscriptionCta = (what) => `<p class="cta"><a href="/subscribe/">${esc(what)} comes with the data subscription, ${esc(price())} billed annually${LIVE_SALES_OPEN ? '' : ' (new subscriptions open soon)'} →</a></p>`;
 function serviceHtml(id) {
   const sv = SERVICES.find((x) => x.id === id);
   if (!sv) return '';
-  return `<aside class="service" aria-label="Service"><p class="kicker">Service · proposal</p><h3>${esc(sv.name)}</h3><p>${esc(sv.summary)}</p><p class="key">${esc(sv.price)}, sold separately, not included in the subscription. Not available to order yet.</p></aside>`;
+  return `<aside class="service" id="report-${esc(sv.id)}" aria-label="Custom company report"><p class="kicker">Custom company report · not available to order yet</p><h3>${esc(sv.name)}</h3><p>${esc(sv.summary)}</p><p class="key">${esc(sv.price)} per report, separate from the data subscription and with no subscription needed. Not available to order yet: its scope and how it works are still being defined.</p></aside>`;
 }
 function categoryHead(c, model, extra = '') {
   return `${crumbs([['/', 'Why Humanoid?'], [null, c.label]])}
@@ -573,19 +550,33 @@ function humanoidsCategory(model) {
   return catPage(c, model, body, `All ${model.robots.length} humanoid robots in the free Why Humanoid? catalogue, each with specifications, maker, funding, sources and a deployment summary.`);
 }
 
+// Deployments (Javier, 24 Nov 2026): every case public with its summary, filters and adoption views
+// (tools/deployments-view.mjs); the detail of each case with the data subscription.
+const deploymentsHead = () => `<link rel="stylesheet" href="/assets/deployments.css?v=${assetVersion('assets/deployments.css')}">\n`;
+const deploymentsTail = () => `\n<script src="/assets/deployments.js?v=${assetVersion('assets/deployments.js')}" defer></script>`;
 function deploymentsCategory(model) {
   const c = CATEGORIES_BY_ID.get('deployments');
-  const a = model.aggregates;
-  const groups = [...new Set(model.depPreview.map((r) => r.deployment_id ?? r.record_id))];
-  const preview = model.depPreview.map((row) => ({ ...row, row: row._row, group: groups.indexOf(row.deployment_id ?? row.record_id), robot: null, level: null, maker: null, operator: null, role: null }));
-  const body = `${categoryHead(c, model)}
-<p>The database holds ${model.totals.records} deployment records about ${model.totals.deployments} deployments: ${a.by_status.op} recorded as in operation, ${a.by_status.pilot} as pilots or trials, ${a.by_status.ann} as announced and ${a.by_status.unc} unconfirmed. Each record is a claim from a named source, with its status as recorded; counting records is not independent verification.</p>
-<section><h2>What is free</h2><p>Counts and summaries of every record on each <a href="/humanoids/">robot</a> and <a href="/companies/">company</a> page (organisation, robot as recorded, country, sector, status and year), one selected record per robot and company, the <a href="/reports/deployment-records/">deployment records report</a> and the first 10 records below.</p></section>
-<section><h2>First 10 records</h2>${recordsHtml(preview, model)}${STATUS_KEY}</section>
-<section><h2>With the subscription</h2><p>All ${model.depTotal ?? model.totals.records} records in full: site and city, task and workflow, integration dependencies, metrics, claim text, evidence level, verification, sources and dates, open questions; search with tags; relations between robots, companies and records.</p>${subscriptionCta('Every Deployments record in full')}</section>
-${serviceHtml(c.service)}
-<p class="meta">Summaries: snapshot ${esc(model.projSnapshot)}. Preview records: snapshot ${esc(model.depSnapshot)}.</p>`;
-  return catPage(c, model, body, `${model.totals.records} humanoid robot deployment records: who is testing or using humanoid robots, where and for which task, with status and source. Summaries free; records in full with the subscription.`);
+  const body = renderDeploymentsCategory({
+    cases: model.cases, records: model.depPreview.length, links: model.caseLinks, snapshot: model.depSnapshot,
+    head: categoryHead(c, model), offer: offerHtml({ heading: 'Go further with Deployments', id: 'offer' }),
+  });
+  return catPage(c, model, `${body}\n${serviceHtml(c.service)}`, `All ${model.cases.length} humanoid robot deployment cases, free: who is testing or using humanoid robots, which robot, sector, country, task, status as recorded and sources. The detail of each case with the data subscription, US$100 per year.`, {
+    title: 'Deployments: every humanoid robot deployment case, with status and sources · Why Humanoid?', head: deploymentsHead(), tail: deploymentsTail(),
+  });
+}
+function casePages(model) {
+  const out = new Map();
+  for (const k of model.cases) {
+    const name = `${k.organisations.map((o) => o.name).filter(Boolean).join(' and ') || 'Deployment case'}`;
+    const body = `${crumbs([['/', 'Why Humanoid?'], ['/deployments/', 'Deployments'], [null, name]])}
+<article class="entity">
+${renderCasePage(k, model.caseLinks)}
+${offerLine()}
+<p class="meta">Public summary of ${k.records} Deployments record${k.records === 1 ? '' : 's'}, snapshot ${esc(String(model.depSnapshot).slice(0, 10))}. <a href="/deployments/">All cases</a>.</p>
+</article>`;
+    out.set(`${casePath(k).slice(1)}index.html`, page({ title: `${name}: humanoid robot deployment case · Why Humanoid?`, description: clip(`${name} and ${k.robots.map((r) => [r.manufacturer, r.model].filter(Boolean).join(' ')).join('; ') || 'a robot'}: ${k.status.detail}, ${k.sectors.join(', ').replace(/_/g, ' ')}, ${k.countries.join(', ')}. Public summary with sources.`), path: casePath(k), body, type: 'article', section: 'deployments', head: deploymentsHead() }));
+  }
+  return out;
 }
 
 // Components explorer (Javier, 23 Nov 2026): the public first product rows, coverage counts for every row, and the
@@ -596,17 +587,17 @@ function componentsCategory(model) {
   const companyPath = (name) => model.makerPath.get(name)?.path ?? null;
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, c.label]])}
 <article class="entity atlas-page">
-${renderComponentsCategory(cm, { index: CATEGORIES.indexOf(c) + 1, total: CATEGORIES.length, badge: accessBadge(c) }, companyPath, API_ORIGIN)}
-<section class="atlas-sec"><h2>With the subscription</h2><p>All ${cm.total} product passports with every field, search across them, comparisons between any of them, and the same view in the subscriber app.</p>${subscriptionCta('Complete Components')}</section>
+${renderComponentsCategory(cm, { index: CATEGORIES.indexOf(c) + 1, total: CATEGORIES.length, badge: accessBadge(c) }, companyPath, API_ORIGIN).replace('</header>', `</header>\n${offerHtml({ heading: 'Go further with Components', id: 'offer' })}`)}
+<section class="atlas-sec"><h2>With the subscription</h2><p>The full technical passport of all ${cm.total} products with every field and its source, technical filters, the full side-by-side comparison, and the same view in the subscriber app.</p>${subscriptionCta('Complete Components')}</section>
 ${serviceHtml(c.service)}`;
-  return catPage(c, model, body, `Components: the building blocks of embodied intelligence. ${cm.total} tactile sensing products and related software, with sensing approach, specifications, availability and sources; ${cm.products.length} passports public, all with the subscription.`, {
+  return catPage(c, model, body, `Components: the building blocks of embodied intelligence. All ${cm.total} tactile sensing products and related software listed free with maker, status, sensing approach, what they measure and main source; full technical passports with the data subscription.`, {
     title: 'Components: the building blocks of embodied intelligence · Why Humanoid?',
     head: componentsHead(),
     tail: componentsTail(),
     wide: true,
   });
 }
-const componentsHead = () => `<link rel="stylesheet" href="/assets/atlas.css?v=${assetVersion('assets/atlas.css')}">\n<link rel="stylesheet" href="/assets/components.css?v=${assetVersion('assets/components.css')}">\n`;
+const componentsHead = () => `<link rel="stylesheet" href="/assets/atlas.css?v=${assetVersion('assets/atlas.css')}">\n<link rel="stylesheet" href="/assets/components.css?v=${assetVersion('assets/components.css')}">\n${deploymentsHead()}`;
 const componentsTail = () => `\n<script src="/assets/components-core.js?v=${assetVersion('assets/components-core.js')}" defer></script>\n<script src="/assets/components.js?v=${assetVersion('assets/components.js')}" defer></script>`;
 function componentPages(model) {
   const cm = model.cm;
@@ -750,22 +741,27 @@ ${renderReportPage(REPORTS_ATLAS, r)}
 }
 
 function subscribePage(model) {
-  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Subscription']])}
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Subscription and reports']])}
 <article class="entity">
-<p class="kicker">Subscription</p>
-<h1>${esc(SUBSCRIPTION.name)}</h1>
-<p class="lede">One subscription, ${esc(price())}, unlocks complete <a href="/deployments/">Deployments</a> and complete <a href="/components/">Components</a>. Humanoids and every other category are free.</p>
-<section><h2>What it includes</h2>${kv([
-    ['Deployments', `All ${model.depTotal ?? model.totals.records} records in full: site, task, metrics, claim text, evidence level, verification, sources and notes; relations between robots, companies and records.`],
-    ['Components', `The complete Components category, every entry and field.`],
-    ['Search and agents', 'Search with tags and agent API keys over the subscription categories.'],
-  ])}</section>
-<section><h2>Free for everyone</h2><p>${CATEGORIES.filter((c) => c.access === 'free').map((c) => `<a href="${c.path}">${esc(c.label)}</a>`).join(', ')}; a page for every robot and company; deployment summaries and the first 10 records of Deployments and Components.</p></section>
-<section><h2>Services, sold separately</h2>${SERVICES.map((s) => serviceHtml(s.id)).join('')}</section>
-${LIVE_SALES_OPEN ? '<p class="cta"><a href="/app/#subscribe">Sign in and subscribe →</a></p>' : '<section><h2>Availability</h2><p>New subscriptions to this offer open once its purchase terms and tax presentation are final. Existing subscribers keep full access to Deployments and Components and manage their subscription in the <a href="/app/">subscriber app</a>.</p></section>'}
-<p class="meta">Yearly, no free trial; cancel at the end of the paid year in the billing portal.</p>
+<p class="kicker">Two ways to go further</p>
+<h1>Data subscription and custom company reports</h1>
+<p class="lede">Every category is free to browse, including every Deployments case and every Components product with its public summary. Two separate paths go further: the data, to decide for yourself, or a report where we apply our judgement to your company.</p>
+${offerHtml({ heading: 'Choose a path', id: 'offer' })}
+<section id="data"><h2>Full data access</h2>${kv([
+    ['Price', `${esc(price())}, billed annually. No free trial.`],
+    ['Deployments', `Every one of the ${model.cases.length} cases in detail: site, city, region and environment; commercial relationship where documented; the full task description and workflow; integration dependencies; the detailed timeline and every source claim; metrics with operator, value, unit, period and conditions; claim and evidence relations; confidence and review notes; discrepancies and open questions.`],
+    ['Components', `The full technical passport of all ${model.cm.total} products: measured quantities, taxels or pixels and resolution, force range and resolution, internal and output rates, size, mass and surface, interface, SDK and ROS, durability, documented users, prices with configuration, currency, date and source, separate BOM estimates, licence, repository, design and paper detail, advantages, drawbacks and uncertainties, and the source of every field; full side-by-side comparison and technical filters.`],
+    ['Search and agents', 'Detailed search across both categories, and the existing API keys for agents over them.'],
+    ['What it is not', 'Access to research and data. It does not include a personalised recommendation, and missing information stays missing.'],
+    ['Renewal and cancellation', 'Renews each year at the price of your subscription until you cancel; cancel at any time in the billing portal and keep access until the end of the paid year. Existing subscriptions keep their contract, currency and renewal price.'],
+  ])}
+${LIVE_SALES_OPEN ? '<p class="cta"><a href="/app/#subscribe">Sign in and subscribe →</a></p>' : '<p class="note"><b>New subscriptions open soon.</b> The new format is being published and checked before new payments open. Existing subscribers keep full access and manage their subscription in the <a href="/app/">subscriber app</a>.</p>'}</section>
+<section id="reports"><h2>Custom company reports</h2><p>A report is written for one company: Integrarobot provides the analysis and judgement, using the research behind Why Humanoid?. Each costs US$1,000, is separate from the data subscription and needs no subscription.</p>
+${SERVICES.map((sv) => serviceHtml(sv.id)).join('')}
+<p class="note"><b>Not available to order yet.</b> Their scope, how they work and how they are delivered are still being defined. There is no order form and nothing can be paid for them on this site.</p></section>
+<section><h2>Free for everyone</h2><p>${CATEGORIES.filter((c) => c.access === 'free').map((c) => `<a href="${c.path}">${esc(c.label)}</a>`).join(', ')} in full; every <a href="/deployments/">Deployments case</a> and every <a href="/components/">Components product</a> with its public summary and sources; a page for every robot, company, case and product.</p></section>
 </article>`;
-  return page({ title: `Subscription: Deployments and Components · Why Humanoid?`, description: `One subscription, ${price()}, unlocks complete Deployments and Components. Humanoids and every other category are free.`, path: '/subscribe/', body });
+  return page({ title: 'Data subscription and custom company reports · Why Humanoid?', description: `Two paths: full data access to Deployments and Components, ${price()} billed annually; or custom company reports, US$1,000 each, not available to order yet.`, path: '/subscribe/', body });
 }
 
 // ---------- method and report (approved split, phase 2) ----------
@@ -805,15 +801,15 @@ ${kv([['In operation', 'The source says the robot is working in operation.'], ['
 <section><h2>Updates</h2><p>The database is updated every week from the Integrarobot newsletter, checked against primary sources. Each page shows the snapshot date of its data.</p></section>
 <section><h2>Visits</h2><p>The public pages count visits with Cloudflare Web Analytics, which sets no cookies and does not track individual visitors.</p></section>
 <section><h2>What is public and what is for subscribers</h2>${kv([
-    ['Public', `Humanoids and every category except Deployments and Components, in full: ${CATEGORIES.filter((c) => c.access === 'free').map((c) => c.label).join(', ')}; a page for every robot, company and other robot; counts and summaries of deployment records (organisation, robot as recorded, country, sector, status and year); one selected record per robot and company; the first 10 rows of Deployments and Components; this report and method.`],
-    ['Subscription', `Complete Deployments and complete Components (${esc(SUBSCRIPTION.name)}). Every deployment record in full: site, task, metrics, claim text, verification, evidence level, sources and notes; search with tags over every category; relations between robots, companies and records (${esc(price())}).`],
+    ['Public', `${CATEGORIES.filter((c) => c.access === 'free').map((c) => c.label).join(', ')} in full; every Deployments case with its public summary (organisation and role, robot as recorded, sector, country, task category, latest status as recorded, who reports it, and its sources with dates); every Components product with its public summary (maker or laboratory, country, family, year, status, sensing principle, what it measures, main source and review state, and the licence and repository of open hardware); a page for every robot, company, case, product and other robot; this report and method.`],
+    ['Data subscription', `Complete Deployments and complete Components, ${esc(price())} billed annually: each case's site, commercial relationship, task description, workflow, integration, timeline, every claim, metrics, evidence relations, confidence, review notes and open questions; each product's full technical passport with the source of every field; detailed search and comparisons. Research and data, not a personalised recommendation.`],
   ])}<p>Public counts never reveal a single record: the report groups anything under ${model.aggregates.min_cell} records.</p></section>
 </article>`;
   return page({ title: 'Method and sources · Why Humanoid?', description: 'How Why Humanoid? records humanoid robots and deployment records: statuses as recorded, verification labels, links between robots and companies, updates and public data.', path: '/method/', body, type: 'article' });
 }
 
 export function sitemapUrls(model) {
-  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`)];
+  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
 }
 function sitemap(model) {
   const lastmod = String(model.snapshot).slice(0, 10);
@@ -842,6 +838,7 @@ export function buildPages(registry = readRegistry()) {
   // The ten categories, in the confirmed order (access matrix, 23 Nov 2026).
   files.set('humanoids/index.html', humanoidsCategory(model));
   files.set('deployments/index.html', deploymentsCategory(model));
+  for (const [f, html] of casePages(model)) files.set(f, html);
   files.set('components/index.html', componentsCategory(model));
   for (const [f, html] of componentPages(model)) files.set(f, html);
   files.set('integrators/index.html', directoryCategory('integrators', 'integrators', model, { companyLinks: true, intro: 'Each integrator has a company page. ' }));
@@ -866,7 +863,9 @@ export function buildPages(registry = readRegistry()) {
   const nextReports = {};
   for (const [id, slugs] of Object.entries(registry.reports ?? {})) nextReports[id] = [...slugs];
   for (const r of REPORTS) { (nextReports[r.page_id] ??= []).includes(r.slug) || nextReports[r.page_id].push(r.slug); }
-  const next = { note: 'Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects. Robots are served at /humanoids/<slug>/ since 23 Nov 2026; every robot slug also answers at /robots/<slug>/ with a redirect.', robots: {}, companies: {}, other_robots: {}, reports: nextReports };
+  const next = { note: 'Every public page address ever published (tools/build-pages.mjs). Append-only: retired slugs become redirects. Robots are served at /humanoids/<slug>/ since 23 Nov 2026; every robot slug also answers at /robots/<slug>/ with a redirect. Deployment cases (/deployments/<slug>/, since 24 Nov 2026) are keyed by the deployment id of the Deployments tab.', robots: {}, companies: {}, other_robots: {}, reports: nextReports, deployments: {} };
+  for (const [id, slugs] of Object.entries(registry.deployments ?? {})) next.deployments[id] = [...slugs];
+  for (const k of model.cases) { (next.deployments[k.id] ??= []).includes(k.slug) || next.deployments[k.id].push(k.slug); }
   for (const [id, slugs] of Object.entries(registry.robots ?? {})) next.robots[id] = [...slugs];
   for (const [id, v] of Object.entries(registry.companies ?? {})) next.companies[id] = { slugs: [...v.slugs], robots: [...(v.robots ?? [])], organization_ids: [...(v.organization_ids ?? [])] };
   for (const [key, slugs] of Object.entries(registry.other_robots ?? {})) next.other_robots[key] = [...slugs];
@@ -896,6 +895,9 @@ export function buildPages(registry = readRegistry()) {
     c ??= model.companies.find((x) => (x.robots || []).some((r) => v.robots.includes(r)) || (x.organization_ids || []).some((o) => v.organization_ids.includes(o)));
     for (const s of v.slugs) {
       if (c && c.slug === s) continue;
+      // A listed or directory company that the deployment records now name joins that company: its address still
+      // serves the same company, so it is kept as the current page, not retired (24 Nov 2026).
+      if (!c && files.has(`companies/${s}/index.html`) && /^(lst|int|cmp)_/.test(id)) continue;
       add(`companies/${s}/index.html`, c ? redirectPage(c.path, c.name) : gonePage(`/companies/${s}/`, 'company'));
     }
   }
@@ -905,6 +907,15 @@ export function buildPages(registry = readRegistry()) {
     for (const s of slugs) {
       if (r && r.slug === s) continue;
       add(`reports/${s}/index.html`, r ? redirectPage(reportPath(r), r.title) : gonePage(`/reports/${s}/`, 'report'));
+    }
+  }
+  // A case whose deployment id is gone, or whose slug changed, keeps answering: a redirect to its page or to all cases.
+  const caseById = new Map(model.cases.map((k) => [k.id, k]));
+  for (const [id, slugs] of Object.entries(next.deployments)) {
+    const k = caseById.get(id);
+    for (const s of slugs) {
+      if (k && k.slug === s) continue;
+      add(`deployments/${s}/index.html`, k ? redirectPage(casePath(k), 'this deployment case') : gonePage(`/deployments/${s}/`, 'deployment case'));
     }
   }
   const otherByKey = new Map(model.otherRobots.map((r) => [r.key, r]));

@@ -10,7 +10,7 @@ import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
 import editorial from './editorial/humanoids.json' with { type: 'json' };
 import { scrubEditorial } from './data-atlas/atlas.js';
 import { COMPONENT_FIELDS, COMPONENT_HEADERS, COMPONENT_WITHHELD, scrubComponentText, selectProducts, selectSoftware } from './components/catalogue.js';
-import { DATASET_ACCESS, PREVIEW_ROWS, categoryOfDataset, isFreeDataset } from './access/matrix.js';
+import { DATASET_ACCESS, PREVIEW_ROWS, categoryOfDataset, isFreeDataset, publicFieldsFor } from './access/matrix.js';
 
 // Access comes from the central access matrix (server/src/access/matrix.js, 23 Nov 2026), never from this file.
 export { PREVIEW_ROWS };
@@ -340,6 +340,8 @@ for (const spec of DATASETS) {
   spec.access = isFreeDataset(spec.id) ? 'free' : 'subscription';
   spec.category = categoryOfDataset(spec.id)?.id ?? null;
   if (spec.access === 'free') spec.publicRows = 'all';
+  // Subscription tabs (24 Nov 2026): every row at its public fields, or none listed when the allowlist is empty.
+  else { spec.publicFields = publicFieldsFor(spec.id); spec.publicRows = spec.publicFields.length ? 'summary' : 'none'; }
   if (DATASET_ACCESS[spec.id].offer === false) spec.offer = false;
 }
 
@@ -349,8 +351,12 @@ export const tabValues = (values, spec) => values?.[spec.tab] ?? (spec.formerTab
 export const PREMIUM_DATASETS = DATASETS; // kept for tooling that scans premium column names
 export const DATASETS_BY_ID = new Map(DATASETS.map((d) => [d.id, d]));
 
-// Public rows per tab: null means every customer row (the free Humanoids catalogue).
-export const publicRowLimit = (spec) => (spec.publicRows === 'all' ? null : PREVIEW_ROWS);
+// Public rows per tab: null means every customer row; 0 means none is listed (counted only).
+export const publicRowLimit = (spec) => (spec.publicRows === 'none' ? 0 : null);
+// The SQL expression of a row's public values. A subscription row is public only through its stored public values,
+// never through its full values: a row without them (an import older than 24 Nov 2026) is not public at all.
+export const publicValuesSql = (spec) => (spec.access === 'free' ? 'COALESCE(preview_data, data)' : 'preview_data');
+export const publicRowSql = (spec) => (spec.access === 'free' ? '1 = 1' : 'preview_data IS NOT NULL');
 
 export function publicDatasetList() {
   return DATASETS.map((spec) => ({
@@ -358,7 +364,7 @@ export function publicDatasetList() {
     title: spec.title,
     description: spec.description,
     category: spec.category,
-    access: { preview_rows: publicRowLimit(spec) ?? 'all', public_fields: spec.publicFields ?? null, full: spec.access === 'free' ? 'public' : 'subscription' },
+    access: { preview_rows: publicRowLimit(spec) === 0 ? 'none' : 'all', public_fields: spec.publicFields ?? null, full: spec.access === 'free' ? 'public' : 'subscription' },
     offer: spec.offer !== false,
   }));
 }
@@ -367,18 +373,19 @@ export function publicDatasetList() {
 const INTERNAL_KEYS = new Set(['identity_status', 'source_rows']);
 const toRow = (r) => ({ id: r.row_id, ...Object.fromEntries(Object.entries(JSON.parse(r.data)).filter(([k]) => !INTERNAL_KEYS.has(k))) });
 
-// Public rows: the first PREVIEW_ROWS non-empty data rows in workbook order, or every customer row for the free
-// Humanoids catalogue. Always the public (preview) values; no search, no paging.
+// Public rows: every customer row of a tab in workbook order, at its public values (all values of a free tab, the
+// allowlisted fields of a subscription tab); none for a tab that is counted only. No search, no paging.
 export async function queryPreview(db, spec) {
   const datasetId = spec.id;
-  const limit = publicRowLimit(spec);
-  const page = await db
-    .prepare(
-      `SELECT row_id, COALESCE(preview_data, data) AS data, snapshot_id FROM premium_rows
-        WHERE dataset = ? AND visibility = 'customer' ${limit === null ? '' : 'AND preview_rank <= ?'} ORDER BY position`,
-    )
-    .bind(...(limit === null ? [datasetId] : [datasetId, limit]))
-    .all();
+  const page = publicRowLimit(spec) === 0
+    ? { results: [] }
+    : await db
+      .prepare(
+        `SELECT row_id, ${publicValuesSql(spec)} AS data, snapshot_id FROM premium_rows
+          WHERE dataset = ? AND visibility = 'customer' AND ${publicRowSql(spec)} ORDER BY position`,
+      )
+      .bind(datasetId)
+      .all();
   const total = await db
     .prepare("SELECT COUNT(*) AS n FROM premium_rows WHERE dataset = ? AND visibility = 'customer'")
     .bind(datasetId)

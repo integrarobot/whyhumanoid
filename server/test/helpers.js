@@ -12,6 +12,8 @@ import { runImport } from '../src/import/run.js';
 
 export const WEBHOOK_SECRET = 'whsec_test_fixture_secret';
 export const TEST_PRICE = 'price_test_fixture';
+// A subscription bought at the former EUR 100 per year price (before 24 Nov 2026): it keeps its access.
+export const LEGACY_EUR_PRICE = 'price_legacy_eur_fixture';
 export const T0 = 1_800_000_000;
 
 class Statement {
@@ -67,7 +69,7 @@ export const VALID_PRICE = {
   object: 'price',
   active: true,
   type: 'recurring',
-  currency: 'eur',
+  currency: 'usd',
   unit_amount: 10000,
   recurring: { interval: 'year', interval_count: 1, usage_type: 'licensed' },
   livemode: false,
@@ -175,6 +177,7 @@ export async function setup({
   stripeMode = 'test',
   allowLiveCheckout = false,
   priceId = TEST_PRICE,
+  legacyPriceIds = [LEGACY_EUR_PRICE],
   price = VALID_PRICE,
   workbook = null,
 } = {}) {
@@ -199,6 +202,7 @@ export async function setup({
     checkoutEnabled,
     allowLiveCheckout,
     stripePriceId: priceId,
+    stripeLegacyPriceIds: legacyPriceIds,
     loginTtlSeconds: 900,
     loginMaxPerHour: 5,
     sessionTtlSeconds: 30 * 24 * 3600,

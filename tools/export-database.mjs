@@ -1,8 +1,10 @@
 #!/usr/bin/env node
-// Builds the PUBLIC part of the database on whyhumanoid.com: for each of the 12 workbook tabs other than Humanoids,
-// the first 10 sheet rows (the free preview) plus counts and field names. Paywall decision of 16 Nov 2026 (Javier):
-// the full rows of these tabs are premium and live only in the backend's database (Cloudflare D1), served after a
-// server-side subscription check. NEVER write full rows to the repository or the site again.
+// Builds the PUBLIC part of the database on whyhumanoid.com for the 12 workbook tabs other than Humanoids, with counts
+// and field names. Free tabs: every row with its public values. Deployments, Components and their supporting tabs
+// (Javier, 24 Nov 2026): every row at the public fields of server/src/access/fields.js, exactly the values the backend
+// stores as public (premium_rows.preview_data); a tab whose allowlist is empty is counted, not listed. The full rows of
+// those tabs live only in the backend's database (Cloudflare D1), served after a server-side subscription check.
+// NEVER write full rows of a subscription tab to the repository or the site.
 //
 //   node --no-warnings tools/export-database.mjs --from <export.json> [--snapshot <ISO time>]
 //   node tools/export-database.mjs --check        (validates the committed preview files without the source)
@@ -18,9 +20,8 @@ import { DATASETS_BY_ID, DATASETS, publicDatasetList } from '../server/src/datas
 const root = new URL('../', import.meta.url);
 const DIR = new URL('data/preview/', root);
 export const PREVIEW_SOURCE_ROWS = 10;
-// Access matrix of 23 Nov 2026 (server/src/access/matrix.js): the free categories in every row; Deployments, Components
-// and their supporting tabs in their first 10 sheet rows; the rest only for subscribers (EUR 100 per year).
-export const INDEX_NOTE = 'Public data of the 12 workbook tabs other than Humanoids, with counts and field names. Free categories (Integrators, Software, Datasets, Benchmarks, Investment, Other Robots): every row. Deployments, Components (Hardware tab) and the tabs that support Deployments: the first 10 sheet rows; every row and field only for subscribers (EUR 100 per year), served by the backend after a subscription check (access matrix of 23 Nov 2026).';
+// Access matrix of 24 Nov 2026 (server/src/access/matrix.js and fields.js).
+export const INDEX_NOTE = 'Public data of the 12 workbook tabs other than Humanoids, with counts and field names. Free categories (Integrators, Software, Datasets, Benchmarks, Investment, Other Robots): every row and field. Deployments, Components (Hardware tab and related software) and the identity register of Deployments: every row at its public fields (public_fields); every field only for subscribers (US$100 per year), served by the backend after a subscription check. Claim-to-evidence links and the tabs outside the offer are counted, not listed (access matrix of 24 Nov 2026).';
 const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
 
 // The backend's own row key, raw sheet-row pointers and the importer's bookkeeping. Record ids (record_id,
@@ -36,16 +37,23 @@ export function validateDatabase(index, tabs) {
   for (const meta of index.tabs) {
     const tab = tabs[meta.id];
     if (!tab) { problems.push(`${meta.id}: data/preview/${meta.id}.json missing`); continue; }
-    // Preview: the first 10 sheet rows of the tab, never more (paywall, 16 Nov 2026), except the tabs the approved split
-    // made public (phase 3, 17 Nov 2026): every row, and beyond row 10 only the tab's public fields when it has them.
+    // Free tabs: every row (Stocks: beyond row 10 its basic fields). Subscription tabs (24 Nov 2026): every row at the
+    // public fields of server/src/access/fields.js and not one other field, or no row when the allowlist is empty.
     const spec = DATASETS_BY_ID.get(meta.id);
     const all = spec?.publicRows === 'all';
     const sourceRows = new Set(tab.rows.map((r) => r._row));
-    if (!all && tab.rows.some((r) => !(Number.isInteger(r._row) && r._row >= 1 && r._row <= PREVIEW_SOURCE_ROWS))) problems.push(`${meta.id}: a row beyond sheet row ${PREVIEW_SOURCE_ROWS} is published`);
-    if (!all && sourceRows.size > PREVIEW_SOURCE_ROWS) problems.push(`${meta.id}: ${sourceRows.size} sheet rows published, the preview allows ${PREVIEW_SOURCE_ROWS}`);
-    if (all && spec.publicFields) for (const r of tab.rows.filter((x) => x._row > PREVIEW_SOURCE_ROWS)) for (const k of Object.keys(r)) if (k !== '_row' && !spec.publicFields.includes(k)) problems.push(`${meta.id}: field ${k} published beyond row ${PREVIEW_SOURCE_ROWS}`);
+    if (spec?.access === 'subscription') {
+      const allowed = new Set(spec.publicFields ?? []);
+      if (!allowed.size && tab.rows.length) problems.push(`${meta.id}: counted-only tab lists ${tab.rows.length} rows`);
+      for (const r of tab.rows) for (const k of Object.keys(r)) if (k !== '_row' && !allowed.has(k)) problems.push(`${meta.id}: paid field ${k} published (row ${r._row})`);
+      if (allowed.size && tab.rows.length !== meta.entries_total) problems.push(`${meta.id}: ${tab.rows.length} public rows of ${meta.entries_total}: every row is listed at its public fields`);
+      if (JSON.stringify(meta.public_fields ?? []) !== JSON.stringify(spec.publicFields ?? [])) problems.push(`${meta.id}: index public_fields differ from the central contract`);
+    } else if (spec?.publicFields && all) {
+      for (const r of tab.rows.filter((x) => x._row > PREVIEW_SOURCE_ROWS)) for (const k of Object.keys(r)) if (k !== '_row' && !spec.publicFields.includes(k)) problems.push(`${meta.id}: field ${k} published beyond row ${PREVIEW_SOURCE_ROWS}`);
+    }
+    if (!all && spec?.access !== 'subscription') problems.push(`${meta.id}: no access rule`);
     if (tab.rows.length !== meta.preview_entries) problems.push(`${meta.id}: ${tab.rows.length} preview rows, index says ${meta.preview_entries}`);
-    if (sourceRows.size !== (all ? meta.source_rows_total : Math.min(PREVIEW_SOURCE_ROWS, meta.source_rows_total))) problems.push(`${meta.id}: preview does not hold the ${all ? 'all' : `first ${PREVIEW_SOURCE_ROWS}`} sheet rows`);
+    if (all && sourceRows.size !== meta.source_rows_total) problems.push(`${meta.id}: a free tab must publish every sheet row`);
     if (meta.entries_total < tab.rows.length) problems.push(`${meta.id}: total smaller than the preview`);
     const keys = new Set(tab.rows.flatMap((r) => Object.keys(r)));
     keys.delete('_row');
@@ -80,10 +88,11 @@ async function build(from, snapshot) {
       .all();
     const all = results.map((r) => ({ _row: r.preview_rank, ...Object.fromEntries(Object.entries(JSON.parse(r.data)).filter(([k]) => !isInternalField(k))) }));
     if (all.length !== result.counts[spec.id]) throw new Error(`${spec.id}: read ${all.length}, imported ${result.counts[spec.id]}`);
-    // Public tabs (approved split, phase 3): every row; beyond row 10, the public values (preview_data) only.
+    // Free tabs: every row; beyond row 10, the public values (preview_data) where the tab has them (Stocks).
+    // Subscription tabs: every row through its stored public values only, never its full values.
     const rows = spec.publicRows === 'all'
       ? results.map((r, i) => (all[i]._row <= PREVIEW_SOURCE_ROWS || !r.preview_data ? all[i] : { _row: r.preview_rank, ...JSON.parse(r.preview_data) }))
-      : all.filter((r) => r._row <= PREVIEW_SOURCE_ROWS);
+      : results.filter((r) => r.preview_data).map((r) => ({ _row: r.preview_rank, ...Object.fromEntries(Object.entries(JSON.parse(r.preview_data)).filter(([k]) => !isInternalField(k))) }));
     const fields = [...new Set(all.flatMap((r) => Object.keys(r)))].filter((k) => k !== '_row');
     const meta = list.get(spec.id);
     index.tabs.push({
@@ -97,7 +106,7 @@ async function build(from, snapshot) {
       fields,
       access: spec.access,
       category: spec.category,
-      ...(spec.publicRows === 'all' ? { public: spec.publicFields ? 'basic_fields' : 'all' } : {}),
+      ...(spec.publicRows === 'all' ? { public: spec.publicFields ? 'basic_fields' : 'all' } : { public: spec.publicRows }),
       ...(spec.publicFields ? { public_fields: spec.publicFields } : {}),
       ...(spec.offer === false ? { offer: false } : {}),
       ...(fields.includes('list') ? { lists: all.reduce((m, r) => ({ ...m, [r.list]: (m[r.list] ?? 0) + 1 }), {}) } : {}),
@@ -128,12 +137,15 @@ export function reapplyAccess({ index, tabs }) {
   for (const meta of index.tabs.filter((t) => OTHER_TABS.includes(t.id))) {
     const spec = DATASETS_BY_ID.get(meta.id);
     const tab = tabs[meta.id];
-    const rows = spec.publicRows === 'all' ? tab.rows : tab.rows.filter((r) => r._row <= PREVIEW_SOURCE_ROWS);
+    // A subscription tab's public rows come only from an import (stored public values): re-applying cannot invent them.
+    if (spec.access === 'subscription' && meta.public !== spec.publicRows) throw new Error(`${meta.id}: re-export from a workbook export to publish it at its public fields (--only ${meta.id})`);
+    const rows = tab.rows;
     const { public: wasPublic, public_fields: basic, ...rest } = meta;
     const entry = {
       ...rest, title: list.get(meta.id).title, description: list.get(meta.id).description, access: spec.access, category: spec.category,
       preview_entries: rows.length, preview_source_rows: new Set(rows.map((r) => r._row)).size,
     };
+    if (spec.access === 'subscription') { entry.public = spec.publicRows; entry.public_fields = spec.publicFields; }
     if (spec.publicRows === 'all') {
       entry.public = wasPublic === 'basic_fields' ? 'basic_fields' : 'all';
       if (wasPublic === 'basic_fields') { entry.public_fields = basic; entry.snapshot_fields = 'Beyond row 10 this snapshot holds the basic fields only; the other fields are free and arrive with the next export.'; }
@@ -166,7 +178,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       console.error(`data/preview is invalid:\n- ${problems.join('\n- ')}`);
       process.exit(1);
     }
-    console.log(`data/preview is valid: ${index.tabs.length} tabs, ${index.tabs.reduce((n, t) => n + t.preview_entries, 0)} preview rows (first ${PREVIEW_SOURCE_ROWS} sheet rows each) of ${index.tabs.reduce((n, t) => n + t.entries_total, 0)}, no internal fields`);
+    console.log(`data/preview is valid: ${index.tabs.length} tabs, ${index.tabs.reduce((n, t) => n + t.preview_entries, 0)} public rows of ${index.tabs.reduce((n, t) => n + t.entries_total, 0)} (subscription tabs at their public fields only), no internal fields`);
   } else if (arg('--only')) {
     // A controlled refresh (Components, 23 Nov 2026): rebuild only the named tabs from the export (the whole workbook
     // is still imported and validated in memory, exactly as production would) and keep every other committed preview,
