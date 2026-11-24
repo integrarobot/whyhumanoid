@@ -20,6 +20,7 @@ import { robotPresentation } from './robot-presentation.mjs';
 const DATA_ATLAS = JSON.parse(readFileSync(new URL('../data/datasets/atlas.json', import.meta.url), 'utf8'));
 const COMPONENTS = JSON.parse(readFileSync(new URL('../data/components/coverage.json', import.meta.url), 'utf8'));
 const COMPONENT_ROWS = JSON.parse(readFileSync(new URL('../data/preview/hardware.json', import.meta.url), 'utf8')).rows;
+const REPORTS = JSON.parse(readFileSync(new URL('../data/reports/atlas.json', import.meta.url), 'utf8'));
 
 // Playwright from the project if installed, else the machine's preinstalled copy (NODE_PATH).
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -36,7 +37,7 @@ if (SHOTS) mkdirSync(SHOTS, { recursive: true });
 const browser = await chromium.launch();
 const SAMPLE = ['/reports/deployment-records/', '/reports/anthropic-what-work-can-robots-do-2026/', '/humanoids/agibot-x1-4/', '/companies/tesla/', '/companies/agility-robotics/', '/other-robots/realtime/', '/subscribe/', '/companies/', '/method/', '/reports/deployment-records/'];
 for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['phone', { width: 375, height: 812 }]]) {
-  const ctx = await browser.newContext({ viewport, deviceScaleFactor: 1 });
+  const ctx = await browser.newContext({ viewport, deviceScaleFactor: 1, hasTouch: label === 'phone' });
   const page = await ctx.newPage();
   const errors = [];
   page.on('pageerror', (e) => errors.push(String(e)));
@@ -45,7 +46,7 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     check(res.status() === 200, `${label} ${c.path}: direct load ${res.status()}`);
     const again = await page.reload({ waitUntil: 'domcontentloaded' });
     check(again.status() === 200, `${label} ${c.path}: reload ${again.status()}`);
-    const h1 = { benchmarks: 'Robotics Evaluation Atlas', datasets: 'Robot Learning Data Atlas' }[c.id] ?? c.label; // atlases (23 Nov 2026)
+    const h1 = { benchmarks: 'Robotics Evaluation Atlas', datasets: 'Robot Learning Data Atlas', reports: 'Research Conclusions Atlas' }[c.id] ?? c.label; // atlases (23-24 Nov 2026)
     check((await page.textContent('h1'))?.trim() === h1, `${label} ${c.path}: h1 is ${h1}`);
     const nav = await page.$$eval('nav.cats a', (as) => as.map((a) => [a.textContent.trim(), a.getAttribute('href')]));
     check(JSON.stringify(nav) === JSON.stringify(CATEGORIES.map((x) => [x.label, x.path])), `${label} ${c.path}: navigation is the nine categories in order`);
@@ -158,6 +159,36 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     const pp = await page.evaluate(() => ({ h1: document.querySelector('h1')?.textContent, secs: document.querySelectorAll('.pp-sec').length, src: document.querySelectorAll('.srcs li').length, maker: !!document.querySelector('.pc-m a[href="/companies/gelsight-inc/"]'), overflow: document.documentElement.scrollWidth - innerWidth }));
     check(pp.h1 === 'DIGIT' && pp.secs >= 9 && pp.src === 6 && pp.maker && pp.overflow <= 1, `${label} components: DIGIT's passport has every section, its 6 references and its maker's page (${JSON.stringify(pp)})`);
     if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_components_digit.png` });
+  }
+  // Research Conclusions Atlas (24 Nov 2026): every finding in the table, a chart mark opens its passport by keyboard
+  // or touch with a shareable address, Escape returns focus, a coverage cell filters the table, a shared address
+  // reopens the passport, and every report page answers with its passports.
+  {
+    await page.goto(`${BASE}/reports/`, { waitUntil: 'networkidle' });
+    const rs = await page.evaluate(() => ({ rows: document.querySelectorAll('.rp-ft tbody tr').length, filters: !document.getElementById('rp-filters').hidden, themes: document.querySelectorAll('.rp-theme').length, marks: document.querySelectorAll('svg.rp-svg a.mk').length, overflow: document.documentElement.scrollWidth - window.innerWidth }));
+    check(rs.rows === REPORTS.findings.length && rs.filters && rs.themes === REPORTS.vocabulary.themes.length && rs.marks > 20 && rs.overflow <= 1, `${label} reports: ${REPORTS.findings.length} findings, ${REPORTS.vocabulary.themes.length} themes, charts drawn, filters on, no horizontal scroll (${JSON.stringify(rs)})`);
+    const mark = page.locator('#chart-shipments a.mk[data-f="bofa-ship-2035"]');
+    if (label === 'phone') await mark.tap(); else { await mark.focus(); await page.keyboard.press('Enter'); }
+    await page.waitForSelector('#rp-panel:not([hidden]) .fp');
+    const pp = await page.evaluate(() => ({ v: document.querySelector('#rp-panel .fp-v')?.textContent, rep: /appears in 3 reports/.test(document.querySelector('#rp-panel').textContent), url: location.search }));
+    check(pp.v === '10 million units' && pp.rep && pp.url === '?f=bofa-ship-2035', `${label} reports: a chart mark opens its passport with the repeat count and a shareable address (${JSON.stringify(pp)})`);
+    await page.keyboard.press('Escape');
+    const closed = await page.evaluate(() => ({ hidden: document.getElementById('rp-panel').hidden, focus: document.activeElement?.getAttribute('data-f'), url: location.search }));
+    check(closed.hidden && closed.url === '' && (label === 'phone' || closed.focus === 'bofa-ship-2035'), `${label} reports: Escape closes the passport and returns focus (${JSON.stringify(closed)})`);
+    await page.click('.rp-cov a[data-report="RPT-006"][data-theme="work"]');
+    const fl = await page.evaluate(() => ({ shown: [...document.querySelectorAll('.rp-ft tbody tr')].filter((tr) => !tr.hidden).map((tr) => tr.dataset.report + '/' + tr.dataset.theme), url: location.search }));
+    check(fl.shown.length === REPORTS.findings.filter((f) => f.report === 'RPT-006' && f.theme === 'work').length && fl.shown.every((x) => x === 'RPT-006/work') && /report=RPT-006/.test(fl.url), `${label} reports: a coverage cell filters the table to its report and theme (${fl.shown.length} rows)`);
+    await page.goto(`${BASE}/reports/?f=ms-china-ambiguous`, { waitUntil: 'networkidle' });
+    await page.waitForSelector('#rp-panel:not([hidden]) .fp');
+    check(/Withheld/.test(await page.textContent('#rp-panel')), `${label} reports: a shared address reopens a passport; the ambiguous figure says it is withheld`);
+    if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_reports_passport.png` });
+    for (const r of REPORTS.reports) {
+      const res = await fetch(`${BASE}/reports/${r.slug}/`);
+      const html = res.status === 200 ? await res.text() : '';
+      const missing = REPORTS.findings.filter((f) => f.report === r.id && !html.includes(`id="f-${f.id}"`)).length;
+      if (res.status !== 200 || missing) check(false, `${label} reports: /reports/${r.slug}/ answers ${res.status} with ${missing} passports missing`);
+    }
+    check(true, `${label} reports: all ${REPORTS.reports.length} report pages answer with every passport`);
   }
   // Robot Learning Data Atlas (23 Nov 2026): counts from the snapshot, a question answered with known, partial and
   // unknown matches kept apart, the same detail for keyboard and pointer, Escape, set-apart figures, shareable state.

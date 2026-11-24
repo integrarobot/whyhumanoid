@@ -25,7 +25,7 @@ test('the nine confirmed categories, in order, then Reports, each at its own add
   const reports = CATEGORIES.find((c) => c.id === 'reports');
   assert.equal(reports.access, 'free');
   assert.deepEqual(reports.datasets, [], 'Reports is not a workbook tab');
-  assert.equal(reports.source, 'data/reports/catalogue.json');
+  assert.equal(reports.source, 'data/reports/atlas.json');
   const ids = new Set(DATASETS.map((d) => d.id));
   for (const c of CATEGORIES) for (const d of c.datasets) assert.ok(ids.has(d), `${c.id} maps to the real tab ${d}`);
   assert.deepEqual(CATEGORIES.filter((c) => c.access === 'subscription').map((c) => c.id), ['deployments', 'components']);

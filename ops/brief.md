@@ -47,7 +47,7 @@ page generator and the catalogue page read it.
 | 7 | Benchmarks | /benchmarks/ | Task Evaluation | Free | No dedicated benchmarks table: 4 task evaluations |
 | 8 | Investment | /investment/ | Investment (renamed from Stocks on 23 Nov 2026; dataset id `stocks`) + Valuation, Investors, Rounds of Humanoids | Free (quote columns withheld for licensing) | No private-investment table; descriptions and segments still in Spanish in the master |
 | 9 | Other Robots | /other-robots/ | Other Robots | Free | |
-| 10 | Reports | /reports/ | Not a workbook tab: `data/reports/catalogue.json` (reviewed) and Why Humanoid? analyses (`/reports/deployment-records/`) | Free | External catalogue: 1 of 12 reports verified so far; findings not published |
+| 10 | Reports | /reports/ | Reports tab of the master (not imported into D1) plus the reviewed mapping `tools/reports-findings.json`, published as `data/reports/atlas.json`; Why Humanoid? analyses (`/reports/deployment-records/`) | Free | Research Conclusions Atlas: 12 editions, 151 findings, 116 checked against 10 originals; Morgan Stanley and Intel originals unreachable |
 
 Tabs outside the nine: Product - Container Handling (first 10 rows public, unchanged pending a decision) and Data
 Space (out of the offer, unchanged).
@@ -176,28 +176,30 @@ node server/scripts/staging-local.mjs
 node tools/verify-staging.mjs --base http://localhost:8788 --local --shots /tmp/shots
 ```
 
-## Reports (Javier, 23 Nov 2026)
+## Reports: Research Conclusions Atlas (Javier, 24 Nov 2026)
 
-Source: Grok's staging sheet "Humanoid Reports - Key Findings" (one tab, 18 columns, 12 reports on 23 Nov 2026). It is
-an extraction, not verified evidence, and stays an external staging source: no new master tab until a compatible
-schema and a reviewed batch are ready. Its id and links never go into Git or onto the site.
+Source: the Reports tab of the master (ReportsCatalog, 21 columns, RPT-001 to RPT-012), an automatic extraction marked
+for review. It is read, never edited, and not imported into the backend. The reviewed mapping
+`tools/reports-findings.json` turns it into 151 normalised findings, each citing its master cell (report id, column and an
+excerpt that must be literally in that cell) and, when checked, the page of the public original and a phrase of at most
+30 words found there.
 
-- Publication rule: a report is listed only after its title, publisher, authors, date, address and scope are checked
-  against the public original (`data/reports/catalogue.json`, checked by `tools/reports-source.mjs --check`, by the
-  public data guard and in CI). Link the publisher's public original; never rehost a PDF.
-- Findings: `tools/reports-source.mjs --from <sheet export> --out <private file>` validates the 18 columns, proposes a
-  stable id per report and splits every finding cell into one stub per claim (report_id, topic, text, locator) with
-  the fields a reviewer fills: metric, value, unit, geography or population, reference period or horizon, scenario,
-  limitations, checked locator. On 23 Nov: 174 stubs, 142 with a locator in the cell, all unreviewed. No figure is
-  published, compared or averaged until checked page by page; cited forecasts are not independent sources. The
-  findings explorer and comparisons come in a separate PR.
-- Verified so far: Anthropic, "What work can robots do?" (30 Sep 2026; Russell Legate-Yang and Maxim Massenkoff),
-  checked on anthropic.com. The other 11 could not be opened from the cloud session (its network allows only the
-  Why Humanoid? hosts) and wait for a person or agent with web access: Binh Pham study, Bank of America Institute,
-  Morgan Stanley (the sheet links a copy on an adviser's page, not the research site), Barclays, Intel, Fayd Capital,
-  RBC BlueBay, Capgemini Research Institute (the sheet links a copy hosted by MEO; prefer Capgemini's own page),
-  NEXERY / consult-ing, Berg Insight (public brochure of a paid report) and Goldman Sachs (redacted public version).
-  The adapter's private review file holds the checklist for each.
+- Snapshot: `node --no-warnings tools/export-reports.mjs --from <export> --exported-at <ISO> [--originals <dir>]` writes
+  `data/reports/atlas.json` (allowlisted fields only; `server/src/reports/atlas.js` holds the contract and the rules).
+  With `--originals` (private text of the originals, outside Git) every checked phrase is checked on its page. CI runs
+  `--check`, the public data guard and `tools/test-reports.mjs` (semantic invariants on the data and the rendered page).
+- Rules: only checked findings are drawn; a figure repeated by several reports is one original estimate (series, year
+  and kind) drawn once; shipments, installed base, revenue and wider opportunities are separate; every percentage keeps
+  its denominator; surveys are answers, not adoption; BOM, production cost, selling price, list price and cost per
+  hour are marked apart; stacks only when exhaustive; flows and valuations apart; constraint mentions are not ranked;
+  nothing averaged, interpolated, converted or extended to a common year. The ambiguous Morgan Stanley China figures
+  are withheld.
+- Pages: `/reports/` (themes, coverage matrix, seven theme workspaces with charts and a cited synthesis, all findings,
+  report cards, method; state in `?theme`, `?report`, `?check`, `?kind`, `?f`) and one page per report with every
+  passport (`#f-<id>`). `/reports/deployment-records/` and `/reports/anthropic-what-work-can-robots-do-2026/` keep
+  their addresses; the permanent-address registry is keyed by `page_id`.
+- Originals checked on 24 Nov 2026: 10 of 12. Morgan Stanley (adviser-hosted copy) and Intel (blocked) could not be
+  reached; their findings are listed as extracted and not drawn.
 
 ## Decisions pending (Javier)
 

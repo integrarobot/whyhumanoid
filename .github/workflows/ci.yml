@@ -32,8 +32,8 @@ jobs:
         run: node tools/build-app.mjs --check
       - name: Relations config matches the catalogue; the page links only public preview rows
         run: node tools/relations.mjs --check
-      - name: Reports catalogue holds only verified bibliographic records and no private links
-        run: node tools/reports-source.mjs --check
+      - name: Research Conclusions Atlas snapshot holds allowlisted fields, no private links and counts that match its rows
+        run: node tools/export-reports.mjs --check
       - name: Robotics Evaluation Atlas snapshot holds allowlisted fields and counts that match its rows
         run: node tools/export-benchmarks.mjs --check
       - name: Robot Learning Data Atlas snapshot holds allowlisted fields and counts that match its rows
@@ -46,7 +46,7 @@ jobs:
         run: node tools/build-pages.mjs --check && node tools/export-public.mjs --check
       - name: Headless render of the page
         working-directory: tools
-        run: npm ci && node verify-site.mjs && node verify-premium-app.mjs && node verify-pages.mjs
+        run: npm ci && node verify-site.mjs && node verify-premium-app.mjs && node verify-pages.mjs && node --no-warnings --test test-reports.mjs
       - name: API tests
         working-directory: server
         run: npm ci && npm test

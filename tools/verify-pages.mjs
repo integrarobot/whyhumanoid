@@ -78,9 +78,9 @@ for (const c of CATEGORIES) {
   if (d.querySelector('link[rel=canonical]')?.href !== SITE + c.path) fail(`${c.path}: canonical`);
   if (d.querySelector('meta[name=robots]')) fail(`${c.path}: category page marked noindex`);
   // Benchmarks is the Robotics Evaluation Atlas (23 Nov 2026): its h1 is the atlas title and its kicker names the category.
-  const h1 = { benchmarks: 'Robotics Evaluation Atlas', datasets: 'Robot Learning Data Atlas' }[c.id] ?? c.label;
+  const h1 = { benchmarks: 'Robotics Evaluation Atlas', datasets: 'Robot Learning Data Atlas', reports: 'Research Conclusions Atlas' }[c.id] ?? c.label;
   if (d.querySelector('h1')?.textContent !== h1) fail(`${c.path}: h1 is not "${h1}"`);
-  if (c.id === 'benchmarks' && !/Benchmarks/.test(d.querySelector('.kicker')?.textContent ?? '')) fail(`${c.path}: kicker does not name the category`);
+  if (['benchmarks', 'reports'].includes(c.id) && !new RegExp(c.label).test(d.querySelector('.kicker')?.textContent ?? '')) fail(`${c.path}: kicker does not name the category`);
   const navLabels = [...d.querySelectorAll('nav.cats a')].map((a) => a.textContent.trim());
   if (JSON.stringify(navLabels) !== JSON.stringify(LABELS)) fail(`${c.path}: navigation is not the ten categories in order (${navLabels.join(', ')})`);
   if (d.querySelector('nav.cats a[aria-current="page"]')?.getAttribute('href') !== c.path) fail(`${c.path}: navigation does not mark the current category`);
@@ -95,12 +95,33 @@ if (doc('/components/').querySelectorAll('#pcs .pc').length > PREVIEW_ROWS) fail
 for (const card of doc('/components/').querySelectorAll('#pcs .pc')) if (!card.querySelector('.pc-m a[href^="/companies/"]')) fail(`/components/: ${card.dataset.id} has no company page`);
 for (const id of ['investment', 'integrators']) for (const a of doc(`/${id}/`).querySelector('article section table').querySelectorAll('tbody tr td:first-child a')) if (!a.getAttribute('href').startsWith('/companies/')) fail(`/${id}/: ${a.textContent} does not link to its company page`);
 if (doc('/humanoids/').querySelectorAll('tbody tr').length !== model.robots.length) fail('/humanoids/: does not list every robot');
-// Reports: the existing analysis stays at /reports/deployment-records/; each verified external report has its page and a
-// link to its public original; nothing links a private sheet, Drive or Docs file.
+// Reports (Research Conclusions Atlas, 24 Nov 2026): the existing analysis stays at /reports/deployment-records/; every
+// report has its page with a link to its public original and every finding's passport; every finding has a row in the
+// table; every chart draws only checked findings, one mark per original estimate, and its table holds the same marks.
 const reportsDoc = doc('/reports/');
+const ratlas = JSON.parse(read('data/reports/atlas.json'));
 if (!reportsDoc.querySelector('a[href="/reports/deployment-records/"]')) fail('/reports/: no link to the deployment records analysis');
-if (reportsDoc.querySelectorAll('tbody tr').length !== publishedReports().length) fail('/reports/: does not list every verified report');
-for (const r of publishedReports()) if (!doc(reportPath(r)).querySelector(`a[href="${r.original_url}"]`)) fail(`${reportPath(r)}: no link to the original`);
+if (reportsDoc.querySelectorAll('.rp-ft tbody tr').length !== ratlas.findings.length) fail('/reports/: the findings table does not list every finding');
+if (reportsDoc.querySelectorAll('.rp-cov tbody tr').length !== ratlas.reports.length) fail('/reports/: the coverage matrix does not list every report');
+for (const r of publishedReports()) {
+  const d = doc(reportPath(r));
+  if (!d.querySelector(`a[href="${r.url}"]`)) fail(`${reportPath(r)}: no link to the original`);
+  if (!reportsDoc.querySelector(`.rp-reports a[href="${reportPath(r)}"]`)) fail(`/reports/: no card for ${r.id}`);
+  for (const f of ratlas.findings.filter((x) => x.report === r.id)) if (!d.getElementById(`f-${f.id}`)) fail(`${reportPath(r)}: no passport for ${f.id}`);
+}
+const rfind = new Map(ratlas.findings.map((f) => [f.id, f]));
+for (const fig of reportsDoc.querySelectorAll('figure.rp-fig')) {
+  const svg = fig.querySelector('svg.rp-svg');
+  if (!svg) continue;
+  const marks = [...svg.querySelectorAll('a.mk')].map((a) => a.dataset.f);
+  const rows = [...fig.querySelectorAll('.rp-tv tbody tr')].map((tr) => tr.dataset.f);
+  if (marks.sort().join() !== rows.sort().join()) fail(`/reports/#${fig.id}: chart marks and table rows differ`);
+  const origins = marks.map((id) => rfind.get(id)?.origin);
+  if (new Set(origins).size !== origins.length) fail(`/reports/#${fig.id}: an original estimate is drawn twice`);
+  for (const id of marks) if (rfind.get(id)?.check.status !== 'verified') fail(`/reports/#${fig.id}: draws ${id}, which is not checked`);
+}
+if (!reportsDoc.querySelector('#theme-market') || reportsDoc.querySelectorAll('.rp-theme').length !== ratlas.vocabulary.themes.length) fail('/reports/: a theme workspace is missing');
+if (!doc('/reports/anthropic-what-work-can-robots-do-2026/').querySelector('h1')) fail('/reports/anthropic-what-work-can-robots-do-2026/: the existing address no longer has its page');
 if (doc('/reports/deployment-records/').querySelector('nav.cats a[aria-current="page"]')?.getAttribute('href') !== '/reports/') fail('/reports/deployment-records/: not shown under Reports');
 for (const [f, html] of files) if (/docs\.google\.com|drive\.google\.com|\/spreadsheets\/d\//.test(html)) fail(`${f}: links a private Google file`);
 if (doc('/other-robots/').querySelectorAll('tbody tr').length !== model.otherRobots.length) fail('/other-robots/: does not list every entry');

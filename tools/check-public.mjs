@@ -71,7 +71,7 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
   const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/catalogue.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', 'data/components/coverage.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/atlas.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', 'data/components/coverage.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));
@@ -142,8 +142,8 @@ for (const f of ['data/preview/hardware.json', 'data/preview/component-software.
 
 // Rule 8 (Reports, 23 Nov 2026): the catalogue lists only records verified against the public original, with no private
 // Google sheet, Drive or Docs link; extractions and findings of the staging sheet never reach the repository.
-const { checkCatalogue } = await import('./reports-source.mjs');
-for (const problem of checkCatalogue(JSON.parse(read('data/reports/catalogue.json')))) fail('data/reports/catalogue.json', problem);
+const { snapshotProblems: reportsProblems } = await import('../server/src/reports/atlas.js');
+for (const problem of reportsProblems(JSON.parse(read('data/reports/atlas.json')))) fail('data/reports/atlas.json', problem);
 for (const file of tracked) if (/\.(html|json|js|csv|xml|txt)$/.test(file) && isPublished(file) && /docs\.google\.com\/(spreadsheets|document)\/d\/|drive\.google\.com\/(file|drive|open)/.test(read(file))) fail(file, 'links a private Google sheet, document or Drive file');
 
 if (failures.length) {
