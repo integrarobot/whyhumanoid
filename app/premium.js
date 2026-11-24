@@ -97,7 +97,7 @@
     $('checkout').hidden = !canBuy;
     $('checkout').textContent = 'Subscribe for ' + price;
     $('checkout').disabled = !me.checkout_available;
-    if (canBuy && !me.checkout_available) $('acc-text').textContent += ' New subscriptions open once the purchase terms of this offer are final.';
+    if (canBuy && !me.checkout_available) $('acc-text').textContent += ' New subscriptions are temporarily unavailable. Please try again later.';
     $('portal').hidden = !me.billing_portal;
   }
 
@@ -197,7 +197,7 @@
   const recordedRobot = (r) => [r.manufacturer, r.robot_model].filter(nz).join(' · ') + (nz(r.robot_version) && !/^not disclosed$/i.test(r.robot_version) ? ` (version: ${r.robot_version})` : '');
   function relLock() {
     if (rel.mode === 'full') return '';
-    const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'Subscriptions open soon';
+    const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'New subscriptions are temporarily unavailable';
     const n = totals.deployments;
     return `<p class="rel-lock"><b>Public summary.</b> Every${n ? ` one of the ${n}` : ''} Deployments records is linked here with its public fields and source. The data subscription adds each record's site, task description, timeline, metrics, claim and evidence (${esc(state.plan?.plan?.price || 'US$100 per year')}). ${cta}.</p>`;
   }
@@ -420,7 +420,7 @@
     let q = '', st = 'all', shown = data.rows;
     const more = $('db-more');
     if (locked || summary) {
-      const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'Subscriptions open soon';
+      const cta = !state.me ? 'Sign in above to subscribe' : state.me.checkout_available ? 'Subscribe above for full access' : 'New subscriptions are temporarily unavailable';
       const price = esc(state.plan?.plan?.price || 'US$100 per year');
       more.innerHTML = summary
         ? `<p><b>Every field</b> of these ${data.total} entries comes with the data subscription (${price}, billed annually). ${cta}.</p>`

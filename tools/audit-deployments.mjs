@@ -1,21 +1,24 @@
 #!/usr/bin/env node
 // Deployments audit: the workbook's Deployments sheet against what is served, cell by cell.
 // Deployments is the main section (Javier, 16 Nov 2026): every row, every column and every non-empty value of the
-// sheet must reach subscribers unchanged, and nothing is dropped for looking like a duplicate. Since the paywall
-// (16 Nov 2026) full rows live only in the backend database; the site publishes the first 10 sheet rows.
+// sheet must reach subscribers unchanged, and nothing is dropped for looking like a duplicate. Full rows live only in
+// the backend database; since 24 Nov 2026 the site publishes every sheet row at the public fields of
+// server/src/access/fields.js (before, the first 10 sheet rows in full).
 //
 //   node tools/audit-deployments.mjs --from <export.json> [--json]
 //
 // Checks, on the same private export export-database.mjs reads (it stays outside Git):
 //   1. the backend import of the export (in memory, the code production runs) holds every sheet row, column and
 //      value of Deployments, in order: what subscribers get from GET /v1/datasets/deployments;
-//   2. data/preview/deployments.json holds exactly the first 10 sheet rows, unchanged, and nothing more.
+//   2. data/preview/deployments.json holds every sheet row, in order, with exactly the public fields, each value
+//      unchanged from the sheet, and not one other field (no paid value reaches the site).
 // Exits 1 on any difference and lists each one. The page side (every field and value in each "View all data" card)
 // is checked by tools/verify-site.mjs for the site and by the premium app checks for subscribers.
 
 import { readFileSync } from 'node:fs';
 import { importInMemory } from './export-database.mjs';
 import { queryDatasetRows } from '../server/src/datasets.js';
+import { PUBLIC_FIELDS } from '../server/src/access/fields.js';
 
 const root = new URL('../', import.meta.url);
 const arg = (name) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null);
@@ -74,10 +77,22 @@ if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
   const page = await queryDatasetRows(db, 'deployments', { limit: 100000, offset: 0, q: null });
   const served = page.rows.map(({ id, ...r }, i) => ({ _row: i + 1, ...r }));
   const full = auditDeployments(values, served, { tabs: [{ ...meta, entries_total: served.length, source_rows_total: served.length }] });
-  // 2. What the site publishes: exactly the first 10 sheet rows.
+  // 2. What the site publishes: every sheet row at the public fields only.
   const preview = JSON.parse(readFileSync(new URL('data/preview/deployments.json', root), 'utf8')).rows;
-  const firstTen = { ...values, [SHEET]: values[SHEET].slice(0, 11) };
-  const pre = auditDeployments(firstTen, preview, { tabs: [{ ...meta, entries_total: preview.length, source_rows_total: preview.length }] });
+  const pub = PUBLIC_FIELDS.deployments;
+  const pre = { problems: [], rows: preview.length };
+  for (const r of preview) {
+    const extra = Object.keys(r).filter((k) => k !== '_row' && !pub.includes(k));
+    if (extra.length) pre.problems.push(`row ${r._row}: fields outside the public allowlist: ${extra.join(', ')}`);
+  }
+  if (JSON.stringify(meta.public_fields) !== JSON.stringify(pub)) pre.problems.push('index public_fields differ from server/src/access/fields.js');
+  const header = values[SHEET][0].map(norm);
+  const cols = header.map((h, j) => [h, j]).filter(([h]) => pub.includes(h));
+  const publicSheet = { [SHEET]: values[SHEET].map((r) => cols.map(([, j]) => r[j])) };
+  const publicServed = preview.map((r) => Object.fromEntries([['_row', r._row], ...pub.map((f) => [f, r[f]])]));
+  const audit = auditDeployments(publicSheet, publicServed, { tabs: [{ ...meta, fields: cols.map(([h]) => h), entries_total: preview.length, source_rows_total: preview.length }] });
+  pre.problems.push(...audit.problems);
+  pre.values = audit.values;
   if (meta.entries_total !== full.rows) full.problems.push(`index says ${meta.entries_total} entries, the sheet has ${full.rows}`);
   const problems = [...full.problems.map((p) => `served: ${p}`), ...pre.problems.map((p) => `preview: ${p}`)];
   if (process.argv.includes('--json')) console.log(JSON.stringify({ rows: full.rows, columns: full.columns, values: full.values, preview_rows: pre.rows, differences: problems }, null, 2));
@@ -85,5 +100,5 @@ if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
     console.error(`Deployments audit FAILED (${problems.length}):\n- ${problems.slice(0, 200).join('\n- ')}`);
     process.exit(1);
   }
-  console.log(`Deployments audit passed: ${full.rows} rows, ${full.columns} columns, ${full.values} non-empty values in the sheet, all served to subscribers unchanged; the site preview holds exactly the first ${pre.rows} sheet rows (0 differences).`);
+  console.log(`Deployments audit passed: ${full.rows} rows, ${full.columns} columns, ${full.values} non-empty values in the sheet, all served to subscribers unchanged; the site publishes all ${pre.rows} rows at the ${PUBLIC_FIELDS.deployments.length} public fields only (${pre.values} values, 0 differences).`);
 }

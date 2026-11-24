@@ -11,7 +11,7 @@ La sección «Cierre obligatorio de cada entrega» se aplica a TODO trabajo de W
 
 ## Reglas que no se negocian
 
-- Muro de pago (d-0008, 16/11/2026): Humanoids gratis; las otras 12 pestañas son premium (100 € al año, sin prueba). La web y Git solo llevan Humanoids y las 10 primeras filas de cada pestaña premium (`data/preview/`). Las filas completas van SOLO a producción con el workflow «Import private workbook» (target `production`). Nunca escribas filas completas en el repositorio ni en un JSON público; si `tools/check-public.mjs` falla por eso, no lo sortees. No toques la configuración de cobro de Stripe.
+- Acceso (oferta de dos vías, 24/11/2026; sustituye el muro de pago d-0008): Humanoids y las demás categorías son gratis; la suscripción de datos (US$100 al año, sin prueba) abre Deployments y Components completos. La web y Git llevan todas las filas de Deployments y Components solo con sus campos públicos (`server/src/access/fields.js`, en `data/preview/`), y las pestañas gratuitas enteras; las relaciones de evidencia y las pestañas fuera de la oferta solo se cuentan. Las filas completas van SOLO a producción con el workflow «Import private workbook» (target `production`). Nunca escribas filas completas en el repositorio ni en un JSON público; si `tools/check-public.mjs` falla por eso, no lo sortees. No toques la configuración de cobro de Stripe.
 - No inventes. Sin ediciones nuevas o sin hechos con fuente, no hay cambios: informa «sin novedades».
 - Nunca pongas en Git ni en la web credenciales, enlaces al libro maestro o a Drive, contactos personales ni notas internas. El identificador y la URL del libro van solo en el prompt de la tarea programada.
 - Anuncio, piloto y operación son estados distintos. Una demo, un contrato o una nota de prensa del fabricante no son operación real.
@@ -56,11 +56,11 @@ Decisión d-0006 (16/11/2026). Protocolo completo y referencia de campos: `ops/e
 
 Prioridad máxima de Javier (16/11/2026). Se aplica a cualquier trabajo que toque esa pestaña o la web, no solo a la actualización semanal.
 
-- Los suscriptores reciben TODO: cada fila, cada columna y cada valor no vacío de la hoja Deployments, íntegro, sin resumir ni recortar textos largos, tareas, ubicaciones, métricas, cantidades, fechas, evidencias, fuentes ni notas. La web pública muestra las 10 primeras filas con su ficha completa.
+- Los suscriptores reciben TODO: cada fila, cada columna y cada valor no vacío de la hoja Deployments, íntegro, sin resumir ni recortar textos largos, tareas, ubicaciones, métricas, cantidades, fechas, evidencias, fuentes ni notas. La web pública muestra todas las filas con sus campos públicos; el detalle es de pago.
 - No se eliminan filas por parecer duplicadas: distintas afirmaciones o evidencias sobre un mismo despliegue son filas distintas y se conservan. Fuera solo credenciales o datos personales internos, si los hubiera, con exclusión explícita y documentada.
 - La tabla resume (estado, organización y robot, tarea, lugar, resultado o métrica, fuente) y cada fila tiene el botón «View all data», que abre la ficha con todos los campos y los enlaces completos. Un campo nuevo en la hoja que no esté en los grupos de la ficha aparece en «Other fields»; añádelo a su grupo (`GROUPS_DEP` en `index.html` y en `server/public/premium.js`) y a la cabecera del importador (`server/src/datasets.js`), que rechaza cabeceras distintas.
 - Contar 119 entradas, o las que haya, no basta. Antes de publicar, y otra vez sobre lo publicado:
-  1. `node tools/audit-deployments.mjs --from <export>`: hoja contra lo que sirve la importación del backend (todas las filas) y contra la vista previa de la web (10 primeras filas), celda por celda. Debe dar 0 diferencias.
+  1. `node tools/audit-deployments.mjs --from <export>`: hoja contra lo que sirve la importación del backend (todas las filas) y contra la vista previa de la web (todas las filas, solo con los campos públicos y ningún otro), celda por celda. Debe dar 0 diferencias.
   2. `cd tools && node verify-site.mjs`: abre la ficha de cada fila de la vista previa de cada pestaña y comprueba campos, valores y enlaces, y que la página no pide nada fuera de `data/preview/`.
   3. Tras la importación a producción: el recuento de Deployments del backend coincide con la hoja, y en la aplicación de suscriptores las fichas de la primera y la última fila y de las de textos más largos están completas a 390, 768 y 1440 px (con una sesión de suscriptor existente, nunca con un pago nuevo).
 - El cierre lleva filas, columnas, valores no vacíos y diferencias (0 o la lista exacta justificada).
@@ -72,7 +72,7 @@ Orden de Javier (17/11/2026): desde cada robot se ve dónde trabaja, haciendo qu
 - Las genera el servidor en cada importación (`server/src/relations/graph.js`), a partir de las filas importadas y de la configuración revisada que el workflow «Import private workbook» envía desde `main` (`node tools/relations.mjs --config`): alias de `tools/relations-aliases.json` y el índice público del catálogo. Así nunca quedan desfasadas respecto a los datos.
 - Identidad: `organization_id` de la hoja para organizaciones; número del catálogo público para robots; id de Entities o id fijo del alias para fabricantes. Nombres solo por igualdad exacta normalizada con el catálogo o con un alias revisado; nunca por subcadenas. Un registro que solo da el fabricante, o un modelo distinto del de la ficha, se queda en el fabricante (`model_not_disclosed`, `model_not_in_catalogue`): jamás se atribuye a un robot. Nivel `model` (nombra el modelo de la ficha) o `family` (misma línea, otra versión o sin versión). Fabricante, operador o cliente, cliente e inversor, y socio tecnológico o integrador son roles distintos.
 - `tools/relations-aliases.json` es público: solo nombres de fabricantes y de modelos del catálogo y sus variantes de producto. Nunca organizaciones, lugares, tareas, fuentes ni registros premium.
-- Los visitantes solo ven relaciones de las 10 filas de vista previa (`/v1/relations/preview` y la sección «Deployments» de cada robot en la web); las completas, con suscripción comprobada en el servidor (`/v1/relations`).
+- Los visitantes ven el grafo público, construido solo con los campos públicos de todas las filas (`/v1/relations/preview` y la sección «Deployments» de cada robot en la web); las completas, con suscripción comprobada en el servidor (`/v1/relations`).
 
 En cada actualización, antes de publicar:
 
@@ -85,7 +85,7 @@ En cada actualización, antes de publicar:
 
 Desde el 17/11/2026 (Javier) la aplicación tiene un buscador sobre las 13 categorías (`/app/#search`, también desde la portada) con etiquetas comunes: sector, tarea, país de despliegue, país de la empresa, tipo o rol, estado del despliegue, nivel de evidencia y plataforma del robot.
 
-- Seguridad: el servidor decide el alcance antes de buscar. Visitantes y cuentas sin suscripción solo buscan en Humanoids y en las 10 filas de vista previa de cada pestaña (valores públicos): resultados, fragmentos, etiquetas y recuentos salen de ese conjunto. Los suscriptores buscan en todo.
+- Seguridad: el servidor decide el alcance antes de buscar. Visitantes y cuentas sin suscripción buscan en las pestañas gratuitas enteras y en todas las filas de Deployments y Components con sus campos públicos: resultados, fragmentos, etiquetas y recuentos salen de ese conjunto. Los suscriptores buscan en todo.
 - El índice y las etiquetas se regeneran en cada importación (tabla `search_docs`). No hay ningún índice en la web ni en Git.
 - Las etiquetas salen solo de campos de la hoja y del vocabulario controlado (`server/src/search/vocabulary.js`): país de sede separado del país de despliegue, estado del despliegue separado de la madurez del producto (que la hoja no recoge, así que no hay etiqueta de madurez). Un valor desconocido no se etiqueta.
 - En cada actualización: `node --no-warnings tools/search-tags.mjs --from <export>` (solo en pantalla, nunca en Git) muestra la cobertura y los valores que el vocabulario no conoce. Si uno es un sinónimo real de un término existente (por ejemplo, otra forma de escribir un país), añádelo al vocabulario y explícalo en el PR; si no, se queda sin etiqueta y se anota en el cierre.
@@ -131,7 +131,7 @@ Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json`.
    5. Rama `weekly-update/<fecha>`, PR contra `main`, CI en verde, fusión, espera al despliegue de Pages.
    6. Datos completos a producción: Actions, «Import private workbook», Run workflow en `main`, target `production`. Comprueba en el registro del job HTTP 200, los recuentos de las 13 pestañas, `relations.ok: true` con su cobertura y `search` con sus documentos y valores desconocidos. Si falla (por ejemplo, identidad de Google), el cierre es `bloqueado` con el error exacto.
 
-10. **Verifica producción** en https://whyhumanoid.com/: recuentos por categoría iguales a la exportación, los registros nuevos o cambiados visibles con su fuente y fecha, la vista previa de 10 filas por pestaña premium con su enlace a la base completa, ningún JSON con filas completas accesible en la web, la ficha «View all data» completa, y en la aplicación de suscriptores los recuentos del backend iguales a la exportación.
+10. **Verifica producción** en https://whyhumanoid.com/: recuentos por categoría iguales a la exportación, los registros nuevos o cambiados visibles con su fuente y fecha, todas las filas de Deployments y Components con sus campos públicos y su enlace a la suscripción, ningún JSON con filas completas accesible en la web, la ficha «View all data» completa, y en la aplicación de suscriptores los recuentos del backend iguales a la exportación.
 
 11. **Registra como procesado** solo ahora: actualiza `last_processed_edition`, vacía de `known_pending` lo publicado y añade la línea en `runs`. Commit por el mismo flujo.
 

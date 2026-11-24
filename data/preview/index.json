@@ -1,5 +1,5 @@
 {
- "note": "Public data of the 12 workbook tabs other than Humanoids, with counts and field names. Free categories (Integrators, Software, Datasets, Benchmarks, Investment, Other Robots): every row. Deployments, Components (Hardware tab) and the tabs that support Deployments: the first 10 sheet rows; every row and field only for subscribers (EUR 100 per year), served by the backend after a subscription check (access matrix of 23 Nov 2026).",
+ "note": "Public data of the 12 workbook tabs other than Humanoids, with counts and field names. Free categories (Integrators, Software, Datasets, Benchmarks, Investment, Other Robots): every row and field. Deployments, Components (Hardware tab and related software) and the identity register of Deployments: every row at its public fields (public_fields); every field only for subscribers (US$100 per year), served by the backend after a subscription check. Claim-to-evidence links and the tabs outside the offer are counted, not listed (access matrix of 24 Nov 2026).",
  "snapshot": "2026-11-17T20:58:00Z",
  "tabs": [
   {

@@ -3,20 +3,30 @@
 Source of [whyhumanoid.com](https://whyhumanoid.com): a sourced database of humanoid robotics for people and
 agents preparing enterprise deployment plans.
 
-## Access model: paywall (Javier, 16 Nov 2026)
+## Access model: two paths (Javier, 24 Nov 2026)
 
-Decision of 16 Nov 2026 (d-0008), replacing the temporary open database: Humanoids is free; the other 12 tabs are
-premium at US$100 per year (new subscriptions, billed annually; existing EUR subscriptions keep their price) through Stripe, with no free trial. Since 24 Nov 2026 the site lists every Deployments case and Components product at its public fields (server/src/access/fields.js); before, it showed the first 10 sheet rows of each premium
-tab; full rows exist only in the backend database (Cloudflare D1) and are served after a server-side subscription
-check on every request. Never publish full rows of a premium tab in Git, the site or any public file again: the
-guard (`tools/check-public.mjs`), the export tests and CI fail if one comes back.
+The offer of 24 Nov 2026 replaces the 16 Nov paywall of 12 premium tabs (d-0008) and its 10-row previews. Access is
+decided only by `server/src/access/matrix.js`, with the public field allowlist of `server/src/access/fields.js`.
+
+- A. Full data access: one data subscription, US$100 per year billed annually, no free trial (`server/src/pricing.js`),
+  for complete Deployments and complete Components. New live sales open since 24 Nov 2026 (`LIVE_SALES_OPEN`).
+  Subscriptions bought at the former EUR 100 per year price keep their contract, currency and renewal
+  (`STRIPE_LEGACY_PRICE_IDS`). Checkout computes and collects no tax; any tax change is Javier's decision.
+- B. Custom company reports (Robot integration diagnostic, Industrial diversification report), US$1,000 each, separate
+  from the subscription: not available to order yet (no form, checkout or delivery promise).
+- Every other category is free.
+
+Full rows of the subscription tabs exist only in the backend database (Cloudflare D1) and are served after a
+server-side subscription check on every request. Never publish a paid field in Git, the site or any public file: the
+guard (`tools/check-public.mjs`), the export checks, CI and `tools/check-reserved.mjs --from <export>` fail if one appears.
 
 | What | Who | Where |
 |---|---|---|
 | Humanoids: every robot row the sheet publishes, 32 fields, public values | Anyone | `index.html`, `data/humanoids-catalogue.*` |
-| The 12 other tabs: first 10 sheet rows of each, every field; the link directories (Integrators, Software, Datasets, Hardware, Other robots) in full (sheet titles since 23 Nov 2026: Hardware is Components, Stocks is Investment; see ops/brief.md for the access matrix under review); name, ticker, exchange and country of every listed company (Stocks); counts and field names; a page per robot and company with record summaries and one selected record; global search over these public data (approved split, 17 Nov 2026) | Anyone | `data/preview/<tab>.json`, Database section of `index.html` |
-| The 12 other tabs in full (all rows and fields), Humanoids with full values, global search over every row, agent API keys | Active subscribers | premium app at `https://whyhumanoid.com/app/` (static, holds no data), API on the Cloudflare Worker, data in D1 |
-| Left out everywhere | Nobody | rows the sheet marks as duplicates or not for publication; private links (workbook, Drive, mailto:, local addresses), personal contacts and internal editor notes; the backend row key, raw sheet-row pointers (`source_rows`) and importer bookkeeping; third-party GOOGLEFINANCE quote columns of Stocks |
+| Free tabs: Integrators, Software, Other robots and Task evaluations, every row and field; Investment, every listed company (name, ticker, exchange and country beyond row 10 until the next full export; GOOGLEFINANCE quote columns left out); the Reports, Benchmarks and Datasets atlases | Anyone | `data/preview/<tab>.json`, `data/reports/`, `data/benchmarks/`, `data/datasets/` |
+| Deployments and Components: every case and product at its public fields, with sources and caveats; a permanent page per case (`/deployments/<slug>/`) and product; claim-to-evidence links and tabs outside the offer counted, not listed; global search over these public values | Anyone | `data/preview/<tab>.json`, `data/public/projection.json`, pages, Database section of `index.html` |
+| Deployments and Components in full (every row and field, technical passports, comparison and filters), full search, agent API keys | Active subscribers | premium app at `https://whyhumanoid.com/app/` (static, holds no data), API on the Cloudflare Worker, data in D1 |
+| Left out everywhere | Nobody | rows the sheet marks as duplicates or not for publication; private links (workbook, Drive, mailto:, local addresses), personal contacts and internal editor notes; the backend row key, raw sheet-row pointers (`source_rows`) and importer bookkeeping; Source workbook and row numbers of Components |
 
 Refresh: the site preview with `node --no-warnings tools/export-database.mjs --from <private export>`, then
 `tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs`, `tools/export-public.mjs --from`, `tools/build-pages.mjs`, `tools/build-site.mjs` and
@@ -80,7 +90,7 @@ node server/scripts/dev.mjs                 # local app and catalogue with synth
 | Method | Path | Access |
 |---|---|---|
 | GET | `/v1/datasets` | public: the 13 datasets, no rows |
-| GET | `/v1/datasets/{id}/preview` | public: the whole Humanoids catalogue (public values), every row of the link directories, every listed company with basic fields beyond row 10, or the first 10 data rows of another tab in workbook order; no search |
+| GET | `/v1/datasets/{id}/preview` | public: every row of a free tab; every row of Deployments and Components at its public fields (`public_fields`); counted-only tabs return no rows; no search |
 | GET | `/v1/datasets/{id}?limit&offset&q` | active subscription, checked on every request |
 | GET | `/v1/billing/plan` | public: US$100 per year, whether checkout is available |
 | POST | `/v1/billing/checkout` | browser session; Stripe price verified as USD 10000 / year, no trial, first; refused while a payment is pending |

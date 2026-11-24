@@ -26,7 +26,7 @@ import { robotPresentation } from './robot-presentation.mjs';
 // premium.whyhumanoid.com is set up as a custom domain.
 // The premium app on the brand's domain (17 Nov 2026), published by tools/build-app.mjs.
 export const PREMIUM_APP_URL = 'https://whyhumanoid.com/app/';
-// Live checkout of the new offer waits for its purchase terms (server/src/pricing.js, LIVE_SALES_OPEN).
+// Whether new live subscriptions can be bought (server/src/pricing.js, LIVE_SALES_OPEN; open since 24 Nov 2026).
 export const CHECKOUT_OPEN = LIVE_SALES_OPEN;
 // Access (Javier, 24 Nov 2026): free tabs in full; Deployments and Components list every entry at its public fields.
 export const OPEN_DATABASE = false;
