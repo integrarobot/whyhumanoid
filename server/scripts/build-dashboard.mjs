@@ -19,7 +19,8 @@ const esbuild = process.argv.slice(2).find((a) => !a.startsWith('--')) ?? 'esbui
 const out = staging ? 'worker.staging.js' : 'worker.dashboard.js';
 execFileSync(esbuild, [
   new URL(staging ? 'staging-entry.js' : 'dashboard-entry.js', here).pathname,
-  '--bundle', '--format=esm', '--platform=browser', '--conditions=worker,browser', '--minify',
+  // x402 (24 Nov 2026): @x402/extensions imports Node's "url" (domainToASCII); the Worker's nodejs_compat flag provides it.
+  '--bundle', '--format=esm', '--platform=browser', '--conditions=worker,browser', '--minify', '--external:url', '--external:node:*',
   `--outfile=${new URL(`../dist/${out}`, here).pathname}`, '--log-level=warning',
 ], { stdio: 'inherit' });
 console.log(`built dist/${out}`);

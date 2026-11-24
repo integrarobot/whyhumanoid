@@ -98,4 +98,29 @@ node server/scripts/dev.mjs                 # local app and catalogue with synth
 | POST | `/v1/stripe/webhook` | Stripe signature, same mode (test or live) as the environment |
 | GET / POST | `/v1/me`, `/v1/auth/*`, `/v1/api-keys` | sign-in flow, agent keys |
 | POST | `/v1/agent/task-plan` | active subscription: candidates, dated source-linked claims with stage and conditions, missing measurements, pilot checks, evidence gaps |
+| GET | `/v1/x402` | public: description of the pay-per-query route (parameters, input and output schemas, rules, price and state); no data |
+| GET | `/v1/x402/deployment-evidence?robot&organization&country&sector&task&status&case&limit` | x402 pay-per-query (USDC on Base): the deployment cases that match, with each claim, status, evidence level, dates, sources and open questions; at most 10 cases and 50 records. Disabled until configured (below) |
+
+### x402 pay-per-query (prepared 24 Nov 2026; not enabled)
+
+`GET /v1/x402/deployment-evidence` answers one bounded question for an AI agent that pays per request with the x402
+protocol (v2, `exact` scheme, USDC on Base), without an account or a subscription. It reads the same imported
+Deployments rows subscribers get and returns, for each matching case, its records with the claim as the source states it,
+operational and verification status, evidence level, confidence, observation dates, metric, source (title, URL, publisher,
+role, type, publication and access dates) and open questions. It never returns the subscription's operational detail
+(site, city, region, workflow, integration dependencies, task description, relationship or commercial status).
+
+- Protocol: the official x402 server (`@x402/core/server`, `@x402/evm` exact scheme) with the Bazaar discovery extension
+  (`@x402/extensions/bazaar`); verification and settlement by the facilitator (CDP on Base mainnet, x402.org on Base
+  Sepolia). An unpaid request gets `402` with the `PAYMENT-REQUIRED` header; a paid one `200` with `PAYMENT-RESPONSE`.
+- Rules: a malformed query is refused (`400`) before any payment is requested; a query with no match returns an empty
+  answer and is not charged; a query error or a failed settlement returns no data and charges nothing; the same payment
+  for the same query returns the same answer without a second charge, and cannot buy another query (`409`).
+- Gates (`server/src/x402/server.js`, `x402Readiness`): `X402_ENABLED`, a supported network, an approved whole-cent
+  `X402_PRICE_USD`, the Stripe crypto deposit address as `X402_PAY_TO`, a facilitator, imported data. Base mainnet is also
+  closed in code (`X402_LIVE_OPEN = false`). Until every gate passes the route answers `503` and advertises nothing.
+- Payments: D1 table `x402_payments` (migration `0004`); settled payments are recorded in Stripe as PaymentIntents in
+  transaction-verification mode, keyed by transaction hash, when `X402_STRIPE_RECORDING` is on.
+- Checks: `server/test/x402.test.js` (official client and official facilitator, real signatures, simulated chain) and
+  `node server/scripts/x402-workerd-check.mjs` (the built bundle in workerd). Activation steps: DEPLOYMENT.md, section 7.
 | POST | `/v1/admin/import` | `x-admin-token` |

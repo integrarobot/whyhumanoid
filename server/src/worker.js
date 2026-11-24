@@ -8,6 +8,7 @@ import { createResendMailer, disabledMailer } from './mailer.js';
 import { DATASETS } from './datasets.js';
 import { fetchWorkbookValues } from './import/google-sheets.js';
 import { runImport } from './import/run.js';
+import { x402ConfigFromEnv } from './x402/server.js';
 
 export function configFromEnv(env) {
   return {
@@ -29,6 +30,8 @@ export function configFromEnv(env) {
     loginTtlSeconds: 900,
     loginMaxPerHour: 5,
     sessionTtlSeconds: 30 * 24 * 3600,
+    // x402 pay-per-query (server/src/x402/server.js): off unless X402_ENABLED and every gate passes.
+    x402: x402ConfigFromEnv(env),
   };
 }
 
@@ -48,8 +51,9 @@ export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const app = createApp({
+      waitUntil: ctx?.waitUntil ? (p) => ctx.waitUntil(p) : null,
       db: env.DB,
       config: configFromEnv(env),
       gateway: createStripeGateway({

@@ -412,3 +412,40 @@ After 1 to 7, the production checks: import counts for all 13 tabs, previews and
 sign-in email delivered from `premium@whyhumanoid.com` and redeemed, the live price check (one unpaid Checkout
 session, no charge), and the workbook restricted with the anonymous link returning no data. Only then: live
 checkout on and PR #1 merged.
+
+## 7. x402 pay-per-query: activation (prepared 24 Nov 2026)
+
+State: code merged with every gate closed. The route answers `503` and advertises no payment in both environments.
+Completion needs, verified separately: deployment, a real payment, Bazaar indexation and the Agentic Market listing.
+A 402 response alone is not completion.
+
+What exists:
+- `GET /v1/x402` (free description) and `GET /v1/x402/deployment-evidence` (paid), server/src/x402/.
+- Migration `server/migrations/0004_x402_payments.sql` (new table; must be applied before enabling).
+- Worker bundle with the official x402 server, the Bazaar extension and the CDP facilitator auth (about 1 MB minified).
+  It imports Node's `url`, which the `nodejs_compat` flag provides: the Worker must keep `nodejs_compat`.
+
+What is missing, and who provides it:
+1. Javier: the price per query (USD, whole cents) and the go-ahead for Base mainnet.
+2. Stripe: approval of the Spanish account for machine payments / x402 (requested by Codex on 24 Nov 2026 to
+   machine-payments@stripe.com; not granted yet). Without it there is no live deposit address.
+3. Codex (Stripe sandbox): a static sandbox crypto deposit address (`POST /v1/crypto/deposit_addresses`, `network=base`,
+   with the preview `Stripe-Version` the guide gives) as test `X402_PAY_TO`; confirm the exact PaymentIntent
+   parameters for recording (`server/src/billing.js`, `recordCryptoPayment`) and set `X402_STRIPE_API_VERSION`.
+4. Codex (Cloudflare): apply migration 0004 to the test and production D1, deploy the Worker bundle, and for production
+   the secrets `CDP_API_KEY_ID` and `CDP_API_KEY_SECRET` (CDP facilitator; never in Git).
+5. Testnet payment: a test wallet with Base Sepolia USDC to pay once through the x402.org facilitator. No wallet is
+   created by the agents; Javier or Codex decides who holds it.
+
+Order:
+1. Test: migration 0004, deploy, set test vars (`X402_ENABLED=true`, `X402_PAY_TO`, `X402_PRICE_USD`), check
+   `GET /v1/x402` says `available`, pay once on Base Sepolia, confirm the row in `x402_payments` and, with recording
+   on, the PaymentIntent in the Stripe sandbox.
+2. Production, after Stripe's approval and Javier's price: set `X402_LIVE_OPEN = true` in code (PR), deploy, set the live
+   vars and CDP secrets, make one real paid request (Javier's decision; real funds), then check Bazaar (`GET
+   https://api.cdp.coinbase.com/platform/v2/x402/discovery/resources?payTo=<address>`) and Agentic Market.
+
+Unknowns to confirm against Stripe's documentation before production:
+- whether the CDP facilitator settles to a Stripe deposit address unchanged;
+- the PaymentIntent parameters for recording;
+- the preview API version (2026-05-27.preview in the guide, 2026-07-29.preview in the sandbox example).

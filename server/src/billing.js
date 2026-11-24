@@ -47,6 +47,25 @@ export function createStripeGateway({ secretKey, webhookSecret }) {
       );
       return { id: session.id, url: session.url };
     },
+    // x402 (24 Nov 2026): records a USDC payment already settled on Base to the Stripe crypto deposit address, as a
+    // PaymentIntent in transaction-verification mode, keyed by the transaction hash so a retry never records twice.
+    // Parameter names follow Stripe's machine-payments x402 guide as reported on 24 Nov 2026 (preview API version passed
+    // per request); X402_STRIPE_RECORDING stays false until they are confirmed in a Stripe sandbox.
+    async recordCryptoPayment({ amountCents, txHash, network, apiVersion }) {
+      const pi = await stripe.paymentIntents.create(
+        {
+          amount: amountCents,
+          currency: 'usd',
+          payment_method_types: ['crypto'],
+          payment_method_data: { type: 'crypto' },
+          payment_method_options: { crypto: { mode: 'transaction_verification', network, transaction_hash: txHash } },
+          confirm: true,
+          metadata: { source: 'x402', product: 'deployment-evidence' },
+        },
+        { idempotencyKey: txHash, apiVersion },
+      );
+      return { id: pi.id, status: pi.status };
+    },
     // Stripe customer portal: payment method, invoices and cancellation, hosted by Stripe.
     async createPortalSession({ customerId, returnUrl, configuration }) {
       const session = await stripe.billingPortal.sessions.create({
