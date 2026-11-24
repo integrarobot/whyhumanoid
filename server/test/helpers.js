@@ -201,6 +201,7 @@ export async function setup({
   workbook = null,
   x402 = undefined,
   x402Facilitator = null,
+  adminToken = null,
 } = {}) {
   const db = createTestDb();
   let now = T0;
@@ -228,6 +229,7 @@ export async function setup({
     loginMaxPerHour: 5,
     sessionTtlSeconds: 30 * 24 * 3600,
     x402,
+    ...(adminToken ? { adminToken } : {}),
   };
   const app = createApp({ db, config, gateway, mailer, clock: () => now, log: { error() {} }, x402Facilitator });
   const call = (method, path, { token, body, headers = {} } = {}) =>

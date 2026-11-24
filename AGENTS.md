@@ -27,7 +27,8 @@ Why Humanoid? (whyhumanoid.com), de Integrarobot. Decide Javier; ejecuta Claude;
   - Sin precio aprobado por Javier (`X402_PRICE_USD`), sin la dirección de depósito de Stripe (`X402_PAY_TO`), sin facilitador o sin datos, la ruta responde 503 y no anuncia ningún pago.
   - Base mainnet sigue cerrada en el código (`X402_LIVE_OPEN = false`) hasta que existan el precio y la aprobación de Stripe.
   - Una consulta mal formada se rechaza antes de pedir el pago. Una consulta sin resultados, un error o una liquidación fallida no cobran.
-  - El mismo pago para la misma consulta devuelve la misma respuesta sin segundo cobro, y no sirve para otra consulta.
+  - La respuesta pagada se guarda antes de liquidar. El mismo pago para la misma consulta la devuelve sin cambios y sin segundo cobro durante 24 horas, y después responde 410; no sirve para otra consulta.
+  - Si no se sabe si la liquidación se produjo (tiempo agotado, conexión rota o registro sin escribir), se responde `charged: "unknown"`, nunca «no cobrado», no se vuelve a liquidar sola y la concilia una persona con `/v1/admin/x402/payments` sin volver a cobrar.
   - No cambia la suscripción (US$100 al año ni los contratos en EUR) ni los informes, que siguen sin poder pedirse.
   - Los agentes no crean carteras ni hacen pagos reales.
   Para darlo por terminado hay que verificar por separado el despliegue, un pago real, la indexación en Bazaar y la aparición en Agentic Market. Pasos en DEPLOYMENT.md, sección 7.

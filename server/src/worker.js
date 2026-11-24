@@ -8,7 +8,7 @@ import { createResendMailer, disabledMailer } from './mailer.js';
 import { DATASETS } from './datasets.js';
 import { fetchWorkbookValues } from './import/google-sheets.js';
 import { runImport } from './import/run.js';
-import { x402ConfigFromEnv } from './x402/server.js';
+import { cleanupPayments, x402ConfigFromEnv } from './x402/server.js';
 
 export function configFromEnv(env) {
   return {
@@ -70,6 +70,8 @@ export default {
 
   // Nightly server-side import of the thirteen workbook tabs.
   async scheduled(_event, env, ctx) {
+    // x402: unfinished settlements to reconciliation, expired paid answers cleared (no-op while x402 is unused).
+    ctx.waitUntil(cleanupPayments(env.DB, Math.floor(Date.now() / 1000)).catch((e) => console.error('x402 clean-up failed', String(e))));
     ctx.waitUntil(
       importFromWorkbook(env).then((result) => {
         if (!result.ok) console.error('premium import failed', result.error);

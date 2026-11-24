@@ -15,7 +15,7 @@ import { ExactEvmScheme } from '@x402/evm/exact/client';
 import { decodePaymentRequiredHeader, decodePaymentResponseHeader, decodePaymentSignatureHeader, encodePaymentSignatureHeader } from '@x402/core/http';
 import { PaymentRequiredV2Schema } from '@x402/core/schemas';
 import { validateAndExtract, validateDiscoveryExtension } from '@x402/extensions/bazaar';
-import { setup } from './helpers.js';
+import { T0, setup } from './helpers.js';
 import { BASE_SEPOLIA, BASE_SEPOLIA_USDC, officialFacilitator, simulatedChain } from './x402-facilitator.js';
 import { EVIDENCE_FIELDS, MAX_CASES } from '../src/x402/evidence.js';
 
@@ -164,32 +164,131 @@ test('a forged, altered or unfunded payment is refused with no data and no settl
   void ctx;
 });
 
-test('retries are safe: the same payment replays the same answer without a second charge, and cannot buy another query', async () => {
+test('retries are safe: the same payment replays the stored paid answer, unchanged, for 24 hours; never another query', async () => {
   const { ctx, fac, pay, sent, appFetch, stripe } = await world();
   const first = await pay(URL_OF('robot=fx_manufacturer_4'));
   const firstBody = await first.json();
   const header = sent.find(Boolean);
+  // The data change after payment: the replay still returns what was paid for, not refreshed results.
+  await ctx.db.prepare("UPDATE premium_rows SET data = json_set(data, '$.claim_text', 'changed after payment') WHERE dataset = 'deployments'").run();
   const again = await appFetch(URL_OF('robot=fx_manufacturer_4'), { headers: { 'payment-signature': header } });
   assert.equal(again.status, 200);
   const againBody = await again.json();
-  assert.deepEqual(againBody.results, firstBody.results);
+  assert.deepEqual(againBody.results, firstBody.results, 'the stored answer, not a fresh query');
+  assert.equal(againBody.results[0].records[0].claim.text, 'fx_claim_text_4');
   assert.equal(againBody.payment.replayed, true);
   assert.equal(decodePaymentResponseHeader(again.headers.get('payment-response')).transaction, firstBody.payment.transaction);
+  // The same authorisation re-encoded (other key order) is the same payment.
+  const p = decodePaymentSignatureHeader(header);
+  const reencoded = encodePaymentSignatureHeader(Object.fromEntries(Object.entries(p).reverse()));
+  assert.notEqual(reencoded, header);
+  assert.equal((await appFetch(URL_OF('robot=fx_manufacturer_4'), { headers: { 'payment-signature': reencoded } })).status, 200);
+  // Same identity (payer and nonce, public after settlement) with another signature: no answer.
+  const forged = structuredClone(p);
+  forged.payload.signature = `0x${'1c'.padStart(130, '0')}`;
+  const forgedRes = await appFetch(URL_OF('robot=fx_manufacturer_4'), { headers: { 'payment-signature': encodePaymentSignatureHeader(forged) } });
+  assert.equal(forgedRes.status, 409);
+  assert.ok(!(await forgedRes.text()).includes('fx_claim_text'));
   assert.equal(fac.chain.state.settled.length, 1, 'no second settlement');
   assert.equal(stripe.length, 1, 'recorded in Stripe once');
   const other = await appFetch(URL_OF('robot=fx_manufacturer_5'), { headers: { 'payment-signature': header } });
   assert.equal(other.status, 409);
   assert.equal((await other.json()).error, 'payment_already_used');
-  // While a payment is settling, a concurrent request with it waits.
-  const p = structuredClone(decodePaymentSignatureHeader(header));
-  p.payload.authorization.nonce = `0x${'ab'.repeat(32)}`;
-  const busyHeader = encodePaymentSignatureHeader(p);
-  const key = [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(busyHeader)))].map((b) => b.toString(16).padStart(2, '0')).join('');
-  const reqKey = [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(JSON.stringify([[['robot', 'fx manufacturer 4']], 5]))))].map((b) => b.toString(16).padStart(2, '0')).join('');
-  await ctx.db.prepare("INSERT INTO x402_payments (payment_key, request_key, status, network, amount_atomic, pay_to, created_at, updated_at) VALUES (?, ?, 'settling', ?, '50000', ?, 1, 9999999999)").bind(key, reqKey, BASE_SEPOLIA, PAY_TO).run();
-  const busy = await appFetch(URL_OF('robot=fx_manufacturer_4'), { headers: { 'payment-signature': busyHeader } });
-  assert.equal(busy.status, 409);
-  assert.equal(busy.headers.get('retry-after'), '5');
+  // After the replay window: 410, and the scheduled clean-up clears the stored answer.
+  ctx.setNow(T0 + 2 * 86400);
+  const late = await appFetch(URL_OF('robot=fx_manufacturer_4'), { headers: { 'payment-signature': header } });
+  assert.equal(late.status, 410);
+  assert.equal((await late.json()).error, 'payment_replay_expired');
+});
+
+test('concurrent requests with one payment: one settles, the other waits', async () => {
+  const { fac, pay, sent, appFetch } = await world();
+  await pay(URL_OF('robot=fx_manufacturer_2'));
+  const p = decodePaymentSignatureHeader(sent.find(Boolean));
+  // A fresh authorisation signed by the official client for another query, sent twice at once while settlement is slow.
+  const fresh = [];
+  const client = wrapFetchWithPayment(async (input, init) => { const r = new Request(input, init); if (r.headers.get('payment-signature')) { fresh.push(r.headers.get('payment-signature')); return new Response('{}', { status: 418 }); } return appFetch(r); }, new x402Client().register(BASE_SEPOLIA, new ExactEvmScheme(privateKeyToAccount(ANVIL_0))));
+  await client(URL_OF('robot=fx_manufacturer_9')).catch(() => {});
+  assert.ok(fresh[0] && fresh[0] !== p);
+  fac.control.settleDelayMs = 300;
+  const [a, b] = await Promise.all([0, 1].map(() => appFetch(URL_OF('robot=fx_manufacturer_9'), { headers: { 'payment-signature': fresh[0] } })));
+  const statuses = [a.status, b.status].sort();
+  assert.deepEqual(statuses, [200, 409]);
+  assert.equal(fac.chain.state.settled.length, 2, 'the second request did not settle again');
+});
+
+test('an unknown settlement outcome is never reported as not charged, never settled again, and is reconciled by an operator', async () => {
+  const ADMIN = 'test-admin-token';
+  for (const mode of ['settleThenThrow', 'throwBeforeSettle', 'ambiguous']) {
+    const fac = officialFacilitator();
+    const ctx = await setup({ x402: X, x402Facilitator: fac.client, adminToken: ADMIN });
+    const stripe = [];
+    ctx.gateway.recordCryptoPayment = async (args) => { stripe.push(args); return { id: 'pi_test_1', status: 'succeeded' }; };
+    const sent = [];
+    const appFetch = async (input, init) => { const r = new Request(input, init); sent.push(r.headers.get('payment-signature')); return ctx.app(r); };
+    const pay = wrapFetchWithPayment(appFetch, new x402Client().register(BASE_SEPOLIA, new ExactEvmScheme(privateKeyToAccount(ANVIL_0))));
+    fac.control[mode] = true;
+    const res = await pay(URL_OF('robot=fx_manufacturer_3'));
+    assert.equal(res.status, 503, mode);
+    const body = await res.json();
+    assert.equal(body.error, 'settlement_unknown', mode);
+    assert.equal(body.payment.charged, 'unknown', `${mode}: never "not charged" when it may have been`);
+    assert.ok(!JSON.stringify(body).includes('fx_claim_text'), `${mode}: no data while unknown`);
+    const moved = fac.chain.state.settled.length;
+    assert.equal(moved, mode === 'settleThenThrow' ? 1 : 0, `${mode}: what actually happened on chain`);
+    fac.control[mode] = false;
+    const header = sent.find(Boolean);
+    // Retrying with the same payment never settles again while unknown.
+    const retry = await appFetch(URL_OF('robot=fx_manufacturer_3'), { headers: { 'payment-signature': header } });
+    assert.equal(retry.status, 202);
+    assert.equal((await retry.json()).error, 'payment_under_review');
+    assert.equal(fac.chain.state.settled.length, moved, `${mode}: no automatic re-settlement`);
+    // The operator lists it and resolves it from the chain.
+    assert.equal((await ctx.call('GET', '/v1/admin/x402/payments')).status, 401, 'admin token required');
+    const list = await (await ctx.call('GET', '/v1/admin/x402/payments?status=unknown', { headers: { 'x-admin-token': ADMIN } })).json();
+    assert.equal(list.payments.length, 1);
+    const key = list.payments[0].payment_key;
+    assert.ok(!('answer' in list.payments[0]), 'the listing holds no data');
+    const outcome = moved ? { outcome: 'settled', tx_hash: fac.chain.state.settled[0].hash } : { outcome: 'not_settled' };
+    const resolved = await ctx.call('POST', `/v1/admin/x402/payments/${key}/resolve`, { headers: { 'x-admin-token': ADMIN }, body: outcome });
+    assert.equal(resolved.status, 200, mode);
+    const after = await appFetch(URL_OF('robot=fx_manufacturer_3'), { headers: { 'payment-signature': header } });
+    assert.equal(after.status, 200, `${mode}: the buyer recovers with the same payment`);
+    const paid = await after.json();
+    assert.equal(paid.results[0].records[0].claim.text, 'fx_claim_text_3');
+    assert.equal(fac.chain.state.settled.length, 1, `${mode}: charged exactly once in the end`);
+    assert.equal(stripe.length, 1, `${mode}: recorded in Stripe once`);
+  }
+});
+
+test('if the record cannot be written after settlement, the buyer still gets the paid answer and the payment goes to reconciliation', async () => {
+  const ADMIN = 'test-admin-token';
+  const fac = officialFacilitator();
+  const ctx = await setup({ x402: X, x402Facilitator: fac.client, adminToken: ADMIN });
+  ctx.gateway.recordCryptoPayment = async () => ({ id: 'pi_test_1', status: 'succeeded' });
+  const realPrepare = ctx.db.prepare.bind(ctx.db);
+  let failOnce = true;
+  ctx.db.prepare = (sql) => (failOnce && sql.startsWith("UPDATE x402_payments SET status = 'settled'") ? { bind: () => ({ run: async () => { failOnce = false; throw new Error('D1 unavailable'); } }) } : realPrepare(sql));
+  const sent = [];
+  const appFetch = async (input, init) => { const r = new Request(input, init); sent.push(r.headers.get('payment-signature')); return ctx.app(r); };
+  const pay = wrapFetchWithPayment(appFetch, new x402Client().register(BASE_SEPOLIA, new ExactEvmScheme(privateKeyToAccount(ANVIL_0))));
+  const res = await pay(URL_OF('robot=fx_manufacturer_5'));
+  assert.equal(res.status, 200, 'paid: the answer is delivered');
+  assert.equal((await res.json()).results[0].records[0].claim.text, 'fx_claim_text_5');
+  const receipt = decodePaymentResponseHeader(res.headers.get('payment-response'));
+  assert.equal(fac.chain.state.settled.length, 1);
+  const row = await ctx.db.prepare('SELECT status, answer FROM x402_payments').first();
+  assert.equal(row.status, 'settling');
+  assert.ok(row.answer, 'the paid answer was stored before settlement');
+  // Later the row is unknown (never re-settled), the operator resolves it, and the buyer can replay.
+  ctx.setNow(T0 + 600);
+  const retry = await appFetch(URL_OF('robot=fx_manufacturer_5'), { headers: { 'payment-signature': sent.find(Boolean) } });
+  assert.equal(retry.status, 202);
+  const [p] = (await (await ctx.call('GET', '/v1/admin/x402/payments?status=unknown', { headers: { 'x-admin-token': ADMIN } })).json()).payments;
+  assert.equal((await ctx.call('POST', `/v1/admin/x402/payments/${p.payment_key}/resolve`, { headers: { 'x-admin-token': ADMIN }, body: { outcome: 'settled', tx_hash: receipt.transaction } })).status, 200);
+  const replay = await appFetch(URL_OF('robot=fx_manufacturer_5'), { headers: { 'payment-signature': sent.find(Boolean) } });
+  assert.equal(replay.status, 200);
+  assert.equal(fac.chain.state.settled.length, 1, 'never charged twice');
 });
 
 test('no answer, no charge: an empty result or a failed settlement never takes money or returns data', async () => {
@@ -205,7 +304,9 @@ test('no answer, no charge: an empty result or a failed settlement never takes m
   fac.control.failSettle = true;
   const failed = await pay(URL_OF('robot=fx_manufacturer_6'));
   assert.equal(failed.status, 402);
-  assert.ok(!(await failed.text()).includes('fx_claim_text'));
+  const failedText = await failed.text();
+  assert.ok(!failedText.includes('fx_claim_text'));
+  assert.equal(JSON.parse(failedText).payment.charged, false, 'a definitive refusal is not charged');
   assert.equal((await settledRows(ctx)).length, 0);
   assert.equal((await ctx.db.prepare("SELECT COUNT(*) AS n FROM x402_payments WHERE status = 'failed'").first()).n, 1);
 });

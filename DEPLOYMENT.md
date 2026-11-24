@@ -415,7 +415,8 @@ checkout on and PR #1 merged.
 
 ## 7. x402 pay-per-query: activation (prepared 24 Nov 2026)
 
-State: code merged with every gate closed. The route answers `503` and advertises no payment in both environments.
+State (24 Nov 2026): the code is in pull request #93 and is NOT merged; nothing is deployed. Once merged it ships with
+every gate closed: the route answers `503` and advertises no payment in both environments.
 Completion needs, verified separately: deployment, a real payment, Bazaar indexation and the Agentic Market listing.
 A 402 response alone is not completion.
 
@@ -444,6 +445,13 @@ Order:
 2. Production, after Stripe's approval and Javier's price: set `X402_LIVE_OPEN = true` in code (PR), deploy, set the live
    vars and CDP secrets, make one real paid request (Javier's decision; real funds), then check Bazaar (`GET
    https://api.cdp.coinbase.com/platform/v2/x402/discovery/resources?payTo=<address>`) and Agentic Market.
+
+Operating it:
+- Unknown settlement outcomes (`status=unknown`) need an operator. List them with `GET /v1/admin/x402/payments` and
+  resolve each one from the chain or the Stripe deposit record with `POST /v1/admin/x402/payments/<key>/resolve`
+  (README, x402 section). Never settle again by hand and never re-bill.
+- The scheduled job marks settlements stuck for more than 3 minutes as unknown, and clears stored paid answers after
+  their 24-hour replay window.
 
 Unknowns to confirm against Stripe's documentation before production:
 - whether the CDP facilitator settles to a Stripe deposit address unchanged;

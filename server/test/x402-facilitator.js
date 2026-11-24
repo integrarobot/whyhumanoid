@@ -76,14 +76,21 @@ export function simulatedChain({ balance = 10n ** 12n, asset = BASE_SEPOLIA_USDC
 export function officialFacilitator({ chain = simulatedChain() } = {}) {
   const facilitator = new x402Facilitator().register(BASE_SEPOLIA, new ExactEvmScheme(chain.signer));
   const calls = [];
-  const control = { failSettle: false, down: false };
+  // failSettle: a definitive refusal. settleThenThrow: the transfer happens, then the transport fails (the outcome is
+  // unknown to the server). throwBeforeSettle: the transport fails and nothing moves. ambiguous: an unclear refusal.
+  const control = { failSettle: false, down: false, settleThenThrow: false, throwBeforeSettle: false, ambiguous: false, settleDelayMs: 0 };
   const client = {
     async getSupported() { if (control.down) throw new Error('facilitator down'); return facilitator.getSupported(); },
     async verify(payload, requirements) { calls.push({ op: 'verify', payload }); return facilitator.verify(payload, requirements); },
     async settle(payload, requirements) {
       calls.push({ op: 'settle', payload });
+      if (control.settleDelayMs) await new Promise((r) => setTimeout(r, control.settleDelayMs));
       if (control.failSettle) return { success: false, errorReason: 'transaction_failed', transaction: '', network: requirements.network };
-      return facilitator.settle(payload, requirements);
+      if (control.ambiguous) return { success: false, errorReason: 'settlement_timeout', transaction: '', network: requirements.network };
+      if (control.throwBeforeSettle) throw new Error('facilitator connection reset');
+      const result = await facilitator.settle(payload, requirements);
+      if (control.settleThenThrow) throw new Error('facilitator response timed out');
+      return result;
     },
   };
   return { client, chain, calls, control };
