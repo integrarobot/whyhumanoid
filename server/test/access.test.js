@@ -19,13 +19,17 @@ test('dataset list is public and contains no rows', async () => {
   assert.deepEqual(datasets.slice(0, 3).map((d) => d.id), ['humanoids', 'deployments', 'integrators']);
   assert.ok(datasets.every((d) => !('rows' in d)));
   assert.equal(datasets[0].access.preview_rows, 'all', 'the Humanoids catalogue is free in full');
-  // Access matrix of 23 Nov 2026: Deployments and Components (Hardware tab) for subscribers, with their supporting
-  // tabs; every other category free in every row; tabs outside the nine categories unchanged (10-row preview).
-  const SUBSCRIPTION = ['deployments', 'hardware', 'component-software', 'evidence-links', 'entities', 'container-handling', 'data-space'];
+  // Access matrix of 24 Nov 2026: Deployments and Components (Hardware tab) for subscribers, every row listed at its
+  // public fields; claim-to-evidence links and the tabs outside the categories counted only; every other tab free.
+  const LISTED = ['deployments', 'hardware', 'component-software', 'entities'];
+  const COUNTED = ['evidence-links', 'container-handling', 'data-space'];
   for (const d of datasets) {
-    assert.equal(d.access.preview_rows, SUBSCRIPTION.includes(d.id) ? 10 : 'all', d.id);
-    assert.equal(d.access.full, SUBSCRIPTION.includes(d.id) ? 'subscription' : 'public', d.id);
-    assert.equal(d.access.public_fields, null, `${d.id}: no partial-field rule left`);
+    const sub = LISTED.includes(d.id) || COUNTED.includes(d.id);
+    assert.equal(d.access.preview_rows, COUNTED.includes(d.id) ? 'none' : 'all', d.id);
+    assert.equal(d.access.full, sub ? 'subscription' : 'public', d.id);
+    if (LISTED.includes(d.id)) assert.ok(d.access.public_fields.length > 0, d.id);
+    else if (COUNTED.includes(d.id)) assert.deepEqual(d.access.public_fields, [], d.id);
+    else assert.equal(d.access.public_fields, null, `${d.id}: every field public`);
   }
   assert.equal(datasets.find((d) => d.id === 'hardware').category, 'components');
   assert.equal(datasets.find((d) => d.id === 'component-software').category, 'components');

@@ -5,6 +5,7 @@
 
 import { cleanValue, redactPrivateLinks } from './clean.js';
 import { PREVIEW_ROWS } from '../datasets.js';
+import { publicValues } from '../access/fields.js';
 
 export class ImportError extends Error {}
 
@@ -82,9 +83,11 @@ export function normalizeTab(spec, values) {
     // Rows the sheet itself excludes (duplicates, editorial resources) stay as internal provenance only.
     const internal = Boolean(spec.internalRow?.(data));
     if (!internal) rank += 1;
-    // Basic public fields (approved split, phase 3): beyond the first PREVIEW_ROWS rows, only spec.publicFields are public.
+    // Public values. A subscription tab (24 Nov 2026): every row at the allowlisted fields of server/src/access/fields.js,
+    // or none (null) when the tab is counted only. A free tab: its cleaned values, or all values (null).
     let pub = spec.clean ? previewData : null;
-    if (spec.publicFields && !internal && rank > PREVIEW_ROWS) pub = Object.fromEntries(spec.publicFields.map((f) => [f, (spec.clean ? previewData : data)[f] ?? null]));
+    if (spec.access === 'subscription') pub = internal ? null : publicValues(spec.id, spec.clean ? previewData : data);
+    else if (spec.publicFields && !internal && rank > PREVIEW_ROWS) pub = Object.fromEntries(spec.publicFields.map((f) => [f, (spec.clean ? previewData : data)[f] ?? null]));
     items.push({ sheetRow, rank: internal ? null : rank, data, previewData: pub, visibility: internal ? 'internal' : 'customer' });
   });
 

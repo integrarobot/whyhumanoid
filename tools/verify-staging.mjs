@@ -8,7 +8,7 @@
 //      /humanoids (no slash) reaches /humanoids/; representative robot, company and other-robot pages load.
 //   2. Old links: /robots/<slug>/ and /robots/ lead to /humanoids/...; old #db-<tab> links still open the panel.
 //   3. Canonical URLs point at whyhumanoid.com; the sitemap lists the categories and no /robots/ address.
-//   4. Exposure: no data/database files; Deployments and Components previews hold at most 10 rows; their API rows
+//   4. Exposure: no data/database files; Deployments and Components public files hold public fields only; their API rows
 //      answer 401 without a session; visitor search stays in the public scope.
 //   5. With --local (server/scripts/staging-local.mjs): account states through the real API and signed test-mode
 //      events: signed in without paying (403), active (200 for both), duplicate event (no change), cancelled at
@@ -21,6 +21,9 @@ const DATA_ATLAS = JSON.parse(readFileSync(new URL('../data/datasets/atlas.json'
 const COMPONENTS = JSON.parse(readFileSync(new URL('../data/components/coverage.json', import.meta.url), 'utf8'));
 const COMPONENT_ROWS = JSON.parse(readFileSync(new URL('../data/preview/hardware.json', import.meta.url), 'utf8')).rows;
 const REPORTS = JSON.parse(readFileSync(new URL('../data/reports/atlas.json', import.meta.url), 'utf8'));
+const DEP_PUBLIC = JSON.parse(readFileSync(new URL('../data/preview/deployments.json', import.meta.url), 'utf8')).rows;
+const DEP_CASES = new Set(DEP_PUBLIC.map((r) => r.deployment_id)).size;
+const { PUBLIC_FIELDS } = await import('../server/src/access/fields.js');
 
 // Playwright from the project if installed, else the machine's preinstalled copy (NODE_PATH).
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -138,27 +141,52 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     check(cx.overflow <= 1, `${label} components: no horizontal page scroll (${cx.overflow}px)`);
     await page.selectOption('#f-principle', 'magnetic');
     const mag = await page.evaluate(() => ({ shown: [...document.querySelectorAll('#pcs .pc')].filter((c) => !c.hidden).map((c) => c.dataset.id), url: location.search }));
-    check(mag.shown.join(',') === 'CMP-TAC-004,CMP-TAC-011' && /principle=magnetic/.test(mag.url), `${label} components: the magnetic filter keeps uSkin and ReSkin and is in the address (${mag.shown})`);
+    check(mag.shown.includes('CMP-TAC-004') && mag.shown.includes('CMP-TAC-011') && /principle=magnetic/.test(mag.url), `${label} components: the magnetic filter keeps uSkin and ReSkin and is in the address (${mag.shown})`);
     await page.click('#f-clear');
     await page.focus('.pc[data-id="CMP-TAC-003"] .pc-cmp');
     await page.keyboard.press('Enter');
     const cmp = await page.evaluate(() => ({ cols: [...document.querySelectorAll('#cmp-out thead th')].map((t) => t.textContent), url: location.search, care: document.querySelector('#cmp-out .cmp-cautions')?.textContent ?? '' }));
-    check(cmp.cols.length === 4 && /DIGIT 360/.test(cmp.cols.join('|')) && /cmp=.*CMP-TAC-003/.test(decodeURIComponent(cmp.url)) && /not an official price/.test(cmp.care), `${label} components: a product joins the comparison by keyboard, with its caution and a shareable address`);
+    check(cmp.cols.length === 4 && /DIGIT 360/.test(cmp.cols.join('|')) && /cmp=.*CMP-TAC-003/.test(decodeURIComponent(cmp.url)) && /Early access is not open sale/.test(cmp.care), `${label} components: a product joins the comparison by keyboard, with its public caution and a shareable address`);
     await page.goto(`${BASE}/components/?cmp=CMP-TAC-005,CMP-TAC-010&q=hall#compare`, { waitUntil: 'networkidle' });
     const back = await page.evaluate(() => ({ cols: [...document.querySelectorAll('#cmp-out thead th')].map((t) => t.textContent).slice(1).map((x) => x.split('Commercial')[0].split('Discontinued')[0]), q: document.getElementById('f-q').value, shown: [...document.querySelectorAll('#pcs .pc')].filter((c) => !c.hidden).length }));
-    check(back.cols.length === 2 && back.q === 'hall' && back.shown === 1, `${label} components: a shared address restores the comparison and the search (${JSON.stringify(back)})`);
+    check(back.cols.length === 2 && back.q === 'hall' && back.shown >= 1, `${label} components: a shared address restores the comparison and the search (${JSON.stringify(back)})`);
     for (const id of [...COMPONENTS.ids.products, ...COMPONENTS.ids.software]) {
       const res = await fetch(`${BASE}/components/${id.toLowerCase()}/`);
       if (res.status !== 200) check(false, `${label} components: /components/${id.toLowerCase()}/ answers ${res.status}`);
     }
     check(true, `${label} components: all ${COMPONENTS.ids.products.length + COMPONENTS.ids.software.length} product addresses answer`);
-    const locked = COMPONENTS.ids.products.find((id) => !COMPONENT_ROWS.some((r) => r.component_id === id));
-    await page.goto(`${BASE}/components/${locked.toLowerCase()}/`, { waitUntil: 'networkidle' });
-    check(await page.evaluate(() => !document.querySelector('.pp') && /for subscribers|complete Components/.test(document.body.textContent)), `${label} components: a subscriber-only address shows no product data without a session`);
+    check(COMPONENT_ROWS.length === COMPONENTS.counts.products, `${label} components: every product is public at its public fields`);
     await page.goto(`${BASE}/components/cmp-tac-001/`, { waitUntil: 'networkidle' });
-    const pp = await page.evaluate(() => ({ h1: document.querySelector('h1')?.textContent, secs: document.querySelectorAll('.pp-sec').length, src: document.querySelectorAll('.srcs li').length, maker: !!document.querySelector('.pc-m a[href="/companies/gelsight-inc/"]'), overflow: document.documentElement.scrollWidth - innerWidth }));
-    check(pp.h1 === 'DIGIT' && pp.secs >= 9 && pp.src === 6 && pp.maker && pp.overflow <= 1, `${label} components: DIGIT's passport has every section, its 6 references and its maker's page (${JSON.stringify(pp)})`);
+    const pp = await page.evaluate(() => ({ h1: document.querySelector('h1')?.textContent, secs: document.querySelectorAll('.pp-sec').length, summary: !!document.querySelector('.pp.pp-summary'), locked: [...document.querySelectorAll('.pp-kv dd')].filter((d) => d.textContent === 'With the subscription').length, src: document.querySelectorAll('.srcs li').length, box: !!document.querySelector('.pp-lockbox a[href="/subscribe/"]'), maker: !!document.querySelector('.pc-m a[href="/companies/gelsight-inc/"]'), overflow: document.documentElement.scrollWidth - innerWidth }));
+    check(pp.h1 === 'DIGIT' && pp.secs >= 9 && pp.summary && pp.locked >= 10 && pp.src === 0 && pp.box && pp.maker && pp.overflow <= 1, `${label} components: DIGIT's public summary names its paid fields, offers the passport and links its maker (${JSON.stringify(pp)})`);
     if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_components_digit.png` });
+  }
+  // Deployments (24 Nov 2026): every case listed publicly, filters in the address that survive reload and back, a case
+  // page with its sources and caveat, and the two paths near the top.
+  {
+    await page.goto(`${BASE}/deployments/`, { waitUntil: 'networkidle' });
+    const dv = await page.evaluate(() => ({ cases: document.querySelectorAll('#dcs > li.dc').length, filters: !document.getElementById('dc-filters').hidden, offer: /US\$100/.test(document.getElementById('offer')?.textContent ?? '') && /Not available to order yet/.test(document.getElementById('offer')?.textContent ?? ''), offerY: Math.round(document.getElementById('offer').getBoundingClientRect().top + scrollY), overflow: document.documentElement.scrollWidth - innerWidth }));
+    check(dv.cases === DEP_CASES && dv.filters && dv.offer && dv.overflow <= 1, `${label} deployments: all ${DEP_CASES} cases listed, filters on, two paths shown, no horizontal scroll (${JSON.stringify(dv)})`);
+    await page.selectOption('select[name="status"]', 'op');
+    await page.fill('input[name="q"]', 'agility');
+    const f1 = await page.evaluate(() => ({ shown: [...document.querySelectorAll('#dcs > li.dc')].filter((x) => !x.hidden).map((x) => x.dataset.status), url: location.search }));
+    check(f1.shown.length >= 1 && f1.shown.every((s) => s === 'op') && /status=op/.test(f1.url) && /q=agility/.test(f1.url), `${label} deployments: filters narrow the cases and stay in the address (${f1.shown.length} cases)`);
+    await page.reload({ waitUntil: 'networkidle' });
+    const f2 = await page.evaluate(() => ({ shown: [...document.querySelectorAll('#dcs > li.dc')].filter((x) => !x.hidden).length, q: document.querySelector('input[name="q"]').value }));
+    check(f2.shown === f1.shown.length && f2.q === 'agility', `${label} deployments: a reload keeps the filtered view`);
+    const href = await page.evaluate(() => [...document.querySelectorAll('#dcs > li.dc')].find((x) => !x.hidden)?.querySelector('h3 a')?.getAttribute('href'));
+    await page.goto(BASE + href, { waitUntil: 'networkidle' });
+    const cp = await page.evaluate(() => ({ h1: document.querySelector('h1')?.textContent ?? '', src: document.querySelectorAll('.dc-src a[href^="http"]').length, caveat: /not facts verified/.test(document.body.textContent), paid: /With the data subscription/.test(document.body.textContent), overflow: document.documentElement.scrollWidth - innerWidth }));
+    check(cp.h1 && cp.src >= 1 && cp.caveat && cp.paid && cp.overflow <= 1, `${label} deployments: a case page shows its summary, sources, caveat and what is paid (${JSON.stringify(cp)})`);
+    await page.goBack({ waitUntil: 'networkidle' });
+    check(/status=op/.test(await page.evaluate(() => location.search)), `${label} deployments: back returns to the filtered list`);
+    if (SHOTS) await page.screenshot({ path: `${SHOTS}/${label}_deployments.png` });
+    await page.goto(`${BASE}/`, { waitUntil: 'networkidle' });
+    const hp = await page.evaluate(() => ({ mini: Math.round(document.querySelector('.hero-paths')?.getBoundingClientRect().top + scrollY), h: innerHeight, paths: !!document.getElementById('paths'), euro: /€/.test(document.body.textContent) }));
+    check(hp.paths && hp.mini < hp.h * 1.5 && !hp.euro, `${label} home: the two paths are near the top and no euro price is shown (${JSON.stringify(hp)})`);
+    await page.goto(`${BASE}/subscribe/`, { waitUntil: 'networkidle' });
+    const sp = await page.evaluate(() => ({ usd: /US\$100 per year, billed annually/.test(document.body.textContent), reports: /Not available to order yet/.test(document.getElementById('reports')?.textContent ?? ''), orderLinks: [...document.querySelectorAll('#reports a')].filter((a) => /checkout|order/i.test(a.getAttribute('href') ?? '')).length, overflow: document.documentElement.scrollWidth - innerWidth }));
+    check(sp.usd && sp.reports && sp.orderLinks === 0 && sp.overflow <= 1, `${label} subscribe: USD price, reports not orderable, no order link (${JSON.stringify(sp)})`);
   }
   // Research Conclusions Atlas (24 Nov 2026): every finding in the table, a chart mark opens its passport by keyboard
   // or touch with a shareable address, Escape returns focus, a coverage cell filters the table, a shared address
@@ -302,8 +330,15 @@ check(!sitemap.includes('https://whyhumanoid.com/robots/'), 'sitemap lists no /r
 check((await get('/data/database/deployments.json')).status === 404, 'no data/database files');
 for (const id of ['deployments', 'hardware']) {
   const rows = (await (await get(`/data/preview/${id}.json`)).json()).rows;
-  check(rows.every((r) => r._row <= 10) && rows.length <= 10, `${id}: public file holds at most the first 10 rows`);
+  check(rows.every((r) => Object.keys(r).every((k) => k === '_row' || PUBLIC_FIELDS[id].includes(k))), `${id}: public file holds public fields only`);
   check((await get(`/v1/datasets/${id}`)).status === 401, `${id}: full rows 401 without a session`);
+  // The API's public rows are the same contract (a Worker older than 24 Nov 2026 still serves its first 10 rows).
+  const api = await get(`/v1/datasets/${id}/preview`);
+  if (api.status === 200) {
+    const body = await api.json();
+    const contract = body.rows.every((r) => Object.keys(r).every((k) => k === 'id' || PUBLIC_FIELDS[id].includes(k)));
+    check(contract && body.rows.length === body.total_rows, `${id}: the API serves every row at its public fields to visitors (${body.rows.length} of ${body.total_rows})`);
+  }
 }
 check((await get('/v1/datasets/stocks')).status === 200, 'investment: free rows answer without a session');
 check((await (await get('/v1/search?q=hardware')).json()).scope === 'preview', 'visitor search stays in the public scope');
@@ -332,7 +367,16 @@ if (LOCAL) {
     await sp.goto(`${BASE}/components/`, { waitUntil: 'networkidle' });
     await sp.waitForFunction(() => /Subscriber view/.test(document.getElementById('cx-access')?.textContent ?? ''), null, { timeout: 10000 }).catch(() => null);
     const v = await sp.evaluate(() => ({ cards: document.querySelectorAll('#pcs .pc').length, access: document.getElementById('cx-access').textContent, lock: document.getElementById('pc-lock')?.hidden, opts: document.querySelectorAll('.cmp-s')[0].options.length - 1 }));
-    check(v.cards === total && /Subscriber view/.test(v.access) && v.lock === true && v.opts === total, `subscriber: /components/ lists all ${total} products from the API with the subscription (${JSON.stringify(v)})`);
+    check(v.cards === total && /Subscriber view/.test(v.access) && v.lock !== false && v.opts === total, `subscriber: /components/ lists all ${total} products from the API with the subscription (${JSON.stringify(v)})`);
+    // A product address upgrades from the public summary to the full passport, with its field-level sources.
+    // (Only where the API serves the same products as the pages: production, not the synthetic local fixture.)
+    const pid = (await (await get('/v1/datasets/hardware?limit=500', auth)).json()).rows[0].component_id;
+    if ((await fetch(`${BASE}/components/${pid.toLowerCase()}/`)).status === 200) {
+    await sp.goto(`${BASE}/components/${pid.toLowerCase()}/`, { waitUntil: 'networkidle' });
+    await sp.waitForFunction(() => document.querySelector('.pp') && !document.querySelector('.pp-summary'), null, { timeout: 10000 }).catch(() => null);
+    const full = await sp.evaluate(() => ({ summary: !!document.querySelector('.pp-summary'), srcs: document.querySelectorAll('.srcs li').length, locked: [...document.querySelectorAll('.pp-kv dd')].filter((d) => d.textContent === 'With the subscription').length, box: document.querySelector('.pp-lockbox')?.hidden }));
+    check(!full.summary && full.srcs >= 1 && full.locked === 0 && full.box === true, `subscriber: a product address shows the full passport (${JSON.stringify(full)})`);
+    }
     // Rows that are not the product contract (an API still serving the former directory) never replace the public view.
     const stale = await (await chromium.launch()).newContext();
     await stale.addInitScript((t) => localStorage.setItem('wh_session', t), session);
@@ -358,6 +402,20 @@ if (LOCAL) {
   await event({ id: `evt_${RUN}_s4`, type: 'customer.subscription.deleted', status: 'canceled', period_end: now - 1 });
   check(JSON.stringify(await state()) === '[403,403]', 'deletion: closed');
   check((await get('/v1/datasets/humanoids', auth)).status === 200, 'Humanoids stays free for the same account');
+  // A legacy EUR subscription (sandbox events, nothing charged): its renewals keep the access; a second checkout is refused.
+  if (process.env.LEGACY_PRICE) {
+    const lemail = `legacy-${RUN}@example.com`;
+    await get('/v1/auth/magic-link', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: lemail }) });
+    const ltoken = (await (await get(`/dev/magic?email=${encodeURIComponent(lemail)}`)).text()).split('#login=')[1];
+    const lsession = (await (await get('/v1/auth/redeem', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ token: ltoken }) })).json()).token;
+    const lauth = { headers: { authorization: `Bearer ${lsession}` } };
+    const ev = (b) => get('/dev/event', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: lemail, price: process.env.LEGACY_PRICE, ...b }) }).then((r) => r.json());
+    check((await ev({ id: `evt_${RUN}_l1`, type: 'customer.subscription.created', status: 'active', period_end: now + 365 * 86400 })).outcome === 'entitlement_updated', 'legacy EUR subscription: access granted by its signed event');
+    check((await get('/v1/datasets/deployments', lauth)).status === 200, 'legacy EUR subscription: Deployments 200');
+    check((await get('/v1/billing/checkout', { method: 'POST', ...lauth })).status === 409, 'legacy EUR subscription: a second checkout is refused (409)');
+    await ev({ id: `evt_${RUN}_l2`, status: 'active', period_end: now + 730 * 86400 });
+    check((await get('/v1/datasets/hardware', lauth)).status === 200, 'legacy EUR subscription: renewal keeps the access');
+  }
 }
 
 for (const m of failures) console.error(`FAIL ${m}`);

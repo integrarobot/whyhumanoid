@@ -1,7 +1,8 @@
 // Headless checks of the premium app (server/public). Run from tools/: node verify-premium-app.mjs
 //   1. A one-time sign-in link is redeemed only after a click, so mail scanners that open links cannot use it up.
-//   2. Paywall (16 Nov 2026): without an active subscription the app asks only for the public preview and shows the
-//      locked remainder; with one it asks for the full rows with the session, and every card shows every field.
+//   2. Access (24 Nov 2026): without an active subscription the app asks only for the public rows (every record at its
+//      public fields) and says the other fields come with the subscription; with one it asks for the full rows with the
+//      session, and every card shows every field.
 //   3. Global search.  4. Company pages list each linked robot with its best recorded status (plans are not use).
 import { JSDOM } from 'jsdom';
 import { readFileSync } from 'node:fs';
@@ -11,6 +12,9 @@ const js = readFileSync(new URL('../server/public/premium.js', import.meta.url),
 const failures = [];
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const FIELDS = ['record_id', 'organization_name', 'manufacturer', 'robot_model', 'operational_status', 'task_description', 'site_name', 'country', 'source_url', 'open_questions_notes'];
+// The public fields of a Deployments record (server/src/access/fields.js), as the API serves them to visitors.
+const PUBLIC = ['record_id', 'organization_id', 'organization_name', 'organization_role', 'organization_country', 'deployment_id', 'manufacturer', 'robot_model', 'robot_version', 'sector', 'country', 'task_category', 'operational_status', 'verification_status', 'source_title', 'source_url', 'source_publisher', 'publication_date'];
+const publicRow = (i) => Object.fromEntries(Object.entries(row(i)).filter(([k]) => k === 'id' || PUBLIC.includes(k)));
 const row = (i) => Object.fromEntries([['id', `fx_row_${i}`], ...FIELDS.map((f) => [f, f === 'source_url' ? `https://example.com/${i}` : f === 'operational_status' ? (i === 2 ? 'planned' : 'pilot') : `fx_${f}_${i}`])]);
 
 // What the API answers to a search: 25 synthetic results for a subscriber, 3 public ones otherwise; none for "zzz".
@@ -40,19 +44,21 @@ function relationsBody() {
   };
 }
 
-function app({ url, active, session }) {
+function app({ url, active, session, oldApi = false }) {
   const calls = [];
-  const dom = new JSDOM(html, { url, runScripts: 'outside-only' });
+  // As built by tools/build-app.mjs: the page embeds the public field contract next to the page links.
+  const page = oldApi ? html.replace('</body>', `<script type="application/json" id="wh-pages">${JSON.stringify({ companies: {}, public_fields: { deployments: PUBLIC } })}</script></body>`) : html;
+  const dom = new JSDOM(page, { url, runScripts: 'outside-only' });
   const w = dom.window;
   if (session) w.localStorage.setItem('wh_session', session);
   w.fetch = async (path, opts = {}) => {
     calls.push({ path, method: opts.method ?? 'GET', auth: opts.headers?.authorization ?? null });
     const datasets = [{ id: 'deployments', title: 'Deployments', description: 'fx' }, { id: 'humanoids', title: 'Humanoid robots' }];
     const body = path === '/v1/datasets' ? { datasets }
-      : path === '/v1/billing/plan' ? { plan: { price: '€100 per year' }, checkout_available: true }
+      : path === '/v1/billing/plan' ? { plan: { price: 'US$100 per year' }, checkout_available: true }
       : path === '/v1/auth/redeem' ? { token: 'whs_fake' }
       : path === '/v1/me' ? { email: 'a@example.com', access: active ? { active: true, status: 'active', current_period_end: 1893456000 } : { active: false, status: 'none' }, checkout_available: true, billing_portal: Boolean(active) }
-      : path.startsWith('/v1/datasets/deployments/preview') ? { rows: Array.from({ length: 10 }, (_, i) => row(i + 1)), total_rows: 119, preview_rows: 10, dataset: datasets[0] }
+      : path.startsWith('/v1/datasets/deployments/preview') ? (oldApi ? { rows: Array.from({ length: 10 }, (_, i) => row(i + 1)), total_rows: 119, preview_rows: 10, dataset: datasets[0] } : { rows: Array.from({ length: 119 }, (_, i) => publicRow(i + 1)), total_rows: 119, preview_rows: 'all', public_fields: PUBLIC, dataset: datasets[0] })
       : path.startsWith('/v1/datasets/deployments?') ? { rows: Array.from({ length: 119 }, (_, i) => row(i + 1)), total: 119, dataset: datasets[0] }
       : path === '/v1/relations' ? relationsBody()
       : path.startsWith('/v1/search?') ? searchBody(new URLSearchParams(path.split('?')[1]), Boolean(opts.headers?.authorization) && active)
@@ -82,16 +88,27 @@ function app({ url, active, session }) {
   dom.window.close();
 }
 
-// 2a. Signed in without a subscription: preview only, locked remainder, subscribe offered.
+// 2a. Signed in without a subscription: every record at its public fields, the rest named as paid, subscribe offered.
 {
   const { d, calls, dom } = app({ url: 'https://test.example/#deployments', session: 'whs_fake', active: false });
   await wait(300);
   const rows = d.querySelectorAll('#db-rows tr.r').length;
-  if (rows !== 10) failures.push(`unpaid: ${rows} rows shown, expected the 10-row preview`);
-  if (!/109 more entries/.test(d.querySelector('#db-more:not([hidden])')?.textContent ?? '')) failures.push('unpaid: locked remainder not shown');
+  if (rows !== 119) failures.push(`unpaid: ${rows} rows shown, expected every public record`);
+  if (!/Every field.*119 entries.*data subscription/.test(d.querySelector('#db-more:not([hidden])')?.textContent ?? '')) failures.push('unpaid: the paid fields are not named');
+  if (/No task description in the sheet|No metric in the sheet/.test(d.getElementById('db-rows')?.textContent ?? '')) failures.push('unpaid: a paid field is shown as missing from the sheet');
+  if (/fx_(claim_text|site_name|task_description)_/.test(d.body.textContent)) failures.push('unpaid: a paid value is on the page');
   if (d.querySelector('#db-more')?.closest('.db-scroll, table')) failures.push('unpaid: subscription notice inside the table scroll');
   if (calls.some((c) => /^\/v1\/datasets\/deployments\?/.test(c.path))) failures.push('unpaid: full rows requested');
   if (d.getElementById('checkout').hidden || d.getElementById('checkout').disabled) failures.push('unpaid: subscribe button not offered');
+  dom.window.close();
+}
+
+// 2a'. An API older than 24 Nov 2026 (first 10 rows in full, no field contract): visitors still see public fields only.
+{
+  const { d, dom } = app({ url: 'https://test.example/#deployments', session: 'whs_fake', active: false, oldApi: true });
+  await wait(300);
+  if (d.querySelectorAll('#db-rows tr.r').length !== 10) failures.push('old API: rows not shown');
+  if (/fx_(claim_text|site_name|task_description|metric_value)_/.test(d.body.textContent)) failures.push('old API: a paid value reaches the visitor view');
   dom.window.close();
 }
 

@@ -1,9 +1,9 @@
 // Global search over the 13 categories (Javier, 17 Nov 2026). The index is rebuilt by every import in two scopes:
-// 'preview' from the public rows and values only (the free Humanoids catalogue and the first 10 sheet rows of each
-// other tab) and 'full' from every customer row. The API picks the scope from the server-side entitlement check
+// 'preview' from the public rows and values only (every row of a free tab; every row of Deployments and Components at
+// its public fields, server/src/access/fields.js) and 'full' from every customer row. The API picks the scope from the server-side entitlement check
 // BEFORE it searches, filters, counts or builds a snippet, so visitors never get premium content in any form.
 
-import { DATASETS, DATASETS_BY_ID, PREVIEW_ROWS, publicRowLimit } from '../datasets.js';
+import { DATASETS, DATASETS_BY_ID, publicRowLimit, publicRowSql, publicValuesSql } from '../datasets.js';
 import { norm, normMap, likeEscape } from './normalize.js';
 import { FACETS, FACET_LABELS, SYNONYMS, STOPWORDS, isKnownTag, tagLabel, tagsFor } from './vocabulary.js';
 import { STATUS_LABELS } from '../public/projection.js';
@@ -229,12 +229,13 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
 
   const where = ['scope = ?'];
   const params = [scope];
-  // Access matrix at query time too (23 Nov 2026): outside the full scope, a row of a subscription tab is searchable
-  // only while it is one of the tab's first PREVIEW_ROWS rows, whatever an older index holds.
+  // Access matrix at query time too (24 Nov 2026): outside the full scope, a row of a subscription tab is searchable
+  // only while it holds stored public values, whatever an older index holds; a counted-only tab never is.
   if (scope !== 'full') {
-    const gated = DATASETS.filter((d) => publicRowLimit(d) !== null).map((d) => d.id);
-    where.push(`(dataset NOT IN (${gated.map(() => '?').join(', ')}) OR row_id IN (SELECT row_id FROM premium_rows WHERE premium_rows.dataset = search_docs.dataset AND visibility = 'customer' AND preview_rank <= ?))`);
-    params.push(...gated, PREVIEW_ROWS);
+    const gated = DATASETS.filter((d) => d.access !== 'free').map((d) => d.id);
+    const listed = DATASETS.filter((d) => d.access !== 'free' && publicRowLimit(d) !== 0).map((d) => d.id);
+    where.push(`(dataset NOT IN (${gated.map(() => '?').join(', ')}) OR (dataset IN (${listed.map(() => '?').join(', ')}) AND row_id IN (SELECT row_id FROM premium_rows WHERE premium_rows.dataset = search_docs.dataset AND visibility = 'customer' AND preview_data IS NOT NULL)))`);
+    params.push(...gated, ...listed);
   }
   for (const t of terms) {
     where.push(`(${t.alts.map(() => "haystack LIKE ? ESCAPE '\\'").join(' OR ')})`);
@@ -281,10 +282,9 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
   for (const spec of DATASETS) {
     const ids = slice.filter((x) => x.dataset === spec.id).map((x) => x.row_id);
     if (!ids.length) continue;
-    const limit = publicRowLimit(spec);
     const sql = scope === 'full'
       ? `SELECT row_id, data FROM premium_rows WHERE dataset = ? AND visibility = 'customer' AND row_id IN (${ids.map(() => '?').join(', ')})`
-      : `SELECT row_id, COALESCE(preview_data, data) AS data FROM premium_rows WHERE dataset = ? AND visibility = 'customer' ${limit === null ? '' : `AND preview_rank <= ${limit}`} AND row_id IN (${ids.map(() => '?').join(', ')})`;
+      : `SELECT row_id, ${publicValuesSql(spec)} AS data FROM premium_rows WHERE dataset = ? AND visibility = 'customer' AND ${publicRowSql(spec)} AND row_id IN (${ids.map(() => '?').join(', ')})`;
     const rows = (await db.prepare(sql).bind(spec.id, ...ids).all()).results ?? [];
     for (const r of rows) dataOf.set(`${spec.id}|${r.row_id}`, JSON.parse(r.data));
   }

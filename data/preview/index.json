@@ -6,10 +6,10 @@
    "id": "deployments",
    "title": "Deployments",
    "description": "One claim per row about a humanoid robot deployment, with evidence level, source and dates.",
-   "entries_total": 130,
-   "source_rows_total": 130,
-   "preview_entries": 10,
-   "preview_source_rows": 10,
+   "entries_total": 191,
+   "source_rows_total": 191,
+   "preview_entries": 191,
+   "preview_source_rows": 191,
    "fields": [
     "record_id",
     "organization_id",
@@ -60,7 +60,29 @@
     "open_questions_notes"
    ],
    "access": "subscription",
-   "category": "deployments"
+   "category": "deployments",
+   "public": "summary",
+   "public_fields": [
+    "record_id",
+    "organization_id",
+    "organization_name",
+    "organization_role",
+    "organization_country",
+    "deployment_id",
+    "manufacturer",
+    "robot_model",
+    "robot_version",
+    "sector",
+    "country",
+    "task_category",
+    "operational_status",
+    "verification_status",
+    "source_title",
+    "source_url",
+    "source_publisher",
+    "publication_date"
+   ],
+   "snapshot": "2026-11-23T21:49:26Z"
   },
   {
    "id": "integrators",
@@ -89,8 +111,8 @@
    "description": "Links between robot models, tasks, deployments and claims, with stage and limitations.",
    "entries_total": 15,
    "source_rows_total": 15,
-   "preview_entries": 10,
-   "preview_source_rows": 10,
+   "preview_entries": 0,
+   "preview_source_rows": 0,
    "fields": [
     "link_id",
     "model_id",
@@ -116,7 +138,10 @@
     "limitations"
    ],
    "access": "subscription",
-   "category": "deployments"
+   "category": "deployments",
+   "public": "none",
+   "public_fields": [],
+   "snapshot": "2026-11-23T21:49:26Z"
   },
   {
    "id": "task-evaluations",
@@ -153,8 +178,8 @@
    "description": "Task analysis for container handling in intralogistics, with traceability.",
    "entries_total": 22,
    "source_rows_total": 22,
-   "preview_entries": 10,
-   "preview_source_rows": 10,
+   "preview_entries": 0,
+   "preview_source_rows": 0,
    "fields": [
     "layer",
     "element",
@@ -162,16 +187,19 @@
     "traceability"
    ],
    "access": "subscription",
-   "category": null
+   "category": null,
+   "public": "none",
+   "public_fields": [],
+   "snapshot": "2026-11-23T21:49:26Z"
   },
   {
    "id": "entities",
    "title": "Entities",
    "description": "Canonical organisations, models and resources with identity scope and review date.",
-   "entries_total": 28,
-   "source_rows_total": 28,
-   "preview_entries": 10,
-   "preview_source_rows": 10,
+   "entries_total": 32,
+   "source_rows_total": 32,
+   "preview_entries": 32,
+   "preview_source_rows": 32,
    "fields": [
     "entity_id",
     "entity_type",
@@ -186,7 +214,18 @@
     "notes"
    ],
    "access": "subscription",
-   "category": "deployments"
+   "category": "deployments",
+   "public": "summary",
+   "public_fields": [
+    "entity_id",
+    "entity_type",
+    "canonical_name",
+    "manufacturer_id",
+    "parent_entity_id",
+    "reference_url",
+    "reviewed_at"
+   ],
+   "snapshot": "2026-11-23T21:49:26Z"
   },
   {
    "id": "stocks",
@@ -253,8 +292,8 @@
    "description": "Robot components as products: sensing principle, specifications, interfaces, availability, price and sources.",
    "entries_total": 19,
    "source_rows_total": 19,
-   "preview_entries": 10,
-   "preview_source_rows": 10,
+   "preview_entries": 19,
+   "preview_source_rows": 19,
    "fields": [
     "name",
     "group",
@@ -294,7 +333,24 @@
    ],
    "access": "subscription",
    "category": "components",
-   "snapshot": "2026-11-23T21:49:11Z"
+   "public": "summary",
+   "public_fields": [
+    "component_id",
+    "name",
+    "group",
+    "family",
+    "manufacturer",
+    "country",
+    "year",
+    "status",
+    "principle",
+    "measured",
+    "main_source_url",
+    "review_status",
+    "licence",
+    "repository"
+   ],
+   "snapshot": "2026-11-23T21:49:26Z"
   },
   {
    "id": "component-software",
@@ -343,7 +399,24 @@
    ],
    "access": "subscription",
    "category": "components",
-   "snapshot": "2026-11-23T21:49:11Z"
+   "public": "summary",
+   "public_fields": [
+    "component_id",
+    "name",
+    "group",
+    "family",
+    "manufacturer",
+    "country",
+    "year",
+    "status",
+    "principle",
+    "measured",
+    "main_source_url",
+    "review_status",
+    "licence",
+    "repository"
+   ],
+   "snapshot": "2026-11-23T21:49:26Z"
   },
   {
    "id": "other-robots",
@@ -373,8 +446,8 @@
    "description": "Findings and proposals for the humanoid robotics data space.",
    "entries_total": 30,
    "source_rows_total": 30,
-   "preview_entries": 10,
-   "preview_source_rows": 10,
+   "preview_entries": 0,
+   "preview_source_rows": 0,
    "fields": [
     "record_id",
     "workstream",
@@ -387,9 +460,12 @@
     "source_url",
     "next_step"
    ],
-   "offer": false,
    "access": "subscription",
-   "category": null
+   "category": null,
+   "public": "none",
+   "public_fields": [],
+   "offer": false,
+   "snapshot": "2026-11-23T21:49:26Z"
   }
  ]
 }

@@ -2,43 +2,197 @@
  "note": "Reviewed organisations of the public Components products (23 Nov 2026): the public names and roles that each product's 'Manufacturer / laboratory' field states, with the organisation's own website where the record gives one. Only products published in data/preview may appear here (tools/build-pages.mjs refuses others), so no subscriber-only product is named in Git. A role is the one the record states; nothing is inferred from integrations or users.",
  "makers": {
   "CMP-TAC-001": [
-   { "name": "Meta AI (FAIR)", "role": "Design", "url": null },
-   { "name": "GelSight Inc.", "role": "Manufacturing and sales", "url": "https://www.gelsight.com/" }
+   {
+    "name": "Meta AI (FAIR)",
+    "role": "Design",
+    "url": null
+   },
+   {
+    "name": "GelSight Inc.",
+    "role": "Manufacturing and sales",
+    "url": "https://www.gelsight.com/"
+   }
   ],
   "CMP-TAC-002": [
-   { "name": "GelSight Inc.", "role": "Manufacturer", "url": "https://www.gelsight.com/" }
+   {
+    "name": "GelSight Inc.",
+    "role": "Manufacturer",
+    "url": "https://www.gelsight.com/"
+   }
   ],
   "CMP-TAC-003": [
-   { "name": "Meta AI (FAIR)", "role": "Design", "url": null },
-   { "name": "GelSight Inc.", "role": "Announced commercialisation partner", "url": "https://www.gelsight.com/" }
+   {
+    "name": "Meta AI (FAIR)",
+    "role": "Design",
+    "url": null
+   },
+   {
+    "name": "GelSight Inc.",
+    "role": "Announced commercialisation partner",
+    "url": "https://www.gelsight.com/"
+   }
   ],
   "CMP-TAC-004": [
-   { "name": "XELA Robotics", "role": "Manufacturer", "url": "https://xelarobotics.com/" }
+   {
+    "name": "XELA Robotics",
+    "role": "Manufacturer",
+    "url": "https://xelarobotics.com/"
+   }
   ],
   "CMP-TAC-005": [
-   { "name": "PaXini Tech", "role": "Manufacturer", "url": "https://paxini.com/" }
+   {
+    "name": "PaXini Tech",
+    "role": "Manufacturer",
+    "url": "https://paxini.com/"
+   }
   ],
   "CMP-TAC-006": [
-   { "name": "Contactile", "role": "Manufacturer", "url": "https://contactile.com/" }
+   {
+    "name": "Contactile",
+    "role": "Manufacturer",
+    "url": "https://contactile.com/"
+   }
   ],
   "CMP-TAC-007": [
-   { "name": "Pressure Profile Systems", "role": "Manufacturer", "url": "https://pressureprofile.com/" }
+   {
+    "name": "Pressure Profile Systems",
+    "role": "Manufacturer",
+    "url": "https://pressureprofile.com/"
+   }
   ],
   "CMP-TAC-009": [
-   { "name": "FingerVision Inc.", "role": "Manufacturer", "url": "https://www.fingervision.jp/" }
+   {
+    "name": "FingerVision Inc.",
+    "role": "Manufacturer",
+    "url": "https://www.fingervision.jp/"
+   }
   ],
   "CMP-TAC-010": [
-   { "name": "SynTouch", "role": "Manufacturer (dissolved in December 2024, as recorded)", "url": "https://www.syntouchllc.com/" }
+   {
+    "name": "SynTouch",
+    "role": "Manufacturer (dissolved in December 2024, as recorded)",
+    "url": "https://www.syntouchllc.com/"
+   }
   ],
   "CMP-TAC-011": [
-   { "name": "Meta AI (FAIR)", "role": "Research", "url": null },
-   { "name": "Carnegie Mellon University", "role": "Research", "url": null }
+   {
+    "name": "Meta AI (FAIR)",
+    "role": "Research",
+    "url": null
+   },
+   {
+    "name": "Carnegie Mellon University",
+    "role": "Research",
+    "url": null
+   }
+  ],
+  "CMP-TAC-012": [
+   {
+    "name": "New York University",
+    "role": "Research",
+    "url": null
+   },
+   {
+    "name": "Carnegie Mellon University",
+    "role": "Research collaboration",
+    "url": null
+   },
+   {
+    "name": "Columbia University",
+    "role": "Research collaboration",
+    "url": null
+   },
+   {
+    "name": "Meta AI (FAIR)",
+    "role": "Research collaboration",
+    "url": null
+   }
+  ],
+  "CMP-TAC-013": [
+   {
+    "name": "Bristol Robotics Laboratory",
+    "role": "Research",
+    "url": null
+   }
+  ],
+  "CMP-TAC-014": [
+   {
+    "name": "University of Michigan",
+    "role": "Research",
+    "url": null
+   }
+  ],
+  "CMP-TAC-015": [
+   {
+    "name": "Shanghai Qi Zhi Institute",
+    "role": "Research",
+    "url": null
+   },
+   {
+    "name": "Tsinghua University",
+    "role": "Research",
+    "url": null
+   }
+  ],
+  "CMP-TAC-016": [
+   {
+    "name": "UC Berkeley",
+    "role": "Research",
+    "url": null
+   }
+  ],
+  "CMP-TAC-017": [
+   {
+    "name": "Max Planck Institute for Intelligent Systems",
+    "role": "Research",
+    "url": null
+   }
+  ],
+  "CMP-TAC-018": [
+   {
+    "name": "New York University",
+    "role": "Research",
+    "url": null
+   }
+  ],
+  "CMP-TAC-019": [
+   {
+    "name": "University of Bristol",
+    "role": "Research",
+    "url": null
+   }
+  ],
+  "CMP-TAC-020": [
+   {
+    "name": "Peking University",
+    "role": "Research",
+    "url": null
+   },
+   {
+    "name": "Beijing Institute for General Artificial Intelligence (BIGAI)",
+    "role": "Research",
+    "url": null
+   },
+   {
+    "name": "Queen Mary University of London",
+    "role": "Research collaboration",
+    "url": null
+   }
   ],
   "CMP-TAC-008": [
-   { "name": "Meta AI (FAIR)", "role": "Developer", "url": null }
+   {
+    "name": "Meta AI (FAIR)",
+    "role": "Developer",
+    "url": null
+   }
   ]
  },
  "related": [
-  { "from": "CMP-TAC-008", "to": "CMP-TAC-001", "label": "Simulates", "basis": "TACTO's record names DIGIT among the sensors it simulates; DIGIT's record lists TACTO among its software." }
+  {
+   "from": "CMP-TAC-008",
+   "to": "CMP-TAC-001",
+   "label": "Simulates",
+   "basis": "TACTO's record names DIGIT among the sensors it simulates; DIGIT's record lists TACTO among its software."
+  }
  ]
 }

@@ -1,11 +1,13 @@
 // Access matrix of 23 Nov 2026 (server/src/access/matrix.js), checked end to end through the API for every kind of
 // visitor: anonymous, signed in without paying, active subscriber, cancelled at period end (still paid), expired.
-// One EUR 100/year subscription unlocks complete Deployments and complete Components; every other category is free.
+// One US$100/year subscription unlocks complete Deployments and complete Components; every other category is free.
+// Since 24 Nov 2026 every case and product of those two is public at its public fields (server/src/access/fields.js).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { T0, sendWebhook, setup, signIn, subscriptionEvent } from './helpers.js';
 import { CATEGORIES, DATASET_ACCESS, SERVICES, SUBSCRIPTION, canReadFull, publicMatrix } from '../src/access/matrix.js';
 import { DATASETS } from '../src/datasets.js';
+import { PUBLIC_FIELDS } from '../src/access/fields.js';
 import { PLAN } from '../src/pricing.js';
 import { PRODUCT } from '../src/entitlements.js';
 
@@ -47,13 +49,13 @@ test('one subscription unlocks Deployments and Components; the services are sepa
   assert.equal(PRODUCT, SUBSCRIPTION.product);
   assert.equal(PRODUCT, 'premium', 'existing subscribers keep their entitlement');
   assert.equal(PLAN.unitAmount, 10000);
-  assert.equal(PLAN.currency, 'eur');
+  assert.equal(PLAN.currency, 'usd');
   assert.equal(PLAN.interval, 'year');
   for (const tab of SUBSCRIPTION_TABS) assert.equal(canReadFull(tab, { entitled: false }), false, tab);
   for (const tab of FREE_TABS) assert.equal(canReadFull(tab, { entitled: false }), true, tab);
-  assert.deepEqual(SERVICES.map((s) => [s.category, s.price, s.status, s.included_in_subscription]), [
-    ['deployments', '€1,000', 'proposal', false],
-    ['components', '€1,000', 'proposal', false],
+  assert.deepEqual(SERVICES.map((s) => [s.category, s.name, s.price, s.status, s.included_in_subscription, s.orderable]), [
+    ['deployments', 'Robot integration diagnostic', 'US$1,000', 'not_available', false, false],
+    ['components', 'Industrial diversification report', 'US$1,000', 'not_available', false, false],
   ]);
 });
 
@@ -66,19 +68,20 @@ test('GET /v1/access and /v1/billing/plan describe the rules and the plan, never
   assert.doesNotMatch(JSON.stringify(body), /fx_|Example /, 'no rows');
   const plan = (await (await ctx.call('GET', '/v1/billing/plan')).json()).plan;
   assert.equal(plan.name, SUBSCRIPTION.name);
-  assert.equal(plan.price, '€100 per year');
+  assert.equal(plan.price, 'US$100 per year');
   assert.match(plan.description, /Deployments and complete Components/);
 });
 
-// Who reads what: status of GET /v1/datasets/{id}, rows returned, and whether the 11th row is reachable by search.
+// Who reads what: status of GET /v1/datasets/{id}, rows returned, and whether a PAID value of the 11th row (claim text of
+// a Deployments record, dimensions of a Components product) is reachable by search. Public values are always findable.
 async function probe(ctx, token) {
   const out = {};
   for (const id of [...SUBSCRIPTION_TABS, COMPONENT_SOFTWARE, ...FREE_TABS]) {
     const res = await ctx.call('GET', `/v1/datasets/${id}?limit=500`, { token });
     out[id] = res.status === 200 ? (await res.json()).rows.length : res.status;
   }
-  const search = await (await ctx.call('GET', '/v1/search?q=fx_record_id_11', { token })).json();
-  const comp = await (await ctx.call('GET', '/v1/search?q=Example+sensor+11', { token })).json();
+  const search = await (await ctx.call('GET', '/v1/search?q=fx_claim_text_11', { token })).json();
+  const comp = await (await ctx.call('GET', '/v1/search?q=Synthetic+dimensions+11', { token })).json();
   out.search_scope = search.scope;
   out.deployment_11_found = search.total > 0;
   out.component_11_found = comp.results.some((r) => /Example sensor 11/.test(r.title));
@@ -132,9 +135,29 @@ test('free categories answer visitors with public, cacheable values; subscriptio
   for (const quote of ['price', 'change_pct', 'market_cap', 'last_trade']) assert.ok(!(quote in row), `${quote} stays withheld`);
   const member = await ctx.call('GET', '/v1/datasets/deployments', { token: session });
   assert.equal(member.headers.get('cache-control'), 'private, no-store');
-  const previewOnly = await (await ctx.call('GET', '/v1/datasets/hardware/preview')).json();
-  assert.equal(previewOnly.rows.length, 10, 'Components preview: the first 10 rows');
-  assert.equal(previewOnly.total_rows, 12);
+  // Components: every product is public at its public fields; nothing else of any row.
+  const pub = await (await ctx.call('GET', '/v1/datasets/hardware/preview')).json();
+  assert.equal(pub.rows.length, 12, 'every Components product is listed');
+  assert.equal(pub.total_rows, 12);
+  for (const r of pub.rows) for (const k of Object.keys(r)) assert.ok(k === 'id' || PUBLIC_FIELDS.hardware.includes(k), `hardware.${k} is not a public field`);
+  assert.ok(pub.rows.every((r) => !('dimensions' in r) && !('list_price' in r) && !('sources' in r)));
+});
+
+test('every subscription tab follows the central field contract in its public rows; counted-only tabs list nothing', async () => {
+  const ctx = await setup();
+  for (const id of [...SUBSCRIPTION_TABS, COMPONENT_SOFTWARE]) {
+    const body = await (await ctx.call('GET', `/v1/datasets/${id}/preview`)).json();
+    const fields = PUBLIC_FIELDS[id];
+    if (!fields.length) { assert.equal(body.rows.length, 0, `${id} is counted, not listed`); assert.ok(body.total_rows > 0); continue; }
+    assert.equal(body.rows.length, body.total_rows, `${id}: every row is listed`);
+    for (const r of body.rows) for (const k of Object.keys(r)) assert.ok(k === 'id' || fields.includes(k), `${id}.${k} is not public`);
+    assert.doesNotMatch(JSON.stringify(body), /fx_(claim_text|site_name|city|task_description|metric_value|open_questions_notes|notes|source_rows)_/, `${id}: no paid value`);
+  }
+  // An older import without stored public values publishes nothing of that row (never its full values).
+  await ctx.db.prepare("UPDATE premium_rows SET preview_data = NULL WHERE dataset = 'deployments' AND preview_rank = 2").run();
+  const dep = await (await ctx.call('GET', '/v1/datasets/deployments/preview')).json();
+  assert.equal(dep.rows.length, 11);
+  assert.doesNotMatch(JSON.stringify(dep), /fx_claim_text_2"/);
 });
 
 test('live sales of the new offer stay closed until its terms are final; existing subscribers and test mode are unaffected', async () => {
@@ -154,14 +177,19 @@ test('live sales of the new offer stay closed until its terms are final; existin
   assert.equal((await (await test.call('GET', '/v1/billing/plan')).json()).checkout_available, true);
 });
 
-test('visitor search ignores a stale index entry past the preview of a subscription category', async () => {
+test('visitor search ignores a stale index entry for a row without public values or a counted-only tab', async () => {
   const ctx = await setup();
   const row = await ctx.db.prepare("SELECT row_id FROM premium_rows WHERE dataset = 'hardware' AND preview_rank = 11").first();
   assert.ok(row, 'fixture has an 11th Components row');
-  // An index built under older rules could hold it in the public scope.
-  await ctx.db.prepare("INSERT INTO search_docs (scope, dataset, row_id, position, title, subtitle, names, haystack, tags, link) VALUES ('preview', 'hardware', ?, 99, 'Stale component', '', '|Stale component|', ' stale component ', '||', '')").bind(row.row_id).run();
-  const visitor = await (await ctx.call('GET', '/v1/search?q=stale+component')).json();
-  assert.equal(visitor.total, 0);
-  const free = await (await ctx.call('GET', '/v1/search?q=hardware')).json();
-  assert.ok(free.results.every((r) => r.category !== 'hardware' || !/ 11$/.test(r.title)), 'only the first 10 Components rows');
+  // A row whose public values are missing (older import) is not public, whatever an older index holds.
+  await ctx.db.prepare("UPDATE premium_rows SET preview_data = NULL WHERE dataset = 'hardware' AND row_id = ?").bind(row.row_id).run();
+  await ctx.db.prepare("INSERT OR REPLACE INTO search_docs (scope, dataset, row_id, position, title, subtitle, names, haystack, tags, link) VALUES ('preview', 'hardware', ?, 99, 'Stale component', '', '|Stale component|', ' stale component ', '||', '')").bind(row.row_id).run();
+  assert.equal((await (await ctx.call('GET', '/v1/search?q=stale+component')).json()).total, 0);
+  // Evidence links are counted only: a stale public entry for one is never served.
+  const link = await ctx.db.prepare("SELECT row_id FROM premium_rows WHERE dataset = 'evidence-links' LIMIT 1").first();
+  await ctx.db.prepare("INSERT OR REPLACE INTO search_docs (scope, dataset, row_id, position, title, subtitle, names, haystack, tags, link) VALUES ('preview', 'evidence-links', ?, 99, 'Stale link', '', '|Stale link|', ' stale link ', '||', '')").bind(link.row_id).run();
+  assert.equal((await (await ctx.call('GET', '/v1/search?q=stale+link')).json()).total, 0);
+  // Every product with public values is findable by its public name, the 11th included.
+  const found = await (await ctx.call('GET', '/v1/search?q=Example+sensor+12')).json();
+  assert.ok(found.results.some((r) => /Example sensor 12/.test(r.title)));
 });

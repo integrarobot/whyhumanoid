@@ -1,3 +1,5 @@
+> **24 Nov 2026, current state.** New data subscriptions: US$100 per year, billed annually, no free trial (server/src/pricing.js). Existing EUR subscriptions keep their contract; their price ids are in `STRIPE_LEGACY_PRICE_IDS` (server/wrangler.toml). Every Deployments case and Components product is public at its public fields (server/src/access/fields.js); the detail is paid. Custom company reports (US$1,000) are not available to order. The notes below are the history of earlier states.
+
 # Deployment settings
 
 ## 0. Paywall go-live (Javier, 16 Nov 2026, d-0008)

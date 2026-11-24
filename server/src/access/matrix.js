@@ -2,16 +2,22 @@
 // belongs to and who may read it in full. The Worker (API, search, relations), the exporters (tools/export-*.mjs),
 // the page generator (tools/build-pages.mjs) and the catalogue page all read it; nothing else decides access.
 //
-// Commercial decision of 23 Nov 2026 (supersedes the 10-row paywall of 16 Nov 2026 and its 17 Nov split):
-//   - Humanoids entirely free.
-//   - One subscription, EUR 100 per year, unlocks BOTH complete Deployments and complete Components.
-//   - Every other content category is free for now.
-//   - Two services at EUR 1,000 each, NOT included in the subscription: a humanoid adoption assessment (with
-//     Deployments) and a component-manufacturing study (with Components). Names are proposals; purchase is not built.
+// Commercial decision of 23 Nov 2026, revised by Javier on 24 Nov 2026 (supersedes the first-10-rows preview and the
+// EUR price for new subscriptions):
+//   - Humanoids entirely free; every other content category free except the two below.
+//   - Deployments and Components: every case and product is listed publicly with a useful summary; the detail of each
+//     item is paid. The public and paid fields are one allowlist (server/src/access/fields.js).
+//   - One data subscription, US$100 per year billed annually, no free trial, unlocks complete Deployments and
+//     Components. Existing EUR subscriptions keep their contracts and their access.
+//   - Two custom company reports at US$1,000 each, separate from the subscription and NOT available to order yet.
 //
 // The nine category labels and their order are confirmed by Javier; Reports is the tenth (Javier, 23 Nov 2026), free. A category maps only to tabs that exist in the
 // master workbook; where no dedicated tab exists the gap is stated, never filled with invented records.
 
+import { PUBLIC_FIELDS } from './fields.js';
+
+// The first-10-rows preview of 16 Nov 2026, kept only for the free tabs that still publish basic fields beyond it
+// (Stocks). Subscription tabs no longer use it: every row is public at its public fields (fields.js).
 export const PREVIEW_ROWS = 10;
 
 // The one paid product. `product` is the entitlements.product value written by the Stripe webhook; existing
@@ -79,8 +85,9 @@ export const CATEGORIES = Object.freeze([
   },
 ]);
 
-// Access of every workbook tab. 'free': every customer row with its public values, to anyone. 'subscription': the
-// first PREVIEW_ROWS rows publicly, everything else only after the server-side entitlement check.
+// Access of every workbook tab. 'free': every customer row with all its values, to anyone. 'subscription': every row
+// at its public fields (fields.js) to anyone, the full row only after the server-side entitlement check; a tab whose
+// public field list is empty is counted but not listed.
 // Tabs that are not one of the nine categories keep the access they had before 23 Nov 2026 until Javier decides.
 export const DATASET_ACCESS = Object.freeze({
   humanoids: { category: 'humanoids', access: 'free' },
@@ -102,24 +109,26 @@ export const DATASET_ACCESS = Object.freeze({
   // Supporting tabs of Deployments: their rows describe deployment records and claims.
   'evidence-links': { category: 'deployments', access: 'subscription', supporting: true },
   entities: { category: 'deployments', access: 'subscription', supporting: true },
-  // Not one of the nine categories: unchanged (first 10 rows public) pending Javier's decision.
+  // Not one of the nine categories: counted, not listed publicly, pending Javier's decision.
   'container-handling': { category: null, access: 'subscription', supporting: true },
   // Out of the offer since 17 Nov 2026; no new work (Javier, 23 Nov 2026). Data kept and imported as before.
   'data-space': { category: null, access: 'subscription', offer: false },
 });
 
-// Services sold separately at EUR 1,000 each. Not part of the subscription; purchase and delivery are a later
-// milestone, so the site lists them as proposals with no checkout.
+// Custom company reports (Javier, 24 Nov 2026): Integrarobot's analysis and judgement applied to one company's
+// decisions, US$1,000 each, separate from the subscription and with no subscription prerequisite. Ordering and payment
+// stay DISABLED: scope, workflow and messaging come later, so the site says "Not available to order yet" and offers no
+// form, checkout or delivery promise. The ids are kept from 23 Nov 2026 (stable anchors).
 export const SERVICES = Object.freeze([
   {
-    id: 'humanoid-adoption-assessment', category: 'deployments', name: 'Humanoid adoption assessment',
-    price: '€1,000', status: 'proposal', included_in_subscription: false,
-    summary: 'An assessment of whether, where and how humanoid robots fit your operation, built on the Deployments evidence.',
+    id: 'humanoid-adoption-assessment', category: 'deployments', name: 'Robot integration diagnostic',
+    price: 'US$1,000', status: 'not_available', included_in_subscription: false, orderable: false,
+    summary: 'A report on whether, where and how robots could be integrated in your operation, with our analysis and judgement, drawing on the Deployments evidence.',
   },
   {
-    id: 'component-manufacturing-study', category: 'components', name: 'Component manufacturing study',
-    price: '€1,000', status: 'proposal', included_in_subscription: false,
-    summary: 'A study of the components humanoid robots need and the opportunity to manufacture them.',
+    id: 'component-manufacturing-study', category: 'components', name: 'Industrial diversification report',
+    price: 'US$1,000', status: 'not_available', included_in_subscription: false, orderable: false,
+    summary: 'A report on whether your industrial capabilities could serve the robot components market, with our analysis and judgement, drawing on the Components research.',
   },
 ]);
 
@@ -133,8 +142,10 @@ export function datasetAccess(datasetId) {
 
 export const isFreeDataset = (datasetId) => datasetAccess(datasetId).access === 'free';
 
-// Rows anyone may read: null means every customer row; otherwise the first PREVIEW_ROWS rows.
-export const publicRowLimitFor = (datasetId) => (isFreeDataset(datasetId) ? null : PREVIEW_ROWS);
+// Public fields of a tab: null for a free tab (every field), otherwise its allowlist (possibly empty).
+export const publicFieldsFor = (datasetId) => (isFreeDataset(datasetId) ? null : PUBLIC_FIELDS[datasetId] ?? []);
+// Rows anyone may read: null means every customer row (free, or at public fields); 0 means none is listed.
+export const publicRowLimitFor = (datasetId) => (isFreeDataset(datasetId) || publicFieldsFor(datasetId).length ? null : 0);
 
 // The decision itself. `entitled` must come from the server-side entitlement check (entitlements.hasAccess).
 export function canReadFull(datasetId, { entitled }) {
@@ -151,7 +162,11 @@ export function publicMatrix() {
   return {
     subscription: { name: SUBSCRIPTION.name, unlocks: SUBSCRIPTION.unlocks },
     categories: CATEGORIES.map((c) => ({ id: c.id, label: c.label, path: c.path, access: c.access, datasets: c.datasets, service: c.service ?? null, gap: c.gap ?? null })),
-    datasets: Object.fromEntries(Object.entries(DATASET_ACCESS).map(([id, a]) => [id, { category: a.category, access: a.access, public_rows: a.access === 'free' ? 'all' : PREVIEW_ROWS }])),
-    services: SERVICES.map(({ id, category, name, price, status, included_in_subscription }) => ({ id, category, name, price, status, included_in_subscription })),
+    datasets: Object.fromEntries(Object.entries(DATASET_ACCESS).map(([id, a]) => [id, {
+      category: a.category, access: a.access,
+      public_rows: a.access === 'free' ? 'all' : publicFieldsFor(id).length ? 'all' : 'none',
+      public_fields: a.access === 'free' ? 'all' : publicFieldsFor(id),
+    }])),
+    services: SERVICES.map(({ id, category, name, price, status, included_in_subscription, orderable }) => ({ id, category, name, price, status, included_in_subscription, orderable })),
   };
 }

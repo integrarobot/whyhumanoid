@@ -2,10 +2,11 @@
 // company and catalogue robot, computed from the FULL Deployments and Entities rows through an allowlist. The Worker
 // uses it for the visitor search and tools/export-public.mjs for the static pages, so both publish the same thing.
 //
-// Public, and only as counts and summaries: organisation, recorded maker and model, deployment country, sector,
-// status label (as recorded, not verified) and year. Public identity from Entities: canonical name, type, reference
-// URL and review date. Never: site, city, region, task, workflow, integration, metrics, claim text, claim type,
-// confidence, verification, evidence level, sources, exact dates, open questions, notes, or record and deployment ids.
+// Public, as counts and summaries: organisation, recorded maker and model, deployment country, sector, status label
+// (as recorded, not verified) and year; for the selected evidence also who reports it and its source (Javier, 24 Nov
+// 2026: sources and review state are public, server/src/access/fields.js). Public identity from Entities: canonical
+// name, type, reference URL and review date. Never: site, city, region, task description, workflow, integration,
+// metrics, claim text, claim type, confidence, evidence level, observation dates, open questions or notes.
 
 const NA = /^(not\b|n\/?a$|unknown$|unspecified$|none$|tbd$)/i;
 const has = (v) => v !== null && v !== undefined && String(v).trim() !== '' && !NA.test(String(v).trim());
@@ -88,17 +89,17 @@ function aggregates(items) {
   };
 }
 
-// Selected evidence (approved split, phase 2): one record per company and per catalogue robot, picked by a fixed rule,
-// shown with these fields only. Eligible: a source URL and a verification other than unresolved. Order: most advanced
-// status (operation, pilot or testing, vendor-claimed operation, planned), primary source (customer, maker or partner)
-// before press, customer confirmation before partner, vendor and media reports, latest publication, with a metric,
-// sheet order. Never the claim text, open questions, confidence, integration notes or record ids.
+// Selected evidence (approved split, phase 2; fields narrowed on 24 Nov 2026 to the public fields of
+// server/src/access/fields.js): one record per company and per catalogue robot, picked by a fixed rule. Eligible: a
+// source URL and a verification other than unresolved. Order: most advanced status (operation, pilot or testing,
+// vendor-claimed operation, planned), primary source (customer, maker or partner) before press, customer confirmation
+// before partner, vendor and media reports, latest publication, sheet order. Shown with the organisation, the robot as
+// recorded, the country, the status, who reports it and the source; site, task, metrics, evidence level and dates of
+// observation are paid detail.
 const STATUS_RANK = { operational: 0, pilot: 1, testing: 1, vendor_claimed_operational: 2, planned: 3 };
 const PRIMARY = new Set(['customer_operator', 'manufacturer', 'technology_partner']);
 const VERIFY_RANK = { customer_confirmed: 0, partner_reported: 1, vendor_reported: 2, media_reported: 3 };
-export const EVIDENCE_KEYS = new Set(['organization_name', 'robot_recorded', 'site_name', 'city', 'region', 'country', 'task_description',
-  'status', 'metric_name', 'metric_operator', 'metric_value', 'metric_unit', 'metric_period', 'evidence_level', 'verification_status',
-  'observed_start', 'source_publisher', 'source_url', 'publication_date']);
+export const EVIDENCE_KEYS = new Set(['organization_name', 'robot_recorded', 'country', 'status', 'verification_status', 'source_publisher', 'source_url', 'publication_date']);
 function pickEvidence(items, order) {
   const ok = items.filter(({ r }) => /^https?:\/\//.test(String(r.source_url ?? '').trim()) && String(r.verification_status ?? '') !== 'unresolved');
   if (!ok.length) return null;
@@ -111,17 +112,12 @@ function pickEvidence(items, order) {
     const [x, y] = [rank(a), rank(b)];
     for (let i = 0; i < x.length; i += 1) if (x[i] !== y[i]) return x[i] - y[i];
     const d = String(b.r.publication_date ?? '').localeCompare(String(a.r.publication_date ?? ''));
-    if (d) return d;
-    const m = (has(b.r.metric_name) ? 1 : 0) - (has(a.r.metric_name) ? 1 : 0);
-    return m || order.get(a.r.record_id) - order.get(b.r.record_id);
+    return d || order.get(a.r.record_id) - order.get(b.r.record_id);
   })[0].r;
   const val = (k) => (has(best[k]) ? String(best[k]).trim() : null);
   return {
-    organization_name: val('organization_name'), robot_recorded: recordedRobot(best) || null, site_name: val('site_name'), city: val('city'),
-    region: val('region'), country: val('country'), task_description: val('task_description'), status: statusKey(best.operational_status),
-    metric_name: val('metric_name'), metric_operator: val('metric_operator'), metric_value: val('metric_value'), metric_unit: val('metric_unit'),
-    metric_period: val('metric_period'), evidence_level: val('evidence_level'), verification_status: val('verification_status'),
-    observed_start: val('observed_start'), source_publisher: val('source_publisher'), source_url: String(best.source_url).match(/https?:\/\/[^\s|,;]+/)[0],
+    organization_name: val('organization_name'), robot_recorded: recordedRobot(best) || null, country: val('country'), status: statusKey(best.operational_status),
+    verification_status: val('verification_status'), source_publisher: val('source_publisher'), source_url: String(best.source_url).match(/https?:\/\/[^\s|,;]+/)[0],
     publication_date: val('publication_date'),
   };
 }

@@ -1,9 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { DATASETS } from '../src/datasets.js';
+import { PUBLIC_FIELDS } from '../src/access/fields.js';
 import { sendWebhook, setup, signIn, subscriptionEvent } from './helpers.js';
 
-test('the Humanoids catalogue is public in full; the 12 other tabs show their first 10 data rows', async () => {
+test('free tabs are public in full; subscription tabs list every row at its public fields, or none when counted only', async () => {
   const ctx = await setup();
   for (const spec of DATASETS) {
     const res = await ctx.call('GET', `/v1/datasets/${spec.id}/preview`);
@@ -24,31 +25,32 @@ test('the Humanoids catalogue is public in full; the 12 other tabs show their fi
       if (spec.publicFields) for (const r of body.rows.slice(10)) assert.deepEqual(Object.keys(r).filter((k) => k !== 'id').sort(), [...spec.publicFields].sort(), spec.id);
       continue;
     }
-    assert.equal(body.preview_rows, 10);
-    if (spec.kind === 'lists' && spec.lists.length > 1) {
-      // Side-by-side tabs hold two items per sheet row: 10 sheet rows, up to 20 items.
-      assert.ok(body.rows.length <= 20 && body.rows.length > 10, `${spec.id}: ${body.rows.length}`);
-    } else if (spec.id === 'component-software') {
-      // The related software block of Components holds one row in the fixture: the preview is that row.
-      assert.equal(body.rows.length, body.total_rows, spec.id);
+    // Subscription tabs (24 Nov 2026): every row at the central allowlist, or counted only.
+    const fields = PUBLIC_FIELDS[spec.id];
+    if (!fields.length) {
+      assert.equal(body.preview_rows, 'none', spec.id);
+      assert.equal(body.rows.length, 0, spec.id);
+      assert.ok(body.total_rows > 0, spec.id);
       continue;
-    } else {
-      assert.equal(body.rows.length, 10, spec.id);
-      assert.equal(sheetRows, 10, spec.id);
     }
-    assert.ok(body.total_rows > body.rows.length, spec.id);
+    assert.equal(body.preview_rows, 'all', spec.id);
+    assert.equal(body.rows.length, body.total_rows, spec.id);
+    assert.equal(sheetRows, body.total_rows, spec.id);
+    for (const r of body.rows) for (const k of Object.keys(r)) assert.ok(k === 'id' || fields.includes(k), `${spec.id}.${k}`);
   }
 });
 
-test('the empty sheet row does not count: the preview reaches the 10th data row', async () => {
+test('the empty sheet row does not count: public rows are every data row in workbook order', async () => {
   const ctx = await setup();
   const { rows } = await (await ctx.call('GET', '/v1/datasets/deployments/preview')).json();
   assert.deepEqual(
     rows.map((r) => r.id),
-    Array.from({ length: 10 }, (_, i) => `fx_record_id_${i + 1}`),
+    Array.from({ length: 12 }, (_, i) => `fx_record_id_${i + 1}`),
   );
-  const { rows: hardware } = await (await ctx.call('GET', '/v1/datasets/evidence-links/preview')).json();
-  assert.equal(new Set(hardware.map((r) => r.id)).size, 10);
+  assert.ok(rows.every((r) => !('claim_text' in r) && !('site_name' in r) && 'source_url' in r && 'organization_name' in r));
+  const { rows: links, total_rows: linkTotal } = await (await ctx.call('GET', '/v1/datasets/evidence-links/preview')).json();
+  assert.equal(links.length, 0, 'claim-to-evidence links are paid detail');
+  assert.equal(linkTotal, 12);
   const { rows: humanoids } = await (await ctx.call('GET', '/v1/datasets/humanoids/preview')).json();
   assert.deepEqual(humanoids.map((r) => r.Robot), Array.from({ length: 12 }, (_, i) => `Example Robot ${i + 1}`));
 });
@@ -60,7 +62,8 @@ test('Deployments and Components beyond the preview, and their search, need a su
     assert.equal((await ctx.call('GET', `/v1/datasets/${id}?q=11`)).status, 401, id);
   }
   const preview = await (await ctx.call('GET', '/v1/datasets/deployments/preview?q=fx_record_id_11&limit=500&offset=10')).json();
-  assert.deepEqual(preview.rows.map((r) => r.id), Array.from({ length: 10 }, (_, i) => `fx_record_id_${i + 1}`), 'preview ignores search and paging');
+  assert.deepEqual(preview.rows.map((r) => r.id), Array.from({ length: 12 }, (_, i) => `fx_record_id_${i + 1}`), 'public rows ignore search and paging');
+  assert.doesNotMatch(JSON.stringify(preview), /fx_claim_text_|fx_site_name_|fx_metric_value_/);
   // Humanoids is free: anyone searches every row, with the public values.
   const open = await (await ctx.call('GET', '/v1/datasets/humanoids?q=Robot%2011')).json();
   assert.deepEqual(open.rows.map((r) => r.Robot), ['Example Robot 11']);

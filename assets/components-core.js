@@ -172,7 +172,21 @@
     'CMP-TAC-010': 'Discontinued in the source: kept for reference and for existing datasets, not as a purchase recommendation.'
   };
 
-  var valueHtml = function (field, v) {
+  // Public summary rows (24 Nov 2026): every product is public at the fields of server/src/access/fields.js and carries
+  // _summary: true. A field it does not carry is paid detail, never "not recorded": it says so.
+  var isSummary = function (r) { return Boolean(r && r._summary); };
+  var LOCK = '<span class="val lockv">With the subscription</span>';
+  // Cautions that belong to the public fields (status, principle, scope of the record); the others cite paid values.
+  var PUBLIC_CAUTIONS = {
+    'CMP-TAC-003': 'Early access is not open sale.',
+    'CMP-TAC-004': 'The record spans several models and kits: its specifications apply only to the model each names.',
+    'CMP-TAC-005': 'The record spans several models and form factors. The physical principle is inferred from the maker\'s "Magnetic Armour" name, not confirmed.',
+    'CMP-TAC-010': 'Discontinued in the source: kept for reference and for existing datasets, not as a purchase recommendation.'
+  };
+  var cautionOf = function (r) { return (isSummary(r) ? PUBLIC_CAUTIONS : PRODUCT_CAUTIONS)[r.component_id] || null; };
+
+  var valueHtml = function (field, v, r) {
+    if (isSummary(r) && !(field in r)) return LOCK;
     var st = stateOf(v);
     if (st === 'not_recorded') return '<span class="na">Not recorded</span>';
     var text = String(v).trim();
@@ -213,11 +227,19 @@
     var sections = SECTIONS.map(function (sec) {
       var rows = sec.fields.map(function (f) {
         var caution = CAUTION[f[0]] ? '<small class="cau">' + esc(CAUTION[f[0]]) + '</small>' : '';
-        return '<dt>' + esc(f[1]) + caution + '</dt><dd data-f="' + f[0] + '">' + valueHtml(f[0], r[f[0]]) + '</dd>';
+        return '<dt>' + esc(f[1]) + caution + '</dt><dd data-f="' + f[0] + '">' + valueHtml(f[0], r[f[0]], r) + '</dd>';
       }).join('');
       return '<section class="pp-sec" data-sec="' + sec.key + '"><h' + h + '>' + esc(sec.title) + '</h' + h + '>' + (sec.note ? '<p class="pp-note">' + esc(sec.note) + '</p>' : '') + '<dl class="pp-kv">' + rows + '</dl></section>';
     }).join('');
     var sources = parseSources(r.sources);
+    if (isSummary(r)) {
+      var pub = '<section class="pp-sec" data-sec="sources"><h' + h + '>Sources and evidence</h' + h + '>'
+        + '<p class="pp-note">' + reviewBadge(r) + ' A reachable link is not a verified claim.</p>'
+        + (r.main_source_url ? '<p class="pp-main">Main source: ' + linkify(r.main_source_url) + '</p>' : '<p class="pp-main"><span class="na">No main source recorded</span></p>')
+        + '<p class="pp-note">The source of each specification, with its access date and review state, is part of the full passport with the subscription.</p></section>';
+      var pc = cautionOf(r) ? '<p class="pp-caution"><b>Read with care.</b> ' + esc(cautionOf(r)) + '</p>' : '';
+      return '<div class="pp pp-summary" data-id="' + esc(r.component_id) + '" data-class="' + cls + '">' + pc + sections + pub + '</div>';
+    }
     var src = '<section class="pp-sec" data-sec="sources"><h' + h + '>Sources and evidence</h' + h + '>'
       + '<p class="pp-note">' + reviewBadge(r) + ' A reachable link is not a verified claim: each reference keeps the subject it supports and its own review state.</p>'
       + (r.main_source_url ? '<p class="pp-main">Main source: ' + linkify(r.main_source_url) + '</p>' : '')
@@ -242,10 +264,10 @@
     var head = '<thead><tr><th scope="col" class="ck">Field</th>' + rows.map(function (r) { return '<th scope="col"><a href="/components/' + esc(String(r.component_id).toLowerCase()) + '/">' + esc(r.name) + '</a><small>' + esc(CLASS_LABEL[classOf(r.group)]) + '</small></th>'; }).join('') + '</tr></thead>';
     var body = SECTIONS.map(function (sec) {
       return '<tbody><tr class="cg"><th scope="colgroup" colspan="' + (rows.length + 1) + '">' + esc(sec.title) + '</th></tr>' + sec.fields.map(function (f) {
-        return '<tr><th scope="row" class="ck">' + esc(f[1]) + (CAUTION[f[0]] ? '<small class="cau">' + esc(CAUTION[f[0]]) + '</small>' : '') + '</th>' + rows.map(function (r) { return '<td data-p="' + esc(r.name) + '">' + valueHtml(f[0], r[f[0]]) + '</td>'; }).join('') + '</tr>';
+        return '<tr><th scope="row" class="ck">' + esc(f[1]) + (CAUTION[f[0]] ? '<small class="cau">' + esc(CAUTION[f[0]]) + '</small>' : '') + '</th>' + rows.map(function (r) { return '<td data-p="' + esc(r.name) + '">' + valueHtml(f[0], r[f[0]], r) + '</td>'; }).join('') + '</tr>';
       }).join('') + '</tbody>';
     }).join('');
-    var cautions = rows.filter(function (r) { return PRODUCT_CAUTIONS[r.component_id]; }).map(function (r) { return '<li><b>' + esc(r.name) + ':</b> ' + esc(PRODUCT_CAUTIONS[r.component_id]) + '</li>'; }).join('');
+    var cautions = rows.filter(function (r) { return cautionOf(r); }).map(function (r) { return '<li><b>' + esc(r.name) + ':</b> ' + esc(cautionOf(r)) + '</li>'; }).join('');
     return (cautions ? '<ul class="cmp-cautions">' + cautions + '</ul>' : '') + '<table class="cmp"><caption class="sr">Products compared field by field, as recorded</caption>' + head + body + '</table>';
   };
 
@@ -255,7 +277,8 @@
   // One catalogue card. `makers` is ready HTML (public company links on static pages, the recorded text otherwise).
   var cardHtml = function (r, makers) {
     var f = facetsOf(r);
-    var quick = [['Taxels or camera', r.resolution_count], ['Rate', r.sampling_rate], ['Interface', r.interface]].map(function (q) {
+    var summary = isSummary(r);
+    var quick = (summary ? [['Country', r.country], ['Launch or publication', r.year], ['Status', r.status]] : [['Taxels or camera', r.resolution_count], ['Rate', r.sampling_rate], ['Interface', r.interface]]).map(function (q) {
       var st = stateOf(q[1]);
       return '<div><dt>' + q[0] + '</dt><dd' + (st !== 'value' ? ' class="muted"' : '') + '>' + (st === 'value' ? esc(clip(q[1], 90)) : STATE_LABEL[st]) + '</dd></div>';
     }).join('');
@@ -266,7 +289,9 @@
       + '<p class="pc-m">' + (makers || esc(r.manufacturer || 'Maker not recorded')) + '</p>'
       + '<p class="pc-q">' + esc(clip(r.measured, 170)) + '</p>'
       + '<dl class="pc-f">' + quick + '</dl>'
-      + '<p class="pc-b"><span class="st st-price">' + PRICE_LABEL[p.state] + '</span>' + p.flags.map(function (x) { return '<span class="st">' + PRICE_FLAG[x] + '</span>'; }).join('') + (PRODUCT_CAUTIONS[r.component_id] ? '<span class="st st-care">Read with care</span>' : '') + '</p>'
+      + (summary
+        ? '<p class="pc-b"><span class="st st-lock">Specifications, price and sources with the subscription</span>' + (cautionOf(r) ? '<span class="st st-care">Read with care</span>' : '') + '</p>'
+        : '<p class="pc-b"><span class="st st-price">' + PRICE_LABEL[p.state] + '</span>' + p.flags.map(function (x) { return '<span class="st">' + PRICE_FLAG[x] + '</span>'; }).join('') + (PRODUCT_CAUTIONS[r.component_id] ? '<span class="st st-care">Read with care</span>' : '') + '</p>')
       + '<p class="pc-a"><a href="' + pathOf(r.component_id) + '">Passport</a><button type="button" class="pc-cmp" data-id="' + esc(r.component_id) + '" aria-pressed="false">Compare</button></p></li>';
   };
 
@@ -276,7 +301,7 @@
     PRINCIPLES: PRINCIPLES, principleOf: principleOf, principleLabel: principleLabel, QUANTITIES: QUANTITIES, quantitiesOf: quantitiesOf,
     INTERFACES: INTERFACES, interfacesOf: interfacesOf, rosOf: rosOf, ROS_LABEL: ROS_LABEL, licenceOf: licenceOf, LICENCE_LABEL: LICENCE_LABEL,
     priceOf: priceOf, PRICE_LABEL: PRICE_LABEL, stateOf: stateOf, varies: varies, evidenceTags: evidenceTags, SECTIONS: SECTIONS, CAUTION: CAUTION,
-    PRODUCT_CAUTIONS: PRODUCT_CAUTIONS, valueHtml: valueHtml, parseSources: parseSources, reviewBadge: reviewBadge, passportHtml: passportHtml,
+    PRODUCT_CAUTIONS: PRODUCT_CAUTIONS, PUBLIC_CAUTIONS: PUBLIC_CAUTIONS, isSummary: isSummary, cautionOf: cautionOf, valueHtml: valueHtml, parseSources: parseSources, reviewBadge: reviewBadge, passportHtml: passportHtml,
     facetsOf: facetsOf, compareHtml: compareHtml
   };
 }(typeof window !== 'undefined' ? window : globalThis));

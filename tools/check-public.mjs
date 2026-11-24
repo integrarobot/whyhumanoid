@@ -46,8 +46,10 @@ for (const file of tracked.filter(isText)) {
   const text = read(file);
   if (driveId.test(text)) fail(file, 'contains a Google Drive file id', driveId.find(text).slice(0, 8));
   if (workbookUrl.test(text)) fail(file, 'contains a Google Docs/Sheets URL');
-  // Record ids appear only in the free previews (data/preview); elsewhere fixtures use the fx_ prefix.
-  if (premiumId.test(text) && !file.startsWith('data/preview/')) fail(file, 'contains a premium-style record id', text.match(premiumId)[0]);
+  // Record ids appear only in the public rows (data/preview); elsewhere fixtures use the fx_ prefix. Deployment case ids
+  // (dep_...) are public since 24 Nov 2026: they key the permanent case addresses (tools/permalinks.json, deployments/).
+  const ids = (text.match(new RegExp(premiumId.source, 'g')) ?? []).filter((x) => !(x.startsWith('dep_') && (file === 'tools/permalinks.json' || file.startsWith('deployments/'))));
+  if (ids.length && !file.startsWith('data/preview/')) fail(file, 'contains a premium-style record id', ids[0]);
   if ((isPublished(file) || file.startsWith('server/public/')) && !file.startsWith('data/preview/')) {
     // Database values may mention column names in prose; rule 6 polices the database files themselves.
     const leaked = premiumColumns.filter((c) => new RegExp(`\\b${c}\\b`).test(text));
@@ -95,9 +97,10 @@ for (const m of page.models) {
 }
 if (page.models.length !== exported.records.length) fail('index.html', `embeds ${page.models.length} of ${exported.records.length} catalogue records`);
 
-// Rule 6 (paywall, 16 Nov 2026): the other 12 tabs are published only as free previews, the first 10 sheet rows of
-// each, without internal columns; full rows are premium and live only in the backend database. No file of the old
-// open export (data/database/) may come back, and the page may only load the previews.
+// Rule 6 (access matrix, 24 Nov 2026): the other 12 tabs are published as data/preview/: free tabs in full;
+// Deployments, Components and their supporting tabs in every row at the public fields of server/src/access/fields.js
+// and no other field (validateDatabase), or no row when counted only. Full rows of those tabs live only in the backend
+// database. No file of the old open export (data/database/) may come back.
 for (const problem of validateDatabase(database.index, database.tabs)) fail('data/preview', problem);
 if (JSON.stringify(page.database) !== JSON.stringify(database.index)) fail('index.html', 'embedded database index differs from data/preview/index.json');
 for (const file of tracked.filter((f) => f.startsWith('data/database/'))) fail(file, 'full rows of a premium tab must not be published (paywall)');
@@ -105,13 +108,13 @@ if (/data\/database\//.test(read('index.html'))) fail('index.html', 'loads the o
 if (page.access?.open !== false) fail('index.html', 'page is still in open-database mode');
 for (const t of page.database.tabs) if (page.database.tabs && t.rows) fail('index.html', `embeds rows of ${t.id}`);
 
-// Rule 8 (approved split, phase 1, 17 Nov 2026): data/public/projection.json holds only allowlisted keys of
-// server/src/public/projection.js (counts and summaries of every record; never sites, tasks, metrics, claims,
-// verification, sources, notes or record ids).
+// Rule 8 (approved split, phase 1, 17 Nov 2026; narrowed 24 Nov 2026): data/public/projection.json holds only
+// allowlisted keys of server/src/public/projection.js (counts and summaries; never sites, task descriptions, metrics,
+// claims, evidence levels, observation dates or notes).
 for (const problem of projectionProblems(JSON.parse(read('data/public/projection.json')))) fail('data/public/projection.json', problem);
 
 // Rule 7 (permanent pages, 17 Nov 2026): robots/, companies/, sitemap.xml, 404.html and data/pages.json are exactly the
-// build of tools/build-pages.mjs, which reads only public inputs (free catalogue, 10-row previews, preview relations).
+// build of tools/build-pages.mjs, which reads only public inputs (free catalogue, public rows, public relations).
 // Any hand edit, or a page for a company seen only in premium rows, fails here.
 const pageBuild = buildPages().files;
 // Every generated directory of the ten categories, Other Robots, the subscription page and Reports is checked too.
@@ -130,7 +133,7 @@ for (const problem of snapshotProblems(JSON.parse(read('data/benchmarks/atlas.js
 const { snapshotProblems: dataSnapshotProblems } = await import('../server/src/data-atlas/atlas.js');
 for (const problem of dataSnapshotProblems(JSON.parse(read('data/datasets/atlas.json')))) fail('data/datasets/atlas.json', problem);
 // Rule 11 (Components, 23 Nov 2026): the coverage file holds counts and component ids only, and the public Components
-// rows (the first 10 products and the related software) never carry the row number, the research workbook link, the
+// rows (every product and the related software at their public fields) never carry the research workbook link, the
 // import history or the compilation's prompt notes.
 const { coverageProblems } = await import('./export-components.mjs');
 for (const problem of coverageProblems(JSON.parse(read('data/components/coverage.json')))) fail('data/components/coverage.json', problem);

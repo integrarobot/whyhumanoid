@@ -222,3 +222,24 @@ excerpt that must be literally in that cell) and, when checked, the page of the 
 2. Content refresh from the 20 Nov workbook and live verification of the staging.
 3. Live billing switch for the new offer after decisions 3 to 4.
 4. Service purchase and delivery flow.
+
+## Two-path offer and complete public listings (Javier, 24 Nov 2026)
+
+- Two paths, in English, at the top of the home page and on Deployments, Components and /subscribe/
+  (tools/offer-view.mjs, tools/build-site.mjs):
+  - Full data access: US$100 per year, billed annually, no free trial.
+  - Custom company reports: Robot integration diagnostic and Industrial diversification report, US$1,000 each,
+    separate from the subscription and not available to order (no form, checkout or delivery promise).
+- Field contract: server/src/access/fields.js holds the public and paid fields of every subscription tab. It is
+  applied by the importer (`preview_data` for every row), the API's public rows, the visitor search and its snippets,
+  the public relations graph, data/preview/, the pages and the app. Claim-to-evidence links and the tabs outside the
+  offer are counted, not listed.
+- Deployments: all cases public, grouped by deployment id (server/src/public/cases.js), with filters, adoption views and
+  one page per case (/deployments/<slug>/, registered in tools/permalinks.json).
+- Components: every product public as a summary. Paid fields say "With the subscription", and the full passport loads
+  for subscribers from the API.
+- Billing: the plan is USD 10000 per year (pricing.js). EUR subscriptions keep their price; their ids are in
+  STRIPE_LEGACY_PRICE_IDS, so the webhook still applies their renewals and cancellations. LIVE_SALES_OPEN stays false
+  until the new format is published and verified, the Worker runs this code and a live USD price is configured.
+- Private leak check before publishing: `node --no-warnings tools/check-reserved.mjs --from <export>` (paid values of
+  Deployments and Components never in published files).

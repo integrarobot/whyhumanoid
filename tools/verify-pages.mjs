@@ -59,7 +59,7 @@ for (const [kind, x] of pages) {
       const v = x.record[field];
       if (field && (v ?? '').trim() && dt.nextElementSibling.textContent.replace(/\s+/g, ' ').trim() !== String(v).replace(/\s+/g, ' ').trim()) fail(`${x.path}: ${dt.textContent} differs from the catalogue`);
     }
-    for (const b of d.querySelectorAll('.dep header b')) if (!cardOrgs.has(b.textContent)) fail(`${x.path}: organisation "${b.textContent}" is neither in the free preview nor a selected evidence`);
+    for (const b of d.querySelectorAll('.dep header b')) if (b.textContent !== 'Organisation not recorded' && !cardOrgs.has(b.textContent)) fail(`${x.path}: organisation "${b.textContent}" is neither in the free preview nor a selected evidence`);
   } else if (kind === 'company') {
     for (const rb of x.robotList) {
       if (!d.querySelector(`a[href="${rb.path}"]`)) fail(`${x.path}: no link to its robot ${rb.path}`);
@@ -89,8 +89,8 @@ for (const c of CATEGORIES) {
   if (titles.has(d.title)) fail(`${c.path}: title also used by ${titles.get(d.title)}`); else titles.set(d.title, c.path);
   for (const a of d.querySelectorAll('a[href^="/"]')) if (!exists(a.getAttribute('href'))) fail(`${c.path}: broken link ${a.getAttribute('href')}`);
 }
-if (doc('/deployments/').querySelectorAll('article.dep li').length > PREVIEW_ROWS) fail('/deployments/: more records than the public preview');
-if (doc('/components/').querySelectorAll('#pcs .pc').length > PREVIEW_ROWS) fail('/components/: more products than the public preview');
+// Since 24 Nov 2026 every case and product is listed: no public page carries a paid Deployments field label.
+if (doc('/deployments/').querySelectorAll('article.dep').length) fail('/deployments/: still renders full records');
 // Every organisation of a public Components product has a company page (reviewed makers, tools/components-makers.json).
 for (const card of doc('/components/').querySelectorAll('#pcs .pc')) if (!card.querySelector('.pc-m a[href^="/companies/"]')) fail(`/components/: ${card.dataset.id} has no company page`);
 for (const id of ['investment', 'integrators']) for (const a of doc(`/${id}/`).querySelector('article section table').querySelectorAll('tbody tr td:first-child a')) if (!a.getAttribute('href').startsWith('/companies/')) fail(`/${id}/: ${a.textContent} does not link to its company page`);
@@ -246,8 +246,9 @@ if (went !== rb.path) fail(`404.html: /robots/any-old-name-${rb.id}/ went to ${w
   if (/class="[^"]*\b(err|whisker)\b/.test(html)) fail(`${p}: draws error bars the data does not have`);
   if (!d.querySelector('script[src^="/assets/atlas.js?v="]') || !d.querySelector('link[href^="/assets/atlas.css?v="]')) fail(`${p}: atlas assets missing`);
 }
-// Components (23 Nov 2026): /components/ shows the public first product rows and the coverage counts; every component
-// id has its address; public products have their full passport in the HTML, subscriber-only ones carry no product data.
+// Components (23 Nov 2026; complete public listing since 24 Nov 2026): /components/ shows every product at its public
+// fields and the coverage counts; every component id has its address with the public summary; every paid field of a
+// public summary says "With the subscription", never that the source lacks it; no paid value is in the HTML.
 {
   const cov = JSON.parse(read('data/components/coverage.json'));
   const hw = JSON.parse(read('data/preview/hardware.json')).rows;
@@ -263,14 +264,47 @@ if (went !== rb.path) fail(`404.html: /robots/any-old-name-${rb.id}/ went to ${w
     const path = `/components/${id.toLowerCase()}/`;
     const pd = doc(path);
     const pub = [...hw, ...sw].find((r) => r.component_id === id);
-    if (pub) {
-      if (pd.querySelector('h1')?.textContent !== pub.name) fail(`${path}: h1 is not ${pub.name}`);
-      if (pd.querySelectorAll('.srcs li').length !== (pub.sources.match(/^https?:\/\//gm) ?? []).length) fail(`${path}: not every reference entry is listed`);
-    } else if (pd.querySelector('.pp, .pp-kv') || !pd.querySelector('meta[name="robots"][content="noindex"]')) fail(`${path}: a subscriber-only address shows product data or is indexable`);
+    if (!pub) { fail(`${path}: ${id} is not public at its public fields`); continue; }
+    if (pd.querySelector('h1')?.textContent !== pub.name) fail(`${path}: h1 is not ${pub.name}`);
+    if (!pd.querySelector('.pp.pp-summary') || !pd.querySelector('.pp-lockbox a[href="/subscribe/"]')) fail(`${path}: no public summary with the subscription offer`);
+    for (const dd of pd.querySelectorAll('.pp-kv dd[data-f]')) {
+      const f = dd.dataset.f;
+      if (!(f in pub) && dd.textContent !== 'With the subscription') fail(`${path}: paid field ${f} shows "${dd.textContent.slice(0, 40)}"`);
+    }
+    if (pub.main_source_url && !pd.querySelector(`a[href="${pub.main_source_url}"]`)) fail(`${path}: the main source is not linked`);
+    if (pd.querySelector('meta[name="robots"][content="noindex"]')) fail(`${path}: a public product page is not indexable`);
   }
   const html = read('components/index.html');
   if (/docs\.google\.com|drive\.google\.com|spreadsheets\/d\//.test(html)) fail(`${p}: links a private Google file`);
   if (!d.querySelector('script[src^="/assets/components.js?v="]') || !d.querySelector('script[src^="/assets/components-core.js?v="]')) fail(`${p}: explorer scripts missing`);
+}
+// Deployments (24 Nov 2026): every case listed with its public summary and sources; every case has its page; the
+// two paths are on the category page; no paid field is named as missing.
+{
+  const depRows = JSON.parse(read('data/preview/deployments.json')).rows;
+  const ids = [...new Set(depRows.map((r) => r.deployment_id))];
+  const d = doc('/deployments/');
+  const cards = [...d.querySelectorAll('#dcs > li.dc')];
+  if (cards.length !== ids.length) fail(`/deployments/: ${cards.length} cases listed, ${ids.length} expected`);
+  const reg = JSON.parse(read('tools/permalinks.json')).deployments ?? {};
+  for (const id of ids) {
+    const slug = reg[id]?.at(-1);
+    if (!slug) { fail(`/deployments/: ${id} has no registered address`); continue; }
+    const card = d.getElementById(slug);
+    if (!card?.querySelector(`a[href="/deployments/${slug}/"]`)) fail(`/deployments/: ${id} has no card linking its page`);
+    const pd = doc(`/deployments/${slug}/`);
+    for (const r of depRows.filter((x) => x.deployment_id === id)) {
+      const u = String(r.source_url ?? '').match(/https?:\/\/[^\s|,;]+/)?.[0];
+      if (u && !pd.querySelector(`a[href="${u}"]`)) fail(`/deployments/${slug}/: source of ${r.record_id} not linked`);
+    }
+    if (!/not facts verified/.test(pd.body.textContent)) fail(`/deployments/${slug}/: no caveat`);
+  }
+  const offer = d.getElementById('offer');
+  if (!offer || !/US\$100/.test(offer.textContent) || !/Not available to order yet/.test(offer.textContent)) fail('/deployments/: the two paths are missing');
+  if (!d.querySelector('script[src^="/assets/deployments.js?v="]')) fail('/deployments/: filter script missing');
+  if (/No task description in the sheet|No metric in the sheet/.test(d.body.textContent)) fail('/deployments/: a paid field is shown as missing');
+  const sub = doc('/subscribe/');
+  if (!/US\$100 per year/.test(sub.body.textContent) || !sub.getElementById('reports') || /€/.test(sub.body.textContent)) fail('/subscribe/: USD price or reports section missing, or a euro price left');
 }
 // Robot Learning Data Atlas (23 Nov 2026): /datasets/ shows the public snapshot, readable without JavaScript: every
 // resource in its lane and with its passport card (stable anchor), every quantity with its value, unit and scope, the

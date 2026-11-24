@@ -7,6 +7,7 @@ import {
   COMPONENT_HEADERS, COMPONENT_FIELDS, COMPONENT_WITHHELD, componentBlocks, componentProblems, parseSources, scrubComponentText,
 } from '../src/components/catalogue.js';
 import { DATASETS_BY_ID } from '../src/datasets.js';
+import { PUBLIC_FIELDS, isOpenComponent } from '../src/access/fields.js';
 import { normalizeTab } from '../src/import/normalize.js';
 import { runImport } from '../src/import/run.js';
 import { createTestDb, fixtureWorkbook, setup, signIn, sendWebhook, subscriptionEvent, T0 } from './helpers.js';
@@ -87,11 +88,14 @@ test('the committed public data: 19 product ids and the software id, 97 referenc
   assert.equal(Object.values(c.counts.by_class).reduce((a, b) => a + b, 0), 19);
   assert.deepEqual(Object.keys(c).sort(), ['counts', 'ids', 'note', 'snapshot', 'title']);
   const hw = read('data/preview/hardware.json').rows;
-  assert.deepEqual(hw.map((r) => r.component_id), want.slice(0, 10), 'the public preview is the first 10 product rows, in workbook order');
+  assert.deepEqual(hw.map((r) => r.component_id), want, 'every product is public at its public fields, in workbook order (24 Nov 2026)');
   const sw = read('data/preview/component-software.json').rows;
   for (const r of [...hw, ...sw]) {
     for (const f of COMPONENT_WITHHELD) assert.ok(!(f in r), `${r.component_id}: ${f} is withheld`);
-    for (const s of parseSources(r.sources)) assert.ok(s.url, `${r.component_id}: ${s.subject} has a link`);
+    for (const k of Object.keys(r)) assert.ok(k === '_row' || PUBLIC_FIELDS.hardware.includes(k), `${r.component_id}: ${k} is a paid field`);
+    assert.ok(r.main_source_url && r.review_status && r.principle && r.measured, `${r.component_id}: public summary incomplete`);
+    // Open hardware keeps its licence and its reference; a proprietary product does not publish them.
+    assert.equal('licence' in r, isOpenComponent(r), `${r.component_id}: licence published only for open hardware`);
   }
   const text = JSON.stringify([hw, sw, c]);
   assert.doesNotMatch(text, /docs\.google|drive\.google|spreadsheets\/d\//, 'no workbook link');
@@ -122,48 +126,82 @@ test('empty, not available and not applicable stay distinct; never zero, false o
   assert.doesNotMatch(W.valueHtml('weight', 'undefined'), />undefined</);
 });
 
+// Synthetic values with the same shapes as the research records (no paid value of a real product is kept in Git).
+const SYN = {
+  listed: '120 USD (maker store, accessed 23 Nov 2026; lead time 4 weeks)',
+  distributor: 'From 3,900 USD for one model (distributor price list, 2026)',
+  third: 'No official price. Range 1,000–2,000 USD cited by third parties, not verified',
+  quote: 'On request (historical reference: a 2021 article cited about 6,000 USD)',
+  notSold: 'N/A (not sold: open source, build it yourself)',
+  cny: '2,000 CNY per unit (maker store, 2026)',
+  rate: '60 fps (paper); 30 fps by default in the interface',
+  maker: 'Sub-millimetre (manufacturer)',
+  weight: '≈ 30 g (third-party spec sheet, not verified)',
+};
 test('prices, quotes, third-party figures and BOM estimates stay separate; nothing is converted or ranked', () => {
-  const hw = Object.fromEntries(read('data/preview/hardware.json').rows.map((r) => [r.component_id, r]));
-  assert.equal(W.priceOf(hw['CMP-TAC-001'].list_price).state, 'listed');
-  assert.deepEqual(W.priceOf(hw['CMP-TAC-004'].list_price), { state: 'listed', flags: ['distributor'] }, 'uSkin: a distributor figure for one model');
-  assert.deepEqual(W.priceOf(hw['CMP-TAC-003'].list_price), { state: 'no_public_price', flags: ['third_party'] }, 'DIGIT 360: no official price; the third-party range is flagged');
-  assert.deepEqual(W.priceOf(hw['CMP-TAC-006'].list_price), { state: 'quote', flags: ['historical'] });
-  assert.equal(W.priceOf(hw['CMP-TAC-011'].list_price).state, 'not_sold');
+  assert.equal(W.priceOf(SYN.listed).state, 'listed');
+  assert.deepEqual(W.priceOf(SYN.distributor), { state: 'listed', flags: ['distributor'] });
+  assert.deepEqual(W.priceOf(SYN.third), { state: 'no_public_price', flags: ['third_party'] });
+  assert.deepEqual(W.priceOf(SYN.quote), { state: 'quote', flags: ['historical'] });
+  assert.equal(W.priceOf(SYN.notSold).state, 'not_sold');
   assert.equal(W.priceOf('Free').state, 'free');
-  assert.notEqual(hw['CMP-TAC-001'].list_price, hw['CMP-TAC-001'].bom_cost, 'list price and author BOM are different fields');
-  assert.match(hw['CMP-TAC-005'].list_price, /CNY/, 'original currency kept');
-  assert.ok(W.varies(hw['CMP-TAC-004'].resolution_count), 'uSkin taxel counts vary by model');
-  assert.equal(W.rosOf(hw['CMP-TAC-005'].software), 'earlier_generation', 'PX-6AX: GEN3 drivers are not GEN4 support');
-  assert.ok(!W.interfacesOf(hw['CMP-TAC-005'].interface).includes('usb'), 'PX-6AX: the GEN3 USB converter is not a GEN4 interface');
-  assert.equal(W.principleOf(hw['CMP-TAC-005'].principle), 'not_stated', 'PX-6AX: the principle is inferred, not confirmed');
+  assert.match(W.valueHtml('list_price', SYN.cny), /CNY/, 'original currency kept, never converted');
+  assert.ok(W.varies('uSPa44: 44 taxels; uSCu ALHA: 240 taxels'), 'values that differ by model are flagged');
   // The comparison renders values as recorded and never sorts by a value.
-  const html = W.compareHtml([hw['CMP-TAC-003'], hw['CMP-TAC-001']]);
-  assert.ok(html.indexOf('DIGIT 360') < html.indexOf('>DIGIT<'), 'columns keep the chosen order');
+  const a = { component_id: 'CMP-TST-003', name: 'Example early access', group: 'Commercial (early access)', list_price: SYN.third };
+  const b = { component_id: 'CMP-TST-001', name: 'Example listed', group: 'Commercial', list_price: SYN.listed };
+  const html = W.compareHtml([a, b]);
+  assert.ok(html.indexOf('Example early access') < html.indexOf('Example listed'), 'columns keep the chosen order');
   assert.match(html, /No public price/);
-  assert.match(html, /Early access is not open sale/);
 });
 
 test('evidence badges: imported research pending review, maker-stated and paper conditions are marked', () => {
   const hw = Object.fromEntries(read('data/preview/hardware.json').rows.map((r) => [r.component_id, r]));
   assert.match(W.reviewBadge(hw['CMP-TAC-001']), /Imported research · original-source review pending/);
-  assert.ok(W.evidenceTags(hw['CMP-TAC-005'].spatial_resolution).includes('Maker-stated'));
-  assert.ok(W.evidenceTags(hw['CMP-TAC-001'].sampling_rate).includes('Paper conditions'));
-  assert.ok(W.evidenceTags(hw['CMP-TAC-003'].weight).includes('Unverified third-party figure'));
-  const pp = W.passportHtml(hw['CMP-TAC-001']);
-  assert.equal((pp.match(/<li><b>/g) ?? []).length, parseSources(hw['CMP-TAC-001'].sources).length, 'every reference entry is listed');
+  assert.ok(W.evidenceTags(SYN.maker).includes('Maker-stated'));
+  assert.ok(W.evidenceTags(SYN.rate).includes('Paper conditions'));
+  assert.ok(W.evidenceTags(SYN.weight).includes('Unverified third-party figure'));
+  const full = { component_id: 'CMP-TST-001', name: 'Example', group: 'Commercial', review_status: 'Imported research compilation; original-source review pending', sources: 'Product page\nhttps://a.example.com/\nAccessed: 23 Nov 2026\n\nPaper\nhttps://b.example.com/\nAccessed: 23 Nov 2026' };
+  const pp = W.passportHtml(full);
+  assert.equal((pp.match(/<li><b>/g) ?? []).length, 2, 'every reference entry is listed');
   assert.match(pp, /A reachable link is not a verified claim/);
 });
 
-test('anonymous visitors get the first 10 products; subscribers every product, field and search result', async () => {
+test('a public summary names every paid field as with the subscription, never as missing from the source', () => {
+  const hw = read('data/preview/hardware.json').rows.map((r) => ({ ...r, _summary: true }));
+  for (const r of hw) {
+    const pp = W.passportHtml(r);
+    for (const sec of W.SECTIONS) for (const [f] of sec.fields) {
+      const cell = pp.match(new RegExp(`data-f="${f}">(.*?)</dd>`))?.[1] ?? '';
+      if (!(f in r)) assert.match(cell, /With the subscription/, `${r.component_id}.${f}`);
+    }
+    assert.doesNotMatch(pp, /class="srcs"/, `${r.component_id}: field-level sources are paid`);
+    assert.match(pp, /Main source/);
+    // Cautions that cite paid values stay out of the public summary.
+    if (W.PRODUCT_CAUTIONS[r.component_id] && !W.PUBLIC_CAUTIONS[r.component_id]) assert.doesNotMatch(pp, /Read with care/);
+  }
+  const card = W.cardHtml(hw[0], '');
+  assert.match(card, /Specifications, price and sources with the subscription/);
+  assert.doesNotMatch(card, /Quote on request|Price stated|No public price/);
+});
+
+test('anonymous visitors get every product at its public fields; subscribers every product, field and search result', async () => {
   const ctx = await setup();
   assert.equal((await ctx.call('GET', '/v1/datasets/hardware')).status, 401);
   assert.equal((await ctx.call('GET', '/v1/datasets/component-software')).status, 401);
   const preview = await (await ctx.call('GET', '/v1/datasets/hardware/preview')).json();
-  assert.equal(preview.rows.length, 10);
+  assert.equal(preview.rows.length, 12);
   assert.equal(preview.total_rows, 12);
-  for (const r of preview.rows) for (const f of COMPONENT_WITHHELD) assert.ok(!(f in r));
+  for (const r of preview.rows) for (const f of [...COMPONENT_WITHHELD, 'dimensions', 'weight', 'list_price', 'bom_cost', 'sources', 'notes', 'advantages', 'drawbacks', 'comparison_summary']) assert.ok(!(f in r), f);
+  // Open hardware keeps its licence and repository as the reference of its openness; a commercial product does not.
+  const open = preview.rows.find((r) => r.group === 'Research / open hardware');
+  const closed = preview.rows.find((r) => r.group === 'Commercial');
+  assert.ok('licence' in open && 'repository' in open);
+  assert.ok(!('licence' in closed) && !('repository' in closed));
   const anon = await (await ctx.call('GET', '/v1/search?q=Example+sensor+12')).json();
-  assert.ok(!anon.results.some((r) => /Example sensor 12/.test(r.title)), 'a product past the preview is not searchable by visitors');
+  assert.ok(anon.results.some((r) => /Example sensor 12/.test(r.title)), 'every product is findable by its public name');
+  const paid = await (await ctx.call('GET', '/v1/search?q=Synthetic+force+range+12')).json();
+  assert.equal(paid.total, 0, 'a paid value of a product is not searchable by visitors');
   const { session, accountId } = await signIn(ctx, 'components@example.com');
   assert.equal((await ctx.call('GET', '/v1/datasets/hardware', { token: session })).status, 403);
   await sendWebhook(ctx, subscriptionEvent({ accountId }));
@@ -172,8 +210,8 @@ test('anonymous visitors get the first 10 products; subscribers every product, f
   assert.ok(full.rows.every((r) => r.sources && r.measured && r.component_id), 'every meaningful field is served to subscribers');
   assert.ok(full.rows.every((r) => !('source_workbook' in r) && !('no' in r)));
   assert.doesNotMatch(JSON.stringify(full.rows), /docs\.google|Grok/);
-  const sub = await (await ctx.call('GET', '/v1/search?q=Example+sensor+12', { token: session })).json();
-  assert.ok(sub.results.some((r) => /Example sensor 12/.test(r.title)));
+  const sub = await (await ctx.call('GET', '/v1/search?q=Synthetic+force+range+12', { token: session })).json();
+  assert.ok(sub.results.some((r) => /Example sensor 12/.test(r.title)), 'subscribers search the paid values too');
 });
 
 test('Investment: the appended thesis columns are accepted and never stored; the former header still reads', () => {
@@ -189,7 +227,7 @@ test('Investment: the appended thesis columns are accepted and never stored; the
   assert.throws(() => normalizeTab(stocks, drift), /header drift/);
 });
 
-test('public pages: product addresses for every id, subscriber-only addresses carry no product data, makers link back', () => {
+test('public pages: a public summary at every product address, the full passport offered, makers link back', () => {
   const c = read('data/components/coverage.json');
   const pub = new Set(read('data/preview/hardware.json').rows.map((r) => r.component_id).concat(read('data/preview/component-software.json').rows.map((r) => r.component_id)));
   const makers = read('tools/components-makers.json');
@@ -198,13 +236,11 @@ test('public pages: product addresses for every id, subscriber-only addresses ca
     const file = new URL(`components/${id.toLowerCase()}/index.html`, root);
     assert.ok(existsSync(file), `${id} has its address`);
     const html = readFileSync(file, 'utf8');
-    if (pub.has(id)) {
-      assert.match(html, /class="pp"/);
-      assert.match(html, /Imported research · original-source review pending/);
-    } else {
-      assert.match(html, /<meta name="robots" content="noindex">/);
-      assert.doesNotMatch(html, /class="pp"|pp-kv|Sensing principle/, `${id}: no product data before sign-in`);
-    }
+    assert.ok(pub.has(id), `${id} is public at its public fields`);
+    assert.match(html, /class="pp pp-summary"/);
+    assert.match(html, /Imported research · original-source review pending/);
+    assert.doesNotMatch(html, /<meta name="robots" content="noindex">/);
+    assert.match(html, /class="pp-lockbox"/);
   }
   const digit = readFileSync(new URL('components/cmp-tac-001/index.html', root), 'utf8');
   assert.match(digit, /href="\/companies\/gelsight-inc\/"/);

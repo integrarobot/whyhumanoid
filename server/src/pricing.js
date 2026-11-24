@@ -1,24 +1,27 @@
-// The single paid plan: EUR 100 per year (price decided 13 Nov 2026). Since 23 Nov 2026 it unlocks complete
-// Deployments and complete Components (server/src/access/matrix.js); every other category is free.
-// Checkout is refused unless the Stripe price behind STRIPE_PRICE_ID matches this exactly. The Stripe product keeps
-// its own name until Javier renames it in the Stripe dashboard; this name is what the site and the API show.
+// The single paid plan for NEW subscriptions: US$100 per year, billed annually, no free trial (Javier, 24 Nov 2026: the
+// currency changes from EUR to USD, not the interval). It unlocks complete Deployments and complete Components
+// (server/src/access/matrix.js); every other category is free. Checkout is refused unless the Stripe price behind
+// STRIPE_PRICE_ID matches this exactly. Subscriptions bought at the former EUR 100 per year price keep their contract,
+// currency and renewal price: their price ids are listed in STRIPE_LEGACY_PRICE_IDS so the webhook keeps granting and
+// ending their access (billing.js). They are never migrated, cancelled or charged by this code.
 
 import { SUBSCRIPTION } from './access/matrix.js';
 
-// New live sales of this offer wait for its purchase terms, tax presentation and the Stripe live product name
-// (Javier, 23 Nov 2026: review before enabling new live sales). While false, live checkout answers 503
-// 'offer_in_review'; Stripe test mode, existing subscriptions, the webhook and the billing portal are unaffected.
+// Javier authorised reopening new data-subscription sales at US$100 per year on 24 Nov 2026, once the new format is
+// published and verified and a matching live USD price exists. Until then this stays false and live checkout answers
+// 503 'offer_in_review'; Stripe test mode, existing subscriptions, the webhook and the billing portal are unaffected.
 export const LIVE_SALES_OPEN = false;
 
 export const PLAN = Object.freeze({
   id: 'deployments-components-annual',
   name: SUBSCRIPTION.name,
   description: 'Complete Deployments and complete Components, with search and agent API keys over them. Every other category is free.',
-  currency: 'eur',
+  currency: 'usd',
   unitAmount: 10000,
   interval: 'year',
   intervalCount: 1,
-  display: '€100 per year',
+  display: 'US$100 per year',
+  billing: 'Billed annually. No free trial.',
 });
 
 // Returns a list of problems; an empty list means the Stripe price matches the plan.

@@ -20,6 +20,8 @@ export function configFromEnv(env) {
     checkoutEnabled: env.CHECKOUT_ENABLED === 'true',
     allowLiveCheckout: env.ALLOW_LIVE_CHECKOUT === 'true',
     stripePriceId: env.STRIPE_PRICE_ID || null,
+    // Former EUR prices whose subscriptions keep their access (comma-separated price ids).
+    stripeLegacyPriceIds: String(env.STRIPE_LEGACY_PRICE_IDS ?? '').split(',').map((s) => s.trim()).filter(Boolean),
     stripePortalConfiguration: env.STRIPE_PORTAL_CONFIGURATION || null,
     adminToken: env.ADMIN_TOKEN || null,
     // GitHub environment whose import workflow may run imports here: 'test' or 'production'.

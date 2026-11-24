@@ -1,8 +1,9 @@
 // Stripe Checkout and webhook handling.
 // Rules: checkout is off unless CHECKOUT_ENABLED=true; the key must match STRIPE_MODE (test and live
 // credentials never mix); live also needs ALLOW_LIVE_CHECKOUT=true; the Stripe price must match the plan
-// (EUR 10000 per year) before any session is created; access comes only from signed webhook events of the
-// same mode, each processed once, and never from a client redirect.
+// (USD 10000 per year) before any session is created; access comes only from signed webhook events of the
+// same mode, each processed once, and never from a client redirect. A subscription grants access when its price is
+// the current plan price or one of the legacy prices (EUR subscriptions bought before 24 Nov 2026).
 
 import Stripe from 'stripe';
 import { HttpError } from './http.js';
@@ -170,7 +171,8 @@ async function applyEvent(db, event, config, now) {
       const accountId = await resolveAccount(db, object);
       if (!accountId) return 'unmapped';
       const items = object.items?.data ?? [];
-      if (!config.stripePriceId || !items.some((item) => item.price?.id === config.stripePriceId)) return 'ignored_price';
+      const entitled = entitledPriceIds(config);
+      if (!entitled.size || !items.some((item) => entitled.has(item.price?.id))) return 'ignored_price';
       // Newer Stripe API versions report the period end per subscription item.
       const periodEnd = Number(
         object.current_period_end ?? Math.max(0, ...items.map((item) => Number(item.current_period_end ?? 0))),
@@ -191,6 +193,12 @@ async function applyEvent(db, event, config, now) {
     default:
       return 'ignored_type';
   }
+}
+
+// Prices whose subscriptions carry the data subscription: the price new checkouts use, plus legacy prices of existing
+// subscriptions (EUR, before 24 Nov 2026), so their renewals, cancellations and deletions keep updating access.
+export function entitledPriceIds(config) {
+  return new Set([config.stripePriceId, ...(config.stripeLegacyPriceIds ?? [])].filter(Boolean));
 }
 
 async function resolveAccount(db, subscription) {
