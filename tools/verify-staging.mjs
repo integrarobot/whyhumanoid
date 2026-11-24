@@ -302,6 +302,15 @@ if (LOCAL) {
     await sp.waitForFunction(() => /Subscriber view/.test(document.getElementById('cx-access')?.textContent ?? ''), null, { timeout: 10000 }).catch(() => null);
     const v = await sp.evaluate(() => ({ cards: document.querySelectorAll('#pcs .pc').length, access: document.getElementById('cx-access').textContent, lock: document.getElementById('pc-lock')?.hidden, opts: document.querySelectorAll('.cmp-s')[0].options.length - 1 }));
     check(v.cards === total && /Subscriber view/.test(v.access) && v.lock === true && v.opts === total, `subscriber: /components/ lists all ${total} products from the API with the subscription (${JSON.stringify(v)})`);
+    // Rows that are not the product contract (an API still serving the former directory) never replace the public view.
+    const stale = await (await chromium.launch()).newContext();
+    await stale.addInitScript((t) => localStorage.setItem('wh_session', t), session);
+    await stale.route((u) => u.pathname.startsWith('/v1/datasets/'), (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ rows: [{ id: 'hw_x', list: 'hardware', name: 'Former entry', url: 'https://x.example.com', description: null }] }) }));
+    const stp = await stale.newPage();
+    await stp.goto(`${BASE}/components/`, { waitUntil: 'networkidle' });
+    const sv = await stp.evaluate(() => ({ cards: document.querySelectorAll('#pcs .pc').length, access: document.getElementById('cx-access').textContent }));
+    check(sv.cards === COMPONENT_ROWS.length && !/Subscriber view/.test(sv.access), `subscriber: rows of the former directory never replace the public products (${JSON.stringify(sv)})`);
+    await stale.browser().close();
     // A shared comparison that names subscriber-only products keeps them once the complete rows arrive.
     const ids = (await (await get('/v1/datasets/hardware?limit=500', auth)).json()).rows.slice(-2).map((r) => r.component_id);
     await sp.goto(`${BASE}/components/?cmp=${ids.join(',')}#compare`, { waitUntil: 'networkidle' });

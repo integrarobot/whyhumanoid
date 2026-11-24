@@ -18,10 +18,12 @@
   var session = null;
   try { session = localStorage.getItem('wh_session'); } catch (e) { session = null; }
 
+  // Only rows of the product contract (each with its Component ID) are used: an API still serving the former
+  // three-column directory, or anything else, leaves the public view untouched.
   function fetchRows(id) {
     return fetch(API + '/v1/datasets/' + id + '?limit=500', { headers: { authorization: 'Bearer ' + session }, cache: 'no-store' })
       .then(function (r) { return r.status === 200 ? r.json() : null; })
-      .then(function (b) { return b && Array.isArray(b.rows) ? b.rows : null; })
+      .then(function (b) { return b && Array.isArray(b.rows) && b.rows.every(function (x) { return x && /^CMP-[A-Z]{3}-\d{3,}$/.test(x.component_id || '') && x.name; }) ? b.rows : null; })
       .catch(function () { return null; });
   }
 
