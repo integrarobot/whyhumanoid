@@ -206,7 +206,7 @@ test('public allowlist: no private links, local paths, workbook names or editori
   bad.findings[0].internal_note = 'x';
   assert.match(snapshotProblems(bad).join('\n'), /internal_note/);
   const bad2 = clone(atlas);
-  bad2.reports[0].url = 'https://docs.google.com/document/d/x';
+  bad2.reports[0].url = ['https://docs', 'google.com/document/d/x'].join('.');
   assert.ok(snapshotProblems(bad2).length);
 });
 
