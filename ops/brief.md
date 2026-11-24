@@ -239,7 +239,11 @@ excerpt that must be literally in that cell) and, when checked, the page of the 
 - Components: every product public as a summary. Paid fields say "With the subscription", and the full passport loads
   for subscribers from the API.
 - Billing: the plan is USD 10000 per year (pricing.js). EUR subscriptions keep their price; their ids are in
-  STRIPE_LEGACY_PRICE_IDS, so the webhook still applies their renewals and cancellations. LIVE_SALES_OPEN stays false
-  until the new format is published and verified, the Worker runs this code and a live USD price is configured.
+  STRIPE_LEGACY_PRICE_IDS, so the webhook still applies their renewals and cancellations. Live prices: USD
+  price_1UfGNgAcMngkWs5CkdCMYC1j, legacy EUR price_1UbOtjAcMngkWs5CR8qXNPGn (server/wrangler.toml).
+- New live sales opened on 24 Nov 2026 (LIVE_SALES_OPEN = true) after the format was published and verified, the
+  production import ran and the live USD price was configured; test-mode checkout verified with the USD test price.
+  The Worker must run a bundle built from that commit for live checkout to answer. Checkout computes and collects no
+  tax (no Stripe Tax, no address or tax ID): the charge is the price. Custom company reports stay not orderable.
 - Private leak check before publishing: `node --no-warnings tools/check-reserved.mjs --from <export>` (paid values of
   Deployments and Components never in published files).
