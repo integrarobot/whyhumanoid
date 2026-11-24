@@ -1,0 +1,62 @@
+{
+  "id": "WH-20261124-0314-components-explorador",
+  "tarea": "Components: explorador técnico de productos en /components/ a partir del catálogo táctil del maestro (tabla HardwareCatalog), con pasaportes por producto, comparación de hasta tres y vista completa para suscriptores",
+  "origen": "Javier vía Codex, 23/11/2026: implementar Components y traer el material del maestro, completando el flujo de publicación probado, incluida la importación autenticada en producción",
+  "fecha": "2026-11-24T03:14:15+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Maestro en vivo (modificado el 23/11 a las 21:49:11 UTC), pestaña Components:\n- tabla nativa HardwareCatalog A1:AK20 con 19 productos físicos (18 sensores táctiles y una mano táctil de investigación), IDs CMP-TAC-001 a 007 y 009 a 020;\n- TACTO (CMP-TAC-008) leído del bloque de software relacionado, nunca contado como hardware;\n- 24 filas de notas leídas y contadas, nunca importadas; la pestaña oculta de archivo no se lee.",
+    "Contrato de importación (server/src/components/catalogue.js):\n- tres bloques leídos de forma explícita; cualquier fila fuera de ellos hace fallar la importación;\n- Component ID como identificador; se retienen el número de fila y el enlace al libro de investigación;\n- se eliminan las notas del encargo de investigación («The query asked…», «Check periodically…», «Manufacturer verified…») y el texto de importación de Grok; se conservan las salvedades técnicas;\n- vocabulario revisado de Group, fuentes con enlace y las 97 entradas de referencia contabilizadas.",
+    "Investment: el maestro añadió 8 columnas de tesis (THESIS_RECORDS enlaza al libro privado). Se aceptan y no se guardan, para que la importación completa no falle; el contenido de Investment no cambia.",
+    "Acceso sin cambios (suscripción compartida): públicos los 10 primeros productos y TACTO (data/preview, regenerados con el nuevo export-database --only sin tocar otras pestañas) y solo recuentos e IDs del resto (data/components/coverage.json); los otros 9 productos, con todos sus campos, solo tras comprobar la suscripción en la API.",
+    "Explorador /components/ (núcleo común assets/components-core.js para páginas estáticas y navegador):\n- familias con huecos explícitos, disponibilidad y enfoques de detección con lo que aporta cada uno y sus límites;\n- catálogo con búsqueda y filtros en la dirección;\n- comparación de hasta tres con estados de cada valor y salvedades, sin gráfico ni ranking;\n- pasaporte en /components/<id>/ para los 20 IDs; las direcciones de pago no llevan datos en el HTML y se completan para suscriptores desde la API;\n- páginas de empresa de los fabricantes públicos (tools/components-makers.json).",
+    "Seguimiento: PR #78 (dos filtros por fila en móvil y arreglo de la comprobación de producción) y PR #79 (la vista de suscriptor solo usa filas del contrato nuevo, para que el Worker antiguo no muestre el directorio anterior)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #77 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/77"
+    },
+    {
+      "etiqueta": "PR #78 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/78"
+    },
+    {
+      "etiqueta": "PR #79 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/79"
+    },
+    {
+      "etiqueta": "Components",
+      "url": "https://whyhumanoid.com/components/"
+    },
+    {
+      "etiqueta": "Pasaporte de ejemplo",
+      "url": "https://whyhumanoid.com/components/cmp-tac-005/"
+    },
+    {
+      "etiqueta": "Comparación de ejemplo",
+      "url": "https://whyhumanoid.com/components/?cmp=CMP-TAC-001,CMP-TAC-004,CMP-TAC-006#compare"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages: commits de fusión 949fa70 (PR #77), e9faf8c (PR #78) y 06bf427 (PR #79) en main, servidos en whyhumanoid.com; responden 200 /components/, los 20 /components/<id>/, assets/components.js, assets/components-core.js y data/components/coverage.json.",
+    "Worker de producción: sin desplegar (comprobado de nuevo el 24/11): sigue con el código anterior al 23/11 (13 pestañas, sin Benchmarks ni Dataset Metrics) y sirve el directorio antiguo de Components con datos del 17/11. La vista de suscriptor no lo usa gracias al PR #79.",
+    "Importación autenticada de producción: no lanzada. Con el Worker actual fallaría por cambio de cabecera en Components. El paquete del Worker desde main 949fa70 se genera bien (esbuild 0.27.7, sha256 e5a161b6…cc11e)."
+  ],
+  "verificaciones": [
+    "Producción con navegador real: verify-staging 338 de 338 en whyhumanoid.com, incluidas las comprobaciones de Components en escritorio y móvil (explorador con 10 de 19 productos públicos, filtro magnético con uSkin y ReSkin, comparación por teclado con salvedad y dirección compartible, los 20 IDs responden, direcciones de pago sin datos, pasaporte de DIGIT con 6 referencias y página del fabricante). Sin regresiones en Datasets, Benchmarks ni en el acceso de pago.",
+    "Capturas en vivo a 1440, 390 y 320 px sin desbordamiento horizontal.",
+    "Importación completa en memoria del maestro en vivo con el código nuevo: correcta en las 18 pestañas (hardware 19, component-software 1, stocks 276, datasets 35, dataset-metrics 62).",
+    "En local: 135 de 135 pruebas de API (12 nuevas de Components), verify-staging --local 350 de 350 (vista de suscriptor con todas las filas de la API, comparación compartida con productos de pago y rechazo de filas del directorio antiguo), check-public (regla 11 nueva), check-reserved y todas las comprobaciones de compilación. Vista de suscriptor revisada con las 19 filas reales servidas en local, fuera de Git."
+  ],
+  "pendientes": [
+    "Bloqueo (Codex, credenciales de Cloudflare): desplegar el Worker whyhumanoid-premium desde main. Pasos:\n1. node server/scripts/build-dashboard.mjs <ruta a esbuild 0.27.7> y sustituir worker.js en el editor del panel de Cloudflare (o wrangler deploy --env production con token);\n2. sin migraciones de D1 nuevas;\n3. comprobar que GET /v1/datasets lista 18 pestañas, entre ellas benchmarks, dataset-metrics y component-software.",
+    "Después: lanzar el flujo «Import private workbook» en main con destino production (puedo lanzarlo en cuanto Codex confirme el despliegue). Recuentos esperados: hardware 19, component-software 1. Verificar con una cuenta suscrita la vista completa de /components/, una dirección de pago y la búsqueda.",
+    "Propuesta para Javier: publicar nombre, fabricante, grupo y principio de detección de los 9 productos de pago (identidad, coherente con el reparto aprobado), además de las 10 filas de vista previa.",
+    "Huecos de fuente: peso de casi todos los productos; rango y resolución de fuerza de los ópticos; precios bajo pedido; frecuencias de GelSlim 4.0, 9DTact, DigiTac y F-TAC; licencias de hardware de GelSlim 4.0, TacTip y F-TAC. Todos los registros siguen pendientes de revisión de fuentes originales.",
+    "Otras dependencias: la herramienta privada tools/reports-source.mjs no encaja con el esquema actual de Reports (no afecta a la importación ni a la web). Las páginas de empresa del directorio anterior (Daimon, MyActuator, Orca, Realsense, Shadow, Tesollo) pasan a «no publicada»; PaXini redirige a PaXini Tech. El PR #59 queda superado y no se ha tocado."
+  ],
+  "siguiente_accion": "Codex despliega el Worker desde main y confirma; Claude lanza la importación de producción y verifica la vista de suscriptor; Javier decide la propuesta de campos públicos y confirma la entrega."
+}
