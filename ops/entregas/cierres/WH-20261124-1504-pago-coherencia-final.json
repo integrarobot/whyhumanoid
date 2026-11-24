@@ -1,0 +1,53 @@
+{
+  "id": "WH-20261124-1504-pago-coherencia-final",
+  "tarea": "Cierre definitivo del sistema de pago: revisión del alcance aprobado frente al resultado y corrección de las incoherencias entre datos públicos, app, auditoría y documentación que quedaban de la oferta del 16/11",
+  "origen": "Javier, vía Codex, 24/11/2026: «que termine con el trabajo»; revisar el alcance aprobado, terminar los pendientes técnicos o de presentación del encargo y dejar el cierre según el protocolo, sin activar impuestos ni decidir el tratamiento fiscal",
+  "fecha": "2026-11-24T15:04:35+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Revisión del alcance aprobado (24/11/2026) frente a producción. Se cumple:\n- suscripción de datos a US$100 al año, facturada anualmente, sin prueba, con la venta nueva abierta;\n- dos vías visibles arriba en la portada, Deployments, Components y /subscribe/;\n- listados públicos completos con el detalle de pago solo para suscriptores;\n- contratos en EUR conservados;\n- informes de US$1,000 sin pedido ni pago.",
+    "PR #89 (fusionado, main c8c719c): datos públicos. data/manifest.json y la nota de data/preview/index.json, que también lleva incrustada la portada, describían la oferta antigua («the first 10 sheet rows», «€100» y «EUR 100 per year»). Ahora describen el contrato de campos vigente y US$100. La causa era el modo --only de export-database, que conservaba la nota anterior; ya no la conserva, y --check (que CI ejecuta mediante check-public) falla si la nota se desvía. No cambió ninguna fila ni ningún campo.",
+    "PR #89: auditoría de Deployments. tools/audit-deployments.mjs, obligatoria según AGENTS.md antes de publicar Deployments, seguía esperando las 10 primeras filas completas y ya no podía pasar. Ahora comprueba cada fila con exactamente los campos públicos, cada valor igual a la hoja y ningún campo más.",
+    "PR #89: app. Cuando el checkout no está disponible, ya no lo atribuye a unas condiciones de compra pendientes; dice que la venta está temporalmente no disponible. Con la venta abierta, ese texto solo aparece si falla una comprobación de disponibilidad.",
+    "PR #89: documentación. README, DEPLOYMENT.md, ops/brief.md y el skill de la actualización semanal describen la oferta vigente. El skill ya no pide a la tarea de los miércoles verificar la vista previa de 10 filas."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #89 (coherencia, fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/89"
+    },
+    {
+      "etiqueta": "PR #86 (apertura de la venta)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/86"
+    },
+    {
+      "etiqueta": "Suscripción e informes",
+      "url": "https://whyhumanoid.com/subscribe/"
+    },
+    {
+      "etiqueta": "Portada (dos vías)",
+      "url": "https://whyhumanoid.com/#paths"
+    }
+  ],
+  "despliegue": [
+    "Interfaz publicada: GitHub Pages sirve main c8c719c. data/manifest.json da US$100; data/preview/index.json ya no menciona EUR 100 ni las 10 primeras filas; app/premium.js lleva el texto nuevo (premium.js?v=eb8de7c9c307).",
+    "Worker de producción whyhumanoid-premium: versión 27fc9174 (Active, Latest), desplegada por Codex con el paquete reproducido desde main c8c719c con esbuild 0.27.7, sha256 3f8ca3db1c6f1fc0fa457a8cafb588f349cfb936005237e94a4cf3c35e2760f7, el mismo que generé yo desde ese commit. Sin cambios de variables, migraciones, precios ni datos: el PR #89 no toca server/wrangler.toml, migraciones ni server/src.",
+    "Venta en USD activa con esa versión: GET /v1/billing/plan da USD 10000 al año con checkout_available true."
+  ],
+  "verificaciones": [
+    "Worker 27fc9174: su /premium.js es idéntico al de main y ya no contiene la frase antigua. Informes a medida: not_available y no se pueden pedir. Deployments completo sin sesión: 401. Deployments público: 191 de 191.",
+    "Producción con navegador real después de fusionar el PR #89: verify-staging 366 de 366 en whyhumanoid.com. Como después solo cambió la frase de reserva del Worker, no la he repetido.",
+    "En local, sobre main del PR #89: 144 de 144 pruebas de API; todos los --check de CI, check-public y test-entregas; verify-site, verify-premium-app y verify-pages; test-reports 19 de 19.",
+    "Auditoría de Deployments contra el maestro actual: 191 filas, 47 columnas y 0 diferencias tanto en lo que se sirve a suscriptores como en lo publicado. Prueba negativa: un campo de pago inyectado y un valor alterado se detectan.",
+    "check-reserved privado: 1.313 valores de pago de Deployments y Components, ninguno publicado.",
+    "Evidencias anteriores, sin repetir: Codex completó la compra de test con la tarjeta de prueba de Stripe y comprobó en navegador una suscripción real de producción con acceso completo. No se ha hecho ningún pago en vivo ni se ha tocado ninguna suscripción."
+  ],
+  "pendientes": [
+    "Trabajo técnico y de presentación: nada pendiente.",
+    "Decisión fiscal, fuera del trabajo técnico, la toma Javier con su asesor. El checkout no activa Stripe Tax, no pide dirección ni NIF y no aplica tipos impositivos, así que cada venta cobra exactamente US$100 sin impuesto aparte. No ha habido revisión legal ni fiscal, ni revisión de la configuración fiscal de la cuenta de Stripe. Hay que decidir si se repercute IVA (por ejemplo, a particulares de la UE por servicios digitales, con la ventanilla única OSS, o en ventas a empresas o fuera de la UE) y desde cuándo. Si se decide, el cambio técnico es activar el cálculo de impuestos en el checkout, pedir los datos necesarios y ajustar el texto del precio. No está hecho porque no hay definición.",
+    "Informes a medida: siguen sin poder pedirse; abrirlos es una decisión aparte de Javier."
+  ],
+  "siguiente_accion": "Javier confirma la entrega y, cuando lo defina con su asesor, decide el tratamiento fiscal; Codex confirma el aviso."
+}
