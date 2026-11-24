@@ -7,10 +7,12 @@
 
 import { SUBSCRIPTION } from './access/matrix.js';
 
-// Javier authorised reopening new data-subscription sales at US$100 per year on 24 Nov 2026, once the new format is
-// published and verified and a matching live USD price exists. Until then this stays false and live checkout answers
-// 503 'offer_in_review'; Stripe test mode, existing subscriptions, the webhook and the billing portal are unaffected.
-export const LIVE_SALES_OPEN = false;
+// Javier authorised reopening new data-subscription sales at US$100 per year on 24 Nov 2026, once the new format was
+// published and verified and a matching live USD price existed. All three held on 24 Nov 2026 (site and Worker
+// verified, live price price_1UfGNgAcMngkWs5CkdCMYC1j in server/wrangler.toml), so live checkout is open. Setting this
+// back to false closes new live sales (checkout answers 503 'offer_in_review') without touching existing subscriptions,
+// the webhook, the billing portal or Stripe test mode. Custom company reports stay not orderable (access/matrix.js).
+export const LIVE_SALES_OPEN = true;
 
 export const PLAN = Object.freeze({
   id: 'deployments-components-annual',

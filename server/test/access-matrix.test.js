@@ -8,7 +8,7 @@ import { T0, sendWebhook, setup, signIn, subscriptionEvent } from './helpers.js'
 import { CATEGORIES, DATASET_ACCESS, SERVICES, SUBSCRIPTION, canReadFull, publicMatrix } from '../src/access/matrix.js';
 import { DATASETS } from '../src/datasets.js';
 import { PUBLIC_FIELDS } from '../src/access/fields.js';
-import { PLAN } from '../src/pricing.js';
+import { LIVE_SALES_OPEN, PLAN } from '../src/pricing.js';
 import { PRODUCT } from '../src/entitlements.js';
 
 const DAY = 24 * 3600;
@@ -160,18 +160,27 @@ test('every subscription tab follows the central field contract in its public ro
   assert.doesNotMatch(JSON.stringify(dep), /fx_claim_text_2"/);
 });
 
-test('live sales of the new offer stay closed until its terms are final; existing subscribers and test mode are unaffected', async () => {
+test('live sales follow LIVE_SALES_OPEN; existing subscribers, test mode and unorderable reports are unaffected', async () => {
   const live = await setup({ checkoutEnabled: true, stripeKey: 'sk_live_fixture', stripeMode: 'live', allowLiveCheckout: true, price: { ...(await import('./helpers.js')).VALID_PRICE, livemode: true } });
-  assert.equal((await (await live.call('GET', '/v1/billing/plan')).json()).checkout_available, false);
+  assert.equal((await (await live.call('GET', '/v1/billing/plan')).json()).checkout_available, LIVE_SALES_OPEN);
   const { session, accountId } = await signIn(live, 'renewing@example.com');
   const res = await live.call('POST', '/v1/billing/checkout', { token: session });
-  assert.equal(res.status, 503);
-  assert.deepEqual(await res.json(), { error: 'offer_in_review' });
-  assert.equal(live.checkoutCalls.length, 0, 'Stripe is never asked for a live session');
+  if (LIVE_SALES_OPEN) {
+    assert.equal(res.status, 200);
+    assert.equal(live.checkoutCalls.length, 1, 'one live Checkout session for the USD plan');
+  } else {
+    assert.equal(res.status, 503);
+    assert.deepEqual(await res.json(), { error: 'offer_in_review' });
+    assert.equal(live.checkoutCalls.length, 0, 'Stripe is never asked for a live session');
+  }
   // An existing live subscription keeps working: its signed live events still grant access to both categories.
   await sendWebhook(live, subscriptionEvent({ accountId, livemode: true, status: 'active', periodEnd: T0 + 300 * DAY }));
   assert.equal((await live.call('GET', '/v1/datasets/deployments', { token: session })).status, 200);
   assert.equal((await live.call('GET', '/v1/datasets/hardware', { token: session })).status, 200);
+  // A subscriber is never sold a second subscription.
+  assert.equal((await live.call('POST', '/v1/billing/checkout', { token: session })).status, 409);
+  // Custom company reports are never orderable, whatever the subscription gate says.
+  assert.ok(SERVICES.every((s) => s.orderable === false && s.status === 'not_available'));
   // Test mode (staging) sells the same plan with test keys.
   const test = await setup({ checkoutEnabled: true });
   assert.equal((await (await test.call('GET', '/v1/billing/plan')).json()).checkout_available, true);
