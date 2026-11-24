@@ -428,8 +428,8 @@ What exists:
 
 What is missing, and who provides it:
 1. Javier: the price per query (USD, whole cents) and the go-ahead for Base mainnet.
-2. Stripe: approval of the Spanish account for machine payments / x402 (requested by Codex on 24 Nov 2026 to
-   machine-payments@stripe.com; not granted yet). Without it there is no live deposit address.
+2. Stripe: approval of the Spanish account for machine payments / x402 (requested by Codex on 24 Nov 2026 through
+   Stripe's machine-payments channel; not granted yet). Without it there is no live deposit address.
 3. Codex (Stripe sandbox): a static sandbox crypto deposit address (`POST /v1/crypto/deposit_addresses`, `network=base`,
    with the preview `Stripe-Version` the guide gives) as test `X402_PAY_TO`; confirm the exact PaymentIntent
    parameters for recording (`server/src/billing.js`, `recordCryptoPayment`) and set `X402_STRIPE_API_VERSION`.
