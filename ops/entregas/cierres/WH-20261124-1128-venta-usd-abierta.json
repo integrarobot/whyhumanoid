@@ -1,0 +1,50 @@
+{
+  "id": "WH-20261124-1128-venta-usd-abierta",
+  "tarea": "Cierre final del lanzamiento de la suscripción de datos en USD: venta nueva a US$100 al año abierta y verificada en producción (sustituye el estado bloqueado de WH-20261124-1118-lanzamiento-usd)",
+  "origen": "Javier y Codex, 24/11/2026: Codex desplegó el Worker de producción con la apertura del PR #86 y probó el checkout de test en navegador; Javier pidió verificar el plan en vivo y registrar el cierre final con el despliegue, las evidencias y los pendientes fiscales",
+  "fecha": "2026-11-24T11:28:59+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Sin cambios de código en este cierre. La apertura es el PR #86 (LIVE_SALES_OPEN = true), y los precios USD y heredados en EUR están en el PR #85, ambos fusionados.",
+    "Corrección del cierre anterior: decía que no había ninguna suscripción real comprobada en producción. Solo la cuenta que probé yo no estaba suscrita; Codex ha comprobado una sesión de producción con una suscripción real activa (evidencias abajo, sin datos de la cuenta)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #86 (apertura de la venta)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/86"
+    },
+    {
+      "etiqueta": "PR #85 (precios)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/85"
+    },
+    {
+      "etiqueta": "Suscripción e informes",
+      "url": "https://whyhumanoid.com/subscribe/"
+    },
+    {
+      "etiqueta": "Portada (dos vías)",
+      "url": "https://whyhumanoid.com/#paths"
+    }
+  ],
+  "despliegue": [
+    "Interfaz publicada: GitHub Pages sirve main con «Subscribe for US$100 a year» en la portada, Deployments, Components y /subscribe/.",
+    "Backend sincronizado: Worker whyhumanoid-premium de producción en la versión b3fda34c (Active, Latest), desplegada por Codex con el paquete reproducido desde main 33fae3c, sha256 a0727faf0a721456a13c0ed456e2f3144e5b1ab98b0dcbaf279fbe3453d7dbe8, el mismo que generé yo. Sin variables ni migraciones nuevas.",
+    "Venta en USD activa: GET /v1/billing/plan en producción da USD 10000 al año con checkout_available true. POST /v1/billing/checkout sin sesión responde 401."
+  ],
+  "verificaciones": [
+    "Producción con navegador real y con el Worker b3fda34c: verify-staging 366 de 366 en whyhumanoid.com, en escritorio y móvil.",
+    "API pública de producción: Deployments 191 de 191 y Components 19 de 19 con sus campos públicos, software 1 de 1, relaciones de evidencia 0 de 15 (solo recuento). Deployments completo sin sesión: 401.",
+    "Fuga de datos en la API en vivo: 1.339 valores de pago de Deployments y Components revisados y ninguno servido a visitantes.",
+    "Informes a medida: la API los da como not_available y no se pueden pedir (Robot integration diagnostic e Industrial diversification report).",
+    "Checkout de test completo en navegador (lo hizo Codex, con la tarjeta de prueba oficial de Stripe y sin dinero real): Stripe mostró 100 USD al año, procesó el pago y devolvió a la app con «Your subscription is active: complete Deployments and Components are open» y acceso completo. Antes yo había comprobado en el Worker de test la sesión cs_test y que repetir la petición devuelve la misma sesión.",
+    "Suscriptor real en producción (lo comprobó Codex en el navegador con una sesión ya suscrita; no se anotan correo ni identificadores): la suscripción tiene acceso hasta el 17/11/2027; Deployments da 191 entradas completas con 47 campos; Components da 19 entradas completas; la ficha F-TAC Hand muestra 35 campos.",
+    "No se ha hecho ningún pago en vivo ni se ha cobrado, cancelado, reembolsado o migrado ninguna suscripción."
+  ],
+  "pendientes": [
+    "Fiscal, decide Javier: el checkout en vivo no activa Stripe Tax, no pide dirección ni NIF y no aplica tipos impositivos, así que cada venta cobra exactamente US$100 sin impuesto aparte. No ha habido revisión legal ni fiscal, y la configuración fiscal de la cuenta de Stripe no se ha revisado. Hay que confirmar con el asesor si hay que repercutir IVA (por ejemplo, a particulares de la UE por servicios digitales, con la ventanilla única OSS, y en ventas a empresas o fuera de la UE) y desde qué fecha. Si hay que hacerlo, el cambio es activar Stripe Tax (o tipos impositivos) en la sesión de checkout, pedir los datos necesarios y ajustar el texto del precio («impuestos incluidos» o «más impuestos»). Ese cambio no está hecho.",
+    "Informes a medida: siguen sin poder pedirse; abrirlos necesita una decisión aparte de Javier."
+  ],
+  "siguiente_accion": "Javier confirma la entrega y decide el tratamiento fiscal con su asesor; Codex confirma el aviso."
+}
