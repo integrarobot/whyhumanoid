@@ -20,6 +20,7 @@ import { pageRelations } from './relations.mjs';
 import { pageLinks } from './build-pages.mjs';
 import { CATEGORIES, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { renderAdoption } from './adoption-view.mjs';
+import { renderEvolutionCarousel } from './evolution-view.mjs';
 import { robotPresentation } from './robot-presentation.mjs';
 
 // Where the catalogue sends buyers: the premium app on the production backend. Change it here when
@@ -263,13 +264,18 @@ export function renderIndex(html, data) {
   const cats = /<!-- categories:start -->[\s\S]*?<!-- categories:end -->/;
   if (!cats.test(html)) throw new Error('index.html has no categories block');
   const json = JSON.stringify(data).replace(/</g, '\\u003c');
-  const adoption = /<!-- adoption:start -->[\s\S]*?<!-- adoption:end -->/;
-  if (!adoption.test(html)) throw new Error('index.html has no adoption block');
+  // The hero's featured chart (Javier, 24 Nov 2026): the seven evolution charts in rotation, every 10 seconds, from
+  // data/evolution/charts.json. It replaces the static adoption figure; the adoption explorer below stays.
+  const adoption = /<!-- (?:adoption|evolution):start -->[\s\S]*?<!-- (?:adoption|evolution):end -->/;
+  if (!adoption.test(html)) throw new Error('index.html has no evolution block');
+  const evolution = JSON.parse(readFileSync(new URL('data/evolution/charts.json', root), 'utf8'));
+  const ver = (f) => createHash('sha256').update(readFileSync(new URL(f, root))).digest('hex').slice(0, 10);
+  const carousel = renderEvolutionCarousel(evolution).replace('<!-- evolution:start -->', `<!-- evolution:start -->\n      <link rel="stylesheet" href="/assets/evolution.css?v=${ver('assets/evolution.css')}">`).replace('<!-- evolution:end -->', `<script src="/assets/evolution.js?v=${ver('assets/evolution.js')}" defer></script>\n      <!-- evolution:end -->`);
   const projection = JSON.parse(readFileSync(new URL('data/public/projection.json', root), 'utf8'));
   const explorer = /<!-- adoption-explorer:start -->[\s\S]*?<!-- adoption-explorer:end -->/;
   if (!explorer.test(html)) throw new Error('index.html has no adoption explorer block');
   const view = renderAdoption(projection, data.pages ?? {});
-  return html.replace(cats, () => renderCategories(data)).replace(adoption, () => view.hero).replace(explorer, () => view.section).replace(block, (_, open, close) => `${open}${json}${close}`);
+  return html.replace(cats, () => renderCategories(data)).replace(adoption, () => carousel).replace(explorer, () => view.section).replace(block, (_, open, close) => `${open}${json}${close}`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

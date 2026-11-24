@@ -50,6 +50,8 @@ tools/                     export-humanoids.mjs, build-site.mjs, verify-site.mjs
 app/                       premium app served at whyhumanoid.com/app/, built from server/public by tools/build-app.mjs
 server/src/relations/      Deployments-robot-company relations, rebuilt by every import (graph.js)
 server/src/search/         global search and common tags, rebuilt by every import (index.js, vocabulary.js)
+data/evolution/charts.json the seven evolution charts (section pages and home carousel), from public snapshots and
+                           the reviewed dates of tools/evolution-review.json (tools/export-evolution.mjs)
 tools/relations-aliases.json  reviewed aliases: public maker and robot model names only
 server/public/             full-database app source (holds no data; calls the API on the Worker over CORS)
 server/src/                API: sign-in, sessions, API keys, entitlements, Stripe, previews, full data
@@ -81,6 +83,9 @@ python3 -I tools/workbook-xlsx-to-json.py <book.xlsx> <export.json> [--compare <
                                             # private export from the workbook's .xlsx download (needs openpyxl)
 (cd tools && npm ci && node verify-site.mjs) # headless render: the whole free catalogue, search and filters work
 node tools/check-public.mjs                 # public data guard
+node tools/export-evolution.mjs --check     # evolution charts (data/evolution/charts.json) are the build of public snapshots
+node --no-warnings --test tools/test-evolution.mjs   # each evolution series recomputed from its source; no paid field
+node tools/verify-evolution.mjs [--base <url>] [--quick]   # browser: 10-second rotation, controls, keyboard, mobile
 (cd server && npm ci && npm test)           # API tests
 node server/scripts/dev.mjs                 # local app and catalogue with synthetic data, port 8787
 ```

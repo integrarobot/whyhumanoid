@@ -94,7 +94,7 @@ if (doc('/deployments/').querySelectorAll('article.dep').length) fail('/deployme
 // Every organisation of a public Components product has a company page (reviewed makers, tools/components-makers.json).
 for (const card of doc('/components/').querySelectorAll('#pcs .pc')) if (!card.querySelector('.pc-m a[href^="/companies/"]')) fail(`/components/: ${card.dataset.id} has no company page`);
 for (const id of ['investment', 'integrators']) for (const a of doc(`/${id}/`).querySelector('article section table').querySelectorAll('tbody tr td:first-child a')) if (!a.getAttribute('href').startsWith('/companies/')) fail(`/${id}/: ${a.textContent} does not link to its company page`);
-if (doc('/humanoids/').querySelectorAll('tbody tr').length !== model.robots.length) fail('/humanoids/: does not list every robot');
+if (doc('/humanoids/').querySelectorAll('tbody tr:not(.evo-tbl tr)').length !== model.robots.length) fail('/humanoids/: does not list every robot');
 // Reports (Research Conclusions Atlas, 24 Nov 2026): the existing analysis stays at /reports/deployment-records/; every
 // report has its page with a link to its public original and every finding's passport; every finding has a row in the
 // table; every chart draws only checked findings, one mark per original estimate, and its table holds the same marks.
@@ -157,7 +157,7 @@ for (const rbx of model.robots) {
 }
 for (const idx of ['/humanoids/', '/companies/']) {
   const d = doc(idx);
-  const n = d.querySelectorAll('tbody tr').length;
+  const n = d.querySelectorAll('tbody tr:not(.evo-tbl tr)').length; // the evolution chart's data table aside
   const want = idx === '/humanoids/' ? model.robots.length : model.companies.length;
   if (n !== want) fail(`${idx}: lists ${n} of ${want}`);
   for (const a of d.querySelectorAll('a[href^="/"]')) if (!exists(a.getAttribute('href'))) fail(`${idx}: broken link ${a.getAttribute('href')}`);
