@@ -1,0 +1,53 @@
+{
+  "id": "WH-20261124-1118-lanzamiento-usd",
+  "tarea": "Lanzamiento de la suscripción de datos en USD: importaciones de producción y test, verificación pública y de suscriptor, precios USD y heredados en el repositorio, checkout en modo test, revisión fiscal y apertura autorizada de la venta nueva a US$100 al año",
+  "origen": "Javier y Codex, 24/11/2026: Codex creó los precios USD en Stripe y desplegó los Workers de producción y test; Javier autorizó abrir la venta de datos cuando todo estuviera comprobado; los informes a medida siguen desactivados",
+  "fecha": "2026-11-24T11:18:45+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Importación de producción (ejecución 45371035206) y de test (45372005860, desde feat/premium-preview porque la identidad de Google rechaza test desde main): 191 casos relacionados, búsqueda de suscriptor con 1.897 documentos y pública con 1.830.",
+    "PR #85 (fusionado): server/wrangler.toml, AGENTS.md y DEPLOYMENT.md fijan los precios para que un despliegue posterior no los revierta:\n- live: USD price_1UfGNgAcMngkWs5CkdCMYC1j y EUR heredado price_1UbOtjAcMngkWs5CR8qXNPGn;\n- test: USD price_1UfGPQAcMngkWs5CeBWLrtsQ y EUR heredado price_1UbL1PAcMngkWs5CH3IDosFb.\nUna prueba impide que el precio actual figure también como heredado.",
+    "PR #86 (fusionado): LIVE_SALES_OPEN = true. La portada, Deployments, Components y /subscribe/ muestran «Subscribe for US$100 a year» en lugar de «New subscriptions open soon». La prueba del interruptor comprueba la sesión de checkout en vivo, el rechazo de una segunda compra (409) y que los informes siguen sin poder pedirse.",
+    "Informes a medida sin cambios: «Not available to order yet», sin formulario ni checkout."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #85 (precios, fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/85"
+    },
+    {
+      "etiqueta": "PR #86 (apertura de la venta, fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/86"
+    },
+    {
+      "etiqueta": "Suscripción e informes",
+      "url": "https://whyhumanoid.com/subscribe/"
+    },
+    {
+      "etiqueta": "Portada (dos vías)",
+      "url": "https://whyhumanoid.com/#paths"
+    }
+  ],
+  "despliegue": [
+    "Interfaz publicada: GitHub Pages sirve main 25b27e7 (PR #86). La portada, Deployments, Components y /subscribe/ muestran «Subscribe for US$100 a year»; ya no aparece «open soon».",
+    "Backend sincronizado: el Worker de producción (versión 6cbdd1f3, paquete 31060e45…21cc) sirve a los visitantes las 191 filas de Deployments, los 19 productos de Components y 1 software con sus campos públicos, y 0 de 15 relaciones de evidencia (solo recuento). Plan: USD 10000 al año.",
+    "Venta en USD: abierta en el código y en la web (PR #86, fusionado), pero NO activa todavía en el Worker de producción: GET /v1/billing/plan da USD 10000 con checkout_available false. El checkout en vivo responderá cuando Codex despliegue el paquete de main 25b27e7 (sha256 a0727faf0a721456a13c0ed456e2f3144e5b1ab98b0dcbaf279fbe3453d7dbe8). Mientras tanto, la app mantiene el botón de compra desactivado («Subscriptions open soon»)."
+  ],
+  "verificaciones": [
+    "Producción con navegador real después de fusionar el PR #86: verify-staging 366 de 366 en whyhumanoid.com contra la API de producción, en escritorio y móvil.",
+    "Comprobación de fuga en la API en vivo: 1.339 valores de pago de Deployments y Components; ninguno servido a visitantes.",
+    "Checkout en modo test, tras la importación de test: /v1/billing/plan da USD 10000 al año con checkout_available true; POST /v1/billing/checkout responde 200 con una sesión cs_test de Stripe, y repetirlo devuelve la misma sesión. No se completó ningún pago: las páginas de Stripe no son alcanzables desde este entorno y no se amplió el acceso.",
+    "Eventos de Stripe en sandbox local (verify-staging --local y 144 de 144 pruebas de API): eventos idempotentes, fallidos, tardíos y heredados en EUR, y segunda compra rechazada con 409.",
+    "Suscriptor: la cuenta del propietario no tiene suscripción ni en producción ni en test (datasets 403, búsqueda en alcance público). La vista de suscriptor está verificada en local y en sandbox, no con una suscripción real de producción.",
+    "Impuestos (hechos del código, no del panel de Stripe): la sesión de checkout no activa Stripe Tax, no pide dirección ni NIF y no aplica tipos impositivos, así que el cargo es exactamente US$100. La web no hace ninguna afirmación fiscal. No he podido leer la configuración fiscal de la cuenta de Stripe.",
+    "PR #86: pruebas de API 144 de 144, verify-site, verify-premium-app, verify-pages, check-public y todos los --check en verde."
+  ],
+  "pendientes": [
+    "Codex: desplegar en el Worker whyhumanoid-premium de producción el paquete de main tras el PR #86 (node server/scripts/build-dashboard.mjs con esbuild 0.27.7, sha256 a0727faf…dbe8). No hay variables ni migraciones nuevas. Después, GET /v1/billing/plan debe dar checkout_available true.",
+    "Javier, con su asesor fiscal: decidir si la suscripción debe cobrar IVA. Hoy el checkout no calcula ni recauda impuestos. Si hay que repercutirlo (por ejemplo, IVA a particulares de la UE en servicios digitales), el cambio es activar Stripe Tax o tipos impositivos y ajustar el texto de precio; no lo he tocado.",
+    "Comprobar la vista de suscriptor en producción con una cuenta realmente suscrita, cuando exista (sin anotar datos de la cuenta)."
+  ],
+  "siguiente_accion": "Codex despliega el paquete del Worker de producción; Claude verifica que /v1/billing/plan da checkout_available true y que el botón abre el checkout, sin pagar; Javier decide el tratamiento fiscal y confirma la entrega."
+}
