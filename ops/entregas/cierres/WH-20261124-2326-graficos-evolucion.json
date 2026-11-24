@@ -1,0 +1,75 @@
+{
+  "id": "WH-20261124-2326-graficos-evolucion",
+  "tarea": "Gráficos de evolución en siete secciones (Humanoids, Deployments, Components, Integrators, Datasets, Benchmarks y Reports) y carrusel de la portada que los rota cada 10 segundos",
+  "origen": "Javier, vía Codex, 24/11/2026: un gráfico de evolución representativo y fechado por sección, en ese orden, y la portada rotándolos exactamente cada 10 segundos; sustituye las propuestas de diez categorías, 12 segundos y Software primero. Sin tocar el esquema del maestro, permisos, precios, suscripción, impuestos ni x402 (PR #93 sin fusionar)",
+  "fecha": "2026-11-24T23:26:51+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Implementación completa de los siete gráficos, con cobertura fechada parcial y declarada en cada uno; no se afirma una cobertura histórica completa. Datos en data/evolution/charts.json, generados por tools/export-evolution.mjs solo desde las instantáneas públicas y la lectura revisada tools/evolution-review.json. Cada fecha va atada a un ID existente y a un extracto literal de su celda, y la generación falla si deja de coincidir. Sin maestro paralelo, sin cambios en el maestro y sin campos de pago.",
+    "Cobertura y significado de cada gráfico:\n- Humanoids: modelos presentados por año, según Release (año o fecha de presentación); 40 de 134 robots fechados.\n- Deployments: casos por la etapa más avanzada documentada al cierre de cada trimestre. Es cronología de fuentes, no fecha de inicio ni flota, y nunca proyecta un estado hacia atrás. 111 de 122 casos fechados; los 11 sin fecha van en una barra aparte («Date unknown»). Con ellos los totales cuadran con la proyección pública (8/51/31/32) sin asignar fechas.\n- Components: primer artículo, preprint o lanzamiento de cada producto, por principio de detección; 17 de 19.\n- Integrators: 14 hechos fechados de 12 de 28 proveedores, separados en corroborado, anunciado, solo del proveedor y solo simulación. Novares cuenta una vez.\n- Datasets: primera publicación en arXiv del artículo asociado, comprobada por Codex el 24/11; no es la fecha de publicación del dataset ni su volumen. 11 de 35.\n- Benchmarks: resultados de Physics-IQ por fecha de alta en la clasificación, solo dentro de un grupo de comparabilidad; 8 de 34.\n- Reports: envíos anuales globales en unidades, cada estimación original una vez, separadas por tipo y sin unir puntos; 9 de 13 hallazgos.",
+    "Cada sección muestra su gráfico grande arriba, con cursor de fecha, botón Replay, deslizador, recuento, cobertura, exclusiones, significado de la fecha, tabla de datos y fuentes. El estado final está en el HTML y se lee sin JavaScript; assets/evolution.js reproduce los registros por la fecha de su fuente. Es una reproducción histórica, no actividad en vivo.",
+    "Portada: el carrusel sustituye a la figura fija de adopción del héroe; el explorador de adopción sigue debajo.\n- Los siete gráficos van en orden, 10 segundos cada uno, y vuelven a empezar tras Reports.\n- Controles: siete selectores, anterior y siguiente, y pausa y reproducción.\n- Se detiene con un clic, una tecla o el foco del teclado; espera con la pestaña oculta, fuera de pantalla o con el puntero encima.\n- Con movimiento reducido muestra los estados finales sin reproducción automática hasta pulsar Play.\n- Altura estable, accesible por teclado, y sin JavaScript los selectores enlazan a cada sección.",
+    "Paleta validada con el validador de dataviz sobre la superficie oscura: tres tonos ámbar para las etapas más un contorno rayado para «Announced», y tres colores categóricos para los editores de Reports. De paso se corrige la tabla del atlas de Benchmarks, que desbordaba a 320 px.",
+    "Pruebas nuevas:\n- tools/test-evolution.mjs (en CI) recalcula cada serie por su cuenta desde la fuente y comprueba que no se publica ningún campo de pago.\n- tools/verify-evolution.mjs cubre el navegador.\nAjustadas verify-site, verify-pages y verify-staging, que buscaban la figura fija de la portada. Regla en AGENTS.md, comandos en README y pasos de refresco en el skill semanal."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #95 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/95"
+    },
+    {
+      "etiqueta": "Portada con el carrusel",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "Humanoids",
+      "url": "https://whyhumanoid.com/humanoids/#evolution"
+    },
+    {
+      "etiqueta": "Deployments",
+      "url": "https://whyhumanoid.com/deployments/#evolution"
+    },
+    {
+      "etiqueta": "Components",
+      "url": "https://whyhumanoid.com/components/#evolution"
+    },
+    {
+      "etiqueta": "Integrators",
+      "url": "https://whyhumanoid.com/integrators/#evolution"
+    },
+    {
+      "etiqueta": "Datasets",
+      "url": "https://whyhumanoid.com/datasets/#evolution"
+    },
+    {
+      "etiqueta": "Benchmarks",
+      "url": "https://whyhumanoid.com/benchmarks/#evolution"
+    },
+    {
+      "etiqueta": "Reports",
+      "url": "https://whyhumanoid.com/reports/#evolution"
+    },
+    {
+      "etiqueta": "Datos de los gráficos",
+      "url": "https://whyhumanoid.com/data/evolution/charts.json"
+    }
+  ],
+  "despliegue": [
+    "PR #95 fusionado en main b3edcb6 (squash de f087969 y 8764046) con CI en verde. GitHub Pages lo publicó en menos de un minuto. assets/evolution.js, assets/evolution.css y data/evolution/charts.json de producción son idénticos byte a byte a los de main.",
+    "Solo hay cambios en la web estática: no hay despliegue de Worker, migraciones ni variables. El PR #93 (x402) sigue sin fusionar y desactivado."
+  ],
+  "verificaciones": [
+    "Producción con navegador real (node tools/verify-evolution.mjs --base https://whyhumanoid.com): 181 de 181.\n- Rotación completa real 1→2→3→4→5→6→0, con intervalos de 10.000, 10.000, 9.999, 10.016, 10.000 y 9.999 ms (el primero, 9.461 ms, empieza a medir con la diapositiva ya en curso).\n- Selectores, anterior y siguiente, pausa y reproducción, y pausa al interactuar.\n- Pestaña oculta sin avanzar, espera fuera de pantalla y con el puntero encima.\n- Movimiento reducido sin reproducción automática y con Play a petición.\n- Teclado: flechas, Inicio y Fin.\n- 320, 375 y 430 px sin desplazamiento lateral, sin etiquetas cortadas y con altura estable en las siete diapositivas.\n- Las siete páginas: sin JavaScript se ve el estado final con la cifra final igual a los datos; el deslizador oculta todo al inicio y lo muestra al final; la reproducción automática al entrar en pantalla.\n- Sin errores de script.",
+    "Producción general (verify-staging --base https://whyhumanoid.com --api del Worker de producción): 362 de 362.",
+    "Antes de fusionar, en local: test-evolution 9 de 9; verify-evolution 181 de 181 con la rotación de 70 segundos; verify-staging --local 374 de 374; verify-site, verify-pages, verify-premium-app, test-reports 19 de 19, test-integrators 6 de 6, check-public y todos los --check.",
+    "Codex revisó de forma independiente evolution.js y evolution-model.mjs en 8764046 (orden, reloj de 10 s, movimiento reducido, visibilidad y semántica de la proyección fechada) sin hallazgos que bloqueen."
+  ],
+  "pendientes": [
+    "Cobertura fechada parcial, visible en cada gráfico con sus fuentes y recuentos. No bloquea la entrega; para ampliarla hace falta lo siguiente:\n- Datasets: fecha de primera publicación de los 24 recursos restantes.\n- Benchmarks: fecha de publicación de los 22 benchmarks. Hoy no hay columna para ella: añadirla es un cambio de esquema que decide Javier.\n- Humanoids: 94 robots sin fecha de lanzamiento utilizable en el catálogo público (71 no divulgada o sin verificar, 20 vacíos, 3 excluidos con motivo).\n- Components: RoboTact y BioTac SP sin año del producto.\n- Integrators: 16 proveedores sin fechas en sus páginas revisadas, y los proyectos TXISTU y Edward Warchocki sin fecha.\n- Deployments: 20 registros sin fecha de publicación (11 casos solo con registros sin fecha).",
+    "Detalle visual menor: en la vista compacta del carrusel, con cuatro filas (Datasets), el punto de la última fila queda pegado al eje. Se lee, pero conviene darle unos píxeles más de alto.",
+    "Sigue abierta la dependencia del backend de Integrators (WH-20261124-2105-integrators-catalogo): los Workers de producción y test no tienen el código de Integrators y la importación falla con el maestro actual hasta desplegarlos. Este trabajo no depende de ello, porque los gráficos salen de las instantáneas públicas."
+  ],
+  "siguiente_accion": "Javier y Codex revisan la web publicada y confirman la entrega; Codex o Grok amplían fechas de Datasets y Benchmarks cuando haya capacidad (y Javier decide si Benchmarks tiene columna de fecha); después se regenera con node tools/export-evolution.mjs."
+}
