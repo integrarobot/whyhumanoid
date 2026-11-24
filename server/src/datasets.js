@@ -9,6 +9,7 @@ import { hostKey, urlKey } from './import/identity.js';
 import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
 import editorial from './editorial/humanoids.json' with { type: 'json' };
 import { scrubEditorial } from './data-atlas/atlas.js';
+import { INTEGRATOR_FIELDS, INTEGRATOR_HEADERS, selectIntegrators } from './integrators/catalogue.js';
 import { COMPONENT_FIELDS, COMPONENT_HEADERS, COMPONENT_WITHHELD, scrubComponentText, selectProducts, selectSoftware } from './components/catalogue.js';
 import { DATASET_ACCESS, PREVIEW_ROWS, categoryOfDataset, isFreeDataset, publicFieldsFor } from './access/matrix.js';
 
@@ -138,16 +139,17 @@ export const DATASETS = [
   },
   {
     id: 'integrators',
+    // Since 24 Nov 2026 a provider catalogue (server/src/integrators/catalogue.js): one provider per row of the native
+    // table IntegratorsCatalog, 26 columns, keyed by PROVIDER ID. Supersedes the three-column directory (archived in the
+    // workbook as hidden dated tabs, never read). Free in full.
     tab: 'Integrators',
     title: 'Integrators',
-    description: 'System integrators and service providers that deploy humanoid and service robots.',
-    kind: 'lists',
-    headers: DIRECTORY,
-    lists: [{ list: 'integrator', columns: { name: 0, url: 1, description: 2 } }],
-    idPrefix: 'int',
-    // Canonical organisation identity: official domain plus jurisdiction. The tab has no jurisdiction column
-    // yet, so the key carries an empty jurisdiction until Codex supplies one; aliases keep every name seen.
-    naturalKey: (d) => (hostKey(d.url) ? `${hostKey(d.url)}|` : null),
+    description: 'Humanoid integrators and service providers: roles, services, platforms, territory, named projects and the evidence behind each claim.',
+    kind: 'table',
+    headers: INTEGRATOR_HEADERS,
+    fields: INTEGRATOR_FIELDS,
+    select: selectIntegrators,
+    idFields: ['provider_id'],
   },
   {
     id: 'evidence-links',

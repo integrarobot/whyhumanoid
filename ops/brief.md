@@ -252,3 +252,18 @@ excerpt that must be literally in that cell) and, when checked, the page of the 
   tax (no Stripe Tax, no address or tax ID): the charge is the price. Custom company reports stay not orderable.
 - Private leak check before publishing: `node --no-warnings tools/check-reserved.mjs --from <export>` (paid values of
   Deployments and Components never in published files).
+
+## Integrators: provider catalogue (Javier, 24 Nov 2026)
+
+- Source: the Integrators tab of the master (native table IntegratorsCatalog, 28 providers, 26 columns), keyed by
+  PROVIDER ID. It supersedes the 7-row, 3-field directory; the hidden dated archive tabs are history and never read.
+- Free in full: /integrators/ (directory with filters, capability comparison, named projects, overview, method) and
+  one profile per provider on its company page. No subscription, no report order, no change to billing.
+- Counting: 24 humanoid-specific providers (explicit humanoid work or offering, not validated production integrators);
+  CA3 is a requested specialist exception (simulated tests only); Bumerania, Amerevo and RH Bots have unconfirmed
+  humanoid scope. Novares Seseña is one shared project (Innov8 integration, Bleu Robotics software).
+- Code: server/src/integrators/catalogue.js (import contract and vocabularies), tools/integrators-review.json (reviewed
+  evidence groups and projects, each citing its cell), tools/export-integrators.mjs (data/integrators/atlas.json),
+  tools/integrators-view.mjs, assets/integrators.{css,js}. Checks: tools/test-integrators.mjs (CI) and
+  tools/verify-integrators.mjs (browser, local or production, with --api for backend freshness).
+- The Worker must run this code before the next production import: the old Worker rejects the new Integrators header.

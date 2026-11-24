@@ -135,6 +135,23 @@ function componentsTab(spec, rowsPerTab) {
 
 // Synthetic workbook with the real header rows and fake values. An empty sheet row sits after the third data
 // row of every tab: it must not count towards the 10-row preview.
+// One synthetic Integrators row (26 columns, server/src/integrators/catalogue.js). Row 1 is the requested specialist
+// exception, row 2 a record whose humanoid scope is unconfirmed; the rest are humanoid-specific providers.
+export function integratorFixtureRow(i) {
+  const status = i === 1 ? 'Requested specialist exception; exclude from validated humanoid-provider counts' : i === 2 ? 'Existing adjacent record; humanoid eligibility unconfirmed' : 'Humanoid-specific provider';
+  const unknown = 'Not established in reviewed sources';
+  return [
+    `Example integrator ${i}`, `https://integrator-${i}.example.com/`, `Synthetic integrator ${i} description.`, `int_fx${i}`,
+    `Example Integrator ${i} Group (fixture; legacy Example ${i})`, 'System integrator; distributor; training',
+    i % 2 ? 'Madrid, Spain' : unknown, i % 2 ? 'Spain; Portugal' : unknown, i === 1 ? 'None validated' : 'Unitree G1; H1',
+    'Site audit; integration; operator training; maintenance', 'Research; education', 'Explicit humanoid offering',
+    'Commercial offering', unknown, 'ROS 2', unknown, 'Maintenance and spares', 'Robot supply and integration',
+    'Humanoid integration project price not published in reviewed sources',
+    `https://integrator-${i}.example.com/\nhttps://news.example.com/integrator-${i}`, 'Not stated on reviewed service pages',
+    '2026-11-24', 'Primary-source claim checked', `Synthetic limitation ${i}.`, status, 'Fixture',
+  ];
+}
+
 export function fixtureWorkbook({ rowsPerTab = 12 } = {}) {
   const values = {};
   for (const spec of DATASETS) {
@@ -149,7 +166,9 @@ export function fixtureWorkbook({ rowsPerTab = 12 } = {}) {
         if (i === rowsPerTab) rows.push(spec.headers.map((f) => (f === 'Lab' ? 'Example Publisher' : f === 'Robot' ? 'Resource' : '')));
         continue;
       }
-      if (spec.kind === 'lists') {
+      if (spec.id === 'integrators') {
+        rows.push(integratorFixtureRow(i));
+      } else if (spec.kind === 'lists') {
         const row = new Array(spec.headers.length).fill('');
         for (const def of spec.lists) {
           row[def.columns.name] = `Example ${def.list} ${i}`;

@@ -90,6 +90,12 @@ function describe(datasetId, d) {
     case 'hardware':
     case 'component-software':
       return { title: d.name || d.component_id, subtitle: join(d.family, d.group, d.principle), names: [d.name, d.component_id], context: 'measured' };
+    case 'integrators': {
+      // Display name from the canonical name; every name the sheet gives (sheet name, canonical name and its variants) finds it.
+      const display = String(d.canonical_name || '').split(/\s+\(|\s+\/\s+/)[0].trim() || d.name;
+      const variants = String(d.canonical_name || '').split(/\s*[()/;]\s*/).map((x) => x.replace(/^legacy\s+/i, '').trim()).filter((x) => x.length > 1);
+      return { title: display || host(d.url) || '', subtitle: join(d.roles, host(d.url)), names: [display, d.name, d.canonical_name, ...variants], context: 'description' };
+    }
     case 'data-space':
       return { title: d.topic || d.record_id, subtitle: join(d.workstream, d.epistemic_status), names: [d.topic, d.record_id], context: 'finding_or_proposal' };
     default: {
