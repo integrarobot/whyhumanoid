@@ -1,0 +1,57 @@
+{
+  "id": "WH-20261124-0713-reports-atlas",
+  "tarea": "Reports: Research Conclusions Atlas en /reports/, que muestra en qué coinciden los informes sobre humanoides, en qué divergen y qué supuestos mueven sus cifras, con pasaporte de cada hallazgo y una página por informe",
+  "origen": "Javier vía Codex, 24/11/2026: empezar Reports tras cerrar Components y construirlo ahora, no solo un plan",
+  "fecha": "2026-11-24T07:13:24+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Fuente: la pestaña Reports del maestro (ReportsCatalog A1:U13, 21 columnas, RPT-001 a RPT-012), leída sin editar y sin importarla a D1. No se crean pestañas.",
+    "Capa de hallazgos (tools/reports-findings.json, mapeo revisado y auditable):\n- 151 hallazgos normalizados con medida, tipo, unidad, divisa, geografía, alcance, denominador, años, escenario, supuestos, límites y atribución original;\n- cada uno cita su celda del maestro (fila, columna y extracto literal);\n- 116 comprobados página a página contra 10 originales públicos, con una frase de 30 palabras como máximo encontrada en la página citada;\n- 18 pendientes, 16 de originales inalcanzables (Morgan Stanley e Intel) y 1 retenido (cifras de China de Morgan Stanley con años ambiguos).",
+    "Reglas de datos (server/src/reports/atlas.js):\n- contrato de 21 columnas y procedencia: el extracto debe estar en su celda;\n- vocabularios; cada medida en su unidad;\n- denominador obligatorio en porcentajes y encuestas;\n- solo pilas exhaustivas; un hallazgo retenido no lleva cifras ni años;\n- una estimación original por punto de serie (serie, año y tipo);\n- lista blanca pública.\nLa instantánea data/reports/atlas.json se genera con tools/export-reports.mjs, que con --originals comprueba cada frase en su página.",
+    "Página /reports/:\n- siete preguntas con cifras reales y una matriz de cobertura informe × tema con estados calculados;\n- siete espacios temáticos, cada uno con gráficos y una síntesis citada: coincidencias, divergencias, qué mueve las cifras y huecos;\n- tabla filtrable de los 151 hallazgos;\n- tarjetas de informe y método;\n- pasaporte en panel lateral, accesible por teclado y por toque;\n- estado compartible en la dirección (?theme, ?report, ?check, ?kind, ?f).",
+    "Doce páginas de informe con alcance, acceso, comprobación, cobertura y el pasaporte de cada hallazgo (#f-<id>). Se mantienen /reports/deployment-records/ y /reports/anthropic-what-work-can-robots-do-2026/; el registro de direcciones usa page_id.",
+    "Semántica aplicada:\n- envíos (flujo) frente a parque instalado (stock);\n- ingresos de robots frente a PIB, ecosistema y valor del trabajo;\n- exposición técnica frente a competitividad económica y encuestas;\n- BOM, coste de producción, precio de venta, precio de lista y coste por hora, por separado;\n- flujos de financiación frente a valoraciones;\n- menciones de restricciones sin ranking;\n- nada promediado, interpolado, convertido ni llevado a un año común; el abanico de BCG se muestra como dispersión.",
+    "Se retiran data/reports/catalogue.json y tools/reports-source.mjs, que quedaban superados. Se actualizan el texto de Reports en la matriz de acceso (sigue gratis), la guardia pública, CI, AGENTS.md y ops/brief.md."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #81 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/81"
+    },
+    {
+      "etiqueta": "Reports",
+      "url": "https://whyhumanoid.com/reports/"
+    },
+    {
+      "etiqueta": "Tema mercado",
+      "url": "https://whyhumanoid.com/reports/#theme-market"
+    },
+    {
+      "etiqueta": "Pasaporte compartido",
+      "url": "https://whyhumanoid.com/reports/?f=bofa-ship-2035"
+    },
+    {
+      "etiqueta": "Informe de ejemplo",
+      "url": "https://whyhumanoid.com/reports/bofa-physical-ai-part-2-2026/"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages: commit de fusión cc46888 (PR #81) en main, servido en whyhumanoid.com. Responden 200 /reports/, las 12 páginas de informe, /reports/deployment-records/, data/reports/atlas.json, assets/reports.js, assets/reports-core.js y assets/reports.css.",
+    "Worker e importación: no hacen falta. Reports es estático, no está en D1 y no usa la API. Estado comprobado el 24/11: el Worker sigue sirviendo 13 pestañas con el código anterior al 23/11, lo que solo afecta a la dependencia pendiente de Components."
+  ],
+  "verificaciones": [
+    "Producción con navegador real: verify-staging pasa 350 de 350 en whyhumanoid.com, en escritorio y en móvil con toque:\n- 151 hallazgos en la tabla, 7 temas y gráficos dibujados;\n- un punto del gráfico abre su pasaporte (10 million units, aparece en 3 informes, ?f=bofa-ship-2035);\n- Escape cierra el pasaporte y devuelve el foco;\n- la celda Anthropic × Trabajo filtra la tabla;\n- ?f=ms-china-ambiguous reabre el pasaporte y dice «Withheld»;\n- las 12 páginas de informe responden con todos sus pasaportes;\n- sin regresiones en el resto del sitio.",
+    "Capturas en vivo a 1440, 390 y 320 px sin desbordamiento horizontal de la página. En móvil, los gráficos de años se desplazan dentro de su marco y tienen al lado la tabla con las mismas marcas.",
+    "CI del PR #81 en verde. Entra un paso nuevo (tools/test-reports.mjs, 19 tests semánticos) y export-reports --check sustituye a reports-source --check.",
+    "En local:\n- 135 de 135 pruebas de API;\n- verify-pages, verify-site y check-public correctos;\n- verify-staging --local 362 de 362;\n- export-reports con --originals: las 116 frases comprobadas aparecen en su página del original."
+  ],
+  "pendientes": [
+    "Correcciones de fuente propuestas a Codex (el maestro no se ha tocado):\n- RPT-003, Morgan Stanley: las cifras de China (Rmb12bn, Rmb216bn, Rmb6tr) figuran frente a más años que valores; hay que asignar cada cifra a su año desde el original de Morgan Stanley Research y no desde la copia en la web de un asesor;\n- RPT-001, Pham: el estudio da una cifra de ventas y valoración que no aparece en la celda del maestro;\n- RPT-009, Capgemini: el maestro enlaza una copia alojada por MEO; mejor la página propia de Capgemini;\n- RPT-012, Goldman Sachs: indicar en el maestro que es la edición pública redactada de enero de 2024.",
+    "Originales no alcanzables desde la sesión: Morgan Stanley (respuesta vacía en advisor.morganstanley.com) e Intel (403 de Akamai). Sus 16 hallazgos se muestran tal como se extrajeron y no se dibujan hasta que una persona o un agente con acceso los compruebe.",
+    "18 hallazgos extraídos siguen sin comprobar (entre ellos las secuencias sectoriales de BlueBay, Fayd y Berg Insight, y el objetivo de UBTECH).",
+    "Sin relación con Reports y sin cambios: el Worker de producción sigue con el código anterior al 23/11 (13 pestañas, comprobado el 24/11). Sigue abierta la dependencia de Components, que corresponde a Codex. Reports es estático y no depende del Worker ni de la importación."
+  ],
+  "siguiente_accion": "Javier revisa /reports/ y confirma la entrega; Codex valora las correcciones de fuente del maestro y el acceso a los originales de Morgan Stanley e Intel; Claude amplía las comprobaciones cuando haya originales."
+}
