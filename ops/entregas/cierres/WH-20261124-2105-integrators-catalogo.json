@@ -1,0 +1,65 @@
+{
+  "id": "WH-20261124-2105-integrators-catalogo",
+  "tarea": "Sección Integrators completa: catálogo de 28 proveedores y 26 campos desde el maestro vivo, con directorio, búsqueda y filtros, comparación de capacidades, proyectos con nombre, resumen visual y un perfil gratuito por proveedor",
+  "origen": "Javier, vía Codex, 24/11/2026: construir y publicar la sección Integrators completa desde el maestro enriquecido (pestaña Integrators, tabla IntegratorsCatalog A1:Z29), toda gratuita, con las reglas de evidencia indicadas",
+  "fecha": "2026-11-24T21:05:48+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Fuente: el maestro vivo (modificado el 24/11/2026 a las 19:26:32 UTC), leído por la vía establecida (descarga xlsx con Drive y tools/workbook-xlsx-to-json.py). La pestaña Integrators tiene 28 proveedores y las 26 cabeceras exactas, y sustituye al directorio antiguo de 7 filas y 3 campos. Las pestañas ocultas fechadas no se leen. La importación completa del maestro pasa (check-workbook).",
+    "Importación: server/src/integrators/catalogue.js exige las 26 cabeceras, IDs int_ únicos, un estado de catálogo revisado, fuentes web (una por línea) y fecha de revisión. Cualquier incoherencia detiene la importación sin escribir nada, y la cabecera antigua de 3 columnas se rechaza como deriva. El dataset integrators pasa a tabla de 26 campos con clave provider_id, gratis entero en la API, la vista previa y la búsqueda; la búsqueda encuentra cada proveedor por su nombre de hoja, su nombre canónico y sus variantes.",
+    "Lectura revisada (tools/integrators-review.json): grupos de evidencia y proyectos con nombre. Cada uno cita un extracto literal de su celda, y tools/export-integrators.mjs lo comprueba al generar data/integrators/atlas.json. No se ha cambiado ninguna celda del maestro.",
+    "Regla de recuento:\n- 24 proveedores con trabajo u oferta humanoide explícita, que no son 24 integradores validados en producción;\n- CA3, excepción solicitada, con solo pruebas simuladas;\n- Bumerania, Amerevo y RH Bots, con alcance humanoide sin confirmar.\nLos 4 últimos se listan y se etiquetan, nunca se cuentan. Novares Seseña es un único PoC compartido (Innov8 en la integración, Bleu Robotics en el software) y sus cifras se muestran por separado, sin combinarse. GMO AIR y TechShare son dos proveedores distintos; Generation Robots y GR Lab, un solo registro. El protocolo de CosmicBrain figura como propuesto, los movimientos de MERA como controlados por operador y las plataformas futuras de RobotHaus como condicionales.",
+    "/integrators/ incluye:\n- un directorio con búsqueda y filtros (rol, servicio, plataforma o robot, sector, territorio de servicio declarado, evidencia y solo proveedores humanoides), con recuento, botón para borrar filtros, estado vacío y filtros guardados en la dirección;\n- una tabla de comparación de servicios que sigue los filtros;\n- los proyectos con nombre;\n- un resumen con gráficos de barras y lo que establecen las fuentes;\n- el método de lectura.\nTodo el contenido está en el HTML; el JavaScript solo filtra.",
+    "Perfiles: cada proveedor tiene un perfil gratuito en su página de empresa. Muestra servicios, plataformas, sector y territorio, proyecto y etapa de evidencia, software, teleoperación y datos, soporte, entrega y precio, revisión, verificación y limitaciones, con las fuentes junto a las afirmaciones; lo no establecido aparece como tal. Las direcciones anteriores se conservan (/companies/syntech/, /companies/mine/, /companies/bravo/ y el resto) y muestran el nombre canónico (Synergy Tech, MineTechnology, Bravo Robots). No hay duplicados, y el registro de direcciones solo añade entradas.",
+    "Enlaces solo donde la identidad coincide:\n- robots Unitree H1 y PUDU D7;\n- páginas de los fabricantes Unitree, Agility Robotics, UBTECH, PUDU y Boston Dynamics;\n- el caso de Deployments de Accenture y Vodafone en Duisburg;\n- la ficha de Software de CosmicBrain.\nNo se ha creado ningún caso de despliegue. Las descripciones ya llegan en inglés desde la hoja: se retira la marca «English text pending» de Integrators.",
+    "La guarda pública ya no confunde un nombre de PDF público (…/11_04_Orano-Capgemini-…-story.pdf) con un ID de Drive; los IDs reales siguen detectándose. Documentación: regla en AGENTS.md, README, ops/brief.md y pasos de refresco en el skill semanal."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #91 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/91"
+    },
+    {
+      "etiqueta": "Integrators",
+      "url": "https://whyhumanoid.com/integrators/"
+    },
+    {
+      "etiqueta": "Perfil de ejemplo (proyecto corroborado)",
+      "url": "https://whyhumanoid.com/companies/innov8-robotics/"
+    },
+    {
+      "etiqueta": "Perfil de CA3 (excepción)",
+      "url": "https://whyhumanoid.com/companies/ca3/"
+    },
+    {
+      "etiqueta": "Dirección anterior conservada",
+      "url": "https://whyhumanoid.com/companies/syntech/"
+    },
+    {
+      "etiqueta": "Instantánea pública",
+      "url": "https://whyhumanoid.com/data/integrators/atlas.json"
+    }
+  ],
+  "despliegue": [
+    "Interfaz publicada: GitHub Pages sirve main 91c7464 (PR #91). /integrators/ muestra los 28 proveedores y data/integrators/atlas.json responde 200.",
+    "Backend NO sincronizado (comprobado el 24/11 tras la fusión): las API de producción y de test siguen sirviendo el directorio antiguo, con 7 filas y 5 campos. La importación se ejecuta dentro del Worker, y el Worker actual rechazaría la cabecera nueva de Integrators: ninguna importación del maestro actual puede pasar hasta desplegar este código.",
+    "Paquete de producción reproducido desde main 91c7464 con esbuild 0.27.7 (node server/scripts/build-dashboard.mjs <esbuild>): dist/worker.dashboard.js, sha256 5fc9fcfbecdc7515313218e6421fa695249f237e72b6fa16722daeb583bbcd44.",
+    "Paquete de test desde el mismo commit (node server/scripts/build-dashboard.mjs <esbuild> --staging): dist/worker.staging.js, sha256 819a4d87811959807a6e0c4ebdad1a2cb06a0914586c1aca5f19c7baeb3d877d; con STAGING_SITE_COMMIT=91c7464.",
+    "Sin variables ni migraciones nuevas: el PR #91 no toca server/wrangler.toml ni server/migrations. La única variable que cambia es STAGING_SITE_COMMIT del Worker de test, como en cada despliegue de test."
+  ],
+  "verificaciones": [
+    "Producción con navegador real: tools/verify-integrators.mjs pasa 123 de 123 en whyhumanoid.com. Cubre:\n- acceso anónimo;\n- 11 combinaciones de filtros contra los recuentos de la instantánea, con la tabla de comparación siguiéndolas;\n- búsqueda (Seseña da Innov8 y Bleu; «synergy tech» da Synergy Tech);\n- estado vacío y borrar filtros;\n- filtros en la dirección, recarga y Atrás;\n- orden de teclado;\n- sin desplazamiento horizontal a 320, 375, 390 y 430 px;\n- los 28 perfiles y las 7 direcciones anteriores.",
+    "Producción general: verify-staging 366 de 366 en whyhumanoid.com.",
+    "CI del PR #91 en verde. En local:\n- 149 de 149 pruebas de API, entre ellas server/test/integrators.test.js (26 campos, clave provider_id, rechazo de la cabecera antigua, de IDs repetidos o mal formados, de estados no revisados, de fuentes no web y de fechas mal escritas, acceso anónimo completo y búsqueda por nombres);\n- tools/test-integrators.mjs 6 de 6 (28 IDs con sus 26 campos, recuento 24/1/3, Novares como un solo proyecto, un perfil por proveedor con fuentes y desconocidos, direcciones anteriores);\n- verify-site, verify-premium-app y verify-pages;\n- verify-staging --local 382 de 382;\n- check-public y todos los --check.",
+    "Comprobaciones privadas sobre el maestro vivo: check-workbook pasa la importación completa; check-reserved revisa 1.313 valores de pago de Deployments y Components y no encuentra ninguno publicado. Cobertura de campos (de 28): ubicación 21, cobertura de servicio 21, plataformas 25, proyecto 16, software 21, teleoperación y datos 15, soporte 26, modelo de entrega 27, fechas de fuente 12, precio publicado 0.",
+    "Acceso: Integrators sigue gratis entero, con sus perfiles y fuentes. No cambian la suscripción, los contratos en EUR, Stripe, los impuestos ni los informes, que siguen sin poder pedirse. El orden de las diez categorías y las reglas de pago no cambian."
+  ],
+  "pendientes": [
+    "Codex, con la sesión de Cloudflare autorizada:\n1. desplegar el Worker de producción whyhumanoid-premium desde main 91c7464 (node server/scripts/build-dashboard.mjs con esbuild 0.27.7, sha256 5fc9fcfb…bcd44);\n2. desplegar el Worker de test con el paquete staging del mismo commit (sha256 819a4d87…d877d) y STAGING_SITE_COMMIT=91c7464.\nNo hay variables ni migraciones nuevas.",
+    "Después lanzo la importación de test (desde feat/premium-preview, por la condición de la identidad de Google) y la de producción. Verifico por separado que la API sirve los 28 proveedores con 26 campos: node tools/verify-integrators.mjs --base https://whyhumanoid.com --api <worker>. Hasta entonces la app de suscriptores y el buscador global muestran las 7 filas antiguas de Integrators, aunque la sección y los perfiles de la web ya estén completos.",
+    "La importación de producción también llevará a la base las 4 celdas de Humanoids que cambiaron en el maestro (Power de la fila 56 y tres valoraciones en vivo). El catálogo gratuito de la web no cambia, porque sale de su propia instantánea revisada."
+  ],
+  "siguiente_accion": "Codex despliega los Workers de producción y test desde main 91c7464; Claude importa test y producción, verifica la API y registra el cierre final; Javier confirma la entrega."
+}
