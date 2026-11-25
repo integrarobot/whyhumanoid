@@ -143,7 +143,7 @@ ${chartHtml(c)}
 ${table(c)}
 <p><b>Not placed in time</b></p>${exclusions(c)}
 ${c.coverage.note ? `<p>${esc(c.coverage.note)}</p>` : ''}
-<p class="meta">Sources: ${sourceLinks(c)} · <a href="/data/evolution/charts.json">chart data</a>. Built by tools/export-evolution.mjs.</p>
+<p class="meta">Sources: ${sourceLinks(c)} · <a href="/data/evolution/charts.json">chart data</a>.</p>
 </details>
 </section>`;
 }

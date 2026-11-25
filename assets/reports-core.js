@@ -84,7 +84,7 @@
         ['Repeated', appears],
         ['Where', esc(f.locator || 'Not located') + (f.source_url ? ' · <a href="' + esc(f.source_url) + '" rel="noopener noreferrer">Original ↗</a>' : '')],
         ['Checked', f.check.status === 'verified' ? 'Phrase found in the original: “' + esc(f.check.phrase) + '” · checked ' + esc(dateText(f.check.checked_on)) : esc((CHECK[f.check.status] || [0, ''])[1])],
-        ['Master cell', 'Reports row ' + esc(f.cell.row) + ', column ' + esc(f.cell.column) + ' (' + esc(f.cell.header) + '): “' + esc(f.cell.excerpt) + '”']
+        ['From our notes', esc(f.cell.header) + ': “' + esc(f.cell.excerpt) + '”']
       ])
       + '<p class="fp-id">Finding ' + esc(f.id) + ' · <a href="/reports/?f=' + esc(f.id) + '#findings">Shareable link</a></p>'
       + '</article>';

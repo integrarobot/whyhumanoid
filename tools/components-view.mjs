@@ -66,7 +66,7 @@ function head(cm, c) {
 <div><dt>Related software</dt><dd>${n.software}</dd><small>not counted as hardware</small></div>
 <div><dt>Source references</dt><dd>${n.references}</dd><small>entries, not all independent</small></div>
 </dl>
-<p class="cx-ev"><span class="ev ev-pending">Imported research · original-source review pending</span> Every record comes from one research compilation, imported on ${esc(fmtDay(cm.coverage.snapshot.exported_at))}. The import was checked; the individual claims were not independently verified. Values are shown as the sources state them, with their conditions.</p>
+<p class="cx-ev"><span class="ev ev-pending">Research compilation · original sources still being reviewed</span> Every record comes from one research compilation, added on ${esc(fmtDay(cm.coverage.snapshot.exported_at))}. Its individual claims have not yet been checked against their original sources. Values are shown as the sources state them, with their conditions.</p>
 <p class="cx-access" id="cx-access" data-public="${pub}" data-total="${n.products}"><b>All ${n.products} products</b> are listed with a public summary: maker, country, year, status, sensing principle, what it measures and the main source. The full technical passports (resolution, force, rates, size and mass, interfaces and software, durability, prices and BOM estimates, papers, users, advantages and drawbacks, the source of every field), the technical filters and the full side-by-side comparison come with the subscription.</p>
 <nav class="views" aria-label="Components views"><a href="#approaches">Sensing approaches</a><a href="#catalogue">Catalogue</a><a href="#compare">Compare</a><a href="#software">Related software</a><a href="#method">Coverage and method</a></nav>
 </header>`;
@@ -158,11 +158,11 @@ function softwareSection(cm) {
 function method(cm) {
   const n = cm.coverage.counts;
   return `<section class="atlas-sec atlas-method" id="method" aria-labelledby="m-h">
-<div class="sec-h"><h2 id="m-h">Coverage and method</h2><p>Snapshot of the Why Humanoid? workbook exported ${esc(fmtDay(cm.coverage.snapshot.exported_at))}: ${n.products} physical products and ${n.software} related software in the Components table, with ${n.references} reference entries.</p></div>
+<div class="sec-h"><h2 id="m-h">Coverage and method</h2><p>Data as of ${esc(fmtDay(cm.coverage.snapshot.exported_at))}: ${n.products} physical products and ${n.software} related software in the Components table, with ${n.references} reference entries.</p></div>
 <div class="cols">
 <div><h3>What the records are</h3><ul class="fine">
 <li>One product, model or version per record. A family entry that spans several models keeps each figure with the model it names, and is flagged as varying.</li>
-<li>All records were imported from one research compilation on the same day. The import was checked; specifications, prices, integrations and licences are as the sources state them, pending an original-source review.</li>
+<li>All records come from one research compilation, added on the same day. Specifications, prices, integrations and licences are as the sources state them; checking each against its original source is still pending.</li>
 <li>Advantages and drawbacks are the compilation's summary, attributed as such, not an independent assessment.</li></ul></div>
 <div><h3>Reading the numbers</h3><ul class="fine">
 <li>Camera pixels are not calibrated taxels. Spatial resolution, localisation error, force resolution and force accuracy are different quantities.</li>

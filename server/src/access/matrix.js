@@ -35,12 +35,12 @@ export const SUBSCRIPTION = Object.freeze({
 export const CATEGORIES = Object.freeze([
   {
     id: 'humanoids', label: 'Humanoids', path: '/humanoids/', access: 'free', datasets: ['humanoids'],
-    summary: 'Every humanoid robot in the catalogue: specifications, maker, funding, buyer checks and sources.',
+    summary: 'Compare every humanoid robot we track: what each can do on paper, who makes it, how it is funded and what to check before buying, with a source for every value.',
   },
   {
     id: 'deployments', label: 'Deployments', path: '/deployments/', access: 'subscription', datasets: ['deployments'],
     supporting: ['evidence-links', 'entities'], service: 'humanoid-adoption-assessment',
-    summary: 'Who is testing or using humanoid robots, where, for which task, with what status and source.',
+    summary: 'Where are robots moving beyond demonstrations? Explore the companies testing or using them, the jobs involved and the evidence behind each case.',
   },
   {
     // Product catalogue since 23 Nov 2026 (server/src/components/catalogue.js); the related software block is supporting.
@@ -51,16 +51,16 @@ export const CATEGORIES = Object.freeze([
   },
   {
     id: 'integrators', label: 'Integrators', path: '/integrators/', access: 'free', datasets: ['integrators'],
-    summary: 'Who delivers humanoid integration, software, training and support services, on which platforms and where, with the evidence behind each claim.',
+    summary: 'Find who can deliver humanoid integration, software, training and support: on which platforms, in which territory, and with what evidence behind each claim.',
   },
   {
     id: 'software', label: 'Software', path: '/software/', access: 'free', datasets: ['software'],
-    summary: 'Robot foundation models, vision-language-action models, world models and robotics software.',
+    summary: 'Find the models and software that make robots work: robot foundation models, vision-language-action models, world models, simulators and tools.',
   },
   {
     // Robot Learning Data Atlas (23 Nov 2026): the Datasets catalogue and the reported quantities of Dataset Metrics.
     id: 'datasets', label: 'Datasets', path: '/datasets/', access: 'free', datasets: ['datasets', 'dataset-metrics'],
-    summary: 'Where robot learning data comes from, what it contains, and how it can be used.',
+    summary: 'Where robot learning data comes from, what it contains, and how you can use it.',
     gap: 'Quantities are extracted resource by resource from primary sources: some resources have none yet, and licences are often not established.',
   },
   {
@@ -71,12 +71,12 @@ export const CATEGORIES = Object.freeze([
   },
   {
     id: 'investment', label: 'Investment', path: '/investment/', access: 'free', datasets: ['stocks'],
-    summary: 'Listed companies exposed to humanoid robotics, and the funding recorded for each humanoid maker.',
-    gap: 'The master workbook has no dedicated private-investment table: this category shows the Investment tab (listed companies) and the Valuation, Investors and Rounds fields of the Humanoids catalogue.',
+    summary: 'Follow the money around humanoid robotics: listed companies with exposure to the field, and the funding recorded for each humanoid maker.',
+    gap: 'Private funding appears through each humanoid maker: its recorded valuation, investors and funding rounds. There is no separate deal-by-deal list yet.',
   },
   {
     id: 'other-robots', label: 'Other Robots', path: '/other-robots/', access: 'free', datasets: ['other-robots'],
-    summary: 'Non-humanoid, service and educational robots tracked alongside the humanoid catalogue.',
+    summary: 'Robots beyond humanoids, from service and industrial machines to educational kits, tracked alongside the humanoid catalogue.',
   },
   {
     // Not imported into the backend: the Reports tab of the workbook plus a reviewed mapping of findings, published as the

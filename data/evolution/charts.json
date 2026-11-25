@@ -327,7 +327,7 @@
    "path": "/deployments/",
    "type": "stack",
    "title": "Deployment cases documented, by the most advanced status documented so far",
-   "subtitle": "Evidence chronology: each case counts from its first dated public source, at the most advanced status its sources had documented by the end of each quarter. Not deployment start dates and not an operating fleet.",
+   "subtitle": "Follow what public sources had documented by each date. This shows the history of the evidence, rather than when each robot started work: each case counts from its first dated report, at the most advanced status documented by the end of each quarter.",
    "meaning": "Publication date of each source record, as recorded (evidence chronology, not the date work started). A year-only date counts from 31 December of that year and a month from its last day, or from the snapshot date for the current year or month. The status is the most advanced one documented by that date: a later status is never drawn earlier, and a later source that says less does not erase it, so this series cannot show a regression. Undated records stay outside the series.",
    "unit": "cases",
    "precision": "quarter",
@@ -652,7 +652,7 @@
       "count": 20
      }
     ],
-    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead (server/src/public/status.js), so their totals differ: currently 6 in operation, 49 pilot or trial, 25 unconfirmed, 34 announced among the 114 dated cases. Undated evidence is kept apart and never assigned a date."
+    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead, so their totals differ: currently 6 in operation, 49 pilot or trial, 25 unconfirmed, 34 announced among the 114 dated cases. Undated evidence is kept apart and never assigned a date."
    },
    "status": "partial",
    "status_note": "114 of 125 cases placed in time; 11 cases with no dated record stay in the date-unknown bar, outside the time series.",
@@ -1584,7 +1584,7 @@
    "type": "lanes",
    "title": "Associated papers of robot learning data resources",
    "subtitle": "28 of 35 resources by the first arXiv submission of their associated paper: a partial chronology of publications, not of dataset releases or volume.",
-   "meaning": "Dated paper or announcement of each data resource, from the master's PUBLIC_DATE columns (server/src/public-dates.js), each in its stated meaning: for every dated resource so far, the first arXiv submission (v1) of the associated paper, checked against the arXiv submission history by Codex on 24 and 25 Nov 2026, with the resource-to-paper link from the official project page, repository or the paper's abstract. Not the dataset's release or availability date and not the growth of its volume: current figures may come from later versions. Reviewed dates here would fill only resources whose columns are still empty, and must agree with the master.",
+   "meaning": "Each data resource is placed at the date of its associated paper or official announcement, as the source states it. So far every dated resource uses the first arXiv submission (v1) of its paper, checked against the arXiv history, with the link between resource and paper taken from the official project page, repository or abstract. This is not the date the data was released or became available, and not how its volume grew: current figures may come from later versions.",
    "unit": "papers",
    "precision": "day",
    "domain": {
@@ -2289,7 +2289,7 @@
    "type": "lanes",
    "title": "Dated publications and announcements of robotics benchmarks",
    "subtitle": "21 of 22 benchmarks by the date of their associated paper or official announcement, grouped by evaluation setting. Most dates are first arXiv submissions; they need not be the benchmark’s first public appearance. Not dates of results.",
-   "meaning": "Dated paper or official announcement of each benchmark, from the master's PUBLIC_DATE columns (server/src/public-dates.js), each in its stated meaning: mostly the first arXiv submission (v1) of the associated paper; PAW by its official announcement; OpenEQA by the year of its CVPR 2024 publication (day not established). These need not be a benchmark's first public appearance (BEHAVIOR-1K had an earlier CoRL 2022 / PMLR 2023 paper), and are never the date of a leaderboard result or of the current protocol version. Checked by Codex on 25 Nov 2026.",
+   "meaning": "Each benchmark is placed at the date of its associated paper or official announcement, as the source states it: mostly the first arXiv submission (v1) of the paper; PAW by its official announcement; OpenEQA by the year of its CVPR 2024 publication (day not established). This need not be the benchmark's first public appearance (BEHAVIOR-1K had an earlier CoRL 2022 / PMLR 2023 paper), and it is never the date of a leaderboard result or of the current protocol version.",
    "unit": "benchmarks",
    "precision": "day",
    "hollowLabel": "Dated by an announcement or a publication year, not arXiv",
@@ -2684,7 +2684,7 @@
    "status_note": "21 of 22 benchmarks dated; not yet: SpatialBench.",
    "sources": [
     {
-     "label": "Dated papers and announcements in the master, checked 2026-11-25",
+     "label": "Dated papers and announcements, checked 2026-11-25",
      "url": "/data/benchmarks/atlas.json"
     }
    ],

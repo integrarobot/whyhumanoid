@@ -51,7 +51,7 @@ function head(atlas, c) {
 </dl>
 <div class="cov" aria-labelledby="cov-h"><p class="cov-h" id="cov-h">Every resource in the catalogue. <span class="cov-key"><span class="tile-key has" aria-hidden="true"></span> numerical results extracted · <span class="tile-key" aria-hidden="true"></span> awaiting extraction</span></p>
 <ol class="tiles">${tiles}</ol></div>
-<p class="prov">Snapshot of the Why Humanoid? workbook exported ${esc(fmtDate(String(atlas.snapshot.exported_at ?? '').slice(0, 10)))}. Results are transcribed from public sources and not independently replicated. Selected results are not complete leaderboards, nor the current state of the art.</p>
+<p class="prov">Data as of ${esc(fmtDate(String(atlas.snapshot.exported_at ?? '').slice(0, 10)))}. Results are transcribed from public sources and not independently replicated. Selected results are not complete leaderboards, nor the current state of the art.</p>
 <nav class="views" aria-label="Atlas views"><a href="#results">Results</a><a href="#landscape">Landscape</a><a href="#compare">Compare</a><a href="#observations">All observations</a><a href="#resources">All ${n.resources} resources</a></nav>
 </header>`;
 }

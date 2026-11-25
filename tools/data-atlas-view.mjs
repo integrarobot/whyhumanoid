@@ -111,7 +111,7 @@ function head(atlas, c) {
 <div><dt>Quantity records</dt><dd>${n.quantities}</dd></div>
 <div><dt>Awaiting extraction</dt><dd>${n.resources_awaiting_quantities}</dd></div>
 </dl>
-<p class="prov">Snapshot of the Why Humanoid? workbook exported ${esc(fmtDate(atlas.snapshot.exported_at))}. Quantities are transcribed from public sources as stated, not independently counted. Collections overlap, so nothing is summed across resources.</p>
+<p class="prov">Data as of ${esc(fmtDate(atlas.snapshot.exported_at))}. Quantities are transcribed from public sources as stated, not independently counted. Collections overlap, so nothing is summed across resources.</p>
 <nav class="views" aria-label="Atlas views"><a href="#origins">Origins and uses</a><a href="#scale">Scale</a><a href="#passports">Data passports</a><a href="#matrix">Modality matrix</a><a href="#resources">All ${n.resources} resources</a><a href="#method">Method</a></nav>
 </header>`;
 }
@@ -323,7 +323,7 @@ ${r.key_takeaway ? `<p class="d-f"><b>Takeaway:</b> ${esc(r.key_takeaway)}</p>` 
 </div></details>`;
   }).join('');
   return `<section class="atlas-sec" id="resources" aria-labelledby="res-h">
-<div class="sec-h"><h2 id="res-h">All ${atlas.resources.length} resources</h2><p>Every resource in the catalogue with its full data passport, in workbook order. Each has a permanent address on this page.</p></div>
+<div class="sec-h"><h2 id="res-h">All ${atlas.resources.length} resources</h2><p>Every resource in the catalogue with its full data passport, in catalogue order. Each has a permanent address on this page.</p></div>
 <div class="res-list">${cards}</div></section>`;
 }
 

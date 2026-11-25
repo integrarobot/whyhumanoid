@@ -64,7 +64,7 @@ const bars = (rows, label, fmt = (x) => x, n) => {
   return `<div class="dv"><h3>${esc(label)}</h3><ol class="dv-l">${rows.slice(0, n ?? rows.length).map(([k, v]) => `<li><span class="dv-k">${esc(fmt(k))}</span><span class="dv-b" aria-hidden="true"><i style="width:${Math.round((v / max) * 100)}%"></i></span><b>${v}</b></li>`).join('')}</ol>${n && rows.length > n ? `<p class="dim">${rows.length - n} more in the filters below.</p>` : ''}</div>`;
 };
 
-export function renderDeploymentsCategory({ cases, records, links, offer, head, snapshot }) {
+export function renderDeploymentsCategory({ cases, records, organisations, links, offer, head, snapshot }) {
   // Current status (server/src/public/status.js): the latest dated source; cases with only undated sources apart.
   const datedCases = cases.filter((c) => c.status.dated);
   const undatedCases = cases.filter((c) => !c.status.dated);
@@ -76,11 +76,11 @@ export function renderDeploymentsCategory({ cases, records, links, offer, head, 
   const opt = (v, l, n) => `<option value="${esc(v)}">${esc(l)} (${n})</option>`;
   const REVIEW = Object.fromEntries(cases.map((c) => [c.review.key ?? 'none', c.review.label]));
   return `${head}
-<p class="lede-2">Every one of the <b>${cases.length} deployment cases</b> in the database, built from ${records} claim-level records, is listed below with its public summary: who, which robot, sector, country, task, its current status as recorded, who reports it and the sources. No account is needed. The detail of each case comes with the data subscription.</p>
-<p class="caveat"><b>How to read it.</b> ${esc(CASE_CAVEAT)}</p>
+<p class="lede-2">We bring together <b>${records} public reports</b> covering <b>${cases.length} deployment cases</b> at ${organisations ?? 'many'} organisations. Several reports may follow the same case, from an announcement to a trial or operational use. Each case shows its current status: the one stated by its most recent dated report.</p>
+<p class="caveat">These cases offer a view of adoption; they do not cover the whole market. Reports are claims as their sources state them, not facts we have verified. Robot numbers are rarely disclosed, so we do not estimate a total fleet. Open a case for its public summary and sources, or <a href="/subscribe/">subscribe</a> to explore the full task, site, timeline and reported results. Definitions: <a href="/method/#deployments">method</a>.</p>
 <nav class="views dc-jump" aria-label="On this page"><a href="#cases">Browse all ${cases.length} cases</a><a href="#adoption">Adoption at a glance</a><a href="#offer">Subscription and reports</a></nav>
 ${offer}
-<section class="dv-sec" id="adoption" aria-labelledby="adoption-h"><h2 id="adoption-h">Adoption at a glance</h2><p class="dim">Current status of the ${datedCases.length} cases with a dated source: the status recorded by each case's most recent dated source (a year or month counts from its first day; when several sources share that date, the most advanced of them). A later source that records less, such as a planned expansion, is what the case shows now. ${undatedCases.length} more ${undatedCases.length === 1 ? 'case has' : 'cases have'} only undated sources and ${undatedCases.length === 1 ? 'is' : 'are'} counted apart. Sector and country count all ${cases.length} cases; a case can name several.</p>
+<section class="dv-sec" id="adoption" aria-labelledby="adoption-h"><h2 id="adoption-h">Adoption at a glance</h2><p class="dim">Today's status of the ${datedCases.length} cases with a dated report, by their most recent one. ${undatedCases.length} more ${undatedCases.length === 1 ? 'case has' : 'cases have'} only undated reports and ${undatedCases.length === 1 ? 'is' : 'are'} counted apart. Sector and country count all ${cases.length} cases; a case can name several.</p>
 <div class="dv-grid">
 ${bars(byCurrent, `Current status (${datedCases.length} dated cases)`, (k) => STATUS_LABELS[k])}
 ${bars(sectors, 'Sector', sectorLabel, 10)}
@@ -102,7 +102,7 @@ ${bars(countries, 'Deployment country', (x) => x, 10)}
 <p class="empty" id="dcs-empty" hidden>No case matches every filter. Clear a filter to see more.</p>
 </section>
 <section id="paid"><h2>What the subscription adds to each case</h2><p>${esc(cap(PAID_CASE.join('; ')))}. Detailed evidence search and comparisons come with it too, where the research supports them. Missing information stays missing: the subscription does not fill gaps with estimates.</p></section>
-<p class="meta">Public summary of the Deployments tab, snapshot ${esc(String(snapshot).slice(0, 10))}. Cases group the research team's claim-level records by its own deployment id: several sources about one deployment are one case.</p>`;
+<p class="meta">Public summaries, data as of ${esc(String(snapshot).slice(0, 10))}. Cases group the research team's claim-level records by its own deployment id: several sources about one deployment are one case.</p>`;
 }
 
 export function renderCasePage(c, links) {
