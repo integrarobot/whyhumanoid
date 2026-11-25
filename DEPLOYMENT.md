@@ -451,8 +451,14 @@ Order:
    `GET /v1/x402` says `available`, pay once on Base Sepolia, confirm the row in `x402_payments` and, with recording
    on, the PaymentIntent in the Stripe sandbox.
 2. Production, after Stripe's approval and the test above: set `X402_LIVE_OPEN = true` in code (PR), deploy, set the live
-   vars and CDP secrets, make one real paid request (Javier's decision; real funds), then check Bazaar (`GET
-   https://api.cdp.coinbase.com/platform/v2/x402/discovery/resources?payTo=<address>`) and Agentic Market.
+   vars and CDP secrets, make one real paid request (Javier's decision; real funds), then check Bazaar with the
+   merchant lookup `GET https://api.cdp.coinbase.com/platform/v2/x402/discovery/merchant?payTo=<address>`
+   (CDP API reference, "Get merchant resources by payTo address"). Confirm in its answer the exact resource URL
+   the 402 advertises (API origin + `/v1/x402/deployment-evidence`, today
+   `https://whyhumanoid-premium.javier-198.workers.dev/v1/x402/deployment-evidence`), the price (USD 0.10, 100000 USDC
+   atomic units), the network (Base, `eip155:8453`) and our `payTo`. Then check Agentic Market separately.
+   Do not use `GET .../x402/discovery/resources?payTo=...`: that endpoint documents only `type`, `limit` and `offset`,
+   may return the unfiltered catalogue, and is no proof of our indexation.
 
 Operating it:
 - Unknown settlement outcomes (`status=unknown`) need an operator. List them with `GET /v1/admin/x402/payments` and
