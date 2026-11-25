@@ -1,0 +1,54 @@
+{
+  "id": "WH-20261125-1754-footer-about-soporte-publicado",
+  "tarea": "Publicar footer y About, retirar el correo del pie y actualizar el soporte de las opciones de pago",
+  "origen": "Petición de Javier y corrección posterior mediante captura, coordinada y verificada por Codex",
+  "fecha": "2026-11-25T17:54:51+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5 (implementación); codex (revisión, despliegue, fusión, verificación y cierre)",
+  "cambios": [
+    "Footer común con About, For agents, Method, Contact e Integrarobot, sin dirección ni enlace mailto en ningún pie.",
+    "Página About factual en inglés con metadatos, sitemap y contacto empresarial. Contact del footer lleva a la sección de contacto de About.",
+    "Soporte al cliente actualizado a la dirección empresarial indicada por Javier, incluidas pantallas del informe pagado, respuestas de API, MCP y mensajes al cliente.",
+    "Conservada la ayuda específica de pedidos solo después del pago; sin cambios de precios, permisos, operadores, destinatarios internos, Stripe, DNS o datos.",
+    "Desplegados los bundles reproducibles revisados en Workers TEST y PROD y publicada la versión final en Pages."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Portada publicada",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "About publicado",
+      "url": "https://whyhumanoid.com/about/"
+    },
+    {
+      "etiqueta": "Agentes",
+      "url": "https://whyhumanoid.com/agents/"
+    },
+    {
+      "etiqueta": "PR footer/About",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/114"
+    },
+    {
+      "etiqueta": "PR corrección de soporte",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/115"
+    },
+    {
+      "etiqueta": "Pages correcto",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45658518713"
+    }
+  ],
+  "despliegue": [
+    "PR115 fusionado desde el head revisado c5e582cb89268cf5a429024629a9cd86d0c31492 en e8d9dcfa77e7da8096081f5b61a7bae0b634cdd0, con CI correcto. Pages45658518713 termina success. Cloudflare TEST14963d19 y PROD4b61437d observados Active Latest; paquete PROD SHA256 b347904b0dc23a16e0ce24ccfe4d40932154cf4a8cb096b406fa64b5bb5e3564, 898068 bytes; TEST4b1bee504c6dafe37eab0d3c0d88d8ea4f89c024296489b274ea211e4b0f0969, 785408 bytes. La incidencia de GitHub que bloqueó la entrega anterior está superada para esta publicación."
+  ],
+  "verificaciones": [
+    "Codex reproduce184/184 pruebas del servidor, igualdad real de build-app, paridad real de portada, build-pages y guardia pública. Revisa1765 HTML: solo cambios esperados de footer, correo y cache key de app, sin direcciones en ningún pie.",
+    "Claude informa195/195 comprobaciones de footer a320,390,1366px;45/45 pedidos con Stripe simulado, nueva dirección tras pago; sitio, páginas, app, agentes2/2 e integradores6/6 correctos.",
+    "Codex reconstruye dos veces los bundles de TEST y PROD: bytes idénticos a los de Claude. Health200 en ambos; servicios de informes devuelve el nuevo soporte en ambos. Producción premium.js coincide byte a byte con la fuente revisada y plan conserva checkout abierto.",
+    "Codex comprueba ocho rutas públicas con200, footer sin dirección ni mailto, ausencia del correo anterior y Contact al ancla de About. Chrome390px: footer sin correo y sin desbordamiento; navegación a About y For agents correcta.",
+    "No se realizan compras ni se envían correos de prueba; las vistas tras pago se verifican localmente con simulación. No se comprueba recepción en el buzón empresarial."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Sin acción necesaria para esta entrega. El desbordamiento previo de la cabecera de app a320px queda fuera de este cambio."
+}
