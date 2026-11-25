@@ -20,6 +20,7 @@ import { pageRelations } from './relations.mjs';
 import { pageLinks } from './build-pages.mjs';
 import { CATEGORIES, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
+import { SUPPORT_EMAIL } from '../server/src/support.js';
 import { renderAdoption } from './adoption-view.mjs';
 import { renderEvolutionCarousel } from './evolution-view.mjs';
 import { robotPresentation } from './robot-presentation.mjs';
@@ -280,7 +281,14 @@ export function renderPathsMini() {
           <a class="hp hp-rep" href="#paths"><span class="lbl">Custom company reports</span><b>Our expertise, applied to your company’s decisions.</b><span>US$1,000 per report · one-off${REPORTS_LIVE_OPEN ? ', ready to order' : ' · not available to order yet'}</span></a>
         </div><style>.hero-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px;margin:14px 0 18px}.hp{display:grid;gap:3px;padding:10px 12px;border:1px solid var(--line);text-decoration:none;color:var(--bone-2);font-size:13px;line-height:1.35}.hp b{color:var(--bone);font-weight:600;font-size:14px}.hp-data{border-color:color-mix(in srgb,var(--amber) 55%,transparent);box-shadow:inset 3px 0 0 var(--amber)}.hp:hover,.hp:focus-visible{border-color:var(--amber)}</style><!-- paths-mini:end -->`;
 }
+// The home footer's help line (Codex, 25 Nov 2026): the one public support address, as on every other page.
+export function renderFooterHelp() {
+  return `<!-- footer-help:start --><span class="lbl">Help: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a></span><!-- footer-help:end -->`;
+}
 export function renderIndex(html, data) {
+  const help = /<!-- footer-help:start -->[\s\S]*?<!-- footer-help:end -->/;
+  if (!help.test(html)) throw new Error('index.html has no footer-help block');
+  html = html.replace(help, () => renderFooterHelp());
   const mini = /<!-- paths-mini:start -->[\s\S]*?<!-- paths-mini:end -->/;
   if (!mini.test(html)) throw new Error('index.html has no paths-mini block');
   html = html.replace(mini, () => renderPathsMini());

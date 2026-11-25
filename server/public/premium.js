@@ -810,10 +810,10 @@
       b.disabled = false;
       notice(status === 401 ? 'Sign in to order.'
         : data.error === 'payment_processing' ? 'Your payment for this report is still being processed by your bank. We will open the questionnaire as soon as Stripe confirms it. Nothing more will be charged.'
-          : data.error === 'checkout_status_unknown_retry' ? 'We could not check your previous checkout with Stripe just now. Try again in a minute. Nothing was charged.'
+          : data.error === 'checkout_status_unknown_retry' ? 'We could not check your previous checkout with Stripe just now. Try again in a minute. No new payment was started.'
             : data.error === 'payment_needs_review' ? `We need to check your previous payment by hand. Please write to ${SUPPORT}. Nothing more will be charged.`
-        : data.error === 'checkout_expiring_retry_shortly' ? 'Your previous checkout for this report is about to expire. Try again in about 15 minutes. Nothing was charged.'
-          : data.error === 'checkout_in_progress_retry' ? 'Your checkout is being prepared. Try again in a moment. Nothing was charged.'
+        : data.error === 'checkout_expiring_retry_shortly' ? 'Your previous checkout for this report is about to expire. Try again in about 15 minutes. No new payment was started.'
+          : data.error === 'checkout_in_progress_retry' ? 'Your checkout is being prepared. Try again in a moment. No new payment was started.'
             : `Checkout is not available right now (${data.error || 'error'}). Nothing was charged. Write to ${SUPPORT} if this continues.`, true);
     }));
   }
