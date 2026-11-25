@@ -26,6 +26,13 @@ export const ATLASES = Object.freeze({
 
 const text = (value) => ({ content: [{ type: 'text', text: JSON.stringify(value) }] });
 
+// Tool annotations (MCP spec; added 25 Nov 2026 for directory listings). Every tool only reads: it never writes, deletes or
+// charges, and the same call returns the same answer for the same data and access. The world is closed: tools read
+// this catalogue's own database and its own published atlases (fixed paths on whyhumanoid.com), never an arbitrary
+// external source, so openWorldHint is false. The title is repeated in the annotations for clients that read it there.
+export const READ_ONLY_ANNOTATIONS = Object.freeze({ readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false });
+const readOnly = (title) => ({ title, annotations: { title, ...READ_ONLY_ANNOTATIONS } });
+
 export async function handleMcp(request, { db, now, authed, isEntitledAccount, fetchPublic, config }) {
   // A missing credential is a visitor (public values only); a wrong, revoked or expired one is refused.
   const hasCredential = Boolean(request.headers.get('authorization'));
@@ -46,7 +53,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
   );
 
   server.registerTool('list_categories', {
-    title: 'List categories',
+    ...readOnly('List categories'),
     description: 'The catalogue categories and tables, what each holds, and what this connection can read from each.',
     inputSchema: {},
   }, async () => text({
@@ -57,7 +64,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
   }));
 
   server.registerTool('search_catalogue', {
-    title: 'Search the catalogue',
+    ...readOnly('Search the catalogue'),
     description: 'Full-text search across the categories, with common tags. Subscribers search every field; others search the public values.',
     inputSchema: {
       query: z.string().max(200).describe('Words to look for'),
@@ -68,7 +75,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
   }, async ({ query, category, tags, page }) => text(await search(db, { scope: entitled ? 'full' : 'preview', q: query, tags: tags ?? '', category: category ?? '', page: String(page ?? 1) })));
 
   server.registerTool('get_rows', {
-    title: 'Read rows of a table',
+    ...readOnly('Read rows of a table'),
     description: 'Rows of one table (ids from list_categories), in workbook order, optionally filtered by text. Free tables return every field; Deployments and Components return every field with an active subscription and their public fields otherwise.',
     inputSchema: {
       table: z.string().max(40).describe('Table id, e.g. deployments, hardware, humanoids, software'),
@@ -92,7 +99,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
   });
 
   server.registerTool('get_atlas', {
-    title: 'Read a published atlas',
+    ...readOnly('Read a published atlas'),
     description: 'A published snapshot: datasets, benchmarks, reports (research conclusions), integrators or evolution (the seven charts). Public for everyone.',
     inputSchema: { name: z.enum(Object.keys(ATLASES)) },
   }, async ({ name }) => {
@@ -103,7 +110,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
   });
 
   server.registerTool('get_relations', {
-    title: 'Read the relations graph',
+    ...readOnly('Read the relations graph'),
     description: 'Links between deployment records, catalogue robots and companies. Subscribers get the full graph; others the graph built from public values.',
     inputSchema: {},
   }, async () => {
@@ -112,7 +119,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
   });
 
   server.registerTool('account_status', {
-    title: 'Account status',
+    ...readOnly('Account status'),
     description: 'Whether this connection has an active data subscription, and the fair-use limits.',
     inputSchema: {},
   }, async () => text({ authenticated: Boolean(account), credential: account?.kind ?? null, subscription_active: entitled, limits: USAGE_LIMITS, manage: `${config.appUrl}#account`, support: SUPPORT_EMAIL }));
