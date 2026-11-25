@@ -66,6 +66,30 @@ test('CLI: a subscriber key reads every field of Deployments; without a key, the
   assert.ok(JSON.parse(atlas.out).title, 'the Reports atlas is read from the published file');
 });
 
+// What directories read from tools/list (25 Nov 2026): the six tools, each with its title and the read-only
+// annotations, the same for visitors and subscribers.
+test('MCP tools/list: six read-only tools with their titles and annotations, for visitors and subscribers', async () => {
+  const expected = {
+    list_categories: 'List categories',
+    search_catalogue: 'Search the catalogue',
+    get_rows: 'Read rows of a table',
+    get_atlas: 'Read a published atlas',
+    get_relations: 'Read the relations graph',
+    account_status: 'Account status',
+  };
+  for (const credential of [null, key]) {
+    const client = await mcp(credential);
+    const { tools } = await client.listTools();
+    await client.close();
+    assert.deepEqual(tools.map((t) => t.name).sort(), Object.keys(expected).sort());
+    for (const t of tools) {
+      assert.equal(t.title, expected[t.name], `${t.name}: title`);
+      assert.deepEqual(t.annotations, { title: expected[t.name], readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false }, `${t.name}: annotations`);
+      assert.ok(t.description && t.inputSchema?.type === 'object', `${t.name}: description and input schema still listed`);
+    }
+  }
+});
+
 test('MCP over HTTP with the official client: subscriber, visitor, then the same key revoked', async () => {
   const sub = await mcp(key);
   assert.equal(json(await sub.callTool({ name: 'get_rows', arguments: { table: 'deployments', limit: 1 } })).fields, 'all');
