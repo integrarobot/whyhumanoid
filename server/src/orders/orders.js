@@ -13,8 +13,14 @@ const OPEN_STATUSES = ['awaiting_questionnaire'];
 const MAX_ANSWERS_BYTES = 120_000;
 
 // Report checkout state for a service: 'ready' or the reason it is closed. Never falls back to another price.
-export function reportCheckoutState({ config, gateway }) {
+// Fulfilment and recovery must work before anyone can pay (Codex review, 25 Nov 2026): email delivery, signed webhooks,
+// an operator notification address and an operator who can open the queue.
+export function reportCheckoutState({ config, gateway, mailer }) {
   if (!config.reportsCheckoutEnabled) return 'reports_checkout_disabled';
+  if (!mailer?.configured) return 'email_not_configured';
+  if (!gateway.webhookConfigured) return 'webhook_not_configured';
+  if (!config.operatorNotifyEmail) return 'operator_notify_not_configured';
+  if (!(config.operatorEmails?.length || config.adminToken)) return 'operator_queue_not_configured';
   if (gateway.mode === 'unconfigured') return 'checkout_not_configured';
   if (gateway.mode !== config.stripeMode) return 'stripe_mode_mismatch';
   if (gateway.mode === 'live' && (!config.allowLiveCheckout || !REPORTS_LIVE_OPEN)) return 'reports_live_closed';
@@ -68,9 +74,9 @@ export async function getOrder(db, accountId, orderId) {
 
 // Creates (or reuses) the order and its Checkout Session. The amount, currency and return addresses come from the
 // server; the client sends only the service id.
-export async function startReportCheckout({ db, config, gateway, account, service, now, appUrl }) {
+export async function startReportCheckout({ db, config, gateway, mailer, account, service, now, appUrl }) {
   if (!REPORT_SERVICES_BY_ID.has(service)) throw new HttpError(400, 'unknown_service');
-  const state = reportCheckoutState({ config, gateway });
+  const state = reportCheckoutState({ config, gateway, mailer });
   if (state !== 'ready') throw new HttpError(503, state);
   const priceId = priceIdFor(config, service);
   if (!priceId) throw new HttpError(503, 'report_price_not_configured');
@@ -135,37 +141,78 @@ export async function applyReportSession({ db, config, session, now, notify, eve
   }
   // Delayed payment methods complete the session unpaid first; the order waits for async_payment_succeeded.
   if (session.payment_status !== 'paid') return 'not_paid';
-  const r = await db
-    .prepare("UPDATE report_orders SET status = 'awaiting_questionnaire', paid_at = ?, payment_intent_id = ?, updated_at = ? WHERE id = ? AND status IN ('pending_payment', 'payment_failed')")
-    .bind(now, typeof session.payment_intent === 'string' ? session.payment_intent : session.payment_intent?.id ?? null, now, order.id)
-    .run();
-  if (!r.meta.changes) return 'already_paid';
+  // The state change and its emails are one transaction (D1 batch): if writing an email fails, the order stays unpaid
+  // here, the webhook answers 500 and Stripe redelivers. An order already paid gets any missing email repaired.
   const account = await db.prepare('SELECT email FROM accounts WHERE id = ?').bind(order.account_id).first();
+  const results = await db.batch([
+    db.prepare("UPDATE report_orders SET status = 'awaiting_questionnaire', paid_at = ?, payment_intent_id = ?, updated_at = ? WHERE id = ? AND status IN ('pending_payment', 'payment_failed')")
+      .bind(now, typeof session.payment_intent === 'string' ? session.payment_intent : session.payment_intent?.id ?? null, now, order.id),
+    ...paidMessages(order, account.email, config).map((m) => outboxStatement(db, now, m, 'paid_at IS NOT NULL')),
+  ]);
+  const repaired = results.slice(1).some((x) => x?.meta?.changes);
+  if (results[0].meta.changes || repaired) notify?.();
+  return results[0].meta.changes ? 'order_paid' : repaired ? 'already_paid_repaired' : 'already_paid';
+}
+
+// The emails of each step, from the stored order (so a repair writes what the original step would have written).
+function paidMessages(order, email, config) {
   const service = REPORT_SERVICES_BY_ID.get(order.service);
-  await enqueue(db, now, {
-    orderId: order.id, kind: 'customer_paid', to: account.email,
-    subject: `Payment received: your ${service.name} questionnaire is open`,
-    body:
-      `Thank you. Your payment for the ${service.name} (US$1,000) has been received.\n\n` +
-      `Next step: complete the private questionnaire about your company. Sign in with this email address at ${config.appUrl}#reports to open it. Your answers are saved as you go.\n\n` +
-      'We will email your report within 24 hours of receiving your completed questionnaire. The 24 hours start when you submit it, not at payment.\n\n' +
-      `Questions: ${SUPPORT_EMAIL}\nOrder reference: ${order.id}`,
-  });
-  if (config.operatorNotifyEmail) {
-    await enqueue(db, now, {
-      orderId: order.id, kind: 'operator_paid', to: config.operatorNotifyEmail,
+  return [
+    { orderId: order.id, kind: 'customer_paid', to: email,
+      subject: `Payment received: your ${service.name} questionnaire is open`,
+      body:
+        `Thank you. Your payment for the ${service.name} (US$1,000) has been received.\n\n` +
+        `Next step: complete the private questionnaire about your company. Sign in with this email address at ${config.appUrl}#reports to open it. Your answers are saved as you go.\n\n` +
+        'We will email your report within 24 hours of receiving your completed questionnaire. The 24 hours start when you submit it, not at payment.\n\n' +
+        `Questions: ${SUPPORT_EMAIL}\nOrder reference: ${order.id}` },
+    ...(config.operatorNotifyEmail ? [{ orderId: order.id, kind: 'operator_paid', to: config.operatorNotifyEmail,
       subject: `[Why Humanoid?] Paid order ${order.id}: ${service.name}`,
-      body: `A ${service.name} order was paid (${order.mode} mode). The questionnaire is open; the 24-hour clock starts when it is submitted.\n\nQueue: ${config.appUrl}#ops`,
-    });
-  }
-  notify?.();
-  return 'order_paid';
+      body: `A ${service.name} order was paid (${order.mode} mode). The questionnaire is open; the 24-hour clock starts when it is submitted.\n\nQueue: ${config.appUrl}#ops` }] : []),
+  ];
+}
+function submittedMessages(order, email, config) {
+  const service = REPORT_SERVICES_BY_ID.get(order.service);
+  const [at, due] = [order.submitted_at, order.due_at];
+  return [
+    { orderId: order.id, kind: 'customer_submitted', to: email,
+      subject: `Questionnaire received: your ${service.name} is due by ${fmtUtc(due)}`,
+      body:
+        `We received your completed questionnaire on ${fmtUtc(at)}.\n\n` +
+        `We will email your report (PDF) to this address by ${fmtUtc(due)} (${fmtMadrid(due)}).\n\n` +
+        `You can review what you sent at ${config.appUrl}#reports. If something needs correcting, reply to ${SUPPORT_EMAIL}; the deadline stays as above.\n\nOrder reference: ${order.id}` },
+    ...(config.operatorNotifyEmail ? [{ orderId: order.id, kind: 'operator_submitted', to: config.operatorNotifyEmail,
+      subject: `[Why Humanoid?] Questionnaire submitted ${order.id}: due ${fmtUtc(due)}`,
+      body: `${service.name} questionnaire submitted at ${fmtUtc(at)}. Report due by ${fmtUtc(due)} (${fmtMadrid(due)}).\n\nThe answers are in the queue (sign in as an operator): ${config.appUrl}#ops` }] : []),
+  ];
+}
+// One outbox row, written only if the order is in the state the email belongs to (`condition`, SQL on report_orders),
+// and only once per order and kind (UNIQUE (order_id, kind) with INSERT OR IGNORE).
+function outboxStatement(db, now, m, condition, params = []) {
+  return db
+    .prepare(`INSERT OR IGNORE INTO notification_outbox (id, order_id, kind, to_email, subject, body, status, attempts, next_attempt_at, created_at)
+              SELECT ?, ?, ?, ?, ?, ?, 'pending', 0, ?, ? WHERE EXISTS (SELECT 1 FROM report_orders WHERE id = ? AND ${condition})`)
+    .bind(newId('ntf'), m.orderId, m.kind, m.to, m.subject, m.body, now, now, m.orderId, ...params);
+}
+
+// Writes any missing email of the steps an order has passed (payment, submission), from its stored timestamps.
+// Never changes the order. Returns true when something was missing.
+export async function repairOrderNotifications({ db, config, order, now }) {
+  const account = await db.prepare('SELECT email FROM accounts WHERE id = ?').bind(order.account_id).first();
+  const statements = [
+    ...(order.paid_at ? paidMessages(order, account.email, config).map((m) => outboxStatement(db, now, m, 'paid_at IS NOT NULL')) : []),
+    ...(order.submitted_at ? submittedMessages(order, account.email, config).map((m) => outboxStatement(db, now, m, 'submitted_at IS NOT NULL')) : []),
+  ];
+  if (!statements.length) return false;
+  return (await db.batch(statements)).some((x) => x?.meta?.changes);
 }
 
 // Server-side reconciliation for a delayed webhook: the owner asks, the server retrieves the session from Stripe.
 export async function reconcileOrder({ db, config, gateway, accountId, orderId, now, notify }) {
   const order = await ownOrder(db, accountId, orderId);
-  if (order.status !== 'pending_payment' || !order.checkout_session_id) return publicOrder(order, { withAnswers: true });
+  if (order.status !== 'pending_payment' || !order.checkout_session_id) {
+    if (await repairOrderNotifications({ db, config, order, now })) notify?.();
+    return publicOrder(order, { withAnswers: true });
+  }
   let session;
   try { session = await gateway.retrieveCheckoutSession(order.checkout_session_id); } catch { throw new HttpError(503, 'stripe_unavailable'); }
   await applyReportSession({ db, config, session, now, notify });
@@ -189,50 +236,34 @@ export async function saveDraft({ db, accountId, orderId, answers, now }) {
 // A repeated submit finds the order already submitted and returns it unchanged: the deadline never moves.
 export async function submitQuestionnaire({ db, config, accountId, orderId, answers, now, notify }) {
   const order = await ownOrder(db, accountId, orderId);
-  if (order.submitted_at) return { submitted: true, already: true, order: publicOrder(order, { withAnswers: true }) };
+  if (order.submitted_at) {
+    // Already submitted: nothing changes, but a missing confirmation or operator email is written now.
+    if (await repairOrderNotifications({ db, config, order, now })) notify?.();
+    return { submitted: true, already: true, order: publicOrder(order, { withAnswers: true }) };
+  }
   if (order.status !== 'awaiting_questionnaire') throw new HttpError(409, order.status === 'pending_payment' ? 'payment_not_confirmed' : 'questionnaire_closed');
   const result = validateAnswers(order.service, answers, { final: true });
   if (result.error) return { submitted: false, problems: result.problems ?? [{ field: null, problem: result.error }] };
   const json = JSON.stringify(result.answers);
   if (json.length > MAX_ANSWERS_BYTES) throw new HttpError(413, 'answers_too_large');
   const due = now + REPORT_DEADLINE_SECONDS;
-  const r = await db
-    .prepare(`UPDATE report_orders SET status = 'awaiting_report', submitted_json = ?, form_version = ?, submitted_at = ?, due_at = ?, draft_json = ?, draft_saved_at = ?, updated_at = ?
-               WHERE id = ? AND status = 'awaiting_questionnaire' AND submitted_at IS NULL`)
-    .bind(json, QUESTIONNAIRE_VERSION, now, due, json, now, now, orderId)
-    .run();
-  const row = await db.prepare('SELECT * FROM report_orders WHERE id = ?').bind(orderId).first();
-  if (!r.meta.changes) return { submitted: true, already: true, order: publicOrder(row, { withAnswers: true }) };
   const account = await db.prepare('SELECT email FROM accounts WHERE id = ?').bind(accountId).first();
-  const service = REPORT_SERVICES_BY_ID.get(order.service);
-  await enqueue(db, now, {
-    orderId, kind: 'customer_submitted', to: account.email,
-    subject: `Questionnaire received: your ${service.name} is due by ${fmtUtc(due)}`,
-    body:
-      `We received your completed questionnaire on ${fmtUtc(now)}.\n\n` +
-      `We will email your report (PDF) to this address by ${fmtUtc(due)} (${fmtMadrid(due)}).\n\n` +
-      `You can review what you sent at ${config.appUrl}#reports. If something needs correcting, reply to ${SUPPORT_EMAIL}; the deadline stays as above.\n\nOrder reference: ${orderId}`,
-  });
-  if (config.operatorNotifyEmail) {
-    await enqueue(db, now, {
-      orderId, kind: 'operator_submitted', to: config.operatorNotifyEmail,
-      subject: `[Why Humanoid?] Questionnaire submitted ${orderId}: due ${fmtUtc(due)}`,
-      body: `${service.name} questionnaire submitted at ${fmtUtc(now)}. Report due by ${fmtUtc(due)} (${fmtMadrid(due)}).\n\nThe answers are in the queue (sign in as an operator): ${config.appUrl}#ops`,
-    });
-  }
+  // One transaction: the submission (answers, form version, submitted_at, due_at) and its two emails. The emails are
+  // written only by the request whose submission won (submitted_at = this request's time).
+  const results = await db.batch([
+    db.prepare(`UPDATE report_orders SET status = 'awaiting_report', submitted_json = ?, form_version = ?, submitted_at = ?, due_at = ?, draft_json = ?, draft_saved_at = ?, updated_at = ?
+                 WHERE id = ? AND status = 'awaiting_questionnaire' AND submitted_at IS NULL`)
+      .bind(json, QUESTIONNAIRE_VERSION, now, due, json, now, now, orderId),
+    ...submittedMessages({ ...order, submitted_at: now, due_at: due }, account.email, config).map((m) => outboxStatement(db, now, m, 'submitted_at = ?', [now])),
+  ]);
+  const row = await db.prepare('SELECT * FROM report_orders WHERE id = ?').bind(orderId).first();
+  if (!results[0].meta.changes) return { submitted: true, already: true, order: publicOrder(row, { withAnswers: true }) };
   notify?.();
   return { submitted: true, already: false, order: publicOrder(row, { withAnswers: true }) };
 }
 
 // ---- Outbox ---------------------------------------------------------------------------------------------------
 
-export async function enqueue(db, now, { orderId, kind, to, subject, body }) {
-  await db
-    .prepare(`INSERT OR IGNORE INTO notification_outbox (id, order_id, kind, to_email, subject, body, status, attempts, next_attempt_at, created_at)
-              VALUES (?, ?, ?, ?, ?, ?, 'pending', 0, ?, ?)`)
-    .bind(newId('ntf'), orderId, kind, to, subject, body, now, now)
-    .run();
-}
 
 const BACKOFF = [60, 300, 900, 3600, 3 * 3600, 6 * 3600, 12 * 3600];
 // Sends due messages; a failure is retried with backoff and stays visible in the queue. Returns counts.

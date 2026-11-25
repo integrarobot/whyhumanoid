@@ -252,3 +252,97 @@ test('validation: estimates and Unknown answer a required field; options and lim
   const text = JSON.stringify(QUESTIONNAIRES);
   assert.doesNotMatch(text, /balance sheet|automotive|OEM|Tier ?1|Tier ?2/i);
 });
+
+// Durability (Codex review, 25 Nov 2026): the state change and its emails are one transaction, and a missing email is
+// repaired from the stored order. A write that fails between them must never lose a notification.
+function failNextOutboxWrite(ctx) {
+  const batch = ctx.db.batch.bind(ctx.db);
+  let armed = true;
+  ctx.db.batch = async (statements) => {
+    if (armed && statements.some((s) => /notification_outbox/.test(s.sql))) {
+      armed = false;
+      // The order update runs, then the first email write fails inside the same transaction.
+      return batch([...statements.slice(0, 1), { runSync() { throw new Error('injected outbox failure'); } }]);
+    }
+    return batch(statements);
+  };
+}
+const outboxKinds = async (ctx, orderId) => (await ctx.db.prepare('SELECT kind FROM notification_outbox WHERE order_id = ? ORDER BY kind').bind(orderId).all()).results.map((r) => r.kind);
+
+test('payment: a failure writing the emails rolls the payment back; Stripe redelivery then records it with both emails', async () => {
+  const ctx = await setup();
+  const { session } = await signIn(ctx);
+  const { order_id: orderId } = await (await ctx.call('POST', '/v1/reports/orders', { token: session, body: { service: INTEGRATION } })).json();
+  const sid = [...ctx.reportSessions.keys()][0];
+  failNextOutboxWrite(ctx);
+  const first = await sendWebhook(ctx, sessionEvent(ctx, sid, { id: 'evt_flaky' }));
+  assert.equal(first.status, 500, 'Stripe sees a failure and will redeliver');
+  const row = await ctx.db.prepare('SELECT status, paid_at FROM report_orders WHERE id = ?').bind(orderId).first();
+  assert.deepEqual([row.status, row.paid_at], ['pending_payment', null], 'nothing half-done');
+  assert.deepEqual(await outboxKinds(ctx, orderId), []);
+  const again = await (await sendWebhook(ctx, sessionEvent(ctx, sid, { id: 'evt_flaky' }))).json();
+  assert.equal(again.outcome, 'order_paid');
+  assert.deepEqual(await outboxKinds(ctx, orderId), ['customer_paid', 'operator_paid']);
+});
+
+test('submit: a failure writing the emails leaves the questionnaire open; the next submit records it with both emails and one deadline', async () => {
+  const ctx = await setup();
+  const { orderId, session } = await paidOrder(ctx);
+  failNextOutboxWrite(ctx);
+  ctx.setNow(T0 + 100);
+  assert.equal((await ctx.call('POST', `/v1/reports/orders/${orderId}/submit`, { token: session, body: { answers: completeAnswers(INTEGRATION) } })).status, 500);
+  const open = await ctx.db.prepare('SELECT status, submitted_at, due_at FROM report_orders WHERE id = ?').bind(orderId).first();
+  assert.deepEqual([open.status, open.submitted_at, open.due_at], ['awaiting_questionnaire', null, null], 'the clock has not started');
+  ctx.setNow(T0 + 200);
+  const done = await (await ctx.call('POST', `/v1/reports/orders/${orderId}/submit`, { token: session, body: { answers: completeAnswers(INTEGRATION) } })).json();
+  assert.equal(done.order.submitted_at, T0 + 200);
+  assert.equal(done.order.due_at, T0 + 200 + 24 * 3600);
+  assert.deepEqual(await outboxKinds(ctx, orderId), ['customer_paid', 'customer_submitted', 'operator_paid', 'operator_submitted']);
+});
+
+test('repair: emails missing after a state change are rewritten from the stored order, once, with the original deadline', async () => {
+  const ctx = await setup();
+  const { orderId, session, sessionId } = await paidOrder(ctx);
+  ctx.setNow(T0 + 300);
+  const done = await (await ctx.call('POST', `/v1/reports/orders/${orderId}/submit`, { token: session, body: { answers: completeAnswers(INTEGRATION) } })).json();
+  const due = done.order.due_at;
+  // Simulate notifications lost by an older, non-atomic write.
+  await ctx.db.prepare('DELETE FROM notification_outbox WHERE order_id = ?').bind(orderId).run();
+  ctx.setNow(T0 + 5000);
+  // A repeated final submit repairs the submission emails (deadline unchanged) and the payment emails.
+  const repeat = await (await ctx.call('POST', `/v1/reports/orders/${orderId}/submit`, { token: session, body: { answers: completeAnswers(INTEGRATION) } })).json();
+  assert.equal(repeat.already, true);
+  assert.equal(repeat.order.due_at, due);
+  assert.deepEqual(await outboxKinds(ctx, orderId), ['customer_paid', 'customer_submitted', 'operator_paid', 'operator_submitted']);
+  const confirm = await ctx.db.prepare("SELECT body FROM notification_outbox WHERE order_id = ? AND kind = 'customer_submitted'").bind(orderId).first();
+  assert.ok(confirm.body.includes(new Date(due * 1000).toISOString().slice(0, 16).replace('T', ' ')), 'the repaired email names the original deadline');
+  // A later webhook for the same paid session repairs nothing more and duplicates nothing.
+  const late = await (await sendWebhook(ctx, sessionEvent(ctx, sessionId, { id: 'evt_late_paid' }))).json();
+  assert.equal(late.outcome, 'already_paid');
+  assert.equal((await outboxKinds(ctx, orderId)).length, 4);
+  // A paid-but-missing email is also repaired by a redelivered paid event.
+  await ctx.db.prepare("DELETE FROM notification_outbox WHERE order_id = ? AND kind = 'operator_paid'").bind(orderId).run();
+  assert.equal((await (await sendWebhook(ctx, sessionEvent(ctx, sessionId, { id: 'evt_late_paid_2' }))).json()).outcome, 'already_paid_repaired');
+  assert.equal((await outboxKinds(ctx, orderId)).length, 4);
+});
+
+test('checkout refuses to sell a report when fulfilment or recovery is not set up', async () => {
+  const cases = [
+    [(ctx) => { ctx.mailer.configured = false; }, 'email_not_configured'],
+    [(ctx) => { ctx.gateway.webhookConfigured = false; }, 'webhook_not_configured'],
+    [(ctx) => { ctx.config.operatorNotifyEmail = null; }, 'operator_notify_not_configured'],
+    [(ctx) => { ctx.config.operatorEmails = []; ctx.config.adminToken = null; }, 'operator_queue_not_configured'],
+  ];
+  for (const [breakIt, code] of cases) {
+    const ctx = await setup();
+    const { session } = await signIn(ctx);
+    breakIt(ctx);
+    const r = await ctx.call('POST', '/v1/reports/orders', { token: session, body: { service: INTEGRATION } });
+    assert.equal(r.status, 503, code);
+    assert.equal((await r.json()).error, code);
+    assert.equal(ctx.reportSessions.size, 0, `${code}: no Checkout Session`);
+    const svc = await (await ctx.call('GET', '/v1/reports/services')).json();
+    assert.equal(svc.checkout_state, code);
+    assert.ok(svc.services.every((s) => !s.checkout_available));
+  }
+});

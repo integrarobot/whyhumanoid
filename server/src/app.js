@@ -382,7 +382,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       'GET',
       /^\/v1\/reports\/services$/,
       async () => {
-        const state = reportCheckoutState({ config, gateway });
+        const state = reportCheckoutState({ config, gateway, mailer });
         return json(200, {
           services: REPORT_SERVICES.map((s) => ({ ...s, price: REPORT_PRICE.display, currency: 'USD', unit_amount: REPORT_PRICE.unitAmount, included_in_subscription: false, subscription_required: false, checkout_available: state === 'ready' && Boolean(config.reportPriceIds?.[s.id]) })),
           before_payment: BEFORE_PAYMENT,
@@ -407,7 +407,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       async (request, now) => {
         const account = await requireSession(request, now);
         const body = await readJson(request);
-        return privateJson(200, await startReportCheckout({ db, config, gateway, account: { ...account, stripeCustomerId: await customerOf(account.accountId) }, service: String(body.service ?? ''), now, appUrl: config.appUrl }));
+        return privateJson(200, await startReportCheckout({ db, config, gateway, mailer, account: { ...account, stripeCustomerId: await customerOf(account.accountId) }, service: String(body.service ?? ''), now, appUrl: config.appUrl }));
       },
     ],
     [

@@ -8,13 +8,15 @@ import { createServer } from 'node:http';
 import { execFile } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { setup, signIn, sendWebhook, subscriptionEvent } from '../server/test/helpers.js';
 
 const require = createRequire(new URL('../server/package.json', import.meta.url));
-const { Client } = await import(require.resolve('@modelcontextprotocol/sdk/client/index.js'));
-const { StreamableHTTPClientTransport } = await import(require.resolve('@modelcontextprotocol/sdk/client/streamableHttp.js'));
+// File URLs, not bare paths: the checkout directory may contain spaces or '?' (Codex, 25 Nov 2026).
+const { Client } = await import(pathToFileURL(require.resolve('@modelcontextprotocol/sdk/client/index.js')).href);
+const { StreamableHTTPClientTransport } = await import(pathToFileURL(require.resolve('@modelcontextprotocol/sdk/client/streamableHttp.js')).href);
 const root = new URL('../', import.meta.url);
-const CLI = new URL('agents/whyhumanoid.mjs', root).pathname;
+const CLI = fileURLToPath(new URL('agents/whyhumanoid.mjs', root));
 
 const ctx = await setup();
 for (const name of ['reports', 'datasets', 'benchmarks', 'integrators']) ctx.publicFiles.set(`/data/${name}/atlas.json`, await readFile(new URL(`data/${name}/atlas.json`, root), 'utf8'));
