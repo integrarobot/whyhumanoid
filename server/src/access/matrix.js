@@ -18,6 +18,8 @@ import { PUBLIC_FIELDS } from './fields.js';
 
 // The first-10-rows preview of 16 Nov 2026, kept only for the free tabs that still publish basic fields beyond it
 // (Stocks). Subscription tabs no longer use it: every row is public at its public fields (fields.js).
+import { REPORT_SERVICES, REPORTS_LIVE_OPEN } from '../orders/services.js';
+
 export const PREVIEW_ROWS = 10;
 
 // The one paid product. `product` is the entitlements.product value written by the Stripe webhook; existing
@@ -115,22 +117,15 @@ export const DATASET_ACCESS = Object.freeze({
   'data-space': { category: null, access: 'subscription', offer: false },
 });
 
-// Custom company reports (Javier, 24 Nov 2026): Integrarobot's analysis and judgement applied to one company's
-// decisions, US$1,000 each, separate from the subscription and with no subscription prerequisite. Ordering and payment
-// stay DISABLED: scope, workflow and messaging come later, so the site says "Not available to order yet" and offers no
-// form, checkout or delivery promise. The ids are kept from 23 Nov 2026 (stable anchors).
-export const SERVICES = Object.freeze([
-  {
-    id: 'humanoid-adoption-assessment', category: 'deployments', name: 'Robot integration diagnostic',
-    price: 'US$1,000', status: 'not_available', included_in_subscription: false, orderable: false,
-    summary: 'A report on whether, where and how robots could be integrated in your operation, with our analysis and judgement, drawing on the Deployments evidence.',
-  },
-  {
-    id: 'component-manufacturing-study', category: 'components', name: 'Industrial diversification report',
-    price: 'US$1,000', status: 'not_available', included_in_subscription: false, orderable: false,
-    summary: 'A report on whether your industrial capabilities could serve the robot components market, with our analysis and judgement, drawing on the Components research.',
-  },
-]);
+// Custom company reports (Javier, 24 Nov 2026; ordering flow 25 Nov 2026): Integrarobot's analysis applied to one
+// company's decision, US$1,000 each as a one-off payment, separate from the subscription in both directions and with no
+// subscription prerequisite. Names, summaries and the switch that opens live ordering (REPORTS_LIVE_OPEN) live in
+// server/src/orders/services.js; until it is true the site says "Not available to order yet". The ids are kept from
+// 23 Nov 2026 (stable anchors).
+export const SERVICES = Object.freeze(REPORT_SERVICES.map((s) => Object.freeze({
+  id: s.id, category: s.category, name: s.name, summary: s.summary,
+  price: 'US$1,000', status: REPORTS_LIVE_OPEN ? 'available' : 'not_available', included_in_subscription: false, orderable: REPORTS_LIVE_OPEN,
+})));
 
 export const CATEGORIES_BY_ID = new Map(CATEGORIES.map((c) => [c.id, c]));
 

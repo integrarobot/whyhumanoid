@@ -29,7 +29,8 @@ import { renderDataAtlas } from './data-atlas-view.mjs';
 import { componentsModel, renderComponentsCategory, renderLockedPage, renderProductPage } from './components-view.mjs';
 import { renderReportPage, renderReportsAtlas } from './reports-view.mjs';
 import { casePath, casesHtml, renderCasePage, renderDeploymentsCategory } from './deployments-view.mjs';
-import { offerHtml, offerLine } from './offer-view.mjs';
+import { BEFORE_PAYMENT, REPORT_LIMITS, REPORTS_LIVE_OPEN, SUPPORT_EMAIL, offerHtml, offerLine } from './offer-view.mjs';
+import { USAGE_LIMITS } from '../server/src/usage.js';
 import { readIntegratorsAtlas, renderIntegratorProfile, renderIntegratorsCategory, renderNamedBy } from './integrators-view.mjs';
 import { publicCases } from '../server/src/public/cases.js';
 import { API_ORIGIN } from './build-app.mjs';
@@ -321,7 +322,7 @@ ${head}</head>
 ${body}
 </main>${tail}
 ${section ? "<script>(function(){var a=document.querySelector('nav.cats [aria-current]');if(a&&a.parentNode.scrollWidth>a.parentNode.clientWidth)a.parentNode.scrollLeft=a.offsetLeft-a.parentNode.offsetLeft-16;})();</script>" : ''}
-<footer class="foot"><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/method/">Method</a><a href="/subscribe/">Subscription</a><a href="/app/">Subscriber app</a></nav><p>Why Humanoid? by Integrarobot. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
+<footer class="foot"><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/method/">Method</a><a href="/subscribe/">Subscription and reports</a><a href="/agents/">Agents</a><a href="/app/">Subscriber app</a><a href="/privacy/">Privacy</a></nav><p>Why Humanoid? by Integrarobot. Help: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
 ${ANALYTICS}
 </body>
 </html>
@@ -562,7 +563,7 @@ const subscriptionCta = (what) => `<p class="cta"><a href="/subscribe/">${esc(wh
 function serviceHtml(id) {
   const sv = SERVICES.find((x) => x.id === id);
   if (!sv) return '';
-  return `<aside class="service" id="report-${esc(sv.id)}" aria-label="Custom company report"><p class="kicker">Custom company report · not available to order yet</p><h3>${esc(sv.name)}</h3><p>${esc(sv.summary)}</p><p class="key">${esc(sv.price)} per report, separate from the data subscription and with no subscription needed. Not available to order yet: its scope and how it works are still being defined.</p></aside>`;
+  return `<aside class="service" id="report-${esc(sv.id)}" aria-label="Custom company report"><p class="kicker">Custom company report${REPORTS_LIVE_OPEN ? '' : ' · not available to order yet'}</p><h3>${esc(sv.name)}</h3><p>${esc(sv.summary)}</p><p class="key"><b>${esc(BEFORE_PAYMENT)}</b> ${esc(REPORT_LIMITS)}</p>${REPORTS_LIVE_OPEN ? '<p class="cta"><a href="/app/#reports">Order this report →</a></p>' : '<p class="key">Not available to order yet: ordering opens once the payment and questionnaire flow has been tested end to end.</p>'}</aside>`;
 }
 function categoryHead(c, model, extra = '') {
   return `${crumbs([['/', 'Why Humanoid?'], [null, c.label]])}
@@ -837,25 +838,77 @@ ${renderReportPage(REPORTS_ATLAS, r)}
 function subscribePage(model) {
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Subscription and reports']])}
 <article class="entity">
-<p class="kicker">Two ways to go further</p>
-<h1>Data subscription and custom company reports</h1>
-<p class="lede">Every category is free to browse, including every Deployments case and every Components product with its public summary. Two separate paths go further: the data, to decide for yourself, or a report where we apply our judgement to your company.</p>
-${offerHtml({ heading: 'Choose a path', id: 'offer' })}
-<section id="data"><h2>Full data access</h2>${kv([
-    ['Price', `${esc(price())}, billed annually. No free trial.`],
-    ['Deployments', `Every one of the ${model.cases.length} cases in detail: site, city, region and environment; commercial relationship where documented; the full task description and workflow; integration dependencies; the detailed timeline and every source claim; metrics with operator, value, unit, period and conditions; claim and evidence relations; confidence and review notes; discrepancies and open questions.`],
-    ['Components', `The full technical passport of all ${model.cm.total} products: measured quantities, taxels or pixels and resolution, force range and resolution, internal and output rates, size, mass and surface, interface, SDK and ROS, durability, documented users, prices with configuration, currency, date and source, separate BOM estimates, licence, repository, design and paper detail, advantages, drawbacks and uncertainties, and the source of every field; full side-by-side comparison and technical filters.`],
-    ['Search and agents', 'Detailed search across both categories, and the existing API keys for agents over them.'],
-    ['What it is not', 'Access to research and data. It does not include a personalised recommendation, and missing information stays missing.'],
-    ['Renewal and cancellation', 'Renews each year at the price of your subscription until you cancel; cancel at any time in the billing portal and keep access until the end of the paid year. Existing subscriptions keep their contract, currency and renewal price.'],
-  ])}
-${LIVE_SALES_OPEN ? '<p class="cta"><a href="/app/#subscribe">Sign in and subscribe →</a></p>' : '<p class="note"><b>New subscriptions open soon.</b> The new format is being published and checked before new payments open. Existing subscribers keep full access and manage their subscription in the <a href="/app/">subscriber app</a>.</p>'}</section>
-<section id="reports"><h2>Custom company reports</h2><p>A report is written for one company: Integrarobot provides the analysis and judgement, using the research behind Why Humanoid?. Each costs US$1,000, is separate from the data subscription and needs no subscription.</p>
+<p class="kicker">Subscription and custom reports</p>
+<h1>One subscription. The full catalogue, for you and your agents.</h1>
+<p class="lede">Most of Why Humanoid? is free. The data subscription opens the detail behind every deployment case and every component, for you on the web and for your software agents. A custom report is something else: our analysis applied to one decision of your company.</p>
+${offerHtml({ heading: 'Two ways to go further', id: 'offer' })}
+<section id="data"><h2>What the subscription includes</h2>${kv([
+    ['Price', `${esc(price())}, billed annually. No free trial. Taxes are not added at checkout: the charge is the price shown.`],
+    ['Deployments', `All ${model.cases.length} cases in detail: where the robot works, the commercial relationship where documented, the task and workflow, integration, the timeline and every source claim, reported results with their conditions, how the evidence connects, confidence and open questions.`],
+    ['Components', `The full technical passport of all ${model.cm.total} products, with the source of every value, side-by-side comparison and technical filters.`],
+    ['Everything else', 'The other categories stay free for everyone, in full.'],
+    ['What it is not', 'Research and data, not a personalised recommendation. Missing information stays missing. Custom reports are not included.'],
+  ])}</section>
+<section id="access"><h2>Four ways to use it</h2><p>The same subscription and the same account work everywhere. There is no extra charge for agents.</p>${kv([
+    ['On the web', '<a href="/app/">The app</a>: browse, search and compare, with every field.'],
+    ['HTTP API', 'Your agents call the same API as the app, with an API key from your account. <a href="/agents/#api">Setup</a>'],
+    ['MCP', 'An MCP server for AI assistants and agent frameworks that support remote MCP servers. <a href="/agents/#mcp">Setup</a>'],
+    ['Command line', 'A single-file tool for scripts and terminals (Node.js). <a href="/agents/#cli">Setup</a>'],
+  ])}<p>Fair use: ${USAGE_LIMITS.perMinute} requests a minute and ${USAGE_LIMITS.perDay.toLocaleString('en-GB')} a day per API key. Up to five active keys per account; revoke any of them at any time.</p></section>
+<section id="cancel"><h2>Renewal and cancellation</h2><p>The subscription renews each year at its own price until you cancel. Cancel at any time from your account, in the Stripe billing portal, and keep access until the end of the paid year. Subscriptions bought earlier keep their contract, currency and renewal price.</p>
+${LIVE_SALES_OPEN ? '<p class="cta"><a href="/app/#subscribe">Sign in and subscribe →</a></p>' : '<p class="note"><b>New subscriptions open soon.</b> Existing subscribers keep full access and manage their subscription in the <a href="/app/">app</a>.</p>'}</section>
+<section id="reports"><h2>Custom company reports</h2><p>A report answers one question for one company, with our analysis and judgement, drawing on the research behind Why Humanoid?. It is a one-off payment, separate from the subscription: you do not need a subscription to order one, and a report does not include one.</p>
 ${SERVICES.map((sv) => serviceHtml(sv.id)).join('')}
-<p class="note"><b>Not available to order yet.</b> Their scope, how they work and how they are delivered are still being defined. There is no order form and nothing can be paid for them on this site.</p></section>
+<h3>How it works</h3><ol><li>Pay US$1,000 for the report you choose (Stripe Checkout).</li><li>A private questionnaire about your company opens in your account. Your answers are saved as you go; estimates and "Unknown" are fine.</li><li>When you submit the completed questionnaire, we confirm the exact deadline: your report arrives by email, as a PDF, within 24 hours. Payment alone does not start the clock.</li></ol>
+<p>Questions before or after ordering: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>. How we handle your answers: <a href="/privacy/">privacy</a>.</p></section>
 <section><h2>Free for everyone</h2><p>${CATEGORIES.filter((c) => c.access === 'free').map((c) => `<a href="${c.path}">${esc(c.label)}</a>`).join(', ')} in full; every <a href="/deployments/">Deployments case</a> and every <a href="/components/">Components product</a> with its public summary and sources; a page for every robot, company, case and product.</p></section>
 </article>`;
-  return page({ title: 'Data subscription and custom company reports · Why Humanoid?', description: `Two paths: full data access to Deployments and Components, ${price()} billed annually; or custom company reports, US$1,000 each, not available to order yet.`, path: '/subscribe/', body });
+  return page({ title: 'Subscription and custom reports · Why Humanoid?', description: `One subscription, ${price()} billed annually: the full catalogue for you and your agents (web, API, MCP, command line). Custom company reports: US$1,000 each, one-off, no subscription needed.`, path: '/subscribe/', body });
+}
+
+// ---------- agents (25 Nov 2026): the same subscription through the API, MCP and the command-line tool ----------
+const code = (s) => `<pre class="code"><code>${esc(s)}</code></pre>`;
+function agentsPage() {
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Agents']])}
+<article class="entity">
+<p class="kicker">For your software agents</p>
+<h1>Use the catalogue from your agents</h1>
+<p class="lede">Your agents can read Why Humanoid? the way you do: the free catalogue without any key, and complete Deployments and Components with your subscription. Same account, same access, no extra charge.</p>
+<section id="start"><h2>Before you start</h2><ol><li>Free data needs nothing: the API, the MCP server and the command-line tool all work without a key, with public values.</li><li>For complete Deployments and Components, <a href="/subscribe/">subscribe</a> (${esc(price())}), then create an API key in <a href="/app/#keys">the app, under Agent access</a>. The key is shown once; keep it like a password.</li><li>Revoke a key there at any time; it stops working at once. When the subscription ends, keys fall back to public values.</li></ol>
+${kv([['Fair use', `${USAGE_LIMITS.perMinute} requests a minute and ${USAGE_LIMITS.perDay.toLocaleString('en-GB')} a day per key. Over the limit, requests get HTTP 429 with a Retry-After header; nothing is charged.`], ['What agents can read', 'The published catalogue: every category, and with a subscription every field of Deployments and Components. Not accounts, orders, custom reports or internal tables.'], ['Help', `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`]])}</section>
+<section id="api"><h2>HTTP API</h2><p>JSON over HTTPS at <code>${esc(API_ORIGIN)}</code>. Send the key as a Bearer token.</p>
+${code(`# Tables and what your access reads from each\ncurl ${API_ORIGIN}/v1/datasets\n\n# Search across categories\ncurl "${API_ORIGIN}/v1/search?q=pallet&category=deployments" -H "Authorization: Bearer YOUR_API_KEY"\n\n# Rows of one table (every field with a subscription)\ncurl "${API_ORIGIN}/v1/datasets/deployments?limit=25&offset=0" -H "Authorization: Bearer YOUR_API_KEY"\n\n# Without a key: the public rows of Deployments\ncurl ${API_ORIGIN}/v1/datasets/deployments/preview`)}
+<p>Published atlases (Datasets, Benchmarks, Reports, Integrators and the evolution charts) are public JSON files on this site, for example <code>https://whyhumanoid.com/data/reports/atlas.json</code>.</p></section>
+<section id="mcp"><h2>MCP server</h2><p>A remote MCP server (Streamable HTTP) at <code>${esc(API_ORIGIN)}/mcp</code>, with read-only tools: <code>list_categories</code>, <code>search_catalogue</code>, <code>get_rows</code>, <code>get_atlas</code>, <code>get_relations</code> and <code>account_status</code>. Add it to any client that supports remote MCP servers with a custom header, for example in a JSON configuration:</p>
+${code(`{\n  "mcpServers": {\n    "whyhumanoid": {\n      "type": "http",\n      "url": "${API_ORIGIN}/mcp",\n      "headers": { "Authorization": "Bearer YOUR_API_KEY" }\n    }\n  }\n}`)}
+<p>Leave out the header to use the public catalogue only. The exact place for this configuration depends on your client; check its documentation for "remote MCP server" or "HTTP transport".</p></section>
+<section id="cli"><h2>Command-line tool</h2><p>One JavaScript file with no dependencies (Node.js 18 or later). Read it before you run it: <a href="/agents/whyhumanoid.mjs">whyhumanoid.mjs</a>.</p>
+${code(`curl -fsSLO https://whyhumanoid.com/agents/whyhumanoid.mjs\nexport WHYHUMANOID_API_KEY=YOUR_API_KEY   # optional: public data needs no key\nnode whyhumanoid.mjs categories\nnode whyhumanoid.mjs search pallet --category deployments\nnode whyhumanoid.mjs rows deployments --limit 5\nnode whyhumanoid.mjs atlas reports\nnode whyhumanoid.mjs account`)}
+<p>Output is JSON. Run <code>node whyhumanoid.mjs --help</code> for every option.</p></section>
+<section><h2>Good to know</h2><p>Records are claims as their sources state them, not verified facts; missing values stay missing. Custom company reports are ordered by people, in <a href="/subscribe/#reports">the app</a>, not through these tools.</p></section>
+</article>`;
+  return page({ title: 'Agents: API, MCP and command line · Why Humanoid?', description: `Use the Why Humanoid? catalogue from your agents: HTTP API, an MCP server and a command-line tool, with the same subscription (${price()}) and no extra charge. Fair use: ${USAGE_LIMITS.perMinute} requests a minute per key.`, path: '/agents/', body });
+}
+
+// ---------- privacy (25 Nov 2026): what the site and the app actually do, nothing more ----------
+function privacyPage() {
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Privacy']])}
+<article class="entity">
+<p class="kicker">Privacy</p>
+<h1>How we handle your information</h1>
+<p class="lede">Why Humanoid? is run by Integrarobot. This page says what we collect, why, and who processes it for us. Questions or requests about your data: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>.</p>
+${kv([
+    ['Visiting the site', 'The public pages count visits with Cloudflare Web Analytics, which sets no cookies and does not track individual visitors.'],
+    ['Your account', 'Your email address, to send sign-in links and to identify your account. Sign-in links work once and expire after 15 minutes. Your browser keeps a sign-in token until you sign out.'],
+    ['Subscription and payments', 'Payments are processed by Stripe. We do not see or store card details. We keep the subscription state Stripe reports, to open your access.'],
+    ['API keys', 'We store a fingerprint of each key, never the key itself, with its label and when it was created, last used or revoked; and request counts per key for the fair-use limits.'],
+    ['Custom report questionnaires', 'Your answers are stored in your account, visible only to you and to the people preparing your report. We use them only to prepare and deliver your report and to answer you about it. They are not published, not used for the public catalogue and not used for marketing.'],
+    ['Emails', 'Emails about your account and orders are sent through Resend. We do not send marketing emails from this service.'],
+    ['Where data is kept', 'The app and its database run on Cloudflare. Payment data stays with Stripe.'],
+    ['Your choices', `Ask us at ${SUPPORT_EMAIL} for a copy of your information or to delete it. Deleting an account does not delete payment records that Stripe or we must keep.`],
+  ])}
+</article>`;
+  return page({ title: 'Privacy · Why Humanoid?', description: 'What Why Humanoid? collects, why, and who processes it: sign-in email, Stripe payments, API key fingerprints, custom report questionnaires and emails.', path: '/privacy/', body });
 }
 
 // ---------- method and report (approved split, phase 2) ----------
@@ -903,7 +956,7 @@ ${kv([['In operation', 'The source says the robot is working in operation.'], ['
 }
 
 export function sitemapUrls(model) {
-  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
+  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/privacy/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
 }
 function sitemap(model) {
   const lastmod = String(model.snapshot).slice(0, 10);
@@ -944,6 +997,8 @@ export function buildPages(registry = readRegistry()) {
   files.set('reports/index.html', reportsCategory(model));
   for (const r of REPORTS) files.set(`${reportPath(r).slice(1)}index.html`, externalReportPage(r));
   files.set('subscribe/index.html', subscribePage(model));
+  files.set('agents/index.html', agentsPage());
+  files.set('privacy/index.html', privacyPage());
   // /robots/ was the index of robot pages until 23 Nov 2026: it now points to the Humanoids category.
   files.set('robots/index.html', redirectPage('/humanoids/', 'the humanoid robots'));
   files.set('companies/index.html', companiesIndex(model));
