@@ -9,6 +9,7 @@ import { hostKey, urlKey } from './import/identity.js';
 import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
 import editorial from './editorial/humanoids.json' with { type: 'json' };
 import { scrubEditorial } from './data-atlas/atlas.js';
+import { PUBLIC_DATE_HEADERS } from './public-dates.js';
 import { INTEGRATOR_FIELDS, INTEGRATOR_HEADERS, selectIntegrators } from './integrators/catalogue.js';
 import { COMPONENT_FIELDS, COMPONENT_HEADERS, COMPONENT_WITHHELD, scrubComponentText, selectProducts, selectSoftware } from './components/catalogue.js';
 import { DATASET_ACCESS, PREVIEW_ROWS, categoryOfDataset, isFreeDataset, publicFieldsFor } from './access/matrix.js';
@@ -67,6 +68,9 @@ const BENCHMARKS = [
   'CHECKED_AT', 'REVIEW_STATUS', 'LIMITATIONS', 'PREVIOUS_CATALOGUE_DESCRIPTION', 'EMBODIMENT', 'CAPABILITY_TAGS',
   'KEY_FINDING', 'RESULTS_COVERAGE',
 ];
+// First public dates (25 Nov 2026): seven columns appended at the end (server/src/public-dates.js); the tab without
+// them is still accepted.
+const BENCHMARKS_DATED = [...BENCHMARKS, ...PUBLIC_DATE_HEADERS];
 
 const BENCHMARK_RESULTS = [
   'RESULT_ID', 'BENCHMARK_ID', 'BENCHMARK_VERSION', 'MODEL', 'MODEL_CONFIGURATION', 'TRACK', 'ENVIRONMENT', 'EMBODIMENT',
@@ -83,6 +87,7 @@ const DATASETS_CATALOG = [
   'DATA_FORMAT', 'ACCESS_STATUS', 'LICENSE_NOTE', 'VERSION_SCOPE', 'KEY_TAKEAWAY', 'SOURCE_URL', 'SOURCE_LOCATOR',
   'REVIEW_STATUS', 'LIMITATIONS', 'PARENT_DATASET_IDS', 'RESOURCE_CLASS', 'ATTACHMENT_REF', 'INCLUDED_IN_ATLAS',
 ];
+const DATASETS_CATALOG_DATED = [...DATASETS_CATALOG, ...PUBLIC_DATE_HEADERS];
 
 const DATASET_METRICS = [
   'METRIC_ID', 'DATASET_ID', 'DATA_VERSION', 'METRIC', 'VALUE', 'UNIT', 'QUALIFIER', 'SCOPE', 'DATA_ORIGIN',
@@ -167,8 +172,9 @@ export const DATASETS = [
     title: 'Benchmarks',
     description: 'Robotics evaluation resources: what each tests, in which setting, with which metrics, protocol and limitations.',
     kind: 'table',
-    headers: BENCHMARKS,
-    fields: lower(BENCHMARKS),
+    headers: BENCHMARKS_DATED,
+    formerHeaders: [BENCHMARKS],
+    fields: lower(BENCHMARKS_DATED),
     idFields: ['benchmark_id'],
     // Published as the Robotics Evaluation Atlas snapshot (tools/export-benchmarks.mjs), not as a preview file.
     publicSnapshot: 'data/benchmarks/atlas.json',
@@ -257,8 +263,9 @@ export const DATASETS = [
     title: 'Datasets',
     description: 'Robot learning data resources: origin, bodies, modalities, uses, access and licence notes.',
     kind: 'table',
-    headers: DATASETS_CATALOG,
-    fields: lower(DATASETS_CATALOG),
+    headers: DATASETS_CATALOG_DATED,
+    formerHeaders: [DATASETS_CATALOG],
+    fields: lower(DATASETS_CATALOG_DATED),
     idFields: ['dataset_id'],
     // Editorial bookkeeping of the workbook, never stored or served: a link into the private workbook, the review note
     // of the classification pass and the reference to the supplied matrix.

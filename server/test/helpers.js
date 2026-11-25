@@ -86,10 +86,14 @@ function humanoidRow(spec, i) {
 }
 
 // Robotics Evaluation Atlas tabs: synthetic values that pass the atlas validation (server/src/benchmarks/atlas.js).
+// First public dates (server/src/public-dates.js): odd rows dated as the source states a year, even rows undated.
+const publicDate = (i, meaning, host) => (i % 2
+  ? { public_date: '2024', public_date_precision: 'year', public_date_meaning: meaning, public_date_source_url: `https://${host}-${i}.example.com/news`, public_date_locator: 'Synthetic announcement', public_date_checked_at: '2026-11-25', public_date_note: '' }
+  : { public_date: '', public_date_precision: '', public_date_meaning: '', public_date_source_url: '', public_date_locator: '', public_date_checked_at: '', public_date_note: '' });
 function atlasFixtureValue(dataset, field, i, n) {
   if (dataset === 'benchmarks') {
     const v = { benchmark_id: `bm-example-${i}`, name: `Example benchmark ${i}`, url: `https://bench-${i}.example.com/`, environment: 'Simulation',
-      capability_tags: 'manipulation; generalization', related_dataset_ids: '', checked_at: '2026-11-23', source_url: `https://bench-${i}.example.com/` };
+      capability_tags: 'manipulation; generalization', related_dataset_ids: '', checked_at: '2026-11-23', source_url: `https://bench-${i}.example.com/`, ...publicDate(i, 'benchmark_release', 'bench') };
     return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
   }
   const v = { result_id: `res-example-${i}`, benchmark_id: `bm-example-${((i - 1) % n) + 1}`, model: `Example model ${i}`, metric: 'Success',
@@ -103,7 +107,7 @@ function dataAtlasFixtureValue(dataset, field, i, n) {
   if (dataset === 'datasets') {
     const v = { dataset_id: `ds-example-${i}`, name: `Example dataset ${i}`, url: `https://data-${i}.example.com/`, related_benchmark_ids: '',
       related_benchmark_url: '', checked_at: '2026-11-23', data_origin: 'real_robot', modalities: 'rgb; action', learning_uses: 'manipulation',
-      access_status: 'dataset_link', source_url: `https://data-${i}.example.com/`, parent_dataset_ids: '', resource_class: 'corpus', included_in_atlas: 'true' };
+      access_status: 'dataset_link', source_url: `https://data-${i}.example.com/`, parent_dataset_ids: '', resource_class: 'corpus', included_in_atlas: 'true', ...publicDate(i, 'data_release', 'data') };
     return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
   }
   const v = { metric_id: `dm-example-${i}`, dataset_id: `ds-example-${((i - 1) % n) + 1}`, metric: 'trajectories', value: String(1000 + i), unit: 'trajectories',

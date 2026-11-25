@@ -1529,13 +1529,13 @@
    "path": "/datasets/",
    "type": "lanes",
    "title": "Associated papers of robot learning data resources",
-   "subtitle": "11 of 35 resources by the first arXiv submission of their associated paper: a partial chronology of publications, not of dataset releases or volume.",
-   "meaning": "First arXiv submission (v1) of the paper associated with each data resource, checked against the arXiv submission history by Codex on 24 Nov 2026, with the resource-to-paper link from the official project page or repository. Not the dataset's release or availability date and not the growth of its volume: current figures may come from later versions.",
+   "subtitle": "28 of 35 resources by the first arXiv submission of their associated paper: a partial chronology of publications, not of dataset releases or volume.",
+   "meaning": "First public date of each data resource from the master's PUBLIC_DATE columns (server/src/public-dates.js), each in its stated meaning: for every dated resource so far, the first arXiv submission (v1) of the associated paper, checked against the arXiv submission history by Codex on 24 and 25 Nov 2026, with the resource-to-paper link from the official project page, repository or the paper's abstract. Not the dataset's release or availability date and not the growth of its volume: current figures may come from later versions. Reviewed dates here would fill only resources whose columns are still empty, and must agree with the master.",
    "unit": "papers",
    "precision": "day",
    "domain": {
     "start": "2021-01-01",
-    "end": "2026-11-24"
+    "end": "2026-11-25"
    },
    "rows": [
     {
@@ -1551,11 +1551,35 @@
      "label": "Synthetic, simulated and retargeted"
     },
     {
+     "key": "assets",
+     "label": "Environment assets"
+    },
+    {
      "key": "mixed",
      "label": "Mixed origins"
+    },
+    {
+     "key": "other",
+     "label": "Origin not established or not applicable"
     }
    ],
    "points": [
+    {
+     "id": "ds-lafan1",
+     "label": "LAFAN1",
+     "row": "human",
+     "date": "2021-02-09",
+     "precision": "day",
+     "x": "2021-02-09",
+     "reveal": "2021-02-09",
+     "note": "arXiv 2102.04942. Associated paper was already published at SIGGRAPH 2020; arXiv date is later. Ubisoft article dated 2020-07-30: https://www.ubisoft.com/en-us/studio/laforge/news/2NBPwJzPl3DwCAzGTav7Tg/robust-motion-inbetweening .",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2102.04942",
+     "external": true,
+     "t": "2021-02-09"
+    },
     {
      "id": "ds-ego4d",
      "label": "Ego4D",
@@ -1564,7 +1588,10 @@
      "precision": "day",
      "x": "2021-10-13",
      "reveal": "2021-10-13",
-     "note": "arXiv 2110.07058",
+     "note": "arXiv 2110.07058. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2110.07058",
      "external": true,
      "t": "2021-10-13"
@@ -1577,10 +1604,29 @@
      "precision": "day",
      "x": "2021-12-06",
      "reveal": "2021-12-06",
-     "note": "arXiv 2112.03227",
+     "note": "arXiv 2112.03227. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2112.03227",
      "external": true,
      "t": "2021-12-06"
+    },
+    {
+     "id": "ds-libero",
+     "label": "LIBERO demonstrations",
+     "row": "synthetic",
+     "date": "2023-06-05",
+     "precision": "day",
+     "x": "2023-06-05",
+     "reveal": "2023-06-05",
+     "note": "arXiv 2306.03310. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2306.03310",
+     "external": true,
+     "t": "2023-06-05"
     },
     {
      "id": "ds-rh20t",
@@ -1590,7 +1636,10 @@
      "precision": "day",
      "x": "2023-07-02",
      "reveal": "2023-07-02",
-     "note": "arXiv 2307.00595",
+     "note": "arXiv 2307.00595. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2307.00595",
      "external": true,
      "t": "2023-07-02"
@@ -1603,7 +1652,10 @@
      "precision": "day",
      "x": "2023-08-24",
      "reveal": "2023-08-24",
-     "note": "arXiv 2308.12952",
+     "note": "arXiv 2308.12952. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2308.12952",
      "external": true,
      "t": "2023-08-24"
@@ -1616,7 +1668,10 @@
      "precision": "day",
      "x": "2023-10-13",
      "reveal": "2023-10-13",
-     "note": "arXiv 2310.08864. An aggregate of other collections; counted as one paper, never added to the others.",
+     "note": "arXiv 2310.08864. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2310.08864",
      "external": true,
      "t": "2023-10-13"
@@ -1629,7 +1684,10 @@
      "precision": "day",
      "x": "2023-11-30",
      "reveal": "2023-11-30",
-     "note": "arXiv 2311.18259",
+     "note": "arXiv 2311.18259. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2311.18259",
      "external": true,
      "t": "2023-11-30"
@@ -1642,10 +1700,45 @@
      "precision": "day",
      "x": "2024-03-19",
      "reveal": "2024-03-19",
-     "note": "arXiv 2403.12945. Current version v2, revised 2025-04-22.",
+     "note": "arXiv 2403.12945. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2403.12945",
      "external": true,
      "t": "2024-03-19"
+    },
+    {
+     "id": "ds-physics-iq",
+     "label": "Physics IQ evaluation dataset",
+     "row": "human",
+     "date": "2025-01-14",
+     "precision": "day",
+     "x": "2025-01-14",
+     "reveal": "2025-01-14",
+     "note": "arXiv 2501.09038. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2501.09038",
+     "external": true,
+     "t": "2025-01-14"
+    },
+    {
+     "id": "ds-sharerobot",
+     "label": "ShareRobot",
+     "row": "synthetic",
+     "date": "2025-02-28",
+     "precision": "day",
+     "x": "2025-02-28",
+     "reveal": "2025-02-28",
+     "note": "arXiv 2502.21257. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2502.21257",
+     "external": true,
+     "t": "2025-02-28"
     },
     {
      "id": "ds-agibot-world",
@@ -1655,10 +1748,45 @@
      "precision": "day",
      "x": "2025-03-09",
      "reveal": "2025-03-09",
-     "note": "arXiv 2503.06669. Current version v5, revised 2026-10-20 (Colosseo).",
+     "note": "arXiv 2503.06669. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2503.06669",
      "external": true,
      "t": "2025-03-09"
+    },
+    {
+     "id": "ds-dexmanipnet",
+     "label": "DexManipNet",
+     "row": "synthetic",
+     "date": "2025-03-27",
+     "precision": "day",
+     "x": "2025-03-27",
+     "reveal": "2025-03-27",
+     "note": "arXiv 2503.21860. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2503.21860",
+     "external": true,
+     "t": "2025-03-27"
+    },
+    {
+     "id": "ds-humoto",
+     "label": "HUMOTO",
+     "row": "human",
+     "date": "2025-04-14",
+     "precision": "day",
+     "x": "2025-04-14",
+     "reveal": "2025-04-14",
+     "note": "arXiv 2504.10414. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2504.10414",
+     "external": true,
+     "t": "2025-04-14"
     },
     {
      "id": "ds-egodex",
@@ -1668,10 +1796,109 @@
      "precision": "day",
      "x": "2025-05-16",
      "reveal": "2025-05-16",
-     "note": "arXiv 2505.11709. Current version v3, revised 2026-03-09.",
+     "note": "arXiv 2505.11709. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2505.11709",
      "external": true,
      "t": "2025-05-16"
+    },
+    {
+     "id": "ds-roboeval",
+     "label": "RoboEval demonstrations",
+     "row": "synthetic",
+     "date": "2025-07-01",
+     "precision": "day",
+     "x": "2025-07-01",
+     "reveal": "2025-07-01",
+     "note": "arXiv 2507.00435. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2507.00435",
+     "external": true,
+     "t": "2025-07-01"
+    },
+    {
+     "id": "ds-galaxea",
+     "label": "Galaxea",
+     "row": "robot",
+     "date": "2025-08-30",
+     "precision": "day",
+     "x": "2025-08-30",
+     "reveal": "2025-08-30",
+     "note": "arXiv 2509.00576. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2509.00576",
+     "external": true,
+     "t": "2025-08-30"
+    },
+    {
+     "id": "ds-openego",
+     "label": "OpenEgo",
+     "row": "human",
+     "date": "2025-09-05",
+     "precision": "day",
+     "x": "2025-09-05",
+     "reveal": "2025-09-05",
+     "note": "arXiv 2509.05513. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2509.05513",
+     "external": true,
+     "t": "2025-09-05"
+    },
+    {
+     "id": "ds-motiontrans",
+     "label": "Motiontrans",
+     "row": "human",
+     "date": "2025-09-22",
+     "precision": "day",
+     "x": "2025-09-22",
+     "reveal": "2025-09-22",
+     "note": "arXiv 2509.17759. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2509.17759",
+     "external": true,
+     "t": "2025-09-22"
+    },
+    {
+     "id": "ds-phuma",
+     "label": "PHUMA",
+     "row": "synthetic",
+     "date": "2025-10-30",
+     "precision": "day",
+     "x": "2025-10-30",
+     "reveal": "2025-10-30",
+     "note": "arXiv 2510.26236. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2510.26236",
+     "external": true,
+     "t": "2025-10-30"
+    },
+    {
+     "id": "ds-robocoin",
+     "label": "RoboCOIN",
+     "row": "robot",
+     "date": "2025-11-21",
+     "precision": "day",
+     "x": "2025-11-21",
+     "reveal": "2025-11-21",
+     "note": "arXiv 2511.17441. README report announcement on 2025-11-24 differs from first arXiv submission.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2511.17441",
+     "external": true,
+     "t": "2025-11-21"
     },
     {
      "id": "ds-robomind2",
@@ -1681,10 +1908,45 @@
      "precision": "day",
      "x": "2025-12-31",
      "reveal": "2025-12-31",
-     "note": "arXiv 2512.24653. Current version v3, revised 2026-02-27.",
+     "note": "arXiv 2512.24653. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2512.24653",
      "external": true,
      "t": "2025-12-31"
+    },
+    {
+     "id": "ds-molmospaces",
+     "label": "MolmoSpaces environments and assets",
+     "row": "assets",
+     "date": "2026-02-11",
+     "precision": "day",
+     "x": "2026-02-11",
+     "reveal": "2026-02-11",
+     "note": "arXiv 2602.11337. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2602.11337",
+     "external": true,
+     "t": "2026-02-11"
+    },
+    {
+     "id": "ds-lda-1b",
+     "label": "LDA -1B",
+     "row": "mixed",
+     "date": "2026-02-12",
+     "precision": "day",
+     "x": "2026-02-12",
+     "reveal": "2026-02-12",
+     "note": "arXiv 2602.12215. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2602.12215",
+     "external": true,
+     "t": "2026-02-12"
     },
     {
      "id": "ds-ultradexgrasp20m",
@@ -1694,43 +1956,96 @@
      "precision": "day",
      "x": "2026-03-05",
      "reveal": "2026-03-05",
-     "note": "arXiv 2603.05312",
+     "note": "arXiv 2603.05312. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
      "href": "https://arxiv.org/abs/2603.05312",
      "external": true,
      "t": "2026-03-05"
+    },
+    {
+     "id": "ds-humannet",
+     "label": "HumanNet",
+     "row": "other",
+     "date": "2026-05-07",
+     "precision": "day",
+     "x": "2026-05-07",
+     "reveal": "2026-05-07",
+     "note": "arXiv 2605.06747. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2605.06747",
+     "external": true,
+     "t": "2026-05-07"
+    },
+    {
+     "id": "ds-robocolosseum",
+     "label": "RoboColosseum rollout data",
+     "row": "robot",
+     "date": "2026-11-02",
+     "precision": "day",
+     "x": "2026-11-02",
+     "reveal": "2026-11-02",
+     "note": "arXiv 2611.02497. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2611.02497",
+     "external": true,
+     "t": "2026-11-02"
+    },
+    {
+     "id": "ds-hubego-100k",
+     "label": "HubEgo-100K",
+     "row": "human",
+     "date": "2026-11-16",
+     "precision": "day",
+     "x": "2026-11-16",
+     "reveal": "2026-11-16",
+     "note": "arXiv 2611.21938. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2611.21938",
+     "external": true,
+     "t": "2026-11-16"
     }
    ],
    "final": {
-    "papers": 11,
+    "papers": 28,
     "by_row": {
-     "robot": 5,
-     "human": 3,
-     "synthetic": 2,
-     "mixed": 1
+     "robot": 8,
+     "human": 9,
+     "synthetic": 7,
+     "assets": 1,
+     "mixed": 2,
+     "other": 1
     }
    },
-   "summary": "11 associated papers from 2021 to 2026: 5 robot-recorded, 3 human observation and motion, 2 synthetic, simulated and retargeted, 1 mixed origins. Collections overlap: their sizes are never added.",
+   "summary": "28 associated papers from 2021 to 2026: 8 robot-recorded, 9 human observation and motion, 7 synthetic, simulated and retargeted, 1 environment assets, 2 mixed origins, 1 origin not established or not applicable. Collections overlap: their sizes are never added.",
    "coverage": {
-    "included": 11,
+    "included": 28,
     "total": 35,
     "unit": "resources",
     "excluded": [
      {
-      "reason": "Resources without a checked publication date in this evidence batch",
-      "count": 24
+      "reason": "Resources without a checked first public date yet",
+      "count": 7
      }
     ],
-    "note": "Several papers have later versions; current figures are not dated back to v1."
+    "note": "Several papers have later versions; current figures are not dated back to v1. A date is the first arXiv submission of the associated paper unless its row says otherwise; where a paper or announcement came earlier, the row says so."
    },
    "status": "partial",
-   "status_note": "Partial: 24 of 35 resources undated; release and availability dates not established.",
+   "status_note": "Partial: 28 of 35 resources dated; 7 undated. Release and availability dates are not established.",
    "sources": [
     {
-     "label": "arXiv submission histories, checked 24 Nov 2026",
+     "label": "arXiv submission histories, checked 2026-11-25",
      "url": "https://arxiv.org/"
     },
     {
-     "label": "Robot Learning Data Atlas, snapshot 2026-11-23",
+     "label": "Robot Learning Data Atlas, snapshot 2026-11-25",
      "url": "/data/datasets/atlas.json"
     }
    ],
@@ -1739,74 +2054,176 @@
      "First submitted",
      "Resource",
      "Origin",
-     "Paper"
+     "Paper and notes"
     ],
     "rows": [
+     [
+      "2021-02-09",
+      "LAFAN1",
+      "Human observation and motion",
+      "arXiv 2102.04942. Associated paper was already published at SIGGRAPH 2020; arXiv date is later. Ubisoft article dated 2020-07-30: https://www.ubisoft.com/en-us/studio/laforge/news/2NBPwJzPl3DwCAzGTav7Tg/robust-motion-inbetweening ."
+     ],
      [
       "2021-10-13",
       "Ego4D",
       "Human observation and motion",
-      "arXiv 2110.07058"
+      "arXiv 2110.07058. Not a dataset availability or collection date; current quantities are not backdated."
      ],
      [
       "2021-12-06",
       "CALVIN play dataset",
       "Synthetic, simulated and retargeted",
-      "arXiv 2112.03227"
+      "arXiv 2112.03227. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2023-06-05",
+      "LIBERO demonstrations",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2306.03310. Not a dataset availability or collection date; current quantities are not backdated."
      ],
      [
       "2023-07-02",
       "RH20T",
       "Robot-recorded",
-      "arXiv 2307.00595"
+      "arXiv 2307.00595. Not a dataset availability or collection date; current quantities are not backdated."
      ],
      [
       "2023-08-24",
       "BridgeData V2",
       "Robot-recorded",
-      "arXiv 2308.12952"
+      "arXiv 2308.12952. Not a dataset availability or collection date; current quantities are not backdated."
      ],
      [
       "2023-10-13",
       "Open X-Embodiment",
       "Robot-recorded",
-      "arXiv 2310.08864. An aggregate of other collections; counted as one paper, never added to the others."
+      "arXiv 2310.08864. Not a dataset availability or collection date; current quantities are not backdated."
      ],
      [
       "2023-11-30",
       "Ego-Exo4D",
       "Human observation and motion",
-      "arXiv 2311.18259"
+      "arXiv 2311.18259. Not a dataset availability or collection date; current quantities are not backdated."
      ],
      [
       "2024-03-19",
       "Droid",
       "Robot-recorded",
-      "arXiv 2403.12945. Current version v2, revised 2025-04-22."
+      "arXiv 2403.12945. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-01-14",
+      "Physics IQ evaluation dataset",
+      "Human observation and motion",
+      "arXiv 2501.09038. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-02-28",
+      "ShareRobot",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2502.21257. Not a dataset availability or collection date; current quantities are not backdated."
      ],
      [
       "2025-03-09",
       "AgiBot World (Colosseo)",
       "Robot-recorded",
-      "arXiv 2503.06669. Current version v5, revised 2026-10-20 (Colosseo)."
+      "arXiv 2503.06669. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-03-27",
+      "DexManipNet",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2503.21860. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-04-14",
+      "HUMOTO",
+      "Human observation and motion",
+      "arXiv 2504.10414. Not a dataset availability or collection date; current quantities are not backdated."
      ],
      [
       "2025-05-16",
       "EgoDex",
       "Human observation and motion",
-      "arXiv 2505.11709. Current version v3, revised 2026-03-09."
+      "arXiv 2505.11709. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-07-01",
+      "RoboEval demonstrations",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2507.00435. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-08-30",
+      "Galaxea",
+      "Robot-recorded",
+      "arXiv 2509.00576. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-09-05",
+      "OpenEgo",
+      "Human observation and motion",
+      "arXiv 2509.05513. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-09-22",
+      "Motiontrans",
+      "Human observation and motion",
+      "arXiv 2509.17759. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-10-30",
+      "PHUMA",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2510.26236. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-11-21",
+      "RoboCOIN",
+      "Robot-recorded",
+      "arXiv 2511.17441. README report announcement on 2025-11-24 differs from first arXiv submission."
      ],
      [
       "2025-12-31",
       "RoboMIND 2.0",
       "Mixed origins",
-      "arXiv 2512.24653. Current version v3, revised 2026-02-27."
+      "arXiv 2512.24653. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-02-11",
+      "MolmoSpaces environments and assets",
+      "Environment assets",
+      "arXiv 2602.11337. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-02-12",
+      "LDA -1B",
+      "Mixed origins",
+      "arXiv 2602.12215. Not a dataset availability or collection date; current quantities are not backdated."
      ],
      [
       "2026-03-05",
       "UltraDexGrasp-20M",
       "Synthetic, simulated and retargeted",
-      "arXiv 2603.05312"
+      "arXiv 2603.05312. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-05-07",
+      "HumanNet",
+      "Origin not established or not applicable",
+      "arXiv 2605.06747. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-11-02",
+      "RoboColosseum rollout data",
+      "Robot-recorded",
+      "arXiv 2611.02497. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-11-16",
+      "HubEgo-100K",
+      "Human observation and motion",
+      "arXiv 2611.21938. Not a dataset availability or collection date; current quantities are not backdated."
      ]
     ]
    }
@@ -1815,243 +2232,782 @@
    "id": "benchmarks",
    "label": "Benchmarks",
    "path": "/benchmarks/",
-   "type": "panels",
-   "title": "Physics-IQ scores by the date each was added",
-   "subtitle": "8 source-reported results in 2 comparability groups, each on its own scale. The only groups in the atlas with results added on more than one date.",
-   "meaning": "Date each result was added to the public Physics-IQ leaderboard, as recorded (not the experiment date). Plotted only within one comparability group: same benchmark version, track, metric and configuration.",
-   "unit": "%",
+   "type": "lanes",
+   "title": "When each robotics benchmark first appeared",
+   "subtitle": "21 of 22 benchmarks by their first public date, by evaluation setting: mostly the first arXiv submission of the associated paper. Not the date of any result.",
+   "meaning": "First public date of each benchmark from the master's PUBLIC_DATE columns (server/src/public-dates.js), each in its stated meaning: mostly the first arXiv submission (v1) of the associated paper; PAW by its official announcement; OpenEQA by the year of its CVPR 2024 publication (day not established). Not the date of any leaderboard result or of the current protocol version. Checked by Codex on 25 Nov 2026.",
+   "unit": "benchmarks",
    "precision": "day",
+   "hollowLabel": "Dated by an announcement or a publication year, not arXiv",
    "domain": {
-    "start": "2025-01-01",
-    "end": "2026-11-23"
+    "start": "2019-01-01",
+    "end": "2026-11-25"
    },
-   "panels": [
+   "rows": [
     {
-     "key": "physics-original-i2v-base",
-     "label": "Physics-IQ score, Original set, i2v",
-     "config": "Listed base entry; no BoN suffix",
-     "metric": "Physics-IQ score",
-     "unit": "%",
-     "direction": "higher",
-     "points": [
-      {
-       "id": "res-physics-original-8",
-       "label": "Magi-1",
-       "y": 30.2,
-       "value": "30.2%",
-       "row": "physics-original-i2v-base",
-       "date": "2025-04-21",
-       "precision": "day",
-       "x": "2025-04-21",
-       "reveal": "2025-04-21",
-       "t": "2025-04-21"
-      },
-      {
-       "id": "res-physics-original-5",
-       "label": "Sora2",
-       "y": 42.3,
-       "value": "42.3%",
-       "row": "physics-original-i2v-base",
-       "date": "2026-04-01",
-       "precision": "day",
-       "x": "2026-04-01",
-       "reveal": "2026-04-01",
-       "t": "2026-04-01"
-      },
-      {
-       "id": "res-physics-original-7",
-       "label": "Wan2.2",
-       "y": 38.3,
-       "value": "38.3%",
-       "row": "physics-original-i2v-base",
-       "date": "2026-04-01",
-       "precision": "day",
-       "x": "2026-04-01",
-       "reveal": "2026-04-01",
-       "t": "2026-04-01"
-      },
-      {
-       "id": "res-physics-original-4",
-       "label": "Cosmos3-Super",
-       "y": 43.8,
-       "value": "43.8%",
-       "row": "physics-original-i2v-base",
-       "date": "2026-05-26",
-       "precision": "day",
-       "x": "2026-05-26",
-       "reveal": "2026-05-26",
-       "t": "2026-05-26"
-      },
-      {
-       "id": "res-physics-original-6",
-       "label": "Cosmos3-Nano",
-       "y": 40.2,
-       "value": "40.2%",
-       "row": "physics-original-i2v-base",
-       "date": "2026-05-26",
-       "precision": "day",
-       "x": "2026-05-26",
-       "reveal": "2026-05-26",
-       "t": "2026-05-26"
-      }
-     ],
-     "dates": [
-      "2025-04-21",
-      "2026-04-01",
-      "2026-05-26"
-     ]
+     "key": "real",
+     "label": "Real robot"
     },
     {
-     "key": "physics-original-v2v-base",
-     "label": "Physics-IQ score, Original set, multiframe (v2v)",
-     "config": "Listed base entry; no BoN suffix",
-     "metric": "Physics-IQ score",
-     "unit": "%",
-     "direction": "higher",
-     "points": [
-      {
-       "id": "res-physics-original-2",
-       "label": "Magi-1",
-       "y": 56,
-       "value": "56%",
-       "row": "physics-original-v2v-base",
-       "date": "2025-04-21",
-       "precision": "day",
-       "x": "2025-04-21",
-       "reveal": "2025-04-21",
-       "t": "2025-04-21"
-      },
-      {
-       "id": "res-physics-original-1",
-       "label": "Cosmos3-Super",
-       "y": 59.7,
-       "value": "59.7%",
-       "row": "physics-original-v2v-base",
-       "date": "2026-05-26",
-       "precision": "day",
-       "x": "2026-05-26",
-       "reveal": "2026-05-26",
-       "t": "2026-05-26"
-      },
-      {
-       "id": "res-physics-original-3",
-       "label": "Cosmos3-Nano",
-       "y": 50.2,
-       "value": "50.2%",
-       "row": "physics-original-v2v-base",
-       "date": "2026-05-26",
-       "precision": "day",
-       "x": "2026-05-26",
-       "reveal": "2026-05-26",
-       "t": "2026-05-26"
-      }
-     ],
-     "dates": [
-      "2025-04-21",
-      "2026-05-26"
-     ]
+     "key": "sim",
+     "label": "Simulation"
+    },
+    {
+     "key": "paired",
+     "label": "Simulation with real-robot validation"
+    },
+    {
+     "key": "observation",
+     "label": "Video or observations, no robot actuation"
+    }
+   ],
+   "points": [
+    {
+     "id": "bm-rlbench",
+     "label": "RLBench",
+     "row": "sim",
+     "date": "2019-09-26",
+     "precision": "day",
+     "x": "2019-09-26",
+     "reveal": "2019-09-26",
+     "note": "Associated paper, arXiv v1 1909.12271. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/1909.12271",
+     "external": true,
+     "hollow": false,
+     "t": "2019-09-26"
+    },
+    {
+     "id": "bm-calvin",
+     "label": "CALVIN",
+     "row": "sim",
+     "date": "2021-12-06",
+     "precision": "day",
+     "x": "2021-12-06",
+     "reveal": "2021-12-06",
+     "note": "Associated paper, arXiv v1 2112.03227. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2112.03227",
+     "external": true,
+     "hollow": false,
+     "t": "2021-12-06"
+    },
+    {
+     "id": "bm-arnold",
+     "label": "ARNOLD",
+     "row": "sim",
+     "date": "2023-04-09",
+     "precision": "day",
+     "x": "2023-04-09",
+     "reveal": "2023-04-09",
+     "note": "Associated paper, arXiv v1 2304.04321. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2304.04321",
+     "external": true,
+     "hollow": false,
+     "t": "2023-04-09"
+    },
+    {
+     "id": "bm-libero",
+     "label": "LIBERO",
+     "row": "sim",
+     "date": "2023-06-05",
+     "precision": "day",
+     "x": "2023-06-05",
+     "reveal": "2023-06-05",
+     "note": "Associated paper, arXiv v1 2306.03310. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2306.03310",
+     "external": true,
+     "hollow": false,
+     "t": "2023-06-05"
+    },
+    {
+     "id": "bm-behavior1k",
+     "label": "BEHAVIOR-1K",
+     "row": "sim",
+     "date": "2024-03-14",
+     "precision": "day",
+     "x": "2024-03-14",
+     "reveal": "2024-03-14",
+     "note": "Associated paper, arXiv v1 2403.09227. First arXiv submission of the 2024 paper; BEHAVIOR-1K also has an earlier CoRL 2022/PMLR 2023 publication. Not the first existence of the benchmark.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2403.09227",
+     "external": true,
+     "hollow": false,
+     "t": "2024-03-14"
+    },
+    {
+     "id": "bm-humanoidbench",
+     "label": "HumanoidBench",
+     "row": "sim",
+     "date": "2024-03-15",
+     "precision": "day",
+     "x": "2024-03-15",
+     "reveal": "2024-03-15",
+     "note": "Associated paper, arXiv v1 2403.10506. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2403.10506",
+     "external": true,
+     "hollow": false,
+     "t": "2024-03-15"
+    },
+    {
+     "id": "bm-simpler",
+     "label": "SIMPLER",
+     "row": "paired",
+     "date": "2024-05-09",
+     "precision": "day",
+     "x": "2024-05-09",
+     "reveal": "2024-05-09",
+     "note": "Associated paper, arXiv v1 2405.05941. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2405.05941",
+     "external": true,
+     "hollow": false,
+     "t": "2024-05-09"
+    },
+    {
+     "id": "bm-openeqa",
+     "label": "OpenEQA",
+     "row": "observation",
+     "date": "2024",
+     "precision": "year",
+     "x": "2024-07-02",
+     "reveal": "2024-12-31",
+     "note": "Associated paper published. Conference publication year only. Exact release day not established; no inferred arXiv identifier.",
+     "meaning": "associated_paper_publication",
+     "checked_at": "2026-11-25",
+     "href": "https://openaccess.thecvf.com/content/CVPR2024/papers/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.pdf",
+     "external": true,
+     "hollow": true,
+     "t": "2024-12-31"
+    },
+    {
+     "id": "bm-maniskill3",
+     "label": "ManiSkill3",
+     "row": "sim",
+     "date": "2024-10-01",
+     "precision": "day",
+     "x": "2024-10-01",
+     "reveal": "2024-10-01",
+     "note": "Associated paper, arXiv v1 2410.00425. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2410.00425",
+     "external": true,
+     "hollow": false,
+     "t": "2024-10-01"
+    },
+    {
+     "id": "bm-gensim2",
+     "label": "GenSim2",
+     "row": "paired",
+     "date": "2024-10-04",
+     "precision": "day",
+     "x": "2024-10-04",
+     "reveal": "2024-10-04",
+     "note": "Associated paper, arXiv v1 2410.03645. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2410.03645",
+     "external": true,
+     "hollow": false,
+     "t": "2024-10-04"
+    },
+    {
+     "id": "bm-vlabench",
+     "label": "VLABench",
+     "row": "sim",
+     "date": "2024-12-24",
+     "precision": "day",
+     "x": "2024-12-24",
+     "reveal": "2024-12-24",
+     "note": "Associated paper, arXiv v1 2412.18194. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2412.18194",
+     "external": true,
+     "hollow": false,
+     "t": "2024-12-24"
+    },
+    {
+     "id": "bm-physics-iq",
+     "label": "Physics IQ",
+     "row": "observation",
+     "date": "2025-01-14",
+     "precision": "day",
+     "x": "2025-01-14",
+     "reveal": "2025-01-14",
+     "note": "Associated paper, arXiv v1 2501.09038. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2501.09038",
+     "external": true,
+     "hollow": false,
+     "t": "2025-01-14"
+    },
+    {
+     "id": "bm-roboarena",
+     "label": "RoboArena",
+     "row": "real",
+     "date": "2025-06-22",
+     "precision": "day",
+     "x": "2025-06-22",
+     "reveal": "2025-06-22",
+     "note": "Associated paper, arXiv v1 2506.18123. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2506.18123",
+     "external": true,
+     "hollow": false,
+     "t": "2025-06-22"
+    },
+    {
+     "id": "bm-robotwin2",
+     "label": "RoboTwin 2.0",
+     "row": "paired",
+     "date": "2025-06-22",
+     "precision": "day",
+     "x": "2025-06-22",
+     "reveal": "2025-06-22",
+     "note": "Associated paper, arXiv v1 2506.18088. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2506.18088",
+     "external": true,
+     "hollow": false,
+     "t": "2025-06-22"
+    },
+    {
+     "id": "bm-roboeval",
+     "label": "RoboEval",
+     "row": "sim",
+     "date": "2025-07-01",
+     "precision": "day",
+     "x": "2025-07-01",
+     "reveal": "2025-07-01",
+     "note": "Associated paper, arXiv v1 2507.00435. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2507.00435",
+     "external": true,
+     "hollow": false,
+     "t": "2025-07-01"
+    },
+    {
+     "id": "bm-polaris",
+     "label": "Polaris",
+     "row": "paired",
+     "date": "2025-12-18",
+     "precision": "day",
+     "x": "2025-12-18",
+     "reveal": "2025-12-18",
+     "note": "Associated paper, arXiv v1 2512.16881. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2512.16881",
+     "external": true,
+     "hollow": false,
+     "t": "2025-12-18"
+    },
+    {
+     "id": "bm-realm",
+     "label": "REALM",
+     "row": "paired",
+     "date": "2025-12-22",
+     "precision": "day",
+     "x": "2025-12-22",
+     "reveal": "2025-12-22",
+     "note": "Associated paper, arXiv v1 2512.19562. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2512.19562",
+     "external": true,
+     "hollow": false,
+     "t": "2025-12-22"
+    },
+    {
+     "id": "bm-molmospaces",
+     "label": "MolmoSpaces-Bench",
+     "row": "sim",
+     "date": "2026-02-11",
+     "precision": "day",
+     "x": "2026-02-11",
+     "reveal": "2026-02-11",
+     "note": "Associated paper, arXiv v1 2602.11337. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2602.11337",
+     "external": true,
+     "hollow": false,
+     "t": "2026-02-11"
+    },
+    {
+     "id": "bm-robodojo",
+     "label": "RoboDojo",
+     "row": "paired",
+     "date": "2026-07-05",
+     "precision": "day",
+     "x": "2026-07-05",
+     "reveal": "2026-07-05",
+     "note": "Associated paper, arXiv v1 2607.04434. Official website report label is Jul 6, 2026; arXiv first submission is Jul 5, 2026.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2607.04434",
+     "external": true,
+     "hollow": false,
+     "t": "2026-07-05"
+    },
+    {
+     "id": "bm-paw",
+     "label": "Poke and Wiggle",
+     "row": "real",
+     "date": "2026-09-29",
+     "precision": "day",
+     "x": "2026-09-29",
+     "reveal": "2026-09-29",
+     "note": "Official announcement. Announcement of PAW-GEN-10; not a date assigned to all current leaderboard results.",
+     "meaning": "official_announcement",
+     "checked_at": "2026-11-25",
+     "href": "https://pokeandwiggle.com/blog/introducing-paw-10",
+     "external": true,
+     "hollow": true,
+     "t": "2026-09-29"
+    },
+    {
+     "id": "bm-robocolosseum",
+     "label": "RoboColosseum",
+     "row": "real",
+     "date": "2026-11-02",
+     "precision": "day",
+     "x": "2026-11-02",
+     "reveal": "2026-11-02",
+     "note": "Associated paper, arXiv v1 2611.02497. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2611.02497",
+     "external": true,
+     "hollow": false,
+     "t": "2026-11-02"
     }
    ],
    "final": {
-    "physics-original-i2v-base": {
-     "res-physics-original-8": 30.2,
-     "res-physics-original-5": 42.3,
-     "res-physics-original-7": 38.3,
-     "res-physics-original-4": 43.8,
-     "res-physics-original-6": 40.2
+    "benchmarks": 21,
+    "by_row": {
+     "real": 3,
+     "sim": 10,
+     "paired": 6,
+     "observation": 2
     },
-    "physics-original-v2v-base": {
-     "res-physics-original-2": 56,
-     "res-physics-original-1": 59.7,
-     "res-physics-original-3": 50.2
+    "meanings": {
+     "associated_paper_first_arxiv_submission": 19,
+     "associated_paper_publication": 1,
+     "official_announcement": 1
     }
    },
-   "summary": "Physics-IQ score, Original set, i2v: 5 results on 3 dates, from 30.2% to 43.8%. Physics-IQ score, Original set, multiframe (v2v): 3 results on 2 dates, from 50.2% to 59.7%. Results come from different models; the dates are leaderboard additions, not a measured improvement.",
+   "summary": "21 benchmarks dated from 2019 to 2026: 3 real robot, 10 simulation, 6 simulation with real-robot validation, 2 video or observations, no robot actuation. 10 of them since 2025. A benchmark's date says when it appeared, not how models score on it.",
    "coverage": {
-    "included": 8,
-    "total": 34,
-    "unit": "results",
+    "included": 21,
+    "total": 22,
+    "unit": "benchmarks",
     "excluded": [
      {
-      "reason": "Results in groups with a single date (5 groups, including every PAW group: leaderboard export date)",
-      "count": 26
-     },
-     {
-      "reason": "Benchmarks without a recorded release date (all 22)",
-      "count": 22
+      "reason": "SpatialBench: no checked first public date",
+      "count": 1
      }
     ],
-    "note": "No result is compared across groups, versions, tracks or benchmarks."
+    "note": "Meanings: 19 first arxiv submission (v1) of the associated paper; 1 publication of the associated paper; 1 official announcement or project page. Hollow mark: dated by an announcement or a publication year instead of an arXiv submission."
    },
    "status": "partial",
-   "status_note": "Partial: 8 of 34 results, from the one benchmark with results added on more than one date; benchmark release dates are not recorded.",
+   "status_note": "21 of 22 benchmarks dated; not yet: SpatialBench.",
    "sources": [
     {
-     "label": "Physics-IQ leaderboard (as transcribed)",
-     "url": "https://github.com/google-deepmind/physics-IQ-benchmark"
-    },
-    {
-     "label": "Robotics Evaluation Atlas, snapshot 2026-11-23",
+     "label": "First public dates in the master, checked 2026-11-25",
      "url": "/data/benchmarks/atlas.json"
     }
    ],
    "table": {
     "head": [
-     "Date added",
-     "Model",
-     "Score",
-     "Group"
+     "Date",
+     "Benchmark",
+     "Setting",
+     "What the date is"
     ],
     "rows": [
      [
-      "2025-04-21",
-      "Magi-1",
-      "30.2%",
-      "Physics-IQ score, Original set, i2v"
+      "2019-09-26",
+      "RLBench",
+      "Simulation",
+      "Associated paper, arXiv v1 1909.12271. Date of associated paper, not leaderboard result or current protocol version."
      ],
      [
-      "2026-04-01",
-      "Sora2",
-      "42.3%",
-      "Physics-IQ score, Original set, i2v"
+      "2021-12-06",
+      "CALVIN",
+      "Simulation",
+      "Associated paper, arXiv v1 2112.03227. Date of associated paper, not leaderboard result or current protocol version."
      ],
      [
-      "2026-04-01",
-      "Wan2.2",
-      "38.3%",
-      "Physics-IQ score, Original set, i2v"
+      "2023-04-09",
+      "ARNOLD",
+      "Simulation",
+      "Associated paper, arXiv v1 2304.04321. Date of associated paper, not leaderboard result or current protocol version."
      ],
      [
-      "2026-05-26",
-      "Cosmos3-Super",
-      "43.8%",
-      "Physics-IQ score, Original set, i2v"
+      "2023-06-05",
+      "LIBERO",
+      "Simulation",
+      "Associated paper, arXiv v1 2306.03310. Date of associated paper, not leaderboard result or current protocol version."
      ],
      [
-      "2026-05-26",
-      "Cosmos3-Nano",
-      "40.2%",
-      "Physics-IQ score, Original set, i2v"
+      "2024-03-14",
+      "BEHAVIOR-1K",
+      "Simulation",
+      "Associated paper, arXiv v1 2403.09227. First arXiv submission of the 2024 paper; BEHAVIOR-1K also has an earlier CoRL 2022/PMLR 2023 publication. Not the first existence of the benchmark."
      ],
      [
-      "2025-04-21",
-      "Magi-1",
-      "56%",
-      "Physics-IQ score, Original set, multiframe (v2v)"
+      "2024-03-15",
+      "HumanoidBench",
+      "Simulation",
+      "Associated paper, arXiv v1 2403.10506. Date of associated paper, not leaderboard result or current protocol version."
      ],
      [
-      "2026-05-26",
-      "Cosmos3-Super",
-      "59.7%",
-      "Physics-IQ score, Original set, multiframe (v2v)"
+      "2024-05-09",
+      "SIMPLER",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2405.05941. Date of associated paper, not leaderboard result or current protocol version."
      ],
      [
-      "2026-05-26",
-      "Cosmos3-Nano",
-      "50.2%",
-      "Physics-IQ score, Original set, multiframe (v2v)"
+      "2024",
+      "OpenEQA",
+      "Video or observations, no robot actuation",
+      "Associated paper published. Conference publication year only. Exact release day not established; no inferred arXiv identifier."
+     ],
+     [
+      "2024-10-01",
+      "ManiSkill3",
+      "Simulation",
+      "Associated paper, arXiv v1 2410.00425. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2024-10-04",
+      "GenSim2",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2410.03645. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2024-12-24",
+      "VLABench",
+      "Simulation",
+      "Associated paper, arXiv v1 2412.18194. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-01-14",
+      "Physics IQ",
+      "Video or observations, no robot actuation",
+      "Associated paper, arXiv v1 2501.09038. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-06-22",
+      "RoboArena",
+      "Real robot",
+      "Associated paper, arXiv v1 2506.18123. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-06-22",
+      "RoboTwin 2.0",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2506.18088. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-07-01",
+      "RoboEval",
+      "Simulation",
+      "Associated paper, arXiv v1 2507.00435. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-12-18",
+      "Polaris",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2512.16881. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-12-22",
+      "REALM",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2512.19562. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2026-02-11",
+      "MolmoSpaces-Bench",
+      "Simulation",
+      "Associated paper, arXiv v1 2602.11337. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2026-07-05",
+      "RoboDojo",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2607.04434. Official website report label is Jul 6, 2026; arXiv first submission is Jul 5, 2026."
+     ],
+     [
+      "2026-09-29",
+      "Poke and Wiggle",
+      "Real robot",
+      "Official announcement. Announcement of PAW-GEN-10; not a date assigned to all current leaderboard results."
+     ],
+     [
+      "2026-11-02",
+      "RoboColosseum",
+      "Real robot",
+      "Associated paper, arXiv v1 2611.02497. Date of associated paper, not leaderboard result or current protocol version."
      ]
     ]
+   },
+   "secondary": {
+    "id": "benchmarks-results",
+    "label": "Benchmarks",
+    "path": "/benchmarks/",
+    "type": "panels",
+    "title": "Physics-IQ scores by the date each was added",
+    "subtitle": "8 source-reported results in 2 comparability groups, each on its own scale. The only groups in the atlas with results added on more than one date.",
+    "meaning": "Date each result was added to the public Physics-IQ leaderboard, as recorded (not the experiment date). Plotted only within one comparability group: same benchmark version, track, metric and configuration.",
+    "unit": "%",
+    "precision": "day",
+    "domain": {
+     "start": "2025-01-01",
+     "end": "2026-11-25"
+    },
+    "panels": [
+     {
+      "key": "physics-original-i2v-base",
+      "label": "Physics-IQ score, Original set, i2v",
+      "config": "Listed base entry; no BoN suffix",
+      "metric": "Physics-IQ score",
+      "unit": "%",
+      "direction": "higher",
+      "points": [
+       {
+        "id": "res-physics-original-8",
+        "label": "Magi-1",
+        "y": 30.2,
+        "value": "30.2%",
+        "row": "physics-original-i2v-base",
+        "date": "2025-04-21",
+        "precision": "day",
+        "x": "2025-04-21",
+        "reveal": "2025-04-21",
+        "t": "2025-04-21"
+       },
+       {
+        "id": "res-physics-original-5",
+        "label": "Sora2",
+        "y": 42.3,
+        "value": "42.3%",
+        "row": "physics-original-i2v-base",
+        "date": "2026-04-01",
+        "precision": "day",
+        "x": "2026-04-01",
+        "reveal": "2026-04-01",
+        "t": "2026-04-01"
+       },
+       {
+        "id": "res-physics-original-7",
+        "label": "Wan2.2",
+        "y": 38.3,
+        "value": "38.3%",
+        "row": "physics-original-i2v-base",
+        "date": "2026-04-01",
+        "precision": "day",
+        "x": "2026-04-01",
+        "reveal": "2026-04-01",
+        "t": "2026-04-01"
+       },
+       {
+        "id": "res-physics-original-4",
+        "label": "Cosmos3-Super",
+        "y": 43.8,
+        "value": "43.8%",
+        "row": "physics-original-i2v-base",
+        "date": "2026-05-26",
+        "precision": "day",
+        "x": "2026-05-26",
+        "reveal": "2026-05-26",
+        "t": "2026-05-26"
+       },
+       {
+        "id": "res-physics-original-6",
+        "label": "Cosmos3-Nano",
+        "y": 40.2,
+        "value": "40.2%",
+        "row": "physics-original-i2v-base",
+        "date": "2026-05-26",
+        "precision": "day",
+        "x": "2026-05-26",
+        "reveal": "2026-05-26",
+        "t": "2026-05-26"
+       }
+      ],
+      "dates": [
+       "2025-04-21",
+       "2026-04-01",
+       "2026-05-26"
+      ]
+     },
+     {
+      "key": "physics-original-v2v-base",
+      "label": "Physics-IQ score, Original set, multiframe (v2v)",
+      "config": "Listed base entry; no BoN suffix",
+      "metric": "Physics-IQ score",
+      "unit": "%",
+      "direction": "higher",
+      "points": [
+       {
+        "id": "res-physics-original-2",
+        "label": "Magi-1",
+        "y": 56,
+        "value": "56%",
+        "row": "physics-original-v2v-base",
+        "date": "2025-04-21",
+        "precision": "day",
+        "x": "2025-04-21",
+        "reveal": "2025-04-21",
+        "t": "2025-04-21"
+       },
+       {
+        "id": "res-physics-original-1",
+        "label": "Cosmos3-Super",
+        "y": 59.7,
+        "value": "59.7%",
+        "row": "physics-original-v2v-base",
+        "date": "2026-05-26",
+        "precision": "day",
+        "x": "2026-05-26",
+        "reveal": "2026-05-26",
+        "t": "2026-05-26"
+       },
+       {
+        "id": "res-physics-original-3",
+        "label": "Cosmos3-Nano",
+        "y": 50.2,
+        "value": "50.2%",
+        "row": "physics-original-v2v-base",
+        "date": "2026-05-26",
+        "precision": "day",
+        "x": "2026-05-26",
+        "reveal": "2026-05-26",
+        "t": "2026-05-26"
+       }
+      ],
+      "dates": [
+       "2025-04-21",
+       "2026-05-26"
+      ]
+     }
+    ],
+    "final": {
+     "physics-original-i2v-base": {
+      "res-physics-original-8": 30.2,
+      "res-physics-original-5": 42.3,
+      "res-physics-original-7": 38.3,
+      "res-physics-original-4": 43.8,
+      "res-physics-original-6": 40.2
+     },
+     "physics-original-v2v-base": {
+      "res-physics-original-2": 56,
+      "res-physics-original-1": 59.7,
+      "res-physics-original-3": 50.2
+     }
+    },
+    "summary": "Physics-IQ score, Original set, i2v: 5 results on 3 dates, from 30.2% to 43.8%. Physics-IQ score, Original set, multiframe (v2v): 3 results on 2 dates, from 50.2% to 59.7%. Results come from different models; the dates are leaderboard additions, not a measured improvement.",
+    "coverage": {
+     "included": 8,
+     "total": 34,
+     "unit": "results",
+     "excluded": [
+      {
+       "reason": "Results in groups with a single date (5 groups, including every PAW group: leaderboard export date)",
+       "count": 26
+      }
+     ],
+     "note": "No result is compared across groups, versions, tracks or benchmarks."
+    },
+    "status": "partial",
+    "status_note": "Partial: 8 of 34 results, from the one benchmark with results added on more than one date.",
+    "sources": [
+     {
+      "label": "Physics-IQ leaderboard (as transcribed)",
+      "url": "https://github.com/google-deepmind/physics-IQ-benchmark"
+     },
+     {
+      "label": "Robotics Evaluation Atlas, snapshot 2026-11-25",
+      "url": "/data/benchmarks/atlas.json"
+     }
+    ],
+    "table": {
+     "head": [
+      "Date added",
+      "Model",
+      "Score",
+      "Group"
+     ],
+     "rows": [
+      [
+       "2025-04-21",
+       "Magi-1",
+       "30.2%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2026-04-01",
+       "Sora2",
+       "42.3%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2026-04-01",
+       "Wan2.2",
+       "38.3%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2026-05-26",
+       "Cosmos3-Super",
+       "43.8%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2026-05-26",
+       "Cosmos3-Nano",
+       "40.2%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2025-04-21",
+       "Magi-1",
+       "56%",
+       "Physics-IQ score, Original set, multiframe (v2v)"
+      ],
+      [
+       "2026-05-26",
+       "Cosmos3-Super",
+       "59.7%",
+       "Physics-IQ score, Original set, multiframe (v2v)"
+      ],
+      [
+       "2026-05-26",
+       "Cosmos3-Nano",
+       "50.2%",
+       "Physics-IQ score, Original set, multiframe (v2v)"
+      ]
+     ]
+    }
    }
   },
   {

@@ -121,6 +121,17 @@ for (const c of doc.charts) {
   }
 }
 
+// Benchmarks: the dated results follow the publication chronology as a second chart, readable without JavaScript.
+{
+  const sec = doc.charts.find((c) => c.id === 'benchmarks').secondary;
+  if (sec) {
+    const { page, ctx } = await open('/benchmarks/', { js: false });
+    check(await page.$('#evolution-results .evo-chart[data-chart="benchmarks-results"]'), '/benchmarks/: the dated results chart is missing');
+    check(await readout(page, '#evolution-results') === finalCount(sec), '/benchmarks/: dated results readout is not final');
+    await ctx.close();
+  }
+}
+
 // ---------- home carousel ----------
 const car = '#evo-car';
 const state = (page) => page.$eval(car, (e) => ({ i: +e.getAttribute('data-index'), s: e.getAttribute('data-state') }));

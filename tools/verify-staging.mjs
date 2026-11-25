@@ -112,9 +112,9 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   // Robotics Evaluation Atlas (23 Nov 2026): evidence near the top, the same detail for pointer and keyboard, honest
   // controls, shareable state and no sideways page scroll.
   await page.goto(`${BASE}/benchmarks/`, { waitUntil: 'networkidle' });
-  const at = await page.evaluate(() => ({ js: document.getElementById('atlas')?.classList.contains('js'), results: document.getElementById('results').getBoundingClientRect().top - (document.getElementById('evolution')?.getBoundingClientRect().bottom ?? 0), overflow: document.documentElement.scrollWidth - innerWidth, counts: [...document.querySelectorAll('.atlas-counts dd')].map((d) => d.textContent).join('/') }));
+  const at = await page.evaluate(() => ({ js: document.getElementById('atlas')?.classList.contains('js'), results: document.getElementById('results').getBoundingClientRect().top - ([...document.querySelectorAll('.evo-sec')].at(-1)?.getBoundingClientRect().bottom ?? 0), overflow: document.documentElement.scrollWidth - innerWidth, counts: [...document.querySelectorAll('.atlas-counts dd')].map((d) => d.textContent).join('/') }));
   check(at.js && at.counts === '22/2/34/20', `${label} benchmarks: the atlas starts and shows 22 resources, 2 with results, 34 observations, 20 awaiting (${at.counts})`);
-  check(at.results < (label === 'phone' ? 1100 : 900), `${label} benchmarks: results start near the top of the atlas, after the evolution chart (${Math.round(at.results)}px)`);
+  check(at.results < (label === 'phone' ? 1100 : 900), `${label} benchmarks: results start near the top of the atlas, after the evolution charts (${Math.round(at.results)}px)`);
   check(at.overflow <= 1, `${label} benchmarks: no horizontal page scroll (${at.overflow}px)`);
   await page.focus('#panel-paw .dot.ext');
   await page.keyboard.press('Enter');
