@@ -24,7 +24,7 @@ test('seven charts, in the required order, rotating every 10 seconds, up to date
 
 test('Humanoids: introductions per year equal the dated Release values of the catalogue', () => {
   const c = chart('humanoids');
-  const reviewed = new Set(src.review.humanoids.excluded.map((x) => x.id));
+  const reviewed = new Set([...src.review.humanoids.excluded.map((x) => x.id), ...src.classification.records.filter((x) => x.kind === 'software').map((x) => x.id)]);
   const years = {};
   for (const r of src.humanoids.records) {
     if (reviewed.has(r.id)) continue;
@@ -33,7 +33,10 @@ test('Humanoids: introductions per year equal the dated Release values of the ca
   }
   for (const col of c.columns) assert.equal(col.value, years[col.key] ?? 0, col.key);
   assert.equal(c.columns.reduce((a, x) => a + x.value, 0), Object.values(years).reduce((a, b) => a + b, 0));
-  assert.equal(c.coverage.included + c.coverage.excluded.reduce((a, x) => a + x.count, 0), src.humanoids.records.length);
+  // Software or AI models recorded in the Humanoids tab are outside the robot denominator (tools/catalogue-classification.json).
+  const software = src.classification.records.filter((x) => x.kind === 'software').length;
+  assert.equal(c.coverage.total, src.humanoids.records.length - software);
+  assert.equal(c.coverage.included + c.coverage.excluded.reduce((a, x) => a + x.count, 0), src.humanoids.records.length - software);
   assert.ok(!c.columns.some((x) => x.t > c.domain.end), 'nothing after the snapshot');
 });
 

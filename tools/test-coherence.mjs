@@ -1,0 +1,87 @@
+// Catalogue coherence across surfaces (node --no-warnings --test tools/test-coherence.mjs; in CI). The home page, the
+// category pages, the public previews and the public projection must agree on the same canonical counts, with the
+// legitimate differences labelled (Javier, 25 Nov 2026; reviewed by Codex).
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync, existsSync } from 'node:fs';
+import { publicCases } from '../server/src/public/cases.js';
+
+const root = new URL('../', import.meta.url);
+const read = (p) => readFileSync(new URL(p, root), 'utf8');
+const json = (p) => JSON.parse(read(p));
+const home = read('index.html');
+const index = json('data/preview/index.json');
+const tab = (id) => index.tabs.find((t) => t.id === id);
+const card = (path) => Number(new RegExp(`<li><a href="${path}">[^<]*</a><p>[^<]*</p><span class="meta"><b>(\\d+)</b>`).exec(home)?.[1]);
+
+test('directory tabs: the home card, the category page and the index count the same canonical entries', () => {
+  for (const [id, path] of [['software', '/software/'], ['other-robots', '/other-robots/']]) {
+    const t = tab(id);
+    const entries = t.canonical_entries ?? t.entries_total;
+    assert.equal(card(path), entries, `${id} home card`);
+    assert.match(read(`${path.slice(1)}index.html`), new RegExp(`All ${entries} entries`), `${id} page`);
+    const rows = json(`data/preview/${id}.json`).rows;
+    assert.equal(rows.length, t.entries_total);
+    assert.equal(rows.filter((r) => r.canonical !== false).length, entries);
+    // No header or section row survives as an entry, and no exact repeat (same address and name in one list).
+    assert.ok(!rows.some((r) => /^(SOFTWARE|SIMULATORS?|NAME|URL|DESCRIPTION|EDUBOTS)$/.test(String(r.name).trim()) || /^url$/i.test(String(r.url ?? ''))), `${id}: a header row is listed`);
+    const seen = new Set();
+    for (const r of rows) { const k = `${r.list}|${String(r.url).toLowerCase().replace(/\/$/, '')}|${String(r.name).toLowerCase()}`; assert.ok(!seen.has(k), `${id}: repeated ${r.name}`); seen.add(k); }
+    // Every reconciled row is accounted for: source entries = rows + excluded + merged.
+    const rc = t.reconciliation;
+    assert.equal(rc.source_entries, rc.rows + rc.excluded.length + rc.merged.length, `${id} reconciliation`);
+    assert.equal(rc.rows, rows.length);
+  }
+  assert.ok(json('data/preview/other-robots.json').rows.some((r) => r.name === 'Agile Robots' && /agile-robots\.com/.test(r.url)), 'the corrected Agile Robots identity');
+});
+
+test('Humanoids: robots, uncertain scope and software counted apart; reviewed labels quote their records', () => {
+  const cat = json('data/humanoids-catalogue.json').records;
+  const cls = json('tools/catalogue-classification.json').records;
+  for (const c of cls) {
+    const r = cat.find((x) => x.id === c.id);
+    for (const e of c.excerpts) assert.ok(String(r[e.field]).includes(e.text), `${c.id} ${e.field}`);
+  }
+  const sw = cls.filter((c) => c.kind === 'software').length;
+  const unc = cls.filter((c) => c.kind === 'uncertain').length;
+  assert.equal(card('/humanoids/'), cat.length - sw - unc);
+  assert.match(home, new RegExp(`${unc} of uncertain scope · ${sw} software models listed apart`));
+  assert.match(read('humanoids/index.html'), /Software and AI models in the Humanoids tab/);
+  const data = JSON.parse(/<script type="application\/json" id="data">([\s\S]*?)<\/script>/.exec(home)[1]);
+  assert.equal(data.models.find((m) => m.id === 132).mob, 'Wheeled', 'PokeBot: its record says wheeled and rejects the bipedal form');
+  assert.ok(!JSON.stringify(cat).includes('consider moving'), 'no editor instruction in the public catalogue');
+  const chart = json('data/evolution/charts.json').charts[0];
+  assert.equal(chart.coverage.total, cat.length - sw, 'the chart denominator excludes software models');
+});
+
+test('Deployments: the home projection and the section show the same current status; undated cases apart; countries clean', () => {
+  const proj = json('data/public/projection.json');
+  const cases = publicCases(json('data/preview/deployments.json').rows);
+  const tally = (xs) => xs.reduce((m, k) => ({ ...m, [k]: (m[k] ?? 0) + 1 }), {});
+  assert.deepEqual(tally(proj.cases.map((c) => c.stage)), tally(cases.map((c) => c.status.key)));
+  assert.equal(proj.cases.filter((c) => c.dated === false).length, cases.filter((c) => !c.status.dated).length);
+  assert.equal(json('data/preview/deployments.json').rows.length, proj.totals.records, 'every claim row kept');
+  for (const c of cases) for (const x of c.countries) assert.doesNotMatch(x, /[();]|^multiple$|not disclosed|partner/i, `${c.slug}: "${x}" is not a country`);
+  for (const c of proj.cases) for (const x of c.countries) assert.doesNotMatch(x, /[();]/);
+  const korea = cases.find((c) => c.slug === 'persona-hdhyundai-shipyards');
+  assert.deepEqual(korea.countries, []);
+  assert.ok(korea.country_notes.some((n) => /partner country; deployment site not confirmed/.test(n)), 'the original note is kept');
+  // A tie-break is said next to the status, never hidden.
+  const page = read('deployments/index.html');
+  for (const c of cases.filter((x) => x.status.tie)) assert.match(page, new RegExp(`id="${c.slug}"[\\s\\S]*?the most advanced is shown`), c.slug);
+});
+
+test('old addresses still answer: renamed or merged entries redirect', () => {
+  for (const [file, to] of [['other-robots/agilex-2/index.html', '/other-robots/agile-robots/'], ['companies/hexagon-2/index.html', '/companies/hexagon/'], ['companies/shenzhen-dobot-technology-corp/index.html', '/companies/dobot/']]) {
+    assert.ok(existsSync(new URL(file, root)), file);
+    assert.match(read(file), new RegExp(`is now at <a href="${to}"`), file);
+  }
+});
+
+test('freshness: every category card names its own date and kind; no blanket export date', () => {
+  const fresh = [...home.matchAll(/<span class="meta fresh">([^<]*)<\/span>/g)].map((m) => m[1]);
+  assert.equal(fresh.length, 10);
+  assert.ok(fresh.every((f) => /^(records checked up to|workbook copy of|originals checked) \d{1,2} [A-Z][a-z]{2} \d{4}$/.test(f)), fresh.join(' | '));
+  assert.ok(!/Humanoids free · exported/.test(home));
+  assert.match(home, /<b>12<\/b> external reports \+ 1 Why Humanoid\? analysis/);
+});

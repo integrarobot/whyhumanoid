@@ -67,7 +67,9 @@ expect(meta('property', 'og:description') === meta('name', 'twitter:description'
 expect(/^User-agent: \*\nAllow: \//.test(readFileSync(new URL('robots.txt', root), 'utf8')), 'robots.txt does not allow crawlers');
 expect(errors.length === 0, `script errors: ${errors.join(' | ')}`);
 expect(rows() === manifest.record_count, `rendered rows ${rows()} != catalogue ${manifest.record_count}`);
-expect(text('#h-n') === String(manifest.record_count), `hero total "${text('#h-n')}"`);
+// The hero counts humanoid robot models: catalogue records minus software and uncertain-scope entries (tools/catalogue-classification.json).
+const classified = JSON.parse(readFileSync(new URL('tools/catalogue-classification.json', root), 'utf8')).records;
+expect(text('#h-n') === String(manifest.record_count - classified.length), `hero total "${text('#h-n')}" is not ${manifest.record_count} records minus ${classified.length} classified apart`);
 expect(/complete catalogue is free/i.test(text('#preview-note')), 'notice does not say the catalogue is free');
 const buyLink = document.querySelector('#preview-note a');
 const pageData = JSON.parse(document.getElementById('data').textContent);

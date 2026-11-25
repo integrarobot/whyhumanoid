@@ -115,8 +115,11 @@ test('directory entries: no link stays unresolved; a repeated address in one lis
   const values = fixtureWorkbook();
   values.Software[1][1] = '';
   values.Software[2][1] = 'https://software-3.example.com/';
+  values.Software[2][0] = values.Software[3][0]; // the same name too: an exact repeat
+  values.Software[2][2] = 'A second, different description.';
   // The same address as a world model: a topical membership, not a second entry.
   values.Software[5][5] = 'https://software-5.example.com/';
+  values.Software[5][4] = values.Software[6][0]; // same name and address as software row 7
   const db = createTestDb();
   const result = await runImport(db, values, T0);
   const rows = await rowsOf(db, 'software');
@@ -128,7 +131,8 @@ test('directory entries: no link stays unresolved; a repeated address in one lis
   // Rows 3 and 4 share software-3.example.com: one entry with a stable id, the other name kept.
   assert.equal(second.identity_status, 'resolved');
   assert.equal(second.url, 'https://software-3.example.com/');
-  assert.equal(second.other_names.length, 1, 'the merged row keeps its name as another name');
+  assert.equal(second.description, 'A second, different description.');
+  assert.deepEqual(second.other_descriptions, ['Synthetic software 3'], 'the merged row keeps its different description');
   assert.equal(software.filter((r) => r.url === 'https://software-3.example.com/').length, 1);
   assert.ok(result.reconciliation.software.merged.some((m) => m.sheet_row === 4 && m.into_sheet_row === 3));
   // The world model row keeps its own stable id and points to the software entry; it is not counted as an entry.

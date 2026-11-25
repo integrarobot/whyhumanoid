@@ -20,6 +20,12 @@ export const casePath = (c) => `/deployments/${c.slug}/`;
 export const PAID_CASE = ['site, city, region and environment', 'commercial relationship where documented', 'the full task description and workflow (from and to)', 'integration dependencies', 'the detailed timeline and every source claim', 'metrics with operator, value, unit, period and conditions', 'claim and evidence relations', 'confidence and review notes', 'discrepancies and open questions'];
 
 const statusBadge = (c) => `<span class="st ${esc(c.status.key)}">${esc(c.status.detail)}</span>`;
+// The tie-break, said next to the status (Codex review, 25 Nov 2026): the latest sources disagree, or their dates
+// overlap, and the most advanced of their statuses is shown. Not new evidence of operation.
+export const tieNote = (c) => (!c.status.dated ? 'Every source of this case is undated: its status is the most advanced one recorded, not a current status by date.'
+  : c.status.tie ? `The latest sources disagree (${c.status.latest.map((x) => `${x.date}: ${STATUS_LABELS[x.key].toLowerCase()}`).join('; ')})${c.status.order === 'ambiguous' ? ' and their dates overlap, so their order is not known' : ''}; the most advanced is shown. This is a reading rule, not new evidence.`
+    : c.status.order === 'ambiguous' ? 'The latest sources\' dates overlap (a year or month and a day inside it), so their order is not known; they agree on this status.' : null);
+const countryText = (c) => [...c.countries, ...(c.country_multiple ? ['several countries, not named'] : [])].join(', ') || 'not disclosed or not confirmed';
 const orgHtml = (o, links) => {
   const path = links.company(o.id);
   return `${path ? `<a href="${path}">${esc(o.name)}</a>` : esc(o.name ?? 'Organisation not recorded')} <span class="dim">${esc((ROLE_LABELS[o.role] ?? human(o.role ?? 'organisation')).toLowerCase())}${o.country ? `, ${esc(o.country)}` : ''}</span>`;
@@ -33,14 +39,14 @@ const sourcesHtml = (c) => `<ul class="dc-src">${c.sources.map((s) => `<li>${s.u
 // One case as a card: the public summary in full, with its sources and its review state.
 export function caseCard(c, links, { level = 3 } = {}) {
   const text = [c.organisations.map((o) => o.name).join(' '), robotText(c), c.sectors.map(sectorLabel).join(' '), c.countries.join(' '), c.tasks.join(' ')].join(' ').toLowerCase();
-  return `<li class="dc" id="${esc(c.slug)}" data-status="${esc(c.status.key)}" data-sector="${esc(c.sectors.join('|'))}" data-country="${esc(c.countries.join('|'))}" data-review="${esc(c.review.key ?? '')}" data-text="${esc(text)}">
+  return `<li class="dc" id="${esc(c.slug)}" data-status="${esc(c.status.key)}" data-sector="${esc(c.sectors.join('|'))}" data-country="${esc([...c.countries, ...(c.country_multiple ? ['Multiple countries (not named)'] : []), ...(c.country_unknown && !c.country_multiple ? ['Not disclosed or not confirmed'] : [])].join('|'))}" data-review="${esc(c.review.key ?? '')}" data-text="${esc(text)}">
 <h${level} class="dc-h"><a href="${casePath(c)}">${esc(c.organisations.map((o) => o.name).filter(Boolean).join(' and ') || 'Organisation not recorded')} · ${esc(robotText(c))}</a></h${level}>
-<p class="dc-s">${statusBadge(c)} <span class="dim">as of ${esc(dayText(c.status.as_of))}</span> · <span class="rv rv-${esc(c.review.key ?? 'none')}">${esc(c.review.label)}</span></p>
+<p class="dc-s">${statusBadge(c)} <span class="dim">${c.status.dated ? `as of ${esc(dayText(c.status.as_of))}` : 'source date unknown'}</span> · <span class="rv rv-${esc(c.review.key ?? 'none')}">${esc(c.review.label)}</span></p>${tieNote(c) ? `<p class="dim dc-tie">${esc(tieNote(c))}</p>` : ''}
 <dl class="dc-kv">
 <div><dt>Organisation</dt><dd>${c.organisations.map((o) => orgHtml(o, links)).join('<br>')}</dd></div>
 <div><dt>Robot as recorded</dt><dd>${robotHtml(c, links)}</dd></div>
 <div><dt>Sector</dt><dd>${esc(c.sectors.map(sectorLabel).join(', ') || 'Not recorded')}</dd></div>
-<div><dt>Country</dt><dd>${esc(c.countries.join(', ') || 'Not recorded')}</dd></div>
+<div><dt>Country</dt><dd>${esc(countryText(c))}${c.country_notes.length ? ` <span class="dim">(as recorded: ${esc(c.country_notes.join('; '))})</span>` : ''}</dd></div>
 <div><dt>Task</dt><dd>${esc(c.tasks.join('; '))}</dd></div>
 <div><dt>Evidence dates</dt><dd>${esc(c.first_date === c.last_date ? dayText(c.last_date) : `${dayText(c.first_date)} to ${dayText(c.last_date)}`)} · ${c.records} record${c.records === 1 ? '' : 's'}</dd></div>
 </dl>
@@ -65,7 +71,7 @@ export function renderDeploymentsCategory({ cases, records, links, offer, head, 
   const byStatus = STATUS_KEYS.map((k) => [k, cases.filter((c) => c.status.key === k).length]);
   const byCurrent = STATUS_KEYS.map((k) => [k, datedCases.filter((c) => c.status.key === k).length]);
   const sectors = tally(cases, (c) => c.sectors);
-  const countries = tally(cases, (c) => c.countries);
+  const countries = tally(cases, (c) => [...c.countries, ...(c.country_multiple ? ['Multiple countries (not named)'] : []), ...(c.country_unknown && !c.country_multiple ? ['Not disclosed or not confirmed'] : [])]);
   const reviews = tally(cases, (c) => c.review.key ?? 'none');
   const opt = (v, l, n) => `<option value="${esc(v)}">${esc(l)} (${n})</option>`;
   const REVIEW = Object.fromEntries(cases.map((c) => [c.review.key ?? 'none', c.review.label]));
@@ -102,14 +108,14 @@ ${bars(countries, 'Deployment country', (x) => x, 10)}
 export function renderCasePage(c, links) {
   return `<p class="kicker">Deployment case · ${esc(c.records)} record${c.records === 1 ? '' : 's'}</p>
 <h1>${esc(c.organisations.map((o) => o.name).filter(Boolean).join(' and ') || 'Organisation not recorded')} <em>· ${esc(robotText(c))}</em></h1>
-<p class="lede">${statusBadge(c)} as of ${esc(dayText(c.status.as_of))}. ${esc(c.review.label)}.</p>
+<p class="lede">${statusBadge(c)} ${c.status.dated ? `as of ${esc(dayText(c.status.as_of))}` : '(source date unknown)'}. ${esc(c.review.label)}.</p>${tieNote(c) ? `<p class="caveat">${esc(tieNote(c))}</p>` : ''}
 <p class="caveat">${esc(CASE_CAVEAT)}</p>
 <section><h2>Public summary</h2>
 <dl class="kv">
 <dt>Organisation</dt><dd>${c.organisations.map((o) => orgHtml(o, links)).join('<br>')}</dd>
 <dt>Robot as recorded</dt><dd>${robotHtml(c, links)}${c.robots.some((r) => !r.version) ? '<br><span class="dim">Version not disclosed in the sources where it is missing.</span>' : ''}</dd>
 <dt>Sector</dt><dd>${esc(c.sectors.map(sectorLabel).join(', ') || 'Not recorded')}</dd>
-<dt>Country</dt><dd>${esc(c.countries.join(', ') || 'Not recorded')}</dd>
+<dt>Country</dt><dd>${esc(countryText(c))}${c.country_notes.length ? ` <span class="dim">(as recorded: ${esc(c.country_notes.join('; '))})</span>` : ''}</dd>
 <dt>Task</dt><dd>${esc(c.tasks.join('; '))}</dd>
 <dt>Latest status</dt><dd>${esc(c.status.detail)} (${esc(c.status.label)}), as of ${esc(dayText(c.status.as_of))}</dd>
 <dt>Reported by</dt><dd>${esc(c.review.label)}</dd>

@@ -102,7 +102,7 @@
     "records": 22
    },
    {
-    "key": "Multiple",
+    "key": "Multiple countries (not named)",
     "records": 7
    },
    {
@@ -157,6 +157,7 @@
   {
    "stage": "op",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 1,
     "pilot": 0,
@@ -180,6 +181,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -188,6 +190,7 @@
   {
    "stage": "op",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 2,
     "pilot": 0,
@@ -211,6 +214,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -219,6 +223,7 @@
   {
    "stage": "op",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 2,
     "pilot": 1,
@@ -242,6 +247,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2024
@@ -250,6 +256,7 @@
   {
    "stage": "op",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 1,
     "pilot": 0,
@@ -273,6 +280,7 @@
     "Japan"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -281,6 +289,7 @@
   {
    "stage": "op",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 2,
     "pilot": 0,
@@ -304,6 +313,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2025
@@ -312,6 +322,7 @@
   {
    "stage": "op",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 1,
     "pilot": 0,
@@ -331,10 +342,9 @@
    "robot": null,
    "level": null,
    "sector": "manufacturing",
-   "countries": [
-    "Multiple"
-   ],
+   "countries": [],
    "country_notes": [],
+   "country_multiple": true,
    "years": [
     2026,
     2026
@@ -343,6 +353,7 @@
   {
    "stage": "op",
    "dated": true,
+   "tie": true,
    "status": {
     "op": 3,
     "pilot": 1,
@@ -366,6 +377,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -374,6 +386,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -397,6 +410,7 @@
    "country_notes": [
     "Not disclosed"
    ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -405,6 +419,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -428,6 +443,7 @@
    "country_notes": [
     "Not disclosed"
    ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -436,6 +452,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -459,6 +476,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2026
@@ -467,6 +485,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -490,6 +509,7 @@
     "France"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -498,6 +518,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -521,6 +542,7 @@
    "country_notes": [
     "Not disclosed"
    ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -529,6 +551,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -552,6 +575,7 @@
     "Germany"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -560,6 +584,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -583,6 +608,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -591,6 +617,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": true,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -614,6 +641,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -622,6 +650,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 5,
@@ -645,6 +674,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -653,6 +683,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -676,6 +707,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -684,6 +716,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -707,6 +740,7 @@
     "Germany"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -715,6 +749,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -738,6 +773,7 @@
     "Germany"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -746,6 +782,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -769,6 +806,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -777,6 +815,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -800,6 +839,7 @@
     "Canada"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2023
@@ -808,6 +848,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -831,6 +872,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -839,6 +881,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -862,6 +905,7 @@
    "country_notes": [
     "Not disclosed"
    ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -870,6 +914,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -893,6 +938,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -901,6 +947,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 7,
@@ -924,6 +971,7 @@
     "Germany"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -932,6 +980,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -955,6 +1004,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -963,6 +1013,7 @@
   {
    "stage": "pilot",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -986,11 +1037,13 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1014,6 +1067,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1022,6 +1076,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1045,6 +1100,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1053,6 +1109,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1076,6 +1133,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1084,6 +1142,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1107,6 +1166,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1115,6 +1175,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1138,6 +1199,7 @@
     "Japan"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1146,6 +1208,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": true,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1169,6 +1232,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1177,6 +1241,7 @@
   {
    "stage": "pilot",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1200,11 +1265,13 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1228,6 +1295,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1236,6 +1304,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1259,6 +1328,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1267,6 +1337,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1290,6 +1361,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1298,6 +1370,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 5,
@@ -1321,6 +1394,7 @@
    "country_notes": [
     "Not disclosed"
    ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1329,6 +1403,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -1353,6 +1428,7 @@
     "Hungary"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1361,6 +1437,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -1384,6 +1461,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1392,6 +1470,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1415,6 +1494,7 @@
     "United Kingdom"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1423,6 +1503,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1446,6 +1527,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1454,6 +1536,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1477,6 +1560,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1485,6 +1569,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 7,
@@ -1508,6 +1593,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1516,6 +1602,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1539,6 +1626,7 @@
     "France"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1547,6 +1635,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1570,6 +1659,7 @@
     "France"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2023
@@ -1578,6 +1668,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1601,6 +1692,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1609,6 +1701,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1632,6 +1725,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1640,6 +1734,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 4,
@@ -1663,6 +1758,7 @@
     "Germany"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1671,6 +1767,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1694,6 +1791,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1702,6 +1800,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1725,6 +1824,7 @@
     "Germany"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1733,6 +1833,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1756,6 +1857,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1764,6 +1866,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1787,6 +1890,7 @@
     "Japan"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1795,6 +1899,7 @@
   {
    "stage": "pilot",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1818,6 +1923,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1826,6 +1932,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1849,6 +1956,7 @@
     "Germany"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1857,6 +1965,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1880,6 +1989,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1888,6 +1998,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1911,6 +2022,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1919,6 +2031,7 @@
   {
    "stage": "pilot",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -1942,6 +2055,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2025
@@ -1950,6 +2064,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -1973,6 +2088,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1981,6 +2097,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2004,6 +2121,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -2012,6 +2130,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2035,6 +2154,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2043,6 +2163,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2066,6 +2187,7 @@
    "country_notes": [
     "Not disclosed"
    ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2074,6 +2196,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2097,6 +2220,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -2105,6 +2229,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2130,6 +2255,7 @@
     "South Africa"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2138,6 +2264,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2161,6 +2288,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2023
@@ -2169,6 +2297,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2192,6 +2321,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2200,6 +2330,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2223,6 +2354,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2231,6 +2363,7 @@
   {
    "stage": "unc",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2254,11 +2387,13 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2282,6 +2417,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2022,
     2022
@@ -2290,6 +2426,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2313,6 +2450,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2025
@@ -2321,6 +2459,7 @@
   {
    "stage": "unc",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2344,11 +2483,13 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2372,6 +2513,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2022,
     2022
@@ -2380,6 +2522,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2403,6 +2546,7 @@
     "Singapore"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2411,6 +2555,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2434,6 +2579,7 @@
    "country_notes": [
     "Not disclosed"
    ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2442,6 +2588,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2465,6 +2612,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2473,6 +2621,7 @@
   {
    "stage": "unc",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2496,11 +2645,13 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2524,6 +2675,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2023
@@ -2532,6 +2684,7 @@
   {
    "stage": "unc",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2555,11 +2708,13 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2583,6 +2738,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2591,6 +2747,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2614,6 +2771,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -2622,6 +2780,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2645,6 +2804,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2653,6 +2813,7 @@
   {
    "stage": "unc",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2676,11 +2837,13 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2704,11 +2867,13 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
    "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2732,11 +2897,13 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2760,6 +2927,7 @@
     "Malaysia"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2768,6 +2936,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": true,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2788,10 +2957,10 @@
    "level": "model",
    "sector": "semiconductor_manufacturing",
    "countries": [
-    "Malta",
-    "Multiple"
+    "Malta"
    ],
    "country_notes": [],
+   "country_multiple": true,
    "years": [
     2025,
     2025
@@ -2800,6 +2969,7 @@
   {
    "stage": "unc",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2823,6 +2993,7 @@
    "country_notes": [
     "Not disclosed (North America)"
    ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2831,967 +3002,7 @@
   {
    "stage": "unc",
    "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 0,
-    "unc": 1
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_zhaofeng",
-    "name": "Zhaofeng Mechanical & Electronic (兆丰机电)"
-   },
-   "maker": {
-    "company": "mfr_leju",
-    "name": "Leju"
-   },
-   "robot_recorded": "Leju Kuavo",
-   "robot": 49,
-   "level": "model",
-   "sector": "automotive_components",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_agco",
-    "name": "AGCO"
-   },
-   "maker": {
-    "company": "org_agility_robotics",
-    "name": "Agility Robotics"
-   },
-   "robot_recorded": "Agility Digit",
-   "robot": 6,
-   "level": "family",
-   "sector": "manufacturing",
-   "countries": [
-    "United States"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_aptiv",
-    "name": "Aptiv"
-   },
-   "maker": {
-    "company": "mfr_tarsbot",
-    "name": "TARSBOT"
-   },
-   "robot_recorded": "TARSBOT A-Series",
-   "robot": null,
-   "level": null,
-   "sector": "automotive_components",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_bayer",
-    "name": "Bayer"
-   },
-   "maker": {
-    "company": "mfr_x_humanoid",
-    "name": "X-Humanoid"
-   },
-   "robot_recorded": "X-Humanoid",
-   "robot": null,
-   "level": null,
-   "sector": "manufacturing",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_bosch",
-    "name": "Bosch"
-   },
-   "maker": {
-    "company": "org_humanoid",
-    "name": "Humanoid (The Humanoid)"
-   },
-   "robot_recorded": "Humanoid HMND 01",
-   "robot": 88,
-   "level": "model",
-   "sector": "robot_manufacturing",
-   "countries": [
-    "Germany"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_catalyst_brands",
-    "name": "Catalyst Brands"
-   },
-   "maker": {
-    "company": "org_figure_ai",
-    "name": "Figure AI"
-   },
-   "robot_recorded": "Figure AI Humanoid (model not disclosed)",
-   "robot": null,
-   "level": null,
-   "sector": "retail_logistics",
-   "countries": [
-    "United States"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 2,
-    "unc": 0
-   },
-   "records": 2,
-   "organisation": {
-    "company": "org_china_mobile_hangzhou",
-    "name": "China Mobile (Hangzhou) Information Technology"
-   },
-   "maker": {
-    "company": "mfr_agibot",
-    "name": "AgiBot"
-   },
-   "robot_recorded": "Agibot",
-   "robot": null,
-   "level": null,
-   "sector": "multiple",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_dongfeng_liuzhou",
-    "name": "Dongfeng Liuzhou Motor"
-   },
-   "maker": {
-    "company": "mfr_ubtech",
-    "name": "UBTech"
-   },
-   "robot_recorded": "Ubtech Walker S1",
-   "robot": 91,
-   "level": "model",
-   "sector": "automotive_manufacturing",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_eqt",
-    "name": "EQT"
-   },
-   "maker": {
-    "company": "mfr_1x",
-    "name": "1X"
-   },
-   "robot_recorded": "1X NEO",
-   "robot": 1,
-   "level": "model",
-   "sector": "multiple",
-   "countries": [
-    "Multiple"
-   ],
-   "country_notes": [],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_fangchenggang_robot_centre",
-    "name": "Fangchenggang humanoid robot centre (Guangxi)"
-   },
-   "maker": {
-    "company": "mfr_ubtech",
-    "name": "UBTech"
-   },
-   "robot_recorded": "Ubtech Walker S2",
-   "robot": null,
-   "level": null,
-   "sector": "multiple",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 1,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 2,
-   "organisation": {
-    "company": "org_fulin_precision",
-    "name": "Fulin Precision (富临精工)"
-   },
-   "maker": {
-    "company": "mfr_agibot",
-    "name": "AgiBot"
-   },
-   "robot_recorded": "Agibot A2-W",
-   "robot": null,
-   "level": null,
-   "sector": "automotive_components",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_globalfoundries",
-    "name": "GlobalFoundries"
-   },
-   "maker": {
-    "company": "mfr_boston_dynamics",
-    "name": "Boston Dynamics"
-   },
-   "robot_recorded": "Boston Dynamics Atlas",
-   "robot": 16,
-   "level": "model",
-   "sector": "semiconductor_manufacturing",
-   "countries": [],
-   "country_notes": [
-    "Not disclosed"
-   ],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_globalfoundries",
-    "name": "GlobalFoundries"
-   },
-   "maker": {
-    "company": "mfr_boston_dynamics",
-    "name": "Boston Dynamics"
-   },
-   "robot_recorded": "Boston Dynamics Spot",
-   "robot": null,
-   "level": null,
-   "sector": "semiconductor_manufacturing",
-   "countries": [
-    "United States"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_globalfoundries",
-    "name": "GlobalFoundries"
-   },
-   "maker": {
-    "company": "mfr_boston_dynamics",
-    "name": "Boston Dynamics"
-   },
-   "robot_recorded": "Boston Dynamics Spot",
-   "robot": null,
-   "level": null,
-   "sector": "semiconductor_manufacturing",
-   "countries": [
-    "Germany"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_gxo",
-    "name": "GXO Logistics"
-   },
-   "maker": {
-    "company": "org_agility_robotics",
-    "name": "Agility Robotics"
-   },
-   "robot_recorded": "Agility Robotics Digit",
-   "robot": 6,
-   "level": "family",
-   "sector": "logistics",
-   "countries": [
-    "United States"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_gxo",
-    "name": "GXO Logistics"
-   },
-   "maker": {
-    "company": "org_agility_robotics",
-    "name": "Agility Robotics"
-   },
-   "robot_recorded": "Agility Robotics Digit",
-   "robot": 6,
-   "level": "family",
-   "sector": "logistics",
-   "countries": [
-    "United States"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_gxo",
-    "name": "GXO Logistics"
-   },
-   "maker": {
-    "company": "org_apptronik",
-    "name": "Apptronik"
-   },
-   "robot_recorded": "Apptronik Apollo",
-   "robot": 7,
-   "level": "family",
-   "sector": "logistics",
-   "countries": [],
-   "country_notes": [
-    "Not disclosed"
-   ],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_hd_hyundai",
-    "name": "HD Hyundai"
-   },
-   "maker": {
-    "company": "mfr_persona_inc",
-    "name": "Persona AI"
-   },
-   "robot_recorded": "Persona AI",
-   "robot": null,
-   "level": null,
-   "sector": "shipbuilding",
-   "countries": [],
-   "country_notes": [
-    "South Korea (partner country; deployment site not confirmed)"
-   ],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_jabil",
-    "name": "Jabil"
-   },
-   "maker": {
-    "company": "org_apptronik",
-    "name": "Apptronik"
-   },
-   "robot_recorded": "Apptronik Apollo",
-   "robot": 7,
-   "level": "family",
-   "sector": "manufacturing",
-   "countries": [],
-   "country_notes": [
-    "Not disclosed"
-   ],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_magna",
-    "name": "Magna International"
-   },
-   "maker": {
-    "company": "mfr_sanctuary_ai",
-    "name": "Sanctuary AI"
-   },
-   "robot_recorded": "Sanctuary AI Phoenix",
-   "robot": 80,
-   "level": "model",
-   "sector": "automotive_components",
-   "countries": [],
-   "country_notes": [
-    "Not disclosed"
-   ],
-   "years": [
-    2024,
-    2024
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_mercado_libre",
-    "name": "Mercado Libre"
-   },
-   "maker": {
-    "company": "org_agility_robotics",
-    "name": "Agility Robotics"
-   },
-   "robot_recorded": "Agility Robotics Digit",
-   "robot": 6,
-   "level": "family",
-   "sector": "ecommerce_logistics",
-   "countries": [
-    "United States"
-   ],
-   "country_notes": [],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_mercedes_benz",
-    "name": "Mercedes-Benz"
-   },
-   "maker": {
-    "company": "org_apptronik",
-    "name": "Apptronik"
-   },
-   "robot_recorded": "Apptronik Apollo",
-   "robot": 7,
-   "level": "family",
-   "sector": "automotive_manufacturing",
-   "countries": [],
-   "country_notes": [
-    "Not disclosed"
-   ],
-   "years": [
-    2024,
-    2024
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_ubtech_zigong_customer",
-    "name": "Not disclosed (company in Zigong, Sichuan)"
-   },
-   "maker": {
-    "company": "mfr_ubtech",
-    "name": "UBTech"
-   },
-   "robot_recorded": "Ubtech Walker S2",
-   "robot": null,
-   "level": null,
-   "sector": "not_disclosed",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_ubtech_undisclosed_250m",
-    "name": "Not disclosed (leading domestic enterprise)"
-   },
-   "maker": {
-    "company": "mfr_ubtech",
-    "name": "UBTech"
-   },
-   "robot_recorded": "Ubtech Walker S2",
-   "robot": null,
-   "level": null,
-   "sector": "not_disclosed",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_pilatus",
-    "name": "Pilatus"
-   },
-   "maker": {
-    "company": "mfr_hexagon",
-    "name": "Hexagon Robotics"
-   },
-   "robot_recorded": "Hexagon Robotics AEON",
-   "robot": 40,
-   "level": "model",
-   "sector": "manufacturing",
-   "countries": [],
-   "country_notes": [
-    "Not disclosed"
-   ],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_posco",
-    "name": "POSCO Group (POSCO, POSCO DX, POSCO Investment)"
-   },
-   "maker": {
-    "company": "mfr_persona_inc",
-    "name": "Persona AI"
-   },
-   "robot_recorded": "Persona Inc",
-   "robot": null,
-   "level": null,
-   "sector": "manufacturing",
-   "countries": [
-    "South Korea"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 2,
-    "unc": 0
-   },
-   "records": 2,
-   "organisation": {
-    "company": "org_sap",
-    "name": "SAP SE"
-   },
-   "maker": {
-    "company": "org_humanoid",
-    "name": "Humanoid (The Humanoid)"
-   },
-   "robot_recorded": "Humanoid HMND 01",
-   "robot": 88,
-   "level": "model",
-   "sector": "multiple",
-   "countries": [],
-   "country_notes": [
-    "Not disclosed"
-   ],
-   "years": [
-    2025,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_schaeffler",
-    "name": "Schaeffler Group"
-   },
-   "maker": {
-    "company": "mfr_hexagon",
-    "name": "Hexagon Robotics"
-   },
-   "robot_recorded": "Hexagon Robotics AEON",
-   "robot": 40,
-   "level": "model",
-   "sector": "manufacturing",
-   "countries": [],
-   "country_notes": [
-    "Not disclosed"
-   ],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_schaeffler",
-    "name": "Schaeffler Group"
-   },
-   "maker": {
-    "company": "org_humanoid",
-    "name": "Humanoid (The Humanoid)"
-   },
-   "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
-   "robot": 88,
-   "level": "model",
-   "sector": "manufacturing",
-   "countries": [
-    "Multiple"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_schaeffler",
-    "name": "Schaeffler Group"
-   },
-   "maker": {
-    "company": "mfr_neura",
-    "name": "NEURA Robotics"
-   },
-   "robot_recorded": "NEURA Robotics Humanoid (4NE1 programme)",
-   "robot": 58,
-   "level": "family",
-   "sector": "manufacturing",
-   "countries": [],
-   "country_notes": [
-    "Not disclosed"
-   ],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "mfr_toyota",
-    "name": "Toyota"
-   },
-   "maker": {
-    "company": "mfr_toyota",
-    "name": "Toyota"
-   },
-   "robot_recorded": "Toyota (in-house) ELEY",
-   "robot": null,
-   "level": null,
-   "sector": "automotive_manufacturing",
-   "countries": [
-    "Multiple"
-   ],
-   "country_notes": [],
-   "years": [
-    2026,
-    2026
-   ]
-  },
-  {
-   "stage": "ann",
-   "dated": true,
+   "tie": true,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3815,6 +3026,40 @@
     "Canada"
    ],
    "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "unc",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_zhaofeng",
+    "name": "Zhaofeng Mechanical & Electronic (兆丰机电)"
+   },
+   "maker": {
+    "company": "mfr_leju",
+    "name": "Leju"
+   },
+   "robot_recorded": "Leju Kuavo",
+   "robot": 49,
+   "level": "model",
+   "sector": "automotive_components",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3823,6 +3068,991 @@
   {
    "stage": "ann",
    "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_agco",
+    "name": "AGCO"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "manufacturing",
+   "countries": [
+    "United States"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_aptiv",
+    "name": "Aptiv"
+   },
+   "maker": {
+    "company": "mfr_tarsbot",
+    "name": "TARSBOT"
+   },
+   "robot_recorded": "TARSBOT A-Series",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_components",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_bayer",
+    "name": "Bayer"
+   },
+   "maker": {
+    "company": "mfr_x_humanoid",
+    "name": "X-Humanoid"
+   },
+   "robot_recorded": "X-Humanoid",
+   "robot": null,
+   "level": null,
+   "sector": "manufacturing",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_bosch",
+    "name": "Bosch"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01",
+   "robot": 88,
+   "level": "model",
+   "sector": "robot_manufacturing",
+   "countries": [
+    "Germany"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_catalyst_brands",
+    "name": "Catalyst Brands"
+   },
+   "maker": {
+    "company": "org_figure_ai",
+    "name": "Figure AI"
+   },
+   "robot_recorded": "Figure AI Humanoid (model not disclosed)",
+   "robot": null,
+   "level": null,
+   "sector": "retail_logistics",
+   "countries": [
+    "United States"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 2,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_china_mobile_hangzhou",
+    "name": "China Mobile (Hangzhou) Information Technology"
+   },
+   "maker": {
+    "company": "mfr_agibot",
+    "name": "AgiBot"
+   },
+   "robot_recorded": "Agibot",
+   "robot": null,
+   "level": null,
+   "sector": "multiple",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_dongfeng_liuzhou",
+    "name": "Dongfeng Liuzhou Motor"
+   },
+   "maker": {
+    "company": "mfr_ubtech",
+    "name": "UBTech"
+   },
+   "robot_recorded": "Ubtech Walker S1",
+   "robot": 91,
+   "level": "model",
+   "sector": "automotive_manufacturing",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_eqt",
+    "name": "EQT"
+   },
+   "maker": {
+    "company": "mfr_1x",
+    "name": "1X"
+   },
+   "robot_recorded": "1X NEO",
+   "robot": 1,
+   "level": "model",
+   "sector": "multiple",
+   "countries": [],
+   "country_notes": [],
+   "country_multiple": true,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_fangchenggang_robot_centre",
+    "name": "Fangchenggang humanoid robot centre (Guangxi)"
+   },
+   "maker": {
+    "company": "mfr_ubtech",
+    "name": "UBTech"
+   },
+   "robot_recorded": "Ubtech Walker S2",
+   "robot": null,
+   "level": null,
+   "sector": "multiple",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 1,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_fulin_precision",
+    "name": "Fulin Precision (富临精工)"
+   },
+   "maker": {
+    "company": "mfr_agibot",
+    "name": "AgiBot"
+   },
+   "robot_recorded": "Agibot A2-W",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_components",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_globalfoundries",
+    "name": "GlobalFoundries"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Atlas",
+   "robot": 16,
+   "level": "model",
+   "sector": "semiconductor_manufacturing",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_globalfoundries",
+    "name": "GlobalFoundries"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Spot",
+   "robot": null,
+   "level": null,
+   "sector": "semiconductor_manufacturing",
+   "countries": [
+    "United States"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_globalfoundries",
+    "name": "GlobalFoundries"
+   },
+   "maker": {
+    "company": "mfr_boston_dynamics",
+    "name": "Boston Dynamics"
+   },
+   "robot_recorded": "Boston Dynamics Spot",
+   "robot": null,
+   "level": null,
+   "sector": "semiconductor_manufacturing",
+   "countries": [
+    "Germany"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_gxo",
+    "name": "GXO Logistics"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "logistics",
+   "countries": [
+    "United States"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_gxo",
+    "name": "GXO Logistics"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "logistics",
+   "countries": [
+    "United States"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_gxo",
+    "name": "GXO Logistics"
+   },
+   "maker": {
+    "company": "org_apptronik",
+    "name": "Apptronik"
+   },
+   "robot_recorded": "Apptronik Apollo",
+   "robot": 7,
+   "level": "family",
+   "sector": "logistics",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_hd_hyundai",
+    "name": "HD Hyundai"
+   },
+   "maker": {
+    "company": "mfr_persona_inc",
+    "name": "Persona AI"
+   },
+   "robot_recorded": "Persona AI",
+   "robot": null,
+   "level": null,
+   "sector": "shipbuilding",
+   "countries": [],
+   "country_notes": [
+    "South Korea (partner country; deployment site not confirmed)"
+   ],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_jabil",
+    "name": "Jabil"
+   },
+   "maker": {
+    "company": "org_apptronik",
+    "name": "Apptronik"
+   },
+   "robot_recorded": "Apptronik Apollo",
+   "robot": 7,
+   "level": "family",
+   "sector": "manufacturing",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_magna",
+    "name": "Magna International"
+   },
+   "maker": {
+    "company": "mfr_sanctuary_ai",
+    "name": "Sanctuary AI"
+   },
+   "robot_recorded": "Sanctuary AI Phoenix",
+   "robot": 80,
+   "level": "model",
+   "sector": "automotive_components",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2024,
+    2024
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_mercado_libre",
+    "name": "Mercado Libre"
+   },
+   "maker": {
+    "company": "org_agility_robotics",
+    "name": "Agility Robotics"
+   },
+   "robot_recorded": "Agility Robotics Digit",
+   "robot": 6,
+   "level": "family",
+   "sector": "ecommerce_logistics",
+   "countries": [
+    "United States"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_mercedes_benz",
+    "name": "Mercedes-Benz"
+   },
+   "maker": {
+    "company": "org_apptronik",
+    "name": "Apptronik"
+   },
+   "robot_recorded": "Apptronik Apollo",
+   "robot": 7,
+   "level": "family",
+   "sector": "automotive_manufacturing",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2024,
+    2024
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_ubtech_zigong_customer",
+    "name": "Not disclosed (company in Zigong, Sichuan)"
+   },
+   "maker": {
+    "company": "mfr_ubtech",
+    "name": "UBTech"
+   },
+   "robot_recorded": "Ubtech Walker S2",
+   "robot": null,
+   "level": null,
+   "sector": "not_disclosed",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_ubtech_undisclosed_250m",
+    "name": "Not disclosed (leading domestic enterprise)"
+   },
+   "maker": {
+    "company": "mfr_ubtech",
+    "name": "UBTech"
+   },
+   "robot_recorded": "Ubtech Walker S2",
+   "robot": null,
+   "level": null,
+   "sector": "not_disclosed",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_pilatus",
+    "name": "Pilatus"
+   },
+   "maker": {
+    "company": "mfr_hexagon",
+    "name": "Hexagon Robotics"
+   },
+   "robot_recorded": "Hexagon Robotics AEON",
+   "robot": 40,
+   "level": "model",
+   "sector": "manufacturing",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_posco",
+    "name": "POSCO Group (POSCO, POSCO DX, POSCO Investment)"
+   },
+   "maker": {
+    "company": "mfr_persona_inc",
+    "name": "Persona AI"
+   },
+   "robot_recorded": "Persona Inc",
+   "robot": null,
+   "level": null,
+   "sector": "manufacturing",
+   "countries": [
+    "South Korea"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 2,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_sap",
+    "name": "SAP SE"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01",
+   "robot": 88,
+   "level": "model",
+   "sector": "multiple",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_schaeffler",
+    "name": "Schaeffler Group"
+   },
+   "maker": {
+    "company": "mfr_hexagon",
+    "name": "Hexagon Robotics"
+   },
+   "robot_recorded": "Hexagon Robotics AEON",
+   "robot": 40,
+   "level": "model",
+   "sector": "manufacturing",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_schaeffler",
+    "name": "Schaeffler Group"
+   },
+   "maker": {
+    "company": "org_humanoid",
+    "name": "Humanoid (The Humanoid)"
+   },
+   "robot_recorded": "Humanoid HMND 01 Alpha Wheeled",
+   "robot": 88,
+   "level": "model",
+   "sector": "manufacturing",
+   "countries": [],
+   "country_notes": [],
+   "country_multiple": true,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_schaeffler",
+    "name": "Schaeffler Group"
+   },
+   "maker": {
+    "company": "mfr_neura",
+    "name": "NEURA Robotics"
+   },
+   "robot_recorded": "NEURA Robotics Humanoid (4NE1 programme)",
+   "robot": 58,
+   "level": "family",
+   "sector": "manufacturing",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "mfr_toyota",
+    "name": "Toyota"
+   },
+   "maker": {
+    "company": "mfr_toyota",
+    "name": "Toyota"
+   },
+   "robot_recorded": "Toyota (in-house) ELEY",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_manufacturing",
+   "countries": [],
+   "country_notes": [],
+   "country_multiple": true,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3846,6 +4076,7 @@
     "United States"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3854,6 +4085,7 @@
   {
    "stage": "ann",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3873,10 +4105,9 @@
    "robot": 104,
    "level": "model",
    "sector": "retail",
-   "countries": [
-    "Multiple"
-   ],
+   "countries": [],
    "country_notes": [],
+   "country_multiple": true,
    "years": [
     2026,
     2026
@@ -3885,6 +4116,7 @@
   {
    "stage": "ann",
    "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3908,6 +4140,7 @@
     "China"
    ],
    "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3941,7 +4174,6 @@
      "multiple"
     ],
     "site_countries": [
-     "Multiple",
      "United States"
     ],
     "years": [
@@ -6332,8 +6564,7 @@
      "semiconductor_manufacturing"
     ],
     "site_countries": [
-     "Malta",
-     "Multiple"
+     "Malta"
     ],
     "years": [
      2025,
@@ -7247,8 +7478,7 @@
      "robot_manufacturing"
     ],
     "site_countries": [
-     "Germany",
-     "Multiple"
+     "Germany"
     ],
     "years": [
      2025,
@@ -8188,8 +8418,7 @@
      "retail"
     ],
     "site_countries": [
-     "China",
-     "Multiple"
+     "China"
     ],
     "years": [
      2024,
@@ -8967,8 +9196,7 @@
      "automotive_manufacturing"
     ],
     "site_countries": [
-     "Japan",
-     "Multiple"
+     "Japan"
     ],
     "years": [
      2026,
@@ -9695,7 +9923,6 @@
     ],
     "site_countries": [
      "China",
-     "Multiple",
      "United States"
     ],
     "years": [
@@ -11787,9 +12014,7 @@
     "sectors": [
      "multiple"
     ],
-    "site_countries": [
-     "Multiple"
-    ],
+    "site_countries": [],
     "years": [
      2025,
      2025
@@ -14607,8 +14832,7 @@
      "semiconductor_manufacturing"
     ],
     "site_countries": [
-     "Malta",
-     "Multiple"
+     "Malta"
     ],
     "years": [
      2025,
@@ -15329,9 +15553,7 @@
    "sectors": [
     "multiple"
    ],
-   "site_countries": [
-    "Multiple"
-   ],
+   "site_countries": [],
    "years": [
     2025,
     2025
@@ -16216,8 +16438,7 @@
     "semiconductor_manufacturing"
    ],
    "site_countries": [
-    "Malta",
-    "Multiple"
+    "Malta"
    ],
    "years": [
     2025,
@@ -16470,8 +16691,7 @@
     "robot_manufacturing"
    ],
    "site_countries": [
-    "Germany",
-    "Multiple"
+    "Germany"
    ],
    "years": [
     2025,
@@ -16785,8 +17005,7 @@
     "retail"
    ],
    "site_countries": [
-    "China",
-    "Multiple"
+    "China"
    ],
    "years": [
     2024,

@@ -276,12 +276,12 @@
    "id": "software",
    "title": "Software and world models",
    "description": "Robot foundation models, VLA models, world models and robotics software.",
-   "entries_total": 140,
-   "canonical_entries": 134,
-   "memberships": 6,
-   "source_rows_total": 120,
-   "preview_entries": 140,
-   "preview_source_rows": 120,
+   "entries_total": 141,
+   "canonical_entries": 138,
+   "memberships": 3,
+   "source_rows_total": 121,
+   "preview_entries": 141,
+   "preview_source_rows": 121,
    "fields": [
     "list",
     "name",
@@ -291,6 +291,8 @@
     "canonical",
     "also_listed_as",
     "other_names",
+    "other_descriptions",
+    "other_groups",
     "canonical_list",
     "canonical_name"
    ],
@@ -298,13 +300,13 @@
    "category": "software",
    "public": "all",
    "lists": {
-    "software": 120,
+    "software": 121,
     "world_model": 20
    },
    "reconciliation": {
     "source_entries": 148,
-    "rows": 140,
-    "entries": 134,
+    "rows": 141,
+    "entries": 138,
     "excluded": [
      {
       "sheet_row": 77,
@@ -336,67 +338,40 @@
       "sheet_row": 61,
       "list": "software",
       "name": "Lightwheel",
+      "group": null,
       "into_sheet_row": 35,
       "into_list": "software",
       "into_name": "Lightwheel",
-      "reason": "same address as an earlier entry of the same list: one entry, this name kept as another name"
+      "into_group": null,
+      "description": "identical",
+      "reason": "same address and name as an earlier entry of the same list"
      },
      {
       "sheet_row": 93,
       "list": "software",
       "name": "PyRoki",
+      "group": "Software for Unitree",
       "into_sheet_row": 26,
       "into_list": "software",
       "into_name": "PyRoki",
-      "reason": "same address as an earlier entry of the same list: one entry, this name kept as another name"
+      "into_group": null,
+      "description": "different: kept as another description",
+      "reason": "same address and name as an earlier entry of the same list"
      },
      {
       "sheet_row": 110,
       "list": "software",
       "name": "Latent",
+      "group": "Software for Unitree",
       "into_sheet_row": 72,
       "into_list": "software",
       "into_name": "Latent",
-      "reason": "same address as an earlier entry of the same list: one entry, this name kept as another name"
-     },
-     {
-      "sheet_row": 119,
-      "list": "software",
-      "name": "Reachy",
-      "into_sheet_row": 23,
-      "into_list": "software",
-      "into_name": "Reachy Pollen Robotics",
-      "reason": "same address as an earlier entry of the same list: one entry, this name kept as another name"
+      "into_group": null,
+      "description": "different: kept as another description",
+      "reason": "same address and name as an earlier entry of the same list"
      }
     ],
     "memberships": [
-     {
-      "sheet_row": 5,
-      "list": "world_model",
-      "name": "NVIDIA DreamDojo",
-      "canonical_sheet_row": 80,
-      "canonical_list": "software",
-      "canonical_name": "DreamDojo (NVIDIA)",
-      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
-     },
-     {
-      "sheet_row": 9,
-      "list": "world_model",
-      "name": "NVIDIA DreamZero",
-      "canonical_sheet_row": 62,
-      "canonical_list": "software",
-      "canonical_name": "DreamZero",
-      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
-     },
-     {
-      "sheet_row": 12,
-      "list": "world_model",
-      "name": "Genesis",
-      "canonical_sheet_row": 29,
-      "canonical_list": "software",
-      "canonical_name": "Genesis AI",
-      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
-     },
      {
       "sheet_row": 13,
       "list": "world_model",
@@ -404,7 +379,7 @@
       "canonical_sheet_row": 35,
       "canonical_list": "software",
       "canonical_name": "Lightwheel",
-      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
+      "reason": "same address and name as the software entry: kept as a world model membership with its own id, not a second entry"
      },
      {
       "sheet_row": 16,
@@ -413,7 +388,7 @@
       "canonical_sheet_row": 60,
       "canonical_list": "software",
       "canonical_name": "General Intuition",
-      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
+      "reason": "same address and name as the software entry: kept as a world model membership with its own id, not a second entry"
      },
      {
       "sheet_row": 19,
@@ -422,22 +397,114 @@
       "canonical_sheet_row": 54,
       "canonical_list": "software",
       "canonical_name": "Covariant",
-      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
+      "reason": "same address and name as the software entry: kept as a world model membership with its own id, not a second entry"
      }
     ],
     "review": [
+     {
+      "name": "Reachy",
+      "entries": [
+       {
+        "sheet_row": 23,
+        "list": "software",
+        "name": "Reachy Pollen Robotics",
+        "url": "https://hub.docker.com/r/pollenrobotics/reachy2"
+       },
+       {
+        "sheet_row": 119,
+        "list": "software",
+        "name": "Reachy",
+        "url": "https://hub.docker.com/r/pollenrobotics/reachy2"
+       }
+      ],
+      "reason": "same address under another name: kept as separate entries until an identity decision says they are one"
+     },
+     {
+      "name": "NVIDIA DreamDojo",
+      "entries": [
+       {
+        "sheet_row": 80,
+        "list": "software",
+        "name": "DreamDojo (NVIDIA)",
+        "url": "https://dreamdojo-world.github.io/"
+       },
+       {
+        "sheet_row": 5,
+        "list": "world_model",
+        "name": "NVIDIA DreamDojo",
+        "url": "https://dreamdojo-world.github.io/"
+       }
+      ],
+      "reason": "same address under another name: kept as separate entries until an identity decision says they are one"
+     },
+     {
+      "name": "NVIDIA DreamZero",
+      "entries": [
+       {
+        "sheet_row": 62,
+        "list": "software",
+        "name": "DreamZero",
+        "url": "https://dreamzero0.github.io/"
+       },
+       {
+        "sheet_row": 9,
+        "list": "world_model",
+        "name": "NVIDIA DreamZero",
+        "url": "https://dreamzero0.github.io/"
+       }
+      ],
+      "reason": "same address under another name: kept as separate entries until an identity decision says they are one"
+     },
+     {
+      "name": "Genesis",
+      "entries": [
+       {
+        "sheet_row": 29,
+        "list": "software",
+        "name": "Genesis AI",
+        "url": "https://genesis-ai.company/"
+       },
+       {
+        "sheet_row": 12,
+        "list": "world_model",
+        "name": "Genesis",
+        "url": "https://genesis-ai.company/"
+       }
+      ],
+      "reason": "same address under another name: kept as separate entries until an identity decision says they are one"
+     },
      {
       "name": "NVIDIA Cosmos",
       "entries": [
        {
         "sheet_row": 4,
         "list": "software",
+        "name": "NVIDIA Cosmos",
         "url": "https://github.com/NVIDIA/Cosmos"
        },
        {
         "sheet_row": 4,
         "list": "world_model",
+        "name": "NVIDIA Cosmos",
         "url": "https://github.com/nvidia-cosmos"
+       }
+      ],
+      "reason": "same name, different addresses: kept as separate entries"
+     },
+     {
+      "name": "Genesis",
+      "entries": [
+       {
+        "sheet_row": 12,
+        "list": "world_model",
+        "name": "Genesis",
+        "url": "https://genesis-ai.company/"
+       },
+       {
+        "sheet_row": 13,
+        "list": "software",
+        "name": "Genesis",
+        "url": "https://genesis-embodied-ai.github.io/"
        }
       ],
       "reason": "same name, different addresses: kept as separate entries"
@@ -448,11 +515,13 @@
        {
         "sheet_row": 42,
         "list": "software",
+        "name": "GentleHumanoid",
         "url": "https://arxiv.org/abs/2511.04679"
        },
        {
         "sheet_row": 98,
         "list": "software",
+        "name": "GentleHumanoid",
         "url": "https://gentle-humanoid.axell.top/"
        }
       ],
@@ -607,7 +676,9 @@
     "group",
     "canonical",
     "also_listed_as",
-    "other_names"
+    "other_names",
+    "other_descriptions",
+    "other_groups"
    ],
    "access": "free",
    "category": "other-robots",
@@ -630,11 +701,13 @@
        {
         "sheet_row": 230,
         "list": "edubot",
+        "name": "ProtoBot",
         "url": "https://robotheca.org/robots/protobot-2"
        },
        {
         "sheet_row": 288,
         "list": "edubot",
+        "name": "ProtoBot",
         "url": "https://robotheca.org/robots/protobot"
        }
       ],

@@ -13,6 +13,18 @@ export const STRIP_RULES = [
   ['internal_marker', /\b(?:internal only|confidential|do not publish|not for publication|uso interno|confidencial|no publicar)\b/i],
 ];
 export const FLAG_RULES = [['instruction_wording', /^(?:do not|don't|never)\b/i]];
+// Within a clause, a sentence that is an editor's instruction about the catalogue itself ("NOT a humanoid in the
+// bipedal sense: consider moving to Other Robots", 25 Nov 2026) is removed; the factual sentences around it stay.
+export const SENTENCE_STRIP_RULES = [['internal_editor_task', /\bconsider (?:moving|reclassifying|relabell?ing)\b/i]];
+function stripSentences(clause, stripped) {
+  const sentences = clause.split(/(?<=\.)\s+/);
+  const kept = sentences.filter((sentence) => {
+    const hit = SENTENCE_STRIP_RULES.find(([, re]) => re.test(sentence));
+    if (hit) stripped.push({ reason: hit[0], text: sentence });
+    return !hit;
+  });
+  return kept.length === sentences.length ? clause : kept.join(' ');
+}
 
 // Splits on ';' outside parentheses so "checked (A; B)" stays one clause.
 export function splitClauses(text) {
@@ -69,7 +81,10 @@ export function cleanValue(value, { field = '', mode = 'full', editorial = {} } 
         .split(' | ')
         .map((part) =>
           splitClauses(part)
-            .map((clause) => {
+            .map((whole) => {
+              const clause = stripSentences(whole, stripped);
+              if (clause !== whole) changed = true;
+              if (!clause) return null;
               const hit = STRIP_RULES.find(([, re]) => re.test(clause));
               if (hit) {
                 stripped.push({ reason: hit[0], text: clause });

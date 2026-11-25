@@ -18,7 +18,7 @@
    "path": "/humanoids/",
    "type": "columns",
    "title": "Humanoid models introduced per year",
-   "subtitle": "Models in the free catalogue by the year of their recorded release or unveiling: 40 of 134 robots are dated.",
+   "subtitle": "Models in the free catalogue by the year of their recorded release or unveiling: 40 of 132 robots are dated.",
    "meaning": "Release or unveiling date as recorded in the free Humanoids catalogue: when a model was introduced, not sales, deliveries or fleet size.",
    "unit": "models",
    "precision": "year",
@@ -183,16 +183,16 @@
    "summary": "40 dated introductions from 2016 to 2026; 2025 has the most (15). 2026 counts to 2026-11-17.",
    "coverage": {
     "included": 40,
-    "total": 134,
+    "total": 132,
     "unit": "robots",
     "excluded": [
      {
       "reason": "Release not disclosed or not verified",
-      "count": 71
+      "count": 70
      },
      {
       "reason": "Release field empty",
-      "count": 20
+      "count": 19
      },
      {
       "reason": "Apptronik Apollo 2: The dated year belongs to the original Apollo; the Apollo 2 date is unverified.",
@@ -207,10 +207,10 @@
       "count": 1
      }
     ],
-    "note": "3 of the dated models have a day-precise unveiling; the rest a year."
+    "note": "3 of the dated models have a day-precise unveiling; the rest a year. 2 software or AI models recorded in the Humanoids tab (Skild Skild Brain / S1 (software), Nature Will Natura-1 (AI model)) are not robots and are outside this count; 2 entries of uncertain scope (Orbit Space platform (model unpublished), PokeBot Home robot (model name not disclosed)) are inside it, undated."
    },
    "status": "partial",
-   "status_note": "Partial: 94 of 134 catalogue robots have no usable release date.",
+   "status_note": "Partial: 92 of 132 catalogue robots have no usable release date.",
    "sources": [
     {
      "label": "Free Humanoids catalogue, snapshot 2026-11-17",
@@ -598,7 +598,7 @@
       "count": 20
      }
     ],
-    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. With every record, dated or not, the public adoption view counts 122 cases: 8 in operation, 51 pilot or trial, 31 unconfirmed, 32 announced. The difference is the undated evidence, kept apart and never assigned a date."
+    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead (server/src/public/status.js), so their totals differ: currently 6 in operation, 48 pilot or trial, 24 unconfirmed, 33 announced among the 111 dated cases. Undated evidence is kept apart and never assigned a date."
    },
    "status": "partial",
    "status_note": "111 of 122 cases placed in time; 11 cases with no dated record stay in the date-unknown bar, outside the time series.",

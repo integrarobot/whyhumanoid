@@ -1,0 +1,61 @@
+{
+  "note": "Reviewed classification of Humanoids catalogue records whose own public record says they are not a physical humanoid robot, or not a confirmed humanoid model (Javier, 25 Nov 2026: catalogue coherence). Each entry quotes a literal excerpt of the record; tools/build-pages.mjs and tools/build-site.mjs fail if it no longer matches. The record, its page and its address stay: the label says what it is. Moving the row out of the Humanoids tab is a master decision for Codex and Javier (proposed in the closeout), never done here.",
+  "records": [
+    {
+      "id": 82,
+      "kind": "software",
+      "label": "Software, not a robot",
+      "excerpts": [
+        {
+          "field": "Robot",
+          "text": "(software)"
+        },
+        {
+          "field": "Model checked",
+          "text": "Control model; not a single proprietary physical robot"
+        }
+      ]
+    },
+    {
+      "id": 130,
+      "kind": "software",
+      "label": "AI model, not a robot",
+      "excerpts": [
+        {
+          "field": "Robot",
+          "text": "(AI model)"
+        },
+        {
+          "field": "Platform / mobility",
+          "text": "Software / model for the physical world"
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "kind": "uncertain",
+      "label": "Humanoid not confirmed",
+      "excerpts": [
+        {
+          "field": "Model checked",
+          "text": "specific humanoid unconfirmed"
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "kind": "uncertain",
+      "label": "Planned platform, model not named",
+      "excerpts": [
+        {
+          "field": "Robot",
+          "text": "model name not disclosed"
+        },
+        {
+          "field": "Model checked",
+          "text": "no named robot model or spec sheet published"
+        }
+      ]
+    }
+  ]
+}

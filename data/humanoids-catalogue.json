@@ -4780,7 +4780,7 @@
    "Voice": "Natural-language instructions via RoboAPI (vision-language input); voice not disclosed",
    "Clothed?": "Not disclosed",
    "Model checked": "Company-level profile: no named robot model or spec sheet published as of 2026-10-30",
-   "Platform / mobility": "Wheeled base with two arms, according to founder interview (QQ News, 2026-09-03); company rejects bipedal humanoid form. NOT a humanoid in the bipedal sense: consider moving to Other Robots",
+   "Platform / mobility": "Wheeled base with two arms, according to founder interview (QQ News, 2026-09-03); company rejects bipedal humanoid form.",
    "DoF / grippers": "Dual-arm manipulation focus; founder says no 21-DoF all-purpose design. DoF and end effectors not disclosed",
    "Sensors / compute": "Not disclosed. In-house data capture: exoskeleton, UMI-style gloves (5-6 iterations) and first-person video",
    "Battery / charging": "Not disclosed",

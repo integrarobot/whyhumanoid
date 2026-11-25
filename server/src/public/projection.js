@@ -87,7 +87,7 @@ function aggregates(items) {
     min_cell: MIN_CELL,
     by_status: status,
     by_sector: tally(items.map(({ r }) => (has(r.sector) ? String(r.sector).trim() : null))),
-    by_country: tally(items.flatMap(({ r }) => { const c = deploymentCountries(r.country).countries; return c.length ? c : [null]; })),
+    by_country: tally(items.flatMap(({ r }) => { const c = deploymentCountries(r.country); return c.countries.length ? c.countries : c.multiple ? ['Multiple countries (not named)'] : [null]; })),
     by_year: tally(items.map(({ r }) => yearOf(r))).sort((a, b) => (a.key === 'other') - (b.key === 'other') || String(a.key).localeCompare(String(b.key))),
   };
 }
@@ -148,6 +148,7 @@ function deploymentCases(items, byId, nameOf) {
     return {
       stage,
       dated: current.dated,
+      tie: current.tie,
       status,
       records: xs.length,
       organisation: { company: byId.get(first.g.operator)?.id ?? null, name: nameOf(first.g.operator, first.r.organization_name) },
@@ -158,6 +159,7 @@ function deploymentCases(items, byId, nameOf) {
       sector: mostCommon(xs.map(({ r }) => r.sector)),
       countries: uniq(xs.flatMap(({ r }) => deploymentCountries(r.country).countries)),
       country_notes: [...new Set(xs.flatMap(({ r }) => deploymentCountries(r.country).notes))], // kept as written, "Not disclosed" included
+      country_multiple: xs.some(({ r }) => deploymentCountries(r.country).multiple),
       years: span(xs.map(({ r }) => yearOf(r))),
     };
   }).sort((a, b) => CASE_RANK[a.stage] - CASE_RANK[b.stage] || String(a.organisation.name).localeCompare(String(b.organisation.name)) || String(a.robot_recorded).localeCompare(String(b.robot_recorded)));
@@ -221,5 +223,5 @@ export const ALLOWED_KEYS = new Set([
   'reference_url', 'reviewed_at', 'as_maker', 'as_organisation', 'status', 'sectors', 'site_countries', 'years',
   'counterparts', 'company', 'robot_recorded', 'robot', 'level', 'model_line_only', ...STATUS_KEYS,
   'aggregates', 'min_cell', 'by_status', 'by_sector', 'by_country', 'by_year', 'key', 'evidence',
-  'cases', 'stage', 'dated', 'country_notes', 'organisation', 'maker', 'sector',
+  'cases', 'stage', 'dated', 'tie', 'country_notes', 'country_multiple', 'organisation', 'maker', 'sector',
 ]);

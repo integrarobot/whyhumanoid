@@ -394,7 +394,8 @@ function robotSummary(rb) {
 function robotHead(rb, m, summary) {
   const p = rb.present;
   const by = m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab);
-  const text = `<p class="kicker">Humanoid robot · catalogue record ${rb.id}</p>
+  const cls = classificationOf(rb);
+  const text = `<p class="kicker">${cls ? `${esc(cls.label)} · listed in the Humanoids tab` : 'Humanoid robot'} · catalogue record ${rb.id}</p>${cls ? `\n<p class="note"><b>${esc(cls.label)}.</b> Its own record says so: ${cls.excerpts.map((e) => `${esc(e.field)}: “${esc(e.text)}”`).join('; ')}. It stays in the catalogue and at this address while its place in the workbook is reviewed; ${cls.kind === 'software' ? 'it is not counted as a humanoid robot' : 'it is not counted as a confirmed humanoid robot model'}.</p>` : ''}
 <h1>${esc(rb.name)} <em>by ${by}</em></h1>
 <p class="lede">${esc(summary)}</p>${p?.order ? orderLink(p.order, rb) : ''}`;
   if (!p?.image) return text;
@@ -582,11 +583,15 @@ const counted = (meta) => { const n = meta.canonical_entries ?? meta.entries_tot
 
 function humanoidsCategory(model) {
   const c = CATEGORIES_BY_ID.get('humanoids');
-  const rows = [...model.robots].sort((a, b) => a.lab.localeCompare(b.lab) || a.name.localeCompare(b.name)).map((rb) =>
-    `<tr><td><a href="${rb.path}">${esc(rb.name)}</a></td><td>${rb.maker ? `<a href="${rb.maker.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</td><td>${esc(rb.facet.c.join(' / ') || '')}</td><td>${esc(rb.record['Platform / mobility'] || '')}</td></tr>`).join('');
+  const sorted = [...model.robots].sort((a, b) => a.lab.localeCompare(b.lab) || a.name.localeCompare(b.name));
+  const software = sorted.filter((rb) => classificationOf(rb)?.kind === 'software');
+  const uncertain = sorted.filter((rb) => classificationOf(rb)?.kind === 'uncertain');
+  const rows = sorted.filter((rb) => classificationOf(rb)?.kind !== 'software').map((rb) =>
+    `<tr><td><a href="${rb.path}">${esc(rb.name)}</a>${classificationOf(rb) ? ` <span class="dim">(${esc(classificationOf(rb).label.toLowerCase())})</span>` : ''}</td><td>${rb.maker ? `<a href="${rb.maker.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</td><td>${esc(rb.facet.c.join(' / ') || '')}</td><td>${esc(rb.record['Platform / mobility'] || '')}</td></tr>`).join('');
   const body = `${categoryHead(c, model)}
-<p>All ${model.robots.length} robots in the catalogue are free, each with its own page: specifications, maker, funding, sources and a summary of its deployment records. The <a href="/#humanoids">interactive catalogue</a> adds search, filters and charts.</p>
+<p>All ${model.robots.length} entries of the catalogue are free, each with its own page: specifications, maker, funding, sources and a summary of its deployment records. ${model.robots.length - software.length - uncertain.length} are humanoid robot models; ${uncertain.length} are listed with an uncertain scope (${uncertain.map((rb) => `${esc(rb.name)} by ${esc(rb.lab)}: ${esc(classificationOf(rb).label.toLowerCase())}`).join('; ')}); ${software.length} are software or AI models recorded in the Humanoids tab, listed apart below and not counted as robots. The <a href="/#humanoids">interactive catalogue</a> adds search, filters and charts.</p>
 <div class="scroll"><table><thead><tr><th scope="col">Robot</th><th scope="col">Maker</th><th scope="col">Company country</th><th scope="col">Platform</th></tr></thead><tbody>${rows}</tbody></table></div>
+<section><h2>Software and AI models in the Humanoids tab <span class="dim">(${software.length})</span></h2><p>Recorded in the Humanoids tab of the workbook but, by their own records, software or AI models rather than robots. Their pages and addresses stay; they are not counted as humanoid robots.</p><div class="scroll"><table><thead><tr><th scope="col">Entry</th><th scope="col">Maker</th><th scope="col">What its record says</th></tr></thead><tbody>${software.map((rb) => `<tr><td><a href="${rb.path}">${esc(rb.name)}</a></td><td>${rb.maker ? `<a href="${rb.maker.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</td><td>${classificationOf(rb).excerpts.map((e) => `${esc(e.field)}: “${esc(e.text)}”`).join('; ')}</td></tr>`).join('')}</tbody></table></div></section>
 <p class="meta">Free catalogue snapshot ${esc(model.snapshot)}.</p>`;
   return catPage(c, model, body, `All ${model.robots.length} humanoid robots in the free Why Humanoid? catalogue, each with specifications, maker, funding, sources and a deployment summary.`);
 }
@@ -663,13 +668,22 @@ function directoryCategory(id, datasetId, model, { lists = null, intro = '', com
   const c = CATEGORIES_BY_ID.get(id);
   const { meta, rows } = model.directory(datasetId);
   const company = (r) => (companyLinks ? model.companies.find((x) => x.integrator && x.integrator._row === r._row && x.integrator.name === r.name) : null);
-  const cols = [['Name', (r) => { const co = company(r); return co ? `<a href="${co.path}">${esc(r.name)}</a>` : nameLink(r); }], ['Description as recorded', descr], ['Link', (r) => (nz(r.url) ? ext(r.url) : '<span class="na">Not recorded</span>')]];
+  // Canonical directory entries (server/src/catalogue/directory.js): other names, other descriptions, the group and the
+  // other lists an entry also belongs to are shown with it; a membership row points to its canonical entry.
+  const extra = (r) => [
+    r.group ? `<span class="dim">Group: ${esc(r.group)}</span>` : '',
+    r.other_groups?.length ? `<span class="dim">Also under: ${esc(r.other_groups.join(', '))}</span>` : '',
+    r.other_names?.length ? `<span class="dim">Also recorded as: ${esc(r.other_names.join(', '))}</span>` : '',
+    r.also_listed_as?.length ? `<span class="dim">Also listed as: ${esc(r.also_listed_as.map((l) => l.replace(/_/g, ' ')).join(', '))}</span>` : '',
+    r.canonical === false ? `<span class="dim">Same entry as “${esc(r.canonical_name)}” (${esc(String(r.canonical_list).replace(/_/g, ' '))}): listed here, counted once</span>` : '',
+  ].filter(Boolean).join('<br>');
+  const cols = [['Name', (r) => { const co = company(r); const x = extra(r); return `${co ? `<a href="${co.path}">${esc(r.name)}</a>` : nameLink(r)}${x ? `<br>${x}` : ''}`; }], ['Description as recorded', (r) => `${descr(r)}${r.other_descriptions?.length ? r.other_descriptions.map((d) => `<br><span class="dim">Also described as: ${text(d)}</span>`).join('') : ''}`], ['Link', (r) => (nz(r.url) ? ext(r.url) : '<span class="na">Not recorded</span>')]];
   const sections = (lists ?? [[null, null]]).map(([list, label]) => {
     const sel = list ? rows.filter((r) => r.list === list) : rows;
     return `<section>${label ? `<h2>${esc(label)} <span class="dim">(${sel.length})</span></h2>` : ''}${dirTable(sel, cols)}</section>`;
   }).join('');
   const body = `${categoryHead(c, model)}
-<p>${intro}All ${counted(meta)}, free.</p>
+<p>${intro}All ${counted(meta)}, free.${meta.memberships ? ` ${meta.memberships} of the listed rows are the same entry in a second list (counted once).` : ''}${meta.reconciliation ? ` From ${meta.reconciliation.source_entries} rows of the workbook tab: ${meta.reconciliation.excluded.length} header or section rows are not entries and ${meta.reconciliation.merged.length} exact repeats are merged; ${meta.reconciliation.review.length} pairs with the same name or address are kept apart until reviewed.` : ''}</p>
 ${sections}
 <p class="meta">Snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}. Entries as recorded, with their links.</p>`;
   return catPage(c, model, body, `${c.summary} ${counted(meta)}, free.`);
@@ -770,6 +784,15 @@ function otherRobotPage(r, model) {
 // Research Conclusions Atlas (Javier, 24 Nov 2026): the reports, their findings and the coverage matrix, from the public
 // snapshot data/reports/atlas.json (tools/export-reports.mjs, validated against the master and the originals). Every
 // report keeps its address; its page id is the key of the permanent-address registry.
+// Catalogue records that are not a physical humanoid robot by their own record (tools/catalogue-classification.json,
+// 25 Nov 2026): labelled where they appear, page and address kept. Every quoted excerpt must still be in the record.
+const CLASSIFICATION = new Map(read('tools/catalogue-classification.json').records.map((c) => [c.id, c]));
+function classificationOf(rb) {
+  const c = CLASSIFICATION.get(rb.id);
+  if (!c) return null;
+  for (const e of c.excerpts) if (!String(rb.record[e.field] ?? '').includes(e.text)) throw new Error(`tools/catalogue-classification.json: record ${rb.id} field "${e.field}" no longer contains "${e.text}"`);
+  return c;
+}
 const REPORTS_ATLAS = read('data/reports/atlas.json');
 const REPORTS = REPORTS_ATLAS.reports;
 export const reportPath = (r) => `/reports/${r.slug}/`;
@@ -853,7 +876,7 @@ function methodPage(model) {
 <section><h2>Robots</h2><p>The catalogue holds ${model.robots.length} humanoid robots with their specifications, company and market fields, links and the date their sources were last checked. All of it is free. A value the sources do not give is shown as not published or not disclosed, never estimated.</p></section>
 <section><h2>Deployment records</h2><p>A deployment record is one claim from one source about an organisation, a robot and a task. One deployment can have several records: an announcement, a pilot, a later report. Each record keeps who made the claim and when, its status as recorded, a verification label and an evidence level.</p>
 ${kv([['In operation', 'The source says the robot is working in operation.'], ['Pilot or trial', 'The source describes a pilot, trial or test.'], ['Announced', 'Planned or agreed, not evidence of work.'], ['Unconfirmed', 'Claimed by a vendor, or unresolved.']])}
-<p>Verification labels say who reported the claim, as recorded: customer confirmed, partner reported, vendor reported, media reported or unresolved. The evidence level is a code from E0 to E5, shown as recorded; its definitions are not published.</p></section>
+<p>Verification labels say who reported the claim, as recorded: customer confirmed, partner reported, vendor reported, media reported or unresolved. The evidence level is a code from E0 to E5, shown as recorded. The research workbook does not define these codes, so Why Humanoid? does not explain or rank them: what each level means is unknown until its definitions are documented.</p></section>
 <section><h2>Selected evidence</h2><p>Each robot and company page shows one of its records with its site, task, status, metric, evidence level, verification label and source. The record is chosen by a fixed rule among those with a source link and a verification other than unresolved: the most advanced status as recorded (in operation, then pilot or trial, then a vendor's claim of operation, then announced), then a primary source (customer, maker or partner) before the press, then customer confirmation, then the latest publication, then a record with a metric. The claim text, notes and the other records stay with the Deployments subscription.</p></section>
 <section><h2>Robots, companies and records</h2><p>A record is linked to a catalogue robot only when it names that model or its model line, never because it names the maker alone. When it names the model line, the page says the record may concern another version. Companies are identified by the organisation id of the sheet or by the maker's name; no corporate data is added.</p></section>
 <section><h2>Updates</h2><p>The database is updated every week from the Integrarobot newsletter, checked against primary sources. Each page shows the snapshot date of its data.</p></section>

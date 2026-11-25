@@ -64,8 +64,10 @@
         "source_hash": "5b4d9f22486cff71"
       },
       "mob": {
-        "value": "Bipedal or wheeled",
-        "source_hash": "1f8d048f28f3c152"
+        "value": "Wheeled",
+        "source_hash": "f101ba0ce71ad5da",
+        "excerpt": "Wheeled base with two arms",
+        "reason": "Reviewed 25 Nov 2026: the record says wheeled and that the company rejects the bipedal form."
       },
       "chk": {
         "value": {

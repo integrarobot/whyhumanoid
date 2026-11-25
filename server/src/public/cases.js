@@ -80,10 +80,13 @@ export function publicCases(rows) {
       organisations: orgs,
       robots: robots.map(({ key, ...x }) => x),
       sectors: uniq(rs.map((r) => r.sector)),
+      // Deployment countries only (status.js): "Multiple" and undisclosed, unconfirmed or partner-only parts are kept apart.
       countries: uniq(rs.flatMap((r) => deploymentCountries(r.country).countries)),
+      country_multiple: rs.some((r) => deploymentCountries(r.country).multiple),
+      country_unknown: rs.every((r) => !deploymentCountries(r.country).countries.length),
       country_notes: [...new Set(rs.flatMap((r) => deploymentCountries(r.country).notes))], // kept as written, "Not disclosed" included
       tasks: (() => { const t = uniq(rs.map((r) => r.task_category)).map(taskLabel); return t.length ? t : [taskLabel(null)]; })(),
-      status: { key: statusKey(raw), label: STATUS_LABELS[statusKey(raw)], detail: STATUS_DETAIL[raw] ?? (has(raw) ? cap(human(raw)) : 'Not recorded'), as_of: current.as_of, dated: current.dated },
+      status: { key: statusKey(raw), label: STATUS_LABELS[statusKey(raw)], detail: STATUS_DETAIL[raw] ?? (has(raw) ? cap(human(raw)) : 'Not recorded'), as_of: current.as_of, dated: current.dated, order: current.order, tie: current.tie, latest: current.latest.map((x) => ({ date: x.date, key: x.key })) },
       review: { key: latest.verification_status ?? null, label: REVIEW_LABELS[latest.verification_status] ?? (has(latest.verification_status) ? cap(human(latest.verification_status)) : 'Not recorded') },
       first_date: withDate[0]?.publication_date ?? null,
       last_date: withDate.at(-1)?.publication_date ?? null,

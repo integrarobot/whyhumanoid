@@ -127,6 +127,8 @@ export function buildData(exported, overrides, access) {
         if (pinned.source_hash !== sha(record[field])) {
           throw new Error(`Stale override: record ${record.id} facet ${facet}; "${field}" changed. Review tools/humanoids-facet-overrides.json`);
         }
+        // A reviewed label quotes its evidence: the excerpt must still be in the record (PokeBot: "Wheeled", 25 Nov 2026).
+        if (pinned.excerpt && !String(record[field] ?? '').includes(pinned.excerpt)) throw new Error(`Override of record ${record.id} facet ${facet}: "${field}" no longer contains "${pinned.excerpt}"`);
         model[facet] = pinned.value;
       } else model[facet] = RULES[facet](record[field]);
     }
@@ -212,16 +214,37 @@ const PATHS_CSS = `<style>
 </style>`;
 export function renderCategories(data) {
   const tabs = new Map((data.database?.tabs ?? []).map((t) => [t.id, t]));
-  const reports = JSON.parse(readFileSync(new URL('data/reports/atlas.json', root), 'utf8')).reports.length + 1; // + Why Humanoid?'s deployment records analysis
+  const reportsAtlas = JSON.parse(readFileSync(new URL('data/reports/atlas.json', root), 'utf8'));
+  // Reports: the external reports of the Research Conclusions Atlas; Why Humanoid?'s own analysis is named apart.
+  const reports = reportsAtlas.reports.length;
   // Benchmarks: the resources of the Robotics Evaluation Atlas snapshot (data/benchmarks/atlas.json), not a preview tab.
   const atlas = JSON.parse(readFileSync(new URL('data/benchmarks/atlas.json', root), 'utf8')).counts;
   // Datasets: the resources of the Robot Learning Data Atlas snapshot (data/datasets/atlas.json), also not a preview tab.
   const dataAtlas = dataAtlasSummary();
   // Deployments: its public cases (one per deployment id of the public rows); Components: its physical products.
   const cases = new Set(JSON.parse(readFileSync(new URL('data/preview/deployments.json', root), 'utf8')).rows.map((r) => r.deployment_id ?? r.record_id)).size;
-  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.id === 'deployments' ? cases : c.datasets.reduce((n, id) => n + (tabs.get(id)?.canonical_entries ?? tabs.get(id)?.entries_total ?? 0), 0));
-  const unit = { humanoids: 'robots', deployments: 'cases', components: 'products', integrators: 'providers', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
-  const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? 'All listed free · <span class="sub">detail with the subscription</span>' : 'Free'}</span></li>`).join('');
+  const count = (c) => (c.id === 'humanoids' ? data.models.length - (data.not_robots ?? []).length - (data.uncertain ?? []).length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.id === 'deployments' ? cases : c.datasets.reduce((n, id) => n + (tabs.get(id)?.canonical_entries ?? tabs.get(id)?.entries_total ?? 0), 0));
+  const unit = { humanoids: `humanoid robot models · ${data.uncertain?.length ?? 0} of uncertain scope · ${data.not_robots?.length ?? 0} software models listed apart`, deployments: 'cases', components: 'products', integrators: 'providers', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'external reports + 1 Why Humanoid? analysis' };
+  // Freshness per module (25 Nov 2026): the date each category's public data says something about, by kind. A source
+  // check (Humanoids records, report originals) is not a workbook copy, and neither is the date this page was built.
+  const dmy = (iso) => { const d = new Date(String(iso ?? '').length === 10 ? `${iso}T00:00:00Z` : iso); return Number.isNaN(d.getTime()) ? null : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }); };
+  const checked = data.models.map((m) => m.chk?.date).filter(Boolean).sort().at(-1);
+  const copyOf = (id) => dmy(tabs.get(id)?.snapshot ?? data.database?.snapshot);
+  const benchAtlas = JSON.parse(readFileSync(new URL('data/benchmarks/atlas.json', root), 'utf8')).snapshot;
+  const dataAtlasSnap = JSON.parse(readFileSync(new URL('data/datasets/atlas.json', root), 'utf8')).snapshot;
+  const fresh = {
+    humanoids: checked ? `records checked up to ${dmy(checked)}` : null,
+    deployments: `workbook copy of ${copyOf('deployments')}`,
+    components: `workbook copy of ${copyOf('hardware')}`,
+    integrators: `workbook copy of ${copyOf('integrators')}`,
+    software: `workbook copy of ${copyOf('software')}`,
+    datasets: `workbook copy of ${dmy(dataAtlasSnap?.exported_at)}`,
+    benchmarks: `workbook copy of ${dmy(benchAtlas?.exported_at)}`,
+    investment: `workbook copy of ${copyOf('stocks')}`,
+    'other-robots': `workbook copy of ${copyOf('other-robots')}`,
+    reports: reportsAtlas.snapshot?.checked_on ? `originals checked ${dmy(reportsAtlas.snapshot.checked_on)}` : null,
+  };
+  const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? 'All listed free · <span class="sub">detail with the subscription</span>' : 'Free'}</span>${fresh[c.id] ? `<span class="meta fresh">${escHtml(fresh[c.id])}</span>` : ''}</li>`).join('');
   const reportsList = SERVICES.map((sv) => `<li><b>${escHtml(sv.name)}</b> (${sv.category === 'deployments' ? 'Deployments' : 'Components'}): ${escHtml(sv.summary)}</li>`).join('');
   return `<!-- categories:start -->
     ${PATHS_CSS}
@@ -332,6 +355,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   // Reviewed display names, full-body images and maker order links, by catalogue id (tools/robot-presentation.json).
   data.present = Object.fromEntries(robotPresentation());
   data.access.open = OPEN_DATABASE;
+  // Catalogue records that are software, not robots, by their own record (tools/catalogue-classification.json).
+  const classification = JSON.parse(readFileSync(new URL('tools/catalogue-classification.json', root), 'utf8')).records;
+  data.not_robots = classification.filter((c) => c.kind === 'software').map((c) => c.id);
+  data.uncertain = classification.filter((c) => c.kind === 'uncertain').map((c) => c.id);
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {
     console.error(`Parity FAILED (${unexpected.length}):\n- ${unexpected.slice(0, 40).join('\n- ')}`);

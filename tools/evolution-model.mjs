@@ -11,6 +11,7 @@
 // joined or interpolated. What cannot be dated is counted and listed as excluded.
 
 import { MEANINGS, publicDateOf, publicDateProblems } from '../server/src/public-dates.js';
+import { currentStatus } from '../server/src/public/status.js';
 
 export const ORDER = ['humanoids', 'deployments', 'components', 'integrators', 'datasets', 'benchmarks', 'reports'];
 
@@ -36,13 +37,19 @@ const mid = (d) => { const a = dayNumber(d.start); const b = dayNumber(d.end); r
 const countBy = (xs, f) => { const m = new Map(); for (const x of xs) m.set(f(x), (m.get(f(x)) ?? 0) + 1); return m; };
 
 // ---------- Humanoids: model introductions by dated release or unveiling ----------
-function humanoids(cat, review) {
+function humanoids(cat, review, classification = { records: [] }) {
   const r = review.humanoids;
   const snapshot = isoOf(cat.snapshot);
   const excludedById = new Map(r.excluded.map((x) => [x.id, x]));
   const dated = [];
   const excluded = { reviewed: [], undisclosed: [], empty: [], other: [] };
+  // Software or AI models recorded in the Humanoids tab (tools/catalogue-classification.json) are not robots: outside the
+  // denominator. Entries of uncertain scope stay in it, named in the note.
+  const kindOf = new Map((classification.records ?? []).map((c) => [c.id, c.kind]));
+  const software = cat.records.filter((rec) => kindOf.get(rec.id) === 'software');
+  const uncertain = cat.records.filter((rec) => kindOf.get(rec.id) === 'uncertain');
   for (const rec of cat.records) {
+    if (kindOf.get(rec.id) === 'software') continue;
     const v = String(rec[r.field] ?? '').trim();
     const ex = excludedById.get(rec.id);
     if (ex) {
@@ -68,7 +75,7 @@ function humanoids(cat, review) {
     const xs = dated.filter((d) => +d.date.start.slice(0, 4) === y);
     columns.push({ key: String(y), label: String(y), t: minIso(`${y}-12-31`, snapshot), value: xs.length, partial: y === y1, items: xs.map((d) => d.name).sort() });
   }
-  const total = cat.records.length;
+  const total = cat.records.length - software.length;
   return {
     id: 'humanoids', label: 'Humanoids', path: '/humanoids/', type: 'columns',
     title: 'Humanoid models introduced per year',
@@ -85,7 +92,7 @@ function humanoids(cat, review) {
         { reason: 'Release field empty', count: excluded.empty.length },
         ...excluded.reviewed.map((x) => ({ reason: `${x.name}: ${x.reason}`, count: 1 })),
       ],
-      note: `${dated.filter((d) => d.kind === 'unveiling').length} of the dated models have a day-precise unveiling; the rest a year.`,
+      note: `${dated.filter((d) => d.kind === 'unveiling').length} of the dated models have a day-precise unveiling; the rest a year. ${software.length} software or AI models recorded in the Humanoids tab (${software.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) are not robots and are outside this count; ${uncertain.length} entries of uncertain scope (${uncertain.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) are inside it, undated.`,
     },
     status: 'partial',
     status_note: `Partial: ${total - dated.length} of ${total} catalogue robots have no usable release date.`,
@@ -119,6 +126,7 @@ function deployments(prev) {
     groups.get(k).push({ key: STATUS_KEY(r.operational_status), date: d && { ...d, end: minIso(d.end, snapshot) } });
   }
   const cases = [...groups.values()];
+  const rawCases = [...prev.rows.reduce((m, r) => m.set(r.deployment_id || r.record_id, [...(m.get(r.deployment_id || r.record_id) ?? []), r]), new Map()).values()];
   const coarseNow = prev.rows.filter((r) => { const d = parseDate(r.publication_date); return d && d.precision !== 'day' && d.end > snapshot; }).length;
   const datedRecords = prev.rows.filter((r) => parseDate(r.publication_date)).length;
   const first = cases.flatMap((rs) => rs.filter((r) => r.date).map((r) => r.date.end)).sort()[0];
@@ -142,6 +150,9 @@ function deployments(prev) {
   const neverDated = cases.filter((rs) => !rs.some((r) => r.date)).length;
   const someUndated = cases.filter((rs) => rs.some((r) => !r.date) && rs.some((r) => r.date)).length;
   // The same cases with every record, dated or not: the status the public adoption view shows today.
+  // The current summaries' rule (latest dated source), for the note only: the chart itself never uses it.
+  const current = Object.fromEntries(DEPLOYMENT_STAGES.map((s) => [s.key, 0]));
+  for (const rs of rawCases) { const c = currentStatus(rs, (r) => STATUS_KEY(r.operational_status)); if (c.dated) current[c.key] += 1; }
   const allNow = Object.fromEntries(DEPLOYMENT_STAGES.map((s) => [s.key, 0]));
   for (const rs of cases) allNow[rs.map((r) => r.key).sort((a, b) => CASE_RANK[a] - CASE_RANK[b])[0]] += 1;
   return {
@@ -163,7 +174,7 @@ function deployments(prev) {
         { reason: 'Cases whose records all lack a publication date', count: neverDated },
         { reason: `Records without a publication date (of ${prev.rows.length})`, count: prev.rows.length - datedRecords },
       ],
-      note: `${coarseNow} records dated only by the current year or month count from the snapshot date. ${someUndated} placed ${someUndated === 1 ? 'case also has' : 'cases also have'} undated records, which are left out of their status. With every record, dated or not, the public adoption view counts ${cases.length} cases: ${DEPLOYMENT_STAGES.slice().reverse().map((s) => `${allNow[s.key]} ${s.label.toLowerCase()}`).join(', ')}. The difference is the undated evidence, kept apart and never assigned a date.`,
+      note: `${coarseNow} records dated only by the current year or month count from the snapshot date. ${someUndated} placed ${someUndated === 1 ? 'case also has' : 'cases also have'} undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead (server/src/public/status.js), so their totals differ: currently ${DEPLOYMENT_STAGES.slice().reverse().map((s) => `${current[s.key]} ${s.label.toLowerCase()}`).join(', ')} among the ${cases.length - neverDated} dated cases. Undated evidence is kept apart and never assigned a date.`,
     },
     status: neverDated ? 'partial' : 'complete',
     status_note: `${last.value} of ${cases.length} cases placed in time; ${plural(neverDated, 'case')} with no dated record ${neverDated === 1 ? 'stays' : 'stay'} in the date-unknown bar, outside the time series.`,
@@ -463,7 +474,7 @@ function reports(atlas, review) {
 export function buildEvolution(src) {
   const review = src.review;
   const charts = [
-    humanoids(src.humanoids, review),
+    humanoids(src.humanoids, review, src.classification),
     deployments(src.deployments),
     components(src.hardware, review),
     integrators(src.integrators, review),
