@@ -43,7 +43,7 @@ test('services: two one-off US$1,000 reports, no subscription needed, the wordin
     [DIVERSIFICATION, 'Industrial diversification report', 100000, 'USD', false, false],
   ]);
   assert.match(body.before_payment, /^US\$1,000 · one-off payment · no subscription required\. After payment, complete a private questionnaire about your company\. We will email your report within 24 hours of receiving your completed questionnaire\.$/);
-  assert.equal(body.support_email, 'javier@liderarmente.com');
+  assert.equal(body.support_email, 'javier@integrarobot.com');
   assert.ok(body.services.every((s) => s.checkout_available));
 });
 
@@ -108,7 +108,7 @@ test('payment: only a signed, matching, paid session opens the questionnaire; fo
   const mails = ctx.mailer.outbox.filter((m) => /Payment received|Paid order/.test(m.subject));
   assert.deepEqual(mails.map((m) => m.to).sort(), ['buyer@example.com', NOTIFY_EMAIL].sort());
   assert.match(mails.find((m) => m.to === 'buyer@example.com').text, /24 hours start when you submit it, not at payment/);
-  assert.match(mails.find((m) => m.to === 'buyer@example.com').text, /javier@liderarmente\.com/);
+  assert.match(mails.find((m) => m.to === 'buyer@example.com').text, /javier@integrarobot\.com/);
 });
 
 test('cancel and failure: an expired session cancels the unpaid order; an async failure marks it; neither grants anything', async () => {

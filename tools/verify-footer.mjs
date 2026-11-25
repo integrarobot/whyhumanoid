@@ -5,9 +5,10 @@
 // 390 and 1366 px: the five footer links in order (About, For agents, Method, Contact, Integrarobot) with their exact
 // targets, reachable by keyboard, inside the screen, and no horizontal scroll. Every internal footer target answers 200;
 // About has its title, canonical address and description, links back home and to Method, For agents and the offers,
-// and holds no counts or prices.
+// and holds no counts or prices. No footer shows an email address; Contact leads to About's contact section.
 import { createRequire } from 'node:module';
 import { FOOTER_LINKS } from './footer-view.mjs';
+import { SUPPORT_EMAIL } from '../server/src/support.js';
 const { chromium } = createRequire(import.meta.url)('playwright');
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
@@ -32,6 +33,8 @@ for (const width of WIDTHS) {
       return { text: a.textContent.trim(), href: a.getAttribute('href'), left: r.left, right: r.right, h: r.height };
     }));
     check(links.length === FOOTER_LINKS.length && FOOTER_LINKS.every(([t, h], i) => links[i]?.text === t && links[i]?.href === h), `${width}px ${path}: footer links ${JSON.stringify(links.map((l) => l.text))}`);
+    // No email address in any footer (Javier, 25 Nov 2026): no mailto link and no address text.
+    check(await page.$$eval('footer', (fs) => fs.every((f) => !f.querySelector('a[href^="mailto:"]') && !/@/.test(f.textContent))), `${width}px ${path}: no email address in the footer`);
     check(links.every((l) => l.left >= 0 && l.right <= width + 1 && l.h >= 24), `${width}px ${path}: footer links inside the screen and at least 24 px tall`);
     // The footer itself never widens the page. The app's own header is wider than 320 px phones (in production before
     // this footer; server/public/index.html, outside this change), so on /app/ only the footer is measured.
@@ -59,7 +62,8 @@ check((await page.title()) === 'About Why Humanoid?', `about: title (${await pag
 check(await page.getAttribute('link[rel="canonical"]', 'href') === 'https://whyhumanoid.com/about/', 'about: canonical /about/');
 check(((await page.getAttribute('meta[name="description"]', 'content')) || '').length > 60, 'about: meta description');
 const hrefs = await page.$$eval('main a', (as) => as.map((a) => a.getAttribute('href')));
-for (const need of ['/', '/method/', '/agents/', '/subscribe/', 'https://integrarobot.com']) check(hrefs.includes(need), `about: links to ${need}`);
+for (const need of ['/', '/method/', '/agents/', '/subscribe/', 'https://integrarobot.com', `mailto:${SUPPORT_EMAIL}`]) check(hrefs.includes(need), `about: links to ${need}`);
+check(Boolean(await page.$('#contact')), 'about: the #contact section the footer Contact link targets');
 const text = await page.textContent('main');
 check(!/\$|US\$|USD|€|\d{2,}/.test(text), `about: no prices or counts (${(text.match(/\$|US\$|USD|€|\d{2,}/) || [''])[0]})`);
 for (const word of ['Humanoids', 'Deployments', 'Components', 'Integrators', 'Software', 'Datasets', 'Benchmarks', 'Investment', 'Other robots', 'Reports']) check(text.includes(word), `about: covers ${word}`);

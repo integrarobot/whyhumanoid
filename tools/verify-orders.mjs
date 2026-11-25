@@ -9,6 +9,7 @@
 // without horizontal scroll and with the buttons reachable by keyboard.
 import { createRequire } from 'node:module';
 const { chromium } = createRequire(import.meta.url)('playwright');
+import { SUPPORT_EMAIL } from '../server/src/support.js';
 
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
 const BASE = arg('--base', 'http://localhost:8788').replace(/\/$/, '');
@@ -60,7 +61,7 @@ check(/Payment confirmed/.test(await page.textContent('#status')), 'return: paym
 const orderId = /#reports\/(ord_[\w-]+)/.exec(page.url())?.[1];
 check(Boolean(orderId), 'return: lands on the order');
 check(/24 hours start when you submit it/.test(await page.textContent('#db-panel')), 'questionnaire: the clock is explained');
-check((await page.textContent('#db-panel')).includes(HELP), 'help: the order help line is on the paid questionnaire');
+check((await page.textContent('#db-panel')).includes(HELP) && Boolean(await page.$(`#db-panel a[href="mailto:${SUPPORT_EMAIL}"]`)), 'help: the order help line, with the customer-support address, is on the paid questionnaire');
 
 // 2. Draft saved, restored after reload.
 await page.fill('#q-company_name', 'Example Manufacturing Ltd');

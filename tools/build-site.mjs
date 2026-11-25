@@ -20,7 +20,6 @@ import { pageRelations } from './relations.mjs';
 import { pageLinks } from './build-pages.mjs';
 import { CATEGORIES, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
-import { SUPPORT_EMAIL } from '../server/src/support.js';
 import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
 import { renderAdoption } from './adoption-view.mjs';
 import { renderEvolutionCarousel } from './evolution-view.mjs';
@@ -283,9 +282,10 @@ export function renderPathsMini() {
         </div><style>.hero-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px;margin:14px 0 18px}.hp{display:grid;gap:3px;padding:10px 12px;border:1px solid var(--line);text-decoration:none;color:var(--bone-2);font-size:13px;line-height:1.35}.hp b{color:var(--bone);font-weight:600;font-size:14px}.hp-data{border-color:color-mix(in srgb,var(--amber) 55%,transparent);box-shadow:inset 3px 0 0 var(--amber)}.hp:hover,.hp:focus-visible{border-color:var(--amber)}</style><!-- paths-mini:end -->`;
 }
 // The home footer's help line (Codex, 25 Nov 2026): the one public support address, as on every other page.
-// With the shared site footer links (tools/footer-view.mjs, 25 Nov 2026): the same links as every other page.
+// The shared site footer links (tools/footer-view.mjs, 25 Nov 2026): the same links as every other page, and no email
+// address in the footer (Javier, 25 Nov 2026); Contact leads to the About page.
 export function renderFooterHelp() {
-  return `<!-- footer-help:start --><style>${FOOTER_CSS}.foot .site-foot{margin:0;flex-basis:100%}</style>${renderSiteFooterNav()}<span class="lbl">Help: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a></span><!-- footer-help:end -->`;
+  return `<!-- footer-help:start --><style>${FOOTER_CSS}.foot .site-foot{margin:0;flex-basis:100%}</style>${renderSiteFooterNav()}<!-- footer-help:end -->`;
 }
 export function renderIndex(html, data) {
   const help = /<!-- footer-help:start -->[\s\S]*?<!-- footer-help:end -->/;
