@@ -5,7 +5,7 @@
 // Covers: the wording before payment; payment -> questionnaire; draft saved and restored after a reload and after the
 // browser is closed and the buyer signs in again; review; submit with a fixed deadline; a repeated submit that changes
 // nothing; the confirmation and operator emails (no answers in the operator email); a delayed webhook reconciled on
-// return; a cancelled checkout; another account denied; the operator queue and delivery record; phones (375 and 390 px)
+// return; leaving the questionnaire right after typing, with a slow or failed draft save, loses nothing and throws nothing; a cancelled checkout; another account denied; the operator queue and delivery record; phones (375 and 390 px)
 // without horizontal scroll and with the buttons reachable by keyboard.
 import { createRequire } from 'node:module';
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -129,6 +129,54 @@ await page.waitForURL(/dev\/report-checkout/);
 await page.click('#pay-silent');
 await page.waitForSelector('#q-form', { timeout: 30000 });
 check(/Payment confirmed/.test(await page.textContent('#status')), 'delayed webhook: confirmed by reconciliation');
+
+// 5b. Leaving the questionnaire right after typing (Codex, 25 Nov 2026): the last answer is kept, and a draft response
+// that arrives after leaving changes nothing on screen and throws nothing.
+const order2 = /#reports\/(ord_[\w-]+)/.exec(page.url())?.[1];
+const pageErrors = [];
+page.on('pageerror', (e) => pageErrors.push(e.message));
+// Errors inside async handlers surface as unhandled rejections, which the page records here (same document throughout).
+await page.evaluate(() => {
+  window.__errs = [];
+  addEventListener('error', (e) => window.__errs.push(String(e.message)));
+  addEventListener('unhandledrejection', (e) => window.__errs.push(String(e.reason?.message || e.reason)));
+});
+const scriptErrors = async () => [...pageErrors, ...(await page.evaluate(() => window.__errs))];
+// Leaves at once, in the same task as the last action (a click through Playwright may wait for the link to settle).
+const leave = async (before = '') => {
+  await page.evaluate((sel) => { if (sel) document.querySelector(sel).click(); location.hash = '#reports'; }, before);
+  await page.waitForFunction(() => document.getElementById('db-title')?.textContent.trim() === 'Custom reports');
+};
+const reopen = async () => {
+  await page.evaluate((id) => { location.hash = `#reports/${id}`; }, order2);
+  await page.waitForSelector('#q-form');
+  return page.inputValue('#q-company_name');
+};
+// Typed, then left at once (before the 1.5 s autosave): the answer is sent on leaving and is there on return.
+await page.fill('#q-company_name', 'Typed then left Ltd');
+await leave();
+check(await reopen() === 'Typed then left Ltd', 'draft: typing then leaving at once keeps the last answer');
+// A slow draft response arriving after the visitor has left: no error, the newer view stays.
+await page.route(/\/v1\/reports\/orders\/ord_[^/]+\/draft$/, async (route) => { await new Promise((r) => setTimeout(r, 900)); await route.continue(); });
+await page.fill('#q-company_name', 'Slow save Ltd');
+await leave('#q-save');
+await page.waitForTimeout(1500);
+const errs1 = await scriptErrors();
+check(!errs1.length && (await page.textContent('#db-title')).trim() === 'Custom reports', `draft: a slow save after leaving throws nothing and repaints nothing (${errs1.join('; ') || 'no errors'})`);
+await page.unroute(/\/v1\/reports\/orders\/ord_[^/]+\/draft$/);
+check(await reopen() === 'Slow save Ltd', 'draft: the slow save landed');
+// The connection drops while leaving: the answer is kept in the page and sent with the next save.
+await page.route(/\/v1\/reports\/orders\/ord_[^/]+\/draft$/, (route) => route.abort());
+await page.fill('#q-company_name', 'Offline Ltd');
+await leave();
+await page.unroute(/\/v1\/reports\/orders\/ord_[^/]+\/draft$/);
+check(await reopen() === 'Offline Ltd', 'draft: an answer that could not be sent on leaving is still there on return');
+await page.click('#q-save');
+await page.waitForFunction(() => /^saved /.test(document.getElementById('q-saved')?.textContent || ''), null, { timeout: 10000 });
+const saved2 = (await apiAs(page, `/v1/reports/orders/${order2}`)).data.order;
+check(saved2.answers?.company_name === 'Offline Ltd', 'draft: the kept answer reaches the server with the next save');
+const errs2 = await scriptErrors();
+check(!errs2.length, `draft: no script errors (${errs2.join('; ')})`);
 
 // 6. Cancelled checkout: nothing charged, said plainly.
 const before = (await apiAs(page, '/v1/reports/orders')).data.orders.length;

@@ -717,7 +717,8 @@
     rendered = location.hash;
     // A new view: responses for the previous one are dropped, and a pending questionnaire autosave is cancelled.
     viewToken += 1;
-    clearTimeout(ORD.timer);
+    // Leaving a questionnaire never loses typing: the unsaved answers captured at the last keystroke are sent now.
+    flushDraft();
     const r = parseHash() || { view: 'dataset', id: 'deployments' };
     if (r.view === 'robot') await showRobot(r.id);
     else if (r.view === 'company') await showCompany(r.id);
@@ -734,7 +735,21 @@
   // ---- Custom reports, agent access and the operator queue (25 Nov 2026) -------------------------------------------
   // Reports: two one-off US$1,000 services, separate from the subscription. The order and its private questionnaire live
   // on the server (every read and write needs this account's session); the browser only renders them.
-  const ORD = { services: null, forms: {}, timer: null, saving: false, current: null };
+  const ORD = { services: null, forms: {}, timer: null, saving: false, current: null, pending: null, flushing: null };
+  // Unsaved questionnaire answers: { orderId, answers }, captured from the form at each change while it is on screen.
+  // flushDraft() sends them at once (on leaving the view, or when the autosave timer fires) and never reads the page.
+  function flushDraft() {
+    clearTimeout(ORD.timer);
+    const p = ORD.pending;
+    ORD.pending = null;
+    if (!p) return ORD.flushing;
+    // A draft that could not reach the server (connection, server error) is kept for the next try, unless newer typing
+    // has replaced it; reopening the order shows it.
+    const job = api(`/v1/reports/orders/${p.orderId}/draft`, { method: 'POST', body: { answers: p.answers } })
+      .then((r) => { if ((r.status === 0 || r.status >= 500) && !ORD.pending) ORD.pending = p; return r; });
+    ORD.flushing = job.finally(() => { if (ORD.flushing === job) ORD.flushing = null; });
+    return job;
+  }
   // These views are not categories: the category list shows none as current.
   const mark = (id) => { state.current = id; renderIndex(); };
   // Each of these views claims the panel with a token and shows "Loading" at once; a response that arrives after the
@@ -843,10 +858,15 @@
     mark('reports');
     const t = claim('Your report order');
     if (!state.session) { panel.innerHTML = '<h2 id="db-title">Your report order</h2><p>Sign in with the email address you used to order. Your order and your answers are kept in your account.</p>'; return; }
+    // A draft still being sent (for example from leaving this order a moment ago) lands before the order is read back.
+    if (ORD.flushing) await ORD.flushing.catch(() => {});
+    if (stale(t)) return;
     const { status, data } = await api(`/v1/reports/orders/${encodeURIComponent(orderId)}`);
     if (stale(t)) return;
     if (status !== 200) { loaded(); panel.innerHTML = `<h2 id="db-title">Order not found</h2><p>This order is not in your account. Sign in with the email address you used to order, or write to <a href="mailto:${SUPPORT}">${SUPPORT}</a>.</p>`; return; }
     const o = data.order;
+    // Answers typed here that have not reached the server yet win over the copy the server returned.
+    if (o.status === 'awaiting_questionnaire' && ORD.pending?.orderId === o.id) o.answers = ORD.pending.answers;
     ORD.current = o;
     const form = await formFor(o.service);
     if (stale(t)) return;
@@ -893,12 +913,16 @@
       `<p class="q-progress" id="q-progress" aria-live="polite">${done} of ${req.length} required answers · <span id="q-saved">${o.draft_saved_at ? 'saved ' + when(o.draft_saved_at) : 'not saved yet'}</span></p><p class="lbl"><span class="req">*</span> required</p>` +
       `<form id="q-form" novalidate>${form.fields.map((f) => fieldHtml(f, values[f.id], problems) + (f.extra ? fieldHtml(f.extra, values[f.extra.id], problems) : '')).join('')}` +
       `<div class="row"><button class="btn ghost" id="q-save" type="button">Save now</button> <button class="btn" id="q-review" type="submit">Review and submit</button></div></form>`;
+    // Answers are read from the form only while this order's form is on screen; afterwards only the captured copy is used.
+    const capture = () => { if (!stale(t) && $('q-form')) ORD.pending = { orderId: o.id, answers: collect(form) }; };
     const save = async () => {
-      clearTimeout(ORD.timer);
-      const answers = collect(form);
-      const r = await api(`/v1/reports/orders/${o.id}/draft`, { method: 'POST', body: { answers } });
+      capture();
+      const answers = ORD.pending?.orderId === o.id ? ORD.pending.answers : null;
+      const r = await flushDraft();
+      // The visitor may have left while the draft was on its way: then nothing on screen belongs to this order.
+      if (!r || stale(t) || !$('q-saved')) return Boolean(r && r.status === 200 && r.data?.saved);
       if (r.status === 200 && r.data.saved) {
-        o.answers = answers;
+        if (answers) o.answers = answers;
         $('q-saved').textContent = 'saved ' + when(r.data.draft_saved_at);
         $('q-progress').firstChild.textContent = `${r.data.progress.done} of ${r.data.progress.required} required answers · `;
         return true;
@@ -907,8 +931,8 @@
       if (r.data.problems) r.data.problems.forEach((p) => { const el = document.querySelector(`[data-f="${p.field}"]`); if (el && !el.querySelector('.q-err')) el.insertAdjacentHTML('beforeend', `<p class="q-err">${esc(PROBLEM[p.problem] || p.problem)}</p>`); });
       return false;
     };
-    $('q-form').addEventListener('input', () => { clearTimeout(ORD.timer); $('q-saved').textContent = 'saving…'; ORD.timer = setTimeout(save, 1500); });
-    $('q-form').addEventListener('change', () => { clearTimeout(ORD.timer); ORD.timer = setTimeout(save, 600); });
+    $('q-form').addEventListener('input', () => { capture(); clearTimeout(ORD.timer); $('q-saved').textContent = 'saving…'; ORD.timer = setTimeout(save, 1500); });
+    $('q-form').addEventListener('change', () => { capture(); clearTimeout(ORD.timer); ORD.timer = setTimeout(save, 600); });
     $('q-save').addEventListener('click', save);
     $('q-form').addEventListener('click', (e) => {
       const u = e.target.closest('.q-unknown');
