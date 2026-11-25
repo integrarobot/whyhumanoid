@@ -1,0 +1,42 @@
+{
+  "id": "WH-20261125-1703-agentic-market-piloto-preparado",
+  "tarea": "Preparar el piloto de Agentic Market a USD 0,10 por consulta; activar despues de las pruebas.",
+  "origen": "Javier, chat de Codex del 25/11/2026 y aprobacion del piloto.",
+  "fecha": "2026-11-25T17:03:57+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude y codex/revision independiente",
+  "cambios": [
+    "PR93 actualizado contra main, sin fusionar; precio aprobado y limites de 10 casos y 50 registros.",
+    "Migracion 0006, rutas de compilacion y contrato Stripe transaction_verification corregidos.",
+    "Descubrimiento por merchant corregido; mainnet y ambos entornos siguen desactivados."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Piloto preparado, sin activar",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/93"
+    },
+    {
+      "etiqueta": "Candidato final",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/92daf917d495ce198835b3ab94fdddc4cdbec0b3"
+    }
+  ],
+  "despliegue": [
+    "No aplica: PR93 abierto, sin fusion, migracion ni despliegue. Rutas x402 de produccion responden 404."
+  ],
+  "verificaciones": [
+    "196 pruebas de servidor en 9cd2f80 y 2 de CLI/MCP correctas; guardia publica correcta.",
+    "11 pruebas x402 correctas tras la correccion final de texto en 92daf917.",
+    "13 comprobaciones workerd correctas sobre el paquete final con cliente oficial y cadena simulada. No son un pago externo.",
+    "Paquetes finales de produccion y staging construidos dos veces con hashes identicos.",
+    "Gmail sin respuesta Stripe encontrada; metodos revisados sin Stablecoins and Crypto visible, sin inferir denegacion.",
+    "CI del candidato final 92daf917 completada con success: run 45650563614."
+  ],
+  "pendientes": [
+    "Comprobar habilitacion Stripe para la cuenta espanola, direccion de deposito sandbox y version API preview real.",
+    "Prueba de pago, liquidacion y reintento en Base Sepolia; revision del contrato final de campos.",
+    "Configuracion del facilitador, migracion y despliegue de prueba; posterior activacion condicionada.",
+    "Pago real autorizado, indexacion en Bazaar y presencia en Agentic Market verificadas por separado."
+  ],
+  "siguiente_accion": "Javier aporta o conecta de forma segura la habilitacion y direccion sandbox de Stripe; Claude ejecuta el ensayo externo y Codex lo verifica. Mantener el piloto desactivado."
+}
