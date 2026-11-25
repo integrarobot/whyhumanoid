@@ -1,70 +1,101 @@
 {
   "note": "State of the weekly update (skill .claude/skills/whyhumanoid-weekly-update). Update last_processed_edition only after the workbook is updated and whyhumanoid.com is published and verified.",
-  "last_processed_edition": null,
+  "last_processed_edition": {
+    "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+    "date": "2026-11-18",
+    "marked_processed": "2026-11-25",
+    "evidence": "All 8 items in the workbook (last modified 2026-11-25T06:44:43Z), published in main from it and imported to production at 07:18 UTC (close WH-20261125-0901-coherencia-catalogo); audit-deployments 0 differences in the 2026-11-25 run. Written to the workbook outside the weekly task. Detail: ops/weekly-update/runs/2026-11-25.json (edition_2026_11_18)."
+  },
   "known_pending": [
     {
-      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
-      "item": "ASUS Gallop: new Humanoids row (138), Deployments row (testing at an ASUS group EMS factory) and two Entidades limpias rows",
-      "source": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
-      "source_date": "2026-11-13",
-      "found": "2026-11-18",
-      "plan": "ops/weekly-update/runs/2026-11-18.json"
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "Viam: new Software row 131, SOFTWARE list",
+      "source": "https://www.viam.com/",
+      "source_date": "undated",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json"
     },
     {
-      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
-      "item": "LG CLOiD: new Humanoids row (139) with the KIRIA safety MOU in its notes, and two Entidades limpias rows (LG Electronics, CLOiD); no Deployments row",
-      "source": "https://www.lg.co.kr/media/release/30790",
-      "source_date": "2026-11-16",
-      "found": "2026-11-18",
-      "plan": "ops/weekly-update/runs/2026-11-18.json"
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "WALL-OSS-1.0 (X Square Robot): new Software row 132, SOFTWARE list",
+      "source": "https://x2robot.com/blogs/wall-oss-1-en/",
+      "source_date": "2026-11-23",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json"
     },
     {
-      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
-      "item": "Agile Robots Series F (USD 500M, USD 8.5B valuation, SoftBank Group lead): update Humanoids row 6 (Valuation, Investors, Rounds, Sources / checked)",
-      "source": "https://www.agile-robots.com/en/news/detail/physical-ai-leader-agile-robots-raises-500-million-series-f-funding/",
-      "source_date": "2026-11-12",
-      "found": "2026-11-18",
-      "plan": "ops/weekly-update/runs/2026-11-18.json"
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "AHEADance: new Software row 133, SOFTWARE list",
+      "source": "https://ihcr.github.io/AHEADance/",
+      "source_date": "2026 (arXiv 2611.13370)",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json"
     },
     {
-      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
-      "item": "Genesis AI Series A (USD 500M, USD 3.5B post-money): update Humanoids row 119 (Valuation, Investors, Rounds, Price / availability, DoF / grippers, Buyer checks, Sources / checked)",
-      "source": "https://www.prnewswire.com/news-releases/genesis-ai-raises-500m-series-a-at-3-5b-valuation-to-master-human-level-dexterity-in-general-purpose-robots-and-deploy-at-scale-302941249.html",
-      "source_date": "2026-11-17",
-      "found": "2026-11-18",
-      "plan": "ops/weekly-update/runs/2026-11-18.json"
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "Play2Perfect: new Software row 134, SOFTWARE list",
+      "source": "https://play2perfect.github.io/",
+      "source_date": "CoRL 2026 (arXiv 2606.26428)",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json"
     },
     {
-      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
-      "item": "GXO and Apptronik: three Deployments rows (completed 2026 U.S. pilot; letter of intent, planned, not contracted; Robot Park testing)",
-      "source": "https://gxo.com/news_article/gxo-apptronik-expand-humanoid-robotics-partnership/",
-      "source_date": "2026-11-12",
-      "found": "2026-11-18",
-      "plan": "ops/weekly-update/runs/2026-11-18.json"
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "Felis: new Other Robots row 74, NAME list",
+      "source": "https://frank-zy-dou.github.io/blog/felis/",
+      "source_date": "2026-11-19",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json"
     },
     {
-      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
-      "item": "FLUX-mimic (mimic robotics): Software row 129, SOFTWARE list; no Deployments row for BMW",
-      "source": "https://www.mimicrobotics.com/en/blog/introducing-flux-mimic",
-      "source_date": "2026-07-23",
-      "found": "2026-11-18",
-      "plan": "ops/weekly-update/runs/2026-11-18.json"
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "evoBOT (Fraunhofer IML): new Other Robots row 75, NAME list",
+      "source": "https://www.iml.fraunhofer.de/en/projects/2020/evobot-autonomous-transport-robot-logistics.html",
+      "source_date": "page meta 2026-06-22",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json"
     },
     {
-      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
-      "item": "HubEgo-100K (Hub Labs): Datasets row 30",
-      "source": "https://huggingface.co/datasets/HubLabs/HubEgo-100K",
-      "source_date": "2026",
-      "found": "2026-11-18",
-      "plan": "ops/weekly-update/runs/2026-11-18.json"
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "coprod: new Other Robots row 76, NAME list",
+      "source": "https://coprod.co/blog/pre-seed-round",
+      "source_date": "2026-11-23",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json"
     },
     {
-      "edition": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
-      "item": "Mosaic Intelligence Labs: Other Robots row 61, NAME list",
-      "source": "https://www.businesswire.com/news/home/20261110289756/en/Mosaic-Emerges-from-Stealth-with-%2447-Million-to-Build-Intelligent-Surgical-Machines---Treating-the-Body-from-Inside",
-      "source_date": "2026-11-10",
-      "found": "2026-11-18",
-      "plan": "ops/weekly-update/runs/2026-11-18.json"
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "AXIS Skills Atlas: new Datasets row 37 (collection) and Dataset Metrics row 64 (11,199 tasks)",
+      "source": "https://skills.axisrobotics.ai/",
+      "source_date": "task snapshot 2026-11-06",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "Humyn Labs: new Datasets row 38 (commercial data service)",
+      "source": "https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a",
+      "source_date": "2026-11-18",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "Simplexity Robotics: USD 100M pre-Series A led by Ant Group (newsletter, citing Bloomberg via The Japan Times); not verified and no named robot model, so no row yet",
+      "source": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
+      "source_date": "2026-11-23",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json",
+      "needs": "primary source for the round and a named model"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "Playground, The Robot Frontier Is Accelerating: decide whether it enters Reports (vendor index and forecasts, not a benchmark)",
+      "source": "https://www.withplayground.ai/research/robot-frontier-accelerating",
+      "source_date": "2026-11-23",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/runs/2026-11-25.json",
+      "needs": "decision on the tab"
     }
   ],
   "runs": [
@@ -96,6 +127,17 @@
       "result": "pending_sheets",
       "file": "ops/weekly-update/runs/2026-11-18.json",
       "close": "WH-20261118-1943-semanal-noticias-pendiente-libro"
+    },
+    {
+      "date": "2026-11-25",
+      "kind": "scheduled",
+      "subject": "Edition of 2026-11-25, news section only; 2026-11-18 edition confirmed in the workbook and published",
+      "editions": [
+        "https://www.integrarobot.com/p/why-humanoid"
+      ],
+      "result": "pending_sheets",
+      "file": "ops/weekly-update/runs/2026-11-25.json",
+      "close": "PENDING_ID"
     }
   ]
 }

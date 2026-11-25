@@ -1,0 +1,424 @@
+{
+  "date": "2026-11-25",
+  "kind": "scheduled",
+  "note": "Weekly scheduled run. Javier's decision of 18/11/2026: process only each edition's news section. Public record only: Software, Datasets, Dataset Metrics and Other Robots are free tabs, so their planned cells are listed in full. No premium tab (Deployments, Components, Clean Entities, Evidence Relations) is touched by this plan. Status pending_sheets for the 2026-11-25 edition: nothing was written to the workbook, nothing was exported or published. The 2026-11-18 edition is marked processed because all its items are in the workbook and were published and imported this morning (see edition_2026_11_18).",
+  "editions": [
+    {
+      "url": "https://www.integrarobot.com/p/why-humanoid",
+      "title": "Why Humanoid?",
+      "published": "2026-11-25 (feed pubDate Wed, 25 Nov 2026 11:04:05 GMT)",
+      "section_processed": "Más noticias sobre IA y robótica (16 items, one link each); the post has no other news section",
+      "found_via": "https://www.integrarobot.com/feed (the /archive page was a stale snapshot without this post)"
+    }
+  ],
+  "edition_2026_11_18": {
+    "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+    "status": "processed",
+    "evidence": [
+      "All 8 known_pending items are in the workbook download of this run (last modified 2026-11-25T06:44:43Z): Humanoids rows 138 (ASUS Gallop) and 139 (LG CLOiD); rows 6 (Agile One, Series F) and 119 (Genesis Eno, Series A) updated with the planned values; Deployments rows 132-135 (rec_apptronik_gxo_002 to 004, rec_asus_asus_001); Software row 130 (FLUX-mimic); Datasets row 25 (HubEgo-100K, since corrected against its card to 20,113 cumulative hours); Other Robots row 61 (Mosaic Intelligence Labs); Clean Entities rows 30-33.",
+      "Written to the workbook outside the weekly task between 2026-11-18 and 2026-11-25 (not by this run).",
+      "Published in main from that same workbook (data/preview snapshot 2026-11-25T06:44:43Z; humanoids/asus-gallop-135, humanoids/lg-cloid-136) and imported to production at 07:18 UTC, verified in close WH-20261125-0901-coherencia-catalogo.",
+      "This run: node tools/audit-deployments.mjs on the current workbook, 197 rows, 47 columns, 7,940 non-empty values, 0 differences with main; check-reserved, check-public and check-workbook pass."
+    ]
+  },
+  "status": "pending_sheets",
+  "blocker": "No way to write to the master workbook from this cloud run: the Google Drive connector only reads and downloads (file capability canEdit false), the session is not linked to Javier's computer (no Claude in Chrome), and the task excludes Autosheet. A full .xlsx download through the Google Drive connector worked (read-only). Also, whyhumanoid.com and the API were not reachable from this run (egress proxy refused the hosts; the web fetch permission went unanswered), so production was not checked directly here.",
+  "inventory": {
+    "before": {
+      "Humanoids": 217,
+      "Deployments": 197,
+      "Software": 129,
+      "Datasets": 35,
+      "Benchmarks": 22,
+      "Components": 53,
+      "Other Robots": 488,
+      "Investment": 276,
+      "Integrators": 28,
+      "Reports": 12,
+      "Investment Theses": 98,
+      "Data Space": 30,
+      "Product - Container Handling": 22,
+      "Clean Entities": 32,
+      "Evidence Relations": 15,
+      "Task Evaluation": 4,
+      "Benchmark Results": 34,
+      "Dataset Metrics": 62
+    },
+    "after": "unchanged: nothing was written",
+    "planned_after": {
+      "Software": "133 sheet rows (145 listed rows, from 141)",
+      "Datasets": 37,
+      "Dataset Metrics": 63,
+      "Other Robots": "488 sheet rows (563 entries, from 560)",
+      "others": "unchanged"
+    },
+    "unit": "sheet rows without the header, from the workbook download of 2026-11-25 (last modified 06:44:43 UTC, the version published and imported this morning); archive tabs not counted"
+  },
+  "dedupe": {
+    "searched": [
+      "Humyn",
+      "HIRO",
+      "Origin",
+      "AXIS Robotics",
+      "Skills Atlas",
+      "Boston Dynamics",
+      "Spot",
+      "Orbit",
+      "Viam",
+      "Orchard",
+      "Deere",
+      "Felis",
+      "Simplexity",
+      "X Square",
+      "WALL-OSS",
+      "AHEADance",
+      "Play2Perfect",
+      "coprod",
+      "evoBOT",
+      "Fraunhofer",
+      "Playground",
+      "CA3",
+      "MolmoAct",
+      "Mahdi"
+    ],
+    "tabs": "all tabs of the download",
+    "result": "HIRO Origin is Humanoids row 140 and its reserve page still matches (price, deposit, balance, delivery, location). X Square's parcel-sorting case from the WALL-OSS-1.0 post is Deployments rows 193-196 (accessed 2026-11-25), but WALL-OSS-1.0 has no Software row. evoBOT's Munich Airport test is Deployments row 198, but evoBOT has no Other Robots row. CA3 is Integrators (int_ca3) and already cites the same case page and results (reviewed 2026-11-24). No rows for Humyn Labs, AXIS, Viam, Orchard AI, Felis, Simplexity, AHEADance, Play2Perfect, coprod or Playground (Simplexity appears only inside a Reports cell)."
+  },
+  "planned": {
+    "software_new": [
+      {
+        "sheet_row": 131,
+        "SOFTWARE": "Viam",
+        "URL": "https://www.viam.com/",
+        "DESCRIPTION": "Viam: robot software platform presented as a harness for AI agents to develop, deploy and operate robot applications on mixed hardware; the open-source viam-server runs on the robot and enforces limits, and outside agents connect through the Viam MCP server.",
+        "tab": "Software",
+        "column": "SOFTWARE list (A:C)",
+        "reviewed": "2026-11-25"
+      },
+      {
+        "sheet_row": 132,
+        "SOFTWARE": "WALL-OSS-1.0 (X Square Robot)",
+        "URL": "https://x2robot.com/blogs/wall-oss-1-en/",
+        "DESCRIPTION": "X Square Robot's vision-language-action foundation model (2026-11-23), built from a Qwen3.5 base, with Lite (4B) and Nano (2B) variants; the company reports 55.1% zero-shot success across 312 evaluator-chosen tasks on physical robots. Licence and model weights are not stated in the announcement.",
+        "tab": "Software",
+        "column": "SOFTWARE list (A:C)",
+        "reviewed": "2026-11-25"
+      },
+      {
+        "sheet_row": 133,
+        "SOFTWARE": "AHEADance",
+        "URL": "https://ihcr.github.io/AHEADance/",
+        "DESCRIPTION": "Anticipatory Humanoid Dance from Streaming Audio (UCL Humanoid Robotics Lab): generates targets for a Unitree G1's 29 joints 30 times a second from live audio, shown on the real robot with eight songs in seven styles (arXiv 2611.13370; code announced, not yet released).",
+        "tab": "Software",
+        "column": "SOFTWARE list (A:C)",
+        "reviewed": "2026-11-25"
+      },
+      {
+        "sheet_row": 134,
+        "SOFTWARE": "Play2Perfect",
+        "URL": "https://play2perfect.github.io/",
+        "DESCRIPTION": "What Matters in Dexterous Play Pretraining for Precise Assembly? Two-stage reinforcement learning: free play with diverse objects in simulation, then fine-tuning for contact-rich precise assembly with multi-fingered hands, transferred zero-shot to real hardware (CoRL 2026; arXiv 2606.26428; code on GitHub).",
+        "tab": "Software",
+        "column": "SOFTWARE list (A:C)",
+        "reviewed": "2026-11-25"
+      }
+    ],
+    "other_robots_new": [
+      {
+        "sheet_row": 74,
+        "NAME": "Felis",
+        "URL": "https://frank-zy-dou.github.io/blog/felis/",
+        "DESCRIPTION": "Felis: cat-inspired legged research robot with an actuated two-axis spine and one motor per leg (six motors in total), designed to right itself in midair (shown in simulation), walk, turn, jump and dance; code on GitHub, technical report announced (Zhiyang Dou et al., 2026-11-19).",
+        "tab": "Other Robots",
+        "column": "NAME list (A:C); the EDUBOTS list in E:G already uses these rows",
+        "reviewed": "2026-11-25"
+      },
+      {
+        "sheet_row": 75,
+        "NAME": "evoBOT (Fraunhofer IML)",
+        "URL": "https://www.iml.fraunhofer.de/en/projects/2020/evobot-autonomous-transport-robot-logistics.html",
+        "DESCRIPTION": "evoBOT: Fraunhofer IML research prototype of a self-balancing transport robot on two wheels (inverted pendulum) with two gripper arms to pick up, carry and hand over loads; developed in publicly funded projects; first field test at Munich Airport in June 2023.",
+        "tab": "Other Robots",
+        "column": "NAME list (A:C); the EDUBOTS list in E:G already uses these rows",
+        "reviewed": "2026-11-25"
+      },
+      {
+        "sheet_row": 76,
+        "NAME": "coprod",
+        "URL": "https://coprod.co/blog/pre-seed-round",
+        "DESCRIPTION": "coprod: Swiss robotics hardware start-up (Lausanne) making modular components for motion, sensing, power and batteries (co:motion, co:sense, co:power, co:battery) on one real-time EtherCAT control plane with a C++ and Python API; USD 6M pre-seed led by Founderful and PROTOTYPE (2026-11-23); market launch planned for early 2027.",
+        "tab": "Other Robots",
+        "column": "NAME list (A:C); the EDUBOTS list in E:G already uses these rows",
+        "reviewed": "2026-11-25"
+      }
+    ],
+    "datasets_new": [
+      {
+        "sheet_row": 37,
+        "NAME": "AXIS Skills Atlas",
+        "URL": "https://skills.axisrobotics.ai/",
+        "DESCRIPTION": "AXIS Robotics catalogue of 11,199 robot tasks (unique task IDs, snapshot 2026-11-06), each a LeRobot-format dataset, filterable by skill and robot and exportable as CSV; it links to 14.6 TB of public simulation data on Hugging Face (2026-11-10).",
+        "DATASET_ID": "ds-axis-skills-atlas",
+        "RESOURCE_TYPE": "Dataset / data resource",
+        "RELATED_BENCHMARK_IDS": "",
+        "CHECKED_AT": "2026-11-25",
+        "DATA_ORIGIN": "simulation",
+        "EMBODIMENT": "Six main robot embodiments, including Franka arms; ALOHA kept as a historical record",
+        "MODALITIES": "rgb; joint_state; action; trajectory; camera_pose",
+        "CAPTURE_METHOD": "Simulation (public data); per-task capture not stated",
+        "LEARNING_USES": "manipulation; grasping; cross-embodiment; data discovery",
+        "DATA_FORMAT": "LeRobot v3.0 (Parquet + MP4), 15 fps, two 640x360 RGB cameras",
+        "ACCESS_STATUS": "collection_link",
+        "LICENSE_NOTE": "Licence not stated on the atlas; check each Hugging Face dataset card",
+        "VERSION_SCOPE": "Task-list snapshot 2026-11-06; public simulation data 2026-11-10; page checked 2026-11-25",
+        "KEY_TAKEAWAY": "A task catalogue over many LeRobot datasets, not one corpus: 11,199 counts task IDs, not data volume.",
+        "SOURCE_URL": "https://skills.axisrobotics.ai/",
+        "SOURCE_LOCATOR": "Task explorer; Data section; source note",
+        "REVIEW_STATUS": "Primary source overview checked; no independent data replication",
+        "LIMITATIONS": "Task IDs, not hours or episodes. 8,925 is the PICK-tag count, not the total. 392 robot labels are model-inferred. Some source links may need AXIS Hub access. 14.6 TB is storage size, not comparable with hours.",
+        "PARENT_DATASET_IDS": "",
+        "RESOURCE_CLASS": "collection",
+        "INCLUDED_IN_ATLAS": "true",
+        "tab": "Datasets",
+        "not_listed_here": "CLASSIFICATION_NOTE and ATTACHMENT_REF are never published: their values are in the private plan file plan-2026-11-25.json, delivered in this run's conversation outside Git. The seven PUBLIC_DATE columns stay empty (no checked date).",
+        "reviewed": "2026-11-25"
+      },
+      {
+        "sheet_row": 38,
+        "NAME": "Humyn Labs",
+        "URL": "https://humynlabs.ai/",
+        "DESCRIPTION": "Physical AI data company that records human work in factories, warehouses, farms and homes with its own capture devices and turns it into labelled training datasets (sight, sound, motion and touch) for robotics and world-model developers.",
+        "DATASET_ID": "ds-humyn-labs",
+        "RESOURCE_TYPE": "Dataset / data resource",
+        "RELATED_BENCHMARK_IDS": "",
+        "CHECKED_AT": "2026-11-25",
+        "DATA_ORIGIN": "human_capture",
+        "EMBODIMENT": "Human work in factories, warehouses, farms and homes",
+        "MODALITIES": "rgb; audio; motion; tactile",
+        "CAPTURE_METHOD": "Proprietary capture devices; provider-operated collection in 20+ countries",
+        "LEARNING_USES": "human-to-robot; embodied learning; world models",
+        "DATA_FORMAT": "Not established",
+        "ACCESS_STATUS": "contact_provider",
+        "LICENSE_NOTE": "Dataset licence not established; commercial terms",
+        "VERSION_SCOPE": "Source snapshot 2026-11-25; no public release pinned",
+        "KEY_TAKEAWAY": "A commercial data supply service, not a fixed public dataset.",
+        "SOURCE_URL": "https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a",
+        "SOURCE_LOCATOR": "Series A announcement, 2026-11-18",
+        "REVIEW_STATUS": "Primary source overview checked; no independent data replication",
+        "LIMITATIONS": "No public corpus, volume, sensor specification or named customer. Revenue and scale figures are company claims. Modalities are as the company names them (sight, sound, motion, touch).",
+        "PARENT_DATASET_IDS": "",
+        "RESOURCE_CLASS": "commercial_data_service",
+        "INCLUDED_IN_ATLAS": "true",
+        "tab": "Datasets",
+        "not_listed_here": "CLASSIFICATION_NOTE and ATTACHMENT_REF are never published: their values are in the private plan file plan-2026-11-25.json, delivered in this run's conversation outside Git. The seven PUBLIC_DATE columns stay empty (no checked date).",
+        "reviewed": "2026-11-25"
+      }
+    ],
+    "dataset_metrics_new": [
+      {
+        "sheet_row": 64,
+        "METRIC_ID": "dm-axis-skills-atlas-1",
+        "DATASET_ID": "ds-axis-skills-atlas",
+        "DATA_VERSION": "Task-list snapshot 2026-11-06",
+        "METRIC": "tasks",
+        "VALUE": "11199",
+        "UNIT": "tasks",
+        "QUALIFIER": "reported",
+        "SCOPE": "headline",
+        "DATA_ORIGIN": "simulation",
+        "RELEASE_STATUS": "reported_release",
+        "SOURCE_URL": "https://skills.axisrobotics.ai/",
+        "SOURCE_LOCATOR": "Task explorer; source note (unique task IDs)",
+        "SOURCE_DATE": "",
+        "DATE_MEANING": "Source publication/experiment date not extracted; scope is the named release",
+        "CHECKED_AT": "2026-11-25",
+        "EVIDENCE_STATUS": "Primary source transcribed; not independently counted",
+        "OVERLAP_NOTE": "Each task ID is a separate LeRobot dataset; the count is not a data volume.",
+        "COMPARISON_GROUP": "",
+        "DISPLAY_STATUS": "source_reported",
+        "LIMITATIONS": "Count of unique task IDs in the atlas snapshot; 267 tasks have no skill tag and 392 robot labels are model-inferred.",
+        "tab": "Dataset Metrics",
+        "reviewed": "2026-11-25"
+      }
+    ],
+    "updates": [],
+    "deployments": "none: the edition's deployment items are already in the workbook (X Square parcel sorting, rows 193-196; evoBOT at Munich Airport, row 198) or are out of scope (Boston Dynamics Spot customers, not named)",
+    "simulation": "Applied to a copy of the download in a scratch worktree, not committed: check-workbook, export-database, export-datasets (37 resources), export-evolution, build-pages, build-site, build-app, test-evolution 11/11, check-public, check-reserved, relations --check pass; search-tags adds 10 documents and no unknown values."
+  },
+  "discarded": [
+    {
+      "item": "HIRO Industries Origin reservations",
+      "reason": "duplicate: Humanoids row 140 (2026-11-19) already holds the same price (USD 9,950), deposit (USD 1,450, refundable), balance, Spring 2027 US-only delivery and Corvallis location; rechecked on the reserve page 2026-11-25, no difference",
+      "source": "https://hiroindustries.com/reserve/"
+    },
+    {
+      "item": "Boston Dynamics: customers connecting Spot and Orbit",
+      "reason": "out of scope: Spot is not a humanoid and no customer or site is named; Orbit was reclassified out of the humanoid count; the post (modified 2026-11-16) describes integrations, not a deployment record",
+      "source": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/"
+    },
+    {
+      "item": "John Deere acquires Orchard AI",
+      "reason": "out of scope: crop-intelligence imaging for high-value crops, not a robot; the Deere page renders only with JavaScript (title and description read, terms and date not)",
+      "source": "https://www.deere.com/en-us/john-deere-news/john-deere-acquires-orchard-ai"
+    },
+    {
+      "item": "Mahdi's robotic hand under USD 300",
+      "reason": "out of scope: individual hobby build reported by Hackaday (secondary), design files not yet released, no product",
+      "source": "https://hackaday.com/2026/11/21/building-a-robotic-hand-on-a-budget/"
+    },
+    {
+      "item": "CA3 MolmoAct2 multi-user test",
+      "reason": "duplicate: Integrators int_ca3 already cites this case page and its results (90% new tasks, 100% retained, 12 blocked demonstrations, one seed, simulation only), reviewed 2026-11-24; results recorded 2026-10-28",
+      "source": "https://ca3.si/case_robot"
+    },
+    {
+      "item": "X Square parcel-sorting case (WALL-OSS-1.0)",
+      "reason": "duplicate for Deployments: rows 193-196 from the same post; only the Software row is planned",
+      "source": "https://x2robot.com/blogs/wall-oss-1-en/"
+    },
+    {
+      "item": "evoBOT Munich Airport test",
+      "reason": "duplicate for Deployments: row 198 (June 2023 test); only the Other Robots row is planned",
+      "source": "https://www.iml.fraunhofer.de/en/projects/2020/evobot-autonomous-transport-robot-logistics.html"
+    }
+  ],
+  "pending": [
+    {
+      "item": "Simplexity Robotics: USD 100M pre-Series A led by Ant Group at a USD 1.6B valuation (newsletter, citing Bloomberg via The Japan Times, 2026-11-23)",
+      "reason": "not verified: the Japan Times page failed to load and no primary source or other copy confirms the round; earlier sources give CNY 2B (USD 289.3M) over five rounds and a valuation above USD 1B (Yicai, 2026-03-10; 36Kr Japan, 2026-04-04) without Ant Group; the company has no publicly named robot model (an 'i' series with a wheeled base), so no Humanoids row fits yet",
+      "sources": [
+        "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
+        "https://www.yicaiglobal.com/news/chinas-simplexity-robotics-raises-usd2893-million-in-six-months-to-speed-large-scale-application-of-embodied-ai",
+        "https://36kr.jp/488274/"
+      ]
+    },
+    {
+      "item": "Playground, 'The Robot Frontier Is Accelerating' (2026-11-23)",
+      "reason": "tab to decide: a vendor research post with its own Robot Intelligence Index (25 benchmarks) and its own forecasts to end-2027; it is not a benchmark and the Reports atlas needs reviewed findings with locators; decide whether it enters Reports",
+      "sources": [
+        "https://www.withplayground.ai/research/robot-frontier-accelerating"
+      ]
+    }
+  ],
+  "observations": [
+    "search-tags on the current workbook (not this plan) reports 7 values the vocabulary does not know, from rows already published: countries Russia, Malta, Indonesia and South Africa; sectors apparel manufacturing, postal logistics and air cargo.",
+    "relations on the current workbook: 'X Square Robot' (Deployments rows 193-197) resolves as a maker outside the catalogue, while Humanoids lists the maker as 'X Square' (row 103); a reviewed alias would link it.",
+    "Humyn Labs' Series A (USD 47M: USD 26M equity led by Accel, USD 21M venture debt led by Lighthouse Canton; 2026-11-18) is not recorded anywhere because no tab holds funding of data companies; only its data-service row is planned."
+  ],
+  "sources": [
+    {
+      "url": "https://www.integrarobot.com/p/why-humanoid",
+      "publisher": "Integrarobot",
+      "published": "2026-11-25",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a",
+      "publisher": "Humyn Labs",
+      "published": "2026-11-18",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://hiroindustries.com/reserve/",
+      "publisher": "HIRO Industries",
+      "published": "undated",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://skills.axisrobotics.ai/",
+      "publisher": "AXIS Robotics",
+      "published": "task snapshot 2026-11-06; simulation data 2026-11-10",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/",
+      "publisher": "Boston Dynamics",
+      "published": "modified 2026-11-16",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://www.viam.com/",
+      "publisher": "Viam",
+      "published": "undated",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://www.deere.com/en-us/john-deere-news/john-deere-acquires-orchard-ai",
+      "publisher": "John Deere",
+      "published": "not shown (JavaScript page)",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://frank-zy-dou.github.io/blog/felis/",
+      "publisher": "Zhiyang Dou et al.",
+      "published": "2026-11-19",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
+      "publisher": "The Japan Times (Bloomberg)",
+      "published": "2026-11-23 (from the URL)",
+      "reviewed": "2026-11-25 (failed to load)"
+    },
+    {
+      "url": "https://www.yicaiglobal.com/news/chinas-simplexity-robotics-raises-usd2893-million-in-six-months-to-speed-large-scale-application-of-embodied-ai",
+      "publisher": "Yicai Global",
+      "published": "2026-03-10",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://36kr.jp/488274/",
+      "publisher": "36Kr Japan",
+      "published": "2026-04-04",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://x2robot.com/blogs/wall-oss-1-en/",
+      "publisher": "X Square Robot",
+      "published": "2026-11-23",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://ihcr.github.io/AHEADance/",
+      "publisher": "UCL Humanoid Robotics Lab",
+      "published": "2026 (arXiv 2611.13370)",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://hackaday.com/2026/11/21/building-a-robotic-hand-on-a-budget/",
+      "publisher": "Hackaday",
+      "published": "2026-11-21",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://play2perfect.github.io/",
+      "publisher": "Lum, Kedia, Liu, Bohg",
+      "published": "CoRL 2026 (arXiv 2606.26428)",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://coprod.co/blog/pre-seed-round",
+      "publisher": "coprod",
+      "published": "2026-11-23",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://www.iml.fraunhofer.de/en/projects/2020/evobot-autonomous-transport-robot-logistics.html",
+      "publisher": "Fraunhofer IML",
+      "published": "page meta 2026-06-22",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://www.withplayground.ai/research/robot-frontier-accelerating",
+      "publisher": "Playground",
+      "published": "2026-11-23",
+      "reviewed": "2026-11-25"
+    },
+    {
+      "url": "https://ca3.si/case_robot",
+      "publisher": "CA3",
+      "published": "results recorded 2026-10-28",
+      "reviewed": "2026-11-25"
+    }
+  ]
+}
