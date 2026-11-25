@@ -44,6 +44,8 @@ function relationsBody() {
   };
 }
 
+const softwareRows = () => Array.from({ length: 141 }, (_, i) => ({ id: `sw_${i}`, list: i < 121 ? 'software' : 'world_model', name: i === 0 || i === 121 ? 'Lightwheel' : `Fx tool ${i}`, url: `https://example.com/sw${i}`, canonical: !(i >= 121 && i < 124) }));
+
 function app({ url, active, session, oldApi = false }) {
   const calls = [];
   // As built by tools/build-app.mjs: the page embeds the public field contract next to the page links.
@@ -53,13 +55,16 @@ function app({ url, active, session, oldApi = false }) {
   if (session) w.localStorage.setItem('wh_session', session);
   w.fetch = async (path, opts = {}) => {
     calls.push({ path, method: opts.method ?? 'GET', auth: opts.headers?.authorization ?? null });
-    const datasets = [{ id: 'deployments', title: 'Deployments', description: 'fx' }, { id: 'humanoids', title: 'Humanoid robots' }];
+    const datasets = [{ id: 'deployments', title: 'Deployments', description: 'fx' }, { id: 'humanoids', title: 'Humanoid robots' }, { id: 'software', title: 'Software and world models', description: 'fx' }];
     const body = path === '/v1/datasets' ? { datasets }
       : path === '/v1/billing/plan' ? { plan: { price: 'US$100 per year' }, checkout_available: true }
       : path === '/v1/auth/redeem' ? { token: 'whs_fake' }
       : path === '/v1/me' ? { email: 'a@example.com', access: active ? { active: true, status: 'active', current_period_end: 1893456000 } : { active: false, status: 'none' }, checkout_available: true, billing_portal: Boolean(active) }
       : path.startsWith('/v1/datasets/deployments/preview') ? (oldApi ? { rows: Array.from({ length: 10 }, (_, i) => row(i + 1)), total_rows: 119, preview_rows: 10, dataset: datasets[0] } : { rows: Array.from({ length: 119 }, (_, i) => publicRow(i + 1)), total_rows: 119, preview_rows: 'all', public_fields: PUBLIC, dataset: datasets[0] })
       : path.startsWith('/v1/datasets/deployments?') ? { rows: Array.from({ length: 119 }, (_, i) => row(i + 1)), total: 119, dataset: datasets[0] }
+      // A directory tab: 141 rows, 138 canonical entries (3 world-model rows are memberships of software entries).
+      : path.startsWith('/v1/datasets/software/preview') ? { rows: softwareRows(), total_rows: 141, entries: 138, preview_rows: 'all', public_fields: null, dataset: datasets[2] }
+      : path.startsWith('/v1/datasets/software?') ? { rows: softwareRows(), total: 141, entries: 138, dataset: datasets[2] }
       : path === '/v1/relations' ? relationsBody()
       : path.startsWith('/v1/search?') ? searchBody(new URLSearchParams(path.split('?')[1]), Boolean(opts.headers?.authorization) && active)
       : { rows: [], total_rows: 0, dataset: datasets[1] };
@@ -180,6 +185,28 @@ function app({ url, active, session, oldApi = false }) {
   if (kv.some(([k]) => /it uses/i.test(k))) failures.push('company: robots still labelled as in use');
   if (!/FxBot One by FxLab Pilot or trial/.test(robots) || !/FxBot Two by FxLab Announced/.test(robots)) failures.push(`company: robots not shown with their recorded status: ${robots}`);
   dom.window.close();
+}
+
+
+// 5. Directory counts (Codex, 25 Nov 2026, live check): the category list and the panel count canonical entries, for a
+// visitor and a subscriber, after opening the tab, filtering it, and leaving and coming back. The rows note appears once.
+for (const [label, opts] of [['visitor', {}], ['subscriber', { active: true, session: 'whs_fake' }]]) {
+  const { w, d } = app({ url: 'https://test.example/#software', ...opts });
+  await wait(400);
+  const nav = () => d.querySelector('[data-n="software"]')?.textContent;
+  const count = () => d.getElementById('db-count')?.textContent ?? '';
+  const note = '138 entries (141 rows: 3 are the same entry in a second list)';
+  if (nav() !== '138') failures.push(`${label}: software list count after opening is ${nav()}, not 138`);
+  if (!count().startsWith(note) || count().split('141 rows').length !== 2) failures.push(`${label}: count line "${count()}" does not give the entries and the rows note once`);
+  const q = d.getElementById('db-q');
+  q.value = 'lightwheel'; q.dispatchEvent(new w.Event('input'));
+  await wait(50);
+  if (nav() !== '138') failures.push(`${label}: software list count after filtering is ${nav()}`);
+  if (!/^1 of 138 entries \(2 rows: 1 is the same entry in a second list\) shown/.test(count())) failures.push(`${label}: filtered count line "${count()}"`);
+  w.location.hash = '#deployments'; await wait(300);
+  w.location.hash = '#software'; await wait(300);
+  if (nav() !== '138') failures.push(`${label}: software list count after leaving and coming back is ${nav()}`);
+  if (!count().startsWith(note)) failures.push(`${label}: count line after coming back "${count()}"`);
 }
 
 if (failures.length) {
