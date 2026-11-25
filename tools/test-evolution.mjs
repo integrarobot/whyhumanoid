@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { buildEvolution, parseDate, stageAt } from './evolution-model.mjs';
 import { evolutionSources } from './export-evolution.mjs';
+import { publicDateOf, publicDateProblems } from '../server/src/public-dates.js';
 
 const root = new URL('../', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
@@ -83,21 +84,42 @@ test('Integrators: dated events quote their source dates; Novares counted once; 
   assert.equal(new Set(c.points.map((p) => p.id)).size, c.points.length);
 });
 
-test('Datasets: associated-paper dates match their arXiv identifiers; no volumes added', () => {
+test('Datasets: first public dates checked against arXiv, master and reviewed reading agree, no volumes added', () => {
   const c = chart('datasets');
-  assert.equal(c.points.length, 11);
+  const reviewed = new Map(src.review.datasets.papers.map((p) => [p.id, p]));
+  assert.equal(c.points.length, src.datasets.resources.filter((r) => publicDateOf(r) || reviewed.has(r.id)).length);
   for (const p of c.points) {
-    const id = p.href.split('/abs/')[1];
-    assert.equal(`${p.date.slice(2, 4)}${p.date.slice(5, 7)}`, id.slice(0, 4), p.id);
     assert.ok(src.datasets.resources.some((r) => r.id === p.id));
+    assert.deepEqual(publicDateProblems({ public_date: p.date, public_date_precision: 'day', public_date_meaning: p.meaning, public_date_source_url: p.href, public_date_locator: 'Submission history [v1]', public_date_checked_at: p.checked_at }, 'datasets', p.id), []);
+    const rv = reviewed.get(p.id);
+    if (rv) assert.equal(p.date, rv.date, p.id);
   }
+  // Galaxea: submitted on 30 Aug 2025 under a September identifier; the date is the submission, not the id's month.
+  assert.equal(c.points.find((p) => p.id === 'ds-galaxea').date, '2025-08-30');
+  assert.match(c.points.find((p) => p.id === 'ds-lafan1').note, /SIGGRAPH 2020/);
   assert.match(c.title + c.subtitle, /paper/i);
   assert.doesNotMatch(JSON.stringify(c), /"(?:hours|episodes|trajectories|value)":/);
-  assert.equal(c.coverage.excluded[0].count, 24);
+  assert.equal(c.coverage.excluded[0].count, src.datasets.resources.length - c.points.length);
 });
 
-test('Benchmarks: points only inside one comparability group, values as transcribed', () => {
+test('Benchmarks: first public dates from the master, each with its meaning; dated results kept apart', () => {
   const c = chart('benchmarks');
+  const dated = src.benchmarks.benchmarks.filter((b) => publicDateOf(b));
+  assert.equal(c.points.length, dated.length);
+  for (const p of c.points) {
+    const b = src.benchmarks.benchmarks.find((x) => x.id === p.id);
+    assert.equal(p.date, b.public_date);
+    assert.equal(p.meaning, b.public_date_meaning);
+    assert.equal(p.row, b.setting);
+    assert.equal(p.hollow, b.public_date_meaning !== 'associated_paper_first_arxiv_submission');
+  }
+  assert.equal(c.coverage.included + c.coverage.excluded.length, src.benchmarks.benchmarks.length);
+  assert.ok(!c.points.some((p) => p.id === 'bm-spatialbench'), 'SpatialBench stays undated');
+  assert.equal(c.secondary.id, 'benchmarks-results');
+});
+
+test('Benchmarks results: points only inside one comparability group, values as transcribed', () => {
+  const c = chart('benchmarks').secondary;
   for (const p of c.panels) {
     const rs = src.benchmarks.results.filter((r) => r.comparability_group === p.key);
     assert.equal(p.points.length, rs.length);
@@ -130,6 +152,6 @@ test('no paid or non-public field in the chart data or the pages', () => {
   assert.doesNotMatch(text, /docs\.google|drive\.google|spreadsheets/i);
   for (const p of ['index.html', 'humanoids/index.html', 'deployments/index.html', 'components/index.html', 'integrators/index.html', 'datasets/index.html', 'benchmarks/index.html', 'reports/index.html']) {
     const html = read(p);
-    assert.equal((html.match(/class="evo-chart /g) ?? []).length, p === 'index.html' ? 7 : 1, p);
+    assert.equal((html.match(/class="evo-chart /g) ?? []).length, p === 'index.html' ? 7 : p === 'benchmarks/index.html' ? 2 : 1, p);
   }
 });

@@ -10,6 +10,8 @@
 // - Results are source-reported, not replicated. COMPARABILITY_GROUP is an editorial aid: rows of one group must share
 //   benchmark, version, track, metric, unit and direction; nothing is ranked across groups or across benchmarks.
 
+import { PUBLIC_DATE_FIELDS, publicDateProblems } from '../public-dates.js';
+
 export const CAPABILITY_GROUPS = Object.freeze([
   { key: 'manipulation', label: 'Manipulation', tags: ['manipulation', 'bimanual', 'mobile manipulation', 'dexterity'] },
   { key: 'whole-body', label: 'Whole-body control', tags: ['whole-body', 'locomotion'] },
@@ -85,6 +87,7 @@ export function atlasProblems(catalogue, results, datasets = null) {
     for (const t of tags) if (!KNOWN_TAGS.has(t)) problems.push(`${at}: capability tag "${t}" is not in the reviewed vocabulary`);
     if (tags.length && !capabilitiesOf(tags).length) problems.push(`${at}: no tag maps to a capability group`);
     for (const d of split(b.related_dataset_ids)) if (!/^ds-[a-z0-9-]+$/.test(d)) problems.push(`${at}: related dataset id "${d}" must look like ds-<slug>`);
+    problems.push(...publicDateProblems(b, 'benchmarks', at));
   }
   const resultIds = new Set();
   const groups = new Map();
@@ -151,7 +154,7 @@ export function atlasProblems(catalogue, results, datasets = null) {
 export const PUBLIC_BENCHMARK_FIELDS = Object.freeze([
   'benchmark_id', 'name', 'url', 'description', 'category', 'evaluates', 'environment', 'embodiment', 'tasks', 'metrics',
   'protocol', 'leaderboard_url', 'code_url', 'source_url', 'source_locator', 'checked_at', 'review_status',
-  'limitations', 'key_finding', 'results_coverage',
+  'limitations', 'key_finding', 'results_coverage', ...PUBLIC_DATE_FIELDS,
 ]);
 export const PUBLIC_RESULT_FIELDS = Object.freeze([
   'result_id', 'benchmark_id', 'benchmark_version', 'model', 'model_configuration', 'track', 'environment', 'embodiment',
@@ -170,7 +173,7 @@ export function buildAtlas({ catalogue, results, datasets = [], exportedAt, buil
   const benchmarks = catalogue.map((b) => {
     const tags = split(b.capability_tags);
     const out = Object.fromEntries(PUBLIC_BENCHMARK_FIELDS.map((f) => [f, textOrNull(b[f])]));
-    for (const f of ['url', 'leaderboard_url', 'code_url', 'source_url']) out[f] = linkOrNull(out[f]);
+    for (const f of ['url', 'leaderboard_url', 'code_url', 'source_url', 'public_date_source_url']) out[f] = linkOrNull(out[f]);
     const obs = shown.filter((r) => r.benchmark_id === b.benchmark_id);
     return {
       ...out,

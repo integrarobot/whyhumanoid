@@ -16,6 +16,8 @@
 //   resources: PARENT_DATASET_IDS is incomplete, so an empty value does not mean there is no overlap.
 // - A benchmark link means an associated evaluation resource, not a training claim.
 
+import { PUBLIC_DATE_FIELDS, publicDateProblems } from '../public-dates.js';
+
 export const LANES = Object.freeze([
   { key: 'robot', label: 'Robot-recorded', note: 'Recorded on physical robots: teleoperation, scripted or policy rollouts.' },
   { key: 'human', label: 'Human observation and motion', note: 'Human video, motion capture and hand or body pose. No robot actions unless a resource retargets them.' },
@@ -157,6 +159,7 @@ export function atlasProblems(catalogue, metrics, { benchmarkIds = null } = {}) 
     if (d.access_status && !ACCESS[d.access_status]) problems.push(`${at}: ACCESS_STATUS "${d.access_status}" is not in the reviewed vocabulary`);
     for (const f of ['url', 'source_url']) if (d[f] && !isUrl(d[f])) problems.push(`${at}: ${f.toUpperCase()} must be an https link`);
     if (d.checked_at && !isDate(d.checked_at)) problems.push(`${at}: CHECKED_AT must be YYYY-MM-DD`);
+    problems.push(...publicDateProblems(d, 'datasets', at));
     for (const b of split(d.related_benchmark_ids)) {
       if (!/^bm-[a-z0-9-]+$/.test(b)) problems.push(`${at}: related benchmark id "${b}" must look like bm-<slug>`);
       else if (benchmarkIds && !benchmarkIds.includes(b)) problems.push(`${at}: related benchmark ${b} is not in the Benchmarks catalogue`);
@@ -215,7 +218,7 @@ export function atlasProblems(catalogue, metrics, { benchmarkIds = null } = {}) 
 export const PUBLIC_RESOURCE_FIELDS = Object.freeze([
   'name', 'url', 'description', 'data_origin', 'resource_class', 'embodiment', 'capture_method', 'data_format',
   'access_status', 'license_note', 'version_scope', 'key_takeaway', 'limitations', 'review_status', 'checked_at',
-  'source_url', 'source_locator',
+  'source_url', 'source_locator', ...PUBLIC_DATE_FIELDS,
 ]);
 export const PUBLIC_QUANTITY_FIELDS = Object.freeze([
   'dataset_id', 'data_version', 'metric', 'unit', 'qualifier', 'scope', 'data_origin', 'release_status', 'comparison_group',
@@ -251,7 +254,7 @@ export function buildAtlas({ catalogue, metrics, benchmarks = [], exportedAt, bu
   });
   const resources = included.map((d) => {
     const out = Object.fromEntries(PUBLIC_RESOURCE_FIELDS.map((f) => [f, textOrNull(d[f])]));
-    for (const f of ['url', 'source_url']) out[f] = linkOrNull(out[f]);
+    for (const f of ['url', 'source_url', 'public_date_source_url']) out[f] = linkOrNull(out[f]);
     const tokens = split(d.modalities);
     return {
       ...out,

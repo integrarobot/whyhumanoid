@@ -568,7 +568,8 @@ const evolutionTail = () => `\n<script src="/assets/evolution.js?v=${assetVersio
 function withEvolution(c, body) {
   const evo = EVOLUTION.get(c.id);
   if (!evo || body.includes('id="evolution"')) return body;
-  const section = renderEvolutionSection(evo);
+  // A section can follow its chart with a second one (Benchmarks: the dated results after the publication chronology).
+  const section = `${renderEvolutionSection(evo)}${evo.secondary ? `\n${renderEvolutionSection(evo.secondary, { anchor: 'evolution-results' })}` : ''}`;
   const at = body.indexOf('</header>');
   if (at < 0) throw new Error(`${c.id}: no page header to place the evolution chart after`);
   return `${body.slice(0, at + 9)}\n${section}${body.slice(at + 9)}`;

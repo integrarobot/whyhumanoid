@@ -64,7 +64,7 @@ function lanesBody(c, compactView) {
     }).join('');
     return `<div class="evo-lane"><span class="ll">${esc(r.label)}</span><div class="lt">${pts}</div></div>`;
   }).join('');
-  return { plot: `<div class="evo-lanes">${gridX(ticks)}${rows}</div>`, after: xAxis(ticks), map: `${dayNumber(c.domain.start)}:0%,${dayNumber(c.domain.end)}:100%`, readout: 'count' };
+  return { plot: `<div class="evo-lanes">${gridX(ticks)}${rows}</div>`, plotStyle: `--rows:${c.rows.length}`, after: xAxis(ticks), map: `${dayNumber(c.domain.start)}:0%,${dayNumber(c.domain.end)}:100%`, readout: 'count' };
 }
 
 function panelsBody(c, compactView) {
@@ -99,7 +99,7 @@ function scatterBody(c, compactView) {
 }
 
 const legendStack = (c) => `<ul class="evo-leg">${c.series.slice().reverse().map((s) => `<li><i class="sw st-${s.key}"></i>${esc(s.label)}</li>`).join('')}</ul>`;
-const legendLanes = (c) => (c.points.some((p) => p.hollow) ? `<ul class="evo-leg"><li><i class="sh ep"></i>Dated ${esc(c.unit.replace(/s$/, ''))}</li><li><i class="sh ep ho"></i>${esc(c.id === 'integrators' ? 'Simulation only' : 'Complete hand, not a standalone sensor')}</li></ul>` : '');
+const legendLanes = (c) => (c.points.some((p) => p.hollow) ? `<ul class="evo-leg"><li><i class="sh ep"></i>${esc(c.id === 'benchmarks' ? 'Dated by the first arXiv submission of its paper' : `Dated ${c.unit.replace(/s$/, '')}`)}</li><li><i class="sh ep ho"></i>${esc(c.hollowLabel ?? (c.id === 'integrators' ? 'Simulation only' : 'Complete hand, not a standalone sensor'))}</li></ul>` : '');
 
 function body(c, compactView) {
   const b = c.type === 'columns' ? columnsBody(c, compactView) : c.type === 'stack' ? stackBody(c, compactView) : c.type === 'lanes' ? lanesBody(c, compactView) : c.type === 'panels' ? panelsBody(c, compactView) : scatterBody(c, compactView);
@@ -117,7 +117,7 @@ function chartHtml(c, { compactView = false, idp = '' } = {}) {
   const t1 = dayNumber(c.domain.end);
   const final = c.type === 'stack' ? c.columns.at(-1).value : c.type === 'columns' ? c.columns.reduce((a, x) => a + x.value, 0) : c.type === 'panels' ? c.panels.reduce((a, p) => a + p.points.length, 0) : c.points.length;
   const cursor = b.noCursor || b.ownCursor ? '' : '<span class="evo-cur" aria-hidden="true"></span>';
-  const plot = b.ownCursor ? b.plot : `<div class="evo-plot">${b.plot}${cursor}</div>`;
+  const plot = b.ownCursor ? b.plot : `<div class="evo-plot"${b.plotStyle ? ` style="${b.plotStyle}"` : ''}>${b.plot}${cursor}</div>`;
   return `<div class="evo-chart evo-type-${c.type}" data-chart="${esc(c.id)}" data-t0="${t0}" data-t1="${t1}" data-prec="${esc(c.precision)}"${b.map ? ` data-map="${b.map}"` : ''} data-readout="${b.readout}" data-one="${esc(unitOne(c))}" data-many="${esc(unitMany(c))}">
 <div class="evo-fig" role="img" aria-label="${esc(`${c.title}. ${c.summary}`)}"><div class="evo-main">${plot}${b.after ?? ''}</div>${b.side ?? ''}</div>
 ${b.legend}
@@ -131,8 +131,8 @@ const table = (c) => `<div class="scroll"><table class="evo-tbl"><thead><tr>${c.
 const sourceLinks = (c) => c.sources.filter((s) => s.url).map((s) => `<a href="${esc(s.url)}"${/^https?:/.test(s.url) ? ' rel="noopener"' : ''}>${esc(s.label)}</a>`).join(' · ');
 
 // Section view: the large chart at the top of each of the seven section pages.
-export function renderEvolutionSection(c) {
-  return `<section class="evo evo-sec" id="evolution" aria-labelledby="evo-h-${esc(c.id)}">
+export function renderEvolutionSection(c, { anchor = 'evolution' } = {}) {
+  return `<section class="evo evo-sec" id="${esc(anchor)}" aria-labelledby="evo-h-${esc(c.id)}">
 <div class="evo-head"><p class="lbl">Evolution · replay of dated records, not live activity</p><h2 id="evo-h-${esc(c.id)}">${esc(c.title)}</h2><p class="evo-sub">${esc(c.subtitle)}</p></div>
 ${chartHtml(c)}
 <div class="evo-ctl"><button type="button" class="evo-play" aria-label="Replay ${esc(c.title.toLowerCase())} in time order">Replay</button><label class="evo-scrub"><span class="sr-only">Date cursor for ${esc(c.title.toLowerCase())}</span><input type="range" min="${dayNumber(c.domain.start)}" max="${dayNumber(c.domain.end)}" step="1" value="${dayNumber(c.domain.end)}" aria-valuetext="${esc(fmtDay(c.domain.end))}"></label></div>
