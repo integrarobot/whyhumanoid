@@ -1,0 +1,33 @@
+{
+  "id": "WH-20261125-0659-integrators-backend-sincronizado",
+  "tarea": "Sección Integrators: el backend queda sincronizado (Workers desplegados e importación del maestro) y la sección pasa de bloqueada a completada",
+  "origen": "Pendiente de WH-20261124-2105-integrators-catalogo: desplegar los Workers con el código de Integrators, importar test y producción, y verificar la API",
+  "fecha": "2026-11-25T06:59:37+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Sin cambios de código propios: el código de Integrators (PR #91) va dentro de los paquetes de main c0d1016 que Codex desplegó el 25/11/2026 (ver WH de fechas de Datasets y Benchmarks del mismo día)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Integrators",
+      "url": "https://whyhumanoid.com/integrators/"
+    },
+    {
+      "etiqueta": "PR #91 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/91"
+    }
+  ],
+  "despliegue": [
+    "whyhumanoid-premium versión e7a9dfdc (sha256 aee7bb41…2364) y whyhumanoid-premium-test versión d265d02a (sha256 fa08974b…92bb6), desplegadas por Codex desde main c0d1016.",
+    "Importaciones ok: test (run 45556755631) y producción (run 45557018953, instantánea 2026-11-25T05:56:42Z), con 28 proveedores en Integrators."
+  ],
+  "verificaciones": [
+    "node tools/verify-integrators.mjs --base https://whyhumanoid.com --api https://whyhumanoid-premium.javier-198.workers.dev: 128 de 128. La API de producción sirve los 28 proveedores con sus 26 campos (antes, 7 filas antiguas). En test: 128 de 128.",
+    "verify-staging con la API de producción: 362 de 362."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Javier confirma la entrega.",
+  "corrige": "WH-20261124-2105-integrators-catalogo"
+}

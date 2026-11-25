@@ -1,0 +1,59 @@
+{
+  "id": "WH-20261125-0659-fechas-datasets-benchmarks",
+  "tarea": "Completar fechas de los gráficos de evolución: contrato de columnas de fecha en el maestro para Datasets y Benchmarks, importación y publicación de las fechas verificadas, y despliegue de los Workers",
+  "origen": "Javier, vía Codex, 25/11/2026: «adelante con lo de las fechas». Fuentes primarias para las fechas que faltan, sin sustituir fechas de fundación ni cifras actuales; Codex investiga y escribe en el maestro, Claude implementa y publica; sin tocar x402",
+  "fecha": "2026-11-25T06:59:37+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Contrato acordado con Codex (server/src/public-dates.js): siete columnas añadidas al final de las pestañas Datasets y Benchmarks:\n- PUBLIC_DATE\n- PUBLIC_DATE_PRECISION\n- PUBLIC_DATE_MEANING\n- PUBLIC_DATE_SOURCE_URL\n- PUBLIC_DATE_LOCATOR\n- PUBLIC_DATE_CHECKED_AT\n- PUBLIC_DATE_NOTE (opcional)\nLas seis primeras van juntas, y la precisión debe coincidir con el formato. Vocabulario de significados cerrado, sin fundación, revisión ni versión actual. Con arXiv, el enlace es /abs/<id> y la fecha va al día; se admite el desfase de un mes del identificador (Galaxea: 2025-08-30 con 2509.00576). La fecha no puede ser posterior a su comprobación. La pestaña sin estas columnas sigue siendo válida (formerHeaders).",
+    "Datos, leídos del maestro actual (25/11/2026, 05:32 UTC), donde Codex investigó y escribió todas las fechas:\n- Datasets: 28 de 35 fechados, todos por el primer envío a arXiv del artículo asociado. Sin fecha: Egocentrik 10K, Egoscale, Human Archive, UnifoLM WBT Dataset (Unitree), SynData, Dataset.bot y LingYu Real-World.\n- Benchmarks: 21 de 22 fechados (19 por arXiv v1; PAW por su anuncio oficial del 29/09/2026; OpenEQA por el año de su publicación en CVPR 2024). SpatialBench sigue sin fecha.\nLas salvedades públicas van en la nota: LaFAN1 (SIGGRAPH 2020 anterior), BEHAVIOR-1K (artículo de CoRL 2022 / PMLR 2023 anterior), RoboCoin (anuncio del README distinto), RoboDojo (etiqueta web del 6 de julio).",
+    "Gráficos:\n- Datasets: pasa de 11 a 28 puntos, en 6 orígenes.\n- Benchmarks: pasa a mostrar «Dated publications and announcements of robotics benchmarks», por entorno de evaluación. La marca hueca indica fechas que no son de arXiv. El texto aclara que no es necesariamente la primera aparición pública, corrección de Codex aplicada en el PR #99.\n- Los resultados fechados de Physics-IQ (8 de 34) quedan como segundo gráfico en /benchmarks/.\n- Los gráficos de filas crecen con su número de filas.\nSe mantienen el orden, la rotación de 10 segundos y el resto del diseño. El maestro es el único origen: la lectura revisada solo rellenaría filas vacías, debe coincidir con él y hoy está vacía.",
+    "Pruebas nuevas: server/test/public-dates.test.js (cabecera anterior y nueva, columnas fuera de orden, incompletas, precisión, significado por pestaña, identidad de arXiv y fecha posterior a la comprobación), fixtures con fechas válidas y pruebas de evolución actualizadas, que comprueban que Benchmarks no afirma una primera aparición. Regla en AGENTS.md y pasos en el skill semanal. x402 sin tocar."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #98 (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/98"
+    },
+    {
+      "etiqueta": "PR #99, corrección del rótulo (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/99"
+    },
+    {
+      "etiqueta": "Datasets",
+      "url": "https://whyhumanoid.com/datasets/#evolution"
+    },
+    {
+      "etiqueta": "Benchmarks",
+      "url": "https://whyhumanoid.com/benchmarks/#evolution"
+    },
+    {
+      "etiqueta": "Resultados fechados de Benchmarks",
+      "url": "https://whyhumanoid.com/benchmarks/#evolution-results"
+    },
+    {
+      "etiqueta": "Portada (carrusel)",
+      "url": "https://whyhumanoid.com/"
+    }
+  ],
+  "despliegue": [
+    "Web: main c0d1016 (PR #98 en 2ad4934 y PR #99 en c0d1016), publicada por GitHub Pages. charts.json, los dos atlas, evolution.css e index.html de producción son idénticos byte a byte a los de main.",
+    "Paquetes del Worker reproducibles desde main c0d1016 con esbuild 0.27.7 y stripe 23.1.0 (node server/scripts/build-dashboard.mjs), con el mismo hash en dos construcciones:\n- producción: dist/worker.dashboard.js, sha256 aee7bb41b1d35e16bd48f70ae7ebf3dfcd3edf8ec5a9b78daf105010f3692364, 458.047 bytes;\n- test: dist/worker.staging.js, sha256 fa08974b38d54007d3c96b226a591725bf33cbc8f23a8f04393aa3f6c2c92bb6, 378.867 bytes.\nCodex reprodujo los mismos hashes. La diferencia con los caracteres del editor (458.035 y 378.855) son 12 caracteres no ASCII de varios bytes.",
+    "Codex desplegó por el Dashboard:\n- whyhumanoid-premium-test: versión activa d265d02a, con STAGING_SITE_COMMIT=c0d101608057146797ba54af419d41e89e90cc51;\n- whyhumanoid-premium: versión activa e7a9dfdc.\nNo cambian variables, vínculos, precios ni migraciones (ninguna nueva desde 0003). El paquete no contiene x402, que sigue solo en el PR #93, sin fusionar.",
+    "Importaciones del maestro con el flujo existente:\n- test: run 45556755631 desde feat/premium-preview, ok (Datasets 35, Benchmarks 22, Integrators 28);\n- producción: run 45557018953 desde main, ok, instantánea 2026-11-25T05:56:42Z.\nSin correos ni cobros."
+  ],
+  "verificaciones": [
+    "API de producción frente al maestro (instantáneas data/datasets y data/benchmarks generadas desde él): Datasets 35 filas, 28 fechadas; Benchmarks 22 filas, 21 fechadas. Los 7 campos de fecha son idénticos en los 57 registros: 49 fechados, 294 celdas obligatorias rellenas y 49 notas. La API de test da el mismo resultado.",
+    "Producción, con navegador real:\n- verify-evolution: 183 de 183, con rotación completa 1→2→3→4→5→6→0 e intervalos de 10.000 ms (el primero, 9.603, empieza a medir con la diapositiva en curso);\n- verify-staging con la API de producción: 362 de 362 (salud, acceso de visitante y de suscriptor, precio USD);\n- verify-integrators con la API de producción: 128 de 128 (la API sirve los 28 proveedores).\nEn test: verify-staging 362 de 362 y verify-integrators 128 de 128.",
+    "Antes de fusionar, en local:\n- 152 de 152 pruebas de API;\n- test-evolution 10 de 10;\n- verify-evolution 183 de 183;\n- verify-staging --local 374 de 374;\n- verify-site, verify-pages, verify-premium-app, test-reports 19 de 19 y test-integrators 6 de 6;\n- check-public y todos los --check;\n- check-workbook sobre los maestros del 24 y del 25/11.\nCI en verde en los PR #98 y #99.",
+    "Codex revisó los PR #98 y #99 y pasó sus 13 pruebas independientes de fechas y evolución. Confirmó que las 28 y 21 fechas coinciden con el maestro y que el árbol de main es el revisado.",
+    "Verificación final independiente de Codex en producción (25/11/2026), instantánea 2026-11-25T05:56:42.000Z.\n- Los 7 campos de fecha, vacíos incluidos, de las 57 filas de la API, comparados con la lectura de las celdas del maestro: cero diferencias. Datasets tiene 35 filas, 28 fechadas; Benchmarks, 22 filas, 21 fechadas.\n- Salud correcta, precio de USD 10000 al año y checkout_available true, sin cambios.\n- Chrome: /datasets/ con 28 de 35 en seis filas sin solaparse con el eje; /benchmarks/ con 21 de 22, el rótulo corregido de publicaciones y anuncios y Physics-IQ (8 de 34) aparte; en la portada, las dos pestañas actualizadas con las seis filas de Datasets visibles; movimiento reducido respetado.\n- Fechas y tablas nativas del maestro revisadas a simple vista.\n- main c0d1016 es el árbol revisado, los hashes coinciden con la construcción y las versiones son test d265d02a y producción e7a9dfdc.\n- Wiki de fuentes y evidencias de Codex actualizada."
+  ],
+  "pendientes": [
+    "Sin fecha comprobada, y así se muestra: 7 recursos de Datasets (sobre todo servicios, colecciones o portales sin artículo equivalente verificado) y SpatialBench (no se usa el artículo no relacionado de Ropedia).",
+    "Resto de secciones con la cobertura anterior:\n- Humanoids: 40 de 134 robots fechados.\n- Components: 17 de 19. RoboTact solo tiene un folleto de 2025 que no prueba el lanzamiento, y la página original del BioTac SP da error 403.\n- Integrators: 12 de 28 proveedores.\n- Deployments: 111 casos más 11 sin fecha.\n- Reports: 9 de 13 hallazgos."
+  ],
+  "siguiente_accion": "Javier confirma la entrega. Las fechas nuevas se escriben en las columnas PUBLIC_DATE del maestro y se publican con export-datasets, export-benchmarks y export-evolution desde la exportación actual."
+}
