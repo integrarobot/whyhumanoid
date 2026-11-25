@@ -38,6 +38,7 @@ import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
 import { renderEvolutionSection } from './evolution-view.mjs';
+import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
 
 export const SITE = 'https://whyhumanoid.com';
 const APP = `${SITE}/app/`;
@@ -48,6 +49,8 @@ const REGISTRY = 'tools/permalinks.json';
 const ANALYTICS = `<!-- Cloudflare Web Analytics: visit counts without cookies (approved split, phase 3) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76de8d3b4a534b91bd808e724f9c1594"}'></script><!-- End Cloudflare Web Analytics -->`;
 // The stylesheet URL carries a hash of its content, so a changed stylesheet is never served from a browser's cache.
 const CSS_VERSION = createHash('sha256').update(readFileSync(new URL('assets/pages.css', root))).digest('hex').slice(0, 10);
+// The shared footer's rule lives in pages.css exactly as tools/footer-view.mjs defines it (no second copy to drift).
+if (!readFileSync(new URL('assets/pages.css', root), 'utf8').includes(FOOTER_CSS)) throw new Error('assets/pages.css lacks the shared footer rule (FOOTER_CSS in tools/footer-view.mjs)');
 // Robotics Evaluation Atlas assets, loaded on /benchmarks/ only (their own cache keys, so other pages do not change).
 const assetVersion = (f) => createHash('sha256').update(readFileSync(new URL(f, root))).digest('hex').slice(0, 10);
 const GENERATED_DIRS = ['robots', 'companies', 'reports', 'method', 'subscribe', ...CATEGORIES.map((c) => c.path.slice(1, -1))];
@@ -323,7 +326,7 @@ ${body}
 </main>${tail}
 <script src="/assets/nav.js?v=${assetVersion('assets/nav.js')}" defer></script>
 ${section ? "<script>(function(){var a=document.querySelector('nav.cats [aria-current]');if(a&&a.parentNode.scrollWidth>a.parentNode.clientWidth)a.parentNode.scrollLeft=a.offsetLeft-a.parentNode.offsetLeft-16;})();</script>" : ''}
-<footer class="foot"><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/method/">Method</a><a href="/subscribe/">Subscription and reports</a><a href="/agents/">Agents</a><a href="/app/">Subscriber app</a><a href="/privacy/">Privacy</a></nav><p>Why Humanoid? by Integrarobot. Help: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
+<footer class="foot">${renderSiteFooterNav()}<nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/subscribe/">Subscription and reports</a><a href="/app/">Subscriber app</a><a href="/privacy/">Privacy</a></nav><p>Why Humanoid? by Integrarobot. Help: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
 ${ANALYTICS}
 </body>
 </html>
@@ -891,6 +894,23 @@ ${code(`curl -fsSLO https://whyhumanoid.com/agents/whyhumanoid.mjs\nexport WHYHU
   return page({ title: 'Agents: API, MCP and command line · Why Humanoid?', description: `Use the Why Humanoid? catalogue from your agents: HTTP API, an MCP server and a command-line tool, with the same subscription (${price()}) and no extra charge. Fair use: ${USAGE_LIMITS.perMinute} requests a minute per key.`, path: '/agents/', body });
 }
 
+// ---------- about (Javier, 25 Nov 2026): who makes the catalogue and what a record is; no counts or prices ----------
+function aboutPage() {
+  const cats = CATEGORIES.map((c) => `<a href="${c.path}">${esc(c.label.charAt(0) + c.label.slice(1).toLowerCase())}</a>`);
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'About']])}
+<article class="entity">
+<p class="kicker">About</p>
+<h1>About Why Humanoid?</h1>
+<p class="lede">Why Humanoid? is Integrarobot's research catalogue of humanoid robots and the ecosystem around them. It helps people and their software agents explore source-linked evidence and work through business questions about these robots.</p>
+<section id="covers"><h2>What it covers</h2><p>${cats.slice(0, -1).join(', ')} and ${cats.at(-1)}.</p></section>
+<section id="records"><h2>What a record is</h2><p>Each record compiles claims made in public sources, with a link to the source. Where the evidence allows, records tell demonstrations, trials and pilots, announcements and operations apart.</p><p>A record states what its source says. It is not an independent verification: manufacturer claims are shown as claims, not as verified capabilities, and a missing value stays missing. The <a href="/method/">Method</a> explains the definitions and how records are kept.</p></section>
+<section id="who"><h2>Who makes it</h2><p>Why Humanoid? is made by <a href="https://integrarobot.com">Integrarobot</a>, founded by Javier Martín, an entrepreneur and AI educator in Spain. Integrarobot helps companies understand the value of integrating AI-driven robotics.</p></section>
+<section id="use"><h2>Using it</h2><p>The public catalogue is free to browse. Complete Deployments and Components, and custom company reports, are described on <a href="/subscribe/">Subscription and reports</a>. Software agents can use the same catalogue through the API, the MCP server and the command-line tool: see <a href="/agents/">For agents</a>.</p></section>
+<section id="contact"><h2>Contact</h2><p>Questions and corrections: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>.</p></section>
+</article>`;
+  return page({ title: 'About Why Humanoid?', description: "Why Humanoid? is Integrarobot's research catalogue of humanoid robots and their ecosystem: source-linked records for people and software agents, with what each record does and does not establish.", path: '/about/', body });
+}
+
 // ---------- privacy (25 Nov 2026): what the site and the app actually do, nothing more ----------
 function privacyPage() {
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Privacy']])}
@@ -960,7 +980,7 @@ ${kv([['In operation', 'The source says the robot is working in operation.'], ['
 }
 
 export function sitemapUrls(model) {
-  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/privacy/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
+  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/about/', '/privacy/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
 }
 function sitemap(model) {
   const lastmod = String(model.snapshot).slice(0, 10);
@@ -1003,6 +1023,7 @@ export function buildPages(registry = readRegistry()) {
   files.set('subscribe/index.html', subscribePage(model));
   files.set('agents/index.html', agentsPage());
   files.set('privacy/index.html', privacyPage());
+  files.set('about/index.html', aboutPage());
   // /robots/ was the index of robot pages until 23 Nov 2026: it now points to the Humanoids category.
   files.set('robots/index.html', redirectPage('/humanoids/', 'the humanoid robots'));
   files.set('companies/index.html', companiesIndex(model));
