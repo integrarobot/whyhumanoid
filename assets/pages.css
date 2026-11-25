@@ -116,3 +116,5 @@ table.dir td:first-child{white-space:nowrap}
 }
 pre.code{overflow-x:auto;max-width:100%;padding:12px 14px;background:var(--ink-0,#0b0c0e);border:1px solid var(--line);font:13px/1.5 var(--f-mono);white-space:pre}
 pre.code code{font:inherit}
+.entity :not(pre) > code{overflow-wrap:anywhere;word-break:break-word}
+.entity pre.code{min-width:0;width:100%;box-sizing:border-box}

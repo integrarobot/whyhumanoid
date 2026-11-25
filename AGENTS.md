@@ -4,11 +4,25 @@ Why Humanoid? (whyhumanoid.com), de Integrarobot. Decide Javier; ejecuta Claude;
 
 ## Reglas vigentes
 
-- Oferta de dos vías (Javier, 24/11/2026; sustituye la vista previa de 10 filas y el precio en EUR para suscripciones nuevas):
-  - A. Acceso completo a los datos: «Use the evidence to make your own decisions». Suscripción de US$100 al año, facturada anualmente y sin prueba gratuita, que abre Deployments y Components completos. Es acceso a investigación y datos, no una recomendación personalizada.
-  - B. Informes a medida para empresas: «Our expertise, applied to your company's decisions». Robot integration diagnostic (Deployments) e Industrial diversification report (Components), US$1,000 cada uno, aparte de la suscripción. Su pedido y pago siguen DESACTIVADOS («Not available to order yet»): sin formulario, sin checkout y sin promesa de entrega.
+- Oferta de dos vías (Javier, 24/11/2026; lanzamiento del 25/11/2026). Sustituye a la vista previa de 10 filas y al precio en EUR para las suscripciones nuevas.
+  - A. Acceso completo a los datos: «One subscription. The full catalogue, for you and your agents.»
+    - Suscripción de US$100 al año, facturada anualmente y sin prueba gratuita, que abre Deployments y Components completos.
+    - Sirve a la persona y a sus agentes por cuatro vías: web, API autenticada, MCP (`/mcp`, SDK oficial) y CLI (`agents/whyhumanoid.mjs`). Mismo derecho de acceso, sin cargo extra por agentes, con uso razonable de 60 peticiones por minuto y 5.000 al día por clave, y nunca «ilimitado».
+    - Es acceso a investigación y datos, no una recomendación personalizada.
+  - B. Informes a medida: Robot integration diagnostic y Industrial diversification report, US$1,000 cada uno, pago único, aparte de la suscripción en los dos sentidos.
+    - Antes de pagar se muestra literal `BEFORE_PAYMENT` (`server/src/orders/services.js`).
+    - Tras el pago verificado se abre un cuestionario privado. El PDF se envía por correo en 24 horas desde el envío del cuestionario completo; el pago solo no pone en marcha el reloj.
+    - Pedido, cuestionario, plazo, avisos y cola de operador: `server/src/orders/`. Procedimiento: `ops/informes-a-medida.md`.
+    - La venta en vivo sigue cerrada (`REPORTS_LIVE_OPEN = false`) hasta que el flujo pase en modo test de Stripe con el aviso al operador y la recuperación verificados.
   - Las dos vías se muestran arriba en la portada y en Deployments, Components y /subscribe/, en inglés. El resto de categorías sigue gratis.
   - El acceso lo decide solo `server/src/access/matrix.js`, con la lista blanca de campos de `server/src/access/fields.js`.
+- Dirección pública de soporte (Javier, 25/11/2026): `javier@liderarmente.com` (`server/src/support.js`).
+  - Aparece en el pie, la suscripción, la app, los errores, la recuperación de pedidos y la documentación de agentes.
+  - Es la única dirección permitida en las plantillas. La importación sigue quitando cualquier contacto de los datos.
+- Textos para el lector (Javier, 25/11/2026): en inglés claro.
+  - Empiezan por lo que el lector puede aprender, con salvedades cortas; las definiciones largas van en Method.
+  - Nunca nombres de archivo, columnas (`PUBLIC_DATE`…), mecánica de importación, menciones a Codex ni contabilidad del libro (pestañas, filas, «master»).
+  - Se corrigen los generadores, no el HTML.
 - Listados públicos completos y detalle de pago (Javier, 24/11/2026). Cada caso de Deployments y cada producto de Components se publica, sin cuenta, con su resumen público (los campos de `fields.js`), sus fuentes y sus salvedades. El detalle es de pago:
   - en Deployments: emplazamiento, relación comercial, descripción de la tarea y flujo, integración, cronología, afirmaciones, métricas, relaciones con la evidencia, confianza, notas y preguntas abiertas;
   - en Components: el pasaporte técnico completo, con la fuente de cada campo, la comparación completa y los filtros técnicos.

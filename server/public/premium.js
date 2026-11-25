@@ -980,7 +980,7 @@
     // The home page's search form sends /app/?q=...: open the search with it.
     if (params.has('q') && !location.hash) history.replaceState(null, '', `${location.pathname}#${searchHash({ q: params.get('q').trim(), tags: [], category: '', page: 1 })}`);
     const [list, plan] = await Promise.all([api('/v1/datasets', { auth: false }), api('/v1/billing/plan', { auth: false })]);
-    if (list.status !== 200) return notice('The service is not available right now.', true);
+    if (list.status !== 200) return notice(`The service is not available right now. Please try again in a few minutes, or write to ${SUPPORT}.`, true);
     state.datasets = list.data.datasets;
     state.plan = plan.status === 200 ? plan.data : null;
     if (state.plan) $('price').textContent = state.plan.plan.price;
@@ -999,7 +999,7 @@
     if (params.get('checkout') === 'success') {
       notice('Payment received. Full access opens as soon as Stripe confirms the subscription.');
       for (let i = 0; i < 20 && !full(); i++) { await new Promise((r) => setTimeout(r, 3000)); await refresh(); }
-      notice(full() ? 'Your subscription is active: complete Deployments and Components are open.' : 'Stripe has not confirmed the subscription yet. Reload this page in a minute.');
+      notice(full() ? 'Your subscription is active: complete Deployments and Components are open, for you and your agents.' : `Stripe has not confirmed the subscription yet. Reload this page in a minute, or write to ${SUPPORT}.`);
     }
     // Return from a report Checkout: the order is confirmed by Stripe's signed event or by the server asking Stripe,
     // never by this redirect.
@@ -1026,7 +1026,7 @@
     if (status === 202) notice('Check your email for a sign-in link. It works once and expires in 15 minutes.');
     else if (data.error === 'too_many_login_requests') notice('Too many requests. Try again later.', true);
     else if (data.error === 'email_not_configured') notice('Sign-in is not available yet.', true);
-    else notice('The sign-in link could not be sent.', true);
+    else notice(`The sign-in link could not be sent. Check the address, or write to ${SUPPORT}.`, true);
   });
   $('checkout').addEventListener('click', async () => {
     $('checkout').disabled = true;
@@ -1034,14 +1034,14 @@
     if (status === 200 && data.url) return location.assign(data.url);
     $('checkout').disabled = false;
     if (data.error === 'already_subscribed') { notice('Your subscription is already active.'); return refresh(); }
-    notice(data.error === 'checkout_disabled' || data.error === 'live_checkout_disabled' ? 'Subscriptions are not open yet.' : 'Checkout is not available right now.', true);
+    notice(data.error === 'checkout_disabled' || data.error === 'live_checkout_disabled' ? 'Subscriptions are not open yet.' : `Checkout is not available right now. Nothing was charged. Write to ${SUPPORT} if this continues.`, true);
   });
   $('portal').addEventListener('click', async () => {
     $('portal').disabled = true;
     const { status, data } = await api('/v1/billing/portal', { method: 'POST' });
     $('portal').disabled = false;
     if (status === 200 && data.url) return location.assign(data.url);
-    notice('The subscription portal is not available right now.', true);
+    notice(`The subscription portal is not available right now. Write to ${SUPPORT} to change or cancel your subscription.`, true);
   });
   $('confirm-login-btn').addEventListener('click', async () => {
     $('confirm-login-btn').disabled = true;
@@ -1050,7 +1050,7 @@
     $('confirm-login').hidden = true;
     const { status, data } = await api('/v1/auth/redeem', { method: 'POST', body: { token }, auth: false });
     if (status === 200) { state.session = data.token; store.set(data.token); notice(''); }
-    else notice('This sign-in link is invalid or has expired. Request a new one.', true);
+    else notice('This sign-in link has already been used or has expired. Request a new one above.', true);
     await refresh();
   });
   $('signout').addEventListener('click', () => signOut());

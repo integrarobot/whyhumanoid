@@ -224,7 +224,8 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
           subject: 'Your Why Humanoid? sign-in link',
           text:
             `Sign in to Why Humanoid? Premium:\n\n${config.premiumUrl}#login=${token}\n\n` +
-            'The link works once and expires in 15 minutes. If you did not ask for it, ignore this email.',
+            'The link works once and expires in 15 minutes. If you did not ask for it, ignore this email.\n\n' +
+            `Help: ${SUPPORT_EMAIL}`,
         });
         // Same answer whether or not the address has an account.
         return json(202, { sent: true });

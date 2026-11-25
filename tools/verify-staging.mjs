@@ -38,7 +38,7 @@ const check = (cond, msg) => (cond ? ok.push(msg) : failures.push(msg));
 if (SHOTS) mkdirSync(SHOTS, { recursive: true });
 
 const browser = await chromium.launch();
-const SAMPLE = ['/reports/deployment-records/', '/reports/anthropic-what-work-can-robots-do-2026/', '/humanoids/agibot-x1-4/', '/companies/tesla/', '/companies/agility-robotics/', '/other-robots/realtime/', '/subscribe/', '/companies/', '/method/', '/reports/deployment-records/'];
+const SAMPLE = ['/agents/', '/privacy/', '/reports/deployment-records/', '/reports/anthropic-what-work-can-robots-do-2026/', '/humanoids/agibot-x1-4/', '/companies/tesla/', '/companies/agility-robotics/', '/other-robots/realtime/', '/subscribe/', '/companies/', '/method/', '/reports/deployment-records/'];
 for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['phone', { width: 375, height: 812 }]]) {
   const ctx = await browser.newContext({ viewport, deviceScaleFactor: 1, hasTouch: label === 'phone' });
   const page = await ctx.newPage();
