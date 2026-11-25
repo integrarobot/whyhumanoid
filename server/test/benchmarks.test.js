@@ -122,7 +122,7 @@ test('an inconsistent Benchmark Results tab makes the whole import fail', async 
   assert.match(result.error, /Benchmarks: .*not in the Benchmarks catalogue/);
 });
 
-test('the committed snapshot matches the master of 23 Nov 2026: 22 resources, 34 observations from 2, 20 awaiting', () => {
+test('the committed snapshot matches the master of 25 Nov 2026: 22 resources, 34 observations from 2, 20 awaiting, 21 dated', () => {
   const atlas = JSON.parse(readFileSync(new URL('../../data/benchmarks/atlas.json', import.meta.url), 'utf8'));
   assert.deepEqual(snapshotProblems(atlas), []);
   const c = atlas.counts;
@@ -140,5 +140,11 @@ test('the committed snapshot matches the master of 23 Nov 2026: 22 resources, 34
   assert.ok(atlas.results.every((r) => r.value === null || (r.unit === '%' && r.value > 1 && r.value <= 100)), 'native percentage scale');
   assert.equal(atlas.results.find((r) => r.id === 'res-paw-agentic-d10-1-1').value, 65);
   for (const b of atlas.benchmarks) assert.deepEqual(b.capabilities, capabilitiesOf(b.capability_tags), `${b.id}: groups follow the reviewed vocabulary`);
-  assert.equal(atlas.snapshot.exported_at, '2026-11-23T15:28:29.000Z');
+  assert.equal(atlas.snapshot.exported_at, '2026-11-25T05:32:22.000Z');
+  // First public dates (25 Nov 2026): 21 of 22, SpatialBench undated; each with its meaning and source.
+  const dated = atlas.benchmarks.filter((b) => b.public_date);
+  assert.equal(dated.length, 21);
+  assert.equal(atlas.benchmarks.find((b) => b.id === 'bm-spatialbench').public_date, null);
+  assert.ok(dated.every((b) => b.public_date_meaning && b.public_date_source_url && b.public_date_checked_at));
+  assert.deepEqual([atlas.benchmarks.find((b) => b.id === 'bm-openeqa').public_date_precision, atlas.benchmarks.find((b) => b.id === 'bm-paw').public_date_meaning], ['year', 'official_announcement']);
 });

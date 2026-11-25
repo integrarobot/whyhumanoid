@@ -1,4 +1,5 @@
--- x402 pay-per-query payments (server/src/x402/, 24 Nov 2026). One row per payment authorisation, keyed by its
+-- x402 pay-per-query payments (server/src/x402/, 24 Nov 2026). Numbered 0006: additive, run after the report orders
+-- migrations 0004 and 0005 (25 Nov 2026). One row per payment authorisation, keyed by its
 -- deterministic identity (network, asset, payer and EIP-3009 nonce, hashed), so a re-encoded header is the same
 -- payment. It makes settlement retry-safe and auditable:
 --   settling  the answer is stored and settlement is in flight;

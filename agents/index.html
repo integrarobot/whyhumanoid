@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agents: API, MCP and command line · Why Humanoid?</title>
+<meta name="description" content="Use the Why Humanoid? catalogue from your agents: HTTP API, an MCP server and a command-line tool, with the same subscription (US$100 per year) and no extra charge. Fair use: 60 requests a minute per key.">
+<link rel="canonical" href="https://whyhumanoid.com/agents/">
+<meta name="theme-color" content="#0B0C0E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Why Humanoid?">
+<meta property="og:url" content="https://whyhumanoid.com/agents/">
+<meta property="og:title" content="Agents: API, MCP and command line · Why Humanoid?">
+<meta property="og:description" content="Use the Why Humanoid? catalogue from your agents: HTTP API, an MCP server and a command-line tool, with the same subscription (US$100 per year) and no extra charge. Fair use: 60 requests a minute per key.">
+<meta property="og:image" content="https://whyhumanoid.com/assets/og/whyhumanoid-og-v1.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap">
+<link rel="stylesheet" href="/assets/pages.css?v=af48ea3ae5">
+</head>
+<body>
+<header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><button class="cat-toggle" id="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-menu" hidden>Categories<span class="chev" aria-hidden="true"></span></button><nav class="cats" id="cat-menu" aria-label="Categories"><a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a><a href="/reports/">Reports</a></nav></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Why Humanoid?</a> <span aria-hidden="true">/</span> <span aria-current="page">Agents</span></nav>
+<article class="entity">
+<p class="kicker">For your software agents</p>
+<h1>Use the catalogue from your agents</h1>
+<p class="lede">Your agents can read Why Humanoid? the way you do: the free catalogue without any key, and complete Deployments and Components with your subscription. Same account, same access, no extra charge.</p>
+<section id="start"><h2>Before you start</h2><ol><li>Free data needs nothing: the API, the MCP server and the command-line tool all work without a key, with public values.</li><li>For complete Deployments and Components, <a href="/subscribe/">subscribe</a> (US$100 per year), then create an API key in <a href="/app/#keys">the app, under Agent access</a>. The key is shown once; keep it like a password.</li><li>Revoke a key there at any time; it stops working at once. When the subscription ends, the paid data stops: the HTTP API and the command-line tool answer 403 on Deployments and Components rows, and MCP returns their public fields. Every public endpoint keeps working, with or without a key.</li></ol>
+<dl class="kv"><dt>Fair use</dt><dd>60 requests a minute and 5,000 a day per key. Over the limit, requests get HTTP 429 with a Retry-After header; nothing is charged.</dd><dt>What agents can read</dt><dd>The published catalogue: every category, and with a subscription every field of Deployments and Components. Not accounts, orders, custom reports or internal tables.</dd><dt>Help</dt><dd><a href="mailto:javier@liderarmente.com">javier@liderarmente.com</a></dd></dl></section>
+<section id="api"><h2>HTTP API</h2><p>JSON over HTTPS at <code>https://whyhumanoid-premium.javier-198.workers.dev</code>. Send the key as a Bearer token.</p>
+<pre class="code"><code># Tables and what your access reads from each
+curl https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets
+
+# Search across categories
+curl &quot;https://whyhumanoid-premium.javier-198.workers.dev/v1/search?q=pallet&amp;category=deployments&quot; -H &quot;Authorization: Bearer YOUR_API_KEY&quot;
+
+# Rows of one table (every field with a subscription)
+curl &quot;https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets/deployments?limit=25&amp;offset=0&quot; -H &quot;Authorization: Bearer YOUR_API_KEY&quot;
+
+# Without a key: the public rows of Deployments
+curl https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets/deployments/preview</code></pre>
+<p>Published atlases (Datasets, Benchmarks, Reports, Integrators and the evolution charts) are public JSON files on this site, for example <code>https://whyhumanoid.com/data/reports/atlas.json</code>.</p></section>
+<section id="mcp"><h2>MCP server</h2><p>A remote MCP server (Streamable HTTP) at <code>https://whyhumanoid-premium.javier-198.workers.dev/mcp</code>, with read-only tools: <code>list_categories</code>, <code>search_catalogue</code>, <code>get_rows</code>, <code>get_atlas</code>, <code>get_relations</code> and <code>account_status</code>. Add it to any client that supports remote MCP servers with a custom header, for example in a JSON configuration:</p>
+<pre class="code"><code>{
+  &quot;mcpServers&quot;: {
+    &quot;whyhumanoid&quot;: {
+      &quot;type&quot;: &quot;http&quot;,
+      &quot;url&quot;: &quot;https://whyhumanoid-premium.javier-198.workers.dev/mcp&quot;,
+      &quot;headers&quot;: { &quot;Authorization&quot;: &quot;Bearer YOUR_API_KEY&quot; }
+    }
+  }
+}</code></pre>
+<p>Leave out the header to use the public catalogue only. The exact place for this configuration depends on your client; check its documentation for "remote MCP server" or "HTTP transport".</p></section>
+<section id="cli"><h2>Command-line tool</h2><p>One JavaScript file with no dependencies (Node.js 18 or later). Read it before you run it: <a href="/agents/whyhumanoid.mjs">whyhumanoid.mjs</a>.</p>
+<pre class="code"><code>curl -fsSLO https://whyhumanoid.com/agents/whyhumanoid.mjs
+export WHYHUMANOID_API_KEY=YOUR_API_KEY   # optional: public data needs no key
+node whyhumanoid.mjs categories
+node whyhumanoid.mjs search pallet --category deployments
+node whyhumanoid.mjs rows deployments --limit 5
+node whyhumanoid.mjs atlas reports
+node whyhumanoid.mjs account</code></pre>
+<p>Output is JSON. Run <code>node whyhumanoid.mjs --help</code> for every option.</p></section>
+<section><h2>Good to know</h2><p>Records are claims as their sources state them, not verified facts; missing values stay missing. Custom company reports are ordered by people, in <a href="/subscribe/#reports">the app</a>, not through these tools.</p></section>
+</article>
+</main>
+<script src="/assets/nav.js?v=b04ddeb126" defer></script>
+
+<footer class="foot"><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/method/">Method</a><a href="/subscribe/">Subscription and reports</a><a href="/agents/">Agents</a><a href="/app/">Subscriber app</a><a href="/privacy/">Privacy</a></nav><p>Why Humanoid? by Integrarobot. Help: <a href="mailto:javier@liderarmente.com">javier@liderarmente.com</a>. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
+<!-- Cloudflare Web Analytics: visit counts without cookies (approved split, phase 3) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76de8d3b4a534b91bd808e724f9c1594"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

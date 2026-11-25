@@ -8,8 +8,10 @@ import { PUBLIC_FIELDS } from '../src/access/fields.js';
 const legacy = readLegacySnapshot();
 const updates = readVerifiedUpdates();
 
-// 133 legacy robots plus each verified insertion (Darwin-0, 17 Nov 2026, is the first). Ids and sheet rows stay unique.
-const EXPECTED_PUBLIC = 133 + updates.inserted.length;
+// 133 legacy robots plus each verified insertion (Darwin-0, 17 Nov 2026, is the first), less the records the workbook
+// moved to another tab (tools/humanoids-identity.json, 25 Nov 2026), which keep a labelled page but leave the catalogue.
+// Ids and sheet rows stay unique.
+const EXPECTED_PUBLIC = 133 + updates.inserted.length - (updates.moved?.length ?? 0);
 
 test('the committed free catalogue holds every legacy and inserted public robot once', () => {
   const out = buildExport(legacy, updates);

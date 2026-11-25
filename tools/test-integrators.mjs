@@ -4,6 +4,7 @@
 // project is one project, each provider has one free profile page with its sources and unknowns, the earlier
 // addresses still resolve, and nothing private reaches the pages. Run in CI:  node --test tools/test-integrators.mjs
 
+import { SUPPORT_EMAIL } from '../server/src/support.js';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
@@ -79,7 +80,8 @@ test('each provider has one free profile page with every field, its sources and 
     for (const u of p.sources) assert.ok(html.includes(esc(u)), `${p.id}: source ${u}`);
     for (const f of p.unknown) assert.ok(html.includes('class="na"'), `${p.id}: ${f} shown as unknown`);
     assert.ok(html.includes(esc(p.fields.limitations).replace(/\n/g, '<br>')), `${p.id}: limitations next to the claims`);
-    assert.doesNotMatch(html, /mailto:|@[a-z0-9-]+\.(com|es|fr|de|fi|jp|se|ai|io)\b/i, `${p.id}: no personal contact`);
+    // The public support address of the site footer is allowlisted (Javier, 25 Nov 2026); no other contact may appear.
+    assert.doesNotMatch(html.replaceAll(`mailto:${SUPPORT_EMAIL}`, '').replaceAll(SUPPORT_EMAIL, ''), /mailto:|@[a-z0-9-]+\.(com|es|fr|de|fi|jp|se|ai|io)\b/i, `${p.id}: no personal contact`);
   }
   assert.equal(paths.size, atlas.providers.length);
 });

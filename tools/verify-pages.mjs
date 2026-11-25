@@ -8,6 +8,7 @@
 //      free preview rows; no record identifiers.
 //   4. The sitemap lists exactly the current pages; retired addresses redirect (without JavaScript) and are not listed;
 //      404.html sends an unknown robot slug with a known id to the current page.
+import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
 import { JSDOM } from 'jsdom';
 import { existsSync, readFileSync } from 'node:fs';
 import { SITE, buildPages, publishedReports, reportPath, sitemapUrls } from './build-pages.mjs';
@@ -94,7 +95,7 @@ if (doc('/deployments/').querySelectorAll('article.dep').length) fail('/deployme
 // Every organisation of a public Components product has a company page (reviewed makers, tools/components-makers.json).
 for (const card of doc('/components/').querySelectorAll('#pcs .pc')) if (!card.querySelector('.pc-m a[href^="/companies/"]')) fail(`/components/: ${card.dataset.id} has no company page`);
 for (const id of ['investment', 'integrators']) for (const a of doc(`/${id}/`).querySelector('article section table').querySelectorAll('tbody tr td:first-child a')) if (!a.getAttribute('href').startsWith('/companies/')) fail(`/${id}/: ${a.textContent} does not link to its company page`);
-if (doc('/humanoids/').querySelectorAll('tbody tr').length !== model.robots.length) fail('/humanoids/: does not list every robot');
+if (doc('/humanoids/').querySelectorAll('tbody tr:not(.evo-tbl tr)').length !== model.robots.length) fail('/humanoids/: does not list every robot');
 // Reports (Research Conclusions Atlas, 24 Nov 2026): the existing analysis stays at /reports/deployment-records/; every
 // report has its page with a link to its public original and every finding's passport; every finding has a row in the
 // table; every chart draws only checked findings, one mark per original estimate, and its table holds the same marks.
@@ -157,7 +158,7 @@ for (const rbx of model.robots) {
 }
 for (const idx of ['/humanoids/', '/companies/']) {
   const d = doc(idx);
-  const n = d.querySelectorAll('tbody tr').length;
+  const n = d.querySelectorAll('tbody tr:not(.evo-tbl tr)').length; // the evolution chart's data table aside
   const want = idx === '/humanoids/' ? model.robots.length : model.companies.length;
   if (n !== want) fail(`${idx}: lists ${n} of ${want}`);
   for (const a of d.querySelectorAll('a[href^="/"]')) if (!exists(a.getAttribute('href'))) fail(`${idx}: broken link ${a.getAttribute('href')}`);
@@ -300,7 +301,7 @@ if (went !== rb.path) fail(`404.html: /robots/any-old-name-${rb.id}/ went to ${w
     if (!/not facts verified/.test(pd.body.textContent)) fail(`/deployments/${slug}/: no caveat`);
   }
   const offer = d.getElementById('offer');
-  if (!offer || !/US\$100/.test(offer.textContent) || !/Not available to order yet/.test(offer.textContent)) fail('/deployments/: the two paths are missing');
+  if (!offer || !/US\$100/.test(offer.textContent) || !offer.textContent.includes(BEFORE_PAYMENT) || !(REPORTS_LIVE_OPEN ? offer.querySelector('a[href="/app/#reports"]') : /Not available to order yet/.test(offer.textContent))) fail('/deployments/: the two paths are missing or do not match the report sales state');
   if (!d.querySelector('script[src^="/assets/deployments.js?v="]')) fail('/deployments/: filter script missing');
   if (/No task description in the sheet|No metric in the sheet/.test(d.body.textContent)) fail('/deployments/: a paid field is shown as missing');
   const sub = doc('/subscribe/');

@@ -1,0 +1,114 @@
+{
+  "id": "WH-20261125-1425-semanal-noticias-pendiente-libro",
+  "tarea": "Actualización semanal de Why Humanoid? con la sección de noticias de la edición del 25/11/2026 de la newsletter de Integrarobot, y revisión de lo pendiente de la edición del 18/11/2026",
+  "origen": "Tarea programada de los miércoles a las 14:00, hora de Madrid (decisión de Javier del 18/11/2026: procesar solo la sección de noticias de cada edición)",
+  "fecha": "2026-11-25T14:25:05+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Edición del 18/11/2026 («Si aún no usas Agentes de IA mejor no compres un robot»): marcada como procesada. Sus 8 piezas pendientes ya están en el libro (escritas fuera de esta tarea entre el 18 y el 25/11): Humanoids filas 138 (ASUS Gallop) y 139 (LG CLOiD), filas 6 (Agile One, Serie F) y 119 (Genesis Eno, Serie A) actualizadas con los valores previstos, Deployments filas 132 a 135 (GXO con Apptronik y ASUS Gallop), Software fila 130 (FLUX-mimic), Datasets fila 25 (HubEgo-100K, ya corregida por Codex a 20.113 horas acumuladas), Other Robots fila 61 (Mosaic Intelligence Labs) y Clean Entities filas 30 a 33. Se publicaron en main desde el libro de las 06:44 UTC y se importaron a producción a las 07:18 UTC (cierre WH-20261125-0901-coherencia-catalogo).",
+    "Edición leída: «Why Humanoid?», 25/11/2026, https://www.integrarobot.com/p/why-humanoid . Sección «Más noticias sobre IA y robótica», 16 piezas con un enlace cada una; no hay otra sección de noticias. La página de archivo de la newsletter no la mostraba (copia antigua); se localizó por el feed.",
+    "Las 16 piezas, contrastadas con su fuente primaria y con la descarga completa del libro: 9 altas previstas, 7 descartes y 2 pendientes. No hay actualizaciones de filas existentes ni cambios en pestañas de pago.",
+    "Altas previstas, sin escribir. Software, filas 131 a 134: Viam (plataforma para que agentes de IA programen y operen robots, con servidor MCP), WALL-OSS-1.0 de X Square Robot (modelo VLA del 23/11/2026; 55,1 % de éxito sin ajuste en 312 tareas, según la empresa), AHEADance (Unitree G1 que baila a partir de audio en directo, UCL, arXiv 2611.13370) y Play2Perfect (preentrenamiento por juego en simulación para ensamblaje de precisión con manos multidedo, CoRL 2026). Other Robots, filas 74 a 76: Felis (robot con columna articulada inspirado en los gatos, 19/11/2026), evoBOT de Fraunhofer IML (prototipo de transporte que se equilibra sobre dos ruedas) y coprod (componentes modulares para robots, Lausana, presemilla de 6 M USD el 23/11/2026). Datasets, filas 37 y 38: AXIS Skills Atlas (catálogo de 11.199 tareas en formato LeRobot con 14,6 TB de datos de simulación públicos) y Humyn Labs (servicio comercial de datos de trabajo humano; Serie A de 47 M USD el 18/11/2026). Dataset Metrics, fila 64: 11.199 tareas de AXIS, como recuento de tareas y no como volumen de datos.",
+    "Descartados, con motivo: HIRO Industries Origin (ya es la fila 140 de Humanoids; la página de reserva coincide en precio, depósito, plazo y sede); Boston Dynamics con Spot y Orbit (no es un humanoide ni nombra clientes ni emplazamientos); John Deere compra Orchard AI (imagen agrícola, no robots); mano robótica de Mahdi por menos de 300 USD (montaje aficionado contado por Hackaday, sin diseño publicado); CA3 (Integrators ya cita la misma página y los mismos resultados, revisados el 24/11); el caso de clasificación de paquetes de X Square (ya son las filas 193 a 196 de Deployments) y la prueba de evoBOT en el aeropuerto de Múnich (ya es la fila 198).",
+    "Pendientes, con su fuente: Simplexity Robotics, ronda pre-Serie A de 100 M USD liderada por Ant Group con valoración de 1.600 M USD (la newsletter cita a Bloomberg en The Japan Times, 23/11/2026; la página no carga y ninguna fuente primaria la confirma; las fuentes anteriores dan 2.000 M CNY en cinco rondas sin Ant Group y la empresa no tiene un modelo de robot con nombre). Playground, «The Robot Frontier Is Accelerating» (23/11/2026): índice propio y previsiones del proveedor; hay que decidir si entra en Reports.",
+    "Recuentos antes, en filas de la hoja sin cabecera (libro modificado por última vez a las 06:44 UTC del 25/11): Humanoids 217, Deployments 197, Software 129, Datasets 35, Benchmarks 22, Components 53, Other Robots 488, Investment 276, Integrators 28, Reports 12, Investment Theses 98, Data Space 30, Product - Container Handling 22, Clean Entities 32, Evidence Relations 15, Task Evaluation 4, Benchmark Results 34 y Dataset Metrics 62. Después: iguales, porque no se ha escrito nada. Previstos con el plan: Software 133 filas (de 141 a 145 filas listadas), Datasets 37, Dataset Metrics 63, Other Robots 488 filas (de 560 a 563 entradas) y el resto sin cambios.",
+    "Repositorio (PR #112): registro público de la ejecución en ops/weekly-update/runs/2026-11-25.json, con las celdas previstas de las pestañas gratuitas; ops/weekly-update/state.json con la edición del 18/11 como última procesada, las 11 piezas del 25/11 en known_pending y la línea de la ejecución con el resultado pending_sheets.",
+    "Sin cambios en el libro, la web, la base de datos de producción ni la configuración de cobro."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Edición leída (25/11/2026)",
+      "url": "https://www.integrarobot.com/p/why-humanoid"
+    },
+    {
+      "etiqueta": "Edición del 18/11/2026, ya procesada",
+      "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor"
+    },
+    {
+      "etiqueta": "PR de la ejecución",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/112"
+    },
+    {
+      "etiqueta": "Fichero de la ejecución",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/runs/2026-11-25.json"
+    },
+    {
+      "etiqueta": "Estado de la actualización semanal",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/state.json"
+    },
+    {
+      "etiqueta": "Web (sin cambios)",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "Fuente: WALL-OSS-1.0, 23/11/2026",
+      "url": "https://x2robot.com/blogs/wall-oss-1-en/"
+    },
+    {
+      "etiqueta": "Fuente: AXIS Skills Atlas",
+      "url": "https://skills.axisrobotics.ai/"
+    },
+    {
+      "etiqueta": "Fuente: Humyn Labs, 18/11/2026",
+      "url": "https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a"
+    },
+    {
+      "etiqueta": "Fuente: coprod, 23/11/2026",
+      "url": "https://coprod.co/blog/pre-seed-round"
+    },
+    {
+      "etiqueta": "Fuente: Felis, 19/11/2026",
+      "url": "https://frank-zy-dou.github.io/blog/felis/"
+    },
+    {
+      "etiqueta": "Fuente: AHEADance",
+      "url": "https://ihcr.github.io/AHEADance/"
+    },
+    {
+      "etiqueta": "Fuente: Play2Perfect",
+      "url": "https://play2perfect.github.io/"
+    },
+    {
+      "etiqueta": "Fuente: Viam",
+      "url": "https://www.viam.com/"
+    },
+    {
+      "etiqueta": "Fuente: evoBOT, Fraunhofer IML",
+      "url": "https://www.iml.fraunhofer.de/en/projects/2020/evobot-autonomous-transport-robot-logistics.html"
+    },
+    {
+      "etiqueta": "Pendiente: Simplexity Robotics, 23/11/2026",
+      "url": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/"
+    },
+    {
+      "etiqueta": "Pendiente: Playground, 23/11/2026",
+      "url": "https://www.withplayground.ai/research/robot-frontier-accelerating"
+    }
+  ],
+  "despliegue": [
+    "No aplica: no se ha escrito en el libro, así que no se ha exportado ni publicado nada y no se ha lanzado «Import private workbook». La web y producción siguen con el libro de las 06:44 UTC del 25/11/2026, importado a las 07:18 UTC.",
+    "PR #112 solo con ficheros de ops/ (registro de la ejecución, estado y este cierre), que GitHub Pages no publica."
+  ],
+  "verificaciones": [
+    "Repositorio integrarobot/whyhumanoid disponible con escritura (push de la rama weekly-update/2026-11-25 correcto).",
+    "Descarga completa del libro con el conector de Google Drive (solo lectura; la ficha del archivo indica que no se puede editar), convertida con tools/workbook-xlsx-to-json.py. El libro no cambió durante la ejecución (misma hora de modificación al principio y al final).",
+    "node tools/audit-deployments.mjs sobre la descarga actual: 197 filas, 47 columnas, 7.940 valores no vacíos, 0 diferencias con lo que reciben los suscriptores; la web publica las 197 filas con sus 18 campos públicos (3.506 valores, 0 diferencias). Confirma que main coincide con el libro.",
+    "node --no-warnings tools/check-reserved.mjs: correcto, 1.349 valores de pago revisados y ninguno publicado. node tools/check-public.mjs: correcto, también con los ficheros nuevos. node tools/check-workbook.mjs: correcto.",
+    "Duplicados buscados en todas las pestañas por nombre, fabricante y URL de las 16 piezas: resultado en el fichero de la ejecución (apartado dedupe).",
+    "Simulación del plan sobre una copia de la descarga, en un árbol de trabajo temporal y sin guardar nada: check-workbook, export-database (Software 145 filas listadas, Other Robots 563), export-datasets (37 recursos), export-evolution, build-pages, build-site, build-app, test-evolution 11/11, check-public, check-reserved y relations --check, todo en verde. search-tags añade 10 documentos y ningún valor desconocido.",
+    "No se ha podido comprobar producción desde esta ejecución: el proxy de salida rechaza whyhumanoid.com y la API, y la petición de permiso para leer la web quedó sin respuesta. La verificación de producción de las piezas del 18/11 es la del cierre WH-20261125-0901-coherencia-catalogo, hecha sobre el mismo libro.",
+    "No se han ejecutado verify-site, verify-pages ni la importación porque no hay nada que publicar."
+  ],
+  "pendientes": [
+    "Bloqueo: desde esta ejecución en la nube no se puede escribir en el libro maestro. El conector de Google Drive solo lee y descarga, la sesión no está enlazada al ordenador de Javier (sin Claude in Chrome) y la tarea excluye Autosheet. Por eso la edición del 25/11 queda pending_sheets y no se publica nada.",
+    "Escribir el plan en el libro: Software filas 131 a 134, Other Robots filas 74 a 76 (lista NAME, columnas A a C), Datasets filas 37 y 38 y Dataset Metrics fila 64. Las celdas públicas están en ops/weekly-update/runs/2026-11-25.json; las dos notas internas de Datasets (CLASSIFICATION_NOTE y ATTACHMENT_REF), en el fichero privado plan-2026-11-25.json entregado en la conversación de esta ejecución, fuera de Git. Antes, volver a descargar y comprobar que las filas siguen libres; después, releer y comparar celda a celda, exportar, publicar, importar a producción y marcar la edición del 25/11 como procesada.",
+    "Simplexity Robotics: falta una fuente primaria de la ronda de noviembre (Bloomberg en The Japan Times no carga) y un modelo de robot con nombre para la fila de Humanoids.",
+    "Playground: decidir si «The Robot Frontier Is Accelerating» entra en Reports, con hallazgos revisados y su localizador, o se descarta.",
+    "Del libro ya publicado, no de este plan: search-tags marca 7 valores que el vocabulario no conoce (Rusia, Malta, Indonesia y Sudáfrica como países; apparel manufacturing, postal logistics y air cargo como sectores), y relations deja «X Square Robot» (Deployments 193 a 197) como fabricante fuera del catálogo, aunque Humanoids lo llama «X Square» (fila 103). Un sinónimo en el vocabulario y un alias revisado lo resolverían.",
+    "Decidir cómo escribe la tarea programada en el libro: con «Require this computer» activado en la tarea, desde la aplicación de escritorio, o permitiéndole Autosheet. Sin eso, cada miércoles terminará en pending_sheets.",
+    "Codex: registrar el aviso de este cierre; las confirmaciones no las escribe Claude."
+  ],
+  "siguiente_accion": "Codex, con su conector de escritura: aplicar en el libro las 10 filas del plan del 25/11 (fichero de la ejecución y fichero privado), releer y comparar; después, Claude o Codex publican por el flujo del skill, importan a producción y marcan la edición del 25/11 como procesada. Javier decide sobre Simplexity, Playground y cómo debe escribir la tarea en el libro. Si no se hace antes, la ejecución del miércoles 2/12/2026 lo revisará junto con la edición nueva."
+}

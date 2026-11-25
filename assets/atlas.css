@@ -156,7 +156,7 @@ button.v:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 .cn{font-family:var(--f-mono);font-size:11px;color:var(--bone-3)}
 .land{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;align-items:start}
 @media (min-width:1120px){.land{grid-template-columns:minmax(0,1fr) minmax(340px,420px)}.land .detail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow:auto}}
-.matrix-wrap{min-width:0}
+.matrix-wrap{min-width:0;overflow-x:auto}
 .matrix{width:100%;border-collapse:collapse;font-size:14px}
 .matrix th,.matrix td{border:0;border-bottom:1px solid var(--line);padding:0;text-align:center;background:none;position:static;font-family:var(--f-sans);text-transform:none;letter-spacing:0;color:var(--bone-2);white-space:normal}
 .matrix thead th{vertical-align:bottom;border-bottom:1px solid var(--line-2)}

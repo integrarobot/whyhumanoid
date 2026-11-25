@@ -9,6 +9,7 @@ import { hostKey, urlKey } from './import/identity.js';
 import { HUMANOIDS_FIELDS } from './humanoids-fields.js';
 import editorial from './editorial/humanoids.json' with { type: 'json' };
 import { scrubEditorial } from './data-atlas/atlas.js';
+import { PUBLIC_DATE_HEADERS } from './public-dates.js';
 import { INTEGRATOR_FIELDS, INTEGRATOR_HEADERS, selectIntegrators } from './integrators/catalogue.js';
 import { COMPONENT_FIELDS, COMPONENT_HEADERS, COMPONENT_WITHHELD, scrubComponentText, selectProducts, selectSoftware } from './components/catalogue.js';
 import { DATASET_ACCESS, PREVIEW_ROWS, categoryOfDataset, isFreeDataset, publicFieldsFor } from './access/matrix.js';
@@ -67,6 +68,9 @@ const BENCHMARKS = [
   'CHECKED_AT', 'REVIEW_STATUS', 'LIMITATIONS', 'PREVIOUS_CATALOGUE_DESCRIPTION', 'EMBODIMENT', 'CAPABILITY_TAGS',
   'KEY_FINDING', 'RESULTS_COVERAGE',
 ];
+// First public dates (25 Nov 2026): seven columns appended at the end (server/src/public-dates.js); the tab without
+// them is still accepted.
+const BENCHMARKS_DATED = [...BENCHMARKS, ...PUBLIC_DATE_HEADERS];
 
 const BENCHMARK_RESULTS = [
   'RESULT_ID', 'BENCHMARK_ID', 'BENCHMARK_VERSION', 'MODEL', 'MODEL_CONFIGURATION', 'TRACK', 'ENVIRONMENT', 'EMBODIMENT',
@@ -83,6 +87,7 @@ const DATASETS_CATALOG = [
   'DATA_FORMAT', 'ACCESS_STATUS', 'LICENSE_NOTE', 'VERSION_SCOPE', 'KEY_TAKEAWAY', 'SOURCE_URL', 'SOURCE_LOCATOR',
   'REVIEW_STATUS', 'LIMITATIONS', 'PARENT_DATASET_IDS', 'RESOURCE_CLASS', 'ATTACHMENT_REF', 'INCLUDED_IN_ATLAS',
 ];
+const DATASETS_CATALOG_DATED = [...DATASETS_CATALOG, ...PUBLIC_DATE_HEADERS];
 
 const DATASET_METRICS = [
   'METRIC_ID', 'DATASET_ID', 'DATA_VERSION', 'METRIC', 'VALUE', 'UNIT', 'QUALIFIER', 'SCOPE', 'DATA_ORIGIN',
@@ -167,8 +172,9 @@ export const DATASETS = [
     title: 'Benchmarks',
     description: 'Robotics evaluation resources: what each tests, in which setting, with which metrics, protocol and limitations.',
     kind: 'table',
-    headers: BENCHMARKS,
-    fields: lower(BENCHMARKS),
+    headers: BENCHMARKS_DATED,
+    formerHeaders: [BENCHMARKS],
+    fields: lower(BENCHMARKS_DATED),
     idFields: ['benchmark_id'],
     // Published as the Robotics Evaluation Atlas snapshot (tools/export-benchmarks.mjs), not as a preview file.
     publicSnapshot: 'data/benchmarks/atlas.json',
@@ -248,6 +254,13 @@ export const DATASETS = [
       { list: 'software', columns: { name: 0, url: 1, description: 2 } },
       { list: 'world_model', columns: { name: 4, url: 5 } },
     ],
+    // Canonical active catalogue (server/src/catalogue/directory.js): header and section rows out, exact identities
+    // merged. The software column holds three blocks: general, "SOFTWARE FOR UNITREE" and "SIMULATORS".
+    canonical: true,
+    properNames: ['Unitree'],
+    // Reviewed against the workbook on 25 Nov 2026 (rows 77-78 and 116-117 of the software column).
+    sectionHeadings: ['SOFTWARE FOR UNITREE', 'SIMULATORS'],
+    repeatedHeaders: [{ name: 'SOFTWARE' }, { name: 'SIMULATOR' }],
     idPrefix: 'sw',
     naturalKey: directoryKey,
   },
@@ -257,8 +270,9 @@ export const DATASETS = [
     title: 'Datasets',
     description: 'Robot learning data resources: origin, bodies, modalities, uses, access and licence notes.',
     kind: 'table',
-    headers: DATASETS_CATALOG,
-    fields: lower(DATASETS_CATALOG),
+    headers: DATASETS_CATALOG_DATED,
+    formerHeaders: [DATASETS_CATALOG],
+    fields: lower(DATASETS_CATALOG_DATED),
     idFields: ['dataset_id'],
     // Editorial bookkeeping of the workbook, never stored or served: a link into the private workbook, the review note
     // of the classification pass and the reference to the supplied matrix.
@@ -322,6 +336,7 @@ export const DATASETS = [
       { list: 'other_robot', columns: { name: 0, url: 1, description: 2 } },
       { list: 'edubot', columns: { name: 4, url: 5, description: 6 } },
     ],
+    canonical: true,
     idPrefix: 'or',
     naturalKey: directoryKey,
   },
@@ -371,6 +386,8 @@ export function publicDatasetList() {
   }));
 }
 
+// 1 for a row that is an entry, 0 for a topical membership row of a directory tab (data.canonical === false).
+const CANONICAL_SQL = "CASE WHEN json_extract(data, '$.canonical') = 0 THEN 0 ELSE 1 END";
 // Importer bookkeeping (identity_status, raw sheet-row pointers) is internal: never served, not even to subscribers.
 const INTERNAL_KEYS = new Set(['identity_status', 'source_rows']);
 const toRow = (r) => ({ id: r.row_id, ...Object.fromEntries(Object.entries(JSON.parse(r.data)).filter(([k]) => !INTERNAL_KEYS.has(k))) });
@@ -389,11 +406,13 @@ export async function queryPreview(db, spec) {
       .bind(datasetId)
       .all();
   const total = await db
-    .prepare("SELECT COUNT(*) AS n FROM premium_rows WHERE dataset = ? AND visibility = 'customer'")
+    .prepare(`SELECT COUNT(*) AS n, SUM(${CANONICAL_SQL}) AS e FROM premium_rows WHERE dataset = ? AND visibility = 'customer'`)
     .bind(datasetId)
     .first();
   const results = page.results ?? [];
-  return { snapshot: results[0]?.snapshot_id ?? null, total_rows: Number(total?.n ?? 0), rows: results.map(toRow) };
+  // entries: the canonical entries of a directory tab (server/src/catalogue/directory.js); a topical membership row (the
+  // same entity in a second list) is listed but not counted again. Equal to total_rows for every other tab.
+  return { snapshot: results[0]?.snapshot_id ?? null, total_rows: Number(total?.n ?? 0), entries: Number(total?.e ?? total?.n ?? 0), rows: results.map(toRow) };
 }
 
 // Paged rows of a tab. publicValues: the public values (free tabs read without a subscription); otherwise the full
@@ -402,11 +421,11 @@ export async function queryDatasetRows(db, datasetId, { limit, offset, q, public
   const col = publicValues ? 'COALESCE(preview_data, data)' : 'data';
   const where = q ? `dataset = ? AND visibility = 'customer' AND ${col} LIKE ?` : "dataset = ? AND visibility = 'customer'";
   const params = q ? [datasetId, `%${q}%`] : [datasetId];
-  const total = await db.prepare(`SELECT COUNT(*) AS n FROM premium_rows WHERE ${where}`).bind(...params).first();
+  const total = await db.prepare(`SELECT COUNT(*) AS n, SUM(${CANONICAL_SQL}) AS e FROM premium_rows WHERE ${where}`).bind(...params).first();
   const page = await db
     .prepare(`SELECT row_id, ${col} AS data, snapshot_id FROM premium_rows WHERE ${where} ORDER BY position LIMIT ? OFFSET ?`)
     .bind(...params, limit, offset)
     .all();
   const rows = (page.results ?? []).map(toRow);
-  return { total: Number(total?.n ?? 0), snapshot: page.results?.[0]?.snapshot_id ?? null, rows };
+  return { total: Number(total?.n ?? 0), entries: Number(total?.e ?? total?.n ?? 0), snapshot: page.results?.[0]?.snapshot_id ?? null, rows };
 }

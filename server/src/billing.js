@@ -9,6 +9,7 @@ import Stripe from 'stripe';
 import { HttpError } from './http.js';
 import { PRODUCT, upsertStripeEntitlement } from './entitlements.js';
 import { LIVE_SALES_OPEN, checkStripePrice } from './pricing.js';
+import { applyReportSession } from './orders/orders.js';
 
 export function stripeKeyMode(secretKey) {
   if (!secretKey) return 'unconfigured';
@@ -65,6 +66,30 @@ export function createStripeGateway({ secretKey, webhookSecret }) {
         { idempotencyKey: txHash, apiVersion },
       );
       return { id: pi.id, status: pi.status };
+    },
+    // A custom report (25 Nov 2026): a one-off payment for one stored order. No subscription data, no customer link to
+    // the data subscription, no tax settings (the charge is the price, as for the subscription).
+    async createReportCheckoutSession({ priceId, orderId, accountId, service, email, customerId, expiresAt, successUrl, cancelUrl, idempotencyKey }) {
+      const metadata = { wh_order_id: orderId, wh_account_id: accountId, wh_service: service };
+      const session = await stripe.checkout.sessions.create(
+        {
+          mode: 'payment',
+          line_items: [{ price: priceId, quantity: 1 }],
+          client_reference_id: accountId,
+          ...(customerId ? { customer: customerId } : { customer_email: email }),
+          metadata,
+          payment_intent_data: { metadata },
+          // Fixed expiry: the server cancels an unpaid order only after this time (server/src/orders/orders.js).
+          expires_at: expiresAt,
+          success_url: successUrl,
+          cancel_url: cancelUrl,
+        },
+        { idempotencyKey },
+      );
+      return { id: session.id, url: session.url };
+    },
+    retrieveCheckoutSession(sessionId) {
+      return stripe.checkout.sessions.retrieve(sessionId);
     },
     // Stripe customer portal: payment method, invoices and cancellation, hosted by Stripe.
     async createPortalSession({ customerId, returnUrl, configuration }) {
@@ -149,7 +174,7 @@ export async function startPortal({ config, gateway, account }) {
   });
 }
 
-export async function handleStripeWebhook({ db, gateway, config, rawBody, signature, now }) {
+export async function handleStripeWebhook({ db, gateway, config, rawBody, signature, now, notify }) {
   if (!gateway.webhookConfigured) throw new HttpError(503, 'webhook_not_configured');
   if (!signature) throw new HttpError(400, 'missing_signature');
   let event;
@@ -160,7 +185,7 @@ export async function handleStripeWebhook({ db, gateway, config, rawBody, signat
   }
   const seen = await db.prepare('SELECT outcome FROM stripe_events WHERE id = ?').bind(event.id).first();
   if (seen) return { received: true, duplicate: true, outcome: seen.outcome };
-  const outcome = await applyEvent(db, event, config, now);
+  const outcome = await applyEvent(db, event, config, now, notify);
   await db
     .prepare('INSERT OR IGNORE INTO stripe_events (id, type, created, outcome, processed_at) VALUES (?, ?, ?, ?, ?)')
     .bind(event.id, event.type, event.created, outcome, now)
@@ -168,11 +193,16 @@ export async function handleStripeWebhook({ db, gateway, config, rawBody, signat
   return { received: true, outcome };
 }
 
-async function applyEvent(db, event, config, now) {
+async function applyEvent(db, event, config, now, notify) {
   // Test and live never mix: events must come from the configured mode, and live needs explicit permission.
   if (Boolean(event.livemode) !== (config.stripeMode === 'live')) return 'ignored_mode_mismatch';
   if (event.livemode && !config.allowLiveCheckout) return 'ignored_livemode';
   const object = event.data?.object ?? {};
+  // Custom report payments (one-off): checked against the stored order; they never touch the subscription entitlement.
+  if (event.type.startsWith('checkout.session.') && object.mode === 'payment') {
+    if (!['checkout.session.completed', 'checkout.session.async_payment_succeeded', 'checkout.session.async_payment_failed', 'checkout.session.expired'].includes(event.type)) return 'ignored_type';
+    return applyReportSession({ db, config, session: object, now, notify, eventType: event.type });
+  }
   switch (event.type) {
     case 'checkout.session.completed': {
       if (object.mode !== 'subscription') return 'ignored_mode';

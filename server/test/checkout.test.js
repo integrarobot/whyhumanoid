@@ -1,3 +1,4 @@
+import { SUPPORT_EMAIL } from '../src/support.js';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { LEGACY_EUR_PRICE, T0, TEST_PRICE, VALID_PRICE, sendWebhook, setup, signIn, subscriptionEvent } from './helpers.js';
@@ -21,7 +22,7 @@ test('checkout is disabled by default and never reaches Stripe', async () => {
   const { session } = await signIn(ctx);
   const res = await ctx.call('POST', '/v1/billing/checkout', { token: session });
   assert.equal(res.status, 503);
-  assert.deepEqual(await res.json(), { error: 'checkout_disabled' });
+  assert.deepEqual(await res.json(), { error: 'checkout_disabled', support: SUPPORT_EMAIL });
   assert.equal(ctx.checkoutCalls.length + ctx.priceLookups.length, 0);
 });
 
@@ -51,25 +52,25 @@ test('a Stripe price that differs from USD 10000 per year blocks checkout, inclu
     const ctx = await setup({ checkoutEnabled: true, price: { ...VALID_PRICE, ...patch } });
     const { session } = await signIn(ctx);
     const res = await ctx.call('POST', '/v1/billing/checkout', { token: session });
-    assert.deepEqual(await res.json(), { error: 'price_mismatch' }, label);
+    assert.deepEqual(await res.json(), { error: 'price_mismatch', support: SUPPORT_EMAIL }, label);
     assert.equal(ctx.checkoutCalls.length, 0, label);
   }
   const missing = await setup({ checkoutEnabled: true, price: null });
   const { session } = await signIn(missing);
-  assert.deepEqual(await (await missing.call('POST', '/v1/billing/checkout', { token: session })).json(), { error: 'price_mismatch' });
+  assert.deepEqual(await (await missing.call('POST', '/v1/billing/checkout', { token: session })).json(), { error: 'price_mismatch', support: SUPPORT_EMAIL });
   assert.deepEqual(checkStripePrice(VALID_PRICE, { mode: 'test' }), []);
 });
 
 test('test and live credentials never mix', async () => {
   const liveKeyInTestEnv = await setup({ checkoutEnabled: true, stripeKey: 'sk_live_fixture' });
   const a = await signIn(liveKeyInTestEnv);
-  assert.deepEqual(await (await liveKeyInTestEnv.call('POST', '/v1/billing/checkout', { token: a.session })).json(), { error: 'stripe_mode_mismatch' });
+  assert.deepEqual(await (await liveKeyInTestEnv.call('POST', '/v1/billing/checkout', { token: a.session })).json(), { error: 'stripe_mode_mismatch', support: SUPPORT_EMAIL });
   const testKeyInLiveEnv = await setup({ checkoutEnabled: true, stripeMode: 'live' });
   const b = await signIn(testKeyInLiveEnv);
-  assert.deepEqual(await (await testKeyInLiveEnv.call('POST', '/v1/billing/checkout', { token: b.session })).json(), { error: 'stripe_mode_mismatch' });
+  assert.deepEqual(await (await testKeyInLiveEnv.call('POST', '/v1/billing/checkout', { token: b.session })).json(), { error: 'stripe_mode_mismatch', support: SUPPORT_EMAIL });
   const liveNotAllowed = await setup({ checkoutEnabled: true, stripeMode: 'live', stripeKey: 'sk_live_fixture' });
   const c = await signIn(liveNotAllowed);
-  assert.deepEqual(await (await liveNotAllowed.call('POST', '/v1/billing/checkout', { token: c.session })).json(), { error: 'live_checkout_disabled' });
+  assert.deepEqual(await (await liveNotAllowed.call('POST', '/v1/billing/checkout', { token: c.session })).json(), { error: 'live_checkout_disabled', support: SUPPORT_EMAIL });
   // A test-mode event never grants access in a live environment, and vice versa.
   const liveEnv = await setup({ stripeMode: 'live', stripeKey: 'sk_live_fixture', allowLiveCheckout: true });
   const d = await signIn(liveEnv);
@@ -80,7 +81,7 @@ test('test and live credentials never mix', async () => {
 test('checkout without a configured price is refused', async () => {
   const ctx = await setup({ checkoutEnabled: true, priceId: null });
   const { session } = await signIn(ctx);
-  assert.deepEqual(await (await ctx.call('POST', '/v1/billing/checkout', { token: session })).json(), { error: 'checkout_not_configured' });
+  assert.deepEqual(await (await ctx.call('POST', '/v1/billing/checkout', { token: session })).json(), { error: 'checkout_not_configured', support: SUPPORT_EMAIL });
 });
 
 test('checkout requires a browser session and no current subscription', async () => {

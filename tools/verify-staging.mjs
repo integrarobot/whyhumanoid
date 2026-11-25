@@ -38,7 +38,7 @@ const check = (cond, msg) => (cond ? ok.push(msg) : failures.push(msg));
 if (SHOTS) mkdirSync(SHOTS, { recursive: true });
 
 const browser = await chromium.launch();
-const SAMPLE = ['/reports/deployment-records/', '/reports/anthropic-what-work-can-robots-do-2026/', '/humanoids/agibot-x1-4/', '/companies/tesla/', '/companies/agility-robotics/', '/other-robots/realtime/', '/subscribe/', '/companies/', '/method/', '/reports/deployment-records/'];
+const SAMPLE = ['/agents/', '/privacy/', '/reports/deployment-records/', '/reports/anthropic-what-work-can-robots-do-2026/', '/humanoids/agibot-x1-4/', '/companies/tesla/', '/companies/agility-robotics/', '/other-robots/realtime/', '/subscribe/', '/companies/', '/method/', '/reports/deployment-records/'];
 for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['phone', { width: 375, height: 812 }]]) {
   const ctx = await browser.newContext({ viewport, deviceScaleFactor: 1, hasTouch: label === 'phone' });
   const page = await ctx.newPage();
@@ -112,9 +112,9 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   // Robotics Evaluation Atlas (23 Nov 2026): evidence near the top, the same detail for pointer and keyboard, honest
   // controls, shareable state and no sideways page scroll.
   await page.goto(`${BASE}/benchmarks/`, { waitUntil: 'networkidle' });
-  const at = await page.evaluate(() => ({ js: document.getElementById('atlas')?.classList.contains('js'), results: document.getElementById('results').getBoundingClientRect().top + scrollY, overflow: document.documentElement.scrollWidth - innerWidth, counts: [...document.querySelectorAll('.atlas-counts dd')].map((d) => d.textContent).join('/') }));
+  const at = await page.evaluate(() => ({ js: document.getElementById('atlas')?.classList.contains('js'), results: document.getElementById('results').getBoundingClientRect().top - ([...document.querySelectorAll('.evo-sec')].at(-1)?.getBoundingClientRect().bottom ?? 0), overflow: document.documentElement.scrollWidth - innerWidth, counts: [...document.querySelectorAll('.atlas-counts dd')].map((d) => d.textContent).join('/') }));
   check(at.js && at.counts === '22/2/34/20', `${label} benchmarks: the atlas starts and shows 22 resources, 2 with results, 34 observations, 20 awaiting (${at.counts})`);
-  check(at.results < (label === 'phone' ? 1100 : 900), `${label} benchmarks: results start near the top (${Math.round(at.results)}px)`);
+  check(at.results < (label === 'phone' ? 1100 : 900), `${label} benchmarks: results start near the top of the atlas, after the evolution charts (${Math.round(at.results)}px)`);
   check(at.overflow <= 1, `${label} benchmarks: no horizontal page scroll (${at.overflow}px)`);
   await page.focus('#panel-paw .dot.ext');
   await page.keyboard.press('Enter');
@@ -165,7 +165,7 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   // page with its sources and caveat, and the two paths near the top.
   {
     await page.goto(`${BASE}/deployments/`, { waitUntil: 'networkidle' });
-    const dv = await page.evaluate(() => ({ cases: document.querySelectorAll('#dcs > li.dc').length, filters: !document.getElementById('dc-filters').hidden, offer: /US\$100/.test(document.getElementById('offer')?.textContent ?? '') && /Not available to order yet/.test(document.getElementById('offer')?.textContent ?? ''), offerY: Math.round(document.getElementById('offer').getBoundingClientRect().top + scrollY), overflow: document.documentElement.scrollWidth - innerWidth }));
+    const dv = await page.evaluate(() => ({ cases: document.querySelectorAll('#dcs > li.dc').length, filters: !document.getElementById('dc-filters').hidden, offer: /US\$100/.test(document.getElementById('offer')?.textContent ?? '') && /one-off payment · no subscription required\. After payment, complete a private questionnaire/.test(document.getElementById('offer')?.textContent ?? ''), offerY: Math.round(document.getElementById('offer').getBoundingClientRect().top + scrollY), overflow: document.documentElement.scrollWidth - innerWidth }));
     check(dv.cases === DEP_CASES && dv.filters && dv.offer && dv.overflow <= 1, `${label} deployments: all ${DEP_CASES} cases listed, filters on, two paths shown, no horizontal scroll (${JSON.stringify(dv)})`);
     await page.selectOption('select[name="status"]', 'op');
     await page.fill('input[name="q"]', 'agility');
@@ -185,8 +185,8 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     const hp = await page.evaluate(() => ({ mini: Math.round(document.querySelector('.hero-paths')?.getBoundingClientRect().top + scrollY), h: innerHeight, paths: !!document.getElementById('paths'), euro: /€/.test(document.body.textContent) }));
     check(hp.paths && hp.mini < hp.h * 1.5 && !hp.euro, `${label} home: the two paths are near the top and no euro price is shown (${JSON.stringify(hp)})`);
     await page.goto(`${BASE}/subscribe/`, { waitUntil: 'networkidle' });
-    const sp = await page.evaluate(() => ({ usd: /US\$100 per year, billed annually/.test(document.body.textContent), reports: /Not available to order yet/.test(document.getElementById('reports')?.textContent ?? ''), orderLinks: [...document.querySelectorAll('#reports a')].filter((a) => /checkout|order/i.test(a.getAttribute('href') ?? '')).length, overflow: document.documentElement.scrollWidth - innerWidth }));
-    check(sp.usd && sp.reports && sp.orderLinks === 0 && sp.overflow <= 1, `${label} subscribe: USD price, reports not orderable, no order link (${JSON.stringify(sp)})`);
+    const sp = await page.evaluate(() => ({ usd: /US\$100 per year, billed annually/.test(document.body.textContent), reports: /After payment, complete a private questionnaire/.test(document.getElementById('reports')?.textContent ?? ''), orderLinks: [...document.querySelectorAll('#reports a')].filter((a) => /checkout/i.test(a.getAttribute('href') ?? '')).length, overflow: document.documentElement.scrollWidth - innerWidth }));
+    check(sp.usd && sp.reports && sp.orderLinks === 0 && sp.overflow <= 1, `${label} subscribe: USD price, the wording before payment, no direct checkout link (${JSON.stringify(sp)})`);
   }
   // Research Conclusions Atlas (24 Nov 2026): every finding in the table, a chart mark opens its passport by keyboard
   // or touch with a shareable address, Escape returns focus, a coverage cell filters the table, a shared address
@@ -249,27 +249,11 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   }
   // Adoption view (23 Nov 2026): the hero answers at a glance; the explorer filters and opens a case.
   await page.goto(`${BASE}/`, { waitUntil: 'load' });
-  check(await page.isVisible('.hero .adopt-hero .stage-bars'), `${label} home: adoption view in the hero`);
-  // Spacing Javier asked for (23 Nov 2026): the hero breathes; measured, not eyeballed.
-  const sp = await page.$eval('.hero .adopt-hero', (hero) => {
-    const r = (s) => hero.querySelector(s).getBoundingClientRect();
-    const pad = (s, side) => parseFloat(getComputedStyle(hero.querySelector(s))[`padding${side}`]);
-    const li = [...hero.querySelectorAll('.stage-bars li')].map((e) => e.getBoundingClientRect());
-    const cs = [...hero.querySelectorAll('.case')].map((e) => e.getBoundingClientRect());
-    const rowGap = Math.min(...li.slice(1).map((x, i) => x.top - li[i].bottom));
-    const sameRow = cs.slice(1).map((x, i) => [cs[i], x]).filter(([a, b]) => Math.abs(a.top - b.top) < 2);
-    const nextRow = cs.slice(1).map((x, i) => [cs[i], x]).filter(([a, b]) => b.top > a.bottom - 1);
-    const clipped = [...hero.querySelectorAll('.case .o, .case .r')].filter((e) => e.scrollHeight > e.clientHeight + 1).length;
-    return {
-      side: pad('.adopt-lede', 'Left'), barsTop: pad('.stage-bars', 'Top'), opTop: pad('.adopt-op', 'Top'), goTop: pad('.adopt-go', 'Top'), goBottom: pad('.adopt-go', 'Bottom'),
-      rowGap, caseGapX: sameRow.length ? Math.min(...sameRow.map(([a, b]) => b.left - a.right)) : 99, caseGapY: nextRow.length ? Math.min(...nextRow.map(([a, b]) => b.top - a.bottom)) : 99,
-      casePad: pad('.case', 'Top'), casePadL: pad('.case', 'Left'), caseInner: parseFloat(getComputedStyle(hero.querySelector('.case')).rowGap), clipped,
-    };
-  });
-  check(sp.side >= 20 && sp.barsTop >= 20 && sp.opTop >= 24 && sp.goTop >= 20 && sp.goBottom >= 20, `${label} home: adoption hero spacing between summary, bars, cases, button and note (${JSON.stringify([sp.side, sp.barsTop, sp.opTop, sp.goTop, sp.goBottom])})`);
-  check(sp.rowGap >= 12, `${label} home: adoption bar rows are apart (${sp.rowGap}px)`);
-  check(sp.caseGapX >= 8 && sp.caseGapY >= 8 && sp.casePad >= 8 && sp.casePadL >= 12 && sp.caseInner >= 4, `${label} home: adoption case cards have room (${JSON.stringify([sp.caseGapX, sp.caseGapY, sp.casePad, sp.casePadL, sp.caseInner])})`);
-  check(sp.clipped === 0, `${label} home: no organisation or maker name is cut short in the hero (${sp.clipped})`);
+  // The hero's featured chart (24 Nov 2026): the seven evolution charts in rotation (tools/verify-evolution.mjs tests
+  // the rotation itself); the adoption explorer below keeps its filters and case panel.
+  check(await page.isVisible('.hero #evo-car .evo-slide.on .evo-chart'), `${label} home: evolution carousel in the hero`);
+  check((await page.$$eval('.hero #evo-car [role="tab"]', (xs) => xs.map((x) => x.textContent))).join() === 'Humanoids,Deployments,Components,Integrators,Datasets,Benchmarks,Reports', `${label} home: the seven evolution charts in order`);
+  check(!(await page.$('.hero .adopt-hero')), `${label} home: the static adoption figure is gone from the hero`);
   const auto = await page.$('#adoption .adopt-filters button[data-fam="automotive"]');
   if (auto) {
     await auto.click();

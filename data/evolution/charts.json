@@ -1,0 +1,3418 @@
+{
+ "title": "Evolution charts",
+ "note": "One sourced chronology per section, built from the public snapshots and tools/evolution-review.json by tools/export-evolution.mjs. Historical replay of dated records, not live activity. Aggregates and public fields only.",
+ "order": [
+  "humanoids",
+  "deployments",
+  "components",
+  "integrators",
+  "datasets",
+  "benchmarks",
+  "reports"
+ ],
+ "rotation_seconds": 10,
+ "charts": [
+  {
+   "id": "humanoids",
+   "label": "Humanoids",
+   "path": "/humanoids/",
+   "type": "columns",
+   "title": "Humanoid models introduced per year",
+   "subtitle": "Models in the free catalogue by the year of their recorded release or unveiling: 68 of 212 robots are dated.",
+   "meaning": "Release or unveiling date as recorded in the free Humanoids catalogue: when a model was introduced, not sales, deliveries or fleet size.",
+   "unit": "models",
+   "precision": "year",
+   "domain": {
+    "start": "2016-01-01",
+    "end": "2026-11-25"
+   },
+   "columns": [
+    {
+     "key": "2016",
+     "label": "2016",
+     "t": "2016-12-31",
+     "value": 1,
+     "partial": false,
+     "items": [
+      "Hanson Sophia"
+     ]
+    },
+    {
+     "key": "2017",
+     "label": "2017",
+     "t": "2017-12-31",
+     "value": 1,
+     "partial": false,
+     "items": [
+      "PAL Talos"
+     ]
+    },
+    {
+     "key": "2018",
+     "label": "2018",
+     "t": "2018-12-31",
+     "value": 0,
+     "partial": false,
+     "items": []
+    },
+    {
+     "key": "2019",
+     "label": "2019",
+     "t": "2019-12-31",
+     "value": 1,
+     "partial": false,
+     "items": [
+      "PAL ARI"
+     ]
+    },
+    {
+     "key": "2020",
+     "label": "2020",
+     "t": "2020-12-31",
+     "value": 0,
+     "partial": false,
+     "items": []
+    },
+    {
+     "key": "2021",
+     "label": "2021",
+     "t": "2021-12-31",
+     "value": 2,
+     "partial": false,
+     "items": [
+      "Engineered Arts Ameca",
+      "PAL Kangaroo"
+     ]
+    },
+    {
+     "key": "2022",
+     "label": "2022",
+     "t": "2022-12-31",
+     "value": 1,
+     "partial": false,
+     "items": [
+      "Xiaomi Cyber One"
+     ]
+    },
+    {
+     "key": "2023",
+     "label": "2023",
+     "t": "2023-12-31",
+     "value": 6,
+     "partial": false,
+     "items": [
+      "Aeolus aeo",
+      "Fourier GR-1",
+      "PAL TIAGo Pro",
+      "Sanctuary AI Phoenix",
+      "Tesla Optimus Gen 2",
+      "Unitree H1"
+     ]
+    },
+    {
+     "key": "2024",
+     "label": "2024",
+     "t": "2024-12-31",
+     "value": 18,
+     "partial": false,
+     "items": [
+      "Agibot A2 (A2 Ultra / A2 Lite)",
+      "Agibot X1",
+      "Astribot S1",
+      "Booster T1",
+      "Clone Clone",
+      "Engineai PM01",
+      "Engineai SE01",
+      "GAC Group GoMate",
+      "Kepler Forerunner K1",
+      "LimX Oli",
+      "Magiclab Magicbot",
+      "Mentee MenteeBot",
+      "Noetix Dora",
+      "Pudu D7",
+      "Qinglong Qinglong",
+      "Robotera Star 1",
+      "Ubtech Walker S1",
+      "Unitree G1"
+     ]
+    },
+    {
+     "key": "2025",
+     "label": "2025",
+     "t": "2025-12-31",
+     "value": 24,
+     "partial": false,
+     "items": [
+      "Addverb Elixis",
+      "Agibot G2",
+      "Agibot X2 (X2 Neo / X2 Ultra)",
+      "Booster K1",
+      "Borg Borg 01",
+      "Dobot Atom",
+      "Engineai T800",
+      "Estun Codroid Codroid 02",
+      "Figure Figure 03",
+      "Foundation Phantom MK1",
+      "Galbot G1",
+      "Hexagon AEON",
+      "K-Scale Labs K-bot",
+      "Kepler Forerunner K2",
+      "Kinisi Kinisi (Bear Robotics offering)",
+      "Leju Kuavo",
+      "The Humanoid HMND 01 (Alpha Wheeled / Bipedal)",
+      "Ubtech Walker S2",
+      "Unitree H2",
+      "Unitree R1",
+      "VinMotion Motion",
+      "Westwood Themis",
+      "X Square Quanta X2",
+      "Xpeng Next-Gen IRON"
+     ]
+    },
+    {
+     "key": "2026",
+     "label": "2026",
+     "t": "2026-11-25",
+     "value": 14,
+     "partial": true,
+     "items": [
+      "Agibot A3",
+      "Agile One",
+      "Agility Digit 5 (in development)",
+      "Booster T2",
+      "Fauna Sprout",
+      "Generative Bionics GENE.01",
+      "LimX Luna",
+      "Mabel Mabel",
+      "Matrix Robotics MATRIX-3",
+      "Neura 4NE1 (Gen 4 announced)",
+      "StarBot StarBot Astra",
+      "StarBot StarBot Flex",
+      "Techman Robot TM Xplore I",
+      "Unitree H2-X"
+     ]
+    }
+   ],
+   "final": {
+    "dated": 68,
+    "by_year": {
+     "2016": 1,
+     "2017": 1,
+     "2018": 0,
+     "2019": 1,
+     "2020": 0,
+     "2021": 2,
+     "2022": 1,
+     "2023": 6,
+     "2024": 18,
+     "2025": 24,
+     "2026": 14
+    }
+   },
+   "summary": "68 dated introductions from 2016 to 2026; 2025 has the most (24). 2026 counts to 2026-11-25.",
+   "coverage": {
+    "included": 68,
+    "total": 212,
+    "unit": "robots",
+    "excluded": [
+     {
+      "reason": "Release not disclosed or not verified",
+      "count": 119
+     },
+     {
+      "reason": "Release field empty",
+      "count": 17
+     },
+     {
+      "reason": "InMoov InMoov: a project start, not a model release",
+      "count": 1
+     },
+     {
+      "reason": "ASUS Gallop: a project start, not a model release",
+      "count": 1
+     },
+     {
+      "reason": "HIRO Industries Origin: access or reservations, not a release",
+      "count": 1
+     },
+     {
+      "reason": "LG CLOiD: the release date is written in prose or without a year; it is not read automatically",
+      "count": 1
+     },
+     {
+      "reason": "RoboScience REX G1: the release date is written in prose or without a year; it is not read automatically",
+      "count": 1
+     },
+     {
+      "reason": "Apptronik Apollo 2: The dated year belongs to the original Apollo; the Apollo 2 date is unverified.",
+      "count": 1
+     },
+     {
+      "reason": "PokeBot Home robot (model name not disclosed): No product released; the dates are company and software events.",
+      "count": 1
+     },
+     {
+      "reason": "Darwin Darwin-0: A future target, not a release.",
+      "count": 1
+     }
+    ],
+    "note": "Release dates as the records write them: 26 to the day, 6 to the month, 36 to the year; each is placed in its year. 1 entry of uncertain scope (PokeBot Home robot (model name not disclosed)) is inside it, undated."
+   },
+   "status": "partial",
+   "status_note": "Partial: 144 of 212 catalogue robots have no usable release date.",
+   "sources": [
+    {
+     "label": "Free Humanoids catalogue, snapshot 2026-11-25",
+     "url": "/data/humanoids-catalogue.json"
+    }
+   ],
+   "table": {
+    "head": [
+     "Year",
+     "Models introduced",
+     "Models"
+    ],
+    "rows": [
+     [
+      "2016",
+      "1",
+      "Hanson Sophia"
+     ],
+     [
+      "2017",
+      "1",
+      "PAL Talos"
+     ],
+     [
+      "2019",
+      "1",
+      "PAL ARI"
+     ],
+     [
+      "2021",
+      "2",
+      "Engineered Arts Ameca; PAL Kangaroo"
+     ],
+     [
+      "2022",
+      "1",
+      "Xiaomi Cyber One"
+     ],
+     [
+      "2023",
+      "6",
+      "Aeolus aeo; Fourier GR-1; PAL TIAGo Pro; Sanctuary AI Phoenix; Tesla Optimus Gen 2; Unitree H1"
+     ],
+     [
+      "2024",
+      "18",
+      "Agibot A2 (A2 Ultra / A2 Lite); Agibot X1; Astribot S1; Booster T1; Clone Clone; Engineai PM01; Engineai SE01; GAC Group GoMate; Kepler Forerunner K1; LimX Oli; Magiclab Magicbot; Mentee MenteeBot; Noetix Dora; Pudu D7; Qinglong Qinglong; Robotera Star 1; Ubtech Walker S1; Unitree G1"
+     ],
+     [
+      "2025",
+      "24",
+      "Addverb Elixis; Agibot G2; Agibot X2 (X2 Neo / X2 Ultra); Booster K1; Borg Borg 01; Dobot Atom; Engineai T800; Estun Codroid Codroid 02; Figure Figure 03; Foundation Phantom MK1; Galbot G1; Hexagon AEON; K-Scale Labs K-bot; Kepler Forerunner K2; Kinisi Kinisi (Bear Robotics offering); Leju Kuavo; The Humanoid HMND 01 (Alpha Wheeled / Bipedal); Ubtech Walker S2; Unitree H2; Unitree R1; VinMotion Motion; Westwood Themis; X Square Quanta X2; Xpeng Next-Gen IRON"
+     ],
+     [
+      "2026",
+      "14",
+      "Agibot A3; Agile One; Agility Digit 5 (in development); Booster T2; Fauna Sprout; Generative Bionics GENE.01; LimX Luna; Mabel Mabel; Matrix Robotics MATRIX-3; Neura 4NE1 (Gen 4 announced); StarBot StarBot Astra; StarBot StarBot Flex; Techman Robot TM Xplore I; Unitree H2-X"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "deployments",
+   "label": "Deployments",
+   "path": "/deployments/",
+   "type": "stack",
+   "title": "Deployment cases documented, by the most advanced status documented so far",
+   "subtitle": "Follow what public sources had documented by each date. This shows the history of the evidence, rather than when each robot started work: each case counts from its first dated report, at the most advanced status documented by the end of each quarter.",
+   "meaning": "Publication date of each source record, as recorded (evidence chronology, not the date work started). A year-only date counts from 31 December of that year and a month from its last day, or from the snapshot date for the current year or month. The status is the most advanced one documented by that date: a later status is never drawn earlier, and a later source that says less does not erase it, so this series cannot show a regression. Undated records stay outside the series.",
+   "unit": "cases",
+   "precision": "quarter",
+   "domain": {
+    "start": "2022-01-01",
+    "end": "2026-11-25"
+   },
+   "series": [
+    {
+     "key": "ann",
+     "label": "Announced",
+     "note": "planned or agreed, not evidence of work"
+    },
+    {
+     "key": "unc",
+     "label": "Unconfirmed",
+     "note": "operation claimed by a vendor, or unresolved"
+    },
+    {
+     "key": "pilot",
+     "label": "Pilot or trial",
+     "note": "a pilot, trial or test"
+    },
+    {
+     "key": "op",
+     "label": "In operation",
+     "note": "the source says the robot is working in operation"
+    }
+   ],
+   "columns": [
+    {
+     "key": "2022-Q3",
+     "label": "2022",
+     "long": "Q3 2022",
+     "t": "2022-09-30",
+     "value": 0,
+     "segments": {
+      "ann": 0,
+      "unc": 0,
+      "pilot": 0,
+      "op": 0
+     },
+     "partial": false
+    },
+    {
+     "key": "2022-Q4",
+     "label": "",
+     "long": "Q4 2022",
+     "t": "2022-12-31",
+     "value": 1,
+     "segments": {
+      "ann": 0,
+      "unc": 1,
+      "pilot": 0,
+      "op": 0
+     },
+     "partial": false
+    },
+    {
+     "key": "2023-Q1",
+     "label": "2023",
+     "long": "Q1 2023",
+     "t": "2023-03-31",
+     "value": 3,
+     "segments": {
+      "ann": 0,
+      "unc": 1,
+      "pilot": 2,
+      "op": 0
+     },
+     "partial": false
+    },
+    {
+     "key": "2023-Q2",
+     "label": "",
+     "long": "Q2 2023",
+     "t": "2023-06-30",
+     "value": 4,
+     "segments": {
+      "ann": 0,
+      "unc": 1,
+      "pilot": 3,
+      "op": 0
+     },
+     "partial": false
+    },
+    {
+     "key": "2023-Q3",
+     "label": "",
+     "long": "Q3 2023",
+     "t": "2023-09-30",
+     "value": 6,
+     "segments": {
+      "ann": 0,
+      "unc": 3,
+      "pilot": 3,
+      "op": 0
+     },
+     "partial": false
+    },
+    {
+     "key": "2023-Q4",
+     "label": "",
+     "long": "Q4 2023",
+     "t": "2023-12-31",
+     "value": 8,
+     "segments": {
+      "ann": 0,
+      "unc": 3,
+      "pilot": 5,
+      "op": 0
+     },
+     "partial": false
+    },
+    {
+     "key": "2024-Q1",
+     "label": "2024",
+     "long": "Q1 2024",
+     "t": "2024-03-31",
+     "value": 11,
+     "segments": {
+      "ann": 1,
+      "unc": 4,
+      "pilot": 6,
+      "op": 0
+     },
+     "partial": false
+    },
+    {
+     "key": "2024-Q2",
+     "label": "",
+     "long": "Q2 2024",
+     "t": "2024-06-30",
+     "value": 13,
+     "segments": {
+      "ann": 2,
+      "unc": 4,
+      "pilot": 6,
+      "op": 1
+     },
+     "partial": false
+    },
+    {
+     "key": "2024-Q3",
+     "label": "",
+     "long": "Q3 2024",
+     "t": "2024-09-30",
+     "value": 17,
+     "segments": {
+      "ann": 2,
+      "unc": 4,
+      "pilot": 10,
+      "op": 1
+     },
+     "partial": false
+    },
+    {
+     "key": "2024-Q4",
+     "label": "",
+     "long": "Q4 2024",
+     "t": "2024-12-31",
+     "value": 21,
+     "segments": {
+      "ann": 3,
+      "unc": 4,
+      "pilot": 12,
+      "op": 2
+     },
+     "partial": false
+    },
+    {
+     "key": "2025-Q1",
+     "label": "2025",
+     "long": "Q1 2025",
+     "t": "2025-03-31",
+     "value": 27,
+     "segments": {
+      "ann": 4,
+      "unc": 5,
+      "pilot": 16,
+      "op": 2
+     },
+     "partial": false
+    },
+    {
+     "key": "2025-Q2",
+     "label": "",
+     "long": "Q2 2025",
+     "t": "2025-06-30",
+     "value": 34,
+     "segments": {
+      "ann": 8,
+      "unc": 6,
+      "pilot": 18,
+      "op": 2
+     },
+     "partial": false
+    },
+    {
+     "key": "2025-Q3",
+     "label": "",
+     "long": "Q3 2025",
+     "t": "2025-09-30",
+     "value": 38,
+     "segments": {
+      "ann": 10,
+      "unc": 7,
+      "pilot": 18,
+      "op": 3
+     },
+     "partial": false
+    },
+    {
+     "key": "2025-Q4",
+     "label": "",
+     "long": "Q4 2025",
+     "t": "2025-12-31",
+     "value": 47,
+     "segments": {
+      "ann": 15,
+      "unc": 9,
+      "pilot": 19,
+      "op": 4
+     },
+     "partial": false
+    },
+    {
+     "key": "2026-Q1",
+     "label": "2026",
+     "long": "Q1 2026",
+     "t": "2026-03-31",
+     "value": 59,
+     "segments": {
+      "ann": 18,
+      "unc": 10,
+      "pilot": 27,
+      "op": 4
+     },
+     "partial": false
+    },
+    {
+     "key": "2026-Q2",
+     "label": "",
+     "long": "Q2 2026",
+     "t": "2026-06-30",
+     "value": 74,
+     "segments": {
+      "ann": 21,
+      "unc": 14,
+      "pilot": 33,
+      "op": 6
+     },
+     "partial": false
+    },
+    {
+     "key": "2026-Q3",
+     "label": "",
+     "long": "Q3 2026",
+     "t": "2026-09-30",
+     "value": 83,
+     "segments": {
+      "ann": 22,
+      "unc": 18,
+      "pilot": 37,
+      "op": 6
+     },
+     "partial": false
+    },
+    {
+     "key": "2026-Q4",
+     "label": "",
+     "long": "Q4 2026 (to 2026-11-25)",
+     "t": "2026-11-25",
+     "value": 114,
+     "segments": {
+      "ann": 33,
+      "unc": 25,
+      "pilot": 49,
+      "op": 7
+     },
+     "partial": true
+    }
+   ],
+   "undated": {
+    "label": "Date unknown",
+    "cases": 11,
+    "records": 20,
+    "segments": {
+     "ann": 0,
+     "unc": 7,
+     "pilot": 3,
+     "op": 1
+    }
+   },
+   "final": {
+    "cases": 114,
+    "segments": {
+     "ann": 33,
+     "unc": 25,
+     "pilot": 49,
+     "op": 7
+    },
+    "all_records_now": {
+     "ann": 33,
+     "unc": 32,
+     "pilot": 52,
+     "op": 8
+    }
+   },
+   "summary": "By 2026-11-25, 114 of 125 cases have a dated source: 7 in operation, 49 pilot or trial, 25 unconfirmed, 33 announced.",
+   "coverage": {
+    "included": 114,
+    "total": 125,
+    "unit": "cases",
+    "excluded": [
+     {
+      "reason": "Cases whose records all lack a publication date",
+      "count": 11
+     },
+     {
+      "reason": "Records without a publication date (of 197)",
+      "count": 20
+     }
+    ],
+    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead, so their totals differ: currently 6 in operation, 49 pilot or trial, 25 unconfirmed, 34 announced among the 114 dated cases. Undated evidence is kept apart and never assigned a date."
+   },
+   "status": "partial",
+   "status_note": "114 of 125 cases placed in time; 11 cases with no dated record stay in the date-unknown bar, outside the time series.",
+   "sources": [
+    {
+     "label": "Deployments public summaries, snapshot 2026-11-25",
+     "url": "/data/preview/deployments.json"
+    }
+   ],
+   "table": {
+    "head": [
+     "Quarter",
+     "In operation",
+     "Pilot or trial",
+     "Unconfirmed",
+     "Announced",
+     "Cases"
+    ],
+    "rows": [
+     [
+      "Q3 2022",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     [
+      "Q4 2022",
+      "0",
+      "0",
+      "1",
+      "0",
+      "1"
+     ],
+     [
+      "Q1 2023",
+      "0",
+      "2",
+      "1",
+      "0",
+      "3"
+     ],
+     [
+      "Q2 2023",
+      "0",
+      "3",
+      "1",
+      "0",
+      "4"
+     ],
+     [
+      "Q3 2023",
+      "0",
+      "3",
+      "3",
+      "0",
+      "6"
+     ],
+     [
+      "Q4 2023",
+      "0",
+      "5",
+      "3",
+      "0",
+      "8"
+     ],
+     [
+      "Q1 2024",
+      "0",
+      "6",
+      "4",
+      "1",
+      "11"
+     ],
+     [
+      "Q2 2024",
+      "1",
+      "6",
+      "4",
+      "2",
+      "13"
+     ],
+     [
+      "Q3 2024",
+      "1",
+      "10",
+      "4",
+      "2",
+      "17"
+     ],
+     [
+      "Q4 2024",
+      "2",
+      "12",
+      "4",
+      "3",
+      "21"
+     ],
+     [
+      "Q1 2025",
+      "2",
+      "16",
+      "5",
+      "4",
+      "27"
+     ],
+     [
+      "Q2 2025",
+      "2",
+      "18",
+      "6",
+      "8",
+      "34"
+     ],
+     [
+      "Q3 2025",
+      "3",
+      "18",
+      "7",
+      "10",
+      "38"
+     ],
+     [
+      "Q4 2025",
+      "4",
+      "19",
+      "9",
+      "15",
+      "47"
+     ],
+     [
+      "Q1 2026",
+      "4",
+      "27",
+      "10",
+      "18",
+      "59"
+     ],
+     [
+      "Q2 2026",
+      "6",
+      "33",
+      "14",
+      "21",
+      "74"
+     ],
+     [
+      "Q3 2026",
+      "6",
+      "37",
+      "18",
+      "22",
+      "83"
+     ],
+     [
+      "Q4 2026 (to 2026-11-25)",
+      "7",
+      "49",
+      "25",
+      "33",
+      "114"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "components",
+   "label": "Components",
+   "path": "/components/",
+   "type": "lanes",
+   "title": "When each tactile sensing product first appeared",
+   "subtitle": "17 of 19 products by the date of their first paper, preprint or launch, grouped by sensing principle.",
+   "meaning": "First dated public appearance of the product or version as recorded: its paper, preprint or commercial launch. Not a sales or performance figure.",
+   "unit": "products",
+   "precision": "year",
+   "domain": {
+    "start": "2009-01-01",
+    "end": "2026-11-25"
+   },
+   "rows": [
+    {
+     "key": "optical",
+     "label": "Optical or vision-based"
+    },
+    {
+     "key": "magnetic",
+     "label": "Magnetic"
+    },
+    {
+     "key": "other",
+     "label": "Multimodal or not stated"
+    }
+   ],
+   "points": [
+    {
+     "id": "CMP-TAC-013",
+     "label": "TacTip",
+     "row": "optical",
+     "date": "2009",
+     "precision": "year",
+     "x": "2009-07-02",
+     "reveal": "2009-12-31",
+     "note": "paper",
+     "href": "/components/cmp-tac-013/",
+     "hollow": false,
+     "t": "2009-12-31"
+    },
+    {
+     "id": "CMP-TAC-009",
+     "label": "FingerVision",
+     "row": "optical",
+     "date": "2016",
+     "precision": "year",
+     "x": "2016-07-02",
+     "reveal": "2016-12-31",
+     "note": "paper",
+     "href": "/components/cmp-tac-009/",
+     "hollow": false,
+     "t": "2016-12-31"
+    },
+    {
+     "id": "CMP-TAC-004",
+     "label": "uSkin",
+     "row": "magnetic",
+     "date": "2018",
+     "precision": "year",
+     "x": "2018-07-02",
+     "reveal": "2018-12-31",
+     "note": "paper",
+     "href": "/components/cmp-tac-004/",
+     "hollow": false,
+     "t": "2018-12-31"
+    },
+    {
+     "id": "CMP-TAC-001",
+     "label": "DIGIT",
+     "row": "optical",
+     "date": "2020",
+     "precision": "year",
+     "x": "2020-07-02",
+     "reveal": "2020-12-31",
+     "note": "paper",
+     "href": "/components/cmp-tac-001/",
+     "hollow": false,
+     "t": "2020-12-31"
+    },
+    {
+     "id": "CMP-TAC-016",
+     "label": "OmniTact",
+     "row": "optical",
+     "date": "2020",
+     "precision": "year",
+     "x": "2020-07-02",
+     "reveal": "2020-12-31",
+     "note": "paper",
+     "href": "/components/cmp-tac-016/",
+     "hollow": false,
+     "t": "2020-12-31"
+    },
+    {
+     "id": "CMP-TAC-006",
+     "label": "PapillArray",
+     "row": "optical",
+     "date": "2021",
+     "precision": "year",
+     "x": "2021-07-02",
+     "reveal": "2021-12-31",
+     "note": "product version (Development Kit v2.0)",
+     "href": "/components/cmp-tac-006/",
+     "hollow": false,
+     "t": "2021-12-31"
+    },
+    {
+     "id": "CMP-TAC-011",
+     "label": "ReSkin",
+     "row": "magnetic",
+     "date": "2021",
+     "precision": "year",
+     "x": "2021-07-02",
+     "reveal": "2021-12-31",
+     "note": "paper",
+     "href": "/components/cmp-tac-011/",
+     "hollow": false,
+     "t": "2021-12-31"
+    },
+    {
+     "id": "CMP-TAC-002",
+     "label": "GelSight Mini",
+     "row": "optical",
+     "date": "2022",
+     "precision": "year",
+     "x": "2022-07-02",
+     "reveal": "2022-12-31",
+     "note": "commercial launch (approximate)",
+     "href": "/components/cmp-tac-002/",
+     "hollow": false,
+     "t": "2022-12-31"
+    },
+    {
+     "id": "CMP-TAC-019",
+     "label": "DigiTac",
+     "row": "optical",
+     "date": "2022",
+     "precision": "year",
+     "x": "2022-07-02",
+     "reveal": "2022-12-31",
+     "note": "paper",
+     "href": "/components/cmp-tac-019/",
+     "hollow": false,
+     "t": "2022-12-31"
+    },
+    {
+     "id": "CMP-TAC-015",
+     "label": "9DTact",
+     "row": "optical",
+     "date": "2023",
+     "precision": "year",
+     "x": "2023-07-02",
+     "reveal": "2023-12-31",
+     "note": "paper",
+     "href": "/components/cmp-tac-015/",
+     "hollow": false,
+     "t": "2023-12-31"
+    },
+    {
+     "id": "CMP-TAC-017",
+     "label": "Minsight",
+     "row": "optical",
+     "date": "2023",
+     "precision": "year",
+     "x": "2023-07-02",
+     "reveal": "2023-12-31",
+     "note": "paper",
+     "href": "/components/cmp-tac-017/",
+     "hollow": false,
+     "t": "2023-12-31"
+    },
+    {
+     "id": "CMP-TAC-012",
+     "label": "AnySkin",
+     "row": "magnetic",
+     "date": "2024",
+     "precision": "year",
+     "x": "2024-07-02",
+     "reveal": "2024-12-31",
+     "note": "preprint",
+     "href": "/components/cmp-tac-012/",
+     "hollow": false,
+     "t": "2024-12-31"
+    },
+    {
+     "id": "CMP-TAC-014",
+     "label": "GelSlim 4.0",
+     "row": "optical",
+     "date": "2024-09",
+     "precision": "month",
+     "x": "2024-09-16",
+     "reveal": "2024-09-30",
+     "note": "preprint",
+     "href": "/components/cmp-tac-014/",
+     "hollow": false,
+     "t": "2024-09-30"
+    },
+    {
+     "id": "CMP-TAC-003",
+     "label": "DIGIT 360",
+     "row": "other",
+     "date": "2024-10-31",
+     "precision": "day",
+     "x": "2024-10-31",
+     "reveal": "2024-10-31",
+     "note": "preprint",
+     "href": "/components/cmp-tac-003/",
+     "hollow": false,
+     "t": "2024-10-31"
+    },
+    {
+     "id": "CMP-TAC-020",
+     "label": "F-TAC Hand",
+     "row": "optical",
+     "date": "2025-06-09",
+     "precision": "day",
+     "x": "2025-06-09",
+     "reveal": "2025-06-09",
+     "note": "paper (a complete hand, not a standalone sensor)",
+     "href": "/components/cmp-tac-020/",
+     "hollow": true,
+     "t": "2025-06-09"
+    },
+    {
+     "id": "CMP-TAC-018",
+     "label": "eFlesh",
+     "row": "magnetic",
+     "date": "2025",
+     "precision": "year",
+     "x": "2025-07-02",
+     "reveal": "2025-12-31",
+     "note": "preprint",
+     "href": "/components/cmp-tac-018/",
+     "hollow": false,
+     "t": "2025-12-31"
+    },
+    {
+     "id": "CMP-TAC-005",
+     "label": "PX-6AX GEN4 (PX6AX GEN4)",
+     "row": "other",
+     "date": "2026-08",
+     "precision": "month",
+     "x": "2026-08-16",
+     "reveal": "2026-08-31",
+     "note": "commercial launch (GEN4)",
+     "href": "/components/cmp-tac-005/",
+     "hollow": false,
+     "t": "2026-08-31"
+    }
+   ],
+   "final": {
+    "dated": 17,
+    "by_row": {
+     "optical": 11,
+     "magnetic": 4,
+     "other": 2
+    }
+   },
+   "summary": "17 products dated from 2009 to 2026: 11 optical or vision-based, 4 magnetic, 2 multimodal or not stated. No performance figures are compared: units and test conditions differ.",
+   "coverage": {
+    "included": 17,
+    "total": 19,
+    "unit": "products",
+    "excluded": [
+     {
+      "reason": "RoboTact: No product year recorded; the dates in the cell are a brochure and the company's history.",
+      "count": 1
+     },
+     {
+      "reason": "BioTac SP: The recorded year is the original BioTac's; the SP version is undated.",
+      "count": 1
+     }
+    ],
+    "note": "Hollow mark: a complete robotic hand, not a standalone sensor."
+   },
+   "status": "partial",
+   "status_note": "17 of 19 products placed in time; 2 cannot be dated from the recorded text.",
+   "sources": [
+    {
+     "label": "Components public product rows, snapshot 2026-11-25",
+     "url": "/data/preview/hardware.json"
+    }
+   ],
+   "table": {
+    "head": [
+     "Date",
+     "Product",
+     "Principle",
+     "Event as recorded"
+    ],
+    "rows": [
+     [
+      "2009",
+      "TacTip",
+      "Optical or vision-based",
+      "paper"
+     ],
+     [
+      "2016",
+      "FingerVision",
+      "Optical or vision-based",
+      "paper"
+     ],
+     [
+      "2018",
+      "uSkin",
+      "Magnetic",
+      "paper"
+     ],
+     [
+      "2020",
+      "DIGIT",
+      "Optical or vision-based",
+      "paper"
+     ],
+     [
+      "2020",
+      "OmniTact",
+      "Optical or vision-based",
+      "paper"
+     ],
+     [
+      "2021",
+      "PapillArray",
+      "Optical or vision-based",
+      "product version (Development Kit v2.0)"
+     ],
+     [
+      "2021",
+      "ReSkin",
+      "Magnetic",
+      "paper"
+     ],
+     [
+      "2022",
+      "GelSight Mini",
+      "Optical or vision-based",
+      "commercial launch (approximate)"
+     ],
+     [
+      "2022",
+      "DigiTac",
+      "Optical or vision-based",
+      "paper"
+     ],
+     [
+      "2023",
+      "9DTact",
+      "Optical or vision-based",
+      "paper"
+     ],
+     [
+      "2023",
+      "Minsight",
+      "Optical or vision-based",
+      "paper"
+     ],
+     [
+      "2024",
+      "AnySkin",
+      "Magnetic",
+      "preprint"
+     ],
+     [
+      "2024-09",
+      "GelSlim 4.0",
+      "Optical or vision-based",
+      "preprint"
+     ],
+     [
+      "2024-10-31",
+      "DIGIT 360",
+      "Multimodal or not stated",
+      "preprint"
+     ],
+     [
+      "2025-06-09",
+      "F-TAC Hand",
+      "Optical or vision-based",
+      "paper (a complete hand, not a standalone sensor)"
+     ],
+     [
+      "2025",
+      "eFlesh",
+      "Magnetic",
+      "preprint"
+     ],
+     [
+      "2026-08",
+      "PX-6AX GEN4 (PX6AX GEN4)",
+      "Multimodal or not stated",
+      "commercial launch (GEN4)"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "integrators",
+   "label": "Integrators",
+   "path": "/integrators/",
+   "type": "lanes",
+   "title": "Dated integration evidence, by what it shows",
+   "subtitle": "14 dated projects, partnerships and test results from 12 of 28 providers, by the strength of the evidence. A shared project counts once.",
+   "meaning": "Date of the public source documenting each named project, partnership or technical milestone (source publication, not founding year or start of work). One event per dated project or announcement; follow-up articles on the same project are not counted again.",
+   "unit": "events",
+   "precision": "day",
+   "domain": {
+    "start": "2024-01-01",
+    "end": "2026-11-25"
+   },
+   "rows": [
+    {
+     "key": "corroborated",
+     "label": "Corroborated by a customer, partner or university"
+    },
+    {
+     "key": "announcement",
+     "label": "Partnership or programme announced"
+    },
+    {
+     "key": "provider",
+     "label": "Reported by the provider only"
+    },
+    {
+     "key": "simulation",
+     "label": "Simulation only"
+    }
+   ],
+   "points": [
+    {
+     "id": "zion-agility",
+     "label": "Zion Solutions Group and Agility Robotics integration partnership",
+     "row": "announcement",
+     "date": "2024-05-06",
+     "precision": "day",
+     "x": "2024-05-06",
+     "reveal": "2024-05-06",
+     "note": "Zion Solutions Group",
+     "href": "/integrators/#projects",
+     "hollow": false,
+     "t": "2024-05-06"
+    },
+    {
+     "id": "ricoh-agility",
+     "label": "Ricoh USA and Agility Robotics service partnership",
+     "row": "announcement",
+     "date": "2024-09-09",
+     "precision": "day",
+     "x": "2024-09-09",
+     "reveal": "2024-09-09",
+     "note": "Ricoh USA",
+     "href": "/integrators/#projects",
+     "hollow": false,
+     "t": "2024-09-09"
+    },
+    {
+     "id": "tompkins-agility",
+     "label": "Tompkins Solutions and Agility Robotics integration partnership",
+     "row": "announcement",
+     "date": "2024-10-16",
+     "precision": "day",
+     "x": "2024-10-16",
+     "reveal": "2024-10-16",
+     "note": "Tompkins Solutions",
+     "href": "/integrators/#projects",
+     "hollow": false,
+     "t": "2024-10-16"
+    },
+    {
+     "id": "upv-demonstration",
+     "label": "UPV HumanTech humanoid demonstration",
+     "row": "corroborated",
+     "date": "2025-04-03",
+     "precision": "day",
+     "x": "2025-04-03",
+     "reveal": "2025-04-03",
+     "note": "Synergy Tech",
+     "href": "/integrators/#project-upv-humantech",
+     "hollow": false,
+     "t": "2025-04-03"
+    },
+    {
+     "id": "orano-hoxo",
+     "label": "Capgemini and Orano: Hoxo proof of concept",
+     "row": "corroborated",
+     "date": "2025-11-04",
+     "precision": "day",
+     "x": "2025-11-04",
+     "reveal": "2025-11-04",
+     "note": "Capgemini",
+     "href": "/integrators/#project-orano-hoxo",
+     "hollow": false,
+     "t": "2025-11-04"
+    },
+    {
+     "id": "vodafone-duisburg",
+     "label": "Accenture: Vodafone warehouse pilot, Duisburg",
+     "row": "corroborated",
+     "date": "2026-04-22",
+     "precision": "day",
+     "x": "2026-04-22",
+     "reveal": "2026-04-22",
+     "note": "Accenture",
+     "href": "/integrators/#project-vodafone-duisburg",
+     "hollow": false,
+     "t": "2026-04-22"
+    },
+    {
+     "id": "jal-ground-service",
+     "label": "JAL Ground Service humanoid programme announced",
+     "row": "announcement",
+     "date": "2026-04-27",
+     "precision": "day",
+     "x": "2026-04-27",
+     "reveal": "2026-04-27",
+     "note": "GMO AI & Robotics Corporation",
+     "href": "/integrators/#project-jal-ground-service",
+     "hollow": false,
+     "t": "2026-04-27"
+    },
+    {
+     "id": "upv-chair",
+     "label": "Synergy Tech chair at UPV announced",
+     "row": "corroborated",
+     "date": "2026-04-30",
+     "precision": "day",
+     "x": "2026-04-30",
+     "reveal": "2026-04-30",
+     "note": "Synergy Tech",
+     "href": "/integrators/#project-upv-humantech",
+     "hollow": false,
+     "t": "2026-04-30"
+    },
+    {
+     "id": "asahi-kasei",
+     "label": "GMO AI & Robotics: Asahi Kasei carrier-transport case (trial February 2026)",
+     "row": "provider",
+     "date": "2026-07-01",
+     "precision": "day",
+     "x": "2026-07-01",
+     "reveal": "2026-07-01",
+     "note": "GMO AI & Robotics Corporation",
+     "href": "/integrators/#project-asahi-kasei",
+     "hollow": false,
+     "t": "2026-07-01"
+    },
+    {
+     "id": "rovimatica-agreement",
+     "label": "Rovimática humanoid integration agreement",
+     "row": "provider",
+     "date": "2026-08",
+     "precision": "month",
+     "x": "2026-08-16",
+     "reveal": "2026-08-31",
+     "note": "Rovimática",
+     "href": "/integrators/#projects",
+     "hollow": false,
+     "t": "2026-08-31"
+    },
+    {
+     "id": "gmo-techshare",
+     "label": "GMO AI & Robotics and TechShare cooperation (one event, two providers)",
+     "row": "announcement",
+     "date": "2026-09-14",
+     "precision": "day",
+     "x": "2026-09-14",
+     "reveal": "2026-09-14",
+     "note": "GMO AI & Robotics Corporation and TechShare",
+     "href": "/integrators/#project-gmo-techshare",
+     "hollow": false,
+     "t": "2026-09-14"
+    },
+    {
+     "id": "ca3-arm",
+     "label": "CA3 arm results in simulation",
+     "row": "simulation",
+     "date": "2026-10-28",
+     "precision": "day",
+     "x": "2026-10-28",
+     "reveal": "2026-10-28",
+     "note": "CA3",
+     "href": "/integrators/#projects",
+     "hollow": true,
+     "t": "2026-10-28"
+    },
+    {
+     "id": "ca3-home",
+     "label": "CA3 home-task results in simulation",
+     "row": "simulation",
+     "date": "2026-11-05",
+     "precision": "day",
+     "x": "2026-11-05",
+     "reveal": "2026-11-05",
+     "note": "CA3",
+     "href": "/integrators/#projects",
+     "hollow": true,
+     "t": "2026-11-05"
+    },
+    {
+     "id": "novares-sesena",
+     "label": "Novares Seseña proof of concept (Innov8 and Bleu Robotics, counted once)",
+     "row": "corroborated",
+     "date": "2026-11-17",
+     "precision": "day",
+     "x": "2026-11-17",
+     "reveal": "2026-11-17",
+     "note": "Innov8 Robotics and Bleu Robotics",
+     "href": "/integrators/#project-novares-sesena",
+     "hollow": false,
+     "t": "2026-11-17"
+    }
+   ],
+   "final": {
+    "events": 14,
+    "by_row": {
+     "corroborated": 5,
+     "announcement": 5,
+     "provider": 2,
+     "simulation": 2
+    }
+   },
+   "summary": "14 dated events from 2024 to 2026-11-17: 5 corroborated by a customer, partner or university; 5 partnership or programme announced; 2 reported by the provider only; 2 simulation only. An announcement is not delivered work.",
+   "coverage": {
+    "included": 12,
+    "total": 28,
+    "unit": "providers",
+    "excluded": [
+     {
+      "reason": "Providers whose reviewed pages state no dates",
+      "count": 16
+     },
+     {
+      "reason": "Named project without a dated source: TXISTU visitor-guidance humanoid (NASERTIC, Polo IRIS Navarra)",
+      "count": 1
+     },
+     {
+      "reason": "Named project without a dated source: Edward Warchocki",
+      "count": 1
+     },
+     {
+      "reason": "A follow-up article on the Orano proof of concept already counted.",
+      "count": 1
+     },
+     {
+      "reason": "A follow-up note on the Novares proof of concept already counted.",
+      "count": 1
+     },
+     {
+      "reason": "The same follow-up note on the Novares proof of concept.",
+      "count": 1
+     }
+    ],
+    "note": "Hollow mark: simulation only (CA3, a listed exception, never counted as a humanoid integrator)."
+   },
+   "status": "partial",
+   "status_note": "12 of 28 providers have dated evidence; 16 have none on their reviewed pages.",
+   "sources": [
+    {
+     "label": "Integrators atlas, snapshot 2026-11-25",
+     "url": "/data/integrators/atlas.json"
+    }
+   ],
+   "table": {
+    "head": [
+     "Date",
+     "Event",
+     "Providers",
+     "Evidence"
+    ],
+    "rows": [
+     [
+      "2024-05-06",
+      "Zion Solutions Group and Agility Robotics integration partnership",
+      "Zion Solutions Group",
+      "Partnership or programme announced"
+     ],
+     [
+      "2024-09-09",
+      "Ricoh USA and Agility Robotics service partnership",
+      "Ricoh USA",
+      "Partnership or programme announced"
+     ],
+     [
+      "2024-10-16",
+      "Tompkins Solutions and Agility Robotics integration partnership",
+      "Tompkins Solutions",
+      "Partnership or programme announced"
+     ],
+     [
+      "2025-04-03",
+      "UPV HumanTech humanoid demonstration",
+      "Synergy Tech",
+      "Corroborated by a customer, partner or university"
+     ],
+     [
+      "2025-11-04",
+      "Capgemini and Orano: Hoxo proof of concept",
+      "Capgemini",
+      "Corroborated by a customer, partner or university"
+     ],
+     [
+      "2026-04-22",
+      "Accenture: Vodafone warehouse pilot, Duisburg",
+      "Accenture",
+      "Corroborated by a customer, partner or university"
+     ],
+     [
+      "2026-04-27",
+      "JAL Ground Service humanoid programme announced",
+      "GMO AI & Robotics Corporation",
+      "Partnership or programme announced"
+     ],
+     [
+      "2026-04-30",
+      "Synergy Tech chair at UPV announced",
+      "Synergy Tech",
+      "Corroborated by a customer, partner or university"
+     ],
+     [
+      "2026-07-01",
+      "GMO AI & Robotics: Asahi Kasei carrier-transport case (trial February 2026)",
+      "GMO AI & Robotics Corporation",
+      "Reported by the provider only"
+     ],
+     [
+      "2026-08",
+      "Rovimática humanoid integration agreement",
+      "Rovimática",
+      "Reported by the provider only"
+     ],
+     [
+      "2026-09-14",
+      "GMO AI & Robotics and TechShare cooperation (one event, two providers)",
+      "GMO AI & Robotics Corporation and TechShare",
+      "Partnership or programme announced"
+     ],
+     [
+      "2026-10-28",
+      "CA3 arm results in simulation",
+      "CA3",
+      "Simulation only"
+     ],
+     [
+      "2026-11-05",
+      "CA3 home-task results in simulation",
+      "CA3",
+      "Simulation only"
+     ],
+     [
+      "2026-11-17",
+      "Novares Seseña proof of concept (Innov8 and Bleu Robotics, counted once)",
+      "Innov8 Robotics and Bleu Robotics",
+      "Corroborated by a customer, partner or university"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "datasets",
+   "label": "Datasets",
+   "path": "/datasets/",
+   "type": "lanes",
+   "title": "Associated papers of robot learning data resources",
+   "subtitle": "28 of 35 resources by the first arXiv submission of their associated paper: a partial chronology of publications, not of dataset releases or volume.",
+   "meaning": "Each data resource is placed at the date of its associated paper or official announcement, as the source states it. So far every dated resource uses the first arXiv submission (v1) of its paper, checked against the arXiv history, with the link between resource and paper taken from the official project page, repository or abstract. This is not the date the data was released or became available, and not how its volume grew: current figures may come from later versions.",
+   "unit": "papers",
+   "precision": "day",
+   "domain": {
+    "start": "2021-01-01",
+    "end": "2026-11-25"
+   },
+   "rows": [
+    {
+     "key": "robot",
+     "label": "Robot-recorded"
+    },
+    {
+     "key": "human",
+     "label": "Human observation and motion"
+    },
+    {
+     "key": "synthetic",
+     "label": "Synthetic, simulated and retargeted"
+    },
+    {
+     "key": "assets",
+     "label": "Environment assets"
+    },
+    {
+     "key": "mixed",
+     "label": "Mixed origins"
+    },
+    {
+     "key": "other",
+     "label": "Origin not established or not applicable"
+    }
+   ],
+   "points": [
+    {
+     "id": "ds-lafan1",
+     "label": "LAFAN1",
+     "row": "human",
+     "date": "2021-02-09",
+     "precision": "day",
+     "x": "2021-02-09",
+     "reveal": "2021-02-09",
+     "note": "arXiv 2102.04942. Associated paper was already published at SIGGRAPH 2020; arXiv date is later. Ubisoft article dated 2020-07-30: https://www.ubisoft.com/en-us/studio/laforge/news/2NBPwJzPl3DwCAzGTav7Tg/robust-motion-inbetweening .",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2102.04942",
+     "external": true,
+     "t": "2021-02-09"
+    },
+    {
+     "id": "ds-ego4d",
+     "label": "Ego4D",
+     "row": "human",
+     "date": "2021-10-13",
+     "precision": "day",
+     "x": "2021-10-13",
+     "reveal": "2021-10-13",
+     "note": "arXiv 2110.07058. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2110.07058",
+     "external": true,
+     "t": "2021-10-13"
+    },
+    {
+     "id": "ds-calvin",
+     "label": "CALVIN play dataset",
+     "row": "synthetic",
+     "date": "2021-12-06",
+     "precision": "day",
+     "x": "2021-12-06",
+     "reveal": "2021-12-06",
+     "note": "arXiv 2112.03227. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2112.03227",
+     "external": true,
+     "t": "2021-12-06"
+    },
+    {
+     "id": "ds-libero",
+     "label": "LIBERO demonstrations",
+     "row": "synthetic",
+     "date": "2023-06-05",
+     "precision": "day",
+     "x": "2023-06-05",
+     "reveal": "2023-06-05",
+     "note": "arXiv 2306.03310. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2306.03310",
+     "external": true,
+     "t": "2023-06-05"
+    },
+    {
+     "id": "ds-rh20t",
+     "label": "RH20T",
+     "row": "robot",
+     "date": "2023-07-02",
+     "precision": "day",
+     "x": "2023-07-02",
+     "reveal": "2023-07-02",
+     "note": "arXiv 2307.00595. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2307.00595",
+     "external": true,
+     "t": "2023-07-02"
+    },
+    {
+     "id": "ds-bridgedata-v2",
+     "label": "BridgeData V2",
+     "row": "robot",
+     "date": "2023-08-24",
+     "precision": "day",
+     "x": "2023-08-24",
+     "reveal": "2023-08-24",
+     "note": "arXiv 2308.12952. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2308.12952",
+     "external": true,
+     "t": "2023-08-24"
+    },
+    {
+     "id": "ds-open-x-embodiment",
+     "label": "Open X-Embodiment",
+     "row": "robot",
+     "date": "2023-10-13",
+     "precision": "day",
+     "x": "2023-10-13",
+     "reveal": "2023-10-13",
+     "note": "arXiv 2310.08864. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2310.08864",
+     "external": true,
+     "t": "2023-10-13"
+    },
+    {
+     "id": "ds-ego-exo4d",
+     "label": "Ego-Exo4D",
+     "row": "human",
+     "date": "2023-11-30",
+     "precision": "day",
+     "x": "2023-11-30",
+     "reveal": "2023-11-30",
+     "note": "arXiv 2311.18259. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2311.18259",
+     "external": true,
+     "t": "2023-11-30"
+    },
+    {
+     "id": "ds-droid",
+     "label": "Droid",
+     "row": "robot",
+     "date": "2024-03-19",
+     "precision": "day",
+     "x": "2024-03-19",
+     "reveal": "2024-03-19",
+     "note": "arXiv 2403.12945. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2403.12945",
+     "external": true,
+     "t": "2024-03-19"
+    },
+    {
+     "id": "ds-physics-iq",
+     "label": "Physics IQ evaluation dataset",
+     "row": "human",
+     "date": "2025-01-14",
+     "precision": "day",
+     "x": "2025-01-14",
+     "reveal": "2025-01-14",
+     "note": "arXiv 2501.09038. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2501.09038",
+     "external": true,
+     "t": "2025-01-14"
+    },
+    {
+     "id": "ds-sharerobot",
+     "label": "ShareRobot",
+     "row": "synthetic",
+     "date": "2025-02-28",
+     "precision": "day",
+     "x": "2025-02-28",
+     "reveal": "2025-02-28",
+     "note": "arXiv 2502.21257. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2502.21257",
+     "external": true,
+     "t": "2025-02-28"
+    },
+    {
+     "id": "ds-agibot-world",
+     "label": "AgiBot World (Colosseo)",
+     "row": "robot",
+     "date": "2025-03-09",
+     "precision": "day",
+     "x": "2025-03-09",
+     "reveal": "2025-03-09",
+     "note": "arXiv 2503.06669. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2503.06669",
+     "external": true,
+     "t": "2025-03-09"
+    },
+    {
+     "id": "ds-dexmanipnet",
+     "label": "DexManipNet",
+     "row": "synthetic",
+     "date": "2025-03-27",
+     "precision": "day",
+     "x": "2025-03-27",
+     "reveal": "2025-03-27",
+     "note": "arXiv 2503.21860. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2503.21860",
+     "external": true,
+     "t": "2025-03-27"
+    },
+    {
+     "id": "ds-humoto",
+     "label": "HUMOTO",
+     "row": "human",
+     "date": "2025-04-14",
+     "precision": "day",
+     "x": "2025-04-14",
+     "reveal": "2025-04-14",
+     "note": "arXiv 2504.10414. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2504.10414",
+     "external": true,
+     "t": "2025-04-14"
+    },
+    {
+     "id": "ds-egodex",
+     "label": "EgoDex",
+     "row": "human",
+     "date": "2025-05-16",
+     "precision": "day",
+     "x": "2025-05-16",
+     "reveal": "2025-05-16",
+     "note": "arXiv 2505.11709. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2505.11709",
+     "external": true,
+     "t": "2025-05-16"
+    },
+    {
+     "id": "ds-roboeval",
+     "label": "RoboEval demonstrations",
+     "row": "synthetic",
+     "date": "2025-07-01",
+     "precision": "day",
+     "x": "2025-07-01",
+     "reveal": "2025-07-01",
+     "note": "arXiv 2507.00435. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2507.00435",
+     "external": true,
+     "t": "2025-07-01"
+    },
+    {
+     "id": "ds-galaxea",
+     "label": "Galaxea",
+     "row": "robot",
+     "date": "2025-08-30",
+     "precision": "day",
+     "x": "2025-08-30",
+     "reveal": "2025-08-30",
+     "note": "arXiv 2509.00576. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2509.00576",
+     "external": true,
+     "t": "2025-08-30"
+    },
+    {
+     "id": "ds-openego",
+     "label": "OpenEgo",
+     "row": "human",
+     "date": "2025-09-05",
+     "precision": "day",
+     "x": "2025-09-05",
+     "reveal": "2025-09-05",
+     "note": "arXiv 2509.05513. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2509.05513",
+     "external": true,
+     "t": "2025-09-05"
+    },
+    {
+     "id": "ds-motiontrans",
+     "label": "Motiontrans",
+     "row": "human",
+     "date": "2025-09-22",
+     "precision": "day",
+     "x": "2025-09-22",
+     "reveal": "2025-09-22",
+     "note": "arXiv 2509.17759. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2509.17759",
+     "external": true,
+     "t": "2025-09-22"
+    },
+    {
+     "id": "ds-phuma",
+     "label": "PHUMA",
+     "row": "synthetic",
+     "date": "2025-10-30",
+     "precision": "day",
+     "x": "2025-10-30",
+     "reveal": "2025-10-30",
+     "note": "arXiv 2510.26236. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2510.26236",
+     "external": true,
+     "t": "2025-10-30"
+    },
+    {
+     "id": "ds-robocoin",
+     "label": "RoboCOIN",
+     "row": "robot",
+     "date": "2025-11-21",
+     "precision": "day",
+     "x": "2025-11-21",
+     "reveal": "2025-11-21",
+     "note": "arXiv 2511.17441. README report announcement on 2025-11-24 differs from first arXiv submission.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2511.17441",
+     "external": true,
+     "t": "2025-11-21"
+    },
+    {
+     "id": "ds-robomind2",
+     "label": "RoboMIND 2.0",
+     "row": "mixed",
+     "date": "2025-12-31",
+     "precision": "day",
+     "x": "2025-12-31",
+     "reveal": "2025-12-31",
+     "note": "arXiv 2512.24653. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2512.24653",
+     "external": true,
+     "t": "2025-12-31"
+    },
+    {
+     "id": "ds-molmospaces",
+     "label": "MolmoSpaces environments and assets",
+     "row": "assets",
+     "date": "2026-02-11",
+     "precision": "day",
+     "x": "2026-02-11",
+     "reveal": "2026-02-11",
+     "note": "arXiv 2602.11337. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2602.11337",
+     "external": true,
+     "t": "2026-02-11"
+    },
+    {
+     "id": "ds-lda-1b",
+     "label": "LDA -1B",
+     "row": "mixed",
+     "date": "2026-02-12",
+     "precision": "day",
+     "x": "2026-02-12",
+     "reveal": "2026-02-12",
+     "note": "arXiv 2602.12215. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2602.12215",
+     "external": true,
+     "t": "2026-02-12"
+    },
+    {
+     "id": "ds-ultradexgrasp20m",
+     "label": "UltraDexGrasp-20M",
+     "row": "synthetic",
+     "date": "2026-03-05",
+     "precision": "day",
+     "x": "2026-03-05",
+     "reveal": "2026-03-05",
+     "note": "arXiv 2603.05312. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2603.05312",
+     "external": true,
+     "t": "2026-03-05"
+    },
+    {
+     "id": "ds-humannet",
+     "label": "HumanNet",
+     "row": "other",
+     "date": "2026-05-07",
+     "precision": "day",
+     "x": "2026-05-07",
+     "reveal": "2026-05-07",
+     "note": "arXiv 2605.06747. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2605.06747",
+     "external": true,
+     "t": "2026-05-07"
+    },
+    {
+     "id": "ds-robocolosseum",
+     "label": "RoboColosseum rollout data",
+     "row": "robot",
+     "date": "2026-11-02",
+     "precision": "day",
+     "x": "2026-11-02",
+     "reveal": "2026-11-02",
+     "note": "arXiv 2611.02497. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2611.02497",
+     "external": true,
+     "t": "2026-11-02"
+    },
+    {
+     "id": "ds-hubego-100k",
+     "label": "HubEgo-100K",
+     "row": "human",
+     "date": "2026-11-16",
+     "precision": "day",
+     "x": "2026-11-16",
+     "reveal": "2026-11-16",
+     "note": "arXiv 2611.21938. Not a dataset availability or collection date; current quantities are not backdated.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "from": "master",
+     "href": "https://arxiv.org/abs/2611.21938",
+     "external": true,
+     "t": "2026-11-16"
+    }
+   ],
+   "final": {
+    "papers": 28,
+    "by_row": {
+     "robot": 8,
+     "human": 9,
+     "synthetic": 7,
+     "assets": 1,
+     "mixed": 2,
+     "other": 1
+    }
+   },
+   "summary": "28 associated papers from 2021 to 2026: 8 robot-recorded, 9 human observation and motion, 7 synthetic, simulated and retargeted, 1 environment assets, 2 mixed origins, 1 origin not established or not applicable. Collections overlap: their sizes are never added.",
+   "coverage": {
+    "included": 28,
+    "total": 35,
+    "unit": "resources",
+    "excluded": [
+     {
+      "reason": "Resources without a checked date yet",
+      "count": 7
+     }
+    ],
+    "note": "Several papers have later versions; current figures are not dated back to v1. A date is the first arXiv submission of the associated paper unless its row says otherwise; where a paper or announcement came earlier, the row says so."
+   },
+   "status": "partial",
+   "status_note": "Partial: 28 of 35 resources dated; 7 undated. Release and availability dates are not established.",
+   "sources": [
+    {
+     "label": "arXiv submission histories, checked 2026-11-25",
+     "url": "https://arxiv.org/"
+    },
+    {
+     "label": "Robot Learning Data Atlas, snapshot 2026-11-25",
+     "url": "/data/datasets/atlas.json"
+    }
+   ],
+   "table": {
+    "head": [
+     "First submitted",
+     "Resource",
+     "Origin",
+     "Paper and notes"
+    ],
+    "rows": [
+     [
+      "2021-02-09",
+      "LAFAN1",
+      "Human observation and motion",
+      "arXiv 2102.04942. Associated paper was already published at SIGGRAPH 2020; arXiv date is later. Ubisoft article dated 2020-07-30: https://www.ubisoft.com/en-us/studio/laforge/news/2NBPwJzPl3DwCAzGTav7Tg/robust-motion-inbetweening ."
+     ],
+     [
+      "2021-10-13",
+      "Ego4D",
+      "Human observation and motion",
+      "arXiv 2110.07058. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2021-12-06",
+      "CALVIN play dataset",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2112.03227. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2023-06-05",
+      "LIBERO demonstrations",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2306.03310. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2023-07-02",
+      "RH20T",
+      "Robot-recorded",
+      "arXiv 2307.00595. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2023-08-24",
+      "BridgeData V2",
+      "Robot-recorded",
+      "arXiv 2308.12952. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2023-10-13",
+      "Open X-Embodiment",
+      "Robot-recorded",
+      "arXiv 2310.08864. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2023-11-30",
+      "Ego-Exo4D",
+      "Human observation and motion",
+      "arXiv 2311.18259. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2024-03-19",
+      "Droid",
+      "Robot-recorded",
+      "arXiv 2403.12945. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-01-14",
+      "Physics IQ evaluation dataset",
+      "Human observation and motion",
+      "arXiv 2501.09038. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-02-28",
+      "ShareRobot",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2502.21257. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-03-09",
+      "AgiBot World (Colosseo)",
+      "Robot-recorded",
+      "arXiv 2503.06669. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-03-27",
+      "DexManipNet",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2503.21860. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-04-14",
+      "HUMOTO",
+      "Human observation and motion",
+      "arXiv 2504.10414. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-05-16",
+      "EgoDex",
+      "Human observation and motion",
+      "arXiv 2505.11709. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-07-01",
+      "RoboEval demonstrations",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2507.00435. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-08-30",
+      "Galaxea",
+      "Robot-recorded",
+      "arXiv 2509.00576. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-09-05",
+      "OpenEgo",
+      "Human observation and motion",
+      "arXiv 2509.05513. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-09-22",
+      "Motiontrans",
+      "Human observation and motion",
+      "arXiv 2509.17759. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-10-30",
+      "PHUMA",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2510.26236. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2025-11-21",
+      "RoboCOIN",
+      "Robot-recorded",
+      "arXiv 2511.17441. README report announcement on 2025-11-24 differs from first arXiv submission."
+     ],
+     [
+      "2025-12-31",
+      "RoboMIND 2.0",
+      "Mixed origins",
+      "arXiv 2512.24653. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-02-11",
+      "MolmoSpaces environments and assets",
+      "Environment assets",
+      "arXiv 2602.11337. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-02-12",
+      "LDA -1B",
+      "Mixed origins",
+      "arXiv 2602.12215. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-03-05",
+      "UltraDexGrasp-20M",
+      "Synthetic, simulated and retargeted",
+      "arXiv 2603.05312. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-05-07",
+      "HumanNet",
+      "Origin not established or not applicable",
+      "arXiv 2605.06747. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-11-02",
+      "RoboColosseum rollout data",
+      "Robot-recorded",
+      "arXiv 2611.02497. Not a dataset availability or collection date; current quantities are not backdated."
+     ],
+     [
+      "2026-11-16",
+      "HubEgo-100K",
+      "Human observation and motion",
+      "arXiv 2611.21938. Not a dataset availability or collection date; current quantities are not backdated."
+     ]
+    ]
+   }
+  },
+  {
+   "id": "benchmarks",
+   "label": "Benchmarks",
+   "path": "/benchmarks/",
+   "type": "lanes",
+   "title": "Dated publications and announcements of robotics benchmarks",
+   "subtitle": "21 of 22 benchmarks by the date of their associated paper or official announcement, grouped by evaluation setting. Most dates are first arXiv submissions; they need not be the benchmark’s first public appearance. Not dates of results.",
+   "meaning": "Each benchmark is placed at the date of its associated paper or official announcement, as the source states it: mostly the first arXiv submission (v1) of the paper; PAW by its official announcement; OpenEQA by the year of its CVPR 2024 publication (day not established). This need not be the benchmark's first public appearance (BEHAVIOR-1K had an earlier CoRL 2022 / PMLR 2023 paper), and it is never the date of a leaderboard result or of the current protocol version.",
+   "unit": "benchmarks",
+   "precision": "day",
+   "hollowLabel": "Dated by an announcement or a publication year, not arXiv",
+   "domain": {
+    "start": "2019-01-01",
+    "end": "2026-11-25"
+   },
+   "rows": [
+    {
+     "key": "real",
+     "label": "Real robot"
+    },
+    {
+     "key": "sim",
+     "label": "Simulation"
+    },
+    {
+     "key": "paired",
+     "label": "Simulation with real-robot validation"
+    },
+    {
+     "key": "observation",
+     "label": "Video or observations, no robot actuation"
+    }
+   ],
+   "points": [
+    {
+     "id": "bm-rlbench",
+     "label": "RLBench",
+     "row": "sim",
+     "date": "2019-09-26",
+     "precision": "day",
+     "x": "2019-09-26",
+     "reveal": "2019-09-26",
+     "note": "Associated paper, arXiv v1 1909.12271. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/1909.12271",
+     "external": true,
+     "hollow": false,
+     "t": "2019-09-26"
+    },
+    {
+     "id": "bm-calvin",
+     "label": "CALVIN",
+     "row": "sim",
+     "date": "2021-12-06",
+     "precision": "day",
+     "x": "2021-12-06",
+     "reveal": "2021-12-06",
+     "note": "Associated paper, arXiv v1 2112.03227. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2112.03227",
+     "external": true,
+     "hollow": false,
+     "t": "2021-12-06"
+    },
+    {
+     "id": "bm-arnold",
+     "label": "ARNOLD",
+     "row": "sim",
+     "date": "2023-04-09",
+     "precision": "day",
+     "x": "2023-04-09",
+     "reveal": "2023-04-09",
+     "note": "Associated paper, arXiv v1 2304.04321. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2304.04321",
+     "external": true,
+     "hollow": false,
+     "t": "2023-04-09"
+    },
+    {
+     "id": "bm-libero",
+     "label": "LIBERO",
+     "row": "sim",
+     "date": "2023-06-05",
+     "precision": "day",
+     "x": "2023-06-05",
+     "reveal": "2023-06-05",
+     "note": "Associated paper, arXiv v1 2306.03310. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2306.03310",
+     "external": true,
+     "hollow": false,
+     "t": "2023-06-05"
+    },
+    {
+     "id": "bm-behavior1k",
+     "label": "BEHAVIOR-1K",
+     "row": "sim",
+     "date": "2024-03-14",
+     "precision": "day",
+     "x": "2024-03-14",
+     "reveal": "2024-03-14",
+     "note": "Associated paper, arXiv v1 2403.09227. First arXiv submission of the 2024 paper; BEHAVIOR-1K also has an earlier CoRL 2022/PMLR 2023 publication. Not the first existence of the benchmark.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2403.09227",
+     "external": true,
+     "hollow": false,
+     "t": "2024-03-14"
+    },
+    {
+     "id": "bm-humanoidbench",
+     "label": "HumanoidBench",
+     "row": "sim",
+     "date": "2024-03-15",
+     "precision": "day",
+     "x": "2024-03-15",
+     "reveal": "2024-03-15",
+     "note": "Associated paper, arXiv v1 2403.10506. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2403.10506",
+     "external": true,
+     "hollow": false,
+     "t": "2024-03-15"
+    },
+    {
+     "id": "bm-simpler",
+     "label": "SIMPLER",
+     "row": "paired",
+     "date": "2024-05-09",
+     "precision": "day",
+     "x": "2024-05-09",
+     "reveal": "2024-05-09",
+     "note": "Associated paper, arXiv v1 2405.05941. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2405.05941",
+     "external": true,
+     "hollow": false,
+     "t": "2024-05-09"
+    },
+    {
+     "id": "bm-openeqa",
+     "label": "OpenEQA",
+     "row": "observation",
+     "date": "2024",
+     "precision": "year",
+     "x": "2024-07-02",
+     "reveal": "2024-12-31",
+     "note": "Associated paper published. Conference publication year only. Exact release day not established; no inferred arXiv identifier.",
+     "meaning": "associated_paper_publication",
+     "checked_at": "2026-11-25",
+     "href": "https://openaccess.thecvf.com/content/CVPR2024/papers/Majumdar_OpenEQA_Embodied_Question_Answering_in_the_Era_of_Foundation_Models_CVPR_2024_paper.pdf",
+     "external": true,
+     "hollow": true,
+     "t": "2024-12-31"
+    },
+    {
+     "id": "bm-maniskill3",
+     "label": "ManiSkill3",
+     "row": "sim",
+     "date": "2024-10-01",
+     "precision": "day",
+     "x": "2024-10-01",
+     "reveal": "2024-10-01",
+     "note": "Associated paper, arXiv v1 2410.00425. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2410.00425",
+     "external": true,
+     "hollow": false,
+     "t": "2024-10-01"
+    },
+    {
+     "id": "bm-gensim2",
+     "label": "GenSim2",
+     "row": "paired",
+     "date": "2024-10-04",
+     "precision": "day",
+     "x": "2024-10-04",
+     "reveal": "2024-10-04",
+     "note": "Associated paper, arXiv v1 2410.03645. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2410.03645",
+     "external": true,
+     "hollow": false,
+     "t": "2024-10-04"
+    },
+    {
+     "id": "bm-vlabench",
+     "label": "VLABench",
+     "row": "sim",
+     "date": "2024-12-24",
+     "precision": "day",
+     "x": "2024-12-24",
+     "reveal": "2024-12-24",
+     "note": "Associated paper, arXiv v1 2412.18194. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2412.18194",
+     "external": true,
+     "hollow": false,
+     "t": "2024-12-24"
+    },
+    {
+     "id": "bm-physics-iq",
+     "label": "Physics IQ",
+     "row": "observation",
+     "date": "2025-01-14",
+     "precision": "day",
+     "x": "2025-01-14",
+     "reveal": "2025-01-14",
+     "note": "Associated paper, arXiv v1 2501.09038. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2501.09038",
+     "external": true,
+     "hollow": false,
+     "t": "2025-01-14"
+    },
+    {
+     "id": "bm-roboarena",
+     "label": "RoboArena",
+     "row": "real",
+     "date": "2025-06-22",
+     "precision": "day",
+     "x": "2025-06-22",
+     "reveal": "2025-06-22",
+     "note": "Associated paper, arXiv v1 2506.18123. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2506.18123",
+     "external": true,
+     "hollow": false,
+     "t": "2025-06-22"
+    },
+    {
+     "id": "bm-robotwin2",
+     "label": "RoboTwin 2.0",
+     "row": "paired",
+     "date": "2025-06-22",
+     "precision": "day",
+     "x": "2025-06-22",
+     "reveal": "2025-06-22",
+     "note": "Associated paper, arXiv v1 2506.18088. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2506.18088",
+     "external": true,
+     "hollow": false,
+     "t": "2025-06-22"
+    },
+    {
+     "id": "bm-roboeval",
+     "label": "RoboEval",
+     "row": "sim",
+     "date": "2025-07-01",
+     "precision": "day",
+     "x": "2025-07-01",
+     "reveal": "2025-07-01",
+     "note": "Associated paper, arXiv v1 2507.00435. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2507.00435",
+     "external": true,
+     "hollow": false,
+     "t": "2025-07-01"
+    },
+    {
+     "id": "bm-polaris",
+     "label": "Polaris",
+     "row": "paired",
+     "date": "2025-12-18",
+     "precision": "day",
+     "x": "2025-12-18",
+     "reveal": "2025-12-18",
+     "note": "Associated paper, arXiv v1 2512.16881. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2512.16881",
+     "external": true,
+     "hollow": false,
+     "t": "2025-12-18"
+    },
+    {
+     "id": "bm-realm",
+     "label": "REALM",
+     "row": "paired",
+     "date": "2025-12-22",
+     "precision": "day",
+     "x": "2025-12-22",
+     "reveal": "2025-12-22",
+     "note": "Associated paper, arXiv v1 2512.19562. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2512.19562",
+     "external": true,
+     "hollow": false,
+     "t": "2025-12-22"
+    },
+    {
+     "id": "bm-molmospaces",
+     "label": "MolmoSpaces-Bench",
+     "row": "sim",
+     "date": "2026-02-11",
+     "precision": "day",
+     "x": "2026-02-11",
+     "reveal": "2026-02-11",
+     "note": "Associated paper, arXiv v1 2602.11337. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2602.11337",
+     "external": true,
+     "hollow": false,
+     "t": "2026-02-11"
+    },
+    {
+     "id": "bm-robodojo",
+     "label": "RoboDojo",
+     "row": "paired",
+     "date": "2026-07-05",
+     "precision": "day",
+     "x": "2026-07-05",
+     "reveal": "2026-07-05",
+     "note": "Associated paper, arXiv v1 2607.04434. Official website report label is Jul 6, 2026; arXiv first submission is Jul 5, 2026.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2607.04434",
+     "external": true,
+     "hollow": false,
+     "t": "2026-07-05"
+    },
+    {
+     "id": "bm-paw",
+     "label": "Poke and Wiggle",
+     "row": "real",
+     "date": "2026-09-29",
+     "precision": "day",
+     "x": "2026-09-29",
+     "reveal": "2026-09-29",
+     "note": "Official announcement. Announcement of PAW-GEN-10; not a date assigned to all current leaderboard results.",
+     "meaning": "official_announcement",
+     "checked_at": "2026-11-25",
+     "href": "https://pokeandwiggle.com/blog/introducing-paw-10",
+     "external": true,
+     "hollow": true,
+     "t": "2026-09-29"
+    },
+    {
+     "id": "bm-robocolosseum",
+     "label": "RoboColosseum",
+     "row": "real",
+     "date": "2026-11-02",
+     "precision": "day",
+     "x": "2026-11-02",
+     "reveal": "2026-11-02",
+     "note": "Associated paper, arXiv v1 2611.02497. Date of associated paper, not leaderboard result or current protocol version.",
+     "meaning": "associated_paper_first_arxiv_submission",
+     "checked_at": "2026-11-25",
+     "href": "https://arxiv.org/abs/2611.02497",
+     "external": true,
+     "hollow": false,
+     "t": "2026-11-02"
+    }
+   ],
+   "final": {
+    "benchmarks": 21,
+    "by_row": {
+     "real": 3,
+     "sim": 10,
+     "paired": 6,
+     "observation": 2
+    },
+    "meanings": {
+     "associated_paper_first_arxiv_submission": 19,
+     "associated_paper_publication": 1,
+     "official_announcement": 1
+    }
+   },
+   "summary": "21 benchmarks with a dated paper or announcement, from 2019 to 2026: 3 real robot, 10 simulation, 6 simulation with real-robot validation, 2 video or observations, no robot actuation. 10 of them since 2025. Each date is the benchmark's associated paper or announcement, not necessarily its first public appearance, and says nothing about how models score on it.",
+   "coverage": {
+    "included": 21,
+    "total": 22,
+    "unit": "benchmarks",
+    "excluded": [
+     {
+      "reason": "SpatialBench: no checked date of a paper or announcement",
+      "count": 1
+     }
+    ],
+    "note": "Meanings: 19 first arxiv submission (v1) of the associated paper; 1 publication of the associated paper; 1 official announcement or project page. Hollow mark: dated by an announcement or a publication year instead of an arXiv submission."
+   },
+   "status": "partial",
+   "status_note": "21 of 22 benchmarks dated; not yet: SpatialBench.",
+   "sources": [
+    {
+     "label": "Dated papers and announcements, checked 2026-11-25",
+     "url": "/data/benchmarks/atlas.json"
+    }
+   ],
+   "table": {
+    "head": [
+     "Date",
+     "Benchmark",
+     "Setting",
+     "What the date is"
+    ],
+    "rows": [
+     [
+      "2019-09-26",
+      "RLBench",
+      "Simulation",
+      "Associated paper, arXiv v1 1909.12271. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2021-12-06",
+      "CALVIN",
+      "Simulation",
+      "Associated paper, arXiv v1 2112.03227. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2023-04-09",
+      "ARNOLD",
+      "Simulation",
+      "Associated paper, arXiv v1 2304.04321. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2023-06-05",
+      "LIBERO",
+      "Simulation",
+      "Associated paper, arXiv v1 2306.03310. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2024-03-14",
+      "BEHAVIOR-1K",
+      "Simulation",
+      "Associated paper, arXiv v1 2403.09227. First arXiv submission of the 2024 paper; BEHAVIOR-1K also has an earlier CoRL 2022/PMLR 2023 publication. Not the first existence of the benchmark."
+     ],
+     [
+      "2024-03-15",
+      "HumanoidBench",
+      "Simulation",
+      "Associated paper, arXiv v1 2403.10506. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2024-05-09",
+      "SIMPLER",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2405.05941. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2024",
+      "OpenEQA",
+      "Video or observations, no robot actuation",
+      "Associated paper published. Conference publication year only. Exact release day not established; no inferred arXiv identifier."
+     ],
+     [
+      "2024-10-01",
+      "ManiSkill3",
+      "Simulation",
+      "Associated paper, arXiv v1 2410.00425. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2024-10-04",
+      "GenSim2",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2410.03645. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2024-12-24",
+      "VLABench",
+      "Simulation",
+      "Associated paper, arXiv v1 2412.18194. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-01-14",
+      "Physics IQ",
+      "Video or observations, no robot actuation",
+      "Associated paper, arXiv v1 2501.09038. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-06-22",
+      "RoboArena",
+      "Real robot",
+      "Associated paper, arXiv v1 2506.18123. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-06-22",
+      "RoboTwin 2.0",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2506.18088. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-07-01",
+      "RoboEval",
+      "Simulation",
+      "Associated paper, arXiv v1 2507.00435. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-12-18",
+      "Polaris",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2512.16881. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2025-12-22",
+      "REALM",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2512.19562. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2026-02-11",
+      "MolmoSpaces-Bench",
+      "Simulation",
+      "Associated paper, arXiv v1 2602.11337. Date of associated paper, not leaderboard result or current protocol version."
+     ],
+     [
+      "2026-07-05",
+      "RoboDojo",
+      "Simulation with real-robot validation",
+      "Associated paper, arXiv v1 2607.04434. Official website report label is Jul 6, 2026; arXiv first submission is Jul 5, 2026."
+     ],
+     [
+      "2026-09-29",
+      "Poke and Wiggle",
+      "Real robot",
+      "Official announcement. Announcement of PAW-GEN-10; not a date assigned to all current leaderboard results."
+     ],
+     [
+      "2026-11-02",
+      "RoboColosseum",
+      "Real robot",
+      "Associated paper, arXiv v1 2611.02497. Date of associated paper, not leaderboard result or current protocol version."
+     ]
+    ]
+   },
+   "secondary": {
+    "id": "benchmarks-results",
+    "label": "Benchmarks",
+    "path": "/benchmarks/",
+    "type": "panels",
+    "title": "Physics-IQ scores by the date each was added",
+    "subtitle": "8 source-reported results in 2 comparability groups, each on its own scale. The only groups in the atlas with results added on more than one date.",
+    "meaning": "Date each result was added to the public Physics-IQ leaderboard, as recorded (not the experiment date). Plotted only within one comparability group: same benchmark version, track, metric and configuration.",
+    "unit": "%",
+    "precision": "day",
+    "domain": {
+     "start": "2025-01-01",
+     "end": "2026-11-25"
+    },
+    "panels": [
+     {
+      "key": "physics-original-i2v-base",
+      "label": "Physics-IQ score, Original set, i2v",
+      "config": "Listed base entry; no BoN suffix",
+      "metric": "Physics-IQ score",
+      "unit": "%",
+      "direction": "higher",
+      "points": [
+       {
+        "id": "res-physics-original-8",
+        "label": "Magi-1",
+        "y": 30.2,
+        "value": "30.2%",
+        "row": "physics-original-i2v-base",
+        "date": "2025-04-21",
+        "precision": "day",
+        "x": "2025-04-21",
+        "reveal": "2025-04-21",
+        "t": "2025-04-21"
+       },
+       {
+        "id": "res-physics-original-5",
+        "label": "Sora2",
+        "y": 42.3,
+        "value": "42.3%",
+        "row": "physics-original-i2v-base",
+        "date": "2026-04-01",
+        "precision": "day",
+        "x": "2026-04-01",
+        "reveal": "2026-04-01",
+        "t": "2026-04-01"
+       },
+       {
+        "id": "res-physics-original-7",
+        "label": "Wan2.2",
+        "y": 38.3,
+        "value": "38.3%",
+        "row": "physics-original-i2v-base",
+        "date": "2026-04-01",
+        "precision": "day",
+        "x": "2026-04-01",
+        "reveal": "2026-04-01",
+        "t": "2026-04-01"
+       },
+       {
+        "id": "res-physics-original-4",
+        "label": "Cosmos3-Super",
+        "y": 43.8,
+        "value": "43.8%",
+        "row": "physics-original-i2v-base",
+        "date": "2026-05-26",
+        "precision": "day",
+        "x": "2026-05-26",
+        "reveal": "2026-05-26",
+        "t": "2026-05-26"
+       },
+       {
+        "id": "res-physics-original-6",
+        "label": "Cosmos3-Nano",
+        "y": 40.2,
+        "value": "40.2%",
+        "row": "physics-original-i2v-base",
+        "date": "2026-05-26",
+        "precision": "day",
+        "x": "2026-05-26",
+        "reveal": "2026-05-26",
+        "t": "2026-05-26"
+       }
+      ],
+      "dates": [
+       "2025-04-21",
+       "2026-04-01",
+       "2026-05-26"
+      ]
+     },
+     {
+      "key": "physics-original-v2v-base",
+      "label": "Physics-IQ score, Original set, multiframe (v2v)",
+      "config": "Listed base entry; no BoN suffix",
+      "metric": "Physics-IQ score",
+      "unit": "%",
+      "direction": "higher",
+      "points": [
+       {
+        "id": "res-physics-original-2",
+        "label": "Magi-1",
+        "y": 56,
+        "value": "56%",
+        "row": "physics-original-v2v-base",
+        "date": "2025-04-21",
+        "precision": "day",
+        "x": "2025-04-21",
+        "reveal": "2025-04-21",
+        "t": "2025-04-21"
+       },
+       {
+        "id": "res-physics-original-1",
+        "label": "Cosmos3-Super",
+        "y": 59.7,
+        "value": "59.7%",
+        "row": "physics-original-v2v-base",
+        "date": "2026-05-26",
+        "precision": "day",
+        "x": "2026-05-26",
+        "reveal": "2026-05-26",
+        "t": "2026-05-26"
+       },
+       {
+        "id": "res-physics-original-3",
+        "label": "Cosmos3-Nano",
+        "y": 50.2,
+        "value": "50.2%",
+        "row": "physics-original-v2v-base",
+        "date": "2026-05-26",
+        "precision": "day",
+        "x": "2026-05-26",
+        "reveal": "2026-05-26",
+        "t": "2026-05-26"
+       }
+      ],
+      "dates": [
+       "2025-04-21",
+       "2026-05-26"
+      ]
+     }
+    ],
+    "final": {
+     "physics-original-i2v-base": {
+      "res-physics-original-8": 30.2,
+      "res-physics-original-5": 42.3,
+      "res-physics-original-7": 38.3,
+      "res-physics-original-4": 43.8,
+      "res-physics-original-6": 40.2
+     },
+     "physics-original-v2v-base": {
+      "res-physics-original-2": 56,
+      "res-physics-original-1": 59.7,
+      "res-physics-original-3": 50.2
+     }
+    },
+    "summary": "Physics-IQ score, Original set, i2v: 5 results on 3 dates, from 30.2% to 43.8%. Physics-IQ score, Original set, multiframe (v2v): 3 results on 2 dates, from 50.2% to 59.7%. Results come from different models; the dates are leaderboard additions, not a measured improvement.",
+    "coverage": {
+     "included": 8,
+     "total": 34,
+     "unit": "results",
+     "excluded": [
+      {
+       "reason": "Results in groups with a single date (5 groups, including every PAW group: leaderboard export date)",
+       "count": 26
+      }
+     ],
+     "note": "No result is compared across groups, versions, tracks or benchmarks."
+    },
+    "status": "partial",
+    "status_note": "Partial: 8 of 34 results, from the one benchmark with results added on more than one date.",
+    "sources": [
+     {
+      "label": "Physics-IQ leaderboard (as transcribed)",
+      "url": "https://github.com/google-deepmind/physics-IQ-benchmark"
+     },
+     {
+      "label": "Robotics Evaluation Atlas, snapshot 2026-11-25",
+      "url": "/data/benchmarks/atlas.json"
+     }
+    ],
+    "table": {
+     "head": [
+      "Date added",
+      "Model",
+      "Score",
+      "Group"
+     ],
+     "rows": [
+      [
+       "2025-04-21",
+       "Magi-1",
+       "30.2%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2026-04-01",
+       "Sora2",
+       "42.3%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2026-04-01",
+       "Wan2.2",
+       "38.3%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2026-05-26",
+       "Cosmos3-Super",
+       "43.8%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2026-05-26",
+       "Cosmos3-Nano",
+       "40.2%",
+       "Physics-IQ score, Original set, i2v"
+      ],
+      [
+       "2025-04-21",
+       "Magi-1",
+       "56%",
+       "Physics-IQ score, Original set, multiframe (v2v)"
+      ],
+      [
+       "2026-05-26",
+       "Cosmos3-Super",
+       "59.7%",
+       "Physics-IQ score, Original set, multiframe (v2v)"
+      ],
+      [
+       "2026-05-26",
+       "Cosmos3-Nano",
+       "50.2%",
+       "Physics-IQ score, Original set, multiframe (v2v)"
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "id": "reports",
+   "label": "Reports",
+   "path": "/reports/",
+   "type": "scatter",
+   "title": "Annual humanoid shipments, as each report published them",
+   "subtitle": "9 original estimates from 3 publishers, revealed in order of publication. Past-year estimates and forecasts drawn apart; points never joined.",
+   "meaning": "Annual humanoid robot shipments, global, in units, as published: each original estimate once, at the target year it describes, revealed at the publication date of the first report in the atlas that carries it. Estimates of past years and forecasts are drawn apart; points are never joined, interpolated or averaged.",
+   "unit": "units per year (log scale)",
+   "precision": "month",
+   "domain": {
+    "start": "2024-01-01",
+    "end": "2026-11-24"
+   },
+   "x": {
+    "min": 2024,
+    "max": 2041,
+    "label": "Year the figure describes"
+   },
+   "y": {
+    "log": true,
+    "min": 10000,
+    "max": 100000000,
+    "label": "Units per year"
+   },
+   "kinds": [
+    {
+     "key": "estimate",
+     "label": "Estimate of a past year"
+    },
+    {
+     "key": "forecast",
+     "label": "Forecast"
+    },
+    {
+     "key": "scenario",
+     "label": "Scenario (bull case)"
+    }
+   ],
+   "series": [
+    {
+     "key": "p1",
+     "label": "Goldman Sachs"
+    },
+    {
+     "key": "p2",
+     "label": "BofA Global Research"
+    },
+    {
+     "key": "p3",
+     "label": "Berg Insight"
+    }
+   ],
+   "points": [
+    {
+     "id": "gs-ship-bull-2031",
+     "origin": "gs-2024-bull-2031@2031@scenario",
+     "publisher": "Goldman Sachs Global Investment Research",
+     "kind": "scenario",
+     "scenario": "Bull",
+     "qualifier": null,
+     "x": 2031,
+     "y": 1000000,
+     "label": "Bull case: shipments reach 1 million units by 2031, four years earlier than previously expected.",
+     "value": "1,000,000 units",
+     "published": "2024-01-08",
+     "reveal": "2024-01-08",
+     "via": "Goldman Sachs Equity Research",
+     "report": "RPT-012",
+     "href": "/reports/goldman-sachs-humanoid-robot-ai-accelerant-2024/",
+     "t": "2024-01-08",
+     "series": "p1"
+    },
+    {
+     "id": "gs-ship-2035",
+     "origin": "gs-2024-shipments-2035@2035@forecast",
+     "publisher": "Goldman Sachs Global Investment Research",
+     "kind": "forecast",
+     "scenario": "Base",
+     "qualifier": null,
+     "x": 2035,
+     "y": 1400000,
+     "label": "Base case: 1.4 million humanoid robots shipped in 2035, four times the previous estimate.",
+     "value": "1,400,000 units",
+     "published": "2024-01-08",
+     "reveal": "2024-01-08",
+     "via": "Goldman Sachs Equity Research",
+     "report": "RPT-012",
+     "href": "/reports/goldman-sachs-humanoid-robot-ai-accelerant-2024/",
+     "t": "2024-01-08",
+     "series": "p1"
+    },
+    {
+     "id": "bofa-ship-2025",
+     "origin": "bofa-gr-shipments@2025@estimate",
+     "publisher": "BofA Global Research",
+     "kind": "estimate",
+     "scenario": null,
+     "qualifier": null,
+     "x": 2025,
+     "y": 20000,
+     "label": "About 20,000 humanoid robots shipped worldwide in 2025.",
+     "value": "20,000 units",
+     "published": "2026-03-12",
+     "reveal": "2026-03-12",
+     "via": "Bank of America Institute",
+     "report": "RPT-002",
+     "href": "/reports/bofa-physical-ai-part-2-2026/",
+     "t": "2026-03-12",
+     "series": "p2"
+    },
+    {
+     "id": "bofa-ship-2026",
+     "origin": "bofa-gr-shipments@2026@forecast",
+     "publisher": "BofA Global Research",
+     "kind": "forecast",
+     "scenario": null,
+     "qualifier": null,
+     "x": 2026,
+     "y": 90000,
+     "label": "Annual shipments of 90,000 humanoid robots expected in 2026.",
+     "value": "90,000 units",
+     "published": "2026-03-12",
+     "reveal": "2026-03-12",
+     "via": "Bank of America Institute",
+     "report": "RPT-002",
+     "href": "/reports/bofa-physical-ai-part-2-2026/",
+     "t": "2026-03-12",
+     "series": "p2"
+    },
+    {
+     "id": "bofa-ship-2030",
+     "origin": "bofa-gr-shipments@2030@forecast",
+     "publisher": "BofA Global Research",
+     "kind": "forecast",
+     "scenario": null,
+     "qualifier": null,
+     "x": 2030,
+     "y": 1200000,
+     "label": "Annual shipments projected at 1.2 million in 2030.",
+     "value": "1,200,000 units",
+     "published": "2026-03-12",
+     "reveal": "2026-03-12",
+     "via": "Bank of America Institute",
+     "report": "RPT-002",
+     "href": "/reports/bofa-physical-ai-part-2-2026/",
+     "t": "2026-03-12",
+     "series": "p2"
+    },
+    {
+     "id": "bofa-ship-2035",
+     "origin": "bofa-gr-shipments@2035@forecast",
+     "publisher": "BofA Global Research",
+     "kind": "forecast",
+     "scenario": null,
+     "qualifier": null,
+     "x": 2035,
+     "y": 10000000,
+     "label": "Annual shipments of 10 million humanoid robots by 2035, an 86% compound annual growth rate from 2025.",
+     "value": "10,000,000 units",
+     "published": "2026-03-12",
+     "reveal": "2026-03-12",
+     "via": "Bank of America Institute",
+     "report": "RPT-002",
+     "href": "/reports/bofa-physical-ai-part-2-2026/",
+     "t": "2026-03-12",
+     "series": "p2"
+    },
+    {
+     "id": "berg-ship-2025",
+     "origin": "berg-2026-shipments@2025@estimate",
+     "publisher": "Berg Insight",
+     "kind": "estimate",
+     "scenario": null,
+     "qualifier": null,
+     "x": 2025,
+     "y": 16000,
+     "label": "Annual humanoid robot shipments of 16,000 units in 2025.",
+     "value": "16,000 units",
+     "published": "2026-09",
+     "reveal": "2026-09-30",
+     "via": "Berg Insight",
+     "report": "RPT-011",
+     "href": "/reports/berg-insight-future-of-humanoid-robots-2026/",
+     "t": "2026-09-30",
+     "series": "p3"
+    },
+    {
+     "id": "fayd-gs-ship-2030",
+     "origin": "gs-2024-shipments-2030@2030@forecast",
+     "publisher": "Goldman Sachs",
+     "kind": "forecast",
+     "scenario": null,
+     "qualifier": "more than",
+     "x": 2030,
+     "y": 250000,
+     "label": "Cites Goldman Sachs: more than 250,000 annual shipments by 2030.",
+     "value": "more than 250,000 units",
+     "published": "2026-09",
+     "reveal": "2026-09-30",
+     "via": "Fayd Capital Group",
+     "report": "RPT-007",
+     "href": "/reports/fayd-humanoid-robotics-physical-ai-2026/",
+     "t": "2026-09-30",
+     "series": "p1"
+    },
+    {
+     "id": "berg-ship-2040",
+     "origin": "berg-2026-shipments@2040@forecast",
+     "publisher": "Berg Insight",
+     "kind": "forecast",
+     "scenario": null,
+     "qualifier": null,
+     "x": 2040,
+     "y": 26000000,
+     "label": "Annual shipments growing to 26 million units by 2040 (63.7% compound annual growth).",
+     "value": "26,000,000 units",
+     "published": "2026-09",
+     "reveal": "2026-09-30",
+     "via": "Berg Insight",
+     "report": "RPT-011",
+     "href": "/reports/berg-insight-future-of-humanoid-robots-2026/",
+     "t": "2026-09-30",
+     "series": "p3"
+    }
+   ],
+   "final": {
+    "estimates": 9,
+    "by_origin": {
+     "gs-2024-bull-2031@2031@scenario": 1000000,
+     "gs-2024-shipments-2035@2035@forecast": 1400000,
+     "bofa-gr-shipments@2025@estimate": 20000,
+     "bofa-gr-shipments@2026@forecast": 90000,
+     "bofa-gr-shipments@2030@forecast": 1200000,
+     "bofa-gr-shipments@2035@forecast": 10000000,
+     "berg-2026-shipments@2025@estimate": 16000,
+     "gs-2024-shipments-2030@2030@forecast": 250000,
+     "berg-2026-shipments@2040@forecast": 26000000
+    }
+   },
+   "summary": "For 2025, the two past-year estimates are 20,000 (BofA Global Research) and 16,000 (Berg Insight). For 2035, published forecasts range from 1,400,000 to 10,000,000 units, made in different years with different scopes.",
+   "coverage": {
+    "included": 9,
+    "total": 13,
+    "unit": "findings",
+    "excluded": [
+     {
+      "reason": "Repetitions of an estimate already drawn (one point per original estimate)",
+      "count": 3
+     },
+     {
+      "reason": "fayd-bcg-span-2030: a range or no single value",
+      "count": 1
+     }
+    ],
+    "note": "Installed base, revenue and other metrics are separate measures and are not drawn on this scale."
+   },
+   "status": "partial",
+   "status_note": "9 original estimates from 13 shipment findings; one comparable measure (global annual shipments in units), so the other report metrics are not on this chart.",
+   "sources": [
+    {
+     "label": "Research Conclusions Atlas, checked 2026-11-24",
+     "url": "/data/reports/atlas.json"
+    }
+   ],
+   "table": {
+    "head": [
+     "Published",
+     "Publisher",
+     "Year described",
+     "Kind",
+     "Value",
+     "First carried by"
+    ],
+    "rows": [
+     [
+      "2024-01-08",
+      "Goldman Sachs",
+      "2031",
+      "scenario (Bull)",
+      "1,000,000 units",
+      "Goldman Sachs Equity Research"
+     ],
+     [
+      "2024-01-08",
+      "Goldman Sachs",
+      "2035",
+      "forecast (Base)",
+      "1,400,000 units",
+      "Goldman Sachs Equity Research"
+     ],
+     [
+      "2026-03-12",
+      "BofA Global Research",
+      "2025",
+      "estimate",
+      "20,000 units",
+      "Bank of America Institute"
+     ],
+     [
+      "2026-03-12",
+      "BofA Global Research",
+      "2026",
+      "forecast",
+      "90,000 units",
+      "Bank of America Institute"
+     ],
+     [
+      "2026-03-12",
+      "BofA Global Research",
+      "2030",
+      "forecast",
+      "1,200,000 units",
+      "Bank of America Institute"
+     ],
+     [
+      "2026-03-12",
+      "BofA Global Research",
+      "2035",
+      "forecast",
+      "10,000,000 units",
+      "Bank of America Institute"
+     ],
+     [
+      "2026-09",
+      "Berg Insight",
+      "2025",
+      "estimate",
+      "16,000 units",
+      "Berg Insight"
+     ],
+     [
+      "2026-09",
+      "Goldman Sachs",
+      "2030",
+      "forecast",
+      "more than 250,000 units",
+      "Fayd Capital Group"
+     ],
+     [
+      "2026-09",
+      "Berg Insight",
+      "2040",
+      "forecast",
+      "26,000,000 units",
+      "Berg Insight"
+     ]
+    ]
+   }
+  }
+ ]
+}

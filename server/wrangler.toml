@@ -44,7 +44,7 @@ STRIPE_LEGACY_PRICE_IDS = "price_1UbL1PAcMngkWs5CH3IDosFb"  # test: former EUR 1
 X402_ENABLED = "false"
 X402_NETWORK = "eip155:84532"            # Base Sepolia (testnet USDC)
 X402_PAY_TO = ""                         # Stripe SANDBOX crypto deposit address (POST /v1/crypto/deposit_addresses, network=base); Codex
-X402_PRICE_USD = ""                      # price per query in USD, whole cents (for example "0.05"); undecided, Javier
+X402_PRICE_USD = ""                      # approved pilot price "0.10" (Javier, 25 Nov 2026); set only when activating, after the tests
 X402_FACILITATOR = "https://x402.org/facilitator"
 X402_STRIPE_RECORDING = "false"          # record settled payments as Stripe PaymentIntents once the parameters are confirmed in sandbox
 X402_STRIPE_API_VERSION = ""             # the preview API version Stripe's x402 guide requires (2026-05-27.preview or later; confirm)
@@ -75,11 +75,11 @@ ALLOW_LIVE_CHECKOUT = "true"  # the webhook secret, sign-in email and all 13 imp
 # existing EUR subscriptions keep their contract, currency and renewal, and their access through the legacy list.
 STRIPE_PRICE_ID = "price_1UfGNgAcMngkWs5CkdCMYC1j"  # live: "Why Humanoid? Deployments and Components", USD 100.00 / year, no trial (prod_VceC4S2gQeLhOT)
 STRIPE_LEGACY_PRICE_IDS = "price_1UbOtjAcMngkWs5CR8qXNPGn"  # live: former EUR 100.00 / year price; its subscriptions keep their access (billing.entitledPriceIds)
-# x402 pay-per-query: Base mainnet is also closed in code (X402_LIVE_OPEN) until the price and Stripe's approval exist.
+# x402 pay-per-query: Base mainnet is also closed in code (X402_LIVE_OPEN) until Stripe's approval and the required tests.
 X402_ENABLED = "false"
 X402_NETWORK = "eip155:8453"             # Base mainnet (USDC); real funds
 X402_PAY_TO = ""                         # Stripe LIVE crypto deposit address (static, created off the request path); Codex
-X402_PRICE_USD = ""                      # undecided, Javier
+X402_PRICE_USD = ""                      # approved pilot price "0.10" (Javier, 25 Nov 2026); set only when activating
 X402_FACILITATOR = "cdp"                 # authenticated CDP facilitator; secrets CDP_API_KEY_ID and CDP_API_KEY_SECRET
 X402_STRIPE_RECORDING = "false"
 X402_STRIPE_API_VERSION = ""

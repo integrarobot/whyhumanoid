@@ -1,0 +1,12 @@
+{
+  "note": "Reviewed identity of free Humanoids catalogue records across workbook changes (Javier, 25 Nov 2026: the free catalogue follows the current Humanoids tab). tools/sync-humanoids.mjs matches every current customer row to a catalogue id by Lab and Robot, then Web; a record renamed in place or moved out of the tab needs an entry here, with its evidence, or the sync stops. Moved records keep a labelled historical page at their address, pointing to where the record now lives; they are not counted in the catalogue.",
+  "renamed": [
+    { "id": 47, "sheet_row": 49, "from": { "Lab": "Kepler", "Robot": "Forerunner" }, "to": { "Lab": "Kepler", "Robot": "Forerunner K1" }, "evidence": "Same sheet row and same Web (gotokepler.com/home); the workbook now names the model K1 and lists Forerunner K2 as a new row (218)." },
+    { "id": 104, "sheet_row": 106, "from": { "Lab": "Xpeng", "Robot": "Iron" }, "to": { "Lab": "Xpeng", "Robot": "Next-Gen IRON" }, "evidence": "Same sheet row and same Web (pxing.com/en/index); renamed in place." }
+  ],
+  "moved": [
+    { "id": 82, "name": "Skild Brain / S1 (software)", "to": { "category": "software", "label": "Software", "name": "Skild Brain (Skild AI)", "path": "/software/" }, "evidence": "Hidden tab 'Humanoids reclassified 2026-11-' row 2; Software tab row 15 'Skild Brain (Skild AI)', same Web (skild.ai)." },
+    { "id": 113, "name": "Space platform (model unpublished)", "to": { "category": "other-robots", "label": "Other Robots", "name": "Orbit Robotics", "path": "/other-robots/orbit-robotics/" }, "evidence": "Hidden tab 'Humanoids reclassified 2026-11-' row 3; Other Robots tab row 73 'Orbit Robotics', same Web (orbitrobotics.ch), 'Reclassified from Humanoids'." },
+    { "id": 130, "name": "Natura-1 (AI model)", "to": { "category": "software", "label": "Software", "name": "Natura-1 (Nature Will)", "path": "/software/" }, "evidence": "Hidden tab 'Humanoids reclassified 2026-11-' row 4; Software tab row 76 'Natura-1 (Nature Will)', same Web (naturewill.ai), 'Reclassified from Humanoids on 2026-11-23'." }
+  ]
+}

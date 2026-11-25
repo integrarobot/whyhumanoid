@@ -11,6 +11,7 @@
 //   - deployment status filters count only what operational_status supports
 // Usage: cd tools && npm ci && node verify-site.mjs
 
+import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { JSDOM, VirtualConsole } from 'jsdom';
 
@@ -67,7 +68,23 @@ expect(meta('property', 'og:description') === meta('name', 'twitter:description'
 expect(/^User-agent: \*\nAllow: \//.test(readFileSync(new URL('robots.txt', root), 'utf8')), 'robots.txt does not allow crawlers');
 expect(errors.length === 0, `script errors: ${errors.join(' | ')}`);
 expect(rows() === manifest.record_count, `rendered rows ${rows()} != catalogue ${manifest.record_count}`);
-expect(text('#h-n') === String(manifest.record_count), `hero total "${text('#h-n')}"`);
+// The hero counts humanoid robot models: catalogue records minus software and uncertain-scope entries (tools/catalogue-classification.json).
+const classified = JSON.parse(readFileSync(new URL('tools/catalogue-classification.json', root), 'utf8')).records;
+expect(text('#h-n') === String(manifest.record_count - classified.length), `hero total "${text('#h-n')}" is not ${manifest.record_count} records minus ${classified.length} classified apart`);
+// Directory tabs count canonical entries everywhere on the home page: hero, index, category card (Codex, 25 Nov 2026:
+// the hero showed 141 software rows next to the card's 138 entries).
+{
+  const idx = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8'));
+  for (const [id, path] of [['software', '/software/'], ['other-robots', '/other-robots/']]) {
+    const t = idx.tabs.find((x) => x.id === id);
+    const entries = String(t.canonical_entries ?? t.entries_total);
+    const hero = document.querySelector(`#eco a[href="#db-${id}"] b`)?.textContent;
+    const nav = document.querySelector(`a[data-id="${id}"] .n`)?.textContent;
+    const card = new RegExp(`<li><a href="${path}">[^<]*</a><p>[^<]*</p><span class="meta"><b>(\\d+)</b>`).exec(html)?.[1];
+    expect(hero === entries && nav === entries && card === entries, `${id}: hero ${hero}, index ${nav}, card ${card}; canonical entries ${entries}`);
+  }
+  expect(/software entries/.test(text('#eco')) && !/software and AI models/.test(text('#eco')), 'hero software label is not "software entries"');
+}
 expect(/complete catalogue is free/i.test(text('#preview-note')), 'notice does not say the catalogue is free');
 const buyLink = document.querySelector('#preview-note a');
 const pageData = JSON.parse(document.getElementById('data').textContent);
@@ -111,7 +128,7 @@ expect(pageData.access.open === false, 'page is not in paywall mode');
 expect(/subscription adds complete Deployments and complete Components/i.test(text('#preview-note')) && document.querySelector('#preview-note a')?.getAttribute('href') === pageData.access.app_url, 'catalogue notice does not offer the subscription');
 for (const t of dbIndex?.tabs ?? []) {
   const a = indexLinks.find((x) => x.dataset.id === t.id);
-  expect(a?.getAttribute('href') === `#db-${t.id}` && a.querySelector('.n')?.textContent === String(t.entries_total), `${t.id}: index link or count wrong`);
+  expect(a?.getAttribute('href') === `#db-${t.id}` && a.querySelector('.n')?.textContent === String(t.canonical_entries ?? t.entries_total), `${t.id}: index link or count wrong`);
   await go(`#db-${t.id}`);
   const shown = document.querySelectorAll('#db-rows tr.r').length;
   expect(shown === t.preview_entries && (shown > 0 || t.public === 'none'), `${t.id}: ${shown} rows shown, public rows ${t.preview_entries}`);
@@ -194,7 +211,7 @@ const ecoAtlas = eco.find((a) => a.getAttribute('href') === '/datasets/');
 expect(ecoAtlas?.querySelector('b')?.textContent === String(pageData.dataAtlas?.resources), 'hero count for Datasets is not the atlas count');
 for (const a of eco.filter((x) => x.getAttribute('href').startsWith('#db-'))) {
   const t = dbIndex.tabs.find((x) => `#db-${x.id}` === a.getAttribute('href'));
-  expect(a.querySelector('b')?.textContent === String(t?.entries_total), `hero count for ${t?.id} is not the data's`);
+  expect(a.querySelector('b')?.textContent === String(t?.canonical_entries ?? t?.entries_total), `hero count for ${t?.id} is not the data's`);
 }
 expect(document.querySelector('#cta-h')?.getAttribute('href') === '#humanoids' && document.querySelector('#cta-db')?.getAttribute('href') === '#categories', 'hero calls to action missing');
 // The two premium paths (24 Nov 2026): both in the hero and in full right after it; the data subscription at US$100 a
@@ -202,12 +219,14 @@ expect(document.querySelector('#cta-h')?.getAttribute('href') === '#humanoids' &
 {
   const mini = document.querySelector('.hero-paths');
   const paths = document.getElementById('paths');
-  expect(Boolean(mini) && /US\$100 per year, billed annually/.test(mini.textContent) && /not available to order yet/.test(mini.textContent), 'hero: the two paths are missing');
+  expect(Boolean(mini) && /US\$100 per year, billed annually/.test(mini.textContent) && (REPORTS_LIVE_OPEN ? /US\$1,000 per report · one-off, ready to order/ : /not available to order yet/).test(mini.textContent), 'hero: the two paths are missing');
   expect(Boolean(paths) && paths.compareDocumentPosition(document.getElementById('categories')) & 4, 'two paths block is not before the categories');
   const data = paths?.querySelector('.p-data')?.textContent ?? '', rep = paths?.querySelector('.p-rep')?.textContent ?? '';
   expect(/US\$100/.test(data) && /billed annually/.test(data) && /no free trial/.test(data) && /not include a personalised recommendation/.test(data), 'data path: price, billing or scope missing');
-  expect(/US\$1,000/.test(rep) && /Not available to order yet/.test(rep) && /Robot integration diagnostic/.test(rep) && /Industrial diversification report/.test(rep), 'reports path: price, names or availability missing');
-  expect(![...(paths?.querySelectorAll('.p-rep a') ?? [])].some((a) => /checkout|order|app\/#/.test(a.getAttribute('href'))), 'reports path links an order or checkout');
+  // Reports: the exact wording before payment always; an order link only once live report sales are open.
+  expect(/US\$1,000/.test(rep) && rep.includes(BEFORE_PAYMENT) && /Robot integration diagnostic/.test(rep) && /Industrial diversification report/.test(rep), 'reports path: price, names or the wording before payment missing');
+  const orderLinks = [...(paths?.querySelectorAll('.p-rep a') ?? [])].filter((a) => /checkout|order|app\/#/.test(a.getAttribute('href'))).map((a) => a.getAttribute('href'));
+  expect(REPORTS_LIVE_OPEN ? JSON.stringify(orderLinks) === JSON.stringify(['/app/#reports']) : !orderLinks.length && /Not available to order yet/.test(rep), `reports path: order link ${JSON.stringify(orderLinks)} does not match the sales state`);
   expect(!/€/.test(document.body.textContent), 'a euro price is still on the page');
 }
 expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements still on the page');
@@ -216,15 +235,18 @@ expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements
   const proj = JSON.parse(readFileSync(new URL('data/public/projection.json', root), 'utf8'));
   const cases = proj.cases;
   expect(!document.getElementById('cuerpos') && !document.getElementById('bc'), 'the Height × mass chart is still in the hero');
-  expect(Boolean(document.querySelector('.hero .adopt-hero')), 'adoption view missing from the hero');
-  const op = cases.filter((c) => c.stage === 'op').length;
-  expect(new RegExp(`^${op} of ${cases.length} recorded deployment cases`).test(text('.adopt-lede')), `hero sentence does not match the projection (${op} of ${cases.length})`);
+  // The hero's featured chart is the evolution carousel (24 Nov 2026): seven charts in the section order.
+  expect(!document.querySelector('.hero .adopt-hero'), 'the static adoption figure is still in the hero');
+  expect([...document.querySelectorAll('.hero #evo-car [role="tab"]')].map((t) => t.textContent).join() === 'Humanoids,Deployments,Components,Integrators,Datasets,Benchmarks,Reports', 'evolution carousel missing from the hero or out of order');
+  expect(document.querySelectorAll('.hero #evo-car .evo-slide').length === 7 && document.querySelectorAll('.hero #evo-car .evo-slide.on').length === 1, 'evolution carousel slides');
   const chips = [...document.querySelectorAll('#adoption .case')];
   expect(chips.length === cases.length && new Set(chips.map((a) => a.dataset.case)).size === cases.length, `explorer shows ${chips.length} marks for ${cases.length} cases`);
-  for (const stage of ['op', 'pilot', 'unc', 'ann']) expect(document.querySelectorAll(`#adoption .r-${stage} .case`).length === cases.filter((c) => c.stage === stage).length, `stage ${stage}: marks differ from the projection`);
+  // Current status (server/src/public/status.js): dated cases by their latest dated source; undated cases apart.
+  for (const stage of ['op', 'pilot', 'unc', 'ann']) expect(document.querySelectorAll(`#adoption .r-${stage} .case`).length === cases.filter((c) => c.dated !== false && c.stage === stage).length, `stage ${stage}: marks differ from the projection`);
+  expect(document.querySelectorAll('#adoption .r-nodate .case').length === cases.filter((c) => c.dated === false).length, 'undated cases are not grouped apart');
   for (const a of chips) { const h = a.getAttribute('href'); expect(h === '/deployments/' || existsSync(new URL(`${h.slice(1)}index.html`, root)), `case links to a missing page ${h}`); }
   const data = JSON.parse(document.getElementById('adoption-data').textContent);
-  const KEYS = new Set(['stage', 'status', 'records', 'org', 'orgPath', 'maker', 'makerPath', 'robot', 'robotPath', 'family', 'sector', 'fam', 'countries', 'years']);
+  const KEYS = new Set(['stage', 'recorded', 'status', 'records', 'org', 'orgPath', 'maker', 'makerPath', 'robot', 'robotPath', 'family', 'sector', 'fam', 'countries', 'years']);
   expect(data.every((c) => Object.keys(c).every((k) => KEYS.has(k))), 'adoption data holds a key outside the public list');
   expect(!/site_name|task_description|claim_text|metric_value|source_url|verification_status|evidence_level|fx_|rec_|dep_/.test(JSON.stringify(data)), 'adoption data holds a reserved field or an id');
   expect(document.querySelectorAll('#adoption .adopt-table tbody tr').length === cases.length, 'adoption table view does not list every case');

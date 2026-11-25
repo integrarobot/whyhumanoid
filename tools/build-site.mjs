@@ -19,7 +19,10 @@ import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { pageRelations } from './relations.mjs';
 import { pageLinks } from './build-pages.mjs';
 import { CATEGORIES, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
+import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
+import { SUPPORT_EMAIL } from '../server/src/support.js';
 import { renderAdoption } from './adoption-view.mjs';
+import { renderEvolutionCarousel } from './evolution-view.mjs';
 import { robotPresentation } from './robot-presentation.mjs';
 
 // Where the catalogue sends buyers: the premium app on the production backend. Change it here when
@@ -126,6 +129,8 @@ export function buildData(exported, overrides, access) {
         if (pinned.source_hash !== sha(record[field])) {
           throw new Error(`Stale override: record ${record.id} facet ${facet}; "${field}" changed. Review tools/humanoids-facet-overrides.json`);
         }
+        // A reviewed label quotes its evidence: the excerpt must still be in the record (PokeBot: "Wheeled", 25 Nov 2026).
+        if (pinned.excerpt && !String(record[field] ?? '').includes(pinned.excerpt)) throw new Error(`Override of record ${record.id} facet ${facet}: "${field}" no longer contains "${pinned.excerpt}"`);
         model[facet] = pinned.value;
       } else model[facet] = RULES[facet](record[field]);
     }
@@ -151,9 +156,10 @@ export function parity(built, legacy, manifest) {
   const legacyById = new Map(legacy.models.map((m) => [m.id, m]));
   const unexpected = [];
   const expected = [];
-  const legacyRows = [...legacy.models.map((m) => m.row), ...inserted.values()].sort((a, b) => a - b);
+  const movedIds = new Set((manifest.verified_import?.moved ?? []).map((m) => m.id));
+  const legacyRows = [...legacy.models.filter((m) => !movedIds.has(m.id)).map((m) => m.row), ...inserted.values()].sort((a, b) => a - b);
   const builtRows = [...built.models.map((m) => m.row), ...built.excluded.map((e) => e.row)].sort((a, b) => a - b);
-  if (!isDeepStrictEqual(builtRows, legacyRows)) unexpected.push('the catalogue does not hold exactly the legacy customer rows plus the verified inserts');
+  if (!isDeepStrictEqual(builtRows, legacyRows)) unexpected.push('the catalogue does not hold exactly the legacy customer rows plus the verified inserts, minus the records moved out of the tab');
   for (const m of built.models) {
     const old = legacyById.get(m.id);
     if (inserted.has(m.id)) {
@@ -211,16 +217,37 @@ const PATHS_CSS = `<style>
 </style>`;
 export function renderCategories(data) {
   const tabs = new Map((data.database?.tabs ?? []).map((t) => [t.id, t]));
-  const reports = JSON.parse(readFileSync(new URL('data/reports/atlas.json', root), 'utf8')).reports.length + 1; // + Why Humanoid?'s deployment records analysis
+  const reportsAtlas = JSON.parse(readFileSync(new URL('data/reports/atlas.json', root), 'utf8'));
+  // Reports: the external reports of the Research Conclusions Atlas; Why Humanoid?'s own analysis is named apart.
+  const reports = reportsAtlas.reports.length;
   // Benchmarks: the resources of the Robotics Evaluation Atlas snapshot (data/benchmarks/atlas.json), not a preview tab.
   const atlas = JSON.parse(readFileSync(new URL('data/benchmarks/atlas.json', root), 'utf8')).counts;
   // Datasets: the resources of the Robot Learning Data Atlas snapshot (data/datasets/atlas.json), also not a preview tab.
   const dataAtlas = dataAtlasSummary();
   // Deployments: its public cases (one per deployment id of the public rows); Components: its physical products.
   const cases = new Set(JSON.parse(readFileSync(new URL('data/preview/deployments.json', root), 'utf8')).rows.map((r) => r.deployment_id ?? r.record_id)).size;
-  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.id === 'deployments' ? cases : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
-  const unit = { humanoids: 'robots', deployments: 'cases', components: 'products', integrators: 'providers', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
-  const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? 'All listed free · <span class="sub">detail with the subscription</span>' : 'Free'}</span></li>`).join('');
+  const count = (c) => (c.id === 'humanoids' ? data.models.length - (data.not_robots ?? []).length - (data.uncertain ?? []).length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.id === 'deployments' ? cases : c.datasets.reduce((n, id) => n + (tabs.get(id)?.canonical_entries ?? tabs.get(id)?.entries_total ?? 0), 0));
+  const unit = { humanoids: `humanoid robot models${data.uncertain?.length ? ` · ${data.uncertain.length} of uncertain scope` : ''}${data.not_robots?.length ? ` · ${data.not_robots.length} software models listed apart` : ''}`, deployments: 'cases', components: 'products', integrators: 'providers', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'external reports + 1 Why Humanoid? analysis' };
+  // Freshness per module (25 Nov 2026): the date each category's public data says something about, by kind. A source
+  // check (Humanoids records, report originals) is not a workbook copy, and neither is the date this page was built.
+  const dmy = (iso) => { const d = new Date(String(iso ?? '').length === 10 ? `${iso}T00:00:00Z` : iso); return Number.isNaN(d.getTime()) ? null : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }); };
+  const checked = data.models.map((m) => m.chk?.date).filter(Boolean).sort().at(-1);
+  const copyOf = (id) => dmy(tabs.get(id)?.snapshot ?? data.database?.snapshot);
+  const benchAtlas = JSON.parse(readFileSync(new URL('data/benchmarks/atlas.json', root), 'utf8')).snapshot;
+  const dataAtlasSnap = JSON.parse(readFileSync(new URL('data/datasets/atlas.json', root), 'utf8')).snapshot;
+  const fresh = {
+    humanoids: checked ? `records checked up to ${dmy(checked)}` : null,
+    deployments: `workbook copy of ${copyOf('deployments')}`,
+    components: `workbook copy of ${copyOf('hardware')}`,
+    integrators: `workbook copy of ${copyOf('integrators')}`,
+    software: `workbook copy of ${copyOf('software')}`,
+    datasets: `workbook copy of ${dmy(dataAtlasSnap?.exported_at)}`,
+    benchmarks: `workbook copy of ${dmy(benchAtlas?.exported_at)}`,
+    investment: `workbook copy of ${copyOf('stocks')}`,
+    'other-robots': `workbook copy of ${copyOf('other-robots')}`,
+    reports: reportsAtlas.snapshot?.checked_on ? `originals checked ${dmy(reportsAtlas.snapshot.checked_on)}` : null,
+  };
+  const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? 'All listed free · <span class="sub">detail with the subscription</span>' : 'Free'}</span>${fresh[c.id] ? `<span class="meta fresh">${escHtml(fresh[c.id])}</span>` : ''}</li>`).join('');
   const reportsList = SERVICES.map((sv) => `<li><b>${escHtml(sv.name)}</b> (${sv.category === 'deployments' ? 'Deployments' : 'Components'}): ${escHtml(sv.summary)}</li>`).join('');
   return `<!-- categories:start -->
     ${PATHS_CSS}
@@ -233,16 +260,16 @@ export function renderCategories(data) {
           <p class="pn">Access to research and data. It does not include a personalised recommendation.</p>
           <p class="pa">${CHECKOUT_OPEN ? '<a class="btn primary" href="/app/#subscribe">Subscribe for US$100 a year</a>' : '<span class="soon">New subscriptions open soon</span>'} <a href="/subscribe/">What the subscription includes</a></p></article>
         <article class="path p-rep"><p class="lbl">Custom company reports</p><h3>Our expertise, applied to your company’s decisions.</h3>
-          <p class="pp"><b>US$1,000</b> per report · separate from the subscription · no subscription needed</p>
+          <p class="pp"><b>US$1,000</b> per report · one-off payment · no subscription needed</p>
           <ul>${reportsList}</ul>
-          <p class="pn">Reports tailored to one company’s needs, where Integrarobot provides the analysis and judgement. Not included in the subscription.</p>
-          <p class="pa"><span class="soon">Not available to order yet</span> <a href="/subscribe/#reports">How reports differ from the subscription</a></p></article>
+          <p class="pn">${escHtml(BEFORE_PAYMENT)} Not included in the subscription.</p>
+          <p class="pa">${REPORTS_LIVE_OPEN ? '<a class="btn primary" href="/app/#reports">Order a report</a>' : '<span class="soon">Not available to order yet</span>'} <a href="/subscribe/#reports">How reports work</a></p></article>
       </div>
     </section>
     <section class="cats-sec" id="categories" aria-labelledby="cats-h">
       <div class="cats-head"><h2 class="h2" id="cats-h">Ten <em>categories</em></h2><p class="lbl">Free to browse · Deployments and Components list every entry, with their detail in the subscription</p></div>
       <ul class="catgrid">${items}</ul>
-      <p class="lbl">Also: <a href="#database">browse the workbook tabs</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>
+      <p class="lbl">Also: <a href="#database">browse every category as a table</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>
     </section>
     <!-- categories:end -->`;
 }
@@ -251,10 +278,17 @@ export function renderCategories(data) {
 export function renderPathsMini() {
   return `<!-- paths-mini:start --><div class="hero-paths" aria-label="Two ways to go further">
           <a class="hp hp-data" href="#paths"><span class="lbl hi">Full data access</span><b>Use the evidence to make your own decisions.</b><span>US$100 per year, billed annually${CHECKOUT_OPEN ? '' : ' · opening soon'}</span></a>
-          <a class="hp hp-rep" href="#paths"><span class="lbl">Custom company reports</span><b>Our expertise, applied to your company’s decisions.</b><span>US$1,000 per report · not available to order yet</span></a>
+          <a class="hp hp-rep" href="#paths"><span class="lbl">Custom company reports</span><b>Our expertise, applied to your company’s decisions.</b><span>US$1,000 per report · one-off${REPORTS_LIVE_OPEN ? ', ready to order' : ' · not available to order yet'}</span></a>
         </div><style>.hero-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px;margin:14px 0 18px}.hp{display:grid;gap:3px;padding:10px 12px;border:1px solid var(--line);text-decoration:none;color:var(--bone-2);font-size:13px;line-height:1.35}.hp b{color:var(--bone);font-weight:600;font-size:14px}.hp-data{border-color:color-mix(in srgb,var(--amber) 55%,transparent);box-shadow:inset 3px 0 0 var(--amber)}.hp:hover,.hp:focus-visible{border-color:var(--amber)}</style><!-- paths-mini:end -->`;
 }
+// The home footer's help line (Codex, 25 Nov 2026): the one public support address, as on every other page.
+export function renderFooterHelp() {
+  return `<!-- footer-help:start --><span class="lbl">Help: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a></span><!-- footer-help:end -->`;
+}
 export function renderIndex(html, data) {
+  const help = /<!-- footer-help:start -->[\s\S]*?<!-- footer-help:end -->/;
+  if (!help.test(html)) throw new Error('index.html has no footer-help block');
+  html = html.replace(help, () => renderFooterHelp());
   const mini = /<!-- paths-mini:start -->[\s\S]*?<!-- paths-mini:end -->/;
   if (!mini.test(html)) throw new Error('index.html has no paths-mini block');
   html = html.replace(mini, () => renderPathsMini());
@@ -263,13 +297,18 @@ export function renderIndex(html, data) {
   const cats = /<!-- categories:start -->[\s\S]*?<!-- categories:end -->/;
   if (!cats.test(html)) throw new Error('index.html has no categories block');
   const json = JSON.stringify(data).replace(/</g, '\\u003c');
-  const adoption = /<!-- adoption:start -->[\s\S]*?<!-- adoption:end -->/;
-  if (!adoption.test(html)) throw new Error('index.html has no adoption block');
+  // The hero's featured chart (Javier, 24 Nov 2026): the seven evolution charts in rotation, every 10 seconds, from
+  // data/evolution/charts.json. It replaces the static adoption figure; the adoption explorer below stays.
+  const adoption = /<!-- (?:adoption|evolution):start -->[\s\S]*?<!-- (?:adoption|evolution):end -->/;
+  if (!adoption.test(html)) throw new Error('index.html has no evolution block');
+  const evolution = JSON.parse(readFileSync(new URL('data/evolution/charts.json', root), 'utf8'));
+  const ver = (f) => createHash('sha256').update(readFileSync(new URL(f, root))).digest('hex').slice(0, 10);
+  const carousel = renderEvolutionCarousel(evolution).replace('<!-- evolution:start -->', `<!-- evolution:start -->\n      <link rel="stylesheet" href="/assets/evolution.css?v=${ver('assets/evolution.css')}">`).replace('<!-- evolution:end -->', `<script src="/assets/evolution.js?v=${ver('assets/evolution.js')}" defer></script>\n      <!-- evolution:end -->`);
   const projection = JSON.parse(readFileSync(new URL('data/public/projection.json', root), 'utf8'));
   const explorer = /<!-- adoption-explorer:start -->[\s\S]*?<!-- adoption-explorer:end -->/;
   if (!explorer.test(html)) throw new Error('index.html has no adoption explorer block');
   const view = renderAdoption(projection, data.pages ?? {});
-  return html.replace(cats, () => renderCategories(data)).replace(adoption, () => view.hero).replace(explorer, () => view.section).replace(block, (_, open, close) => `${open}${json}${close}`);
+  return html.replace(cats, () => renderCategories(data)).replace(adoption, () => carousel).replace(explorer, () => view.section).replace(block, (_, open, close) => `${open}${json}${close}`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
@@ -326,6 +365,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   // Reviewed display names, full-body images and maker order links, by catalogue id (tools/robot-presentation.json).
   data.present = Object.fromEntries(robotPresentation());
   data.access.open = OPEN_DATABASE;
+  // Catalogue records that are software, not robots, by their own record (tools/catalogue-classification.json).
+  const classification = JSON.parse(readFileSync(new URL('tools/catalogue-classification.json', root), 'utf8')).records;
+  data.not_robots = classification.filter((c) => c.kind === 'software').map((c) => c.id);
+  data.uncertain = classification.filter((c) => c.kind === 'uncertain').map((c) => c.id);
   const { unexpected, expected } = parity(data, legacy, manifest);
   if (unexpected.length) {
     console.error(`Parity FAILED (${unexpected.length}):\n- ${unexpected.slice(0, 40).join('\n- ')}`);

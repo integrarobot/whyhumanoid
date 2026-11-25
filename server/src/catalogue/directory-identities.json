@@ -1,0 +1,4 @@
+{
+  "note": "Reviewed identity decisions for the directory tabs (server/src/catalogue/directory.js). Two names recorded at one exact address are merged only when a decision here says they are one entity, with its reason and who decided. Empty until Codex or Javier decides the pairs listed for review in data/preview/index.json (reconciliation.review).",
+  "decisions": []
+}

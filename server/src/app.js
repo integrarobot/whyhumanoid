@@ -20,6 +20,15 @@ import { sha256Hex } from './crypto.js';
 import { verifyImportToken } from './import/github-oidc.js';
 import { readGraph } from './relations/store.js';
 import { search } from './search/index.js';
+import { SUPPORT_EMAIL } from './support.js';
+import { BEFORE_PAYMENT, REPORT_LIMITS, REPORT_PRICE, REPORT_SERVICES } from './orders/services.js';
+import { questionnaireFor } from './orders/questionnaire.js';
+import {
+  deliverOutbox, getOrder, listOrders, operatorOrder, operatorQueue, operatorUpdate, reconcileOrder, reportCheckoutState,
+  saveDraft, startReportCheckout, submitQuestionnaire,
+} from './orders/orders.js';
+import { meterCredential } from './usage.js';
+import { handleMcp } from './mcp.js';
 
 const MAX_API_KEYS = 5;
 
@@ -28,11 +37,37 @@ const clampInt = (raw, min, max, fallback) => {
   return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
 };
 
-export function createApp({ db, config, gateway, mailer, importNow, importAuth = verifyImportToken, clock = () => Math.floor(Date.now() / 1000), log = console, x402Facilitator = null, waitUntil = null }) {
-  async function requireAuth(request, now) {
+export function createApp({ db, config, gateway, mailer, importNow, importAuth = verifyImportToken, clock = () => Math.floor(Date.now() / 1000), log = console, x402Facilitator = null, waitUntil = null, fetchPublic = null }) {
+  // Every credential check goes through here: agent API keys are metered (fair use, server/src/usage.js).
+  async function authed(request, now) {
     const account = await authenticate(request, db, now);
+    if (account?.kind === 'api_key') await meterCredential(db, account.tokenHash, now);
+    return account;
+  }
+  async function requireAuth(request, now) {
+    const account = await authed(request, now);
     if (!account) throw new HttpError(401, 'authentication_required');
     return account;
+  }
+  async function requireSession(request, now) {
+    const account = await requireAuth(request, now);
+    if (account.kind !== 'session') throw new HttpError(403, 'session_required');
+    return account;
+  }
+  // Operators: the existing ADMIN_TOKEN, or a signed-in session whose email is listed in OPERATOR_EMAILS. A
+  // subscription alone never opens the queue.
+  async function requireOperator(request, now) {
+    const given = request.headers.get('x-admin-token') ?? '';
+    if (given && config.adminToken && (await sha256Hex(given)) === (await sha256Hex(config.adminToken))) return { operator: 'admin_token' };
+    const account = await authenticate(request, db, now);
+    if (account?.kind === 'session' && (config.operatorEmails ?? []).includes(account.email)) return { operator: account.email };
+    throw new HttpError(account ? 403 : 401, 'operator_only');
+  }
+  // Sends due emails now (in the background on Workers); failures stay in the outbox for the scheduled retry.
+  async function flushOutbox() {
+    const job = deliverOutbox({ db, mailer, now: clock() }).catch((e) => log.error?.('outbox delivery failed', e?.message));
+    if (waitUntil) waitUntil(job);
+    else await job;
   }
   const checkoutStatus = () => checkoutState({ config, gateway, db, mailer, datasetCount: DATASETS.length });
   const customerOf = async (accountId) =>
@@ -54,7 +89,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
   // Entitlement of an optional credential: false for visitors and for a missing, expired or revoked credential.
   async function isEntitled(request, now) {
     if (!request.headers.get('authorization')) return false;
-    const account = await authenticate(request, db, now).catch(() => null);
+    const account = await authed(request, now).catch((e) => { if (e instanceof HttpError && e.status === 429) throw e; return null; });
     return Boolean(account && hasAccess(await getEntitlement(db, account.accountId), now));
   }
 
@@ -212,7 +247,8 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
           subject: 'Your Why Humanoid? sign-in link',
           text:
             `Sign in to Why Humanoid? Premium:\n\n${config.premiumUrl}#login=${token}\n\n` +
-            'The link works once and expires in 15 minutes. If you did not ask for it, ignore this email.',
+            'The link works once and expires in 15 minutes. If you did not ask for it, ignore this email.\n\n' +
+            `Help: ${SUPPORT_EMAIL}`,
         });
         // Same answer whether or not the address has an account.
         return json(202, { sent: true });
@@ -335,6 +371,163 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       },
     ],
 
+    // ---- Agent API keys (sessions only): create (above), list, revoke. The key itself is shown once at creation;
+    // a key is identified afterwards by the first 12 characters of its hash.
+    [
+      'GET',
+      /^\/v1\/api-keys$/,
+      async (request, now) => {
+        const account = await requireSession(request, now);
+        const { results } = await db
+          .prepare("SELECT token_hash, label, created_at, last_used_at, revoked_at FROM credentials WHERE account_id = ? AND kind = 'api_key' ORDER BY created_at DESC")
+          .bind(account.accountId)
+          .all();
+        return privateJson(200, { keys: results.map((k) => ({ id: k.token_hash.slice(0, 12), label: k.label, created_at: k.created_at, last_used_at: k.last_used_at, revoked_at: k.revoked_at })), limit: MAX_API_KEYS });
+      },
+    ],
+    [
+      'POST',
+      /^\/v1\/api-keys\/([0-9a-f]{12})\/revoke$/,
+      async (request, now, match) => {
+        const account = await requireSession(request, now);
+        const row = await db
+          .prepare("SELECT token_hash FROM credentials WHERE account_id = ? AND kind = 'api_key' AND substr(token_hash, 1, 12) = ?")
+          .bind(account.accountId, match[1])
+          .first();
+        if (!row) throw new HttpError(404, 'api_key_not_found');
+        await db.prepare('UPDATE credentials SET revoked_at = COALESCE(revoked_at, ?) WHERE token_hash = ?').bind(now, row.token_hash).run();
+        return privateJson(200, { revoked: true, id: match[1] });
+      },
+    ],
+
+    // ---- Custom reports (25 Nov 2026): two one-off US$1,000 services, no subscription needed or granted.
+    [
+      'GET',
+      /^\/v1\/reports\/services$/,
+      async () => {
+        const state = reportCheckoutState({ config, gateway, mailer });
+        return json(200, {
+          services: REPORT_SERVICES.map((s) => ({ ...s, price: REPORT_PRICE.display, currency: 'USD', unit_amount: REPORT_PRICE.unitAmount, included_in_subscription: false, subscription_required: false, checkout_available: state === 'ready' && Boolean(config.reportPriceIds?.[s.id]) })),
+          before_payment: BEFORE_PAYMENT,
+          limits: REPORT_LIMITS,
+          checkout_state: state,
+          support_email: SUPPORT_EMAIL,
+        });
+      },
+    ],
+    [
+      'GET',
+      /^\/v1\/reports\/questionnaire\/([a-z0-9-]+)$/,
+      async (_request, _now, match) => {
+        const q = questionnaireFor(match[1]);
+        if (!q) throw new HttpError(404, 'unknown_service');
+        return json(200, q, { 'cache-control': 'public, max-age=300' });
+      },
+    ],
+    [
+      'POST',
+      /^\/v1\/reports\/orders$/,
+      async (request, now) => {
+        const account = await requireSession(request, now);
+        const body = await readJson(request);
+        return privateJson(200, await startReportCheckout({ db, config, gateway, mailer, notify: flushOutbox, account: { ...account, stripeCustomerId: await customerOf(account.accountId) }, service: String(body.service ?? ''), now, appUrl: config.appUrl }));
+      },
+    ],
+    [
+      'GET',
+      /^\/v1\/reports\/orders$/,
+      async (request, now) => {
+        const account = await requireSession(request, now);
+        return privateJson(200, { orders: await listOrders(db, account.accountId), support_email: SUPPORT_EMAIL });
+      },
+    ],
+    [
+      'GET',
+      /^\/v1\/reports\/orders\/(ord_[A-Za-z0-9_-]{6,64})$/,
+      async (request, now, match) => {
+        const account = await requireSession(request, now);
+        return privateJson(200, { order: await getOrder(db, account.accountId, match[1]) });
+      },
+    ],
+    [
+      'POST',
+      /^\/v1\/reports\/orders\/(ord_[A-Za-z0-9_-]{6,64})\/reconcile$/,
+      async (request, now, match) => {
+        const account = await requireSession(request, now);
+        const order = await reconcileOrder({ db, config, gateway, accountId: account.accountId, orderId: match[1], now, notify: flushOutbox });
+        return privateJson(200, { order });
+      },
+    ],
+    [
+      'POST',
+      /^\/v1\/reports\/orders\/(ord_[A-Za-z0-9_-]{6,64})\/draft$/,
+      async (request, now, match) => {
+        const account = await requireSession(request, now);
+        const body = await readJson(request, 200_000);
+        return privateJson(200, await saveDraft({ db, accountId: account.accountId, orderId: match[1], answers: body.answers, now }));
+      },
+    ],
+    [
+      'POST',
+      /^\/v1\/reports\/orders\/(ord_[A-Za-z0-9_-]{6,64})\/submit$/,
+      async (request, now, match) => {
+        const account = await requireSession(request, now);
+        const body = await readJson(request, 200_000);
+        const result = await submitQuestionnaire({ db, config, accountId: account.accountId, orderId: match[1], answers: body.answers, now, notify: flushOutbox });
+        return privateJson(result.submitted ? 200 : 422, result);
+      },
+    ],
+
+    // ---- Operator queue: orders, the submitted briefs, work state, delivery records and the email outbox.
+    [
+      'GET',
+      /^\/v1\/ops\/orders$/,
+      async (request, now) => {
+        await requireOperator(request, now);
+        return privateJson(200, await operatorQueue(db, now));
+      },
+    ],
+    [
+      'GET',
+      /^\/v1\/ops\/orders\/(ord_[A-Za-z0-9_-]{6,64})$/,
+      async (request, now, match) => {
+        await requireOperator(request, now);
+        return privateJson(200, { order: await operatorOrder(db, match[1]) });
+      },
+    ],
+    [
+      'POST',
+      /^\/v1\/ops\/orders\/(ord_[A-Za-z0-9_-]{6,64})$/,
+      async (request, now, match) => {
+        await requireOperator(request, now);
+        const body = await readJson(request);
+        return privateJson(200, { order: await operatorUpdate(db, match[1], { status: body.status, note: body.note }, now) });
+      },
+    ],
+    [
+      'POST',
+      /^\/v1\/ops\/outbox\/retry$/,
+      async (request, now) => {
+        await requireOperator(request, now);
+        const body = await readJson(request);
+        const ids = Array.isArray(body.ids) ? body.ids.filter((x) => /^ntf_[A-Za-z0-9_-]{6,64}$/.test(x)).slice(0, 50) : null;
+        return privateJson(200, await deliverOutbox({ db, mailer, now, ids: ids?.length ? ids : null, limit: 50 }));
+      },
+    ],
+
+    // ---- MCP (Model Context Protocol, Streamable HTTP, official SDK): the same catalogue, credentials, entitlement
+    // and fair-use limits as the HTTP API. Read-only tools.
+    [
+      'POST',
+      /^\/mcp$/,
+      async (request, now) => handleMcp(request, { db, now, authed, isEntitledAccount: async (account) => Boolean(account && hasAccess(await getEntitlement(db, account.accountId), now)), fetchPublic, config }),
+    ],
+    [
+      'GET',
+      /^\/mcp$/,
+      async () => json(405, { error: 'method_not_allowed', detail: 'POST JSON-RPC messages to /mcp (stateless Streamable HTTP).' }, { allow: 'POST' }),
+    ],
+
     [
       'POST',
       /^\/v1\/stripe\/webhook$/,
@@ -347,6 +540,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
           rawBody,
           signature: request.headers.get('stripe-signature'),
           now,
+          notify: flushOutbox,
         });
         return json(200, result);
       },
@@ -367,7 +561,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       }
       response = await route[2](request, now, url.pathname.match(route[1]), url);
     } catch (error) {
-      if (error instanceof HttpError) response = json(error.status, { error: error.code });
+      if (error instanceof HttpError) response = json(error.status, { error: error.code, ...(error.status === 429 ? { detail: 'Fair-use limit for this API key: 60 requests a minute and 5,000 a day.', support: SUPPORT_EMAIL } : error.status >= 500 ? { support: SUPPORT_EMAIL } : {}) }, error.retryAfter ? { 'retry-after': String(error.retryAfter) } : {});
       else {
         log.error?.('unhandled error', error);
         response = json(500, { error: 'internal_error' });

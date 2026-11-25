@@ -8,6 +8,8 @@
 // name, type, reference URL and review date. Never: site, city, region, task description, workflow, integration,
 // metrics, claim text, claim type, confidence, evidence level, observation dates, open questions or notes.
 
+import { CASE_RANK, currentStatus, deploymentCountries } from './status.js';
+
 const NA = /^(not\b|n\/?a$|unknown$|unspecified$|none$|tbd$)/i;
 const has = (v) => v !== null && v !== undefined && String(v).trim() !== '' && !NA.test(String(v).trim());
 
@@ -61,7 +63,8 @@ function summary(items, other) {
     records: items.length,
     status,
     sectors: uniq(items.map(({ r }) => r.sector)),
-    site_countries: uniq(items.map(({ r }) => r.country)),
+    // Deployment countries only: a partner country, an unconfirmed site or an undisclosed country names none (status.js).
+    site_countries: uniq(items.flatMap(({ r }) => deploymentCountries(r.country).countries)),
     years: span(items.map(({ r }) => yearOf(r))),
     counterparts: counterparts(items, other),
   };
@@ -84,7 +87,7 @@ function aggregates(items) {
     min_cell: MIN_CELL,
     by_status: status,
     by_sector: tally(items.map(({ r }) => (has(r.sector) ? String(r.sector).trim() : null))),
-    by_country: tally(items.map(({ r }) => (has(r.country) ? String(r.country).trim() : null))),
+    by_country: tally(items.flatMap(({ r }) => { const c = deploymentCountries(r.country); return c.countries.length ? c.countries : c.multiple ? ['Multiple countries (not named)'] : [null]; })),
     by_year: tally(items.map(({ r }) => yearOf(r))).sort((a, b) => (a.key === 'other') - (b.key === 'other') || String(a.key).localeCompare(String(b.key))),
   };
 }
@@ -125,9 +128,8 @@ function pickEvidence(items, order) {
 // Deployment cases (Javier, 23 Nov 2026: the adoption view of the home page). One entry per deployment, deduplicated
 // by the sheet's deployment id (never published), with only public fields: organisation and maker (company ids of the
 // public pages), robot as recorded, sector, deployment countries, years, the number of records and their status labels.
-// `stage` is the most advanced status among its records by the method's existing order (in operation, then pilot or
-// trial, then a vendor's claim of operation, then announced); a case whose records are all unresolved is "unc".
-const CASE_RANK = { op: 0, pilot: 1, unc: 2, ann: 3 };
+// `stage` is the case's current status by the public policy of server/src/public/status.js (25 Nov 2026): the status of
+// its most recent dated source. `dated` is false for a case whose sources are all undated; it is reported apart.
 function deploymentCases(items, byId, nameOf) {
   const groups = new Map();
   for (const x of items) {
@@ -139,11 +141,14 @@ function deploymentCases(items, byId, nameOf) {
   return [...groups.values()].map((xs) => {
     const status = Object.fromEntries(STATUS_KEYS.map((k) => [k, 0]));
     for (const { r } of xs) status[statusKey(r.operational_status)] += 1;
-    const stage = STATUS_KEYS.filter((k) => status[k]).sort((a, b) => CASE_RANK[a] - CASE_RANK[b])[0];
+    const current = currentStatus(xs.map(({ r }) => r), (r) => statusKey(r.operational_status));
+    const stage = current.key;
     const first = xs[0];
     const robotOf = xs.find(({ g }) => g.robot !== null && g.robot !== undefined)?.g ?? null;
     return {
       stage,
+      dated: current.dated,
+      tie: current.tie,
       status,
       records: xs.length,
       organisation: { company: byId.get(first.g.operator)?.id ?? null, name: nameOf(first.g.operator, first.r.organization_name) },
@@ -152,7 +157,9 @@ function deploymentCases(items, byId, nameOf) {
       robot: robotOf ? robotOf.robot : null,
       level: robotOf ? robotOf.level : null,
       sector: mostCommon(xs.map(({ r }) => r.sector)),
-      countries: uniq(xs.map(({ r }) => r.country)),
+      countries: uniq(xs.flatMap(({ r }) => deploymentCountries(r.country).countries)),
+      country_notes: [...new Set(xs.flatMap(({ r }) => deploymentCountries(r.country).notes))], // kept as written, "Not disclosed" included
+      country_multiple: xs.some(({ r }) => deploymentCountries(r.country).multiple),
       years: span(xs.map(({ r }) => yearOf(r))),
     };
   }).sort((a, b) => CASE_RANK[a.stage] - CASE_RANK[b.stage] || String(a.organisation.name).localeCompare(String(b.organisation.name)) || String(a.robot_recorded).localeCompare(String(b.robot_recorded)));
@@ -216,5 +223,5 @@ export const ALLOWED_KEYS = new Set([
   'reference_url', 'reviewed_at', 'as_maker', 'as_organisation', 'status', 'sectors', 'site_countries', 'years',
   'counterparts', 'company', 'robot_recorded', 'robot', 'level', 'model_line_only', ...STATUS_KEYS,
   'aggregates', 'min_cell', 'by_status', 'by_sector', 'by_country', 'by_year', 'key', 'evidence',
-  'cases', 'stage', 'organisation', 'maker', 'sector',
+  'cases', 'stage', 'dated', 'tie', 'country_notes', 'country_multiple', 'organisation', 'maker', 'sector',
 ]);

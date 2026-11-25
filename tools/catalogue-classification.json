@@ -1,0 +1,20 @@
+{
+  "note": "Reviewed classification of Humanoids catalogue records whose own public record says they are not a confirmed humanoid robot model (Javier, 25 Nov 2026: catalogue coherence). Each entry quotes a literal excerpt of the record; tools/build-pages.mjs and tools/build-site.mjs fail if it no longer matches. Records the workbook moved out of the Humanoids tab are not here: see tools/humanoids-identity.json.",
+  "records": [
+    {
+      "id": 132,
+      "kind": "uncertain",
+      "label": "Planned platform, model not named",
+      "excerpts": [
+        {
+          "field": "Robot",
+          "text": "model name not disclosed"
+        },
+        {
+          "field": "Model checked",
+          "text": "no named robot model or spec sheet published"
+        }
+      ]
+    }
+  ]
+}

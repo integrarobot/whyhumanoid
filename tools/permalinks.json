@@ -140,7 +140,8 @@
       "k-scale-labs-k-bot-46"
     ],
     "47": [
-      "kepler-forerunner-47"
+      "kepler-forerunner-47",
+      "kepler-forerunner-k1-47"
     ],
     "48": [
       "kinisi-kinisi-bear-robotics-offering-48"
@@ -311,7 +312,8 @@
       "fauna-sprout-103"
     ],
     "104": [
-      "xpeng-iron-104"
+      "xpeng-iron-104",
+      "xpeng-next-gen-iron-104"
     ],
     "105": [
       "addverb-elixis-105"
@@ -402,6 +404,249 @@
     ],
     "134": [
       "darwin-darwin-0-134"
+    ],
+    "135": [
+      "asus-gallop-135"
+    ],
+    "136": [
+      "lg-cloid-136"
+    ],
+    "137": [
+      "hiro-industries-origin-137"
+    ],
+    "138": [
+      "unitree-g1-138"
+    ],
+    "139": [
+      "unitree-h2-139"
+    ],
+    "140": [
+      "unitree-h2-x-140"
+    ],
+    "141": [
+      "unitree-r1-141"
+    ],
+    "142": [
+      "ubtech-walker-s2-142"
+    ],
+    "143": [
+      "agibot-a2-a2-ultra-a2-lite-143"
+    ],
+    "144": [
+      "agibot-a3-144"
+    ],
+    "145": [
+      "agibot-x2-x2-neo-x2-ultra-145"
+    ],
+    "146": [
+      "agibot-g2-146"
+    ],
+    "147": [
+      "agibot-g1-147"
+    ],
+    "148": [
+      "booster-t2-148"
+    ],
+    "149": [
+      "booster-k1-149"
+    ],
+    "150": [
+      "engineai-pm01-150"
+    ],
+    "151": [
+      "engineai-t800-151"
+    ],
+    "152": [
+      "pal-ari-152"
+    ],
+    "153": [
+      "pal-tiago-pro-153"
+    ],
+    "154": [
+      "pal-kangaroo-154"
+    ],
+    "155": [
+      "pudu-d9-155"
+    ],
+    "156": [
+      "limx-luna-156"
+    ],
+    "157": [
+      "galbot-s1-157"
+    ],
+    "158": [
+      "galbot-et1-158"
+    ],
+    "159": [
+      "deep-dr02-159"
+    ],
+    "160": [
+      "magiclab-magicbot-z1-160"
+    ],
+    "161": [
+      "galaxea-kengo-161"
+    ],
+    "162": [
+      "rainbow-rb-y1-162"
+    ],
+    "163": [
+      "aheadform-elf-xuan-2-0-163"
+    ],
+    "164": [
+      "aidol-aidol-walking-version-164"
+    ],
+    "165": [
+      "anigon-fa-l-series-165"
+    ],
+    "166": [
+      "avatar-robotics-avatar-humanoid-model-name-not-disclosed-166"
+    ],
+    "167": [
+      "casbot-casbot-02-167"
+    ],
+    "168": [
+      "casbot-casbot-w1-168"
+    ],
+    "169": [
+      "cyborg-robotics-cyborg-r01-169"
+    ],
+    "170": [
+      "cyborg-robotics-cyborg-w01-170"
+    ],
+    "171": [
+      "digit-robotics-xialan-r03-171"
+    ],
+    "172": [
+      "digit-robotics-xiaqi-x02-172"
+    ],
+    "173": [
+      "donut-robotics-cinnamon-1-173"
+    ],
+    "174": [
+      "droidup-moya-174"
+    ],
+    "175": [
+      "duatic-dxtr-175"
+    ],
+    "176": [
+      "elite-robots-centaur-g1-176"
+    ],
+    "177": [
+      "genisom-ne01-177"
+    ],
+    "178": [
+      "gento-robotics-gento-luna-178"
+    ],
+    "179": [
+      "glroad-laborer-c1-179"
+    ],
+    "180": [
+      "glroad-laborer-m1-180"
+    ],
+    "181": [
+      "guanggu-dongzhi-lumen-h1-181"
+    ],
+    "182": [
+      "jingchu-humanoid-jingchu-1-182"
+    ],
+    "183": [
+      "jingchu-humanoid-jingchu-elf-183"
+    ],
+    "184": [
+      "jaka-robotics-jaka-184"
+    ],
+    "185": [
+      "kaist-drcd-lab-kaist-humanoid-185"
+    ],
+    "186": [
+      "kit-h-t-armar-7-186"
+    ],
+    "187": [
+      "keenon-robotics-xman-r1-187"
+    ],
+    "188": [
+      "lanxin-robotics-vb1-188"
+    ],
+    "189": [
+      "linkerbot-linker-humanoid-189"
+    ],
+    "190": [
+      "matrix-robotics-matrix-3-190"
+    ],
+    "191": [
+      "matrix-robotics-matrix-1-191"
+    ],
+    "192": [
+      "menlo-asimov-1-192"
+    ],
+    "193": [
+      "mirrorme-bolt-193"
+    ],
+    "194": [
+      "perceptyne-pr-omni-194"
+    ],
+    "195": [
+      "pl-universe-prowhite-195"
+    ],
+    "196": [
+      "psibot-psibot-v1-196"
+    ],
+    "197": [
+      "richtech-robotics-dex-197"
+    ],
+    "198": [
+      "roboscience-rex-g1-198"
+    ],
+    "199": [
+      "starbot-starbot-astra-199"
+    ],
+    "200": [
+      "starbot-starbot-flex-200"
+    ],
+    "201": [
+      "svaya-robotics-bimanual-humanoid-robot-201"
+    ],
+    "202": [
+      "tlibot-tlibot-t1-202"
+    ],
+    "203": [
+      "ugo-ugo-nova-203"
+    ],
+    "204": [
+      "x-humanoid-tien-kung-3-0-204"
+    ],
+    "205": [
+      "x-humanoid-tian-yi-2-0-205"
+    ],
+    "206": [
+      "x-humanoid-tiangong-omni-206"
+    ],
+    "207": [
+      "zerith-robotics-zerith-h1-207"
+    ],
+    "208": [
+      "zeroth-robotics-jupiter-208"
+    ],
+    "209": [
+      "zj-humanoid-naviai-i3-209"
+    ],
+    "210": [
+      "zj-humanoid-naviai-wa2-210"
+    ],
+    "211": [
+      "westlake-robotics-westlake-o1-211"
+    ],
+    "212": [
+      "mirsee-robotics-mh3-212"
+    ],
+    "213": [
+      "geek-gino-1-213"
+    ],
+    "214": [
+      "techman-robot-tm-xplore-i-214"
+    ],
+    "215": [
+      "kepler-forerunner-k2-215"
     ]
   },
   "companies": {
@@ -437,7 +682,12 @@
         "agibot"
       ],
       "robots": [
-        4
+        4,
+        143,
+        144,
+        145,
+        146,
+        147
       ],
       "organization_ids": []
     },
@@ -527,7 +777,9 @@
         "booster"
       ],
       "robots": [
-        14
+        14,
+        148,
+        149
       ],
       "organization_ids": []
     },
@@ -581,7 +833,8 @@
         "deep"
       ],
       "robots": [
-        20
+        20,
+        159
       ],
       "organization_ids": []
     },
@@ -644,7 +897,9 @@
         "engineai"
       ],
       "robots": [
-        27
+        27,
+        150,
+        151
       ],
       "organization_ids": []
     },
@@ -707,7 +962,8 @@
         "galaxea"
       ],
       "robots": [
-        34
+        34,
+        161
       ],
       "organization_ids": []
     },
@@ -716,7 +972,9 @@
         "galbot"
       ],
       "robots": [
-        35
+        35,
+        157,
+        158
       ],
       "organization_ids": []
     },
@@ -824,7 +1082,8 @@
         "kepler"
       ],
       "robots": [
-        47
+        47,
+        215
       ],
       "organization_ids": []
     },
@@ -851,7 +1110,8 @@
         "lg"
       ],
       "robots": [
-        50
+        50,
+        136
       ],
       "organization_ids": []
     },
@@ -860,7 +1120,8 @@
         "limx"
       ],
       "robots": [
-        51
+        51,
+        156
       ],
       "organization_ids": []
     },
@@ -887,7 +1148,8 @@
         "magiclab"
       ],
       "robots": [
-        54
+        54,
+        160
       ],
       "organization_ids": []
     },
@@ -950,7 +1212,10 @@
         "pal"
       ],
       "robots": [
-        61
+        61,
+        152,
+        153,
+        154
       ],
       "organization_ids": []
     },
@@ -1013,7 +1278,8 @@
         "pudu"
       ],
       "robots": [
-        68
+        68,
+        155
       ],
       "organization_ids": []
     },
@@ -1031,7 +1297,8 @@
         "rainbow"
       ],
       "robots": [
-        70
+        70,
+        162
       ],
       "organization_ids": []
     },
@@ -1222,7 +1489,8 @@
         "ubtech"
       ],
       "robots": [
-        91
+        91,
+        142
       ],
       "organization_ids": []
     },
@@ -1240,7 +1508,11 @@
         "unitree"
       ],
       "robots": [
-        93
+        93,
+        138,
+        139,
+        140,
+        141
       ],
       "organization_ids": [
         "org_unitree"
@@ -4091,7 +4363,9 @@
       "slugs": [
         "asus"
       ],
-      "robots": [],
+      "robots": [
+        135
+      ],
       "organization_ids": [
         "org_asus"
       ]
@@ -4497,7 +4771,11 @@
       "slugs": [
         "x-humanoid"
       ],
-      "robots": [],
+      "robots": [
+        204,
+        205,
+        206
+      ],
       "organization_ids": []
     },
     "org_yongda_auto": {
@@ -4673,6 +4951,433 @@
       ],
       "robots": [],
       "organization_ids": []
+    },
+    "mfr_aheadform": {
+      "slugs": [
+        "aheadform"
+      ],
+      "robots": [
+        163
+      ],
+      "organization_ids": []
+    },
+    "mfr_aidol": {
+      "slugs": [
+        "aidol"
+      ],
+      "robots": [
+        164
+      ],
+      "organization_ids": []
+    },
+    "mfr_anigon": {
+      "slugs": [
+        "anigon"
+      ],
+      "robots": [
+        165
+      ],
+      "organization_ids": []
+    },
+    "mfr_avatar_robotics": {
+      "slugs": [
+        "avatar-robotics"
+      ],
+      "robots": [
+        166
+      ],
+      "organization_ids": []
+    },
+    "org_cargogate_munich_airport": {
+      "slugs": [
+        "cargogate-munich-airport"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_cargogate_munich_airport"
+      ]
+    },
+    "mfr_casbot": {
+      "slugs": [
+        "casbot"
+      ],
+      "robots": [
+        167,
+        168
+      ],
+      "organization_ids": []
+    },
+    "mfr_cyborg_robotics": {
+      "slugs": [
+        "cyborg-robotics"
+      ],
+      "robots": [
+        169,
+        170
+      ],
+      "organization_ids": []
+    },
+    "mfr_digit_robotics": {
+      "slugs": [
+        "digit-robotics"
+      ],
+      "robots": [
+        171,
+        172
+      ],
+      "organization_ids": []
+    },
+    "mfr_donut_robotics": {
+      "slugs": [
+        "donut-robotics"
+      ],
+      "robots": [
+        173
+      ],
+      "organization_ids": []
+    },
+    "mfr_droidup": {
+      "slugs": [
+        "droidup"
+      ],
+      "robots": [
+        174
+      ],
+      "organization_ids": []
+    },
+    "mfr_duatic": {
+      "slugs": [
+        "duatic"
+      ],
+      "robots": [
+        175
+      ],
+      "organization_ids": []
+    },
+    "mfr_elite_robots": {
+      "slugs": [
+        "elite-robots"
+      ],
+      "robots": [
+        176
+      ],
+      "organization_ids": []
+    },
+    "mfr_fraunhofer_iml": {
+      "slugs": [
+        "fraunhofer-iml"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "mfr_geek": {
+      "slugs": [
+        "geek"
+      ],
+      "robots": [
+        213
+      ],
+      "organization_ids": []
+    },
+    "mfr_genisom": {
+      "slugs": [
+        "genisom"
+      ],
+      "robots": [
+        177
+      ],
+      "organization_ids": []
+    },
+    "mfr_gento_robotics": {
+      "slugs": [
+        "gento-robotics"
+      ],
+      "robots": [
+        178
+      ],
+      "organization_ids": []
+    },
+    "mfr_glroad": {
+      "slugs": [
+        "glroad"
+      ],
+      "robots": [
+        179,
+        180
+      ],
+      "organization_ids": []
+    },
+    "mfr_guanggu_dongzhi": {
+      "slugs": [
+        "guanggu-dongzhi"
+      ],
+      "robots": [
+        181
+      ],
+      "organization_ids": []
+    },
+    "mfr_hiro_industries": {
+      "slugs": [
+        "hiro-industries"
+      ],
+      "robots": [
+        137
+      ],
+      "organization_ids": []
+    },
+    "mfr_jaka_robotics": {
+      "slugs": [
+        "jaka-robotics"
+      ],
+      "robots": [
+        184
+      ],
+      "organization_ids": []
+    },
+    "mfr_jingchu_humanoid": {
+      "slugs": [
+        "jingchu-humanoid"
+      ],
+      "robots": [
+        182,
+        183
+      ],
+      "organization_ids": []
+    },
+    "mfr_kaist_drcd_lab": {
+      "slugs": [
+        "kaist-drcd-lab"
+      ],
+      "robots": [
+        185
+      ],
+      "organization_ids": []
+    },
+    "mfr_keenon_robotics": {
+      "slugs": [
+        "keenon-robotics"
+      ],
+      "robots": [
+        187
+      ],
+      "organization_ids": []
+    },
+    "mfr_kit_h_t": {
+      "slugs": [
+        "kit-h-t"
+      ],
+      "robots": [
+        186
+      ],
+      "organization_ids": []
+    },
+    "mfr_lanxin_robotics": {
+      "slugs": [
+        "lanxin-robotics"
+      ],
+      "robots": [
+        188
+      ],
+      "organization_ids": []
+    },
+    "mfr_linkerbot": {
+      "slugs": [
+        "linkerbot"
+      ],
+      "robots": [
+        189
+      ],
+      "organization_ids": []
+    },
+    "mfr_matrix_robotics": {
+      "slugs": [
+        "matrix-robotics"
+      ],
+      "robots": [
+        190,
+        191
+      ],
+      "organization_ids": []
+    },
+    "mfr_menlo": {
+      "slugs": [
+        "menlo"
+      ],
+      "robots": [
+        192
+      ],
+      "organization_ids": []
+    },
+    "mfr_mirrorme": {
+      "slugs": [
+        "mirrorme"
+      ],
+      "robots": [
+        193
+      ],
+      "organization_ids": []
+    },
+    "mfr_mirsee_robotics": {
+      "slugs": [
+        "mirsee-robotics"
+      ],
+      "robots": [
+        212
+      ],
+      "organization_ids": []
+    },
+    "mfr_perceptyne": {
+      "slugs": [
+        "perceptyne"
+      ],
+      "robots": [
+        194
+      ],
+      "organization_ids": []
+    },
+    "mfr_pl_universe": {
+      "slugs": [
+        "pl-universe"
+      ],
+      "robots": [
+        195
+      ],
+      "organization_ids": []
+    },
+    "org_pos_malaysia": {
+      "slugs": [
+        "pos-malaysia"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_pos_malaysia"
+      ]
+    },
+    "mfr_psibot": {
+      "slugs": [
+        "psibot"
+      ],
+      "robots": [
+        196
+      ],
+      "organization_ids": []
+    },
+    "mfr_richtech_robotics": {
+      "slugs": [
+        "richtech-robotics"
+      ],
+      "robots": [
+        197
+      ],
+      "organization_ids": []
+    },
+    "mfr_roboscience": {
+      "slugs": [
+        "roboscience"
+      ],
+      "robots": [
+        198
+      ],
+      "organization_ids": []
+    },
+    "mfr_starbot": {
+      "slugs": [
+        "starbot"
+      ],
+      "robots": [
+        199,
+        200
+      ],
+      "organization_ids": []
+    },
+    "mfr_svaya_robotics": {
+      "slugs": [
+        "svaya-robotics"
+      ],
+      "robots": [
+        201
+      ],
+      "organization_ids": []
+    },
+    "mfr_techman_robot": {
+      "slugs": [
+        "techman-robot"
+      ],
+      "robots": [
+        214
+      ],
+      "organization_ids": []
+    },
+    "mfr_tlibot": {
+      "slugs": [
+        "tlibot"
+      ],
+      "robots": [
+        202
+      ],
+      "organization_ids": []
+    },
+    "mfr_ugo": {
+      "slugs": [
+        "ugo"
+      ],
+      "robots": [
+        203
+      ],
+      "organization_ids": []
+    },
+    "org_undisclosed_xsquare_parcel_customer": {
+      "slugs": [
+        "undisclosed-xsquare-parcel-customer"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_undisclosed_xsquare_parcel_customer"
+      ]
+    },
+    "mfr_westlake_robotics": {
+      "slugs": [
+        "westlake-robotics"
+      ],
+      "robots": [
+        211
+      ],
+      "organization_ids": []
+    },
+    "mfr_x_square_robot": {
+      "slugs": [
+        "x-square-robot"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "mfr_zerith_robotics": {
+      "slugs": [
+        "zerith-robotics"
+      ],
+      "robots": [
+        207
+      ],
+      "organization_ids": []
+    },
+    "mfr_zeroth_robotics": {
+      "slugs": [
+        "zeroth-robotics"
+      ],
+      "robots": [
+        208
+      ],
+      "organization_ids": []
+    },
+    "mfr_zj_humanoid": {
+      "slugs": [
+        "zj-humanoid"
+      ],
+      "robots": [
+        209,
+        210
+      ],
+      "organization_ids": []
     }
   },
   "other_robots": {
@@ -4827,7 +5532,8 @@
       "just1"
     ],
     "other_robot|agile-robots.com/en": [
-      "agilex-2"
+      "agilex-2",
+      "agile-robots"
     ],
     "edubot|robotheca.org/robots/physical-ant": [
       "physical-ant"
@@ -6316,6 +7022,45 @@
     ],
     "edubot|robotheca.org/robots/tracked-quadruped-hybrid-robot": [
       "tracked-quadruped-hybrid-robot"
+    ],
+    "other_robot|mosaicintelligence.xyz": [
+      "mosaic-intelligence-labs"
+    ],
+    "other_robot|naverlabs.com/en/ambidex": [
+      "naver-labs"
+    ],
+    "other_robot|roboligent.com/robin": [
+      "roboligent"
+    ],
+    "other_robot|bluewormrobotics.com": [
+      "blue-worm"
+    ],
+    "other_robot|futuringrobot.com": [
+      "futuring"
+    ],
+    "other_robot|embodiedai.ch": [
+      "embodied-ai"
+    ],
+    "other_robot|flexiv.com": [
+      "flexiv"
+    ],
+    "other_robot|knowinai.com/product.html": [
+      "knowin"
+    ],
+    "other_robot|dyna.co": [
+      "dyna-robotics"
+    ],
+    "other_robot|ultra.tech": [
+      "ultra-robotics"
+    ],
+    "other_robot|linkerbot.cn": [
+      "linkerbot"
+    ],
+    "other_robot|vbot.cn": [
+      "vbot"
+    ],
+    "other_robot|orbitrobotics.ch": [
+      "orbit-robotics"
     ]
   },
   "reports": {
@@ -6722,6 +7467,15 @@
     ],
     "dep_aitu_peacebird_ningbo": [
       "aitu-peacebird-ningbo"
+    ],
+    "dep_xsquare_walloss_parcel_sorting": [
+      "xsquare-walloss-parcel-sorting"
+    ],
+    "dep_xsquare_pos_malaysia_parcel_evaluation": [
+      "xsquare-pos-malaysia-parcel-evaluation"
+    ],
+    "dep_fraunhofer_evobot_cargogate_muc": [
+      "fraunhofer-evobot-cargogate-muc"
     ]
   }
 }

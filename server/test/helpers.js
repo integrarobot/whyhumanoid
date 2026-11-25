@@ -15,6 +15,11 @@ export const TEST_PRICE = 'price_test_fixture';
 // A subscription bought at the former EUR 100 per year price (before 24 Nov 2026): it keeps its access.
 export const LEGACY_EUR_PRICE = 'price_legacy_eur_fixture';
 export const T0 = 1_800_000_000;
+// Custom reports (25 Nov 2026): one-off USD 1,000 test prices per service.
+export const REPORT_PRICES = { 'humanoid-adoption-assessment': 'price_report_integration_fixture', 'component-manufacturing-study': 'price_report_diversification_fixture' };
+export const VALID_REPORT_PRICE = { object: 'price', active: true, type: 'one_time', currency: 'usd', unit_amount: 100000, livemode: false };
+export const OPERATOR_EMAIL = 'operator@example.com';
+export const NOTIFY_EMAIL = 'orders@example.com';
 
 class Statement {
   constructor(sqlite, sql, params = []) {
@@ -47,7 +52,7 @@ class Statement {
 
 export function createTestDb() {
   const sqlite = new DatabaseSync(':memory:');
-  for (const m of ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_x402_payments.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
+  for (const m of ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql', '0006_x402_payments.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
   return {
     prepare: (sql) => new Statement(sqlite, sql),
     async batch(statements) {
@@ -86,10 +91,14 @@ function humanoidRow(spec, i) {
 }
 
 // Robotics Evaluation Atlas tabs: synthetic values that pass the atlas validation (server/src/benchmarks/atlas.js).
+// First public dates (server/src/public-dates.js): odd rows dated as the source states a year, even rows undated.
+const publicDate = (i, meaning, host) => (i % 2
+  ? { public_date: '2024', public_date_precision: 'year', public_date_meaning: meaning, public_date_source_url: `https://${host}-${i}.example.com/news`, public_date_locator: 'Synthetic announcement', public_date_checked_at: '2026-11-25', public_date_note: '' }
+  : { public_date: '', public_date_precision: '', public_date_meaning: '', public_date_source_url: '', public_date_locator: '', public_date_checked_at: '', public_date_note: '' });
 function atlasFixtureValue(dataset, field, i, n) {
   if (dataset === 'benchmarks') {
     const v = { benchmark_id: `bm-example-${i}`, name: `Example benchmark ${i}`, url: `https://bench-${i}.example.com/`, environment: 'Simulation',
-      capability_tags: 'manipulation; generalization', related_dataset_ids: '', checked_at: '2026-11-23', source_url: `https://bench-${i}.example.com/` };
+      capability_tags: 'manipulation; generalization', related_dataset_ids: '', checked_at: '2026-11-23', source_url: `https://bench-${i}.example.com/`, ...publicDate(i, 'benchmark_release', 'bench') };
     return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
   }
   const v = { result_id: `res-example-${i}`, benchmark_id: `bm-example-${((i - 1) % n) + 1}`, model: `Example model ${i}`, metric: 'Success',
@@ -103,7 +112,7 @@ function dataAtlasFixtureValue(dataset, field, i, n) {
   if (dataset === 'datasets') {
     const v = { dataset_id: `ds-example-${i}`, name: `Example dataset ${i}`, url: `https://data-${i}.example.com/`, related_benchmark_ids: '',
       related_benchmark_url: '', checked_at: '2026-11-23', data_origin: 'real_robot', modalities: 'rgb; action', learning_uses: 'manipulation',
-      access_status: 'dataset_link', source_url: `https://data-${i}.example.com/`, parent_dataset_ids: '', resource_class: 'corpus', included_in_atlas: 'true' };
+      access_status: 'dataset_link', source_url: `https://data-${i}.example.com/`, parent_dataset_ids: '', resource_class: 'corpus', included_in_atlas: 'true', ...publicDate(i, 'data_release', 'data') };
     return field in v ? v[field] : `Synthetic ${field.replace(/_/g, ' ')} ${i}`;
   }
   const v = { metric_id: `dm-example-${i}`, dataset_id: `ds-example-${((i - 1) % n) + 1}`, metric: 'trajectories', value: String(1000 + i), unit: 'trajectories',
@@ -201,6 +210,9 @@ export async function setup({
   workbook = null,
   x402 = undefined,
   x402Facilitator = null,
+  reportsCheckoutEnabled = true,
+  reportPriceIds = REPORT_PRICES,
+  reportPrice = VALID_REPORT_PRICE,
   adminToken = null,
 } = {}) {
   const db = createTestDb();
@@ -211,7 +223,27 @@ export async function setup({
   const priceLookups = [];
   gateway.retrievePrice = async (id) => {
     priceLookups.push(id);
+    if (Object.values(REPORT_PRICES).includes(id)) return reportPrice ? { ...reportPrice, id } : Promise.reject(new Error('No such price'));
     return price ? { ...price, id } : Promise.reject(new Error('No such price'));
+  };
+  // Report Checkout Sessions: stored here, so tests can complete, expire or retrieve them like Stripe would.
+  const reportSessions = new Map();
+  let sessionSeq = 0;
+  // Like Stripe: the same idempotency key returns the same session.
+  const byKey = new Map();
+  gateway.createReportCheckoutSession = async (args) => {
+    if (byKey.has(args.idempotencyKey)) return byKey.get(args.idempotencyKey);
+    sessionSeq += 1;
+    const id = `cs_test_report_${sessionSeq}`;
+    reportSessions.set(id, { id, object: 'checkout.session', mode: 'payment', status: 'open', payment_status: 'unpaid', amount_total: 100000, currency: 'usd', livemode: false, client_reference_id: args.accountId, metadata: { wh_order_id: args.orderId, wh_account_id: args.accountId, wh_service: args.service }, payment_intent: null, args });
+    const result = { id, url: `https://checkout.stripe.com/c/pay/${id}` };
+    byKey.set(args.idempotencyKey, result);
+    return result;
+  };
+  gateway.retrieveCheckoutSession = async (id) => {
+    const session = reportSessions.get(id);
+    if (!session) throw new Error('No such session');
+    return { ...session };
   };
   gateway.createCheckoutSession = async (args) => {
     checkoutCalls.push(args);
@@ -229,9 +261,16 @@ export async function setup({
     loginMaxPerHour: 5,
     sessionTtlSeconds: 30 * 24 * 3600,
     x402,
-    ...(adminToken ? { adminToken } : {}),
+    appUrl: 'https://whyhumanoid.com/app/',
+    reportsCheckoutEnabled,
+    reportPriceIds,
+    operatorEmails: [OPERATOR_EMAIL],
+    operatorNotifyEmail: NOTIFY_EMAIL,
+    adminToken,
   };
-  const app = createApp({ db, config, gateway, mailer, clock: () => now, log: { error() {} }, x402Facilitator });
+  const publicFiles = new Map();
+  const fetchPublic = async (path) => (publicFiles.has(path) ? new Response(publicFiles.get(path), { status: 200 }) : new Response('not found', { status: 404 }));
+  const app = createApp({ db, config, gateway, mailer, clock: () => now, log: { error() {} }, fetchPublic, x402Facilitator });
   const call = (method, path, { token, body, headers = {} } = {}) =>
     app(
       new Request(`https://api.test${path}`, {
@@ -254,6 +293,9 @@ export async function setup({
     checkoutCalls,
     priceLookups,
     config,
+    reportSessions,
+    publicFiles,
+    now: () => now,
     setNow: (t) => {
       now = t;
     },
