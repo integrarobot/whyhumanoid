@@ -44,6 +44,8 @@ jobs:
         run: node tools/export-integrators.mjs --check && node --no-warnings --test tools/test-integrators.mjs
       - name: Evolution charts are the build of the public snapshots and the reviewed dates, values match their sources
         run: node tools/export-evolution.mjs --check && node --no-warnings --test tools/test-evolution.mjs
+      - name: Catalogue coherence across surfaces (canonical counts, current status, countries, classification, redirects, freshness)
+        run: node --no-warnings --test tools/test-coherence.mjs
       - name: Reviewed robot presentation (display name, cutout image, maker order link) matches the catalogue
         run: node tools/robot-presentation.mjs --check
       - name: Robot and company pages, sitemap and 404 are the build of public inputs

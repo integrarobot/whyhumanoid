@@ -11,21 +11,18 @@
 // joined or interpolated. What cannot be dated is counted and listed as excluded.
 
 import { MEANINGS, publicDateOf, publicDateProblems } from '../server/src/public-dates.js';
+import { currentStatus, sourcePeriod } from '../server/src/public/status.js';
 
 export const ORDER = ['humanoids', 'deployments', 'components', 'integrators', 'datasets', 'benchmarks', 'reports'];
 
 const DAY = 86400000;
 const pad = (n) => String(n).padStart(2, '0');
 const lastDay = (y, m) => new Date(Date.UTC(y, m, 0)).getUTCDate();
+// A real calendar date at the precision written ("2026", "2026-03", "2026-03-14"), shared with the current-status
+// policy (server/src/public/status.js): an impossible date (2026-02-30, 2026-13) is not a date.
 export function parseDate(v) {
-  const s = String(v ?? '').trim();
-  let m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (m) return { precision: 'day', start: s, end: s };
-  m = s.match(/^(\d{4})-(\d{2})$/);
-  if (m) return { precision: 'month', start: `${s}-01`, end: `${s}-${pad(lastDay(+m[1], +m[2]))}` };
-  m = s.match(/^(\d{4})$/);
-  if (m) return { precision: 'year', start: `${s}-01-01`, end: `${s}-12-31` };
-  return null;
+  const p = sourcePeriod(v);
+  return p && { precision: p.precision, start: p.start, end: p.end };
 }
 export const dayNumber = (iso) => Math.round(Date.parse(`${iso}T00:00:00Z`) / DAY);
 const minIso = (a, b) => (a <= b ? a : b);
@@ -36,13 +33,19 @@ const mid = (d) => { const a = dayNumber(d.start); const b = dayNumber(d.end); r
 const countBy = (xs, f) => { const m = new Map(); for (const x of xs) m.set(f(x), (m.get(f(x)) ?? 0) + 1); return m; };
 
 // ---------- Humanoids: model introductions by dated release or unveiling ----------
-function humanoids(cat, review) {
+function humanoids(cat, review, classification = { records: [] }) {
   const r = review.humanoids;
   const snapshot = isoOf(cat.snapshot);
   const excludedById = new Map(r.excluded.map((x) => [x.id, x]));
   const dated = [];
-  const excluded = { reviewed: [], undisclosed: [], empty: [], other: [] };
+  const excluded = { reviewed: [], undisclosed: [], empty: [], notRelease: [], other: [] };
+  // Software or AI models recorded in the Humanoids tab (tools/catalogue-classification.json) are not robots: outside the
+  // denominator. Entries of uncertain scope stay in it, named in the note.
+  const kindOf = new Map((classification.records ?? []).map((c) => [c.id, c.kind]));
+  const software = cat.records.filter((rec) => kindOf.get(rec.id) === 'software');
+  const uncertain = cat.records.filter((rec) => kindOf.get(rec.id) === 'uncertain');
   for (const rec of cat.records) {
+    if (kindOf.get(rec.id) === 'software') continue;
     const v = String(rec[r.field] ?? '').trim();
     const ex = excludedById.get(rec.id);
     if (ex) {
@@ -50,16 +53,32 @@ function humanoids(cat, review) {
       excluded.reviewed.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, reason: ex.reason });
       continue;
     }
-    let m = v.match(/^(\d{4})$/);
-    if (m) { dated.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, date: parseDate(m[1]), kind: 'release year' }); continue; }
-    m = v.match(/^(\d{4}-\d{2}-\d{2}) \(([^)]*unveiling)\)$/);
-    if (m) { dated.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, date: parseDate(m[1]), kind: 'unveiling' }); continue; }
+    // A release or unveiling date as the record writes it (25 Nov 2026: the current Humanoids tab): a real calendar date
+    // at the start of the value ("2024-05-13 (G1 introduction)", "2019 (PAL timeline)") or after a launch verb
+    // ("Launched 2026-05-26", "Unveiled at NVIDIA GTC, 2026-03-18"), at the precision the source gives. A date that
+    // names something other than a release ("project initiated"), a plan or reservation, or a date without a year is
+    // not used; nothing is inferred from text.
+    // What is not a model release keeps its own named reason (Codex, 25 Nov 2026): a company founding, a funding round,
+    // a project start, access or reservations, and plans or targets.
+    const NOT_RELEASE = [
+      [/\bfounded\b|\bfounding\b|incorporat/i, 'a company founding, not a model release'],
+      [/\bfunding\b|\braised\b|\bseries [a-e]\b|\bseed round\b/i, 'a funding round, not a model release'],
+      [/project initiated|programme started|program started|project started/i, 'a project start, not a model release'],
+      [/reservations?|waitlist|deposit|early access|pre-?order/i, 'access or reservations, not a release'],
+      [/not released|planned|targeted|\btarget\b|estimated delivery|expected/i, 'a plan or target, not a release'],
+    ];
+    const notRelease = NOT_RELEASE.find(([re]) => re.test(v));
+    let m = v.match(/^(\d{4}(?:-\d{2}(?:-\d{2})?)?)(?:\s*\((.+)\))?$/) ?? v.match(/^(?:Launched|Unveiled|Released|Introduced|Announced)\b[^()]*?\b(\d{4}-\d{2}(?:-\d{2})?)\b(?:\s*\((.+)\))?$/i);
+    const date = m && parseDate(m[1]);
+    const doubtful = /not disclosed|unverified|not verified|to be confirmed|not found|not confirmed|unknown|not stated|not public/i.test(v);
+    if (date && !notRelease && !doubtful) { dated.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, date, kind: m[2] ? `${date.precision === 'year' ? 'year' : date.precision === 'month' ? 'month' : 'day'}: ${m[2]}` : 'release year' }); continue; }
     if (!v) excluded.empty.push(rec.id);
-    else if (/not disclosed|unverified|not verified|to be confirmed|not found|not confirmed|unknown|not stated|not public/i.test(v)) excluded.undisclosed.push(rec.id);
-    else excluded.other.push(rec.id);
+    else if (notRelease) excluded.notRelease.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, reason: notRelease[1] });
+    else if (doubtful) excluded.undisclosed.push(rec.id);
+    else excluded.other.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, value: v });
   }
   for (const id of excludedById.keys()) if (!cat.records.some((x) => x.id === id)) fail(`Humanoids ${id}: reviewed id not in the catalogue`);
-  if (excluded.other.length) fail(`Humanoids: Release values with no rule: ${excluded.other.join(', ')}`);
+
   const years = dated.map((d) => +d.date.start.slice(0, 4));
   const y0 = Math.min(...years);
   const y1 = +snapshot.slice(0, 4);
@@ -68,7 +87,7 @@ function humanoids(cat, review) {
     const xs = dated.filter((d) => +d.date.start.slice(0, 4) === y);
     columns.push({ key: String(y), label: String(y), t: minIso(`${y}-12-31`, snapshot), value: xs.length, partial: y === y1, items: xs.map((d) => d.name).sort() });
   }
-  const total = cat.records.length;
+  const total = cat.records.length - software.length;
   return {
     id: 'humanoids', label: 'Humanoids', path: '/humanoids/', type: 'columns',
     title: 'Humanoid models introduced per year',
@@ -83,9 +102,15 @@ function humanoids(cat, review) {
       excluded: [
         { reason: 'Release not disclosed or not verified', count: excluded.undisclosed.length },
         { reason: 'Release field empty', count: excluded.empty.length },
+        ...excluded.notRelease.map((x) => ({ reason: `${x.name}: ${x.reason}`, count: 1 })),
+        ...excluded.other.map((x) => ({ reason: `${x.name}: the release date is written in prose or without a year; it is not read automatically`, count: 1 })),
         ...excluded.reviewed.map((x) => ({ reason: `${x.name}: ${x.reason}`, count: 1 })),
       ],
-      note: `${dated.filter((d) => d.kind === 'unveiling').length} of the dated models have a day-precise unveiling; the rest a year.`,
+      note: [
+        `Release dates as the records write them: ${['day', 'month', 'year'].map((p) => `${dated.filter((d) => d.date.precision === p).length} to the ${p}`).join(', ')}; each is placed in its year.`,
+        software.length ? `${plural(software.length, 'software or AI model')} recorded in the Humanoids tab (${software.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) ${software.length === 1 ? 'is' : 'are'} not a robot and outside this count.` : '',
+        uncertain.length ? `${plural(uncertain.length, 'entry', 'entries')} of uncertain scope (${uncertain.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) ${uncertain.length === 1 ? 'is' : 'are'} inside it, undated.` : '',
+      ].filter(Boolean).join(' '),
     },
     status: 'partial',
     status_note: `Partial: ${total - dated.length} of ${total} catalogue robots have no usable release date.`,
@@ -119,6 +144,7 @@ function deployments(prev) {
     groups.get(k).push({ key: STATUS_KEY(r.operational_status), date: d && { ...d, end: minIso(d.end, snapshot) } });
   }
   const cases = [...groups.values()];
+  const rawCases = [...prev.rows.reduce((m, r) => m.set(r.deployment_id || r.record_id, [...(m.get(r.deployment_id || r.record_id) ?? []), r]), new Map()).values()];
   const coarseNow = prev.rows.filter((r) => { const d = parseDate(r.publication_date); return d && d.precision !== 'day' && d.end > snapshot; }).length;
   const datedRecords = prev.rows.filter((r) => parseDate(r.publication_date)).length;
   const first = cases.flatMap((rs) => rs.filter((r) => r.date).map((r) => r.date.end)).sort()[0];
@@ -142,6 +168,9 @@ function deployments(prev) {
   const neverDated = cases.filter((rs) => !rs.some((r) => r.date)).length;
   const someUndated = cases.filter((rs) => rs.some((r) => !r.date) && rs.some((r) => r.date)).length;
   // The same cases with every record, dated or not: the status the public adoption view shows today.
+  // The current summaries' rule (latest dated source), for the note only: the chart itself never uses it.
+  const current = Object.fromEntries(DEPLOYMENT_STAGES.map((s) => [s.key, 0]));
+  for (const rs of rawCases) { const c = currentStatus(rs, (r) => STATUS_KEY(r.operational_status)); if (c.dated) current[c.key] += 1; }
   const allNow = Object.fromEntries(DEPLOYMENT_STAGES.map((s) => [s.key, 0]));
   for (const rs of cases) allNow[rs.map((r) => r.key).sort((a, b) => CASE_RANK[a] - CASE_RANK[b])[0]] += 1;
   return {
@@ -163,7 +192,7 @@ function deployments(prev) {
         { reason: 'Cases whose records all lack a publication date', count: neverDated },
         { reason: `Records without a publication date (of ${prev.rows.length})`, count: prev.rows.length - datedRecords },
       ],
-      note: `${coarseNow} records dated only by the current year or month count from the snapshot date. ${someUndated} placed ${someUndated === 1 ? 'case also has' : 'cases also have'} undated records, which are left out of their status. With every record, dated or not, the public adoption view counts ${cases.length} cases: ${DEPLOYMENT_STAGES.slice().reverse().map((s) => `${allNow[s.key]} ${s.label.toLowerCase()}`).join(', ')}. The difference is the undated evidence, kept apart and never assigned a date.`,
+      note: `${coarseNow} records dated only by the current year or month count from the snapshot date. ${someUndated} placed ${someUndated === 1 ? 'case also has' : 'cases also have'} undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead (server/src/public/status.js), so their totals differ: currently ${DEPLOYMENT_STAGES.slice().reverse().map((s) => `${current[s.key]} ${s.label.toLowerCase()}`).join(', ')} among the ${cases.length - neverDated} dated cases. Undated evidence is kept apart and never assigned a date.`,
     },
     status: neverDated ? 'partial' : 'complete',
     status_note: `${last.value} of ${cases.length} cases placed in time; ${plural(neverDated, 'case')} with no dated record ${neverDated === 1 ? 'stays' : 'stay'} in the date-unknown bar, outside the time series.`,
@@ -463,7 +492,7 @@ function reports(atlas, review) {
 export function buildEvolution(src) {
   const review = src.review;
   const charts = [
-    humanoids(src.humanoids, review),
+    humanoids(src.humanoids, review, src.classification),
     deployments(src.deployments),
     components(src.hardware, review),
     integrators(src.integrators, review),

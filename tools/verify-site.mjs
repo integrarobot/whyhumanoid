@@ -67,7 +67,9 @@ expect(meta('property', 'og:description') === meta('name', 'twitter:description'
 expect(/^User-agent: \*\nAllow: \//.test(readFileSync(new URL('robots.txt', root), 'utf8')), 'robots.txt does not allow crawlers');
 expect(errors.length === 0, `script errors: ${errors.join(' | ')}`);
 expect(rows() === manifest.record_count, `rendered rows ${rows()} != catalogue ${manifest.record_count}`);
-expect(text('#h-n') === String(manifest.record_count), `hero total "${text('#h-n')}"`);
+// The hero counts humanoid robot models: catalogue records minus software and uncertain-scope entries (tools/catalogue-classification.json).
+const classified = JSON.parse(readFileSync(new URL('tools/catalogue-classification.json', root), 'utf8')).records;
+expect(text('#h-n') === String(manifest.record_count - classified.length), `hero total "${text('#h-n')}" is not ${manifest.record_count} records minus ${classified.length} classified apart`);
 expect(/complete catalogue is free/i.test(text('#preview-note')), 'notice does not say the catalogue is free');
 const buyLink = document.querySelector('#preview-note a');
 const pageData = JSON.parse(document.getElementById('data').textContent);
@@ -222,10 +224,12 @@ expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements
   expect(document.querySelectorAll('.hero #evo-car .evo-slide').length === 7 && document.querySelectorAll('.hero #evo-car .evo-slide.on').length === 1, 'evolution carousel slides');
   const chips = [...document.querySelectorAll('#adoption .case')];
   expect(chips.length === cases.length && new Set(chips.map((a) => a.dataset.case)).size === cases.length, `explorer shows ${chips.length} marks for ${cases.length} cases`);
-  for (const stage of ['op', 'pilot', 'unc', 'ann']) expect(document.querySelectorAll(`#adoption .r-${stage} .case`).length === cases.filter((c) => c.stage === stage).length, `stage ${stage}: marks differ from the projection`);
+  // Current status (server/src/public/status.js): dated cases by their latest dated source; undated cases apart.
+  for (const stage of ['op', 'pilot', 'unc', 'ann']) expect(document.querySelectorAll(`#adoption .r-${stage} .case`).length === cases.filter((c) => c.dated !== false && c.stage === stage).length, `stage ${stage}: marks differ from the projection`);
+  expect(document.querySelectorAll('#adoption .r-nodate .case').length === cases.filter((c) => c.dated === false).length, 'undated cases are not grouped apart');
   for (const a of chips) { const h = a.getAttribute('href'); expect(h === '/deployments/' || existsSync(new URL(`${h.slice(1)}index.html`, root)), `case links to a missing page ${h}`); }
   const data = JSON.parse(document.getElementById('adoption-data').textContent);
-  const KEYS = new Set(['stage', 'status', 'records', 'org', 'orgPath', 'maker', 'makerPath', 'robot', 'robotPath', 'family', 'sector', 'fam', 'countries', 'years']);
+  const KEYS = new Set(['stage', 'recorded', 'status', 'records', 'org', 'orgPath', 'maker', 'makerPath', 'robot', 'robotPath', 'family', 'sector', 'fam', 'countries', 'years']);
   expect(data.every((c) => Object.keys(c).every((k) => KEYS.has(k))), 'adoption data holds a key outside the public list');
   expect(!/site_name|task_description|claim_text|metric_value|source_url|verification_status|evidence_level|fx_|rec_|dep_/.test(JSON.stringify(data)), 'adoption data holds a reserved field or an id');
   expect(document.querySelectorAll('#adoption .adopt-table tbody tr').length === cases.length, 'adoption table view does not list every case');

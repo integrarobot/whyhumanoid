@@ -1,9 +1,10 @@
 {
  "note": "Public data of the 12 workbook tabs other than Humanoids, with counts and field names. Free categories (Integrators, Software, Datasets, Benchmarks, Investment, Other Robots): every row and field. Deployments, Components (Hardware tab and related software) and the identity register of Deployments: every row at its public fields (public_fields); every field only for subscribers (US$100 per year), served by the backend after a subscription check. Claim-to-evidence links and the tabs outside the offer are counted, not listed (access matrix of 24 Nov 2026).",
- "snapshot": "2026-11-17T20:58:00Z",
+ "snapshot": "2026-11-25T05:35:43Z",
  "tabs": [
   {
    "id": "deployments",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Deployments",
    "description": "One claim per row about a humanoid robot deployment, with evidence level, source and dates.",
    "entries_total": 191,
@@ -81,11 +82,11 @@
     "source_url",
     "source_publisher",
     "publication_date"
-   ],
-   "snapshot": "2026-11-23T21:49:26Z"
+   ]
   },
   {
    "id": "integrators",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Integrators",
    "description": "Humanoid integrators and service providers: roles, services, platforms, territory, named projects and the evidence behind each claim.",
    "entries_total": 28,
@@ -122,11 +123,11 @@
    ],
    "access": "free",
    "category": "integrators",
-   "public": "all",
-   "snapshot": "2026-11-24T19:26:32Z"
+   "public": "all"
   },
   {
    "id": "evidence-links",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Evidence links",
    "description": "Links between robot models, tasks, deployments and claims, with stage and limitations.",
    "entries_total": 15,
@@ -160,11 +161,11 @@
    "access": "subscription",
    "category": "deployments",
    "public": "none",
-   "public_fields": [],
-   "snapshot": "2026-11-23T21:49:26Z"
+   "public_fields": []
   },
   {
    "id": "task-evaluations",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Task evaluations",
    "description": "Internal operational assessment: per-task eligibility of each robot model against documented evidence.",
    "entries_total": 4,
@@ -194,6 +195,7 @@
   },
   {
    "id": "container-handling",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Container handling analysis",
    "description": "Task analysis for container handling in intralogistics, with traceability.",
    "entries_total": 22,
@@ -209,11 +211,11 @@
    "access": "subscription",
    "category": null,
    "public": "none",
-   "public_fields": [],
-   "snapshot": "2026-11-23T21:49:26Z"
+   "public_fields": []
   },
   {
    "id": "entities",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Entities",
    "description": "Canonical organisations, models and resources with identity scope and review date.",
    "entries_total": 32,
@@ -244,11 +246,11 @@
     "parent_entity_id",
     "reference_url",
     "reviewed_at"
-   ],
-   "snapshot": "2026-11-23T21:49:26Z"
+   ]
   },
   {
    "id": "stocks",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Investment: listed companies",
    "description": "Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.",
    "entries_total": 276,
@@ -275,39 +277,270 @@
    ],
    "access": "free",
    "category": "investment",
-   "snapshot_fields": "Beyond row 10 this snapshot holds the basic fields only; the other fields are free and arrive with the next export.",
-   "public": "basic_fields",
-   "public_fields": [
-    "name",
-    "ticker",
-    "exchange",
-    "country"
-   ]
+   "public": "all"
   },
   {
    "id": "software",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Software and world models",
    "description": "Robot foundation models, VLA models, world models and robotics software.",
-   "entries_total": 144,
-   "source_rows_total": 124,
-   "preview_entries": 144,
-   "preview_source_rows": 124,
+   "entries_total": 141,
+   "canonical_entries": 138,
+   "memberships": 3,
+   "source_rows_total": 121,
+   "preview_entries": 141,
+   "preview_source_rows": 121,
    "fields": [
     "list",
     "name",
     "url",
-    "description"
+    "description",
+    "group",
+    "canonical",
+    "also_listed_as",
+    "other_names",
+    "other_descriptions",
+    "other_groups",
+    "canonical_list",
+    "canonical_name"
    ],
-   "lists": {
-    "software": 124,
-    "world_model": 20
-   },
    "access": "free",
    "category": "software",
-   "public": "all"
+   "public": "all",
+   "lists": {
+    "software": 121,
+    "world_model": 20
+   },
+   "reconciliation": {
+    "source_entries": 148,
+    "rows": 141,
+    "entries": 138,
+    "excluded": [
+     {
+      "sheet_row": 77,
+      "list": "software",
+      "name": "SOFTWARE FOR UNITREE",
+      "reason": "section heading: the rows below it are grouped as \"Software for Unitree\""
+     },
+     {
+      "sheet_row": 78,
+      "list": "software",
+      "name": "SOFTWARE",
+      "reason": "repeated header row"
+     },
+     {
+      "sheet_row": 116,
+      "list": "software",
+      "name": "SIMULATORS",
+      "reason": "section heading: the rows below it are grouped as \"Simulators\""
+     },
+     {
+      "sheet_row": 117,
+      "list": "software",
+      "name": "SIMULATOR",
+      "reason": "repeated header row"
+     }
+    ],
+    "merged": [
+     {
+      "sheet_row": 61,
+      "list": "software",
+      "name": "Lightwheel",
+      "group": null,
+      "into_sheet_row": 35,
+      "into_list": "software",
+      "into_name": "Lightwheel",
+      "into_group": null,
+      "description": "identical",
+      "reason": "same address and name as an earlier entry of the same list"
+     },
+     {
+      "sheet_row": 93,
+      "list": "software",
+      "name": "PyRoki",
+      "group": "Software for Unitree",
+      "into_sheet_row": 26,
+      "into_list": "software",
+      "into_name": "PyRoki",
+      "into_group": null,
+      "description": "different: kept as another description",
+      "reason": "same address and name as an earlier entry of the same list"
+     },
+     {
+      "sheet_row": 110,
+      "list": "software",
+      "name": "Latent",
+      "group": "Software for Unitree",
+      "into_sheet_row": 72,
+      "into_list": "software",
+      "into_name": "Latent",
+      "into_group": null,
+      "description": "different: kept as another description",
+      "reason": "same address and name as an earlier entry of the same list"
+     }
+    ],
+    "memberships": [
+     {
+      "sheet_row": 13,
+      "list": "world_model",
+      "name": "Lightwheel",
+      "canonical_sheet_row": 35,
+      "canonical_list": "software",
+      "canonical_name": "Lightwheel",
+      "reason": "same address and name as the software entry: kept as a world model membership with its own id, not a second entry"
+     },
+     {
+      "sheet_row": 16,
+      "list": "world_model",
+      "name": "General Intuition",
+      "canonical_sheet_row": 60,
+      "canonical_list": "software",
+      "canonical_name": "General Intuition",
+      "reason": "same address and name as the software entry: kept as a world model membership with its own id, not a second entry"
+     },
+     {
+      "sheet_row": 19,
+      "list": "world_model",
+      "name": "Covariant",
+      "canonical_sheet_row": 54,
+      "canonical_list": "software",
+      "canonical_name": "Covariant",
+      "reason": "same address and name as the software entry: kept as a world model membership with its own id, not a second entry"
+     }
+    ],
+    "review": [
+     {
+      "name": "Reachy",
+      "entries": [
+       {
+        "sheet_row": 23,
+        "list": "software",
+        "name": "Reachy Pollen Robotics",
+        "url": "https://hub.docker.com/r/pollenrobotics/reachy2"
+       },
+       {
+        "sheet_row": 119,
+        "list": "software",
+        "name": "Reachy",
+        "url": "https://hub.docker.com/r/pollenrobotics/reachy2"
+       }
+      ],
+      "reason": "same address under another name: kept as separate entries until an identity decision says they are one"
+     },
+     {
+      "name": "NVIDIA DreamDojo",
+      "entries": [
+       {
+        "sheet_row": 80,
+        "list": "software",
+        "name": "DreamDojo (NVIDIA)",
+        "url": "https://dreamdojo-world.github.io/"
+       },
+       {
+        "sheet_row": 5,
+        "list": "world_model",
+        "name": "NVIDIA DreamDojo",
+        "url": "https://dreamdojo-world.github.io/"
+       }
+      ],
+      "reason": "same address under another name: kept as separate entries until an identity decision says they are one"
+     },
+     {
+      "name": "NVIDIA DreamZero",
+      "entries": [
+       {
+        "sheet_row": 62,
+        "list": "software",
+        "name": "DreamZero",
+        "url": "https://dreamzero0.github.io/"
+       },
+       {
+        "sheet_row": 9,
+        "list": "world_model",
+        "name": "NVIDIA DreamZero",
+        "url": "https://dreamzero0.github.io/"
+       }
+      ],
+      "reason": "same address under another name: kept as separate entries until an identity decision says they are one"
+     },
+     {
+      "name": "Genesis",
+      "entries": [
+       {
+        "sheet_row": 29,
+        "list": "software",
+        "name": "Genesis AI",
+        "url": "https://genesis-ai.company/"
+       },
+       {
+        "sheet_row": 12,
+        "list": "world_model",
+        "name": "Genesis",
+        "url": "https://genesis-ai.company/"
+       }
+      ],
+      "reason": "same address under another name: kept as separate entries until an identity decision says they are one"
+     },
+     {
+      "name": "NVIDIA Cosmos",
+      "entries": [
+       {
+        "sheet_row": 4,
+        "list": "software",
+        "name": "NVIDIA Cosmos",
+        "url": "https://github.com/NVIDIA/Cosmos"
+       },
+       {
+        "sheet_row": 4,
+        "list": "world_model",
+        "name": "NVIDIA Cosmos",
+        "url": "https://github.com/nvidia-cosmos"
+       }
+      ],
+      "reason": "same name, different addresses: kept as separate entries"
+     },
+     {
+      "name": "Genesis",
+      "entries": [
+       {
+        "sheet_row": 12,
+        "list": "world_model",
+        "name": "Genesis",
+        "url": "https://genesis-ai.company/"
+       },
+       {
+        "sheet_row": 13,
+        "list": "software",
+        "name": "Genesis",
+        "url": "https://genesis-embodied-ai.github.io/"
+       }
+      ],
+      "reason": "same name, different addresses: kept as separate entries"
+     },
+     {
+      "name": "GentleHumanoid",
+      "entries": [
+       {
+        "sheet_row": 42,
+        "list": "software",
+        "name": "GentleHumanoid",
+        "url": "https://arxiv.org/abs/2511.04679"
+       },
+       {
+        "sheet_row": 98,
+        "list": "software",
+        "name": "GentleHumanoid",
+        "url": "https://gentle-humanoid.axell.top/"
+       }
+      ],
+      "reason": "same name, different addresses: kept as separate entries"
+     }
+    ]
+   }
   },
   {
    "id": "hardware",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Components",
    "description": "Robot components as products: sensing principle, specifications, interfaces, availability, price and sources.",
    "entries_total": 19,
@@ -369,11 +602,11 @@
     "review_status",
     "licence",
     "repository"
-   ],
-   "snapshot": "2026-11-23T21:49:26Z"
+   ]
   },
   {
    "id": "component-software",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Components: related software",
    "description": "Software related to the component products, such as simulators of tactile sensors.",
    "entries_total": 1,
@@ -435,33 +668,68 @@
     "review_status",
     "licence",
     "repository"
-   ],
-   "snapshot": "2026-11-23T21:49:26Z"
+   ]
   },
   {
    "id": "other-robots",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Other robots",
    "description": "Non-humanoid and educational robots tracked alongside the humanoid catalogue.",
-   "entries_total": 547,
+   "entries_total": 560,
    "source_rows_total": 488,
-   "preview_entries": 547,
+   "preview_entries": 560,
    "preview_source_rows": 488,
    "fields": [
     "list",
     "name",
     "url",
-    "description"
+    "description",
+    "group",
+    "canonical",
+    "also_listed_as",
+    "other_names",
+    "other_descriptions",
+    "other_groups"
    ],
-   "lists": {
-    "other_robot": 59,
-    "edubot": 488
-   },
    "access": "free",
    "category": "other-robots",
-   "public": "all"
+   "public": "all",
+   "lists": {
+    "other_robot": 72,
+    "edubot": 488
+   },
+   "reconciliation": {
+    "source_entries": 560,
+    "rows": 560,
+    "entries": 560,
+    "excluded": [],
+    "merged": [],
+    "memberships": [],
+    "review": [
+     {
+      "name": "ProtoBot",
+      "entries": [
+       {
+        "sheet_row": 230,
+        "list": "edubot",
+        "name": "ProtoBot",
+        "url": "https://robotheca.org/robots/protobot-2"
+       },
+       {
+        "sheet_row": 288,
+        "list": "edubot",
+        "name": "ProtoBot",
+        "url": "https://robotheca.org/robots/protobot"
+       }
+      ],
+      "reason": "same name, different addresses: kept as separate entries"
+     }
+    ]
+   }
   },
   {
    "id": "data-space",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Data space design notes",
    "description": "Findings and proposals for the humanoid robotics data space.",
    "entries_total": 30,
@@ -484,8 +752,7 @@
    "category": null,
    "public": "none",
    "public_fields": [],
-   "offer": false,
-   "snapshot": "2026-11-23T21:49:26Z"
+   "offer": false
   }
  ]
 }

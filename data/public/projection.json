@@ -1,6 +1,6 @@
 {
  "version": 1,
- "snapshot": "2026-11-23T21:49:26Z",
+ "snapshot": "2026-11-25T05:35:43Z",
  "totals": {
   "records": 191,
   "deployments": 122,
@@ -99,10 +99,10 @@
    },
    {
     "key": "Germany",
-    "records": 20
+    "records": 22
    },
    {
-    "key": "Multiple",
+    "key": "Multiple countries (not named)",
     "records": 7
    },
    {
@@ -123,7 +123,7 @@
    },
    {
     "key": "other",
-    "records": 32
+    "records": 34
    }
   ],
   "by_year": [
@@ -156,6 +156,8 @@
  "cases": [
   {
    "stage": "op",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 1,
     "pilot": 0,
@@ -178,6 +180,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -185,6 +189,8 @@
   },
   {
    "stage": "op",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 2,
     "pilot": 0,
@@ -207,6 +213,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -214,35 +222,8 @@
   },
   {
    "stage": "op",
-   "status": {
-    "op": 1,
-    "pilot": 0,
-    "ann": 1,
-    "unc": 0
-   },
-   "records": 2,
-   "organisation": {
-    "company": "org_fulin_precision",
-    "name": "Fulin Precision (富临精工)"
-   },
-   "maker": {
-    "company": "mfr_agibot",
-    "name": "AgiBot"
-   },
-   "robot_recorded": "Agibot A2-W",
-   "robot": null,
-   "level": null,
-   "sector": "automotive_components",
-   "countries": [
-    "China"
-   ],
-   "years": [
-    2025,
-    2025
-   ]
-  },
-  {
-   "stage": "op",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 2,
     "pilot": 1,
@@ -265,6 +246,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2024
@@ -272,6 +255,8 @@
   },
   {
    "stage": "op",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 1,
     "pilot": 0,
@@ -294,6 +279,8 @@
    "countries": [
     "Japan"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -301,6 +288,8 @@
   },
   {
    "stage": "op",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 2,
     "pilot": 0,
@@ -323,6 +312,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2025
@@ -330,6 +321,8 @@
   },
   {
    "stage": "op",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 1,
     "pilot": 0,
@@ -349,9 +342,9 @@
    "robot": null,
    "level": null,
    "sector": "manufacturing",
-   "countries": [
-    "Multiple"
-   ],
+   "countries": [],
+   "country_notes": [],
+   "country_multiple": true,
    "years": [
     2026,
     2026
@@ -359,6 +352,8 @@
   },
   {
    "stage": "op",
+   "dated": true,
+   "tie": true,
    "status": {
     "op": 3,
     "pilot": 1,
@@ -381,6 +376,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -388,6 +385,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -408,6 +407,10 @@
    "level": null,
    "sector": "aerospace_manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -415,6 +418,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -435,6 +440,10 @@
    "level": null,
    "sector": "automotive_components",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -442,6 +451,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -464,6 +475,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2026
@@ -471,6 +484,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -493,6 +508,8 @@
    "countries": [
     "France"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -500,6 +517,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -520,6 +539,10 @@
    "level": null,
    "sector": "electronics_manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -527,6 +550,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -549,6 +574,8 @@
    "countries": [
     "Germany"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -556,6 +583,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -578,6 +607,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -585,6 +616,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": true,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -607,6 +640,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -614,6 +649,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 5,
@@ -636,6 +673,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -643,6 +682,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -665,6 +706,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -672,6 +715,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -694,6 +739,8 @@
    "countries": [
     "Germany"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -701,6 +748,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -723,6 +772,8 @@
    "countries": [
     "Germany"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -730,6 +781,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -752,6 +805,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -759,6 +814,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -781,6 +838,8 @@
    "countries": [
     "Canada"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2023
@@ -788,6 +847,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -810,6 +871,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -817,6 +880,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -837,6 +902,10 @@
    "level": null,
    "sector": "food_manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -844,6 +913,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -866,6 +937,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -873,6 +946,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 7,
@@ -895,6 +970,8 @@
    "countries": [
     "Germany"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -902,6 +979,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -924,6 +1003,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -931,6 +1012,8 @@
   },
   {
    "stage": "pilot",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -953,10 +1036,14 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -979,6 +1066,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -986,6 +1075,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1008,6 +1099,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1015,6 +1108,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1037,6 +1132,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1044,6 +1141,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1066,6 +1165,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1073,6 +1174,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1095,6 +1198,8 @@
    "countries": [
     "Japan"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1102,6 +1207,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": true,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1124,6 +1231,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1131,6 +1240,8 @@
   },
   {
    "stage": "pilot",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1153,10 +1264,14 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1179,6 +1294,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1186,6 +1303,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1208,6 +1327,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1215,6 +1336,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1237,6 +1360,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1244,6 +1369,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 5,
@@ -1264,6 +1391,10 @@
    "level": "model",
    "sector": "automotive_components",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1271,6 +1402,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -1291,8 +1424,11 @@
    "level": "family",
    "sector": "automotive_manufacturing",
    "countries": [
-    "Germany; Hungary"
+    "Germany",
+    "Hungary"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1300,6 +1436,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -1322,6 +1460,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1329,6 +1469,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1351,6 +1493,8 @@
    "countries": [
     "United Kingdom"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1358,6 +1502,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1380,6 +1526,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1387,6 +1535,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1409,6 +1559,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1416,6 +1568,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 7,
@@ -1438,6 +1592,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1445,6 +1601,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1467,6 +1625,8 @@
    "countries": [
     "France"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1474,6 +1634,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1496,6 +1658,8 @@
    "countries": [
     "France"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2023
@@ -1503,6 +1667,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1525,6 +1691,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1532,6 +1700,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1554,6 +1724,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1561,6 +1733,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 4,
@@ -1583,6 +1757,8 @@
    "countries": [
     "Germany"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1590,6 +1766,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1612,6 +1790,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1619,6 +1799,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1641,6 +1823,8 @@
    "countries": [
     "Germany"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1648,6 +1832,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1670,6 +1856,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1677,6 +1865,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1699,6 +1889,8 @@
    "countries": [
     "Japan"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1706,6 +1898,8 @@
   },
   {
    "stage": "pilot",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1728,6 +1922,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1735,6 +1931,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1757,6 +1955,8 @@
    "countries": [
     "Germany"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1764,6 +1964,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1786,6 +1988,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1793,6 +1997,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 1,
@@ -1815,6 +2021,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -1822,6 +2030,8 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 2,
@@ -1844,6 +2054,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2025
@@ -1851,6 +2063,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -1873,6 +2087,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1880,6 +2096,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -1902,6 +2120,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1909,6 +2129,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -1931,6 +2153,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1938,6 +2162,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -1958,6 +2184,10 @@
    "level": null,
    "sector": "manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -1965,6 +2195,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -1987,6 +2219,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -1994,6 +2228,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2014,8 +2250,12 @@
    "level": null,
    "sector": "retail",
    "countries": [
-    "Indonesia; Malaysia; South Africa"
+    "Indonesia",
+    "Malaysia",
+    "South Africa"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2023,6 +2263,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2045,6 +2287,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2023
@@ -2052,6 +2296,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2074,6 +2320,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2081,6 +2329,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2103,6 +2353,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2110,6 +2362,8 @@
   },
   {
    "stage": "unc",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2132,10 +2386,14 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2158,6 +2416,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2022,
     2022
@@ -2165,6 +2425,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2187,6 +2449,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2024,
     2025
@@ -2194,6 +2458,8 @@
   },
   {
    "stage": "unc",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2216,10 +2482,14 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2242,6 +2512,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2022,
     2022
@@ -2249,6 +2521,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2271,6 +2545,8 @@
    "countries": [
     "Singapore"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2278,6 +2554,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2298,6 +2576,10 @@
    "level": null,
    "sector": "semiconductor_manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2305,6 +2587,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2327,6 +2611,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2334,6 +2620,8 @@
   },
   {
    "stage": "unc",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2356,10 +2644,14 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2382,6 +2674,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2023,
     2023
@@ -2389,6 +2683,8 @@
   },
   {
    "stage": "unc",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2411,10 +2707,14 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2437,6 +2737,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2444,6 +2746,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2466,6 +2770,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -2473,6 +2779,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2495,6 +2803,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2502,6 +2812,8 @@
   },
   {
    "stage": "unc",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2524,10 +2836,14 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2550,10 +2866,14 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
+   "dated": false,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2576,10 +2896,14 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": null
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2602,6 +2926,8 @@
    "countries": [
     "Malaysia"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2609,6 +2935,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": true,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2629,9 +2957,10 @@
    "level": "model",
    "sector": "semiconductor_manufacturing",
    "countries": [
-    "Malta",
-    "Multiple"
+    "Malta"
    ],
+   "country_notes": [],
+   "country_multiple": true,
    "years": [
     2025,
     2025
@@ -2639,6 +2968,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2659,6 +2990,10 @@
    "level": null,
    "sector": "automotive_manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed (North America)"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2666,6 +3001,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": true,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2688,6 +3025,8 @@
    "countries": [
     "Canada"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2695,6 +3034,8 @@
   },
   {
    "stage": "unc",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2717,6 +3058,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2724,6 +3067,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2746,6 +3091,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2753,6 +3100,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2775,6 +3124,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2782,6 +3133,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2804,6 +3157,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2811,6 +3166,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2833,6 +3190,8 @@
    "countries": [
     "Germany"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2840,6 +3199,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2862,6 +3223,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -2869,6 +3232,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2891,6 +3256,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -2898,6 +3265,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2920,6 +3289,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -2927,6 +3298,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2946,9 +3319,9 @@
    "robot": 1,
    "level": "model",
    "sector": "multiple",
-   "countries": [
-    "Multiple"
-   ],
+   "countries": [],
+   "country_notes": [],
+   "country_multiple": true,
    "years": [
     2025,
     2025
@@ -2956,6 +3329,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -2978,6 +3353,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -2985,6 +3362,41 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 1,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_fulin_precision",
+    "name": "Fulin Precision (富临精工)"
+   },
+   "maker": {
+    "company": "mfr_agibot",
+    "name": "AgiBot"
+   },
+   "robot_recorded": "Agibot A2-W",
+   "robot": null,
+   "level": null,
+   "sector": "automotive_components",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2025,
+    2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3005,6 +3417,10 @@
    "level": "model",
    "sector": "semiconductor_manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3012,6 +3428,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3034,6 +3452,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3041,6 +3461,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3063,6 +3485,8 @@
    "countries": [
     "Germany"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3070,6 +3494,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3092,6 +3518,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3099,6 +3527,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3121,6 +3551,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3128,6 +3560,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3148,6 +3582,10 @@
    "level": "family",
    "sector": "logistics",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3155,6 +3593,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3174,9 +3614,11 @@
    "robot": null,
    "level": null,
    "sector": "shipbuilding",
-   "countries": [
+   "countries": [],
+   "country_notes": [
     "South Korea (partner country; deployment site not confirmed)"
    ],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -3184,6 +3626,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3204,6 +3648,10 @@
    "level": "family",
    "sector": "manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -3211,6 +3659,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3231,6 +3681,10 @@
    "level": "model",
    "sector": "automotive_components",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -3238,6 +3692,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3260,6 +3716,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -3267,6 +3725,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3287,6 +3747,10 @@
    "level": "family",
    "sector": "automotive_manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2024,
     2024
@@ -3294,6 +3758,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3316,6 +3782,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -3323,6 +3791,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3345,6 +3815,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -3352,6 +3824,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3372,6 +3846,10 @@
    "level": "model",
    "sector": "manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -3379,6 +3857,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3401,6 +3881,8 @@
    "countries": [
     "South Korea"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3408,6 +3890,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3428,6 +3912,10 @@
    "level": "model",
    "sector": "multiple",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2025,
     2026
@@ -3435,6 +3923,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3455,6 +3945,10 @@
    "level": "model",
    "sector": "manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -3462,6 +3956,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3481,9 +3977,9 @@
    "robot": 88,
    "level": "model",
    "sector": "manufacturing",
-   "countries": [
-    "Multiple"
-   ],
+   "countries": [],
+   "country_notes": [],
+   "country_multiple": true,
    "years": [
     2026,
     2026
@@ -3491,6 +3987,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3511,6 +4009,10 @@
    "level": "family",
    "sector": "manufacturing",
    "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
    "years": [
     2025,
     2025
@@ -3518,6 +4020,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3537,9 +4041,9 @@
    "robot": null,
    "level": null,
    "sector": "automotive_manufacturing",
-   "countries": [
-    "Multiple"
-   ],
+   "countries": [],
+   "country_notes": [],
+   "country_multiple": true,
    "years": [
     2026,
     2026
@@ -3547,6 +4051,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3569,6 +4075,8 @@
    "countries": [
     "United States"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3576,6 +4084,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3595,9 +4105,9 @@
    "robot": 104,
    "level": "model",
    "sector": "retail",
-   "countries": [
-    "Multiple"
-   ],
+   "countries": [],
+   "country_notes": [],
+   "country_multiple": true,
    "years": [
     2026,
     2026
@@ -3605,6 +4115,8 @@
   },
   {
    "stage": "ann",
+   "dated": true,
+   "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
@@ -3627,6 +4139,8 @@
    "countries": [
     "China"
    ],
+   "country_notes": [],
+   "country_multiple": false,
    "years": [
     2026,
     2026
@@ -3660,7 +4174,6 @@
      "multiple"
     ],
     "site_countries": [
-     "Multiple",
      "United States"
     ],
     "years": [
@@ -4134,7 +4647,8 @@
      "manufacturing"
     ],
     "site_countries": [
-     "Germany; Hungary",
+     "Germany",
+     "Hungary",
      "United States"
     ],
     "years": [
@@ -6050,8 +6564,7 @@
      "semiconductor_manufacturing"
     ],
     "site_countries": [
-     "Malta",
-     "Multiple"
+     "Malta"
     ],
     "years": [
      2025,
@@ -6134,7 +6647,6 @@
     ],
     "site_countries": [
      "South Korea",
-     "South Korea (partner country; deployment site not confirmed)",
      "United States"
     ],
     "years": [
@@ -6966,8 +7478,7 @@
      "robot_manufacturing"
     ],
     "site_countries": [
-     "Germany",
-     "Multiple"
+     "Germany"
     ],
     "years": [
      2025,
@@ -7907,8 +8418,7 @@
      "retail"
     ],
     "site_countries": [
-     "China",
-     "Multiple"
+     "China"
     ],
     "years": [
      2024,
@@ -8686,8 +9196,7 @@
      "automotive_manufacturing"
     ],
     "site_countries": [
-     "Japan",
-     "Multiple"
+     "Japan"
     ],
     "years": [
      2026,
@@ -9102,7 +9611,9 @@
      "retail"
     ],
     "site_countries": [
-     "Indonesia; Malaysia; South Africa"
+     "Indonesia",
+     "Malaysia",
+     "South Africa"
     ],
     "years": [
      2026,
@@ -9412,7 +9923,6 @@
     ],
     "site_countries": [
      "China",
-     "Multiple",
      "United States"
     ],
     "years": [
@@ -9819,7 +10329,8 @@
      "automotive_manufacturing"
     ],
     "site_countries": [
-     "Germany; Hungary"
+     "Germany",
+     "Hungary"
     ],
     "years": [
      2024,
@@ -11040,9 +11551,7 @@
     "sectors": [
      "shipbuilding"
     ],
-    "site_countries": [
-     "South Korea (partner country; deployment site not confirmed)"
-    ],
+    "site_countries": [],
     "years": [
      2025,
      2025
@@ -11505,9 +12014,7 @@
     "sectors": [
      "multiple"
     ],
-    "site_countries": [
-     "Multiple"
-    ],
+    "site_countries": [],
     "years": [
      2025,
      2025
@@ -14325,8 +14832,7 @@
      "semiconductor_manufacturing"
     ],
     "site_countries": [
-     "Malta",
-     "Multiple"
+     "Malta"
     ],
     "years": [
      2025,
@@ -14460,7 +14966,9 @@
      "retail"
     ],
     "site_countries": [
-     "Indonesia; Malaysia; South Africa"
+     "Indonesia",
+     "Malaysia",
+     "South Africa"
     ],
     "years": [
      2026,
@@ -15045,9 +15553,7 @@
    "sectors": [
     "multiple"
    ],
-   "site_countries": [
-    "Multiple"
-   ],
+   "site_countries": [],
    "years": [
     2025,
     2025
@@ -15242,7 +15748,8 @@
     "manufacturing"
    ],
    "site_countries": [
-    "Germany; Hungary",
+    "Germany",
+    "Hungary",
     "United States"
    ],
    "years": [
@@ -15931,8 +16438,7 @@
     "semiconductor_manufacturing"
    ],
    "site_countries": [
-    "Malta",
-    "Multiple"
+    "Malta"
    ],
    "years": [
     2025,
@@ -16185,8 +16691,7 @@
     "robot_manufacturing"
    ],
    "site_countries": [
-    "Germany",
-    "Multiple"
+    "Germany"
    ],
    "years": [
     2025,
@@ -16500,8 +17005,7 @@
     "retail"
    ],
    "site_countries": [
-    "China",
-    "Multiple"
+    "China"
    ],
    "years": [
     2024,

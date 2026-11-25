@@ -23,12 +23,14 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
   const normalised = [];
   const warnings = [];
   const review = [];
+  const reconciliation = {};
   try {
     for (const spec of DATASETS) {
       const result = normalizeTab(spec, tabValues(valuesByTab, spec));
       normalised.push({ spec, rows: result.rows });
       warnings.push(...result.warnings);
       review.push(...result.review.map((r) => ({ dataset: spec.id, ...r })));
+      if (result.reconciliation) reconciliation[spec.id] = result.reconciliation;
     }
     // Robotics Evaluation Atlas: the catalogue and its results are validated together (ids, foreign keys, numbers,
     // native scales, comparability groups, reviewed vocabulary). Any problem stops the import, like header drift.
@@ -135,5 +137,5 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
       .bind(now, 'succeeded', JSON.stringify({ ...counts, relations: relations.report.coverage ?? null, search: search.report }), JSON.stringify({ warnings, review }), runId),
   );
   await db.batch(statements);
-  return { ok: true, runId, snapshotId, counts, warnings, review, relations: relations.report, search: search.report, searchUnmapped: search.unmapped };
+  return { ok: true, runId, snapshotId, counts, warnings, review, reconciliation, relations: relations.report, search: search.report, searchUnmapped: search.unmapped };
 }

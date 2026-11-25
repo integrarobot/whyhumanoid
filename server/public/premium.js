@@ -120,23 +120,25 @@
 
   // Rows: every row for a subscriber (paged API); otherwise the public rows (free tabs in full, Deployments and
   // Components at their public fields).
+  // "138 entries (141 rows: 3 are the same entry in a second list)", or "276 entries" when rows and entries agree.
+  const countText = (data) => { const e = data.entries ?? data.total; return `${e} entr${e === 1 ? 'y' : 'ies'}${e !== data.total ? ` (${data.total} rows: ${data.total - e} ${data.total - e === 1 ? 'is' : 'are'} the same entry in a second list)` : ''}`; };
   async function load(id) {
     const mode = full() ? 'full' : 'preview';
     if (cache[id] && cache[id].mode === mode) return cache[id];
-    let rows = [], total = 0, snapshot = null, previewRows = null, publicFields = null;
+    let rows = [], total = 0, entries = null, snapshot = null, previewRows = null, publicFields = null;
     if (mode === 'full') {
       for (let offset = 0; ; offset += PAGE) {
         const { status, data } = await api(`/v1/datasets/${id}?limit=${PAGE}&offset=${offset}`);
         if (status === 401 || status === 403) { await refreshMe(); return load(id); }
         if (status !== 200) throw new Error('load');
         rows = rows.concat(data.rows);
-        total = data.total; snapshot = data.snapshot;
+        total = data.total; entries = data.entries ?? null; snapshot = data.snapshot;
         if (rows.length >= total || !data.rows.length) break;
       }
     } else {
       const { status, data } = await api(`/v1/datasets/${id}/preview`, { auth: false });
       if (status !== 200) throw new Error('load');
-      rows = data.rows; total = data.total_rows; snapshot = data.snapshot; previewRows = data.preview_rows; publicFields = data.public_fields ?? null;
+      rows = data.rows; total = data.total_rows; entries = data.entries ?? null; snapshot = data.snapshot; previewRows = data.preview_rows; publicFields = data.public_fields ?? null;
       // An API older than 24 Nov 2026 answers visitors with the first rows in full and no field contract: show them at
       // the public fields embedded by tools/build-app.mjs, like the rest of the site (the subscriber view is unchanged).
       const contract = PAGES.public_fields?.[id];
@@ -146,7 +148,10 @@
       }
     }
     const fields = [...new Set(rows.flatMap((r) => Object.keys(r)))].filter((k) => !HIDDEN.has(k));
-    cache[id] = { mode, rows, total, snapshot, previewRows, publicFields, fields };
+    // entries: canonical entries of a directory tab (a membership row, canonical: false, is the same entry in a second
+    // list); every other tab has entries = rows.
+    if (entries === null) entries = rows.length === total ? rows.filter((r) => r.canonical !== false).length : total;
+    cache[id] = { mode, rows, total, entries, snapshot, previewRows, publicFields, fields };
     totals[id] = total;
     const n = document.querySelector(`[data-n="${id}"]`); if (n) n.textContent = total;
     return cache[id];
@@ -408,7 +413,7 @@
     const locked = preview ? Math.max(0, data.total - data.rows.length) : 0;
     panel.innerHTML =
       `<div class="db-panel-head"><div><h2>${esc(meta.title)}</h2><p>${esc(meta.description || '')}</p>` +
-      `<p class="db-hint">${preview ? `Counted, not listed: ${data.total} entries come with the subscription.` : summary ? `Free: ${data.rows.length === data.total ? `all ${data.total}` : `${data.rows.length} of ${data.total}`} entries, each with its public fields. <b>View all data</b> shows them and names the fields that come with the subscription.` : `${data.total} entries${data.mode === 'full' ? ', complete' : ''}. <b>View all data</b> opens every field of an entry (${data.fields.length} fields), in full.`}</p>` +
+      `<p class="db-hint">${preview ? `Counted, not listed: ${data.total} entries come with the subscription.` : summary ? `Free: ${data.rows.length === data.total ? `all ${countText(data)}` : `${data.rows.length} of ${data.total} entries`}, each with its public fields. <b>View all data</b> shows them and names the fields that come with the subscription.` : `${countText(data)}${data.mode === 'full' ? ', complete' : ''}. <b>View all data</b> opens every field of an entry (${data.fields.length} fields), in full.`}</p>` +
       `<p class="lbl" id="db-count"></p></div><label class="db-search"><span class="lbl">Search ${summary ? 'the public fields' : preview ? 'the free entries' : 'every field'}</span><br><input id="db-q" type="search" autocomplete="off" placeholder="Filter every field"></label></div>` +
       (isDep ? '<div class="db-status" id="db-status" role="group" aria-label="Filter by status"></div>' : '') +
       `<div class="db-scroll"><table class="db-table${isDep ? ' dep' : ''}"><thead><tr><th scope="col">#</th>${isDep ? '<th scope="col">Status</th>' : ''}<th scope="col">Record</th>` +
@@ -428,7 +433,8 @@
     }
     function render() {
       shown = data.rows.filter((r) => (!isDep || st === 'all' || status(r) === st) && (!q || Object.keys(r).some((k) => !HIDDEN.has(k) && String(r[k] ?? '').toLowerCase().includes(q))));
-      $('db-count').textContent = (shown.length !== data.rows.length ? shown.length + ' of ' : '') + data.rows.length + ' entries shown' + (data.snapshot ? ' · workbook copy ' + String(data.snapshot).slice(0, 10) : '');
+      const shownEntries = shown.filter((r) => r.canonical !== false).length;
+      $('db-count').textContent = (shown.length !== data.rows.length ? shownEntries + ' of ' : '') + countText(data) + ' shown' + (shown.length !== shownEntries ? ` (${shown.length} rows, ${shown.length - shownEntries} of them the same entry in a second list)` : '') + (data.snapshot ? ' · workbook copy ' + String(data.snapshot).slice(0, 10) : '');
       body.innerHTML = (shown.length ? shown.map((r) => {
         const n = data.rows.indexOf(r) + 1;
         return `<tr class="r" data-i="${n - 1}"><td class="num">${n}</td>` + (isDep ? `<td class="stc"><span class="dst ${status(r)}">${stLabel(status(r))}</span></td>` : '') +
@@ -752,8 +758,9 @@
     // Entry counts in the category list, from the public previews (cached by the API for 5 minutes).
     state.datasets.filter((d) => d.id !== 'humanoids' && !cache[d.id]).forEach((d) => api(`/v1/datasets/${d.id}/preview`, { auth: false }).then(({ status, data }) => {
       if (status !== 200) return;
-      totals[d.id] = data.total_rows;
-      const n = document.querySelector(`[data-n="${d.id}"]`); if (n) n.textContent = data.total_rows;
+      // Entries, not rows: a directory's topical memberships (a world model that is also a software entry) count once.
+      totals[d.id] = data.entries ?? data.total_rows;
+      const n = document.querySelector(`[data-n="${d.id}"]`); if (n) n.textContent = totals[d.id];
     }));
     if (params.get('checkout') === 'cancelled') notice('Checkout was cancelled. Nothing was charged.');
     if (params.get('checkout') === 'success') {

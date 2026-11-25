@@ -12,6 +12,7 @@ const read = (p) => JSON.parse(readFileSync(new URL(p, root), 'utf8'));
 export function evolutionSources() {
   return {
     review: read('tools/evolution-review.json'),
+    classification: read('tools/catalogue-classification.json'),
     humanoids: read('data/humanoids-catalogue.json'),
     deployments: read('data/preview/deployments.json'),
     hardware: read('data/preview/hardware.json'),

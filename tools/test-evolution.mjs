@@ -8,6 +8,7 @@ import { readFileSync } from 'node:fs';
 import { buildEvolution, parseDate, stageAt } from './evolution-model.mjs';
 import { evolutionSources } from './export-evolution.mjs';
 import { publicDateOf, publicDateProblems } from '../server/src/public-dates.js';
+import { mostAdvanced } from '../server/src/public/status.js';
 
 const root = new URL('../', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
@@ -23,27 +24,45 @@ test('seven charts, in the required order, rotating every 10 seconds, up to date
 
 test('Humanoids: introductions per year equal the dated Release values of the catalogue', () => {
   const c = chart('humanoids');
-  const reviewed = new Set(src.review.humanoids.excluded.map((x) => x.id));
+  const reviewed = new Set([...src.review.humanoids.excluded.map((x) => x.id), ...src.classification.records.filter((x) => x.kind === 'software').map((x) => x.id)]);
   const years = {};
   for (const r of src.humanoids.records) {
     if (reviewed.has(r.id)) continue;
-    const m = String(r.Release ?? '').trim().match(/^(\d{4})$|^(\d{4})-\d{2}-\d{2} \([^)]*unveiling\)$/);
-    if (m) years[m[1] ?? m[2]] = (years[m[1] ?? m[2]] ?? 0) + 1;
+    // Independent reading: a release value that opens with its date, or a launch verb followed by one; never a
+    // founding, funding, project start, reservation, plan or doubtful value, and never a year taken from prose.
+    const v = String(r.Release ?? '').trim();
+    if (/founded|funding|project initiated|programme started|reservation|waitlist|deposit|not released|planned|targeted|estimated delivery|expected|not disclosed|unverified|not verified|to be confirmed|not found|not confirmed|unknown|not stated|not public/i.test(v)) continue;
+    const m = v.match(/^(\d{4})(?:-\d{2}(?:-\d{2})?)?(?:\s*\(.+\))?$/) ?? v.match(/^(?:Launched|Unveiled|Released|Introduced|Announced)\b[^()]*?\b(\d{4})-\d{2}(?:-\d{2})?\b(?:\s*\(.+\))?$/);
+    if (m) years[m[1]] = (years[m[1]] ?? 0) + 1;
   }
+  // Pinned decisions on the 25 Nov 2026 formats (Codex): dated release events in, everything else out with a reason.
+  const byId = new Map(src.humanoids.records.map((r) => [r.id, `${r.Lab} ${r.Robot}`]));
+  const at = (id) => c.columns.find((col) => col.items.includes(byId.get(id)))?.key;
+  for (const [id, year] of [[152, '2019'], [154, '2021'], [214, '2026'], [156, '2026'], [3, '2023']]) assert.equal(at(id), year, `${id}`);
+  for (const id of [44, 132, 135, 136, 137, 198]) assert.equal(at(id), undefined, `${id} is not dated`);
   for (const col of c.columns) assert.equal(col.value, years[col.key] ?? 0, col.key);
   assert.equal(c.columns.reduce((a, x) => a + x.value, 0), Object.values(years).reduce((a, b) => a + b, 0));
-  assert.equal(c.coverage.included + c.coverage.excluded.reduce((a, x) => a + x.count, 0), src.humanoids.records.length);
+  // Software or AI models recorded in the Humanoids tab are outside the robot denominator (tools/catalogue-classification.json).
+  const software = src.classification.records.filter((x) => x.kind === 'software').length;
+  assert.equal(c.coverage.total, src.humanoids.records.length - software);
+  assert.equal(c.coverage.included + c.coverage.excluded.reduce((a, x) => a + x.count, 0), src.humanoids.records.length - software);
   assert.ok(!c.columns.some((x) => x.t > c.domain.end), 'nothing after the snapshot');
 });
 
 test('Deployments: documented status by date, never projected back, undated kept apart, totals reconcile with today', () => {
   const c = chart('deployments');
+  // The chart's historical rule (most advanced documented) on every record, dated or not, reconciles with the rows;
+  // the current summaries use another rule (latest dated source, server/src/public/status.js) and are not compared.
   const proj = JSON.parse(read('data/public/projection.json'));
-  const today = { op: 0, pilot: 0, unc: 0, ann: 0 };
-  for (const k of proj.cases) today[k.stage] += 1;
+  const byCase = new Map();
+  for (const r of src.deployments.rows) { const k = r.deployment_id || r.record_id; byCase.set(k, [...(byCase.get(k) ?? []), r]); }
+  const sk = (r) => (r.operational_status === 'operational' ? 'op' : ['pilot', 'testing'].includes(r.operational_status) ? 'pilot' : r.operational_status === 'planned' ? 'ann' : 'unc');
+  const ever = { op: 0, pilot: 0, unc: 0, ann: 0 };
+  for (const rs of byCase.values()) ever[mostAdvanced(rs, sk)] += 1;
   const last = c.columns.at(-1);
-  for (const s of ['op', 'pilot', 'unc', 'ann']) assert.equal(last.segments[s] + c.undated.segments[s], today[s], s);
+  for (const s of ['op', 'pilot', 'unc', 'ann']) assert.equal(last.segments[s] + c.undated.segments[s], ever[s], s);
   assert.equal(last.value + c.undated.cases, proj.cases.length);
+  assert.equal(c.undated.cases, proj.cases.filter((x) => x.dated === false).length, 'the same undated cases on the chart and in the current summaries');
   assert.equal(c.undated.records, src.deployments.rows.filter((r) => !parseDate(r.publication_date)).length);
   // Each case's status at a date uses only records published by then: a case whose only "operational" record is from
   // 2026 is not in operation in 2025.
@@ -155,4 +174,14 @@ test('no paid or non-public field in the chart data or the pages', () => {
     const html = read(p);
     assert.equal((html.match(/class="evo-chart /g) ?? []).length, p === 'index.html' ? 7 : p === 'benchmarks/index.html' ? 2 : 1, p);
   }
+});
+
+test('every chart has a real date range and every page renders it (no NaN or undefined dates)', () => {
+  const doc = JSON.parse(read('data/evolution/charts.json'));
+  for (const c of doc.charts) for (const k of ['start', 'end']) assert.match(String(c.domain[k]), /^\d{4}-\d{2}-\d{2}$/, `${c.id} domain.${k}`);
+  for (const p of ['index.html', 'humanoids/index.html', 'deployments/index.html', 'components/index.html', 'integrators/index.html', 'datasets/index.html', 'benchmarks/index.html', 'reports/index.html']) {
+    const html = read(p);
+    assert.doesNotMatch(html, /data-t[01]="NaN"|data-map="[^"]*NaN|aria-valuetext="[^"]*undefined|<b>0 undefined/, p);
+  }
+  assert.match(JSON.parse(read('data/integrators/atlas.json')).snapshot ?? '', /^\d{4}-\d{2}-\d{2}T/, 'the Integrators atlas names its snapshot');
 });

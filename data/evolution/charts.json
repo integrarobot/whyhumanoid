@@ -18,13 +18,13 @@
    "path": "/humanoids/",
    "type": "columns",
    "title": "Humanoid models introduced per year",
-   "subtitle": "Models in the free catalogue by the year of their recorded release or unveiling: 40 of 134 robots are dated.",
+   "subtitle": "Models in the free catalogue by the year of their recorded release or unveiling: 68 of 212 robots are dated.",
    "meaning": "Release or unveiling date as recorded in the free Humanoids catalogue: when a model was introduced, not sales, deliveries or fleet size.",
    "unit": "models",
    "precision": "year",
    "domain": {
     "start": "2016-01-01",
-    "end": "2026-11-17"
+    "end": "2026-11-25"
    },
    "columns": [
     {
@@ -59,9 +59,11 @@
      "key": "2019",
      "label": "2019",
      "t": "2019-12-31",
-     "value": 0,
+     "value": 1,
      "partial": false,
-     "items": []
+     "items": [
+      "PAL ARI"
+     ]
     },
     {
      "key": "2020",
@@ -75,10 +77,11 @@
      "key": "2021",
      "label": "2021",
      "t": "2021-12-31",
-     "value": 1,
+     "value": 2,
      "partial": false,
      "items": [
-      "Engineered Arts Ameca"
+      "Engineered Arts Ameca",
+      "PAL Kangaroo"
      ]
     },
     {
@@ -95,10 +98,12 @@
      "key": "2023",
      "label": "2023",
      "t": "2023-12-31",
-     "value": 4,
+     "value": 6,
      "partial": false,
      "items": [
+      "Aeolus aeo",
       "Fourier GR-1",
+      "PAL TIAGo Pro",
       "Sanctuary AI Phoenix",
       "Tesla Optimus Gen 2",
       "Unitree H1"
@@ -108,14 +113,18 @@
      "key": "2024",
      "label": "2024",
      "t": "2024-12-31",
-     "value": 13,
+     "value": 18,
      "partial": false,
      "items": [
+      "Agibot A2 (A2 Ultra / A2 Lite)",
+      "Agibot X1",
       "Astribot S1",
       "Booster T1",
       "Clone Clone",
+      "Engineai PM01",
       "Engineai SE01",
-      "Kepler Forerunner",
+      "GAC Group GoMate",
+      "Kepler Forerunner K1",
       "LimX Oli",
       "Magiclab Magicbot",
       "Mentee MenteeBot",
@@ -123,76 +132,116 @@
       "Pudu D7",
       "Qinglong Qinglong",
       "Robotera Star 1",
-      "Xpeng Iron"
+      "Ubtech Walker S1",
+      "Unitree G1"
      ]
     },
     {
      "key": "2025",
      "label": "2025",
      "t": "2025-12-31",
-     "value": 15,
+     "value": 24,
      "partial": false,
      "items": [
       "Addverb Elixis",
+      "Agibot G2",
+      "Agibot X2 (X2 Neo / X2 Ultra)",
+      "Booster K1",
       "Borg Borg 01",
       "Dobot Atom",
+      "Engineai T800",
       "Estun Codroid Codroid 02",
       "Figure Figure 03",
       "Foundation Phantom MK1",
       "Galbot G1",
       "Hexagon AEON",
       "K-Scale Labs K-bot",
+      "Kepler Forerunner K2",
       "Kinisi Kinisi (Bear Robotics offering)",
       "Leju Kuavo",
       "The Humanoid HMND 01 (Alpha Wheeled / Bipedal)",
+      "Ubtech Walker S2",
+      "Unitree H2",
+      "Unitree R1",
       "VinMotion Motion",
       "Westwood Themis",
-      "X Square Quanta X2"
+      "X Square Quanta X2",
+      "Xpeng Next-Gen IRON"
      ]
     },
     {
      "key": "2026",
      "label": "2026",
-     "t": "2026-11-17",
-     "value": 4,
+     "t": "2026-11-25",
+     "value": 14,
      "partial": true,
      "items": [
+      "Agibot A3",
       "Agile One",
       "Agility Digit 5 (in development)",
+      "Booster T2",
       "Fauna Sprout",
-      "Generative Bionics GENE.01"
+      "Generative Bionics GENE.01",
+      "LimX Luna",
+      "Mabel Mabel",
+      "Matrix Robotics MATRIX-3",
+      "Neura 4NE1 (Gen 4 announced)",
+      "StarBot StarBot Astra",
+      "StarBot StarBot Flex",
+      "Techman Robot TM Xplore I",
+      "Unitree H2-X"
      ]
     }
    ],
    "final": {
-    "dated": 40,
+    "dated": 68,
     "by_year": {
      "2016": 1,
      "2017": 1,
      "2018": 0,
-     "2019": 0,
+     "2019": 1,
      "2020": 0,
-     "2021": 1,
+     "2021": 2,
      "2022": 1,
-     "2023": 4,
-     "2024": 13,
-     "2025": 15,
-     "2026": 4
+     "2023": 6,
+     "2024": 18,
+     "2025": 24,
+     "2026": 14
     }
    },
-   "summary": "40 dated introductions from 2016 to 2026; 2025 has the most (15). 2026 counts to 2026-11-17.",
+   "summary": "68 dated introductions from 2016 to 2026; 2025 has the most (24). 2026 counts to 2026-11-25.",
    "coverage": {
-    "included": 40,
-    "total": 134,
+    "included": 68,
+    "total": 212,
     "unit": "robots",
     "excluded": [
      {
       "reason": "Release not disclosed or not verified",
-      "count": 71
+      "count": 119
      },
      {
       "reason": "Release field empty",
-      "count": 20
+      "count": 17
+     },
+     {
+      "reason": "InMoov InMoov: a project start, not a model release",
+      "count": 1
+     },
+     {
+      "reason": "ASUS Gallop: a project start, not a model release",
+      "count": 1
+     },
+     {
+      "reason": "HIRO Industries Origin: access or reservations, not a release",
+      "count": 1
+     },
+     {
+      "reason": "LG CLOiD: the release date is written in prose or without a year; it is not read automatically",
+      "count": 1
+     },
+     {
+      "reason": "RoboScience REX G1: the release date is written in prose or without a year; it is not read automatically",
+      "count": 1
      },
      {
       "reason": "Apptronik Apollo 2: The dated year belongs to the original Apollo; the Apollo 2 date is unverified.",
@@ -207,13 +256,13 @@
       "count": 1
      }
     ],
-    "note": "3 of the dated models have a day-precise unveiling; the rest a year."
+    "note": "Release dates as the records write them: 26 to the day, 6 to the month, 36 to the year; each is placed in its year. 1 entry of uncertain scope (PokeBot Home robot (model name not disclosed)) is inside it, undated."
    },
    "status": "partial",
-   "status_note": "Partial: 94 of 134 catalogue robots have no usable release date.",
+   "status_note": "Partial: 144 of 212 catalogue robots have no usable release date.",
    "sources": [
     {
-     "label": "Free Humanoids catalogue, snapshot 2026-11-17",
+     "label": "Free Humanoids catalogue, snapshot 2026-11-25",
      "url": "/data/humanoids-catalogue.json"
     }
    ],
@@ -235,9 +284,14 @@
       "PAL Talos"
      ],
      [
-      "2021",
+      "2019",
       "1",
-      "Engineered Arts Ameca"
+      "PAL ARI"
+     ],
+     [
+      "2021",
+      "2",
+      "Engineered Arts Ameca; PAL Kangaroo"
      ],
      [
       "2022",
@@ -246,23 +300,23 @@
      ],
      [
       "2023",
-      "4",
-      "Fourier GR-1; Sanctuary AI Phoenix; Tesla Optimus Gen 2; Unitree H1"
+      "6",
+      "Aeolus aeo; Fourier GR-1; PAL TIAGo Pro; Sanctuary AI Phoenix; Tesla Optimus Gen 2; Unitree H1"
      ],
      [
       "2024",
-      "13",
-      "Astribot S1; Booster T1; Clone Clone; Engineai SE01; Kepler Forerunner; LimX Oli; Magiclab Magicbot; Mentee MenteeBot; Noetix Dora; Pudu D7; Qinglong Qinglong; Robotera Star 1; Xpeng Iron"
+      "18",
+      "Agibot A2 (A2 Ultra / A2 Lite); Agibot X1; Astribot S1; Booster T1; Clone Clone; Engineai PM01; Engineai SE01; GAC Group GoMate; Kepler Forerunner K1; LimX Oli; Magiclab Magicbot; Mentee MenteeBot; Noetix Dora; Pudu D7; Qinglong Qinglong; Robotera Star 1; Ubtech Walker S1; Unitree G1"
      ],
      [
       "2025",
-      "15",
-      "Addverb Elixis; Borg Borg 01; Dobot Atom; Estun Codroid Codroid 02; Figure Figure 03; Foundation Phantom MK1; Galbot G1; Hexagon AEON; K-Scale Labs K-bot; Kinisi Kinisi (Bear Robotics offering); Leju Kuavo; The Humanoid HMND 01 (Alpha Wheeled / Bipedal); VinMotion Motion; Westwood Themis; X Square Quanta X2"
+      "24",
+      "Addverb Elixis; Agibot G2; Agibot X2 (X2 Neo / X2 Ultra); Booster K1; Borg Borg 01; Dobot Atom; Engineai T800; Estun Codroid Codroid 02; Figure Figure 03; Foundation Phantom MK1; Galbot G1; Hexagon AEON; K-Scale Labs K-bot; Kepler Forerunner K2; Kinisi Kinisi (Bear Robotics offering); Leju Kuavo; The Humanoid HMND 01 (Alpha Wheeled / Bipedal); Ubtech Walker S2; Unitree H2; Unitree R1; VinMotion Motion; Westwood Themis; X Square Quanta X2; Xpeng Next-Gen IRON"
      ],
      [
       "2026",
-      "4",
-      "Agile One; Agility Digit 5 (in development); Fauna Sprout; Generative Bionics GENE.01"
+      "14",
+      "Agibot A3; Agile One; Agility Digit 5 (in development); Booster T2; Fauna Sprout; Generative Bionics GENE.01; LimX Luna; Mabel Mabel; Matrix Robotics MATRIX-3; Neura 4NE1 (Gen 4 announced); StarBot StarBot Astra; StarBot StarBot Flex; Techman Robot TM Xplore I; Unitree H2-X"
      ]
     ]
    }
@@ -279,7 +333,7 @@
    "precision": "quarter",
    "domain": {
     "start": "2022-01-01",
-    "end": "2026-11-23"
+    "end": "2026-11-25"
    },
    "series": [
     {
@@ -545,8 +599,8 @@
     {
      "key": "2026-Q4",
      "label": "",
-     "long": "Q4 2026 (to 2026-11-23)",
-     "t": "2026-11-23",
+     "long": "Q4 2026 (to 2026-11-25)",
+     "t": "2026-11-25",
      "value": 111,
      "segments": {
       "ann": 32,
@@ -583,7 +637,7 @@
      "op": 8
     }
    },
-   "summary": "By 2026-11-23, 111 of 122 cases have a dated source: 7 in operation, 48 pilot or trial, 24 unconfirmed, 32 announced.",
+   "summary": "By 2026-11-25, 111 of 122 cases have a dated source: 7 in operation, 48 pilot or trial, 24 unconfirmed, 32 announced.",
    "coverage": {
     "included": 111,
     "total": 122,
@@ -598,13 +652,13 @@
       "count": 20
      }
     ],
-    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. With every record, dated or not, the public adoption view counts 122 cases: 8 in operation, 51 pilot or trial, 31 unconfirmed, 32 announced. The difference is the undated evidence, kept apart and never assigned a date."
+    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead (server/src/public/status.js), so their totals differ: currently 6 in operation, 48 pilot or trial, 24 unconfirmed, 33 announced among the 111 dated cases. Undated evidence is kept apart and never assigned a date."
    },
    "status": "partial",
    "status_note": "111 of 122 cases placed in time; 11 cases with no dated record stay in the date-unknown bar, outside the time series.",
    "sources": [
     {
-     "label": "Deployments public summaries, snapshot 2026-11-23",
+     "label": "Deployments public summaries, snapshot 2026-11-25",
      "url": "/data/preview/deployments.json"
     }
    ],
@@ -755,7 +809,7 @@
       "82"
      ],
      [
-      "Q4 2026 (to 2026-11-23)",
+      "Q4 2026 (to 2026-11-25)",
       "7",
       "48",
       "24",
@@ -777,7 +831,7 @@
    "precision": "year",
    "domain": {
     "start": "2009-01-01",
-    "end": "2026-11-23"
+    "end": "2026-11-25"
    },
    "rows": [
     {
@@ -1045,7 +1099,7 @@
    "status_note": "17 of 19 products placed in time; 2 cannot be dated from the recorded text.",
    "sources": [
     {
-     "label": "Components public product rows, snapshot 2026-11-23",
+     "label": "Components public product rows, snapshot 2026-11-25",
      "url": "/data/preview/hardware.json"
     }
    ],
@@ -1174,7 +1228,7 @@
    "precision": "day",
    "domain": {
     "start": "2024-01-01",
-    "end": "2026-11-24"
+    "end": "2026-11-25"
    },
    "rows": [
     {
@@ -1424,7 +1478,7 @@
    "status_note": "12 of 28 providers have dated evidence; 16 have none on their reviewed pages.",
    "sources": [
     {
-     "label": "Integrators atlas, snapshot 2026-11-24",
+     "label": "Integrators atlas, snapshot 2026-11-25",
      "url": "/data/integrators/atlas.json"
     }
    ],

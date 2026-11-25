@@ -92,13 +92,19 @@ export function buildExport(snapshot, updates = readVerifiedUpdates()) {
   // Rows the sheet marks as duplicates or editorial resources are withheld by the same rule the import applies.
   const candidates = applyVerifiedUpdates(shown.map((r) => clean(r.model, CATALOGUE_MODE)), updates, fields);
   const withheld = candidates.filter((r) => isInternalHumanoidRow(Object.fromEntries(fields.map((f) => [f, r[f]]))));
-  const records = candidates.filter((r) => !withheld.includes(r));
+  // Records moved out of the Humanoids tab (tools/humanoids-identity.json via the verified updates): not in the
+  // catalogue; their last public values stay, labelled, so their pages keep answering at the same address.
+  const movedIds = new Map((updates.moved ?? []).map((m) => [m.id, m]));
+  // The public file names where each record went; the review evidence (workbook tabs and rows) stays in
+  // tools/humanoids-identity.json and tools/humanoids-verified-updates.json.
+  const moved = candidates.filter((r) => movedIds.has(r.id)).map((r) => { const { id, name, to } = movedIds.get(r.id); return { id, name, to, record: r }; });
+  const records = candidates.filter((r) => !withheld.includes(r) && !movedIds.has(r.id));
   const updatedKeys = new Set(updates.updated.map((u) => `${u.id}|${u.field}`));
   const notUpdated = (r) => !updatedKeys.has(`${r.id}|${r.field}`);
   const excluded = [];
   const catalogueIds = new Set(records.map((r) => r.id));
 
-  const json = `${JSON.stringify({ dataset: 'humanoids', access: 'free', snapshot: updates.source.snapshot, fields, records, excluded }, null, 1)}\n`;
+  const json = `${JSON.stringify({ dataset: 'humanoids', access: 'free', snapshot: updates.source.snapshot, fields, records, excluded, moved }, null, 1)}\n`;
   const csv = `${[['id', 'sheet_row', ...fields], ...records.map((r) => [r.id, r.sheet_row, ...fields.map((f) => r[f])])]
     .map((row) => row.map(csvCell).join(','))
     .join('\n')}\n`;
@@ -107,7 +113,7 @@ export function buildExport(snapshot, updates = readVerifiedUpdates()) {
       dataset: 'humanoids',
       access: 'free',
       rule: 'complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published',
-      source: `Humanoids tab of the private Integrarobot workbook: the snapshot embedded in ${LEGACY_REF}:index.html, updated to the verified import of ${updates.source.snapshot}`,
+      source: `Humanoids tab of the private Integrarobot workbook: the snapshot embedded in ${LEGACY_REF}:index.html, updated to the import of ${updates.source.snapshot} (every current customer row; records moved out of the tab kept apart)`,
       snapshot: updates.source.snapshot,
       record_count: records.length,
       verified_import: {
@@ -116,6 +122,7 @@ export function buildExport(snapshot, updates = readVerifiedUpdates()) {
         import_run: updates.source.import_run,
         updated: updates.updated.map(({ id, field }) => ({ id, field })),
         inserted: updates.inserted.map(({ id, sheet_row }) => ({ id, sheet_row })),
+        moved: (updates.moved ?? []).map(({ id, to }) => ({ id, to: to.category })),
       },
       full_database: {
         humanoid_records: records.length,

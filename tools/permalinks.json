@@ -140,7 +140,8 @@
       "k-scale-labs-k-bot-46"
     ],
     "47": [
-      "kepler-forerunner-47"
+      "kepler-forerunner-47",
+      "kepler-forerunner-k1-47"
     ],
     "48": [
       "kinisi-kinisi-bear-robotics-offering-48"
@@ -311,7 +312,8 @@
       "fauna-sprout-103"
     ],
     "104": [
-      "xpeng-iron-104"
+      "xpeng-iron-104",
+      "xpeng-next-gen-iron-104"
     ],
     "105": [
       "addverb-elixis-105"
@@ -402,6 +404,249 @@
     ],
     "134": [
       "darwin-darwin-0-134"
+    ],
+    "135": [
+      "asus-gallop-135"
+    ],
+    "136": [
+      "lg-cloid-136"
+    ],
+    "137": [
+      "hiro-industries-origin-137"
+    ],
+    "138": [
+      "unitree-g1-138"
+    ],
+    "139": [
+      "unitree-h2-139"
+    ],
+    "140": [
+      "unitree-h2-x-140"
+    ],
+    "141": [
+      "unitree-r1-141"
+    ],
+    "142": [
+      "ubtech-walker-s2-142"
+    ],
+    "143": [
+      "agibot-a2-a2-ultra-a2-lite-143"
+    ],
+    "144": [
+      "agibot-a3-144"
+    ],
+    "145": [
+      "agibot-x2-x2-neo-x2-ultra-145"
+    ],
+    "146": [
+      "agibot-g2-146"
+    ],
+    "147": [
+      "agibot-g1-147"
+    ],
+    "148": [
+      "booster-t2-148"
+    ],
+    "149": [
+      "booster-k1-149"
+    ],
+    "150": [
+      "engineai-pm01-150"
+    ],
+    "151": [
+      "engineai-t800-151"
+    ],
+    "152": [
+      "pal-ari-152"
+    ],
+    "153": [
+      "pal-tiago-pro-153"
+    ],
+    "154": [
+      "pal-kangaroo-154"
+    ],
+    "155": [
+      "pudu-d9-155"
+    ],
+    "156": [
+      "limx-luna-156"
+    ],
+    "157": [
+      "galbot-s1-157"
+    ],
+    "158": [
+      "galbot-et1-158"
+    ],
+    "159": [
+      "deep-dr02-159"
+    ],
+    "160": [
+      "magiclab-magicbot-z1-160"
+    ],
+    "161": [
+      "galaxea-kengo-161"
+    ],
+    "162": [
+      "rainbow-rb-y1-162"
+    ],
+    "163": [
+      "aheadform-elf-xuan-2-0-163"
+    ],
+    "164": [
+      "aidol-aidol-walking-version-164"
+    ],
+    "165": [
+      "anigon-fa-l-series-165"
+    ],
+    "166": [
+      "avatar-robotics-avatar-humanoid-model-name-not-disclosed-166"
+    ],
+    "167": [
+      "casbot-casbot-02-167"
+    ],
+    "168": [
+      "casbot-casbot-w1-168"
+    ],
+    "169": [
+      "cyborg-robotics-cyborg-r01-169"
+    ],
+    "170": [
+      "cyborg-robotics-cyborg-w01-170"
+    ],
+    "171": [
+      "digit-robotics-xialan-r03-171"
+    ],
+    "172": [
+      "digit-robotics-xiaqi-x02-172"
+    ],
+    "173": [
+      "donut-robotics-cinnamon-1-173"
+    ],
+    "174": [
+      "droidup-moya-174"
+    ],
+    "175": [
+      "duatic-dxtr-175"
+    ],
+    "176": [
+      "elite-robots-centaur-g1-176"
+    ],
+    "177": [
+      "genisom-ne01-177"
+    ],
+    "178": [
+      "gento-robotics-gento-luna-178"
+    ],
+    "179": [
+      "glroad-laborer-c1-179"
+    ],
+    "180": [
+      "glroad-laborer-m1-180"
+    ],
+    "181": [
+      "guanggu-dongzhi-lumen-h1-181"
+    ],
+    "182": [
+      "jingchu-humanoid-jingchu-1-182"
+    ],
+    "183": [
+      "jingchu-humanoid-jingchu-elf-183"
+    ],
+    "184": [
+      "jaka-robotics-jaka-184"
+    ],
+    "185": [
+      "kaist-drcd-lab-kaist-humanoid-185"
+    ],
+    "186": [
+      "kit-h-t-armar-7-186"
+    ],
+    "187": [
+      "keenon-robotics-xman-r1-187"
+    ],
+    "188": [
+      "lanxin-robotics-vb1-188"
+    ],
+    "189": [
+      "linkerbot-linker-humanoid-189"
+    ],
+    "190": [
+      "matrix-robotics-matrix-3-190"
+    ],
+    "191": [
+      "matrix-robotics-matrix-1-191"
+    ],
+    "192": [
+      "menlo-asimov-1-192"
+    ],
+    "193": [
+      "mirrorme-bolt-193"
+    ],
+    "194": [
+      "perceptyne-pr-omni-194"
+    ],
+    "195": [
+      "pl-universe-prowhite-195"
+    ],
+    "196": [
+      "psibot-psibot-v1-196"
+    ],
+    "197": [
+      "richtech-robotics-dex-197"
+    ],
+    "198": [
+      "roboscience-rex-g1-198"
+    ],
+    "199": [
+      "starbot-starbot-astra-199"
+    ],
+    "200": [
+      "starbot-starbot-flex-200"
+    ],
+    "201": [
+      "svaya-robotics-bimanual-humanoid-robot-201"
+    ],
+    "202": [
+      "tlibot-tlibot-t1-202"
+    ],
+    "203": [
+      "ugo-ugo-nova-203"
+    ],
+    "204": [
+      "x-humanoid-tien-kung-3-0-204"
+    ],
+    "205": [
+      "x-humanoid-tian-yi-2-0-205"
+    ],
+    "206": [
+      "x-humanoid-tiangong-omni-206"
+    ],
+    "207": [
+      "zerith-robotics-zerith-h1-207"
+    ],
+    "208": [
+      "zeroth-robotics-jupiter-208"
+    ],
+    "209": [
+      "zj-humanoid-naviai-i3-209"
+    ],
+    "210": [
+      "zj-humanoid-naviai-wa2-210"
+    ],
+    "211": [
+      "westlake-robotics-westlake-o1-211"
+    ],
+    "212": [
+      "mirsee-robotics-mh3-212"
+    ],
+    "213": [
+      "geek-gino-1-213"
+    ],
+    "214": [
+      "techman-robot-tm-xplore-i-214"
+    ],
+    "215": [
+      "kepler-forerunner-k2-215"
     ]
   },
   "companies": {
@@ -4827,7 +5072,8 @@
       "just1"
     ],
     "other_robot|agile-robots.com/en": [
-      "agilex-2"
+      "agilex-2",
+      "agile-robots"
     ],
     "edubot|robotheca.org/robots/physical-ant": [
       "physical-ant"
@@ -6316,6 +6562,45 @@
     ],
     "edubot|robotheca.org/robots/tracked-quadruped-hybrid-robot": [
       "tracked-quadruped-hybrid-robot"
+    ],
+    "other_robot|mosaicintelligence.xyz": [
+      "mosaic-intelligence-labs"
+    ],
+    "other_robot|naverlabs.com/en/ambidex": [
+      "naver-labs"
+    ],
+    "other_robot|roboligent.com/robin": [
+      "roboligent"
+    ],
+    "other_robot|bluewormrobotics.com": [
+      "blue-worm"
+    ],
+    "other_robot|futuringrobot.com": [
+      "futuring"
+    ],
+    "other_robot|embodiedai.ch": [
+      "embodied-ai"
+    ],
+    "other_robot|flexiv.com": [
+      "flexiv"
+    ],
+    "other_robot|knowinai.com/product.html": [
+      "knowin"
+    ],
+    "other_robot|dyna.co": [
+      "dyna-robotics"
+    ],
+    "other_robot|ultra.tech": [
+      "ultra-robotics"
+    ],
+    "other_robot|linkerbot.cn": [
+      "linkerbot"
+    ],
+    "other_robot|vbot.cn": [
+      "vbot"
+    ],
+    "other_robot|orbitrobotics.ch": [
+      "orbit-robotics"
     ]
   },
   "reports": {
