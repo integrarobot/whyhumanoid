@@ -800,8 +800,7 @@
         (!state.session ? '<p>Sign in with your email above to order. Your order and questionnaire stay in your account.</p>'
           : s.checkout_available ? `<button class="btn ord-buy" type="button" data-service="${esc(s.id)}">Pay ${esc(s.price)} and open the questionnaire</button>`
             : '<p><b>Not available to order yet.</b> Ordering opens after the payment flow has been tested.</p>') + '</article>').join('')}</div>` +
-      (state.session ? `<h3>Your orders</h3>${orders.length ? `<ul class="ord-list">${orders.map((o) => `<li><a href="#reports/${esc(o.id)}">${esc(o.service_name)}</a> ${statusBadge(o.status)} <span class="lbl">ordered ${when(o.created_at)}${o.due_at ? ' · report due by ' + esc(o.due_utc) : ''}</span></li>`).join('')}</ul>` : '<p>No orders yet.</p>'}` : '') +
-      `<p class="lbl">Questions about an order: <a href="mailto:${SUPPORT}">${SUPPORT}</a></p>`;
+      (state.session ? `<h3>Your orders</h3>${orders.length ? `<ul class="ord-list">${orders.map((o) => `<li><a href="#reports/${esc(o.id)}">${esc(o.service_name)}</a> ${statusBadge(o.status)} <span class="lbl">ordered ${when(o.created_at)}${o.due_at ? ' · report due by ' + esc(o.due_utc) : ''}</span></li>`).join('')}</ul>` : '<p>No orders yet.</p>'}` : '');
     panel.querySelectorAll('.ord-buy').forEach((b) => b.addEventListener('click', async () => {
       b.disabled = true;
       const { status, data } = await api('/v1/reports/orders', { method: 'POST', body: { service: b.dataset.service } });
@@ -872,8 +871,11 @@
     if (stale(t)) return;
     loaded();
     const head = `<p class="lbl"><a href="#reports">Custom reports</a> / ${esc(o.service_name)}</p><h2 id="db-title">${esc(o.service_name)}</h2><p>${statusBadge(o.status)} <span class="lbl">Order ${esc(o.id)} · US$1,000 · ordered ${when(o.created_at)}</span></p>`;
+    // The order help line appears only once the report is paid (Javier, 25 Nov 2026), not on the catalogue or while
+    // payment is pending; error messages keep their own support address.
+    const help = `<p class="lbl">Questions about an order: <a href="mailto:${SUPPORT}">${SUPPORT}</a></p>`;
     if (o.status === 'pending_payment') {
-      panel.innerHTML = `${head}<p>We have not received the payment confirmation from Stripe yet. If you have paid, this usually takes a few seconds.</p><button class="btn" id="ord-check" type="button">Check payment again</button> <a class="btn ghost" href="#reports">Back</a><p class="lbl">Questions: <a href="mailto:${SUPPORT}">${SUPPORT}</a></p>`;
+      panel.innerHTML = `${head}<p>We have not received the payment confirmation from Stripe yet. If you have paid, this usually takes a few seconds.</p><button class="btn" id="ord-check" type="button">Check payment again</button> <a class="btn ghost" href="#reports">Back</a>`;
       $('ord-check').addEventListener('click', async () => { await api(`/v1/reports/orders/${o.id}/reconcile`, { method: 'POST' }); showOrder(o.id); });
       return;
     }
@@ -885,7 +887,7 @@
       const values = o.answers || {};
       panel.innerHTML = `${head}<div class="notice">We received your completed questionnaire on <b>${when(o.submitted_at)}</b>. We will email your report (PDF) to <b>${esc(state.me?.email || 'your account address')}</b> by <b>${esc(o.due_utc)}</b> (${esc(o.due_madrid)}).${o.status === 'delivered' ? ` Our records show the report was emailed on ${when(o.delivered_at)}.` : ''}</div>` +
         `<p>To correct something you sent, write to <a href="mailto:${SUPPORT}">${SUPPORT}</a> with your order reference. The deadline above stays the same.</p>` +
-        `<h3>What you sent</h3><dl class="db-kv">${allFields(form).filter((f) => answered(f, values[f.id])).map((f) => `<dt>${esc(f.label)}</dt><dd>${esc(Array.isArray(values[f.id]) ? values[f.id].join('\n\n') : values[f.id] === true ? 'Yes' : values[f.id])}</dd>`).join('')}</dl>`;
+        `<h3>What you sent</h3><dl class="db-kv">${allFields(form).filter((f) => answered(f, values[f.id])).map((f) => `<dt>${esc(f.label)}</dt><dd>${esc(Array.isArray(values[f.id]) ? values[f.id].join('\n\n') : values[f.id] === true ? 'Yes' : values[f.id])}</dd>`).join('')}</dl>${help}`;
       return;
     }
     const values = o.answers || {};
@@ -896,7 +898,7 @@
       panel.innerHTML = `${head}<h3>Review your answers</h3>` +
         (missing.length ? `<div class="notice error" role="alert">${missing.length} required ${missing.length === 1 ? 'answer is' : 'answers are'} missing: ${missing.map((f) => esc(f.label)).join('; ')}.</div>` : '<p>Every required answer is there. Submitting starts the 24 hours: we will email your report within 24 hours of receiving it. You cannot edit the answers afterwards.</p>') +
         `<dl class="db-kv">${allFields(form).filter((f) => answered(f, values[f.id])).map((f) => `<dt>${esc(f.label)}</dt><dd>${esc(Array.isArray(values[f.id]) ? values[f.id].join('\n\n') : values[f.id] === true ? 'Yes' : values[f.id])}</dd>`).join('')}</dl>` +
-        `<div class="row"><button class="btn ghost" id="q-back" type="button">Back to editing</button>${missing.length ? '' : ' <button class="btn" id="q-submit" type="button">Submit the questionnaire</button>'}</div>`;
+        `<div class="row"><button class="btn ghost" id="q-back" type="button">Back to editing</button>${missing.length ? '' : ' <button class="btn" id="q-submit" type="button">Submit the questionnaire</button>'}</div>${help}`;
       $('q-back').addEventListener('click', () => showOrder(o.id));
       $('q-submit')?.addEventListener('click', async () => {
         $('q-submit').disabled = true;
@@ -912,7 +914,7 @@
       `<p class="lbl">The report goes to ${esc(state.me?.email || 'your account address')}. To use another address, write to ${SUPPORT}. Do not include other people's personal contact details. We use your answers only to prepare and deliver this report. Documents can follow by email after you submit; there is no upload here.</p>` +
       `<p class="q-progress" id="q-progress" aria-live="polite">${done} of ${req.length} required answers · <span id="q-saved">${o.draft_saved_at ? 'saved ' + when(o.draft_saved_at) : 'not saved yet'}</span></p><p class="lbl"><span class="req">*</span> required</p>` +
       `<form id="q-form" novalidate>${form.fields.map((f) => fieldHtml(f, values[f.id], problems) + (f.extra ? fieldHtml(f.extra, values[f.extra.id], problems) : '')).join('')}` +
-      `<div class="row"><button class="btn ghost" id="q-save" type="button">Save now</button> <button class="btn" id="q-review" type="submit">Review and submit</button></div></form>`;
+      `<div class="row"><button class="btn ghost" id="q-save" type="button">Save now</button> <button class="btn" id="q-review" type="submit">Review and submit</button></div></form>${help}`;
     // Answers are read from the form only while this order's form is on screen; afterwards only the captured copy is used.
     const capture = () => { if (!stale(t) && $('q-form')) ORD.pending = { orderId: o.id, answers: collect(form) }; };
     const save = async () => {
