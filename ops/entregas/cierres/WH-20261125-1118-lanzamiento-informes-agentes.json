@@ -1,0 +1,61 @@
+{
+  "id": "WH-20261125-1118-lanzamiento-informes-agentes",
+  "tarea": "Lanzamiento del 25/11/2026: suscripción de US$100 al año para personas y sus agentes (web, API autenticada, MCP y CLI), dos informes a medida de US$1,000 de pago único con cuestionario privado y plazo de 24 horas, y textos en inglés claro en toda la web",
+  "origen": "Javier (oferta de dos vías y lanzamiento del 25/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-25T11:18:26+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Acceso de agentes con la misma suscripción y sin cargo extra: API autenticada con claves que se crean, listan y revocan en la app; servidor MCP en /mcp (SDK oficial, herramientas de solo lectura); CLI de un archivo (agents/whyhumanoid.mjs). Uso razonable de 60 peticiones por minuto y 5.000 al día por clave, con 429 y Retry-After. Sin suscripción, las filas de pago se cierran y lo público sigue abierto. Documentación en /agents/.",
+    "Informes a medida (Robot integration diagnostic e Industrial diversification report), US$1,000 cada uno, pago único y aparte de la suscripción. El texto BEFORE_PAYMENT se muestra literal. Checkout en modo pago con precio verificado. El pago solo cuenta con webhook firmado o con una reconciliación en el servidor que coincida con el pedido guardado.",
+    "Cuestionario privado con borradores. El envío es atómico y fija el plazo en el envío más 24 horas. Los correos al cliente y al operador pasan por una bandeja de salida duradera, en la misma transacción D1 que el cambio de estado, con reparación y reintentos por cron y desde la cola del operador.",
+    "Protecciones revisadas por Codex: requisitos previos para vender (correo, webhook firmado, aviso y acceso del operador); un solo pedido sin pagar por cuenta y servicio (migración 0005) con clave de idempotencia de Stripe; consulta a Stripe antes de reutilizar o sustituir un pedido caducado; descarte de respuestas tardías en la app; el borrador se conserva al salir enseguida, también con guardado lento o fallido.",
+    "Venta en vivo abierta con REPORTS_LIVE_OPEN = true; volver a false cierra solo la venta nueva. Procedimiento del operador en ops/informes-a-medida.md y reglas en AGENTS.md.",
+    "Textos para el lector en inglés claro, corregidos en los generadores. Páginas nuevas /agents/ y /privacy/; /subscribe/ reescrita. La dirección de soporte aparece en todas las páginas publicadas, también en el pie de la portada (bloque generado footer-help). Los mensajes de reintento del checkout dicen «No new payment was started.»."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 103 (lanzamiento)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/103"
+    },
+    {
+      "etiqueta": "Commit de fusión b2f29af",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/b2f29af9a85e0fd3b8c82b4a21e3d8c9d4baff60"
+    },
+    {
+      "etiqueta": "Suscripción e informes",
+      "url": "https://whyhumanoid.com/subscribe/"
+    },
+    {
+      "etiqueta": "Agentes",
+      "url": "https://whyhumanoid.com/agents/"
+    },
+    {
+      "etiqueta": "Privacidad",
+      "url": "https://whyhumanoid.com/privacy/"
+    },
+    {
+      "etiqueta": "Informes en la app",
+      "url": "https://whyhumanoid.com/app/#reports"
+    }
+  ],
+  "despliegue": [
+    "Worker de producción desplegado por Codex desde 4c0a819 (versión 416d1288 en Cloudflare; SHA-256 del bundle a442b5351b1f3b42467a89dc6b4ab2a8d4aaa4c7a31e67e402cf0a486afdc72b, reconstruido dos veces con resultado idéntico), con el cron de la bandeja de salida cada 5 minutos. Configuración LIVE de Codex: productos y precios, webhook con 7 eventos, migraciones 0004 y 0005 en D1 y variables del Worker.",
+    "PR 103 fusionado en main como b2f29af desde el head aceptado 4c0a819, con el CI en verde (ejecución 45592328827). GitHub Pages lo publicó en menos de un minuto.",
+    "Sin importaciones ni escrituras en el maestro, y sin compras reales ni cobros, cancelaciones o reembolsos."
+  ],
+  "verificaciones": [
+    "Producción, solo lectura. API: /health 200; /v1/reports/services devuelve los dos servicios con checkout_available true, 100000 USD y el texto BEFORE_PAYMENT literal; /v1/billing/plan devuelve 10000 USD al año. MCP: initialize y tools/list responden con seis herramientas de solo lectura.",
+    "Producción, solo lectura. CLI sin clave: categories, rows deployments y atlas reports responden; account pide clave. Deployments sin clave solo devuelve los campos públicos de fields.js, más el id de fila.",
+    "Producción, solo lectura. Web: /agents/, /privacy/ y /subscribe/ responden 200; el pie con el enlace de soporte está en la portada y en las páginas de muestra; la app publicada lleva la corrección del borrador y los textos nuevos de reintento. /app/#reports a 375 y 1280 px: dos servicios, texto previo al pago, sin desbordamiento y sin errores de script.",
+    "Producción, solo lectura, en navegador: tools/verify-mobile.mjs 715/715 en siete tamaños de 320 a 1600 px, ya con el pie nuevo; tools/verify-evolution.mjs 183/183, con la rotación de 10 segundos medida entre 9600 y 10000 ms.",
+    "Antes de fusionar, en local: verify-orders 39/39 (tres regresiones del borrador que fallan con la app anterior); servidor 184/184; verify-mobile 715/715 (antes del cambio del pie); verify-staging --local 382/382; verify-site, verify-pages, verify-premium-app, todos los --check y check-public.",
+    "Codex, independiente: Stripe TEST con los dos servicios (pago, cuestionario, borrador, envío con plazo de 24 horas, los ocho correos y la cola del operador); 186/186 de servidor y clientes en f5be843; verify-orders 39/39 en 3935606; revisión final de 4c0a819 aceptada; tras el despliegue, /health, servicios y plan verificados."
+  ],
+  "pendientes": [
+    "Codex comprueba por su cuenta la web pública, /agents/, la API y el navegador tras la fusión.",
+    "No hay compra real de prueba: la primera venta en vivo será la de un cliente. El operador sigue ops/informes-a-medida.md."
+  ],
+  "siguiente_accion": "Codex confirma su verificación independiente, avisa a Javier del lanzamiento y registra las confirmaciones en ops/entregas/confirmaciones/."
+}
