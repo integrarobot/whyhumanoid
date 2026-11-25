@@ -1,0 +1,43 @@
+{
+  "id": "WH-20261125-1420-ayuda-informes-tras-pago",
+  "tarea": "Informes a medida: la línea de ayuda «Questions about an order» con la dirección de soporte solo aparece después de pagar el informe",
+  "origen": "Javier (petición del 25/11/2026), revisado por Codex",
+  "fecha": "2026-11-25T14:20:23+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "server/public/premium.js: se quita la línea de ayuda del catálogo de Custom reports (showReports) y la línea «Questions» de la pantalla normal de pago pendiente. La misma línea «Questions about an order» aparece ahora solo en las pantallas posteriores al pago: cuestionario, revisión y pedido enviado o entregado. app/ regenerada con tools/build-app.mjs.",
+    "Sin cambios en los mensajes de error y recuperación (conservan la dirección de soporte), el soporte general (pie, panel de cuenta de la app, /subscribe/, /agents/, /privacy/), el texto previo al pago, el servidor, Stripe, los precios, el esquema ni los datos.",
+    "tools/verify-orders.mjs: seis comprobaciones nuevas de la línea de ayuda (catálogo antes y después de pedir, pago pendiente, cuestionario, revisión y pedido enviado)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 109",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/109"
+    },
+    {
+      "etiqueta": "Commit de fusión 76f87fb",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/76f87fb72f3f2777a7287289ec4bc7a5341b2d64"
+    },
+    {
+      "etiqueta": "Informes en la app",
+      "url": "https://whyhumanoid.com/app/#reports"
+    }
+  ],
+  "despliegue": [
+    "Worker de producción desplegado por Javier y Codex desde 275a482: versión 0a15acc0 en Cloudflare, bundle con SHA-256 798b5b7573ee6aac06f46f3085af730297cf5c49dfff2402fe70ce251d906087 (898.068 bytes), reconstruido dos veces con resultado idéntico.",
+    "PR 109 fusionado en main como 76f87fb desde el head aceptado 275a482, con el CI en verde (ejecución 45621473393). GitHub Pages publicó la app en unos 42 segundos.",
+    "Sin importaciones, compras, cambios de cobro ni de datos."
+  ],
+  "verificaciones": [
+    "Local, antes de fusionar: verify-orders 45/45 en staging local con Stripe simulado (eventos firmados en local, nada enviado a Stripe); las seis comprobaciones nuevas fallan con la app anterior. build-app --check, verify-premium-app y check-public en verde.",
+    "Producción, solo lectura, en navegador a 375 y 1280 px: /app/#reports muestra los dos servicios y el texto previo al pago, sin la línea «Questions about an order» ni enlaces de correo en el panel, sin desbordamiento horizontal y sin errores de script. El enlace de soporte general sigue visible en el panel de cuenta. /health 200.",
+    "Codex, independiente: recarga limpia en Chrome de /app/#reports con los dos botones de compra y sin la línea de ayuda; /app/premium.js publicado idéntico byte a byte al revisado (91.894 bytes, SHA-256 98570c77d3597341adb481d3673c0ac1f6251c4f546bc48990cd164730ddabab).",
+    "Las pantallas posteriores al pago no se han comprobado en producción para no hacer compras; están cubiertas por verify-orders en local."
+  ],
+  "pendientes": [
+    "Ninguno de este cambio."
+  ],
+  "siguiente_accion": "Codex registra su confirmación de aviso en ops/entregas/confirmaciones/; Javier confirma la entrega."
+}
