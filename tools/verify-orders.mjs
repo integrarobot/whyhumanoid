@@ -5,7 +5,7 @@
 // Covers: the wording before payment; payment -> questionnaire; draft saved and restored after a reload and after the
 // browser is closed and the buyer signs in again; review; submit with a fixed deadline; a repeated submit that changes
 // nothing; the confirmation and operator emails (no answers in the operator email); a delayed webhook reconciled on
-// return; leaving the questionnaire right after typing, with a slow or failed draft save, loses nothing and throws nothing; a cancelled checkout; another account denied; the operator queue and delivery record; phones (375 and 390 px)
+// return; the order help line only after payment; leaving the questionnaire right after typing, with a slow or failed draft save, loses nothing and throws nothing; a cancelled checkout; another account denied; the operator queue and delivery record; phones (375 and 390 px)
 // without horizontal scroll and with the buttons reachable by keyboard.
 import { createRequire } from 'node:module';
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -47,6 +47,9 @@ await page.goto(`${BASE}/app/#reports`, { waitUntil: 'networkidle' });
 await page.waitForSelector('.ord-card');
 check((await page.textContent('#db-panel')).includes(BEFORE), 'reports: the wording before payment is shown exactly');
 check((await page.$$('.ord-card')).length === 2, 'reports: two services');
+// The order help line appears only after payment (Javier, 25 Nov 2026): not on the catalogue nor while payment is pending.
+const HELP = 'Questions about an order:';
+check(!(await page.textContent('#db-panel')).includes(HELP), 'help: no order help line on the catalogue before payment');
 
 // 1. Pay for the Robot integration diagnostic.
 await page.click('.ord-buy[data-service="humanoid-adoption-assessment"]');
@@ -57,6 +60,7 @@ check(/Payment confirmed/.test(await page.textContent('#status')), 'return: paym
 const orderId = /#reports\/(ord_[\w-]+)/.exec(page.url())?.[1];
 check(Boolean(orderId), 'return: lands on the order');
 check(/24 hours start when you submit it/.test(await page.textContent('#db-panel')), 'questionnaire: the clock is explained');
+check((await page.textContent('#db-panel')).includes(HELP), 'help: the order help line is on the paid questionnaire');
 
 // 2. Draft saved, restored after reload.
 await page.fill('#q-company_name', 'Example Manufacturing Ltd');
@@ -94,6 +98,7 @@ for (const f of form.fields) {
 }
 await page.click('#q-review');
 await page.waitForSelector('#q-submit');
+check((await page.textContent('#db-panel')).includes(HELP), 'help: the order help line is on the review screen');
 const t0 = Math.floor(Date.now() / 1000);
 await page.focus('#q-submit');
 await page.keyboard.press('Enter');
@@ -102,6 +107,7 @@ const submitted = (await apiAs(page, `/v1/reports/orders/${orderId}`)).data.orde
 check(submitted.status === 'awaiting_report', `submit: status ${submitted.status}`);
 check(submitted.due_at - submitted.submitted_at === 86400 && submitted.submitted_at >= t0 - 5, 'submit: due 24 hours after submission');
 check((await page.textContent('#db-panel')).includes(submitted.due_utc), 'submit: the exact deadline is shown');
+check((await page.textContent('#db-panel')).includes(HELP), 'help: the order help line is on the submitted order');
 const again = await apiAs(page, `/v1/reports/orders/${orderId}/submit`, 'POST', { answers: { company_name: 'Changed' } });
 check(again.data.already === true && again.data.order.due_at === submitted.due_at, 'repeat submit: nothing changes');
 const mails = await (await fetch(`${BASE}/dev/mails`)).json();
@@ -182,6 +188,13 @@ check(!errs2.length, `draft: no script errors (${errs2.join('; ')})`);
 const before = (await apiAs(page, '/v1/reports/orders')).data.orders.length;
 await page.goto(`${BASE}/app/#reports`, { waitUntil: 'networkidle' });
 const pending = await apiAs(page, '/v1/reports/orders', 'POST', { service: 'component-manufacturing-study' });
+// The normal pending-payment screen: no order help line, no support link.
+await page.goto(`${BASE}/app/#reports/${pending.data.order_id}`, { waitUntil: 'networkidle' });
+await page.waitForSelector('#ord-check');
+check(!(await page.textContent('#db-panel')).includes(HELP) && !(await page.$('#db-panel a[href^="mailto:"]')), 'help: no order help line while payment is pending');
+await page.goto(`${BASE}/app/#reports`, { waitUntil: 'networkidle' });
+await page.waitForSelector('.ord-card');
+check(!(await page.textContent('#db-panel')).includes(HELP), 'help: no order help line on the catalogue with orders listed');
 await page.goto(pending.data.url.replace(/^https?:\/\/[^/]+/, BASE));
 await page.click('#cancel');
 await page.waitForSelector('#status:not([hidden])');
