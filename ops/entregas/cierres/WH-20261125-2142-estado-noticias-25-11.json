@@ -1,0 +1,55 @@
+{
+  "id": "WH-20261125-2142-estado-noticias-25-11",
+  "tarea": "Consulta de estado de Codex, a petición de Javier: si las noticias de la newsletter de Integrarobot del 25/11/2026 están incorporadas en whyhumanoid.com",
+  "origen": "Codex, a petición de Javier (25/11/2026, tarde). Consulta de estado, sin encargo de cambiar datos, automatizaciones ni producción.",
+  "fecha": "2026-11-25T21:42:57+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "sin_novedades",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Sin cambios en el libro, la web, la base de datos de producción ni la automatización. Solo este cierre.",
+    "Estado comprobado a las 21:40 (Madrid): el libro maestro sigue con la modificación de las 06:44:43 UTC del 25/11, la misma versión descargada en la ejecución semanal; main (def71e2) no ha cambiado ningún fichero de data/ desde entonces; el catálogo MCP de producción sirve la instantánea 2026-11-25T07:18:33Z. Las 10 filas del plan (9 entradas de catálogo y 1 fila de Dataset Metrics) siguen sin escribir y sin publicar.",
+    "Corrección del cierre WH-20261125-1425: el motivo del descarte de Boston Dynamics tenía dos errores. Deployments sí contiene registros de Spot (8, de GlobalFoundries), así que «Spot no es un humanoide» no es el criterio; y el Orbit reclasificado el 23/11 es Orbit Robotics (robótica espacial), no el software Orbit de Boston Dynamics. El motivo válido es que la entrada no nombra clientes ni emplazamientos, así que no da un registro de Deployments. El software Orbit (con su capa MCP para que agentes lancen misiones de Spot) no está en Software y queda como decisión pendiente.",
+    "Recuento corregido de las 16 noticias, sin dobles cuentas: 9 con alta prevista (10 filas, porque AXIS lleva también la fila de Dataset Metrics); 2 ya incorporadas antes de la ejecución (HIRO Origin y CA3); 2 fuera de alcance (John Deere con Orchard AI y la mano de Mahdi); 3 pendientes de decisión o verificación (Simplexity, Playground y el software Orbit de Boston Dynamics). Los antiguos «7 descartes» eran 5 noticias completas más 2 partes de noticias con alta prevista (los casos de Deployments de X Square y de evoBOT, ya incorporados)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Edición del 25/11/2026",
+      "url": "https://www.integrarobot.com/p/why-humanoid"
+    },
+    {
+      "etiqueta": "Cierre corregido (PR #112)",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/entregas/cierres/WH-20261125-1425-semanal-noticias-pendiente-libro.json"
+    },
+    {
+      "etiqueta": "Plan de la ejecución con las celdas públicas",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/runs/2026-11-25.json"
+    },
+    {
+      "etiqueta": "Fuente: Boston Dynamics, Spot y Orbit",
+      "url": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/"
+    },
+    {
+      "etiqueta": "Web",
+      "url": "https://whyhumanoid.com/"
+    }
+  ],
+  "despliegue": [
+    "No aplica: consulta de estado, sin cambios que desplegar. Solo se guarda este cierre en ops/, que GitHub Pages no publica."
+  ],
+  "verificaciones": [
+    "Libro maestro (conector de Google Drive, solo lectura): última modificación 2026-11-25T06:44:43Z, sin cambios desde la descarga de la ejecución semanal; ninguna de las 10 filas previstas está escrita.",
+    "main en def71e2 (25/11, 18:12 Madrid): los 13 commits posteriores al PR #112 son del pie de página, /about/, soporte y x402; ninguno toca data/. Ninguno de los nombres previstos aparece en data/preview ni en data/datasets/atlas.json.",
+    "Catálogo MCP de producción, solo lectura, instantánea 2026-11-25T07:18:33Z: sin filas para Viam, WALL-OSS-1.0, AHEADance, Play2Perfect, Felis, evoBOT, coprod, AXIS ni Humyn (Software, Other Robots, Datasets y Dataset Metrics) ni para Simplexity (búsqueda global). Sí están HIRO Origin (Humanoids, comprobada el 19/11), CA3 (Integrators, revisada el 24/11), los 4 registros WALL-OSS de clasificación de paquetes, el de Pos Malaysia y el de evoBOT en Cargogate (Deployments), 8 registros de Spot en GlobalFoundries y Deere & Co en Investment.",
+    "Las páginas HTML de whyhumanoid.com no se han comprobado directamente: el proxy de esta sesión rechaza el dominio. Como Pages sirve main y main no contiene esos nombres, no pueden estar publicadas."
+  ],
+  "pendientes": [
+    "Escribir en el libro las 10 filas del plan del 25/11 (Software 131 a 134, Other Robots 74 a 76 en columnas A a C, Datasets 37 y 38, Dataset Metrics 64), publicar, importar a producción y marcar la edición como procesada.",
+    "Decisiones de Javier: Simplexity (falta fuente primaria de la ronda y un modelo con nombre), Playground (Reports o descarte) y software Orbit de Boston Dynamics (fila de Software o no).",
+    "El fichero de la ejecución y state.json conservan el motivo antiguo de Boston Dynamics y no listan Orbit; no se han tocado en esta consulta. La siguiente ejecución o Codex deben tomar la corrección de este cierre.",
+    "Cambio duradero para que la tarea semanal no acabe en pending_sheets: propuesto en la respuesta, sin ejecutar; lo decide Javier.",
+    "Codex: registrar el aviso de este cierre."
+  ],
+  "siguiente_accion": "Codex aplica en el libro las 10 filas del plan con su conector de escritura, relee y compara; Claude o Codex publican, importan a producción y marcan la edición del 25/11 como procesada. Javier decide sobre Simplexity, Playground, Orbit y el canal de escritura de la tarea semanal.",
+  "corrige": "WH-20261125-1425-semanal-noticias-pendiente-libro"
+}
