@@ -15,7 +15,7 @@
     "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
     "status": "processed",
     "evidence": [
-      "All 8 known_pending items are in the workbook download of this run (last modified 2026-11-25T06:44:43Z): Humanoids rows 138 (ASUS Gallop) and 139 (LG CLOiD); rows 6 (Agile One, Series F) and 119 (Genesis Eno, Series A) updated with the planned values; Deployments rows 132-135 (rec_apptronik_gxo_002 to 004, rec_asus_asus_001); Software row 130 (FLUX-mimic); Datasets row 25 (HubEgo-100K, since corrected against its card to 20,113 cumulative hours); Other Robots row 61 (Mosaic Intelligence Labs); Clean Entities rows 30-33.",
+      "All 8 known_pending items are in the workbook download of this run (last modified 2026-11-25T06:44:43Z): Humanoids rows 138 (ASUS Gallop) and 139 (LG CLOiD); rows 6 (Agile One, Series F) and 119 (Genesis Eno, Series A) updated with the planned values; Deployments rows 132-135 (GXO with Apptronik Apollo, three records; ASUS Gallop, one record); Software row 130 (FLUX-mimic); Datasets row 25 (HubEgo-100K, since corrected against its card to 20,113 cumulative hours); Other Robots row 61 (Mosaic Intelligence Labs); Clean Entities rows 30-33.",
       "Written to the workbook outside the weekly task between 2026-11-18 and 2026-11-25 (not by this run).",
       "Published in main from that same workbook (data/preview snapshot 2026-11-25T06:44:43Z; humanoids/asus-gallop-135, humanoids/lg-cloid-136) and imported to production at 07:18 UTC, verified in close WH-20261125-0901-coherencia-catalogo.",
       "This run: node tools/audit-deployments.mjs on the current workbook, 197 rows, 47 columns, 7,940 non-empty values, 0 differences with main; check-reserved, check-public and check-workbook pass."
