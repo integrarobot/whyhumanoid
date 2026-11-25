@@ -438,9 +438,11 @@ What is missing, and who provides it:
    Stripe's machine-payments channel; no reply as of 25 Nov 2026). Stripe's guide requires approval outside the US and
    the CDP facilitator on mainnet; sandbox uses Base Sepolia and the public test facilitator. Without approval there is
    no live deposit address.
-3. Codex (Stripe sandbox): a static sandbox crypto deposit address (`POST /v1/crypto/deposit_addresses`, `network=base`,
-   with the preview `Stripe-Version` the guide gives) as test `X402_PAY_TO`; confirm the exact PaymentIntent
-   parameters for recording (`server/src/billing.js`, `recordCryptoPayment`) and set `X402_STRIPE_API_VERSION`.
+3. Stripe sandbox: done on 25 Nov 2026. The deposit address `0x3b0b371ae3cb08f272b87319684f6518b3b313a0` (Base, USDC)
+   was created with `Stripe-Version: 2026-07-29.preview` (request `req_s5ovPJs4F2ipkd`; evidence in
+   `ops/x402/stripe-sandbox-2026-11-25.json`). It is the TEST `X402_PAY_TO` in `server/wrangler.toml`, with
+   `X402_PRICE_USD=0.10` and `X402_STRIPE_API_VERSION=2026-07-29.preview`. Still to confirm: the PaymentIntent
+   recording (`recordCryptoPayment`) with a real Base Sepolia transaction; `X402_STRIPE_RECORDING` stays false until then.
 4. Codex (Cloudflare): apply migration 0006 to the test and production D1, deploy the Worker bundle, and for production
    the secrets `CDP_API_KEY_ID` and `CDP_API_KEY_SECRET` (CDP facilitator; never in Git).
 5. Testnet payment: a test wallet with Base Sepolia USDC to pay once through the x402.org facilitator. No wallet is

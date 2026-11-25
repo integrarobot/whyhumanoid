@@ -32,7 +32,7 @@ El sistema guarda el pedido, verifica el pago, conserva las respuestas, fija el 
    - Usa la investigación de Why Humanoid? y lo que el cliente ha contado.
    - Sin promesas de retorno ni de contratos.
    - Sin certificación de seguridad in situ.
-3. Envía el PDF por correo, desde la dirección de soporte (javier@liderarmente.com), a la dirección de la cuenta del pedido.
+3. Envía el PDF por correo, desde la dirección de soporte (javier@integrarobot.com; desde el 25/11/2026), a la dirección de la cuenta del pedido.
    - Para usar otra dirección, el cliente tiene que pedirlo por escrito desde la de la cuenta.
 4. En la cola, escribe la nota de entrega y pulsa «Record delivery».
    - La nota dice cuándo y a qué dirección se envió.

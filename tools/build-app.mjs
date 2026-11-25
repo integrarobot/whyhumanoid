@@ -11,6 +11,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { PUBLIC_FIELDS } from '../server/src/access/fields.js';
 import { createHash } from 'node:crypto';
 import { pageLinks } from './build-pages.mjs';
+import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
 
 export const APP_URL = 'https://whyhumanoid.com/app/';
 // Until whyhumanoid.com's DNS moves to Cloudflare (DEPLOYMENT.md, section 0.1), the API keeps its workers.dev address.
@@ -51,8 +52,12 @@ export function buildApp() {
   // The public field contract (server/src/access/fields.js), so the app shows visitors the same fields as the site even
   // while an older API still answers with more (it never adds a field).
   const pages = JSON.stringify({ companies: pageLinks().companies, public_fields: PUBLIC_FIELDS }).replace(/</g, '\\u003c');
+  // The shared site footer (tools/footer-view.mjs), added here so server/public (and the Worker bundle) stay unchanged.
+  const main = '</main>\n';
+  if (!html.includes(main)) throw new Error('server/public/index.html: </main> not found');
+  const footer = `</main>\n<footer class="site-footer"><style>${FOOTER_CSS}.site-footer{border-top:1px solid var(--line);padding:16px clamp(16px,4vw,40px) calc(20px + env(safe-area-inset-bottom,0px))}.site-footer .site-foot{margin:0}</style>${renderSiteFooterNav()}</footer>\n`;
   return {
-    'index.html': html.replace(anchor, head).replace(tag, `<script type="application/json" id="wh-pages">${pages}</script>\n<script src="premium.js?v=${version}"></script>`),
+    'index.html': html.replace(anchor, head).replace(main, footer).replace(tag, `<script type="application/json" id="wh-pages">${pages}</script>\n<script src="premium.js?v=${version}"></script>`),
     'premium.js': js,
   };
 }

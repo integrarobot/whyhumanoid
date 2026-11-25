@@ -41,13 +41,13 @@ ALLOW_LIVE_CHECKOUT = "false"
 STRIPE_PRICE_ID = "price_1UfGPQAcMngkWs5CeBWLrtsQ"  # test: "Why Humanoid? Deployments and Components", USD 100.00 / year, no trial (prod_VcaBEvd49gwki2)
 STRIPE_LEGACY_PRICE_IDS = "price_1UbL1PAcMngkWs5CH3IDosFb"  # test: former EUR 100.00 / year price; its subscriptions keep their access (billing.entitledPriceIds)
 # x402 pay-per-query (server/src/x402/server.js). Off until every gate passes; nothing is advertised or charged before.
-X402_ENABLED = "false"
+X402_ENABLED = "false"                   # TEST pilot: Codex sets "true" on the TEST Worker only after migration 0006 and review
 X402_NETWORK = "eip155:84532"            # Base Sepolia (testnet USDC)
-X402_PAY_TO = ""                         # Stripe SANDBOX crypto deposit address (POST /v1/crypto/deposit_addresses, network=base); Codex
-X402_PRICE_USD = ""                      # approved pilot price "0.10" (Javier, 25 Nov 2026); set only when activating, after the tests
+X402_PAY_TO = "0x3b0b371ae3cb08f272b87319684f6518b3b313a0"  # Stripe SANDBOX deposit address (base, USDC; created 25 Nov 2026, see ops/x402/)
+X402_PRICE_USD = "0.10"                  # approved pilot price (Javier, 25 Nov 2026); TEST only, the route stays off until X402_ENABLED
 X402_FACILITATOR = "https://x402.org/facilitator"
-X402_STRIPE_RECORDING = "false"          # record settled payments as Stripe PaymentIntents once the parameters are confirmed in sandbox
-X402_STRIPE_API_VERSION = ""             # the preview API version Stripe's x402 guide requires (2026-05-27.preview or later; confirm)
+X402_STRIPE_RECORDING = "false"          # stays false until a real Base Sepolia transaction is recorded in the sandbox
+X402_STRIPE_API_VERSION = "2026-07-29.preview"  # accepted by the sandbox API on 25 Nov 2026 (deposit address created)
 ALLOWED_ORIGINS = "https://whyhumanoid-premium-test.javier-198.workers.dev"
 # Staging (23 Nov 2026): the test Worker serves the whole site from server/.staging (node tools/build-staging.mjs),
 # with the app at /app/: npx wrangler deploy --env test --assets .staging

@@ -16,8 +16,8 @@ Why Humanoid? (whyhumanoid.com), de Integrarobot. Decide Javier; ejecuta Claude;
     - La venta en vivo se abre con `REPORTS_LIVE_OPEN = true` (25/11/2026), después de que el flujo completo pasara en modo test de Stripe con los dos servicios: pago, cuestionario, borrador, envío con plazo fijo de 24 horas, los ocho correos al cliente y al operador, y la cola del operador. Volver a `false` cierra la venta nueva sin tocar los pedidos pagados.
   - Las dos vías se muestran arriba en la portada y en Deployments, Components y /subscribe/, en inglés. El resto de categorías sigue gratis.
   - El acceso lo decide solo `server/src/access/matrix.js`, con la lista blanca de campos de `server/src/access/fields.js`.
-- Dirección pública de soporte (Javier, 25/11/2026): `javier@liderarmente.com` (`server/src/support.js`).
-  - Aparece en el pie, la suscripción, la app, los errores, la recuperación de pedidos y la documentación de agentes.
+- Dirección de soporte al cliente (Javier, 25/11/2026, sustituye a la anterior): `javier@integrarobot.com` (`server/src/support.js`). Nunca aparece en el pie de ninguna página: el pie lleva About, For agents, Method, Contact (`/about/#contact`) e Integrarobot, sin correo.
+  - Aparece en la suscripción, la app (ayuda de la cuenta y pantallas del informe ya pagado), los correos, los errores, la recuperación de pedidos, la documentación de agentes y About.
   - Es la única dirección permitida en las plantillas. La importación sigue quitando cualquier contacto de los datos.
 - Textos para el lector (Javier, 25/11/2026): en inglés claro.
   - Empiezan por lo que el lector puede aprender, con salvedades cortas; las definiciones largas van en Method.
