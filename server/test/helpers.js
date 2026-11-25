@@ -15,6 +15,11 @@ export const TEST_PRICE = 'price_test_fixture';
 // A subscription bought at the former EUR 100 per year price (before 24 Nov 2026): it keeps its access.
 export const LEGACY_EUR_PRICE = 'price_legacy_eur_fixture';
 export const T0 = 1_800_000_000;
+// Custom reports (25 Nov 2026): one-off USD 1,000 test prices per service.
+export const REPORT_PRICES = { 'humanoid-adoption-assessment': 'price_report_integration_fixture', 'component-manufacturing-study': 'price_report_diversification_fixture' };
+export const VALID_REPORT_PRICE = { object: 'price', active: true, type: 'one_time', currency: 'usd', unit_amount: 100000, livemode: false };
+export const OPERATOR_EMAIL = 'operator@example.com';
+export const NOTIFY_EMAIL = 'orders@example.com';
 
 class Statement {
   constructor(sqlite, sql, params = []) {
@@ -47,7 +52,7 @@ class Statement {
 
 export function createTestDb() {
   const sqlite = new DatabaseSync(':memory:');
-  for (const m of ['0001_init.sql', '0002_relations.sql', '0003_search.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
+  for (const m of ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
   return {
     prepare: (sql) => new Statement(sqlite, sql),
     async batch(statements) {
@@ -203,6 +208,10 @@ export async function setup({
   legacyPriceIds = [LEGACY_EUR_PRICE],
   price = VALID_PRICE,
   workbook = null,
+  reportsCheckoutEnabled = true,
+  reportPriceIds = REPORT_PRICES,
+  reportPrice = VALID_REPORT_PRICE,
+  adminToken = null,
 } = {}) {
   const db = createTestDb();
   let now = T0;
@@ -212,7 +221,22 @@ export async function setup({
   const priceLookups = [];
   gateway.retrievePrice = async (id) => {
     priceLookups.push(id);
+    if (Object.values(REPORT_PRICES).includes(id)) return reportPrice ? { ...reportPrice, id } : Promise.reject(new Error('No such price'));
     return price ? { ...price, id } : Promise.reject(new Error('No such price'));
+  };
+  // Report Checkout Sessions: stored here, so tests can complete, expire or retrieve them like Stripe would.
+  const reportSessions = new Map();
+  let sessionSeq = 0;
+  gateway.createReportCheckoutSession = async (args) => {
+    sessionSeq += 1;
+    const id = `cs_test_report_${sessionSeq}`;
+    reportSessions.set(id, { id, object: 'checkout.session', mode: 'payment', status: 'open', payment_status: 'unpaid', amount_total: 100000, currency: 'usd', livemode: false, client_reference_id: args.accountId, metadata: { wh_order_id: args.orderId, wh_account_id: args.accountId, wh_service: args.service }, payment_intent: null, args });
+    return { id, url: `https://checkout.stripe.com/c/pay/${id}` };
+  };
+  gateway.retrieveCheckoutSession = async (id) => {
+    const session = reportSessions.get(id);
+    if (!session) throw new Error('No such session');
+    return { ...session };
   };
   gateway.createCheckoutSession = async (args) => {
     checkoutCalls.push(args);
@@ -229,8 +253,16 @@ export async function setup({
     loginTtlSeconds: 900,
     loginMaxPerHour: 5,
     sessionTtlSeconds: 30 * 24 * 3600,
+    appUrl: 'https://whyhumanoid.com/app/',
+    reportsCheckoutEnabled,
+    reportPriceIds,
+    operatorEmails: [OPERATOR_EMAIL],
+    operatorNotifyEmail: NOTIFY_EMAIL,
+    adminToken,
   };
-  const app = createApp({ db, config, gateway, mailer, clock: () => now, log: { error() {} } });
+  const publicFiles = new Map();
+  const fetchPublic = async (path) => (publicFiles.has(path) ? new Response(publicFiles.get(path), { status: 200 }) : new Response('not found', { status: 404 }));
+  const app = createApp({ db, config, gateway, mailer, clock: () => now, log: { error() {} }, fetchPublic });
   const call = (method, path, { token, body, headers = {} } = {}) =>
     app(
       new Request(`https://api.test${path}`, {
@@ -252,6 +284,9 @@ export async function setup({
     checkoutCalls,
     priceLookups,
     config,
+    reportSessions,
+    publicFiles,
+    now: () => now,
     setNow: (t) => {
       now = t;
     },

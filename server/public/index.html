@@ -198,15 +198,35 @@ html.dlg-open{overflow:hidden}
   .acc-actions{flex-direction:column}
   .acc-actions > .acc-state,.acc-actions > .btn{width:100%}
 }
+.ord-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;margin:12px 0 18px}
+.ord-card h3{margin:0 0 8px}
+.ord-list{padding-left:18px}.ord-list li{margin:6px 0;overflow-wrap:anywhere}
+.q-f{margin:0 0 18px;border:0;padding:0;min-width:0}
+.q-f label,.q-f legend{display:block;font-weight:600;margin:0 0 6px}
+.q-f textarea,.q-f input[type=text],.q-f input[type=url],.q-f select{width:100%;max-width:100%;box-sizing:border-box;background:var(--ink-0);color:var(--bone-1);border:1px solid var(--line-2);padding:8px 10px;font:inherit}
+.q-f textarea{min-height:96px;resize:vertical}
+.q-in{display:flex;gap:8px;align-items:flex-start}.q-in > :first-child{flex:1 1 auto;min-width:0}
+.q-hint{margin:0 0 6px;color:var(--bone-3);font-size:14px}
+.q-err{margin:6px 0 0;color:var(--crit);font-weight:600}
+.q-multi{display:flex;flex-wrap:wrap;gap:6px 16px}.q-multi label{font-weight:400;display:inline-flex;gap:6px;align-items:center;min-height:32px}
+.q-task{font-weight:400 !important;margin-top:8px}
+.q-ack label{display:flex;gap:10px;align-items:flex-start;font-weight:600}.q-ack input{width:22px;height:22px;flex:0 0 auto;margin-top:2px}
+.q-progress{font-family:var(--f-mono);font-size:var(--fs-label)}
+.req{color:var(--amber)}
+code.key{display:block;overflow-wrap:anywhere;user-select:all;padding:8px;background:var(--ink-0);border:1px solid var(--line-2)}
+.acct{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media (max-width:520px){.q-in{flex-direction:column}.q-in .q-unknown{width:100%}.acct .btn{flex:1 1 auto}}
 </style>
 </head>
 <body>
 <header>
   <a class="brand" href="https://whyhumanoid.com/"><span class="sq"></span>Why Humanoid? <span class="sub">Deployments and Components</span></a>
-  <div class="acct">
+  <nav class="acct" aria-label="Account">
+    <a class="btn ghost" href="#reports">Custom reports</a>
+    <a class="btn ghost" href="#keys">Agent access</a>
     <span id="who" class="lbl" hidden></span>
     <button id="signout" class="btn ghost" type="button" hidden>Sign out</button>
-  </div>
+  </nav>
 </header>
 <main>
   <div id="status" class="notice" role="status" hidden></div>
@@ -221,7 +241,7 @@ html.dlg-open{overflow:hidden}
     <div id="acc-anon" hidden>
       <h1>The full Why Humanoid? database</h1>
       <p>Every category is free to browse: Humanoids, Integrators, Software, Datasets, Benchmarks, Investment, Other Robots and Reports in full, and every Deployments case and Components product with its public summary. The data subscription opens complete Deployments and complete Components: every field, detailed search over them, and agent API keys. It is access to research and data, not a personalised recommendation.</p>
-      <p><b id="price">US$100 per year</b>, billed annually, no free trial, cancel any time from your account. Sign in with your email to subscribe or to open your subscription. Custom company reports are separate and <a href="/subscribe/#reports">not available to order yet</a>.</p>
+      <p><b id="price">US$100 per year</b>, billed annually, no free trial, cancel any time from your account. The same subscription covers your agents, through the API, MCP and the command-line tool (<a href="https://whyhumanoid.com/agents/">setup</a>). Sign in with your email to subscribe, to open your subscription or to order a <a href="#reports">custom report</a> (US$1,000, one-off, no subscription needed). Help: <a href="mailto:javier@liderarmente.com">javier@liderarmente.com</a>.</p>
       <form id="signin-form">
         <input id="email" type="email" required autocomplete="email" placeholder="you@company.com" aria-label="Email">
         <button class="btn" type="submit">Email me a sign-in link</button>

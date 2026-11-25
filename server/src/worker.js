@@ -8,6 +8,7 @@ import { createResendMailer, disabledMailer } from './mailer.js';
 import { DATASETS } from './datasets.js';
 import { fetchWorkbookValues } from './import/google-sheets.js';
 import { runImport } from './import/run.js';
+import { deliverOutbox } from './orders/orders.js';
 
 export function configFromEnv(env) {
   return {
@@ -16,6 +17,10 @@ export function configFromEnv(env) {
       .map((origin) => origin.trim())
       .filter(Boolean),
     premiumUrl: env.PREMIUM_URL ?? 'https://whyhumanoid.com/premium/',
+    // The app address used in order emails and Checkout returns (the site's /app/).
+    appUrl: env.APP_URL ?? 'https://whyhumanoid.com/app/',
+    // Published site files read by the MCP atlas tool (public JSON only).
+    siteOrigin: env.SITE_ORIGIN ?? 'https://whyhumanoid.com',
     stripeMode: env.STRIPE_MODE === 'live' ? 'live' : 'test',
     checkoutEnabled: env.CHECKOUT_ENABLED === 'true',
     allowLiveCheckout: env.ALLOW_LIVE_CHECKOUT === 'true',
@@ -24,6 +29,18 @@ export function configFromEnv(env) {
     stripeLegacyPriceIds: String(env.STRIPE_LEGACY_PRICE_IDS ?? '').split(',').map((s) => s.trim()).filter(Boolean),
     stripePortalConfiguration: env.STRIPE_PORTAL_CONFIGURATION || null,
     adminToken: env.ADMIN_TOKEN || null,
+    // Custom reports (25 Nov 2026): one-off USD 1,000 prices per service, checked before every Checkout Session; never
+    // replaced by the subscription price. Report checkout needs REPORTS_CHECKOUT_ENABLED=true, and live mode also
+    // REPORTS_LIVE_OPEN in server/src/orders/services.js.
+    reportsCheckoutEnabled: env.REPORTS_CHECKOUT_ENABLED === 'true',
+    reportPriceIds: {
+      'humanoid-adoption-assessment': env.REPORT_PRICE_ID_INTEGRATION || null,
+      'component-manufacturing-study': env.REPORT_PRICE_ID_DIVERSIFICATION || null,
+    },
+    // Operators of the report queue (signed-in emails) and where order notifications go. Secrets or variables of the
+    // Worker, never in Git.
+    operatorEmails: String(env.OPERATOR_EMAILS ?? '').split(',').map((s) => s.trim().toLowerCase()).filter(Boolean),
+    operatorNotifyEmail: env.OPERATOR_NOTIFY_EMAIL || null,
     // GitHub environment whose import workflow may run imports here: 'test' or 'production'.
     importEnvironment: ['test', 'production'].includes(env.IMPORT_ENVIRONMENT) ? env.IMPORT_ENVIRONMENT : null,
     loginTtlSeconds: 900,
@@ -47,29 +64,40 @@ export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000
   return runImport(env.DB, values, now, { relationsConfig });
 }
 
+const mailerFor = (env) => (env.RESEND_API_KEY
+  ? createResendMailer({ apiKey: env.RESEND_API_KEY, from: env.EMAIL_FROM ?? 'Why Humanoid? <premium@whyhumanoid.com>' })
+  : disabledMailer);
+
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
+    const config = configFromEnv(env);
     const app = createApp({
       db: env.DB,
-      config: configFromEnv(env),
+      config,
       gateway: createStripeGateway({
         secretKey: env.STRIPE_SECRET_KEY,
         webhookSecret: env.STRIPE_WEBHOOK_SECRET,
       }),
-      mailer: env.RESEND_API_KEY
-        ? createResendMailer({ apiKey: env.RESEND_API_KEY, from: env.EMAIL_FROM ?? 'Why Humanoid? <premium@whyhumanoid.com>' })
-        : disabledMailer,
+      mailer: mailerFor(env),
       importNow: (accessToken, relationsConfig) => importFromWorkbook(env, undefined, accessToken, relationsConfig),
+      waitUntil: ctx?.waitUntil ? (p) => ctx.waitUntil(p) : null,
+      fetchPublic: (path) => fetch(new URL(path, config.siteOrigin)),
     });
     return app(request);
   },
 
-  // Nightly server-side import of the thirteen workbook tabs.
-  async scheduled(_event, env, ctx) {
-    ctx.waitUntil(
-      importFromWorkbook(env).then((result) => {
-        if (!result.ok) console.error('premium import failed', result.error);
-      }),
-    );
+  // Scheduled work. Every trigger retries due order emails from the outbox. The workbook import runs only on the cron
+  // named in IMPORT_CRON (none is configured: imports run from GitHub Actions), so adding an outbox cron never starts an
+  // import.
+  async scheduled(event, env, ctx) {
+    const now = Math.floor(Date.now() / 1000);
+    ctx.waitUntil(deliverOutbox({ db: env.DB, mailer: mailerFor(env), now, limit: 50 }).catch((e) => console.error('outbox retry failed', e?.message)));
+    if (env.IMPORT_CRON && event?.cron === env.IMPORT_CRON) {
+      ctx.waitUntil(
+        importFromWorkbook(env).then((result) => {
+          if (!result.ok) console.error('premium import failed', result.error);
+        }),
+      );
+    }
   },
 };

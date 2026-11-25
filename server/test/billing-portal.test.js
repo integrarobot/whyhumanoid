@@ -1,3 +1,4 @@
+import { SUPPORT_EMAIL } from '../src/support.js';
 // Paywall rules added on 16 Nov 2026 (Javier: paywall in production, no trial): customer portal, no free trial,
 // one Stripe customer per account, and the access states a visitor, an unpaid user, a subscriber and an expired
 // subscriber get.
@@ -60,7 +61,7 @@ test('the portal refuses an unconfigured or mismatched Stripe key', async () => 
   const b = await signIn(mismatch);
   const res = await mismatch.call('POST', '/v1/billing/portal', { token: b.session });
   assert.equal(res.status, 503);
-  assert.deepEqual(await res.json(), { error: 'stripe_mode_mismatch' });
+  assert.deepEqual(await res.json(), { error: 'stripe_mode_mismatch', support: SUPPORT_EMAIL });
 });
 
 test('a returning customer checks out on the same Stripe customer, not a new one', async () => {
@@ -112,7 +113,7 @@ test('checkout never opens when a payment could not become access', async () => 
   const sa = await signIn(a);
   const ra = await a.call('POST', '/v1/billing/checkout', { token: sa.session });
   assert.equal(ra.status, 503);
-  assert.deepEqual(await ra.json(), { error: 'webhook_not_configured' });
+  assert.deepEqual(await ra.json(), { error: 'webhook_not_configured', support: SUPPORT_EMAIL });
   assert.equal((await (await a.call('GET', '/v1/billing/plan')).json()).checkout_available, false);
   // No imported data: nothing to sell.
   const b = await setup({ checkoutEnabled: true });
@@ -120,7 +121,7 @@ test('checkout never opens when a payment could not become access', async () => 
   await b.db.prepare("DELETE FROM premium_rows WHERE dataset = 'deployments'").run();
   const rb = await b.call('POST', '/v1/billing/checkout', { token: sb.session });
   assert.equal(rb.status, 503);
-  assert.deepEqual(await rb.json(), { error: 'data_not_imported' });
+  assert.deepEqual(await rb.json(), { error: 'data_not_imported', support: SUPPORT_EMAIL });
   assert.equal(b.checkoutCalls.length + a.checkoutCalls.length, 0);
   // Everything in place: available.
   const c = await setup({ checkoutEnabled: true });
