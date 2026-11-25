@@ -13,7 +13,7 @@ Why Humanoid? (whyhumanoid.com), de Integrarobot. Decide Javier; ejecuta Claude;
     - Antes de pagar se muestra literal `BEFORE_PAYMENT` (`server/src/orders/services.js`).
     - Tras el pago verificado se abre un cuestionario privado. El PDF se envía por correo en 24 horas desde el envío del cuestionario completo; el pago solo no pone en marcha el reloj.
     - Pedido, cuestionario, plazo, avisos y cola de operador: `server/src/orders/`. Procedimiento: `ops/informes-a-medida.md`.
-    - La venta en vivo sigue cerrada (`REPORTS_LIVE_OPEN = false`) hasta que el flujo pase en modo test de Stripe con el aviso al operador y la recuperación verificados.
+    - La venta en vivo se abre con `REPORTS_LIVE_OPEN = true` (25/11/2026), después de que el flujo completo pasara en modo test de Stripe con los dos servicios: pago, cuestionario, borrador, envío con plazo fijo de 24 horas, los ocho correos al cliente y al operador, y la cola del operador. Volver a `false` cierra la venta nueva sin tocar los pedidos pagados.
   - Las dos vías se muestran arriba en la portada y en Deployments, Components y /subscribe/, en inglés. El resto de categorías sigue gratis.
   - El acceso lo decide solo `server/src/access/matrix.js`, con la lista blanca de campos de `server/src/access/fields.js`.
 - Dirección pública de soporte (Javier, 25/11/2026): `javier@liderarmente.com` (`server/src/support.js`).

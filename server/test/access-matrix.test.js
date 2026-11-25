@@ -2,6 +2,7 @@
 // visitor: anonymous, signed in without paying, active subscriber, cancelled at period end (still paid), expired.
 // One US$100/year subscription unlocks complete Deployments and complete Components; every other category is free.
 // Since 24 Nov 2026 every case and product of those two is public at its public fields (server/src/access/fields.js).
+import { REPORTS_LIVE_OPEN } from '../src/orders/services.js';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { T0, sendWebhook, setup, signIn, subscriptionEvent } from './helpers.js';
@@ -44,7 +45,7 @@ test('the nine confirmed categories, in order, then Reports, each at its own add
   assert.equal(DATASET_ACCESS['task-evaluations'].access, 'free', 'its access is unchanged');
 });
 
-test('one subscription unlocks Deployments and Components; the services are separate and not for sale yet', () => {
+test('one subscription unlocks Deployments and Components; the two reports are separate one-off services', () => {
   assert.deepEqual(SUBSCRIPTION.unlocks, ['deployments', 'components']);
   assert.equal(PRODUCT, SUBSCRIPTION.product);
   assert.equal(PRODUCT, 'premium', 'existing subscribers keep their entitlement');
@@ -53,9 +54,11 @@ test('one subscription unlocks Deployments and Components; the services are sepa
   assert.equal(PLAN.interval, 'year');
   for (const tab of SUBSCRIPTION_TABS) assert.equal(canReadFull(tab, { entitled: false }), false, tab);
   for (const tab of FREE_TABS) assert.equal(canReadFull(tab, { entitled: false }), true, tab);
+  // Orderable once live report sales are open (REPORTS_LIVE_OPEN, 25 Nov 2026); never part of the subscription.
+  const state = REPORTS_LIVE_OPEN ? 'available' : 'not_available';
   assert.deepEqual(SERVICES.map((s) => [s.category, s.name, s.price, s.status, s.included_in_subscription, s.orderable]), [
-    ['deployments', 'Robot integration diagnostic', 'US$1,000', 'not_available', false, false],
-    ['components', 'Industrial diversification report', 'US$1,000', 'not_available', false, false],
+    ['deployments', 'Robot integration diagnostic', 'US$1,000', state, false, REPORTS_LIVE_OPEN],
+    ['components', 'Industrial diversification report', 'US$1,000', state, false, REPORTS_LIVE_OPEN],
   ]);
 });
 
@@ -179,8 +182,9 @@ test('live sales follow LIVE_SALES_OPEN; existing subscribers, test mode and uno
   assert.equal((await live.call('GET', '/v1/datasets/hardware', { token: session })).status, 200);
   // A subscriber is never sold a second subscription.
   assert.equal((await live.call('POST', '/v1/billing/checkout', { token: session })).status, 409);
-  // Custom company reports are never orderable, whatever the subscription gate says.
-  assert.ok(SERVICES.every((s) => s.orderable === false && s.status === 'not_available'));
+  // Custom company reports follow their own switch (REPORTS_LIVE_OPEN), never the subscription gate, and are never
+  // included in the subscription.
+  assert.ok(SERVICES.every((s) => s.orderable === REPORTS_LIVE_OPEN && s.included_in_subscription === false));
   // Test mode (staging) sells the same plan with test keys.
   const test = await setup({ checkoutEnabled: true });
   assert.equal((await (await test.call('GET', '/v1/billing/plan')).json()).checkout_available, true);

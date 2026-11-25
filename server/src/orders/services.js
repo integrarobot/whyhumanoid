@@ -4,10 +4,13 @@
 // completed questionnaire. Payment alone does not start the clock.
 //
 // Checkout is refused unless the Stripe price configured for the service is exactly this: active, one-off, USD 1,000.00,
-// in the key's mode. Live report checkout stays closed (REPORTS_LIVE_OPEN = false) until the whole flow has passed in
-// Stripe test mode and the operator notification and recovery have been verified; test mode works whenever configured.
+// in the key's mode. Live report checkout opens with REPORTS_LIVE_OPEN, set on 25 Nov 2026 after the whole flow passed in
+// Stripe test mode for both services (payment, private questionnaire, draft and reload, submit with a fixed 24-hour
+// deadline, customer and operator emails received, operator queue; Codex). Live also needs ALLOW_LIVE_CHECKOUT, the
+// live one-off prices, email, the signed webhook and the operator settings (reportCheckoutState). Setting this back to
+// false closes new report sales without touching paid orders.
 
-export const REPORTS_LIVE_OPEN = false;
+export const REPORTS_LIVE_OPEN = true;
 
 export const REPORT_PRICE = Object.freeze({ currency: 'usd', unitAmount: 100000, display: 'US$1,000' });
 export const REPORT_DEADLINE_SECONDS = 24 * 3600;

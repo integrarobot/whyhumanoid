@@ -53,7 +53,7 @@ Cada correo pasa por la bandeja duradera (`notification_outbox`).
 ## Abrir y cerrar la venta
 
 - **En pruebas (modo test de Stripe):** `REPORTS_CHECKOUT_ENABLED=true` y los dos `REPORT_PRICE_ID_*` de test en el Worker de pruebas.
-- **En producción:** además, `REPORTS_LIVE_OPEN = true` en `server/src/orders/services.js`. Se activa solo después de que en modo test hayan pasado:
+- **En producción:** además, `REPORTS_LIVE_OPEN = true` en `server/src/orders/services.js` (abierto el 25/11/2026). Se activó después de que en modo test pasaran:
   - el flujo completo de extremo a extremo;
   - el aviso al operador;
   - la recuperación del pedido.

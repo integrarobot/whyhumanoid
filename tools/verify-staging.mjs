@@ -165,7 +165,7 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
   // page with its sources and caveat, and the two paths near the top.
   {
     await page.goto(`${BASE}/deployments/`, { waitUntil: 'networkidle' });
-    const dv = await page.evaluate(() => ({ cases: document.querySelectorAll('#dcs > li.dc').length, filters: !document.getElementById('dc-filters').hidden, offer: /US\$100/.test(document.getElementById('offer')?.textContent ?? '') && /Not available to order yet/.test(document.getElementById('offer')?.textContent ?? ''), offerY: Math.round(document.getElementById('offer').getBoundingClientRect().top + scrollY), overflow: document.documentElement.scrollWidth - innerWidth }));
+    const dv = await page.evaluate(() => ({ cases: document.querySelectorAll('#dcs > li.dc').length, filters: !document.getElementById('dc-filters').hidden, offer: /US\$100/.test(document.getElementById('offer')?.textContent ?? '') && /one-off payment · no subscription required\. After payment, complete a private questionnaire/.test(document.getElementById('offer')?.textContent ?? ''), offerY: Math.round(document.getElementById('offer').getBoundingClientRect().top + scrollY), overflow: document.documentElement.scrollWidth - innerWidth }));
     check(dv.cases === DEP_CASES && dv.filters && dv.offer && dv.overflow <= 1, `${label} deployments: all ${DEP_CASES} cases listed, filters on, two paths shown, no horizontal scroll (${JSON.stringify(dv)})`);
     await page.selectOption('select[name="status"]', 'op');
     await page.fill('input[name="q"]', 'agility');
@@ -185,8 +185,8 @@ for (const [label, viewport] of [['desktop', { width: 1366, height: 900 }], ['ph
     const hp = await page.evaluate(() => ({ mini: Math.round(document.querySelector('.hero-paths')?.getBoundingClientRect().top + scrollY), h: innerHeight, paths: !!document.getElementById('paths'), euro: /€/.test(document.body.textContent) }));
     check(hp.paths && hp.mini < hp.h * 1.5 && !hp.euro, `${label} home: the two paths are near the top and no euro price is shown (${JSON.stringify(hp)})`);
     await page.goto(`${BASE}/subscribe/`, { waitUntil: 'networkidle' });
-    const sp = await page.evaluate(() => ({ usd: /US\$100 per year, billed annually/.test(document.body.textContent), reports: /Not available to order yet/.test(document.getElementById('reports')?.textContent ?? ''), orderLinks: [...document.querySelectorAll('#reports a')].filter((a) => /checkout|order/i.test(a.getAttribute('href') ?? '')).length, overflow: document.documentElement.scrollWidth - innerWidth }));
-    check(sp.usd && sp.reports && sp.orderLinks === 0 && sp.overflow <= 1, `${label} subscribe: USD price, reports not orderable, no order link (${JSON.stringify(sp)})`);
+    const sp = await page.evaluate(() => ({ usd: /US\$100 per year, billed annually/.test(document.body.textContent), reports: /After payment, complete a private questionnaire/.test(document.getElementById('reports')?.textContent ?? ''), orderLinks: [...document.querySelectorAll('#reports a')].filter((a) => /checkout/i.test(a.getAttribute('href') ?? '')).length, overflow: document.documentElement.scrollWidth - innerWidth }));
+    check(sp.usd && sp.reports && sp.orderLinks === 0 && sp.overflow <= 1, `${label} subscribe: USD price, the wording before payment, no direct checkout link (${JSON.stringify(sp)})`);
   }
   // Research Conclusions Atlas (24 Nov 2026): every finding in the table, a chart mark opens its passport by keyboard
   // or touch with a shareable address, Escape returns focus, a coverage cell filters the table, a shared address

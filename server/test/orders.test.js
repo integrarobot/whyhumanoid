@@ -71,7 +71,7 @@ test('checkout refuses a wrong price, a disabled switch or a missing price; neve
     [{ reportPrice: { object: 'price', active: true, type: 'one_time', currency: 'usd', unit_amount: 10000, livemode: false } }, 'price_mismatch'],
     [{ reportsCheckoutEnabled: false }, 'reports_checkout_disabled'],
     [{ reportPriceIds: {} }, 'report_price_not_configured'],
-    [{ stripeKey: 'sk_live_fixture', stripeMode: 'live', allowLiveCheckout: true }, 'reports_live_closed'],
+    [{ stripeKey: 'sk_live_fixture', stripeMode: 'live', allowLiveCheckout: false }, 'reports_live_closed'],
   ]) {
     const ctx = await setup(opts);
     const { session } = await signIn(ctx);
