@@ -32,6 +32,13 @@ test('directory tabs: the home card, the category page and the index count the s
     assert.equal(rc.source_entries, rc.rows + rc.excluded.length + rc.merged.length, `${id} reconciliation`);
     assert.equal(rc.rows, rows.length);
   }
+  // The app counts the same canonical entries from the API's `entries` (hero, index, card and app agree: Codex, 25 Nov 2026).
+  const src = /const countText = (\(data\) => \{[^\n]*\});/.exec(read('app/premium.js'))?.[1];
+  assert.ok(src, 'app countText found');
+  const countText = new Function(`return ${src}`)();
+  const sw = tab('software');
+  assert.equal(countText({ entries: sw.canonical_entries, total: sw.entries_total }), `${sw.canonical_entries} entries (${sw.entries_total} rows: ${sw.memberships} are the same entry in a second list)`);
+  assert.equal(countText({ entries: tab('other-robots').entries_total, total: tab('other-robots').entries_total }), `${tab('other-robots').entries_total} entries`);
   assert.ok(json('data/preview/other-robots.json').rows.some((r) => r.name === 'Agile Robots' && /agile-robots\.com/.test(r.url)), 'the corrected Agile Robots identity');
 });
 

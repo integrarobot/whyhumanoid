@@ -77,7 +77,7 @@ export function renderAdoption(projection, links) {
   const bars = STAGES.map((s) => `<li class="s-${s.key}"><span class="bl">${esc(s.label)}</span><span class="bt"><span class="bf" style="width:${Math.round((by[s.key].length / max) * 100)}%"></span></span><span class="bn"><b>${by[s.key].length}</b> ${by[s.key].length === 1 ? 'case' : 'cases'} · ${plural(m.orgs(by[s.key]), 'org')}</span></li>`).join('');
   const hero = `<!-- adoption:start -->
       <figure class="adopt adopt-hero" aria-labelledby="adopt-h">
-        <figcaption class="fc-head"><span class="lbl hi" id="adopt-h">Where humanoid robots are working</span><span class="lbl">Snapshot ${esc(m.snapshot)}</span></figcaption>
+        <figcaption class="fc-head"><span class="lbl hi" id="adopt-h">Where robots are being tested and used</span><span class="lbl">Snapshot ${esc(m.snapshot)}</span></figcaption>
         <p class="adopt-lede"><b>${by.op.length}</b> of <b>${n}</b> recorded deployment cases are recorded as in operation. Most are pilots, unconfirmed claims or announcements.</p>
         <ol class="stage-bars" aria-label="Deployment cases by most advanced status as recorded">${bars}</ol>
         <div class="adopt-op"><span class="lbl">In operation, as recorded</span><ul class="cases">${by.op.map(chip).join('')}</ul></div>
@@ -95,7 +95,7 @@ export function renderAdoption(projection, links) {
   const section = `<!-- adoption-explorer:start -->
     <section class="adopt adopt-sec" id="adoption" aria-labelledby="adoption-h">
       <div class="adopt-head"><h2 class="h2" id="adoption-h">The adoption <em>ladder</em></h2><p class="lbl">${n} deployment cases · ${m.totals.organisations} organisations · ${m.totals.records} records · snapshot ${esc(m.snapshot)}</p></div>
-      <p class="adopt-intro">Every recorded deployment case of a humanoid robot, from announcement to operation. Each mark is one case: the organisation using the robot and the robot's maker. Choose a case for its details; filter by sector.</p>
+      <p class="adopt-intro">Every recorded robot deployment case, from announcement to operation: mostly humanoid robots, plus adjacent platforms where a source names them. Each mark is one case: the organisation using the robot and the robot's maker. Choose a case for its details; filter by sector.</p>
       <div class="adopt-share" role="img" aria-label="${GROUPS.map((s) => `${s.label}: ${by[s.key].length}`).join(', ')} of ${n} cases">${share}</div>
       <div class="adopt-filters" role="group" aria-label="Filter cases by sector"><button type="button" class="chip" data-fam="all" aria-pressed="true">All <span>${n}</span></button>${FAMILIES.filter(([k]) => famCount(k)).map(([k, label]) => `<button type="button" class="chip" data-fam="${k}" aria-pressed="false">${esc(label)} <span>${famCount(k)}</span></button>`).join('')}</div>
       <div class="ladder">${rungs}</div>

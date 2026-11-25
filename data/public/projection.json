@@ -1,18 +1,18 @@
 {
  "version": 1,
- "snapshot": "2026-11-25T05:35:43Z",
+ "snapshot": "2026-11-25T06:44:43Z",
  "totals": {
-  "records": 191,
-  "deployments": 122,
-  "organisations": 83
+  "records": 197,
+  "deployments": 125,
+  "organisations": 86
  },
  "aggregates": {
   "min_cell": 3,
   "by_status": {
    "op": 13,
-   "pilot": 82,
-   "ann": 42,
-   "unc": 54
+   "pilot": 83,
+   "ann": 43,
+   "unc": 58
   },
   "by_sector": [
    {
@@ -20,12 +20,12 @@
     "records": 46
    },
    {
-    "key": "manufacturing",
+    "key": "logistics",
     "records": 23
    },
    {
-    "key": "logistics",
-    "records": 19
+    "key": "manufacturing",
+    "records": 23
    },
    {
     "key": "automotive_components",
@@ -85,7 +85,7 @@
    },
    {
     "key": "other",
-    "records": 11
+    "records": 13
    }
   ],
   "by_country": [
@@ -99,7 +99,7 @@
    },
    {
     "key": "Germany",
-    "records": 22
+    "records": 23
    },
    {
     "key": "Multiple countries (not named)",
@@ -118,12 +118,16 @@
     "records": 3
    },
    {
+    "key": "Malaysia",
+    "records": 3
+   },
+   {
     "key": "Singapore",
     "records": 3
    },
    {
     "key": "other",
-    "records": 34
+    "records": 36
    }
   ],
   "by_year": [
@@ -133,7 +137,7 @@
    },
    {
     "key": "2023",
-    "records": 7
+    "records": 8
    },
    {
     "key": "2024",
@@ -145,7 +149,7 @@
    },
    {
     "key": "2026",
-    "records": 101
+    "records": 106
    },
    {
     "key": "other",
@@ -403,8 +407,8 @@
     "name": "UBTech"
    },
    "robot_recorded": "UBTech Walker S2",
-   "robot": null,
-   "level": null,
+   "robot": 142,
+   "level": "model",
    "sector": "aerospace_manufacturing",
    "countries": [],
    "country_notes": [
@@ -535,8 +539,8 @@
     "name": "ASUS"
    },
    "robot_recorded": "ASUS Gallop",
-   "robot": null,
-   "level": null,
+   "robot": 135,
+   "level": "model",
    "sector": "electronics_manufacturing",
    "countries": [],
    "country_notes": [
@@ -601,8 +605,8 @@
     "name": "Unitree Robotics"
    },
    "robot_recorded": "Unitree H2",
-   "robot": null,
-   "level": null,
+   "robot": 139,
+   "level": "model",
    "sector": "electricity_transmission",
    "countries": [
     "China"
@@ -837,6 +841,39 @@
    "sector": "retail",
    "countries": [
     "Canada"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2023,
+    2023
+   ]
+  },
+  {
+   "stage": "pilot",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_cargogate_munich_airport",
+    "name": "Cargogate Munich Airport"
+   },
+   "maker": {
+    "company": "mfr_fraunhofer_iml",
+    "name": "Fraunhofer IML"
+   },
+   "robot_recorded": "Fraunhofer IML evoBOT",
+   "robot": null,
+   "level": null,
+   "sector": "air_cargo",
+   "countries": [
+    "Germany"
    ],
    "country_notes": [],
    "country_multiple": false,
@@ -1354,8 +1391,8 @@
     "name": "EngineAI"
    },
    "robot_recorded": "Engineai T800",
-   "robot": null,
-   "level": null,
+   "robot": 151,
+   "level": "model",
    "sector": "electronics_manufacturing",
    "countries": [
     "China"
@@ -1454,8 +1491,8 @@
     "name": "Unitree Robotics"
    },
    "robot_recorded": "Unitree Robotics G1",
-   "robot": null,
-   "level": null,
+   "robot": 138,
+   "level": "model",
    "sector": "poultry_farming",
    "countries": [
     "United States"
@@ -1685,8 +1722,8 @@
     "name": "Kepler"
    },
    "robot_recorded": "Kepler Forerunner K2",
-   "robot": null,
-   "level": null,
+   "robot": 215,
+   "level": "model",
    "sector": "automotive_manufacturing",
    "countries": [
     "China"
@@ -1916,8 +1953,8 @@
     "name": "Unitree Robotics"
    },
    "robot_recorded": "Unitree Robotics G1",
-   "robot": null,
-   "level": null,
+   "robot": 138,
+   "level": "model",
    "sector": "robot_manufacturing",
    "countries": [
     "China"
@@ -2015,8 +2052,8 @@
     "name": "XPeng"
    },
    "robot_recorded": "Xpeng IRON",
-   "robot": 104,
-   "level": "model",
+   "robot": null,
+   "level": null,
    "sector": "automotive_manufacturing",
    "countries": [
     "China"
@@ -2081,8 +2118,8 @@
     "name": "AgiBot"
    },
    "robot_recorded": "AGIBOT X2",
-   "robot": null,
-   "level": null,
+   "robot": 145,
+   "level": "model",
    "sector": "retail",
    "countries": [
     "China"
@@ -2213,8 +2250,8 @@
     "name": "UBTech"
    },
    "robot_recorded": "UBTech Walker S2",
-   "robot": null,
-   "level": null,
+   "robot": 142,
+   "level": "model",
    "sector": "automotive_manufacturing",
    "countries": [
     "China"
@@ -2605,8 +2642,8 @@
     "name": "AgiBot"
    },
    "robot_recorded": "AgiBot G2",
-   "robot": null,
-   "level": null,
+   "robot": 146,
+   "level": "model",
    "sector": "consumer_electronics_manufacturing",
    "countries": [
     "China"
@@ -3040,6 +3077,39 @@
     "op": 0,
     "pilot": 0,
     "ann": 0,
+    "unc": 4
+   },
+   "records": 4,
+   "organisation": {
+    "company": "org_undisclosed_xsquare_parcel_customer",
+    "name": "Undisclosed logistics customer (X Square Robot)"
+   },
+   "maker": {
+    "company": "mfr_x_square_robot",
+    "name": "X Square Robot"
+   },
+   "robot_recorded": "X Square Robot",
+   "robot": null,
+   "level": null,
+   "sector": "logistics",
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "unc",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
     "unc": 1
    },
    "records": 1,
@@ -3347,8 +3417,8 @@
     "name": "UBTech"
    },
    "robot_recorded": "Ubtech Walker S2",
-   "robot": null,
-   "level": null,
+   "robot": 142,
+   "level": "model",
    "sector": "multiple",
    "countries": [
     "China"
@@ -3776,8 +3846,8 @@
     "name": "UBTech"
    },
    "robot_recorded": "Ubtech Walker S2",
-   "robot": null,
-   "level": null,
+   "robot": 142,
+   "level": "model",
    "sector": "not_disclosed",
    "countries": [
     "China"
@@ -3809,8 +3879,8 @@
     "name": "UBTech"
    },
    "robot_recorded": "Ubtech Walker S2",
-   "robot": null,
-   "level": null,
+   "robot": 142,
+   "level": "model",
    "sector": "not_disclosed",
    "countries": [
     "China"
@@ -3853,6 +3923,39 @@
    "years": [
     2025,
     2025
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_pos_malaysia",
+    "name": "Pos Malaysia"
+   },
+   "maker": {
+    "company": "mfr_x_square_robot",
+    "name": "X Square Robot"
+   },
+   "robot_recorded": "X Square Robot",
+   "robot": null,
+   "level": null,
+   "sector": "postal_logistics",
+   "countries": [
+    "Malaysia"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
    ]
   },
   {
@@ -4102,8 +4205,8 @@
     "name": "XPeng"
    },
    "robot_recorded": "XPeng IRON",
-   "robot": 104,
-   "level": "model",
+   "robot": null,
+   "level": null,
    "sector": "retail",
    "countries": [],
    "country_notes": [],
@@ -4273,7 +4376,12 @@
    },
    "countries": [],
    "robots": [
-    4
+    4,
+    143,
+    144,
+    145,
+    146,
+    147
    ],
    "organization_ids": [],
    "entity": null,
@@ -4303,8 +4411,8 @@
       "name": "Longcheer Technology",
       "company": "org_longcheer",
       "robot_recorded": "AgiBot G2",
-      "robot": null,
-      "level": null,
+      "robot": 146,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -4321,8 +4429,8 @@
       "name": "ASD",
       "company": "org_asd",
       "robot_recorded": "AGIBOT X2",
-      "robot": null,
-      "level": null,
+      "robot": 145,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -4828,7 +4936,9 @@
    "roles": {},
    "countries": [],
    "robots": [
-    14
+    14,
+    148,
+    149
    ],
    "organization_ids": [],
    "entity": null,
@@ -5012,7 +5122,8 @@
    "roles": {},
    "countries": [],
    "robots": [
-    20
+    20,
+    159
    ],
    "organization_ids": [],
    "entity": null,
@@ -5242,7 +5353,9 @@
    },
    "countries": [],
    "robots": [
-    27
+    27,
+    150,
+    151
    ],
    "organization_ids": [],
    "entity": null,
@@ -5284,8 +5397,8 @@
       "name": "Luxshare",
       "company": "org_luxshare",
       "robot_recorded": "Engineai T800",
-      "robot": null,
-      "level": null,
+      "robot": 151,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -5605,7 +5718,8 @@
    "roles": {},
    "countries": [],
    "robots": [
-    34
+    34,
+    161
    ],
    "organization_ids": [],
    "entity": null,
@@ -5623,7 +5737,9 @@
    },
    "countries": [],
    "robots": [
-    35
+    35,
+    157,
+    158
    ],
    "organization_ids": [],
    "entity": null,
@@ -6037,7 +6153,8 @@
    },
    "countries": [],
    "robots": [
-    47
+    47,
+    215
    ],
    "organization_ids": [],
    "entity": null,
@@ -6064,8 +6181,8 @@
       "name": "SAIC-GM",
       "company": "org_saic_gm",
       "robot_recorded": "Kepler Forerunner K2",
-      "robot": null,
-      "level": null,
+      "robot": 215,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -6271,7 +6388,8 @@
    "roles": {},
    "countries": [],
    "robots": [
-    50
+    50,
+    136
    ],
    "organization_ids": [],
    "entity": null,
@@ -6287,7 +6405,8 @@
    "roles": {},
    "countries": [],
    "robots": [
-    51
+    51,
+    156
    ],
    "organization_ids": [],
    "entity": null,
@@ -6337,7 +6456,8 @@
    },
    "countries": [],
    "robots": [
-    54
+    54,
+    160
    ],
    "organization_ids": [],
    "entity": null,
@@ -6611,7 +6731,10 @@
    "roles": {},
    "countries": [],
    "robots": [
-    61
+    61,
+    152,
+    153,
+    154
    ],
    "organization_ids": [],
    "entity": null,
@@ -6810,7 +6933,8 @@
    "roles": {},
    "countries": [],
    "robots": [
-    68
+    68,
+    155
    ],
    "organization_ids": [],
    "entity": null,
@@ -6842,7 +6966,8 @@
    "roles": {},
    "countries": [],
    "robots": [
-    70
+    70,
+    162
    ],
    "organization_ids": [],
    "entity": null,
@@ -7236,22 +7361,6 @@
    "countries": [],
    "robots": [
     81
-   ],
-   "organization_ids": [],
-   "entity": null,
-   "as_maker": null,
-   "as_organisation": null,
-   "evidence": null
-  },
-  {
-   "id": "mfr_skild",
-   "slug": "skild",
-   "name": "Skild",
-   "identity": "catalogue_lab",
-   "roles": {},
-   "countries": [],
-   "robots": [
-    82
    ],
    "organization_ids": [],
    "entity": null,
@@ -7667,7 +7776,8 @@
    },
    "countries": [],
    "robots": [
-    91
+    91,
+    142
    ],
    "organization_ids": [],
    "entity": null,
@@ -7699,8 +7809,8 @@
       "name": "Airbus",
       "company": "org_airbus",
       "robot_recorded": "UBTech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -7735,8 +7845,8 @@
       "name": "BYD; Geely Auto; FAW-Volkswagen; Dongfeng Liuzhou Motor; Audi FAW; BAIC New Energy; Foxconn; SF Express",
       "company": "org_ubtech_named_customers_2025",
       "robot_recorded": "UBTech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -7771,8 +7881,8 @@
       "name": "Fangchenggang humanoid robot centre (Guangxi)",
       "company": "org_fangchenggang_robot_centre",
       "robot_recorded": "Ubtech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -7840,8 +7950,8 @@
       "name": "Not disclosed (company in Zigong, Sichuan)",
       "company": "org_ubtech_zigong_customer",
       "robot_recorded": "Ubtech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -7858,8 +7968,8 @@
       "name": "Not disclosed (leading domestic enterprise)",
       "company": "org_ubtech_undisclosed_250m",
       "robot_recorded": "Ubtech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -7969,7 +8079,11 @@
     "China"
    ],
    "robots": [
-    93
+    93,
+    138,
+    139,
+    140,
+    141
    ],
    "organization_ids": [
     "org_unitree"
@@ -8005,8 +8119,8 @@
       "name": "NC State University",
       "company": "org_nc_state_university",
       "robot_recorded": "Unitree Robotics G1",
-      "robot": null,
-      "level": null,
+      "robot": 138,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 2,
@@ -8023,8 +8137,8 @@
       "name": "Bawei Tong (八维通)",
       "company": "org_baweitong",
       "robot_recorded": "Unitree H2",
-      "robot": null,
-      "level": null,
+      "robot": 139,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -8095,8 +8209,8 @@
       "name": "Unitree Robotics",
       "company": "mfr_unitree",
       "robot_recorded": "Unitree Robotics G1",
-      "robot": null,
-      "level": null,
+      "robot": 138,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -8429,8 +8543,8 @@
       "name": "XPeng",
       "company": "mfr_xpeng",
       "robot_recorded": "XPeng IRON",
-      "robot": 104,
-      "level": "model",
+      "robot": null,
+      "level": null,
       "status": {
        "op": 0,
        "pilot": 0,
@@ -8447,8 +8561,8 @@
       "name": "XPeng",
       "company": "mfr_xpeng",
       "robot_recorded": "Xpeng IRON",
-      "robot": 104,
-      "level": "model",
+      "robot": null,
+      "level": null,
       "status": {
        "op": 0,
        "pilot": 1,
@@ -8596,22 +8710,6 @@
    "countries": [],
    "robots": [
     112
-   ],
-   "organization_ids": [],
-   "entity": null,
-   "as_maker": null,
-   "as_organisation": null,
-   "evidence": null
-  },
-  {
-   "id": "mfr_orbit",
-   "slug": "orbit",
-   "name": "Orbit",
-   "identity": "catalogue_lab",
-   "roles": {},
-   "countries": [],
-   "robots": [
-    113
    ],
    "organization_ids": [],
    "entity": null,
@@ -8923,22 +9021,6 @@
    "evidence": null
   },
   {
-   "id": "mfr_nature_will",
-   "slug": "nature-will",
-   "name": "Nature Will",
-   "identity": "catalogue_lab",
-   "roles": {},
-   "countries": [],
-   "robots": [
-    130
-   ],
-   "organization_ids": [],
-   "entity": null,
-   "as_maker": null,
-   "as_organisation": null,
-   "evidence": null
-  },
-  {
    "id": "mfr_tuesday_labs",
    "slug": "tuesday-labs",
    "name": "Tuesday Labs",
@@ -9003,6 +9085,882 @@
     "reference_url": "https://darwinrobotics.ai/",
     "reviewed_at": "2026-11-17"
    },
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_asus",
+   "slug": "asus",
+   "name": "ASUS",
+   "identity": "catalogue_lab",
+   "roles": {
+    "maker": 1,
+    "customer_operator": 1
+   },
+   "countries": [
+    "Taiwan"
+   ],
+   "robots": [
+    135
+   ],
+   "organization_ids": [
+    "org_asus"
+   ],
+   "entity": {
+    "canonical_name": "ASUS",
+    "entity_type": "manufacturer",
+    "reference_url": "https://www.asus.com/EVENT/Investor/about_profile",
+    "reviewed_at": "'2026-11-18"
+   },
+   "as_maker": {
+    "records": 1,
+    "status": {
+     "op": 0,
+     "pilot": 1,
+     "ann": 0,
+     "unc": 0
+    },
+    "sectors": [
+     "electronics_manufacturing"
+    ],
+    "site_countries": [],
+    "years": [
+     2026,
+     2026
+    ],
+    "counterparts": [
+     {
+      "name": "ASUS",
+      "company": "mfr_asus",
+      "robot_recorded": "ASUS Gallop",
+      "robot": 135,
+      "level": "model",
+      "status": {
+       "op": 0,
+       "pilot": 1,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     }
+    ]
+   },
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "ASUS",
+    "robot_recorded": "ASUS Gallop",
+    "country": null,
+    "status": "pilot",
+    "verification_status": "vendor_reported",
+    "source_publisher": "ASUS",
+    "source_url": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
+    "publication_date": "2026-11-13"
+   }
+  },
+  {
+   "id": "mfr_hiro_industries",
+   "slug": "hiro-industries",
+   "name": "HIRO Industries",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    137
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_aheadform",
+   "slug": "aheadform",
+   "name": "AheadForm",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    163
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_aidol",
+   "slug": "aidol",
+   "name": "AIDOL",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    164
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_anigon",
+   "slug": "anigon",
+   "name": "Anigon",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    165
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_avatar_robotics",
+   "slug": "avatar-robotics",
+   "name": "Avatar Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    166
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_casbot",
+   "slug": "casbot",
+   "name": "CASBOT",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    167,
+    168
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_cyborg_robotics",
+   "slug": "cyborg-robotics",
+   "name": "Cyborg Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    169,
+    170
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_digit_robotics",
+   "slug": "digit-robotics",
+   "name": "Digit Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    171,
+    172
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_donut_robotics",
+   "slug": "donut-robotics",
+   "name": "Donut Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    173
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_droidup",
+   "slug": "droidup",
+   "name": "DroidUp",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    174
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_duatic",
+   "slug": "duatic",
+   "name": "Duatic",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    175
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_elite_robots",
+   "slug": "elite-robots",
+   "name": "Elite Robots",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    176
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_genisom",
+   "slug": "genisom",
+   "name": "GENISOM",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    177
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_gento_robotics",
+   "slug": "gento-robotics",
+   "name": "Gento Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    178
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_glroad",
+   "slug": "glroad",
+   "name": "Glroad",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    179,
+    180
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_guanggu_dongzhi",
+   "slug": "guanggu-dongzhi",
+   "name": "Guanggu Dongzhi",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    181
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_jingchu_humanoid",
+   "slug": "jingchu-humanoid",
+   "name": "Jingchu Humanoid",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    182,
+    183
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_jaka_robotics",
+   "slug": "jaka-robotics",
+   "name": "JAKA Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    184
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_kaist_drcd_lab",
+   "slug": "kaist-drcd-lab",
+   "name": "KAIST DRCD Lab",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    185
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_kit_h_t",
+   "slug": "kit-h-t",
+   "name": "KIT H²T",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    186
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_keenon_robotics",
+   "slug": "keenon-robotics",
+   "name": "KEENON Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    187
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_lanxin_robotics",
+   "slug": "lanxin-robotics",
+   "name": "Lanxin Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    188
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_linkerbot",
+   "slug": "linkerbot",
+   "name": "Linkerbot",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    189
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_matrix_robotics",
+   "slug": "matrix-robotics",
+   "name": "Matrix Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    190,
+    191
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_menlo",
+   "slug": "menlo",
+   "name": "Menlo",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    192
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_mirrorme",
+   "slug": "mirrorme",
+   "name": "MirrorMe",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    193
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_perceptyne",
+   "slug": "perceptyne",
+   "name": "Perceptyne",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    194
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_pl_universe",
+   "slug": "pl-universe",
+   "name": "PL-Universe",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    195
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_psibot",
+   "slug": "psibot",
+   "name": "PsiBot",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    196
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_richtech_robotics",
+   "slug": "richtech-robotics",
+   "name": "Richtech Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    197
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_roboscience",
+   "slug": "roboscience",
+   "name": "RoboScience",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    198
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_starbot",
+   "slug": "starbot",
+   "name": "StarBot",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    199,
+    200
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_svaya_robotics",
+   "slug": "svaya-robotics",
+   "name": "Svaya Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    201
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_tlibot",
+   "slug": "tlibot",
+   "name": "Tlibot",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    202
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_ugo",
+   "slug": "ugo",
+   "name": "ugo",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    203
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_x_humanoid",
+   "slug": "x-humanoid",
+   "name": "X-Humanoid",
+   "identity": "catalogue_lab",
+   "roles": {
+    "maker": 4
+   },
+   "countries": [],
+   "robots": [
+    204,
+    205,
+    206
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": {
+    "records": 4,
+    "status": {
+     "op": 0,
+     "pilot": 2,
+     "ann": 1,
+     "unc": 1
+    },
+    "sectors": [
+     "automotive_components",
+     "electricity_transmission",
+     "manufacturing"
+    ],
+    "site_countries": [
+     "China"
+    ],
+    "years": [
+     2026,
+     2026
+    ],
+    "counterparts": [
+     {
+      "name": "Bayer",
+      "company": "org_bayer",
+      "robot_recorded": "X-Humanoid",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 0,
+       "ann": 1,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     },
+     {
+      "name": "Beijing Foton Cummins Engine",
+      "company": "org_foton_cummins",
+      "robot_recorded": "X-Humanoid Tien Kung 2.0; Tian Yi 2.0",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 0,
+       "ann": 0,
+       "unc": 1
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     },
+     {
+      "name": "China Electric Power Research Institute",
+      "company": "org_cepri",
+      "robot_recorded": "X-Humanoid",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 1,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     },
+     {
+      "name": "Li-Ning (Sports Science Laboratory)",
+      "company": "org_lining",
+      "robot_recorded": "X-Humanoid",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 1,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     }
+    ]
+   },
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "China Electric Power Research Institute",
+    "robot_recorded": "X-Humanoid",
+    "country": "China",
+    "status": "pilot",
+    "verification_status": "vendor_reported",
+    "source_publisher": "Robotics Business News (X-Humanoid CES release)",
+    "source_url": "https://www.roboticsbusinessnews.com/news/19/2270/x-humanoid-showcases-fully-autonomous-embodied-tien-kung-robots-at-ces-2026.html",
+    "publication_date": "2026-01-09"
+   }
+  },
+  {
+   "id": "mfr_zerith_robotics",
+   "slug": "zerith-robotics",
+   "name": "Zerith Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    207
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_zeroth_robotics",
+   "slug": "zeroth-robotics",
+   "name": "Zeroth Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    208
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_zj_humanoid",
+   "slug": "zj-humanoid",
+   "name": "ZJ Humanoid",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    209,
+    210
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_westlake_robotics",
+   "slug": "westlake-robotics",
+   "name": "Westlake Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    211
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_mirsee_robotics",
+   "slug": "mirsee-robotics",
+   "name": "Mirsee Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    212
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_geek",
+   "slug": "geek",
+   "name": "Geek+",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    213
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
+   "id": "mfr_techman_robot",
+   "slug": "techman-robot",
+   "name": "Techman Robot",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    214
+   ],
+   "organization_ids": [],
+   "entity": null,
    "as_maker": null,
    "as_organisation": null,
    "evidence": null
@@ -9335,77 +10293,6 @@
    }
   },
   {
-   "id": "mfr_asus",
-   "slug": "asus",
-   "name": "ASUS",
-   "identity": "name_as_recorded",
-   "roles": {
-    "maker": 1,
-    "customer_operator": 1
-   },
-   "countries": [
-    "Taiwan"
-   ],
-   "robots": [],
-   "organization_ids": [
-    "org_asus"
-   ],
-   "entity": {
-    "canonical_name": "ASUS",
-    "entity_type": "manufacturer",
-    "reference_url": "https://www.asus.com/EVENT/Investor/about_profile",
-    "reviewed_at": "'2026-11-18"
-   },
-   "as_maker": {
-    "records": 1,
-    "status": {
-     "op": 0,
-     "pilot": 1,
-     "ann": 0,
-     "unc": 0
-    },
-    "sectors": [
-     "electronics_manufacturing"
-    ],
-    "site_countries": [],
-    "years": [
-     2026,
-     2026
-    ],
-    "counterparts": [
-     {
-      "name": "ASUS",
-      "company": "mfr_asus",
-      "robot_recorded": "ASUS Gallop",
-      "robot": null,
-      "level": null,
-      "status": {
-       "op": 0,
-       "pilot": 1,
-       "ann": 0,
-       "unc": 0
-      },
-      "years": [
-       2026,
-       2026
-      ],
-      "records": 1
-     }
-    ]
-   },
-   "as_organisation": null,
-   "evidence": {
-    "organization_name": "ASUS",
-    "robot_recorded": "ASUS Gallop",
-    "country": null,
-    "status": "pilot",
-    "verification_status": "vendor_reported",
-    "source_publisher": "ASUS",
-    "source_url": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
-    "publication_date": "2026-11-13"
-   }
-  },
-  {
    "id": "mfr_tarsbot",
    "slug": "tarsbot",
    "name": "TARSBOT",
@@ -9466,125 +10353,6 @@
     "source_publisher": "The Robotics Media",
     "source_url": "https://theroboticsmedia.com/article/tarsbot-aptiv-100-humanoid-robots-china",
     "publication_date": "2026-11-17"
-   }
-  },
-  {
-   "id": "mfr_x_humanoid",
-   "slug": "x-humanoid",
-   "name": "X-Humanoid",
-   "identity": "name_as_recorded",
-   "roles": {
-    "maker": 4
-   },
-   "countries": [],
-   "robots": [],
-   "organization_ids": [],
-   "entity": null,
-   "as_maker": {
-    "records": 4,
-    "status": {
-     "op": 0,
-     "pilot": 2,
-     "ann": 1,
-     "unc": 1
-    },
-    "sectors": [
-     "automotive_components",
-     "electricity_transmission",
-     "manufacturing"
-    ],
-    "site_countries": [
-     "China"
-    ],
-    "years": [
-     2026,
-     2026
-    ],
-    "counterparts": [
-     {
-      "name": "Bayer",
-      "company": "org_bayer",
-      "robot_recorded": "X-Humanoid",
-      "robot": null,
-      "level": null,
-      "status": {
-       "op": 0,
-       "pilot": 0,
-       "ann": 1,
-       "unc": 0
-      },
-      "years": [
-       2026,
-       2026
-      ],
-      "records": 1
-     },
-     {
-      "name": "Beijing Foton Cummins Engine",
-      "company": "org_foton_cummins",
-      "robot_recorded": "X-Humanoid Tien Kung 2.0; Tian Yi 2.0",
-      "robot": null,
-      "level": null,
-      "status": {
-       "op": 0,
-       "pilot": 0,
-       "ann": 0,
-       "unc": 1
-      },
-      "years": [
-       2026,
-       2026
-      ],
-      "records": 1
-     },
-     {
-      "name": "China Electric Power Research Institute",
-      "company": "org_cepri",
-      "robot_recorded": "X-Humanoid",
-      "robot": null,
-      "level": null,
-      "status": {
-       "op": 0,
-       "pilot": 1,
-       "ann": 0,
-       "unc": 0
-      },
-      "years": [
-       2026,
-       2026
-      ],
-      "records": 1
-     },
-     {
-      "name": "Li-Ning (Sports Science Laboratory)",
-      "company": "org_lining",
-      "robot_recorded": "X-Humanoid",
-      "robot": null,
-      "level": null,
-      "status": {
-       "op": 0,
-       "pilot": 1,
-       "ann": 0,
-       "unc": 0
-      },
-      "years": [
-       2026,
-       2026
-      ],
-      "records": 1
-     }
-    ]
-   },
-   "as_organisation": null,
-   "evidence": {
-    "organization_name": "China Electric Power Research Institute",
-    "robot_recorded": "X-Humanoid",
-    "country": "China",
-    "status": "pilot",
-    "verification_status": "vendor_reported",
-    "source_publisher": "Robotics Business News (X-Humanoid CES release)",
-    "source_url": "https://www.roboticsbusinessnews.com/news/19/2270/x-humanoid-showcases-fully-autonomous-embodied-tien-kung-robots-at-ces-2026.html",
-    "publication_date": "2026-01-09"
    }
   },
   {
@@ -9781,6 +10549,151 @@
     "source_publisher": "Aitu Robotics WeChat account, republished by gkzhan.com",
     "source_url": "https://www.gkzhan.com/news/detail/197614.html",
     "publication_date": "2026-11-20"
+   }
+  },
+  {
+   "id": "mfr_x_square_robot",
+   "slug": "x-square-robot",
+   "name": "X Square Robot",
+   "identity": "name_as_recorded",
+   "roles": {
+    "maker": 5
+   },
+   "countries": [],
+   "robots": [],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": {
+    "records": 5,
+    "status": {
+     "op": 0,
+     "pilot": 0,
+     "ann": 1,
+     "unc": 4
+    },
+    "sectors": [
+     "logistics",
+     "postal_logistics"
+    ],
+    "site_countries": [
+     "Malaysia"
+    ],
+    "years": [
+     2026,
+     2026
+    ],
+    "counterparts": [
+     {
+      "name": "Undisclosed logistics customer (X Square Robot)",
+      "company": "org_undisclosed_xsquare_parcel_customer",
+      "robot_recorded": "X Square Robot",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 0,
+       "ann": 0,
+       "unc": 4
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 4
+     },
+     {
+      "name": "Pos Malaysia",
+      "company": "org_pos_malaysia",
+      "robot_recorded": "X Square Robot",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 0,
+       "ann": 1,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     }
+    ]
+   },
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Undisclosed logistics customer (X Square Robot)",
+    "robot_recorded": "X Square Robot",
+    "country": null,
+    "status": "unc",
+    "verification_status": "vendor_reported",
+    "source_publisher": "X Square Robot",
+    "source_url": "https://x2robot.com/blogs/wall-oss-1-en/",
+    "publication_date": "2026-11-23"
+   }
+  },
+  {
+   "id": "mfr_fraunhofer_iml",
+   "slug": "fraunhofer-iml",
+   "name": "Fraunhofer IML",
+   "identity": "name_as_recorded",
+   "roles": {
+    "maker": 1
+   },
+   "countries": [],
+   "robots": [],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": {
+    "records": 1,
+    "status": {
+     "op": 0,
+     "pilot": 1,
+     "ann": 0,
+     "unc": 0
+    },
+    "sectors": [
+     "air_cargo"
+    ],
+    "site_countries": [
+     "Germany"
+    ],
+    "years": [
+     2023,
+     2023
+    ],
+    "counterparts": [
+     {
+      "name": "Cargogate Munich Airport",
+      "company": "org_cargogate_munich_airport",
+      "robot_recorded": "Fraunhofer IML evoBOT",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 1,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2023,
+       2023
+      ],
+      "records": 1
+     }
+    ]
+   },
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Cargogate Munich Airport",
+    "robot_recorded": "Fraunhofer IML evoBOT",
+    "country": "Germany",
+    "status": "pilot",
+    "verification_status": "vendor_reported",
+    "source_publisher": "Fraunhofer IML",
+    "source_url": "https://www.iml.fraunhofer.de/de/presse_medien/pressemitteilungen/evobot-muc.html",
+    "publication_date": "2023-06-13"
    }
   },
   {
@@ -10703,8 +11616,8 @@
       "name": "AgiBot",
       "company": "mfr_agibot",
       "robot_recorded": "AgiBot G2",
-      "robot": null,
-      "level": null,
+      "robot": 146,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -11027,8 +11940,8 @@
       "name": "EngineAI",
       "company": "mfr_engineai",
       "robot_recorded": "Engineai T800",
-      "robot": null,
-      "level": null,
+      "robot": 151,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -11693,8 +12606,8 @@
       "name": "AgiBot",
       "company": "mfr_agibot",
       "robot_recorded": "AGIBOT X2",
-      "robot": null,
-      "level": null,
+      "robot": 145,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -11892,8 +12805,8 @@
       "name": "UBTech",
       "company": "mfr_ubtech",
       "robot_recorded": "UBTech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -11959,8 +12872,8 @@
       "name": "UBTech",
       "company": "mfr_ubtech",
       "robot_recorded": "UBTech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -12783,8 +13696,8 @@
       "name": "Unitree Robotics",
       "company": "mfr_unitree",
       "robot_recorded": "Unitree Robotics G1",
-      "robot": null,
-      "level": null,
+      "robot": 138,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 2,
@@ -13554,8 +14467,8 @@
       "name": "UBTech",
       "company": "mfr_ubtech",
       "robot_recorded": "Ubtech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -13621,8 +14534,8 @@
       "name": "UBTech",
       "company": "mfr_ubtech",
       "robot_recorded": "Ubtech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -13688,8 +14601,8 @@
       "name": "UBTech",
       "company": "mfr_ubtech",
       "robot_recorded": "Ubtech Walker S2",
-      "robot": null,
-      "level": null,
+      "robot": 142,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 0,
@@ -14240,8 +15153,8 @@
       "name": "Kepler",
       "company": "mfr_kepler",
       "robot_recorded": "Kepler Forerunner K2",
-      "robot": null,
-      "level": null,
+      "robot": 215,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -14776,8 +15689,8 @@
       "name": "Unitree Robotics",
       "company": "mfr_unitree",
       "robot_recorded": "Unitree H2",
-      "robot": null,
-      "level": null,
+      "robot": 139,
+      "level": "model",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -15538,6 +16451,203 @@
     "source_publisher": "Aitu Robotics WeChat account, republished by gkzhan.com",
     "source_url": "https://www.gkzhan.com/news/detail/197614.html",
     "publication_date": "2026-11-20"
+   }
+  },
+  {
+   "id": "org_undisclosed_xsquare_parcel_customer",
+   "slug": "undisclosed-xsquare-parcel-customer",
+   "name": "Undisclosed logistics customer (X Square Robot)",
+   "identity": "sheet_organization_id",
+   "roles": {
+    "customer_operator": 4
+   },
+   "countries": [],
+   "robots": [],
+   "organization_ids": [
+    "org_undisclosed_xsquare_parcel_customer"
+   ],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": {
+    "records": 4,
+    "status": {
+     "op": 0,
+     "pilot": 0,
+     "ann": 0,
+     "unc": 4
+    },
+    "sectors": [
+     "logistics"
+    ],
+    "site_countries": [],
+    "years": [
+     2026,
+     2026
+    ],
+    "counterparts": [
+     {
+      "name": "X Square Robot",
+      "company": "mfr_x_square_robot",
+      "robot_recorded": "X Square Robot",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 0,
+       "ann": 0,
+       "unc": 4
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 4
+     }
+    ]
+   },
+   "evidence": {
+    "organization_name": "Undisclosed logistics customer (X Square Robot)",
+    "robot_recorded": "X Square Robot",
+    "country": null,
+    "status": "unc",
+    "verification_status": "vendor_reported",
+    "source_publisher": "X Square Robot",
+    "source_url": "https://x2robot.com/blogs/wall-oss-1-en/",
+    "publication_date": "2026-11-23"
+   }
+  },
+  {
+   "id": "org_pos_malaysia",
+   "slug": "pos-malaysia",
+   "name": "Pos Malaysia",
+   "identity": "sheet_organization_id",
+   "roles": {
+    "customer_operator": 1
+   },
+   "countries": [
+    "Malaysia"
+   ],
+   "robots": [],
+   "organization_ids": [
+    "org_pos_malaysia"
+   ],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": {
+    "records": 1,
+    "status": {
+     "op": 0,
+     "pilot": 0,
+     "ann": 1,
+     "unc": 0
+    },
+    "sectors": [
+     "postal_logistics"
+    ],
+    "site_countries": [
+     "Malaysia"
+    ],
+    "years": [
+     2026,
+     2026
+    ],
+    "counterparts": [
+     {
+      "name": "X Square Robot",
+      "company": "mfr_x_square_robot",
+      "robot_recorded": "X Square Robot",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 0,
+       "ann": 1,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     }
+    ]
+   },
+   "evidence": {
+    "organization_name": "Pos Malaysia",
+    "robot_recorded": "X Square Robot",
+    "country": "Malaysia",
+    "status": "ann",
+    "verification_status": "vendor_reported",
+    "source_publisher": "X Square Robot",
+    "source_url": "https://x2robot.com/en/news",
+    "publication_date": "2026-11-24"
+   }
+  },
+  {
+   "id": "org_cargogate_munich_airport",
+   "slug": "cargogate-munich-airport",
+   "name": "Cargogate Munich Airport",
+   "identity": "sheet_organization_id",
+   "roles": {
+    "customer_operator": 1
+   },
+   "countries": [
+    "Germany"
+   ],
+   "robots": [],
+   "organization_ids": [
+    "org_cargogate_munich_airport"
+   ],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": {
+    "records": 1,
+    "status": {
+     "op": 0,
+     "pilot": 1,
+     "ann": 0,
+     "unc": 0
+    },
+    "sectors": [
+     "air_cargo"
+    ],
+    "site_countries": [
+     "Germany"
+    ],
+    "years": [
+     2023,
+     2023
+    ],
+    "counterparts": [
+     {
+      "name": "Fraunhofer IML",
+      "company": "mfr_fraunhofer_iml",
+      "robot_recorded": "Fraunhofer IML evoBOT",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 1,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2023,
+       2023
+      ],
+      "records": 1
+     }
+    ]
+   },
+   "evidence": {
+    "organization_name": "Cargogate Munich Airport",
+    "robot_recorded": "Fraunhofer IML evoBOT",
+    "country": "Germany",
+    "status": "pilot",
+    "verification_status": "vendor_reported",
+    "source_publisher": "Fraunhofer IML",
+    "source_url": "https://www.iml.fraunhofer.de/de/presse_medien/pressemitteilungen/evobot-muc.html",
+    "publication_date": "2023-06-13"
    }
   }
  ],
@@ -16992,36 +18102,206 @@
     "publication_date": "2026-06-26"
    }
   },
-  "104": {
-   "records": 2,
+  "135": {
+   "records": 1,
    "status": {
     "op": 0,
     "pilot": 1,
-    "ann": 1,
+    "ann": 0,
     "unc": 0
    },
    "sectors": [
-    "automotive_manufacturing",
-    "retail"
+    "electronics_manufacturing"
+   ],
+   "site_countries": [],
+   "years": [
+    2026,
+    2026
+   ],
+   "counterparts": [
+    {
+     "name": "ASUS",
+     "company": "mfr_asus",
+     "robot_recorded": "ASUS Gallop",
+     "robot": 135,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 1,
+      "ann": 0,
+      "unc": 0
+     },
+     "years": [
+      2026,
+      2026
+     ],
+     "records": 1
+    }
+   ],
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "ASUS",
+    "robot_recorded": "ASUS Gallop",
+    "country": null,
+    "status": "pilot",
+    "verification_status": "vendor_reported",
+    "source_publisher": "ASUS",
+    "source_url": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
+    "publication_date": "2026-11-13"
+   }
+  },
+  "138": {
+   "records": 3,
+   "status": {
+    "op": 0,
+    "pilot": 3,
+    "ann": 0,
+    "unc": 0
+   },
+   "sectors": [
+    "poultry_farming",
+    "robot_manufacturing"
+   ],
+   "site_countries": [
+    "China",
+    "United States"
+   ],
+   "years": [
+    2026,
+    2026
+   ],
+   "counterparts": [
+    {
+     "name": "NC State University",
+     "company": "org_nc_state_university",
+     "robot_recorded": "Unitree Robotics G1",
+     "robot": 138,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 2,
+      "ann": 0,
+      "unc": 0
+     },
+     "years": [
+      2026,
+      2026
+     ],
+     "records": 2
+    },
+    {
+     "name": "Unitree Robotics",
+     "company": "mfr_unitree",
+     "robot_recorded": "Unitree Robotics G1",
+     "robot": 138,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 1,
+      "ann": 0,
+      "unc": 0
+     },
+     "years": [
+      2026,
+      2026
+     ],
+     "records": 1
+    }
+   ],
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "NC State University (AIR Lab)",
+    "robot_recorded": "Unitree Robotics G1",
+    "country": "United States",
+    "status": "pilot",
+    "verification_status": "customer_confirmed",
+    "source_publisher": "NC State College of Agriculture and Life Sciences (CALS Magazine)",
+    "source_url": "https://magazine.cals.ncsu.edu/code-to-coop/",
+    "publication_date": "2026-08-25"
+   }
+  },
+  "139": {
+   "records": 1,
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "sectors": [
+    "electricity_transmission"
    ],
    "site_countries": [
     "China"
    ],
    "years": [
-    2024,
+    2026,
     2026
    ],
    "counterparts": [
     {
-     "name": "XPeng",
-     "company": "mfr_xpeng",
-     "robot_recorded": "XPeng IRON",
-     "robot": 104,
+     "name": "Bawei Tong (八维通)",
+     "company": "org_baweitong",
+     "robot_recorded": "Unitree H2",
+     "robot": 139,
      "level": "model",
      "status": {
       "op": 0,
-      "pilot": 0,
-      "ann": 1,
+      "pilot": 1,
+      "ann": 0,
+      "unc": 0
+     },
+     "years": [
+      2026,
+      2026
+     ],
+     "records": 1
+    }
+   ],
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "Bawei Tong (八维通)",
+    "robot_recorded": "Unitree H2",
+    "country": "China",
+    "status": "pilot",
+    "verification_status": "media_reported",
+    "source_publisher": "Guangming Online (光明网)",
+    "source_url": "https://tech.gmw.cn/2026-09/16/content_39003907.htm",
+    "publication_date": "2026-09-16"
+   }
+  },
+  "142": {
+   "records": 5,
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 3,
+    "unc": 1
+   },
+   "sectors": [
+    "aerospace_manufacturing",
+    "automotive_manufacturing",
+    "multiple",
+    "not_disclosed"
+   ],
+   "site_countries": [
+    "China"
+   ],
+   "years": [
+    2025,
+    2026
+   ],
+   "counterparts": [
+    {
+     "name": "Airbus",
+     "company": "org_airbus",
+     "robot_recorded": "UBTech Walker S2",
+     "robot": 142,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 1,
+      "ann": 0,
       "unc": 0
      },
      "years": [
@@ -17031,10 +18311,214 @@
      "records": 1
     },
     {
-     "name": "XPeng",
-     "company": "mfr_xpeng",
-     "robot_recorded": "Xpeng IRON",
-     "robot": 104,
+     "name": "BYD; Geely Auto; FAW-Volkswagen; Dongfeng Liuzhou Motor; Audi FAW; BAIC New Energy; Foxconn; SF Express",
+     "company": "org_ubtech_named_customers_2025",
+     "robot_recorded": "UBTech Walker S2",
+     "robot": 142,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 0,
+      "ann": 0,
+      "unc": 1
+     },
+     "years": [
+      2025,
+      2025
+     ],
+     "records": 1
+    },
+    {
+     "name": "Fangchenggang humanoid robot centre (Guangxi)",
+     "company": "org_fangchenggang_robot_centre",
+     "robot_recorded": "Ubtech Walker S2",
+     "robot": 142,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 0,
+      "ann": 1,
+      "unc": 0
+     },
+     "years": [
+      2025,
+      2025
+     ],
+     "records": 1
+    },
+    {
+     "name": "Not disclosed (company in Zigong, Sichuan)",
+     "company": "org_ubtech_zigong_customer",
+     "robot_recorded": "Ubtech Walker S2",
+     "robot": 142,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 0,
+      "ann": 1,
+      "unc": 0
+     },
+     "years": [
+      2025,
+      2025
+     ],
+     "records": 1
+    },
+    {
+     "name": "Not disclosed (leading domestic enterprise)",
+     "company": "org_ubtech_undisclosed_250m",
+     "robot_recorded": "Ubtech Walker S2",
+     "robot": 142,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 0,
+      "ann": 1,
+      "unc": 0
+     },
+     "years": [
+      2025,
+      2025
+     ],
+     "records": 1
+    }
+   ],
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "Airbus",
+    "robot_recorded": "UBTech Walker S2",
+    "country": null,
+    "status": "pilot",
+    "verification_status": "customer_confirmed",
+    "source_publisher": "Reuters (syndicated by MarketScreener)",
+    "source_url": "https://www.marketscreener.com/news/ubtech-agrees-airbus-deal-to-expand-robot-use-in-aviation-manufacturing-ce7e58ddde8bfe2c",
+    "publication_date": "2026-01-21"
+   }
+  },
+  "145": {
+   "records": 2,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 2
+   },
+   "sectors": [
+    "retail"
+   ],
+   "site_countries": [
+    "China"
+   ],
+   "years": [
+    2026,
+    2026
+   ],
+   "counterparts": [
+    {
+     "name": "ASD",
+     "company": "org_asd",
+     "robot_recorded": "AGIBOT X2",
+     "robot": 145,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 0,
+      "ann": 0,
+      "unc": 2
+     },
+     "years": [
+      2026,
+      2026
+     ],
+     "records": 2
+    }
+   ],
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "ASD",
+    "robot_recorded": "AGIBOT X2",
+    "country": "China",
+    "status": "unc",
+    "verification_status": "vendor_reported",
+    "source_publisher": "AGIBOT",
+    "source_url": "https://www.agibot.com/article/231/detail/124.html",
+    "publication_date": "2026-09-28"
+   }
+  },
+  "146": {
+   "records": 7,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 0,
+    "unc": 7
+   },
+   "sectors": [
+    "consumer_electronics_manufacturing"
+   ],
+   "site_countries": [
+    "China"
+   ],
+   "years": [
+    2026,
+    2026
+   ],
+   "counterparts": [
+    {
+     "name": "Longcheer Technology",
+     "company": "org_longcheer",
+     "robot_recorded": "AgiBot G2",
+     "robot": 146,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 0,
+      "ann": 0,
+      "unc": 7
+     },
+     "years": [
+      2026,
+      2026
+     ],
+     "records": 7
+    }
+   ],
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "Longcheer Technology",
+    "robot_recorded": "AgiBot G2",
+    "country": "China",
+    "status": "unc",
+    "verification_status": "vendor_reported",
+    "source_publisher": "AgiBot",
+    "source_url": "https://www.agibot.com/article/231/detail/83.html",
+    "publication_date": "2026-06-29"
+   }
+  },
+  "151": {
+   "records": 1,
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "sectors": [
+    "electronics_manufacturing"
+   ],
+   "site_countries": [
+    "China"
+   ],
+   "years": [
+    2026,
+    2026
+   ],
+   "counterparts": [
+    {
+     "name": "Luxshare",
+     "company": "org_luxshare",
+     "robot_recorded": "Engineai T800",
+     "robot": 151,
      "level": "model",
      "status": {
       "op": 0,
@@ -17043,22 +18527,72 @@
       "unc": 0
      },
      "years": [
-      2024,
-      2024
+      2026,
+      2026
      ],
      "records": 1
     }
    ],
    "model_line_only": false,
    "evidence": {
-    "organization_name": "XPeng",
-    "robot_recorded": "Xpeng IRON",
+    "organization_name": "Luxshare Precision",
+    "robot_recorded": "Engineai T800",
+    "country": "China",
+    "status": "pilot",
+    "verification_status": "vendor_reported",
+    "source_publisher": "China.com (中华网)",
+    "source_url": "https://finance.china.com/TMT/13004688/20260824/49694480.html",
+    "publication_date": "2026-08-24"
+   }
+  },
+  "215": {
+   "records": 1,
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "sectors": [
+    "automotive_manufacturing"
+   ],
+   "site_countries": [
+    "China"
+   ],
+   "years": [
+    2025,
+    2025
+   ],
+   "counterparts": [
+    {
+     "name": "SAIC-GM",
+     "company": "org_saic_gm",
+     "robot_recorded": "Kepler Forerunner K2",
+     "robot": 215,
+     "level": "model",
+     "status": {
+      "op": 0,
+      "pilot": 1,
+      "ann": 0,
+      "unc": 0
+     },
+     "years": [
+      2025,
+      2025
+     ],
+     "records": 1
+    }
+   ],
+   "model_line_only": false,
+   "evidence": {
+    "organization_name": "SAIC-GM",
+    "robot_recorded": "Kepler Forerunner K2",
     "country": "China",
     "status": "pilot",
     "verification_status": "vendor_reported",
     "source_publisher": "Interesting Engineering",
-    "source_url": "https://interestingengineering.com/innovation/china-xpeng-iron-humanoid-robot",
-    "publication_date": "2024-11"
+    "source_url": "https://interestingengineering.com/innovation/china-kepler-humanoid-robot-shanghai-plant",
+    "publication_date": "2025-04-28"
    }
   }
  }
