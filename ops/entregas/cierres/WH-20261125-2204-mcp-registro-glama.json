@@ -1,0 +1,39 @@
+{
+  "id": "WH-20261125-2204-mcp-registro-glama",
+  "tarea": "Seguimiento de la publicación del MCP de Why Humanoid? en directorios: registro MCP oficial y Glama publicados; Claude y ChatGPT sin enviar",
+  "origen": "Javier (25/11/2026), coordinado y verificado por Codex; sigue a WH-20261125-2159-mcp-anotaciones-directorios",
+  "fecha": "2026-11-25T22:04:51+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Registro MCP oficial: io.github.integrarobot/whyhumanoid@1.0.0, activo y última versión, publicado el 2026-11-25T20:48:10.889164Z, con el endpoint streamable-http https://whyhumanoid-premium.javier-198.workers.dev/mcp.",
+    "Glama ha importado la ficha del registro oficial: muestra Why Humanoid?, el espacio de nombres io.github.integrarobot, el endpoint y el repositorio correctos. Su indicador de salud aparece al principio como «Not tested»: no consta ninguna comprobación programada de Glama superada.",
+    "Sin cambios de código en este seguimiento."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Registro MCP oficial (API pública)",
+      "url": "https://registry.modelcontextprotocol.io/v0/servers?search=io.github.integrarobot/whyhumanoid"
+    },
+    {
+      "etiqueta": "Ficha en Glama",
+      "url": "https://glama.ai/mcp/connectors/io.github.integrarobot/whyhumanoid"
+    }
+  ],
+  "despliegue": [
+    "No aplica: publicación en directorios sin cambios de código ni de Worker. El Worker en producción sigue siendo PROD f5a096cf, con las anotaciones del PR 120."
+  ],
+  "verificaciones": [
+    "Claude, solo lectura, 22:04 (Madrid): la API pública del registro oficial devuelve io.github.integrarobot/whyhumanoid 1.0.0 con estado active, isLatest true, publishedAt 2026-11-25T20:48:10.889164Z y el endpoint correcto. Glama no es accesible desde este entorno (el proxy de red lo rechaza); su verificación es de Codex.",
+    "Codex, independiente: la ficha pública de Glama muestra el nombre, el espacio de nombres, el endpoint y el repositorio correctos; su inspector público «Try in Browser» inicializa la conexión y descubre las seis herramientas. Las siete comprobaciones del MCP Inspector CLI oficial 2.16.0 (tools/list y llamadas a las seis herramientas) pasan contra producción.",
+    "Codex: el conector de Claude, reconectado, reconoce las seis herramientas como de solo lectura, y una preparación nueva del Claude Directory las muestra sin avisos de anotaciones."
+  ],
+  "pendientes": [
+    "Claude Directory: ficha y pruebas listas, pero NO enviada; falta el consentimiento de las políticas para desarrolladores, que da Javier.",
+    "ChatGPT: la preparación del paquete de OpenAI está incompleta y NO se ha subido.",
+    "Glama: la primera comprobación de salud programada aún no consta («Not tested»).",
+    "No hay ningún otro directorio publicado."
+  ],
+  "siguiente_accion": "Javier decide y da, si procede, el consentimiento de las políticas del Claude Directory antes del envío; Codex completa el paquete de ChatGPT y vigila la comprobación de salud de Glama."
+}
