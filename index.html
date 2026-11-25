@@ -581,6 +581,46 @@ html.dlg-open{overflow:hidden}
   .lede{font-size:16px}
   .search input{font-size:17px}
 }
+/* Find first on phones (Javier, 23 and 25 Nov 2026): an explicit Categories menu whenever the ten links do not fit the
+   bar (the script decides by measuring; without it the bar scrolls as before), and a hero where search, the primary
+   actions and the quick picks come before the two paths and the statistics. */
+.search + .cta-row{margin-top:20px}
+.hero-text .eco{margin:22px 0 0}
+.cat-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;margin-left:auto;background:transparent;border:1px solid var(--line-2);color:var(--bone);font-family:var(--f-mono);font-size:calc(var(--fs-label) * 1.25);letter-spacing:var(--track-label);text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.cat-toggle[hidden]{display:none}
+.cat-toggle .n{color:var(--bone-3)}
+.cat-toggle .chev{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.cat-toggle[aria-expanded="true"]{border-color:var(--amber);color:var(--amber)}
+.cat-toggle[aria-expanded="true"] .chev{transform:translateY(2px) rotate(-135deg)}
+.cat-toggle:hover{border-color:var(--bone-3)}
+.cat-toggle:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.hud.no-clock .hud-r{display:none}
+.hud.cats-compact .hud-nav.cats{display:none}
+.hud.cats-compact.cats-open .hud-nav.cats{display:grid;position:absolute;left:0;right:0;top:100%;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr));gap:0 20px;margin:0;padding:6px clamp(16px,4vw,40px) 14px;background:var(--ink-0);border-top:1px solid var(--line);border-bottom:1px solid var(--line-2);box-shadow:0 18px 40px rgba(0,0,0,.5);max-height:calc(100dvh - var(--hud-h) - env(safe-area-inset-top,0px));overflow-y:auto;overflow-x:hidden;border-top-width:1px}
+.hud.cats-compact .hud-nav.cats a{min-height:48px;margin-left:0;padding-inline:2px;white-space:normal;border-bottom:1px solid var(--line);font-size:calc(var(--fs-label) * 1.25)}
+.hud.cats-compact .hud-nav.cats a:focus-visible,.hud-nav.cats a:focus-visible{outline:2px solid var(--amber);outline-offset:-2px}
+html.cats-compact{scroll-padding-top:calc(var(--hud-h) + 16px)}
+/* In menu mode the brand and the Categories button share one row on every phone. */
+.hud.cats-compact .wrap{flex-wrap:nowrap;column-gap:12px;position:relative}
+.hud.cats-compact .cat-toggle{flex:none}
+@media (max-width:420px){.cat-toggle{padding:0 11px;gap:7px}.cat-toggle .n{display:none}}
+@media (max-width:360px){.brand{font-size:18px;gap:8px}}
+@media (max-width:420px){.display{font-size:clamp(32px,10vw,42px)}}
+@media (max-width:760px){
+  .hero{padding-block:20px 28px}
+  .kicker{margin:0 0 12px}
+  .lede{margin:12px 0 16px;font-size:15px;line-height:1.45}
+  .cta-row{margin:0 0 14px;gap:8px}
+  .cta-row .btn{flex:1 1 auto;justify-content:center}
+  .search .field{height:52px}
+  .search + .cta-row{margin-top:14px}
+  .quick{margin-top:10px}
+  .hero-text .eco{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:18px}
+  .hero-text .eco a{padding:8px 7px}
+  .hero-text .eco b{font-size:17px}
+  .hero-text .eco span{font-size:11px;line-height:1.25;overflow-wrap:anywhere}
+  .hero-text .eco small{display:none}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
 }
@@ -596,7 +636,8 @@ html.dlg-open{overflow:hidden}
 <header class="hud page">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Why Humanoid?, home"><span class="sq"></span>Why Humanoid?</a>
-    <nav class="hud-nav cats" aria-label="Categories">
+    <button class="cat-toggle" id="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-menu" hidden>Categories<span class="n">10</span><span class="chev" aria-hidden="true"></span></button>
+    <nav class="hud-nav cats" id="cat-menu" aria-label="Categories">
       <a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a><a href="/reports/">Reports</a>
     </nav>
     <div class="hud-r"><span><b id="clock" class="tn">--:--:--</b> UTC</span><span class="age" id="age">Humanoid records checked up to 17 Nov 2026</span></div>
@@ -610,18 +651,6 @@ html.dlg-open{overflow:hidden}
         <p class="kicker lbl"><span class="rule"></span><span id="kick">Integrarobot database · ten categories · Humanoids free</span></p>
         <h1 class="display"><span class="ln">Humanoid robots</span><span class="ln"><em>and their ecosystem,</em></span><span class="ln">in one database.</span></h1>
         <p class="lede">The robots, the software and AI models that run them, where they are deployed, the components and datasets behind them, and the companies involved, from Integrarobot's research workbook. Records link their sources where the sheet has them; a missing figure stays marked as not disclosed or not verified.</p>
-        <!-- paths-mini:start --><div class="hero-paths" aria-label="Two ways to go further">
-          <a class="hp hp-data" href="#paths"><span class="lbl hi">Full data access</span><b>Use the evidence to make your own decisions.</b><span>US$100 per year, billed annually</span></a>
-          <a class="hp hp-rep" href="#paths"><span class="lbl">Custom company reports</span><b>Our expertise, applied to your company’s decisions.</b><span>US$1,000 per report · not available to order yet</span></a>
-        </div><style>.hero-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px;margin:14px 0 18px}.hp{display:grid;gap:3px;padding:10px 12px;border:1px solid var(--line);text-decoration:none;color:var(--bone-2);font-size:13px;line-height:1.35}.hp b{color:var(--bone);font-weight:600;font-size:14px}.hp-data{border-color:color-mix(in srgb,var(--amber) 55%,transparent);box-shadow:inset 3px 0 0 var(--amber)}.hp:hover,.hp:focus-visible{border-color:var(--amber)}</style><!-- paths-mini:end -->
-        <ul class="eco" id="eco" aria-label="What the database holds">
-          <li><a href="#humanoids"><b id="h-n">130</b><span>humanoid robot models</span></a></li>
-        </ul>
-        <div class="cta-row">
-          <a class="btn primary" href="#humanoids" id="cta-h">Browse the humanoids</a>
-          <a class="btn" href="#categories" id="cta-db">See the ten categories</a>
-          <a class="btn" href="/app/#search" id="cta-search">Search every category</a>
-        </div>
         <div class="search">
           <label class="lbl" for="q">Search humanoids</label>
           <div class="field">
@@ -632,6 +661,11 @@ html.dlg-open{overflow:hidden}
           </div>
           <a class="qall" id="q-all" href="/app/#search">Search every category: robots, companies, deployments, sectors and places →</a>
         </div>
+        <div class="cta-row">
+          <a class="btn primary" href="#humanoids" id="cta-h">Browse the humanoids</a>
+          <a class="btn" href="#categories" id="cta-db">See the ten categories</a>
+          <a class="btn" href="/app/#search" id="cta-search">Search every category</a>
+        </div>
         <div class="quick" id="quick">
           <span class="lbl">Or open</span>
           <button class="chip" type="button" data-pick="Atlas">Atlas</button>
@@ -641,6 +675,13 @@ html.dlg-open{overflow:hidden}
           <button class="chip" type="button" data-pick="Talos">Talos</button>
           <button class="chip accent" type="button" id="rnd">Random</button>
         </div>
+        <!-- paths-mini:start --><div class="hero-paths" aria-label="Two ways to go further">
+          <a class="hp hp-data" href="#paths"><span class="lbl hi">Full data access</span><b>Use the evidence to make your own decisions.</b><span>US$100 per year, billed annually</span></a>
+          <a class="hp hp-rep" href="#paths"><span class="lbl">Custom company reports</span><b>Our expertise, applied to your company’s decisions.</b><span>US$1,000 per report · not available to order yet</span></a>
+        </div><style>.hero-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px;margin:14px 0 18px}.hp{display:grid;gap:3px;padding:10px 12px;border:1px solid var(--line);text-decoration:none;color:var(--bone-2);font-size:13px;line-height:1.35}.hp b{color:var(--bone);font-weight:600;font-size:14px}.hp-data{border-color:color-mix(in srgb,var(--amber) 55%,transparent);box-shadow:inset 3px 0 0 var(--amber)}.hp:hover,.hp:focus-visible{border-color:var(--amber)}</style><!-- paths-mini:end -->
+        <ul class="eco" id="eco" aria-label="What the database holds">
+          <li><a href="#humanoids"><b id="h-n">130</b><span>humanoid robot models</span></a></li>
+        </ul>
       </div>
 
       <!-- evolution:start -->
@@ -1676,6 +1717,38 @@ html.dlg-open{overflow:hidden}
   }
   fig.querySelector('.ladder').addEventListener('click', show);
   var hero = document.querySelector('.adopt-hero'); if (hero) hero.addEventListener('click', show);
+})();
+</script>
+<script>
+/* Categories menu (23 and 25 Nov 2026). The ten links stay inline while they fit; otherwise the clock goes first, then
+   the links fold into an explicit menu behind the Categories button. Without this script the bar scrolls as before. */
+(function () {
+  var hud = document.querySelector('.hud'), nav = document.getElementById('cat-menu'), btn = document.getElementById('cat-toggle');
+  if (!hud || !nav || !btn) return;
+  var root = document.documentElement;
+  function setOpen(open, focusBack) {
+    hud.classList.toggle('cats-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    if (!open && focusBack) btn.focus();
+  }
+  function fit() {
+    var wasOpen = hud.classList.contains('cats-open');
+    hud.classList.remove('cats-compact', 'cats-open', 'no-clock'); root.classList.remove('cats-compact'); btn.hidden = true;
+    var over = function () { return nav.scrollWidth > nav.clientWidth + 1; };
+    if (over()) hud.classList.add('no-clock');
+    if (over()) {
+      hud.classList.remove('no-clock'); hud.classList.add('cats-compact'); root.classList.add('cats-compact'); btn.hidden = false;
+      if (wasOpen) setOpen(true);
+    } else btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', function () { setOpen(btn.getAttribute('aria-expanded') !== 'true'); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a') && hud.classList.contains('cats-compact')) setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && hud.classList.contains('cats-open')) setOpen(false, true); });
+  document.addEventListener('click', function (e) { if (hud.classList.contains('cats-open') && !hud.contains(e.target)) setOpen(false); });
+  hud.addEventListener('focusout', function (e) { if (hud.classList.contains('cats-open') && e.relatedTarget && !hud.contains(e.relatedTarget)) setOpen(false); });
+  fit();
+  if (window.ResizeObserver) new ResizeObserver(function () { fit(); }).observe(hud); else window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();
 </script>
 </body>

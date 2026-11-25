@@ -317,10 +317,11 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}${refresh ? `<meta h
 <link rel="stylesheet" href="/assets/pages.css?v=${CSS_VERSION}">
 ${head}</head>
 <body>
-<header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><nav class="cats" aria-label="Categories">${nav(section)}</nav></header>
+<header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><button class="cat-toggle" id="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-menu" hidden>Categories<span class="chev" aria-hidden="true"></span></button><nav class="cats" id="cat-menu" aria-label="Categories">${nav(section)}</nav></header>
 <main${wide ? ' class="wide"' : ''}>
 ${body}
 </main>${tail}
+<script src="/assets/nav.js?v=${assetVersion('assets/nav.js')}" defer></script>
 ${section ? "<script>(function(){var a=document.querySelector('nav.cats [aria-current]');if(a&&a.parentNode.scrollWidth>a.parentNode.clientWidth)a.parentNode.scrollLeft=a.offsetLeft-a.parentNode.offsetLeft-16;})();</script>" : ''}
 <footer class="foot"><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/method/">Method</a><a href="/subscribe/">Subscription and reports</a><a href="/agents/">Agents</a><a href="/app/">Subscriber app</a><a href="/privacy/">Privacy</a></nav><p>Why Humanoid? by Integrarobot. Help: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
 ${ANALYTICS}

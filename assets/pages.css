@@ -118,3 +118,16 @@ pre.code{overflow-x:auto;max-width:100%;padding:12px 14px;background:var(--ink-0
 pre.code code{font:inherit}
 .entity :not(pre) > code{overflow-wrap:anywhere;word-break:break-word}
 .entity pre.code{min-width:0;width:100%;box-sizing:border-box}
+/* Categories menu (25 Nov 2026): the ten links inline while they fit; otherwise an explicit Categories button (assets/nav.js). */
+.cat-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;margin-left:auto;background:transparent;border:1px solid var(--line-2);color:var(--bone);font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.cat-toggle[hidden]{display:none}
+.cat-toggle .chev{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.cat-toggle[aria-expanded="true"]{border-color:var(--amber);color:var(--amber-hi)}
+.cat-toggle[aria-expanded="true"] .chev{transform:translateY(2px) rotate(-135deg)}
+.cat-toggle:focus-visible,.top nav.cats a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.top.cats-compact{flex-wrap:nowrap}
+.top.cats-compact nav.cats{display:none}
+.top.cats-compact.cats-open nav.cats{display:grid;position:absolute;left:0;right:0;top:100%;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr));gap:0 20px;margin:0;padding:6px clamp(16px,4vw,40px) 14px;background:var(--ink-0);border-bottom:1px solid var(--line-2);box-shadow:0 18px 40px rgba(0,0,0,.5);max-height:calc(100dvh - 72px);overflow-y:auto;overflow-x:hidden}
+.top.cats-compact.cats-open nav.cats a{display:flex;align-items:center;min-height:48px;white-space:normal;border-bottom:1px solid var(--line)}
+.top.cats-compact.cats-open nav.cats a:focus-visible{outline-offset:-2px}
+@media (prefers-reduced-motion:reduce){.cat-toggle .chev{transition:none}}

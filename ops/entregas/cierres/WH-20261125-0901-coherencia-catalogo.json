@@ -1,0 +1,73 @@
+{
+  "id": "WH-20261125-0901-coherencia-catalogo",
+  "tarea": "Coherencia y limpieza del catálogo: proyecciones canónicas compartidas (Software, Other Robots, Humanoids), una política de estado actual en Deployments con su gráfico histórico explicado, parser de países, fechas de frescura por módulo, Software y Humanoids limpios y método E0-E5 sin inventar",
+  "origen": "Javier (autorización del 25/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-25T09:01:54+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 101 (fusionado como 9c7e9d0): catálogo canónico de directorios aplicado en la importación (server/src/catalogue/directory.js). Identidad exacta (misma dirección exacta y mismo nombre). Solo se excluyen los encabezados revisados de la especificación. Software: 148 filas de origen, 141 filas listadas, 138 entradas y 3 pertenencias. Other Robots: 560.",
+    "PR 101: Humanoids sincronizado con la pestaña actual: 212 registros (131 conservados, 2 renombrados con su ID, 81 nuevos; Darwin conserva el 134). Skild Brain (82), Natura-1 (130) y Orbit (113) reclasificados fuera del recuento, con página histórica etiquetada «Reclassified as…». PokeBot (132) va con alcance incierto, fuera del titular, y movilidad Wheeled con su extracto.",
+    "PR 101: política única de estado actual (server/src/public/status.js): la fuente fechada más reciente. Las fechas son intervalos de calendario real. Desempate visible en 5 casos y 11 casos sin fecha aparte. El gráfico de evolución conserva su regla histórica y lo explica.",
+    "PR 101: el parser de países distingue país, varios países sin nombrar y emplazamiento desconocido, y conserva la nota completa. Fechas de frescura por categoría en la portada. Reports: 12 informes externos y 1 análisis propio. E0-E5: el maestro no los define, así que se dice y no se explican ni se ordenan.",
+    "PR 101: fechas de lanzamiento del gráfico de Humanoids solo de lanzamientos o presentaciones del modelo. Fundaciones, financiación, inicios de proyecto, reservas, planes y fechas en prosa quedan fuera, cada uno con su motivo. La cobertura es parcial: 68 de 212.",
+    "PR 102 (fusionado como f70f233): el hero, el índice y el panel de la portada, y la lista de la app, cuentan entradas canónicas: Software 138 en todas partes, con la nota de filas una sola vez. Regresión en verify-site, test-coherence y verify-premium-app, para visitante y suscriptor, al abrir, filtrar y volver.",
+    "PR 102: Deployments regenerado desde el maestro de las 06:44 UTC del 25/11/2026: 197 registros (6 nuevos), 125 casos (3 nuevos) y 86 organizaciones. Se añaden las páginas de empresa de los fabricantes de los 81 robots nuevos. Los casos se etiquetan como «robot deployment cases».",
+    "Worker: bundles reproducibles de 9c7e9d0 (staging 130cc17d…, producción 1df56647…) desplegados por Codex desde el Dashboard. Sin migraciones ni cambios de variables, secretos, bindings o precios. Importaciones de prueba (07:12) y de producción (07:18) ejecutadas desde el flujo de importación existente."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 101 (coherencia)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/101"
+    },
+    {
+      "etiqueta": "PR 102 (seguimiento: Software 138 y Deployments 197)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/102"
+    },
+    {
+      "etiqueta": "Commit publicado 9c7e9d0",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/9c7e9d0816c0f91ef68211ce97cb9dee24352ced"
+    },
+    {
+      "etiqueta": "Commit publicado f70f233",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/f70f233a66e777a97b5655e4c81c935b0b0ada95"
+    },
+    {
+      "etiqueta": "Portada",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "Deployments",
+      "url": "https://whyhumanoid.com/deployments/"
+    },
+    {
+      "etiqueta": "Software",
+      "url": "https://whyhumanoid.com/software/"
+    },
+    {
+      "etiqueta": "App, Software",
+      "url": "https://whyhumanoid.com/app/#software"
+    }
+  ],
+  "despliegue": [
+    "Pages publicado desde main en 9c7e9d0 (PR 101) y f70f233 (PR 102), con CI en verde en las dos.",
+    "Worker de producción: bundle 1df56647a5b66c8594130e851280be51a932aab3d390cba3b459a6fab8eafe61 de 9c7e9d0, versión activa e610b74d, desplegado por Codex desde el Dashboard. El staging va con el bundle 130cc17d… y STAGING_SITE_COMMIT=9c7e9d0. Sin migraciones ni cambios de variables, secretos, bindings o precios.",
+    "Importaciones con el flujo existente: prueba a las 07:12 UTC y producción a las 07:18 UTC, ambas leyendo el maestro de las 06:44 UTC.",
+    "La API no necesita otro bundle: el de f70f233 solo cambia la copia de la app incrustada en workers.dev, que no se ha desplegado, y la app pública la sirve Pages corregida."
+  ],
+  "verificaciones": [
+    "Codex, verificación independiente final sobre f70f233. La API de producción coincide en identidades y campos con los 212 Humanoids, las 141 filas y 138 entradas de Software y las 560 de Other Robots. Solo difiere la valoración dinámica de UBTECH (id 91, GOOGLEFINANCE).",
+    "Codex: las 197 filas públicas de Deployments coinciden valor a valor (125 casos, 114 fechados y 11 sin fecha), con 0 diferencias. Pasan sus 17 pruebas de coherencia y evolución.",
+    "Codex, con un suscriptor real en Chrome en whyhumanoid.com/app/#software: la lista marca 138 y el panel 138/141. Se mantiene tras filtrar Lightwheel (1 entrada, 2 filas), pasar a Other Robots y volver. La nota de recuento ya no se repite.",
+    "Codex: la portada muestra 138 entradas de software y 197 registros; Deployments muestra 125 casos, sin opciones de país de socio o sin confirmar. El Worker e610b74d está sano y el precio sigue en US$100 al año.",
+    "Claude, antes de fusionar: servidor 161/161; test-coherence, test-evolution y test-integrators; check-public y check-reserved sin ningún valor de pago publicado; audit-deployments 197/197 sin diferencias; verify-site; verify-pages; verify-staging --local 374/374; verify-evolution 183/183; verify-integrators 123/123; verify-premium-app.",
+    "Claude, en producción tras la importación de las 07:18: todas las comprobaciones de paridad y acceso pasan. Las 18 páginas y archivos de muestra son idénticos byte a byte a main. La app real, en 1366 y 375 px, mantiene 138 al abrir, filtrar y volver, sin desplazamiento horizontal."
+  ],
+  "pendientes": [
+    "Decisiones de identidad para Codex en el maestro, todas separadas y marcadas hasta su revisión: Reachy 23/119, DreamDojo 80/wm5, DreamZero 62/wm9 y Genesis AI 29/wm12 (misma dirección, otro nombre); NVIDIA Cosmos, Genesis, GentleHumanoid y ProtoBot 230/288 (mismo nombre, otra dirección).",
+    "Definiciones de E0-E5 en el maestro. Investment conserva descripciones en español (backlog).",
+    "Opcional: desplegar el bundle de f70f233 solo para alinear la copia de la app incrustada en workers.dev. La API no lo necesita."
+  ],
+  "siguiente_accion": "Codex avisa a Javier del cierre de la fase de coherencia y registra su confirmación de aviso. El trabajo de lanzamiento (informes, MCP, CLI y textos) sigue en el PR 103, sin fusionar, y no forma parte de este cierre."
+}
