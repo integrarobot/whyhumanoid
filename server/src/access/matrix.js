@@ -18,6 +18,8 @@ import { PUBLIC_FIELDS } from './fields.js';
 
 // The first-10-rows preview of 16 Nov 2026, kept only for the free tabs that still publish basic fields beyond it
 // (Stocks). Subscription tabs no longer use it: every row is public at its public fields (fields.js).
+import { REPORT_SERVICES, REPORTS_LIVE_OPEN } from '../orders/services.js';
+
 export const PREVIEW_ROWS = 10;
 
 // The one paid product. `product` is the entitlements.product value written by the Stripe webhook; existing
@@ -33,12 +35,12 @@ export const SUBSCRIPTION = Object.freeze({
 export const CATEGORIES = Object.freeze([
   {
     id: 'humanoids', label: 'Humanoids', path: '/humanoids/', access: 'free', datasets: ['humanoids'],
-    summary: 'Every humanoid robot in the catalogue: specifications, maker, funding, buyer checks and sources.',
+    summary: 'Compare every humanoid robot we track: what each can do on paper, who makes it, how it is funded and what to check before buying, with a source for every value.',
   },
   {
     id: 'deployments', label: 'Deployments', path: '/deployments/', access: 'subscription', datasets: ['deployments'],
     supporting: ['evidence-links', 'entities'], service: 'humanoid-adoption-assessment',
-    summary: 'Who is testing or using humanoid robots, where, for which task, with what status and source.',
+    summary: 'Where are robots moving beyond demonstrations? Explore the companies testing or using them, the jobs involved and the evidence behind each case.',
   },
   {
     // Product catalogue since 23 Nov 2026 (server/src/components/catalogue.js); the related software block is supporting.
@@ -49,16 +51,16 @@ export const CATEGORIES = Object.freeze([
   },
   {
     id: 'integrators', label: 'Integrators', path: '/integrators/', access: 'free', datasets: ['integrators'],
-    summary: 'Who delivers humanoid integration, software, training and support services, on which platforms and where, with the evidence behind each claim.',
+    summary: 'Find who can deliver humanoid integration, software, training and support: on which platforms, in which territory, and with what evidence behind each claim.',
   },
   {
     id: 'software', label: 'Software', path: '/software/', access: 'free', datasets: ['software'],
-    summary: 'Robot foundation models, vision-language-action models, world models and robotics software.',
+    summary: 'Find the models and software that make robots work: robot foundation models, vision-language-action models, world models, simulators and tools.',
   },
   {
     // Robot Learning Data Atlas (23 Nov 2026): the Datasets catalogue and the reported quantities of Dataset Metrics.
     id: 'datasets', label: 'Datasets', path: '/datasets/', access: 'free', datasets: ['datasets', 'dataset-metrics'],
-    summary: 'Where robot learning data comes from, what it contains, and how it can be used.',
+    summary: 'Where robot learning data comes from, what it contains, and how you can use it.',
     gap: 'Quantities are extracted resource by resource from primary sources: some resources have none yet, and licences are often not established.',
   },
   {
@@ -69,12 +71,12 @@ export const CATEGORIES = Object.freeze([
   },
   {
     id: 'investment', label: 'Investment', path: '/investment/', access: 'free', datasets: ['stocks'],
-    summary: 'Listed companies exposed to humanoid robotics, and the funding recorded for each humanoid maker.',
-    gap: 'The master workbook has no dedicated private-investment table: this category shows the Investment tab (listed companies) and the Valuation, Investors and Rounds fields of the Humanoids catalogue.',
+    summary: 'Follow the money around humanoid robotics: listed companies with exposure to the field, and the funding recorded for each humanoid maker.',
+    gap: 'Private funding appears through each humanoid maker: its recorded valuation, investors and funding rounds. There is no separate deal-by-deal list yet.',
   },
   {
     id: 'other-robots', label: 'Other Robots', path: '/other-robots/', access: 'free', datasets: ['other-robots'],
-    summary: 'Non-humanoid, service and educational robots tracked alongside the humanoid catalogue.',
+    summary: 'Robots beyond humanoids, from service and industrial machines to educational kits, tracked alongside the humanoid catalogue.',
   },
   {
     // Not imported into the backend: the Reports tab of the workbook plus a reviewed mapping of findings, published as the
@@ -115,22 +117,15 @@ export const DATASET_ACCESS = Object.freeze({
   'data-space': { category: null, access: 'subscription', offer: false },
 });
 
-// Custom company reports (Javier, 24 Nov 2026): Integrarobot's analysis and judgement applied to one company's
-// decisions, US$1,000 each, separate from the subscription and with no subscription prerequisite. Ordering and payment
-// stay DISABLED: scope, workflow and messaging come later, so the site says "Not available to order yet" and offers no
-// form, checkout or delivery promise. The ids are kept from 23 Nov 2026 (stable anchors).
-export const SERVICES = Object.freeze([
-  {
-    id: 'humanoid-adoption-assessment', category: 'deployments', name: 'Robot integration diagnostic',
-    price: 'US$1,000', status: 'not_available', included_in_subscription: false, orderable: false,
-    summary: 'A report on whether, where and how robots could be integrated in your operation, with our analysis and judgement, drawing on the Deployments evidence.',
-  },
-  {
-    id: 'component-manufacturing-study', category: 'components', name: 'Industrial diversification report',
-    price: 'US$1,000', status: 'not_available', included_in_subscription: false, orderable: false,
-    summary: 'A report on whether your industrial capabilities could serve the robot components market, with our analysis and judgement, drawing on the Components research.',
-  },
-]);
+// Custom company reports (Javier, 24 Nov 2026; ordering flow 25 Nov 2026): Integrarobot's analysis applied to one
+// company's decision, US$1,000 each as a one-off payment, separate from the subscription in both directions and with no
+// subscription prerequisite. Names, summaries and the switch that opens live ordering (REPORTS_LIVE_OPEN) live in
+// server/src/orders/services.js; until it is true the site says "Not available to order yet". The ids are kept from
+// 23 Nov 2026 (stable anchors).
+export const SERVICES = Object.freeze(REPORT_SERVICES.map((s) => Object.freeze({
+  id: s.id, category: s.category, name: s.name, summary: s.summary,
+  price: 'US$1,000', status: REPORTS_LIVE_OPEN ? 'available' : 'not_available', included_in_subscription: false, orderable: REPORTS_LIVE_OPEN,
+})));
 
 export const CATEGORIES_BY_ID = new Map(CATEGORIES.map((c) => [c.id, c]));
 

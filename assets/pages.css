@@ -114,6 +114,10 @@ table.dir td:first-child{white-space:nowrap}
   .robot-figure{order:2}
   .robot-figure img{height:min(68vh,440px)}
 }
+pre.code{overflow-x:auto;max-width:100%;padding:12px 14px;background:var(--ink-0,#0b0c0e);border:1px solid var(--line);font:13px/1.5 var(--f-mono);white-space:pre}
+pre.code code{font:inherit}
+.entity :not(pre) > code{overflow-wrap:anywhere;word-break:break-word}
+.entity pre.code{min-width:0;width:100%;box-sizing:border-box}
 /* Categories menu (25 Nov 2026): the ten links inline while they fit; otherwise an explicit Categories button (assets/nav.js). */
 .cat-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;margin-left:auto;background:transparent;border:1px solid var(--line-2);color:var(--bone);font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap}
 .cat-toggle[hidden]{display:none}

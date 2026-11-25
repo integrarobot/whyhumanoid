@@ -191,7 +191,10 @@ test('locators and deep links: every finding has a passport on its report page a
     for (const f of atlas.findings.filter((x) => x.report === r.id)) {
       const pp = d.getElementById(`f-${f.id}`);
       assert.ok(pp, f.id);
-      assert.match(pp.textContent, new RegExp(`Reports row ${f.cell.row}, column ${f.cell.column}`));
+      // The passport quotes the note the finding comes from (its literal excerpt), without internal row and column
+      // pointers (launch copy, 25 Nov 2026); the excerpt itself is still checked against its cell by export-reports.
+      assert.ok(pp.textContent.includes(f.cell.excerpt.slice(0, 40)), `${f.id}: the source note is quoted`);
+      assert.doesNotMatch(pp.textContent, /Reports row \d+, column [A-Z]/, `${f.id}: no internal cell pointer`);
       if (f.check.status === 'verified') assert.ok(pp.querySelector(`a[href="${r.url}"]`) && pp.textContent.includes(f.locator), f.id);
     }
   }

@@ -292,7 +292,7 @@ function coverageMatrix(m) {
   }).join('');
   const key = Object.entries(atlas.vocabulary.coverage_states).map(([k, l]) => `<span class="cv-${STATE_GLYPH[k]}"><i aria-hidden="true"></i>${esc(l)}</span>`).join('');
   return `<section class="atlas-sec" id="coverage" aria-labelledby="coverage-h">
-<div class="sec-h"><p class="eyebrow">1 · Coverage</p><h2 id="coverage-h">Which report speaks to which question</h2><p>Each cell is a report and a theme. Its state comes from the master extraction and from the findings reviewed so far; the number is how many findings the cell holds. Select a cell to see them.</p></div>
+<div class="sec-h"><p class="eyebrow">1 · Coverage</p><h2 id="coverage-h">Which report speaks to which question</h2><p>Each cell is a report and a theme. Its state comes from our first reading of each report and from the findings checked so far; the number is how many findings the cell holds. Select a cell to see them.</p></div>
 <div class="rp-key">${key}</div>
 <div class="scroll rp-cov-wrap"><table class="rp-cov"><thead>${head}</thead><tbody>${body}</tbody></table></div>
 </section>`;
@@ -386,7 +386,7 @@ function findingsTable(m) {
     return `<tr id="row-${esc(f.id)}" data-f="${esc(f.id)}" data-theme="${f.theme}" data-report="${r.id}" data-check="${f.check.status}" data-kind="${f.kind}"><td class="ft-s"><a href="${reportPath(r)}#f-${esc(f.id)}" data-f="${esc(f.id)}">${esc(f.statement)}</a></td><td class="ft-v">${esc(valueText(f))}</td><td>${esc(th.label)}<br><span class="dim">${esc(atlas.vocabulary.kinds[f.kind])}</span></td><td><a href="${reportPath(r)}">${esc(m.shortPub(r))}</a>${f.appears_in.length > 1 ? `<br><span class="dim">in ${f.appears_in.length} reports</span>` : ''}</td><td>${esc(years)}</td><td>${badge(f)}</td></tr>`;
   }).join('');
   return `<section class="atlas-sec" id="findings" aria-labelledby="findings-h">
-<div class="sec-h"><p class="eyebrow">3 · Every finding</p><h2 id="findings-h">All ${atlas.findings.length} findings</h2><p>The table behind every chart. Each finding has a passport: wording, report, original attribution, page, unit, denominator, geography, years, scenario, assumptions, check and the master cell it comes from.</p></div>
+<div class="sec-h"><p class="eyebrow">3 · Every finding</p><h2 id="findings-h">All ${atlas.findings.length} findings</h2><p>The table behind every chart. Each finding has a passport: wording, report, original attribution, page, unit, denominator, geography, years, scenario, assumptions, check.</p></div>
 <form class="rp-filters" id="rp-filters" hidden aria-label="Filter the findings">
 <label><span class="fl">Theme</span><select name="theme"><option value="">All themes</option>${themes.map((t) => opt(t.key, t.label, cnt((f) => f.theme === t.key))).join('')}</select></label>
 <label><span class="fl">Report</span><select name="report"><option value="">All reports</option>${atlas.reports.map((r) => opt(r.id, r.short, cnt((f) => f.report === r.id))).join('')}</select></label>
@@ -415,7 +415,7 @@ function methodSection(m) {
   return `<section class="atlas-sec" id="method" aria-labelledby="method-h">
 <div class="sec-h"><p class="eyebrow">5 · Method</p><h2 id="method-h">How the findings were built and checked</h2></div>
 <ul class="fine rp-method">
-<li><b>Source.</b> The Reports tab of the Why Humanoid? workbook: ${n.reports} report editions with their main conclusions, extracted automatically and marked for review. Each finding here points to the row, column and text of the cell it comes from.</li>
+<li><b>Source.</b> Our research on ${n.reports} report editions with their main conclusions, extracted automatically and marked for review. Each finding quotes the note it comes from.</li>
 <li><b>Check.</b> ${n.reports_checked} originals were opened; ${n.findings_checked} findings were found on the page cited, with a phrase of at most 30 words recorded as proof. ${n.findings_pending} are extracted but not yet checked, ${n.findings_unreachable} come from ${plural(n.reports_unreachable, 'original')} that could not be reached, and ${n.findings_withheld} is withheld because its extraction is ambiguous. Only checked findings are drawn.</li>
 <li><b>Repeats.</b> A figure cited by several reports is one original estimate, drawn once: ${n.findings} findings hold ${n.original_estimates} original estimates, ${n.repeated_estimates} of them repeated across reports.</li>
 <li><b>Units.</b> Values keep the unit, currency, qualifier, geography, scope, denominator and year the report gives. Nothing is converted, averaged, interpolated or extended to a common year. A spread across publishers is dispersion, not a confidence interval.</li>
@@ -423,7 +423,7 @@ function methodSection(m) {
 <li><b>Mentions.</b> A constraint named by several reports is not ranked by its mentions, and a supplier named in a report is not evidence of supply.</li>
 <li><b>What this is not.</b> Findings are the reports’ claims as stated, not facts verified by Why Humanoid?. Read each report for its full argument.</li>
 </ul>
-<p class="prov">Snapshot of the workbook exported ${esc(dateText(String(m.atlas.snapshot.exported_at).slice(0, 10)))}; findings checked on ${esc(dateText(m.atlas.findings.find(verified)?.check.checked_on))}.</p>
+<p class="prov">Data as of ${esc(dateText(String(m.atlas.snapshot.exported_at).slice(0, 10)))}; findings checked on ${esc(dateText(m.atlas.findings.find(verified)?.check.checked_on))}.</p>
 </section>`;
 }
 
@@ -482,7 +482,6 @@ ${head ? `<p class="rp-headline">${badge(head)} ${esc(head.statement)}</p>` : ''
     ['Access', esc(ACCESS[r.access] ?? r.access)], ['Restrictions', r.restrictions ? esc(r.restrictions) : null], ['Hosted by', r.host_note ? esc(r.host_note) : null],
     ['Original', `<a href="${esc(r.url)}" rel="noopener noreferrer">${esc(host(r.url))} ↗</a>`],
     ['Check', check],
-    ['Master row', `Reports tab, row ${esc(r.sheet_row)}`],
   ])}</section>
 <section><h2>Coverage</h2><p>What this report says about each of the atlas’s seven questions. <a href="/reports/#coverage">Compare with the other reports</a>.</p>${covRow}</section>
 <section><h2>Findings <span class="dim">(${fs.length}: ${fs.filter(verified).length} checked)</span></h2><p>Each finding as the report states it, with its passport. Figures cited from another publisher name the original estimator.</p></section>

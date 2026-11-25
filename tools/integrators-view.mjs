@@ -22,7 +22,7 @@ const labelOf = (list, id) => list.find((x) => x.id === id)?.label ?? id;
 // A cell as the sheet states it; a statement that the sources do not establish it is marked as unknown.
 function cellHtml(p, field) {
   const v = p.fields[field];
-  if (v === null || v === undefined || String(v).trim() === '') return '<span class="na">Not recorded in the sheet</span>';
+  if (v === null || v === undefined || String(v).trim() === '') return '<span class="na">Not recorded</span>';
   const body = esc(v).replace(/\n/g, '<br>');
   return p.unknown.includes(field) ? `<span class="na" title="Not established in the reviewed sources">${body}</span>` : body;
 }
@@ -112,7 +112,7 @@ ${p.fields.canonical_name !== p.display_name ? `<p class="ip-cn">${esc(p.fields.
 function directory(atlas, companyPath) {
   const { counted, others } = sortProviders(atlas);
   return `<section class="atlas-sec" id="directory" aria-labelledby="directory-h">
-<div class="sec-h"><h2 id="directory-h">Directory</h2><p>Every provider in the sheet, with its evidence stage, roles, platforms, stated service coverage and named project as recorded. Each has a full profile with services, software, support, delivery, limitations and sources.</p></div>
+<div class="sec-h"><h2 id="directory-h">Directory</h2><p>Every provider we track, with its evidence stage, roles, platforms, stated service coverage and named project as recorded. Each has a full profile with services, software, support, delivery, limitations and sources.</p></div>
 ${filterForm(atlas)}
 <div id="if-lists">
 <h3 class="ip-lh" data-list="counted">Humanoid-specific providers <span class="dim">(${counted.length})</span></h3>
@@ -165,7 +165,7 @@ function method(atlas) {
   return `<section class="atlas-sec" id="method" aria-labelledby="method-h">
 <div class="sec-h"><h2 id="method-h">How to read this</h2></div>
 <ul class="fine">
-<li><b>Source.</b> The Integrators tab of the Why Humanoid? master workbook: ${atlas.source.rows} providers, ${atlas.source.columns} fields each, reviewed ${esc([...new Set(atlas.providers.map((p) => p.fields.reviewed_at))].join(', '))}. Values appear as the sheet states them; nothing is filled in or recalculated. Snapshot ${esc(String(atlas.snapshot ?? '').slice(0, 10))}.</li>
+<li><b>Source.</b> Our research on integrators: ${atlas.source.rows} providers, ${atlas.source.columns} fields each, reviewed ${esc([...new Set(atlas.providers.map((p) => p.fields.reviewed_at))].join(', '))}. Values appear as the sources state them; nothing is filled in or recalculated. Data as of ${esc(String(atlas.snapshot ?? '').slice(0, 10))}.</li>
 <li><b>Claims, not verified results.</b> Most records are provider or partner statements. Each profile shows its verification note and limitations next to the claims, with its sources.</li>
 <li><b>Who counts.</b> ${atlas.counts.humanoid} providers show explicit humanoid work or a humanoid offering. That is not ${atlas.counts.humanoid} validated production integrators: the evidence chart shows what kind of evidence each record has. CA3 (requested specialist exception, simulated tests only) and three historical records with unconfirmed humanoid scope are listed but never counted.</li>
 <li><b>Evidence groups.</b> ${atlas.groups.map((g) => `${esc(g.label)}: ${esc(g.explanation)}`).join(' ')} Each provider’s group cites a phrase of its own Evidence stage cell.</li>
@@ -184,7 +184,7 @@ export function renderIntegratorsCategory(atlas, { companyPath, casePath, index,
 <header class="atlas-head">
 <p class="kicker">Category ${index} of ${total}${badgeHtml}</p>
 <h1>Integrators</h1>
-<p class="lede">Who can deliver humanoid integration, software, training and support, on which platforms, in which territory and with what evidence. Every provider with its sources and limitations, as the master workbook records them.</p>
+<p class="lede">Who can deliver humanoid integration, software, training and support, on which platforms, in which territory and with what evidence. Every provider with its sources and limitations.</p>
 <dl class="atlas-counts">
 <div><dt>Providers listed</dt><dd>${n.providers}</dd></div>
 <div><dt>Humanoid-specific</dt><dd>${n.humanoid}</dd></div>
@@ -240,7 +240,7 @@ ${projHtml}
 ${sw}
 <h3>Sources for this profile</h3>
 <ul class="sources">${p.sources.map((u) => `<li>${ext(u, u)}</li>`).join('')}</ul>
-<p class="key">Website: ${ext(p.url)}. Contact the provider through its public website. Values as recorded in sheet row ${p.sheet_row} of the <a href="/integrators/">Integrators</a> category, reviewed ${esc(p.fields.reviewed_at)}; claims as stated by the sources, not independently verified. <a href="/integrators/#${esc(providerAnchor(p.id))}">Compare with other providers</a>.</p>
+<p class="key">Website: ${ext(p.url)}. Contact the provider through its public website. Values as recorded in the <a href="/integrators/">Integrators</a> category, reviewed ${esc(p.fields.reviewed_at)}; claims as stated by the sources, not independently verified. <a href="/integrators/#${esc(providerAnchor(p.id))}">Compare with other providers</a>.</p>
 </section>`;
 }
 

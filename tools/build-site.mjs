@@ -19,6 +19,8 @@ import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { pageRelations } from './relations.mjs';
 import { pageLinks } from './build-pages.mjs';
 import { CATEGORIES, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
+import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
+import { SUPPORT_EMAIL } from '../server/src/support.js';
 import { renderAdoption } from './adoption-view.mjs';
 import { renderEvolutionCarousel } from './evolution-view.mjs';
 import { robotPresentation } from './robot-presentation.mjs';
@@ -258,16 +260,16 @@ export function renderCategories(data) {
           <p class="pn">Access to research and data. It does not include a personalised recommendation.</p>
           <p class="pa">${CHECKOUT_OPEN ? '<a class="btn primary" href="/app/#subscribe">Subscribe for US$100 a year</a>' : '<span class="soon">New subscriptions open soon</span>'} <a href="/subscribe/">What the subscription includes</a></p></article>
         <article class="path p-rep"><p class="lbl">Custom company reports</p><h3>Our expertise, applied to your company’s decisions.</h3>
-          <p class="pp"><b>US$1,000</b> per report · separate from the subscription · no subscription needed</p>
+          <p class="pp"><b>US$1,000</b> per report · one-off payment · no subscription needed</p>
           <ul>${reportsList}</ul>
-          <p class="pn">Reports tailored to one company’s needs, where Integrarobot provides the analysis and judgement. Not included in the subscription.</p>
-          <p class="pa"><span class="soon">Not available to order yet</span> <a href="/subscribe/#reports">How reports differ from the subscription</a></p></article>
+          <p class="pn">${escHtml(BEFORE_PAYMENT)} Not included in the subscription.</p>
+          <p class="pa">${REPORTS_LIVE_OPEN ? '<a class="btn primary" href="/app/#reports">Order a report</a>' : '<span class="soon">Not available to order yet</span>'} <a href="/subscribe/#reports">How reports work</a></p></article>
       </div>
     </section>
     <section class="cats-sec" id="categories" aria-labelledby="cats-h">
       <div class="cats-head"><h2 class="h2" id="cats-h">Ten <em>categories</em></h2><p class="lbl">Free to browse · Deployments and Components list every entry, with their detail in the subscription</p></div>
       <ul class="catgrid">${items}</ul>
-      <p class="lbl">Also: <a href="#database">browse the workbook tabs</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>
+      <p class="lbl">Also: <a href="#database">browse every category as a table</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>
     </section>
     <!-- categories:end -->`;
 }
@@ -276,10 +278,17 @@ export function renderCategories(data) {
 export function renderPathsMini() {
   return `<!-- paths-mini:start --><div class="hero-paths" aria-label="Two ways to go further">
           <a class="hp hp-data" href="#paths"><span class="lbl hi">Full data access</span><b>Use the evidence to make your own decisions.</b><span>US$100 per year, billed annually${CHECKOUT_OPEN ? '' : ' · opening soon'}</span></a>
-          <a class="hp hp-rep" href="#paths"><span class="lbl">Custom company reports</span><b>Our expertise, applied to your company’s decisions.</b><span>US$1,000 per report · not available to order yet</span></a>
+          <a class="hp hp-rep" href="#paths"><span class="lbl">Custom company reports</span><b>Our expertise, applied to your company’s decisions.</b><span>US$1,000 per report · one-off${REPORTS_LIVE_OPEN ? ', ready to order' : ' · not available to order yet'}</span></a>
         </div><style>.hero-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px;margin:14px 0 18px}.hp{display:grid;gap:3px;padding:10px 12px;border:1px solid var(--line);text-decoration:none;color:var(--bone-2);font-size:13px;line-height:1.35}.hp b{color:var(--bone);font-weight:600;font-size:14px}.hp-data{border-color:color-mix(in srgb,var(--amber) 55%,transparent);box-shadow:inset 3px 0 0 var(--amber)}.hp:hover,.hp:focus-visible{border-color:var(--amber)}</style><!-- paths-mini:end -->`;
 }
+// The home footer's help line (Codex, 25 Nov 2026): the one public support address, as on every other page.
+export function renderFooterHelp() {
+  return `<!-- footer-help:start --><span class="lbl">Help: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a></span><!-- footer-help:end -->`;
+}
 export function renderIndex(html, data) {
+  const help = /<!-- footer-help:start -->[\s\S]*?<!-- footer-help:end -->/;
+  if (!help.test(html)) throw new Error('index.html has no footer-help block');
+  html = html.replace(help, () => renderFooterHelp());
   const mini = /<!-- paths-mini:start -->[\s\S]*?<!-- paths-mini:end -->/;
   if (!mini.test(html)) throw new Error('index.html has no paths-mini block');
   html = html.replace(mini, () => renderPathsMini());

@@ -8,6 +8,7 @@
 //      free preview rows; no record identifiers.
 //   4. The sitemap lists exactly the current pages; retired addresses redirect (without JavaScript) and are not listed;
 //      404.html sends an unknown robot slug with a known id to the current page.
+import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
 import { JSDOM } from 'jsdom';
 import { existsSync, readFileSync } from 'node:fs';
 import { SITE, buildPages, publishedReports, reportPath, sitemapUrls } from './build-pages.mjs';
@@ -300,7 +301,7 @@ if (went !== rb.path) fail(`404.html: /robots/any-old-name-${rb.id}/ went to ${w
     if (!/not facts verified/.test(pd.body.textContent)) fail(`/deployments/${slug}/: no caveat`);
   }
   const offer = d.getElementById('offer');
-  if (!offer || !/US\$100/.test(offer.textContent) || !/Not available to order yet/.test(offer.textContent)) fail('/deployments/: the two paths are missing');
+  if (!offer || !/US\$100/.test(offer.textContent) || !offer.textContent.includes(BEFORE_PAYMENT) || !(REPORTS_LIVE_OPEN ? offer.querySelector('a[href="/app/#reports"]') : /Not available to order yet/.test(offer.textContent))) fail('/deployments/: the two paths are missing or do not match the report sales state');
   if (!d.querySelector('script[src^="/assets/deployments.js?v="]')) fail('/deployments/: filter script missing');
   if (/No task description in the sheet|No metric in the sheet/.test(d.body.textContent)) fail('/deployments/: a paid field is shown as missing');
   const sub = doc('/subscribe/');

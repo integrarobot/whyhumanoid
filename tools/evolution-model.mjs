@@ -176,7 +176,7 @@ function deployments(prev) {
   return {
     id: 'deployments', label: 'Deployments', path: '/deployments/', type: 'stack',
     title: 'Deployment cases documented, by the most advanced status documented so far',
-    subtitle: 'Evidence chronology: each case counts from its first dated public source, at the most advanced status its sources had documented by the end of each quarter. Not deployment start dates and not an operating fleet.',
+    subtitle: 'Follow what public sources had documented by each date. This shows the history of the evidence, rather than when each robot started work: each case counts from its first dated report, at the most advanced status documented by the end of each quarter.',
     meaning: 'Publication date of each source record, as recorded (evidence chronology, not the date work started). A year-only date counts from 31 December of that year and a month from its last day, or from the snapshot date for the current year or month. The status is the most advanced one documented by that date: a later status is never drawn earlier, and a later source that says less does not erase it, so this series cannot show a regression. Undated records stay outside the series.',
     unit: 'cases', precision: 'quarter',
     domain: { start: `${y0}-01-01`, end: snapshot },
@@ -192,7 +192,7 @@ function deployments(prev) {
         { reason: 'Cases whose records all lack a publication date', count: neverDated },
         { reason: `Records without a publication date (of ${prev.rows.length})`, count: prev.rows.length - datedRecords },
       ],
-      note: `${coarseNow} records dated only by the current year or month count from the snapshot date. ${someUndated} placed ${someUndated === 1 ? 'case also has' : 'cases also have'} undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead (server/src/public/status.js), so their totals differ: currently ${DEPLOYMENT_STAGES.slice().reverse().map((s) => `${current[s.key]} ${s.label.toLowerCase()}`).join(', ')} among the ${cases.length - neverDated} dated cases. Undated evidence is kept apart and never assigned a date.`,
+      note: `${coarseNow} records dated only by the current year or month count from the snapshot date. ${someUndated} placed ${someUndated === 1 ? 'case also has' : 'cases also have'} undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead, so their totals differ: currently ${DEPLOYMENT_STAGES.slice().reverse().map((s) => `${current[s.key]} ${s.label.toLowerCase()}`).join(', ')} among the ${cases.length - neverDated} dated cases. Undated evidence is kept apart and never assigned a date.`,
     },
     status: neverDated ? 'partial' : 'complete',
     status_note: `${last.value} of ${cases.length} cases placed in time; ${plural(neverDated, 'case')} with no dated record ${neverDated === 1 ? 'stays' : 'stay'} in the date-unknown bar, outside the time series.`,
@@ -385,7 +385,7 @@ function benchmarks(atlas, review) {
       note: `Meanings: ${meanings.map((m) => `${points.filter((p) => p.meaning === m).length} ${MEANINGS[m].label.toLowerCase()}`).join('; ')}. Hollow mark: dated by an announcement or a publication year instead of an arXiv submission.`,
     },
     status: 'partial', status_note: `${points.length} of ${atlas.benchmarks.length} benchmarks dated; not yet: ${undated.map((b) => b.name).join(', ') || 'none'}.`,
-    sources: [{ label: `Dated papers and announcements in the master, checked ${[...new Set(points.map((p) => p.checked_at))].sort().join(' and ')}`, url: '/data/benchmarks/atlas.json' }],
+    sources: [{ label: `Dated papers and announcements, checked ${[...new Set(points.map((p) => p.checked_at))].sort().join(' and ')}`, url: '/data/benchmarks/atlas.json' }],
     table: { head: ['Date', 'Benchmark', 'Setting', 'What the date is'], rows: points.map((p) => [p.date, p.label, rows.find((x) => x.key === p.row).label, p.note]) },
     secondary: benchmarkResults(atlas, review),
   };

@@ -56,3 +56,5 @@ jobs:
       - name: API tests
         working-directory: server
         run: npm ci && npm test
+      - name: Agent access with the real clients over HTTP (CLI process, official MCP client; subscriber, visitor, revoked key)
+        run: node --no-warnings --test tools/test-agents.mjs

@@ -11,6 +11,7 @@
 //   - deployment status filters count only what operational_status supports
 // Usage: cd tools && npm ci && node verify-site.mjs
 
+import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { JSDOM, VirtualConsole } from 'jsdom';
 
@@ -218,12 +219,14 @@ expect(document.querySelector('#cta-h')?.getAttribute('href') === '#humanoids' &
 {
   const mini = document.querySelector('.hero-paths');
   const paths = document.getElementById('paths');
-  expect(Boolean(mini) && /US\$100 per year, billed annually/.test(mini.textContent) && /not available to order yet/.test(mini.textContent), 'hero: the two paths are missing');
+  expect(Boolean(mini) && /US\$100 per year, billed annually/.test(mini.textContent) && (REPORTS_LIVE_OPEN ? /US\$1,000 per report · one-off, ready to order/ : /not available to order yet/).test(mini.textContent), 'hero: the two paths are missing');
   expect(Boolean(paths) && paths.compareDocumentPosition(document.getElementById('categories')) & 4, 'two paths block is not before the categories');
   const data = paths?.querySelector('.p-data')?.textContent ?? '', rep = paths?.querySelector('.p-rep')?.textContent ?? '';
   expect(/US\$100/.test(data) && /billed annually/.test(data) && /no free trial/.test(data) && /not include a personalised recommendation/.test(data), 'data path: price, billing or scope missing');
-  expect(/US\$1,000/.test(rep) && /Not available to order yet/.test(rep) && /Robot integration diagnostic/.test(rep) && /Industrial diversification report/.test(rep), 'reports path: price, names or availability missing');
-  expect(![...(paths?.querySelectorAll('.p-rep a') ?? [])].some((a) => /checkout|order|app\/#/.test(a.getAttribute('href'))), 'reports path links an order or checkout');
+  // Reports: the exact wording before payment always; an order link only once live report sales are open.
+  expect(/US\$1,000/.test(rep) && rep.includes(BEFORE_PAYMENT) && /Robot integration diagnostic/.test(rep) && /Industrial diversification report/.test(rep), 'reports path: price, names or the wording before payment missing');
+  const orderLinks = [...(paths?.querySelectorAll('.p-rep a') ?? [])].filter((a) => /checkout|order|app\/#/.test(a.getAttribute('href'))).map((a) => a.getAttribute('href'));
+  expect(REPORTS_LIVE_OPEN ? JSON.stringify(orderLinks) === JSON.stringify(['/app/#reports']) : !orderLinks.length && /Not available to order yet/.test(rep), `reports path: order link ${JSON.stringify(orderLinks)} does not match the sales state`);
   expect(!/€/.test(document.body.textContent), 'a euro price is still on the page');
 }
 expect(!document.querySelector('#db-buy, #db-panel .db-lock'), 'paywall elements still on the page');

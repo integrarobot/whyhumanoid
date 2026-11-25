@@ -697,6 +697,11 @@
     let m;
     if ((m = /^robot\/(\d+)$/.exec(h))) return { view: 'robot', id: Number(m[1]) };
     if ((m = /^company\/([A-Za-z0-9_.-]+)$/.exec(h))) return { view: 'company', id: m[1] };
+    if (h === 'reports') return { view: 'reports' };
+    if ((m = /^reports\/(ord_[A-Za-z0-9_-]+)$/.exec(h))) return { view: 'order', id: m[1] };
+    if (h === 'keys') return { view: 'keys' };
+    if (h === 'ops') return { view: 'ops' };
+    if ((m = /^ops\/(ord_[A-Za-z0-9_-]+)$/.exec(h))) return { view: 'ops', id: m[1] };
     if ((m = /^([a-z0-9-]+)\/(.+)$/.exec(h)) && state.datasets.some((d) => d.id === m[1])) return { view: 'record', dataset: m[1], id: m[2] };
     if (/^[a-z0-9-]+$/.test(h) && (!state.datasets.length || state.datasets.some((d) => d.id === h))) return { view: 'dataset', id: h };
     return null;
@@ -709,13 +714,297 @@
   async function render(force = false) {
     if (!force && rendered === location.hash) return;
     rendered = location.hash;
+    // A new view: responses for the previous one are dropped, and a pending questionnaire autosave is cancelled.
+    viewToken += 1;
+    // Leaving a questionnaire never loses typing: the unsaved answers captured at the last keystroke are sent now.
+    flushDraft();
     const r = parseHash() || { view: 'dataset', id: 'deployments' };
     if (r.view === 'robot') await showRobot(r.id);
     else if (r.view === 'company') await showCompany(r.id);
     else if (r.view === 'record') await showRecord(r.dataset, r.id);
     else if (r.view === 'search') await renderSearch(r);
+    else if (r.view === 'reports') await showReports();
+    else if (r.view === 'order') await showOrder(r.id);
+    else if (r.view === 'keys') await showKeys();
+    else if (r.view === 'ops') await showOps(r.id);
     else await show(r.id);
     if (r.view !== 'search') $('gs-jump').hidden = true;
+  }
+
+  // ---- Custom reports, agent access and the operator queue (25 Nov 2026) -------------------------------------------
+  // Reports: two one-off US$1,000 services, separate from the subscription. The order and its private questionnaire live
+  // on the server (every read and write needs this account's session); the browser only renders them.
+  const ORD = { services: null, forms: {}, timer: null, saving: false, current: null, pending: null, flushing: null };
+  // Unsaved questionnaire answers: { orderId, answers }, captured from the form at each change while it is on screen.
+  // flushDraft() sends them at once (on leaving the view, or when the autosave timer fires) and never reads the page.
+  function flushDraft() {
+    clearTimeout(ORD.timer);
+    const p = ORD.pending;
+    ORD.pending = null;
+    if (!p) return ORD.flushing;
+    // A draft that could not reach the server (connection, server error) is kept for the next try, unless newer typing
+    // has replaced it; reopening the order shows it.
+    const job = api(`/v1/reports/orders/${p.orderId}/draft`, { method: 'POST', body: { answers: p.answers } })
+      .then((r) => { if ((r.status === 0 || r.status >= 500) && !ORD.pending) ORD.pending = p; return r; });
+    ORD.flushing = job.finally(() => { if (ORD.flushing === job) ORD.flushing = null; });
+    return job;
+  }
+  // These views are not categories: the category list shows none as current.
+  const mark = (id) => { state.current = id; renderIndex(); };
+  // Each of these views claims the panel with a token and shows "Loading" at once; a response that arrives after the
+  // visitor has moved on (an order still loading when they click Custom reports) is dropped, never painted over the
+  // newer view.
+  let viewToken = 0;
+  const claim = (title) => { const t = ++viewToken; $('db-panel').setAttribute('aria-busy', 'true'); $('db-panel').innerHTML = `<h2 id="db-title">${esc(title)}</h2><p class="lbl">Loading…</p>`; return t; };
+  const stale = (t) => t !== viewToken;
+  const loaded = () => $('db-panel').removeAttribute('aria-busy');
+  const SUPPORT = 'javier@liderarmente.com';
+  const ORDER_STATUS = {
+    pending_payment: ['Waiting for payment', 'warn'],
+    awaiting_questionnaire: ['Questionnaire open', 'warn'],
+    awaiting_report: ['Questionnaire received · report in preparation', 'ok'],
+    in_progress: ['Report in preparation', 'ok'],
+    delivered: ['Report emailed', 'ok'],
+    cancelled: ['Checkout cancelled · nothing charged', ''],
+    payment_failed: ['Payment failed · nothing charged', 'bad'],
+  };
+  const PROBLEM = { required: 'Required', too_long: 'Too long', not_a_web_address: 'Enter a full web address (https://…)', not_an_option: 'Choose one of the options', must_be_true: 'Tick to confirm', one_to_three_tasks: 'One to three tasks', not_text: 'Enter text' };
+  const when = (t) => new Date(t * 1000).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' });
+  const statusBadge = (s) => { const [t, c] = ORDER_STATUS[s] || [s, '']; return `<span class="state ${c}">${esc(t)}</span>`; };
+
+  async function reportServices() {
+    if (!ORD.services) { const { status, data } = await api('/v1/reports/services', { auth: false }); ORD.services = status === 200 ? data : null; }
+    return ORD.services;
+  }
+  async function formFor(service) {
+    if (!ORD.forms[service]) { const { status, data } = await api(`/v1/reports/questionnaire/${service}`, { auth: false }); if (status === 200) ORD.forms[service] = data; }
+    return ORD.forms[service];
+  }
+
+  async function showReports() {
+    const panel = $('db-panel');
+    mark('reports');
+    const t = claim('Custom reports');
+    const svc = await reportServices();
+    if (stale(t)) return;
+    if (!svc) { panel.innerHTML = `<p>Custom reports are not available right now. Write to <a href="mailto:${SUPPORT}">${SUPPORT}</a>.</p>`; return; }
+    let orders = [];
+    if (state.session) { const r = await api('/v1/reports/orders'); if (r.status === 200) orders = r.data.orders; }
+    if (stale(t)) return;
+    loaded();
+    panel.innerHTML =
+      `<div class="db-panel-head"><div><h2 id="db-title">Custom reports</h2><p>Our analysis applied to your company's decision, as a private PDF report. Separate from the data subscription: no subscription needed, and the subscription does not include them.</p>` +
+      `<p class="db-hint"><b>${esc(svc.before_payment)}</b></p><p class="db-hint">${esc(svc.limits)}</p></div></div>` +
+      `<div class="ord-grid">${svc.services.map((s) => `<article class="panel ord-card"><h3>${esc(s.name)}</h3><p>${esc(s.summary)}</p><p class="lbl">${esc(s.price)} · one-off payment · no subscription required</p>` +
+        (!state.session ? '<p>Sign in with your email above to order. Your order and questionnaire stay in your account.</p>'
+          : s.checkout_available ? `<button class="btn ord-buy" type="button" data-service="${esc(s.id)}">Pay ${esc(s.price)} and open the questionnaire</button>`
+            : '<p><b>Not available to order yet.</b> Ordering opens after the payment flow has been tested.</p>') + '</article>').join('')}</div>` +
+      (state.session ? `<h3>Your orders</h3>${orders.length ? `<ul class="ord-list">${orders.map((o) => `<li><a href="#reports/${esc(o.id)}">${esc(o.service_name)}</a> ${statusBadge(o.status)} <span class="lbl">ordered ${when(o.created_at)}${o.due_at ? ' · report due by ' + esc(o.due_utc) : ''}</span></li>`).join('')}</ul>` : '<p>No orders yet.</p>'}` : '') +
+      `<p class="lbl">Questions about an order: <a href="mailto:${SUPPORT}">${SUPPORT}</a></p>`;
+    panel.querySelectorAll('.ord-buy').forEach((b) => b.addEventListener('click', async () => {
+      b.disabled = true;
+      const { status, data } = await api('/v1/reports/orders', { method: 'POST', body: { service: b.dataset.service } });
+      // Already paid (a payment confirmed late): the original order's questionnaire, not a new payment.
+      if (status === 200 && data.already_paid) { notice('Your payment for this report was confirmed. Your questionnaire is open below.'); location.hash = `#reports/${data.order_id}`; return; }
+      if (status === 200 && data.url) return location.assign(data.url);
+      b.disabled = false;
+      notice(status === 401 ? 'Sign in to order.'
+        : data.error === 'payment_processing' ? 'Your payment for this report is still being processed by your bank. We will open the questionnaire as soon as Stripe confirms it. Nothing more will be charged.'
+          : data.error === 'checkout_status_unknown_retry' ? 'We could not check your previous checkout with Stripe just now. Try again in a minute. No new payment was started.'
+            : data.error === 'payment_needs_review' ? `We need to check your previous payment by hand. Please write to ${SUPPORT}. Nothing more will be charged.`
+        : data.error === 'checkout_expiring_retry_shortly' ? 'Your previous checkout for this report is about to expire. Try again in about 15 minutes. No new payment was started.'
+          : data.error === 'checkout_in_progress_retry' ? 'Your checkout is being prepared. Try again in a moment. No new payment was started.'
+            : `Checkout is not available right now (${data.error || 'error'}). Nothing was charged. Write to ${SUPPORT} if this continues.`, true);
+    }));
+  }
+
+  // One field of the questionnaire, with its current value.
+  function fieldHtml(f, v, problems) {
+    const id = `q-${f.id}`;
+    const req = f.required ? ' <span class="req" aria-hidden="true">*</span>' : ' <span class="lbl">optional</span>';
+    const err = problems[f.id] ? `<p class="q-err" id="${id}-err">${esc(PROBLEM[problems[f.id]] || problems[f.id])}</p>` : '';
+    const hint = f.hint ? `<p class="q-hint" id="${id}-hint">${esc(f.hint)}</p>` : '';
+    const desc = [f.hint ? `${id}-hint` : '', problems[f.id] ? `${id}-err` : ''].filter(Boolean).join(' ');
+    const aria = `${f.required ? ' aria-required="true"' : ''}${desc ? ` aria-describedby="${desc}"` : ''}${problems[f.id] ? ' aria-invalid="true"' : ''}`;
+    const unknownBtn = f.unknown ? ` <button type="button" class="btn ghost q-unknown" data-for="${id}">Unknown</button>` : '';
+    let input;
+    if (f.kind === 'paragraph') input = `<textarea id="${id}" rows="4" maxlength="4000"${aria}>${esc(v ?? '')}</textarea>`;
+    else if (f.kind === 'select') input = `<select id="${id}"${aria}><option value="">Choose…</option>${f.options.map(([k, t]) => `<option value="${esc(k)}"${v === k ? ' selected' : ''}>${esc(t)}</option>`).join('')}</select>`;
+    else if (f.kind === 'multi') return `<fieldset class="q-f" data-f="${f.id}"><legend>${esc(f.label)}${req}</legend>${hint}<div class="q-multi">${f.options.map(([k, t]) => `<label><input type="checkbox" name="${id}" value="${esc(k)}"${(v || []).includes(k) ? ' checked' : ''}> ${esc(t)}</label>`).join('')}</div>${err}</fieldset>`;
+    else if (f.kind === 'tasks') {
+      const tasks = [0, 1, 2].map((i) => (v || [])[i] ?? '');
+      return `<fieldset class="q-f" data-f="${f.id}"><legend>${esc(f.label)}${req}</legend>${hint}${tasks.map((t, i) => `<label class="q-task">Task ${i + 1}${i ? ' <span class="lbl">optional</span>' : ''}<textarea id="${id}-${i}" rows="4" maxlength="4000">${esc(t)}</textarea></label>`).join('')}${err}</fieldset>`;
+    } else if (f.kind === 'ack') return `<div class="q-f q-ack" data-f="${f.id}"><label><input type="checkbox" id="${id}"${v === true ? ' checked' : ''}${aria}> ${esc(f.label)}${req}</label>${err}</div>`;
+    else input = `<input id="${id}" type="${f.kind === 'url' ? 'url' : 'text'}" maxlength="${f.kind === 'url' ? 300 : 200}" value="${esc(v ?? '')}"${aria}>`;
+    return `<div class="q-f" data-f="${f.id}"><label for="${id}">${esc(f.label)}${req}</label>${hint}<div class="q-in">${input}${unknownBtn}</div>${err}</div>`;
+  }
+  const allFields = (form) => form.fields.flatMap((f) => (f.extra ? [f, f.extra] : [f]));
+  function collect(form) {
+    const a = {};
+    for (const f of allFields(form)) {
+      const id = `q-${f.id}`;
+      if (f.kind === 'multi') a[f.id] = [...document.querySelectorAll(`input[name="${id}"]:checked`)].map((x) => x.value);
+      else if (f.kind === 'tasks') a[f.id] = [...document.querySelectorAll(`[id^="${id}-"]`)].filter((x) => x.tagName === 'TEXTAREA').map((x) => x.value);
+      else if (f.kind === 'ack') a[f.id] = Boolean($(id)?.checked);
+      else a[f.id] = $(id)?.value ?? '';
+    }
+    return a;
+  }
+  const answered = (f, v) => (f.kind === 'ack' ? v === true : Array.isArray(v) ? v.some((x) => String(x).trim()) : Boolean(String(v ?? '').trim()));
+
+  async function showOrder(orderId, { problems = {}, review = false } = {}) {
+    const panel = $('db-panel');
+    mark('reports');
+    const t = claim('Your report order');
+    if (!state.session) { panel.innerHTML = '<h2 id="db-title">Your report order</h2><p>Sign in with the email address you used to order. Your order and your answers are kept in your account.</p>'; return; }
+    // A draft still being sent (for example from leaving this order a moment ago) lands before the order is read back.
+    if (ORD.flushing) await ORD.flushing.catch(() => {});
+    if (stale(t)) return;
+    const { status, data } = await api(`/v1/reports/orders/${encodeURIComponent(orderId)}`);
+    if (stale(t)) return;
+    if (status !== 200) { loaded(); panel.innerHTML = `<h2 id="db-title">Order not found</h2><p>This order is not in your account. Sign in with the email address you used to order, or write to <a href="mailto:${SUPPORT}">${SUPPORT}</a>.</p>`; return; }
+    const o = data.order;
+    // Answers typed here that have not reached the server yet win over the copy the server returned.
+    if (o.status === 'awaiting_questionnaire' && ORD.pending?.orderId === o.id) o.answers = ORD.pending.answers;
+    ORD.current = o;
+    const form = await formFor(o.service);
+    if (stale(t)) return;
+    loaded();
+    const head = `<p class="lbl"><a href="#reports">Custom reports</a> / ${esc(o.service_name)}</p><h2 id="db-title">${esc(o.service_name)}</h2><p>${statusBadge(o.status)} <span class="lbl">Order ${esc(o.id)} · US$1,000 · ordered ${when(o.created_at)}</span></p>`;
+    if (o.status === 'pending_payment') {
+      panel.innerHTML = `${head}<p>We have not received the payment confirmation from Stripe yet. If you have paid, this usually takes a few seconds.</p><button class="btn" id="ord-check" type="button">Check payment again</button> <a class="btn ghost" href="#reports">Back</a><p class="lbl">Questions: <a href="mailto:${SUPPORT}">${SUPPORT}</a></p>`;
+      $('ord-check').addEventListener('click', async () => { await api(`/v1/reports/orders/${o.id}/reconcile`, { method: 'POST' }); showOrder(o.id); });
+      return;
+    }
+    if (['cancelled', 'payment_failed'].includes(o.status)) {
+      panel.innerHTML = `${head}<p>Nothing was charged for this order. You can order again from <a href="#reports">Custom reports</a>.</p>`;
+      return;
+    }
+    if (o.submitted) {
+      const values = o.answers || {};
+      panel.innerHTML = `${head}<div class="notice">We received your completed questionnaire on <b>${when(o.submitted_at)}</b>. We will email your report (PDF) to <b>${esc(state.me?.email || 'your account address')}</b> by <b>${esc(o.due_utc)}</b> (${esc(o.due_madrid)}).${o.status === 'delivered' ? ` Our records show the report was emailed on ${when(o.delivered_at)}.` : ''}</div>` +
+        `<p>To correct something you sent, write to <a href="mailto:${SUPPORT}">${SUPPORT}</a> with your order reference. The deadline above stays the same.</p>` +
+        `<h3>What you sent</h3><dl class="db-kv">${allFields(form).filter((f) => answered(f, values[f.id])).map((f) => `<dt>${esc(f.label)}</dt><dd>${esc(Array.isArray(values[f.id]) ? values[f.id].join('\n\n') : values[f.id] === true ? 'Yes' : values[f.id])}</dd>`).join('')}</dl>`;
+      return;
+    }
+    const values = o.answers || {};
+    const req = allFields(form).filter((f) => f.required);
+    const done = req.filter((f) => answered(f, values[f.id])).length;
+    if (review) {
+      const missing = req.filter((f) => !answered(f, values[f.id]));
+      panel.innerHTML = `${head}<h3>Review your answers</h3>` +
+        (missing.length ? `<div class="notice error" role="alert">${missing.length} required ${missing.length === 1 ? 'answer is' : 'answers are'} missing: ${missing.map((f) => esc(f.label)).join('; ')}.</div>` : '<p>Every required answer is there. Submitting starts the 24 hours: we will email your report within 24 hours of receiving it. You cannot edit the answers afterwards.</p>') +
+        `<dl class="db-kv">${allFields(form).filter((f) => answered(f, values[f.id])).map((f) => `<dt>${esc(f.label)}</dt><dd>${esc(Array.isArray(values[f.id]) ? values[f.id].join('\n\n') : values[f.id] === true ? 'Yes' : values[f.id])}</dd>`).join('')}</dl>` +
+        `<div class="row"><button class="btn ghost" id="q-back" type="button">Back to editing</button>${missing.length ? '' : ' <button class="btn" id="q-submit" type="button">Submit the questionnaire</button>'}</div>`;
+      $('q-back').addEventListener('click', () => showOrder(o.id));
+      $('q-submit')?.addEventListener('click', async () => {
+        $('q-submit').disabled = true;
+        const r = await api(`/v1/reports/orders/${o.id}/submit`, { method: 'POST', body: { answers: values } });
+        if (r.status === 200) { notice(r.data.already ? 'This questionnaire had already been submitted; the deadline is unchanged.' : 'Questionnaire received. Check your email for the confirmation with the deadline.'); return showOrder(o.id); }
+        if (r.status === 422) return showOrder(o.id, { problems: Object.fromEntries((r.data.problems || []).map((p) => [p.field, p.problem])) });
+        $('q-submit').disabled = false;
+        notice(`The questionnaire could not be submitted (${r.data.error || 'connection'}). Your answers are saved. Try again, or write to ${SUPPORT}.`, true);
+      });
+      return;
+    }
+    panel.innerHTML = `${head}<p>Payment received. Complete this private questionnaire about your company; answers in English or Spanish. Estimates, ranges and "Unknown" count as answers: we do not need financial statements. Answers are saved in your account as you type, so you can leave and come back. <b>We will email your report within 24 hours of receiving your completed questionnaire</b>; the 24 hours start when you submit it.</p>` +
+      `<p class="lbl">The report goes to ${esc(state.me?.email || 'your account address')}. To use another address, write to ${SUPPORT}. Do not include other people's personal contact details. We use your answers only to prepare and deliver this report. Documents can follow by email after you submit; there is no upload here.</p>` +
+      `<p class="q-progress" id="q-progress" aria-live="polite">${done} of ${req.length} required answers · <span id="q-saved">${o.draft_saved_at ? 'saved ' + when(o.draft_saved_at) : 'not saved yet'}</span></p><p class="lbl"><span class="req">*</span> required</p>` +
+      `<form id="q-form" novalidate>${form.fields.map((f) => fieldHtml(f, values[f.id], problems) + (f.extra ? fieldHtml(f.extra, values[f.extra.id], problems) : '')).join('')}` +
+      `<div class="row"><button class="btn ghost" id="q-save" type="button">Save now</button> <button class="btn" id="q-review" type="submit">Review and submit</button></div></form>`;
+    // Answers are read from the form only while this order's form is on screen; afterwards only the captured copy is used.
+    const capture = () => { if (!stale(t) && $('q-form')) ORD.pending = { orderId: o.id, answers: collect(form) }; };
+    const save = async () => {
+      capture();
+      const answers = ORD.pending?.orderId === o.id ? ORD.pending.answers : null;
+      const r = await flushDraft();
+      // The visitor may have left while the draft was on its way: then nothing on screen belongs to this order.
+      if (!r || stale(t) || !$('q-saved')) return Boolean(r && r.status === 200 && r.data?.saved);
+      if (r.status === 200 && r.data.saved) {
+        if (answers) o.answers = answers;
+        $('q-saved').textContent = 'saved ' + when(r.data.draft_saved_at);
+        $('q-progress').firstChild.textContent = `${r.data.progress.done} of ${r.data.progress.required} required answers · `;
+        return true;
+      }
+      $('q-saved').textContent = r.status === 200 ? 'not saved: check the marked answers' : 'not saved (connection); your text is still on this page';
+      if (r.data.problems) r.data.problems.forEach((p) => { const el = document.querySelector(`[data-f="${p.field}"]`); if (el && !el.querySelector('.q-err')) el.insertAdjacentHTML('beforeend', `<p class="q-err">${esc(PROBLEM[p.problem] || p.problem)}</p>`); });
+      return false;
+    };
+    $('q-form').addEventListener('input', () => { capture(); clearTimeout(ORD.timer); $('q-saved').textContent = 'saving…'; ORD.timer = setTimeout(save, 1500); });
+    $('q-form').addEventListener('change', () => { capture(); clearTimeout(ORD.timer); ORD.timer = setTimeout(save, 600); });
+    $('q-save').addEventListener('click', save);
+    $('q-form').addEventListener('click', (e) => {
+      const u = e.target.closest('.q-unknown');
+      if (u) { const el = $(u.dataset.for); if (el && !el.value.trim()) { el.value = 'Unknown'; el.dispatchEvent(new Event('input', { bubbles: true })); } }
+    });
+    $('q-form').addEventListener('submit', async (e) => { e.preventDefault(); if (await save()) showOrder(o.id, { review: true }); });
+  }
+
+  // Agent access: the same subscription for people and their agents. Keys are created here (shown once), listed and
+  // revoked; setup for the API, MCP and the CLI is on /agents/.
+  async function showKeys(created = null) {
+    const panel = $('db-panel');
+    mark('keys');
+    const t = claim('Agent access');
+    const docs = '<p>Setup for the HTTP API, MCP clients and the command-line tool: <a href="https://whyhumanoid.com/agents/">whyhumanoid.com/agents</a>. Fair use: 60 requests a minute and 5,000 a day per key.</p>';
+    if (!state.session) { panel.innerHTML = `<h2 id="db-title">Agent access</h2><p>Sign in to create API keys for your agents. They read the catalogue with your subscription: no extra charge.</p>${docs}`; return; }
+    const r = await api('/v1/api-keys');
+    if (stale(t)) return;
+    loaded();
+    const keys = r.status === 200 ? r.data.keys : [];
+    panel.innerHTML = `<h2 id="db-title">Agent access</h2><p>Your agents read the catalogue with your account: complete Deployments and Components while your subscription is active. When it ends, the paid rows stop (the API and the command line answer 403 there) and the public catalogue stays available. No extra charge; a revoked key stops working at once.</p>${docs}` +
+      (created ? `<div class="notice"><p><b>Your new key</b> (shown once; store it like a password):</p><p><code class="key">${esc(created)}</code></p></div>` : '') +
+      (full() ? `<form id="key-form" class="row"><label>Label <input id="key-label" maxlength="60" value="agent"></label> <button class="btn" type="submit">Create a key</button></form>` : '<p><b>Keys need an active data subscription.</b> Without one, the public catalogue needs no key at all.</p>') +
+      `<h3>Your keys</h3>${keys.length ? `<ul class="ord-list">${keys.map((k) => `<li><code>${esc(k.id)}…</code> ${esc(k.label || '')} <span class="lbl">created ${when(k.created_at)}${k.last_used_at ? ' · last used ' + when(k.last_used_at) : ''}${k.revoked_at ? ' · revoked ' + when(k.revoked_at) : ''}</span>${k.revoked_at ? '' : ` <button class="btn ghost key-revoke" type="button" data-id="${esc(k.id)}">Revoke</button>`}</li>`).join('')}</ul>` : '<p>No keys yet.</p>'}`;
+    $('key-form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const c = await api('/v1/api-keys', { method: 'POST', body: { label: $('key-label').value } });
+      if (c.status === 201) return showKeys(c.data.api_key);
+      notice(c.data.error === 'api_key_limit_reached' ? 'You have 5 active keys. Revoke one to create another.' : 'The key could not be created.', true);
+    });
+    panel.querySelectorAll('.key-revoke').forEach((b) => b.addEventListener('click', async () => { await api(`/v1/api-keys/${b.dataset.id}/revoke`, { method: 'POST' }); showKeys(); }));
+  }
+
+  // Operator queue: orders operators can see (server-side check), the submitted brief, the work state and the emails.
+  async function showOps(orderId) {
+    const panel = $('db-panel');
+    mark('ops');
+    const t = claim('Operator queue');
+    if (!orderId) {
+      const r = await api('/v1/ops/orders');
+      if (stale(t)) return;
+      loaded();
+      if (r.status !== 200) { panel.innerHTML = '<h2 id="db-title">Operator queue</h2><p>Operators only. Sign in with an operator address.</p>'; return; }
+      const now = Date.now() / 1000;
+      const failed = r.data.outbox.filter((m) => m.status !== 'sent');
+      panel.innerHTML = `<h2 id="db-title">Operator queue</h2>` +
+        (failed.length ? `<div class="notice error">${failed.length} email${failed.length === 1 ? '' : 's'} not sent yet. <button class="btn ghost" id="ops-retry" type="button">Retry now</button></div>` : '') +
+        `<div class="db-scroll"><table class="db-table"><thead><tr><th scope="col">Order</th><th scope="col">Service</th><th scope="col">Status</th><th scope="col">Buyer</th><th scope="col">Due</th></tr></thead><tbody>${r.data.orders.map((o) => `<tr><td><a href="#ops/${esc(o.id)}">${esc(o.id)}</a>${o.mode === 'test' ? ' <span class="lbl">test</span>' : ''}</td><td>${esc(o.service_name)}</td><td>${statusBadge(o.status)}</td><td>${esc(o.account_email || '')}</td><td>${o.due_at ? `<span class="${o.due_at < now && !['delivered'].includes(o.status) ? 'state bad' : ''}">${esc(o.due_utc)}</span>` : ''}</td></tr>`).join('') || '<tr><td colspan="5">No orders.</td></tr>'}</tbody></table></div>`;
+      $('ops-retry')?.addEventListener('click', async () => { await api('/v1/ops/outbox/retry', { method: 'POST', body: { ids: failed.map((m) => m.id) } }); showOps(); });
+      return;
+    }
+    const r = await api(`/v1/ops/orders/${encodeURIComponent(orderId)}`);
+    if (stale(t)) return;
+    if (r.status !== 200) { loaded(); panel.innerHTML = '<h2 id="db-title">Operator queue</h2><p>Not found or not allowed.</p>'; return; }
+    const o = r.data.order;
+    const form = await formFor(o.service);
+    if (stale(t)) return;
+    loaded();
+    const values = o.answers || {};
+    panel.innerHTML = `<p class="lbl"><a href="#ops">Operator queue</a> / ${esc(o.id)}</p><h2 id="db-title">${esc(o.service_name)}</h2><p>${statusBadge(o.status)} <span class="lbl">${esc(o.mode)} · ${esc(o.account_email || '')} · paid ${o.paid_at ? when(o.paid_at) : 'no'}${o.submitted_at ? ' · submitted ' + when(o.submitted_at) + ' · due ' + esc(o.due_utc) : ''}${o.delivered_at ? ' · delivered ' + when(o.delivered_at) : ''}</span></p>` +
+      (o.delivery_note ? `<p><b>Delivery record:</b> ${esc(o.delivery_note)}</p>` : '') +
+      `<h3>Brief${o.submitted ? ' (submitted, form ' + esc(o.form_version || '') + ')' : ' (draft, not submitted)'}</h3><dl class="db-kv">${allFields(form).filter((f) => answered(f, values[f.id])).map((f) => `<dt>${esc(f.label)}</dt><dd>${esc(Array.isArray(values[f.id]) ? values[f.id].join('\n\n') : values[f.id] === true ? 'Yes' : values[f.id])}</dd>`).join('') || '<dd>No answers yet.</dd>'}</dl>` +
+      `<h3>Work</h3><label>Note <textarea id="ops-note" rows="3" maxlength="2000">${esc(o.operator_note || '')}</textarea></label><div class="row">` +
+      (o.status === 'awaiting_report' ? '<button class="btn ghost" data-st="in_progress" type="button">Start work</button> ' : '') +
+      (['awaiting_report', 'in_progress'].includes(o.status) ? '<button class="btn" data-st="delivered" type="button">Record delivery (PDF emailed)</button> ' : '') +
+      '<button class="btn ghost" data-st="note" type="button">Save note</button></div><p class="lbl">Recording delivery needs a note (when and to which address the PDF was emailed). It does not send anything.</p>' +
+      `<h3>Emails</h3><ul class="ord-list">${o.outbox.map((m) => `<li>${esc(m.kind)} → ${esc(m.to_email)} <span class="state ${m.status === 'sent' ? 'ok' : 'bad'}">${esc(m.status)}</span> <span class="lbl">${m.attempts} attempt${m.attempts === 1 ? '' : 's'}${m.last_error ? ' · ' + esc(m.last_error) : ''}</span>${m.status === 'sent' ? '' : ` <button class="btn ghost ops-resend" type="button" data-id="${esc(m.id)}">Retry</button>`}</li>`).join('')}</ul>`;
+    panel.querySelectorAll('[data-st]').forEach((b) => b.addEventListener('click', async () => {
+      const u = await api(`/v1/ops/orders/${o.id}`, { method: 'POST', body: { status: b.dataset.st, note: $('ops-note').value } });
+      if (u.status !== 200) notice(u.data.error === 'delivery_note_required' ? 'Write the delivery note first (when and where the PDF was emailed).' : `Not saved (${u.data.error || 'error'}).`, true);
+      showOps(o.id);
+    }));
+    panel.querySelectorAll('.ops-resend').forEach((b) => b.addEventListener('click', async () => { await api('/v1/ops/outbox/retry', { method: 'POST', body: { ids: [b.dataset.id] } }); showOps(o.id); }));
   }
 
   async function refreshMe() {
@@ -750,7 +1039,7 @@
     // The home page's search form sends /app/?q=...: open the search with it.
     if (params.has('q') && !location.hash) history.replaceState(null, '', `${location.pathname}#${searchHash({ q: params.get('q').trim(), tags: [], category: '', page: 1 })}`);
     const [list, plan] = await Promise.all([api('/v1/datasets', { auth: false }), api('/v1/billing/plan', { auth: false })]);
-    if (list.status !== 200) return notice('The service is not available right now.', true);
+    if (list.status !== 200) return notice(`The service is not available right now. Please try again in a few minutes, or write to ${SUPPORT}.`, true);
     state.datasets = list.data.datasets;
     state.plan = plan.status === 200 ? plan.data : null;
     if (state.plan) $('price').textContent = state.plan.plan.price;
@@ -769,9 +1058,25 @@
     if (params.get('checkout') === 'success') {
       notice('Payment received. Full access opens as soon as Stripe confirms the subscription.');
       for (let i = 0; i < 20 && !full(); i++) { await new Promise((r) => setTimeout(r, 3000)); await refresh(); }
-      notice(full() ? 'Your subscription is active: complete Deployments and Components are open.' : 'Stripe has not confirmed the subscription yet. Reload this page in a minute.');
+      notice(full() ? 'Your subscription is active: complete Deployments and Components are open, for you and your agents.' : `Stripe has not confirmed the subscription yet. Reload this page in a minute, or write to ${SUPPORT}.`);
     }
-    if (params.has('checkout') || params.has('billing')) history.replaceState(null, '', location.pathname + location.hash);
+    // Return from a report Checkout: the order is confirmed by Stripe's signed event or by the server asking Stripe,
+    // never by this redirect.
+    const ret = params.get('report_checkout'), retOrder = params.get('order');
+    if (ret === 'cancelled') notice('Checkout was cancelled. Nothing was charged. You can pay later from Custom reports.');
+    if (ret === 'success' && /^ord_[A-Za-z0-9_-]+$/.test(retOrder || '')) {
+      notice('Thank you. Waiting for Stripe to confirm the payment…');
+      let st = 'pending_payment';
+      for (let i = 0; i < 15 && st === 'pending_payment' && state.session; i++) {
+        const r = await api(`/v1/reports/orders/${retOrder}/reconcile`, { method: 'POST' });
+        st = r.data.order?.status || st;
+        if (st === 'pending_payment') await new Promise((res) => setTimeout(res, 3000));
+      }
+      notice(st === 'awaiting_questionnaire' ? 'Payment confirmed. Your private questionnaire is open below.' : st === 'pending_payment' ? `Stripe has not confirmed the payment yet. Your order is saved: reload this page in a minute, or write to ${SUPPORT}.` : '');
+      history.replaceState(null, '', location.pathname + '#reports/' + retOrder);
+      await render(true);
+    }
+    if (params.has('checkout') || params.has('billing') || params.has('report_checkout')) history.replaceState(null, '', location.pathname + location.hash);
   }
 
   $('signin-form').addEventListener('submit', async (e) => {
@@ -780,7 +1085,7 @@
     if (status === 202) notice('Check your email for a sign-in link. It works once and expires in 15 minutes.');
     else if (data.error === 'too_many_login_requests') notice('Too many requests. Try again later.', true);
     else if (data.error === 'email_not_configured') notice('Sign-in is not available yet.', true);
-    else notice('The sign-in link could not be sent.', true);
+    else notice(`The sign-in link could not be sent. Check the address, or write to ${SUPPORT}.`, true);
   });
   $('checkout').addEventListener('click', async () => {
     $('checkout').disabled = true;
@@ -788,14 +1093,14 @@
     if (status === 200 && data.url) return location.assign(data.url);
     $('checkout').disabled = false;
     if (data.error === 'already_subscribed') { notice('Your subscription is already active.'); return refresh(); }
-    notice(data.error === 'checkout_disabled' || data.error === 'live_checkout_disabled' ? 'Subscriptions are not open yet.' : 'Checkout is not available right now.', true);
+    notice(data.error === 'checkout_disabled' || data.error === 'live_checkout_disabled' ? 'Subscriptions are not open yet.' : `Checkout is not available right now. Nothing was charged. Write to ${SUPPORT} if this continues.`, true);
   });
   $('portal').addEventListener('click', async () => {
     $('portal').disabled = true;
     const { status, data } = await api('/v1/billing/portal', { method: 'POST' });
     $('portal').disabled = false;
     if (status === 200 && data.url) return location.assign(data.url);
-    notice('The subscription portal is not available right now.', true);
+    notice(`The subscription portal is not available right now. Write to ${SUPPORT} to change or cancel your subscription.`, true);
   });
   $('confirm-login-btn').addEventListener('click', async () => {
     $('confirm-login-btn').disabled = true;
@@ -804,7 +1109,7 @@
     $('confirm-login').hidden = true;
     const { status, data } = await api('/v1/auth/redeem', { method: 'POST', body: { token }, auth: false });
     if (status === 200) { state.session = data.token; store.set(data.token); notice(''); }
-    else notice('This sign-in link is invalid or has expired. Request a new one.', true);
+    else notice('This sign-in link has already been used or has expired. Request a new one above.', true);
     await refresh();
   });
   $('signout').addEventListener('click', () => signOut());
