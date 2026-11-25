@@ -131,3 +131,5 @@ pre.code code{font:inherit}
 .top.cats-compact.cats-open nav.cats a{display:flex;align-items:center;min-height:48px;white-space:normal;border-bottom:1px solid var(--line)}
 .top.cats-compact.cats-open nav.cats a:focus-visible{outline-offset:-2px}
 @media (prefers-reduced-motion:reduce){.cat-toggle .chev{transition:none}}
+/* Shared site footer (tools/footer-view.mjs, 25 Nov 2026). */
+.site-foot{display:flex;flex-wrap:wrap;gap:4px 18px;margin:0 0 8px;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}.site-foot a{display:inline-block;padding:6px 0;color:var(--bone-2);text-decoration:none}.site-foot a:hover,.site-foot a:focus-visible{color:var(--bone);text-decoration:underline;text-underline-offset:3px}.site-foot a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
