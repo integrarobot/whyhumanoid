@@ -43,10 +43,14 @@ const REPORT_PRICES = { 'humanoid-adoption-assessment': 'price_local_report_inte
 const sessions = new Map();
 let seq = 0;
 gateway.retrievePrice = async (id) => (Object.values(REPORT_PRICES).includes(id) ? { id, object: 'price', active: true, type: 'one_time', currency: 'usd', unit_amount: 100000, livemode: false } : { ...VALID_PRICE, id });
+const byKey = new Map();
 gateway.createReportCheckoutSession = async (args) => {
+  if (byKey.has(args.idempotencyKey)) return byKey.get(args.idempotencyKey);
   const id = `cs_test_local_report_${++seq}`;
   sessions.set(id, { id, object: 'checkout.session', mode: 'payment', status: 'open', payment_status: 'unpaid', amount_total: 100000, currency: 'usd', livemode: false, client_reference_id: args.accountId, metadata: { wh_order_id: args.orderId, wh_account_id: args.accountId, wh_service: args.service }, success_url: args.successUrl, cancel_url: args.cancelUrl });
-  return { id, url: `${ORIGIN}/dev/report-checkout?session=${id}` };
+  const result = { id, url: `${ORIGIN}/dev/report-checkout?session=${id}` };
+  byKey.set(args.idempotencyKey, result);
+  return result;
 };
 gateway.retrieveCheckoutSession = async (id) => ({ ...sessions.get(id) });
 const app = createApp({

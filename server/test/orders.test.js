@@ -346,3 +346,64 @@ test('checkout refuses to sell a report when fulfilment or recovery is not set u
     assert.ok(svc.services.every((s) => !s.checkout_available));
   }
 });
+
+// Concurrency (Codex review, 25 Nov 2026): two simultaneous starts for the same account and service, both reading "no
+// unpaid order" before either writes, must still produce one order and one payable Checkout Session.
+test('concurrent checkout starts: one order and one Checkout Session, even when both reads miss the other', async () => {
+  const ctx = await setup();
+  const { session } = await signIn(ctx);
+  // A barrier: the first two "unpaid order?" reads wait for each other, so both see none before either inserts.
+  const prepare = ctx.db.prepare;
+  let waiting = [];
+  let armed = 2;
+  ctx.db.prepare = (sql) => {
+    const st = prepare(sql);
+    if (!/status = 'pending_payment'.*LIMIT 1/s.test(sql)) return st;
+    const wrap = (s) => ({ ...s, sql: s.sql, bind: (...a) => wrap(s.bind(...a)), all: () => s.all(), run: () => s.run(), runSync: () => s.runSync(),
+      first: async () => {
+        if (armed > 0) {
+          armed -= 1;
+          const row = await s.first();
+          await new Promise((resolve) => { waiting.push(resolve); if (waiting.length === 2) waiting.forEach((r) => r()); });
+          return row;
+        }
+        return s.first();
+      } });
+    return wrap(st);
+  };
+  const [a, b] = await Promise.all([
+    ctx.call('POST', '/v1/reports/orders', { token: session, body: { service: INTEGRATION } }),
+    ctx.call('POST', '/v1/reports/orders', { token: session, body: { service: INTEGRATION } }),
+  ]);
+  const [ja, jb] = [await a.json(), await b.json()];
+  assert.equal(a.status, 200);
+  assert.equal(b.status, 200);
+  assert.equal(ja.order_id, jb.order_id, 'the same order');
+  assert.equal(ja.url, jb.url, 'the same Checkout Session');
+  assert.equal(ctx.reportSessions.size, 1);
+  assert.equal(Number((await ctx.db.prepare('SELECT COUNT(*) AS n FROM report_orders').first()).n), 1);
+  ctx.db.prepare = prepare;
+  // The database itself refuses a second unpaid order for the same account and service.
+  const row = await ctx.db.prepare('SELECT * FROM report_orders').first();
+  assert.throws(() => ctx.db.prepare(`INSERT INTO report_orders (id, account_id, service, status, mode, price_id, amount, currency, created_at, updated_at) VALUES ('ord_dup_fixture1', ?, ?, 'pending_payment', 'test', 'p', 100000, 'usd', 1, 1)`).bind(row.account_id, row.service).runSync(), /UNIQUE/);
+});
+
+test('an unpaid order is reused while its session can still be paid, refused near its expiry, replaced only after it', async () => {
+  const ctx = await setup();
+  const { session } = await signIn(ctx);
+  const start = () => ctx.call('POST', '/v1/reports/orders', { token: session, body: { service: INTEGRATION } });
+  const first = await (await start()).json();
+  assert.equal([...ctx.reportSessions.values()][0].args.expiresAt, T0 + 2 * 3600, 'the session expires at a fixed time');
+  ctx.setNow(T0 + 3600);
+  assert.equal((await (await start()).json()).order_id, first.order_id, 'reused within the window');
+  ctx.setNow(T0 + 2 * 3600 - 60);
+  const near = await start();
+  assert.equal(near.status, 409);
+  assert.equal((await near.json()).error, 'checkout_expiring_retry_shortly');
+  ctx.setNow(T0 + 2 * 3600 + 11 * 60);
+  const next = await (await start()).json();
+  assert.notEqual(next.order_id, first.order_id, 'a new order once the old session has expired');
+  const old = await ctx.db.prepare('SELECT status FROM report_orders WHERE id = ?').bind(first.order_id).first();
+  assert.equal(old.status, 'cancelled');
+  assert.equal(ctx.reportSessions.size, 2);
+});

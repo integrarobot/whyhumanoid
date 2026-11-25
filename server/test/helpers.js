@@ -52,7 +52,7 @@ class Statement {
 
 export function createTestDb() {
   const sqlite = new DatabaseSync(':memory:');
-  for (const m of ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
+  for (const m of ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
   return {
     prepare: (sql) => new Statement(sqlite, sql),
     async batch(statements) {
@@ -227,11 +227,16 @@ export async function setup({
   // Report Checkout Sessions: stored here, so tests can complete, expire or retrieve them like Stripe would.
   const reportSessions = new Map();
   let sessionSeq = 0;
+  // Like Stripe: the same idempotency key returns the same session.
+  const byKey = new Map();
   gateway.createReportCheckoutSession = async (args) => {
+    if (byKey.has(args.idempotencyKey)) return byKey.get(args.idempotencyKey);
     sessionSeq += 1;
     const id = `cs_test_report_${sessionSeq}`;
     reportSessions.set(id, { id, object: 'checkout.session', mode: 'payment', status: 'open', payment_status: 'unpaid', amount_total: 100000, currency: 'usd', livemode: false, client_reference_id: args.accountId, metadata: { wh_order_id: args.orderId, wh_account_id: args.accountId, wh_service: args.service }, payment_intent: null, args });
-    return { id, url: `https://checkout.stripe.com/c/pay/${id}` };
+    const result = { id, url: `https://checkout.stripe.com/c/pay/${id}` };
+    byKey.set(args.idempotencyKey, result);
+    return result;
   };
   gateway.retrieveCheckoutSession = async (id) => {
     const session = reportSessions.get(id);

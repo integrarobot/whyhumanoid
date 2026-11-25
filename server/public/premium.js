@@ -777,7 +777,10 @@
       const { status, data } = await api('/v1/reports/orders', { method: 'POST', body: { service: b.dataset.service } });
       if (status === 200 && data.url) return location.assign(data.url);
       b.disabled = false;
-      notice(status === 401 ? 'Sign in to order.' : `Checkout is not available right now (${data.error || 'error'}). Nothing was charged. Write to ${SUPPORT} if this continues.`, true);
+      notice(status === 401 ? 'Sign in to order.'
+        : data.error === 'checkout_expiring_retry_shortly' ? 'Your previous checkout for this report is about to expire. Try again in about 15 minutes. Nothing was charged.'
+          : data.error === 'checkout_in_progress_retry' ? 'Your checkout is being prepared. Try again in a moment. Nothing was charged.'
+            : `Checkout is not available right now (${data.error || 'error'}). Nothing was charged. Write to ${SUPPORT} if this continues.`, true);
     }));
   }
 

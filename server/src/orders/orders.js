@@ -10,6 +10,11 @@ import { QUESTIONNAIRE_VERSION, progress, validateAnswers } from './questionnair
 import { SUPPORT_EMAIL } from '../support.js';
 
 const OPEN_STATUSES = ['awaiting_questionnaire'];
+// Checkout Sessions of a report expire 2 hours after the order is created (Stripe allows 30 minutes to 24 hours). An
+// unpaid order is reused while at least 15 minutes remain, and replaced only once its session has certainly expired.
+export const CHECKOUT_TTL = 2 * 3600;
+const MIN_TIME_TO_PAY = 15 * 60;
+const EXPIRY_MARGIN = 10 * 60;
 const MAX_ANSWERS_BYTES = 120_000;
 
 // Report checkout state for a service: 'ready' or the reason it is closed. Never falls back to another price.
@@ -84,35 +89,56 @@ export async function startReportCheckout({ db, config, gateway, mailer, account
   try { price = await gateway.retrievePrice(priceId); } catch { throw new HttpError(503, 'price_lookup_failed'); }
   if (checkReportPrice(price, { mode: gateway.mode }).length) throw new HttpError(503, 'price_mismatch');
 
-  // An unpaid order of the same service from the last 23 hours is reused with its open Checkout Session, so a double
-  // click or a returning browser never creates a second order.
-  const open = await db
-    .prepare("SELECT * FROM report_orders WHERE account_id = ? AND service = ? AND status = 'pending_payment' AND created_at > ? ORDER BY created_at DESC LIMIT 1")
-    .bind(account.accountId, service, now - 23 * 3600)
+  // One unpaid order per account and service, enforced by the database (unique index report_orders_one_pending,
+  // migration 0005), so two tabs or a double click get the same order and the same Checkout Session (Stripe
+  // idempotency key per order). Each session expires at a fixed time (CHECKOUT_TTL); an unpaid order whose session has
+  // certainly expired is marked cancelled before a new one is made, so it can never be paid afterwards.
+  const pending = () => db
+    .prepare("SELECT * FROM report_orders WHERE account_id = ? AND service = ? AND status = 'pending_payment' ORDER BY created_at LIMIT 1")
+    .bind(account.accountId, service)
     .first();
-  if (open?.checkout_session_id && open.checkout_url) return { order_id: open.id, url: open.checkout_url };
-
-  const orderId = open?.id ?? newId('ord');
-  if (!open) {
-    await db
-      .prepare(`INSERT INTO report_orders (id, account_id, service, status, mode, price_id, amount, currency, created_at, updated_at)
-                VALUES (?, ?, ?, 'pending_payment', ?, ?, ?, ?, ?, ?)`)
-      .bind(orderId, account.accountId, service, gateway.mode, priceId, REPORT_PRICE.unitAmount, REPORT_PRICE.currency, now, now)
-      .run();
+  let order = await pending();
+  if (order && now >= order.created_at + CHECKOUT_TTL + EXPIRY_MARGIN) {
+    await db.prepare("UPDATE report_orders SET status = 'cancelled', cancelled_at = ?, updated_at = ? WHERE id = ? AND status = 'pending_payment'").bind(now, now, order.id).run();
+    order = null;
   }
-  const session = await gateway.createReportCheckoutSession({
-    priceId,
-    orderId,
-    accountId: account.accountId,
-    service,
-    email: account.email,
-    customerId: account.stripeCustomerId ?? null,
-    successUrl: `${appUrl}?report_checkout=success&order=${orderId}#reports`,
-    cancelUrl: `${appUrl}?report_checkout=cancelled&order=${orderId}#reports`,
-    idempotencyKey: `report-checkout-${orderId}`,
-  });
-  await db.prepare('UPDATE report_orders SET checkout_session_id = ?, checkout_url = ?, updated_at = ? WHERE id = ? AND checkout_session_id IS NULL').bind(session.id, session.url, now, orderId).run();
-  return { order_id: orderId, url: session.url };
+  if (order && now >= order.created_at + CHECKOUT_TTL - MIN_TIME_TO_PAY) {
+    // Its session is about to expire or has just expired: wait for it rather than risk two payable sessions.
+    throw new HttpError(409, 'checkout_expiring_retry_shortly');
+  }
+  if (!order) {
+    await db
+      .prepare(`INSERT OR IGNORE INTO report_orders (id, account_id, service, status, mode, price_id, amount, currency, created_at, updated_at)
+                VALUES (?, ?, ?, 'pending_payment', ?, ?, ?, ?, ?, ?)`)
+      .bind(newId('ord'), account.accountId, service, gateway.mode, priceId, REPORT_PRICE.unitAmount, REPORT_PRICE.currency, now, now)
+      .run();
+    // Whoever inserted, every concurrent request now reads the same single unpaid order.
+    order = await pending();
+  }
+  if (order.checkout_session_id && order.checkout_url) return { order_id: order.id, url: order.checkout_url };
+  let session;
+  try {
+    session = await gateway.createReportCheckoutSession({
+      priceId: order.price_id,
+      orderId: order.id,
+      accountId: account.accountId,
+      service,
+      email: account.email,
+      customerId: account.stripeCustomerId ?? null,
+      expiresAt: order.created_at + CHECKOUT_TTL,
+      successUrl: `${appUrl}?report_checkout=success&order=${order.id}#reports`,
+      cancelUrl: `${appUrl}?report_checkout=cancelled&order=${order.id}#reports`,
+      idempotencyKey: `report-checkout-${order.id}`,
+    });
+  } catch {
+    // A concurrent request holding the same idempotency key, or Stripe unavailable: the stored session wins if any.
+    const stored = await pending();
+    if (stored?.id === order.id && stored.checkout_url) return { order_id: stored.id, url: stored.checkout_url };
+    throw new HttpError(503, 'checkout_in_progress_retry');
+  }
+  await db.prepare('UPDATE report_orders SET checkout_session_id = ?, checkout_url = ?, updated_at = ? WHERE id = ? AND checkout_session_id IS NULL').bind(session.id, session.url, now, order.id).run();
+  const saved = await db.prepare('SELECT checkout_url FROM report_orders WHERE id = ?').bind(order.id).first();
+  return { order_id: order.id, url: saved?.checkout_url ?? session.url };
 }
 
 // A Checkout Session (from a signed webhook or retrieved server-side from Stripe) is checked against the stored order.

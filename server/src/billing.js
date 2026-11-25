@@ -50,7 +50,7 @@ export function createStripeGateway({ secretKey, webhookSecret }) {
     },
     // A custom report (25 Nov 2026): a one-off payment for one stored order. No subscription data, no customer link to
     // the data subscription, no tax settings (the charge is the price, as for the subscription).
-    async createReportCheckoutSession({ priceId, orderId, accountId, service, email, customerId, successUrl, cancelUrl, idempotencyKey }) {
+    async createReportCheckoutSession({ priceId, orderId, accountId, service, email, customerId, expiresAt, successUrl, cancelUrl, idempotencyKey }) {
       const metadata = { wh_order_id: orderId, wh_account_id: accountId, wh_service: service };
       const session = await stripe.checkout.sessions.create(
         {
@@ -60,6 +60,8 @@ export function createStripeGateway({ secretKey, webhookSecret }) {
           ...(customerId ? { customer: customerId } : { customer_email: email }),
           metadata,
           payment_intent_data: { metadata },
+          // Fixed expiry: the server cancels an unpaid order only after this time (server/src/orders/orders.js).
+          expires_at: expiresAt,
           success_url: successUrl,
           cancel_url: cancelUrl,
         },
