@@ -6,6 +6,7 @@
 // The test deployment was built with esbuild 0.27.7 and stripe 23.1.0; the same versions reproduce the same bytes.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
 const here = new URL('./', import.meta.url);
 const read = (p) => readFileSync(new URL(p, here), 'utf8');
@@ -18,9 +19,10 @@ const staging = process.argv.includes('--staging');
 const esbuild = process.argv.slice(2).find((a) => !a.startsWith('--')) ?? 'esbuild';
 const out = staging ? 'worker.staging.js' : 'worker.dashboard.js';
 execFileSync(esbuild, [
-  new URL(staging ? 'staging-entry.js' : 'dashboard-entry.js', here).pathname,
+  // fileURLToPath, not URL.pathname: the checkout path may hold spaces or '?', which pathname would percent-encode.
+  fileURLToPath(new URL(staging ? 'staging-entry.js' : 'dashboard-entry.js', here)),
   // x402 (24 Nov 2026): @x402/extensions imports Node's "url" (domainToASCII); the Worker's nodejs_compat flag provides it.
   '--bundle', '--format=esm', '--platform=browser', '--conditions=worker,browser', '--minify', '--external:url', '--external:node:*',
-  `--outfile=${new URL(`../dist/${out}`, here).pathname}`, '--log-level=warning',
+  `--outfile=${fileURLToPath(new URL(`../dist/${out}`, here))}`, '--log-level=warning',
 ], { stdio: 'inherit' });
 console.log(`built dist/${out}`);
