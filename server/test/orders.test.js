@@ -401,9 +401,59 @@ test('an unpaid order is reused while its session can still be paid, refused nea
   assert.equal(near.status, 409);
   assert.equal((await near.json()).error, 'checkout_expiring_retry_shortly');
   ctx.setNow(T0 + 2 * 3600 + 11 * 60);
+  // Stripe has expired the unpaid session: only then is the order replaced.
+  const sid = [...ctx.reportSessions.keys()][0];
+  ctx.reportSessions.set(sid, { ...ctx.reportSessions.get(sid), status: 'expired' });
   const next = await (await start()).json();
   assert.notEqual(next.order_id, first.order_id, 'a new order once the old session has expired');
   const old = await ctx.db.prepare('SELECT status FROM report_orders WHERE id = ?').bind(first.order_id).first();
   assert.equal(old.status, 'cancelled');
   assert.equal(ctx.reportSessions.size, 2);
+});
+
+test('a session paid while its webhook is delayed past the expiry is recorded on the original order, never replaced', async () => {
+  const ctx = await setup();
+  const { session } = await signIn(ctx);
+  const start = () => ctx.call('POST', '/v1/reports/orders', { token: session, body: { service: INTEGRATION } });
+  const first = await (await start()).json();
+  const sid = [...ctx.reportSessions.keys()][0];
+  // Paid at Stripe; the webhook has not arrived.
+  ctx.reportSessions.set(sid, { ...ctx.reportSessions.get(sid), status: 'complete', payment_status: 'paid', payment_intent: 'pi_late' });
+  ctx.setNow(T0 + 2 * 3600 + 11 * 60);
+  const again = await start();
+  assert.equal(again.status, 200);
+  const body = await again.json();
+  assert.equal(body.order_id, first.order_id, 'the original order');
+  assert.equal(body.already_paid, true);
+  assert.match(body.url, new RegExp(`#reports/${first.order_id}$`), 'sent to its questionnaire, not to a new payment');
+  assert.equal(ctx.reportSessions.size, 1, 'no new payable session');
+  const row = await ctx.db.prepare('SELECT status, paid_at, submitted_at, due_at FROM report_orders WHERE id = ?').bind(first.order_id).first();
+  assert.deepEqual([row.status, row.submitted_at, row.due_at], ['awaiting_questionnaire', null, null], 'paid; the 24-hour clock has not started');
+  assert.deepEqual(await outboxKinds(ctx, first.order_id), ['customer_paid', 'operator_paid']);
+  assert.equal(Number((await ctx.db.prepare('SELECT COUNT(*) AS n FROM report_orders').first()).n), 1);
+  // The webhook arriving later changes nothing.
+  assert.equal((await (await sendWebhook(ctx, sessionEvent(ctx, sid, { id: 'evt_very_late' }))).json()).outcome, 'already_paid');
+});
+
+test('when Stripe cannot be asked, or a payment is still processing, nothing is replaced or cancelled', async () => {
+  const ctx = await setup();
+  const { session } = await signIn(ctx);
+  const start = () => ctx.call('POST', '/v1/reports/orders', { token: session, body: { service: INTEGRATION } });
+  const first = await (await start()).json();
+  const sid = [...ctx.reportSessions.keys()][0];
+  ctx.setNow(T0 + 3 * 3600);
+  const retrieve = ctx.gateway.retrieveCheckoutSession;
+  ctx.gateway.retrieveCheckoutSession = async () => { throw new Error('Stripe unavailable'); };
+  const down = await start();
+  assert.equal(down.status, 503);
+  assert.equal((await down.json()).error, 'checkout_status_unknown_retry');
+  ctx.gateway.retrieveCheckoutSession = retrieve;
+  // A delayed payment method: the session is complete but not yet paid.
+  ctx.reportSessions.set(sid, { ...ctx.reportSessions.get(sid), status: 'complete', payment_status: 'unpaid' });
+  const processing = await start();
+  assert.equal(processing.status, 409);
+  assert.equal((await processing.json()).error, 'payment_processing');
+  const row = await ctx.db.prepare('SELECT status FROM report_orders WHERE id = ?').bind(first.order_id).first();
+  assert.equal(row.status, 'pending_payment', 'the order is untouched');
+  assert.equal(ctx.reportSessions.size, 1, 'no second session');
 });

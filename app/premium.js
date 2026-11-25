@@ -776,9 +776,14 @@
     panel.querySelectorAll('.ord-buy').forEach((b) => b.addEventListener('click', async () => {
       b.disabled = true;
       const { status, data } = await api('/v1/reports/orders', { method: 'POST', body: { service: b.dataset.service } });
+      // Already paid (a payment confirmed late): the original order's questionnaire, not a new payment.
+      if (status === 200 && data.already_paid) { notice('Your payment for this report was confirmed. Your questionnaire is open below.'); location.hash = `#reports/${data.order_id}`; return; }
       if (status === 200 && data.url) return location.assign(data.url);
       b.disabled = false;
       notice(status === 401 ? 'Sign in to order.'
+        : data.error === 'payment_processing' ? 'Your payment for this report is still being processed by your bank. We will open the questionnaire as soon as Stripe confirms it. Nothing more will be charged.'
+          : data.error === 'checkout_status_unknown_retry' ? 'We could not check your previous checkout with Stripe just now. Try again in a minute. Nothing was charged.'
+            : data.error === 'payment_needs_review' ? `We need to check your previous payment by hand. Please write to ${SUPPORT}. Nothing more will be charged.`
         : data.error === 'checkout_expiring_retry_shortly' ? 'Your previous checkout for this report is about to expire. Try again in about 15 minutes. Nothing was charged.'
           : data.error === 'checkout_in_progress_retry' ? 'Your checkout is being prepared. Try again in a moment. Nothing was charged.'
             : `Checkout is not available right now (${data.error || 'error'}). Nothing was charged. Write to ${SUPPORT} if this continues.`, true);
@@ -903,7 +908,7 @@
     if (!state.session) { panel.innerHTML = `<h2 id="db-title">Agent access</h2><p>Sign in to create API keys for your agents. They read the catalogue with your subscription: no extra charge.</p>${docs}`; return; }
     const r = await api('/v1/api-keys');
     const keys = r.status === 200 ? r.data.keys : [];
-    panel.innerHTML = `<h2 id="db-title">Agent access</h2><p>Your agents read the catalogue with your account: complete Deployments and Components while your subscription is active, the public catalogue otherwise. No extra charge; a revoked key stops working at once.</p>${docs}` +
+    panel.innerHTML = `<h2 id="db-title">Agent access</h2><p>Your agents read the catalogue with your account: complete Deployments and Components while your subscription is active. When it ends, the paid rows stop (the API and the command line answer 403 there) and the public catalogue stays available. No extra charge; a revoked key stops working at once.</p>${docs}` +
       (created ? `<div class="notice"><p><b>Your new key</b> (shown once; store it like a password):</p><p><code class="key">${esc(created)}</code></p></div>` : '') +
       (full() ? `<form id="key-form" class="row"><label>Label <input id="key-label" maxlength="60" value="agent"></label> <button class="btn" type="submit">Create a key</button></form>` : '<p><b>Keys need an active data subscription.</b> Without one, the public catalogue needs no key at all.</p>') +
       `<h3>Your keys</h3>${keys.length ? `<ul class="ord-list">${keys.map((k) => `<li><code>${esc(k.id)}…</code> ${esc(k.label || '')} <span class="lbl">created ${when(k.created_at)}${k.last_used_at ? ' · last used ' + when(k.last_used_at) : ''}${k.revoked_at ? ' · revoked ' + when(k.revoked_at) : ''}</span>${k.revoked_at ? '' : ` <button class="btn ghost key-revoke" type="button" data-id="${esc(k.id)}">Revoke</button>`}</li>`).join('')}</ul>` : '<p>No keys yet.</p>'}`;

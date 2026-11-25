@@ -79,7 +79,7 @@ export async function getOrder(db, accountId, orderId) {
 
 // Creates (or reuses) the order and its Checkout Session. The amount, currency and return addresses come from the
 // server; the client sends only the service id.
-export async function startReportCheckout({ db, config, gateway, mailer, account, service, now, appUrl }) {
+export async function startReportCheckout({ db, config, gateway, mailer, account, service, now, appUrl, notify }) {
   if (!REPORT_SERVICES_BY_ID.has(service)) throw new HttpError(400, 'unknown_service');
   const state = reportCheckoutState({ config, gateway, mailer });
   if (state !== 'ready') throw new HttpError(503, state);
@@ -98,13 +98,30 @@ export async function startReportCheckout({ db, config, gateway, mailer, account
     .bind(account.accountId, service)
     .first();
   let order = await pending();
-  if (order && now >= order.created_at + CHECKOUT_TTL + EXPIRY_MARGIN) {
-    await db.prepare("UPDATE report_orders SET status = 'cancelled', cancelled_at = ?, updated_at = ? WHERE id = ? AND status = 'pending_payment'").bind(now, now, order.id).run();
+  if (order?.checkout_session_id) {
+    // Ask Stripe what really happened to the stored session before reusing or replacing it (Codex review): a session
+    // can be paid while its webhook is still on its way. Never assume unpaid.
+    let live;
+    try { live = await gateway.retrieveCheckoutSession(order.checkout_session_id); } catch { throw new HttpError(503, 'checkout_status_unknown_retry'); }
+    if (live?.payment_status === 'paid') {
+      // Paid: record it on the original order (with its emails) and send the buyer to its questionnaire. No new session.
+      await applyReportSession({ db, config, session: live, now, notify });
+      const paid = await db.prepare('SELECT id, status FROM report_orders WHERE id = ?').bind(order.id).first();
+      if (paid?.status !== 'awaiting_questionnaire' && paid?.status !== 'awaiting_report') throw new HttpError(409, 'payment_needs_review');
+      return { order_id: order.id, already_paid: true, url: `${appUrl}#reports/${order.id}` };
+    }
+    if (live?.status === 'complete') throw new HttpError(409, 'payment_processing'); // a delayed method: wait for Stripe
+    if (live?.status === 'expired') {
+      await db.prepare("UPDATE report_orders SET status = 'cancelled', cancelled_at = ?, updated_at = ? WHERE id = ? AND status = 'pending_payment'").bind(now, now, order.id).run();
+      order = null;
+    } else if (now >= order.created_at + CHECKOUT_TTL - MIN_TIME_TO_PAY) {
+      // Still open but about to expire: wait for it rather than risk two payable sessions.
+      throw new HttpError(409, 'checkout_expiring_retry_shortly');
+    }
+  } else if (order && now >= order.created_at + CHECKOUT_TTL + EXPIRY_MARGIN) {
+    // No session was ever created for this order (Stripe failed at creation), so nothing can have been paid.
+    await db.prepare("UPDATE report_orders SET status = 'cancelled', cancelled_at = ?, updated_at = ? WHERE id = ? AND status = 'pending_payment' AND checkout_session_id IS NULL").bind(now, now, order.id).run();
     order = null;
-  }
-  if (order && now >= order.created_at + CHECKOUT_TTL - MIN_TIME_TO_PAY) {
-    // Its session is about to expire or has just expired: wait for it rather than risk two payable sessions.
-    throw new HttpError(409, 'checkout_expiring_retry_shortly');
   }
   if (!order) {
     await db

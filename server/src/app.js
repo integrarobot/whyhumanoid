@@ -407,7 +407,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       async (request, now) => {
         const account = await requireSession(request, now);
         const body = await readJson(request);
-        return privateJson(200, await startReportCheckout({ db, config, gateway, mailer, account: { ...account, stripeCustomerId: await customerOf(account.accountId) }, service: String(body.service ?? ''), now, appUrl: config.appUrl }));
+        return privateJson(200, await startReportCheckout({ db, config, gateway, mailer, notify: flushOutbox, account: { ...account, stripeCustomerId: await customerOf(account.accountId) }, service: String(body.service ?? ''), now, appUrl: config.appUrl }));
       },
     ],
     [
