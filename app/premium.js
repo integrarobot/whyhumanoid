@@ -759,7 +759,7 @@
   const claim = (title) => { const t = ++viewToken; $('db-panel').setAttribute('aria-busy', 'true'); $('db-panel').innerHTML = `<h2 id="db-title">${esc(title)}</h2><p class="lbl">Loading…</p>`; return t; };
   const stale = (t) => t !== viewToken;
   const loaded = () => $('db-panel').removeAttribute('aria-busy');
-  const SUPPORT = 'javier@liderarmente.com';
+  const SUPPORT = 'javier@integrarobot.com';
   const ORDER_STATUS = {
     pending_payment: ['Waiting for payment', 'warn'],
     awaiting_questionnaire: ['Questionnaire open', 'warn'],

@@ -11,7 +11,7 @@
 //   node whyhumanoid.mjs atlas reports
 //   node whyhumanoid.mjs account
 //
-// Output is JSON on stdout. Fair use: 60 requests a minute and 5,000 a day per key. Help: javier@liderarmente.com
+// Output is JSON on stdout. Fair use: 60 requests a minute and 5,000 a day per key. Help: javier@integrarobot.com
 
 const VERSION = '1.0.0';
 const HELP = `Why Humanoid? CLI ${VERSION}
@@ -33,7 +33,7 @@ Options
   --site <url>    Site origin for atlases (default https://whyhumanoid.com)
   --key <key>     API key (default: the WHYHUMANOID_API_KEY environment variable)
 
-Fair use: 60 requests a minute and 5,000 a day per key. Help: javier@liderarmente.com`;
+Fair use: 60 requests a minute and 5,000 a day per key. Help: javier@integrarobot.com`;
 
 const ATLASES = { datasets: '/data/datasets/atlas.json', benchmarks: '/data/benchmarks/atlas.json', reports: '/data/reports/atlas.json', integrators: '/data/integrators/atlas.json', evolution: '/data/evolution/charts.json' };
 
@@ -55,7 +55,7 @@ async function call(base, path, key) {
   if (response.status === 401) throw new Error('The API key was refused (unknown, revoked or expired). Create a new one at https://whyhumanoid.com/app/#keys');
   if (response.status === 403) throw new Error('This needs an active data subscription: https://whyhumanoid.com/subscribe/');
   if (response.status === 429) throw new Error(`Fair-use limit reached; try again in ${response.headers.get('retry-after') ?? 'a few'} seconds.`);
-  if (!response.ok) throw new Error(`The API answered ${response.status} (${body.error ?? 'error'}). Help: javier@liderarmente.com`);
+  if (!response.ok) throw new Error(`The API answered ${response.status} (${body.error ?? 'error'}). Help: javier@integrarobot.com`);
   return body;
 }
 
