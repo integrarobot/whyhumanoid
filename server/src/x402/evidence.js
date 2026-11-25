@@ -39,7 +39,7 @@ export const EVIDENCE_FIELDS = Object.freeze([
 
 export const CAVEATS = Object.freeze([
   'Each record is a claim as its source states it, not an independently verified fact.',
-  'Evidence level, confidence and verification status are Why Humanoid? assessments recorded in the source workbook.',
+  'Evidence level, confidence and verification status are assessments recorded in the Why Humanoid? catalogue.',
   'Pilots, proofs of concept and announcements are not production deployments; read the operational status of each record.',
   'Records of the same case may come from different sources with different dates and figures; they are not merged.',
 ]);
