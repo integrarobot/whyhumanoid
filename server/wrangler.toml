@@ -43,7 +43,7 @@ STRIPE_LEGACY_PRICE_IDS = "price_1UbL1PAcMngkWs5CH3IDosFb"  # test: former EUR 1
 # x402 pay-per-query (server/src/x402/server.js). Off until every gate passes; nothing is advertised or charged before.
 X402_ENABLED = "false"                   # STOPPED (25 Nov 2026): Stripe does not offer Stablecoins and Crypto (x402) to this account
 X402_NETWORK = "eip155:84532"            # Base Sepolia (testnet USDC)
-X402_PAY_TO = ""                         # cleared: the Stripe deposit-address route is not available to this account (see ops/x402/)
+X402_PAY_TO = ""                         # cleared: Stripe denies LIVE crypto receipt (x402) to this account; the sandbox did create a deposit address (ops/x402/)
 X402_PRICE_USD = ""                      # pilot price was USD 0.10; unset while the payment route is undecided
 X402_FACILITATOR = "https://x402.org/facilitator"
 X402_STRIPE_RECORDING = "false"          # stays false until a real Base Sepolia transaction is recorded in the sandbox
@@ -78,7 +78,7 @@ STRIPE_LEGACY_PRICE_IDS = "price_1UbOtjAcMngkWs5CR8qXNPGn"  # live: former EUR 1
 # x402 pay-per-query: Base mainnet is also closed in code (X402_LIVE_OPEN) until Stripe's approval and the required tests.
 X402_ENABLED = "false"
 X402_NETWORK = "eip155:8453"             # Base mainnet (USDC); real funds
-X402_PAY_TO = ""                         # Stripe LIVE crypto deposit address (static, created off the request path); Codex
+X402_PAY_TO = ""                         # LIVE receipt through Stripe is denied for this account (25 Nov 2026); no live deposit address
 X402_PRICE_USD = ""                      # approved pilot price "0.10" (Javier, 25 Nov 2026); set only when activating
 X402_FACILITATOR = "cdp"                 # authenticated CDP facilitator; secrets CDP_API_KEY_ID and CDP_API_KEY_SECRET
 X402_STRIPE_RECORDING = "false"
