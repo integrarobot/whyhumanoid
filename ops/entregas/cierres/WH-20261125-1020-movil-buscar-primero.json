@@ -1,0 +1,53 @@
+{
+  "id": "WH-20261125-1020-movil-buscar-primero",
+  "tarea": "Fase móvil: portada que pone la búsqueda primero en el teléfono y menú Categories explícito y accesible en la portada y en todas las cabeceras generadas",
+  "origen": "Javier («haz lo del móvil», 25/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-25T10:20:25+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Portada, en todos los anchos: título, introducción existente, búsqueda (con «Search every category»), acciones principales con «Browse the humanoids» primero y selecciones rápidas. Después van las dos vías (suscripción e informes) y las estadísticas. En el teléfono hay márgenes más ajustados y una tira de estadísticas compacta. No se elimina ni se duplica nada.",
+    "Menú Categories en la portada (script en línea) y en todas las cabeceras generadas (assets/nav.js y la cabecera compartida de tools/build-pages.mjs). Las diez categorías van en línea mientras caben; si no, aparece un botón con aria-expanded y aria-controls que muestra las diez con zonas táctiles de 48 px. Se cierra con Escape (el foco vuelve al botón), al pulsar fuera, al salir el foco de la cabecera y al elegir un enlace. Sin JavaScript, la barra se desplaza como antes.",
+    "tools/verify-mobile.mjs, comprobación en navegador real y de solo lectura: siete tamaños de pantalla, el orden de la portada y la primera pantalla; cabeceras de las diez categorías y de páginas de muestra, cada una con estado 200 y su h1; teclado, foco que sale, clic fuera y comportamiento sin JavaScript; ausencia de desbordamiento con el menú abierto;",
+    "  - recorridos: menú, Deployments y Atrás; búsqueda Atlas; dossier de NEO, página permanente y Atrás.",
+    "El PR 70 queda cerrado como sustituido: se reutiliza su diseño revisado sobre la página actual, no su HTML generado obsoleto."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 105 (móvil)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/105"
+    },
+    {
+      "etiqueta": "Commit publicado 94f466b",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/94f466be26c2a753020812b61ee0726a2a1f3f2c"
+    },
+    {
+      "etiqueta": "PR 70 (sustituido)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/70"
+    },
+    {
+      "etiqueta": "Portada",
+      "url": "https://whyhumanoid.com/"
+    },
+    {
+      "etiqueta": "Deployments",
+      "url": "https://whyhumanoid.com/deployments/"
+    }
+  ],
+  "despliegue": [
+    "Fusión en main como 94f466b del head revisado 2706b1c, aprobado por Codex, con el CI en verde (ejecución 45582564961).",
+    "GitHub Pages lo publicó en menos de un minuto; assets/nav.js responde 200.",
+    "Cambio solo estático: sin escrituras en D1, importaciones, migraciones, inicios de sesión, Stripe ni despliegue del Worker; STAGING_SITE_COMMIT no se ha tocado."
+  ],
+  "verificaciones": [
+    "Producción, solo lectura: tools/verify-mobile.mjs 715/715 a 320×640, 375×667, 390×844, 430×932, 768×1024, 1366×900 y 1600×900. tools/verify-evolution.mjs 183/183.",
+    "Medidas en producción, en y de página. Búsqueda: 465–516 a 320×640 (antes 1789–1846), 442–493 a 375×667 (antes 1301–1358), 447–498 a 390×844 y 434–485 a 430×932. El botón principal queda dentro de la primera pantalla en todos los teléfonos (594 de 667 a 375 px). A 1366 y 1600 px caben las diez categorías en línea. Desbordamiento horizontal: 0 en todos los tamaños.",
+    "Local, antes de fusionar: verify-mobile 715; verify-staging --local 374/374; verify-evolution 183/183; verify-site, verify-pages y verify-premium-app; test-coherence, test-evolution, test-integrators y test-reports 42/42; todos los --check de los generadores; check-public.",
+    "Codex, revisión independiente: en Chrome, los siete tamaños sin desbordamiento; el menú con diez enlaces de 48 px y Escape; menú, Deployments y Atrás; el filtro Atlas (1 de 212); NEO, página permanente y Atrás. Sin cambios de contenido en el HTML generado frente a da1b812, aparte de la cabecera, la versión del CSS y el script de navegación."
+  ],
+  "pendientes": [
+    "Ninguno de esta fase. El rediseño de la búsqueda global y del índice queda fuera, como se pidió."
+  ],
+  "siguiente_accion": "Codex avisa a Javier de la publicación de la fase móvil y registra su confirmación de aviso. El lanzamiento sigue en el PR 103, aparte."
+}
