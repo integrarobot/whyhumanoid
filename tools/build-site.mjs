@@ -219,7 +219,7 @@ export function renderCategories(data) {
   const dataAtlas = dataAtlasSummary();
   // Deployments: its public cases (one per deployment id of the public rows); Components: its physical products.
   const cases = new Set(JSON.parse(readFileSync(new URL('data/preview/deployments.json', root), 'utf8')).rows.map((r) => r.deployment_id ?? r.record_id)).size;
-  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.id === 'deployments' ? cases : c.datasets.reduce((n, id) => n + (tabs.get(id)?.entries_total ?? 0), 0));
+  const count = (c) => (c.id === 'humanoids' ? data.models.length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.id === 'deployments' ? cases : c.datasets.reduce((n, id) => n + (tabs.get(id)?.canonical_entries ?? tabs.get(id)?.entries_total ?? 0), 0));
   const unit = { humanoids: 'robots', deployments: 'cases', components: 'products', integrators: 'providers', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'reports' };
   const items = CATEGORIES.map((c) => `<li><a href="${c.path}">${escHtml(c.label)}</a><p>${escHtml(c.summary)}</p><span class="meta"><b>${count(c)}</b> ${unit[c.id]} · ${c.access === 'subscription' ? 'All listed free · <span class="sub">detail with the subscription</span>' : 'Free'}</span></li>`).join('');
   const reportsList = SERVICES.map((sv) => `<li><b>${escHtml(sv.name)}</b> (${sv.category === 'deployments' ? 'Deployments' : 'Components'}): ${escHtml(sv.summary)}</li>`).join('');

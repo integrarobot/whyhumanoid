@@ -254,6 +254,10 @@ export const DATASETS = [
       { list: 'software', columns: { name: 0, url: 1, description: 2 } },
       { list: 'world_model', columns: { name: 4, url: 5 } },
     ],
+    // Canonical active catalogue (server/src/catalogue/directory.js): header and section rows out, exact identities
+    // merged. The software column holds three blocks: general, "SOFTWARE FOR UNITREE" and "SIMULATORS".
+    canonical: true,
+    properNames: ['Unitree'],
     idPrefix: 'sw',
     naturalKey: directoryKey,
   },
@@ -329,6 +333,7 @@ export const DATASETS = [
       { list: 'other_robot', columns: { name: 0, url: 1, description: 2 } },
       { list: 'edubot', columns: { name: 4, url: 5, description: 6 } },
     ],
+    canonical: true,
     idPrefix: 'or',
     naturalKey: directoryKey,
   },
@@ -378,6 +383,8 @@ export function publicDatasetList() {
   }));
 }
 
+// 1 for a row that is an entry, 0 for a topical membership row of a directory tab (data.canonical === false).
+const CANONICAL_SQL = "CASE WHEN json_extract(data, '$.canonical') = 0 THEN 0 ELSE 1 END";
 // Importer bookkeeping (identity_status, raw sheet-row pointers) is internal: never served, not even to subscribers.
 const INTERNAL_KEYS = new Set(['identity_status', 'source_rows']);
 const toRow = (r) => ({ id: r.row_id, ...Object.fromEntries(Object.entries(JSON.parse(r.data)).filter(([k]) => !INTERNAL_KEYS.has(k))) });
@@ -396,11 +403,13 @@ export async function queryPreview(db, spec) {
       .bind(datasetId)
       .all();
   const total = await db
-    .prepare("SELECT COUNT(*) AS n FROM premium_rows WHERE dataset = ? AND visibility = 'customer'")
+    .prepare(`SELECT COUNT(*) AS n, SUM(${CANONICAL_SQL}) AS e FROM premium_rows WHERE dataset = ? AND visibility = 'customer'`)
     .bind(datasetId)
     .first();
   const results = page.results ?? [];
-  return { snapshot: results[0]?.snapshot_id ?? null, total_rows: Number(total?.n ?? 0), rows: results.map(toRow) };
+  // entries: the canonical entries of a directory tab (server/src/catalogue/directory.js); a topical membership row (the
+  // same entity in a second list) is listed but not counted again. Equal to total_rows for every other tab.
+  return { snapshot: results[0]?.snapshot_id ?? null, total_rows: Number(total?.n ?? 0), entries: Number(total?.e ?? total?.n ?? 0), rows: results.map(toRow) };
 }
 
 // Paged rows of a tab. publicValues: the public values (free tabs read without a subscription); otherwise the full
@@ -409,11 +418,11 @@ export async function queryDatasetRows(db, datasetId, { limit, offset, q, public
   const col = publicValues ? 'COALESCE(preview_data, data)' : 'data';
   const where = q ? `dataset = ? AND visibility = 'customer' AND ${col} LIKE ?` : "dataset = ? AND visibility = 'customer'";
   const params = q ? [datasetId, `%${q}%`] : [datasetId];
-  const total = await db.prepare(`SELECT COUNT(*) AS n FROM premium_rows WHERE ${where}`).bind(...params).first();
+  const total = await db.prepare(`SELECT COUNT(*) AS n, SUM(${CANONICAL_SQL}) AS e FROM premium_rows WHERE ${where}`).bind(...params).first();
   const page = await db
     .prepare(`SELECT row_id, ${col} AS data, snapshot_id FROM premium_rows WHERE ${where} ORDER BY position LIMIT ? OFFSET ?`)
     .bind(...params, limit, offset)
     .all();
   const rows = (page.results ?? []).map(toRow);
-  return { total: Number(total?.n ?? 0), snapshot: page.results?.[0]?.snapshot_id ?? null, rows };
+  return { total: Number(total?.n ?? 0), entries: Number(total?.e ?? total?.n ?? 0), snapshot: page.results?.[0]?.snapshot_id ?? null, rows };
 }

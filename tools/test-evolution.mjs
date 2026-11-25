@@ -8,6 +8,7 @@ import { readFileSync } from 'node:fs';
 import { buildEvolution, parseDate, stageAt } from './evolution-model.mjs';
 import { evolutionSources } from './export-evolution.mjs';
 import { publicDateOf, publicDateProblems } from '../server/src/public-dates.js';
+import { mostAdvanced } from '../server/src/public/status.js';
 
 const root = new URL('../', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
@@ -38,12 +39,18 @@ test('Humanoids: introductions per year equal the dated Release values of the ca
 
 test('Deployments: documented status by date, never projected back, undated kept apart, totals reconcile with today', () => {
   const c = chart('deployments');
+  // The chart's historical rule (most advanced documented) on every record, dated or not, reconciles with the rows;
+  // the current summaries use another rule (latest dated source, server/src/public/status.js) and are not compared.
   const proj = JSON.parse(read('data/public/projection.json'));
-  const today = { op: 0, pilot: 0, unc: 0, ann: 0 };
-  for (const k of proj.cases) today[k.stage] += 1;
+  const byCase = new Map();
+  for (const r of src.deployments.rows) { const k = r.deployment_id || r.record_id; byCase.set(k, [...(byCase.get(k) ?? []), r]); }
+  const sk = (r) => (r.operational_status === 'operational' ? 'op' : ['pilot', 'testing'].includes(r.operational_status) ? 'pilot' : r.operational_status === 'planned' ? 'ann' : 'unc');
+  const ever = { op: 0, pilot: 0, unc: 0, ann: 0 };
+  for (const rs of byCase.values()) ever[mostAdvanced(rs, sk)] += 1;
   const last = c.columns.at(-1);
-  for (const s of ['op', 'pilot', 'unc', 'ann']) assert.equal(last.segments[s] + c.undated.segments[s], today[s], s);
+  for (const s of ['op', 'pilot', 'unc', 'ann']) assert.equal(last.segments[s] + c.undated.segments[s], ever[s], s);
   assert.equal(last.value + c.undated.cases, proj.cases.length);
+  assert.equal(c.undated.cases, proj.cases.filter((x) => x.dated === false).length, 'the same undated cases on the chart and in the current summaries');
   assert.equal(c.undated.records, src.deployments.rows.filter((r) => !parseDate(r.publication_date)).length);
   // Each case's status at a date uses only records published by then: a case whose only "operational" record is from
   // 2026 is not in operation in 2025.

@@ -279,7 +279,7 @@
    "precision": "quarter",
    "domain": {
     "start": "2022-01-01",
-    "end": "2026-11-23"
+    "end": "2026-11-25"
    },
    "series": [
     {
@@ -545,8 +545,8 @@
     {
      "key": "2026-Q4",
      "label": "",
-     "long": "Q4 2026 (to 2026-11-23)",
-     "t": "2026-11-23",
+     "long": "Q4 2026 (to 2026-11-25)",
+     "t": "2026-11-25",
      "value": 111,
      "segments": {
       "ann": 32,
@@ -583,7 +583,7 @@
      "op": 8
     }
    },
-   "summary": "By 2026-11-23, 111 of 122 cases have a dated source: 7 in operation, 48 pilot or trial, 24 unconfirmed, 32 announced.",
+   "summary": "By 2026-11-25, 111 of 122 cases have a dated source: 7 in operation, 48 pilot or trial, 24 unconfirmed, 32 announced.",
    "coverage": {
     "included": 111,
     "total": 122,
@@ -604,7 +604,7 @@
    "status_note": "111 of 122 cases placed in time; 11 cases with no dated record stay in the date-unknown bar, outside the time series.",
    "sources": [
     {
-     "label": "Deployments public summaries, snapshot 2026-11-23",
+     "label": "Deployments public summaries, snapshot 2026-11-25",
      "url": "/data/preview/deployments.json"
     }
    ],
@@ -755,7 +755,7 @@
       "82"
      ],
      [
-      "Q4 2026 (to 2026-11-23)",
+      "Q4 2026 (to 2026-11-25)",
       "7",
       "48",
       "24",
@@ -777,7 +777,7 @@
    "precision": "year",
    "domain": {
     "start": "2009-01-01",
-    "end": "2026-11-23"
+    "end": "2026-11-25"
    },
    "rows": [
     {
@@ -1045,7 +1045,7 @@
    "status_note": "17 of 19 products placed in time; 2 cannot be dated from the recorded text.",
    "sources": [
     {
-     "label": "Components public product rows, snapshot 2026-11-23",
+     "label": "Components public product rows, snapshot 2026-11-25",
      "url": "/data/preview/hardware.json"
     }
    ],
@@ -1174,7 +1174,7 @@
    "precision": "day",
    "domain": {
     "start": "2024-01-01",
-    "end": "2026-11-24"
+    "end": ""
    },
    "rows": [
     {
@@ -1206,7 +1206,7 @@
      "note": "Zion Solutions Group",
      "href": "/integrators/#projects",
      "hollow": false,
-     "t": "2024-05-06"
+     "t": ""
     },
     {
      "id": "ricoh-agility",
@@ -1219,7 +1219,7 @@
      "note": "Ricoh USA",
      "href": "/integrators/#projects",
      "hollow": false,
-     "t": "2024-09-09"
+     "t": ""
     },
     {
      "id": "tompkins-agility",
@@ -1232,7 +1232,7 @@
      "note": "Tompkins Solutions",
      "href": "/integrators/#projects",
      "hollow": false,
-     "t": "2024-10-16"
+     "t": ""
     },
     {
      "id": "upv-demonstration",
@@ -1245,7 +1245,7 @@
      "note": "Synergy Tech",
      "href": "/integrators/#project-upv-humantech",
      "hollow": false,
-     "t": "2025-04-03"
+     "t": ""
     },
     {
      "id": "orano-hoxo",
@@ -1258,7 +1258,7 @@
      "note": "Capgemini",
      "href": "/integrators/#project-orano-hoxo",
      "hollow": false,
-     "t": "2025-11-04"
+     "t": ""
     },
     {
      "id": "vodafone-duisburg",
@@ -1271,7 +1271,7 @@
      "note": "Accenture",
      "href": "/integrators/#project-vodafone-duisburg",
      "hollow": false,
-     "t": "2026-04-22"
+     "t": ""
     },
     {
      "id": "jal-ground-service",
@@ -1284,7 +1284,7 @@
      "note": "GMO AI & Robotics Corporation",
      "href": "/integrators/#project-jal-ground-service",
      "hollow": false,
-     "t": "2026-04-27"
+     "t": ""
     },
     {
      "id": "upv-chair",
@@ -1297,7 +1297,7 @@
      "note": "Synergy Tech",
      "href": "/integrators/#project-upv-humantech",
      "hollow": false,
-     "t": "2026-04-30"
+     "t": ""
     },
     {
      "id": "asahi-kasei",
@@ -1310,7 +1310,7 @@
      "note": "GMO AI & Robotics Corporation",
      "href": "/integrators/#project-asahi-kasei",
      "hollow": false,
-     "t": "2026-07-01"
+     "t": ""
     },
     {
      "id": "rovimatica-agreement",
@@ -1323,7 +1323,7 @@
      "note": "Rovimática",
      "href": "/integrators/#projects",
      "hollow": false,
-     "t": "2026-08-31"
+     "t": ""
     },
     {
      "id": "gmo-techshare",
@@ -1336,7 +1336,7 @@
      "note": "GMO AI & Robotics Corporation and TechShare",
      "href": "/integrators/#project-gmo-techshare",
      "hollow": false,
-     "t": "2026-09-14"
+     "t": ""
     },
     {
      "id": "ca3-arm",
@@ -1349,7 +1349,7 @@
      "note": "CA3",
      "href": "/integrators/#projects",
      "hollow": true,
-     "t": "2026-10-28"
+     "t": ""
     },
     {
      "id": "ca3-home",
@@ -1362,7 +1362,7 @@
      "note": "CA3",
      "href": "/integrators/#projects",
      "hollow": true,
-     "t": "2026-11-05"
+     "t": ""
     },
     {
      "id": "novares-sesena",
@@ -1375,7 +1375,7 @@
      "note": "Innov8 Robotics and Bleu Robotics",
      "href": "/integrators/#project-novares-sesena",
      "hollow": false,
-     "t": "2026-11-17"
+     "t": ""
     }
    ],
    "final": {
@@ -1424,7 +1424,7 @@
    "status_note": "12 of 28 providers have dated evidence; 16 have none on their reviewed pages.",
    "sources": [
     {
-     "label": "Integrators atlas, snapshot 2026-11-24",
+     "label": "Integrators atlas, snapshot ",
      "url": "/data/integrators/atlas.json"
     }
    ],

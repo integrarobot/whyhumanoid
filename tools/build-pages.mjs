@@ -578,7 +578,7 @@ const catPage = (c, model, body, description, opts = {}) => (EVOLUTION.has(c.id)
 const dirTable = (rows, cols) => `<div class="scroll"><table class="dir"><thead><tr>${cols.map(([h]) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${cols.map(([, f]) => `<td>${f(r)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 const nameLink = (r) => (nz(r.url) ? ext(r.url, r.name) : esc(r.name));
 const descr = (r) => (r._pending?.includes('description') ? PENDING : nz(r.description) ? text(r.description) : '<span class="na">No description recorded</span>');
-const counted = (meta) => `${meta.entries_total} ${meta.entries_total === 1 ? 'entry' : 'entries'}`;
+const counted = (meta) => { const n = meta.canonical_entries ?? meta.entries_total; return `${n} ${n === 1 ? 'entry' : 'entries'}`; };
 
 function humanoidsCategory(model) {
   const c = CATEGORIES_BY_ID.get('humanoids');
@@ -951,6 +951,9 @@ export function buildPages(registry = readRegistry()) {
     let c = model.companies.find((x) => x.id === id);
     // A renamed company keeps its robots or organisation ids: its old addresses follow it.
     c ??= model.companies.find((x) => (x.robots || []).some((r) => v.robots.includes(r)) || (x.organization_ids || []).some((o) => v.organization_ids.includes(o)));
+    // A listed company that a fuller export now joins to another company (same web address, e.g. Hexagon AB with
+    // Hexagon Robotics, 25 Nov 2026) follows it: its old address redirects there.
+    c ??= /^lst_/.test(id) ? model.companies.find((x) => (x.listings || []).some((l) => `lst_${slugify(l.name)}` === id)) : undefined;
     for (const s of v.slugs) {
       if (c && c.slug === s) continue;
       // A listed or directory company that the deployment records now name joins that company: its address still

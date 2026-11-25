@@ -1,6 +1,6 @@
 {
  "note": "Public data of the 12 workbook tabs other than Humanoids, with counts and field names. Free categories (Integrators, Software, Datasets, Benchmarks, Investment, Other Robots): every row and field. Deployments, Components (Hardware tab and related software) and the identity register of Deployments: every row at its public fields (public_fields); every field only for subscribers (US$100 per year), served by the backend after a subscription check. Claim-to-evidence links and the tabs outside the offer are counted, not listed (access matrix of 24 Nov 2026).",
- "snapshot": "2026-11-17T20:58:00Z",
+ "snapshot": "2026-11-25T05:35:43Z",
  "tabs": [
   {
    "id": "deployments",
@@ -81,8 +81,7 @@
     "source_url",
     "source_publisher",
     "publication_date"
-   ],
-   "snapshot": "2026-11-23T21:49:26Z"
+   ]
   },
   {
    "id": "integrators",
@@ -122,8 +121,7 @@
    ],
    "access": "free",
    "category": "integrators",
-   "public": "all",
-   "snapshot": "2026-11-24T19:26:32Z"
+   "public": "all"
   },
   {
    "id": "evidence-links",
@@ -160,8 +158,7 @@
    "access": "subscription",
    "category": "deployments",
    "public": "none",
-   "public_fields": [],
-   "snapshot": "2026-11-23T21:49:26Z"
+   "public_fields": []
   },
   {
    "id": "task-evaluations",
@@ -209,8 +206,7 @@
    "access": "subscription",
    "category": null,
    "public": "none",
-   "public_fields": [],
-   "snapshot": "2026-11-23T21:49:26Z"
+   "public_fields": []
   },
   {
    "id": "entities",
@@ -244,8 +240,7 @@
     "parent_entity_id",
     "reference_url",
     "reviewed_at"
-   ],
-   "snapshot": "2026-11-23T21:49:26Z"
+   ]
   },
   {
    "id": "stocks",
@@ -275,36 +270,196 @@
    ],
    "access": "free",
    "category": "investment",
-   "snapshot_fields": "Beyond row 10 this snapshot holds the basic fields only; the other fields are free and arrive with the next export.",
-   "public": "basic_fields",
-   "public_fields": [
-    "name",
-    "ticker",
-    "exchange",
-    "country"
-   ]
+   "public": "all"
   },
   {
    "id": "software",
    "title": "Software and world models",
    "description": "Robot foundation models, VLA models, world models and robotics software.",
-   "entries_total": 144,
-   "source_rows_total": 124,
-   "preview_entries": 144,
-   "preview_source_rows": 124,
+   "entries_total": 140,
+   "canonical_entries": 134,
+   "memberships": 6,
+   "source_rows_total": 120,
+   "preview_entries": 140,
+   "preview_source_rows": 120,
    "fields": [
     "list",
     "name",
     "url",
-    "description"
+    "description",
+    "group",
+    "canonical",
+    "also_listed_as",
+    "other_names",
+    "canonical_list",
+    "canonical_name"
    ],
-   "lists": {
-    "software": 124,
-    "world_model": 20
-   },
    "access": "free",
    "category": "software",
-   "public": "all"
+   "public": "all",
+   "lists": {
+    "software": 120,
+    "world_model": 20
+   },
+   "reconciliation": {
+    "source_entries": 148,
+    "rows": 140,
+    "entries": 134,
+    "excluded": [
+     {
+      "sheet_row": 77,
+      "list": "software",
+      "name": "SOFTWARE FOR UNITREE",
+      "reason": "section heading: the rows below it are grouped as \"Software for Unitree\""
+     },
+     {
+      "sheet_row": 78,
+      "list": "software",
+      "name": "SOFTWARE",
+      "reason": "repeated header row"
+     },
+     {
+      "sheet_row": 116,
+      "list": "software",
+      "name": "SIMULATORS",
+      "reason": "section heading: the rows below it are grouped as \"Simulators\""
+     },
+     {
+      "sheet_row": 117,
+      "list": "software",
+      "name": "SIMULATOR",
+      "reason": "repeated header row"
+     }
+    ],
+    "merged": [
+     {
+      "sheet_row": 61,
+      "list": "software",
+      "name": "Lightwheel",
+      "into_sheet_row": 35,
+      "into_list": "software",
+      "into_name": "Lightwheel",
+      "reason": "same address as an earlier entry of the same list: one entry, this name kept as another name"
+     },
+     {
+      "sheet_row": 93,
+      "list": "software",
+      "name": "PyRoki",
+      "into_sheet_row": 26,
+      "into_list": "software",
+      "into_name": "PyRoki",
+      "reason": "same address as an earlier entry of the same list: one entry, this name kept as another name"
+     },
+     {
+      "sheet_row": 110,
+      "list": "software",
+      "name": "Latent",
+      "into_sheet_row": 72,
+      "into_list": "software",
+      "into_name": "Latent",
+      "reason": "same address as an earlier entry of the same list: one entry, this name kept as another name"
+     },
+     {
+      "sheet_row": 119,
+      "list": "software",
+      "name": "Reachy",
+      "into_sheet_row": 23,
+      "into_list": "software",
+      "into_name": "Reachy Pollen Robotics",
+      "reason": "same address as an earlier entry of the same list: one entry, this name kept as another name"
+     }
+    ],
+    "memberships": [
+     {
+      "sheet_row": 5,
+      "list": "world_model",
+      "name": "NVIDIA DreamDojo",
+      "canonical_sheet_row": 80,
+      "canonical_list": "software",
+      "canonical_name": "DreamDojo (NVIDIA)",
+      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
+     },
+     {
+      "sheet_row": 9,
+      "list": "world_model",
+      "name": "NVIDIA DreamZero",
+      "canonical_sheet_row": 62,
+      "canonical_list": "software",
+      "canonical_name": "DreamZero",
+      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
+     },
+     {
+      "sheet_row": 12,
+      "list": "world_model",
+      "name": "Genesis",
+      "canonical_sheet_row": 29,
+      "canonical_list": "software",
+      "canonical_name": "Genesis AI",
+      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
+     },
+     {
+      "sheet_row": 13,
+      "list": "world_model",
+      "name": "Lightwheel",
+      "canonical_sheet_row": 35,
+      "canonical_list": "software",
+      "canonical_name": "Lightwheel",
+      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
+     },
+     {
+      "sheet_row": 16,
+      "list": "world_model",
+      "name": "General Intuition",
+      "canonical_sheet_row": 60,
+      "canonical_list": "software",
+      "canonical_name": "General Intuition",
+      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
+     },
+     {
+      "sheet_row": 19,
+      "list": "world_model",
+      "name": "Covariant",
+      "canonical_sheet_row": 54,
+      "canonical_list": "software",
+      "canonical_name": "Covariant",
+      "reason": "same address as the software entry: kept as a world model membership, not a second entry"
+     }
+    ],
+    "review": [
+     {
+      "name": "NVIDIA Cosmos",
+      "entries": [
+       {
+        "sheet_row": 4,
+        "list": "software",
+        "url": "https://github.com/NVIDIA/Cosmos"
+       },
+       {
+        "sheet_row": 4,
+        "list": "world_model",
+        "url": "https://github.com/nvidia-cosmos"
+       }
+      ],
+      "reason": "same name, different addresses: kept as separate entries"
+     },
+     {
+      "name": "GentleHumanoid",
+      "entries": [
+       {
+        "sheet_row": 42,
+        "list": "software",
+        "url": "https://arxiv.org/abs/2511.04679"
+       },
+       {
+        "sheet_row": 98,
+        "list": "software",
+        "url": "https://gentle-humanoid.axell.top/"
+       }
+      ],
+      "reason": "same name, different addresses: kept as separate entries"
+     }
+    ]
+   }
   },
   {
    "id": "hardware",
@@ -369,8 +524,7 @@
     "review_status",
     "licence",
     "repository"
-   ],
-   "snapshot": "2026-11-23T21:49:26Z"
+   ]
   },
   {
    "id": "component-software",
@@ -435,30 +589,59 @@
     "review_status",
     "licence",
     "repository"
-   ],
-   "snapshot": "2026-11-23T21:49:26Z"
+   ]
   },
   {
    "id": "other-robots",
    "title": "Other robots",
    "description": "Non-humanoid and educational robots tracked alongside the humanoid catalogue.",
-   "entries_total": 547,
+   "entries_total": 560,
    "source_rows_total": 488,
-   "preview_entries": 547,
+   "preview_entries": 560,
    "preview_source_rows": 488,
    "fields": [
     "list",
     "name",
     "url",
-    "description"
+    "description",
+    "group",
+    "canonical",
+    "also_listed_as",
+    "other_names"
    ],
-   "lists": {
-    "other_robot": 59,
-    "edubot": 488
-   },
    "access": "free",
    "category": "other-robots",
-   "public": "all"
+   "public": "all",
+   "lists": {
+    "other_robot": 72,
+    "edubot": 488
+   },
+   "reconciliation": {
+    "source_entries": 560,
+    "rows": 560,
+    "entries": 560,
+    "excluded": [],
+    "merged": [],
+    "memberships": [],
+    "review": [
+     {
+      "name": "ProtoBot",
+      "entries": [
+       {
+        "sheet_row": 230,
+        "list": "edubot",
+        "url": "https://robotheca.org/robots/protobot-2"
+       },
+       {
+        "sheet_row": 288,
+        "list": "edubot",
+        "url": "https://robotheca.org/robots/protobot"
+       }
+      ],
+      "reason": "same name, different addresses: kept as separate entries"
+     }
+    ]
+   }
   },
   {
    "id": "data-space",
@@ -484,8 +667,7 @@
    "category": null,
    "public": "none",
    "public_fields": [],
-   "offer": false,
-   "snapshot": "2026-11-23T21:49:26Z"
+   "offer": false
   }
  ]
 }

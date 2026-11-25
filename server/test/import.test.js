@@ -111,19 +111,34 @@ test('identities are registered only when the import commits', async () => {
   assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM premium_rows').first()).n, 0);
 });
 
-test('directory entries without a link or sharing one stay unresolved instead of getting a name-based id', async () => {
+test('directory entries: no link stays unresolved; a repeated address in one list is merged, across lists kept as a membership', async () => {
   const values = fixtureWorkbook();
   values.Software[1][1] = '';
   values.Software[2][1] = 'https://software-3.example.com/';
+  // The same address as a world model: a topical membership, not a second entry.
+  values.Software[5][5] = 'https://software-5.example.com/';
   const db = createTestDb();
   const result = await runImport(db, values, T0);
-  const [first, second, third, fourth] = (await rowsOf(db, 'software')).filter((r) => r.list === 'software');
+  const rows = await rowsOf(db, 'software');
+  const software = rows.filter((r) => r.list === 'software');
+  const [first, second] = software;
   assert.equal(first.identity_status, 'unresolved');
   assert.match(first.id, /^pending_software_r2/);
-  assert.equal(second.identity_status, 'unresolved', 'shares software-3.example.com');
-  assert.equal(third.identity_status, 'unresolved', 'shares software-3.example.com');
-  assert.equal(fourth.identity_status, 'resolved');
   assert.ok(result.warnings.some((w) => w.includes('no natural key')));
+  // Rows 3 and 4 share software-3.example.com: one entry with a stable id, the other name kept.
+  assert.equal(second.identity_status, 'resolved');
+  assert.equal(second.url, 'https://software-3.example.com/');
+  assert.equal(second.other_names.length, 1, 'the merged row keeps its name as another name');
+  assert.equal(software.filter((r) => r.url === 'https://software-3.example.com/').length, 1);
+  assert.ok(result.reconciliation.software.merged.some((m) => m.sheet_row === 4 && m.into_sheet_row === 3));
+  // The world model row keeps its own stable id and points to the software entry; it is not counted as an entry.
+  const member = rows.find((r) => r.list === 'world_model' && r.url === 'https://software-5.example.com/');
+  assert.equal(member.canonical, false);
+  assert.equal(member.canonical_list, 'software');
+  assert.equal(member.identity_status, 'resolved');
+  assert.ok(!member.id.startsWith('pending_'));
+  assert.ok(software.find((r) => r.url === 'https://software-5.example.com/').also_listed_as.includes('world_model'));
+  assert.equal(result.reconciliation.software.entries, result.reconciliation.software.rows - 1);
 });
 
 test('header drift aborts the whole import and keeps the previous snapshot', async () => {

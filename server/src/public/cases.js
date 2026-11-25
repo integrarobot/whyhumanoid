@@ -6,6 +6,7 @@
 // receives public rows.
 
 import { STATUS_LABELS, statusKey } from './projection.js';
+import { currentStatus, deploymentCountries, sourceStart } from './status.js';
 
 const NA = /^(not\b|n\/?a$|unknown$|unspecified$|none$|tbd$|not_disclosed$)/i;
 const has = (v) => v !== null && v !== undefined && String(v).trim() !== '' && !NA.test(String(v).trim());
@@ -35,7 +36,7 @@ export const ROLE_LABELS = Object.freeze({
   customer_operator: 'Customer or operator', customer_investor: 'Customer and investor', technology_partner: 'Technology partner or integrator',
 });
 export const taskLabel = (v) => (has(v) ? cap(human(v)) : 'Task not specified in the sources');
-export const CASE_CAVEAT = 'Records are claims from named sources, as recorded, not facts verified by Why Humanoid?. A status is the latest one recorded; it is not proof of results. Outcomes, metrics and site details are not part of the public summary, and what the sources do not say stays unknown.';
+export const CASE_CAVEAT = 'Records are claims from named sources, as recorded, not facts verified by Why Humanoid?. A case\'s status is the one recorded by its most recent dated source (when several sources share that date, the most advanced of them); it is not proof of results. Outcomes, metrics and site details are not part of the public summary, and what the sources do not say stays unknown.';
 
 export const caseSlug = (deploymentId) => String(deploymentId).replace(/^dep_/, '').replace(/_/g, '-').toLowerCase();
 
@@ -48,8 +49,12 @@ export function publicCases(rows) {
     groups.get(key).push(r);
   }
   return [...groups.entries()].map(([id, rs]) => {
-    const dated = [...rs].sort((a, b) => String(a.publication_date ?? '').localeCompare(String(b.publication_date ?? '')));
-    const latest = dated.at(-1);
+    // Sources in date order (a year or month counts from its first day; undated sources last, in workbook order).
+    const dated = [...rs].sort((a, b) => (sourceStart(a.publication_date) ? 0 : 1) - (sourceStart(b.publication_date) ? 0 : 1) || String(sourceStart(a.publication_date) ?? '').localeCompare(String(sourceStart(b.publication_date) ?? '')));
+    // Current status: the most recent dated source (server/src/public/status.js), the same policy as the home page.
+    const current = currentStatus(rs, (r) => statusKey(r.operational_status));
+    const latest = current.record;
+    const withDate = dated.filter((r) => sourceStart(r.publication_date));
     const orgs = [];
     for (const r of rs) {
       const k = r.organization_id || r.organization_name;
@@ -75,12 +80,13 @@ export function publicCases(rows) {
       organisations: orgs,
       robots: robots.map(({ key, ...x }) => x),
       sectors: uniq(rs.map((r) => r.sector)),
-      countries: uniq(rs.flatMap((r) => String(r.country ?? '').split(/;\s*/))),
+      countries: uniq(rs.flatMap((r) => deploymentCountries(r.country).countries)),
+      country_notes: [...new Set(rs.flatMap((r) => deploymentCountries(r.country).notes))], // kept as written, "Not disclosed" included
       tasks: (() => { const t = uniq(rs.map((r) => r.task_category)).map(taskLabel); return t.length ? t : [taskLabel(null)]; })(),
-      status: { key: statusKey(raw), label: STATUS_LABELS[statusKey(raw)], detail: STATUS_DETAIL[raw] ?? (has(raw) ? cap(human(raw)) : 'Not recorded'), as_of: latest.publication_date ?? null },
+      status: { key: statusKey(raw), label: STATUS_LABELS[statusKey(raw)], detail: STATUS_DETAIL[raw] ?? (has(raw) ? cap(human(raw)) : 'Not recorded'), as_of: current.as_of, dated: current.dated },
       review: { key: latest.verification_status ?? null, label: REVIEW_LABELS[latest.verification_status] ?? (has(latest.verification_status) ? cap(human(latest.verification_status)) : 'Not recorded') },
-      first_date: dated[0].publication_date ?? null,
-      last_date: latest.publication_date ?? null,
+      first_date: withDate[0]?.publication_date ?? null,
+      last_date: withDate.at(-1)?.publication_date ?? null,
       sources: sources.map(({ key, ...s }) => s),
     };
   });

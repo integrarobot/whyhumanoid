@@ -102,6 +102,8 @@ async function build(from, snapshot) {
       title: meta.title,
       description: meta.description,
       entries_total: all.length,
+      // Directory tabs: canonical entries (a topical membership row, canonical: false, is listed but not counted again).
+      ...(all.some((r) => r.canonical === false) ? { canonical_entries: all.filter((r) => r.canonical !== false).length, memberships: all.filter((r) => r.canonical === false).length } : {}),
       source_rows_total: new Set(all.map((r) => r._row)).size,
       preview_entries: rows.length,
       preview_source_rows: new Set(rows.map((r) => r._row)).size,
@@ -112,6 +114,8 @@ async function build(from, snapshot) {
       ...(spec.publicFields ? { public_fields: spec.publicFields } : {}),
       ...(spec.offer === false ? { offer: false } : {}),
       ...(fields.includes('list') ? { lists: all.reduce((m, r) => ({ ...m, [r.list]: (m[r.list] ?? 0) + 1 }), {}) } : {}),
+      // Directory tabs: how the source entries became the canonical catalogue (server/src/catalogue/directory.js).
+      ...(result.reconciliation?.[spec.id] ? { reconciliation: result.reconciliation[spec.id] } : {}),
     });
     tabs[spec.id] = { id: spec.id, snapshot, preview: true, rows };
   }

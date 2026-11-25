@@ -344,7 +344,6 @@
   <url><loc>https://whyhumanoid.com/companies/heidelberger-druckmaschinen/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/heima/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/hesai-group/</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://whyhumanoid.com/companies/hexagon-2/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/hexagon/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/hiab-corporation/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/hirata/</loc><lastmod>2026-11-17</lastmod></url>
@@ -585,7 +584,6 @@
   <url><loc>https://whyhumanoid.com/companies/shanghai-moons-electric/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/shanghai-qi-zhi-institute/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/sharpa/</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://whyhumanoid.com/companies/shenzhen-dobot-technology-corp/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/shenzhen-edge-medical-co/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/shenzhen-inovance-technology/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/shenzhen-zhaowei-machinery-and-electronics/</loc><lastmod>2026-11-17</lastmod></url>
@@ -736,7 +734,7 @@
   <url><loc>https://whyhumanoid.com/other-robots/lekiwi/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/huskk/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/just1/</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://whyhumanoid.com/other-robots/agilex-2/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/agile-robots/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/physical-ant/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/lirio/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/sawppy-the-rover/</loc><lastmod>2026-11-17</lastmod></url>
@@ -804,18 +802,31 @@
   <url><loc>https://whyhumanoid.com/other-robots/alohascorpion/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/proception/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/hex-b12-hexapod/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/mosaic-intelligence-labs/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/omnix/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/naver-labs/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/rc-wheelleg/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/roboligent/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/humblearm/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/blue-worm/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/openeai-arm/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/futuring/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/zuko/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/embodied-ai/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/agipix-quadrotor/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/flexiv/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/inverted-pendulum-balancing-robot-esp32/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/knowin/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/ball-balancing-robot/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/dyna-robotics/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/ce2t-6-dof-robotic-arm/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/ultra-robotics/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/diy-6-dof-servo-robotic-arm/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/linkerbot/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/dual-scorpion/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/vbot/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/librerover/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://whyhumanoid.com/other-robots/orbit-robotics/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/lokabot/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/quadruped-bai-servo-v1/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://whyhumanoid.com/other-robots/rc-drone-and-controller-nano-esp32/</loc><lastmod>2026-11-17</lastmod></url>

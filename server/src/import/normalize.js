@@ -6,6 +6,7 @@
 import { cleanValue, redactPrivateLinks } from './clean.js';
 import { PREVIEW_ROWS } from '../datasets.js';
 import { publicValues } from '../access/fields.js';
+import { canonicalDirectory } from '../catalogue/directory.js';
 
 export class ImportError extends Error {}
 
@@ -91,6 +92,15 @@ export function normalizeTab(spec, values) {
     items.push({ sheetRow, rank: internal ? null : rank, data, previewData: pub, visibility: internal ? 'internal' : 'customer' });
   });
 
+  // Directory tabs (Software, Other Robots): the canonical active catalogue, without header and section rows and with
+  // exact identities merged (server/src/catalogue/directory.js). Reported, never silently dropped.
+  let reconciliation = null;
+  if (spec.kind === 'lists' && spec.canonical) {
+    const c = canonicalDirectory(spec, items);
+    items.splice(0, items.length, ...c.items);
+    reconciliation = c.reconciliation;
+  }
+
   const seen = new Set();
   for (const item of items) {
     if (spec.idFields) {
@@ -122,5 +132,6 @@ export function normalizeTab(spec, values) {
     })),
     warnings,
     review,
+    reconciliation,
   };
 }

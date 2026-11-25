@@ -59,23 +59,28 @@ const bars = (rows, label, fmt = (x) => x, n) => {
 };
 
 export function renderDeploymentsCategory({ cases, records, links, offer, head, snapshot }) {
+  // Current status (server/src/public/status.js): the latest dated source; cases with only undated sources apart.
+  const datedCases = cases.filter((c) => c.status.dated);
+  const undatedCases = cases.filter((c) => !c.status.dated);
   const byStatus = STATUS_KEYS.map((k) => [k, cases.filter((c) => c.status.key === k).length]);
+  const byCurrent = STATUS_KEYS.map((k) => [k, datedCases.filter((c) => c.status.key === k).length]);
   const sectors = tally(cases, (c) => c.sectors);
   const countries = tally(cases, (c) => c.countries);
   const reviews = tally(cases, (c) => c.review.key ?? 'none');
   const opt = (v, l, n) => `<option value="${esc(v)}">${esc(l)} (${n})</option>`;
   const REVIEW = Object.fromEntries(cases.map((c) => [c.review.key ?? 'none', c.review.label]));
   return `${head}
-<p class="lede-2">Every one of the <b>${cases.length} deployment cases</b> in the database, built from ${records} claim-level records, is listed below with its public summary: who, which robot, sector, country, task, the latest status as recorded, who reports it and the sources. No account is needed. The detail of each case comes with the data subscription.</p>
+<p class="lede-2">Every one of the <b>${cases.length} deployment cases</b> in the database, built from ${records} claim-level records, is listed below with its public summary: who, which robot, sector, country, task, its current status as recorded, who reports it and the sources. No account is needed. The detail of each case comes with the data subscription.</p>
 <p class="caveat"><b>How to read it.</b> ${esc(CASE_CAVEAT)}</p>
 <nav class="views dc-jump" aria-label="On this page"><a href="#cases">Browse all ${cases.length} cases</a><a href="#adoption">Adoption at a glance</a><a href="#offer">Subscription and reports</a></nav>
 ${offer}
-<section class="dv-sec" id="adoption" aria-labelledby="adoption-h"><h2 id="adoption-h">Adoption at a glance</h2><p class="dim">Counts of cases by their latest recorded status, sector and country. A case can name several sectors or countries.</p>
+<section class="dv-sec" id="adoption" aria-labelledby="adoption-h"><h2 id="adoption-h">Adoption at a glance</h2><p class="dim">Current status of the ${datedCases.length} cases with a dated source: the status recorded by each case's most recent dated source (a year or month counts from its first day; when several sources share that date, the most advanced of them). A later source that records less, such as a planned expansion, is what the case shows now. ${undatedCases.length} more ${undatedCases.length === 1 ? 'case has' : 'cases have'} only undated sources and ${undatedCases.length === 1 ? 'is' : 'are'} counted apart. Sector and country count all ${cases.length} cases; a case can name several.</p>
 <div class="dv-grid">
-${bars(byStatus, 'Latest status as recorded', (k) => STATUS_LABELS[k])}
+${bars(byCurrent, `Current status (${datedCases.length} dated cases)`, (k) => STATUS_LABELS[k])}
 ${bars(sectors, 'Sector', sectorLabel, 10)}
 ${bars(countries, 'Deployment country', (x) => x, 10)}
 </div>
+<p class="key">Source date unknown: ${undatedCases.length} ${undatedCases.length === 1 ? 'case' : 'cases'}${undatedCases.length ? ` (${STATUS_KEYS.map((k) => [k, undatedCases.filter((c) => c.status.key === k).length]).filter(([, v]) => v).map(([k, v]) => `${v} ${STATUS_LABELS[k].toLowerCase()} as recorded`).join(', ')})` : ''}, shown in the list with their recorded status. The evolution chart above counts something else: the most advanced status documented by each date, so its totals differ.</p>
 <p class="key">Status as recorded: In operation · Pilot or trial (pilots, tests and demonstrations) · Announced (planned or agreed, not evidence of work) · Unconfirmed (operation claimed by a vendor, or unresolved). Counting cases is not independent verification, and a status is not a measure of results.</p></section>
 <section class="dc-sec" id="cases" aria-labelledby="cases-h"><h2 id="cases-h">All ${cases.length} cases</h2>
 <form class="dc-filters" id="dc-filters" hidden role="search" aria-label="Filter the cases">

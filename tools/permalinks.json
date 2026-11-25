@@ -4827,7 +4827,8 @@
       "just1"
     ],
     "other_robot|agile-robots.com/en": [
-      "agilex-2"
+      "agilex-2",
+      "agile-robots"
     ],
     "edubot|robotheca.org/robots/physical-ant": [
       "physical-ant"
@@ -6316,6 +6317,45 @@
     ],
     "edubot|robotheca.org/robots/tracked-quadruped-hybrid-robot": [
       "tracked-quadruped-hybrid-robot"
+    ],
+    "other_robot|mosaicintelligence.xyz": [
+      "mosaic-intelligence-labs"
+    ],
+    "other_robot|naverlabs.com/en/ambidex": [
+      "naver-labs"
+    ],
+    "other_robot|roboligent.com/robin": [
+      "roboligent"
+    ],
+    "other_robot|bluewormrobotics.com": [
+      "blue-worm"
+    ],
+    "other_robot|futuringrobot.com": [
+      "futuring"
+    ],
+    "other_robot|embodiedai.ch": [
+      "embodied-ai"
+    ],
+    "other_robot|flexiv.com": [
+      "flexiv"
+    ],
+    "other_robot|knowinai.com/product.html": [
+      "knowin"
+    ],
+    "other_robot|dyna.co": [
+      "dyna-robotics"
+    ],
+    "other_robot|ultra.tech": [
+      "ultra-robotics"
+    ],
+    "other_robot|linkerbot.cn": [
+      "linkerbot"
+    ],
+    "other_robot|vbot.cn": [
+      "vbot"
+    ],
+    "other_robot|orbitrobotics.ch": [
+      "orbit-robotics"
     ]
   },
   "reports": {

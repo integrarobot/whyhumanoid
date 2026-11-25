@@ -752,8 +752,9 @@
     // Entry counts in the category list, from the public previews (cached by the API for 5 minutes).
     state.datasets.filter((d) => d.id !== 'humanoids' && !cache[d.id]).forEach((d) => api(`/v1/datasets/${d.id}/preview`, { auth: false }).then(({ status, data }) => {
       if (status !== 200) return;
-      totals[d.id] = data.total_rows;
-      const n = document.querySelector(`[data-n="${d.id}"]`); if (n) n.textContent = data.total_rows;
+      // Entries, not rows: a directory's topical memberships (a world model that is also a software entry) count once.
+      totals[d.id] = data.entries ?? data.total_rows;
+      const n = document.querySelector(`[data-n="${d.id}"]`); if (n) n.textContent = totals[d.id];
     }));
     if (params.get('checkout') === 'cancelled') notice('Checkout was cancelled. Nothing was charged.');
     if (params.get('checkout') === 'success') {
