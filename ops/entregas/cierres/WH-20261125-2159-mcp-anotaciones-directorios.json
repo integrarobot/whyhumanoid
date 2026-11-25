@@ -1,0 +1,42 @@
+{
+  "id": "WH-20261125-2159-mcp-anotaciones-directorios",
+  "tarea": "Publicar el MCP de Why Humanoid? en directorios: anotaciones de solo lectura en las seis herramientas (lo que pedía la preparación del Claude Directory) y estado de cada directorio",
+  "origen": "Javier (25/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-25T21:59:46+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "server/src/mcp.js: las seis herramientas (list_categories, search_catalogue, get_rows, get_atlas, get_relations, account_status) declaran readOnlyHint true, destructiveHint false, idempotentHint true y openWorldHint false (solo leen la base del catálogo y sus atlas publicados en rutas fijas de whyhumanoid.com), y repiten su título en las anotaciones. Sin cambios en títulos, descripciones, esquemas de entrada, handlers, acceso, autenticación, límites de uso, precios, Stripe ni x402.",
+    "tools/test-agents.mjs: prueba de contrato con el cliente MCP oficial: tools/list, para visitante y suscriptor, devuelve las seis herramientas con sus títulos exactos y sus anotaciones (falla con el código anterior).",
+    "Registro MCP oficial (publicado por Codex, no en este cambio): io.github.integrarobot/whyhumanoid@1.0.0 activo, publicado el 2026-11-25T20:48:10.889164Z."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 120",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/120"
+    },
+    {
+      "etiqueta": "Commit de fusión a171086",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/a171086a586e451c00b42938c8688d6647cd655e"
+    },
+    {
+      "etiqueta": "Instrucciones para agentes (API, MCP y CLI)",
+      "url": "https://whyhumanoid.com/agents/"
+    }
+  ],
+  "despliegue": [
+    "Worker desplegado por Codex desde la revisión aceptada 4d08ac8 en el editor autenticado de Cloudflare, tras comprobar el SHA-256 de cada bundle: TEST versión c222090c (bundle f05101f1ec1b62a35aedeeb310463e0bfb2c6067ce4b5d1407739ce27d40c9ec, 785.550 bytes) y PROD versión f5a096cf (bundle 92a976bdae4359ecadad5711b50250e476543a55d1e39439e851e5139123f348, 898.212 bytes), las dos activas.",
+    "PR 120 fusionado en main como a171086 con el head fijado 4d08ac8 y el CI en verde (ejecución 45698898719).",
+    "Sin cambios de variables, secretos, migraciones, datos, precios ni x402."
+  ],
+  "verificaciones": [
+    "Local: tools/test-agents.mjs 3/3 (la prueba nueva falla con el mcp.js anterior); servidor 184/184; check-public y entregas --check en verde; bundles TEST y PROD construidos dos veces con hashes idénticos.",
+    "Codex, independiente: revisión aceptada (solo metadatos y la prueba de contrato); las 3 pruebas reproducidas; los dos bundles reconstruidos con los mismos hashes; en producción, con el SDK oficial de MCP, tools/list con los seis títulos y todas las anotaciones, y llamadas reales a las seis herramientas; en TEST, los mismos metadatos y get_rows y account_status correctos.",
+    "Producción, solo lectura, después de fusionar: tools/list devuelve las seis herramientas con su título y anotaciones {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}; /v1/reports/services sigue con la dirección de soporte del negocio."
+  ],
+  "pendientes": [
+    "Directorios, aparte del registro oficial: la importación automática de Glama (cada hora) aún no se ha observado; la ficha del Claude Directory está preparada pero NO enviada, con las declaraciones de política pendientes; el paquete de ChatGPT está incompleto y NO subido. No hay ningún otro directorio publicado. Las declaraciones las firma Javier, no los agentes."
+  ],
+  "siguiente_accion": "Codex comprueba la importación en Glama y completa las fichas de Claude y ChatGPT; Javier revisa y firma las declaraciones antes de enviarlas."
+}
