@@ -19,6 +19,7 @@
   "notes": [
     "The key is restricted and test-mode; a read of /v1/balance was refused for missing permission (request req_ymdM3pXqZR7tnJ), as intended for the minimal scope.",
     "The supported token is the Base Sepolia USDC the x402 code and tests use.",
-    "This shows sandbox eligibility and the preview version only; live eligibility is not established."
+    "This shows sandbox eligibility and the preview version only; live eligibility is not established.",
+    "Stopped on 25 Nov 2026: Stripe answered that Stablecoins and Crypto is not available to accounts registered as individuals, so x402 cannot be enabled on this account. The sandbox HTTP 200 did not imply live eligibility. The address is not used."
   ]
 }
