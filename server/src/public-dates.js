@@ -1,4 +1,4 @@
-// First public dates of Datasets and Benchmarks (Javier, 25 Nov 2026: "adelante con lo de las fechas"; contract agreed
+// Dated papers, announcements and releases of Datasets and Benchmarks (Javier, 25 Nov 2026: "adelante con lo de las fechas"; contract agreed
 // with Codex the same day). Seven columns appended, in this order, to the end of both tabs of the master workbook; the
 // tab without them is still accepted, and a row without a date is valid and counts as undated. Shared by the backend
 // import and the public snapshots (server/src/data-atlas/atlas.js, server/src/benchmarks/atlas.js) and read by the
@@ -13,8 +13,10 @@
 //   PUBLIC_DATE_CHECKED_AT  YYYY-MM-DD of the check; bookkeeping, never history
 //   PUBLIC_DATE_NOTE        optional public caveat in English (an earlier publication, a different announcement date)
 //
-// The first six go together: all empty, or all filled. The date is the first public appearance, in the stated meaning,
-// of the resource or version that NAME (and, for Datasets, VERSION_SCOPE) names, never the date of its current figures.
+// The first six go together: all empty, or all filled. The date is the event its meaning names (the first arXiv
+// submission of the associated paper, a publication, an announcement or a release) for the resource or version that
+// NAME (and, for Datasets, VERSION_SCOPE) names. It need not be the resource's first public appearance (a note says so
+// when an earlier one is known) and is never the date of its current figures.
 
 export const PUBLIC_DATE_HEADERS = Object.freeze([
   'PUBLIC_DATE', 'PUBLIC_DATE_PRECISION', 'PUBLIC_DATE_MEANING', 'PUBLIC_DATE_SOURCE_URL', 'PUBLIC_DATE_LOCATOR',

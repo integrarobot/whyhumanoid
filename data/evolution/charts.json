@@ -1530,7 +1530,7 @@
    "type": "lanes",
    "title": "Associated papers of robot learning data resources",
    "subtitle": "28 of 35 resources by the first arXiv submission of their associated paper: a partial chronology of publications, not of dataset releases or volume.",
-   "meaning": "First public date of each data resource from the master's PUBLIC_DATE columns (server/src/public-dates.js), each in its stated meaning: for every dated resource so far, the first arXiv submission (v1) of the associated paper, checked against the arXiv submission history by Codex on 24 and 25 Nov 2026, with the resource-to-paper link from the official project page, repository or the paper's abstract. Not the dataset's release or availability date and not the growth of its volume: current figures may come from later versions. Reviewed dates here would fill only resources whose columns are still empty, and must agree with the master.",
+   "meaning": "Dated paper or announcement of each data resource, from the master's PUBLIC_DATE columns (server/src/public-dates.js), each in its stated meaning: for every dated resource so far, the first arXiv submission (v1) of the associated paper, checked against the arXiv submission history by Codex on 24 and 25 Nov 2026, with the resource-to-paper link from the official project page, repository or the paper's abstract. Not the dataset's release or availability date and not the growth of its volume: current figures may come from later versions. Reviewed dates here would fill only resources whose columns are still empty, and must agree with the master.",
    "unit": "papers",
    "precision": "day",
    "domain": {
@@ -2031,7 +2031,7 @@
     "unit": "resources",
     "excluded": [
      {
-      "reason": "Resources without a checked first public date yet",
+      "reason": "Resources without a checked date yet",
       "count": 7
      }
     ],
@@ -2233,9 +2233,9 @@
    "label": "Benchmarks",
    "path": "/benchmarks/",
    "type": "lanes",
-   "title": "When each robotics benchmark first appeared",
-   "subtitle": "21 of 22 benchmarks by their first public date, by evaluation setting: mostly the first arXiv submission of the associated paper. Not the date of any result.",
-   "meaning": "First public date of each benchmark from the master's PUBLIC_DATE columns (server/src/public-dates.js), each in its stated meaning: mostly the first arXiv submission (v1) of the associated paper; PAW by its official announcement; OpenEQA by the year of its CVPR 2024 publication (day not established). Not the date of any leaderboard result or of the current protocol version. Checked by Codex on 25 Nov 2026.",
+   "title": "Dated publications and announcements of robotics benchmarks",
+   "subtitle": "21 of 22 benchmarks by the date of their associated paper or official announcement, grouped by evaluation setting. Most dates are first arXiv submissions; they need not be the benchmark’s first public appearance. Not dates of results.",
+   "meaning": "Dated paper or official announcement of each benchmark, from the master's PUBLIC_DATE columns (server/src/public-dates.js), each in its stated meaning: mostly the first arXiv submission (v1) of the associated paper; PAW by its official announcement; OpenEQA by the year of its CVPR 2024 publication (day not established). These need not be a benchmark's first public appearance (BEHAVIOR-1K had an earlier CoRL 2022 / PMLR 2023 paper), and are never the date of a leaderboard result or of the current protocol version. Checked by Codex on 25 Nov 2026.",
    "unit": "benchmarks",
    "precision": "day",
    "hollowLabel": "Dated by an announcement or a publication year, not arXiv",
@@ -2613,14 +2613,14 @@
      "official_announcement": 1
     }
    },
-   "summary": "21 benchmarks dated from 2019 to 2026: 3 real robot, 10 simulation, 6 simulation with real-robot validation, 2 video or observations, no robot actuation. 10 of them since 2025. A benchmark's date says when it appeared, not how models score on it.",
+   "summary": "21 benchmarks with a dated paper or announcement, from 2019 to 2026: 3 real robot, 10 simulation, 6 simulation with real-robot validation, 2 video or observations, no robot actuation. 10 of them since 2025. Each date is the benchmark's associated paper or announcement, not necessarily its first public appearance, and says nothing about how models score on it.",
    "coverage": {
     "included": 21,
     "total": 22,
     "unit": "benchmarks",
     "excluded": [
      {
-      "reason": "SpatialBench: no checked first public date",
+      "reason": "SpatialBench: no checked date of a paper or announcement",
       "count": 1
      }
     ],
@@ -2630,7 +2630,7 @@
    "status_note": "21 of 22 benchmarks dated; not yet: SpatialBench.",
    "sources": [
     {
-     "label": "First public dates in the master, checked 2026-11-25",
+     "label": "Dated papers and announcements in the master, checked 2026-11-25",
      "url": "/data/benchmarks/atlas.json"
     }
    ],

@@ -84,7 +84,7 @@ test('Integrators: dated events quote their source dates; Novares counted once; 
   assert.equal(new Set(c.points.map((p) => p.id)).size, c.points.length);
 });
 
-test('Datasets: first public dates checked against arXiv, master and reviewed reading agree, no volumes added', () => {
+test('Datasets: dated papers checked against arXiv, master and reviewed reading agree, no volumes added', () => {
   const c = chart('datasets');
   const reviewed = new Map(src.review.datasets.papers.map((p) => [p.id, p]));
   assert.equal(c.points.length, src.datasets.resources.filter((r) => publicDateOf(r) || reviewed.has(r.id)).length);
@@ -102,8 +102,9 @@ test('Datasets: first public dates checked against arXiv, master and reviewed re
   assert.equal(c.coverage.excluded[0].count, src.datasets.resources.length - c.points.length);
 });
 
-test('Benchmarks: first public dates from the master, each with its meaning; dated results kept apart', () => {
+test('Benchmarks: dated papers and announcements from the master, each with its meaning; dated results kept apart', () => {
   const c = chart('benchmarks');
+  assert.doesNotMatch(`${c.title} ${c.subtitle} ${c.summary}`, /first appeared|when it appeared|first public date/i, 'a date is not claimed as a first appearance');
   const dated = src.benchmarks.benchmarks.filter((b) => publicDateOf(b));
   assert.equal(c.points.length, dated.length);
   for (const p of c.points) {

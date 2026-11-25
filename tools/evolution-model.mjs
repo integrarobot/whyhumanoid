@@ -258,7 +258,8 @@ function integrators(atlas, review) {
   };
 }
 
-// Datasets: the first public date of each resource in the stated meaning. The master's PUBLIC_DATE columns
+// Datasets: the dated event of each resource in its stated meaning (today, the first arXiv submission of the associated
+// paper; not necessarily the resource's first public appearance). The master's PUBLIC_DATE columns
 // (server/src/public-dates.js) are the source; the reviewed dates of tools/evolution-review.json fill only resources
 // whose columns are still empty, and must agree with the master where both exist.
 function datasets(atlas, review) {
@@ -300,22 +301,23 @@ function datasets(atlas, review) {
   const onlyPapers = meanings.length === 1 && meanings[0] === 'associated_paper_first_arxiv_submission';
   return {
     id: 'datasets', label: 'Datasets', path: '/datasets/', type: 'lanes',
-    title: onlyPapers ? 'Associated papers of robot learning data resources' : 'First public dates of robot learning data resources',
-    subtitle: `${points.length} of ${atlas.resources.length} resources by ${onlyPapers ? 'the first arXiv submission of their associated paper' : 'their first public date, each in its stated meaning'}: a partial chronology of publications, not of dataset releases or volume.`,
+    title: onlyPapers ? 'Associated papers of robot learning data resources' : 'Dated papers and announcements of robot learning data resources',
+    subtitle: `${points.length} of ${atlas.resources.length} resources by ${onlyPapers ? 'the first arXiv submission of their associated paper' : 'the date of their associated paper or announcement, each in its stated meaning'}: a partial chronology of publications, not of dataset releases or volume.`,
     meaning: onlyPapers ? r.meaning : `${r.meaning} Each date keeps its own meaning: ${meanings.map((m) => MEANINGS[m].label.toLowerCase()).join('; ')}.`,
     unit: onlyPapers ? 'papers' : 'resources', precision: 'day',
     domain: { start: `${Math.min(...points.map((p) => +p.date.slice(0, 4)))}-01-01`, end }, rows: rowsUsed, points,
     final: { papers: points.length, by_row: Object.fromEntries(rowsUsed.map((x) => [x.key, points.filter((p) => p.row === x.key).length])) },
     summary: `${points.length} ${onlyPapers ? 'associated papers' : 'dated resources'} from ${points[0].date.slice(0, 4)} to ${points[points.length - 1].date.slice(0, 4)}: ${rowsUsed.map((x) => `${points.filter((p) => p.row === x.key).length} ${x.label.toLowerCase()}`).join(', ')}. Collections overlap: their sizes are never added.`,
-    coverage: { included: points.length, total: atlas.resources.length, unit: 'resources', excluded: [{ reason: 'Resources without a checked first public date yet', count: undated.length }], note: 'Several papers have later versions; current figures are not dated back to v1. A date is the first arXiv submission of the associated paper unless its row says otherwise; where a paper or announcement came earlier, the row says so.' },
+    coverage: { included: points.length, total: atlas.resources.length, unit: 'resources', excluded: [{ reason: 'Resources without a checked date yet', count: undated.length }], note: 'Several papers have later versions; current figures are not dated back to v1. A date is the first arXiv submission of the associated paper unless its row says otherwise; where a paper or announcement came earlier, the row says so.' },
     status: 'partial', status_note: `Partial: ${points.length} of ${atlas.resources.length} resources dated; ${undated.length} undated. Release and availability dates are not established.`,
     sources: [{ label: `arXiv submission histories, checked ${[...new Set(points.map((p) => p.checked_at))].sort().join(' and ')}`, url: 'https://arxiv.org/' }, { label: `Robot Learning Data Atlas, snapshot ${isoOf(atlas.snapshot?.exported_at ?? atlas.snapshot)}`, url: '/data/datasets/atlas.json' }],
     table: { head: ['First submitted', 'Resource', 'Origin', 'Paper and notes'], rows: points.map((p) => [p.date, p.label, rowsUsed.find((x) => x.key === p.row).label, p.note]) },
   };
 }
 
-// Benchmarks: when each benchmark first appeared in public, from the master's PUBLIC_DATE columns, by setting. Each
-// date keeps its meaning (mostly the first arXiv submission of the associated paper); never a result or protocol date.
+// Benchmarks: dated publications and announcements of each benchmark, from the master's PUBLIC_DATE columns, by setting.
+// Each date keeps its meaning (mostly the first arXiv submission of the associated paper). These need not be a
+// benchmark's first public appearance (BEHAVIOR-1K had an earlier paper), and are never result or protocol dates.
 // The dated results chart (benchmarkResults) follows it on the section page.
 function benchmarks(atlas, review) {
   const r = review.benchmarks;
@@ -342,19 +344,19 @@ function benchmarks(atlas, review) {
   const meanings = [...new Set(points.map((p) => p.meaning))];
   return {
     id: 'benchmarks', label: 'Benchmarks', path: '/benchmarks/', type: 'lanes',
-    title: 'When each robotics benchmark first appeared',
-    subtitle: `${points.length} of ${atlas.benchmarks.length} benchmarks by their first public date, by evaluation setting: mostly the first arXiv submission of the associated paper. Not the date of any result.`,
+    title: 'Dated publications and announcements of robotics benchmarks',
+    subtitle: `${points.length} of ${atlas.benchmarks.length} benchmarks by the date of their associated paper or official announcement, grouped by evaluation setting. Most dates are first arXiv submissions; they need not be the benchmark’s first public appearance. Not dates of results.`,
     meaning: r.public_meaning, unit: 'benchmarks', precision: 'day', hollowLabel: 'Dated by an announcement or a publication year, not arXiv',
     domain: { start: `${Math.min(...points.map((p) => +p.date.slice(0, 4)))}-01-01`, end }, rows, points,
     final: { benchmarks: points.length, by_row: Object.fromEntries(rows.map((x) => [x.key, points.filter((p) => p.row === x.key).length])), meanings: Object.fromEntries(meanings.map((m) => [m, points.filter((p) => p.meaning === m).length])) },
-    summary: `${points.length} benchmarks dated from ${points[0].date.slice(0, 4)} to ${points.at(-1).date.slice(0, 4)}: ${rows.map((x) => `${points.filter((p) => p.row === x.key).length} ${x.label.toLowerCase()}`).join(', ')}. ${points.filter((p) => +p.date.slice(0, 4) >= 2025).length} of them since 2025. A benchmark's date says when it appeared, not how models score on it.`,
+    summary: `${points.length} benchmarks with a dated paper or announcement, from ${points[0].date.slice(0, 4)} to ${points.at(-1).date.slice(0, 4)}: ${rows.map((x) => `${points.filter((p) => p.row === x.key).length} ${x.label.toLowerCase()}`).join(', ')}. ${points.filter((p) => +p.date.slice(0, 4) >= 2025).length} of them since 2025. Each date is the benchmark's associated paper or announcement, not necessarily its first public appearance, and says nothing about how models score on it.`,
     coverage: {
       included: points.length, total: atlas.benchmarks.length, unit: 'benchmarks',
-      excluded: undated.map((b) => ({ reason: `${b.name}: no checked first public date`, count: 1 })),
+      excluded: undated.map((b) => ({ reason: `${b.name}: no checked date of a paper or announcement`, count: 1 })),
       note: `Meanings: ${meanings.map((m) => `${points.filter((p) => p.meaning === m).length} ${MEANINGS[m].label.toLowerCase()}`).join('; ')}. Hollow mark: dated by an announcement or a publication year instead of an arXiv submission.`,
     },
     status: 'partial', status_note: `${points.length} of ${atlas.benchmarks.length} benchmarks dated; not yet: ${undated.map((b) => b.name).join(', ') || 'none'}.`,
-    sources: [{ label: `First public dates in the master, checked ${[...new Set(points.map((p) => p.checked_at))].sort().join(' and ')}`, url: '/data/benchmarks/atlas.json' }],
+    sources: [{ label: `Dated papers and announcements in the master, checked ${[...new Set(points.map((p) => p.checked_at))].sort().join(' and ')}`, url: '/data/benchmarks/atlas.json' }],
     table: { head: ['Date', 'Benchmark', 'Setting', 'What the date is'], rows: points.map((p) => [p.date, p.label, rows.find((x) => x.key === p.row).label, p.note]) },
     secondary: benchmarkResults(atlas, review),
   };
