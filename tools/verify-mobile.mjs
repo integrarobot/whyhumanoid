@@ -19,7 +19,14 @@ const BASE = arg('--base', 'http://localhost:8790').replace(/\/$/, '');
 const SHOTS = arg('--shots', null);
 const CATS = ['/humanoids/', '/deployments/', '/components/', '/integrators/', '/software/', '/datasets/', '/benchmarks/', '/investment/', '/other-robots/', '/reports/'];
 const VIEWPORTS = [[320, 640], [375, 667], [390, 844], [430, 932], [768, 1024], [1366, 900], [1600, 900]];
-const PAGES = [...CATS, '/humanoids/1x-neo-home-robot-1/', '/companies/agility-robotics/', '/deployments/agility-digit-gxo-spanx/', '/components/cmp-tac-001/', '/method/', '/subscribe/'];
+// Each sample page with the h1 that proves it is the real page (not a 404 or a redirect stub).
+const PAGES = [
+  ['/humanoids/', /^Humanoids$/], ['/deployments/', /^Deployments$/], ['/components/', /^Components$/], ['/integrators/', /^Integrators$/],
+  ['/software/', /^Software$/], ['/datasets/', /^Robot Learning Data Atlas$/], ['/benchmarks/', /^Robotics Evaluation Atlas$/], ['/investment/', /^Investment$/],
+  ['/other-robots/', /^Other Robots$/], ['/reports/', /^Research Conclusions Atlas$/],
+  ['/humanoids/1x-neo-home-robot-1/', /NEO/], ['/companies/agility-robotics/', /^Agility Robotics$/], ['/deployments/agility-digit-gxo-spanx/', /GXO Logistics/],
+  ['/components/cmp-tac-001/', /^DIGIT/], ['/method/', /^How Why Humanoid\? records/], ['/subscribe/', /subscription/i],
+];
 const failures = [];
 let passed = 0;
 const check = (ok, msg) => { if (ok) passed += 1; else failures.push(msg); };
@@ -53,6 +60,10 @@ async function header(p, tag, { home }) {
   check(await p.evaluate(() => document.activeElement.getAttribute('href')) === CATS[0], `${tag}: Tab moves into the first category`);
   await p.keyboard.press('Escape');
   check(await p.evaluate(({ btn }) => document.querySelector(btn).getAttribute('aria-expanded') === 'false' && document.activeElement === document.querySelector(btn), sel), `${tag}: Escape closes and returns focus to the button`);
+  // Focus leaving the header closes it (keyboard users tabbing on into the page).
+  await p.click(sel.btn);
+  await p.evaluate(() => { const t = document.querySelector('main a[href], main button, main input'); t.focus(); });
+  check(await p.evaluate(({ btn }) => document.querySelector(btn).getAttribute('aria-expanded') === 'false', sel), `${tag}: focus leaving the header closes the menu`);
   // A click outside closes it.
   await p.click(sel.btn);
   await p.mouse.click(5, (await p.evaluate(() => innerHeight)) - 5);
@@ -90,19 +101,43 @@ for (const [w, h] of VIEWPORTS) {
   // The two offers keep the panel width; the evolution carousel is not covered by the header.
   const offers = await p.evaluate(() => { const g = document.querySelector('.op-grid'); return g ? Math.round(g.getBoundingClientRect().width / g.parentElement.getBoundingClientRect().width * 100) : 100; });
   check(offers >= 95, `${tag}: the two offers use the full width (${offers}%)`);
-  await p.evaluate(() => document.getElementById('evo-car')?.scrollIntoView({ block: 'center' }));
-  const covered = await p.evaluate(() => { const c = document.getElementById('evo-car'); if (!c) return false; const r = c.getBoundingClientRect(); const x = r.left + r.width / 2, y = r.top + 40; const el = document.elementFromPoint(x, y); return !c.contains(el); });
-  check(!covered, `${tag}: the evolution chart is not covered`);
+  // The chart can be taller than a phone screen: bring its top just under the sticky header and sample a visible point.
+  const covered = await p.evaluate(() => {
+    const c = document.getElementById('evo-car'); if (!c) return 'missing';
+    const hud = document.querySelector('.hud').getBoundingClientRect().bottom;
+    window.scrollBy(0, c.getBoundingClientRect().top - hud - 12);
+    const r = c.getBoundingClientRect();
+    const el = document.elementFromPoint(r.left + r.width / 2, Math.min(r.top + 30, innerHeight - 5));
+    return c.contains(el) ? '' : (el ? el.tagName + '.' + el.className : 'nothing');
+  });
+  check(!covered, `${tag}: the evolution chart is not covered by the header (${covered})`);
   // Every generated page header at this size.
-  for (const path of PAGES) {
-    await p.goto(`${BASE}${path}`, { waitUntil: 'load' });
+  for (const [path, h1] of PAGES) {
+    const res = await p.goto(`${BASE}${path}`, { waitUntil: 'load' });
     await p.waitForTimeout(150);
+    const title = (await p.textContent('h1').catch(() => '') ?? '').trim();
+    check(res.status() === 200 && h1.test(title) && !/not found/i.test(title), `${w}x${h} ${path}: status ${res.status()} and its own h1 ("${title.slice(0, 40)}")`);
     check(await overflow(p) <= 1, `${w}x${h} ${path}: no horizontal page overflow`);
     if ((phone || w === 768) && [CATS[1], '/humanoids/1x-neo-home-robot-1/', '/method/', '/subscribe/'].includes(path) || w === 390) await header(p, `${w}x${h} ${path}`, { home: false });
     else {
       const ok = await p.evaluate(() => { const n = document.querySelector('header.top #cat-menu'), b = document.querySelector('header.top #cat-toggle'); return n.querySelectorAll('a').length === 10 && (!b.hidden || n.scrollWidth <= n.clientWidth + 1); });
       check(ok, `${w}x${h} ${path}: all ten categories inline or behind the button`);
     }
+  }
+  await ctx.close();
+}
+
+// Without JavaScript: no menu button, the ten links stay in the scrolling bar, and nothing widens the page.
+for (const [w, h] of [[320, 640], [390, 844]]) {
+  const ctx = await browser.newContext({ viewport: { width: w, height: h }, javaScriptEnabled: false });
+  const p = await ctx.newPage();
+  for (const [path, nav, btn] of [['/', '#cat-menu', '#cat-toggle'], ['/deployments/', 'header.top #cat-menu', 'header.top #cat-toggle'], ['/method/', 'header.top #cat-menu', 'header.top #cat-toggle']]) {
+    await p.goto(`${BASE}${path}`, { waitUntil: 'load' });
+    const st = await p.evaluate(({ nav, btn }) => { const n = document.querySelector(nav), b = document.querySelector(btn);
+      return { links: n.querySelectorAll('a').length, shown: getComputedStyle(n).display !== 'none', scroll: ['auto', 'scroll'].includes(getComputedStyle(n).overflowX), button: b ? getComputedStyle(b).display : 'none', overflow: document.documentElement.scrollWidth - innerWidth }; }, { nav, btn });
+    check(st.links === 10 && st.shown && st.scroll && st.button === 'none' && st.overflow <= 1, `${w}x${h} ${path} without JavaScript: the bar shows the ten links and scrolls; no button; no overflow (${JSON.stringify(st)})`);
+    const reach = await p.evaluate(({ nav }) => { const n = document.querySelector(nav); n.scrollLeft = n.scrollWidth; const a = [...n.querySelectorAll('a')].at(-1).getBoundingClientRect(); return a.right <= innerWidth + 1 && a.left >= 0; }, { nav });
+    check(reach, `${w}x${h} ${path} without JavaScript: the last category is reachable by scrolling the bar`);
   }
   await ctx.close();
 }
