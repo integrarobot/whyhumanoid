@@ -154,9 +154,10 @@ export function parity(built, legacy, manifest) {
   const legacyById = new Map(legacy.models.map((m) => [m.id, m]));
   const unexpected = [];
   const expected = [];
-  const legacyRows = [...legacy.models.map((m) => m.row), ...inserted.values()].sort((a, b) => a - b);
+  const movedIds = new Set((manifest.verified_import?.moved ?? []).map((m) => m.id));
+  const legacyRows = [...legacy.models.filter((m) => !movedIds.has(m.id)).map((m) => m.row), ...inserted.values()].sort((a, b) => a - b);
   const builtRows = [...built.models.map((m) => m.row), ...built.excluded.map((e) => e.row)].sort((a, b) => a - b);
-  if (!isDeepStrictEqual(builtRows, legacyRows)) unexpected.push('the catalogue does not hold exactly the legacy customer rows plus the verified inserts');
+  if (!isDeepStrictEqual(builtRows, legacyRows)) unexpected.push('the catalogue does not hold exactly the legacy customer rows plus the verified inserts, minus the records moved out of the tab');
   for (const m of built.models) {
     const old = legacyById.get(m.id);
     if (inserted.has(m.id)) {
@@ -224,7 +225,7 @@ export function renderCategories(data) {
   // Deployments: its public cases (one per deployment id of the public rows); Components: its physical products.
   const cases = new Set(JSON.parse(readFileSync(new URL('data/preview/deployments.json', root), 'utf8')).rows.map((r) => r.deployment_id ?? r.record_id)).size;
   const count = (c) => (c.id === 'humanoids' ? data.models.length - (data.not_robots ?? []).length - (data.uncertain ?? []).length : c.id === 'reports' ? reports : c.id === 'benchmarks' ? atlas.resources : c.id === 'datasets' ? dataAtlas.resources : c.id === 'deployments' ? cases : c.datasets.reduce((n, id) => n + (tabs.get(id)?.canonical_entries ?? tabs.get(id)?.entries_total ?? 0), 0));
-  const unit = { humanoids: `humanoid robot models · ${data.uncertain?.length ?? 0} of uncertain scope · ${data.not_robots?.length ?? 0} software models listed apart`, deployments: 'cases', components: 'products', integrators: 'providers', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'external reports + 1 Why Humanoid? analysis' };
+  const unit = { humanoids: `humanoid robot models${data.uncertain?.length ? ` · ${data.uncertain.length} of uncertain scope` : ''}${data.not_robots?.length ? ` · ${data.not_robots.length} software models listed apart` : ''}`, deployments: 'cases', components: 'products', integrators: 'providers', software: 'entries', datasets: 'data resources', benchmarks: 'resources', investment: 'listed companies', 'other-robots': 'entries', reports: 'external reports + 1 Why Humanoid? analysis' };
   // Freshness per module (25 Nov 2026): the date each category's public data says something about, by kind. A source
   // check (Humanoids records, report originals) is not a workbook copy, and neither is the date this page was built.
   const dmy = (iso) => { const d = new Date(String(iso ?? '').length === 10 ? `${iso}T00:00:00Z` : iso); return Number.isNaN(d.getTime()) ? null : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }); };

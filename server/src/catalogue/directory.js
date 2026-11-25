@@ -20,8 +20,11 @@
 import identities from './directory-identities.json' with { type: 'json' };
 
 const blank = (v) => v === null || v === undefined || String(v).trim() === '';
-export const isRepeatedHeader = (d) => /^url$/i.test(String(d.url ?? '').trim()) || /^description$/i.test(String(d.description ?? '').trim());
-export const isSectionHeading = (d) => !blank(d.name) && blank(d.url) && blank(d.description) && /^[A-Z0-9][A-Z0-9 &/+'-]*$/.test(String(d.name).trim()) && /[A-Z]{3}/.test(d.name);
+// Only the header and section rows the spec names (reviewed against the workbook) are taken out; a row that merely looks
+// like one (capitals, no address, no description) stays an entry and is listed for review (Codex review, 25 Nov 2026).
+export const isRepeatedHeader = (spec, d) => (spec.repeatedHeaders ?? []).some((h) => nameKey(h.name) === nameKey(d.name) && /^url$/i.test(String(d.url ?? '').trim()));
+export const isSectionHeading = (spec, d) => blank(d.url) && blank(d.description) && (spec.sectionHeadings ?? []).some((h) => nameKey(h) === nameKey(d.name));
+export const looksLikeHeading = (d) => !blank(d.name) && blank(d.url) && blank(d.description) && /^[A-Z0-9][A-Z0-9 &/+'-]*$/.test(String(d.name).trim()) && /[A-Z]{3}/.test(d.name);
 export const nameKey = (v) => String(v ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
 
 // The address as written, with only the differences that cannot change the resource removed.
@@ -61,16 +64,17 @@ export function canonicalDirectory(spec, items) {
   const kept = [];
   for (const item of items) {
     const d = item.data;
-    if (isRepeatedHeader(d)) {
+    if (isRepeatedHeader(spec, d)) {
       excluded.push({ sheet_row: item.sheetRow, list: d.list, name: d.name, reason: 'repeated header row' });
       continue;
     }
-    if (isSectionHeading(d)) {
+    if (isSectionHeading(spec, d)) {
       const label = sectionLabel(d.name, spec.properNames ?? []);
       groups.set(d.list, label);
       excluded.push({ sheet_row: item.sheetRow, list: d.list, name: d.name, reason: `section heading: the rows below it are grouped as "${label}"` });
       continue;
     }
+    if (looksLikeHeading(d) || /^(url|description)$/i.test(String(d.url ?? '').trim()) || /^description$/i.test(String(d.description ?? '').trim())) review.push({ name: d.name, entries: [{ sheet_row: item.sheetRow, list: d.list, name: d.name, url: d.url }], reason: 'looks like a header or section row but is not a reviewed one: kept as an entry until reviewed' });
     d.group = groups.get(d.list) ?? null;
     d.canonical = true;
     d.also_listed_as = [];

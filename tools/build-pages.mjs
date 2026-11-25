@@ -530,6 +530,18 @@ function gonePage(path, kind) {
   const body = `<h1>No longer in the public catalogue</h1><p class="lede">This ${kind} page is no longer published. See all <a href="${index[0]}">${index[1]}</a>.</p>`;
   return page({ title: `Not in the public catalogue · Why Humanoid?`, description: `This ${kind} is no longer in the public catalogue.`, path, body, noindex: true });
 }
+function movedRobotPage(mv, path) {
+  const r = mv.record;
+  const body = `${crumbs([['/', 'Why Humanoid?'], ['/humanoids/', 'Humanoids'], [null, r.Robot]])}
+<article class="entity">
+<p class="kicker">Moved out of the Humanoids catalogue · former catalogue record ${mv.id}</p>
+<h1>${esc(r.Robot)} <em>by ${esc(r.Lab)}</em></h1>
+<p class="note"><b>Now in ${esc(mv.to.label)}:</b> the research workbook moved this record out of the Humanoids tab; it is listed in <a href="${esc(mv.to.path)}">${esc(mv.to.label)}</a> as “${esc(mv.to.name)}”. It is not counted as a humanoid robot. This page keeps its last public values in the Humanoids catalogue, for reference.</p>
+<section><h2>Last values in the Humanoids catalogue</h2>${kv(Object.keys(r).filter((f) => !['id', 'sheet_row'].includes(f) && known(r[f])).map((f) => [f, text(r[f])]))}</section>
+<p class="meta">Historical record, kept at its address. Moved: ${esc(mv.evidence)}</p>
+</article>`;
+  return page({ title: `${r.Robot} (moved to ${mv.to.label}) · Why Humanoid?`, description: clip(`${r.Robot} by ${r.Lab} is no longer in the Humanoids catalogue: it is now listed in ${mv.to.label} as ${mv.to.name}.`), path, body, type: 'article', section: 'humanoids', noindex: true });
+}
 function notFound() {
   const body = `<h1>Page not found</h1><p class="lede">See the categories: ${CATEGORIES.map((c) => `<a href="${c.path}">${esc(c.label)}</a>`).join(', ')}; all <a href="/companies/">companies</a>; or the <a href="/">home page</a>.</p>
 <script>
@@ -585,13 +597,15 @@ function humanoidsCategory(model) {
   const c = CATEGORIES_BY_ID.get('humanoids');
   const sorted = [...model.robots].sort((a, b) => a.lab.localeCompare(b.lab) || a.name.localeCompare(b.name));
   const software = sorted.filter((rb) => classificationOf(rb)?.kind === 'software');
+  const movedList = read('data/humanoids-catalogue.json').moved ?? [];
   const uncertain = sorted.filter((rb) => classificationOf(rb)?.kind === 'uncertain');
   const rows = sorted.filter((rb) => classificationOf(rb)?.kind !== 'software').map((rb) =>
     `<tr><td><a href="${rb.path}">${esc(rb.name)}</a>${classificationOf(rb) ? ` <span class="dim">(${esc(classificationOf(rb).label.toLowerCase())})</span>` : ''}</td><td>${rb.maker ? `<a href="${rb.maker.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</td><td>${esc(rb.facet.c.join(' / ') || '')}</td><td>${esc(rb.record['Platform / mobility'] || '')}</td></tr>`).join('');
   const body = `${categoryHead(c, model)}
-<p>All ${model.robots.length} entries of the catalogue are free, each with its own page: specifications, maker, funding, sources and a summary of its deployment records. ${model.robots.length - software.length - uncertain.length} are humanoid robot models; ${uncertain.length} are listed with an uncertain scope (${uncertain.map((rb) => `${esc(rb.name)} by ${esc(rb.lab)}: ${esc(classificationOf(rb).label.toLowerCase())}`).join('; ')}); ${software.length} are software or AI models recorded in the Humanoids tab, listed apart below and not counted as robots. The <a href="/#humanoids">interactive catalogue</a> adds search, filters and charts.</p>
+<p>All ${model.robots.length} entries of the catalogue are free, each with its own page: specifications, maker, funding, sources and a summary of its deployment records. ${model.robots.length - software.length - uncertain.length} are humanoid robot models${uncertain.length ? `; ${uncertain.length} ${uncertain.length === 1 ? 'is' : 'are'} listed with an uncertain scope (${uncertain.map((rb) => `${esc(rb.name)} by ${esc(rb.lab)}: ${esc(classificationOf(rb).label.toLowerCase())}`).join('; ')})` : ''}${software.length ? `; ${software.length} are software or AI models recorded in the Humanoids tab, listed apart below and not counted as robots` : ''}. ${movedList.length} former entries were moved by the workbook to other categories and keep a page at their address (listed below). The <a href="/#humanoids">interactive catalogue</a> adds search, filters and charts.</p>
 <div class="scroll"><table><thead><tr><th scope="col">Robot</th><th scope="col">Maker</th><th scope="col">Company country</th><th scope="col">Platform</th></tr></thead><tbody>${rows}</tbody></table></div>
-<section><h2>Software and AI models in the Humanoids tab <span class="dim">(${software.length})</span></h2><p>Recorded in the Humanoids tab of the workbook but, by their own records, software or AI models rather than robots. Their pages and addresses stay; they are not counted as humanoid robots.</p><div class="scroll"><table><thead><tr><th scope="col">Entry</th><th scope="col">Maker</th><th scope="col">What its record says</th></tr></thead><tbody>${software.map((rb) => `<tr><td><a href="${rb.path}">${esc(rb.name)}</a></td><td>${rb.maker ? `<a href="${rb.maker.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</td><td>${classificationOf(rb).excerpts.map((e) => `${esc(e.field)}: “${esc(e.text)}”`).join('; ')}</td></tr>`).join('')}</tbody></table></div></section>
+${software.length ? `<section><h2>Software and AI models in the Humanoids tab <span class="dim">(${software.length})</span></h2><p>Recorded in the Humanoids tab of the workbook but, by their own records, software or AI models rather than robots. Their pages and addresses stay; they are not counted as humanoid robots.</p><div class="scroll"><table><thead><tr><th scope="col">Entry</th><th scope="col">Maker</th><th scope="col">What its record says</th></tr></thead><tbody>${software.map((rb) => `<tr><td><a href="${rb.path}">${esc(rb.name)}</a></td><td>${rb.maker ? `<a href="${rb.maker.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</td><td>${classificationOf(rb).excerpts.map((e) => `${esc(e.field)}: “${esc(e.text)}”`).join('; ')}</td></tr>`).join('')}</tbody></table></div></section>` : ''}
+<section><h2>Moved to other categories <span class="dim">(${movedList.length})</span></h2><p>Former catalogue entries that the research workbook moved out of the Humanoids tab. Their pages stay at the same address with their last values; they are not counted here.</p><ul>${movedList.map((m) => `<li><a href="/humanoids/${esc((read('tools/permalinks.json').robots[m.id] ?? [])[0] ?? '')}/">${esc(m.record.Robot)}</a> by ${esc(m.record.Lab)}: now in <a href="${esc(m.to.path)}">${esc(m.to.label)}</a> as “${esc(m.to.name)}”</li>`).join('')}</ul></section>
 <p class="meta">Free catalogue snapshot ${esc(model.snapshot)}.</p>`;
   return catPage(c, model, body, `All ${model.robots.length} humanoid robots in the free Why Humanoid? catalogue, each with specifications, maker, funding, sources and a deployment summary.`);
 }
@@ -960,8 +974,19 @@ export function buildPages(registry = readRegistry()) {
   }
   const current = new Set([...files.keys()].filter((f) => /^(humanoids|companies)\/[^/]+\/index\.html$/.test(f)).map((f) => f.split('/')[1]));
   const add = (file, html) => { if (files.has(file)) throw new Error(`retired address clashes with a current page: ${file}`); files.set(file, html); };
+  // Records moved out of the Humanoids tab (tools/humanoids-identity.json, 25 Nov 2026): their address keeps a labelled
+  // historical page with their last public values, pointing to where the record now lives; never counted as robots.
+  const movedById = new Map((read('data/humanoids-catalogue.json').moved ?? []).map((m) => [m.id, m]));
   for (const [id, slugs] of Object.entries(next.robots)) {
     const rb = model.robotById.get(Number(id));
+    const mv = movedById.get(Number(id));
+    if (!rb && mv) {
+      for (const s of slugs) {
+        add(`humanoids/${s}/index.html`, movedRobotPage(mv, `/humanoids/${s}/`));
+        add(`robots/${s}/index.html`, redirectPage(`/humanoids/${s}/`, mv.record.Robot));
+      }
+      continue;
+    }
     for (const s of slugs) {
       // Every robot slug ever published answers at /robots/<slug>/ (the address until 23 Nov 2026).
       add(`robots/${s}/index.html`, rb ? redirectPage(rb.path, `${rb.name} by ${rb.lab}`) : gonePage(`/robots/${s}/`, 'robot'));

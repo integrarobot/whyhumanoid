@@ -258,6 +258,9 @@ export const DATASETS = [
     // merged. The software column holds three blocks: general, "SOFTWARE FOR UNITREE" and "SIMULATORS".
     canonical: true,
     properNames: ['Unitree'],
+    // Reviewed against the workbook on 25 Nov 2026 (rows 77-78 and 116-117 of the software column).
+    sectionHeadings: ['SOFTWARE FOR UNITREE', 'SIMULATORS'],
+    repeatedHeaders: [{ name: 'SOFTWARE' }, { name: 'SIMULATOR' }],
     idPrefix: 'sw',
     naturalKey: directoryKey,
   },

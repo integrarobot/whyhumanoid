@@ -42,7 +42,7 @@ function humanoids(cat, review, classification = { records: [] }) {
   const snapshot = isoOf(cat.snapshot);
   const excludedById = new Map(r.excluded.map((x) => [x.id, x]));
   const dated = [];
-  const excluded = { reviewed: [], undisclosed: [], empty: [], other: [] };
+  const excluded = { reviewed: [], undisclosed: [], empty: [], notRelease: [], other: [] };
   // Software or AI models recorded in the Humanoids tab (tools/catalogue-classification.json) are not robots: outside the
   // denominator. Entries of uncertain scope stay in it, named in the note.
   const kindOf = new Map((classification.records ?? []).map((c) => [c.id, c.kind]));
@@ -57,16 +57,32 @@ function humanoids(cat, review, classification = { records: [] }) {
       excluded.reviewed.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, reason: ex.reason });
       continue;
     }
-    let m = v.match(/^(\d{4})$/);
-    if (m) { dated.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, date: parseDate(m[1]), kind: 'release year' }); continue; }
-    m = v.match(/^(\d{4}-\d{2}-\d{2}) \(([^)]*unveiling)\)$/);
-    if (m) { dated.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, date: parseDate(m[1]), kind: 'unveiling' }); continue; }
+    // A release or unveiling date as the record writes it (25 Nov 2026: the current Humanoids tab): a real calendar date
+    // at the start of the value ("2024-05-13 (G1 introduction)", "2019 (PAL timeline)") or after a launch verb
+    // ("Launched 2026-05-26", "Unveiled at NVIDIA GTC, 2026-03-18"), at the precision the source gives. A date that
+    // names something other than a release ("project initiated"), a plan or reservation, or a date without a year is
+    // not used; nothing is inferred from text.
+    // What is not a model release keeps its own named reason (Codex, 25 Nov 2026): a company founding, a funding round,
+    // a project start, access or reservations, and plans or targets.
+    const NOT_RELEASE = [
+      [/\bfounded\b|\bfounding\b|incorporat/i, 'a company founding, not a model release'],
+      [/\bfunding\b|\braised\b|\bseries [a-e]\b|\bseed round\b/i, 'a funding round, not a model release'],
+      [/project initiated|programme started|program started|project started/i, 'a project start, not a model release'],
+      [/reservations?|waitlist|deposit|early access|pre-?order/i, 'access or reservations, not a release'],
+      [/not released|planned|targeted|\btarget\b|estimated delivery|expected/i, 'a plan or target, not a release'],
+    ];
+    const notRelease = NOT_RELEASE.find(([re]) => re.test(v));
+    let m = v.match(/^(\d{4}(?:-\d{2}(?:-\d{2})?)?)(?:\s*\((.+)\))?$/) ?? v.match(/^(?:Launched|Unveiled|Released|Introduced|Announced)\b[^()]*?\b(\d{4}-\d{2}(?:-\d{2})?)\b(?:\s*\((.+)\))?$/i);
+    const date = m && parseDate(m[1]);
+    const doubtful = /not disclosed|unverified|not verified|to be confirmed|not found|not confirmed|unknown|not stated|not public/i.test(v);
+    if (date && !notRelease && !doubtful) { dated.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, date, kind: m[2] ? `${date.precision === 'year' ? 'year' : date.precision === 'month' ? 'month' : 'day'}: ${m[2]}` : 'release year' }); continue; }
     if (!v) excluded.empty.push(rec.id);
-    else if (/not disclosed|unverified|not verified|to be confirmed|not found|not confirmed|unknown|not stated|not public/i.test(v)) excluded.undisclosed.push(rec.id);
-    else excluded.other.push(rec.id);
+    else if (notRelease) excluded.notRelease.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, reason: notRelease[1] });
+    else if (doubtful) excluded.undisclosed.push(rec.id);
+    else excluded.other.push({ id: rec.id, name: `${rec.Lab} ${rec.Robot}`, value: v });
   }
   for (const id of excludedById.keys()) if (!cat.records.some((x) => x.id === id)) fail(`Humanoids ${id}: reviewed id not in the catalogue`);
-  if (excluded.other.length) fail(`Humanoids: Release values with no rule: ${excluded.other.join(', ')}`);
+
   const years = dated.map((d) => +d.date.start.slice(0, 4));
   const y0 = Math.min(...years);
   const y1 = +snapshot.slice(0, 4);
@@ -90,6 +106,8 @@ function humanoids(cat, review, classification = { records: [] }) {
       excluded: [
         { reason: 'Release not disclosed or not verified', count: excluded.undisclosed.length },
         { reason: 'Release field empty', count: excluded.empty.length },
+        ...excluded.notRelease.map((x) => ({ reason: `${x.name}: ${x.reason}`, count: 1 })),
+        ...excluded.other.map((x) => ({ reason: `${x.name}: the release date is written in prose or without a year; it is not read automatically`, count: 1 })),
         ...excluded.reviewed.map((x) => ({ reason: `${x.name}: ${x.reason}`, count: 1 })),
       ],
       note: `${dated.filter((d) => d.kind === 'unveiling').length} of the dated models have a day-precise unveiling; the rest a year. ${software.length} software or AI models recorded in the Humanoids tab (${software.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) are not robots and are outside this count; ${uncertain.length} entries of uncertain scope (${uncertain.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) are inside it, undated.`,

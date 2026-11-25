@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { canonicalDirectory, exactAddress, isSectionHeading } from '../src/catalogue/directory.js';
 import { currentStatus, deploymentCountries, sourcePeriod } from '../src/public/status.js';
 
-const spec = { id: 'software', lists: [{ list: 'software' }, { list: 'world_model' }], properNames: ['Unitree'] };
+const spec = { id: 'software', lists: [{ list: 'software' }, { list: 'world_model' }], properNames: ['Unitree'], sectionHeadings: ['SOFTWARE FOR UNITREE', 'SIMULATORS'], repeatedHeaders: [{ name: 'SOFTWARE' }, { name: 'SIMULATOR' }] };
 const row = (sheetRow, list, name, url, description = null) => ({ sheetRow, rank: sheetRow, data: { list, name, url, description } });
 const run = (items) => canonicalDirectory(spec, items);
 
@@ -62,10 +62,13 @@ test('a world model with the same name and address as a software entry is a memb
   assert.deepEqual(r.items.find((i) => i.data.list === 'software').data.also_listed_as, ['world_model']);
 });
 
-test('section headings are capitals with no address or description; a short or described name is an entry', () => {
-  assert.equal(isSectionHeading({ name: 'SIMULATORS', url: null, description: null }), true);
-  assert.equal(isSectionHeading({ name: 'TNKR', url: 'https://www.tnkr.ai/', description: 'IDE' }), false);
-  assert.equal(isSectionHeading({ name: 'HDMI', url: 'https://hdmi-humanoid.github.io/', description: null }), false);
+test('only the reviewed headings of the spec are taken out; a capitalised product without a link stays and is flagged', () => {
+  assert.equal(isSectionHeading(spec, { name: 'SIMULATORS', url: null, description: null }), true);
+  assert.equal(isSectionHeading(spec, { name: 'NEW SECTION', url: null, description: null }), false);
+  const r = run([row(2, 'software', 'GROOT', null), row(3, 'software', 'SIMULATORS', null), row(4, 'software', 'TNKR', 'https://www.tnkr.ai/', 'IDE')]);
+  assert.deepEqual(r.items.map((i) => i.data.name), ['GROOT', 'TNKR']);
+  assert.ok(r.reconciliation.review.some((x) => x.name === 'GROOT' && /not a reviewed one/.test(x.reason)));
+  assert.equal(r.items.find((i) => i.data.name === 'TNKR').data.group, 'Simulators');
 });
 
 test('source dates: real calendar only; a year or month is an interval, not a point', () => {

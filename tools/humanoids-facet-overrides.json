@@ -13,13 +13,9 @@
     "58": {
       "mob": {
         "value": "Bipedal or wheeled",
-        "source_hash": "080ec276a01882fd"
-      }
-    },
-    "82": {
-      "mob": {
-        "value": "Software or other",
-        "source_hash": "5cf27769b1554b93"
+        "source_hash": "c6941d50da03ee89",
+        "excerpt": "bipedal and wheeled variants",
+        "reason": "Reviewed 25 Nov 2026: the record names bipedal and wheeled variants."
       }
     },
     "119": {
@@ -33,13 +29,17 @@
     "126": {
       "mob": {
         "value": "Wheeled",
-        "source_hash": "9bcc063bbf010f1c"
+        "source_hash": "6528c988077d6fe6",
+        "excerpt": "Wheeled; Holonomic base",
+        "reason": "Reviewed 25 Nov 2026: the record says wheeled."
       }
     },
     "127": {
       "mob": {
         "value": "Wheeled",
-        "source_hash": "f2160da89c8fe881"
+        "source_hash": "66b1441a811ebab7",
+        "excerpt": "Wheeled; Modular manipulator",
+        "reason": "Reviewed 25 Nov 2026: the record says wheeled."
       }
     },
     "128": {
@@ -91,19 +91,6 @@
           ]
         },
         "source_hash": "55386162a9816d2a"
-      }
-    },
-    "133": {
-      "chk": {
-        "value": {
-          "date": "",
-          "statements": [],
-          "website": "",
-          "funding": "unknown",
-          "specs": "unknown",
-          "urls": []
-        },
-        "source_hash": "e3b0c44298fc1c14"
       }
     }
   }

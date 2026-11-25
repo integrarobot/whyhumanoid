@@ -9,6 +9,8 @@ export const STRIP_RULES = [
   ['personal_contact_email', /[\w.+-]+@[\w-]+\.[a-z]{2,}/i],
   ['personal_contact_phone', /(?:\+\d{1,3}[\s.-]?|\btel[:.]?\s*)\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}\b/i],
   ['internal_sheet_reference', /\b(?:sheet )?rows? \d+\b|\bthe sheet\b|\bcanonical record\b|\balias\b/i],
+  // An editor's change log by spreadsheet column letters ("Added: N, U, X", 25 Nov 2026): internal bookkeeping.
+  ['internal_column_log', /^(?:Added|Corrected|Removed|Updated): (?:[A-Z]{1,2}, )*[A-Z]{1,2}$/],
   ['internal_editor_task', /^(?:keep|merge|update|add|move|fix|revalidate|re-?check|do not duplicate|todo|fixme)\b/i],
   ['internal_marker', /\b(?:internal only|confidential|do not publish|not for publication|uso interno|confidencial|no publicar)\b/i],
 ];

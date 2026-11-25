@@ -3,7 +3,7 @@
 // legitimate differences labelled (Javier, 25 Nov 2026; reviewed by Codex).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { publicCases } from '../server/src/public/cases.js';
 
 const root = new URL('../', import.meta.url);
@@ -45,13 +45,34 @@ test('Humanoids: robots, uncertain scope and software counted apart; reviewed la
   const sw = cls.filter((c) => c.kind === 'software').length;
   const unc = cls.filter((c) => c.kind === 'uncertain').length;
   assert.equal(card('/humanoids/'), cat.length - sw - unc);
-  assert.match(home, new RegExp(`${unc} of uncertain scope · ${sw} software models listed apart`));
-  assert.match(read('humanoids/index.html'), /Software and AI models in the Humanoids tab/);
+  assert.match(home, new RegExp(`humanoid robot models${unc ? ` · ${unc} of uncertain scope` : ''}${sw ? ` · ${sw} software models listed apart` : ''} · Free`));
   const data = JSON.parse(/<script type="application\/json" id="data">([\s\S]*?)<\/script>/.exec(home)[1]);
   assert.equal(data.models.find((m) => m.id === 132).mob, 'Wheeled', 'PokeBot: its record says wheeled and rejects the bipedal form');
   assert.ok(!JSON.stringify(cat).includes('consider moving'), 'no editor instruction in the public catalogue');
   const chart = json('data/evolution/charts.json').charts[0];
   assert.equal(chart.coverage.total, cat.length - sw, 'the chart denominator excludes software models');
+});
+
+test('Humanoids: the full current tab, historical ids kept, moved records keep a labelled page and leave the counts', () => {
+  const doc = json('data/humanoids-catalogue.json');
+  const ids = doc.records.map((r) => r.id);
+  assert.equal(new Set(ids).size, ids.length, 'ids are unique');
+  assert.equal(doc.records.find((r) => r.id === 134)?.Robot, 'Darwin-0', 'Darwin keeps 134');
+  const identity = json('tools/humanoids-identity.json');
+  for (const r of identity.renamed) assert.equal(doc.records.find((x) => x.id === r.id)?.Robot, r.to.Robot, `renamed ${r.id} keeps its id`);
+  for (const mv of identity.moved) {
+    assert.ok(!ids.includes(mv.id), `${mv.id} is no longer counted`);
+    assert.ok(doc.moved.some((x) => x.id === mv.id), `${mv.id} is listed as moved`);
+    const dir = readdirSync(new URL('humanoids/', root)).find((d) => d.endsWith(`-${mv.id}`));
+    assert.ok(dir, `${mv.id} keeps its historical address`);
+    assert.match(read(`humanoids/${dir}/index.html`), new RegExp(`is now listed in ${mv.to.label}`), `${mv.id} page says where it went`);
+  }
+  for (const id of Object.keys(json('tools/robot-presentation.json').robots)) assert.ok(ids.includes(Number(id)), `presentation override ${id} still applies`);
+  // Release dates on the chart: only a model release or unveiling; anything else is excluded with its reason.
+  const chart = json('data/evolution/charts.json').charts[0];
+  const reasons = chart.coverage.excluded.map((x) => x.reason).join(' | ');
+  for (const [name, why] of [['InMoov', 'a project start'], ['HIRO Industries Origin', 'access or reservations'], ['PokeBot', 'No product released']]) assert.match(reasons, new RegExp(`${name}[^|]*${why}`), name);
+  assert.equal(chart.coverage.excluded.reduce((n, x) => n + x.count, 0) + chart.coverage.included, chart.coverage.total);
 });
 
 test('Deployments: the home projection and the section show the same current status; undated cases apart; countries clean', () => {

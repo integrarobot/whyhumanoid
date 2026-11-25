@@ -28,9 +28,18 @@ test('Humanoids: introductions per year equal the dated Release values of the ca
   const years = {};
   for (const r of src.humanoids.records) {
     if (reviewed.has(r.id)) continue;
-    const m = String(r.Release ?? '').trim().match(/^(\d{4})$|^(\d{4})-\d{2}-\d{2} \([^)]*unveiling\)$/);
-    if (m) years[m[1] ?? m[2]] = (years[m[1] ?? m[2]] ?? 0) + 1;
+    // Independent reading: a release value that opens with its date, or a launch verb followed by one; never a
+    // founding, funding, project start, reservation, plan or doubtful value, and never a year taken from prose.
+    const v = String(r.Release ?? '').trim();
+    if (/founded|funding|project initiated|programme started|reservation|waitlist|deposit|not released|planned|targeted|estimated delivery|expected|not disclosed|unverified|not verified|to be confirmed|not found|not confirmed|unknown|not stated|not public/i.test(v)) continue;
+    const m = v.match(/^(\d{4})(?:-\d{2}(?:-\d{2})?)?(?:\s*\(.+\))?$/) ?? v.match(/^(?:Launched|Unveiled|Released|Introduced|Announced)\b[^()]*?\b(\d{4})-\d{2}(?:-\d{2})?\b(?:\s*\(.+\))?$/);
+    if (m) years[m[1]] = (years[m[1]] ?? 0) + 1;
   }
+  // Pinned decisions on the 25 Nov 2026 formats (Codex): dated release events in, everything else out with a reason.
+  const byId = new Map(src.humanoids.records.map((r) => [r.id, `${r.Lab} ${r.Robot}`]));
+  const at = (id) => c.columns.find((col) => col.items.includes(byId.get(id)))?.key;
+  for (const [id, year] of [[152, '2019'], [154, '2021'], [214, '2026'], [156, '2026'], [3, '2023']]) assert.equal(at(id), year, `${id}`);
+  for (const id of [44, 132, 135, 136, 137, 198]) assert.equal(at(id), undefined, `${id} is not dated`);
   for (const col of c.columns) assert.equal(col.value, years[col.key] ?? 0, col.key);
   assert.equal(c.columns.reduce((a, x) => a + x.value, 0), Object.values(years).reduce((a, b) => a + b, 0));
   // Software or AI models recorded in the Humanoids tab are outside the robot denominator (tools/catalogue-classification.json).

@@ -2,14 +2,230 @@
   "dataset": "humanoids",
   "access": "free",
   "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
-  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the verified import of 2026-11-17T20:58:00Z",
-  "snapshot": "2026-11-17T20:58:00Z",
-  "record_count": 134,
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the import of 2026-11-25T05:35:43Z (every current customer row; records moved out of the tab kept apart)",
+  "snapshot": "2026-11-25T05:35:43Z",
+  "record_count": 212,
   "verified_import": {
     "environment": "workbook export",
-    "snapshot": "2026-11-17T20:58:00Z",
-    "import_run": "workbook export of 2026-11-17 (Boston Dynamics-GlobalFoundries and NC State Howl update), imported locally with the backend import code; paid-product values",
+    "snapshot": "2026-11-25T05:35:43Z",
+    "import_run": "workbook export of 2026-11-25T05:35:43Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export)",
     "updated": [
+      {
+        "id": 1,
+        "field": "Linkedin"
+      },
+      {
+        "id": 1,
+        "field": "Careers"
+      },
+      {
+        "id": 1,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 2,
+        "field": "Linkedin"
+      },
+      {
+        "id": 2,
+        "field": "Youtube"
+      },
+      {
+        "id": 2,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 2,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 3,
+        "field": "Release"
+      },
+      {
+        "id": 3,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 3,
+        "field": "Price / availability"
+      },
+      {
+        "id": 3,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 3,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 4,
+        "field": "Investors"
+      },
+      {
+        "id": 4,
+        "field": "Release"
+      },
+      {
+        "id": 4,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 4,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 4,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 5,
+        "field": "Careers"
+      },
+      {
+        "id": 5,
+        "field": "Valuation"
+      },
+      {
+        "id": 5,
+        "field": "Investors"
+      },
+      {
+        "id": 5,
+        "field": "Rounds"
+      },
+      {
+        "id": 5,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 5,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 6,
+        "field": "Careers"
+      },
+      {
+        "id": 6,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 6,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 7,
+        "field": "Model checked"
+      },
+      {
+        "id": 7,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 8,
+        "field": "Linkedin"
+      },
+      {
+        "id": 8,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 8,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 9,
+        "field": "X"
+      },
+      {
+        "id": 9,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 9,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 10,
+        "field": "Linkedin"
+      },
+      {
+        "id": 10,
+        "field": "Careers"
+      },
+      {
+        "id": 10,
+        "field": "Valuation"
+      },
+      {
+        "id": 10,
+        "field": "Investors"
+      },
+      {
+        "id": 10,
+        "field": "Rounds"
+      },
+      {
+        "id": 10,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 10,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 11,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 12,
+        "field": "Web"
+      },
+      {
+        "id": 12,
+        "field": "Linkedin"
+      },
+      {
+        "id": 12,
+        "field": "Software"
+      },
+      {
+        "id": 12,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 12,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 12,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 14,
+        "field": "Model checked"
+      },
+      {
+        "id": 14,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 14,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 14,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 15,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 16,
+        "field": "Careers"
+      },
       {
         "id": 16,
         "field": "B2B Client"
@@ -19,12 +235,936 @@
         "field": "Sources / checked"
       },
       {
+        "id": 17,
+        "field": "Investors"
+      },
+      {
+        "id": 17,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 17,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 17,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 18,
+        "field": "Software"
+      },
+      {
+        "id": 18,
+        "field": "Voice"
+      },
+      {
+        "id": 18,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 18,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 18,
+        "field": "Price / availability"
+      },
+      {
+        "id": 18,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 18,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 19,
+        "field": "Linkedin"
+      },
+      {
+        "id": 19,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 19,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 20,
+        "field": "Careers"
+      },
+      {
+        "id": 20,
+        "field": "Investors"
+      },
+      {
+        "id": 20,
+        "field": "Rounds"
+      },
+      {
+        "id": 20,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 20,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 21,
+        "field": "Linkedin"
+      },
+      {
+        "id": 21,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 21,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 22,
+        "field": "Careers"
+      },
+      {
+        "id": 22,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 22,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 23,
+        "field": "Software"
+      },
+      {
+        "id": 23,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 23,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 23,
+        "field": "Price / availability"
+      },
+      {
+        "id": 23,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 23,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 24,
+        "field": "Linkedin"
+      },
+      {
+        "id": 24,
+        "field": "Youtube"
+      },
+      {
+        "id": 24,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 24,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 25,
+        "field": "Youtube"
+      },
+      {
+        "id": 25,
+        "field": "Sources / checked"
+      },
+      {
         "id": 26,
         "field": "Linkedin"
       },
       {
+        "id": 26,
+        "field": "Careers"
+      },
+      {
+        "id": 26,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 26,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 27,
+        "field": "Linkedin"
+      },
+      {
+        "id": 27,
+        "field": "Careers"
+      },
+      {
+        "id": 27,
+        "field": "Valuation"
+      },
+      {
+        "id": 27,
+        "field": "Investors"
+      },
+      {
+        "id": 27,
+        "field": "Rounds"
+      },
+      {
+        "id": 27,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 27,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 27,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 27,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 27,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 28,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 29,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 29,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 30,
+        "field": "Voice"
+      },
+      {
+        "id": 30,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 31,
+        "field": "Careers"
+      },
+      {
+        "id": 31,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 31,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 32,
+        "field": "Valuation"
+      },
+      {
+        "id": 32,
+        "field": "Investors"
+      },
+      {
+        "id": 32,
+        "field": "Rounds"
+      },
+      {
+        "id": 32,
+        "field": "Software"
+      },
+      {
+        "id": 32,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 32,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 32,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 33,
+        "field": "Release"
+      },
+      {
+        "id": 33,
+        "field": "Height (cm)"
+      },
+      {
+        "id": 33,
+        "field": "Walk (km/h)"
+      },
+      {
+        "id": 33,
+        "field": "Payload/carry (kg)"
+      },
+      {
+        "id": 33,
+        "field": "Power (hours)"
+      },
+      {
+        "id": 33,
+        "field": "Software"
+      },
+      {
+        "id": 33,
+        "field": "Voice"
+      },
+      {
+        "id": 33,
+        "field": "Model checked"
+      },
+      {
+        "id": 33,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 33,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 33,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 33,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 33,
+        "field": "Price / availability"
+      },
+      {
+        "id": 33,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 33,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 33,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 34,
+        "field": "Linkedin"
+      },
+      {
+        "id": 34,
+        "field": "Youtube"
+      },
+      {
+        "id": 34,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 34,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 35,
+        "field": "Linkedin"
+      },
+      {
+        "id": 35,
+        "field": "Weight (kg)"
+      },
+      {
+        "id": 35,
+        "field": "Power (hours)"
+      },
+      {
+        "id": 35,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 35,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 35,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 35,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 35,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 36,
+        "field": "Linkedin"
+      },
+      {
+        "id": 36,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 36,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 37,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 38,
+        "field": "Linkedin"
+      },
+      {
+        "id": 38,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 38,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 39,
+        "field": "Release"
+      },
+      {
+        "id": 39,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 40,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 40,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 41,
+        "field": "Linkedin"
+      },
+      {
+        "id": 41,
+        "field": "Investors"
+      },
+      {
+        "id": 41,
+        "field": "Rounds"
+      },
+      {
+        "id": 41,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 41,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 42,
+        "field": "Linkedin"
+      },
+      {
+        "id": 42,
+        "field": "Careers"
+      },
+      {
+        "id": 42,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 43,
+        "field": "X"
+      },
+      {
+        "id": 43,
+        "field": "Linkedin"
+      },
+      {
+        "id": 43,
+        "field": "Careers"
+      },
+      {
+        "id": 43,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 43,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 44,
+        "field": "Release"
+      },
+      {
+        "id": 44,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 45,
+        "field": "Height (cm)"
+      },
+      {
+        "id": 45,
+        "field": "Software"
+      },
+      {
+        "id": 45,
+        "field": "Voice"
+      },
+      {
+        "id": 45,
+        "field": "Clothed?"
+      },
+      {
+        "id": 45,
+        "field": "Model checked"
+      },
+      {
+        "id": 45,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 45,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 45,
+        "field": "Price / availability"
+      },
+      {
+        "id": 45,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 45,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 45,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 46,
+        "field": "Linkedin"
+      },
+      {
+        "id": 46,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 46,
+        "field": "Price / availability"
+      },
+      {
+        "id": 46,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 47,
+        "field": "Robot"
+      },
+      {
+        "id": 47,
+        "field": "Investors"
+      },
+      {
+        "id": 47,
+        "field": "Rounds"
+      },
+      {
+        "id": 47,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 47,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 48,
+        "field": "Linkedin"
+      },
+      {
+        "id": 48,
+        "field": "Youtube"
+      },
+      {
+        "id": 48,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 48,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 49,
+        "field": "Linkedin"
+      },
+      {
+        "id": 49,
+        "field": "Investors"
+      },
+      {
+        "id": 49,
+        "field": "Rounds"
+      },
+      {
+        "id": 49,
+        "field": "Height (cm)"
+      },
+      {
+        "id": 49,
+        "field": "Run (km/h)"
+      },
+      {
+        "id": 49,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 49,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 49,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 49,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 49,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 50,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 51,
+        "field": "Careers"
+      },
+      {
+        "id": 51,
+        "field": "Software"
+      },
+      {
+        "id": 51,
+        "field": "Voice"
+      },
+      {
+        "id": 51,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 51,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 51,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 51,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 52,
+        "field": "Linkedin"
+      },
+      {
+        "id": 52,
+        "field": "Youtube"
+      },
+      {
+        "id": 52,
+        "field": "Careers"
+      },
+      {
+        "id": 52,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 52,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 53,
+        "field": "Linkedin"
+      },
+      {
+        "id": 53,
+        "field": "Youtube"
+      },
+      {
+        "id": 53,
+        "field": "Careers"
+      },
+      {
+        "id": 53,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 53,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 54,
+        "field": "Linkedin"
+      },
+      {
+        "id": 54,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 54,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 56,
+        "field": "Platform / mobility"
+      },
+      {
         "id": 56,
         "field": "Sources / checked"
+      },
+      {
+        "id": 57,
+        "field": "Web"
+      },
+      {
+        "id": 57,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 57,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 58,
+        "field": "Release"
+      },
+      {
+        "id": 58,
+        "field": "Clothed?"
+      },
+      {
+        "id": 58,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 58,
+        "field": "Price / availability"
+      },
+      {
+        "id": 58,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 58,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 59,
+        "field": "Linkedin"
+      },
+      {
+        "id": 59,
+        "field": "Investors"
+      },
+      {
+        "id": 59,
+        "field": "Rounds"
+      },
+      {
+        "id": 59,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 59,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 60,
+        "field": "Careers"
+      },
+      {
+        "id": 60,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 60,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 61,
+        "field": "X"
+      },
+      {
+        "id": 61,
+        "field": "Careers"
+      },
+      {
+        "id": 61,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 62,
+        "field": "Youtube"
+      },
+      {
+        "id": 62,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 62,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 63,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 63,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 64,
+        "field": "Youtube"
+      },
+      {
+        "id": 64,
+        "field": "Careers"
+      },
+      {
+        "id": 64,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 64,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 65,
+        "field": "Linkedin"
+      },
+      {
+        "id": 65,
+        "field": "Youtube"
+      },
+      {
+        "id": 65,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 65,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 66,
+        "field": "Linkedin"
+      },
+      {
+        "id": 66,
+        "field": "Investors"
+      },
+      {
+        "id": 66,
+        "field": "Rounds"
+      },
+      {
+        "id": 66,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 66,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 67,
+        "field": "Rounds"
+      },
+      {
+        "id": 68,
+        "field": "Valuation"
+      },
+      {
+        "id": 68,
+        "field": "Investors"
+      },
+      {
+        "id": 68,
+        "field": "Rounds"
+      },
+      {
+        "id": 68,
+        "field": "Height (cm)"
+      },
+      {
+        "id": 68,
+        "field": "Weight (kg)"
+      },
+      {
+        "id": 68,
+        "field": "Power (hours)"
+      },
+      {
+        "id": 68,
+        "field": "Software"
+      },
+      {
+        "id": 68,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 68,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 68,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 68,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 68,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 69,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 70,
+        "field": "Careers"
+      },
+      {
+        "id": 70,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 70,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 71,
+        "field": "Platform / mobility"
       },
       {
         "id": 71,
@@ -32,10 +1172,230 @@
       },
       {
         "id": 72,
+        "field": "Linkedin"
+      },
+      {
+        "id": 72,
         "field": "Valuation"
       },
       {
+        "id": 72,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 72,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 73,
+        "field": "Careers"
+      },
+      {
+        "id": 73,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 73,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 74,
+        "field": "Payload/carry (kg)"
+      },
+      {
+        "id": 74,
+        "field": "Software"
+      },
+      {
+        "id": 74,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 74,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 74,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 74,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 74,
+        "field": "Sources / checked"
+      },
+      {
         "id": 75,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 75,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 76,
+        "field": "Valuation"
+      },
+      {
+        "id": 76,
+        "field": "Investors"
+      },
+      {
+        "id": 76,
+        "field": "Rounds"
+      },
+      {
+        "id": 76,
+        "field": "Weight (kg)"
+      },
+      {
+        "id": 76,
+        "field": "Run (km/h)"
+      },
+      {
+        "id": 76,
+        "field": "Software"
+      },
+      {
+        "id": 76,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 76,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 76,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 76,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 77,
+        "field": "Careers"
+      },
+      {
+        "id": 77,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 78,
+        "field": "X"
+      },
+      {
+        "id": 78,
+        "field": "Linkedin"
+      },
+      {
+        "id": 78,
+        "field": "Youtube"
+      },
+      {
+        "id": 78,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 78,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 79,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 80,
+        "field": "Careers"
+      },
+      {
+        "id": 80,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 80,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 80,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 80,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 81,
+        "field": "Linkedin"
+      },
+      {
+        "id": 81,
+        "field": "Youtube"
+      },
+      {
+        "id": 81,
+        "field": "Careers"
+      },
+      {
+        "id": 81,
+        "field": "Valuation"
+      },
+      {
+        "id": 81,
+        "field": "Investors"
+      },
+      {
+        "id": 81,
+        "field": "Rounds"
+      },
+      {
+        "id": 81,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 81,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 83,
+        "field": "Linkedin"
+      },
+      {
+        "id": 83,
+        "field": "Careers"
+      },
+      {
+        "id": 83,
+        "field": "Investors"
+      },
+      {
+        "id": 83,
+        "field": "Rounds"
+      },
+      {
+        "id": 83,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 83,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 84,
+        "field": "X"
+      },
+      {
+        "id": 84,
+        "field": "Youtube"
+      },
+      {
+        "id": 84,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 84,
         "field": "Sources / checked"
       },
       {
@@ -43,23 +1403,1149 @@
         "field": "Web"
       },
       {
+        "id": 85,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 86,
+        "field": "Careers"
+      },
+      {
         "id": 86,
         "field": "Valuation"
       },
       {
+        "id": 86,
+        "field": "Release"
+      },
+      {
+        "id": 86,
+        "field": "Walk (km/h)"
+      },
+      {
+        "id": 86,
+        "field": "Payload/carry (kg)"
+      },
+      {
+        "id": 86,
+        "field": "Software"
+      },
+      {
+        "id": 86,
+        "field": "Model checked"
+      },
+      {
+        "id": 86,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 86,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 86,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 86,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 86,
+        "field": "Price / availability"
+      },
+      {
+        "id": 86,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 86,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 86,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 87,
+        "field": "Linkedin"
+      },
+      {
+        "id": 87,
+        "field": "Careers"
+      },
+      {
+        "id": 87,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 87,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 88,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 88,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 88,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 88,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 89,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 90,
+        "field": "Youtube"
+      },
+      {
+        "id": 90,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 90,
+        "field": "Sources / checked"
+      },
+      {
         "id": 91,
         "field": "Valuation"
+      },
+      {
+        "id": 91,
+        "field": "Release"
+      },
+      {
+        "id": 91,
+        "field": "Software"
+      },
+      {
+        "id": 91,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 91,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 91,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 92,
+        "field": "Linkedin"
+      },
+      {
+        "id": 92,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 92,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 93,
+        "field": "Careers"
+      },
+      {
+        "id": 93,
+        "field": "Payload/carry (kg)"
+      },
+      {
+        "id": 93,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 94,
+        "field": "X"
+      },
+      {
+        "id": 94,
+        "field": "Linkedin"
+      },
+      {
+        "id": 94,
+        "field": "Youtube"
+      },
+      {
+        "id": 94,
+        "field": "Careers"
+      },
+      {
+        "id": 94,
+        "field": "Investors"
+      },
+      {
+        "id": 94,
+        "field": "Rounds"
+      },
+      {
+        "id": 94,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 94,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 95,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 96,
+        "field": "Linkedin"
+      },
+      {
+        "id": 96,
+        "field": "Youtube"
+      },
+      {
+        "id": 96,
+        "field": "Careers"
+      },
+      {
+        "id": 96,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 96,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 97,
+        "field": "X"
+      },
+      {
+        "id": 97,
+        "field": "Youtube"
+      },
+      {
+        "id": 97,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 97,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 98,
+        "field": "Youtube"
+      },
+      {
+        "id": 98,
+        "field": "Careers"
+      },
+      {
+        "id": 98,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 98,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 99,
+        "field": "Weight (kg)"
+      },
+      {
+        "id": 99,
+        "field": "Walk (km/h)"
+      },
+      {
+        "id": 99,
+        "field": "Payload/carry (kg)"
+      },
+      {
+        "id": 99,
+        "field": "Power (hours)"
+      },
+      {
+        "id": 99,
+        "field": "Software"
+      },
+      {
+        "id": 99,
+        "field": "Voice"
+      },
+      {
+        "id": 99,
+        "field": "Model checked"
+      },
+      {
+        "id": 99,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 99,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 99,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 99,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 99,
+        "field": "Price / availability"
+      },
+      {
+        "id": 99,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 99,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 99,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 100,
+        "field": "Linkedin"
+      },
+      {
+        "id": 100,
+        "field": "Investors"
+      },
+      {
+        "id": 100,
+        "field": "Rounds"
+      },
+      {
+        "id": 100,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 100,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 101,
+        "field": "X"
+      },
+      {
+        "id": 101,
+        "field": "Linkedin"
+      },
+      {
+        "id": 101,
+        "field": "Youtube"
+      },
+      {
+        "id": 101,
+        "field": "Careers"
+      },
+      {
+        "id": 101,
+        "field": "Valuation"
+      },
+      {
+        "id": 101,
+        "field": "Investors"
+      },
+      {
+        "id": 101,
+        "field": "Rounds"
+      },
+      {
+        "id": 101,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 102,
+        "field": "Release"
+      },
+      {
+        "id": 102,
+        "field": "Voice"
+      },
+      {
+        "id": 102,
+        "field": "Model checked"
+      },
+      {
+        "id": 102,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 102,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 102,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 102,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 102,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 103,
+        "field": "Software"
+      },
+      {
+        "id": 103,
+        "field": "Voice"
+      },
+      {
+        "id": 103,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 104,
+        "field": "Robot"
+      },
+      {
+        "id": 104,
+        "field": "Release"
+      },
+      {
+        "id": 104,
+        "field": "Height (cm)"
+      },
+      {
+        "id": 104,
+        "field": "Weight (kg)"
+      },
+      {
+        "id": 104,
+        "field": "Software"
+      },
+      {
+        "id": 104,
+        "field": "Voice"
+      },
+      {
+        "id": 104,
+        "field": "Model checked"
+      },
+      {
+        "id": 104,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 104,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 104,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 104,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 104,
+        "field": "Price / availability"
+      },
+      {
+        "id": 104,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 104,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 104,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 105,
+        "field": "Linkedin"
+      },
+      {
+        "id": 105,
+        "field": "Youtube"
+      },
+      {
+        "id": 105,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 105,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 106,
+        "field": "X"
+      },
+      {
+        "id": 106,
+        "field": "Linkedin"
+      },
+      {
+        "id": 106,
+        "field": "Youtube"
+      },
+      {
+        "id": 106,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 106,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 107,
+        "field": "Careers"
+      },
+      {
+        "id": 107,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 108,
+        "field": "Linkedin"
+      },
+      {
+        "id": 108,
+        "field": "Careers"
+      },
+      {
+        "id": 108,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 108,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 109,
+        "field": "Linkedin"
+      },
+      {
+        "id": 109,
+        "field": "Youtube"
+      },
+      {
+        "id": 109,
+        "field": "Careers"
+      },
+      {
+        "id": 109,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 109,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 110,
+        "field": "Linkedin"
+      },
+      {
+        "id": 110,
+        "field": "Careers"
+      },
+      {
+        "id": 110,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 110,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 110,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 111,
+        "field": "X"
+      },
+      {
+        "id": 111,
+        "field": "Linkedin"
+      },
+      {
+        "id": 111,
+        "field": "Youtube"
+      },
+      {
+        "id": 111,
+        "field": "Careers"
+      },
+      {
+        "id": 111,
+        "field": "Model checked"
+      },
+      {
+        "id": 111,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 112,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 114,
+        "field": "Careers"
+      },
+      {
+        "id": 114,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 114,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 115,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 115,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 115,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 116,
+        "field": "Careers"
+      },
+      {
+        "id": 116,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 116,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 117,
+        "field": "Careers"
+      },
+      {
+        "id": 117,
+        "field": "Valuation"
+      },
+      {
+        "id": 117,
+        "field": "Investors"
+      },
+      {
+        "id": 117,
+        "field": "Rounds"
+      },
+      {
+        "id": 117,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 117,
+        "field": "Price / availability"
+      },
+      {
+        "id": 117,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 117,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 118,
+        "field": "Careers"
+      },
+      {
+        "id": 118,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 118,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 119,
+        "field": "Voice"
+      },
+      {
+        "id": 119,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 120,
+        "field": "Careers"
+      },
+      {
+        "id": 120,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 121,
+        "field": "Careers"
+      },
+      {
+        "id": 121,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 122,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 122,
+        "field": "Battery / charging"
+      },
+      {
+        "id": 122,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 123,
+        "field": "Careers"
+      },
+      {
+        "id": 123,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 123,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 124,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 125,
+        "field": "Careers"
+      },
+      {
+        "id": 125,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 126,
+        "field": "Careers"
+      },
+      {
+        "id": 126,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 126,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 127,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 128,
+        "field": "Careers"
+      },
+      {
+        "id": 128,
+        "field": "Sources / checked"
+      },
+      {
+        "id": 133,
+        "field": "Release"
+      },
+      {
+        "id": 133,
+        "field": "Software"
+      },
+      {
+        "id": 133,
+        "field": "Model checked"
+      },
+      {
+        "id": 133,
+        "field": "Platform / mobility"
+      },
+      {
+        "id": 133,
+        "field": "DoF / grippers"
+      },
+      {
+        "id": 133,
+        "field": "Sensors / compute"
+      },
+      {
+        "id": 133,
+        "field": "Price / availability"
+      },
+      {
+        "id": 133,
+        "field": "Autonomy / supervision"
+      },
+      {
+        "id": 133,
+        "field": "Buyer checks"
+      },
+      {
+        "id": 133,
+        "field": "Sources / checked"
       }
     ],
     "inserted": [
       {
         "id": 134,
         "sheet_row": 137
+      },
+      {
+        "id": 135,
+        "sheet_row": 138
+      },
+      {
+        "id": 136,
+        "sheet_row": 139
+      },
+      {
+        "id": 137,
+        "sheet_row": 140
+      },
+      {
+        "id": 138,
+        "sheet_row": 141
+      },
+      {
+        "id": 139,
+        "sheet_row": 142
+      },
+      {
+        "id": 140,
+        "sheet_row": 143
+      },
+      {
+        "id": 141,
+        "sheet_row": 144
+      },
+      {
+        "id": 142,
+        "sheet_row": 145
+      },
+      {
+        "id": 143,
+        "sheet_row": 146
+      },
+      {
+        "id": 144,
+        "sheet_row": 147
+      },
+      {
+        "id": 145,
+        "sheet_row": 148
+      },
+      {
+        "id": 146,
+        "sheet_row": 149
+      },
+      {
+        "id": 147,
+        "sheet_row": 150
+      },
+      {
+        "id": 148,
+        "sheet_row": 151
+      },
+      {
+        "id": 149,
+        "sheet_row": 152
+      },
+      {
+        "id": 150,
+        "sheet_row": 153
+      },
+      {
+        "id": 151,
+        "sheet_row": 154
+      },
+      {
+        "id": 152,
+        "sheet_row": 155
+      },
+      {
+        "id": 153,
+        "sheet_row": 156
+      },
+      {
+        "id": 154,
+        "sheet_row": 157
+      },
+      {
+        "id": 155,
+        "sheet_row": 158
+      },
+      {
+        "id": 156,
+        "sheet_row": 159
+      },
+      {
+        "id": 157,
+        "sheet_row": 160
+      },
+      {
+        "id": 158,
+        "sheet_row": 161
+      },
+      {
+        "id": 159,
+        "sheet_row": 162
+      },
+      {
+        "id": 160,
+        "sheet_row": 163
+      },
+      {
+        "id": 161,
+        "sheet_row": 164
+      },
+      {
+        "id": 162,
+        "sheet_row": 165
+      },
+      {
+        "id": 163,
+        "sheet_row": 166
+      },
+      {
+        "id": 164,
+        "sheet_row": 167
+      },
+      {
+        "id": 165,
+        "sheet_row": 168
+      },
+      {
+        "id": 166,
+        "sheet_row": 169
+      },
+      {
+        "id": 167,
+        "sheet_row": 170
+      },
+      {
+        "id": 168,
+        "sheet_row": 171
+      },
+      {
+        "id": 169,
+        "sheet_row": 172
+      },
+      {
+        "id": 170,
+        "sheet_row": 173
+      },
+      {
+        "id": 171,
+        "sheet_row": 174
+      },
+      {
+        "id": 172,
+        "sheet_row": 175
+      },
+      {
+        "id": 173,
+        "sheet_row": 176
+      },
+      {
+        "id": 174,
+        "sheet_row": 177
+      },
+      {
+        "id": 175,
+        "sheet_row": 178
+      },
+      {
+        "id": 176,
+        "sheet_row": 179
+      },
+      {
+        "id": 177,
+        "sheet_row": 180
+      },
+      {
+        "id": 178,
+        "sheet_row": 181
+      },
+      {
+        "id": 179,
+        "sheet_row": 182
+      },
+      {
+        "id": 180,
+        "sheet_row": 183
+      },
+      {
+        "id": 181,
+        "sheet_row": 184
+      },
+      {
+        "id": 182,
+        "sheet_row": 185
+      },
+      {
+        "id": 183,
+        "sheet_row": 186
+      },
+      {
+        "id": 184,
+        "sheet_row": 187
+      },
+      {
+        "id": 185,
+        "sheet_row": 188
+      },
+      {
+        "id": 186,
+        "sheet_row": 189
+      },
+      {
+        "id": 187,
+        "sheet_row": 190
+      },
+      {
+        "id": 188,
+        "sheet_row": 191
+      },
+      {
+        "id": 189,
+        "sheet_row": 192
+      },
+      {
+        "id": 190,
+        "sheet_row": 193
+      },
+      {
+        "id": 191,
+        "sheet_row": 194
+      },
+      {
+        "id": 192,
+        "sheet_row": 195
+      },
+      {
+        "id": 193,
+        "sheet_row": 196
+      },
+      {
+        "id": 194,
+        "sheet_row": 197
+      },
+      {
+        "id": 195,
+        "sheet_row": 198
+      },
+      {
+        "id": 196,
+        "sheet_row": 199
+      },
+      {
+        "id": 197,
+        "sheet_row": 200
+      },
+      {
+        "id": 198,
+        "sheet_row": 201
+      },
+      {
+        "id": 199,
+        "sheet_row": 202
+      },
+      {
+        "id": 200,
+        "sheet_row": 203
+      },
+      {
+        "id": 201,
+        "sheet_row": 204
+      },
+      {
+        "id": 202,
+        "sheet_row": 205
+      },
+      {
+        "id": 203,
+        "sheet_row": 206
+      },
+      {
+        "id": 204,
+        "sheet_row": 207
+      },
+      {
+        "id": 205,
+        "sheet_row": 208
+      },
+      {
+        "id": 206,
+        "sheet_row": 209
+      },
+      {
+        "id": 207,
+        "sheet_row": 210
+      },
+      {
+        "id": 208,
+        "sheet_row": 211
+      },
+      {
+        "id": 209,
+        "sheet_row": 212
+      },
+      {
+        "id": 210,
+        "sheet_row": 213
+      },
+      {
+        "id": 211,
+        "sheet_row": 214
+      },
+      {
+        "id": 212,
+        "sheet_row": 215
+      },
+      {
+        "id": 213,
+        "sheet_row": 216
+      },
+      {
+        "id": 214,
+        "sheet_row": 217
+      },
+      {
+        "id": 215,
+        "sheet_row": 218
+      }
+    ],
+    "moved": [
+      {
+        "id": 82,
+        "to": "software"
+      },
+      {
+        "id": 113,
+        "to": "other-robots"
+      },
+      {
+        "id": 130,
+        "to": "software"
       }
     ]
   },
   "full_database": {
-    "humanoid_records": 134,
+    "humanoid_records": 212,
     "other_datasets": 12,
     "other_datasets_public_rule": "free tabs: every row and field; Deployments and Components: every row at its public fields (server/src/access/fields.js); claim-to-evidence links and tabs outside the offer: counted, not listed",
     "access": "data subscription, US$100 per year, billed annually, no free trial: every field of complete Deployments and complete Components, with search and agent API keys over them; every other category is free"
@@ -105,6 +2591,7 @@
         "personal_contact_email",
         "personal_contact_phone",
         "internal_sheet_reference",
+        "internal_column_log",
         "internal_editor_task",
         "internal_marker"
       ],
@@ -114,23 +2601,8 @@
     },
     "stripped": [
       {
-        "id": 4,
-        "field": "Buyer checks",
-        "reason": "internal_editor_task"
-      },
-      {
-        "id": 17,
-        "field": "Buyer checks",
-        "reason": "internal_editor_task"
-      },
-      {
         "id": 117,
         "field": "Model checked",
-        "reason": "internal_sheet_reference"
-      },
-      {
-        "id": 117,
-        "field": "Buyer checks",
         "reason": "internal_sheet_reference"
       },
       {
@@ -145,12 +2617,12 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "c13235eaffaf540cd1bff82939bfaf4a976c8b35b72d874f121826667642346c",
-      "bytes": 197788
+      "sha256": "5a98d6c39ef52cca7ec3e75ae332adb78354520ae724c0200e776e022c4be800",
+      "bytes": 401892
     },
     "humanoids-catalogue.csv": {
-      "sha256": "c94bfc917c99935113fc255620c4a9790690880491f91e1c04a5dee609184f86",
-      "bytes": 103625
+      "sha256": "cfb723e7e21736f693461c002d7b48560dcad07dfbda5ca414cd8da18204408b",
+      "bytes": 249246
     }
   }
 }
