@@ -510,7 +510,7 @@ ${c.cases?.length ? `<p class="cta"><a href="${APP}#company/${encodeURIComponent
 <section><h2>Sources</h2>${sources.length ? `<ul class="sources">${sources.map((u) => `<li>${ext(u, u)}</li>`).join('')}</ul>` : '<p class="na">No linked sources.</p>'}</section>
 <p class="meta">Only what the public data say: the free Humanoids catalogue (snapshot ${esc(model.snapshot)}), the public summary of every deployment case (snapshot ${esc(model.projSnapshot)}), the public identity register and the free Investment and Integrators categories${c.integrator ? ` (Integrators snapshot ${esc(String(model.integrators.snapshot ?? '').slice(0, 10))})` : ''}. No corporate data is added.</p>
 </article>`;
-  return page({ head: c.integrator ? `<link rel="stylesheet" href="/assets/integrators.css?v=${assetVersion('assets/integrators.css')}">\n` : '', title: `${c.name}: ${c.robotList.length ? 'humanoid robots, facts and sources' : c.integrator ? 'integrator profile, services and sources' : c.directoryOnly ? 'company facts and sources' : 'humanoid robot deployment records'} · Why Humanoid?`, description: clip(`${summary} Public facts and sources.`), path: c.path, body, type: 'article' });
+  return page({ head: c.integrator ? `<link rel="stylesheet" href="/assets/integrators.css?v=${assetVersion('assets/integrators.css')}">\n` : '', title: `${c.name}: ${c.robotList.length ? 'humanoid robots, facts and sources' : c.integrator ? 'integrator profile, services and sources' : c.directoryOnly ? 'company facts and sources' : 'robot deployment records'} · Why Humanoid?`, description: clip(`${summary} Public facts and sources.`), path: c.path, body, type: 'article' });
 }
 
 // ---------- index pages, redirects, sitemap, 404 ----------
@@ -619,8 +619,8 @@ function deploymentsCategory(model) {
     cases: model.cases, records: model.depPreview.length, links: model.caseLinks, snapshot: model.depSnapshot,
     head: categoryHead(c, model), offer: offerHtml({ heading: 'Go further with Deployments', id: 'offer' }),
   });
-  return catPage(c, model, `${body}\n${serviceHtml(c.service)}`, `All ${model.cases.length} humanoid robot deployment cases, free: who is testing or using humanoid robots, which robot, sector, country, task, status as recorded and sources. The detail of each case with the data subscription, US$100 per year.`, {
-    title: 'Deployments: every humanoid robot deployment case, with status and sources · Why Humanoid?', head: deploymentsHead(), tail: deploymentsTail(),
+  return catPage(c, model, `${body}\n${serviceHtml(c.service)}`, `All ${model.cases.length} robot deployment cases, free: who is testing or using humanoid robots and adjacent platforms, as each source names them; which robot, sector, country, task, status as recorded and sources. The detail of each case with the data subscription, US$100 per year.`, {
+    title: 'Deployments: every robot deployment case, with status and sources · Why Humanoid?', head: deploymentsHead(), tail: deploymentsTail(),
   });
 }
 function casePages(model) {
@@ -633,7 +633,7 @@ ${renderCasePage(k, model.caseLinks)}
 ${offerLine()}
 <p class="meta">Public summary of ${k.records} Deployments record${k.records === 1 ? '' : 's'}, snapshot ${esc(String(model.depSnapshot).slice(0, 10))}. <a href="/deployments/">All cases</a>.</p>
 </article>`;
-    out.set(`${casePath(k).slice(1)}index.html`, page({ title: `${name}: humanoid robot deployment case · Why Humanoid?`, description: clip(`${name} and ${k.robots.map((r) => [r.manufacturer, r.model].filter(Boolean).join(' ')).join('; ') || 'a robot'}: ${k.status.detail}, ${k.sectors.join(', ').replace(/_/g, ' ')}, ${k.countries.join(', ')}. Public summary with sources.`), path: casePath(k), body, type: 'article', section: 'deployments', head: deploymentsHead() }));
+    out.set(`${casePath(k).slice(1)}index.html`, page({ title: `${name}: robot deployment case · Why Humanoid?`, description: clip(`${name} and ${k.robots.map((r) => [r.manufacturer, r.model].filter(Boolean).join(' ')).join('; ') || 'a robot'}: ${k.status.detail}, ${k.sectors.join(', ').replace(/_/g, ' ')}, ${k.countries.join(', ')}. Public summary with sources.`), path: casePath(k), body, type: 'article', section: 'deployments', head: deploymentsHead() }));
   }
   return out;
 }
@@ -870,7 +870,7 @@ function reportPage(model) {
   const body = `${crumbs([['/', 'Why Humanoid?'], ['/reports/', 'Reports'], [null, 'Deployment records']])}
 <article class="entity">
 <p class="kicker">Report · snapshot ${esc(String(model.projSnapshot).slice(0, 10))}</p>
-<h1>Humanoid robot deployment records</h1>
+<h1>Robot deployment records</h1>
 <p class="lede">The database holds ${model.totals.records} deployment records about ${model.totals.deployments} deployments: ${a.by_status.op} recorded as in operation, ${a.by_status.pilot} as pilots or trials, ${a.by_status.ann} as announced and ${a.by_status.unc} unconfirmed. Records are claims from named sources with their status as recorded, not verified facts, and one deployment can have several records.</p>
 <section><h2>By status as recorded</h2>${bars(STATUS_KEYS_ORDER.map((k) => ({ label: STATUS_LABEL[k], records: a.by_status[k] })), 'Status as recorded')}<p class="key">Announced means planned or agreed, not evidence of work. Unconfirmed means claimed by a vendor or unresolved.</p></section>
 <section><h2>By sector</h2>${bars(a.by_sector.map((r) => ({ label: SECTOR(r.key), records: r.records })), 'Sector')}</section>
@@ -878,7 +878,7 @@ function reportPage(model) {
 <section><h2>By year</h2>${bars(a.by_year.map((r) => ({ label: other(r.key, 'years'), records: r.records })), 'Year observed or published')}</section>
 <section><h2>How to read it</h2><p>Counts are of records, not of robots or sites. Every group with fewer than ${a.min_cell} records is added to «Other», so no number points at a single record. The year is the year the record was observed or, if that is missing, published. How records are collected and labelled is in the <a href="/method/">method</a>; who and where, record by record, is on each <a href="/companies/">company</a> and <a href="/robots/">robot</a> page; the records in full are in the <a href="/subscribe/">Deployments subscription</a> (${esc(price())}).</p></section>
 </article>`;
-  return page({ title: 'Humanoid robot deployment records: status, sectors, countries and years · Why Humanoid?', description: clip(`${model.totals.records} humanoid robot deployment records by status as recorded, sector, country and year. Records are claims from named sources, not verified facts.`), path: '/reports/deployment-records/', body, type: 'article', section: 'reports' });
+  return page({ title: 'Robot deployment records: status, sectors, countries and years · Why Humanoid?', description: clip(`${model.totals.records} robot deployment records (humanoid and adjacent platforms, as each source names them) by status as recorded, sector, country and year. Records are claims from named sources, not verified facts.`), path: '/reports/deployment-records/', body, type: 'article', section: 'reports' });
 }
 function methodPage(model) {
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Method']])}

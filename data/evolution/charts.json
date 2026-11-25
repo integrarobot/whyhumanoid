@@ -405,11 +405,11 @@
      "label": "",
      "long": "Q2 2023",
      "t": "2023-06-30",
-     "value": 3,
+     "value": 4,
      "segments": {
       "ann": 0,
       "unc": 1,
-      "pilot": 2,
+      "pilot": 3,
       "op": 0
      },
      "partial": false
@@ -419,11 +419,11 @@
      "label": "",
      "long": "Q3 2023",
      "t": "2023-09-30",
-     "value": 5,
+     "value": 6,
      "segments": {
       "ann": 0,
       "unc": 3,
-      "pilot": 2,
+      "pilot": 3,
       "op": 0
      },
      "partial": false
@@ -433,11 +433,11 @@
      "label": "",
      "long": "Q4 2023",
      "t": "2023-12-31",
-     "value": 7,
+     "value": 8,
      "segments": {
       "ann": 0,
       "unc": 3,
-      "pilot": 4,
+      "pilot": 5,
       "op": 0
      },
      "partial": false
@@ -447,11 +447,11 @@
      "label": "2024",
      "long": "Q1 2024",
      "t": "2024-03-31",
-     "value": 10,
+     "value": 11,
      "segments": {
       "ann": 1,
       "unc": 4,
-      "pilot": 5,
+      "pilot": 6,
       "op": 0
      },
      "partial": false
@@ -461,11 +461,11 @@
      "label": "",
      "long": "Q2 2024",
      "t": "2024-06-30",
-     "value": 12,
+     "value": 13,
      "segments": {
       "ann": 2,
       "unc": 4,
-      "pilot": 5,
+      "pilot": 6,
       "op": 1
      },
      "partial": false
@@ -475,11 +475,11 @@
      "label": "",
      "long": "Q3 2024",
      "t": "2024-09-30",
-     "value": 16,
+     "value": 17,
      "segments": {
       "ann": 2,
       "unc": 4,
-      "pilot": 9,
+      "pilot": 10,
       "op": 1
      },
      "partial": false
@@ -489,11 +489,11 @@
      "label": "",
      "long": "Q4 2024",
      "t": "2024-12-31",
-     "value": 20,
+     "value": 21,
      "segments": {
       "ann": 3,
       "unc": 4,
-      "pilot": 11,
+      "pilot": 12,
       "op": 2
      },
      "partial": false
@@ -503,11 +503,11 @@
      "label": "2025",
      "long": "Q1 2025",
      "t": "2025-03-31",
-     "value": 26,
+     "value": 27,
      "segments": {
       "ann": 4,
       "unc": 5,
-      "pilot": 15,
+      "pilot": 16,
       "op": 2
      },
      "partial": false
@@ -517,11 +517,11 @@
      "label": "",
      "long": "Q2 2025",
      "t": "2025-06-30",
-     "value": 33,
+     "value": 34,
      "segments": {
       "ann": 8,
       "unc": 6,
-      "pilot": 17,
+      "pilot": 18,
       "op": 2
      },
      "partial": false
@@ -531,11 +531,11 @@
      "label": "",
      "long": "Q3 2025",
      "t": "2025-09-30",
-     "value": 37,
+     "value": 38,
      "segments": {
       "ann": 10,
       "unc": 7,
-      "pilot": 17,
+      "pilot": 18,
       "op": 3
      },
      "partial": false
@@ -545,11 +545,11 @@
      "label": "",
      "long": "Q4 2025",
      "t": "2025-12-31",
-     "value": 46,
+     "value": 47,
      "segments": {
       "ann": 15,
       "unc": 9,
-      "pilot": 18,
+      "pilot": 19,
       "op": 4
      },
      "partial": false
@@ -559,11 +559,11 @@
      "label": "2026",
      "long": "Q1 2026",
      "t": "2026-03-31",
-     "value": 58,
+     "value": 59,
      "segments": {
       "ann": 18,
       "unc": 10,
-      "pilot": 26,
+      "pilot": 27,
       "op": 4
      },
      "partial": false
@@ -573,11 +573,11 @@
      "label": "",
      "long": "Q2 2026",
      "t": "2026-06-30",
-     "value": 73,
+     "value": 74,
      "segments": {
       "ann": 21,
       "unc": 14,
-      "pilot": 32,
+      "pilot": 33,
       "op": 6
      },
      "partial": false
@@ -587,11 +587,11 @@
      "label": "",
      "long": "Q3 2026",
      "t": "2026-09-30",
-     "value": 82,
+     "value": 83,
      "segments": {
       "ann": 22,
       "unc": 18,
-      "pilot": 36,
+      "pilot": 37,
       "op": 6
      },
      "partial": false
@@ -601,11 +601,11 @@
      "label": "",
      "long": "Q4 2026 (to 2026-11-25)",
      "t": "2026-11-25",
-     "value": 111,
+     "value": 114,
      "segments": {
-      "ann": 32,
-      "unc": 24,
-      "pilot": 48,
+      "ann": 33,
+      "unc": 25,
+      "pilot": 49,
       "op": 7
      },
      "partial": true
@@ -623,24 +623,24 @@
     }
    },
    "final": {
-    "cases": 111,
+    "cases": 114,
     "segments": {
-     "ann": 32,
-     "unc": 24,
-     "pilot": 48,
+     "ann": 33,
+     "unc": 25,
+     "pilot": 49,
      "op": 7
     },
     "all_records_now": {
-     "ann": 32,
-     "unc": 31,
-     "pilot": 51,
+     "ann": 33,
+     "unc": 32,
+     "pilot": 52,
      "op": 8
     }
    },
-   "summary": "By 2026-11-25, 111 of 122 cases have a dated source: 7 in operation, 48 pilot or trial, 24 unconfirmed, 32 announced.",
+   "summary": "By 2026-11-25, 114 of 125 cases have a dated source: 7 in operation, 49 pilot or trial, 25 unconfirmed, 33 announced.",
    "coverage": {
-    "included": 111,
-    "total": 122,
+    "included": 114,
+    "total": 125,
     "unit": "cases",
     "excluded": [
      {
@@ -648,14 +648,14 @@
       "count": 11
      },
      {
-      "reason": "Records without a publication date (of 191)",
+      "reason": "Records without a publication date (of 197)",
       "count": 20
      }
     ],
-    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead (server/src/public/status.js), so their totals differ: currently 6 in operation, 48 pilot or trial, 24 unconfirmed, 33 announced among the 111 dated cases. Undated evidence is kept apart and never assigned a date."
+    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead (server/src/public/status.js), so their totals differ: currently 6 in operation, 49 pilot or trial, 25 unconfirmed, 34 announced among the 114 dated cases. Undated evidence is kept apart and never assigned a date."
    },
    "status": "partial",
-   "status_note": "111 of 122 cases placed in time; 11 cases with no dated record stay in the date-unknown bar, outside the time series.",
+   "status_note": "114 of 125 cases placed in time; 11 cases with no dated record stay in the date-unknown bar, outside the time series.",
    "sources": [
     {
      "label": "Deployments public summaries, snapshot 2026-11-25",
@@ -699,122 +699,122 @@
      [
       "Q2 2023",
       "0",
-      "2",
+      "3",
       "1",
       "0",
-      "3"
+      "4"
      ],
      [
       "Q3 2023",
       "0",
-      "2",
+      "3",
       "3",
       "0",
-      "5"
+      "6"
      ],
      [
       "Q4 2023",
       "0",
-      "4",
+      "5",
       "3",
       "0",
-      "7"
+      "8"
      ],
      [
       "Q1 2024",
       "0",
-      "5",
+      "6",
       "4",
       "1",
-      "10"
+      "11"
      ],
      [
       "Q2 2024",
       "1",
-      "5",
+      "6",
       "4",
       "2",
-      "12"
+      "13"
      ],
      [
       "Q3 2024",
       "1",
-      "9",
+      "10",
       "4",
       "2",
-      "16"
+      "17"
      ],
      [
       "Q4 2024",
       "2",
-      "11",
+      "12",
       "4",
       "3",
-      "20"
+      "21"
      ],
      [
       "Q1 2025",
       "2",
-      "15",
+      "16",
       "5",
       "4",
-      "26"
+      "27"
      ],
      [
       "Q2 2025",
       "2",
-      "17",
+      "18",
       "6",
       "8",
-      "33"
+      "34"
      ],
      [
       "Q3 2025",
       "3",
-      "17",
+      "18",
       "7",
       "10",
-      "37"
+      "38"
      ],
      [
       "Q4 2025",
       "4",
-      "18",
+      "19",
       "9",
       "15",
-      "46"
+      "47"
      ],
      [
       "Q1 2026",
       "4",
-      "26",
+      "27",
       "10",
       "18",
-      "58"
+      "59"
      ],
      [
       "Q2 2026",
       "6",
-      "32",
+      "33",
       "14",
       "21",
-      "73"
+      "74"
      ],
      [
       "Q3 2026",
       "6",
-      "36",
+      "37",
       "18",
       "22",
-      "82"
+      "83"
      ],
      [
       "Q4 2026 (to 2026-11-25)",
       "7",
-      "48",
-      "24",
-      "32",
-      "111"
+      "49",
+      "25",
+      "33",
+      "114"
      ]
     ]
    }

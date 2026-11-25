@@ -153,8 +153,9 @@
     // list); every other tab has entries = rows.
     if (entries === null) entries = rows.length === total ? rows.filter((r) => r.canonical !== false).length : total;
     cache[id] = { mode, rows, total, entries, snapshot, previewRows, publicFields, fields };
-    totals[id] = total;
-    const n = document.querySelector(`[data-n="${id}"]`); if (n) n.textContent = total;
+    // The category list counts entries, like the home page and the API (a membership row is not a second entry).
+    totals[id] = entries;
+    const n = document.querySelector(`[data-n="${id}"]`); if (n) n.textContent = entries;
     return cache[id];
   }
 
@@ -435,7 +436,9 @@
     function render() {
       shown = data.rows.filter((r) => (!isDep || st === 'all' || status(r) === st) && (!q || Object.keys(r).some((k) => !HIDDEN.has(k) && String(r[k] ?? '').toLowerCase().includes(q))));
       const shownEntries = shown.filter((r) => r.canonical !== false).length;
-      $('db-count').textContent = (shown.length !== data.rows.length ? shownEntries + ' of ' : '') + countText(data) + ' shown' + (shown.length !== shownEntries ? ` (${shown.length} rows, ${shown.length - shownEntries} of them the same entry in a second list)` : '') + (data.snapshot ? ' · workbook copy ' + String(data.snapshot).slice(0, 10) : '');
+      // Unfiltered: the entries with their rows note, once. Filtered: the matching entries, and their rows if a match
+      // repeats an entry of another list.
+      $('db-count').textContent = (shown.length === data.rows.length ? countText(data) : `${shownEntries} of ${data.entries ?? data.total} entries` + (shown.length !== shownEntries ? ` (${shown.length} rows: ${shown.length - shownEntries} ${shown.length - shownEntries === 1 ? 'is' : 'are'} the same entry in a second list)` : '')) + ' shown' + (data.snapshot ? ' · workbook copy ' + String(data.snapshot).slice(0, 10) : '');
       body.innerHTML = (shown.length ? shown.map((r) => {
         const n = data.rows.indexOf(r) + 1;
         return `<tr class="r" data-i="${n - 1}"><td class="num">${n}</td>` + (isDep ? `<td class="stc"><span class="dst ${status(r)}">${stLabel(status(r))}</span></td>` : '') +

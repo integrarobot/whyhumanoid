@@ -70,6 +70,20 @@ expect(rows() === manifest.record_count, `rendered rows ${rows()} != catalogue $
 // The hero counts humanoid robot models: catalogue records minus software and uncertain-scope entries (tools/catalogue-classification.json).
 const classified = JSON.parse(readFileSync(new URL('tools/catalogue-classification.json', root), 'utf8')).records;
 expect(text('#h-n') === String(manifest.record_count - classified.length), `hero total "${text('#h-n')}" is not ${manifest.record_count} records minus ${classified.length} classified apart`);
+// Directory tabs count canonical entries everywhere on the home page: hero, index, category card (Codex, 25 Nov 2026:
+// the hero showed 141 software rows next to the card's 138 entries).
+{
+  const idx = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8'));
+  for (const [id, path] of [['software', '/software/'], ['other-robots', '/other-robots/']]) {
+    const t = idx.tabs.find((x) => x.id === id);
+    const entries = String(t.canonical_entries ?? t.entries_total);
+    const hero = document.querySelector(`#eco a[href="#db-${id}"] b`)?.textContent;
+    const nav = document.querySelector(`a[data-id="${id}"] .n`)?.textContent;
+    const card = new RegExp(`<li><a href="${path}">[^<]*</a><p>[^<]*</p><span class="meta"><b>(\\d+)</b>`).exec(html)?.[1];
+    expect(hero === entries && nav === entries && card === entries, `${id}: hero ${hero}, index ${nav}, card ${card}; canonical entries ${entries}`);
+  }
+  expect(/software entries/.test(text('#eco')) && !/software and AI models/.test(text('#eco')), 'hero software label is not "software entries"');
+}
 expect(/complete catalogue is free/i.test(text('#preview-note')), 'notice does not say the catalogue is free');
 const buyLink = document.querySelector('#preview-note a');
 const pageData = JSON.parse(document.getElementById('data').textContent);
@@ -113,7 +127,7 @@ expect(pageData.access.open === false, 'page is not in paywall mode');
 expect(/subscription adds complete Deployments and complete Components/i.test(text('#preview-note')) && document.querySelector('#preview-note a')?.getAttribute('href') === pageData.access.app_url, 'catalogue notice does not offer the subscription');
 for (const t of dbIndex?.tabs ?? []) {
   const a = indexLinks.find((x) => x.dataset.id === t.id);
-  expect(a?.getAttribute('href') === `#db-${t.id}` && a.querySelector('.n')?.textContent === String(t.entries_total), `${t.id}: index link or count wrong`);
+  expect(a?.getAttribute('href') === `#db-${t.id}` && a.querySelector('.n')?.textContent === String(t.canonical_entries ?? t.entries_total), `${t.id}: index link or count wrong`);
   await go(`#db-${t.id}`);
   const shown = document.querySelectorAll('#db-rows tr.r').length;
   expect(shown === t.preview_entries && (shown > 0 || t.public === 'none'), `${t.id}: ${shown} rows shown, public rows ${t.preview_entries}`);
@@ -196,7 +210,7 @@ const ecoAtlas = eco.find((a) => a.getAttribute('href') === '/datasets/');
 expect(ecoAtlas?.querySelector('b')?.textContent === String(pageData.dataAtlas?.resources), 'hero count for Datasets is not the atlas count');
 for (const a of eco.filter((x) => x.getAttribute('href').startsWith('#db-'))) {
   const t = dbIndex.tabs.find((x) => `#db-${x.id}` === a.getAttribute('href'));
-  expect(a.querySelector('b')?.textContent === String(t?.entries_total), `hero count for ${t?.id} is not the data's`);
+  expect(a.querySelector('b')?.textContent === String(t?.canonical_entries ?? t?.entries_total), `hero count for ${t?.id} is not the data's`);
 }
 expect(document.querySelector('#cta-h')?.getAttribute('href') === '#humanoids' && document.querySelector('#cta-db')?.getAttribute('href') === '#categories', 'hero calls to action missing');
 // The two premium paths (24 Nov 2026): both in the hero and in full right after it; the data subscription at US$100 a

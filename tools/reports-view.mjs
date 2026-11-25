@@ -406,7 +406,7 @@ function reportCards(m) {
     const fs = m.byReport(r.id);
     const head = fs.find((f) => f.theme === 'headline');
     return `<li><a href="${reportPath(r)}"><span class="rr-p">${esc(r.publisher)} · ${esc(dateText(r.published))}</span><span class="rr-t">${esc(r.title)}</span>${head ? `<span class="rr-h">${esc(head.statement)}</span>` : ''}<span class="rr-n">${plural(fs.length, 'finding')} · ${fs.filter(verified).length} checked${r.check.status === 'pending_unreachable' ? ' · original not reachable for review' : ''}</span></a></li>`;
-  }).join('')}<li><a href="/reports/deployment-records/"><span class="rr-p">Why Humanoid? analysis</span><span class="rr-t">Humanoid robot deployment records</span><span class="rr-h">Deployment records by status as recorded, sector, country and year, from the Why Humanoid? database.</span><span class="rr-n">Our own analysis</span></a></li></ul>
+  }).join('')}<li><a href="/reports/deployment-records/"><span class="rr-p">Why Humanoid? analysis</span><span class="rr-t">Robot deployment records</span><span class="rr-h">Deployment records by status as recorded, sector, country and year, from the Why Humanoid? database.</span><span class="rr-n">Our own analysis</span></a></li></ul>
 </section>`;
 }
 
