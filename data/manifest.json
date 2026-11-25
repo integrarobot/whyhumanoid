@@ -2617,8 +2617,8 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "5a98d6c39ef52cca7ec3e75ae332adb78354520ae724c0200e776e022c4be800",
-      "bytes": 401892
+      "sha256": "0694019b13c2ecf50027f2015ed620e26880257ddf3afbe1b580063c2c57a74b",
+      "bytes": 401396
     },
     "humanoids-catalogue.csv": {
       "sha256": "cfb723e7e21736f693461c002d7b48560dcad07dfbda5ca414cd8da18204408b",

@@ -99,6 +99,9 @@ async function build(from, snapshot) {
     const meta = list.get(spec.id);
     index.tabs.push({
       id: spec.id,
+      // Each tab names the export it comes from, so a later partial export (--only) can update one tab and leave the
+      // others' dates as they were; the generators read the date of their own tab.
+      snapshot,
       title: meta.title,
       description: meta.description,
       entries_total: all.length,

@@ -11,22 +11,18 @@
 // joined or interpolated. What cannot be dated is counted and listed as excluded.
 
 import { MEANINGS, publicDateOf, publicDateProblems } from '../server/src/public-dates.js';
-import { currentStatus } from '../server/src/public/status.js';
+import { currentStatus, sourcePeriod } from '../server/src/public/status.js';
 
 export const ORDER = ['humanoids', 'deployments', 'components', 'integrators', 'datasets', 'benchmarks', 'reports'];
 
 const DAY = 86400000;
 const pad = (n) => String(n).padStart(2, '0');
 const lastDay = (y, m) => new Date(Date.UTC(y, m, 0)).getUTCDate();
+// A real calendar date at the precision written ("2026", "2026-03", "2026-03-14"), shared with the current-status
+// policy (server/src/public/status.js): an impossible date (2026-02-30, 2026-13) is not a date.
 export function parseDate(v) {
-  const s = String(v ?? '').trim();
-  let m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (m) return { precision: 'day', start: s, end: s };
-  m = s.match(/^(\d{4})-(\d{2})$/);
-  if (m) return { precision: 'month', start: `${s}-01`, end: `${s}-${pad(lastDay(+m[1], +m[2]))}` };
-  m = s.match(/^(\d{4})$/);
-  if (m) return { precision: 'year', start: `${s}-01-01`, end: `${s}-12-31` };
-  return null;
+  const p = sourcePeriod(v);
+  return p && { precision: p.precision, start: p.start, end: p.end };
 }
 export const dayNumber = (iso) => Math.round(Date.parse(`${iso}T00:00:00Z`) / DAY);
 const minIso = (a, b) => (a <= b ? a : b);
@@ -110,7 +106,11 @@ function humanoids(cat, review, classification = { records: [] }) {
         ...excluded.other.map((x) => ({ reason: `${x.name}: the release date is written in prose or without a year; it is not read automatically`, count: 1 })),
         ...excluded.reviewed.map((x) => ({ reason: `${x.name}: ${x.reason}`, count: 1 })),
       ],
-      note: `${dated.filter((d) => d.kind === 'unveiling').length} of the dated models have a day-precise unveiling; the rest a year. ${software.length} software or AI models recorded in the Humanoids tab (${software.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) are not robots and are outside this count; ${uncertain.length} entries of uncertain scope (${uncertain.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) are inside it, undated.`,
+      note: [
+        `Release dates as the records write them: ${['day', 'month', 'year'].map((p) => `${dated.filter((d) => d.date.precision === p).length} to the ${p}`).join(', ')}; each is placed in its year.`,
+        software.length ? `${plural(software.length, 'software or AI model')} recorded in the Humanoids tab (${software.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) ${software.length === 1 ? 'is' : 'are'} not a robot and outside this count.` : '',
+        uncertain.length ? `${plural(uncertain.length, 'entry', 'entries')} of uncertain scope (${uncertain.map((x) => `${x.Lab} ${x.Robot}`).join(', ')}) ${uncertain.length === 1 ? 'is' : 'are'} inside it, undated.` : '',
+      ].filter(Boolean).join(' '),
     },
     status: 'partial',
     status_note: `Partial: ${total - dated.length} of ${total} catalogue robots have no usable release date.`,

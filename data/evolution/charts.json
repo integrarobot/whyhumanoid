@@ -256,7 +256,7 @@
       "count": 1
      }
     ],
-    "note": "0 of the dated models have a day-precise unveiling; the rest a year. 0 software or AI models recorded in the Humanoids tab () are not robots and are outside this count; 1 entries of uncertain scope (PokeBot Home robot (model name not disclosed)) are inside it, undated."
+    "note": "Release dates as the records write them: 26 to the day, 6 to the month, 36 to the year; each is placed in its year. 1 entry of uncertain scope (PokeBot Home robot (model name not disclosed)) is inside it, undated."
    },
    "status": "partial",
    "status_note": "Partial: 144 of 212 catalogue robots have no usable release date.",
@@ -1228,7 +1228,7 @@
    "precision": "day",
    "domain": {
     "start": "2024-01-01",
-    "end": ""
+    "end": "2026-11-25"
    },
    "rows": [
     {
@@ -1260,7 +1260,7 @@
      "note": "Zion Solutions Group",
      "href": "/integrators/#projects",
      "hollow": false,
-     "t": ""
+     "t": "2024-05-06"
     },
     {
      "id": "ricoh-agility",
@@ -1273,7 +1273,7 @@
      "note": "Ricoh USA",
      "href": "/integrators/#projects",
      "hollow": false,
-     "t": ""
+     "t": "2024-09-09"
     },
     {
      "id": "tompkins-agility",
@@ -1286,7 +1286,7 @@
      "note": "Tompkins Solutions",
      "href": "/integrators/#projects",
      "hollow": false,
-     "t": ""
+     "t": "2024-10-16"
     },
     {
      "id": "upv-demonstration",
@@ -1299,7 +1299,7 @@
      "note": "Synergy Tech",
      "href": "/integrators/#project-upv-humantech",
      "hollow": false,
-     "t": ""
+     "t": "2025-04-03"
     },
     {
      "id": "orano-hoxo",
@@ -1312,7 +1312,7 @@
      "note": "Capgemini",
      "href": "/integrators/#project-orano-hoxo",
      "hollow": false,
-     "t": ""
+     "t": "2025-11-04"
     },
     {
      "id": "vodafone-duisburg",
@@ -1325,7 +1325,7 @@
      "note": "Accenture",
      "href": "/integrators/#project-vodafone-duisburg",
      "hollow": false,
-     "t": ""
+     "t": "2026-04-22"
     },
     {
      "id": "jal-ground-service",
@@ -1338,7 +1338,7 @@
      "note": "GMO AI & Robotics Corporation",
      "href": "/integrators/#project-jal-ground-service",
      "hollow": false,
-     "t": ""
+     "t": "2026-04-27"
     },
     {
      "id": "upv-chair",
@@ -1351,7 +1351,7 @@
      "note": "Synergy Tech",
      "href": "/integrators/#project-upv-humantech",
      "hollow": false,
-     "t": ""
+     "t": "2026-04-30"
     },
     {
      "id": "asahi-kasei",
@@ -1364,7 +1364,7 @@
      "note": "GMO AI & Robotics Corporation",
      "href": "/integrators/#project-asahi-kasei",
      "hollow": false,
-     "t": ""
+     "t": "2026-07-01"
     },
     {
      "id": "rovimatica-agreement",
@@ -1377,7 +1377,7 @@
      "note": "Rovimática",
      "href": "/integrators/#projects",
      "hollow": false,
-     "t": ""
+     "t": "2026-08-31"
     },
     {
      "id": "gmo-techshare",
@@ -1390,7 +1390,7 @@
      "note": "GMO AI & Robotics Corporation and TechShare",
      "href": "/integrators/#project-gmo-techshare",
      "hollow": false,
-     "t": ""
+     "t": "2026-09-14"
     },
     {
      "id": "ca3-arm",
@@ -1403,7 +1403,7 @@
      "note": "CA3",
      "href": "/integrators/#projects",
      "hollow": true,
-     "t": ""
+     "t": "2026-10-28"
     },
     {
      "id": "ca3-home",
@@ -1416,7 +1416,7 @@
      "note": "CA3",
      "href": "/integrators/#projects",
      "hollow": true,
-     "t": ""
+     "t": "2026-11-05"
     },
     {
      "id": "novares-sesena",
@@ -1429,7 +1429,7 @@
      "note": "Innov8 Robotics and Bleu Robotics",
      "href": "/integrators/#project-novares-sesena",
      "hollow": false,
-     "t": ""
+     "t": "2026-11-17"
     }
    ],
    "final": {
@@ -1478,7 +1478,7 @@
    "status_note": "12 of 28 providers have dated evidence; 16 have none on their reviewed pages.",
    "sources": [
     {
-     "label": "Integrators atlas, snapshot ",
+     "label": "Integrators atlas, snapshot 2026-11-25",
      "url": "/data/integrators/atlas.json"
     }
    ],

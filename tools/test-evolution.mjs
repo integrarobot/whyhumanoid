@@ -175,3 +175,13 @@ test('no paid or non-public field in the chart data or the pages', () => {
     assert.equal((html.match(/class="evo-chart /g) ?? []).length, p === 'index.html' ? 7 : p === 'benchmarks/index.html' ? 2 : 1, p);
   }
 });
+
+test('every chart has a real date range and every page renders it (no NaN or undefined dates)', () => {
+  const doc = JSON.parse(read('data/evolution/charts.json'));
+  for (const c of doc.charts) for (const k of ['start', 'end']) assert.match(String(c.domain[k]), /^\d{4}-\d{2}-\d{2}$/, `${c.id} domain.${k}`);
+  for (const p of ['index.html', 'humanoids/index.html', 'deployments/index.html', 'components/index.html', 'integrators/index.html', 'datasets/index.html', 'benchmarks/index.html', 'reports/index.html']) {
+    const html = read(p);
+    assert.doesNotMatch(html, /data-t[01]="NaN"|data-map="[^"]*NaN|aria-valuetext="[^"]*undefined|<b>0 undefined/, p);
+  }
+  assert.match(JSON.parse(read('data/integrators/atlas.json')).snapshot ?? '', /^\d{4}-\d{2}-\d{2}T/, 'the Integrators atlas names its snapshot');
+});

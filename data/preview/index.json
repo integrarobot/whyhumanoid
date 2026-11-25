@@ -4,6 +4,7 @@
  "tabs": [
   {
    "id": "deployments",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Deployments",
    "description": "One claim per row about a humanoid robot deployment, with evidence level, source and dates.",
    "entries_total": 191,
@@ -85,6 +86,7 @@
   },
   {
    "id": "integrators",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Integrators",
    "description": "Humanoid integrators and service providers: roles, services, platforms, territory, named projects and the evidence behind each claim.",
    "entries_total": 28,
@@ -125,6 +127,7 @@
   },
   {
    "id": "evidence-links",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Evidence links",
    "description": "Links between robot models, tasks, deployments and claims, with stage and limitations.",
    "entries_total": 15,
@@ -162,6 +165,7 @@
   },
   {
    "id": "task-evaluations",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Task evaluations",
    "description": "Internal operational assessment: per-task eligibility of each robot model against documented evidence.",
    "entries_total": 4,
@@ -191,6 +195,7 @@
   },
   {
    "id": "container-handling",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Container handling analysis",
    "description": "Task analysis for container handling in intralogistics, with traceability.",
    "entries_total": 22,
@@ -210,6 +215,7 @@
   },
   {
    "id": "entities",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Entities",
    "description": "Canonical organisations, models and resources with identity scope and review date.",
    "entries_total": 32,
@@ -244,6 +250,7 @@
   },
   {
    "id": "stocks",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Investment: listed companies",
    "description": "Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.",
    "entries_total": 276,
@@ -274,6 +281,7 @@
   },
   {
    "id": "software",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Software and world models",
    "description": "Robot foundation models, VLA models, world models and robotics software.",
    "entries_total": 141,
@@ -532,6 +540,7 @@
   },
   {
    "id": "hardware",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Components",
    "description": "Robot components as products: sensing principle, specifications, interfaces, availability, price and sources.",
    "entries_total": 19,
@@ -597,6 +606,7 @@
   },
   {
    "id": "component-software",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Components: related software",
    "description": "Software related to the component products, such as simulators of tactile sensors.",
    "entries_total": 1,
@@ -662,6 +672,7 @@
   },
   {
    "id": "other-robots",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Other robots",
    "description": "Non-humanoid and educational robots tracked alongside the humanoid catalogue.",
    "entries_total": 560,
@@ -718,6 +729,7 @@
   },
   {
    "id": "data-space",
+   "snapshot": "2026-11-25T05:35:43Z",
    "title": "Data space design notes",
    "description": "Findings and proposals for the humanoid robotics data space.",
    "entries_total": 30,

@@ -65,7 +65,10 @@ test('Humanoids: the full current tab, historical ids kept, moved records keep a
     assert.ok(doc.moved.some((x) => x.id === mv.id), `${mv.id} is listed as moved`);
     const dir = readdirSync(new URL('humanoids/', root)).find((d) => d.endsWith(`-${mv.id}`));
     assert.ok(dir, `${mv.id} keeps its historical address`);
-    assert.match(read(`humanoids/${dir}/index.html`), new RegExp(`is now listed in ${mv.to.label}`), `${mv.id} page says where it went`);
+    const html = read(`humanoids/${dir}/index.html`);
+    assert.match(html, new RegExp(`Reclassified as ${mv.to.label}`), `${mv.id} page says where it went`);
+    assert.doesNotMatch(html, /hidden tab|sheet row|\brow \d|workbook moved|Humanoids reclassified/i, `${mv.id}: no internal spreadsheet operations on the page`);
+    assert.ok(!('evidence' in doc.moved.find((x) => x.id === mv.id)), `${mv.id}: review evidence stays out of the public catalogue`);
   }
   for (const id of Object.keys(json('tools/robot-presentation.json').robots)) assert.ok(ids.includes(Number(id)), `presentation override ${id} still applies`);
   // Release dates on the chart: only a model release or unveiling; anything else is excluded with its reason.

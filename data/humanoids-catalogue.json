@@ -7680,7 +7680,6 @@
     "name": "Skild Brain (Skild AI)",
     "path": "/software/"
    },
-   "evidence": "Hidden tab 'Humanoids reclassified 2026-11-' row 2; Software tab row 15 'Skild Brain (Skild AI)', same Web (skild.ai).",
    "record": {
     "id": 82,
     "sheet_row": 84,
@@ -7726,7 +7725,6 @@
     "name": "Orbit Robotics",
     "path": "/other-robots/orbit-robotics/"
    },
-   "evidence": "Hidden tab 'Humanoids reclassified 2026-11-' row 3; Other Robots tab row 73 'Orbit Robotics', same Web (orbitrobotics.ch), 'Reclassified from Humanoids'.",
    "record": {
     "id": 113,
     "sheet_row": 115,
@@ -7772,7 +7770,6 @@
     "name": "Natura-1 (Nature Will)",
     "path": "/software/"
    },
-   "evidence": "Hidden tab 'Humanoids reclassified 2026-11-' row 4; Software tab row 76 'Natura-1 (Nature Will)', same Web (naturewill.ai), 'Reclassified from Humanoids on 2026-11-23'.",
    "record": {
     "id": 130,
     "sheet_row": 132,

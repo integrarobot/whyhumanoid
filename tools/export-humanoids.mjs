@@ -95,7 +95,9 @@ export function buildExport(snapshot, updates = readVerifiedUpdates()) {
   // Records moved out of the Humanoids tab (tools/humanoids-identity.json via the verified updates): not in the
   // catalogue; their last public values stay, labelled, so their pages keep answering at the same address.
   const movedIds = new Map((updates.moved ?? []).map((m) => [m.id, m]));
-  const moved = candidates.filter((r) => movedIds.has(r.id)).map((r) => ({ ...movedIds.get(r.id), record: r }));
+  // The public file names where each record went; the review evidence (workbook tabs and rows) stays in
+  // tools/humanoids-identity.json and tools/humanoids-verified-updates.json.
+  const moved = candidates.filter((r) => movedIds.has(r.id)).map((r) => { const { id, name, to } = movedIds.get(r.id); return { id, name, to, record: r }; });
   const records = candidates.filter((r) => !withheld.includes(r) && !movedIds.has(r.id));
   const updatedKeys = new Set(updates.updated.map((u) => `${u.id}|${u.field}`));
   const notUpdated = (r) => !updatedKeys.has(`${r.id}|${r.field}`);

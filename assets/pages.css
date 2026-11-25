@@ -52,7 +52,7 @@ section{margin:30px 0}
 .dep ul{list-style:none;margin:8px 0 0;padding:0}
 .dep li{padding:8px 0;border-top:1px solid var(--line)}
 .facts{margin:4px 0 0;font-size:13.5px;color:var(--bone-2);overflow-wrap:anywhere}
-.st{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border:1px solid currentColor;white-space:nowrap}
+.st{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border:1px solid currentColor;display:inline-block;max-width:100%;white-space:normal}
 .st.op{color:var(--ok)}.st.pilot{color:var(--warn)}.st.ann{color:var(--amber-hi)}.st.unc{color:var(--crit)}
 .key,.meta{font-size:13px;color:var(--bone-3)}
 .cta a{display:inline-block;font-weight:600;text-decoration:none;border:1px solid var(--amber);padding:10px 14px;margin-top:6px}
