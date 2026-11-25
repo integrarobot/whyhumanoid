@@ -1,0 +1,50 @@
+{
+  "id": "WH-20261125-1716-pie-compartido-about",
+  "tarea": "Pie compartido (About, For agents, Method, Contact, Integrarobot) en la portada, las páginas generadas y la app, y página /about/",
+  "origen": "Javier (petición del 25/11/2026), revisado por Codex",
+  "fecha": "2026-11-25T17:16:52+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "tools/footer-view.mjs: un único renderizador y una única regla CSS para los enlaces del pie (About, For agents, Method, Contact con la dirección de soporte e Integrarobot), usados por tools/build-pages.mjs (todas las páginas generadas), tools/build-site.mjs (portada, bloque footer-help) y tools/build-app.mjs (la app, añadido al generar app/; server/public y el Worker no cambian). build-pages falla si assets/pages.css no lleva la regla.",
+    "Se conservan los enlaces secundarios de las páginas generadas (Companies, Deployment records, Subscription and reports, Subscriber app, Privacy) y la línea de ayuda; el texto «integrarobot.com» de la portada pasa a ser el enlace.",
+    "/about/: qué es el catálogo y qué cubre, qué establece y qué no establece un registro, quién lo hace (Integrarobot, fundada por Javier Martín) y enlaces a Method, For agents, Subscription and reports y contacto; sin cifras ni precios. URL canónica /about/ e incluida en el sitemap.",
+    "tools/verify-footer.mjs: comprobación de solo lectura en navegador del pie en ocho páginas a 320, 390 y 1366 px, de sus destinos y de la página About."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 114",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/114"
+    },
+    {
+      "etiqueta": "Commit de fusión bea76ad",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/bea76ad9bc89e49ace2fde30d1c55dd6e8da953b"
+    },
+    {
+      "etiqueta": "Despliegue de Pages fallido (ejecución 45651549268)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45651549268"
+    },
+    {
+      "etiqueta": "Estado de GitHub",
+      "url": "https://www.githubstatus.com/"
+    }
+  ],
+  "despliegue": [
+    "PR 114 fusionado en main como bea76ad desde el head aceptado por Codex 469c334, con el CI del PR (ejecución 45651208720) y el de main (ejecución 45651549447) en verde. La fusión la hizo Codex desde la web de GitHub después de que el conector devolviera 500 dos veces.",
+    "NO publicado: el despliegue de GitHub Pages de bea76ad (ejecución 45651549268) compila bien, pero el paso de despliegue falla al crear el despliegue con HTTP 500 en los intentos 1 y 2 (el segundo, relanzado por Codex, a las 16:15:24 UTC). GitHub Status informa de una degradación activa de Pages y Actions desde las 15:55 UTC.",
+    "Producción a las 17:16 (Madrid): /about/ responde 404 y la portada sigue con el pie anterior.",
+    "Sin cambios en el Worker, los datos, Stripe ni DNS."
+  ],
+  "verificaciones": [
+    "Local, antes de fusionar: verify-footer 168/168 (ocho páginas a 320, 390 y 1366 px, destinos del pie y About); verify-mobile 715/715; verify-site, verify-pages y verify-premium-app en verde; check-public y los --check de build-site, build-pages, build-app y export-public en verde.",
+    "Codex, independiente: aceptó el candidato 469c334; los 1.761 HTML generados que ya existían cambian solo en el pie y en la clave de caché de la hoja de estilos; generadores comprobados directamente (incluida la igualdad de buildApp); About revisada en Chrome en escritorio y a 390 px, con el pie de la portada dentro de los 390 px, foco de teclado visible y About abierta desde la portada.",
+    "Producción: sin verificar, porque el despliegue no se ha publicado.",
+    "Observación aparte, anterior a este cambio: a 320 px la cabecera de la app desborda 48 px en producción. No la causa el pie; corregirla exige tocar server/public y el Worker."
+  ],
+  "pendientes": [
+    "Volver a lanzar el despliegue de Pages de bea76ad cuando GitHub se recupere, sin reintentos rápidos repetidos.",
+    "Después, verificar producción con node tools/verify-footer.mjs --base https://whyhumanoid.com y registrar un cierre nuevo como completado."
+  ],
+  "siguiente_accion": "Cuando GitHub Status dé Pages por recuperado, Codex o Javier relanzan el despliegue (Re-run failed jobs de la ejecución 45651549268) y Claude verifica producción y registra el cierre completado."
+}
