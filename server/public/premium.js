@@ -714,6 +714,9 @@
   async function render(force = false) {
     if (!force && rendered === location.hash) return;
     rendered = location.hash;
+    // A new view: responses for the previous one are dropped, and a pending questionnaire autosave is cancelled.
+    viewToken += 1;
+    clearTimeout(ORD.timer);
     const r = parseHash() || { view: 'dataset', id: 'deployments' };
     if (r.view === 'robot') await showRobot(r.id);
     else if (r.view === 'company') await showCompany(r.id);
@@ -733,6 +736,13 @@
   const ORD = { services: null, forms: {}, timer: null, saving: false, current: null };
   // These views are not categories: the category list shows none as current.
   const mark = (id) => { state.current = id; renderIndex(); };
+  // Each of these views claims the panel with a token and shows "Loading" at once; a response that arrives after the
+  // visitor has moved on (an order still loading when they click Custom reports) is dropped, never painted over the
+  // newer view.
+  let viewToken = 0;
+  const claim = (title) => { const t = ++viewToken; $('db-panel').setAttribute('aria-busy', 'true'); $('db-panel').innerHTML = `<h2 id="db-title">${esc(title)}</h2><p class="lbl">Loading…</p>`; return t; };
+  const stale = (t) => t !== viewToken;
+  const loaded = () => $('db-panel').removeAttribute('aria-busy');
   const SUPPORT = 'javier@liderarmente.com';
   const ORDER_STATUS = {
     pending_payment: ['Waiting for payment', 'warn'],
@@ -759,10 +769,14 @@
   async function showReports() {
     const panel = $('db-panel');
     mark('reports');
+    const t = claim('Custom reports');
     const svc = await reportServices();
+    if (stale(t)) return;
     if (!svc) { panel.innerHTML = `<p>Custom reports are not available right now. Write to <a href="mailto:${SUPPORT}">${SUPPORT}</a>.</p>`; return; }
     let orders = [];
     if (state.session) { const r = await api('/v1/reports/orders'); if (r.status === 200) orders = r.data.orders; }
+    if (stale(t)) return;
+    loaded();
     panel.innerHTML =
       `<div class="db-panel-head"><div><h2 id="db-title">Custom reports</h2><p>Our analysis applied to your company's decision, as a private PDF report. Separate from the data subscription: no subscription needed, and the subscription does not include them.</p>` +
       `<p class="db-hint"><b>${esc(svc.before_payment)}</b></p><p class="db-hint">${esc(svc.limits)}</p></div></div>` +
@@ -826,12 +840,16 @@
   async function showOrder(orderId, { problems = {}, review = false } = {}) {
     const panel = $('db-panel');
     mark('reports');
+    const t = claim('Your report order');
     if (!state.session) { panel.innerHTML = '<h2 id="db-title">Your report order</h2><p>Sign in with the email address you used to order. Your order and your answers are kept in your account.</p>'; return; }
     const { status, data } = await api(`/v1/reports/orders/${encodeURIComponent(orderId)}`);
-    if (status !== 200) { panel.innerHTML = `<h2 id="db-title">Order not found</h2><p>This order is not in your account. Sign in with the email address you used to order, or write to <a href="mailto:${SUPPORT}">${SUPPORT}</a>.</p>`; return; }
+    if (stale(t)) return;
+    if (status !== 200) { loaded(); panel.innerHTML = `<h2 id="db-title">Order not found</h2><p>This order is not in your account. Sign in with the email address you used to order, or write to <a href="mailto:${SUPPORT}">${SUPPORT}</a>.</p>`; return; }
     const o = data.order;
     ORD.current = o;
     const form = await formFor(o.service);
+    if (stale(t)) return;
+    loaded();
     const head = `<p class="lbl"><a href="#reports">Custom reports</a> / ${esc(o.service_name)}</p><h2 id="db-title">${esc(o.service_name)}</h2><p>${statusBadge(o.status)} <span class="lbl">Order ${esc(o.id)} · US$1,000 · ordered ${when(o.created_at)}</span></p>`;
     if (o.status === 'pending_payment') {
       panel.innerHTML = `${head}<p>We have not received the payment confirmation from Stripe yet. If you have paid, this usually takes a few seconds.</p><button class="btn" id="ord-check" type="button">Check payment again</button> <a class="btn ghost" href="#reports">Back</a><p class="lbl">Questions: <a href="mailto:${SUPPORT}">${SUPPORT}</a></p>`;
@@ -903,9 +921,12 @@
   async function showKeys(created = null) {
     const panel = $('db-panel');
     mark('keys');
+    const t = claim('Agent access');
     const docs = '<p>Setup for the HTTP API, MCP clients and the command-line tool: <a href="https://whyhumanoid.com/agents/">whyhumanoid.com/agents</a>. Fair use: 60 requests a minute and 5,000 a day per key.</p>';
     if (!state.session) { panel.innerHTML = `<h2 id="db-title">Agent access</h2><p>Sign in to create API keys for your agents. They read the catalogue with your subscription: no extra charge.</p>${docs}`; return; }
     const r = await api('/v1/api-keys');
+    if (stale(t)) return;
+    loaded();
     const keys = r.status === 200 ? r.data.keys : [];
     panel.innerHTML = `<h2 id="db-title">Agent access</h2><p>Your agents read the catalogue with your account: complete Deployments and Components while your subscription is active. When it ends, the paid rows stop (the API and the command line answer 403 there) and the public catalogue stays available. No extra charge; a revoked key stops working at once.</p>${docs}` +
       (created ? `<div class="notice"><p><b>Your new key</b> (shown once; store it like a password):</p><p><code class="key">${esc(created)}</code></p></div>` : '') +
@@ -924,8 +945,11 @@
   async function showOps(orderId) {
     const panel = $('db-panel');
     mark('ops');
+    const t = claim('Operator queue');
     if (!orderId) {
       const r = await api('/v1/ops/orders');
+      if (stale(t)) return;
+      loaded();
       if (r.status !== 200) { panel.innerHTML = '<h2 id="db-title">Operator queue</h2><p>Operators only. Sign in with an operator address.</p>'; return; }
       const now = Date.now() / 1000;
       const failed = r.data.outbox.filter((m) => m.status !== 'sent');
@@ -936,9 +960,12 @@
       return;
     }
     const r = await api(`/v1/ops/orders/${encodeURIComponent(orderId)}`);
-    if (r.status !== 200) { panel.innerHTML = '<h2 id="db-title">Operator queue</h2><p>Not found or not allowed.</p>'; return; }
+    if (stale(t)) return;
+    if (r.status !== 200) { loaded(); panel.innerHTML = '<h2 id="db-title">Operator queue</h2><p>Not found or not allowed.</p>'; return; }
     const o = r.data.order;
     const form = await formFor(o.service);
+    if (stale(t)) return;
+    loaded();
     const values = o.answers || {};
     panel.innerHTML = `<p class="lbl"><a href="#ops">Operator queue</a> / ${esc(o.id)}</p><h2 id="db-title">${esc(o.service_name)}</h2><p>${statusBadge(o.status)} <span class="lbl">${esc(o.mode)} · ${esc(o.account_email || '')} · paid ${o.paid_at ? when(o.paid_at) : 'no'}${o.submitted_at ? ' · submitted ' + when(o.submitted_at) + ' · due ' + esc(o.due_utc) : ''}${o.delivered_at ? ' · delivered ' + when(o.delivered_at) : ''}</span></p>` +
       (o.delivery_note ? `<p><b>Delivery record:</b> ${esc(o.delivery_note)}</p>` : '') +

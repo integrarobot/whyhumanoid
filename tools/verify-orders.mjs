@@ -110,6 +110,18 @@ check(Boolean(confirm) && confirm.text.includes(submitted.due_utc), 'email: conf
 const opMail = mails.find((m) => m.to === 'orders@example.com' && m.subject.includes(orderId) && /submitted/.test(m.subject));
 check(Boolean(opMail) && !opMail.text.includes('Example Manufacturing') && !opMail.text.includes('Pick 8 kg'), 'email: operator notified, without the answers');
 
+// 4b. Leaving an order while it is still loading (Codex, TEST, 25 Nov 2026): a late response must not repaint the order
+// over the newer view.
+await page.route(/\/v1\/reports\/orders\/ord_[^/]+$/, async (route) => { await new Promise((r) => setTimeout(r, 900)); await route.continue(); });
+await page.evaluate(() => { location.hash = '#reports'; });
+await page.waitForFunction(() => document.getElementById('db-title')?.textContent.trim() === 'Custom reports');
+await page.evaluate((id) => { location.hash = `#reports/${id}`; }, orderId);
+await page.waitForTimeout(150);
+await page.click('header a[href="#reports"]');
+await page.waitForTimeout(1500);
+check(new URL(page.url()).hash === '#reports' && (await page.textContent('#db-title')).trim() === 'Custom reports', `navigation: a late order response does not repaint over Custom reports (${new URL(page.url()).hash}, "${(await page.textContent('#db-title')).trim()}")`);
+await page.unroute(/\/v1\/reports\/orders\/ord_[^/]+$/);
+
 // 5. Delayed webhook: paid at Stripe, no event yet; the app reconciles on return.
 await page.goto(`${BASE}/app/#reports`, { waitUntil: 'networkidle' });
 await page.click('.ord-buy[data-service="component-manufacturing-study"]');
