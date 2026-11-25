@@ -1,0 +1,38 @@
+{
+  "id": "WH-20261125-1810-x402-stripe-no-disponible",
+  "tarea": "Puesta en marcha del piloto de Agentic Market (x402, USD 0,10 por consulta) con Stripe: preparación de TEST y comprobación del sandbox, detenida",
+  "origen": "Javier («hazlo, ponlo en marcha», 25/11/2026), coordinado por Codex; detenido por Javier y Codex tras la respuesta de Stripe",
+  "fecha": "2026-11-25T18:10:25+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Comprobación en el sandbox de Stripe con una clave restringida de modo test, guardada por Javier en el formulario seguro del entorno (solo api.stripe.com): POST /v1/crypto/deposit_addresses con network=base y Stripe-Version 2026-07-29.preview respondió HTTP 200 (request req_s5ovPJs4F2ipkd, livemode false, USDC de Base Sepolia). Una lectura de saldo se rechazó por falta de permiso, como corresponde al alcance mínimo. Evidencia saneada en ops/x402/stripe-sandbox-2026-11-25.json, en la rama del PR 93, sin credenciales ni identificadores de cuenta.",
+    "Rama claude/x402-evidence (PR 93): main a631658 integrado sin conflictos (soporte, pie, About y cierres), sin cambios en el código x402; candidato de TEST c750c61 preparado con la dirección sandbox, precio 0.10 y versión preview, con X402_ENABLED y el registro en Stripe en false.",
+    "Detención: Stripe respondió a Javier que Stablecoins and Crypto no está disponible para cuentas registradas como personas físicas y que no puede habilitar x402 en esta cuenta. El HTTP 200 del sandbox no implicaba elegibilidad en live. Se retira el candidato: el head 0ec034c vacía en server/wrangler.toml el payTo, el precio y la versión de TEST; el PR 93 vuelve a borrador, sin fusionar.",
+    "Se conservan el código y las pruebas genéricas para una decisión futura."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 93 (x402, en borrador, sin fusionar)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/93"
+    },
+    {
+      "etiqueta": "Nota de detención en el PR 93",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/93#issuecomment-7169104763"
+    }
+  ],
+  "despliegue": [
+    "Ninguno: sin despliegue de TEST ni de PROD, sin migración 0006 en D1, sin activar X402_ENABLED y con mainnet cerrado (X402_LIVE_OPEN = false).",
+    "Sin pagos, wallets, productos, precios, Stripe Profile ni cuentas. No se ha pasado a otro modelo de pago."
+  ],
+  "verificaciones": [
+    "Sobre c750c61 (candidato retirado): servidor 196/196, clientes CLI y MCP 2/2, integradores 6/6, --check de los generadores y guardia de datos públicos en verde, workerd 13/13 con el cliente y el facilitador oficiales y USD 0,10 comprobado. Bundles reproducibles: TEST c14234b6…0382 (1.347.363 bytes) y PROD fc13b83a…a0d1 (1.460.011 bytes), solo como preparación.",
+    "Sobre 0ec034c (configuración de TEST vaciada): servidor 196/196."
+  ],
+  "pendientes": [
+    "Decisión de Javier sobre una alternativa. Codex comprueba el pago con tarjeta que propone Stripe (MPP con Shared Payment Tokens y Stripe Profile, mínimo USD 0,50, con créditos prepagados para consultas pequeñas) y su compatibilidad con Agentic Market.",
+    "La clave restringida de sandbox sigue guardada como secreto de red del entorno; Javier puede retirarla en la configuración del entorno si no se va a usar."
+  ],
+  "siguiente_accion": "Codex informa a Javier sobre MPP y Agentic Market; Javier decide la vía. Hasta entonces, x402 queda detenido y el PR 93 en borrador."
+}
