@@ -80,7 +80,7 @@ details.mkt summary{cursor:pointer;font-family:var(--f-mono);font-size:14px;colo
   .mkt-frame.financials{height:620px}
 }
 #desk .key,#theses .key,#market .key,#funding .key{font-size:14px}
-/* Company header (26 Nov 2026): identity, intro and key facts on the left, the quote and chart on the right from 1024 px;
+/* Company header (26 Nov 2026): identity, intro and key facts on the left, the quote and chart on the right from 1024 px, half each;
    on narrower screens the chart follows the intro, before the key facts. Rendered once (tools/investment-view.mjs). */
 .co-head{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"id" "chart" "facts";column-gap:32px}
 .co-id{grid-area:id;min-width:0}
@@ -90,7 +90,7 @@ details.mkt summary{cursor:pointer;font-family:var(--f-mono);font-size:14px;colo
 .co-chart .mkt-frame.chart{height:clamp(380px,52vh,520px)}
 .co-chart .status{font-size:14px;color:var(--bone-3);margin:8px 0 0}
 @media (min-width:1024px){
-  .co-head.with-chart{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"id chart" "facts chart";align-items:start}
+  .co-head.with-chart{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"id chart" "facts chart";align-items:start}
   .co-head.with-chart .co-chart{margin-top:4px}
 }
 @media (max-width:640px){.co-chart{padding:10px}.co-chart .mkt-frame.chart{height:360px}}
