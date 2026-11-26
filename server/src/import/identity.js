@@ -31,6 +31,7 @@ export function urlKey(url) {
 export async function resolveIdentities(db, dataset, prefix, rows, now) {
   const warnings = [];
   const statements = [];
+  const planned = { inserted: 0, updated: 0 };
   const keysInTab = new Map();
   for (const row of rows) if (row.naturalKey) keysInTab.set(row.naturalKey, (keysInTab.get(row.naturalKey) ?? 0) + 1);
 
@@ -53,6 +54,7 @@ export async function resolveIdentities(db, dataset, prefix, rows, now) {
       row.id = existing.id;
       const aliases = JSON.parse(existing.aliases);
       if (row.alias && !aliases.includes(row.alias)) aliases.push(row.alias);
+      planned.updated += 1;
       statements.push(
         db
           .prepare('UPDATE identity_registry SET aliases = ?, last_seen = ? WHERE namespace = ? AND natural_key = ?')
@@ -60,6 +62,7 @@ export async function resolveIdentities(db, dataset, prefix, rows, now) {
       );
     } else {
       row.id = newId(prefix);
+      planned.inserted += 1;
       statements.push(
         db
           .prepare('INSERT INTO identity_registry (namespace, natural_key, id, aliases, first_seen, last_seen) VALUES (?, ?, ?, ?, ?, ?)')
@@ -68,5 +71,5 @@ export async function resolveIdentities(db, dataset, prefix, rows, now) {
     }
     row.data.identity_status = 'resolved';
   }
-  return { warnings, statements };
+  return { warnings, statements, ...planned };
 }

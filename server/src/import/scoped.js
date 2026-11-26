@@ -16,20 +16,22 @@
 import { DATASETS_BY_ID, tabValues } from '../datasets.js';
 import { newId } from '../crypto.js';
 import { ImportError, normalizeTab } from './normalize.js';
-import { relationStatements } from '../relations/store.js';
-import { companyDocs, searchDoc } from '../search/index.js';
+import { loadConfig, relationStatements, validConfig } from '../relations/store.js';
+import { companyDocs, humanoidAliases, searchDoc } from '../search/index.js';
+import { resolveIdentities } from './identity.js';
 import { publicProjection } from '../public/projection.js';
 
 // Tabs a scoped import may replace: the inputs of the Deployments relation graph and its evidence links, and (26 Nov
-// 2026) the Investment tab of listed companies, a free tab no other tab, graph or projection reads.
+// 2026) the Investment tab of listed companies and the Humanoids catalogue, free tabs no graph or projection reads.
 export const GRAPH_DATASETS = ['deployments', 'entities', 'evidence-links'];
-export const SCOPED_DATASETS = [...GRAPH_DATASETS, 'stocks'];
+export const SCOPED_DATASETS = [...GRAPH_DATASETS, 'stocks', 'humanoids'];
 
 // Rows D1 writes per statement, counting the table and each index (premium_rows: primary key and two indexes;
 // search_docs and relation_graphs: primary key). snapshot_id is in no index (premium_rows_order is dataset and
 // position, premium_rows_preview dataset and preview_rank), so a snapshot-only update writes the row alone. An upper
 // estimate, for planning only; D1 reports the real figure.
-const WRITES = { rowInsert: 4, rowDelete: 4, rowUpdate: 4, rowSnapshot: 1, docUpsert: 4, docDelete: 2, graph: 4, config: 2, run: 2 };
+// identity_registry: primary key and the unique id index; an update changes neither.
+const WRITES = { rowInsert: 4, rowDelete: 4, rowUpdate: 4, rowSnapshot: 1, docUpsert: 4, docDelete: 2, graph: 4, config: 2, run: 2, identityInsert: 3, identityUpdate: 1 };
 
 const same = (a, b) => a.position === b.position && a.sheet_row === b.sheet_row && a.preview_rank === b.preview_rank
   && a.visibility === b.visibility && a.data === b.data && a.preview_data === b.preview_data;
@@ -54,12 +56,24 @@ export async function runScopedImport(db, valuesByTab, now, { datasets, relation
   const imported = new Map();
   const warnings = [];
   const review = [];
+  const identityStatements = [];
+  // identity_registry rows a commit would insert (new identity) or update (aliases, last seen).
+  const planned = { inserted: 0, updated: 0 };
   try {
     for (const id of ids) {
       const spec = DATASETS_BY_ID.get(id);
       const values = tabValues(valuesByTab, spec);
       if (!values) throw new ImportError(`${spec.tab}: tab missing from the workbook read`);
       const result = normalizeTab(spec, values);
+      // Tabs without an id column (Humanoids) take their persistent ids from identity_registry, exactly as in the full
+      // import. The registry writes are planned here and committed with the rows; a dry run plans and never writes them.
+      if (!spec.idFields) {
+        const identities = await resolveIdentities(db, id, spec.idPrefix, result.rows, now);
+        warnings.push(...identities.warnings);
+        identityStatements.push(...identities.statements);
+        planned.inserted += identities.inserted;
+        planned.updated += identities.updated;
+      }
       imported.set(id, { spec, rows: result.rows });
       warnings.push(...result.warnings);
       review.push(...result.review.map((r) => ({ dataset: id, ...r })));
@@ -71,9 +85,9 @@ export async function runScopedImport(db, valuesByTab, now, { datasets, relation
 
   // 2. What D1 holds now for those tabs, and the changes row by row.
   const stored = async (id) => new Map(((await db.prepare('SELECT row_id, position, sheet_row, preview_rank, visibility, data, preview_data FROM premium_rows WHERE dataset = ?').bind(id).all()).results ?? []).map((r) => [r.row_id, r]));
-  const statements = [];
+  const statements = [...identityStatements];
   const changes = {};
-  let writes = 0;
+  let writes = planned.inserted * WRITES.identityInsert + planned.updated * WRITES.identityUpdate;
   for (const [id, { rows }] of imported) {
     const before = await stored(id);
     const seen = new Set();
@@ -141,12 +155,16 @@ export async function runScopedImport(db, valuesByTab, now, { datasets, relation
   const projection = relations.graphs?.full ? publicProjection({ graph: relations.graphs.full, rows: rowsOf('deployments', 'full'), entities: rowsOf('entities', 'full') }) : null;
 
   // 5. Search documents of the tabs in scope and of the company dossiers: upsert what differs, delete what is gone.
+  // Humanoids documents carry the aliases of the reviewed relations config, as in the full import: the config this
+  // import sent (the one a full import would use), else the one stored by the last import.
+  const aliasConfig = ids.includes('humanoids') ? (validConfig(relationsConfig) ? relationsConfig : (await loadConfig(db))?.config ?? null) : null;
+  const humanoidExtra = humanoidAliases(aliasConfig);
   const docSets = [...(graphInScope ? ['companies'] : []), ...ids];
   const docs = { full: [], preview: [] };
   const unmapped = [];
   for (const scope of ['full', 'preview']) {
     if (projection) docs[scope].push(...companyDocs(projection, scope));
-    for (const id of ids) for (const row of cache[`${id}|${scope}`]) docs[scope].push(searchDoc(id, row, {}, scope === 'full' ? unmapped : []));
+    for (const id of ids) for (const row of cache[`${id}|${scope}`]) docs[scope].push(searchDoc(id, row, id === 'humanoids' ? humanoidExtra(row.data) : {}, scope === 'full' ? unmapped : []));
   }
   const placeholders = docSets.map(() => '?').join(', ');
   const before = new Map(((await db.prepare(`SELECT scope, dataset, row_id, ${DOC_FIELDS.join(', ')} FROM search_docs WHERE dataset IN (${placeholders})`).bind(...docSets).all()).results ?? [])
@@ -174,7 +192,7 @@ export async function runScopedImport(db, valuesByTab, now, { datasets, relation
   }
 
   writes += WRITES.run;
-  const report = { scope: ids, changes, search, relations: relations.report, estimated_rows_written: writes, statements: statements.length + 2 };
+  const report = { scope: ids, changes, identities: planned, search, relations: relations.report, estimated_rows_written: writes, statements: statements.length + 2 };
   if (dryRun) return { ok: true, dryRun: true, snapshotId, ...report, warnings, review };
 
   const counts = Object.fromEntries([...imported].map(([id, { rows }]) => [id, rows.filter((r) => r.visibility === 'customer').length]));

@@ -10,9 +10,9 @@ on:
         default: test
         required: true
       scope:
-        description: 'all = full import of every tab; deployments = only the Deployments graph tabs (Deployments, Clean Entities, Evidence Relations); stocks = only the Investment tab of listed companies; the scoped ones write only what changed'
+        description: 'all = full import of every tab; deployments = only the Deployments graph tabs (Deployments, Clean Entities, Evidence Relations); stocks = only the Investment tab of listed companies; stocks-humanoids = the Investment and Humanoids tabs; the scoped ones write only what changed'
         type: choice
-        options: [all, deployments, stocks]
+        options: [all, deployments, stocks, stocks-humanoids]
         default: all
         required: true
       dry_run:
@@ -49,17 +49,21 @@ jobs:
       - name: Relations config from this commit
         run: |
           # A dry run exists only for the scoped import: never let it become a full import that writes.
-          if [ "${{ inputs.dry_run == true }}" = true ] && [ "${{ inputs.scope || 'all' }}" != deployments ] && [ "${{ inputs.scope || 'all' }}" != stocks ]; then
-            echo "dry_run needs scope=deployments or scope=stocks; nothing was imported"; exit 1
+          if [ "${{ inputs.dry_run == true }}" = true ] && [ "${{ inputs.scope || 'all' }}" = all ]; then
+            echo "dry_run needs a scoped import (deployments, stocks or stocks-humanoids); nothing was imported"; exit 1
           fi
           node tools/relations.mjs --config | jq -c '{relations_config: .}' > relations-body.json
           # Scoped import (server/src/import/scoped.js): the Deployments graph tabs only, optionally as a dry run.
           if [ "${{ inputs.scope || 'all' }}" = deployments ]; then
             jq -c --argjson dry "${{ inputs.dry_run == true }}" '. + {datasets: ["deployments", "entities", "evidence-links"], dry_run: $dry}' relations-body.json > body.tmp && mv body.tmp relations-body.json
           fi
-          # Scoped import of the Investment tab alone: its rows and search documents; graphs and dossiers untouched.
+          # Scoped import of the Investment tab, alone or with Humanoids: their rows, identities and search documents;
+          # relation graphs, company dossiers and every other tab untouched.
           if [ "${{ inputs.scope || 'all' }}" = stocks ]; then
             jq -c --argjson dry "${{ inputs.dry_run == true }}" '. + {datasets: ["stocks"], dry_run: $dry}' relations-body.json > body.tmp && mv body.tmp relations-body.json
+          fi
+          if [ "${{ inputs.scope || 'all' }}" = stocks-humanoids ]; then
+            jq -c --argjson dry "${{ inputs.dry_run == true }}" '. + {datasets: ["stocks", "humanoids"], dry_run: $dry}' relations-body.json > body.tmp && mv body.tmp relations-body.json
           fi
           jq -c '{datasets, dry_run}' relations-body.json
           jq -r '"aliases: \(.relations_config.aliases.makers | length) makers, \(.relations_config.aliases.robots | length) robots; catalogue: \(.relations_config.catalogue | length) robots"' relations-body.json
@@ -105,6 +109,6 @@ jobs:
             --header "Content-Type: application/json" --data @relations-body.json \
             --request POST "https://${worker}.javier-198.workers.dev/v1/admin/import")
           echo "HTTP $status"
-          jq '{ok, error, warnings, counts, relations, search, scope, dry_run, changes, estimated_rows_written, snapshot}' result.json || true
+          jq '{ok, error, warnings, counts, relations, search, scope, dry_run, changes, identities, estimated_rows_written, snapshot}' result.json || true
           rm -f result.json
           test "$status" = 200

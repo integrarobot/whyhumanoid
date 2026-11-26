@@ -94,12 +94,12 @@ test('an unchanged tab rewrites no row and no search document', async () => {
 });
 
 test('only the Deployments graph tabs can be scoped; a bad tab or bad config changes nothing', async () => {
-  assert.deepEqual(SCOPED_DATASETS, ['deployments', 'entities', 'evidence-links', 'stocks']);
+  assert.deepEqual(SCOPED_DATASETS, ['deployments', 'entities', 'evidence-links', 'stocks', 'humanoids']);
   assert.deepEqual(GRAPH_DATASETS, ['deployments', 'entities', 'evidence-links']);
   const db = createTestDb();
   await runImport(db, base(), T0, { relationsConfig: config });
   const before = await rowsState(db, 'deployments');
-  assert.equal((await runScopedImport(db, edited(), T0 + 60, { datasets: ['humanoids'] })).error, 'invalid_scope');
+  assert.equal((await runScopedImport(db, edited(), T0 + 60, { datasets: ['hardware'] })).error, 'invalid_scope');
   assert.equal((await runScopedImport(db, edited(), T0 + 60, { datasets: [] })).error, 'invalid_scope');
   const drift = edited();
   drift[spec.tab][0] = drift[spec.tab][0].map((h, i) => (i === 3 ? 'RENAMED_COLUMN' : h));
@@ -168,9 +168,13 @@ test('a dry run can never become a full import: every other shape is refused bef
 test('the workflow stops a dry run outside the scoped import; the snapshot column is in no index', async () => {
   const { readFileSync } = await import('node:fs');
   const wf = readFileSync(new URL('../../.github/workflows/import-workbook.yml', import.meta.url), 'utf8');
-  assert.match(wf, /if \[ "\$\{\{ inputs\.dry_run == true \}\}" = true \] && \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" != deployments \] && \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" != stocks \]; then\n\s+echo "dry_run needs scope=deployments or scope=stocks; nothing was imported"; exit 1/);
-  assert.ok(wf.indexOf('dry_run needs scope=deployments') < wf.indexOf('/v1/admin/import'), 'the guard runs before the import request');
-  assert.match(wf, /options: \[all, deployments, stocks\]/);
+  assert.match(wf, /if \[ "\$\{\{ inputs\.dry_run == true \}\}" = true \] && \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" = all \]; then\n\s+echo "dry_run needs a scoped import \(deployments, stocks or stocks-humanoids\); nothing was imported"; exit 1/);
+  assert.ok(wf.indexOf('dry_run needs a scoped import') < wf.indexOf('/v1/admin/import'), 'the guard runs before the import request');
+  assert.match(wf, /options: \[all, deployments, stocks, stocks-humanoids\]/);
+  assert.match(wf, /'\. \+ \{datasets: \["stocks", "humanoids"\], dry_run: \$dry\}'/);
+  // Every scope option other than all maps to a datasets body; an unknown one would fall through to a full import.
+  const options = wf.match(/options: \[all, (.*)\]/)[1].split(', ');
+  for (const o of options) assert.match(wf, new RegExp(`inputs\\.scope \\|\\| 'all' \\}\\}" = ${o} \\]; then\\n\\s+jq -c`), o);
   assert.match(wf, /if \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" = stocks \]; then\n\s+jq -c --argjson dry "\$\{\{ inputs\.dry_run == true \}\}" '\. \+ \{datasets: \["stocks"\], dry_run: \$dry\}'/);
   const sql = ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql']
     .map((m) => readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8')).join('\n');
@@ -228,4 +232,63 @@ test('a scoped stocks dry run writes nothing and estimates a few dozen rows', as
   assert.deepEqual(dry.changes, { stocks: { added: 1, changed: 1, removed: 0, unchanged: 11 } });
   assert.ok(dry.estimated_rows_written > 0 && dry.estimated_rows_written < 60, `estimate ${dry.estimated_rows_written}`);
   assert.deepEqual({ stocks: await rowsState(db, 'stocks'), docs: await docsState(db, 'stocks'), rest: await everythingButStocks(db), runs: await table(db, 'SELECT id FROM import_runs') }, before);
+});
+
+// Scoped import of Investment and Humanoids (26 Nov 2026): the listing confirmed in both tabs. Humanoids has no id
+// column: ids come from identity_registry, planned in the same way as the full import and never written by a dry run.
+const humSpec = DATASETS_BY_ID.get('humanoids');
+const listedEdit = () => {
+  const values = stocksEdited();
+  const tab = values[humSpec.tab].map((r) => [...r]);
+  const h = humSpec.headers;
+  const stockCol = h.indexOf('Stock');
+  tab[1] = tab[1].map((v, i) => (i === stockCol ? 'NASDAQ:EXLR; common stock trading since 2026-11-05' : v));
+  const fresh = tab[1].map((v, i) => (h[i] === 'Lab' ? 'Example Labs 99' : h[i] === 'Robot' ? 'Example Robot 99' : h[i] === 'Web' ? 'https://example.com/robots/99' : v));
+  tab.splice(tab.length - 1, 0, fresh);
+  return { ...values, [humSpec.tab]: tab };
+};
+const registry = (db, ns) => table(db, 'SELECT namespace, natural_key, id, aliases, first_seen, last_seen FROM identity_registry WHERE namespace = ? ORDER BY natural_key', ns);
+const outside = async (db) => ({
+  rows: await table(db, "SELECT dataset, row_id, position, data, preview_data, snapshot_id FROM premium_rows WHERE dataset NOT IN ('stocks', 'humanoids') ORDER BY dataset, row_id"),
+  docs: await table(db, "SELECT scope, dataset, row_id, position, title, subtitle, names, haystack, tags, link FROM search_docs WHERE dataset NOT IN ('stocks', 'humanoids') ORDER BY scope, dataset, row_id"),
+  graphs: await table(db, 'SELECT * FROM relation_graphs ORDER BY scope'),
+  config: await table(db, 'SELECT * FROM relation_config'),
+  identities: await table(db, "SELECT * FROM identity_registry WHERE namespace <> 'humanoids' ORDER BY namespace, natural_key"),
+});
+const humState = async (db) => ({ rows: await rowsState(db, 'humanoids'), docs: await docsState(db, 'humanoids'), registry: await registry(db, 'humanoids'), stocks: await rowsState(db, 'stocks'), stockDocs: await docsState(db, 'stocks') });
+
+test('a scoped Investment and Humanoids import: same rows, ids and documents as a full import, nothing else touched', async () => {
+  const db = createTestDb();
+  assert.equal((await runImport(db, base(), T0, { relationsConfig: config })).ok, true);
+  const idsBefore = new Map((await registry(db, 'humanoids')).map((r) => [r.natural_key, r.id]));
+  const untouched = await outside(db);
+  const humanoidRows = (await rowsState(db, 'humanoids')).length;
+  const result = await runScopedImport(db, listedEdit(), T0 + 60, { datasets: ['stocks', 'humanoids'], relationsConfig: config });
+  assert.equal(result.ok, true, result.error);
+  assert.deepEqual(result.changes.humanoids, { added: 1, changed: 1, removed: 0, unchanged: humanoidRows - 1 });
+  assert.deepEqual(result.identities, { inserted: 1, updated: idsBefore.size });
+  assert.equal(result.relations, null);
+  assert.deepEqual(await outside(db), untouched, 'other tabs, documents, graphs, relations config and identity namespaces are not rewritten');
+  const after = await registry(db, 'humanoids');
+  for (const r of after) if (idsBefore.has(r.natural_key)) assert.equal(r.id, idsBefore.get(r.natural_key), `${r.natural_key} keeps its id`);
+  assert.equal(after.length, idsBefore.size + 1, 'the new robot gets one new id');
+  assert.ok(after.every((r) => r.last_seen === T0 + 60));
+  // A full import of the same workbook at the same time finds nothing left to change in these two tabs.
+  const scopedState = await humState(db);
+  assert.ok(scopedState.docs.some((d) => d.scope === 'full' && /example one robotics/.test(d.haystack)), 'Humanoids documents carry the reviewed maker aliases');
+  assert.equal((await runImport(db, listedEdit(), T0 + 60, { relationsConfig: config })).ok, true);
+  assert.deepEqual(await humState(db), scopedState);
+});
+
+test('a scoped Investment and Humanoids dry run plans the registry writes and writes nothing, not even last_seen', async () => {
+  const db = createTestDb();
+  await runImport(db, base(), T0, { relationsConfig: config });
+  const before = { ...(await humState(db)), rest: await outside(db), runs: await table(db, 'SELECT id FROM import_runs') };
+  const dry = await runScopedImport(db, listedEdit(), T0 + 60, { datasets: ['stocks', 'humanoids'], relationsConfig: config, dryRun: true });
+  assert.equal(dry.ok, true, dry.error);
+  assert.equal(dry.dryRun, true);
+  assert.deepEqual(dry.identities, { inserted: 1, updated: before.registry.length });
+  assert.deepEqual(dry.changes.stocks, { added: 1, changed: 1, removed: 0, unchanged: 11 });
+  assert.ok(dry.estimated_rows_written > 0 && dry.estimated_rows_written < 120, `estimate ${dry.estimated_rows_written}`);
+  assert.deepEqual({ ...(await humState(db)), rest: await outside(db), runs: await table(db, 'SELECT id FROM import_runs') }, before);
 });
