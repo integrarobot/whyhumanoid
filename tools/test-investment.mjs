@@ -172,7 +172,7 @@ test('company header: the chart is offered once, beside the identity and key fac
     assert.ok(head > 0 && head < html.indexOf('<h1>') && html.indexOf('<h1>') < quote && quote < facts && facts < html.indexOf('id="market"'), `${slug}: chart between the intro and the key facts`);
     assert.ok(html.indexOf('data-tv-widget="advanced-chart"') < facts, `${slug}: the chart is in the header`);
     assert.match(html, /The quote and chart are <a href="#quote">at the top of this page<\/a>/, slug);
-    assert.match(html, /&quot;theme&quot;:&quot;dark&quot;,&quot;style&quot;:&quot;1&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;backgroundColor&quot;:&quot;#0B0C0E&quot;,&quot;gridColor&quot;:&quot;rgba\(242, 242, 242, 0\.06\)&quot;,&quot;toolbar_bg&quot;:&quot;#0B0C0E&quot;/, slug);
+    assert.match(html, /&quot;theme&quot;:&quot;dark&quot;,&quot;style&quot;:&quot;1&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;backgroundColor&quot;:&quot;#000000&quot;,&quot;gridColor&quot;:&quot;rgba\(242, 242, 242, 0\.06\)&quot;,&quot;allow_symbol_change&quot;:false/, slug);
   }
   for (const slug of ['fanuc', 'ubtech']) {
     const html = read(`companies/${slug}/index.html`);
@@ -181,6 +181,6 @@ test('company header: the chart is offered once, beside the identity and key fac
     assert.match(html, /<h3>Quote and chart<\/h3><p class="status">Not available here: /, `${slug}: the availability state stays in Market data`);
   }
   const css = read('assets/investment.css');
-  assert.match(css, /\.mkt-frame \.tradingview-widget-container iframe\{color-scheme:light;background:transparent\}/);
+  assert.match(css, /\.mkt-frame \.tradingview-widget-container iframe\{color-scheme:normal;background:#000\}/);
   assert.match(css, /grid-template-areas:"id chart" "facts chart"/);
 });

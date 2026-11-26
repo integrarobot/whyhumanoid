@@ -115,15 +115,16 @@ function statusLine(cap, what) {
 }
 
 // The quote and chart of a listing, rendered once per page: at the top of the company page when TradingView offers the
-// chart (renderCompanyChart), otherwise in its place in Market data with the honest availability state. Dark theme with
-// an explicit background, grid and toolbar colour, so no light band shows around or under the chart.
-export const CHART_BG = '#0B0C0E';
+// chart (renderCompanyChart), otherwise in its place in Market data with the honest availability state. The free
+// advanced-chart embed takes the dark theme with an explicit black background and a faint grid (its documented
+// backgroundColor and gridColor); the quote strip stays transparent on a black host (assets/investment.css).
+export const CHART_BG = '#000000';
 export const chartOffered = (x) => Boolean(x && x.tradingview.symbol && x.tradingview.chart.status !== 'unavailable');
 function quoteChart(x, heading) {
   const tv = x.tradingview;
   const sym = tv.symbol;
   const common = { symbol: sym, locale: 'en', colorTheme: 'dark', isTransparent: true };
-  const body = `${widget('advanced-chart', 'chart', { autosize: true, symbol: sym, interval: 'D', timezone: 'Etc/UTC', theme: 'dark', style: '1', locale: 'en', backgroundColor: CHART_BG, gridColor: 'rgba(242, 242, 242, 0.06)', toolbar_bg: CHART_BG, allow_symbol_change: false, withdateranges: true, range: '12M', hide_side_toolbar: true, details: false, hotlist: false, calendar: false, save_image: false, support_host: 'https://www.tradingview.com' }, tv.url, 'The chart loads from TradingView.')}${widget('symbol-info', 'info', { ...common, width: '100%' }, tv.url, 'The quote loads from TradingView.')}${statusLine(tv.chart, 'The chart')}`;
+  const body = `${widget('advanced-chart', 'chart', { autosize: true, symbol: sym, interval: 'D', timezone: 'Etc/UTC', theme: 'dark', style: '1', locale: 'en', backgroundColor: CHART_BG, gridColor: 'rgba(242, 242, 242, 0.06)', allow_symbol_change: false, withdateranges: true, range: '12M', hide_side_toolbar: true, details: false, hotlist: false, calendar: false, save_image: false, support_host: 'https://www.tradingview.com' }, tv.url, 'The chart loads from TradingView.')}${widget('symbol-info', 'info', { ...common, width: '100%' }, tv.url, 'The quote loads from TradingView.')}${statusLine(tv.chart, 'The chart')}`;
   return `${heading}${tv.chart.status === 'unavailable' ? `<p class="status">Not available here: ${esc(tv.chart.reason)} Use the links below.</p>` : body}`;
 }
 export function renderCompanyChart(l, x) {

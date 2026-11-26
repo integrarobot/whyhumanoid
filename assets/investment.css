@@ -85,7 +85,7 @@ details.mkt summary{cursor:pointer;font-family:var(--f-mono);font-size:14px;colo
 .co-head{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"id" "chart" "facts";column-gap:32px}
 .co-id{grid-area:id;min-width:0}
 .co-facts{grid-area:facts;min-width:0}
-.co-chart{grid-area:chart;min-width:0;margin:6px 0 22px;padding:12px;background:var(--ink-0);border:1px solid var(--line-2)}
+.co-chart{grid-area:chart;min-width:0;margin:6px 0 22px;padding:12px;background:#000;border:1px solid var(--line-2)}
 .co-chart h2{margin:0 0 10px;padding-top:0;border-top:0}
 .co-chart .mkt-frame.chart{height:clamp(380px,52vh,520px)}
 .co-chart .status{font-size:14px;color:var(--bone-3);margin:8px 0 0}
@@ -94,12 +94,14 @@ details.mkt summary{cursor:pointer;font-family:var(--f-mono);font-size:14px;colo
   .co-head.with-chart .co-chart{margin-top:4px}
 }
 @media (max-width:640px){.co-chart{padding:10px}.co-chart .mkt-frame.chart{height:360px}}
-/* TradingView frames stay dark while loading and after: the host area is the page ink, and each widget iframe declares
-   the light scheme its own document uses, so Chromium does not paint an opaque white backdrop behind a transparent
-   widget (a dark page and a light embedded document otherwise get one). The attribution link stays visible. */
-.mkt-frame,.mkt-frame .tradingview-widget-container,.mkt-frame .tradingview-widget-container__widget{background:var(--ink-0)}
-.mkt-frame .tradingview-widget-container iframe{color-scheme:light;background:transparent}
-.mkt-frame .tradingview-widget-copyright{background:var(--ink-0);padding-top:4px}
+/* TradingView frames are black while loading and after. A transparent widget's document (the quote strip) uses the
+   normal colour scheme; inside this dark page its iframe would inherit the dark scheme, and Chromium then paints an
+   opaque white canvas behind it. Each widget iframe therefore declares the normal scheme over a black background, so
+   the dark-theme widget shows on black (checked by Codex in Chrome with the real widgets). No filter or inversion; the
+   TradingView attribution stays visible. */
+.mkt-frame,.mkt-frame .tradingview-widget-container,.mkt-frame .tradingview-widget-container__widget{background:#000}
+.mkt-frame .tradingview-widget-container iframe{color-scheme:normal;background:#000}
+.mkt-frame .tradingview-widget-copyright{background:#000;padding-top:4px}
 /* The attribution stays inside its frame: the widget takes the height left above it, loaded or not. */
 .mkt-frame .tradingview-widget-container{display:flex;flex-direction:column}
 .mkt-frame .tradingview-widget-container__widget{flex:1 1 auto;min-height:0}
