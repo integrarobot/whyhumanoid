@@ -52,6 +52,8 @@ jobs:
         run: node --no-warnings --test tools/test-coherence.mjs && node --no-warnings --test tools/test-frame.mjs
       - name: Reviewed robot presentation (display name, cutout image, maker order link) matches the catalogue
         run: node tools/robot-presentation.mjs --check
+      - name: Newsletter and News store (identity, parents, dates, English-ready state, safe content, idempotent ingestion)
+        run: node tools/editorial.mjs check && node --no-warnings --test tools/test-editorial.mjs
       - name: Robot and company pages, sitemap and 404 are the build of public inputs
         run: node tools/build-pages.mjs --check && node tools/export-public.mjs --check
       - name: Headless render of the page
