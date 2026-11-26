@@ -29,6 +29,7 @@ import {
 import { meterCredential } from './usage.js';
 import { handleMcp } from './mcp.js';
 import { openaiAppsChallenge } from './openai-apps-challenge.js';
+import { MUSE_CHALLENGE_TOKEN, museChallenge } from './muse-challenge.js';
 import { companyNews } from './news/yahoo.js';
 
 const MAX_API_KEYS = 5;
@@ -100,6 +101,11 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
     // OpenAI Apps domain verification: the public challenge token as plain text (server/src/openai-apps-challenge.js).
     ['GET', /^\/\.well-known\/openai-apps-challenge$/, async (request) => openaiAppsChallenge(request)],
     ['HEAD', /^\/\.well-known\/openai-apps-challenge$/, async (request) => openaiAppsChallenge(request)],
+
+    // Muse connector domain verification: the public challenge as plain text, at its exact token path only
+    // (server/src/muse-challenge.js).
+    ['GET', new RegExp(`^/\\.well-known/muse-challenge/${MUSE_CHALLENGE_TOKEN}$`), async (request) => museChallenge(request)],
+    ['HEAD', new RegExp(`^/\\.well-known/muse-challenge/${MUSE_CHALLENGE_TOKEN}$`), async (request) => museChallenge(request)],
 
     // The central access matrix (server/src/access/matrix.js): rules only, no data.
     ['GET', /^\/v1\/access$/, async () => json(200, publicMatrix(), { 'cache-control': 'public, max-age=300' })],
