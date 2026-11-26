@@ -112,9 +112,10 @@ It then writes only the pending cells and reads back the written cells and their
    It never prints a private value. Its receipt goes into `state.json`.
 3. Publish through the skill's flow, one PR per batch. Regenerate only what changed (for example `export-database --only software`). A tab whose content is unchanged keeps its atlas and preview; the Benchmarks test pins its export time.
 4. Run one production import per batch ("Import private workbook", `main`, `production`), with no test import first: the daily D1 rows-written quota is per account.
-   - Check the day's margin first. Codex reads it in the Cloudflare dashboard (UTC day); count the imports already run that day.
-   - A full import writes about 12,000 rows, up to about 32,000 counting index writes.
-   - Do not import when the workbook has not changed since the last import.
+   - Check the day's real remaining margin first. Codex reads it in the Cloudflare dashboard (UTC day); count the imports already run that day.
+   - Estimate this import's cost and compare it with that margin. For the current workbook and catalogue (26 Nov 2026), a full import writes an estimated 12,000 rows, about 32,000 counting index writes. That is an estimate, not a bound: a larger catalogue writes more, so re-estimate (a local run of the import on the test SQLite shim gives the figure).
+   - A second import on the same day is valid when the workbook changed again and the margin covers it (26 Nov 2026: batch, then group correction).
+   - Never run concurrent imports. Never run redundant ones: no import when the workbook has not changed since the last import, and none for a change that does not reach the import, such as cell formats.
 5. Verify in production (API or MCP): the counts, and each planned record with its snapshot.
 6. In `state.json`, the handoff moves to `published`. The edition moves to `last_processed_edition` with its unresolved items, which stay in `known_pending`. Then register the closeout.
 
