@@ -1,0 +1,45 @@
+{
+  "id": "WH-20261126-1518-rebase-pendientes-25-11",
+  "tarea": "Comprobación de la preparación de Software hecha por Codex y rebase del plan sin escribir de los pendientes del 25/11/2026 (Orbit de Boston Dynamics y el informe de Playground)",
+  "origen": "Recibo de preparación de Codex del 26/11/2026 tras la fusión del PR 159, dentro de la autorización de Javier del 26/11/2026",
+  "fecha": "2026-11-26T15:18:22+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Plan WP-20261125-integrarobot-known-pending rebasado en su sitio sobre el maestro preparado (modificado a las 14:13:07 UTC). Las filas no cambian: Orbit en Software fila 81, en el primer bloque, y Playground en Reports fila 14. Los valores propuestos son idénticos a los revisados; cambian la fecha de base, la sal, los HMAC y el SHA-256 (rebased_from conserva el anterior).",
+    "Carga privada nueva en Google Drive, con el mismo título exacto, no compartida y con el SHA-256 comprobado tras descargarla. Su identificador y su enlace se entregan a Codex en privado, en la conversación, nunca en Git. La carga de la fase 1 queda sustituida y no debe usarse.",
+    "state.json: el traspaso pasa a awaiting_write, con el recibo de preparación de Codex, la comprobación propia y el aviso de un cambio ajeno al plan en Deployments. known_pending queda actualizado."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Plan",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json"
+    },
+    {
+      "etiqueta": "Estado",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/state.json"
+    },
+    {
+      "etiqueta": "Contrato, preparar hueco en una lista",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/plan-contract.md"
+    }
+  ],
+  "despliegue": [
+    "No aplica: sin escritura de contenido en el libro, sin publicación y sin importación. El PR solo lleva ficheros de ops/, que Pages no publica."
+  ],
+  "verificaciones": [
+    "Descarga nueva del maestro: en Software A:C las filas 1 a 80 no cambian, la 81 está vacía en el primer bloque y las antiguas 81 a 134 coinciden una a una con las nuevas 82 a 135 (las mismas 132 filas con contenido). Títulos y cabeceras en 82/83 y 122/123, separador en la 121, AHEADance en la 84 y Lucky Robots en la 135. Desde la columna D (World Models E:F) no cambia nada.",
+    "Las otras 21 pestañas: 20 sin cambios salvo los valores de mercado en vivo (86 celdas de Investment). Deployments tiene una fila nueva al final (fila 199), añadida entre la base de la fase 1 (09:16 UTC) y la preparación, ajena a este plan y a la preparación; se pregunta su origen a Codex y la fase 3 no publica ni importa hasta aclararlo.",
+    "workbook-plan check del plan con la carga nueva (HMAC y SHA-256), también con la copia descargada de Drive. Preflight sobre el maestro preparado: 23 celdas por escribir, 0 conflictos. Escritura simulada y readback con el maestro preparado como --previous: 0 diferencias y 0 cambios fuera del plan.",
+    "check-public, entregas --check y las pruebas de workbook-plan en verde."
+  ],
+  "pendientes": [
+    "Codex: cotejar el plan rebasado con el revisado, preflight, escribir y releer las dos operaciones y dar el recibo de contenido.",
+    "Codex: aclarar el origen de la fila 199 añadida en Deployments fuera de este plan.",
+    "Claude: readback independiente; hallazgos de Playground (solo Pages) y Orbit en Software, con una importación solo tras la decisión final de Codex sobre la cuota con una lectura nueva de D1.",
+    "Simplexity sigue pendiente de una fuente primaria de la ronda y de un modelo con nombre.",
+    "Codex: registrar el aviso de este cierre."
+  ],
+  "siguiente_accion": "Codex coteja el plan rebasado y la carga nueva, escribe y relee Software fila 81 y Reports fila 14 con su conector nativo, aclara la fila 199 de Deployments y envía el recibo de contenido a esta conversación."
+}

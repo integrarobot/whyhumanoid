@@ -38,7 +38,7 @@
       "found": "2026-11-25",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
       "outcome": "planned (op-002, Reports row 14, RPT-013); findings in phase 3",
-      "needs": "Codex write and readback (after the Software preparation and rebase), then the findings mapping"
+      "needs": "Codex write and readback of the rebased plan, then the findings mapping (Pages only, no import)"
     },
     {
       "edition": "https://www.integrarobot.com/p/why-humanoid",
@@ -47,8 +47,8 @@
       "source_date": "modified 2026-11-16",
       "found": "2026-11-25",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
-      "outcome": "planned (op-001, Software first block)",
-      "needs": "Codex preparation of one slot in Software A:C, rebase, write and readback, then one import"
+      "outcome": "planned (op-001, Software row 81, first block, prepared slot)",
+      "needs": "Codex write and readback of the rebased plan, then one import after the final Codex quota decision"
     }
   ],
   "runs": [
@@ -243,14 +243,15 @@
       "editions": [
         "integrarobot:2026-11-25:why-humanoid"
       ],
-      "status": "awaiting_preparation",
+      "status": "awaiting_write",
       "operations": 2,
       "cells": 23,
       "private_cells": 20,
-      "public_plan_sha256": "90df0cb13d5e099b2e724304efbefc9f68b62897ed92ca25de8fb371b2437bf6",
+      "public_plan_sha256": "20c8723763548c6581b1f9fb18f67782ab81d40b252a5b676b2743027eebc8f4",
+      "rebased_from": "90df0cb13d5e099b2e724304efbefc9f68b62897ed92ca25de8fb371b2437bf6",
       "private_payload": {
-        "sha256": "ef77c3c1e85e70b45a5eec09cd2478c5595ff52ad6fb5d93219bd1190b42ec33",
-        "channel": "Google Drive (Javier's My Drive), exact title whyhumanoid-private-handoff-WP-20261125-integrarobot-known-pending.json, not shared; created 2026-11-26T14:08:49Z, round-trip SHA-256 checked; ID and link delivered privately to Codex"
+        "sha256": "5d8344fc486f5f11c5984d7afff156fbfdd5422b0bff3158113805b20e5fd069",
+        "channel": "Google Drive (Javier's My Drive), exact title whyhumanoid-private-handoff-WP-20261125-integrarobot-known-pending.json, not shared; created 2026-11-26T14:17:33Z with a new salt, round-trip SHA-256 checked; ID and link delivered privately to Codex. The phase-1 payload file is superseded and must not be used"
       },
       "preparation": {
         "sheet": "Software",
@@ -273,9 +274,19 @@
         },
         "unchanged": "the world-model list in E:F (rows 2-22) and every other tab",
         "checked_offline": "the same shift applied to the 09:16 UTC export: preflight passes for both operations, row 81 unchanged",
-        "publication": "none for the preparation alone"
+        "publication": "none for the preparation alone",
+        "receipt": {
+          "by": "codex",
+          "workbook_modified_time": "2026-11-26T14:13:07.878Z",
+          "summary": "one atomic batch inserted cells Software A81:C81 shifting rows down (A81:C134 now A82:C135) and extended SoftwareCatalog to A1:C135; native metadata re-read A1:G141 with zero value or metadata differences (values, link formats, text runs, validation, chips, notes); World Models E1:F22 unchanged; no whole-sheet row operation (grid rowCount grew by one as a consequence of the range insert)"
+        },
+        "verified_by_claude": {
+          "at": "2026-11-26T14:16:00Z",
+          "result": "fresh download: Software A:C rows 1-80 unchanged, row 81 empty in the first block, old rows 81-134 equal to new rows 82-135, same 132 non-empty rows; titles and headers at 82/83 and 122/123, blank separator 121, AHEADance 84, Lucky Robots 135; columns D onward (World Models E:F) unchanged; 20 of 21 other tabs unchanged apart from live market values (86 Investment cells)",
+          "outside_the_preparation": "Deployments gained one appended row (sheet row 199) between the phase-1 basis (09:16 UTC) and the prepared basis; it is not part of this plan or the preparation, its origin is asked of Codex, and phase 3 does not publish or import until it is accounted for"
+        }
       },
-      "next": "Codex preparation and receipt; Claude permutation check and rebase (new basis time, SHA, salt, payload and Drive file; rows expected unchanged); Codex writes both operations and reads back; Claude publishes (Reports atlas without import; Software with one import, queued until the D1 margin allows)"
+      "next": "Codex compares the rebased plan with the reviewed one, then preflight, writes both operations and reads back (prepared master as --previous) and sends the content receipt; Codex accounts for the Deployments row 199 appended outside this plan; Claude runs the independent readback, publishes the Reports findings (Pages only) and Software, and imports once only after the final Codex quota decision with a fresh D1 reading"
     }
   ]
 }
