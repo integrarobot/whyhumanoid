@@ -1,0 +1,38 @@
+{
+  "id": "WH-20261126-2244-estructura-newsletter-news",
+  "tarea": "Preparar la estructura de las secciones editoriales públicas en inglés Newsletter (/newsletter/) y News (/news/): almacén, contrato de importación, validación, páginas y pruebas, sin contenido real, sin publicar y con embargo hasta el 27/11/2026",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T22:44:42+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Hecho (estructura): almacén editorial/ fuera del sitio publicado (_config.yml), con config.json (published false, embargo_until 2026-11-27, scope.years 2025 y 2026), inventory.json vacío y no declarado completo, y state.json. Las ediciones irán en inglés en editorial/editions/ y los originales en español, opcionales y nunca mostrados, en editorial/originals/.",
+    "Hecho: tools/editorial.mjs (ingest, check, report, template). La importación es idempotente e incremental, no escribe nada ante cualquier problema, nunca elimina una edición importada, conserva la procedencia de los ficheros (source.files con SHA-256) y exige --accept-change para tocar una edición revisada y --accept-item-change para cambiar qué historia ocupa una posición de News (rechazado siempre si la edición ya está publicada).",
+    "Hecho: validación en tools/editorial-model.mjs: identidad y duplicados, relación con la edición y posiciones de cada noticia, años configurables, fechas (publicación original distinta de la traducción, nada futuro), embargo en Europe/Madrid, separación del bloque Más noticias, Markdown seguro con un único analizador de enlaces (paréntesis equilibrados), texto sin traducir, revisión con revisor identificado (Codex, Claude o una persona) y review_evidence, comparación con el original archivado y completitud solo con evidencia.",
+    "Hecho: páginas en tools/editorial-view.mjs dentro de build-pages (mismo marco, fuentes, anchura y navegación): índices, archivos por año, grupos por mes, búsqueda, ficha de edición con fecha original y de traducción y enlace al original, y ficha de cada noticia con su edición, posición, anterior y siguiente. Mientras no estén en vivo: noindex, fuera del sitemap y sin enlaces. Sin ediciones, las seis páginas dicen que aún no hay nada publicado.",
+    "Hecho: assets/editorial.css y assets/editorial.js (el formulario de búsqueda queda oculto sin JavaScript); pages.css y los titulares de empresas (assets/news.js, /v1/news) sin cambios.",
+    "Hecho: ops/editorial/README.md (en inglés) con el contrato del paquete, la conversión de los dos documentos, el procedimiento, la identidad de News, el paso para un año nuevo y la publicación; paso nuevo en CI y verify-editorial en el paso headless.",
+    "Sin registros editoriales: no hay artículos ni noticias reales, traducciones ni afirmaciones de completitud; los fixtures sintéticos viven solo en tools/fixtures y una prueba impide que lleguen al almacén o a las páginas."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 177 (borrador)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/177"
+    }
+  ],
+  "despliegue": [
+    "Sin despliegue: PR 177 en borrador, sin fusionar en main, por el embargo hasta el 27/11/2026 (Europe/Madrid). Sin Pages, sin Worker, sin importación, sin cambios de navegación ni de sitemap. published sigue en false."
+  ],
+  "verificaciones": [
+    "Claude, local: test-editorial 19/19, verify-editorial (JSDOM con lista sintética poblada, con y sin JavaScript), editorial check, build-pages --check (sitemap sin cambios, 1.577 URLs), verify-pages, test-frame 6/6, check-public, build-site --check y export-public --check en verde; Chromium a 320, 375 y 1280 px sin desbordamiento en las páginas vacías.",
+    "Codex, revisión del head e9d8ced: reprodujo 19 pruebas editoriales y 6 de marco, editorial check, la búsqueda poblada con y sin JavaScript, build-pages --check (1.577 URLs), check-public, build-site --check y export-public --check; las cinco regresiones que señaló (embargo, inventario completo sin evidencia, reordenación de News con el mismo número, formulario visible sin JavaScript y enlaces con paréntesis) tienen corrección y pruebas."
+  ],
+  "pendientes": [
+    "Corpus: los dos documentos en inglés de la sesión local de extracción (articulos-integrarobot-desde-2025.md y mas-noticias-integrarobot-desde-2025.md) seguían sin existir en la última comprobación local; no hay contenido cargado.",
+    "Importación: convertirlos en un paquete según ops/editorial/README.md, con el inventario y la evidencia de paginación, e importarlos con tools/editorial.mjs; revisión sustantiva de cada traducción registrada con revisor y evidencia.",
+    "Lanzamiento: cambio aparte y revisado, no antes del 27/11/2026 (Europe/Madrid): fusionar, activar published, añadir los enlaces del pie y la navegación, y verificar en navegador. Nada de eso está organizado todavía.",
+    "Alimentación semanal: la tarea de Codex feed-newsletter-and-news (miércoles 16:00, primera fecha 2/12/2026) sigue separada de la actualización del catálogo."
+  ],
+  "siguiente_accion": "Codex registra su aviso de esta entrega; cuando existan los documentos fuente, se convierten, importan y revisan en un PR propio, y la publicación se decide después del embargo."
+}
