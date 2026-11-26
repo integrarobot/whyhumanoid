@@ -1,11 +1,11 @@
 {
   "contract": "whyhumanoid/workbook-plan@1",
   "plan_id": "WP-20261125-integrarobot-known-pending",
-  "created_at": "2026-11-26T14:20:00Z",
-  "created_by": "claude/opus-5.5 (Codex scheduled continuation, 2026-11-26 15:00 Madrid)",
-  "note": "Follow-up of WP-20261125-integrarobot-why-humanoid for the items left in known_pending. Op-001 needs a free slot in the first Software block first (preparation request in ops/weekly-update/state.json); the plan is rebased after the preparation and before any write.",
+  "created_at": "2026-11-26T14:40:00Z",
+  "created_by": "claude/opus-5.5 (Codex scheduled continuation, 2026-11-26 15:00 Madrid; rebased after the Codex preparation of Software A:C)",
+  "note": "Follow-up of WP-20261125-integrarobot-why-humanoid for the items left in known_pending. Rebased on the prepared master (Codex preparation of Software A:C, slot at row 81 in the first block); it replaces the unwritten phase-1 version in place (rebased_from in ops/weekly-update/state.json).",
   "basis": {
-    "workbook_modified_time": "2026-11-26T09:16:14.759Z"
+    "workbook_modified_time": "2026-11-26T14:13:07.878Z"
   },
   "editions": [
     {
@@ -20,7 +20,7 @@
   "private_payload": {
     "delivery": "Private file in Javier's Google Drive, exact title whyhumanoid-private-handoff-<plan_id>.json; its ID and link go privately to Codex with plan_id and SHA-256 (contract, Private payload and its delivery).",
     "cells": 20,
-    "sha256": "ef77c3c1e85e70b45a5eec09cd2478c5595ff52ad6fb5d93219bd1190b42ec33"
+    "sha256": "5d8344fc486f5f11c5984d7afff156fbfdd5422b0bff3158113805b20e5fd069"
   },
   "items": [
     {
@@ -336,18 +336,18 @@
         "key": {
           "column": "S",
           "header": "Report ID",
-          "value_hmac": "f5f1e7e501076478355f556b958d2ddc4261287d6c43af46ee85e08f5c382b24"
+          "value_hmac": "144ea76a097de7be8f36315262057aef0771e0cb1eee96e7988331ac202eaf57"
         },
         "unique": [
           {
             "column": "A",
             "header": "Report name",
-            "value_hmac": "eb4cc06bb08b08d6fe6642bf2d3cc105941fad266b73ad115c9b5f154b0fe132"
+            "value_hmac": "9563b1703c8fc24417ad14bebc27f1006fb9468dc1c7c99f187879da86c37da9"
           },
           {
             "column": "R",
             "header": "Source link",
-            "value_hmac": "54d7f11e6ca85b7db8732cf2cb481930c4308b5f2d253232f110112506108e09"
+            "value_hmac": "d87f5b297ab0f75e0c056644c497e9d1268cfac8c7982535cac0ee30d8e1b769"
           }
         ]
       },
@@ -357,140 +357,140 @@
           "header": "Report name",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "62718449a0b8df8908dfc2cb6791b6452c1554cffa0a069fc58851179b06b40c"
+          "proposed_hmac": "932f583048cf82ad8383ad6ec9211ed36e18c198c66bbe5a736ffbd7a7fe9669"
         },
         {
           "column": "B",
           "header": "Publishing entity",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "e0e015858d364acd51735e390c4197543e7e0a64df865b91aa41c4aaf8d6e208"
+          "proposed_hmac": "da62700879c9c7d513aa691529e5f731bcb9b2394059c1782fb11000e4b8acb6"
         },
         {
           "column": "C",
           "header": "Year of publication (month)",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "c7569d34c5a7af0d4bac42f67c06b7a1216395eed4a86adbfef775ab01a09e30"
+          "proposed_hmac": "ee06554ed53fb2cc624bc1e0c9c81034ff68b4af65d2707953a20deef64f62e2"
         },
         {
           "column": "D",
           "header": "Scope & methodology",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "1ef22078fc167260a58670b1aa499a13203715ff8c8049056664ec8e568d01d7"
+          "proposed_hmac": "2d1ab5d7ffd41a64e0ba727aadc5be5a8b54bb783896521b0bdc486bfa2aa216"
         },
         {
           "column": "E",
           "header": "Humanoid unit sales / shipments forecast",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "8fbda710ae0df73d6a69d214ecf7e070e716c109bdfd90882481823b2c164fa4"
+          "proposed_hmac": "2df24b7b6870da02efde278e913564e4ae51dd1a4c7ec4c1208c115d0d38ff81"
         },
         {
           "column": "F",
           "header": "Installed base / units in operation",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "ee4fe76bf96157205679cf8b879a382d8d0647ae97ef9fa0b6e3c15d632bc595"
+          "proposed_hmac": "426c40dc03e95343d8357fef2d0f7154733fdf34889c2415a5bdb6ca3fd24076"
         },
         {
           "column": "G",
           "header": "Market size / revenue forecast",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "0ee7a3a9452bd22d305620937f6e18c29185060284c8849383508e08694840be"
+          "proposed_hmac": "238bca020d979affd029b64be0f45f2cb14983cd15f63d18736dcdd2af433a16"
         },
         {
           "column": "H",
           "header": "Scenarios (base / bull / bear)",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "236f35e28e3776d8123b7a42d77368de509f148772ec4fcc047c1403c7bb4508"
+          "proposed_hmac": "8217a3cc0d6bd903ea153e12bb90a88ebb06bb83017398af701722b6f2800ef9"
         },
         {
           "column": "I",
           "header": "Unit cost / BOM & price trajectory",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "033f9086b59ba2b578864360d019a5350af210484a7e7d16ad5c445914d62904"
+          "proposed_hmac": "eefdbe269086bce26d6a3a74b7cf39acef502dc5d672a3de20dd21bc9152c097"
         },
         {
           "column": "J",
           "header": "Labor impact (jobs, tasks, labor shortage)",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "b31a6ed98d88e4be9d73bc293913d1555c21c149094e49f4634f37ec35d75aed"
+          "proposed_hmac": "bebef7a5c9ea1f388b5825b8a5e18851fae50b2a712c1e2c4b9fc0aff42b30b2"
         },
         {
           "column": "K",
           "header": "Investment / funding",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "3c95ff319e2a3671dfa271a02b4f0a80c318f9210e966adedc974e69fefd7af3"
+          "proposed_hmac": "ae8b9cb5c8d73305176bbac26271a98d0e8a872dabd7e8104234389dc810ed3c"
         },
         {
           "column": "L",
           "header": "Key adoption sectors & timeline",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "4b510feb4f51df4698310ce4822f836ef36d7ba697eca629e86231014f997ff4"
+          "proposed_hmac": "a2d39bae6a2da39254a7d985c69e05e498000a5e098b7bb16849100ff65d7091"
         },
         {
           "column": "M",
           "header": "China vs US / regional view",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "6dc6908a3c41b79da1da69ce9a46798a7327e11c66fbc92cba4a7a23978fa64b"
+          "proposed_hmac": "4a96067699fb1effdad03acb6e4b73d048249f1e6e42f0e584bc62ecbab86ddd"
         },
         {
           "column": "N",
           "header": "Key bottlenecks / risks",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "81ca5fec88a1761b6d59681c8cefb590f3aa9d61e3825756dee8662257b1c551"
+          "proposed_hmac": "37a017d0001505dc70d2381d0ed439a69658ed457ae4541efc6b761f33cdb6fe"
         },
         {
           "column": "O",
           "header": "Key companies highlighted",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "cc2c3878c3c466e52d56445d8a19096926a0e86f1e03bcf5f0f324fe282e9c0a"
+          "proposed_hmac": "dd1cc706f00a0c1d782d995f613713ab20919c0b677aa1d34a6446d31ebb0a00"
         },
         {
           "column": "P",
           "header": "Headline conclusion",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "d67cdbda70d08fbace7125ac4c8d0f22c68f560e88d1b15ca63eb1471fa2dfd7"
+          "proposed_hmac": "87e37dbd7be7bfa8a0ccfa28c6a19635cf436d192ba04da02fd841e071b0b612"
         },
         {
           "column": "Q",
           "header": "Other key figures",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "e674fb48c6494304c6c3795f0a03d40a53b24eec9a68901b1d07dc9485353d98"
+          "proposed_hmac": "4ca8d01f8a86bf27d2bc3fc326569aa8c7c7f653296cc987fb6ff6b2d6709932"
         },
         {
           "column": "R",
           "header": "Source link",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "6eaac8c5e2d0cee93c0854521d5791a56bd6d9412842b673c436008f52465560"
+          "proposed_hmac": "2a9afedfadadda0155cbb1cc3cf308f5c46f2b6abae1e49e27e6468b0a3b8a3c"
         },
         {
           "column": "S",
           "header": "Report ID",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "76b99dd16040f3bc753edcc9e9c5e12b53f0ef1a7a4e68630e8051199d938cbe"
+          "proposed_hmac": "4674c3934636ab83b31fdc8cc83d38e34b1db6ea22801403f7dedccf2929939b"
         },
         {
           "column": "T",
           "header": "Review status",
           "expected_previous": "",
           "private": true,
-          "proposed_hmac": "f84e67fa0b603d6cb8c2b3b06ce50713b2262d21b416ff7902b367247fea3e53"
+          "proposed_hmac": "1b088175dbcaa74a8d97bec3f4d90887735626f56c0ba5e7a646d5e7aca19d30"
         }
       ],
       "sources": [
