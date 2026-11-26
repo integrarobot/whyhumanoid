@@ -115,7 +115,8 @@ test('check: the command prints its result and fails on a tampered snapshot', as
   const { mkdtempSync, writeFileSync } = await import('node:fs');
   const { tmpdir } = await import('node:os');
   const { join } = await import('node:path');
-  const cmd = new URL('export-investment.mjs', import.meta.url).pathname;
+  const { fileURLToPath } = await import('node:url');
+  const cmd = fileURLToPath(new URL('export-investment.mjs', import.meta.url));
   assert.match(execFileSync('node', [cmd, '--check'], { encoding: 'utf8' }), /investment desk ok: 98 theses/);
   const dir = mkdtempSync(join(tmpdir(), 'desk check ?'));
   const bad = structuredClone(desk);
