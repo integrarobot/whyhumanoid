@@ -1,0 +1,42 @@
+{
+  "id": "WH-20261126-1431-grafico-mitad-cabecera",
+  "tarea": "Ajustar la cabecera de las fichas de empresas cotizadas para que el gráfico ocupe la mitad del ancho en escritorio, en lugar de algo más de la mitad",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T14:31:30+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "assets/investment.css: a partir de 1024 px, la cabecera con gráfico pasa de columnas 5fr/7fr a 1fr/1fr, la mitad del ancho útil para la identidad y los datos clave y la otra mitad para el gráfico, con el mismo hueco de 32 px.",
+    "Páginas regeneradas: 276 fichas de empresa con cotización e investment/index.html, solo con la nueva versión de la hoja de estilo.",
+    "Sin cambios en la altura del gráfico, el fondo negro, la cotización (260 px en escritorio y 300 px en móvil), la tipografía, los datos ni la disposición apilada en móvil; sin Worker, importación de datos ni cambios de red."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 156",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/156"
+    },
+    {
+      "etiqueta": "Commit de fusión e7eec6a",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/e7eec6a6e2198716544ea5317fd3df4d58a8e2aa"
+    },
+    {
+      "etiqueta": "Pages (ejecución 45829653904)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45829653904"
+    },
+    {
+      "etiqueta": "Tesla",
+      "url": "https://whyhumanoid.com/companies/tesla/"
+    }
+  ],
+  "despliegue": [
+    "PR 156 fusionado en main como e7eec6a desde el head aprobado por Codex 4e46fff, con el CI en verde (ejecución 45829412448).",
+    "GitHub Pages: ejecución 45829653904 completada con éxito a las 13:30:14 UTC. Solo páginas estáticas."
+  ],
+  "verificaciones": [
+    "Claude, sin el proveedor real (TradingView no se carga en este entorno; solo los marcos): build-pages --check y test-investment 13/13; en Tesla, en local y en producción, columnas de 634/634 px a 1510, 456/456 px a 1024 y 343 px apiladas a 375, sin desbordamiento.",
+    "Codex, con los widgets reales de Tesla y Schaeffler en local y en producción a 1510, 1024 y 375 px: columnas de 634/634, 456/456 y 343 px apiladas; ancho del documento igual al del viewport; fondo negro; cuerpos de la cotización de 260 y 300 px por encima de un contenido de 197 a 240 px y precios que terminan entre 177 y 220 px, sin recortes; gráfico de 419 px en escritorio y 360 px en móvil."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Codex registra su aviso de esta entrega; Javier confirma la recepción."
+}
