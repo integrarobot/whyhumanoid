@@ -4241,7 +4241,8 @@
     },
     "cmp_shadowrobot.com": {
       "slugs": [
-        "shadow"
+        "shadow",
+        "shadow-robot-company"
       ],
       "robots": [],
       "organization_ids": []
@@ -5377,6 +5378,104 @@
         209,
         210
       ],
+      "organization_ids": []
+    },
+    "cmp_ams": {
+      "slugs": [
+        "ams"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_ati-ia.com": {
+      "slugs": [
+        "ati-industrial-automation"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_cubemars.com": {
+      "slugs": [
+        "cubemars"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_srl.ethz.ch": {
+      "slugs": [
+        "eth-zurich-soft-robotics-lab"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_harmonicdrive.net": {
+      "slugs": [
+        "harmonic-drive-llc"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_luxonis": {
+      "slugs": [
+        "luxonis"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_maxon": {
+      "slugs": [
+        "maxon"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_molicel.com": {
+      "slugs": [
+        "molicel"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_onrobot.com": {
+      "slugs": [
+        "onrobot"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_psyonic.io": {
+      "slugs": [
+        "psyonic"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_realsenseai.com": {
+      "slugs": [
+        "realsense"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_rls.si": {
+      "slugs": [
+        "rls"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_robotiq.com": {
+      "slugs": [
+        "robotiq"
+      ],
+      "robots": [],
+      "organization_ids": []
+    },
+    "cmp_tesollo.com": {
+      "slugs": [
+        "tesollo"
+      ],
+      "robots": [],
       "organization_ids": []
     }
   },

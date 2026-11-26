@@ -1,5 +1,5 @@
 {
- "note": "Reviewed organisations of the public Components products (23 Nov 2026): the public names and roles that each product's 'Manufacturer / laboratory' field states, with the organisation's own website where the record gives one. Only products published in data/preview may appear here (tools/build-pages.mjs refuses others), so no subscriber-only product is named in Git. A role is the one the record states; nothing is inferred from integrations or users.",
+ "note": "Reviewed organisations of the public Components products (23 Nov 2026): the public names and roles that each product's 'Manufacturer / laboratory' field states, with the organisation's own website where the record gives one. Only products published in data/preview may appear here (tools/build-pages.mjs refuses others), so no subscriber-only product is named in Git. A role is the one the record states; nothing is inferred from integrations or users. Since 26 Nov 2026 the file also covers the products of the other component families, with the names and roles their records state (for example a current catalogue and the original maker of a legacy part).",
  "makers": {
   "CMP-TAC-001": [
    {
@@ -183,6 +183,245 @@
    {
     "name": "Meta AI (FAIR)",
     "role": "Developer",
+    "url": null
+   }
+  ],
+  "CMP-ACT-001": [
+   {
+    "name": "CubeMars",
+    "role": "Manufacturer",
+    "url": "https://www.cubemars.com/"
+   }
+  ],
+  "CMP-ACT-002": [
+   {
+    "name": "CubeMars",
+    "role": "Manufacturer",
+    "url": "https://www.cubemars.com/"
+   }
+  ],
+  "CMP-ACT-003": [
+   {
+    "name": "CubeMars",
+    "role": "Manufacturer",
+    "url": "https://www.cubemars.com/"
+   }
+  ],
+  "CMP-RED-001": [
+   {
+    "name": "Harmonic Drive LLC",
+    "role": "Manufacturer (product catalogue)",
+    "url": "https://www.harmonicdrive.net/"
+   }
+  ],
+  "CMP-RED-002": [
+   {
+    "name": "Harmonic Drive LLC",
+    "role": "Manufacturer (product catalogue)",
+    "url": "https://www.harmonicdrive.net/"
+   }
+  ],
+  "CMP-RED-003": [
+   {
+    "name": "Nabtesco",
+    "role": "Manufacturer",
+    "url": null
+   }
+  ],
+  "CMP-RED-004": [
+   {
+    "name": "Nabtesco",
+    "role": "Manufacturer",
+    "url": null
+   }
+  ],
+  "CMP-CTL-001": [
+   {
+    "name": "maxon",
+    "role": "Manufacturer",
+    "url": null
+   }
+  ],
+  "CMP-HND-001": [
+   {
+    "name": "Shadow Robot Company",
+    "role": "Manufacturer",
+    "url": "https://shadowrobot.com/"
+   }
+  ],
+  "CMP-HND-002": [
+   {
+    "name": "Shadow Robot Company",
+    "role": "Manufacturer",
+    "url": "https://shadowrobot.com/"
+   }
+  ],
+  "CMP-HND-003": [
+   {
+    "name": "ETH Zurich Soft Robotics Lab",
+    "role": "Research design (ORCA project)",
+    "url": "https://srl.ethz.ch/"
+   }
+  ],
+  "CMP-HND-004": [
+   {
+    "name": "PSYONIC",
+    "role": "Manufacturer",
+    "url": "https://www.psyonic.io/"
+   }
+  ],
+  "CMP-HND-005": [
+   {
+    "name": "Tesollo",
+    "role": "Manufacturer",
+    "url": "https://www.tesollo.com/"
+   }
+  ],
+  "CMP-HND-006": [
+   {
+    "name": "Tesollo",
+    "role": "Manufacturer",
+    "url": "https://www.tesollo.com/"
+   }
+  ],
+  "CMP-GRP-001": [
+   {
+    "name": "Robotiq",
+    "role": "Manufacturer",
+    "url": "https://robotiq.com/"
+   }
+  ],
+  "CMP-GRP-002": [
+   {
+    "name": "OnRobot",
+    "role": "Manufacturer",
+    "url": "https://onrobot.com/"
+   }
+  ],
+  "CMP-FTS-001": [
+   {
+    "name": "ATI Industrial Automation",
+    "role": "Manufacturer",
+    "url": "https://www.ati-ia.com/"
+   }
+  ],
+  "CMP-FTS-002": [
+   {
+    "name": "ATI Industrial Automation",
+    "role": "Manufacturer",
+    "url": "https://www.ati-ia.com/"
+   }
+  ],
+  "CMP-FTS-003": [
+   {
+    "name": "Robotiq",
+    "role": "Manufacturer",
+    "url": "https://robotiq.com/"
+   }
+  ],
+  "CMP-VIS-001": [
+   {
+    "name": "RealSense",
+    "role": "Manufacturer",
+    "url": "https://www.realsenseai.com/"
+   },
+   {
+    "name": "Intel",
+    "role": "Original D400 design",
+    "url": null
+   }
+  ],
+  "CMP-VIS-002": [
+   {
+    "name": "RealSense",
+    "role": "Manufacturer",
+    "url": "https://www.realsenseai.com/"
+   },
+   {
+    "name": "Intel",
+    "role": "Original D400 design",
+    "url": null
+   }
+  ],
+  "CMP-VIS-003": [
+   {
+    "name": "RealSense",
+    "role": "Manufacturer",
+    "url": "https://www.realsenseai.com/"
+   }
+  ],
+  "CMP-VIS-004": [
+   {
+    "name": "Luxonis",
+    "role": "Manufacturer",
+    "url": null
+   }
+  ],
+  "CMP-VIS-005": [
+   {
+    "name": "Hesai Group",
+    "role": "Manufacturer (recorded as Hesai)",
+    "url": "https://www.hesaitech.com/"
+   }
+  ],
+  "CMP-VIS-006": [
+   {
+    "name": "RoboSense",
+    "role": "Manufacturer",
+    "url": null
+   }
+  ],
+  "CMP-CMU-001": [
+   {
+    "name": "NVIDIA",
+    "role": "Manufacturer",
+    "url": null
+   }
+  ],
+  "CMP-CMU-002": [
+   {
+    "name": "NVIDIA",
+    "role": "Manufacturer",
+    "url": null
+   }
+  ],
+  "CMP-CMU-003": [
+   {
+    "name": "NVIDIA",
+    "role": "Manufacturer",
+    "url": null
+   }
+  ],
+  "CMP-ENC-001": [
+   {
+    "name": "RLS",
+    "role": "Manufacturer",
+    "url": "https://www.rls.si/"
+   }
+  ],
+  "CMP-ENC-002": [
+   {
+    "name": "Infineon",
+    "role": "Current catalogue",
+    "url": "https://www.infineon.com/"
+   },
+   {
+    "name": "ams",
+    "role": "Original part (legacy ams AS5048A)",
+    "url": null
+   }
+  ],
+  "CMP-PWR-001": [
+   {
+    "name": "Molicel",
+    "role": "Manufacturer",
+    "url": "https://www.molicel.com/"
+   }
+  ],
+  "CMP-PWR-002": [
+   {
+    "name": "Texas Instruments",
+    "role": "Manufacturer",
     "url": null
    }
   ]

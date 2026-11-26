@@ -225,29 +225,32 @@
   ];
   var FUNCTION_SECTION = { key: 'function', title: 'What it does', fields: [['function', 'Function'], ['applications', 'Applications, as stated by the source']] };
   var SPECS_SECTION = { key: 'specs', title: 'Technical specifications', specs: true, fields: [], note: 'One line per figure, with its unit, conditions, source and the date it was checked. Values are as the source states them: nothing is converted, estimated or rounded.' };
+  // Comparison notes: the record's own labelled lines (scope, limitations), shown as recorded.
+  var COMPARISON_SECTION = { key: 'comparison', title: 'Comparison notes', comparison: true, fields: [], note: 'The research record\'s own notes on what can and cannot be compared for this product.' };
   var GENERAL_SECTIONS = [
     { key: 'identity', title: 'Identity and status', fields: [['component_id', 'Component ID'], ['family', 'Family'], ['group', 'Group as recorded'], ['manufacturer', 'Manufacturer or laboratory'], ['country', 'Country'], ['year', 'Launch or publication'], ['status', 'Current status']] },
-    FUNCTION_SECTION,
+    { key: 'function', title: 'What it does', fields: [['function', 'Function'], ['principle', 'Technology or operating principle'], ['measured', 'What it measures, delivers or controls'], ['sampling_rate', 'Rate as recorded'], ['applications', 'Applications, as stated by the source']] },
     SPECS_SECTION,
     { key: 'physical', title: 'Form', fields: [['dimensions', 'Dimensions'], ['weight', 'Weight']] },
     { key: 'integration', title: 'Integration', fields: [['interface', 'Interface and connectivity'], ['software', 'Software, SDK and ROS'], ['integration_requirements', 'Integration requirements'], ['integrations', 'Known users and integrations']] },
-    { key: 'availability', title: 'Availability, price and licence', fields: [['where_to_buy', 'Where to get it'], ['list_price', 'List price (currency, date, source)'], ['licence', 'Licence']] },
+    { key: 'availability', title: 'Availability, price and licence', fields: [['where_to_buy', 'Where to get it'], ['list_price', 'List price (currency, date, source)'], ['bom_cost', 'Estimated BOM or material cost'], ['licence', 'Licence']] },
     { key: 'research', title: 'Research and design', fields: [['key_paper', 'Key paper'], ['repository', 'Repository or design files']] },
     { key: 'assessment', title: 'Advantages and drawbacks', fields: [['advantages', 'Advantages'], ['drawbacks', 'Drawbacks']], note: 'As summarised in the research record, not an independent assessment.' },
-    { key: 'caveats', title: 'Limitations and uncertainties', fields: [['limitations', 'Documented limitations'], ['notes', 'Notes and uncertainties']] }
+    { key: 'caveats', title: 'Limitations and uncertainties', fields: [['limitations', 'Documented limitations'], ['notes', 'Notes and uncertainties']] },
+    COMPARISON_SECTION
   ];
   // A touch-sensing product keeps its passport; the new columns join it only when the record has them.
   var sectionsFor = function (r) {
     if (!isTactile(r) && familyOf(r) !== 'unclassified') return GENERAL_SECTIONS;
     var extended = ['function', 'applications', 'technical_specifications', 'integration_requirements', 'limitations'].some(function (f) { return r && (f in r) && r[f]; }) || isSummary(r) && r && r.component_class;
-    if (!extended) return SECTIONS;
+    if (!extended) return SECTIONS.concat([COMPARISON_SECTION]);
     var out = [SECTIONS[0], FUNCTION_SECTION, SECTIONS[1]];
     if (!isSummary(r) && parseSpecs(r.technical_specifications).length || isSummary(r)) out.push(SPECS_SECTION);
     return out.concat(SECTIONS.slice(2).map(function (sec) {
       if (sec.key === 'integration') return { key: sec.key, title: sec.title, fields: sec.fields.concat([['integration_requirements', 'Integration requirements']]) };
       if (sec.key === 'caveats') return { key: sec.key, title: 'Limitations and uncertainties', fields: [['limitations', 'Documented limitations']].concat(sec.fields) };
       return sec;
-    }));
+    })).concat([COMPARISON_SECTION]);
   };
   var CAUTION = {
     resolution_count: 'Camera pixels are image resolution, not effective calibrated taxels.',
@@ -308,6 +311,13 @@
       }).join('') + '</tbody></table></div>';
   };
 
+  var comparisonNotesHtml = function (r) {
+    if (isSummary(r) && !('comparison_summary' in r)) return '<p>' + LOCK + '</p>';
+    var lines = String(r.comparison_summary || '').split('\n').map(function (l) { return l.match(/^([^:]{2,60}):\s*(.*)$/); }).filter(Boolean);
+    if (!lines.length) return r.comparison_summary ? '<p>' + linkify(r.comparison_summary) + '</p>' : '<p class="na">No comparison notes recorded.</p>';
+    return '<dl class="pp-kv">' + lines.map(function (m) { return '<dt>' + esc(m[1].trim()) + '</dt><dd data-f="comparison_summary"><span class="val">' + linkify(m[2].trim()) + '</span></dd>'; }).join('') + '</dl>';
+  };
+
   var parseSources = function (text) {
     if (!text) return [];
     return String(text).split(/\n\s*\n/).map(function (block) {
@@ -345,6 +355,7 @@
     var famNote = FAMILIES[fam] && FAMILIES[fam].note ? '<p class="pp-caution"><b>Read with care.</b> ' + esc(FAMILIES[fam].note) + '</p>' : '';
     var sections = sectionsFor(r).map(function (sec) {
       if (sec.specs) return '<section class="pp-sec" data-sec="' + sec.key + '"><h' + h + '>' + esc(sec.title) + '</h' + h + '><p class="pp-note">' + esc(sec.note) + '</p>' + specsHtml(r) + '</section>';
+      if (sec.comparison) return '<section class="pp-sec" data-sec="' + sec.key + '"><h' + h + '>' + esc(sec.title) + '</h' + h + '><p class="pp-note">' + esc(sec.note) + '</p>' + comparisonNotesHtml(r) + '</section>';
       var rows = sec.fields.map(function (f) {
         var caution = CAUTION[f[0]] ? '<small class="cau">' + esc(CAUTION[f[0]]) + '</small>' : '';
         return '<dt>' + esc(f[1]) + caution + '</dt><dd data-f="' + f[0] + '">' + valueHtml(f[0], r[f[0]], r) + '</dd>';
@@ -385,7 +396,7 @@
     if (isSummary(r) && !('technical_specifications' in r)) return LOCK;
     var m = parseSpecs(r.technical_specifications).filter(function (x) { return x.metric === key; });
     if (!m.length) return '<span class="na">Not recorded</span>';
-    return m.map(function (x) { return '<span class="val">' + esc(x.value) + (x.unit ? ' ' + esc(x.unit) : '') + '</span>' + (x.conditions ? '<small class="cond">' + esc(x.conditions) + '</small>' : ''); }).join('<br>');
+    return m.map(function (x) { return '<span class="val">' + esc(x.value) + (x.unit ? ' ' + esc(x.unit) : '') + '</span>' + (x.conditions ? '<small class="cond">' + esc(x.conditions) + '</small>' : '') + '<small class="cond"><a href="' + esc(x.source_url) + '" rel="noopener noreferrer">source</a>' + (x.locator ? ', ' + esc(x.locator) : '') + '</small>'; }).join('<br>');
   };
   var compareHtml = function (rows) {
     if (!rows.length) return '<p class="empty">Choose up to three products to compare.</p>';
@@ -396,8 +407,18 @@
         return '<tr><th scope="row" class="ck">' + esc(f[1]) + (CAUTION[f[0]] ? '<small class="cau">' + esc(CAUTION[f[0]]) + '</small>' : '') + '</th>' + rows.map(function (r) { return '<td data-p="' + esc(r.name) + '">' + valueHtml(f[0], r[f[0]], r) + '</td>'; }).join('') + '</tr>';
       }).join('') + '</tbody>';
     }).join('');
+    // The family-specific columns (26 Nov 2026), after the touch passport fields: what each does, its structured figures
+    // (every metric any of them records, with conditions and source) and its integration and limits.
+    var group = function (title, cells) { return cells.length ? '<tbody><tr class="cg"><th scope="colgroup" colspan="' + (rows.length + 1) + '">' + esc(title) + '</th></tr>' + cells.join('') + '</tbody>' : ''; };
+    var fieldRow = function (f) { return '<tr><th scope="row" class="ck">' + esc(f[1]) + '</th>' + rows.map(function (r) { return '<td data-p="' + esc(r.name) + '">' + valueHtml(f[0], r[f[0]], r) + '</td>'; }).join('') + '</tr>'; };
+    var has = function (f) { return rows.some(function (r) { return (isSummary(r) && !(f in r)) || r[f]; }); };
+    var metrics = [];
+    rows.forEach(function (r) { parseSpecs(r.technical_specifications).forEach(function (x) { if (metrics.indexOf(x.metric) < 0) metrics.push(x.metric); }); });
+    var extra = group('What it does', [['function', 'Function'], ['applications', 'Applications, as stated by the source']].filter(function (f) { return has(f[0]); }).map(fieldRow))
+      + group('Structured figures', metrics.map(function (k) { return '<tr><th scope="row" class="ck">' + esc(metricLabel(k)) + '</th>' + rows.map(function (r) { return '<td data-p="' + esc(r.name) + '">' + metricCell(r, k) + '</td>'; }).join('') + '</tr>'; }))
+      + group('Integration and limits', [['integration_requirements', 'Integration requirements'], ['limitations', 'Documented limitations'], ['comparison_summary', 'Comparison notes']].filter(function (f) { return has(f[0]); }).map(fieldRow));
     var cautions = rows.filter(function (r) { return cautionOf(r); }).map(function (r) { return '<li><b>' + esc(r.name) + ':</b> ' + esc(cautionOf(r)) + '</li>'; }).join('');
-    return (cautions ? '<ul class="cmp-cautions">' + cautions + '</ul>' : '') + '<table class="cmp"><caption class="sr">Products compared field by field, as recorded</caption>' + head + body + '</table>';
+    return (cautions ? '<ul class="cmp-cautions">' + cautions + '</ul>' : '') + '<table class="cmp"><caption class="sr">Products compared field by field, as recorded</caption>' + head + body + extra + '</table>';
   };
 
   // Products outside touch sensing: the shared fields, then the figures of their family. Different families are compared
@@ -408,7 +429,7 @@
     var metrics = (same ? FAMILIES[fams[0]].metrics : []).concat(COMMON_METRICS);
     var used = metrics.filter(function (k) { return rows.some(function (r) { return isSummary(r) || parseSpecs(r.technical_specifications).some(function (x) { return x.metric === k; }); }); });
     var head = '<thead><tr><th scope="col" class="ck">Field</th>' + rows.map(function (r) { return '<th scope="col"><a href="' + pathOf(r.component_id) + '">' + esc(r.name) + '</a><small>' + esc(familyLabel(familyOf(r))) + ' · ' + esc(CLASS_LABEL[classOf(r.group)]) + '</small></th>'; }).join('') + '</tr></thead>';
-    var basic = [['manufacturer', 'Manufacturer or laboratory'], ['status', 'Current status'], ['function', 'Function'], ['interface', 'Interface and connectivity'], ['integration_requirements', 'Integration requirements'], ['limitations', 'Documented limitations']];
+    var basic = [['manufacturer', 'Manufacturer or laboratory'], ['status', 'Current status'], ['function', 'Function'], ['principle', 'Technology or operating principle'], ['interface', 'Interface and connectivity'], ['weight', 'Weight as recorded'], ['list_price', 'List price (currency, date, source)'], ['bom_cost', 'Estimated BOM or material cost'], ['integration_requirements', 'Integration requirements'], ['limitations', 'Documented limitations']];
     var body = '<tbody><tr class="cg"><th scope="colgroup" colspan="' + (rows.length + 1) + '">Identity and use</th></tr>' + basic.map(function (f) {
       return '<tr><th scope="row" class="ck">' + esc(f[1]) + '</th>' + rows.map(function (r) { return '<td data-p="' + esc(r.name) + '">' + valueHtml(f[0], r[f[0]], r) + '</td>'; }).join('') + '</tr>';
     }).join('') + '</tbody>'
@@ -427,7 +448,16 @@
   var cardHtml = function (r, makers) {
     var f = facetsOf(r);
     var summary = isSummary(r);
-    var quick = (summary ? [['Country', r.country], ['Launch or publication', r.year], ['Status', r.status]] : [['Taxels or camera', r.resolution_count], ['Rate', r.sampling_rate], ['Interface', r.interface]]).map(function (q) {
+    // Quick facts: the public identity for a summary; for a full touch record its touch fields; for other families up to
+    // three of the family's own figures with their units, else what the record states about interface and weight.
+    var famFacts = function () {
+      var specs = parseSpecs(r.technical_specifications);
+      var fam = FAMILIES[f.fam];
+      var picked = (fam ? fam.metrics.concat(COMMON_METRICS) : COMMON_METRICS).map(function (k) { return specs.filter(function (x) { return x.metric === k; })[0]; }).filter(Boolean).slice(0, 3);
+      if (picked.length) return picked.map(function (x) { return [metricLabel(x.metric), x.value + (x.unit ? ' ' + x.unit : '') + (x.conditions ? ' (' + x.conditions + ')' : '')]; });
+      return [['Interface', r.interface], ['Weight', r.weight], ['Status', r.status]];
+    };
+    var quick = (summary ? [['Country', r.country], ['Launch or publication', r.year], ['Status', r.status]] : f.principle === 'not_applicable' ? famFacts() : [['Taxels or camera', r.resolution_count], ['Rate', r.sampling_rate], ['Interface', r.interface]]).map(function (q) {
       var st = stateOf(q[1]);
       return '<div><dt>' + q[0] + '</dt><dd' + (st !== 'value' ? ' class="muted"' : '') + '>' + (st === 'value' ? esc(clip(q[1], 90)) : STATE_LABEL[st]) + '</dd></div>';
     }).join('');

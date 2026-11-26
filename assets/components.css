@@ -194,3 +194,4 @@ table.specs small{display:block;font-size:12.5px;color:var(--bone-3)}
   table.specs tr{border-top:1px solid var(--line-2);padding:6px 0}
   table.specs th,table.specs td{border:0;padding:3px 10px}
 }
+.pp-main a,.pp a,.srcs a,.pc a{overflow-wrap:anywhere;word-break:break-word}
