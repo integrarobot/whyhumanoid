@@ -2,13 +2,13 @@
   "dataset": "humanoids",
   "access": "free",
   "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
-  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the import of 2026-11-25T05:35:43Z (every current customer row; records moved out of the tab kept apart)",
-  "snapshot": "2026-11-25T05:35:43Z",
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the import of 2026-11-26T06:38:00Z (every current customer row; records moved out of the tab kept apart)",
+  "snapshot": "2026-11-26T06:38:00Z",
   "record_count": 212,
   "verified_import": {
     "environment": "workbook export",
-    "snapshot": "2026-11-25T05:35:43Z",
-    "import_run": "workbook export of 2026-11-25T05:35:43Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export)",
+    "snapshot": "2026-11-26T06:38:00Z",
+    "import_run": "workbook export of 2026-11-26T06:38:00Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export)",
     "updated": [
       {
         "id": 1,
@@ -2617,11 +2617,11 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "0694019b13c2ecf50027f2015ed620e26880257ddf3afbe1b580063c2c57a74b",
+      "sha256": "b5bca44e0bf137961634d8a379f7bc1f6e697d50ba63a3aef3e24b421a7b9b2c",
       "bytes": 401396
     },
     "humanoids-catalogue.csv": {
-      "sha256": "cfb723e7e21736f693461c002d7b48560dcad07dfbda5ca414cd8da18204408b",
+      "sha256": "6fe4b5338af0e1b5bbd5127301bf9c1d3adf6aae88762d8a8255d97989021d11",
       "bytes": 249246
     }
   }

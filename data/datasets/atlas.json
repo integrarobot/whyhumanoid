@@ -3,8 +3,8 @@
  "subtitle": "Where robot learning data comes from, what it contains, and how it can be used.",
  "note": "Datasets catalogue and reported quantities from the Why Humanoid? master workbook. Quantities are transcribed from public sources as stated, not independently counted. Sizes are compared only within a compatible group and unit; they are not a ranking of quality, and nothing is summed across resources because collections overlap. Aggregates, provider claims and training mixtures are kept apart from open-corpus sizes. Access and licence notes are summaries: check the original terms before use.",
  "snapshot": {
-  "exported_at": "2026-11-25T05:32:22.000Z",
-  "built_at": "2026-11-25T05:36:23.123Z"
+  "exported_at": "2026-11-26T06:38:00.000Z",
+  "built_at": "2026-11-26T06:42:37.794Z"
  },
  "vocabulary": {
   "lanes": [
@@ -334,19 +334,19 @@
   ]
  },
  "counts": {
-  "resources": 35,
+  "resources": 37,
   "resources_outside_atlas": 0,
   "corpora": 21,
-  "resources_with_quantities": 21,
-  "resources_awaiting_quantities": 14,
-  "quantities": 62,
+  "resources_with_quantities": 22,
+  "resources_awaiting_quantities": 15,
+  "quantities": 63,
   "quantities_withheld": 0,
   "quantities_without_value": 0,
   "scale_groups": 26,
   "by_lane": {
    "robot": 10,
-   "human": 12,
-   "synthetic": 7,
+   "human": 13,
+   "synthetic": 8,
    "assets": 1,
    "mixed": 2,
    "other": 3
@@ -355,11 +355,11 @@
    "corpus": 21,
    "synthetic_data_resource": 1,
    "aggregate": 3,
-   "collection": 4,
+   "collection": 5,
    "evaluation_corpus": 1,
    "simulation_assets": 1,
    "model_data_resource": 1,
-   "commercial_data_service": 2,
+   "commercial_data_service": 3,
    "search_portal": 1
   },
   "benchmark_links": 6
@@ -2379,6 +2379,133 @@
    "related_benchmarks": [],
    "quantities": 1,
    "evaluation": false
+  },
+  {
+   "name": "AXIS Skills Atlas",
+   "url": "https://skills.axisrobotics.ai/",
+   "description": "AXIS Robotics catalogue of 11,199 robot tasks (unique task IDs, snapshot 2026-11-06), each a LeRobot-format dataset, filterable by skill and robot and exportable as CSV; it links to 14.6 TB of public simulation data on Hugging Face (2026-11-10).",
+   "data_origin": "simulation",
+   "resource_class": "collection",
+   "embodiment": "Six main robot embodiments, including Franka arms; ALOHA kept as a historical record",
+   "capture_method": "Simulation (public data); per-task capture not stated",
+   "data_format": "LeRobot v3.0 (Parquet + MP4), 15 fps, two 640x360 RGB cameras",
+   "access_status": "collection_link",
+   "license_note": "Licence not stated on the atlas; check each Hugging Face dataset card",
+   "version_scope": "Task-list snapshot 2026-11-06; public simulation data 2026-11-10; page checked 2026-11-25",
+   "key_takeaway": "A task catalogue over many LeRobot datasets, not one corpus: 11,199 counts task IDs, not data volume.",
+   "limitations": "Task IDs, not hours or episodes. 8,925 is the PICK-tag count, not the total. 392 robot labels are model-inferred. Some source links may need AXIS Hub access. 14.6 TB is storage size, not comparable with hours.",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-25",
+   "source_url": "https://skills.axisrobotics.ai/",
+   "source_locator": "Task explorer; Data section; source note",
+   "public_date": null,
+   "public_date_precision": null,
+   "public_date_meaning": null,
+   "public_date_source_url": null,
+   "public_date_locator": null,
+   "public_date_checked_at": null,
+   "public_date_note": null,
+   "id": "ds-axis-skills-atlas",
+   "lane": "synthetic",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "joint_state",
+     "partial": false
+    },
+    {
+     "key": "action",
+     "partial": false
+    },
+    {
+     "key": "trajectory",
+     "partial": false
+    },
+    {
+     "key": "camera_pose",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "manipulation",
+    "grasping",
+    "cross-embodiment",
+    "data discovery"
+   ],
+   "body_families": [
+    "arm"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 1,
+   "evaluation": false
+  },
+  {
+   "name": "Humyn Labs",
+   "url": "https://humynlabs.ai/",
+   "description": "Physical AI data company that records human work in factories, warehouses, farms and homes with its own capture devices and turns it into labelled training datasets (sight, sound, motion and touch) for robotics and world-model developers.",
+   "data_origin": "human_capture",
+   "resource_class": "commercial_data_service",
+   "embodiment": "Human work in factories, warehouses, farms and homes",
+   "capture_method": "Proprietary capture devices; provider-operated collection in 20+ countries",
+   "data_format": "Not established",
+   "access_status": "contact_provider",
+   "license_note": "Dataset licence not established; commercial terms",
+   "version_scope": "Source snapshot 2026-11-25; no public release pinned",
+   "key_takeaway": "A commercial data supply service, not a fixed public dataset.",
+   "limitations": "No public corpus, volume, sensor specification or named customer. Revenue and scale figures are company claims. Modalities are as the company names them (sight, sound, motion, touch).",
+   "review_status": "Primary source overview checked; no independent data replication",
+   "checked_at": "2026-11-25",
+   "source_url": "https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a",
+   "source_locator": "Series A announcement, 2026-11-18",
+   "public_date": null,
+   "public_date_precision": null,
+   "public_date_meaning": null,
+   "public_date_source_url": null,
+   "public_date_locator": null,
+   "public_date_checked_at": null,
+   "public_date_note": null,
+   "id": "ds-humyn-labs",
+   "lane": "human",
+   "modalities": [
+    {
+     "key": "rgb",
+     "partial": false
+    },
+    {
+     "key": "audio",
+     "partial": false
+    },
+    {
+     "key": "motion",
+     "partial": false
+    },
+    {
+     "key": "tactile",
+     "partial": false
+    }
+   ],
+   "modality_state": null,
+   "learning_uses": [
+    "human-to-robot",
+    "embodied learning",
+    "world models"
+   ],
+   "body_families": [
+    "human"
+   ],
+   "licence_stated": false,
+   "parents": [],
+   "children": [],
+   "related_benchmarks": [],
+   "quantities": 0,
+   "evaluation": false
   }
  ],
  "quantities": [
@@ -3928,6 +4055,31 @@
    "checked_at": "2026-11-23",
    "id": "dm-galaxea-1",
    "value": 11,
+   "scale": false,
+   "part": false,
+   "set_apart": null
+  },
+  {
+   "dataset_id": "ds-axis-skills-atlas",
+   "data_version": "Task-list snapshot 2026-11-06",
+   "metric": "tasks",
+   "unit": "tasks",
+   "qualifier": "reported",
+   "scope": "headline",
+   "data_origin": "simulation",
+   "release_status": "reported_release",
+   "comparison_group": null,
+   "display_status": "source_reported",
+   "evidence_status": "Primary source transcribed; not independently counted",
+   "overlap_note": "Each task ID is a separate LeRobot dataset; the count is not a data volume.",
+   "limitations": "Count of unique task IDs in the atlas snapshot; 267 tasks have no skill tag and 392 robot labels are model-inferred.",
+   "source_url": "https://skills.axisrobotics.ai/",
+   "source_locator": "Task explorer; source note (unique task IDs)",
+   "source_date": null,
+   "date_meaning": "Source publication/experiment date not extracted; scope is the named release",
+   "checked_at": "2026-11-25",
+   "id": "dm-axis-skills-atlas-1",
+   "value": 11199,
    "scale": false,
    "part": false,
    "set_apart": null

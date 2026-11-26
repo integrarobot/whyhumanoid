@@ -24,7 +24,7 @@
    "precision": "year",
    "domain": {
     "start": "2016-01-01",
-    "end": "2026-11-25"
+    "end": "2026-11-26"
    },
    "columns": [
     {
@@ -172,7 +172,7 @@
     {
      "key": "2026",
      "label": "2026",
-     "t": "2026-11-25",
+     "t": "2026-11-26",
      "value": 14,
      "partial": true,
      "items": [
@@ -209,7 +209,7 @@
      "2026": 14
     }
    },
-   "summary": "68 dated introductions from 2016 to 2026; 2025 has the most (24). 2026 counts to 2026-11-25.",
+   "summary": "68 dated introductions from 2016 to 2026; 2025 has the most (24). 2026 counts to 2026-11-26.",
    "coverage": {
     "included": 68,
     "total": 212,
@@ -262,7 +262,7 @@
    "status_note": "Partial: 144 of 212 catalogue robots have no usable release date.",
    "sources": [
     {
-     "label": "Free Humanoids catalogue, snapshot 2026-11-25",
+     "label": "Free Humanoids catalogue, snapshot 2026-11-26",
      "url": "/data/humanoids-catalogue.json"
     }
    ],
@@ -333,7 +333,7 @@
    "precision": "quarter",
    "domain": {
     "start": "2022-01-01",
-    "end": "2026-11-25"
+    "end": "2026-11-26"
    },
    "series": [
     {
@@ -599,8 +599,8 @@
     {
      "key": "2026-Q4",
      "label": "",
-     "long": "Q4 2026 (to 2026-11-25)",
-     "t": "2026-11-25",
+     "long": "Q4 2026 (to 2026-11-26)",
+     "t": "2026-11-26",
      "value": 114,
      "segments": {
       "ann": 33,
@@ -637,7 +637,7 @@
      "op": 8
     }
    },
-   "summary": "By 2026-11-25, 114 of 125 cases have a dated source: 7 in operation, 49 pilot or trial, 25 unconfirmed, 33 announced.",
+   "summary": "By 2026-11-26, 114 of 125 cases have a dated source: 7 in operation, 49 pilot or trial, 25 unconfirmed, 33 announced.",
    "coverage": {
     "included": 114,
     "total": 125,
@@ -658,7 +658,7 @@
    "status_note": "114 of 125 cases placed in time; 11 cases with no dated record stay in the date-unknown bar, outside the time series.",
    "sources": [
     {
-     "label": "Deployments public summaries, snapshot 2026-11-25",
+     "label": "Deployments public summaries, snapshot 2026-11-26",
      "url": "/data/preview/deployments.json"
     }
    ],
@@ -809,7 +809,7 @@
       "83"
      ],
      [
-      "Q4 2026 (to 2026-11-25)",
+      "Q4 2026 (to 2026-11-26)",
       "7",
       "49",
       "25",
@@ -831,7 +831,7 @@
    "precision": "year",
    "domain": {
     "start": "2009-01-01",
-    "end": "2026-11-25"
+    "end": "2026-11-26"
    },
    "rows": [
     {
@@ -1099,7 +1099,7 @@
    "status_note": "17 of 19 products placed in time; 2 cannot be dated from the recorded text.",
    "sources": [
     {
-     "label": "Components public product rows, snapshot 2026-11-25",
+     "label": "Components public product rows, snapshot 2026-11-26",
      "url": "/data/preview/hardware.json"
     }
    ],
@@ -1228,7 +1228,7 @@
    "precision": "day",
    "domain": {
     "start": "2024-01-01",
-    "end": "2026-11-25"
+    "end": "2026-11-26"
    },
    "rows": [
     {
@@ -1478,7 +1478,7 @@
    "status_note": "12 of 28 providers have dated evidence; 16 have none on their reviewed pages.",
    "sources": [
     {
-     "label": "Integrators atlas, snapshot 2026-11-25",
+     "label": "Integrators atlas, snapshot 2026-11-26",
      "url": "/data/integrators/atlas.json"
     }
    ],
@@ -1583,7 +1583,7 @@
    "path": "/datasets/",
    "type": "lanes",
    "title": "Associated papers of robot learning data resources",
-   "subtitle": "28 of 35 resources by the first arXiv submission of their associated paper: a partial chronology of publications, not of dataset releases or volume.",
+   "subtitle": "28 of 37 resources by the first arXiv submission of their associated paper: a partial chronology of publications, not of dataset releases or volume.",
    "meaning": "Each data resource is placed at the date of its associated paper or official announcement, as the source states it. So far every dated resource uses the first arXiv submission (v1) of its paper, checked against the arXiv history, with the link between resource and paper taken from the official project page, repository or abstract. This is not the date the data was released or became available, and not how its volume grew: current figures may come from later versions.",
    "unit": "papers",
    "precision": "day",
@@ -2081,25 +2081,25 @@
    "summary": "28 associated papers from 2021 to 2026: 8 robot-recorded, 9 human observation and motion, 7 synthetic, simulated and retargeted, 1 environment assets, 2 mixed origins, 1 origin not established or not applicable. Collections overlap: their sizes are never added.",
    "coverage": {
     "included": 28,
-    "total": 35,
+    "total": 37,
     "unit": "resources",
     "excluded": [
      {
       "reason": "Resources without a checked date yet",
-      "count": 7
+      "count": 9
      }
     ],
     "note": "Several papers have later versions; current figures are not dated back to v1. A date is the first arXiv submission of the associated paper unless its row says otherwise; where a paper or announcement came earlier, the row says so."
    },
    "status": "partial",
-   "status_note": "Partial: 28 of 35 resources dated; 7 undated. Release and availability dates are not established.",
+   "status_note": "Partial: 28 of 37 resources dated; 9 undated. Release and availability dates are not established.",
    "sources": [
     {
      "label": "arXiv submission histories, checked 2026-11-25",
      "url": "https://arxiv.org/"
     },
     {
-     "label": "Robot Learning Data Atlas, snapshot 2026-11-25",
+     "label": "Robot Learning Data Atlas, snapshot 2026-11-26",
      "url": "/data/datasets/atlas.json"
     }
    ],

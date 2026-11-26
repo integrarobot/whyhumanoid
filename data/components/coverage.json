@@ -2,7 +2,7 @@
  "title": "Components coverage",
  "note": "Counts only, from every row of the Components tab; product details are for subscribers except the public first rows. Classes and sensing approaches come from explicit rules over the recorded text (assets/components-core.js).",
  "snapshot": {
-  "exported_at": "2026-11-25T05:35:43.000Z"
+  "exported_at": "2026-11-26T06:38:00.000Z"
  },
  "counts": {
   "products": 19,
