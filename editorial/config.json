@@ -1,0 +1,6 @@
+{
+  "note": "Newsletter (/newsletter/) and News (/news/): public English editorial sections built from this store by tools/build-pages.mjs. While published is false the pages carry noindex and are left out of the sitemap and the navigation. Set published to true only in the publication change, not before 2026-11-27 (Europe/Madrid). Contract and procedure: ops/editorial/README.md.",
+  "published": false,
+  "embargo_until": "2026-11-27",
+  "scope": { "years": [2025, 2026], "publication": "Integrarobot" }
+}

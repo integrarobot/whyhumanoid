@@ -3,6 +3,7 @@ exclude:
   - server
   - tools
   - ops
+  - editorial
   - README.md
   - SECURITY.md
   - DEPLOYMENT.md

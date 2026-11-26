@@ -1,0 +1,6 @@
+{
+  "note": "Written by tools/editorial.mjs ingest: the last package and the content hash of every edition and original. No clock.",
+  "last_package_sha256": null,
+  "editions": {},
+  "originals": {}
+}
