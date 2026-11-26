@@ -1,0 +1,59 @@
+{
+  "id": "WH-20261126-0819-traspaso-newsletter-tres-fases",
+  "tarea": "Dejar en el repositorio el traspaso duradero de cada newsletter: investigación y plan en la nube (Claude), escritura y relectura con el conector nativo de Google Sheets (Codex) y publicación tras el recibo (Claude)",
+  "origen": "Codex, con la autorización de Javier del 26/11/2026, para que ninguna ejecución acabe en pending_sheets ni dependa de que Javier copie celdas o pase planes",
+  "fecha": "2026-11-26T08:19:09+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Contrato whyhumanoid/workbook-plan@1 en ops/weekly-update/plan-contract.md, en inglés con resumen en español:\n- tres fases con responsable y horario reales;\n- identidad estable de la edición y todas sus noticias en orden, cada una con su resultado y con la existencia de la entidad aparte;\n- para cada celda: pestaña, fila, columna y cabecera, clave del registro, valor previo, valor propuesto y fuentes;\n- valores privados como HMAC y carga privada fuera de Git, de la que Git solo guarda el SHA-256;\n- campos del recibo de Codex y relectura obligatoria con la exportación previa.",
+    "Canal privado probado: fichero en «Mi unidad» de Javier con título exacto, solo para el propietario, con el SHA-256 comprobado por Claude y por Codex. Como la búsqueda por título no lo encontró, el identificador y el enlace se entregan en privado, con plan_id y SHA-256, en la conversación de la fase 1 y en la nota para Codex; nunca en Git ni en un cierre.",
+    "Herramienta tools/workbook-plan.mjs (check, split, preflight, readback, simulate, summary y hash) y 11 pruebas en tools/test-workbook-plan.mjs, en CI:\n- rechaza un valor privado en claro, también en record.unique;\n- rechaza conflictos, registros movidos y duplicados;\n- rechaza una fila de lista en un grupo equivocado, sobre un título o una fila de cabeceras, o entre ambos;\n- la relectura vuelve a comprobar el grupo y el registro, exige --previous y falla ante cualquier cambio fuera del plan que no sea un valor de mercado en vivo, citando la celda y nunca el valor;\n- la línea de comandos funciona en rutas con espacios y signos de interrogación y devuelve error ante un plan inexistente o inválido.",
+    "Skill y AGENTS.md:\n- solo la sección de noticias (18/11/2026);\n- las tres fases: tarea de Claude los miércoles a las 14:00 y automatización de Codex «Incorporar newsletters a Why Humanoid?» a diario a las 15:00;\n- un conector de solo lectura no es un bloqueo, y nunca se piden copias manuales ni cambios de permisos como rutina;\n- fuera Autosheet y la escritura con navegador;\n- un PR y una importación por lote, contando las importaciones previas del día y con el coste de D1 como estimación del catálogo actual; nada de importaciones simultáneas ni redundantes;\n- se mantiene la auditoría de los viernes.",
+    "Espacio en una lista llena, como el primer bloque de Software, con las filas 2 a 80 ocupadas y el título en la 81. La fase 1 pide una preparación acotada (estado awaiting_preparation). Codex hace los huecos con una inserción o permutación limitada a las columnas de esa lista, conserva los metadatos nativos y la lista paralela, y da su recibo. La preparación sola no se publica ni se importa. Claude comprueba la permutación y los huecos y rebasa el plan aún no escrito: filas, SHA-256, sal, carga y fichero de Drive nuevos. Un plan escrito no se rebasa.",
+    "Plan WP-20261125-integrarobot-why-humanoid reescrito con el contrato (10 operaciones, 87 celdas, 4 privadas). state.json guarda:\n- el traspaso publicado, con el recibo de Codex y la relectura propia (87 valores iguales y las 4 diferencias de grupo que la relectura nueva detecta);\n- la reordenación de Software y su publicación;\n- la edición del 25/11 como última procesada, con Simplexity, Playground y Orbit en known_pending y la evidencia que necesitan.",
+    "Fichero de la ejecución del 25/11: Boston Dynamics corregido (Spot ya tiene registros en Deployments; el software Orbit no es Orbit Robotics) y recuento sin solapamientos: 9 altas, 2 ya incorporadas, 2 fuera de alcance y 3 pendientes. Los cierres históricos no se tocan."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #131",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/131"
+    },
+    {
+      "etiqueta": "Contrato",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/plan-contract.md"
+    },
+    {
+      "etiqueta": "Herramienta",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/tools/workbook-plan.mjs"
+    },
+    {
+      "etiqueta": "Skill",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    },
+    {
+      "etiqueta": "Plan del 25/11",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json"
+    },
+    {
+      "etiqueta": "Estado",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/state.json"
+    }
+  ],
+  "despliegue": [
+    "No aplica a la web ni a producción: el PR #131 solo cambia ops/, .claude/, tools/, AGENTS.md y el CI, que GitHub Pages no publica, y no requiere importación. Fusionado en main como 251782cb1df6732db582e4e62f042bf3e400ea8d, con el CI 45774138512 en verde sobre el head 70be541. Codex revisó el head 02191c7; después solo hubo correcciones de texto que pidió (D1 y el espacio en listas)."
+  ],
+  "verificaciones": [
+    "Codex revisó por su cuenta el head 02191c7, en la ruta real de Why Humanoid?: 11/11 pruebas, la línea de comandos funciona y falla con código 1 ante un fichero inexistente, el plan real con la carga privada descargada pasa check, y pasan la guardia pública y git diff --check. Antes había encontrado tres defectos en 1e8a244 (entrada de la línea de comandos, record.unique y relectura sin grupo ni cambios globales), todos corregidos con pruebas de regresión.",
+    "En local: 11/11 pruebas del plan; check del plan real con y sin carga; readback del plan real con la exportación previa (87 valores iguales, 0 cambios inesperados, solo valores de mercado en vivo, y las 4 diferencias de grupo que existían); check-public y entregas --check.",
+    "La herramienta funciona sin node_modules, como en el paso de CI anterior a npm ci.",
+    "CI en verde en cada head del PR #131: 45773253510 (02191c7), 45773743695 (5ee90d7) y 45774138512 (70be541)."
+  ],
+  "pendientes": [
+    "Movimientos dentro de una lista: el contrato aún no tiene una operación para ellos. Hasta entonces se prueban como permutación con el recibo de Codex y la relectura de Claude.",
+    "Pendientes de contenido, a cargo de Claude o Codex con los criterios existentes: Simplexity, Playground y el software Orbit de Boston Dynamics, cada uno con la evidencia que necesita en known_pending.",
+    "Codex: registrar el aviso de este cierre."
+  ],
+  "siguiente_accion": "La ejecución del miércoles 2/12/2026 aplica el contrato: entrega el plan público por PR y la carga privada por Drive, con su identificador por canal privado. La automatización diaria de Codex escribe y relee, y Claude publica tras el recibo."
+}
