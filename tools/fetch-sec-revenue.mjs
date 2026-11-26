@@ -14,6 +14,7 @@ export const CONCEPTS = [
   ['us-gaap', 'RevenueFromContractWithCustomerExcludingAssessedTax'],
   ['us-gaap', 'RevenueFromContractWithCustomerIncludingAssessedTax'],
   ['ifrs-full', 'Revenue'],
+  ['ifrs-full', 'RevenueFromContractsWithCustomers'],
 ];
 const ANNUAL = new Set(['10-K', '10-K/A', '20-F', '20-F/A', '40-F', '40-F/A']);
 const days = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5) + 1;

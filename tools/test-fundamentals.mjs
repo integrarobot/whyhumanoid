@@ -58,7 +58,8 @@ test('large changes and old years are flagged, not hidden', () => {
 test('the published snapshot: SEC sources, rules, growth computed from the stored values, no quote fields', () => {
   const snap = JSON.parse(readFileSync(new URL('../data/investment/fundamentals.json', import.meta.url), 'utf8'));
   assert.deepEqual(snap.rules, RULES);
-  assert.match(snap.packet_sha256, /^[0-9a-f]{64}$/);
+  assert.ok(snap.packet_sha256.length >= 1 && snap.packet_sha256.every((h) => /^[0-9a-f]{64}$/.test(h)));
+  assert.match(snap.securities['ETR:SAP'].note, /SAP SE as filed with the SEC; the listing shown here is unchanged/);
   const entries = Object.entries(snap.securities);
   assert.equal(snap.counts.companies, entries.length);
   for (const [key, x] of entries) {

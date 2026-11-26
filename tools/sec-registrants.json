@@ -1,5 +1,5 @@
 {
- "note": "SEC registrants of the Investment category for tools/fetch-sec-revenue.mjs: Google Finance key, catalogue name, SEC CIK and SEC name, matched by ticker and issuer name against the SEC exchange ticker file (reviewed by Codex). Public identifiers only.",
+ "note": "SEC registrants of the Investment category for tools/fetch-sec-revenue.mjs: Google Finance key, catalogue name, SEC CIK and SEC name, matched by ticker and issuer name against the SEC exchange ticker file (reviewed by Codex); listings outside the US are matched to their issuer by exact legal name, the listing unchanged. Public identifiers only.",
  "registrants": [
   {
    "key": "NASDAQ:TSLA",
@@ -714,6 +714,48 @@
    "cik": 1712463,
    "sec_name": "Ranpak Holdings Corp.",
    "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "BIT:STMMI",
+   "name": "STMicroelectronics",
+   "cik": 932787,
+   "sec_name": "STMicroelectronics N.V.",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "NYSEAMERICAN:UMAC",
+   "name": "Unusual Machines",
+   "cik": 1956955,
+   "sec_name": "Unusual Machines, Inc.",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "TSE:CLS",
+   "name": "Celestica",
+   "cik": 1030894,
+   "sec_name": "CELESTICA INC",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "TLV:NVMI",
+   "name": "Nova",
+   "cik": 1109345,
+   "sec_name": "NOVA LTD.",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "TSE:OTEX",
+   "name": "Open Text",
+   "cik": 1002638,
+   "sec_name": "OPEN TEXT CORP",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "ETR:SAP",
+   "name": "SAP",
+   "cik": 1000184,
+   "sec_name": "SAP SE",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
   }
  ]
 }

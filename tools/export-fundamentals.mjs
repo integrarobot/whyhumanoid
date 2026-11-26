@@ -161,7 +161,10 @@ export function buildSnapshot(packet, packetSha256, issuers = null, issuersSha25
     const r = pickRevenue(c);
     counts[r.status] += 1;
     if (r.status === 'published' && r.growth_yoy !== null) counts.with_growth += 1;
-    securities[c.key] = { name: c.name, sec_name: c.secName, cik: c.cik, source_url: c.source_url, retrieved_at: c.retrieved_at, raw_sha256: c.raw_sha256, ...r, review_flags: reviewFlags(r, packet.as_of) };
+    // A listing outside the US matched to its issuer's SEC filings: the issuer's consolidated accounts, the listing kept.
+    const outside = !/^(NASDAQ|NYSE|NYSEAMERICAN|NYSEARCA):/.test(c.key) && /share class of the catalogue are unchanged/.test(c.identity_review ?? '');
+    const note = r.status === 'published' && outside ? `Consolidated accounts of ${c.secName} as filed with the SEC; the listing shown here is unchanged.` : null;
+    securities[c.key] = { name: c.name, sec_name: c.secName, cik: c.cik, source_url: c.source_url, retrieved_at: c.retrieved_at, raw_sha256: c.raw_sha256, ...r, ...(note ? { note } : {}), review_flags: reviewFlags(r, packet.as_of) };
     if (securities[c.key].review_flags.length) counts.flagged = (counts.flagged ?? 0) + 1;
     if (r.status === 'published') counts.sec += 1;
   }
@@ -177,7 +180,7 @@ export function buildSnapshot(packet, packetSha256, issuers = null, issuersSha25
     id: 'investment-fundamentals',
     source: 'SEC EDGAR XBRL company facts (data.sec.gov); issuer annual reports reviewed by Codex',
     as_of: packet.as_of,
-    packet_sha256: packetSha256,
+    packet_sha256: [].concat(packetSha256),
     issuers_sha256: issuersSha256,
     issuers_reviewer: issuers?.reviewer ?? null,
     issuers_method: issuers?.method ?? null,
@@ -191,12 +194,17 @@ export function buildSnapshot(packet, packetSha256, issuers = null, issuersSha25
 const OUT = new URL('../data/investment/fundamentals.json', import.meta.url);
 if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
   const at = process.argv.indexOf('--from');
-  if (at < 0 || !process.argv[at + 1]) { console.error('usage: node tools/export-fundamentals.mjs --from <sec-packet.json> [--issuers <issuer-packet.json>] [--check]'); process.exit(2); }
-  const raw = readFileSync(process.argv[at + 1]);
+  if (at < 0 || !process.argv[at + 1]) { console.error('usage: node tools/export-fundamentals.mjs --from <sec-packet.json> [--from <more.json>] [--issuers <issuer-packet.json>] [--check]'); process.exit(2); }
+  // Several SEC packets (--from repeated): merged, a company in two packets is an error.
+  const sha = (b) => createHash('sha256').update(b).digest('hex');
+  const raws = process.argv.flatMap((a, i) => (a === '--from' && process.argv[i + 1] ? [readFileSync(process.argv[i + 1])] : []));
+  const packets = raws.map((r) => JSON.parse(r));
+  const seen = new Set();
+  for (const c of packets.flatMap((p) => p.companies)) { if (seen.has(c.key)) { console.error(`${c.key}: in two SEC packets`); process.exit(1); } seen.add(c.key); }
+  const merged = { as_of: packets.map((p) => p.as_of).sort().at(-1), companies: packets.flatMap((p) => p.companies) };
   const ia = process.argv.indexOf('--issuers');
   const iraw = ia > 0 && process.argv[ia + 1] ? readFileSync(process.argv[ia + 1]) : null;
-  const sha = (b) => createHash('sha256').update(b).digest('hex');
-  const snap = buildSnapshot(JSON.parse(raw), sha(raw), iraw ? JSON.parse(iraw) : null, iraw ? sha(iraw) : null);
+  const snap = buildSnapshot(merged, raws.map(sha), iraw ? JSON.parse(iraw) : null, iraw ? sha(iraw) : null);
   const text = `${JSON.stringify(snap, null, 1)}\n`;
   if (process.argv.includes('--check')) {
     const now = readFileSync(OUT, 'utf8');
