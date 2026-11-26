@@ -3,6 +3,7 @@
 // the public site of the commit in STAGING_SITE_COMMIT (40 hex characters), read from the public repository and
 // changed only as server/src/staging/site.js says (same-origin API, staging banner, noindex). Never for production.
 import worker from '../src/worker.js';
+import { MUSE_CHALLENGE_PATH } from '../src/muse-challenge.js';
 import { siteResponse } from '../src/staging/site.js';
 
 const REPO = 'integrarobot/whyhumanoid';
@@ -10,7 +11,8 @@ const REPO = 'integrarobot/whyhumanoid';
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    if (url.pathname === '/health' || url.pathname === '/mcp' || url.pathname.startsWith('/v1/')) return worker.fetch(request, env, ctx);
+    // The Muse challenge is answered by the Worker on TEST too (exact path only), so the route can be checked before production.
+    if (url.pathname === '/health' || url.pathname === '/mcp' || url.pathname.startsWith('/v1/') || url.pathname === MUSE_CHALLENGE_PATH) return worker.fetch(request, env, ctx);
     if (env.STRIPE_MODE === 'live') return new Response('the staging entry never runs with live Stripe', { status: 503 });
     const sha = String(env.STAGING_SITE_COMMIT ?? '');
     if (!/^[0-9a-f]{40}$/.test(sha)) return new Response('STAGING_SITE_COMMIT is not set to a full commit id', { status: 503 });
