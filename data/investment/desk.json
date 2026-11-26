@@ -13,7 +13,7 @@
   "No thesis in this catalogue does not mean that no thesis exists.",
   "A thesis about semiconductors, sensors or software is not evidence of revenue from humanoid robots.",
   "Publisher names are shown as each source states them. Several funds can belong to one management firm, so the number of names is not a number of independent firms.",
-  "Quotes, charts, financials and headlines come from TradingView widgets, loaded from TradingView in your browser. They are not Why Humanoid? data, may be delayed or end-of-day, and are not available for every exchange.",
+  "Quotes, charts, financials, profiles and optional top stories are TradingView widgets, loaded from TradingView in your browser: not Why Humanoid? data, possibly delayed or end-of-day, and not available for every exchange. Recent headlines come from Yahoo Finance's public feed through our server, which keeps a shared copy for up to 30 minutes.",
   "Nothing here is investment advice or a recommendation."
  ],
  "theses": [
@@ -1985,6 +1985,7 @@
    "ticker": "TSLA",
    "exchange": "Nasdaq",
    "segment": "Humanoids / diversified group",
+   "description": "Electric vehicles and energy; develops the Optimus humanoid and autonomy systems.",
    "etf": [
     "KOID",
     "BOTZ",
@@ -2033,6 +2034,7 @@
    "ticker": "09880",
    "exchange": "HKEX",
    "segment": "Humanoids / services",
+   "description": "Develops Walker humanoids, educational robots and service and automation solutions.",
    "etf": [
     "KOID",
     "BOTZ",
@@ -2074,6 +2076,7 @@
    "ticker": "277810",
    "exchange": "KRX · KOSDAQ",
    "segment": "Cobots / humanoid platforms",
+   "description": "Maker of cobots, quadrupeds and dual-arm mobile platforms such as RB-Y1.",
    "etf": [
     "KOID",
     "BOTZ",
@@ -2111,6 +2114,7 @@
    "ticker": "02498",
    "exchange": "HKEX",
    "segment": "Sensors / perception",
+   "description": "LiDAR sensors and perception for vehicles, robots and physical-AI applications.",
    "etf": [
     "BOTZ"
    ],
@@ -2146,6 +2150,7 @@
    "ticker": "ISRG",
    "exchange": "Nasdaq",
    "segment": "Medical robotics",
+   "description": "Develops the da Vinci robot-assisted surgery systems and the Ion endoluminal platform.",
    "etf": [
     "BOTZ",
     "ROBO",
@@ -2185,6 +2190,7 @@
    "ticker": "SERV",
    "exchange": "Nasdaq",
    "segment": "Delivery / hospital services",
+   "description": "Designs and operates delivery robots; expanding into hospital robotics with Diligent Robotics.",
    "etf": [
     "BOTZ",
     "ROBO"
@@ -2220,6 +2226,7 @@
    "ticker": "RR",
    "exchange": "Nasdaq",
    "segment": "Service robotics / industry",
+   "description": "Service robots and commercial and industrial automation: ADAM, DUST-E and mobile platforms.",
    "etf": [
     "BOTZ"
    ],
@@ -2254,6 +2261,7 @@
    "ticker": "XBOT",
    "exchange": "TSX Venture",
    "segment": "Social humanoids",
+   "description": "Human-like humanoids and AI software for social interaction and customer service.",
    "etf": [],
    "tradingview": {
     "symbol": "TSXV:XBOT",
@@ -2286,6 +2294,7 @@
    "ticker": "108490",
    "exchange": "KRX · KOSDAQ",
    "segment": "Actuators / platforms",
+   "description": "DYNAMIXEL smart actuators and robotic platforms for research, automation and physical AI.",
    "etf": [
     "KOID",
     "TORK",
@@ -2324,6 +2333,7 @@
    "ticker": "AMCI",
    "exchange": "Nasdaq Capital Market",
    "segment": "Inspection / logistics",
+   "description": "Develops robotics for inspection, security and logistics: quadrupeds, arms and goods unloading.",
    "etf": [],
    "tradingview": {
     "symbol": "NASDAQ:AMCI",
@@ -2356,6 +2366,7 @@
    "ticker": "NVDA",
    "exchange": "Nasdaq",
    "segment": "Computing / software / simulation",
+   "description": "Accelerated computing, Isaac simulation and Cosmos/GR00T models for developing robotics and physical AI.",
    "etf": [
     "KOID",
     "BOTZ",
@@ -2397,6 +2408,7 @@
    "ticker": "SHA0",
    "exchange": "Frankfurt · Prime Standard",
    "segment": "Components / industrial group",
+   "description": "Motion technology, bearings and components; develops solutions for the humanoid value chain.",
    "etf": [
     "KOID",
     "TORK",
@@ -2436,6 +2448,7 @@
    "ticker": "TER",
    "exchange": "Nasdaq",
    "segment": "Cobots / mobile robots / group",
+   "description": "Test-equipment group; its robotics division includes Universal Robots cobots and MiR mobile robots.",
    "etf": [
     "KOID",
     "ROBO",
@@ -2474,6 +2487,7 @@
    "ticker": "6954",
    "exchange": "Tokyo Stock Exchange",
    "segment": "Industrial robotics",
+   "description": "Industrial and collaborative robots, numerical control and factory automation.",
    "etf": [
     "BOTZ",
     "ROBO",
@@ -2516,6 +2530,7 @@
    "ticker": "6506",
    "exchange": "Tokyo · Prime Market",
    "segment": "Industrial robotics / motion",
+   "description": "Industrial robots, servo motors, motion control and automation systems.",
    "etf": [
     "TORK",
     "BOTZ",
@@ -2556,6 +2571,7 @@
    "ticker": "6324",
    "exchange": "Tokyo · Prime Market",
    "segment": "Reducers / actuators",
+   "description": "Precision reducers and rotary and linear actuators for joints and automation.",
    "etf": [
     "KOID",
     "TORK",
@@ -2598,6 +2614,7 @@
    "ticker": "6268",
    "exchange": "Tokyo Stock Exchange",
    "segment": "Reducers / industrial group",
+   "description": "Industrial group with precision reducers used in industrial robot motion.",
    "etf": [
     "KOID",
     "TORK",
@@ -2637,6 +2654,7 @@
    "ticker": "454910",
    "exchange": "KRX · KOSPI",
    "segment": "Collaborative robots",
+   "description": "Maker of cobots for palletising, welding, handling, machining and services.",
    "etf": [
     "BOTZ",
     "RBOT"
@@ -2673,6 +2691,7 @@
    "ticker": "005380",
    "exchange": "KRX · KOSPI",
    "segment": "Automotive / robotics exposure",
+   "description": "Carmaker with robotics exposure through Boston Dynamics and the group's robotics strategy.",
    "etf": [],
    "tradingview": {
     "symbol": "KRX:005380",
@@ -2709,6 +2728,7 @@
    "ticker": "SYM",
    "exchange": "Nasdaq",
    "segment": "Logistics / warehouses",
+   "description": "Warehouse automation with robots, software and AI to move and pick goods.",
    "etf": [
     "KOID",
     "BOTZ",
@@ -2748,6 +2768,7 @@
    "ticker": "AUTO",
    "exchange": "Oslo Børs",
    "segment": "Logistics / storage",
+   "description": "Robotic cube storage and container retrieval systems for warehouses.",
    "etf": [
     "BOTZ",
     "ROBO",
@@ -2787,6 +2808,7 @@
    "ticker": "OUST",
    "exchange": "Nasdaq",
    "segment": "Sensors / perception",
+   "description": "Digital LiDAR, cameras and perception software for robotics, industry, mobility and infrastructure.",
    "etf": [
     "BOTZ",
     "ROBO",
@@ -2823,6 +2845,7 @@
    "ticker": "HSAI / 02525",
    "exchange": "Nasdaq / HKEX",
    "segment": "Sensors / perception",
+   "description": "LiDAR sensors and 3D perception technology for automotive and robotics applications.",
    "etf": [
     "BOTZ"
    ],
@@ -2857,6 +2880,7 @@
    "ticker": "002747 / 02715",
    "exchange": "Shenzhen / HKEX",
    "segment": "Industrial robotics / motion",
+   "description": "Industrial robots, servos, motion control and automated manufacturing systems.",
    "etf": [
     "BOTZ",
     "ROBO"
@@ -2894,6 +2918,7 @@
    "ticker": "CGNX",
    "exchange": "Nasdaq",
    "segment": "Machine vision / perception",
+   "description": "Machine vision and AI-enabled sensors for industrial and logistics inspection, identification and automation.",
    "etf": [
     "KOID",
     "BOTZ",
@@ -2932,6 +2957,7 @@
    "ticker": "688836",
    "exchange": "Shanghai · STAR Market",
    "segment": "Humanoids / quadrupeds",
+   "description": "Maker of humanoids and quadrupeds; offers robotic platforms and components for research and industry.",
    "etf": [
     "KOID"
    ],
@@ -2966,6 +2992,7 @@
    "ticker": "002472",
    "exchange": "SHE",
    "segment": "Gears / transmission",
+   "description": "Makes gears and transmission assemblies for automotive, machinery and robotics applications.",
    "etf": [
     "KOID",
     "TORK"
@@ -3004,6 +3031,7 @@
    "ticker": "HEXA-B",
    "exchange": "STO",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID, ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID",
     "ROBO",
@@ -3043,6 +3071,7 @@
    "ticker": "603662",
    "exchange": "SHA",
    "segment": "Sensors / force measurement",
+   "description": "Supplier of sensing and weighing technology, with activities and investments linked to the robotics ecosystem.",
    "etf": [
     "KOID"
    ],
@@ -3077,6 +3106,7 @@
    "ticker": "TXN",
    "exchange": "NASDAQ",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3113,6 +3143,7 @@
    "ticker": "300124",
    "exchange": "SHE",
    "segment": "Drives / automation",
+   "description": "Develops industrial automation, power electronics, motor drives, control and industrial software.",
    "etf": [
     "KOID",
     "TORK",
@@ -3152,6 +3183,7 @@
    "ticker": "TDY",
    "exchange": "NYSE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3186,6 +3218,7 @@
    "ticker": "688017",
    "exchange": "SHA",
    "segment": "Reducers / actuators",
+   "description": "Develops harmonic reducers, rotary actuators and frameless motors for precision motion.",
    "etf": [
     "KOID",
     "TORK",
@@ -3222,6 +3255,7 @@
    "ticker": "ADI",
    "exchange": "NASDAQ",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3258,6 +3292,7 @@
    "ticker": "002979",
    "exchange": "SHE",
    "segment": "Motors / control / actuators",
+   "description": "Offers servo motors, stepper motors, controllers and robotic components, including frameless motors and integrated actuators.",
    "etf": [
     "KOID",
     "TORK"
@@ -3293,6 +3328,7 @@
    "ticker": "300100",
    "exchange": "SHE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3327,6 +3363,7 @@
    "ticker": "NXPI",
    "exchange": "NASDAQ",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3361,6 +3398,7 @@
    "ticker": "600111",
    "exchange": "SHA",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3395,6 +3433,7 @@
    "ticker": "NOVT",
    "exchange": "NASDAQ",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID, BOTZ, ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID",
     "BOTZ",
@@ -3435,6 +3474,7 @@
    "ticker": "TEL",
    "exchange": "NYSE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3469,6 +3509,7 @@
    "ticker": "6861",
    "exchange": "TYO",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID, BOTZ, ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID",
     "BOTZ",
@@ -3512,6 +3553,7 @@
    "ticker": "RRX",
    "exchange": "NYSE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3546,6 +3588,7 @@
    "ticker": "002050",
    "exchange": "SHE",
    "segment": "Thermal control / actuator supply chain",
+   "description": "Develops control and thermal-management components for climate control and automotive. It is held by TORK; that membership does not quantify its robotics business.",
    "etf": [
     "KOID",
     "TORK"
@@ -3583,6 +3626,7 @@
    "ticker": "601100",
    "exchange": "SHA",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3617,6 +3661,7 @@
    "ticker": "ST",
    "exchange": "NYSE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3651,6 +3696,7 @@
    "ticker": "601689",
    "exchange": "SHA",
    "segment": "Automotive / robotic actuators",
+   "description": "Automotive components group that includes a robot actuator division. The weight of that division in its revenue is not inferred.",
    "etf": [
     "KOID",
     "TORK"
@@ -3686,6 +3732,7 @@
    "ticker": "APTV",
    "exchange": "NYSE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3723,6 +3770,7 @@
    "ticker": "RBC",
    "exchange": "NYSE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3759,6 +3807,7 @@
    "ticker": "9660",
    "exchange": "HKG",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID, BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID",
     "BOTZ"
@@ -3797,6 +3846,7 @@
    "ticker": "MOG.A",
    "exchange": "NYSE",
    "segment": "Motion control / industrial group",
+   "description": "Motion and control solutions group serving several markets. Its Class A shares trade on the NYSE as MOG.A.",
    "etf": [
     "KOID",
     "BOTZ"
@@ -3832,6 +3882,7 @@
    "ticker": "APH",
    "exchange": "NYSE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3869,6 +3920,7 @@
    "ticker": "JBL",
    "exchange": "NYSE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3903,6 +3955,7 @@
    "ticker": "6481",
    "exchange": "TYO",
    "segment": "Linear motion / components",
+   "description": "Specialist in linear motion components and mechanical solutions for machinery and automation.",
    "etf": [
     "KOID",
     "TORK",
@@ -3941,6 +3994,7 @@
    "ticker": "6723",
    "exchange": "TYO",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -3976,6 +4030,7 @@
    "ticker": "2049",
    "exchange": "TPE",
    "segment": "Linear motion / transmission",
+   "description": "Offers motion control components, linear guides, ball screws and transmission systems for automation.",
    "etf": [
     "KOID",
     "TORK",
@@ -4015,6 +4070,7 @@
    "ticker": "MPWR",
    "exchange": "NASDAQ",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -4051,6 +4107,7 @@
    "ticker": "STMMI",
    "exchange": "BIT",
    "segment": "Semiconductors / electronics",
+   "description": "Technology issuer held by KOID. Its FAQ confirms the reference listing STMMI on Euronext Milan, separate from STM in New York.",
    "etf": [
     "KOID"
    ],
@@ -4085,6 +4142,7 @@
    "ticker": "MP",
    "exchange": "NYSE",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -4121,6 +4179,7 @@
    "ticker": "ALNT",
    "exchange": "NASDAQ",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID, BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID",
     "BOTZ"
@@ -4156,6 +4215,7 @@
    "ticker": "IFX",
    "exchange": "ETR",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID, ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID",
     "ROBO"
@@ -4191,6 +4251,7 @@
    "ticker": "MELE",
    "exchange": "EBR",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -4225,6 +4286,7 @@
    "ticker": "LYC",
    "exchange": "ASX",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -4259,6 +4321,7 @@
    "ticker": "000150",
    "exchange": "KRX",
    "segment": "Humanoids / physical AI (KOID)",
+   "description": "Included in the published holdings of KOID as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "KOID"
    ],
@@ -4294,6 +4357,7 @@
    "ticker": "6594",
    "exchange": "TYO",
    "segment": "Motors / components",
+   "description": "Motors and motion solutions group held by KOID; not all of its business is attributed to humanoids.",
    "etf": [
     "KOID"
    ],
@@ -4332,6 +4396,7 @@
    "ticker": "012330",
    "exchange": "KRX",
    "segment": "Components / mobility",
+   "description": "Supplier of mobility technology and components, with software, electrification and robotics partnerships it is seeking.",
    "etf": [
     "TORK"
    ],
@@ -4369,6 +4434,7 @@
    "ticker": "003021",
    "exchange": "SHE",
    "segment": "Micro drives / transmission",
+   "description": "Designs and makes precision transmission systems and micro drives for robotics, automotive and other applications.",
    "etf": [
     "TORK"
    ],
@@ -4403,6 +4469,7 @@
    "ticker": "204320",
    "exchange": "KRX",
    "segment": "Automotive / actuator supply chain",
+   "description": "Develops mobility and vehicle solutions, including driver-assistance and electrification systems; included because it is held by TORK.",
    "etf": [
     "TORK"
    ],
@@ -4438,6 +4505,7 @@
    "ticker": "002896",
    "exchange": "SHE",
    "segment": "Motors / reducers / transmission",
+   "description": "Develops and makes drives, motors and precision reducers for electromechanical automation.",
    "etf": [
     "TORK",
     "BOTZ"
@@ -4473,6 +4541,7 @@
    "ticker": "RSW",
    "exchange": "LON",
    "segment": "Metrology / position measurement",
+   "description": "Offers precision metrology, position measurement and additive manufacturing technologies.",
    "etf": [
     "TORK",
     "ROBO",
@@ -4511,6 +4580,7 @@
    "ticker": "603728",
    "exchange": "SHA",
    "segment": "Motors / motion control",
+   "description": "Offers motors and motion control solutions; investor documents identify the Shanghai issuer 603728.",
    "etf": [
     "TORK"
    ],
@@ -4545,6 +4615,7 @@
    "ticker": "ABBN",
    "exchange": "SWX",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO",
@@ -4583,6 +4654,7 @@
    "ticker": "6273",
    "exchange": "TYO",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO"
@@ -4619,6 +4691,7 @@
    "ticker": "6383",
    "exchange": "TYO",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO",
@@ -4658,6 +4731,7 @@
    "ticker": "AUR",
    "exchange": "NASDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "RBOT"
@@ -4693,6 +4767,7 @@
    "ticker": "GOOGL",
    "exchange": "NASDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -4731,6 +4806,7 @@
    "ticker": "DE",
    "exchange": "NYSE",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO"
@@ -4768,6 +4844,7 @@
    "ticker": "6645",
    "exchange": "TYO",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO",
@@ -4807,6 +4884,7 @@
    "ticker": "1810",
    "exchange": "HKG",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO"
@@ -4843,6 +4921,7 @@
    "ticker": "300757",
    "exchange": "SHE",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -4877,6 +4956,7 @@
    "ticker": "ROK",
    "exchange": "NYSE",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO",
@@ -4913,6 +4993,7 @@
    "ticker": "TECN",
    "exchange": "SWX",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -4947,6 +5028,7 @@
    "ticker": "6134",
    "exchange": "TYO",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO"
@@ -4983,6 +5065,7 @@
    "ticker": "2252",
    "exchange": "HKG",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5018,6 +5101,7 @@
    "ticker": "EXA",
    "exchange": "EPA",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5052,6 +5136,7 @@
    "ticker": "688169",
    "exchange": "SHA",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5086,6 +5171,7 @@
    "ticker": "688297",
    "exchange": "SHA",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5120,6 +5206,7 @@
    "ticker": "603486",
    "exchange": "SHA",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5154,6 +5241,7 @@
    "ticker": "BIDU",
    "exchange": "NASDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5188,6 +5276,7 @@
    "ticker": "ATS",
    "exchange": "TSE",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO",
@@ -5224,6 +5313,7 @@
    "ticker": "PONY",
    "exchange": "NASDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5261,6 +5351,7 @@
    "ticker": "OMCL",
    "exchange": "NASDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5295,6 +5386,7 @@
    "ticker": "300024",
    "exchange": "SHE",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5329,6 +5421,7 @@
    "ticker": "688686",
    "exchange": "SHA",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5363,6 +5456,7 @@
    "ticker": "2675",
    "exchange": "HKG",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5398,6 +5492,7 @@
    "ticker": "WRD",
    "exchange": "NASDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5432,6 +5527,7 @@
    "ticker": "058610",
    "exchange": "KOSDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5467,6 +5563,7 @@
    "ticker": "PRCT",
    "exchange": "NASDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5501,6 +5598,7 @@
    "ticker": "2464",
    "exchange": "TPE",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5536,6 +5634,7 @@
    "ticker": "2729",
    "exchange": "HKG",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5571,6 +5670,7 @@
    "ticker": "3881",
    "exchange": "HKG",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5606,6 +5706,7 @@
    "ticker": "4585",
    "exchange": "TPE",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5641,6 +5742,7 @@
    "ticker": "2432",
    "exchange": "HKG",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "RBOT"
@@ -5677,6 +5779,7 @@
    "ticker": "UMAC",
    "exchange": "NYSEAMERICAN",
    "segment": "Drones / components",
+   "description": "US drone company; its SEC filings confirm the UMAC listing on NYSE American.",
    "etf": [
     "BOTZ"
    ],
@@ -5711,6 +5814,7 @@
    "ticker": "2590",
    "exchange": "HKG",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "RBOT"
@@ -5747,6 +5851,7 @@
    "ticker": "278A",
    "exchange": "TYO",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5782,6 +5887,7 @@
    "ticker": "688160",
    "exchange": "SHA",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5816,6 +5922,7 @@
    "ticker": "6258",
    "exchange": "TYO",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "RBOT"
@@ -5852,6 +5959,7 @@
    "ticker": "688165",
    "exchange": "SHA",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5886,6 +5994,7 @@
    "ticker": "XPEV",
    "exchange": "NYSE",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "ROBO"
@@ -5921,6 +6030,7 @@
    "ticker": "AVEX",
    "exchange": "NYSE",
    "segment": "Uncrewed systems / defence",
+   "description": "Uncrewed aircraft systems and technology services company; its investor website confirms NYSE:AVEX and headquarters in California.",
    "etf": [
     "BOTZ"
    ],
@@ -5955,6 +6065,7 @@
    "ticker": "688277",
    "exchange": "SHA",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -5989,6 +6100,7 @@
    "ticker": "388720",
    "exchange": "KOSDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ",
     "RBOT"
@@ -6025,6 +6137,7 @@
    "ticker": "1021",
    "exchange": "HKG",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -6060,6 +6173,7 @@
    "ticker": "090360",
    "exchange": "KOSDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -6095,6 +6209,7 @@
    "ticker": "603666",
    "exchange": "SHA",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -6129,6 +6244,7 @@
    "ticker": "348340",
    "exchange": "KOSDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -6164,6 +6280,7 @@
    "ticker": "KDK",
    "exchange": "NASDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -6198,6 +6315,7 @@
    "ticker": "455900",
    "exchange": "KOSDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -6233,6 +6351,7 @@
    "ticker": "EH",
    "exchange": "NASDAQ",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -6267,6 +6386,7 @@
    "ticker": "7779",
    "exchange": "TYO",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -6302,6 +6422,7 @@
    "ticker": "2431",
    "exchange": "HKG",
    "segment": "Robotics / AI (BOTZ)",
+   "description": "Included in the published holdings of BOTZ as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "BOTZ"
    ],
@@ -6337,6 +6458,7 @@
    "ticker": "PTC",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -6372,6 +6494,7 @@
    "ticker": "ILMN",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -6408,6 +6531,7 @@
    "ticker": "AMBA",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -6443,6 +6567,7 @@
    "ticker": "EMR",
    "exchange": "NYSE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -6478,6 +6603,7 @@
    "ticker": "2317",
    "exchange": "TPE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -6513,6 +6639,7 @@
    "ticker": "G1A",
    "exchange": "ETR",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -6548,6 +6675,7 @@
    "ticker": "IOT",
    "exchange": "NYSE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -6584,6 +6712,7 @@
    "ticker": "IPGP",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -6619,6 +6748,7 @@
    "ticker": "NDSN",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -6654,6 +6784,7 @@
    "ticker": "6841",
    "exchange": "TYO",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -6689,6 +6820,7 @@
    "ticker": "KARN",
    "exchange": "SWX",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -6724,6 +6856,7 @@
    "ticker": "GMED",
    "exchange": "NYSE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -6758,6 +6891,7 @@
    "ticker": "CDNS",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -6794,6 +6928,7 @@
    "ticker": "QCOM",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -6828,6 +6963,7 @@
    "ticker": "MCHP",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -6863,6 +6999,7 @@
    "ticker": "JEN",
    "exchange": "ETR",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -6900,6 +7037,7 @@
    "ticker": "TRMB",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -6936,6 +7074,7 @@
    "ticker": "2395",
    "exchange": "TPE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -6971,6 +7110,7 @@
    "ticker": "KRN",
    "exchange": "ETR",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7006,6 +7146,7 @@
    "ticker": "JBTM",
    "exchange": "NYSE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7043,6 +7184,7 @@
    "ticker": "CLS",
    "exchange": "TSE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7077,6 +7219,7 @@
    "ticker": "098460",
    "exchange": "KOSDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7112,6 +7255,7 @@
    "ticker": "ZBRA",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7146,6 +7290,7 @@
    "ticker": "ONDS",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7181,6 +7326,7 @@
    "ticker": "ADSK",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7216,6 +7362,7 @@
    "ticker": "3443",
    "exchange": "TPE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7254,6 +7401,7 @@
    "ticker": "OCTV",
    "exchange": "NASDAQ",
    "segment": "Industrial software / assets",
+   "description": "Offers software to design, build, operate and protect industrial assets; listed as an independent company after its separation from Hexagon.",
    "etf": [
     "ROBO"
    ],
@@ -7288,6 +7436,7 @@
    "ticker": "1590",
    "exchange": "TPE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7323,6 +7472,7 @@
    "ticker": "6503",
    "exchange": "TYO",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7358,6 +7508,7 @@
    "ticker": "EKTA-B",
    "exchange": "STO",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7392,6 +7543,7 @@
    "ticker": "KALMAR",
    "exchange": "HEL",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7429,6 +7581,7 @@
    "ticker": "2308",
    "exchange": "TPE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7464,6 +7617,7 @@
    "ticker": "SU",
    "exchange": "EPA",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7501,6 +7655,7 @@
    "ticker": "SIE",
    "exchange": "ETR",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7538,6 +7693,7 @@
    "ticker": "GXO",
    "exchange": "NYSE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7572,6 +7728,7 @@
    "ticker": "DUE",
    "exchange": "ETR",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7607,6 +7764,7 @@
    "ticker": "6622",
    "exchange": "TYO",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7642,6 +7800,7 @@
    "ticker": "JOBY",
    "exchange": "NYSE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7676,6 +7835,7 @@
    "ticker": "COHR",
    "exchange": "NYSE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7713,6 +7873,7 @@
    "ticker": "9984",
    "exchange": "TYO",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7750,6 +7911,7 @@
    "ticker": "KGX",
    "exchange": "ETR",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7785,6 +7947,7 @@
    "ticker": "6914",
    "exchange": "TYO",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO, RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO",
     "RBOT"
@@ -7821,6 +7984,7 @@
    "ticker": "RPI",
    "exchange": "LON",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7857,6 +8021,7 @@
    "ticker": "SSYS",
    "exchange": "NASDAQ",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7891,6 +8056,7 @@
    "ticker": "002008",
    "exchange": "SHE",
    "segment": "Robotics / automation (ROBO)",
+   "description": "Included in the published holdings of ROBO as of 2026-10-23. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "ROBO"
    ],
@@ -7925,6 +8091,7 @@
    "ticker": "NOW",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -7959,6 +8126,7 @@
    "ticker": "SNOW",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -7996,6 +8164,7 @@
    "ticker": "SAP",
    "exchange": "ETR",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8032,6 +8201,7 @@
    "ticker": "6857",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8069,6 +8239,7 @@
    "ticker": "AMD",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8103,6 +8274,7 @@
    "ticker": "CSU",
    "exchange": "TSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8140,6 +8312,7 @@
    "ticker": "GRMN",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: consumer discretionary. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8174,6 +8347,7 @@
    "ticker": "MSTR",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8208,6 +8382,7 @@
    "ticker": "MRVL",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8242,6 +8417,7 @@
    "ticker": "ROP",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8276,6 +8452,7 @@
    "ticker": "WDAY",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8310,6 +8487,7 @@
    "ticker": "INTC",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8344,6 +8522,7 @@
    "ticker": "ALAB",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8380,6 +8559,7 @@
    "ticker": "KLAC",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8414,6 +8594,7 @@
    "ticker": "CRDO",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8448,6 +8629,7 @@
    "ticker": "6920",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8485,6 +8667,7 @@
    "ticker": "DSY",
    "exchange": "EPA",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8519,6 +8702,7 @@
    "ticker": "3008",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8554,6 +8738,7 @@
    "ticker": "FTV",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8588,6 +8773,7 @@
    "ticker": "7769",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8623,6 +8809,7 @@
    "ticker": "HLMA",
    "exchange": "LON",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8659,6 +8846,7 @@
    "ticker": "LECO",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8693,6 +8881,7 @@
    "ticker": "LSCC",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8727,6 +8916,7 @@
    "ticker": "4684",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8762,6 +8952,7 @@
    "ticker": "METSO",
    "exchange": "HEL",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8796,6 +8987,7 @@
    "ticker": "ONTO",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8833,6 +9025,7 @@
    "ticker": "NVMI",
    "exchange": "TLV",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8867,6 +9060,7 @@
    "ticker": "ESTC",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8903,6 +9097,7 @@
    "ticker": "3661",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8938,6 +9133,7 @@
    "ticker": "BSY",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -8972,6 +9168,7 @@
    "ticker": "RAL",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9006,6 +9203,7 @@
    "ticker": "SLAB",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9040,6 +9238,7 @@
    "ticker": "EPAM",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9074,6 +9273,7 @@
    "ticker": "OTEX",
    "exchange": "TSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9108,6 +9308,7 @@
    "ticker": "TNE",
    "exchange": "ASX",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9142,6 +9343,7 @@
    "ticker": "KCR",
    "exchange": "HEL",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9178,6 +9380,7 @@
    "ticker": "6856",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9215,6 +9418,7 @@
    "ticker": "TTAN",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9251,6 +9455,7 @@
    "ticker": "PATH",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9285,6 +9490,7 @@
    "ticker": "NEM",
    "exchange": "ETR",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9319,6 +9525,7 @@
    "ticker": "MXL",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9355,6 +9562,7 @@
    "ticker": "6845",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9390,6 +9598,7 @@
    "ticker": "TOTS3",
    "exchange": "BVMF",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9424,6 +9633,7 @@
    "ticker": "MNDY",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9458,6 +9668,7 @@
    "ticker": "VALMT",
    "exchange": "HEL",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9492,6 +9703,7 @@
    "ticker": "ALGM",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9528,6 +9740,7 @@
    "ticker": "ESAB",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9562,6 +9775,7 @@
    "ticker": "IFCN",
    "exchange": "SWX",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9596,6 +9810,7 @@
    "ticker": "TDC",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9630,6 +9845,7 @@
    "ticker": "KAI",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9664,6 +9880,7 @@
    "ticker": "5631",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9699,6 +9916,7 @@
    "ticker": "TIETO",
    "exchange": "HEL",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9733,6 +9951,7 @@
    "ticker": "HIAB",
    "exchange": "HEL",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9767,6 +9986,7 @@
    "ticker": "PRLB",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9801,6 +10021,7 @@
    "ticker": "6526",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9836,6 +10057,7 @@
    "ticker": "PSN",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9872,6 +10094,7 @@
    "ticker": "4733",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9909,6 +10132,7 @@
    "ticker": "TWEKA",
    "exchange": "AMS",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9943,6 +10167,7 @@
    "ticker": "GLOB",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -9979,6 +10204,7 @@
    "ticker": "AEHR",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10013,6 +10239,7 @@
    "ticker": "5269",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10048,6 +10275,7 @@
    "ticker": "9759",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10083,6 +10311,7 @@
    "ticker": "3697",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10118,6 +10347,7 @@
    "ticker": "GENI",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: consumer discretionary. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10152,6 +10382,7 @@
    "ticker": "3035",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10187,6 +10418,7 @@
    "ticker": "6814",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10222,6 +10454,7 @@
    "ticker": "4373",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10257,6 +10490,7 @@
    "ticker": "6526",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10292,6 +10526,7 @@
    "ticker": "MBLY",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: consumer discretionary. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10326,6 +10561,7 @@
    "ticker": "OERL",
    "exchange": "SWX",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10360,6 +10596,7 @@
    "ticker": "ASAN",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10394,6 +10631,7 @@
    "ticker": "INRN",
    "exchange": "SWX",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10428,6 +10666,7 @@
    "ticker": "FORTY",
    "exchange": "TLV",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10462,6 +10701,7 @@
    "ticker": "JUN3",
    "exchange": "ETR",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10496,6 +10736,7 @@
    "ticker": "IMD",
    "exchange": "ASX",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: materials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10530,6 +10771,7 @@
    "ticker": "7734",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10565,6 +10807,7 @@
    "ticker": "BBAI",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10599,6 +10842,7 @@
    "ticker": "ANOD-B",
    "exchange": "STO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10633,6 +10877,7 @@
    "ticker": "CEVA",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10667,6 +10912,7 @@
    "ticker": "4919",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10702,6 +10948,7 @@
    "ticker": "6104",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10737,6 +10984,7 @@
    "ticker": "6777",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10772,6 +11020,7 @@
    "ticker": "140860",
    "exchange": "KOSDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10807,6 +11056,7 @@
    "ticker": "MLAB",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: health care. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10841,6 +11091,7 @@
    "ticker": "NA9",
    "exchange": "ETR",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10875,6 +11126,7 @@
    "ticker": "1723",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10910,6 +11162,7 @@
    "ticker": "4776",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10945,6 +11198,7 @@
    "ticker": "PLNW",
    "exchange": "EPA",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -10979,6 +11233,7 @@
    "ticker": "6652",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11014,6 +11269,7 @@
    "ticker": "PENTA",
    "exchange": "KLSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11048,6 +11304,7 @@
    "ticker": "2388",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11083,6 +11340,7 @@
    "ticker": "900926",
    "exchange": "SHA",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11117,6 +11375,7 @@
    "ticker": "TXT",
    "exchange": "BIT",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11151,6 +11410,7 @@
    "ticker": "DDD",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11185,6 +11445,7 @@
    "ticker": "6284",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11220,6 +11481,7 @@
    "ticker": "QLTU",
    "exchange": "TLV",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11254,6 +11516,7 @@
    "ticker": "7715",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11289,6 +11552,7 @@
    "ticker": "3673",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11324,6 +11588,7 @@
    "ticker": "268A",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11359,6 +11624,7 @@
    "ticker": "HDD",
    "exchange": "ETR",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11393,6 +11659,7 @@
    "ticker": "3687",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11428,6 +11695,7 @@
    "ticker": "HY",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11462,6 +11730,7 @@
    "ticker": "6877",
    "exchange": "TYO",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: industrials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11497,6 +11766,7 @@
    "ticker": "6202",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11532,6 +11802,7 @@
    "ticker": "6706",
    "exchange": "TPE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11567,6 +11838,7 @@
    "ticker": "INDI",
    "exchange": "NASDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11604,6 +11876,7 @@
    "ticker": "232140",
    "exchange": "KOSDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11639,6 +11912,7 @@
    "ticker": "009520",
    "exchange": "KOSDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: materials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11674,6 +11948,7 @@
    "ticker": "PACK",
    "exchange": "NYSE",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: materials. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],
@@ -11708,6 +11983,7 @@
    "ticker": "348210",
    "exchange": "KOSDAQ",
    "segment": "Automation / technology (RBOT)",
+   "description": "Included in the published holdings of RBOT as of 2026-10-23. Fund manager's sector: information technology. Its specific humanoid activity has not yet been checked.",
    "etf": [
     "RBOT"
    ],

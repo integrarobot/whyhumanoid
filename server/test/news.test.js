@@ -101,3 +101,18 @@ test('news: 429, redirects, timeouts and oversized feeds give an unavailable sta
   const empty = harness({ respond: () => new Response(rss([]), { status: 200 }) });
   assert.equal((await (await empty.get('?security=ETR:SHA0')).json()).status, 'empty');
 });
+
+test('news: a body that stalls after the headers is cut at the deadline, not awaited forever', async () => {
+  const { companyNews } = await import('../src/news/yahoo.js');
+  let cancelled = false;
+  const stalled = () => new Response(new ReadableStream({
+    start(c) { c.enqueue(new TextEncoder().encode('<rss><channel><item><title>Half')); },
+    cancel() { cancelled = true; },
+  }), { status: 200 });
+  const t0 = Date.now();
+  const out = await companyNews('NASDAQ:TSLA', { fetchImpl: async () => stalled(), timeoutMs: 80 });
+  assert.ok(Date.now() - t0 < 2000);
+  assert.equal(out.body.status, 'unavailable');
+  assert.equal(out.body.reason, 'timeout');
+  assert.ok(cancelled, 'the stalled body is cancelled');
+});

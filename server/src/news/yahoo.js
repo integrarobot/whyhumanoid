@@ -48,22 +48,28 @@ export function parseHeadlines(xml) {
     if (!title || !parsed || parsed.protocol !== 'https:' || parsed.username || parsed.password) continue;
     url = parsed.href;
     const time = Date.parse(decode(tag(m[1], 'pubDate')));
-    const key = `${url}|${title.toLowerCase()}`;
     if (seen.has(url) || seen.has(title.toLowerCase())) continue;
-    seen.add(url); seen.add(title.toLowerCase()); seen.add(key);
+    seen.add(url);
+    seen.add(title.toLowerCase());
     items.push({ title, url, domain: parsed.hostname.replace(/^www\./, ''), published: Number.isFinite(time) ? new Date(time).toISOString() : null });
   }
   items.sort((a, b) => (b.published ?? '').localeCompare(a.published ?? ''));
   return items.slice(0, NEWS_MAX_ITEMS);
 }
 
-async function readCapped(response) {
+// Reads the body up to MAX_BYTES before the deadline; a stalled or endless body is cancelled, never awaited forever.
+async function readCapped(response, deadline) {
   const reader = response.body?.getReader();
   if (!reader) return '';
   const chunks = [];
   let size = 0;
   for (;;) {
-    const { done, value } = await reader.read();
+    const left = deadline - Date.now();
+    let timer;
+    const timeout = new Promise((_, reject) => { timer = setTimeout(() => reject(Object.assign(new Error('timeout'), { name: 'AbortError' })), Math.max(0, left)); });
+    let step;
+    try { step = await Promise.race([reader.read(), timeout]); } catch (e) { reader.cancel().catch(() => {}); throw e; } finally { clearTimeout(timer); }
+    const { done, value } = step;
     if (done) break;
     size += value.byteLength;
     if (size > MAX_BYTES) { await reader.cancel(); throw new Error('feed_too_large'); }
@@ -76,7 +82,7 @@ async function readCapped(response) {
 }
 
 // The public result for one security key. fetchImpl and cache are injected (Workers: fetch and caches.default).
-export async function companyNews(key, { fetchImpl, cache = null, now = Date.now() }) {
+export async function companyNews(key, { fetchImpl, cache = null, now = Date.now(), timeoutMs = TIMEOUT_MS }) {
   const entry = NEWS_SYMBOLS[key];
   if (!entry) return { status: 404, body: { error: 'unknown_security' } };
   const cacheKey = new Request(`${CACHE_ORIGIN}/${encodeURIComponent(entry.yahoo)}`);
@@ -88,20 +94,21 @@ export async function companyNews(key, { fetchImpl, cache = null, now = Date.now
   let body;
   let ttl = NEWS_TTL_SECONDS;
   try {
+    // One deadline for the whole exchange: connection, headers and the complete body.
+    const deadline = Date.now() + timeoutMs;
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-    let res;
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
-      res = await fetchImpl(newsUrl(entry.yahoo), { headers: { 'user-agent': NEWS_USER_AGENT, accept: 'application/rss+xml, application/xml;q=0.9, text/xml;q=0.8' }, redirect: 'manual', signal: controller.signal });
+      const res = await fetchImpl(newsUrl(entry.yahoo), { headers: { 'user-agent': NEWS_USER_AGENT, accept: 'application/rss+xml, application/xml;q=0.9, text/xml;q=0.8' }, redirect: 'manual', signal: controller.signal });
+      if (res.status !== 200) {
+        res.body?.cancel?.().catch(() => {});
+        body = { ...base, status: 'unavailable', reason: res.status === 429 ? 'rate_limited' : `upstream_${res.status}`, items: [] };
+        ttl = ERROR_TTL_SECONDS;
+      } else {
+        const items = parseHeadlines(await readCapped(res, deadline));
+        body = { ...base, status: items.length ? 'ok' : 'empty', items };
+      }
     } finally { clearTimeout(timer); }
-    if (res.status !== 200) {
-      await res.body?.cancel?.();
-      body = { ...base, status: 'unavailable', reason: res.status === 429 ? 'rate_limited' : `upstream_${res.status}`, items: [] };
-      ttl = ERROR_TTL_SECONDS;
-    } else {
-      const items = parseHeadlines(await readCapped(res));
-      body = { ...base, status: items.length ? 'ok' : 'empty', items };
-    }
   } catch (e) {
     body = { ...base, status: 'unavailable', reason: e?.name === 'AbortError' ? 'timeout' : 'fetch_failed', items: [] };
     ttl = ERROR_TTL_SECONDS;

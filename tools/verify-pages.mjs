@@ -58,7 +58,8 @@ for (const [kind, x] of pages) {
     for (const dt of d.querySelectorAll('section dl.kv dt')) {
       const field = { 'Height (cm)': 'Height (cm)', 'Weight (kg)': 'Weight (kg)', Listing: 'Stock', Valuation: 'Valuation', 'B2B clients': 'B2B Client' }[dt.textContent];
       const v = x.record[field];
-      if (field && (v ?? '').trim() && dt.nextElementSibling.textContent.replace(/\s+/g, ' ').trim() !== String(v).replace(/\s+/g, ' ').trim()) fail(`${x.path}: ${dt.textContent} differs from the catalogue`);
+      const expected = field === 'Valuation' && /^[\s\d.,~+-]+$/.test(String(v ?? '')) && /\d/.test(String(v)) ? 'Amount recorded without currency or date: not shown' : String(v ?? '').replace(/\s+/g, ' ').trim();
+      if (field && (v ?? '').trim() && dt.nextElementSibling.textContent.replace(/\s+/g, ' ').trim() !== expected) fail(`${x.path}: ${dt.textContent} differs from the catalogue`);
     }
     for (const b of d.querySelectorAll('.dep header b')) if (b.textContent !== 'Organisation not recorded' && !cardOrgs.has(b.textContent)) fail(`${x.path}: organisation "${b.textContent}" is neither in the free preview nor a selected evidence`);
   } else if (kind === 'company') {

@@ -12,6 +12,7 @@
 //   node tools/export-investment.mjs --check        validates the committed snapshot without the source
 
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 
 const root = new URL('../', import.meta.url);
 const FILE = new URL('data/investment/desk.json', root);
@@ -35,7 +36,7 @@ const THESIS_FIELDS = [
 ];
 const TEXT_FIELDS = ['title', 'exposure', 'conclusions', 'rationale', 'limits', 'locator', 'period', 'type', 'stance'];
 export const THESIS_KEYS = ['id', 'security', 'company', 'publisher', 'published', 'period', 'title', 'stance', 'stance_group', 'type', 'exposure', 'conclusions', 'rationale', 'limits', 'locator', 'source_url', 'verified_on', 'semiconductor'];
-export const SECURITY_KEYS = ['key', 'name', 'ticker', 'exchange', 'segment', 'etf', 'tradingview', 'links', 'theses'];
+export const SECURITY_KEYS = ['key', 'name', 'ticker', 'exchange', 'segment', 'description', 'etf', 'tradingview', 'links', 'theses'];
 export const CAPABILITIES = ['chart', 'financials', 'profile', 'news'];
 const STATUSES = new Set(['verified', 'unverified', 'unavailable']);
 
@@ -44,7 +45,7 @@ export const CAVEATS = [
   'No thesis in this catalogue does not mean that no thesis exists.',
   'A thesis about semiconductors, sensors or software is not evidence of revenue from humanoid robots.',
   'Publisher names are shown as each source states them. Several funds can belong to one management firm, so the number of names is not a number of independent firms.',
-  'Quotes, charts, financials and headlines come from TradingView widgets, loaded from TradingView in your browser. They are not Why Humanoid? data, may be delayed or end-of-day, and are not available for every exchange.',
+  'Quotes, charts, financials, profiles and optional top stories are TradingView widgets, loaded from TradingView in your browser: not Why Humanoid? data, possibly delayed or end-of-day, and not available for every exchange. Recent headlines come from Yahoo Finance\'s public feed through our server, which keeps a shared copy for up to 30 minutes.',
   'Nothing here is investment advice or a recommendation.',
 ];
 
@@ -86,6 +87,20 @@ export function yahooSymbol(gf, review) {
   return `${t}${suffix}`;
 }
 
+// English display of the recorded business description (Spanish in the workbook): a reviewed translation of each
+// distinct text, or the holdings template translated by pattern. A translation of our research note, not issuer text.
+const HOLDINGS = /^Empresa incluida en las carteras oficiales de ([A-Z, ]+) al (\d{2})\/(\d{2})\/(\d{4})\.(?: Sector del gestor: ([^.]+)\.)? Actividad específica en humanoides pendiente de contraste\.$/;
+export function describe(text, review) {
+  const t = s(text);
+  if (!t) return null;
+  if (review.descriptions[t]) return review.descriptions[t];
+  const m = t.match(HOLDINGS);
+  if (!m) return undefined;
+  const sector = m[5] ? review.description_patterns.sectors[m[5]] : null;
+  if (m[5] && !sector) return undefined;
+  return `Included in the published holdings of ${m[1].split(',').map((x) => x.trim()).join(', ')} as of ${m[4]}-${m[3]}-${m[2]}.${sector ? ` Fund manager's sector: ${sector}.` : ''} Its specific humanoid activity has not yet been checked.`;
+}
+
 export function securityOf(r, review, thesisIds) {
   const yahoo = yahooSymbol(r.gf_symbol, review);
   return {
@@ -94,6 +109,7 @@ export function securityOf(r, review, thesisIds) {
     ticker: r.ticker,
     exchange: r.exchange,
     segment: review.segments[r.segment] ?? null,
+    description: describe(r.description, review) ?? null,
     etf: s(r.etf_membership) ? r.etf_membership.split(';').map((x) => x.trim()).filter(Boolean) : [],
     tradingview: tradingView(r.gf_symbol, review),
     links: {
@@ -123,7 +139,7 @@ export function buildDesk(thesisRows, stocks, review, { exportedAt }) {
     ids.add(id);
     const co = byRow.get(Number(r['Investment row (master)']));
     if (!co) { problems.push(`${id}: no listed company at its Investment row`); continue; }
-    if (co.name !== r.Company || co.ticker !== r['Ticker (Stocks)']) problems.push(`${id}: company or ticker differs from its Investment row (${co.name} ${co.ticker})`);
+    if (co.name !== r.Company || co.ticker !== r['Ticker (Stocks)'] || co.exchange !== r['Exchange (Stocks)']) problems.push(`${id}: company, ticker or exchange differs from its Investment row (${co.name} ${co.ticker} ${co.exchange})`);
     if (r['Company ISIN (master)'] && s(co.isin) && r['Company ISIN (master)'] !== co.isin) problems.push(`${id}: ISIN differs from its Investment row`);
     const t = { security: co.gf_symbol };
     for (const [k, col] of THESIS_FIELDS) t[k] = r[col];
@@ -145,6 +161,7 @@ export function buildDesk(thesisRows, stocks, review, { exportedAt }) {
   for (const t of theses) byKey.set(t.security, [...(byKey.get(t.security) ?? []), t.id]);
   const securities = stocks.rows.map((r) => securityOf(r, review, byKey.get(r.gf_symbol) ?? []));
   for (const r of stocks.rows) if (!review.segments[r.segment]) problems.push(`segment without a reviewed English label: ${r.segment}`);
+  for (const r of stocks.rows) if (describe(r.description, review) === undefined) problems.push(`${r.gf_symbol}: description without a reviewed English translation`);
   for (const sym of Object.keys(review.symbols)) if (!securities.some((x) => x.tradingview.symbol === sym)) problems.push(`checked symbol ${sym} is not a listed company`);
   const desk = {
     id: 'investment-desk',
@@ -204,7 +221,7 @@ function main() {
   const stocks = read('data/preview/stocks.json');
   const review = read('tools/investment-review.json');
   if (process.argv.includes('--check')) {
-    const desk = read('data/investment/desk.json');
+    const desk = arg('--desk') ? JSON.parse(readFileSync(arg('--desk'), 'utf8')) : read('data/investment/desk.json');
     const p = snapshotProblems(desk, stocks);
     // The mapping is reproducible from the public inputs: it must match what the review gives today.
     for (const x of desk.securities) {
@@ -214,6 +231,7 @@ function main() {
       if (JSON.stringify(again) !== JSON.stringify(x)) p.push(`${x.key}: stale mapping; regenerate with --from`);
     }
     if (readFileSync(NEWS_FILE, 'utf8') !== newsSymbolsModule(desk, review)) p.push('server/src/news/symbols.js is stale; regenerate with --from');
+    if (JSON.stringify(desk.caveats) !== JSON.stringify(CAVEATS)) p.push('caveats are stale; regenerate with --from');
     if (p.length) { console.error(`investment desk: ${p.length} problem(s)\n- ${p.join('\n- ')}`); process.exit(1); }
     console.log(`investment desk ok: ${desk.counts.theses} theses on ${desk.counts.companies_with_theses} of ${desk.counts.securities} listed companies`);
     return;
@@ -234,4 +252,4 @@ function main() {
   for (const c of CAPABILITIES) console.log(`  ${c}: verified ${st(c, 'verified')}, unverified ${st(c, 'unverified')}, unavailable ${st(c, 'unavailable')}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) main();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();

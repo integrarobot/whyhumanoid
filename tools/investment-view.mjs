@@ -66,11 +66,12 @@ export function renderInvestmentDesk(desk, { rows, companyOf }) {
     const x = ix.byKey.get(t.security);
     const item = items.find((i) => i.x === x);
     const search = [t.company, t.publisher, t.title, t.type, t.exposure, x.ticker].join(' ').toLowerCase();
-    const attrs = { key: t.id, company: t.company, publisher: t.publisher, date: t.published ?? t.period, stance: t.stance_group, type: t.type, search };
+    const attrs = { key: t.id, company: t.company, publisher: t.publisher, date: t.published ?? '', stance: t.stance_group, type: t.type, search };
     return `<tr ${Object.entries(attrs).map(([k, v]) => `data-${k}="${esc(v)}"`).join(' ')}><td>${item?.path ? `<a href="${esc(item.path)}#theses">${esc(t.company)}</a>` : esc(t.company)}</td><td>${esc(t.publisher)}</td><td>${t.published ? esc(t.published) : `<span class="na">Not stated</span>`}<br><span class="dim">${esc(t.period)}</span></td><td>${pill(t.stance_group, t.stance)}</td><td>${esc(t.type)}</td><td>${ext(t.source_url, t.title)}</td></tr>`;
   };
-  return `<section id="desk"><h2>Listed companies <span class="dim">(${items.length})</span></h2>
-<p class="inv-counters"><span><b>${items.length}</b> listed companies</span><span><b>${withT}</b> with a thesis in this catalogue</span><span><b>${desk.theses.length}</b> thesis records</span><span><b>${charts}</b> with a chart offered here</span><span><b>${items.length - charts}</b> without a chart here</span></p>
+  return `<nav class="jump" aria-label="On this page"><a href="#desk">Companies (${items.length})</a><a href="#theses">Investment theses (${desk.theses.length})</a><a href="#funding">Funding of humanoid makers</a></nav>
+<section id="desk"><h2>Listed companies <span class="dim">(${items.length})</span></h2>
+<p class="inv-counters"><span><b>${items.length}</b> listed companies</span><span><b>${withT}</b> with a thesis in this catalogue</span><a href="#theses"><b>${desk.theses.length}</b> thesis records</a><span><b>${charts}</b> with a chart offered here</span><span><b>${items.length - charts}</b> without a chart here</span></p>
 <form class="inv-filters" data-for="inv-companies" data-count="inv-count" data-compare="inv-compare" hidden>
 <label class="wide">Search company, ticker, ISIN or publisher<input type="search" name="q" autocomplete="off" placeholder="e.g. Tesla, 6954, Baillie Gifford"></label>
 <label>Segment<select name="segment">${options(segments.map((v) => [v]), 'All segments')}</select></label>
@@ -99,7 +100,7 @@ ${caveatsHtml(desk)}
 <span><button type="reset">Clear filters</button></span>
 </form>
 <p class="inv-bar"><span id="inv-theses-count" aria-live="polite"></span></p>
-<div class="scroll"><table class="dir" id="inv-theses"><thead><tr><th scope="col" data-sort="company">Company</th><th scope="col" data-sort="publisher">Publisher as stated</th><th scope="col" data-sort="date">Published · period</th><th scope="col" data-sort="stance">Stance as recorded</th><th scope="col" data-sort="type">Type</th><th scope="col">Source</th></tr></thead><tbody>${desk.theses.map(tRow).join('')}</tbody></table></div>
+<div class="scroll"><table class="dir" id="inv-theses"><thead><tr><th scope="col" data-sort="company">Company</th><th scope="col" data-sort="publisher">Publisher as stated</th><th scope="col" data-sort="date">Published (period below)</th><th scope="col" data-sort="stance">Stance as recorded</th><th scope="col" data-sort="type">Type</th><th scope="col">Source</th></tr></thead><tbody>${desk.theses.map(tRow).join('')}</tbody></table></div>
 <p class="key">${desk.counts.publisher_names} publisher names as the sources give them; several are funds of the same management firm. Each company page shows its theses in full, with the publisher's conclusions, valuation or rationale, horizon, limits and where in the source to find them.</p>
 </section>`;
 }
@@ -128,17 +129,18 @@ export function renderListingResearch(l, x, theses, { apiOrigin, snapshot }) {
   const linkList = `<ul class="mkt-links">${links.map((a) => `<li>${a}</li>`).join('')}</ul>`;
   const block = (title, cap, body) => `<div class="mkt"><h3>${esc(title)}</h3>${cap.status === 'unavailable' ? `<p class="status">Not available here: ${esc(cap.reason)} Use the links below.</p>` : body}</div>`;
   const chart = block('Quote and chart', tv.chart, `${statusLine(tv.chart, 'The chart')}${widget('symbol-info', 'info', { ...common, width: '100%' }, tv.url, 'The quote loads from TradingView when you reach it.')}${widget('advanced-chart', 'chart', { autosize: true, symbol: sym, interval: 'D', timezone: 'Etc/UTC', theme: 'dark', style: '1', locale: 'en', allow_symbol_change: false, withdateranges: true, range: '12M', hide_side_toolbar: true, details: false, hotlist: false, calendar: false, save_image: false, support_host: 'https://www.tradingview.com' }, tv.url, 'The chart loads from TradingView when you reach it.')}`);
-  const fin = block('Financials', tv.financials, `${statusLine(tv.financials, 'Financials')}${widget('financials', 'financials', { ...common, displayMode: 'regular', width: '100%', height: '100%' }, tv.url, 'Financials load from TradingView when you reach them.')}`);
+  const fin = block('Financials', tv.financials, `${statusLine(tv.financials, 'Financials')}<p class="status">Figures follow TradingView's reporting periods, units and currencies, which may differ from the trading currency of the listing. Check the company's own reports before comparing companies.</p>${widget('financials', 'financials', { ...common, displayMode: 'regular', width: '100%', height: '100%' }, tv.url, 'Financials load from TradingView when you reach them.')}`);
   const prof = block('Company profile', tv.profile, `${statusLine(tv.profile, 'The profile')}${widget('symbol-profile', 'profile', { ...common, width: '100%', height: '100%' }, tv.url, 'The profile loads from TradingView when you reach it.')}`);
   const news = !x.links.yahoo_finance ? `<div class="mkt"><h3>Recent headlines</h3><p class="status">No Yahoo Finance symbol is mapped for this company, so no headlines are read here. Use the links below.</p>${linkList}</div>` : `<div class="mkt" data-news-security="${esc(x.key)}" data-news-api="${esc(apiOrigin)}"><h3>Recent headlines</h3><p class="status news-state">Headlines load from Yahoo Finance's public feed when you reach this block.</p><ul class="sources news-list"></ul><p class="key">Headlines, dates and links only, as the feed lists them for this company's Yahoo Finance symbol (${esc(decodeURIComponent(x.links.yahoo_finance.split('/quote/')[1].replace(/\/$/, '')))}). The feed picks them; some may be about the sector rather than the company. No freshness is promised.</p>${linkList}</div>`;
   const stories = tv.news.status === 'unavailable' ? '' : `<details class="mkt"><summary>Top stories on TradingView (optional, may be old or empty)</summary>${widget('timeline', 'news', { ...common, feedMode: 'symbol', displayMode: 'regular', width: '100%', height: '100%' }, tv.url, 'Stories load from TradingView when you open this.')}</details>`;
-  return `<section id="market"><h2>Market data</h2>
+  return `<nav class="jump" aria-label="On this page"><a href="#market">Market data</a><a href="#theses">Investment theses (${theses.length})</a><a href="#deployment-records">Deployment evidence</a></nav>
+<section id="market"><h2>Market data</h2>
 <dl class="kv">${[
     ['Ticker', esc(l.ticker)], ['Exchange as recorded', esc(l.exchange)], ['TradingView symbol', sym ? esc(sym) : na('Not mapped')],
     ['Currency as recorded', l.currency ? esc(l.currency) : na()], ['ISIN', l.isin ? esc(l.isin) : na()],
   ].map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join('')}</dl>
 ${chart}${fin}${prof}${news}${stories}
-<p class="key">Quotes, charts, financials and stories are TradingView widgets loaded from TradingView in your browser, with the delay TradingView shows; headlines come from Yahoo Finance. None of it is Why Humanoid? data, nothing is stored, and nothing here is investment advice. Listing details from the Investment category, snapshot ${esc(String(snapshot).slice(0, 10))}.</p>
+<p class="key">Quotes, charts, financials, profiles and stories are TradingView widgets loaded from TradingView in your browser, with the delay TradingView shows; Why Humanoid? does not store them. Recent headlines come from Yahoo Finance's public feed through our server, which keeps a shared copy for up to 30 minutes. None of it is Why Humanoid? research, and nothing here is investment advice. Listing details from the Investment category, snapshot ${esc(String(snapshot).slice(0, 10))}.</p>
 </section>`;
 }
 
@@ -156,9 +158,13 @@ export function renderTheses(company, theses, desk) {
 <dt>Where in the source</dt><dd>${t.locator ? esc(t.locator) : na()}</dd>
 <dt>Checked against the source</dt><dd>${esc(t.verified_on)}</dd>
 </dl>${t.semiconductor ? '<p class="semi">A thesis about semiconductors or computing is not evidence of revenue from humanoid robots.</p>' : ''}</li>`;
-  const sorted = [...theses].sort((a, b) => String(b.published ?? b.period).localeCompare(String(a.published ?? a.period)));
+  // Dated records newest first by their publication date; records whose source states no publication date follow in
+  // catalogue order. A report period is never used as a publication date.
+  const dated = theses.filter((t) => t.published).sort((a, b) => b.published.localeCompare(a.published));
+  const undated = theses.filter((t) => !t.published);
   return `<section id="theses"><h2>Investment theses <span class="dim">(${theses.length})</span></h2>
 ${caveatsHtml(desk)}
-<ul class="theses">${sorted.map(card).join('')}</ul>
-<p class="key">Publishers' opinions and forecasts as their sources state them, newest first; historic valuations stay in the publisher's currency and horizon. All ${desk.theses.length} records: <a href="/investment/#theses">Investment</a>.</p></section>`;
+${dated.length ? `<h3 class="sub">With a publication date, newest first <span class="dim">(${dated.length})</span></h3><ul class="theses">${dated.map(card).join('')}</ul>` : ''}
+${undated.length ? `<h3 class="sub">Publication date not stated by the source <span class="dim">(${undated.length})</span></h3><p class="key">Shown in catalogue order; the report period of each is not a publication date.</p><ul class="theses">${undated.map(card).join('')}</ul>` : ''}
+<p class="key">Publishers' opinions and forecasts as their sources state them; historic valuations stay in the publisher's currency and horizon. All ${desk.theses.length} records: <a href="/investment/#theses">Investment</a>.</p></section>`;
 }

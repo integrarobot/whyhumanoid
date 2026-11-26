@@ -112,15 +112,15 @@
       live.textContent = 'Comparing ' + picked.length + ' companies.';
       var fields = [['Company', 'name'], ['Ticker', 'ticker'], ['Exchange', 'exchange'], ['Country', 'country'], ['Segment', 'segment'], ['ETF membership', 'etf'], ['Theses in catalogue', 'theses'], ['Stances', 'stances'], ['Publishers', 'publishers'], ['Chart here', 'chart']];
       var esc = function (s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
-      var html = '<table><tbody>' + fields.map(function (f) {
-        return '<tr><th scope="row">' + f[0] + '</th>' + picked.map(function (tr) {
+      var LABEL = { verified: 'Chart checked', unverified: 'Chart not yet checked', unavailable: 'No chart here', positive: 'Positive', exit: 'Exit', mixed: 'Mixed' };
+      // One card per company, side by side when there is room and stacked on narrow screens.
+      var html = '<ul class="inv-cmp-cards">' + picked.map(function (tr) {
+        return '<li><h4><a href="' + esc(tr.getAttribute('data-path')) + '">' + esc(tr.getAttribute('data-name')) + '</a></h4><dl>' + fields.slice(1).map(function (f) {
           var v = tr.getAttribute('data-' + f[1]) || '';
-          if (f[1] === 'name') return '<td><a href="' + esc(tr.getAttribute('data-path')) + '">' + esc(v) + '</a></td>';
-          var LABEL = { verified: 'Chart checked', unverified: 'Chart not yet checked', unavailable: 'No chart here', positive: 'Positive', exit: 'Exit', mixed: 'Mixed' };
           if (f[1] === 'theses' && v === '0') v = '';
-          return '<td>' + (v ? esc(tokens(v).map(function (t) { return LABEL[t] || t; }).join(', ')) : '<span class="na">None recorded</span>') + '</td>';
-        }).join('') + '</tr>';
-      }).join('') + '</tbody></table>';
+          return '<dt>' + f[0] + '</dt><dd>' + (v ? esc(tokens(v).map(function (t) { return LABEL[t] || t; }).join(', ')) : '<span class="na">None recorded</span>') + '</dd>';
+        }).join('') + '</dl></li>';
+      }).join('') + '</ul>';
       out.innerHTML = html;
       out.closest('.inv-compare').classList.remove('inv-hidden');
     }

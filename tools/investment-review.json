@@ -1,5 +1,5 @@
 {
-  "note": "Reviewed reading for the Investment research desk (tools/export-investment.mjs). segments: English display label for each SEGMENT value of the Investment category, a literal translation (no classification added). tradingview: how a Google Finance exchange prefix maps to the exchange prefix of TradingView's free widgets, with one status per capability (chart: Symbol Info and Advanced Chart; financials: Fundamental Data; profile: Company Profile; news: Top Stories filtered to the symbol), because the widgets differ: on 26 Nov 2026 Codex found the chart widgets refuse TSE:6954 and HKEX:9880 ('only available on TradingView') while Fundamental Data works for both. Status values: verified (checked in a real browser, symbols), unverified (attempted, not yet checked), unavailable (not shown, with the reason). symbols: per-security results of real-browser checks, overriding the exchange status, with the date and what was seen. yahoo: Yahoo Finance suffix per prefix, used only for an outside link. text_edits: reader-facing rewording of thesis cells that name the workbook or the research workflow; each 'from' must occur in a cell as recorded.",
+  "note": "Reviewed reading for the Investment research desk (tools/export-investment.mjs). segments: English display label for each SEGMENT value of the Investment category, a literal translation (no classification added). tradingview: how a Google Finance exchange prefix maps to the exchange prefix of TradingView's free widgets, with one status per capability (chart: Symbol Info and Advanced Chart; financials: Fundamental Data; profile: Company Profile; news: Top Stories filtered to the symbol), because the widgets differ: on 26 Nov 2026 Codex found the chart widgets refuse TSE:6954 and HKEX:9880 ('only available on TradingView') while Fundamental Data works for both. Status values: verified (checked in a real browser, symbols), unverified (attempted, not yet checked), unavailable (not shown, with the reason). symbols: per-security results of real-browser checks, overriding the exchange status, with the date and what was seen. yahoo: Yahoo Finance suffix per prefix, used only for an outside link. text_edits: reader-facing rewording of thesis cells that name the workbook or the research workflow; each 'from' must occur in a cell as recorded. descriptions: reviewed English translation of each business description of the Investment category that is not a template (keyed by the recorded Spanish text, which must match); description_patterns: the templated holdings descriptions, translated by pattern. A translation, not issuer text.",
   "segments": {
     "Automatización / tecnología (RBOT)": "Automation / technology (RBOT)",
     "Robótica / IA (BOTZ)": "Robotics / AI (BOTZ)",
@@ -371,5 +371,64 @@
       "from": "Quarterly cover period, not PDF metadata title or publication date.",
       "to": "Quarterly period from the cover; not a publication date."
     }
-  ]
+  ],
+  "description_patterns": {
+    "note": "Templated descriptions of the Investment category, translated by pattern: holdings sentence, fund manager sector, pending check.",
+    "sectors": {
+      "Tecnología de la información": "information technology",
+      "Industria": "industrials",
+      "Consumo discrecional": "consumer discretionary",
+      "Materiales": "materials",
+      "Salud": "health care"
+    }
+  },
+  "descriptions": {
+    "Vehículos eléctricos y energía; desarrolla el humanoide Optimus y sistemas de autonomía.": "Electric vehicles and energy; develops the Optimus humanoid and autonomy systems.",
+    "Desarrolla humanoides Walker, robots educativos y soluciones de servicio y automatización.": "Develops Walker humanoids, educational robots and service and automation solutions.",
+    "Fabricante de cobots, cuadrúpedos y plataformas móviles de doble brazo como RB-Y1.": "Maker of cobots, quadrupeds and dual-arm mobile platforms such as RB-Y1.",
+    "Sensores LiDAR y percepción para vehículos, robots y aplicaciones de IA física.": "LiDAR sensors and perception for vehicles, robots and physical-AI applications.",
+    "Desarrolla los sistemas da Vinci de cirugía asistida por robot y la plataforma endoluminal Ion.": "Develops the da Vinci robot-assisted surgery systems and the Ion endoluminal platform.",
+    "Diseña y opera robots de reparto; amplía su actividad a robótica hospitalaria con Diligent Robotics.": "Designs and operates delivery robots; expanding into hospital robotics with Diligent Robotics.",
+    "Robots de servicio y automatización comercial e industrial: ADAM, DUST-E y plataformas móviles.": "Service robots and commercial and industrial automation: ADAM, DUST-E and mobile platforms.",
+    "Humanoides de apariencia humana y software de IA para interacción social y atención al público.": "Human-like humanoids and AI software for social interaction and customer service.",
+    "Actuadores inteligentes DYNAMIXEL y plataformas robóticas para investigación, automatización e IA física.": "DYNAMIXEL smart actuators and robotic platforms for research, automation and physical AI.",
+    "Desarrolla robótica para inspección, seguridad y logística: cuadrúpedos, brazos y descarga de mercancías.": "Develops robotics for inspection, security and logistics: quadrupeds, arms and goods unloading.",
+    "Computación acelerada, simulación Isaac y modelos Cosmos/GR00T para desarrollar robótica e IA física.": "Accelerated computing, Isaac simulation and Cosmos/GR00T models for developing robotics and physical AI.",
+    "Tecnología de movimiento, rodamientos y componentes; desarrolla soluciones para la cadena de valor de humanoides.": "Motion technology, bearings and components; develops solutions for the humanoid value chain.",
+    "Grupo de equipos de test; su división robótica incluye los cobots de Universal Robots y los robots móviles de MiR.": "Test-equipment group; its robotics division includes Universal Robots cobots and MiR mobile robots.",
+    "Robots industriales y colaborativos, control numérico y automatización de fábricas.": "Industrial and collaborative robots, numerical control and factory automation.",
+    "Robots industriales, servomotores, control de movimiento y sistemas de automatización.": "Industrial robots, servo motors, motion control and automation systems.",
+    "Reductores de precisión y actuadores rotativos y lineales para articulaciones y automatización.": "Precision reducers and rotary and linear actuators for joints and automation.",
+    "Grupo industrial con reductores de precisión utilizados en el movimiento de robots industriales.": "Industrial group with precision reducers used in industrial robot motion.",
+    "Fabricante de cobots para paletizado, soldadura, manipulación, mecanizado y servicios.": "Maker of cobots for palletising, welding, handling, machining and services.",
+    "Fabricante de automóviles con exposición a robótica mediante Boston Dynamics y la estrategia robótica del grupo.": "Carmaker with robotics exposure through Boston Dynamics and the group's robotics strategy.",
+    "Automatización de almacenes mediante robots, software e IA para mover y preparar mercancías.": "Warehouse automation with robots, software and AI to move and pick goods.",
+    "Sistemas robotizados de almacenamiento cúbico y recuperación de contenedores para almacenes.": "Robotic cube storage and container retrieval systems for warehouses.",
+    "LiDAR digital, cámaras y software de percepción para robótica, industria, movilidad e infraestructura.": "Digital LiDAR, cameras and perception software for robotics, industry, mobility and infrastructure.",
+    "Sensores LiDAR y tecnología de percepción 3D para automoción y aplicaciones de robótica.": "LiDAR sensors and 3D perception technology for automotive and robotics applications.",
+    "Robots industriales, servos, control de movimiento y sistemas de fabricación automatizada.": "Industrial robots, servos, motion control and automated manufacturing systems.",
+    "Visión artificial y sensores con IA para inspección, identificación y automatización industrial y logística.": "Machine vision and AI-enabled sensors for industrial and logistics inspection, identification and automation.",
+    "Fabricante de humanoides y cuadrúpedos; ofrece plataformas robóticas y componentes para investigación e industria.": "Maker of humanoids and quadrupeds; offers robotic platforms and components for research and industry.",
+    "Fabrica engranajes y conjuntos de transmisión para automoción, maquinaria y aplicaciones de robótica.": "Makes gears and transmission assemblies for automotive, machinery and robotics applications.",
+    "Proveedor de tecnología de sensorización y pesaje, con actividad e inversiones vinculadas al ecosistema de robótica.": "Supplier of sensing and weighing technology, with activities and investments linked to the robotics ecosystem.",
+    "Desarrolla tecnologías de automatización industrial, electrónica de potencia, accionamientos de motor, control y software industrial.": "Develops industrial automation, power electronics, motor drives, control and industrial software.",
+    "Desarrolla reductores armónicos, actuadores rotativos y motores sin carcasa para movimiento de precisión.": "Develops harmonic reducers, rotary actuators and frameless motors for precision motion.",
+    "Ofrece servomotores, motores paso a paso, controladores y componentes robóticos, incluidos motores sin carcasa y actuadores integrados.": "Offers servo motors, stepper motors, controllers and robotic components, including frameless motors and integrated actuators.",
+    "Desarrolla componentes de control y gestión térmica para climatización y automoción. Figura en TORK; esa pertenencia no cuantifica su negocio robótico.": "Develops control and thermal-management components for climate control and automotive. It is held by TORK; that membership does not quantify its robotics business.",
+    "Grupo de componentes de automoción que incluye una división de actuadores para robots. No se infiere el peso de esa división en sus ingresos.": "Automotive components group that includes a robot actuator division. The weight of that division in its revenue is not inferred.",
+    "Grupo de soluciones de movimiento y control para distintos mercados. La clase A cotiza en NYSE como MOG.A.": "Motion and control solutions group serving several markets. Its Class A shares trade on the NYSE as MOG.A.",
+    "Especialista en componentes para movimiento lineal y soluciones mecánicas para maquinaria y automatización.": "Specialist in linear motion components and mechanical solutions for machinery and automation.",
+    "Ofrece componentes de control de movimiento, guías lineales, husillos y sistemas de transmisión para automatización.": "Offers motion control components, linear guides, ball screws and transmission systems for automation.",
+    "Emisor tecnológico incluido en KOID. Su FAQ confirma la cotización de referencia STMMI en Euronext Milan, distinta de STM en Nueva York.": "Technology issuer held by KOID. Its FAQ confirms the reference listing STMMI on Euronext Milan, separate from STM in New York.",
+    "Grupo de motores y soluciones de movimiento incluido en KOID; no se atribuye toda su actividad a humanoides.": "Motors and motion solutions group held by KOID; not all of its business is attributed to humanoids.",
+    "Proveedor de tecnología y componentes de movilidad, con software, electrificación y búsqueda de alianzas en robótica.": "Supplier of mobility technology and components, with software, electrification and robotics partnerships it is seeking.",
+    "Diseña y fabrica sistemas de transmisión de precisión y microaccionamientos para robótica, automoción y otras aplicaciones.": "Designs and makes precision transmission systems and micro drives for robotics, automotive and other applications.",
+    "Desarrolla soluciones para movilidad y vehículos, incluidos sistemas de asistencia y electrificación; incorporada por su presencia en TORK.": "Develops mobility and vehicle solutions, including driver-assistance and electrification systems; included because it is held by TORK.",
+    "Desarrolla y fabrica accionamientos, motores y reductores de precisión para automatización electromecánica.": "Develops and makes drives, motors and precision reducers for electromechanical automation.",
+    "Ofrece metrología de precisión, medida de posición y tecnologías de fabricación aditiva.": "Offers precision metrology, position measurement and additive manufacturing technologies.",
+    "Ofrece motores y soluciones de control de movimiento; la documentación de inversores identifica al emisor 603728 de Shanghái.": "Offers motors and motion control solutions; investor documents identify the Shanghai issuer 603728.",
+    "Empresa del sector de drones de Estados Unidos; el registro SEC confirma la cotización UMAC en NYSE American.": "US drone company; its SEC filings confirm the UMAC listing on NYSE American.",
+    "Empresa de sistemas aéreos no tripulados y servicios tecnológicos; la web de inversores confirma NYSE:AVEX y sede en California.": "Uncrewed aircraft systems and technology services company; its investor website confirms NYSE:AVEX and headquarters in California.",
+    "Ofrece software para diseñar, construir, operar y proteger activos industriales; cotiza como entidad independiente tras su separación de Hexagon.": "Offers software to design, build, operate and protect industrial assets; listed as an independent company after its separation from Hexagon."
+  }
 }
