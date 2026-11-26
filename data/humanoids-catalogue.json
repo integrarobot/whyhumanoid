@@ -1,7 +1,7 @@
 {
  "dataset": "humanoids",
  "access": "free",
- "snapshot": "2026-11-25T05:35:43Z",
+ "snapshot": "2026-11-26T06:38:00Z",
  "fields": [
   "Lab",
   "Robot",
@@ -3074,7 +3074,7 @@
    "Careers": "https://www.tesla.com/careers",
    "B2B Client": "Not disclosed",
    "Stock": "NASDAQ:TSLA",
-   "Valuation": "1,520,546,947,440.00",
+   "Valuation": "1,502,601,426,120.00",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "2023-12 (Gen 2 hardware reveal)",
@@ -3254,7 +3254,7 @@
    "Careers": "Not found",
    "B2B Client": "Foxconn",
    "Stock": "HKG:9880",
-   "Valuation": "22,952,495,051.00",
+   "Valuation": "21,568,122,535.00",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "2024-10-14 (Walker S1 introduction, UBTECH on X)",

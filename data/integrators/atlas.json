@@ -1,7 +1,7 @@
 {
  "title": "Integrators",
  "note": "Public snapshot of the Integrators tab of the Why Humanoid? master workbook: every provider with all 26 fields, as the sheet states them, plus tags read from the cells with fixed vocabularies and a reviewed evidence grouping. Records are provider and partner claims as recorded, not independently verified results. Free.",
- "snapshot": "2026-11-25T05:35:43Z",
+ "snapshot": "2026-11-26T06:38:00Z",
  "source": {
   "tab": "Integrators",
   "table": "IntegratorsCatalog",

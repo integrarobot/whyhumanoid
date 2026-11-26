@@ -2,8 +2,8 @@
   "note": "Public Humanoids values that changed in the workbook after the legacy snapshot, taken from the verified staging import. tools/export-humanoids.mjs applies them on top of the cleaned legacy snapshot, and tools/build-site.mjs accepts exactly these differences in its parity check. Public values only. Regenerate with tools/sync-humanoids.mjs from a saved copy of the public preview.",
   "source": {
     "environment": "workbook export",
-    "snapshot": "2026-11-25T05:35:43Z",
-    "import_run": "workbook export of 2026-11-25T05:35:43Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export)"
+    "snapshot": "2026-11-26T06:38:00Z",
+    "import_run": "workbook export of 2026-11-26T06:38:00Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export)"
   },
   "updated": [
     {
@@ -1759,7 +1759,7 @@
     {
       "id": 86,
       "field": "Valuation",
-      "value": "1,520,546,947,440.00"
+      "value": "1,502,601,426,120.00"
     },
     {
       "id": 86,
@@ -1889,7 +1889,7 @@
     {
       "id": 91,
       "field": "Valuation",
-      "value": "22,952,495,051.00"
+      "value": "21,568,122,535.00"
     },
     {
       "id": 91,
