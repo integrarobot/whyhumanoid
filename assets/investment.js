@@ -1,6 +1,6 @@
 // Investment directory and thesis table (/investment/): search, filters, sorting, counters, a watchlist kept in this
-// browser only and a side-by-side comparison of 2 to 4 companies. Works on the table already in the page; without
-// JavaScript the full tables stay readable.
+// browser only, and the company comparator: three slots, each a searchable list of every company in the directory.
+// Works on the table already in the page; without JavaScript the full tables stay readable.
 (function () {
   var store = {
     get: function (k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } },
@@ -74,8 +74,7 @@
       });
     });
 
-    // Watchlist (this browser only) and comparison, on the company directory.
-    var cmpBox = document.getElementById(form.getAttribute('data-compare') || '');
+    // Watchlist (this browser only), on the company directory.
     rows.forEach(function (tr) {
       var key = tr.getAttribute('data-key');
       var tools = tr.querySelector('.inv-row-tools');
@@ -93,38 +92,157 @@
         apply();
       });
       tools.appendChild(star);
-      if (cmpBox) {
-        var cb = document.createElement('input');
-        cb.type = 'checkbox';
-        cb.className = 'cmp';
-        cb.value = key;
-        cb.setAttribute('aria-label', 'Compare ' + tr.getAttribute('data-name'));
-        cb.addEventListener('change', function () { compare(cb); });
-        tools.appendChild(cb);
-      }
     });
-    function compare(changed) {
-      var picked = rows.filter(function (tr) { var c = tr.querySelector('input.cmp'); return c && c.checked; });
-      if (picked.length > 4) { changed.checked = false; picked.pop(); cmpBox.querySelector('[aria-live]').textContent = 'Compare up to 4 companies.'; return; }
-      var live = cmpBox.querySelector('[aria-live]');
-      var out = cmpBox.querySelector('.inv-compare-table');
-      if (picked.length < 2) { out.innerHTML = ''; out.closest('.inv-compare').classList.add('inv-hidden'); live.textContent = picked.length ? 'Pick at least one more company to compare.' : ''; return; }
-      live.textContent = 'Comparing ' + picked.length + ' companies.';
-      var fields = [['Company', 'name'], ['Ticker', 'ticker'], ['Exchange', 'exchange'], ['Country', 'country'], ['Segment', 'segment'], ['ETF membership', 'etf'], ['Theses in catalogue', 'theses'], ['Stances', 'stances'], ['Publishers', 'publishers'], ['Chart here', 'chart']];
-      var esc = function (s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
-      var LABEL = { verified: 'Chart checked', unverified: 'Chart not yet checked', unavailable: 'No chart here', positive: 'Positive', exit: 'Exit', mixed: 'Mixed' };
-      // One card per company, side by side when there is room and stacked on narrow screens.
-      var html = '<ul class="inv-cmp-cards">' + picked.map(function (tr) {
-        return '<li><h4><a href="' + esc(tr.getAttribute('data-path')) + '">' + esc(tr.getAttribute('data-name')) + '</a></h4><dl>' + fields.slice(1).map(function (f) {
-          var v = tr.getAttribute('data-' + f[1]) || '';
-          if (f[1] === 'theses' && v === '0') v = '';
-          return '<dt>' + f[0] + '</dt><dd>' + (v ? esc(tokens(v).map(function (t) { return LABEL[t] || t; }).join(', ')) : '<span class="na">None recorded</span>') + '</dd>';
-        }).join('') + '</dl></li>';
-      }).join('') + '</ul>';
-      out.innerHTML = html;
-      out.closest('.inv-compare').classList.remove('inv-hidden');
-    }
     apply();
   }
   Array.prototype.forEach.call(document.querySelectorAll('form.inv-filters[data-for]'), setup);
+
+  // ---------- Company comparator (#comparator) ----------
+  // Every row of the company directory, read once in alphabetical order, whatever the filters, sorting or watchlist.
+  // Each slot is a combobox with its own listbox; a company can be in one slot only. Text goes in with textContent.
+  function fold(v) { return (v || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
+  function comparator() {
+    var box = document.getElementById('comparator');
+    var table = document.getElementById('inv-companies');
+    if (!box || !table) return;
+    var all = Array.prototype.map.call(table.tBodies[0].rows, function (tr) {
+      var c = {};
+      ['key', 'name', 'path', 'ticker', 'exchange', 'isin', 'country', 'segment', 'etf', 'theses', 'stances', 'publishers', 'chart'].forEach(function (k) { c[k] = tr.getAttribute('data-' + k) || ''; });
+      c.search = fold([c.name, c.ticker, c.exchange, c.isin, c.key].join(' '));
+      return c;
+    }).filter(function (c) { return c.key; }).sort(function (a, z) { return a.name.localeCompare(z.name); });
+    var LABEL = { verified: 'Chart checked', unverified: 'Chart not yet checked', unavailable: 'No chart here', positive: 'Positive', exit: 'Exit', mixed: 'Mixed' };
+    var FIELDS = [['Ticker', 'ticker'], ['Exchange', 'exchange'], ['Country', 'country'], ['Segment', 'segment'], ['ETF membership', 'etf'], ['Theses in catalogue', 'theses'], ['Stances', 'stances'], ['Publishers', 'publishers'], ['Chart here', 'chart']];
+    var status = document.getElementById('cmp-status');
+    var slots = Array.prototype.slice.call(box.querySelectorAll('.inv-slot'));
+    var chosen = slots.map(function () { return null; });
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+    function say(msg) { status.textContent = msg; }
+    function summary() {
+      var n = chosen.filter(Boolean).length;
+      say(n === 0 ? 'No company chosen yet.' : n === 1 ? '1 company chosen. Add another to compare.' : 'Comparing ' + n + ' companies.');
+    }
+    function holder(c, self) { for (var k = 0; k < chosen.length; k += 1) if (k !== self && chosen[k] && chosen[k].key === c.key) return k; return -1; }
+
+    slots.forEach(function (slot, i) {
+      var n = i + 1;
+      var input = slot.querySelector('input[role=combobox]');
+      var list = slot.querySelector('[role=listbox]');
+      var openBtn = slot.querySelector('.inv-combo-open');
+      var clearBtn = slot.querySelector('.inv-slot-clear');
+      var card = slot.querySelector('.inv-slot-card');
+      var matches = [];
+      var active = -1;
+
+      function card0() { card.textContent = ''; card.appendChild(el('p', 'dim', 'No company chosen.')); }
+      function showCard(c) {
+        card.textContent = '';
+        var h = el('h4');
+        if (c.path) { var a = el('a', '', c.name); a.setAttribute('href', c.path); h.appendChild(a); } else h.textContent = c.name;
+        card.appendChild(h);
+        var dl = el('dl');
+        FIELDS.forEach(function (f) {
+          var v = c[f[1]];
+          if (f[1] === 'theses' && v === '0') v = '';
+          var row = el('div');
+          row.appendChild(el('dt', '', f[0]));
+          var dd = el('dd');
+          if (v) dd.textContent = v.split('|').filter(Boolean).map(function (t) { return LABEL[t] || t; }).join(', ');
+          else dd.appendChild(el('span', 'na', 'None recorded'));
+          row.appendChild(dd);
+          dl.appendChild(row);
+        });
+        card.appendChild(dl);
+      }
+      function restore() { input.value = chosen[i] ? chosen[i].name : ''; }
+      function close() {
+        list.hidden = true;
+        input.setAttribute('aria-expanded', 'false');
+        input.removeAttribute('aria-activedescendant');
+        active = -1;
+      }
+      function setActive(k) {
+        var opts = list.querySelectorAll('[role=option]');
+        if (!matches.length) return;
+        active = Math.max(0, Math.min(k, matches.length - 1));
+        Array.prototype.forEach.call(opts, function (o, j) { o.classList.toggle('active', j === active); });
+        input.setAttribute('aria-activedescendant', opts[active].id);
+        if (opts[active].scrollIntoView) opts[active].scrollIntoView({ block: 'nearest' });
+      }
+      function open(query) {
+        var terms = fold(query).split(/\s+/).filter(Boolean);
+        matches = all.filter(function (c) { return terms.every(function (t) { return c.search.indexOf(t) >= 0; }); });
+        list.textContent = '';
+        if (!matches.length) {
+          var none = el('li', 'inv-combo-none', 'No company matches \u201c' + query.trim() + '\u201d.');
+          none.setAttribute('role', 'option');
+          none.setAttribute('aria-disabled', 'true');
+          none.id = 'cmp-' + n + '-none';
+          list.appendChild(none);
+          say('No company matches \u201c' + query.trim() + '\u201d in Company ' + n + '.');
+        }
+        matches.forEach(function (c, j) {
+          var li = el('li', 'inv-combo-opt');
+          li.id = 'cmp-' + n + '-opt-' + j;
+          li.setAttribute('role', 'option');
+          li.setAttribute('aria-selected', String(Boolean(chosen[i] && chosen[i].key === c.key)));
+          li.appendChild(el('span', 'nm', c.name));
+          var meta = [c.ticker, c.exchange].filter(Boolean).join(' \u00b7 ');
+          var other = holder(c, i);
+          if (other >= 0) { li.setAttribute('aria-disabled', 'true'); meta += (meta ? ' \u00b7 ' : '') + 'in Company ' + (other + 1); }
+          li.appendChild(el('span', 'mt', meta));
+          li.addEventListener('mousedown', function (e) { e.preventDefault(); });
+          li.addEventListener('click', function () { choose(c); });
+          list.appendChild(li);
+        });
+        list.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
+        active = -1;
+        input.removeAttribute('aria-activedescendant');
+        if (matches.length) say(matches.length + (matches.length === 1 ? ' company' : ' companies') + ' in the list for Company ' + n + '.');
+      }
+      function full() { open(chosen[i] && input.value === chosen[i].name ? '' : input.value); }
+      function choose(c) {
+        var other = holder(c, i);
+        if (other >= 0) { say(c.name + ' is already in Company ' + (other + 1) + '. Clear it there or choose another company.'); return; }
+        chosen[i] = c;
+        input.value = c.name;
+        close();
+        clearBtn.hidden = false;
+        showCard(c);
+        summary();
+      }
+      function clear() {
+        chosen[i] = null;
+        input.value = '';
+        close();
+        clearBtn.hidden = true;
+        card0();
+        summary();
+        input.focus();
+      }
+      input.addEventListener('input', function () { open(input.value); if (matches.length) setActive(0); });
+      input.addEventListener('click', function () { if (list.hidden) full(); });
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown') { e.preventDefault(); if (list.hidden) { full(); setActive(0); } else setActive(active + 1); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); if (list.hidden) { full(); setActive(matches.length - 1); } else setActive(active - 1); }
+        else if (e.key === 'Home' && !list.hidden) { e.preventDefault(); setActive(0); }
+        else if (e.key === 'End' && !list.hidden) { e.preventDefault(); setActive(matches.length - 1); }
+        else if (e.key === 'Enter') { if (!list.hidden && active >= 0) { e.preventDefault(); choose(matches[active]); } }
+        else if (e.key === 'Escape') { if (!list.hidden) { e.preventDefault(); close(); restore(); summary(); } }
+        else if (e.key === 'Tab') { if (!list.hidden) { close(); restore(); } }
+      });
+      input.addEventListener('blur', function () { setTimeout(function () { if (!slot.contains(document.activeElement)) { close(); restore(); } }, 0); });
+      openBtn.addEventListener('mousedown', function (e) { e.preventDefault(); });
+      openBtn.addEventListener('click', function () { if (list.hidden) { full(); input.focus(); } else { close(); restore(); } });
+      clearBtn.addEventListener('click', clear);
+    });
+
+    box.querySelector('.inv-cmp-nojs').hidden = true;
+    document.getElementById('cmp-hint').hidden = false;
+    box.querySelector('.inv-cmp-slots').hidden = false;
+    status.hidden = false;
+    summary();
+  }
+  comparator();
 })();

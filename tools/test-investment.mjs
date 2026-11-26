@@ -187,3 +187,24 @@ test('company header: the chart is offered once, beside the identity and key fac
   assert.match(css, /\.mkt-frame\.info \.tradingview-widget-container\{height:auto!important\}\n\.mkt-frame\.info \.tradingview-widget-container iframe\{flex:none;height:260px!important\}\n@media \(max-width:640px\)\{\.mkt-frame\.info \.tradingview-widget-container iframe\{height:300px!important\}\}/);
   assert.match(css, /\.co-chart \.mkt-frame\.chart\{height:360px\}/);
 });
+
+test('company comparator: three labelled comboboxes over every company, a top link, no row checkboxes, honest fallback', () => {
+  const dir = read('investment/index.html');
+  assert.match(dir, /<nav class="jump" aria-label="On this page"><a href="#desk">Companies \(276\)<\/a><a href="#comparator">Company comparator<\/a>/);
+  assert.match(dir, /<section class="inv-comparator" id="comparator" aria-labelledby="comparator-h">\n<h3 id="comparator-h">Company comparator<\/h3>/);
+  for (const n of [1, 2, 3]) {
+    assert.match(dir, new RegExp(`<label class="inv-slot-label" id="cmp-label-${n}" for="cmp-input-${n}">Company ${n}</label>`));
+    assert.match(dir, new RegExp(`<input id="cmp-input-${n}" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="cmp-list-${n}"`));
+    assert.match(dir, new RegExp(`<ul class="inv-combo-list" id="cmp-list-${n}" role="listbox" aria-labelledby="cmp-label-${n}" hidden></ul>`));
+  }
+  assert.equal((dir.match(/class="inv-slot"/g) ?? []).length, 3);
+  assert.match(dir, /<p class="inv-cmp-nojs">The comparator needs JavaScript\. Every company and the same fields are in the directory below\.<\/p>/);
+  assert.doesNotMatch(dir, /Tick 2 to 4|data-compare=|id="inv-compare"/);
+  assert.match(dir, /<label class="check"><input type="checkbox" name="watch"> Watchlist only<\/label>/);
+  assert.match(dir, /data-isin="US88160R1014"/);
+  const js = read('assets/investment.js');
+  assert.doesNotMatch(js, /input\.cmp|cmpBox|Compare up to 4/);
+  assert.doesNotMatch(js, /innerHTML/, 'the comparator writes text with textContent');
+  assert.match(js, /setAttribute\('aria-activedescendant'/);
+  assert.doesNotMatch(read('assets/investment.css'), /\.inv-compare|\.inv-cmp-cards/);
+});
