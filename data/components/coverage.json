@@ -2,17 +2,17 @@
  "title": "Components coverage",
  "note": "Counts only, from every row of the Components tab; product details are for subscribers except the public first rows. Classes and sensing approaches come from explicit rules over the recorded text (assets/components-core.js).",
  "snapshot": {
-  "exported_at": "2026-11-26T06:38:00.000Z"
+  "exported_at": "2026-11-26T09:16:57.000Z"
  },
  "counts": {
-  "products": 19,
+  "products": 51,
   "software": 1,
-  "references": 97,
+  "references": 154,
   "by_class": {
-   "commercial": 7,
+   "commercial": 38,
    "early_access": 1,
    "discontinued": 1,
-   "research": 10
+   "research": 11
   },
   "by_principle": {
    "optical_camera": 10,
@@ -21,11 +21,52 @@
    "not_stated": 1,
    "optical_photodiode": 1,
    "capacitive": 1,
-   "fluid": 1
+   "fluid": 1,
+   "not_applicable": 32
   },
   "by_family": {
    "Tactile sensor": 18,
-   "Tactile robotic hand": 1
+   "Tactile robotic hand": 1,
+   "Integrated rotary actuator": 3,
+   "Strain-wave reducer component set": 2,
+   "Cycloidal precision reducer": 2,
+   "Servo positioning controller": 1,
+   "Tendon-driven dexterous hand": 2,
+   "Open research dexterous hand": 1,
+   "Sensorised robotic hand": 1,
+   "Fully actuated dexterous hand": 2,
+   "Adaptive two-finger gripper": 1,
+   "Electric two-finger gripper": 1,
+   "Six-axis force/torque sensor": 3,
+   "Stereo depth camera": 2,
+   "PoE stereo depth camera": 1,
+   "Stereo depth and edge-AI camera": 1,
+   "Mechanical 3D lidar": 1,
+   "Short-range mechanical 3D lidar": 1,
+   "Embedded AI compute module": 3,
+   "Off-axis absolute magnetic encoder": 1,
+   "On-axis absolute magnetic angle sensor IC": 1,
+   "Cylindrical lithium-ion cell": 1,
+   "Battery monitoring and protection IC": 1
+  },
+  "by_component_class": {
+   "tactile_sensor": 18,
+   "tactile_hand": 1,
+   "actuator": 3,
+   "reducer": 4,
+   "motion_controller": 1,
+   "dexterous_hand": 6,
+   "gripper": 2,
+   "force_torque_sensor": 3,
+   "vision_sensor": 6,
+   "compute_module": 3,
+   "encoder": 2,
+   "power_battery": 2
+  },
+  "by_review": {
+   "partial": 18,
+   "pending": 1,
+   "checked": 32
   },
   "notes_rows": 24
  },
@@ -49,7 +90,39 @@
    "CMP-TAC-017",
    "CMP-TAC-018",
    "CMP-TAC-019",
-   "CMP-TAC-020"
+   "CMP-TAC-020",
+   "CMP-ACT-001",
+   "CMP-ACT-002",
+   "CMP-ACT-003",
+   "CMP-RED-001",
+   "CMP-RED-002",
+   "CMP-RED-003",
+   "CMP-RED-004",
+   "CMP-CTL-001",
+   "CMP-HND-001",
+   "CMP-HND-002",
+   "CMP-HND-003",
+   "CMP-HND-004",
+   "CMP-HND-005",
+   "CMP-HND-006",
+   "CMP-GRP-001",
+   "CMP-GRP-002",
+   "CMP-FTS-001",
+   "CMP-FTS-002",
+   "CMP-FTS-003",
+   "CMP-VIS-001",
+   "CMP-VIS-002",
+   "CMP-VIS-003",
+   "CMP-VIS-004",
+   "CMP-VIS-005",
+   "CMP-VIS-006",
+   "CMP-CMU-001",
+   "CMP-CMU-002",
+   "CMP-CMU-003",
+   "CMP-ENC-001",
+   "CMP-ENC-002",
+   "CMP-PWR-001",
+   "CMP-PWR-002"
   ],
   "software": [
    "CMP-TAC-008"

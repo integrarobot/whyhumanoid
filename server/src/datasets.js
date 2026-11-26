@@ -11,7 +11,7 @@ import editorial from './editorial/humanoids.json' with { type: 'json' };
 import { scrubEditorial } from './data-atlas/atlas.js';
 import { PUBLIC_DATE_HEADERS } from './public-dates.js';
 import { INTEGRATOR_FIELDS, INTEGRATOR_HEADERS, selectIntegrators } from './integrators/catalogue.js';
-import { COMPONENT_FIELDS, COMPONENT_HEADERS, COMPONENT_WITHHELD, scrubComponentText, selectProducts, selectSoftware } from './components/catalogue.js';
+import { COMPONENT_BASE_HEADERS, COMPONENT_FIELDS, COMPONENT_HEADERS, COMPONENT_WITHHELD, scrubComponentText, selectProducts, selectSoftware } from './components/catalogue.js';
 import { DATASET_ACCESS, PREVIEW_ROWS, categoryOfDataset, isFreeDataset, publicFieldsFor } from './access/matrix.js';
 
 // Access comes from the central access matrix (server/src/access/matrix.js, 23 Nov 2026), never from this file.
@@ -303,6 +303,8 @@ export const DATASETS = [
     description: 'Robot components as products: sensing principle, specifications, interfaces, availability, price and sources.',
     kind: 'table',
     headers: COMPONENT_HEADERS,
+    // The tab before the family-specific extension (26 Nov 2026): the same 37 columns, without AL:AS.
+    formerHeaders: [COMPONENT_BASE_HEADERS],
     fields: COMPONENT_FIELDS,
     select: selectProducts,
     idFields: ['component_id'],
@@ -319,6 +321,8 @@ export const DATASETS = [
     description: 'Software related to the component products, such as simulators of tactile sensors.',
     kind: 'table',
     headers: COMPONENT_HEADERS,
+    // The tab before the family-specific extension (26 Nov 2026): the same 37 columns, without AL:AS.
+    formerHeaders: [COMPONENT_BASE_HEADERS],
     fields: COMPONENT_FIELDS,
     select: selectSoftware,
     idFields: ['component_id'],

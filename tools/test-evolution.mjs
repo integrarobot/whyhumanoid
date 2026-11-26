@@ -87,7 +87,10 @@ test('Components: every dated product quotes its own year cell; the rest are lis
     assert.ok(byId.get(p.id).year.includes(rv.excerpt), p.id);
     assert.ok(byId.get(p.id).year.includes(p.date.slice(0, 4)), `${p.id}: the year is in the cell`);
   }
-  assert.equal(c.points.length + src.review.components.excluded.length, src.hardware.rows.length);
+  // Touch-sensing products are dated or listed as excluded; products of other families are declared outside the chart.
+  const touch = src.hardware.rows.filter((r) => (r.component_class ? ['tactile_sensor', 'tactile_hand'].includes(r.component_class) : ['Tactile sensor', 'Tactile robotic hand'].includes(r.family)));
+  assert.equal(c.points.length + src.review.components.excluded.length, touch.length);
+  assert.equal(c.coverage.excluded.reduce((n, x) => n + x.count, 0) + c.points.length, src.hardware.rows.length, 'every product is placed or declared excluded');
 });
 
 test('Integrators: dated events quote their source dates; Novares counted once; simulation and announcements apart', () => {

@@ -825,7 +825,7 @@
    "path": "/components/",
    "type": "lanes",
    "title": "When each tactile sensing product first appeared",
-   "subtitle": "17 of 19 products by the date of their first paper, preprint or launch, grouped by sensing principle.",
+   "subtitle": "17 of 19 touch-sensing products by the date of their first paper, preprint or launch, grouped by sensing principle. The 32 products of other families are not placed.",
    "meaning": "First dated public appearance of the product or version as recorded: its paper, preprint or commercial launch. Not a sales or performance figure.",
    "unit": "products",
    "precision": "year",
@@ -1081,7 +1081,7 @@
    "summary": "17 products dated from 2009 to 2026: 11 optical or vision-based, 4 magnetic, 2 multimodal or not stated. No performance figures are compared: units and test conditions differ.",
    "coverage": {
     "included": 17,
-    "total": 19,
+    "total": 51,
     "unit": "products",
     "excluded": [
      {
@@ -1091,12 +1091,16 @@
      {
       "reason": "BioTac SP: The recorded year is the original BioTac's; the SP version is undated.",
       "count": 1
+     },
+     {
+      "reason": "Products of other component families (actuators, reducers, hands, sensors, compute, power and others): not placed in time; this chart covers touch sensing only",
+      "count": 32
      }
     ],
     "note": "Hollow mark: a complete robotic hand, not a standalone sensor."
    },
    "status": "partial",
-   "status_note": "17 of 19 products placed in time; 2 cannot be dated from the recorded text.",
+   "status_note": "17 of 51 products placed in time; 2 touch-sensing products cannot be dated from the recorded text and 32 products of other families are outside this chart.",
    "sources": [
     {
      "label": "Components public product rows, snapshot 2026-11-26",

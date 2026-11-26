@@ -38,7 +38,7 @@
       if (!r) return;
       document.title = r.name + ': ' + (r.family || 'component') + ' passport · Why Humanoid?';
       $('#cx-title').textContent = r.name;
-      $('#cx-lede').textContent = r.principle || 'Sensing principle not recorded';
+      $('#cx-lede').textContent = r['function'] || r.principle || 'What it does is not recorded';
       $('#cx-access').innerHTML = esc(r.manufacturer || '') + '<br>' + W.reviewBadge(r) + ' Subscriber view, from the complete Components category.';
       $('#cx-pp').innerHTML = W.passportHtml(r, { level: 2 }) + '<p class="pp-acts"><a href="/components/?cmp=' + esc(r.component_id) + '#compare">Compare with other products</a> · <a href="/components/">All components</a></p>';
     }).catch(fail);
@@ -68,7 +68,7 @@
     var params = new URLSearchParams(location.search);
     var save = function () { var q = params.toString(); try { history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash); } catch (e) { /* sandboxed */ } };
     var setParam = function (k, v) { if (!v) params.delete(k); else params.set(k, v); save(); };
-    var F = ['class', 'principle', 'q2', 'if', 'ros', 'licence'];
+    var F = ['fam', 'class', 'principle', 'q2', 'if', 'ros', 'licence'];
     var state = { q: params.get('q') || '' };
     F.forEach(function (k) { state[k] = params.get(k) || ''; });
 
@@ -78,7 +78,7 @@
       var card = $('.pc[data-id="' + r.component_id + '"] .pc-m');
       return card ? card.innerHTML : null;
     };
-    var haystack = function (r) { return [r.name, r.manufacturer, r.principle, r.measured, r.family, r.interface, r.software, r.component_id].join(' ').toLowerCase(); };
+    var haystack = function (r) { return [r.name, r.manufacturer, r.principle, r.measured, r.family, r['function'], W.familyLabel(W.familyOf(r)), r.interface, r.software, r.component_id].join(' ').toLowerCase(); };
 
     function render() {
       var cards = products.map(function (r) { return W.cardHtml(r, makersFor(r)); }).join('');
@@ -93,6 +93,7 @@
       $$('.pc').forEach(function (el) {
         var r = products.filter(function (x) { return x.component_id === el.getAttribute('data-id'); })[0];
         var ok = (!q || haystack(r).indexOf(q) >= 0)
+          && (!state.fam || el.getAttribute('data-fam') === state.fam)
           && (!state['class'] || el.getAttribute('data-class') === state['class'])
           && (!state.principle || el.getAttribute('data-principle') === state.principle)
           && (!state.q2 || el.getAttribute('data-q').split(' ').indexOf(state.q2) >= 0)

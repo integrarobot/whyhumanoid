@@ -29,6 +29,9 @@ export const ENTITIES_PUBLIC = Object.freeze(['entity_id', 'entity_type', 'canon
 export const COMPONENTS_PUBLIC = Object.freeze([
   'component_id', 'name', 'group', 'family', 'manufacturer', 'country', 'year', 'status', 'principle', 'measured',
   'main_source_url', 'review_status',
+  // Family-specific extension (26 Nov 2026): the class for filters, what the part does, the kind of evidence and when
+  // it was checked. Applications, specifications, integration requirements and limitations are the paid passport.
+  'component_class', 'function', 'evidence_scope', 'checked_at',
 ]);
 export const COMPONENTS_OPEN_PUBLIC = Object.freeze(['licence', 'repository']);
 export const isOpenComponent = (d) => d.group === 'Research / open hardware' || OPEN.test(String(d.status ?? '')) || (/software/i.test(String(d.group ?? '')) && OPEN.test(String(d.licence ?? '')));

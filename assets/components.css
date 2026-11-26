@@ -171,3 +171,27 @@ span.cls.cls-discontinued{opacity:1;background:color-mix(in srgb,var(--bone-3) 4
   .cx-filters{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){.cx *{transition:none!important;scroll-behavior:auto!important}}
+/* Families, review scope and structured specifications (26 Nov 2026). */
+.ev-partial{border-color:var(--amber);color:var(--bone)}
+.ev-checked{border-color:var(--ok);color:var(--bone)}
+.st-checked{border-color:var(--ok);color:var(--bone)}
+.fam a{display:contents;color:inherit;text-decoration:none}
+.fam a:hover span,.fam a:focus-visible span{color:var(--amber-hi);text-decoration:underline}
+.fam-l{display:inline-block;margin-right:8px;font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--amber-hi)}
+.pp-scope{margin:8px 0 0;font-size:14px;color:var(--bone-2);max-width:96ch}
+.pp-scope small{display:block;margin-top:4px;font-size:13.5px;color:var(--bone-3)}
+.spec-wrap{overflow-x:auto;border:1px solid var(--line)}
+table.specs{width:100%;border-collapse:collapse;font-size:14.5px}
+table.specs th,table.specs td{text-align:left;vertical-align:top;padding:8px 10px;border-top:1px solid var(--line);overflow-wrap:anywhere}
+table.specs thead th{font-family:var(--f-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--bone-3);border-top:0}
+table.specs tbody th{font-weight:500;color:var(--bone-2);min-width:130px}
+table.specs small{display:block;font-size:12.5px;color:var(--bone-3)}
+.cmp small.cond{display:block;font-size:12.5px;color:var(--bone-3)}
+.cmp-note{margin:0 0 10px;font-size:14px;color:var(--bone-2);max-width:96ch}
+@media (max-width:640px){
+  table.specs,table.specs tbody,table.specs tr,table.specs th,table.specs td{display:block;width:auto}
+  table.specs thead{display:none}
+  table.specs tr{border-top:1px solid var(--line-2);padding:6px 0}
+  table.specs th,table.specs td{border:0;padding:3px 10px}
+}
+.pp-main a,.pp a,.srcs a,.pc a{overflow-wrap:anywhere;word-break:break-word}

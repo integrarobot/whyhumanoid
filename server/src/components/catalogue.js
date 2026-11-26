@@ -13,7 +13,8 @@
 // - The source workbook link and the row number are housekeeping: withheld at import. Clauses written for the
 //   research prompt (who asked what, reminders to re-check) are removed; real technical caveats stay.
 
-export const COMPONENT_HEADERS = Object.freeze([
+// The 37 columns A:AK of the product table (23 Nov 2026). Unchanged; a tab with only these columns stays valid.
+export const COMPONENT_BASE_HEADERS = Object.freeze([
   'No.', 'Sensor', 'Group', 'Manufacturer / laboratory', 'Country', 'Year (launch / publication)', 'Current status',
   'Sensing principle', 'Measured quantities', 'No. of taxels / camera resolution', 'Spatial resolution', 'Force range',
   'Force resolution', 'Sampling rate / fps', 'Dimensions', 'Weight', 'Sensing surface / shape', 'Interface / connectivity',
@@ -24,6 +25,14 @@ export const COMPONENT_HEADERS = Object.freeze([
   'Comparison summary',
 ]);
 
+// Family-specific extension (26 Nov 2026, agreed with Codex): eight columns AL:AS appended in this order. When present
+// they must be exactly these headers; the related software block may keep its 37-column header copy.
+export const COMPONENT_EXTENSION_HEADERS = Object.freeze([
+  'COMPONENT_CLASS', 'FUNCTION', 'APPLICATIONS', 'TECHNICAL_SPECIFICATIONS', 'INTEGRATION_REQUIREMENTS', 'LIMITATIONS',
+  'EVIDENCE_SCOPE', 'CHECKED_AT',
+]);
+export const COMPONENT_HEADERS = Object.freeze([...COMPONENT_BASE_HEADERS, ...COMPONENT_EXTENSION_HEADERS]);
+
 // Field names, column by column (server-side keys of every row).
 export const COMPONENT_FIELDS = Object.freeze([
   'no', 'name', 'group', 'manufacturer', 'country', 'year', 'status', 'principle', 'measured', 'resolution_count',
@@ -31,7 +40,51 @@ export const COMPONENT_FIELDS = Object.freeze([
   'interface', 'software', 'durability', 'list_price', 'bom_cost', 'where_to_buy', 'licence', 'repository',
   'key_paper', 'integrations', 'advantages', 'drawbacks', 'main_source_url', 'notes', 'component_id', 'family',
   'review_status', 'source_workbook', 'sources', 'comparison_summary',
+  'component_class', 'function', 'applications', 'technical_specifications', 'integration_requirements', 'limitations',
+  'evidence_scope', 'checked_at',
 ]);
+
+// Component classes (26 Nov 2026): the controlled family of every product, its Component ID prefix and the metric keys
+// of TECHNICAL_SPECIFICATIONS that are compared within the family. Other snake_case keys are shown, never compared.
+export const COMMON_METRICS = Object.freeze(['mass', 'dimensions', 'operating_voltage', 'rated_power', 'peak_power', 'communication_interface', 'ip_rating', 'operating_temperature', 'update_rate']);
+export const COMPONENT_CLASSES = Object.freeze({
+  tactile_sensor: { prefix: 'TAC', label: 'Tactile sensor', tactile: true, metrics: [] },
+  tactile_hand: { prefix: 'TAC', label: 'Tactile robotic hand', tactile: true, metrics: [] },
+  actuator: { prefix: 'ACT', label: 'Actuator', metrics: ['rated_torque', 'peak_torque', 'rated_speed', 'max_speed', 'gear_ratio', 'backlash', 'torque_density', 'encoder_resolution', 'continuous_current', 'peak_current', 'backdrivability'] },
+  reducer: { prefix: 'RED', label: 'Reducer', metrics: ['gear_ratio', 'rated_torque', 'peak_torque', 'momentary_torque', 'backlash', 'torsional_stiffness', 'efficiency', 'max_input_speed', 'rated_life'] },
+  motor_drive: { prefix: 'DRV', label: 'Motor or drive', metrics: ['rated_torque', 'peak_torque', 'rated_speed', 'continuous_current', 'peak_current', 'torque_constant', 'speed_constant', 'control_modes'] },
+  dexterous_hand: { prefix: 'HND', label: 'Dexterous hand', metrics: ['degrees_of_freedom', 'actuated_dof', 'fingertip_force', 'grip_force', 'payload', 'closing_time', 'tactile_sensing'] },
+  gripper: { prefix: 'GRP', label: 'Gripper', metrics: ['stroke', 'grip_force', 'payload', 'closing_time', 'repeatability'] },
+  force_torque_sensor: { prefix: 'FTS', label: 'Force-torque sensor', metrics: ['force_range_xy', 'force_range_z', 'torque_range_xy', 'torque_range_z', 'force_resolution', 'torque_resolution', 'overload_capacity', 'sample_rate'] },
+  vision_sensor: { prefix: 'VIS', label: 'Vision or depth sensor', metrics: ['depth_range', 'depth_resolution', 'rgb_resolution', 'frame_rate', 'field_of_view', 'baseline', 'depth_accuracy', 'shutter'] },
+  compute_module: { prefix: 'CMU', label: 'Compute module', metrics: ['ai_performance', 'cpu', 'gpu', 'memory', 'power_range'] },
+  motion_controller: { prefix: 'CTL', label: 'Motion controller', metrics: ['control_loop_rate', 'axes'] },
+  power_battery: { prefix: 'PWR', label: 'Battery, cell or power part', metrics: ['capacity', 'nominal_voltage', 'chemistry', 'max_discharge_current', 'cycle_life'] },
+  encoder: { prefix: 'ENC', label: 'Encoder', metrics: ['resolution', 'accuracy', 'max_speed'] },
+});
+export const EVIDENCE_SCOPES = Object.freeze(['manufacturer_datasheet', 'manufacturer_webpage', 'manufacturer_manual', 'peer_reviewed_paper', 'preprint', 'independent_test', 'distributor_listing']);
+// Columns that describe touch sensing only: a product of another class leaves them empty or "N/A".
+export const TACTILE_ONLY = Object.freeze(['resolution_count', 'spatial_resolution', 'force_range', 'force_resolution', 'surface', 'durability']);
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+// TECHNICAL_SPECIFICATIONS: one metric per line, seven fields separated by " | ":
+// metric_key | value | unit | conditions | source_url | locator | checked_at. Values stay as the source states them.
+export function parseSpecs(text) {
+  const specs = [];
+  const problems = [];
+  String(text ?? '').split('\n').map((l) => l.trim()).filter(Boolean).forEach((line, i) => {
+    const parts = line.split('|').map((x) => x.trim());
+    if (parts.length !== 7) { problems.push(`specification line ${i + 1} has ${parts.length} fields, not 7`); return; }
+    const [metric, value, unit, conditions, sourceUrl, locator, checkedAt] = parts;
+    if (!/^[a-z][a-z0-9_]*$/.test(metric)) problems.push(`specification line ${i + 1}: metric "${metric}" is not snake_case`);
+    if (!value) problems.push(`specification line ${i + 1} (${metric}): no value`);
+    if (!/^https:\/\/\S+$/.test(sourceUrl)) problems.push(`specification line ${i + 1} (${metric}): source is not an https link`);
+    if (!ISO_DAY.test(checkedAt)) problems.push(`specification line ${i + 1} (${metric}): checked date "${checkedAt}" is not YYYY-MM-DD`);
+    specs.push({ metric, value, unit: unit || null, conditions: conditions || null, source_url: sourceUrl, locator: locator || null, checked_at: checkedAt });
+  });
+  return { specs, problems };
+}
+const isNa = (v) => v === null || v === undefined || String(v).trim() === '' || /^(N\/A|Not applicable)\b/i.test(String(v).trim());
 
 // Housekeeping columns: the sheet's running number and the link to the research workbook the rows were imported from.
 export const COMPONENT_WITHHELD = Object.freeze(['no', 'source_workbook']);
@@ -47,7 +100,7 @@ export const GROUPS = Object.freeze({
 
 const isEmptyRow = (row) => !(row ?? []).some((v) => String(v ?? '').trim() !== '');
 const first = (row) => String(row?.[0] ?? '').trim();
-const sameHeader = (row) => COMPONENT_HEADERS.every((h, i) => String(row?.[i] ?? '').trim() === h);
+const sameHeader = (row) => COMPONENT_BASE_HEADERS.every((h, i) => String(row?.[i] ?? '').trim() === h);
 
 export class ComponentsLayoutError extends Error {}
 
@@ -81,7 +134,7 @@ export function componentBlocks(values) {
 export const selectProducts = (values) => { const b = componentBlocks(values); return { header: b.header, rows: b.main }; };
 export const selectSoftware = (values) => {
   const b = componentBlocks(values);
-  return { header: b.softwareHeader ?? COMPONENT_HEADERS, rows: b.software };
+  return { header: b.softwareHeader ?? COMPONENT_BASE_HEADERS, rows: b.software };
 };
 
 // Public-friendly text: the prompt-specific clauses of the research compilation go, the caveats stay.
@@ -140,7 +193,26 @@ export function componentProblems(products, software = []) {
     if (!sources.length) problems.push(`${at}: no entry in Sources and evidence`);
     for (const s of sources) if (!s.url) problems.push(`${at}: a source entry ("${s.subject ?? ''}") has no link`);
     if (PRIVATE_LINK.test(Object.values(r).join(' '))) problems.push(`${at}: holds a private workbook link`);
+    // Family-specific extension (26 Nov 2026): checked whenever the row carries it, and required on every product once
+    // any product does (the columns exist in the tab).
+    if (kind === 'product' && (r.component_class || classified)) {
+      const c = COMPONENT_CLASSES[r.component_class];
+      if (!c) problems.push(`${at}: COMPONENT_CLASS "${r.component_class ?? ''}" is not in the reviewed vocabulary`);
+      else {
+        if (/^CMP-[A-Z]{3}-/.test(r.component_id ?? '') && r.component_id.slice(4, 7) !== c.prefix) problems.push(`${at}: Component ID prefix does not match class ${r.component_class} (${c.prefix})`);
+        if (!c.tactile) for (const f of TACTILE_ONLY) if (!isNa(r[f])) problems.push(`${at}: ${f} is a touch-sensing column; a product of class ${r.component_class} leaves it empty or N/A`);
+      }
+    }
+    if (r.technical_specifications) {
+      const { specs, problems: sp } = parseSpecs(r.technical_specifications);
+      for (const x of sp) problems.push(`${at}: ${x}`);
+      const listed = new Set(sources.map((x) => x.url));
+      for (const x of specs) if (/^https:\/\//.test(x.source_url) && !listed.has(x.source_url)) problems.push(`${at}: specification ${x.metric} cites ${x.source_url}, which is not in Sources and evidence`);
+    }
+    if (r.evidence_scope) for (const k of String(r.evidence_scope).split(';').map((x) => x.trim()).filter(Boolean)) if (!EVIDENCE_SCOPES.includes(k)) problems.push(`${at}: EVIDENCE_SCOPE "${k}" is not in the vocabulary`);
+    if (r.checked_at && !ISO_DAY.test(r.checked_at)) problems.push(`${at}: CHECKED_AT "${r.checked_at}" is not YYYY-MM-DD`);
   };
+  const classified = products.some((r) => r.component_class);
   for (const r of products) check(r, 'product');
   for (const r of software) check(r, 'software');
   return problems;

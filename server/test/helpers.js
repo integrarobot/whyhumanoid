@@ -130,6 +130,10 @@ function componentFixtureRow(spec, i, software = false) {
     principle: 'Synthetic optical principle with a camera', list_price: i % 2 ? `${100 + i} USD (example.com, accessed 23 Nov 2026)` : 'Not available',
     weight: 'Not available', bom_cost: 'N/A', review_status: 'Imported from Grok workbook; original-source review pending',
     source_workbook: ['https://docs.google', '.com/spreadsheets/d/fixture/edit'].join(''),
+    // Family-specific extension (26 Nov 2026): left empty here, as in a tab not yet extended; components.test.js
+    // covers classified rows.
+    component_class: '', applications: '', technical_specifications: '', integration_requirements: '', limitations: '', evidence_scope: '', checked_at: '',
+    function: `Synthetic function ${i}`,
     sources: `Product page\nhttps://sensor-${i}.example.com/\nAccessed: 23 Nov 2026\nReview status: Imported reference; original-source review pending\n\nPaper\nhttps://paper-${i}.example.com/\nAccessed: 23 Nov 2026\nReview status: Imported reference; original-source review pending`,
   };
   return spec.fields.map((f) => (f in v ? v[f] : `Synthetic ${f.replace(/_/g, ' ')} ${i}`));

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import {
-  COMPONENT_HEADERS, COMPONENT_FIELDS, COMPONENT_WITHHELD, componentBlocks, componentProblems, parseSources, scrubComponentText,
+  COMPONENT_BASE_HEADERS, COMPONENT_CLASSES, COMPONENT_EXTENSION_HEADERS, COMPONENT_HEADERS, COMPONENT_FIELDS, COMPONENT_WITHHELD, componentBlocks, componentProblems, parseSources, parseSpecs, scrubComponentText,
 } from '../src/components/catalogue.js';
 import { DATASETS_BY_ID } from '../src/datasets.js';
 import { PUBLIC_FIELDS, isOpenComponent } from '../src/access/fields.js';
@@ -30,13 +30,66 @@ const layout = (products, { software = [row({ name: 'TACTO', group: 'Software (s
   ...extra, [], [], ['RELATED SOFTWARE — NOT A PHYSICAL COMPONENT'], [...COMPONENT_HEADERS], ...software,
 ];
 
-test('the Components table has the 37 reviewed columns in order, and housekeeping columns are withheld', () => {
-  assert.equal(COMPONENT_HEADERS.length, 37);
-  assert.equal(COMPONENT_FIELDS.length, 37);
-  assert.deepEqual([COMPONENT_HEADERS[0], COMPONENT_HEADERS[1], COMPONENT_HEADERS[31], COMPONENT_HEADERS[34], COMPONENT_HEADERS[35], COMPONENT_HEADERS[36]], ['No.', 'Sensor', 'Component ID', 'Source workbook', 'Sources and evidence', 'Comparison summary']);
+test('the Components table has the 37 reviewed columns in order plus the eight-column extension, and housekeeping columns are withheld', () => {
+  assert.equal(COMPONENT_BASE_HEADERS.length, 37);
+  assert.deepEqual(COMPONENT_EXTENSION_HEADERS, ['COMPONENT_CLASS', 'FUNCTION', 'APPLICATIONS', 'TECHNICAL_SPECIFICATIONS', 'INTEGRATION_REQUIREMENTS', 'LIMITATIONS', 'EVIDENCE_SCOPE', 'CHECKED_AT']);
+  assert.equal(COMPONENT_HEADERS.length, 45);
+  assert.equal(COMPONENT_FIELDS.length, 45);
+  assert.deepEqual([COMPONENT_HEADERS[0], COMPONENT_HEADERS[1], COMPONENT_HEADERS[31], COMPONENT_HEADERS[34], COMPONENT_HEADERS[35], COMPONENT_HEADERS[36], COMPONENT_HEADERS[37], COMPONENT_HEADERS[44]], ['No.', 'Sensor', 'Component ID', 'Source workbook', 'Sources and evidence', 'Comparison summary', 'COMPONENT_CLASS', 'CHECKED_AT']);
   assert.deepEqual([...COMPONENT_WITHHELD].sort(), ['no', 'source_workbook']);
   assert.deepEqual(spec.headers, COMPONENT_HEADERS);
+  assert.deepEqual(spec.formerHeaders, [COMPONENT_BASE_HEADERS], 'a tab with only A:AK stays valid');
   assert.throws(() => normalizeTab(spec, [['NAME', 'URL', 'DESCRIPTION'], ['Old', 'https://x.example.com', '']]), /header drift/, 'the former three-column directory is refused');
+});
+
+test('family extension: a 37-column tab still imports; a partial or reordered extension is refused', () => {
+  const base = (r) => r.slice(0, 37);
+  const values = layout([base(row())]).map((r) => (r.length >= 37 && r[0] === 'No.' ? [...COMPONENT_BASE_HEADERS] : r.length > 37 ? base(r) : r));
+  assert.equal(normalizeTab(spec, values).rows.length, 1);
+  const partial = layout([row()]);
+  partial[0] = [...COMPONENT_BASE_HEADERS, 'COMPONENT_CLASS', 'FUNCTION'];
+  assert.throws(() => normalizeTab(spec, partial), /header drift/);
+  const swapped = layout([row()]);
+  swapped[0] = [...COMPONENT_BASE_HEADERS, 'FUNCTION', 'COMPONENT_CLASS', ...COMPONENT_EXTENSION_HEADERS.slice(2)];
+  assert.throws(() => normalizeTab(spec, swapped), /header drift/);
+});
+
+const SPEC_SRC = 'Datasheet\nhttps://maker.example.com/datasheet.pdf\nAccessed: 26 Nov 2026\nReview status: Primary source checked 2026-11-26';
+const actuator = (over = {}) => ({
+  component_id: 'CMP-ACT-001', name: 'Example actuator', group: 'Commercial', family: 'Quasi-direct-drive actuator',
+  component_class: 'actuator', function: 'Drives a robot joint.', evidence_scope: 'manufacturer_datasheet', checked_at: '2026-11-26',
+  sources: SPEC_SRC,
+  technical_specifications: 'peak_torque | 120 | N·m | momentary, 48 V | https://maker.example.com/datasheet.pdf | p. 2, Table 1 | 2026-11-26\nmass | 1.2 | kg |  | https://maker.example.com/datasheet.pdf | p. 2 | 2026-11-26',
+  ...over,
+});
+
+test('family extension: class vocabulary, ID prefix, specification lines, sources, scopes, dates and touch-only columns', () => {
+  assert.deepEqual(componentProblems([actuator()]), []);
+  const { specs } = parseSpecs(actuator().technical_specifications);
+  assert.deepEqual(specs[0], { metric: 'peak_torque', value: '120', unit: 'N·m', conditions: 'momentary, 48 V', source_url: 'https://maker.example.com/datasheet.pdf', locator: 'p. 2, Table 1', checked_at: '2026-11-26' });
+  assert.equal(specs[1].conditions, null);
+  const one = (over) => componentProblems([actuator(over)]).join(' | ');
+  assert.match(one({ component_class: 'motorised_thing' }), /not in the reviewed vocabulary/);
+  assert.match(one({ component_id: 'CMP-RED-001' }), /prefix does not match class actuator \(ACT\)/);
+  assert.match(one({ technical_specifications: 'peak_torque | 120 | N·m' }), /has 3 fields, not 7/);
+  assert.match(one({ technical_specifications: 'Peak Torque | 120 | N·m | | https://maker.example.com/datasheet.pdf | p. 2 | 2026-11-26' }), /not snake_case/);
+  assert.match(one({ technical_specifications: 'peak_torque | 120 | N·m | | http://maker.example.com/x | p. 2 | 2026-11-26' }), /not an https link/);
+  assert.match(one({ technical_specifications: 'peak_torque | 120 | N·m | | https://other.example.com/x | p. 2 | 2026-11-26' }), /not in Sources and evidence/);
+  assert.match(one({ technical_specifications: 'peak_torque | 120 | N·m | | https://maker.example.com/datasheet.pdf | p. 2 | 26 Nov 2026' }), /not YYYY-MM-DD/);
+  assert.match(one({ evidence_scope: 'manufacturer_datasheet; vibes' }), /EVIDENCE_SCOPE "vibes"/);
+  assert.match(one({ checked_at: 'yesterday' }), /CHECKED_AT/);
+  assert.match(one({ force_range: '0–120 N·m' }), /force_range is a touch-sensing column/, 'actuator torque never goes into a tactile force cell');
+  assert.deepEqual(componentProblems([actuator({ force_range: 'N/A', resolution_count: '' })]), []);
+  // Once any product is classified, every product must be.
+  assert.match(componentProblems([actuator(), { ...actuator(), component_id: 'CMP-TAC-001', component_class: null, family: 'Tactile sensor' }]).join(' '), /COMPONENT_CLASS "" is not in the reviewed vocabulary/);
+  assert.deepEqual(componentProblems([actuator(), { ...actuator(), component_id: 'CMP-TAC-001', component_class: 'tactile_sensor', family: 'Tactile sensor', force_range: '0.1–5 N', technical_specifications: null }]), []);
+  for (const [k, c] of Object.entries(COMPONENT_CLASSES)) assert.match(c.prefix, /^[A-Z]{3}$/, k);
+});
+
+test('family extension: the public projection carries class, function, evidence scope and date, never specifications', () => {
+  const pub = PUBLIC_FIELDS.hardware;
+  for (const f of ['component_class', 'function', 'evidence_scope', 'checked_at']) assert.ok(pub.includes(f), f);
+  for (const f of ['applications', 'technical_specifications', 'integration_requirements', 'limitations']) assert.ok(!pub.includes(f), f);
 });
 
 test('notes, related software and stray rows are never read as physical products', () => {
@@ -77,18 +130,22 @@ test('ids are unique and well formed; groups come from the reviewed vocabulary; 
   assert.deepEqual(componentProblems([d()]), []);
 });
 
-test('the committed public data: 19 product ids and the software id, 97 references, counts that add up', () => {
+test('the committed public data: 51 product ids (19 touch, 32 other families) and the software id, 154 references, counts that add up', () => {
   const c = read('data/components/coverage.json');
   const want = Array.from({ length: 20 }, (_, i) => `CMP-TAC-${String(i + 1).padStart(3, '0')}`).filter((id) => id !== 'CMP-TAC-008');
-  assert.deepEqual(c.ids.products, want);
+  assert.deepEqual(c.ids.products.slice(0, 19), want, 'the 19 touch products keep their ids and order');
+  assert.equal(c.ids.products.length, 51);
+  for (const id of c.ids.products.slice(19)) assert.doesNotMatch(id, /^CMP-TAC-/, `${id}: a new family keeps its own prefix`);
   assert.deepEqual(c.ids.software, ['CMP-TAC-008'], 'TACTO is software, not a product');
-  assert.equal(c.counts.products, 19);
-  assert.equal(c.counts.references, 97, 'every reference entry of the products and TACTO is accounted for');
-  assert.deepEqual(c.counts.by_family, { 'Tactile sensor': 18, 'Tactile robotic hand': 1 });
-  assert.equal(Object.values(c.counts.by_class).reduce((a, b) => a + b, 0), 19);
+  assert.equal(c.counts.products, 51);
+  assert.equal(c.counts.references, 154, 'every reference entry of the products and TACTO is accounted for');
+  assert.deepEqual(c.counts.by_component_class, { tactile_sensor: 18, tactile_hand: 1, actuator: 3, reducer: 4, motion_controller: 1, dexterous_hand: 6, gripper: 2, force_torque_sensor: 3, vision_sensor: 6, compute_module: 3, encoder: 2, power_battery: 2 });
+  assert.deepEqual(c.counts.by_review, { partial: 18, pending: 1, checked: 32 });
+  assert.equal(Object.values(c.counts.by_class).reduce((a, b) => a + b, 0), 51);
   assert.deepEqual(Object.keys(c).sort(), ['counts', 'ids', 'note', 'snapshot', 'title']);
   const hw = read('data/preview/hardware.json').rows;
-  assert.deepEqual(hw.map((r) => r.component_id), want, 'every product is public at its public fields, in workbook order (24 Nov 2026)');
+  assert.deepEqual(hw.map((r) => r.component_id), c.ids.products, 'every product is public at its public fields, in workbook order (24 Nov 2026)');
+  for (const r of hw) assert.ok(r.component_class && r.function, `${r.component_id}: class and function are public`);
   const sw = read('data/preview/component-software.json').rows;
   for (const r of [...hw, ...sw]) {
     for (const f of COMPONENT_WITHHELD) assert.ok(!(f in r), `${r.component_id}: ${f} is withheld`);
@@ -157,7 +214,11 @@ test('prices, quotes, third-party figures and BOM estimates stay separate; nothi
 
 test('evidence badges: imported research pending review, maker-stated and paper conditions are marked', () => {
   const hw = Object.fromEntries(read('data/preview/hardware.json').rows.map((r) => [r.component_id, r]));
-  assert.match(W.reviewBadge(hw['CMP-TAC-001']), /Imported research · original-source review pending/);
+  const by = (st) => Object.values(hw).find((r) => W.reviewState(r) === st);
+  assert.match(W.reviewBadge(by('pending')), /Imported research · original-source review pending/);
+  assert.match(W.reviewBadge(by('partial')), /ev-partial">Primary sources checked 2026-11-26 for identity and selected specifications; other imported claims remain pending/);
+  assert.match(W.reviewBadge(by('checked')), /ev-checked">Original sources checked 2026-11-26; manufacturer or research claims, not independent testing/);
+  assert.doesNotMatch(W.passportHtml({ ...by('checked'), _summary: true }), /Independent test/, 'no record claims an independent test');
   assert.ok(W.evidenceTags(SYN.maker).includes('Maker-stated'));
   assert.ok(W.evidenceTags(SYN.rate).includes('Paper conditions'));
   assert.ok(W.evidenceTags(SYN.weight).includes('Unverified third-party figure'));
@@ -171,7 +232,7 @@ test('a public summary names every paid field as with the subscription, never as
   const hw = read('data/preview/hardware.json').rows.map((r) => ({ ...r, _summary: true }));
   for (const r of hw) {
     const pp = W.passportHtml(r);
-    for (const sec of W.SECTIONS) for (const [f] of sec.fields) {
+    for (const sec of W.sectionsFor(r)) for (const [f] of sec.fields) {
       const cell = pp.match(new RegExp(`data-f="${f}">(.*?)</dd>`))?.[1] ?? '';
       if (!(f in r)) assert.match(cell, /With the subscription/, `${r.component_id}.${f}`);
     }
@@ -238,7 +299,7 @@ test('public pages: a public summary at every product address, the full passport
     const html = readFileSync(file, 'utf8');
     assert.ok(pub.has(id), `${id} is public at its public fields`);
     assert.match(html, /class="pp pp-summary"/);
-    assert.match(html, /Imported research · original-source review pending/);
+    assert.match(html, /class="ev ev-(pending|partial|checked)"/, `${id}: its review state is shown`);
     assert.doesNotMatch(html, /<meta name="robots" content="noindex">/);
     assert.match(html, /class="pp-lockbox"/);
   }
@@ -251,4 +312,42 @@ test('public pages: a public summary at every product address, the full passport
   const tacto = readFileSync(new URL('components/cmp-tac-008/index.html', root), 'utf8');
   assert.match(tacto, /not counted in the Components products/);
   assert.match(tacto, /href="\/components\/cmp-tac-001\/"/);
+});
+
+test('the browser core and the server share the family vocabulary and the metric keys', () => {
+  assert.deepEqual(Object.keys(W.FAMILIES).sort(), Object.keys(COMPONENT_CLASSES).sort());
+  for (const [k, c] of Object.entries(COMPONENT_CLASSES)) {
+    assert.deepEqual(W.FAMILIES[k].metrics, c.metrics, k);
+    assert.equal(W.FAMILIES[k].label, c.label, k);
+    assert.equal(Boolean(W.FAMILIES[k].tactile), Boolean(c.tactile), k);
+    for (const m of c.metrics) assert.ok(W.METRIC_LABEL[m], `${k}.${m} has a display label`);
+  }
+  assert.deepEqual([...W.FAMILY_ORDER].sort(), Object.keys(COMPONENT_CLASSES).sort());
+  // A non-touch product is never given a touch-sensing principle or a tactile chart label.
+  const act = { component_id: 'CMP-ACT-001', name: 'A', group: 'Commercial', component_class: 'actuator', principle: 'camera-based', _summary: true };
+  assert.equal(W.facetsOf(act).principle, 'not_applicable');
+  assert.doesNotMatch(W.passportHtml(act), /What it senses|Taxels|Force range/);
+  assert.match(W.passportHtml({ ...act, review_status: 'Primary sources checked 2026-11-26 for identity and selected specifications; other imported claims remain pending' }), /ev-partial/);
+});
+
+test('full passports render every recorded field of every family, BOM apart from list price; cards and comparisons use family figures', () => {
+  const special = new Set(['name', 'no', 'source_workbook', 'technical_specifications', 'sources', 'main_source_url', 'review_status', 'evidence_scope', 'checked_at', 'component_class', 'comparison_summary']);
+  for (const cls of Object.keys(COMPONENT_CLASSES)) {
+    const r = Object.fromEntries(COMPONENT_FIELDS.map((f) => [f, `Recorded ${f}`]));
+    Object.assign(r, actuator({ component_class: cls, component_id: `CMP-${COMPONENT_CLASSES[cls].prefix}-001`, comparison_summary: 'Comparison scope: equal units only' }));
+    if (!COMPONENT_CLASSES[cls].tactile) for (const f of ['resolution_count', 'spatial_resolution', 'force_range', 'force_resolution', 'surface', 'durability']) r[f] = null;
+    const pp = W.passportHtml(r);
+    for (const [k, v] of Object.entries(r)) if (v !== null && !special.has(k)) assert.ok(pp.includes(`data-f="${k}"`), `${cls}: ${k} is rendered`);
+    assert.match(pp, /Peak torque<\/th><td><b>120<\/b> N·m/);
+    assert.match(pp, /data-sec="comparison"/);
+    assert.match(pp, /Estimated BOM or material cost|Estimated BOM \(open hardware\)/);
+    if (!COMPONENT_CLASSES[cls].tactile) assert.doesNotMatch(W.cardHtml(r), /Taxels or camera/, `${cls}: no touch label on the card`);
+  }
+  const a = actuator();
+  assert.match(W.cardHtml(a), /Peak torque.*120 N·m \(momentary, 48 V\)/s);
+  const tac = { component_id: 'CMP-TAC-001', name: 'T', group: 'Commercial', component_class: 'tactile_sensor', integration_requirements: 'USB 3', limitations: 'Gel wears', technical_specifications: 'mass | 20 | g |  | https://maker.example.com/datasheet.pdf | p. 1 | 2026-11-26', sources: SPEC_SRC };
+  const cmp = W.compareHtml([tac, { ...tac, component_id: 'CMP-TAC-002', name: 'U' }]);
+  assert.match(cmp, /Structured figures/);
+  assert.match(cmp, /Integration requirements/);
+  assert.match(cmp, /href="https:\/\/maker\.example\.com\/datasheet\.pdf"[^>]*>source<\/a>, p\. 1/, 'each compared figure links its source');
 });

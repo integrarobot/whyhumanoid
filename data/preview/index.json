@@ -540,13 +540,13 @@
   },
   {
    "id": "hardware",
-   "snapshot": "2026-11-26T06:38:00Z",
+   "snapshot": "2026-11-26T09:16:57Z",
    "title": "Components",
    "description": "Robot components as products: sensing principle, specifications, interfaces, availability, price and sources.",
-   "entries_total": 19,
-   "source_rows_total": 19,
-   "preview_entries": 19,
-   "preview_source_rows": 19,
+   "entries_total": 51,
+   "source_rows_total": 51,
+   "preview_entries": 51,
+   "preview_source_rows": 51,
    "fields": [
     "name",
     "group",
@@ -582,7 +582,15 @@
     "family",
     "review_status",
     "sources",
-    "comparison_summary"
+    "comparison_summary",
+    "component_class",
+    "function",
+    "applications",
+    "technical_specifications",
+    "integration_requirements",
+    "limitations",
+    "evidence_scope",
+    "checked_at"
    ],
    "access": "subscription",
    "category": "components",
@@ -600,13 +608,17 @@
     "measured",
     "main_source_url",
     "review_status",
+    "component_class",
+    "function",
+    "evidence_scope",
+    "checked_at",
     "licence",
     "repository"
    ]
   },
   {
    "id": "component-software",
-   "snapshot": "2026-11-26T06:38:00Z",
+   "snapshot": "2026-11-26T09:16:57Z",
    "title": "Components: related software",
    "description": "Software related to the component products, such as simulators of tactile sensors.",
    "entries_total": 1,
@@ -648,7 +660,15 @@
     "family",
     "review_status",
     "sources",
-    "comparison_summary"
+    "comparison_summary",
+    "component_class",
+    "function",
+    "applications",
+    "technical_specifications",
+    "integration_requirements",
+    "limitations",
+    "evidence_scope",
+    "checked_at"
    ],
    "access": "subscription",
    "category": "components",
@@ -666,6 +686,10 @@
     "measured",
     "main_source_url",
     "review_status",
+    "component_class",
+    "function",
+    "evidence_scope",
+    "checked_at",
     "licence",
     "repository"
    ]
