@@ -4,7 +4,7 @@
  "note": "Findings from the Reports tab of the Why Humanoid? workbook, reviewed one claim at a time. Checked findings were compared with the public original on the page given; only those are drawn. A figure repeated in several reports is one original estimate. Ranges across publishers show dispersion, not uncertainty. Reports are summarised and linked, never rehosted.",
  "snapshot": {
   "exported_at": "2026-11-26T14:21:54.716Z",
-  "built_at": "2026-11-26T14:28:22.380Z",
+  "built_at": "2026-11-26T14:40:43.278Z",
   "checked_on": "2026-11-24"
  },
  "vocabulary": {
@@ -8641,7 +8641,7 @@
    "history": null,
    "check": {
     "status": "verified",
-    "phrase": "Relative robot capabilities in the Robot Intelligence Index have increased more than 9x in the past 3 months.",
+    "phrase": "more than 9x",
     "checked_on": "2026-11-26"
    },
    "cell": {
@@ -8692,7 +8692,7 @@
    "history": null,
    "check": {
     "status": "verified",
-    "phrase": "Since September they have doubled about every five weeks",
+    "phrase": "every five weeks",
     "checked_on": "2026-11-26"
    },
    "cell": {
@@ -8730,7 +8730,7 @@
    "stage": null,
    "sample": null,
    "assumptions": null,
-   "limits": "Ratios of odds on the publisher's index. The page's summary line puts the same comparison as 2.5 times the previous year's gain.",
+   "limits": "Ratios of odds on the publisher's index. The page's summary line says instead that the last three months gained 2.5 times as much as the whole year before; that figure does not follow arithmetically from 9x against 2.4x in the body, and the discrepancy is left unresolved.",
    "attribution": "Playground (Robot Intelligence Index)",
    "estimate": null,
    "locator": "Lede",
@@ -8743,7 +8743,7 @@
    "history": null,
    "check": {
     "status": "verified",
-    "phrase": "In the 12 months from August 2025 to August 2026, relative capabilities increased just 2.4x.",
+    "phrase": "just 2.4x",
     "checked_on": "2026-11-26"
    },
    "cell": {
@@ -8794,7 +8794,7 @@
    "history": null,
    "check": {
     "status": "verified",
-    "phrase": "rose from 25% to 43% in three months, after a year spent climbing from just 17% to 25%",
+    "phrase": "25% to 43%",
     "checked_on": "2026-11-26"
    },
    "cell": {
@@ -8845,7 +8845,7 @@
    "history": null,
    "check": {
     "status": "verified",
-    "phrase": "On the three real-robot benchmarks the share has held at 31% since January.",
+    "phrase": "held at 31%",
     "checked_on": "2026-11-26"
    },
    "cell": {
@@ -8898,7 +8898,7 @@
    "history": null,
    "check": {
     "status": "verified",
-    "phrase": "On real robots, the best policy on each benchmark scores at least 80% on just 32% of 138 tasks.",
+    "phrase": "32% of 138 tasks",
     "checked_on": "2026-11-26"
    },
    "cell": {
@@ -8949,7 +8949,7 @@
    "history": null,
    "check": {
     "status": "verified",
-    "phrase": "fully finishes one in ten of the hardest tasks, at about 30 minutes and $115",
+    "phrase": "30 minutes and $115",
     "checked_on": "2026-11-26"
    },
    "cell": {
@@ -9000,7 +9000,7 @@
    "history": null,
    "check": {
     "status": "verified",
-    "phrase": "If the pace since September holds, it would complete over 90% of all three.",
+    "phrase": "over 90%",
     "checked_on": "2026-11-26"
    },
    "cell": {

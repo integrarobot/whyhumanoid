@@ -4049,7 +4049,7 @@
    "locator": "Lede",
    "check": {
     "status": "verified",
-    "phrase": "Relative robot capabilities in the Robot Intelligence Index have increased more than 9x in the past 3 months.",
+    "phrase": "more than 9x",
     "page": null
    },
    "attribution": "Playground (Robot Intelligence Index)"
@@ -4068,7 +4068,7 @@
    "locator": "Section \"Frontier capabilities double every 5 weeks\"",
    "check": {
     "status": "verified",
-    "phrase": "Since September they have doubled about every five weeks",
+    "phrase": "every five weeks",
     "page": null
    },
    "scope": "Leading policies of the Robot Intelligence Index (25 benchmarks, simulation and real robots)",
@@ -4089,12 +4089,12 @@
    "locator": "Lede",
    "check": {
     "status": "verified",
-    "phrase": "In the 12 months from August 2025 to August 2026, relative capabilities increased just 2.4x.",
+    "phrase": "just 2.4x",
     "page": null
    },
    "scope": "Leading policies of the Robot Intelligence Index (25 benchmarks, simulation and real robots)",
    "attribution": "Playground (Robot Intelligence Index)",
-   "limits": "Ratios of odds on the publisher's index. The page's summary line puts the same comparison as 2.5 times the previous year's gain."
+   "limits": "Ratios of odds on the publisher's index. The page's summary line says instead that the last three months gained 2.5 times as much as the whole year before; that figure does not follow arithmetically from 9x against 2.4x in the body, and the discrepancy is left unresolved."
   },
   {
    "id": "pg-saturation-five",
@@ -4110,7 +4110,7 @@
    "locator": "Lede; Figure 6 (section \"Most real-robot tasks are not solved\")",
    "check": {
     "status": "verified",
-    "phrase": "rose from 25% to 43% in three months, after a year spent climbing from just 17% to 25%",
+    "phrase": "25% to 43%",
     "page": null
    },
    "value": 43,
@@ -4135,7 +4135,7 @@
    "locator": "Section \"Most real-robot tasks are not solved\"; Figure 6",
    "check": {
     "status": "verified",
-    "phrase": "On the three real-robot benchmarks the share has held at 31% since January.",
+    "phrase": "held at 31%",
     "page": null
    },
    "value": 31,
@@ -4164,7 +4164,7 @@
    "locator": "Section \"Most real-robot tasks are not solved\"; Table 2",
    "check": {
     "status": "verified",
-    "phrase": "On real robots, the best policy on each benchmark scores at least 80% on just 32% of 138 tasks.",
+    "phrase": "32% of 138 tasks",
     "page": null
    },
    "value": 32,
@@ -4190,7 +4190,7 @@
    "locator": "Lede; section \"What this means for capability projections\"",
    "check": {
     "status": "verified",
-    "phrase": "fully finishes one in ten of the hardest tasks, at about 30 minutes and $115",
+    "phrase": "30 minutes and $115",
     "page": null
    },
    "scope": "Top system on Robocurve's RoboDojo-RC (real robots, Tier 1, 20 attempts on each of six tasks)",
@@ -4211,7 +4211,7 @@
    "locator": "Section \"What this means for capability projections\"; Figure 7",
    "check": {
     "status": "verified",
-    "phrase": "If the pace since September holds, it would complete over 90% of all three.",
+    "phrase": "over 90%",
     "page": null
    },
    "target_year": 2027,
