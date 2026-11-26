@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261126-2244-estructura-newsletter-news",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-26T22:46:32+01:00",
+  "por": "codex",
+  "evidencia": "Codex comunica en el chat de Javier la preparación de Newsletter y News en inglés en PR177 en borrador, sin publicar. Revisión independiente del código e9d8ced: 19 pruebas editoriales y 6 de diseño correctas, búsqueda con y sin JavaScript, validación y builds correctos; CI45900060089 completado con éxito. Corpus, importación y lanzamiento siguen pendientes; archivos finales de Claude aún ausentes en la última comprobación. Tarea semanal activa: miércoles 16:00 Europe/Madrid. No se confirma recepción de Javier."
+}
