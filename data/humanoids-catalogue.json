@@ -1,7 +1,7 @@
 {
  "dataset": "humanoids",
  "access": "free",
- "snapshot": "2026-11-26T06:38:00Z",
+ "snapshot": "2026-11-26T17:42:09Z",
  "fields": [
   "Lab",
   "Robot",
@@ -229,10 +229,10 @@
    "Country": "USA",
    "Careers": "https://www.agilityrobotics.com/careers",
    "B2B Client": "Not disclosed",
-   "Stock": "Private; SPAC combination announced, closing unverified",
+   "Stock": "NASDAQ:AGLT; common stock trading since 2026-11-05",
    "Valuation": "USD 2,500M pre-money (SPAC transaction announced 2026-06-24)",
    "Investors": "DCVC; Playground Global; Amazon Industrial Innovation Fund; NVIDIA; SoftBank Vision Fund 2; Foxconn; Schaeffler; Abico",
-   "Rounds": "Series B: USD 150M (2022). SPAC: >USD 620M in expected gross proceeds, including ~USD 200M PIPE; subject to closing and redemptions.",
+   "Rounds": "Series B: USD 150M (2022). Completed SPAC combination: approximately USD 465M gross capital before transaction expenses, including USD 100M equity funding received before closing (issuer announcement 2026-11-05). Previously announced proceeds were estimates.",
    "Release": "2026-09-15 (unveiling)",
    "Height (cm)": "181",
    "Weight (kg)": "129",
@@ -251,7 +251,7 @@
    "Price / availability": "Early access planned H1 2027; general availability planned late 2027",
    "Autonomy / supervision": "Task autonomy; independent safety controller; Arc platform",
    "Buyer checks": "certifications/CE still planned",
-   "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi\nhttps://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale\nhttps://www.agilityrobotics.com/solutions\n2026-11-19 | Added: Careers | https://www.agilityrobotics.com/"
+   "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi\nhttps://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale\nhttps://www.agilityrobotics.com/solutions\n2026-11-19 | Added: Careers | https://www.agilityrobotics.com/\n2026-11-26 | Nasdaq common stock AGLT trading since 2026-11-05; completed combination gross capital checked; historical transaction valuation is not market capitalization | https://www.agilityrobotics.com/content/agility-becomes-first-u-s-publicly-listed-pure-play-humanoid-robotics-company-begins-trading-today-on-nasdaq-as-aglt"
   },
   {
    "id": 7,
@@ -2606,7 +2606,7 @@
    "Careers": "Not found",
    "B2B Client": "Service sector, companionship, human interaction",
    "Stock": "TSXV:XBOT",
-   "Valuation": "35,190,080.00",
+   "Valuation": "37,389,460.00",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "Not disclosed",
@@ -3254,7 +3254,7 @@
    "Careers": "Not found",
    "B2B Client": "Foxconn",
    "Stock": "HKG:9880",
-   "Valuation": "21,568,122,535.00",
+   "Valuation": "21,507,932,426.00",
    "Investors": "Not verified",
    "Rounds": "Not verified",
    "Release": "2024-10-14 (Walker S1 introduction, UBTECH on X)",
