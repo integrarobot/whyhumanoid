@@ -4,15 +4,45 @@
     "publication": "Synthetic fixture publication",
     "listing_url": "https://newsletter.example.com/archive",
     "retrieved_on": "2026-11-26",
-    "files": [{ "name": "synthetic.md", "sha256": "0000000000000000000000000000000000000000000000000000000000000000" }],
-    "pagination": { "pages": ["https://newsletter.example.com/archive?page=1", "https://newsletter.example.com/archive?page=2"], "exhausted": false, "note": "SYNTHETIC FIXTURE: test data only, never real content." }
+    "files": [
+      {
+        "name": "synthetic.md",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "pagination": {
+      "pages": [
+        "https://newsletter.example.com/archive?page=1",
+        "https://newsletter.example.com/archive?page=2"
+      ],
+      "exhausted": false,
+      "note": "SYNTHETIC FIXTURE: test data only, never real content."
+    }
   },
   "complete": false,
   "completeness": null,
   "inventory": [
-    { "edition_id": "nl-2025-03-12-synthetic-first", "source_url": "https://newsletter.example.com/p/synthetic-first", "published_on": "2025-03-12", "status": "ingested", "note": null },
-    { "edition_id": "nl-2026-01-20-synthetic-second", "source_url": "https://newsletter.example.com/p/synthetic-second", "published_on": "2026-01-20", "status": "ingested", "note": null },
-    { "edition_id": "nl-2026-02-03-synthetic-missing", "source_url": "https://newsletter.example.com/p/synthetic-missing", "published_on": "2026-02-03", "status": "inaccessible", "note": "SYNTHETIC FIXTURE: the page returned an error." }
+    {
+      "edition_id": "nl-2025-03-12-synthetic-first",
+      "source_url": "https://newsletter.example.com/p/synthetic-first",
+      "published_on": "2025-03-12",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-01-20-synthetic-second",
+      "source_url": "https://newsletter.example.com/p/synthetic-second",
+      "published_on": "2026-01-20",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-03-synthetic-missing",
+      "source_url": "https://newsletter.example.com/p/synthetic-missing",
+      "published_on": "2026-02-03",
+      "status": "inaccessible",
+      "note": "SYNTHETIC FIXTURE: the page returned an error."
+    }
   ],
   "editions": [
     {
@@ -30,11 +60,26 @@
         "status": "present",
         "note": null,
         "items": [
-          { "position": 1, "headline": "Same headline in two editions", "body_markdown": "SYNTHETIC FIXTURE item with a [source](https://example.com/item-a)." },
-          { "position": 2, "headline": "Second synthetic item", "body_markdown": "" }
+          {
+            "position": 1,
+            "headline": "Same headline in two editions",
+            "body_markdown": "SYNTHETIC FIXTURE item with a [source](https://example.com/item-a)."
+          },
+          {
+            "position": 2,
+            "headline": "Second synthetic item",
+            "body_markdown": ""
+          }
         ]
       },
-      "translation": { "translated_on": "2026-11-20", "translated_by": "Synthetic translator", "status": "reviewed", "reviewed_by": "Synthetic reviewer", "reviewed_on": "2026-11-21" },
+      "translation": {
+        "translated_on": "2026-11-20",
+        "translated_by": "Synthetic translator",
+        "status": "reviewed",
+        "reviewed_by": "Synthetic reviewer",
+        "reviewed_on": "2026-11-21",
+        "review_evidence": "SYNTHETIC FIXTURE: compared title, body and both items with the original."
+      },
       "original_sha256": null,
       "original": {
         "language": "es",
@@ -44,8 +89,16 @@
           "status": "present",
           "note": null,
           "items": [
-            { "position": 1, "headline": "Mismo titular en dos ediciones", "body_markdown": "Elemento sintético con una [fuente](https://example.com/item-a)." },
-            { "position": 2, "headline": "Segundo elemento sintético", "body_markdown": "" }
+            {
+              "position": 1,
+              "headline": "Mismo titular en dos ediciones",
+              "body_markdown": "Elemento sintético con una [fuente](https://example.com/item-a)."
+            },
+            {
+              "position": 2,
+              "headline": "Segundo elemento sintético",
+              "body_markdown": ""
+            }
           ]
         }
       }
@@ -65,10 +118,21 @@
         "status": "present",
         "note": null,
         "items": [
-          { "position": 1, "headline": "Same headline in two editions", "body_markdown": "Another SYNTHETIC FIXTURE item, see https://example.com/item-b." }
+          {
+            "position": 1,
+            "headline": "Same headline in two editions",
+            "body_markdown": "Another SYNTHETIC FIXTURE item, see https://example.com/item-b."
+          }
         ]
       },
-      "translation": { "translated_on": "2026-11-22", "translated_by": "Synthetic translator", "status": "draft", "reviewed_by": null, "reviewed_on": null },
+      "translation": {
+        "translated_on": "2026-11-22",
+        "translated_by": "Synthetic translator",
+        "status": "draft",
+        "reviewed_by": null,
+        "reviewed_on": null,
+        "review_evidence": null
+      },
       "original_sha256": null,
       "original": null
     }

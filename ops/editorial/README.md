@@ -22,7 +22,7 @@ they are.
 
 | Path | What | Published |
 |---|---|---|
-| `editorial/config.json` | `published` switch (false until the publication change), scope | no (excluded in `_config.yml`) |
+| `editorial/config.json` | `published` switch (false until the publication change), `embargo_until`, `scope.years` | no (excluded in `_config.yml`) |
 | `editorial/inventory.json` | every edition the source listing shows, its status, the listing pages read, completeness | no |
 | `editorial/editions/<edition_id>.json` | one edition in English, with its More news items and translation record | no (source of the pages) |
 | `editorial/originals/<edition_id>.json` | optional Spanish original of that edition, kept as evidence | never |
@@ -65,8 +65,9 @@ source.listing_url  the archive or listing page the inventory was read from
 source.retrieved_on YYYY-MM-DD
 source.files        [{ name, sha256 }] for each Markdown document converted
 source.pagination   { pages: [every listing page URL read, in order], exhausted: true|false, note }
-complete            false, unless a named person has checked the inventory against exhausted pagination
-completeness        null, or { declared_by, declared_on (YYYY-MM-DD), note }
+complete            false, unless the inventory has been reconciled with the listing read to its last page
+completeness        null, or { declared_by (agent or person), declared_on (YYYY-MM-DD, not before
+                    source.retrieved_on), evidence (how the inventory was reconciled with the listing) }
 inventory[]         every edition the listing shows, ingested or not:
   edition_id        nl-YYYY-MM-DD-<slug>: the original publication date and a short lowercase slug,
                     at most 90 characters; stable forever once ingested
@@ -88,9 +89,12 @@ editions[]          the editions this package imports (may be only the new ones)
     status absent       the edition has no such block; items is []
     status inaccessible the block exists but could not be read; items is []; note says why
     items[]             { position: 1, 2, 3... in source order, headline (English), body_markdown (English, may be "") }
-  translation       { translated_on, translated_by, status: draft | reviewed, reviewed_by, reviewed_on }
+  translation       { translated_on, translated_by, status: draft | reviewed, reviewed_by, reviewed_on, review_evidence }
     translated_on   date the English text was produced (not before published_on); distinct from published_on
-    status reviewed only when a named person has reviewed the English text; then reviewed_by and reviewed_on
+    status reviewed after a substantive review of the English against the source by an identified reviewer:
+                    Codex or Claude (the authorised agents) or a person. Validation alone is not a review.
+                    reviewed_by names the reviewer, reviewed_on dates it, review_evidence says what was compared
+                    and found (for example: "title, body and 7 items compared with the Spanish edition; no omissions")
   original_sha256   null (computed by ingestion when an original is supplied)
   original          optional, null or the Spanish source:
                     { language: "es", title, body_markdown (without the block), more_news { status, note, items[] } }
@@ -113,8 +117,10 @@ editions[]          the editions this package imports (may be only the new ones)
    refuses any difference.
 6. Dates: `published_on` is the original publication date. `translation.translated_on` is when the English text was
    produced, and the pages show both. Never use the retrieval or translation date as publication date.
-7. Mark `translation.status` as `reviewed` only after a person has read the English against the original. Draft
-   editions are imported but not published.
+7. Mark `translation.status` as `reviewed` only after a substantive review of the English against the source, by
+   Codex, Claude or a person, recorded in `reviewed_by`, `reviewed_on` and `review_evidence`. Passing
+   `tools/editorial.mjs check` is validation, not a review. Draft editions are imported but not published.
+   Javier does not approve each edition by hand.
 
 ## Procedure
 
@@ -138,8 +144,17 @@ Ingestion:
 - is idempotent: the same package twice writes nothing the second time;
 - is incremental: a package may carry only new editions, and earlier ones are kept;
 - never removes an ingested edition, and refuses an inventory that demotes one;
-- changes an edition already reviewed, or the number or order of its News items, only with
-  `--accept-change <edition_id>`, so published item addresses stay stable.
+- changes an edition already reviewed only with `--accept-change <edition_id>`.
+
+News item identity:
+- A News item's address is `/news/<edition_id>/<NN>/`: its edition and its position.
+- What sits at each position is identified by its links, or by its headline when it has none. A change of count,
+  of order (even with the same count) or of which story sits at a position is an identity change.
+- Ingestion refuses an identity change unless `--accept-item-change <edition_id>` is passed. Use it only to correct
+  a wrong mapping before the edition is published.
+- Once an edition is live on the site, an identity change is refused outright: an existing item URL must keep
+  showing the same story. Retiring or redirecting a published item is a separate reviewed code change.
+- A wording fix in an item's text keeps its identity.
 
 `report` gives, per year:
 - editions listed, ingested, pending and inaccessible;
@@ -149,12 +164,27 @@ Ingestion:
 - Spanish originals archived;
 - what is ready to publish.
 
-It says "Coverage is not declared complete" unless the inventory declares completeness, which requires
-exhausted pagination, no pending edition and a named reviewer.
+It says "Coverage is not declared complete" unless the inventory declares completeness, which requires:
+- `pagination.exhausted` and the listing pages actually read (`pagination.pages`, https URLs, no repeats);
+- `source.listing_url`, `source.retrieved_on` and `source.files` (each converted document with its SHA-256, kept as
+  provenance in `inventory.json`);
+- at least one edition and none pending;
+- `completeness.declared_by`, `declared_on` (not before the listing was read) and `evidence`.
+
+## A new year
+
+`editorial/config.json` `scope.years` lists the years the store accepts, consecutive from 2025 (default
+`[2025, 2026]`). An edition from a year outside it is refused, so the weekly feed must not run into January unnoticed.
+Before the first edition of a new year:
+1. add the year in a small reviewed change, for example `[2025, 2026, 2027]`;
+2. rebuild the pages, which adds the year archive pages.
+Then the feed continues as before.
 
 ## Publication
 
-Pages are generated on every build. While `editorial/config.json` has `published: false` (the state on this branch):
+Pages are generated on every build. The sections are live only when `published` is true **and** today, in
+Europe/Madrid, is on or after `embargo_until` (2026-11-27). `tools/editorial.mjs check` also refuses
+`published: true` before that date. Until then (the state on this branch):
 - they carry `noindex`;
 - they are not in the sitemap;
 - no page links to them;

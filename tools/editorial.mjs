@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Newsletter and News: ingestion, validation and coverage of the editorial store (tools/editorial-model.mjs).
 //
-//   node tools/editorial.mjs ingest --package <package.json> [--dry-run] [--accept-change <id>[,<id>...]]
+//   node tools/editorial.mjs ingest --package <package.json> [--dry-run] [--accept-change <id>,...] [--accept-item-change <id>,...]
 //   node tools/editorial.mjs check                  validate the committed store (CI)
 //   node tools/editorial.mjs report [--json]        coverage by year; never claims completeness on its own
 //   node tools/editorial.mjs template               print an empty package to fill in
@@ -9,11 +9,13 @@
 // A package is one JSON file (contract: ops/editorial/README.md). Ingestion is idempotent and incremental: the same
 // package twice changes nothing; a package may carry only new editions. It validates the whole store as it would be
 // after the import and writes nothing if anything is wrong. It never removes an edition already ingested. An edition
-// whose translation is already reviewed changes only with --accept-change <edition_id>, and its News item order and
-// count change only that way too, so the identity of each item (edition and position) stays stable.
+// whose translation is already reviewed changes only with --accept-change <edition_id>. A News item is addressed by
+// edition and position, so any change of which story sits at a position (a new count, a reorder, another item) needs
+// --accept-item-change <edition_id>, and is refused outright for an edition already live on the site: its item URLs
+// must keep pointing at the same stories.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { EDITORIAL_DIR, contentHash, coverage, readStore, readyEditions, sha256, storeProblems } from './editorial-model.mjs';
+import { EDITORIAL_DIR, contentHash, coverage, isLive, readStore, readyEditions, sha256, storeProblems, urlsIn } from './editorial-model.mjs';
 
 const root = new URL('../', import.meta.url);
 const json = (v) => `${JSON.stringify(v, null, 2)}\n`;
@@ -36,7 +38,7 @@ export const TEMPLATE = {
     retrieved_on: 'YYYY-MM-DD', source_language: 'es', language: 'en', author: 'byline as published',
     title: 'English title', subtitle: null, body_markdown: 'English main body, without the More news block',
     more_news: { status: 'present | absent | inaccessible', note: null, items: [{ position: 1, headline: 'English headline', body_markdown: 'English text with its [source](https://…)' }] },
-    translation: { translated_on: 'YYYY-MM-DD', translated_by: 'who translated', status: 'draft | reviewed', reviewed_by: null, reviewed_on: null },
+    translation: { translated_on: 'YYYY-MM-DD', translated_by: 'who translated (agent or person)', status: 'draft | reviewed', reviewed_by: null, reviewed_on: null, review_evidence: null },
     original: null,
   }],
 };
@@ -61,22 +63,26 @@ function packageProblems(pkg) {
   return p;
 }
 
-const itemShape = (e) => JSON.stringify((e?.more_news?.items ?? []).map((it) => it.position));
+// What story sits at each position: its links, or its headline when it has none (normalised). Count, order and
+// identity changes all show here; a typo fixed in the text of an item with links does not.
+const norm = (s) => String(s ?? '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+export const itemIdentity = (e) => JSON.stringify((e?.more_news?.items ?? []).map((it) => { const u = urlsIn(`${it.headline ?? ''} ${it.body_markdown ?? ''}`); return u.length ? u : norm(it.headline); }));
 
 // The store after a package, in memory, with the files to write and what changed.
-export function planIngest(store, pkg, { accept = [] } = {}) {
+export function planIngest(store, pkg, { accept = [], acceptItems = [] } = {}) {
   const problems = packageProblems(pkg);
   if (problems.length) return { problems };
   const next = {
     config: store.config,
-    inventory: { ...store.inventory, source: { publication: pkg.source.publication ?? null, listing_url: pkg.source.listing_url ?? null, retrieved_on: pkg.source.retrieved_on ?? null }, pagination: pkg.source.pagination, complete: pkg.complete === true, completeness: pkg.completeness ?? null },
+    inventory: { ...store.inventory, source: { publication: pkg.source.publication ?? null, listing_url: pkg.source.listing_url ?? null, retrieved_on: pkg.source.retrieved_on ?? null, files: pkg.source.files ?? null }, pagination: pkg.source.pagination, complete: pkg.complete === true, completeness: pkg.completeness ?? null },
     editions: new Map(store.editions),
     originals: new Map(store.originals),
   };
   const entries = new Map(store.inventory.editions.map((e) => [e.edition_id, e]));
   for (const e of pkg.inventory) entries.set(e.edition_id, { edition_id: e.edition_id, source_url: e.source_url, published_on: e.published_on, status: e.status, note: e.note ?? null });
   next.inventory.editions = [...entries.values()].sort((a, b) => a.published_on.localeCompare(b.published_on) || a.edition_id.localeCompare(b.edition_id));
-  const changes = { added: [], changed: [], unchanged: [], originals: [] };
+  const changes = { added: [], changed: [], unchanged: [], originals: [], item_identity_changed: [] };
+  const live = new Set(isLive(store.config) ? readyEditions(store).map((e) => e.id) : []);
   for (const raw of pkg.editions) {
     const id = raw.edition_id;
     const { original, ...rest } = raw;
@@ -92,11 +98,12 @@ export function planIngest(store, pkg, { accept = [] } = {}) {
     const prev = store.editions.get(id);
     if (!prev) { changes.added.push(id); next.editions.set(id, edition); continue; }
     if (contentHash(prev) === contentHash(edition)) { changes.unchanged.push(id); continue; }
-    const locked = prev.translation?.status === 'reviewed' || itemShape(prev) !== itemShape(edition);
-    if (locked && !accept.includes(id)) {
-      problems.push(`edition ${id}: already ${prev.translation?.status === 'reviewed' ? 'reviewed' : 'ingested with another News item order'}; pass --accept-change ${id} to replace it`);
-      continue;
+    if (itemIdentity(prev) !== itemIdentity(edition)) {
+      if (live.has(id)) { problems.push(`edition ${id}: live on the site; its News items may not change which story each address shows (retire or redirect them in a reviewed code change first)`); continue; }
+      if (!acceptItems.includes(id)) { problems.push(`edition ${id}: the News items change count, order or identity; pass --accept-item-change ${id} only to correct a wrong mapping before publication`); continue; }
+      changes.item_identity_changed.push(id);
     }
+    if (prev.translation?.status === 'reviewed' && !accept.includes(id)) { problems.push(`edition ${id}: already reviewed; pass --accept-change ${id} to replace it`); continue; }
     changes.changed.push(id);
     next.editions.set(id, edition);
   }
@@ -124,7 +131,7 @@ export function storeFiles(store, packageText) {
 
 function report(store) {
   const c = coverage(store);
-  const lines = [`Editorial coverage (published on the site: ${c.published ? 'yes' : 'no'}).`];
+  const lines = [`Editorial coverage (switch: ${c.published ? 'on' : 'off'}; live: ${c.live ? 'yes' : `no, embargo until ${c.embargo_until}`}).`];
   for (const [y, v] of Object.entries(c.years)) {
     lines.push(`${y}: ${v.listed} editions listed (${v.ingested} ingested, ${v.pending} pending, ${v.inaccessible} inaccessible); More news ${v.more_news.present} present, ${v.more_news.absent} absent, ${v.more_news.inaccessible} inaccessible; ${v.news_items} News items; translations ${v.translations.reviewed} reviewed, ${v.translations.draft} draft; ${v.originals_archived} Spanish originals archived; ready to publish: ${v.ready_editions} editions, ${v.ready_news_items} News items.`);
   }
@@ -153,7 +160,8 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     const text = readFileSync(file, 'utf8');
     let pkg;
     try { pkg = JSON.parse(text); } catch (e) { console.error(`package is not JSON: ${e.message}`); process.exit(1); }
-    const { problems, next, changes } = planIngest(store, pkg, { accept: (arg('--accept-change') ?? '').split(',').filter(Boolean) });
+    const list = (n) => (arg(n) ?? '').split(',').filter(Boolean);
+    const { problems, next, changes } = planIngest(store, pkg, { accept: list('--accept-change'), acceptItems: list('--accept-item-change') });
     if (problems.length) { console.error(`Ingestion refused, nothing written (${problems.length}):\n- ${problems.join('\n- ')}`); process.exit(1); }
     const files = storeFiles(next, text);
     const written = [];
@@ -165,7 +173,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
       written.push(f);
       if (!process.argv.includes('--dry-run')) { mkdirSync(new URL('./', u), { recursive: true }); writeFileSync(u, body); }
     }
-    console.log(`${process.argv.includes('--dry-run') ? 'Dry run: would write' : 'Wrote'} ${written.length} files. Editions: ${changes.added.length} added, ${changes.changed.length} changed, ${changes.unchanged.length} unchanged; ${changes.originals.length} originals archived or updated.`);
+    console.log(`${process.argv.includes('--dry-run') ? 'Dry run: would write' : 'Wrote'} ${written.length} files. Editions: ${changes.added.length} added, ${changes.changed.length} changed (${changes.item_identity_changed.length} with News item identity changes), ${changes.unchanged.length} unchanged; ${changes.originals.length} originals archived or updated.`);
     console.log(report(next));
   } else {
     console.error('usage: node tools/editorial.mjs ingest|check|report|template');

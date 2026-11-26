@@ -1,5 +1,6 @@
 /* Newsletter and News (tools/editorial-view.mjs). The page frame, type scale and colours come from pages.css. */
 .ed-search{margin:18px 0 8px;display:grid;gap:6px;max-width:520px}
+.ed-search[hidden]{display:none}
 .ed-search label{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3)}
 .ed-search input{font:inherit;font-size:var(--fs-control);padding:10px 12px;background:transparent;color:var(--bone);border:1px solid var(--line-2);border-radius:0;width:100%;box-sizing:border-box}
 .ed-search input:focus-visible{outline:2px solid var(--amber);outline-offset:2px}

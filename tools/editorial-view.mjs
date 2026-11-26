@@ -4,7 +4,7 @@
 // Markdown is rendered by a small safe renderer: every character of the source is escaped, and only a fixed set of
 // constructs becomes markup (paragraphs, ## and ### headings, lists, quotes, bold, italic, code, http(s) links).
 // Raw HTML is refused by validation before it gets here; anything else that slips through is shown as text.
-import { YEARS, readyEditions } from './editorial-model.mjs';
+import { BARE_URL, findLinks, isLive, madridToday, readyEditions, trimUrl, yearsOf } from './editorial-model.mjs';
 
 export const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -13,7 +13,6 @@ const monthLabel = (ym) => `${MONTHS[Number(ym.slice(5, 7)) - 1]} ${ym.slice(0, 
 const webUrl = (u) => { try { const x = new URL(u); return x.protocol === 'https:' || x.protocol === 'http:'; } catch { return false; } };
 
 // ---------- safe Markdown ----------
-const LINK = /(!?)\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
 function emphasis(escaped) {
   return escaped
     .replace(/`([^`]+)`/g, '<code>$1</code>')
@@ -27,8 +26,8 @@ function bare(text) {
   // Text outside Markdown links: escape, link bare http(s) URLs, then emphasis.
   const parts = [];
   let last = 0;
-  for (const m of text.matchAll(/https?:\/\/[^\s<>()\]]+/g)) {
-    const url = m[0].replace(/[.,;:!?]+$/, '');
+  for (const m of text.matchAll(BARE_URL)) {
+    const url = trimUrl(m[0]);
     parts.push(emphasis(esc(text.slice(last, m.index))), anchor(url, esc(url)));
     last = m.index + url.length;
   }
@@ -36,16 +35,16 @@ function bare(text) {
   return parts.join('');
 }
 export function inline(text) {
+  const s = String(text ?? '');
   const out = [];
   let last = 0;
-  for (const m of String(text ?? '').matchAll(LINK)) {
-    out.push(bare(text.slice(last, m.index)));
-    const [, image, label, url] = m;
-    if (!webUrl(url)) out.push(esc(m[0]));
+  for (const { start, end, image, label, url } of findLinks(s)) {
+    out.push(bare(s.slice(last, start)));
+    if (!webUrl(url)) out.push(esc(s.slice(start, end)));
     else out.push(anchor(url, image ? `Image: ${esc(label || url)}` : emphasis(esc(label || url))));
-    last = m.index + m[0].length;
+    last = end;
   }
-  out.push(bare(String(text ?? '').slice(last)));
+  out.push(bare(s.slice(last)));
   return out.join('');
 }
 export function renderMarkdown(markdown) {
@@ -63,7 +62,10 @@ export function renderMarkdown(markdown) {
 // First paragraph as plain text, for lists and descriptions.
 export function excerpt(markdown, max = 220) {
   const first = String(markdown ?? '').split(/\n\s*\n/).map((b) => b.trim()).find((b) => b && !/^#{1,6}\s/.test(b)) ?? '';
-  const text = first.replace(LINK, '$2').replace(/[*_`>#]/g, '').replace(/\s+/g, ' ').trim();
+  let plain = '';
+  let last = 0;
+  for (const l of findLinks(first)) { plain += first.slice(last, l.start) + l.label; last = l.end; }
+  const text = (plain + first.slice(last)).replace(/[*_`>#]/g, '').replace(/\s+/g, ' ').trim();
   return text.length > max ? `${text.slice(0, max - 1).replace(/\s+\S*$/, '')}…` : text;
 }
 
@@ -74,7 +76,7 @@ export const yearPath = (section, y) => `/${section}/${y}/`;
 
 // ---------- pages ----------
 const searchForm = (label) => `<form class="ed-search" role="search" hidden onsubmit="return false"><label for="ed-q">${esc(label)}</label><input id="ed-q" type="search" autocomplete="off"><p class="ed-count" aria-live="polite"></p></form>`;
-const yearNav = (section, current = null) => `<nav class="jump" aria-label="Years">${YEARS.map((y) => (y === current ? `<span aria-current="page">${y}</span>` : `<a href="${yearPath(section, y)}">${y}</a>`)).join('')}</nav>`;
+const yearNav = (years, section, current = null) => `<nav class="jump" aria-label="Years">${years.map((y) => (y === current ? `<span aria-current="page">${y}</span>` : `<a href="${yearPath(section, y)}">${y}</a>`)).join('')}</nav>`;
 const byMonth = (list, dateOf) => {
   const groups = new Map();
   for (const x of list) { const ym = dateOf(x).slice(0, 7); groups.set(ym, [...(groups.get(ym) ?? []), x]); }
@@ -97,8 +99,10 @@ const NONE = (what) => `<p class="note">No ${what} are published here yet. They 
 
 // Every editorial page: path (repository-relative file) -> HTML. page, crumbs and assetVersion come from
 // tools/build-pages.mjs.
-export function editorialPages(store, { page, crumbs, assetVersion }) {
-  const noindex = store.config.published !== true;
+// While the sections are not live (switch off, or before the embargo date in Europe/Madrid) every page is noindex.
+export function editorialPages(store, { page, crumbs, assetVersion, today = madridToday() }) {
+  const noindex = !isLive(store.config, today);
+  const years = yearsOf(store.config);
   const editions = readyEditions(store);
   const files = new Map();
   const head = () => `<link rel="stylesheet" href="/assets/editorial.css?v=${assetVersion('assets/editorial.css')}">\n`;
@@ -113,14 +117,14 @@ export function editorialPages(store, { page, crumbs, assetVersion }) {
     const body = `${year ? crumbs([[`/${section}/`, isNews ? 'News' : 'Newsletter'], [null, String(year)]]) : ''}<p class="kicker">${isNews ? 'News' : 'Newsletter'}</p>
 <h1>${esc(year ? `${title}, ${year}` : title)}</h1>
 <p class="lede">${esc(isNews ? NEWS_LEDE : NEWSLETTER_LEDE)}</p>
-${yearNav(section, year)}
+${yearNav(years, section, year)}
 ${shown.length ? `${searchForm(isNews ? 'Search the news' : 'Search the newsletter')}\n${isNews ? itemGroups(shown) : editionCards(shown)}` : NONE(isNews ? 'news items' : 'newsletter editions')}`;
     const path = year ? yearPath(section, year) : `/${section}/`;
     return page({ title: `${year ? `${title}, ${year}` : title} · Why Humanoid?`, description: isNews ? NEWS_LEDE : NEWSLETTER_LEDE, path, body, noindex, head: head(), tail });
   };
   for (const section of ['newsletter', 'news']) {
     files.set(`${section}/index.html`, listPage(section, null));
-    for (const y of YEARS) files.set(`${section}/${y}/index.html`, listPage(section, y));
+    for (const y of years) files.set(`${section}/${y}/index.html`, listPage(section, y));
   }
 
   for (const e of editions) {
@@ -158,9 +162,10 @@ ${it.body_markdown ? `<div class="ed-body">\n${renderMarkdown(it.body_markdown)}
   return files;
 }
 
-// Addresses for the sitemap: none while the sections are not published.
-export function editorialUrls(store) {
-  if (store.config.published !== true) return [];
+// Addresses for the sitemap: none until the sections are live (switch on and embargo date reached, Europe/Madrid).
+export function editorialUrls(store, { today = madridToday() } = {}) {
+  if (!isLive(store.config, today)) return [];
+  const years = yearsOf(store.config);
   const editions = readyEditions(store);
-  return ['/newsletter/', '/news/', ...YEARS.flatMap((y) => [yearPath('newsletter', y), yearPath('news', y)]), ...editions.map((e) => editionPath(e.id)), ...editions.flatMap((e) => e.items.map(itemPath))];
+  return ['/newsletter/', '/news/', ...years.flatMap((y) => [yearPath('newsletter', y), yearPath('news', y)]), ...editions.map((e) => editionPath(e.id)), ...editions.flatMap((e) => e.items.map(itemPath))];
 }
