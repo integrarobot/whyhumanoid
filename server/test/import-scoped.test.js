@@ -131,3 +131,46 @@ test('the admin route passes the scope and dry run to the import and returns the
   await app(new Request('https://api.test/v1/admin/import', { method: 'POST', headers: { 'x-admin-token': 'admin-fixture' } }));
   assert.deepEqual(calls[1], null, 'without datasets the full import runs as before');
 });
+
+test('a dry run can never become a full import: every other shape is refused before the import runs', async () => {
+  const calls = [];
+  const app = createApp({
+    db: createTestDb(),
+    config: { allowedOrigins: [], adminToken: 'admin-fixture' },
+    gateway: {},
+    mailer: {},
+    importNow: async (token, relations, scoped) => { calls.push(scoped); return { ok: true, warnings: [] }; },
+    clock: () => T0,
+    log: { error() {}, warn() {} },
+  });
+  const post = (body) => app(new Request('https://api.test/v1/admin/import', { method: 'POST', headers: { 'x-admin-token': 'admin-fixture', 'content-type': 'application/json' }, body: JSON.stringify(body) }));
+  const refused = [
+    [{ dry_run: true }, 'dry_run_requires_scope'],
+    [{ dry_run: true, datasets: [] }, 'invalid_scope'],
+    [{ dry_run: true, datasets: 'deployments' }, 'invalid_scope'],
+    [{ datasets: [1] }, 'invalid_scope'],
+    [{ datasets: [''] }, 'invalid_scope'],
+    [{ datasets: null }, 'invalid_scope'],
+    [{ dry_run: 'true', datasets: ['deployments'] }, 'invalid_dry_run'],
+    [{ dry_run: 1 }, 'invalid_dry_run'],
+  ];
+  for (const [body, error] of refused) {
+    const res = await post(body);
+    assert.equal(res.status, 400, JSON.stringify(body));
+    assert.equal((await res.json()).error, error, JSON.stringify(body));
+  }
+  assert.deepEqual(calls, [], 'the import never ran');
+  assert.equal((await post({ dry_run: false })).status, 200, 'dry_run false without datasets is the full import, as before');
+  assert.deepEqual(calls, [null]);
+});
+
+test('the workflow stops a dry run outside the scoped import; the snapshot column is in no index', async () => {
+  const { readFileSync } = await import('node:fs');
+  const wf = readFileSync(new URL('../../.github/workflows/import-workbook.yml', import.meta.url), 'utf8');
+  assert.match(wf, /if \[ "\$\{\{ inputs\.dry_run == true \}\}" = true \] && \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" != deployments \]; then\n\s+echo "dry_run needs scope=deployments; nothing was imported"; exit 1/);
+  assert.ok(wf.indexOf('dry_run needs scope=deployments') < wf.indexOf('/v1/admin/import'), 'the guard runs before the import request');
+  const sql = ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql']
+    .map((m) => readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8')).join('\n');
+  const indexes = sql.match(/CREATE (UNIQUE )?INDEX[^;]*ON premium_rows[^;]*;/g) ?? [];
+  assert.ok(indexes.length >= 2 && indexes.every((i) => !/snapshot_id/.test(i)), 'a snapshot-only update writes the row alone');
+});

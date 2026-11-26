@@ -22,7 +22,9 @@ import { publicProjection } from '../public/projection.js';
 export const SCOPED_DATASETS = ['deployments', 'entities', 'evidence-links'];
 
 // Rows D1 writes per statement, counting the table and each index (premium_rows: primary key and two indexes;
-// search_docs and relation_graphs: primary key). An upper estimate, for planning only; D1 reports the real figure.
+// search_docs and relation_graphs: primary key). snapshot_id is in no index (premium_rows_order is dataset and
+// position, premium_rows_preview dataset and preview_rank), so a snapshot-only update writes the row alone. An upper
+// estimate, for planning only; D1 reports the real figure.
 const WRITES = { rowInsert: 4, rowDelete: 4, rowUpdate: 4, rowSnapshot: 1, docUpsert: 4, docDelete: 2, graph: 4, config: 2, run: 2 };
 
 const same = (a, b) => a.position === b.position && a.sheet_row === b.sheet_row && a.preview_rank === b.preview_rank

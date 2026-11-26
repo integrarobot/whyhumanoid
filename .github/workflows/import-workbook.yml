@@ -48,6 +48,10 @@ jobs:
           node-version: 22
       - name: Relations config from this commit
         run: |
+          # A dry run exists only for the scoped import: never let it become a full import that writes.
+          if [ "${{ inputs.dry_run == true }}" = true ] && [ "${{ inputs.scope || 'all' }}" != deployments ]; then
+            echo "dry_run needs scope=deployments; nothing was imported"; exit 1
+          fi
           node tools/relations.mjs --config | jq -c '{relations_config: .}' > relations-body.json
           # Scoped import (server/src/import/scoped.js): the Deployments graph tabs only, optionally as a dry run.
           if [ "${{ inputs.scope || 'all' }}" = deployments ]; then

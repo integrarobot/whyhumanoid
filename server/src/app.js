@@ -357,7 +357,12 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
         // Optional body: the reviewed relations config (node tools/relations.mjs --config). Counts only come back.
         // A scoped import (server/src/import/scoped.js) names its tabs in "datasets" and may be a dry run.
         const body = await readJson(request, 512_000);
-        const scoped = Array.isArray(body.datasets) && body.datasets.length ? { datasets: body.datasets.map(String), dryRun: body.dry_run === true } : null;
+        // A scoped import names its tabs in a non-empty list of strings; a dry run exists only for a scoped import. Any
+        // other shape is refused before anything runs, so a dry run can never fall back to a full import that writes.
+        if ('dry_run' in body && typeof body.dry_run !== 'boolean') throw new HttpError(400, 'invalid_dry_run');
+        if ('datasets' in body && (!Array.isArray(body.datasets) || !body.datasets.length || body.datasets.some((d) => typeof d !== 'string' || !d))) throw new HttpError(400, 'invalid_scope');
+        if (body.dry_run === true && !('datasets' in body)) throw new HttpError(400, 'dry_run_requires_scope');
+        const scoped = 'datasets' in body ? { datasets: body.datasets, dryRun: body.dry_run === true } : null;
         const result = await importNow(accessToken, body.relations_config ?? null, scoped);
         return json(result.ok ? 200 : 422, {
           ok: result.ok,
