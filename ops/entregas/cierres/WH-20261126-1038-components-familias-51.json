@@ -1,0 +1,61 @@
+{
+  "id": "WH-20261126-1038-components-familias-51",
+  "tarea": "Ampliar y mejorar Components: de 19 productos táctiles a 51 productos en 12 familias, con especificaciones estructuradas, función, requisitos de integración, limitaciones y alcance de la evidencia de cada producto",
+  "origen": "Javier («mejora significativamente el contenido de la sección de componentes, hazlo sin preguntar», 26/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T10:38:17+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Contrato de la pestaña Components (server/src/components/catalogue.js), acordado con Codex: A:AK sin cambios y ocho columnas AL:AS opcionales (COMPONENT_CLASS, FUNCTION, APPLICATIONS, TECHNICAL_SPECIFICATIONS, INTEGRATION_REQUIREMENTS, LIMITATIONS, EVIDENCE_SCOPE, CHECKED_AT); vocabulario de 13 clases con prefijo de ID y métricas comparables por familia; especificaciones de siete campos (métrica, valor, unidad, condiciones, fuente https listada en Sources and evidence, localizador y fecha). La importación falla ante una clase desconocida, un prefijo que no corresponde, una línea mal formada, un alcance de evidencia desconocido, una fecha no ISO o una familia no táctil con valores en las columnas táctiles. La pestaña de 37 columnas sigue siendo válida.",
+    "Acceso (server/src/access/fields.js): públicos la clase, la función, el alcance de la evidencia y la fecha de comprobación (16 campos públicos); aplicaciones, especificaciones, requisitos de integración y limitaciones siguen siendo de pago.",
+    "Libro maestro escrito por Codex con su conector nativo: 51 productos (19 existentes con sus IDs y 32 nuevos), 251 líneas de especificación, TACTO aparte como software y los bloques inferiores intactos. Familias: 18 sensores táctiles, 1 mano táctil, 3 actuadores, 4 reductores, 1 controlador de movimiento, 6 manos diestras, 2 pinzas, 3 sensores de fuerza-par, 6 sensores de visión, 3 módulos de cómputo, 2 encoders y 2 piezas de energía. Revisión: 32 productos con fuentes originales comprobadas, 18 comprobados en identidad y cifras seleccionadas, 1 pendiente; ninguna prueba independiente, ningún cliente, precio ni suministro a humanoides inventado.",
+    "Web: familias con recuento y huecos y filtro por familia; tarjetas con las cifras de su familia; pasaportes con lo que hace la pieza, principio, especificaciones con condiciones, fuente y fecha, integración, limitaciones, coste de materiales aparte del precio y notas de comparación; tres estados de revisión y la advertencia de que una cifra del fabricante no es una prueba independiente; comparación por familia, y entre familias solo de lo que comparten; las celdas y BMS se presentan como piezas, no como baterías de robot. El gráfico de evolución queda limitado a las familias táctiles y declara excluidas las demás.",
+    "Fabricantes públicos revisados para los 32 productos nuevos (tools/components-makers.json), con catálogo actual y fabricante original separados cuando difieren; Hesai se une a su ficha cotizada.",
+    "Corrección (PR 139): las páginas de producto indican la API, para que la sesión de un suscriptor muestre el pasaporte completo; prueba de regresión tools/verify-components.mjs en CI.",
+    "Sin cambios en precios, accesos de otras categorías, facturación ni credenciales."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 138",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/138"
+    },
+    {
+      "etiqueta": "PR 139",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/139"
+    },
+    {
+      "etiqueta": "Components",
+      "url": "https://whyhumanoid.com/components/"
+    },
+    {
+      "etiqueta": "Actuador AK80-9",
+      "url": "https://whyhumanoid.com/components/cmp-act-001/"
+    },
+    {
+      "etiqueta": "Mano ORCA v1",
+      "url": "https://whyhumanoid.com/components/cmp-hnd-003/"
+    },
+    {
+      "etiqueta": "Importación de producción (ejecución 45792742154)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45792742154"
+    }
+  ],
+  "despliegue": [
+    "PR 138 fusionado con squash en main como 8454e57 desde el head aprobado por Codex a47270f, con CI en verde (ejecución 45791484298); Pages 45792734566 en verde.",
+    "Worker desplegado por Codex con los bundles reproducidos dos veces por Claude y por Codex (esbuild 0.27.7): TEST versión 3dfb0d72 (d561874a3d661866ab5bacf2e637385a7492968930676faa16a9ca2a5863e2f4) y PROD versión 92a6fbfc (e6772c2a5ed2b74008e5bc7a8956c9528f4a901127fd9ecbe4008c427a9c38fc).",
+    "Una sola importación de producción desde main (ejecución 45792742154, instantánea 2026-11-26T09:31:33Z), tras comprobar el margen de D1 (42.080 filas escritas, más de 57.000 libres): HTTP 200, hardware 51, component-software 1, el resto de conjuntos con sus recuentos, relations.ok true, búsqueda 2.003 completa y 1.936 pública.",
+    "PR 139 fusionado como 7e5a0e5 desde el head aprobado 79d754e, con CI en verde (ejecución 45793322009); Pages 45793554865 en verde; CI de main sobre 7e5a0e5 (ejecución 45793555163). Solo páginas estáticas: sin Worker, importación ni escrituras en D1."
+  ],
+  "verificaciones": [
+    "Local: 195 pruebas del servidor, test-evolution, test-coherence, verify-site, verify-pages, verify-premium-app, verify-components, comprobaciones de generación y guardia pública en verde; en navegador, Components, una ficha de cada familia y las comparaciones sin desbordamiento a 390 y 1366 px.",
+    "Claude, producción: la API pública sirve 51 productos solo con sus campos públicos, el detalle sin sesión responde 401, la búsqueda pública no expone campos de pago, /health correcto; la web muestra 51 tarjetas, 12 familias cubiertas y las fichas responden 200; las 52 páginas de producto indican la API desde las 09:37 UTC.",
+    "Codex, producción: las 51 filas públicas coinciden con la proyección del libro; un suscriptor real ve los 51 productos con 43 campos y el detalle del AK80-9 con los ocho campos nuevos, especificaciones y fuentes; el MCP devuelve los tres actuadores de CubeMars con sus campos públicos; la comparación de actuadores muestra 9 y 8,3 N·m nominales y 22 y 24,8 N·m de pico con condiciones y fuentes; la comparación entre familias se limita a lo común; sin desbordamiento a 375 px.",
+    "Codex, producción tras el PR 139, con la misma sesión real de suscriptor: /components/cmp-act-001/ muestra el pasaporte completo («Subscriber view»), sin candado, con las 8 especificaciones estructuradas (9 N·m, 22 N·m, 490 g, 48 V, 570 rpm) con condiciones y fuentes, legible a 375 px sin desbordamiento; /components/cmp-hnd-003/ (ORCA) muestra el coste de materiales de los autores, por debajo de 2.000 CHF, aparte del precio de venta."
+  ],
+  "pendientes": [
+    "Revisión del resto de afirmaciones importadas de los 18 productos táctiles revisados en parte, y de BioTac SP, pendiente.",
+    "La cobertura de cada familia es una selección de modelos concretos, no el mercado completo."
+  ],
+  "siguiente_accion": "Codex registra su aviso de esta entrega; Javier confirma la recepción."
+}
