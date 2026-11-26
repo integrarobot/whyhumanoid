@@ -885,7 +885,7 @@ ${code(`# Tables and what your access reads from each\ncurl ${API_ORIGIN}/v1/dat
 <p>Published atlases (Datasets, Benchmarks, Reports, Integrators and the evolution charts) are public JSON files on this site, for example <code>https://whyhumanoid.com/data/reports/atlas.json</code>.</p></section>
 <section id="mcp"><h2>MCP server</h2><p>A remote MCP server (Streamable HTTP) at <code>${esc(API_ORIGIN)}/mcp</code>, with read-only tools: <code>list_categories</code>, <code>search_catalogue</code>, <code>get_rows</code>, <code>get_atlas</code>, <code>get_relations</code> and <code>account_status</code>. Add it to any client that supports remote MCP servers with a custom header, for example in a JSON configuration:</p>
 ${code(`{\n  "mcpServers": {\n    "whyhumanoid": {\n      "type": "http",\n      "url": "${API_ORIGIN}/mcp",\n      "headers": { "Authorization": "Bearer YOUR_API_KEY" }\n    }\n  }\n}`)}
-<p>Leave out the header to use the public catalogue only. The exact place for this configuration depends on your client; check its documentation for "remote MCP server" or "HTTP transport".</p></section>
+<p>Leave out the header to use the public catalogue only. The exact place for this configuration depends on your client; check its documentation for "remote MCP server" or "HTTP transport". Using the MCP connection is subject to its <a href="/terms/">terms of use</a>.</p></section>
 <section id="cli"><h2>Command-line tool</h2><p>One JavaScript file with no dependencies (Node.js 18 or later). Read it before you run it: <a href="/agents/whyhumanoid.mjs">whyhumanoid.mjs</a>.</p>
 ${code(`curl -fsSLO https://whyhumanoid.com/agents/whyhumanoid.mjs\nexport WHYHUMANOID_API_KEY=YOUR_API_KEY   # optional: public data needs no key\nnode whyhumanoid.mjs categories\nnode whyhumanoid.mjs search pallet --category deployments\nnode whyhumanoid.mjs rows deployments --limit 5\nnode whyhumanoid.mjs atlas reports\nnode whyhumanoid.mjs account`)}
 <p>Output is JSON. Run <code>node whyhumanoid.mjs --help</code> for every option.</p></section>
@@ -905,10 +905,34 @@ function aboutPage() {
 <section id="covers"><h2>What it covers</h2><p>${cats.slice(0, -1).join(', ')} and ${cats.at(-1)}.</p></section>
 <section id="records"><h2>What a record is</h2><p>Each record compiles claims made in public sources, with a link to the source. Where the evidence allows, records tell demonstrations, trials and pilots, announcements and operations apart.</p><p>A record states what its source says. It is not an independent verification: manufacturer claims are shown as claims, not as verified capabilities, and a missing value stays missing. The <a href="/method/">Method</a> explains the definitions and how records are kept.</p></section>
 <section id="who"><h2>Who makes it</h2><p>Why Humanoid? is made by <a href="https://integrarobot.com">Integrarobot</a>, founded by Javier Martín, an entrepreneur and AI educator in Spain. Integrarobot helps companies understand the value of integrating AI-driven robotics.</p></section>
-<section id="use"><h2>Using it</h2><p>The public catalogue is free to browse. Complete Deployments and Components, and custom company reports, are described on <a href="/subscribe/">Subscription and reports</a>. Software agents can use the same catalogue through the API, the MCP server and the command-line tool: see <a href="/agents/">For agents</a>.</p></section>
+<section id="use"><h2>Using it</h2><p>The public catalogue is free to browse. Complete Deployments and Components, and custom company reports, are described on <a href="/subscribe/">Subscription and reports</a>. Software agents can use the same catalogue through the API, the MCP server and the command-line tool: see <a href="/agents/">For agents</a> and the MCP connection's <a href="/terms/">terms of use</a>.</p></section>
 <section id="contact"><h2>Contact</h2><p>Questions and corrections: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>.</p></section>
 </article>`;
   return page({ title: 'About Why Humanoid?', description: "Why Humanoid? is Integrarobot's research catalogue of humanoid robots and their ecosystem: source-linked records for people and software agents, with what each record does and does not establish.", path: '/about/', body });
+}
+
+// ---------- terms of use for the public MCP connection (Javier, 26 Nov 2026) ----------
+// Only what the service does today (server/src/mcp.js, server/src/usage.js, the access matrix). No company registration,
+// service level, retention period, refund policy, governing law, liability cap or data licence is stated here: none
+// has been decided, and inventing one would be wrong.
+const MCP_TOOLS = ['list_categories', 'search_catalogue', 'get_rows', 'get_atlas', 'get_relations', 'account_status'];
+function termsPage() {
+  const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Terms of use']])}
+<article class="entity">
+<p class="kicker">Terms of use</p>
+<h1>Terms of use for the Why Humanoid? MCP connection</h1>
+<p class="lede">These terms cover the public, read-only connection to Why Humanoid? through the Model Context Protocol (MCP). By connecting a client or an agent to it, you accept them. Last updated: 26 November 2026.</p>
+<section id="provider"><h2>Who provides it</h2><p>Why Humanoid? and this connection are provided by <a href="https://integrarobot.com">Integrarobot</a>, founded by Javier Martín (see <a href="/about/">About</a>). Questions about these terms: <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>.</p></section>
+<section id="what"><h2>What the connection does</h2><p>A remote MCP server at <code>${esc(API_ORIGIN)}/mcp</code> with ${MCP_TOOLS.length} read-only tools: ${MCP_TOOLS.map((t) => `<code>${t}</code>`).join(', ')}. They read the Why Humanoid? research catalogue of humanoid robots and their ecosystem, and its published atlases.</p><p>The tools only read. They do not control or send commands to any robot, do not create, change or delete records, and do not place orders, make payments or reach accounts, custom reports or internal tables.</p></section>
+<section id="access"><h2>Public access and the separate subscription</h2><p>No account or key is needed. Without a key, the connection reads the public catalogue: the free categories in full, and Deployments and Components at their public fields.</p><p>The complete Deployments and Components are a separate paid subscription, described on <a href="/subscribe/">Subscription and reports</a>. Connecting without a key does not unlock them; they are read only with an API key of an active subscription, as explained on <a href="/agents/">For agents</a>.</p></section>
+<section id="data"><h2>What the data is, and its limits</h2><p>Each record compiles claims made in public sources, with a link to the source, as the source states them. Records are not independently verified facts: manufacturer claims are shown as claims, not as verified capabilities, and a missing value stays missing. Records may be incomplete or out of date. How records are kept is explained in the <a href="/method/">Method</a>.</p><p>The catalogue is research and data, not a personalised recommendation. Check the original sources before you rely on a record for a decision.</p></section>
+<section id="sources"><h2>Sources</h2><p>The rights in the source material stay with its owners. Using the connection does not transfer any rights in it. When you use a record, link the original source it cites.</p></section>
+<section id="fair-use"><h2>Fair use</h2><p>Requests made with an API key are limited to ${USAGE_LIMITS.perMinute} a minute and ${USAGE_LIMITS.perDay.toLocaleString('en-GB')} a day per key; over the limit, requests get HTTP 429 with a Retry-After header, and nothing is charged. Keep automated use of the public connection within the same limits. Do not try to reach data the connection does not offer, or to get around these limits or the access rules.</p></section>
+<section id="changes"><h2>Availability and changes</h2><p>There is no service level commitment. The connection, its tools and the catalogue may change, be interrupted or be withdrawn. These terms may change; the date above shows the last update.</p></section>
+<section id="privacy"><h2>Privacy</h2><p>The public connection needs no account. How Why Humanoid? handles information is described on <a href="/privacy/">Privacy</a>.</p></section>
+<section id="contact"><h2>Contact</h2><p><a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>.</p></section>
+</article>`;
+  return page({ title: 'Terms of use for the MCP connection · Why Humanoid?', description: 'Terms of use for the public, read-only Why Humanoid? MCP connection: what its tools do, public scope, the separate subscription, data limits, sources and fair use.', path: '/terms/', body });
 }
 
 // ---------- privacy (25 Nov 2026): what the site and the app actually do, nothing more ----------
@@ -980,7 +1004,7 @@ ${kv([['In operation', 'The source says the robot is working in operation.'], ['
 }
 
 export function sitemapUrls(model) {
-  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/about/', '/privacy/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
+  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/about/', '/terms/', '/privacy/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
 }
 function sitemap(model) {
   const lastmod = String(model.snapshot).slice(0, 10);
@@ -1024,6 +1048,7 @@ export function buildPages(registry = readRegistry()) {
   files.set('agents/index.html', agentsPage());
   files.set('privacy/index.html', privacyPage());
   files.set('about/index.html', aboutPage());
+  files.set('terms/index.html', termsPage());
   // /robots/ was the index of robot pages until 23 Nov 2026: it now points to the Humanoids category.
   files.set('robots/index.html', redirectPage('/humanoids/', 'the humanoid robots'));
   files.set('companies/index.html', companiesIndex(model));
