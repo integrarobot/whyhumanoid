@@ -1,0 +1,70 @@
+{
+  "id": "WH-20261126-0922-investment-research-desk",
+  "tarea": "Mesa de investigación de inversión en whyhumanoid.com/investment/ y en las páginas de las 276 empresas cotizadas: las 98 tesis del catálogo, directorio con búsqueda y filtros, datos de mercado de TradingView, titulares recientes y tarjetas de tesis fechadas",
+  "origen": "Javier (26/11/2026, autorización para construir y publicar), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T09:22:07+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Instantánea pública data/investment/desk.json, generada con tools/export-investment.mjs a partir de la pestaña Investment Theses del libro maestro (leída el 26/11/2026 a las 07:38 UTC) y de la instantánea pública de Investment. Recoge las 98 tesis (98 identificadores únicos, 68 empresas) con campos permitidos: editor tal como lo da la fuente, fechas, postura, tipo, conclusiones, valoración o razonamiento, horizonte, límites, localizador, enlace a la fuente y fecha de comprobación. No incluye Source catalogue, THESIS_RECORDS, números de fila, fechas de importación ni cotizaciones. Cada tesis se une a su empresa por la fila de Investment, comprobando nombre, ticker, mercado e ISIN; la orden --check valida la instantánea sin el libro.",
+    "Lectura revisada en tools/investment-review.json: etiquetas de segmento en inglés, traducción revisada de las 276 descripciones de negocio (presentadas como nota de investigación traducida, no como texto del emisor), correspondencia con TradingView con un estado por capacidad, las comprobaciones de Codex en navegador real (NASDAQ:TSLA, XETR:SHA0, TSE:6954 y HKEX:9880), sufijos de Yahoo y 12 cambios de redacción para el lector que quitan menciones a la pestaña o al método de trabajo, cada uno con su texto original exacto.",
+    "Salvedades publicadas: que no haya tesis en el catálogo no significa que no exista ninguna; una tesis de semiconductores no prueba ingresos por humanoides; los nombres de editor no son firmas independientes. La tesis de SKAGEN sobre Hyundai trata de las acciones preferentes, no de las ordinarias 005380. Los tres modelos de ARK sobre Tesla conservan sus fechas (21/04/2023, 12/06/2024 y 19/10/2026) y horizontes (2027, 2029 y 2031).",
+    "/investment/: accesos directos (Companies, Investment theses, Funding), contadores, búsqueda, filtros por segmento, ETF, país, mercado, cobertura de tesis, postura, editor y gráfico, ordenación, lista de seguimiento guardada solo en el navegador, comparación de 2 a 4 empresas en tarjetas y la tabla con las 98 tesis.",
+    "Páginas de empresa: accesos directos a datos de mercado, tesis y evidencia de despliegue. Widgets de TradingView (Symbol Info y Advanced Chart, Fundamental Data, Company Profile y Top Stories opcional) cargados solo al acercarse a la vista, sin cambio de símbolo. Donde un widget no está disponible se explica el motivo y se dan enlaces a Google Finance, Yahoo Finance, Google News y la web de la empresa. Tarjetas de tesis: las fechadas, de la más reciente a la más antigua, y las que no tienen fecha, aparte.",
+    "Worker: GET /v1/news (server/src/news/) lee el feed RSS público de titulares de Yahoo Finance, solo para las 275 empresas de la lista generada, con la URL construida en el servidor, 6 s de límite para la respuesta completa, 512 KB, sin redirecciones, caché de 30 minutos (5 minutos para errores), sin D1 ni cron, y devuelve solo titular, enlace, fecha y dominio.",
+    "Valoraciones guardadas como número sin moneda ni fecha (tres en Humanoids) ya no se muestran como importes; las páginas de empresas cotizadas las omiten. Privacidad: fila nueva sobre los widgets de TradingView y la caché compartida de titulares.",
+    "No se ha tocado el libro maestro, ni precios, ni accesos, ni facturación, ni credenciales."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 136",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/136"
+    },
+    {
+      "etiqueta": "Commit de fusión 8c29c12",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/8c29c12ffdfef91b9283f316bd83e9398c9b1585"
+    },
+    {
+      "etiqueta": "Investment",
+      "url": "https://whyhumanoid.com/investment/"
+    },
+    {
+      "etiqueta": "Tesla (EE. UU.)",
+      "url": "https://whyhumanoid.com/companies/tesla/"
+    },
+    {
+      "etiqueta": "Schaeffler (Europa)",
+      "url": "https://whyhumanoid.com/companies/schaeffler/"
+    },
+    {
+      "etiqueta": "FANUC (Japón)",
+      "url": "https://whyhumanoid.com/companies/fanuc/"
+    },
+    {
+      "etiqueta": "UBTECH (Hong Kong)",
+      "url": "https://whyhumanoid.com/companies/ubtech/"
+    },
+    {
+      "etiqueta": "Pages (ejecución 45782022046)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45782022046"
+    }
+  ],
+  "despliegue": [
+    "PR 136 fusionado con squash en main como 8c29c12 desde el head aprobado por Codex 4967da3, con el CI del head en verde (ejecución 45780471848) y el CI de main en verde (ejecución 45782022555).",
+    "GitHub Pages: ejecución 45782022046 completada con éxito; la página nueva de Investment se sirve desde las 08:18 UTC.",
+    "Worker desplegado por Codex con los bundles reproducidos dos veces por Claude y una por Codex (esbuild 0.27.7): TEST versión b2d8c967 (afafe20dc0300899644a54e28b155e085d41ac4a32d30ce1cd12801070bc9be8, 803.570 bytes) y PROD versión 9ff0839e, que sustituye a 12aa80c8 (a2eff8cde1d585c06e3dc76e6a63ae65ef8b695ad08e556733983ba512cefeb9, 916.232 bytes)."
+  ],
+  "verificaciones": [
+    "Local: export-investment --check y test-investment (12 pruebas), 190 pruebas del servidor (6 de noticias: cuerpo atascado, 429, redirección, tamaño, lista blanca, caché), build-pages --check, check-public, export-public --check, build-site --check, test-coherence, verify-site, verify-pages, verify-premium-app, verify-footer y verify-mobile, en verde.",
+    "Codex: comparación independiente de las 98 tesis con el libro sin diferencias inesperadas tras los cambios de redacción revisados; mismos hashes de los dos bundles; TEST con /health correcto y 10 titulares para TSLA, SHA0, FANUC y UBTECH.",
+    "Claude, producción, a las 09:19 (Madrid): /investment/ responde 200 a 375 y 1366 px con 276 empresas, 98 tesis, el filtro de cobertura en 68, la comparación de 4 empresas en 4 tarjetas, ningún iframe en el directorio y sin desbordamiento. Tesla (7 tesis) y Schaeffler (1) ofrecen gráfico y fundamentales; FANUC (1) y UBTECH (0) muestran el gráfico como no disponible y ofrecen fundamentales; las cuatro cargan 10 titulares de Yahoo leídos el 26/11/2026, con accesos directos y sin errores de script. /v1/news de producción devuelve 10 titulares para los cuatro símbolos con CORS para whyhumanoid.com, y 404 unknown_security para un símbolo fuera de la lista sin consultar a Yahoo.",
+    "Codex, producción: /health 200, noticias de los cuatro símbolos con 10 titulares, /v1/me 401 sin sesión; comparación de 4 empresas a 320 y 375 px sin desbordamiento; filtro de cobertura 68/276 y lista de seguimiento probados y restablecidos. Tesla: cotización con retraso de 15 minutos (Cboe One), gráfico interactivo con todos los rangos y métricas TTM; titular más reciente del 26/11 y tesis fechadas y sin fecha separadas. FANUC: fundamentales con el gráfico restringido y su tesis de salida. UBTECH: titulares, sin gráfico ni tesis, y lo dice. Schaeffler: gráfico con datos de cierre diario de Xetra."
+  ],
+  "pendientes": [
+    "TradingView: solo cuatro símbolos están comprobados en navegador. Los demás muestran «not yet checked» (183 con gráfico ofrecido) y 91 de TYO, HKG, KRX, KOSDAQ y TPE no tienen gráfico. Las correcciones se añaden en tools/investment-review.json (symbols) y se regenera la instantánea.",
+    "Los titulares los elige el feed de Yahoo y pueden tratar del sector y no de la empresa; no se promete actualidad. Pentamaster (KLSE) no tiene símbolo de Yahoo asignado y no muestra titulares.",
+    "Codex confirma el aviso de esta entrega en ops/entregas/confirmaciones/."
+  ],
+  "siguiente_accion": "Codex comprueba más símbolos de TradingView en su navegador y envía los resultados para tools/investment-review.json; Claude regenera y publica por PR."
+}
