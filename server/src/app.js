@@ -1,5 +1,6 @@
 // HTTP API. Web-standard Request -> Response, so it runs on Cloudflare Workers, Deno and Node.
 
+import { cleanupPayments, describeX402, handleEvidence, listPayments, resolvePayment } from './x402/server.js';
 import { HttpError, corsHeaders, json, privateJson, readJson, readText, withHeaders } from './http.js';
 import {
   authenticate,
@@ -36,7 +37,7 @@ const clampInt = (raw, min, max, fallback) => {
   return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
 };
 
-export function createApp({ db, config, gateway, mailer, importNow, importAuth = verifyImportToken, clock = () => Math.floor(Date.now() / 1000), log = console, waitUntil = null, fetchPublic = null }) {
+export function createApp({ db, config, gateway, mailer, importNow, importAuth = verifyImportToken, clock = () => Math.floor(Date.now() / 1000), log = console, x402Facilitator = null, waitUntil = null, fetchPublic = null }) {
   // Every credential check goes through here: agent API keys are metered (fair use, server/src/usage.js).
   async function authed(request, now) {
     const account = await authenticate(request, db, now);
@@ -92,8 +93,30 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
     return Boolean(account && hasAccess(await getEntitlement(db, account.accountId), now));
   }
 
+  async function requireAdminToken(request) {
+    const given = request.headers.get('x-admin-token') ?? '';
+    if (!config.adminToken || !given || (await sha256Hex(given)) !== (await sha256Hex(config.adminToken))) throw new HttpError(401, 'admin_token_required');
+  }
+
   const routes = [
     ['GET', /^\/health$/, async () => json(200, { ok: true })],
+
+    // x402 pay-per-query (24 Nov 2026, server/src/x402/): a free description, and the paid deployment-evidence query.
+    // Separate from the subscription; disabled unless configured, and Base mainnet closed in code.
+    ['GET', /^\/v1\/x402$/, async (_request, _now, _match, url) => json(200, await describeX402({ url, db, x: config.x402 }), { 'cache-control': 'public, max-age=300' })],
+    ['GET', /^\/v1\/x402\/deployment-evidence$/, async (request, now, _match, url) => handleEvidence({ request, url, now, db, gateway, x: config.x402, facilitatorClient: x402Facilitator, waitUntil, log })],
+    // Operator reconciliation of x402 payments whose settlement outcome is unknown (admin token only, no buyer data).
+    ['GET', /^\/v1\/admin\/x402\/payments$/, async (request, now, _match, url) => {
+      await requireAdminToken(request);
+      await cleanupPayments(db, now);
+      return privateJson(200, { payments: await listPayments(db, ['unknown', 'settling', 'failed', 'settled'].includes(url.searchParams.get('status')) ? url.searchParams.get('status') : 'unknown') });
+    }],
+    ['POST', /^\/v1\/admin\/x402\/payments\/([0-9a-f]{64})\/resolve$/, async (request, now, match) => {
+      await requireAdminToken(request);
+      const body = await readJson(request, 4_000);
+      const r = await resolvePayment({ db, gateway, x: config.x402, key: match[1], outcome: body.outcome, txHash: body.tx_hash, now });
+      return privateJson(r.status, r);
+    }],
 
     // The central access matrix (server/src/access/matrix.js): rules only, no data.
     ['GET', /^\/v1\/access$/, async () => json(200, publicMatrix(), { 'cache-control': 'public, max-age=300' })],

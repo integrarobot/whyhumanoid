@@ -11,8 +11,16 @@
     "test": "node --no-warnings --test --test-reporter=spec test/*.test.js"
   },
   "dependencies": {
+    "@coinbase/x402": "2.1.0",
     "@modelcontextprotocol/sdk": "1.32.2",
+    "@x402/core": "2.32.0",
+    "@x402/evm": "2.32.0",
+    "@x402/extensions": "2.32.0",
     "stripe": "23.1.0",
     "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@x402/fetch": "2.32.0",
+    "viem": "2.58.6"
   }
 }

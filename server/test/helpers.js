@@ -52,7 +52,7 @@ class Statement {
 
 export function createTestDb() {
   const sqlite = new DatabaseSync(':memory:');
-  for (const m of ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
+  for (const m of ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql', '0006_x402_payments.sql']) sqlite.exec(readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8'));
   return {
     prepare: (sql) => new Statement(sqlite, sql),
     async batch(statements) {
@@ -208,6 +208,8 @@ export async function setup({
   legacyPriceIds = [LEGACY_EUR_PRICE],
   price = VALID_PRICE,
   workbook = null,
+  x402 = undefined,
+  x402Facilitator = null,
   reportsCheckoutEnabled = true,
   reportPriceIds = REPORT_PRICES,
   reportPrice = VALID_REPORT_PRICE,
@@ -258,6 +260,7 @@ export async function setup({
     loginTtlSeconds: 900,
     loginMaxPerHour: 5,
     sessionTtlSeconds: 30 * 24 * 3600,
+    x402,
     appUrl: 'https://whyhumanoid.com/app/',
     reportsCheckoutEnabled,
     reportPriceIds,
@@ -267,7 +270,7 @@ export async function setup({
   };
   const publicFiles = new Map();
   const fetchPublic = async (path) => (publicFiles.has(path) ? new Response(publicFiles.get(path), { status: 200 }) : new Response('not found', { status: 404 }));
-  const app = createApp({ db, config, gateway, mailer, clock: () => now, log: { error() {} }, fetchPublic });
+  const app = createApp({ db, config, gateway, mailer, clock: () => now, log: { error() {} }, fetchPublic, x402Facilitator });
   const call = (method, path, { token, body, headers = {} } = {}) =>
     app(
       new Request(`https://api.test${path}`, {
@@ -283,6 +286,7 @@ export async function setup({
   await runImport(db, workbook ?? fixtureWorkbook(), now);
   return {
     db,
+    app,
     call,
     mailer,
     gateway,

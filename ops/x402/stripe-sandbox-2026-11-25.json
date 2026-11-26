@@ -1,0 +1,25 @@
+{
+  "what": "Stripe sandbox check for the x402 pilot (TEST only): one deposit address for Base, created with a restricted test-mode key saved as an environment network secret. No credential, account identifier or key fragment is recorded here.",
+  "checked_at": "2026-11-25T17:05:21Z",
+  "request": "POST /v1/crypto/deposit_addresses (network=base)",
+  "stripe_version": "2026-07-29.preview",
+  "http_status": 200,
+  "request_id": "req_s5ovPJs4F2ipkd",
+  "object": "crypto.deposit_address",
+  "id": "cda_1UfjdFAcMngkWs5CcHjgUblA",
+  "livemode": false,
+  "network": "base",
+  "address": "0x3b0b371ae3cb08f272b87319684f6518b3b313a0",
+  "supported_tokens": [
+    {
+      "token_currency": "usdc",
+      "token_contract_address": "0x036CbD53842c5426634e7929541eC2318f3dCF7e"
+    }
+  ],
+  "notes": [
+    "The key is restricted and test-mode; a read of /v1/balance was refused for missing permission (request req_ymdM3pXqZR7tnJ), as intended for the minimal scope.",
+    "The supported token is the Base Sepolia USDC the x402 code and tests use.",
+    "This shows sandbox eligibility and the preview version only; live eligibility is not established.",
+    "Stopped on 25 Nov 2026: Stripe answered that Stablecoins and Crypto is not available to accounts registered as individuals, so x402 cannot be enabled on this account. The sandbox HTTP 200 did not imply live eligibility. The address is not used."
+  ]
+}

@@ -8,6 +8,7 @@ import { createResendMailer, disabledMailer } from './mailer.js';
 import { DATASETS } from './datasets.js';
 import { fetchWorkbookValues } from './import/google-sheets.js';
 import { runImport } from './import/run.js';
+import { cleanupPayments, x402ConfigFromEnv } from './x402/server.js';
 import { deliverOutbox } from './orders/orders.js';
 
 export function configFromEnv(env) {
@@ -46,6 +47,8 @@ export function configFromEnv(env) {
     loginTtlSeconds: 900,
     loginMaxPerHour: 5,
     sessionTtlSeconds: 30 * 24 * 3600,
+    // x402 pay-per-query (server/src/x402/server.js): off unless X402_ENABLED and every gate passes.
+    x402: x402ConfigFromEnv(env),
   };
 }
 
@@ -86,12 +89,14 @@ export default {
     return app(request);
   },
 
-  // Scheduled work. Every trigger retries due order emails from the outbox. The workbook import runs only on the cron
-  // named in IMPORT_CRON (none is configured: imports run from GitHub Actions), so adding an outbox cron never starts an
-  // import.
+  // Scheduled work. Every trigger retries due order emails from the outbox and runs the x402 clean-up (unfinished
+  // settlements to reconciliation, expired paid answers cleared; a no-op while x402 is unused). The workbook import runs
+  // only on the cron named in IMPORT_CRON (none is configured: imports run from GitHub Actions), so adding an outbox cron
+  // never starts an import.
   async scheduled(event, env, ctx) {
     const now = Math.floor(Date.now() / 1000);
     ctx.waitUntil(deliverOutbox({ db: env.DB, mailer: mailerFor(env), now, limit: 50 }).catch((e) => console.error('outbox retry failed', e?.message)));
+    ctx.waitUntil(cleanupPayments(env.DB, now).catch((e) => console.error('x402 clean-up failed', String(e))));
     if (env.IMPORT_CRON && event?.cron === env.IMPORT_CRON) {
       ctx.waitUntil(
         importFromWorkbook(env).then((result) => {

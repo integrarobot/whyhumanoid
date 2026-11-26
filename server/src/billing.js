@@ -16,9 +16,10 @@ export function stripeKeyMode(secretKey) {
   return /^(sk|rk)_live_/.test(secretKey) ? 'live' : 'test';
 }
 
-export function createStripeGateway({ secretKey, webhookSecret }) {
-  // Constructing the client makes no network call; a placeholder key is only used for webhook verification.
-  const stripe = new Stripe(secretKey || 'sk_test_unconfigured', { httpClient: Stripe.createFetchHttpClient() });
+export function createStripeGateway({ secretKey, webhookSecret, httpClient = Stripe.createFetchHttpClient() }) {
+  // Constructing the client makes no network call; a placeholder key is only used for webhook verification. Tests pass a
+  // local fetch transport (httpClient) to inspect the exact outgoing request of the real SDK.
+  const stripe = new Stripe(secretKey || 'sk_test_unconfigured', { httpClient });
   const cryptoProvider = Stripe.createSubtleCryptoProvider();
   return {
     mode: stripeKeyMode(secretKey),
@@ -47,6 +48,29 @@ export function createStripeGateway({ secretKey, webhookSecret }) {
         { idempotencyKey },
       );
       return { id: session.id, url: session.url };
+    },
+    // x402 (24 Nov 2026): records a USDC payment already settled on Base to the Stripe crypto deposit address, as a
+    // PaymentIntent in transaction-verification mode, keyed by the transaction hash so a retry never records twice.
+    // Parameters follow the "Create a PaymentIntent" section of Stripe's x402 guide (docs.stripe.com/payments/machine/x402,
+    // as read by Codex on 25 Nov 2026): allowed_payment_method_types ['crypto'], and network and transaction hash nested in
+    // crypto.transaction_verification_options next to mode 'transaction_verification'. The preview API version is passed
+    // per request. X402_STRIPE_RECORDING stays false until the actual preview API accepts this in a Stripe sandbox.
+    async recordCryptoPayment({ amountCents, txHash, network, apiVersion }) {
+      const pi = await stripe.paymentIntents.create(
+        {
+          amount: amountCents,
+          currency: 'usd',
+          allowed_payment_method_types: ['crypto'],
+          payment_method_data: { type: 'crypto' },
+          payment_method_options: {
+            crypto: { mode: 'transaction_verification', transaction_verification_options: { network, transaction_hash: txHash } },
+          },
+          confirm: true,
+          metadata: { source: 'x402', product: 'deployment-evidence' },
+        },
+        { idempotencyKey: txHash, apiVersion },
+      );
+      return { id: pi.id, status: pi.status };
     },
     // A custom report (25 Nov 2026): a one-off payment for one stored order. No subscription data, no customer link to
     // the data subscription, no tax settings (the charge is the price, as for the subscription).
