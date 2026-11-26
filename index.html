@@ -48,10 +48,11 @@
   --f-serif:"Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
   --f-mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --fs-display:clamp(42px, 5.3vw, 90px);
-  --fs-h2:clamp(26px, 2.8vw, 40px);
+  /* The shared type scale of assets/pages.css (Integrators, 26 Nov 2026), same values. */
+  --fs-display:clamp(40px,5.6vw,72px); --fs-intro:clamp(17px,1.6vw,21px); --fs-feature:clamp(24px,3.2vw,34px);
+  --fs-h2:var(--fs-feature);
   --fs-h3:22px;
-  --fs-body:15px; --fs-small:13px; --fs-label:10.5px;
+  --fs-body:15px; --fs-small:13px; --fs-label:12px;
   --track-label:.09em;
 
   --gut:clamp(16px, 4vw, 40px);
@@ -208,13 +209,13 @@ button{cursor:pointer}
 .btn:hover,.btn:focus-visible{border-color:var(--amber);color:var(--amber)}
 .btn.primary{background:var(--amber);border-color:var(--amber);color:var(--ink-0)}
 .btn.primary:hover,.btn.primary:focus-visible{background:var(--amber-hi);color:var(--ink-0)}
-.display{font-size:var(--fs-display);line-height:.94;font-weight:560;font-stretch:92%;letter-spacing:-.025em;margin:0;text-wrap:balance}
+.display{font-family:var(--f-serif);font-size:var(--fs-display);line-height:1.05;font-weight:400;letter-spacing:-.01em;margin:0;text-wrap:balance}
 .display .ln{display:block;animation:rise .9s var(--ease) both}
 .display .ln:nth-child(2){animation-delay:.08s}
 .display .ln:nth-child(3){animation-delay:.16s}
-.display em{font-family:var(--f-serif);font-style:italic;font-weight:400;font-stretch:100%;color:var(--amber);font-size:1.08em;letter-spacing:-.015em}
+.display em{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--amber);font-size:1em;letter-spacing:-.01em}
 @keyframes rise{from{clip-path:inset(0 0 100% 0);transform:translateY(.18em)}to{clip-path:inset(0 0 -10% 0);transform:none}}
-.lede{max-width:52ch;color:var(--bone-2);font-size:17px;line-height:1.55;margin:26px 0 34px}
+.lede{max-width:58ch;color:var(--bone-2);font-size:var(--fs-intro);line-height:1.5;margin:26px 0 34px}
 
 .search .field{display:flex;align-items:center;gap:14px;height:58px;border-bottom:1px solid var(--line-2);position:relative;transition:border-color .2s}
 .search .field:focus-within{border-color:var(--amber)}
@@ -263,13 +264,13 @@ button{cursor:pointer}
 .readouts{display:grid;grid-template-columns:repeat(5, minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .readouts > div{padding:18px 18px 16px;display:flex;flex-direction:column;gap:6px;border-left:1px solid var(--line);min-width:0}
 .readouts > div:first-child{border-left:0;padding-left:0}
-.readouts .v{font-size:clamp(28px,3vw,40px);font-weight:560;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.readouts .v{font-family:var(--f-serif);font-size:clamp(32px,3.6vw,46px);font-weight:400;letter-spacing:0;line-height:1;font-variant-numeric:tabular-nums}
 .readouts .v small{font-size:.45em;color:var(--bone-3);font-weight:400;margin-left:4px;letter-spacing:0}
 
 /* Banco de trabajo */
 .bench{display:grid;grid-template-columns:minmax(0,1fr) 452px;gap:clamp(20px,2.6vw,40px);padding-block:clamp(40px,5vw,72px) 0;align-items:start}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
-.h2{font-size:var(--fs-h2);font-weight:560;letter-spacing:-.02em;line-height:1;margin:0;text-wrap:balance}
+.h2{font-family:var(--f-serif);font-size:var(--fs-feature);font-weight:400;letter-spacing:0;line-height:1.12;margin:0;text-wrap:balance}
 .h2 em{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--amber)}
 .filters{display:flex;flex-direction:column;gap:14px;padding:14px 0 16px;border-top:1px solid var(--line)}
 .fgroup{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -312,7 +313,7 @@ button{cursor:pointer}
 .d-close{display:none;background:none;border:1px solid var(--line-2);padding:6px 10px;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-2)}
 .d-perm{margin:8px 0 0;font-family:var(--f-mono);font-size:12px;letter-spacing:.02em}.d-perm a,.d-title em a{color:inherit;text-underline-offset:3px}
 .h-pages a{color:inherit;text-underline-offset:3px}
-.d-title{font-size:34px;line-height:1.02;font-weight:560;letter-spacing:-.02em;margin:0;text-wrap:balance;overflow-wrap:anywhere}
+.d-title{font-family:var(--f-serif);font-size:clamp(26px,2.4vw,32px);line-height:1.1;font-weight:400;letter-spacing:0;margin:0;text-wrap:balance;overflow-wrap:anywhere}
 .d-title em{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--amber);font-size:1.04em}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
@@ -392,8 +393,8 @@ button{cursor:pointer}
 
 /* Método */
 .method{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(24px,4vw,72px);padding-block:clamp(64px,8vw,120px) clamp(48px,6vw,88px)}
-.method h2{font-size:clamp(36px,4.6vw,68px);line-height:.96;font-weight:560;letter-spacing:-.025em;margin:0;text-wrap:balance}
-.method h2 em{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--amber);font-size:1.06em}
+.method h2{font-family:var(--f-serif);font-size:var(--fs-feature);line-height:1.12;font-weight:400;letter-spacing:0;margin:0;text-wrap:balance}
+.method h2 em{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--amber);font-size:1em}
 .method .intro{color:var(--bone-2);margin:20px 0 0;max-width:40ch}
 .qa{border-top:1px solid var(--line-2)}
 .qa > div{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:24px;padding:18px 0;border-bottom:1px solid var(--line)}
@@ -437,7 +438,7 @@ button{cursor:pointer}
 .trace .lbl{display:block;margin-bottom:6px;color:var(--amber)}
 .trace ul{margin:0;padding:0;list-style:none;display:grid;gap:4px;font-size:13px}
 .db-panel-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:12px}
-.db-panel-head h3{margin:0;font-size:clamp(20px,2vw,28px);font-weight:560;letter-spacing:-.01em}
+.db-panel-head h3{margin:0;font-family:var(--f-serif);font-size:clamp(26px,2.4vw,32px);font-weight:400;letter-spacing:0;line-height:1.1}
 .db-panel-head p{margin:6px 0 0;color:var(--bone-3);font-size:var(--fs-small);max-width:72ch}
 .db-search input{background:transparent;border:1px solid var(--line-2);color:var(--bone);padding:8px 10px;font:inherit;font-size:14px;min-width:220px}
 .db-scroll{overflow-x:auto;border:1px solid var(--line);-webkit-overflow-scrolling:touch}
@@ -468,7 +469,7 @@ html.dlg-open{overflow:hidden}
 .db-dlg::backdrop{background:rgba(5,6,8,.74)}
 .db-dlg-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:16px 20px 12px;border-bottom:1px solid var(--line)}
 .db-dlg-id{min-width:0}
-.db-dlg-head h4{margin:6px 0 4px;font-size:clamp(18px,2vw,24px);font-weight:560;letter-spacing:-.01em;line-height:1.25;overflow-wrap:anywhere}
+.db-dlg-head h4{margin:6px 0 4px;font-family:var(--f-serif);font-size:22px;font-weight:400;letter-spacing:0;line-height:1.25;overflow-wrap:anywhere}
 .db-dlg-head p{margin:0}
 .db-dlg-body{flex:1 1 auto;overflow-y:auto;padding:16px 20px 22px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .db-dlg-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 20px;border-top:1px solid var(--line)}
@@ -532,7 +533,6 @@ html.dlg-open{overflow:hidden}
 /* Very narrow layouts (200% zoom on a 320 to 375 px phone): nothing may widen the page. */
 @media (max-width:240px){
   .brand{font-size:16px;white-space:normal}
-  .display{font-size:clamp(28px,15vw,40px)}
   .display em{overflow-wrap:anywhere}
   .sel,.sel select{min-width:0;max-width:100%;width:100%}
   .bar{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 30px;gap:6px}
@@ -578,7 +578,6 @@ html.dlg-open{overflow:hidden}
   .kv dd{margin-bottom:8px}
   .bar{grid-template-columns:104px minmax(0,1fr) 30px}
   .hud-r .age{display:none}
-  .lede{font-size:16px}
   .search input{font-size:17px}
 }
 /* Find first on phones (Javier, 23 and 25 Nov 2026): an explicit Categories menu whenever the ten links do not fit the
@@ -605,11 +604,10 @@ html.cats-compact{scroll-padding-top:calc(var(--hud-h) + 16px)}
 .hud.cats-compact .cat-toggle{flex:none}
 @media (max-width:420px){.cat-toggle{padding:0 11px;gap:7px}.cat-toggle .n{display:none}}
 @media (max-width:360px){.brand{font-size:18px;gap:8px}}
-@media (max-width:420px){.display{font-size:clamp(32px,10vw,42px)}}
 @media (max-width:760px){
   .hero{padding-block:20px 28px}
   .kicker{margin:0 0 12px}
-  .lede{margin:12px 0 16px;font-size:15px;line-height:1.45}
+  .lede{margin:12px 0 16px}
   .cta-row{margin:0 0 14px;gap:8px}
   .cta-row .btn{flex:1 1 auto;justify-content:center}
   .search .field{height:52px}
@@ -685,7 +683,7 @@ html.cats-compact{scroll-padding-top:calc(var(--hud-h) + 16px)}
       </div>
 
       <!-- evolution:start -->
-      <link rel="stylesheet" href="/assets/evolution.css?v=60ae139805">
+      <link rel="stylesheet" href="/assets/evolution.css?v=a0f82bd053">
       <figure class="evo evo-car" id="evo-car" aria-roledescription="carousel" aria-labelledby="evo-car-h" data-seconds="10">
         <figcaption class="fc-head"><span class="lbl hi" id="evo-car-h">How the record has grown, section by section</span><span class="lbl">Replay of dated sources · not live</span></figcaption>
         <div class="evo-tabs" role="tablist" aria-label="Evolution charts"><a role="tab" id="evo-t-0" href="/humanoids/#evolution" data-i="0" aria-controls="evo-s-0" aria-selected="true">Humanoids</a><a role="tab" id="evo-t-1" href="/deployments/#evolution" data-i="1" aria-controls="evo-s-1" aria-selected="false" tabindex="-1">Deployments</a><a role="tab" id="evo-t-2" href="/components/#evolution" data-i="2" aria-controls="evo-s-2" aria-selected="false" tabindex="-1">Components</a><a role="tab" id="evo-t-3" href="/integrators/#evolution" data-i="3" aria-controls="evo-s-3" aria-selected="false" tabindex="-1">Integrators</a><a role="tab" id="evo-t-4" href="/datasets/#evolution" data-i="4" aria-controls="evo-s-4" aria-selected="false" tabindex="-1">Datasets</a><a role="tab" id="evo-t-5" href="/benchmarks/#evolution" data-i="5" aria-controls="evo-s-5" aria-selected="false" tabindex="-1">Benchmarks</a><a role="tab" id="evo-t-6" href="/reports/#evolution" data-i="6" aria-controls="evo-s-6" aria-selected="false" tabindex="-1">Reports</a></div>

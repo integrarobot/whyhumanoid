@@ -26,7 +26,7 @@
 .ip{border:1px solid var(--line-2);background:var(--ink-1);padding:16px 18px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .ip[data-status="exception"],.ip[data-status="unconfirmed"]{border-style:dashed}
 .ip-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}
-.ip-h h3{margin:0;font-family:var(--f-serif);font-weight:400;font-size:24px;line-height:1.1}
+.ip-h h3{margin:0;font-family:var(--f-serif);font-weight:400;font-size:var(--fs-card);letter-spacing:0;text-transform:none;line-height:1.1}
 .ip-h h3 a{color:var(--bone);text-decoration:none}
 .ip-h h3 a:hover,.ip-h h3 a:focus-visible{color:var(--amber-hi);text-decoration:underline}
 .ip-badge{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border:1px dashed var(--bone-3);color:var(--bone-2)}
@@ -63,7 +63,7 @@
 /* ---- named projects ---- */
 .pjs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:12px}
 .pj{border:1px solid var(--line-2);padding:16px 18px;background:var(--ink-1)}
-.pj h3{font-family:var(--f-serif);font-weight:400;font-size:22px;line-height:1.15;margin:4px 0 8px}
+.pj h3{font-family:var(--f-serif);font-weight:400;font-size:var(--fs-card-sub);letter-spacing:0;text-transform:none;color:var(--bone);line-height:1.15;margin:4px 0 8px}
 .pj > p{font-size:14px;color:var(--bone-2);margin:0 0 10px}
 
 /* ---- overview bars: the number is written; the bar only repeats it ---- */

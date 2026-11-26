@@ -7,7 +7,7 @@
   --rp-pend:#D9BE5C;
 }
 .rp-head .ask{max-width:78ch;color:var(--bone-2);font-size:15.5px;margin:0 0 22px}
-.rp-head .lede{font-family:var(--f-serif);font-size:clamp(22px,2.4vw,30px);line-height:1.2;color:var(--bone);max-width:36ch}
+.rp-head .lede{color:var(--bone);max-width:58ch}
 .dim{color:var(--bone-3)}
 
 /* ---- check badges ---- */
@@ -56,7 +56,7 @@
 .cv-n i{height:2px;width:12px;background:var(--line-2)}
 
 /* ---- themes ---- */
-.rp-theme .sec-h h2{font-family:var(--f-serif);font-weight:400;text-transform:none;letter-spacing:0;font-size:clamp(28px,3vw,40px);line-height:1.1;max-width:30ch}
+.rp-theme .sec-h h2{font-family:var(--f-serif);font-weight:400;text-transform:none;letter-spacing:0;font-size:var(--fs-feature);line-height:1.12;max-width:30ch}
 .rp-syn{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line);margin:0 0 22px}
 .rp-syn > div{padding:14px 18px 16px 0}
 .rp-syn > div + div{padding-left:18px;border-left:1px solid var(--line)}
@@ -204,7 +204,7 @@
 /* findings table and filters */
 .rp-filters:not([hidden]){display:flex;flex-wrap:wrap;gap:10px 14px;align-items:end;margin:0 0 14px}
 .rp-filters label{display:grid;gap:4px;min-width:0;flex:1 1 170px}
-.rp-filters select{width:100%;min-width:0;min-height:40px;background:var(--ink-1);color:var(--bone);border:1px solid var(--line-2);padding:0 8px;font:inherit;font-size:14px;max-width:100%}
+.rp-filters select{width:100%;min-width:0;min-height:40px;background:var(--ink-1);color:var(--bone);border:1px solid var(--line-2);padding:0 8px;font:inherit;font-size:var(--fs-control);max-width:100%}
 .rp-reset{min-height:40px;padding:0 16px;border:1px solid var(--line-2);background:none;color:var(--bone-2);font-family:var(--f-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
 .rp-reset:hover{border-color:var(--amber);color:var(--amber-hi)}
 .rp-count{flex:1 0 100%;margin:0;font-size:13px;color:var(--bone-3)}

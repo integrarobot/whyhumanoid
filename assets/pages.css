@@ -17,6 +17,10 @@
 /* One page frame for every route (Javier, 26 Nov 2026): the width of Integrators and Deployments everywhere. The home
    page (index.html) and the subscriber app (server/public/index.html) use the same two values. */
 :root{--page-max:1380px;--page-gutter:clamp(16px,4vw,40px)}
+/* One type scale for every route (Javier, 26 Nov 2026), measured from Integrators, role by role. Serif for display,
+   feature, panel and card titles; Sans for intro, body, tables and controls; Mono for section headings, labels,
+   navigation and captions. The home page and the subscriber app use the same values. */
+:root{--fs-display:clamp(40px,5.6vw,72px);--fs-intro:clamp(17px,1.6vw,21px);--fs-feature:clamp(24px,3.2vw,34px);--fs-panel:clamp(26px,2.4vw,32px);--fs-card:24px;--fs-card-sub:22px;--fs-section:13px;--fs-label:12px;--fs-caption:11px;--fs-control:15px;--fs-body:16px;--fs-small:14px;--fs-table:13.5px;--fs-meta:13px}
 *{box-sizing:border-box}
 html{background:var(--ink-0);color:var(--bone);-webkit-text-size-adjust:100%}
 body{margin:0;font:16px/1.55 var(--f-sans);padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
@@ -26,7 +30,7 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 .top{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding:12px var(--page-gutter);background:color-mix(in srgb,var(--ink-0) 92%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
 .brand{display:inline-flex;gap:10px;align-items:center;color:var(--bone);text-decoration:none;font-weight:600;letter-spacing:.01em}
 .mark{width:12px;height:12px;background:var(--amber);display:inline-block}
-.top nav{display:flex;gap:18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.top nav{display:flex;gap:18px;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:.06em;text-transform:uppercase}
 .top nav a{color:var(--bone-2);text-decoration:none}
 .top nav a:hover{color:var(--amber-hi)}
 main{max-width:var(--page-max);margin:0 auto;padding:24px var(--page-gutter) 48px}
@@ -34,13 +38,15 @@ main{max-width:var(--page-max);margin:0 auto;padding:24px var(--page-gutter) 48p
 .entity > p:not([class]),.entity > section > p:not([class]),.entity > section > ul:not([class]),.entity > section > ol:not([class]),.key,.meta{max-width:88ch}
 .crumbs{font-family:var(--f-mono);font-size:12px;color:var(--bone-3);margin:0 0 20px;overflow-wrap:anywhere}
 .crumbs a{color:var(--bone-2)}
-.kicker{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin:0 0 6px}
-h1{font-family:var(--f-serif);font-weight:400;font-size:clamp(34px,6vw,56px);line-height:1.05;margin:0 0 14px;overflow-wrap:anywhere}
+.kicker{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin:0 0 6px}
+h1{font-family:var(--f-serif);font-weight:400;font-size:var(--fs-display);letter-spacing:-.01em;line-height:1.05;margin:0 0 14px;overflow-wrap:anywhere}
 h1 em{font-style:italic;color:var(--bone-2);font-size:.6em;white-space:nowrap}
-h2{font-family:var(--f-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-2);font-weight:500;margin:0 0 12px;padding-top:14px;border-top:1px solid var(--line-2)}
-h3{font-size:15px;margin:18px 0 8px;color:var(--bone-2)}
+h2{font-family:var(--f-mono);font-size:var(--fs-section);letter-spacing:.08em;text-transform:uppercase;color:var(--bone-2);font-weight:500;margin:0 0 12px;padding-top:14px;border-top:1px solid var(--line-2)}
+/* A subsection heading inside a page or profile: the label role of Integrators profiles. Card and panel titles set
+   their own role below or in their page stylesheet. */
+h3{font-family:var(--f-mono);font-size:var(--fs-label);font-weight:400;letter-spacing:.06em;text-transform:uppercase;margin:22px 0 6px;color:var(--bone-3)}
 section{margin:30px 0}
-.lede{font-size:18px;line-height:1.5;color:var(--bone);max-width:68ch;margin:0 0 14px}
+.lede{font-size:var(--fs-intro);line-height:1.5;color:var(--bone);max-width:68ch;margin:0 0 14px}
 .note{background:var(--amber-3);border-left:2px solid var(--amber);padding:10px 14px;color:var(--bone);font-size:14.5px}
 .kv{display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);margin:0;border-top:1px solid var(--line)}
 .kv dt,.kv dd{padding:9px 0;border-bottom:1px solid var(--line);margin:0}
@@ -59,15 +65,20 @@ section{margin:30px 0}
 .facts{margin:4px 0 0;font-size:13.5px;color:var(--bone-2);overflow-wrap:anywhere}
 .st{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border:1px solid currentColor;display:inline-block;max-width:100%;white-space:normal}
 .st.op{color:var(--ok)}.st.pilot{color:var(--warn)}.st.ann{color:var(--amber-hi)}.st.unc{color:var(--crit)}
-.key,.meta{font-size:13px;color:var(--bone-3)}
+.key,.meta{font-size:var(--fs-meta);color:var(--bone-3)}
+/* Controls share one size; captions above them are the mono caption role. */
+button,input,select,textarea{font-family:inherit}
+main input:not([type=checkbox]):not([type=radio]),main select,main textarea{font-size:var(--fs-control)}
+/* Card titles (Serif, Integrators provider cards). */
+.cards li > a > b,.dep header b{font-family:var(--f-serif);font-weight:400;font-size:var(--fs-card-sub);line-height:1.15}
 .cta a{display:inline-block;font-weight:600;text-decoration:none;border:1px solid var(--amber);padding:10px 14px;margin-top:6px}
 .cards{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .cards li{border:1px solid var(--line-2);padding:12px 14px}
 .cards span{display:block;color:var(--bone-2);font-size:14px;margin-top:4px}
 .scroll{overflow-x:auto;border:1px solid var(--line)}
-table{border-collapse:collapse;width:100%;font-size:14.5px}
+table{border-collapse:collapse;width:100%;font-size:var(--fs-table)}
 th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--bone-3);letter-spacing:.05em;text-transform:uppercase;background:var(--ink-1);position:sticky;top:0}
+th{font-family:var(--f-mono);font-size:var(--fs-label);font-weight:500;color:var(--bone-3);letter-spacing:.05em;text-transform:uppercase;background:var(--ink-1);position:sticky;top:0}
 .bars td:last-child{white-space:nowrap;width:60%}
 .bar{display:inline-block;height:10px;background:var(--amber);vertical-align:middle;margin-right:8px;min-width:2px}
 .foot{border-top:1px solid var(--line);padding:20px clamp(16px,4vw,40px);color:var(--bone-3);font-size:13px}
@@ -90,7 +101,7 @@ th{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--bone-3);
 .badge.sub{border-color:var(--amber);color:var(--amber-hi)}
 .gap{border:1px dashed var(--line-2);padding:10px 14px;color:var(--bone-2);font-size:14px}
 .service{border:1px solid var(--line-2);padding:12px 14px;margin:14px 0;background:var(--ink-1)}
-.service h3{margin:0 0 4px;font-size:16px}
+.service h3{margin:0 0 4px;font-family:var(--f-serif);font-weight:400;font-size:var(--fs-card-sub);line-height:1.15;letter-spacing:0;text-transform:none;color:var(--bone)}
 .service p{margin:4px 0}
 .catgrid{list-style:none;padding:0;margin:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr))}
 .catgrid li{border:1px solid var(--line-2);padding:12px 14px}
