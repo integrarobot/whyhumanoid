@@ -38,7 +38,7 @@ import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
 import { renderEvolutionSection } from './evolution-view.mjs';
-import { deskIndex, readDesk, renderInvestmentDesk, renderListingResearch, renderTheses } from './investment-view.mjs';
+import { chartOffered, deskIndex, readDesk, renderCompanyChart, renderInvestmentDesk, renderListingResearch, renderTheses } from './investment-view.mjs';
 import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
 
 export const SITE = 'https://whyhumanoid.com';
@@ -493,12 +493,17 @@ function companyPage(c, model) {
     ...(c.listings || []).flatMap((l) => [l.source, ...String(l.etf_sources ?? '').split(/[\s|,;]+/)].filter((u) => /^https?:\/\//.test(u ?? ''))),
   ])];
   const roles = Object.entries(c.roles || {}).map(([k, n]) => `${ROLE[k] || human(k)} (${n} record${n === 1 ? '' : 's'})`);
+  // A listed company whose chart TradingView offers shows it beside its identity and key facts (stacked under the
+  // intro on narrow screens), once; Market data then points to it. Without a chart, Market data keeps the state.
+  const top = (c.listings || []).find((l) => chartOffered(DESK_INDEX.byKey.get(l.gf_symbol)));
   const body = `${crumbs([['/', 'Why Humanoid?'], ['/companies/', 'Companies'], [null, c.name]])}
 <article class="entity">
+<div class="co-head${top ? ' with-chart' : ''}"><div class="co-id">
 <p class="kicker">Company${c.robotList.length ? ' · humanoid robot maker' : ''}${c.listings?.length ? ' · listed' : ''}${c.integrator ? ' · integrator' : ''}${c.components?.length ? ' · components' : ''}</p>
 <h1>${esc(c.name)}</h1>
 ${c.categories?.length ? `<p class="meta">In ${c.categories.map((id) => { const k = CATEGORIES_BY_ID.get(id); return `<a href="${k.path}">${esc(k.label)}</a>`; }).join(' · ')}</p>` : ''}
 <p class="lede">${esc(summary)}</p>
+</div>${top ? renderCompanyChart(top, DESK_INDEX.byKey.get(top.gf_symbol)) : ''}<div class="co-facts">
 ${keyFacts([
     ...(c.robotList.length ? [['Robots in the catalogue', c.robotList.map((rb) => `<a href="${rb.path}">${esc(rb.name)}</a>`).join('<br>')]] : []),
     ...(used.length ? [['Catalogue robots in its records', used.map((x) => { const rb = model.robotById.get(x.robot); return `<a href="${rb.path}">${esc(rb.name)} by ${esc(rb.lab)}</a> <span class="dim">${esc(statusText(x.status))}${x.level === 'family' ? ' · the records name its model line, not this version' : ''}</span>`; }).join('<br>')]] : []),
@@ -507,6 +512,7 @@ ${keyFacts([
     ...facts,
     ...(e ? [['Identity record', `${esc(e.canonical_name || c.name)}${nz(e.entity_type) ? ` · ${esc(human(e.entity_type))}` : ''}${nz(e.reviewed_at) ? ` · reviewed ${esc(e.reviewed_at)}` : ''}`]] : []),
   ], links, Boolean(c.integrator))}
+</div></div>
 ${(c.listings || []).map((l) => { const x = DESK_INDEX.byKey.get(l.gf_symbol); return `<section><h2>Listing</h2>${kv([
     ['Ticker', text(l.ticker)], ['Exchange', text(l.exchange)], ['Country as recorded', text(l.country)],
     ...(x?.segment ? [['Segment as recorded', esc(x.segment)]] : []),
@@ -514,7 +520,7 @@ ${(c.listings || []).map((l) => { const x = DESK_INDEX.byKey.get(l.gf_symbol); r
     ...(x?.description ? [['Business description (our research, translated)', esc(x.description)]] : nz(l.description) ? [['Business description', shown(l, 'description')]] : []),
     ...(nz(l.url) ? [['Website', ext(l.url)]] : []),
   ])}<p class="key">From the Investment category (listed companies, snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}). The business description is our research note, translated into English; the theses below are publishers' opinions; deployment records are claims from public sources, with those sources.</p></section>
-${x ? `${renderListingResearch(l, x, DESK_INDEX.thesesOf(l.gf_symbol), { apiOrigin: API_ORIGIN, snapshot: model.previewSnapshot })}\n${renderTheses(l.name, DESK_INDEX.thesesOf(l.gf_symbol), DESK)}` : ''}`; }).join('\n')}
+${x ? `${renderListingResearch(l, x, DESK_INDEX.thesesOf(l.gf_symbol), { apiOrigin: API_ORIGIN, snapshot: model.previewSnapshot, chartAtTop: l === top })}\n${renderTheses(l.name, DESK_INDEX.thesesOf(l.gf_symbol), DESK)}` : ''}`; }).join('\n')}
 ${c.components?.length ? `<section><h2>Components</h2><ul class="links">${c.components.map((r) => `<li><a href="/components/${esc(r.id.toLowerCase())}/">${esc(r.name)}</a> <span class="dim">${esc(r.role)}${r.software ? ' · related software' : ''}</span></li>`).join('')}</ul><p class="key">Public products of the <a href="/components/">Components</a> category, with the role their record states${c.directoryOnly ? '; the database records this name, not a legal name' : ''}.</p></section>` : ''}
 ${c.integrator ? renderIntegratorProfile(c.integrator, model.integrators, integratorLinks(model)) : ''}${renderNamedBy(model.integrators.providers.filter((p) => p.links.makers.some((m) => model.companyByName(m) === c)), model.integrators, { ...integratorLinks(model), heading: 'Integrators that name its robots', intro: `Providers in the Integrators category whose platform cell names ${c.name} robots.` })}
 ${c.robotList.length ? `<section><h2>Robots</h2><ul class="cards">${c.robotList.map((rb) => `<li><a href="${rb.path}"><b>${esc(rb.name)}</b></a><span>${esc(robotSummary(rb))}</span></li>`).join('')}</ul></section>` : ''}
