@@ -1,0 +1,51 @@
+{
+  "id": "WH-20261126-0625-chatgpt-preparacion-terminos",
+  "tarea": "Preparar la publicación del MCP de Why Humanoid? en ChatGPT: términos de uso y privacidad del MCP publicados; envío a ChatGPT bloqueado antes de la subida. Estado del Claude Directory, por separado",
+  "origen": "Javier (25-26/11/2026: editor Integrarobot, todos los países disponibles, «Adelante has tú todo lo demás»), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T06:25:34+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Términos de uso de la conexión MCP pública y de solo lectura en /terms/ (tools/build-pages.mjs, en el sitemap), enlazados desde /agents/ y /about/. Solo recogen lo que el servicio hace hoy: lo presta Integrarobot; el endpoint y sus seis herramientas de solo lectura; ningún control de robots ni escritura de registros; acceso público sin clave; la suscripción aparte que no se desbloquea; registros que compilan afirmaciones con enlaces a la fuente cuando existen, no verificados; los derechos de las fuentes siguen siendo de sus dueños; el uso razonable de server/src/usage.js; ningún compromiso de nivel de servicio; y enlaces a privacidad y contacto. No inventan forma jurídica, registro, dirección, ley aplicable, límite de responsabilidad, plazo de conservación, política de reembolso ni licencia de datos.",
+    "Privacidad (/privacy/): fila «The MCP connection», contrastada con el código. El cliente envía el nombre de la herramienta y sus argumentos; la aplicación no mantiene en su base de datos un historial de conversaciones ni de consultas al catálogo; con clave API cuenta peticiones y anota el último uso; las peticiones se procesan en Cloudflare; un error inesperado se escribe en el registro del servicio y los registros de errores pueden contener información de la petición.",
+    "ChatGPT, preparado por Codex en un paquete público local: marca Integrarobot y todos los países disponibles confirmados. Codex observó tres ensayos reales de desarrollo: logística con enlaces a las fuentes, el atlas de datasets con sus limitaciones y una petición de actualizar el catálogo que se rechaza. No son pruebas de un envío guardado."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 124 (términos y privacidad)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/124"
+    },
+    {
+      "etiqueta": "Commit de fusión acc8354",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/acc8354d13107514fb820a83beee9c1f974a71cd"
+    },
+    {
+      "etiqueta": "Términos de uso del MCP",
+      "url": "https://whyhumanoid.com/terms/"
+    },
+    {
+      "etiqueta": "Privacidad",
+      "url": "https://whyhumanoid.com/privacy/"
+    },
+    {
+      "etiqueta": "Claude Directory (gestión, en revisión)",
+      "url": "https://claude.ai/directory/manage/why-humanoid"
+    }
+  ],
+  "despliegue": [
+    "PR 124 fusionado en main como acc8354 desde el head aceptado por Codex 07ec0c2, con el CI en verde (ejecución 45761206347). GitHub Pages lo publicó en unos 36 segundos. Solo Pages: sin despliegue de Worker ni cambios de datos, precios, suscripciones o cuentas.",
+    "ChatGPT: no se ha subido nada al portal ni se ha enviado a revisión; no hay publicación. No se ha hecho ninguna declaración legal, de pago ni de identidad.",
+    "Claude Directory: lo envió Codex con el consentimiento de Javier y está «En revisión» (verificado por Codex); no está publicado."
+  ],
+  "verificaciones": [
+    "Local: check-public y build-pages --check en verde; verify-pages y verify-site en verde; verify-footer 195/195; /terms/ renderizada a 390 y 1366 px sin desbordamiento ni errores. Codex volvió a ejecutar build-pages --check y check-public.",
+    "Producción, solo lectura, a las 06:25 (Madrid), a 390 y 1366 px: /terms/ responde 200 con su título y su URL canónica, el texto corregido (enlaces a la fuente cuando existen; no gestiona cuentas, no accede a los cuestionarios de informes, no expone tablas internas) y el uso razonable de 60 por minuto y 5.000 al día; /privacy/ responde 200 con la fila «The MCP connection» y su texto final; /agents/ y /about/ enlazan a /terms/ una vez cada una; sin desbordamiento horizontal ni errores de script."
+  ],
+  "pendientes": [
+    "ChatGPT, bloqueado antes de la subida: (1) la verificación del editor en OpenAI exige añadir un método de pago válido y ponerlo por defecto, y no está completa; no hay editor verificado. (2) La grabación del vídeo de demostración con QuickTime falla, así que no hay URL de un vídeo real.",
+    "Faltan datos legales que no se han inventado y que no bloquean estos términos operativos: forma jurídica, registro y dirección de Integrarobot, ley aplicable y jurisdicción, y responsabilidad. Estos términos no certifican el cumplimiento legal completo.",
+    "Claude Directory: en revisión; publicarlo depende de esa revisión."
+  ],
+  "siguiente_accion": "Javier añade y fija por defecto un método de pago válido para completar la verificación del editor en OpenAI; Codex graba la demostración con otra herramienta, y después sube el paquete y lo envía a revisión. Codex vigila la revisión del Claude Directory."
+}
