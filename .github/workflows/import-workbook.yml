@@ -9,6 +9,16 @@ on:
         options: [test, production]
         default: test
         required: true
+      scope:
+        description: 'all = full import of every tab; deployments = only the Deployments graph tabs (Deployments, Clean Entities, Evidence Relations), writing only what changed'
+        type: choice
+        options: [all, deployments]
+        default: all
+        required: true
+      dry_run:
+        description: 'Scoped import only: compare and estimate D1 rows written, write nothing'
+        type: boolean
+        default: false
   # Nightly production import (03:17 UTC): switched on once Google accepts the production identity
   # (DEPLOYMENT.md 4.1). Until then it would fail every night.
   # schedule:
@@ -39,6 +49,11 @@ jobs:
       - name: Relations config from this commit
         run: |
           node tools/relations.mjs --config | jq -c '{relations_config: .}' > relations-body.json
+          # Scoped import (server/src/import/scoped.js): the Deployments graph tabs only, optionally as a dry run.
+          if [ "${{ inputs.scope || 'all' }}" = deployments ]; then
+            jq -c --argjson dry "${{ inputs.dry_run == true }}" '. + {datasets: ["deployments", "entities", "evidence-links"], dry_run: $dry}' relations-body.json > body.tmp && mv body.tmp relations-body.json
+          fi
+          jq -c '{datasets, dry_run}' relations-body.json
           jq -r '"aliases: \(.relations_config.aliases.makers | length) makers, \(.relations_config.aliases.robots | length) robots; catalogue: \(.relations_config.catalogue | length) robots"' relations-body.json
       - name: Show the identity claims presented to Google (no token)
         run: |
@@ -82,6 +97,6 @@ jobs:
             --header "Content-Type: application/json" --data @relations-body.json \
             --request POST "https://${worker}.javier-198.workers.dev/v1/admin/import")
           echo "HTTP $status"
-          jq '{ok, error, warnings, counts, relations, search}' result.json || true
+          jq '{ok, error, warnings, counts, relations, search, scope, dry_run, changes, estimated_rows_written, snapshot}' result.json || true
           rm -f result.json
           test "$status" = 200

@@ -355,8 +355,10 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
         if (!importNow) throw new HttpError(503, 'import_not_configured');
         const accessToken = request.headers.get('x-google-access-token') || undefined;
         // Optional body: the reviewed relations config (node tools/relations.mjs --config). Counts only come back.
+        // A scoped import (server/src/import/scoped.js) names its tabs in "datasets" and may be a dry run.
         const body = await readJson(request, 512_000);
-        const result = await importNow(accessToken, body.relations_config ?? null);
+        const scoped = Array.isArray(body.datasets) && body.datasets.length ? { datasets: body.datasets.map(String), dryRun: body.dry_run === true } : null;
+        const result = await importNow(accessToken, body.relations_config ?? null, scoped);
         return json(result.ok ? 200 : 422, {
           ok: result.ok,
           counts: result.counts,
@@ -364,6 +366,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
           warnings: result.warnings?.length ?? 0,
           relations: result.relations ? { ok: result.relations.ok, error: result.relations.error, config_version: result.relations.config_version, coverage: result.relations.coverage } : undefined,
           search: result.search,
+          ...(scoped ? { scope: result.scope ?? scoped.datasets, dry_run: Boolean(result.dryRun), changes: result.changes, estimated_rows_written: result.estimated_rows_written, snapshot: result.snapshotId } : {}),
         });
       },
     ],
