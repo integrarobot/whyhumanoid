@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261126-1942-muse-conector",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-26T19:43:49+01:00",
+  "por": "codex",
+  "evidencia": "Chat de Javier, 26/11/2026: Codex comunica que la candidatura fue enviada y recibida por Muse, sin aprobación ni publicación; quedan Persona, cuestionario y verificación del host. PR175 revisado y fusionado, 218/218 pruebas y bundles reproducidos; no desplegado por bloqueo de carga. El desafío sigue HTTP404 en TEST y PROD."
+}
