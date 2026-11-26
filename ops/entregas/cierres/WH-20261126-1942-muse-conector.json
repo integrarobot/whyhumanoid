@@ -1,0 +1,49 @@
+{
+  "id": "WH-20261126-1942-muse-conector",
+  "tarea": "Añadir el MCP de Why Humanoid? a Muse: ruta de verificación del dominio del servidor MCP y evidencias del código para el cuestionario de datos, sin cambiar MCP, API, acceso, pagos, datos ni secretos",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex; envío a Muse hecho por Codex con la autorización expresa de Javier",
+  "fecha": "2026-11-26T19:42:50+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 175: GET y HEAD en /.well-known/muse-challenge/0f4b178779974ebde7e015a3353e0c0167fbf88f0afa2ca08aa90379b8c09dcb responden 200 text/plain con exactamente muse-challenge=<token>, sin salto de línea, sin autenticación ni redirección; solo esa ruta exacta (otro token, sufijo, mayúsculas o barra final: 404; otros métodos: 405). No lee base de datos, secretos ni cabeceras. La entrada de TEST pasa esa ruta al Worker. El reto caduca el 3/12/2026 a las 19:32 (Europe/Madrid).",
+    "ops/muse/data-questionnaire-evidence.md: hechos del código y la configuración para el cuestionario de Muse (alojamiento, jurisdicción UE registrada de D1, registro de errores, retención, controles implementados) separados de lo que el repositorio no muestra. No es una política ni un compromiso.",
+    "Sin cambios en /mcp, la API, el acceso, los pagos, los datos ni los secretos."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 175",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/175"
+    },
+    {
+      "etiqueta": "Commit de fusión 71cdac5",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/71cdac5fa5dd24376ec3466365f90a4580b3521e"
+    },
+    {
+      "etiqueta": "CI del head a029473 (ejecución 45877394159)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45877394159"
+    },
+    {
+      "etiqueta": "Envío a Muse",
+      "url": "https://platform.muse.ai/submissions/bcc564c4-7540-4007-9c67-78c84367ae04"
+    }
+  ],
+  "despliegue": [
+    "PR 175 fusionado como 71cdac5 desde a029473 (CI 45877394159 en verde); el árbol de main es idéntico al del head.",
+    "Bundles de ese árbol (esbuild 0.27.7, stripe 23.1.0, @modelcontextprotocol/sdk 1.32.2), reproducidos por Claude y por Codex: PROD worker.dashboard.js 930.151 bytes (930.139 caracteres), SHA-256 291b9f9747fa9699805f6c263383f32a07b56ec1e388d466e6def275f89e55f1; TEST worker.staging.js 816.855 bytes (816.843 caracteres), SHA-256 92566467a2633dbabd09011fb9e17607ef1286c1aeffdd0667cdb494cfded666. Incluyen también el código del PR 172 (importación acotada de Agility), que no lanza ninguna importación.",
+    "Worker NO desplegado: la subida desde el editor del panel (Explorer > Upload) no abrió un selector de archivos utilizable y el navegador rechazó abrir el bundle local como file://. No se intentó ningún rodeo. No hay versión nueva: producción sigue en 92fb9d9b y test en 18f526d0, así que la ruta del reto no responde aún en producción."
+  ],
+  "verificaciones": [
+    "Claude, local: muse-challenge.test.js (6 pruebas) y suite del servidor 218/218; los dos bundles construidos responden GET 200 con el cuerpo exacto, HEAD 200 sin cuerpo y POST 405.",
+    "Codex: revisión del diff de cuatro archivos sin hallazgos, suite 218/218 y los dos hashes reproducidos exactamente.",
+    "Codex, Muse: envío registrado el 26/11/2026 (bcc564c4-7540-4007-9c67-78c84367ae04). Admisión 0 de 3: la verificación de Persona exige DNI, selfi y consentimiento biométrico de Javier; el cuestionario de datos queda como borrador incompleto, sin respuestas de cumplimiento que no se puedan sostener; el reto del servidor no está verificado."
+  ],
+  "pendientes": [
+    "Desplegar el Worker de main 71cdac5 en test y producción por una vía de subida o entrega manual que permita verificar el código, y después comprobar la ruta del reto en producción antes del 3/12/2026 a las 19:32.",
+    "Verificación de Persona: la hace Javier (identidad, selfi y consentimiento biométrico).",
+    "Cuestionario de datos: completar solo con lo que muestra ops/muse/data-questionnaire-evidence.md y con lo que se confirme en las cuentas o con Cloudflare (cifrado en reposo, TLS, retención de registros, MFA y acceso del personal). Sin SOC 2, pruebas de penetración, plan de incidentes, historial de requerimientos ni SCC que no existan.",
+    "La importación de Agility sigue aparte (WH-20261126-1907-agility-aglt); este trabajo no la lanza."
+  ],
+  "siguiente_accion": "Codex consigue una vía de despliegue verificable para los bundles de 71cdac5 y comprueba el reto en producción; Javier completa Persona; el cuestionario se termina solo con hechos confirmados."
+}
