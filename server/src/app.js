@@ -371,7 +371,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
           warnings: result.warnings?.length ?? 0,
           relations: result.relations ? { ok: result.relations.ok, error: result.relations.error, config_version: result.relations.config_version, coverage: result.relations.coverage } : undefined,
           search: result.search,
-          ...(scoped ? { scope: result.scope ?? scoped.datasets, dry_run: Boolean(result.dryRun), changes: result.changes, estimated_rows_written: result.estimated_rows_written, snapshot: result.snapshotId } : {}),
+          ...(scoped ? { scope: result.scope ?? scoped.datasets, dry_run: Boolean(result.dryRun), changes: result.changes, identities: result.identities, estimated_rows_written: result.estimated_rows_written, snapshot: result.snapshotId } : {}),
         });
       },
     ],

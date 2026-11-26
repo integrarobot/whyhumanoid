@@ -120,10 +120,22 @@ export function searchDoc(datasetId, row, { catalogueId = null, aliases = [] } =
 
 // Statements that replace both scopes. rowsOf(datasetId, scope) gives the imported rows ({ id, position, data });
 // config is the reviewed relations config (catalogue index and aliases), used for robot links and aliases.
-export function searchStatements(db, { rowsOf, config, projection = null }) {
+// Search aliases of a Humanoids row from the reviewed relations config (catalogue id, maker and model names). Shared by
+// the full import and the scoped import, so both write the same document for the same row and config.
+export function humanoidAliases(config) {
   const catalogue = new Map((config?.catalogue ?? []).map((c) => [`${c.Lab}|${c.Robot}`, c]));
   const makers = config?.aliases?.makers ?? {};
   const robots = config?.aliases?.robots ?? {};
+  return (data) => {
+    const c = catalogue.get(`${data.Lab}|${data.Robot}`);
+    const m = makers[data.Lab];
+    const r = c ? robots[String(c.id)] : null;
+    return { catalogueId: c?.id ?? null, aliases: [m?.name, ...(m?.names ?? []), ...(r?.model ?? []), ...(r?.family ?? [])].filter(Boolean) };
+  };
+}
+
+export function searchStatements(db, { rowsOf, config, projection = null }) {
+  const humanoidExtra = humanoidAliases(config);
   const unmapped = [];
   const statements = [db.prepare('DELETE FROM search_docs')];
   const counts = {};
@@ -131,13 +143,7 @@ export function searchStatements(db, { rowsOf, config, projection = null }) {
     const docs = companyDocs(projection, scope);
     for (const spec of DATASETS) {
       for (const row of rowsOf(spec.id, scope)) {
-        let extra = {};
-        if (spec.id === 'humanoids') {
-          const c = catalogue.get(`${row.data.Lab}|${row.data.Robot}`);
-          const m = makers[row.data.Lab];
-          const r = c ? robots[String(c.id)] : null;
-          extra = { catalogueId: c?.id ?? null, aliases: [m?.name, ...(m?.names ?? []), ...(r?.model ?? []), ...(r?.family ?? [])].filter(Boolean) };
-        }
+        const extra = spec.id === 'humanoids' ? humanoidExtra(row.data) : {};
         docs.push(searchDoc(spec.id, row, extra, scope === 'full' ? unmapped : []));
       }
     }

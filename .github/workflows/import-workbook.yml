@@ -10,9 +10,9 @@ on:
         default: test
         required: true
       scope:
-        description: 'all = full import of every tab; deployments = only the Deployments graph tabs (Deployments, Clean Entities, Evidence Relations), writing only what changed'
+        description: 'all = full import of every tab; deployments = only the Deployments graph tabs (Deployments, Clean Entities, Evidence Relations); stocks = only the Investment tab of listed companies; stocks-humanoids = the Investment and Humanoids tabs; the scoped ones write only what changed'
         type: choice
-        options: [all, deployments]
+        options: [all, deployments, stocks, stocks-humanoids]
         default: all
         required: true
       dry_run:
@@ -47,16 +47,32 @@ jobs:
         with:
           node-version: 22
       - name: Relations config from this commit
+        # Inputs reach the script only as environment variables, never pasted into it.
+        env:
+          SCOPE: ${{ inputs.scope || 'all' }}
+          DRY_RUN: ${{ inputs.dry_run == true }}
         run: |
+          # Only the scopes listed here exist; anything else stops before any request. The scoped ones name their tabs
+          # (server/src/import/scoped.js): the Deployments graph tabs, the Investment tab, or Investment with Humanoids.
+          case "$SCOPE" in
+            all) datasets= ;;
+            deployments) datasets='["deployments", "entities", "evidence-links"]' ;;
+            stocks) datasets='["stocks"]' ;;
+            stocks-humanoids) datasets='["stocks", "humanoids"]' ;;
+            *) echo "unknown scope '$SCOPE'; nothing was imported"; exit 1 ;;
+          esac
+          case "$DRY_RUN" in true|false) ;; *) echo "dry_run must be true or false; nothing was imported"; exit 1 ;; esac
           # A dry run exists only for the scoped import: never let it become a full import that writes.
-          if [ "${{ inputs.dry_run == true }}" = true ] && [ "${{ inputs.scope || 'all' }}" != deployments ]; then
-            echo "dry_run needs scope=deployments; nothing was imported"; exit 1
+          if [ "$DRY_RUN" = true ] && [ -z "$datasets" ]; then
+            echo "dry_run needs a scoped import (deployments, stocks or stocks-humanoids); nothing was imported"; exit 1
           fi
           node tools/relations.mjs --config | jq -c '{relations_config: .}' > relations-body.json
-          # Scoped import (server/src/import/scoped.js): the Deployments graph tabs only, optionally as a dry run.
-          if [ "${{ inputs.scope || 'all' }}" = deployments ]; then
-            jq -c --argjson dry "${{ inputs.dry_run == true }}" '. + {datasets: ["deployments", "entities", "evidence-links"], dry_run: $dry}' relations-body.json > body.tmp && mv body.tmp relations-body.json
+          if [ -n "$datasets" ]; then
+            jq -c --argjson datasets "$datasets" --argjson dry "$DRY_RUN" '. + {datasets: $datasets, dry_run: $dry}' relations-body.json > body.tmp && mv body.tmp relations-body.json
           fi
+          # The request body must say what was asked: a scoped body for a scoped scope, and never a dry run without one.
+          jq -e --arg scope "$SCOPE" --argjson dry "$DRY_RUN" 'if $scope == "all" then (has("datasets") | not) and (has("dry_run") | not) else (.datasets | type == "array" and length > 0) and .dry_run == $dry end' relations-body.json > /dev/null \
+            || { echo "request body does not match scope '$SCOPE'; nothing was imported"; exit 1; }
           jq -c '{datasets, dry_run}' relations-body.json
           jq -r '"aliases: \(.relations_config.aliases.makers | length) makers, \(.relations_config.aliases.robots | length) robots; catalogue: \(.relations_config.catalogue | length) robots"' relations-body.json
       - name: Show the identity claims presented to Google (no token)
@@ -101,6 +117,6 @@ jobs:
             --header "Content-Type: application/json" --data @relations-body.json \
             --request POST "https://${worker}.javier-198.workers.dev/v1/admin/import")
           echo "HTTP $status"
-          jq '{ok, error, warnings, counts, relations, search, scope, dry_run, changes, estimated_rows_written, snapshot}' result.json || true
+          jq '{ok, error, warnings, counts, relations, search, scope, dry_run, changes, identities, estimated_rows_written, snapshot}' result.json || true
           rm -f result.json
           test "$status" = 200
