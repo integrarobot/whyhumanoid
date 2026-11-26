@@ -24,6 +24,8 @@ jobs:
         env:
           BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: node --test tools/test-entregas.mjs && node tools/entregas.mjs --check --base "$BASE"
+      - name: Workbook write plans follow the contract and hold no private value in clear (ops/weekly-update/plans)
+        run: node --no-warnings --test tools/test-workbook-plan.mjs && node tools/workbook-plan.mjs check
       - name: Preview export is current
         run: node tools/export-humanoids.mjs --check
       - name: Page is the verified build of the preview, with parity

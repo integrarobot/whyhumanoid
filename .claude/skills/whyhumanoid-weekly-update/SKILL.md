@@ -1,6 +1,6 @@
 ---
 name: whyhumanoid-weekly-update
-description: Actualización semanal de Why Humanoid? desde la newsletter de Integrarobot y cierre obligatorio de cualquier entrega del proyecto. Lee completas las ediciones nuevas, contrasta con fuentes primarias, actualiza el libro maestro sin duplicados y publica whyhumanoid.com por el flujo probado. Úsala en la tarea programada de los miércoles, cuando Javier o Codex pidan la actualización semanal y al terminar, bloquear o cerrar sin novedades cualquier trabajo de Why Humanoid?, para registrar y presentar su cierre.
+description: Actualización de Why Humanoid? desde la newsletter de Integrarobot y cierre obligatorio de cualquier entrega del proyecto. Procesa solo la sección de noticias de cada edición nueva, contrasta con fuentes primarias, prepara el plan de escritura en el libro maestro (lo escribe Codex con su conector nativo de Google Sheets) y, tras su recibo, publica whyhumanoid.com e importa a producción por el flujo probado. Úsala en la tarea programada de los miércoles, cuando Javier o Codex pidan la actualización o la publicación de un lote escrito, y al terminar, bloquear o cerrar sin novedades cualquier trabajo de Why Humanoid?, para registrar y presentar su cierre.
 ---
 
 # Actualización semanal de Why Humanoid?
@@ -16,6 +16,8 @@ La sección «Cierre obligatorio de cada entrega» se aplica a TODO trabajo de W
 - Nunca pongas en Git ni en la web credenciales, enlaces al libro maestro o a Drive, contactos personales ni notas internas. El identificador y la URL del libro van solo en el prompt de la tarea programada.
 - Anuncio, piloto y operación son estados distintos. Una demo, un contrato o una nota de prensa del fabricante no son operación real.
 - Solo se marca algo como procesado cuando el libro está actualizado y la web publicada y verificada.
+- Tres fases con su responsable (Javier, 26/11/2026; contrato en `ops/weekly-update/plan-contract.md`): Claude investiga y planifica en la nube con lectura del libro; Codex escribe y relee con el conector nativo de Google Sheets; Claude publica e importa solo tras el recibo de Codex. Que esta ejecución no pueda escribir en el libro no es un bloqueo: el resultado es un plan completo. Nunca pidas a Javier que copie celdas ni propongas cambios de permisos, identidades o credenciales como paso rutinario.
+- Solo la sección de noticias de cada edición (Javier, 18/11/2026; sustituye a la lectura completa de d-0005).
 - Ningún trabajo termina sin su cierre registrado y presentado en el chat (sección siguiente).
 - Deployments es la sección más importante de la web (Javier, 16/11/2026). Ver «Deployments: criterio de publicación».
 
@@ -104,7 +106,7 @@ Gratis entero (AGENTS.md, regla «Integrators»). Cuando cambie la pestaña Inte
 
 Siete gráficos, uno por sección (Humanoids, Deployments, Components, Integrators, Datasets, Benchmarks, Reports), y el carrusel de la portada (AGENTS.md, regla «Gráficos de evolución»). Salen de las instantáneas públicas y de `tools/evolution-review.json`:
 
-0. Las fechas de Datasets y Benchmarks están en el maestro, columnas `PUBLIC_DATE` (contrato en `server/src/public-dates.js`): se regeneran sus atlas con `export-datasets` y `export-benchmarks` desde la exportación actual, nunca desde una anterior.
+0. Las fechas de Datasets y Benchmarks están en el maestro, columnas `PUBLIC_DATE` (contrato en `server/src/public-dates.js`): cuando cambia una de esas pestañas, su atlas se regenera con `export-datasets` o `export-benchmarks` desde la exportación actual, nunca desde una anterior. El atlas de una pestaña sin cambios se deja como está (la prueba de Benchmarks fija su hora de exportación).
 1. Después de regenerar cualquier instantánea pública (catálogo, `data/preview/`, atlas), `node tools/export-evolution.mjs`. Si falla porque un extracto citado ya no está en su celda, o porque un producto nuevo de Components no tiene decisión de fecha, se actualiza `tools/evolution-review.json` con el texto vigente. Nunca se inventa una fecha ni se usa la de revisión o la de la instantánea como historia.
 2. `node tools/build-pages.mjs`, `node tools/build-site.mjs` y `node --no-warnings --test tools/test-evolution.mjs`.
 3. Con Playwright, `node tools/verify-evolution.mjs` (local; `--quick` acorta la rotación) y, tras publicar, `node tools/verify-evolution.mjs --base https://whyhumanoid.com`.
@@ -113,53 +115,68 @@ Siete gráficos, uno por sección (Humanoids, Deployments, Components, Integrato
 
 `ops/weekly-update/state.json` en el repositorio `integrarobot/whyhumanoid`:
 
-- `last_processed_edition`: URL y fecha de la última edición procesada con éxito. Si es `null` (primera ejecución), procesa la última edición publicada.
-- `known_pending`: hechos encontrados en ejecuciones anteriores que aún no se publicaron (por ejemplo, porque falló Sheets). Revísalos siempre.
-- `runs`: una línea por ejecución (fecha, ediciones, resultado).
+- `last_processed_edition`: URL y fecha de la última edición publicada y verificada, con sus casos sin resolver (`unresolved`), que siguen en `known_pending`.
+- `known_pending`: hechos pendientes de escritura, de verificación o de decisión, cada uno con su fuente y su plan. Revísalos siempre.
+- `handoffs`: un traspaso por plan, con su estado (`awaiting_write`, `written` o `published`), el resumen del recibo de Codex, la relectura propia y la publicación (contrato, sección «Estado del traspaso»).
+- `runs`: una línea por ejecución (fecha, ediciones, resultado y cierre).
 
-Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json`.
+Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json` y cada plan en `ops/weekly-update/plans/<plan_id>.json`.
 
 ## Pasos
 
-1. **Prepara.** Clona el repositorio con permiso de escritura, lee el estado y este skill. Comprueba qué tienes disponible: navegador de Javier (Claude in Chrome), conector de Google Drive, Autosheet. No pidas ni manejes secretos.
+### Fase 1: investigación y plan (Claude, en la nube, con lectura del libro)
 
-2. **Localiza las ediciones nuevas** en https://www.integrarobot.com/ (archivo de la newsletter): todas las publicadas después de `last_processed_edition`. En la primera ejecución, la última edición y los `known_pending`.
+1. **Prepara.** Clona el repositorio con permiso de escritura y lee AGENTS.md, el estado, este skill y `ops/weekly-update/plan-contract.md`. Comprueba el conector de Google Drive (descarga del libro y fichero privado de traspaso). No pidas ni manejes secretos.
 
-3. **Lee cada edición completa**, no solo «Más noticias»: artículo principal, análisis, breves, enlaces y notas. Haz una lista de candidatos: robots y versiones nuevas, software y modelos (incluidos world models y VLA), datasets, hardware y componentes, despliegues (empresa, robot, lugar, fase) y empresas.
+2. **Localiza las ediciones nuevas** de https://www.integrarobot.com/, todas las posteriores a `last_processed_edition`. Usa el feed (`/feed`), porque la página de archivo puede estar desfasada. Revisa también los traspasos en `awaiting_write` o `written` y los `known_pending`.
 
-4. **Contrasta con fuentes primarias**: web o nota del fabricante, del cliente o del operador, paper, repositorio, registro oficial. Guarda URL, título, editor, fecha de publicación y fecha de tu revisión. Si solo hay fuente secundaria, regístralo con evidencia baja; si no hay fuente, déjalo en pendientes.
+3. **Lee solo la sección de noticias** de cada edición. Su título cambia de una edición a otra («Más noticias sobre IA y robótica», «Más noticias de IA Física y robótica»…). Numera cada pieza en su orden, con su enlace. Candidatos: robots y versiones nuevas, software y modelos (incluidos world models y VLA), datasets, hardware y componentes, despliegues (empresa, robot, lugar, fase) y empresas.
+
+4. **Contrasta con fuentes primarias**: web o nota del fabricante, del cliente o del operador, paper, repositorio, registro oficial. Guarda URL, editor, fecha de publicación y fecha de tu revisión. Si solo hay fuente secundaria, regístralo con evidencia baja; si no hay fuente, queda como `pending_verification`.
 
 5. **Clasifica según el esquema existente**, sin crear columnas:
    - Humanoids, Other Robots, Software (lista software o world_model), Datasets, Components (antes Hardware), Deployments, Investment (antes Stocks), Integrators, Clean Entities (antes Entidades limpias) y Evidence Relations (antes Relaciones evidencia), según corresponda. Títulos de pestaña vigentes desde el 23/11/2026; antes de exportar, `node --no-warnings tools/check-workbook.mjs --from <export>` debe pasar.
    - Deployments: `operational_status` solo con lo que la fuente sostiene: `planned` (anunciado), `pilot` o `testing` (piloto o prueba), `operational` (operación confirmada por cliente u operador), `vendor_claimed_operational` (el fabricante dice que opera, sin confirmar) o `unresolved`. Rellena `claim_type`, `verification_status`, `evidence_level`, `source_*`, `publication_date` y `observed_start` cuando la fuente lo diga.
+   - Spot y otros robots no humanoides pueden tener registros en Deployments (ya hay de Spot). Lo que decide es si la fuente nombra cliente, emplazamiento y fase. No confundas nombres parecidos: Orbit, el software de Boston Dynamics, no es Orbit Robotics, la empresa de robótica espacial reclasificada el 23/11/2026.
 
-6. **Compara con el libro y con la web.** Obtén una exportación completa del libro (las 13 pestañas): conector de Google Drive (descarga como hoja de cálculo) o, si no, el navegador de Javier. Compara también con `data/` del repositorio. Detecta duplicados por nombre normalizado, fabricante, URL y alias. Decide: fila nueva, actualización de una fila existente (solo los campos que cambian, con fuente nueva) o descarte (duplicado, sin fuente, fuera de alcance). Respeta los identificadores: los existentes no se tocan; los nuevos siguen el patrón de la pestaña (por ejemplo `rec_`, `clm_`, `org_`) y no repiten ninguno.
+6. **Compara con el libro y con la web.** Descarga el libro completo con el conector de Google Drive y conviértelo con `tools/workbook-xlsx-to-json.py`. Compara también con `data/` del repositorio y con el catálogo MCP de producción. Detecta duplicados por nombre normalizado, fabricante, URL y alias. Distingue si la entidad ya existe de si la afirmación nueva ya está incorporada. Decide: fila nueva, actualización (solo los campos que cambian, con fuente nueva) o descarte (duplicado, sin fuente, fuera de alcance). Los identificadores existentes no se tocan; los nuevos siguen el patrón de la pestaña y no repiten ninguno. En las listas con encabezados de sección, la fila va dentro de su bloque (`group_expected`), no al final de la lista.
 
-7. **Guarda el plan** en `ops/weekly-update/runs/<fecha>.json`: añadidos, actualizados (campo, valor anterior y nuevo), descartados con motivo y pendientes, cada uno con fuentes y fechas.
+7. **Escribe el plan** según el contrato: un borrador fuera de Git y después `node tools/workbook-plan.mjs split <borrador> --public ops/weekly-update/plans/<plan_id>.json --private <carga fuera de Git>`. Sigue con `check --private`, `preflight --from <export> --private` (0 conflictos, 0 duplicados, grupos correctos) y `summary`. Prueba la publicación sobre una copia con `simulate`: `check-workbook`, `export-database`, los atlas que cambian, `relations --check`, `search-tags` y `check-public`, sin guardar nada.
 
-8. **Escribe en el libro maestro.** Preferencia: Autosheet, con instrucciones exactas por pestaña, fila y columna; si no, el navegador de Javier. Vuelve a leer las filas escritas y compáralas con el plan.
-   - En el navegador: Humanoids es una tabla que termina en la última fila (inserta la fila nueva con «Insertar 1 fila debajo» de la última para que quede dentro); pega una tabla HTML con «pegar solo valores» (Cmd+Mayús+V), que conserva el formato y los saltos de línea; escribe como texto las fechas que la hoja guarda como texto (`'2026-11-17`). Caso completo: `ops/weekly-update/ejemplo-darwin.md`.
-   - Si falla Sheets o la lectura no cuadra: marca la ejecución `pending_sheets`, mueve los cambios a `known_pending`, no exportes ni publiques, no declares sincronización e informa del bloqueo exacto.
+8. **Entrega el traspaso**:
+   - Crea la carga privada en Google Drive con el título exacto `whyhumanoid-private-handoff-<plan_id>.json`, sin compartirla, y comprueba su SHA-256 descargándola.
+   - Guarda en `main` por PR el plan público, el fichero de la ejecución y `state.json`: traspaso `awaiting_write` y piezas en `known_pending` con su `op_id`.
+   - Cierra la fase con `completado` («Fase 1 de 3: plan entregado; sin escribir ni publicar»). Si no hay ediciones ni hechos nuevos, `sin_novedades`. `bloqueado` solo si no puedes leer el libro o las fuentes, o si hay celdas privadas y no puedes entregar su carga.
+   - La edición no se marca como procesada.
 
-9. **Exporta y publica por el flujo probado** (README, «Refresh»):
-   1. Exporta el libro actualizado a un fichero privado fuera de Git (pestaña → filas, cabecera primero): descarga .xlsx con el conector de Google Drive y `python3 -I tools/workbook-xlsx-to-json.py <libro.xlsx> <export.json> --compare <exportación anterior>`. Solo deben aparecer tus filas y los valores en vivo de Valuation.
-   2. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <fecha ISO>` (escribe solo las vistas previas en `data/preview/`).
-   3. Humanoids: genera la vista con el código de importación (ver cabecera de `tools/sync-humanoids.mjs`) y ejecuta `tools/sync-humanoids.mjs`, `tools/export-humanoids.mjs`, `node --no-warnings tools/export-public.mjs --from <export>` (proyección pública de todos los registros, solo campos de la lista blanca), `tools/build-pages.mjs`, `tools/build-site.mjs` y `tools/build-app.mjs` (páginas permanentes de robots y empresas, sitemap y mapa de enlaces de la aplicación; si cambia un nombre, la dirección antigua pasa a redirigir sola gracias a `tools/permalinks.json`, que no se edita a mano).
-   4. Comprueba: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/relations.mjs --from <export>` y `--check` (sección «Relaciones de Deployments»), `node --no-warnings tools/search-tags.mjs --from <export>` (sección «Buscador global y etiquetas»), `node tools/check-public.mjs`, `node tools/export-database.mjs --check`, `cd server && npm test`, `cd tools && node verify-site.mjs && node verify-pages.mjs` y `node --no-warnings tools/check-reserved.mjs --from <export>` (ningún valor reservado en lo publicado).
-   5. Rama `weekly-update/<fecha>`, PR contra `main`, CI en verde, fusión, espera al despliegue de Pages.
-   6. Datos completos a producción: Actions, «Import private workbook», Run workflow en `main`, target `production`. Comprueba en el registro del job HTTP 200, los recuentos de las 13 pestañas, `relations.ok: true` con su cobertura y `search` con sus documentos y valores desconocidos. Si falla (por ejemplo, identidad de Google), el cierre es `bloqueado` con el error exacto.
+### Fase 2: escritura y relectura (Codex)
 
-10. **Verifica producción** en https://whyhumanoid.com/: recuentos por categoría iguales a la exportación, los registros nuevos o cambiados visibles con su fuente y fecha, todas las filas de Deployments y Components con sus campos públicos y su enlace a la suscripción, ningún JSON con filas completas accesible en la web, la ficha «View all data» completa, y en la aplicación de suscriptores los recuentos del backend iguales a la exportación.
+La hace Codex con la automatización «Incorporar newsletters a Why Humanoid?» (diaria, 15:00 Europe/Madrid), en su chat de coordinación, con el conector nativo de Google Sheets: preflight en la hoja viva, escritura celda a celda, relectura y recibo (contrato, «Recibo de la fase 2»). Claude no escribe en el libro, y no publica ni importa antes del recibo explícito de Codex.
 
-11. **Registra como procesado** solo ahora: actualiza `last_processed_edition`, vacía de `known_pending` lo publicado y añade la línea en `runs`. Commit por el mismo flujo.
+### Fase 3: publicación (Claude, solo tras el recibo de Codex)
 
-12. **Cierra** según «Cierre obligatorio de cada entrega», siempre, también si la ejecución se bloquea (`bloqueado`, por ejemplo `pending_sheets`) o no hay ediciones ni hechos nuevos (`sin_novedades`). Añade el ID del cierre a la línea de `runs` del estado.
+9. **Relee por tu cuenta**: descarga nueva, `tools/workbook-xlsx-to-json.py --compare` contra la exportación de la base y `node tools/workbook-plan.mjs readback <plan> --from <export> --private <carga> --previous <base>`. Solo deben cambiar las celdas del plan y los valores de mercado en vivo: 0 diferencias y 0 cambios en vecinas. Si algo no cuadra, no publiques y díselo a Codex con la celda exacta.
+
+10. **Publica por el flujo probado** (README, «Refresh»), un PR por lote:
+    1. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <hora de modificación del libro>` (escribe solo las vistas previas en `data/preview/`).
+    2. Humanoids: `node --no-warnings tools/sync-humanoids.mjs --from-export <export> --snapshot <ISO>` y `tools/export-humanoids.mjs`; después `node --no-warnings tools/export-public.mjs --from <export>`.
+    3. Los atlas de las pestañas que cambian (Datasets, Benchmarks, Integrators, Components) y `node tools/export-evolution.mjs`; después `tools/build-pages.mjs`, `tools/build-site.mjs` y `tools/build-app.mjs`, en ese orden.
+    4. Comprueba, como en CI: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/relations.mjs --from <export>` y `--check`, `node --no-warnings tools/search-tags.mjs --from <export>`, `node tools/check-public.mjs`, `node tools/workbook-plan.mjs check`, `node tools/export-database.mjs --check`, todos los `--check` de CI, `cd server && npm test`, `cd tools && node verify-site.mjs && node verify-premium-app.mjs && node verify-pages.mjs` (con `NODE_OPTIONS=--max-old-space-size=6144` si falta memoria) y `node --no-warnings tools/check-reserved.mjs --from <export>`.
+    5. Rama `weekly-update/<fecha>-publicacion`, PR contra `main` y CI en verde. Codex revisa el head de forma independiente. Después, fusión y despliegue de Pages.
+
+11. **Importa a producción una vez por lote**: Actions, «Import private workbook», `main`, target `production`, sin importación de prueba previa (la cuota diaria de filas escritas de D1 es de la cuenta). Antes, comprueba el margen del día: Codex lo lee en el panel de Cloudflare, y no hay otras importaciones ese día UTC. Una importación completa escribe unas 12.000 filas, como mucho unas 32.000 contando índices. No importes si el libro no ha cambiado desde la última importación. En el registro del job comprueba HTTP 200, los recuentos, `relations.ok: true` y `search`. Si falla, el cierre es `bloqueado` con el error exacto; la importación es atómica y la instantánea anterior sigue sirviendo.
+
+12. **Verifica producción**: con el catálogo MCP o la API, la instantánea y cada registro del plan con sus campos públicos; recuentos por categoría iguales a la exportación; todas las filas de Deployments y Components con sus campos públicos; ningún JSON con filas completas en la web; en la aplicación de suscriptores, los recuentos del backend.
+
+13. **Registra y cierra**: en `state.json`, el traspaso pasa a `published` con la publicación; la edición pasa a `last_processed_edition` con sus casos sin resolver, que siguen en `known_pending`; se añade la línea en `runs`. Commit por el mismo flujo y cierre según «Cierre obligatorio de cada entrega».
 
 ## Informe de cada ejecución
 
-Es el cierre de la ejecución. Además de los campos comunes, en `cambios`, `verificaciones` y `pendientes` incluye:
-- ediciones leídas (URL y fecha);
-- añadidos, actualizados, descartados (con motivo) y pendientes, cada uno con su fuente;
+Es el cierre de la fase. Además de los campos comunes, en `cambios`, `verificaciones` y `pendientes` incluye:
+- ediciones leídas (URL, fecha y título de la sección de noticias);
+- las piezas en su orden, cada una con su resultado (alta prevista, ya incorporada, fuera de alcance, pendiente de verificación o de decisión), su fuente y si la entidad ya existía;
+- el plan (`plan_id`, operaciones, celdas y celdas privadas) y el canal de la carga privada;
 - recuentos por categoría antes y después;
-- URLs: web, PR y fichero de la ejecución;
+- URLs: web, PR, plan y fichero de la ejecución;
+- en la fase 3: recibo de Codex, relectura propia, run de Pages, run de importación e instantánea de producción;
 - bloqueos y la siguiente acción concreta.
