@@ -1,0 +1,81 @@
+/* Investment research desk: /investment/ directory and the market-data and thesis blocks of company pages
+   (tools/build-pages.mjs, assets/investment.js, assets/market.js). Readable without JavaScript. */
+.inv-counters{display:flex;flex-wrap:wrap;gap:10px 22px;margin:8px 0 14px;font-family:var(--f-mono);font-size:14px;color:var(--bone-2)}
+.inv-counters a{color:var(--amber-hi)}
+.jump{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 18px}
+.jump a{font-family:var(--f-mono);font-size:14px;text-decoration:none;border:1px solid var(--line-2);padding:8px 12px;color:var(--bone)}
+.jump a:hover,.jump a:focus-visible{border-color:var(--amber);color:var(--amber-hi)}
+.inv-counters b{color:var(--bone);font-weight:600}
+.inv-filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin:0 0 12px;padding:12px;border:1px solid var(--line);background:var(--ink-1)}
+.inv-filters label{display:flex;flex-direction:column;gap:4px;font-family:var(--f-mono);font-size:14px;letter-spacing:.02em;color:var(--bone-2)}
+.inv-filters input[type=search],.inv-filters select{font:16px var(--f-sans);color:var(--bone);background:var(--ink-2);border:1px solid var(--line-2);padding:7px 8px;min-width:0;width:100%}
+.inv-filters .wide{grid-column:1/-1}
+.inv-filters .check{flex-direction:row;align-items:center;gap:8px;letter-spacing:0;font:16px var(--f-sans);color:var(--bone-2)}
+.inv-filters button,.inv-bar button{font:15px var(--f-sans);color:var(--bone);background:var(--ink-3);border:1px solid var(--line-2);padding:7px 10px;cursor:pointer}
+.inv-filters button:hover,.inv-bar button:hover{border-color:var(--amber)}
+.inv-bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 10px;font-size:15px;color:var(--bone-2)}
+.inv-bar [aria-live]{font-family:var(--f-mono);font-size:14px}
+table.dir th button{all:unset;cursor:pointer;color:inherit;font:inherit}
+table.dir th button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+table.dir th[aria-sort=ascending] button::after{content:" ▲";color:var(--amber)}
+table.dir th[aria-sort=descending] button::after{content:" ▼";color:var(--amber)}
+.inv-row-tools{display:flex;gap:6px;align-items:center;white-space:nowrap}
+.inv-row-tools button{all:unset;cursor:pointer;color:var(--bone-3);font-size:20px;line-height:1;padding:4px}
+.inv-row-tools button[aria-pressed=true]{color:var(--amber)}
+.inv-row-tools button:focus-visible{outline:2px solid var(--amber)}
+.inv-row-tools input{accent-color:var(--amber);width:18px;height:18px}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:14px;letter-spacing:.02em;border:1px solid var(--line-2);padding:1px 6px;margin:1px 4px 1px 0;color:var(--bone-2);white-space:nowrap}
+.pill.positive{border-color:color-mix(in srgb,var(--ok) 60%,transparent);color:var(--ok)}
+.pill.exit{border-color:color-mix(in srgb,var(--crit) 60%,transparent);color:var(--crit)}
+.pill.mixed{border-color:color-mix(in srgb,var(--warn) 60%,transparent);color:var(--warn)}
+.pill.verified{color:var(--ok)}
+.pill.unavailable{color:var(--bone-3)}
+.inv-compare{border:1px solid var(--amber);padding:12px;margin:0 0 14px;background:var(--amber-3)}
+.inv-compare h3{margin:0 0 8px;font-family:var(--f-mono);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.inv-compare{max-width:100%;min-width:0;overflow:hidden}
+#inv-compare{max-width:100%;min-width:0}
+.theses + h3.sub,h3.sub{font-family:var(--f-mono);font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-2);margin:18px 0 8px}
+.inv-cmp-cards{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.inv-cmp-cards li{border:1px solid var(--line-2);padding:10px;background:var(--ink-1);min-width:0}
+.inv-cmp-cards h4{margin:0 0 6px;font-size:16px}
+.inv-cmp-cards dl{margin:0;display:grid;gap:2px}
+.inv-cmp-cards dt{font-family:var(--f-mono);font-size:14px;color:var(--bone-3);margin-top:6px}
+.inv-cmp-cards dd{margin:0;font-size:15px;overflow-wrap:anywhere}
+.inv-compare .scroll{border:0}
+.inv-compare table{width:100%;min-width:0;border-collapse:collapse;font-size:15px}
+.inv-compare th,.inv-compare td{text-align:left;vertical-align:top;border-top:1px solid var(--line);padding:6px 8px;overflow-wrap:anywhere;min-width:96px}
+.inv-hidden{display:none!important}
+/* Company pages */
+.mkt{border:1px solid var(--line-2);padding:14px;margin:0 0 14px;background:var(--ink-1)}
+.mkt h3{font-family:var(--f-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-2);margin:0 0 8px}
+.mkt .status{font-size:15px;color:var(--bone-3);margin:0 0 8px}
+.mkt-frame{min-height:120px}
+.mkt-frame.info{min-height:200px}
+details.mkt summary{cursor:pointer;font-family:var(--f-mono);font-size:14px;color:var(--bone-2)}
+.mkt-frame.chart{height:460px}
+.mkt-frame.financials{height:560px}
+.mkt-frame.profile{height:420px}
+.mkt-frame.news{height:460px}
+.mkt-frame .tradingview-widget-container,.mkt-frame .tradingview-widget-container__widget{height:100%;width:100%}
+.mkt-wait{font-size:15px;color:var(--bone-3);margin:0}
+.tradingview-widget-copyright{font-size:14px;color:var(--bone-3);margin-top:6px}
+.mkt-links{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;margin:8px 0 0;padding:0;list-style:none}
+.theses{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.thesis{border:1px solid var(--line-2);padding:14px}
+.thesis header{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;margin:0 0 6px}
+.thesis header b{font-weight:600}
+.thesis h3{font:600 18px/1.35 var(--f-sans);margin:0 0 8px;text-transform:none;letter-spacing:0;color:var(--bone)}
+.thesis dl{display:grid;grid-template-columns:minmax(130px,190px) 1fr;gap:6px 14px;margin:8px 0 0;font-size:16px}
+.thesis header{font-size:15px}
+.thesis dt{color:var(--bone-3);font-size:14px;padding-top:2px}
+.thesis dd{margin:0;overflow-wrap:anywhere}
+.thesis .semi{font-size:15px;color:var(--warn);margin:8px 0 0}
+.readkey{display:grid;gap:6px;font-size:15px;color:var(--bone-2);margin:0 0 12px;padding:0;list-style:none}
+.readkey b{color:var(--bone)}
+@media (max-width:640px){
+  .thesis dl{grid-template-columns:1fr}
+  .thesis dt{margin-top:4px}
+  .mkt-frame.chart{height:380px}
+  .mkt-frame.financials{height:620px}
+}
+#desk .key,#theses .key,#market .key,#funding .key{font-size:14px}

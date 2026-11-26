@@ -38,6 +38,7 @@ import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
 import { renderEvolutionSection } from './evolution-view.mjs';
+import { deskIndex, readDesk, renderInvestmentDesk, renderListingResearch, renderTheses } from './investment-view.mjs';
 import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
 
 export const SITE = 'https://whyhumanoid.com';
@@ -380,6 +381,10 @@ const SPEC_FIELDS = [
 ];
 const MARKET_FIELDS = [['Price and availability', 'Price / availability'], ['B2B clients', 'B2B Client']];
 const COMPANY_FIELDS = [['Company country', 'Country'], ['Listing', 'Stock'], ['Valuation', 'Valuation'], ['Rounds', 'Rounds'], ['Investors', 'Investors'], ['Careers', 'Careers']];
+// Funding values recorded as a bare number (old market-data snapshots: no currency, no date) are not shown as amounts.
+export const BARE_AMOUNT = /^[\s\d.,~+-]+$/;
+export const BARE_AMOUNT_TEXT = 'Amount recorded without currency or date: not shown';
+const fundingValue = (v) => (nz(v) && BARE_AMOUNT.test(String(v)) && /\d/.test(String(v)) ? `<span class="na">${BARE_AMOUNT_TEXT}</span>` : text(v));
 const LINK_FIELDS = [['Website', 'Web'], ['X', 'X'], ['LinkedIn', 'Linkedin'], ['YouTube', 'Youtube']];
 
 function robotSummary(rb) {
@@ -422,7 +427,7 @@ ${robotHead(rb, m, summary)}
 ${known(r['Buyer checks']) ? `<p class="note"><b>Before comparing:</b> ${text(r['Buyer checks'])}</p>` : ''}
 <section><h2>Key facts</h2>${kv(SPEC_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
 <section><h2>Market</h2>${kv(MARKET_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
-<section><h2>Company</h2>${kv([['Maker', m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab)], ...COMPANY_FIELDS.map(([l, f]) => [l, text(r[f])])])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
+<section><h2>Company</h2>${kv([['Maker', m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab)], ...COMPANY_FIELDS.map(([l, f]) => [l, f === 'Valuation' ? fundingValue(r[f]) : text(r[f])])])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
 <section><h2>Deployment records</h2>${rb.summary ? summaryHtml(rb.summary, model, { head: `${rb.summary.records} deployment record${rb.summary.records === 1 ? '' : 's'} in the database ${rb.summary.records === 1 ? 'names' : 'name'} ${rb.summary.model_line_only ? 'the model line of this robot, not necessarily this version' : 'this robot or its model line'}.`, otherLabel: 'Organisation' }) + RECORDS_NOTE : '<p>No deployment record in the database names this robot or its model line. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that the robot has no deployments.</p>'}</section>
 ${evidenceHtml(rb.summary?.evidence)}
 ${casesHtml(rb.cases, model.caseLinks, { heading: 'Deployment cases that name this robot' })}
@@ -438,10 +443,13 @@ ${renderNamedBy(model.integrators.providers.filter((p) => p.links.robots.some((x
 function companyFacts(c) {
   const out = [];
   for (const [l, f] of COMPANY_FIELDS) {
-    const vals = c.robotList.map((rb) => [rb, rb.record[f]]).filter(([, v]) => nz(v));
+    // A listed company's page leaves out a bare-number valuation: its market data comes from the provider widgets.
+    const bare = (v) => f === 'Valuation' && BARE_AMOUNT.test(String(v)) && /\d/.test(String(v));
+    const vals = c.robotList.map((rb) => [rb, rb.record[f]]).filter(([, v]) => nz(v) && !(c.listings?.length && bare(v)));
     const distinct = [...new Set(vals.map(([, v]) => v))];
     if (!vals.length) continue;
-    out.push([l, distinct.length === 1 ? text(distinct[0]) : vals.map(([rb, v]) => `${text(v)} <span class="dim">(row for ${esc(rb.name)})</span>`).join('<br>')]);
+    const show = (v) => (f === 'Valuation' ? fundingValue(v) : text(v));
+    out.push([l, distinct.length === 1 ? show(distinct[0]) : vals.map(([rb, v]) => `${show(v)} <span class="dim">(row for ${esc(rb.name)})</span>`).join('<br>')]);
   }
   return out;
 }
@@ -499,23 +507,25 @@ ${keyFacts([
     ...facts,
     ...(e ? [['Identity record', `${esc(e.canonical_name || c.name)}${nz(e.entity_type) ? ` · ${esc(human(e.entity_type))}` : ''}${nz(e.reviewed_at) ? ` · reviewed ${esc(e.reviewed_at)}` : ''}`]] : []),
   ], links, Boolean(c.integrator))}
-${c.listings?.length ? `<section><h2>Listing</h2>${c.listings.map((l) => kv([
+${(c.listings || []).map((l) => { const x = DESK_INDEX.byKey.get(l.gf_symbol); return `<section><h2>Listing</h2>${kv([
     ['Ticker', text(l.ticker)], ['Exchange', text(l.exchange)], ['Country as recorded', text(l.country)],
-    ...[['Segment', 'segment'], ['ISIN', 'isin'], ['Currency', 'currency'], ['ETF membership', 'etf_membership'], ['ETF membership as of', 'etf_as_of'], ['Verified', 'verified_at']].filter(([, f]) => nz(l[f])).map(([k, f]) => [k, shown(l, f)]),
-    ...(nz(l.description) ? [['Description as recorded', shown(l, 'description')]] : []),
+    ...(x?.segment ? [['Segment as recorded', esc(x.segment)]] : []),
+    ...[['ETF membership', 'etf_membership'], ['ETF membership as of', 'etf_as_of'], ['Verified', 'verified_at']].filter(([, f]) => nz(l[f])).map(([k, f]) => [k, shown(l, f)]),
+    ...(x?.description ? [['Business description (our research, translated)', esc(x.description)]] : nz(l.description) ? [['Business description', shown(l, 'description')]] : []),
     ...(nz(l.url) ? [['Website', ext(l.url)]] : []),
-  ])).join('')}<p class="key">From the Investment category (listed companies, snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}). Market quotes are not published.</p></section>` : ''}
+  ])}<p class="key">From the Investment category (listed companies, snapshot ${esc(String(model.previewSnapshot).slice(0, 10))}). The business description is our research note, translated into English; the theses below are publishers' opinions; deployment records are claims from public sources, with those sources.</p></section>
+${x ? `${renderListingResearch(l, x, DESK_INDEX.thesesOf(l.gf_symbol), { apiOrigin: API_ORIGIN, snapshot: model.previewSnapshot })}\n${renderTheses(l.name, DESK_INDEX.thesesOf(l.gf_symbol), DESK)}` : ''}`; }).join('\n')}
 ${c.components?.length ? `<section><h2>Components</h2><ul class="links">${c.components.map((r) => `<li><a href="/components/${esc(r.id.toLowerCase())}/">${esc(r.name)}</a> <span class="dim">${esc(r.role)}${r.software ? ' · related software' : ''}</span></li>`).join('')}</ul><p class="key">Public products of the <a href="/components/">Components</a> category, with the role their record states${c.directoryOnly ? '; the database records this name, not a legal name' : ''}.</p></section>` : ''}
 ${c.integrator ? renderIntegratorProfile(c.integrator, model.integrators, integratorLinks(model)) : ''}${renderNamedBy(model.integrators.providers.filter((p) => p.links.makers.some((m) => model.companyByName(m) === c)), model.integrators, { ...integratorLinks(model), heading: 'Integrators that name its robots', intro: `Providers in the Integrators category whose platform cell names ${c.name} robots.` })}
 ${c.robotList.length ? `<section><h2>Robots</h2><ul class="cards">${c.robotList.map((rb) => `<li><a href="${rb.path}"><b>${esc(rb.name)}</b></a><span>${esc(robotSummary(rb))}</span></li>`).join('')}</ul></section>` : ''}
-<section><h2>Deployment records</h2>${c.directoryOnly ? '<p>No deployment record is linked to this company page. Records are linked to a company by the organisation identifier in our research or by the maker\'s name as recorded, so a record that names it differently is not linked here.</p>' : c.as_organisation || c.as_maker ? `${c.as_organisation ? summaryHtml(c.as_organisation, model, { head: `As organisation: ${c.as_organisation.records} record${c.as_organisation.records === 1 ? '' : 's'}.`, otherLabel: 'Maker' }) : ''}${c.as_maker ? summaryHtml(c.as_maker, model, { head: `As maker: ${c.as_maker.records} record${c.as_maker.records === 1 ? '' : 's'}.`, otherLabel: 'Organisation' }) : ''}${RECORDS_NOTE}` : '<p>No deployment record in the database names this company. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that it has none.</p>'}</section>
+<section id="deployment-records"><h2>Deployment records</h2>${c.directoryOnly ? '<p>No deployment record is linked to this company page. Records are linked to a company by the organisation identifier in our research or by the maker\'s name as recorded, so a record that names it differently is not linked here.</p>' : c.as_organisation || c.as_maker ? `${c.as_organisation ? summaryHtml(c.as_organisation, model, { head: `As organisation: ${c.as_organisation.records} record${c.as_organisation.records === 1 ? '' : 's'}.`, otherLabel: 'Maker' }) : ''}${c.as_maker ? summaryHtml(c.as_maker, model, { head: `As maker: ${c.as_maker.records} record${c.as_maker.records === 1 ? '' : 's'}.`, otherLabel: 'Organisation' }) : ''}${RECORDS_NOTE}` : '<p>No deployment record in the database names this company. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that it has none.</p>'}</section>
 ${evidenceHtml(c.evidence)}
 ${casesHtml(c.cases ?? [], model.caseLinks, { heading: 'Deployment cases that name this company' })}
 ${c.cases?.length ? `<p class="cta"><a href="${APP}#company/${encodeURIComponent(c.id)}">The detail of every case (sites, task descriptions, timelines, metrics, claims and evidence) comes with the data subscription, ${esc(price())} →</a></p>` : ''}
 <section><h2>Sources</h2>${sources.length ? `<ul class="sources">${sources.map((u) => `<li>${ext(u, u)}</li>`).join('')}</ul>` : '<p class="na">No linked sources.</p>'}</section>
 <p class="meta">Only what the public data say: the free Humanoids catalogue (snapshot ${esc(model.snapshot)}), the public summary of every deployment case (snapshot ${esc(model.projSnapshot)}), the public identity register and the free Investment and Integrators categories${c.integrator ? ` (Integrators snapshot ${esc(String(model.integrators.snapshot ?? '').slice(0, 10))})` : ''}. No corporate data is added.</p>
 </article>`;
-  return page({ head: c.integrator ? `<link rel="stylesheet" href="/assets/integrators.css?v=${assetVersion('assets/integrators.css')}">\n` : '', title: `${c.name}: ${c.robotList.length ? 'humanoid robots, facts and sources' : c.integrator ? 'integrator profile, services and sources' : c.directoryOnly ? 'company facts and sources' : 'robot deployment records'} · Why Humanoid?`, description: clip(`${summary} Public facts and sources.`), path: c.path, body, type: 'article' });
+  return page({ head: `${c.integrator ? `<link rel="stylesheet" href="/assets/integrators.css?v=${assetVersion('assets/integrators.css')}">\n` : ''}${c.listings?.length ? investmentHead() : ''}`, tail: c.listings?.length ? investmentTail(true) : '', title: `${c.name}: ${c.robotList.length ? 'humanoid robots, facts and sources' : c.integrator ? 'integrator profile, services and sources' : c.directoryOnly ? 'company facts and sources' : 'robot deployment records'} · Why Humanoid?`, description: clip(`${summary} Public facts and sources.`), path: c.path, body, type: 'article' });
 }
 
 // ---------- index pages, redirects, sitemap, 404 ----------
@@ -579,6 +589,13 @@ ${c.gap ? `<p class="gap"><b>Coverage:</b> ${esc(c.gap)}</p>` : ''}${extra}${EVO
 }
 // Evolution charts (Javier, 24 Nov 2026): the large chart of each of the seven sections, first after the page header,
 // from data/evolution/charts.json (tools/export-evolution.mjs). The same chart model feeds the home carousel.
+// Investment research desk (26 Nov 2026): data/investment/desk.json (tools/export-investment.mjs).
+const DESK = readDesk();
+const DESK_INDEX = deskIndex(DESK);
+const investmentHead = () => `<link rel="stylesheet" href="/assets/investment.css?v=${assetVersion('assets/investment.css')}">\n`;
+const investmentTail = (company) => (company
+  ? `\n<script src="/assets/market.js?v=${assetVersion('assets/market.js')}" defer></script>\n<script src="/assets/news.js?v=${assetVersion('assets/news.js')}" defer></script>`
+  : `\n<script src="/assets/investment.js?v=${assetVersion('assets/investment.js')}" defer></script>`);
 const EVOLUTION = new Map(JSON.parse(readFileSync(new URL('data/evolution/charts.json', root), 'utf8')).charts.map((c) => [c.id, c]));
 const evolutionHead = () => `<link rel="stylesheet" href="/assets/evolution.css?v=${assetVersion('assets/evolution.css')}">\n`;
 const evolutionTail = () => `\n<script src="/assets/evolution.js?v=${assetVersion('assets/evolution.js')}" defer></script>`;
@@ -764,12 +781,11 @@ function investmentCategory(model) {
   const company = new Map(model.companies.flatMap((co) => (co.listings || []).map((l) => [l, co])));
   const funded = model.robots.filter((rb) => known(rb.record.Valuation) || known(rb.record.Rounds) || known(rb.record.Investors));
   const body = `${categoryHead(c, model)}
-<section><h2>Listed companies <span class="dim">(${meta.entries_total})</span></h2>${dirTable(model.stocks, [['Company', (r) => { const co = company.get(r); return co ? `<a href="${co.path}">${esc(r.name)}</a>` : esc(r.name); }], ['Ticker', (r) => esc(r.ticker ?? '')], ['Exchange', (r) => esc(r.exchange ?? '')], ['Country as recorded', (r) => esc(r.country ?? '')]])}
-<p class="key">Every listed company has its own page. Market quotes are not published.${meta.snapshot_fields ? ` ${esc(meta.snapshot_fields)}` : ''}</p></section>
-<section><h2>Funding recorded for humanoid makers <span class="dim">(${funded.length} robots)</span></h2>${dirTable(funded.sort((a, b) => a.lab.localeCompare(b.lab)), [['Robot', (rb) => `<a href="${rb.path}">${esc(rb.name)}</a> <span class="dim">by ${esc(rb.lab)}</span>`], ['Valuation', (rb) => text(rb.record.Valuation)], ['Rounds', (rb) => text(rb.record.Rounds)], ['Investors', (rb) => text(rb.record.Investors)]])}
+${renderInvestmentDesk(DESK, { rows: model.stocks, companyOf: (r) => company.get(r) })}
+<section id="funding"><h2>Funding recorded for humanoid makers <span class="dim">(${funded.length} robots)</span></h2>${dirTable(funded.sort((a, b) => a.lab.localeCompare(b.lab)), [['Robot', (rb) => `<a href="${rb.path}">${esc(rb.name)}</a> <span class="dim">by ${esc(rb.lab)}</span>`], ['Valuation', (rb) => fundingValue(rb.record.Valuation)], ['Rounds', (rb) => text(rb.record.Rounds)], ['Investors', (rb) => text(rb.record.Investors)]])}
 <p class="key">From the free Humanoids catalogue, as recorded with its sources on each robot page.</p></section>
 <p class="meta">Snapshots: Stocks ${esc(String(model.previewSnapshot).slice(0, 10))}, Humanoids ${esc(model.snapshot)}.</p>`;
-  return catPage(c, model, body, `${meta.entries_total} listed companies exposed to humanoid robotics and the funding recorded for ${funded.length} humanoid robots, free.`);
+  return catPage(c, model, body, `${meta.entries_total} listed companies exposed to humanoid robotics, ${DESK.theses.length} dated investment theses from their publishers, market data and the funding recorded for ${funded.length} humanoid robots, free.`, { head: investmentHead(), tail: investmentTail(false), wide: true });
 }
 
 function otherRobotsCategory(model) {
@@ -948,6 +964,7 @@ ${kv([
     ['Subscription and payments', 'Payments are processed by Stripe. We do not see or store card details. We keep the subscription state Stripe reports, to open your access.'],
     ['API keys', 'We store a fingerprint of each key, never the key itself, with its label and when it was created, last used or revoked; and request counts per key for the fair-use limits.'],
     ['The MCP connection', 'Your client sends the name of the tool it calls and the arguments that tool needs, such as search words or a table name. The server does not need the conversation around the request. The public connection needs no account. The application does not maintain a conversation or catalogue-query history in its database; with an API key, it counts requests per key and records when the key was last used, as described above. Requests are processed on Cloudflare. If a request fails with an unexpected error, the error is written to the service log, and error logs may contain request-related information. Send only the search words you need, and do not put credentials or personal data in tool arguments.'],
+    ['Market data and headlines on company pages', 'On the page of a listed company, quotes, charts, financials, profiles and optional stories are TradingView widgets: when you scroll to them, your browser loads them from TradingView, which receives that request (such as your IP address and browser) under its own privacy policy. Recent headlines: your browser asks our API for the headlines of that company only; our server reads them from Yahoo Finance and keeps a shared copy for 30 minutes, and does not store who asked. The links to Google Finance, Yahoo Finance and Google News open those sites.'],
     ['Custom report questionnaires', 'Your answers are stored in your account, visible only to you and to the people preparing your report. We use them only to prepare and deliver your report and to answer you about it. They are not published, not used for the public catalogue and not used for marketing.'],
     ['Emails', 'Emails about your account and orders are sent through Resend. We do not send marketing emails from this service.'],
     ['Where data is kept', 'The app and its database run on Cloudflare. Payment data stays with Stripe.'],
