@@ -168,18 +168,58 @@ test('a dry run can never become a full import: every other shape is refused bef
 test('the workflow stops a dry run outside the scoped import; the snapshot column is in no index', async () => {
   const { readFileSync } = await import('node:fs');
   const wf = readFileSync(new URL('../../.github/workflows/import-workbook.yml', import.meta.url), 'utf8');
-  assert.match(wf, /if \[ "\$\{\{ inputs\.dry_run == true \}\}" = true \] && \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" = all \]; then\n\s+echo "dry_run needs a scoped import \(deployments, stocks or stocks-humanoids\); nothing was imported"; exit 1/);
-  assert.ok(wf.indexOf('dry_run needs a scoped import') < wf.indexOf('/v1/admin/import'), 'the guard runs before the import request');
   assert.match(wf, /options: \[all, deployments, stocks, stocks-humanoids\]/);
-  assert.match(wf, /'\. \+ \{datasets: \["stocks", "humanoids"\], dry_run: \$dry\}'/);
-  // Every scope option other than all maps to a datasets body; an unknown one would fall through to a full import.
-  const options = wf.match(/options: \[all, (.*)\]/)[1].split(', ');
-  for (const o of options) assert.match(wf, new RegExp(`inputs\\.scope \\|\\| 'all' \\}\\}" = ${o} \\]; then\\n\\s+jq -c`), o);
-  assert.match(wf, /if \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" = stocks \]; then\n\s+jq -c --argjson dry "\$\{\{ inputs\.dry_run == true \}\}" '\. \+ \{datasets: \["stocks"\], dry_run: \$dry\}'/);
+  assert.ok(wf.indexOf('unknown scope') < wf.indexOf('/v1/admin/import'), 'the guards run before the import request');
   const sql = ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql']
     .map((m) => readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8')).join('\n');
   const indexes = sql.match(/CREATE (UNIQUE )?INDEX[^;]*ON premium_rows[^;]*;/g) ?? [];
   assert.ok(indexes.length >= 2 && indexes.every((i) => !/snapshot_id/.test(i)), 'a snapshot-only update writes the row alone');
+});
+
+// Runs the workflow step that builds the import request, as GitHub runs it (bash -eo pipefail), for every scope and
+// dry-run value, with a stub relations config. An unknown scope, a malformed dry_run or a dry run of the full import
+// stops before writing a request body; every allowed scope produces exactly the body it names.
+test('the workflow step that builds the request refuses unknown scopes and never sends a dry run without datasets', async () => {
+  const { readFileSync, mkdtempSync, mkdirSync, writeFileSync, existsSync, rmSync } = await import('node:fs');
+  const { spawnSync } = await import('node:child_process');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const lines = readFileSync(new URL('../../.github/workflows/import-workbook.yml', import.meta.url), 'utf8').split('\n');
+  const at = lines.indexOf('      - name: Relations config from this commit');
+  const runAt = lines.indexOf('        run: |', at);
+  const script = [];
+  for (const line of lines.slice(runAt + 1)) {
+    if (line.trim() && !line.startsWith('          ')) break;
+    script.push(line.slice(10));
+  }
+  const body = script.join('\n');
+  assert.ok(!body.includes('${{'), 'inputs reach the script as environment variables only');
+  const run = (env) => {
+    const dir = mkdtempSync(join(tmpdir(), 'wf-'));
+    mkdirSync(join(dir, 'tools'));
+    writeFileSync(join(dir, 'tools', 'relations.mjs'), "console.log(JSON.stringify({ aliases: { makers: {}, robots: {} }, catalogue: [] }));\n");
+    const res = spawnSync('bash', ['--noprofile', '--norc', '-eo', 'pipefail', '-c', body], { cwd: dir, env: { PATH: process.env.PATH, ...env }, encoding: 'utf8' });
+    const file = join(dir, 'relations-body.json');
+    const out = { status: res.status, stdout: res.stdout, body: existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null };
+    rmSync(dir, { recursive: true, force: true });
+    return out;
+  };
+  for (const [SCOPE, DRY_RUN] of [['deploy', 'true'], ['deploy', 'false'], ['Stocks', 'true'], ['', 'true'], ['all', 'true'], ['stocks', 'yes'], ['stocks;rm -rf /', 'true']]) {
+    const r = run({ SCOPE, DRY_RUN });
+    assert.equal(r.status, 1, `${SCOPE}/${DRY_RUN} must stop`);
+    assert.equal(r.body, null, `${SCOPE}/${DRY_RUN} writes no request body`);
+  }
+  const full = run({ SCOPE: 'all', DRY_RUN: 'false' });
+  assert.equal(full.status, 0, full.stdout);
+  assert.ok(!('datasets' in full.body) && !('dry_run' in full.body) && full.body.relations_config);
+  const expected = { deployments: ['deployments', 'entities', 'evidence-links'], stocks: ['stocks'], 'stocks-humanoids': ['stocks', 'humanoids'] };
+  for (const [SCOPE, datasets] of Object.entries(expected)) {
+    for (const dry of [true, false]) {
+      const r = run({ SCOPE, DRY_RUN: String(dry) });
+      assert.equal(r.status, 0, `${SCOPE}/${dry}: ${r.stdout}`);
+      assert.deepEqual([r.body.datasets, r.body.dry_run], [datasets, dry], `${SCOPE}/${dry}`);
+    }
+  }
 });
 
 // Scoped import of the Investment tab (stocks) alone, 26 Nov 2026: one listed company added and one corrected.
