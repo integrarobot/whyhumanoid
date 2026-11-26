@@ -38,7 +38,7 @@ import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
 import { renderEvolutionSection } from './evolution-view.mjs';
-import { chartOffered, deskIndex, readDesk, renderCompanyChart, renderInvestmentDesk, renderListingResearch, renderTheses } from './investment-view.mjs';
+import { chartOffered, deskIndex, readDesk, readFundamentals, renderCompanyChart, renderInvestmentDesk, renderListingResearch, renderTheses } from './investment-view.mjs';
 import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
 
 export const SITE = 'https://whyhumanoid.com';
@@ -1032,6 +1032,18 @@ function reportPage(model) {
 </article>`;
   return page({ title: 'Robot deployment records: status, sectors, countries and years · Why Humanoid?', description: clip(`${model.totals.records} robot deployment records (humanoid and adjacent platforms, as each source names them) by status as recorded, sector, country and year. Records are claims from named sources, not verified facts.`), path: '/reports/deployment-records/', body, type: 'article', section: 'reports' });
 }
+// Method details of the Investment comparator's valuation rows (data/investment/fundamentals.json).
+function comparatorMethod() {
+  const f = readFundamentals();
+  if (!f) return '';
+  const pub = Object.values(f.securities).filter((x) => x.status === 'published');
+  const sec = pub.filter((x) => x.source === 'sec').length;
+  return `<section id="comparator"><h2>Investment comparator: revenue, market cap and P/E</h2>
+<p><b>Revenue</b> is each company's latest full fiscal year, not the trailing twelve months, for ${pub.length} of the listed companies: ${sec} from the consolidated figures they file with the SEC (Form 10-K, 20-F or 40-F, read from the SEC's XBRL company facts) and ${pub.length - sec} from their own annual reports. One total-revenue figure is taken per company: the most recent annual period, never a sum of revenue lines, and the value of the latest filing when a year was restated. Figures stay in the reporting currency and are never converted, so companies in different currencies or with different fiscal years are not directly comparable. A listing outside the US matched to its issuer's SEC filings shows the issuer's consolidated accounts; the listing itself is unchanged.</p>
+<p><b>Growth</b> compares that year with the previous fiscal year in the same concept and currency, as reported in the same filing where possible. It is not meaningful when the previous year is zero or less, and not available when there is no previous year. Large changes (a small base, an acquisition or a merger) carry a note. The figures were checked on ${esc(f.as_of)}; newer quarterly figures exist.</p>
+<p><b>Market cap and P/E</b> come from TradingView's own widgets in your browser: the quote widget where TradingView offers it, its financials panel otherwise. They are TradingView's values, with its periods and currencies; Why Humanoid? does not store them. A company with losses has no P/E.</p></section>`;
+}
+
 function methodPage(model) {
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Method']])}
 <article class="entity">
@@ -1047,6 +1059,7 @@ ${kv([['In operation', 'The source says the robot is working in operation.'], ['
 <section><h2>Selected evidence</h2><p>Each robot and company page shows one of its records with its site, task, status, metric, evidence level, verification label and source. The record is chosen by a fixed rule among those with a source link and a verification other than unresolved: the most advanced status as recorded (in operation, then pilot or trial, then a vendor's claim of operation, then announced), then a primary source (customer, maker or partner) before the press, then customer confirmation, then the latest publication, then a record with a metric. The claim text, notes and the other records stay with the Deployments subscription.</p></section>
 <section><h2>Robots, companies and records</h2><p>A record is linked to a catalogue robot only when it names that model or its model line, never because it names the maker alone. When it names the model line, the page says the record may concern another version. Companies are identified by the organisation identifier in our research or by the maker's name; no corporate data is added.</p></section>
 <section id="directories"><h2>Directory lists (Software and Other Robots)</h2><p>Each list follows the research workbook. Section headings and repeated header rows are not entries. An exact repeat in the same list (the same address and the same name) is merged into one entry, keeping any other description. An entry listed in a second list, such as a world model that is also robotics software, appears in both and is counted once. Entries with the same name at different addresses, or the same address under different names, stay separate until a review decides they are the same.${(() => { const sw = JSON.parse(readFileSync(new URL('data/preview/index.json', root), 'utf8')).tabs.find((t) => t.id === 'software')?.reconciliation; return sw ? ` Software today: ${sw.source_entries} rows in the workbook, ${sw.excluded.length} headings or header rows, ${sw.merged.length} exact repeats merged, ${sw.rows} listed rows and ${sw.entries} entries; ${sw.review.length} pairs wait for review.` : ''; })()}</p></section>
+${comparatorMethod()}
 <section><h2>Updates</h2><p>The database is updated every week from the Integrarobot newsletter, checked against primary sources. Each page shows the snapshot date of its data.</p></section>
 <section><h2>Visits</h2><p>The public pages count visits with Cloudflare Web Analytics, which sets no cookies and does not track individual visitors.</p></section>
 <section><h2>What is public and what is for subscribers</h2>${kv([

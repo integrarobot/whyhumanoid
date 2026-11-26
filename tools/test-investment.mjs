@@ -198,7 +198,7 @@ test('company comparator: three labelled comboboxes over every company, a top li
     assert.match(dir, new RegExp(`<ul class="inv-combo-list" id="cmp-list-${n}" role="listbox" aria-labelledby="cmp-label-${n}" hidden></ul>`));
   }
   assert.equal((dir.match(/class="inv-slot"/g) ?? []).length, 3);
-  assert.match(dir, /<p class="inv-cmp-nojs">The comparator needs JavaScript\. Every company and the same fields are in the directory below\.<\/p>/);
+  assert.match(dir, /<p class="inv-cmp-nojs">The comparator needs JavaScript\. The directory below lists every company\.<\/p>/);
   assert.doesNotMatch(dir, /Tick 2 to 4|data-compare=|id="inv-compare"/);
   assert.match(dir, /<label class="check"><input type="checkbox" name="watch"> Watchlist only<\/label>/);
   assert.match(dir, /data-isin="US88160R1014"/);

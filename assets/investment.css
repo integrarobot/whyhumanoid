@@ -131,15 +131,28 @@ details.mkt summary{cursor:pointer;font-family:var(--f-mono);font-size:14px;colo
 .inv-slot-card dl > div{padding:5px 0;border-bottom:1px solid var(--line)}
 .inv-slot-card dt{font-family:var(--f-mono);font-size:var(--fs-caption);letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3)}
 .inv-slot-card dd{margin:2px 0 0;font-size:15px;overflow-wrap:anywhere}
+.inv-cmp-method{font-size:13px!important;max-width:110ch}
+.inv-val-quote{min-width:0;padding:6px 0 8px;border-bottom:1px solid var(--line)}
+.inv-val-k{margin:0 0 4px;font-family:var(--f-mono);font-size:var(--fs-caption);letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3)}
+.inv-val-quote .mkt-frame.info{min-height:0}
+.inv-val-quote .mkt-frame.inv-fin{height:380px}
+@media (max-width:640px){.inv-val-quote .mkt-frame.inv-fin{height:420px}}
+.inv-val-na{margin:0 0 4px;font-size:14px;color:var(--bone-3)}
+.inv-val-quote > a{font-size:14px}
+.inv-slot-card dd .v{display:block;font-size:17px;color:var(--bone)}
+.inv-slot-card dd .mt{display:block;margin-top:2px;font-size:13px;color:var(--bone-3)}
+.inv-slot-card dd .mt.warn{color:var(--warn)}
 .inv-cmp-status{font-size:14px;color:var(--bone-2);margin:12px 0 0!important}
 @media (min-width:860px){
-  .inv-cmp-slots{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(13,auto);column-gap:20px;row-gap:0}
-  .inv-slot{grid-row:span 13;grid-template-rows:subgrid;gap:0}
+  .inv-cmp-slots{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(16,auto);column-gap:20px;row-gap:0}
+  .inv-slot{grid-row:span 16;grid-template-rows:subgrid;gap:0}
   .inv-slot > .inv-slot-label{grid-row:1;margin-bottom:6px}
   .inv-slot > .inv-combo{grid-row:2}
   .inv-slot > .inv-slot-clear{grid-row:3;margin-top:6px}
-  .inv-slot > .inv-slot-card{grid-row:4 / span 10;display:grid;grid-template-rows:subgrid;margin-top:8px}
+  .inv-slot > .inv-slot-card{grid-row:4 / span 13;display:grid;grid-template-rows:subgrid;margin-top:8px}
   .inv-slot-card > p{grid-row:1 / -1}
   .inv-slot-card > h4{grid-row:1}
-  .inv-slot-card > dl{grid-row:2 / span 9;display:grid;grid-template-rows:subgrid}
+  .inv-slot-card > dl.inv-val{grid-row:2 / span 2;display:grid;grid-template-rows:subgrid}
+  .inv-slot-card > .inv-val-quote{grid-row:4}
+  .inv-slot-card > dl.inv-fields{grid-row:5 / span 9;display:grid;grid-template-rows:subgrid}
 }

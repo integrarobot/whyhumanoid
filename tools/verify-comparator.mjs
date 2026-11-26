@@ -79,10 +79,53 @@ ok(/Fanuc/i.test(input(2).value), 'Escape restores the chosen company');
 d.querySelector('.inv-slot[data-slot="2"] .inv-slot-clear').click();
 ok(input(2).value === '' && card(2).textContent === 'No company chosen.' && /NVIDIA/i.test(input(1).value) && input(3).value === third, 'one slot clears on its own');
 ok(status() === 'Comparing 2 companies.', `two companies: ${status()}`);
-ok(card(1).querySelectorAll('dl > div').length === 9, 'nine fields per company');
+ok(card(1).querySelectorAll('dl.inv-fields > div').length === 9, 'nine fields per company');
+
+// Valuation (26 Nov 2026): market cap and P/E from one official TradingView Symbol Info widget per slot, revenue and
+// growth from the SEC snapshot inline in the page. jsdom does not load the widget script: only its tag is checked.
+const tvScripts = (n) => [...d.querySelectorAll(`.inv-slot[data-slot="${n}"] script[src]`)];
+const fresh = new JSDOM(html, { url: 'https://whyhumanoid.com/investment/', runScripts: 'outside-only' });
+fresh.window.HTMLElement.prototype.scrollIntoView = function () {};
+fresh.window.eval(js);
+{
+  const D = fresh.window.document;
+  const typeIn = (n, v) => { const el = D.getElementById(`cmp-input-${n}`); el.value = v; el.dispatchEvent(new fresh.window.Event('input', { bubbles: true })); el.dispatchEvent(new fresh.window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true })); };
+  const slot = (n) => D.querySelector(`.inv-slot[data-slot="${n}"]`);
+  const scripts = (n) => [...slot(n).querySelectorAll('script[src]')];
+  ok(D.querySelectorAll('script[src*="tradingview"]').length === 0, 'no widget before a company is chosen');
+  typeIn(1, 'tesla');
+  const s1 = scripts(1);
+  ok(s1.length === 1 && s1[0].src.endsWith('/embed-widget-symbol-info.js') && JSON.parse(s1[0].text).symbol === 'NASDAQ:TSLA' && JSON.parse(s1[0].text).colorTheme === 'dark', 'Tesla: one Symbol Info widget for NASDAQ:TSLA');
+  ok(slot(1).querySelector('.tradingview-widget-copyright a')?.textContent === 'Track all markets on TradingView', 'the TradingView credit is shown');
+  const val = slot(1).querySelector('dl.inv-val').textContent;
+  ok(/USD 94\.83 bn/.test(val) && /Fiscal year 2025-01-01 to 2025-12-31/.test(val) && /SEC Form 10-K filed 2026-01-29/.test(val), `Tesla revenue from its 10-K: ${val}`);
+  ok(/\u22122\.9%/.test(val) && /Previous fiscal year 2024-01-01 to 2024-12-31: USD 97\.69 bn \(same Form 10-K\)/.test(val), 'Tesla growth with its base, dates and source');
+  ok(slot(1).querySelector('dl.inv-val a')?.getAttribute('href') === 'https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/', 'links the SEC filing');
+  typeIn(2, '6954');
+  const f2 = scripts(2);
+  ok(f2.length === 1 && f2[0].src.endsWith('/embed-widget-financials.js') && JSON.parse(f2[0].text).symbol === 'TSE:6954' && JSON.parse(f2[0].text).displayMode === 'regular', 'FANUC: no quote widget there, so the financials widget, sections stacked');
+  ok(/The panel shows no valuation date or currency\. The company reports in JPY\./.test(slot(2).querySelector('.inv-val-quote').textContent), 'FANUC: currencies said, no date or currency claimed for the panel');
+  const fv = slot(2).querySelector('dl.inv-val').textContent;
+  ok(/JPY 857\.83 bn/.test(fv) && /Fiscal year 2025-04-01 to 2026-03-31/.test(fv) && /\+7\.6%/.test(fv) && /fiscal 2025/.test(fv) && /PDF p\.1/.test(fv), `FANUC revenue from its annual report: ${fv}`);
+  ok(slot(2).querySelector('dl.inv-val a')?.getAttribute('href') === 'https://www.fanuc.co.jp/en/ir/announce/pdf/2026/financialresult202603_e.pdf', 'FANUC links its report');
+  typeIn(3, 'ubtech');
+  ok(/The listing trades in HKD\. The company reports in CNY\./.test(slot(3).querySelector('.inv-val-quote').textContent), 'UBTECH: listing and reporting currencies');
+  typeIn(3, 'nvidia');
+  ok(/\+65\.5%/.test(slot(3).querySelector('dl.inv-val').textContent), 'NVIDIA growth');
+  ok(D.querySelectorAll('script[src*="tradingview"]').length === 3, 'one widget per slot, three at most');
+  const clear1 = slot(1).querySelector('.inv-slot-clear');
+  typeIn(1, 'schaeffler');
+  ok(scripts(1).length === 1 && JSON.parse(scripts(1)[0].text).symbol === 'XETR:SHA0', 'replacing a company replaces its widget');
+  ok(/Vitesco/.test(slot(1).querySelector('dl.inv-val').textContent) && /\+29\.2%/.test(slot(1).querySelector('dl.inv-val').textContent), 'Schaeffler: reported growth with its Vitesco note');
+  clear1.click();
+  ok(scripts(1).length === 0 && D.querySelectorAll('script[src*="tradingview"]').length === 2, 'clearing a slot removes its widget');
+  typeIn(1, 'aurora');
+  ok(/Not meaningful: previous year revenue is zero or less/.test(slot(1).querySelector('dl.inv-val').textContent), 'a zero base is not meaningful, not zero growth');
+}
+
 
 if (failures.length) {
   console.error(`Comparator check FAILED:\n- ${failures.join('\n- ')}`);
   process.exit(1);
 }
-console.log(`Comparator check passed: three slots over all ${total} companies, search, keyboard, one company per slot, replace, clear and the no-JavaScript fallback.`);
+console.log(`Comparator check passed: three slots over all ${total} companies, search, keyboard, one company per slot, replace, clear, the no-JavaScript fallback, one quote widget per slot and SEC revenue with its base.`);

@@ -77,7 +77,14 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
   const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/atlas.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', 'data/integrators/atlas.json', 'data/components/coverage.json', 'data/evolution/charts.json', 'data/investment/desk.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/atlas.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', 'data/integrators/atlas.json', 'data/components/coverage.json', 'data/evolution/charts.json', 'data/investment/desk.json', 'data/investment/fundamentals.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+}
+// Comparator revenue (26 Nov 2026): annual figures from SEC filings and issuer reports, each with its source; never a
+// quote, a market value or a ratio (those come only from TradingView's widgets in the reader's browser).
+if (tracked.includes('data/investment/fundamentals.json')) {
+  const f = JSON.parse(read('data/investment/fundamentals.json'));
+  if (/"(price|market_cap|marketcap|pe|pe_ratio|quote|change_pct)"\s*:/.test(JSON.stringify(f))) fail('data/investment/fundamentals.json', 'holds a quote or market field');
+  for (const [key, x] of Object.entries(f.securities ?? {})) if (x.status === 'published' && !/^https:\/\//.test(x.revenue?.filing_url ?? '')) fail('data/investment/fundamentals.json', `${key} has no source`);
 }
 const exported = JSON.parse(read('data/humanoids-catalogue.json'));
 const manifest = JSON.parse(read('data/manifest.json'));
