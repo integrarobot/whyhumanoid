@@ -37,8 +37,8 @@
       "source_date": "2026-11-23",
       "found": "2026-11-25",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
-      "outcome": "planned (op-002, Reports row 14, RPT-013); findings in phase 3",
-      "needs": "Codex write and readback of the rebased plan, then the findings mapping (Pages only, no import)"
+      "outcome": "written (RPT-013, Reports row 14); findings mapped and checked (8); publication by PR (Pages only)",
+      "needs": "merge and Pages deployment, then verification"
     },
     {
       "edition": "https://www.integrarobot.com/p/why-humanoid",
@@ -47,8 +47,8 @@
       "source_date": "modified 2026-11-16",
       "found": "2026-11-25",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
-      "outcome": "planned (op-001, Software row 81, first block, prepared slot)",
-      "needs": "Codex write and readback of the rebased plan, then one import after the final Codex quota decision"
+      "outcome": "written (Software row 81, first block); publication by PR",
+      "needs": "merge, one production import after the last Codex D1 check, then verification"
     }
   ],
   "runs": [
@@ -123,6 +123,17 @@
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
       "file": "ops/weekly-update/runs/2026-11-26-pendientes.json",
       "close": "WH-20261126-1510-fase1-pendientes-25-11"
+    },
+    {
+      "date": "2026-11-26",
+      "kind": "publication (known_pending)",
+      "subject": "Orbit (Software) and Playground (Reports, RPT-013) after the Codex write receipt, with the authorized Deployments evidence row; production import pending the last Codex D1 check",
+      "editions": [
+        "https://www.integrarobot.com/p/why-humanoid"
+      ],
+      "result": "written; publication PR open",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
+      "file": "ops/weekly-update/runs/2026-11-26-pendientes.json"
     }
   ],
   "handoffs": [
@@ -243,7 +254,7 @@
       "editions": [
         "integrarobot:2026-11-25:why-humanoid"
       ],
-      "status": "awaiting_write",
+      "status": "written",
       "operations": 2,
       "cells": 23,
       "private_cells": 20,
@@ -283,10 +294,45 @@
         "verified_by_claude": {
           "at": "2026-11-26T14:16:00Z",
           "result": "fresh download: Software A:C rows 1-80 unchanged, row 81 empty in the first block, old rows 81-134 equal to new rows 82-135, same 132 non-empty rows; titles and headers at 82/83 and 122/123, blank separator 121, AHEADance 84, Lucky Robots 135; columns D onward (World Models E:F) unchanged; 20 of 21 other tabs unchanged apart from live market values (86 Investment cells)",
-          "outside_the_preparation": "Deployments gained one appended row (sheet row 199) between the phase-1 basis (09:16 UTC) and the prepared basis; it is not part of this plan or the preparation, its origin is asked of Codex, and phase 3 does not publish or import until it is accounted for"
+          "outside_the_preparation": "Deployments gained one appended evidence row (sheet row 199) between the phase-1 basis (09:16 UTC) and the prepared basis. Accounted for by Codex: another authorized Codex task of 2026-11-26 (source-backed Deployments enrichment) wrote it, and Codex re-read its 47 fields against that task's plan with 0 differences. It is bundled in this publication (198 evidence rows, 125 deployment cases)."
         }
       },
-      "next": "Codex compares the rebased plan with the reviewed one, then preflight, writes both operations and reads back (prepared master as --previous) and sends the content receipt; Codex accounts for the Deployments row 199 appended outside this plan; Claude runs the independent readback, publishes the Reports findings (Pages only) and Software, and imports once only after the final Codex quota decision with a fresh D1 reading"
+      "write_receipt": {
+        "by": "codex",
+        "date": "2026-11-26",
+        "connector": "native Google Sheets connector",
+        "ranges": [
+          "Software!A81:C81",
+          "Reports!A14:T14"
+        ],
+        "cells_compared": 23,
+        "differences": 0,
+        "unexpected_changes": 0,
+        "neighbour_cells_unchanged": 1258,
+        "native_tables": {
+          "SoftwareCatalog": "A1:C135",
+          "ReportsCatalog": "A1:U14"
+        },
+        "note": "one atomic batch after a fresh preflight (23 pending, 0 conflicts); Reports row 14 takes the general formats of row 13; Source workbook (U14) stays empty",
+        "workbook_modified_time": "2026-11-26T14:21:54.716Z",
+        "credentials_sharing_identities_changed": false
+      },
+      "independent_readback": {
+        "by": "claude",
+        "date": "2026-11-26",
+        "public_plan_sha256": "20c8723763548c6581b1f9fb18f67782ab81d40b252a5b676b2743027eebc8f4",
+        "basis": "prepared master (2026-11-26T14:13:07.878Z) against the write (2026-11-26T14:21:54.716Z)",
+        "cells_checked": 23,
+        "value_differences": 0,
+        "group_differences": 0,
+        "unexpected_changes": 0,
+        "live_market_changes": {
+          "Investment": 112
+        },
+        "preflight_after_write": "23 already written, 0 pending"
+      },
+      "d1": "see ops/weekly-update/runs/2026-11-26-pendientes.json, d1: 63.47k of 100k written on 2026-11-26 UTC across three production imports (runs 45771073245, 45772916684 and 45792742154, the last one for Components by another task); this import is estimated at 12,266 row changes and at most 32,380 counting index writes; Codex authorises one import today only with at least 35k left at a last check and no concurrent import",
+      "next": "Codex reviews the publication PR head; merge on green CI and Pages; Codex makes a last D1 dashboard check (at least 35k left, no concurrent import or other writer); then one production import, and Claude verifies production and closes. Below 35k the handoff stays pending and the recurring continuation imports after the reset."
     }
   ]
 }

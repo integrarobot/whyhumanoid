@@ -126,6 +126,8 @@ export function atlasProblems(rows, mapping) {
     if (!/^[a-z0-9-]+$/.test(r.slug ?? '') || r.slug === 'deployment-records') problems.push(`report ${r.id}: bad slug`);
     if (!/^https:\/\//.test(r.url ?? '') || PRIVATE_LINK.test(r.url)) problems.push(`report ${r.id}: the original must be a public https link`);
     if (!CHECK_STATES[r.check?.status]) problems.push(`report ${r.id}: unknown check status`);
+    // A report checked on another day than the rest says so (check.checked_on); otherwise it takes the mapping's date.
+    if (r.check?.checked_on !== undefined && (r.check.status !== 'verified' || !/^\d{4}-\d{2}-\d{2}$/.test(r.check.checked_on ?? ''))) problems.push(`report ${r.id}: check.checked_on must be a YYYY-MM-DD date of a checked report`);
   }
   for (const id of rows.keys()) if (!reports.has(id)) problems.push(`master row ${id}: no report entry in the reviewed mapping (every edition must be accounted for)`);
   const slugs = new Set();
@@ -218,10 +220,11 @@ export const COVERAGE_STATES = Object.freeze({
 });
 
 export function buildAtlas({ rows, mapping, exportedAt, builtAt }) {
+  const checkedOn = new Map(mapping.reports.map((r) => [r.id, r.check?.checked_on ?? mapping.checked_on]));
   const reports = mapping.reports.map((r) => {
     const row = rows.get(r.id);
     const out = Object.fromEntries(REPORT_FIELDS.map((k) => [k, r[k] ?? null]));
-    return { ...out, sheet_row: row.sheetRow, check: { status: r.check.status, checked: r.check.checked ?? [], locator: r.check.locator ?? null, note: r.check.note ?? null, checked_on: r.check.status === 'verified' ? mapping.checked_on : null } };
+    return { ...out, sheet_row: row.sheetRow, check: { status: r.check.status, checked: r.check.checked ?? [], locator: r.check.locator ?? null, note: r.check.note ?? null, checked_on: r.check.status === 'verified' ? checkedOn.get(r.id) : null } };
   });
   const byId = new Map(reports.map((r) => [r.id, r]));
   const findings = mapping.findings.map((f) => {
@@ -230,7 +233,7 @@ export function buildAtlas({ rows, mapping, exportedAt, builtAt }) {
     const ci = REPORT_COLUMNS.indexOf(f.cell.column);
     return {
       ...out,
-      check: { status: f.check.status, phrase: f.check.status === 'verified' ? f.check.phrase : null, checked_on: f.check.status === 'verified' ? mapping.checked_on : null },
+      check: { status: f.check.status, phrase: f.check.status === 'verified' ? f.check.phrase : null, checked_on: f.check.status === 'verified' ? checkedOn.get(f.report) : null },
       cell: { row: row.sheetRow, column: colLetter(ci), header: f.cell.column, excerpt: f.cell.excerpt },
       source_url: byId.get(f.report).url,
       numeric: isNum(f.value) || isNum(f.min) || Boolean(f.parts),

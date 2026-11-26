@@ -1,8 +1,8 @@
 {
  "version": 1,
- "snapshot": "2026-11-26T06:38:00Z",
+ "snapshot": "2026-11-26T14:21:54.716Z",
  "totals": {
-  "records": 197,
+  "records": 198,
   "deployments": 125,
   "organisations": 86
  },
@@ -10,14 +10,14 @@
   "min_cell": 3,
   "by_status": {
    "op": 13,
-   "pilot": 83,
+   "pilot": 84,
    "ann": 43,
    "unc": 58
   },
   "by_sector": [
    {
     "key": "automotive_manufacturing",
-    "records": 46
+    "records": 47
    },
    {
     "key": "logistics",
@@ -99,7 +99,7 @@
    },
    {
     "key": "Germany",
-    "records": 23
+    "records": 24
    },
    {
     "key": "Multiple countries (not named)",
@@ -145,7 +145,7 @@
    },
    {
     "key": "2025",
-    "records": 47
+    "records": 48
    },
    {
     "key": "2026",
@@ -1443,11 +1443,11 @@
    "tie": false,
    "status": {
     "op": 0,
-    "pilot": 2,
+    "pilot": 3,
     "ann": 0,
     "unc": 0
    },
-   "records": 2,
+   "records": 3,
    "organisation": {
     "company": "org_mercedes_benz",
     "name": "Mercedes-Benz"
@@ -1468,7 +1468,7 @@
    "country_multiple": false,
    "years": [
     2024,
-    2024
+    2025
    ]
   },
   {
@@ -4728,7 +4728,7 @@
    "name": "Apptronik",
    "identity": "catalogue_lab",
    "roles": {
-    "maker": 8
+    "maker": 9
    },
    "countries": [],
    "robots": [
@@ -4742,10 +4742,10 @@
     "reviewed_at": "2026-10-28"
    },
    "as_maker": {
-    "records": 8,
+    "records": 9,
     "status": {
      "op": 0,
-     "pilot": 5,
+     "pilot": 6,
      "ann": 3,
      "unc": 0
     },
@@ -4790,15 +4790,15 @@
       "level": "family",
       "status": {
        "op": 0,
-       "pilot": 2,
+       "pilot": 3,
        "ann": 1,
        "unc": 0
       },
       "years": [
        2024,
-       2024
+       2025
       ],
-      "records": 3
+      "records": 4
      },
      {
       "name": "Jabil",
@@ -11219,7 +11219,7 @@
    "identity": "sheet_organization_id",
    "roles": {
     "customer_operator": 1,
-    "customer_investor": 2
+    "customer_investor": 3
    },
    "countries": [
     "Germany"
@@ -11231,10 +11231,10 @@
    "entity": null,
    "as_maker": null,
    "as_organisation": {
-    "records": 3,
+    "records": 4,
     "status": {
      "op": 0,
-     "pilot": 2,
+     "pilot": 3,
      "ann": 1,
      "unc": 0
     },
@@ -11247,7 +11247,7 @@
     ],
     "years": [
      2024,
-     2024
+     2025
     ],
     "counterparts": [
      {
@@ -11258,26 +11258,26 @@
       "level": "family",
       "status": {
        "op": 0,
-       "pilot": 2,
+       "pilot": 3,
        "ann": 1,
        "unc": 0
       },
       "years": [
        2024,
-       2024
+       2025
       ],
-      "records": 3
+      "records": 4
      }
     ]
    },
    "evidence": {
     "organization_name": "Mercedes-Benz",
     "robot_recorded": "Apptronik Apollo",
-    "country": "Germany; Hungary",
+    "country": "Germany",
     "status": "pilot",
-    "verification_status": "media_reported",
-    "source_publisher": "Reuters (syndicated by The Star)",
-    "source_url": "https://www.thestar.com.my/tech/tech-news/2025/03/18/mercedes-benz-takes-stake-in-robotics-maker-apptronik-tests-robots-in-factories",
+    "verification_status": "customer_confirmed",
+    "source_publisher": "Mercedes-Benz Group",
+    "source_url": "https://group.mercedes-benz.com/company/production/production-network/mbdfc-humanoid-robots.html",
     "publication_date": "2025-03-18"
    }
   },
@@ -16845,10 +16845,10 @@
    }
   },
   "7": {
-   "records": 8,
+   "records": 9,
    "status": {
     "op": 0,
-    "pilot": 5,
+    "pilot": 6,
     "ann": 3,
     "unc": 0
    },
@@ -16893,15 +16893,15 @@
      "level": "family",
      "status": {
       "op": 0,
-      "pilot": 2,
+      "pilot": 3,
       "ann": 1,
       "unc": 0
      },
      "years": [
       2024,
-      2024
+      2025
      ],
-     "records": 3
+     "records": 4
     },
     {
      "name": "Jabil",

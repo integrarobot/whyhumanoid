@@ -114,5 +114,5 @@ test('freshness: every category card names its own date and kind; no blanket exp
   assert.equal(fresh.length, 10);
   assert.ok(fresh.every((f) => /^(records checked up to|workbook copy of|originals checked) \d{1,2} [A-Z][a-z]{2} \d{4}$/.test(f)), fresh.join(' | '));
   assert.ok(!/Humanoids free · exported/.test(home));
-  assert.match(home, /<b>12<\/b> external reports \+ 1 Why Humanoid\? analysis/);
+  assert.match(home, /<b>13<\/b> external reports \+ 1 Why Humanoid\? analysis/);
 });
