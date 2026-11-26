@@ -1,0 +1,64 @@
+{
+  "id": "WH-20261126-1341-tipografia-comun",
+  "tarea": "Unificar las familias y los tamaños de letra de todas las páginas de la web con Integrators como referencia exacta, rol a rol (titular, entradilla, encabezados de sección y de tarjeta, texto, etiquetas, controles, botones, tablas, marca y navegación), en categorías, fichas, páginas de apoyo, portada y app de suscriptores, sin tocar el marco de 1380 px",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T13:41:14+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "assets/pages.css: una sola escala tipográfica en :root (titular clamp(40px,5.6vw,72px), entradilla clamp(17px,1.6vw,21px), destacado 34, panel 32, tarjeta 24 y 22, sección 13, etiqueta 12, leyenda 11, control 15, texto 16 (15,5 en móvil), tabla 13,5, cabecera de tabla 10,5 y cuerpo de tarjeta 14,5), medida rol a rol sobre Integrators; los roles base la usan.",
+    "Las hojas de cada página dejan de fijar su propio tamaño de titular y de entradilla, también en móvil; Reports deja su entradilla en Serif 30 y usa la común. Los títulos de tarjeta pasan a Serif 24/22 y los de panel a Serif 32; los encabezados de sección siguen en Mono 13 en mayúsculas y los destacados (gráficos de evolución, portada, temas de Reports) en Serif 34.",
+    "Tablas: cabeceras de columna Mono 10,5 y cuerpo 13,5, como la comparación de Integrators; las tablas de los gráficos de evolución conservan su cabecera para que Integrators no cambie.",
+    "Investment: etiquetas de filtro Mono 11, controles Sans 15 sin mayúsculas, botones Mono 12 y enlaces de salto como la navegación de vistas de Integrators.",
+    "Portada (index.html): titular Serif 72, entradilla 21, texto 16/1,55 (15,5 en móvil), etiquetas a .06em, menú Categories y buscadores con los roles comunes; el PR 149 quita la regla de móvil que bajaba las etiquetas a 11 px, sin tocar el marco ni la altura de la cabecera.",
+    "App de suscriptores (server/public/index.html y app/index.html): texto 16/1,55, etiquetas 12, títulos de panel en Serif 32 (26 en móvil), que es su rol, y carga de Instrument Serif.",
+    "La marca de portada y app hereda el tamaño del texto (16, 15,5 en móvil), con peso 600 y espaciado .01em, como en las páginas generadas.",
+    "tools/test-frame.mjs, en el CI, comprueba la escala única, los roles base, que ninguna hoja fije titular ni entradilla, la cabecera de tabla, los tamaños compartidos de portada y app, la marca heredada y una sola definición del tamaño de etiqueta en la portada.",
+    "Sin cambios de contenido, datos, precios, accesos, colores ni ancho; sin Worker, importación ni Stripe."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 147",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/147"
+    },
+    {
+      "etiqueta": "PR 149",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/149"
+    },
+    {
+      "etiqueta": "Commit de fusión c2be8ac (PR 147)",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/c2be8acddec502586636f77a2c1215c5df865c03"
+    },
+    {
+      "etiqueta": "Commit de fusión a9830bf (PR 149)",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/a9830bfca7868fdd6a14bd93e95b452da5655464"
+    },
+    {
+      "etiqueta": "Pages (ejecución 45820732012)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45820732012"
+    },
+    {
+      "etiqueta": "Pages (ejecución 45821658293)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45821658293"
+    },
+    {
+      "etiqueta": "Integrators (referencia)",
+      "url": "https://whyhumanoid.com/integrators/"
+    }
+  ],
+  "despliegue": [
+    "PR 147 fusionado en main como c2be8ac desde el head aprobado por Codex 317c2c1, con el CI en verde (ejecución 45820439418); el head anterior e237fec también pasó el CI y Codex pidió seis ajustes que entraron en 317c2c1.",
+    "PR 149 fusionado en main como a9830bf desde d4a2556, con el CI en verde (ejecución 45821413191), tras la comprobación de Codex en producción.",
+    "GitHub Pages: ejecuciones 45820732012 (12:33:57 UTC) y 45821658293 (12:39:52 UTC) completadas con éxito. Solo páginas estáticas: sin Worker, datos ni Stripe."
+  ],
+  "verificaciones": [
+    "Local: build-pages, build-site y build-app --check, check-public, export-public --check, export-evolution --check, test-frame 6/6, verify-site, verify-pages, verify-premium-app, verify-components, verify-footer y verify-mobile (715 comprobaciones) en verde; 27 rutas sin desbordamiento a 1510, 1920, 768, 755 (zoom al 200 %), 375 y 320 px.",
+    "Claude, producción: titular Instrument Serif 72/75,6 y entradilla Instrument Sans 21/31,5 en 17 rutas a 1510 px; en Integrators, Investment, Humanoids, Reports, portada y app, texto 16/24,8 y 15,5/24,03, entradilla 21/31,5 y 17/25,5, marca Sans 16 y 15,5 de peso 600 y .01em, controles Sans 15, a 1510 y 375 px; sin desbordamiento a 1510, 768, 375 y 320 px; menú Categories de la portada a 375 px en Mono 12/18,6 y .72 px con cabecera de 52 px y marco de 7 px.",
+    "Codex, producción: 15 rutas (las 10 categorías, Tesla, About, Subscribe, portada y app) a 1510 y 375 px con titular, entradilla, texto y marca iguales a Integrators en familia, tamaño, interlineado y espaciado; el título de panel de la app en Serif 32/26; cinco rutas a 320, 768 y 1920 px con la escala adaptativa y sin ancho de más; filtros de Investment correctos, la búsqueda de Tesla da 1 de 276 y al limpiar vuelven las 276; las 1.812 páginas generadas sin diferencias de contenido salvo la versión de la hoja de estilo; el menú Categories de la portada en Mono 12/18,6 y .72 px a 375 px tras el PR 149."
+  ],
+  "pendientes": [
+    "Limitación previa y conocida, fuera de este encargo: con zoom al 200 % en un móvil de 375 px (188 px de ancho útil) la portada, la app e Investment se desbordan; ya ocurría antes, y este cambio lo reduce en la portada (de 86 a 54 px) y en la app (de 53 a 22 px), con Investment igual (85 px). Se corrige solo si Javier lo pide."
+  ],
+  "siguiente_accion": "Codex registra su aviso de esta entrega; Javier confirma la recepción."
+}
