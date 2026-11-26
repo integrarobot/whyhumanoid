@@ -1,0 +1,59 @@
+{
+  "id": "WH-20261126-1334-chatgpt-dominio-y-demo",
+  "tarea": "Publicación del MCP de Why Humanoid? en ChatGPT, parte técnica: verificación del dominio del MCP (challenge de OpenAI Apps en el Worker) y alojamiento de la demostración grabada en ChatGPT. La publicación en ChatGPT queda pendiente del titular",
+  "origen": "Javier vía Codex, 26/11/2026: terminar la publicación del MCP en ChatGPT (domain challenge del hostname actual, sin cambiar URL ni autenticación) y cerrar la demostración de PR142. Sustituye a los bloqueos de WH-20261126-0625-chatgpt-preparacion-terminos (verificación del editor) y WH-20261126-0643-demo-chatgpt-sin-acceso (grabación), sin modificarlos",
+  "fecha": "2026-11-26T13:34:14+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5 (código y pruebas del challenge, comprobaciones independientes y este cierre); codex (grabación y PR de la demostración, revisión, fusión y despliegue del Worker, portal de OpenAI)",
+  "cambios": [
+    "Verificación del dominio (PR #144, fusionado en main d5e4ac4, código en 3726744):\n- GET /.well-known/openai-apps-challenge en el Worker whyhumanoid-premium responde exactamente el token público de OpenAI Apps: 43 bytes, text/plain; charset=utf-8, sin salto de línea y sin caché. HEAD responde las mismas cabeceras sin cuerpo. Otros métodos, 405; otras rutas, 404.\n- La ruta no lee la base de datos, secretos ni cabeceras. El token prueba el control del hostname y no da acceso a nada.\n- Sin cambios en la URL del MCP (https://whyhumanoid-premium.javier-198.workers.dev/mcp), autenticación, permisos, pagos, importación, claves ni wrangler.toml.",
+    "Prueba nueva server/test/openai-apps-challenge.test.js (5 casos): cuerpo literal y cabeceras, HEAD, métodos y ruta exacta, cabecera Authorization ignorada, /mcp y /health sin cambios, y la entrada real del Worker con una base de datos que falla si se usa. Añadir un salto de línea al token hace fallar 3 de los 5 casos.",
+    "Demostración en ChatGPT (PR #142 de Codex, fusionado en main 63cb3a5): página https://whyhumanoid.com/agents/demo/, enlazada desde /agents/ y el sitemap, con el MP4 /assets/whyhumanoid-chatgpt-demo-2026-11-26.mp4. Según Codex, es una captura real por acciones en tres segmentos, con el tiempo ampliado.",
+    "Portal de OpenAI, según Codex (26/11/2026, 13:23:15 Madrid): dominio verificado, conexión Configured sin autenticación (NoAuth) y escaneo de las seis herramientas sin hallazgos. Borrador público cargado: editor Integrarobot, todos los países admitidos, 5 casos de prueba positivos y 3 negativos, sin autenticación."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR #144, challenge (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/144"
+    },
+    {
+      "etiqueta": "PR #142, demostración (fusionado)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/142"
+    },
+    {
+      "etiqueta": "Challenge de OpenAI Apps",
+      "url": "https://whyhumanoid-premium.javier-198.workers.dev/.well-known/openai-apps-challenge"
+    },
+    {
+      "etiqueta": "Endpoint MCP (sin cambios)",
+      "url": "https://whyhumanoid-premium.javier-198.workers.dev/mcp"
+    },
+    {
+      "etiqueta": "Página de la demostración",
+      "url": "https://whyhumanoid.com/agents/demo/"
+    },
+    {
+      "etiqueta": "Vídeo de la demostración",
+      "url": "https://whyhumanoid.com/assets/whyhumanoid-chatgpt-demo-2026-11-26.mp4"
+    }
+  ],
+  "despliegue": [
+    "Worker whyhumanoid-premium, desplegado por Codex desde el panel de Cloudflare (mecanismo documentado en DEPLOYMENT.md) con el bundle revisado de server/scripts/build-dashboard.mjs y esbuild 0.27.7, SHA-256 6216e675a742848aee99f2b00f819f6683a3a836a19bb553eca97899c116b229 (el mismo que generó Claude antes de la revisión). Versión 0a216feb, Active. Sin cambios en D1, secretos, variables ni rutas.",
+    "Demostración: GitHub Pages desde main 63cb3a5, CI 45814462950 y Pages 45814771586 correctos (datos de Codex)."
+  ],
+  "verificaciones": [
+    "Claude, 26/11/2026 hacia las 13:30 Madrid, solo lecturas contra producción:\n- challenge GET 200 con el token exacto (43 bytes; text/plain; charset=utf-8; no-store; nosniff);\n- HEAD 200 y POST 405;\n- /health 200 {\"ok\":true};\n- cliente MCP oficial sin credencial sobre /mcp: servidor whyhumanoid 1.0.1, seis herramientas de solo lectura (list_categories, search_catalogue, get_rows, get_atlas, get_relations, account_status) y list_categories sin error.",
+    "Claude, demostración: /agents/demo/ 200; el MP4 responde 200 como video/mp4, 2.249.525 bytes, SHA-256 5db5c9a5f1e3894f0494753466c7f8d3955fcf065bdb9434d60fccf9078242cb; ffprobe da H.264, 124,04 s y 3.101 cuadros. Coincide con lo que dio Codex.",
+    "Antes de fusionar PR #144: 200 de 200 pruebas del servidor, test-agents con el cliente MCP oficial y el resto de pasos de la CI en local, CI del PR en verde. El bundle del panel, ejecutado en Node, servía el challenge.",
+    "Codex, tras el despliegue: challenge GET 200 exacto, health 200, y MCP Inspector oficial en modo estricto con tools/list y las seis tools/call correctas. Codex también decodificó los 3.101 cuadros sin error y reprodujo el vídeo completo en el navegador.",
+    "Alcance de las pruebas de humo: usaron la instalación personal existente apuntando al mismo endpoint, no la nueva vinculación pública del borrador. No se afirma que los 8 casos de prueba del modelo (5 positivos y 3 negativos) estén superados."
+  ],
+  "pendientes": [
+    "Publicación en ChatGPT, pendiente del titular (Javier): el borrador está cargado pero NO se ha enviado a revisión ni publicado. Faltan por aceptar 6 declaraciones legales y el botón Submit sigue deshabilitado.",
+    "Una vez enviado y aprobado: probar la nueva vinculación pública en ChatGPT con los 8 casos del borrador.",
+    "El token del challenge sigue en el Worker. No se retira sin confirmar antes que OpenAI ya no lo necesita.",
+    "Revisión de Codex y de Javier antes de confirmar el cierre."
+  ],
+  "siguiente_accion": "Javier revisa y acepta, si procede, las 6 declaraciones legales del borrador de OpenAI y lo envía a revisión. Codex sigue la candidatura y, tras la aprobación, prueba la vinculación pública con los 8 casos."
+}
