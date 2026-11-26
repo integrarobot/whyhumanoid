@@ -56,7 +56,7 @@
     "PR #130 fusionado como 77c675926352ea6041d7d3308d83a9a2aa976c7d, con el CI 45770740608 en verde. Pages: run 45771057634, publicado a las 06:51:43 UTC. Importación a producción: run 45771073245 (job 139743587397), HTTP 200, ok, a las 06:51 UTC.",
     "PR #132 fusionado como e58ede81fe7e377faca66b6f18b968c4bd2b874c, con el CI 45772587643 en verde. Pages: run 45772907129, publicado a las 07:07:29 UTC. Importación a producción: run 45772916684 (job 139749589861), éxito, a las 07:07 UTC.",
     "Instantánea de producción final: 2026-11-26T07:07:13.000Z. Recuentos: software 145, other-robots 563, datasets 37, dataset-metrics 63, deployments 197 y humanoids 212. Relaciones ok con 197 registros; búsqueda: 1971 documentos completos y 1904 de vista previa.",
-    "Margen de D1: Codex leyó 0/100k filas escritas antes de la primera importación. Cada importación completa escribe unas 12.000 filas, como mucho unas 32.000 contando índices, así que el día queda por debajo de unas 64.000 según la estimación. No hubo importación de prueba."
+    "Margen de D1: Codex leyó 0/100k filas escritas antes de la primera importación. Con el libro y el catálogo actuales, cada importación completa escribe, según una estimación local, unas 12.000 filas, unas 32.000 contando índices. Es una estimación, no un límite. Las dos importaciones del día suman unas 64.000 como mucho, por debajo de las 100.000 diarias. No hubo importación de prueba ni importaciones simultáneas."
   ],
   "verificaciones": [
     "Antes de fusionar cada PR, en local: check-workbook, audit-deployments (197 filas, 0 diferencias), check-reserved, check-public, todos los --check de CI, test-evolution 11/11, test-coherence 6/6, servidor 184/184, verify-site, verify-premium-app y verify-pages. En el #130, además, test-integrators 6/6, test-reports 19/19 y test-agents 3/3.",
@@ -66,7 +66,7 @@
     "No he podido abrir whyhumanoid.com desde esta sesión (proxy). Pages publica main, y main contiene los cambios."
   ],
   "pendientes": [
-    "Pendientes de contenido, sin inventar datos: Simplexity (fuente primaria de la ronda y modelo con nombre), Playground (clasificación con los criterios de Reports y hallazgos revisados) y el software Orbit de Boston Dynamics (página primaria del producto). Los clasifican Claude o Codex con los criterios existentes, sin escalarlos a Javier.",
+    "Pendientes de contenido, sin inventar datos y a cargo de Claude o Codex con los criterios existentes, sin escalarlos a Javier: Simplexity (falta una fuente primaria de la ronda y un modelo con nombre), el informe de Playground (clasificarlo con los criterios de Reports y revisar sus hallazgos antes de cualquier fila) y el software Orbit de Boston Dynamics (falta una página primaria del producto para su fila en Software).",
     "PR #131 (contrato, herramienta, skill y estado): en revisión de Codex, con los tres defectos que señaló corregidos. Se fusiona cuando Codex apruebe el head.",
     "Codex: registrar el aviso de este cierre."
   ],
