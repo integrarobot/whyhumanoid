@@ -28,6 +28,7 @@ import {
 } from './orders/orders.js';
 import { meterCredential } from './usage.js';
 import { handleMcp } from './mcp.js';
+import { openaiAppsChallenge } from './openai-apps-challenge.js';
 import { companyNews } from './news/yahoo.js';
 
 const MAX_API_KEYS = 5;
@@ -95,6 +96,10 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
 
   const routes = [
     ['GET', /^\/health$/, async () => json(200, { ok: true })],
+
+    // OpenAI Apps domain verification: the public challenge token as plain text (server/src/openai-apps-challenge.js).
+    ['GET', /^\/\.well-known\/openai-apps-challenge$/, async (request) => openaiAppsChallenge(request)],
+    ['HEAD', /^\/\.well-known\/openai-apps-challenge$/, async (request) => openaiAppsChallenge(request)],
 
     // The central access matrix (server/src/access/matrix.js): rules only, no data.
     ['GET', /^\/v1\/access$/, async () => json(200, publicMatrix(), { 'cache-control': 'public, max-age=300' })],
