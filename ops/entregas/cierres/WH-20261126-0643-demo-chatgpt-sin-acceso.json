@@ -1,0 +1,30 @@
+{
+  "id": "WH-20261126-0643-demo-chatgpt-sin-acceso",
+  "tarea": "Grabar el vídeo real de demostración de la conexión Why Humanoid? dentro de ChatGPT para la revisión pública inicial",
+  "origen": "Javier («el video que lo haga claude», 26/11/2026), coordinado por Codex",
+  "fecha": "2026-11-26T06:43:29+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Comprobación de capacidades de esta sesión: se ejecuta en un contenedor en la nube sin ninguna máquina conectada (no hay carpetas de Remote Control disponibles), sin navegador con sesión iniciada y sin herramientas de control del equipo ni de grabación de pantalla; chatgpt.com no está entre los hosts de red permitidos. No se han copiado tokens, cookies ni credenciales para entrar en ChatGPT.",
+    "Relevo preparado en ops/demo-chatgpt.md: la intervención mínima de Javier (Claude de escritorio con computer use en su Mac, o conectar el Mac a esta sesión con Remote Control), la preparación de la ventana sin datos privados, las tres peticiones en orden, la grabación con screencapture de macOS en lugar de QuickTime, la verificación de duración, lectura, alcance de herramientas y ausencia de secretos, y la publicación en assets/demo/ por PR, servida por GitHub Pages."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Procedimiento del vídeo",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/demo-chatgpt.md"
+    }
+  ],
+  "despliegue": [
+    "Ninguno: no hay vídeo, ni subida, ni envío a revisión. No se ha creado otra aplicación ni se ha tocado el paquete ZIP, que sigue en local con Codex. Sin pagos, verificación de identidad ni declaraciones legales."
+  ],
+  "verificaciones": [
+    "list_computer_folders devuelve cero carpetas disponibles y cero no utilizables; las herramientas de la sesión no incluyen navegador ni control del equipo. check-public en verde para el documento nuevo."
+  ],
+  "pendientes": [
+    "Acceso de Claude a la sesión de ChatGPT ya iniciada en el ordenador de Javier, por una de las dos vías de ops/demo-chatgpt.md, y el permiso de grabación de pantalla de macOS.",
+    "Después: grabar, verificar y publicar el vídeo en https://whyhumanoid.com/assets/demo/whyhumanoid-chatgpt-demo.mp4 mediante PR revisado por Codex."
+  ],
+  "siguiente_accion": "Javier abre Claude de escritorio con computer use en su Mac (o conecta el Mac por Remote Control) y pide grabar el vídeo siguiendo ops/demo-chatgpt.md; Claude graba, verifica y abre el PR del vídeo."
+}
