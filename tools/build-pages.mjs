@@ -894,6 +894,7 @@ function agentsPage() {
 <p class="kicker">For your software agents</p>
 <h1>Use the catalogue from your agents</h1>
 <p class="lede">Your agents can read Why Humanoid? the way you do: the free catalogue without any key, and complete Deployments and Components with your subscription. Same account, same access, no extra charge.</p>
+<p><a href="/agents/demo/">Watch a recorded ChatGPT session using the read-only connection →</a></p>
 <section id="start"><h2>Before you start</h2><ol><li>Free data needs nothing: the API, the MCP server and the command-line tool all work without a key, with public values.</li><li>For complete Deployments and Components, <a href="/subscribe/">subscribe</a> (${esc(price())}), then create an API key in <a href="/app/#keys">the app, under Agent access</a>. The key is shown once; keep it like a password.</li><li>Revoke a key there at any time; it stops working at once. When the subscription ends, the paid data stops: the HTTP API and the command-line tool answer 403 on Deployments and Components rows, and MCP returns their public fields. Every public endpoint keeps working, with or without a key.</li></ol>
 ${kv([['Fair use', `${USAGE_LIMITS.perMinute} requests a minute and ${USAGE_LIMITS.perDay.toLocaleString('en-GB')} a day per key. Over the limit, requests get HTTP 429 with a Retry-After header; nothing is charged.`], ['What agents can read', 'The published catalogue: every category, and with a subscription every field of Deployments and Components. Not accounts, orders, custom reports or internal tables.'], ['Help', `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`]])}</section>
 <section id="api"><h2>HTTP API</h2><p>JSON over HTTPS at <code>${esc(API_ORIGIN)}</code>. Send the key as a Bearer token.</p>
@@ -932,6 +933,35 @@ function aboutPage() {
 // service level, retention period, refund policy, governing law, liability cap or data licence is stated here: none
 // has been decided, and inventing one would be wrong.
 const MCP_TOOLS = ['list_categories', 'search_catalogue', 'get_rows', 'get_atlas', 'get_relations', 'account_status'];
+// ChatGPT demo (26 Nov 2026): the recording of a real ChatGPT session with the read-only connection, served as a
+// static file by GitHub Pages. The page states how it was captured; the file is never edited here.
+const DEMO_VIDEO = { path: '/assets/whyhumanoid-chatgpt-demo-2026-11-26.mp4', width: 1512, height: 806, seconds: 124, bytes: 2249525, sha256: '5db5c9a5f1e3894f0494753466c7f8d3955fcf065bdb9434d60fccf9078242cb' };
+function demoPage() {
+  const v = DEMO_VIDEO;
+  const body = `${crumbs([['/', 'Why Humanoid?'], ['/agents/', 'Agents'], [null, 'Demo']])}
+<article class="entity">
+<p class="kicker">For your software agents · Demo</p>
+<h1>Why Humanoid? in ChatGPT</h1>
+<p class="lede">A real ChatGPT session using the read-only Why Humanoid? connection, recorded on 26 November 2026: three questions and the answers ChatGPT gave with the catalogue's tools.</p>
+<figure class="demo"><video controls preload="metadata" playsinline width="${v.width}" height="${v.height}" src="${v.path}">Your browser cannot play this video here. <a href="${v.path}">Download the MP4</a>.</video>
+<figcaption>MP4 (H.264), ${v.width} × ${v.height}, 2 min 4 s, 2.2 MB. <a href="${v.path}">Open or download the video file</a>.</figcaption></figure>
+<section id="shown"><h2>What it shows</h2><ol>
+<li><b>Logistics deployments.</b> A question about humanoid robots in logistics. The answer cites three public catalogue entries with their source links and keeps announcements, pilots and reported operation apart.</li>
+<li><b>The Robot Learning Data Atlas.</b> What the atlas covers and why dataset sizes cannot simply be compared.</li>
+<li><b>A request to change a record.</b> Asked to change the deployment status of GXO, ChatGPT declines: the connection only reads, and none of its tools can write.</li>
+</ol></section>
+<section id="how"><h2>How it was recorded</h2><ul>
+<li>A real ChatGPT session with real answers, not a mock-up.</li>
+<li>Captured with Claude in Chrome, which takes one frame per action: 49 real frames in three segments, kept in their full order and each held long enough to read. It is not continuous video, and the timing does not measure how fast anything responds.</li>
+<li>The connection was selected and each question typed before capture began, so the account's personal add-ons do not appear.</li>
+<li>The answers reflect the catalogue at the time of recording, not live counts.</li>
+</ul></section>
+<section id="use"><h2>Use it yourself</h2><p>The same read-only tools are available to any MCP client, and to the HTTP API and command-line tool: see <a href="/agents/">Agents</a>. Using the connection is subject to its <a href="/terms/">terms of use</a>.</p></section>
+<p class="meta">Recorded 26 November 2026. File SHA-256 <code>${v.sha256}</code>.</p>
+</article>`;
+  return page({ title: 'ChatGPT demo: the read-only connection in use · Why Humanoid?', description: 'A recording of a real ChatGPT session using the read-only Why Humanoid? connection: logistics deployments with sources, the dataset atlas and its limits, and a refused request to change a record.', path: '/agents/demo/', body, head: '<style>.demo{margin:8px 0 24px}.demo video{display:block;width:100%;height:auto;max-width:100%;background:#000;border:1px solid var(--line-2)}.demo figcaption{font-size:14px;color:var(--bone-2);margin-top:8px}</style>\n' });
+}
+
 function termsPage() {
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Terms of use']])}
 <article class="entity">
@@ -1022,7 +1052,7 @@ ${kv([['In operation', 'The source says the robot is working in operation.'], ['
 }
 
 export function sitemapUrls(model) {
-  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/about/', '/terms/', '/privacy/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
+  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/agents/demo/', '/about/', '/terms/', '/privacy/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
 }
 function sitemap(model) {
   const lastmod = String(model.snapshot).slice(0, 10);
@@ -1064,6 +1094,7 @@ export function buildPages(registry = readRegistry()) {
   for (const r of REPORTS) files.set(`${reportPath(r).slice(1)}index.html`, externalReportPage(r));
   files.set('subscribe/index.html', subscribePage(model));
   files.set('agents/index.html', agentsPage());
+  files.set('agents/demo/index.html', demoPage());
   files.set('privacy/index.html', privacyPage());
   files.set('about/index.html', aboutPage());
   files.set('terms/index.html', termsPage());
