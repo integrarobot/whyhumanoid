@@ -114,7 +114,24 @@ function statusLine(cap, what) {
   return `<p class="status">${esc(what)} offered for this symbol but not yet checked in a browser. If TradingView says the symbol is not available, use the links below.</p>`;
 }
 
-export function renderListingResearch(l, x, theses, { apiOrigin, snapshot }) {
+// The quote and chart of a listing, rendered once per page: at the top of the company page when TradingView offers the
+// chart (renderCompanyChart), otherwise in its place in Market data with the honest availability state. The free
+// advanced-chart embed takes the dark theme with an explicit black background and a faint grid (its documented
+// backgroundColor and gridColor); the quote strip stays transparent on a black host (assets/investment.css).
+export const CHART_BG = '#000000';
+export const chartOffered = (x) => Boolean(x && x.tradingview.symbol && x.tradingview.chart.status !== 'unavailable');
+function quoteChart(x, heading) {
+  const tv = x.tradingview;
+  const sym = tv.symbol;
+  const common = { symbol: sym, locale: 'en', colorTheme: 'dark', isTransparent: true };
+  const body = `${widget('advanced-chart', 'chart', { autosize: true, symbol: sym, interval: 'D', timezone: 'Etc/UTC', theme: 'dark', style: '1', locale: 'en', backgroundColor: CHART_BG, gridColor: 'rgba(242, 242, 242, 0.06)', allow_symbol_change: false, withdateranges: true, range: '12M', hide_side_toolbar: true, details: false, hotlist: false, calendar: false, save_image: false, support_host: 'https://www.tradingview.com' }, tv.url, 'The chart loads from TradingView.')}${widget('symbol-info', 'info', { ...common, width: '100%' }, tv.url, 'The quote loads from TradingView.')}${statusLine(tv.chart, 'The chart')}`;
+  return `${heading}${tv.chart.status === 'unavailable' ? `<p class="status">Not available here: ${esc(tv.chart.reason)} Use the links below.</p>` : body}`;
+}
+export function renderCompanyChart(l, x) {
+  return `<section class="co-chart" id="quote" aria-labelledby="quote-h"><h2 id="quote-h">Quote and chart <span class="dim">${esc(x.tradingview.symbol)}</span></h2>${quoteChart(x, '')}</section>`;
+}
+
+export function renderListingResearch(l, x, theses, { apiOrigin, snapshot, chartAtTop = false }) {
   const tv = x.tradingview;
   const sym = tv.symbol;
   const common = { symbol: sym, locale: 'en', colorTheme: 'dark', isTransparent: true };
@@ -128,7 +145,7 @@ export function renderListingResearch(l, x, theses, { apiOrigin, snapshot }) {
   ].filter(Boolean);
   const linkList = `<ul class="mkt-links">${links.map((a) => `<li>${a}</li>`).join('')}</ul>`;
   const block = (title, cap, body) => `<div class="mkt"><h3>${esc(title)}</h3>${cap.status === 'unavailable' ? `<p class="status">Not available here: ${esc(cap.reason)} Use the links below.</p>` : body}</div>`;
-  const chart = block('Quote and chart', tv.chart, `${statusLine(tv.chart, 'The chart')}${widget('symbol-info', 'info', { ...common, width: '100%' }, tv.url, 'The quote loads from TradingView when you reach it.')}${widget('advanced-chart', 'chart', { autosize: true, symbol: sym, interval: 'D', timezone: 'Etc/UTC', theme: 'dark', style: '1', locale: 'en', allow_symbol_change: false, withdateranges: true, range: '12M', hide_side_toolbar: true, details: false, hotlist: false, calendar: false, save_image: false, support_host: 'https://www.tradingview.com' }, tv.url, 'The chart loads from TradingView when you reach it.')}`);
+  const chart = chartAtTop ? `<p class="status">The quote and chart are <a href="#quote">at the top of this page</a>.</p>` : `<div class="mkt">${quoteChart(x, '<h3>Quote and chart</h3>')}</div>`;
   const fin = block('Financials', tv.financials, `${statusLine(tv.financials, 'Financials')}<p class="status">Figures follow TradingView's reporting periods, units and currencies, which may differ from the trading currency of the listing. Check the company's own reports before comparing companies.</p>${widget('financials', 'financials', { ...common, displayMode: 'regular', width: '100%', height: '100%' }, tv.url, 'Financials load from TradingView when you reach them.')}`);
   const prof = block('Company profile', tv.profile, `${statusLine(tv.profile, 'The profile')}${widget('symbol-profile', 'profile', { ...common, width: '100%', height: '100%' }, tv.url, 'The profile loads from TradingView when you reach it.')}`);
   const news = !x.links.yahoo_finance ? `<div class="mkt"><h3>Recent headlines</h3><p class="status">No Yahoo Finance symbol is mapped for this company, so no headlines are read here. Use the links below.</p>${linkList}</div>` : `<div class="mkt" data-news-security="${esc(x.key)}" data-news-api="${esc(apiOrigin)}"><h3>Recent headlines</h3><p class="status news-state">Headlines load from Yahoo Finance's public feed when you reach this block.</p><ul class="sources news-list"></ul><p class="key">Headlines, dates and links only, as the feed lists them for this company's Yahoo Finance symbol (${esc(decodeURIComponent(x.links.yahoo_finance.split('/quote/')[1].replace(/\/$/, '')))}). The feed picks them; some may be about the sector rather than the company. No freshness is promised.</p>${linkList}</div>`;

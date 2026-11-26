@@ -141,8 +141,9 @@ test('copy and navigation: provenance stated, jump links before the widgets', ()
   assert.match(tesla, /keeps a shared copy for up to 30 minutes/);
   assert.doesNotMatch(tesla, /nothing is stored/);
   assert.match(tesla, /reporting periods, units and currencies/);
+  // The quote and chart sit in the page header (26 Nov 2026); the jump links still come before Market data's widgets.
   const jump = tesla.indexOf('class="jump"');
-  assert.ok(jump > 0 && jump < tesla.indexOf('data-tv-widget'));
+  assert.ok(jump > 0 && jump < tesla.indexOf('data-tv-widget', tesla.indexOf('id="market"')));
   assert.match(tesla, /id="deployment-records"/);
   const dir = read('investment/index.html');
   assert.ok(dir.indexOf('href="#theses"') < dir.indexOf('<table'));
@@ -158,4 +159,28 @@ test('thesis order: explicit publication dates newest first, undated records apa
   assert.match(sec, /Publication date not stated by the source <span class="dim">\(3\)/);
   assert.doesNotMatch(tesla, /1,502,601,426,120/);
   assert.doesNotMatch(read('investment/index.html'), /1,502,601,426,120|21,568,122,535|35,190,080/);
+});
+
+test('company header: the chart is offered once, beside the identity and key facts, dark, and only where TradingView offers it', () => {
+  for (const slug of ['tesla', 'schaeffler', 'intuitive-surgical']) {
+    const html = read(`companies/${slug}/index.html`);
+    assert.equal((html.match(/data-tv-widget="advanced-chart"/g) ?? []).length, 1, `${slug}: one chart`);
+    assert.equal((html.match(/data-tv-widget="symbol-info"/g) ?? []).length, 1, `${slug}: one quote`);
+    const head = html.indexOf('<div class="co-head with-chart">');
+    const quote = html.indexOf('id="quote"');
+    const facts = html.indexOf('<div class="co-facts">');
+    assert.ok(head > 0 && head < html.indexOf('<h1>') && html.indexOf('<h1>') < quote && quote < facts && facts < html.indexOf('id="market"'), `${slug}: chart between the intro and the key facts`);
+    assert.ok(html.indexOf('data-tv-widget="advanced-chart"') < facts, `${slug}: the chart is in the header`);
+    assert.match(html, /The quote and chart are <a href="#quote">at the top of this page<\/a>/, slug);
+    assert.match(html, /&quot;theme&quot;:&quot;dark&quot;,&quot;style&quot;:&quot;1&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;backgroundColor&quot;:&quot;#000000&quot;,&quot;gridColor&quot;:&quot;rgba\(242, 242, 242, 0\.06\)&quot;,&quot;allow_symbol_change&quot;:false/, slug);
+  }
+  for (const slug of ['fanuc', 'ubtech']) {
+    const html = read(`companies/${slug}/index.html`);
+    assert.match(html, /<div class="co-head"><div class="co-id">/, `${slug}: no chart column`);
+    assert.doesNotMatch(html, /id="quote"|data-tv-widget="advanced-chart"/, slug);
+    assert.match(html, /<h3>Quote and chart<\/h3><p class="status">Not available here: /, `${slug}: the availability state stays in Market data`);
+  }
+  const css = read('assets/investment.css');
+  assert.match(css, /\.mkt-frame \.tradingview-widget-container iframe\{color-scheme:normal;background:#000\}/);
+  assert.match(css, /grid-template-areas:"id chart" "facts chart"/);
 });
