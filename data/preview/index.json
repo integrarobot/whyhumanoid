@@ -281,7 +281,7 @@
   },
   {
    "id": "software",
-   "snapshot": "2026-11-26T06:38:00Z",
+   "snapshot": "2026-11-26T06:58:06Z",
    "title": "Software and world models",
    "description": "Robot foundation models, VLA models, world models and robotics software.",
    "entries_total": 145,
@@ -317,25 +317,25 @@
     "entries": 142,
     "excluded": [
      {
-      "sheet_row": 77,
+      "sheet_row": 81,
       "list": "software",
       "name": "SOFTWARE FOR UNITREE",
       "reason": "section heading: the rows below it are grouped as \"Software for Unitree\""
      },
      {
-      "sheet_row": 78,
+      "sheet_row": 82,
       "list": "software",
       "name": "SOFTWARE",
       "reason": "repeated header row"
      },
      {
-      "sheet_row": 116,
+      "sheet_row": 121,
       "list": "software",
       "name": "SIMULATORS",
       "reason": "section heading: the rows below it are grouped as \"Simulators\""
      },
      {
-      "sheet_row": 117,
+      "sheet_row": 122,
       "list": "software",
       "name": "SIMULATOR",
       "reason": "repeated header row"
@@ -355,7 +355,7 @@
       "reason": "same address and name as an earlier entry of the same list"
      },
      {
-      "sheet_row": 93,
+      "sheet_row": 98,
       "list": "software",
       "name": "PyRoki",
       "group": "Software for Unitree",
@@ -367,7 +367,7 @@
       "reason": "same address and name as an earlier entry of the same list"
      },
      {
-      "sheet_row": 110,
+      "sheet_row": 115,
       "list": "software",
       "name": "Latent",
       "group": "Software for Unitree",
@@ -419,7 +419,7 @@
         "url": "https://hub.docker.com/r/pollenrobotics/reachy2"
        },
        {
-        "sheet_row": 119,
+        "sheet_row": 124,
         "list": "software",
         "name": "Reachy",
         "url": "https://hub.docker.com/r/pollenrobotics/reachy2"
@@ -431,7 +431,7 @@
       "name": "NVIDIA DreamDojo",
       "entries": [
        {
-        "sheet_row": 80,
+        "sheet_row": 85,
         "list": "software",
         "name": "DreamDojo (NVIDIA)",
         "url": "https://dreamdojo-world.github.io/"
@@ -527,7 +527,7 @@
         "url": "https://arxiv.org/abs/2511.04679"
        },
        {
-        "sheet_row": 98,
+        "sheet_row": 103,
         "list": "software",
         "name": "GentleHumanoid",
         "url": "https://gentle-humanoid.axell.top/"
