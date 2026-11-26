@@ -582,7 +582,15 @@
     "family",
     "review_status",
     "sources",
-    "comparison_summary"
+    "comparison_summary",
+    "component_class",
+    "function",
+    "applications",
+    "technical_specifications",
+    "integration_requirements",
+    "limitations",
+    "evidence_scope",
+    "checked_at"
    ],
    "access": "subscription",
    "category": "components",
@@ -600,6 +608,10 @@
     "measured",
     "main_source_url",
     "review_status",
+    "component_class",
+    "function",
+    "evidence_scope",
+    "checked_at",
     "licence",
     "repository"
    ]
@@ -648,7 +660,15 @@
     "family",
     "review_status",
     "sources",
-    "comparison_summary"
+    "comparison_summary",
+    "component_class",
+    "function",
+    "applications",
+    "technical_specifications",
+    "integration_requirements",
+    "limitations",
+    "evidence_scope",
+    "checked_at"
    ],
    "access": "subscription",
    "category": "components",
@@ -666,6 +686,10 @@
     "measured",
     "main_source_url",
     "review_status",
+    "component_class",
+    "function",
+    "evidence_scope",
+    "checked_at",
     "licence",
     "repository"
    ]

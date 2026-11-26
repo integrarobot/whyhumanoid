@@ -213,6 +213,12 @@ function components(hw, review) {
   const r = review.components;
   const snapshot = isoOf(hw.snapshot);
   const byId = new Map(hw.rows.map((x) => [x.component_id, x]));
+  // The chart places touch-sensing products only (26 Nov 2026): other families have no reviewed date decisions yet and
+  // are declared as excluded, never placed.
+  const TOUCH = new Set(['tactile_sensor', 'tactile_hand']);
+  const touch = (x) => (x.component_class ? TOUCH.has(x.component_class) : ['Tactile sensor', 'Tactile robotic hand'].includes(x.family));
+  const touchRows = hw.rows.filter(touch);
+  const others = hw.rows.length - touchRows.length;
   const points = r.products.map((p) => {
     const row = byId.get(p.id);
     if (!row) fail(`Components ${p.id}: not in the public products`);
@@ -222,20 +228,20 @@ function components(hw, review) {
   });
   for (const x of r.excluded) { const row = byId.get(x.id); if (!row || !String(row[r.field]).includes(x.excerpt)) fail(`Components ${x.id}: exclusion excerpt not found`); }
   const reviewed = new Set([...r.products, ...r.excluded].map((x) => x.id));
-  const missing = hw.rows.filter((x) => !reviewed.has(x.component_id)).map((x) => x.component_id);
+  const missing = touchRows.filter((x) => !reviewed.has(x.component_id)).map((x) => x.component_id);
   if (missing.length) fail(`Components: products without a reviewed date decision: ${missing.join(', ')}`);
   clampReveal(points, snapshot);
   const y0 = Math.min(...points.map((p) => +p.date.slice(0, 4)));
   return {
     id: 'components', label: 'Components', path: '/components/', type: 'lanes',
     title: 'When each tactile sensing product first appeared',
-    subtitle: `${points.length} of ${hw.rows.length} products by the date of their first paper, preprint or launch, grouped by sensing principle.`,
+    subtitle: `${points.length} of ${touchRows.length} touch-sensing products by the date of their first paper, preprint or launch, grouped by sensing principle.${others ? ` The ${others} products of other families are not placed.` : ''}`,
     meaning: r.meaning, unit: 'products', precision: 'year',
     domain: { start: `${y0}-01-01`, end: snapshot }, rows: r.rows, points: points.sort((a, b) => a.x.localeCompare(b.x)),
     final: { dated: points.length, by_row: Object.fromEntries(r.rows.map((x) => [x.key, points.filter((p) => p.row === x.key).length])) },
     summary: `${points.length} products dated from ${y0} to ${points[points.length - 1].date.slice(0, 4)}: ${r.rows.map((x) => `${points.filter((p) => p.row === x.key).length} ${x.label.toLowerCase()}`).join(', ')}. No performance figures are compared: units and test conditions differ.`,
-    coverage: { included: points.length, total: hw.rows.length, unit: 'products', excluded: r.excluded.map((x) => ({ reason: `${byId.get(x.id).name}: ${x.reason}`, count: 1 })), note: 'Hollow mark: a complete robotic hand, not a standalone sensor.' },
-    status: 'partial', status_note: `${points.length} of ${hw.rows.length} products placed in time; ${hw.rows.length - points.length} cannot be dated from the recorded text.`,
+    coverage: { included: points.length, total: hw.rows.length, unit: 'products', excluded: [...r.excluded.map((x) => ({ reason: `${byId.get(x.id).name}: ${x.reason}`, count: 1 })), ...(others ? [{ reason: 'Products of other component families (actuators, reducers, hands, sensors, compute, power and others): not placed in time; this chart covers touch sensing only', count: others }] : [])], note: 'Hollow mark: a complete robotic hand, not a standalone sensor.' },
+    status: 'partial', status_note: `${points.length} of ${hw.rows.length} products placed in time; ${touchRows.length - points.length} touch-sensing products cannot be dated from the recorded text${others ? ` and ${others} products of other families are outside this chart` : ''}.`,
     sources: [{ label: `Components public product rows, snapshot ${snapshot}`, url: '/data/preview/hardware.json' }],
     table: { head: ['Date', 'Product', 'Principle', 'Event as recorded'], rows: points.map((p) => [p.date, p.label, r.rows.find((x) => x.key === p.row).label, p.note]) },
   };

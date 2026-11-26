@@ -47,7 +47,17 @@ const fmtDay = (iso) => {
 
 // Families: the researched ones from the counts, then the families this release has not researched (coverage gaps,
 // never entries).
-const GAP_FAMILIES = ['Actuators and motors', 'Reducers and gearboxes', 'Batteries and power', 'Compute', 'Cameras and depth sensors', 'Force-torque sensors'];
+// Since 26 Nov 2026 the families are the controlled COMPONENT_CLASS vocabulary: a family without entries is a gap.
+const famCounts = (cm) => cm.coverage.counts.by_component_class ?? Object.fromEntries(Object.entries(cm.coverage.counts.by_family).map(([f, k]) => [W.familyOf({ family: f }), k]));
+const plural = (k, n) => (n === 1 ? W.FAMILIES[k]?.label ?? W.familyLabel(k) : W.FAMILIES[k]?.plural ?? W.familyLabel(k)).toLowerCase();
+const reviewLine = (cm) => {
+  const r = cm.coverage.counts.by_review ?? { pending: cm.coverage.counts.products };
+  const n = cm.coverage.counts.products;
+  const checked = (r.checked ?? 0) + (r.partial ?? 0);
+  if (!checked) return `<span class="ev ev-pending">Research compilation · original sources still being reviewed</span> Every record comes from one research compilation. Its individual claims have not yet been checked against their original sources.`;
+  const parts = [r.checked ? `${r.checked} checked against their primary sources` : null, r.partial ? `${r.partial} checked for their identity and selected figures only, with the rest of their imported claims still pending` : null, r.pending ? `${r.pending} still imported research awaiting review` : null].filter(Boolean);
+  return `<span class="ev ev-partial">${checked} of ${n} checked against primary sources</span> Of the ${n} records, ${parts.join('; ')}. Each passport states its own review scope and date. A figure checked against the maker's document is the maker's statement, not an independent test.`;
+};
 
 function head(cm, c) {
   const n = cm.coverage.counts;
@@ -57,42 +67,46 @@ function head(cm, c) {
 <p class="kicker">Category ${c.index} of ${c.total} · Components${c.badge}</p>
 <h1>Components</h1>
 <p class="lede">The building blocks of embodied intelligence.</p>
-<p class="ask">What each part senses, how it does it and what constrains it. Detailed coverage currently focuses on touch: ${n.by_family['Tactile sensor'] ?? 0} tactile sensors and ${n.by_family['Tactile robotic hand'] ?? 0} tactile research hand. Other component families are listed as gaps, not filled in.</p>
+<p class="ask">What each part does, how it is specified and what constrains it: ${W.FAMILY_ORDER.filter((k) => famCounts(cm)[k]).map((k) => `${famCounts(cm)[k]} ${esc(plural(k, famCounts(cm)[k]))}`).join(', ')}. Families without entries are listed as gaps, not filled in.</p>
 <dl class="cx-counts">
 <div><dt>Physical products</dt><dd>${n.products}</dd></div>
 <div><dt>Commercial</dt><dd>${cls('commercial')}</dd><small>${cls('early_access')} more in early access</small></div>
 <div><dt>Research or open hardware</dt><dd>${cls('research')}</dd></div>
 <div><dt>Discontinued</dt><dd>${cls('discontinued')}</dd></div>
 <div><dt>Related software</dt><dd>${n.software}</dd><small>not counted as hardware</small></div>
+<div><dt>Families covered</dt><dd>${W.FAMILY_ORDER.filter((k) => famCounts(cm)[k]).length}</dd><small>of ${W.FAMILY_ORDER.length} in the vocabulary</small></div>
 <div><dt>Source references</dt><dd>${n.references}</dd><small>entries, not all independent</small></div>
 </dl>
-<p class="cx-ev"><span class="ev ev-pending">Research compilation · original sources still being reviewed</span> Every record comes from one research compilation, added on ${esc(fmtDay(cm.coverage.snapshot.exported_at))}. Its individual claims have not yet been checked against their original sources. Values are shown as the sources state them, with their conditions.</p>
-<p class="cx-access" id="cx-access" data-public="${pub}" data-total="${n.products}"><b>All ${n.products} products</b> are listed with a public summary: maker, country, year, status, sensing principle, what it measures and the main source. The full technical passports (resolution, force, rates, size and mass, interfaces and software, durability, prices and BOM estimates, papers, users, advantages and drawbacks, the source of every field), the technical filters and the full side-by-side comparison come with the subscription.</p>
-<nav class="views" aria-label="Components views"><a href="#approaches">Sensing approaches</a><a href="#catalogue">Catalogue</a><a href="#compare">Compare</a><a href="#software">Related software</a><a href="#method">Coverage and method</a></nav>
+<p class="cx-ev">${reviewLine(cm)} Values are shown as the sources state them.</p>
+<p class="cx-access" id="cx-access" data-public="${pub}" data-total="${n.products}"><b>All ${n.products} products</b> are listed with a public summary: family, maker, country, year, status, what the part does, the kind of evidence behind its record and the main source. The full technical passports (every specification with its unit, conditions, source and check date, integration requirements, limitations, prices and the source of each claim) and the side-by-side comparison of figures come with the <a href="/subscribe/">subscription</a>.</p>
+<nav class="views" aria-label="Components views"><a href="#families">Families</a><a href="#catalogue">Catalogue</a><a href="#approaches">Touch sensing approaches</a><a href="#compare">Compare</a><a href="#software">Related software</a><a href="#method">Coverage and method</a></nav>
 </header>`;
 }
 
 function families(cm) {
-  const fam = Object.entries(cm.coverage.counts.by_family);
-  return `<section class="cx-fam" aria-labelledby="fam-h"><h2 id="fam-h" class="sr">Component families</h2>
-<ul class="fams">${fam.map(([f, k]) => `<li class="fam on"><b>${k}</b><span>${esc(f)}${/s$/.test(f) || k === 1 ? '' : 's'}</span><small>Researched</small></li>`).join('')}${GAP_FAMILIES.map((f) => `<li class="fam gap"><b aria-hidden="true">–</b><span>${esc(f)}</span><small>Not yet researched: no entries</small></li>`).join('')}</ul></section>`;
+  const counts = famCounts(cm);
+  const on = W.FAMILY_ORDER.filter((k) => counts[k]);
+  const gaps = W.FAMILY_ORDER.filter((k) => !counts[k]);
+  return `<section class="cx-fam" id="families" aria-labelledby="fam-h"><h2 id="fam-h" class="sr">Component families</h2>
+<ul class="fams">${on.map((k) => `<li class="fam on"><a href="/components/?fam=${k}#catalogue"><b>${counts[k]}</b><span>${esc(W.FAMILIES[k][counts[k] === 1 ? 'label' : 'plural'])}</span></a><small>Researched</small></li>`).join('')}${gaps.map((k) => `<li class="fam gap"><b aria-hidden="true">–</b><span>${esc(W.FAMILIES[k].plural)}</span><small>Not yet researched: no entries</small></li>`).join('')}</ul></section>`;
 }
 
 function approaches(cm, companyPath) {
   const n = cm.coverage.counts;
   const total = n.products;
+  const touch = Object.entries(n.by_principle).filter(([k]) => k !== 'not_applicable').reduce((a, [, v]) => a + v, 0);
   const bar = W.CLASS_ORDER.filter((k) => n.by_class[k]).map((k) => `<span class="seg cls-${k}" style="flex:${n.by_class[k]} 0 0" title="${esc(W.CLASS_LABEL[k])}: ${n.by_class[k]}"></span>`).join('');
   const legend = W.CLASS_ORDER.filter((k) => n.by_class[k]).map((k) => `<li><i class="sw cls-${k}" aria-hidden="true"></i>${esc(W.CLASS_LABEL[k])} <b>${n.by_class[k]}</b></li>`).join('');
   const cards = W.PRINCIPLES.filter((p) => p.key !== 'simulation' && n.by_principle[p.key]).sort((a, z) => n.by_principle[z.key] - n.by_principle[a.key]).map((p) => {
     const pub = cm.products.filter((r) => W.principleOf(r.principle) === p.key);
     const more = n.by_principle[p.key] - pub.length;
-    return `<li class="ap" data-principle="${p.key}"><h3>${esc(p.label)} <span class="cn">${n.by_principle[p.key]} of ${total}</span></h3>
+    return `<li class="ap" data-principle="${p.key}"><h3>${esc(p.label)} <span class="cn">${n.by_principle[p.key]} of ${touch}</span></h3>
 <dl><dt>What it gives</dt><dd>${esc(p.gives)}</dd><dt>What to watch</dt><dd>${esc(p.limits)}</dd></dl>
 <p class="ap-p">${pub.map((r) => `<a href="${W.pathOf(r.component_id)}">${esc(r.name)}</a>`).join(', ') || '<span class="na">No public passport</span>'}${more > 0 ? ` <span class="locked" data-more="${more}">+ ${more} with the subscription</span>` : ''}</p></li>`;
   }).join('');
   return `<section class="atlas-sec" id="approaches" aria-labelledby="ap-h">
-<div class="sec-h"><h2 id="ap-h">How each approach senses touch</h2>
-<p>Grouped by the sensing principle the record states. The notes summarise what this kind of sensor gives and what constrains it in the records of this catalogue; they are not a ranking, and a product's own passport always takes precedence.</p></div>
+<div class="sec-h"><h2 id="ap-h">Touch sensing: how each approach senses</h2>
+<p>The ${touch} touch-sensing products, grouped by the sensing principle the record states. Other families are not grouped by sensing principle. The notes summarise what this kind of sensor gives and what constrains it in the records of this catalogue; they are not a ranking, and a product's own passport always takes precedence.</p></div>
 <div class="avail" aria-labelledby="av-h"><h3 id="av-h">Availability of the ${total} products</h3>
 <div class="avbar" role="img" aria-label="${esc(W.CLASS_ORDER.filter((k) => n.by_class[k]).map((k) => `${W.CLASS_LABEL[k]}: ${n.by_class[k]}`).join(', '))}">${bar}</div>
 <ul class="avleg">${legend}</ul>
@@ -109,11 +123,12 @@ function catalogue(cm, companyPath) {
   const locked = cm.total - cm.products.length;
   return `<section class="atlas-sec" id="catalogue" aria-labelledby="cat-h">
 <div class="sec-h"><h2 id="cat-h">Catalogue</h2>
-<p>One product, model or version per entry; the manufacturer or laboratory is an attribute. Filters use explicit rules over each record's own words: "mentions shear" means the measured quantities mention it, not that it is calibrated.</p></div>
+<p>One product, model or version per entry; the manufacturer or laboratory is an attribute, and a part is never a whole robot. The family comes from each record's reviewed class. The touch filters use explicit rules over each record's own words: "mentions shear" means the measured quantities mention it, not that it is calibrated.</p></div>
 <div class="cx-filters" id="cx-filters" hidden>
 <label class="fsel fsearch"><span class="fl">Search</span><input type="search" id="f-q" placeholder="Name, maker, principle, quantity" autocomplete="off"></label>
+${sel('f-fam', 'Family', 'Any family', W.FAMILY_ORDER.filter((k) => famCounts(cm)[k]).map((k) => opt(k, `${W.FAMILIES[k].plural} (${famCounts(cm)[k]})`)).join(''))}
 ${sel('f-class', 'Availability', 'Any availability', W.CLASS_ORDER.filter((k) => k !== 'software').map((k) => opt(k, W.CLASS_LABEL[k])).join(''))}
-${sel('f-principle', 'Sensing approach', 'Any approach', W.PRINCIPLES.filter((p) => p.key !== 'simulation').map((p) => opt(p.key, p.label)).join(''))}
+${sel('f-principle', 'Touch sensing approach', 'Any approach', W.PRINCIPLES.filter((p) => p.key !== 'simulation').map((p) => opt(p.key, p.label)).join(''))}
 ${sel('f-q2', 'Mentions', 'Any quantity', W.QUANTITIES.map((q) => opt(q.key, q.label)).join(''))}
 ${adv(sel('f-if', 'Interface', 'Any interface', W.INTERFACES.filter((i) => i.key !== 'library').map((i) => opt(i.key, i.label)).join('')))}
 ${adv(sel('f-ros', 'ROS', 'Any', Object.entries(W.ROS_LABEL).map(([k, l]) => opt(k, l)).join('')))}
@@ -134,7 +149,7 @@ function compare(cm) {
   const options = (sel) => `<option value="">None</option>${[...cm.products].sort((a, b) => a.name.localeCompare(b.name)).map((r) => `<option value="${esc(r.component_id)}"${r.component_id === sel ? ' selected' : ''}>${esc(r.name)}</option>`).join('')}`;
   return `<section class="atlas-sec" id="compare" aria-labelledby="cmp-h">
 <div class="sec-h"><h2 id="cmp-h">Compare up to three</h2>
-<p>Every field side by side, grouped by meaning, with each value's state: not available in the source, not applicable, varying by model, stated by the maker, or measured under paper conditions. There is no chart: across these products units, configurations, streams and conditions differ, so a single scale would mislead. Nothing is ranked by pixels, rate or price.</p></div>
+<p>Products of one family are compared on that family's figures, each with its unit and conditions; products of different families only on the fields they share. Every field side by side, grouped by meaning, with each value's state: not available in the source, not applicable, varying by model, stated by the maker, or measured under paper conditions. There is no chart: across these products units, configurations, streams and conditions differ, so a single scale would mislead. Nothing is ranked by pixels, rate or price.</p></div>
 <div class="pick" role="group" aria-label="Products to compare">
 ${[0, 1, 2].map((i) => `<label><span class="fl">Product ${i + 1}</span><select class="cmp-s" data-i="${i}">${options(ids[i])}</select></label>`).join('')}
 </div>
@@ -162,7 +177,9 @@ function method(cm) {
 <div class="cols">
 <div><h3>What the records are</h3><ul class="fine">
 <li>One product, model or version per record. A family entry that spans several models keeps each figure with the model it names, and is flagged as varying.</li>
-<li>All records come from one research compilation, added on the same day. Specifications, prices, integrations and licences are as the sources state them; checking each against its original source is still pending.</li>
+<li>Each record states its review scope: imported research still pending, checked against primary sources for its identity and selected figures, or checked. Specifications, prices, integrations and licences are as the sources state them.</li>
+<li>A figure checked against the maker's datasheet or the paper is that maker's or author's statement under their conditions, not an independent performance test. Customers, prices, certifications and supply to humanoid makers are recorded only when a source states them.</li>
+<li>A component is a part: a cell or a battery-management chip is not a robot battery pack, a reducer is not an actuator, and a sensor module is not a robot.</li>
 <li>Advantages and drawbacks are the compilation's summary, attributed as such, not an independent assessment.</li></ul></div>
 <div><h3>Reading the numbers</h3><ul class="fine">
 <li>Camera pixels are not calibrated taxels. Spatial resolution, localisation error, force resolution and force accuracy are different quantities.</li>
@@ -170,10 +187,10 @@ function method(cm) {
 <li>List prices, distributor figures, third-party estimates and author BOM estimates stay separate, in their original currency and with their date; nothing is converted or ranked.</li>
 <li>"Not available" means the source does not give the value; "not applicable" means it does not apply; neither is zero.</li></ul></div>
 <div><h3>Known gaps</h3><ul class="fine">
-<li>Weight is missing for almost every product.</li>
+<li>Weight is missing for most touch sensors.</li>
 <li>Optical sensors rarely publish a force range or resolution, because they are not sold force-calibrated.</li>
 <li>Several prices are on request or not public, several research sensors publish no sampling rate, and some hardware licences are not stated.</li>
-<li>Only touch has been researched so far: other families are gaps, not empty markets.</li></ul></div>
+<li>${W.FAMILY_ORDER.filter((k) => !famCounts(cm)[k]).length ? `Families not yet researched (${esc(W.FAMILY_ORDER.filter((k) => !famCounts(cm)[k]).map((k) => W.FAMILIES[k].plural.toLowerCase()).join(', '))}) are gaps, not empty markets.` : 'Every family of the vocabulary has entries; within each, coverage is a selection of specific models, not the whole market.'}</li></ul></div>
 </div></section>`;
 }
 
@@ -203,13 +220,13 @@ export function renderProductPage(cm, r, companyPath) {
   });
   return `<div class="cx cx-prod" id="cx" data-id="${esc(r.component_id)}">
 <header class="cx-head">
-<p class="kicker">${sw ? 'Related software' : 'Component'} · ${esc(r.family ?? 'Family not recorded')} · <span class="cls cls-${f.cls}">${esc(W.CLASS_LABEL[f.cls])}</span></p>
+<p class="kicker">${sw ? 'Related software' : 'Component'} · ${esc(f.fam === 'unclassified' ? r.family ?? 'Family not recorded' : W.familyLabel(f.fam))} · <span class="cls cls-${f.cls}">${esc(W.CLASS_LABEL[f.cls])}</span></p>
 <h1>${esc(r.name)}</h1>
-<p class="lede">${esc(r.principle ?? 'Sensing principle not recorded')}</p>
+<p class="lede">${esc(r.function ?? r.principle ?? 'What it does is not recorded')}</p>
 <p class="pc-m">${makersHtml(cm, r.component_id, companyPath)}</p>
 ${sw ? '<p class="cx-ev">Software, not a physical component: it is not counted in the Components products.</p>' : ''}
 <p class="cx-ev pp-access">${W.reviewBadge(r)} Public summary: values as the sources state them; the full passport is with the subscription.</p>
-<nav class="views" aria-label="On this page">${W.SECTIONS.map((s) => `<a href="#sec-${s.key}">${esc(s.title)}</a>`).join('')}<a href="#sec-sources">Sources</a></nav>
+<nav class="views" aria-label="On this page">${W.sectionsFor(r).map((s) => `<a href="#sec-${s.key}">${esc(s.title)}</a>`).join('')}<a href="#sec-sources">Sources</a></nav>
 </header>
 ${W.passportHtml(r, { level: 2 }).replace(/<section class="pp-sec" data-sec="([a-z]+)">/g, '<section class="pp-sec" data-sec="$1" id="sec-$1">')}
 <aside class="pp-lockbox" aria-label="Full passport"><p><b>Public summary.</b> The full technical passport of ${esc(r.name)} (every specification with its conditions and units, interfaces and software, prices and BOM estimates with currency and date, papers, users, advantages and drawbacks, uncertainties and the source of every field) comes with the data subscription. Subscribers see it on this page after signing in.</p><p><a class="btn" href="/subscribe/">See the subscription</a> <a href="/app/">Sign in</a></p></aside>

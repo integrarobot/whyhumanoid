@@ -25,7 +25,7 @@ export function componentsCore() {
 }
 
 const KEYS = ['title', 'note', 'snapshot', 'counts', 'ids'];
-const COUNT_KEYS = ['products', 'software', 'references', 'by_class', 'by_principle', 'by_family', 'notes_rows'];
+const COUNT_KEYS = ['products', 'software', 'references', 'by_class', 'by_principle', 'by_family', 'by_component_class', 'by_review', 'notes_rows'];
 export function coverageProblems(c) {
   const problems = [];
   for (const k of Object.keys(c)) if (!KEYS.includes(k)) problems.push(`field ${k} is not public`);
@@ -34,6 +34,7 @@ export function coverageProblems(c) {
   if (sum(c.counts?.by_class) !== c.counts?.products) problems.push('by_class does not add up to the products');
   if (sum(c.counts?.by_principle) !== c.counts?.products) problems.push('by_principle does not add up to the products');
   if (sum(c.counts?.by_family) !== c.counts?.products) problems.push('by_family does not add up to the products');
+  for (const k of ['by_component_class', 'by_review']) if (c.counts?.[k] && sum(c.counts[k]) !== c.counts.products) problems.push(`${k} does not add up to the products`);
   if ((c.ids?.products ?? []).length !== c.counts?.products || (c.ids?.software ?? []).length !== c.counts?.software) problems.push('ids do not match the counts');
   for (const id of [...(c.ids?.products ?? []), ...(c.ids?.software ?? [])]) if (!/^CMP-[A-Z]{3}-\d{3,}$/.test(id)) problems.push(`id ${id} is not a component id`);
   if (/docs\.google|drive\.google|spreadsheets\/d\//i.test(JSON.stringify(c))) problems.push('holds a private link');
@@ -57,8 +58,11 @@ export function coverageFromExport(values, { exportedAt }) {
       software: software.length,
       references: [...products, ...software].reduce((n, r) => n + W.parseSources(r.sources).length, 0),
       by_class: tally(products, (r) => W.classOf(r.group)),
-      by_principle: tally(products, (r) => W.principleOf(r.principle)),
+      by_principle: tally(products, (r) => W.facetsOf(r).principle),
       by_family: tally(products, (r) => r.family),
+      // Since 26 Nov 2026: the controlled family (COMPONENT_CLASS) and the review state of every product, counts only.
+      by_component_class: tally(products, (r) => W.familyOf(r)),
+      by_review: tally(products, (r) => W.reviewState(r)),
       notes_rows: componentBlocks(tabValues(values, DATASETS_BY_ID.get('hardware'))).notes.length,
     },
     ids: { products: products.map((r) => r.component_id), software: software.map((r) => r.component_id) },
