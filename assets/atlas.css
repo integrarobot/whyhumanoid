@@ -6,8 +6,8 @@
 
 /* ---- head ---- */
 .atlas-head{padding:8px 0 10px}
-.atlas-head h1{font-size:clamp(40px,5.6vw,72px);letter-spacing:-.01em;margin:2px 0 10px}
-.atlas-head .lede{font-size:clamp(17px,1.6vw,21px);max-width:58ch;margin:0 0 22px;color:var(--bone-2)}
+.atlas-head h1{margin:2px 0 10px}
+.atlas-head .lede{max-width:58ch;margin:0 0 22px;color:var(--bone-2)}
 .atlas-counts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 0 20px;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line)}
 .atlas-counts div{padding:12px 18px 12px 0}
 .atlas-counts div + div{padding-left:18px;border-left:1px solid var(--line)}
@@ -56,7 +56,7 @@
   .panel > .fine{grid-area:f;align-self:start}
 }
 .panel{border:1px solid var(--line-2);background:var(--ink-1);padding:22px clamp(16px,2.2vw,28px) 22px}
-.panel-h h3{font-family:var(--f-serif);font-weight:400;font-size:clamp(26px,2.4vw,32px);color:var(--bone);margin:6px 0 6px;line-height:1.1}
+.panel-h h3{font-family:var(--f-serif);font-weight:400;font-size:var(--fs-panel);letter-spacing:0;text-transform:none;color:var(--bone);margin:6px 0 6px;line-height:1.1}
 .panel-h h3 span{display:block;font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;color:var(--bone-3);margin:6px 0 0}
 .eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3);margin:0;display:flex;align-items:center;flex-wrap:wrap;gap:4px}
 .sub{font-size:14px;color:var(--bone-2);margin:0 0 14px;max-width:70ch}
@@ -128,7 +128,7 @@ button.v:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 .detail .hint{color:var(--bone-3);font-size:14px;margin:0}
 .res-detail{margin-top:22px}
 .d-k{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3);margin:0;display:flex;align-items:center;flex-wrap:wrap;gap:4px}
-.d-t{font-family:var(--f-serif);font-weight:400;font-size:28px;color:var(--bone);margin:6px 0 8px;line-height:1.1}
+.d-t{font-family:var(--f-serif);font-weight:400;font-size:var(--fs-panel);letter-spacing:0;text-transform:none;color:var(--bone);margin:6px 0 8px;line-height:1.1}
 .d-d,.d-f{font-size:14.5px;color:var(--bone-2);margin:0 0 10px}
 .d-f b{color:var(--bone)}
 .d-caps{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
@@ -181,7 +181,7 @@ button.v:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 
 /* ---- compare ---- */
 .pick{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3);margin:0 0 12px;max-width:100%}
-.pick select{min-height:42px;max-width:100%;background:var(--ink-1);color:var(--bone);border:1px solid var(--line-2);padding:0 10px;font:inherit;font-family:var(--f-sans);font-size:14px;letter-spacing:0;text-transform:none}
+.pick select{min-height:42px;max-width:100%;background:var(--ink-1);color:var(--bone);border:1px solid var(--line-2);padding:0 10px;font:inherit;font-family:var(--f-sans);font-size:var(--fs-control);letter-spacing:0;text-transform:none}
 .cmp-h{font-size:14px;color:var(--bone-2);margin:0 0 8px}
 #cmp-out .chart{border:1px solid var(--line);padding:10px 14px;background:var(--ink-1)}
 .excl{font-size:13.5px;color:var(--bone-3);margin:12px 0 0;max-width:92ch}

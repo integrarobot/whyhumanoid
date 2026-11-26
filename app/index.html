@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=JetBrains+Mono:wght@300..600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap">
 <style>
 :root{
   color-scheme:dark;
@@ -27,17 +27,21 @@
   --ok:#8CC7A1; --warn:#D9BE5C; --crit:#DE8574;
   --f-sans:"Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --fs-label:10.5px; --track-label:.09em;
+  /* The shared type scale of assets/pages.css (Integrators, 26 Nov 2026), same values. */
+  --f-serif:"Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --fs-panel:clamp(26px,2.4vw,32px); --fs-card-sub:22px;
+  --fs-label:12px; --fs-th:10.5px; --track-label:.06em;
   --gut:clamp(16px, 4vw, 40px);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--ink-0);color:var(--bone);font:15px/1.5 var(--f-sans)}
+body{margin:0;background:var(--ink-0);color:var(--bone);font:16px/1.55 var(--f-sans)}
+@media (max-width:640px){body{font-size:15.5px}}
 a{color:var(--amber)}
 [hidden]{display:none!important}
 .lbl{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3);font-weight:400}
 header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;padding:10px var(--gut);min-height:56px;background:color-mix(in srgb, var(--ink-0) 94%, transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--bone);font-weight:600;font-size:19px;white-space:nowrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--bone);font-weight:600;letter-spacing:.01em;white-space:nowrap}
 .brand .sq{width:9px;height:9px;background:var(--amber)}
 .brand .sub{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--amber);font-weight:400}
 /* Narrow phones: the subtitle wraps under the name instead of pushing the page sideways. */
@@ -51,7 +55,7 @@ main{padding:24px var(--gut) 64px;max-width:1380px;margin:0 auto}
 .notice{border-left:2px solid var(--amber);background:var(--amber-3);padding:12px 14px;margin:0 0 18px}
 .notice.error{border-left-color:var(--crit)}
 .panel{border:1px solid var(--line);background:var(--ink-1);padding:18px 20px;margin:0 0 18px}
-.panel h1{margin:0 0 6px;font-size:clamp(22px,2.4vw,32px);font-weight:560;letter-spacing:-.01em}
+.panel h1{margin:0 0 6px;font-family:var(--f-serif);font-size:var(--fs-panel);font-weight:400;letter-spacing:0;line-height:1.1}
 .panel p{margin:6px 0;color:var(--bone-2);max-width:78ch}
 .panel form{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 input[type=email],input[type=search]{flex:1 1 240px;min-width:0;background:var(--ink-0);border:1px solid var(--line-2);color:var(--bone);padding:9px 10px;font:inherit;font-size:15px;min-height:40px}
@@ -75,7 +79,7 @@ input[type=email],input[type=search]{flex:1 1 240px;min-width:0;background:var(-
 .db-index a[aria-current="true"]{color:var(--amber);border-left-color:var(--amber);background:var(--amber-3)}
 .db-index a .n{font-family:var(--f-mono);font-size:12px;color:var(--bone-3)}
 .db-panel-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:12px}
-.db-panel-head h2{margin:0;font-size:clamp(20px,2vw,28px);font-weight:560}
+.db-panel-head h2{margin:0;font-family:var(--f-serif);font-size:var(--fs-panel);font-weight:400;line-height:1.1}
 .db-panel-head p{margin:6px 0 0;color:var(--bone-3);font-size:13px;max-width:72ch}
 .db-hint{color:var(--bone-2)!important}
 .db-hint b{color:var(--amber);font-weight:500}
@@ -87,7 +91,7 @@ input[type=email],input[type=search]{flex:1 1 240px;min-width:0;background:var(-
 .dst.op{color:var(--ok);border-color:var(--ok)}.dst.pilot{color:var(--warn);border-color:var(--warn)}.dst.ann{color:var(--bone-2)}.dst.unc{color:var(--crit);border-color:var(--crit)}
 .db-scroll{overflow-x:auto;border:1px solid var(--line)}
 .db-table{width:100%;border-collapse:collapse;font-size:13px}
-.db-table th{position:sticky;top:0;background:var(--ink-2);text-align:left;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--bone-3);font-weight:400;padding:9px 10px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+.db-table th{position:sticky;top:0;background:var(--ink-2);text-align:left;font-family:var(--f-mono);font-size:var(--fs-th);letter-spacing:.04em;text-transform:uppercase;color:var(--bone-3);font-weight:400;padding:9px 10px;border-bottom:1px solid var(--line-2);white-space:nowrap}
 .db-table td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;max-width:34ch;overflow-wrap:anywhere;color:var(--bone)}
 .db-table td.num{font-family:var(--f-mono);color:var(--bone-3);white-space:nowrap}
 .db-table td.stc,.db-table td.opc{width:1%;white-space:nowrap}
@@ -138,7 +142,7 @@ a.db-open{display:inline-flex;align-items:center;text-decoration:none}
 .by{color:var(--bone-3);font-weight:400}
 .rel-meta{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
 .rel{margin:22px 0 0}
-.rel > h3{margin:0 0 10px;font-size:18px;font-weight:560}
+.rel > h3{margin:0 0 10px;font-family:var(--f-serif);font-size:var(--fs-card-sub);font-weight:400}
 .rel h4{margin:18px 0 8px;color:var(--amber);font-weight:400}
 .rel-kv{border:1px solid var(--line);padding:14px 16px;background:var(--ink-1)}
 .dep{border:1px solid var(--line);background:var(--ink-1);margin:0 0 10px}
@@ -165,7 +169,7 @@ html.dlg-open{overflow:hidden}
 .db-dlg::backdrop{background:rgba(5,6,8,.74)}
 .db-dlg-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:16px 20px 12px;border-bottom:1px solid var(--line)}
 .db-dlg-id{min-width:0}
-.db-dlg-head h3{margin:6px 0 4px;font-size:clamp(18px,2vw,24px);font-weight:560;line-height:1.25;overflow-wrap:anywhere}
+.db-dlg-head h3{margin:6px 0 4px;font-family:var(--f-serif);font-size:var(--fs-card-sub);font-weight:400;line-height:1.2;overflow-wrap:anywhere}
 .db-dlg-head p{margin:0}
 .db-dlg-body{flex:1 1 auto;overflow-y:auto;padding:16px 20px 22px;overscroll-behavior:contain}
 .db-dlg-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 20px;border-top:1px solid var(--line)}
@@ -196,7 +200,6 @@ html.dlg-open{overflow:hidden}
   .db-dlg-foot{padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
   .db-dlg-foot button{flex:1 1 0}
   .db-dlg-foot .lbl{display:none}
-  .brand{font-size:17px}
   .claim{grid-template-columns:minmax(0,1fr)}
   .claim .db-open{grid-column:1;grid-row:auto;width:100%;min-height:44px;justify-content:center}
   .rel-kv{padding:12px}

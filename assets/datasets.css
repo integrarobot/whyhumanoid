@@ -19,7 +19,7 @@
 .preset[aria-pressed="true"]{border-color:var(--amber-hi);color:var(--bone);box-shadow:inset 3px 0 0 var(--amber-hi)}
 .fgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:8px;align-items:end}
 .fsel{display:grid;gap:3px;min-width:0}
-.fsel select,.pick select{width:100%;min-height:40px;background:var(--ink-1);color:var(--bone);border:1px solid var(--line-2);padding:0 8px;font:inherit;font-size:14px}
+.fsel select,.pick select{width:100%;min-height:40px;background:var(--ink-1);color:var(--bone);border:1px solid var(--line-2);padding:0 8px;font:inherit;font-size:var(--fs-control)}
 .fsel select:focus-visible,.pick select:focus-visible{outline:2px solid var(--amber);outline-offset:1px}
 .fsel select.on{border-color:var(--amber-hi)}
 .fstat{margin:8px 0 0;font-size:13.5px;color:var(--bone-2);min-height:1.4em}
@@ -29,7 +29,7 @@
 .gl-legend li{display:flex;align-items:center;gap:6px}
 .lanes{display:grid;gap:18px;min-width:0}
 .lane{border-top:1px solid var(--line-2);padding-top:10px;margin:0}
-.lane-h h3{margin:0;font-size:19px}
+.lane-h h3{margin:0;font-family:var(--f-serif);font-weight:400;font-size:var(--fs-card);letter-spacing:0;text-transform:none;color:var(--bone);line-height:1.1}
 .lane-h p{margin:4px 0 10px;font-size:13.5px;color:var(--bone-3);max-width:80ch}
 .dtiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:6px}
 .dtile{display:grid;grid-template-columns:16px minmax(0,1fr);column-gap:9px;align-items:start;min-height:52px;padding:8px 10px;border:1px solid var(--line);color:var(--bone);text-decoration:none;background:color-mix(in srgb,var(--bone) 2%,transparent);transition:opacity .15s,border-color .15s}
@@ -51,7 +51,7 @@
 .skey{margin:0 0 18px;display:flex;flex-wrap:wrap;gap:6px 22px}
 .kb{display:inline-block;width:34px;height:10px;vertical-align:0;background:var(--bone-2);margin-right:4px}
 .slane{margin:22px 0 0}
-.slane h3{font-size:19px;margin:0 0 10px;padding-top:10px;border-top:1px solid var(--line-2)}
+.slane h3{font-family:var(--f-serif);font-weight:400;font-size:var(--fs-card);letter-spacing:0;text-transform:none;color:var(--bone);line-height:1.1;margin:0 0 10px;padding-top:10px;border-top:1px solid var(--line-2)}
 .spanels{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,430px),1fr));gap:10px;align-items:start}
 .spanel{border:1px solid var(--line);background:var(--ink-1);padding:12px 14px 12px}
 .spanel header h4{margin:0;font-size:15.5px;font-family:var(--f-sans);font-weight:600;color:var(--bone)}
@@ -97,7 +97,7 @@
 
 /* ---- passports ---- */
 .query{border:1px solid var(--line-2);padding:12px 14px;margin:0 0 18px}
-.query h3{margin:0 0 6px;font-size:17px}
+.query h3{margin:0 0 6px;font-family:var(--f-serif);font-weight:400;font-size:var(--fs-card-sub);letter-spacing:0;text-transform:none;color:var(--bone)}
 .qcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
 .qcols h4{margin:0 0 4px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3);font-weight:400}
 .qcols ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}

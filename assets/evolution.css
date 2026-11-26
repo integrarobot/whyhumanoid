@@ -7,7 +7,7 @@
 .evo .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-3);margin:0}
 .evo .lbl.hi{color:var(--bone)}
 .evo-sec{border:1px solid var(--line);background:var(--surf);padding:clamp(16px,3vw,28px);margin:18px 0 28px}
-.evo-head h2{font-family:var(--f-serif);font-weight:400;text-transform:none;letter-spacing:0;color:var(--bone);font-size:clamp(24px,3.2vw,34px);line-height:1.12;margin:6px 0 6px}
+.evo-head h2{font-family:var(--f-serif);font-weight:400;text-transform:none;letter-spacing:0;color:var(--bone);font-size:var(--fs-feature);line-height:1.12;margin:6px 0 6px}
 .evo-sub{margin:0 0 16px;color:var(--bone-2);font-size:15px;max-width:72ch}
 .evo-chart{container-type:inline-size;min-width:0}
 .evo-fig{display:flex;gap:10px;align-items:stretch;min-width:0}
@@ -95,6 +95,7 @@
 .evo-data{margin-top:12px;font-size:14px;color:var(--bone-2)}
 .evo-data summary{cursor:pointer;color:var(--bone);font-size:14px}
 .evo-tbl{font-size:13px}
+.evo-tbl th{font-size:var(--fs-label);font-weight:500;letter-spacing:.05em}
 .evo-ex{margin:4px 0 8px;padding-left:18px;font-size:13px}
 @container (max-width:480px){.evo .mn{display:none}.evo-cl span.mn{visibility:hidden;display:block}.evo-area .ep em{display:none}}
 /* home carousel: one chart at a time, all slides in one grid cell so the height never changes */
