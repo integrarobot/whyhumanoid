@@ -41,6 +41,8 @@ test('pages.css holds the type scale and the base roles use it', () => {
   assert.match(css, /\.lede\{font-size:var\(--fs-intro\)/);
   assert.match(css, /h2\{font-family:var\(--f-mono\);font-size:var\(--fs-section\)/);
   assert.match(css, /table\{border-collapse:collapse;width:100%;font-size:var\(--fs-table\)\}/);
+  assert.match(css, /--fs-th:10\.5px;--fs-card-body:14\.5px/);
+  assert.match(css, /th\{font-family:var\(--f-mono\);font-size:var\(--fs-th\);font-weight:400;color:var\(--bone-3\);letter-spacing:\.04em;text-transform:uppercase;/, 'column headers take the Integrators comparison-table role');
 });
 
 test('no page stylesheet sets its own display or intro size again', () => {
@@ -60,6 +62,13 @@ test('the home page and the app use the same display, intro, feature and label s
     const app = read(f);
     assert.match(app, /family=Instrument\+Serif/, `${f} loads the display face`);
     assert.match(app, /--fs-panel:clamp\(26px,2\.4vw,32px\);/, f);
-    assert.match(app, /--fs-label:12px;/, f);
+    assert.match(app, /--fs-label:12px; --fs-th:10\.5px;/, f);
   }
+  // Brand and navigation as in the generated header: the body size (16, 15.5 at 640 px and below), weight 600, labels tracked .06em.
+  for (const f of ['index.html', 'server/public/index.html', 'app/index.html']) {
+    const s = read(f);
+    assert.match(s, /\.brand\{[^}]*font-weight:600;letter-spacing:\.01em;/, `${f} brand`);
+    assert.doesNotMatch(s, /\.brand\{[^}]*font-size/, `${f} sizes the brand instead of inheriting the body size`);
+  }
+  assert.match(home, /--track-label:\.06em;/);
 });

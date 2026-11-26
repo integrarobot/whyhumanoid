@@ -3,12 +3,13 @@
 .inv-counters{display:flex;flex-wrap:wrap;gap:10px 22px;margin:8px 0 14px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.04em;color:var(--bone-2)}
 .inv-counters a{color:var(--amber-hi)}
 .jump{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 18px}
-.jump a{font-family:var(--f-mono);font-size:14px;text-decoration:none;border:1px solid var(--line-2);padding:8px 12px;color:var(--bone)}
+.jump a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid var(--line-2);color:var(--bone-2);text-decoration:none;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:760px){.jump a{min-height:38px;padding:0 10px;font-size:var(--fs-caption)}}
 .jump a:hover,.jump a:focus-visible{border-color:var(--amber);color:var(--amber-hi)}
 .inv-counters b{color:var(--bone);font-weight:600}
 .inv-filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin:0 0 12px;padding:12px;border:1px solid var(--line);background:var(--ink-1)}
 .inv-filters label{display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:var(--fs-caption);letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3)}
-.inv-filters input[type=search],.inv-filters select{min-height:42px;font:var(--fs-control) var(--f-sans);color:var(--bone);background:var(--ink-2);border:1px solid var(--line-2);padding:7px 8px;min-width:0;width:100%}
+.inv-filters input[type=search],.inv-filters select{min-height:42px;font:var(--fs-control) var(--f-sans);color:var(--bone);background:var(--ink-2);border:1px solid var(--line-2);padding:7px 8px;min-width:0;width:100%;text-transform:none;letter-spacing:normal}
 .inv-filters .wide{grid-column:1/-1}
 .inv-filters .check{flex-direction:row;align-items:center;gap:8px;letter-spacing:0;text-transform:none;font:14px var(--f-sans);color:var(--bone-2);min-height:42px}
 .inv-filters button,.inv-bar button{min-height:42px;font:var(--fs-label) var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--bone);background:var(--ink-3);border:1px solid var(--line-2);padding:7px 10px;cursor:pointer}

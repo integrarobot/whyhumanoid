@@ -20,7 +20,7 @@
 /* One type scale for every route (Javier, 26 Nov 2026), measured from Integrators, role by role. Serif for display,
    feature, panel and card titles; Sans for intro, body, tables and controls; Mono for section headings, labels,
    navigation and captions. The home page and the subscriber app use the same values. */
-:root{--fs-display:clamp(40px,5.6vw,72px);--fs-intro:clamp(17px,1.6vw,21px);--fs-feature:clamp(24px,3.2vw,34px);--fs-panel:clamp(26px,2.4vw,32px);--fs-card:24px;--fs-card-sub:22px;--fs-section:13px;--fs-label:12px;--fs-caption:11px;--fs-control:15px;--fs-body:16px;--fs-small:14px;--fs-table:13.5px;--fs-meta:13px}
+:root{--fs-display:clamp(40px,5.6vw,72px);--fs-intro:clamp(17px,1.6vw,21px);--fs-feature:clamp(24px,3.2vw,34px);--fs-panel:clamp(26px,2.4vw,32px);--fs-card:24px;--fs-card-sub:22px;--fs-section:13px;--fs-label:12px;--fs-caption:11px;--fs-control:15px;--fs-body:16px;--fs-small:14px;--fs-table:13.5px;--fs-meta:13px;--fs-th:10.5px;--fs-card-body:14.5px}
 *{box-sizing:border-box}
 html{background:var(--ink-0);color:var(--bone);-webkit-text-size-adjust:100%}
 body{margin:0;font:16px/1.55 var(--f-sans);padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
@@ -74,11 +74,11 @@ main input:not([type=checkbox]):not([type=radio]),main select,main textarea{font
 .cta a{display:inline-block;font-weight:600;text-decoration:none;border:1px solid var(--amber);padding:10px 14px;margin-top:6px}
 .cards{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .cards li{border:1px solid var(--line-2);padding:12px 14px}
-.cards span{display:block;color:var(--bone-2);font-size:14px;margin-top:4px}
+.cards span{display:block;color:var(--bone-2);font-size:var(--fs-card-body);line-height:1.5;margin-top:4px}
 .scroll{overflow-x:auto;border:1px solid var(--line)}
 table{border-collapse:collapse;width:100%;font-size:var(--fs-table)}
 th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-family:var(--f-mono);font-size:var(--fs-label);font-weight:500;color:var(--bone-3);letter-spacing:.05em;text-transform:uppercase;background:var(--ink-1);position:sticky;top:0}
+th{font-family:var(--f-mono);font-size:var(--fs-th);font-weight:400;color:var(--bone-3);letter-spacing:.04em;text-transform:uppercase;background:var(--ink-1);position:sticky;top:0}th[scope=row]{font-family:var(--f-sans);font-size:14px;letter-spacing:normal;text-transform:none;position:static}
 .bars td:last-child{white-space:nowrap;width:60%}
 .bar{display:inline-block;height:10px;background:var(--amber);vertical-align:middle;margin-right:8px;min-width:2px}
 .foot{border-top:1px solid var(--line);padding:20px clamp(16px,4vw,40px);color:var(--bone-3);font-size:13px}
@@ -86,7 +86,6 @@ th{font-family:var(--f-mono);font-size:var(--fs-label);font-weight:500;color:var
   body{font-size:15.5px}
   .kv{grid-template-columns:1fr}
   .kv dt{border-bottom:0;padding-bottom:0}
-  .lede{font-size:16.5px}
   h1 em{white-space:normal}
   th:nth-child(4),td:nth-child(4){display:none}
 }

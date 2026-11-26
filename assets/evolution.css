@@ -95,6 +95,7 @@
 .evo-data{margin-top:12px;font-size:14px;color:var(--bone-2)}
 .evo-data summary{cursor:pointer;color:var(--bone);font-size:14px}
 .evo-tbl{font-size:13px}
+.evo-tbl th{font-size:var(--fs-label);font-weight:500;letter-spacing:.05em}
 .evo-ex{margin:4px 0 8px;padding-left:18px;font-size:13px}
 @container (max-width:480px){.evo .mn{display:none}.evo-cl span.mn{visibility:hidden;display:block}.evo-area .ep em{display:none}}
 /* home carousel: one chart at a time, all slides in one grid cell so the height never changes */
