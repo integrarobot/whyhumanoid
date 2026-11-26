@@ -34,7 +34,7 @@ test('the committed snapshot is the build of the committed mapping and passes th
   assert.deepEqual(problemsOf(mapping), []);
   const rebuilt = buildAtlas({ rows: reportRows(masterFrom(mapping)), mapping, exportedAt: atlas.snapshot.exported_at, builtAt: atlas.snapshot.built_at });
   assert.deepEqual(rebuilt.findings, atlas.findings);
-  assert.equal(atlas.reports.length, 12);
+  assert.equal(atlas.reports.length, 13);
   assert.equal(atlas.counts.findings, atlas.findings.length);
   assert.equal(atlas.counts.findings_checked, atlas.findings.filter((f) => f.check.status === 'verified').length);
 });

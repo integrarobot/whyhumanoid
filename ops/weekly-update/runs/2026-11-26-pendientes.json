@@ -148,9 +148,37 @@
       "needs": "a primary source for the round and a named model"
     }
   ],
-  "d1": {
+  "d1_phase1": {
     "reading": "Codex, Cloudflare dashboard, 2026-11-26 UTC: 63.47k of 100k rows written (test 0), about 36.53k left",
     "estimate": "current workbook (Components at 51 products) on the test SQLite shim: 12,163 row changes, about 32,100 rows counting index writes; the two imports of 2026-11-26 (about 31.7k each by the same method) match the reading",
-    "decision": "the Orbit publication needs one import (Software is in the backend): it would leave about 4k rows for the rest of the UTC day, so it is queued until after 00:00 UTC unless Codex reads a larger margin; the Playground findings are Pages-only (Reports is not imported) and need no import"
+    "decision": "the Orbit publication needs one import (Software is in the backend): it would leave about 4k rows for the rest of the UTC day, so it is queued until after 00:00 UTC unless Codex reads a larger margin; the Playground findings are Pages-only (Reports is not imported) and need no import",
+    "corrected": "superseded by d1 below: the reading covered three imports, not two"
+  },
+  "d1": {
+    "reading": "Codex, Cloudflare dashboard, 2026-11-26 UTC, reloaded before this publication: 63.47k of 100k rows written (test 0), about 36.53k left; no import running",
+    "imports_today": [
+      {
+        "run": 45771073245,
+        "what": "batch of the 2026-11-25 edition (PR 130)"
+      },
+      {
+        "run": 45772916684,
+        "what": "Software group correction (PR 132 flow)"
+      },
+      {
+        "run": 45792742154,
+        "at": "2026-11-26T09:31:22Z",
+        "what": "Components, 51 products (another task, PR 138)"
+      }
+    ],
+    "attribution": "the 63.47k reading covers all three production imports of 2026-11-26 UTC, not two; an earlier note in this file and the phase-1 closeout attributed it to two imports only",
+    "estimate": "this import, current workbook against the master of the last import: 12,266 row changes on the test SQLite shim, 32,380 counting every index write. That figure is an upper bound: three imports by the same method would exceed the reading, which averages about 21k per import",
+    "decision": "Codex, 2026-11-26: one single production import today after Codex review and green CI, only if a last dashboard check still shows at least 35k left and no concurrent import or other writer reservation; no test import and no second run for formatting or documents. Below 35k, the production handoff stays pending and the recurring continuation imports after the 00:00 UTC reset. The Reports atlas (Playground) is Pages-only."
+  },
+  "publication": {
+    "write_receipt": "Codex, 2026-11-26T14:21:54.716Z: Software!A81:C81 (Orbit) and Reports!A14:T14 (RPT-013) written in one atomic batch after a fresh preflight (23 pending, 0 conflicts); readback 23 values, 0 differences, 0 unexpected changes, 1,258 neighbour cells without metadata differences; ReportsCatalog extended to A1:U14, SoftwareCatalog A1:C135",
+    "independent_readback": "Claude, fresh download: readback with the prepared master as --previous gives 23 cells, 0 differences, 0 unexpected changes (112 live Investment values); Orbit in the general first block (sheet row 81, no group); preflight now reports 23 already written",
+    "deployments_row": "one evidence row appended to Deployments by another authorized Codex task of 2026-11-26 (source-backed enrichment; Apptronik Apollo at Mercedes-Benz, testing), accounted for by Codex (47 fields re-read against that task's plan, 0 differences); bundled here: 198 evidence rows, 125 deployment cases",
+    "reports": "Playground mapped in tools/reports-findings.json as RPT-013: 8 checked findings (headline, capability trend on the publisher's index, five-benchmark saturation, simulation against real robots, unsolved real-robot tasks, time and model cost on the hardest tasks, conditional 2027 projections), each with its master excerpt, locator and a phrase of 30 words at most found on the page; RPT-013 carries its own check date (2026-11-26)"
   }
 }

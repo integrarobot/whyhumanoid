@@ -29,6 +29,11 @@ export const dateText = (d) => { const [y, m, day] = String(d ?? '').split('-');
 const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
 export const reportPath = (r) => `/reports/${r.slug}/`;
 const verified = (f) => f.check.status === 'verified';
+// "on 24 Nov 2026", or "on 24 Nov 2026 and 26 Nov 2026" when reports were checked on different days.
+const checkedDays = (fs) => {
+  const days = [...new Set(fs.map((f) => f.check.checked_on).filter(Boolean))].sort().map((d) => esc(dateText(d)));
+  return `on ${days.length > 1 ? `${days.slice(0, -1).join(', ')} and ${days.at(-1)}` : days[0] ?? esc(dateText(null))}`;
+};
 const plural = (n, one, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
 
 // Original estimators, one fixed hue each (validated categorical palette, dark surface): colour follows the estimator.
@@ -423,7 +428,7 @@ function methodSection(m) {
 <li><b>Mentions.</b> A constraint named by several reports is not ranked by its mentions, and a supplier named in a report is not evidence of supply.</li>
 <li><b>What this is not.</b> Findings are the reports’ claims as stated, not facts verified by Why Humanoid?. Read each report for its full argument.</li>
 </ul>
-<p class="prov">Data as of ${esc(dateText(String(m.atlas.snapshot.exported_at).slice(0, 10)))}; findings checked on ${esc(dateText(m.atlas.findings.find(verified)?.check.checked_on))}.</p>
+<p class="prov">Data as of ${esc(dateText(String(m.atlas.snapshot.exported_at).slice(0, 10)))}; findings checked ${checkedDays(m.atlas.findings.filter(verified))}.</p>
 </section>`;
 }
 

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "note": "Reviewed findings of the Reports tab (Research Conclusions Atlas). Each finding cites the master cell it comes from (report id, column, exact excerpt) and, when checked, the page of the public original with a short phrase found there. Checked against originals downloaded on 2026-11-24; originals are not stored in Git.",
+ "note": "Reviewed findings of the Reports tab (Research Conclusions Atlas). Each finding cites the master cell it comes from (report id, column, exact excerpt) and, when checked, the page of the public original with a short phrase found there. Checked against originals downloaded on 2026-11-24 (RPT-013 read on 2026-11-26; a report may give its own check date); originals are not stored in Git.",
  "checked_on": "2026-11-24",
  "reports": [
   {
@@ -313,6 +313,34 @@
      "scope"
     ],
     "locator": "PDF p.1"
+   }
+  },
+  {
+   "id": "RPT-013",
+   "page_id": "rpt_playground_2026_robot-frontier-accelerating",
+   "slug": "playground-robot-frontier-accelerating-2026",
+   "title": "The Robot Frontier Is Accelerating",
+   "short": "Playground · The Robot Frontier Is Accelerating",
+   "publisher": "Playground",
+   "authors": null,
+   "published": "2026-11-23",
+   "published_note": "Index data as of 23 November 2026",
+   "format": "Web research post",
+   "url": "https://www.withplayground.ai/research/robot-frontier-accelerating",
+   "host_note": null,
+   "access": "public",
+   "scope": "A research post built on the publisher's own Robot Intelligence Index (25 benchmarks of robot policies, in simulation and on real robots, as of 23 November 2026): how fast the leading policies improve, how many tasks they solve, at what time and cost, and two conditional projections to the end of 2027. The ratings are the publisher's own and not independently verified.",
+   "check": {
+    "status": "verified",
+    "checked": [
+     "title",
+     "publisher",
+     "date",
+     "url",
+     "scope"
+    ],
+    "locator": "Page header and \"Methodology\"",
+    "checked_on": "2026-11-26"
    }
   }
  ],
@@ -4006,6 +4034,191 @@
     "phrase": null,
     "page": null
    }
+  },
+  {
+   "id": "head-rpt-013",
+   "report": "RPT-013",
+   "theme": "headline",
+   "metric": "headline",
+   "kind": "qualitative",
+   "statement": "Frontier robot capability on the publisher's index is accelerating: relative capabilities rose more than 9x in three months.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "Frontier robot capability on the publisher's index is accelerating"
+   },
+   "locator": "Lede",
+   "check": {
+    "status": "verified",
+    "phrase": "Relative robot capabilities in the Robot Intelligence Index have increased more than 9x in the past 3 months.",
+    "page": null
+   },
+   "attribution": "Playground (Robot Intelligence Index)"
+  },
+  {
+   "id": "pg-frontier-doubling",
+   "report": "RPT-013",
+   "theme": "adoption",
+   "metric": "capability_trend",
+   "kind": "observed",
+   "statement": "On the publisher's index, the leading policy's odds of beating π0 (the best policy in October 2024) doubled about every five months for two years, and about every five weeks since September 2026.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "the odds of beating pi0 doubled about every five months for two years and about every five weeks since September 2026"
+   },
+   "locator": "Section \"Frontier capabilities double every 5 weeks\"",
+   "check": {
+    "status": "verified",
+    "phrase": "Since September they have doubled about every five weeks",
+    "page": null
+   },
+   "scope": "Leading policies of the Robot Intelligence Index (25 benchmarks, simulation and real robots)",
+   "attribution": "Playground (Robot Intelligence Index)",
+   "limits": "The publisher's own index and ratings, not independently verified. Odds of beating a baseline policy, not task success rates; doubling times are exponential fits over two years and since 1 September 2026."
+  },
+  {
+   "id": "pg-relative-year",
+   "report": "RPT-013",
+   "theme": "adoption",
+   "metric": "capability_trend",
+   "kind": "observed",
+   "statement": "In the twelve months from August 2025 to August 2026, relative capabilities on the index rose 2.4x; in the three months to November 2026, more than 9x.",
+   "cell": {
+    "column": "Headline conclusion",
+    "excerpt": "relative capabilities rose more than 9x in the past three months against 2.4x from August 2025 to August 2026"
+   },
+   "locator": "Lede",
+   "check": {
+    "status": "verified",
+    "phrase": "In the 12 months from August 2025 to August 2026, relative capabilities increased just 2.4x.",
+    "page": null
+   },
+   "scope": "Leading policies of the Robot Intelligence Index (25 benchmarks, simulation and real robots)",
+   "attribution": "Playground (Robot Intelligence Index)",
+   "limits": "Ratios of odds on the publisher's index. The page's summary line puts the same comparison as 2.5 times the previous year's gain."
+  },
+  {
+   "id": "pg-saturation-five",
+   "report": "RPT-013",
+   "theme": "adoption",
+   "metric": "capability_trend",
+   "kind": "observed",
+   "statement": "On the five benchmarks tracked since January 2025, the share of tasks the best policy completes at least 80% of the time rose from 25% to 43% in three months, after a year climbing from 17% to 25%.",
+   "cell": {
+    "column": "Other key figures",
+    "excerpt": "from 17% to 25% over the year to August 2026, then to 43% in three months"
+   },
+   "locator": "Lede; Figure 6 (section \"Most real-robot tasks are not solved\")",
+   "check": {
+    "status": "verified",
+    "phrase": "rose from 25% to 43% in three months, after a year spent climbing from just 17% to 25%",
+    "page": null
+   },
+   "value": 43,
+   "unit": "%",
+   "denominator": "Tasks of the five benchmarks tracked since January 2025 (RoboDojo Sim, RoboTwin 2.0, ArmnetBench, RoboChallenge, VLA-Replica), each benchmark weighted equally",
+   "reference_year": 2026,
+   "scope": "Best policy on each of five benchmarks (two in simulation, three on real robots)",
+   "attribution": "Playground (Robot Intelligence Index)",
+   "limits": "A task counts when the best policy scores 80% or more. The rise came on the two simulation benchmarks, not on real robots."
+  },
+  {
+   "id": "pg-sim-vs-real",
+   "report": "RPT-013",
+   "theme": "adoption",
+   "metric": "capability_trend",
+   "kind": "observed",
+   "statement": "The jump came on the two simulation benchmarks (from 15% to 61% of tasks); on the three real-robot benchmarks the share has held at 31% since January.",
+   "cell": {
+    "column": "Other key figures",
+    "excerpt": "the jump came on the two simulation benchmarks (15% to 61%), while the three real-robot benchmarks held at 31% since January"
+   },
+   "locator": "Section \"Most real-robot tasks are not solved\"; Figure 6",
+   "check": {
+    "status": "verified",
+    "phrase": "On the three real-robot benchmarks the share has held at 31% since January.",
+    "page": null
+   },
+   "value": 31,
+   "unit": "%",
+   "denominator": "Tasks of the three real-robot benchmarks among the five tracked since January 2025 (ArmnetBench, RoboChallenge, VLA-Replica), each weighted equally",
+   "reference_year": 2026,
+   "scope": "Best policy on each benchmark, real robots",
+   "attribution": "Playground (Robot Intelligence Index)",
+   "limits": "A task counts when the best policy scores 80% or more. Not the same measure as the 32% of 138 real-robot tasks across the whole index."
+  },
+  {
+   "id": "pg-real-tasks-unsolved",
+   "report": "RPT-013",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "observed",
+   "constraint": "autonomy_ai",
+   "constraints_also": [
+    "reliability"
+   ],
+   "statement": "Most real-robot tasks are not solved: on real robots, the best policy on each benchmark scores at least 80% on just 32% of 138 tasks, against 65% of 175 tasks in simulation.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "on real robots the best policy on each benchmark scores at least 80% on just 32% of 138 tasks, against 65% of 175 tasks in simulation (2026-11-23)"
+   },
+   "locator": "Section \"Most real-robot tasks are not solved\"; Table 2",
+   "check": {
+    "status": "verified",
+    "phrase": "On real robots, the best policy on each benchmark scores at least 80% on just 32% of 138 tasks.",
+    "page": null
+   },
+   "value": 32,
+   "unit": "%",
+   "denominator": "138 real-robot tasks across the benchmarks of the index, 23 November 2026 (in simulation: 65% of 175 tasks)",
+   "reference_year": 2026,
+   "scope": "Best policy on each benchmark of the index, real robots",
+   "attribution": "Playground (Robot Intelligence Index)",
+   "limits": "The page calls 80% a low bar for real work. Precision and dexterity is the lowest real-robot task type (28%, Table 2)."
+  },
+  {
+   "id": "pg-cost-time-hardest",
+   "report": "RPT-013",
+   "theme": "risks",
+   "metric": "constraint",
+   "kind": "observed",
+   "constraint": "economics",
+   "statement": "Robots are slow and costly on the hardest tasks: on one real-robot benchmark, the top system fully finishes one in ten of the hardest tasks, at about 30 minutes and US$115 in model tokens per completed task.",
+   "cell": {
+    "column": "Key bottlenecks / risks",
+    "excerpt": "the top LLM fully finishes one in ten of the hardest RoboDojo-RC tasks, at about 30 minutes and $115 in model tokens per completed task"
+   },
+   "locator": "Lede; section \"What this means for capability projections\"",
+   "check": {
+    "status": "verified",
+    "phrase": "fully finishes one in ten of the hardest tasks, at about 30 minutes and $115",
+    "page": null
+   },
+   "scope": "Top system on Robocurve's RoboDojo-RC (real robots, Tier 1, 20 attempts on each of six tasks)",
+   "attribution": "Playground (Robot Intelligence Index)",
+   "limits": "Model-token cost on one benchmark, not the cost of the robot or its operation. Table 3 gives US$41 per completed task across all tasks and US$119 per completed precision task for the same system."
+  },
+  {
+   "id": "pg-projection-2027",
+   "report": "RPT-013",
+   "theme": "adoption",
+   "metric": "capability_trend",
+   "kind": "scenario",
+   "statement": "If the two-year pace continues, by the end of 2027 the top system would fully complete about 86% of real-robot pick-and-place tasks, 29% of precision tasks and 25% of long-horizon tasks; if the pace since September holds, over 90% of all three.",
+   "cell": {
+    "column": "Scenarios (base / bull / bear)",
+    "excerpt": "at the two-year pace it would complete about 86% of pick-and-place, 29% of precision and 25% of long-horizon tasks; if the pace since September holds, over 90% of all three"
+   },
+   "locator": "Section \"What this means for capability projections\"; Figure 7",
+   "check": {
+    "status": "verified",
+    "phrase": "If the pace since September holds, it would complete over 90% of all three.",
+    "page": null
+   },
+   "target_year": 2027,
+   "scope": "Top system on real robots, by task type",
+   "attribution": "Playground (Robot Intelligence Index)",
+   "assumptions": "Either the two-year pace or the pace since September 2026 continues; time and cost per attempt stay at today's values.",
+   "limits": "Conditional projections. The publisher calls them uncertain: the faster pace rests only on releases since September 2026, and the shaded ranges do not include that uncertainty. Values shown only in the figure's image text are not used."
   }
  ]
 }
