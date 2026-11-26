@@ -1,0 +1,58 @@
+{
+  "id": "WH-20261126-1548-publicacion-pendientes-25-11",
+  "tarea": "Fase 3 de los pendientes de la edición del 25/11/2026: publicación de Orbit (Boston Dynamics) en Software y del informe de Playground en Reports, con la fila de Deployments autorizada por otra tarea de Codex, y una importación a producción",
+  "origen": "Recibo de escritura de Codex y decisión de cuota de Codex del 26/11/2026, dentro de la autorización de Javier del 26/11/2026",
+  "fecha": "2026-11-26T15:48:04+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Software: Orbit (Boston Dynamics) en el bloque general (fila 81 del maestro, sin grupo), con su página de producto como fuente y la capa MCP atribuida al blog. Vista previa con 146 filas.",
+    "Reports: RPT-013, «The Robot Frontier Is Accelerating» (Playground), con 8 hallazgos comprobados contra la página y página propia en /reports/playground-robot-frontier-accelerating-2026/. Las citas literales del artículo suman 24 palabras; los enunciados están parafraseados y separan el índice del editor, la simulación, los robots reales, el coste en tokens de un solo benchmark y las proyecciones condicionadas. La discrepancia del 2,5x del resumen frente al 9x y el 2,4x del cuerpo queda dicha y sin resolver.",
+    "Deployments: la fila de evidencia que añadió otra tarea autorizada de Codex (Apptronik Apollo en Mercedes-Benz, en pruebas) va publicada con sus 18 campos públicos: 198 filas y 125 casos.",
+    "Atlas de Reports: cada informe puede llevar su propia fecha de comprobación; Playground figura comprobado el 26/11 y el resto conserva el 24/11.",
+    "state.json: el traspaso pasa a published; Orbit y Playground salen de known_pending y Simplexity sigue pendiente. La lectura de D1 de 63,47k queda atribuida a las tres importaciones del día (45771073245, 45772916684 y 45792742154), no a dos como decía el cierre WH-20261126-1510-fase1-pendientes-25-11."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR de publicación",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/163"
+    },
+    {
+      "etiqueta": "Importación a producción",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45842226852"
+    },
+    {
+      "etiqueta": "Informe de Playground",
+      "url": "https://whyhumanoid.com/reports/playground-robot-frontier-accelerating-2026/"
+    },
+    {
+      "etiqueta": "Software",
+      "url": "https://whyhumanoid.com/software/"
+    },
+    {
+      "etiqueta": "Caso de Apptronik en Mercedes-Benz",
+      "url": "https://whyhumanoid.com/deployments/apptronik-mercedes-berlin-kecskemet/"
+    },
+    {
+      "etiqueta": "Estado",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/state.json"
+    }
+  ],
+  "despliegue": [
+    "PR 163 fusionado como 76a97bb tras la revisión de Codex del head a3c0ed31 (CI 45841650200 en verde). Pages 45841936090 en verde.",
+    "Una sola importación a producción, run 45842226852 (job 139986609694), sobre main 76a97bb, tras la última lectura de Codex (14:43 UTC: 63,47k de 100k, 36,53k libres, ninguna otra importación en curso). HTTP 200, relations.ok true, search: 2.005 documentos completos y 1.938 públicos. Instantánea de producción 2026-11-26T14:45:48Z."
+  ],
+  "verificaciones": [
+    "Relectura independiente antes de publicar: 23 celdas del plan, 0 diferencias y 0 cambios fuera del plan, con el maestro preparado como referencia.",
+    "Antes de fusionar: audit-deployments con 198 filas, 47 columnas y 0 diferencias; check-reserved, check-public, todos los --check del CI, pruebas del servidor (200/200), verify-site, verify-premium-app, verify-pages, verify-components, verify-comparator, test-reports (19/19) y verify-evolution (183/183).",
+    "Producción, con el catálogo MCP: Orbit en Software, en el bloque general; las 198 filas de Deployments coinciden campo a campo con la vista previa publicada (125 casos, la fila de Mercedes-Benz incluida); la búsqueda encuentra las dos; el atlas de Reports servido es idéntico al de main (13 informes, RPT-013 con sus 8 hallazgos); relaciones con 198 registros y la fila nueva enlazada.",
+    "Recuentos de producción iguales a la exportación: humanoids 212, deployments 198, software 146, other-robots 563, datasets 37, dataset-metrics 63, hardware 51 e integrators 28."
+  ],
+  "pendientes": [
+    "Simplexity sigue pendiente de una fuente primaria de la ronda y de un modelo con nombre.",
+    "Codex: su comprobación independiente de los JSON publicados, el MCP, las páginas y la sesión de suscriptor existente.",
+    "Codex: registrar el aviso de este cierre."
+  ],
+  "siguiente_accion": "Codex comprueba de forma independiente la publicación y registra el aviso. La edición del 25/11 queda procesada con Simplexity como único pendiente, que revisará la próxima tarea semanal."
+}
