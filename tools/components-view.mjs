@@ -210,7 +210,10 @@ ${method(cm)}
 }
 
 // A public product's (or the related software's) own page.
-export function renderProductPage(cm, r, companyPath) {
+// apiOrigin: the API the page asks, with the visitor's own session, for the full passport (the server checks the
+// subscription); without it the upgrade would ask this site, which has no API.
+export function renderProductPage(cm, r, companyPath, apiOrigin) {
+  if (!apiOrigin) throw new Error('renderProductPage needs the API origin');
   const sw = cm.software.some((x) => x.component_id === r.component_id);
   const f = W.facetsOf(r);
   const related = cm.related.filter((x) => x.from === r.component_id || x.to === r.component_id).map((x) => {
@@ -218,7 +221,7 @@ export function renderProductPage(cm, r, companyPath) {
     const other = [...cm.products, ...cm.software].find((p) => p.component_id === otherId);
     return `<li>${x.from === r.component_id ? esc(x.label) : `${esc(x.label)} by`} <a href="${W.pathOf(otherId)}">${esc(other?.name ?? otherId)}</a> <small>${esc(x.basis)}</small></li>`;
   });
-  return `<div class="cx cx-prod" id="cx" data-id="${esc(r.component_id)}">
+  return `<div class="cx cx-prod" id="cx" data-id="${esc(r.component_id)}" data-api="${esc(apiOrigin)}">
 <header class="cx-head">
 <p class="kicker">${sw ? 'Related software' : 'Component'} · ${esc(f.fam === 'unclassified' ? r.family ?? 'Family not recorded' : W.familyLabel(f.fam))} · <span class="cls cls-${f.cls}">${esc(W.CLASS_LABEL[f.cls])}</span></p>
 <h1>${esc(r.name)}</h1>
