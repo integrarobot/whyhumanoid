@@ -15,7 +15,7 @@
     "App de suscriptores (server/public/index.html y app/index.html): texto 16/1,55, etiquetas 12, títulos de panel en Serif 32 (26 en móvil), que es su rol, y carga de Instrument Serif.",
     "La marca de portada y app hereda el tamaño del texto (16, 15,5 en móvil), con peso 600 y espaciado .01em, como en las páginas generadas.",
     "tools/test-frame.mjs, en el CI, comprueba la escala única, los roles base, que ninguna hoja fije titular ni entradilla, la cabecera de tabla, los tamaños compartidos de portada y app, la marca heredada y una sola definición del tamaño de etiqueta en la portada.",
-    "Sin cambios de contenido, datos, precios, accesos, colores ni ancho; sin Worker, importación ni Stripe."
+    "Sin cambios de contenido, datos, precios, accesos ni ancho; paleta base conservada; sin Worker, importación ni Stripe."
   ],
   "urls": [
     {
@@ -53,12 +53,12 @@
     "GitHub Pages: ejecuciones 45820732012 (12:33:57 UTC) y 45821658293 (12:39:52 UTC) completadas con éxito. Solo páginas estáticas: sin Worker, datos ni Stripe."
   ],
   "verificaciones": [
-    "Local: build-pages, build-site y build-app --check, check-public, export-public --check, export-evolution --check, test-frame 6/6, verify-site, verify-pages, verify-premium-app, verify-components, verify-footer y verify-mobile (715 comprobaciones) en verde; 27 rutas sin desbordamiento a 1510, 1920, 768, 755 (zoom al 200 %), 375 y 320 px.",
+    "Local: build-pages, build-site y build-app --check, check-public, export-public --check, export-evolution --check, test-frame 6/6, verify-site, verify-pages, verify-premium-app, verify-components, verify-footer y verify-mobile (715 comprobaciones) en verde; 27 rutas sin desbordamiento a 1510, 1920, 768, 755 (espacio equivalente al zoom de escritorio del 200 %, medido como reajuste del viewport, no como zoom del navegador), 375 y 320 px.",
     "Claude, producción: titular Instrument Serif 72/75,6 y entradilla Instrument Sans 21/31,5 en 17 rutas a 1510 px; en Integrators, Investment, Humanoids, Reports, portada y app, texto 16/24,8 y 15,5/24,03, entradilla 21/31,5 y 17/25,5, marca Sans 16 y 15,5 de peso 600 y .01em, controles Sans 15, a 1510 y 375 px; sin desbordamiento a 1510, 768, 375 y 320 px; menú Categories de la portada a 375 px en Mono 12/18,6 y .72 px con cabecera de 52 px y marco de 7 px.",
     "Codex, producción: 15 rutas (las 10 categorías, Tesla, About, Subscribe, portada y app) a 1510 y 375 px con titular, entradilla, texto y marca iguales a Integrators en familia, tamaño, interlineado y espaciado; el título de panel de la app en Serif 32/26; cinco rutas a 320, 768 y 1920 px con la escala adaptativa y sin ancho de más; filtros de Investment correctos, la búsqueda de Tesla da 1 de 276 y al limpiar vuelven las 276; las 1.812 páginas generadas sin diferencias de contenido salvo la versión de la hoja de estilo; el menú Categories de la portada en Mono 12/18,6 y .72 px a 375 px tras el PR 149."
   ],
   "pendientes": [
-    "Limitación previa y conocida, fuera de este encargo: con zoom al 200 % en un móvil de 375 px (188 px de ancho útil) la portada, la app e Investment se desbordan; ya ocurría antes, y este cambio lo reduce en la portada (de 86 a 54 px) y en la app (de 53 a 22 px), con Investment igual (85 px). Se corrige solo si Javier lo pide."
+    "Limitación previa y conocida, fuera de este encargo: en un viewport de 188 px, equivalente al zoom del 200 % en un móvil de 375 px, la portada, la app e Investment se desbordan; ya ocurría antes, y este cambio lo reduce en la portada (de 86 a 54 px) y en la app (de 53 a 22 px), con Investment igual (85 px)."
   ],
   "siguiente_accion": "Codex registra su aviso de esta entrega; Javier confirma la recepción."
 }
