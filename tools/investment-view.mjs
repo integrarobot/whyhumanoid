@@ -7,6 +7,21 @@ import { readFileSync } from 'node:fs';
 
 const root = new URL('../', import.meta.url);
 export const readDesk = () => JSON.parse(readFileSync(new URL('data/investment/desk.json', root), 'utf8'));
+// Annual revenue and growth from SEC filings (tools/export-fundamentals.mjs); none until the snapshot exists.
+export const readFundamentals = () => { try { return JSON.parse(readFileSync(new URL('data/investment/fundamentals.json', root), 'utf8')); } catch { return null; } };
+// The comparator's revenue rows, inline in the page (no request): per Google Finance key, the published series only.
+export function fundamentalsJson(f) {
+  const out = {};
+  for (const [key, x] of Object.entries(f?.securities ?? {})) {
+    if (x.status !== 'published') { out[key] = { s: x.status }; continue; }
+    out[key] = {
+      s: 'published', src: x.source, lab: x.revenue.label, url: x.revenue.filing_url, loc: x.revenue.locator ?? null, cur: x.revenue.currency,
+      v: x.revenue.value, start: x.revenue.start, end: x.revenue.end, pv: x.prior?.value ?? null, pstart: x.prior?.start ?? null, pend: x.prior?.end ?? null,
+      plab: x.prior?.label ?? null, g: x.growth_yoy, gs: x.growth_status, note: x.note ?? null, f: x.review_flags ?? [],
+    };
+  }
+  return JSON.stringify(out).replace(/</g, '\\u003c');
+}
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
@@ -57,7 +72,7 @@ export function renderInvestmentDesk(desk, { rows, companyOf }) {
     const search = [r.name, r.ticker, r.exchange, venue, x.key, r.isin, ...pubs].filter(Boolean).join(' ').toLowerCase();
     const data = {
       key: x.key, name: r.name, path: path ?? '', ticker: r.ticker, exchange: venue, isin: r.isin ?? '', country: r.country ?? '', segment: x.segment ?? '',
-      etf: x.etf.join('|'), theses: String(theses.length), stances: stances.join('|'), publishers: pubs.join('|'), chart: x.tradingview.chart.status, search,
+      etf: x.etf.join('|'), theses: String(theses.length), stances: stances.join('|'), publishers: pubs.join('|'), chart: x.tradingview.chart.status, fin: x.tradingview.financials.status, cur: r.currency ?? '', tv: x.tradingview.symbol ?? '', tvurl: x.tradingview.url ?? '', search,
     };
     const attrs = Object.entries(data).map(([k, v]) => `data-${k}="${esc(v)}"`).join(' ');
     return `<tr ${attrs}><td><span class="inv-row-tools"></span> ${path ? `<a href="${esc(path)}">${esc(r.name)}</a>` : esc(r.name)}</td><td>${esc(r.ticker ?? '')}<br><span class="dim">${esc(venue)}</span></td><td>${esc(r.country ?? '')}</td><td>${x.segment ? esc(x.segment) : na()}</td><td>${x.etf.length ? x.etf.map((e) => pill('', e)).join('') : na('None')}</td><td>${theses.length ? `${theses.length} ${stances.map((s) => pill(s, STANCE[s])).join('')}` : '<span class="na">0</span>'}</td><td>${pill(x.tradingview.chart.status, CHART_LABEL[x.tradingview.chart.status])}</td></tr>`;
@@ -72,7 +87,7 @@ export function renderInvestmentDesk(desk, { rows, companyOf }) {
   return `<nav class="jump" aria-label="On this page"><a href="#desk">Companies (${items.length})</a><a href="#comparator">Company comparator</a><a href="#theses">Investment theses (${desk.theses.length})</a><a href="#funding">Funding of humanoid makers</a></nav>
 <section id="desk"><h2>Listed companies <span class="dim">(${items.length})</span></h2>
 <p class="inv-counters"><span><b>${items.length}</b> listed companies</span><span><b>${withT}</b> with a thesis in this catalogue</span><a href="#theses"><b>${desk.theses.length}</b> thesis records</a><span><b>${charts}</b> with a chart offered here</span><span><b>${items.length - charts}</b> without a chart here</span></p>
-${comparatorHtml(items.length)}
+${comparatorHtml(items.length, readFundamentals())}
 <form class="inv-filters" data-for="inv-companies" data-count="inv-count" hidden>
 <label class="wide">Search company, ticker, ISIN or publisher<input type="search" name="q" autocomplete="off" placeholder="e.g. Tesla, 6954, Baillie Gifford"></label>
 <label>Segment<select name="segment">${options(segments.map((v) => [v]), 'All segments')}</select></label>
@@ -110,7 +125,10 @@ ${caveatsHtml(desk)}
 // reads the rows, not the filters, order or watchlist). Without JavaScript the note says so and the directory keeps
 // every field.
 export const COMPARATOR_SLOTS = 3;
-function comparatorHtml(total) {
+function comparatorHtml(total, fundamentals) {
+  const pub = Object.values(fundamentals?.securities ?? {}).filter((x) => x.status === 'published');
+  const covered = pub.length;
+  const bySec = pub.filter((x) => x.source === 'sec').length;
   const slot = (i) => `<div class="inv-slot" data-slot="${i}">
 <label class="inv-slot-label" id="cmp-label-${i}" for="cmp-input-${i}">Company ${i}</label>
 <div class="inv-combo">
@@ -123,8 +141,10 @@ function comparatorHtml(total) {
 </div>`;
   return `<section class="inv-comparator" id="comparator" aria-labelledby="comparator-h">
 <h3 id="comparator-h">Company comparator</h3>
-<p class="inv-cmp-nojs">The comparator needs JavaScript. Every company and the same fields are in the directory below.</p>
+<p class="inv-cmp-nojs">The comparator needs JavaScript. The directory below lists every company.</p>
 <p class="dim" id="cmp-hint" hidden>Choose up to three of the ${total} listed companies. Type a name, ticker, ISIN or exchange, or open the full list; each company can be in one slot only.</p>
+<p class="dim inv-cmp-method">Revenue: latest full fiscal year, not trailing twelve months, for ${covered} of the ${total} companies (${bySec} from SEC filings, ${covered - bySec} from annual reports), in the reporting currency and never converted; checked on ${esc(fundamentals?.as_of ?? '')}, not real time. Market cap and P/E: TradingView, with its own currencies and periods. <a href="/method/#comparator">Method</a>.</p>
+<script type="application/json" id="inv-fundamentals">${fundamentalsJson(fundamentals)}</script>
 <div class="inv-cmp-slots" hidden>${Array.from({ length: COMPARATOR_SLOTS }, (_, k) => slot(k + 1)).join('')}</div>
 <p class="inv-cmp-status" id="cmp-status" aria-live="polite" hidden></p>
 </section>`;

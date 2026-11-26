@@ -1,0 +1,761 @@
+{
+ "note": "SEC registrants of the Investment category for tools/fetch-sec-revenue.mjs: Google Finance key, catalogue name, SEC CIK and SEC name, matched by ticker and issuer name against the SEC exchange ticker file (reviewed by Codex); listings outside the US are matched to their issuer by exact legal name, the listing unchanged. Public identifiers only.",
+ "registrants": [
+  {
+   "key": "NASDAQ:TSLA",
+   "name": "Tesla",
+   "cik": 1318605,
+   "sec_name": "Tesla, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ISRG",
+   "name": "Intuitive Surgical",
+   "cik": 1035267,
+   "sec_name": "INTUITIVE SURGICAL INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:SERV",
+   "name": "Serve Robotics",
+   "cik": 1832483,
+   "sec_name": "Serve Robotics Inc. /DE/",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:RR",
+   "name": "Richtech Robotics",
+   "cik": 1963685,
+   "sec_name": "RICHTECH ROBOTICS INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:AMCI",
+   "name": "AMC Robotics",
+   "cik": 1937891,
+   "sec_name": "AMC Robotics Corp",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:NVDA",
+   "name": "NVIDIA",
+   "cik": 1045810,
+   "sec_name": "NVIDIA CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:TER",
+   "name": "Teradyne",
+   "cik": 97210,
+   "sec_name": "TERADYNE, INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:SYM",
+   "name": "Symbotic",
+   "cik": 1837240,
+   "sec_name": "Symbotic Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:OUST",
+   "name": "Ouster",
+   "cik": 1816581,
+   "sec_name": "Ouster, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:CGNX",
+   "name": "Cognex",
+   "cik": 851205,
+   "sec_name": "COGNEX CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:TXN",
+   "name": "Texas Instruments",
+   "cik": 97476,
+   "sec_name": "TEXAS INSTRUMENTS INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:TDY",
+   "name": "Teledyne Technologies",
+   "cik": 1094285,
+   "sec_name": "TELEDYNE TECHNOLOGIES INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ADI",
+   "name": "Analog Devices",
+   "cik": 6281,
+   "sec_name": "ANALOG DEVICES INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:NXPI",
+   "name": "NXP Semiconductors",
+   "cik": 1413447,
+   "sec_name": "NXP Semiconductors N.V.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:NOVT",
+   "name": "Novanta",
+   "cik": 1076930,
+   "sec_name": "NOVANTA INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:TEL",
+   "name": "Te Connectivity",
+   "cik": 1385157,
+   "sec_name": "TE Connectivity plc",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:RRX",
+   "name": "Regal Rexnord",
+   "cik": 82811,
+   "sec_name": "REGAL REXNORD CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:ST",
+   "name": "Sensata Technologies Holdplc",
+   "cik": 1477294,
+   "sec_name": "Sensata Technologies Holding plc",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:APTV",
+   "name": "Aptiv",
+   "cik": 1521332,
+   "sec_name": "Aptiv PLC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:RBC",
+   "name": "Rbc Bearings",
+   "cik": 1324948,
+   "sec_name": "RBC Bearings INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:APH",
+   "name": "Amphenol",
+   "cik": 820313,
+   "sec_name": "AMPHENOL CORP /DE/",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:JBL",
+   "name": "Jabil",
+   "cik": 898293,
+   "sec_name": "JABIL INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:MPWR",
+   "name": "Monolithic Power Systems",
+   "cik": 1280452,
+   "sec_name": "MONOLITHIC POWER SYSTEMS, INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:MP",
+   "name": "Mp Materials",
+   "cik": 1801368,
+   "sec_name": "MP Materials Corp. / DE",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ALNT",
+   "name": "Allient",
+   "cik": 46129,
+   "sec_name": "ALLIENT INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:AUR",
+   "name": "Aurora Innovation",
+   "cik": 1828108,
+   "sec_name": "Aurora Innovation, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:GOOGL",
+   "name": "Alphabet",
+   "cik": 1652044,
+   "sec_name": "Alphabet Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:DE",
+   "name": "Deere & Co",
+   "cik": 315189,
+   "sec_name": "DEERE & CO",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:ROK",
+   "name": "Rockwell Automation",
+   "cik": 1024478,
+   "sec_name": "ROCKWELL AUTOMATION, INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:BIDU",
+   "name": "Baidu Inc -",
+   "cik": 1329099,
+   "sec_name": "Baidu, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:PONY",
+   "name": "Pony AI",
+   "cik": 1969302,
+   "sec_name": "Pony AI Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:OMCL",
+   "name": "Omnicell",
+   "cik": 926326,
+   "sec_name": "OMNICELL, INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:WRD",
+   "name": "Weride Inc-Adr",
+   "cik": 1867729,
+   "sec_name": "WeRide Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:PRCT",
+   "name": "Procept Biorobotics",
+   "cik": 1588978,
+   "sec_name": "PROCEPT BioRobotics Corp",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:XPEV",
+   "name": "Xpeng Inc -",
+   "cik": 1810997,
+   "sec_name": "XPENG INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:AVEX",
+   "name": "AEVEX",
+   "cik": 2096300,
+   "sec_name": "AEVEX Corp.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:KDK",
+   "name": "Kodiak AI",
+   "cik": 1853138,
+   "sec_name": "Kodiak AI, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:EH",
+   "name": "Ehang Holdings Ltd-Sps",
+   "cik": 1759783,
+   "sec_name": "EHang Holdings Ltd",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:PTC",
+   "name": "PTC",
+   "cik": 857005,
+   "sec_name": "PTC INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ILMN",
+   "name": "Illumina",
+   "cik": 1110803,
+   "sec_name": "ILLUMINA, INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:AMBA",
+   "name": "Ambarella",
+   "cik": 1280263,
+   "sec_name": "AMBARELLA INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:EMR",
+   "name": "Emerson Electric",
+   "cik": 32604,
+   "sec_name": "EMERSON ELECTRIC CO",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:IOT",
+   "name": "Samsara",
+   "cik": 1642896,
+   "sec_name": "Samsara Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:IPGP",
+   "name": "IPG Photonics",
+   "cik": 1111928,
+   "sec_name": "IPG PHOTONICS CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:NDSN",
+   "name": "Nordson",
+   "cik": 72331,
+   "sec_name": "NORDSON CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:GMED",
+   "name": "Globus Med",
+   "cik": 1237831,
+   "sec_name": "GLOBUS MEDICAL INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:CDNS",
+   "name": "Cadence Design Systems",
+   "cik": 813672,
+   "sec_name": "CADENCE DESIGN SYSTEMS INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:QCOM",
+   "name": "Qualcomm",
+   "cik": 804328,
+   "sec_name": "QUALCOMM INC/DE",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:MCHP",
+   "name": "Microchip Technology",
+   "cik": 827054,
+   "sec_name": "MICROCHIP TECHNOLOGY INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:TRMB",
+   "name": "Trimble",
+   "cik": 864749,
+   "sec_name": "TRIMBLE INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:JBTM",
+   "name": "Jbt Marel",
+   "cik": 1433660,
+   "sec_name": "JBT MAREL Corp",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ZBRA",
+   "name": "Zebra Technologies",
+   "cik": 877212,
+   "sec_name": "ZEBRA TECHNOLOGIES CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ONDS",
+   "name": "Ondas",
+   "cik": 1646188,
+   "sec_name": "Ondas Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ADSK",
+   "name": "Autodesk",
+   "cik": 769397,
+   "sec_name": "Autodesk, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:OCTV",
+   "name": "Octave Intelligence",
+   "cik": 2083632,
+   "sec_name": "Octave Intelligence plc",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:GXO",
+   "name": "GXO Logistics",
+   "cik": 1852244,
+   "sec_name": "GXO Logistics, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:JOBY",
+   "name": "Joby Aviation",
+   "cik": 1819848,
+   "sec_name": "Joby Aviation, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:COHR",
+   "name": "Coherent",
+   "cik": 820318,
+   "sec_name": "COHERENT CORP.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:SSYS",
+   "name": "Stratasys",
+   "cik": 1517396,
+   "sec_name": "STRATASYS LTD.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:NOW",
+   "name": "Servicenow",
+   "cik": 1373715,
+   "sec_name": "ServiceNow, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:SNOW",
+   "name": "Snowflake",
+   "cik": 1640147,
+   "sec_name": "Snowflake Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:AMD",
+   "name": "Advanced Micro Devices",
+   "cik": 2488,
+   "sec_name": "ADVANCED MICRO DEVICES INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:GRMN",
+   "name": "Garmin",
+   "cik": 1121788,
+   "sec_name": "GARMIN LTD",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:MSTR",
+   "name": "Strategy Inc",
+   "cik": 1050446,
+   "sec_name": "Strategy Inc",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:MRVL",
+   "name": "Marvell Technology",
+   "cik": 1835632,
+   "sec_name": "Marvell Technology, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ROP",
+   "name": "Roper Technologies",
+   "cik": 882835,
+   "sec_name": "ROPER TECHNOLOGIES INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:WDAY",
+   "name": "Workday",
+   "cik": 1327811,
+   "sec_name": "Workday, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:INTC",
+   "name": "Intel",
+   "cik": 50863,
+   "sec_name": "INTEL CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ALAB",
+   "name": "Astera Labs",
+   "cik": 1736297,
+   "sec_name": "Astera Labs, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:KLAC",
+   "name": "KLA",
+   "cik": 319201,
+   "sec_name": "KLA CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:CRDO",
+   "name": "Credo Technology Group Holding",
+   "cik": 1807794,
+   "sec_name": "Credo Technology Group Holding Ltd",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:FTV",
+   "name": "Fortive",
+   "cik": 1659166,
+   "sec_name": "Fortive Corp",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:LECO",
+   "name": "Lincoln Electric Holdings",
+   "cik": 59527,
+   "sec_name": "LINCOLN ELECTRIC HOLDINGS INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:LSCC",
+   "name": "Lattice Semiconductor",
+   "cik": 855658,
+   "sec_name": "LATTICE SEMICONDUCTOR CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:ONTO",
+   "name": "Onto Innovation",
+   "cik": 704532,
+   "sec_name": "ONTO INNOVATION INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:ESTC",
+   "name": "Elastic",
+   "cik": 1707753,
+   "sec_name": "Elastic N.V.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:BSY",
+   "name": "Bentley Systems",
+   "cik": 1031308,
+   "sec_name": "BENTLEY SYSTEMS INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:RAL",
+   "name": "Ralliant",
+   "cik": 2041385,
+   "sec_name": "Ralliant Corp",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:SLAB",
+   "name": "Silicon Laboratories",
+   "cik": 1038074,
+   "sec_name": "SILICON LABORATORIES INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:EPAM",
+   "name": "Epam Systems",
+   "cik": 1352010,
+   "sec_name": "EPAM Systems, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:TTAN",
+   "name": "Servicetitan",
+   "cik": 1638826,
+   "sec_name": "ServiceTitan, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:PATH",
+   "name": "Uipath Inc",
+   "cik": 1734722,
+   "sec_name": "UiPath, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:MXL",
+   "name": "Maxlinear",
+   "cik": 1288469,
+   "sec_name": "MAXLINEAR, INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:MNDY",
+   "name": "monday.com",
+   "cik": 1845338,
+   "sec_name": "monday.com Ltd.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:ALGM",
+   "name": "Allegro Microsystems",
+   "cik": 866291,
+   "sec_name": "ALLEGRO MICROSYSTEMS, INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:ESAB",
+   "name": "Esab",
+   "cik": 1877322,
+   "sec_name": "ESAB Corp",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:TDC",
+   "name": "Teradata",
+   "cik": 816761,
+   "sec_name": "TERADATA CORP /DE/",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:KAI",
+   "name": "Kadant",
+   "cik": 886346,
+   "sec_name": "KADANT INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:PRLB",
+   "name": "Proto Labs",
+   "cik": 1443669,
+   "sec_name": "Proto Labs Inc",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:PSN",
+   "name": "Parsons",
+   "cik": 275880,
+   "sec_name": "PARSONS CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:GLOB",
+   "name": "Globant",
+   "cik": 1557860,
+   "sec_name": "Globant S.A.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:AEHR",
+   "name": "Aehr Test Systems",
+   "cik": 1040470,
+   "sec_name": "AEHR TEST SYSTEMS",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:GENI",
+   "name": "Genius Sports",
+   "cik": 1834489,
+   "sec_name": "Genius Sports Ltd",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:MBLY",
+   "name": "Mobileye Global Inc",
+   "cik": 1910139,
+   "sec_name": "Mobileye Global Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:ASAN",
+   "name": "Asana",
+   "cik": 1477720,
+   "sec_name": "Asana, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:BBAI",
+   "name": "Bigbear.AI Holdings",
+   "cik": 1836981,
+   "sec_name": "BigBear.ai Holdings, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:CEVA",
+   "name": "CEVA",
+   "cik": 1173489,
+   "sec_name": "CEVA INC",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:MLAB",
+   "name": "Mesa Laboratories",
+   "cik": 724004,
+   "sec_name": "MESA LABORATORIES INC /CO/",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:DDD",
+   "name": "3D Systems",
+   "cik": 910638,
+   "sec_name": "3D SYSTEMS CORP",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:HY",
+   "name": "Hyster Yale Inc",
+   "cik": 1173514,
+   "sec_name": "HYSTER-YALE, INC.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NASDAQ:INDI",
+   "name": "Indie Semiconductor Inc",
+   "cik": 1841925,
+   "sec_name": "indie Semiconductor, Inc.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "NYSE:PACK",
+   "name": "Ranpak Holdings",
+   "cik": 1712463,
+   "sec_name": "Ranpak Holdings Corp.",
+   "identity_review": "Ticker and issuer name matched SEC exchange ticker file to catalogue; checked 2026-11-26"
+  },
+  {
+   "key": "BIT:STMMI",
+   "name": "STMicroelectronics",
+   "cik": 932787,
+   "sec_name": "STMicroelectronics N.V.",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "NYSEAMERICAN:UMAC",
+   "name": "Unusual Machines",
+   "cik": 1956955,
+   "sec_name": "Unusual Machines, Inc.",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "TSE:CLS",
+   "name": "Celestica",
+   "cik": 1030894,
+   "sec_name": "CELESTICA INC",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "TLV:NVMI",
+   "name": "Nova",
+   "cik": 1109345,
+   "sec_name": "NOVA LTD.",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "TSE:OTEX",
+   "name": "Open Text",
+   "cik": 1002638,
+   "sec_name": "OPEN TEXT CORP",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  },
+  {
+   "key": "ETR:SAP",
+   "name": "SAP",
+   "cik": 1000184,
+   "sec_name": "SAP SE",
+   "identity_review": "Matched catalogue issuer name against SEC legal name, inspected by Codex; 2026-11-26. Annual consolidated issuer facts only; the trading symbol and share class of the catalogue are unchanged."
+  }
+ ]
+}
