@@ -1,6 +1,11 @@
 // Tests of the workbook write-plan contract (tools/workbook-plan.mjs). Synthetic data only (example.com, fx_ ids).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { cpSync, mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { preflight, readback, simulate, splitDraft, validatePlan, validatePayload } from './workbook-plan.mjs';
 
 const exportBefore = () => ({
@@ -127,33 +132,110 @@ test('readback after a faithful write: zero differences, neighbours unchanged, r
   assert.equal(after.Software[2][4], 'Fx World');
   const r = readback(plan, after, payload, before);
   assert.deepEqual(r.differences, []);
-  assert.deepEqual(r.neighbourChanges, []);
+  assert.deepEqual(r.unexpected, []);
   assert.ok(r.neighbours >= 3);
   assert.equal(preflight(plan, after, payload).applied, 6);
 });
 
-test('a list row appended below a section heading is caught before writing', () => {
+test('record.unique follows the same private rule as record.key', () => {
+  const { plan } = split();
+  const leaked = structuredClone(plan);
+  leaked.operations[2].record.unique = [{ column: 'B', header: 'organization_name', value: 'FX_PRIVATE_CUSTOMER' }];
+  const problems = validatePlan(leaked);
+  assert.ok(problems.some((p) => p.includes('record.unique organization_name must be an HMAC')), problems.join('\n'));
+  const hashedPublic = structuredClone(plan);
+  hashedPublic.operations[0].record.unique = [{ column: 'B', header: 'URL', value_hmac: 'a'.repeat(64) }];
+  assert.ok(validatePlan(hashedPublic).some((p) => p.includes('record.unique URL must be in clear')));
+});
+
+// A Software list with a titled section: header, one entry, a section title, its column headers, one entry.
+const sectioned = () => ({
+  ...exportBefore(),
+  Software: [['SOFTWARE', 'URL', 'DESCRIPTION'], ['Fx Existing', 'https://example.com/existing', 'An existing entry'], ['SIMULATORS'], ['SIMULATOR', 'URL', 'DESCRIPTION'], ['Fx Sim', 'https://example.com/sim', 'A simulator']],
+});
+
+test('section titles and repeated column headers: wrong group, header rows and the gap between them are refused', () => {
   const { plan, payload } = split();
   const noGroup = structuredClone(plan);
   delete noGroup.operations[0].group_expected;
   assert.ok(validatePlan(noGroup).some((p) => p.includes('group_expected')));
-  const headed = exportBefore();
-  headed.Software.splice(2, 0, ['SIMULATORS']);
-  headed.Software[3] = ['', '', '', '', 'Fx World', 'https://example.com/world'];
-  const shifted = structuredClone(plan);
-  shifted.operations[0].row = 4;
-  assert.ok(preflight(shifted, headed, payload).problems.some((p) => p.includes('would be listed under "Simulators"')));
-  shifted.operations[0].group_expected = 'Simulators';
-  assert.deepEqual(preflight(shifted, headed, payload).problems, []);
+  const atEnd = structuredClone(plan);
+  atEnd.operations[0].row = 6;
+  assert.ok(preflight(atEnd, sectioned(), payload).problems.some((p) => p.includes('would be listed under "Simulators"')));
+  atEnd.operations[0].group_expected = 'Simulators';
+  assert.deepEqual(preflight(atEnd, sectioned(), payload).problems, []);
+  const onTitle = structuredClone(plan);
+  onTitle.operations[0].row = 3;
+  assert.ok(preflight(onTitle, sectioned(), payload).problems.some((p) => p.includes('section title row')));
+  const onHeader = structuredClone(plan);
+  onHeader.operations[0].row = 4;
+  assert.ok(preflight(onHeader, sectioned(), payload).problems.some((p) => p.includes('column-header row')));
+  const gap = sectioned();
+  gap.Software.splice(3, 0, []);
+  const inGap = structuredClone(plan);
+  inGap.operations[0].row = 4;
+  inGap.operations[0].group_expected = 'Simulators';
+  assert.ok(preflight(inGap, gap, payload).problems.some((p) => p.includes('between the section title')));
 });
 
-test('readback catches a wrong value and a write outside the plan', () => {
+test('readback rechecks the group and the record after the write (Codex regression)', () => {
   const { plan, payload } = split();
-  const before = exportBefore();
+  const before = { ...exportBefore(), Software: [['SOFTWARE', 'URL', 'DESCRIPTION'], ['Existing', 'https://example.com/existing', 'An existing entry'], [], []] };
+  const after = { ...before, Software: [['SOFTWARE', 'URL', 'DESCRIPTION'], ['Existing', 'https://example.com/existing', 'An existing entry'], ['SIMULATORS'], ['Fx Tool', 'https://example.com/tool', 'A tool']] };
+  const op = structuredClone(plan);
+  op.operations = [op.operations[0]];
+  op.operations[0].row = 4;
+  const r = readback(op, after, payload, before);
+  assert.ok(r.differences.some((d) => d.includes('listed under "Simulators"')), r.differences.join('\n'));
+  assert.ok(r.unexpected.includes('Software!A3'));
+  const twice = { ...after, Software: [...after.Software.slice(0, 2), ['Fx Tool', 'https://example.com/tool', 'A tool'], after.Software[3]] };
+  assert.ok(readback(op, twice, payload, before).differences.some((d) => d.includes('appears 2 times')));
+});
+
+test('changes outside the plan fail the readback; only live market numbers may move', () => {
+  const { plan, payload } = split();
+  const before = { ...exportBefore(), Investment: [['NAME', 'PRICE', 'DESCRIPTION'], ['Fx Corp', '10.5', 'Listed']], Humanoids: [['Lab', 'Robot', 'Valuation'], ['Fx', 'One', '1,000.00'], ['Fx', 'Two', 'USD 5M (2099)']] };
   const after = simulate(plan, before, payload);
+  after.Investment[1][1] = '10.75';
+  after.Humanoids[1][2] = '1,020.50';
+  let r = readback(plan, after, payload, before);
+  assert.deepEqual(r.unexpected, []);
+  assert.deepEqual(r.live, { Investment: 1, Humanoids: 1 });
+  after.Humanoids[2][2] = 'USD 6M (2099)';
+  after.Investment[1][2] = 'Delisted';
   after.Software[2][2] = 'A tool!';
   after.Software[2][4] = 'Fx World overwritten';
-  const r = readback(plan, after, payload, before);
+  r = readback(plan, after, payload, before);
+  assert.deepEqual(r.unexpected.sort(), ['Humanoids!C3', 'Investment!C2', 'Software!E3']);
   assert.equal(r.differences.length, 1);
-  assert.equal(r.neighbourChanges.length, 1);
+  assert.ok(!JSON.stringify(r).includes('USD 6M') && !JSON.stringify(r).includes('Delisted'));
+});
+
+test('the CLI runs from a path with spaces and a question mark, and fails on a missing or invalid plan', () => {
+  const root = fileURLToPath(new URL('../', import.meta.url));
+  const dir = join(mkdtempSync(join(tmpdir(), 'wh plan ? ')), 'Why Humanoid?');
+  mkdirSync(join(dir, 'tools'), { recursive: true });
+  cpSync(join(root, 'tools/workbook-plan.mjs'), join(dir, 'tools/workbook-plan.mjs'));
+  cpSync(join(root, 'server/src'), join(dir, 'server/src'), { recursive: true });
+  cpSync(join(root, 'server/package.json'), join(dir, 'server/package.json'));
+  const cli = join(dir, 'tools/workbook-plan.mjs');
+  const run = (args, cwd = dir) => spawnSync(process.execPath, [cli, ...args], { cwd, encoding: 'utf8' });
+  const missing = run(['check', join(dir, 'no-such-plan.json')]);
+  assert.notEqual(missing.status, 0);
+  assert.match(missing.stderr, /no-such-plan/);
+  const { plan, payloadText } = splitDraft(draft(), 'b'.repeat(64));
+  writeFileSync(join(dir, 'plan.json'), JSON.stringify(plan));
+  writeFileSync(join(dir, 'payload.json'), payloadText);
+  const ok = run(['check', 'plan.json', '--private', 'payload.json']);
+  assert.equal(ok.status, 0, ok.stderr);
+  assert.match(ok.stdout, /follow whyhumanoid\/workbook-plan@1: 1 plan\(s\), private payload verified/);
+  writeFileSync(join(dir, 'bad.json'), JSON.stringify({ ...plan, contract: 'other' }));
+  const bad = run(['check', 'bad.json']);
+  assert.notEqual(bad.status, 0);
+  assert.match(bad.stderr, /contract must be/);
+  writeFileSync(join(dir, 'export.json'), JSON.stringify(exportBefore()));
+  const noPrevious = run(['readback', 'plan.json', '--from', 'export.json', '--private', 'payload.json']);
+  assert.notEqual(noPrevious.status, 0);
+  assert.match(noPrevious.stderr, /--previous/);
+  assert.equal(execFileSync(process.execPath, [cli, 'hash', 'plan.json'], { cwd: dir, encoding: 'utf8' }).trim().length, 64);
 });

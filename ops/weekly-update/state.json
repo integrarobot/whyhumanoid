@@ -9,10 +9,9 @@
     "unresolved": [
       "Simplexity Robotics (pending_verification)",
       "Playground report (pending_decision)",
-      "Boston Dynamics Orbit software (pending_decision)",
-      "Software group of the four new rows and FLUX-mimic (listed as Simulators; rows to move in the workbook)"
+      "Boston Dynamics Orbit software (pending_decision)"
     ],
-    "evidence": "Plan WP-20261125-integrarobot-why-humanoid written by Codex (receipt 2026-11-26) and read back independently; PR #130 merged as 77c6759; Pages run 45771057634; production import run 45771073245 (HTTP 200); production snapshot 2026-11-26T06:51:24.000Z with the ten planned records.",
+    "evidence": "Plan WP-20261125-integrarobot-why-humanoid written by Codex (receipt 2026-11-26) and read back independently; PR #130 merged as 77c6759 (import run 45771073245); Software groups corrected in the workbook by Codex and published in PR #132, merged as e58ede8 (import run 45772916684); production snapshot 2026-11-26T07:07:13.000Z with the ten planned records and the corrected groups.",
     "previous": {
       "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
       "date": "2026-11-18",
@@ -38,7 +37,7 @@
       "found": "2026-11-25",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
       "outcome": "pending_decision",
-      "needs": "Javier's decision on the tab"
+      "needs": "classification by Claude or Codex under the existing Reports criteria (external report with estimates by type, findings mapped with locators in tools/reports-findings.json); no row before that review"
     },
     {
       "edition": "https://www.integrarobot.com/p/why-humanoid",
@@ -48,17 +47,7 @@
       "found": "2026-11-25",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
       "outcome": "pending_decision",
-      "needs": "Javier's decision"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Software rows 130-134 (FLUX-mimic, Viam, WALL-OSS-1.0, AHEADance, Play2Perfect) sit below the SIMULATORS heading (row 116) and are published in the Simulators group: move them into the first block (after row 76, before SOFTWARE FOR UNITREE) or, for AHEADance, into Software for Unitree; then one production import",
-      "source": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
-      "source_date": "2026-11-26",
-      "found": "2026-11-26",
-      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
-      "outcome": "workbook fix (Codex write phase)",
-      "needs": "a move plan under the contract, Codex write and readback, publication"
+      "needs": "a primary Orbit product page (the post is a customer-practice blog); under the existing Software criteria (robotics software platforms such as Foxglove) it would get a Software row in the next plan"
     }
   ],
   "runs": [
@@ -111,7 +100,16 @@
       ],
       "result": "published",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
-      "close": "PENDING_ID"
+      "close": "WH-20261126-0808-lote-25-11-publicado"
+    },
+    {
+      "date": "2026-11-26",
+      "kind": "publication",
+      "subject": "Software group correction (Codex move of A77:C134), Software preview only, one production import",
+      "editions": [],
+      "result": "published",
+      "plan": null,
+      "close": "WH-20261126-0808-lote-25-11-publicado"
     }
   ],
   "handoffs": [
@@ -127,7 +125,7 @@
       "private_cells": 4,
       "private_payload": {
         "sha256": "c5c274e17ad0a637118006302786c006b1490d62611998a6353728b0aea44e15",
-        "channel": "Google Drive (Javier's My Drive), exact title whyhumanoid-private-handoff-WP-20261125-integrarobot-why-humanoid.json, not shared; created 2026-11-26T06:54:59Z after the write (the values had gone to Codex in the coordination chat); round-trip SHA-256 checked"
+        "channel": "Google Drive (Javier's My Drive), exact title whyhumanoid-private-handoff-WP-20261125-integrarobot-why-humanoid.json, owner-only; created 2026-11-26T06:54:59Z after the write (the values had gone to Codex in the coordination chat); round-trip SHA-256 checked by Claude and by Codex; Codex opened it by its file ID, delivered privately (title search returned nothing)"
       },
       "write_receipt": {
         "by": "codex",
@@ -155,15 +153,16 @@
         "by": "claude",
         "date": "2026-11-26",
         "public_plan_sha256": "6d0cc116469580accc51539b286a5b72489f802a571f73337beb21cfdf0557b5",
+        "basis": "export of 2026-11-25T06:44:43Z against the write (2026-11-26T06:38:00Z)",
         "cells_checked": 87,
-        "differences": 0,
-        "neighbour_cells_checked": 46,
-        "neighbour_changes": 0,
-        "other_changed_rows": {
+        "value_differences": 0,
+        "group_differences": 4,
+        "group_note": "op-001 to op-004 were written below the SIMULATORS heading (listed as Simulators, plan intent: first block); found after publication and corrected by the move below; the readback now rechecks groups",
+        "unexpected_changes": 0,
+        "live_market_changes": {
           "Humanoids": 2,
-          "Investment": 213
-        },
-        "other_changes": "live market values only (Humanoids Valuation, Investment PRICE, CHANGE_PCT, MARKET_CAP, LAST_TRADE)"
+          "Investment": 839
+        }
       },
       "publication": {
         "pr": 130,
@@ -175,7 +174,7 @@
         "import_job": 139743587397,
         "site_snapshot": "2026-11-26T06:38:00Z",
         "production_snapshot": "2026-11-26T06:51:24.000Z",
-        "d1_margin_before_import": "0 imports on 2026-11-26 UTC; Codex read 0/100k rows written in the Cloudflare dashboard",
+        "d1_margin_before_import": "first import of 2026-11-26 UTC; Codex read 0/100k rows written in the Cloudflare dashboard",
         "production_counts": {
           "software": 145,
           "other-robots": 563,
@@ -185,9 +184,45 @@
           "humanoids": 212
         }
       },
-      "open_defects": [
-        "Software group of rows 130-134 (see known_pending)"
-      ]
+      "open_defects": [],
+      "group_fix": {
+        "by": "codex",
+        "date": "2026-11-26",
+        "what": "permutation of Software A77:C134 (values, formats, links, validation and notes kept; no whole-row insert or move): FLUX-mimic, Viam, WALL-OSS-1.0, Play2Perfect at rows 77-80 in the first block; SOFTWARE FOR UNITREE at 81 and its column headers at 82; AHEADance at 83; SIMULATORS at 121 and its column headers at 122",
+        "receipt": {
+          "cells": 174,
+          "neighbour_cells": 295,
+          "differences": 0,
+          "missing_or_duplicate_entries": 0,
+          "workbook_modified_time": "2026-11-26T06:58:06.820Z",
+          "link_formats_restored_afterwards": 49,
+          "link_format_note": "metadata only, no value change, no import"
+        },
+        "independent_check": {
+          "by": "claude",
+          "same_rows_multiset": true,
+          "rows": 58,
+          "changes_outside_A_C": 0,
+          "other_tabs": "live market values only"
+        },
+        "publication": {
+          "pr": 132,
+          "merge_commit": "e58ede81fe7e377faca66b6f18b968c4bd2b874c",
+          "reviewed_head": "7c434c78d73980f6af73d8895b6dff649f3a4159",
+          "ci_run": 45772587643,
+          "pages_run": 45772907129,
+          "import_run": 45772916684,
+          "import_job": 139749589861,
+          "production_snapshot": "2026-11-26T07:07:13.000Z",
+          "groups": {
+            "FLUX-mimic (mimic robotics)": null,
+            "Viam": null,
+            "WALL-OSS-1.0 (X Square Robot)": null,
+            "Play2Perfect": null,
+            "AHEADance": "Software for Unitree"
+          }
+        }
+      }
     }
   ]
 }

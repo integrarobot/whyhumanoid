@@ -1,81 +1,131 @@
-# Plan de escritura en el libro maestro (`whyhumanoid/workbook-plan@1`)
+# Workbook write plan contract (`whyhumanoid/workbook-plan@1`)
 
-Decisión de Javier (26/11/2026): las noticias de cada newsletter se incorporan sin que Javier copie celdas ni pase planes de mano en mano. Claude investiga y planifica en la nube, con acceso de solo lectura al libro. Codex escribe y relee con el conector nativo de Google Sheets. Claude publica cuando recibe el recibo de Codex. Herramienta: `tools/workbook-plan.mjs` (pruebas en `tools/test-workbook-plan.mjs`, en CI).
+Resumen en español: Claude investiga y planifica en la nube (fase 1), Codex escribe y relee con el conector nativo de Google Sheets (fase 2) y Claude publica tras el recibo de Codex (fase 3). Procedimiento en `.claude/skills/whyhumanoid-weekly-update/SKILL.md` y regla en `AGENTS.md`.
 
-## Fases y responsables
+Decision by Javier (26 Nov 2026): every newsletter batch reaches the workbook and the site without Javier copying cells or relaying plans. Tool: `tools/workbook-plan.mjs` (tests in `tools/test-workbook-plan.mjs`, run by CI).
 
-| Fase | Quién y cuándo | Entrega |
+## Phases and owners
+
+| Phase | Owner and schedule | Output |
 |---|---|---|
-| 1. Investigación y plan | Claude, tarea programada de los miércoles a las 14:00 (Europe/Madrid), en la nube, con lectura del libro | Plan público en Git, carga privada fuera de Git y cierre |
-| 2. Escritura y relectura | Codex, automatización «Incorporar newsletters a Why Humanoid?» (diaria, 15:00 Europe/Madrid), conector nativo de Google Sheets | Recibo de escritura y relectura |
-| 3. Publicación | Claude, en la sesión de Code que coordina Codex, solo después del recibo | Web, una importación a producción, verificación y cierre |
+| 1. Research and plan | Claude, scheduled task on Wednesdays at 14:00 Europe/Madrid, in the cloud, read-only access to the workbook | Public plan in Git, private payload outside Git, private delivery note, closeout |
+| 2. Write and readback | Codex, automation "Incorporar newsletters a Why Humanoid?" (daily, 15:00 Europe/Madrid), native Google Sheets connector | Write and readback receipt |
+| 3. Publication | Claude, in the Code session Codex coordinates, only after the receipt | Site, one production import, verification, closeout |
 
-Reglas comunes:
+Common rules:
 
-- Solo se procesa la sección de noticias de cada edición (Javier, 18/11/2026).
-- Que la fase 1 no pueda escribir en el libro no es un bloqueo: su resultado es un plan completo y verificable. Nunca se pide a Javier que copie celdas. Tampoco se proponen como paso rutinario cambios de permisos, identidades o credenciales de Google ni de la tarea programada.
-- La escritura es celda a celda y solo en las celdas del plan. Nunca se sustituye el libro ni una pestaña entera. Una celda que ya tiene el valor propuesto no se vuelve a escribir, así que una escritura interrumpida se reanuda sin repetir nada.
-- Ninguna fase cambia precios, acceso, cobro, credenciales ni el flujo de importación.
-- Lo que la fuente no sostiene no se planifica: queda en el plan como `pending_verification` o `pending_decision`, con su motivo, y sigue en `known_pending` hasta resolverse.
+- Only the news section of each edition is processed (Javier, 18 Nov 2026).
+- A read-only connector in phase 1 is not a blocker: its output is a complete, verifiable plan. Never ask Javier to copy cells. Never propose changes to Google permissions, identities, credentials or the scheduled task as a routine step.
+- Writes are cell by cell, only in the plan's cells. Never replace the workbook or a whole tab. A cell that already holds the proposed value is not rewritten, so an interrupted write resumes without repeating anything.
+- No phase changes prices, access, billing, credentials or the import workflow.
+- Facts the sources do not support are not planned. They stay in the plan as `pending_verification` or `pending_decision`, with the evidence they need, and remain in `known_pending` until resolved. Routine classification under existing criteria is done by Claude or Codex, not escalated to Javier.
 
-## Plan público (`ops/weekly-update/plans/<plan_id>.json`)
+## Public plan (`ops/weekly-update/plans/<plan_id>.json`)
 
-Es inmutable una vez escrito en el libro. Lo valida `node tools/workbook-plan.mjs check` (también en CI).
+The plan is immutable once written to the workbook. `node tools/workbook-plan.mjs check` validates it, and CI runs the same check.
 
 - `contract`: `whyhumanoid/workbook-plan@1`.
-- `plan_id`: `WP-AAAAMMDD-fuente-slug`, con la fecha de la edición (o de la primera edición del lote).
-- `created_at`, `created_by`. `basis.workbook_modified_time`: la hora de modificación del libro que se leyó para planificar.
-- `editions[]`: identidad estable de cada edición: `edition_id` (`integrarobot:AAAA-MM-DD:slug`), `url`, `title`, `published`, `section` (el título literal de la sección de noticias) e `item_count`.
-- `items[]`: todas las noticias de la sección, numeradas en su orden, sin dobles cuentas. Cada una lleva `title`, `link`, `new_information`, `outcome` y su `reason` si no es `planned`. Los valores de `outcome` son `planned`, `already_incorporated`, `out_of_scope`, `pending_verification` y `pending_decision`. `entity.exists` y `entity.where` dicen si la empresa o el producto ya estaba en el catálogo, algo distinto de si la afirmación nueva está incorporada. Una noticia con alta prevista nombra sus `ops`. Si parte de ella ya estaba incorporada, se dice en `entity.where`.
-- `operations[]`: una por registro escrito:
-  - `op_id` (`op-NNN`), `item_id` y `kind`. Los tipos son tres:
-    - `append_row`: fila nueva de una tabla. Las celdas no listadas quedan vacías.
-    - `fill_list_slot`: hueco libre de una lista que comparte filas con otra, como Software A:C o Other Robots A:C. Las celdas vecinas no se tocan.
-    - `update_cells`: cambio en un registro existente.
-  - Destino: `sheet` (título de la pestaña), `row` (fila de la hoja) y `header_row` (por defecto 1).
-  - `record.key`: columna, cabecera y valor que identifican el registro, por ejemplo `DATASET_ID`, `METRIC_ID`, `record_id` o el nombre de una lista. `record.unique` es opcional, por ejemplo la URL de una lista. Con `append_row` y `fill_list_slot`, la clave no puede existir ya en otra fila. Con `update_cells`, la fila tiene que seguir siendo la del registro.
-  - `group_expected` es obligatorio en las listas con encabezados de sección revisados (Software: «Software for Unitree», «Simulators»). Una fila pertenece al grupo del encabezado que tiene encima, así que se escribe dentro de su bloque. `null` es el primer bloque, sin grupo.
-  - `cells[]`: `column` (letras), `header` (cabecera exacta en esa columna), `expected_previous` (`""` para celdas vacías) y `proposed`.
-  - `sources[]`: `url`, `publisher`, `published` y `reviewed`.
-- `private_payload`: `sha256` de la carga privada, número de `cells` privadas y `delivery`.
+- `plan_id`: `WP-YYYYMMDD-source-slug`, dated by the edition (or by the first edition of the batch).
+- `created_at` and `created_by`. `basis.workbook_modified_time` is the modified time of the workbook the plan was read from.
+- `editions[]`: stable identity of each edition. Fields: `edition_id` (`integrarobot:YYYY-MM-DD:slug`), `url`, `title`, `published`, `section` (the literal title of the news section) and `item_count`.
+- `items[]`: every news item of the section, numbered in its order, without double counting.
+  - Each item has `title`, `link`, `new_information`, `outcome`, and a `reason` unless the outcome is `planned`. Outcomes: `planned`, `already_incorporated`, `out_of_scope`, `pending_verification`, `pending_decision`.
+  - `entity.exists` and `entity.where` say whether the company or product was already in the catalogue. That is separate from whether the new claim is incorporated.
+  - A planned item names its `ops`. If part of the item was already incorporated, `entity.where` says so.
+- `operations[]`: one per record written.
+  - `op_id` (`op-NNN`), `item_id` and `kind`. There are three kinds:
+    - `append_row`: a new table row. Unlisted cells stay empty.
+    - `fill_list_slot`: a free slot of a list that shares rows with another list, such as Software A:C or Other Robots A:C. Neighbouring cells are untouched.
+    - `update_cells`: a change to an existing record.
+  - Target: `sheet` (tab title), `row` (sheet row) and `header_row` (default 1).
+  - `record.key`: the column, header and value that identify the record, such as `DATASET_ID`, `METRIC_ID`, `record_id` or a list name. `record.unique` is optional, for example a list URL. For `append_row` and `fill_list_slot` the key must not exist on another row. For `update_cells` the row must still hold the record.
+  - `group_expected` is required in lists with reviewed section titles (Software: "Software for Unitree", "Simulators"). A row belongs to the group of the nearest section title above it, so a row appended at the end of the list joins the last group. `null` is the first block, with no group.
+    - The target must be an entry slot. It cannot be a section title row, a repeated column-header row, or a row between a section title and the column headers that follow it.
+    - `preflight` checks this on the live sheet and `readback` checks it again after the write.
+  - `cells[]`: `column` (letters), `header` (the exact header in that column), `expected_previous` (`""` for empty cells) and `proposed`.
+  - `sources[]`: `url`, `publisher`, `published` and `reviewed`.
+- `private_payload`: the payload `sha256`, the number of private `cells`, and `delivery`.
 
-Valores privados. Solo van en claro las pestañas gratuitas (las de `access: 'free'` en `server/src/datasets.js`). Aun en ellas, nunca van en claro las columnas internas: `RELATED_BENCHMARK_URL`, `CLASSIFICATION_NOTE` y `ATTACHMENT_REF` de Datasets. Las demás pestañas van siempre cifradas en el plan, aunque un campo sea público en la web: Deployments, Components, Clean Entities, Evidence Relations, Product - Container Handling, Data Space, Reports y cualquier pestaña nueva. En el plan solo aparece su HMAC (`proposed_hmac`, `expected_previous_hmac`, `value_hmac`) y `private: true`. El plan público nunca lleva enlaces de Google Docs, Sheets o Drive, correos ni identificadores de registros de pago.
+Private values:
 
-## Carga privada (fuera de Git)
+- Values travel in clear only in the free tabs (`access: 'free'` in `server/src/datasets.js`), and never in internal columns: Datasets `RELATED_BENCHMARK_URL`, `CLASSIFICATION_NOTE` and `ATTACHMENT_REF`.
+- Every other tab travels as HMACs only, even where a field is public on the site. That covers Deployments, Components, Clean Entities, Evidence Relations, Product - Container Handling, Data Space, Reports and any new tab. The plan carries `proposed_hmac`, `expected_previous_hmac` and `value_hmac` (for `record.key` and `record.unique` alike) with `private: true`.
+- The public plan never carries Google Docs, Sheets or Drive links or IDs, email addresses, or paid record identifiers.
 
-`{ "contract": "whyhumanoid/workbook-plan-private@1", "plan_id", "salt", "values": { "<op_id>:<columna>:<proposed|previous|key|unique>": "<valor>" } }`. El HMAC es SHA-256 con la sal de la carga, sobre `plan_id`, `op_id`, columna, tipo y valor, separados por saltos de línea. El plan guarda el SHA-256 del fichero, así que la carga no se puede cambiar sin que se note.
+Moves inside a list, such as correcting a group, are not plan operations yet. Codex writes them with a receipt that proves a permutation: the same multiset of rows, and nothing changed outside the moved columns. Claude reads them back from a fresh export before publishing. The first case was Software A77:C134 on 26 Nov 2026.
 
-Canal de traspaso privado:
+## Private payload and its delivery
 
-1. Fichero en la unidad «Mi unidad» de Google Drive de Javier, con el título exacto `whyhumanoid-private-handoff-<plan_id>.json`. Lo crea la fase 1 con el conector de Google Drive, sin compartirlo, y Codex lo lee con su conector. Probado el 26/11/2026: creación, descarga y SHA-256 idénticos. Ni el identificador ni el enlace del fichero van a Git.
-2. Si no se puede crear, el fichero se adjunta en la conversación de la fase 1 y su SHA-256 va en el cierre.
-3. Si un plan tiene celdas privadas y no hay forma de entregar la carga, la fase 1 se cierra `bloqueado` con el motivo exacto. Las operaciones públicas pueden ir en un plan aparte.
+Format: `{ "contract": "whyhumanoid/workbook-plan-private@1", "plan_id", "salt", "values": { "<op_id>:<column>:<proposed|previous|key|unique>": "<value>" } }`. Each HMAC is SHA-256 keyed with the payload's salt, over `plan_id`, `op_id`, column, kind and value, separated by newlines. The plan records the file's SHA-256, so the payload cannot change unnoticed.
 
-Comandos de la fase 1: escribe un borrador con todos los valores en claro, fuera de Git, y ejecuta `node tools/workbook-plan.mjs split <borrador> --public ops/weekly-update/plans/<plan_id>.json --private <carga fuera de Git>`. Después ejecuta `check --private <carga>`, `preflight <plan> --from <exportación> --private <carga>` y `summary <plan>`.
+Delivery, proven on 26 Nov 2026:
 
-## Recibo de la fase 2 (Codex)
+1. Phase 1 creates the file in Javier's Google Drive ("My Drive") with the Google Drive connector, titled `whyhumanoid-private-handoff-<plan_id>.json` and not shared. It then downloads the file once and checks its SHA-256.
+2. Phase 1 delivers the Drive file ID and link privately, together with `plan_id` and the SHA-256:
+   - in the phase 1 conversation, as a direct message to whoever reads it;
+   - in the private note the scheduled task leaves for Codex;
+   - never in Git, a public closeout or the site.
 
-Antes de escribir, Codex comprueba que el plan de `main` y la carga coinciden con sus SHA-256. Comprueba en la hoja viva las cabeceras, que cada celda tenga el valor previo esperado (o ya el propuesto), que no haya duplicados de la clave y el grupo de las listas. Si algo no cuadra, para y lo dice; no hay escrituras parciales sin avisar.
+   Codex opens the file by its ID. A title search is not enough: Drive search may not index a new file yet, and on 26 Nov 2026 both exact and partial title searches returned nothing while the ID worked.
+3. If the file cannot be created, phase 1 attaches the payload to its conversation and gives its SHA-256 there.
+4. If a plan has private cells and the payload cannot be delivered either way, phase 1 closes `bloqueado` with the exact reason. Public operations may go in a separate plan.
 
-Después escribe solo las celdas pendientes y relee las celdas escritas y las vecinas. El recibo, en el chat de coordinación, lleva:
+Phase 1 commands:
 
-- `plan_id`, el commit de `main` y el SHA-256 del plan;
-- el SHA-256 de la carga;
-- las celdas escritas, las que ya estaban escritas, los conflictos (0) y las diferencias de la relectura (0);
-- las celdas vecinas comprobadas sin cambios;
-- los rangos de las tablas nativas;
-- la hora de modificación del libro tras escribir;
-- la constancia de que no se han cambiado credenciales, permisos ni identidades.
+1. Write a draft with every value in clear, outside Git.
+2. Run `node tools/workbook-plan.mjs split <draft> --public ops/weekly-update/plans/<plan_id>.json --private <payload outside Git>`.
+3. Run `check --private <payload>`, `preflight <plan> --from <export> --private <payload>` and `summary <plan>`.
 
-## Fase 3 (Claude, solo tras el recibo)
+## Phase 2 receipt (Codex)
 
-1. Descarga nueva del libro y `python3 -I tools/workbook-xlsx-to-json.py <libro.xlsx> <export.json> --compare <exportación de la base>`. Solo deben cambiar las filas del plan y los valores de mercado en vivo.
-2. `node tools/workbook-plan.mjs readback <plan> --from <export> --private <carga> --previous <exportación de la base>`: 0 diferencias y 0 cambios en celdas vecinas. El recibo propio se guarda en `state.json`.
-3. Publicación por el flujo del skill, en un solo PR por lote. El atlas de una pestaña que no ha cambiado se deja como está. Benchmarks lo exige, porque su prueba fija la hora de exportación.
-4. Una importación a producción por lote («Import private workbook», `main`, `production`), sin importación de prueba previa: la cuota diaria de filas escritas de D1 es de la cuenta. Antes se comprueba el margen del día, que Codex lee en el panel de Cloudflare en UTC. Una importación completa escribe unas 12.000 filas, como mucho unas 32.000 contando índices. No se importa si el libro no ha cambiado desde la última importación.
-5. Verificación en producción (API o MCP): recuentos y cada registro del plan con su instantánea.
-6. `state.json`: el traspaso pasa a `published`. La edición pasa a `last_processed_edition` con sus casos sin resolver, que siguen en `known_pending`. Después se registra el cierre.
+Before writing, Codex checks that the plan on `main` and the payload match their SHA-256. On the live sheet it checks:
 
-## Estado del traspaso (`ops/weekly-update/state.json`, `handoffs`)
+- the headers;
+- that each cell holds the expected previous value, or already the proposed one;
+- that the key is not duplicated;
+- the list groups and slots.
 
-Cada plan tiene una entrada: `plan_id`, `plan`, `editions`, `status` (`awaiting_write`, `written` o `published`), `private_payload` (`sha256` y canal, sin enlace), `write_receipt` (resumen del recibo de Codex, sin rutas locales), `independent_readback`, `publication` (PR, commit, run de Pages, run de importación e instantánea de producción) y los defectos pendientes, si los hay.
+On any mismatch it stops and says so; there are no silent partial writes.
+
+It then writes only the pending cells and reads back the written cells and their neighbours. The receipt, in the coordination chat, gives:
+
+- `plan_id`, the `main` commit and the plan SHA-256;
+- the payload SHA-256;
+- cells written and cells already written;
+- conflicts (0) and readback differences (0);
+- neighbour cells checked unchanged;
+- native table ranges;
+- the workbook modified time after the write;
+- a statement that no credentials, sharing or identities changed.
+
+## Phase 3 (Claude, only after the receipt)
+
+1. Download the workbook afresh and run `python3 -I tools/workbook-xlsx-to-json.py <book.xlsx> <export.json> --compare <export taken just before the write>`. Only the plan's rows and live market values may change.
+2. Run `node tools/workbook-plan.mjs readback <plan> --from <export> --private <payload> --previous <export taken just before the write>`. `--previous` is mandatory: without it, changes outside the plan could not be ruled out. The readback fails on any of the following:
+   - a value that differs from the plan;
+   - a header that changed;
+   - a record missing at its row, or appearing more than once;
+   - a wrong group or slot;
+   - a new row holding values outside the plan;
+   - any change outside the plan except live market numbers: Humanoids `Valuation` and Investment `PRICE`, `CHANGE_PCT`, `MARKET_CAP`, `LAST_TRADE`, `DATA_DELAY_MIN` and `QUOTE_STATUS`, while both values are formatted numbers.
+
+   It never prints a private value. Its receipt goes into `state.json`.
+3. Publish through the skill's flow, one PR per batch. Regenerate only what changed (for example `export-database --only software`). A tab whose content is unchanged keeps its atlas and preview; the Benchmarks test pins its export time.
+4. Run one production import per batch ("Import private workbook", `main`, `production`), with no test import first: the daily D1 rows-written quota is per account.
+   - Check the day's margin first. Codex reads it in the Cloudflare dashboard (UTC day); count the imports already run that day.
+   - A full import writes about 12,000 rows, up to about 32,000 counting index writes.
+   - Do not import when the workbook has not changed since the last import.
+5. Verify in production (API or MCP): the counts, and each planned record with its snapshot.
+6. In `state.json`, the handoff moves to `published`. The edition moves to `last_processed_edition` with its unresolved items, which stay in `known_pending`. Then register the closeout.
+
+## Handoff state (`ops/weekly-update/state.json`, `handoffs`)
+
+One entry per plan:
+
+- `plan_id`, `plan` and `editions`;
+- `status`: `awaiting_write`, `written` or `published`;
+- `private_payload`: its `sha256` and the channel, with no ID or link;
+- `write_receipt`: a summary of Codex's receipt, with no local paths;
+- `independent_readback`;
+- `publication`: PR, commit, Pages run, import run and production snapshot;
+- open defects and their fixes.

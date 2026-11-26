@@ -19,9 +19,10 @@
 // as the sheet displays them). Exports and payloads stay outside Git. Output never prints a private value.
 
 import { createHash, createHmac, randomBytes } from 'node:crypto';
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { DATASETS } from '../server/src/datasets.js';
-import { isSectionHeading, sectionLabel } from '../server/src/catalogue/directory.js';
+import { isRepeatedHeader, isSectionHeading, sectionLabel } from '../server/src/catalogue/directory.js';
 
 export const CONTRACT = 'whyhumanoid/workbook-plan@1';
 export const PRIVATE_CONTRACT = 'whyhumanoid/workbook-plan-private@1';
@@ -34,6 +35,10 @@ export const PLANS_DIR = new URL('../ops/weekly-update/plans/', import.meta.url)
 export const PUBLIC_SHEETS = new Set(DATASETS.filter((d) => d.access === 'free').map((d) => d.tab));
 export const PRIVATE_COLUMNS = { Datasets: new Set(['RELATED_BENCHMARK_URL', 'CLASSIFICATION_NOTE', 'ATTACHMENT_REF']) };
 export const isPrivateCell = (sheet, header) => !PUBLIC_SHEETS.has(sheet) || Boolean(PRIVATE_COLUMNS[sheet]?.has(header));
+// Cells that change on their own (live market formulas). A readback accepts their changes outside the plan only while
+// both values are formatted numbers; any other change outside the plan is reported and fails the readback.
+export const LIVE_FIELDS = { Humanoids: new Set(['Valuation']), Investment: new Set(['PRICE', 'CHANGE_PCT', 'MARKET_CAP', 'LAST_TRADE', 'DATA_DELAY_MIN', 'QUOTE_STATUS']) };
+const LIVE_VALUE = /^-?[\d,]*\.?\d+%?$|^\d{1,2}\/\d{1,2}\/\d{4} \d{1,2}:\d{2}:\d{2}$|^$/;
 
 const FORBIDDEN = [
   [/docs\.google\.com\/|drive\.google\.com\//, 'a Google Docs, Sheets or Drive link'],
@@ -114,7 +119,10 @@ export function validatePlan(plan, { text = JSON.stringify(plan), payload = null
     const key = op.record?.key;
     if (!key?.column || !key?.header || (key.value === undefined) === (key.value_hmac === undefined)) bad(`${at}: record.key needs column, header and exactly one of value or value_hmac`);
     else if (isPrivateCell(op.sheet, key.header) ? key.value !== undefined : key.value_hmac !== undefined) bad(`${at}: record.key must be ${isPrivateCell(op.sheet, key.header) ? 'an HMAC (private tab or column)' : 'in clear'}`);
-    for (const u of op.record?.unique ?? []) if (!u.column || !u.header || (u.value === undefined) === (u.value_hmac === undefined)) bad(`${at}: record.unique entries need column, header and value or value_hmac`);
+    for (const u of op.record?.unique ?? []) {
+      if (!u.column || !u.header || (u.value === undefined) === (u.value_hmac === undefined)) bad(`${at}: record.unique entries need column, header and exactly one of value or value_hmac`);
+      else if (isPrivateCell(op.sheet, u.header) ? u.value !== undefined : u.value_hmac !== undefined) bad(`${at}: record.unique ${u.header} must be ${isPrivateCell(op.sheet, u.header) ? 'an HMAC (private tab or column)' : 'in clear'}`);
+    }
     if (!(op.cells ?? []).length) bad(`${at}: cells are required`);
     for (const c of op.cells ?? []) {
       const where = `${at} ${op.sheet}!${c.column}${op.row}`;
@@ -235,17 +243,40 @@ export function listSpec(op) {
   const list = spec?.lists.find((l) => l.columns.name === colIndex(op.record?.key?.column ?? 'A'));
   return spec && list ? { spec, list } : null;
 }
+// The kind of a sheet row inside one list: a section title, a repeated column-header row, blank, or an entry.
+function rowKind(exportData, sheet, spec, list, r) {
+  const row = exportData[sheet]?.[r - 1] ?? [];
+  const d = { name: row[list.columns.name] ?? '', url: row[list.columns.url] ?? '', description: list.columns.description === undefined ? '' : row[list.columns.description] ?? '' };
+  if (isSectionHeading(spec, d)) return { kind: 'heading', label: sectionLabel(d.name, spec.properNames ?? []) };
+  if (isRepeatedHeader(spec, d)) return { kind: 'header' };
+  if (!String(d.name).trim() && !String(d.url).trim() && !String(d.description).trim()) return { kind: 'blank' };
+  return { kind: 'entry' };
+}
 export function groupAt(exportData, op) {
   const found = listSpec(op);
   if (!found?.spec.sectionHeadings?.length) return undefined;
-  const { spec, list } = found;
-  const rows = exportData[op.sheet] ?? [];
   for (let r = op.row - 1; r > (op.header_row ?? 1); r -= 1) {
-    const row = rows[r - 1] ?? [];
-    const d = { name: row[list.columns.name] ?? '', url: row[list.columns.url] ?? '', description: list.columns.description === undefined ? '' : row[list.columns.description] ?? '' };
-    if (isSectionHeading(spec, d)) return sectionLabel(d.name, spec.properNames ?? []);
+    const k = rowKind(exportData, op.sheet, found.spec, found.list, r);
+    if (k.kind === 'heading') return k.label;
   }
   return null;
+}
+// A list row must be an entry slot: not a section title or a column-header row, and not between a section title and
+// the column headers that follow it (entries come after them).
+export function slotProblems(exportData, op, { after = false } = {}) {
+  const found = listSpec(op);
+  if (!found?.spec.sectionHeadings?.length) return [];
+  const { spec, list } = found;
+  const here = rowKind(exportData, op.sheet, spec, list, op.row);
+  if (here.kind === 'heading' || here.kind === 'header') return [`${op.op_id}: row ${op.row} is a ${here.kind === 'heading' ? 'section title' : 'column-header'} row of the list`];
+  if (after && here.kind !== 'entry') return [`${op.op_id}: row ${op.row} holds no list entry after the write`];
+  for (let r = op.row - 1; r > (op.header_row ?? 1); r -= 1) {
+    const k = rowKind(exportData, op.sheet, spec, list, r);
+    if (k.kind === 'blank') continue;
+    if (k.kind === 'heading' && (spec.repeatedHeaders ?? []).length) return [`${op.op_id}: row ${op.row} sits between the section title "${k.label}" and its column headers`];
+    break;
+  }
+  return [];
 }
 
 export function preflight(plan, exportData, payload = null) {
@@ -266,6 +297,7 @@ export function preflight(plan, exportData, payload = null) {
       cells.push(state);
       if (state === 'conflict') problems.push(`${where}: holds neither the expected previous value nor the proposed one`);
     }
+    problems.push(...slotProblems(exportData, op));
     if (op.group_expected !== undefined) {
       const group = groupAt(exportData, op);
       if (group !== undefined && group !== op.group_expected) problems.push(`${op.op_id}: row ${op.row} would be listed under "${group ?? 'no group'}", plan says "${op.group_expected ?? 'no group'}" (write it inside the right block)`);
@@ -294,45 +326,68 @@ export function readback(plan, exportData, payload = null, previous = null) {
   const value = resolver(plan, payload);
   const differences = [];
   let checked = 0;
-  let neighbours = 0;
-  const neighbourChanges = [];
-  const targetsByRow = new Map();
+  const targets = new Set();
+  const targetRows = new Set();
   for (const op of plan.operations) {
     const rows = exportData[op.sheet] ?? [];
+    targetRows.add(`${op.sheet}\n${op.row}`);
     for (const c of op.cells) {
+      targets.add(`${op.sheet}\n${op.row}\n${colIndex(c.column)}`);
+      const where = `${op.op_id} ${op.sheet}!${c.column}${op.row}`;
       const proposed = value(op, c.column, 'proposed', c);
-      if (proposed === undefined) { differences.push(`${op.op_id} ${op.sheet}!${c.column}${op.row}: private value needed (--private)`); continue; }
+      if (proposed === undefined) { differences.push(`${where}: private value needed (--private)`); continue; }
       checked += 1;
-      if (header(exportData, op, c) !== c.header) differences.push(`${op.op_id} ${op.sheet}!${c.column}${op.row}: header changed`);
-      if (cellAt(rows, op.row, colIndex(c.column)) !== proposed) differences.push(`${op.op_id} ${op.sheet}!${c.column}${op.row}: differs from the plan`);
+      if (header(exportData, op, c) !== c.header) differences.push(`${where}: header changed`);
+      if (cellAt(rows, op.row, colIndex(c.column)) !== proposed) differences.push(`${where}: differs from the plan`);
     }
-    const k = `${op.sheet}\n${op.row}`;
-    targetsByRow.set(k, { op, cols: new Set([...(targetsByRow.get(k)?.cols ?? []), ...op.cells.map((c) => colIndex(c.column))]) });
-  }
-  // The rest of every target row: empty for a new row; unchanged against the previous export for a list slot or an update.
-  for (const { op, cols } of targetsByRow.values()) {
-    const now = exportData[op.sheet]?.[op.row - 1] ?? [];
-    const before = previous?.[op.sheet]?.[op.row - 1] ?? [];
-    const width = Math.max(now.length, before.length, (exportData[op.sheet]?.[(op.header_row ?? 1) - 1] ?? []).length);
-    for (let i = 0; i < width; i += 1) {
-      if (cols.has(i)) continue;
-      if (op.kind === 'append_row') { neighbours += 1; if (String(now[i] ?? '') !== '') neighbourChanges.push(`${op.sheet}!${colLetters(i)}${op.row}: a new row holds a value outside the plan`); }
-      else if (previous) { neighbours += 1; if (String(now[i] ?? '') !== String(before[i] ?? '')) neighbourChanges.push(`${op.sheet}!${colLetters(i)}${op.row}: changed outside the plan`); }
+    // The written row is the planned record, once, in the planned group, in an entry slot of its list.
+    const key = op.record.key;
+    const keyValue = value(op, key.column, 'key', key);
+    if (keyValue !== undefined) {
+      const kc = colIndex(key.column);
+      if (norm(cellAt(rows, op.row, kc)) !== norm(keyValue)) differences.push(`${op.op_id}: row ${op.row} does not hold the planned record`);
+      if (op.kind !== 'update_cells') {
+        const copies = rows.filter((r, i) => i + 1 > (op.header_row ?? 1) && norm(r?.[kc]) === norm(keyValue)).length;
+        if (copies !== 1) differences.push(`${op.op_id}: the planned record appears ${copies} times in ${op.sheet}`);
+      }
+    }
+    differences.push(...slotProblems(exportData, op, { after: true }));
+    if (op.group_expected !== undefined) {
+      const group = groupAt(exportData, op);
+      if (group !== undefined && group !== op.group_expected) differences.push(`${op.op_id}: row ${op.row} is listed under "${group ?? 'no group'}", plan says "${op.group_expected ?? 'no group'}"`);
     }
   }
-  // Other rows that changed since the previous export (live market values are expected): reported, never printed.
-  const otherRows = {};
+  // A new row holds nothing outside the plan.
+  for (const op of plan.operations.filter((o) => o.kind === 'append_row')) {
+    const row = exportData[op.sheet]?.[op.row - 1] ?? [];
+    row.forEach((v, i) => { if (String(v ?? '') !== '' && !targets.has(`${op.sheet}\n${op.row}\n${i}`)) differences.push(`${op.sheet}!${colLetters(i)}${op.row}: a new row holds a value outside the plan`); });
+  }
+  // Every other cell of the workbook against the export taken just before the write: only live market values may move.
+  let neighbours = 0;
+  const unexpected = [];
+  const live = {};
   if (previous) {
-    for (const sheet of Object.keys(exportData)) {
-      const a = previous[sheet] ?? [];
+    for (const sheet of new Set([...Object.keys(previous), ...Object.keys(exportData)])) {
+      const a = previous[sheet];
       const b = exportData[sheet];
+      if (!a || !b) { unexpected.push(`${sheet}: tab ${a ? 'removed' : 'added'}`); continue; }
+      const head = b[0] ?? [];
       for (let r = 0; r < Math.max(a.length, b.length); r += 1) {
-        if (targetsByRow.has(`${sheet}\n${r + 1}`)) continue;
-        if (JSON.stringify(a[r] ?? []) !== JSON.stringify(b[r] ?? [])) otherRows[sheet] = (otherRows[sheet] ?? 0) + 1;
+        const ra = a[r] ?? [];
+        const rb = b[r] ?? [];
+        for (let i = 0; i < Math.max(ra.length, rb.length); i += 1) {
+          if (targets.has(`${sheet}\n${r + 1}\n${i}`)) continue;
+          if (targetRows.has(`${sheet}\n${r + 1}`)) neighbours += 1;
+          const va = String(ra[i] ?? '');
+          const vb = String(rb[i] ?? '');
+          if (va === vb) continue;
+          if (r > 0 && LIVE_FIELDS[sheet]?.has(head[i]) && LIVE_VALUE.test(va) && LIVE_VALUE.test(vb)) live[sheet] = (live[sheet] ?? 0) + 1;
+          else unexpected.push(`${sheet}!${colLetters(i)}${r + 1}`);
+        }
       }
     }
   }
-  return { checked, differences, neighbours, neighbourChanges, otherRows };
+  return { checked, differences, neighbours, unexpected, live, compared: Boolean(previous) };
 }
 
 export function simulate(plan, exportData, payload) {
@@ -379,11 +434,28 @@ function fail(lines) {
   process.exit(1);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+const isMain = (() => {
+  try {
+    return Boolean(process.argv[1]) && realpathSync(fileURLToPath(import.meta.url)) === realpathSync(process.argv[1]);
+  } catch {
+    return false;
+  }
+})();
+
+if (isMain) {
+  try {
+    main();
+  } catch (error) {
+    console.error(`workbook-plan: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+function main() {
   const [command, file] = process.argv.slice(2);
   if (command === 'check') {
     const files = process.argv.slice(3).filter((a, i, all) => !a.startsWith('--') && all[i - 1] !== '--private');
-    const list = files.length ? files : existsSync(PLANS_DIR) ? readdirSync(PLANS_DIR).filter((f) => f.endsWith('.json')).map((f) => new URL(f, PLANS_DIR).pathname) : [];
+    const list = files.length ? files : existsSync(PLANS_DIR) ? readdirSync(PLANS_DIR).filter((f) => f.endsWith('.json')).map((f) => fileURLToPath(new URL(f, PLANS_DIR))) : [];
     const { payload, bytes } = loadPayload();
     const problems = [];
     for (const f of list) {
@@ -413,8 +485,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       console.log(`Preflight ${plan.plan_id}: ${r.cells} cells, ${r.pending} to write, ${r.applied} already written, ${r.conflicts} conflicts, ${r.unverifiable} need the private payload.`);
       if (r.problems.length) fail(r.problems);
     } else if (command === 'readback') {
-      const previous = arg('--previous') ? readJson(arg('--previous')) : null;
-      const r = readback(plan, exportData, payload, previous);
+      // Without the export taken just before the write, changes outside the plan cannot be ruled out: refuse.
+      if (!arg('--previous')) fail(['--previous <export taken just before the write> is required: without it, changes outside the plan are not checked']);
+      const r = readback(plan, exportData, payload, readJson(arg('--previous')));
       const receipt = {
         plan_id: plan.plan_id,
         public_plan_sha256: sha256(planBytes),
@@ -422,11 +495,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
         cells_checked: r.checked,
         differences: r.differences.length,
         neighbour_cells_checked: r.neighbours,
-        neighbour_changes: r.neighbourChanges.length,
-        other_changed_rows: r.otherRows,
+        unexpected_changes: r.unexpected.length,
+        live_market_changes: r.live,
       };
       console.log(JSON.stringify(receipt, null, 2));
-      if (r.differences.length || r.neighbourChanges.length) fail([...r.differences, ...r.neighbourChanges]);
+      if (r.differences.length || r.unexpected.length) fail([...r.differences, ...r.unexpected.slice(0, 50).map((c) => `${c}: changed outside the plan`), ...(r.unexpected.length > 50 ? [`(and ${r.unexpected.length - 50} more)`] : [])]);
     } else {
       if (!arg('--out')) fail(['--out is required']);
       writeFileSync(arg('--out'), JSON.stringify(simulate(plan, exportData, payload)));

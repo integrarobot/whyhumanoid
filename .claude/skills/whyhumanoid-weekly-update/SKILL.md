@@ -145,6 +145,7 @@ Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json` y 
 
 8. **Entrega el traspaso**:
    - Crea la carga privada en Google Drive con el título exacto `whyhumanoid-private-handoff-<plan_id>.json`, sin compartirla, y comprueba su SHA-256 descargándola.
+   - Entrega en privado el identificador y el enlace del fichero de Drive, con `plan_id` y SHA-256, en tu conversación (mensaje directo) y en la nota para Codex; nunca en Git ni en un cierre. La búsqueda por título en Drive puede no encontrar un fichero recién creado (comprobado el 26/11/2026).
    - Guarda en `main` por PR el plan público, el fichero de la ejecución y `state.json`: traspaso `awaiting_write` y piezas en `known_pending` con su `op_id`.
    - Cierra la fase con `completado` («Fase 1 de 3: plan entregado; sin escribir ni publicar»). Si no hay ediciones ni hechos nuevos, `sin_novedades`. `bloqueado` solo si no puedes leer el libro o las fuentes, o si hay celdas privadas y no puedes entregar su carga.
    - La edición no se marca como procesada.
@@ -155,10 +156,10 @@ La hace Codex con la automatización «Incorporar newsletters a Why Humanoid?» 
 
 ### Fase 3: publicación (Claude, solo tras el recibo de Codex)
 
-9. **Relee por tu cuenta**: descarga nueva, `tools/workbook-xlsx-to-json.py --compare` contra la exportación de la base y `node tools/workbook-plan.mjs readback <plan> --from <export> --private <carga> --previous <base>`. Solo deben cambiar las celdas del plan y los valores de mercado en vivo: 0 diferencias y 0 cambios en vecinas. Si algo no cuadra, no publiques y díselo a Codex con la celda exacta.
+9. **Relee por tu cuenta**: descarga nueva, `tools/workbook-xlsx-to-json.py --compare` contra la exportación tomada justo antes de escribir y `node tools/workbook-plan.mjs readback <plan> --from <export> --private <carga> --previous <esa exportación>` (`--previous` es obligatorio). Solo pueden cambiar las celdas del plan y los valores de mercado en vivo: 0 diferencias, 0 cambios inesperados, grupos y huecos de lista correctos y cada registro una sola vez. Las reordenaciones de una lista que haga Codex se comprueban como permutación: las mismas filas y nada fuera de las columnas movidas. Si algo no cuadra, no publiques y díselo a Codex con la celda exacta.
 
 10. **Publica por el flujo probado** (README, «Refresh»), un PR por lote:
-    1. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <hora de modificación del libro>` (escribe solo las vistas previas en `data/preview/`).
+    1. `node --no-warnings tools/export-database.mjs --from <export> --snapshot <hora de modificación del libro>` (escribe solo las vistas previas en `data/preview/`). Si solo cambia una pestaña, `--only <id>` (por ejemplo `--only software`) y nada más se regenera.
     2. Humanoids: `node --no-warnings tools/sync-humanoids.mjs --from-export <export> --snapshot <ISO>` y `tools/export-humanoids.mjs`; después `node --no-warnings tools/export-public.mjs --from <export>`.
     3. Los atlas de las pestañas que cambian (Datasets, Benchmarks, Integrators, Components) y `node tools/export-evolution.mjs`; después `tools/build-pages.mjs`, `tools/build-site.mjs` y `tools/build-app.mjs`, en ese orden.
     4. Comprueba, como en CI: `node tools/audit-deployments.mjs --from <export>` (0 diferencias), `node tools/relations.mjs --from <export>` y `--check`, `node --no-warnings tools/search-tags.mjs --from <export>`, `node tools/check-public.mjs`, `node tools/workbook-plan.mjs check`, `node tools/export-database.mjs --check`, todos los `--check` de CI, `cd server && npm test`, `cd tools && node verify-site.mjs && node verify-premium-app.mjs && node verify-pages.mjs` (con `NODE_OPTIONS=--max-old-space-size=6144` si falta memoria) y `node --no-warnings tools/check-reserved.mjs --from <export>`.
