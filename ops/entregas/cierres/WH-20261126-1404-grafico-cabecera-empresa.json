@@ -1,0 +1,56 @@
+{
+  "id": "WH-20261126-1404-grafico-cabecera-empresa",
+  "tarea": "Llevar el gráfico bursátil de las fichas de empresas cotizadas al espacio libre junto a la información de cabecera (identidad, entradilla y datos clave), totalmente en negro y sin la franja blanca, sin duplicar widgets y conservando el estado honesto de las empresas sin gráfico",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T14:04:40+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "tools/investment-view.mjs: el bloque de cotización y gráfico es una sola función; renderCompanyChart lo pone en la cabecera de la ficha cuando TradingView ofrece el gráfico, y Market data enlaza a él («The quote and chart are at the top of this page») en lugar de repetirlo. Sin gráfico ofrecido (sin símbolo o con estado no disponible), Market data conserva «Not available here: … Use the links below.» y sus enlaces; no se usa otro símbolo ni se inventan cotizaciones.",
+    "tools/build-pages.mjs: la cabecera de la ficha de empresa es una rejilla con la identidad (antetítulo, H1, categorías, entradilla), el gráfico (#quote) y los datos clave, sin cambios en ellos ni en el resto de secciones (Listing, Market data con finanzas, perfil, titulares y noticias, tesis, despliegues, fuentes).",
+    "assets/investment.css: a partir de 1024 px, identidad y datos clave a la izquierda y gráfico a la derecha (5fr/7fr); por debajo, el gráfico va tras la entradilla y antes de los datos clave. Altura del gráfico clamp(380px, 52vh, 520px) y 360 px a 640 px o menos.",
+    "Configuración del advanced chart gratuito: tema oscuro con backgroundColor #000000 y gridColor tenue, símbolo fijo y sin cambio de símbolo; se quitó toolbar_bg, que no figura entre las opciones documentadas del widget gratuito. La franja de cotización (symbol-info) sigue con isTransparent: true.",
+    "Franja blanca: el documento transparente de la franja de cotización usa el esquema de color normal y su iframe heredaba el esquema oscuro de la página, con lo que Chromium pintaba un lienzo blanco opaco. Los iframes de TradingView declaran ahora color-scheme normal sobre fondo negro, y los contenedores, el área del widget y la atribución son negros (#000). Sin filtros ni inversión; la atribución de TradingView sigue visible y ya no se sale de su marco cuando un widget no carga.",
+    "tools/test-investment.mjs: un gráfico y una cotización por ficha, en la cabecera entre la entradilla y los datos clave; configuración oscura; empresas sin gráfico sin columna de gráfico y con su estado; la corrección de CSS.",
+    "Sin importación de datos, Worker, proveedor de datos financieros, precios, accesos ni cambios de red del entorno."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 152",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/152"
+    },
+    {
+      "etiqueta": "Commit de fusión ce49f66",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/ce49f66afed0c30e484bca135443a0c3ed4b2e55"
+    },
+    {
+      "etiqueta": "Pages (ejecución 45824914035)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45824914035"
+    },
+    {
+      "etiqueta": "Tesla",
+      "url": "https://whyhumanoid.com/companies/tesla/"
+    },
+    {
+      "etiqueta": "Schaeffler",
+      "url": "https://whyhumanoid.com/companies/schaeffler/"
+    },
+    {
+      "etiqueta": "Fanuc (sin gráfico)",
+      "url": "https://whyhumanoid.com/companies/fanuc/"
+    }
+  ],
+  "despliegue": [
+    "PR 152 fusionado en main como ce49f66 desde el head aprobado por Codex 73767ce, con el CI en verde (ejecución 45824537636); el head anterior 8a7bbf7 también pasó el CI y Codex aportó el diagnóstico real que llevó a 73767ce.",
+    "GitHub Pages: ejecución 45824914035 completada con éxito a las 13:02:03 UTC. Solo páginas estáticas: sin Worker, datos ni Stripe."
+  ],
+  "verificaciones": [
+    "Claude, sin el proveedor real (la red de este entorno bloquea TradingView, así que los widgets quedan en su estado de fallo y la geometría es la de los marcos reservados): build-pages --check, check-public, test-frame 6/6, test-investment 13/13 y verify-pages en verde.",
+    "Claude, geometría en local y en producción con esos marcos, con viewport de 900 px de alto en escritorio y 800 px en 768, 375 y 320: Tesla y Schaeffler con el gráfico de 714×468 a la derecha a 1510 y 1920 px (de y 160 a 628 en producción), 681×416 tras la entradilla a 768 px y 360 px de alto a 375 y 320 px; Fanuc y UBTech en una sola columna y sin gráfico; ningún desbordamiento horizontal. La altura del gráfico en escritorio depende de la del viewport (52vh entre 380 y 520 px): 468 px con 900 px de alto y 419 px con los 805 px de Codex. En local también Intuitive Surgical (gráfico ofrecido sin comprobar).",
+    "Claude, prueba del mecanismo con un iframe de otro origen: un documento transparente sin esquema declarado da un fondo blanco (255,255,255) en la página oscura y negro (0,0,0) con la corrección; si declarara esquema oscuro, queda oscuro (18,18,18), nunca blanco.",
+    "Codex, con los widgets reales de TradingView en Chrome, en local y en producción: Tesla y Schaeffler dibujan velas reales con NASDAQ:TSLA y XETR:SHA0; contenedores e iframes del gráfico, la cotización y la atribución en negro (#000), iframes con esquema normal, sin franja blanca y con la atribución visible; a 1510×805 el gráfico ocupa x 678, y 160, 714×419 (antes empezaba en y 1960); a 1510, 375 y 320 px sin desbordamiento, un gráfico y una cotización en las fichas con gráfico, ninguno en Fanuc con su texto de no disponibilidad; gráfico de 360 px de alto en móvil y captura a 375 px con el gráfico y la cotización en negro legibles; 15 casos locales en 5 anchos sin fallos."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Codex registra su aviso de esta entrega; Javier confirma la recepción."
+}
