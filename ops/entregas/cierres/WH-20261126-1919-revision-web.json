@@ -1,0 +1,38 @@
+{
+  "id": "WH-20261126-1919-revision-web",
+  "tarea": "Repaso de la web (solo revisión) para decir qué falta importante, sin cambios de producto, datos, maestro ni precios",
+  "origen": "Javier (26/11/2026); revisión hecha por Codex, cierre registrado por Claude",
+  "fecha": "2026-11-26T19:19:36+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "codex (revisión); claude/opus-5.5 (registro del cierre)",
+  "cambios": [
+    "Ninguno en el producto, los datos, el maestro ni los precios. Solo este cierre. Las recomendaciones de Codex viven en sus artefactos locales (wiki/out), fuera del repositorio."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Why Humanoid?",
+      "url": "https://whyhumanoid.com/"
+    }
+  ],
+  "despliegue": [
+    "No aplica: revisión sin despliegue ni importación."
+  ],
+  "verificaciones": [
+    "Codex: 16 rutas principales responden 200; portada a 390 px sin desbordamiento y con el menú abriendo.",
+    "Codex, suscriptor existente en la app: la búsqueda de AGLT da 0 resultados y hay 276 cotizadas frente a las 277 de la web (bloqueo de despliegue ya registrado en WH-20261126-1907-agility-aglt).",
+    "Codex, Components en la app: tabla genérica y especificaciones del actuador como líneas de texto con barras, mientras la página web sí tiene filtros y comparador. Cobertura: 51 productos (3 actuadores, 4 reductores); 32 revisados, 18 parciales y 1 pendiente.",
+    "Codex, Other Robots (563): incluye Realtime, descrito como software, y Harmonic Drive, fabricante de componentes.",
+    "Codex, Method: declara los niveles E0 a E5 sin definirlos.",
+    "Codex, cobertura: Benchmarks con resultados en 2 de 22 (20 pendientes); Datasets con 15 de 37 magnitudes pendientes; Investment con ingresos en 109 de 277 empresas y crecimiento en 108.",
+    "Codex, oferta: la suscripción de US$100 al año y los informes de US$1,000 están disponibles; no hay una muestra completa propia del informe a medida.",
+    "Codex, agentes: existen documentación de API, MCP y CLI y una demo; falta reducir la fricción de adopción y medir consultas útiles y repetición.",
+    "Codex, seguimiento: hay favoritos locales en Investment; no se identificaron historial de cambios, alertas ni búsquedas guardadas del usuario en las pantallas y el código revisados."
+  ],
+  "pendientes": [
+    "Propuestas de Codex para decidir con Javier: sincronización web y API, experiencia de pago (Components en la app), tipos de entidad en Other Robots, definiciones de método (E0 a E5), cobertura de Benchmarks, Datasets e Investment, muestra del informe a medida, seguimiento (cambios, alertas, búsquedas guardadas) y adopción por agentes.",
+    "No se exigen ROI ni autonomía en todos los casos ni se reinicia la auditoría de los 125 casos de Deployments, ya hecha.",
+    "El bloqueo de Agility (API y MCP sin AGLT) sigue abierto en WH-20261126-1907-agility-aglt; este cierre no lo corrige."
+  ],
+  "siguiente_accion": "Codex entrega sus recomendaciones a Javier y registra su aviso; Javier decide qué propuestas se convierten en encargos."
+}
