@@ -7,16 +7,18 @@
     "marked_processed": "2026-11-26",
     "status": "published and verified; unresolved items remain in known_pending",
     "unresolved": [
-      "Simplexity Robotics (pending_verification)",
-      "Playground report (pending_decision)",
-      "Boston Dynamics Orbit software (pending_decision)"
+      "Simplexity Robotics (pending_verification)"
     ],
     "evidence": "Plan WP-20261125-integrarobot-why-humanoid written by Codex (receipt 2026-11-26) and read back independently; PR #130 merged as 77c6759 (import run 45771073245); Software groups corrected in the workbook by Codex and published in PR #132, merged as e58ede8 (import run 45772916684); production snapshot 2026-11-26T07:07:13.000Z with the ten planned records and the corrected groups.",
     "previous": {
       "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
       "date": "2026-11-18",
       "marked_processed": "2026-11-25"
-    }
+    },
+    "resolved_later": [
+      "Playground report: Reports RPT-013 with 8 checked findings, published 2026-11-26 (PR #163, Pages only)",
+      "Boston Dynamics Orbit software: Software row in the general block, published and imported 2026-11-26 (PR #163, import run 45842226852)"
+    ]
   },
   "known_pending": [
     {
@@ -29,26 +31,6 @@
       "outcome": "pending_verification",
       "needs": "a primary source for the round and a named model",
       "rechecked": "2026-11-26: still no primary source for the round and no named model"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Playground, The Robot Frontier Is Accelerating: vendor index and forecasts; decide whether it enters Reports",
-      "source": "https://www.withplayground.ai/research/robot-frontier-accelerating",
-      "source_date": "2026-11-23",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
-      "outcome": "written (RPT-013, Reports row 14); findings mapped and checked (8); publication by PR (Pages only)",
-      "needs": "merge and Pages deployment, then verification"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Boston Dynamics Orbit (fleet software with an MCP layer for agents to start Spot missions): decide whether it gets a Software row. Not Orbit Robotics (space robotics, reclassified 2026-11-23). No Deployments record: the post names no customer or site",
-      "source": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/",
-      "source_date": "modified 2026-11-16",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
-      "outcome": "written (Software row 81, first block); publication by PR",
-      "needs": "merge, one production import after the last Codex D1 check, then verification"
     }
   ],
   "runs": [
@@ -127,13 +109,14 @@
     {
       "date": "2026-11-26",
       "kind": "publication (known_pending)",
-      "subject": "Orbit (Software) and Playground (Reports, RPT-013) after the Codex write receipt, with the authorized Deployments evidence row; production import pending the last Codex D1 check",
+      "subject": "Orbit (Software) and Playground (Reports, RPT-013) after the Codex write receipt, with the authorized Deployments evidence row; one production import",
       "editions": [
         "https://www.integrarobot.com/p/why-humanoid"
       ],
-      "result": "written; publication PR open",
+      "result": "published",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
-      "file": "ops/weekly-update/runs/2026-11-26-pendientes.json"
+      "file": "ops/weekly-update/runs/2026-11-26-pendientes.json",
+      "close": "WH-20261126-1548-publicacion-pendientes-25-11"
     }
   ],
   "handoffs": [
@@ -254,7 +237,7 @@
       "editions": [
         "integrarobot:2026-11-25:why-humanoid"
       ],
-      "status": "written",
+      "status": "published",
       "operations": 2,
       "cells": 23,
       "private_cells": 20,
@@ -332,7 +315,34 @@
         "preflight_after_write": "23 already written, 0 pending"
       },
       "d1": "see ops/weekly-update/runs/2026-11-26-pendientes.json, d1: 63.47k of 100k written on 2026-11-26 UTC across three production imports (runs 45771073245, 45772916684 and 45792742154, the last one for Components by another task); this import is estimated at 12,266 row changes and at most 32,380 counting index writes; Codex authorises one import today only with at least 35k left at a last check and no concurrent import",
-      "next": "Codex reviews the publication PR head; merge on green CI and Pages; Codex makes a last D1 dashboard check (at least 35k left, no concurrent import or other writer); then one production import, and Claude verifies production and closes. Below 35k the handoff stays pending and the recurring continuation imports after the reset."
+      "next": "none for this plan; Simplexity stays in known_pending",
+      "publication": {
+        "pr": 163,
+        "merge_commit": "76a97bbdc010fbd52e1dc5a3444084ad3f263c93",
+        "reviewed_head": "a3c0ed31147f27150249773af1f31caf47f34e8a",
+        "review": "Codex: data and code pass on c5738d47; two source-text corrections in the 8 new findings (24 quoted words in total, 2.5x discrepancy explicit); final approval on a3c0ed31",
+        "ci_run": 45841650200,
+        "pages_run": 45841936090,
+        "import_run": 45842226852,
+        "import_job": 139986609694,
+        "site_snapshot": "2026-11-26T14:21:54.716Z",
+        "production_snapshot": "2026-11-26T14:45:48.000Z",
+        "d1_margin_before_import": "Codex at 14:43 UTC: 63.47k of 100k written (36.53k left) after three imports today, none running or queued; estimate at most 32,380; one import authorised",
+        "production_counts": {
+          "software": 146,
+          "deployments": 198,
+          "deployment_cases": 125,
+          "humanoids": 212,
+          "other-robots": 563,
+          "datasets": 37,
+          "dataset-metrics": 63,
+          "hardware": 51,
+          "integrators": 28
+        },
+        "relations": "ok; 198 records, 110 linked to a robot, 78 at the maker only, 130 companies with records",
+        "search": "full 2005, preview 1938, 7 unmapped values",
+        "verified": "MCP catalogue: Orbit in Software (general block, no group); the 198 Deployments rows equal the published preview field by field (125 cases, the Mercedes-Benz evidence row included); search finds both; the Reports atlas served is identical to main (13 reports, RPT-013 with its 8 findings)"
+      }
     }
   ]
 }
