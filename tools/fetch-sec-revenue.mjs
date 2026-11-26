@@ -7,6 +7,8 @@
 // packet stays outside Git; run export-fundamentals.mjs on it and review the changes before publishing.
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export const USER_AGENT = 'WhyHumanoid public research https://whyhumanoid.com';
 export const CONCEPTS = [
@@ -62,7 +64,8 @@ export async function buildPacket(registrants, { fetchImpl = fetch, since = '202
   };
 }
 
-if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
+// Run as a command: compare file paths, not URL paths (a URL escapes spaces and '?', a command-line path does not).
+if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   const arg = (n) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : null; };
   const out = arg('--out');
   if (!out) { console.error('usage: node tools/fetch-sec-revenue.mjs --out <packet.json> [--since 2023-01-01]'); process.exit(2); }

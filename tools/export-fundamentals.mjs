@@ -21,6 +21,8 @@
 //    same filing; no previous year, or a previous value of zero or less, means no growth figure.
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const ANNUAL = new Set(['10-K', '10-K/A', '20-F', '20-F/A', '40-F', '40-F/A']);
 // Total-revenue concepts only (the same list as tools/fetch-sec-revenue.mjs): a packet carrying a partial concept, such
@@ -220,7 +222,8 @@ export function buildSnapshot(packet, packetSha256, issuers = null, issuersSha25
 }
 
 const OUT = new URL('../data/investment/fundamentals.json', import.meta.url);
-if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
+// Run as a command: compare file paths, not URL paths (a URL escapes spaces and '?', a command-line path does not).
+if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   const at = process.argv.indexOf('--from');
   if (at < 0 || !process.argv[at + 1]) { console.error('usage: node tools/export-fundamentals.mjs --from <sec-packet.json> [--from <more.json>] [--issuers <issuer-packet.json>] [--check]'); process.exit(2); }
   // Several SEC packets (--from repeated): merged, a company in two packets is an error.

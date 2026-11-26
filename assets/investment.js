@@ -149,8 +149,9 @@
         var h = el('h4');
         if (c.path) { var a = el('a', '', c.name); a.setAttribute('href', c.path); h.appendChild(a); } else h.textContent = c.name;
         card.appendChild(h);
-        card.appendChild(quote(c));
+        // Annual revenue and growth first (static, readable), then TradingView's market cap and P/E.
         card.appendChild(revenue(c));
+        card.appendChild(quote(c));
         var dl = el('dl', 'inv-fields');
         FIELDS.forEach(function (f) {
           var v = c[f[1]];

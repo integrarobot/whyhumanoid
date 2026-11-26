@@ -152,7 +152,7 @@ details.mkt summary{cursor:pointer;font-family:var(--f-mono);font-size:14px;colo
   .inv-slot > .inv-slot-card{grid-row:4 / span 13;display:grid;grid-template-rows:subgrid;margin-top:8px}
   .inv-slot-card > p{grid-row:1 / -1}
   .inv-slot-card > h4{grid-row:1}
-  .inv-slot-card > .inv-val-quote{grid-row:2}
-  .inv-slot-card > dl.inv-val{grid-row:3 / span 2;display:grid;grid-template-rows:subgrid}
+  .inv-slot-card > dl.inv-val{grid-row:2 / span 2;display:grid;grid-template-rows:subgrid}
+  .inv-slot-card > .inv-val-quote{grid-row:4}
   .inv-slot-card > dl.inv-fields{grid-row:5 / span 9;display:grid;grid-template-rows:subgrid}
 }

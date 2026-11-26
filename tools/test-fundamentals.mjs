@@ -131,3 +131,29 @@ test('a packet with a partial concept, a non-finite value or an impossible date 
   assert.equal(packetProblems(company([{ namespace: 'us-gaap', concept: 'Revenues', units: { USD: [{ ...good, end: '2025-02-30' }] } }])).length, 1);
   assert.equal(packetProblems({ ...company([]), as_of: 'today' }).length, 1);
 });
+
+test('both commands run from a folder whose path has a space and a question mark', async () => {
+  const { mkdtempSync, mkdirSync, copyFileSync, writeFileSync, readFileSync: rf } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const { spawnSync } = await import('node:child_process');
+  const root = join(mkdtempSync(join(tmpdir(), 'wh-')), 'Why Humanoid?', 'work');
+  mkdirSync(join(root, 'tools'), { recursive: true });
+  mkdirSync(join(root, 'data', 'investment'), { recursive: true });
+  for (const f of ['export-fundamentals.mjs', 'fetch-sec-revenue.mjs', 'fundamentals-notes.json', 'sec-registrants.json']) copyFileSync(new URL(f, import.meta.url), join(root, 'tools', f));
+  const packet = { as_of: '2026-11-26', companies: [{ key: 'X:FX', name: 'FX', cik: 1, secName: 'FX Inc.', source_url: 'https://data.sec.gov/api/xbrl/companyfacts/CIK0000000001.json', retrieved_at: '2026-11-26', raw_sha256: 'c'.repeat(64), concepts: [{ namespace: 'us-gaap', concept: 'Revenues', units: { USD: [
+    { start: '2025-01-01', end: '2025-12-31', val: 12, accn: '0000000001-26-000001', form: '10-K', filed: '2026-02-01' },
+    { start: '2024-01-01', end: '2024-12-31', val: 10, accn: '0000000001-26-000001', form: '10-K', filed: '2026-02-01' },
+  ] } }] }] };
+  writeFileSync(join(root, 'packet.json'), JSON.stringify(packet));
+  const run = (args) => spawnSync(process.execPath, args, { cwd: root, encoding: 'utf8' });
+  const wrote = run([join(root, 'tools', 'export-fundamentals.mjs'), '--from', join(root, 'packet.json')]);
+  assert.equal(wrote.status, 0, wrote.stderr);
+  assert.match(wrote.stdout, /Wrote data\/investment\/fundamentals\.json/);
+  assert.equal(JSON.parse(rf(join(root, 'data', 'investment', 'fundamentals.json'), 'utf8')).securities['X:FX'].growth_yoy, 0.2);
+  const checked = run([join(root, 'tools', 'export-fundamentals.mjs'), '--from', join(root, 'packet.json'), '--check']);
+  assert.match(checked.stdout, /matches the packet/);
+  const usage = run([join(root, 'tools', 'fetch-sec-revenue.mjs')]);
+  assert.equal(usage.status, 2, 'the fetcher runs and asks for --out');
+  assert.match(usage.stderr, /usage: node tools\/fetch-sec-revenue\.mjs/);
+});
