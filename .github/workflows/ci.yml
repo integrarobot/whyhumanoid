@@ -47,7 +47,7 @@ jobs:
       - name: Evolution charts are the build of the public snapshots and the reviewed dates, values match their sources
         run: node tools/export-evolution.mjs --check && node --no-warnings --test tools/test-evolution.mjs
       - name: Investment desk snapshot holds the 98 sanitised thesis records, per-capability market-data statuses and the news allowlist
-        run: node tools/export-investment.mjs --check && node --no-warnings --test tools/test-investment.mjs
+        run: node tools/export-investment.mjs --check && node --no-warnings --test tools/test-investment.mjs && node --no-warnings --test tools/test-fundamentals.mjs
       - name: Catalogue coherence across surfaces (canonical counts, current status, countries, classification, redirects, freshness)
         run: node --no-warnings --test tools/test-coherence.mjs && node --no-warnings --test tools/test-frame.mjs
       - name: Reviewed robot presentation (display name, cutout image, maker order link) matches the catalogue

@@ -79,10 +79,44 @@ ok(/Fanuc/i.test(input(2).value), 'Escape restores the chosen company');
 d.querySelector('.inv-slot[data-slot="2"] .inv-slot-clear').click();
 ok(input(2).value === '' && card(2).textContent === 'No company chosen.' && /NVIDIA/i.test(input(1).value) && input(3).value === third, 'one slot clears on its own');
 ok(status() === 'Comparing 2 companies.', `two companies: ${status()}`);
-ok(card(1).querySelectorAll('dl > div').length === 9, 'nine fields per company');
+ok(card(1).querySelectorAll('dl.inv-fields > div').length === 9, 'nine fields per company');
+
+// Valuation (26 Nov 2026): market cap and P/E from one official TradingView Symbol Info widget per slot, revenue and
+// growth from the SEC snapshot inline in the page. jsdom does not load the widget script: only its tag is checked.
+const tvScripts = (n) => [...d.querySelectorAll(`.inv-slot[data-slot="${n}"] script[src]`)];
+const fresh = new JSDOM(html, { url: 'https://whyhumanoid.com/investment/', runScripts: 'outside-only' });
+fresh.window.HTMLElement.prototype.scrollIntoView = function () {};
+fresh.window.eval(js);
+{
+  const D = fresh.window.document;
+  const typeIn = (n, v) => { const el = D.getElementById(`cmp-input-${n}`); el.value = v; el.dispatchEvent(new fresh.window.Event('input', { bubbles: true })); el.dispatchEvent(new fresh.window.KeyboardEvent('keydown', { key: 'Enter', bubbles: true })); };
+  const slot = (n) => D.querySelector(`.inv-slot[data-slot="${n}"]`);
+  const scripts = (n) => [...slot(n).querySelectorAll('script[src]')];
+  ok(D.querySelectorAll('script[src*="tradingview"]').length === 0, 'no widget before a company is chosen');
+  typeIn(1, 'tesla');
+  const s1 = scripts(1);
+  ok(s1.length === 1 && s1[0].src.endsWith('/embed-widget-symbol-info.js') && JSON.parse(s1[0].text).symbol === 'NASDAQ:TSLA' && JSON.parse(s1[0].text).colorTheme === 'dark', 'Tesla: one Symbol Info widget for NASDAQ:TSLA');
+  ok(slot(1).querySelector('.tradingview-widget-copyright a')?.textContent === 'Track all markets on TradingView', 'the TradingView credit is shown');
+  const val = slot(1).querySelector('dl.inv-val').textContent;
+  ok(/USD 94\.83 bn/.test(val) && /Year ended 2025-12-31/.test(val) && /Form 10-K filed 2026-01-29/.test(val), `Tesla revenue from its 10-K: ${val}`);
+  ok(/\u22122\.9%/.test(val) && /From USD 97\.69 bn, year ended 2024-12-31/.test(val), 'Tesla growth with its base and dates');
+  ok(slot(1).querySelector('dl.inv-val a')?.getAttribute('href') === 'https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/', 'links the SEC filing');
+  typeIn(2, '6954');
+  ok(scripts(2).length === 0 && /Not shown here/.test(slot(2).querySelector('.inv-val-quote').textContent), 'FANUC: no widget where TradingView does not cover the symbol');
+  ok(/Not covered yet/.test(slot(2).querySelector('dl.inv-val').textContent), 'FANUC: no SEC revenue, said so');
+  typeIn(3, 'nvidia');
+  ok(/\+65\.5%/.test(slot(3).querySelector('dl.inv-val').textContent), 'NVIDIA growth');
+  ok(D.querySelectorAll('script[src*="tradingview"]').length === 2, 'at most one widget per slot');
+  const clear1 = slot(1).querySelector('.inv-slot-clear');
+  typeIn(1, 'schaeffler');
+  ok(scripts(1).length === 1 && JSON.parse(scripts(1)[0].text).symbol === 'XETR:SHA0', 'replacing a company replaces its widget');
+  clear1.click();
+  ok(scripts(1).length === 0 && D.querySelectorAll('script[src*="tradingview"]').length === 1, 'clearing a slot removes its widget');
+}
+
 
 if (failures.length) {
   console.error(`Comparator check FAILED:\n- ${failures.join('\n- ')}`);
   process.exit(1);
 }
-console.log(`Comparator check passed: three slots over all ${total} companies, search, keyboard, one company per slot, replace, clear and the no-JavaScript fallback.`);
+console.log(`Comparator check passed: three slots over all ${total} companies, search, keyboard, one company per slot, replace, clear, the no-JavaScript fallback, one quote widget per slot and SEC revenue with its base.`);

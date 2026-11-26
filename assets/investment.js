@@ -107,13 +107,22 @@
     if (!box || !table) return;
     var all = Array.prototype.map.call(table.tBodies[0].rows, function (tr) {
       var c = {};
-      ['key', 'name', 'path', 'ticker', 'exchange', 'isin', 'country', 'segment', 'etf', 'theses', 'stances', 'publishers', 'chart'].forEach(function (k) { c[k] = tr.getAttribute('data-' + k) || ''; });
+      ['key', 'name', 'path', 'ticker', 'exchange', 'isin', 'country', 'segment', 'etf', 'theses', 'stances', 'publishers', 'chart', 'tv', 'tvurl'].forEach(function (k) { c[k] = tr.getAttribute('data-' + k) || ''; });
       c.search = fold([c.name, c.ticker, c.exchange, c.isin, c.key].join(' '));
       return c;
     }).filter(function (c) { return c.key; }).sort(function (a, z) { return a.name.localeCompare(z.name); });
     var LABEL = { verified: 'Chart checked', unverified: 'Chart not yet checked', unavailable: 'No chart here', positive: 'Positive', exit: 'Exit', mixed: 'Mixed' };
     var FIELDS = [['Ticker', 'ticker'], ['Exchange', 'exchange'], ['Country', 'country'], ['Segment', 'segment'], ['ETF membership', 'etf'], ['Theses in catalogue', 'theses'], ['Stances', 'stances'], ['Publishers', 'publishers'], ['Chart here', 'chart']];
     var status = document.getElementById('cmp-status');
+    // Annual revenue from SEC filings, inline in the page (tools/export-fundamentals.mjs). Never fetched.
+    var FUND = {};
+    try { FUND = JSON.parse((document.getElementById('inv-fundamentals') || {}).textContent || '{}'); } catch (e) { FUND = {}; }
+    function money(v, cur) {
+      var a = Math.abs(v);
+      var t = a >= 1e9 ? (v / 1e9).toFixed(2) + ' bn' : a >= 1e6 ? (v / 1e6).toFixed(2) + ' m' : Math.round(v).toLocaleString('en-US');
+      return cur + ' ' + t;
+    }
+    function pct(g) { return (g > 0 ? '+' : g < 0 ? '\u2212' : '') + Math.abs(g * 100).toFixed(1) + '%'; }
     var slots = Array.prototype.slice.call(box.querySelectorAll('.inv-slot'));
     var chosen = slots.map(function () { return null; });
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
@@ -134,13 +143,15 @@
       var matches = [];
       var active = -1;
 
-      function card0() { card.textContent = ''; card.appendChild(el('p', 'dim', 'No company chosen.')); }
+      function card0() { gen += 1; card.textContent = ''; card.appendChild(el('p', 'dim', 'No company chosen.')); }
       function showCard(c) {
         card.textContent = '';
         var h = el('h4');
         if (c.path) { var a = el('a', '', c.name); a.setAttribute('href', c.path); h.appendChild(a); } else h.textContent = c.name;
         card.appendChild(h);
-        var dl = el('dl');
+        card.appendChild(quote(c));
+        card.appendChild(revenue(c));
+        var dl = el('dl', 'inv-fields');
         FIELDS.forEach(function (f) {
           var v = c[f[1]];
           if (f[1] === 'theses' && v === '0') v = '';
@@ -153,6 +164,72 @@
           dl.appendChild(row);
         });
         card.appendChild(dl);
+      }
+      // Market cap and P/E: TradingView's official Symbol Info widget, one per slot, loaded when the company is chosen
+      // and removed with it (replace or clear); a late callback from a replaced widget is ignored.
+      var gen = 0;
+      function quote(c) {
+        var box = el('div', 'inv-val-quote');
+        box.appendChild(el('p', 'inv-val-k', 'Market cap and P/E'));
+        var my = ++gen;
+        if (!c.tv || c.chart === 'unavailable') {
+          box.appendChild(el('p', 'inv-val-na', 'Not shown here: TradingView\u2019s free quote widget does not cover this symbol.'));
+          if (c.tvurl) { var l = el('a', '', 'See it on TradingView \u2197'); l.setAttribute('href', c.tvurl); l.setAttribute('rel', 'noopener nofollow'); l.setAttribute('target', '_blank'); box.appendChild(l); }
+          return box;
+        }
+        var frame = el('div', 'mkt-frame info');
+        var host = el('div', 'tradingview-widget-container');
+        var w = el('div', 'tradingview-widget-container__widget');
+        var wait = el('p', 'mkt-wait', 'Loading the quote from TradingView\u2026');
+        w.appendChild(wait);
+        host.appendChild(w);
+        var credit = el('div', 'tradingview-widget-copyright');
+        var a = el('a', '', 'Track all markets on TradingView');
+        a.setAttribute('href', c.tvurl || 'https://www.tradingview.com/');
+        a.setAttribute('rel', 'noopener nofollow');
+        a.setAttribute('target', '_blank');
+        credit.appendChild(a);
+        host.appendChild(credit);
+        frame.appendChild(host);
+        box.appendChild(frame);
+        var sc = document.createElement('script');
+        sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js';
+        sc.async = true;
+        sc.text = JSON.stringify({ symbol: c.tv, locale: 'en', colorTheme: 'dark', isTransparent: true, width: '100%' });
+        sc.onerror = function () { if (my === gen && wait.parentNode) wait.textContent = 'TradingView did not load. Open the company on TradingView instead.'; };
+        sc.onload = function () { if (my === gen && wait.parentNode) wait.parentNode.removeChild(wait); };
+        host.appendChild(sc);
+        return box;
+      }
+      // Revenue and its growth: the latest fiscal year reported to the SEC, with its base, dates and filing.
+      function revenue(c) {
+        var dl = el('dl', 'inv-val');
+        var f = FUND[c.key];
+        function row(label, main, notes) {
+          var d = el('div');
+          d.appendChild(el('dt', '', label));
+          var dd = el('dd');
+          if (typeof main === 'string') dd.appendChild(el('span', 'v', main)); else dd.appendChild(main);
+          (notes || []).forEach(function (n) { if (n) dd.appendChild(n); });
+          d.appendChild(dd);
+          dl.appendChild(d);
+        }
+        if (!f || f.s !== 'published') {
+          var why = !f ? 'Not covered yet: this company does not file annual reports with the SEC.' : 'No annual revenue in its SEC filings.';
+          row('Revenue, latest fiscal year', el('span', 'na', why));
+          row('Revenue growth vs previous year', el('span', 'na', 'Not available'));
+          return dl;
+        }
+        var src = el('span', 'mt');
+        src.appendChild(document.createTextNode('Year ended ' + f.end + ' \u00b7 Form ' + f.form + ' filed ' + f.filed + ' \u00b7 '));
+        var link = el('a', '', 'SEC filing \u2197');
+        link.setAttribute('href', f.url);
+        link.setAttribute('rel', 'noopener');
+        src.appendChild(link);
+        row('Revenue, latest fiscal year', money(f.v, f.cur), [src, f.f.indexOf('old_fiscal_year') >= 0 ? el('span', 'mt warn', 'The latest annual figure this company has filed with the SEC.') : null]);
+        if (f.g === null) row('Revenue growth vs previous year', el('span', 'na', f.n || 'Not available'));
+        else row('Revenue growth vs previous year', pct(f.g), [el('span', 'mt', 'From ' + money(f.pv, f.cur) + ', year ended ' + f.pend), f.f.indexOf('growth_outlier') >= 0 ? el('span', 'mt warn', 'A large change: check the filing (a small base, an acquisition or a merger).') : null]);
+        return dl;
       }
       function restore() { input.value = chosen[i] ? chosen[i].name : ''; }
       function close() {
