@@ -1,0 +1,8 @@
+{
+  "note": "Reader-facing notes for the comparator's revenue rows (tools/export-fundamentals.mjs), rewritten from the reviewer's note of the issuer packet. Each anchor must occur in that note, so a changed note asks for this text to be reviewed again.",
+  "notes": {
+    "TYO:6954": { "anchor": "year ending March 2026 FY2025", "text": "FANUC calls the year to 31 March 2026 its fiscal 2025." },
+    "HKG:9880": { "anchor": "Consolidated columns", "text": "Consolidated figures in RMB; the shares trade in HKD." },
+    "ETR:SHA0": { "anchor": "Pro-forma prior revenue was EUR24.313bn", "text": "Reported growth includes Vitesco, fully consolidated only from the fourth quarter of 2024. On a pro-forma basis 2024 revenue was EUR 24.313 bn, a change of −3.4%; the two figures are not interchangeable." }
+  }
+}

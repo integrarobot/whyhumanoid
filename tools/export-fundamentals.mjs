@@ -1,5 +1,8 @@
-// Annual revenue and its growth for the company comparator (/investment/#comparator), from SEC XBRL company facts.
-//   node tools/export-fundamentals.mjs --from <sec-revenue-source-packet.json> [--check]
+// Annual revenue and its growth for the company comparator (/investment/#comparator), from SEC XBRL company facts and,
+// for companies that do not file with the SEC, from their annual reports as reviewed by Codex.
+//   node tools/export-fundamentals.mjs --from <sec-revenue-source-packet.json> --issuers <issuer-annual-source-packet.json> [--check]
+// The SEC packet is rebuilt with tools/fetch-sec-revenue.mjs; the issuer packet is a reviewed reading of the original
+// reports (value, period, page locator, SHA-256 of the PDF).
 // The packet (outside Git) holds, per listed company matched to an SEC registrant, the annual revenue facts of the
 // standard total-revenue concepts as data.sec.gov publishes them (period, unit, value, form, accession, filing date),
 // with the source URL and the SHA-256 of the original companyfacts file. This tool picks one comparable series per
@@ -31,6 +34,49 @@ export const RULES = [
   'Restatements: a period takes its value from the latest filing that reports it.',
   'Growth compares the previous consecutive fiscal year in the same concept and unit, preferably from the same filing; without it, or with a previous value of zero or less, there is no growth figure.',
 ];
+
+// ok: a growth figure; not_meaningful: the previous year is zero or less; not_available: no previous year.
+export const growthStatus = (priorValue, growth) => (growth !== null ? 'ok' : priorValue === null ? 'not_available' : 'not_meaningful');
+
+// Companies outside the SEC: one reviewed annual figure per company from its own report. Checked here: positive
+// values, real fiscal-year lengths (350 to 380 days, no calendar year assumed), consecutive years, the reviewer's
+// growth equal to the one recomputed from the two values. A problem stops the export.
+export function issuerEntry(c) {
+  const problems = [];
+  const len = (a, b) => days(a, b);
+  if (!(c.revenue > 0)) problems.push('revenue');
+  if (!/^[A-Z]{3}$/.test(c.currency ?? '')) problems.push('currency');
+  if (c.basis !== 'FY') problems.push('basis');
+  if (!(len(c.period_start, c.period_end) >= 350 && len(c.period_start, c.period_end) <= 380)) problems.push('period length');
+  if (c.prior_revenue !== null && c.prior_revenue !== undefined) {
+    if (!(len(c.prior_start, c.prior_end) >= 350 && len(c.prior_start, c.prior_end) <= 380)) problems.push('prior period length');
+    if (Math.abs(days(c.prior_end, c.period_start) - 2) > 7) problems.push('prior year not consecutive');
+  }
+  if (!/^https:\/\//.test(c.source_url ?? '') || !c.source_locator || !/^[0-9a-f]{64}$/.test(c.raw_sha256 ?? '')) problems.push('source');
+  const prior = c.prior_revenue ?? null;
+  const growth = prior !== null && prior > 0 ? Math.round((c.revenue / prior - 1) * 1e4) / 1e4 : null;
+  if (growth !== null && c.revenue_growth_yoy_pct !== undefined && Math.abs(c.revenue_growth_yoy_pct / 100 - (c.revenue / prior - 1)) > 1e-6) problems.push('stated growth differs from the values');
+  if (problems.length) throw new Error(`${c.key}: ${problems.join(', ')}`);
+  const fact = (value, start, end) => ({ value, currency: c.currency, start, end, label: `annual report published ${c.published}`, filing_url: c.source_url, locator: c.source_locator });
+  return {
+    name: c.name, status: 'published', source: 'issuer', source_url: c.source_url, retrieved_at: c.checked_at, raw_sha256: c.raw_sha256,
+    revenue: fact(c.revenue, c.period_start, c.period_end),
+    prior: prior !== null ? { ...fact(prior, c.prior_start, c.prior_end), label: 'same annual report' } : null,
+    growth_yoy: growth,
+    growth_status: growthStatus(prior, growth),
+    growth_note: growth !== null ? null : prior !== null ? 'Previous fiscal year revenue is zero or less: no growth figure.' : 'No previous fiscal year: no growth figure.',
+    note: readerNote(c),
+  };
+}
+
+// The reader-facing note of an issuer figure (tools/fundamentals-notes.json), tied to the reviewer's note by its anchor.
+const NOTES = JSON.parse(readFileSync(new URL('./fundamentals-notes.json', import.meta.url), 'utf8')).notes;
+function readerNote(c) {
+  const n = NOTES[c.key];
+  if (!n) return null;
+  if (!(c.note ?? '').includes(n.anchor)) throw new Error(`${c.key}: the reviewer's note changed; review tools/fundamentals-notes.json`);
+  return n.text;
+}
 
 // One series per company: { status, revenue, prior, growth } or { status: 'pending' | 'no_annual_revenue', reason }.
 export function pickRevenue(company) {
@@ -87,10 +133,12 @@ export function pickRevenue(company) {
   const growth = prior && prior.val > 0 ? Math.round((cur.val / prior.val - 1) * 1e4) / 1e4 : null;
   return {
     status: 'published',
+    source: 'sec',
     concept: s.concept,
-    revenue: fact(cur),
-    prior: prior ? fact(prior) : null,
+    revenue: { ...fact(cur), label: `Form ${cur.form} filed ${cur.filed}` },
+    prior: prior ? { ...fact(prior), label: prior.accn === cur.accn ? `same Form ${cur.form}` : `Form ${prior.form} filed ${prior.filed}` } : null,
     growth_yoy: growth,
+    growth_status: growthStatus(prior?.val ?? null, growth),
     growth_note: growth !== null ? null : prior ? 'Previous fiscal year revenue is zero or less: no growth figure.' : 'No previous fiscal year in the same concept and unit: no growth figure.',
   };
 }
@@ -106,22 +154,34 @@ export function reviewFlags(r, asOf) {
   return flags;
 }
 
-export function buildSnapshot(packet, packetSha256) {
+export function buildSnapshot(packet, packetSha256, issuers = null, issuersSha256 = null) {
   const securities = {};
-  const counts = { companies: packet.companies.length, published: 0, with_growth: 0, pending: 0, no_annual_revenue: 0 };
+  const counts = { companies: packet.companies.length + (issuers?.companies.length ?? 0), published: 0, with_growth: 0, pending: 0, no_annual_revenue: 0, sec: 0, issuer: 0 };
   for (const c of packet.companies) {
     const r = pickRevenue(c);
     counts[r.status] += 1;
     if (r.status === 'published' && r.growth_yoy !== null) counts.with_growth += 1;
     securities[c.key] = { name: c.name, sec_name: c.secName, cik: c.cik, source_url: c.source_url, retrieved_at: c.retrieved_at, raw_sha256: c.raw_sha256, ...r, review_flags: reviewFlags(r, packet.as_of) };
     if (securities[c.key].review_flags.length) counts.flagged = (counts.flagged ?? 0) + 1;
+    if (r.status === 'published') counts.sec += 1;
+  }
+  for (const c of issuers?.companies ?? []) {
+    if (securities[c.key]) throw new Error(`${c.key}: in both packets`);
+    const r = issuerEntry(c);
+    securities[c.key] = { ...r, review_flags: reviewFlags(r, issuers.checked_at) };
+    counts.published += 1;
+    counts.issuer += 1;
+    if (r.growth_yoy !== null) counts.with_growth += 1;
   }
   return {
     id: 'investment-fundamentals',
-    source: 'SEC EDGAR XBRL company facts (data.sec.gov)',
+    source: 'SEC EDGAR XBRL company facts (data.sec.gov); issuer annual reports reviewed by Codex',
     as_of: packet.as_of,
     packet_sha256: packetSha256,
-    scope: 'Listed companies of the Investment category matched to an SEC registrant by ticker and issuer name. Companies that do not file with the SEC are not covered here.',
+    issuers_sha256: issuersSha256,
+    issuers_reviewer: issuers?.reviewer ?? null,
+    issuers_method: issuers?.method ?? null,
+    scope: 'Listed companies of the Investment category matched to an SEC registrant by ticker and issuer name, and companies outside the SEC whose latest annual report has been reviewed. Latest annual figures, not real time: newer quarterly figures exist.',
     rules: RULES,
     counts,
     securities: Object.fromEntries(Object.entries(securities).sort(([a], [b]) => a.localeCompare(b))),
@@ -131,9 +191,12 @@ export function buildSnapshot(packet, packetSha256) {
 const OUT = new URL('../data/investment/fundamentals.json', import.meta.url);
 if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
   const at = process.argv.indexOf('--from');
-  if (at < 0 || !process.argv[at + 1]) { console.error('usage: node tools/export-fundamentals.mjs --from <packet.json> [--check]'); process.exit(2); }
+  if (at < 0 || !process.argv[at + 1]) { console.error('usage: node tools/export-fundamentals.mjs --from <sec-packet.json> [--issuers <issuer-packet.json>] [--check]'); process.exit(2); }
   const raw = readFileSync(process.argv[at + 1]);
-  const snap = buildSnapshot(JSON.parse(raw), createHash('sha256').update(raw).digest('hex'));
+  const ia = process.argv.indexOf('--issuers');
+  const iraw = ia > 0 && process.argv[ia + 1] ? readFileSync(process.argv[ia + 1]) : null;
+  const sha = (b) => createHash('sha256').update(b).digest('hex');
+  const snap = buildSnapshot(JSON.parse(raw), sha(raw), iraw ? JSON.parse(iraw) : null, iraw ? sha(iraw) : null);
   const text = `${JSON.stringify(snap, null, 1)}\n`;
   if (process.argv.includes('--check')) {
     const now = readFileSync(OUT, 'utf8');

@@ -15,8 +15,9 @@ export function fundamentalsJson(f) {
   for (const [key, x] of Object.entries(f?.securities ?? {})) {
     if (x.status !== 'published') { out[key] = { s: x.status }; continue; }
     out[key] = {
-      s: 'published', form: x.revenue.form, filed: x.revenue.filed, url: x.revenue.filing_url, cur: x.revenue.currency,
-      v: x.revenue.value, end: x.revenue.end, pv: x.prior?.value ?? null, pend: x.prior?.end ?? null, g: x.growth_yoy, n: x.growth_note, f: x.review_flags ?? [],
+      s: 'published', src: x.source, lab: x.revenue.label, url: x.revenue.filing_url, loc: x.revenue.locator ?? null, cur: x.revenue.currency,
+      v: x.revenue.value, start: x.revenue.start, end: x.revenue.end, pv: x.prior?.value ?? null, pstart: x.prior?.start ?? null, pend: x.prior?.end ?? null,
+      plab: x.prior?.label ?? null, g: x.growth_yoy, gs: x.growth_status, note: x.note ?? null, f: x.review_flags ?? [],
     };
   }
   return JSON.stringify(out).replace(/</g, '\\u003c');
@@ -71,7 +72,7 @@ export function renderInvestmentDesk(desk, { rows, companyOf }) {
     const search = [r.name, r.ticker, r.exchange, venue, x.key, r.isin, ...pubs].filter(Boolean).join(' ').toLowerCase();
     const data = {
       key: x.key, name: r.name, path: path ?? '', ticker: r.ticker, exchange: venue, isin: r.isin ?? '', country: r.country ?? '', segment: x.segment ?? '',
-      etf: x.etf.join('|'), theses: String(theses.length), stances: stances.join('|'), publishers: pubs.join('|'), chart: x.tradingview.chart.status, tv: x.tradingview.symbol ?? '', tvurl: x.tradingview.url ?? '', search,
+      etf: x.etf.join('|'), theses: String(theses.length), stances: stances.join('|'), publishers: pubs.join('|'), chart: x.tradingview.chart.status, fin: x.tradingview.financials.status, tv: x.tradingview.symbol ?? '', tvurl: x.tradingview.url ?? '', search,
     };
     const attrs = Object.entries(data).map(([k, v]) => `data-${k}="${esc(v)}"`).join(' ');
     return `<tr ${attrs}><td><span class="inv-row-tools"></span> ${path ? `<a href="${esc(path)}">${esc(r.name)}</a>` : esc(r.name)}</td><td>${esc(r.ticker ?? '')}<br><span class="dim">${esc(venue)}</span></td><td>${esc(r.country ?? '')}</td><td>${x.segment ? esc(x.segment) : na()}</td><td>${x.etf.length ? x.etf.map((e) => pill('', e)).join('') : na('None')}</td><td>${theses.length ? `${theses.length} ${stances.map((s) => pill(s, STANCE[s])).join('')}` : '<span class="na">0</span>'}</td><td>${pill(x.tradingview.chart.status, CHART_LABEL[x.tradingview.chart.status])}</td></tr>`;
@@ -125,7 +126,9 @@ ${caveatsHtml(desk)}
 // every field.
 export const COMPARATOR_SLOTS = 3;
 function comparatorHtml(total, fundamentals) {
-  const covered = Object.values(fundamentals?.securities ?? {}).filter((x) => x.status === 'published').length;
+  const pub = Object.values(fundamentals?.securities ?? {}).filter((x) => x.status === 'published');
+  const covered = pub.length;
+  const bySec = pub.filter((x) => x.source === 'sec').length;
   const slot = (i) => `<div class="inv-slot" data-slot="${i}">
 <label class="inv-slot-label" id="cmp-label-${i}" for="cmp-input-${i}">Company ${i}</label>
 <div class="inv-combo">
@@ -140,7 +143,7 @@ function comparatorHtml(total, fundamentals) {
 <h3 id="comparator-h">Company comparator</h3>
 <p class="inv-cmp-nojs">The comparator needs JavaScript. Every company and the same fields are in the directory below.</p>
 <p class="dim" id="cmp-hint" hidden>Choose up to three of the ${total} listed companies. Type a name, ticker, ISIN or exchange, or open the full list; each company can be in one slot only.</p>
-<p class="dim inv-cmp-method">Market cap and P/E (trailing twelve months) are TradingView's quote widget, in each company's trading currency and with its delay; a company with losses has no P/E. Revenue is the latest fiscal year each company reported to the SEC (Form 10-K, 20-F or 40-F), available for ${covered} of the ${total} companies, in its reporting currency and not converted; growth compares it with the previous fiscal year. Fiscal years end on different dates. Companies that do not file with the SEC are not covered yet.</p>
+<p class="dim inv-cmp-method">Market cap and P/E are TradingView's own widgets: the quote widget where TradingView offers it, its financials widget otherwise; they show the trading currency, their delay and their own periods, and a company with losses has no P/E. Revenue is the latest full fiscal year, not the trailing twelve months, for ${covered} of the ${total} companies: ${bySec} from their SEC filings (Form 10-K, 20-F or 40-F) and ${covered - bySec} from their own annual reports, in the reporting currency and never converted; growth compares it with the previous fiscal year in the same report. Figures as checked on ${esc(fundamentals?.as_of ?? '')}, not real time: newer quarterly figures exist, and fiscal years end on different dates.</p>
 <script type="application/json" id="inv-fundamentals">${fundamentalsJson(fundamentals)}</script>
 <div class="inv-cmp-slots" hidden>${Array.from({ length: COMPARATOR_SLOTS }, (_, k) => slot(k + 1)).join('')}</div>
 <p class="inv-cmp-status" id="cmp-status" aria-live="polite" hidden></p>

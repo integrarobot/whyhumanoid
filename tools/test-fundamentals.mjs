@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { pickRevenue, reviewFlags, RULES } from './export-fundamentals.mjs';
+import { issuerEntry, pickRevenue, reviewFlags, RULES } from './export-fundamentals.mjs';
 
 const fy = (y, val, accn, filed, over = {}) => ({ start: `${y}-01-01`, end: `${y}-12-31`, val, accn, fy: y, fp: 'FY', form: '10-K', filed, ...over });
 const co = (concepts) => ({ key: 'X:FX', cik: 1, concepts });
@@ -62,14 +62,61 @@ test('the published snapshot: SEC sources, rules, growth computed from the store
   const entries = Object.entries(snap.securities);
   assert.equal(snap.counts.companies, entries.length);
   for (const [key, x] of entries) {
-    assert.match(x.source_url, /^https:\/\/data\.sec\.gov\/api\/xbrl\/companyfacts\/CIK\d{10}\.json$/, key);
+    if (x.source !== 'issuer') assert.match(x.source_url, /^https:\/\/data\.sec\.gov\/api\/xbrl\/companyfacts\/CIK\d{10}\.json$/, key);
     if (x.status !== 'published') continue;
-    assert.match(x.revenue.filing_url, /^https:\/\/www\.sec\.gov\/Archives\/edgar\/data\/\d+\/\d{18}\/$/, key);
+    if (x.source === 'sec') assert.match(x.revenue.filing_url, /^https:\/\/www\.sec\.gov\/Archives\/edgar\/data\/\d+\/\d{18}\/$/, key);
+    else assert.ok(x.revenue.locator && /^https:\/\//.test(x.revenue.filing_url), key);
+    assert.equal(x.growth_status, x.growth_yoy !== null ? 'ok' : x.prior ? 'not_meaningful' : 'not_available', key);
     assert.ok(Number.isFinite(x.revenue.value), key);
     if (x.growth_yoy !== null) assert.equal(x.growth_yoy, Math.round((x.revenue.value / x.prior.value - 1) * 1e4) / 1e4, key);
     if (x.prior) assert.equal(x.prior.currency, x.revenue.currency, `${key}: same currency`);
     assert.doesNotMatch(JSON.stringify(x), /"(price|market_cap|pe|quote)"/, key);
   }
+  const fanuc = snap.securities['TYO:6954'];
+  assert.deepEqual([fanuc.source, fanuc.revenue.currency, fanuc.revenue.start, fanuc.revenue.end, fanuc.growth_yoy], ['issuer', 'JPY', '2025-04-01', '2026-03-31', 0.0762]);
+  assert.match(snap.securities['ETR:SHA0'].note, /Vitesco.*pro-forma.*not interchangeable/);
+  assert.deepEqual([snap.securities['HKG:9880'].revenue.currency, snap.securities['HKG:9880'].growth_yoy], ['CNY', 0.5329]);
   const tsla = snap.securities['NASDAQ:TSLA'];
   assert.deepEqual([tsla.revenue.value, tsla.revenue.end, tsla.prior.value, tsla.growth_yoy], [94827000000, '2025-12-31', 97690000000, -0.0293]);
+});
+
+test('issuer figures: real fiscal years, consecutive, stated growth equal to the values, reviewed reader note', () => {
+  const base = { key: 'TYO:6954', name: 'FX', currency: 'JPY', revenue: 110, prior_revenue: 100, period_start: '2025-04-01', period_end: '2026-03-31', prior_start: '2024-04-01', prior_end: '2025-03-31', basis: 'FY', revenue_growth_yoy_pct: 10, source_url: 'https://ir.example.com/ar.pdf', source_locator: 'p.1', published: '2026-04-24', checked_at: '2026-11-26', raw_sha256: 'a'.repeat(64), note: 'Issuer labels the year ending March 2026 FY2025.' };
+  const ok = issuerEntry(base);
+  assert.deepEqual([ok.growth_yoy, ok.growth_status, ok.note], [0.1, 'ok', 'FANUC calls the year to 31 March 2026 its fiscal 2025.']);
+  assert.throws(() => issuerEntry({ ...base, revenue_growth_yoy_pct: 12 }), /stated growth differs/);
+  assert.throws(() => issuerEntry({ ...base, period_start: '2025-10-01' }), /period length/);
+  assert.throws(() => issuerEntry({ ...base, prior_start: '2023-04-01', prior_end: '2024-03-31' }), /not consecutive/);
+  assert.throws(() => issuerEntry({ ...base, note: 'changed' }), /review tools\/fundamentals-notes\.json/);
+  assert.equal(issuerEntry({ ...base, prior_revenue: 0, revenue_growth_yoy_pct: undefined }).growth_status, 'not_meaningful');
+  assert.equal(issuerEntry({ ...base, prior_revenue: null, revenue_growth_yoy_pct: undefined }).growth_status, 'not_available');
+});
+
+test('the SEC fetcher: identifying User-Agent, paced requests, annual total-revenue facts only, failures reported', async () => {
+  const { buildPacket, extract, USER_AGENT } = await import('./fetch-sec-revenue.mjs');
+  const doc = { facts: {
+    'us-gaap': {
+      Revenues: { units: { USD: [
+        { start: '2025-01-01', end: '2025-12-31', val: 10, accn: 'a', fy: 2025, fp: 'FY', form: '10-K', filed: '2026-02-01' },
+        { start: '2025-07-01', end: '2025-09-30', val: 3, accn: 'q', fy: 2025, fp: 'Q3', form: '10-Q', filed: '2025-10-20' },
+        { start: '2021-01-01', end: '2021-12-31', val: 7, accn: 'o', fy: 2021, fp: 'FY', form: '10-K', filed: '2022-02-01' },
+      ] } },
+      SalesRevenueGoodsNet: { units: { USD: [{ start: '2025-01-01', end: '2025-12-31', val: 8, accn: 'a', fy: 2025, fp: 'FY', form: '10-K', filed: '2026-02-01' }] } },
+    },
+  } };
+  assert.deepEqual(extract(doc, '2023-01-01'), [{ namespace: 'us-gaap', concept: 'Revenues', units: { USD: [{ start: '2025-01-01', end: '2025-12-31', val: 10, accn: 'a', fy: 2025, fp: 'FY', form: '10-K', filed: '2026-02-01' }] } }]);
+  const calls = [];
+  let pauses = 0;
+  const fetchImpl = async (url, init) => {
+    calls.push([url, init.headers['user-agent']]);
+    if (url.endsWith('0000000002.json')) return { status: 404 };
+    return { status: 200, arrayBuffer: async () => new TextEncoder().encode(JSON.stringify(doc)).buffer };
+  };
+  const { packet, failures } = await buildPacket([{ key: 'X:A', name: 'A', cik: 1, sec_name: 'A Inc.' }, { key: 'X:B', name: 'B', cik: 2, sec_name: 'B Inc.' }], { fetchImpl, today: '2026-11-26', pause: async () => { pauses += 1; } });
+  assert.deepEqual(calls, [['https://data.sec.gov/api/xbrl/companyfacts/CIK0000000001.json', USER_AGENT], ['https://data.sec.gov/api/xbrl/companyfacts/CIK0000000002.json', USER_AGENT]]);
+  assert.doesNotMatch(USER_AGENT, /@/, 'no personal email in the User-Agent');
+  assert.equal(pauses, 2);
+  assert.deepEqual(failures, ['X:B: HTTP 404']);
+  assert.equal(packet.companies.length, 1);
+  assert.match(packet.companies[0].raw_sha256, /^[0-9a-f]{64}$/);
 });

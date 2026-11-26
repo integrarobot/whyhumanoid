@@ -135,6 +135,8 @@ details.mkt summary{cursor:pointer;font-family:var(--f-mono);font-size:14px;colo
 .inv-val-quote{min-width:0;padding:6px 0 8px;border-bottom:1px solid var(--line)}
 .inv-val-k{margin:0 0 4px;font-family:var(--f-mono);font-size:var(--fs-caption);letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3)}
 .inv-val-quote .mkt-frame.info{min-height:0}
+.inv-val-quote .mkt-frame.inv-fin{height:380px}
+@media (max-width:640px){.inv-val-quote .mkt-frame.inv-fin{height:420px}}
 .inv-val-na{margin:0 0 4px;font-size:14px;color:var(--bone-3)}
 .inv-val-quote > a{font-size:14px}
 .inv-slot-card dd .v{display:block;font-size:17px;color:var(--bone)}

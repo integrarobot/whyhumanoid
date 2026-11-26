@@ -98,20 +98,26 @@ fresh.window.eval(js);
   ok(s1.length === 1 && s1[0].src.endsWith('/embed-widget-symbol-info.js') && JSON.parse(s1[0].text).symbol === 'NASDAQ:TSLA' && JSON.parse(s1[0].text).colorTheme === 'dark', 'Tesla: one Symbol Info widget for NASDAQ:TSLA');
   ok(slot(1).querySelector('.tradingview-widget-copyright a')?.textContent === 'Track all markets on TradingView', 'the TradingView credit is shown');
   const val = slot(1).querySelector('dl.inv-val').textContent;
-  ok(/USD 94\.83 bn/.test(val) && /Year ended 2025-12-31/.test(val) && /Form 10-K filed 2026-01-29/.test(val), `Tesla revenue from its 10-K: ${val}`);
-  ok(/\u22122\.9%/.test(val) && /From USD 97\.69 bn, year ended 2024-12-31/.test(val), 'Tesla growth with its base and dates');
+  ok(/USD 94\.83 bn/.test(val) && /Fiscal year 2025-01-01 to 2025-12-31/.test(val) && /SEC Form 10-K filed 2026-01-29/.test(val), `Tesla revenue from its 10-K: ${val}`);
+  ok(/\u22122\.9%/.test(val) && /Previous fiscal year 2024-01-01 to 2024-12-31: USD 97\.69 bn \(same Form 10-K\)/.test(val), 'Tesla growth with its base, dates and source');
   ok(slot(1).querySelector('dl.inv-val a')?.getAttribute('href') === 'https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/', 'links the SEC filing');
   typeIn(2, '6954');
-  ok(scripts(2).length === 0 && /Not shown here/.test(slot(2).querySelector('.inv-val-quote').textContent), 'FANUC: no widget where TradingView does not cover the symbol');
-  ok(/Not covered yet/.test(slot(2).querySelector('dl.inv-val').textContent), 'FANUC: no SEC revenue, said so');
+  const f2 = scripts(2);
+  ok(f2.length === 1 && f2[0].src.endsWith('/embed-widget-financials.js') && JSON.parse(f2[0].text).symbol === 'TSE:6954' && JSON.parse(f2[0].text).displayMode === 'compact', 'FANUC: no quote widget there, so the financials widget');
+  const fv = slot(2).querySelector('dl.inv-val').textContent;
+  ok(/JPY 857\.83 bn/.test(fv) && /Fiscal year 2025-04-01 to 2026-03-31/.test(fv) && /\+7\.6%/.test(fv) && /fiscal 2025/.test(fv) && /PDF p\.1/.test(fv), `FANUC revenue from its annual report: ${fv}`);
+  ok(slot(2).querySelector('dl.inv-val a')?.getAttribute('href') === 'https://www.fanuc.co.jp/en/ir/announce/pdf/2026/financialresult202603_e.pdf', 'FANUC links its report');
   typeIn(3, 'nvidia');
   ok(/\+65\.5%/.test(slot(3).querySelector('dl.inv-val').textContent), 'NVIDIA growth');
-  ok(D.querySelectorAll('script[src*="tradingview"]').length === 2, 'at most one widget per slot');
+  ok(D.querySelectorAll('script[src*="tradingview"]').length === 3, 'one widget per slot, three at most');
   const clear1 = slot(1).querySelector('.inv-slot-clear');
   typeIn(1, 'schaeffler');
   ok(scripts(1).length === 1 && JSON.parse(scripts(1)[0].text).symbol === 'XETR:SHA0', 'replacing a company replaces its widget');
+  ok(/Vitesco/.test(slot(1).querySelector('dl.inv-val').textContent) && /\+29\.2%/.test(slot(1).querySelector('dl.inv-val').textContent), 'Schaeffler: reported growth with its Vitesco note');
   clear1.click();
-  ok(scripts(1).length === 0 && D.querySelectorAll('script[src*="tradingview"]').length === 1, 'clearing a slot removes its widget');
+  ok(scripts(1).length === 0 && D.querySelectorAll('script[src*="tradingview"]').length === 2, 'clearing a slot removes its widget');
+  typeIn(1, 'aurora');
+  ok(/Not meaningful: previous year revenue is zero or less/.test(slot(1).querySelector('dl.inv-val').textContent), 'a zero base is not meaningful, not zero growth');
 }
 
 

@@ -107,7 +107,7 @@
     if (!box || !table) return;
     var all = Array.prototype.map.call(table.tBodies[0].rows, function (tr) {
       var c = {};
-      ['key', 'name', 'path', 'ticker', 'exchange', 'isin', 'country', 'segment', 'etf', 'theses', 'stances', 'publishers', 'chart', 'tv', 'tvurl'].forEach(function (k) { c[k] = tr.getAttribute('data-' + k) || ''; });
+      ['key', 'name', 'path', 'ticker', 'exchange', 'isin', 'country', 'segment', 'etf', 'theses', 'stances', 'publishers', 'chart', 'fin', 'tv', 'tvurl'].forEach(function (k) { c[k] = tr.getAttribute('data-' + k) || ''; });
       c.search = fold([c.name, c.ticker, c.exchange, c.isin, c.key].join(' '));
       return c;
     }).filter(function (c) { return c.key; }).sort(function (a, z) { return a.name.localeCompare(z.name); });
@@ -165,22 +165,26 @@
         });
         card.appendChild(dl);
       }
-      // Market cap and P/E: TradingView's official Symbol Info widget, one per slot, loaded when the company is chosen
-      // and removed with it (replace or clear); a late callback from a replaced widget is ignored.
+      // Market cap and P/E: one official TradingView widget per slot, loaded when the company is chosen and removed with
+      // it (replace or clear); a late callback from a replaced widget is ignored. The quote widget (Symbol Info) where
+      // TradingView offers it; otherwise its financials widget (Fundamental Data), which carries market cap and P/E at
+      // the top, at a moderate height; otherwise a note and a link.
       var gen = 0;
       function quote(c) {
         var box = el('div', 'inv-val-quote');
         box.appendChild(el('p', 'inv-val-k', 'Market cap and P/E'));
         var my = ++gen;
-        if (!c.tv || c.chart === 'unavailable') {
-          box.appendChild(el('p', 'inv-val-na', 'Not shown here: TradingView\u2019s free quote widget does not cover this symbol.'));
-          if (c.tvurl) { var l = el('a', '', 'See it on TradingView \u2197'); l.setAttribute('href', c.tvurl); l.setAttribute('rel', 'noopener nofollow'); l.setAttribute('target', '_blank'); box.appendChild(l); }
+        var kind = c.tv && c.chart !== 'unavailable' ? 'symbol-info' : c.tv && c.fin !== 'unavailable' ? 'financials' : '';
+        if (!kind) {
+          box.appendChild(el('p', 'inv-val-na', 'Not shown here: TradingView’s free widgets do not cover this symbol.'));
+          if (c.tvurl) { var l = el('a', '', 'See it on TradingView ↗'); l.setAttribute('href', c.tvurl); l.setAttribute('rel', 'noopener nofollow'); l.setAttribute('target', '_blank'); box.appendChild(l); }
           return box;
         }
-        var frame = el('div', 'mkt-frame info');
+        if (kind === 'financials') box.appendChild(el('p', 'inv-val-na', 'TradingView’s financials widget: market cap and P/E at the top, with its own periods.'));
+        var frame = el('div', 'mkt-frame ' + (kind === 'symbol-info' ? 'info' : 'financials inv-fin'));
         var host = el('div', 'tradingview-widget-container');
         var w = el('div', 'tradingview-widget-container__widget');
-        var wait = el('p', 'mkt-wait', 'Loading the quote from TradingView\u2026');
+        var wait = el('p', 'mkt-wait', 'Loading from TradingView…');
         w.appendChild(wait);
         host.appendChild(w);
         var credit = el('div', 'tradingview-widget-copyright');
@@ -193,15 +197,18 @@
         frame.appendChild(host);
         box.appendChild(frame);
         var sc = document.createElement('script');
-        sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js';
+        sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-' + kind + '.js';
         sc.async = true;
-        sc.text = JSON.stringify({ symbol: c.tv, locale: 'en', colorTheme: 'dark', isTransparent: true, width: '100%' });
+        var cfg = { symbol: c.tv, locale: 'en', colorTheme: 'dark', isTransparent: true, width: '100%' };
+        if (kind === 'financials') { cfg.displayMode = 'compact'; cfg.height = '100%'; }
+        sc.text = JSON.stringify(cfg);
         sc.onerror = function () { if (my === gen && wait.parentNode) wait.textContent = 'TradingView did not load. Open the company on TradingView instead.'; };
         sc.onload = function () { if (my === gen && wait.parentNode) wait.parentNode.removeChild(wait); };
         host.appendChild(sc);
         return box;
       }
-      // Revenue and its growth: the latest fiscal year reported to the SEC, with its base, dates and filing.
+      // Revenue and its growth: the latest full fiscal year (not the trailing twelve months), from the SEC filing or the
+      // company's annual report, with the previous year, dates, source and any note the figure needs.
       function revenue(c) {
         var dl = el('dl', 'inv-val');
         var f = FUND[c.key];
@@ -215,20 +222,24 @@
           dl.appendChild(d);
         }
         if (!f || f.s !== 'published') {
-          var why = !f ? 'Not covered yet: this company does not file annual reports with the SEC.' : 'No annual revenue in its SEC filings.';
-          row('Revenue, latest fiscal year', el('span', 'na', why));
+          row('Revenue, latest fiscal year', el('span', 'na', !f ? 'Not available: not covered yet.' : 'Not available: no annual revenue in its SEC filings.'));
           row('Revenue growth vs previous year', el('span', 'na', 'Not available'));
           return dl;
         }
         var src = el('span', 'mt');
-        src.appendChild(document.createTextNode('Year ended ' + f.end + ' \u00b7 Form ' + f.form + ' filed ' + f.filed + ' \u00b7 '));
-        var link = el('a', '', 'SEC filing \u2197');
+        src.appendChild(document.createTextNode('Fiscal year ' + f.start + ' to ' + f.end + ' · ' + (f.src === 'sec' ? 'SEC ' : '') + f.lab + ' · '));
+        var link = el('a', '', (f.src === 'sec' ? 'SEC filing' : 'Annual report') + ' ↗');
         link.setAttribute('href', f.url);
         link.setAttribute('rel', 'noopener');
         src.appendChild(link);
+        if (f.loc) src.appendChild(document.createTextNode(' (' + f.loc + ')'));
         row('Revenue, latest fiscal year', money(f.v, f.cur), [src, f.f.indexOf('old_fiscal_year') >= 0 ? el('span', 'mt warn', 'The latest annual figure this company has filed with the SEC.') : null]);
-        if (f.g === null) row('Revenue growth vs previous year', el('span', 'na', f.n || 'Not available'));
-        else row('Revenue growth vs previous year', pct(f.g), [el('span', 'mt', 'From ' + money(f.pv, f.cur) + ', year ended ' + f.pend), f.f.indexOf('growth_outlier') >= 0 ? el('span', 'mt warn', 'A large change: check the filing (a small base, an acquisition or a merger).') : null]);
+        var base = f.pv === null ? null : el('span', 'mt', 'Previous fiscal year ' + f.pstart + ' to ' + f.pend + ': ' + money(f.pv, f.cur) + ' (' + f.plab + ')');
+        var warn = f.f.indexOf('growth_outlier') >= 0 ? el('span', 'mt warn', 'A large change: check the source (a small base, an acquisition or a merger).') : null;
+        var note = f.note ? el('span', 'mt warn', f.note) : null;
+        if (f.gs === 'ok') row('Revenue growth vs previous year', pct(f.g), [base, warn, note]);
+        else if (f.gs === 'not_meaningful') row('Revenue growth vs previous year', el('span', 'na', 'Not meaningful: previous year revenue is zero or less.'), [base, note]);
+        else row('Revenue growth vs previous year', el('span', 'na', 'Not available: no previous fiscal year in the same report.'), [note]);
         return dl;
       }
       function restore() { input.value = chosen[i] ? chosen[i].name : ''; }
