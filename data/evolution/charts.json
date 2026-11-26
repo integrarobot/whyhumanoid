@@ -573,10 +573,10 @@
      "label": "",
      "long": "Q2 2026",
      "t": "2026-06-30",
-     "value": 74,
+     "value": 75,
      "segments": {
       "ann": 21,
-      "unc": 14,
+      "unc": 15,
       "pilot": 33,
       "op": 6
      },
@@ -587,12 +587,12 @@
      "label": "",
      "long": "Q3 2026",
      "t": "2026-09-30",
-     "value": 83,
+     "value": 88,
      "segments": {
       "ann": 22,
-      "unc": 18,
-      "pilot": 37,
-      "op": 6
+      "unc": 20,
+      "pilot": 39,
+      "op": 7
      },
      "partial": false
     },
@@ -601,61 +601,61 @@
      "label": "",
      "long": "Q4 2026 (to 2026-11-26)",
      "t": "2026-11-26",
-     "value": 114,
+     "value": 119,
      "segments": {
       "ann": 33,
-      "unc": 25,
-      "pilot": 49,
-      "op": 7
+      "unc": 27,
+      "pilot": 51,
+      "op": 8
      },
      "partial": true
     }
    ],
    "undated": {
     "label": "Date unknown",
-    "cases": 11,
-    "records": 20,
+    "cases": 6,
+    "records": 18,
     "segments": {
      "ann": 0,
-     "unc": 7,
-     "pilot": 3,
+     "unc": 3,
+     "pilot": 2,
      "op": 1
     }
    },
    "final": {
-    "cases": 114,
+    "cases": 119,
     "segments": {
      "ann": 33,
-     "unc": 25,
-     "pilot": 49,
-     "op": 7
+     "unc": 27,
+     "pilot": 51,
+     "op": 8
     },
     "all_records_now": {
      "ann": 33,
-     "unc": 32,
-     "pilot": 52,
-     "op": 8
+     "unc": 30,
+     "pilot": 53,
+     "op": 9
     }
    },
-   "summary": "By 2026-11-26, 114 of 125 cases have a dated source: 7 in operation, 49 pilot or trial, 25 unconfirmed, 33 announced.",
+   "summary": "By 2026-11-26, 119 of 125 cases have a dated source: 8 in operation, 51 pilot or trial, 27 unconfirmed, 33 announced.",
    "coverage": {
-    "included": 114,
+    "included": 119,
     "total": 125,
     "unit": "cases",
     "excluded": [
      {
       "reason": "Cases whose records all lack a publication date",
-      "count": 11
+      "count": 6
      },
      {
-      "reason": "Records without a publication date (of 198)",
-      "count": 20
+      "reason": "Records without a publication date (of 203)",
+      "count": 18
      }
     ],
-    "note": "5 records dated only by the current year or month count from the snapshot date. 4 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead, so their totals differ: currently 6 in operation, 49 pilot or trial, 25 unconfirmed, 34 announced among the 114 dated cases. Undated evidence is kept apart and never assigned a date."
+    "note": "5 records dated only by the current year or month count from the snapshot date. 8 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead, so their totals differ: currently 7 in operation, 51 pilot or trial, 27 unconfirmed, 34 announced among the 119 dated cases. Undated evidence is kept apart and never assigned a date."
    },
    "status": "partial",
-   "status_note": "114 of 125 cases placed in time; 11 cases with no dated record stay in the date-unknown bar, outside the time series.",
+   "status_note": "119 of 125 cases placed in time; 6 cases with no dated record stay in the date-unknown bar, outside the time series.",
    "sources": [
     {
      "label": "Deployments public summaries, snapshot 2026-11-26",
@@ -796,25 +796,25 @@
       "Q2 2026",
       "6",
       "33",
-      "14",
+      "15",
       "21",
-      "74"
+      "75"
      ],
      [
       "Q3 2026",
-      "6",
-      "37",
-      "18",
+      "7",
+      "39",
+      "20",
       "22",
-      "83"
+      "88"
      ],
      [
       "Q4 2026 (to 2026-11-26)",
-      "7",
-      "49",
-      "25",
+      "8",
+      "51",
+      "27",
       "33",
-      "114"
+      "119"
      ]
     ]
    }

@@ -5477,6 +5477,13 @@
       ],
       "robots": [],
       "organization_ids": []
+    },
+    "mfr_ant_group": {
+      "slugs": [
+        "ant-group"
+      ],
+      "robots": [],
+      "organization_ids": []
     }
   },
   "other_robots": {
