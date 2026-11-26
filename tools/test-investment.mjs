@@ -183,4 +183,7 @@ test('company header: the chart is offered once, beside the identity and key fac
   const css = read('assets/investment.css');
   assert.match(css, /\.mkt-frame \.tradingview-widget-container iframe\{color-scheme:normal;background:#000\}/);
   assert.match(css, /grid-template-areas:"id chart" "facts chart"/);
+  // The quote's content needs about 279 px on a phone; its iframe keeps 300 px there, the chart is unchanged.
+  assert.match(css, /@media \(max-width:640px\)\{\n  \.mkt-frame\.info \.tradingview-widget-container\{height:auto!important\}\n  \.mkt-frame\.info \.tradingview-widget-container iframe\{flex:none;height:300px!important\}\n\}/);
+  assert.match(css, /\.co-chart \.mkt-frame\.chart\{height:360px\}/);
 });
