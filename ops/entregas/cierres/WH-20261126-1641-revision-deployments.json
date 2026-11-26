@@ -1,6 +1,6 @@
 {
   "id": "WH-20261126-1641-revision-deployments",
-  "tarea": "Revisar los 125 casos de Deployments contra fuentes públicas, incorporar al maestro las correcciones y los casos nuevos (escritos por Codex) y publicarlos en la web y en la API con una importación acotada que solo escriba lo que cambia, sin importación completa",
+  "tarea": "Revisar los 125 casos de Deployments contra fuentes públicas, incorporar al maestro las correcciones y las nuevas evidencias de casos existentes (escritas por Codex) y publicarlos en la web y en la API con una importación acotada que solo escriba lo que cambia, sin importación completa",
   "origen": "Javier (26/11/2026), coordinado, escrito en el maestro y verificado por Codex",
   "fecha": "2026-11-26T16:41:33+01:00",
   "zona": "Europe/Madrid",
@@ -8,9 +8,9 @@
   "ejecuta": "claude/opus-5.5",
   "cambios": [
     "Revisión: 125 casos revisados, 54 mejorados; 203 registros de evidencia. Codex escribió el maestro con su conector nativo: 81 cambios efectivos de valor en 66 registros y 5 registros nuevos (filas 200 a 204), con recibo verificado. Claude no escribió el maestro.",
-    "Casos nuevos, por sus nombres públicos: Ant Group (Robbyant) con Guoda Pharmacy; UBTech con Fuao Weitaike; Leju con operador no divulgado; RealMan con operador de farmacia no divulgado; Robot Era con China Post y SF Express.",
-    "Fuentes: 5/9 URLs según la revisión de Codex. 4 referencias heredadas quedan con lagunas y su relación explícita: Galbot en farmacia y en retail, EngineAI duplicada y la demostración de JD no encontrada.",
-    "Fuera de alcance: costes, ROI y nivel de autonomía, que no se publican.",
+    "Nuevas evidencias de casos ya existentes, por sus nombres públicos (no se añadió ningún deployment_id; siguen 125 casos): Ant Group (Robbyant) con Guoda Pharmacy; UBTech con Fuao Weitaike; Leju con operador no divulgado; RealMan con operador de farmacia no divulgado; Robot Era con China Post y SF Express.",
+    "Fuentes: cinco de los nueve casos sin URL inicial reciben evidencia con fuente. 4 referencias heredadas quedan con lagunas y su relación explícita: Galbot en farmacia y en retail, EngineAI duplicada y la demostración de JD no encontrada.",
+    "No se añadieron costes, ROI ni niveles de autonomía sin documentación suficiente; la teleoperación y los límites se describen cuando hay fuente. No es una exclusión general de esos campos del producto.",
     "Importación acotada (PR 166, ya fusionado como ccc3d9d): solo Deployments, Clean Entities y Evidence Relations, diferencia por filas, simulacro con estimación de filas escritas y rechazo de un simulacro sin alcance.",
     "PR 168: data/preview/deployments.json (203 registros con sus 18 campos públicos), data/public/projection.json (125 casos, 272 empresas), páginas de casos, empresas y robots, portada, sitemap, permalinks, la nueva /companies/ant-group/ y data/evolution/charts.json, regenerados desde la exportación revisada; la guarda de órdenes de tools/audit-deployments.mjs compara rutas reales (realpathSync). Ningún valor de pago, enlace del maestro ni identificador privado en Git."
   ],
@@ -63,19 +63,19 @@
   "despliegue": [
     "Worker de PR 166 desplegado por Codex: producción versión 92fb9d9b y test 18f526d0.",
     "Simulacro en producción (ejecución 45850056961, solo lectura): 5 nuevos, 66 cambiados, 0 borrados y 132 sin cambio en deployments; entities 32 y evidence-links 15 sin cambio; estimación de 1.555 filas escritas en D1, con 84,89k de 100k usadas.",
-    "Importación acotada única en producción, autorizada por Codex tras releer el simulacro y la cuota (ejecución 45850750400, desde main c91f2d2, a las 15:36:34 UTC): HTTP 200, 0 avisos, mismas cifras que el simulacro, 1.555 filas estimadas, relaciones con 203 registros, 27 robots y 131 empresas, búsqueda con 270 entradas actualizadas, 0 borradas y 759 sin cambio; snapshot 2026-11-26T15:36:30.000Z. Sin importación completa.",
+    "Importación acotada única en producción, autorizada por Codex tras releer el simulacro y la cuota (ejecución 45850750400, desde main c91f2d2, a las 15:36:34 UTC): HTTP 200, 0 avisos, mismas cifras que el simulacro, 1.555 filas estimadas, relaciones con 203 registros, 27 robots y 131 empresas, búsqueda con 270 entradas actualizadas, 0 borradas y 759 sin cambio; snapshot 2026-11-26T15:36:30.000Z. Sin importación completa. Cuota final de D1 medida por Codex: 85,84k de 100k.",
     "PR 168 fusionado tras la importación como 7d5e2b6 desde a6d8da8 (con main y el PR 167 incluidos), con el CI en verde (ejecución 45850450270); CI de main 45850995521 y Pages 45850994441 completados con éxito a las 15:38:23 UTC."
   ],
   "verificaciones": [
     "Claude, local: auditoría de Deployments con 203 filas, 47 columnas y 0 diferencias; build-pages, build-site y build-app --check, check-public y export-evolution al día.",
-    "Claude, producción: la API pública da 203 filas con el snapshot de la importación y 0 diferencias en 3.654 celdas (203 × 18 campos públicos) contra el PR, mismo orden y 125 casos; /v1/relations/preview con la cobertura del run; data/preview/deployments.json idéntico al del PR; verify-site contra whyhumanoid.com en verde (1.304 fichas, 13.136 valores); las cinco fichas nuevas, /deployments/, /companies/ant-group/ y sitemap.xml responden 200.",
+    "Claude, producción: la API pública da 203 filas con el snapshot de la importación y 0 diferencias en 3.654 celdas (203 × 18 campos públicos) contra el PR, mismo orden y 125 casos; /v1/relations/preview con la cobertura del run; data/preview/deployments.json idéntico al del PR; verify-site contra whyhumanoid.com en verde (1.304 fichas, 13.136 valores); las cinco fichas existentes con nueva evidencia, /deployments/, /companies/ant-group/ y sitemap.xml responden 200.",
     "Codex, PR 168: relectura completa del maestro normalizada, 203 registros × 18 campos públicos con 0 diferencias, 125 casos y los 5 IDs exactos.",
     "Codex, suscriptor real existente en Chrome: GET /v1/datasets/deployments autenticado devuelve 200, 203 registros, 125 casos y el snapshot de la importación; 203 × 47 = 9.541 valores con 0 diferencias contra su relectura del maestro; la ficha de Guoda abre 47 campos (41 con dato y 6 vacíos). Sin compras ni cambios de cuenta.",
-    "Codex, web pública: whyhumanoid.com/data/preview/deployments.json con 203 registros y 125 casos, 0 diferencias; API preview 203/125, 0 diferencias; las cinco fichas nuevas responden 200 con sus fuentes nuevas; el conector MCP público (get_rows, offset 198, limit 5) devuelve exactamente los 5 IDs, total 203 y solo los 18 campos públicos más id; la búsqueda pública del identificador privado del caso Guoda da 0 resultados."
+    "Codex, web pública: whyhumanoid.com/data/preview/deployments.json con 203 registros y 125 casos, 0 diferencias; API preview 203/125, 0 diferencias; las cinco fichas existentes con nueva evidencia responden 200 con sus fuentes nuevas; el conector MCP público (get_rows, offset 198, limit 5) devuelve exactamente los 5 IDs, total 203 y solo los 18 campos públicos más id; la búsqueda pública del identificador privado del caso Guoda da 0 resultados."
   ],
   "pendientes": [
     "4 referencias heredadas siguen con lagunas (Galbot en farmacia y retail, EngineAI duplicada, demostración de JD no encontrada); constan con su relación explícita.",
-    "Costes, ROI y autonomía no se publican."
+    "Costes, ROI y niveles de autonomía solo se añadirán cuando haya documentación suficiente; la teleoperación y los límites ya se describen cuando hay fuente."
   ],
   "siguiente_accion": "Codex registra su aviso de esta entrega como segundo archivo en el mismo PR y actualiza la wiki; Javier confirma la recepción."
 }
