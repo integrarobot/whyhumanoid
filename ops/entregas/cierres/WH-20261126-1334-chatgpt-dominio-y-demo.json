@@ -5,11 +5,11 @@
   "fecha": "2026-11-26T13:34:14+01:00",
   "zona": "Europe/Madrid",
   "estado": "completado",
-  "ejecuta": "claude/opus-5.5 (código y pruebas del challenge, comprobaciones independientes y este cierre); codex (grabación y PR de la demostración, revisión, fusión y despliegue del Worker, portal de OpenAI)",
+  "ejecuta": "Claude Desktop (grabación de la demostración por encargo expreso de Javier: capturas reales y montaje del MP4); Claude Code (generador y página de la demostración, PR #142); claude/opus-5.5 en Claude Code (código y pruebas del challenge, PR #144, comprobaciones independientes y este cierre); codex (coordinación, verificación, subida del MP4, revisión y fusión de PR #142 y PR #144, despliegue del Worker, portal de OpenAI y comprobación en producción)",
   "cambios": [
     "Verificación del dominio (PR #144, fusionado en main d5e4ac4, código en 3726744):\n- GET /.well-known/openai-apps-challenge en el Worker whyhumanoid-premium responde exactamente el token público de OpenAI Apps: 43 bytes, text/plain; charset=utf-8, sin salto de línea y sin caché. HEAD responde las mismas cabeceras sin cuerpo. Otros métodos, 405; otras rutas, 404.\n- La ruta no lee la base de datos, secretos ni cabeceras. El token prueba el control del hostname y no da acceso a nada.\n- Sin cambios en la URL del MCP (https://whyhumanoid-premium.javier-198.workers.dev/mcp), autenticación, permisos, pagos, importación, claves ni wrangler.toml.",
     "Prueba nueva server/test/openai-apps-challenge.test.js (5 casos): cuerpo literal y cabeceras, HEAD, métodos y ruta exacta, cabecera Authorization ignorada, /mcp y /health sin cambios, y la entrada real del Worker con una base de datos que falla si se usa. Añadir un salto de línea al token hace fallar 3 de los 5 casos.",
-    "Demostración en ChatGPT (PR #142 de Codex, fusionado en main 63cb3a5): página https://whyhumanoid.com/agents/demo/, enlazada desde /agents/ y el sitemap, con el MP4 /assets/whyhumanoid-chatgpt-demo-2026-11-26.mp4. Según Codex, es una captura real por acciones en tres segmentos, con el tiempo ampliado.",
+    "Demostración en ChatGPT (PR #142, fusionado en main 63cb3a5):\n- Claude Desktop grabó la demostración por encargo expreso de Javier: capturas reales por acciones en tres segmentos, con el tiempo ampliado, y montaje del MP4 (según Codex).\n- Claude Code implementó el generador y la página https://whyhumanoid.com/agents/demo/, enlazada desde /agents/ y el sitemap.\n- Codex coordinó y verificó el trabajo, subió el MP4 /assets/whyhumanoid-chatgpt-demo-2026-11-26.mp4, revisó y fusionó el PR y comprobó producción.",
     "Portal de OpenAI, según Codex (26/11/2026, 13:23:15 Madrid): dominio verificado, conexión Configured sin autenticación (NoAuth) y escaneo de las seis herramientas sin hallazgos. Borrador público cargado: editor Integrarobot, todos los países admitidos, 5 casos de prueba positivos y 3 negativos, sin autenticación."
   ],
   "urls": [
@@ -39,7 +39,7 @@
     }
   ],
   "despliegue": [
-    "Worker whyhumanoid-premium, desplegado por Codex desde el panel de Cloudflare (mecanismo documentado en DEPLOYMENT.md) con el bundle revisado de server/scripts/build-dashboard.mjs y esbuild 0.27.7, SHA-256 6216e675a742848aee99f2b00f819f6683a3a836a19bb553eca97899c116b229 (el mismo que generó Claude antes de la revisión). Versión 0a216feb, Active. Sin cambios en D1, secretos, variables ni rutas.",
+    "Worker whyhumanoid-premium, desplegado por Codex desde el panel de Cloudflare (mecanismo documentado en DEPLOYMENT.md) con el bundle revisado de server/scripts/build-dashboard.mjs y esbuild 0.27.7, SHA-256 6216e675a742848aee99f2b00f819f6683a3a836a19bb553eca97899c116b229 (el mismo que generó Claude antes de la revisión). Versión 0a216feb, Active. Sin cambios en D1, secretos ni variables. La configuración de rutas de Cloudflare (workers.dev, dominios y routes del Worker) no cambia; lo único nuevo es la ruta HTTP GET/HEAD /.well-known/openai-apps-challenge dentro del código del Worker.",
     "Demostración: GitHub Pages desde main 63cb3a5, CI 45814462950 y Pages 45814771586 correctos (datos de Codex)."
   ],
   "verificaciones": [
