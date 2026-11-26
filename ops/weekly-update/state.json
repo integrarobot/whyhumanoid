@@ -27,7 +27,8 @@
       "found": "2026-11-25",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
       "outcome": "pending_verification",
-      "needs": "a primary source for the round and a named model"
+      "needs": "a primary source for the round and a named model",
+      "rechecked": "2026-11-26: still no primary source for the round and no named model"
     },
     {
       "edition": "https://www.integrarobot.com/p/why-humanoid",
@@ -35,9 +36,9 @@
       "source": "https://www.withplayground.ai/research/robot-frontier-accelerating",
       "source_date": "2026-11-23",
       "found": "2026-11-25",
-      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
-      "outcome": "pending_decision",
-      "needs": "classification by Claude or Codex under the existing Reports criteria (external report with estimates by type, findings mapped with locators in tools/reports-findings.json); no row before that review"
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
+      "outcome": "planned (op-002, Reports row 14, RPT-013); findings in phase 3",
+      "needs": "Codex write and readback (after the Software preparation and rebase), then the findings mapping"
     },
     {
       "edition": "https://www.integrarobot.com/p/why-humanoid",
@@ -45,9 +46,9 @@
       "source": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/",
       "source_date": "modified 2026-11-16",
       "found": "2026-11-25",
-      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
-      "outcome": "pending_decision",
-      "needs": "a primary Orbit product page (the post is a customer-practice blog); under the existing Software criteria (robotics software platforms such as Foxglove) it would get a Software row in the next plan"
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
+      "outcome": "planned (op-001, Software first block)",
+      "needs": "Codex preparation of one slot in Software A:C, rebase, write and readback, then one import"
     }
   ],
   "runs": [
@@ -110,6 +111,18 @@
       "result": "published",
       "plan": null,
       "close": "WH-20261126-0808-lote-25-11-publicado"
+    },
+    {
+      "date": "2026-11-26",
+      "kind": "phase 1 (known_pending)",
+      "subject": "Orbit and Playground planned, Simplexity rechecked; Software preparation requested",
+      "editions": [
+        "https://www.integrarobot.com/p/why-humanoid"
+      ],
+      "result": "awaiting_preparation",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
+      "file": "ops/weekly-update/runs/2026-11-26-pendientes.json",
+      "close": "WH-20261126-1510-fase1-pendientes-25-11"
     }
   ],
   "handoffs": [
@@ -223,6 +236,46 @@
           }
         }
       }
+    },
+    {
+      "plan_id": "WP-20261125-integrarobot-known-pending",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
+      "editions": [
+        "integrarobot:2026-11-25:why-humanoid"
+      ],
+      "status": "awaiting_preparation",
+      "operations": 2,
+      "cells": 23,
+      "private_cells": 20,
+      "public_plan_sha256": "90df0cb13d5e099b2e724304efbefc9f68b62897ed92ca25de8fb371b2437bf6",
+      "private_payload": {
+        "sha256": "ef77c3c1e85e70b45a5eec09cd2478c5595ff52ad6fb5d93219bd1190b42ec33",
+        "channel": "Google Drive (Javier's My Drive), exact title whyhumanoid-private-handoff-WP-20261125-integrarobot-known-pending.json, not shared; created 2026-11-26T14:08:49Z, round-trip SHA-256 checked; ID and link delivered privately to Codex"
+      },
+      "preparation": {
+        "sheet": "Software",
+        "columns": "A:C (the software list only)",
+        "block": "first block (no group), rows 2-80, full",
+        "slots": 1,
+        "slot_rows": [
+          81
+        ],
+        "method": "insert one row of cells in A:C at row 81, shifting A81:C134 down to A82:C135 (or an equivalent permutation of A:C only); never whole-sheet rows; keep values, links, formats, validation, chips and notes; extend SoftwareCatalog A1:C134 to A1:C135",
+        "expected_after": {
+          "81": "empty slot in the first block",
+          "82": "SOFTWARE FOR UNITREE",
+          "83": "repeated column headers",
+          "84": "AHEADance",
+          "121": "blank separator",
+          "122": "SIMULATORS",
+          "123": "repeated column headers",
+          "135": "Lucky Robots"
+        },
+        "unchanged": "the world-model list in E:F (rows 2-22) and every other tab",
+        "checked_offline": "the same shift applied to the 09:16 UTC export: preflight passes for both operations, row 81 unchanged",
+        "publication": "none for the preparation alone"
+      },
+      "next": "Codex preparation and receipt; Claude permutation check and rebase (new basis time, SHA, salt, payload and Drive file; rows expected unchanged); Codex writes both operations and reads back; Claude publishes (Reports atlas without import; Software with one import, queued until the D1 margin allows)"
     }
   ]
 }

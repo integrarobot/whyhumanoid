@@ -1,0 +1,156 @@
+{
+  "date": "2026-11-26",
+  "kind": "phase 1 (known_pending of the 2026-11-25 edition), Codex scheduled continuation of 15:00 Madrid",
+  "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
+  "basis": {
+    "workbook_modified_time": "2026-11-26T09:16:14.759Z",
+    "note": "fresh download; since the 06:58 UTC master only Components (86 rows, enlargement by another task) and one live Humanoids valuation changed"
+  },
+  "items": [
+    {
+      "item": "Boston Dynamics Orbit",
+      "outcome": "planned: Software row in the first block (op-001)",
+      "classification": "robotics fleet and data software, like Foxglove or NVIDIA OSMO in the Software list; the post names no customer or site, so no Deployments record",
+      "sources": [
+        {
+          "url": "https://bostondynamics.com/products/orbit/",
+          "publisher": "Boston Dynamics",
+          "published": "page modified 2026-09-21",
+          "reviewed": "2026-11-26",
+          "supports": "orchestration and intelligence software for Spot and Stretch (Atlas later); missions, inspections, dashboards, APIs, webhooks, deployment options"
+        },
+        {
+          "url": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/",
+          "publisher": "Boston Dynamics",
+          "published": "modified 2026-11-16",
+          "reviewed": "2026-11-25",
+          "supports": "an MCP layer lets AI agents start Spot missions (not on the product page)"
+        }
+      ],
+      "needs": "a free slot in the first Software block (preparation request in state.json)"
+    },
+    {
+      "item": "Playground, The Robot Frontier Is Accelerating",
+      "outcome": "planned: Reports row 14, RPT-013 (op-002); findings mapped in phase 3",
+      "classification": "external robotics research report under the existing Reports rules: a capability index with conditional projections, not a market forecast; index odds, simulation results, real-robot results and conditional projections are kept apart",
+      "sources": [
+        {
+          "url": "https://www.withplayground.ai/research/robot-frontier-accelerating",
+          "publisher": "Playground",
+          "published": "2026-11-23",
+          "reviewed": "2026-11-26"
+        }
+      ],
+      "findings_draft": [
+        {
+          "id": "pg-frontier-doubling",
+          "theme": "adoption",
+          "metric": "capability_trend",
+          "kind": "observed",
+          "locator": "§Frontier capabilities double every 5 weeks",
+          "phrase": "Since September they have doubled about every five weeks",
+          "statement": "On the publisher's index, the odds of beating pi0 doubled about every five months for two years and about every five weeks since September 2026.",
+          "limits": "Publisher's own index; odds, not raw scores."
+        },
+        {
+          "id": "pg-relative-9x",
+          "theme": "adoption",
+          "metric": "capability_trend",
+          "kind": "observed",
+          "locator": "lede",
+          "phrase": "have increased more than 9x in the past 3 months",
+          "statement": "Relative capabilities on the index rose more than 9x in the three months to November 2026, against 2.4x from August 2025 to August 2026.",
+          "limits": "Odds ratio of the index leaders; the page meta description gives 2.5 times instead."
+        },
+        {
+          "id": "pg-saturation-five",
+          "theme": "adoption",
+          "metric": "capability_trend",
+          "kind": "observed",
+          "unit": "%",
+          "value": 43,
+          "denominator": "tasks of the five benchmarks tracked since January 2025, equal weight (two simulation, three real robot)",
+          "locator": "§Most real-robot tasks are not solved; Figure 6",
+          "phrase": "rose from 25% to 43% in three months, after a year spent climbing from just 17% to 25%"
+        },
+        {
+          "id": "pg-sim-vs-real",
+          "theme": "adoption",
+          "metric": "capability_trend",
+          "kind": "observed",
+          "unit": "%",
+          "value": 31,
+          "denominator": "average over the three real-robot benchmarks of the five",
+          "locator": "§Most real-robot tasks are not solved; Figure 6",
+          "phrase": "On the three real-robot benchmarks the share has held at 31% since January.",
+          "statement": "The jump came on the two simulation benchmarks (15% to 61%); the three real-robot benchmarks held at 31% since January."
+        },
+        {
+          "id": "pg-real-tasks-unsolved",
+          "theme": "risks",
+          "metric": "constraint",
+          "constraint": "reliability",
+          "kind": "observed",
+          "unit": "%",
+          "value": 32,
+          "denominator": "138 real-robot tasks across the index's benchmarks, 2026-11-23 (simulation: 65% of 175 tasks)",
+          "locator": "§Most real-robot tasks are not solved; Table 2",
+          "phrase": "On real robots, the best policy on each benchmark scores at least 80% on just 32% of 138 tasks.",
+          "limits": "A different measure from the 31% five-benchmark average; 80% is a low bar for real work (the page)."
+        },
+        {
+          "id": "pg-cost-time-hardest",
+          "theme": "risks",
+          "metric": "constraint",
+          "constraint": "economics",
+          "kind": "observed",
+          "locator": "lede; §What this means for capability projections",
+          "phrase": "fully finishes one in ten of the hardest tasks, at about 30 minutes and $115",
+          "limits": "Model-token cost at list price (Robocurve); Table 3 gives $119 per completed precision task and $41 across all tasks for the same system."
+        },
+        {
+          "id": "pg-projection-2027",
+          "theme": "adoption",
+          "metric": "capability_trend",
+          "kind": "scenario",
+          "target_year": 2027,
+          "locator": "§What this means for capability projections",
+          "phrase": "If the pace since September holds, it would complete over 90% of all three.",
+          "statement": "If the two-year pace continues, by the end of 2027 the top system would complete about 86% of pick-and-place, 29% of precision and 25% of long-horizon real-robot tasks; if the pace since September holds, over 90% of all three.",
+          "limits": "Conditional; the publisher calls the projections uncertain and its ranges exclude uncertainty about the pace; time and cost per attempt held fixed; 100/97/93% appear only in image alt text."
+        }
+      ],
+      "not_mapped": [
+        "104 to 1 and 100/97/93%: image alt text only (the body says about 100 to 1 and over 90%)",
+        "Precision odds rose 21-fold: no stated baseline (kept in the master cell, not drawn)",
+        "Meta description '2.5 times': differs from the body (9x and 2.4x)"
+      ]
+    },
+    {
+      "item": "Simplexity Robotics",
+      "outcome": "pending_verification (no row)",
+      "rechecked": "2026-11-26",
+      "result": "No primary source for the November round led by Ant Group and no named robot model. Available sources: The Japan Times page (did not load on 2026-11-25), Yicai Global (2026-03-10) and 36Kr Japan (2026-04-04): CNY 2B over five rounds, valuation above USD 1B, no Ant Group.",
+      "sources": [
+        {
+          "url": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
+          "publisher": "The Japan Times (Bloomberg)"
+        },
+        {
+          "url": "https://www.yicaiglobal.com/news/chinas-simplexity-robotics-raises-usd2893-million-in-six-months-to-speed-large-scale-application-of-embodied-ai",
+          "publisher": "Yicai Global"
+        },
+        {
+          "url": "https://equalocean.com/news/2026030921780",
+          "publisher": "EqualOcean"
+        }
+      ],
+      "needs": "a primary source for the round and a named model"
+    }
+  ],
+  "d1": {
+    "reading": "Codex, Cloudflare dashboard, 2026-11-26 UTC: 63.47k of 100k rows written (test 0), about 36.53k left",
+    "estimate": "current workbook (Components at 51 products) on the test SQLite shim: 12,163 row changes, about 32,100 rows counting index writes; the two imports of 2026-11-26 (about 31.7k each by the same method) match the reading",
+    "decision": "the Orbit publication needs one import (Software is in the backend): it would leave about 4k rows for the rest of the UTC day, so it is queued until after 00:00 UTC unless Codex reads a larger margin; the Playground findings are Pages-only (Reports is not imported) and need no import"
+  }
+}
