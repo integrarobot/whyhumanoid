@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { issuerEntry, pickRevenue, reviewFlags, RULES } from './export-fundamentals.mjs';
+import { issuerEntry, packetProblems, pickRevenue, reviewFlags, RULES } from './export-fundamentals.mjs';
 
 const fy = (y, val, accn, filed, over = {}) => ({ start: `${y}-01-01`, end: `${y}-12-31`, val, accn, fy: y, fp: 'FY', form: '10-K', filed, ...over });
 const co = (concepts) => ({ key: 'X:FX', cik: 1, concepts });
@@ -120,4 +120,14 @@ test('the SEC fetcher: identifying User-Agent, paced requests, annual total-reve
   assert.deepEqual(failures, ['X:B: HTTP 404']);
   assert.equal(packet.companies.length, 1);
   assert.match(packet.companies[0].raw_sha256, /^[0-9a-f]{64}$/);
+});
+
+test('a packet with a partial concept, a non-finite value or an impossible date is refused', () => {
+  const company = (concepts) => ({ as_of: '2026-11-26', companies: [{ key: 'X:FX', cik: 1, source_url: 'https://data.sec.gov/api/xbrl/companyfacts/CIK0000000001.json', retrieved_at: '2026-11-26', raw_sha256: 'b'.repeat(64), concepts }] });
+  const good = { start: '2025-01-01', end: '2025-12-31', val: 10, accn: '0000000001-26-000001', form: '10-K', filed: '2026-02-01' };
+  assert.deepEqual(packetProblems(company([{ namespace: 'us-gaap', concept: 'Revenues', units: { USD: [good] } }])), []);
+  assert.match(packetProblems(company([{ namespace: 'us-gaap', concept: 'SalesRevenueGoodsNet', units: { USD: [good] } }]))[0], /not a total-revenue concept/);
+  assert.equal(packetProblems(company([{ namespace: 'us-gaap', concept: 'Revenues', units: { USD: [{ ...good, val: Infinity }] } }])).length, 1);
+  assert.equal(packetProblems(company([{ namespace: 'us-gaap', concept: 'Revenues', units: { USD: [{ ...good, end: '2025-02-30' }] } }])).length, 1);
+  assert.equal(packetProblems({ ...company([]), as_of: 'today' }).length, 1);
 });

@@ -107,7 +107,7 @@
     if (!box || !table) return;
     var all = Array.prototype.map.call(table.tBodies[0].rows, function (tr) {
       var c = {};
-      ['key', 'name', 'path', 'ticker', 'exchange', 'isin', 'country', 'segment', 'etf', 'theses', 'stances', 'publishers', 'chart', 'fin', 'tv', 'tvurl'].forEach(function (k) { c[k] = tr.getAttribute('data-' + k) || ''; });
+      ['key', 'name', 'path', 'ticker', 'exchange', 'isin', 'country', 'segment', 'etf', 'theses', 'stances', 'publishers', 'chart', 'fin', 'cur', 'tv', 'tvurl'].forEach(function (k) { c[k] = tr.getAttribute('data-' + k) || ''; });
       c.search = fold([c.name, c.ticker, c.exchange, c.isin, c.key].join(' '));
       return c;
     }).filter(function (c) { return c.key; }).sort(function (a, z) { return a.name.localeCompare(z.name); });
@@ -180,7 +180,11 @@
           if (c.tvurl) { var l = el('a', '', 'See it on TradingView ↗'); l.setAttribute('href', c.tvurl); l.setAttribute('rel', 'noopener nofollow'); l.setAttribute('target', '_blank'); box.appendChild(l); }
           return box;
         }
-        if (kind === 'financials') box.appendChild(el('p', 'inv-val-na', 'TradingView’s financials widget: market cap and P/E at the top, with its own periods.'));
+        if (kind === 'financials') {
+          // The financials panel states no date or currency: say which currencies are in play instead.
+          var rep = FUND[c.key] && FUND[c.key].s === 'published' ? FUND[c.key].cur : '';
+          box.appendChild(el('p', 'inv-val-na', 'TradingView financials: market cap and P/E under Valuation. The panel shows no date or currency.' + (c.cur ? ' The listing trades in ' + c.cur + '.' : '') + (rep && rep !== c.cur ? ' The company reports in ' + rep + '.' : '')));
+        }
         var frame = el('div', 'mkt-frame ' + (kind === 'symbol-info' ? 'info' : 'financials inv-fin'));
         var host = el('div', 'tradingview-widget-container');
         var w = el('div', 'tradingview-widget-container__widget');
@@ -200,7 +204,7 @@
         sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-' + kind + '.js';
         sc.async = true;
         var cfg = { symbol: c.tv, locale: 'en', colorTheme: 'dark', isTransparent: true, width: '100%' };
-        if (kind === 'financials') { cfg.displayMode = 'compact'; cfg.height = '100%'; }
+        if (kind === 'financials') { cfg.displayMode = 'regular'; cfg.height = '100%'; }
         sc.text = JSON.stringify(cfg);
         sc.onerror = function () { if (my === gen && wait.parentNode) wait.textContent = 'TradingView did not load. Open the company on TradingView instead.'; };
         sc.onload = function () { if (my === gen && wait.parentNode) wait.parentNode.removeChild(wait); };
@@ -233,7 +237,7 @@
         link.setAttribute('rel', 'noopener');
         src.appendChild(link);
         if (f.loc) src.appendChild(document.createTextNode(' (' + f.loc + ')'));
-        row('Revenue, latest fiscal year', money(f.v, f.cur), [src, f.f.indexOf('old_fiscal_year') >= 0 ? el('span', 'mt warn', 'The latest annual figure this company has filed with the SEC.') : null]);
+        row('Revenue, latest fiscal year', money(f.v, f.cur), [src, f.f.indexOf('old_fiscal_year') >= 0 ? el('span', 'mt warn', 'The latest annual figure in the filings read for this page; a newer one may exist.') : null]);
         var base = f.pv === null ? null : el('span', 'mt', 'Previous fiscal year ' + f.pstart + ' to ' + f.pend + ': ' + money(f.pv, f.cur) + ' (' + f.plab + ')');
         var warn = f.f.indexOf('growth_outlier') >= 0 ? el('span', 'mt warn', 'A large change: check the source (a small base, an acquisition or a merger).') : null;
         var note = f.note ? el('span', 'mt warn', f.note) : null;

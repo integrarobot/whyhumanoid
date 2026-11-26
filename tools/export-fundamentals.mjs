@@ -23,6 +23,28 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const ANNUAL = new Set(['10-K', '10-K/A', '20-F', '20-F/A', '40-F', '40-F/A']);
+// Total-revenue concepts only (the same list as tools/fetch-sec-revenue.mjs): a packet carrying a partial concept, such
+// as SalesRevenueGoodsNet, is refused rather than read.
+export const TOTAL_CONCEPTS = new Set(['us-gaap:Revenues', 'us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax', 'us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax', 'ifrs-full:Revenue', 'ifrs-full:RevenueFromContractsWithCustomers']);
+const isDate = (d) => typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d) && !Number.isNaN(Date.parse(d)) && new Date(d).toISOString().slice(0, 10) === d;
+// Every SEC fact: a finite value, real dates in order, a filing date and an accession number. A bad fact stops the export.
+export function packetProblems(packet) {
+  const problems = [];
+  if (!isDate(packet.as_of)) problems.push('as_of is not a date');
+  for (const c of packet.companies ?? []) {
+    if (!c.key || !Number.isInteger(c.cik) || !/^https:\/\/data\.sec\.gov\//.test(c.source_url ?? '') || !/^[0-9a-f]{64}$/.test(c.raw_sha256 ?? '') || !isDate(c.retrieved_at)) problems.push(`${c.key}: identity or source`);
+    for (const k of c.concepts ?? []) {
+      if (!TOTAL_CONCEPTS.has(`${k.namespace}:${k.concept}`)) { problems.push(`${c.key}: concept ${k.namespace}:${k.concept} is not a total-revenue concept`); continue; }
+      for (const [unit, facts] of Object.entries(k.units ?? {})) {
+        if (!/^[A-Z]{3}$/.test(unit)) problems.push(`${c.key}: unit ${unit}`);
+        for (const f of facts) {
+          if (!Number.isFinite(f.val) || !isDate(f.start) || !isDate(f.end) || f.start > f.end || !isDate(f.filed) || !/^\d{10}-\d{2}-\d{6}$/.test(f.accn ?? '') || !f.form) problems.push(`${c.key}: fact ${JSON.stringify(f).slice(0, 120)}`);
+        }
+      }
+    }
+  }
+  return problems;
+}
 const days = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5) + 1;
 const annual = (f) => ANNUAL.has(f.form) && f.start && f.end && days(f.start, f.end) >= 350 && days(f.start, f.end) <= 380;
 const byFiled = (a, b) => a.filed.localeCompare(b.filed) || a.accn.localeCompare(b.accn);
@@ -44,7 +66,10 @@ export const growthStatus = (priorValue, growth) => (growth !== null ? 'ok' : pr
 export function issuerEntry(c) {
   const problems = [];
   const len = (a, b) => days(a, b);
-  if (!(c.revenue > 0)) problems.push('revenue');
+  if (!(Number.isFinite(c.revenue) && c.revenue > 0)) problems.push('revenue');
+  if (c.prior_revenue !== null && c.prior_revenue !== undefined && !Number.isFinite(c.prior_revenue)) problems.push('prior revenue');
+  for (const d of ['period_start', 'period_end', 'published', 'checked_at']) if (!isDate(c[d])) problems.push(d);
+  if (c.prior_revenue !== null && c.prior_revenue !== undefined) for (const d of ['prior_start', 'prior_end']) if (!isDate(c[d])) problems.push(d);
   if (!/^[A-Z]{3}$/.test(c.currency ?? '')) problems.push('currency');
   if (c.basis !== 'FY') problems.push('basis');
   if (!(len(c.period_start, c.period_end) >= 350 && len(c.period_start, c.period_end) <= 380)) problems.push('period length');
@@ -155,6 +180,9 @@ export function reviewFlags(r, asOf) {
 }
 
 export function buildSnapshot(packet, packetSha256, issuers = null, issuersSha256 = null) {
+  const problems = packetProblems(packet);
+  if (issuers && !isDate(issuers.checked_at)) problems.push('issuer packet checked_at is not a date');
+  if (problems.length) throw new Error(`SEC packet refused:\n- ${problems.slice(0, 10).join('\n- ')}`);
   const securities = {};
   const counts = { companies: packet.companies.length + (issuers?.companies.length ?? 0), published: 0, with_growth: 0, pending: 0, no_annual_revenue: 0, sec: 0, issuer: 0 };
   for (const c of packet.companies) {
