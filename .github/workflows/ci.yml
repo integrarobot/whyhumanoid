@@ -49,7 +49,7 @@ jobs:
       - name: Investment desk snapshot holds the 98 sanitised thesis records, per-capability market-data statuses and the news allowlist
         run: node tools/export-investment.mjs --check && node --no-warnings --test tools/test-investment.mjs
       - name: Catalogue coherence across surfaces (canonical counts, current status, countries, classification, redirects, freshness)
-        run: node --no-warnings --test tools/test-coherence.mjs
+        run: node --no-warnings --test tools/test-coherence.mjs && node --no-warnings --test tools/test-frame.mjs
       - name: Reviewed robot presentation (display name, cutout image, maker order link) matches the catalogue
         run: node tools/robot-presentation.mjs --check
       - name: Robot and company pages, sitemap and 404 are the build of public inputs

@@ -1,6 +1,5 @@
 /* Robotics Evaluation Atlas (/benchmarks/, 23 Nov 2026). Loaded after pages.css on that page only.
    Visual language: a quiet survey map. Thin rules, mono coordinates, shape-coded settings, one restrained accent. */
-main.wide{max-width:1380px}
 .atlas-page{max-width:none}
 .atlas{--track-h:30px;--name-w:minmax(118px,180px);--vcol:54px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}

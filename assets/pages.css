@@ -14,19 +14,24 @@
   --f-serif:"Instrument Serif", Georgia, serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
 }
+/* One page frame for every route (Javier, 26 Nov 2026): the width of Integrators and Deployments everywhere. The home
+   page (index.html) and the subscriber app (server/public/index.html) use the same two values. */
+:root{--page-max:1380px;--page-gutter:clamp(16px,4vw,40px)}
 *{box-sizing:border-box}
 html{background:var(--ink-0);color:var(--bone);-webkit-text-size-adjust:100%}
 body{margin:0;font:16px/1.55 var(--f-sans);padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
 a{color:var(--amber-hi);text-underline-offset:2px}
 a:hover{color:var(--bone)}
 a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-.top{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding:12px clamp(16px,4vw,40px);background:color-mix(in srgb,var(--ink-0) 92%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.top{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding:12px var(--page-gutter);background:color-mix(in srgb,var(--ink-0) 92%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
 .brand{display:inline-flex;gap:10px;align-items:center;color:var(--bone);text-decoration:none;font-weight:600;letter-spacing:.01em}
 .mark{width:12px;height:12px;background:var(--amber);display:inline-block}
 .top nav{display:flex;gap:18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .top nav a{color:var(--bone-2);text-decoration:none}
 .top nav a:hover{color:var(--amber-hi)}
-main{max-width:980px;margin:0 auto;padding:24px clamp(16px,4vw,40px) 48px}
+main{max-width:var(--page-max);margin:0 auto;padding:24px var(--page-gutter) 48px}
+/* Prose keeps a reading measure inside the wide frame; tables, charts, cards and grids use the full width. */
+.entity > p:not([class]),.entity > section > p:not([class]),.entity > section > ul:not([class]),.entity > section > ol:not([class]),.key,.meta{max-width:88ch}
 .crumbs{font-family:var(--f-mono);font-size:12px;color:var(--bone-3);margin:0 0 20px;overflow-wrap:anywhere}
 .crumbs a{color:var(--bone-2)}
 .kicker{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin:0 0 6px}

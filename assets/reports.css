@@ -261,7 +261,7 @@
 .fp-id{font-family:var(--f-mono);font-size:11px;color:var(--bone-3);margin:10px 0 0}
 
 /* report pages */
-.rp-page{max-width:900px}
+.rp-page{max-width:none}
 .rp-headline{font-family:var(--f-serif);font-size:22px;line-height:1.3;color:var(--bone);border-left:2px solid var(--amber);padding:4px 0 4px 16px;margin:8px 0 26px}
 .rp-headline .ck{font-family:var(--f-mono);vertical-align:3px}
 .rp-covrow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px}
