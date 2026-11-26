@@ -184,7 +184,7 @@
         if (kind === 'financials') {
           // The financials panel states no date or currency: say which currencies are in play instead.
           var rep = FUND[c.key] && FUND[c.key].s === 'published' ? FUND[c.key].cur : '';
-          box.appendChild(el('p', 'inv-val-na', 'TradingView financials: market cap and P/E under Valuation. The panel shows no date or currency.' + (c.cur ? ' The listing trades in ' + c.cur + '.' : '') + (rep && rep !== c.cur ? ' The company reports in ' + rep + '.' : '')));
+          box.appendChild(el('p', 'inv-val-na', 'TradingView financials: market cap and P/E under Valuation. The panel shows no valuation date or currency.' + (c.cur ? ' The listing trades in ' + c.cur + '.' : '') + (rep && rep !== c.cur ? ' The company reports in ' + rep + '.' : '')));
         }
         var frame = el('div', 'mkt-frame ' + (kind === 'symbol-info' ? 'info' : 'financials inv-fin'));
         var host = el('div', 'tradingview-widget-container');

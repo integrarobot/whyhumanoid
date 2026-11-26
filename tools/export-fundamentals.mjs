@@ -20,8 +20,7 @@
 // 5. Growth compares the previous consecutive fiscal year in the same concept and unit, preferably as reported in the
 //    same filing; no previous year, or a previous value of zero or less, means no growth figure.
 import { createHash } from 'node:crypto';
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { existsSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const ANNUAL = new Set(['10-K', '10-K/A', '20-F', '20-F/A', '40-F', '40-F/A']);
@@ -222,8 +221,9 @@ export function buildSnapshot(packet, packetSha256, issuers = null, issuersSha25
 }
 
 const OUT = new URL('../data/investment/fundamentals.json', import.meta.url);
-// Run as a command: compare file paths, not URL paths (a URL escapes spaces and '?', a command-line path does not).
-if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
+// Run as a command: compare real file paths, not URL paths (a URL escapes spaces and '?'; a temporary folder may be
+// reached through a symlink, as /var on macOS).
+if (process.argv[1] && existsSync(process.argv[1]) && realpathSync(fileURLToPath(import.meta.url)) === realpathSync(process.argv[1])) {
   const at = process.argv.indexOf('--from');
   if (at < 0 || !process.argv[at + 1]) { console.error('usage: node tools/export-fundamentals.mjs --from <sec-packet.json> [--from <more.json>] [--issuers <issuer-packet.json>] [--check]'); process.exit(2); }
   // Several SEC packets (--from repeated): merged, a company in two packets is an error.

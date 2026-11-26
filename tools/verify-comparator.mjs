@@ -104,7 +104,7 @@ fresh.window.eval(js);
   typeIn(2, '6954');
   const f2 = scripts(2);
   ok(f2.length === 1 && f2[0].src.endsWith('/embed-widget-financials.js') && JSON.parse(f2[0].text).symbol === 'TSE:6954' && JSON.parse(f2[0].text).displayMode === 'regular', 'FANUC: no quote widget there, so the financials widget, sections stacked');
-  ok(/The panel shows no date or currency\. The company reports in JPY\./.test(slot(2).querySelector('.inv-val-quote').textContent), 'FANUC: currencies said, no date or currency claimed for the panel');
+  ok(/The panel shows no valuation date or currency\. The company reports in JPY\./.test(slot(2).querySelector('.inv-val-quote').textContent), 'FANUC: currencies said, no date or currency claimed for the panel');
   const fv = slot(2).querySelector('dl.inv-val').textContent;
   ok(/JPY 857\.83 bn/.test(fv) && /Fiscal year 2025-04-01 to 2026-03-31/.test(fv) && /\+7\.6%/.test(fv) && /fiscal 2025/.test(fv) && /PDF p\.1/.test(fv), `FANUC revenue from its annual report: ${fv}`);
   ok(slot(2).querySelector('dl.inv-val a')?.getAttribute('href') === 'https://www.fanuc.co.jp/en/ir/announce/pdf/2026/financialresult202603_e.pdf', 'FANUC links its report');

@@ -153,6 +153,12 @@ test('both commands run from a folder whose path has a space and a question mark
   assert.equal(JSON.parse(rf(join(root, 'data', 'investment', 'fundamentals.json'), 'utf8')).securities['X:FX'].growth_yoy, 0.2);
   const checked = run([join(root, 'tools', 'export-fundamentals.mjs'), '--from', join(root, 'packet.json'), '--check']);
   assert.match(checked.stdout, /matches the packet/);
+  // Through a symlink too (macOS reaches its temporary folder through /var -> /private/var).
+  const { symlinkSync } = await import('node:fs');
+  const link = join(mkdtempSync(join(tmpdir(), 'wh-link-')), 'linked work');
+  symlinkSync(root, link);
+  const viaLink = spawnSync(process.execPath, [join(link, 'tools', 'export-fundamentals.mjs'), '--from', join(link, 'packet.json'), '--check'], { cwd: link, encoding: 'utf8' });
+  assert.match(viaLink.stdout, /matches the packet/, viaLink.stderr);
   const usage = run([join(root, 'tools', 'fetch-sec-revenue.mjs')]);
   assert.equal(usage.status, 2, 'the fetcher runs and asks for --out');
   assert.match(usage.stderr, /usage: node tools\/fetch-sec-revenue\.mjs/);
