@@ -15,7 +15,8 @@
 // Exits 1 on any difference and lists each one. The page side (every field and value in each "View all data" card)
 // is checked by tools/verify-site.mjs for the site and by the premium app checks for subscribers.
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, realpathSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { importInMemory } from './export-database.mjs';
 import { queryDatasetRows } from '../server/src/datasets.js';
 import { PUBLIC_FIELDS } from '../server/src/access/fields.js';
@@ -63,7 +64,9 @@ export function auditDeployments(values, published, index) {
   return { problems, rows: rows.length, columns: cols.length, values: values_, diffs };
 }
 
-if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
+// Run as a command: compare real file paths, not URL paths (a URL escapes spaces and '?'; a temporary folder may be
+// reached through a symlink, as /var on macOS).
+if (process.argv[1] && existsSync(process.argv[1]) && realpathSync(fileURLToPath(import.meta.url)) === realpathSync(process.argv[1])) {
   const from = arg('--from');
   if (!from) {
     console.error('usage: node tools/audit-deployments.mjs --from <export.json> [--json]');

@@ -1,18 +1,18 @@
 {
  "version": 1,
- "snapshot": "2026-11-26T14:21:54.716Z",
+ "snapshot": "2026-11-26T15:20:44Z",
  "totals": {
-  "records": 198,
+  "records": 203,
   "deployments": 125,
   "organisations": 86
  },
  "aggregates": {
   "min_cell": 3,
   "by_status": {
-   "op": 13,
-   "pilot": 84,
+   "op": 14,
+   "pilot": 86,
    "ann": 43,
-   "unc": 58
+   "unc": 60
   },
   "by_sector": [
    {
@@ -21,7 +21,7 @@
    },
    {
     "key": "logistics",
-    "records": 23
+    "records": 24
    },
    {
     "key": "manufacturing",
@@ -56,20 +56,20 @@
     "records": 7
    },
    {
+    "key": "not_disclosed",
+    "records": 6
+   },
+   {
+    "key": "pharmacy_retail",
+    "records": 6
+   },
+   {
     "key": "battery_manufacturing",
     "records": 5
    },
    {
     "key": "healthcare",
     "records": 5
-   },
-   {
-    "key": "not_disclosed",
-    "records": 4
-   },
-   {
-    "key": "pharmacy_retail",
-    "records": 4
    },
    {
     "key": "retail_logistics",
@@ -91,7 +91,7 @@
   "by_country": [
    {
     "key": "China",
-    "records": 74
+    "records": 76
    },
    {
     "key": "United States",
@@ -127,7 +127,7 @@
    },
    {
     "key": "other",
-    "records": 36
+    "records": 39
    }
   ],
   "by_year": [
@@ -149,7 +149,7 @@
    },
    {
     "key": "2026",
-    "records": 106
+    "records": 111
    },
    {
     "key": "other",
@@ -222,6 +222,39 @@
    "years": [
     2025,
     2025
+   ]
+  },
+  {
+   "stage": "op",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 1,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 2,
+   "organisation": {
+    "company": "org_guoda",
+    "name": "Guoda Pharmacy"
+   },
+   "maker": {
+    "company": null,
+    "name": "Leju; Stardust; Ant (RobbyAnt)"
+   },
+   "robot_recorded": "Ant Group (Robbyant / Lingbo Technology) Wheeled humanoid (model not identified by the reporter)",
+   "robot": null,
+   "level": null,
+   "sector": "pharmacy_retail",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
    ]
   },
   {
@@ -1049,36 +1082,6 @@
   },
   {
    "stage": "pilot",
-   "dated": false,
-   "tie": false,
-   "status": {
-    "op": 0,
-    "pilot": 1,
-    "ann": 0,
-    "unc": 0
-   },
-   "records": 1,
-   "organisation": {
-    "company": "org_guoda",
-    "name": "Guoda Pharmacy"
-   },
-   "maker": {
-    "company": null,
-    "name": "Leju; Stardust; Ant (RobbyAnt)"
-   },
-   "robot_recorded": "Leju; Stardust; Ant (RobbyAnt) Multiple platforms; Ant R-2 mentioned",
-   "robot": null,
-   "level": null,
-   "sector": "pharmacy_retail",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "country_multiple": false,
-   "years": null
-  },
-  {
-   "stage": "pilot",
    "dated": true,
    "tie": false,
    "status": {
@@ -1601,6 +1604,74 @@
    "years": [
     2024,
     2024
+   ]
+  },
+  {
+   "stage": "pilot",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 2,
+   "organisation": {
+    "company": null,
+    "name": "Not disclosed"
+   },
+   "maker": {
+    "company": "mfr_leju",
+    "name": "Leju"
+   },
+   "robot_recorded": "Leju Kuavo 5-W (excerpt also says Kuafu 5W)",
+   "robot": 49,
+   "level": "family",
+   "sector": "not_disclosed",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [
+    "Not disclosed"
+   ],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 1
+   },
+   "records": 2,
+   "organisation": {
+    "company": null,
+    "name": "Not disclosed (pharmacy operator)"
+   },
+   "maker": {
+    "company": "mfr_realman",
+    "name": "RealMan"
+   },
+   "robot_recorded": "RealMan",
+   "robot": null,
+   "level": null,
+   "sector": "pharmacy_retail",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
    ]
   },
   {
@@ -2399,15 +2470,15 @@
   },
   {
    "stage": "unc",
-   "dated": false,
+   "dated": true,
    "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
     "ann": 0,
-    "unc": 2
+    "unc": 3
    },
-   "records": 2,
+   "records": 3,
    "organisation": {
     "company": "org_china_post_sf_express",
     "name": "China Post; SF Express"
@@ -2425,7 +2496,10 @@
    ],
    "country_notes": [],
    "country_multiple": false,
-   "years": null
+   "years": [
+    2026,
+    2026
+   ]
   },
   {
    "stage": "unc",
@@ -2495,15 +2569,15 @@
   },
   {
    "stage": "unc",
-   "dated": false,
+   "dated": true,
    "tie": false,
    "status": {
     "op": 0,
     "pilot": 0,
     "ann": 0,
-    "unc": 1
+    "unc": 2
    },
-   "records": 1,
+   "records": 2,
    "organisation": {
     "company": null,
     "name": "Fuao Wei Taike (as supplied)"
@@ -2512,16 +2586,21 @@
     "company": "mfr_ubtech",
     "name": "UBTech"
    },
-   "robot_recorded": "UBTech Cruzr Y1 (as supplied)",
+   "robot_recorded": "UBTech Cruzr Y1",
    "robot": null,
    "level": null,
    "sector": "not_disclosed",
    "countries": [
     "China"
    ],
-   "country_notes": [],
+   "country_notes": [
+    "Not disclosed"
+   ],
    "country_multiple": false,
-   "years": null
+   "years": [
+    2026,
+    2026
+   ]
   },
   {
    "stage": "unc",
@@ -2720,36 +2799,6 @@
   },
   {
    "stage": "unc",
-   "dated": false,
-   "tie": false,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 0,
-    "unc": 1
-   },
-   "records": 1,
-   "organisation": {
-    "company": null,
-    "name": "Not disclosed"
-   },
-   "maker": {
-    "company": "mfr_leju",
-    "name": "Leju"
-   },
-   "robot_recorded": "Leju Kuavo 5-W (excerpt also says Kuafu 5W)",
-   "robot": 49,
-   "level": "family",
-   "sector": "not_disclosed",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "country_multiple": false,
-   "years": null
-  },
-  {
-   "stage": "unc",
    "dated": true,
    "tie": false,
    "status": {
@@ -2846,36 +2895,6 @@
     2026,
     2026
    ]
-  },
-  {
-   "stage": "unc",
-   "dated": false,
-   "tie": false,
-   "status": {
-    "op": 0,
-    "pilot": 0,
-    "ann": 0,
-    "unc": 1
-   },
-   "records": 1,
-   "organisation": {
-    "company": null,
-    "name": "Not disclosed (pharmacy operator)"
-   },
-   "maker": {
-    "company": "mfr_realman",
-    "name": "RealMan"
-   },
-   "robot_recorded": "RealMan",
-   "robot": null,
-   "level": null,
-   "sector": "pharmacy_retail",
-   "countries": [
-    "China"
-   ],
-   "country_notes": [],
-   "country_multiple": false,
-   "years": null
   },
   {
    "stage": "unc",
@@ -3224,10 +3243,10 @@
    "robot": null,
    "level": null,
    "sector": "manufacturing",
-   "countries": [
-    "China"
+   "countries": [],
+   "country_notes": [
+    "Not disclosed"
    ],
-   "country_notes": [],
    "country_multiple": false,
    "years": [
     2026,
@@ -6231,7 +6250,7 @@
    "name": "Leju",
    "identity": "catalogue_lab",
    "roles": {
-    "maker": 8
+    "maker": 9
    },
    "countries": [],
    "robots": [
@@ -6240,10 +6259,10 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": {
-    "records": 8,
+    "records": 9,
     "status": {
      "op": 0,
-     "pilot": 2,
+     "pilot": 3,
      "ann": 0,
      "unc": 6
     },
@@ -6346,6 +6365,24 @@
        "unc": 1
       },
       "years": null,
+      "records": 1
+     },
+     {
+      "name": "Not disclosed",
+      "company": null,
+      "robot_recorded": "Leju Kuavo 5W",
+      "robot": 49,
+      "level": "family",
+      "status": {
+       "op": 0,
+       "pilot": 1,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
       "records": 1
      },
      {
@@ -7110,7 +7147,7 @@
    "name": "Robotera (Robot Era)",
    "identity": "catalogue_lab",
    "roles": {
-    "maker": 5
+    "maker": 6
    },
    "countries": [],
    "robots": [
@@ -7119,12 +7156,12 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": {
-    "records": 5,
+    "records": 6,
     "status": {
      "op": 0,
      "pilot": 1,
      "ann": 0,
-     "unc": 4
+     "unc": 5
     },
     "sectors": [
      "logistics"
@@ -7147,10 +7184,13 @@
        "op": 0,
        "pilot": 0,
        "ann": 0,
-       "unc": 2
+       "unc": 3
       },
-      "years": null,
-      "records": 2
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 3
      },
      {
       "name": "China Post Group Guangdong Branch",
@@ -7772,7 +7812,7 @@
    "name": "UBTech",
    "identity": "catalogue_lab",
    "roles": {
-    "maker": 13
+    "maker": 14
    },
    "countries": [],
    "robots": [
@@ -7782,12 +7822,12 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": {
-    "records": 13,
+    "records": 14,
     "status": {
      "op": 0,
      "pilot": 6,
      "ann": 5,
-     "unc": 2
+     "unc": 3
     },
     "sectors": [
      "aerospace_manufacturing",
@@ -7926,6 +7966,24 @@
        "unc": 1
       },
       "years": null,
+      "records": 1
+     },
+     {
+      "name": "Fuao Weitaike (富奥威泰克; transliteration)",
+      "company": null,
+      "robot_recorded": "UBTech Cruzr Y1",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 0,
+       "ann": 0,
+       "unc": 1
+      },
+      "years": [
+       2026,
+       2026
+      ],
       "records": 1
      },
      {
@@ -10019,17 +10077,17 @@
    "name": "RealMan",
    "identity": "name_as_recorded",
    "roles": {
-    "maker": 1
+    "maker": 2
    },
    "countries": [],
    "robots": [],
    "organization_ids": [],
    "entity": null,
    "as_maker": {
-    "records": 1,
+    "records": 2,
     "status": {
      "op": 0,
-     "pilot": 0,
+     "pilot": 1,
      "ann": 0,
      "unc": 1
     },
@@ -10039,7 +10097,10 @@
     "site_countries": [
      "China"
     ],
-    "years": null,
+    "years": [
+     2026,
+     2026
+    ],
     "counterparts": [
      {
       "name": "Not disclosed (pharmacy operator)",
@@ -10055,11 +10116,38 @@
       },
       "years": null,
       "records": 1
+     },
+     {
+      "name": "Not disclosed (pharmacy operator)",
+      "company": null,
+      "robot_recorded": "RealMan RealBOT series (L2 named in vendor's August 14 preview)",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 1,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
      }
     ]
    },
    "as_organisation": null,
-   "evidence": null
+   "evidence": {
+    "organization_name": null,
+    "robot_recorded": "RealMan RealBOT series (L2 named in vendor's August 14 preview)",
+    "country": "China",
+    "status": "pilot",
+    "verification_status": "vendor_reported",
+    "source_publisher": "RealMan WeChat account, republished by gkzhan.com",
+    "source_url": "https://www.gkzhan.com/news/detail/194798.html",
+    "publication_date": "2026-08-21"
+   }
   },
   {
    "id": "mfr_anybotics",
@@ -10288,7 +10376,7 @@
     "status": "ann",
     "verification_status": "vendor_reported",
     "source_publisher": "Symbotic (joint announcement with Walmart)",
-    "source_url": "https://symbotic.gcs-web.com/news-releases/news-release-details/walmart-and-symbotic-expand-commercial-agreement-support-supply",
+    "source_url": "https://ir.symbotic.com/news-releases/news-release-details/walmart-and-symbotic-expand-commercial-agreement-support-supply",
     "publication_date": "2026-10-29"
    }
   },
@@ -10697,6 +10785,69 @@
    }
   },
   {
+   "id": "mfr_ant_group",
+   "slug": "ant-group",
+   "name": "Ant Group",
+   "identity": "name_as_recorded",
+   "roles": {
+    "maker": 1
+   },
+   "countries": [],
+   "robots": [],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": {
+    "records": 1,
+    "status": {
+     "op": 1,
+     "pilot": 0,
+     "ann": 0,
+     "unc": 0
+    },
+    "sectors": [
+     "pharmacy_retail"
+    ],
+    "site_countries": [
+     "China"
+    ],
+    "years": [
+     2026,
+     2026
+    ],
+    "counterparts": [
+     {
+      "name": "Guoda Pharmacy",
+      "company": "org_guoda",
+      "robot_recorded": "Ant Group (Robbyant / Lingbo Technology) Wheeled humanoid (model not identified by the reporter)",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 1,
+       "pilot": 0,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     }
+    ]
+   },
+   "as_organisation": null,
+   "evidence": {
+    "organization_name": "Guoda Pharmacy",
+    "robot_recorded": "Ant Group (Robbyant / Lingbo Technology) Wheeled humanoid (model not identified by the reporter)",
+    "country": "China",
+    "status": "op",
+    "verification_status": "media_reported",
+    "source_publisher": "Tide News (published by Zhejiang Online)",
+    "source_url": "https://hangzhou.zjol.com.cn/202607/t20260719_31796102.shtml",
+    "publication_date": "2026-07-19"
+   }
+  },
+  {
    "id": "org_gxo",
    "slug": "gxo",
    "name": "GXO Logistics",
@@ -10960,7 +11111,7 @@
     "status": "op",
     "verification_status": "customer_confirmed",
     "source_publisher": "Schaeffler Technologies AG & Co. KG",
-    "source_url": "https://www.schaeffler.de/en/news_media/press_releases/press_releases_detail.jsp?id=88222851",
+    "source_url": "https://www.schaeffler.com/en/media/press-releases/press-releases-detail.jsp?id=88222851",
     "publication_date": "2026-10-20"
    }
   },
@@ -11100,7 +11251,7 @@
     "verification_status": "customer_confirmed",
     "source_publisher": "Amazon",
     "source_url": "https://www.aboutamazon.com/news/operations/amazon-introduces-new-robotics-solutions",
-    "publication_date": "2023"
+    "publication_date": "2023-10-18"
    }
   },
   {
@@ -11649,7 +11800,7 @@
    "name": "China Post; SF Express",
    "identity": "sheet_organization_id",
    "roles": {
-    "customer_operator": 2
+    "customer_operator": 3
    },
    "countries": [
     "China"
@@ -11661,12 +11812,12 @@
    "entity": null,
    "as_maker": null,
    "as_organisation": {
-    "records": 2,
+    "records": 3,
     "status": {
      "op": 0,
      "pilot": 0,
      "ann": 0,
-     "unc": 2
+     "unc": 3
     },
     "sectors": [
      "logistics"
@@ -11674,7 +11825,10 @@
     "site_countries": [
      "China"
     ],
-    "years": null,
+    "years": [
+     2026,
+     2026
+    ],
     "counterparts": [
      {
       "name": "Robotera (Robot Era)",
@@ -11686,14 +11840,26 @@
        "op": 0,
        "pilot": 0,
        "ann": 0,
-       "unc": 2
+       "unc": 3
       },
-      "years": null,
-      "records": 2
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 3
      }
     ]
    },
-   "evidence": null
+   "evidence": {
+    "organization_name": "China Post; SF Express",
+    "robot_recorded": "Robot Era",
+    "country": "China",
+    "status": "unc",
+    "verification_status": "media_reported",
+    "source_publisher": "Xinhua",
+    "source_url": "https://www.news.cn/20260612/1cd7eef8b1c74d70b3bfa6f3cb7f1935/c.html",
+    "publication_date": "2026-06-12"
+   }
   },
   {
    "id": "org_guoda",
@@ -11701,7 +11867,7 @@
    "name": "Guoda Pharmacy",
    "identity": "sheet_organization_id",
    "roles": {
-    "customer_operator": 1
+    "customer_operator": 2
    },
    "countries": [
     "China"
@@ -11713,9 +11879,9 @@
    "entity": null,
    "as_maker": null,
    "as_organisation": {
-    "records": 1,
+    "records": 2,
     "status": {
-     "op": 0,
+     "op": 1,
      "pilot": 1,
      "ann": 0,
      "unc": 0
@@ -11726,8 +11892,29 @@
     "site_countries": [
      "China"
     ],
-    "years": null,
+    "years": [
+     2026,
+     2026
+    ],
     "counterparts": [
+     {
+      "name": "Ant Group",
+      "company": "mfr_ant_group",
+      "robot_recorded": "Ant Group (Robbyant / Lingbo Technology) Wheeled humanoid (model not identified by the reporter)",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 1,
+       "pilot": 0,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     },
      {
       "name": "Leju; Stardust; Ant (RobbyAnt)",
       "company": null,
@@ -11745,7 +11932,16 @@
      }
     ]
    },
-   "evidence": null
+   "evidence": {
+    "organization_name": "Guoda Pharmacy",
+    "robot_recorded": "Ant Group (Robbyant / Lingbo Technology) Wheeled humanoid (model not identified by the reporter)",
+    "country": "China",
+    "status": "op",
+    "verification_status": "media_reported",
+    "source_publisher": "Tide News (published by Zhejiang Online)",
+    "source_url": "https://hangzhou.zjol.com.cn/202607/t20260719_31796102.shtml",
+    "publication_date": "2026-07-19"
+   }
   },
   {
    "id": "org_catl",
@@ -13222,7 +13418,7 @@
     "status": "ann",
     "verification_status": "vendor_reported",
     "source_publisher": "Symbotic (joint announcement with Walmart)",
-    "source_url": "https://symbotic.gcs-web.com/news-releases/news-release-details/walmart-and-symbotic-expand-commercial-agreement-support-supply",
+    "source_url": "https://ir.symbotic.com/news-releases/news-release-details/walmart-and-symbotic-expand-commercial-agreement-support-supply",
     "publication_date": "2026-10-29"
    }
   },
@@ -15610,9 +15806,7 @@
     "sectors": [
      "manufacturing"
     ],
-    "site_countries": [
-     "China"
-    ],
+    "site_countries": [],
     "years": [
      2026,
      2026
@@ -15641,7 +15835,7 @@
    "evidence": {
     "organization_name": "Bayer",
     "robot_recorded": "X-Humanoid",
-    "country": "China",
+    "country": null,
     "status": "ann",
     "verification_status": "vendor_reported",
     "source_publisher": "Robotics Business News (X-Humanoid CES release)",
@@ -17328,10 +17522,10 @@
    }
   },
   "49": {
-   "records": 8,
+   "records": 9,
    "status": {
     "op": 0,
-    "pilot": 2,
+    "pilot": 3,
     "ann": 0,
     "unc": 6
    },
@@ -17434,6 +17628,24 @@
       "unc": 1
      },
      "years": null,
+     "records": 1
+    },
+    {
+     "name": "Not disclosed",
+     "company": null,
+     "robot_recorded": "Leju Kuavo 5W",
+     "robot": 49,
+     "level": "family",
+     "status": {
+      "op": 0,
+      "pilot": 1,
+      "ann": 0,
+      "unc": 0
+     },
+     "years": [
+      2026,
+      2026
+     ],
      "records": 1
     },
     {
