@@ -71,4 +71,5 @@ test('the home page and the app use the same display, intro, feature and label s
     assert.doesNotMatch(s, /\.brand\{[^}]*font-size/, `${f} sizes the brand instead of inheriting the body size`);
   }
   assert.match(home, /--track-label:\.06em;/);
+  assert.equal(home.match(/--fs-label:/g).length, 1, 'the home page defines the label size once, with no mobile override');
 });
