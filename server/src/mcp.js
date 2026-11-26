@@ -79,7 +79,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
     description: 'Rows of one table (ids from list_categories), in catalogue order, optionally filtered by text. Free tables return every field; Deployments and Components return every field with an active subscription and their public fields otherwise.',
     inputSchema: {
       table: z.string().max(40).describe('Table id, e.g. deployments, hardware, humanoids, software'),
-      query: z.string().max(100).optional().describe('Optional text filter, up to 100 characters: keeps rows whose values contain it, ignoring the case of A-Z letters'),
+      query: z.string().max(100).optional().describe('Optional text to search within row values, up to 100 characters; ignores case for A-Z letters'),
       limit: z.number().int().min(1).max(100).optional().describe('Optional number of rows to return, from 1 to 100; default 25'),
       offset: z.number().int().min(0).max(100000).optional().describe('Optional number of rows to skip before returning, from 0 to 100000; default 0'),
     },
