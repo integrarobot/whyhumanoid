@@ -1,0 +1,506 @@
+{
+  "contract": "whyhumanoid/workbook-plan@1",
+  "plan_id": "WP-20261125-integrarobot-known-pending",
+  "created_at": "2026-11-26T14:20:00Z",
+  "created_by": "claude/opus-5.5 (Codex scheduled continuation, 2026-11-26 15:00 Madrid)",
+  "note": "Follow-up of WP-20261125-integrarobot-why-humanoid for the items left in known_pending. Op-001 needs a free slot in the first Software block first (preparation request in ops/weekly-update/state.json); the plan is rebased after the preparation and before any write.",
+  "basis": {
+    "workbook_modified_time": "2026-11-26T09:16:14.759Z"
+  },
+  "editions": [
+    {
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "url": "https://www.integrarobot.com/p/why-humanoid",
+      "title": "Why Humanoid?",
+      "published": "2026-11-25",
+      "section": "Más noticias sobre IA y robótica",
+      "item_count": 16
+    }
+  ],
+  "private_payload": {
+    "delivery": "Private file in Javier's Google Drive, exact title whyhumanoid-private-handoff-<plan_id>.json; its ID and link go privately to Codex with plan_id and SHA-256 (contract, Private payload and its delivery).",
+    "cells": 20,
+    "sha256": "ef77c3c1e85e70b45a5eec09cd2478c5595ff52ad6fb5d93219bd1190b42ec33"
+  },
+  "items": [
+    {
+      "item_id": "humyn-labs",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 1,
+      "title": "Humyn Labs",
+      "link": "https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a",
+      "new_information": "Series A of USD 47M (USD 26M equity led by Accel, USD 21M venture debt led by Lighthouse Canton), 2026-11-18; records human work and sells labelled training data.",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "hiro-origin",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 2,
+      "title": "HIRO Industries Origin",
+      "link": "https://hiroindustries.com/reserve/",
+      "new_information": "Reservations: USD 9,950 total, USD 1,450 refundable deposit, Spring 2027 delivery, US only.",
+      "entity": {
+        "exists": true,
+        "where": "Humanoids row 140"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Humanoids row 140 already holds these values (checked 2026-11-19); the reserve page was unchanged on 2026-11-25. (unchanged since WP-20261125-integrarobot-why-humanoid)."
+    },
+    {
+      "item_id": "axis-skills-atlas",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 3,
+      "title": "AXIS Skills Atlas",
+      "link": "https://skills.axisrobotics.ai/",
+      "new_information": "11,199 LeRobot-format tasks and 14.6 TB of public simulation data.",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "boston-dynamics-spot-orbit",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 4,
+      "title": "Boston Dynamics: Spot and Orbit",
+      "link": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/",
+      "new_information": "Unnamed customers connect Spot and Orbit to plant systems; an MCP layer lets AI agents start Spot missions.",
+      "entity": {
+        "exists": true,
+        "where": "Spot: 8 GlobalFoundries records in Deployments; Boston Dynamics Orbit software absent from Software (not Orbit Robotics, the space-robotics company in Other Robots)"
+      },
+      "outcome": "planned",
+      "ops": [
+        "op-001"
+      ],
+      "note": "No Deployments record: the post names no customer or site. Orbit gets a Software row from its product page; the MCP claim comes from the blog."
+    },
+    {
+      "item_id": "viam",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 5,
+      "title": "Viam",
+      "link": "https://www.viam.com/",
+      "new_information": "Platform for AI agents to program and operate robots; open-source viam-server; MCP server.",
+      "entity": {
+        "exists": false,
+        "where": "absent ('Viam Rover' in Other Robots is another product)"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "john-deere-orchard-ai",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 6,
+      "title": "John Deere acquires Orchard AI",
+      "link": "https://www.deere.com/en-us/john-deere-news/john-deere-acquires-orchard-ai",
+      "new_information": "Acquisition of Orchard AI (FruitScope, plant-by-plant crop imaging).",
+      "entity": {
+        "exists": true,
+        "where": "Deere & Co in Investment; Orchard AI absent"
+      },
+      "outcome": "out_of_scope",
+      "ops": [],
+      "reason": "Crop imaging, not robots; the Deere page renders only with JavaScript (title and description read). (unchanged since WP-20261125-integrarobot-why-humanoid)."
+    },
+    {
+      "item_id": "felis",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 7,
+      "title": "Felis",
+      "link": "https://frank-zy-dou.github.io/blog/felis/index.html",
+      "new_information": "Cat-inspired legged robot with an actuated spine and six motors, 2026-11-19.",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "simplexity",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 8,
+      "title": "Simplexity Robotics",
+      "link": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
+      "new_information": "USD 100M pre-Series A led by Ant Group at a USD 1.6B valuation (Bloomberg via The Japan Times).",
+      "entity": {
+        "exists": false,
+        "where": "only mentioned inside a Reports cell (not published)"
+      },
+      "outcome": "pending_verification",
+      "ops": [],
+      "reason": "The Japan Times page did not load and no primary source confirms the round; earlier sources give CNY 2B over five rounds without Ant Group (Yicai, 2026-03-10; 36Kr Japan, 2026-04-04); no named robot model for a Humanoids row. Rechecked 2026-11-26: still no primary source for the November round and no named model."
+    },
+    {
+      "item_id": "wall-oss-1-0",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 9,
+      "title": "X Square Robot WALL-OSS-1.0",
+      "link": "https://x2robot.com/blogs/wall-oss-1-en/",
+      "new_information": "VLA model of 2026-11-23: 55.1% zero-shot over 312 tasks, 4B and 2B variants; parcel-sorting case with about 10 hours of task data.",
+      "entity": {
+        "exists": true,
+        "where": "X Square in Humanoids row 103; the parcel-sorting case already in Deployments rows 193-196 (only the Software row is planned)"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "aheadance",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 10,
+      "title": "AHEADance",
+      "link": "https://ihcr.github.io/AHEADance/",
+      "new_information": "Unitree G1 dancing to live audio: 29 joints at 30 Hz, eight songs in seven styles (arXiv 2611.13370).",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "mahdi-hand",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 11,
+      "title": "Mahdi's robotic hand",
+      "link": "https://hackaday.com/2026/11/21/building-a-robotic-hand-on-a-budget/",
+      "new_information": "18-DoF hand with forearm under USD 300 in parts.",
+      "entity": {
+        "exists": false,
+        "where": "absent"
+      },
+      "outcome": "out_of_scope",
+      "ops": [],
+      "reason": "Individual hobby build reported by Hackaday (secondary); design files not released; no product. (unchanged since WP-20261125-integrarobot-why-humanoid)."
+    },
+    {
+      "item_id": "play2perfect",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 12,
+      "title": "Play2Perfect",
+      "link": "https://play2perfect.github.io/",
+      "new_information": "Two-stage RL for precise assembly with multi-fingered hands, zero-shot to real hardware (CoRL 2026).",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "coprod",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 13,
+      "title": "coprod",
+      "link": "https://coprod.co/blog/pre-seed-round",
+      "new_information": "USD 6M pre-seed led by Founderful and PROTOTYPE, 2026-11-23; modular robot hardware components.",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "evobot",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 14,
+      "title": "Fraunhofer IML evoBOT",
+      "link": "https://www.iml.fraunhofer.de/en/projects/2020/evobot-autonomous-transport-robot-logistics.html",
+      "new_information": "Self-balancing two-wheel prototype with two arms; digital twin; first Munich Airport test in June 2023.",
+      "entity": {
+        "exists": true,
+        "where": "only as Deployments row 198 (the 2023 Munich test, already incorporated); the robot itself absent from Other Robots"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "playground",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 15,
+      "title": "Playground: The Robot Frontier Is Accelerating",
+      "link": "https://www.withplayground.ai/research/robot-frontier-accelerating",
+      "new_information": "Own Robot Intelligence Index: tasks at 80% or more rose from 25% to 43% in three months, real robots flat at 31%; own forecasts to end-2027.",
+      "entity": {
+        "exists": false,
+        "where": "absent from Reports"
+      },
+      "outcome": "planned",
+      "ops": [
+        "op-002"
+      ],
+      "note": "Fits Reports as an external robotics research report (capability index and conditional projections, not a market forecast). Findings are mapped in phase 3 (tools/reports-findings.json) with locators, keeping index odds, simulation, real-robot results and conditional projections apart."
+    },
+    {
+      "item_id": "ca3",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 16,
+      "title": "CA3 multi-user test",
+      "link": "https://ca3.si/case_robot",
+      "new_information": "MolmoAct2 in simulation: 90% on new tasks, ten retained, 12 tampered demonstrations blocked, one user erased on request.",
+      "entity": {
+        "exists": true,
+        "where": "Integrators int_ca3"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Integrators already cites this page and these results (results 2026-10-28, reviewed 2026-11-24). (unchanged since WP-20261125-integrarobot-why-humanoid)."
+    }
+  ],
+  "operations": [
+    {
+      "op_id": "op-001",
+      "item_id": "boston-dynamics-spot-orbit",
+      "kind": "fill_list_slot",
+      "sheet": "Software",
+      "row": 81,
+      "group_expected": null,
+      "record": {
+        "key": {
+          "column": "A",
+          "header": "SOFTWARE",
+          "value": "Orbit (Boston Dynamics)"
+        },
+        "unique": [
+          {
+            "column": "B",
+            "header": "URL",
+            "value": "https://bostondynamics.com/products/orbit/"
+          }
+        ]
+      },
+      "cells": [
+        {
+          "column": "A",
+          "header": "SOFTWARE",
+          "expected_previous": "",
+          "proposed": "Orbit (Boston Dynamics)"
+        },
+        {
+          "column": "B",
+          "header": "URL",
+          "expected_previous": "",
+          "proposed": "https://bostondynamics.com/products/orbit/"
+        },
+        {
+          "column": "C",
+          "header": "DESCRIPTION",
+          "expected_previous": "",
+          "proposed": "Orbit (Boston Dynamics): orchestration and intelligence software for Boston Dynamics robots (Spot and Stretch; Atlas announced for later): mission editing and scheduling, remote operation, inspections with alerts and a vision-language model, site history from Spot's 360-degree images, dashboards, APIs and webhooks; cloud, on-site or virtual machine. Boston Dynamics says an MCP layer lets AI agents start Spot missions (blog, 2026-11)."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://bostondynamics.com/products/orbit/",
+          "publisher": "Boston Dynamics",
+          "published": "page modified 2026-09-21",
+          "reviewed": "2026-11-26"
+        },
+        {
+          "url": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/",
+          "publisher": "Boston Dynamics",
+          "published": "modified 2026-11-16",
+          "reviewed": "2026-11-25"
+        }
+      ],
+      "note": "Row 81 is the slot the requested preparation creates at the end of the first block: today row 81 holds the SOFTWARE FOR UNITREE title, so preflight refuses this operation until Codex prepares the slot and Claude rebases the plan."
+    },
+    {
+      "op_id": "op-002",
+      "item_id": "playground",
+      "kind": "append_row",
+      "sheet": "Reports",
+      "row": 14,
+      "record": {
+        "key": {
+          "column": "S",
+          "header": "Report ID",
+          "value_hmac": "f5f1e7e501076478355f556b958d2ddc4261287d6c43af46ee85e08f5c382b24"
+        },
+        "unique": [
+          {
+            "column": "A",
+            "header": "Report name",
+            "value_hmac": "eb4cc06bb08b08d6fe6642bf2d3cc105941fad266b73ad115c9b5f154b0fe132"
+          },
+          {
+            "column": "R",
+            "header": "Source link",
+            "value_hmac": "54d7f11e6ca85b7db8732cf2cb481930c4308b5f2d253232f110112506108e09"
+          }
+        ]
+      },
+      "cells": [
+        {
+          "column": "A",
+          "header": "Report name",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "62718449a0b8df8908dfc2cb6791b6452c1554cffa0a069fc58851179b06b40c"
+        },
+        {
+          "column": "B",
+          "header": "Publishing entity",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "e0e015858d364acd51735e390c4197543e7e0a64df865b91aa41c4aaf8d6e208"
+        },
+        {
+          "column": "C",
+          "header": "Year of publication (month)",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "c7569d34c5a7af0d4bac42f67c06b7a1216395eed4a86adbfef775ab01a09e30"
+        },
+        {
+          "column": "D",
+          "header": "Scope & methodology",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "1ef22078fc167260a58670b1aa499a13203715ff8c8049056664ec8e568d01d7"
+        },
+        {
+          "column": "E",
+          "header": "Humanoid unit sales / shipments forecast",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "8fbda710ae0df73d6a69d214ecf7e070e716c109bdfd90882481823b2c164fa4"
+        },
+        {
+          "column": "F",
+          "header": "Installed base / units in operation",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "ee4fe76bf96157205679cf8b879a382d8d0647ae97ef9fa0b6e3c15d632bc595"
+        },
+        {
+          "column": "G",
+          "header": "Market size / revenue forecast",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "0ee7a3a9452bd22d305620937f6e18c29185060284c8849383508e08694840be"
+        },
+        {
+          "column": "H",
+          "header": "Scenarios (base / bull / bear)",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "236f35e28e3776d8123b7a42d77368de509f148772ec4fcc047c1403c7bb4508"
+        },
+        {
+          "column": "I",
+          "header": "Unit cost / BOM & price trajectory",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "033f9086b59ba2b578864360d019a5350af210484a7e7d16ad5c445914d62904"
+        },
+        {
+          "column": "J",
+          "header": "Labor impact (jobs, tasks, labor shortage)",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "b31a6ed98d88e4be9d73bc293913d1555c21c149094e49f4634f37ec35d75aed"
+        },
+        {
+          "column": "K",
+          "header": "Investment / funding",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "3c95ff319e2a3671dfa271a02b4f0a80c318f9210e966adedc974e69fefd7af3"
+        },
+        {
+          "column": "L",
+          "header": "Key adoption sectors & timeline",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "4b510feb4f51df4698310ce4822f836ef36d7ba697eca629e86231014f997ff4"
+        },
+        {
+          "column": "M",
+          "header": "China vs US / regional view",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "6dc6908a3c41b79da1da69ce9a46798a7327e11c66fbc92cba4a7a23978fa64b"
+        },
+        {
+          "column": "N",
+          "header": "Key bottlenecks / risks",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "81ca5fec88a1761b6d59681c8cefb590f3aa9d61e3825756dee8662257b1c551"
+        },
+        {
+          "column": "O",
+          "header": "Key companies highlighted",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "cc2c3878c3c466e52d56445d8a19096926a0e86f1e03bcf5f0f324fe282e9c0a"
+        },
+        {
+          "column": "P",
+          "header": "Headline conclusion",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "d67cdbda70d08fbace7125ac4c8d0f22c68f560e88d1b15ca63eb1471fa2dfd7"
+        },
+        {
+          "column": "Q",
+          "header": "Other key figures",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "e674fb48c6494304c6c3795f0a03d40a53b24eec9a68901b1d07dc9485353d98"
+        },
+        {
+          "column": "R",
+          "header": "Source link",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "6eaac8c5e2d0cee93c0854521d5791a56bd6d9412842b673c436008f52465560"
+        },
+        {
+          "column": "S",
+          "header": "Report ID",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "76b99dd16040f3bc753edcc9e9c5e12b53f0ef1a7a4e68630e8051199d938cbe"
+        },
+        {
+          "column": "T",
+          "header": "Review status",
+          "expected_previous": "",
+          "private": true,
+          "proposed_hmac": "f84e67fa0b603d6cb8c2b3b06ce50713b2262d21b416ff7902b367247fea3e53"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.withplayground.ai/research/robot-frontier-accelerating",
+          "publisher": "Playground",
+          "published": "2026-11-23",
+          "reviewed": "2026-11-26"
+        }
+      ]
+    }
+  ]
+}

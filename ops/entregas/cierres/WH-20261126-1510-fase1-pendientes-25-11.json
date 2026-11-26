@@ -1,0 +1,61 @@
+{
+  "id": "WH-20261126-1510-fase1-pendientes-25-11",
+  "tarea": "Fase 1 de 3 de los tres pendientes de la edición del 25/11/2026 (Orbit de Boston Dynamics, informe de Playground y Simplexity): plan con el contrato workbook-plan@1, sin escribir ni publicar",
+  "origen": "Continuación programada de Codex del 26/11/2026 a las 15:00 (Europe/Madrid), dentro de la autorización de Javier del 26/11/2026",
+  "fecha": "2026-11-26T15:10:22+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Plan WP-20261125-integrarobot-known-pending sobre main 38b9b02 y el libro descargado de nuevo (09:16 UTC). Tiene 2 operaciones y 23 celdas, 20 de ellas privadas. Recorre la edición completa (16 piezas): 13 ya incorporadas o fuera de alcance según el plan anterior, 2 previstas y 1 pendiente de verificación.",
+    "Orbit (Boston Dynamics) en Software (op-001), con la página del producto como fuente y el blog para la capa MCP. No va a Deployments porque la entrada no nombra cliente ni emplazamiento, y no es Orbit Robotics. El primer bloque está lleno (filas 2 a 80, título SOFTWARE FOR UNITREE en la 81), así que se pide una preparación acotada: un hueco en la fila 81, desplazando solo A81:C134 de Software a A82:C135. Hasta entonces el preflight rechaza la operación, como prevé el contrato.",
+    "Playground, «The Robot Frontier Is Accelerating», en Reports (op-002, fila 14, RPT-013): informe externo de investigación en robótica (índice de capacidades y proyecciones condicionadas), clasificado con los criterios existentes. El borrador de hallazgos para la fase 3 está en el fichero de la ejecución, con localizador y frase literal. Separa las odds del índice, la simulación, los robots reales y las proyecciones condicionadas, y deja fuera las cifras que solo están en el texto alternativo de las imágenes o sin base declarada.",
+    "Simplexity sigue como pendiente de verificación y sin fila: el 26/11 seguía sin haber fuente primaria de la ronda ni modelo con nombre.",
+    "Carga privada en Google Drive con título exacto, no compartida y con el SHA-256 comprobado tras descargarla. Su identificador y su enlace se entregan a Codex en privado, en la conversación, nunca en Git.",
+    "state.json: traspaso en awaiting_preparation con la petición de preparación (filas esperadas después: hueco en la 81, título en la 82, SIMULATORS en la 122, Lucky Robots en la 135; E:F sin cambios). known_pending queda actualizado y la línea de la ejecución añadida."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Plan",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json"
+    },
+    {
+      "etiqueta": "Fichero de la ejecución",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/runs/2026-11-26-pendientes.json"
+    },
+    {
+      "etiqueta": "Estado",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/state.json"
+    },
+    {
+      "etiqueta": "Fuente: Orbit",
+      "url": "https://bostondynamics.com/products/orbit/"
+    },
+    {
+      "etiqueta": "Fuente: Boston Dynamics, Spot y Orbit",
+      "url": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/"
+    },
+    {
+      "etiqueta": "Fuente: Playground",
+      "url": "https://www.withplayground.ai/research/robot-frontier-accelerating"
+    }
+  ],
+  "despliegue": [
+    "No aplica: fase 1, sin escritura en el libro, sin publicación y sin importación. El PR solo lleva ficheros de ops/, que Pages no publica."
+  ],
+  "verificaciones": [
+    "workbook-plan check del plan con su carga privada (HMAC y SHA-256) y check de los dos planes; check-public y entregas --check en verde.",
+    "Preflight sobre el libro actual: 22 celdas pendientes y 1 conflicto esperado (la fila 81 es un título de sección). Con la preparación simulada sin conexión (A81:C134 desplazadas a A82:C135): 23 celdas por escribir, 0 conflictos, 0 duplicados y grupo correcto.",
+    "Duplicados: no hay Orbit en Software ni Playground en Reports (RPT-001 a RPT-012); Codex lo confirmó con una lectura nativa.",
+    "D1: Codex lee 63.470 de 100.000 filas escritas hoy (UTC). Estimación local de una importación con el libro actual (Components con 51 productos): 12.163 filas cambiadas, unas 32.100 contando índices, en línea con lo que costaron las dos de hoy. Una tercera importación dejaría unas 4.000 filas para el resto del día, así que la publicación de Orbit queda en cola hasta después de las 00:00 UTC, salvo que Codex lea más margen. Reports no se importa."
+  ],
+  "pendientes": [
+    "Codex: preparar el hueco de Software (A:C, fila 81) y dar su recibo.",
+    "Claude: comprobar la permutación, rebasar el plan (fecha de base, SHA-256, sal, carga y fichero de Drive nuevos; las filas no deberían cambiar) y entregar el identificador nuevo en privado.",
+    "Codex: escribir y releer las dos operaciones.",
+    "Claude: publicar los hallazgos de Playground (solo Pages) y Orbit, este con una importación cuando el margen de D1 lo permita.",
+    "Simplexity sigue pendiente de una fuente primaria de la ronda y de un modelo con nombre.",
+    "Codex: registrar el aviso de este cierre."
+  ],
+  "siguiente_accion": "Codex prepara el hueco en Software A:C (fila 81) con su conector nativo y envía el recibo a esta conversación. Después Claude rebasa el plan y se lo entrega para escribir."
+}
