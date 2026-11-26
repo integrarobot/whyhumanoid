@@ -8,6 +8,7 @@ import { createResendMailer, disabledMailer } from './mailer.js';
 import { DATASETS } from './datasets.js';
 import { fetchWorkbookValues } from './import/google-sheets.js';
 import { runImport } from './import/run.js';
+import { SCOPED_DATASETS, runScopedImport } from './import/scoped.js';
 import { deliverOutbox } from './orders/orders.js';
 
 export function configFromEnv(env) {
@@ -49,9 +50,16 @@ export function configFromEnv(env) {
   };
 }
 
-export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000), accessToken, relationsConfig = null) {
+export async function importFromWorkbook(env, now = Math.floor(Date.now() / 1000), accessToken, relationsConfig = null, scoped = null) {
   if (!env.WORKBOOK_ID || (!accessToken && (!env.GOOGLE_SA_EMAIL || !env.GOOGLE_SA_PRIVATE_KEY))) {
     return { ok: false, error: 'import_not_configured' };
+  }
+  if (scoped) {
+    // Scoped import: reads only the tabs in scope and writes only what changed (server/src/import/scoped.js).
+    const specs = scoped.datasets.map((id) => DATASETS.find((d) => d.id === id));
+    if (specs.some((s) => !s) || scoped.datasets.some((id) => !SCOPED_DATASETS.includes(id))) return { ok: false, error: 'invalid_scope' };
+    const values = await fetchWorkbookValues({ sheetId: env.WORKBOOK_ID, tabs: specs.map((d) => d.tab), clientEmail: env.GOOGLE_SA_EMAIL, privateKeyPem: env.GOOGLE_SA_PRIVATE_KEY, now, accessToken });
+    return runScopedImport(env.DB, values, now, { datasets: scoped.datasets, relationsConfig, dryRun: scoped.dryRun });
   }
   const values = await fetchWorkbookValues({
     sheetId: env.WORKBOOK_ID,
@@ -79,7 +87,7 @@ export default {
         webhookSecret: env.STRIPE_WEBHOOK_SECRET,
       }),
       mailer: mailerFor(env),
-      importNow: (accessToken, relationsConfig) => importFromWorkbook(env, undefined, accessToken, relationsConfig),
+      importNow: (accessToken, relationsConfig, scoped) => importFromWorkbook(env, undefined, accessToken, relationsConfig, scoped),
       waitUntil: ctx?.waitUntil ? (p) => ctx.waitUntil(p) : null,
       fetchPublic: (path) => fetch(new URL(path, config.siteOrigin)),
       newsFetch: (url, init) => fetch(url, init),
