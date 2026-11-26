@@ -47,7 +47,8 @@
     "Motores / control de movimiento": "Motors / motion control",
     "Drones / componentes": "Drones / components",
     "Sistemas no tripulados / defensa": "Uncrewed systems / defence",
-    "Software industrial / activos": "Industrial software / assets"
+    "Software industrial / activos": "Industrial software / assets",
+    "Humanoides / logística": "Humanoids / logistics"
   },
   "tradingview": {
     "NASDAQ": {
@@ -293,6 +294,15 @@
       "financials": "verified",
       "news": "unavailable",
       "news_reason": "No headlines for this symbol in TradingView's free news widget when checked."
+    },
+    "NASDAQ:AGLT": {
+      "checked_at": "2026-11-26",
+      "chart": "verified",
+      "chart_note": "15-minute delayed quotes (Cboe One)",
+      "financials": "unavailable",
+      "financials_reason": "Historical financials may include the predecessor SPAC; operating-company figures have not been verified.",
+      "news": "unavailable",
+      "news_reason": "No headlines for this symbol in TradingView's free news widget when checked."
     }
   },
   "yahoo": {
@@ -429,6 +439,7 @@
     "Ofrece motores y soluciones de control de movimiento; la documentación de inversores identifica al emisor 603728 de Shanghái.": "Offers motors and motion control solutions; investor documents identify the Shanghai issuer 603728.",
     "Empresa del sector de drones de Estados Unidos; el registro SEC confirma la cotización UMAC en NYSE American.": "US drone company; its SEC filings confirm the UMAC listing on NYSE American.",
     "Empresa de sistemas aéreos no tripulados y servicios tecnológicos; la web de inversores confirma NYSE:AVEX y sede en California.": "Uncrewed aircraft systems and technology services company; its investor website confirms NYSE:AVEX and headquarters in California.",
-    "Ofrece software para diseñar, construir, operar y proteger activos industriales; cotiza como entidad independiente tras su separación de Hexagon.": "Offers software to design, build, operate and protect industrial assets; listed as an independent company after its separation from Hexagon."
+    "Ofrece software para diseñar, construir, operar y proteger activos industriales; cotiza como entidad independiente tras su separación de Hexagon.": "Offers software to design, build, operate and protect industrial assets; listed as an independent company after its separation from Hexagon.",
+    "Develops Digit humanoid robots and Agility Arc fleet software for industrial logistics. Common stock began trading on Nasdaq as AGLT on 5 November 2026 after completing the combination with Churchill Capital Corp XI.": "Develops Digit humanoid robots and Agility Arc fleet software for industrial logistics. Common stock began trading on Nasdaq as AGLT on 5 November 2026 after completing the combination with Churchill Capital Corp XI."
   }
 }

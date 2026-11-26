@@ -250,13 +250,13 @@
   },
   {
    "id": "stocks",
-   "snapshot": "2026-11-26T06:38:00Z",
+   "snapshot": "2026-11-26T17:35:52Z",
    "title": "Investment: listed companies",
    "description": "Listed companies exposed to humanoid robotics: tickers, ISIN, segment and ETF membership.",
-   "entries_total": 276,
-   "source_rows_total": 276,
-   "preview_entries": 276,
-   "preview_source_rows": 276,
+   "entries_total": 277,
+   "source_rows_total": 277,
+   "preview_entries": 277,
+   "preview_source_rows": 277,
    "fields": [
     "name",
     "url",
