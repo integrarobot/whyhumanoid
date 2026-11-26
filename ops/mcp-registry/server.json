@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.integrarobot/whyhumanoid",
+  "description": "Search humanoid robots, deployments and components with sources, dates and evidence.",
+  "title": "Why Humanoid?",
+  "repository": {
+    "url": "https://github.com/integrarobot/whyhumanoid",
+    "source": "github"
+  },
+  "version": "1.0.1",
+  "websiteUrl": "https://whyhumanoid.com/agents/",
+  "icons": [
+    {
+      "src": "https://whyhumanoid.com/assets/whyhumanoid-icon-256.png",
+      "mimeType": "image/png",
+      "sizes": ["256x256"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://whyhumanoid-premium.javier-198.workers.dev/mcp"
+    }
+  ]
+}

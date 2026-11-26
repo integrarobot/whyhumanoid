@@ -42,7 +42,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
   const scope = entitled ? 'full' : 'public';
 
   const server = new McpServer(
-    { name: 'whyhumanoid', version: '1.0.0' },
+    { name: 'whyhumanoid', version: '1.0.1' },
     {
       instructions:
         'Why Humanoid? research catalogue of humanoid robots, deployments, components, integrators, software, datasets, benchmarks, investment, other robots and reports. ' +
@@ -70,18 +70,18 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
       query: z.string().max(200).describe('Words to look for'),
       category: z.string().max(40).optional().describe('Optional category id, e.g. deployments'),
       tags: z.string().max(400).optional().describe('Optional comma-separated tag ids from earlier results'),
-      page: z.number().int().min(1).max(50).optional(),
+      page: z.number().int().min(1).max(50).optional().describe('Optional results page, from 1 to 50; default 1'),
     },
   }, async ({ query, category, tags, page }) => text(await search(db, { scope: entitled ? 'full' : 'preview', q: query, tags: tags ?? '', category: category ?? '', page: String(page ?? 1) })));
 
   server.registerTool('get_rows', {
     ...readOnly('Read rows of a table'),
-    description: 'Rows of one table (ids from list_categories), in workbook order, optionally filtered by text. Free tables return every field; Deployments and Components return every field with an active subscription and their public fields otherwise.',
+    description: 'Rows of one table (ids from list_categories), in catalogue order, optionally filtered by text. Free tables return every field; Deployments and Components return every field with an active subscription and their public fields otherwise.',
     inputSchema: {
       table: z.string().max(40).describe('Table id, e.g. deployments, hardware, humanoids, software'),
-      query: z.string().max(100).optional(),
-      limit: z.number().int().min(1).max(100).optional(),
-      offset: z.number().int().min(0).max(100000).optional(),
+      query: z.string().max(100).optional().describe('Optional text to search within row values, up to 100 characters; ignores case for A-Z letters'),
+      limit: z.number().int().min(1).max(100).optional().describe('Optional number of rows to return, from 1 to 100; default 25'),
+      offset: z.number().int().min(0).max(100000).optional().describe('Optional number of rows to skip before returning, from 0 to 100000; default 0'),
     },
   }, async ({ table, query, limit = 25, offset = 0 }) => {
     const spec = DATASETS_BY_ID.get(table);
@@ -101,7 +101,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
   server.registerTool('get_atlas', {
     ...readOnly('Read a published atlas'),
     description: 'A published snapshot: datasets, benchmarks, reports (research conclusions), integrators or evolution (the seven charts). Public for everyone.',
-    inputSchema: { name: z.enum(Object.keys(ATLASES)) },
+    inputSchema: { name: z.enum(Object.keys(ATLASES)).describe(`Atlas to read: ${Object.keys(ATLASES).join(', ')}`) },
   }, async ({ name }) => {
     if (!fetchPublic) return text({ error: 'atlas_unavailable' });
     const response = await fetchPublic(ATLASES[name].path);
