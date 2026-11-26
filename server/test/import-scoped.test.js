@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { T0, createTestDb, fixtureWorkbook } from './helpers.js';
 import { DATASETS_BY_ID } from '../src/datasets.js';
 import { runImport } from '../src/import/run.js';
-import { runScopedImport, SCOPED_DATASETS } from '../src/import/scoped.js';
+import { GRAPH_DATASETS, runScopedImport, SCOPED_DATASETS } from '../src/import/scoped.js';
 import { createApp } from '../src/app.js';
 import { robotSlug } from '../src/relations/graph.js';
 
@@ -94,7 +94,8 @@ test('an unchanged tab rewrites no row and no search document', async () => {
 });
 
 test('only the Deployments graph tabs can be scoped; a bad tab or bad config changes nothing', async () => {
-  assert.deepEqual(SCOPED_DATASETS, ['deployments', 'entities', 'evidence-links']);
+  assert.deepEqual(SCOPED_DATASETS, ['deployments', 'entities', 'evidence-links', 'stocks']);
+  assert.deepEqual(GRAPH_DATASETS, ['deployments', 'entities', 'evidence-links']);
   const db = createTestDb();
   await runImport(db, base(), T0, { relationsConfig: config });
   const before = await rowsState(db, 'deployments');
@@ -167,10 +168,64 @@ test('a dry run can never become a full import: every other shape is refused bef
 test('the workflow stops a dry run outside the scoped import; the snapshot column is in no index', async () => {
   const { readFileSync } = await import('node:fs');
   const wf = readFileSync(new URL('../../.github/workflows/import-workbook.yml', import.meta.url), 'utf8');
-  assert.match(wf, /if \[ "\$\{\{ inputs\.dry_run == true \}\}" = true \] && \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" != deployments \]; then\n\s+echo "dry_run needs scope=deployments; nothing was imported"; exit 1/);
+  assert.match(wf, /if \[ "\$\{\{ inputs\.dry_run == true \}\}" = true \] && \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" != deployments \] && \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" != stocks \]; then\n\s+echo "dry_run needs scope=deployments or scope=stocks; nothing was imported"; exit 1/);
   assert.ok(wf.indexOf('dry_run needs scope=deployments') < wf.indexOf('/v1/admin/import'), 'the guard runs before the import request');
+  assert.match(wf, /options: \[all, deployments, stocks\]/);
+  assert.match(wf, /if \[ "\$\{\{ inputs\.scope \|\| 'all' \}\}" = stocks \]; then\n\s+jq -c --argjson dry "\$\{\{ inputs\.dry_run == true \}\}" '\. \+ \{datasets: \["stocks"\], dry_run: \$dry\}'/);
   const sql = ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql']
     .map((m) => readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8')).join('\n');
   const indexes = sql.match(/CREATE (UNIQUE )?INDEX[^;]*ON premium_rows[^;]*;/g) ?? [];
   assert.ok(indexes.length >= 2 && indexes.every((i) => !/snapshot_id/.test(i)), 'a snapshot-only update writes the row alone');
+});
+
+// Scoped import of the Investment tab (stocks) alone, 26 Nov 2026: one listed company added and one corrected.
+const stocksSpec = DATASETS_BY_ID.get('stocks');
+const withStocks = (values, edit) => {
+  const tab = values[stocksSpec.tab].map((r) => [...r]);
+  edit(tab, stocksSpec.headers);
+  return { ...values, [stocksSpec.tab]: tab };
+};
+const stocksEdited = () => withStocks(base(), (tab, h) => {
+  const row = (name, ticker, isin) => h.map((f) => ({ NAME: name, TICKER: ticker, EXCHANGE: 'Nasdaq', ISIN: isin, GF_SYMBOL: `NASDAQ:${ticker}` }[f] ?? `fx_${f}_${ticker}`));
+  tab[2] = tab[2].map((v, i) => (h[i] === 'DESCRIPTION' ? 'A corrected description' : v));
+  tab.splice(tab.length - 1, 0, row('Example Listed Robotics', 'EXLR', ''));
+});
+const everythingButStocks = async (db) => ({
+  rows: await table(db, "SELECT dataset, row_id, position, data, preview_data, snapshot_id FROM premium_rows WHERE dataset <> 'stocks' ORDER BY dataset, row_id"),
+  docs: await table(db, "SELECT scope, dataset, row_id, position, title, subtitle, names, haystack, tags, link FROM search_docs WHERE dataset <> 'stocks' ORDER BY scope, dataset, row_id"),
+  graphs: await table(db, 'SELECT * FROM relation_graphs ORDER BY scope'),
+  config: await table(db, 'SELECT * FROM relation_config'),
+});
+
+test('a scoped stocks import ends where a full import ends for that tab and leaves every other tab, document and graph as it was', async () => {
+  const scoped = createTestDb();
+  assert.equal((await runImport(scoped, base(), T0, { relationsConfig: config })).ok, true);
+  const untouched = await everythingButStocks(scoped);
+  const result = await runScopedImport(scoped, stocksEdited(), T0 + 60, { datasets: ['stocks'], relationsConfig: config });
+  assert.equal(result.ok, true, result.error);
+  assert.deepEqual(result.changes.stocks, { added: 1, changed: 1, removed: 0, unchanged: 11 });
+  assert.equal(result.relations, null, 'no relation graph rebuilt');
+
+  const full = createTestDb();
+  assert.equal((await runImport(full, stocksEdited(), T0 + 60, { relationsConfig: config })).ok, true);
+  assert.deepEqual(await rowsState(scoped, 'stocks'), await rowsState(full, 'stocks'));
+  assert.deepEqual(await docsState(scoped, 'stocks'), await docsState(full, 'stocks'));
+  assert.deepEqual(await everythingButStocks(scoped), untouched, 'other tabs, their search documents, the company dossiers and the graphs are not rewritten');
+  const snaps = await table(scoped, "SELECT DISTINCT snapshot_id FROM premium_rows WHERE dataset = 'stocks'");
+  assert.deepEqual(snaps.map((r) => r.snapshot_id), [new Date((T0 + 60) * 1000).toISOString()]);
+  const added = await table(scoped, "SELECT data FROM premium_rows WHERE dataset = 'stocks' AND data LIKE '%EXLR%'");
+  assert.equal(added.length, 1);
+  assert.equal(JSON.parse(added[0].data).isin, null, 'no ISIN is invented');
+  assert.ok((await table(scoped, "SELECT row_id FROM search_docs WHERE dataset = 'stocks' AND scope = 'preview' AND haystack LIKE '% exlr %'")).length === 1, 'the new listing is searchable publicly');
+});
+
+test('a scoped stocks dry run writes nothing and estimates a few dozen rows', async () => {
+  const db = createTestDb();
+  await runImport(db, base(), T0, { relationsConfig: config });
+  const before = { stocks: await rowsState(db, 'stocks'), docs: await docsState(db, 'stocks'), rest: await everythingButStocks(db), runs: await table(db, 'SELECT id FROM import_runs') };
+  const dry = await runScopedImport(db, stocksEdited(), T0 + 60, { datasets: ['stocks'], dryRun: true });
+  assert.equal(dry.ok, true);
+  assert.deepEqual(dry.changes, { stocks: { added: 1, changed: 1, removed: 0, unchanged: 11 } });
+  assert.ok(dry.estimated_rows_written > 0 && dry.estimated_rows_written < 60, `estimate ${dry.estimated_rows_written}`);
+  assert.deepEqual({ stocks: await rowsState(db, 'stocks'), docs: await docsState(db, 'stocks'), rest: await everythingButStocks(db), runs: await table(db, 'SELECT id FROM import_runs') }, before);
 });

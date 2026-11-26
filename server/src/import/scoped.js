@@ -1,7 +1,9 @@
 // Scoped import (26 Nov 2026): re-import only the Deployments graph tabs (Deployments, Clean Entities, Evidence
 // Relations) from the private workbook, writing only what changed, so a grouped Deployments review can be published
 // within the D1 daily write allowance (100,000 rows on the free plan) where a full import (about 32,000 rows written,
-// because every tab and the whole search index are deleted and rewritten) would not fit.
+// because every tab and the whole search index are deleted and rewritten) would not fit. Since 26 Nov 2026 the Investment
+// tab (stocks) can be scoped too, alone: its rows and their search documents only, with the relation graphs, the public
+// projection and the company dossiers left untouched, because none of them reads it.
 //
 // Same rules as the full import (server/src/import/run.js): the same normalisation and validation per tab, the same
 // relation graphs (rebuilt from the imported Deployments and Clean Entities rows, the other one read from D1 when it is
@@ -18,8 +20,10 @@ import { relationStatements } from '../relations/store.js';
 import { companyDocs, searchDoc } from '../search/index.js';
 import { publicProjection } from '../public/projection.js';
 
-// Tabs a scoped import may replace: the inputs of the Deployments relation graph and its evidence links.
-export const SCOPED_DATASETS = ['deployments', 'entities', 'evidence-links'];
+// Tabs a scoped import may replace: the inputs of the Deployments relation graph and its evidence links, and (26 Nov
+// 2026) the Investment tab of listed companies, a free tab no other tab, graph or projection reads.
+export const GRAPH_DATASETS = ['deployments', 'entities', 'evidence-links'];
+export const SCOPED_DATASETS = [...GRAPH_DATASETS, 'stocks'];
 
 // Rows D1 writes per statement, counting the table and each index (premium_rows: primary key and two indexes;
 // search_docs and relation_graphs: primary key). snapshot_id is in no index (premium_rows_order is dataset and
@@ -119,20 +123,25 @@ export async function runScopedImport(db, valuesByTab, now, { datasets, relation
       .filter((r) => scope === 'full' || spec.access === 'free' || Boolean(r.previewData))
       .map((r) => ({ id: r.id, position: r.position, data: scope === 'full' ? r.data : (r.previewData ?? r.data) }));
   };
+  // The relation graph, the public projection and the company dossiers depend on the Deployments graph tabs only: they
+  // are rebuilt when one of those is in scope and left exactly as they are otherwise (a stocks-only import).
+  const graphInScope = ids.some((id) => GRAPH_DATASETS.includes(id));
   const cache = {};
-  for (const id of ['deployments', 'entities', ...ids]) for (const scope of ['full', 'preview']) cache[`${id}|${scope}`] ??= await scopedRows(id, scope);
+  for (const id of [...(graphInScope ? ['deployments', 'entities'] : []), ...ids]) for (const scope of ['full', 'preview']) cache[`${id}|${scope}`] ??= await scopedRows(id, scope);
   const rowsOf = (id, scope) => cache[`${id}|${scope}`].map((r) => r.data);
 
   // 4. Relation graphs and the public projection, rebuilt as in the full import.
-  const relations = await relationStatements(db, { config: relationsConfig, rowsOf, snapshotId, now });
-  if (!relations.report.ok && relations.report.error === 'invalid_relations_config') return fail('invalid_relations_config');
-  if (!relations.report.ok) warnings.push(`relations: ${relations.report.error}`);
-  writes += relations.statements.length === 3 ? WRITES.config + 2 * WRITES.graph : relations.statements.length * WRITES.graph;
-  statements.push(...relations.statements);
+  const relations = graphInScope ? await relationStatements(db, { config: relationsConfig, rowsOf, snapshotId, now }) : { report: null, statements: [], graphs: null };
+  if (graphInScope) {
+    if (!relations.report.ok && relations.report.error === 'invalid_relations_config') return fail('invalid_relations_config');
+    if (!relations.report.ok) warnings.push(`relations: ${relations.report.error}`);
+    writes += relations.statements.length === 3 ? WRITES.config + 2 * WRITES.graph : relations.statements.length * WRITES.graph;
+    statements.push(...relations.statements);
+  }
   const projection = relations.graphs?.full ? publicProjection({ graph: relations.graphs.full, rows: rowsOf('deployments', 'full'), entities: rowsOf('entities', 'full') }) : null;
 
   // 5. Search documents of the tabs in scope and of the company dossiers: upsert what differs, delete what is gone.
-  const docSets = ['companies', ...ids];
+  const docSets = [...(graphInScope ? ['companies'] : []), ...ids];
   const docs = { full: [], preview: [] };
   const unmapped = [];
   for (const scope of ['full', 'preview']) {
@@ -173,7 +182,7 @@ export async function runScopedImport(db, valuesByTab, now, { datasets, relation
     db.prepare('INSERT INTO import_runs (id, started_at, status) VALUES (?, ?, ?)').bind(runId, now, 'running'),
     ...statements,
     db.prepare('UPDATE import_runs SET finished_at = ?, status = ?, counts = ?, warnings = ? WHERE id = ?')
-      .bind(now, 'succeeded', JSON.stringify({ scoped: ids, ...counts, changes, relations: relations.report.coverage ?? null, search }), JSON.stringify({ warnings, review }), runId),
+      .bind(now, 'succeeded', JSON.stringify({ scoped: ids, ...counts, changes, relations: relations.report?.coverage ?? null, search }), JSON.stringify({ warnings, review }), runId),
   ]);
   return { ok: true, runId, snapshotId, counts, ...report, warnings, review, searchUnmapped: unmapped };
 }
