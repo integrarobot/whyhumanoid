@@ -23,7 +23,7 @@
   --f-sans:"Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --fs-label:10.5px; --track-label:.09em;
-  --gut:clamp(16px, 3.4vw, 52px);
+  --gut:clamp(16px, 4vw, 40px);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -35,12 +35,14 @@ header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--bone);font-weight:600;font-size:19px;white-space:nowrap}
 .brand .sq{width:9px;height:9px;background:var(--amber)}
 .brand .sub{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:var(--track-label);text-transform:uppercase;color:var(--amber);font-weight:400}
+/* Narrow phones: the subtitle wraps under the name instead of pushing the page sideways. */
+@media (max-width:400px){.brand{flex-wrap:wrap;white-space:normal;row-gap:2px;min-width:0}.brand .sub{flex-basis:100%;padding-left:19px}}
 .acct{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 14px;background:var(--amber);color:var(--ink-0);border:1px solid var(--amber);font:600 14px var(--f-sans);cursor:pointer;text-decoration:none}
 .btn.ghost{background:transparent;color:var(--bone-2);border-color:var(--line-2);font:400 var(--fs-label) var(--f-mono);letter-spacing:var(--track-label);text-transform:uppercase}
 .btn.ghost:hover,.btn.ghost:focus-visible{color:var(--amber);border-color:var(--amber-2)}
 .btn:disabled{opacity:.45;cursor:default}
-main{padding:24px var(--gut) 64px;max-width:1480px;margin:0 auto}
+main{padding:24px var(--gut) 64px;max-width:1380px;margin:0 auto}
 .notice{border-left:2px solid var(--amber);background:var(--amber-3);padding:12px 14px;margin:0 0 18px}
 .notice.error{border-left-color:var(--crit)}
 .panel{border:1px solid var(--line);background:var(--ink-1);padding:18px 20px;margin:0 0 18px}
