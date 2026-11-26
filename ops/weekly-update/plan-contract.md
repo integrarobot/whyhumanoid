@@ -54,6 +54,36 @@ Private values:
 
 Moves inside a list, such as correcting a group, are not plan operations yet. Codex writes them with a receipt that proves a permutation: the same multiset of rows, and nothing changed outside the moved columns. Claude reads them back from a fresh export before publishing. The first case was Software A77:C134 on 26 Nov 2026.
 
+## Making space in a list (phase 2 preparation and replan)
+
+A block of a sectioned list can be full. On 26 Nov 2026, for example, the first Software block filled rows 2 to 80, with the SOFTWARE FOR UNITREE title at row 81. The plan operations never write on a section title or a column-header row, so a new entry for that block needs a free slot first. Making one is a routine, bounded preparation, not a decision for Javier and not a reason for manual copying:
+
+1. **Phase 1 requests the preparation.** It still writes the content plan against the current master, with the block it needs (`group_expected`) and the number of slots. It records a preparation request in the handoff entry of `state.json` (`status: awaiting_preparation`), naming:
+   - the tab;
+   - the list columns only (for example Software `A:C`);
+   - the block and its first and last rows;
+   - the number of empty slots, placed at the end of the block, just above the next section title.
+
+   The plan is not yet ready for writing: its rows are rebased after the preparation.
+2. **Codex prepares the master.** Codex first reads the full native metadata of the affected block, from the slot position to the end of that list, and of its neighbours: values, links, formats, validation, chips, notes and the table range. It then makes the slots with a range insert or a permutation scoped to that list's columns. Never whole-sheet rows: the parallel list in the same rows (Software `E:F`, Other Robots `E:G`) must not move.
+
+   Every record, its identity, links, formats and validation are preserved, and the native table range grows to cover the list. Codex then re-reads the whole moved block and its neighbours and gives a receipt:
+   - rows moved and their new positions;
+   - the new positions of the section titles and column-header rows;
+   - the empty slots, by row and group;
+   - the table range;
+   - zero value or metadata differences;
+   - the parallel list unchanged;
+   - the workbook modified time.
+3. **Nothing is published or imported for a preparation alone.** Positions change but no catalogue value does. The edition is not marked processed.
+4. **Claude rebases the unwritten plan.** Claude downloads the master afresh and checks the preparation:
+   - the same non-empty rows of the list, in their new positions;
+   - the requested number of empty slots in the requested block;
+   - the parallel list and every other tab unchanged, except live market values.
+
+   Then Claude rewrites the draft with the new rows and basis time and runs `split` again: new SHA-256, new salt and new private payload, a new Drive file whose ID goes privately to Codex as in phase 1, and `preflight` on the prepared basis. A plan nobody has written may be replaced in place by its rebased version. The handoff keeps `rebased_from` (the old SHA-256) and returns to `awaiting_write`. A written plan is immutable and is never rebased.
+5. **Phases 2 and 3 continue as usual.** Codex writes the rebased plan. Claude runs the readback with the prepared master as `--previous`, then publishes and imports once.
+
 ## Private payload and its delivery
 
 Format: `{ "contract": "whyhumanoid/workbook-plan-private@1", "plan_id", "salt", "values": { "<op_id>:<column>:<proposed|previous|key|unique>": "<value>" } }`. Each HMAC is SHA-256 keyed with the payload's salt, over `plan_id`, `op_id`, column, kind and value, separated by newlines. The plan records the file's SHA-256, so the payload cannot change unnoticed.
@@ -124,7 +154,8 @@ It then writes only the pending cells and reads back the written cells and their
 One entry per plan:
 
 - `plan_id`, `plan` and `editions`;
-- `status`: `awaiting_write`, `written` or `published`;
+- `status`: `awaiting_preparation`, `awaiting_write`, `written` or `published`;
+- `preparation` and `rebased_from`, when a list needed space;
 - `private_payload`: its `sha256` and the channel, with no ID or link;
 - `write_receipt`: a summary of Codex's receipt, with no local paths;
 - `independent_readback`;

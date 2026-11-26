@@ -149,10 +149,11 @@ Cada ejecución deja su detalle en `ops/weekly-update/runs/<AAAA-MM-DD>.json` y 
    - Guarda en `main` por PR el plan público, el fichero de la ejecución y `state.json`: traspaso `awaiting_write` y piezas en `known_pending` con su `op_id`.
    - Cierra la fase con `completado` («Fase 1 de 3: plan entregado; sin escribir ni publicar»). Si no hay ediciones ni hechos nuevos, `sin_novedades`. `bloqueado` solo si no puedes leer el libro o las fuentes, o si hay celdas privadas y no puedes entregar su carga.
    - La edición no se marca como procesada.
+   - Si un bloque de una lista con secciones está lleno (como el primer bloque de Software el 26/11/2026: filas 2 a 80 ocupadas y el título SOFTWARE FOR UNITREE en la 81), no planifiques escrituras sobre un título ni al final de otro bloque. Pide la preparación acotada del contrato («Making space in a list»): el traspaso queda en `awaiting_preparation` con la pestaña, las columnas de esa lista, el bloque y el número de huecos. Cuando Codex dé el recibo de la preparación, descarga el libro de nuevo, comprueba que es una permutación con los huecos pedidos y la lista paralela intacta, y rebasa el plan aún no escrito: filas nuevas, `split` de nuevo, carga privada nueva con su identificador por canal privado y `preflight`. La preparación sola no se publica ni se importa, y un plan ya escrito no se rebasa nunca.
 
 ### Fase 2: escritura y relectura (Codex)
 
-La hace Codex con la automatización «Incorporar newsletters a Why Humanoid?» (diaria, 15:00 Europe/Madrid), en su chat de coordinación, con el conector nativo de Google Sheets: preflight en la hoja viva, escritura celda a celda, relectura y recibo (contrato, «Recibo de la fase 2»). Claude no escribe en el libro, y no publica ni importa antes del recibo explícito de Codex.
+La hace Codex con la automatización «Incorporar newsletters a Why Humanoid?» (diaria, 15:00 Europe/Madrid), en su chat de coordinación, con el conector nativo de Google Sheets: preflight en la hoja viva, escritura celda a celda, relectura y recibo (contrato, «Recibo de la fase 2»). Cuando hace falta, antes prepara el hueco en una lista llena: inserción o permutación limitada a las columnas de esa lista, con los metadatos nativos conservados y releídos (contrato, «Making space in a list»). Claude no escribe en el libro, y no publica ni importa antes del recibo explícito de Codex.
 
 ### Fase 3: publicación (Claude, solo tras el recibo de Codex)
 
