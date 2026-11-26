@@ -688,7 +688,7 @@ function componentPages(model) {
   const crumb = (name) => crumbs([['/', 'Why Humanoid?'], ['/components/', 'Components'], [null, name]]);
   for (const r of [...cm.products, ...cm.software]) {
     const path = `/components/${r.component_id.toLowerCase()}/`;
-    const body = `${crumb(r.name)}\n<article class="entity atlas-page">\n${renderProductPage(cm, r, companyPath)}`;
+    const body = `${crumb(r.name)}\n<article class="entity atlas-page">\n${renderProductPage(cm, r, companyPath, API_ORIGIN)}`;
     out.set(`components/${r.component_id.toLowerCase()}/index.html`, page({ title: `${r.name}: ${r.family ?? 'component'} passport · Why Humanoid?`, description: clip(`${r.name}: ${r.principle ?? ''} ${r.measured ?? ''}`), path, body: `${body}\n</article>`, section: 'components', head: componentsHead(), tail: componentsTail(), wide: true }));
   }
   for (const id of [...cm.coverage.ids.products, ...cm.coverage.ids.software].filter((x) => !pub.has(x))) {
