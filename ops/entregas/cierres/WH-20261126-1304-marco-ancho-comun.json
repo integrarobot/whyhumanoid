@@ -1,0 +1,47 @@
+{
+  "id": "WH-20261126-1304-marco-ancho-comun",
+  "tarea": "Unificar el ancho de todas las páginas de la web con el marco de Integrators y Deployments: 1380 px de ancho máximo y un margen lateral de 16 a 40 px, en categorías, fichas, páginas de apoyo, portada y app de suscriptores",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T13:04:54+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "assets/pages.css: una sola fuente para el marco (--page-max 1380px y --page-gutter clamp(16px,4vw,40px)) para main y la cabecera; la prosa conserva una medida de lectura de 88ch y las tablas, gráficos, tarjetas, filtros y comparaciones ocupan el ancho completo.",
+    "assets/atlas.css deja de ensanchar main y assets/reports.css deja de recortar las páginas de informe a 900 px.",
+    "index.html (portada): contenedores de contenido a 1300 px con el mismo margen de 40 px; los fondos a sangre no cambian.",
+    "App de suscriptores (server/public/index.html y app/index.html): main a 1380 px con el mismo margen; por debajo de 400 px el subtítulo de la marca pasa a otra línea, lo que corrige un desbordamiento de 48 px a 320 px que ya existía.",
+    "tools/test-frame.mjs, en el CI, comprueba que el marco está en un solo sitio por superficie y que ninguna hoja de estilo vuelve a fijar el ancho de main.",
+    "Sin cambios de tipografía, colores, contenido, datos, accesos, Worker, importación ni Stripe; la demo del PR 142 se conserva."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 143",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/143"
+    },
+    {
+      "etiqueta": "Commit de fusión 52b3c85",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/52b3c854fd1ad907e869956007a830c321a74469"
+    },
+    {
+      "etiqueta": "Investment",
+      "url": "https://whyhumanoid.com/investment/"
+    },
+    {
+      "etiqueta": "Pages (ejecución 45815843334)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45815843334"
+    }
+  ],
+  "despliegue": [
+    "PR 143 fusionado con squash en main como 52b3c85 desde el head aprobado por Codex 88e2ca8, con el CI en verde (ejecución 45815490717); el head anterior e54e601 falló en build-pages --check porque /agents/demo/ (ya en main con el PR 142) no tenía la hoja nueva, y se corrigió al integrar main y regenerar.",
+    "GitHub Pages: ejecución 45815843334 completada con éxito; pages.css con el marco común servido desde las 12:02 UTC (versión f19fe37ec2). Solo páginas estáticas: sin Worker, datos ni Stripe."
+  ],
+  "verificaciones": [
+    "Local: build-pages, build-site y build-app --check, check-public, export-public --check, test-coherence, test-investment, test-evolution, test-frame, 195 pruebas del servidor, verify-site, verify-pages, verify-premium-app, verify-components, verify-footer y verify-mobile (715 comprobaciones) en verde.",
+    "Claude, producción, 27 rutas (portada, las 10 categorías, fichas de robot, empresa, componente, informe, despliegue y otro robot, registros de despliegue, About, Method, Agents, la demo, Terms, Privacy, Subscribe, Companies y /app/): contenido y borde izquierdo iguales en todas, 1286/40 px a 1366, 1300/105 px a 1510, 1300/310 px a 1920, 707/31 px a 768, 343/16 px a 375 y 288/16 px a 320; ningún desbordamiento horizontal.",
+    "Claude, local a 1510 px: los filtros, tablas y la comparación de 4 empresas de Investment, la comparación de Components y las tesis de Tesla ocupan 1300 px; el texto de entrada queda en 815 px y los párrafos en 938 px.",
+    "Codex, producción: a 1510 px las 19 rutas de su línea de base pasan a main 1380, contenido 1300 y borde 65; la portada a 1300 con fondo a sangre; 8 rutas a 320, 375, 768 y 1920 px sin desbordamiento, /app/ incluida; Investment ancho en captura real, la búsqueda de Tesla da 1 de 276 y al limpiar filtros vuelven las 276; las 1.812 páginas generadas no cambian de contenido, salvo la versión de la hoja de estilo."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Codex registra su aviso de esta entrega; Javier confirma la recepción."
+}
