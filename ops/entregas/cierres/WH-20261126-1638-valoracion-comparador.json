@@ -1,0 +1,62 @@
+{
+  "id": "WH-20261126-1638-valoracion-comparador",
+  "tarea": "Añadir al comparador de /investment/ datos reales de valoración: capitalización y PER del proveedor de cotizaciones y ventas anuales con su crecimiento interanual desde fuentes oficiales, sin inventar cifras, sin extraer datos de los widgets ni usar endpoints privados, sin cuentas ni planes nuevos y sin convertir divisas",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T16:38:37+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "data/investment/fundamentals.json (nuevo): ventas anuales de 109 de las 111 empresas cotizadas con registro revisado, 106 desde SEC EDGAR XBRL company facts y 3 desde el informe anual del emisor revisado por Codex (FANUC, UBTECH y Schaeffler); 108 con crecimiento interanual y 1 sin cifra porque el año anterior es cero o negativo; 2 sin ventas anuales en sus presentaciones (OCTV y AVEX); 5 marcadas para revisión (4 crecimientos atípicos y 1 ejercicio antiguo). Divisas tal como se presentan: 101 en USD, 5 en CNY, 2 en EUR y 1 en JPY.",
+    "Datos incluidos: el paquete SEC inicial de 102 registrantes (100 con ventas) más el informe anual de 3 emisores, 103 en total, y el paquete SEC adicional de 6 emisores de Europa, Canadá e Israel: 109.",
+    "Reglas en el propio archivo: solo ejercicios anuales de 350 a 380 días (10-K, 20-F, 40-F y sus enmiendas), conceptos de ventas totales sin sumarlos nunca, la reexpresión más reciente gana, crecimiento solo contra el ejercicio consecutivo anterior en el mismo concepto y la misma unidad, desconocido no es cero.",
+    "tools/fetch-sec-revenue.mjs, tools/sec-registrants.json (108 registrantes con revisión de identidad), tools/export-fundamentals.mjs y tools/fundamentals-notes.json: orden manual sin programación, con User-Agent genérico, cinco peticiones por segundo como máximo, SHA-256 de cada original y notas para el lector (FANUC llama fiscal 2025 al año cerrado el 31/03/2026; UBTECH presenta en RMB y cotiza en HKD; Schaeffler incluye Vitesco desde el cuarto trimestre de 2024, con −3,4% proforma).",
+    "assets/investment.js y assets/investment.css: cada hueco muestra primero las filas de ventas y crecimiento con periodo, fuente y nota, y debajo un único widget de TradingView, Symbol Info o, donde no da capitalización y PER, Financials en modo regular (380 px, 420 px en móvil); como máximo 3 widgets a la vez; marco negro sin banda blanca; filas alineadas con subgrid. El texto dice que el panel no muestra fecha de valoración ni divisa.",
+    "tools/investment-view.mjs y tools/build-pages.mjs: nota del método en el comparador y sección /method/#comparator.",
+    "tools/check-public.mjs admite fundamentals.json y rechaza campos de cotización; tools/test-fundamentals.mjs (11 pruebas) y tools/verify-comparator.mjs ampliado, ambos en el CI.",
+    "Sin API de cotizaciones, scraping de iframes, endpoints privados, Worker, pagos, importaciones ni cambios en el libro. La capitalización y el PER los muestra el proveedor dentro de su widget; el producto no los extrae ni los archiva."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 167",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/167"
+    },
+    {
+      "etiqueta": "Commit de fusión c91f2d2",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/c91f2d2c7ec8386b912c0285b8a1a811e03299dc"
+    },
+    {
+      "etiqueta": "CI del head aprobado 25b67cf (ejecución 45849719768)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45849719768"
+    },
+    {
+      "etiqueta": "Pages (ejecución 45850143920)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45850143920"
+    },
+    {
+      "etiqueta": "Company comparator",
+      "url": "https://whyhumanoid.com/investment/#comparator"
+    },
+    {
+      "etiqueta": "Método del comparador",
+      "url": "https://whyhumanoid.com/method/#comparator"
+    }
+  ],
+  "despliegue": [
+    "PR 167 fusionado en main como c91f2d2 desde el head aprobado por Codex 25b67cf, con el CI en verde (ejecución 45849719768).",
+    "GitHub Pages: ejecución 45850143920 completada con éxito a las 15:33:24 UTC. Solo páginas estáticas y un JSON público."
+  ],
+  "verificaciones": [
+    "Claude, local: test-fundamentals 11/11 (incluidas rutas con espacios y enlaces simbólicos), test-investment, verify-comparator, build-pages --check y check-public en verde; export-fundamentals regenera fundamentals.json sin diferencias desde los paquetes.",
+    "Claude, prueba local con widgets SIMULADOS (no reales): Chromium con marcos de prueba del tamaño de Symbol Info y Financials; filas alineadas, sin desbordamiento a 1510, 375 y 320, y como máximo 3 marcos.",
+    "Claude, producción tras Pages: /data/investment/fundamentals.json servido, /method/#comparator presente, filas alineadas y sin desbordamiento a 1510, 375 y 320.",
+    "Codex, auditoría de datos: 109 publicadas auditadas y 108 crecimientos recalculados, 0 diferencias.",
+    "Codex, producción en Chrome real con widgets reales: /investment/#comparator sirve 109 ventas (106 SEC y 3 del emisor) y 108 crecimientos; cada uno de los 3 selectores con 276 opciones; Tesla USD 94.83bn y −2.9%, NVIDIA USD 215.94bn y +65.5%, FANUC JPY 857.83bn y +7.6%, UBTECH CNY 2bn y +53.3%, Schaeffler EUR 23.49bn y +29.2% con la nota de Vitesco y el −3.4% proforma. FANUC muestra capitalización 4.73T y PER 23.90 sin desplazamiento lateral; el borde inferior del PER (295) queda dentro del marco (338) en escritorio a 1510 con columna de 410 y dentro de 378 en móvil a 375 con columna de 313. Como máximo 3 marcos, filas FY alineadas y scrollWidth igual a clientWidth a 1510 y 375. Selección final Tesla, NVIDIA y FANUC, con los cambios de prueba retirados."
+  ],
+  "pendientes": [
+    "Capitalización y PER los da TradingView en su widget: sin fecha de valoración ni divisa declaradas en el panel, y su disponibilidad depende del proveedor.",
+    "Las ventas son las del último ejercicio anual; existen cifras trimestrales más recientes. Se actualizan con la orden manual fetch-sec-revenue más export-fundamentals y la revisión de los cambios antes de publicar.",
+    "Las 2 empresas sin ventas anuales y las 5 marcadas para revisión se muestran como tales; no se completan."
+  ],
+  "siguiente_accion": "Codex registra su aviso de esta entrega como segundo archivo en el mismo PR; Javier confirma la recepción."
+}
