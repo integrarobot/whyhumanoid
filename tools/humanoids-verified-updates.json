@@ -2,8 +2,8 @@
   "note": "Public Humanoids values that changed in the workbook after the legacy snapshot, taken from the verified staging import. tools/export-humanoids.mjs applies them on top of the cleaned legacy snapshot, and tools/build-site.mjs accepts exactly these differences in its parity check. Public values only. Regenerate with tools/sync-humanoids.mjs from a saved copy of the public preview.",
   "source": {
     "environment": "workbook export",
-    "snapshot": "2026-11-26T06:38:00Z",
-    "import_run": "workbook export of 2026-11-26T06:38:00Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export)"
+    "snapshot": "2026-11-26T17:42:09Z",
+    "import_run": "workbook export of 2026-11-26T17:42:09Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export)"
   },
   "updated": [
     {
@@ -128,13 +128,23 @@
     },
     {
       "id": 6,
+      "field": "Stock",
+      "value": "NASDAQ:AGLT; common stock trading since 2026-11-05"
+    },
+    {
+      "id": 6,
+      "field": "Rounds",
+      "value": "Series B: USD 150M (2022). Completed SPAC combination: approximately USD 465M gross capital before transaction expenses, including USD 100M equity funding received before closing (issuer announcement 2026-11-05). Previously announced proceeds were estimates."
+    },
+    {
+      "id": 6,
       "field": "Buyer checks",
       "value": "certifications/CE still planned"
     },
     {
       "id": 6,
       "field": "Sources / checked",
-      "value": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi\nhttps://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale\nhttps://www.agilityrobotics.com/solutions\n2026-11-19 | Added: Careers | https://www.agilityrobotics.com/"
+      "value": "2026-10-29 | Funding checked (scope in notes); Specifications / identity reviewed (limitations in notes) | Website captured\nhttps://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi\nhttps://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale\nhttps://www.agilityrobotics.com/solutions\n2026-11-19 | Added: Careers | https://www.agilityrobotics.com/\n2026-11-26 | Nasdaq common stock AGLT trading since 2026-11-05; completed combination gross capital checked; historical transaction valuation is not market capitalization | https://www.agilityrobotics.com/content/agility-becomes-first-u-s-publicly-listed-pure-play-humanoid-robotics-company-begins-trading-today-on-nasdaq-as-aglt"
     },
     {
       "id": 7,
@@ -1464,7 +1474,7 @@
     {
       "id": 72,
       "field": "Valuation",
-      "value": "35,190,080.00"
+      "value": "37,389,460.00"
     },
     {
       "id": 72,
@@ -1889,7 +1899,7 @@
     {
       "id": 91,
       "field": "Valuation",
-      "value": "21,568,122,535.00"
+      "value": "21,507,932,426.00"
     },
     {
       "id": 91,

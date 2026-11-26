@@ -1,9 +1,9 @@
 {
  "id": "investment-desk",
- "exported_at": "2026-11-26T07:38:56.000Z",
- "stocks_snapshot": "2026-11-26T06:38:00Z",
+ "exported_at": "2026-11-26T17:42:09.000Z",
+ "stocks_snapshot": "2026-11-26T17:42:09Z",
  "counts": {
-  "securities": 276,
+  "securities": 277,
   "theses": 98,
   "companies_with_theses": 68,
   "publisher_names": 64
@@ -12010,6 +12010,44 @@
     "google_finance": "https://www.google.com/finance/quote/348210:KOSDAQ",
     "yahoo_finance": "https://finance.yahoo.com/quote/348210.KQ/",
     "website": "https://www.nextinsol.com/"
+   },
+   "theses": []
+  },
+  {
+   "key": "NASDAQ:AGLT",
+   "name": "Agility Robotics",
+   "ticker": "AGLT",
+   "exchange": "Nasdaq",
+   "segment": "Humanoids / logistics",
+   "description": "Develops Digit humanoid robots and Agility Arc fleet software for industrial logistics. Common stock began trading on Nasdaq as AGLT on 5 November 2026 after completing the combination with Churchill Capital Corp XI.",
+   "etf": [],
+   "tradingview": {
+    "symbol": "NASDAQ:AGLT",
+    "venue": "Nasdaq",
+    "url": "https://www.tradingview.com/symbols/NASDAQ-AGLT/",
+    "chart": {
+     "status": "verified",
+     "note": "15-minute delayed quotes (Cboe One)",
+     "checked_at": "2026-11-26"
+    },
+    "financials": {
+     "status": "unavailable",
+     "reason": "Historical financials may include the predecessor SPAC; operating-company figures have not been verified.",
+     "checked_at": "2026-11-26"
+    },
+    "profile": {
+     "status": "unverified"
+    },
+    "news": {
+     "status": "unavailable",
+     "reason": "No headlines for this symbol in TradingView's free news widget when checked.",
+     "checked_at": "2026-11-26"
+    }
+   },
+   "links": {
+    "google_finance": "https://www.google.com/finance/quote/AGLT:NASDAQ",
+    "yahoo_finance": "https://finance.yahoo.com/quote/AGLT/",
+    "website": "https://www.agilityrobotics.com/"
    },
    "theses": []
   }

@@ -1100,5 +1100,9 @@ export const NEWS_SYMBOLS = {
  "KOSDAQ:348210": {
   "yahoo": "348210.KQ",
   "name": "Nextin"
+ },
+ "NASDAQ:AGLT": {
+  "yahoo": "AGLT",
+  "name": "Agility Robotics"
  }
 };

@@ -181,7 +181,11 @@ const withPage = new Set(model.companies.map((c) => c.id));
 if (JSON.parse(read('data/public/projection.json')).companies.some((c) => !withPage.has(c.id))) fail('not every company of the projection has a page');
 // English only: no Spanish country label of the snapshot, and no value of a field still pending translation, on any page.
 const display = JSON.parse(read('tools/display-translations.json'));
-const pendingValues = Object.entries(display.pending).flatMap(([id, fs]) => JSON.parse(read(`data/preview/${id}.json`)).rows.flatMap((r) => fs.map((f) => r[f]).filter((v) => typeof v === 'string' && v.length > 20)));
+// A value recorded in English already (its reviewed translation in tools/investment-review.json is the value itself)
+// is not pending: it may appear as it is.
+const invReview = JSON.parse(read('tools/investment-review.json'));
+const alreadyEnglish = new Set([...Object.entries(invReview.descriptions), ...Object.entries(invReview.segments)].filter(([k, v]) => k === v).map(([k]) => k));
+const pendingValues = Object.entries(display.pending).flatMap(([id, fs]) => JSON.parse(read(`data/preview/${id}.json`)).rows.flatMap((r) => fs.map((f) => r[f]).filter((v) => typeof v === 'string' && v.length > 20 && !alreadyEnglish.has(v))));
 for (const f of [...files.keys()].filter((x) => x.endsWith('.html'))) {
   const html = files.get(f);
   for (const label of Object.keys(display.countries)) if (html.includes(`>${label}<`) || html.includes(`(${label})`)) { fail(`${f}: Spanish country label ${label}`); break; }

@@ -10,10 +10,11 @@ const html = readFileSync(new URL('investment/index.html', root), 'utf8').replac
 const js = readFileSync(new URL('assets/investment.js', root), 'utf8');
 const failures = [];
 const ok = (c, m) => { if (!c) failures.push(m); };
+const N = JSON.parse(readFileSync(new URL('data/preview/stocks.json', root), 'utf8')).rows.length; // every listed company
 
 const noJs = new JSDOM(html).window.document;
 ok(!noJs.querySelector('.inv-cmp-nojs').hidden && noJs.querySelector('.inv-cmp-slots').hidden, 'without JavaScript the note shows and the slots stay hidden');
-ok(noJs.querySelectorAll('#inv-companies tbody tr').length === 276, 'the directory keeps every company without JavaScript');
+ok(noJs.querySelectorAll('#inv-companies tbody tr').length === N, 'the directory keeps every company without JavaScript');
 
 const dom = new JSDOM(html, { url: 'https://whyhumanoid.com/investment/', runScripts: 'outside-only' });
 const w = dom.window;
@@ -28,10 +29,10 @@ const card = (n) => d.querySelector(`.inv-slot[data-slot="${n}"] .inv-slot-card`
 const key = (n, k) => input(n).dispatchEvent(new w.KeyboardEvent('keydown', { key: k, bubbles: true, cancelable: true }));
 const type = (n, v) => { input(n).value = v; input(n).dispatchEvent(new w.Event('input', { bubbles: true })); };
 
-ok(total === 276, `276 companies in the directory, found ${total}`);
+ok(total === N, `${N} companies in the directory, found ${total}`);
 ok(d.querySelectorAll('.inv-slot').length === 3, 'three slots');
 ok(d.querySelectorAll('#inv-companies input[type=checkbox]').length === 0, 'no comparison checkbox in the rows');
-ok(d.querySelectorAll('#inv-companies .inv-row-tools button').length === 276, 'every row keeps its watchlist star');
+ok(d.querySelectorAll('#inv-companies .inv-row-tools button').length === N, 'every row keeps its watchlist star');
 ok(d.querySelector('.inv-cmp-nojs').hidden && !d.querySelector('.inv-cmp-slots').hidden, 'with JavaScript the slots show');
 ok(status() === 'No company chosen yet.', `start message: ${status()}`);
 

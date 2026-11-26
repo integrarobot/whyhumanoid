@@ -2,13 +2,13 @@
   "dataset": "humanoids",
   "access": "free",
   "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
-  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the import of 2026-11-26T06:38:00Z (every current customer row; records moved out of the tab kept apart)",
-  "snapshot": "2026-11-26T06:38:00Z",
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the import of 2026-11-26T17:42:09Z (every current customer row; records moved out of the tab kept apart)",
+  "snapshot": "2026-11-26T17:42:09Z",
   "record_count": 212,
   "verified_import": {
     "environment": "workbook export",
-    "snapshot": "2026-11-26T06:38:00Z",
-    "import_run": "workbook export of 2026-11-26T06:38:00Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export)",
+    "snapshot": "2026-11-26T17:42:09Z",
+    "import_run": "workbook export of 2026-11-26T17:42:09Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export)",
     "updated": [
       {
         "id": 1,
@@ -105,6 +105,14 @@
       {
         "id": 6,
         "field": "Careers"
+      },
+      {
+        "id": 6,
+        "field": "Stock"
+      },
+      {
+        "id": 6,
+        "field": "Rounds"
       },
       {
         "id": 6,
@@ -2617,12 +2625,12 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "b5bca44e0bf137961634d8a379f7bc1f6e697d50ba63a3aef3e24b421a7b9b2c",
-      "bytes": 401396
+      "sha256": "5310ba5b4b6a68f3e919f517112c355b65429cc1d44b190855d87799f9479f86",
+      "bytes": 401848
     },
     "humanoids-catalogue.csv": {
-      "sha256": "6fe4b5338af0e1b5bbd5127301bf9c1d3adf6aae88762d8a8255d97989021d11",
-      "bytes": 249246
+      "sha256": "5422410fcd378cecc5ad78925fb0a20464b957f50e211d48217794eb5fa9d9f6",
+      "bytes": 249695
     }
   }
 }

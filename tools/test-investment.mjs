@@ -19,7 +19,7 @@ test('snapshot: 98 thesis records on 68 companies, every listed company present,
   assert.equal(desk.theses.length, 98);
   assert.equal(byId.size, 98);
   assert.equal(new Set(desk.theses.map((t) => t.security)).size, 68);
-  assert.equal(desk.securities.length, 276);
+  assert.equal(desk.securities.length, stocks.rows.length);
   for (const t of desk.theses) {
     assert.deepEqual(Object.keys(t), THESIS_KEYS);
     assert.match(t.source_url, /^https:\/\//);
@@ -85,7 +85,7 @@ test('news allowlist: one entry per listed company with a Yahoo symbol, matching
 
 test('pages: every listed company page has market data and its theses; the directory lists everything', () => {
   const dir = read('investment/index.html');
-  assert.equal((dir.match(/<tr data-key="[A-Z]+:/g) ?? []).length, 276);
+  assert.equal((dir.match(/<tr data-key="[A-Z]+:/g) ?? []).length, stocks.rows.length);
   assert.equal((dir.match(/<tr data-key="thesis-/g) ?? []).length, 98);
   let pages = 0;
   let cards = 0;
@@ -99,7 +99,7 @@ test('pages: every listed company page has market data and its theses; the direc
     assert.ok(html.includes('id="theses"'), slug);
     assert.doesNotMatch(html, /docs\.google|THESIS_RECORDS/, slug);
   }
-  assert.equal(pages, 276);
+  assert.equal(pages, stocks.rows.length);
   assert.equal(cards, 98);
   const fanuc = read('companies/fanuc/index.html');
   assert.doesNotMatch(fanuc, /data-tv-widget="advanced-chart"/);
@@ -190,7 +190,7 @@ test('company header: the chart is offered once, beside the identity and key fac
 
 test('company comparator: three labelled comboboxes over every company, a top link, no row checkboxes, honest fallback', () => {
   const dir = read('investment/index.html');
-  assert.match(dir, /<nav class="jump" aria-label="On this page"><a href="#desk">Companies \(276\)<\/a><a href="#comparator">Company comparator<\/a>/);
+  assert.ok(dir.includes(`<nav class="jump" aria-label="On this page"><a href="#desk">Companies (${stocks.rows.length})</a><a href="#comparator">Company comparator</a>`));
   assert.match(dir, /<section class="inv-comparator" id="comparator" aria-labelledby="comparator-h">\n<h3 id="comparator-h">Company comparator<\/h3>/);
   for (const n of [1, 2, 3]) {
     assert.match(dir, new RegExp(`<label class="inv-slot-label" id="cmp-label-${n}" for="cmp-input-${n}">Company ${n}</label>`));
