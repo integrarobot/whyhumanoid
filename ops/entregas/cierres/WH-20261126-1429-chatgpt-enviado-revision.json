@@ -1,0 +1,43 @@
+{
+  "id": "WH-20261126-1429-chatgpt-enviado-revision",
+  "tarea": "Enviar Why Humanoid? 1.0.0 a revision publica de ChatGPT tras la aceptacion expresa de las seis declaraciones legales por Javier",
+  "origen": "Javier, en el chat de Codex: si acepto y autorizo, 26/11/2026. Continuacion de WH-20261126-1334-chatgpt-dominio-y-demo",
+  "fecha": "2026-11-26T14:29:01+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "codex (aceptacion autorizada, envio y verificacion del portal; registro y aviso propios); Claude Code (transporte exacto de los artefactos del cierre mediante PR)",
+  "cambios": [
+    "Marcadas las seis declaraciones legales del dialogo Submit for review despues de la confirmacion especifica del titular. Mismos terminos y declaraciones presentados al usuario, sin cambios.",
+    "Enviada la candidatura del complemento Why Humanoid? version1.0.0, editor Integrarobot, categoria Education & Research, todos los paises admitidos segun la configuracion preparada. Se conserva el MCP publico sin autenticacion y el alcance de solo lectura.",
+    "El portal crea la release pluginrel_db2bbd74c38c81918cfb1c1e95efc00d y muestra Review status In review, Publication Not published y MCP configuration Configured.",
+    "Se envian las notas privadas de revision preparadas: privacidad MCP, comercio separado en la web, metodo real de captura del demo y limites de las pruebas de modelo. No se afirma que ocho casos exactos hayan pasado. No se cambia la configuracion ni se cancela la revision."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Justificante de la candidatura en revision",
+      "url": "https://platform.openai.com/plugins/manage/plugin_asdk_app_6b081e753c588191b25a6d4dfb4c3d99?version=pluginrel_db2bbd74c38c81918cfb1c1e95efc00d"
+    },
+    {
+      "etiqueta": "Demo publica revisada",
+      "url": "https://whyhumanoid.com/agents/demo/"
+    },
+    {
+      "etiqueta": "Cierre tecnico previo",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/148"
+    }
+  ],
+  "despliegue": [
+    "No aplica: envio de la candidatura ya preparada en OpenAI Platform. No hay cambios de codigo, Worker, Pages, datos, permisos o pagos en este envio. Demo y dominio publicados y verificados en PR142/144, cierre tecnicoPR148."
+  ],
+  "verificaciones": [
+    "Antes del envio, seis casillas checked y boton Submit habilitado; despues se pulsa Submit una sola vez y el dialogo desaparece.",
+    "La tabla Your plugins del portal muestra Why Humanoid?, Not published, Version1.0.0 In review y Configured.",
+    "Se abre el enlace de la version recien creada: Review status In review, Publication Not published, MCP configuration Configured, Developer Integrarobot, metadata version1.0.0 In review. No se confunde recepcion con aprobacion o publicacion.",
+    "Pruebas tecnicas y limitaciones de modelo del cierre anterior se conservan; no se inventa una nueva ejecucion de pruebas sobre el binding publico."
+  ],
+  "pendientes": [
+    "Decision externa de OpenAI: aprobacion o peticion de cambios. La release todavia no esta publicada.",
+    "Despues de una aprobacion, verificar version y paises antes de publicar; comprobar la instalacion publica y sus casos reales. No cambiar ni cancelar esta revision para actualizar el paquete sin autorizacion."
+  ],
+  "siguiente_accion": "OpenAI revisa la candidatura. Codex actuara cuando exista una respuesta o Javier pida revisar el estado; no se promete seguimiento automatico nuevo."
+}
