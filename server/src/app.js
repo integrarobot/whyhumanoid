@@ -28,6 +28,7 @@ import {
 } from './orders/orders.js';
 import { meterCredential } from './usage.js';
 import { handleMcp } from './mcp.js';
+import { companyNews } from './news/yahoo.js';
 
 const MAX_API_KEYS = 5;
 
@@ -36,7 +37,7 @@ const clampInt = (raw, min, max, fallback) => {
   return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
 };
 
-export function createApp({ db, config, gateway, mailer, importNow, importAuth = verifyImportToken, clock = () => Math.floor(Date.now() / 1000), log = console, waitUntil = null, fetchPublic = null }) {
+export function createApp({ db, config, gateway, mailer, importNow, importAuth = verifyImportToken, clock = () => Math.floor(Date.now() / 1000), log = console, waitUntil = null, fetchPublic = null, newsFetch = null, newsCache = null }) {
   // Every credential check goes through here: agent API keys are metered (fair use, server/src/usage.js).
   async function authed(request, now) {
     const account = await authenticate(request, db, now);
@@ -115,6 +116,20 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       },
     ],
 
+    // Recent headlines of one listed company of Investment (26 Nov 2026): Yahoo Finance's public RSS headline feed for
+    // an allowlisted company key only, cached 30 minutes (server/src/news/yahoo.js). Public, no account, no D1.
+    [
+      'GET',
+      /^\/v1\/news$/,
+      async (request, now, match, url) => {
+        const key = (url.searchParams.get('security') ?? '').slice(0, 40);
+        if (!/^[A-Z]+:[A-Z0-9.-]+$/.test(key)) throw new HttpError(400, 'invalid_security');
+        if (!newsFetch) throw new HttpError(503, 'news_unavailable');
+        const result = await companyNews(key, { fetchImpl: newsFetch, cache: newsCache, now: now * 1000 });
+        if (result.status === 404) throw new HttpError(404, 'unknown_security');
+        return json(200, result.body, { 'cache-control': 'public, max-age=300' });
+      },
+    ],
     ['GET', /^\/v1\/datasets$/, async () => json(200, { datasets: publicDatasetList() })],
 
     // Public rows: every row of a free tab with all its values; every row of Deployments and Components at the public

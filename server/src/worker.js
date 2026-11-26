@@ -82,6 +82,8 @@ export default {
       importNow: (accessToken, relationsConfig) => importFromWorkbook(env, undefined, accessToken, relationsConfig),
       waitUntil: ctx?.waitUntil ? (p) => ctx.waitUntil(p) : null,
       fetchPublic: (path) => fetch(new URL(path, config.siteOrigin)),
+      newsFetch: (url, init) => fetch(url, init),
+      newsCache: typeof caches !== 'undefined' ? caches.default : null,
     });
     return app(request);
   },

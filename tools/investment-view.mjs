@@ -1,0 +1,164 @@
+// Investment research desk views (26 Nov 2026): the /investment/ directory (search, filters, sorting, counters,
+// watchlist, comparison, every thesis record) and, on each listed company's page, its market data (TradingView widgets
+// per capability, recent headlines through GET /v1/news, outside links) and its dated, attributed thesis cards. From
+// the public snapshot data/investment/desk.json (tools/export-investment.mjs) and the public stocks snapshot.
+
+import { readFileSync } from 'node:fs';
+
+const root = new URL('../', import.meta.url);
+export const readDesk = () => JSON.parse(readFileSync(new URL('data/investment/desk.json', root), 'utf8'));
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
+const ext = (u, label) => `<a href="${esc(u)}" rel="noopener noreferrer">${esc(label ?? host(u))}</a>`;
+const na = (t = 'Not recorded') => `<span class="na">${esc(t)}</span>`;
+const uniq = (a) => [...new Set(a)];
+const STANCE = { positive: 'Positive', exit: 'Exit', mixed: 'Mixed' };
+const CHART_LABEL = { verified: 'Chart checked', unverified: 'Chart not yet checked', unavailable: 'No chart here' };
+
+export function deskIndex(desk) {
+  const byKey = new Map(desk.securities.map((x) => [x.key, x]));
+  const thesis = new Map(desk.theses.map((t) => [t.id, t]));
+  return { byKey, thesis, thesesOf: (key) => (byKey.get(key)?.theses ?? []).map((id) => thesis.get(id)) };
+}
+
+const when = (t) => (t.published ? esc(t.published) : `<span class="na">Publication date not stated</span>`);
+const pill = (cls, label) => `<span class="pill ${esc(cls)}">${esc(label)}</span>`;
+
+export function caveatsHtml(desk) {
+  return `<ul class="readkey">${desk.caveats.map((c) => `<li>${esc(c)}</li>`).join('')}</ul>`;
+}
+
+// ---------- /investment/ ----------
+function options(values, label) {
+  return `<option value="">${esc(label)}</option>${values.map(([v, l]) => `<option value="${esc(v)}">${esc(l ?? v)}</option>`).join('')}`;
+}
+
+export function renderInvestmentDesk(desk, { rows, companyOf }) {
+  const ix = deskIndex(desk);
+  const items = rows.map((r) => {
+    const x = ix.byKey.get(r.gf_symbol);
+    const theses = ix.thesesOf(r.gf_symbol);
+    const co = companyOf(r);
+    return { r, x, theses, path: co?.path ?? null };
+  });
+  const withT = items.filter((i) => i.theses.length).length;
+  const charts = items.filter((i) => i.x.tradingview.chart.status !== 'unavailable').length;
+  const venues = uniq(items.map((i) => i.x.tradingview.venue ?? i.r.exchange)).sort();
+  const countries = uniq(items.map((i) => i.r.country).filter(Boolean)).sort();
+  const segments = uniq(items.map((i) => i.x.segment).filter(Boolean)).sort();
+  const etfs = uniq(items.flatMap((i) => i.x.etf)).sort();
+  const publishers = uniq(desk.theses.map((t) => t.publisher)).sort((a, b) => a.localeCompare(b));
+  const types = uniq(desk.theses.map((t) => t.type)).sort();
+  const row = ({ r, x, theses, path }) => {
+    const stances = uniq(theses.map((t) => t.stance_group));
+    const pubs = uniq(theses.map((t) => t.publisher));
+    const venue = x.tradingview.venue ?? r.exchange;
+    const search = [r.name, r.ticker, r.exchange, venue, x.key, r.isin, ...pubs].filter(Boolean).join(' ').toLowerCase();
+    const data = {
+      key: x.key, name: r.name, path: path ?? '', ticker: r.ticker, exchange: venue, country: r.country ?? '', segment: x.segment ?? '',
+      etf: x.etf.join('|'), theses: String(theses.length), stances: stances.join('|'), publishers: pubs.join('|'), chart: x.tradingview.chart.status, search,
+    };
+    const attrs = Object.entries(data).map(([k, v]) => `data-${k}="${esc(v)}"`).join(' ');
+    return `<tr ${attrs}><td><span class="inv-row-tools"></span> ${path ? `<a href="${esc(path)}">${esc(r.name)}</a>` : esc(r.name)}</td><td>${esc(r.ticker ?? '')}<br><span class="dim">${esc(venue)}</span></td><td>${esc(r.country ?? '')}</td><td>${x.segment ? esc(x.segment) : na()}</td><td>${x.etf.length ? x.etf.map((e) => pill('', e)).join('') : na('None')}</td><td>${theses.length ? `${theses.length} ${stances.map((s) => pill(s, STANCE[s])).join('')}` : '<span class="na">0</span>'}</td><td>${pill(x.tradingview.chart.status, CHART_LABEL[x.tradingview.chart.status])}</td></tr>`;
+  };
+  const tRow = (t) => {
+    const x = ix.byKey.get(t.security);
+    const item = items.find((i) => i.x === x);
+    const search = [t.company, t.publisher, t.title, t.type, t.exposure, x.ticker].join(' ').toLowerCase();
+    const attrs = { key: t.id, company: t.company, publisher: t.publisher, date: t.published ?? t.period, stance: t.stance_group, type: t.type, search };
+    return `<tr ${Object.entries(attrs).map(([k, v]) => `data-${k}="${esc(v)}"`).join(' ')}><td>${item?.path ? `<a href="${esc(item.path)}#theses">${esc(t.company)}</a>` : esc(t.company)}</td><td>${esc(t.publisher)}</td><td>${t.published ? esc(t.published) : `<span class="na">Not stated</span>`}<br><span class="dim">${esc(t.period)}</span></td><td>${pill(t.stance_group, t.stance)}</td><td>${esc(t.type)}</td><td>${ext(t.source_url, t.title)}</td></tr>`;
+  };
+  return `<section id="desk"><h2>Listed companies <span class="dim">(${items.length})</span></h2>
+<p class="inv-counters"><span><b>${items.length}</b> listed companies</span><span><b>${withT}</b> with a thesis in this catalogue</span><span><b>${desk.theses.length}</b> thesis records</span><span><b>${charts}</b> with a chart offered here</span><span><b>${items.length - charts}</b> without a chart here</span></p>
+<form class="inv-filters" data-for="inv-companies" data-count="inv-count" data-compare="inv-compare" hidden>
+<label class="wide">Search company, ticker, ISIN or publisher<input type="search" name="q" autocomplete="off" placeholder="e.g. Tesla, 6954, Baillie Gifford"></label>
+<label>Segment<select name="segment">${options(segments.map((v) => [v]), 'All segments')}</select></label>
+<label>ETF membership<select name="etf" data-mode="tokens">${options(etfs.map((v) => [v]), 'Any or none')}</select></label>
+<label>Country<select name="country">${options(countries.map((v) => [v]), 'All countries')}</select></label>
+<label>Exchange<select name="exchange">${options(venues.map((v) => [v]), 'All exchanges')}</select></label>
+<label>Thesis coverage<select name="theses" data-mode="has"><option value="">Any</option><option value="with">With a thesis here</option><option value="without">No thesis here</option></select></label>
+<label>Stance<select name="stances" data-mode="tokens">${options(Object.entries(STANCE), 'Any stance')}</select></label>
+<label>Publisher<select name="publishers" data-mode="tokens">${options(publishers.map((v) => [v]), 'Any publisher')}</select></label>
+<label>Chart here<select name="chart">${options(Object.entries(CHART_LABEL), 'Any')}</select></label>
+<label class="check"><input type="checkbox" name="watch"> Watchlist only</label>
+<span><button type="reset">Clear filters</button></span>
+</form>
+<p class="inv-bar"><span id="inv-count" aria-live="polite"></span><span class="dim">★ adds a company to a watchlist kept in this browser only. Tick 2 to 4 companies to compare them.</span></p>
+<div id="inv-compare"><div class="inv-compare inv-hidden"><h3>Comparison</h3><div class="inv-compare-table"></div></div><p class="dim" aria-live="polite"></p></div>
+<div class="scroll"><table class="dir" id="inv-companies"><thead><tr><th scope="col" data-sort="name">Company</th><th scope="col" data-sort="ticker">Ticker</th><th scope="col" data-sort="country">Country as recorded</th><th scope="col" data-sort="segment">Segment as recorded</th><th scope="col">ETF membership</th><th scope="col" data-sort="theses" data-type="number">Theses</th><th scope="col" data-sort="chart">Market data</th></tr></thead><tbody>${items.map(row).join('')}</tbody></table></div>
+<p class="key">Segments and ETF membership as recorded in our research (ETF holdings as of ${esc(uniq(rows.map((r) => r.etf_as_of).filter(Boolean)).join(', ') || 'the dates on each page')}). “Chart checked” means the TradingView chart was seen working for that symbol in a browser; “not yet checked” means it is offered but not yet confirmed. Quotes are not stored or published by Why Humanoid?.</p>
+</section>
+<section id="theses"><h2>Investment theses <span class="dim">(${desk.theses.length} records on ${desk.counts.companies_with_theses} companies)</span></h2>
+${caveatsHtml(desk)}
+<form class="inv-filters" data-for="inv-theses" data-count="inv-theses-count" hidden>
+<label class="wide">Search company, publisher, title or exposure<input type="search" name="q" autocomplete="off"></label>
+<label>Stance<select name="stance">${options(Object.entries(STANCE), 'Any stance')}</select></label>
+<label>Publisher<select name="publisher">${options(publishers.map((v) => [v]), 'Any publisher')}</select></label>
+<label>Type<select name="type">${options(types.map((v) => [v]), 'Any type')}</select></label>
+<span><button type="reset">Clear filters</button></span>
+</form>
+<p class="inv-bar"><span id="inv-theses-count" aria-live="polite"></span></p>
+<div class="scroll"><table class="dir" id="inv-theses"><thead><tr><th scope="col" data-sort="company">Company</th><th scope="col" data-sort="publisher">Publisher as stated</th><th scope="col" data-sort="date">Published · period</th><th scope="col" data-sort="stance">Stance as recorded</th><th scope="col" data-sort="type">Type</th><th scope="col">Source</th></tr></thead><tbody>${desk.theses.map(tRow).join('')}</tbody></table></div>
+<p class="key">${desk.counts.publisher_names} publisher names as the sources give them; several are funds of the same management firm. Each company page shows its theses in full, with the publisher's conclusions, valuation or rationale, horizon, limits and where in the source to find them.</p>
+</section>`;
+}
+
+// ---------- company pages ----------
+function widget(kind, cls, cfg, tvUrl, wait) {
+  return `<div class="mkt-frame ${cls}" data-tv-widget="${esc(kind)}" data-tv-config="${esc(JSON.stringify(cfg))}"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"><p class="mkt-wait">${esc(wait)}</p></div><div class="tradingview-widget-copyright"><a href="${esc(tvUrl)}" rel="noopener nofollow" target="_blank">Track all markets on TradingView</a></div></div></div>`;
+}
+function statusLine(cap, what) {
+  if (cap.status === 'verified') return `<p class="status">${esc(what)} checked in a browser on ${esc(cap.checked_at)}${cap.note ? `: ${esc(cap.note)}` : ''}.</p>`;
+  return `<p class="status">${esc(what)} offered for this symbol but not yet checked in a browser. If TradingView says the symbol is not available, use the links below.</p>`;
+}
+
+export function renderListingResearch(l, x, theses, { apiOrigin, snapshot }) {
+  const tv = x.tradingview;
+  const sym = tv.symbol;
+  const common = { symbol: sym, locale: 'en', colorTheme: 'dark', isTransparent: true };
+  const links = [
+    x.links.google_finance && ext(x.links.google_finance, 'Google Finance ↗'),
+    x.links.yahoo_finance && ext(x.links.yahoo_finance, 'Yahoo Finance ↗'),
+    x.links.yahoo_finance && ext(`${x.links.yahoo_finance}news/`, 'Yahoo Finance news ↗'),
+    ext(`https://news.google.com/search?q=${encodeURIComponent(`"${l.name}"`)}&hl=en`, 'Google News search ↗'),
+    sym && ext(tv.url, 'TradingView ↗'),
+    x.links.website && ext(x.links.website, 'Company website ↗'),
+  ].filter(Boolean);
+  const linkList = `<ul class="mkt-links">${links.map((a) => `<li>${a}</li>`).join('')}</ul>`;
+  const block = (title, cap, body) => `<div class="mkt"><h3>${esc(title)}</h3>${cap.status === 'unavailable' ? `<p class="status">Not available here: ${esc(cap.reason)} Use the links below.</p>` : body}</div>`;
+  const chart = block('Quote and chart', tv.chart, `${statusLine(tv.chart, 'The chart')}${widget('symbol-info', 'info', { ...common, width: '100%' }, tv.url, 'The quote loads from TradingView when you reach it.')}${widget('advanced-chart', 'chart', { autosize: true, symbol: sym, interval: 'D', timezone: 'Etc/UTC', theme: 'dark', style: '1', locale: 'en', allow_symbol_change: false, withdateranges: true, range: '12M', hide_side_toolbar: true, details: false, hotlist: false, calendar: false, save_image: false, support_host: 'https://www.tradingview.com' }, tv.url, 'The chart loads from TradingView when you reach it.')}`);
+  const fin = block('Financials', tv.financials, `${statusLine(tv.financials, 'Financials')}${widget('financials', 'financials', { ...common, displayMode: 'regular', width: '100%', height: '100%' }, tv.url, 'Financials load from TradingView when you reach them.')}`);
+  const prof = block('Company profile', tv.profile, `${statusLine(tv.profile, 'The profile')}${widget('symbol-profile', 'profile', { ...common, width: '100%', height: '100%' }, tv.url, 'The profile loads from TradingView when you reach it.')}`);
+  const news = !x.links.yahoo_finance ? `<div class="mkt"><h3>Recent headlines</h3><p class="status">No Yahoo Finance symbol is mapped for this company, so no headlines are read here. Use the links below.</p>${linkList}</div>` : `<div class="mkt" data-news-security="${esc(x.key)}" data-news-api="${esc(apiOrigin)}"><h3>Recent headlines</h3><p class="status news-state">Headlines load from Yahoo Finance's public feed when you reach this block.</p><ul class="sources news-list"></ul><p class="key">Headlines, dates and links only, as the feed lists them for this company's Yahoo Finance symbol (${esc(decodeURIComponent(x.links.yahoo_finance.split('/quote/')[1].replace(/\/$/, '')))}). The feed picks them; some may be about the sector rather than the company. No freshness is promised.</p>${linkList}</div>`;
+  const stories = tv.news.status === 'unavailable' ? '' : `<details class="mkt"><summary>Top stories on TradingView (optional, may be old or empty)</summary>${widget('timeline', 'news', { ...common, feedMode: 'symbol', displayMode: 'regular', width: '100%', height: '100%' }, tv.url, 'Stories load from TradingView when you open this.')}</details>`;
+  return `<section id="market"><h2>Market data</h2>
+<dl class="kv">${[
+    ['Ticker', esc(l.ticker)], ['Exchange as recorded', esc(l.exchange)], ['TradingView symbol', sym ? esc(sym) : na('Not mapped')],
+    ['Currency as recorded', l.currency ? esc(l.currency) : na()], ['ISIN', l.isin ? esc(l.isin) : na()],
+  ].map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join('')}</dl>
+${chart}${fin}${prof}${news}${stories}
+<p class="key">Quotes, charts, financials and stories are TradingView widgets loaded from TradingView in your browser, with the delay TradingView shows; headlines come from Yahoo Finance. None of it is Why Humanoid? data, nothing is stored, and nothing here is investment advice. Listing details from the Investment category, snapshot ${esc(String(snapshot).slice(0, 10))}.</p>
+</section>`;
+}
+
+export function renderTheses(company, theses, desk) {
+  if (!theses.length) return `<section id="theses"><h2>Investment theses</h2><p>No thesis about ${esc(company)} is in this catalogue. That does not mean that no thesis exists.</p><p class="key">See all ${desk.theses.length} thesis records on <a href="/investment/#theses">Investment</a>.</p></section>`;
+  const card = (t) => `<li class="thesis" id="${esc(t.id)}"><header>${pill(t.stance_group, t.stance)}<b>${esc(t.publisher)}</b><span class="dim">${when(t)} · ${esc(t.period)}</span></header>
+<h3>${ext(t.source_url, t.title)}</h3>
+<dl>
+<dt>Publisher's view</dt><dd>${esc(t.conclusions)}</dd>
+<dt>Valuation or rationale, as published</dt><dd>${t.rationale ? esc(t.rationale) : na()}</dd>
+<dt>Period or model horizon</dt><dd>${esc(t.period)}</dd>
+<dt>Robotics exposure, as described</dt><dd>${esc(t.exposure)}</dd>
+<dt>Type</dt><dd>${esc(t.type)}</dd>
+<dt>Limits</dt><dd>${t.limits ? esc(t.limits) : na()}</dd>
+<dt>Where in the source</dt><dd>${t.locator ? esc(t.locator) : na()}</dd>
+<dt>Checked against the source</dt><dd>${esc(t.verified_on)}</dd>
+</dl>${t.semiconductor ? '<p class="semi">A thesis about semiconductors or computing is not evidence of revenue from humanoid robots.</p>' : ''}</li>`;
+  const sorted = [...theses].sort((a, b) => String(b.published ?? b.period).localeCompare(String(a.published ?? a.period)));
+  return `<section id="theses"><h2>Investment theses <span class="dim">(${theses.length})</span></h2>
+${caveatsHtml(desk)}
+<ul class="theses">${sorted.map(card).join('')}</ul>
+<p class="key">Publishers' opinions and forecasts as their sources state them, newest first; historic valuations stay in the publisher's currency and horizon. All ${desk.theses.length} records: <a href="/investment/#theses">Investment</a>.</p></section>`;
+}

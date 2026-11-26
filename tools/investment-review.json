@@ -1,0 +1,375 @@
+{
+  "note": "Reviewed reading for the Investment research desk (tools/export-investment.mjs). segments: English display label for each SEGMENT value of the Investment category, a literal translation (no classification added). tradingview: how a Google Finance exchange prefix maps to the exchange prefix of TradingView's free widgets, with one status per capability (chart: Symbol Info and Advanced Chart; financials: Fundamental Data; profile: Company Profile; news: Top Stories filtered to the symbol), because the widgets differ: on 26 Nov 2026 Codex found the chart widgets refuse TSE:6954 and HKEX:9880 ('only available on TradingView') while Fundamental Data works for both. Status values: verified (checked in a real browser, symbols), unverified (attempted, not yet checked), unavailable (not shown, with the reason). symbols: per-security results of real-browser checks, overriding the exchange status, with the date and what was seen. yahoo: Yahoo Finance suffix per prefix, used only for an outside link. text_edits: reader-facing rewording of thesis cells that name the workbook or the research workflow; each 'from' must occur in a cell as recorded.",
+  "segments": {
+    "Automatización / tecnología (RBOT)": "Automation / technology (RBOT)",
+    "Robótica / IA (BOTZ)": "Robotics / AI (BOTZ)",
+    "Robótica / automatización (ROBO)": "Robotics / automation (ROBO)",
+    "Humanoides / IA física (KOID)": "Humanoids / physical AI (KOID)",
+    "Sensores / percepción": "Sensors / perception",
+    "Robótica industrial / movimiento": "Industrial robotics / motion",
+    "Reductores / actuadores": "Reducers / actuators",
+    "Humanoides / grupo diversificado": "Humanoids / diversified group",
+    "Humanoides / servicios": "Humanoids / services",
+    "Cobots / plataformas humanoides": "Cobots / humanoid platforms",
+    "Robótica médica": "Medical robotics",
+    "Reparto / servicios hospitalarios": "Delivery / hospital services",
+    "Robótica de servicios / industria": "Service robotics / industry",
+    "Humanoides sociales": "Social humanoids",
+    "Actuadores / plataformas": "Actuators / platforms",
+    "Inspección / logística": "Inspection / logistics",
+    "Computación / software / simulación": "Computing / software / simulation",
+    "Componentes / grupo industrial": "Components / industrial group",
+    "Cobots / robots móviles / grupo": "Cobots / mobile robots / group",
+    "Robótica industrial": "Industrial robotics",
+    "Reductores / grupo industrial": "Reducers / industrial group",
+    "Robots colaborativos": "Collaborative robots",
+    "Automoción / exposición a robótica": "Automotive / robotics exposure",
+    "Logística / almacenes": "Logistics / warehouses",
+    "Logística / almacenamiento": "Logistics / storage",
+    "Visión artificial / percepción": "Machine vision / perception",
+    "Humanoides / cuadrúpedos": "Humanoids / quadrupeds",
+    "Engranajes / transmisión": "Gears / transmission",
+    "Sensores / medida de fuerza": "Sensors / force measurement",
+    "Accionamientos / automatización": "Drives / automation",
+    "Motores / control / actuadores": "Motors / control / actuators",
+    "Control térmico / cadena de actuadores": "Thermal control / actuator supply chain",
+    "Automoción / actuadores robóticos": "Automotive / robotic actuators",
+    "Control de movimiento / grupo industrial": "Motion control / industrial group",
+    "Movimiento lineal / componentes": "Linear motion / components",
+    "Movimiento lineal / transmisión": "Linear motion / transmission",
+    "Semiconductores / electrónica": "Semiconductors / electronics",
+    "Motores / componentes": "Motors / components",
+    "Componentes / movilidad": "Components / mobility",
+    "Microaccionamientos / transmisión": "Micro drives / transmission",
+    "Automoción / cadena de actuadores": "Automotive / actuator supply chain",
+    "Motores / reductores / transmisión": "Motors / reducers / transmission",
+    "Metrología / medida de posición": "Metrology / position measurement",
+    "Motores / control de movimiento": "Motors / motion control",
+    "Drones / componentes": "Drones / components",
+    "Sistemas no tripulados / defensa": "Uncrewed systems / defence",
+    "Software industrial / activos": "Industrial software / assets"
+  },
+  "tradingview": {
+    "NASDAQ": {
+      "prefix": "NASDAQ",
+      "venue": "Nasdaq",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "NYSE": {
+      "prefix": "NYSE",
+      "venue": "New York Stock Exchange",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "NYSEAMERICAN": {
+      "prefix": "AMEX",
+      "venue": "NYSE American",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "ETR": {
+      "prefix": "XETR",
+      "venue": "Xetra",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "SWX": {
+      "prefix": "SIX",
+      "venue": "SIX Swiss Exchange",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "HEL": {
+      "prefix": "OMXHEX",
+      "venue": "Nasdaq Helsinki",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "STO": {
+      "prefix": "OMXSTO",
+      "venue": "Nasdaq Stockholm",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "EPA": {
+      "prefix": "EURONEXT",
+      "venue": "Euronext Paris",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "AMS": {
+      "prefix": "EURONEXT",
+      "venue": "Euronext Amsterdam",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "EBR": {
+      "prefix": "EURONEXT",
+      "venue": "Euronext Brussels",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "BIT": {
+      "prefix": "MIL",
+      "venue": "Borsa Italiana",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "LON": {
+      "prefix": "LSE",
+      "venue": "London Stock Exchange",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "OSL": {
+      "prefix": "OSL",
+      "venue": "Oslo Børs",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "TSE": {
+      "prefix": "TSX",
+      "venue": "Toronto Stock Exchange",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "CVE": {
+      "prefix": "TSXV",
+      "venue": "TSX Venture Exchange",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "TLV": {
+      "prefix": "TASE",
+      "venue": "Tel Aviv Stock Exchange",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "ASX": {
+      "prefix": "ASX",
+      "venue": "Australian Securities Exchange",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "BVMF": {
+      "prefix": "BMFBOVESPA",
+      "venue": "B3 (Brazil)",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "SHA": {
+      "prefix": "SSE",
+      "venue": "Shanghai Stock Exchange",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "SHE": {
+      "prefix": "SZSE",
+      "venue": "Shenzhen Stock Exchange",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "KLSE": {
+      "prefix": "MYX",
+      "venue": "Bursa Malaysia",
+      "chart": "unverified",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified"
+    },
+    "TYO": {
+      "prefix": "TSE",
+      "venue": "Tokyo Stock Exchange",
+      "chart": "unavailable",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified",
+      "chart_reason": "TradingView's free chart widgets do not show quotes from this exchange."
+    },
+    "HKG": {
+      "prefix": "HKEX",
+      "venue": "Hong Kong Exchanges",
+      "chart": "unavailable",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified",
+      "chart_reason": "TradingView's free chart widgets do not show quotes from this exchange."
+    },
+    "KRX": {
+      "prefix": "KRX",
+      "venue": "Korea Exchange (KOSPI)",
+      "chart": "unavailable",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified",
+      "chart_reason": "TradingView's free chart widgets do not show quotes from this exchange."
+    },
+    "KOSDAQ": {
+      "prefix": "KRX",
+      "venue": "Korea Exchange (KOSDAQ)",
+      "chart": "unavailable",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified",
+      "chart_reason": "TradingView's free chart widgets do not show quotes from this exchange."
+    },
+    "TPE": {
+      "prefix": "TWSE",
+      "venue": "Taiwan Stock Exchange",
+      "chart": "unavailable",
+      "financials": "unverified",
+      "profile": "unverified",
+      "news": "unverified",
+      "chart_reason": "TradingView's free chart widgets do not show quotes from this exchange."
+    }
+  },
+  "symbols": {
+    "NASDAQ:TSLA": {
+      "checked_at": "2026-11-26",
+      "chart": "verified",
+      "chart_note": "15-minute delayed quotes (Cboe One)",
+      "financials": "verified",
+      "news": "verified",
+      "news_note": "filtered to the company; the latest headline was 20 days old when checked"
+    },
+    "XETR:SHA0": {
+      "checked_at": "2026-11-26",
+      "chart": "verified",
+      "chart_note": "end-of-day data (Xetra)"
+    },
+    "TSE:6954": {
+      "checked_at": "2026-11-26",
+      "chart": "unavailable",
+      "chart_reason": "TradingView's free widgets show this symbol only on TradingView.",
+      "financials": "verified",
+      "news": "unavailable",
+      "news_reason": "No headlines for this symbol in TradingView's free news widget when checked."
+    },
+    "HKEX:9880": {
+      "checked_at": "2026-11-26",
+      "chart": "unavailable",
+      "chart_reason": "TradingView's free widgets show this symbol only on TradingView.",
+      "financials": "verified",
+      "news": "unavailable",
+      "news_reason": "No headlines for this symbol in TradingView's free news widget when checked."
+    }
+  },
+  "yahoo": {
+    "NASDAQ": "",
+    "NYSE": "",
+    "NYSEAMERICAN": "",
+    "ETR": ".DE",
+    "SWX": ".SW",
+    "HEL": ".HE",
+    "STO": ".ST",
+    "EPA": ".PA",
+    "AMS": ".AS",
+    "EBR": ".BR",
+    "BIT": ".MI",
+    "LON": ".L",
+    "OSL": ".OL",
+    "TSE": ".TO",
+    "CVE": ".V",
+    "TLV": ".TA",
+    "ASX": ".AX",
+    "BVMF": ".SA",
+    "SHA": ".SS",
+    "SHE": ".SZ",
+    "TYO": ".T",
+    "HKG": ".HK",
+    "KRX": ".KS",
+    "KOSDAQ": ".KQ",
+    "TPE": ".TW"
+  },
+  "text_edits": [
+    {
+      "from": "Company match is Hyundai Motor, but this thesis specifically concerns preference shares, not Stocks' ordinary-share ticker.",
+      "to": "Company match is Hyundai Motor, but this thesis specifically concerns its preference shares, not the ordinary shares listed here (005380)."
+    },
+    {
+      "from": ", broader Stocks universe",
+      "to": ", in the wider list of listed companies"
+    },
+    {
+      "from": "Company identity matched to Stocks, not similarly named robotics companies.",
+      "to": "Company identity matched by name and ticker, not to similarly named robotics companies."
+    },
+    {
+      "from": "Stocks spelling preserved. Do not confuse with Royal Bank of Canada.",
+      "to": "Not to be confused with Royal Bank of Canada."
+    },
+    {
+      "from": "Company is in Stocks; this thesis mainly concerns government technology and infrastructure.",
+      "to": "This thesis mainly concerns government technology and infrastructure, not robotics."
+    },
+    {
+      "from": "robotics linkage comes from Stocks, not this software-services argument.",
+      "to": "the robotics link comes from the company's place in the list of listed companies, not from this software-services argument."
+    },
+    {
+      "from": " Web reader accessed original; direct download returned 403.",
+      "to": ""
+    },
+    {
+      "from": " PDF metadata title is stale; use the cover, not metadata.",
+      "to": ""
+    },
+    {
+      "from": "Purchase date December 2022 and PDF file label are not publication dates.",
+      "to": "The December 2022 purchase date is not a publication date."
+    },
+    {
+      "from": "Original PDF verified through web reader; direct automated download returned 403. ",
+      "to": ""
+    },
+    {
+      "from": " Original read through web reader; automated download returned 403.",
+      "to": ""
+    },
+    {
+      "from": "Quarterly cover period, not PDF metadata title or publication date.",
+      "to": "Quarterly period from the cover; not a publication date."
+    }
+  ]
+}
