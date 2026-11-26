@@ -25,7 +25,7 @@
     "Codex, Other Robots (563): incluye Realtime, descrito como software, y Harmonic Drive, fabricante de componentes.",
     "Codex, Method: declara los niveles E0 a E5 sin definirlos.",
     "Codex, cobertura: Benchmarks con resultados en 2 de 22 (20 pendientes); Datasets con 15 de 37 magnitudes pendientes; Investment con ingresos en 109 de 277 empresas y crecimiento en 108.",
-    "Codex, oferta: la suscripción de US$100 al año y los informes de US$1,000 están disponibles; no hay una muestra completa propia del informe a medida.",
+    "Codex, oferta: la suscripción de US$100 al año y los informes de US$1,000 están disponibles; no se encontró una muestra completa propia del informe a medida en el recorrido revisado.",
     "Codex, agentes: existen documentación de API, MCP y CLI y una demo; falta reducir la fricción de adopción y medir consultas útiles y repetición.",
     "Codex, seguimiento: hay favoritos locales en Investment; no se identificaron historial de cambios, alertas ni búsquedas guardadas del usuario en las pantallas y el código revisados."
   ],
