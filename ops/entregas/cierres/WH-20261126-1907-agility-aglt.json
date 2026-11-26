@@ -1,0 +1,72 @@
+{
+  "id": "WH-20261126-1907-agility-aglt",
+  "tarea": "Añadir Agility Robotics como cotizada (acción ordinaria NASDAQ:AGLT, desde el 5/11/2026) a Investment, al comparador y a su ficha existente /companies/agility-robotics/, sin duplicar la empresa, y sincronizar la API y el MCP con una importación acotada, sin importación completa",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex; Codex escribió el maestro",
+  "fecha": "2026-11-26T19:07:36+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Maestro (escrito por Codex con su conector nativo, recibos verificados): nueva fila Investment 278 (NAME Agility Robotics, TICKER AGLT, Nasdaq, GF_SYMBOL NASDAQ:AGLT, segmento «Humanoides / logística», fuente: anuncio oficial del 5/11/2026, sin ISIN, sin tesis) y 3 celdas de Humanoids para Agility (Stock, Rounds, Sources / checked): cotización confirmada y combinación SPAC completada; la valoración pre-money de junio sigue como dato histórico fechado, no como capitalización. Claude no escribió el maestro.",
+    "PR 171 (web): data/preview/stocks.json con 277 empresas (solo una fila nueva; ninguna existente cambia, sin campos de cotización ni ISIN); tools/investment-review.json con el segmento «Humanoids / logistics», la descripción registrada en inglés y la prueba real de Codex de NASDAQ:AGLT (gráfico verificado con 15 minutos de retraso de Cboe One; financials no disponibles porque las cifras históricas pueden incluir la SPAC predecesora; sin noticias en TradingView); data/investment/desk.json, server/src/news/symbols.js (titulares de Yahoo para AGLT) y la ficha de Agility con su cotización y la cabecera 50/50 negra.",
+    "Comparador: 277 empresas; ingresos y crecimiento de AGLT «Not available» (sin cifras operativas anuales verificadas en el comparador). No se usan cifras de la SPAC CCXI ni la financiación o los pedidos como ingresos o capitalización.",
+    "Catálogo Humanoids desde la exportación del maestro de las 17:42:09Z: solo cambian las 3 celdas de Agility y dos valoraciones que en el maestro son fórmulas vivas de GOOGLEFINANCE (Realbotix Aria y UBTECH Walker S1), exportadas con su valor actual como hasta ahora. Boston Dynamics sin tocar. El conversor privado de xlsx se corrigió para respetar los formatos de Sheets (m-d y #,##0.00); sin el arreglo se habrían publicado tres cambios falsos.",
+    "Pruebas: el número de empresas cotizadas sale del snapshot (no 276 fijo) y verify-pages admite un valor cuya traducción revisada es el propio valor.",
+    "PR 172 (backend, fusionado, no desplegado): importación acotada de stocks sola o con humanoids; las identidades de Humanoids se planifican con resolveIdentities y no se escriben en un simulacro; alias de búsqueda compartidos con la importación completa (humanoidAliases); grafos, proyección y dossiers intactos fuera del grafo de Deployments; workflow con lista cerrada de scopes (all, deployments, stocks, stocks-humanoids), entradas por variables de entorno y comprobación del cuerpo antes de la petición."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 171",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/171"
+    },
+    {
+      "etiqueta": "PR 172",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/172"
+    },
+    {
+      "etiqueta": "Commit de fusión 9ea4ea5 (PR 171)",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/9ea4ea55ce94bd2e7a974918fc67ffb60a2852b6"
+    },
+    {
+      "etiqueta": "Commit de fusión 906d742 (PR 172)",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/906d7427bdfb9f6bf2ba1b79d5d8dff15e4837cb"
+    },
+    {
+      "etiqueta": "Pages 9ea4ea5 (ejecución 45871333065)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45871333065"
+    },
+    {
+      "etiqueta": "Pages 906d742 (ejecución 45871422717)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45871422717"
+    },
+    {
+      "etiqueta": "Agility Robotics",
+      "url": "https://whyhumanoid.com/companies/agility-robotics/"
+    },
+    {
+      "etiqueta": "Investment",
+      "url": "https://whyhumanoid.com/investment/"
+    }
+  ],
+  "despliegue": [
+    "Web: PR 171 fusionado como 9ea4ea5 desde 443efb2 (CI 45870989639 en verde); CI de main 45871333441 y Pages 45871333065 completados con éxito a las 17:52:57 UTC.",
+    "Backend: PR 172 fusionado como 906d742 desde 7132225 (CI 45871199649 en verde); CI de main 45871423378 y Pages 45871422717 completados con éxito.",
+    "Worker NO desplegado: el editor del panel de Cloudflare no aceptó una edición íntegra verificable del bundle (fallaron la entrada nativa, el portapapeles y el selector de archivos). Producción sigue en la versión 92fb9d9b y test en 18f526d0.",
+    "Bundles listos de main 906d742 (esbuild 0.27.7, stripe 23.1.0, construidos por Codex): producción 929.609 bytes, SHA-256 f49a75bacfa226e63d22ded54f08088aef6d7b4ba38f4d3cc3fb7188ffe228d6; test 816.297 bytes, SHA-256 b304363411bd07c0610183cba9d456361adde614848da9986ea6f82e5592d431.",
+    "Sin importación: ni simulacro ni importación que escriba con scope stocks-humanoids, porque el Worker en producción aún no la admite. Sin importación completa."
+  ],
+  "verificaciones": [
+    "Claude, local: build-pages, build-site, build-app, export-humanoids, export-investment, export-evolution, relations y export-public --check, check-public, verify-pages, verify-comparator (277) y las pruebas de tools (46) en verde; suite del servidor 212/212 e import-scoped 12/12, incluida la ejecución real del paso del workflow con bash.",
+    "Claude, producción web: data/preview/stocks.json con 277 filas y la última NASDAQ:AGLT; /companies/agility-robotics/ muestra Listing «NASDAQ:AGLT; common stock trading since 2026-11-05» y no «closing unverified»; /investment/ con «Companies (277)».",
+    "Claude, API de producción a las 19:07: /v1/datasets/stocks/preview sigue con 276 filas sin AGLT, y el registro de Agility en Humanoids sigue con «Private; SPAC combination announced, closing unverified» (snapshot 2026-11-26T14:45:48Z).",
+    "Codex, web: 277 empresas, ficha con NASDAQ:AGLT y sin texto de empresa privada, gráfico real negro de 634 px en la cabecera 50/50, AGLT buscable y seleccionable en el comparador, móvil a 390 sin desbordamiento; verify-pages y verify-comparator en verde.",
+    "Codex, backend: revisión de las identidades planificadas, el helper de alias, el aislamiento y la guarda del workflow; pruebas import-scoped 12/12 en local."
+  ],
+  "pendientes": [
+    "Desplegar el Worker de main 906d742 en test y producción, con los bundles indicados, por una vía que permita verificar el código desplegado.",
+    "Después del despliegue, simulacro en producción: workflow Import private workbook con target production, scope stocks-humanoids y dry_run true; revisar los cambios, las identidades planificadas y las filas estimadas, y comprobar la cuota real de D1 (última lectura 85,84k de 100k).",
+    "Con margen confirmado, una única importación que escribe con scope stocks-humanoids y dry_run false. Nunca la importación completa.",
+    "Hasta entonces la API y el MCP no conocen AGLT (276 empresas) y el registro de Agility en Humanoids de la API conserva el texto de empresa privada; la web ya muestra el dato corregido. El titular de Yahoo para AGLT tampoco llega hasta el despliegue."
+  ],
+  "siguiente_accion": "Codex despliega el Worker de main 906d742 por una vía verificable; después, simulacro stocks-humanoids, cuota y una única importación, verificación de API y MCP y un cierre que corrija este (campo corrige)."
+}
