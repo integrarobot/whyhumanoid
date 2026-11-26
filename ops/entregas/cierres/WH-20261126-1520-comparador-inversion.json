@@ -1,0 +1,46 @@
+{
+  "id": "WH-20261126-1520-comparador-inversion",
+  "tarea": "Sustituir las casillas de comparación de /investment/ por un comparador de empresas con tres huecos, cada uno con un desplegable buscable que incluye todas las empresas cotizadas, para elegir qué comparar sin recorrer el listado",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T15:20:59+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "tools/investment-view.mjs: sección «Company comparator» (#comparator) con enlace en la navegación superior y tres huecos con etiqueta Company 1, 2 y 3, cada uno con un combobox, su lista, un botón para abrir la lista completa, un botón para limpiar y la ficha del resultado; nota honesta sin JavaScript; las filas llevan el ISIN para poder buscarlo. Se quitan el texto «Tick 2 to 4» y el bloque de comparación anterior.",
+    "assets/investment.js: se quitan las casillas de comparación de cada fila y la comparación de 2 a 4; se conservan las estrellas y el filtro Watchlist only. El comparador lee todas las filas del directorio (276) en orden alfabético, sin depender de filtros, orden ni watchlist; busca por nombre, ticker, ISIN y bolsa; teclado con flechas, Inicio, Fin, Enter, Escape y Tab, con aria-expanded, aria-controls y aria-activedescendant; una empresa en un solo hueco, con aviso; sin resultados indicado; elegir, reemplazar y limpiar cada hueco por separado; texto con textContent.",
+    "assets/investment.css: tres columnas iguales desde 860 px, con las filas de los campos alineadas (subgrid), y apiladas por debajo; se quitan las reglas de la comparación anterior.",
+    "Pruebas: tools/verify-comparator.mjs (JSDOM, en el CI junto a verify-components) y una prueba de marcado en tools/test-investment.mjs.",
+    "Sin datos, Worker, pagos, importaciones, iframes ni peticiones nuevas; la cabecera 50/50 negra de las fichas y la tipografía no cambian."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 160",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/160"
+    },
+    {
+      "etiqueta": "Commit de fusión c5ede4e",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/c5ede4e72c1a24abb465d2cee1de09a104f0d50a"
+    },
+    {
+      "etiqueta": "Pages (ejecución 45837789795)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45837789795"
+    },
+    {
+      "etiqueta": "Company comparator",
+      "url": "https://whyhumanoid.com/investment/#comparator"
+    }
+  ],
+  "despliegue": [
+    "PR 160 fusionado en main como c5ede4e desde el head aprobado por Codex ef97f1d, con el CI en verde (ejecución 45837477182).",
+    "GitHub Pages: ejecución 45837789795 completada con éxito a las 14:19:53 UTC. Solo páginas estáticas."
+  ],
+  "verificaciones": [
+    "Claude, local: build-pages --check, check-public, test-investment 14/14, verify-comparator y verify-pages en verde.",
+    "Claude, Chromium en local y en producción: enlace #comparator, tres huecos con su etiqueta y atributos de combobox, mensaje inicial; la lista completa da 276 empresas aunque el directorio esté filtrado y con Watchlist only; búsqueda por nombre, ticker (6954) e ISIN (US88160R1014), sin resultados indicado; flechas, Enter, Escape y Tab; duplicado bloqueado con mensaje; reemplazo y limpieza independientes con el foco de vuelta; filas de los nueve campos alineadas en escritorio; tres columnas de 410 px a 1510 y apiladas a 768, 375 y 320, con la lista dentro de la pantalla y sin desbordamiento; sin JavaScript, la nota y las 276 filas.",
+    "Codex, revisión y Chrome con la rama candidata: test-investment 14/14 y build-pages --check; tres columnas de 410 px a 1510 con las nueve filas a la misma altura; apiladas a 320, 375 y 768 sin desbordamiento; cada desplegable devuelve 276; Tesla, NVIDIA, Schaeffler y UBTECH elegidos con el teclado; duplicado bloqueado; reemplazo y limpieza independientes; búsqueda inexistente; Escape, Tab, End y clic fuera cierran y restauran; con el directorio filtrado por Tesla y Watchlist only (0 filas) siguen las 276 opciones; 276 estrellas, 0 casillas en las filas y 0 iframes.",
+    "Codex, producción: en /investment/#comparator cada desplegable abre 276 opciones; Tesla, NVIDIA y UBTECH elegidos con Enter, estado «Comparing 3 companies.» y tres fichas correctas; a 1510 columnas de 410 px y ancho del documento 1510; a 375 la búsqueda de Tesla funciona, columna de 313 px y ancho del documento 375; 0 casillas en las filas y 276 estrellas."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Codex registra su aviso de esta entrega; Javier confirma la recepción."
+}
