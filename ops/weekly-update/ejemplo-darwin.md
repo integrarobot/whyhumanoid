@@ -1,6 +1,6 @@
 # Ejemplo reproducible: Darwin Robotics (17/11/2026)
 
-Prueba real del proceso completo de actualización con una sola empresa, encargada por Javier a través de Codex. Sirve de modelo para la actualización semanal (skill `whyhumanoid-weekly-update`) y para cualquier alta puntual. Registro de la ejecución: `ops/weekly-update/runs/2026-11-17-darwin.json`.
+Prueba real del proceso completo de actualización con una sola empresa, encargada por Javier a través de Codex. Sirve de modelo para la actualización semanal (skill `whyhumanoid-weekly-update`) y para cualquier alta puntual. Es un registro histórico: desde el 26/11/2026 la escritura en el libro la hace Codex con el conector nativo de Google Sheets a partir de un plan (`ops/weekly-update/plan-contract.md`), no Claude con el navegador. Registro de la ejecución: `ops/weekly-update/runs/2026-11-17-darwin.json`.
 
 Este documento es público: no lleva enlaces ni identificadores del libro maestro, contenido de pestañas premium ni contactos.
 

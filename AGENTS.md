@@ -54,7 +54,14 @@ Why Humanoid? (whyhumanoid.com), de Integrarobot. Decide Javier; ejecuta Claude;
   - Datasets y Benchmarks leen su fecha de las siete columnas `PUBLIC_DATE` del maestro (contrato del 25/11/2026 en `server/src/public-dates.js`). Van añadidas al final de cada pestaña y en este orden: `PUBLIC_DATE`, `PUBLIC_DATE_PRECISION`, `PUBLIC_DATE_MEANING`, `PUBLIC_DATE_SOURCE_URL`, `PUBLIC_DATE_LOCATOR`, `PUBLIC_DATE_CHECKED_AT` y `PUBLIC_DATE_NOTE`, esta última opcional. Las seis primeras van juntas. La precisión es la que da la fuente. El significado es uno del vocabulario, sobre todo `associated_paper_first_arxiv_submission`, que no es la fecha de publicación del dataset ni su volumen, ni necesariamente la primera aparición pública. Nunca es una fecha de fundación, de revisión ni de la versión actual. Lo no comprobado queda sin fecha. La pestaña sin estas columnas sigue siendo válida.
   - Ninguno se da por completo si su cobertura es parcial: cada gráfico declara la cobertura y lo excluido.
   - Pruebas: `node --no-warnings --test tools/test-evolution.mjs` (en CI) y `node tools/verify-evolution.mjs [--base <url>]` (navegador: ciclo real de 70 segundos, controles, teclado, movimiento reducido, móvil).
-- Actualización semanal y su procedimiento: `.claude/skills/whyhumanoid-weekly-update/SKILL.md` (tarea programada de los miércoles a las 14:00, Europe/Madrid; no se duplica).
+- Incorporación de cada newsletter (Javier, 26/11/2026; procedimiento en `.claude/skills/whyhumanoid-weekly-update/SKILL.md` y contrato en `ops/weekly-update/plan-contract.md`):
+  - Solo se procesa la sección de noticias de cada edición (Javier, 18/11/2026).
+  - Fase 1: Claude, tarea programada de los miércoles a las 14:00 (Europe/Madrid), investiga en la nube con lectura del libro. Entrega un plan público en `ops/weekly-update/plans/` (identidad de la edición, pestaña, cabecera, registro, valor previo, valor propuesto y fuentes). Los valores privados van en un fichero de Google Drive fuera de Git, del que Git solo guarda el SHA-256; su identificador y su enlace se entregan en privado, con el `plan_id`, nunca en Git ni en un cierre (`tools/workbook-plan.mjs`).
+  - Fase 2: Codex, automatización «Incorporar newsletters a Why Humanoid?» (diaria, 15:00 Europe/Madrid), escribe celda a celda con el conector nativo de Google Sheets, relee y da su recibo.
+  - Fase 3: Claude publica solo tras el recibo de Codex: relectura propia, un PR por lote y una importación a producción por lote, tras comprobar el margen diario de D1. Codex verifica de forma independiente.
+  - Un conector de solo lectura no es un bloqueo: nunca se pide a Javier copiar celdas ni se tratan como rutina cambios de permisos, identidades o credenciales.
+  - Una edición se marca como procesada solo tras verificar web y backend, y sus casos sin resolver siguen en `known_pending`.
+  - La auditoría global de los viernes del libro y la web se mantiene.
 
 ## Cierre obligatorio de cada entrega
 

@@ -1,101 +1,53 @@
 {
-  "note": "State of the weekly update (skill .claude/skills/whyhumanoid-weekly-update). Update last_processed_edition only after the workbook is updated and whyhumanoid.com is published and verified.",
+  "note": "State of the newsletter updates (skill .claude/skills/whyhumanoid-weekly-update, contract ops/weekly-update/plan-contract.md). An edition moves to last_processed_edition only after its batch is written, read back, published and verified in production; its unresolved items stay in known_pending.",
   "last_processed_edition": {
-    "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
-    "date": "2026-11-18",
-    "marked_processed": "2026-11-25",
-    "evidence": "All 8 items in the workbook (last modified 2026-11-25T06:44:43Z), published in main from it and imported to production at 07:18 UTC (close WH-20261125-0901-coherencia-catalogo); audit-deployments 0 differences in the 2026-11-25 run. Written to the workbook outside the weekly task. Detail: ops/weekly-update/runs/2026-11-25.json (edition_2026_11_18)."
+    "url": "https://www.integrarobot.com/p/why-humanoid",
+    "date": "2026-11-25",
+    "edition_id": "integrarobot:2026-11-25:why-humanoid",
+    "marked_processed": "2026-11-26",
+    "status": "published and verified; unresolved items remain in known_pending",
+    "unresolved": [
+      "Simplexity Robotics (pending_verification)",
+      "Playground report (pending_decision)",
+      "Boston Dynamics Orbit software (pending_decision)"
+    ],
+    "evidence": "Plan WP-20261125-integrarobot-why-humanoid written by Codex (receipt 2026-11-26) and read back independently; PR #130 merged as 77c6759 (import run 45771073245); Software groups corrected in the workbook by Codex and published in PR #132, merged as e58ede8 (import run 45772916684); production snapshot 2026-11-26T07:07:13.000Z with the ten planned records and the corrected groups.",
+    "previous": {
+      "url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "date": "2026-11-18",
+      "marked_processed": "2026-11-25"
+    }
   },
   "known_pending": [
     {
       "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Viam: new Software row 131, SOFTWARE list",
-      "source": "https://www.viam.com/",
-      "source_date": "undated",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "WALL-OSS-1.0 (X Square Robot): new Software row 132, SOFTWARE list",
-      "source": "https://x2robot.com/blogs/wall-oss-1-en/",
-      "source_date": "2026-11-23",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "AHEADance: new Software row 133, SOFTWARE list",
-      "source": "https://ihcr.github.io/AHEADance/",
-      "source_date": "2026 (arXiv 2611.13370)",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Play2Perfect: new Software row 134, SOFTWARE list",
-      "source": "https://play2perfect.github.io/",
-      "source_date": "CoRL 2026 (arXiv 2606.26428)",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Felis: new Other Robots row 74, NAME list",
-      "source": "https://frank-zy-dou.github.io/blog/felis/",
-      "source_date": "2026-11-19",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "evoBOT (Fraunhofer IML): new Other Robots row 75, NAME list",
-      "source": "https://www.iml.fraunhofer.de/en/projects/2020/evobot-autonomous-transport-robot-logistics.html",
-      "source_date": "page meta 2026-06-22",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "coprod: new Other Robots row 76, NAME list",
-      "source": "https://coprod.co/blog/pre-seed-round",
-      "source_date": "2026-11-23",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "AXIS Skills Atlas: new Datasets row 37 (collection) and Dataset Metrics row 64 (11,199 tasks)",
-      "source": "https://skills.axisrobotics.ai/",
-      "source_date": "task snapshot 2026-11-06",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Humyn Labs: new Datasets row 38 (commercial data service)",
-      "source": "https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a",
-      "source_date": "2026-11-18",
-      "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json"
-    },
-    {
-      "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Simplexity Robotics: USD 100M pre-Series A led by Ant Group (newsletter, citing Bloomberg via The Japan Times); not verified and no named robot model, so no row yet",
+      "item": "Simplexity Robotics: USD 100M pre-Series A led by Ant Group at USD 1.6B (newsletter, citing Bloomberg via The Japan Times); not verified, no named robot model, no row",
       "source": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
       "source_date": "2026-11-23",
       "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json",
-      "needs": "primary source for the round and a named model"
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
+      "outcome": "pending_verification",
+      "needs": "a primary source for the round and a named model"
     },
     {
       "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Playground, The Robot Frontier Is Accelerating: decide whether it enters Reports (vendor index and forecasts, not a benchmark)",
+      "item": "Playground, The Robot Frontier Is Accelerating: vendor index and forecasts; decide whether it enters Reports",
       "source": "https://www.withplayground.ai/research/robot-frontier-accelerating",
       "source_date": "2026-11-23",
       "found": "2026-11-25",
-      "plan": "ops/weekly-update/runs/2026-11-25.json",
-      "needs": "decision on the tab"
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
+      "outcome": "pending_decision",
+      "needs": "classification by Claude or Codex under the existing Reports criteria (external report with estimates by type, findings mapped with locators in tools/reports-findings.json); no row before that review"
+    },
+    {
+      "edition": "https://www.integrarobot.com/p/why-humanoid",
+      "item": "Boston Dynamics Orbit (fleet software with an MCP layer for agents to start Spot missions): decide whether it gets a Software row. Not Orbit Robotics (space robotics, reclassified 2026-11-23). No Deployments record: the post names no customer or site",
+      "source": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/",
+      "source_date": "modified 2026-11-16",
+      "found": "2026-11-25",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
+      "outcome": "pending_decision",
+      "needs": "a primary Orbit product page (the post is a customer-practice blog); under the existing Software criteria (robotics software platforms such as Foxglove) it would get a Software row in the next plan"
     }
   ],
   "runs": [
@@ -138,6 +90,139 @@
       "result": "pending_sheets",
       "file": "ops/weekly-update/runs/2026-11-25.json",
       "close": "WH-20261125-1425-semanal-noticias-pendiente-libro"
+    },
+    {
+      "date": "2026-11-26",
+      "kind": "publication",
+      "subject": "Batch of the 2026-11-25 edition: Codex write receipt, independent readback, publication and one production import",
+      "editions": [
+        "https://www.integrarobot.com/p/why-humanoid"
+      ],
+      "result": "published",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
+      "close": "WH-20261126-0808-lote-25-11-publicado"
+    },
+    {
+      "date": "2026-11-26",
+      "kind": "publication",
+      "subject": "Software group correction (Codex move of A77:C134), Software preview only, one production import",
+      "editions": [],
+      "result": "published",
+      "plan": null,
+      "close": "WH-20261126-0808-lote-25-11-publicado"
+    }
+  ],
+  "handoffs": [
+    {
+      "plan_id": "WP-20261125-integrarobot-why-humanoid",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
+      "editions": [
+        "integrarobot:2026-11-25:why-humanoid"
+      ],
+      "status": "published",
+      "operations": 10,
+      "cells": 87,
+      "private_cells": 4,
+      "private_payload": {
+        "sha256": "c5c274e17ad0a637118006302786c006b1490d62611998a6353728b0aea44e15",
+        "channel": "Google Drive (Javier's My Drive), exact title whyhumanoid-private-handoff-WP-20261125-integrarobot-why-humanoid.json, owner-only; created 2026-11-26T06:54:59Z after the write (the values had gone to Codex in the coordination chat); round-trip SHA-256 checked by Claude and by Codex; Codex opened it by its file ID, delivered privately (title search returned nothing)"
+      },
+      "write_receipt": {
+        "by": "codex",
+        "date": "2026-11-26",
+        "connector": "native Google Sheets connector",
+        "ranges": [
+          "Software!A131:C134",
+          "Other Robots!A74:C76",
+          "Datasets!A37:AH38",
+          "Dataset Metrics!A64:T64"
+        ],
+        "cells_compared": 109,
+        "differences": 0,
+        "neighbour_cells_unchanged": 87,
+        "native_tables": {
+          "SoftwareCatalog": 134,
+          "OtherRobotsCatalog": 76,
+          "DatasetsCatalog": 38,
+          "DatasetMetrics": 64
+        },
+        "workbook_modified_time": "2026-11-26T06:38:00.941Z",
+        "credentials_sharing_identities_changed": false
+      },
+      "independent_readback": {
+        "by": "claude",
+        "date": "2026-11-26",
+        "public_plan_sha256": "6d0cc116469580accc51539b286a5b72489f802a571f73337beb21cfdf0557b5",
+        "basis": "export of 2026-11-25T06:44:43Z against the write (2026-11-26T06:38:00Z)",
+        "cells_checked": 87,
+        "value_differences": 0,
+        "group_differences": 4,
+        "group_note": "op-001 to op-004 were written below the SIMULATORS heading (listed as Simulators, plan intent: first block); found after publication and corrected by the move below; the readback now rechecks groups",
+        "unexpected_changes": 0,
+        "live_market_changes": {
+          "Humanoids": 2,
+          "Investment": 839
+        }
+      },
+      "publication": {
+        "pr": 130,
+        "merge_commit": "77c675926352ea6041d7d3308d83a9a2aa976c7d",
+        "reviewed_head": "4976f581ed9ac3bb5f5940a6d69f3f4c79992140",
+        "ci_run": 45770740608,
+        "pages_run": 45771057634,
+        "import_run": 45771073245,
+        "import_job": 139743587397,
+        "site_snapshot": "2026-11-26T06:38:00Z",
+        "production_snapshot": "2026-11-26T06:51:24.000Z",
+        "d1_margin_before_import": "first import of 2026-11-26 UTC; Codex read 0/100k rows written in the Cloudflare dashboard",
+        "production_counts": {
+          "software": 145,
+          "other-robots": 563,
+          "datasets": 37,
+          "dataset-metrics": 63,
+          "deployments": 197,
+          "humanoids": 212
+        }
+      },
+      "open_defects": [],
+      "group_fix": {
+        "by": "codex",
+        "date": "2026-11-26",
+        "what": "permutation of Software A77:C134 (values, formats, links, validation and notes kept; no whole-row insert or move): FLUX-mimic, Viam, WALL-OSS-1.0, Play2Perfect at rows 77-80 in the first block; SOFTWARE FOR UNITREE at 81 and its column headers at 82; AHEADance at 83; SIMULATORS at 121 and its column headers at 122",
+        "receipt": {
+          "cells": 174,
+          "neighbour_cells": 295,
+          "differences": 0,
+          "missing_or_duplicate_entries": 0,
+          "workbook_modified_time": "2026-11-26T06:58:06.820Z",
+          "link_formats_restored_afterwards": 49,
+          "link_format_note": "metadata only, no value change, no import"
+        },
+        "independent_check": {
+          "by": "claude",
+          "same_rows_multiset": true,
+          "rows": 58,
+          "changes_outside_A_C": 0,
+          "other_tabs": "live market values only"
+        },
+        "publication": {
+          "pr": 132,
+          "merge_commit": "e58ede81fe7e377faca66b6f18b968c4bd2b874c",
+          "reviewed_head": "7c434c78d73980f6af73d8895b6dff649f3a4159",
+          "ci_run": 45772587643,
+          "pages_run": 45772907129,
+          "import_run": 45772916684,
+          "import_job": 139749589861,
+          "production_snapshot": "2026-11-26T07:07:13.000Z",
+          "groups": {
+            "FLUX-mimic (mimic robotics)": null,
+            "Viam": null,
+            "WALL-OSS-1.0 (X Square Robot)": null,
+            "Play2Perfect": null,
+            "AHEADance": "Software for Unitree"
+          }
+        }
+      }
     }
   ]
 }

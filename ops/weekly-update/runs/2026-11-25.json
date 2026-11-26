@@ -252,11 +252,6 @@
       "source": "https://hiroindustries.com/reserve/"
     },
     {
-      "item": "Boston Dynamics: customers connecting Spot and Orbit",
-      "reason": "out of scope: Spot is not a humanoid and no customer or site is named; Orbit was reclassified out of the humanoid count; the post (modified 2026-11-16) describes integrations, not a deployment record",
-      "source": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/"
-    },
-    {
       "item": "John Deere acquires Orchard AI",
       "reason": "out of scope: crop-intelligence imaging for high-value crops, not a robot; the Deere page renders only with JavaScript (title and description read, terms and date not)",
       "source": "https://www.deere.com/en-us/john-deere-news/john-deere-acquires-orchard-ai"
@@ -297,6 +292,13 @@
       "reason": "tab to decide: a vendor research post with its own Robot Intelligence Index (25 benchmarks) and its own forecasts to end-2027; it is not a benchmark and the Reports atlas needs reviewed findings with locators; decide whether it enters Reports",
       "sources": [
         "https://www.withplayground.ai/research/robot-frontier-accelerating"
+      ]
+    },
+    {
+      "item": "Boston Dynamics: customers connecting Spot and Orbit",
+      "reason": "Corrected on 2026-11-25 (close WH-20261125-2142): no customer or site is named, so there is no Deployments record (Spot itself is not out of scope: Deployments already holds 8 Spot records at GlobalFoundries). Boston Dynamics' Orbit software, with an MCP layer for agents to start Spot missions, is not in Software: decide whether it gets a row. Orbit Robotics, reclassified on 2026-11-23, is a different company (space robotics).",
+      "sources": [
+        "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/"
       ]
     }
   ],
@@ -420,5 +422,49 @@
       "published": "results recorded 2026-10-28",
       "reviewed": "2026-11-25"
     }
-  ]
+  ],
+  "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
+  "corrections": [
+    {
+      "date": "2026-11-25",
+      "close": "WH-20261125-2142-estado-noticias-25-11",
+      "what": "Boston Dynamics moved from discarded to pending (reason above) and the news count restated without overlap."
+    },
+    {
+      "date": "2026-11-26",
+      "what": "Status after the write and publication: see ops/weekly-update/state.json (handoffs) and the plan file."
+    }
+  ],
+  "items_summary": {
+    "stories": 16,
+    "planned": {
+      "count": 9,
+      "rows": 10,
+      "items": [
+        "Humyn Labs",
+        "AXIS Skills Atlas (Datasets row and Dataset Metrics row)",
+        "Viam",
+        "Felis",
+        "WALL-OSS-1.0 (Software row; its Deployments case was already in)",
+        "AHEADance",
+        "Play2Perfect",
+        "coprod",
+        "evoBOT (Other Robots row; its Munich test was already in Deployments)"
+      ]
+    },
+    "already_incorporated": [
+      "HIRO Origin",
+      "CA3"
+    ],
+    "out_of_scope": [
+      "John Deere and Orchard AI",
+      "Mahdi's hand"
+    ],
+    "pending": [
+      "Simplexity (verification)",
+      "Playground (decision)",
+      "Boston Dynamics Orbit (decision)"
+    ],
+    "note": "The earlier '7 discarded' counted 5 whole stories plus 2 parts of planned stories (the X Square and evoBOT Deployments cases, already in). With the Boston Dynamics correction: 9 planned, 2 already incorporated, 2 out of scope, 3 pending (16)."
+  }
 }
