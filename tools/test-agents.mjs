@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { execFile } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { setup, signIn, sendWebhook, subscriptionEvent } from '../server/test/helpers.js';
@@ -43,6 +44,7 @@ async function mcp(key) {
   return client;
 }
 const json = (r) => JSON.parse(r.content[0].text);
+const registryManifest = JSON.parse(readFileSync(new URL('../ops/mcp-registry/server.json', import.meta.url), 'utf8'));
 
 const buyer = await signIn(ctx, 'agent-owner@example.com');
 await sendWebhook(ctx, subscriptionEvent({ accountId: buyer.accountId }));
@@ -80,13 +82,18 @@ test('MCP tools/list: six read-only tools with their titles and annotations, for
   for (const credential of [null, key]) {
     const client = await mcp(credential);
     const { tools } = await client.listTools();
-    await client.close();
     assert.deepEqual(tools.map((t) => t.name).sort(), Object.keys(expected).sort());
+    // mcptry and other directories score argument documentation (26 Nov 2026): every input argument is described.
+    assert.equal(client.getServerVersion()?.version, registryManifest.version, 'server version matches ops/mcp-registry/server.json');
     for (const t of tools) {
+      for (const [arg, spec] of Object.entries(t.inputSchema?.properties ?? {})) {
+        assert.ok(typeof spec.description === 'string' && spec.description.trim().length >= 10, `${t.name}.${arg}: argument description`);
+      }
       assert.equal(t.title, expected[t.name], `${t.name}: title`);
       assert.deepEqual(t.annotations, { title: expected[t.name], readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false }, `${t.name}: annotations`);
       assert.ok(t.description && t.inputSchema?.type === 'object', `${t.name}: description and input schema still listed`);
     }
+    await client.close();
   }
 });
 
