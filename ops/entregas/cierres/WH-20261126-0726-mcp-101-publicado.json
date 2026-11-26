@@ -1,0 +1,53 @@
+{
+  "id": "WH-20261126-0726-mcp-101-publicado",
+  "tarea": "Versión técnica 1.0.1 del MCP de Why Humanoid? para la valoración de mcptry: todos los argumentos descritos, icono en el registro oficial y manifiesto en el repositorio",
+  "origen": "Javier (26/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-26T07:26:19+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "server/src/mcp.js: versión del servidor 1.0.1 y descripción de los cinco argumentos que no la tenían (search_catalogue.page, get_rows.query, get_rows.limit, get_rows.offset y get_atlas.name), con sus límites y valores por defecto. get_rows dice «catalogue order» en lugar de «workbook order». Sin cambios en tipos, rangos, handlers, acceso ni anotaciones.",
+    "assets/whyhumanoid-icon-256.png: el icono aprobado de 256 × 256, idéntico byte a byte al de 6c488c2.",
+    "ops/mcp-registry/server.json: manifiesto del registro oficial (esquema 2025-12-11), versión 1.0.1, con el icono y el resto de datos sin cambios.",
+    "tools/test-agents.mjs: para visitante y suscriptor, cada argumento tiene descripción y la versión del servidor coincide con la del manifiesto."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 127",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/127"
+    },
+    {
+      "etiqueta": "Commit de fusión 8168295",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/8168295676e4c3f44998f175c51d5fa1b69eb9f9"
+    },
+    {
+      "etiqueta": "Registro MCP oficial (API pública)",
+      "url": "https://registry.modelcontextprotocol.io/v0/servers?search=io.github.integrarobot/whyhumanoid"
+    },
+    {
+      "etiqueta": "Icono",
+      "url": "https://whyhumanoid.com/assets/whyhumanoid-icon-256.png"
+    },
+    {
+      "etiqueta": "Ficha en mcptry",
+      "url": "https://mcptry.com/servers/io.github.integrarobot/whyhumanoid"
+    }
+  ],
+  "despliegue": [
+    "PR 127 fusionado con squash en main como 8168295 desde el head aceptado 1d0c654, con el CI en verde (ejecución 45767036903).",
+    "Worker desplegado por Codex con los bundles reproducidos (esbuild 0.27.7): TEST versión 22cb6941 (bundle 89413c857c5339bc10291d86eedbe1b3e54a06c765c1a20f8cc569f3d676d412, 785.936 bytes) y PROD versión 12aa80c8 (bundle 23b93ce5a96838f8bc366e13956e81c7954609ccc027e038575da2af49808a84, 898.598 bytes), las dos activas.",
+    "Registro oficial: Codex publicó la versión 1.0.1 el 2026-11-26T06:25:08.709444Z y cerró la sesión de mcp-publisher; no se guardan credenciales en el repositorio."
+  ],
+  "verificaciones": [
+    "Codex, con el SDK oficial de MCP contra TEST y PROD: servidor 1.0.1, las seis herramientas con sus títulos y anotaciones de solo lectura, las nueve propiedades de entrada descritas y seis llamadas correctas. Como visitante, get_rows de deployments con limit 1 sigue devolviendo campos públicos, sin task_description; account_status, sin autenticar.",
+    "Codex: el icono responde 200, image/png, 10.079 bytes, con SHA-256 d5e5cacd9debfaf14a69eb477a08cafca712ec199c81caa9ce8c83a1251755da. La nueva lectura del registro da 1.0.1 activa, isLatest true, con el icono y el mismo nombre y endpoint.",
+    "Claude, solo lectura, a las 07:25 (Madrid): la API del registro devuelve 1.0.1 activa, isLatest true, publishedAt 2026-11-26T06:25:08.709444Z, con el icono; la 1.0.0 queda activa y no es la última. Producción responde a initialize con whyhumanoid 1.0.1. Pages sirve el icono con el mismo SHA-256.",
+    "Codex, en mcptry: «Connect live» conecta en 170 ms y lee las seis herramientas."
+  ],
+  "pendientes": [
+    "mcptry: la valoración en caché sigue en 89/100, con la versión 1.0.0, hasta su importación programada desde el registro. No consta ninguna puntuación posterior.",
+    "Reclamar la ficha en mcptry, que requiere autorizar GitHub OAuth con el permiso user:email: pendiente de que Javier lo decida y lo autorice expresamente."
+  ],
+  "siguiente_accion": "Codex comprueba que mcptry importa la versión 1.0.1 desde el registro; Javier decide si autoriza el permiso de GitHub para reclamar la ficha."
+}
