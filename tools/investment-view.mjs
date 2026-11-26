@@ -56,7 +56,7 @@ export function renderInvestmentDesk(desk, { rows, companyOf }) {
     const venue = x.tradingview.venue ?? r.exchange;
     const search = [r.name, r.ticker, r.exchange, venue, x.key, r.isin, ...pubs].filter(Boolean).join(' ').toLowerCase();
     const data = {
-      key: x.key, name: r.name, path: path ?? '', ticker: r.ticker, exchange: venue, country: r.country ?? '', segment: x.segment ?? '',
+      key: x.key, name: r.name, path: path ?? '', ticker: r.ticker, exchange: venue, isin: r.isin ?? '', country: r.country ?? '', segment: x.segment ?? '',
       etf: x.etf.join('|'), theses: String(theses.length), stances: stances.join('|'), publishers: pubs.join('|'), chart: x.tradingview.chart.status, search,
     };
     const attrs = Object.entries(data).map(([k, v]) => `data-${k}="${esc(v)}"`).join(' ');
@@ -69,10 +69,11 @@ export function renderInvestmentDesk(desk, { rows, companyOf }) {
     const attrs = { key: t.id, company: t.company, publisher: t.publisher, date: t.published ?? '', stance: t.stance_group, type: t.type, search };
     return `<tr ${Object.entries(attrs).map(([k, v]) => `data-${k}="${esc(v)}"`).join(' ')}><td>${item?.path ? `<a href="${esc(item.path)}#theses">${esc(t.company)}</a>` : esc(t.company)}</td><td>${esc(t.publisher)}</td><td>${t.published ? esc(t.published) : `<span class="na">Not stated</span>`}<br><span class="dim">${esc(t.period)}</span></td><td>${pill(t.stance_group, t.stance)}</td><td>${esc(t.type)}</td><td>${ext(t.source_url, t.title)}</td></tr>`;
   };
-  return `<nav class="jump" aria-label="On this page"><a href="#desk">Companies (${items.length})</a><a href="#theses">Investment theses (${desk.theses.length})</a><a href="#funding">Funding of humanoid makers</a></nav>
+  return `<nav class="jump" aria-label="On this page"><a href="#desk">Companies (${items.length})</a><a href="#comparator">Company comparator</a><a href="#theses">Investment theses (${desk.theses.length})</a><a href="#funding">Funding of humanoid makers</a></nav>
 <section id="desk"><h2>Listed companies <span class="dim">(${items.length})</span></h2>
 <p class="inv-counters"><span><b>${items.length}</b> listed companies</span><span><b>${withT}</b> with a thesis in this catalogue</span><a href="#theses"><b>${desk.theses.length}</b> thesis records</a><span><b>${charts}</b> with a chart offered here</span><span><b>${items.length - charts}</b> without a chart here</span></p>
-<form class="inv-filters" data-for="inv-companies" data-count="inv-count" data-compare="inv-compare" hidden>
+${comparatorHtml(items.length)}
+<form class="inv-filters" data-for="inv-companies" data-count="inv-count" hidden>
 <label class="wide">Search company, ticker, ISIN or publisher<input type="search" name="q" autocomplete="off" placeholder="e.g. Tesla, 6954, Baillie Gifford"></label>
 <label>Segment<select name="segment">${options(segments.map((v) => [v]), 'All segments')}</select></label>
 <label>ETF membership<select name="etf" data-mode="tokens">${options(etfs.map((v) => [v]), 'Any or none')}</select></label>
@@ -85,8 +86,7 @@ export function renderInvestmentDesk(desk, { rows, companyOf }) {
 <label class="check"><input type="checkbox" name="watch"> Watchlist only</label>
 <span><button type="reset">Clear filters</button></span>
 </form>
-<p class="inv-bar"><span id="inv-count" aria-live="polite"></span><span class="dim">★ adds a company to a watchlist kept in this browser only. Tick 2 to 4 companies to compare them.</span></p>
-<div id="inv-compare"><div class="inv-compare inv-hidden"><h3>Comparison</h3><div class="inv-compare-table"></div></div><p class="dim" aria-live="polite"></p></div>
+<p class="inv-bar"><span id="inv-count" aria-live="polite"></span><span class="dim">★ adds a company to a watchlist kept in this browser only.</span></p>
 <div class="scroll"><table class="dir" id="inv-companies"><thead><tr><th scope="col" data-sort="name">Company</th><th scope="col" data-sort="ticker">Ticker</th><th scope="col" data-sort="country">Country as recorded</th><th scope="col" data-sort="segment">Segment as recorded</th><th scope="col">ETF membership</th><th scope="col" data-sort="theses" data-type="number">Theses</th><th scope="col" data-sort="chart">Market data</th></tr></thead><tbody>${items.map(row).join('')}</tbody></table></div>
 <p class="key">Segments and ETF membership as recorded in our research (ETF holdings as of ${esc(uniq(rows.map((r) => r.etf_as_of).filter(Boolean)).join(', ') || 'the dates on each page')}). “Chart checked” means the TradingView chart was seen working for that symbol in a browser; “not yet checked” means it is offered but not yet confirmed. Quotes are not stored or published by Why Humanoid?.</p>
 </section>
@@ -102,6 +102,31 @@ ${caveatsHtml(desk)}
 <p class="inv-bar"><span id="inv-theses-count" aria-live="polite"></span></p>
 <div class="scroll"><table class="dir" id="inv-theses"><thead><tr><th scope="col" data-sort="company">Company</th><th scope="col" data-sort="publisher">Publisher as stated</th><th scope="col" data-sort="date">Published (period below)</th><th scope="col" data-sort="stance">Stance as recorded</th><th scope="col" data-sort="type">Type</th><th scope="col">Source</th></tr></thead><tbody>${desk.theses.map(tRow).join('')}</tbody></table></div>
 <p class="key">${desk.counts.publisher_names} publisher names as the sources give them; several are funds of the same management firm. Each company page shows its theses in full, with the publisher's conclusions, valuation or rationale, horizon, limits and where in the source to find them.</p>
+</section>`;
+}
+
+// ---------- company comparator ----------
+// Three equal slots, each a searchable list of every listed company in the directory below (assets/investment.js
+// reads the rows, not the filters, order or watchlist). Without JavaScript the note says so and the directory keeps
+// every field.
+export const COMPARATOR_SLOTS = 3;
+function comparatorHtml(total) {
+  const slot = (i) => `<div class="inv-slot" data-slot="${i}">
+<label class="inv-slot-label" id="cmp-label-${i}" for="cmp-input-${i}">Company ${i}</label>
+<div class="inv-combo">
+<input id="cmp-input-${i}" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="cmp-list-${i}" aria-describedby="cmp-hint" autocomplete="off" spellcheck="false" placeholder="Search name, ticker, ISIN or exchange">
+<button type="button" class="inv-combo-open" aria-label="Show all ${total} companies for Company ${i}" aria-controls="cmp-list-${i}" tabindex="-1">▾</button>
+<ul class="inv-combo-list" id="cmp-list-${i}" role="listbox" aria-labelledby="cmp-label-${i}" hidden></ul>
+</div>
+<button type="button" class="inv-slot-clear" hidden>Clear Company ${i}</button>
+<div class="inv-slot-card"><p class="dim">No company chosen.</p></div>
+</div>`;
+  return `<section class="inv-comparator" id="comparator" aria-labelledby="comparator-h">
+<h3 id="comparator-h">Company comparator</h3>
+<p class="inv-cmp-nojs">The comparator needs JavaScript. Every company and the same fields are in the directory below.</p>
+<p class="dim" id="cmp-hint" hidden>Choose up to three of the ${total} listed companies. Type a name, ticker, ISIN or exchange, or open the full list; each company can be in one slot only.</p>
+<div class="inv-cmp-slots" hidden>${Array.from({ length: COMPARATOR_SLOTS }, (_, k) => slot(k + 1)).join('')}</div>
+<p class="inv-cmp-status" id="cmp-status" aria-live="polite" hidden></p>
 </section>`;
 }
 

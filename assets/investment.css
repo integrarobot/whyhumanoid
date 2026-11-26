@@ -24,27 +24,13 @@ table.dir th[aria-sort=descending] button::after{content:" ▼";color:var(--ambe
 .inv-row-tools button{all:unset;cursor:pointer;color:var(--bone-3);font-size:20px;line-height:1;padding:4px}
 .inv-row-tools button[aria-pressed=true]{color:var(--amber)}
 .inv-row-tools button:focus-visible{outline:2px solid var(--amber)}
-.inv-row-tools input{accent-color:var(--amber);width:18px;height:18px}
 .pill{display:inline-block;font-family:var(--f-mono);font-size:14px;letter-spacing:.02em;border:1px solid var(--line-2);padding:1px 6px;margin:1px 4px 1px 0;color:var(--bone-2);white-space:nowrap}
 .pill.positive{border-color:color-mix(in srgb,var(--ok) 60%,transparent);color:var(--ok)}
 .pill.exit{border-color:color-mix(in srgb,var(--crit) 60%,transparent);color:var(--crit)}
 .pill.mixed{border-color:color-mix(in srgb,var(--warn) 60%,transparent);color:var(--warn)}
 .pill.verified{color:var(--ok)}
 .pill.unavailable{color:var(--bone-3)}
-.inv-compare{border:1px solid var(--amber);padding:12px;margin:0 0 14px;background:var(--amber-3)}
-.inv-compare h3{margin:0 0 8px}
-.inv-compare{max-width:100%;min-width:0;overflow:hidden}
-#inv-compare{max-width:100%;min-width:0}
 .theses + h3.sub,h3.sub{margin:18px 0 8px}
-.inv-cmp-cards{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
-.inv-cmp-cards li{border:1px solid var(--line-2);padding:10px;background:var(--ink-1);min-width:0}
-.inv-cmp-cards h4{margin:0 0 6px;font-size:16px}
-.inv-cmp-cards dl{margin:0;display:grid;gap:2px}
-.inv-cmp-cards dt{font-family:var(--f-mono);font-size:14px;color:var(--bone-3);margin-top:6px}
-.inv-cmp-cards dd{margin:0;font-size:15px;overflow-wrap:anywhere}
-.inv-compare .scroll{border:0}
-.inv-compare table{width:100%;min-width:0;border-collapse:collapse;font-size:15px}
-.inv-compare th,.inv-compare td{text-align:left;vertical-align:top;border-top:1px solid var(--line);padding:6px 8px;overflow-wrap:anywhere;min-width:96px}
 .inv-hidden{display:none!important}
 /* Company pages */
 .mkt{border:1px solid var(--line-2);padding:14px;margin:0 0 14px;background:var(--ink-1)}
@@ -114,3 +100,46 @@ details.mkt summary{cursor:pointer;font-family:var(--f-mono);font-size:14px;colo
 .mkt-frame.info .tradingview-widget-container{height:auto!important}
 .mkt-frame.info .tradingview-widget-container iframe{flex:none;height:260px!important}
 @media (max-width:640px){.mkt-frame.info .tradingview-widget-container iframe{height:300px!important}}
+/* Company comparator (26 Nov 2026): three equal slots on wide screens, stacked below 860 px. Each slot is a combobox
+   over every listed company (assets/investment.js); on wide screens the field rows line up across the slots. */
+.inv-comparator{border:1px solid var(--line-2);background:var(--ink-1);padding:14px;margin:0 0 16px;min-width:0}
+.inv-comparator h3{margin:0 0 8px}
+.inv-comparator [hidden]{display:none!important}
+.inv-comparator > p{margin:0 0 10px;font-size:14px}
+.inv-cmp-slots{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.inv-slot{min-width:0;display:grid;align-content:start;gap:6px}
+.inv-slot-label{font-family:var(--f-mono);font-size:var(--fs-caption);letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3)}
+.inv-combo{position:relative;display:flex;min-width:0}
+.inv-combo input{flex:1 1 auto;min-width:0;min-height:42px;font:var(--fs-control) var(--f-sans);text-transform:none;letter-spacing:normal;color:var(--bone);background:var(--ink-2);border:1px solid var(--line-2);border-right:0;padding:7px 8px}
+.inv-combo input:focus-visible,.inv-combo-open:focus-visible,.inv-slot-clear:focus-visible{outline:2px solid var(--amber);outline-offset:1px}
+.inv-combo-open{flex:none;width:42px;min-height:42px;color:var(--bone-2);background:var(--ink-3);border:1px solid var(--line-2);cursor:pointer;font-size:14px}
+.inv-combo-list{position:absolute;z-index:20;top:100%;left:0;right:0;max-height:min(320px,50vh);overflow-y:auto;margin:2px 0 0;padding:0;list-style:none;background:var(--ink-2);border:1px solid var(--line-2);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.inv-combo-opt,.inv-combo-none{display:flex;flex-direction:column;gap:1px;padding:7px 10px;cursor:pointer;border-bottom:1px solid var(--line)}
+.inv-combo-opt .nm{color:var(--bone);font-size:15px}
+.inv-combo-opt .mt{font-family:var(--f-mono);font-size:12px;color:var(--bone-3)}
+.inv-combo-opt.active,.inv-combo-opt:hover{background:var(--ink-3);outline:1px solid var(--amber);outline-offset:-1px}
+.inv-combo-opt[aria-selected=true] .nm{color:var(--amber-hi)}
+.inv-combo-opt[aria-disabled=true]{cursor:not-allowed}
+.inv-combo-opt[aria-disabled=true] .nm{color:var(--bone-3)}
+.inv-combo-none{cursor:default;color:var(--bone-3);font-size:14px}
+.inv-slot-clear{justify-self:start;min-height:34px;font:var(--fs-label) var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--bone);background:var(--ink-3);border:1px solid var(--line-2);padding:5px 10px;cursor:pointer}
+.inv-slot-clear:hover{border-color:var(--amber)}
+.inv-slot-card{min-width:0;border-top:1px solid var(--line);padding-top:8px}
+.inv-slot-card > p{margin:0;font-size:14px}
+.inv-slot-card h4{margin:0 0 6px;font-family:var(--f-serif);font-weight:400;font-size:var(--fs-card-sub);line-height:1.15}
+.inv-slot-card dl{margin:0;display:grid;gap:0}
+.inv-slot-card dl > div{padding:5px 0;border-bottom:1px solid var(--line)}
+.inv-slot-card dt{font-family:var(--f-mono);font-size:var(--fs-caption);letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3)}
+.inv-slot-card dd{margin:2px 0 0;font-size:15px;overflow-wrap:anywhere}
+.inv-cmp-status{font-size:14px;color:var(--bone-2);margin:12px 0 0!important}
+@media (min-width:860px){
+  .inv-cmp-slots{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(13,auto);column-gap:20px;row-gap:0}
+  .inv-slot{grid-row:span 13;grid-template-rows:subgrid;gap:0}
+  .inv-slot > .inv-slot-label{grid-row:1;margin-bottom:6px}
+  .inv-slot > .inv-combo{grid-row:2}
+  .inv-slot > .inv-slot-clear{grid-row:3;margin-top:6px}
+  .inv-slot > .inv-slot-card{grid-row:4 / span 10;display:grid;grid-template-rows:subgrid;margin-top:8px}
+  .inv-slot-card > p{grid-row:1 / -1}
+  .inv-slot-card > h4{grid-row:1}
+  .inv-slot-card > dl{grid-row:2 / span 9;display:grid;grid-template-rows:subgrid}
+}
