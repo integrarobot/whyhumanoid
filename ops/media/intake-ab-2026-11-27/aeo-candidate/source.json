@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "status": "UNAPPROVED candidate; do not publish this file without a faithful full-body alpha mask and review",
+  "asset_url": "https://www.hannovermesse.de/apollo/hannover_messe_2026/obs/Binary/A1509840/Aeobot%20Flyer.pdf",
+  "page": 1,
+  "xref": 80,
+  "original_sha256": "373dbc7c1fdb7562185e34f219dfd05e5dc9bc44297e2c9fa753faa3bfc1d6ca",
+  "robot_roi": [
+    530,
+    300,
+    1160,
+    1800
+  ],
+  "review": "Full robot and mounted lidar are visible. isnet mask leaves some backdrop and needs improvement. Do not invent body or delete hands/lidar."
+}

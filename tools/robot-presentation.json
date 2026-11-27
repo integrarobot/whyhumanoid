@@ -53,6 +53,21 @@
         "provenance": "ops/media/robots/agibot-x1/PROVENANCE.md"
       }
     },
+    "5": {
+      "recorded": {
+        "Lab": "Agile",
+        "Robot": "One"
+      },
+      "image": {
+        "src": "/assets/robots/agile-one/agile-one-full-body.webp",
+        "fallback": "/assets/robots/agile-one/agile-one-full-body.png",
+        "width": 265,
+        "height": 756,
+        "alt": "Agile ONE by Agile Robots, full body, front view, standing",
+        "credit": "Image: Agile Robots",
+        "provenance": "ops/media/robots/agile-one/PROVENANCE.md"
+      }
+    },
     "6": {
       "recorded": {
         "Lab": "Agility",
@@ -81,6 +96,36 @@
         "alt": "Apollo 2 by Apptronik, full body, front view, standing",
         "credit": "Image: Apptronik",
         "provenance": "ops/media/robots/apptronik-apollo-2/PROVENANCE.md"
+      }
+    },
+    "8": {
+      "recorded": {
+        "Lab": "Argon",
+        "Robot": "One"
+      },
+      "image": {
+        "src": "/assets/robots/argon-one/argon-one-full-body.webp",
+        "fallback": "/assets/robots/argon-one/argon-one-full-body.png",
+        "width": 736,
+        "height": 1709,
+        "alt": "Argon One, the whole robot as Argon presents it, front view",
+        "credit": "Image: Argon",
+        "provenance": "ops/media/robots/argon-one/PROVENANCE.md"
+      }
+    },
+    "14": {
+      "recorded": {
+        "Lab": "Booster",
+        "Robot": "T1"
+      },
+      "image": {
+        "src": "/assets/robots/booster-t1/booster-t1-full-body.webp",
+        "fallback": "/assets/robots/booster-t1/booster-t1-full-body.png",
+        "width": 228,
+        "height": 502,
+        "alt": "T1 by Booster Robotics, full body, front view, standing; photo from the Tsinghua Hephaestus RoboCup team",
+        "credit": "Image: Tsinghua Hephaestus (RoboCup team)",
+        "provenance": "ops/media/robots/booster-t1/PROVENANCE.md"
       }
     },
     "16": {
@@ -171,6 +216,36 @@
         "alt": "H1 by Unitree, full body, front view, standing with one arm raised",
         "credit": "Image: Unitree",
         "provenance": "ops/media/robots/unitree-h1/PROVENANCE.md"
+      }
+    },
+    "105": {
+      "recorded": {
+        "Lab": "Addverb",
+        "Robot": "Elixis"
+      },
+      "image": {
+        "src": "/assets/robots/addverb-elixis/addverb-elixis-full-body.webp",
+        "fallback": "/assets/robots/addverb-elixis/addverb-elixis-full-body.png",
+        "width": 323,
+        "height": 999,
+        "alt": "Elixis by Addverb, bipedal, full body, three-quarter view, standing",
+        "credit": "Image: Addverb",
+        "provenance": "ops/media/robots/addverb-elixis/PROVENANCE.md"
+      }
+    },
+    "116": {
+      "recorded": {
+        "Lab": "Almond",
+        "Robot": "Axol"
+      },
+      "image": {
+        "src": "/assets/robots/almond-axol/almond-axol-full-body.webp",
+        "fallback": "/assets/robots/almond-axol/almond-axol-full-body.png",
+        "width": 487,
+        "height": 824,
+        "alt": "Axol by Almond, the bimanual two-arm module as Almond presents it, front view",
+        "credit": "Image: Almond",
+        "provenance": "ops/media/robots/almond-axol/PROVENANCE.md"
       }
     },
     "138": {
@@ -381,6 +456,21 @@
         "alt": "RB-Y1 by Rainbow Robotics, whole robot on its wheeled base, front view",
         "credit": "Image: Rainbow Robotics",
         "provenance": "ops/media/robots/rainbow-rb-y1/PROVENANCE.md"
+      }
+    },
+    "164": {
+      "recorded": {
+        "Lab": "AIDOL",
+        "Robot": "AIDOL (walking version)"
+      },
+      "image": {
+        "src": "/assets/robots/aidol-walking/aidol-walking-full-body.webp",
+        "fallback": "/assets/robots/aidol-walking/aidol-walking-full-body.png",
+        "width": 287,
+        "height": 520,
+        "alt": "AIDOL, walking version, full body, front view, standing with one hand raised",
+        "credit": "Image: AIDOL",
+        "provenance": "ops/media/robots/aidol-walking/PROVENANCE.md"
       }
     },
     "165": {

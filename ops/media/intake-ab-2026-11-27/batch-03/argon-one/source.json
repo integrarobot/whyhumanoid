@@ -1,0 +1,28 @@
+{
+  "id": 8,
+  "slug": "argon-one",
+  "mask_model": "native-alpha",
+  "roi": null,
+  "crop_bbox": [
+    574,
+    85,
+    1290,
+    1774
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "source-prepared; publication pending",
+  "asset_url": "https://cdn.prod.website-files.com/684893e9d670283aee10ad61/6a42e561679b4bd62e9e5b75_argon-one-render-website%201v3.png",
+  "source_page": "https://www.argonmech.com/",
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "original_sha256": "ad1558f22ee2d7773b491677897226f77ff434d39f9abb1b192f3d3b98c7b6a5",
+  "prepared_sha256": "7dd9a4f88c820293d629c29674495ab5fa5d630ad117ea3876fe8585b3f94b1b",
+  "dimensions": [
+    756,
+    1729
+  ],
+  "rgb_verified": true,
+  "retrieved_at": "2026-11-27",
+  "licence": "No open licence presumed; preserve source credit"
+}

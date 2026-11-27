@@ -1,0 +1,28 @@
+{
+  "id": 116,
+  "slug": "almond-axol",
+  "mask_model": "native-alpha",
+  "roi": null,
+  "crop_bbox": [
+    212,
+    44,
+    679,
+    848
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "source-prepared; publication pending",
+  "asset_url": "https://www.almond.bot/assets/axol.webp",
+  "source_page": "https://www.almond.bot/",
+  "original": "original.webp",
+  "prepared": "prepared.png",
+  "original_sha256": "c048ec486f46c4897151dbb3fe6b856786a5501d2d2810f371e5f0cf780d1dcb",
+  "prepared_sha256": "bf7f76f87b9ccaee9b1df388e51ca936bf412260ebeb47eb7a8e272a6575d3d0",
+  "dimensions": [
+    507,
+    844
+  ],
+  "rgb_verified": true,
+  "retrieved_at": "2026-11-27",
+  "licence": "No open licence presumed; preserve source credit"
+}
