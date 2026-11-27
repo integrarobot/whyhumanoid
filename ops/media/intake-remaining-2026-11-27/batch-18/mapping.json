@@ -1,0 +1,44 @@
+{
+  "batch": 18,
+  "intake": "ops/media/intake-remaining-2026-11-27/batch-18",
+  "branch": "codex/image-sources-remaining",
+  "commit": "5083e8a (candidates-48), 2021f8c (candidates-49) and 6f9b29e (candidates-51)",
+  "scope": "All missing images (Javier, 27 Nov 2026)",
+  "items": {
+    "109": {
+      "slug": "khameleon-platform",
+      "alt": "Khameleon platform, full body, front view, on its wheeled base, with tools and a bottle in its gripper, manufacturer photograph",
+      "credit": "Image: Khameleon, platform in task configuration with tools and bottle, manufacturer photograph",
+      "identity": "A photograph on Khameleon's site (native 1200 × 900): the whole platform with its mast, both arms and grippers, the tools, dock, mop and cables, and the complete wheeled base; it holds a clear bottle in the left gripper, which is kept. The round side table, the bin and the room are excluded by the alpha mask. The maker does not disclose a model name, and none is given here.",
+      "quality": null
+    },
+    "62": {
+      "slug": "persona-ai-prototype",
+      "alt": "Persona AI humanoid prototype, full body, front view, standing, still from the official video",
+      "credit": "Image: Persona AI, full humanoid prototype, official video still (2026)",
+      "identity": "Frame 586 (24.42 s) of the video on Persona AI's homepage, at its native 1920 × 1080: the whole bipedal prototype with head, both hands and both feet, standing unsupported. The ceiling duct that runs into the top of the head from behind, the room and the floor are excluded by the alpha mask. No model name or generation is given, as the maker gives none.",
+      "quality": null
+    },
+    "125": {
+      "slug": "nucleus-service-platform",
+      "alt": "Service platform shown by Nucleus, full body, rear view, two arms on a mast and wheeled base, still from the official video",
+      "credit": "Image: Nucleus, service platform shown in official video, rear view (2026)",
+      "identity": "Frame 193 (7.72 s) of the official video on Nucleus' homepage and worker page, at its native 1920 × 1080: the left platform seen from behind, whole, with head, both arms and grippers, their black cables, the mast and the wheeled base with its white controller and cable. The shelving, the boxes and the other robot are excluded by the alpha mask. It is the platform Nucleus shows; nothing is said about who makes it or which model it is.",
+      "quality": null
+    },
+    "114": {
+      "slug": "eden-prototype-platform",
+      "alt": "Eden Robotics prototype platform, full body, side view, two grippers on a column and caster base, still from the official demo",
+      "credit": "Image: Eden Robotics, complete prototype platform on caster base, official demo still (2026)",
+      "identity": "Frame 184 (7.67 s) of Eden Robotics' plug-and-play demo video, at its native 1920 × 1080: the whole prototype platform with its tilted head, both grippers, the column and the rectangular base on small casters. The studio, the person and the black box beside it are excluded by the alpha mask. The maker does not disclose a model name, and none is given here.",
+      "quality": null
+    },
+    "214": {
+      "slug": "techman-tm-xplore-i",
+      "alt": "TM Xplore I by Techman Robot, full body, front view, on its base, product animation still",
+      "credit": "Image: Techman Robot, TM Xplore I product animation still (2025), via SSI",
+      "identity": "Frame 315 (10.51 s) of the TM Xplore I product animation published by SSI on 2 September 2025, at its native 1920 × 1080, after the on-screen text has gone: the whole robot with head, both hands and the base. It is an animation, not a photograph of 2026 hardware. The dark green studio and the floor are excluded by the alpha mask; the black hands and head are kept.",
+      "quality": null
+    }
+  }
+}

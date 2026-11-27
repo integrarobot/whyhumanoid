@@ -2437,6 +2437,81 @@
         "credit": "Image: Geekplus, Gino 1 official video still, rear view with backpack basket (2026)",
         "provenance": "ops/media/robots/geekplus-gino-1/PROVENANCE.md"
       }
+    },
+    "109": {
+      "recorded": {
+        "Lab": "Khameleon",
+        "Robot": "Not disclosed"
+      },
+      "image": {
+        "src": "/assets/robots/khameleon-platform/khameleon-platform-full-body.webp",
+        "fallback": "/assets/robots/khameleon-platform/khameleon-platform-full-body.png",
+        "width": 537,
+        "height": 833,
+        "alt": "Khameleon platform, full body, front view, on its wheeled base, with tools and a bottle in its gripper, manufacturer photograph",
+        "credit": "Image: Khameleon, platform in task configuration with tools and bottle, manufacturer photograph",
+        "provenance": "ops/media/robots/khameleon-platform/PROVENANCE.md"
+      }
+    },
+    "62": {
+      "recorded": {
+        "Lab": "Persona Inc",
+        "Robot": "Not disclosed"
+      },
+      "image": {
+        "src": "/assets/robots/persona-ai-prototype/persona-ai-prototype-full-body.webp",
+        "fallback": "/assets/robots/persona-ai-prototype/persona-ai-prototype-full-body.png",
+        "width": 475,
+        "height": 870,
+        "alt": "Persona AI humanoid prototype, full body, front view, standing, still from the official video",
+        "credit": "Image: Persona AI, full humanoid prototype, official video still (2026)",
+        "provenance": "ops/media/robots/persona-ai-prototype/PROVENANCE.md"
+      }
+    },
+    "125": {
+      "recorded": {
+        "Lab": "Nucleus",
+        "Robot": "Humanoid service (model unconfirmed)"
+      },
+      "image": {
+        "src": "/assets/robots/nucleus-service-platform/nucleus-service-platform-full-body.webp",
+        "fallback": "/assets/robots/nucleus-service-platform/nucleus-service-platform-full-body.png",
+        "width": 465,
+        "height": 689,
+        "alt": "Service platform shown by Nucleus, full body, rear view, two arms on a mast and wheeled base, still from the official video",
+        "credit": "Image: Nucleus, service platform shown in official video, rear view (2026)",
+        "provenance": "ops/media/robots/nucleus-service-platform/PROVENANCE.md"
+      }
+    },
+    "114": {
+      "recorded": {
+        "Lab": "Eden",
+        "Robot": null
+      },
+      "image": {
+        "src": "/assets/robots/eden-prototype-platform/eden-prototype-platform-full-body.webp",
+        "fallback": "/assets/robots/eden-prototype-platform/eden-prototype-platform-full-body.png",
+        "width": 306,
+        "height": 628,
+        "alt": "Eden Robotics prototype platform, full body, side view, two grippers on a column and caster base, still from the official demo",
+        "credit": "Image: Eden Robotics, complete prototype platform on caster base, official demo still (2026)",
+        "provenance": "ops/media/robots/eden-prototype-platform/PROVENANCE.md"
+      }
+    },
+    "214": {
+      "recorded": {
+        "Lab": "Techman Robot",
+        "Robot": "TM Xplore I"
+      },
+      "image": {
+        "src": "/assets/robots/techman-tm-xplore-i/techman-tm-xplore-i-full-body.webp",
+        "fallback": "/assets/robots/techman-tm-xplore-i/techman-tm-xplore-i-full-body.png",
+        "width": 344,
+        "height": 788,
+        "alt": "TM Xplore I by Techman Robot, full body, front view, on its base, product animation still",
+        "credit": "Image: Techman Robot, TM Xplore I product animation still (2025), via SSI",
+        "provenance": "ops/media/robots/techman-tm-xplore-i/PROVENANCE.md"
+      }
     }
   }
 }

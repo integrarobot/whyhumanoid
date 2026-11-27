@@ -461,6 +461,26 @@
         "Published with PR 253 (reviewed head 1850c21, CI 46066494734; merge 36ea0eb), 27 Nov 2026; Pages 46066898699 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 18,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        109,
+        62,
+        125,
+        114,
+        214
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-18/: candidates-48 (5083e8a: Khameleon manufacturer photograph), candidates-49 (2021f8c: Persona AI and Nucleus official video stills) and candidates-51 (6f9b29e: Eden Robotics official demo still and Techman TM Xplore I product animation via SSI). Every cutout prepared by Claude, alpha only, from BiRefNet masks kept beside the originals: Persona AI without the ceiling duct behind the head; Nucleus without the shelf beam behind the left arm and the box edge behind the right elbow, its black cables kept.",
+        "Left out: Rhoda (75), candidates-50 (69e22a1), the Mobile DVA thumbnail: the left gripper sits inside a blue crate, partly hidden by its walls, and the official videos have subtitles over the base; Codex also checked 480 native frames without a clean alternative. Rejected for occlusion and on-screen text; no fingers are completed.",
+        "Five records, not ten: the valid sources of the final sweep. The records still without an image are not resolved by this batch; Codex keeps an individual note of the limits found for each, which does not mean that no image of them exists. Captions say what the platforms are without naming undisclosed models or makers: Khameleon task configuration with tools and bottle; Persona AI full humanoid prototype; Nucleus service platform shown in its video, rear view (no OEM or model claimed); Eden Robotics prototype platform on caster base; Techman TM Xplore I product animation (2025), via SSI. Records' specifications unchanged."
+      ]
     }
   ],
   "robots": {
@@ -992,8 +1012,20 @@
         "Lab": "Persona Inc",
         "Robot": "Not disclosed"
       },
-      "status": "exception",
-      "reason": "No exact model in the record."
+      "status": "integrated",
+      "reason": "No exact model in the record.",
+      "sources": [
+        {
+          "file": "https://persona.ai/wp-content/uploads/Q3-Jul-22-2026-Web-Hero-Video-v1_12.mp4",
+          "page": "https://persona.ai/",
+          "sha256": "fad19a64fa6b7a38f7d914ed435a7afc7f0361f4c8f3e02b65d88a1efd9ef308",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 475 × 870 with 20 px padding."
+        }
+      ]
     },
     "71": {
       "recorded": {
@@ -1044,8 +1076,20 @@
         "Lab": "Khameleon",
         "Robot": "Not disclosed"
       },
-      "status": "exception",
-      "reason": "No exact model in the record."
+      "status": "integrated",
+      "reason": "No exact model in the record.",
+      "sources": [
+        {
+          "file": "https://www.khameleonrobotics.com/media/trash.jpg",
+          "page": "https://www.khameleonrobotics.com/",
+          "sha256": "bda9159775d1fdc4b648578685f1897f4c14fd578f0cf501df884a3a5d2d9ecb",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 537 × 833 with 20 px padding."
+        }
+      ]
     },
     "110": {
       "recorded": {
@@ -1060,8 +1104,20 @@
         "Lab": "Eden",
         "Robot": null
       },
-      "status": "no_valid_source",
-      "reason": "No model in the record, and Eden's official website shows no identifiable robot body; nothing is assigned (Codex, 27 Nov 2026)."
+      "status": "integrated",
+      "reason": "No model in the record, and Eden's official website shows no identifiable robot body; nothing is assigned (Codex, 27 Nov 2026).",
+      "sources": [
+        {
+          "file": "https://edenrobotics.ai/assets/videos/plug-and-play.mp4",
+          "page": "https://edenrobotics.ai/",
+          "sha256": "eeaeee27d480a9899abc53bd1de04d802b9b7721ea010a729fa2d39224d9a0c6",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 306 × 628 with 20 px padding."
+        }
+      ]
     },
     "121": {
       "recorded": {
@@ -1076,8 +1132,20 @@
         "Lab": "Nucleus",
         "Robot": "Humanoid service (model unconfirmed)"
       },
-      "status": "exception",
-      "reason": "No exact model in the record."
+      "status": "integrated",
+      "reason": "No exact model in the record.",
+      "sources": [
+        {
+          "file": "https://nucleuslab.ai/assets/nucleus-hero-clean-20s.mp4",
+          "page": "https://nucleuslab.ai/",
+          "sha256": "5bdec4738efaacb776b240750149422c2f63ddde66f65e0cb3257c9d78cfdb82",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 465 × 689 with 20 px padding."
+        }
+      ]
     },
     "129": {
       "recorded": {
@@ -4389,9 +4457,20 @@
         "Lab": "Techman Robot",
         "Robot": "TM Xplore I"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.tm-robot.com/en/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.youtube.com/watch?v=b9-bPE_NKcI",
+          "page": "https://ssi-robot.co.jp/次世代ヒューマノイド「tm-xplore-i」動画公開/",
+          "sha256": "7b74380e12f6bb2a1149b6d97757cd686426c67b42482e6982c5b6a79fb87bc8",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 344 × 788 with 20 px padding."
+        }
+      ]
     },
     "216": {
       "recorded": {
