@@ -23,8 +23,10 @@ import { publicProjection } from '../public/projection.js';
 
 // Tabs a scoped import may replace: the inputs of the Deployments relation graph and its evidence links, and (26 Nov
 // 2026) the Investment tab of listed companies and the Humanoids catalogue, free tabs no graph or projection reads.
+// Since 27 Nov 2026 also the Integrators catalogue: a free tab that no relation graph, public projection or company
+// dossier reads either, so only its rows and its own search documents change.
 export const GRAPH_DATASETS = ['deployments', 'entities', 'evidence-links'];
-export const SCOPED_DATASETS = [...GRAPH_DATASETS, 'stocks', 'humanoids'];
+export const SCOPED_DATASETS = [...GRAPH_DATASETS, 'stocks', 'humanoids', 'integrators'];
 
 // Rows D1 writes per statement, counting the table and each index (premium_rows: primary key and two indexes;
 // search_docs and relation_graphs: primary key). snapshot_id is in no index (premium_rows_order is dataset and

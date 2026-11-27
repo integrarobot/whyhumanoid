@@ -1,0 +1,24 @@
+# Deploys the PREBUILT single-file bundles (dist/worker.dashboard.js, dist/worker.staging.js) with Wrangler, as an
+# alternative to pasting them into the dashboard editor (27 Nov 2026, ops/worker-deploy.md). Wrangler uploads the file
+# byte for byte (no_bundle): no build happens here. Bindings are the ones in server/wrangler.toml; vars set in the
+# dashboard are kept with --keep-vars; Worker secrets are never touched by a deploy. No static assets: the dashboard
+# bundles embed the app, exactly as the dashboard deployments do today.
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+no_bundle = true
+
+[env.test]
+name = "whyhumanoid-premium-test"
+main = "../dist/worker.staging.js"
+workers_dev = true
+d1_databases = [
+  { binding = "DB", database_name = "whyhumanoid-premium-test", database_id = "4cadeb6e-56ca-48e9-9adf-e666c4d2befd" },
+]
+
+[env.production]
+name = "whyhumanoid-premium"
+main = "../dist/worker.dashboard.js"
+workers_dev = true
+d1_databases = [
+  { binding = "DB", database_name = "whyhumanoid-premium", database_id = "ba8ed181-22c6-40d4-b77d-f4bcbf238274" },
+]
