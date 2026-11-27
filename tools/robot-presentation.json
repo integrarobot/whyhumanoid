@@ -1477,6 +1477,156 @@
         "credit": "Image: RoboScience, REX G1 video still",
         "provenance": "ops/media/robots/roboscience-rex-g1/PROVENANCE.md"
       }
+    },
+    "119": {
+      "recorded": {
+        "Lab": "Nori",
+        "Robot": "NORI A3"
+      },
+      "image": {
+        "src": "/assets/robots/nori/nori-full-body.webp",
+        "fallback": "/assets/robots/nori/nori-full-body.png",
+        "width": 418,
+        "height": 1077,
+        "alt": "NORI A3 by Nori Robotics, full body, on its column and caster base",
+        "credit": "Image: Nori Robotics",
+        "provenance": "ops/media/robots/nori/PROVENANCE.md"
+      }
+    },
+    "46": {
+      "recorded": {
+        "Lab": "K-Scale Labs",
+        "Robot": "K-bot"
+      },
+      "image": {
+        "src": "/assets/robots/kscale-kbot/kscale-kbot-full-body.webp",
+        "fallback": "/assets/robots/kscale-kbot/kscale-kbot-full-body.png",
+        "width": 228,
+        "height": 598,
+        "alt": "K-Bot by K-Scale Labs, full body, front three-quarter view, technical render",
+        "credit": "Image: K-Scale Labs, K-Bot technical render",
+        "provenance": "ops/media/robots/kscale-kbot/PROVENANCE.md"
+      }
+    },
+    "210": {
+      "recorded": {
+        "Lab": "ZJ Humanoid",
+        "Robot": "NAVIAI WA2"
+      },
+      "image": {
+        "src": "/assets/robots/naviai-wa2/naviai-wa2-full-body.webp",
+        "fallback": "/assets/robots/naviai-wa2/naviai-wa2-full-body.png",
+        "width": 314,
+        "height": 599,
+        "alt": "NAVIAI WA2 by ZJ Humanoid, full body, on its wheeled base, manufacturer diagram",
+        "credit": "Image: NAVIAI, WA2 manufacturer diagram",
+        "provenance": "ops/media/robots/naviai-wa2/PROVENANCE.md"
+      }
+    },
+    "3": {
+      "recorded": {
+        "Lab": "Aeolus",
+        "Robot": "aeo"
+      },
+      "image": {
+        "src": "/assets/robots/aeolus-aeo/aeolus-aeo-full-body.webp",
+        "fallback": "/assets/robots/aeolus-aeo/aeolus-aeo-full-body.png",
+        "width": 2019,
+        "height": 2465,
+        "alt": "aeo by Aeolus Robotics, full body, two arms on its wheeled chassis",
+        "credit": "Image: Aeolus Robotics",
+        "provenance": "ops/media/robots/aeolus-aeo/PROVENANCE.md"
+      }
+    },
+    "78": {
+      "recorded": {
+        "Lab": "Robotis",
+        "Robot": "K0"
+      },
+      "image": {
+        "src": "/assets/robots/robotis-k0/robotis-k0-full-body.webp",
+        "fallback": "/assets/robots/robotis-k0/robotis-k0-full-body.png",
+        "width": 1120,
+        "height": 2528,
+        "alt": "AI Sapiens K0 by ROBOTIS, full body, front view, wearing a cowboy hat",
+        "credit": "Image: ROBOTIS, AI Sapiens K0, cowboy-hat configuration",
+        "provenance": "ops/media/robots/robotis-k0/PROVENANCE.md"
+      }
+    },
+    "53": {
+      "recorded": {
+        "Lab": "Lux",
+        "Robot": "Not disclosed"
+      },
+      "image": {
+        "src": "/assets/robots/luxai-qtrobot/luxai-qtrobot-full-body.webp",
+        "fallback": "/assets/robots/luxai-qtrobot/luxai-qtrobot-full-body.png",
+        "width": 722,
+        "height": 1586,
+        "alt": "QTrobot by LuxAI, full body, product render",
+        "credit": "Image: LuxAI, QTrobot render",
+        "provenance": "ops/media/robots/luxai-qtrobot/PROVENANCE.md"
+      }
+    },
+    "68": {
+      "recorded": {
+        "Lab": "Pudu",
+        "Robot": "D7"
+      },
+      "image": {
+        "src": "/assets/robots/pudu-d7/pudu-d7-full-body.webp",
+        "fallback": "/assets/robots/pudu-d7/pudu-d7-full-body.png",
+        "width": 705,
+        "height": 1662,
+        "alt": "PUDU D7 by Pudu Robotics, full body, on its wheeled base, still from the official launch video",
+        "credit": "Image: Pudu Robotics, D7 video still",
+        "provenance": "ops/media/robots/pudu-d7/PROVENANCE.md"
+      }
+    },
+    "190": {
+      "recorded": {
+        "Lab": "Matrix Robotics",
+        "Robot": "MATRIX-3"
+      },
+      "image": {
+        "src": "/assets/robots/matrix-3/matrix-3-full-body.webp",
+        "fallback": "/assets/robots/matrix-3/matrix-3-full-body.png",
+        "width": 246,
+        "height": 698,
+        "alt": "MATRIX-3 by Matrix Robotics, full body, front view, standing, still from the official introduction video",
+        "credit": "Image: Matrix Robotics, MATRIX-3 video poster",
+        "provenance": "ops/media/robots/matrix-3/PROVENANCE.md"
+      }
+    },
+    "131": {
+      "recorded": {
+        "Lab": "Tuesday Labs",
+        "Robot": "Voxel Series-1"
+      },
+      "image": {
+        "src": "/assets/robots/tuesday-voxel-series-1/tuesday-voxel-series-1-full-body.webp",
+        "fallback": "/assets/robots/tuesday-voxel-series-1/tuesday-voxel-series-1-full-body.png",
+        "width": 410,
+        "height": 817,
+        "alt": "Voxel Series-1 by Tuesday Labs, full body, crouching, orange",
+        "credit": "Image: Tuesday Labs",
+        "provenance": "ops/media/robots/tuesday-voxel-series-1/PROVENANCE.md"
+      }
+    },
+    "10": {
+      "recorded": {
+        "Lab": "Astribot",
+        "Robot": "S1"
+      },
+      "image": {
+        "src": "/assets/robots/astribot-s1/astribot-s1-full-body.webp",
+        "fallback": "/assets/robots/astribot-s1/astribot-s1-full-body.png",
+        "width": 482,
+        "height": 790,
+        "alt": "Astribot S1, full body, on its wheeled base, still from the official home-page video",
+        "credit": "Image: Astribot, S1 video still",
+        "provenance": "ops/media/robots/astribot-s1/PROVENANCE.md"
+      }
     }
   }
 }

@@ -1,0 +1,332 @@
+[
+  {
+    "id": 119,
+    "slug": "nori",
+    "credit": "NoriRobotics",
+    "source_page": "https://www.norirobotics.com/",
+    "source_url": "https://www.norirobotics.com/images/hero-still.44381e82.png",
+    "source_context": "Official homepage hero-still.44381e82.png, full wheeled NORI robot, both manipulators, head, column and entire caster base. Not torso-only preview. Verify same named family; no claim of production maturity.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 7496b6e, candidates-11",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      0,
+      0,
+      1600,
+      1340
+    ],
+    "bbox": [
+      644,
+      205,
+      1022,
+      1242
+    ],
+    "border": 20,
+    "size": [
+      418,
+      1077
+    ],
+    "native_alpha": false,
+    "original_sha256": "5885cdfa4060ba65cea04099a36cdba8527c87e82db5d9707b15ef91c0987cb5",
+    "prepared_sha256": "1def96b91a30d86c980fcf658ac3e3ff69b47be4b2ebfd3e88768caf28909aea",
+    "mask_sha256": "1b2901bdb82116629d5d8d363a0d08fd78caba66899f7bd874c94ed9c1ec695b"
+  },
+  {
+    "id": 46,
+    "slug": "kscale-kbot",
+    "credit": "KScaleLabs",
+    "source_page": "https://github.com/kscalelabs/kbot/blob/master/assets/pics/f.webp",
+    "source_url": "https://raw.githubusercontent.com/kscalelabs/kbot/master/assets/pics/f.webp",
+    "source_context": "Existing official technical render composite f.webp in manufacturer kbot repo. Top-left panel shows complete robot including hands and feet, ROI suggested[0,0,730,620] from native1462x1235. Use only this one full figure, exclude other panels. Label technical render, not photo. No new rendering or inferred anatomy.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 7496b6e, candidates-11",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      0,
+      0,
+      730,
+      620
+    ],
+    "bbox": [
+      302,
+      38,
+      490,
+      596
+    ],
+    "border": 20,
+    "size": [
+      228,
+      598
+    ],
+    "native_alpha": false,
+    "original_sha256": "b05e7dddc1db9cbc27153bcc9f1ff9acfdfdda8a4fe544bd3f1132a438285975",
+    "prepared_sha256": "48271fc9b693188eb9b86de53fd7fc3d7dfd3fa6390899c48cadf317a5f8db1c",
+    "mask_sha256": "b5672af33c537b1f1d109edf45bea738f2ac9d971373c225e09d603a04b02716"
+  },
+  {
+    "id": 210,
+    "slug": "naviai-wa2",
+    "credit": "NAVIAI",
+    "source_page": "https://www.zj-humanoid.com/zujian/10",
+    "source_url": "https://www.zj-humanoid.com/uploads/upload/images/20260814/fe30a0cd6d532ee432849aae6dd95ded.png",
+    "source_context": "Official exact WA2 product page technical specification image750x2867. Choose one complete actual WA2 platform at native scale, exclude other views/text. Do not confuse with i3 or crop base, inspect annotations. Manufacturer diagram, not hardware photograph.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 7496b6e, candidates-11",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      120,
+      790,
+      700,
+      1420
+    ],
+    "bbox": [
+      89,
+      32,
+      363,
+      591
+    ],
+    "border": 20,
+    "size": [
+      314,
+      599
+    ],
+    "native_alpha": false,
+    "original_sha256": "dcb836112157146d16b661a58eaa56cb61a0cb1000c874eba158b21d5d89e088",
+    "prepared_sha256": "4fa567326c13e0e848b0fbd0f875b021f6405da93afd171c0ea7c1f157b531a6",
+    "mask_sha256": "27f7f4c4afe9a49f1508036ef3d60b3a6ab65980cc335e6c5d62f8f472c95815"
+  },
+  {
+    "id": 3,
+    "slug": "aeolus-aeo",
+    "credit": "AeolusRobotics",
+    "source_page": "https://www.aeolusbot.com/meet-aeo",
+    "source_url": "https://www.aeolusbot.com/_next/static/media/meet-aeo.4d246794.png",
+    "source_context": "Official meet-aeo page. Original native PNG decoded from publisher Next Image url,2000x2427. Whole named wheeled robot with two grippers and full chassis. Alpha includes faint border traces: left border has only10 nonzero pixels, none>200; left gripper opaque geometry is complete, not a crop. Inspect native alpha/interiors and source top/bottom, remove background traces with alpha only. Do not introduce other aeo generations.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha; original alpha levels 20..250; specks removed",
+    "roi": [
+      0,
+      0,
+      2000,
+      2427
+    ],
+    "bbox": [
+      1,
+      1,
+      1980,
+      2426
+    ],
+    "border": 20,
+    "size": [
+      2019,
+      2465
+    ],
+    "native_alpha": true,
+    "original_sha256": "a34bd62082d9d5e255fc531224f512d5210f5d26096970f97f4ea0f2a7f7339f",
+    "prepared_sha256": "efcb41f53f30c113edbb0a826cb93da56f7a91f8f76eed4e14b1fb1b9af300a3",
+    "mask_sha256": "7f8ba9d4820ff3e227547f5b55e163f73a4db4c9989795568299cdb0f0f6a591"
+  },
+  {
+    "id": 78,
+    "slug": "robotis-k0",
+    "credit": "ROBOTIS",
+    "source_page": "https://ai.robotis.com/ai_sapiens/introduction_ai_sapiens.html",
+    "source_url": "https://ai.robotis.com/ai_sapiens/k0_no_background.png",
+    "source_context": "Official AI Sapiens introduction identifies exact source k0_no_background.png as K0. Whole biped1131x2533, actual display configuration with cowboy hat, neck support and hands; no invented head. Caption AI Sapiens K0, cowboy-hat configuration. NOT the different wheeled AI Worker/FFW. Native alpha still requires inspection.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha; original alpha levels 20..250; specks removed",
+    "roi": [
+      0,
+      0,
+      1131,
+      2533
+    ],
+    "bbox": [
+      25,
+      16,
+      1105,
+      2504
+    ],
+    "border": 20,
+    "size": [
+      1120,
+      2528
+    ],
+    "native_alpha": true,
+    "original_sha256": "f27e259b0b06f2beb67808367cab06a14bae7983d17d7af17fc557c075eed086",
+    "prepared_sha256": "9f02754a0ce8e46941c97dda63e3b338b822035629a26585a36d6c362d11e0c0",
+    "mask_sha256": "8f6ba8a8097ef5a5bc86724c851880626efb72b6836e58f47f4176a4957247dd"
+  },
+  {
+    "id": 53,
+    "slug": "luxai-qtrobot",
+    "credit": "LuxAI",
+    "source_page": "https://luxai.com/humanoid-social-robot-for-research-and-teaching/",
+    "source_url": "https://luxai.com/wp-content/uploads/website-refactor/qt-robots/QT_big_hero.png",
+    "source_context": "Catalogue record53 is Lux / Not disclosed, all technical specs unspecified; manufacturer URL is luxai.com. Exact current product page is QTrobot for research and teaching, with this native QT_big_hero.png759x1601 full manufacturer product render. Actual physical QTrobot photographs on same page confirm geometry. Name the pictured QTrobot in alt/credit; do not change master/model title or infer walking. This is a source-identified product on a previously unspecified manufacturer entry, not a claim all rows/specs refer to it. Independently review mapping and render vs mascot concern.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha",
+    "roi": [
+      0,
+      0,
+      759,
+      1601
+    ],
+    "bbox": [
+      38,
+      21,
+      720,
+      1567
+    ],
+    "border": 20,
+    "size": [
+      722,
+      1586
+    ],
+    "native_alpha": true,
+    "original_sha256": "605f621a98522efdc07bd0453cf108bb0c9395962260d7b44d448f599c7c687a",
+    "prepared_sha256": "5d6687e2d0ee470a08e4f22ee3b163982e866d92d1d2ae8cc107df8c0f050d8c",
+    "mask_sha256": "d82446f95a9bf4ca5711d2fe327533412b08d713630b18e5ecd15d2220f1eb6f"
+  },
+  {
+    "id": 68,
+    "slug": "pudu-d7",
+    "credit": "PuduRobotics",
+    "source_page": "https://www.pudurobotics.com/it/news/917",
+    "source_url": "https://pudu-file-host.oss-cn-beijing.aliyuncs.com/official_website/PUDU%20D7%20Video_50MB_2024-09-19_16%3A53%3A24.mp4",
+    "source_context": "Official manufacturer D7 launch video, exact filename PUDU D7 Video50MB2024-09-19, first native3840x2160 title frame explicitly says PUDU D7 and shows whole wheeled humanoid, both hands and complete base/wheels with floor margin. Existing manufacturer video still, no new rendering or proof of task autonomy. Mask ONLY left robot, exclude title/logo/stage/ring/shadow. Full frame and source URL/fps remain recorded.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      750,
+      150,
+      1900,
+      2160
+    ],
+    "bbox": [
+      91,
+      242,
+      756,
+      1864
+    ],
+    "border": 20,
+    "size": [
+      705,
+      1662
+    ],
+    "native_alpha": false,
+    "original_sha256": "70ad69d73f07f1ebfa5902ae05a1332d1a4838476245b6997244d0a3ed125b0f",
+    "prepared_sha256": "f1e4b17360772988efc83b1695d66bf3e416a3c31075b505bcf77e6d7299d19c",
+    "mask_sha256": "364f735e8511eddc5bd0a8469ef4fedac313c1092108c3a2b464bbab6923e996"
+  },
+  {
+    "id": 190,
+    "slug": "matrix-3",
+    "credit": "MatrixRobotics",
+    "source_page": "https://matrixrobotics.ai/matrix-3",
+    "source_url": "https://matrixrobotics.ai/matrix-3/20260108_MATRIX03_EN_4k.jpg",
+    "source_context": "Exact MATRIX3 page official introduction-video poster20260108_MATRIX03_EN_4k.jpg1280x720. Whole single robot to left of explicit MATRIX-3 title, head,hands,both complete feet and floor margin. Existing manufacturer render/video poster. Same asset appears on generic homepage but must NOT be assigned to MATRIX1 record191.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      300,
+      0,
+      700,
+      720
+    ],
+    "bbox": [
+      94,
+      45,
+      300,
+      703
+    ],
+    "border": 20,
+    "size": [
+      246,
+      698
+    ],
+    "native_alpha": false,
+    "original_sha256": "d3ddcc64a85023354ecc31b22c9984ac8e107674ef27335777660b84f9ba60d2",
+    "prepared_sha256": "3b256534c766d6b9c0237c268b4e90ab1db209b63ce58b948135b3d76ebc6fa4",
+    "mask_sha256": "67bb3f3fabaa8add4ef4450e05e5ad06e4996401823e523fc81638d41fcb20b2"
+  },
+  {
+    "id": 131,
+    "slug": "tuesday-voxel-series-1",
+    "credit": "TuesdayLabs",
+    "source_page": "https://tuesdaylabs.com/robot",
+    "source_url": "https://tuesdaylabs.com/_next/image?url=%2Fimages%2Fhome%2Fhero-kitchen.jpg&w=3840&q=75&dpl=dpl_9W1G1tixftkcXvw18tsyTsH4hTAi",
+    "source_context": "Exact current /robot page JSONLD Product has name Voxel Series-1 and explicitly lists https://tuesdaylabs.com/images/home/hero-kitchen.jpg as its product image. This source is the same hero-kitchen.jpg,2000x1500, whole orange robot crouching in kitchen, BOTH feet and hands/head visible. Do not reuse prior rejected white portrait cropped at shins. Preserve actual orange configuration; label manufacturer product image/illustration, not verified hardware deployment. Native figure height roughly750px, no enlargement.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; largest region kept",
+    "roi": [
+      500,
+      450,
+      1050,
+      1420
+    ],
+    "bbox": [
+      124,
+      127,
+      494,
+      904
+    ],
+    "border": 20,
+    "size": [
+      410,
+      817
+    ],
+    "native_alpha": false,
+    "original_sha256": "c210ea4571a6f4e9c59db541f80b2a9bd4ebff921490e6c4fc7a1e661ae96ea1",
+    "prepared_sha256": "7cab8ffcc466646eb4f1561e5fa02cff790535d5e9b05ef7dd69761767d65a2d",
+    "mask_sha256": "d58d26c58b7d3bc61483f129cc03e7f40452bc5ac6ea0f85d30bc2611bbcf1fe"
+  },
+  {
+    "id": 10,
+    "slug": "astribot-s1",
+    "credit": "Astribot",
+    "source_page": "https://www.astribot.com/",
+    "source_url": "https://www.astribot.com/index/s2test/index-s2-test.webp",
+    "source_context": "Official homepage video poster1920x1080. Burnt-in bottom-right caption explicitly says Astribot S1; robot whole down to complete wheeled base, both arms/grippers visible. The technical directory index/s2test is not evidence of a robot S2: read the image caption and product context. Credit manufacturer video still, not a capability claim. Exclude source subtitles from mask.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      600,
+      150,
+      1300,
+      1060
+    ],
+    "bbox": [
+      150,
+      108,
+      592,
+      858
+    ],
+    "border": 20,
+    "size": [
+      482,
+      790
+    ],
+    "native_alpha": false,
+    "original_sha256": "a314d0a35f02d232631ca46463032a752cc976cdc480d2f092f87cdb6718a889",
+    "prepared_sha256": "530355ad5dfe4e651deae826ec93a4788c18402280c8e5354037a4c20a3c9a5d",
+    "mask_sha256": "300eba5337cb2a8c65b2c3f1be69029a29123be3add55ebc0ca9973e2e6f17cd"
+  }
+]
