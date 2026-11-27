@@ -206,4 +206,10 @@ test('undefined E0-E5 codes are never a tag, facet or filter; the subscriber rec
   const rows = (await (await ctx.call('GET', '/v1/datasets/deployments?limit=20', { token: session })).json()).rows;
   assert.ok(rows.some((r) => r.evidence_level === 'E5') && rows.some((r) => r.evidence_level === 'E2'), 'the legacy code is kept in the complete record');
   assert.deepEqual(tagsFor('deployments', { evidence_level: 'E5' }), []);
+  // A subscriber searching the code finds the record; the snippet names the field as an undefined legacy code.
+  const e5 = await get('q=e5');
+  const hit = e5.results.find((r) => r.snippet?.field === 'evidence_level');
+  assert.ok(hit, JSON.stringify(e5.results.map((r) => r.snippet)));
+  assert.equal(hit.snippet.label, 'Legacy evidence code (undefined)');
+  assert.doesNotMatch(JSON.stringify(e5), /"evidence level"/i);
 });

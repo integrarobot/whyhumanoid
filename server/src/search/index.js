@@ -17,7 +17,8 @@ const NA = /^(not\b|n\/?a$|unknown$|unspecified$|not_disclosed$)/i;
 // Identifier fields: searchable by name or code, never shown to a reader as a snippet.
 const IDENTIFIER_FIELDS = new Set(['gf_symbol', 'isin', 'ticker', 'finance_url', 'record_id', 'deployment_id', 'organization_id', 'entity_id', 'provider_id', 'component_id', 'dataset_id', 'metric_id', 'link_id', 'model_id', 'task_id']);
 // Reader-facing names for fields whose column name is not English prose.
-const FIELD_LABELS = { source: 'Source', statement: 'Finding', limits: 'Limits', scope: 'Scope', etf_membership: 'ETF membership', etf_as_of: 'ETF membership as of', verified_at: 'Verified', country: 'Country as recorded', segment: 'Segment' };
+// evidence_level holds E0-E5 codes that no document defines: never labelled as a level or scale (27 Nov 2026).
+const FIELD_LABELS = { evidence_level: 'Legacy evidence code (undefined)', source: 'Source', statement: 'Finding', limits: 'Limits', scope: 'Scope', etf_membership: 'ETF membership', etf_as_of: 'ETF membership as of', verified_at: 'Verified', country: 'Country as recorded', segment: 'Segment' };
 const fieldLabel = (field) => FIELD_LABELS[field] ?? human(field);
 const nz = (v) => v !== null && v !== undefined && String(v).trim() !== '' && !NA.test(String(v).trim());
 const human = (v) => String(v ?? '').replace(/_/g, ' ');
