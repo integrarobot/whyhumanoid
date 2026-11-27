@@ -1,0 +1,20 @@
+{
+  "id": 128,
+  "slug": "roboparty-roboto-origin",
+  "manufacturer": "RoboParty",
+  "model": "ROBOTO 01 / ROBOTO Origin",
+  "credit": "RoboParty",
+  "public_page": "https://whyhumanoid.com/humanoids/roboparty-roboto-01-roboto-origin-128/",
+  "source_page": "https://github.com/Roboparty/roboto_origin/blob/main/assets/1280X1280.PNG",
+  "source_url": "https://raw.githubusercontent.com/Roboparty/roboto_origin/main/assets/1280X1280.PNG",
+  "original": "original.png",
+  "original_size": [
+    1280,
+    1280
+  ],
+  "original_sha256": "887bfa7f18a42f8224a774924aa75c021192a57a5e7a20cffb2efca8680a9310",
+  "source_context": "Official Roboparty GitHub organisation links from manufacturer site; repository roboto_origin, existing assets/1280X1280.PNG manufacturer render1280square. Whole walking figure, both complete feet/head and two round end-effector forms by design. Caption ROBOTO Origin repository render / ROBOTO family, not newly rendered URDF and not inferred ROBOTO01 capabilities. Catalogue explicitly allows ROBOTO01 / ROBOTOOrigin family. Prefer this large source to previous homepage stair image with small native figure. Exclude logo and floor shadow using mask only.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent."
+}

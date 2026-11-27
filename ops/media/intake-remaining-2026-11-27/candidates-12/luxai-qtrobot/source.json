@@ -1,0 +1,20 @@
+{
+  "id": 53,
+  "slug": "luxai-qtrobot",
+  "manufacturer": "Lux",
+  "model": "Not disclosed",
+  "credit": "LuxAI",
+  "public_page": "https://whyhumanoid.com/humanoids/lux-undisclosed-model-53/",
+  "source_page": "https://luxai.com/humanoid-social-robot-for-research-and-teaching/",
+  "source_url": "https://luxai.com/wp-content/uploads/website-refactor/qt-robots/QT_big_hero.png",
+  "original": "original.png",
+  "original_size": [
+    759,
+    1601
+  ],
+  "original_sha256": "605f621a98522efdc07bd0453cf108bb0c9395962260d7b44d448f599c7c687a",
+  "source_context": "Catalogue record53 is Lux / Not disclosed, all technical specs unspecified; manufacturer URL is luxai.com. Exact current product page is QTrobot for research and teaching, with this native QT_big_hero.png759x1601 full manufacturer product render. Actual physical QTrobot photographs on same page confirm geometry. Name the pictured QTrobot in alt/credit; do not change master/model title or infer walking. This is a source-identified product on a previously unspecified manufacturer entry, not a claim all rows/specs refer to it. Independently review mapping and render vs mascot concern.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent."
+}

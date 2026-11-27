@@ -1,0 +1,20 @@
+{
+  "id": 3,
+  "slug": "aeolus-aeo",
+  "manufacturer": "Aeolus",
+  "model": "aeo",
+  "credit": "AeolusRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/aeolus-aeo-3/",
+  "source_page": "https://www.aeolusbot.com/meet-aeo",
+  "source_url": "https://www.aeolusbot.com/_next/static/media/meet-aeo.4d246794.png",
+  "original": "original.png",
+  "original_size": [
+    2000,
+    2427
+  ],
+  "original_sha256": "a34bd62082d9d5e255fc531224f512d5210f5d26096970f97f4ea0f2a7f7339f",
+  "source_context": "Official meet-aeo page. Original native PNG decoded from publisher Next Image url,2000x2427. Whole named wheeled robot with two grippers and full chassis. Alpha includes faint border traces: left border has only10 nonzero pixels, none>200; left gripper opaque geometry is complete, not a crop. Inspect native alpha/interiors and source top/bottom, remove background traces with alpha only. Do not introduce other aeo generations.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent."
+}

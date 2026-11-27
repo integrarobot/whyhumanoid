@@ -1,0 +1,20 @@
+{
+  "id": 118,
+  "slug": "vibe-01",
+  "manufacturer": "Vibe Robotics",
+  "model": "Vibe 01",
+  "credit": "VibeRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/vibe-robotics-vibe-01-118/",
+  "source_page": "https://www.viberobotics.co/",
+  "source_url": "https://www.viberobotics.co/media/room1501-first.webp",
+  "original": "original.webp",
+  "original_size": [
+    720,
+    900
+  ],
+  "original_sha256": "07b5bfaba10d56e1b14fc5905786e27626821e0524bd90063235c21219f727cc",
+  "source_context": "Official homepage video poster room1501-first.webp720x900. Publisher aria-label explicitly says Rendered,2am: Vibe01 carries a bag down a hotel corridor and hangs it on a room door handle. Whole front unit including BOTH caster-wheel extremities, lower floor margin visible; preserve both held bags. Unlike cropped og.jpg previously rejected. Label concept/manufacturer render, no hardware demonstration claim.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent."
+}

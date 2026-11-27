@@ -1,0 +1,23 @@
+{
+  "id": 68,
+  "slug": "pudu-d7",
+  "manufacturer": "Pudu",
+  "model": "D7",
+  "credit": "PuduRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/pudu-d7-68/",
+  "source_page": "https://www.pudurobotics.com/it/news/917",
+  "source_url": "https://pudu-file-host.oss-cn-beijing.aliyuncs.com/official_website/PUDU%20D7%20Video_50MB_2024-09-19_16%3A53%3A24.mp4",
+  "original": "original.png",
+  "original_size": [
+    3840,
+    2160
+  ],
+  "original_sha256": "70ad69d73f07f1ebfa5902ae05a1332d1a4838476245b6997244d0a3ed125b0f",
+  "source_context": "Official manufacturer D7 launch video, exact filename PUDU D7 Video50MB2024-09-19, first native3840x2160 title frame explicitly says PUDU D7 and shows whole wheeled humanoid, both hands and complete base/wheels with floor margin. Existing manufacturer video still, no new rendering or proof of task autonomy. Mask ONLY left robot, exclude title/logo/stage/ring/shadow. Full frame and source URL/fps remain recorded.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent.",
+  "video_frame": 0,
+  "video_fps": 25.0,
+  "video_time_seconds": 0.0
+}

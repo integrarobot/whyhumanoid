@@ -1,0 +1,20 @@
+{
+  "id": 107,
+  "slug": "noble-machines-platform",
+  "manufacturer": "Noble Machines",
+  "model": "Not disclosed",
+  "credit": "NobleMachines",
+  "public_page": "https://whyhumanoid.com/humanoids/noble-machines-undisclosed-model-107/",
+  "source_page": "https://www.noblemachines.ai/",
+  "source_url": "https://www.noblemachines.ai/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fwg3g1rbz%2Fproduction%2F0ca8a6a5eb8003f5da1f2dd5160556135aec7443-1526x1552.jpg&w=3840&q=75",
+  "original": "original.jpg",
+  "original_size": [
+    1526,
+    1552
+  ],
+  "original_sha256": "a6f35d3c5c166f3c082de296add01c52fd3ecd44fdf39d8ec3728dfeaba865ef",
+  "source_context": "Catalogue record107 explicitly says Noble Machines platform; product name unconfirmed. Official manufacturer warehouse photo1526x1552 shows the whole actual bent-knee biped, two feet, arms and upper sensor/motor assembly carrying a translucent tote. Keep cargo and all robot parts; no invented human head or name such as Moby. Caption unnamed NobleMachines platform. Source optical appearance through tote is preserved; no RGB/background decontamination. Independently inspect cargo/foreground matting and actual whole figure.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent."
+}

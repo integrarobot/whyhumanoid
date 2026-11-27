@@ -1,0 +1,20 @@
+{
+  "id": 10,
+  "slug": "astribot-s1",
+  "manufacturer": "Astribot",
+  "model": "S1",
+  "credit": "Astribot",
+  "public_page": "https://whyhumanoid.com/humanoids/astribot-s1-10/",
+  "source_page": "https://www.astribot.com/",
+  "source_url": "https://www.astribot.com/index/s2test/index-s2-test.webp",
+  "original": "original.webp",
+  "original_size": [
+    1920,
+    1080
+  ],
+  "original_sha256": "a314d0a35f02d232631ca46463032a752cc976cdc480d2f092f87cdb6718a889",
+  "source_context": "Official homepage video poster1920x1080. Burnt-in bottom-right caption explicitly says Astribot S1; robot whole down to complete wheeled base, both arms/grippers visible. The technical directory index/s2test is not evidence of a robot S2: read the image caption and product context. Credit manufacturer video still, not a capability claim. Exclude source subtitles from mask.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent."
+}

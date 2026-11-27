@@ -1,0 +1,25 @@
+{
+  "id": 131,
+  "slug": "tuesday-voxel-series-1",
+  "manufacturer": "Tuesday Labs",
+  "model": "Voxel Series-1",
+  "credit": "TuesdayLabs",
+  "public_page": "https://whyhumanoid.com/humanoids/tuesday-labs-voxel-series-1-131/",
+  "source_page": "https://tuesdaylabs.com/robot",
+  "source_url": "https://tuesdaylabs.com/_next/image?url=%2Fimages%2Fhome%2Fhero-kitchen.jpg&w=3840&q=75&dpl=dpl_9W1G1tixftkcXvw18tsyTsH4hTAi",
+  "original": "original.jpg",
+  "original_size": [
+    2000,
+    1500
+  ],
+  "original_sha256": "c210ea4571a6f4e9c59db541f80b2a9bd4ebff921490e6c4fc7a1e661ae96ea1",
+  "source_context": "Exact current /robot page JSONLD Product has name Voxel Series-1 and explicitly lists https://tuesdaylabs.com/images/home/hero-kitchen.jpg as its product image. This source is the same hero-kitchen.jpg,2000x1500, whole orange robot crouching in kitchen, BOTH feet and hands/head visible. Do not reuse prior rejected white portrait cropped at shins. Preserve actual orange configuration; label manufacturer product image/illustration, not verified hardware deployment. Native figure height roughly750px, no enlargement.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent.",
+  "publisher_product_identity_evidence": {
+    "type": "Product",
+    "name": "Voxel Series-1",
+    "image": "https://tuesdaylabs.com/images/home/hero-kitchen.jpg"
+  }
+}

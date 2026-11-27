@@ -1,0 +1,20 @@
+{
+  "id": 190,
+  "slug": "matrix-3",
+  "manufacturer": "Matrix Robotics",
+  "model": "MATRIX-3",
+  "credit": "MatrixRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/matrix-robotics-matrix-3-190/",
+  "source_page": "https://matrixrobotics.ai/matrix-3",
+  "source_url": "https://matrixrobotics.ai/matrix-3/20260108_MATRIX03_EN_4k.jpg",
+  "original": "original.jpg",
+  "original_size": [
+    1280,
+    720
+  ],
+  "original_sha256": "d3ddcc64a85023354ecc31b22c9984ac8e107674ef27335777660b84f9ba60d2",
+  "source_context": "Exact MATRIX3 page official introduction-video poster20260108_MATRIX03_EN_4k.jpg1280x720. Whole single robot to left of explicit MATRIX-3 title, head,hands,both complete feet and floor margin. Existing manufacturer render/video poster. Same asset appears on generic homepage but must NOT be assigned to MATRIX1 record191.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent."
+}

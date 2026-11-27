@@ -1,0 +1,20 @@
+{
+  "id": 78,
+  "slug": "robotis-k0",
+  "manufacturer": "Robotis",
+  "model": "K0",
+  "credit": "ROBOTIS",
+  "public_page": "https://whyhumanoid.com/humanoids/robotis-k0-78/",
+  "source_page": "https://ai.robotis.com/ai_sapiens/introduction_ai_sapiens.html",
+  "source_url": "https://ai.robotis.com/ai_sapiens/k0_no_background.png",
+  "original": "original.png",
+  "original_size": [
+    1131,
+    2533
+  ],
+  "original_sha256": "f27e259b0b06f2beb67808367cab06a14bae7983d17d7af17fc557c075eed086",
+  "source_context": "Official AI Sapiens introduction identifies exact source k0_no_background.png as K0. Whole biped1131x2533, actual display configuration with cowboy hat, neck support and hands; no invented head. Caption AI Sapiens K0, cowboy-hat configuration. NOT the different wheeled AI Worker/FFW. Native alpha still requires inspection.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. No open photo licence assumed. Credit owner; no outreach sent."
+}
