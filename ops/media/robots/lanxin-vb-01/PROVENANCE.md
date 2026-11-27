@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 14, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 14, PR not yet merged)
+## Published files (image batch 14, PR 246, merge 6fecfb5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/lanxin-vb-01/lanxin-vb-01-full-body.png`, 780 × 1494 px, sha256 `1ba6e0ee1b4bed6c2e984591f20102befceef2b889ccfa7ee5587f672c9090f2` (= the prepared.png).
 - **WebP:** `assets/robots/lanxin-vb-01/lanxin-vb-01-full-body.webp`, sha256 `4e85fb8c6b0caf4a36cf4cafb176ee818b7248a4161b8d34aef47b9d220746d5`.

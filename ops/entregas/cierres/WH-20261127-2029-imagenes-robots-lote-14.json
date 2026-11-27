@@ -1,0 +1,61 @@
+{
+  "id": "WH-20261127-2029-imagenes-robots-lote-14",
+  "tarea": "Imágenes de robots, lote 14 del alcance «todas las imágenes que faltan»: Phoenix Gen 6, iX, PHYBOT M1, MagicBot Z1, TianGong Omni, VB-01, TITAN O1, Tien Kung 3.0 (pose invertida), Sunday Memo (con plato) y JingChu 1, con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026; alcance confirmado solo para Humanoids), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T20:29:39+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 246 (cabeza revisada 0f05205, merge 6fecfb5): imagen en las fichas 80 Sanctuary AI Phoenix, 216 Simplexity Robotics iX, 63 Phybot M1, 160 Magiclab MagicBot Z1, 206 X-Humanoid TianGong Omni, 188 Lanxin Robotics VB1, 211 Westlake Robotics o1, 204 X-Humanoid Tien Kung 3.0, 120 Sunday Memo y 182 Jingchu Humanoid JingChu 1, solo mediante tools/robot-presentation.json; las 128 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con el tipo de imagen o la variante: «Sanctuary AI, Phoenix Gen 6 launch graphic (2023)», «Simplexity Robotics, iX manufacturer render, raised-hand configuration», «PHYBOT, M1 manufacturer render», «MagicLab, MagicBot Z1 video still, round-ended-arm configuration», «X-Humanoid, TianGong Omni front-view technical render», «Lanxin Robotics, VB-01 VersaBot brochure image (2024)», «Westlake Robotics, TITAN O1 manufacturer render, running pose», «Beijing Humanoid Robot Innovation Center, Tien Kung 3.0, inverted pose», «Sunday, Memo official video still with plate» y «Jingchu Humanoid, JingChu 1 manufacturer render». Las especificaciones de las fichas no cambian.",
+    "Fuentes de Codex (codex/image-sources-remaining: candidates-19 en 639618b, candidates-20 en 33e84f4, candidates-21 en 4d699a5, candidates-22 en 8417c21, candidates-23 en b09a967 y candidates-24 en 421cfc1), copiadas de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-14/. Todos los recortes, de Claude y solo de alfa, a tamaño nativo: alfa propio del original (iX y TianGong Omni; TITAN O1 nivelado 110..240 para quitar la estela translúcida; JingChu 1 nivelado 120..205 para que el pie desvanecido quede opaco) o máscaras BiRefNet guardadas junto a cada original.",
+    "Fuera del lote: IGRIS 2025 (79), conservado en el paquete como investigación, porque una correa de la grúa pasa por delante del hombro (Codex: descartado, sin reconstrucción); R-Noid fotograma 908 y los fotogramas de D9 de la sección 2, examinados por Codex y no usados; Jingchu Elf (183), pendiente de otra fuente porque la cabeza toca el borde superior con píxeles opacos.",
+    "Actualización sobre main dd71d9c (PR 245) antes de fusionar: las páginas generadas de Phoenix y MagicBot Z1 en conflicto se regeneraron con las herramientas, sin edición a mano; la diferencia con main siguió siendo de 88 archivos solo de imágenes.",
+    "Cobertura: lote 14 publicado con 10 fichas; en todo el catálogo, 138 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 246",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/246"
+    },
+    {
+      "etiqueta": "CI de la cabeza 0f05205",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46056641327"
+    },
+    {
+      "etiqueta": "Pages de 6fecfb5",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46056855660"
+    },
+    {
+      "etiqueta": "Ficha Sunday Memo",
+      "url": "https://whyhumanoid.com/humanoids/sunday-memo-120/"
+    },
+    {
+      "etiqueta": "Ficha TITAN O1",
+      "url": "https://whyhumanoid.com/humanoids/westlake-robotics-westlake-o1-211/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 6fecfb5 (run 46056855660, correcto); CI de la cabeza 0f05205 (run 46056641327, correcto). Fusión hecha solo en esa cabeza, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 11/11 (los diez integrados e IGRIS apartado); los avisos de fondo plano de VB-01 son el brazo blanco del propio robot; navegador local de las diez fichas a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda, antes y después de actualizar sobre main.",
+    "Codex, cabezas ed4e678 y 0f05205: revisión independiente aprobada; 88 archivos solo de imágenes, las 128 presentaciones anteriores y el catálogo de 213 idénticos, las diez nuevas exactas al mapping; RGB, SHA, alfa, tamaño nativo y margen de 20 px correctos; contornos de los diez válidos en claro y oscuro; activos, ops y mapping sin cambios entre las dos cabezas.",
+    "Claude, producción tras Pages 46056855660: las 20 URL canónicas (10 PNG y 10 WebP) con los mismos bytes que 6fecfb5 (20/20); las 10 fichas y la portada idénticas a 6fecfb5 salvo las etiquetas meta agent:* que añade Cloudflare (11/11); navegador real a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 138 presentaciones. La espera de Pages se hizo consultando la portada existente con un parámetro de consulta único, nunca URL de activos nuevos.",
+    "Codex, verificación pública independiente tras Pages 46056855660: 30/30 URL canónicas con 200 (20 PNG y WebP con SHA y alfa exactos y 10 fichas con imagen, texto alternativo y leyenda); 20/20 vistas en Chrome con innerWidth efectivo de 390 × 844 y 1366 × 900, contain, cargadas y sin desbordamiento; captura de escritorio de Memo revisada. Cobertura 138/213, 75 pendientes.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (138) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Lote 15 en preparación: Avatar (166) ya recortado; StarBot Astra (199) y Flex (200) de candidates-26 y MATRIX-1 (191) de candidates-27 en revisión; Jingchu Elf (183) pendiente de otra fuente.",
+    "T230A (89), D9 (155), R-Noid (77) e IGRIS (79) siguen en cola con su motivo.",
+    "Quedan 75 fichas de Humanoids sin imagen; Other Robots queda fuera del alcance por decisión de Javier."
+  ],
+  "siguiente_accion": "Codex verifica producción y registra su aviso; Javier confirma la recepción. Claude sigue con el lote 15 sin fusionar nada antes de la revisión de Codex."
+}

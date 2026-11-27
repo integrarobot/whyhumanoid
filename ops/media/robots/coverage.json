@@ -364,7 +364,7 @@
     {
       "batch": 14,
       "opened": "2026-11-27",
-      "state": "integrated",
+      "state": "published",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026)",
       "candidates": [
@@ -383,8 +383,10 @@
       "notes": [
         "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-14/: candidates-19 (639618b: Phoenix Gen 6), candidates-20 (33e84f4: iX, PHYBOT M1, MagicBot Z1), candidates-21 (4d699a5: TianGong Omni, VB-01), candidates-22 (8417c21: TITAN O1, Tien Kung 3.0), candidates-23 (b09a967: Sunday Memo) and candidates-24 (421cfc1: JingChu 1). Every cutout prepared by Claude, alpha only: the original's own alpha (iX, TianGong Omni; TITAN O1 levelled to drop its translucent motion trail; JingChu 1 levelled to make its faded foot opaque) or BiRefNet masks kept beside the originals.",
         "Left out: IGRIS 2025 (79), suspended on a crane whose strap passes in front of the shoulder (Codex: rejected, not reconstructed); kept in the package as research. R-Noid frame 908 (77) and the D9 section-2 frames (155) were examined by Codex and not used. Jingchu Elf (183) is kept for the next batch (its head reaches the top of the file with opaque pixels).",
-        "Captions name the kind of image and the variant: Phoenix Gen 6 launch graphic (2023), iX raised-hand render, M1 render, MagicBot Z1 video still with round-ended arms, TianGong Omni front-view technical render, VB-01 brochure image (2024), TITAN O1 running render, Tien Kung 3.0 inverted pose, Memo video still with plate, JingChu 1 render. Records' specifications unchanged."
-      ]
+        "Captions name the kind of image and the variant: Phoenix Gen 6 launch graphic (2023), iX raised-hand render, M1 render, MagicBot Z1 video still with round-ended arms, TianGong Omni front-view technical render, VB-01 brochure image (2024), TITAN O1 running render, Tien Kung 3.0 inverted pose, Memo video still with plate, JingChu 1 render. Records' specifications unchanged.",
+        "Published with PR 246 (reviewed head 0f05205, CI 46056641327; merge 6fecfb5), 27 Nov 2026; Pages 46056855660 and production verification by Claude and Codex recorded in the batch closeout."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -2914,7 +2916,7 @@
         "Lab": "Phybot",
         "Robot": "M1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.phybot.tech/",
       "sources": [
         {
@@ -3131,7 +3133,7 @@
         "Lab": "Sanctuary AI",
         "Robot": "Phoenix"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://sanctuary.ai/resources/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/",
       "sources": [
         {
@@ -3452,7 +3454,7 @@
         "Lab": "Sunday",
         "Robot": "Memo"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.sunday.ai/",
       "sources": [
         {
@@ -3566,7 +3568,7 @@
         "Lab": "Magiclab",
         "Robot": "MagicBot Z1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.magiclab.top/en/z1",
       "sources": [
         {
@@ -3586,7 +3588,7 @@
         "Lab": "Jingchu Humanoid",
         "Robot": "JingChu 1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.jingchurobot.cn/product_detail/1.html",
       "sources": [
         {
@@ -3674,7 +3676,7 @@
         "Lab": "Lanxin Robotics",
         "Robot": "VB1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.lanxinrobotics.com/vb1/",
       "sources": [
         {
@@ -3910,7 +3912,7 @@
         "Lab": "X-Humanoid",
         "Robot": "Tien Kung 3.0"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.x-humanoid.com/detail/jstg.html",
       "sources": [
         {
@@ -3939,7 +3941,7 @@
         "Lab": "X-Humanoid",
         "Robot": "TianGong Omni"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.x-humanoid.com/detail/omni.html",
       "sources": [
         {
@@ -4017,7 +4019,7 @@
         "Lab": "Westlake Robotics",
         "Robot": "Westlake o1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://wlrobo.com/",
       "sources": [
         {
@@ -4055,7 +4057,7 @@
         "Lab": "Simplexity Robotics",
         "Robot": "iX"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.simplexityrobotics.com/products/ix",
       "sources": [
         {
