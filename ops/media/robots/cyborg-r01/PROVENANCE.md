@@ -20,7 +20,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 4, PR not yet merged)
+## Published files (image batch 4, PR 208, merge e152f67, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/cyborg-r01/cyborg-r01-full-body.png`, 686 × 1471 px, sha256 `cfaeb7a1ac8f939c30389e4161e202479e6c223d9a8f6c4a869d5cb4b54178b1` (= Codex's prepared.png).
 - **WebP:** `assets/robots/cyborg-r01/cyborg-r01-full-body.webp`, sha256 `d4fc54fb24fec88f549aee477057d5ebebea850202295887ffa9b9d938de08ed`.

@@ -1,0 +1,57 @@
+{
+  "id": "WH-20261127-1353-imagenes-robots-lote-4-cd",
+  "tarea": "Imágenes de robots, lote 4 del alcance C/D: Clone, Vega, Moxi, CASBOT 02 y W1, DR02, CYBORG-R01 y W01, XiaQi X02 y DXTR, con imagen oficial de cuerpo completo y fondo transparente",
+  "origen": "Javier (27/11/2026: «sigue con los fabricantes de la C y la D, en lotes de 10, con fondo transparente y el robot de cuerpo completo»), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T13:53:25+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 208 (cabeza revisada 0b99dd2, merge e152f67): imagen en las fichas 18 Clone, 22 Vega (Vega 1 Pro móvil), 23 Moxi, 167 CASBOT 02, 159 DR02, 168 CASBOT W1, 169 CYBORG-R01, 170 CYBORG-W01, 172 XiaQi X02 y 175 DXTR, solo mediante tools/robot-presentation.json; las 33 presentaciones anteriores, sin cambios.",
+    "Originales, máscaras por zona, preparados y manifiesto de Codex (codex/image-sources-cd, a2f0241) guardados sin cambios en ops/media/intake-cd-2026-11-27/batch-04/; preparados usados tal cual (margen de 20 px, resolución nativa, sin reescalar); color de cada píxel visible igual al original.",
+    "Identidades: Clone es el render musculoesquelético del fabricante, sin afirmar Protoclone ni Clone Alpha; DR02 marcado en el muslo, sin afirmar Pro; XiaQi X02 de Digit Robotics, no el Digit de Agility; DXTR completo sobre su base DuaRover; Moxi del caso Shannon Health en PDF oficial, con la base recuperada por Codex solo en el alfa.",
+    "Excepción aceptada por Codex a la preferencia sin accesorios: se conservan los objetos que el robot sostiene en la fuente (caja de DXTR, marcador de Moxi), sin borrar ni reconstruir nada.",
+    "Cobertura: seguimiento C/D separado del A/B; este cierre pasa las diez fichas a published (C/D: 10 publicadas y 8 en curso)."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 208",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/208"
+    },
+    {
+      "etiqueta": "CI de la cabeza 0b99dd2",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46001737358"
+    },
+    {
+      "etiqueta": "Pages de e152f67",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46002039097"
+    },
+    {
+      "etiqueta": "Ficha Clone",
+      "url": "https://whyhumanoid.com/humanoids/clone-clone-18/"
+    },
+    {
+      "etiqueta": "Ficha Duatic DXTR",
+      "url": "https://whyhumanoid.com/humanoids/duatic-dxtr-175/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main e152f67 (run 46002039097, correcto); CI de la cabeza 0b99dd2 (run 46001737358, correcto). Sin cambios de maestro, datos, Worker ni D1.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Codex, cabeza 0b99dd2: SHA de los diez PNG iguales al preparado, tamaños correctos, alfa de WebP idéntica; presentación y cobertura correctas; diff acotado al lote frente a main f045d68.",
+    "Claude, producción: las 20 URL canónicas dan 200 con los mismos bytes que e152f67; navegador real en iPhone 13 y 1366 × 900, las diez fichas cargan con crédito y sin desbordamiento lateral (20/20).",
+    "Codex, verificación pública independiente: 30/30 comprobaciones canónicas (10 WebP y 10 PNG con hash idéntico, alfa 0–255 y esquinas transparentes, 10 HTML con imagen, alt y crédito) y 20/20 vistas en 390 y 1366 px; sin purga ni 404 tempranos."
+  ],
+  "pendientes": [
+    "Lote 5 C/D en PR aparte: Proxie (19), DR01 (20, miniatura oficial de resolución modesta), DOBOT Atom (24), Xialan R03 (171) y Cinnamon 1 (173), con fuentes de Codex en cc1923c.",
+    "Sin fuente válida tras revisión, a registrar con su límite concreto: Yogi (17), Darwin-0 (134) y Moya (174).",
+    "Clone (18) se muestra como render del fabricante, no como foto de un robot en funcionamiento."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Integrar el lote 5 tras fusionar este cierre."
+}

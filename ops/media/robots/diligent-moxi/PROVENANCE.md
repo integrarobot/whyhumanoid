@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 4, PR not yet merged)
+## Published files (image batch 4, PR 208, merge e152f67, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/diligent-moxi/diligent-moxi-full-body.png`, 583 × 1528 px, sha256 `476a24010ec9abafed9761da5a2d6f5fb193fdbb1896f6d4b981060e91fcaae9` (= Codex's prepared.png).
 - **WebP:** `assets/robots/diligent-moxi/diligent-moxi-full-body.webp`, sha256 `2beb2b25aa663e2e4dab2dea8b8b77263b9bb7118446c3482177ebb848f4f739`.

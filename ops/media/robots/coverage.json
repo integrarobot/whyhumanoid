@@ -97,7 +97,7 @@
     {
       "batch": 4,
       "opened": "2026-11-27",
-      "state": "integrated_awaiting_review",
+      "state": "published",
       "target": 10,
       "scope": "C/D makers",
       "candidates": [
@@ -114,8 +114,10 @@
       ],
       "reserves": [],
       "notes": [
-        "Sources from Codex, transport branch codex/image-sources-cd (a2f0241), kept unchanged in ops/media/intake-cd-2026-11-27/batch-04/; prepared PNGs used as delivered."
-      ]
+        "Sources from Codex, transport branch codex/image-sources-cd (a2f0241), kept unchanged in ops/media/intake-cd-2026-11-27/batch-04/; prepared PNGs used as delivered.",
+        "Published with PR 208 (reviewed head 0b99dd2, CI 46001737358; merge e152f67), 27 Nov 2026; Pages and production verification recorded in the batch closeout."
+      ],
+      "published": "2026-11-27"
     },
     {
       "batch": 5,
@@ -1182,7 +1184,7 @@
         "Lab": "Clone",
         "Robot": "Clone"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.clonerobotics.com/",
       "notes": "Clone: the record names the robot \"Clone\" (musculoskeletal android). Do not substitute another Clone Robotics product name or prototype (e.g. a torso, a hand or \"Protoclone\") unless the official source identifies it as this record.",
       "sources": [
@@ -1229,7 +1231,7 @@
         "Lab": "CASBOT",
         "Robot": "CASBOT 02"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://casbot.tech/product/02",
       "notes": "CASBOT 02, bipedal; not CASBOT W1 (168).",
       "sources": [
@@ -1250,7 +1252,7 @@
         "Lab": "CASBOT",
         "Robot": "CASBOT W1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://casbot.tech/product/w1",
       "notes": "CASBOT W1, wheeled with lifting column; shown whole; not CASBOT 02 (167).",
       "sources": [
@@ -1288,7 +1290,7 @@
         "Lab": "Deep",
         "Robot": "DR02"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.deeprobotics.cn/en/products/detail/5.html",
       "notes": "DEEP Robotics DR02 (record covers DR02 and DR02 Pro: name the variant shown); not DR01 (20).",
       "sources": [
@@ -1309,7 +1311,7 @@
         "Lab": "Dexmate",
         "Robot": "Vega"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.dexmate.ai/",
       "notes": "Dexmate Vega, mobile configuration; not the bench-mounted Vega 1 U.",
       "sources": [
@@ -1330,7 +1332,7 @@
         "Lab": "Diligent",
         "Robot": "Moxi"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.diligentrobots.com/",
       "notes": "Diligent Moxi, wheeled hospital mobile manipulator; shown whole. Holds a marker in the raised hand in the official image: accepted as a held object present in the source (Codex, 27 Nov 2026); not erased.",
       "sources": [
@@ -1368,7 +1370,7 @@
         "Lab": "Duatic",
         "Robot": "DXTR"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.duatic.com/dxtr",
       "notes": "Duatic DXTR = DuaTorso upper body on the DuaRover base: shown as the whole half-humanoid on its base, not the torso alone. Carries a box in the official image: accepted as a held object present in the source (Codex, 27 Nov 2026); not erased.",
       "sources": [
@@ -1445,7 +1447,7 @@
         "Lab": "Cyborg Robotics",
         "Robot": "CYBORG-R01"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.cyb-org.cn/",
       "notes": "CYBORG-R01, bipedal; not CYBORG-W01 (170).",
       "sources": [
@@ -1466,7 +1468,7 @@
         "Lab": "Cyborg Robotics",
         "Robot": "CYBORG-W01"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.cyb-org.cn/",
       "notes": "CYBORG-W01, wheeled; not CYBORG-R01 (169).",
       "sources": [
@@ -1497,7 +1499,7 @@
         "Lab": "Digit Robotics",
         "Robot": "XiaQi X02"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.digit.com.cn/ProductsDetail/93.html",
       "notes": "Digit Robotics (数字华夏) XiaQi X02; not Agility Robotics Digit (6). Not Xialan R03 (171).",
       "sources": [

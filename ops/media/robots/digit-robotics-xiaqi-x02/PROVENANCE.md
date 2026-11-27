@@ -20,7 +20,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 4, PR not yet merged)
+## Published files (image batch 4, PR 208, merge e152f67, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/digit-robotics-xiaqi-x02/digit-robotics-xiaqi-x02-full-body.png`, 784 × 1941 px, sha256 `59a1dfd46d782de2b9d58df5d471adb381ed60968acf855c5f75af765c4d5948` (= Codex's prepared.png).
 - **WebP:** `assets/robots/digit-robotics-xiaqi-x02/digit-robotics-xiaqi-x02-full-body.webp`, sha256 `5b9f4e0887b6383d3e773019774a0aea7be7e8fc8cb881db35ec95b6eb0d0618`.

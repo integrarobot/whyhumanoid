@@ -20,7 +20,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 4, PR not yet merged)
+## Published files (image batch 4, PR 208, merge e152f67, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/clone-robotics-clone/clone-robotics-clone-full-body.png`, 1188 × 2909 px, sha256 `b4666360a64ef04d7dcbf0972a62ae1ed6ebab05ec838026723ff063d38b998b` (= Codex's prepared.png).
 - **WebP:** `assets/robots/clone-robotics-clone/clone-robotics-clone-full-body.webp`, sha256 `86e7f9eafdd3752e9027fad49e5fa968c375b9c49554db4280dd804956b51b1a`.

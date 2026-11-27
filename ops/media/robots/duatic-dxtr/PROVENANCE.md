@@ -20,7 +20,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 4, PR not yet merged)
+## Published files (image batch 4, PR 208, merge e152f67, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/duatic-dxtr/duatic-dxtr-full-body.png`, 860 × 1368 px, sha256 `a538e53406e559089aca9b2fadfa78424b411dd0f12d5640c01fbc0d2f5b3aad` (= Codex's prepared.png).
 - **WebP:** `assets/robots/duatic-dxtr/duatic-dxtr-full-body.webp`, sha256 `3275ef20c5a4a7a6f4b452e31ca48735bd936ba1051ddf5c1f4bb0743bd40cf6`.
