@@ -413,6 +413,31 @@
         "Published with PR 249 (reviewed head 3a4fcb2, CI 46060419988; merge 672539d), 27 Nov 2026; Pages 46060653520 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 16,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        202,
+        123,
+        205,
+        155,
+        95,
+        58,
+        185,
+        184,
+        209,
+        33
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-16/: candidates-35 (8ba9356: TLIBOT T1 Pro, brochure image with its PDF soft mask), candidates-36 and 37 (91a9ac1: Lightberry Lumi photograph; X-Humanoid TianYi 2.0 brochure render), candidates-38 (feb3c3e: Pudu D9, brochure image with its PDF soft mask), candidates-39 (e0d60a7: Vanar Generation 1 render), candidates-40 (5168cc8: NEURA 4NE1 Gen 4 and KAIST Humanoid v0.9 video frames), candidates-41 (7a9d62e: JAKA π video frame) candidates-42 (1c2c9a0: ZJ Humanoid i3 video frame) and candidates-43 (efea6c9: GAC GoMate 2024 render, video still via Gasgoo Auto News). Every cutout prepared by Claude, alpha only: the PDF soft mask (T1 Pro, D9) or BiRefNet masks kept beside the originals; Vanar with the six bracket and elbow openings removed by distance to the flat studio grey (reviewed by Codex); KAIST with the dark left bar of its head handle completed from the mask and its own luminance.",
+        "Left out: Jingchu Elf (183, candidates-41): in the Changjiang Daily photograph the left gripper hangs in front of a dark green tablecloth of the same colour as the robot's dark parts; neither the model nor a luminance key separates it without losing gripper parts, so it is not used and nothing is reconstructed. Qinglong (69), T230A (89), R-Noid (77) and IGRIS (79) stay out with their reasons; D9 (155) now has a source.",
+        "GAC GoMate (33) replaces Jingchu Elf as the tenth record. Captions name the kind of image and the variant: T1 Pro brochure image (2025) and TianYi 2.0 brochure render (2025), both via World Robot Conference; Lumi manufacturer photograph, rooftop configuration; D9 brochure render (2025); Vanar Generation 1 render; NEURA 4NE1 Gen 4 reveal video still (October 2026); KAIST Humanoid v0.9 video still (October 2026); JAKA π video still (July 2026); i3 product video still, walking configuration (2026); GoMate manufacturer product render (2024), video still via Gasgoo Auto News. Records' specifications unchanged."
+      ]
     }
   ],
   "robots": {
@@ -724,7 +749,7 @@
         "Lab": "Pudu",
         "Robot": "D9"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.pudurobotics.com/en/products/d9",
       "notes": "Not D7 (id 68). Batch 12 (27 Nov 2026): official D9 video frame 31 (1920 × 1080) prepared, but the dark background panel beside the torso cannot be separated from the dark torso by alpha alone; left out by Codex's decision. Still queued for another official source.",
       "sources": [
@@ -735,9 +760,18 @@
           "transparent_original": false,
           "verdict": "rejected",
           "detail": "Small (400 × 480) and opaque."
+        },
+        {
+          "file": "https://cdn.pudutech.com/PUDU_D9_20250103_CN_577d07e2ad.pdf",
+          "page": "https://www.pudurobotics.com/en/products/d9",
+          "sha256": "d80c6f6f6e822a10c71f1501450d929a8d8aabda6d6e76e2549efac1821c399c",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 551 × 1554 with 20 px padding."
         }
-      ],
-      "result": "Source received 27 Nov 2026 (official D9 product page image d9.webp, 400 × 480): whole and clean, but the prepared cutout is 208 × 475, under the 500 px minimum height; not enlarged. A larger exact official source is still sought."
+      ]
     },
     "154": {
       "recorded": {
@@ -1075,8 +1109,20 @@
         "Lab": "Neura",
         "Robot": "4NE1 (Gen 4 announced)"
       },
-      "status": "needs_decision",
-      "reason": "The record's page combines generations; which generation to show must be decided first."
+      "status": "integrated",
+      "reason": "The record's page combines generations; which generation to show must be decided first.",
+      "sources": [
+        {
+          "file": "https://www.youtube.com/watch?v=_76mR2pA0mA",
+          "page": "https://www.youtube.com/watch?v=_76mR2pA0mA",
+          "sha256": "0c525e68c876d16db2dfb3cf0e0ce3c88d838485828013a28e13a5669b7782f1",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 214 × 925 with 20 px padding."
+        }
+      ]
     },
     "81": {
       "recorded": {
@@ -2325,7 +2371,7 @@
         "Lab": "GAC Group",
         "Robot": "GoMate"
       },
-      "status": "no_valid_source",
+      "status": "integrated",
       "page": "https://www.gac.com.cn/",
       "notes": "GAC GoMate (third-generation embodied humanoid unveiled 26 Dec 2024): wheel-legged, variable four- or two-wheel mobility; shown whole in a configuration the official source identifies as GoMate, no other GAC robot.",
       "research": [
@@ -2335,7 +2381,19 @@
           "note": "Search only (no gac.com.cn page reachable): unveiled 26 Dec 2024 at the China Robotics Network conference, per GAC's WeChat account as reported by Gasgoo (autonews.gasgoo.com, article 70035533); formally launched on 9 Apr 2025 at a Guangdong press conference (China Daily, 14 Apr 2025). No separate redesign found for the April launch. 38 DoF, wheel-foot structure with four- and two-wheel modes; coverage (CnEVPost, 26 Dec 2024) credits its photos to GAC. The official source would be GAC's own release or WeChat post."
         }
       ],
-      "reason": "Among the sources reviewed, GAC's official website redirects to its cars and the official GoMate release was not reachable; secondary coverage is not used as the source. Not a claim that no official image exists (Codex, 27 Nov 2026)."
+      "reason": "Among the sources reviewed, GAC's official website redirects to its cars and the official GoMate release was not reachable; secondary coverage is not used as the source. Not a claim that no official image exists (Codex, 27 Nov 2026).",
+      "sources": [
+        {
+          "file": "https://www.youtube.com/watch?v=LIfXrjzm0AA",
+          "page": "https://autonews.gasgoo.com/articles/video/70035551",
+          "sha256": "3dbbe9eb1bbe9e89198ec78c226ef4eb5958fada6994a1f9aa6ddff534503e20",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 410 × 889 with 20 px padding."
+        }
+      ]
     },
     "34": {
       "recorded": {
@@ -3365,9 +3423,20 @@
         "Lab": "Vanar",
         "Robot": "Generation 1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "http://vanarrobots.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.vanarrobots.com/images/Renders/WebP/File100Full.webp",
+          "page": "https://www.vanarrobots.com/Gen1",
+          "sha256": "fed5ca2bfacffb433ea165da090f148281caccf5708f187bfb98ab838c8c708a",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1182 × 2969 with 20 px padding."
+        }
+      ]
     },
     "96": {
       "recorded": {
@@ -3588,9 +3657,20 @@
         "Lab": "Lightberry",
         "Robot": "Lumi"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://lightberry.com/lumi",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://cdn.ploy.ai/3245c4e2-1929-4ad1-b0ef-5b8c15535544/user/60fb2a78-w-1410.webp",
+          "page": "https://lightberry.com/press/dow-approval",
+          "sha256": "8f6ccfd701e6b6caf2695a145f11e2a98a858c09f3854081e8610f2498bc46a5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 766 × 1689 with 20 px padding."
+        }
+      ]
     },
     "124": {
       "recorded": {
@@ -3722,18 +3802,40 @@
         "Lab": "JAKA Robotics",
         "Robot": "JAKA π"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.jaka.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.youtube.com/watch?v=CYsgHnhwRY0",
+          "page": "https://www.youtube.com/watch?v=CYsgHnhwRY0",
+          "sha256": "1f42fa852d04e663d8ccbb3fc5885bfd13052bcd9decb058937c2e310624d284",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 290 × 735 with 20 px padding."
+        }
+      ]
     },
     "185": {
       "recorded": {
         "Lab": "KAIST DRCD Lab",
         "Robot": "KAIST Humanoid"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.dynamicrobot.kaist.ac.kr/new-page",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.youtube.com/watch?v=HBFZ2a0Dj9s",
+          "page": "https://www.youtube.com/watch?v=HBFZ2a0Dj9s",
+          "sha256": "61bbcca821d5a9543f4a193a420188d022887127e75dcc9e5e2cc9a675c86b09",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 391 × 889 with 20 px padding."
+        }
+      ]
     },
     "186": {
       "recorded": {
@@ -4020,9 +4122,20 @@
         "Lab": "Tlibot",
         "Robot": "TLIBOT T1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.tlibot.com/cpzx/6.html",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.worldrobotconference.com/profile/robot/download/2025/06/30/%E5%A4%A9%E9%93%BE%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%BA%A7%E5%93%81%E6%A0%B7%E5%86%8C-%E4%B8%AD%E8%8B%B1%E6%96%87%E7%89%8820250519_20250630141622A201.pdf",
+          "page": "https://www.worldrobotconference.com/profile/robot/download/2025/06/30/%E5%A4%A9%E9%93%BE%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%BA%A7%E5%93%81%E6%A0%B7%E5%86%8C-%E4%B8%AD%E8%8B%B1%E6%96%87%E7%89%8820250519_20250630141622A201.pdf",
+          "sha256": "403139cdc5180c5227793a7deebd7bb05ed51772cfc15ae0fdc2e59da1bbe7c6",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 634 × 1687 with 20 px padding."
+        }
+      ]
     },
     "203": {
       "recorded": {
@@ -4070,9 +4183,20 @@
         "Lab": "X-Humanoid",
         "Robot": "Tian Yi 2.0"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.x-humanoid.com/detail/tianyi.html",
-      "result": "Source received 27 Nov 2026 (official TianYi 2.0 illustration with native alpha): callout dots are painted on the head, chest, elbow and column; another official source is still sought."
+      "sources": [
+        {
+          "file": "https://www.worldrobotconference.com/profile/robot/download/2025/07/11/18%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D%E6%89%8B%E5%86%8C%E5%8D%B0%E5%88%B7%E7%89%88_20250711192526A076.pdf",
+          "page": "https://www.worldrobotconference.com/profile/robot/download/2025/07/11/18%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D%E6%89%8B%E5%86%8C%E5%8D%B0%E5%88%B7%E7%89%88_20250711192526A076.pdf",
+          "sha256": "c7e29593a99eb521fd57de43920bd40d108377f235e037339122ef239a3ab199",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 631 × 1333 with 20 px padding."
+        }
+      ]
     },
     "206": {
       "recorded": {
@@ -4128,9 +4252,20 @@
         "Lab": "ZJ Humanoid",
         "Robot": "NAVIAI i3"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.zj-humanoid.com/zujian/2",
-      "result": "Source received 27 Nov 2026 (official i3 specification sheet): the large drawing shows two overlapping robots and the separate running figure is too small; another official source is still sought."
+      "sources": [
+        {
+          "file": "https://www.zj-humanoid.com/uploads/upload/video/20260715/26bfc3d74321a2f63f7fcdbfb52c0865.mp4",
+          "page": "https://www.zj-humanoid.com/zujian/2",
+          "sha256": "a060626d9695047263f4b8ce4eedc438b72305ffa0058387146b691d64b08136",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 434 × 1044 with 20 px padding."
+        }
+      ]
     },
     "210": {
       "recorded": {
