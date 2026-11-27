@@ -3,7 +3,9 @@
 # distance to the local background: the median colour of the original's pixels that are already transparent in the
 # cutout within a window around it. RGB is never changed; mask-roi.png gets the same alpha at the same places.
 #   python3 key-gaps.py <item dir> <manifest.json> <id> --rect x0 y0 x1 y1 [--rect ...] [--near 8] [--far 26]
-#       [--bg R G B [--bg ...]] [--window 41] [--luma-white L] [--dry-run]
+#       [--bg R G B [--bg ...]] [--window 41] [--luma-white L] [--mask-file F [--levels 85 230]] [--dry-run]
+# --mask-file: a segmentation mask of the whole original (mask only, e.g. BiRefNet through rembg); inside the rectangles
+#       alpha becomes the lower of the current alpha and the mask levelled --levels (lo..hi -> 0..255).
 # --bg: a fixed background colour per rectangle, in the same order (sampled beforehand from the original's transparent
 #       pixels around the gap); without it the background is the local median of those pixels in --window.
 # --near/--far: distance (RGB, Euclidean) at or below which alpha becomes 0, and at or above which it is kept; linear between.
@@ -23,6 +25,7 @@ p.add_argument('--near', type=float, default=8); p.add_argument('--far', type=fl
 p.add_argument('--window', type=int, default=41)
 p.add_argument('--bg', type=int, nargs=3, action='append')
 p.add_argument('--luma-white', type=float)
+p.add_argument('--mask-file'); p.add_argument('--levels', type=int, nargs=2, default=[85, 230])
 p.add_argument('--dry-run', action='store_true')
 a = p.parse_args()
 man = json.load(open(a.manifest)); e = [m for m in man if m['id'] == a.id][0]
@@ -37,7 +40,11 @@ notes = []
 if a.bg and len(a.bg) != len(a.rect): raise SystemExit('--bg must be given once per --rect')
 for ri, (x0, y0, x1, y1) in enumerate(a.rect):
     o = O[y0 + dy:y1 + dy, x0 + dx:x1 + dx]; old = al[y0:y1, x0:x1]
-    if a.luma_white:
+    if a.mask_file:
+        mm = np.asarray(Image.open(a.mask_file).convert('L')).astype(float)[y0 + dy:y1 + dy, x0 + dx:x1 + dx]
+        lo, hi = a.levels; key = np.clip((mm - lo) / (hi - lo), 0, 1) * 255
+        notes.append(f'segmentation mask {a.mask_file.split("/")[-1]} levelled {lo}..{hi} in prepared rect {[x0, y0, x1, y1]}')
+    elif a.luma_white:
         luma = o @ [0.299, 0.587, 0.114]
         key = np.clip((a.luma_white - luma) / (a.luma_white - 100), 0, 1) * 255
         notes.append(f'luminance key (white {a.luma_white:g}) in prepared rect {[x0, y0, x1, y1]}')

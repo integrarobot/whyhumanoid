@@ -1,0 +1,43 @@
+{
+  "id": 72,
+  "slug": "realbotix-aria",
+  "manufacturer": "Realbotix",
+  "model": "Aria",
+  "public_page": "https://whyhumanoid.com/humanoids/realbotix-aria-72/",
+  "page": "https://www.realbotix.com/",
+  "source_url": "https://www.realbotix.com/_next/image?url=%2Frobots%2Faria-full-body.jpg&w=3840&q=75&dpl=dpl_CvS1HghmeWVK3z4WA2ULrC68dwiS",
+  "original": "original.img",
+  "original_size": [
+    1599,
+    2132
+  ],
+  "original_sha256": "814b9618d3070c559274ea465d410852a511fc8f6c77a9b9a82003e4d3a07a6e",
+  "mask_sha256": "dc9767f10342202739f23f3ae6a7da5ad1c3ede18837794f8f0e0cb639bd420a",
+  "prepared_sha256": "bb511aa5a58186d793313626046acb81e7d365a1cee9c34514cb80bce9d4a889",
+  "roi": [
+    0,
+    0,
+    1599,
+    2132
+  ],
+  "bbox": [
+    426,
+    99,
+    1209,
+    2025
+  ],
+  "border": 20,
+  "size": [
+    823,
+    1966
+  ],
+  "context": "Official Realbotix homepage exact image aria-full-body.jpg, alt Aria, a full-body Series1, standing on its lit base. Whole named robot, both hands and feet and entire circular display base. Name Aria Series1 shown. Source RGB retained; grey studio background/floor masked.",
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "credit": "Realbotix",
+  "source_page": "https://www.realbotix.com/",
+  "source_context": "Official Realbotix homepage exact image aria-full-body.jpg, alt Aria, a full-body Series1, standing on its lit base. Whole named robot, both hands and feet and entire circular display base. Name Aria Series1 shown. Source RGB retained; grey studio background/floor masked.",
+  "native_alpha": false
+}

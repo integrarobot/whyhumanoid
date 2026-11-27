@@ -1,0 +1,43 @@
+{
+  "id": 192,
+  "slug": "menlo-asimov-1",
+  "manufacturer": "Menlo",
+  "model": "Asimov 1",
+  "public_page": "https://whyhumanoid.com/humanoids/menlo-asimov-1-192/",
+  "page": "https://menlo.ai/asimov-1",
+  "source_url": "https://menlo.ai/images/asimov/asimov-orange-full-front-cutout.webp",
+  "original": "original.webp",
+  "original_size": [
+    727,
+    2045
+  ],
+  "original_sha256": "fb8176a434409abe6844c893cac2c4bada428cfc8765086eb40ac67546cbbc64",
+  "mask_sha256": "bba2f5270eb73504db08f38a9fa3f36e32794030a8dfc88128633240bbb07c72",
+  "prepared_sha256": "eb816d411053edeb69dc5295b1243c318cdeb64a935f04e4c0cd6d924b23ca92",
+  "roi": [
+    0,
+    0,
+    727,
+    2045
+  ],
+  "bbox": [
+    44,
+    44,
+    684,
+    1970
+  ],
+  "border": 20,
+  "size": [
+    680,
+    1966
+  ],
+  "context": "Official Menlo Asimov1 page exact image asimov-orange-full-front-cutout.webp, alt Asimov1 humanoid robot, front view. Whole orange finished model with both feet, not exploded kit/build stages or chair accessory.",
+  "mask_method": "native alpha",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "credit": "Menlo",
+  "source_page": "https://menlo.ai/asimov-1",
+  "source_context": "Official Menlo Asimov1 page exact image asimov-orange-full-front-cutout.webp, alt Asimov1 humanoid robot, front view. Whole orange finished model with both feet, not exploded kit/build stages or chair accessory.",
+  "native_alpha": true
+}
