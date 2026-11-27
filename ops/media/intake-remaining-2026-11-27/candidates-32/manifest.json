@@ -1,0 +1,19 @@
+[
+  {
+    "id": 102,
+    "slug": "xiaomi-cyberone-government-photo",
+    "credit": "Beijing Yizhuang via NCSTI",
+    "source_page": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/t20240605_159440.html",
+    "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/W020240605332139251140.jpg",
+    "original": "original.jpg",
+    "original_size": [
+      1080,
+      1620
+    ],
+    "original_sha256": "bcf7d9b8185de88c6f7edfbb29323707fc6bd8313d5b199a65587968281f6184",
+    "source_context": "Official government press photograph in report of Xiaomi Robotics move to Yizhuang factory, published2024-06-05, source explicitly Beijing Yizhuang official WeChat. NOT a Xiaomi-hosted image or open licence. Caption under this exact photo explicitly full-size humanoid bionic robot CyberOne, white chest CyberOne visible, matches original2022 design. Whole head, both genuine gripper hands, both feet visible, standing on round CyberDog-branded showroom display plinth. Native1080x1620, body >1100px; leave complete robot, optionally full circular display stand only if caption explicitly says on display stand, but stand NOT robot morphology. Preferred mask robot alone at sole contact, no leg creation. Remove orange wall, floor, external black tripod left, stand if can cleanly separate. No occlusion of robot geometry. Root native source inspected. Caption Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI. Do not imply current2026generation orassign later specs.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+  }
+]
