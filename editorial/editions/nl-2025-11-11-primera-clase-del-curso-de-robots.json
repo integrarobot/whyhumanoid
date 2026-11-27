@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2025-11-11-primera-clase-del-curso-de-robots",
+  "source_url": "https://www.integrarobot.com/p/primera-clase-del-curso-de-robots",
+  "published_on": "2025-11-11",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "First class of the Humanoid Robots course",
+  "subtitle": "I answer the questions about when this technology will reach the market and why the humanoid form will be the most widely adopted.",
+  "body_markdown": "In this first class of the Humanoid Robots course, I address the questions people most often send me when I talk about robotics, and I also cover the presentation of 1X's Neo robot.\n\n### Why now?\n\nExplores the reasons why the development of humanoid robots is accelerating precisely at this moment: advances in AI, cost reductions, technological maturity and an urgent need for labour in multiple sectors.\n\n### Why humanoid?\n\nExplores why the human body has been the model chosen for many robots. From its ability to adapt to environments designed for humans to more intuitive social interaction, the evolutionary, ergonomic and cultural reasons behind humanoid design are explained.\n\n### State of the art\n\nAn updated overview of the current capabilities of humanoid robots. What can they do today? What limitations do they have? Examples of the most advanced models in operation are presented.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 43; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

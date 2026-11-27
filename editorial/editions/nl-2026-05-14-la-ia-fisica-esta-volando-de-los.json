@@ -1,0 +1,77 @@
+{
+  "edition_id": "nl-2026-05-14-la-ia-fisica-esta-volando-de-los",
+  "source_url": "https://www.integrarobot.com/p/la-ia-fisica-esta-volando-de-los",
+  "published_on": "2026-05-14",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Physical AI is flying: from WLMs to WAMs",
+  "subtitle": "We analyze the state of development of Physical AI models for robots",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/6a56fab9-3866-4149-a179-004d48457770_2324x1634.png)\n\nThere are two ways of looking at it: it is going so fast that there's no time to take it in. Just when you had learned what a VLA was, you have to understand what a WLM is, and almost without realizing it we are now talking about WAMs.\n\nThe other way of thinking is to welcome the speed, because it means we are getting ever closer to having AI robots doing all kinds of jobs we people don't want to do.\n\nThat said, let's put a little order into all these acronyms and see why they are important for the future of robotics.\n\n**VLA** Vision - Language - Action\n\nVision → visual perception\nLanguage → linguistic understanding\nAction → physical action\n\nThese are models that connect vision, language and motor control.\n\n**WLM** World Language Model\n\nWorld → representation/modelling of the world\nLanguage → semantic interface or reasoning\nModel → predictive system\n\nThe idea is to model the dynamics of the physical world and their consequences.\n\n**WAM** World Action Model\n\nWorld → physical environment\nAction → actions/interactions\nModel → dynamic prediction\n\nWell, we have already talked a lot here about VLAs and WLMs; for example, the company **1X**, a pioneer in putting its **NEO** robot on sale in subscription mode, developed its own [VLA](https://www.1x.tech/discover/redwood-ai) in 2025 and its own [WLM](https://www.1x.tech/discover/world-model-self-learning) in 2026, but where does WAM come from then?\n\nIf we simplify a lot, WAMs are the fusion of VLAs and WLMs. Or put another way, VLAs serve to give the robot autonomy, but when it faces the real world it needs information about physics that the WLM must provide; so if we join both types of AI models, what we have is a WAM.\n\nTherefore, World Action Models point to an evolution of VLAs: they go from mapping vision and language to actions, to explicitly modelling how the world changes when the robot acts.\n\nA typical VLA responds to an instruction using vision and language to produce an action. A WAM adds the more physical layer: predicting the next state of the world and the action that leads to it.\n\nSince VLAs appeared, robots have greatly improved the connection between language, vision and control, but they still have a weakness: they can understand objects and the instruction well, but fail at fine physical dynamics.\n\nTo see it with an example, they can understand \"pick up the object\", but not necessarily properly understand friction, weight, deformation, slipping, bouncing, stability and therefore the consequences of an action.\n\nAnd this is where **NVIDIA**'s [DreamZero](https://dreamzero0.github.io/) comes in, which argues precisely that VLAs generalize well semantically but have problems when facing unseen physical motions in new environments. It therefore proposes WAMs as models that combine video and action to improve that generalization, which yields more than double the improvement over a reference VLA in experiments with real robots.\n\nIf you want to know more about WAMs and, in general, the state of the art of this technology, I recommend watching the video by [Jim Fan](https://www.youtube.com/watch?v=3Y8aq_ofEVs), who is NVIDIA's director of robotics, as well as one of the people with the clearest vision of how the development of Physical AI should evolve.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦾 Figure has just done a demo with 3 of its humanoid robots working shifts for 8 hours at a parcel sorting facility of the postal service.",
+        "body_markdown": "🦾 [Figure](https://x.com/i/broadcasts/1dxYljYVREYJX) has just done a demo with 3 of its humanoid robots working shifts for **8 hours** at a parcel sorting facility of the postal service. The job the robot has to do is place the parcel so that the label can be scanned in another area of the conveyor belt."
+      },
+      {
+        "position": 2,
+        "headline": "🖐️ Genesis AI presents GENE-26.5, its first robotic foundation model system aimed at human-level manipulation.",
+        "body_markdown": "🖐️ [Genesis AI](https://www.genesis.ai/blog/gene-26-5-advancing-robotic-manipulation-to-human-level) presents **GENE-26.5**, its first robotic foundation model system aimed at human-level manipulation. What is interesting is that it presents it not as an isolated demo, but as a complete system combining hardware, data, control, simulation and model to solve long, contact-rich tasks such as cooking, pipetting, solving a Rubik's cube or playing the piano."
+      },
+      {
+        "position": 3,
+        "headline": "🧠 Neuralink shows its ambition to build a surgical robot capable of reaching any region of the brain.",
+        "body_markdown": "🧠 [Neuralink](https://x.com/neuralink/status/2052124938442526936) shows its ambition to build a **surgical robot** capable of reaching any region of the brain. The stated goal is to create a generalized neural interface to treat conditions that originate in the brain, which makes medical precision robotics a central piece of the human-machine interface."
+      },
+      {
+        "position": 4,
+        "headline": "🚚 Actor Labs announces a 4 million dollar round and shows its robotic models deployed in the real world.",
+        "body_markdown": "🚚 [Actor Labs](https://x.com/laneburgett/status/2053899244759908371) announces a 4 million dollar round and shows its robotic models deployed in the real world. The important signal is that more and more startups are appearing that build visual and action models for physical machines, not just AI software, seeking to enable robots to operate with robust perception in real environments."
+      },
+      {
+        "position": 5,
+        "headline": "🦺 Persona AI partners with Under Armour to develop technical clothing and protective materials for industrial humanoids.",
+        "body_markdown": "🦺 [Persona AI](https://www.humanoidsdaily.com/news/industrial-armor-persona-ai-and-under-armour-partner-to-develop-performance-gear-for-humanoids) partners with **Under Armour** to develop **technical clothing** and protective materials for industrial humanoids. It may sound anecdotal, but when robots leave the lab for shipyards, steelworks or factories, they will need thermal protection, abrasion resistance and operational durability just like any other industrial tool."
+      },
+      {
+        "position": 6,
+        "headline": "📈 RoboStrategy starts trading on Nasdaq under the ticker BOT as an investment vehicle focused on robotics and physical AI.",
+        "body_markdown": "📈 [RoboStrategy](https://www.humanoidsdaily.com/news/robostrategy-hits-nasdaq-new-bot-ticker-offers-retail-path-to-figure-and-apptronik) starts trading on Nasdaq under the ticker **BOT** as an investment vehicle focused on robotics and physical AI. Its portfolio includes private companies such as **Figure**, **Apptronik** and Allonic, opening a way for retail investors to gain exposure to the humanoid sector without waiting for each startup to go public."
+      },
+      {
+        "position": 7,
+        "headline": "🏭 1X opens the doors of its NEO factory in the United States, described as a highly integrated facility where critical components are manufactured in-house.",
+        "body_markdown": "🏭 [1X](https://x.com/rpnickson/status/2054271016927646141) opens the doors of its **NEO** factory in the United States, described as a highly integrated facility where critical components are manufactured in-house. The key figure is the four-week cycle from CAD to finished robot, a sign that the humanoid race is also starting to be measured by industrial speed and manufacturing capacity, not just by demos."
+      },
+      {
+        "position": 8,
+        "headline": "🤌 Hangzhou Xynova presents Flex 2, a hybrid dexterous hand that combines cable transmission and direct drive.",
+        "body_markdown": "🤌 [Hangzhou Xynova](https://x.com/CyberRobooo/status/2054437548366401873) presents Flex 2, a **hybrid dexterous hand** that combines cable transmission and direct drive. It includes tactile perception and a camera located on the wrist, not the palm, reinforcing a key idea in manipulation: progress in humanoids will depend as much on models as on hands capable of feeling, grasping and coordinating fine contacts."
+      },
+      {
+        "position": 9,
+        "headline": "🤝 Humanoid signs an agreement with Schaeffler to deploy thousands of humanoid robots in factories through 2032.",
+        "body_markdown": "🤝 [Humanoid](https://thehumanoid.ai/humanoid-secures-landmark-deal-with-schaeffler-to-deploy-thousands-of-humanoid-robots/) signs an agreement with **Schaeffler** to deploy thousands of humanoid robots in factories through 2032. The deployment will begin in **Germany** at the end of 2026 and is structured as RaaS, with Schaeffler also as preferred supplier of actuators, a very clear combination of industrial customer and supply chain partner."
+      },
+      {
+        "position": 10,
+        "headline": "🚀 Rocket Lab has bought the company Motiv Space Systems, which specializes in space robotics, motion control and precision mechanisms for spacecraft.",
+        "body_markdown": "🚀 [Rocket Lab](https://rocketlabcorp.com/updates/rocket-lab-to-acquire-robotics-leader-motiv-space-systems/) has bought the company Motiv Space Systems, which specializes in **space robotics**, motion control and precision mechanisms for spacecraft. The acquisition adds technology proven on **Mars** rovers and brings in-house critical components such as solar array drive mechanisms, showing that robotics will also be key to the industrialization of space."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 91; 10 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "45bddcbb2ec34406c7fdc06a5f0ee0338c2a07466b20505cab40d6613109650f"
+}

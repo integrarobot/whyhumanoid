@@ -1,0 +1,87 @@
+{
+  "edition_id": "nl-2026-05-27-4-formas-de-empezar-con-la-ia-fisica",
+  "source_url": "https://www.integrarobot.com/p/4-formas-de-empezar-con-la-ia-fisica",
+  "published_on": "2026-05-27",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "4️⃣ ways to get started with Physical AI before buying a humanoid",
+  "subtitle": "Don't wait until you have a humanoid; you can start with robotics now, and it will help you be ready for the arrival of general-purpose robots.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/b4fa9e7e-cf28-43b1-ba28-112676914645_2048x1365.jpeg)\n\nAt this point in the work at **Integrarobot**, I dare say humanoids are going to be the best-selling type of robot in the future, something like 90% of the total. But on the other hand there will be another 10% of market share occupied by other robots that make sense in functions different from those **humanoids** can provide.\n\nWhat happens is that this moment has not yet arrived, and what we are experiencing is the reverse situation. Other types of robots, with more limited functions, are now ready to work, whereas humanoids, because of their need for versatility, still have challenges to solve.\n\nSo let's see how to proceed right now if we want to avoid having to start from scratch when humanoids are available on the market, losing precious time we could have used to take advantage of the situation.\n\nBefore being able to buy a humanoid we have to do several things, which I am going to divide into two blocks: on the one hand, the changes we must make in our way of working, and on the other, the tests we can do with other types of robots to gradually validate the model.\n\n### 1. Preparing our company for the arrival of humanoids\n\nWhen I say company, consider activities in general, because even households can do this kind of preparation. So let's see what things we should start doing now so that we are not caught off guard when we can buy a humanoid.\n\n1.1 **Collect data on our operations**. Just as companies that had worked on big data and data analytics before 2022 are now benefiting because they can provide better context to AI assistants and agents, companies that collect data now, especially first-person video, will be able to provide that information to robots and will have much of the work done in advance.\n\n1.2 **Raise workers' awareness of the arrival of robots**. Because they will have to live alongside them, and not only that: they will have to supervise them, help them when they can't do something, take care of their maintenance, … and a lot of things that are now completely unknown to people but will soon be common. This is where it will be useful to start experimenting with other types of robots.\n\n1.3 **Prepare the facilities so robots have what they need**. I don't see this point as too complicated at the moment, because humanoids' space needs fit fairly well with those of people, but there are some things to prepare, such as space for charging or removing barriers that may hinder their activity, especially at the beginning when they are not yet very skilful.\n\n1.4 **Start working with AI Agents such as Codex**. Since they will be the interface through which we can program or train robots, unless they arrive 100% ready, which I doubt will happen, at least in the initial stages. AI Agents can now help us create simulators or work with Physical AI simulators, such as NVIDIA's Newton, and this will get a good part of the work done in advance for when we can actually buy the robot.\n\nSo there is a lot of work to do before buying robots, and I assure you it will not be time wasted, because everything we do to prepare for the arrival of such an advanced technology will help us get much more out of it when it is available.\n\n### 2. Buying other types of robots to support the work in the previous point\n\nThere are many advantages to deciding to buy a non-humanoid robot now to prepare the ground for when general-purpose robots arrive. Let's look at some of them.\n\n2.1 **Finding trusted suppliers**. Since it is likely that a large proportion of the robots that reach the market in the first years will come from China, it will be necessary to find suppliers who can sell us the robots and offer us the other associated services, such as supplying spare parts.\n\n2.2 **These robots can help with data collection**. Although it is not first-person video data, I imagine that over time ways will be invented to train robots with any video, such as the ones any robot carrying cameras to facilitate its movement can record.\n\n2.3 **Appoint a robotics lead in the company**. The robots that can already be bought will require people to take charge of buying them, setting them up, supervising them, carrying out maintenance, … so little by little these functions can start with one person and then move to a larger group of people, making the cultural change the arrival of humanoids will require.\n\nThat said, which robots may be most appropriate to buy now? Here is a short list, and I encourage you to share your opinion so we can improve it with contributions from the community.\n\n- **Robot dog for surveillance**: since many company facilities are large and require surveillance, let's use quadrupeds for this function; their price is affordable and it may be one of the best options for starting to become familiar with robotics.\n- **Waiter robot for the office**: just as they are being used to deliver food in restaurants, they can be used for other functions in the company, for example delivering parcels or other materials in the office. Who knows, maybe they could bring people their mid-morning coffee ;)\n- **AMR for the warehouse**: this type of robot is very well [proven](https://www.kuka.com/es-es/sectores/base-de-datos-de-soluciones/2020/01/agv-solution_biw-trucks) in the car industry and the logistics sector, so it can perfectly well be extrapolated to any other activity where heavy objects need to be transported.\n- **Robotic arm for a repetitive task**: this is perhaps the most complicated point, because for now it will require more advanced software and programming knowledge. But if we have technical profiles in the company, I think it would be worth trying as a prelude to the arrival of humanoids.\n\nWhat do you think? Am I missing anything?\n\nI am convinced that the impact of Physical AI is going to be so great that this is no time to sit and wait for it to happen; it is time to act. Because humanoid robots may not reach the market the way household appliances do now, ready to work from the first minute. Instead, they will arrive as complex systems that will need data to learn, human supervision to operate safely, adapted environments to reduce friction, integration with real processes, continuous maintenance, constant training and simulation to rehearse the world before acting on it.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📦 Locus Robotics acquires Nexera Robotics to integrate its NeuraGrasp technology into Locus Array.",
+        "body_markdown": "📦 [Locus Robotics](https://locusrobotics.com/news/locus-robotics-nexera-robotics-acquisition) acquires **Nexera Robotics** to integrate its NeuraGrasp technology into Locus Array. The deal combines autonomous mobile robots with advanced robotic manipulation, a clear sign of where fulfilment is heading: systems that not only transport goods but can also grasp variable objects with more autonomy."
+      },
+      {
+        "position": 2,
+        "headline": "🧹 Gatsby launches an on-demand apartment cleaning service with humanoid robots in San Francisco.",
+        "body_markdown": "🧹 [Gatsby](https://gatsby.bot/) launches an on-demand apartment **cleaning** service with humanoid robots in San Francisco. The user books from an app, the robot arrives, cleans and leaves for a flat fee of 150 dollars, an interesting experiment because it brings the humanoid directly into the home as a service."
+      },
+      {
+        "position": 3,
+        "headline": "🏭 Humanoid signs an alliance with Bosch after completing a proof of concept in intralogistics.",
+        "body_markdown": "🏭 [Humanoid](https://thehumanoid.ai/humanoid-secures-partnership-with-bosch-following-a-successful-poc) signs an alliance with **Bosch** after completing a proof of concept in intralogistics. Its HMND 01 robots transferred boxes of different sizes from a conveyor to a cart in a real Bosch environment in Bühl, and Bosch will now act as manufacturing partner to scale European humanoid production."
+      },
+      {
+        "position": 4,
+        "headline": "🚀 ORBIT Robotics presents its vision of humanoids for working in space.",
+        "body_markdown": "🚀 [ORBIT Robotics](https://www.orbitrobotics.ch/) presents its vision of humanoids for working in space. Its IKARUS prototype serves as a test bed for **orbital robotics** and points to a powerful idea: in microgravity, the humanoid robot need not copy human legs, but rather maximize reach, teleoperation and manipulation on space stations."
+      },
+      {
+        "position": 5,
+        "headline": "📊 Canonical publishes an investment map of Physical AI and robotics covering 3 years, 22 subsectors and global capital.",
+        "body_markdown": "📊 [Canonical](https://www.canonical.cc/physical-ai-robotics/) publishes an investment map of **Physical AI** and robotics covering 3 years, 22 subsectors and global capital. Its reading is very useful: about 80% of capital is concentrated in humanoids, defence, autonomous vehicles and foundation models."
+      },
+      {
+        "position": 6,
+        "headline": "🧠 Alberto Rodríguez sums up one of the big reasons for the current interest in humanoids: the promise of a generalist solution for physical work.",
+        "body_markdown": "🧠 [Alberto Rodríguez](https://x.com/_albertorod_/status/2057462957815042280) sums up one of the big reasons for the current interest in humanoids: the promise of a **generalist solution** for physical work. His argument is that outside tasks with enormous and stable volumes, specializing hardware, models and deployments makes automation too expensive."
+      },
+      {
+        "position": 7,
+        "headline": "🤖 AGIBOT launches BFM-2, a new motion model for humanoids focused on stable and adaptive control.",
+        "body_markdown": "🤖 [AGIBOT](https://x.com/roboindexio/status/2059308008698413466?s=46) launches BFM-2, a new **motion model** for humanoids focused on stable and adaptive control. According to RoboIndex, the company exceeded 5,100 robots shipped in 2025, reached 10,000 units deployed in March 2026 and is preparing a possible IPO in Hong Kong."
+      },
+      {
+        "position": 8,
+        "headline": "🔧 Go2 Motor Analysis documents reverse engineering of the Unitree Go2 motor / GO-M8018-6 and the path toward custom firmware.",
+        "body_markdown": "🔧 [Go2 Motor Analysis](https://github.com/thomasfla/go2_motor_analysis/) documents reverse engineering of the **Unitree Go2 motor** / GO-M8018-6 and the path toward custom firmware. The project goes down to the level of the board, bootloader, RS485, encrypted firmware and FOC control."
+      },
+      {
+        "position": 9,
+        "headline": "🦿 LeRobot Humanoid publishes an open, low-cost humanoid that can be built with 3D-printed parts for robot learning.",
+        "body_markdown": "🦿 [LeRobot Humanoid](https://huggingface.co/blog/VirgileBatto/lerobot-humanoid) publishes an open, low-cost humanoid that can be built with 3D-printed parts for robot learning. The platform costs around **2,500 dollars in components** and includes hardware, documentation, simulation, runtime, identification and training environments."
+      },
+      {
+        "position": 10,
+        "headline": "💬 UBTECH Walker C1 appears as a new commercial humanoid geared to interaction with people.",
+        "body_markdown": "💬 [UBTECH Walker C1](https://roboticahoy.com/walker-c1-robot-humanoide-ubtech-interaccion) appears as a new commercial humanoid geared to **interaction with people**. Unlike robots designed for factories, Walker C1 targets reception, guidance, entertainment and social presence."
+      },
+      {
+        "position": 11,
+        "headline": "🐕 ANYbotics deploys its ANYmal quadruped robot at Northern Lights, Equinor's Norwegian CO2 transport and storage facility.",
+        "body_markdown": "🐕 [ANYbotics](https://carbonherald.com/the-four-legged-robots-hunting-leaks-at-carbon-capture-facilities/) deploys its ANYmal quadruped robot at Northern Lights, Equinor's Norwegian CO2 transport and storage facility. The **robot patrols** an almost unmanned plant, measures gas concentrations and searches for micro-leaks with thermal, acoustic and gas sensors."
+      },
+      {
+        "position": 12,
+        "headline": "🤝 Figure signs an agreement with Catalyst Brands, operator of the clothing brands JCPenney, Aéropostale and Brooks Brothers.",
+        "body_markdown": "🤝 [Figure](https://x.com/adcock_brett/status/2059351113984557262) signs an agreement with Catalyst Brands, operator of the clothing brands JCPenney, Aéropostale and Brooks Brothers. The deployment will begin in Reno, Nevada, and aims to bring humanoids at scale into **retail and logistics**, a sign that Figure is starting to move from demos toward commercial agreements with large operators."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 94; 12 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "db77f5b8c6936f73f927770b90e49f1b32dbc957bcafda60e712c8b45750d753"
+}

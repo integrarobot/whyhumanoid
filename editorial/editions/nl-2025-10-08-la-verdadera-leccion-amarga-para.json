@@ -1,0 +1,62 @@
+{
+  "edition_id": "nl-2025-10-08-la-verdadera-leccion-amarga-para",
+  "source_url": "https://www.integrarobot.com/p/la-verdadera-leccion-amarga-para",
+  "published_on": "2025-10-08",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The real bitter lesson for robotics",
+  "subtitle": "The bitter lesson in AI explains that, at the end of the day, everything comes down to more computation.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/4e03ccb0-96f8-4847-85bb-94cfd20cb4c0_1024x907.png)\n\nIn the world of Artificial Intelligence there is an idea, which we could liken to a principle or thesis, that tells us how the development of this technology evolves, called \"**The Bitter Lesson**\", proposed by the scientist **Richard Sutton** in 2019. His aim was to explain why trying to teach machines how we humans think or solve problems may give results in the short term but limits progress in the long term, since what really drives AI is letting algorithms, through large-scale search and learning, discover solutions by themselves, taking advantage of the exponential growth of **computing capacity**.\n\nAnd it is this last aspect, computing capacity, together with the availability of data, that could also make the difference when we talk about robots. It's not me saying it; it's [Chris Paxton](https://x.com/chris_j_paxton/status/1974619091559424058), who works as AI lead at Agility Robotics:\n\n> \"*I think the real bitter lesson for robotics will be that cheap robots deployed at scale are going to allow people to solve the fundamental problems of robotics. And this is what we see, for example, at Unitree now, and increasingly at companies like Galaxea*\".\n\nIn other words, two types of strategy can be deployed in the development of robotics. Let's call the first the meticulous model, based on taking care of every detail, with representative examples such as Boston Dynamics: steady but slow progress. The second model would be the one based on trial and error, the break-things mode, as Mark Zuckerberg would say, which **Unitree** seems to be applying.\n\n## Why is computing capacity so important?\n\nI'll let the facts speak for themselves.\n\n- The day Oracle announced its data centre collaboration with OpenAI, its shares rose more than 40%. For its part, when AMD announced its collaboration with OpenAI this week, its shares rose more than 30%.\n- The Stargate project, led by OpenAI and supported by the US government, investors such as Softbank and partners such as NVIDIA, involves an investment of 500 billion dollars to create data centres for AI training and inference.\n- Needless to say what has happened with NVIDIA shares over the last 5 years, which have appreciated by 1,244.77%. For many this is a bubble, but the company insists quarter after quarter on showing that its profitability keeps rising.\n- What has happened with the shares of quantum computing companies may also be related, since in view of all this expectation of future computing needs, companies like D-Wave and Riggeti have appreciated by more than 1,000% in the last year.\n\nSo what we are experiencing is a race in pursuit of AGI, whatever that means; there is no doubt that what all these companies are seeking is to keep improving AI so that it is able to solve more and more problems and thereby obtain greater profits.\n\nBut AGI will not be achieved if we do not manage to have autonomous robots, because the future of AI cannot be only digital.\n\nIt is clear that having better AI will help a lot in having better robots, but data is also needed for robots to understand how the physical world they are going to face works. It is as if we sent an astronaut to Mars without telling them that there is different gravity and a different atmosphere there; they would not last a day if they tried to do things the same way as on Earth.\n\nThat is why Chris Paxton is right to say that, in the case of robots, the bitter lesson is not only a matter of computation but also of [data](https://www.integrarobot.com/p/de-donde-salen-los-datos-para-entrenar).\n\n## Back to Unitree\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/f019d5b5-254a-4f97-9a4d-dbffb8a9558b_2048x1130.png)\n\nI've been talking a lot about Unitree lately, but the occasion deserves it.\n\nWhen Chris Paxton says that \"cheap robots deployed at scale are going to allow people to solve the fundamental problems of robotics\", what he is doing is praising [Unitree](https://www.integrarobot.com/p/g1-de-unitree-es-el-mayor-laboratorio)'s strategy, which we explained last week and which is based on \"breaking things\".\n\nIt is clear that Unitree's robots are at a very low level of maturity; companies like Tesla and Figure would hardly dare to take on those risks, yet thanks to this we now have thousands of robotics researchers using these robots as an open-air laboratory.\n\nBy the way, the startup has taken off so much that it even sells its robots at [Walmart](https://www.walmart.com/ip/Unitree-G1-Basic/17225710863), the world's largest retail company by revenue and number of employees.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💣 Figure reinvents itself in an impressive way.",
+        "body_markdown": "💣 [Figure](https://x.com/Figure_robot/status/1975585954086985934) reinvents itself in an impressive way. Although it is still only a video, it is already showing us a major advance, not only because of its spectacular design, but also because of the new technology visible, for example, in the new hands and feet."
+      },
+      {
+        "position": 2,
+        "headline": "🥋 Optimus is gradually leaving the environment controlled by Tesla to face all kinds of situations, in this case taking part in the premiere of the film Tron while showing off i…",
+        "body_markdown": "🥋 [Optimus](https://x.com/Tesla_Optimus/status/1975382713038479853) is gradually leaving the environment controlled by Tesla to face all kinds of situations, in this case taking part in the premiere of the film Tron while showing off its skills practising Kung Fu."
+      },
+      {
+        "position": 3,
+        "headline": "🤝 Fujitsu and NVIDIA join forces to drive AI and robotics.",
+        "body_markdown": "🤝 [Fujitsu](https://global.fujitsu/en-global/pr/news/2025/10/03-01) and NVIDIA join forces to drive AI and robotics. They aim to create a comprehensive AI infrastructure for AI agents, boosting companies' competitiveness through AI while preserving their autonomy in its use."
+      },
+      {
+        "position": 4,
+        "headline": "🇰🇷 Kapex is the name chosen by electronics and household appliance giant LG for the humanoid robot it plans to build in collaboration with the Korea Institute of Science and Tec…",
+        "body_markdown": "🇰🇷 [Kapex](https://www.humanoidsdaily.com/feed/south-korea-challenges-us-and-china-with-kapex-humanoid-robot) is the name chosen by electronics and household appliance giant LG for the humanoid robot it plans to build in collaboration with the Korea Institute of Science and Technology (KIST)."
+      },
+      {
+        "position": 5,
+        "headline": "🇯🇵 Seven Eleven Japan wants to use humanoid robots in its convenience stores; in collaboration with the company Telexistence, they will drive the creation of the Astra humanoid…",
+        "body_markdown": "🇯🇵 [Seven Eleven Japan](https://tx-inc.com/en/blog/2025/09/30/12542/) wants to use humanoid robots in its convenience stores; in collaboration with the company Telexistence, they will drive the creation of the Astra humanoid robot, equipped with a VLA model, whose deployment is planned for 2029."
+      },
+      {
+        "position": 6,
+        "headline": "🧑‍💻 ToddlerBot is an open source, low-cost humanoid robot platform designed for scalable policy learning and research in robotics and AI.",
+        "body_markdown": "🧑‍💻 [ToddlerBot](https://toddlerbot.github.io/) is an open source, low-cost humanoid robot platform designed for scalable policy learning and research in robotics and AI."
+      },
+      {
+        "position": 7,
+        "headline": "💭 ROS MCP Server is software that connects large language models (such as Claude, GPT and Gemini) with existing robots, giving them bidirectional AI integration.",
+        "body_markdown": "💭 [ROS MCP Server](https://github.com/robotmcp/ros-mcp-server) is software that connects large language models (such as Claude, GPT and Gemini) with existing robots, giving them bidirectional AI integration."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 37; 7 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "be9881c5e4788c8db72291f144c8a9da97d86d1303c3e8be1ca34cd0e16bd1f1"
+}

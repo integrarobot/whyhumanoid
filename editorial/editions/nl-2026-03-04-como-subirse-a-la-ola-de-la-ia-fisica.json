@@ -1,0 +1,102 @@
+{
+  "edition_id": "nl-2026-03-04-como-subirse-a-la-ola-de-la-ia-fisica",
+  "source_url": "https://www.integrarobot.com/p/como-subirse-a-la-ola-de-la-ia-fisica",
+  "published_on": "2026-03-04",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "How to ride the Physical AI wave",
+  "subtitle": "On 25 March I am organizing a webinar to set out the opportunities that robotics driven by artificial intelligence is going to offer.",
+  "body_markdown": "When I come across news like the creation of the company [Noble Machines](https://www.noblemachines.ai/) by engineers from **Apple**, **SpaceX**, **NASA**, **DeepMind**, **Amazon** and **Tesla**, who are leaving their jobs to found a company creating a new humanoid robot, I can't think of anything other than helping more and more people who, like these brave souls, want to ride the **Physical AI** wave.\n\nIt will be risky, no doubt, but it will be worth it.\n\nRight now I could be recording a video or writing an article about the latest thing I've learned about Claude or the latest thing I've done with Lovable, but here I am, convening an event to talk about the opportunities Physical AI is going to offer.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/f36a3678-547b-43e8-9488-c6fcad3e5981_960x540.jpeg)\n\n[How to ride the Physical AI wave](https://www.youtube.com/live/XKPkbLEutJ8?si=Al8y6CzygmBvVbuq) will be an **online event** I am going to hold on **25 March from 19:00 to 20:00**, where I will share the professional and business opportunities that general-purpose robotics is going to offer and what the first steps should be to become part of it.\n\nAt this event you will discover the **opportunities** emerging to work, found companies and invest with the development of Physical AI and general-purpose robotics.\n\nI'm Javier Martín, founder of Integrarobot, and I devote myself to spreading the word about the great opportunity before us with Physical AI, so that any professional or company can ride this great wave, which is going to be even bigger than that of Generative AI.\n\nIn this webinar you will be able to learn:\n\n- What **Physical AI** is, what general-purpose robots are and what state of development they are in at the moment.\n- What we can **learn** from the most relevant initiatives being carried out in this sector.\n- Professional and business **opportunities** that are going to arise in the AI-driven robotics sector.\n- **First steps** to take in this field, both professionally and in companies.\n- Without forgetting the **synergies** that arise with other types of AI robots such as autonomous vehicles, drones, ...\n\nThe time has come to take action; let's not let the fireworks of Generative AI keep us from seeing the enormous opportunity Physical AI represents. It won't be as simple as asking a chat to do your homework; we'll have to get our hands dirty. It's going to be hard, but it will be worth it.\n\n> When the social media boom began, Peter Thiel said \"*we wanted flying cars, instead we got 140 characters*\"; let's not let the same thing happen to us with Physical AI: \"*we wanted humanoid robots, and we got chatbots*\"\n\nWe really need AI to reach the physical world; there are so many problems to solve: people who suffer physical injuries from jobs that harm them, elderly people who have no company to help them with routine tasks, many people who come home after a long, hard working day and have to keep working to keep their house in order, countless companies that cannot grow for lack of staff, … I don't think I need to go on: society and the economy have reached a point where we need this technology, and we have to do everything possible for it to reach the market as soon as possible.\n\nHardware and software manufacturers are doing the most important part, but now it's the rest of us's turn. There are a thousand things to do, starting with outreach, which is what I'm focusing on with Integrarobot, but training, advisory services, robot training, deployment plans in companies, sales, rental, repair, app creation, … and many other things that will emerge as robots reach the market will be needed.\n\nIt's time to take action; we have to ride the Physical AI wave. See you on 25 March at the online event. And if you set out to found a company in the robotics sector, I hope you can share it with me so I can help you spread the word.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🤖 GEAR-SONIC is a whole-body control model for humanoid robots that uses motion tracking data and allows a single system to govern walking, crawling and teleoperation fluidly.",
+        "body_markdown": "🤖 [GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/) is a whole-body control model for **humanoid robots** that uses motion tracking data and allows a single system to govern walking, crawling and teleoperation fluidly."
+      },
+      {
+        "position": 2,
+        "headline": "🎥 Egoscale is a human-robot transfer framework trained on more than 25,000 hours of egocentric video which, after brief fine-tuning with robotic data, improves by up to 54% on m…",
+        "body_markdown": "🎥 [Egoscale](https://www.egoscale.ai/) is a human-robot transfer framework trained on more than **25,000 hours of egocentric video** which, after brief fine-tuning with robotic data, improves by up to 54% on manipulation tasks. It also demonstrates one-shot learning and has been successfully transferred to robots such as the Unitree G1."
+      },
+      {
+        "position": 3,
+        "headline": "🦾 ElRobot is a highly affordable, fully 3D-printed Open Source robotic arm.",
+        "body_markdown": "🦾 [ElRobot](https://x.com/norma_core_dev/status/2026313566077309247) is a highly affordable, fully **3D**-printed **Open Source** robotic arm. Its main features are a fully 3D-printed design, 7+1 DoF, ideal for physical AI and imitation learning research, zero custom hardware needed: just print it and add your servo kit."
+      },
+      {
+        "position": 4,
+        "headline": "🇪🇺 Deepmind presents its three-month accelerator programme to boost high-potential early-stage robotics startups through Google's AI models and Gemini Robotics.",
+        "body_markdown": "🇪🇺 [Deepmind](https://deepmind.google/models/gemini-robotics/accelerator) presents its three-month **accelerator** programme to boost high-potential early-stage robotics startups through Google's AI models and Gemini Robotics. Its goal is to turn new discoveries into market-leading companies and drive an era of intelligent physical AI."
+      },
+      {
+        "position": 5,
+        "headline": "📱 Samsung presented its vision for 2030, incorporating Rainbow Robotics' RB‑Y1 humanoids into its production lines and combining them with agentic AI to optimize manufacturing a…",
+        "body_markdown": "📱 [Samsung](https://humanoid.guide/samsung-targets-2030-global-factory-shift-with-humanoids/) presented its vision for 2030, incorporating **Rainbow** Robotics' RB‑Y1 humanoids into its production lines and combining them with agentic AI to optimize manufacturing and logistics."
+      },
+      {
+        "position": 6,
+        "headline": "💰 RLWRLD raised 26 million dollars in its Seed 2 round, bringing its total funding to $41M.",
+        "body_markdown": "💰 [RLWRLD](https://humanoidroboticstechnology.com/news/rlwrld-raises-26m-seed-2-bringing-total-funding-to-41m/) raised 26 million dollars in its Seed 2 round, bringing its total funding to $41M. It is developing **foundation models** for robots trained directly in factories and intends to present its first model in the first half of 2026"
+      },
+      {
+        "position": 7,
+        "headline": "🚗 BMW will start using Hexagon Robotics' AEON humanoids at its Leipzig plant to assemble high-voltage batteries.",
+        "body_markdown": "🚗 [BMW](https://noticias.autocosmos.com.mx/2026/02/27/bmw-comenzo-a-utilizar-robots-humanoides-en-su-planta-de-leipzig) will start using **Hexagon** Robotics' AEON humanoids at its Leipzig plant to assemble high-voltage batteries. These robots, already successfully tested in Spartanburg, assist employees with repetitive and physically strenuous tasks"
+      },
+      {
+        "position": 8,
+        "headline": "🔗 Intrinsic, Alphabet's robotics division, will be integrated into Google to accelerate physical AI.",
+        "body_markdown": "🔗 [Intrinsic](https://www.intrinsic.ai/blog/posts/intrinsic-joins-google-to-accelerate-physical-ai?), Alphabet's robotics division, will be integrated into Google to accelerate physical AI. Its Flowstate platform, described as the **Android** of robots, will be combined with Gemini models and Cloud infrastructure to facilitate the development and deployment of robotic applications."
+      },
+      {
+        "position": 9,
+        "headline": "🔧 Hyundai presented a Robotics AI strategy under the slogan \"Partnering Human Progress\".",
+        "body_markdown": "🔧 [Hyundai](https://www.hyundai.news/es/articles/press-releases/estrategia-de-robotica-con-ia-ces-2026.html) presented a Robotics AI strategy under the slogan \"Partnering Human Progress\". The roadmap includes deploying Boston Dynamics' new Atlas at its Alabama plant in 2028 for assembly tasks, reducing human effort; the strategy relies on alliances with **DeepMind** and **NVIDIA** to create a robotics value chain and develop robot-as-a-service offerings."
+      },
+      {
+        "position": 10,
+        "headline": "📱 Honor surprised at the Barcelona Mobile World Congress by presenting its first humanoid robot.",
+        "body_markdown": "📱 [Honor](https://www.youtube.com/watch?v=_8POu8iwTOc) surprised at the Barcelona **Mobile World Congress** by presenting its first humanoid robot. The robot walked on its own on stage, showed dynamic balance, gestures and a short dance; although no technical details or release date were revealed, the demo marks the entry of a mobile phone manufacturer into Physical AI."
+      },
+      {
+        "position": 11,
+        "headline": "🧑‍💻 Lenovo AI Workmate Concept is a desktop assistant with its own processor and 64 GB of memory.",
+        "body_markdown": "🧑‍💻 [Lenovo](https://news.lenovo.com/pressroom/press-releases/trusted-ai-powered-business-computing-modular-enterprise-mwc) AI Workmate Concept is a **desktop assistant** with its own processor and 64 GB of memory. It recognizes voice, handwriting and gestures, can scan and summarize documents, generate presentations and project images onto the desk. It is accompanied by the AI Work Companion, a desk-clock-style device for managing schedules through AI."
+      },
+      {
+        "position": 12,
+        "headline": "💾 Encord raises $60M in a Series C led by Wellington Management, bringing its total funding to $110M.",
+        "body_markdown": "💾 [Encord](https://encord.com/blog/encord-announces-60-million-series-c/) raises $60M in a Series C led by Wellington Management, bringing its total funding to $110M. Its platform manages and annotates large multimodal datasets, key for training **robots** and **autonomous vehicles**; the data stored grew from 1 to more than 5 petabytes in one year."
+      },
+      {
+        "position": 13,
+        "headline": "🔩 Xiaomi deploys its humanoid robot in its car factory.",
+        "body_markdown": "🔩 [Xiaomi](https://cnevpost.com/2026/03/02/xiaomi-deploys-humanoid-robots-ev-factory) deploys its humanoid robot in its car **factory**. The robot operated autonomously for 3 hours at a self-piercing nut installation station with a success rate of 90.2%. It is powered by its 4.7-billion-parameter VLA model and hybrid optimization and reinforcement learning control."
+      },
+      {
+        "position": 14,
+        "headline": "🏡 RoboCasa expands its simulator for training generalist robots: it includes 365 everyday tasks in 2,500 different kitchens and offers more than 600 h of human demonstrations an…",
+        "body_markdown": "🏡 [RoboCasa](https://robocasa.ai/) expands its simulator for training **generalist robots**: it includes 365 everyday tasks in 2,500 different kitchens and offers more than 600 h of human demonstrations and 1,600 h of synthetic data. The platform, which uses generative AI to create varied environments, makes it possible to evaluate and train skills such as picking up objects, opening doors or turning knobs"
+      },
+      {
+        "position": 15,
+        "headline": "🧪 Zeon Systems is a Y Combinator-accelerated startup developing robotic systems to automate scientific experiments.",
+        "body_markdown": "🧪 [Zeon Systems](https://www.zeonsystems.ai/) is a Y Combinator-accelerated startup developing robotic systems to automate **scientific experiments**. Its platform translates protocols written in natural language into code that runs on robotic arms, detects instruments through computer vision and controls the laboratory workflow."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 73; 15 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "47cf4d43095c254654bcf6e65a63cbbefb75425f7d15854f3fefb9618b66d33a"
+}

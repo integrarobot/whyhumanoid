@@ -1,0 +1,77 @@
+{
+  "edition_id": "nl-2026-06-03-analisis-de-la-noticia-de-presentacion",
+  "language": "es",
+  "title": "Análisis de la noticia de presentación del robot humanoide de referencia NVIDIA Isaac GR00T",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/3680cda4-ad6b-474c-aba8-38b313f044d9_1600x900.jpeg)\n\n**NVIDIA** acaba de dar un paso importante para solucionar uno de los grandes problemas actuales de la robótica humanoide, los benchmarks de calidad del desempeños de los robots. Algo que fue inmediato con la aparición de los LLM, donde gente muy potente en el ámbito de la IA, como François Chollet, se dedicaron a idear formas de evaluar la calidad de los modelos de inteligencia artificial.\n\nAhora en la robótica tenemos algo similar, porque [Isaac GR00T Reference Humanoid Robot for Academic Research](https://nvidianews.nvidia.com/news/nvidia-open-humanoid-robot-reference-design?ncid=so-twit-539319-vt48) no es sólo la forma en la que NVIDIA quiere repetir en la IA Física la jugada de GPU+CUDA que también le ha salido para la IA Generativa, sino que es la pieza que hacía falta para saber si los desarrollo de los VLA y los WAM, que están realizando muchos laboratorios va por el cambio de lograr robots de propósito general.\n\nDe esta forma lo que NVIDIA está haciendo es desplegar toda su potencia técnica y mediática para el impulso de los robots humanoides, lo cual redundará en que el **ecosistema de desarrollo de la IA Física** sea cada vez más fuerte y se vayan solucionando poco a poco los problemas al respecto de las capacidades reales de los robots para realizar tareas cotidianas en el mundo real.\n\nY aquí es donde tenemos que pensar cuáles pueden ser los primeros laboratorios de robótica en recurrir a este robot para avanzar en sus investigaciones, y aunque en la noticia se mencione a Ai2, ETH Zurich, el Centro de Robótica de Stanford y el Laboratorio de Robótica y Control Avanzado de la UC San Diego, lo cierto es que actualmente hay muchas startups muy bien financiadas que pueden verse muy beneficiadas de contar con una plataforma de desarrollo estandarizada como esta. En esta lista podríamos poner a Skild AI, Generalist, Physical Intelligence, Field AI, Genesis, OpenMind, … Pero no sólo eso, también los laboratorios de robótica de muchas grandes empresas tecnológicas que hasta ahora estaban probando sus modelos de IA con brazos robóticos, como Meta, Apple, OpenAI, Alibaba, Google Deepmind, … también tienen ahora un robot que pueden comprar en grandes cantidades para avanzar en sus investigaciones.\n\nY en esto de comprar el robot en grandes cantidades es donde está la clave al respecto de la participación de **Unitree** y **Sharpa Wave**, porque con ellos se cierra el círculo para poder ofrecer un robot completo.\n\nPara Unitree esta es una noticia excelente, ya que antes de su salida a bolsa recibe el apoyo de NVIDIA, que está diciendo que en estos momentos es el fabricante más capaz de producir robots en grandes volúmenes. Por otro lado para Sharpa Wave es un gran espaldarazo porque pone a esta empresa en el mapa y la posiciona como punta de lanza en cuanto a destreza con su mano de 22 grados de libertad.\n\nY ahora vamos a detenernos un poco en la parte de software que proporciona NVIDIA en esta iniciativa, porque lo de las GPUs para robots, se entiende bastante bien por la similitud que tiene con lo ocurrido en el entrenamiento e inferencia de los modelos de IA, pero para robótica lo que está haciendo la empresa es presentar una cantidad enorme de opciones que vale la pena conocer. Se trata de las siguientes herramientas:\n\n- **NVIDIA Isaac Teleop** sirve para que una persona pueda manejar el robot y grabar buenas demostraciones de cómo se hace una tarea. Esos ejemplos luego se usan para entrenar al robot.\n- **NVIDIA Isaac GR00T** es el conjunto de modelos de IA que ayuda al humanoide a entender instrucciones, aprender tareas y realizar distintos comportamientos.\n- **NVIDIA Isaac Sim** e Isaac Lab permiten probar el robot en simulación antes de llevarlo al mundo real. Es decir, entrenarlo, comprobar fallos y evaluar si una tarea funciona sin arriesgar el robot físico.\n- El **ROS** acelerado de NVIDIA Isaac ayuda a que el robot real pueda realizar las acciones para las cuales ha sido entrenado en simulación o en laboratorio a través de la teleoperación.\n\nPor lo tanto, la presentación del robot de referencia NVIDIA Isaac GR00T no indica aún la llegada del robot humanoide generalista, sino que se posiciona en una paso anterior, que también es muy importante: la construcción de una plataforma común para enseñar, simular, evaluar y desplegar la IA física en robots humanoides. Algo que la empresa ya hizo en su momento cuando creó todo el ecosistema de software a través de Cuda, lo cual le ha reportado una ventaja competitiva enorme que por el momento ningún competidor está siendo capaz de replicar.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🚗 BMW desplegará humanoides en producción en Alemania por primera vez, empezando por un piloto en Leipzig con Hexagon Robotics y su robot AEON.",
+        "body_markdown": "🚗 [BMW](https://www.press.bmwgroup.com/global/article/detail/T0455864EN/bmw-group-to-deploy-humanoid-robots-in-production-in-germany-for-the-first-time?language=en) desplegará humanoides en producción en **Alemania** por primera vez, empezando por un piloto en Leipzig con Hexagon Robotics y su robot AEON. BMW también comparte resultados del piloto con Figure 02 en Spartanburg: más de 30.000 BMW X3 asistidos, 90.000 componentes movidos y unas 1.250 horas de operación, una señal muy fuerte de que los humanoides empiezan a entrar en fábricas reales."
+      },
+      {
+        "position": 2,
+        "headline": "🏥 NVIDIA se alía con Foxconn y centros médicos de Taiwán para llevar IA agéntica e IA física al sistema sanitario.",
+        "body_markdown": "🏥 [NVIDIA](https://nvidianews.nvidia.com/news/nvidia-foxconn-and-taiwan-medical-centers-bring-agentic-and-physical-ai-to-healthy-taiwan) se alía con **Foxconn** y centros médicos de Taiwán para llevar IA agéntica e IA física al sistema sanitario. Foxconn está desplegando CoDoctor AI, agentes clínicos especializados y robots colaborativos como Nurabot, con NVIDIA NemoClaw, Isaac for Healthcare y Omniverse como base para pasar de pilotos a operaciones reales en hospitales."
+      },
+      {
+        "position": 3,
+        "headline": "🤖 OpenAI Robotics está contratando perfiles de hardware, operaciones, sistemas y machine learning para fabricar robots útiles para la sociedad.",
+        "body_markdown": "🤖 [OpenAI Robotics](https://x.com/sama/status/2061117302528188712?s=46) está contratando perfiles de hardware, operaciones, sistemas y machine learning para fabricar robots útiles para la sociedad. **Sam Altman** explica que el programa de simulación del mundo liderado por Aditya Ramesh ha evolucionado hacia OpenAI Robotics, con una tesis clara: combinar investigación en ML y co-diseño de hardware para llevar la IA al mundo físico."
+      },
+      {
+        "position": 4,
+        "headline": "📱 COBALT presenta un sistema de teleoperación cloud para aprendizaje robótico usando smartphones.",
+        "body_markdown": "📱 [COBALT](https://cobalt-teleop.github.io/) presenta un sistema de teleoperación cloud para **aprendizaje robótico** usando smartphones. La idea es convertir un móvil en interfaz de control para recolectar datos en simulación y en entornos reales, incluyendo tareas bimanuales, lo que apunta a una vía más barata y escalable para generar demostraciones humanas sin hardware caro de teleoperación."
+      },
+      {
+        "position": 5,
+        "headline": "🇯🇵 Atom es nueva empresa japonesa de robots humanoides, que ha anunciado una ronda semilla de 3.000 millones de yenes.",
+        "body_markdown": "🇯🇵 [Atom](https://x.com/aoshun7/status/2059439540084113918?s=46) es nueva empresa japonesa de robots humanoides, que ha anunciado una ronda semilla de 3.000 millones de yenes. Su fundador, Shunsuke Aoki, señala tres retos clave: desarrollar modelos de **IA física**, diseñar líneas de recolección de datos y construir la cadena de suministro necesaria para fabricar humanoides."
+      },
+      {
+        "position": 6,
+        "headline": "🧢 Human Archive está usando trabajadores de servicios en India para recolectar datos egocéntricos de tareas cotidianas.",
+        "body_markdown": "🧢 [Human Archive](https://techcrunch.com/2026/05/26/human-archive-taps-into-indias-services-startups-to-collect-data-for-physical-ai/) está usando trabajadores de servicios en India para **recolectar datos egocéntricos** de tareas cotidianas. La startup ya cuenta con más de 1.000 dispositivos activos, ha levantado 8,2 millones de dólares y apuesta por combinar vídeo, profundidad, guantes táctiles, motion capture y cámaras de muñeca para entrenar robots con datos reales de trabajo humano."
+      },
+      {
+        "position": 7,
+        "headline": "🏭 Eden Robotics presenta robots autónomos para industria bajo un modelo Robots-as-a-Service.",
+        "body_markdown": "🏭 [Eden Robotics](https://edenrobotics.ai/) presenta robots autónomos para industria bajo un modelo **Robots-as-a-Service**. Su propuesta combina despliegue plug-and-play, operaciones 24/7, cero coste de instalación y precios desde 10 dólares por hora, reforzando una tendencia importante: vender automatización como servicio operativo, no como compra de hardware."
+      },
+      {
+        "position": 8,
+        "headline": "🌌 NVIDIA AI presenta Cosmos 3, su nuevo modelo frontera para IA física.",
+        "body_markdown": "🌌 [NVIDIA AI](https://x.com/NVIDIAAI/status/2061308434629132553) presenta **Cosmos 3**, su nuevo modelo frontera para IA física. NVIDIA lo describe como un omnimodelo abierto con razonamiento visual nativo, generación de mundo y generación de acciones, disponible en variantes Super de 32B y Nano de 8B, una pieza clave para conectar percepción, simulación y acción robótica."
+      },
+      {
+        "position": 9,
+        "headline": "📊 Mecka anuncia 60 millones de dólares de financiación para convertirse en la capa de datos y despliegue de la IA física.",
+        "body_markdown": "📊 [Mecka](https://x.com/joshavata/status/2061481322737267152) anuncia 60 millones de dólares de financiación para convertirse en la **capa de datos y despliegue de la IA física**. La compañía quiere escalar su infraestructura de datos, entrar en nuevos verticales y desplegar robots en el mundo real, atacando justo uno de los grandes cuellos de botella del sector: convertir datos físicos en sistemas robóticos útiles."
+      },
+      {
+        "position": 10,
+        "headline": "🔬 Luma lanza Open Physical AI Lab para investigar generalización en robótica.",
+        "body_markdown": "🔬 [Luma](https://x.com/gravicle/status/2061476460217737294) lanza **Open Physical AI Lab** para investigar generalización en robótica. Su tesis es que la IA física vive una crisis de datos y generalización: los robots aún aprenden tareas concretas en entornos concretos, y la solución no puede ser solo escalar teleoperación, sino construir modelos del mundo y herramientas abiertas para que más equipos puedan crear sistemas físicos."
+      },
+      {
+        "position": 11,
+        "headline": "🎥 Runway se une como miembro fundador de Cosmos Coalition, una iniciativa global con NVIDIA y otros laboratorios para construir y abrir modelos frontera del mundo para la IA fís…",
+        "body_markdown": "🎥 [Runway](https://x.com/runwayml/status/2061315089869721682) se une como miembro fundador de **Cosmos Coalition**, una iniciativa global con NVIDIA y otros laboratorios para construir y abrir modelos frontera del mundo para la IA física. La noticia conecta a los laboratorios de vídeo generativo con la robótica: simular el mundo deja de ser solo contenido visual y empieza a convertirse en infraestructura para entrenar agentes físicos."
+      },
+      {
+        "position": 12,
+        "headline": "🧹 Shift lanza en Nueva York un servicio gratuito de limpieza doméstica a cambio de grabar datos de la tarea.",
+        "body_markdown": "🧹 [Shift](https://x.com/joinshiftx/status/2060044783519735987?s=46) lanza en Nueva York un servicio gratuito de **limpieza doméstica** a cambio de grabar datos de la tarea. Un operador humano va al domicilio con un dispositivo, limpia y la grabación se anonimiza para alimentar datasets de robótica, un modelo que convierte servicios cotidianos en una línea de producción de datos para robots domésticos."
+      },
+      {
+        "position": 13,
+        "headline": "🦾 Ilir Aliu resume una ruta de bajo coste para empezar a entrenar robots reales en casa por menos de 300 dólares.",
+        "body_markdown": "🦾 [Ilir Aliu](https://x.com/iliraliu_/status/2059334512123711821?s=46) resume una ruta de bajo coste para empezar a entrenar robots reales en casa por menos de 300 dólares. La combinación **MuJoCo**, brazo SO-101, LeRobot, políticas ACT, una webcam y modelos multimodales muestra que el aprendizaje robótico está entrando en una fase mucho más accesible para makers, estudiantes e investigadores independientes."
+      }
+    ]
+  }
+}

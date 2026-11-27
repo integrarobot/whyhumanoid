@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-01-30-entrenamiento-de-robots-curso-de",
+  "source_url": "https://www.integrarobot.com/p/entrenamiento-de-robots-curso-de",
+  "published_on": "2026-01-30",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robot Training - Humanoid Robots Course",
+  "subtitle": "Below you will be able to [see] the different techniques used to train robots.",
+  "body_markdown": "**Robot training** has become the next challenge for this sector to overcome. For years the focus was on hardware and software, but now the battle centres on training, based on data and on how robots learn in the real world. AI models already exist and have evolved toward architectures that connect vision, language and action, but without sufficient, well-captured physical data they are of no use for operating in real environments.\n\nTraining robots is not as scalable as training Generative AI. Data is more expensive to obtain, slow to generate and constrained by the physics of the real world. There are several ways to do it, from using **videos of humans**, which scale well but are imprecise, to direct **teleoperation** of the robot, which offers maximum quality but has high costs. In practice, the dominant approach is a combination of simulation, reinforcement learning and real data, accepting trade-offs between cost, precision and speed.\n\nFrom a business point of view, training starts long before the robot arrives. Companies that today suffer staff shortages in physical jobs already own the most valuable asset: the real scenarios where robots must learn. Recording operations, capturing processes and actively participating in robots' learning is a long-term strategic investment.\n\nCompanies that get involved now in training robots, even imperfectly, will gain the same advantage as those that adopted AI before it became popular.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 62; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

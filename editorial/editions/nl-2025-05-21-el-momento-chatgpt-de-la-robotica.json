@@ -1,0 +1,82 @@
+{
+  "edition_id": "nl-2025-05-21-el-momento-chatgpt-de-la-robotica",
+  "source_url": "https://www.integrarobot.com/p/el-momento-chatgpt-de-la-robotica",
+  "published_on": "2025-05-21",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The ChatGPT moment of robotics",
+  "subtitle": "The CEOs have spoken: humanoids are close.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/b84015de-9ac9-43be-91bb-61280155a567_1952x1236.png)\n\n🗓️ We had gone a few weeks without important news about the progress of the big tech companies in robotics, and, as happened in previous months, we now find striking statements from Google's Sundar Pichai and NVIDIA's Jensen Huang that invite us to keep working to drive humanoid robotics forward, each from their own field of action.\n\nLet's start with the statements by **Sundar Pichai** in an [interview](https://www.youtube.com/watch?v=ReGC2GtWFp4&t=7s) in which he shows his amazement at how fast this technology is advancing and how close we are to it becoming a reality:\n\n> ***We are 2 or 3 years away from a magical moment in robotics**. I am impressed by recent humanoid progress, so much so that sometimes I have to look carefully to know whether a robot video is real or fake. At first, we went into the application layer too early, but now I consider the combination of AI and robotics to be the sweet spot. That is why **we are working to play a role similar to Android's in robotics**; in fact, one of our internal bets is already focused on supporting robotics manufacturers. Gemini's robotics models will work very well, but how to turn them into products remains an open question at the company*.\n\n---\n\n## NVIDIA goes all in\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/50a6043f-2a1c-4fee-a70b-b40c28b23589_1600x1005.png)\n\nAnd let's continue with **NVIDIA**, because every time **Jensen Huang** presents what they are working on in robotics, it is a boost for the work we do at Integrarobot. This is what they call standing on the shoulders of giants.\n\nBelow is the talk given at the COMPUTEX 2025 event in Taipei:\n\nAI agents are essentially digital robots. This is because a robot perceives, understands and plans, and that is basically what agents do. However, we also want to build physical robots. This begins with the ability to learn to be a robot, but learning to be a robot cannot be done productively in the physical world. It is necessary to create a virtual world designed so that the robot can learn, and that virtual world must obey the laws of physics.\n\nThe biggest challenge in robotics, and in AI in general, is data strategy. In robotics, human demonstration (as when we teach a child) is fundamental, but it is not scalable. To overcome this, we use AI to amplify human demonstrations and generate more training data. The era of generalist robotics has arrived with advances in mechatronics, physical AI and computing, just in time to **face the labour shortage that limits industrial growth**. For robotics to become a reality we need AI, but to train the AI we also need AI, since a large amount of synthetic data and skill learning through fine-tuning and reinforcement learning is required. All this requires enormous computing capacity.\n\nThe world faces a severe labour shortage. Humanoid robots are important because they can be deployed in any existing environment, adapting to the world as we know it. Humanoid robotics has the potential to become a multi-trillion-dollar industry, driven by technological innovations and high consumption of computing resources. Every factory of the future will be equipped with robots, working as coordinated fleets in factories that are themselves robotized. For this, it is essential to have digital twins that make it possible to learn to work as a team.\n\nIn this presentation the main novelty was the update of the **Isaac GR00T N1.5** model, open and customizable for humanoid reasoning and skills, along with a synthetic motion data model to accelerate robot training. Isaac GR00T N1.5 uses a dual-system design inspired by human thinking: \"**System 1**\" for fast reactions, while \"**System 2**\" handles planning. The GR00T-Dreams model generates synthetic motion data, allowing developers to create large datasets of robot behaviours in simulation.\n\n**Agility Robotics**, **Boston Dynamics** and **XPENG Robotics** are already integrating this Isaac technology to accelerate the development of their own humanoids. This update allows developers to train robots in new behaviours and adapt them to unfamiliar environments without relying solely on real-world data collection, which will accelerate the development and deployment of humanoids.\n\nAnd to finish with NVIDIA, a very powerful idea that reinforces the notion that general-purpose robots will end up prevailing over other specialized robots:\n\n> *The reason **humanoids** will succeed is that technology needs scale. Most of the robotic systems we have had so far are very low volume, and those low-volume systems will never reach the technological scale needed to achieve the volume and velocity required for us to be willing to devote enough technology to improving them.*\n\n---\n\n## The community is also advancing\n\nBeyond the big tech companies, with their particular bets and different approaches to how to develop robotics, we find other great forces that are powerfully energizing this market, namely:\n\n🚀 **Western startups**, such as Figure, Neura, Apptronic, Agility, 1X, … which are well stocked with funding and are demonstrating great capabilities, not only technologically but also in getting to market.\n\n🇨🇳 **Chinese companies**, with strong government support, are going full throttle and demonstrating great execution capacity. It is clear that over there, when they said they wanted to be the AI superpower, they were thinking not of LLMs but of robots.\n\n🚘 **Car and household appliance manufacturers** and other industrial companies, which do not want to be left out of this party and, above all, have the manufacturing infrastructure that may be decisive for the startups in the previous group.\n\n🌍 The independent **developer community**, which we can find in all kinds of academic and research institutions, as well as in many entrepreneurial projects, which are gradually gaining relevance.\n\nAn example of this last category is the company [K-Scale](https://www.kscale.dev/), which does not limit itself exclusively to manufacturing the **K-Bot** humanoid robot, but offers the software and machine learning infrastructure for less than $8,999, all tightly integrated and fully open source. This approach allows developers to spend less time configuring systems and invest more time in building [applications](https://www.integrarobot.com/p/alguien-tendra-que-crear-las-apps).\n\nIts operating system, K-OS, is written in Rust to offer greater speed and reliability, and includes a Python SDK for ease of access. In addition, its machine learning layer includes K-Sim, a high-performance reinforcement learning framework optimized for humanoid robotics, which allows GPU-accelerated training at more than 100,000 samples per second and facilitates seamless sim-to-real transfer. Once an activity is trained in simulation, it can be deployed directly on a physical robot without rewriting the code.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📱 Brett Adcock: Humanoids are the iPhone of AGI.",
+        "body_markdown": "What a week packed with news; the amount of new developments taking place in the sector is impressive. Below you can read some of the most interesting ones.\n\n📱 [Brett Adcock](https://x.com/adcock_brett/status/1923577489403806156): *Humanoids are the iPhone of AGI*. A great deal can be said in a few words, and now it is **Figure**'s founder who has compared humanoids with the iPhone, in terms of the future impact a piece of hardware can have in making the software layer accessible. Iphone = Apps. Humanoids = AGI."
+      },
+      {
+        "position": 2,
+        "headline": "⚖️ Sight > Hearing > Touch > Smell > Proprioception.",
+        "body_markdown": "⚖️ Sight > Hearing > Touch > Smell > [Proprioception](https://news.mit.edu/2025/system-lets-robots-identify-objects-properties-through-handling-0508). Researchers from MIT, **Amazon Robotics** and the University of British Columbia have developed a technique that allows robots to use only internal sensors to learn the weight, softness or contents of an object by lifting it and gently shaking it."
+      },
+      {
+        "position": 3,
+        "headline": "🛞 Piaggio Fastforward is a new robotics company that has developed the G1T4-M1N1 personal cargo droid.",
+        "body_markdown": "🛞 [Piaggio Fastforward](https://piaggiofastforward.com/) is a new robotics company that has developed the G1T4-M1N1 personal **cargo droid**. It is equipped with cameras and sensors that allow it to identify its owner and follow them easily, offering a cargo compartment with capacity for up to 9 kg of gear."
+      },
+      {
+        "position": 4,
+        "headline": "📷 Boston Dynamics and LG are going to collaborate to integrate new vision systems into the Atlas robot.",
+        "body_markdown": "📷 [Boston Dynamics](https://bostondynamics.com/news/boston-dynamics-lg-innotek-enter-into-new-collaboration/) and LG are going to collaborate to integrate new vision systems into the Atlas robot. Previously, **LG Innotek** has carried out research collaborations in robotics with Toyota Research Institute, Google Deepmind, NVIDIA and RAI."
+      },
+      {
+        "position": 5,
+        "headline": "🚚 DHL signs a memorandum of understanding with Boston Dynamics for the deployment of 1,000 additional robots and accelerates its automation strategy across businesses.",
+        "body_markdown": "🚚 [DHL](https://group.dhl.com/en/media-relations/press-releases/2025/dhl-group-signs-mou-with-boston-dynamics-and-accelerates-cross-business-automation-strategy.html) signs a memorandum of understanding with **Boston Dynamics** for the deployment of 1,000 additional robots and accelerates its automation strategy across businesses. Through this expanded partnership with Boston Dynamics, DHL will take on a more active role in shaping and directing the development of robotics."
+      },
+      {
+        "position": 6,
+        "headline": "🤑 Foundation Robotics is in the middle of an investment round with the intention of raising 100 million at a valuation of 1 billion.",
+        "body_markdown": "🤑 [Foundation Robotics](https://x.com/thehumanoidhub/status/1920732884505124867?s=46) is in the middle of an investment round with the intention of raising 100 million at a valuation of 1 billion. An amount that adds to the previous 11 million raised by the company and which shows us that venture capital is very interested in this sector."
+      },
+      {
+        "position": 7,
+        "headline": "📜 Kfund is a Spanish venture capital fund that has published an interesting article on the state of development of robotics: it is undeniable that AI is bringing fundamental val…",
+        "body_markdown": "📜 [Kfund](https://www.kfund.vc/post/where-ai-meets-steel-robots-that-learn-think-and-work) is a Spanish venture capital fund that has published an interesting article on the state of development of robotics: *it is undeniable that AI is bringing fundamental value to robotics that will have a profound impact on our daily lives*."
+      },
+      {
+        "position": 8,
+        "headline": "🦾 Tesla's Optimus is undergoing an intense learning process.",
+        "body_markdown": "🦾 **Tesla**'s [Optimus](https://x.com/Tesla_Optimus) is undergoing an intense learning process. Pay attention, because many functions are performed with household instruments rather than industrial ones, which represents very well the concept of the general-purpose robot and what Elon says: *The biggest product ever*."
+      },
+      {
+        "position": 9,
+        "headline": "📦 Apptronik has dared to show its Apollo robot working for 7 hours on a logistics-related task.",
+        "body_markdown": "📦 [Apptronik](https://www.youtube.com/live/obTHBG18uxY) has dared to show its **Apollo** robot working for 7 hours on a logistics-related task. During the video you can see the robot fall to the ground. A sign that the technology is still immature, but even so it is important that manufacturers dare to do this kind of demonstration."
+      },
+      {
+        "position": 10,
+        "headline": "🧱 LegoGPT is an AI model for building LEGO brick models from text prompts.",
+        "body_markdown": "🧱 [LegoGPT](https://avalovelace1.github.io/LegoGPT) is an AI model for building LEGO brick models from text prompts. It has a large-scale dataset of LEGO designs and the training of an autoregressive language model to predict the next brick to be added through next-token prediction."
+      },
+      {
+        "position": 11,
+        "headline": "🐕 Quadruped with integrated robotic arm, a research project showing that, until humanoid robots are more evolved, innovation can continue through other forms of specialized robots.",
+        "body_markdown": "🐕 [Quadruped with integrated robotic arm](https://leggedrobotics.github.io/wholebody-pose-control/), a research project showing that, until humanoid robots are more evolved, innovation can continue through other forms of specialized robots."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 21; 11 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "b430ebf07fe5a02820186329752fb659ee0013595c0e4ce3bf4c240846cdb656"
+}

@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2026-04-08-nuevo-curso-en-directo-de-robotica",
+  "source_url": "https://www.integrarobot.com/p/nuevo-curso-en-directo-de-robotica",
+  "published_on": "2026-04-08",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "New robotics and Physical AI course",
+  "subtitle": "It will be in May, and you can already sign up",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/9ddf42b7-5833-4677-a149-0a874fd22710_2486x1260.png)\n\nIn May we are going to hold a new **live online course**. This time it will be about **the evolution of robotics into Physical AI**.\n\nI have realized that the [humanoid robots course](https://www.integrarobot.com/p/curso)**,** which I gave live in December (and which is now also recorded on video for members of the robot pioneers community), was too limited to one type of technology, but things often don't move as fast as we would like, so it becomes necessary to broaden the perspective and cover other topics in order to provide a more complete view.\n\nTherefore, the **robotics and physical AI course** I am going to give on **12, 13 and 14 May from 18:00 to 20:00** will begin by talking about waiter robots. Yes, because they are the first new-generation robots, those with integrated AI, that people are getting used to seeing, and therefore they are going to be the beginning of everything to come in this sector.\n\nThe presentation of **NVIDIA**'s robotics strategy at GTC 2026 also highlights this reality. In previous editions, when Jensen Huang talked about **Physical AI** he had a bunch of humanoid robots beside him, but this time the image was much more varied, because humanoids were mixed with all kinds of robots: self-driving cars, industrial robotic arms, drones, mobile platforms, autonomous forklifts and even an excavator!\n\nSo in the Integrarobot course we are going to have that variety, and we are also going to focus on how this **transition** is taking place, for example, how traditional robotics companies, ABB, FANUC, KUKA, are taking their first steps in Physical AI. We will also dwell a little on what is happening with autonomous driving, because it is probably showing us the path of what will later come with robots.\n\nAnd what can be said about drones, delivery robots, autonomous mobile robots and so many other machines that are stealthily invading the world, without attracting as much attention as humanoids, but which, by integrating AI, are showing that we are not facing a technology that only makes promises but one that really delivers.\n\nWell, I confess that at the end we will also talk about humanoid progress, because I still hold the conviction that it will be the most transformative technology of the future; despite the delays of **Optimus 3** and the other setbacks that will arise along the way, I am clear that it is a matter of time before we can all have our robot butler taking all those tedious tasks we don't want to do off our hands.\n\nBut beyond the anecdote of the waiter robot, what matters is understanding what is really happening:\n\n> For the first time in history we are starting to see machines capable of perceiving the world, understanding what is happening around them and acting accordingly. That is what we call Physical AI: artificial intelligence that does not just generate text or images, but interacts with reality.\n\nAnd when that capability is connected with robots, vehicles, drones or industrial machinery, the result is not a simple technological improvement, but a new layer of automation over the economy.\n\nThis is not about futuristic robots.\n\nIt is about factories, warehouses, hospitals, restaurants, roads and cities gradually filling up with machines capable of working autonomously.\n\nThat is why in this course we are not going to talk only about technology. We are going to try to understand what is really happening and how to position ourselves in the face of one of the most important industrial changes of the coming decades.\n\nIf you want to understand where all this is heading before it becomes obvious to everyone, see you on 12, 13 and 14 May.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🏢 Humandro-id presented Robots ID at Nvidia's GTC 2026, a platform for teleoperating, collecting data and training humanoid robots.",
+        "body_markdown": "🏢 [Humandro-id](https://www.humandro-id.com/post/introducing-robotsos-id1) presented Robots ID at Nvidia's GTC 2026, a platform for **teleoperating**, collecting data and training humanoid robots. The solution is hardware-independent and makes it possible to generate synthetic data while keeping data ownership in the hands of companies. Its goal is to facilitate the development of physical AI models without depending on a single manufacturer. The announcement reflects how the ecosystem of tools for training robots is growing rapidly."
+      },
+      {
+        "position": 2,
+        "headline": "🧱 Anvil Robotics closes a seed round of about 5.5 million dollars to boost its modular platform for building robots.",
+        "body_markdown": "🧱 [Anvil Robotics](https://news.crunchbase.com/robotics/physical-ai-custom-robot-builder-seed-funding-anvil/) closes a seed round of about 5.5 million dollars to boost its modular platform for building robots. The company proposes a kind of \"**Lego for robots**\", with open hardware and software kits that make it possible to develop physical AI applications quickly. Its robots can be bought for between 5,000 and 10,000 dollars and ship within a few days. The company seeks to democratize access to advanced robotics for startups, researchers and small teams."
+      },
+      {
+        "position": 3,
+        "headline": "🚀 Generalist launches GEN-1, a new multimodal foundation model designed to control robots in real time.",
+        "body_markdown": "🚀 [Generalist](https://generalistai.com/blog/apr-02-2026-GEN-1) launches **GEN-1**, a new multimodal foundation model designed to control robots in real time. On simple tasks it achieves success rates above 99%, far above previous models, and it is up to three times faster. The system learns new skills with just one hour of robot data. This approach suggests that scaling laws similar to those of language models are also starting to appear in robotics."
+      },
+      {
+        "position": 4,
+        "headline": "☀️ Maximo shows how its robots are automating the installation of large photovoltaic plants.",
+        "body_markdown": "☀️ [Maximo](https://blogs.nvidia.com/blog/national-robotics-week-2026/?ncid=so-twit-763181&linkId=100000416285051#maximo) shows how its robots are automating the installation of large **photovoltaic plants**. The company completed a 100 MW installation using robots that place and assemble solar panels in the field. The system uses NVIDIA simulation and accelerated computing technologies to coordinate operations. This type of robotics promises to accelerate the construction of large-scale energy infrastructure."
+      },
+      {
+        "position": 5,
+        "headline": "📹 Micro1 is creating a new kind of data economy for humanoid robots.",
+        "body_markdown": "📹 [Micro1](https://www.technologyreview.com/2026/04/01/1134863/humanoid-data-training-gig-economy-2026-breakthrough-technology) is creating a new kind of **data economy** for humanoid robots. Thousands of workers in different countries record themselves performing everyday tasks to generate training data that robotics companies then buy. The company pays around 15 dollars an hour and sells the data to robot manufacturers. This model reflects the growing need for large amounts of human data to train physical AI systems."
+      },
+      {
+        "position": 6,
+        "headline": "🏭 Leju Robotics and Dongfang Precision have launched in China an automated factory capable of producing one humanoid robot every 30 minutes.",
+        "body_markdown": "🏭 [Leju Robotics](https://interestingengineering.com/ai-robotics/china-opens-humanoid-robot-factory) and Dongfang Precision have launched in China an automated factory capable of producing one humanoid robot every 30 minutes. The plant integrates dozens of assembly stages and digitized quality controls. According to the company, efficiency is around 50% higher than traditional methods. The facility could manufacture up to **10,000 robots a year**, signalling the move toward mass production of humanoids."
+      },
+      {
+        "position": 7,
+        "headline": "🖐️ Sanctuary demonstrated new advanced manipulation capabilities with its hydraulic robotic hand.",
+        "body_markdown": "🖐️ [Sanctuary](https://www.sanctuary.ai/blog/in-hand-reorientation-policy-with-letter-cube) demonstrated new advanced manipulation capabilities with its hydraulic **robotic hand**. In one test, the robot reorients a lettered cube several times in a row without dropping it. The system performs the manipulation using only the fingertips, without support from the palm. This kind of dexterity is key for complex industrial tasks such as assembly or tool use."
+      },
+      {
+        "position": 8,
+        "headline": "📊 Positronic launched the Physical AI Leaderboard (PhAIL), a new benchmark for measuring the real performance of vision-language-action robotics models.",
+        "body_markdown": "📊 [Positronic](https://positronic.ro/) launched the Physical AI Leaderboard (PhAIL), a new **benchmark** for measuring the real performance of vision-language-action robotics models. Tests are carried out on real hardware with industrial tasks such as object picking. The results show that the best current models only reach around 5% of human performance. The benchmark highlights the large gap that still exists between lab demos and productive robotics."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 82; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "88334160d046419084c97dff31da1e1e04446d854a8537bfbc8dfe12ecdb9531"
+}

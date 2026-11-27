@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-04-10-cuando-llegaran-los-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/cuando-llegaran-los-robots-humanoides",
+  "published_on": "2026-04-10",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "When will robots arrive? - Humanoid Robots Course",
+  "subtitle": "Neither late nor early: it is time to prepare and seize the opportunity.",
+  "body_markdown": "When people ask me when humanoid robots will arrive, I would like to give them a specific date, like the presentation of the **iPhone** on 9 January 2007 or 30 November 2022 for the presentation of **ChatGPT**. But in this case it is not going to be so simple, because the complexity of the technology is much greater and the uncertainty at this moment is still enormous.\n\nWhat can be said, and it is what most of the studies we have read show, is that adoption is going to happen in **stages**.\n\nFirst, robots are arriving in **industrial environments**. Factories, warehouses and logistics centres where tasks are repetitive and the environment is fairly controlled. It is the most logical place to start, because the economic return is easier to measure and the risks are lower.\n\nThen will come expansion into **services**. Hotels, hospitals, building maintenance, urban logistics. Environments where there is already more interaction with people and where the robot has to face somewhat more variable situations.\n\nAnd finally, when the technology matures and costs fall enough, we will see much more generalist humanoid robots. Robots capable of working in many different types of environments, from construction to agriculture or even **homes**.\n\nThis is not just my personal opinion, but a pattern that appears quite consistently in the reports of consultancies and investment banks analyzing this sector.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 83; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

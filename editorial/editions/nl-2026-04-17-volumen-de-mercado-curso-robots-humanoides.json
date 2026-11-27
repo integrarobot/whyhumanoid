@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-04-17-volumen-de-mercado-curso-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/volumen-de-mercado-curso-robots-humanoides",
+  "published_on": "2026-04-17",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "How big will the Physical AI market be? - Humanoid Robots Course",
+  "subtitle": "Is it important to pay attention to predictions about the market volume the Physical AI business may reach?",
+  "body_markdown": "When we talk about the future of humanoid robots and look at the reports published by investment banks, figures appear that seem absurd.\n\nFor example, a Goldman Sachs report estimates the market could reach about **38 billion dollars in 2035**. Citi raises that figure to **7 trillion dollars in 2050**. Morgan Stanley sets out scenarios in which, in the United States alone, the annual market could approach **a trillion dollars by mid-century**.\n\nHow can such different forecasts coexist?\n\nThe answer is simple: many reports are not measuring exactly the same thing.\n\nSome estimate the direct market for humanoid robots.\nOthers calculate the economic impact of automation.\nAnd others talk about the theoretical opportunity of replacing human labour with machines.\n\nTo better understand where we stand, it is worth looking at a much more revealing figure: current sales.\n\nIn 2025 the number of humanoid robots sold worldwide barely reaches a few thousand units, with manufacturers such as Unitree, Agibot or UBTech leading production.\n\nIn other words, we are still at a very early stage.\n\nThe contrast between these figures and the estimates of trillions of dollars is not a mistake. What it reflects is the difference between the current market and the potential market if the technology matures.\n\nThat potential rests on three structural factors.\n\n- The growing labour shortage in many developed economies.\n- The rapid advance of artificial intelligence applied to the physical world, what we call **physical AI**.\n- The industrial change that could be decisive: robots capable of manufacturing other robots, which would allow production to scale exponentially.\n\nSo, if that transition happens, general-purpose robotics could become one of the largest industries in history, which would confirm analysts' current estimates.\n\nBut today the reality is much more modest.\n\nHumanoid robots are starting to leave the laboratories and be tested in specific industrial environments.\n\nIn other words.\n\nWe are not facing a mature market.\n\nWe are **at the beginning of the beginning**.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 85; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

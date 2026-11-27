@@ -1,0 +1,57 @@
+{
+  "edition_id": "nl-2025-11-05-estas-preparado-para-la-salida-a",
+  "source_url": "https://www.integrarobot.com/p/estas-preparado-para-la-salida-a",
+  "published_on": "2025-11-05",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "📈📉 Are you ready for humanoid robot manufacturers going public?",
+  "subtitle": "Today we have some good news and some bad. The IPOs of Chinese robotics startups and the closure of K-Scale :(",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/24fa3e5c-5b10-4e16-b8e8-53e9dbdb9530_1920x1080.png)\n\nThe race for leadership in **humanoid robot** manufacturing is accelerating, which means that companies that want to be at the forefront of this technology will have to obtain a great deal of funding to cover the costs involved in mass-producing robots.\n\n[China](https://www.cls.cn/detail/2188519) in particular is where we are beginning to see this phenomenon intensify, so that private investment rounds are no longer enough for companies, and some are preparing their IPOs to obtain large amounts of funds.\n\nSpecifically, it seems the three Chinese robot manufacturers preparing to go public are Unitree, Aelos (Leju) and AgiBot, which will probably join **UBtech** Robotics within a few months; for the moment, it is the only Chinese robot manufacturer we know to be listed on the stock exchange.\n\n- **Unitree Robotics** is moving toward its stock market debut with a name change to *Unitree Technology Co., Ltd.* and the appointment of its founder, Wang Xingxing, as chairman.\n- **Aelos Robotics** (Leju) has applied for IPO advisory services in China after closing a pre-IPO round of 1.5 billion yuan.\n- **Zhiyuan Robotics** (AgiBot) is preparing its IPO in Hong Kong in 2026, while executing aggressive financial moves, including a possible reverse takeover, to position itself as a leader in humanoid robotics.\n\nThese moves show that robotics companies' strategy has to move to the next level: the venture capital market is showing interest in the sector, since private funding rounds are very frequent, but what is needed now is to take the next step, not only in manufacturing but also in ways of raising funding.\n\n## 🏠 Does it make sense to manufacture non-humanoid household robots?\n\n\"A non-humanoid household robot to do household chores\": that is too risky, even though it may seem the logical thing.\n\nI say logical because it is what many people tell me when I talk to them about humanoid robots; for some reason part of the population tends to think that a specialized design for a specific task is better than a generalist one, like the one we humans have.\n\nYou already know my conclusion: if evolution made us with this body structure and since then we have designed the world to our measure, the logical thing would be to make robots like us.\n\nIn any case, since in this article we are talking about funding, we have to look at **The Bot Company**, the startup developing a non-humanoid household robot to do household chores.\n\nThe company, founded by Kyle Vogt, founder of Cruise, together with former Tesla AI lead Paril Jain and former Cruise engineer Luke Holoubek, is preparing a round in which they hope to raise 250 million dollars at a valuation of more than 4 billion. This new round would double the company's valuation compared with the previous round, led by Greenoaks earlier this year, which valued it at about 2 billion dollars.\n\nBot Company proposes to manufacture affordable robots that take care of boring household chores, a clear sign that its target is individuals, not factories or warehouses.\n\n## 😥 The worst news of the year is the closure of K-Scale Labs\n\nIf you get into this business of humanoid robots, you need to know it is going to be an obstacle course. At least until it becomes clearer that AI development has reached the level of being able to govern the robot with the right level of effectiveness for it to fulfil a large number of everyday functions.\n\nSo on the other side of the coin of so much positive news about IPOs and funding rounds, we find the sad news that [K-Scale Labs](https://x.com/TheHumanoidHub/status/1985838243443851322) has to **close** because it has not found funding.\n\nRemember that in summer I said the best news of the year was that the **K-Bot** could now be bought, but I was clearly wrong, and it seems the company rushed into launching product sales without having secured the resources for manufacturing. This was announced by its founder Benjamin Bolte in a letter to the robot's first buyers.\n\n\"After the launch, I hoped to take advantage of the interest shown by the market to obtain additional funding that would allow us to acquire the tools needed for mass production and obtain the relevant regulatory approvals. Without the capital to cover these costs, the development of our product is not viable\"\n\nIt certainly would have been great to see this company succeed, but it was not to be. I hope they find some way out, beyond releasing their technology, and do not abandon this sector, where many more initiatives that dare to bet on open source ideas are needed.\n\n---\n\n## News from the Pioneros Robots Humanoides Community\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/b030f365-d7c6-44f5-a3cb-620beadd8714_800x800.jpeg)\n\nIn October we presented the [community](https://www.integrarobot.com/p/pioneros) and in November we begin activities, so if you want to move to the next level in learning about Humanoid Robots, I encourage you to join the community.\n\nWhat can I offer you? The humanoid robots course, exclusive content and community meetings where you can meet other professionals who want to take advantage of the next big technological wave, Physical AI and general-purpose robotics.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "Mimic announces its $16M seed funding round, which accelerates our mission to deploy cutting-edge physical AI across various industries.",
+        "body_markdown": "[Mimic](https://x.com/mimicrobotics/status/1985248359867699533) announces its $16M seed funding round, which accelerates our mission to deploy cutting-edge physical AI across various industries. Led by Elaia Partners together with Speedinvest, with participation from Founderful, 1st Kind, 10x Founders, 2100 Ventures and Sequoia Scout Fund."
+      },
+      {
+        "position": 2,
+        "headline": "Neura partners with the industrial company Schaeffler for the development and supply of key components for humanoid robots, such as new types of actuators.",
+        "body_markdown": "[Neura](https://humanoidroboticstechnology.com/news/schaeffler-and-neura-robotics-announce-a-partnership/) partners with the industrial company Schaeffler for the development and supply of key components for humanoid robots, such as new types of actuators. They have also announced plans to deploy Neura's humanoids in Schaeffler production factories by 2035."
+      },
+      {
+        "position": 3,
+        "headline": "Agility is betting on recovering the USA's industrial potential: the golden age of American manufacturing faded as supply chains spread globally.",
+        "body_markdown": "[Agility](https://www.agilityrobotics.com/content/humanoid-robots-the-key-to-americas-automated-homecoming) is betting on recovering the USA's industrial potential: the golden age of American manufacturing faded as supply chains spread globally. Now the situation is changing dramatically"
+      },
+      {
+        "position": 4,
+        "headline": "Biomechanical engineers and surgeons have created a 3D-printed soft robot that could transform vocal cord surgery.",
+        "body_markdown": "[Biomechanical engineers and surgeons](https://interestingengineering.com/innovation/precision-bioprinting-in-vocal-cord-surgery) have created a 3D-printed soft robot that could transform vocal cord surgery. Designed to deliver hydrogels directly to damaged tissue, the device measures just 2.7 millimetres in diameter, making it the smallest bioprinter ever recorded."
+      },
+      {
+        "position": 5,
+        "headline": "Starship obtains 50 million dollars in Series C funding to boost robot deliveries across the United States and Europe.",
+        "body_markdown": "[Starship](https://www.therobotreport.com/starship-technologies-obtains-series-c-funding-for-autonomous-deliveries) obtains 50 million dollars in Series C funding to boost robot deliveries across the United States and Europe. This brings its total funding to date to more than 280 million dollars. The company claims to have created the world's largest autonomous delivery network, with 8 million deliveries in April."
+      },
+      {
+        "position": 6,
+        "headline": "Robots For Humanity launches in Argentina the first Humanoid Robotics Training Centre, a pioneering space in Latin America whose facilities are designed to develop and train rob…",
+        "body_markdown": "[Robots For Humanity](https://www.robotsxhumanity.com/post/robots-for-humanity-inaugurates-the-first-training-center) launches in Argentina the first Humanoid Robotics Training Centre, a pioneering space in Latin America whose facilities are designed to develop and train robotic units with artificial intelligence capable of performing complex tasks in industrial environments."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 41; 6 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "bf12d805c49179186336c69821f46bc2be362b8e5724b2e17dc521e23f12e337"
+}

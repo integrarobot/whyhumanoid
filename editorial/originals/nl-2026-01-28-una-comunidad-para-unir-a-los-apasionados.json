@@ -1,0 +1,57 @@
+{
+  "edition_id": "nl-2026-01-28-una-comunidad-para-unir-a-los-apasionados",
+  "language": "es",
+  "title": "Una comunidad para unir a los apasionados de la robótica",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/3528d46f-e316-4d3b-aae8-14346b54bf11_1200x800.jpeg)\n\nTe reconozco que ahora mismo me gustaría estar cacharreando con Moltbot (antes Clawdbot), pero aquí ando, escribiendo la newsletter de la semana de Integrarobot. Y no es una queja, simplemente entiendo que la tentación con todo lo que está pasando con la IA Generativa es tan grande que entiendo que los robots muchas veces pueden quedar en segundo plano.\n\nPero por suerte tengo claros mis objetivos y si estás leyendo esto es porque también vislumbras la gran oportunidad de la **robótica**.\n\nLa oportunidad de la **IA Física** podría ser mayor incluso que la de la **IA Generativa**, pero como aún hay problemas técnicos por resolver, aquí seguimos hablando de expectativas, en lugar de trabajar en cosas reales.\n\nPero esto debería empezar a cambiar. Tenemos que unir fuerzas para sacar adelante proyectos de robótica.\n\nPor eso estoy poniendo en marcha la [Comunidad Pioneros Robots](https://www.integrarobot.com/p/pioneros). Le he acortado el nombre para simplificar y no asustar a la gente con algo tan futurista como los humanoides. Y estoy convencido de que hay mucho que se puede hacer ya para traer hacia nosotros ese futuro con el que soñamos.\n\nEmpecemos por grabar las operaciones que se realizan en nuestras empresas, da igual que sea una fábrica, un comercio, un taller, un gimnasio, … Hay miles de lugares donde los robots podrán ayudar, pero necesitamos darles datos. Por ejemplo, ayer se presentó la nueva versión de la IA de **Figure**, la empresa que mejor está sabiendo comunicar sus avances en robótica humanoide y nos cuentan esto:\n\n> *[Helix 02](https://www.figure.ai/news/helix-02) ha sido entrenada con más de 1000 horas de datos de movimiento humano y aprendizaje por refuerzo de simulación a realidad. Gracias a esto el sistema neuronal único es capaz de controlar todo el cuerpo del robot directamente desde las imágenes, lo que permite una autonomía ágil y de largo alcance.*\n\nOtra cosa que se puede hacer es montar una empresa de alquiler de robots. Me consta que en muchos eventos tecnológicos quieren empezar a tratar este tema, pero claro, no quieren que solo haya vídeos y fotos, les gustaría tener un robot real paseando por allí. Como el más accesible ahora es el G1 de Unitree y además se está haciendo famoso en la tele gracias al trabajo que realiza Synergy Tech, seguro que por un tiempo es una buena opción hasta que pueda haber más variedad en el mercado.\n\nPero bueno, esto son sólo un par de ideas de lo que podríamos empezar a hacer, más allá de que alguno quiera dedicarse directamente al desarrollo de hardware y software para robots, en la newsletter anterior también conté todas las posibilidades que veo a nivel de emprendimiento e inversión en el sector de la IA Física.\n\nAsí que lo que quería hacer hoy es animarte a participar en la **comunidad**, con la cual tendremos un primer **encuentro online**, la semana que viene, en concreto el **miércoles 4 de febrero a las 19h**. ¿[Te apuntas](https://www.integrarobot.com/p/pioneros)?",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💰 ARK Big Ideas 2026 es el informe anual de uno de los fondos de inversión que más claro tiene que la tecnología es la palanca que hay que activar para transformar el mundo.",
+        "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/41cd7764-af4a-4671-9862-bbf80480bd6b_1844x1046.png)\n\n💰 [ARK](https://www.ark-invest.com/big-ideas-2026) Big Ideas 2026 es el informe anual de uno de los **fondos de inversión** que más claro tiene que la tecnología es la palanca que hay que activar para transformar el mundo. Y este año en su informe vuelve a colocar la robótica entre las 12 tecnologías en las que hay que invertir. En concreto en este caso nos dicen que estamos al inicio de la curva de crecimiento donde la robótica va a empezar a escalar a lo largo de toda la industria, pasando de una época de robots especializados a la llegada de los robots generalistas impulsados por IA."
+      },
+      {
+        "position": 2,
+        "headline": "🇩🇪 Agile ONE es un robot humanoide impulsado por IA Física, diseñado en Alemania para trabajar en fábricas.",
+        "body_markdown": "🇩🇪 [Agile ONE](https://www.agile-robots.com/en/solutions/agile-one/) es un robot humanoide impulsado por IA Física, diseñado en **Alemania** para trabajar en fábricas. Sus manos están llenas de sensores, para asemejarse a las humanas, lo que le permite manejar herramientas y piezas con alta precisión, apoyando tanto el ensamblaje delicado como tareas intensivas en fuerza. Sus capacidades principales son: carga útil de 20 kg, altura de 174 cm y peso de 69 kg, duración de batería de 8 horas, velocidad de caminar de 2.0 m/s y 71 grados de libertad."
+      },
+      {
+        "position": 3,
+        "headline": "💻 Microsoft Research ha presentado Rho-alpha, un modelo de IA física diseñado para otorgar mayor autonomía y adaptabilidad a los robots en entornos complejos.",
+        "body_markdown": "💻 [Microsoft Research](https://www.microsoft.com/en-us/research/story/advancing-ai-for-the-physical-world/) ha presentado **Rho-alpha**, un modelo de IA física diseñado para otorgar mayor autonomía y adaptabilidad a los robots en entornos complejos. A diferencia de los modelos de IA anteriores, esta tecnología traduce instrucciones en lenguaje natural directamente en acciones motrices para tareas de manipulación bimanual. El avance destaca por **integrar sentido del tacto y la visión**, permitiendo que las máquinas perciban su entorno de manera más humana y precisa."
+      },
+      {
+        "position": 4,
+        "headline": "💱 Unbox Robotics obtiene 28 millones de dólares en una ronda de financiación de Serie B liderada por ICICI Venture y Redstart Labs (Infoedge), con la coinversión de F-Prime, 3on…",
+        "body_markdown": "💱 [Unbox Robotics](https://www.europapress.es/comunicados/internacional-00907/noticia-comunicado-unbox-robotics-obtiene-28-millones-dolares-ronda-financiacion-serie-icici-venture-20260121090235.html) obtiene 28 millones de dólares en una ronda de financiación de Serie B liderada por ICICI Venture y Redstart Labs (Infoedge), con la coinversión de F-Prime, 3one4 Capital, Navam Capital, Force Ventures y otros inversores. La empresa se dedica a la automatización de almacenes y trabaja con empresas del sector del **comercio electrónico**, el comercio minorista y la logística en India, Europa y Estados Unidos."
+      },
+      {
+        "position": 5,
+        "headline": "🤖 OpenAI busca proveedores de componentes para robots, como parte de su plan de fortaleciendo de la cadena de suministro de IA de EE.",
+        "body_markdown": "🤖 [OpenAI](https://openai.com/es-ES/index/strengthening-the-us-ai-supply-chain/) busca proveedores de **componentes para robots**, como parte de su plan de fortaleciendo de la cadena de suministro de IA de EE. UU. a través de la fabricación. Con esto nos dan a entender que en la empresa líder en IA Generativa siguen trabajando en robótica, pero no queda claro si lo ven como un fin o como un medio.¿Llegarán a lanzar un robot al mercado o se limitarán a usarlos en sus centros de datos?"
+      },
+      {
+        "position": 6,
+        "headline": "🏭 Hitachi pone en marcha la Hitachi IA Factory como una infraestructura centralizada está diseñada para acelerar el desarrollo y la implantación de soluciones de IA físicaen los…",
+        "body_markdown": "🏭 [Hitachi](https://www.computing.es/estrategia/hitachi-anuncia-nvidia-ia-factory-para-acelerar-la-innovacion-en-ia-fisica/) pone en marcha la Hitachi IA Factory como una infraestructura centralizada está diseñada para acelerar el desarrollo y la implantación de soluciones de **IA física**en los sectores de negocio principales de la empresa. La IA Factory está impulsada por Hitachi iQ con sistemas **NVIDIA** HGX B200 que incorporan GPUs NVIDIA Blackwell; Hitachi iQ M Series con GPUs NVIDIA RTX PRO 6000 Server Edition; y la plataforma de networking NVIDIA Spectrum-X Ethernet"
+      },
+      {
+        "position": 7,
+        "headline": "🦐 Makro ya vende robots camareros y esto es una buena noticia, porque a medida que la gente se vaya acostumbrando a ver robots en restaurantes y cafeterías, iremos avanzando en…",
+        "body_markdown": "🦐 [Makro](https://www.makro.es/marketplace/product/a0da1d43-d27a-4fd7-8695-f938193081fa) ya vende **robots camareros** y esto es una buena noticia, porque a medida que la gente se vaya acostumbrando a ver robots en restaurantes y cafeterías, iremos avanzando en la adopción de esta tecnología y caminando poco a poco hacia la llegada de los humanoides. Este robot de la marca **Hiopos** puede transportar una carga de hasta 60 kgs en cuatro bandejas. Tiene pantalla de 15,6”, indicadores luminosos, tecnología Lidar y cámaras 3D y batería con duración de 8h y un tiempo de carga de 4-5 horas."
+      },
+      {
+        "position": 8,
+        "headline": "Serve adquirirá Diligent Robotics y expandirá su plataforma de IA física más allá de las entregas de la última milla.",
+        "body_markdown": "[Serve](https://investors.serverobotics.com/news-releases/news-release-details/serve-robotics-acquire-diligent-robotics-expanding-physical-ai) adquirirá **Diligent Robotics** y expandirá su plataforma de IA física más allá de las entregas de la última milla. Diligent es un proveedor pionero de asistentes robóticos con IA para trabajar en **hospitales**. La transacción marca la primera expansión de la plataforma de autonomía de Serve a entornos interiores, siendo los hospitales y otras instalaciones relacionadas con la salud uno de los entornos de mayor impacto para la robótica."
+      },
+      {
+        "position": 9,
+        "headline": "🤸 ProtoMotions de NVIDIA es un nuevo marco de simulación y aprendizaje acelerado por GPU para el entrenamiento de humanos digitales y robots humanoides simulados físicamente.",
+        "body_markdown": "🤸 [ProtoMotions](https://nvlabs.github.io/ProtoMotions/) de **NVIDIA** es un nuevo marco de simulación y aprendizaje acelerado por GPU para el entrenamiento de humanos digitales y **robots humanoides** simulados físicamente. Su objetivo es proporcionar una plataforma rápida de prototipado para diversas tareas y entornos de aprendizaje de humanoides simulados, conectando esfuerzos entre la animación basada en física, los humanos digitales y la robótica humanoide."
+      }
+    ]
+  }
+}

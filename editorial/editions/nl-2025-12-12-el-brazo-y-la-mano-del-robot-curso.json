@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2025-12-12-el-brazo-y-la-mano-del-robot-curso",
+  "source_url": "https://www.integrarobot.com/p/el-brazo-y-la-mano-del-robot-curso",
+  "published_on": "2025-12-12",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The robot's arm and hand - Humanoid Robots Course",
+  "subtitle": "In this class we discover how advanced the technology is that enables the robot's manual dexterity",
+  "body_markdown": "If vision allows a robot to understand the world around it, **arms** and **hands** are what allow it to interact with it. Without manipulation there is no real usefulness, since the entire artificial world we have built is designed for human hands, so any robot that aspires to work in our environment needs to reproduce, even if only partially, that unique combination of strength, precision and sensitivity.\n\nA humanoid robot's arms integrate motors, transmissions and sensors that work together to move with millimetre precision. Most manufacturers opt for electric actuators and tendon transmission systems, like Tesla in Optimus or Figure, because they offer a suitable balance between power, control and safety. Other companies bet on miniaturized hydraulic solutions capable of generating much more force in small spaces. In all cases, the challenge is to achieve fluid, safe and repeatable movements in a body designed to interact with humans.\n\nThe hand is the most complex subsystem of the entire robot and, at the same time, the one that most determines its ability to be useful. Today there is an enormous variety of designs: from native humanoid hands designed for generalist robots, such as Optimus or Figure, to advanced research hands such as the **Shadow Dexterous Hand**, capable of fine manipulations that until a few years ago seemed like science fiction. Others, such as the Clone Hand, introduce hydraulic artificial muscles to approach biological behaviour. There are also open-source alternatives that democratize experimentation in universities and startups.\n\nThe technology that makes this dexterity possible combines mechanics, sensors and software. Force and torque sensors make it possible to adjust grip pressure; touch detects slippage and textures; palm cameras add extra vision for manipulating with more context. All this, together with AI models, allows the robot to learn to use its hands more intelligently. Teleoperation, imitation learning and reinforcement methods are accelerating the transition toward hands capable of performing human tasks without the need to program them one by one.\n\nTherefore, we are experiencing a major leap in this technology, since robots no longer just see; they also feel and are beginning to understand how to interact with their environment through their hands. This opens the door to truly functional humanoid robots, capable of manipulating varied objects, using tools, working alongside people and adapting to new situations. If vision and language have meant great advances in AI, arms and hands will be the way that intelligence connects with action in the physical world..",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 52; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

@@ -1,0 +1,72 @@
+{
+  "edition_id": "nl-2026-07-01-la-salida-a-bolsa-de-las-startups",
+  "source_url": "https://www.integrarobot.com/p/la-salida-a-bolsa-de-las-startups",
+  "published_on": "2026-07-01",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The IPOs of robotics startups",
+  "subtitle": "Robotics and Physical AI startups need more money to accelerate their growth, and going public is one of the options starting to be used.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/5a3608ff-d4d1-4d3f-8c2a-51e68fd36c31_2918x1298.png)\n\nListing on the stock exchange is an important milestone for many companies, but it is not without risks. In fact, there are important companies that refuse to go public to avoid certain problems of loss of control, excessive institutional oversight, …\n\nThat is why, in the **robotics** sector, we are surely going to see many kinds of situations. Small companies that go public very early, as in the case of **Agility**, which we present today, and companies that become very large without needing to go public.\n\nGoing public, for what matters to us, means being able to become shareholders in these companies we have been following and that can do so much to improve the world, so I think it is worth paying attention to.\n\nIn the case of [Agility](https://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi), it will go public through a **SPAC**, which usually has somewhat different connotations from a conventional listing, an IPO, as they call it in the USA, and OPV, as we call it here.\n\nThe SPAC thing is simpler than it seems. There are companies devoted to investment, in this case **Churchill Capital**, that list a kind of investment fund whose goal is to invest in a single company; the curious thing is that when this kind of fund goes public, the company to be invested in has not yet been chosen. Then part of the money raised is used to look for the company, and once it has been found, a stake in it is bought, and the one that remains listed is the \"acquired\" company, not the fund.\n\nIn this way small companies like Agility, which don't want to complicate their lives going through the whole IPO process, which is in turn quite expensive, can use this option and come to market quickly and easily to raise funds that allow them to accelerate their growth.\n\nThis way of listing became very popular in the USA from 2020 onwards and allowed many biotech and also quantum computing companies to go public. But precisely this previous history should put us on alert, because if we look at the share prices of those companies that listed through SPACs, we will see that in many cases retail shareholders have not benefited at all.\n\nSo history for now teaches us that we must be cautious, because the norm is that at such an early stage expectations are greatly inflated, and when the company begins to face public scrutiny many of those expectations collapse and the company's value can take many years to recover.\n\nWith Agility we have no idea what is going to happen in terms of market value, but what we do know is that the company is one of the pioneers in humanoid robotics and is taking the right steps to reach the market, for example thanks to its collaboration with [Toyota](https://www.agilityrobotics.com/content/agility-robotics-announces-commercial-agreement-with-toyota-motor-manufacturing-canada), with Mercado Libre, with GXO, ...\n\nAnd now let's move on to the rest of the market, because Agility is certainly not going to be an exception; in fact, an important piece of news has just occurred among Eastern robotics companies: [SEER Robotics](https://seer-robotics.ai/media/333) has begun trading on the Hong Kong stock exchange. This surprised me, since I expected **Unitree** or one of the other more advanced robot manufacturers to list first. For example, **Agibot** has also announced its plans to go public.\n\nSo where does all this interest in going public among robotics companies come from? It's simple: companies are following their usual life cycle, and in some cases even taking the fast track, as with Agility, but the truth is that the sector is at its best moment in terms of investor interest, and that must be taken advantage of.\n\nThe best moment is not my claim; it is that of the venture capital fund [Adreessen Horowitz](https://www.a16z.news/p/charts-of-the-week-cycles-different?hide_intro_popup=true), which knows a thing or two about investing and has been warning for some time that after \"software is eating the world\" comes \"**robotics is going to be the largest industry in history**\".\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/1c4f1972-3422-4e8a-a595-3a8177611dcd_1456x958.jpeg)\n\nIn this way, robotics and physical AI already occupy second place in the **startup investment** ranking, surpassing other sectors with a longer track record such as Fintech, Biotech, Quantum, …\n\nThis is how the venture capital fund itself puts it:\n\n> \"*The preference for \"real world\" technology is becoming evident in private markets, not only in AI infrastructure but also in robotics: if measured by the value of the top 100 private companies (by category), robotics (and physical AI) did not even appear on the list in 2016, but a decade later it has eclipsed fintech and payments as the second most important category. If you follow where venture capital investors' money is flowing, the rise in interest in robotics is also reflected in that flow. The first quarter of 2026 was a record for robotics and physical AI, both by value and by number of deals, with investment of approximately **16 billion dollars** in just under 500 deals. To put it in context, the wave of robotics investment is roughly double in quantity and 4.5 times greater in value than the previous period between 2021 and 2025. The point is that the transition toward atoms (at least in private markets) is not limited to the chips and inference that will ultimately drive the next generation of software; hardware, as a product in itself, is booming. And it makes sense. Even better software has enormous potential, but robotics pushes technology toward a series of real-world \"tasks\" that software alone cannot tackle. To the extent that AI unlocks the software that drives hardware, it expands the reach of demand in unprecedented ways, similar to how electricity allowed machines to perform work humanity had barely imagined (before \"power\" was so readily available).*\"\n\nSo now you know: we have more and more options to [invest in Physical AI](https://www.integrarobot.com/p/como-invertir-en-ia-fisica), which is good news for all of us who want to take advantage of the success of this sector.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🚗 Figure announces the arrival of Figure 03 at Hall 52 of BMW's Spartanburg plant for a logistics sequencing use case.",
+        "body_markdown": "🚗 [Figure](https://www.figure.ai/news/f-03-at-bmw) announces the arrival of Figure 03 at Hall 52 of **BMW**'s Spartanburg plant for a logistics sequencing use case. The company says Figure 02 contributed to the assembly of 30,000 cars at BMW in 2025, and that now Figure 03, with Helix 02, is in charge of picking parts from unsorted containers, placing them on a sequencing trolley and handling the cart while repositioning its body and feet."
+      },
+      {
+        "position": 2,
+        "headline": "🤝 ABB Robotics announces a collaboration with PSYONIC to use manipulation data generated by prosthesis users in robot training.",
+        "body_markdown": "🤝 [ABB Robotics](https://new.abb.com/news/detail/136874/abb-robotics-y-psyonic-utilizan-datos-generados-por-humanos-para-impulsar-la-destreza-robotica) announces a collaboration with **PSYONIC** to use manipulation data generated by prosthesis users in robot training. The project combines PSYONIC's Ability Hand with ABB's GoFa cobot to explore how touch, movement and grip force data can be transferred to delicate and variable tasks in industrial automation."
+      },
+      {
+        "position": 3,
+        "headline": "📈 Morgan Stanley has again raised its forecast for the Chinese humanoid robot market.",
+        "body_markdown": "📈 [Morgan Stanley](https://www.cnbc.com/2026/06/24/morgan-stanley-china-humanoid-robot-market-forecast.html) has again raised its forecast for the Chinese humanoid robot market. The bank expects some **50,000 units** shipped in 2026, compared with a previous estimate of 28,000, and projects a 15 billion dollar market and 446,000 units a year by 2030, counting only external sales."
+      },
+      {
+        "position": 4,
+        "headline": "🎮 General Intuition has raised 320 million dollars at a valuation of 2.3 billion.",
+        "body_markdown": "🎮 [General Intuition](https://techcrunch.com/2026/06/25/general-intuitions-2-3b-bet-that-video-games-can-train-ai-agents-for-the-real-world/) has raised 320 million dollars at a valuation of 2.3 billion. The company trains models on hundreds of millions of hours of Medal **video game clips** and logs of player actions, and claims that this base serves to develop agents that can then move from games to simulation and to physical robots."
+      },
+      {
+        "position": 5,
+        "headline": "🦿 Apptronik presents Apollo 2 as a new modular version of its humanoid platform, with a bipedal or wheeled-base configuration depending on the task.",
+        "body_markdown": "🦿 [Apptronik](https://apptronik.com/apollo/apollo-2) presents **Apollo 2** as a new modular version of its humanoid platform, with a bipedal or wheeled-base configuration depending on the task. The company highlights its own actuators with more than 90% energy efficiency, swappable batteries for 7x22 operation, hardware safety zones, and a stack made up of Apollo 2, Artemis for perception and control, and Fleet Connect for fleet management."
+      },
+      {
+        "position": 6,
+        "headline": "🏗️ Humanoid publishes KinetIQ Ascend, an extension of its KinetIQ framework for applying reinforcement learning directly on real hardware in industrial manipulation tasks.",
+        "body_markdown": "🏗️ [Humanoid](https://thehumanoid.ai/technology/kinetiq-ascend/) publishes **KinetIQ Ascend**, an extension of its KinetIQ framework for applying reinforcement learning directly on real hardware in industrial manipulation tasks. The company claims performance improvements in three productive tasks: +42% in machine feeding; +85% throughput and a rise from 80% to 98% success in handover; and more than double throughput with a jump from 78% to 99% in bimanual tote manipulation."
+      },
+      {
+        "position": 7,
+        "headline": "🗺️ Robbyant presents LingBot-Map as a feed-forward foundation model for streaming 3D reconstruction.",
+        "body_markdown": "🗺️ [Robbyant](https://technology.robbyant.com/lingbot-map) presents LingBot-Map as a feed-forward foundation model for **streaming 3D reconstruction**. The project describes a Geometric Context Transformer architecture with three types of context (anchor context, pose-reference window and trajectory memory) and reports stable inference at around 20 FPS on sequences of more than 10,000 frames."
+      },
+      {
+        "position": 8,
+        "headline": "🧩 DEEPX and Sixfab launch AI HAT+, a board for Raspberry Pi 5 aimed at local inference in small robots, automation prototypes and industrial equipment.",
+        "body_markdown": "🧩 [DEEPX and Sixfab](https://robotica.es/ia/deepx-sixfab-ai-hat-raspberry-pi/) launch AI HAT+, a board for **Raspberry Pi 5** aimed at local inference in small robots, automation prototypes and industrial equipment. To do so it integrates a DEEPX NPU in a Raspberry Pi-compatible format and seeks to run embedded models in real time without relying on an external GPU or the cloud."
+      },
+      {
+        "position": 9,
+        "headline": "🏭 Tesla has reportedly raised its Optimus production target from 50,000 to 70,000 units, with long-term capacity of 1.5 million, while forecasts for Chinese manufacturers in 202…",
+        "body_markdown": "🏭 [Tesla](https://news.futunn.com/en/post/75303924/tesla-accelerates-mass-production-chinese-manufacturers-race-ahead-collectively-is?level=2&data_ticket=1782837957174774) has reportedly raised its **Optimus** production target from 50,000 to **70,000 units**, with long-term capacity of 1.5 million, while forecasts for Chinese manufacturers in 2026 range between 40,000 and 50,000 units and BYD plans to deploy up to 20,000 robots for internal use by the end of the year."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 101; 9 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "8a17cb5a9d21217e643201b30c44a278c7b7cebfcac259d3a66219a6077af4ff"
+}

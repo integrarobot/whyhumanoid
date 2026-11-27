@@ -1,0 +1,97 @@
+{
+  "edition_id": "nl-2026-04-15-robots-al-rescate",
+  "source_url": "https://www.integrarobot.com/p/robots-al-rescate",
+  "published_on": "2026-04-15",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robots to the rescue ⚠️",
+  "subtitle": "From robots as spectacle to robots that save lives",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/438a234f-9b96-4046-bb58-f520eca022c8_2048x1099.png)\n\n> *For robots to be truly useful in our daily lives and in industry, they must go beyond following instructions; they must reason about the physical world.*\n\nThis is how clearly **Google DeepMind**, in presenting the new version of **Gemini Robotics**, states that AI must evolve in order to add value in the real world.\n\nThus [Gemini Robotics-ER 1.6](https://deepmind.google/models/gemini-robotics/) is presented as a reasoning-based Physical AI model that allows robots to understand their environment precisely by improving spatial reasoning and multi-view understanding, offering a higher level of autonomy to the robots that incorporate it.\n\nThis model specializes in robotic reasoning capabilities, including visual and spatial understanding, task planning and success detection. It is able to execute tasks through native use of tools such as Google search to find information and the use of vision-language-action (VLA) models.\n\nAnd the best thing is that for the first time Google DeepMind presents a Gemini Robotics model validated to fulfil a very specific, high value-added function: **instrument reading** capability, which allows robots to read complex gauges and displays. A use case developed through their collaboration with **Boston Dynamics**.\n\nInterestingly, this utility coincides with one we had known for some time was being developed by the Spanish startup [Keybotic](https://keybotic.com/es/), using quadrupeds to inspect industrial facilities, where the focus was also on the robot being able to look at different measuring devices to detect anomalies, or to locate possible problems in the facilities such as leaks or spills of toxic substances.\n\nThat is why I say **robots to the rescue**, because we are looking at a use case where the usefulness this technology offers is enormous:\n\n1. Industrial facilities are very large and have a great many **critical points** where all kinds of circumstances can occur that may end up causing a safety incident. However much we wanted to secure it with people keeping watch or even with cameras, it would be unfeasible. Having robots that make regular surveillance rounds is much more practical and safe.\n2. Although this work can be done by people, I think it is unfair that there should be people risking their lives in this way. I believe the focus of those of us working in technology, especially in AI and robotics, should be finding solutions to the labour problem, not so much because there is a lack of people but to avoid exposing them to this kind of **dangerous work**.\n3. The combination of human and robot is what really matters. I am sure that if the person who now carries out surveillance in the facilities can do **intellectual work** instead of physical work, overall safety conditions will increase significantly, and I don't mean only for that person but in the event of a major accident that puts the population at large at risk.\n\nOther cases of robots coming to our rescue:\n\n- Owners of **electric cars** with charging problems on the road will be able to count on the help of [BYD](https://interestingengineering.com/transportation/china-byd-robot-ev-charging-tires), which has filed a patent for a robot capable of charging electric vehicles and inflating tyres simultaneously. The system autonomously checks battery levels and tyre pressure before carrying out the services in a closed-loop sequence.\n- **K5** from [Knightscope](https://knightscope.com/products/k5) is a security robot that patrols public places equipped with cameras, thermal sensors, microphones and licence plate recognition systems to detect incidents or suspicious behaviour. These robots work autonomously and generate large volumes of surveillance data for human security teams.\n- [Running Brains](https://www.runningbrainsrobotics.com/en/)' robots are increasingly being used for perimeter security in large facilities such as refineries, power plants or ports. On the ground they can monitor much larger areas than a person and detect intrusions or incidents in real time. In addition, they are being integrated with **drones** for coordinated patrols in industrial facilities.\n- Companies such as [ROSEN](https://www.rosen-group.com/en/global/robotic-pipeline-inspection-solutions) develop robots capable of moving inside industrial pipelines to assess their condition without needing to dismantle the infrastructure. These robots are introduced into the pipes and advance through them equipped with ultrasonic sensors and other diagnostic technologies capable of detecting corrosion, cracks or variations in metal thickness. Thanks to these systems, failures can be anticipated before they cause leaks or accidents.\n\nAs you can see, the applications of robotics are enormous, and as soon as they start integrating AI from Google or other developers, we are going to see their usefulness soar to unsuspected limits.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦾 Figure announces the acquisition of a complete data centre with NVIDIA Blackwell GPUs to scale robot learning exponentially.",
+        "body_markdown": "What a week packed with news, and that's even though I make a selection; this robot business is a market in full ferment.\n\n🦾 [Figure](https://x.com/adcock_brett/status/2042675641037000868) announces the acquisition of a complete data centre with **NVIDIA** Blackwell GPUs to scale robot learning exponentially. This enormous processing capacity supports the company's strategy of using end-to-end neural networks that give its robots the greatest autonomy."
+      },
+      {
+        "position": 2,
+        "headline": "🛒 Unitree puts its R1 robot on sale on Aliexpress for 8,122 dollars.",
+        "body_markdown": "🛒 [Unitree](https://www.unitree.com/R1) puts its R1 robot on sale on **Aliexpress** for 8,122 dollars. This is an important step toward the global accessibility of robotics in retail. The listing on the e-commerce giant includes the educational version, which offers open control interfaces integrated with AI and up to 40 degrees of freedom."
+      },
+      {
+        "position": 3,
+        "headline": "🏭 Foundry Robotics raises 19 million dollars in funding, stating that American manufacturing is one of the hardest problems of our generation and that they have set themselves t…",
+        "body_markdown": "🏭 [Foundry Robotics](https://foundryrobotics.ai/) raises 19 million dollars in funding, stating that American **manufacturing** is one of the hardest problems of our generation and that they have set themselves the goal of solving it."
+      },
+      {
+        "position": 4,
+        "headline": "💻 Agibot has integrated its G2 robots into consumer electronics production lines of the manufacturer Longcheer Technology operating in Nanchang, achieving a 99% success rate and…",
+        "body_markdown": "💻 [Agibot](https://www.agibot.com/article/231/detail/60.html) has integrated its G2 robots into consumer electronics production lines of the manufacturer **Longcheer Technology** operating in Nanchang, achieving a 99% success rate and output of 310 units per hour."
+      },
+      {
+        "position": 5,
+        "headline": "💡 Syncere is a Palo Alto-based startup taking a different approach to household robotics with Lume, a sculptural floor lamp featuring a robotic arm designed to fold clothes.",
+        "body_markdown": "💡 [Syncere](https://syncere.com/) is a Palo Alto-based startup taking a different approach to household robotics with **Lume**, a sculptural floor lamp featuring a robotic arm designed to fold clothes. Priced at 1,499 dollars, this ambient robot aims to automate household chores."
+      },
+      {
+        "position": 6,
+        "headline": "💰EngineAI obtains 200 million dollars in funding.",
+        "body_markdown": "💰[EngineAI](https://www.jiemian.com/article/14230446.html) obtains 200 million dollars in funding. Manufacturing giant **Luxshare Precision** took part in the round, valuing the company at 1.4 billion dollars. This alliance provides the supply chain experience needed to reach the ambitious goal of delivering 5,000 units in 2026."
+      },
+      {
+        "position": 7,
+        "headline": "🇳🇱 Tesla receives approval to operate its FSD self-driving system in the Netherlands.",
+        "body_markdown": "🇳🇱 [Tesla](https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands) receives approval to operate its **FSD** self-driving system in the **Netherlands**. This driver-supervised system has undergone exhaustive examination and testing for more than a year and a half on our test track and on public roads."
+      },
+      {
+        "position": 8,
+        "headline": "🗺️ Niantic, the creators of Google Earth and PokemonGo, are getting into the world model business.",
+        "body_markdown": "🗺️ [Niantic](https://www.nianticspatial.com/), the creators of Google Earth and PokemonGo, are getting into the **world model** business. Its large-scale geospatial model is based on real-world data from ground and aerial sensors, processed and aligned to train models that offer three services: reconstruction, localization and understanding."
+      },
+      {
+        "position": 9,
+        "headline": "☀️ Eclipse Ventures, the venture capital fund, has raised 1.3 billion dollars to invest in physical AI, robotics and industrial technology startups.",
+        "body_markdown": "☀️ [Eclipse Ventures](https://techcrunch.com/2026/04/07/vc-eclipse-has-a-new-1-3b-to-back-and-build-physical-ai-startups), the venture capital fund, has raised 1.3 billion dollars to invest in **physical AI**, robotics and industrial technology startups. The firm bets on companies that combine software, hardware and manufacturing to transform sectors such as logistics, defence or energy. Its thesis is that the next big technological wave will come from the physical world, not just from software."
+      },
+      {
+        "position": 10,
+        "headline": "🏭 BMW Group is transforming its Munich plant to manufacture the new generation of \"Neue Klasse\" electric vehicles.",
+        "body_markdown": "🏭 [BMW Group](https://www.press.bmwgroup.com/canada/article/detail/T0456925EN/the-new-bmw-group-plant-munich:-more-efficient-more-flexible-and-more-digital-for-production-of-the-neue-klasse) is transforming its Munich plant to manufacture the new generation of \"Neue Klasse\" electric vehicles. The factory will be more digital, flexible and **automated**, with greater integration of robots and intelligent production systems. The goal is to increase efficiency and quickly adapt production to different models."
+      },
+      {
+        "position": 11,
+        "headline": "💰 D-Robotics has raised 150 million dollars to expand its business of AI chips and platforms for robots and smart devices.",
+        "body_markdown": "💰 [D-Robotics](https://www.techinasia.com/news/chinese-robot-ai-startup-d-robotics-raises-150m-for-expansion) has raised 150 million dollars to expand its business of **AI chips and platforms for robots** and smart devices. The company develops specialized hardware for computer vision and autonomous robotics. China thus continues to strengthen its semiconductor and robotics ecosystem."
+      },
+      {
+        "position": 12,
+        "headline": "🧠 NVIDIA celebrates National Robotics Week by highlighting its advances in AI-based robot development platforms.",
+        "body_markdown": "🧠 [NVIDIA](https://blogs.nvidia.com/blog/national-robotics-week-2026/?ncid=so-twit-693888-vt48&linkId=100000416855291#robolab) celebrates **National Robotics Week** by highlighting its advances in AI-based robot development platforms. The company is driving tools such as Isaac Sim, Omniverse and new simulation environments for training robots in virtual worlds. The goal is to accelerate the development of intelligent robots capable of operating in real environments."
+      },
+      {
+        "position": 13,
+        "headline": "👕 SIM1 Robotics is a simulation environment designed to train robots through learning in complex virtual environments.",
+        "body_markdown": "👕 [SIM1 Robotics](https://internrobotics.github.io/sim1.github.io/) is a simulation environment designed to train robots through learning in complex virtual environments. The platform seeks to improve **training transfer** from simulation to the real world. This type of tool is key to reducing the cost of data in robotics."
+      },
+      {
+        "position": 14,
+        "headline": "🦾 Wendy is an experimental project focused on interfaces and tools for interacting with robots and physical systems through AI.",
+        "body_markdown": "🦾 [Wendy](https://wendy.sh/) is an experimental project focused on interfaces and tools for interacting with robots and physical systems through AI. The proposal explores new ways of **programming and controlling robots using natural language**. It represents the trend toward more accessible interfaces for working with robotic systems."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 84; 14 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "d5582458a7990fda11821f956b690f7a51680f160240961a80a36e022e037cd3"
+}

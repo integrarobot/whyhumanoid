@@ -1,0 +1,117 @@
+{
+  "edition_id": "nl-2026-10-14-el-despliegue-de-los-robots",
+  "source_url": "https://www.integrarobot.com/p/el-despliegue-de-los-robots",
+  "published_on": "2026-10-14",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The deployment of robots",
+  "subtitle": "At Ultra Robotics they say the bottleneck in robotics is deployment",
+  "body_markdown": "Jon Miller Schwartz, CEO of [Ultra Robotics](https://ultra.tech/), says the time has come to deploy more robots, and to achieve it he has 50 million dollars from a new investment round led by Framework Ventures.\n\nHis vision is quite far from the one dominant among humanoid robot manufacturers; you only have to see how strange their OP1 robot is to realize where they have put the focus: **deployment**.\n\nDeployment, for this company, is the bottleneck of robotics, which is why they say they only think about putting the robot to work in the real world, making it useful, keeping it running, earning the trust of the people working alongside it, and doing it again and again and again.\n\nSaying it seems easy, but the fact that there are so few robotics companies with this degree of development makes me think that Ultra Robotics has hit on a key that most humanoid robot manufacturers still don't have: **Artificial Intelligence**.\n\nAnd what is interesting at this point is that they did not develop that AI themselves; Physical Intelligence did, one of the most advanced Physical AI startups of the moment, so here we must speak of a shared merit of two companies that are truly at the forefront of robotics: Ultra for putting robots to work and PI for giving them the intelligence to be able to do the work.\n\nThe question at this point is why there are so few companies with this level of deployment and where the other players in the humanoid robotics industry are putting their focus.\n\nThe answer is not simple, but I am going to dare to give my view, since I have spent almost 2 years studying this sector and little by little I am forming an opinion that I try to share here every week.\n\nWhat happens with humanoid robots is that we are only seeing the tip of the iceberg, since we have to rely on the demonstrations we see online, but once the whole industry moves from development mode to deployment mode, the impact we are going to see on the economy will be incredible.\n\nSo why haven't the other companies moved into deployment mode yet? Well, first of all, what must be clarified is that what Ultra is demonstrating is, first, that they are not embarrassed that their robot looks like an alien, and second, that this message is the one they have chosen within a marketing campaign to make themselves known, but it is normal for other companies to decide to use other arguments within their strategy.\n\nWithout taking one iota of merit away from Ultra Robotics, what I want to convey is that it is not an exception; the sector is much more advanced than it seems, but few companies dare to show their progress so openly.\n\n> \"Gradually, then suddenly\"\n\nThis phrase, from a book by Ernest Hemingway, has been used a lot to represent how technological progress happens, and in this case, at the risk of being wrong, I think it represents quite well that a technology as difficult as humanoid robotics cannot be deployed in the same way as other popular ones such as the iPhone and ChatGPT were before.\n\nWang Xingxing, CEO of Unitree, recently put it like this:\n\n> *\"We have implemented **GPT-6** in several robots. We have tested it on a variety of tasks and the results have been really very good. Our company and other robotics companies are already running pilot deployments in factories. To achieve large-scale adoption, however, both generalization and efficiency still need to improve further. But I believe these challenges could be solved very well in the coming years. My faith in AI grows stronger every year. The biggest mistake I have made in the last decade has been not believing enough in AI. Deployment in commercial services could happen even faster than in industrial environments\".*\n\nIndeed, the possibility that GPT-6 Astra can control robots is proving to be a real revolution in the robotics sector, but as if that were not enough, Google has just arrived at the party again by presenting [Gemini 4 Argon](https://developers.googleblog.com/gemini-4-argon-for-robotics/), which also stands out in Physical AI capabilities, to an extent that is surprising even to its own developers. At least that is what Steven Hansen, who leads Gemini Physical Agents and Embodied Reasoning at Google DeepMind, has said:\n\n> *\"Argon is so good at robotics that our whole team is having an **existential crisis** right now\".*\n\nIs he exaggerating, or are we really facing a new leap in the application of AI to robotics?\n\nSomething tells me it may be a bit of both, because Google was falling behind in the AI race against OpenAI and Anthropic, so it once again has to demonstrate its technological might, but on the other hand what we see over time is that it really is capable of rising to the occasion by making great contributions to the sector.\n\nAnyway, this keeps accelerating, and it does indeed seem that the moment for deploying robots is gradually arriving.\n\n---\n\nTo learn more about robotics and Physical AI, subscribe to the Integrarobot community and you will be able to take our [course](https://www.integrarobot.com/p/curso).",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "We start this news roundup with an especially important one because it talks about the growth of Physical AI companies.",
+        "body_markdown": "We start this news roundup with an especially important one because it talks about the growth of Physical AI companies. It is the [revenue milestone](https://x.com/animesh_garg/status/2108597823193121240?s=20) achieved by Microagi, which in 6 months has reached 100 million dollars in annual recurring revenue, even faster than the recent achievements of Generative AI companies.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/79230cab-2764-429c-9cc8-12219b0eb975_2048x1130.jpeg)"
+      },
+      {
+        "position": 2,
+        "headline": "🧠 Physical Intelligence opens the beta of its API for adapting its robotic models with your own data and running inference from the cloud.",
+        "body_markdown": "🧠 [Physical Intelligence](https://www.pi.website/blog/api-beta) opens the beta of its **API** for adapting its robotic models with your own data and running inference from the cloud. The company provides the training infrastructure and shows applications in cooking, agriculture and heavy machinery. The step brings intelligence-as-a-service closer to robotics and allows developers to concentrate on their tasks, robots and data."
+      },
+      {
+        "position": 3,
+        "headline": "🤖 Agility Robotics details the conditions of its 300 million dollar order for 1,000 Digit 5 units: each demonstrated use case unlocks another tranche of robots.",
+        "body_markdown": "🤖 [Agility Robotics](https://www.humanoidsdaily.com/news/agility-investor-day-digit-5-launch-costs-and-a-300m-order-that-unlocks-skill-by-skill) details the conditions of its **300 million dollar** order for 1,000 Digit 5 units: each demonstrated use case unlocks another tranche of robots. General availability is placed between late 2027 and early 2028. A sign of how industrial adoption is built: demonstrated capability, productivity targets and progressive deployment."
+      },
+      {
+        "position": 4,
+        "headline": "🚗 XPeng expects to start selling its Iron humanoid in the second half of 2027, after testing it in its stores and offices.",
+        "body_markdown": "🚗 [XPeng](https://www.forbes.com/sites/janeho/2026/10/12/forbes-global-ceo-conference-2026-chinese-ev-maker-xpeng-to-launch-humanoid-robots/) expects to start selling its **Iron** humanoid in the second half of 2027, after testing it in its stores and offices. Its president, Brian Gu, proposes initial uses in reception and sales support. The bet connects smart vehicles and humanoids through its own chips, software and supply chain, although the announced timeline has yet to materialize."
+      },
+      {
+        "position": 5,
+        "headline": "🧬 Multiply Labs raises 75 million dollars in a round led by Patrick Soon-Shiong, with participation from AstraZeneca and Teradyne.",
+        "body_markdown": "🧬 [Multiply Labs](https://siliconangle.com/2026/10/06/multiply-labs-raises-75m-to-optimize-pharmaceutical-manufacturing-with-robots/) raises **75 million dollars** in a round led by Patrick Soon-Shiong, with participation from AstraZeneca and Teradyne. Its systems robotize manual steps in the manufacture of cell and gene therapies using existing instruments. The opportunity lies in scaling medicine manufacturing: accelerating discovery with AI also requires solving how to produce the treatments."
+      },
+      {
+        "position": 6,
+        "headline": "⚙️ Atomic Machines emerges after six years of development and 250 million dollars of cumulative funding.",
+        "body_markdown": "⚙️ [Atomic Machines](https://www.businesswire.com/news/home/20261007902471/en/Atomic-Machines-Emerges-from-Stealth-with-%24250-Million-to-Launch-the-Matter-Compiler-an-AI-Native-Manufacturing-System-That-Builds-Micro-Machines-from-Code) emerges after six years of development and **250 million dollars** of cumulative funding. Its Matter Compiler seeks to manufacture functional micromachines directly from digital designs; its first product is PrimeSwitch, a relay for data centre electrical systems. The proposal unites design and manufacturing in a cycle where AI experiments, measures and corrects on real hardware."
+      },
+      {
+        "position": 7,
+        "headline": "🏭 Mujin adds SK Square to its funding, according to published coverage.",
+        "body_markdown": "🏭 [Mujin](https://dealroom.co/news/161646-japans-mujin-raises-224m-series-d-as-sk-square-bets-on-physical-ai/) adds SK Square to its funding, according to published coverage. Its MujinOS platform coordinates robots and automation equipment in factories and warehouses, connecting manipulation, mobility and planning. The deal reinforces interest in industrial software that turns machines from different manufacturers into a system capable of working in a coordinated way."
+      },
+      {
+        "position": 8,
+        "headline": "💰 Mecka announces a 60 million dollar Series B led by Sequoia, with NVIDIA, M12 and Qualcomm Ventures among the new investors.",
+        "body_markdown": "💰 [Mecka](https://mecka.help/news/series-b) announces a **60 million dollar** Series B led by Sequoia, with NVIDIA, M12 and Qualcomm Ventures among the new investors. The company combines capturing human demonstrations, preparing data and integrating robots into companies. Its strategy connects data and deployment: learning from real work, adapting the models and keeping the systems operating where the experience is generated."
+      },
+      {
+        "position": 9,
+        "headline": "🛟 Minerva Humanoids launches with about 10 million dollars of seed funding led by General Catalyst.",
+        "body_markdown": "🛟 [Minerva Humanoids](https://www.tectonicdefense.com/minerva-humanoids-emerges-from-stealth-with-10m-led-by-gc) launches with about **10 million dollars** of seed funding led by General Catalyst. Its robot Roger combines remote control by a specialist with AI for balance and navigation, aimed at dangerous work in energy and public safety. Shared autonomy offers a path to early usefulness: keeping professional judgement and transferring physical exposure to danger to the robot."
+      },
+      {
+        "position": 10,
+        "headline": "📹 Pantheon claims to have recorded more than a million tasks in eight weeks with handheld UMI interfaces, at a cost of 10 dollars per hour of data.",
+        "body_markdown": "📹 [Pantheon](https://pantheon.inc/research/diverse-umi) claims to have recorded more than a million tasks in eight weeks with handheld **UMI** interfaces, at a cost of 10 dollars per hour of data. It also announces a 100-hour sample and includes errors and recoveries. The bet on diverse data seeks to teach robots both to execute actions and to recover when a manipulation goes wrong."
+      },
+      {
+        "position": 11,
+        "headline": "🌍 RoboJEPA presents a world model trained on data from 12 robotic platforms, with versions of up to 8 billion parameters.",
+        "body_markdown": "🌍 [RoboJEPA](https://robojepa.github.io/) presents a **world model** trained on data from 12 robotic platforms, with versions of up to 8 billion parameters. Its authors find predictable improvements in prediction and planning as compute increases, with tests on real robots. The work provides evidence on the scaling of models that anticipate the consequences of an action before executing it."
+      },
+      {
+        "position": 12,
+        "headline": "🗂️ Interlatent presents Dataroom, a workspace where agents process videos, analyze telemetry and generate annotations that people can review and correct.",
+        "body_markdown": "🗂️ [Interlatent](https://interlatent.com/blog/introducing-dataroom) presents **Dataroom**, a workspace where agents process videos, analyze telemetry and generate annotations that people can review and correct. The results are exported as datasets for training and analysis. The proposal tackles a practical bottleneck: turning scattered recordings into usable data, with traceability of decisions and corrections."
+      },
+      {
+        "position": 13,
+        "headline": "📱 PhoneBot proposes an open humanoid that reuses a smartphone as its perception and computing unit, taking advantage of its camera, sensors and connectivity.",
+        "body_markdown": "📱 [PhoneBot](https://arxiv.org/abs/2610.08737) proposes an open humanoid that reuses a **smartphone** as its perception and computing unit, taking advantage of its camera, sensors and connectivity. Its structure incorporates 13 actuators, and the work shows locomotion, person following and interaction. A way to make experimentation cheaper in education and prototyping through consumer components that already integrate much of the necessary electronics."
+      },
+      {
+        "position": 14,
+        "headline": "🔎 Robo Dir brings together more than 3,400 robotics-related datasets and makes it possible to search them by needs such as teleoperation, bimanual manipulation or tactile inform…",
+        "body_markdown": "🔎 [Robo Dir](https://datasets.gurasees.com/) brings together more than **3,400 robotics-related datasets** and makes it possible to search them by needs such as teleoperation, bimanual manipulation or tactile information. It also offers access via MCP for AI agents. The resource makes it easier to find suitable data, although their sizes and licences must be confirmed at the original sources before incorporating them into a project."
+      },
+      {
+        "position": 15,
+        "headline": "📊 Kai Williams analyzes why evaluating robotic models is especially difficult: few tasks, expensive trials, manual resets and differences between simulation and reality.",
+        "body_markdown": "📊 [Kai Williams](https://www.understandingrobots.org/p/why-testing-robot-models-is-even) analyzes why evaluating robotic models is especially difficult: few tasks, expensive trials, manual resets and differences between simulation and reality. A ranking can change a lot depending on which capabilities are measured. The read helps to interpret **benchmarks** with judgement and to demand tests on the specific tasks and conditions of each deployment."
+      },
+      {
+        "position": 16,
+        "headline": "✋ Chris Paxton identifies dexterity and tactile perception as major trends at IROS 2026.",
+        "body_markdown": "✋ [Chris Paxton](https://itcanthink.substack.com/p/dexterity-is-the-frontier-thoughts) identifies **dexterity** and tactile perception as major trends at IROS 2026. The greater availability of hands and capture gloves makes it possible to experiment with multi-fingered manipulation, while contact is increasingly hidden from cameras. The advance shifts attention toward sensing and controlling the forces needed to work with real objects."
+      },
+      {
+        "position": 17,
+        "headline": "🛠️ Anatomy proposes a skill for creating technical explanations through interactive machines and illustrations, from clockwork mechanisms to engines.",
+        "body_markdown": "🛠️ [Anatomy](https://skills.wheresryan.sh/anatomy) proposes a **skill** for creating technical explanations through interactive machines and illustrations, from clockwork mechanisms to engines. Its approach links movement and visual readouts to the same behaviour model. An interesting resource for robotics training, where seeing how a mechanism works can make understandable ideas that are hard to explain with text alone."
+      },
+      {
+        "position": 18,
+        "headline": "🎙️ Detrás del Inversor invites me to talk on the podcast about how to position oneself in the face of Physical AI.",
+        "body_markdown": "🎙️ [Detrás del Inversor](https://www.youtube.com/watch?v=JvDadi0eRik) invites me to talk on the podcast about how to position oneself in the face of **Physical AI**. We talk about humanoids, data, simulation, components, costs, the race between China and the United States and the business models around robots. A conversation connecting technological evolution with the professional and business opportunities this sector is starting to open up."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 115; 18 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "04ab32f29aedb8377d72b197000fd0c32a476c5c38d4bba10cf1c9841623721d"
+}

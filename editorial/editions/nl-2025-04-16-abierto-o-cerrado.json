@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2025-04-16-abierto-o-cerrado",
+  "source_url": "https://www.integrarobot.com/p/abierto-o-cerrado",
+  "published_on": "2025-04-16",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "🔓Open or closed?",
+  "subtitle": "In the development of humanoid robots we find companies that opt for patents and others for open source.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/f47fb499-1b3d-47d9-acd3-45e4cf296e9a_960x1280.jpeg)\n\nThe news of the week is the [acquisition](https://x.com/huggingface/status/1911785683376648232) of **Pollen Robotics** by **Hugging Face**, which leads me to devote this article to talking about patents vs open source in the field of robotics, specifically humanoids.\n\nBut first, let's read and analyze the official announcement, because it is extremely interesting:\n\n> *Since Remi Cadene joined us from Tesla, we have become the most widely used software platform for open robotics thanks to LeRobot and the Hugging Face Hub. Now we are going one step further by partnering with Pollen, one of the few companies in the world that actually distributes open-source humanoid robots!*\n>\n> *The first robot we are offering is Reachy 2, your small and friendly lab companion for the AI era, which is already used in labs such as Cornell or Carnegie Mellon. It is a cutting-edge, open-source, VR-compatible humanoid robot designed for research, education and embodied AI experiments. You can order it for $70,000 by emailing sales@pollen-robotics.com.*\n>\n> *We believe robotics could be the next interface for AI, and it should be open, affordable and hackable. Our vision: a future where every member of the community can build and control their own robotic companions instead of depending on closed and expensive black boxes.*\n\nLet's open up robotics 💪\n\n1. ***Pollen is one of the few companies in the world that actually distributes open-source humanoid robots***. This leads us to think about how technology has developed throughout history and to realize that, although there has always been a certain struggle between the proprietary and open models, the reality is that both can now coexist perfectly, to the point that we have seen situations as strange as Microsoft buying Github and many more things of that kind.\n2. ***The first robot we are offering is Reachy 2, your small and friendly lab companion for the AI era***. It certainly makes a lot of sense for Hugging Face to bet on educational robotics, but here we are no longer talking about small toy robots but about a quasi-humanoid, since it still lacks legs and feet. The point is that, with Hugging Face's AI capabilities and the testing ground this machine provides for giving it intelligence, the possibilities ahead seem enormous.\n3. ***We believe robotics could be the next interface for AI, and it should be open, affordable and hackable***. The crux of the matter, because more and more people agree on the plan of taking AI out of computers and bringing it into the real world through robots, and not just any robots, but specifically humanoids. And in this case, promoting that this initiative be carried out in an open and collaborative way, as we have previously seen done in the hardware world with success stories such as Arduino and Prusa.\n4. ***Our vision: a future where every member of the community can build and control their own robotic companions***. A whole declaration of intent about what humanoid robots will be for, because we are not talking about industries or shops; the message is aimed at individuals. So anyone who is curious about it will now find it easier to become part of what will be the next great technological revolution, and who knows, perhaps also social revolution.\n\nThe acquisition of Pollen Robotics by Hugging Face shows us one of the two sides of the coin in robot development, that of Open Source, yet other companies bet on the exact opposite: registering patents and showing them off. This is the case of [Sanctuary](https://www.sanctuary.ai/blog/morgan-stanley-ranks-sanctuary-ai), which has announced that it is in third place in the humanoid robot patent ranking compiled by Morgan Stanley. A ranking in which we find **Boston Dynamics** in first place, **Ubtech** in second, but curiously also **Google** in eighth place.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/33a2e1b8-34b3-4092-bbdc-38a0e3ec6f64_1200x632.png)\n\n## More humanoid robot companies opting for Open Source\n\nReleasing robot development code is also part of the strategy of many other startups devoted to this technology, as is the case of the Chinese company Fourier Intelligence with its N1, which it presents as follows:\n\n> *The Fourier N1, a compact and robust humanoid robot that stands out for its fully open-source architecture. Its design, aimed at both research and commercial deployment, allows it to be reproduced without intellectual property restrictions, making it an ideal platform for collaborative development in advanced robotics.*\n>\n> *The N1 is 1.3 metres tall, weighs 38 kg and has a mechanical architecture with 23 degrees of freedom strategically distributed to optimize both locomotion and manipulation. Its structure combines aluminium alloys with high-performance plastic components, providing a good stiffness-to-weight ratio.*\n>\n> *It is equipped with FSA 2.0 smart actuators, developed by the company itself, which give it agile and stable locomotion, reaching speeds of up to 3.5 m/s. The dynamic control system is optimized to maintain stability in complex scenarios, such as slopes, stairs or uneven surfaces, thanks to advanced balance and trajectory control algorithms.*\n>\n> *At the computational level, the N1 integrates **NVIDIA**'s GR00T N1 model, an open-source artificial intelligence architecture oriented to perception, manipulation and reasoning for complex tasks. This model allows the robot to perform manipulation actions with contextual autonomy, as well as multi-stage reasoning to solve tasks of high cognitive complexity.*\n>\n> *In line with its philosophy of openness, Fourier has published on **GitHub** all the resources needed to replicate and customize the N1: CAD models, bill of materials, assembly manuals and the core control software. This initiative positions the N1 as one of the most accessible and reproducible humanoid platforms on the current scene. With more than 1,000 hours of testing in outdoor environments, this robot represents a firm step toward humanoid robotics ready for adoption in productive sectors.*\n\nThe news of the launch of Fourier's N1 ends by saying that we are at the beginning of a trend in the robotics ecosystem, where there is a push toward open systems that encourage distributed innovation and break with the opaque, proprietary model that still dominates much of the sector. Exactly the same thing that was said in the Hugging Face news. Did they agree on it? Or are we really seeing a trend shift toward an open and collaborative model in the development of humanoid robots?",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💰 RLWRLD obtains 15 million dollars for the development of Physical AI models.",
+        "body_markdown": "💰 [RLWRLD](https://techfundingnews.com/rlwrld-lands-15m-to-build-gpt-of-robots-can-it-outthink-figure-ai-and-agility-robotics/) obtains 15 million dollars for the development of Physical AI models. LG took part in the round, investing again in this sector after buying Bear Robotics."
+      },
+      {
+        "position": 2,
+        "headline": "🤑 EngineAI raises 28 million dollars to improve its research and development, increase production capacity and expand into international markets.",
+        "body_markdown": "🤑 [EngineAI](https://www.techinasia.com/news/shenzhen-engineai-raises-28m-advance-humanoid-robotic-race) raises 28 million dollars to improve its research and development, increase production capacity and expand into international markets."
+      },
+      {
+        "position": 3,
+        "headline": "☝️ DLR has developed a technology that allows robots to sense touch with sensors and AI, enabling them to recognize written digits and execute the corresponding tasks.",
+        "body_markdown": "☝️ [DLR](https://interestingengineering.com/innovation/german-scientists-give-robots-human-touch-feel?group=test_b) has developed a technology that allows robots to sense touch with sensors and AI, enabling them to recognize written digits and execute the corresponding tasks."
+      },
+      {
+        "position": 4,
+        "headline": "🏗️ BIM and robots come together in this interesting research that seeks to plan robot operations within the entire planning process of a construction project.",
+        "body_markdown": "🏗️ [BIM and robots](https://www.itcon.org/papers/2025_15-ITcon-Oyediran.pdf) come together in this interesting research that seeks to plan robot operations within the entire planning process of a construction project."
+      },
+      {
+        "position": 5,
+        "headline": "🛰️ PIAP Space has developed the TITAN robotic arm with the aim of automating in-orbit inspection and reducing the time and cost of satellite maintenance.",
+        "body_markdown": "🛰️ [PIAP Space](https://www.therobotreport.com/titan-robotic-arm-from-piap-space-automate-in-orbit-inspection/) has developed the TITAN robotic arm with the aim of automating in-orbit inspection and reducing the time and cost of satellite maintenance."
+      },
+      {
+        "position": 6,
+        "headline": "🦾 Tex2robot is software that makes it possible to design and build a robot just by typing a few words describing its appearance and how it works",
+        "body_markdown": "🦾 [Tex2robot](https://techxplore.com/news/2025-04-text2robot-platform-leverages-generative-ai.html) is software that makes it possible to design and build a robot just by typing a few words describing its appearance and how it works"
+      },
+      {
+        "position": 7,
+        "headline": "🤝 Agent2Agent is an open protocol developed by Google that will allow AI agents to communicate with each other and exchange information securely.",
+        "body_markdown": "🤝 [Agent2Agent](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/) is an open protocol developed by Google that will allow AI agents to communicate with each other and exchange information securely."
+      },
+      {
+        "position": 8,
+        "headline": "💻 Ironwood is Google's TPU optimized for AI model inference, the most powerful, capable and energy-efficient developed to date.",
+        "body_markdown": "💻 [Ironwood](https://techcrunch.com/2025/04/09/google-unveils-ironwood-a-new-ai-accelerator-chip) is Google's TPU optimized for AI model inference, the most powerful, capable and energy-efficient developed to date."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 16; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "b526a024571418795bfa8dffe08961b0ff126bfed24a8e2db8914a7ab924e53e"
+}

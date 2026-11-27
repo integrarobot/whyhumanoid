@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2025-11-18-el-hardware-de-ia-tercera-clase-del",
+  "source_url": "https://www.integrarobot.com/p/el-hardware-de-ia-tercera-clase-del",
+  "published_on": "2025-11-18",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "AI Hardware. Humanoid Robots Course",
+  "subtitle": "In this class we look at the state of development of the hardware used as the \"physical brain\" for robots.",
+  "body_markdown": "Artificial intelligence hardware allows a humanoid robot to perceive, reason and act in real time. It consists mainly of SoCs (integrated circuits) designed to run vision, language and motor control models as efficiently as possible. The current trend is to integrate CPU, GPU, NPU and memory into a single chip optimized for **physical AI**.\n\n### **NVIDIA as the dominant standard**\n\nNVIDIA has become the central supplier of hardware for humanoid robots thanks to its Jetson Orin machines and, above all, **Jetson Thor**.\n\nJetson Thor offers unprecedented power for embedded AI, with performance of up to 2,070 TFLOPS and configurable consumption between 40 and 130 W.\nIts real differentiator is not just the chip but the complete software ecosystem: Isaac, which unifies simulation, control, vision, ROS 2 and optimization through TensorRT. That is why the main humanoids, such as Figure, 1X, Sanctuary, Unitree, Fourier, Apptronik and Agility, use NVIDIA hardware and software.\n\n### **Proprietary models: the Tesla case**\n\nTesla, for its part, follows a different strategy, creating the entire technology stack in-house. Dojo and the D1 chip were designed to train massive sensorimotor models using real driving and robotics data. Its goal is to develop its own multimodal brain for Optimus and future robots, reducing dependence on external suppliers. To this end it is currently working on developing the **AI5** and AI6 chips, with which it hopes to give its robots full intelligence.\n\n### **Other emerging architectures**\n\nAlthough NVIDIA dominates humanoid robotics, new approaches to AI hardware are appearing, such as:\n\n- **RISC-V**: an open architecture that allows custom SoCs for robots to be designed without licences or external dependencies.\n- **BrainChip Akida**: a neuromorphic chip that processes only when there is a stimulus, ideal for low-power perception.\n- **Tenstorrent**: open and scalable processors intended for generative models and motor control in robots.\n- **Mythic AI**: analog computing aimed at low-power embedded vision.\n- **Groq**: high-speed deterministic processors, suitable for real-time control.\n\nThese lines explore areas such as efficiency, openness and biomimicry as alternatives to the GPU-centred approach.\n\n### **The Chinese ecosystem**\n\nChina is also building a complete chain of physical AI chips to reduce dependence on Western suppliers. Its ecosystem includes:\n\n- **Rockchip RK3588 / RK3576**: very common in low-cost and educational robots.\n- **Horizon Robotics Journey 5 / 6**: SoCs for vision and domestic robotics.\n- **Cambricon MLU**: high-end AI processors for industrial robots and data centres.\n\nAll these initiatives are aligned with the explosion of low-cost Chinese humanoid robots.\n\n### **Current challenges for AI hardware**\n\nDespite the advances, humanoid robotics is still limited by three key factors:\n\n- **Power consumption and heat**: chips such as Jetson Thor exceed 100 W, which reduces autonomy and complicates cooling in compact robots.\n- **High cost**: the price of AI hardware makes each unit more expensive, holding back mass production.\n- **Technological dependence**: the dominance of a single supplier, such as NVIDIA, implies lock-in risks and strategic vulnerability.\n\nIn this way we see that AI hardware for humanoid robots is advancing rapidly, led by NVIDIA and accompanied by proprietary bets such as Tesla's and by new emerging architectures. However, mass adoption will depend on solving power consumption, cost and technological diversification.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 45; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

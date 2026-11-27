@@ -1,0 +1,57 @@
+{
+  "edition_id": "nl-2025-03-12-manifiesto-robots-humanoides",
+  "language": "es",
+  "title": "Manifiesto Robots Humanoides",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/a2cbb97f-31a9-4824-909b-c1878fa29268_960x300.jpeg)\n\nHace ya dos meses que empecé con este proyecto de divulgación sobre **robótica impulsada por Inteligencia Artificial** y en este tiempo he tenido la oportunidad de reflexionar al respecto de las implicaciones que tiene para la sociedad y la economía la llegada de esta tecnología. Por eso a través de este manifiesto quiero plasmar algunas de estas ideas que puedan servir como referencia de cara al trabajo a realizar en los próximos años para contribuir a que las empresas españolas, europeas y latinoamericanas aprovechen la oportunidad de incorporar los **robots humanoides** en su actividad.\n\nA continuación puedes leer el **Manifiesto Robots Humanoides**, espero que sea un documento vivo que vaya evolucionando para adaptarse a los cambios que se produzcan en esta tecnología y cómo la sociedad la vaya incorporando.\n\n1. Los robots no van a quitar el trabajo a los humanos. Hemos sido los humanos los que durante demasiado tiempo hemos ocupado el trabajo que estaba pensando para los robots. No tiene sentido que las personas realicen trabajos peligrosos para la salud, ya sea por accidentes a corto plazo o daños físicos a largo plazo. Es el momento de devolver a los robots lo que les corresponde.\n2. La Inteligencia Artificial Generativa es un gran regalo, es genial que pueda redactar textos, crear imágenes, vídeos y todo tipo de contenidos, pero cuando pensábamos en máquinas inteligentes queríamos que hiciesen el trabajo que no nos gusta hacer, como poner la lavadora y el lavavajillas, planchar la ropa, …\n3. La gente quiere robots. Históricamente muchos inventores han creado robots para realizar diferentes tipos de tareas. Luego la ciencia ficción nos trajo la idea de que en el futuro los humanos conviviremos con los robots, no solo para ser nuestros sirvientes, sino también nuestros compañeros para todo tipo de actividades.\n4. Los robots ahora pueden tener un cerebro diseñado para funcionar como el de los humanos, gracias al desarrollo de modelos fundacionales de lenguaje e imagen, y el siguiente paso en el desarrollo que se está tomando en la Inteligencia Artificial es la evolución de estos modelos para que tomen acción a través de la IA Física.\n5. Nadie quiere quedarse fuera de la revolución de la robótica impulsada por la IA. A las startups pioneras en este sector, se le han ido uniendo poco a poco las grandes empresas tecnológicas, empezando por Tesla, seguida por multitud de empresas Chinas y acompañadas ahora por NVIDIA, Apple, Amazon, Google y Meta.\n6. Los robots humanoides ofrecen una gran oportunidad para cualquier empresa que quiera mejorar y ser más competitiva. No debemos dejar que las empresas chinas y estadounidenses acaparen todo este mercado, en España, Europa y América Latina tenemos mucho que aportar y que aprovechar.\n7. También surge una gran oportunidad para los profesionales. Cuando se abre un nuevo mercado, como es el de la robótica impulsada por IA, surgen opciones para trabajar ayudando a desarrollarlo. Igual que la informática e Internet ha generado multitud de trabajos que antes no imaginábamos, los robots también generarán mucho trabajo para humanos, y hay que asegurarse de que sea de calidad.\n8. La evolución intelectual de los robots es una incógnita y tenemos que contribuir a que cuando tengan capacidades de Inteligencia Artificial más avanzadas sigan conviviendo con los humanos en armonía. Sin duda habrá gente perversa que querrá usarlos para hacer daño, pero también seremos muchos los que trabajemos para que este gran avance tecnológico resulte beneficios para la humanidad.\n9. Queremos los robots para que nos sustituyan haciendo los trabajos que no nos gustan, pero una vez que les dotemos de inteligencia también podrán hacer otro tipo de trabajos, como hace ahora la GenAI. Entonces la capacidad de los robots de percibir su entorno y entender el mundo real, les permitirá ayudarnos a resolver problemas que ahora la IA no puede afrontar por sus limitaciones físicas.\n\n> ¿Qué opinas de estos puntos? ¿añadirías o quitarías alguno? me encantaría conocer tu opinión y espero que puedas aportar tus comentarios al respecto.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📱 AnySense es una aplicación para iPhone diseña para la recopilar, de manera sencilla, datos del mundo real y datos multisensoriales que puedan ser usados para el entrenamiento…",
+        "body_markdown": "📱 [AnySense](https://anysense.app/) es una aplicación para **iPhone** diseña para la recopilar, de manera sencilla, datos del mundo real y datos multisensoriales que puedan ser usados para el entrenamiento de los robots."
+      },
+      {
+        "position": 2,
+        "headline": "🖐️ Sanctuary ha equipado las yemas de los dedos de su robot Phoenix con sensores táctiles que le permitirá realizar tareas complejas basadas en el tacto, con mayor precisión y e…",
+        "body_markdown": "🖐️ [Sanctuary](https://www.iotworldtoday.com/robotics/robot-given-tactile-sensors-for-touch-at-fingertips) ha equipado las yemas de los dedos de su robot **Phoenix** con sensores táctiles que le permitirá realizar tareas complejas basadas en el tacto, con mayor precisión y exactitud."
+      },
+      {
+        "position": 3,
+        "headline": "🛞 Vega es un nuevo y deslumbrante robot creado por la empresa Dexmate y que destaca por sus impresionantes capacidades de movimiento y sincronización.",
+        "body_markdown": "🛞 [Vega](https://x.com/DexmateAI/status/1896702023367893502) es un nuevo y deslumbrante robot creado por la empresa **Dexmate** y que destaca por sus impresionantes capacidades de movimiento y sincronización. Lo malo por ahora, que funciona con ruedas."
+      },
+      {
+        "position": 4,
+        "headline": "🇨🇳 LimX Dynamics es una empresa de robótica china que acaba de anunciar que ha recaudado 69 millones de dólares de financiación, en la que ha participado el gigante tecnológico…",
+        "body_markdown": "🇨🇳 [LimX Dynamics](https://www.techinasia.com/news/alibaba-backed-robotics-firm-completes-69m-series-a) es una empresa de robótica china que acaba de anunciar que ha recaudado 69 millones de dólares de financiación, en la que ha participado el gigante tecnológico **Alibaba**."
+      },
+      {
+        "position": 5,
+        "headline": "🚗 Xpeng parece tener importantes planes para fabricar de manera masiva su robot Iron y además asegura que ya lo está usando para trabajar en sus propias fábricas de coches y dro…",
+        "body_markdown": "🚗 [Xpeng](https://interestingengineering.com/innovation/xpeng-plans-flying-cars-robots-2026) parece tener importantes planes para fabricar de manera masiva su **robot Iron** y además asegura que ya lo está usando para trabajar en sus propias fábricas de coches y drones."
+      },
+      {
+        "position": 6,
+        "headline": "👋 MIT y NVIDIA colaboran en una investigación a través de la cual un operario puede corregir las acciones de un robot en tiempo real, utilizando el tipo de retroalimentación bas…",
+        "body_markdown": "👋 [MIT](https://news.mit.edu/2025/robotic-helper-mistakes-nudging-in-right-direction-0307) y **NVIDIA** colaboran en una investigación a través de la cual un operario puede corregir las acciones de un robot en tiempo real, utilizando el tipo de retroalimentación basada en el movimiento como la que le daría a otro humano."
+      },
+      {
+        "position": 7,
+        "headline": "💻 Mujoco es un motor de física de código abierto desarrollado por Google AI para facilitar la investigación y el desarrollo en robótica, biomecánica, gráficos y animación, y otr…",
+        "body_markdown": "💻 [Mujoco](https://mujoco.org/) es un motor de física de código abierto desarrollado por **Google AI** para facilitar la investigación y el desarrollo en robótica, biomecánica, gráficos y animación, y otras áreas donde se necesita una simulación rápida y precisa."
+      },
+      {
+        "position": 8,
+        "headline": "💰 Aescape es una startup que ha desarrollado un brazo robótico para realizar masajes y que ha captado el interés de importantes inversores que han participado en una ronda de in…",
+        "body_markdown": "💰 [Aescape](https://www.businesswire.com/news/home/20250304931224/en/Aescape-Secures-83MM-in-Strategic-Funding-Announces-U.S.-Expansion-with-Equinox) es una startup que ha desarrollado un brazo robótico para realizar **masajes** y que ha captado el interés de importantes inversores que han participado en una ronda de inversión de 83 millones de dólares."
+      },
+      {
+        "position": 9,
+        "headline": "🌍 Demo3 es una investigación liderada por el español Adrià López Escoriza con el objetivo de impulsar el desarrollo de modelos fundacionales del mundo, que resultarán de vital i…",
+        "body_markdown": "🌍 [Demo3](https://adrialopezescoriza.github.io/demo3/) es una investigación liderada por el español Adrià López Escoriza con el objetivo de impulsar el desarrollo de **modelos fundacionales del mundo**, que resultarán de vital importancia para el entrenamiento y funcionamiento de los robots."
+      }
+    ]
+  }
+}

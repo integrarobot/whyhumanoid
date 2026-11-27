@@ -1,0 +1,52 @@
+{
+  "edition_id": "nl-2025-06-04-como-se-fabrican-los-robots",
+  "source_url": "https://www.integrarobot.com/p/como-se-fabrican-los-robots",
+  "published_on": "2025-06-04",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "🏭 How are robots made?",
+  "subtitle": "A new turn in AI is coming: the move to physical AI, that is, robotics. And this transition is already happening.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/570dc6b8-30cc-4e0f-8ab2-51a42f6be870_1600x1020.jpeg)\n\nNever before have we been able to witness so clearly the birth of a major industry and have so many options to take part in it. If the estimates some technology giants have started to make are fulfilled, we are on the verge of humanoid robots beginning to sell by the millions, and this will generate an enormous ecosystem of services and applications where there will be a great many opportunities to generate business.\n\nAnd among these technology giants, one of those who has spoken out most recently about the rise of robotics is Marc Andreessen. Yes, the one who said software was going to eat the world, and also the creator of Netscape, one of the first Internet browsers.\n\nHis speech, given at an event, on the future of industry and robotics was totally revealing; all he left out was saying that AI-driven robotics is going to eat the world:\n\n> *Today, AI is software. So when you use AI, you use ChatGPT, which is an app on your phone. There is no manufacturing component as such. Enormous data centres are being built, but they are not a big source of employment for the middle class.*\n>\n> *However, **a new turn in AI is coming: the move to physical AI, that is, robotics**. And this transition is already happening.*\n>\n> *It has already happened with drones, which went from being piloted by humans to flying autonomously. It is a transition that is happening now with cars, which have gone from being purely physical products to becoming, basically, computers on wheels that drive themselves.*\n>\n> *And if you haven't tried it yet, if you ever have the misfortune of finding yourself in San Francisco, get in a Waymo. It is mind-blowing to live in a kind of cyberpunk future, riding in a state-of-the-art self-driving car, as if out of The Jetsons. I recommend having the experience at least once. The self-driving car really works. It is already happening.*\n>\n> *And then the next thing will come, which you have probably already seen: Elon is building the **Optimus** robot, those humanoid robots. **General-purpose robotics is going to become a reality; it is going to happen in the next decade and it will be on a gigantic scale**.*\n>\n> *And I think there is a plausible argument: that robotics is going to be the largest industry in the history of the planet. It is going to be gigantic. There will be billions, tens, hundreds of billions of robots of all shapes, sizes and functions, doing all kinds of things.*\n>\n> *Those robots have to be designed and built, right? So, in my opinion, we should not try to bring back the old manufacturing jobs. What we should do is bet heavily on the manufacturing jobs of the future: designing and building all these robots.*\n>\n> *We should not set up assembly lines where people stand on a rubber mat for 10 hours screwing parts together by hand; instead we should build what Elon calls alien dreadnought factories: super-sophisticated factories, full of robotics.*\n>\n> *And you can imagine thousands and thousands of different categories of industrial production that need to be set up all over the United States for this to happen, and that would generate enormous economic growth across the country.*\n\n🇺🇲 🇨🇳 As you know, in recent years there has been a kind of conflict between the USA and China over the former's dependence on the latter's factories. Now more than ever this situation has intensified, and who knows whether robotics has something to do with it too. Basically, while in the USA they were busy inventing LLMs, in China they were giving everything to robotics, and this could create an even greater dependence in manufacturing.\n\nSo it must be no coincidence that Marc Andreessen has placed so much emphasis on explaining why humanoid robots can represent such an important change in industry, because it is no longer just a question of innovation, but may become one of survival in terms of economic supremacy.\n\nThe question we should ask ourselves at this point is whether humanoid robots can become the catalyst for this new industrial revolution, and then think about how all those millions of robots that could drive a new stage of global growth are going to be manufactured.\n\nThe image of Tesla workers assembling Optimus robots, which illustrates this article, shows us a scenario in which the manufacturing process for humanoid robots still seems too rudimentary or manual, although on the other hand it shows an enormous space where production could expand if those facilities were put into full operation. In any case, knowing Elon Musk's way of thinking, one can deduce that this stage 0 of manufacturing will bear little resemblance to the following ones, in which most likely the robots themselves will be the ones manufacturing themselves.\n\nAnd this is where we come to the project of [Igor Kulakov](https://x.com/ihorbeaver/status/1928154351383580800), who has surprised us with a truly groundbreaking proposal, because the pair of robotic arms he has just put on sale through his X account shows us precisely how work is done in the manufacture of electronic components, which involves enormous dexterity that will be needed for the manufacture of the humanoids themselves.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/919ff560-b4a7-46c5-a74b-9dab84be0002_2482x1540.png)\n\nIn this way one can visualize a robotics development landscape in which three major blocks of action are becoming differentiated, which we have already discussed in previous editions of the newsletter: the Western technology industry, Chinese companies and the community of independent developers, among whom we must now include Igor Kulakov for this great contribution, which will surely have a big impact on the sector.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📟 SomlVLA is a VLA that stands out for its efficiency, with the aim of drastically reducing training and inference costs while maintaining competitive performance, which allows…",
+        "body_markdown": "📟 [SomlVLA](https://arxiv.org/abs/2506.01844) is a VLA that stands out for its efficiency, with the aim of drastically reducing training and inference costs while maintaining competitive performance, which allows it to be trained on a single GPU and deployed on consumer GPUs or even CPUs."
+      },
+      {
+        "position": 2,
+        "headline": "📱 Honor joins the many other electronics companies that do not want to be left out of the big business humanoids may generate, and to achieve this it plans to invest 10 billion…",
+        "body_markdown": "📱 [Honor](https://roboticsandautomationnews.com/2025/05/29/smartphone-giant-honor-to-build-humanoid-robots/) joins the many other electronics companies that do not want to be left out of the big business humanoids may generate, and to achieve this it plans to invest 10 billion dollars over the next five years"
+      },
+      {
+        "position": 3,
+        "headline": "🫰 UBTech intends to sell one of its robots for 20,000 dollars, which will go a long way toward popularizing this technology in all kinds of activities.",
+        "body_markdown": "🫰 [UBTech](https://e.vnexpress.net/news/tech/enterprises/china-s-ubtech-to-launch-20-000-home-companion-robot-rivaling-tesla-optimus-4891679.html) intends to sell one of its robots for 20,000 dollars, which will go a long way toward popularizing this technology in all kinds of activities. Namely, the company already has its robots working in BYD's car factories and Foxconn's electronics factories."
+      },
+      {
+        "position": 4,
+        "headline": "👁️ Atlas improves its computer vision system, and Boston Dynamics engineers explain it in an article showing us the importance of vision for the robot to understand the environm…",
+        "body_markdown": "👁️ [Atlas](https://bostondynamics.com/blog/making-atlas-see-the-world/) improves its computer vision system, and Boston Dynamics engineers explain it in an article showing us the importance of vision for the robot to understand the environment around it and be able to interact with all kinds of objects."
+      },
+      {
+        "position": 5,
+        "headline": "🤗 HopeJr is Hugging Face's new creation: a full-size humanoid robot with 66 actuated degrees of freedom, or 66 independent movements, including the ability to walk and move its…",
+        "body_markdown": "🤗 [HopeJr](https://techcrunch.com/2025/05/29/hugging-face-unveils-two-new-humanoid-robots/) is Hugging Face's new creation: a full-size humanoid robot with 66 actuated degrees of freedom, or 66 independent movements, including the ability to walk and move its arms."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 23; 5 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "ab77a31e1b6faf93ab67e6afed4dc8884276996888c817b2cdb4752140975444"
+}

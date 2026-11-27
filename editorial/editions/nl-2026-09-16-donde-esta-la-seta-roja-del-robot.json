@@ -1,0 +1,102 @@
+{
+  "edition_id": "nl-2026-09-16-donde-esta-la-seta-roja-del-robot",
+  "source_url": "https://www.integrarobot.com/p/donde-esta-la-seta-roja-del-robot",
+  "published_on": "2026-09-16",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Where is the humanoid robot's big red button?",
+  "subtitle": "The importance of robots having an emergency stop button",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/286a0680-542c-47ee-bdc4-dfc4dd58a6c7_500x500.jpeg)\n\n[Version 5](https://www.agilityrobotics.com/solutions/digit-5) of **Agility**'s **Digit** humanoid robot has just been presented, and the main message conveyed in their communication is the **safety** the robot offers when working in the same environment as people.\n\nWhen a company with Agility's track record decides to put the focus on safety, it is because it sees that it can be a differentiating value compared with what its competitors are doing. And it is normal, because in the case of **Unitree**, whose robots are the best known, the strategy is very different, which means situations are arising in which some of the robot's actions can be seen to be putting people's safety at risk.\n\nAt this point the first thing to clarify is that many of the videos circulating out there of a robot making dangerous movements, even where it seems to attack people, may be staged or simulated, but in any case, this does not mean we shouldn't worry about this safety issue being properly resolved.\n\nIt is also necessary to clarify here that, since most of the robots that can now be bought, mainly those from Unitree and Agibot, are mainly controlled from a **remote control**, that is where we find the safety options for switching off the robot in case something unexpected happens. But in any case, robotics experts hope there can be other, more suitable safety options that do not depend on a single person.\n\nSo, going back to Digit, **safety is part of the robot's design**, not an add-on that comes afterwards once everything else is solved.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/2e8b3dd5-ef53-4397-ac59-607dc6cb68e8_1816x1590.png)\n\nThis is how the company itself presents it:\n\n> *\"After a decade of research and years of deployment experience, our fifth-generation humanoid robot is the most powerful automation tool we have ever created. **Designed for collaborative safety**, to work in close proximity with people and adaptable to handle complete workflows\".*\n\nWhat happens is that being \"designed\" for safety means having to make some concessions that, in the long term, it seems will be the way robots really work. I understand it is a transitional situation until this industry is much more developed, but it would make no sense that, when everything is full of robots, they have to stop and crouch down when a person approaches them.\n\nWith this introduction to the topic of safety done, what I would like to discuss next are two things that are closely related and are not directly about robotics but about AI.\n\n1️⃣ The media drama about the need to slow down the pace of AI development is going to remain an anecdote when **Physical AI** is in full swing, because if we are already worried about an **Agent** going around the Internet doing things without control, you can't imagine the problem it will be when a robot does the same thing 😱. But don't worry, the pace of development is not going to stop, because society does not want to lose the opportunity for AI to help us cure diseases or other kinds of problems still to be solved, or rather, the market is not willing to miss this great opportunity, and companies will continue advancing in the development of this technology that can bring so much benefit. Along the way there will be upsets, but the journey will have been worth it. And if my speech doesn't convince you, you can read [this one](https://x.com/DeryaTR_/status/2099515006869962890), which is much better.\n\n2️⃣ Regulation, however much we insist on it, is not going to solve anything 🥸. In fact, at this stage nothing is solved with regulation; the only thing that keeps us afloat as a society is good education. I mean that, although it is attempted at an institutional level, we have crossed a line where technology is so far ahead of regulation that any attempt at control will be completely obsolete. For example, the AI law in Europe focuses on controlling models and how they are used, but leaves out what happens with robots, which for better or worse are going to have a much greater impact, since they are a physical thing and not just digital. And in this case, as with AI, robots are coming to help us solve problems, such as the labour shortage in industry and services, so it is inevitable that they will end up arriving.\n\nMy conclusion is that what we should be working on most at the moment is **education**, but I don't mean formal education; I mean education in values. The education system has long stopped preparing people for the working future, so it had better at least keep doing so as far as the **values** of coexistence are concerned.\n\nWe survived the first cold war in the nuclear age and we will survive the second in the age of AI, but it will not be thanks to regulation, but because companies find a way to align AI with human values and to put the big red button in the right place on robots.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💰 Skild AI claims to have exceeded 100 million dollars in annual recurring revenue, ten months after its first commercial deployment.",
+        "body_markdown": "💰 **[Skild AI](https://www.skild.ai/blogs/skild-crosses-100m-arr)** claims to have exceeded **100 million dollars in annual recurring revenue**, ten months after its first commercial deployment. The company says it has more than 60 paying customers and notes that approximately 90% of its revenue comes from manipulation tasks. Skild is also working with NVIDIA and Foxconn on dual-arm robot applications for manufacturing."
+      },
+      {
+        "position": 2,
+        "headline": "🧠 GPT-6 Astra has been highlighted by Max Zhaoshuo Li, technical lead of NVIDIA Cosmos, for its results applied to robotics.",
+        "body_markdown": "🧠 **[GPT-6 Astra](https://x.com/mli0603/status/2099370170649333807)** has been highlighted by Max Zhaoshuo Li, technical lead of **NVIDIA Cosmos**, for its results applied to robotics. In his post, Li mentions the concept of *Physical RSI* and links experimental results related to the use of generalist models in robotic tasks."
+      },
+      {
+        "position": 3,
+        "headline": "🦾 UniFoLM-WLA is a robotics model presented with 6 billion parameters and trained on approximately 2,500 hours of real robot data.",
+        "body_markdown": "🦾 **[UniFoLM-WLA](https://unigen-x.github.io/unifolm-wla.github.io/)** is a robotics model presented with 6 billion parameters and trained on approximately 2,500 hours of real robot data. Its authors state that a single model can execute 64 manipulation tasks and work with different hand configurations and whole-body movements. The project publishes models, datasets and code."
+      },
+      {
+        "position": 4,
+        "headline": "📦 Maven Robotics has announced a 100 million dollar funding round.",
+        "body_markdown": "📦 **[Maven Robotics](https://techcrunch.com/2026/09/10/maven-robotics-wants-to-steal-your-robot-deployment-deal/)** has announced a **100 million dollar** funding round. The company develops dual-arm mobile robots aimed at logistics automation and tasks such as palletizing. According to the company, some of its systems work up to 16 hours a day."
+      },
+      {
+        "position": 5,
+        "headline": "🤖 Humanoid claims to have accumulated more than 34,000 advance orders, with a potential value of about 2.4 billion dollars.",
+        "body_markdown": "🤖 **[Humanoid](https://www.forbesargentina.com/innovacion/tiene-mas-34000-pedidos-anticipados-busca-hacerse-lugar-mercado-robots-humanoides-n97469)** claims to have accumulated more than **34,000 advance orders**, with a potential value of about 2.4 billion dollars. The company works with Bosch on industrialization and with Schaeffler on components and actuators, and plans to progressively increase its production capacity."
+      },
+      {
+        "position": 6,
+        "headline": "💾 Mecka AI is negotiating a new funding round led by Sequoia that could put its valuation close to 500 million dollars.",
+        "body_markdown": "💾 **[Mecka AI](https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data/)** is negotiating a new funding round led by **Sequoia** that could put its valuation close to 500 million dollars. The company specializes in collecting and preparing data to train robotic systems."
+      },
+      {
+        "position": 7,
+        "headline": "📊 Robocurve has announced a 10 million dollar seed round.",
+        "body_markdown": "📊 **[Robocurve](https://robocurve.org/blog/seed-raise/)** has announced a 10 million dollar seed round. The company develops tools and **benchmarks for evaluating robotics models** on real physical systems. Its Inspect Robots platform makes it possible to run and compare reproducible evaluations of robotic models."
+      },
+      {
+        "position": 8,
+        "headline": "🏗️ UBTECH Robotics has shown new humanoid robot production capabilities at its industrial facilities.",
+        "body_markdown": "🏗️ **[UBTECH Robotics](https://x.com/UBTECHRobotics/status/2099830594817646663)** has shown new humanoid robot production capabilities at its industrial facilities. The company is expanding its manufacturing lines to increase the production volume of its **Walker** robots and other systems intended for industrial applications."
+      },
+      {
+        "position": 9,
+        "headline": "🖐️ Reward AI has presented OM-1, a system for collecting data on tasks performed by humans and using it to train robots.",
+        "body_markdown": "🖐️ **[Reward AI](https://www.rewardai.com/blog/OM-1/)** has presented OM-1, a system for collecting data on tasks performed by humans and using it to train robots. Its Omnibody Hand device records information such as movement, force, touch, proximity and video during task execution."
+      },
+      {
+        "position": 10,
+        "headline": "📈 Goldman Sachs has updated its forecasts for the humanoid robot market.",
+        "body_markdown": "📈 **[Goldman Sachs](https://humanoid.guide/goldman-raises-2035-humanoid-robot-forecast-to-6-5-million)** has updated its forecasts for the humanoid robot market. According to the published information, it estimates around **6.5 million cumulative units by 2035** and a potential market of approximately 138 billion dollars."
+      },
+      {
+        "position": 11,
+        "headline": "💾 XDOF is negotiating a Series B round that could value the company at about 1.2 billion dollars.",
+        "body_markdown": "💾 **[XDOF](https://techcrunch.com/2026/09/04/xdof-just-three-months-out-of-stealth-is-in-talks-for-a-series-b-at-a-1-2b-valuation)** is negotiating a Series B round that could value the company at about **1.2 billion dollars**. The company develops teleoperation and data collection systems intended for training robotics models."
+      },
+      {
+        "position": 12,
+        "headline": "🏭 FANUC has announced, together with Google Cloud, an AI system to automate part of the programming of welding processes.",
+        "body_markdown": "🏭 **[FANUC](https://www.fanuc.co.jp/en/profile/pr/newsrelease/2026/notice20260911.html)** has announced, together with **Google Cloud**, an AI system to automate part of the programming of welding processes. The system uses **Gemini Enterprise** to interpret part information and generate parameters and motion programs for industrial robots."
+      },
+      {
+        "position": 13,
+        "headline": "🇰🇷 Samsung is reportedly preparing to present a humanoid robot at CES 2027, according to sources cited by Tech in Asia.",
+        "body_markdown": "🇰🇷 **[Samsung](https://www.techinasia.com/news/samsung-plans-humanoid-robot-reveal-ces-2027)** is reportedly preparing to present a humanoid robot at CES 2027, according to sources cited by Tech in Asia. The company has reorganized part of its robotics activities and also maintains its stake in Rainbow Robotics."
+      },
+      {
+        "position": 14,
+        "headline": "🌍 Veeda AI is developing world models and virtual environments intended for training Physical AI systems.",
+        "body_markdown": "🌍 **[Veeda AI](https://thelogic.co/news/exclusive/veeda-ai-sanja-fidler-nvidia)** is developing **world models** and virtual environments intended for training Physical AI systems. The company was founded by former NVIDIA researchers specializing in spatial intelligence and simulation."
+      },
+      {
+        "position": 15,
+        "headline": "🧩 Corematter has published a framework for analyzing the Physical AI value chain.",
+        "body_markdown": "🧩 **[Corematter](https://corematter.substack.com/p/physical-ai-value-stack-framework)** has published a framework for analyzing the **Physical AI value chain**. The model divides the sector into different layers, including hardware, actuators, sensors, computing, AI models, data, simulation, development tools and integration."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 110; 15 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "e28991dc1e887fe03652981d8ff81f8c4b3ef6b5ae72c298cde5df21e80007d0"
+}

@@ -1,0 +1,82 @@
+{
+  "edition_id": "nl-2026-04-15-robots-al-rescate",
+  "language": "es",
+  "title": "Robots al rescate ⚠️",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/438a234f-9b96-4046-bb58-f520eca022c8_2048x1099.png)\n\n> *Para que los robots resulten realmente útiles en nuestra vida diaria y en la industria, deben ir más allá de seguir instrucciones; deben razonar sobre el mundo físico.*\n\nAsí de claro deja **Google DeepMind** en la presentación de la nueva versión de **Gemini Robotics** que para que la IA pueda aportar valor en el mundo real debe evolucionar.\n\nDe esta forma [Gemini Robotics-ER 1.6](https://deepmind.google/models/gemini-robotics/) se presenta como un modelo de IA Física basado en el razonamiento que permite a los robots comprender su entorno con precisión al mejorar el razonamiento espacial y la comprensión multivista, ofreciendo un mayor nivel de autonomía a los robots que lo incorporen.\n\nEste modelo se especializa en capacidades de razonamiento robótico, incluyendo la comprensión visual y espacial, la planificación de tareas y la detección de éxito. Es capaz de ejecutar tareas mediante el uso nativo de herramientas como la búsqueda de Google para encontrar información y el uso de modelos de visión-lenguaje-acción (VLA).\n\nY lo mejor es que por primera vez Google DeepMind nos presenta un modelo de Gemini Robotics validado para cumplir con una función muy específica y con un alto valor añadido: la capacidad de **lectura de instrumentos**, que permite a los robots leer indicadores y visores complejos. Un caso de uso que se ha desarrollado a través de la colaboración que mantienen con **Boston Dynamics**.\n\nCuriosamente esta utilidad presentada coincide con la que hace tiempo ya conocíamos estaba desarrollando la startup española [Keybotic](https://keybotic.com/es/) usando cuadrúpedos para la inspección de instalaciones industriales, donde también se ponía foco en que el robot pudiese fijarse en diferentes aparatos de medida para detectar anomalías o en localizar posibles problemas en las instalaciones como podían ser escapes o vertidos de sustancias tóxicas.\n\nPor eso digo **robots al rescate**, porque estamos ante un caso de uso donde la utilidad que ofrece esta tecnología es enorme:\n\n1. Las instalaciones industriales son muy extensas y tienen muchísimos **puntos críticos** en los que pueden producirse todo tipo de circunstancias que pueden acabar provocando un incidente de seguridad. Por mucho que queramos tenerlo asegurado con personas vigilando o incluso con cámaras sería inviable. Tener robots que realizan rondas de vigilancia periódica es mucho más práctico y seguro.\n2. Aunque este trabajo lo puedan hacer las personas, me parece injusto que tenga que haber gente que arriesgue sus vidas de esta forma. Creo que el foco de los que trabajamos en el mundo de la tecnología, especialmente en esto de la IA y la robótica debería ser encontrar soluciones a la problemática laboral, pero no tanto porque falte gente sino por evitar exponerlos a este tipo de **trabajos peligrosos**.\n3. La combinación de humano y robot es lo realmente importante. Estoy seguro de que si la persona que ahora anda realizando labores de vigilancia en las instalaciones puede hacer un **trabajo intelectual** en lugar de físico, las condiciones de seguridad general van a aumentar significativamente y no me refiero sólo para esa persona sino en el caso de producirse un gran accidente que ponga en riesgo a la población en general.\n\nOtros casos de robots que vienen a nuestro rescate:\n\n- Los propietarios de **coches eléctricos** con problemas de carga en ruta podrán contar con la ayuda de [BYD](https://interestingengineering.com/transportation/china-byd-robot-ev-charging-tires) que ha solicitado una patente para un robot capaz de cargar vehículos eléctricos e inflar neumáticos simultáneamente. El sistema comprueba de forma autónoma los niveles de batería y la presión de los neumáticos antes de ejecutar los servicios en una secuencia de circuito cerrado.\n- **K5**de [Knightscope](https://knightscope.com/products/k5) es un robot de seguridad que patrulla lugares públicos equipado con cámaras, sensores térmicos, micrófonos y sistemas de reconocimiento de matrículas para detectar incidentes o comportamientos sospechosos. Estos robots funcionan de forma autónoma y generan grandes volúmenes de datos de vigilancia para los equipos humanos de seguridad.\n- Los robots de [Running Brains](https://www.runningbrainsrobotics.com/en/) se están utilizando cada vez más para seguridad perimetral en grandes instalaciones como refinerías, centrales energéticas o puertos. Desde el terreno pueden monitorizar áreas mucho más amplias que una persona y detectar intrusiones o incidentes en tiempo real. Además, se están integrando con **drones** para patrullas coordinadas en instalaciones industriales.\n- Empresas como [ROSEN](https://www.rosen-group.com/en/global/robotic-pipeline-inspection-solutions) desarrollan robots capaces de desplazarse por el interior de tuberías industriales para evaluar su estado sin necesidad de desmontar la infraestructura. Estos robots se introducen en las conducciones y avanzan por su interior equipados con sensores ultrasónicos y otras tecnologías de diagnóstico capaces de detectar corrosión, grietas o variaciones en el grosor del metal. Gracias a estos sistemas se pueden anticipar fallos antes de que provoquen fugas o accidentes.\n\nComo ves, las aplicaciones de la robótica son enormes y en el momento en el que comienzan a integrar la IA de Google o de otros desarrolladores, vamos a ver como la utilidad se dispara hasta límites insospechados.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦾 Figure anuncia la adquisición de un centro de datos completo con GPU NVIDIA Blackwell para escalar el aprendizaje robótico exponencialmente.",
+        "body_markdown": "Menuda semana cargada de noticias, y eso que hago una selección, pero es que esto de los robots es un mercado en plena ebullición.\n\n🦾 [Figure](https://x.com/adcock_brett/status/2042675641037000868) anuncia la adquisición de un centro de datos completo con GPU **NVIDIA** Blackwell para escalar el aprendizaje robótico exponencialmente. Esta enorme capacidad de procesamiento respalda la estrategia de la empresa de utilizar redes neuronales integrales que ofrezcan la mayor autonomía a sus robots."
+      },
+      {
+        "position": 2,
+        "headline": "🛒 Unitree pone a la venta en Aliexpress su robot R1 por 8122 dólares.",
+        "body_markdown": "🛒 [Unitree](https://www.unitree.com/R1) pone a la venta en **Aliexpress** su robot R1 por 8122 dólares. Estamos ante un paso importante hacia la accesibilidad global de la robótica en el comercio minorista. La publicación en el gigante del ecommerce incluye la versión educativa, que ofrece interfaces de control abiertas integradas con IA y hasta 40 grados de libertad."
+      },
+      {
+        "position": 3,
+        "headline": "🏭 Foundry Robotics capta 19 millones de dólares de financiación asegurando que la fabricación estadounidense es uno de los problemas más difíciles de nuestra generación y ellos…",
+        "body_markdown": "🏭 [Foundry Robotics](https://foundryrobotics.ai/) capta 19 millones de dólares de financiación asegurando que la **fabricación** estadounidense es uno de los problemas más difíciles de nuestra generación y ellos se han propuesto el objetivo de resolverlo."
+      },
+      {
+        "position": 4,
+        "headline": "💻 Agibot han integrado sus robots G2 en líneas de producción de productos de electrónica de consumo del fabricante Longcheer Technology en funcionamiento en Nanchang, logrando u…",
+        "body_markdown": "💻 [Agibot](https://www.agibot.com/article/231/detail/60.html) han integrado sus robots G2 en líneas de producción de productos de electrónica de consumo del fabricante **Longcheer Technology** en funcionamiento en Nanchang, logrando una tasa de éxito del 99 % y una producción de 310 unidades por hora."
+      },
+      {
+        "position": 5,
+        "headline": "💡 Syncere es una startup con sede en Palo Alto que está adoptando un enfoque diferente para la robótica doméstica con Lume, una lámpara de pie escultural que cuenta con un brazo…",
+        "body_markdown": "💡 [Syncere](https://syncere.com/) es una startup con sede en Palo Alto que está adoptando un enfoque diferente para la robótica doméstica con **Lume**, una lámpara de pie escultural que cuenta con un brazo robótico diseñado para doblar la ropa. Con un precio de 1499 dólares, este robot ambiental busca automatizar las tareas domésticas."
+      },
+      {
+        "position": 6,
+        "headline": "💰EngineAI consigue 200 millones de dólares de financiación.",
+        "body_markdown": "💰[EngineAI](https://www.jiemian.com/article/14230446.html) consigue 200 millones de dólares de financiación. En la ronda ha participado el gigante de la fabricación **Luxshare Precision** valorando la compañía en 1400 millones de dólares. Esta alianza proporciona la experiencia en la cadena de suministro necesaria para alcanzar el ambicioso objetivo de entregar 5000 unidades en 2026."
+      },
+      {
+        "position": 7,
+        "headline": "🇳🇱 Tesla recibe aprobación para operar con sus sistema de conducción autónoma FSD en Países Bajos.",
+        "body_markdown": "🇳🇱 [Tesla](https://www.rdw.nl/en/news/2026/rdw-explanation-of-european-type-approval-tesla-with-provisional-validity-in-the-netherlands) recibe aprobación para operar con sus sistema de conducción autónoma **FSD** en **Países Bajos**. Este sistema, controlado por el conductor, ha sido sometido a un exhaustivo examen y pruebas durante más de un año y medio en nuestra pista de pruebas y en vías públicas."
+      },
+      {
+        "position": 8,
+        "headline": "🗺️ Niantic, los creadores de Google Earth y PokemonGo se meten en el negocio de los modelos del mundo.",
+        "body_markdown": "🗺️ [Niantic](https://www.nianticspatial.com/), los creadores de Google Earth y PokemonGo se meten en el negocio de los **modelos del mundo**. Su modelo geoespacial a gran escala se basa en datos del mundo real procedentes de sensores terrestres y aéreos, procesados y alineados para entrenar modelos que ofrecen tres servicios: reconstrucción, localización y comprensión."
+      },
+      {
+        "position": 9,
+        "headline": "☀️ Eclipse Ventures, el fondo de capital riesgo ha levantado 1.300 millones de dólares para invertir en startups de IA física, robótica y tecnologías industriales.",
+        "body_markdown": "☀️ [Eclipse Ventures](https://techcrunch.com/2026/04/07/vc-eclipse-has-a-new-1-3b-to-back-and-build-physical-ai-startups), el fondo de capital riesgo ha levantado 1.300 millones de dólares para invertir en startups de **IA física**, robótica y tecnologías industriales. La firma apuesta por empresas que combinan software, hardware y manufactura para transformar sectores como logística, defensa o energía. Su tesis es que la próxima gran ola tecnológica llegará desde el mundo físico, no solo desde el software."
+      },
+      {
+        "position": 10,
+        "headline": "🏭 BMW Group está transformando su planta de Múnich para fabricar la nueva generación de vehículos eléctricos “Neue Klasse”.",
+        "body_markdown": "🏭 [BMW Group](https://www.press.bmwgroup.com/canada/article/detail/T0456925EN/the-new-bmw-group-plant-munich:-more-efficient-more-flexible-and-more-digital-for-production-of-the-neue-klasse) está transformando su planta de Múnich para fabricar la nueva generación de vehículos eléctricos “Neue Klasse”. La fábrica será más digital, flexible y **automatizada**, con mayor integración de robots y sistemas inteligentes de producción. El objetivo es aumentar la eficiencia y adaptar rápidamente la producción a distintos modelos."
+      },
+      {
+        "position": 11,
+        "headline": "💰 D-Robotics ha levantado 150 millones de dólares para ampliar su negocio de chips y plataformas de IA para robots y dispositivos inteligentes.",
+        "body_markdown": "💰 [D-Robotics](https://www.techinasia.com/news/chinese-robot-ai-startup-d-robotics-raises-150m-for-expansion) ha levantado 150 millones de dólares para ampliar su negocio de **chips y plataformas de IA para robots** y dispositivos inteligentes. La empresa desarrolla hardware especializado para visión artificial y robótica autónoma. China sigue reforzando así su ecosistema de semiconductores y robótica."
+      },
+      {
+        "position": 12,
+        "headline": "🧠 NVIDIA celebra la National Robotics Week destacando sus avances en plataformas de desarrollo para robots basadas en IA.",
+        "body_markdown": "🧠 [NVIDIA](https://blogs.nvidia.com/blog/national-robotics-week-2026/?ncid=so-twit-693888-vt48&linkId=100000416855291#robolab) celebra la **National Robotics Week** destacando sus avances en plataformas de desarrollo para robots basadas en IA. La compañía impulsa herramientas como Isaac Sim, Omniverse y nuevos entornos de simulación para entrenar robots en mundos virtuales. El objetivo es acelerar el desarrollo de robots inteligentes capaces de operar en entornos reales."
+      },
+      {
+        "position": 13,
+        "headline": "👕 SIM1 Robotics es un entorno de simulación diseñado para entrenar robots mediante aprendizaje en entornos virtuales complejos.",
+        "body_markdown": "👕 [SIM1 Robotics](https://internrobotics.github.io/sim1.github.io/) es un entorno de simulación diseñado para entrenar robots mediante aprendizaje en entornos virtuales complejos. La plataforma busca mejorar la **transferencia del entrenamiento** desde simulación al mundo real. Este tipo de herramientas es clave para reducir el coste de datos en robótica."
+      },
+      {
+        "position": 14,
+        "headline": "🦾 Wendy es una proyecto experimental centrado en interfaces y herramientas para interactuar con robots y sistemas físicos a través de IA.",
+        "body_markdown": "🦾 [Wendy](https://wendy.sh/) es una proyecto experimental centrado en interfaces y herramientas para interactuar con robots y sistemas físicos a través de IA. La propuesta explora nuevas formas de **programar y controlar robots usando lenguaje natural**. Representa la tendencia hacia interfaces más accesibles para trabajar con sistemas robóticos."
+      }
+    ]
+  }
+}

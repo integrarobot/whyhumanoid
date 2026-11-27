@@ -1,0 +1,72 @@
+{
+  "edition_id": "nl-2026-11-18-si-aun-no-usas-agentes-de-ia-mejor",
+  "language": "es",
+  "title": "Si aún no usas Agentes de IA mejor no compres un robot",
+  "body_markdown": "> “*Conectamos un **brazo robótico** con **Claude Fable 5.2** y le dimos una tarea real de una fábrica de mecanizado de precisión. Cumplió con el trabajo, escribiendo su propio código. Sin teleoperación, sin demostraciones, sin entrenamiento específico para la tarea*”. Jiayi Wang, fundadora de Latent Physics.\n\nHa llegado el momento de volver a hablar de **Agentes de IA** y en esta ocasión va a parecer un poco interesado porque quiero presentarte mi nueva empresa: [Don de Agentes](https://dondeagentes.com/).\n\nEn mi defensa diré que llevo hablando de cómo aplicar Agentes de IA a la robótica desde principios de 2025 y a lo largo de este año ha sido un tema recurrente, a medida que he ido viendo cómo la IA podría empezar a ayudarnos a controlar simuladores, e incluso ahora a los propios **robots**.\n\nEntonces, he decidido enfocarme cada vez más en Agentes a medida que he ido siendo consciente de las **aplicaciones de los LLMs en robótica**, especialmente a partir de la aparición de **GPT-6 Astra** y al ver todos los avances que se estaban produciendo en el control de robots con otros Agentes de IA como **Claude** y [Gemini](https://x.com/GoogleDeepMind/status/2122767521925230896).\n\nY esa especialización en Agentes es lo que me ha llevado a darme cuenta también de que la mayoría de empresas que ahora están pensando en automatizar sus procesos físicos deberían empezar por automatizar sus procesos digitales. Y para esto hay una razón de peso, que se llama **DATOS**.\n\nHe insistido ya mucho por aquí en la necesidad de **recopilar datos en vídeo en primera persona para entrenar a los robots** pero de lo que quería hablar hoy aquí es de otro tipo de dato. Ya no se trata de que el robot aprenda a realizar una tarea para repetirla miles de veces a lo largo de su turno de trabajo, para que luego venga otro robot a sustituirlo mientras se carga, estoy hablando de la posibilidad de disponer de robots de propósito general de verdad.\n\nLos **hogares** son el mejor ejemplo de esta situación, porque no vamos a querer robots que hagan una sola cosa durante todo el día, queremos que hagan decenas o cientos de cosas, incluso que puedan improvisar en función de la necesidad. Y si lo piensas, también queremos que ocurra esto en las empresas. En los comercios por ejemplo o en las residencias y hospitales, el robot será de propósito general o fracasará su integración.\n\nAsí que volviendo al tema de los datos y ya que tenemos claro que el robot no va dedicarse a hacer la misma cosa todo el día, la clave para que tenga éxito en su trabajo va a ser el **contexto** y aquí es donde volvemos a los Agentes porque ese es precisamente su alimento para poder aportar valor en una empresa o en cualquier trabajo que vaya a realizar.\n\n**Contexto de las operaciones**, entender cómo funciona realmente la empresa, tener la visión de conjunto, llámalo como quieras, pero debes tener claro que lo que ha hecho que los chatbots de IA puedan ayudarnos a realizar todo tipo de trabajos en el ámbito digital no ha sido saber mucho de una sola cosa sino un poco de casi todo. Si lo piensas, la estrategia con la IA antes de los LLM era la especialización, ya sea en temáticas (salud) o en trabajos (traducciones) pero cuando se presentó ChatGPT lo que nos dijeron era que podíamos pedirle cualquier cosa. Es cierto que al principio su utilidad era mucho más limitada, pero ahora, los que decidimos apostar por esa tecnología al principio, estamos viendo que las posibilidades se han multiplicado por mucho.\n\nBásicamente lo que ha ocurrido es que con los Agentes de IA hemos pasado de delegar tareas puntales (resumir, analizar, escribir, diseñar, …) a poder **automatizar flujos de trabajo completos** y esto tiene un valor enorme para muchas personas, porque les quita de encima todo el trabajo tedioso, el administrativo, el que nadie quiere hacer, para poder centrarse en las cosas importantes (los clientes, los trabajadores, la estrategia, …)\n\nPero no te creas que esto ha sucedido de la noche a la mañana, porque para que ahora podamos tener Agentes de IA que pueden controlar el ordenador, el navegador y cualquier tipo de software, primero hubo que desarrollar los **modelos razonadores**, que cometen menos errores, reduciendo de manera significativa las famosas alucinaciones.\n\nLa conclusión de todo esto es lo que viene a continuación:\n\n> **Datos → Agentes → Robots**\n\nSi ya tenías claro que para entrenar a los Robots ibas a necesitar Datos, ahora añade los Agentes a la ecuación, porque serán estos los que controlen al robot, sin necesidad de hacer un entrenamiento a la antigua usanza. Es decir, cuando el LLM tenga el contexto adecuado de cómo funciona la empresa, de cómo son sus operaciones, del trabajo que se realiza a pie de fábrica, podrá darle las instrucciones al software del robot para que haga su trabajo.\n\nY aquí es donde vuelvo a **Don de Agentes** porque esto es lo que estamos empezando a hacer con algunas pymes, automatizar sus procesos administrativos, lo cual tiene una gran ventaja porque es más fácil por ahora trabajar con lo digital que con lo físico, pero una vez que la IA va adquiriendo todo ese contexto del funcionamiento de la empresa, el siguiente paso será ir a por lo material.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/32ea71b0-fc1e-4d86-9ee0-f31d3102ffae_1774x887.png)\n\n---\n\n*Si tienes una empresa y aún no te has puesto con la automatización de tus procesos administrativos, no lo dudes, necesitas [Don de Agentes](https://dondeagentes.com/).*",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🏭 ASUS está entrenando a su robot Gallop en una fábrica del grupo para empaquetar 15 accesorios de placas base, algunos en bolsas finas y transparentes.",
+        "body_markdown": "🏭 [ASUS](https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot/?utm_source=chatgpt.com) está entrenando a su robot **Gallop** en una fábrica del grupo para empaquetar 15 accesorios de placas base, algunos en bolsas finas y transparentes. El humanoide aprende observando a los operarios y practicando con las mismas piezas. El objetivo es completar cada kit en 20 segundos con un 99,5 % de aciertos. ASUS prevé iniciar las pruebas con clientes en 2027."
+      },
+      {
+        "position": 2,
+        "headline": "💶 Agile Robots ha captado 500 millones de dólares en una ronda liderada por SoftBank, con participación de NVIDIA, Hitachi y T.Capital.",
+        "body_markdown": "💶 [Agile Robots](https://thenextweb.com/news/agile-robots-softbank-500m-humanoid?utm_source=chatgpt.com) ha captado 500 millones de dólares en una ronda liderada por SoftBank, con participación de **NVIDIA**, **Hitachi** y T.Capital. La operación valora la empresa alemana en 8.500 millones de dólares. Los fondos servirán para ampliar su capacidad de fabricación y financiar su expansión en Estados Unidos y otros mercados."
+      },
+      {
+        "position": 3,
+        "headline": "🖐️ Genesis AI ha cerrado una serie A de 500 millones de dólares que sitúa su valoración en 3.500 millones.",
+        "body_markdown": "🖐️ [Genesis AI](https://www.genesis.ai/news/genesis-raises-dollar500m-series-a-to-fund-its-next-chapter?utm_source=chatgpt.com) ha cerrado una serie A de 500 millones de dólares que sitúa su valoración en 3.500 millones. La compañía destinará los fondos a aumentar la producción de **Eno**, su robot de propósito general, y a recoger más datos para entrenarlo en tareas que requieren destreza manual."
+      },
+      {
+        "position": 4,
+        "headline": "📦 GXO y Apptronik han firmado una carta de intenciones tras completar en Estados Unidos un piloto en el que Apollo recogía pequeños artículos de forma autónoma.",
+        "body_markdown": "📦 [GXO y Apptronik](https://gxo.com/news_article/gxo-apptronik-expand-humanoid-robotics-partnership/?utm_source=chatgpt.com) han firmado una carta de intenciones tras completar en Estados Unidos un piloto en el que Apollo recogía pequeños artículos de forma autónoma. En 2027 ampliarán las pruebas al embalaje, la clasificación y el movimiento de cajas. Si cumplen los objetivos de productividad y seguridad, contemplan desplegar **hasta 1.000 humanoides en cuatro años** bajo un modelo de robótica como servicio."
+      },
+      {
+        "position": 5,
+        "headline": "🦾 Mimic Robotics y BMW presentaron en septiembre FLUX-mimic, un modelo que aprende a manipular componentes de automoción a partir de vídeos y demostraciones.",
+        "body_markdown": "🦾 [Mimic Robotics y BMW](https://www.mimicrobotics.com/blog/video-action-models-for-data-efficient-industrial-manipulation?utm_source=chatgpt.com) presentaron en septiembre FLUX-mimic, un modelo que aprende a **manipular componentes de automoción** a partir de vídeos y demostraciones. En una prueba de preparación de kits con piezas flexibles, un robot Franka acertó en el 77,5 % de los intentos con dos horas de demostraciones etiquetadas y en el 95 % con ocho. Esas horas corresponden al ajuste para la tarea, posterior al preentrenamiento."
+      },
+      {
+        "position": 6,
+        "headline": "🎥 HubLabs ha publicado las primeras 10.124 horas de HubEgo-100K, un conjunto de vídeos en primera persona para entrenar robots.",
+        "body_markdown": "🎥 [HubLabs](https://huggingface.co/datasets/HubLabs/HubEgo-100K?utm_source=chatgpt.com) ha publicado las primeras **10.124 horas** de HubEgo-100K, un conjunto de vídeos en primera persona para entrenar robots. Las grabaciones proceden de 12.227 participantes y el 83 % del metraje se grabó en lugares de trabajo. Cada episodio incluye instrucciones por pasos y puede reutilizarse con fines comerciales citando la fuente."
+      },
+      {
+        "position": 7,
+        "headline": "🔧 Darwin Robotics ha captado 3,6 millones de dólares en una ronda inicial liderada por Link Ventures para desarrollar robots técnicos.",
+        "body_markdown": "🔧 [Darwin Robotics](https://darwinrobotics.ai/research/darwin-raises-3-6m-pre-seed?utm_source=chatgpt.com) ha captado **3,6 millones de dólares** en una ronda inicial liderada por Link Ventures para desarrollar robots técnicos. Su primer mercado son los centros de datos, donde quiere enseñarles mediante demostraciones humanas a instalar conexiones de fibra óptica, montar equipos y reparar servidores. La empresa busca operadores con los que probarlos."
+      },
+      {
+        "position": 8,
+        "headline": "📊 J.P.",
+        "body_markdown": "📊 [J.P. Morgan](https://www.reuters.com/business/us-humanoid-robot-production-could-hit-400000-by-2030-deployment-ramps-jp-morgan-2026-11-12/?utm_source=chatgpt.com) estima que la producción estadounidense de robots humanoides podría alcanzar entre **300.000 y 400.000 unidades en 2030**. Para 2035, el banco sitúa su previsión en torno a 1,5 millones de unidades, según recoge Reuters."
+      },
+      {
+        "position": 9,
+        "headline": "🩺 Mosaic Intelligence Labs ha presentado su proyecto de robótica quirúrgica tras captar 47 millones de dólares.",
+        "body_markdown": "🩺 [Mosaic Intelligence Labs](https://www.businesswire.com/news/home/20261110289756/en/Mosaic-Emerges-from-Stealth-with-%2447-Million-to-Build-Intelligent-Surgical-Machines---Treating-the-Body-from-Inside) ha presentado su proyecto de **robótica quirúrgica** tras captar 47 millones de dólares. Su primera aplicación son las intervenciones endovasculares. La empresa desarrolla instrumentos con sensores para reconstruir en tres dimensiones el interior de los vasos sanguíneos y mostrar al médico dónde está el catéter mientras lo guía."
+      },
+      {
+        "position": 10,
+        "headline": "🛡️ LG Electronics ha firmado un acuerdo con el Instituto Coreano para el Avance de la Industria Robótica para evaluar la seguridad y la facilidad de uso de los humanoides.",
+        "body_markdown": "🛡️ [LG Electronics](https://www.lg.co.kr/media/release/30790?utm_source=chatgpt.com) ha firmado un acuerdo con el Instituto Coreano para el Avance de la Industria Robótica para **evaluar la seguridad y la facilidad de uso de los humanoides**. LG participará en la elaboración de normas nacionales e internacionales y prevé someter su robot doméstico CLOiD a una certificación piloto de seguridad en Corea del Sur."
+      },
+      {
+        "position": 11,
+        "headline": "🥎 Reflex permite a un Unitree G1 coordinar todo el cuerpo para atrapar una caja al vuelo.",
+        "body_markdown": "🥎 [Reflex](https://toberj.github.io/reflex/?utm_source=chatgpt.com) permite a un Unitree G1 coordinar todo el cuerpo para atrapar una caja al vuelo. El humanoide estima la trayectoria con su propia cámara de color y profundidad y dispone de alrededor de un segundo para reaccionar. En las pruebas con el robot físico atrapó el **65 % de las cajas lanzadas desde 2,5 metros** y el 40 % desde 5 metros."
+      },
+      {
+        "position": 12,
+        "headline": "🌱 HongShan y Unitree anunciaron el 28 de octubre un programa conjunto para invertir en startups de robótica e IA física desde sus primeras etapas.",
+        "body_markdown": "🌱 [HongShan y Unitree](https://www.hongshan.com/article/%E7%BA%A2%E6%9D%89%E4%B8%AD%E5%9B%BD%E5%B0%86%E4%B8%8E%E5%AE%87%E6%A0%91%E6%88%90%E7%AB%8B%E6%9D%89%E5%AE%87%C2%B7%E5%88%9B%E8%AE%A1%E5%88%92/?utm_source=chatgpt.com) anunciaron el 28 de octubre un programa conjunto para **invertir en startups de robótica e IA física** desde sus primeras etapas. El programa admite proyectos que partan de una idea, código o un prototipo. Unitree aportará asesoramiento de ingeniería y HongShan, financiación y apoyo para llevar el producto al mercado."
+      }
+    ]
+  }
+}

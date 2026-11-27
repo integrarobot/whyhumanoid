@@ -1,0 +1,117 @@
+{
+  "edition_id": "nl-2026-11-11-que-tiene-que-hacer-apple-en-robotica",
+  "source_url": "https://www.integrarobot.com/p/que-tiene-que-hacer-apple-en-robotica",
+  "published_on": "2026-11-11",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "What Apple has to do in robotics",
+  "subtitle": "If Apple brought out a humanoid robot, then the competition with Optimus would really get serious.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/89109362-f0a1-4b14-9a55-a8a2c85673e0_1672x941.png)\n\nI promise you I'd love to have a crystal ball just to know what **Apple** is going to do in **robotics**. My curiosity is really piqued.\n\nBecause Apple has in humanoid robots the opportunity to make up for the \"failure\" of the Vision Pro.\n\nSpatial computing was a mirage, and Facebook's resounding failure with the metaverse is the best proof of it.\n\nIf even Meta dares to create its own humanoid robot, why wouldn't Apple do the same?\n\nBut anyway, what is all this about?\n\nThe thing is that in recent days a lot of research by Apple scientists on robotics has been coming to light, and I don't mean the [ELEGNT](https://machinelearning.apple.com/research/elegnt-expressive-functional-movement) and [EMOTION](https://machinelearning.apple.com/research/emotion-expressive-motion) projects, which we have already talked about here, but new ones, such as:\n\n- [AMP](https://apple-aiml-research.github.io/ml-amp/), where a frontier model controls the robot by writing Python code that calls a harness for sensing (RGB-D images, calibration, a fused point cloud), perception (a scene model it can correct) and motion (timed end-effector waypoints and gripper commands). It decides what to observe and can verify each result before acting again.\n- [HALO](https://apple-aiml-research.github.io/ml-halo/) is a humanoid autonomy system driven by a pipeline that synthesizes vision, language and motion data in a thousand procedurally generated homes. The corpus scales with compute rather than human labour. HALO acquires a repertoire of physical skills, including sitting on chairs, navigating to named objects, sidestepping through half-open doors, crouching and crawling under tables, and pushing boxes.\n- [ARMADA](https://machinelearning.apple.com/research/armada-augmented-reality) is a system for complementing the Apple Vision Pro with real-time virtual feedback from a robot. By giving users an intuitive understanding of how their actions translate into robot movements, it enables the collection of natural human data without the need for physical tools, compatible with the limitations of the robot's hardware.\n- [MoMo](https://machinelearning.apple.com/research/momo-motion-mode-manipulation) is a two-stage imitation learning framework consisting of a spatiotemporal action tokenizer and a behaviour cloning transformer that takes as input the task and a continuous motion mode condition. On six real-robot manipulation tasks, varying this condition produces stable, dynamic and intermediate behaviours that human evaluators can distinguish and that differ in joint velocity, acceleration and the end-effector's approach tilt.\n\nSo here we have at least 7 pieces of Apple robotics research, which means I can't help asking you what Apple will be doing with robots 5 or 10 years from now, because it is almost certainly going to do something if it doesn't want to be left out of the Physical AI business.\n\nTo start with, I can think of four options; let's see which one seems most likely to you:\n\n1. They are just lab research and will go no further, as happened years ago with the electric/autonomous car.\n2. What interests Apple most is social robotics, so what it will end up bringing out is some kind of gadget.\n3. All this research is part of a secret humanoid robot project, and they are putting this out to throw us off the scent. I hope so!\n4. The company already has too many fronts open, but so as not to be left out it will choose to collaborate with a humanoid manufacturer.\n\n**Can you imagine an Apple humanoid robot?**\n\nThe truth is I find it hard to imagine, just as at the time I found it hard to visualize what a car might be like. I greatly admire Apple, I have been a customer for many years, but the type of product it already makes must be so ingrained in my mind that I find it hard to think of something so far out of scale with everything it has done so far.\n\nAnd going back to the Apple Vision Pro, I start to think about what the decision to enter a sector with as much uncertainty as virtual reality must have been like, where rivers of ink were written about it being the future, but years later it seems clear that in general we are not going to want to put on one of those headsets to isolate ourselves from reality.\n\nBut robots are something else, because they are going to be something so big that it's hard to think Apple will stay out of it. I just hope Apple's top brass think so too and won't leave all this research in the lab.\n\n**People want robots, and I want an Apple robot.**",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📈 Agility starts trading on the Nasdaq under the ticker AGLT after completing its merger with the SPAC Churchill Capital Corp XI.",
+        "body_markdown": "📈 [Agility](https://x.com/NasdaqExchange/status/2118327472378823043) starts trading on the **Nasdaq** under the ticker AGLT after completing its merger with the SPAC Churchill Capital Corp XI. The deal values the company at about 2.5 billion dollars, brings it about 465 million gross, and makes it the first US company devoted entirely to humanoid robots to go public. According to [Supply Chain 24/7](https://www.supplychain247.com/article/agility_robotics_begins_trading_on_nasdaq/ifs), it closed its first session at 11.51 dollars per share, earned 1.8 million dollars in revenue in 2025 and reports more than 300 million in multi-year Digit 5 orders, subject to contractual milestones."
+      },
+      {
+        "position": 2,
+        "headline": "🧠 Google DeepMind presents Gemini Robotics 2.5, its most capable vision, language and action model, evaluated on 200 tasks such as serving food with tongs, tying a bow or pipett…",
+        "body_markdown": "🧠 [Google DeepMind](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/) presents **Gemini Robotics 2.5**, its most capable vision, language and action model, evaluated on 200 tasks such as serving food with tongs, tying a bow or pipetting. According to the company, it improves the success rate by between 30% and 100% depending on the type of task and completes them between 20% and 30% faster than its previous versions. In a proof of concept on Mercedes-Benz lines in Kecskemét (Hungary) and Sindelfingen (Germany), Apptronik's Apollo 2 humanoid prepared parts kits with 96% success. For now the model is distributed only to its robotics partners."
+      },
+      {
+        "position": 3,
+        "headline": "🌍 NVIDIA presents GR00T 2, a family of world-action models that predict future video and the robot's actions at the same time.",
+        "body_markdown": "🌍 [NVIDIA](https://research.nvidia.com/labs/gear/gr00t-2/) presents **GR00T 2**, a family of world-action models that predict future video and the robot's actions at the same time. To pre-train it, it used 402,730 hours of egocentric human video, 10,184 hours of demonstrations with the UMI handheld gripper and 23,500 hours of teleoperation. According to its results, on 50 tasks the robot had not seen it achieves 40% success without its own data, and 95% with five demonstrations (less than three minutes of data) after 30 minutes of fine-tuning on an RTX 5090. The 2-billion-parameter Turbo version runs on board the Unitree G1 at 124 ms per prediction; NVIDIA releases 100,000 hours of human video and announces the code for December."
+      },
+      {
+        "position": 4,
+        "headline": "🛢️ PetroChina and Unitree are preparing a joint venture for industrial robotics solutions with embodied intelligence, according to the concentration filing published by Beijing'…",
+        "body_markdown": "🛢️ [PetroChina and Unitree](https://es.wedoany.com/shortnews/506056.html) are preparing a **joint venture** for industrial robotics solutions with embodied intelligence, according to the concentration filing published by Beijing's market regulator on 4 November. The oil group CNPC would hold 60% through Kunlun Manufacturing and Kunlun Capital. Unitree would hold 20%, and the AI model developer Beijing Fanjie Intelligent Technology the remaining 20%. The deal is open for public comment until 13 November, and a previous memorandum between the two parties envisages inspection and emergency quadrupeds in oilfields, refineries and pipelines."
+      },
+      {
+        "position": 5,
+        "headline": "🔥 Path Robotics closes a 300 million dollar Series E led by Georgian, at a valuation of 2.45 billion.",
+        "body_markdown": "🔥 [Path Robotics](https://www.path-robotics.com/news/path-robotics-announces-300-million-series-e-led-by-georgian) closes a **300 million dollar** Series E led by Georgian, at a valuation of 2.45 billion. The company, which automates industrial welding with AI, says its annual recurring revenue has multiplied 17-fold in the last 18 months. It will use the funds to grow in welding and to develop the data, compute and models needed to tackle the tasks before and after welding. The announcement includes the backing of Lockheed Martin Ventures and the shipbuilder HII."
+      },
+      {
+        "position": 6,
+        "headline": "📉 Schaeffler announces the elimination of 3,460 jobs in Europe due to the crisis in the car sector, about 2,660 of them in Germany, and the closure of four German sites.",
+        "body_markdown": "📉 [Schaeffler](https://www.schaeffler.com/en/media/press-releases/press-releases-detail.jsp?id=88224641) announces the elimination of **3,460 jobs** in Europe due to the crisis in the car sector, about 2,660 of them in Germany, and the closure of four German sites. The plan seeks savings of about 300 million euros a year from 2030, with a one-off cost of about 480 million. Its chief operating officer, Jochen Schröder, cites humanoid robotics and defence as growth areas, and the company expects to offset part of the cuts by creating jobs in new businesses."
+      },
+      {
+        "position": 7,
+        "headline": "📡 Serve Robotics launches Physical AI Services, a line of business to sell other robotics companies the connectivity and data tools it created for its sidewalk delivery robots.",
+        "body_markdown": "📡 [Serve Robotics](https://techcrunch.com/2026/11/05/serve-robotics-launches-new-business-to-become-the-aws-for-robots/) launches **Physical AI Services**, a line of business to sell other robotics companies the connectivity and data tools it created for its sidewalk delivery robots. It includes three products: Serve Link, which connects deployed robots with AI models in data centres; a tool for locating edge cases in real data; and a catalogue of data from its robots for training foundation models. According to the company, Bedrock Robotics is already a customer, and Serve is working with T-Mobile to bring compute capacity closer to the robots."
+      },
+      {
+        "position": 8,
+        "headline": "🏠 Amazon has formed a household robotics team and is hiring for a new autonomous household robot, according to CNBC based on its job postings.",
+        "body_markdown": "🏠 [Amazon](https://www.cnbc.com/2026/11/08/amazon-home-robot-fauna-sprout.html) has formed a household robotics team and is hiring for a **new autonomous household robot**, according to CNBC based on its job postings. The team is built around Fauna Robotics, the startup Amazon bought in March. Fauna makes Sprout, a 107 cm, 22.7 kg humanoid sold as a development platform for about 50,000 dollars. Amazon has not disclosed a design, price or date for the new product."
+      },
+      {
+        "position": 9,
+        "headline": "🚨 Ring, Amazon's security brand, creates Ring Robotics with two autonomous devices: Ring Drone Cam, a flying indoor camera, and Ring Rover Cam, a surveillance robot for business…",
+        "body_markdown": "🚨 [Ring](https://www.aboutamazon.com/news/devices/ring-drone-cam-rover-cam-security-robot), Amazon's security brand, creates **Ring Robotics** with two autonomous devices: Ring Drone Cam, a flying indoor camera, and Ring Rover Cam, a surveillance robot for businesses with a camera on an adjustable mast, video up to 4K and a siren. Both use AI Pilot, a system that creates a map of the space, proposes patrol points and avoids obstacles. The Rover starts shipping in the United States on 16 December for 999.99 dollars and the Drone on 27 January 2027 for 249.99. Amazon warns that the drone does not yet have FCC authorization."
+      },
+      {
+        "position": 10,
+        "headline": "🏭 Embodied AI, spun out of Switzerland's EPFL, presents AIR, a dual-arm mobile robot on wheels designed to work alongside operators without a safety cage.",
+        "body_markdown": "🏭 [Embodied AI](https://interestingengineering.com/ai-robotics/wheeled-humanoid-robot-for-factory-tasks), spun out of Switzerland's EPFL, presents **AIR**, a dual-arm mobile robot on wheels designed to work alongside operators without a safety cage. Its arms yield on contact because they are moved by tendons from motors housed in the torso. According to an investor, each arm weighs about 2 kg and lifts up to 5 kg. The company says the robot starts out teleoperated and works autonomously within a month, and reports 95% average success in paid pilots, without detailing how many tasks it evaluated or how it calculates this; nor has it published a price or delivery times."
+      },
+      {
+        "position": 11,
+        "headline": "💡 Autonomous sells Lamp, a pre-assembled robotic desk lamp that sees, talks and moves with five servos, for 699 dollars.",
+        "body_markdown": "💡 [Autonomous](https://www.autonomous.ai/lamp) sells **Lamp**, a pre-assembled robotic desk lamp that sees, talks and moves with five servos, for 699 dollars. It runs on an open source operating system and offers physical APIs so that agents such as Claude Code, Codex or OpenClaw can use its camera, microphones and gestures. The Pro version adds CO₂, particulate, temperature and humidity sensors. The website indicates free shipping for 25 December."
+      },
+      {
+        "position": 12,
+        "headline": "⚓ Archon Robotics presents Anchor 1, a whole-body controller for humanoids that receives from human motion only five targets (pelvis, wrists and ankles), without real-time joint…",
+        "body_markdown": "⚓ [Archon Robotics](https://www.archon.tech/research/anchor1) presents **Anchor 1**, a whole-body controller for humanoids that receives from human motion only five targets (pelvis, wrists and ankles), without real-time joint retargeting. In its tests on the real robot it obtains the lowest position errors on almost all metrics compared with controllers such as SONIC or MimicLite. In teleoperation it collects demonstrations with 93% to 98% success, compared with SONIC's 37.5% and 68%. The company publishes a test bench with more than 20,000 reference motions, plans to release weights and code at the end of 2026 and will hold an open challenge in early 2027."
+      },
+      {
+        "position": 13,
+        "headline": "⚡ NVIDIA Research presents VFlash together with several universities.",
+        "body_markdown": "⚡ [NVIDIA Research](https://research.nvidia.com/labs/lpr/vflash/) presents **VFlash** together with several universities. It is a method that generates in parallel the trajectories, boxes and other visual plans of vision-language models, instead of producing them token by token. According to the team, it multiplies a robot's inference speed by five on Jetson Thor and DGX Spark and reduces the mean error of 3D trajectories by 42.6% relative to the starting model. On the MolmoSpaces benchmark it raises average manipulation success from 62.6% to 70.2%, and the code is available on GitHub."
+      },
+      {
+        "position": 14,
+        "headline": "🖥️ Skild AI and NVIDIA present Steel, a GPU-accelerated rigid-body dynamics solver for the open Newton physics engine, designed to simulate different robots and tasks at the sam…",
+        "body_markdown": "🖥️ [Skild AI](https://www.skild.ai/blogs/steel) and **NVIDIA** present **Steel**, a GPU-accelerated rigid-body dynamics solver for the open Newton physics engine, designed to simulate different robots and tasks at the same time. According to their measurements, it offers 3.8 times the simulation throughput of PhysX across 20 robot learning benchmarks. In batches mixing tasks it reaches 13 times, with 62% less GPU memory at the same batch size. The figures measure only the simulation step, not total training time, and the code is already available in Newton."
+      },
+      {
+        "position": 15,
+        "headline": "🧪 Google DeepMind publishes MuJoCo 4.0, the first major version of its physics engine for robotics since 2023.",
+        "body_markdown": "🧪 [Google DeepMind](https://mujoco.org/) publishes **MuJoCo 4.0**, the first major version of its physics engine for robotics since 2023. Its main novelty is speculative contacts, which prevent thin or fast objects from passing through others between two simulation steps without needing to subdivide the step. It also solves cloth, rods and sheets together with rigid bodies and incorporates MuJoCo Studio, a viewer with physically based rendering that works in the browser. It is accompanied by MuJoCo Playground 1.0, according to the [announcement on GitHub](https://github.com/google-deepmind/mujoco/discussions/3773)."
+      },
+      {
+        "position": 16,
+        "headline": "🏟️ RoboColosseum launches as shared infrastructure for evaluating physical AI models on real robots.",
+        "body_markdown": "🏟️ [RoboColosseum](https://huggingface.co/RoboColosseum) launches as shared infrastructure for evaluating **physical AI models on real robots**. It is driven by the National University of Singapore's MAGIC Lab, the Singapore Embodied AI Centre, the BitRobot Foundation and Hugging Face. It compares VLA models and generalist AI agents on SO-101 arms, Franka, bimanual YAMs and Unitree G1 humanoids, with evaluators who don't know which model is controlling the robot. Its first paper brings together 5,699 pairwise comparisons across 124 locations, and according to [A3](https://www.automate.org/ai/industry-insights/singapores-robocolosseum-puts-physical-ai-to-the-real-world-test) it will publish all trials on Hugging Face, including failed ones, and offers 10,000 free evaluation hours to academic partners."
+      },
+      {
+        "position": 17,
+        "headline": "📋 Intel disseminates an independent study, commissioned by the company itself, on the robotics readiness gap among 800 executives and specialists from organizations with revenue…",
+        "body_markdown": "📋 [Intel](https://www.intel.com/content/www/us/en/robotics/robotics-readiness-gap.html) disseminates an independent study, commissioned by the company itself, on the robotics **readiness gap** among 800 executives and specialists from organizations with revenue of at least 500 million dollars. Six in ten expect to operate robot fleets within five years, but only 40% have a formal strategy and 48% have suffered a safety incident with a deployed robot. Four in ten believe humanoids will never be viable for mass deployment. Only 6% see them as the type of robot with the greatest impact, compared with 20% for autonomous mobile robots."
+      },
+      {
+        "position": 18,
+        "headline": "🛼 Boston Dynamics swaps Atlas's feet for wheels to subject its actuators and its reinforcement-trained whole-body controller to continuous torque and velocity stress.",
+        "body_markdown": "🛼 [Boston Dynamics](https://bostondynamics.com/blog/atlas-on-a-roll/) swaps Atlas's feet for **wheels** to subject its actuators and its reinforcement-trained whole-body controller to continuous torque and velocity stress. The physical adaptation was limited to a part that mounts a commercial scooter wheel on the ankle actuator. In simulation, each wheel is modelled as an ankle that rotates without limit. The company clarifies that it is not a product but a test bench, and that it is already applying to the standard Atlas what it has learned about tuning the simulation to the real motors."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 119; 18 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "126fa75f3acd355ccee919a23e419a3a735c8a758160cb1321699c9f02f95f3d"
+}

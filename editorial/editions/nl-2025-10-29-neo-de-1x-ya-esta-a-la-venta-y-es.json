@@ -1,0 +1,77 @@
+{
+  "edition_id": "nl-2025-10-29-neo-de-1x-ya-esta-a-la-venta-y-es",
+  "source_url": "https://www.integrarobot.com/p/neo-de-1x-ya-esta-a-la-venta-y-es",
+  "published_on": "2025-10-29",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "1X's NEO is now on sale and it's spectacular",
+  "subtitle": "Are we facing the long-awaited iPhone moment of robotics?",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/1770c140-ddbe-4da3-bc59-210c20087e5d_2048x1169.png)\n\nPay attention, because we could be facing the moment we were waiting for, one that significantly accelerates the arrival of humanoid robots on the market. And the company responsible for it is [1X](https://www.1x.tech/order), since it has dared to put its robot on sale, with a fairly evolved look in terms of technology and a very competitive price: **20,000 dollars**.\n\nUntil now the robots on sale came from Chinese companies, with the AI software side still underdeveloped, for example Unitree's robots, which, when you buy them, have very few capabilities for performing tasks. K-Scale Labs' robot was also on sale, but in a more experimental mode and with stock sold out.\n\nThat is why it is so surprising that 1X has put its robot on sale so soon, because when we looked at the state of development of this technology in general it still seemed very green, but everything indicates that in this case they are ready to sell it on a mass scale.\n\n> *We are inviting the first group of users to reserve and experiment with NEO. It is a product ahead of its time. Some features are still being developed and refined. It will have bugs. We will learn from them quickly and use the early feedback to improve NEO and prepare it for general adoption in every home.* **Eric Jang**, head of AI at 1X\n\nIf you watch the presentation videos you will see that this product is entirely focused on **household services**: on the one hand everything to do with cleaning, and on the other keeping people **company** to help them with everyday matters; for example, for elderly people who live alone, this could be very useful.\n\nThe question at this point is how mature the AI technology is for it to be able to do everything presented in the video: tidy the house, load the washing machine and the dishwasher, vacuum, ... If it really is capable of doing all this, 1X will undoubtedly have caused a stir in the sector, and the other competitors will have no choice but to make a move.\n\nIn any case, the first customers to receive the robot already know that, in part, to perform some tasks it will need to be **teleoperated** from 1X's offices, which will help the company capture data to train future versions of the robot's software.\n\nWe will keep an eye on how the first months go in terms of sales and, above all, on how the competition reacts, especially [Figure](https://www.integrarobot.com/p/figure-03-muestra-el-camino-de-la), which should be the best prepared to also begin commercializing its humanoid robot.\n\nAnd to finish, another important fact: the robot can be bought outright or through a **subscription of 500 dollars a month**. Imagine what this means: for that price, being able to have for life a machine that will keep improving with each software update, as bugs are detected and as it is trained with all the knowledge it acquires about how to do its job.\n\nIt is still early to say, but this could be the moment many of us were waiting for; that iPhone or ChatGPT moment of robotics seems closer than ever.\n\n---\n\n## NVIDIA takes its own medicine and starts using humanoid robots in its factories\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/a7a6d35d-061a-4b30-8af5-837ab901751a_2048x1175.png)\n\nWhat an exciting day yesterday was for those of us passionate about robotics, since in addition to NEO's commercial presentation we were able to learn how **NVIDIA** is working with **humanoid robots**.\n\nSpecifically, all this year we have been listening to **Jensen Huang** explain at events why robotics is so important for the company, but until now we had not seen them put skin in the game. It's true that they are investing in many robotics startups, but we wanted to see how they are using robots internally.\n\n> *Let's talk about **Physical AI**.*\n>\n> *Physical AI requires three computers: one to train it, another to run the simulations through a digital twin (Omniverse) and the third is the one that controls the robot (Thor). These three computers run **Cuda** and allow us to advance Physical AI. AI that understands the physical world, the laws of physics, causality, permanence, …*\n>\n> *To build NVIDIA's robotic factory in Houston, which works inside a digital twin, we have partnered with **Skild AI**, **Foxconn** and **Fanuc**. The factory is intended to manufacture artificial intelligence infrastructure systems. With labour shortages and skills gaps, digitalization, robotics and physical AI are more important than ever.*\n>\n> *The era of America's reindustrialization has arrived, with people and robots working together. That is the future of manufacturing, the future of factories. The factory is essentially a robot that orchestrates robots to build things that are robotic. You know, the amount of software needed to do this is so immense that unless you can plan and design within a digital twin, the hopes of it working are almost impossible.*\n\n---\n\n## News from the Pioneros Robots Humanoides Community\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/663d714b-36f5-46ce-9727-5509072246fa_800x800.jpeg)\n\nWe are taking the first steps in this **community**: after last week's presentation, we already have 10 participants in the community, and we have announced the first editions of the live online course, which would be in the last week of November and the third week of December.\n\nOnce these courses, and the recorded course, have taken place, we will start holding the monthly community meetings, and those signed up will also start receiving weekly updates with the most important news from the Humanoid Robot sector.\n\nSo now you know: if you want to deepen your knowledge of **Physical AI** even further and become a humanoid robot pioneer, you can join the community [here](https://www.integrarobot.com/p/pioneros).",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💰 Softbank continues its bet on robotics, and apparently it is taking part in Agility's investment round, valuing the company at 1.75 billion dollars before the investment.",
+        "body_markdown": "The amount of robotics news we have this week is impressive; in addition to the 1X and NVIDIA news, here are many more interesting things happening in the sector:\n\n💰 [Softbank](https://techstartups.com/2025/10/23/softbank-held-talks-to-acquire-agility-robotics-in-push-to-dominate-humanoid-robotics/) continues its bet on robotics, and apparently it is taking part in Agility's investment round, valuing the company at 1.75 billion dollars before the investment."
+      },
+      {
+        "position": 2,
+        "headline": "📹 LinkCraft is a no-code creation platform developed by Agibot that transforms videos of human movement into precise robotic performances, combining AI-based motion capture, clo…",
+        "body_markdown": "📹 [LinkCraft](https://www.morningstar.com/news/pr-newswire/20251024cn06163/agibot-introduces-linkcraft-a-zero-code-creation-platform-turning-human-motion-videos-into-precise-robot-performances) is a no-code creation platform developed by Agibot that transforms videos of human movement into precise robotic performances, combining AI-based motion capture, cloud-based imitation learning and multimodal orchestration"
+      },
+      {
+        "position": 3,
+        "headline": "🇨🇳 Leju, the Chinese humanoid robot manufacturer, raises 200 million dollars and prepares its IPO.",
+        "body_markdown": "🇨🇳 [Leju](https://www.larepublica.co/globoeconomia/el-fabricante-chino-de-robots-humanoides-recauda-us-200-millones-de-salida-a-bolsa-4253570), the Chinese humanoid robot manufacturer, raises 200 million dollars and prepares its IPO. Among the participants in the latest funding round are Citic Goldstone and Shenzhen Investment Holdings."
+      },
+      {
+        "position": 4,
+        "headline": "🛒 Amazon continues to bet heavily on robotics and has just presented Blue Jay and Project Eluna, the latest robotics and artificial intelligence technology designed to make its…",
+        "body_markdown": "🛒 [Amazon](https://www.aboutamazon.com/news/operations/new-robots-amazon-fulfillment-agentic-ai) continues to bet heavily on robotics and has just presented Blue Jay and Project Eluna, the latest robotics and artificial intelligence technology designed to make its logistics operations more efficient."
+      },
+      {
+        "position": 5,
+        "headline": "🇨🇳 Noetix has announced the upcoming pre-sale of its latest humanoid robot, called Bumi, at a record price of 9,998 yen (approximately 1,400 dollars), thus becoming the first hi…",
+        "body_markdown": "🇨🇳 [Noetix](https://roboticsandautomationnews.com/2025/10/22/beijing-startup-noetix-robotics-launches-consumer-grade-humanoid-robot-at-1400/95731/?utm_source=robotnews.therundown.ai&utm_medium=newsletter&utm_campaign=amazon-s-massive-robot-hiring-spree) has announced the upcoming pre-sale of its latest humanoid robot, called Bumi, at a record price of 9,998 yen (approximately 1,400 dollars), thus becoming the first high-performance humanoid robot in China to go below 10,000 yen."
+      },
+      {
+        "position": 6,
+        "headline": "🤖 UBtech has announced that orders for Walker series humanoid robots will exceed 630 million yuan (17.3 million dollars) as part of the Equipment Acquisition and Installation pr…",
+        "body_markdown": "🤖 [UBtech](https://technode.com/2025/10/20/ubtechs-walker-series-humanoid-robot-orders-exceed-630-million-yuan-in-2025/?utm_source=robotnews.therundown.ai&utm_medium=newsletter&utm_campaign=amazon-s-massive-robot-hiring-spree) has announced that orders for Walker series humanoid robots will exceed 630 million yuan (17.3 million dollars) as part of the Equipment Acquisition and Installation project for an Embodied Intelligence Testing and Data Collection Centre in Guangxi province, China."
+      },
+      {
+        "position": 7,
+        "headline": "📹 MoMaGen is a new research work for generating demonstrations under soft and hard constraints for multi-step bimanual mobile manipulation.",
+        "body_markdown": "📹 [MoMaGen](https://momagen.github.io/) is a new research work for generating demonstrations under soft and hard constraints for multi-step bimanual mobile manipulation."
+      },
+      {
+        "position": 8,
+        "headline": "⚽ Goalkeeper teaches Unitree's G1 to save goals through learning from position-conditioned task motion constraints.",
+        "body_markdown": "⚽ [Goalkeeper](https://humanoid-goalkeeper.github.io/Goalkeeper/) teaches Unitree's G1 to save goals through learning from position-conditioned task motion constraints."
+      },
+      {
+        "position": 9,
+        "headline": "🧑‍💻 Unitree creates a course for students to learn to train and understand robot dogs.",
+        "body_markdown": "🧑‍💻 [Unitree](https://www.scmp.com/tech/tech-trends/article/3329835/chinas-unitree-builds-course-students-learn-how-train-understand-robot-dogs) creates a course for students to learn to train and understand robot dogs. The curriculum reflects China's efforts to increase robotics training data while expanding the sector's talent pool."
+      },
+      {
+        "position": 10,
+        "headline": "🎙️César Salazar interviews me on his AI podcast, where we cover the following topics:",
+        "body_markdown": "🎙️[César Salazar](https://www.youtube.com/watch?v=g6ixx8LYpcc) interviews me on his AI podcast, where we cover the following topics:\n\n- Physical AI vs generative AI: why humanoids are the next big platform.\n\n- Where the real opportunities (and limits) in robotics are today.\n\n- Work: which tasks get automated first and how to adapt.\n\n- Regulation and ethics: why a new law isn't needed, but rather compliance with existing ones.\n\n- The global map: China accelerates hardware; the US pushes software and ecosystem. Thank you very much for accompanying me on this journey of discovering robotics and Physical AI. If you know people who might be interested in what I publish here, I encourage you to share it with them."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 40; 10 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "52b917f3e510f93e878a7d0bef35291f9051873377cc278593007a6654706675"
+}

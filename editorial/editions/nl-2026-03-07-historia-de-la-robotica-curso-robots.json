@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-03-07-historia-de-la-robotica-curso-robots",
+  "source_url": "https://www.integrarobot.com/p/historia-de-la-robotica-curso-robots",
+  "published_on": "2026-03-07",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "History of robotics - Humanoid Robots Course",
+  "subtitle": "What the history of robotics teaches us about the arrival of humanoid robots.",
+  "body_markdown": "The history of robotics can give us some clues about how this technology may develop in the coming years.\n\nFirst of all, it is worth highlighting the need humanity has had throughout history to create machines that solve specific physical needs, starting with clocks and even **automata** that used common components.\n\nLater, as soon as computing began to develop, some scientists immediately set to work on developing robots, even using what can be considered one of the first attempts at artificial intelligence, especially in **computer vision**.\n\nAfter those first attempts at building robots came the AI winter and, apparently, the robotics winter too, so it can be seen that this technology has also been through hard times. Will they happen again? There may be ups and downs, but I don't think it will stall as much as it did in past decades.\n\nIn any case, what the history of robotics conveys to us is the existence of a solid foundation on which everything we are now experiencing is built, and how that foundation should serve to give this technology the solidity it needs to succeed.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 74; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

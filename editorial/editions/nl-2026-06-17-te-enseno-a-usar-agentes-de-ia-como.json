@@ -1,0 +1,87 @@
+{
+  "edition_id": "nl-2026-06-17-te-enseno-a-usar-agentes-de-ia-como",
+  "source_url": "https://www.integrarobot.com/p/te-enseno-a-usar-agentes-de-ia-como",
+  "published_on": "2026-06-17",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "I'll teach you to use AI agents such as Codex and Claude Code",
+  "subtitle": "This is your chance to learn about AI Agents: a course in which you learn to use Codex and Claude Code and then apply them to robotics.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/b4b63934-b5e2-4e91-a0b4-876393442309_1832x1498.png)\n\nIs Integrarobot going to become an AI newsletter? No, but since I have been using **Codex** intensively I have realized that it is going to become the necessary hinge for robotics to take off.\n\nSome time ago I wrote here about [AI Agents](https://www.integrarobot.com/p/necesitamos-agentes-inteligentes), but back then I saw them as an example to follow for the development of **VLAs**, because of the need for an AI that is able not only to recognize images and text (or generate them) but also to take action.\n\nBut now the approach is different, because AI Agents don't need to occupy the robot's brain, since specific models are being developed for that, such as **WAMs**; rather, the point is to use them for developing robots.\n\nThe people at [NVIDIA](https://research.nvidia.com/labs/gear/enpire/) have just given us an example of what I'm describing, so you know what I mean. It is the **ENPIRE** project, where 8 **Codex** agents have been put in charge of a fleet of robots, with the simple goal of solving a task as fast as possible, keeping the robots busy but safe, and not wasting valuable compute.\n\nThe result is that AI agents such as Codex, Claude Code and Kimi Code can now be used to test robots 24/7 and thereby significantly improve progress in software development and robot training, without having to wait for an engineer to be available to run these tests.\n\nAnd what I want to tell you here today is that ENPIRE is just the tip of the iceberg, because I'm going to give you the answer to a very common question: how is it possible that new humanoid robots keep coming out almost every day? For example, yesterday ENO was presented by Genesis, which until now had devoted itself to making AI software for robots. So the reason is clear: it is the use developers are making of AI to create robots.\n\nSo this is what I want to teach you in the course I have already started recording, of which a first class is available: [how to create your second digital brain about robotics](https://www.integrarobot.com/p/como-crear-tu-segundo-cerebro-digital), using Andrej Karpathy's **LLM Wiki** technique and the Open Knowledge Format Google has just presented.\n\nWe begin by creating the second brain because AI needs **context** in order to do its work, so the first thing we do in Codex or Claude Code is feed it with our knowledge about robotics, or with the knowledge available in this newsletter, in the [humanoid robot database](https://whyhumanoid.com/), … and then put it to work.\n\nWhat comes next is the most exciting part, since there is no limit and we can keep advancing as the development of robotics itself progresses.\n\nIf we start from scratch, the first thing will be learning to create **skills**, for example to evaluate robotics research that we can later apply in our projects. Every day new publications of this kind appear, but it is hard to know whether they can be of real use to us. When the AI knows us, it can tell us whether something new may be useful for our work or isn't worth stopping for.\n\nOnce we have created skills, which are a way of standardizing a work process, like a very elaborate prompt that must always be carried out the same way, we can move on to creating **automations**, which is the way for something already standardized to run recurrently over time. We can use this, for example, to keep up with news about the software or hardware we are using with robots.\n\nFrom here it gets more exciting, because we can start building things, virtual at first, but later we will be able to move to the physical by having AI agents control a real robot. And at that interface we find **simulators**, something that until the appearance of agents could be hard to handle because of its technical complexity, but which is now a piece of cake with Agents.\n\nIn the course we will keep learning everything new that comes out about Agents in order to apply it to robotics (or to whatever each person wants), because new developments keep coming. For example, we will learn to create software applications for controlling robots and also something that is talked about a lot now: how to generate **loops** so that agents work autonomously, just what NVIDIA has done with ENPIRE.\n\nThe ultimate goal of this new Integrarobot course is for you to be able to use AI Agents to feed robots with training data. There is a lot to learn to get there, which is why I think this is the best time to get down to work.\n\n---\n\nSo I'd love to share with you everything I'm discovering about AI Agents and how to apply them to robotics, which is why I encourage you to join the [Robot Pioneers Community](https://www.integrarobot.com/p/pioneros) and thereby have exclusive access to the course content.\n\n*Editorial note, 27 November 2026: Links to the former robot spreadsheet now lead to the current Why Humanoid? catalogue.*",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💰 Theker closes an 85 million dollar Series A, presented as one of the largest European robotics rounds, led by CRV with participation from Samsung, LVMH, Inditex, Henkel Ventur…",
+        "body_markdown": "💰 [Theker](https://ecosistemastartup.com/theker-cierra-85m-en-serie-a-mayor-ronda-de-robotica-en-europa/) closes an **85 million dollar** Series A, presented as one of the largest European robotics rounds, led by CRV with participation from Samsung, LVMH, Inditex, Henkel Ventures and Cathay Innovation. The Barcelona startup works on industrial robots with AI capabilities for unstructured environments such as retail, waste, food and logistics. A sign that Europe is starting to fund robotics when there are customers, real variability and measurable ROI."
+      },
+      {
+        "position": 2,
+        "headline": "🤖 NEURA Robotics announces a Series C of up to 1.4 billion dollars to scale production, expand globally and accelerate its Neuraverse platform.",
+        "body_markdown": "🤖 [NEURA Robotics](https://neura-robotics.com/series-c/) announces a Series C of up to **1.4 billion dollars** to scale production, expand globally and accelerate its Neuraverse platform. The company wants to bring its 4NE1 humanoid and its cognitive robots to industrial customers together with partners such as Bosch, Schaeffler, NVIDIA, Qualcomm and Amazon. More than a round, it is a bet on turning every deployment into a source of data to improve the robots."
+      },
+      {
+        "position": 3,
+        "headline": "👁️ OpenCV launches its version 5.0, a major update of the computer vision library with a new DNN engine, better ONNX support, deep changes to 3D modules and cleanup of old APIs.",
+        "body_markdown": "👁️ [OpenCV](https://opencv.org/opencv-5/) launches its version 5.0, a major update of the **computer vision** library with a new DNN engine, better ONNX support, deep changes to 3D modules and cleanup of old APIs. For robotics, OpenCV remains a basic piece of perception, inspection, cameras, calibration and visual pipelines."
+      },
+      {
+        "position": 4,
+        "headline": "🖐️ Chris Paxton explains why robotic hands are improving quickly but remain an important bottleneck: cost, robustness, tactile sensors, force and mechanical design.",
+        "body_markdown": "🖐️ [Chris Paxton](https://itcanthink.substack.com/p/robot-hands-are-getting-better) explains why **robotic hands** are improving quickly but remain an important bottleneck: cost, robustness, tactile sensors, force and mechanical design. The article compares open options such as CRAFT, RUKA or LEAP with more expensive commercial hands, and points out that there are already designs with specifications close to the human hand. For humanoids, the hand stops being an accessory and becomes a critical manipulation component."
+      },
+      {
+        "position": 5,
+        "headline": "🌐 Unitree appears alongside BYD, Alibaba, Baidu and other Chinese companies on the Pentagon's 1260H list, which identifies companies considered linked to the Chinese military ec…",
+        "body_markdown": "🌐 [Unitree](https://www.xataka.com/empresas-y-economia/pentagono-incluye-a-byd-unitree-alibaba-otros-gigantes-chinos-su-lista-negra-quitarse-competencia-a-canonazos) appears alongside **BYD**, Alibaba, Baidu and other Chinese companies on the Pentagon's 1260H list, which identifies companies considered linked to the Chinese military ecosystem. The measure is not equivalent to a direct sanction, but it limits Department of Defense contracts and anticipates indirect restrictions from 2027. Humanoid robotics thus fully enters industrial **geopolitics**."
+      },
+      {
+        "position": 6,
+        "headline": "🧰 Rotaku opens reservations for Domo, a humanoid platform for developers starting at 2,999 dollars and offering versions with SDK, URDF, simulation, teleoperation, policy traini…",
+        "body_markdown": "🧰 [Rotaku](https://www.robotics247.com/article/rotaku-opens-reservations-for-domo-humanoid-robot-platform-with-an-under-3k-price-tag) opens reservations for **Domo**, a humanoid platform for developers starting at 2,999 dollars and offering versions with SDK, URDF, simulation, teleoperation, policy training and hand options. It is not presented as a finished robot for deployment, but as hardware for experimenting with embodied AI. The signal is clear: the entry price for trying humanoids outside big labs is falling."
+      },
+      {
+        "position": 7,
+        "headline": "🛠️ Alfred is a physical AI startup backed by Sam Altman, Khosla Ventures and SV Angel that seeks to accelerate software development for robots and vehicles.",
+        "body_markdown": "🛠️ [Alfred](https://es.qz.com/sam-altman-alfred-startup-robtica-software-060226) is a physical AI startup backed by **Sam Altman**, Khosla Ventures and SV Angel that seeks to accelerate software development for robots and vehicles. According to the available information, it was founded by former Tesla and Meta employees, works out of Hawthorne and is reportedly raising capital at a valuation of 40 million dollars."
+      },
+      {
+        "position": 8,
+        "headline": "🪜 LadderMan presents a system for humanoids to climb ladders and manipulate objects while leaning on them, combining imitation learning, reinforcement, depth perception and sim-…",
+        "body_markdown": "🪜 [LadderMan](https://ladderman-robot.github.io/) presents a system for humanoids to climb **ladders** and manipulate objects while leaning on them, combining imitation learning, reinforcement, depth perception and sim-to-real transfer. The work, with authors from Amazon FAR, Berkeley, Stanford, CMU and USC, shows tasks such as straightening a picture, handing over a box or screwing in a light bulb."
+      },
+      {
+        "position": 9,
+        "headline": "🪑 Unitree takes part with BitRobot Network, Lightwheel AI and Singapore Institute of Technology in the Humanoid IKEA Assembly Challenge for IROS 2026.",
+        "body_markdown": "🪑 [Unitree](https://x.com/UnitreeRobotics/status/2064542289842823221) takes part with BitRobot Network, Lightwheel AI and Singapore Institute of Technology in the Humanoid **IKEA Assembly Challenge** for IROS 2026. The challenge consists of evaluating whether humanoids can assemble IKEA-type furniture, a less flashy task than a somersault but much more useful for measuring perception, planning, force, hands and error recovery. It is the kind of benchmark that brings robotics closer to real loco-manipulation tasks."
+      },
+      {
+        "position": 10,
+        "headline": "🧬 Humanoid Anatomy publishes a visual map of the humanoid value chain, separating hardware and intelligence segments, suppliers, listed companies and public exposure to the sector.",
+        "body_markdown": "🧬 [Humanoid Anatomy](https://humanoid-anatomy.com/) publishes a visual map of the **humanoid value chain**, separating hardware and intelligence segments, suppliers, listed companies and public exposure to the sector. This new website helps to understand where the value lies among actuators, sensors, compute, batteries, software, platforms and manufacturers. For following the market, the anatomy of the humanoid is starting to be as important as the final robot."
+      },
+      {
+        "position": 11,
+        "headline": "📚 Introduction to Autonomous Robots is an open document on GitHub containing a book and educational materials on autonomous robots, with more than 3,000 stars and associated rep…",
+        "body_markdown": "📚 [Introduction to Autonomous Robots](https://github.com/Introduction-to-Autonomous-Robots) is an open document on GitHub containing a **book** and educational materials on autonomous robots, with more than 3,000 stars and associated repositories for web and labs. It is a useful resource for building technical judgement on perception, control, navigation and autonomy."
+      },
+      {
+        "position": 12,
+        "headline": "🏠 Tuya partners with Zeroth to integrate household robots with sensors, memory and connected home devices.",
+        "body_markdown": "🏠 [Tuya](https://robotica.es/hogar/tuya-zeroth-robots-hogar-ia-fisica/) partners with **Zeroth** to integrate household robots with sensors, memory and connected home devices. Tuya contributes its AI+IoT platform, Physical AI Engine and OmniMem, while Zeroth contributes consumer robots such as the M1. The goal is for the household robot not to depend only on its cameras: it will need context about the home, routines, presence and memory to act sensibly."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 98; 12 news items; no audio/video transcription claimed. Public-edition adaptation: obsolete catalogue links now open the current website; a historical survey opens its original article. A labelled editorial note discloses the change. Unchanged originals remain in the local source archive, not Git."
+  },
+  "original_sha256": null
+}

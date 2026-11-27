@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2026-04-01-un-metodo-para-integrar-robots",
+  "source_url": "https://www.integrarobot.com/p/un-metodo-para-integrar-robots",
+  "published_on": "2026-04-01",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "A method for integrating robots",
+  "subtitle": "My proposal for starting down the road of deploying robots in companies.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/f4651ea1-ec51-4555-bf28-de756c62e439_1792x1080.jpeg)\n\nWhen I launched the **Integrarobot** project, I chose the name thinking about what the process of integrating robots into companies, homes and, in general, the real economy would be like.\n\nBut the symbol accompanying the robot in the logo has a deeper meaning.\n\nI chose the **integral** symbol not for purely aesthetic reasons, but because I sensed that robotics would not arrive as an instant revolution, but as a progressive evolution.\n\nIn mathematics, an integral represents the continuous accumulation of small contributions over time. It does not measure an instant. It measures everything that adds up.\n\nAnd when I look at how robotics is developing, it is easy to see what is happening. Companies don't go from zero robots to a fully automated factory.\n\n- First, a robot appears that solves a specific task.\n- Then another that automates part of the process.\n- Later, the workflow is reorganized.\n- And little by little the impact starts to accumulate.\n\nThat is why robotics adoption works like an integral.\n\n- Every small improvement adds up.\n- Every automated task adds more value.\n- Every operational lesson accumulates over time.\n\nAnd over time that sum ends up transforming the company.\n\nWe have learned of many cases in recent months of humanoid robots being integrated into industry; for example, we have talked about the work pilots of **Figure**'s robots in **BMW**'s factories or **Agility**'s in **Toyota**'s.\n\nI also find the initiatives being carried out by the English startup **Humanoid** very interesting, because it is the one communicating most about them. Thus we see that they have already run work pilots of their humanoid robot at the plants of **Schaeffler**, **Siemens** and **Ford**, and the most recent is the work they have done with [SAP](https://thehumanoid.ai/hmnd-01-alpha-goes-to-work-humanoid-completes-automotive-manufacturing-logistics-poc-with-sap-and-martur-fompak/) and Martur Fompak, where they completed a proof of concept in a real production logistics environment.\n\nIf we multiply these proofs of concept by all the companies currently manufacturing humanoid robots, we will probably have many hundreds of cases in which this technology is being tested, which becomes a solid working base that will later allow it to be transferred to all kinds of companies and environments.\n\nFollowing this example, when an SME, or even a family, considers buying a robot, there is a lot of work to do first. In fact, there is a fairly clear method to apply to get started.\n\n1️⃣ First you have to generate **context**. Because, just as with AI, the quality of the robot's work will depend on how clear the task to be performed is and how specific the limits of what it has to do are. If the robot doesn't have the details of how an operation is done, it will have to improvise, and I think robot hallucinations can have much worse consequences than AI ones. At this point I recommend using AI to document the company's entire operational process, which will also help detect the bottlenecks where robots can add the most value at the start.\n\n2️⃣ Next, it is necessary to **document** the real work on video. Once we are clear about all the processes that take place in the company and have identified where robots could take part to do things more efficiently, it is time to **record the operation on video**, because that will be the knowledge that will have to be transmitted to the robot first-hand for its training. At this point a situation of conflict arises over how workers may perceive the arrival of robots. Since we still have little experience here, I'm afraid we will have to learn about it as we go.\n\n3️⃣ And finally, it is essential to **simulate**. Before buying a robot, it makes sense to model how it can fit into the company's current work system. And here another of the utilities AI can offer you is creating simulators of how robots work. Although you can turn to one of the simulators robotics companies have created, what I recommend is that you build it yourself, for example as a Claude artifact. To do this you will have to give it the context from point 1 and ask it to program it as if the work were going to be done with a robotic arm. This way you will better understand how the robot will work before you take the plunge and buy it, and this will save you future problems you may not have taken into account.\n\nSo **integrating robots** does not begin when the robot arrives, but much earlier, when the company begins to understand its processes and to improve small parts of the system.\n\nBecause, as in an integral, the real impact does not appear at a single point, but when all the improvements accumulate.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🏭 Fagor and Funditec have launched a joint venture to manufacture industrial humanoid robots in Europe.",
+        "body_markdown": "🏭 [Fagor](https://www.fagor.eus/es/fagor-arrasate-y-funditec-crean-primus-robotics-para-fabricar-robots-humanoides-en-europa/) and Funditec have launched a joint venture to manufacture industrial humanoid robots in Europe. Their first product, **Primus P1**, will be geared to manipulation and maintenance tasks. The company plans to produce 200 units a year and scale to more than 3,000, combining artificial intelligence with Fagor's engineering experience to facilitate collaboration between robots, operators and industrial machinery."
+      },
+      {
+        "position": 2,
+        "headline": "⚙️ RoboForce, the Californian start‑up, obtained $52M ($67M cumulative) to accelerate its robotics foundation model and move from prototypes to commercial deployments.",
+        "body_markdown": "⚙️ [RoboForce](https://techfundingnews.com/as-industrial-labour-shortages-grow-roboforce-grabs-52m-for-ai-robots/), the Californian start‑up, obtained $52M ($67M cumulative) to accelerate its robotics foundation model and move from prototypes to commercial deployments. Its \"Robo‑Labor\" platform combines hardware and physical AI agents to perform **hard and dangerous work** in sectors such as mining, data centres or solar energy, leveraging a RaaS model that reduces costs and tackles the labour shortage."
+      },
+      {
+        "position": 3,
+        "headline": "🔟 Agibot announced that it has manufactured its 10,000th humanoid robot, a milestone achieved in just three months by going from 5,000 to 10,000 units thanks to a mature supply…",
+        "body_markdown": "🔟 [Agibot](https://www.prnewswire.com/news-releases/agibot-reaches-10-000-units-as-real-world-demand-for-robots-accelerates-302728295.html) announced that it has manufactured its **10,000th** humanoid robot, a milestone achieved in just three months by going from 5,000 to 10,000 units thanks to a mature supply chain. Mass production reflects a leap toward commercial demand: its robots are already used in logistics, retail, hospitality, education and even production lines, with deployments not only in China but also in Europe, North America and Asia."
+      },
+      {
+        "position": 4,
+        "headline": "🖐️ Xiaomi presented a bionic hand for its CyberOne humanoid that is 60% more compact and has 22‑27 degrees of freedom, matching the size and mobility of a human hand.",
+        "body_markdown": "🖐️ [Xiaomi](https://www.humanoidsdaily.com/news/sweating-the-details-xiaomi-unveils-upgraded-cyberone-hand-with-bionic-glands-and-full-palm-touch) presented a **bionic hand** for its CyberOne humanoid that is 60% more compact and has 22‑27 degrees of freedom, matching the size and mobility of a human hand. The new version incorporates tactile sensors across the whole palm and uses sensorized gloves for training; in addition, it reaches 150,000 grip cycles without failure and includes a \"sweat gland\" system using liquid cooling that dissipates heat and allows it to operate for longer."
+      },
+      {
+        "position": 5,
+        "headline": "🌱 Nature Robots, a DFKI spin‑off, closed a €4M seed round led by Climentum Capital, Bayern Kapital and Planetary Impact Ventures to scale its modular autonomy software for agric…",
+        "body_markdown": "🌱 [Nature Robots](https://naturerobots.com/en/news/seed-invest/), a DFKI spin‑off, closed a €4M seed round led by Climentum Capital, Bayern Kapital and Planetary Impact Ventures to scale its modular autonomy software for agricultural machinery. The funding will allow it to expand its team while its autonomous navigation and monitoring platform seeks to reduce pesticide use and CO₂ emissions in agriculture."
+      },
+      {
+        "position": 6,
+        "headline": "🍔 McDonald's is testing in Shanghai humanoid robots from Keenon Robotics that greet and serve customers wearing the chain's uniform.",
+        "body_markdown": "🍔 [McDonald's](https://interestingengineering.com/ai-robotics/mcdonalds-humanoid-robots-deliver-food) is testing in Shanghai humanoid robots from **Keenon Robotics** that greet and serve customers wearing the chain's uniform. The experiment seeks to evaluate how automation can improve service and the restaurant experience, although for now no mass deployment has been confirmed.\n\nOther reading to keep learning about world models:"
+      },
+      {
+        "position": 7,
+        "headline": "Will World Models Allow Robots to Think?: world models could be the key advance that allows robots to go from executing programmed tasks to reasoning about the physical world an…",
+        "body_markdown": "[Will World Models Allow Robots to Think?](https://x.com/chris_j_paxton/status/2037037923523023250): world models could be the key advance that allows robots to go from executing programmed tasks to reasoning about the physical world and generalizing skills."
+      },
+      {
+        "position": 8,
+        "headline": "World Models: Computing the Uncomputable: world models are AI models capable of learning internal representations of how the world works and using them to imagine possible futur…",
+        "body_markdown": "[World Models: Computing the Uncomputable](https://www.notboring.co/p/world-models): world models are AI models capable of learning internal representations of how the world works and using them to imagine possible futures before acting."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 81; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "9b3d12f57feed7c31daa90898a60082d6ec9b7eac1cd3ca87cd91a79ffbb3640"
+}

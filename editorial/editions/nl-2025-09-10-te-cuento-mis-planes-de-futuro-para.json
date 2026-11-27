@@ -1,0 +1,52 @@
+{
+  "edition_id": "nl-2025-09-10-te-cuento-mis-planes-de-futuro-para",
+  "source_url": "https://www.integrarobot.com/p/te-cuento-mis-planes-de-futuro-para",
+  "published_on": "2025-09-10",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Let me tell you my future plans for Integrarobot",
+  "subtitle": "The time has come to launch the Humanoid Robots course :)",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/dcf040d2-5b05-48df-8606-7b79b53f8670_1000x1000.jpeg)\n\nHi, I'm Javier Martín, founder of **Integrarobot**. First of all, I wanted to thank you for being one of the 800 people who read this newsletter every week.\n\nI also wanted to tell you that the time has come to take a new step in the outreach work I do on **Humanoid Robots**, and I would like to invite you to take part in the [Webinar](https://www.integrarobot.com/p/te-cuento-mis-planes-de-futuro-para) I am going to hold on 17 September from 18:00 to 19:00.\n\nThrough this webinar I want to tell you about all the news that has happened in the world of Humanoid Robots in recent months. I will also take the opportunity to explain why **Physical AI** is going to be the next great technological revolution and why Humanoid Robots are the most appropriate form for carrying it out.\n\nThis webinar will also serve as the kick-off for the launch of the [Humanoid Robots Course](https://cursorobotshumanoides.com/), which I am going to open through a **Crowdfunding** campaign that I will launch in October. In addition, the course will serve as the starting point for setting up a **community of Humanoid Robot pioneers**.\n\nI am aware that this technology is not yet as mature as Generative AI or others that are already part of our daily lives, but that is precisely why I want to create the pioneers community: to bring together people eager to get ahead of the future and help make this technology a reality.\n\nBeing part of the pioneers community will give you access to the video-recorded Humanoid Robots course, the Humanoid Robots guide in PDF format and the weekly updates that I will also be making on video.\n\nThe price of the course will be **100 euros**, and by taking it you will become part of the pioneers community. In addition, every year you will be able to renew your membership of the pioneers community to obtain the course updates and the Humanoid Robots guide.\n\nSo now you know what I plan to do in the short term, but before leaving you with the most relevant Humanoid Robot news of the last week, here is a short update on the other points that make up my plan with Integrarobot:\n\n1. In terms of outreach, in addition to the newsletter I am sharing a lot of content and everything I learn on social networks, especially [Linkedin](https://www.linkedin.com/in/javiermartinrobles/), [X](https://x.com/liderarmente/) and [Instagram](https://www.instagram.com/liderarmente), where I encourage you to connect.\n2. I have already told you about the course above, so I'll skip that here.\n3. I will start producing the investment theses shortly; in fact, it seems **Unitree**'s IPO is very close, so I will do the corresponding report, and I am also working on the analysis of **UBTech**.\n4. Advisory work for companies is also going well; in fact, I am reaching an agreement with a large technology consultancy to accompany me throughout the process. My intention is to be able to act as an advisor on these projects and have them do all the implementation side, since they have many more resources.\n\nSo as you can see I'm going full steam with Integrarobot. I'm really looking forward to doing the webinar and launching the crowdfunding campaign. Thank you again for accompanying me on this journey, and now, on to the news from the sector.\n\n---\n\n# Is Figure the most advanced company in humanoid robotics?\n\nI didn't want to end this newsletter without sharing a reflection on the state of development of the robots from the main brands, and highlighting **Figure**'s milestone with the demos of its robot loading the washing machine and the dishwasher.\n\nWhen you devote yourself to following a business sector very closely, you get the chance to see how different the marketing and communication techniques used by different companies are, which, in the case of robots, can tell us a lot about how close or far we are from having one of these machines do our work in the home, in services or in industry.\n\nThus, in recent weeks we have been seeing demonstrations from different robot brands, some of which seemed quite staged, others quite casual, and most of them as part of the training carried out by the development companies themselves. And of all these demonstrations, probably the most spectacular is that of the robots from the company Figure, where they show us the capabilities of their F.02 robot performing different household tasks.\n\nFrom these demonstrations we should highlight the way the company refers to the advances of its **Helix** technology, which is the Vision Language Action (VLA) model that allows robots to perform these tasks, which are very simple for a human to do but which for a machine are real feats.\n\nVLAs are the brains of humanoid robots, just as LLMs are the brains of intelligent assistants and intelligent agents. In fact, VLAs did not exist until it was shown how LLMs could be valuable in robotics.\n\nFigure with Helix is just one of the companies that has decided to develop its own VLA. For example, **1X** presented its own at the beginning of the summer, and **Agility Robotics** has also just announced that it has created a foundation model for controlling its Digit robot.\n\nThis strategy contrasts with that of companies like **Unitree**, which are very focused on the hardware side, or that of **Skild AI**, which relies solely on software.\n\nSo what we see is a very varied ecosystem of companies: some do software, others hardware, and some, like Figure, dare to do both.\n\nIn addition, Figure's videos show us a fairly advanced state of development. We don't know how staged the household chore videos are, but the one of operations on a logistics line seems quite real, and the robot's ability to do its job is impressive.\n\n[Video embedded in the original article]\n\n*Editorial note, 27 November 2026: The historical survey link opens the original Spanish article, where the form was first shared.*",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "BEHAVIOR Challenge is a fantastic initiative led by historic AI figure Li Fei-Fei to create simulations of 100 human activities that robots may perform in the future.",
+        "body_markdown": "[BEHAVIOR Challenge](https://behavior.stanford.edu/) is a fantastic initiative led by historic AI figure **Li Fei-Fei** to create simulations of 100 human activities that robots may perform in the future."
+      },
+      {
+        "position": 2,
+        "headline": "Optimus is still very green, even if they paint it gold.",
+        "body_markdown": "[Optimus](https://www.linkedin.com/posts/javiermartinrobles_optimus-a%C3%BAn-est%C3%A1-muy-verde-aunque-lo-pinten-activity-7369244033124114432-Yf0R?utm_source=share&utm_medium=member_desktop&rcm=ACoAAACUg4cBnZG9b9gtexR0B-xb1nwV3qvwQfY) is still very green, even if they paint it gold. My reflections on everything new we are learning about **Tesla**'s robot: version 2.5, the manufacturing delays, the change of training model, …"
+      },
+      {
+        "position": 3,
+        "headline": "Runaway is one of the leading startups in Generative video AI and is now moving into the world model business, where it plans to start competing with Google's Genie and NVIDIA's…",
+        "body_markdown": "[Runaway](https://techcrunch.com/2025/09/01/why-runway-is-eyeing-the-robotics-industry-for-future-revenue-growth) is one of the leading startups in Generative video AI and is now moving into the world model business, where it plans to start competing with **Google**'s Genie and **NVIDIA**'s Cosmos."
+      },
+      {
+        "position": 4,
+        "headline": "Agility has been taking important steps lately; on the technology side in particular, we can highlight the development of its VLA and also the important commercial agreement it…",
+        "body_markdown": "[Agility](https://www.agilityrobotics.com/content/training-a-whole-body-control-foundation-model) has been taking important steps lately; on the technology side in particular, we can highlight the development of its **VLA** and also the important commercial agreement it has reached with the Japanese company [Abico](https://x.com/CyberRobooo/status/1965596353570164938)."
+      },
+      {
+        "position": 5,
+        "headline": "RoboBallet is Google's latest initiative in robotics.",
+        "body_markdown": "[RoboBallet](https://x.com/googledeepmind/status/1965040645103407572?s=46) is **Google**'s latest initiative in robotics. It is an AI system that makes it possible to precisely choreograph a team of up to 8 robotic arms working together without collisions."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 33; 5 news items; no audio/video transcription claimed. Public-edition adaptation: obsolete catalogue links now open the current website; a historical survey opens its original article. A labelled editorial note discloses the change. Unchanged originals remain in the local source archive, not Git."
+  },
+  "original_sha256": null
+}

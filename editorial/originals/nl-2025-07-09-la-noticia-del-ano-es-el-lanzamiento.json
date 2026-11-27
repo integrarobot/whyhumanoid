@@ -1,0 +1,47 @@
+{
+  "edition_id": "nl-2025-07-09-la-noticia-del-ano-es-el-lanzamiento",
+  "language": "es",
+  "title": "La noticia del año es el lanzamiento del K-Bot de K-Scale",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/c471e8dc-e995-45b1-9350-b91e2a1dd2dd_1000x450.jpeg)\n\nEl símbolo de la startup que nace en un garaje ha sido muy relevante a lo largo de la historia de la tecnología. Por ejemplo, cuando los fundadores de **Apple** empezaron a diseñar su primer ordenador personal en Los Altos, California, ya existían otras empresas que fabricaban ordenadores, como era **IBM**, sin embargo la startup acabó triunfando gracias a ese espíritu de innovación y las ganas de cambiar el status quo.\n\nCon [K-Scale](https://www.kscale.dev/) podría ocurrir algo similar. Aunque el sector de la robótica humanoide es demasiado nuevo, sí que existen ya algunas empresas con muchos recursos, por ejemplo **Tesla** por ser ya una empresa consolidada, al igual que otros fabricantes de coches o de electrónica, sin embargo parece que la mayoría de las empresas de robots humanoides han optado por un camino basado en realizar grandes rondas de inversión.\n\nEl caso de K-Scale lo podríamos asemejar al de otras iniciativas alternativas basadas en software y hardware libre que también han triunfado a lo largo de la historia, como por ejemplo **Linux**, **Firefox** y **Arduino**. Porque lo que destaca de esta empresa son las ganas de acelerar el desarrollo de la robótica de una forma que hasta ahora no se había visto, al menos en occidente y para ello la mejor opción que han encontrado es el **Open Source**.\n\n> Atentos a la misión de K-Scale porque denota su ambición y ganas de ayudar al avance de la civilización: *acelerar el camino hacia un mundo con miles de millones de robots de propósito general, haciéndolos de código abierto y universalmente accesibles. Creemos que esta es la mejor ruta para convertir a la humanidad en una civilización de Tipo 1 en la escala de Kardashev*.\n\n¿Y qué es eso de civilización de Tipo 1 en la escala de Kardashev? bueno, es un concepto muy friki pero que cada vez más empieza a sonar en los círculos tecnológicos, especialmente gracias al momento de avance exponencial que estamos viviendo con la Inteligencia Artificial.\n\nNikolái Kardashev fue un astrofísico soviético que en 1964 propuso una clasificación para medir el nivel de desarrollo tecnológico de una civilización en función de la cantidad de energía que es capaz de utilizar.\n\nEl Tipo I dentro de esta escala corresponde con la Civilización planetaria, que es aquella que es capaz de utilizar toda la energía disponible en su planeta de origen. En el caso de la Tierra, esto equivaldría aproximadamente a 10¹⁶ vatios (provenientes de energía solar, eólica, térmica, …) pero nosotros aún no hemos alcanzado este nivel; estamos en torno al 0.73 según las principales estimaciones.\n\nPero bueno, no nos desviemos tanto de K-Scale y los robots humanoides, porque la noticia del momento es que el K-Bot ya se puede reservar y nos muestra un panorama donde muchos aficionados a la robótica van a poder acceder a un robot humanoide de los más avanzados del mercado por un precio de entre 11.000 y 18.000 dólares, lo cual puede convertirse en un catalizador que acelere significativamente el desarrollo de esta tecnología, especialmente a nivel de software.\n\nAlgo bastante similar lo habíamos vivido recientemente con la [compra de Pollen Robotics por parte de Hugging Face](https://www.integrarobot.com/p/abierto-o-cerrado) en lo relativo a la aceleración del desarrollo del software para robots gracias a la accesibilidad que supone que sea open source, por lo tanto cuantas más iniciativas de este tipo veamos más rápido vamos a llegar a ese futuro donde millones de robots ayudan a liberar a las personas de trabajos tediosos o perjudiciales para la salud.\n\n# K-bot de K-Scale frente a G1 de Unitree\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/434ed599-07f9-4086-9288-62525dfdacab_1497x1600.png)\n\nSi llevas un tiempo leyendo esta newsletter y te has fijado en la sección de noticias con la que terminan los artículos, habrás comprobado que cada semana se producen avances importantes en el desarrollo de software de control y entrenamiento de robots, muchos de los cuales los han desarrollado científicos que ya trabajan con el robot **G1** de **Unitree**.\n\nPor lo tanto podríamos decir que gracias a Unitree se ha facilitado enormemente el acceso a esta tecnología, para que los desarrolladores de IA puedan hacer que la parte de software se ponga al mismo nivel que la de hardware. Así que ahora la tendencia se va a intensificar con la llegada del K-Bot de K-Scale, ya que está recibiendo miles de pedidos de todo el mundo, seguramente de gente que quiere trabajar en mejorar esta tecnología.\n\n> Nota: la imagen de comparación de robots corresponde a la web [Why Humanoid?](https://whyhumanoid.com/) que estoy haciendo para dar visibilidad a los principales robots que se están desarrollando y poco a poco ir creando herramientas de utilidad que puedan ayudar en el futuro a tomar una decisión de compra de uno de estos robots. El proyecto está muy verde pero ya se puede intuir que con el tiempo habrá una cantidad enorme de robots con características muy diferentes por lo que no será sencillo decidirse por uno u otro.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📦 Amazon está pisando el acelerador a tope con el tema de la robótica y han anunciado que ya cuentan con 1 millón de robots que se beneficiarán del desarrollo de su modelo funda…",
+        "body_markdown": "📦 [Amazon](https://www.aboutamazon.com/news/operations/amazon-million-robots-ai-foundation-model) está pisando el acelerador a tope con el tema de la robótica y han anunciado que ya cuentan con 1 millón de robots que se beneficiarán del desarrollo de su modelo fundacional de IA mejorando su eficiencia en un 10%."
+      },
+      {
+        "position": 2,
+        "headline": "♻️ MARBLE, es un benchmark diseñado para evaluar la capacidad de los modelos de lenguaje multimodal (MLLMs) para razonar paso a paso en contextos complejos con información visua…",
+        "body_markdown": "♻️ [MARBLE](https://arxiv.org/pdf/2506.22992), es un benchmark diseñado para evaluar la capacidad de los modelos de lenguaje multimodal (MLLMs) para razonar paso a paso en contextos complejos con información visual, espacial y física."
+      },
+      {
+        "position": 3,
+        "headline": "💰 Genesis obtiene financiación por valor de 105 millones para desarrollar un modelo fundacional de robótica universal basado en la simulación.",
+        "body_markdown": "💰 [Genesis](https://www.iotworldtoday.com/robotics/robotics-startup-raises-105m-to-build-ai-model-for-robots) obtiene financiación por valor de 105 millones para desarrollar un modelo fundacional de robótica universal basado en la simulación. El dinero proviene de Khosla Ventures, Eclipse, Eric Schmidt, HSG y Xavier Niel."
+      },
+      {
+        "position": 4,
+        "headline": "🍎 Tacta Systems capta 75 millones para el desarrollo de su tecnología Dextrous Intelligence el sistema nervioso para robots, que les ayuda a realizar tareas delicadas, variables…",
+        "body_markdown": "🍎 [Tacta Systems](https://www.therobotreport.com/tacta-systems-raises-75m-give-robots-smart-nervous-system/) capta 75 millones para el desarrollo de su tecnología Dextrous Intelligence el sistema nervioso para robots, que les ayuda a realizar tareas delicadas, variables y similares a las humanas con flexibilidad, eficiencia y autonomía."
+      },
+      {
+        "position": 5,
+        "headline": "🛜 UAIbot es un simulador de robots que funciona directamente en la web, a diferencia de otros simuladores que requieren procesos complicados de instalación de software.",
+        "body_markdown": "🛜 [UAIbot](https://uaibot.github.io/) es un simulador de robots que funciona directamente en la web, a diferencia de otros simuladores que requieren procesos complicados de instalación de software. Esta web facilitará mucho el entendimiento del funcionamiento de los robots."
+      },
+      {
+        "position": 6,
+        "headline": "🤸 El post-entrenamiento de los VLA es un estudio que busca mejorar la capacidad de un robot para interactuar con el entorno en las tareas asignadas, de forma análoga al proceso…",
+        "body_markdown": "🤸 [El post-entrenamiento de los VLA](https://arxiv.org/abs/2506.20966v1) es un estudio que busca mejorar la capacidad de un robot para interactuar con el entorno en las tareas asignadas, de forma análoga al proceso de adquisición de habilidades motoras en los seres humanos."
+      },
+      {
+        "position": 7,
+        "headline": "🤖 Chris Paxton se pregunta ¿Cómo podemos obtener suficientes datos para entrenar un robot GPT?",
+        "body_markdown": "🤖 [Chris Paxton](https://itcanthink.substack.com/p/how-can-we-get-enough-data-to-train) se pregunta ¿Cómo podemos obtener suficientes datos para entrenar un robot GPT? y la respuesta pasa por los datos de simulación, además de extraer datos de los vídeos donde aparecen humanos realizando todo tipo de actividades."
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Hardware. Humanoid Robots Course · Blog · Why Humanoid?</title>
+<meta name="description" content="In this class we look at the state of development of the hardware used as the &quot;physical brain&quot; for robots.">
+<link rel="canonical" href="https://whyhumanoid.com/blog/nl-2025-11-18-el-hardware-de-ia-tercera-clase-del/">
+<meta name="theme-color" content="#0B0C0E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Why Humanoid?">
+<meta property="og:url" content="https://whyhumanoid.com/blog/nl-2025-11-18-el-hardware-de-ia-tercera-clase-del/">
+<meta property="og:title" content="AI Hardware. Humanoid Robots Course · Blog · Why Humanoid?">
+<meta property="og:description" content="In this class we look at the state of development of the hardware used as the &quot;physical brain&quot; for robots.">
+<meta property="og:image" content="https://whyhumanoid.com/assets/og/whyhumanoid-og-v1.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap">
+<link rel="stylesheet" href="/assets/pages.css?v=05f0e248b3">
+<link rel="stylesheet" href="/assets/editorial.css?v=8bc12aeca7">
+</head>
+<body>
+<header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><button class="cat-toggle" id="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-menu" hidden>Categories<span class="chev" aria-hidden="true"></span></button><nav class="cats" id="cat-menu" aria-label="Categories"><a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a><a href="/reports/">Reports</a></nav></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/blog/">Blog</a> <span aria-hidden="true">/</span> <a href="/blog/2025/">2025</a> <span aria-hidden="true">/</span> <span aria-current="page">AI Hardware. Humanoid Robots Course</span></nav><article class="ed-article">
+<p class="kicker">Blog</p>
+<h1>AI Hardware. Humanoid Robots Course</h1>
+<p class="lede">In this class we look at the state of development of the hardware used as the &quot;physical brain&quot; for robots.</p>
+<p class="meta">By Javier Martín · First published in Spanish on <time datetime="2025-11-18">18 November 2025</time> · English translation dated <time datetime="2026-11-27">27 November 2026</time> · <a href="https://www.integrarobot.com/p/el-hardware-de-ia-tercera-clase-del" rel="noopener noreferrer">Original edition</a></p>
+<div class="ed-body">
+<p>Artificial intelligence hardware allows a humanoid robot to perceive, reason and act in real time. It consists mainly of SoCs (integrated circuits) designed to run vision, language and motor control models as efficiently as possible. The current trend is to integrate CPU, GPU, NPU and memory into a single chip optimized for <strong>physical AI</strong>.</p>
+<h3><strong>NVIDIA as the dominant standard</strong></h3>
+<p>NVIDIA has become the central supplier of hardware for humanoid robots thanks to its Jetson Orin machines and, above all, <strong>Jetson Thor</strong>.</p>
+<p>Jetson Thor offers unprecedented power for embedded AI, with performance of up to 2,070 TFLOPS and configurable consumption between 40 and 130 W. Its real differentiator is not just the chip but the complete software ecosystem: Isaac, which unifies simulation, control, vision, ROS 2 and optimization through TensorRT. That is why the main humanoids, such as Figure, 1X, Sanctuary, Unitree, Fourier, Apptronik and Agility, use NVIDIA hardware and software.</p>
+<h3><strong>Proprietary models: the Tesla case</strong></h3>
+<p>Tesla, for its part, follows a different strategy, creating the entire technology stack in-house. Dojo and the D1 chip were designed to train massive sensorimotor models using real driving and robotics data. Its goal is to develop its own multimodal brain for Optimus and future robots, reducing dependence on external suppliers. To this end it is currently working on developing the <strong>AI5</strong> and AI6 chips, with which it hopes to give its robots full intelligence.</p>
+<h3><strong>Other emerging architectures</strong></h3>
+<p>Although NVIDIA dominates humanoid robotics, new approaches to AI hardware are appearing, such as:</p>
+<ul><li><strong>RISC-V</strong>: an open architecture that allows custom SoCs for robots to be designed without licences or external dependencies.</li><li><strong>BrainChip Akida</strong>: a neuromorphic chip that processes only when there is a stimulus, ideal for low-power perception.</li><li><strong>Tenstorrent</strong>: open and scalable processors intended for generative models and motor control in robots.</li><li><strong>Mythic AI</strong>: analog computing aimed at low-power embedded vision.</li><li><strong>Groq</strong>: high-speed deterministic processors, suitable for real-time control.</li></ul>
+<p>These lines explore areas such as efficiency, openness and biomimicry as alternatives to the GPU-centred approach.</p>
+<h3><strong>The Chinese ecosystem</strong></h3>
+<p>China is also building a complete chain of physical AI chips to reduce dependence on Western suppliers. Its ecosystem includes:</p>
+<ul><li><strong>Rockchip RK3588 / RK3576</strong>: very common in low-cost and educational robots.</li><li><strong>Horizon Robotics Journey 5 / 6</strong>: SoCs for vision and domestic robotics.</li><li><strong>Cambricon MLU</strong>: high-end AI processors for industrial robots and data centres.</li></ul>
+<p>All these initiatives are aligned with the explosion of low-cost Chinese humanoid robots.</p>
+<h3><strong>Current challenges for AI hardware</strong></h3>
+<p>Despite the advances, humanoid robotics is still limited by three key factors:</p>
+<ul><li><strong>Power consumption and heat</strong>: chips such as Jetson Thor exceed 100 W, which reduces autonomy and complicates cooling in compact robots.</li><li><strong>High cost</strong>: the price of AI hardware makes each unit more expensive, holding back mass production.</li><li><strong>Technological dependence</strong>: the dominance of a single supplier, such as NVIDIA, implies lock-in risks and strategic vulnerability.</li></ul>
+<p>In this way we see that AI hardware for humanoid robots is advancing rapidly, led by NVIDIA and accompanied by proprietary bets such as Tesla&#39;s and by new emerging architectures. However, mass adoption will depend on solving power consumption, cost and technological diversification.</p>
+</div>
+<section class="ed-news"><h2>News in this edition</h2><p class="meta">This edition has no news roundup.</p></section>
+</article>
+</main>
+<script src="/assets/nav.js?v=b04ddeb126" defer></script>
+
+<footer class="foot"><nav class="site-foot" aria-label="Site"><a href="/blog/">Blog</a><a href="/news/">News</a><a href="/about/">About</a><a href="/agents/">For agents</a><a href="/method/">Method</a><a href="/about/#contact">Contact</a><a href="https://integrarobot.com">Integrarobot</a></nav><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/subscribe/">Subscription and reports</a><a href="/app/">Subscriber app</a><a href="/privacy/">Privacy</a></nav><p>Why Humanoid? by Integrarobot. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
+<!-- Cloudflare Web Analytics: visit counts without cookies (approved split, phase 3) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76de8d3b4a534b91bd808e724f9c1594"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

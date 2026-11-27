@@ -1,0 +1,12 @@
+{
+  "note": "Blog (/blog/) and News (/news/): public English editorial sections built from this store by tools/build-pages.mjs. Live when published is true and today (Europe/Madrid) is on or after embargo_until; until then the pages carry noindex and stay out of the sitemap. /newsletter/ addresses redirect to /blog/. Publication authorised by Javier on 2026-11-27. Contract and procedure: ops/editorial/README.md.",
+  "published": true,
+  "embargo_until": "2026-11-27",
+  "scope": {
+    "years": [
+      2025,
+      2026
+    ],
+    "publication": "Integrarobot"
+  }
+}

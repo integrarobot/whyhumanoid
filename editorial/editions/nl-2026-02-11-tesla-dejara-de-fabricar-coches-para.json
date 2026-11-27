@@ -1,0 +1,72 @@
+{
+  "edition_id": "nl-2026-02-11-tesla-dejara-de-fabricar-coches-para",
+  "source_url": "https://www.integrarobot.com/p/tesla-dejara-de-fabricar-coches-para",
+  "published_on": "2026-02-11",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Tesla will stop making cars to make robots",
+  "subtitle": "Not all its cars, but at least some of its most representative ones. And the manufacturing resources will be devoted to producing Optimus.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/42c5c501-a8e3-44fc-8b53-13aa550546f1_1920x1080.jpeg)\n\nThe news that **Tesla** will stop manufacturing the high-end **Model S** and **Model X** cars is excellent for those of us working in robotics, because it shows that one of the most innovative companies in the world is willing to give its all to repeat the play it made by accelerating the energy transition, now doing the same with the automation of work.\n\nBut the road is not going to be easy to travel, since Elon Musk has warned on several occasions that **the great challenge of robotics lies not in design but in manufacturing**. I understand this is one of the reasons why the company is willing to sacrifice a present profit (selling electric cars) for the still uncertain future of selling robots to the general public.\n\nThere is no doubt that Tesla must have faced the problem of staff shortages for factory work, so building a multifunctional robot would make perfect sense. But what is not yet clear is that the rest of the world's economic activities are going to demand this technology.\n\nThe question I have at this moment is to what extent Elon is thinking of selling us robots to solve our day-to-day problems, or rather of us buying his robots so that he can have resources to devote to his great dream of conquering Mars.\n\nBy the way, in addition to announcing that he will stop making some of his cars in order to make robots, Elon has also said that **SpaceX's most immediate mission will be not to Mars but to the Moon**, which implies that all these technologies he is developing can be tested much earlier than if he had to wait for the right conditions to begin launching spacecraft to Mars.\n\nBut anyway, let's go back to robots and think for a moment about whether Tesla can turn [Optimus](https://www.integrarobot.com/p/tesla-optimus) into the iPhone of robots.\n\nWhat is clear is that, with the great competition it faces from other manufacturers — for example, in the West you always have to watch the progress of Figure, Boston, 1X, Agility, Apptronik, and everyone coming behind them; and in China they are also going all out manufacturing robots — it will surely be a highly competitive market with a large supply from a multitude of companies.\n\nSo the option left for Tesla is to show that it is capable of manufacturing the best technology, and at least so far they have been able to prove this with electric cars first and now with self-driving cars. And what can be said about what SpaceX has done with reusable rockets. OK, it's not Tesla, but it could be soon if the two companies end up merging, as has happened between xAI and SpaceX.\n\nFrom here, what we need to think about is what the company's differentiating values are that could take it to that leadership position, in terms of Optimus's technical excellence, above the other humanoid robot manufacturers.\n\n## Tesla's differentiating values for making Optimus number 1 in the sector\n\n**1️⃣ Manufacturing capacity**: if there is one thing Tesla knows how to do, it is manufacture; in fact, it has often been said that it is not a car manufacturer but a manufacturing company that could do the same with other products if it set its mind to it. And now they have the chance to prove it when they start manufacturing robots at full capacity.\n\n**2️⃣ Engineering and AI talent**: although working with Elon must not be easy, on the other hand we have to acknowledge that he has a great ability to attract geniuses around him. It could not have been otherwise if we think of the great scientific and technical achievements he has reached with SpaceX or Neuralink, as well as the more recent ones with xAI, where in record time he has brought the company to an incredible valuation.\n\n**3️⃣ Vertical integration**: when, after the pandemic, there was a brutal supply chain crisis that particularly affected the automotive sector, Tesla did not suffer from it, because of its ability to control the entire manufacturing process through this concept of vertical integration that is so deeply rooted in the company. Tesla designs chips, batteries, software and industrial processes. That comprehensive control allows it to optimize the complete system, not just assemble third-party components.\n\n4️⃣ **Massive data:** something Tesla has shown with autonomous driving is that for AI to be functional in the physical world, not only algorithms are needed, but also enormous amounts of data. Millions of kilometres driven have become constant training for its AI models. If we apply the same logic to robotics, when it deploys Optimus in its own factories, every task performed will be a new data point, and every data point an improvement to the system.\n\n5️⃣ **Integrated AI architecture**: Tesla has spent years developing perception, planning and decision systems for its vehicles. If it manages to reuse part of that infrastructure for Optimus, it will be amortizing a gigantic investment in AI. Although a car and a robot are very different, they share a technological base, training tools and world models. That reduces time, cost and risk compared with more fragmented competitors.\n\n6️⃣ **Internal initial market**: few companies can test a humanoid robot on their own production lines at large scale, as Tesla is already doing. Becoming its own first customer allows it to validate real use cases before going to market, and if it also communicates that progress with the media power it already has, it can enormously accelerate adoption by showing the world such a clear and tangible success story.\n\n---\n\n### Why are the main Humanoid Robot manufacturers developing their own Physical AI models?\n\n**Humanoid** has just presented [Kinetiq](https://thehumanoid.ai/introducing-kinetiq/), its own AI framework for the end-to-end orchestration of humanoid robot fleets in industrial, service and household applications. A single system controls robots with different embodiments and coordinates the interactions between them.\n\nPreviously we have seen **Figure** develop Helix and **1X** do the same with Redwood. And of course Tesla was clear from the start that for Optimus it could not depend on a third party to develop its AI.\n\nHowever, other humanoid companies, such as Apptronik, Agility Robotics and Boston Dynamics, have decided to collaborate directly with DeepMind to use Gemini Robotics instead of developing their own AI from scratch. As is also the case with many of these companies that work with NVIDIA Robotics on software and hardware.\n\nWe must also look here at the startups devoted 100% to developing AI for robots, such as Skild AI, FieldAI, Generalist, GenesisAI, OpenMind, Physical Intelligence and many others.\n\nSo the question remains on the table. My impression is that at the current moment, so incipient and with so much uncertainty, we will see many changes in strategy regarding how to implement AI in robots.\n\nWhen in 3 or 4 years we look back, it will be interesting to see who managed to become the leader in AI for humanoid robots.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "⚙️ Roboto Origin is an Open Source initiative driven by Roboparty with the aim of making it easier for anyone to build their own humanoid robot.",
+        "body_markdown": "⚙️ [Roboto Origin](https://github.com/Roboparty/roboto_origin) is an Open Source initiative driven by **Roboparty** with the aim of making it easier for anyone to build their own humanoid robot. Its first robot is aimed at education, research and developers.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/2412a21a-2c0d-495e-bcbd-103fc8cfed28_2048x940.png)"
+      },
+      {
+        "position": 2,
+        "headline": "🌐 Runway is advancing steadily toward becoming one of the main developers of world models.",
+        "body_markdown": "🌐 [Runway](https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/?utm_source=dlvr.it&utm_medium=twitter) is advancing steadily toward becoming one of the main developers of **world models**. To this end it has just announced that it has raised 315 million dollars in a Series E round, almost doubling its valuation to 5.3 billion dollars."
+      },
+      {
+        "position": 3,
+        "headline": "📹 DreamZero is a world action model (WAM) built on a pre-trained video diffusion backbone.",
+        "body_markdown": "📹 [DreamZero](https://dreamzero0.github.io/) is a world action model (**WAM**) built on a pre-trained video diffusion backbone. Unlike VLAs, WAMs learn physical dynamics by jointly predicting future world states and actions, using video as a dense representation of how the world evolves."
+      },
+      {
+        "position": 4,
+        "headline": "🎥 Robótica Audiovisual 2026 is a report by Catalonia's audiovisual cluster on the trends and applications of robotics as a transformation factor for the audiovisual industry.",
+        "body_markdown": "🎥 [Robótica Audiovisual 2026](https://clusteraudiovisual.timtul.es/formulari-switch-robotica-audiovisual-2026/?lang=en) is a report by Catalonia's audiovisual cluster on the trends and applications of robotics as a transformation factor for the **audiovisual industry**."
+      },
+      {
+        "position": 5,
+        "headline": "🇩🇪 Robco, the German automation startup, has raised 100 million dollars to advance its physical AI roadmap, with the aim of expanding enterprise deployments and accelerating its…",
+        "body_markdown": "🇩🇪 [Robco](https://www.siliconrepublic.com/start-ups/german-automation-start-up-robco-munich-raises-100m-us-expansion?utm_source=substack&utm_medium=email), the German automation startup, has raised **100 million dollars** to advance its **physical AI** roadmap, with the aim of expanding enterprise deployments and accelerating its presence in the US market."
+      },
+      {
+        "position": 6,
+        "headline": "🦾 The Robot Learning Company presents an open source development kit for AI-native robotics training.",
+        "body_markdown": "🦾 [The Robot Learning Company](https://github.com/robot-learning-co/trlc-dk1) presents an open source development kit for AI-native robotics **training**. The TRLC-DK1 offers universal access, uses USB-C for data transfer and is compatible with Linux, macOS and Windows.\n\nAnd to finish today's newsletter, here are some very interesting links:"
+      },
+      {
+        "position": 7,
+        "headline": "Humanityslastmachine, with an enormous amount of information about the technology underlying robot manufacturing.",
+        "body_markdown": "- [Humanityslastmachine](https://www.humanityslastmachine.com/), with an enormous amount of information about the technology underlying robot manufacturing. Pay special attention to the suppliers category, which features hundreds of companies that make the work of robot designers and manufacturers possible."
+      },
+      {
+        "position": 8,
+        "headline": "Barómetro E-AGI is an incredible piece of analysis by David Vivancos, giving us as complete a view as possible of how advanced the technology that will make the arrival of human…",
+        "body_markdown": "- [Barómetro E-AGI](https://artificiologia.com/barometer.html) is an incredible piece of analysis by David Vivancos, giving us as complete a view as possible of how advanced the technology that will make the arrival of humanoid robots possible is. And as can be seen, we are at 64.73% right now."
+      },
+      {
+        "position": 9,
+        "headline": "Robotics Pick and Place is an application created with Google AI Studio consisting of an advanced robotic simulator that combines real-time physics with artificial intelligence…",
+        "body_markdown": "- [Robotics Pick and Place](https://aistudio.google.com/apps/bundled/robotics_franka_pick_and_place?showPreview=true&showAssistant=true&linkId=47334046) is an application created with Google AI Studio consisting of an advanced robotic simulator that combines real-time physics with artificial intelligence (Gemini) to perform spatial reasoning tasks. So now you can try controlling a robotic arm in natural language"
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 65; 9 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "8a3b7964ff99cd200e857c945ed93b40980d4662f44cf640c6a77982044575ff"
+}

@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-06-25-curso-robotica-e-ia-fisica-como-usar",
+  "source_url": "https://www.integrarobot.com/p/curso-robotica-e-ia-fisica-como-usar",
+  "published_on": "2026-06-25",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robotics and Physical AI Course - How to use AI Agents to analyze opportunities in robotics",
+  "subtitle": "We use Codex to analyze industrial conversion opportunities in robotics",
+  "body_markdown": "So many humanoid robots are going to be sold in the future that it is almost certain many industries will be able to take the opportunity to retool and work in a sector with much higher growth than current ones.\n\nThat is why, in this class of the **Robotics and Physical AI course**, we use **Codex** to analyze the opportunities there may be for industrial companies to carry out that conversion and become suppliers of components for humanoid robots.\n\nThis is just one example of the thousands of cases that can be carried out applying AI Agents to robotics. In this case, what we did was first give the AI the context needed to analyze a company, then test it with a first company, and based on that analysis create a skill that we can later use with other companies.\n\n**Skills** allow us to standardize a process so that the AI always carries it out the same way; in this way we can turn to that skill whenever we need it, just by mentioning its name in the chat.\n\nThen what we did was create an **automation** based on that skill, which allows us to run that standardized process over time, for example in this case to do one company analysis a week.\n\nFinally, once we have created the automation, we can move on to creating an **HTML** page so that the AI better understands the process to follow in this analysis work, and so that we can use the tool as reinforcement for the content the AI provides after the analysis.\n\nIn upcoming classes of the course we will keep learning how to use AI to learn and work in robotics, for example through CAD design of robot components, drawing up robotics deployment plans and a lot of things that are now much more within our reach thanks to **Intelligent Agents**.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 100; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

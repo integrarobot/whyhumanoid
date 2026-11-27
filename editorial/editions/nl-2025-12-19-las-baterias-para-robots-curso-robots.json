@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2025-12-19-las-baterias-para-robots-curso-robots",
+  "source_url": "https://www.integrarobot.com/p/las-baterias-para-robots-curso-robots",
+  "published_on": "2025-12-19",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Batteries for robots - Humanoid Robots Course",
+  "subtitle": "Is the robot's battery a bottleneck for the development of humanoid robots?",
+  "body_markdown": "Opinion on the state of development of **batteries** for **robots** is divided between those who think it is a solved issue and those who believe it is a problem for the scalability of this technology.\n\nWhat is clear is that, in terms of structure, **lithium-ion** chemistry dominates the market, and that for robotics there is no specific technology, but rather an adaptation of the same industrial chain that powers electric vehicles and energy storage. Depending on the use, two approaches are mainly employed: high-density chemistries such as NMC or NCA when more autonomy with less weight is sought, and LFP when safety, cost and durability in intensive operation are prioritized.\n\nIn robots, and especially in humanoids, the limit lies not so much in the cell as in integration. Real autonomy depends on the consumption of actuators, computing and continuous inference, and varies greatly depending on the task. That is why the most relevant improvements in this field are not coming from new chemistries, but from better battery management systems, modular pack architecture, thermal control and operational design based on fleets, shifts and swappable batteries.\n\nSolid-state batteries represent the main medium-term promise, with greater density and safety, but their real impact on robotics is still far off because of cost and industrial scaling. In practice, today's robots and those of the coming years will continue to use conventional lithium-ion.\n\nTherefore, progress in batteries for robots is not revolutionary but incremental; what makes the difference today is how the complete energy system is designed and how the robot is operated, not the appearance of a new type of battery based on a groundbreaking technology.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 54; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

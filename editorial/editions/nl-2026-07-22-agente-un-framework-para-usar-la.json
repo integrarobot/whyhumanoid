@@ -1,0 +1,87 @@
+{
+  "edition_id": "nl-2026-07-22-agente-un-framework-para-usar-la",
+  "source_url": "https://www.integrarobot.com/p/agente-un-framework-para-usar-la",
+  "published_on": "2026-07-22",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "AGENTE, a framework for using AI in robotics",
+  "subtitle": "I explain how to use AI agents to start working in robotics",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/fddfcac2-3e07-4036-b1c6-a8b290f2b2e2_1672x941.jpeg)\n\nThe company [Applied Intuition](https://www.appliedintuition.com/) has achieved notable success in recent years selling its **autonomous driving** software to all kinds of companies in sectors such as mining, defence, construction or agriculture, and now it aims to take a new leap with the launch of Dana, a Physical AI software with which it wants to help automate a billion machines.\n\nTo achieve this it turns to **Intelligent Agents**, which are to act as specialized virtual engineers that execute parts of the complete robot development cycle.\n\nIn this way, instead of an engineer doing each step manually, the agent coordinates and executes many of them.\n\nJust as happens in the digital sphere with **Claude Code** and **Codex**, in this case Dana's agents orchestrate the robot's entire life cycle: launching simulations, generating synthetic data, training control policies, validating safety, testing in Hardware-in-the-Loop and deploying on real robots.\n\nBut unlike other **Physical AI** companies such as Skild AI, Generalist, Physical Intelligence, Field AI and OpenMind, which develop the AI software for robots, in this case what Applied Intuition wants to offer is a system that helps engineers build these robots more efficiently.\n\nAnd this is where we come to the crux of the matter: AI agents are becoming the interface from which we will learn, design, integrate, test and manage robotic systems. That is why at **Integrarobot** we have designed, and are presenting today, **AGENTE**, the Framework for using AI agents in robotics.\n\nAGENTE is based on our experience working with AI agents to help companies automate business processes, and we are now transferring it to the field of Physical AI to give it greater reach.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/fb116a97-e421-459f-8351-c9e514af1f70_1302x608.png)\n\nAnd now let's explain what AGENTE is and how you can start putting it into practice in your work:\n\n1. **Aclarar (Clarify)**: the big difference between the AI chatbots we have been using until now and the new generation of agents emerging is their ability to pursue a **goal** and work until they achieve it. In this way the agent has the autonomy to decide which tasks are needed to reach the goal and has the capabilities to carry out those tasks. At this point, to make the work the AI has to do very clear, it is important to properly define the goal, the **role** the AI should take on (for example, Robotics Engineer) and the **prompt** with the instructions that clarify the goal.\n2. **Gestionar el contexto (Manage the context)**: if the prompt was the buzzword in the early days of Generative AI, later context took centre stage, when we saw that many of the errors the AI made were due to a lack of knowledge about the specific circumstances of our activity. This is how Google explains it in the presentation of [OKF](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing): *as AI models continue to improve, the lack of relevant context often limits their functionality, especially when they are used to build agentic systems. While these models can help write code, summarize documents or analyze datasets, they still need the right information to generate accurate and useful results.*\n3. **Equipar al agente (Equip the agent)**: this is where the capabilities or skills we can give the Agent come into play so that it does its work with greater guarantees. For example, if you use ChatGPT you have surely found it very useful to have search and research available. So with Codex and Claude Code what we have been able to do is create skills and automations and use plugins that give the AI greater usefulness when it comes to carrying out complete jobs, not just tasks. Applied to robotics this has a thousand uses, for example in designing processes in which the robot has to take part, or in its own training thanks to the possibility of using robot simulators.\n4. **Navegar mediante bucles (Navigate through loops)**: loops have become the star concept in AI in recent months, and they are the logical evolution of the trajectory we had been following so far, made up of Prompt → Context → Harness → Loop → Graph → Evaluation. This is where we get AI to work through a process of continuous improvement: if we correctly define the goal and the success indicators, the AI Agent doesn't stop when it gives us the first result, but can work in a loop to improve it. This is something not everyone knows, but it offers excellent results: AI is capable of improving its own results; you just have to ask it, and loops are the technical way to do it.\n5. **Tejer grafos de agentes (Weave agent graphs)**: here comes the idea that one Agent is already an important step, but being able to work with several of them in an orchestrated way is another level. In this way, graph design is the very latest thing when we talk about AI, because what we are realizing is that with agents 1+1 can be more than 2. Because if we know how to structure the agents' work well, we will not only see the advantage of having more than one working, but when we divide the work among them performance is much higher. For example, if one plans, another executes the work and another reviews it, the quality of the result is much higher than if we divide the work into several parts and each one takes care of its own. And the best thing is that what we have done with 3 agents can be done with many more; your imagination and your token budget are the limit.\n6. **Evaluar y evolucionar (Evaluate and evolve)**: this is where the most complicated part comes when we talk about robotics, because evaluation must be done by putting the robot to work in the physical world, and although we can use simulators, reality is what will put each one in its place. So what we need to know is that this framework we have just presented for using AI agents in robotics only accelerates and facilitates the work of working with robots, but there are still pieces to be solved before we can have fully functional general-purpose robots, for example world models. But the good news is that if the companies now working on developing these AI models are also using agents to accelerate their work, the solutions will not be long in coming.\n\nAnd this is where the key lies, because what happened with AI, where previously if you wanted to use AI you had to develop everything from scratch, but the arrival of ChatGPT eliminated the barriers to entry, is what is now going to happen with robotics. Thus, thanks to the work of companies like Applied Intuition and hundreds of others working in Physical AI, the big challenge is not going to be creating the robot, but putting it to work.\n\nThis is the goal we set ourselves at **Integrarobot**: helping companies and professionals approach robotics from a business point of view, not from the technical side. If we know that companies with the capabilities of NVIDIA, Google, Tesla, OpenAI and [Anthropic](https://www.integrarobot.com/p/por-que-anthropic-ha-empezado-a-experimentar), among many others, are already working to solve the technology that will make general-purpose robotics possible, what the rest of us have to focus on is giving it usefulness, and this is where agents can play a fundamental role.\n\nNow, thanks to the AGENTE framework, you have the resources you need to start working on implementing robotics in production processes; you don't need to wait for humanoids to arrive, since many other types of robots, such as waiter robots, delivery robots and robotic arms, are available for integrating robotics into companies.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🤖 Unitree presents UnifoLM-OminiA-0.3, a single model for whole-body mobile manipulation with real-time omnichannel interaction.",
+        "body_markdown": "🤖 [Unitree](https://x.com/UnitreeRobotics/status/2079113095188984161) presents **UnifoLM-OminiA-0.3**, a single model for whole-body mobile manipulation with real-time omnichannel interaction. The demonstration places it in home care and wellness tasks, with autonomous, stable and disturbance-resistant execution."
+      },
+      {
+        "position": 2,
+        "headline": "🏭 Walden Robotics emerges from stealth mode with 300 million dollars and a valuation of 1.1 billion to deploy general-purpose robots in productive environments.",
+        "body_markdown": "🏭 [Walden Robotics](https://www.waldenrobotics.com/news/walden-robotics-launches-from-stealth) emerges from stealth mode with **300 million dollars** and a valuation of **1.1 billion** to deploy general-purpose robots in productive environments. The company, born from the **Toyota** Research Institute environment, says it is already operating at a Toyota plant in North America."
+      },
+      {
+        "position": 3,
+        "headline": "🧱 Monumental raises 32 million dollars to scale its autonomous construction robots.",
+        "body_markdown": "🧱 [Monumental](https://www.monumental.co/press/announcing-our-32-million-fundraise/) raises **32 million dollars** to scale its autonomous construction robots. The company already operates a fleet of more than 100 bricklaying robots and wants to expand deployments in Europe, strengthen the UK and prepare its entry into the United States."
+      },
+      {
+        "position": 4,
+        "headline": "🧠 RoboTTT proposes a framework for extending visuomotor context to 8,000 timesteps and enabling one-shot imitation from human video.",
+        "body_markdown": "🧠 [RoboTTT](https://research.nvidia.com/labs/gear/robottt/) proposes a framework for extending visuomotor context to 8,000 timesteps and enabling one-shot imitation from **human video**. The system combines temporal tokenization, online policy improvement and long-horizon reasoning, and reports clear improvements on prolonged assembly tasks and manipulations with disturbances."
+      },
+      {
+        "position": 5,
+        "headline": "🧺 Sunday Robotics previews ACT-2, a model focused on reliability and generalization for household robots.",
+        "body_markdown": "🧺 [Sunday Robotics](https://www.sunday.ai/blog/act-2-preview) previews **ACT-2**, a model focused on reliability and generalization for household robots. The system is pre-trained on sensorized human data and achieves **99.1% zero-shot success** in folding clothes in unseen environments, with post-training improvements the company says generalize beyond its own test homes."
+      },
+      {
+        "position": 6,
+        "headline": "🇯🇵 NVIDIA expands its industrial front in Japan with manufacturers and robotics groups building on Cosmos, Isaac, Metropolis and Jetson to accelerate physical AI in manufacturing.",
+        "body_markdown": "🇯🇵 [NVIDIA](https://nvidianews.nvidia.com/news/japans-robotics-and-manufacturing-leaders-build-on-nvidia-cosmos-to-advance-physical-ai-frontier) expands its industrial front in **Japan** with manufacturers and robotics groups building on Cosmos, Isaac, Metropolis and Jetson to accelerate physical AI in manufacturing. The move reinforces NVIDIA's strategy of turning its stack into the common layer for robotic simulation, training and deployment in Japanese industry."
+      },
+      {
+        "position": 7,
+        "headline": "🧠 BrainCo presents a brain-robot interface that uses EEG signals to control robotic arms and other equipment with the user's brain activity.",
+        "body_markdown": "🧠 [BrainCo](https://www.techradar.com/ai-platforms-assistants/chinese-company-brainco-unveils-first-brain-to-robot-interface-for-controlling-robots-with-your-thoughts?utm_source=robotnews.therundown.ai&utm_medium=newsletter&utm_campaign=the-world-s-first-humanoid-cage-fight) presents a **brain-robot interface** that uses EEG signals to control robotic arms and other equipment with the user's brain activity. The system was shown at WAIC and is presented as a way to improve human-machine interaction, assistance and control of physical systems."
+      },
+      {
+        "position": 8,
+        "headline": "🔩 Futronic receives an investment from Blackstone to strengthen one of South Korea's suppliers of high-precision actuators for industrial robotics and automotive.",
+        "body_markdown": "🔩 [Futronic](https://www.reuters.com/legal/transactional/blackstone-invests-south-korean-robotics-supplier-futronic-2026-07-20) receives an investment from **Blackstone** to strengthen one of South Korea's suppliers of high-precision **actuators** for industrial robotics and automotive. The deal signals that the robotics race is being funded not only in the visible humanoid layer but also in the critical chain of motion components."
+      },
+      {
+        "position": 9,
+        "headline": "🦾 Astribot presents Lumo-2, its new latent world-action model for generalist robot learning.",
+        "body_markdown": "🦾 [Astribot](https://www.astribot.com/en/research/Lumo2) presents **Lumo-2**, its new latent world-action model for generalist robot learning. The model replaces explicit textual planning with implicit predictive reasoning in a physical latent space, introduces progressive alignment among action, vision and language, and extends training to multi-source data such as egocentric human videos."
+      },
+      {
+        "position": 10,
+        "headline": "💰 Humanoid closes a 152 million dollar Series A at a post-money valuation of 1.35 billion.",
+        "body_markdown": "💰 [Humanoid](https://humanoidroboticstechnology.com/industry-news/humanoid-raises-152-million-in-series-a-financing/) closes a **152 million dollar** Series A at a post-money valuation of **1.35 billion**. The round places the company among the big European contenders in industrial humanoids and gives it capital to keep developing its platform and commercial deployment."
+      },
+      {
+        "position": 11,
+        "headline": "🗺️ World Labs acquires SceniX to accelerate its bet on spatial intelligence applied to robotics.",
+        "body_markdown": "🗺️ [World Labs](https://www.worldlabs.ai/blog/scenix) acquires **SceniX** to accelerate its bet on **spatial intelligence** applied to robotics. The integration unites work in perception, world generation, simulation and learning with the ambition of turning spatial intelligence into an operational base for robots acting in physical environments."
+      },
+      {
+        "position": 12,
+        "headline": "⚙️ NVIDIA arrives with the T5000, T4000, T3000 and T2000 Jetson Thor modules for robots and edge AI agents.",
+        "body_markdown": "⚙️ [NVIDIA](https://blogs.nvidia.com/blog/jetson-thor-robotics-edge-ai-agent/) arrives with the T5000, T4000, T3000 and T2000 **Jetson Thor** modules for robots and edge AI agents. This family is positioned as the computing base for humanoids, manipulation and industrial autonomy, with adoption already announced by companies such as 1X, Boston Dynamics, FANUC, Hitachi, Techman and Amazon Robotics."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 105; 12 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "4890ab62e590371f2beda1c744d64a33182e9f9cbf0cf05b731c8aae21db2fd9"
+}

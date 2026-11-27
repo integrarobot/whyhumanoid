@@ -1,0 +1,57 @@
+{
+  "edition_id": "nl-2025-12-10-la-semana-que-viene-tenemos-curso",
+  "source_url": "https://www.integrarobot.com/p/la-semana-que-viene-tenemos-curso",
+  "published_on": "2025-12-10",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Next week we have the Humanoid Robots course",
+  "subtitle": "And also: Unitree's robot dog is now on sale at MediaMarkt",
+  "body_markdown": "The **Humanoid Robots course** is already under way. Every week I am publishing a video on a topic about the state of the art of **Physical AI** development, and next week we will have a live online course. It will be on Tuesday 16, Wednesday 17 and Thursday 18 from 18:00 to 20:00.\n\n## What will I learn in the course?\n\nHumanoid robots will be the next great technology of the future. It is true that it may seem a little early given their current state of development, but there are many reasons to think this is the time to position yourself and take the lead. The big technology companies, starting with **NVIDIA**, Tesla, Google, Amazon, even Apple and Meta, are already making very significant investments both in their own labs and in startups devoted to building general-purpose robots and Physical AI software.\n\nThis course is not technical; we are not going to learn to build or program robots, although we will see how simulators work and which is the most advanced software for controlling them. But the course's approach is educational and business-oriented. With what you learn in the course you will have the foundation to decide whether to work on the technical side or in other types of activity, such as deploying robots in companies, selling robots, investing in robotics companies, …\n\n## How can I sign up for the course?\n\nSince this is a subject that evolves very quickly and where there is constantly big news, I don't want the course to end once you have watched the videos or completed the live sessions; I want it to have continuity. That is why the course is the starting point for launching the [Pioneros Robots Humanoides Community](https://www.integrarobot.com/p/pioneros), where every week there will be video content updates and every month a live meeting to keep learning about the subject.\n\nThe cost of being part of the Community is **100 euros a year**, which includes the course, both online and live, and all subsequent updates. So now is the best time to join this group of pioneers and take advantage of the next big wave of Artificial Intelligence.\n\n---\n\n## Unitree's robot dog is now on sale at MediaMarkt\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/e330b313-c5ef-4299-a544-fb635238a73c_2048x1277.png)\n\n[MediaMarkt](https://www.mediamarkt.es/es/product/_robot-cuadrupedo-unitree-go2-air-166018553.html?tduid=d8fb283098b3cd9f9b6901f921a7ac2b&utm_source=tradedoubler&utm_medium=aff-contenido&utm_content=1057122&utm_campaign=rt_affiliate_performance_nsp_contenido-022023_na&utm_term=affiliate_es_es_mm_2023-02-01_conversion_tradedoubler_tradedoubler_aff-contenido_mediamarkt_all_multidevice_1057122_multisize_all_all_all) now sells robots; for now it is a **quadruped**, but perhaps soon the G1 humanoid will also be available to buy.\n\nWhat is a **robot dog** for? What a question; it's like asking what a dog is for.\n\nThe thing is that the question is on many people's minds, because when we think about robots, the issue of specialization always comes to mind. I'm sure they don't think this way in Asia, because there they don't see robots only as a tool; for them it is something more similar to what happens here with dogs.\n\nDogs are mostly considered a pet, a companion animal, even a friend, and it has probably been that way for a long time. But they have also been a tool, whether for guarding, hunting, herding, and we have even come to use them for super-specific tasks such as detecting dangerous substances, as well as finding victims in natural disasters.\n\nSomething similar is going to happen with robots, but not with quadrupeds; with humanoids. Most people will buy them for their usefulness, for example, and for now, to watch over their home and keep it clean and tidy, but over time robots will fulfil functions that go far beyond what a tool can offer.\n\nFor example, the surveillance task goes far beyond detecting whether there is an intruder in the house or whether an older person needs help; alarm systems and cameras can already do that. The moment the robot can chat with a person, a much stronger bond will be established than the one we have with a household appliance.\n\nThat is why we have to start preparing, because with the arrival of humanoid robots the world we live in will be reconfigured; just as the arrival of cars changed the structure of cities, the impact of robots will be global, not something we can isolate ourselves from.\n\n## The key to this is the cost-benefit ratio\n\nOut of curiosity, I looked for the most expensive product at MediaMarkt and found a 98\" Samsung Neo QLED TV that costs more than 28,000 euros. I don't get involved in how people decide to spend their money, but if there are people who agree to pay that amount for a TV, imagine what will happen when, for the same price, they can buy a robot that takes care of their household chores.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📹 Genmimic is research in which Yann LeCun took part before leaving Meta, which tackles the challenge of using AI-generated videos as a source of demonstrations so that a robot…",
+        "body_markdown": "📹 [Genmimic](https://genmimic.github.io/) is research in which **Yann LeCun** took part before leaving Meta, which tackles the challenge of using AI-generated videos as a source of demonstrations so that a robot can imitate human movements without the need for specific training or a physical demonstration for each new action."
+      },
+      {
+        "position": 2,
+        "headline": "🐕 Pupper is an educational robot created at Standford University that can listen and respond through a VLM.",
+        "body_markdown": "🐕 [Pupper](https://pupper-v3-documentation.readthedocs.io/en/latest/) is an educational robot created at **Standford** University that can listen and respond through a VLM. Cameras, microphones and proprioception allow it to perceive its environment. Speakers, a high-resolution screen, expressive ears and an agile body allow it to express its feelings through voice and movement."
+      },
+      {
+        "position": 3,
+        "headline": "🗼 ABB Robotics and the 3D printing company Massive Dimension are collaborating on the development of a robotic arm that prints things.",
+        "body_markdown": "🗼 [ABB Robotics](https://x.com/lukas_m_ziegler/status/1997641598453137800?s=46) and the **3D printing** company Massive Dimension are collaborating on the development of a robotic arm that prints things. Their cell combines an ABB GoFa arm with a filament extruder to offer a compact, mobile machine that allows printing to be explored far beyond the limits of a standard XYZ structure."
+      },
+      {
+        "position": 4,
+        "headline": "🏡 BEHAVIOR is an open source benchmark, promoted by Fei-Fei Li and designed to enable and evaluate embodied AI and robotics solutions.",
+        "body_markdown": "🏡 [BEHAVIOR](https://behavior.stanford.edu/index.html) is an open source benchmark, promoted by **Fei-Fei Li** and designed to enable and evaluate embodied AI and robotics solutions. It includes everyday household tasks based on human needs. If you spend a while looking at the website, you will understand what I said above about robots doing household chores."
+      },
+      {
+        "position": 5,
+        "headline": "🕹️ DeepMind has presented version 2 of its intelligent agent SIMA, which is able to follow basic instructions in a wide range of virtual environments, something essential for te…",
+        "body_markdown": "🕹️ [DeepMind](https://deepmind.google/blog/sima-2-an-agent-that-plays-reasons-and-learns-with-you-in-virtual-3d-worlds/) has presented version 2 of its intelligent agent **SIMA**, which is able to follow basic instructions in a wide range of virtual environments, something essential for teaching AI to translate language into meaningful actions in complex three-dimensional worlds."
+      },
+      {
+        "position": 6,
+        "headline": "🫰 Tesla Optimus, in addition to making a real mess of it in one of its latest public exhibitions, could have a manufacturing cost of between 50 and 60,000 dollars, according to…",
+        "body_markdown": "🫰 [Tesla Optimus](https://x.com/zephyr_z9/status/1998049146289455158?s=46), in addition to [making a real mess of it](https://x.com/chris_j_paxton/status/1998097385856090323) in one of its latest public exhibitions, could have a manufacturing cost of between 50 and 60,000 dollars, according to **Morgan Stanley** estimates."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 51; 6 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "7513603b63482b7d3f763de538ee9dd7423f18647375fddaf33626fb363bcdce"
+}

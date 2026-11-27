@@ -1,0 +1,47 @@
+{
+  "edition_id": "nl-2025-10-08-la-verdadera-leccion-amarga-para",
+  "language": "es",
+  "title": "La verdadera lección amarga para la robótica",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/4e03ccb0-96f8-4847-85bb-94cfd20cb4c0_1024x907.png)\n\nEn el mundo de la Inteligencia Artificial existe una idea, que podríamos asemejar a principio o tesis, que nos habla de cómo evoluciona el desarrollo de esta tecnología, llamada denomina “**The Bitter Lesson**” y que fue propuesta por el científico **Richard Sutton** en 2019. Su objetivo era explicar por qué intentar enseñar a las máquinas cómo pensamos o cómo resolvemos los problemas los humanos puede dar resultados a corto plazo, pero limita el progreso a largo plazo, ya que lo que realmente impulsa la IA es dejar que los algoritmos, a través de búsqueda y aprendizaje a gran escala, descubran por sí mismos las soluciones, aprovechando el crecimiento exponencial de la **capacidad computacional**.\n\nY es este último aspecto, el de la capacidad de computación, además de la disponibilidad de datos es lo que también podría marcar la diferencia cuando hablamos de robots. No lo digo yo, lo dice [Chris Paxton](https://x.com/chris_j_paxton/status/1974619091559424058) que trabaja como líder de IA en Agility Robotics:\n\n> “*Creo que la verdadera lección amarga para la robótica será que los robots baratos desplegados a gran escala van a permitir a las personas resolver los problemas fundamentales de la robótica. Y esto es lo que vemos, por ejemplo, en Unitree ahora, y cada vez más en empresas como Galaxea*”.\n\nDicho de otra forma, en el desarrollo de la robótica pueden desplegarse dos tipos de estrategia. Vamos a llamar a la primera el modelo minucioso, basado en el cuidado de todos los detalles, con ejemplos representativos como el de Boston Dynamics, paso firme pero lento. El segundo modelo sería el basado en la prueba y el error, el modo rompe cosas que diría Mark Zuckerberg y que parece estar aplicando **Unitree**.\n\n## ¿Por qué es tan importante la capacidad de computación?\n\nA los hechos me remito.\n\n- El día que Oracle anunció la colaboración con OpenAI en materia de centros de datos sus acciones subieron más de un 40%. Por su parte, cuando AMD ha anunciado esta semana la colaboración con OpenAI, sus acciones han subido más de un 30%.\n- El proyecto Stargate, liderado por OpenAI y apoyado por el gobierno de USA, inversores como Softbank y con partners como NVIDIA, implica una inversión de 500.000 millones de dólares para crear centros de datos para el entrenamiento e inferencia de la IA.\n- Ni que decir tiene lo ocurrido con las acciones de NVIDIA en los últimos 5 años, que se han revalorizado un 1.244,77 %. Esto para muchos es una burbuja, pero la empresa se empeña trimestre tras trimestre en demostrar que su rentabilidad no para de subir.\n- Lo ocurrido con las acciones de las empresas de computación cuántica puede también estar relacionado, ya que ante toda esta expectativa de necesidad de computación futura, empresas como D-Wave y Riggeti se han revalorizado más de un 1.000% en el último año.\n\nPor lo tanto, lo que estamos viviendo es una carrera en busca de la AGI, sea lo que sea lo que significa, no cabe duda de que todas estas empresas lo que buscan es seguir mejorando la IA para que cada vez sea capaz de resolver más problemas y con ello obtener mayores beneficios.\n\nPero la AGI no se logrará si no conseguimos tener robots autónomos, porque el futuro de la IA no puede ser sólamente digital.\n\nEstá claro que tener una mejor IA ayudará mucho a tener mejores robots, pero también se necesitan datos para que los robots entiendan cómo funciona el mundo físico al que se van a tener que enfrentar. Es como si enviamos un astronauta a Marte sin decirle que allí hay otra gravedad y otra atmósfera, no duraría ni un día si intenta hacer las cosas igual que lo hace en la Tierra.\n\nPor eso Chris Paxton acierta al decir que en el caso de los robots la amarga lección no es sólo cuestión de computación sino también de [datos](https://www.integrarobot.com/p/de-donde-salen-los-datos-para-entrenar).\n\n## Volviendo a Unitree\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/f019d5b5-254a-4f97-9a4d-dbffb8a9558b_2048x1130.png)\n\nEstoy hablando mucho últimamente de Unitree pero es que la ocasión lo merece.\n\nCuando Chris Paxton dice que “los robots baratos desplegados a gran escala van a permitir a las personas resolver los problemas fundamentales de la robótica” lo que está haciendo es alabar la estrategia de [Unitree](https://www.integrarobot.com/p/g1-de-unitree-es-el-mayor-laboratorio) que explicamos la semana pasada y que se basa en “romper cosas”.\n\nEstá claro que los robots de Unitree están en un estado de madurez muy bajo, difícilmente empresas como Tesla y Figure se atreverían a asumir esos riesgos, sin embargo gracias a esto ahora tenemos a miles de investigadores de robótica usando estos robots como laboratorio al aire libre.\n\nPor cierto, la startup ya está tan lanzada que hasta vende sus robots en [Walmart](https://www.walmart.com/ip/Unitree-G1-Basic/17225710863), la empresa de distribución minorista más grande del mundo por ingresos y número de empleados.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💣 Figure se renueva de una manera impresionante.",
+        "body_markdown": "💣 [Figure](https://x.com/Figure_robot/status/1975585954086985934) se renueva de una manera impresionante. Aunque aún es sólo un vídeo pero ya nos está mostrando un avance importante, no sólo por su diseño espectacular, sino también por la nueva tecnología visible por ejemplo en las nuevas manos y pies."
+      },
+      {
+        "position": 2,
+        "headline": "🥋 Optimus poco a poco va abandonando el entorno controlado por Tesla para enfrentarse a todo tipo de situaciones, en este caso participando en el estreno de la película Tron mie…",
+        "body_markdown": "🥋 [Optimus](https://x.com/Tesla_Optimus/status/1975382713038479853) poco a poco va abandonando el entorno controlado por Tesla para enfrentarse a todo tipo de situaciones, en este caso participando en el estreno de la película Tron mientras demuestra sus habilidades practicando Kung Fu."
+      },
+      {
+        "position": 3,
+        "headline": "🤝 Fujitsu y NVIDIA unen fuerzas para el impulso de la IA y la robótica.",
+        "body_markdown": "🤝 [Fujitsu](https://global.fujitsu/en-global/pr/news/2025/10/03-01) y NVIDIA unen fuerzas para el impulso de la IA y la robótica. Se proponen crear una infraestructura de IA integral para agentes de IA, impulsando la competitividad de las empresas a través de la IA y preservando su autonomía en el uso de la misma."
+      },
+      {
+        "position": 4,
+        "headline": "🇰🇷 Kapex es el nombre elegido por el gigante de la electrónica y electrodomésticos LG para su robot humanoide que tiene previsto construir en colaboración con el Instituto Corea…",
+        "body_markdown": "🇰🇷 [Kapex](https://www.humanoidsdaily.com/feed/south-korea-challenges-us-and-china-with-kapex-humanoid-robot) es el nombre elegido por el gigante de la electrónica y electrodomésticos LG para su robot humanoide que tiene previsto construir en colaboración con el Instituto Coreano de Ciencia y Tecnología (KIST)."
+      },
+      {
+        "position": 5,
+        "headline": "🇯🇵 Seven Eleven Japan quiere usar robots humanoides en sus tiendas de conveniencia en colaboración con la empresa Telexistence impulsarán la creación del robot humanoide Astra,…",
+        "body_markdown": "🇯🇵 [Seven Eleven Japan](https://tx-inc.com/en/blog/2025/09/30/12542/) quiere usar robots humanoides en sus tiendas de conveniencia en colaboración con la empresa Telexistence impulsarán la creación del robot humanoide Astra, equipado con un modelo VLA , cuya implementación está prevista para 2029."
+      },
+      {
+        "position": 6,
+        "headline": "🧑‍💻 ToddlerBot es una plataforma de robot humanoide de código abierto y bajo costo diseñada para el aprendizaje de políticas escalables y la investigación en robótica e IA.",
+        "body_markdown": "🧑‍💻 [ToddlerBot](https://toddlerbot.github.io/) es una plataforma de robot humanoide de código abierto y bajo costo diseñada para el aprendizaje de políticas escalables y la investigación en robótica e IA."
+      },
+      {
+        "position": 7,
+        "headline": "💭 ROS MCP Server es un software que conecta modelos de lenguaje grandes (como Claude, GPT y Gemini) con robots existentes, brindándoles integración de IA bidireccional.",
+        "body_markdown": "💭 [ROS MCP Server](https://github.com/robotmcp/ros-mcp-server) es un software que conecta modelos de lenguaje grandes (como Claude, GPT y Gemini) con robots existentes, brindándoles integración de IA bidireccional."
+      }
+    ]
+  }
+}

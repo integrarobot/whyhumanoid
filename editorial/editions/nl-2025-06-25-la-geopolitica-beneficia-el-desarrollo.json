@@ -1,0 +1,52 @@
+{
+  "edition_id": "nl-2025-06-25-la-geopolitica-beneficia-el-desarrollo",
+  "source_url": "https://www.integrarobot.com/p/la-geopolitica-beneficia-el-desarrollo",
+  "published_on": "2025-06-25",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "🇺🇸🇨🇳🇪🇺 Geopolitics benefits the development of humanoid robots",
+  "subtitle": "The global industrial landscape is changing by the minute, and robotics is going to have a lot to do with it.",
+  "body_markdown": "One of the most important pieces of news in the robotics sector in recent days has been [NVIDIA](https://www.reuters.com/world/china/nvidia-foxconn-talks-deploy-humanoid-robots-houston-ai-server-making-plant-2025-06-20/)'s interest in using **humanoid robots** in the manufacture of its GB300 artificial intelligence servers, which are going to be produced by **Foxconn** in the new factory being built in **Houston**.\n\nThis seems to me great news, because NVIDIA has talked a lot about driving humanoid robotics, but until now it had not led by example. Every so often they told us about everything they do in software and hardware for Physical AI, but we did not know whether they were convinced enough to take their own medicine.\n\nWill **UBTech**'s robots be the ones used in this case, or are they developing their own humanoid? The fact is that Foxconn already uses Walker robots to produce **iPhones** in **China**, but in this case manufacturing would take place in the USA, which reinforces the idea of the geopolitical struggle between the United States and China over dependence in hardware production.\n\nAnother example of this situation is the large investment [Softbank](https://www.reuters.com/business/media-telecom/softbanks-son-pitches-1-trillion-us-ai-hub-tsmc-trump-team-bloomberg-news-2025-06-20/) plans to make with the construction of an industrial complex in **Arizona** devoted to the development of robots and artificial intelligence. To this end it seeks to partner with **TSMC** with the aim of bringing cutting-edge technology manufacturing back to the United States and thereby creating there a version of China's enormous Shenzhen manufacturing hub.\n\nI don't get involved in geopolitics, but it seems clear that if the cheap labour condition that led many Western companies to move their production to China no longer holds, and given that knowledge knows no borders, the normal thing is to see factories starting to be built everywhere, especially bearing in mind that these factories will increasingly be robotized. Therefore, everything indicates that it is not a question of politics but of capital: the market has simply changed and companies are looking for a more efficient way of doing things.\n\n## NEURA and the awakening of Europe\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/537691ea-e290-4fcc-a56a-97a7d95dab3b_1600x1189.jpeg)\n\nAs far as **Europe** is concerned, so far this year we are seeing a significant change in the innovation situation. Last year we already began to see civic initiatives trying to highlight that Europe was heading for the abyss if we did not stop making stupid laws like the ones on bottle caps, cookies and AI regulation. The result is that the AI law is paused until 2026, and we are starting to see how some European companies are standing out in advanced technologies. We have seen it with **Mistral** and **Lovable** as far as pure Artificial Intelligence is concerned, and in robotics we also have outstanding companies here such as **1X** and **NEURA**.\n\nIn the case of 1X, last week we told you about the news regarding its **VLA** and its **foundation model of the world**, so today it is time to talk about NEURA, which, taking advantage of the Automatica event being held these days in Munich, has officially unveiled its **4NE1 humanoid robot**, as well as what they call cognitive household robots, named MiPA.\n\nAbout the 4NE1 humanoid robot, they have told us the following:\n\n- It can work autonomously and safely with humans in real environments.\n- It has cognitive intelligence, which allows it to perceive its environment independently, make decisions and learn from experience.\n- Thanks to an \"omnisensor\" it can reliably distinguish people from objects, recognize them and adapt its behaviour accordingly.\n- It has a dual battery system for uninterrupted operation with **24-hour autonomy**.\n- **It can lift up to 100 kilograms** thanks to its powerful joint technology.\n- It is equipped with hands with fine motor skills and learning capability. This makes it suitable not only for complex industrial tasks, but also for domestic or service sector activities.\n- It has \"Artificial Skin\" as a sensor that detects touch just before actual contact, making human-robot interaction even more precise and safe.\n\nIn addition, to enable fast, fully automated production of the humanoid robot, NEURA Robotics has developed the new NEURA Hive production method, which works like a beehive, where several robots arranged in a circle assemble the components of the 4NE1 humanoid in a small space.\n\nThe **Neuraverse** platform was also presented at the event, which they define as a technology ecosystem for cognitive robotics, through which robots are connected and robotic applications can be easily developed and used, as if it were an app store.\n\nIn the Neuraverse, robots share their learning experiences from real-world applications. What one robot can do, all the others can learn simultaneously. This creates an intelligent network that increases innovation, safety and efficiency in robotics development, to which other developers can contribute with their own modules and applications.\n\nNeuraverse already has some applications, such as the joint welding solution with the company Abicor Binzel, which shows how humans and robots can collaborate in real time. In addition, to further improve the quality of training data, NEURA Robotics is building its own physical AI training centres where data from real application scenarios is generated which, once combined with synthetic data from the Neuraverse, makes it possible to have a highly complex, trained model that is transferable to other robots.\n\nAnd to finish with NEURA, two pieces of news that reinforce its leading position in the development of robotics in Europe:\n\n- The alliance with [Vodafone](https://newsroom.vodafone.de/humanoide-ki-roboter-sollen-kuenftig-auch-in-privaten-haushalten-helfen) with the aim of using real-time mobile communications to turn cognitive robots into true helpers for humans in everyday life.\n- The preparation of an investment round in which the company expects to raise [1 billion euros](https://www.investing.com/news/company-news/neura-robotics-seeks-up-to-1-billion-for-humanoid-robot-launch--bloomberg-93CH-4104090) to help drive the development of its technology.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦾 Google Deepmind keeps improving Gemini Robotics; this time they have presented the On-Device version.",
+        "body_markdown": "🦾 [Google Deepmind](https://x.com/GoogleDeepMind/status/1937511515768176966) keeps improving Gemini Robotics; this time they have presented the On-Device version. A vision-language-action model that helps robots be faster, highly efficient and adaptable to new tasks and environments, without the need for a constant Internet connection."
+      },
+      {
+        "position": 2,
+        "headline": "🧿 QUT is a research centre where a new robotic navigation system has been developed that mimics the neural processes of the human brain and uses less than 10 percent of the ener…",
+        "body_markdown": "🧿 [QUT](https://www.eurekalert.org/news-releases/1087031) is a research centre where a new robotic navigation system has been developed that mimics the neural processes of the human brain and uses less than 10 percent of the energy required by traditional systems."
+      },
+      {
+        "position": 3,
+        "headline": "📹 Amplify facilitates robot training through watching YouTube videos, labelling their content with information about action and movement.",
+        "body_markdown": "📹 [Amplify](https://x.com/jerthesquare_/status/1935838737948356907) facilitates robot training through watching YouTube videos, labelling their content with information about action and movement."
+      },
+      {
+        "position": 4,
+        "headline": "🇯🇵 Zero Jinki is an impressive robot that attaches to a crane in order to perform dangerous work at great heights, as in the case of maintaining railway installations in Japan.",
+        "body_markdown": "🇯🇵 [Zero Jinki](https://es.wired.com/articulos/el-es-zero-jinki-el-robot-que-sustituira-a-los-humanos-en-los-trabajos-peligrosos-a-gran-altura) is an impressive robot that attaches to a crane in order to perform dangerous work at great heights, as in the case of maintaining railway installations in Japan."
+      },
+      {
+        "position": 5,
+        "headline": "🤝 Trossen Robotics signs an alliance with General Robotics to incorporate GRID technology through AI in order to facilitate robot perception, planning and control directly from…",
+        "body_markdown": "🤝 [Trossen Robotics](https://www.trossenrobotics.com/post/trossen-robotics-and-general-robotics-announce-partnership-to-bring-ai-enhanced-capabilities-to-tros) signs an alliance with General Robotics to incorporate GRID technology through AI in order to facilitate robot perception, planning and control directly from the cloud."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 26; 5 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "91f087d029574b0b795aa2c788e95578d85ccb696324843d96f78b1e7e60d18c"
+}

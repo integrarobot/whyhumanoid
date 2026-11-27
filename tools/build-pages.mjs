@@ -38,6 +38,8 @@ import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { CATEGORIES, CATEGORIES_BY_ID, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { hostKey, urlKey } from '../server/src/import/identity.js';
 import { renderEvolutionSection } from './evolution-view.mjs';
+import { editorialPages, editorialUrls } from './editorial-view.mjs';
+import { readStore as readEditorialStore } from './editorial-model.mjs';
 import { chartOffered, deskIndex, readDesk, readFundamentals, renderCompanyChart, renderInvestmentDesk, renderListingResearch, renderTheses } from './investment-view.mjs';
 import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
 
@@ -54,7 +56,9 @@ const CSS_VERSION = createHash('sha256').update(readFileSync(new URL('assets/pag
 if (!readFileSync(new URL('assets/pages.css', root), 'utf8').includes(FOOTER_CSS)) throw new Error('assets/pages.css lacks the shared footer rule (FOOTER_CSS in tools/footer-view.mjs)');
 // Robotics Evaluation Atlas assets, loaded on /benchmarks/ only (their own cache keys, so other pages do not change).
 const assetVersion = (f) => createHash('sha256').update(readFileSync(new URL(f, root))).digest('hex').slice(0, 10);
-const GENERATED_DIRS = ['robots', 'companies', 'reports', 'method', 'subscribe', ...CATEGORIES.map((c) => c.path.slice(1, -1))];
+// blog and news: the editorial sections (tools/editorial-view.mjs), outside the ten categories; newsletter holds the
+// redirects of the Blog's former addresses.
+const GENERATED_DIRS = ['robots', 'companies', 'reports', 'method', 'subscribe', 'blog', 'newsletter', 'news', ...CATEGORIES.map((c) => c.path.slice(1, -1))];
 
 // ---------- helpers ----------
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -1071,6 +1075,10 @@ ${comparatorMethod()}
 }
 
 export function sitemapUrls(model) {
+  // The editorial sections join the sitemap only once editorial/config.json publishes them.
+  return [...sitemapCore(model), ...editorialUrls(readEditorialStore(root))];
+}
+function sitemapCore(model) {
   return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/agents/demo/', '/about/', '/terms/', '/privacy/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
 }
 function sitemap(model) {
@@ -1097,6 +1105,9 @@ export function buildPages(registry = readRegistry()) {
   for (const rb of model.robots) files.set(`${rb.path.slice(1)}index.html`, robotPage(rb, model));
   for (const c of model.companies) files.set(`${c.path.slice(1)}index.html`, companyPage(c, model));
   for (const r of model.otherRobots) files.set(`${r.path.slice(1)}index.html`, otherRobotPage(r, model));
+  // Blog and News (editorial/, tools/editorial-view.mjs): noindex and outside the sitemap until live; /newsletter/
+  // addresses redirect to the Blog.
+  for (const [f, html] of editorialPages(readEditorialStore(root), { page, crumbs, assetVersion, redirect: redirectPage })) files.set(f, html);
   // The ten categories, in the confirmed order (access matrix, 23 Nov 2026).
   files.set('humanoids/index.html', humanoidsCategory(model));
   files.set('deployments/index.html', deploymentsCategory(model));

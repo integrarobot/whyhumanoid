@@ -1,0 +1,72 @@
+{
+  "edition_id": "nl-2026-01-28-una-comunidad-para-unir-a-los-apasionados",
+  "source_url": "https://www.integrarobot.com/p/una-comunidad-para-unir-a-los-apasionados",
+  "published_on": "2026-01-28",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "A community to bring together robotics enthusiasts",
+  "subtitle": "There is so much going on in Generative AI that robotics may be overshadowed. Pioneers who want to drive Physical AI are needed.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/3528d46f-e316-4d3b-aae8-14346b54bf11_1200x800.jpeg)\n\nI admit that right now I'd like to be tinkering with Moltbot (formerly Clawdbot), but here I am, writing this week's Integrarobot newsletter. And it's not a complaint; I simply understand that the temptation with everything happening in Generative AI is so great that robots can often take a back seat.\n\nBut fortunately I'm clear about my goals, and if you're reading this it's because you also glimpse the great opportunity of **robotics**.\n\nThe opportunity of **Physical AI** could be even greater than that of **Generative AI**, but since there are still technical problems to solve, here we are still talking about expectations instead of working on real things.\n\nBut this should start to change. We have to join forces to get robotics projects off the ground.\n\nThat's why I'm launching the [Robot Pioneers Community](https://www.integrarobot.com/p/pioneros). I've shortened the name to simplify it and not scare people with something as futuristic as humanoids. And I'm convinced that there is a lot that can already be done to bring the future we dream of closer to us.\n\nLet's start by recording the operations carried out in our companies, whether it's a factory, a shop, a workshop, a gym, … There are thousands of places where robots will be able to help, but we need to give them data. For example, yesterday the new version of the AI from **Figure** was presented, the company that is best communicating its advances in humanoid robotics, and they tell us this:\n\n> *[Helix 02](https://www.figure.ai/news/helix-02) has been trained with more than 1,000 hours of human motion data and sim-to-real reinforcement learning. Thanks to this, the single neural system is able to control the robot's entire body directly from images, enabling agile, long-horizon autonomy.*\n\nAnother thing that can be done is to set up a robot rental company. I know that many tech events want to start covering this topic, but of course they don't want just videos and photos; they'd like to have a real robot walking around. Since the most accessible one right now is Unitree's G1, and it is also becoming famous on TV thanks to the work Synergy Tech is doing, it is surely a good option for a while until there is more variety on the market.\n\nBut anyway, these are just a couple of ideas about what we could start doing, beyond some people wanting to devote themselves directly to developing hardware and software for robots; in the previous newsletter I also described all the possibilities I see for entrepreneurship and investment in the Physical AI sector.\n\nSo what I wanted to do today is encourage you to take part in the **community**, with which we will hold a first **online meeting** next week, specifically on **Wednesday 4 February at 19:00**. [Will you join us](https://www.integrarobot.com/p/pioneros)?",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💰 ARK Big Ideas 2026 is the annual report of one of the investment funds most convinced that technology is the lever to activate in order to transform the world.",
+        "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/41cd7764-af4a-4671-9862-bbf80480bd6b_1844x1046.png)\n\n💰 [ARK](https://www.ark-invest.com/big-ideas-2026) Big Ideas 2026 is the annual report of one of the **investment funds** most convinced that technology is the lever to activate in order to transform the world. And this year its report once again places robotics among the 12 technologies to invest in. Specifically, in this case they tell us we are at the beginning of the growth curve in which robotics will start to scale across all of industry, moving from an era of specialized robots to the arrival of AI-driven generalist robots."
+      },
+      {
+        "position": 2,
+        "headline": "🇩🇪 Agile ONE is a humanoid robot powered by Physical AI, designed in Germany to work in factories.",
+        "body_markdown": "🇩🇪 [Agile ONE](https://www.agile-robots.com/en/solutions/agile-one/) is a humanoid robot powered by Physical AI, designed in **Germany** to work in factories. Its hands are full of sensors to resemble human hands, which allows it to handle tools and parts with high precision, supporting both delicate assembly and force-intensive tasks. Its main capabilities are: 20 kg payload, 174 cm height and 69 kg weight, 8-hour battery life, 2.0 m/s walking speed and 71 degrees of freedom."
+      },
+      {
+        "position": 3,
+        "headline": "💻 Microsoft Research has presented Rho-alpha, a physical AI model designed to give robots greater autonomy and adaptability in complex environments.",
+        "body_markdown": "💻 [Microsoft Research](https://www.microsoft.com/en-us/research/story/advancing-ai-for-the-physical-world/) has presented **Rho-alpha**, a physical AI model designed to give robots greater autonomy and adaptability in complex environments. Unlike previous AI models, this technology translates natural language instructions directly into motor actions for bimanual manipulation tasks. The advance stands out for **integrating the sense of touch and vision**, allowing machines to perceive their environment in a more human and precise way."
+      },
+      {
+        "position": 4,
+        "headline": "💱 Unbox Robotics obtains 28 million dollars in a Series B funding round led by ICICI Venture and Redstart Labs (Infoedge), with co-investment from F-Prime, 3one4 Capital, Navam…",
+        "body_markdown": "💱 [Unbox Robotics](https://www.europapress.es/comunicados/internacional-00907/noticia-comunicado-unbox-robotics-obtiene-28-millones-dolares-ronda-financiacion-serie-icici-venture-20260121090235.html) obtains 28 million dollars in a Series B funding round led by ICICI Venture and Redstart Labs (Infoedge), with co-investment from F-Prime, 3one4 Capital, Navam Capital, Force Ventures and other investors. The company is devoted to warehouse automation and works with companies in the **e-commerce**, retail and logistics sectors in India, Europe and the United States."
+      },
+      {
+        "position": 5,
+        "headline": "🤖 OpenAI is looking for suppliers of robot components as part of its plan to strengthen the US AI supply chain through manufacturing.",
+        "body_markdown": "🤖 [OpenAI](https://openai.com/es-ES/index/strengthening-the-us-ai-supply-chain/) is looking for suppliers of **robot components** as part of its plan to strengthen the US AI supply chain through manufacturing. With this they give us to understand that the leading Generative AI company is still working on robotics, but it is not clear whether they see it as an end or as a means. Will they end up launching a robot on the market, or will they limit themselves to using them in their data centres?"
+      },
+      {
+        "position": 6,
+        "headline": "🏭 Hitachi launches the Hitachi AI Factory as a centralized infrastructure designed to accelerate the development and deployment of physical AI solutions in the company's main bu…",
+        "body_markdown": "🏭 [Hitachi](https://www.computing.es/estrategia/hitachi-anuncia-nvidia-ia-factory-para-acelerar-la-innovacion-en-ia-fisica/) launches the Hitachi AI Factory as a centralized infrastructure designed to accelerate the development and deployment of **physical AI** solutions in the company's main business sectors. The AI Factory is powered by Hitachi iQ with **NVIDIA** HGX B200 systems incorporating NVIDIA Blackwell GPUs; Hitachi iQ M Series with NVIDIA RTX PRO 6000 Server Edition GPUs; and the NVIDIA Spectrum-X Ethernet networking platform"
+      },
+      {
+        "position": 7,
+        "headline": "🦐 Makro now sells waiter robots, and this is good news, because as people get used to seeing robots in restaurants and cafés, we will make progress in adopting this technology a…",
+        "body_markdown": "🦐 [Makro](https://www.makro.es/marketplace/product/a0da1d43-d27a-4fd7-8695-f938193081fa) now sells **waiter robots**, and this is good news, because as people get used to seeing robots in restaurants and cafés, we will make progress in adopting this technology and move little by little toward the arrival of humanoids. This robot from the **Hiopos** brand can carry a load of up to 60 kg on four trays. It has a 15.6\" screen, light indicators, Lidar technology and 3D cameras, and a battery lasting 8h with a charging time of 4-5 hours."
+      },
+      {
+        "position": 8,
+        "headline": "Serve will acquire Diligent Robotics and expand its physical AI platform beyond last-mile deliveries.",
+        "body_markdown": "[Serve](https://investors.serverobotics.com/news-releases/news-release-details/serve-robotics-acquire-diligent-robotics-expanding-physical-ai) will acquire **Diligent Robotics** and expand its physical AI platform beyond last-mile deliveries. Diligent is a pioneering provider of AI robotic assistants for work in **hospitals**. The transaction marks the first expansion of Serve's autonomy platform to indoor environments, with hospitals and other health-related facilities being one of the highest-impact environments for robotics."
+      },
+      {
+        "position": 9,
+        "headline": "🤸 NVIDIA's ProtoMotions is a new GPU-accelerated simulation and learning framework for training digital humans and physically simulated humanoid robots.",
+        "body_markdown": "🤸 **NVIDIA**'s [ProtoMotions](https://nvlabs.github.io/ProtoMotions/) is a new GPU-accelerated simulation and learning framework for training digital humans and physically simulated **humanoid robots**. Its goal is to provide a fast prototyping platform for various simulated humanoid learning tasks and environments, connecting efforts across physics-based animation, digital humans and humanoid robotics."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 61; 9 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "3a13526cb489c592dba9f946bdaf1cee4234d5884b2b6a7b360a859ecbfa30c4"
+}

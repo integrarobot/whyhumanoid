@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-09-11-es-gpt-6-astra-el-momento-chatgpt",
+  "source_url": "https://www.integrarobot.com/p/es-gpt-6-astra-el-momento-chatgpt",
+  "published_on": "2026-09-11",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Is GPT-6 Astra the ChatGPT moment of robotics?",
+  "subtitle": "The presentation of the new version of ChatGPT is going to become a new boost for the development of robotics.",
+  "body_markdown": "Throughout this year there has been a lot of talk about the **ChatGPT moment of robotics**, and until now the dominant opinion was that there would be no moment equivalent to what happened on 22 November 2022, when ChatGPT was presented to the public; rather, the arrival of intelligent robots would be a more gradual process, because small-scale milestones kept occurring one after another that, taken together, could constitute a phenomenon similar to what happened with Generative AI, but in the field of Physical AI.\n\nBut the presentation of **GPT-6 Astra** on 3 September 2026 could become a milestone of such magnitude that it ends up becoming the reference moment for the take-off of Physical AI.\n\nWhat happens is that many things had to happen to get here: just as in **Generative AI** we have to remember milestones such as AlexNet and Transformers, in **Physical AI** we must also be aware of all the work that has been done on developing VLAs and WAMs by startups such as Skild AI, Generalist, Field AI, Physical Intelligence, Genesis AI, OpenMind, … as well as by the robot manufacturers themselves (Tesla, Figure, 1X, …) and major technology companies such as Google, NVIDIA, Meta, Xiaomi, Alibaba, …\n\nSo what has just happened is that the big AI labs, specifically OpenAI and Anthropic, have just joined this race to develop AI for robots — well, DeepSeek too, from the moment it became an investor in Unitree before its IPO.\n\nAnd the result of adding a new type of competitor to this race will be a new acceleration, bringing us ever faster toward the dream of general-purpose robots.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 109; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

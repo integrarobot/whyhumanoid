@@ -1,0 +1,77 @@
+{
+  "edition_id": "nl-2026-04-29-ups-quiere-comprar-miles-de-robots",
+  "source_url": "https://www.integrarobot.com/p/ups-quiere-comprar-miles-de-robots",
+  "published_on": "2026-04-29",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "UPS wants to buy thousands of robots",
+  "subtitle": "Sales of humanoid robots are starting to accelerate, and in this article we are going to look at some examples.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/185272ce-f836-4d53-bfb8-6e26f39a1611_1200x579.jpeg)\n\nWhat could lead [Brett Adcock](https://x.com/adcock_brett/status/2046975249686941711) to publish a chart on the growth in manufacturing of **Figure** robots in which the Y-axis data does not appear?\n\nI'm sure he knew this would generate a lot of criticism and even distrust. It doesn't seem the attitude of a businessman who wants to improve the world through his technology.\n\nBut I'm not going to be the one to criticize one of the businessmen making the most effort to make the dream of humanoid robots come true, so let's get to what matters: robot manufacturing figures are soaring.\n\nIf the chart is true, albeit incomplete, what seems clear is that in recent months manufacturing has soared, going from 0 or 1 robot in April 2025 to a number that should be several hundred robots manufactured per month at the moment, which would take us to a figure of thousands over the course of this year.\n\nSo, if we refer to the figures the company publishes, we have the figure for the manufacturing capacity the [BotQ](https://www.figure.ai/news/botq) factory has or will have: \"*with capacity to produce up to **12,000 humanoid robots a year***\".\n\n### 📦 UPS wants to buy 10,000 robots from Figure\n\nThis is where things get interesting, because in such a new activity, with so much uncertainty, the normal thing would be to be cautious about launching into mass production, lest the market not yet accept the product because of its immature state of development.\n\nBut you know, nothing ventured, nothing gained, and the reward is so high that many companies are rushing to buy robots, even though they are still at a premature stage of development. Remember what I always say: the first iPhone had no GPS, but people rushed to buy it en masse.\n\nLet's look at other examples of how companies are rushing to buy, or at least order, humanoid robots.\n\n- **Schaeffler** plans to deploy more than 1,000 [Hexagon](https://hexagon.com/company/newsroom/press-releases/2026/hexagon-schaeffler-deploy-aeon-humanoids-across-global-factory-network) AEON robotic humanoids in its global factories by 2032\n- Operators of [China's power grid](https://www.scmp.com/economy/china-economy/article/3351323/china-plans-invest-billions-robot-army-run-its-power-grid) plan to buy thousands of robots in 2026 alone, including devices to inspect and maintain vital infrastructure.\n- [ROBOTERA](https://www.robotera.com/en/), which is deploying its L7 humanoid robot in more than 10 logistics centres operated by China Post, SF Express Group and other companies in the sector.\n\n[Video embedded in the original article]\n\n### It's moving!\n\nMy conclusion after thinking about all this is that things are advancing at their proper pace. So we have time to **prepare** and not have everything come crashing down on us as happened with Generative AI, where many people are still paralyzed because they don't know how to face the great change taking place.\n\nIn any case, it doesn't seem prudent to me to sit and wait until robots are everywhere either, which is why I think this is the best time to learn about robotics. So I have launched a live online **course** to share everything I know about **Physical AI** and humanoid robotics. It will be on 12, 13 and 14 May from 18:00 to 20:00, and you can already sign up. To do so you have to join the robot pioneers community, which costs 10 euros a month or 100 euros a year. You will also be able to take part in the community's monthly meetings and receive exclusive content.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦾 Sisteplant is a Spanish company that has created R Bot, automation software for inspection, maintenance, quality, production supervision and safety activities in industrial pl…",
+        "body_markdown": "🦾 [Sisteplant](https://sisteplant.com/que-ofrecemos/r-bot/) is a Spanish company that has created **R Bot**, automation software for inspection, maintenance, quality, production supervision and safety activities in industrial plants, buildings and infrastructure, which controls a fleet of mobile robots working in coordination with each other."
+      },
+      {
+        "position": 2,
+        "headline": "🧠 Sereact raises 110 million dollars to scale Cortex 2.0 and enter the United States.",
+        "body_markdown": "🧠 [Sereact](https://sereact.ai/posts/series-b) raises 110 million dollars to scale Cortex 2.0 and enter the United States. The company says it has more than 200 systems deployed in Europe and more than 1 billion real picks, reinforcing the idea that operational warehouse data can become a cumulative advantage for **physical AI**."
+      },
+      {
+        "position": 3,
+        "headline": "🛞 Unitree shows that humanoids need not be limited to walking: they can also incorporate wheels when the task allows.",
+        "body_markdown": "🛞 [Unitree](https://x.com/UnitreeRobotics/status/2047257759473946705) shows that humanoids need not be limited to walking: they can also incorporate **wheels** when the task allows. The interesting idea is not the visual trick but the pragmatic approach: if the goal is to create general-purpose robots, the humanoid form can be combined with more efficient mobility solutions."
+      },
+      {
+        "position": 4,
+        "headline": "🧪 Siemens explains how combining simulation and real testing can accelerate robot training.",
+        "body_markdown": "🧪 [Siemens](https://blogs.sw.siemens.com/simcenter/the-future-of-robot-training/) explains how combining simulation and real testing can accelerate **robot training**. Its approach aims to reduce the cost and risk of physical learning, using digital twins and small amounts of real data to fine-tune the robot's behaviour in the face of terrain, friction and changing conditions."
+      },
+      {
+        "position": 5,
+        "headline": "💸 Pudu Robotics raises nearly 150 million dollars and exceeds a valuation of 1.5 billion.",
+        "body_markdown": "💸 [Pudu Robotics](https://www.pudurobotics.com/en/news/pudu-robotics-raises-150-million-exceeds-1-5-billion-valuation) raises nearly **150 million dollars** and exceeds a valuation of 1.5 billion. The Chinese company, known for service, cleaning and logistics robots, wants to use the capital to advance in embodied AI, expand its catalogue and scale manufacturing and its global supply chain."
+      },
+      {
+        "position": 6,
+        "headline": "🛫 A&K Robotics obtains 8 million Canadian dollars to deploy Cruz, its autonomous mobility robot for airports.",
+        "body_markdown": "🛫 [A&K Robotics](https://www.businesswire.com/news/home/20260421367847/en/AK-Robotics-Raises-%248-Million-to-Build-Autonomous-Mobility-Infrastructure-for-Airports) obtains 8 million Canadian dollars to deploy Cruz, its autonomous mobility robot for **airports**. The case is interesting because it brings autonomy to very crowded indoor environments, where accessibility, safety and operational integration weigh as much as navigation."
+      },
+      {
+        "position": 7,
+        "headline": "🏭 Vodafone, together with SAP and Accenture, is testing humanoids in a warehouse connected to SAP Extended Warehouse Management.",
+        "body_markdown": "🏭 [Vodafone](https://newsroom.accenture.com/news/2026/accenture-vodafone-procure-connect-and-sap-pilot-humanoid-robotics-in-warehouse-operations), together with **SAP** and **Accenture**, is testing humanoids in a warehouse connected to SAP Extended Warehouse Management. The robot inspects products, pallets, underused space and safety risks, showing how humanoid robotics is starting to be integrated into real business processes, not just isolated demos."
+      },
+      {
+        "position": 8,
+        "headline": "🇬🇷 MARK One appears as the first industrial humanoid designed and built in Greece.",
+        "body_markdown": "🇬🇷 [MARK One](https://x.com/CyberRobooo/status/2048392629000573229) appears as the first industrial humanoid designed and built in **Greece**. Developed by **AXL Imperial**, it combines autonomous mobility and arms for tasks such as palletizing, machine feeding, quality control and material handling."
+      },
+      {
+        "position": 9,
+        "headline": "📚 NVIDIA publishes a practical module for building your first robot in Isaac Sim.",
+        "body_markdown": "📚 [NVIDIA](https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-sim/latest/building-your-first-robot-in-isaac-sim/index.html) publishes a practical module for building your first robot in **Isaac Sim**. The guide covers robot creation, physics, sensors, control and connection with ROS 2, reinforcing Isaac Sim's role as a gateway for training talent and accelerating robotic simulation projects."
+      },
+      {
+        "position": 10,
+        "headline": "🏓 Sony AI presents Ace, a robot capable of competing against elite players in table tennis.",
+        "body_markdown": "🏓 [Sony AI](https://ace.ai.sony/) presents Ace, a robot capable of competing against elite players in **table tennis**. The project combines low-latency vision sensors, reinforcement learning and high-speed hardware to respond in milliseconds, becoming a physical AI milestone in dynamic and competitive interaction."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 88; 10 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "1707852a4c2ce77c2ac9d6f574052846fba1db476cc29f78f659c8c9bced0fd5"
+}

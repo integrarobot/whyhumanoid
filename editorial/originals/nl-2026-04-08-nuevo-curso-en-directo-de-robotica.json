@@ -1,0 +1,52 @@
+{
+  "edition_id": "nl-2026-04-08-nuevo-curso-en-directo-de-robotica",
+  "language": "es",
+  "title": "Nuevo curso de robótica e IA Física",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/9ddf42b7-5833-4677-a149-0a874fd22710_2486x1260.png)\n\nEn mayo vamos a realizar un nuevo **curso online en directo**. En esta ocasión va a tratar sobre la **evolución de la robótica a la IA Física**.\n\nMe he dado cuenta de que el [curso de robots humanoides](https://www.integrarobot.com/p/curso)**,** que realicé en diciembre en directo (y que ahora también está grabado en vídeo para los miembros de la comunidad pioneros robots), estaba demasiado limitado a un tipo de tecnología, pero muchas veces las cosas no van tan rápido como nos gustaría, así que se hace necesario ampliar la perspectiva y tratar otros temas para poder aportar una visión más completa.\n\nPor lo tanto, el **curso de robótica e IA física** que voy a realizar los días **12, 13, y 14 de mayo de 18 a 20h**, va a empezar hablando de robots camareros. Sí, porque son los primeros robots de nueva generación, los que tienen IA integrada, que la gente se está acostumbrando a ver y por lo tanto van a ser el comienzo de todo lo que está por venir en este sector.\n\nLa presentación de la estrategia de robótica de **NVIDIA** en el GTC 2026 también pone de manifiesto esta realidad. En las ediciones anteriores cuando Jensen Huang hablaba de **IA Física** tenía a su lado un montón de robots humanoides, pero en esta ocasión la imagen ha sido mucho más variada porque los humanoides se han mezclado con todo tipo de robots: coches autónomos, brazos robóticos industriales, drones, plataformas móviles, carretillas elevadoras autónomas y hasta una excavadora¡!\n\nAsí que en el curso de Integrarobot vamos a tener esa variedad y además nos vamos a centrar en tratar cómo se está produciendo esta **transición**, por ejemplo, cómo las empresas tradicionales de robótica, ABB, FANUC, KUKA, están dando sus primeros pasos en IA Física. También nos vamos a detener un poco en lo que está pasando con la conducción autónoma porque seguramente nos está mostrando el camino de lo que más adelante va a llegar con los robots.\n\nY qué decir de los drones, los robots de reparto, las robots móviles autónomos y tantas otras máquinas que están invadiendo el mundo de manera sigilosa, sin llamar tanto la atención como los humanoides, pero que al integrar IA están demostrando que no estamos ante una tecnología que sólo hace promesas sino que realmente entrega realidades.\n\nBueno, te confieso que también hablaremos al final del avances de los humanoides, porque la convicción al respecto de que va a ser la tecnología más transformadora del futuro la sigo teniendo, pese a los retrasos de **Optimus 3** y el resto de contratiempos que van a surgir por el camino, tengo claro que es cuestión de tiempo que todos podamos tener nuestro robot mayordomo que nos quite de encima todas esas tareas tediosas que no queremos hacer.\n\nPero más allá de la anécdota del robot camarero, lo importante es entender qué está ocurriendo realmente:\n\n> Por primera vez en la historia estamos empezando a ver máquinas capaces de percibir el mundo, entender lo que ocurre a su alrededor y actuar en consecuencia. Eso es lo que llamamos IA Física: inteligencia artificial que no sólo genera texto o imágenes, sino que interactúa con la realidad.\n\nY cuando esa capacidad se conecta con robots, vehículos, drones o maquinaria industrial, el resultado no es una simple mejora tecnológica, sino una nueva capa de automatización sobre la economía.\n\nEsto no va de robots futuristas.\n\nVa de fábricas, almacenes, hospitales, restaurantes, carreteras y ciudades llenándose poco a poco de máquinas capaces de trabajar de forma autónoma.\n\nPor eso en este curso no vamos a hablar sólo de tecnología. Vamos a intentar entender qué está pasando realmente y cómo posicionarse ante uno de los cambios industriales más importantes de las próximas décadas.\n\nSi quieres comprender hacia dónde va todo esto antes de que se haga evidente para todo el mundo, nos vemos el 12, 13 y 14 de mayo.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🏢 Humandro-id presentó Robots ID en la GTC 2026 de Nvidia, una plataforma para teleoperar, recoger datos y entrenar robots humanoides.",
+        "body_markdown": "🏢 [Humandro-id](https://www.humandro-id.com/post/introducing-robotsos-id1) presentó Robots ID en la GTC 2026 de Nvidia, una plataforma para **teleoperar**, recoger datos y entrenar robots humanoides. La solución es independiente del hardware y permite generar datos sintéticos manteniendo la propiedad de los datos en manos de las empresas. Su objetivo es facilitar el desarrollo de modelos de IA física sin depender de un único fabricante. El anuncio refleja cómo el ecosistema de herramientas para entrenar robots está creciendo rápidamente."
+      },
+      {
+        "position": 2,
+        "headline": "🧱 Anvil Robotics cierra una ronda semilla de unos 5,5 millones de dólares para impulsar su plataforma modular para construir robots.",
+        "body_markdown": "🧱 [Anvil Robotics](https://news.crunchbase.com/robotics/physical-ai-custom-robot-builder-seed-funding-anvil/) cierra una ronda semilla de unos 5,5 millones de dólares para impulsar su plataforma modular para construir robots. La empresa propone una especie de “**Lego para robots**”, con kits abiertos de hardware y software que permiten desarrollar aplicaciones de IA física de forma rápida. Sus robots pueden comprarse por entre 5.000 y 10.000 dólares y se envían en pocos días. La compañía busca democratizar el acceso a la robótica avanzada para startups, investigadores y equipos pequeños."
+      },
+      {
+        "position": 3,
+        "headline": "🚀 Generalist lanza GEN-1, un nuevo modelo fundacional multimodal diseñado para controlar robots en tiempo real.",
+        "body_markdown": "🚀 [Generalist](https://generalistai.com/blog/apr-02-2026-GEN-1) lanza **GEN-1**, un nuevo modelo fundacional multimodal diseñado para controlar robots en tiempo real. En tareas sencillas alcanza tasas de éxito superiores al 99 %, muy por encima de modelos anteriores, y es hasta tres veces más rápido. El sistema aprende nuevas habilidades con apenas una hora de datos de robot. Este enfoque sugiere que en robótica también empiezan a aparecer leyes de escalado similares a las de los modelos de lenguaje."
+      },
+      {
+        "position": 4,
+        "headline": "☀️ Maximo muestra cómo sus robots están automatizando la instalación de grandes plantas fotovoltaicas.",
+        "body_markdown": "☀️ [Maximo](https://blogs.nvidia.com/blog/national-robotics-week-2026/?ncid=so-twit-763181&linkId=100000416285051#maximo) muestra cómo sus robots están automatizando la instalación de grandes **plantas fotovoltaicas**. La empresa completó una instalación de 100 MW utilizando robots que colocan y ensamblan paneles solares en el campo. El sistema utiliza tecnologías de simulación y computación acelerada de NVIDIA para coordinar las operaciones. Este tipo de robótica promete acelerar la construcción de infraestructuras energéticas a gran escala."
+      },
+      {
+        "position": 5,
+        "headline": "📹 Micro1 está creando un nuevo tipo de economía de datos para robots humanoides.",
+        "body_markdown": "📹 [Micro1](https://www.technologyreview.com/2026/04/01/1134863/humanoid-data-training-gig-economy-2026-breakthrough-technology) está creando un nuevo tipo de **economía de datos** para robots humanoides. Miles de trabajadores en distintos países se graban realizando tareas cotidianas para generar datos de entrenamiento que luego compran empresas de robótica. La compañía paga alrededor de 15 dólares por hora y vende los datos a fabricantes de robots. Este modelo refleja la creciente necesidad de grandes cantidades de datos humanos para entrenar sistemas de IA física."
+      },
+      {
+        "position": 6,
+        "headline": "🏭 Leju Robotics y Dongfang Precision han puesto en marcha en China una fábrica automatizada capaz de producir un robot humanoide cada 30 minutos.",
+        "body_markdown": "🏭 [Leju Robotics](https://interestingengineering.com/ai-robotics/china-opens-humanoid-robot-factory) y Dongfang Precision han puesto en marcha en China una fábrica automatizada capaz de producir un robot humanoide cada 30 minutos. La planta integra decenas de etapas de ensamblaje y controles de calidad digitalizados. Según la empresa, la eficiencia es alrededor de un 50 % superior a los métodos tradicionales. La instalación podría fabricar hasta **10.000 robots al año**, señalando el paso hacia la producción masiva de humanoides."
+      },
+      {
+        "position": 7,
+        "headline": "🖐️ Sanctuary demostró nuevas capacidades de manipulación avanzada con su mano robótica hidráulica.",
+        "body_markdown": "🖐️ [Sanctuary](https://www.sanctuary.ai/blog/in-hand-reorientation-policy-with-letter-cube) demostró nuevas capacidades de manipulación avanzada con su **mano robótica** hidráulica. En una prueba el robot reorienta un cubo con letras varias veces seguidas sin dejarlo caer. El sistema realiza la manipulación utilizando únicamente las yemas de los dedos, sin apoyo de la palma. Este tipo de destreza es clave para tareas industriales complejas como ensamblaje o uso de herramientas."
+      },
+      {
+        "position": 8,
+        "headline": "📊 Positronic lanzó el Physical AI Leaderboard (PhAIL), un nuevo benchmark para medir el rendimiento real de modelos de robótica basados en visión-lenguaje-acción.",
+        "body_markdown": "📊 [Positronic](https://positronic.ro/) lanzó el Physical AI Leaderboard (PhAIL), un nuevo **benchmark** para medir el rendimiento real de modelos de robótica basados en visión-lenguaje-acción. Las pruebas se realizan en hardware real con tareas industriales como el picking de objetos. Los resultados muestran que los mejores modelos actuales solo alcanzan alrededor del 5 % del rendimiento humano. El benchmark pone de manifiesto la gran brecha que aún existe entre las demos de laboratorio y la robótica productiva."
+      }
+    ]
+  }
+}

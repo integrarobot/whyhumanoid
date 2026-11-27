@@ -1,0 +1,57 @@
+{
+  "edition_id": "nl-2025-07-30-la-llegada-de-los-robots-sociales",
+  "source_url": "https://www.integrarobot.com/p/la-llegada-de-los-robots-sociales",
+  "published_on": "2025-07-30",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The arrival of social robots as a prelude to assistive robots",
+  "subtitle": "Reflections on Unitree's upcoming IPO",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/8d7a45f2-b57f-4d70-b7e9-455984824f3e_800x941.jpeg)\n\nSome scientists in the field of Artificial Intelligence claim that it is easier to get machines to simulate **empathy** than to get them to cook you a meal. But the reality is that it is often our own language that conditions the function: for example, in the case of empathy, it is not that the robot is able to put itself in your place and act accordingly, but rather that, without having to put itself in your place or feel what you feel, it is able to simulate some characteristics we associate with empathy. What happens is that, when we transfer this to the physical world, it is harder for something simulated to be useful to us.\n\nI say this because a study was recently published setting out how people use intelligent assistants, and it shows how use for emotional matters is increasingly prevailing over productivity-related applications.\n\n## Could the same happen with robots?\n\nWhile the creators of LLMs put all their effort into offering functions that help us do our intellectual work faster and better, a large proportion of this technology's users have decided they prefer to use it as if it were a friend to whom you tell your life, your problems, your worries and all kinds of things that are more personal than professional.\n\nSomething similar could happen with robots, because although most manufacturers are focused on manual skills to respond to the labour shortage in all kinds of jobs, the **social robotics** side is following its own path, which could be much more advanced, but which at some point should converge with the former.\n\nThis brings us back to **Moravec's paradox**: just as it is easier for a machine to solve a mathematical equation than to walk with ease, it also seems easier for a robot to listen to us attentively and give us emotional responses than to become really useful in household tasks.\n\nAll this makes me think of **Unitree** and its **IPO**. Because until now the robots of this Chinese company have seemed like toys to me, but that need not be something negative if we frame it in the context of social robotics rather than assistive robotics. Perhaps this company's first stages of robot sales are not intended to solve the problems of industry or the home, but rather to let anyone experiment with a first humanoid robot at an affordable cost.\n\nThe situation would be similar to the appearance of computers such as the Spectrum and Commodore, which were the way many people had a first experience with computing and video games. Later, many of those people became programmers or startup founders. Who knows whether the first people to buy a robot from Unitree, because of its affordable price, or from K-Labs or Pollen Robotics, will be the ones who bring the next advances in the development of this technology.\n\n# Unitree's IPO\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/95cd8d81-ffb3-4bc1-a231-07382694b5b1_686x386.jpeg)\n\nWe know little about Unitree's IPO, although everything indicates it intends to list on the Chinese stock exchange, and it must be no coincidence that this news coincided with the launch of its new low-cost humanoid robot, the **Unitree R1 Intelligent Companion**, which stands out for its agility of movement and costs 5,900 dollars. With this news the company is giving us to understand that what matters is not that the robot is very skilful, but rather that, if it is about selling robots, price will be a determining factor. So if the company's founders are not mistaken, people will want to buy robots not so much for the kind of tasks they can perform, but for the mere fact of having one, being able to interact with it, showing it to others and other things that may not have the usefulness of helping you day to day, but rather of entertaining you.\n\nSo although it is clear this is not the goal we are pursuing with the development of Humanoid Robots, until Tesla, Figure or Neura manage to have mechanical assistants that perform tasks in industry, retail or the home, a great many robots may be sold that simply fulfil a social function: companionship, entertainment, surveillance, …\n\n# A couple of social robots worth knowing about\n\nUntil now at Integrarobot we had not paid attention to social robotics, but we will have to start doing so more for the reasons we have just discussed. So after we return from holidays we will have to keep learning about it, but until then let's look at a couple of news items on the subject\n\n**💫 Abi** is a companion robot developed by the company [Andromeda](https://www.dromeda.com.au/) to help aged care teams in Australia bring joy and connection to residents more often, brightening days when time matters most.\n\n**🤖 Mirokaï** is a social robot created by the company [Enchanted](https://enchanted.tools/), which is already starting to have very positive experiences; for example, in the one being carried out at a hospital in Montpellier, it provides companionship to children who are hospitalized.\n\n---\n\nNOTE: at Integrarobot we are going on holiday. We'll read each other in September :)",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "The localization problem is one of the great challenges robot manufacturers have to solve.",
+        "body_markdown": "[The localization problem](https://x.com/JacklouisP/status/1948362710560969206) is one of the great challenges robot manufacturers have to solve. We will closely follow the progress made on it and report it here."
+      },
+      {
+        "position": 2,
+        "headline": "ThinkAct is a new VLA developed by NVIDIA which, through reasoning reinforced by action-aligned visual feedback, facilitates instant adaptation, long-term planning and self-corr…",
+        "body_markdown": "[ThinkAct](https://jasper0314-huang.github.io/thinkact-vla/) is a new VLA developed by NVIDIA which, through reasoning reinforced by action-aligned visual feedback, facilitates instant adaptation, long-term planning and self-correction in robots' embodied tasks."
+      },
+      {
+        "position": 3,
+        "headline": "Reborn has presented HumanoidOccupancy as the first general-purpose multimodal perception system for humanoid robots, allowing them to go beyond vision in order to feel, detect…",
+        "body_markdown": "[Reborn](https://x.com/reborn_agi/status/1950053236628697468) has presented HumanoidOccupancy as the first general-purpose multimodal perception system for humanoid robots, allowing them to go beyond vision in order to feel, detect and reason."
+      },
+      {
+        "position": 4,
+        "headline": "Skild AI is building an omni-bodied brain for robots consisting of an AI model trained on massive simulation and real-world data, which allows the robot to perform any task with…",
+        "body_markdown": "[Skild AI](https://www.skild.ai/blogs/building-the-general-purpose-robotic-brain) is building an omni-bodied brain for robots consisting of an AI model trained on massive simulation and real-world data, which allows the robot to perform any task with a single adaptable system, overcoming hardware limits."
+      },
+      {
+        "position": 5,
+        "headline": "EPFL is a Swiss research centre where they have developed a new 3D-printable material structure that can be used as a musculoskeletal system so that robots can be lighter and mo…",
+        "body_markdown": "[EPFL](https://3dprinting.com/news/epfl-researchers-develop-programmable-lattice-structure-for-robotics-using-single-foam-material/) is a Swiss research centre where they have developed a new 3D-printable material structure that can be used as a musculoskeletal system so that robots can be lighter and more adaptable."
+      },
+      {
+        "position": 6,
+        "headline": "Pollen presents a Unity-based digital twin of its Reachy 2 robot, which makes it possible to replicate its movements according to external computational commands.",
+        "body_markdown": "[Pollen](https://github.com/pollen-robotics/Reachy2-UnityDigitalTwin) presents a Unity-based digital twin of its Reachy 2 robot, which makes it possible to replicate its movements according to external computational commands. It is designed to simulate human-robot interaction (HRI) in XR applications without the need for the physical robot."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 31; 6 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "b2a24b8faad4aff85e837012b7a1f0c4167fd30c1d0c31e07d4b3fb10b0deb1d"
+}

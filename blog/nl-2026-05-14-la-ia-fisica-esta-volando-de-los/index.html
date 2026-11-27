@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Physical AI is flying: from WLMs to WAMs · Blog · Why Humanoid?</title>
+<meta name="description" content="We analyze the state of development of Physical AI models for robots">
+<link rel="canonical" href="https://whyhumanoid.com/blog/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/">
+<meta name="theme-color" content="#0B0C0E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Why Humanoid?">
+<meta property="og:url" content="https://whyhumanoid.com/blog/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/">
+<meta property="og:title" content="Physical AI is flying: from WLMs to WAMs · Blog · Why Humanoid?">
+<meta property="og:description" content="We analyze the state of development of Physical AI models for robots">
+<meta property="og:image" content="https://whyhumanoid.com/assets/og/whyhumanoid-og-v1.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap">
+<link rel="stylesheet" href="/assets/pages.css?v=05f0e248b3">
+<link rel="stylesheet" href="/assets/editorial.css?v=8bc12aeca7">
+</head>
+<body>
+<header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><button class="cat-toggle" id="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-menu" hidden>Categories<span class="chev" aria-hidden="true"></span></button><nav class="cats" id="cat-menu" aria-label="Categories"><a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a><a href="/reports/">Reports</a></nav></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/blog/">Blog</a> <span aria-hidden="true">/</span> <a href="/blog/2026/">2026</a> <span aria-hidden="true">/</span> <span aria-current="page">Physical AI is flying: from WLMs to WAMs</span></nav><article class="ed-article">
+<p class="kicker">Blog</p>
+<h1>Physical AI is flying: from WLMs to WAMs</h1>
+<p class="lede">We analyze the state of development of Physical AI models for robots</p>
+<p class="meta">By Javier Martín · First published in Spanish on <time datetime="2026-05-14">14 May 2026</time> · English translation dated <time datetime="2026-11-27">27 November 2026</time> · <a href="https://www.integrarobot.com/p/la-ia-fisica-esta-volando-de-los" rel="noopener noreferrer">Original edition</a></p>
+<div class="ed-body">
+<p><a href="https://substack-post-media.s3.amazonaws.com/public/images/6a56fab9-3866-4149-a179-004d48457770_2324x1634.png" rel="noopener noreferrer">Image: Image</a></p>
+<p>There are two ways of looking at it: it is going so fast that there&#39;s no time to take it in. Just when you had learned what a VLA was, you have to understand what a WLM is, and almost without realizing it we are now talking about WAMs.</p>
+<p>The other way of thinking is to welcome the speed, because it means we are getting ever closer to having AI robots doing all kinds of jobs we people don&#39;t want to do.</p>
+<p>That said, let&#39;s put a little order into all these acronyms and see why they are important for the future of robotics.</p>
+<p><strong>VLA</strong> Vision - Language - Action</p>
+<p>Vision → visual perception Language → linguistic understanding Action → physical action</p>
+<p>These are models that connect vision, language and motor control.</p>
+<p><strong>WLM</strong> World Language Model</p>
+<p>World → representation/modelling of the world Language → semantic interface or reasoning Model → predictive system</p>
+<p>The idea is to model the dynamics of the physical world and their consequences.</p>
+<p><strong>WAM</strong> World Action Model</p>
+<p>World → physical environment Action → actions/interactions Model → dynamic prediction</p>
+<p>Well, we have already talked a lot here about VLAs and WLMs; for example, the company <strong>1X</strong>, a pioneer in putting its <strong>NEO</strong> robot on sale in subscription mode, developed its own <a href="https://www.1x.tech/discover/redwood-ai" rel="noopener noreferrer">VLA</a> in 2025 and its own <a href="https://www.1x.tech/discover/world-model-self-learning" rel="noopener noreferrer">WLM</a> in 2026, but where does WAM come from then?</p>
+<p>If we simplify a lot, WAMs are the fusion of VLAs and WLMs. Or put another way, VLAs serve to give the robot autonomy, but when it faces the real world it needs information about physics that the WLM must provide; so if we join both types of AI models, what we have is a WAM.</p>
+<p>Therefore, World Action Models point to an evolution of VLAs: they go from mapping vision and language to actions, to explicitly modelling how the world changes when the robot acts.</p>
+<p>A typical VLA responds to an instruction using vision and language to produce an action. A WAM adds the more physical layer: predicting the next state of the world and the action that leads to it.</p>
+<p>Since VLAs appeared, robots have greatly improved the connection between language, vision and control, but they still have a weakness: they can understand objects and the instruction well, but fail at fine physical dynamics.</p>
+<p>To see it with an example, they can understand &quot;pick up the object&quot;, but not necessarily properly understand friction, weight, deformation, slipping, bouncing, stability and therefore the consequences of an action.</p>
+<p>And this is where <strong>NVIDIA</strong>&#39;s <a href="https://dreamzero0.github.io/" rel="noopener noreferrer">DreamZero</a> comes in, which argues precisely that VLAs generalize well semantically but have problems when facing unseen physical motions in new environments. It therefore proposes WAMs as models that combine video and action to improve that generalization, which yields more than double the improvement over a reference VLA in experiments with real robots.</p>
+<p>If you want to know more about WAMs and, in general, the state of the art of this technology, I recommend watching the video by <a href="https://www.youtube.com/watch?v=3Y8aq_ofEVs" rel="noopener noreferrer">Jim Fan</a>, who is NVIDIA&#39;s director of robotics, as well as one of the people with the clearest vision of how the development of Physical AI should evolve.</p>
+</div>
+<section class="ed-news"><h2>News in this edition</h2><ol class="ed-items"><li value="1"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/01/">🦾 Figure has just done a demo with 3 of its humanoid robots working shifts for 8 hours at a parcel sorting facility of the postal service.</a></li><li value="2"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/02/">🖐️ Genesis AI presents GENE-26.5, its first robotic foundation model system aimed at human-level manipulation.</a></li><li value="3"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/03/">🧠 Neuralink shows its ambition to build a surgical robot capable of reaching any region of the brain.</a></li><li value="4"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/04/">🚚 Actor Labs announces a 4 million dollar round and shows its robotic models deployed in the real world.</a></li><li value="5"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/05/">🦺 Persona AI partners with Under Armour to develop technical clothing and protective materials for industrial humanoids.</a></li><li value="6"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/06/">📈 RoboStrategy starts trading on Nasdaq under the ticker BOT as an investment vehicle focused on robotics and physical AI.</a></li><li value="7"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/07/">🏭 1X opens the doors of its NEO factory in the United States, described as a highly integrated facility where critical components are manufactured in-house.</a></li><li value="8"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/08/">🤌 Hangzhou Xynova presents Flex 2, a hybrid dexterous hand that combines cable transmission and direct drive.</a></li><li value="9"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/09/">🤝 Humanoid signs an agreement with Schaeffler to deploy thousands of humanoid robots in factories through 2032.</a></li><li value="10"><a href="/news/nl-2026-05-14-la-ia-fisica-esta-volando-de-los/10/">🚀 Rocket Lab has bought the company Motiv Space Systems, which specializes in space robotics, motion control and precision mechanisms for spacecraft.</a></li></ol></section>
+</article>
+</main>
+<script src="/assets/nav.js?v=b04ddeb126" defer></script>
+
+<footer class="foot"><nav class="site-foot" aria-label="Site"><a href="/blog/">Blog</a><a href="/news/">News</a><a href="/about/">About</a><a href="/agents/">For agents</a><a href="/method/">Method</a><a href="/about/#contact">Contact</a><a href="https://integrarobot.com">Integrarobot</a></nav><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/subscribe/">Subscription and reports</a><a href="/app/">Subscriber app</a><a href="/privacy/">Privacy</a></nav><p>Why Humanoid? by Integrarobot. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
+<!-- Cloudflare Web Analytics: visit counts without cookies (approved split, phase 3) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76de8d3b4a534b91bd808e724f9c1594"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

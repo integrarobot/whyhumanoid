@@ -1,0 +1,62 @@
+{
+  "edition_id": "nl-2026-05-14-la-ia-fisica-esta-volando-de-los",
+  "language": "es",
+  "title": "La IA Física está volando: de los WLM a los WAM",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/6a56fab9-3866-4149-a179-004d48457770_2324x1634.png)\n\nTienes dos formas de verlo, va tan rápido que no da tiempo a asimilarlo. Cuando ya te habías aprendido qué era un VLA, tienes que entender qué es un WLM y casi sin darte cuenta ahora estamos hablando de los WAM.\n\nLa otra forma de pensar es darle la bienvenida a la velocidad porque eso quiere que cada vez estamos más cerca de poder tener robots con IA haciendo todo tipo de trabajos que las personas no queremos hacer.\n\nDicho esto, vamos a poner un poco de orden en todos estos acrónimos y ver por qué son importantes para el futuro de la robótica.\n\n**VLA** Vision - Language - Action\n\nVisión → percepción visual\nLanguage → comprensión lingüística\nAction → acción física\n\nSon modelos que conectan visión, lenguaje y control motor.\n\n**WLM**World Language Model\n\nWorld → representación/modelado del mundo\nLanguage → interfaz semántica o razonamiento\nModel → sistema predictivo\n\nLa idea es modelar las dinámicas del mundo físico y sus consecuencias.\n\n**WAM**World Action Model\n\nWorld → entorno físico\nAction → acciones/interacciones\nModel → predicción dinámica\n\nBien, de los VLA y los WLM ya hemos hablado mucho por aquí, por ejemplo, la empresa **1X**, pionera en poner a la venta a su robot **NEO** en modo suscripción desarrolló en 2025 su propio [VLA](https://www.1x.tech/discover/redwood-ai) y en 2026 su propio [WLM](https://www.1x.tech/discover/world-model-self-learning), pero ¿de dónde sale entonces lo de WAM?\n\nSi lo simplificamos mucho, los WAM son la fusión entre los VLA y los WLM. O dicho de otra forma, los VLA sirven para dar autonomía al robot, pero cuando este se enfrenta al mundo real requiere de información de la física que debe proporcionarle el WLM, entonces si unimos ambos tipos de modelos de IA lo que tenemos es un WAM.\n\nPor lo tanto, los World Action Models apuntan a una evolución de los VLA: pasan de mapear visión y lenguaje hacia acciones, a modelar explícitamente cómo cambia el mundo cuando el robot actúa.\n\nUn VLA típico responde a una instrucción usando visión y lenguaje para producir una acción. Un WAM añade la capa más física: predecir el próximo estado del mundo y la acción que conduce a él.\n\nDesde la aparición de los VLA los robots han mejorado mucho la conexión entre lenguaje, visión y control, pero siguen teniendo una debilidad: pueden entender bien los objetos y la instrucción, pero fallar en la dinámica física fina.\n\nPara verlo con un ejemplo pueden entender “recoge el objeto”, pero no necesariamente comprender bien la fricción, el peso, la deformación, el deslizamiento, el rebote, la estabilidad y por lo tanto las consecuencias de una acción.\n\nY aquí es donde aparece [DreamZero](https://dreamzero0.github.io/) de **NVIDIA** que plantea precisamente que los VLA generalizan bien semánticamente, pero tienen problemas al enfrentarse a movimientos físicos no vistos en entornos nuevos. Por lo tanto, propone los WAM como modelos que combinan vídeo y acción para mejorar esa generalización, lo cual reporta más del doble de mejora frente a un VLA de referencia en experimentos con robots reales.\n\nSi quieres saber más sobre esto de los WAM y en general sobre el estado del arte esta tecnología te recomiendo ver el vídeo [Jim Fan](https://www.youtube.com/watch?v=3Y8aq_ofEVs), que es el director de robótica de NVIDIA, además de una de las personas con una visión más clara de cómo debe evolucionar el desarrollo de la IA Física.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦾 Figure acaba de realizar una demo con 3 de sus robots humanoides haciendo turnos durante 8 horas en una instalación de clasificación de paquetes en el servicio postal.",
+        "body_markdown": "🦾 [Figure](https://x.com/i/broadcasts/1dxYljYVREYJX) acaba de realizar una demo con 3 de sus robots humanoides haciendo turnos durante **8 horas** en una instalación de clasificación de paquetes en el servicio postal. El trabajo que tiene que hacer el robot es colocar el paquete de forma que la etiqueta pueda ser escaneada en otra zona de la cinta transportadora."
+      },
+      {
+        "position": 2,
+        "headline": "🖐️ Genesis AI presenta GENE-26.5, su primer sistema de modelo fundacional robótico orientado a manipulación de nivel humano.",
+        "body_markdown": "🖐️ [Genesis AI](https://www.genesis.ai/blog/gene-26-5-advancing-robotic-manipulation-to-human-level) presenta **GENE-26.5**, su primer sistema de modelo fundacional robótico orientado a manipulación de nivel humano. Lo interesante es que no lo plantea como una demo aislada, sino como un sistema completo que combina hardware, datos, control, simulación y modelo para resolver tareas largas y con mucho contacto como cocinar, pipetear, resolver un cubo de Rubik o tocar el piano."
+      },
+      {
+        "position": 3,
+        "headline": "🧠 Neuralink muestra su ambición de construir un robot quirúrgico capaz de alcanzar cualquier región del cerebro.",
+        "body_markdown": "🧠 [Neuralink](https://x.com/neuralink/status/2052124938442526936) muestra su ambición de construir un **robot quirúrgico** capaz de alcanzar cualquier región del cerebro. El objetivo declarado es crear una interfaz neuronal generalizada para tratar condiciones que se originan en el cerebro, lo que convierte a la robótica de precisión médica en una pieza central de la interfaz humano-máquina."
+      },
+      {
+        "position": 4,
+        "headline": "🚚 Actor Labs anuncia una ronda de 4 millones de dólares y muestra sus modelos robóticos desplegados en el mundo real.",
+        "body_markdown": "🚚 [Actor Labs](https://x.com/laneburgett/status/2053899244759908371) anuncia una ronda de 4 millones de dólares y muestra sus modelos robóticos desplegados en el mundo real. La señal importante es que cada vez aparecen más startups construyendo modelos visuales y de acción para máquinas físicas, no solo software de IA, buscando que los robots puedan operar con percepción robusta en entornos reales."
+      },
+      {
+        "position": 5,
+        "headline": "🦺 Persona AI se alía con Under Armour para desarrollar ropa técnica y materiales de protección para humanoides industriales.",
+        "body_markdown": "🦺 [Persona AI](https://www.humanoidsdaily.com/news/industrial-armor-persona-ai-and-under-armour-partner-to-develop-performance-gear-for-humanoids) se alía con **Under Armour** para desarrollar **ropa técnica** y materiales de protección para humanoides industriales. Puede sonar anecdótico, pero cuando los robots salgan del laboratorio a astilleros, acerías o fábricas, necesitarán protección térmica, resistencia a la abrasión y durabilidad operativa igual que cualquier otra herramienta industrial."
+      },
+      {
+        "position": 6,
+        "headline": "📈 RoboStrategy empieza a cotizar en Nasdaq bajo el ticker BOT como vehículo de inversión centrado en robótica e IA física.",
+        "body_markdown": "📈 [RoboStrategy](https://www.humanoidsdaily.com/news/robostrategy-hits-nasdaq-new-bot-ticker-offers-retail-path-to-figure-and-apptronik) empieza a cotizar en Nasdaq bajo el ticker **BOT** como vehículo de inversión centrado en robótica e IA física. Su cartera incluye compañías privadas como **Figure**, **Apptronik** y Allonic, abriendo una vía para que inversores minoristas tengan exposición al sector humanoide sin esperar a que cada startup salga a bolsa."
+      },
+      {
+        "position": 7,
+        "headline": "🏭 1X abre las puertas de su fábrica de NEO en Estados Unidos, descrita como una instalación altamente integrada donde componentes críticos se fabrican internamente.",
+        "body_markdown": "🏭 [1X](https://x.com/rpnickson/status/2054271016927646141) abre las puertas de su fábrica de **NEO** en Estados Unidos, descrita como una instalación altamente integrada donde componentes críticos se fabrican internamente. El dato clave es el ciclo de cuatro semanas desde CAD hasta robot terminado, una señal de que la carrera de los humanoides empieza a medirse también por velocidad industrial y capacidad de fabricación, no solo por demos."
+      },
+      {
+        "position": 8,
+        "headline": "🤌 Hangzhou Xynova presenta Flex 2, una mano diestra híbrida que combina transmisión por cable y accionamiento directo.",
+        "body_markdown": "🤌 [Hangzhou Xynova](https://x.com/CyberRobooo/status/2054437548366401873) presenta Flex 2, una **mano diestra híbrida** que combina transmisión por cable y accionamiento directo. Incluye percepción táctil y una cámara situada en la muñeca, no en la palma, reforzando una idea clave en manipulación: el avance de los humanoides dependerá tanto de los modelos como de manos capaces de sentir, agarrar y coordinar contactos finos."
+      },
+      {
+        "position": 9,
+        "headline": "🤝 Humanoid firma un acuerdo con Schaeffler para desplegar miles de robots humanoides en fábricas hasta 2032.",
+        "body_markdown": "🤝 [Humanoid](https://thehumanoid.ai/humanoid-secures-landmark-deal-with-schaeffler-to-deploy-thousands-of-humanoid-robots/) firma un acuerdo con **Schaeffler** para desplegar miles de robots humanoides en fábricas hasta 2032. El despliegue comenzará en **Alemania** a finales de 2026 y se estructura como RaaS, con Schaeffler además como proveedor preferente de actuadores, una combinación muy clara de cliente industrial y socio de cadena de suministro."
+      },
+      {
+        "position": 10,
+        "headline": "🚀 Rocket Lab ha comprado la empresa Motiv Space Systems, especializada en robótica espacial, control de movimiento y mecanismos de precisión para naves.",
+        "body_markdown": "🚀 [Rocket Lab](https://rocketlabcorp.com/updates/rocket-lab-to-acquire-robotics-leader-motiv-space-systems/) ha comprado la empresa Motiv Space Systems, especializada en **robótica espacial**, control de movimiento y mecanismos de precisión para naves. La adquisición añade tecnología probada en rovers de **Marte** y lleva internamente componentes críticos como mecanismos de orientación de paneles solares, mostrando que la robótica también será clave en la industrialización del espacio."
+      }
+    ]
+  }
+}
