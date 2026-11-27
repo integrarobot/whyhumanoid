@@ -10,7 +10,7 @@
     {
       "batch": 1,
       "opened": "2026-11-27",
-      "state": "integrating",
+      "state": "integrated_awaiting_review",
       "target": 10,
       "candidates": [
         27,
@@ -297,7 +297,7 @@
           "detail": "644 × 1024, alpha 0–255, without the rectangle (Codex). Received with matching SHA-256; trimmed only."
         }
       ],
-      "notes": "The whole platform as PAL presents it, without a head: no head is added."
+      "notes": "The whole platform as PAL presents it, without a head: no head is added. Low contrast on the site's dark page (matte black robot), as in the original; accepted by Codex for the batch on the real page (27 Nov 2026) without adding parts or changing colour or the global design. Recorded as a limitation in the batch closeout, with the H1 and Figure 03 debts."
     },
     "61": {
       "recorded": {
@@ -669,7 +669,7 @@
         "Lab": "PsiBot",
         "Robot": "PsiBot V1"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.psibot.ai/en/products/product_psibot-v1/",
       "notes": "Dual-arm humanoid upper body on a wheeled base. Trim with --max-height 2600 (Codex), keeping the native visible pixels.",
       "sources": [
@@ -681,7 +681,7 @@
           "date": "2026-11-27",
           "transparent_original": true,
           "verdict": "usable_original",
-          "detail": "2820 × 2812, alpha 0–255, figure box [968, 204, 1946, 2628]; whole robot with base, fingers and wheels; clean transparency on light and dark, no props or text (Codex). Not yet received byte for byte here: the chat attachment arrived re-encoded as a 2000 × 1994 WebP (sha256 d0f783b7…a9fc), which is not the original and is not used."
+          "detail": "2820 × 2812, alpha 0–255; whole robot with base, fingers and wheels; clean transparency on light and dark, no props or text (Codex). Carried without recompression on branch codex/psibot-v1-original (commit 438d1de), SHA-256 matches; trimmed only, native resolution kept (under the 2600 px cap). An earlier chat attachment arrived re-encoded (2000 × 1994 WebP, sha256 d0f783b7…a9fc) and was not used."
         }
       ]
     }

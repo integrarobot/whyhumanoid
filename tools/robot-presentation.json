@@ -247,6 +247,21 @@
         "credit": "Image: Rainbow Robotics",
         "provenance": "ops/media/robots/rainbow-rb-y1/PROVENANCE.md"
       }
+    },
+    "196": {
+      "recorded": {
+        "Lab": "PsiBot",
+        "Robot": "PsiBot V1"
+      },
+      "image": {
+        "src": "/assets/robots/psibot-v1/psibot-v1-full-body.webp",
+        "fallback": "/assets/robots/psibot-v1/psibot-v1-full-body.png",
+        "width": 998,
+        "height": 2444,
+        "alt": "PsiBot V1, dual-arm humanoid upper body on its wheeled base, whole robot, front view",
+        "credit": "Image: PsiBot",
+        "provenance": "ops/media/robots/psibot-v1/PROVENANCE.md"
+      }
     }
   }
 }
