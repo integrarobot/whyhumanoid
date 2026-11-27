@@ -2,8 +2,8 @@
   "note": "Public Humanoids values that changed in the workbook after the legacy snapshot, taken from the verified staging import. tools/export-humanoids.mjs applies them on top of the cleaned legacy snapshot, and tools/build-site.mjs accepts exactly these differences in its parity check. Public values only. Regenerate with tools/sync-humanoids.mjs from a saved copy of the public preview.",
   "source": {
     "environment": "workbook export",
-    "snapshot": "2026-11-26T17:42:09Z",
-    "import_run": "workbook export of 2026-11-26T17:42:09Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export) Three catalogue entries updated from a verified native workbook read on 2026-11-27. Valuation of records 72 (Realbotix Aria) and 91 (Ubtech Walker S1) refreshed from the live workbook on 2026-11-27 (GOOGLEFINANCE outputs, written as the sheet and the API display them)."
+    "snapshot": "2026-11-27T14:20:18.271Z",
+    "import_run": "workbook export of 2026-11-27T14:20:18.271Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export). Valuation of record 91 (Ubtech Walker S1) kept as the sheet and the API display it (23,815,219,952.60): the xlsx export rounds that GOOGLEFINANCE output to .00 (see PR 214). Record 216 (Simplexity Robotics iX) added from plan WP-20261125-integrarobot-simplexity, written by Codex at 2026-11-27T14:20:18Z and read back independently."
   },
   "updated": [
     {
@@ -5902,6 +5902,44 @@
         "Autonomy / supervision": "Hierarchical end-to-end embodied AI; executes task sequences autonomously in structured environments (company)",
         "Buyer checks": "75 kg applies to bipedal versions (wheeled version 135 kg); DoF varies by version (30 vs 52); price from 2025 release, confirm current quote",
         "Sources / checked": "2026-11-19 | New row: Forerunner K2 specifications from official product page and company release\nhttps://www.gotokepler.com/productDetailK2\nhttps://www.prnewswire.com/news-releases/kepler-k2-bumblebee-debuts-at-icra-2025-captivating-attendees-302471503.html"
+      }
+    },
+    {
+      "id": 216,
+      "sheet_row": 219,
+      "values": {
+        "Lab": "Simplexity Robotics",
+        "Robot": "iX",
+        "Web": "https://www.simplexityrobotics.com/products/ix",
+        "X": "https://x.com/Simplexity2025",
+        "Linkedin": "https://www.linkedin.com/company/simplexityrobotics/",
+        "Youtube": "Not found",
+        "Country": "China",
+        "Careers": "https://www.simplexityrobotics.com/recruitment",
+        "B2B Client": "Not verified for iX in the reviewed sources",
+        "Stock": "Private",
+        "Valuation": "Not confirmed by the company (USD 1.6B reported by Bloomberg, 2026-11-23; secondary)",
+        "Investors": "Not verified from primary sources (secondary press names Ant Group as lead of the November 2026 round)",
+        "Rounds": "USD 100M pre-Series A led by Ant Group, reported by Bloomberg (2026-11-23); secondary, not confirmed by the company",
+        "Release": "Not verified",
+        "Height (cm)": "106–170 (adjustable; company)",
+        "Weight (kg)": "160",
+        "Walk (km/h)": "Not applicable (wheeled)",
+        "Run (km/h)": "Not applicable (wheeled)",
+        "Payload/carry (kg)": "3 (straight-arm rated load; company)",
+        "Power (hours)": "Approx. 4–5 (company)",
+        "Software": "SimpleAgent: configurable public-space reception, guidance, multilingual interpreting and service-manipulation skills (company claims)",
+        "Voice": "Not verified",
+        "Clothed?": "Not verified",
+        "Model checked": "iX wheeled humanoid (Simplexity Robotics), official product and About pages read in a rendered browser on 2026-11-27; manufacturer claims",
+        "Platform / mobility": "Wheeled humanoid; max speed 1.5 m/s (company)",
+        "DoF / grippers": "24 active DoF excluding hands: 7 per arm, neck 2, waist/lifting 5, base 3; dexterous hands standard (company)",
+        "Sensors / compute": "Head: 1 wide-angle camera and 3 fisheye cameras; chest: 1 RGB-D camera; wrists: 2 wide-angle cameras; 2 LiDAR; 8 ultrasonic sensors; IMU. Compute: NVIDIA Orin NX 16 GB, 157 TOPS (standard) or NVIDIA Thor 64 GB, 730 TOPS (Pro) (company)",
+        "Battery / charging": "Two batteries, 1,650 Wh in total; direct charging or hot swap; optional autonomous charging with a dock; up to 2 h per battery bay (company)",
+        "Price / availability": "Price not disclosed",
+        "Autonomy / supervision": "Not verified",
+        "Buyer checks": "Manufacturer claims throughout: confirm the exact configuration, duty cycle, payload workspace, runtime and autonomy with the vendor; no independent test or iX deployment verified in the reviewed sources; funding only from secondary press",
+        "Sources / checked": "2026-11-27 | New row: iX identity, specifications and official links from the official product and About pages (rendered); funding from secondary press, not confirmed by the company\nhttps://www.simplexityrobotics.com/products/ix\nhttps://www.simplexityrobotics.com/about\nhttps://www.simplexityrobotics.com/news\nhttps://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/"
       }
     }
   ],

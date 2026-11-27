@@ -10140,6 +10140,22 @@
    "evidence": null
   },
   {
+   "id": "mfr_simplexity_robotics",
+   "slug": "simplexity-robotics",
+   "name": "Simplexity Robotics",
+   "identity": "catalogue_lab",
+   "roles": {},
+   "countries": [],
+   "robots": [
+    216
+   ],
+   "organization_ids": [],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": null,
+   "evidence": null
+  },
+  {
    "id": "mfr_star_era",
    "slug": "star-era",
    "name": "Star Era",

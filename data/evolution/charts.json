@@ -18,13 +18,13 @@
    "path": "/humanoids/",
    "type": "columns",
    "title": "Humanoid models introduced per year",
-   "subtitle": "Models in the free catalogue by the year of their recorded release or unveiling: 68 of 212 robots are dated.",
+   "subtitle": "Models in the free catalogue by the year of their recorded release or unveiling: 68 of 213 robots are dated.",
    "meaning": "Release or unveiling date as recorded in the free Humanoids catalogue: when a model was introduced, not sales, deliveries or fleet size.",
    "unit": "models",
    "precision": "year",
    "domain": {
     "start": "2016-01-01",
-    "end": "2026-11-26"
+    "end": "2026-11-27"
    },
    "columns": [
     {
@@ -172,7 +172,7 @@
     {
      "key": "2026",
      "label": "2026",
-     "t": "2026-11-26",
+     "t": "2026-11-27",
      "value": 14,
      "partial": true,
      "items": [
@@ -209,15 +209,15 @@
      "2026": 14
     }
    },
-   "summary": "68 dated introductions from 2016 to 2026; 2025 has the most (24). 2026 counts to 2026-11-26.",
+   "summary": "68 dated introductions from 2016 to 2026; 2025 has the most (24). 2026 counts to 2026-11-27.",
    "coverage": {
     "included": 68,
-    "total": 212,
+    "total": 213,
     "unit": "robots",
     "excluded": [
      {
       "reason": "Release not disclosed or not verified",
-      "count": 119
+      "count": 120
      },
      {
       "reason": "Release field empty",
@@ -259,10 +259,10 @@
     "note": "Release dates as the records write them: 26 to the day, 6 to the month, 36 to the year; each is placed in its year. 1 entry of uncertain scope (PokeBot Home robot (model name not disclosed)) is inside it, undated."
    },
    "status": "partial",
-   "status_note": "Partial: 144 of 212 catalogue robots have no usable release date.",
+   "status_note": "Partial: 145 of 213 catalogue robots have no usable release date.",
    "sources": [
     {
-     "label": "Free Humanoids catalogue, snapshot 2026-11-26",
+     "label": "Free Humanoids catalogue, snapshot 2026-11-27",
      "url": "/data/humanoids-catalogue.json"
     }
    ],

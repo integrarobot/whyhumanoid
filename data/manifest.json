@@ -2,13 +2,13 @@
   "dataset": "humanoids",
   "access": "free",
   "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
-  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the import of 2026-11-26T17:42:09Z (every current customer row; records moved out of the tab kept apart)",
-  "snapshot": "2026-11-26T17:42:09Z",
-  "record_count": 212,
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the import of 2026-11-27T14:20:18.271Z (every current customer row; records moved out of the tab kept apart)",
+  "snapshot": "2026-11-27T14:20:18.271Z",
+  "record_count": 213,
   "verified_import": {
     "environment": "workbook export",
-    "snapshot": "2026-11-26T17:42:09Z",
-    "import_run": "workbook export of 2026-11-26T17:42:09Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export) Three catalogue entries updated from a verified native workbook read on 2026-11-27. Valuation of records 72 (Realbotix Aria) and 91 (Ubtech Walker S1) refreshed from the live workbook on 2026-11-27 (GOOGLEFINANCE outputs, written as the sheet and the API display them).",
+    "snapshot": "2026-11-27T14:20:18.271Z",
+    "import_run": "workbook export of 2026-11-27T14:20:18.271Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export). Valuation of record 91 (Ubtech Walker S1) kept as the sheet and the API display it (23,815,219,952.60): the xlsx export rounds that GOOGLEFINANCE output to .00 (see PR 214). Record 216 (Simplexity Robotics iX) added from plan WP-20261125-integrarobot-simplexity, written by Codex at 2026-11-27T14:20:18Z and read back independently.",
     "updated": [
       {
         "id": 1,
@@ -2563,6 +2563,10 @@
       {
         "id": 215,
         "sheet_row": 218
+      },
+      {
+        "id": 216,
+        "sheet_row": 219
       }
     ],
     "moved": [
@@ -2581,7 +2585,7 @@
     ]
   },
   "full_database": {
-    "humanoid_records": 212,
+    "humanoid_records": 213,
     "other_datasets": 12,
     "other_datasets_public_rule": "free tabs: every row and field; Deployments and Components: every row at its public fields (server/src/access/fields.js); claim-to-evidence links and tabs outside the offer: counted, not listed",
     "access": "data subscription, US$100 per year, billed annually, no free trial: every field of complete Deployments and complete Components, with search and agent API keys over them; every other category is free"
@@ -2653,12 +2657,12 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "54cf68a7eb8d3261e4f3225e563fe7aa4f433a5201e825a0b63978ab74052d6b",
-      "bytes": 403019
+      "sha256": "7869e964af5784311ac9a4f317660b96d18aa62481812e4e117db2e017fadf27",
+      "bytes": 405960
     },
     "humanoids-catalogue.csv": {
-      "sha256": "ec3d1927e18449da3590c93e9a343eb85f5654f7369899bf3aa2df8928914a07",
-      "bytes": 250861
+      "sha256": "d8deed5f40bf40898091f7cc3154f8998a8f4c25790e74be4f3a04ab86bfe0dc",
+      "bytes": 253123
     }
   }
 }

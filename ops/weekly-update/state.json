@@ -361,15 +361,44 @@
       "editions": [
         "integrarobot:2026-11-25:why-humanoid"
       ],
-      "status": "awaiting_write",
+      "status": "written",
       "operations": 1,
       "cells": 32,
       "private_cells": 0,
       "public_plan_sha256": "6a939e33e00427721c76cc255b6aade9e27c9e626b9fb0b893b903e476c225fd",
       "private_payload": null,
       "note": "Humanoids is a free tab: every value is in the public plan and there is no private payload or Drive file. Amended in place before any write after the Codex review of PR 217. The native Humanoids grid and table fill A1:AF218: Codex appends one native row and extends the table to row 219.",
-      "next": "Codex confirms each value on the rendered official page, preflight, writes Humanoids!A219:AF219 and reads back; then Claude publishes (Humanoids sync, pages) and imports once after a fresh Codex quota and queue check",
-      "amended_from": "7b2a70bb67768e220cbed45976fd5b6913e7baa9d5b2e1e51be5a5e6fb14910a"
+      "next": "Codex reviews the publication PR; merge on green CI and Pages; fresh Codex quota and queue check; one production import with scope stocks-humanoids; Claude verifies production and closes",
+      "amended_from": "7b2a70bb67768e220cbed45976fd5b6913e7baa9d5b2e1e51be5a5e6fb14910a",
+      "write_receipt": {
+        "by": "codex",
+        "date": "2026-11-27",
+        "connector": "native Google Sheets connector",
+        "ranges": [
+          "Humanoids!A219:AF219"
+        ],
+        "cells_compared": 32,
+        "differences": 0,
+        "preceding_rows_compared": "all 6,976 cells of the 218 preceding rows (values, formulas, formats, links, text runs, validation, chips, notes): 0 differences",
+        "native_table": "Humanoids table extended from A1:AF218 to A1:AF219",
+        "workbook_modified_time": "2026-11-27T14:20:18.271Z",
+        "credentials_sharing_identities_changed": false
+      },
+      "independent_readback": {
+        "by": "claude",
+        "date": "2026-11-27",
+        "public_plan_sha256": "6a939e33e00427721c76cc255b6aade9e27c9e626b9fb0b893b903e476c225fd",
+        "basis": "export of 2026-11-27T11:46:30Z against the write (2026-11-27T14:20:18Z)",
+        "cells_checked": 32,
+        "value_differences": 0,
+        "unexpected_changes": 0,
+        "live_market_changes": {
+          "Investment": 59
+        },
+        "preflight_after_write": "32 already written, 0 pending",
+        "other_tabs": "identical to the simulated write outside the live Investment values"
+      },
+      "d1": "2026-11-27 UTC before this batch: one full import (45964988399, 08:21), two scoped writes (45993946460 stocks-humanoids, estimated 739 rows; 45994099480 deployments, estimated 274) and three scoped dry runs that write nothing (45993418326, 45993846011, 45994025716); Codex read 22.55k of 100k written at about 14:17 UTC. This batch changes only Humanoids (one new row) plus live Investment values: the scoped stocks-humanoids import fits it (estimate of the same order as the 11:52 run), after a fresh Codex quota and queue check"
     }
   ]
 }
