@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 9, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 9, PR not yet merged)
+## Published files (image batch 9, PR 230, merge 98b6aa5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/menlo-asimov-1/menlo-asimov-1-full-body.png`, 680 × 1966 px, sha256 `eb816d411053edeb69dc5295b1243c318cdeb64a935f04e4c0cd6d924b23ca92` (= the prepared.png).
 - **WebP:** `assets/robots/menlo-asimov-1/menlo-asimov-1-full-body.webp`, sha256 `fde632b90e814107f249a871309b91ba8993cd4543384d9a6376bdb0dc232279`.

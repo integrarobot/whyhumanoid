@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 9, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 9, PR not yet merged)
+## Published files (image batch 9, PR 230, merge 98b6aa5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/weave-isaac-0/weave-isaac-0-full-body.png`, 653 × 1363 px, sha256 `1cfec8651a14b4c8ff5257cc4310c4002b39ca2b391d59ae53814a8984c1173a` (= the prepared.png).
 - **WebP:** `assets/robots/weave-isaac-0/weave-isaac-0-full-body.webp`, sha256 `7d4eea46e5cb00546691149ede5a6a59f6604dfe57c854da3ea39000b94caf29`.
