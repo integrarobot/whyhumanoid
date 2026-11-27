@@ -24,9 +24,7 @@
         162,
         196
       ],
-      "reserves": [
-        102
-      ],
+      "reserves": [],
       "notes": [
         "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
         "Several other makers' PNG files named as background-free still hold interior backgrounds: rejected (Codex, 27 Nov 2026).",
@@ -36,7 +34,8 @@
         "Reserves H2 (139) and R1 (141) move to batch 10 (27 Nov 2026).",
         "Reserve D9 (155) back to the queue: its only whole official source so far is under the minimum height (27 Nov 2026).",
         "Walker S2 (142) and Forerunner K2 (215) moved from these reserves to batch 12 (27 Nov 2026), with new official sources from Codex.",
-        "104, 51, 76 moved from these reserves to batch 13 (27 Nov 2026), with new official sources from Codex."
+        "104, 51, 76 moved from these reserves to batch 13 (27 Nov 2026), with new official sources from Codex.",
+        "CyberOne (102) moved from these reserves to batch 15 (27 Nov 2026), with a new official source from Codex."
       ],
       "published": "2026-11-27"
     },
@@ -387,6 +386,31 @@
         "Published with PR 246 (reviewed head 0f05205, CI 46056641327; merge 6fecfb5), 27 Nov 2026; Pages 46056855660 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 15,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        166,
+        199,
+        200,
+        191,
+        74,
+        70,
+        35,
+        102,
+        96,
+        50
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-15/: candidates-25 (66c596a: Avatar Robotics video frame 755), candidates-26 (b07ffac: StarBot Astra and Flex, one product illustration), candidates-27 (dc11021: MATRIX-1 page poster), candidates-28 (62f03ab: REVOBOTS TASKBOT SCOUT video frame 292) candidates-30 (26e018a: HUBO2 product image hosted by Rainbow Robotics Vietnam) and candidates-31 (a7c0ffb: Galbot G1 render from the maker's European Product Design Award 2026 entry, left standing figure) and candidates-32 (31e0eb7: CyberOne photograph in the official Beijing Yizhuang report of 5 June 2024, via NCSTI), candidates-33 (bbf9ddd: Motion1 at VEC 2025, event photograph by Nguyen Le) and candidates-34 (17d1e6e: KAPEX concept render supplied by KIST, via Herald Economy). Every cutout prepared by Claude, alpha only, from BiRefNet masks kept beside the originals: Flex adds its two black casters from the original luminance; MATRIX-1 drops every row below the contact line of the soles with their floor reflection; SCOUT, HUBO2 and G1 use levels 150..240 so their soft edges carry no background rim; CyberOne combines a whole-figure pass with a feet-only pass so the display plinth stays out; Motion1 uses levels 170..240 for its thin cable loops against the blue billboard.",
+        "Left out: Qinglong (69), candidates-29 (88f804b): in frame 841 and in every later frame of the official walking GIF where the robot is at least 500 px tall, a black office chair or a seated person stands right behind the right side of the black torso and upper arm; the model mask takes the chair in, and black against black in a dithered GIF cannot be separated by alpha alone. Not reconstructed. Jingchu Elf (183) still waits for another source; T230A (89), D9 (155), R-Noid (77) and IGRIS (79) stay out with their reasons.",
+        "Captions name the kind of image and the variant: Avatar Robotics mobile lift-column configuration, official video still (no model name, as the maker gives none); StarBot Astra and Flex manufacturer product illustrations; MATRIX-1 manufacturer product image; TASKBOT SCOUT mobile configuration, official video still (no arms or head, not humanoid hardware); HUBO2 product image via Rainbow Robotics Vietnam (regional host; no claim about its relation to the maker); Galbot G1 manufacturer product render via European Product Design Award (2026); Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI (the original 2022 design; nothing said about later versions); VinMotion Motion1 at VEC 2025, event photograph by Nguyen Le (not Motion2); KIST KAPEX concept render (2025), via Herald Economy (not hardware). Records' specifications unchanged."
+      ]
     }
   ],
   "robots": {
@@ -816,9 +840,20 @@
         "Lab": "Xiaomi",
         "Robot": "Cyber One"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.mi.com/global/discover/article?id=2754",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/W020240605332139251140.jpg",
+          "page": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/t20240605_159440.html",
+          "sha256": "bcf7d9b8185de88c6f7edfbb29323707fc6bd8313d5b199a65587968281f6184",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 427 × 1279 with 20 px padding."
+        }
+      ]
     },
     "76": {
       "recorded": {
@@ -1018,8 +1053,20 @@
         "Lab": "Avatar Robotics",
         "Robot": "Avatar humanoid (model name not disclosed)"
       },
-      "status": "no_valid_source",
-      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://www.avatarrobotics.com/): No disclosed model identity. Official implementation photos show several robots/platforms but do not identify a specific Avatar-manufactured humanoid; cannot assign another makers model. Not a claim that no photo exists."
+      "status": "integrated",
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://www.avatarrobotics.com/): No disclosed model identity. Official implementation photos show several robots/platforms but do not identify a specific Avatar-manufactured humanoid; cannot assign another makers model. Not a claim that no photo exists.",
+      "sources": [
+        {
+          "file": "https://framerusercontent.com/assets/ufET1Ro5uqxXNvjaYYsMJUotv7k.webm",
+          "page": "https://www.avatarrobotics.com/",
+          "sha256": "d77fa6b385baa49786e6b3e554e876755864971e2e6f0fcd7200115dfc0cc570",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 491 × 719 with 20 px padding."
+        }
+      ]
     },
     "58": {
       "recorded": {
@@ -2342,7 +2389,7 @@
         "Lab": "Galbot",
         "Robot": "G1"
       },
-      "status": "no_valid_source",
+      "status": "integrated",
       "page": "https://www.galbot.com/",
       "notes": "Galbot G1: wheeled humanoid on its four-wheel omnidirectional chassis, shown whole with the chassis; not S1 or ET1.",
       "research": [
@@ -2352,7 +2399,19 @@
           "note": "Codex found a complete render on galbot.com/g1 (g1-spec-robot.BYUAn6RQ.jpg) whose own alt text reads \"S1 render placeholder, waiting replacement by G1 full robot render\": the maker's page itself labels it a placeholder S1 image, so it is not usable for G1 even if it looks similar; a G1 image must be one the official source presents as G1."
         }
       ],
-      "reason": "The only complete image on Galbot's official G1 page is labelled by its own alt text as \"S1 render placeholder, waiting replacement by G1 full robot render\", so it is not used for G1; no other official full-robot G1 image found among the sources reviewed (Codex and Claude, 27 Nov 2026)."
+      "reason": "The only complete image on Galbot's official G1 page is labelled by its own alt text as \"S1 render placeholder, waiting replacement by G1 full robot render\", so it is not used for G1; no other official full-robot G1 image found among the sources reviewed (Codex and Claude, 27 Nov 2026).",
+      "sources": [
+        {
+          "file": "https://s3-us-west-2.amazonaws.com/productdesignaward/upload/3264595/22895726/full/64529c2e68d22e7f7759126043cee614.png",
+          "page": "https://www.productdesignaward.eu/winners/epda/2026/12837/",
+          "sha256": "51f6711b14a65954ab429d6ae9aca1635edfe45c68edd22210ceddf517014426",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1380 × 2638 with 20 px padding."
+        }
+      ]
     },
     "157": {
       "recorded": {
@@ -2818,9 +2877,20 @@
         "Lab": "LG",
         "Robot": "KAPEX (co-developed with KIST and LG AI Research)"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://solutions.lg.com/us/robots",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://wimg.heraldcorp.com/news/cms/2025/09/30/news-p.v1.20250930.43fac76f89e5451f9477688352a3cc56_P1.png",
+          "page": "https://biz.heraldcorp.com/article/10586718",
+          "sha256": "83b4bb23290c2333c9a5150dfff7625c7b22702649d9c85b7c9a44912d419aa5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 259 × 750 with 20 px padding."
+        }
+      ]
     },
     "52": {
       "recorded": {
@@ -3035,9 +3105,20 @@
         "Lab": "Rainbow",
         "Robot": "Hubo"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.rainbow-robotics.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://rainbow-robotics.vn/images/ckeditor/images/202209151451348f46d5423a109969fc003dfe17608f03b56a3b10.png",
+          "page": "https://rainbow-robotics.vn/hubo2/",
+          "sha256": "38fe5cc3103b3785f3d6a36ebe3927195a19d8e0a4e1982802fd00288889a979",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1115 × 1633 with 20 px padding."
+        }
+      ]
     },
     "72": {
       "recorded": {
@@ -3084,9 +3165,20 @@
         "Lab": "Revobots",
         "Robot": "Taskbot"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://revobots.ai/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://revobots.ai/_assets/video/9cde64a553bd519ee408b99fd8340690.mp4",
+          "page": "https://revobots.ai/",
+          "sha256": "bdc96b561581682c97d6ff694f1b50fa55d559a0d35b52b0fa36d5c4e08174e2",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 448 × 711 with 20 px padding."
+        }
+      ]
     },
     "77": {
       "recorded": {
@@ -3280,9 +3372,20 @@
         "Lab": "VinMotion",
         "Robot": "Motion"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://vinmotion.net/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://nguyenle.com.vn/wp-content/uploads/2025/09/image-30.jpg",
+          "page": "https://nguyenle.com.vn/event/vinmotion-dau-an-viet-nam-tren-hanh-trinh-chinh-phuc-tuong-lai/",
+          "sha256": "31aaba89befac25e876a9058be540a298c2bee93b45bb174fd4b67ea5a6dff6d",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 383 × 765 with 20 px padding."
+        }
+      ]
     },
     "97": {
       "recorded": {
@@ -3737,9 +3840,20 @@
         "Lab": "Matrix Robotics",
         "Robot": "MATRIX-1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://matrixrobotics.ai/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://matrixrobotics.ai/hero_video.jpg",
+          "page": "https://matrixrobotics.ai/matrix-1",
+          "sha256": "c4d582c016cd6e58e39108d8071bec913dc30979b35f57056b460cde6876d733",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 635 × 1775 with 20 px padding."
+        }
+      ]
     },
     "192": {
       "recorded": {
@@ -3855,18 +3969,40 @@
         "Lab": "StarBot",
         "Robot": "StarBot Astra"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.starbotusa.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.starbotusa.com/starbot_three_robot_platforms_v2.png",
+          "page": "https://www.starbotusa.com/",
+          "sha256": "dc3ee48adce174ad587fe1510f3aa548e2254a4c432dfa068ff099e4ca43d18e",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 381 × 944 with 20 px padding."
+        }
+      ]
     },
     "200": {
       "recorded": {
         "Lab": "StarBot",
         "Robot": "StarBot Flex"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.starbotusa.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.starbotusa.com/starbot_three_robot_platforms_v2.png",
+          "page": "https://www.starbotusa.com/",
+          "sha256": "dc3ee48adce174ad587fe1510f3aa548e2254a4c432dfa068ff099e4ca43d18e",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 445 × 981 with 20 px padding."
+        }
+      ]
     },
     "201": {
       "recorded": {

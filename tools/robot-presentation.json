@@ -2077,6 +2077,156 @@
         "credit": "Image: Jingchu Humanoid, JingChu 1 manufacturer render",
         "provenance": "ops/media/robots/jingchu-1/PROVENANCE.md"
       }
+    },
+    "166": {
+      "recorded": {
+        "Lab": "Avatar Robotics",
+        "Robot": "Avatar humanoid (model name not disclosed)"
+      },
+      "image": {
+        "src": "/assets/robots/avatar-robotics-mobile-lift-column/avatar-robotics-mobile-lift-column-full-body.webp",
+        "fallback": "/assets/robots/avatar-robotics-mobile-lift-column/avatar-robotics-mobile-lift-column-full-body.png",
+        "width": 491,
+        "height": 719,
+        "alt": "Avatar Robotics mobile robot, full platform, side view, on its lift column and wheeled base with a tray, still from the official video",
+        "credit": "Image: Avatar Robotics, mobile lift-column configuration, official video still",
+        "provenance": "ops/media/robots/avatar-robotics-mobile-lift-column/PROVENANCE.md"
+      }
+    },
+    "199": {
+      "recorded": {
+        "Lab": "StarBot",
+        "Robot": "StarBot Astra"
+      },
+      "image": {
+        "src": "/assets/robots/starbot-astra/starbot-astra-full-body.webp",
+        "fallback": "/assets/robots/starbot-astra/starbot-astra-full-body.png",
+        "width": 381,
+        "height": 944,
+        "alt": "StarBot Astra, full body, front view, standing, manufacturer product illustration",
+        "credit": "Image: StarBot, Astra manufacturer product illustration",
+        "provenance": "ops/media/robots/starbot-astra/PROVENANCE.md"
+      }
+    },
+    "200": {
+      "recorded": {
+        "Lab": "StarBot",
+        "Robot": "StarBot Flex"
+      },
+      "image": {
+        "src": "/assets/robots/starbot-flex/starbot-flex-full-body.webp",
+        "fallback": "/assets/robots/starbot-flex/starbot-flex-full-body.png",
+        "width": 445,
+        "height": 981,
+        "alt": "StarBot Flex, full body, three-quarter view, upper body on a folding leg over a wheeled base, manufacturer product illustration",
+        "credit": "Image: StarBot, Flex manufacturer product illustration",
+        "provenance": "ops/media/robots/starbot-flex/PROVENANCE.md"
+      }
+    },
+    "191": {
+      "recorded": {
+        "Lab": "Matrix Robotics",
+        "Robot": "MATRIX-1"
+      },
+      "image": {
+        "src": "/assets/robots/matrix-robotics-matrix-1/matrix-robotics-matrix-1-full-body.webp",
+        "fallback": "/assets/robots/matrix-robotics-matrix-1/matrix-robotics-matrix-1-full-body.png",
+        "width": 635,
+        "height": 1775,
+        "alt": "MATRIX-1 by Matrix Robotics, full body, front view, standing, manufacturer product image",
+        "credit": "Image: Matrix Robotics, MATRIX-1 manufacturer product image",
+        "provenance": "ops/media/robots/matrix-robotics-matrix-1/PROVENANCE.md"
+      }
+    },
+    "74": {
+      "recorded": {
+        "Lab": "Revobots",
+        "Robot": "Taskbot"
+      },
+      "image": {
+        "src": "/assets/robots/revobots-taskbot-scout/revobots-taskbot-scout-full-body.webp",
+        "fallback": "/assets/robots/revobots-taskbot-scout/revobots-taskbot-scout-full-body.png",
+        "width": 448,
+        "height": 711,
+        "alt": "REVOBOTS TASKBOT SCOUT, full platform, sensor mast on a four-wheeled mobile base, still from the official video",
+        "credit": "Image: REVOBOTS, TASKBOT SCOUT mobile configuration, official video still",
+        "provenance": "ops/media/robots/revobots-taskbot-scout/PROVENANCE.md"
+      }
+    },
+    "70": {
+      "recorded": {
+        "Lab": "Rainbow",
+        "Robot": "Hubo"
+      },
+      "image": {
+        "src": "/assets/robots/rainbow-robotics-hubo2/rainbow-robotics-hubo2-full-body.webp",
+        "fallback": "/assets/robots/rainbow-robotics-hubo2/rainbow-robotics-hubo2-full-body.png",
+        "width": 1115,
+        "height": 1633,
+        "alt": "HUBO2 by Rainbow Robotics, full body, front view, standing, manufacturer product image",
+        "credit": "Image: Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam",
+        "provenance": "ops/media/robots/rainbow-robotics-hubo2/PROVENANCE.md"
+      }
+    },
+    "35": {
+      "recorded": {
+        "Lab": "Galbot",
+        "Robot": "G1"
+      },
+      "image": {
+        "src": "/assets/robots/galbot-g1/galbot-g1-full-body.webp",
+        "fallback": "/assets/robots/galbot-g1/galbot-g1-full-body.png",
+        "width": 1380,
+        "height": 2638,
+        "alt": "G1 by Galbot, full body, standing on its lift leg and wheeled base, one hand held out, manufacturer product render",
+        "credit": "Image: Galbot, G1 manufacturer product render via European Product Design Award (2026)",
+        "provenance": "ops/media/robots/galbot-g1/PROVENANCE.md"
+      }
+    },
+    "102": {
+      "recorded": {
+        "Lab": "Xiaomi",
+        "Robot": "Cyber One"
+      },
+      "image": {
+        "src": "/assets/robots/xiaomi-cyberone/xiaomi-cyberone-full-body.webp",
+        "fallback": "/assets/robots/xiaomi-cyberone/xiaomi-cyberone-full-body.png",
+        "width": 427,
+        "height": 1279,
+        "alt": "CyberOne by Xiaomi, full body, front view, standing, 2024 display photograph",
+        "credit": "Image: Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI",
+        "provenance": "ops/media/robots/xiaomi-cyberone/PROVENANCE.md"
+      }
+    },
+    "96": {
+      "recorded": {
+        "Lab": "VinMotion",
+        "Robot": "Motion"
+      },
+      "image": {
+        "src": "/assets/robots/vinmotion-motion1/vinmotion-motion1-full-body.webp",
+        "fallback": "/assets/robots/vinmotion-motion1/vinmotion-motion1-full-body.png",
+        "width": 383,
+        "height": 765,
+        "alt": "Motion1 by VinMotion, full body, front view, standing, one hand raised, event photograph at VEC 2025",
+        "credit": "Image: VinMotion, Motion1 at VEC 2025, event photograph by Nguyen Le",
+        "provenance": "ops/media/robots/vinmotion-motion1/PROVENANCE.md"
+      }
+    },
+    "50": {
+      "recorded": {
+        "Lab": "LG",
+        "Robot": "KAPEX (co-developed with KIST and LG AI Research)"
+      },
+      "image": {
+        "src": "/assets/robots/kist-kapex/kist-kapex-full-body.webp",
+        "fallback": "/assets/robots/kist-kapex/kist-kapex-full-body.png",
+        "width": 259,
+        "height": 750,
+        "alt": "KAPEX, full body, three-quarter front view, standing, concept render by KIST",
+        "credit": "Image: KIST, KAPEX concept render (2025), via Herald Economy",
+        "provenance": "ops/media/robots/kist-kapex/PROVENANCE.md"
+      }
     }
   }
 }

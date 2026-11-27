@@ -1,0 +1,332 @@
+[
+  {
+    "id": 166,
+    "slug": "avatar-mobile-profile",
+    "credit": "Avatar Robotics",
+    "source_page": "https://www.avatarrobotics.com/",
+    "source_url": "https://framerusercontent.com/assets/ufET1Ro5uqxXNvjaYYsMJUotv7k.webm",
+    "source_context": "Exact maker homepage video native1920x1080, frame755 at31.4896s /23.976fps. Complete mobile humanoid side profile, black/white head, both actual arms/grippers (self-overlapping in pose but all actual tips visible before rackpost), tray with silver packets, whole rear lift column, complete mobilebase including central side wheel. Root inspected native. Right rack post beyond hand, does not obscure robot; no invented fingers/feet. Caption Avatar Robotics, mobile lift-column configuration, official video still. Preserve tray/contents as platform, exclude racks/floor. Inspect thin black robot cables accurately, no background pieces or reconstructed parts. Suggested safeROI[820,280,1345,1040], independently widen as needed. Other front frame830 external rack occludes leftarm and is rejected; frame755 specifically selected.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 66c596a, candidates-25",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      820,
+      280,
+      1345,
+      1040
+    ],
+    "bbox": [
+      48,
+      48,
+      499,
+      727
+    ],
+    "border": 20,
+    "size": [
+      491,
+      719
+    ],
+    "native_alpha": false,
+    "original_sha256": "d77fa6b385baa49786e6b3e554e876755864971e2e6f0fcd7200115dfc0cc570",
+    "prepared_sha256": "2a3dfffb71091eeedbca87ebab67bf2ad3829af36e52194cca1e8254646638d1",
+    "mask_sha256": "c9cf36fc6fb7aaedb89f4513d9c7ff7007baf47b832f220d0a08641c3d0ac6dc"
+  },
+  {
+    "id": 50,
+    "slug": "kapex-concept-render-2025",
+    "credit": "KIST via Herald Economy",
+    "source_page": "https://biz.heraldcorp.com/article/10586718",
+    "source_url": "https://wimg.heraldcorp.com/news/cms/2025/09/30/news-p.v1.20250930.43fac76f89e5451f9477688352a3cc56_P1.png",
+    "source_context": "KIST-supplied original press concept render, 2025-09-30, hosted by Herald Economy with explicit imagecaption KIST provided and exactKAPEXname. Existing maker/research-institute illustration, NOT actual hardware photograph. Independent contemporaneous ChosunBiz caption explicitly calls same scene artist rendering (https://biz.chosun.com/en/en-science/2025/09/30/KO76AWDKYZGXVCDY55A4UDOU24/?outputType=amp). Native1280x821, complete head/hands/feet, approximately710bodyheight, ample margins. No graphic annotations overbody, KIST/LG logos outside silhouette remove with alpha. Exact originalrecord50KAPEX, do not ascribe depiction as current2026hardwareversion or change anyspecs. Mandatory caption KIST, KAPEX concept render (2025), via Herald Economy. Root native original inspected. Remove floor/reflection/shadows byalpha; visible robot RGB native unchanged. Grey background can require precise mask atfeet but no original clipping.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 17d1e6e, candidates-34",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; levels 150..240; the KIST, LG and KAPEX logos, the grey studio and the floor reflection are out",
+    "roi": [
+      470,
+      30,
+      780,
+      818
+    ],
+    "bbox": [
+      45,
+      32,
+      264,
+      742
+    ],
+    "border": 20,
+    "size": [
+      259,
+      750
+    ],
+    "native_alpha": false,
+    "original_sha256": "83b4bb23290c2333c9a5150dfff7625c7b22702649d9c85b7c9a44912d419aa5",
+    "prepared_sha256": "44505868ca17a8c9f95459dafdd654dc7d1a79882d059c194741b4a547a17e1a",
+    "mask_sha256": "c1b1dfa972d74e5b26de397f81f17fa0414a9c6490292d8103499b8c5508bc7e"
+  },
+  {
+    "id": 96,
+    "slug": "vinmotion-motion1-event-2025",
+    "credit": "Nguyen Le",
+    "source_page": "https://nguyenle.com.vn/event/vinmotion-dau-an-viet-nam-tren-hanh-trinh-chinh-phuc-tuong-lai/",
+    "source_url": "https://nguyenle.com.vn/wp-content/uploads/2025/09/image-30.jpg",
+    "source_context": "Event producer Nguyen Le own portfolio/report dated2025-09-22, explicitly launch Motion1 on2025-08-28 VEC Hanoi. Gallery source9 native854x1280 complete real robot in foreground raising openhand, both feet visible with bottom margin. Source has another ROBOT ILLUSTRATION on billboard BEHIND and ABOVE real one: EXCLUDE entire billboard and illustration, do not segment the drawn robot. Foreground actual robot ROI roughly[330,480,720,1250], complete raised fingertips at~500, head at590, feet1220. Preserve visible exposed cable loops near waist/knees/shoulders. Real hand held atside is curled by originalpose, do not inventfingers. Body~720px qualifies. Exact Motion1 version fixed by historical event page and maker LinkedIn public announcement same2025-08-28, whose threephotos crop legs. Manufacturer currentMotion2/annual2025differentbody not substituted. Caption VinMotion, Motion1 at VEC2025, event photograph by NguyenLe. Credit photographer/event producer, NOT direct maker image or open licence. Whole selected real figure root native inspected; needs alpha-only mask and independent review.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining bbf9ddd, candidates-33",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 170..240; largest region kept; levels 170..240 so the thin cable loops at the hips carry as little of the blue billboard behind them as possible; the billboard and its drawn robot, the tents and the asphalt are out",
+    "roi": [
+      320,
+      470,
+      730,
+      1260
+    ],
+    "bbox": [
+      31,
+      34,
+      374,
+      759
+    ],
+    "border": 20,
+    "size": [
+      383,
+      765
+    ],
+    "native_alpha": false,
+    "original_sha256": "31aaba89befac25e876a9058be540a298c2bee93b45bb174fd4b67ea5a6dff6d",
+    "prepared_sha256": "4e8082523dbe4bc56ad49490e54acee0d5ecdd11deefbb3ac44f7759963e1af2",
+    "mask_sha256": "031f28ff4be27e6009b448a55b986861cadf155ce4d5b2ba3f11e05009289e85"
+  },
+  {
+    "id": 102,
+    "slug": "xiaomi-cyberone-government-photo",
+    "credit": "Beijing Yizhuang via NCSTI",
+    "source_page": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/t20240605_159440.html",
+    "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/W020240605332139251140.jpg",
+    "source_context": "Official government press photograph in report of Xiaomi Robotics move to Yizhuang factory, published2024-06-05, source explicitly Beijing Yizhuang official WeChat. NOT a Xiaomi-hosted image or open licence. Caption under this exact photo explicitly full-size humanoid bionic robot CyberOne, white chest CyberOne visible, matches original2022 design. Whole head, both genuine gripper hands, both feet visible, standing on round CyberDog-branded showroom display plinth. Native1080x1620, body >1100px; leave complete robot, optionally full circular display stand only if caption explicitly says on display stand, but stand NOT robot morphology. Preferred mask robot alone at sole contact, no leg creation. Remove orange wall, floor, external black tripod left, stand if can cleanly separate. No occlusion of robot geometry. Root native source inspected. Caption Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI. Do not imply current2026generation orassign later specs.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 31e0eb7, candidates-32",
+    "mask_method": "BiRefNet general (rembg, mask only), two passes, Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-two-pass-mask.png; levels 85..230; the whole-figure pass took in the round display plinth under the feet; a second pass on the feet alone (x 400..740, y 1180..1470 of the original) separates the shoes from the plinth, and the combined mask uses the first pass above y = 1250 and the second from y = 1250 down (the two agree within 0.3 on average in the ten rows above the join), so the plinth, the wall, the floor and the tripod are out",
+    "roi": [
+      330,
+      180,
+      810,
+      1480
+    ],
+    "bbox": [
+      44,
+      33,
+      431,
+      1272
+    ],
+    "border": 20,
+    "size": [
+      427,
+      1279
+    ],
+    "native_alpha": false,
+    "original_sha256": "bcf7d9b8185de88c6f7edfbb29323707fc6bd8313d5b199a65587968281f6184",
+    "prepared_sha256": "85f1a1ec3c809ec83471b2f4a22e63d3be8240e1b1fbb33c7c21714de6df2211",
+    "mask_sha256": "7dc085337fe164f1502dae6814a0863e9a1b7334244e8dd295b8d9f92c5601ea"
+  },
+  {
+    "id": 35,
+    "slug": "galbot-g1-award-native",
+    "credit": "Galbot",
+    "source_page": "https://www.productdesignaward.eu/winners/epda/2026/12837/",
+    "source_url": "https://s3-us-west-2.amazonaws.com/productdesignaward/upload/3264595/22895726/full/64529c2e68d22e7f7759126043cee614.png",
+    "source_context": "Manufacturer-submitted GALBOT G1 award entry 2026, Company Galbot, Client Galbot, visible Photo Credit Galbot, official project link galbot.com. Third-party award hosting explicitly acknowledged, not open licence assumed. Native4500x3375 existing manufacturer product render, two complete separated configurations. Choose LEFT standing figure ONLY, entire head, both actual articulated hands, lift leg, complete base and wheels. Approx ROI[800,200,2400,3000] but independently determine exact native geometry. Both figures are separated, no body overlap. Remove floor shadow and right crouching robot. Caption Galbot, G1 manufacturer product render via European Product Design Award (2026). Whole selected figure root inspected at native scale. NOT another company Unitree G1 tennis footage, no new capabilities/specs. Needs independent alpha-only mask/review, no RGB edits or upscale.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining a7c0ffb, candidates-31",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; largest region kept; levels 150..240; the largest region kept, which drops the fingertips of the crouching robot on the right that reach into the region; the original alpha (218..255) lies only off the robot and is not used",
+    "roi": [
+      880,
+      230,
+      2340,
+      3000
+    ],
+    "bbox": [
+      81,
+      109,
+      1421,
+      2707
+    ],
+    "border": 20,
+    "size": [
+      1380,
+      2638
+    ],
+    "native_alpha": false,
+    "original_sha256": "51f6711b14a65954ab429d6ae9aca1635edfe45c68edd22210ceddf517014426",
+    "prepared_sha256": "934eda69b45a424d6f9ff0c23dd23a7f2d95fe0df9674280792bc066655ce7d1",
+    "mask_sha256": "2320624ecada7696879d9fc2815518472d057e53f47f0fccdac8edffd0a70996"
+  },
+  {
+    "id": 70,
+    "slug": "rainbow-hubo2-front",
+    "credit": "Rainbow Robotics, via Rainbow Robotics Vietnam",
+    "source_page": "https://rainbow-robotics.vn/hubo2/",
+    "source_url": "https://rainbow-robotics.vn/images/ckeditor/images/202209151451348f46d5423a109969fc003dfe17608f03b56a3b10.png",
+    "source_context": "Existing HUBO2 manufacturer product image hosted on Rainbow Robotics Vietnam regional/reseller product page, NOT falsely presented as downloaded from global manufacturer server. ExactpageHUBO2, 120cm43kg38DOF technical text matches global legacy page https://rainbowrobotics1.cafe24.com/hubo2 which is currently DNSunreachable here but searchindexed. Native1206x1658 whole head, hands, feet with margins; chest branding HUBO/KIST/Rainbow. The alt attribute RBQ is a mistakengenericreusedalt on this page; visible biped and HUBO chest plus exact page title/body identify HUBO2, not a quadruped. Caption explicitly Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam; record70Hubofamily, no spec change. Rootinspectedwholebodycontactsheet. RegionalsitehasRPMEC contact; do not assert it is a wholly owned subsidiary or newly verified authorized partner. Treat as third-party-hosted maker product image, analogous to archived maker brochures. Alpha-only segmentation, preserve RGB/native20pxpadding; exclude whitebackground/floor shadow.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 26e018a, candidates-30",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; largest region kept; levels 150..240; the original carries an alpha channel, but it is an opaque white rectangle around the robot, so the cutout is computed from the model mask",
+    "roi": [
+      0,
+      0,
+      1140,
+      1658
+    ],
+    "bbox": [
+      7,
+      20,
+      1082,
+      1613
+    ],
+    "border": 20,
+    "size": [
+      1115,
+      1633
+    ],
+    "native_alpha": false,
+    "original_sha256": "38fe5cc3103b3785f3d6a36ebe3927195a19d8e0a4e1982802fd00288889a979",
+    "prepared_sha256": "9b0c118cf89fe9f2d69510dab140d5f7963889d64cedb088301b7caca5edcd88",
+    "mask_sha256": "463249e3c4c096f1be2e909ca1f6440108d6ae5c6bb55be787e3b9d9597e5746"
+  },
+  {
+    "id": 74,
+    "slug": "revobots-taskbot-scout",
+    "credit": "REVOBOTS",
+    "source_page": "https://revobots.ai/",
+    "source_url": "https://revobots.ai/_assets/video/9cde64a553bd519ee408b99fd8340690.mp4",
+    "source_context": "Official homepage embedded Canva video VAG4Ru9-e18. Native1920x1080 encoded rendition explicitly referenced in dashVideoFiles metadata. This is NOT a newly upscaled1280 frame; source media directly fetched1080 (same628frames30fps). Frame292 at9.7333s; whole sensor mast/cap and complete four-wheeledmobileplatform, margin below tyres. No arms/head invented, this SCOUT configuration has sensor mast by design. Crucially current record74 Platform and mobility explicitly includes TASKBOT SCOUT autonomous mobile robot (patrol, inspection), so exact configuration matches owning catalogue. Homepage labels same configuration TASKBOT SCOUT. Caption REVOBOTS, TASKBOT SCOUT mobile configuration, official video still; do not silently label it humanoid hardware or payload evidence. Alpha-only, exclude street/car/logos, preserve RGB/native20padding. Root inspected native1080 frame292, all physical platform whole. ApproxROI[1020,340,1490,1080], independently widen enough toretainwholewheels.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 62f03ab, candidates-28",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; levels 150..240 instead of the usual 85..230 so the soft video edge of the white tyres does not carry a dark rim of asphalt",
+    "roi": [
+      1000,
+      330,
+      1510,
+      1080
+    ],
+    "bbox": [
+      47,
+      72,
+      455,
+      743
+    ],
+    "border": 20,
+    "size": [
+      448,
+      711
+    ],
+    "native_alpha": false,
+    "original_sha256": "bdc96b561581682c97d6ff694f1b50fa55d559a0d35b52b0fa36d5c4e08174e2",
+    "prepared_sha256": "109bd22d0f96b7c53380e7fbcbf6dba8c4dd55235c89d05989b7749d5ba1cffc",
+    "mask_sha256": "5ba3580eed580c68dcd0303ca2187ed5eb3a6b0071f1e99690eee986075badaa"
+  },
+  {
+    "id": 199,
+    "slug": "starbot-astra",
+    "credit": "StarBot",
+    "source_page": "https://www.starbotusa.com/",
+    "source_url": "https://www.starbotusa.com/starbot_three_robot_platforms_v2.png",
+    "source_context": "Exact homepage image alt: StarBot Spark, StarBot Astra, and StarBot Flex. Source original decoded from Next/image URL, NOT optimized/upscaled3840 response. Native1536x1024 manufacturer PRODUCT ILLUSTRATION/RENDER, not a hardware photograph or performance evidence. Homepage textual lineup/release sections map Spark3ft smallbiped, Astra5ft biped, Flex5ft9 foldable wheeled configuration. Astra is CENTER biped. Spark left smaller is not the record. ApproxROI[480,0,1000,970], independently widen if needed. Both hands and feet whole, no external occlusion. Keep exact native visibleRGB. Remove other two figures, floor/reflection/shadow with alpha-only mask; caption explicitly StarBot, [model] manufacturer product illustration. Do not claim independent evidence or change specs. Root inspected full original.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining b07ffac, candidates-26",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      470,
+      0,
+      1010,
+      1000
+    ],
+    "bbox": [
+      79,
+      38,
+      420,
+      942
+    ],
+    "border": 20,
+    "size": [
+      381,
+      944
+    ],
+    "native_alpha": false,
+    "original_sha256": "dc3ee48adce174ad587fe1510f3aa548e2254a4c432dfa068ff099e4ca43d18e",
+    "prepared_sha256": "392d9fbc41e58f2bb003cd88ef50ffdc95ab4bf3fb11a102369670953704ae1a",
+    "mask_sha256": "a0bae99dc10500e1bb9a2b7b9e971a51162006f18b6693f5e7982cd89b55179c"
+  },
+  {
+    "id": 200,
+    "slug": "starbot-flex",
+    "credit": "StarBot",
+    "source_page": "https://www.starbotusa.com/",
+    "source_url": "https://www.starbotusa.com/starbot_three_robot_platforms_v2.png",
+    "source_context": "Exact homepage image alt: StarBot Spark, StarBot Astra, and StarBot Flex. Source original decoded from Next/image URL, NOT optimized/upscaled3840 response. Native1536x1024 manufacturer PRODUCT ILLUSTRATION/RENDER, not a hardware photograph or performance evidence. Homepage textual lineup/release sections map Spark3ft smallbiped, Astra5ft biped, Flex5ft9 foldable wheeled configuration. Flex is RIGHT wheeled foldable platform, not middle biped. ApproxROI[1010,0,1536,980], independently widen if needed. Whole head, both hands, entire folding column and mobilebase/wheels visible. Keep exact native visibleRGB. Remove other two figures, floor/reflection/shadow with alpha-only mask; caption explicitly StarBot, [model] manufacturer product illustration. Do not claim independent evidence or change specs. Root inspected full original.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining b07ffac, candidates-26",
+    "mask_method": "BiRefNet general (rembg, mask only), plus the two black casters from the original luminance, Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-casters-mask.png; levels 85..230; the BiRefNet mask left the two black casters under the base partly transparent or out; inside two small rectangles around them (x 1182..1237, y 943..959 and x 1372..1425, y 932..944 of the original) the mask takes the larger of the model value and a luminance value (opaque below 20, none above 50), so the casters are whole and their mirror reflection and the grey contact shadow stay out",
+    "roi": [
+      1040,
+      0,
+      1536,
+      1000
+    ],
+    "bbox": [
+      28,
+      19,
+      433,
+      960
+    ],
+    "border": 20,
+    "size": [
+      445,
+      981
+    ],
+    "native_alpha": false,
+    "original_sha256": "dc3ee48adce174ad587fe1510f3aa548e2254a4c432dfa068ff099e4ca43d18e",
+    "prepared_sha256": "a0d2264215c0f75c45de7623868d0e3d0aacd54f084b58355f7a7a2f11a2f3cb",
+    "mask_sha256": "4087a5575a8c81448d5930a9446c61a4a2c3da131f02eae49b5524f808665a47"
+  },
+  {
+    "id": 191,
+    "slug": "matrix-1-product-native",
+    "credit": "Matrix Robotics",
+    "source_page": "https://matrixrobotics.ai/matrix-1",
+    "source_url": "https://matrixrobotics.ai/hero_video.jpg",
+    "source_context": "Exact /matrix-1 page title MATRIX-1 | Humanoids. Hero video poster /hero_video.jpg appears immediately before h1 MATRIX-1 Next-generation AI humanoid robot for real-world applications, accompanying https://matrixrobotics.ai/hero.mp4. This is NOT homepage MATRIX-3; explicit model1 page and hardware white slender biped rather than MATRIX3. Existing maker image/technical render native3840x2160 showing whole head, both hands and both feet with margins in a plain studio. Root inspected full source contact sheet. Caption MATRIX-1 manufacturer product image (or render after visual review), no capability claims/spec changes. Alpha-only segmentation, exclude floor/reflection/walls, retain originalRGB/native20px padding.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining dc11021, candidates-27",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; alpha-only exclusion [0, 1821, 860, 1960]; the soles meet their own reflection in the glossy floor; the brightness profile under both shoes is mirror-symmetric about y = 1980 of the original, so every row from 1981 down is set to alpha 0 (alpha only)",
+    "roi": [
+      1500,
+      160,
+      2360,
+      2120
+    ],
+    "bbox": [
+      130,
+      86,
+      725,
+      1821
+    ],
+    "border": 20,
+    "size": [
+      635,
+      1775
+    ],
+    "native_alpha": false,
+    "original_sha256": "c4d582c016cd6e58e39108d8071bec913dc30979b35f57056b460cde6876d733",
+    "prepared_sha256": "19b07d2a01608cc70a44d1f4c27bbd9f9a731355fc36c77d23dd971354ef116b",
+    "mask_sha256": "9a3b650a36d02345dc412ec5dc2abad576998a2e2000210b7cf508d090296164"
+  }
+]

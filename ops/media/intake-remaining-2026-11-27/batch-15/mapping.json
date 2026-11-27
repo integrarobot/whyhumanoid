@@ -1,0 +1,79 @@
+{
+  "batch": 15,
+  "intake": "ops/media/intake-remaining-2026-11-27/batch-15",
+  "branch": "codex/image-sources-remaining",
+  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27), 62f03ab (candidates-28), 26e018a (candidates-30), a7c0ffb (candidates-31), 31e0eb7 (candidates-32), bbf9ddd (candidates-33) and 17d1e6e (candidates-34)",
+  "scope": "All missing images (Javier, 27 Nov 2026)",
+  "items": {
+    "166": {
+      "slug": "avatar-robotics-mobile-lift-column",
+      "alt": "Avatar Robotics mobile robot, full platform, side view, on its lift column and wheeled base with a tray, still from the official video",
+      "credit": "Image: Avatar Robotics, mobile lift-column configuration, official video still",
+      "identity": "Frame 755 (31.49 s) of the video on Avatar Robotics' homepage, decoded at its native 1920 × 1080: the whole platform in side view, with the black and white head, both arms and grippers, the tray with its packets, the rear lift column and the complete wheeled base. The shelving rack and the floor are excluded by the alpha mask; the tray and its contents are kept as part of the platform. The maker does not disclose a model name, and none is given here.",
+      "quality": null
+    },
+    "199": {
+      "slug": "starbot-astra",
+      "alt": "StarBot Astra, full body, front view, standing, manufacturer product illustration",
+      "credit": "Image: StarBot, Astra manufacturer product illustration",
+      "identity": "The centre figure of the three-robot illustration on StarBot's homepage (native 1536 × 1024): Astra, the full-size biped, whole with head, both hands and both feet. It is a product illustration, not a photograph of hardware. The smaller Spark on the left, the wheeled Flex on the right and the floor reflection are excluded by the alpha mask.",
+      "quality": null
+    },
+    "200": {
+      "slug": "starbot-flex",
+      "alt": "StarBot Flex, full body, three-quarter view, upper body on a folding leg over a wheeled base, manufacturer product illustration",
+      "credit": "Image: StarBot, Flex manufacturer product illustration",
+      "identity": "The right-hand figure of the three-robot illustration on StarBot's homepage (native 1536 × 1024): Flex, the wheeled configuration, whole with head, both hands, the folding leg and the wheeled base with its two black casters. It is a product illustration, not a photograph of hardware. The other two figures, the floor reflection and the contact shadow are excluded by the alpha mask.",
+      "quality": null
+    },
+    "191": {
+      "slug": "matrix-robotics-matrix-1",
+      "alt": "MATRIX-1 by Matrix Robotics, full body, front view, standing, manufacturer product image",
+      "credit": "Image: Matrix Robotics, MATRIX-1 manufacturer product image",
+      "identity": "The poster image of the hero video on Matrix Robotics' MATRIX-1 page (native 3840 × 2160): the whole robot with head, both hands and both feet, in a plain studio. The walls, the glossy floor and the reflection under the soles are excluded by the alpha mask. It is MATRIX-1, not the MATRIX-3 shown on the maker's homepage.",
+      "quality": null
+    },
+    "74": {
+      "slug": "revobots-taskbot-scout",
+      "alt": "REVOBOTS TASKBOT SCOUT, full platform, sensor mast on a four-wheeled mobile base, still from the official video",
+      "credit": "Image: REVOBOTS, TASKBOT SCOUT mobile configuration, official video still",
+      "identity": "Frame 292 (9.73 s) of the video on REVOBOTS' homepage, at its native 1920 × 1080 encoding: the TASKBOT SCOUT configuration, whole, with its sensor mast and dome and the complete four-wheeled base. This configuration has no arms or head, and none are added; it is the mobile platform the record lists, not humanoid hardware. The street, the car and the logos are excluded by the alpha mask; the dome is transparent, so what shows through it is the scene behind, as filmed.",
+      "quality": null
+    },
+    "70": {
+      "slug": "rainbow-robotics-hubo2",
+      "alt": "HUBO2 by Rainbow Robotics, full body, front view, standing, manufacturer product image",
+      "credit": "Image: Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam",
+      "identity": "The HUBO2 product image on the HUBO2 page of Rainbow Robotics Vietnam, a regional site that hosts the maker's product material (native 1206 × 1658): the whole robot with head, both hands and both feet, the chest marked HUBO, KAIST and Rainbow. The page's alt text says RBQ, but the page title, the text and the visible robot are HUBO2. The white studio and the floor shadow are excluded by the alpha mask; the original's own alpha is only an opaque rectangle and is not used.",
+      "quality": null
+    },
+    "35": {
+      "slug": "galbot-g1",
+      "alt": "G1 by Galbot, full body, standing on its lift leg and wheeled base, one hand held out, manufacturer product render",
+      "credit": "Image: Galbot, G1 manufacturer product render via European Product Design Award (2026)",
+      "identity": "The left, standing figure of the G1 render that Galbot submitted to the European Product Design Award 2026 (native 4500 × 3375; the entry names Galbot as company and client and credits the photo to Galbot): the whole robot with head, both articulated hands, the lift leg and the complete wheeled base. The crouching second G1 on the right, the white studio and the floor shadow are excluded by the alpha mask. It is Galbot's G1, not Unitree's G1.",
+      "quality": null
+    },
+    "102": {
+      "slug": "xiaomi-cyberone",
+      "alt": "CyberOne by Xiaomi, full body, front view, standing, 2024 display photograph",
+      "credit": "Image: Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI",
+      "identity": "The photograph in the official Beijing Yizhuang report of 5 June 2024 republished by NCSTI (native 1080 × 1620), captioned as the full-size humanoid bionic robot CyberOne: the original white 2022 design, whole with head, both grippers and both feet. It stood on a round display plinth, which is not part of the robot; the plinth, the wall, the floor and the tripod are excluded by the alpha mask, cut at the soles. It is not a Xiaomi-hosted image and says nothing about later versions.",
+      "quality": null
+    },
+    "96": {
+      "slug": "vinmotion-motion1",
+      "alt": "Motion1 by VinMotion, full body, front view, standing, one hand raised, event photograph at VEC 2025",
+      "credit": "Image: VinMotion, Motion1 at VEC 2025, event photograph by Nguyen Le",
+      "identity": "A photograph from the event producer Nguyen Le's report of 22 September 2025 on the Motion1 launch at VEC, Hanoi, on 28 August 2025 (native 854 × 1280): the real robot in the foreground, whole, with head, the raised open hand, the other hand curled as posed, both feet and the cable loops at the hips. The billboard behind it, with its drawn robot, the tents and the asphalt are excluded by the alpha mask. It is not a maker-hosted image, and it shows Motion1, not the later Motion2.",
+      "quality": null
+    },
+    "50": {
+      "slug": "kist-kapex",
+      "alt": "KAPEX, full body, three-quarter front view, standing, concept render by KIST",
+      "credit": "Image: KIST, KAPEX concept render (2025), via Herald Economy",
+      "identity": "The render KIST supplied for the press on 30 September 2025, published by Herald Economy with the caption 'KIST provided' (native 1280 × 821); a contemporary ChosunBiz report calls the same image an artist rendering. It shows the whole robot with head, both hands and both feet. It is a concept render, not a photograph of hardware, and says nothing about later versions. The KIST, LG and KAPEX logos, the grey studio and the floor reflection are excluded by the alpha mask.",
+      "quality": null
+    }
+  }
+}
