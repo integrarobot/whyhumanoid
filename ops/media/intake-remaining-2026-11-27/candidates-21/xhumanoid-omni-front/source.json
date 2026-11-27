@@ -1,0 +1,17 @@
+{
+  "id": 206,
+  "slug": "xhumanoid-omni-front",
+  "credit": "X-Humanoid",
+  "source_page": "https://www.x-humanoid.com/detail/omni.html",
+  "source_url": "https://www.x-humanoid.com/oss/static/img/omni-three-view.png",
+  "original": "original.png",
+  "original_size": [
+    2157,
+    1212
+  ],
+  "original_sha256": "7b2770506fb83f27c8be16802b96d648668392c546e6e2464b90b09b71faf8f3",
+  "source_context": "Exact TianGong Omni maker product page provides three-view PNG native2157x1212 with ownalpha. Select ONLY central FRONT figure, wholehead both actual openhands and both feet. ApproxROI[780,0,1450,1212], independently check handmargins; do not crop atx850 as thumbmaytouch. Exclude leftside/backview figures; no paintedcallouts. Existingmakertechnicalrender, captionTianGongOmnifront-viewmanufacturertechnicalrender. Ownalpha must be inspected; preserve sourceRGB/native. NotTienKung3.0orTianYi2.0. Hero/widegroup images either smalloroverlap, this frontfigureiscomplete ~1000px native.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primarysource, creditrequired; no open licence assumed or outreach sent."
+}

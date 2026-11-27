@@ -1,0 +1,39 @@
+[
+  {
+    "id": 188,
+    "slug": "lanxin-vb01-brochure",
+    "credit": "Lanxin Robotics",
+    "source_page": "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-8fa3d198-57b0-4a17-8e9d-ef4a58dc5a12/product-documents/pro-02a38744-4ce5-4f2f-bafb-ca8d9269152e/0060ecac-8e94-4eed-9b50-7d64c604579d.pdf",
+    "source_url": "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-8fa3d198-57b0-4a17-8e9d-ef4a58dc5a12/product-documents/pro-02a38744-4ce5-4f2f-bafb-ca8d9269152e/0060ecac-8e94-4eed-9b50-7d64c604579d.pdf",
+    "original": "original.png",
+    "original_size": [
+      2997,
+      1870
+    ],
+    "original_sha256": "7dae1f397c1a60718bc5e9acc39f741f468f5b0dd2d9963be6b35dd857bd1210",
+    "source_context": "Manufacturer Lanxin brochure, cover explicitly VB-01 Humanoid Robot Versabot, page2 VersaBot VB-1, version V2024.7.18. Hosted on event exhibitor CDN, not maker web host. PDFpage1 embeddedimage002 native2997x1870, two complete product views; choose FRONT left figure, head/sensor, both grippers, full mast/base/allvisiblewheels. ApproxROI[550,250,1450,1870], independently widen enough so LEFT gripper not cut. Other figure and floor shadows excluded. RGB002 has no ownalpha; PDF softmask003 is4500x2807 (differentresolution), so do not directly apply without correct coordinate handling. Alpha-only BiRefNet okay. Caption VersaBot VB-01 (2024 brochure render) on genericVB1record, do not label VB1-I newer configuration. Newsource without redannotationdotsONbody, unlike rejectedcurrentwebgraphic.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primarysource, creditrequired; no open licence assumed or outreach sent.",
+    "pdf_page": 1,
+    "pdf_image_index": 2,
+    "source_document_sha256": "599a98d2db8cce9c99946cfecc08542bf9cab6c526bbe0ab6e6d53ee25e328f7"
+  },
+  {
+    "id": 206,
+    "slug": "xhumanoid-omni-front",
+    "credit": "X-Humanoid",
+    "source_page": "https://www.x-humanoid.com/detail/omni.html",
+    "source_url": "https://www.x-humanoid.com/oss/static/img/omni-three-view.png",
+    "original": "original.png",
+    "original_size": [
+      2157,
+      1212
+    ],
+    "original_sha256": "7b2770506fb83f27c8be16802b96d648668392c546e6e2464b90b09b71faf8f3",
+    "source_context": "Exact TianGong Omni maker product page provides three-view PNG native2157x1212 with ownalpha. Select ONLY central FRONT figure, wholehead both actual openhands and both feet. ApproxROI[780,0,1450,1212], independently check handmargins; do not crop atx850 as thumbmaytouch. Exclude leftside/backview figures; no paintedcallouts. Existingmakertechnicalrender, captionTianGongOmnifront-viewmanufacturertechnicalrender. Ownalpha must be inspected; preserve sourceRGB/native. NotTienKung3.0orTianYi2.0. Hero/widegroup images either smalloroverlap, this frontfigureiscomplete ~1000px native.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primarysource, creditrequired; no open licence assumed or outreach sent."
+  }
+]
