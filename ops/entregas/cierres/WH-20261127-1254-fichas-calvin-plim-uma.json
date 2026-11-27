@@ -1,0 +1,41 @@
+{
+  "id": "WH-20261127-1254-fichas-calvin-plim-uma",
+  "tarea": "Actualizar las fichas existentes de Calvin-40, Plim y UMA Version 0 en el maestro y la web, conservando los nombres anteriores.",
+  "origen": "Javier",
+  "fecha": "2026-11-27T12:54:26+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "Codex",
+  "cambios": [
+    "Diez celdas actualizadas en las tres fichas del maestro. Calvin, Devanthro y Robody se conservan como nombres anteriores.",
+    "UMA Version 0 identifica el prototipo físico. La ficha documenta Northstar como el diseño presentado por separado.",
+    "Publicadas las tres fichas con sus identificadores originales y sus direcciones históricas redirigidas."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Calvin-40",
+      "url": "https://whyhumanoid.com/humanoids/wandercraft-calvin-40-97/"
+    },
+    {
+      "etiqueta": "Plim",
+      "url": "https://whyhumanoid.com/humanoids/plim-robotics-plim-21/"
+    },
+    {
+      "etiqueta": "UMA Version 0",
+      "url": "https://whyhumanoid.com/humanoids/uma-version-0-92/"
+    },
+    {
+      "etiqueta": "Publicación",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/203"
+    }
+  ],
+  "despliegue": [
+    "PR 203 fusionado en 19f0add34. CI y Pages correctos. Dos sincronizaciones acotadas en producción, 45993946460 y 45994099480."
+  ],
+  "verificaciones": [
+    "Relectura de las diez celdas y del formato. Quince URL públicas comprobadas y siete consultas probadas en la portada y el buscador general.",
+    "Las referencias genéricas a Calvin conservan el alcance de familia. La sincronización actualizó también en la API la valoración calculada de Walker S1."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Sin acciones pendientes para este encargo."
+}
