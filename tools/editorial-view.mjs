@@ -71,6 +71,8 @@ const plainText = (block) => {
   for (const l of findLinks(block)) { plain += block.slice(last, l.start) + (l.image ? ' ' : l.label); last = l.end; }
   return (plain + block.slice(last)).replace(/[*_`>#]/g, '').replace(/\s+/g, ' ').trim();
 };
+// All the text of a body as one plain line (search index of a News entry).
+const fullText = (markdown) => String(markdown ?? '').split(/\n\s*\n/).map((b) => plainText(b.trim())).filter(Boolean).join(' ');
 export function excerpt(markdown, max = 220) {
   const blocks = String(markdown ?? '').split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
   const text = blocks
@@ -97,12 +99,22 @@ const byMonth = (list, dateOf) => {
 
 function editionCards(editions) {
   return byMonth(editions, (e) => e.published_on).map(([ym, list]) => `<section class="ed-month" data-ed-group><h3 id="m-${ym}">${esc(monthLabel(ym))}</h3>
-<ul class="cards ed-list">${list.map((e) => `<li data-ed-text="${esc(`${e.title} ${e.subtitle ?? ''} ${excerpt(e.body_markdown, 600)}`.toLowerCase())}"><a href="${editionPath(e.id)}"><b>${esc(e.title)}</b></a><span>${esc(excerpt(e.body_markdown))}</span><span class="dim">First published in Spanish on ${esc(longDate(e.published_on))}${e.items.length ? ` · ${e.items.length} news ${e.items.length === 1 ? 'item' : 'items'}` : ''}</span></li>`).join('')}</ul></section>`).join('\n');
+<ul class="cards ed-list">${list.map((e) => `<li data-ed-text="${esc(`${e.title} ${e.subtitle ?? ''} ${excerpt(e.body_markdown, 600)}`.toLowerCase())}"><a href="${editionPath(e.id)}"><b>${esc(e.title)}</b></a><span>${esc(excerpt(e.body_markdown))}</span><span class="dim">First published in Spanish on ${esc(longDate(e.published_on))}</span></li>`).join('')}</ul></section>`).join('\n');
 }
 function itemGroups(editions) {
   return byMonth(editions.filter((e) => e.items.length), (e) => e.published_on).map(([ym, list]) => `<section class="ed-month" data-ed-group><h3 id="m-${ym}">${esc(monthLabel(ym))}</h3>
 ${list.map((e) => `<div class="ed-edition" data-ed-group><p class="meta">From the Blog article <a href="${editionPath(e.id)}">${esc(e.title)}</a>, first published in Spanish on ${esc(longDate(e.published_on))}</p>
-<ol class="ed-items">${e.items.map((it) => `<li value="${it.position}" data-ed-text="${esc(`${it.headline} ${excerpt(it.body_markdown, 600)}`.toLowerCase())}"><a href="${itemPath(it)}">${esc(it.headline)}</a>${it.body_markdown ? `<span>${esc(excerpt(it.body_markdown, 180))}</span>` : ''}</li>`).join('')}</ol></div>`).join('\n')}</section>`).join('\n');
+${e.items.map((it) => newsEntry(it, e)).join('\n')}</div>`).join('\n')}</section>`).join('\n');
+}
+// One News entry in a list: the whole English body once, as written, with its own source links, and a small separate
+// permalink to the item page that does not repeat the text (Javier, 27 Nov 2026). No generated heading, no excerpt,
+// no numbering. An item recorded with a headline and no body (allowed by validation) shows its headline as its text.
+const newsText = (it) => (String(it.body_markdown ?? '').trim() ? it.body_markdown : it.headline);
+function newsEntry(it, e) {
+  const label = `Permalink to news item ${it.position} of ${e.items.length}, ${longDate(e.published_on)}`;
+  return `<article class="ed-entry" data-ed-text="${esc(fullText(newsText(it)).toLowerCase())}"><div class="ed-body">
+${renderMarkdown(newsText(it))}
+</div><a class="ed-permalink" href="${itemPath(it)}" aria-label="${esc(label)}">Permalink</a></article>`;
 }
 
 const BLOG_LEDE = 'Integrarobot on humanoid robots and physical AI, in English: every article of the Integrarobot newsletter from 2025 and 2026, each with the date it first appeared in Spanish and a link to the original.';
@@ -141,11 +153,7 @@ ${shown.length ? `${searchForm(isNews ? 'Search the news' : 'Search the blog')}\
 
   for (const e of editions) {
     const year = e.published_on.slice(0, 4);
-    const news = e.more_news_status === 'present'
-      ? `<section class="ed-news"><h2>News in this edition</h2><ol class="ed-items">${e.items.map((it) => `<li value="${it.position}"><a href="${itemPath(it)}">${esc(it.headline)}</a></li>`).join('')}</ol></section>`
-      : e.more_news_status === 'inaccessible'
-        ? `<section class="ed-news"><h2>News in this edition</h2><p class="meta">The news roundup of this edition could not be read from the source${e.more_news_note ? `: ${esc(e.more_news_note)}` : ''}.</p></section>`
-        : `<section class="ed-news"><h2>News in this edition</h2><p class="meta">This edition has no news roundup.</p></section>`;
+    // The Blog article is its main body only: no generated list or note about its news roundup (Javier, 27 Nov 2026).
     const body = `${crumbs([['/blog/', 'Blog'], [yearPath('blog', year), year], [null, e.title]])}<article class="ed-article">
 <p class="kicker">Blog</p>
 <h1>${esc(e.title)}</h1>
@@ -153,7 +161,6 @@ ${e.subtitle ? `<p class="lede">${esc(e.subtitle)}</p>\n` : ''}<p class="meta">B
 <div class="ed-body">
 ${renderMarkdown(e.body_markdown)}
 </div>
-${news}
 </article>`;
     files.set(`blog/${e.id}/index.html`, page({ title: `${e.title} · Blog · Why Humanoid?`, description: excerpt(e.subtitle || e.body_markdown, 155) || BLOG_LEDE, path: editionPath(e.id), body, type: 'article', noindex, head: head() }));
   }
@@ -164,10 +171,13 @@ ${news}
     const prev = e.items[it.position - 2];
     const next = e.items[it.position];
     const body = `${crumbs([['/news/', 'News'], [yearPath('news', year), year], [editionPath(e.id), e.title], [null, `Item ${it.position}`]])}<article class="ed-article">
-<p class="kicker">News · item ${it.position} of ${e.items.length}</p>
-<h1>${esc(it.headline)}</h1>
-<p class="meta">From the Blog article <a href="${editionPath(e.id)}">${esc(e.title)}</a> by ${esc(e.author)}, first published in Spanish on <time datetime="${e.published_on}">${esc(longDate(e.published_on))}</time> · English translation dated <time datetime="${e.translated_on}">${esc(longDate(e.translated_on))}</time> · <a href="${esc(e.source_url)}" rel="noopener noreferrer">Original edition</a></p>
-${it.body_markdown ? `<div class="ed-body">\n${renderMarkdown(it.body_markdown)}\n</div>\n` : ''}<nav class="ed-pager" aria-label="Items in this edition">${prev ? `<a href="${itemPath(prev)}" rel="prev">Previous item</a>` : '<span></span>'}${next ? `<a href="${itemPath(next)}" rel="next">Next item</a>` : '<span></span>'}</nav>
+<p class="kicker">News</p>
+<h1>News, ${esc(longDate(e.published_on))}</h1>
+<p class="meta">Item ${it.position} of ${e.items.length} from the Blog article <a href="${editionPath(e.id)}">${esc(e.title)}</a> by ${esc(e.author)}, first published in Spanish on <time datetime="${e.published_on}">${esc(longDate(e.published_on))}</time> · English translation dated <time datetime="${e.translated_on}">${esc(longDate(e.translated_on))}</time> · <a href="${esc(e.source_url)}" rel="noopener noreferrer">Original edition</a></p>
+<div class="ed-body">
+${renderMarkdown(newsText(it))}
+</div>
+<nav class="ed-pager" aria-label="Items in this edition">${prev ? `<a href="${itemPath(prev)}" rel="prev">Previous item</a>` : '<span></span>'}${next ? `<a href="${itemPath(next)}" rel="next">Next item</a>` : '<span></span>'}</nav>
 </article>`;
     files.set(`news/${it.id}/index.html`, page({ title: `${it.headline} · News · Why Humanoid?`, description: excerpt(it.body_markdown, 155) || `News item ${it.position} of the Blog article ${e.title}.`, path: itemPath(it), body, type: 'article', noindex, head: head() }));
   }
