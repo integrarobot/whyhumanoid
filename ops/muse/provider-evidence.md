@@ -70,7 +70,9 @@ Humanoid? / Integrarobot.
   - The operator publishes no report of its own.
   - Javier confirmed on 27 Nov 2026 that **no disclosures** were made to authorities in response to national-security
     requests in the past 12 months. That is not a statement that no requests were received, and none is made here.
-  - His answer on procedures for such requests is still pending.
+  - Javier also confirmed on 27 Nov 2026 that four procedures apply to any request from authorities: a legality
+    review, challenging requests where appropriate, disclosing the minimum, and keeping a record. These are
+    procedures, not a statement about requests received. The separate security question (Q11) is answered on its own.
 
 ## Logs
 

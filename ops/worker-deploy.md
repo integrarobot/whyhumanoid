@@ -94,7 +94,8 @@ The challenge expires on 3 Dec 2026 at 19:32 Europe/Madrid.
 | Commit | Content | PROD `worker.dashboard.js` | TEST `worker.staging.js` |
 |---|---|---|---|
 | main 1830a31 (server identical to 71cdac5) | PR 172 scoped stocks-humanoids import, PR 175 Muse challenge. **Deployed 27 Nov 2026** (PROD 8171c73c, TEST 1ac00a70) | 930,151 bytes, `291b9f9747fa9699805f6c263383f32a07b56ec1e388d466e6def275f89e55f1` | 816,855 bytes, `92566467a2633dbabd09011fb9e17607ef1286c1aeffdd0667cdb494cfded666` |
-| PR 185 (adds the `integrators` scope) | under review | 930,165 bytes, `39d0d4fc23154de72ecc87af09085cff1570ccd9158be9641305ec61c3f18942` | 816,869 bytes, `beda05c4f2413f58430d2305d37512700c12ad2e0e1e7c3176bb7cb184e5ad45` |
+| PR 185 head 4692a58 (adds the `integrators` scope) | reviewed; merged into main 8353f73 | 930,165 bytes, `39d0d4fc23154de72ecc87af09085cff1570ccd9158be9641305ec61c3f18942` | 816,869 bytes, `beda05c4f2413f58430d2305d37512700c12ad2e0e1e7c3176bb7cb184e5ad45` |
+| main 8353f73d53c8eb30d9d9779ffd57f110decae306 (PR 187 Reports search, PR 185 integrators scope and build paths, PR 186 docs) | built independently by Claude and by Codex on 27 Nov 2026, same bytes; for the TEST and PROD deployment of 27 Nov 2026 | 1,150,751 bytes, `effa25de68a1bc399bd900455ae5565624632e3643edf22222b39218e81161f7` | 1,036,910 bytes, `c28dcf31023624833bb16e588d42baa0b7fe31a87aeeea03fb1a1a58903e349f` |
 
 On 27 Nov 2026 both rows were rebuilt, with the corrected script, from a folder named `Why Humanoid? Ñandú`. Every
 hash matched the table. Later reviewed heads add their own row.
