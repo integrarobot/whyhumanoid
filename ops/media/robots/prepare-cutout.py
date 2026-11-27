@@ -4,6 +4,7 @@
 # in the format review-intake.py and integrate-batch.py read.
 #   python3 prepare-cutout.py <original> <out dir> --roi x0 y0 x1 y1 [--alpha model|native|both] [--model birefnet-general]
 #       [--lo 85] [--hi 230] [--keep largest|all] [--exclude x0 y0 x1 y1 ...] [--border 20] [--native-levels LO HI]
+#       [--mask-file whole-original-mask.png]
 # --alpha model: alpha from the segmentation model (rembg session, mask only) on the ROI;
 #         native: the original's own alpha; both: the lower of the two (an original whose alpha is not clean).
 # --keep largest: keep only the largest connected region (isolates one robot from others in the same picture);
@@ -26,6 +27,7 @@ p.add_argument('--keep', default='all', choices=['largest', 'all'])
 p.add_argument('--exclude', type=int, nargs=4, action='append', default=[])
 p.add_argument('--border', type=int, default=20)
 p.add_argument('--native-levels', type=int, nargs=2, metavar=('LO', 'HI'))
+p.add_argument('--mask-file', help='a segmentation mask of the whole original already computed (mask only); used instead of running the model')
 a = p.parse_args()
 os.makedirs(a.out, exist_ok=True)
 src = Image.open(a.original)
@@ -34,12 +36,16 @@ x0, y0, x1, y1 = a.roi
 roi = rgba[y0:y1, x0:x1]
 notes = []
 if a.alpha in ('model', 'both'):
-    from rembg import new_session, remove
-    rgb = Image.fromarray(roi[..., :3])
-    if src.mode in ('RGBA', 'LA', 'P'):  # composite on white so the model sees what a reader sees
-        bg = Image.new('RGBA', rgb.size, (255, 255, 255, 255)); bg.alpha_composite(Image.fromarray(roi)); rgb = bg.convert('RGB')
-    m = np.asarray(remove(rgb, session=new_session(a.model), only_mask=True, post_process_mask=False)).astype(float)
-    notes.append(f'{a.model} mask (rembg, mask only)')
+    if a.mask_file:
+        m = np.asarray(Image.open(a.mask_file).convert('L')).astype(float)[y0:y1, x0:x1]
+        notes.append(f'{a.model} mask (rembg, mask only) of the whole original, {os.path.basename(a.mask_file)}')
+    else:
+        from rembg import new_session, remove
+        rgb = Image.fromarray(roi[..., :3])
+        if src.mode in ('RGBA', 'LA', 'P'):  # composite on white so the model sees what a reader sees
+            bg = Image.new('RGBA', rgb.size, (255, 255, 255, 255)); bg.alpha_composite(Image.fromarray(roi)); rgb = bg.convert('RGB')
+        m = np.asarray(remove(rgb, session=new_session(a.model), only_mask=True, post_process_mask=False)).astype(float)
+        notes.append(f'{a.model} mask (rembg, mask only)')
 else:
     m = roi[..., 3].astype(float)
 if a.alpha == 'both':
