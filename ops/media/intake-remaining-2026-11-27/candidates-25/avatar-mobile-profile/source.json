@@ -1,0 +1,17 @@
+{
+  "id": 166,
+  "slug": "avatar-mobile-profile",
+  "credit": "Avatar Robotics",
+  "source_page": "https://www.avatarrobotics.com/",
+  "source_url": "https://framerusercontent.com/assets/ufET1Ro5uqxXNvjaYYsMJUotv7k.webm",
+  "original": "original.png",
+  "original_size": [
+    1920,
+    1080
+  ],
+  "original_sha256": "d77fa6b385baa49786e6b3e554e876755864971e2e6f0fcd7200115dfc0cc570",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "source_context": "Exact maker homepage video native1920x1080, frame755 at31.4896s /23.976fps. Complete mobile humanoid side profile, black/white head, both actual arms/grippers (self-overlapping in pose but all actual tips visible before rackpost), tray with silver packets, whole rear lift column, complete mobilebase including central side wheel. Root inspected native. Right rack post beyond hand, does not obscure robot; no invented fingers/feet. Caption Avatar Robotics, mobile lift-column configuration, official video still. Preserve tray/contents as platform, exclude racks/floor. Inspect thin black robot cables accurately, no background pieces or reconstructed parts. Suggested safeROI[820,280,1345,1040], independently widen as needed. Other front frame830 external rack occludes leftarm and is rejected; frame755 specifically selected.",
+  "license_note": "Manufacturer primary source, credit; no open licence assumed or outreach."
+}
