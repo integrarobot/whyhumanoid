@@ -650,6 +650,9 @@
     ],
     "215": [
       "kepler-forerunner-k2-215"
+    ],
+    "216": [
+      "simplexity-robotics-ix-216"
     ]
   },
   "companies": {
@@ -5505,6 +5508,15 @@
       "organization_ids": [
         "org_jcet"
       ]
+    },
+    "mfr_simplexity_robotics": {
+      "slugs": [
+        "simplexity-robotics"
+      ],
+      "robots": [
+        216
+      ],
+      "organization_ids": []
     }
   },
   "other_robots": {

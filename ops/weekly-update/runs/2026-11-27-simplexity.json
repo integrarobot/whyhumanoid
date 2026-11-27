@@ -55,7 +55,7 @@
   "publication": {
     "write_receipt": "Codex, 2026-11-27T14:20:18.271Z: Humanoids!A219:AF219 written in one atomic batch after a fresh preflight (32 pending, 0 conflicts, 0 duplicates); readback 32 values and 32 formats exact; all 6,976 cells of the 218 preceding rows unchanged; native table extended to row 219",
     "independent_readback": "Claude, fresh download: readback with the pre-write export as --previous gives 32 cells, 0 differences, 0 unexpected changes (59 live Investment values); the export equals the simulated write outside Investment",
-    "catalogue": "free catalogue 213 records: public id 216 (Simplexity Robotics iX, sheet row 219); company page /companies/simplexity-robotics/ from the catalogue lab; Ubtech Walker S1 (id 91) Valuation kept as the sheet and API display it (the xlsx export rounds it, see PR 214)"
+    "catalogue": "free catalogue 213 records: public id 216 (Simplexity Robotics iX, sheet row 219) with the corrected funding; company page /companies/simplexity-robotics/; Ubtech Walker S1 (id 91) Valuation kept as the sheet and API display it (the xlsx export rounds it, see PR 214)"
   },
   "funding_correction": {
     "date": "2026-11-27",
@@ -69,6 +69,8 @@
       "read": "public excerpt only, up to the login wall; not read in full"
     },
     "finding": "In Bloomberg's own voice: USD 100M pre-Series A led by Ant Group. Attributed to chairman and co-founder Wang Kai speaking to Bloomberg: the USD 1.6B valuation and the existing investors Tencent, HSG and Lanchi Ventures. No official announcement or filing reviewed.",
-    "cells": "Humanoids K219 (Valuation), L219 (Investors), M219 (Rounds), AE219 (Buyer checks), AF219 (Sources / checked); the earlier wording 'not confirmed by the company' replaced by 'attributed to chairman and co-founder Wang Kai; not independently verified'; model specifications untouched"
+    "cells": "Humanoids K219 (Valuation), L219 (Investors), M219 (Rounds), AE219 (Buyer checks), AF219 (Sources / checked); the earlier wording 'not confirmed by the company' replaced by 'attributed to chairman and co-founder Wang Kai; not independently verified'; model specifications untouched",
+    "write_receipt": "Codex, 2026-11-27T14:35:03.875Z: K219, L219, M219, AE219 and AF219 written (values only) after a fresh preflight (5 pending, 0 conflicts); readback exact; every other cell of Humanoids A1:AF219 unchanged",
+    "independent_readback": "Claude, fresh download: readback with the first written export as --previous gives 5 cells, 0 differences, 0 unexpected changes (178 live Investment values); the export equals the simulated correction outside Investment"
   }
 }
