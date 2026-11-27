@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 9, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 9, PR not yet merged)
+## Published files (image batch 9, PR 230, merge 98b6aa5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/humanoid-hmnd-01-alpha-wheeled/humanoid-hmnd-01-alpha-wheeled-full-body.png`, 1353 × 2537 px, sha256 `48d235dfe14870c60d783def6d71c4b4d181543500f4f2ae53a0826f276ebf9e` (= the prepared.png).
 - **WebP:** `assets/robots/humanoid-hmnd-01-alpha-wheeled/humanoid-hmnd-01-alpha-wheeled-full-body.webp`, sha256 `80ceacfbbbcbf7d51d3a231b9af8a71bfde4ad341d703f7d8c3e05c00c140686`.

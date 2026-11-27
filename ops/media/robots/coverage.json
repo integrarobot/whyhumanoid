@@ -229,7 +229,7 @@
     {
       "batch": 9,
       "opened": "2026-11-27",
-      "state": "integrated",
+      "state": "published",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026)",
       "candidates": [
@@ -249,8 +249,10 @@
         "Sources and cutouts prepared by Codex on codex/image-sources-remaining (batch-09 at 330772e: alpha of D01, Isaac 0 and Linker corrected in 39823da and 6a6dc12 after Claude's review), copied selectively into ops/media/intake-remaining-2026-11-27/batch-09/.",
         "Claude's review found background left semi-opaque in Aria (between the trouser legs, at the waist, beside the right-hand arm of the picture and a halo along that sleeve) and opaque inside Isaac 0's wrist cable loop; with Codex's authorisation Claude corrected both, alpha only, with ops/media/robots/key-gaps.py (Aria: BiRefNet mask, kept beside the original, inside four rectangles; Isaac 0: luminance key inside the loop). RGB unchanged.",
         "Voxel Series-1 (131) withdrawn: its source photo ends at the shins, without feet; Aria (72) takes its place.",
-        "Variants named in the visible captions: Sharpa D01 (not the Wave hands), HMND 01 Alpha Wheeled, Wanda 2.0, Isaac 0 (not Isaac 1), Aria Series 1. Records' specifications unchanged."
-      ]
+        "Variants named in the visible captions: Sharpa D01 (not the Wave hands), HMND 01 Alpha Wheeled, Wanda 2.0, Isaac 0 (not Isaac 1), Aria Series 1. Records' specifications unchanged.",
+        "Published with PR 230 (reviewed head 92e6e83, CI 46039277179; merge 98b6aa5), 27 Nov 2026; Pages 46039676330 and production verification by Claude and Codex recorded in the batch closeout."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -785,7 +787,7 @@
         "Lab": "Sharpa",
         "Robot": "Droid D01 / Wave (hands)"
       },
-      "status": "integrated",
+      "status": "published",
       "decision": "Codex, 27 Nov 2026 (scope authorised by Javier): show the D01 humanoid, named in the caption; the Wave hands are not shown.",
       "sources": [
         {
@@ -805,7 +807,7 @@
         "Lab": "The Humanoid",
         "Robot": "HMND 01 (Alpha Wheeled / Bipedal)"
       },
-      "status": "integrated",
+      "status": "published",
       "decision": "Codex, 27 Nov 2026 (scope authorised by Javier): show the Alpha Wheeled platform, named in the caption; the bipedal platform is not shown and the record's old specifications are not attributed to it.",
       "sources": [
         {
@@ -2660,7 +2662,7 @@
         "Lab": "Realbotix",
         "Robot": "Aria"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.realbotix.com/",
       "sources": [
         {
@@ -2743,7 +2745,7 @@
         "Lab": "Switch",
         "Robot": "Onero H1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://eu.switch-bot.com/",
       "sources": [
         {
@@ -2809,7 +2811,7 @@
         "Lab": "UniX",
         "Robot": "Wanda"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.unix-group.ai",
       "sources": [
         {
@@ -2856,7 +2858,7 @@
         "Lab": "Weave",
         "Robot": "Isaac"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.weaverobotics.com/",
       "sources": [
         {
@@ -3011,7 +3013,7 @@
         "Lab": "Mabel",
         "Robot": "Mabel"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://robotmabel.github.io/website/index.html",
       "sources": [
         {
@@ -3121,7 +3123,7 @@
         "Lab": "Linkerbot",
         "Robot": "Linker Humanoid"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.linkerbot.cn/details/LinkerHumanoid",
       "sources": [
         {
@@ -3160,7 +3162,7 @@
         "Lab": "Menlo",
         "Robot": "Asimov 1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://menlo.ai/asimov-1",
       "sources": [
         {
@@ -3261,7 +3263,7 @@
         "Lab": "ugo",
         "Robot": "ugo Nova"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://ugo.plus/ai/ugo-nova/",
       "sources": [
         {

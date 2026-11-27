@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 9, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 9, PR not yet merged)
+## Published files (image batch 9, PR 230, merge 98b6aa5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/mabel/mabel-full-body.png`, 878 × 1361 px, sha256 `18ab188a991e7d3630e0ce4b824ae08deff9280adebfc59eafbbe639d4642e90` (= the prepared.png).
 - **WebP:** `assets/robots/mabel/mabel-full-body.webp`, sha256 `63edccc46c4479d3c20000eadbb7b961a96cf93741938e2b1c621e749253c428`.

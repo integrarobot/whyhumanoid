@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 9, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 9, PR not yet merged)
+## Published files (image batch 9, PR 230, merge 98b6aa5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/realbotix-aria/realbotix-aria-full-body.png`, 823 × 1966 px, sha256 `4fd378323611015b291c95253f39ec147c480f897325183c45aa70f16dd6656f` (= the prepared.png).
 - **WebP:** `assets/robots/realbotix-aria/realbotix-aria-full-body.webp`, sha256 `edf13f444004d21ea5a48aa6896896d3919681b69e241ef3a6bc912d4c7668a7`.
