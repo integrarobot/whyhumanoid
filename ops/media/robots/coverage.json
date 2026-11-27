@@ -793,7 +793,14 @@
       "sources": [],
       "status": "candidate",
       "page": "https://astribot.com/",
-      "notes": "Astribot S1, manipulation platform; whole robot as Astribot presents it."
+      "notes": "Astribot S1, manipulation platform; whole robot as Astribot presents it.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: an Astribot-branded S1 specification sheet is hosted at https://a.storyblok.com/f/298593/x/d5cf3ddd99/astribot-s1_eng.pdf (not yet checked for a whole-robot image); product page astribot.com/en/product. Third-party \"media cards\" (Origin of Bots) are not official and are not used."
+        }
+      ]
     },
     "2": {
       "recorded": {
@@ -802,7 +809,14 @@
       },
       "sources": [],
       "status": "candidate",
-      "page": "https://eng.arobot4all.com/"
+      "page": "https://eng.arobot4all.com/",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: AeiROBOT names several robots Alice: ALICE 3, ALICE 4 (bipedal, 160 cm, 41 DoF) and ALICE M1 (wheeled semi-humanoid, Oct 2025). The record describes the bipedal ALICE 4/5: an image must show one of those, named, and never ALICE M1. Maker site eng.arobot4all.com not reachable here."
+        }
+      ]
     },
     "3": {
       "recorded": {
@@ -821,7 +835,14 @@
       },
       "sources": [],
       "status": "candidate",
-      "page": "https://www.agile-robots.com/"
+      "page": "https://www.agile-robots.com/",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only (maker site not reachable from Claude's session): Agile Robots publishes an Agile ONE media kit under https://www.agile-robots.com/media/files/New_website/Solutions/Agile_ONE/Agile_ONE_Media_Kit/ (a 01_Press_Release folder is indexed; image folders not confirmed). Product page https://www.agile-robots.com/en/products/agile-one/. Agile ONE SN (Oct 2026) is a separate compact research variant: not this record."
+        }
+      ]
     },
     "8": {
       "recorded": {
@@ -839,7 +860,14 @@
       },
       "sources": [],
       "status": "candidate",
-      "page": "https://arx-x.com/"
+      "page": "https://arx-x.com/",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: the X7 found is sold as a dual-arm (bimanual) arm platform, not a humanoid; no arx-x.com page was indexed. If the maker shows it only as arms, it is shown as presented or recorded as an exception; the catalogue classification is not changed here."
+        }
+      ]
     },
     "12": {
       "recorded": {
@@ -848,7 +876,14 @@
       },
       "sources": [],
       "status": "candidate",
-      "page": "https://www.beyondimagination.com/"
+      "page": "https://www.beyondimagination.com/",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: no official image gallery found; 2021–2022 press coverage (Designboom, Built In) carries photos credited to Beyond Imagination, which are not official sources here. The current Beomni may differ from Beomni 1.0. Without an official whole-robot image it becomes an exception."
+        }
+      ]
     },
     "13": {
       "recorded": {
