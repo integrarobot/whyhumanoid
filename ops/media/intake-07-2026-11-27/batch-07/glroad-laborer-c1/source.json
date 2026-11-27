@@ -1,0 +1,34 @@
+{
+  "id": 179,
+  "slug": "glroad-laborer-c1",
+  "original": "179-5.png",
+  "roi": [
+    0,
+    0,
+    570,
+    810
+  ],
+  "bbox": [
+    46,
+    19,
+    544,
+    789
+  ],
+  "border": 20,
+  "size": [
+    538,
+    810
+  ],
+  "native_alpha": true,
+  "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+  "source_page": "https://www.glroad.com/HumanoidRobots/index.aspx",
+  "source_url": "https://www.glroad.com/uploadfiles/2026/10/20261015134446741.png?5Lqn5ZOB5Y2h54mHLUMxLnBuZw==",
+  "source_alt": "C1",
+  "credit": "Glroad",
+  "source_context": "Laborer C1 identified by C1 product card in official Humanoid Robots catalogue. Full running-pose robot with both hands and feet. Not M1.",
+  "original_sha256": "a9b2f9f0dfab3a2e203762f5c962ea3147de515f75e051985eb45b8e2306b5c2",
+  "prepared_sha256": "b4f0b808ce1fb5879cf4406497dde5ec3483235c7f1358ccf1713e7be8017516",
+  "mask_sha256": "1d8e0fe831c04893c827fc1521f6f22e978bc8e5da35a983f117966baef772e2",
+  "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+  "checked_at": "2026-11-27"
+}

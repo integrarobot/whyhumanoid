@@ -1,0 +1,34 @@
+{
+  "id": 181,
+  "slug": "lumen-h1",
+  "original": "181-6.webp",
+  "roi": [
+    0,
+    0,
+    1366,
+    2079
+  ],
+  "bbox": [
+    256,
+    60,
+    971,
+    1907
+  ],
+  "border": 20,
+  "size": [
+    755,
+    1887
+  ],
+  "native_alpha": true,
+  "refinement": "Alpha levels85..230; small background components excluded; original RGB unchanged.",
+  "source_page": "https://www.hecbot.cn/product.html?type=22",
+  "source_url": "https://www.hecbot.cn/ggdz/2026/05/20/5bGyi00nj43qu.webp",
+  "source_alt": "Lumen H1（交互服务型机器人）",
+  "credit": "Guanggu Dongzhi / HECBOT",
+  "source_context": "Lumen H1 complete yellow/grey robot explicitly labelled Lumen H1 interaction/service robot on official product page. No other H1 maker or model.",
+  "original_sha256": "912e069722e8d6bd9422925616d47eee6af4eb11e5056c016ca6ca703588d152",
+  "prepared_sha256": "59c3fe4e40518363bac40a20dba1f3d2fe2b6435a734465071056db9a2df4db5",
+  "mask_sha256": "b02ed84dc92b18e26140643ef2671cc523d87cfe6d3841f8d8360f6a4030eb84",
+  "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+  "checked_at": "2026-11-27"
+}

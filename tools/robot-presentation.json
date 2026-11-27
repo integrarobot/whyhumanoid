@@ -877,6 +877,156 @@
         "credit": "Image: Enchanted Tools - Mirokaï robot",
         "provenance": "ops/media/robots/enchanted-tools-mirokai/PROVENANCE.md"
       }
+    },
+    "34": {
+      "recorded": {
+        "Lab": "Galaxea",
+        "Robot": "R1"
+      },
+      "image": {
+        "src": "/assets/robots/galaxea-r1/galaxea-r1-full-body.webp",
+        "fallback": "/assets/robots/galaxea-r1/galaxea-r1-full-body.png",
+        "width": 1425,
+        "height": 2400,
+        "alt": "R1 by Galaxea Dynamics, the whole wheeled robot holding a box, three-quarter view",
+        "credit": "Image: Galaxea Dynamics",
+        "provenance": "ops/media/robots/galaxea-r1/PROVENANCE.md"
+      }
+    },
+    "161": {
+      "recorded": {
+        "Lab": "Galaxea",
+        "Robot": "Kengo"
+      },
+      "image": {
+        "src": "/assets/robots/galaxea-kengo/galaxea-kengo-full-body.webp",
+        "fallback": "/assets/robots/galaxea-kengo/galaxea-kengo-full-body.png",
+        "width": 808,
+        "height": 2434,
+        "alt": "Kengo by Galaxea Dynamics, full body, front view, standing",
+        "credit": "Image: Galaxea Dynamics",
+        "provenance": "ops/media/robots/galaxea-kengo/PROVENANCE.md"
+      }
+    },
+    "157": {
+      "recorded": {
+        "Lab": "Galbot",
+        "Robot": "S1"
+      },
+      "image": {
+        "src": "/assets/robots/galbot-s1/galbot-s1-full-body.webp",
+        "fallback": "/assets/robots/galbot-s1/galbot-s1-full-body.png",
+        "width": 684,
+        "height": 1044,
+        "alt": "S1 by Galbot, the whole wheeled two-arm robot with its lift column, three-quarter view",
+        "credit": "Image: Galbot",
+        "provenance": "ops/media/robots/galbot-s1/PROVENANCE.md"
+      }
+    },
+    "158": {
+      "recorded": {
+        "Lab": "Galbot",
+        "Robot": "ET1"
+      },
+      "image": {
+        "src": "/assets/robots/galbot-et1/galbot-et1-full-body.webp",
+        "fallback": "/assets/robots/galbot-et1/galbot-et1-full-body.png",
+        "width": 541,
+        "height": 1223,
+        "alt": "ET1 by Galbot, full body, walking pose, front view",
+        "credit": "Image: Galbot",
+        "provenance": "ops/media/robots/galbot-et1/PROVENANCE.md"
+      }
+    },
+    "36": {
+      "recorded": {
+        "Lab": "Generative Bionics",
+        "Robot": "GENE.01"
+      },
+      "image": {
+        "src": "/assets/robots/generative-bionics-gene-01/generative-bionics-gene-01-full-body.webp",
+        "fallback": "/assets/robots/generative-bionics-gene-01/generative-bionics-gene-01-full-body.png",
+        "width": 757,
+        "height": 1899,
+        "alt": "GENE.01 by Generative Bionics, full body, front view, standing",
+        "credit": "Image: Generative Bionics",
+        "provenance": "ops/media/robots/generative-bionics-gene-01/PROVENANCE.md"
+      }
+    },
+    "117": {
+      "recorded": {
+        "Lab": "Genesis",
+        "Robot": "Eno"
+      },
+      "image": {
+        "src": "/assets/robots/genesis-eno/genesis-eno-full-body.webp",
+        "fallback": "/assets/robots/genesis-eno/genesis-eno-full-body.png",
+        "width": 446,
+        "height": 928,
+        "alt": "Eno by Genesis AI, the whole wheeled platform, three-quarter view",
+        "credit": "Image: Genesis AI",
+        "provenance": "ops/media/robots/genesis-eno/PROVENANCE.md"
+      }
+    },
+    "177": {
+      "recorded": {
+        "Lab": "GENISOM",
+        "Robot": "NE01"
+      },
+      "image": {
+        "src": "/assets/robots/genisom-ne01/genisom-ne01-full-body.webp",
+        "fallback": "/assets/robots/genisom-ne01/genisom-ne01-full-body.png",
+        "width": 326,
+        "height": 857,
+        "alt": "NE01 Ultra by GENISOM, full body, front view, standing",
+        "credit": "Image: GENISOM",
+        "provenance": "ops/media/robots/genisom-ne01/PROVENANCE.md"
+      }
+    },
+    "178": {
+      "recorded": {
+        "Lab": "Gento Robotics",
+        "Robot": "Gento Luna"
+      },
+      "image": {
+        "src": "/assets/robots/gento-robotics-gento-luna/gento-robotics-gento-luna-full-body.webp",
+        "fallback": "/assets/robots/gento-robotics-gento-luna/gento-robotics-gento-luna-full-body.png",
+        "width": 541,
+        "height": 1267,
+        "alt": "Gento Luna by Gento Robotics, the whole wheeled robot with its two arms, three-quarter view",
+        "credit": "Image: Gento Robotics",
+        "provenance": "ops/media/robots/gento-robotics-gento-luna/PROVENANCE.md"
+      }
+    },
+    "179": {
+      "recorded": {
+        "Lab": "Glroad",
+        "Robot": "Laborer C1"
+      },
+      "image": {
+        "src": "/assets/robots/glroad-laborer-c1/glroad-laborer-c1-full-body.webp",
+        "fallback": "/assets/robots/glroad-laborer-c1/glroad-laborer-c1-full-body.png",
+        "width": 538,
+        "height": 810,
+        "alt": "Laborer C1 by Glroad, full body, running pose",
+        "credit": "Image: Glroad",
+        "provenance": "ops/media/robots/glroad-laborer-c1/PROVENANCE.md"
+      }
+    },
+    "181": {
+      "recorded": {
+        "Lab": "Guanggu Dongzhi",
+        "Robot": "Lumen H1"
+      },
+      "image": {
+        "src": "/assets/robots/guanggu-dongzhi-lumen-h1/guanggu-dongzhi-lumen-h1-full-body.webp",
+        "fallback": "/assets/robots/guanggu-dongzhi-lumen-h1/guanggu-dongzhi-lumen-h1-full-body.png",
+        "width": 755,
+        "height": 1887,
+        "alt": "Lumen H1 by Guanggu Dongzhi (HECBOT), full body, front view, standing",
+        "credit": "Image: Guanggu Dongzhi / HECBOT",
+        "provenance": "ops/media/robots/guanggu-dongzhi-lumen-h1/PROVENANCE.md"
+      }
     }
   }
 }

@@ -169,35 +169,33 @@
     {
       "batch": 7,
       "opened": "2026-11-27",
-      "state": "awaiting_sources",
+      "state": "integrated_awaiting_review",
       "target": 10,
       "scope": "Batch 7 (alphabetical after E/F; no letter scope opened)",
       "candidates": [
-        33,
         34,
         161,
-        35,
         157,
         158,
-        213,
         36,
         117,
-        177
-      ],
-      "reserves": [
+        177,
         178,
         179,
+        181
+      ],
+      "reserves": [
         180,
         37,
-        181,
         38,
         39,
         40
       ],
       "notes": [
         "Javier (\"venga sigue con 10 más\"), via Codex, 27 Nov 2026: ten new images in alphabetical order after E/F; G/H is not closed as a scope and no further batch is opened.",
-        "Sources and masks from Codex on the transport branch codex/image-sources-07 (ops/media/intake-07-2026-11-27/batch-07/; no package yet); nothing is integrated before the package arrives. A reserve replaces a candidate only when the candidate has no faithful whole-robot or whole-platform source.",
-        "Non-generative alpha-only cutouts with original RGB at native resolution; no variant invented, nothing assigned by resemblance. The 58 current presentations stay unchanged."
+        "Sources from Codex, transport branch codex/image-sources-07 (8133830; alpha of R1, Eno, GENE.01 and Kengo corrected over 886396f, the other six byte-identical), kept unchanged in ops/media/intake-07-2026-11-27/batch-07/; prepared PNGs used as delivered.",
+        "Reserves Gento Luna (178), Laborer C1 (179) and Lumen H1 (181) replace GoMate (33), Galbot G1 (35) and Gino 1 (213), which have no valid whole-robot source among those reviewed; this is not a claim that their sources are exhausted.",
+        "Non-generative alpha-only cutouts with original RGB at native resolution; no variant invented, nothing assigned by resemblance. The 58 earlier presentations are unchanged."
       ]
     }
   ],
@@ -1910,7 +1908,7 @@
         "Lab": "GAC Group",
         "Robot": "GoMate"
       },
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://www.gac.com.cn/",
       "notes": "GAC GoMate (third-generation embodied humanoid unveiled 26 Dec 2024): wheel-legged, variable four- or two-wheel mobility; shown whole in a configuration the official source identifies as GoMate, no other GAC robot.",
       "research": [
@@ -1919,14 +1917,15 @@
           "date": "2026-11-27",
           "note": "Search only (no gac.com.cn page reachable): unveiled 26 Dec 2024 at the China Robotics Network conference, per GAC's WeChat account as reported by Gasgoo (autonews.gasgoo.com, article 70035533); formally launched on 9 Apr 2025 at a Guangdong press conference (China Daily, 14 Apr 2025). No separate redesign found for the April launch. 38 DoF, wheel-foot structure with four- and two-wheel modes; coverage (CnEVPost, 26 Dec 2024) credits its photos to GAC. The official source would be GAC's own release or WeChat post."
         }
-      ]
+      ],
+      "reason": "Among the sources reviewed, GAC's official website redirects to its cars and the official GoMate release was not reachable; secondary coverage is not used as the source. Not a claim that no official image exists (Codex, 27 Nov 2026)."
     },
     "34": {
       "recorded": {
         "Lab": "Galaxea",
         "Robot": "R1"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://galaxea-dynamics.com/",
       "notes": "Galaxea R1: wheeled two-arm mobile manipulator, shown whole with its base; the record says \"R1\": name a sub-variant (R1 Pro, R1 Lite) only if the official source names it.",
       "research": [
@@ -1935,6 +1934,18 @@
           "date": "2026-11-27",
           "note": "Official Galaxea user guide (public repository userguide-galaxea/Product_User_Guide, R1 section, not R1 Pro or R1 Lite): docs/en/Guide/R1/R1_Overview.md, section \"Teleoperation / R1-Teleop\", shows assets/R1_R1T.png (6000 × 2800, opaque white render, sha256 6aa086ea8a85d7543e14dbef2bca90b3ac4681f2876dfaec77859f6a23cde65b, commit aca4275 of 21 May 2025): the whole R1 on its wheeled base holding a box, next to the separate R1-Teleop arm device (to be left out by the crop, not erased). The R1 hardware guide in the same section gives 1695 mm standing height, 675 mm width and 96 kg. The floor reflection under the wheels must stay outside the mask."
         }
+      ],
+      "sources": [
+        {
+          "file": "https://raw.githubusercontent.com/userguide-galaxea/Product_User_Guide/galaxea/main/docs/en/Guide/R1/assets/R1_R1T.png",
+          "page": "https://github.com/userguide-galaxea/Product_User_Guide/blob/galaxea/main/docs/en/Guide/R1/R1_Overview.md",
+          "sha256": "6aa086ea8a85d7543e14dbef2bca90b3ac4681f2876dfaec77859f6a23cde65b",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1425 × 2400 with 20 px padding."
+        }
       ]
     },
     "161": {
@@ -1942,16 +1953,28 @@
         "Lab": "Galaxea",
         "Robot": "Kengo"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://galaxea-dynamics.com/products/galaxea-kengo-proprietary-embodied-ai-bipedal-robot",
-      "notes": "Galaxea Kengo: bipedal humanoid from Galaxea's official product page; not an R1 image."
+      "notes": "Galaxea Kengo: bipedal humanoid from Galaxea's official product page; not an R1 image.",
+      "sources": [
+        {
+          "file": "https://galaxea-dynamics.com/cdn/shop/files/Kengo-Main-Blue.jpg",
+          "page": "https://galaxea-dynamics.com/products/galaxea-kengo-proprietary-embodied-ai-bipedal-robot",
+          "sha256": "6868134b18702d9f31d021be56fefb75be8c7e4834c3bc9a7e20cb4a24c41e8c",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 808 × 2434 with 20 px padding."
+        }
+      ]
     },
     "35": {
       "recorded": {
         "Lab": "Galbot",
         "Robot": "G1"
       },
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://www.galbot.com/",
       "notes": "Galbot G1: wheeled humanoid on its four-wheel omnidirectional chassis, shown whole with the chassis; not S1 or ET1.",
       "research": [
@@ -1960,32 +1983,57 @@
           "date": "2026-11-27",
           "note": "Codex found a complete render on galbot.com/g1 (g1-spec-robot.BYUAn6RQ.jpg) whose own alt text reads \"S1 render placeholder, waiting replacement by G1 full robot render\": the maker's page itself labels it a placeholder S1 image, so it is not usable for G1 even if it looks similar; a G1 image must be one the official source presents as G1."
         }
-      ]
+      ],
+      "reason": "The only complete image on Galbot's official G1 page is labelled by its own alt text as \"S1 render placeholder, waiting replacement by G1 full robot render\", so it is not used for G1; no other official full-robot G1 image found among the sources reviewed (Codex and Claude, 27 Nov 2026)."
     },
     "157": {
       "recorded": {
         "Lab": "Galbot",
         "Robot": "S1"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.galbot.com/s1",
-      "notes": "Galbot S1: industrial heavy-load two-arm robot on a four-wheel-steer chassis, no legs; shown whole; not G1 or ET1."
+      "notes": "Galbot S1: industrial heavy-load two-arm robot on a four-wheel-steer chassis, no legs; shown whole; not G1 or ET1.",
+      "sources": [
+        {
+          "file": "http://www.galbot.com/_nuxt/s1-spec-robot-v2.BSvgtlns.webp",
+          "page": "http://www.galbot.com/s1/",
+          "sha256": "4d7ce6bb8a1615f4599a53954e0a15cea70c28b987180b5831b85054fba4c1c9",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 684 × 1044 with 20 px padding."
+        }
+      ]
     },
     "158": {
       "recorded": {
         "Lab": "Galbot",
         "Robot": "ET1"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.galbot.com/et1",
-      "notes": "Galbot ET1: bipedal entertainment humanoid (Standard, Pro and Flagship editions): an image of the ET1 itself, no edition claimed unless the source names it; not G1 or S1."
+      "notes": "Galbot ET1: bipedal entertainment humanoid (Standard, Pro and Flagship editions): an image of the ET1 itself, no edition claimed unless the source names it; not G1 or S1.",
+      "sources": [
+        {
+          "file": "https://oss-cn-beijing.galbot.com/online/portal/website/posters/et1-spec-robot-v3.webp",
+          "page": "http://www.galbot.com/et1/",
+          "sha256": "b3fb106a6aefd6d47f1284c838720fae3506418786f2fe47a7ee18b66ea97365",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 541 × 1223 with 20 px padding."
+        }
+      ]
     },
     "213": {
       "recorded": {
         "Lab": "Geek+",
         "Robot": "Gino 1"
       },
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://www.geekplus.com/en",
       "notes": "Geek+ (Geekplus) Gino 1: wheeled warehouse humanoid, identified as Gino 1 in Geekplus's own news or product page; shown whole with its base.",
       "research": [
@@ -1994,14 +2042,15 @@
           "date": "2026-11-27",
           "note": "Search only: Geek+ (Geekplus, HKEX 2590) launched Gino 1 on 10 Feb 2026 as a wheeled warehouse humanoid and showed it at LogiMAT 2026 (Stuttgart); no PR Newswire launch release found (Geekplus's 31 Mar 2026 results release mentions humanoids). The official source would be geekplus.com/en news or its HKEX announcements (for example hkexnews 2026/0205/2026020502224.pdf, to be checked for images)."
         }
-      ]
+      ],
+      "reason": "The official Gino 1 thumbnail found crops the wheeled base; no complete official image found among the sources reviewed (Codex, 27 Nov 2026)."
     },
     "36": {
       "recorded": {
         "Lab": "Generative Bionics",
         "Robot": "GENE.01"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://gbionics.ai/",
       "notes": "Generative Bionics GENE.01: the record does not establish the mobility; the image must be identified as GENE.01 in the official source and show the whole robot; nothing assigned by resemblance.",
       "research": [
@@ -2010,6 +2059,18 @@
           "date": "2026-11-27",
           "note": "Search only: concept shown during AMD's CES 2026 keynote (January 2026); the \"fully functional\" GENE.01 platform was announced on 20 Jul 2026 (PR Newswire APAC release 302829069, \"Generative Bionics Introduces Gene.01, a Fully Functional Smart-Skin Humanoid Robot Platform…\"; also PRNAsia 541258). eWeek (27 Jul 2026) runs an image credited \"Generative Bionics\". An image must be the July 2026 platform named GENE.01, not the CES concept, from gbionics.ai or the release media."
         }
+      ],
+      "sources": [
+        {
+          "file": "https://cms.gbionics.ai/uploads/GB_Gene01_Press_28599c665e.zip",
+          "page": "https://news.gbionics.ai/?article=gene-01-comes-to-life&lang=en",
+          "sha256": "a5316f93d9f908c42fe8fa7249f31a58a5241f3ca9a462def9986f495fb18275",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 757 × 1899 with 20 px padding."
+        }
       ]
     },
     "117": {
@@ -2017,36 +2078,84 @@
         "Lab": "Genesis",
         "Robot": "Eno"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.genesis.ai/",
-      "notes": "Genesis AI Eno: general-purpose robot; mechanical form not recorded; only an official image identified as Eno and showing the whole robot or platform."
+      "notes": "Genesis AI Eno: general-purpose robot; mechanical form not recorded; only an official image identified as Eno and showing the whole robot or platform.",
+      "sources": [
+        {
+          "file": "https://www.datocms-assets.com/199265/1781540929-genesis_fullbody_b_fhd_16x9.jpg",
+          "page": "https://www.genesis.ai/press/meet-eno",
+          "sha256": "2a99ac6a08f16880f6319ca1373ccfac0800642c9cf8a37b4ff74f943c7d916d",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 446 × 928 with 20 px padding."
+        }
+      ]
     },
     "177": {
       "recorded": {
         "Lab": "GENISOM",
         "Robot": "NE01"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.genisomai.com/",
-      "notes": "GENISOM (智身科技) NE01 (银毅): humanoid listed in the official product menu; form not captured: the image must be identified as NE01 in the official source."
+      "notes": "GENISOM (智身科技) NE01 (银毅): humanoid listed in the official product menu; form not captured: the image must be identified as NE01 in the official source.",
+      "sources": [
+        {
+          "file": "https://qiniu.mfdemo.cn/zhishen/2026/08/17/5k5fyNizL77mu.webp",
+          "page": "https://www.genisomai.com/product-robot/ne01",
+          "sha256": "674e48b1121c231e1c40fb578677245666e39540b28b9f83f35ad36971671200",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 326 × 857 with 20 px padding."
+        }
+      ]
     },
     "178": {
       "recorded": {
         "Lab": "Gento Robotics",
         "Robot": "Gento Luna"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.gentorobotics.ai/products/gento-luna/",
-      "notes": "Gento Robotics Gento Luna: wheeled foldable humanoid on an omnidirectional chassis, shown whole."
+      "notes": "Gento Robotics Gento Luna: wheeled foldable humanoid on an omnidirectional chassis, shown whole.",
+      "sources": [
+        {
+          "file": "https://www.gentorobotics.ai/wp-content/uploads/2026/11/Rectangle-192-2.png",
+          "page": "https://www.gentorobotics.ai/products/gento-luna/",
+          "sha256": "235c2af40d2e7acd01517f1cdd4637b77053d7514b1fe4e173a057b088c6a046",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 541 × 1267 with 20 px padding."
+        }
+      ]
     },
     "179": {
       "recorded": {
         "Lab": "Glroad",
         "Robot": "Laborer C1"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.glroad.com/HumanoidRobots/index.aspx",
-      "notes": "Glroad Laborer C1 (劳动者 family): guide and reception humanoid; not M1."
+      "notes": "Glroad Laborer C1 (劳动者 family): guide and reception humanoid; not M1.",
+      "sources": [
+        {
+          "file": "https://www.glroad.com/uploadfiles/2026/10/20261015134446741.png?5Lqn5ZOB5Y2h54mHLUMxLnBuZw==",
+          "page": "https://www.glroad.com/HumanoidRobots/index.aspx",
+          "sha256": "a9b2f9f0dfab3a2e203762f5c962ea3147de515f75e051985eb45b8e2306b5c2",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 538 × 810 with 20 px padding."
+        }
+      ]
     },
     "180": {
       "recorded": {
@@ -2055,7 +2164,14 @@
       },
       "status": "reserve",
       "page": "https://www.glroad.com/HumanoidRobots/index.aspx",
-      "notes": "Glroad Laborer M1 (劳动者 family): 50 kg-class heavy-load humanoid; not C1."
+      "notes": "Glroad Laborer M1 (劳动者 family): 50 kg-class heavy-load humanoid; not C1.",
+      "research": [
+        {
+          "by": "codex",
+          "date": "2026-11-27",
+          "note": "The official Laborer M1 product card crops the legs; stays a reserve."
+        }
+      ]
     },
     "37": {
       "recorded": {
@@ -2064,16 +2180,35 @@
       },
       "status": "reserve",
       "page": "https://www.goblinrobotics.com/",
-      "notes": "Goblin GBLN-01: mobility not recorded; only an official image identified as GBLN-01."
+      "notes": "Goblin GBLN-01: mobility not recorded; only an official image identified as GBLN-01.",
+      "research": [
+        {
+          "by": "codex",
+          "date": "2026-11-27",
+          "note": "The official Goblin site could not be fetched; stays a reserve."
+        }
+      ]
     },
     "181": {
       "recorded": {
         "Lab": "Guanggu Dongzhi",
         "Robot": "Lumen H1"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.hecbot.cn/product.html?type=22",
-      "notes": "Guanggu Dongzhi (光谷东智) Lumen H1: legged service humanoid from the official hecbot.cn product page."
+      "notes": "Guanggu Dongzhi (光谷东智) Lumen H1: legged service humanoid from the official hecbot.cn product page.",
+      "sources": [
+        {
+          "file": "https://www.hecbot.cn/ggdz/2026/05/20/5bGyi00nj43qu.webp",
+          "page": "https://www.hecbot.cn/product.html?type=22",
+          "sha256": "912e069722e8d6bd9422925616d47eee6af4eb11e5056c016ca6ca703588d152",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 755 × 1887 with 20 px padding."
+        }
+      ]
     },
     "38": {
       "recorded": {
