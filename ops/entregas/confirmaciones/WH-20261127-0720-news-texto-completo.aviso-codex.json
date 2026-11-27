@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-0720-news-texto-completo",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T07:21:08+01:00",
+  "por": "codex",
+  "evidencia": "Codex comunica en el chat de Javier que la corrección solicitada está publicada y verificada: Blog sin el bloque final de noticias y News con el texto inglés completo una vez, emoji, enlaces directos, negritas y párrafos. PR180 fusionado tras revisión del head 8db9f377563b1ffbd6d634e4abf39471e2de3a65 y CI45950604438 correcto. Comprobación independiente de 121 cuerpos de Blog y 1560 cuerpos de News en índice y años; siete rutas públicas y el ejemplo de Humyn Labs en Chrome. Corpus y direcciones conservados. La tarea Feed Blog and News mantiene miércoles 16:00 Europe/Madrid y este contrato. No se confirma recepción de Javier."
+}
