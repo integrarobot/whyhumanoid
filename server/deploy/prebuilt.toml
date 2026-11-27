@@ -1,8 +1,7 @@
-# Deploys the PREBUILT single-file bundles (dist/worker.dashboard.js, dist/worker.staging.js) with Wrangler, as an
-# alternative to pasting them into the dashboard editor (27 Nov 2026, ops/worker-deploy.md). Wrangler uploads the file
-# byte for byte (no_bundle): no build happens here. Bindings are the ones in server/wrangler.toml; vars set in the
-# dashboard are kept with --keep-vars; Worker secrets are never touched by a deploy. No static assets: the dashboard
-# bundles embed the app, exactly as the dashboard deployments do today.
+# Describes the PREBUILT single-file bundles (dist/worker.dashboard.js, dist/worker.staging.js) for Wrangler
+# (ops/worker-deploy.md, section 3). Checked with --dry-run only: the file Wrangler would upload is the bundle byte for
+# byte (no_bundle) and the only binding is D1. Not used for a live deployment: the proven path is the dashboard editor
+# with a full read-back. Dashboard vars would be kept with --keep-vars; secrets are not part of a deploy.
 compatibility_date = "2026-11-01"
 compatibility_flags = ["nodejs_compat"]
 no_bundle = true
