@@ -1,0 +1,69 @@
+{
+  "id": "WH-20261127-1403-imagenes-robots-lote-5-cd",
+  "tarea": "Imágenes de robots, lote 5 del alcance C/D: Proxie, DR01, DOBOT ATOM, Xialan R03 y Cinnamon 1, con imagen oficial de cuerpo completo y fondo transparente; cierre del alcance C/D con fuentes pendientes",
+  "origen": "Javier (27/11/2026: «sigue con los fabricantes de la C y la D, en lotes de 10, con fondo transparente y el robot de cuerpo completo»), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T14:03:14+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 212 (cabeza revisada a894ef5, merge c1f79be): imagen en las fichas 19 Proxie, 20 DR01, 24 DOBOT ATOM (ATOM Max bípedo, no ATOM-W), 171 Xialan R03 (Digit Robotics, no Agility) y 173 Cinnamon 1 (tal como la presenta Donut Robotics, sin afirmar que fabrique el cuerpo), solo mediante tools/robot-presentation.json; las 43 presentaciones anteriores, sin cambios.",
+    "Originales, máscaras por zona, preparados y manifiesto de Codex (codex/image-sources-cd, cc1923c) guardados sin cambios en ops/media/intake-cd-2026-11-27/batch-05/; preparados usados tal cual (margen de 20 px, resolución nativa, sin reescalar); color de cada píxel visible igual al original. Pies de DR01 y brazo izquierdo de Xialan R03 recuperados por Codex solo en el alfa.",
+    "Sin fuente válida tras revisión, con su límite concreto: Yogi (17), la web oficial actual no trata del robot y la matriz solo publica logotipos; Darwin-0 (134), la escena oficial solo muestra dos brazos ante un rack; Moya (174), las fotos oficiales cortan los pies y la del escenario mezcla robots de cinco fabricantes. No se afirma que no exista foto y no se reconstruye nada.",
+    "Cobertura: lote 5 publicado; DR01 publicado con deuda de resolución (404 × 696 desde una miniatura oficial de vídeo de 1280 × 720). Alcance C/D cerrado con fuentes pendientes (closed_with_pending_sources): 18 fichas revisadas, 15 con imagen publicada (10 del lote 4 y 5 del lote 5) y 3 sin fuente válida. No es el 100 % de imágenes."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 212",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/212"
+    },
+    {
+      "etiqueta": "CI de la cabeza a894ef5",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46003117235"
+    },
+    {
+      "etiqueta": "Pages de c1f79be",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46003511431"
+    },
+    {
+      "etiqueta": "Ficha Proxie",
+      "url": "https://whyhumanoid.com/humanoids/cobot-proxie-19/"
+    },
+    {
+      "etiqueta": "Ficha DR01",
+      "url": "https://whyhumanoid.com/humanoids/deep-dr01-20/"
+    },
+    {
+      "etiqueta": "Ficha DOBOT ATOM",
+      "url": "https://whyhumanoid.com/humanoids/dobot-atom-24/"
+    },
+    {
+      "etiqueta": "Ficha Xialan R03",
+      "url": "https://whyhumanoid.com/humanoids/digit-robotics-xialan-r03-171/"
+    },
+    {
+      "etiqueta": "Ficha Cinnamon 1",
+      "url": "https://whyhumanoid.com/humanoids/donut-robotics-cinnamon-1-173/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main c1f79be (run 46003511431, correcto); CI de la cabeza a894ef5 (run 46003117235, correcto). Sin cambios de maestro, datos, Worker, D1 ni precios, ni de otras letras.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde (sonda con parámetro de consulta hasta entonces): sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Codex, cabeza a894ef5: revisión independiente del PR 212 y CI 46003117235 correcto en esa cabeza; fusión autorizada solo para esa cabeza.",
+    "Claude, producción: las 10 URL canónicas (5 WebP y 5 PNG) dan 200 con los mismos bytes que c1f79be (10/10).",
+    "Claude, navegador real en iPhone 13 y 1366 × 900: las cinco fichas cargan su imagen con texto alternativo y crédito y sin desbordamiento lateral (10/10); Yogi, Darwin-0 y Moya siguen sin imagen.",
+    "Comprobaciones locales: robot-images-coverage --check (212 registros; alcance C/D con 15 publicadas y 3 sin fuente válida) y entregas --check."
+  ],
+  "pendientes": [
+    "Verificación pública independiente de Codex (15 URL y 10 vistas del lote 5) y su aviso para este cierre.",
+    "Yogi (17), Darwin-0 (134) y Moya (174) siguen sin imagen hasta que aparezca una fuente oficial fiel de cuerpo completo.",
+    "DR01 (20): sustituir por una imagen fiel más grande de DR01 (no DR02) cuando exista."
+  ],
+  "siguiente_accion": "Codex verifica producción y registra su aviso; Javier confirma la recepción. No se empieza ninguna otra letra sin indicación."
+}
