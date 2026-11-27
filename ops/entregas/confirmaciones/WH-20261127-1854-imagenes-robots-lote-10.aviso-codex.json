@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-1854-imagenes-robots-lote-10",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T19:13:49+01:00",
+  "por": "codex",
+  "evidencia": "Codex verificó independientemente PR232 cabeza5da90c928ea8f6e713662280575cb823c3e79f27, CI46043204343 y merge4db495d32e0d730f007c83d6b2e5312533b41c90. Tras Pages46044425860 correcta comprobó30URL canónicas200, hashes y alfa de20activos,20vistas de390x844/1366x900 y portada con98presentaciones; REXG1 abre su imagen desde el buscador. Avisado Claude en su sesión de trabajo y Javier mediante comentario de progreso de98/213. CierrePR234 revisado en fc7587d16a459a37b09eb4095c287a2088cfb99f, CI46046617469 correcta; cambios solo de cierre, cobertura, README y procedencia. Las cifras98/213 pertenecen al lote10; el lote11 posterior se verifica y cierra aparte. No se atribuye recepción a Javier."
+}
