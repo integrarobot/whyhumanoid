@@ -306,7 +306,7 @@
     "mask_sha256": "0ab2b7d0a1c590ae5b9f1c57350219401b5e8d54f4329b80ea6cdb7bcbc5ab06",
     "source_page": "https://github.com/pndbotics/pnd_models (README, models table, row adam_standard)",
     "source_url": "https://github.com/pndbotics/pnd_models/blob/38420a65d20219b095e9a78e22f0f9af7256c23f/adam_standard/imgs/adam_standard.png",
-    "source_context": "Official PNDbotics model repository: the README table shows this image for the adam_standard model (URDF/MJCF). It is a render from a simulation viewer of the description model, not a product photograph; the repository licence (adam_license.txt, BSD-style) covers the files.",
+    "source_context": "Official PNDbotics model repository: the README models table shows this image on the adam_standard row (URDF/MJCF description model). It is a rendering of the simulation model, not a product photograph. The repository's BSD-style licence (adam_license.txt) is written for software and is not relied on: no open licence is presumed for the image.",
     "checked_at": "2026-11-27"
   }
 ]
