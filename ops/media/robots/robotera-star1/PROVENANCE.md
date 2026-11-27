@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 13, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 13, PR not yet merged)
+## Published files (image batch 13, PR 242, merge c314f66, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/robotera-star1/robotera-star1-full-body.png`, 1014 × 3210 px, sha256 `eeedc091fba6949ac12f73beb222088e78e5895b1cda8840732a963d4162390b` (= the prepared.png).
 - **WebP:** `assets/robots/robotera-star1/robotera-star1-full-body.webp`, sha256 `901e333b2ae8d20013ab3a2b94d9765072e0ba74d1e800b6d843541ed95a4917`.

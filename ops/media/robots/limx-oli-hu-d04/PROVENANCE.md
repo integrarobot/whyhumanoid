@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 13, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 13, PR not yet merged)
+## Published files (image batch 13, PR 242, merge c314f66, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/limx-oli-hu-d04/limx-oli-hu-d04-full-body.png`, 515 × 678 px, sha256 `a183e5a19fc2d2b63f66bde682d5ca785b385865c46ca861078224d6565d7920` (= the prepared.png).
 - **WebP:** `assets/robots/limx-oli-hu-d04/limx-oli-hu-d04-full-body.webp`, sha256 `9f8a702bb31fe1a5852d25e51009e4b4ff5f2e3678c4ba948769ca29a33a51a9`.

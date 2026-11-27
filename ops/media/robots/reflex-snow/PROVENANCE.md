@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 13, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 13, PR not yet merged)
+## Published files (image batch 13, PR 242, merge c314f66, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/reflex-snow/reflex-snow-full-body.png`, 566 × 1404 px, sha256 `00485ff4127529bdf487a445ee3cbbf2103239b60ba112a665a08ba14e0a0578` (= the prepared.png).
 - **WebP:** `assets/robots/reflex-snow/reflex-snow-full-body.webp`, sha256 `900713a89bf0062057ac559ad15607295fca7695960a315d1fa07263dc678d51`.
