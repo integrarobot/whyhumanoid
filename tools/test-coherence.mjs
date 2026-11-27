@@ -163,3 +163,23 @@ test('no country in the public data is unknown to the shared reading', async () 
   for (const r of json('data/humanoids-catalogue.json').records) tagsFor('humanoids', r, unmapped);
   assert.deepEqual([...new Set(unmapped.filter(([k]) => k === 'country').map(([, v]) => v))], []);
 });
+
+// Other Robots entity types (27 Nov 2026, plan ops/coherence/other-robots-entity-types-2026-11-27.json): moved entries
+// are gone from Other Robots, the software ones are in the first Software block, and every former address redirects.
+test('moved Other Robots entries redirect to where they now live; software moves are listed in Software', () => {
+  const moves = json('tools/other-robots-moves.json').moves;
+  const other = json('data/preview/other-robots.json').rows;
+  const software = json('data/preview/software.json').rows;
+  const registry = json('tools/permalinks.json').other_robots;
+  const host = (u) => new URL(u).hostname.replace(/^www\./, '');
+  assert.equal(Object.keys(moves).length, 8);
+  for (const [key, m] of Object.entries(moves)) {
+    const h = key.split('|')[1];
+    assert.ok(!other.some((r) => r.list === 'other_robot' && host(r.url) === h), `${key} is no longer in Other Robots`);
+    if (m.to === '/software/') assert.ok(software.some((r) => host(r.url) === h && r.group === null), `${key} is in the first Software block`);
+    for (const slug of registry[key]) assert.match(read(`other-robots/${slug}/index.html`), new RegExp(`url=${m.to.replace(/\//g, '\\/')}`), `/other-robots/${slug}/ redirects to ${m.to}`);
+    assert.ok(existsSync(new URL(`${m.to.slice(1)}index.html`, root)), `${m.to} exists`);
+  }
+  for (const name of ['Robonomics', 'Mujin', 'Eka']) assert.equal(software.filter((r) => r.name === name).length, 1, `${name} once in Software`);
+  assert.equal(software.filter((r) => /rtr\.ai|intrinsic\.ai/.test(r.url)).length, 2, 'Realtime and Intrinsic once each in Software, not duplicated');
+});

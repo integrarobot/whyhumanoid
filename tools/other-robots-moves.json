@@ -1,0 +1,13 @@
+{
+  "note": "Other Robots entries moved out of the list by a reviewed workbook write (plan ops/coherence/other-robots-entity-types-2026-11-27.json, written by Codex on 27 Nov 2026). Each former /other-robots/<slug>/ address redirects to where the entity now lives. tools/build-pages.mjs fails if a destination page does not exist. Keyed like tools/permalinks.json other_robots.",
+  "moves": {
+    "other_robot|rtr.ai": { "to": "/software/", "label": "Realtime (Realtime Robotics), now listed in Software", "reason": "Duplicate of the Software entry (same name and address); motion-planning and simulation software." },
+    "other_robot|harmonicdrive.net": { "to": "/companies/harmonic-drive-llc/", "label": "Harmonic Drive LLC", "reason": "Component maker; its products are in Components." },
+    "other_robot|robonomics.network": { "to": "/software/", "label": "Robonomics, now listed in Software", "reason": "Software infrastructure, not a robot maker." },
+    "other_robot|bumerania.com": { "to": "/companies/bumerania/", "label": "Bumerania", "reason": "Service-robot provider, listed in Integrators." },
+    "other_robot|shadowrobot.com": { "to": "/companies/shadow-robot-company/", "label": "Shadow Robot Company", "reason": "Hand maker; its hands are in Components." },
+    "other_robot|intrinsic.ai": { "to": "/software/", "label": "Intrinsic, listed in Software", "reason": "Duplicate of the Software entry (same address); software and AI company." },
+    "other_robot|mujin-corp.com": { "to": "/software/", "label": "Mujin, now listed in Software", "reason": "Robotics software (MujinOS)." },
+    "other_robot|ekarobotics.com": { "to": "/software/", "label": "Eka Robotics, now listed in Software", "reason": "Robot foundation model (VFA); no robot named." }
+  }
+}
