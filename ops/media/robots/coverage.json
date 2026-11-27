@@ -26,9 +26,7 @@
       ],
       "reserves": [
         142,
-        32,
         215,
-        151,
         139,
         141,
         155,
@@ -41,7 +39,8 @@
         "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
         "Several other makers' PNG files named as background-free still hold interior backgrounds: rejected (Codex, 27 Nov 2026).",
         "Generative images are never used: Codex discarded a T2 trial that recreated details (27 Nov 2026).",
-        "Published with PR 196 (merge 4011f1e, 27 Nov 2026) and verified in production by Claude and Codex (Codex receipt 10:53:52 Madrid) after a selective Cloudflare purge of the 20 image URLs: 404 responses requested before Pages finished deploying had been cached. Next time, new asset URLs are not requested without a query string until the Pages deployment has succeeded."
+        "Published with PR 196 (merge 4011f1e, 27 Nov 2026) and verified in production by Claude and Codex (Codex receipt 10:53:52 Madrid) after a selective Cloudflare purge of the 20 image URLs: 404 responses requested before Pages finished deploying had been cached. Next time, new asset URLs are not requested without a query string until the Pages deployment has succeeded.",
+        "Reserves 32 (Fourier GR-1) and 151 (Engineai T800) moved to batch 6, scope \"E/F makers\" (27 Nov 2026)."
       ],
       "published": "2026-11-27"
     },
@@ -139,6 +138,43 @@
         "Published with PR 212 (reviewed head a894ef5, CI 46003117235; merge c1f79be), 27 Nov 2026; Pages and production verification recorded in the batch closeout. DR01 (20) is published with a resolution debt."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 6,
+      "opened": "2026-11-27",
+      "state": "awaiting_sources",
+      "target": 10,
+      "scope": "E/F makers",
+      "candidates": [
+        25,
+        26,
+        28,
+        29,
+        31,
+        32,
+        103,
+        106,
+        126,
+        151
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources and masks from Codex on the transport branch codex/image-sources-ef (no package yet); nothing is integrated before the package arrives."
+      ]
+    },
+    {
+      "batch": 7,
+      "opened": "2026-11-27",
+      "state": "awaiting_sources",
+      "target": 10,
+      "scope": "E/F makers",
+      "candidates": [
+        176
+      ],
+      "reserves": [],
+      "notes": [
+        "The rest of the eligible E/F records after batch 6. Eden (114) and Flourish (129) join only if Codex decides they are eligible (needs_decision)."
+      ]
     }
   ],
   "robots": {
@@ -336,7 +372,7 @@
         "Lab": "Engineai",
         "Robot": "T800"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://en.engineai.com.cn/product-t800",
       "notes": "Record covers Basic, Open Source, Pro and Max editions: an image of the T800 itself, no edition claimed.",
       "sources": [
@@ -365,7 +401,7 @@
         "Lab": "Fourier",
         "Robot": "GR-1"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://fftai.com/",
       "notes": "Standard GR-1 only: never a GR-2 or GR-3 photo (Codex, 27 Nov 2026); L and Pro variants are separate.",
       "sources": []
@@ -587,8 +623,8 @@
         "Lab": "Eden",
         "Robot": null
       },
-      "status": "exception",
-      "reason": "No model in the record (Robot cell empty)."
+      "status": "needs_decision",
+      "reason": "No model in the record (Robot cell empty). An image may be considered only if Eden's official source shows a single robot presented as its product, captioned without inventing a model name; to be decided by Codex before any batch (27 Nov 2026)."
     },
     "121": {
       "recorded": {
@@ -611,8 +647,8 @@
         "Lab": "Flourish",
         "Robot": "Flourish robot (model name unconfirmed)"
       },
-      "status": "exception",
-      "reason": "No exact model in the record."
+      "status": "needs_decision",
+      "reason": "No exact model in the record (model name unconfirmed). An image may be considered only if Flourish's official source shows a single robot presented as its product, without assigning a model name by resemblance; to be decided by Codex before any batch (27 Nov 2026)."
     },
     "132": {
       "recorded": {
@@ -1590,6 +1626,87 @@
           "note": "Search only: a Japanese press release says Donut Robotics runs its own AI on a body supplied by an overseas OEM, so the hardware may match another maker's robot. An image must be Donut's own presentation of Cinnamon 1 (not cinnamon mini, not Cinnamon 2) and the alt text must not imply Donut built the body."
         }
       ]
+    },
+    "25": {
+      "recorded": {
+        "Lab": "Enactic",
+        "Robot": "OpenArm 2.0 (arms)"
+      },
+      "status": "candidate",
+      "page": "https://openarm.dev/",
+      "notes": "Enactic OpenArm 2.0: an arms platform; shown whole as the maker presents it (both arms and their mount), with no body or legs added; OpenArm 2.0, not an earlier version."
+    },
+    "26": {
+      "recorded": {
+        "Lab": "Enchanted",
+        "Robot": "Mirokai"
+      },
+      "status": "candidate",
+      "page": "https://enchanted.tools/",
+      "notes": "Enchanted Tools Mirokai: wheeled (rolling-base) robot shown whole, including its base."
+    },
+    "28": {
+      "recorded": {
+        "Lab": "Engineered Arts",
+        "Robot": "Ameca"
+      },
+      "status": "candidate",
+      "page": "https://engineeredarts.com/tritium/robots/ameca",
+      "notes": "Engineered Arts Ameca: full-body Ameca only, never Ameca Desktop or a head-and-torso unit (Codex, 27 Nov 2026)."
+    },
+    "29": {
+      "recorded": {
+        "Lab": "Estun Codroid",
+        "Robot": "Codroid 02"
+      },
+      "status": "candidate",
+      "page": "https://www.codroid.ai/en/",
+      "notes": "Estun Codroid Codroid 02: must be identified as Codroid 02 in the official source, not Codroid 01."
+    },
+    "31": {
+      "recorded": {
+        "Lab": "Foundation",
+        "Robot": "Phantom MK1"
+      },
+      "status": "candidate",
+      "page": "https://foundation.bot/",
+      "notes": "Foundation Phantom MK1: identified as MK1 in the official source; no later Phantom version."
+    },
+    "103": {
+      "recorded": {
+        "Lab": "Fauna",
+        "Robot": "Sprout"
+      },
+      "status": "candidate",
+      "page": "https://faunarobotics.com/",
+      "notes": "Fauna Robotics Sprout: the record says \"Sprout\"; name an edition (for example Sprout Creator) only if the official source shows and names it."
+    },
+    "106": {
+      "recorded": {
+        "Lab": "Faraday Future",
+        "Robot": "FF Futurist"
+      },
+      "status": "candidate",
+      "page": "https://robotics.ff.com/us/ff-futurist/",
+      "notes": "Faraday Future FF Futurist: identified as FF Futurist in the official robotics page; no other FF robot."
+    },
+    "126": {
+      "recorded": {
+        "Lab": "Feather",
+        "Robot": "Feather"
+      },
+      "status": "candidate",
+      "page": "https://feather.dev/",
+      "notes": "Feather: the robot the maker presents as Feather, shown whole."
+    },
+    "176": {
+      "recorded": {
+        "Lab": "Elite Robots",
+        "Robot": "Centaur-G1"
+      },
+      "status": "candidate",
+      "page": "https://www.elibot.com/product/wheeled",
+      "notes": "Elite Robots Centaur-G1 (wheeled): never a Unitree G1 or AgiBot G1 image; identified as Centaur-G1 in the official source."
     }
   },
   "scopes": [
@@ -1629,6 +1746,23 @@
       "state": "closed_with_pending_sources",
       "closed": "2026-11-27",
       "summary": "18 C/D records reviewed: 15 with an image (10 in batch 4, 5 in batch 5, DR01 with a resolution debt), 3 still without a valid image after source review (no_valid_source: Yogi 17, Darwin-0 134, Moya 174). Not every C/D record has an image."
+    },
+    {
+      "name": "E/F makers",
+      "lab_initials": [
+        "E",
+        "F"
+      ],
+      "opened": "2026-11-27",
+      "by": "Javier (\"añade más imágenes\"), via Codex, 27 Nov 2026",
+      "rules": [
+        "Batches of up to 10 new records: batch 6, then batch 7 with the rest that is eligible.",
+        "Transparent background and the whole robot or platform; non-generative mask cutouts only, alpha only, original RGB unchanged; no part generated.",
+        "Wheeled platforms, arm platforms and modules are shown whole, as the record identifies them. A photo cropped to a bust or torso does not meet the whole-robot requirement.",
+        "No model is assigned by resemblance, and none is assigned to a company record without one (Eden 114, Flourish 129 need a decision first).",
+        "Existing E/F images (SE01 27, Figure 03 30, PM01 150) stay as they are; the Figure 03 quality debt is not fixed inside this count.",
+        "Every record ends published and verified, or with a concrete stated limitation."
+      ]
     }
   ]
 }
