@@ -5484,6 +5484,24 @@
       ],
       "robots": [],
       "organization_ids": []
+    },
+    "org_bleckmann": {
+      "slugs": [
+        "bleckmann"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_bleckmann"
+      ]
+    },
+    "org_jcet": {
+      "slugs": [
+        "jcet"
+      ],
+      "robots": [],
+      "organization_ids": [
+        "org_jcet"
+      ]
     }
   },
   "other_robots": {
@@ -7594,6 +7612,15 @@
     ],
     "dep_fraunhofer_evobot_cargogate_muc": [
       "fraunhofer-evobot-cargogate-muc"
+    ],
+    "dep_agibot_genie_g2_jcet_lingang": [
+      "agibot-genie-g2-jcet-lingang"
+    ],
+    "dep_bigwave_biped_korea_auto_parts_validation": [
+      "bigwave-biped-korea-auto-parts-validation"
+    ],
+    "dep_bleckmann_europe_humanoid_training_plan": [
+      "bleckmann-europe-humanoid-training-plan"
     ]
   }
 }

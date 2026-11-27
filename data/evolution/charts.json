@@ -333,7 +333,7 @@
    "precision": "quarter",
    "domain": {
     "start": "2022-01-01",
-    "end": "2026-11-26"
+    "end": "2026-11-27"
    },
    "series": [
     {
@@ -599,13 +599,13 @@
     {
      "key": "2026-Q4",
      "label": "",
-     "long": "Q4 2026 (to 2026-11-26)",
-     "t": "2026-11-26",
-     "value": 119,
+     "long": "Q4 2026 (to 2026-11-27)",
+     "t": "2026-11-27",
+     "value": 122,
      "segments": {
-      "ann": 33,
+      "ann": 34,
       "unc": 27,
-      "pilot": 51,
+      "pilot": 53,
       "op": 8
      },
      "partial": true
@@ -623,24 +623,24 @@
     }
    },
    "final": {
-    "cases": 119,
+    "cases": 122,
     "segments": {
-     "ann": 33,
+     "ann": 34,
      "unc": 27,
-     "pilot": 51,
+     "pilot": 53,
      "op": 8
     },
     "all_records_now": {
-     "ann": 33,
+     "ann": 34,
      "unc": 30,
-     "pilot": 53,
+     "pilot": 55,
      "op": 9
     }
    },
-   "summary": "By 2026-11-26, 119 of 125 cases have a dated source: 8 in operation, 51 pilot or trial, 27 unconfirmed, 33 announced.",
+   "summary": "By 2026-11-27, 122 of 128 cases have a dated source: 8 in operation, 53 pilot or trial, 27 unconfirmed, 34 announced.",
    "coverage": {
-    "included": 119,
-    "total": 125,
+    "included": 122,
+    "total": 128,
     "unit": "cases",
     "excluded": [
      {
@@ -648,17 +648,17 @@
       "count": 6
      },
      {
-      "reason": "Records without a publication date (of 203)",
+      "reason": "Records without a publication date (of 207)",
       "count": 18
      }
     ],
-    "note": "5 records dated only by the current year or month count from the snapshot date. 8 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead, so their totals differ: currently 7 in operation, 51 pilot or trial, 27 unconfirmed, 34 announced among the 119 dated cases. Undated evidence is kept apart and never assigned a date."
+    "note": "5 records dated only by the current year or month count from the snapshot date. 8 placed cases also have undated records, which are left out of their status. This chart counts the most advanced status documented by each date; the current summaries on the home page and in the Deployments section use each case's latest dated source instead, so their totals differ: currently 7 in operation, 53 pilot or trial, 27 unconfirmed, 35 announced among the 122 dated cases. Undated evidence is kept apart and never assigned a date."
    },
    "status": "partial",
-   "status_note": "119 of 125 cases placed in time; 6 cases with no dated record stay in the date-unknown bar, outside the time series.",
+   "status_note": "122 of 128 cases placed in time; 6 cases with no dated record stay in the date-unknown bar, outside the time series.",
    "sources": [
     {
-     "label": "Deployments public summaries, snapshot 2026-11-26",
+     "label": "Deployments public summaries, snapshot 2026-11-27",
      "url": "/data/preview/deployments.json"
     }
    ],
@@ -809,12 +809,12 @@
       "88"
      ],
      [
-      "Q4 2026 (to 2026-11-26)",
+      "Q4 2026 (to 2026-11-27)",
       "8",
-      "51",
+      "53",
       "27",
-      "33",
-      "119"
+      "34",
+      "122"
      ]
     ]
    }

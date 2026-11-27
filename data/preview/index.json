@@ -4,13 +4,13 @@
  "tabs": [
   {
    "id": "deployments",
-   "snapshot": "2026-11-26T15:20:44Z",
+   "snapshot": "2026-11-27T08:03:44Z",
    "title": "Deployments",
    "description": "One claim per row about a humanoid robot deployment, with evidence level, source and dates.",
-   "entries_total": 203,
-   "source_rows_total": 203,
-   "preview_entries": 203,
-   "preview_source_rows": 203,
+   "entries_total": 207,
+   "source_rows_total": 207,
+   "preview_entries": 207,
+   "preview_source_rows": 207,
    "fields": [
     "record_id",
     "organization_id",
