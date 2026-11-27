@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-0738-editorial-sin-imagenes",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T07:39:53+01:00",
+  "por": "codex",
+  "evidencia": "Codex comunica en el chat de Javier que Blog y News están publicados sin imágenes ni enlaces Image: Image, con texto, negritas y enlaces ordinarios conservados. PR182 revisado en head 3a7e18f95eed44b18bd143fa2ffbdd311de87e6c, CI45952847708 correcto y merge 7c040c4e1f1d75adec91b85373a36b55c3757c7f. Auditoría independiente del candidato: 907 páginas y 2461 cuerpos, con 146 imágenes omitidas. Producción: 103 rutas y 1657 cuerpos comparados, y artículo Humanoid robot frenzy comprobado visualmente en Chrome. La tarea semanal Feed Blog and News conserva la regla de solo texto los miércoles a las 16:00 Europe/Madrid. No se confirma recepción de Javier."
+}
