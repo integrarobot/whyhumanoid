@@ -4,8 +4,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { DEFAULT_YEARS, contentHash, coverage, editionProblems, findLinks, inventoryProblems, isLive, itemId, madridToday, markdownProblems, readStore, readyEditions, storeProblems, urlsIn } from './editorial-model.mjs';
-import { planIngest, storeFiles, stateOf } from './editorial.mjs';
+import { DEFAULT_YEARS, contentHash, coverage, editionProblems, findLinks, inventoryProblems, isLive, itemId, madridToday, markdownProblems, readStore, readyEditions, storeProblems, urlsIn, yearsOf } from './editorial-model.mjs';
+import { planIngest, planRoundup, storeFiles, stateOf } from './editorial.mjs';
 import { editorialPages, editorialUrls, excerpt, inline, renderMarkdown, withoutImages } from './editorial-view.mjs';
 
 const root = new URL('../', import.meta.url);
@@ -25,7 +25,7 @@ const views = (store, today = '2026-11-26', withRedirects = false) => editorialP
 
 test('the committed store is valid, published from the embargo date, and claims completeness only with evidence', () => {
   const store = readStore(root);
-  assert.deepEqual(storeProblems(store, { today: '2026-11-27' }), []);
+  assert.deepEqual(storeProblems(store), []);
   assert.equal(store.config.published, true, 'publication authorised by Javier on 2026-11-27');
   assert.equal(store.config.embargo_until, '2026-11-27');
   assert.deepEqual(store.state, stateOf(store, null) && { ...stateOf(store, null), last_package_sha256: store.state.last_package_sha256 }, 'state.json matches the store');
@@ -45,20 +45,23 @@ test('no synthetic fixture text reaches the store or the generated pages', () =>
 
 test('live sections: Blog and News pages are indexable, in the sitemap and linked from the home page and every footer', () => {
   const store = readStore(root);
-  const built = views(store, '2026-11-27', true);
+  const today = madridToday();
+  const built = views(store, today, true);
   const ready = readyEditions(store);
   const items = [...ready, ...store.roundups.values()].reduce((n, e) => n + e.items.length, 0);
   const pages = [...built.keys()].filter((f) => !f.startsWith('newsletter/')).sort();
-  assert.equal(pages.length, 6 + ready.length + items, 'index and year pages, one page per article and per news item');
+  const years = yearsOf(store.config);
+  const sectionPaths = ['/blog/', '/news/', ...years.flatMap((y) => [`/blog/${y}/`, `/news/${y}/`])];
+  assert.equal(pages.length, sectionPaths.length + ready.length + items, 'index and year pages, one page per article and per news item');
   for (const f of pages) assert.doesNotMatch(built.get(f), /noindex/, `${f} is indexable once live`);
   if (!ready.length) for (const f of pages) assert.match(built.get(f), /are published here yet\. They appear once their English text has been reviewed\./, `${f}: honest while no edition is ready`);
   assert.match(built.get('blog/index.html'), /<h1>Blog<\/h1>/);
-  assert.equal([...built.keys()].filter((f) => f.startsWith('newsletter/')).length, 3 + ready.length, 'one alias per Blog address');
-  assert.deepEqual(editorialUrls(store, { today: '2026-11-27' }).slice(0, 6), ['/blog/', '/news/', '/blog/2025/', '/news/2025/', '/blog/2026/', '/news/2026/']);
-  assert.equal(editorialUrls(store, { today: '2026-11-27' }).length, 6 + ready.length + items);
+  assert.equal([...built.keys()].filter((f) => f.startsWith('newsletter/')).length, 1 + years.length + ready.length, 'one alias per Blog address');
+  assert.deepEqual(editorialUrls(store, { today }).slice(0, sectionPaths.length), sectionPaths);
+  assert.equal(editorialUrls(store, { today }).length, sectionPaths.length + ready.length + items);
   assert.deepEqual(editorialUrls(store, { today: '2026-11-26' }), [], 'nothing before the embargo date');
   const sitemap = read('sitemap.xml');
-  for (const u of ['/blog/', '/news/', '/blog/2025/', '/news/2026/']) assert.ok(sitemap.includes(`<loc>https://whyhumanoid.com${u}</loc>`), `${u} in the sitemap`);
+  for (const u of sectionPaths) assert.ok(sitemap.includes(`<loc>https://whyhumanoid.com${u}</loc>`), `${u} in the sitemap`);
   assert.doesNotMatch(sitemap, /\/newsletter\//, 'the former addresses are not in the sitemap');
   for (const f of ['index.html', 'about/index.html', 'method/index.html', 'blog/index.html', 'companies/tesla/index.html', 'app/index.html']) {
     assert.match(read(f), /<nav class="site-foot" aria-label="Site"><a href="\/blog\/">Blog<\/a><a href="\/news\/">News<\/a><a href="\/about\/">About<\/a>/, `${f}: Blog and News lead the shared footer`);
@@ -276,7 +279,7 @@ test('a same-count reorder of News items (English and original alike) is an iden
 
 test('the year scope is configurable from 2025 onwards; the historical default is 2025 and 2026', () => {
   assert.deepEqual(DEFAULT_YEARS, [2025, 2026]);
-  assert.deepEqual(readStore(root).config.scope.years, [2025, 2026]);
+  assert.deepEqual(yearsOf(readStore(root).config).slice(0, 2), DEFAULT_YEARS);
   const pkg = fixture();
   pkg.inventory.push({ edition_id: 'nl-2027-01-06-synthetic-next', source_url: 'https://newsletter.example.com/p/next', published_on: '2027-01-06', status: 'pending', note: null });
   assert.ok(planIngest(emptyStore(), pkg).problems.some((p) => /scope years 2025, 2026/.test(p)), '2027 is refused until the scope is extended');
@@ -380,18 +383,19 @@ test('real corpus: Humyn Labs is one paragraph with its source link and bold, un
 
 test('real corpus: no Blog article carries a news section, list or count; every News item is listed once with its whole text', () => {
   const store = readStore(root);
-  const built = views(store, '2026-11-27', true);
+  const years = yearsOf(store.config);
+  const built = views(store, madridToday(), true);
   const ready = readyEditions(store);
   for (const e of ready) {
     const html = built.get(`blog/${e.id}/index.html`);
     assert.doesNotMatch(html, /ed-news|News in this edition|This edition has no news roundup|could not be read from the source|href="\/news\//, `${e.id}: no generated news section`);
     assert.doesNotMatch(e.body_markdown, /^#{1,6}\s*(?:\S+\s+)?(?:m[aá]s noticias|more news)/im, `${e.id}: no More news block left in the body`);
   }
-  for (const f of ['blog/index.html', 'blog/2025/index.html', 'blog/2026/index.html']) assert.doesNotMatch(built.get(f), /news items?</, `${f}: no news count on the cards`);
-  const lists = ['news/index.html', 'news/2025/index.html', 'news/2026/index.html'];
+  for (const f of ['blog/index.html', ...years.map((y) => `blog/${y}/index.html`)]) assert.doesNotMatch(built.get(f), /news items?</, `${f}: no news count on the cards`);
+  const lists = ['news/index.html', ...years.map((y) => `news/${y}/index.html`)];
   for (const f of lists) assert.doesNotMatch(built.get(f), /<ol|<li value=|class="ed-items"/, `${f}: no numbered list`);
   const all = built.get('news/index.html');
-  const perYear = built.get('news/2025/index.html') + built.get('news/2026/index.html');
+  const perYear = lists.slice(1).map((f) => built.get(f)).join('');
   const groups = [...ready, ...store.roundups.values()];
   for (const e of groups) for (const it of e.items) {
     const id = itemId(e.id, it.position);
@@ -428,6 +432,28 @@ test('standalone roundups keep their source order and can be published without a
   assert.doesNotMatch(list, new RegExp(`href="/blog/${id}/"`));
   assert.equal(pages.has(`blog/${id}/index.html`), false);
   assert.equal(views(store, '2026-11-26').has(`news/${id}/01/index.html`), false);
+});
+
+test('Friday roundups stage once, reject conflicts and roll into a new calendar year', () => {
+  const store = readStore(root);
+  const original = store.roundups.get('roundup-2026-11-27-humanoid-robots');
+  assert.equal(planRoundup(store, original).files.size, 0);
+  assert.match(planRoundup(store, { ...original, title: 'Changed title' }).problems[0], /already exists with different content/);
+  assert.match(planRoundup(store, { ...original, id: 'roundup-2026-11-27-other' }).problems[0], /Expected Integrarobot roundup/);
+  assert.match(planRoundup(store, { ...original, internal_note: 'fixture' }).problems[0], /outside the public editorial format/);
+
+  const date = '2027-01-01';
+  const next = { ...original, id: `roundup-${date}-humanoid-robots`, published_on: date };
+  const historicStore = { ...emptyStore(), config: { ...store.config, scope: { years: [2025, 2026] } }, roundups: new Map() };
+  assert.match(planRoundup(historicStore, next, { today: '2026-12-31' }).problems[0], /on or before today/);
+  const plan = planRoundup(historicStore, next, { today: date });
+  assert.deepEqual(plan.problems, []);
+  assert.deepEqual([...plan.files.keys()], ['editorial/config.json', `editorial/roundups/${next.id}.json`]);
+  const config = JSON.parse(plan.files.get('editorial/config.json'));
+  assert.deepEqual(config.scope.years, [2025, 2026, 2027]);
+  const updated = { ...historicStore, config, roundups: new Map([[next.id, next]]) };
+  assert.equal(planRoundup(updated, next, { today: date }).files.size, 0);
+  assert.ok(views(updated, date).get('news/2027/index.html').includes(next.title));
 });
 
 // Javier, 27 Nov 2026: no images in the Blog or News, and nothing in their place.

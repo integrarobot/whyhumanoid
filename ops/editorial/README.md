@@ -7,7 +7,7 @@ Two public English editorial sections of whyhumanoid.com:
   address. Edition ids keep their `nl-` prefix and the source publication is still the Integrarobot newsletter.
   The More news block is not part of it.
 - **News** (`/news/`): every item of the More news block, one page each, in the order its edition gave it, linked to
-  that edition. It can also publish standalone Integrarobot roundups that Javier supplies for News, with the
+  that edition. It also publishes the weekly Integrarobot humanoid radar as a standalone roundup, with the
   publication credited directly and the sources linked on each item.
 
 They are independent of the catalogue:
@@ -42,11 +42,40 @@ Code:
 
 ## Inputs
 
-For a standalone roundup, add one file under `editorial/roundups/` with an ID of the form
-`roundup-YYYY-MM-DD-slug`. Record the title, publication, publication date, English language and named review
-with evidence. Give each item its position, headline and English Markdown with at least one web source. Keep
-published positions stable because the item URLs depend on them. The newsletter ingestion leaves these files
-in place. Review with `node tools/editorial.mjs check` and regenerate with `node tools/build-pages.mjs`.
+### Friday humanoid radar
+
+The existing Friday 09:00 Europe/Madrid Codex automation generates one Spanish radar, delivers it in its chat
+and by email, and publishes an English translation of those same items on News. Use the Friday date to identify
+the edition, even when resuming later. Preserve the item count, original sequence, reporting dates, attributions,
+source links and distinctions between plans, tests, pilots and operations. A radar without verified items needs
+no News entry. Keep the Spanish radar and reviewed English package in the local workspace before publishing so
+a retry can use the same inputs.
+
+Use `editorial/roundups/roundup-2026-11-27-humanoid-robots.json` as the format. The ID is
+`roundup-YYYY-MM-DD-humanoid-robots`, the publication is Integrarobot, and a named review records the
+comparison with the Spanish radar. Give each item its position, headline and full English Markdown with direct
+sources. Use only public text and links. The catalogue update checks the master for matching cases and evidence
+before any write; a genuine update can add evidence to the same deployment. The News publication reads the
+reviewed package and leaves catalogue writes to that existing step.
+
+From a clean checkout of current `main`:
+
+1. Run `node tools/editorial.mjs stage-roundup --file <roundup.json> --dry-run` and then repeat without
+   `--dry-run`. An exact retry writes nothing, a conflict is refused, and the first radar of a new year adds
+   the missing archive year. Newsletter ingestion leaves the roundup files in place.
+2. Run `node tools/editorial.mjs check`, `node tools/build-pages.mjs`,
+   `node tools/build-pages.mjs --check`, `node --test tools/test-editorial.mjs`, and
+   `node tools/check-public.mjs`. Review the diff and check that it contains the intended roundup, generated
+   pages, sitemap, and year configuration if needed.
+3. Use one branch and pull request for the Friday date. On retry, check the public website, current `main` and
+   existing pull requests before opening another. Bring a stale branch up to date with `main` and regenerate the
+   pages if another editorial update merged. Wait for successful checks before merging through the normal
+   repository flow.
+4. Wait for GitHub Pages and verify the roundup in News and its year archive, all individual URLs, the original
+   order and direct source links. Mark it published only after comparing the live pages with the saved package.
+   Record the delivery and, if interrupted, resume with the same date, files and pull request.
+
+### Newsletter editions
 
 The local extraction session delivers two English Markdown documents, which are not in Git:
 
@@ -194,7 +223,8 @@ It says "Coverage is not declared complete" unless the inventory declares comple
 Before the first edition of a new year:
 1. add the year in a small reviewed change, for example `[2025, 2026, 2027]`;
 2. rebuild the pages, which adds the year archive pages.
-Then the feed continues as before.
+Then the feed continues as before. The Friday radar staging command can also add a new year in its own
+reviewed data update.
 
 ## Publication
 

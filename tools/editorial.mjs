@@ -2,6 +2,7 @@
 // Newsletter and News: ingestion, validation and coverage of the editorial store (tools/editorial-model.mjs).
 //
 //   node tools/editorial.mjs ingest --package <package.json> [--dry-run] [--accept-change <id>,...] [--accept-item-change <id>,...]
+//   node tools/editorial.mjs stage-roundup --file <roundup.json> [--dry-run]
 //   node tools/editorial.mjs check                  validate the committed store (CI)
 //   node tools/editorial.mjs report [--json]        coverage by year; never claims completeness on its own
 //   node tools/editorial.mjs template               print an empty package to fill in
@@ -15,7 +16,7 @@
 // must keep pointing at the same stories.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { EDITORIAL_DIR, contentHash, coverage, isLive, readStore, readyEditions, sha256, storeProblems, urlsIn } from './editorial-model.mjs';
+import { EDITORIAL_DIR, contentHash, coverage, isDate, isLive, madridToday, readStore, readyEditions, sha256, storeProblems, urlsIn, yearsOf } from './editorial-model.mjs';
 
 const root = new URL('../', import.meta.url);
 const json = (v) => `${JSON.stringify(v, null, 2)}\n`;
@@ -113,6 +114,50 @@ export function planIngest(store, pkg, { accept = [], acceptItems = [] } = {}) {
   return { problems, next, changes };
 }
 
+export function planRoundup(store, roundup, { today = madridToday() } = {}) {
+  const date = roundup?.published_on;
+  if (!isDate(date) || date > today || new Date(date).getUTCDay() !== 5) {
+    return { problems: ['The publication date must be the Friday of the roundup, on or before today in Madrid.'] };
+  }
+
+  const id = `roundup-${date}-humanoid-robots`;
+  if (roundup.id !== id || roundup.publication !== 'Integrarobot') {
+    return { problems: [`Expected Integrarobot roundup with id ${id}.`] };
+  }
+  const hasUnknown = (value, fields) => Object.keys(value ?? {}).some((key) => !fields.includes(key));
+  if (hasUnknown(roundup, ['id', 'title', 'publication', 'published_on', 'language', 'review', 'items'])
+      || hasUnknown(roundup.review, ['status', 'by', 'evidence'])
+      || (Array.isArray(roundup.items) && roundup.items.some((item) => hasUnknown(item, ['position', 'headline', 'body_markdown'])))) {
+    return { problems: ['The roundup includes fields outside the public editorial format.'] };
+  }
+
+  const roundups = new Map(store.roundups);
+  const previous = roundups.get(id);
+  if (previous && contentHash(previous) !== contentHash(roundup)) {
+    return { problems: [`${id} already exists with different content. Use the original saved package or review a correction separately.`] };
+  }
+  if (!previous && [...roundups.values()].some((entry) => entry.published_on === date && entry.publication === roundup.publication)) {
+    return { problems: [`An Integrarobot roundup already exists for ${date} under a different id.`] };
+  }
+  roundups.set(id, roundup);
+
+  const files = new Map();
+  const years = yearsOf(store.config);
+  const lastYear = years.at(-1);
+  const year = Number(date.slice(0, 4));
+  let config = store.config;
+  if (year > lastYear) {
+    const addedYears = Array.from({ length: year - lastYear }, (_, index) => lastYear + index + 1);
+    config = { ...config, scope: { ...config.scope, years: [...years, ...addedYears] } };
+    files.set(`${EDITORIAL_DIR}/config.json`, json(config));
+  }
+
+  const problems = storeProblems({ ...store, config, roundups }, { today });
+  if (problems.length) return { problems };
+  if (!previous) files.set(`${EDITORIAL_DIR}/roundups/${id}.json`, json(roundup));
+  return { problems: [], files, id };
+}
+
 export function stateOf(store, packageText) {
   return {
     note: 'Written by tools/editorial.mjs ingest: the last package and the content hash of every edition and original. No clock.',
@@ -155,6 +200,22 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     console.log(process.argv.includes('--json') ? JSON.stringify(coverage(store), null, 2) : report(store));
   } else if (cmd === 'template') {
     console.log(JSON.stringify(TEMPLATE, null, 2));
+  } else if (cmd === 'stage-roundup') {
+    const file = arg('--file');
+    if (!file || !existsSync(file)) { console.error('usage: node tools/editorial.mjs stage-roundup --file <roundup.json> [--dry-run]'); process.exit(2); }
+    let roundup;
+    try { roundup = JSON.parse(readFileSync(file, 'utf8')); } catch (error) { console.error(`roundup is not readable JSON: ${error.message}`); process.exit(1); }
+    const { problems, files, id } = planRoundup(store, roundup);
+    if (problems.length) { console.error(`Roundup refused, nothing written:\n- ${problems.join('\n- ')}`); process.exit(1); }
+    const dryRun = process.argv.includes('--dry-run');
+    if (!dryRun) {
+      for (const [path, body] of files) {
+        const url = new URL(path, root);
+        mkdirSync(new URL('./', url), { recursive: true });
+        writeFileSync(url, body, { flag: path.includes('/roundups/') ? 'wx' : 'w' });
+      }
+    }
+    console.log(files.size ? `${dryRun ? 'Would stage' : 'Staged'} ${id} (${files.size} files).` : `${id} already staged with identical content; nothing to write.`);
   } else if (cmd === 'ingest') {
     const file = arg('--package');
     if (!file || !existsSync(file)) { console.error('usage: node tools/editorial.mjs ingest --package <package.json> [--dry-run] [--accept-change <id>,...]'); process.exit(2); }
@@ -177,7 +238,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     console.log(`${process.argv.includes('--dry-run') ? 'Dry run: would write' : 'Wrote'} ${written.length} files. Editions: ${changes.added.length} added, ${changes.changed.length} changed (${changes.item_identity_changed.length} with News item identity changes), ${changes.unchanged.length} unchanged; ${changes.originals.length} originals archived or updated.`);
     console.log(report(next));
   } else {
-    console.error('usage: node tools/editorial.mjs ingest|check|report|template');
+    console.error('usage: node tools/editorial.mjs ingest|stage-roundup|check|report|template');
     process.exit(2);
   }
 }
