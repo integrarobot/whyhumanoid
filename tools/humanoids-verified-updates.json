@@ -2,8 +2,8 @@
   "note": "Public Humanoids values that changed in the workbook after the legacy snapshot, taken from the verified staging import. tools/export-humanoids.mjs applies them on top of the cleaned legacy snapshot, and tools/build-site.mjs accepts exactly these differences in its parity check. Public values only. Regenerate with tools/sync-humanoids.mjs from a saved copy of the public preview.",
   "source": {
     "environment": "workbook export",
-    "snapshot": "2026-11-27T14:20:18.271Z",
-    "import_run": "workbook export of 2026-11-27T14:20:18.271Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export). Valuation of record 91 (Ubtech Walker S1) kept as the sheet and the API display it (23,815,219,952.60): the xlsx export rounds that GOOGLEFINANCE output to .00 (see PR 214). Record 216 (Simplexity Robotics iX) added from plan WP-20261125-integrarobot-simplexity, written by Codex at 2026-11-27T14:20:18Z and read back independently."
+    "snapshot": "2026-11-27T14:35:03.875Z",
+    "import_run": "workbook export of 2026-11-27T14:35:03.875Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export). Valuation of record 91 (Ubtech Walker S1) kept as the sheet and the API display it (23,815,219,952.60): the xlsx export rounds that GOOGLEFINANCE output to .00 (see PR 214). Record 216 (Simplexity Robotics iX) from plans WP-20261125-integrarobot-simplexity (written 2026-11-27T14:20:18Z) and WP-20261125-integrarobot-simplexity-funding (written 2026-11-27T14:35:03Z), both read back independently."
   },
   "updated": [
     {
@@ -5918,9 +5918,9 @@
         "Careers": "https://www.simplexityrobotics.com/recruitment",
         "B2B Client": "Not verified for iX in the reviewed sources",
         "Stock": "Private",
-        "Valuation": "Not confirmed by the company (USD 1.6B reported by Bloomberg, 2026-11-23; secondary)",
-        "Investors": "Not verified from primary sources (secondary press names Ant Group as lead of the November 2026 round)",
-        "Rounds": "USD 100M pre-Series A led by Ant Group, reported by Bloomberg (2026-11-23); secondary, not confirmed by the company",
+        "Valuation": "USD 1.6B (pre-Series A, November 2026), reported by Bloomberg (2026-11-23), which attributes the round terms to chairman and co-founder Wang Kai; not independently verified",
+        "Investors": "Ant Group (lead of the November 2026 pre-Series A); existing investors Tencent, HSG and Lanchi Ventures, as reported by Bloomberg (2026-11-23) citing chairman and co-founder Wang Kai; not independently verified",
+        "Rounds": "USD 100M pre-Series A led by Ant Group, reported by Bloomberg (2026-11-23), with the valuation and investors attributed to chairman and co-founder Wang Kai; no official announcement or filing reviewed; not independently verified",
         "Release": "Not verified",
         "Height (cm)": "106–170 (adjustable; company)",
         "Weight (kg)": "160",
@@ -5938,8 +5938,8 @@
         "Battery / charging": "Two batteries, 1,650 Wh in total; direct charging or hot swap; optional autonomous charging with a dock; up to 2 h per battery bay (company)",
         "Price / availability": "Price not disclosed",
         "Autonomy / supervision": "Not verified",
-        "Buyer checks": "Manufacturer claims throughout: confirm the exact configuration, duty cycle, payload workspace, runtime and autonomy with the vendor; no independent test or iX deployment verified in the reviewed sources; funding only from secondary press",
-        "Sources / checked": "2026-11-27 | New row: iX identity, specifications and official links from the official product and About pages (rendered); funding from secondary press, not confirmed by the company\nhttps://www.simplexityrobotics.com/products/ix\nhttps://www.simplexityrobotics.com/about\nhttps://www.simplexityrobotics.com/news\nhttps://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/"
+        "Buyer checks": "Manufacturer claims throughout: confirm the exact configuration, duty cycle, payload workspace, runtime and autonomy with the vendor; no independent test or iX deployment verified in the reviewed sources; funding from original Bloomberg reporting citing the chairman, not independently verified",
+        "Sources / checked": "2026-11-27 | New row: iX identity, specifications and official links from the official product and About pages (rendered)\nhttps://www.simplexityrobotics.com/products/ix\nhttps://www.simplexityrobotics.com/about\nhttps://www.simplexityrobotics.com/news\n2026-11-27 | Funding (Valuation, Investors, Rounds): original Bloomberg report of 2026-11-23 attributing the round terms to chairman and co-founder Wang Kai (public excerpt read); not independently verified\nhttps://news.bloomberglaw.com/capital-markets/ant-group-bets-on-simplexity-to-thrive-in-chinas-humanoid-race\nhttps://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/"
       }
     }
   ],

@@ -2,13 +2,13 @@
   "dataset": "humanoids",
   "access": "free",
   "rule": "complete Humanoids catalogue: every customer row in workbook order, 32 public fields, public (cleaned) values; rows the sheet marks as internal are not published",
-  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the import of 2026-11-27T14:20:18.271Z (every current customer row; records moved out of the tab kept apart)",
-  "snapshot": "2026-11-27T14:20:18.271Z",
+  "source": "Humanoids tab of the private Integrarobot workbook: the snapshot embedded in efca179:index.html, updated to the import of 2026-11-27T14:35:03.875Z (every current customer row; records moved out of the tab kept apart)",
+  "snapshot": "2026-11-27T14:35:03.875Z",
   "record_count": 213,
   "verified_import": {
     "environment": "workbook export",
-    "snapshot": "2026-11-27T14:20:18.271Z",
-    "import_run": "workbook export of 2026-11-27T14:20:18.271Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export). Valuation of record 91 (Ubtech Walker S1) kept as the sheet and the API display it (23,815,219,952.60): the xlsx export rounds that GOOGLEFINANCE output to .00 (see PR 214). Record 216 (Simplexity Robotics iX) added from plan WP-20261125-integrarobot-simplexity, written by Codex at 2026-11-27T14:20:18Z and read back independently.",
+    "snapshot": "2026-11-27T14:35:03.875Z",
+    "import_run": "workbook export of 2026-11-27T14:35:03.875Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export). Valuation of record 91 (Ubtech Walker S1) kept as the sheet and the API display it (23,815,219,952.60): the xlsx export rounds that GOOGLEFINANCE output to .00 (see PR 214). Record 216 (Simplexity Robotics iX) from plans WP-20261125-integrarobot-simplexity (written 2026-11-27T14:20:18Z) and WP-20261125-integrarobot-simplexity-funding (written 2026-11-27T14:35:03Z), both read back independently.",
     "updated": [
       {
         "id": 1,
@@ -2657,12 +2657,12 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "7869e964af5784311ac9a4f317660b96d18aa62481812e4e117db2e017fadf27",
-      "bytes": 405960
+      "sha256": "1695a58f4635bdcd735bd9d62a0f35ec4d57f348fdd52320cc2d3bb9f6d7014e",
+      "bytes": 406583
     },
     "humanoids-catalogue.csv": {
-      "sha256": "d8deed5f40bf40898091f7cc3154f8998a8f4c25790e74be4f3a04ab86bfe0dc",
-      "bytes": 253123
+      "sha256": "79145f1617087ff16333de01970c139b24a309b0e42ea2fcce5307921afe7559",
+      "bytes": 253746
     }
   }
 }
