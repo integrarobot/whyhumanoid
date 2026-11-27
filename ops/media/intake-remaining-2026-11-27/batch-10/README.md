@@ -1,0 +1,3 @@
+# Remaining robot image batch10
+
+Ten candidates, not approved. Codex transports originals and provisional masks with exact RGB/native dimensions. Independent review and correction by Claude required. Quanta101 face/scan-line must be repaired or source replaced. D9 is whole but native400x480, quality debt; no upscaling. Confirm Igris79 identity from model-specific context. Render/configuration credits must name AEON animation still and DEX-M. All other invariants remain: whole actual platform, true alpha, <=10new perPR, oldimages intact; Codex exact-head+CI review, Pages then canonical checks and closure. Do not merge source transport branch wholesale. No master/D1/Worker/import/pricing changes.

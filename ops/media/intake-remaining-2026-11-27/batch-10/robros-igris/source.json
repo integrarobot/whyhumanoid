@@ -1,0 +1,42 @@
+{
+  "id": 79,
+  "slug": "robros-igris",
+  "manufacturer": "Robros",
+  "model": "Igris",
+  "credit": "Robros",
+  "public_page": "https://whyhumanoid.com/humanoids/robros-igris-79/",
+  "source_page": "https://www.robros.co.kr/ko",
+  "source_url": "https://www.robros.co.kr/images/home/ai-solution-04.jpg",
+  "source_context": "Official homepage ai-solution-04.jpg, whole biped directing parking with baton, ROBROS on torso. Identity Igris must independently be confirmed from manufacturer text/model context; no attribution merely by appearance.",
+  "original": "original.jpg",
+  "original_size": [
+    1586,
+    992
+  ],
+  "original_sha256": "a84fb6600b0d14ce770c5ce54d9736180be9a701b01d836f9ac17281f23eb030",
+  "prepared_sha256": "d5cb407e9c2c9ea7d77ee232144b79d8982bc0defd38f8a21dce4094abe48cfc",
+  "mask_sha256": "a81bba06dae8fdf4ca6092d5476d7e0f94027fb64709d679aa46414a7834cece",
+  "roi": [
+    450,
+    100,
+    1000,
+    960
+  ],
+  "bbox": [
+    38,
+    86,
+    520,
+    801
+  ],
+  "border": 20,
+  "size": [
+    522,
+    755
+  ],
+  "native_alpha": false,
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.",
+  "status": "candidate_requires_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+}
