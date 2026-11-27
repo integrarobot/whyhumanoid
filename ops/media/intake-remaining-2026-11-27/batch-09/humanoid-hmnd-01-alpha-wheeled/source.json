@@ -1,0 +1,39 @@
+{
+  "id": 88,
+  "slug": "humanoid-hmnd-01-alpha-wheeled",
+  "manufacturer": "The Humanoid",
+  "model": "HMND 01 (Alpha Wheeled / Bipedal)",
+  "public_page": "https://whyhumanoid.com/humanoids/the-humanoid-hmnd-01-alpha-wheeled-bipedal-88/",
+  "page": "https://thehumanoid.ai/",
+  "source_url": "https://thehumanoid.ai/wp-content/themes/SKLTech/src/assets/images/redisign/reliability-robot.png",
+  "original": "original.png",
+  "original_size": [
+    1420,
+    2584
+  ],
+  "original_sha256": "9134211d4229ef124eebdf08150a7749824df92cb6e0689377b17bdc8a765288",
+  "mask_sha256": "9a634b9547932bc95404176b6957ffc6eb1766a83a13fdf877799a8e2bea3704",
+  "prepared_sha256": "48d235dfe14870c60d783def6d71c4b4d181543500f4f2ae53a0826f276ebf9e",
+  "roi": [
+    0,
+    0,
+    1420,
+    2584
+  ],
+  "bbox": [
+    35,
+    39,
+    1348,
+    2536
+  ],
+  "border": 20,
+  "size": [
+    1353,
+    2537
+  ],
+  "context": "Humanoid homepage reliability-robot.png full wheeled platform. Catalogue explicitly allows Alpha Wheeled and Alpha Bipedal, not interchangeable; this depicts the wheeled configuration, which alt/provenance must name. Independently check identification against source page.",
+  "mask_method": "native alpha",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+}

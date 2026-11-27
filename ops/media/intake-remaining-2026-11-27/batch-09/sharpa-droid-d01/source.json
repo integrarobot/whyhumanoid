@@ -1,0 +1,39 @@
+{
+  "id": 81,
+  "slug": "sharpa-droid-d01",
+  "manufacturer": "Sharpa",
+  "model": "Droid D01 / Wave (hands)",
+  "public_page": "https://whyhumanoid.com/humanoids/sharpa-droid-d01-wave-hands-81/",
+  "page": "https://www.sharpa.com/",
+  "source_url": "https://www.sharpa.com/cdn/shop/files/D01_3b6bb232-4d68-43d6-b003-11aedfc3f716.png?v=1791431568&width=2000",
+  "original": "original.png",
+  "original_size": [
+    2000,
+    2222
+  ],
+  "original_sha256": "22dee1c14cec5b79ce569179feb48acc4ac4e34f3dce23eaa28237ac68ee4fbf",
+  "mask_sha256": "2fc41bdccbb009e1033659a8bf3ecc7927029ee00a81f255c4aec20894042173",
+  "prepared_sha256": "a314fa6eb1bb22c6c2eba3b294f40d7eda76957f6bae6d26aa04d49054ae1f74",
+  "roi": [
+    0,
+    0,
+    2000,
+    2222
+  ],
+  "bbox": [
+    670,
+    170,
+    1490,
+    2171
+  ],
+  "border": 20,
+  "size": [
+    860,
+    2041
+  ],
+  "context": "The official Sharpa homepage explicitly labels this exact asset D01, next to separate Wave hand products. Shows the whole D01 platform; not the Wave hands. Grey rounded-rectangle background was opaque despite native alpha; ISNET used to exclude it.",
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+}

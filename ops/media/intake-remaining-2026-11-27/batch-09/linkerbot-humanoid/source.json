@@ -1,0 +1,39 @@
+{
+  "id": 189,
+  "slug": "linkerbot-humanoid",
+  "manufacturer": "Linkerbot",
+  "model": "Linker Humanoid",
+  "public_page": "https://whyhumanoid.com/humanoids/linkerbot-linker-humanoid-189/",
+  "page": "https://www.linkerbot.cn/details/LinkerHumanoid/",
+  "source_url": "https://botdata.oss-cn-beijing.aliyuncs.com/afterSales/linkerbot_img/products/linker-humanoid/detail-2.png",
+  "original": "original.png",
+  "original_size": [
+    919,
+    859
+  ],
+  "original_sha256": "5513a66459a32f2ae02b0e37bc337aa4015a6a76b2ab92ab7835b5e10a260bc8",
+  "mask_sha256": "19b39625b42ac6d4476536386ca2640d39c0f40761e9fdec3792c23bbda15171",
+  "prepared_sha256": "674cebdb0cb1819ab649bd276f1340d11a4299eee430e88aa76b5b41ecf60d80",
+  "roi": [
+    0,
+    0,
+    919,
+    859
+  ],
+  "bbox": [
+    310,
+    103,
+    610,
+    826
+  ],
+  "border": 20,
+  "size": [
+    340,
+    763
+  ],
+  "context": "Official exact Linker Humanoid page image detail-2.png. Whole wheeled platform, not cropped living-room torso. Native alpha had grey opaque background; ISNET plus interior opacity correction excludes it without RGB edits.",
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+}

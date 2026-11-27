@@ -1,0 +1,39 @@
+{
+  "id": 131,
+  "slug": "tuesday-labs-voxel-series-1",
+  "manufacturer": "Tuesday Labs",
+  "model": "Voxel Series-1",
+  "public_page": "https://whyhumanoid.com/humanoids/tuesday-labs-voxel-series-1-131/",
+  "page": "https://tuesdaylabs.com/",
+  "source_url": "https://tuesdaylabs.com/_next/image?url=%2Fimages%2Fhome%2Frobot-portrait.jpg&w=3840&q=75&dpl=dpl_9W1G1tixftkcXvw18tsyTsH4hTAi",
+  "original": "original.img",
+  "original_size": [
+    1500,
+    2000
+  ],
+  "original_sha256": "88a71d026c8c904cb9de1a1b1120e7936c125379554bcf9ab2d14a10fe63195c",
+  "mask_sha256": "a4253c151978e2cbd4076cf14bd956287e1a24575b2dadb5d2fd96c3bd839237",
+  "prepared_sha256": "4114ce11c5a14447e2719ec713fc485ff38d6a0f391773c30fa1409fbb5d6e7f",
+  "roi": [
+    0,
+    0,
+    1500,
+    2000
+  ],
+  "bbox": [
+    143,
+    318,
+    1452,
+    2000
+  ],
+  "border": 20,
+  "size": [
+    1349,
+    1722
+  ],
+  "context": "Official Tuesday Labs robot portrait, exact alt White Tuesday Labs home robot with square LED eyes and its hands behind its head. Whole actual biped including feet. Review full top/feet; preserve actual phone-like head and hands pose, no added anatomy.",
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+}

@@ -1,0 +1,39 @@
+{
+  "id": 98,
+  "slug": "weave-isaac-0",
+  "manufacturer": "Weave",
+  "model": "Isaac",
+  "public_page": "https://whyhumanoid.com/humanoids/weave-isaac-98/",
+  "page": "https://www.weaverobotics.com/",
+  "source_url": "https://www.weaverobotics.com/_next/image?url=%2Fimages%2Fproducts%2Fisaac-0-front.webp&w=3840&q=75",
+  "original": "original.img",
+  "original_size": [
+    1200,
+    1600
+  ],
+  "original_sha256": "c7641c7fc3f087b5ce103b2271a74d72c4a23d536ebc04d48fd6a22829ee840b",
+  "mask_sha256": "e7c5c7ab0a787b5893f98b61d880a5838fbb8abd7195c836428a5a655d902c8b",
+  "prepared_sha256": "a37dcdab8dd126e947a611a7782ae4d95653b1d4e3718263ee00f89ba0841165",
+  "roi": [
+    0,
+    0,
+    1200,
+    1600
+  ],
+  "bbox": [
+    279,
+    177,
+    892,
+    1500
+  ],
+  "border": 20,
+  "size": [
+    653,
+    1363
+  ],
+  "context": "Official Weave homepage exact file isaac-0-front.webp with alt Isaac0. Generic catalogue Isaac has unresolved generation/mobility caveat; name Isaac0 shown, do not call Isaac1 or infer powered locomotion. Whole two-arm column platform and caster/base remain. No catalogue data change.",
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+}

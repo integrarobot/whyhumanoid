@@ -1,0 +1,39 @@
+{
+  "id": 133,
+  "slug": "mabel",
+  "manufacturer": "Mabel",
+  "model": "Mabel",
+  "public_page": "https://whyhumanoid.com/humanoids/mabel-mabel-133/",
+  "page": "https://robotmabel.github.io/website/index.html",
+  "source_url": "https://robotmabel.github.io/website/assets/wild/w-curtain.jpg",
+  "original": "original.jpg",
+  "original_size": [
+    1200,
+    1600
+  ],
+  "original_sha256": "3af3cf078462eada5cca1e6ea99e9f4ed1e8bf419ff23669e7d85b1ffea08b00",
+  "mask_sha256": "726d5dd7f1a21be58c93777e7f0dc671d4124b2fb9a31b4a1f8cdfd6e5d70bc1",
+  "prepared_sha256": "18ab188a991e7d3630e0ce4b824ae08deff9280adebfc59eafbbe639d4642e90",
+  "roi": [
+    0,
+    0,
+    1200,
+    1600
+  ],
+  "bbox": [
+    174,
+    198,
+    1012,
+    1519
+  ],
+  "border": 20,
+  "size": [
+    878,
+    1361
+  ],
+  "context": "Official MABEL project website image caption MABEL standing in front of a grey curtain. Whole robot with both antennas, manipulators, support column, cables and base. Curtain masked; source RGB/native scale retained.",
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+}

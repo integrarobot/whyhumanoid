@@ -1,0 +1,39 @@
+{
+  "id": 84,
+  "slug": "switchbot-onero-h1",
+  "manufacturer": "Switch",
+  "model": "Onero H1",
+  "public_page": "https://whyhumanoid.com/humanoids/switch-onero-h1-84/",
+  "page": "https://eu.switch-bot.com/",
+  "source_url": "https://cdn.shopify.com/s/files/1/0610/2843/4085/files/H1_1x_1.png?v=1767594175",
+  "original": "original.png",
+  "original_size": [
+    871,
+    870
+  ],
+  "original_sha256": "2ae42be7dd5af04ad25eb67eea0fd990b79aca960e8273d2c75031581e763df5",
+  "mask_sha256": "60e9651c27708a9e24a72ee59c5f4c49a201472a8c11ef25d92c4d6541c88e0e",
+  "prepared_sha256": "9767b1cf3de23deaf4a18ed528414692eef1d05f893fab6273cecfe62a3ff3dd",
+  "roi": [
+    0,
+    0,
+    871,
+    870
+  ],
+  "bbox": [
+    240,
+    117,
+    550,
+    767
+  ],
+  "border": 20,
+  "size": [
+    350,
+    690
+  ],
+  "context": "Official SwitchBot homepage onero H1 card, exact alt onero H1. Full wheeled robot including whole base. Native figure, not the separate robotic arm or fan.",
+  "mask_method": "native alpha",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+}

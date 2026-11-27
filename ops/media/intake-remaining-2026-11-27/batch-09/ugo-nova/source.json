@@ -1,0 +1,39 @@
+{
+  "id": 203,
+  "slug": "ugo-nova",
+  "manufacturer": "ugo",
+  "model": "ugo Nova",
+  "public_page": "https://whyhumanoid.com/humanoids/ugo-ugo-nova-203/",
+  "page": "https://ugo.plus/ai/ugo-nova/",
+  "source_url": "https://ugo.plus/wp-content/uploads/2026/09/img_nova_spec.png",
+  "original": "original.png",
+  "original_size": [
+    588,
+    1080
+  ],
+  "original_sha256": "3b88f5cc1551a5aefdbb75da3d4ab12eb99dc135b969fdabf875838b60062354",
+  "mask_sha256": "95d784b964bcd28e042b6a8b5481bca4633f3c3ce0f9252642edecefd2ea1f3b",
+  "prepared_sha256": "cbce470d3ceba895b49eabcded5f192655426e801fa74c36abfc95589a354be1",
+  "roi": [
+    0,
+    0,
+    588,
+    1080
+  ],
+  "bbox": [
+    140,
+    223,
+    455,
+    1007
+  ],
+  "border": 20,
+  "size": [
+    355,
+    824
+  ],
+  "context": "Official ugo Nova product page exact img_nova_spec.png in specification section. Complete wheeled platform with grippers and base. No human legs added.",
+  "mask_method": "native alpha",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+}
