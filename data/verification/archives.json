@@ -1,0 +1,444 @@
+{
+  "schema_version": "1.0.0",
+  "captures": [
+    {
+      "source_url": "https://www.1x.tech/neo",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:40.240Z",
+      "source_archive_url": null,
+      "final_url": "https://www.1x.tech/neo",
+      "mime_type": "text/html",
+      "bytes": 178766,
+      "sha256": "84c2cae4bf1279f7a4d007a75f4a39248554ded82948345574c3b6a7ff9da4b9"
+    },
+    {
+      "source_url": "https://www.agilityrobotics.com/solutions/digit-5",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:40.517Z",
+      "source_archive_url": null,
+      "final_url": "https://www.agilityrobotics.com/solutions/digit-5",
+      "mime_type": "text/html",
+      "bytes": 339241,
+      "sha256": "c0704958e667778c9afc6be15825e3145e4ce43b10ee1f1eabb60c86bf38fac4"
+    },
+    {
+      "source_url": "https://bostondynamics.com/products/atlas/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:40.752Z",
+      "source_archive_url": null,
+      "final_url": "https://bostondynamics.com/products/atlas/",
+      "mime_type": "text/html",
+      "bytes": 143192,
+      "sha256": "e8f2afa18a8da244749a8fa09a8a1f7aa872bf8619726fd2f9ce48d436af0761"
+    },
+    {
+      "source_url": "https://www.figure.ai/figure",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:40.956Z",
+      "source_archive_url": null,
+      "final_url": "https://www.figure.ai/figure",
+      "mime_type": "text/html",
+      "bytes": 42044,
+      "sha256": "52f93c505b1798fa193bc27ab3a37429daa1bdac66fff2895a4f882e905f984c"
+    },
+    {
+      "source_url": "https://www.unitree.com/g1/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:41.267Z",
+      "source_archive_url": null,
+      "final_url": "https://www.unitree.com/g1/",
+      "mime_type": "text/html",
+      "bytes": 64392,
+      "sha256": "58fd7d500768526eb2678195e1bfbd0414e5613d9db8f4df9407933c9f91dde1"
+    },
+    {
+      "source_url": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:41.442Z",
+      "source_archive_url": null,
+      "final_url": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
+      "mime_type": "text/html",
+      "bytes": 267796,
+      "sha256": "56a4c590e350210f8c49e01917e2748ee14ef6f1eb0a85b45c3732ece3e2a3fb"
+    },
+    {
+      "source_url": "https://www.agibot.com/products/A2_Ultra",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:44.186Z",
+      "source_archive_url": null,
+      "final_url": "https://www.agibot.com/products/A2_Ultra",
+      "mime_type": "text/html",
+      "bytes": 406976,
+      "sha256": "cb3c21f34f3d96c9aea1e767d3f4fb059715b12d6e7920536d9c93a08cf525c5"
+    },
+    {
+      "source_url": "https://support-old.fftai.com/docs/GR-X-Humanoid-Robot/GR1/GR-1_Introduction/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:46.172Z",
+      "source_archive_url": null,
+      "final_url": "https://support-old.fftai.com/docs/GR-X-Humanoid-Robot/GR1/GR-1_Introduction/",
+      "mime_type": "text/html",
+      "bytes": 29790,
+      "sha256": "bfb52bef20357a8050ee929c514965c76fd3801d88d49e75d57684ac1f1ca520"
+    },
+    {
+      "source_url": "https://en.engineai.com.cn/open/docs/pm01/01/product-overview?entry=docs&product=pm01",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:47.278Z",
+      "source_archive_url": null,
+      "final_url": "https://en.engineai.com.cn/open/docs/pm01/01/product-overview?entry=docs&product=pm01",
+      "mime_type": "text/html",
+      "bytes": 68685,
+      "sha256": "bd2e5b029b624f7e53579bcdf1d3393195ec32b3719a4f604831df8c930a8ef8"
+    },
+    {
+      "source_url": "https://pal-robotics.com/robot/talos/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:49.172Z",
+      "source_archive_url": null,
+      "final_url": "https://pal-robotics.com/robot/talos/",
+      "mime_type": "text/html",
+      "bytes": 146508,
+      "sha256": "d344c4af3d70fd48a004d8b4ec4bc965b79eddd7c83f2a01d931aeeefed386ae"
+    },
+    {
+      "source_url": "https://neura-robotics.com/products/4ne1/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:49.475Z",
+      "source_archive_url": null,
+      "final_url": "https://neura-robotics.com/products/4ne1/",
+      "mime_type": "text/html",
+      "bytes": 351487,
+      "sha256": "83bbc8d403f874af33e32119c454d6380f99dafa2c1014b71fbc0d4d4122e380"
+    },
+    {
+      "source_url": "https://pollen-robotics.com/reachy-2/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:49.866Z",
+      "source_archive_url": null,
+      "final_url": "https://pollen-robotics.com/reachy-2/",
+      "mime_type": "text/html",
+      "bytes": 92975,
+      "sha256": "f4c78b032c57da4e872f3664c21410dfe2a65fec63ea9e48f625ccc514c509dd"
+    },
+    {
+      "source_url": "https://thehumanoid.ai/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:50.026Z",
+      "source_archive_url": null,
+      "final_url": "https://thehumanoid.ai/",
+      "mime_type": "text/html",
+      "bytes": 78219,
+      "sha256": "e84e9fff8563137ad190bfc326b62eff043e53adc8267a93ecf702e6e63b36b1"
+    },
+    {
+      "source_url": "https://rainbow-robotics.com/en/products/rb-y1/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:03:50.423Z",
+      "source_archive_url": null,
+      "final_url": "https://rainbow-robotics.com/en/products/rb-y1/",
+      "mime_type": "text/html",
+      "bytes": 456782,
+      "sha256": "e074838f006bc15b006191bfac995915605ab003fcaf57aefb0a179d1ffc832b"
+    },
+    {
+      "source_url": "https://addverb.ai/humanoid-robot-elixis",
+      "status": "failed",
+      "captured_at": "2026-11-27T19:03:55.428Z",
+      "source_archive_url": null,
+      "error": "HTTP 403"
+    },
+    {
+      "source_url": "https://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:10:35.853Z",
+      "source_archive_url": null,
+      "final_url": "https://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf",
+      "mime_type": "application/pdf",
+      "bytes": 433031,
+      "sha256": "c91ded77a6eba8f6a68450a9e195dd6d1d75d61662c0f808b483053eb0e0a1dd"
+    },
+    {
+      "source_url": "https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:10:35.971Z",
+      "source_archive_url": null,
+      "final_url": "https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks",
+      "mime_type": "text/html",
+      "bytes": 128788,
+      "sha256": "34e3dc9a4ed7642f6d903c856d34b1953fb4e1f230fc8de7a0eb0e6d8a02d9b1"
+    },
+    {
+      "source_url": "https://pal-robotics.com/wp-content/uploads/2025/09/TALOS-DataSheet-1.pdf",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:10:36.103Z",
+      "source_archive_url": null,
+      "final_url": "https://pal-robotics.com/wp-content/uploads/2025/09/TALOS-DataSheet-1.pdf",
+      "mime_type": "application/pdf",
+      "bytes": 608559,
+      "sha256": "7e32fb98db39e48b42f2d1f558e81478614045b93c0cbe1f85cc062c6dc1fb05"
+    },
+    {
+      "source_url": "https://newsroom.bmwgroup.com/global/bmw-group-advances-the-use-of-physical-ai-in-production-with-figure-03-project-in-spartanburg",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:10:36.240Z",
+      "source_archive_url": null,
+      "final_url": "https://newsroom.bmwgroup.com/global/bmw-group-advances-the-use-of-physical-ai-in-production-with-figure-03-project-in-spartanburg",
+      "mime_type": "text/html",
+      "bytes": 72288,
+      "sha256": "4f1ae304f3845e1797ee9aa86916f32774ea72ef97d179e9aaeaabccd2e368d8"
+    },
+    {
+      "source_url": "https://www.volvocars.com/uk/media/press-releases/5B712552CE36E240/",
+      "status": "failed",
+      "captured_at": "2026-11-27T19:10:36.792Z",
+      "source_archive_url": null,
+      "error": "HTTP 403"
+    },
+    {
+      "source_url": "https://robotics.hexagon.com/product/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:10:36.915Z",
+      "source_archive_url": null,
+      "final_url": "https://robotics.hexagon.com/product/",
+      "mime_type": "text/html",
+      "bytes": 110247,
+      "sha256": "7c99c87cfdfadba60af735a5fd13f784a05f7f0dba8c9b0450b8bd2e263d8fa6"
+    },
+    {
+      "source_url": "https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:10:37.134Z",
+      "source_archive_url": null,
+      "final_url": "https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale",
+      "mime_type": "text/html",
+      "bytes": 170952,
+      "sha256": "65572dd671a12d7706d45c9aa7f31e0af040d4588bfd39712edb97145784833f"
+    },
+    {
+      "source_url": "https://en.engineai.com.cn/open/docs/pm01/01/product-overview?entry=docs&product=pm01",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:10:37.390Z",
+      "source_archive_url": null,
+      "final_url": "https://en.engineai.com.cn/open/docs/pm01/01/product-overview?entry=docs&product=pm01",
+      "mime_type": "text/html",
+      "bytes": 68685,
+      "sha256": "5207d61ed004a9a4dbfecd3fb418cb5ccd1bc9b76b06bb124ce471811b3f225a"
+    },
+    {
+      "source_url": "https://www.wandercraft.eu/about-us",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:10:38.863Z",
+      "source_archive_url": null,
+      "final_url": "https://www.wandercraft.eu/about-us",
+      "mime_type": "text/html",
+      "bytes": 56632,
+      "sha256": "51fe59dad46f935a1f9713852ee044190675ebe6a8fd668436b3afbcb6dc8acf"
+    },
+    {
+      "source_url": "https://gxo.com/news_article/gxo-signs-industry-first-multi-year-agreement-with-agility-robotics/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:11.683Z",
+      "source_archive_url": null,
+      "final_url": "https://gxo.com/news_article/gxo-signs-industry-first-multi-year-agreement-with-agility-robotics/",
+      "mime_type": "text/html",
+      "bytes": 200799,
+      "sha256": "e798bad6fc1aecc44debd08df773ca603cac276edead9ffb59efa133e9904e9e"
+    },
+    {
+      "source_url": "https://apptronik.com/apollo/apollo-2",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:11.687Z",
+      "source_archive_url": null,
+      "final_url": "https://apptronik.com/apollo/apollo-2",
+      "mime_type": "text/html",
+      "bytes": 41227,
+      "sha256": "4c86c9845b051935f7c0f4430129f76ded3342e61b151d4e739950ab2eee3a3b"
+    },
+    {
+      "source_url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:11.685Z",
+      "source_archive_url": null,
+      "final_url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+      "mime_type": "text/html",
+      "bytes": 191361,
+      "sha256": "01d5f5222e32fc476850410bdecccdf0fc664812244738d34cb57274442f7748"
+    },
+    {
+      "source_url": "https://www.hyundaimotorgroup.com/en/story/hyundai-motor-group-bloomberg-atlas-boston-dynamics-rmac",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:11.687Z",
+      "source_archive_url": null,
+      "final_url": "https://www.hyundaimotorgroup.com/en/story/hyundai-motor-group-bloomberg-atlas-boston-dynamics-rmac",
+      "mime_type": "text/html",
+      "bytes": 294215,
+      "sha256": "7964353206d2b9319521cd7c05a70bef7276dd995c31f422c9e6ebfe32469e3e"
+    },
+    {
+      "source_url": "https://www.figure.ai/news/f-03-at-bmw",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:13.179Z",
+      "source_archive_url": null,
+      "final_url": "https://www.figure.ai/news/f-03-at-bmw",
+      "mime_type": "text/html",
+      "bytes": 35806,
+      "sha256": "2ce74d3f2073f4995a3c46bb331c05ff9160080096afd87a3bbf4704ab0619db"
+    },
+    {
+      "source_url": "https://www.tesla.com/SI",
+      "status": "failed",
+      "captured_at": "2026-11-27T19:11:13.179Z",
+      "source_archive_url": null,
+      "error": "HTTP 403"
+    },
+    {
+      "source_url": "https://sanctuary.ai/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:13.179Z",
+      "source_archive_url": null,
+      "final_url": "https://sanctuary.ai/",
+      "mime_type": "text/html",
+      "bytes": 249389,
+      "sha256": "b1c2836f5dbccc189a3b6068384555782f3edee1dee5abff36afa7f65d482c64"
+    },
+    {
+      "source_url": "https://sanctuary.ai/resources/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/",
+      "status": "failed",
+      "captured_at": "2026-11-27T19:11:13.179Z",
+      "source_archive_url": null,
+      "error": "HTTP 404"
+    },
+    {
+      "source_url": "https://www.unitree.com/h1/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:13.889Z",
+      "source_archive_url": null,
+      "final_url": "https://www.unitree.com/h1/",
+      "mime_type": "text/html",
+      "bytes": 53660,
+      "sha256": "7815731f382ab13c3b4445ac94447045ae688b0c42abca04b0f144127dfdc9b5"
+    },
+    {
+      "source_url": "https://www.lejurobot.com/en/products/kuavo-my",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:13.888Z",
+      "source_archive_url": null,
+      "final_url": "https://www.lejurobot.com/en/products/kuavo-my",
+      "mime_type": "text/html",
+      "bytes": 56369,
+      "sha256": "0771cac1a39876ff08971fe492132fc91a1a2284ac96f26a850f3ff1557c5986"
+    },
+    {
+      "source_url": "https://www.limxdynamics.com/en/products/oli",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:13.888Z",
+      "source_archive_url": null,
+      "final_url": "https://www.limxdynamics.com/en/products/oli",
+      "mime_type": "text/html",
+      "bytes": 243192,
+      "sha256": "369caad36597e870980544195742f1fda7e81a8102199b2d242bdc8f11abd915"
+    },
+    {
+      "source_url": "https://www.booster.tech/cn",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:13.888Z",
+      "source_archive_url": null,
+      "final_url": "https://www.booster.tech/cn",
+      "mime_type": "text/html",
+      "bytes": 298225,
+      "sha256": "06beb9d599ff209caa1298bf997b3e0c56b04734282443a278f0b81e00779405"
+    },
+    {
+      "source_url": "https://www.gotokepler.com/productDetailK2?id=2",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:16.133Z",
+      "source_archive_url": null,
+      "final_url": "https://www.gotokepler.com/productDetailK2?id=2",
+      "mime_type": "text/html",
+      "bytes": 3890,
+      "sha256": "ed316defce45851e20bc919118eb612e9159e6589652f88050a951aeefd88a05"
+    },
+    {
+      "source_url": "https://neurarobotics.px.media/plk/cE/NEURA_Robotics_4NE1_Datasheet_Web.pdf",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:16.133Z",
+      "source_archive_url": null,
+      "final_url": "https://neurarobotics.px.media/plk/cE/NEURA_Robotics_4NE1_Datasheet_Web.pdf",
+      "mime_type": "application/pdf",
+      "bytes": 472070,
+      "sha256": "57504e75ada59f9c38c836135c8cce4fd0d3b8c6592772b1a90ca40f88ce3884"
+    },
+    {
+      "source_url": "https://hexagon.com/about/news-media/press-releases/2340225/hexagon-launches-aeon-a-humanoid-built-for-industry",
+      "status": "failed",
+      "captured_at": "2026-11-27T19:11:16.133Z",
+      "source_archive_url": null,
+      "error": "HTTP 403"
+    },
+    {
+      "source_url": "https://hexagon.com/about/news-media/press-releases/2026/hexagon-schaeffler-deploy-aeon-humanoids-across-global-factory-network",
+      "status": "failed",
+      "captured_at": "2026-11-27T19:11:16.133Z",
+      "source_archive_url": null,
+      "error": "HTTP 403"
+    },
+    {
+      "source_url": "https://www.youtube.com/watch?v=YddS-aI097Q",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:16.661Z",
+      "source_archive_url": null,
+      "final_url": "https://www.youtube.com/watch?v=YddS-aI097Q",
+      "mime_type": "text/html",
+      "bytes": 1357075,
+      "sha256": "245ca3b78f0bddd269246523705f87cc2f61bf448628252b4e4247175b31ce3d"
+    },
+    {
+      "source_url": "https://en.wandercraft.eu/calvin",
+      "status": "failed",
+      "captured_at": "2026-11-27T19:11:16.661Z",
+      "source_archive_url": null,
+      "error": "TLS handshake failed (EPROTO)"
+    },
+    {
+      "source_url": "https://www.renaultgroup.com/en/magazine/technology/calvin-a-new-generation-robot-is-born/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:16.661Z",
+      "source_archive_url": null,
+      "final_url": "https://www.renaultgroup.com/en/magazine/technology/calvin-a-new-generation-robot-is-born/",
+      "mime_type": "text/html",
+      "bytes": 441560,
+      "sha256": "900ad7b672c85ffcf5a1550672a617dfa2368470673e27985715efe2433ce7d6"
+    },
+    {
+      "source_url": "https://www.wandercraft.eu/calvin",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:16.661Z",
+      "source_archive_url": null,
+      "final_url": "https://www.wandercraft.eu/calvin",
+      "mime_type": "text/html",
+      "bytes": 34965,
+      "sha256": "a787e4d10921179282cf915dc6581e3519fb54c6a8ae0c0725cb92ee73649872"
+    },
+    {
+      "source_url": "https://docs.pollen-robotics.com/hardware-guide/specifications/general/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:17.539Z",
+      "source_archive_url": null,
+      "final_url": "https://docs.pollen-robotics.com/hardware-guide/specifications/general/",
+      "mime_type": "text/html",
+      "bytes": 23087,
+      "sha256": "4600196083ac241c9eefdc757e767afd35932bc8692708746a02a38177f2eb59"
+    },
+    {
+      "source_url": "https://rainbowrobotics.github.io/rby1-dev/",
+      "status": "captured",
+      "captured_at": "2026-11-27T19:11:17.540Z",
+      "source_archive_url": null,
+      "final_url": "https://rainbowrobotics.github.io/rby1-dev/",
+      "mime_type": "text/html",
+      "bytes": 119836,
+      "sha256": "f1a3300786dab246d658b23bda881524efdf38322b12c97df0dc62450e621f3f"
+    }
+  ]
+}

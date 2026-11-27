@@ -55,3 +55,47 @@ Base G1 does not support secondary development; arm load varies greatly with pos
 - **Checks recorded**: Specifications / identity reviewed (limitations in notes)
 - **Model identity**: Unitree G1 (base) and G1 EDU, unitree.com/g1 accessed 2026-11-19; G1-A / G1-D / G1+ / G1-Comp / G1-Boxing are separate application variants not covered here
 - <https://www.unitree.com/g1/>
+
+## Per-attribute verification
+
+Standard: 1.0.0. The whole profile is not certified. Legacy payload and runtime strings remain unclassified until evidence establishes the metric and conditions.
+
+HRL: Pending audit.
+
+- **Sustained bilateral payload**: not_disclosed kg; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Peak bilateral payload**: not_disclosed kg; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Single-arm payload**: not_disclosed kg; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Unclassified payload claim**: not_disclosed kg; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Payload test conditions**: G1 maximum arm load approximately 2 kg; G1 EDU approximately 3 kg text; verification_tier=V1_OEM_Claim; verified_at=2026-11-27; conditions=Maximum arm load varies with arm extension; not a sustained bilateral or nominal-duty rating.; source=<https://www.unitree.com/g1/>.
+
+- **Idle or light-duty runtime**: not_disclosed h; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Runtime under rated load**: not_disclosed h; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Unclassified runtime claim**: 2 h; verification_tier=V1_OEM_Claim; verified_at=2026-11-27; conditions=Approximate OEM battery life; G1 base; task and load not disclosed.; source=<https://www.unitree.com/g1/>.
+
+- **Charging time**: not_disclosed h; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Battery swap mechanism**: not_disclosed; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Battery swap time**: not_disclosed min; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Task autonomy level**: not_disclosed; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Task success rate**: not_disclosed %; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Number of trials**: not_disclosed trials; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Task environment**: not_disclosed; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Mean time between interventions**: not_disclosed min; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Speed relative to a human**: not_disclosed ratio; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Source video speed multiplier**: not_disclosed x; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+Comparison caveats: Do not compare peak, single-arm or unclassified payload directly with sustained bilateral payload. Only sustained bilateral payload is eligible for the default payload comparison; undisclosed values are excluded. Runtime requires the same workload and charging interval; a battery figure alone is not shift availability. Success rates require the same task, environment, autonomy level, protocol and sample-size context. A grade describes one source-backed attribute, never the entire robot. Missing evidence is not evidence of absence.

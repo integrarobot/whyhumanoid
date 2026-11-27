@@ -14,6 +14,8 @@
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { isDeepStrictEqual } from 'node:util';
+import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import { readLegacySnapshot } from './export-humanoids.mjs';
 import { LIVE_SALES_OPEN, PLAN } from '../server/src/pricing.js';
 import { pageRelations } from './relations.mjs';
@@ -298,6 +300,12 @@ export function renderFooterHelp() {
   return `<!-- footer-help:start --><style>${FOOTER_CSS}.foot .site-foot{margin:0;flex-basis:100%}</style>${renderSiteFooterNav()}<!-- footer-help:end -->`;
 }
 export function renderIndex(html, data) {
+  // Preserve the legacy values, but do not present ambiguous load/endurance as normalised metrics.
+  html = html.replace("readout('Payload', F(m, 'Payload/carry (kg)'), 'kg')", "readout('Payload claim', F(m, 'Payload/carry (kg)'), 'kg')")
+    .replace("readout('Runtime', F(m, 'Power (hours)'), 'h')", "readout('Runtime claim', F(m, 'Power (hours)'), 'h')");
+  const claimNote = '<p class="note" id="legacy-metric-caveat">Payload and runtime are legacy claims with conditions as recorded. They are not normalised sustained-load or rated-load measurements. <a href="/humanoids/#verification-comparison">Compare structured evidence</a> and read the <a href="/method/#verification-standard">verification standard</a>.</p>';
+  html = html.replace(/<p class="note" id="legacy-metric-caveat">[\s\S]*?<\/p>\s*/g, '');
+  html = html.replace('<div class="quad">', claimNote + '\n      <div class="quad">');
   const help = /<!-- footer-help:start -->[\s\S]*?<!-- footer-help:end -->/;
   if (!help.test(html)) throw new Error('index.html has no footer-help block');
   html = html.replace(help, () => renderFooterHelp());
@@ -323,7 +331,7 @@ export function renderIndex(html, data) {
   return html.replace(cats, () => renderCategories(data)).replace(adoption, () => carousel).replace(explorer, () => view.section).replace(block, (_, open, close) => `${open}${json}${close}`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   const exported = JSON.parse(readFileSync(new URL('data/humanoids-catalogue.json', root), 'utf8'));
   const manifest = JSON.parse(readFileSync(new URL('data/manifest.json', root), 'utf8'));
   const legacy = readLegacySnapshot();

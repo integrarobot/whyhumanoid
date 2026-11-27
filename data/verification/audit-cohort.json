@@ -1,0 +1,1183 @@
+{
+  "schema_version": "1.0.0",
+  "as_of": "2026-11-27",
+  "title": "Initial verification evidence review: 25-model cohort",
+  "reviewer": "Why Humanoid? editorial review",
+  "catalogue_snapshot": "2026-11-27T14:35:03.875Z",
+  "scope": "Initial primary-source review of 25 models across payload, energy runtime, task autonomy and industrial maturity, with additional version and customer/document cross-checks for selected models. No physical testing, performance replication or complete operational audit was performed.",
+  "selection_method": "Editorial cohort spanning North America, Europe and Asia; industrial products, household platforms and research robots; bipedal and wheeled configurations; mixed commercial and research visibility. This is not an objective world top-25 ranking or a representative statistical sample.",
+  "limitations": [
+    "A source review is not an independent audit.",
+    "Not established means absent or unresolved in the inspected sources, not absent everywhere.",
+    "A product-page claim remains V1 even when the page calls a section Technical Specifications.",
+    "Existing catalogue values are preserved; this overlay does not silently replace the data source.",
+    "HRL assessments cover only their named source-backed activity. No HRL4+, rated-load duty cycle or independent physical audit is claimed."
+  ],
+  "records": [
+    {
+      "entity_id": "1x-neo-home-robot-1",
+      "catalogue_id": 1,
+      "canonical_name": "1X NEO (Home Robot)",
+      "url": "https://whyhumanoid.com/humanoids/1x-neo-home-robot-1/",
+      "country": "Norway",
+      "hardware_generation": "NEO (Home Robot)",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.1x.tech/neo",
+          "checked_at": "2026-11-27",
+          "locator": "Hardware: Robot and Battery; Utility: Expert Mode",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "OEM distinguishes 55 lb carry, 154 lb lift and 18 lb arm load. Duration, reach and bilateral thermal protocol are not established.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "Four-hour runtime claim has no rated-load cycle; quick-charge claim lacks a state-of-charge window.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Foundational autonomy, scheduled remote Expert Mode and VR/mobile control coexist. Intervention frequency and L0-L3 level are not established.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Reservations do not establish a paid industrial pilot or scaled operation.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "agility-digit-5-in-development-6",
+      "catalogue_id": 6,
+      "canonical_name": "Agility Digit 5 (in development)",
+      "url": "https://whyhumanoid.com/humanoids/agility-digit-5-in-development-6/",
+      "country": "USA",
+      "hardware_generation": "Digit 5",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://www.agilityrobotics.com/solutions/digit-5",
+          "checked_at": "2026-11-27",
+          "locator": "Explore Digit; Autonomous; Integrated",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale",
+          "checked_at": "2026-11-27",
+          "locator": "Built for Heavier, More Versatile Work; Ready for Global Deployment",
+          "status": "readable",
+          "published_at": "2026-09-15"
+        },
+        {
+          "url": "https://gxo.com/news_article/gxo-signs-industry-first-multi-year-agreement-with-agility-robotics/",
+          "checked_at": "2026-11-27",
+          "locator": "2024 commercial Digit deployment; generation not named by customer",
+          "status": "readable",
+          "published_at": "2024-06-27"
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "oem_claim_reviewed",
+          "finding": "23 kg payload claim does not distinguish sustained and peak handling.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Digit5 launch specifies a 90-minute battery and nine-minute charge; no workload or charge interval. These announced figures do not establish loaded runtime or duty cycle.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Autonomous workflows and future software capabilities are described without intervention statistics.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "GXO confirms a commercial Digit deployment in 2024, while the 2026 launch explicitly attributes operating history to Digit4 and plans Digit5 early access for 2027. GXO evidence is not transferred to Digit5.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "apptronik-apollo-2-7",
+      "catalogue_id": 7,
+      "canonical_name": "Apptronik Apollo 2",
+      "url": "https://whyhumanoid.com/humanoids/apptronik-apollo-2-7/",
+      "country": "USA",
+      "hardware_generation": "Apollo 2",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://apptronik.com/apollo/apollo-2",
+          "checked_at": "2026-11-27",
+          "locator": "Battery: Built for More Uptime; platform and autonomy sections",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+          "checked_at": "2026-11-27",
+          "locator": "Apollo2 automotive kitting PoC at Mercedes; partner technical account",
+          "status": "readable",
+          "published_at": "2026-11-10"
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Payload for Apollo 2 is not established in the inspected page.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Swappable packs, tethering and opportunity charging are described; loaded runtime, swap method and time are not established.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "DeepMind identifies Apollo2 kitting at Mercedes. Its96% success statement lacks n_trials in the inspected article, so no comparable success-rate claim is admitted. Software partner account is not an independent audit.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Partner technical account identifies Apollo2 on active Mercedes lines. Commercial terms and independent customer confirmation for this generation remain open; no score is forced from the partnership account.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "boston-dynamics-atlas-industrial-electric-16",
+      "catalogue_id": 16,
+      "canonical_name": "Boston Dynamics Atlas (industrial electric)",
+      "url": "https://whyhumanoid.com/humanoids/boston-dynamics-atlas-industrial-electric-16/",
+      "country": "USA",
+      "hardware_generation": "Atlas industrial electric",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://bostondynamics.com/products/atlas/",
+          "checked_at": "2026-11-27",
+          "locator": "High Power; Operate Continuously; Commercial Vision",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf",
+          "checked_at": "2026-11-27",
+          "locator": "Page 2, Weight Capacity: One-Handed; Rev 10/15/2026",
+          "status": "readable",
+          "published_at": "2026-10-15"
+        },
+        {
+          "url": "https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks",
+          "checked_at": "2026-11-27",
+          "locator": "September 21, 2026: RMAC opening and Atlas sequencing training",
+          "status": "readable",
+          "published_at": "2026-09-21"
+        },
+        {
+          "url": "https://www.hyundaimotorgroup.com/en/story/hyundai-motor-group-bloomberg-atlas-boston-dynamics-rmac",
+          "checked_at": "2026-11-27",
+          "locator": "RMAC training ground, before production deployment",
+          "status": "readable",
+          "published_at": "2026-09-30"
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Formal Atlas sheet Rev 2026-10-15 separates 30 kg sustained, 50 kg instant and 20 kg one-handed. Missing bilateral, duty and thermal protocol prevents the default sustained comparison.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "Formal sheet separates 4 h general battery life from 2 h heavy lifting, and lists 3 min autonomous change and 1.5 h charge. Load percentage and charge interval remain undisclosed; no duty cycle is derived.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Minimal-supervision claims lack intervention counts and exception-handling test protocol.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "hrl_3_source_assessed",
+          "finding": "OEM and Hyundai document physical sequencing training at RMAC. HRL3 is limited to this controlled site activity; Hyundai is a related party. Payment and production deployment are not established.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "figure-figure-03-30",
+      "catalogue_id": 30,
+      "canonical_name": "Figure Figure 03",
+      "url": "https://whyhumanoid.com/humanoids/figure-figure-03-30/",
+      "country": "USA",
+      "hardware_generation": "Figure 03",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://www.figure.ai/figure",
+          "checked_at": "2026-11-27",
+          "locator": "Figure 03 specifications",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://newsroom.bmwgroup.com/global/bmw-group-advances-the-use-of-physical-ai-in-production-with-figure-03-project-in-spartanburg",
+          "checked_at": "2026-11-27",
+          "locator": "Summary, Figure 03 demonstration and new sequencing use case",
+          "status": "readable",
+          "published_at": "2026-06-25"
+        },
+        {
+          "url": "https://www.figure.ai/news/f-03-at-bmw",
+          "checked_at": "2026-11-27",
+          "locator": "Figure 03 arrival and first logistics demonstration",
+          "status": "readable",
+          "published_at": "2026-06-30"
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "oem_claim_reviewed",
+          "finding": "20 kg payload is listed without sustained/peak classification.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "Five-hour runtime is listed without load, task or charging window.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Autonomous household-task claim has no n_trials or intervention data.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "hrl_3_corroborated",
+          "finding": "BMW names Figure03 in its Spartanburg demonstration; Figure confirms arrival. HRL3 covers this bounded case. Figure02 production totals are not transferred, and payment is not established.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "tesla-optimus-gen-2-86",
+      "catalogue_id": 86,
+      "canonical_name": "Tesla Optimus Gen 2",
+      "url": "https://whyhumanoid.com/humanoids/tesla-optimus-gen-2-86/",
+      "country": "USA",
+      "hardware_generation": "Optimus Gen 2",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.tesla.com/SI",
+          "checked_at": "2026-11-27",
+          "locator": "Tesla Optimus",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Gen 2 payload is not established by this current, generation-unspecified page.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Gen 2 runtime and charging protocol are not established by this source.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Autonomous humanoid development is an aim; measured operating autonomy for Gen 2 is not established.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Recruiting and development text does not establish a paid external pilot.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "sanctuary-ai-phoenix-80",
+      "catalogue_id": 80,
+      "canonical_name": "Sanctuary AI Phoenix",
+      "url": "https://whyhumanoid.com/humanoids/sanctuary-ai-phoenix-80/",
+      "country": "Canada",
+      "hardware_generation": "Phoenix; generation unresolved",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://sanctuary.ai/",
+          "checked_at": "2026-11-27",
+          "locator": "Physical AI Embodiment Roadmap and hardware-agnostic positioning",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://sanctuary.ai/resources/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/",
+          "checked_at": "2026-11-27",
+          "locator": "Catalogue source URL",
+          "status": "http_404",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Phoenix version-specific payload is not established on the current landing page.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Phoenix loaded runtime and charge conditions are not established.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Current hardware-agnostic AI positioning cannot be treated as Phoenix-specific autonomous task evidence.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Current solutions marketing does not establish Phoenix commercial maturity. The catalogue Phoenix announcement returned 404.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "unitree-g1-138",
+      "catalogue_id": 138,
+      "canonical_name": "Unitree G1",
+      "url": "https://whyhumanoid.com/humanoids/unitree-g1-138/",
+      "country": "China",
+      "hardware_generation": "G1 base; G1 EDU kept separate",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.unitree.com/g1/",
+          "checked_at": "2026-11-27",
+          "locator": "G1 Parameter: Arm Maximum Load, Battery Life; footnotes 2, 5 and 8",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "G1 and G1 EDU have different approximate maximum arm loads (2 kg and 3 kg). Posture materially changes the limit; nominal cycle rating not established.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "About two hours battery life is unclassified by task/load; quick-release battery does not prove autonomous swapping.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Some sample capabilities remain under development; demonstrations do not define operating autonomy.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "A purchasable research platform is not evidence of paid industrial pilot operation.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "unitree-h1-93",
+      "catalogue_id": 93,
+      "canonical_name": "Unitree H1",
+      "url": "https://whyhumanoid.com/humanoids/unitree-h1-93/",
+      "country": "China",
+      "hardware_generation": "H1; excludes H1-2",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.unitree.com/h1/",
+          "checked_at": "2026-11-27",
+          "locator": "H1 Parameter versus H1-2 Parameter; Arm normal load",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "oem_claim_reviewed",
+          "finding": "The table does not provide an arm load for H1. H1-2 rated 7 kg and peak 21 kg must not be transferred to H1.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "864 Wh and replaceable battery are not a duration or loaded-cycle test.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Locomotion-autonomy wording does not establish autonomous manipulation or intervention rate.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Research-platform availability does not establish an industrial paid deployment.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "ubtech-walker-s2-142",
+      "catalogue_id": 142,
+      "canonical_name": "Ubtech Walker S2",
+      "url": "https://whyhumanoid.com/humanoids/ubtech-walker-s2-142/",
+      "country": "China",
+      "hardware_generation": "Walker S2",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
+          "checked_at": "2026-11-27",
+          "locator": "Autonomous Battery Swapping; Deep Squat and Stoop Lifting",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "15 kg handling is claimed within a 0-1.8 m workspace; sustained versus peak duration is not established.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "OEM explicitly describes autonomous hot swapping within three minutes; 24/7 is not measured loaded uptime.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Co-Agent and swarm-control descriptions do not supply intervention counts or n_trials.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Mass-production-and-delivery wording alone does not satisfy external-unit and recurrent-customer HRL gates.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "agibot-a2-a2-ultra-a2-lite-143",
+      "catalogue_id": 143,
+      "canonical_name": "Agibot A2 (A2 Ultra / A2 Lite)",
+      "url": "https://whyhumanoid.com/humanoids/agibot-a2-a2-ultra-a2-lite-143/",
+      "country": "China",
+      "hardware_generation": "A2 Ultra only; A2 Lite excluded from normalized values",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.agibot.com/products/A2_Ultra",
+          "checked_at": "2026-11-27",
+          "locator": "Product Parameters: A2 Ultra and A2 LITE",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "About 2 kg maximum arm load is stated; nominal sustained duty is not established.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "A2 Ultra: standing 3 h, walking 1.5 h+; A2 Lite differs. Two-hour charge has no stated state-of-charge window.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Autonomous walking and controller claims do not establish manipulation autonomy or MTBI.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Commercial-scale language is not independent evidence of deliveries, payment or customer operation.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "fourier-gr-1-32",
+      "catalogue_id": 32,
+      "canonical_name": "Fourier GR-1",
+      "url": "https://whyhumanoid.com/humanoids/fourier-gr-1-32/",
+      "country": "China",
+      "hardware_generation": "GR-1 documentation; exact supplied configuration requires confirmation",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://support-old.fftai.com/docs/GR-X-Humanoid-Robot/GR1/GR-1_Introduction/",
+          "checked_at": "2026-11-27",
+          "locator": "Robot specifications: performance; battery and adapter",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Approximately 3 kg single-hand load appears in the technical guide; reach and nominal duty conditions are not established.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Guide states approximately 60 min endurance, 45 min walking and 315 min charging; loaded cycle and charge window not established.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "SDK and motion capabilities do not establish task autonomy or intervention rate.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Commercializability description is not evidence of paid external deployments.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "leju-kuavo-49",
+      "catalogue_id": 49,
+      "canonical_name": "Leju Kuavo",
+      "url": "https://whyhumanoid.com/humanoids/leju-kuavo-49/",
+      "country": "China",
+      "hardware_generation": "Kuavo; exact version unresolved",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.lejurobot.com/en/products/kuavo-my",
+          "checked_at": "2026-11-27",
+          "locator": "KUAVO 4Pro product page; product overview",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Critical specifications are embedded in images; exact payload and test conditions are not established in readable text.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Loaded endurance and charging conditions are not established in inspected text.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Research and industrial-solution listings do not establish task-level autonomy.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "The catalogue generic Kuavo label spans versions; HRL is not assigned across generations.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "limx-oli-51",
+      "catalogue_id": 51,
+      "canonical_name": "LimX Oli",
+      "url": "https://whyhumanoid.com/humanoids/limx-oli-51/",
+      "country": "China",
+      "hardware_generation": "Oli series; configurations not conflated",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.limxdynamics.com/en/products/oli",
+          "checked_at": "2026-11-27",
+          "locator": "Quick-Swap Battery Design; configuration footnote",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Payload and standardized sustained cycle are not established in the inspected source.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Quick-swap design is stated; autonomous replacement, loaded endurance and swap time are not established.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Developer-platform capabilities are not a measured autonomy level.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Buy-now and research-development positioning do not establish recurrent industrial deployment.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "booster-t1-14",
+      "catalogue_id": 14,
+      "canonical_name": "Booster T1",
+      "url": "https://whyhumanoid.com/humanoids/booster-t1-14/",
+      "country": "China",
+      "hardware_generation": "T1; current T2/K1 excluded",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.booster.tech/cn",
+          "checked_at": "2026-11-27",
+          "locator": "Redirect target of /robots/ and /booster-t1",
+          "status": "generation_mismatch",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "T1-specific payload is not established: legacy paths now show T2 and K1.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "T1 battery endurance and charge protocol are not established from current redirected pages.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Current T2/K1 capabilities cannot be transferred to T1.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "The redirect does not prove T1 inactivity or maturity; model-specific archival evidence required.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "engineai-pm01-150",
+      "catalogue_id": 150,
+      "canonical_name": "Engineai PM01",
+      "url": "https://whyhumanoid.com/humanoids/engineai-pm01-150/",
+      "country": "China",
+      "hardware_generation": "PM01 EDU",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://en.engineai.com.cn/open/docs/pm01/01/product-overview?entry=docs&product=pm01",
+          "checked_at": "2026-11-27",
+          "locator": "PM01 Development Guide, 1.2 Robot Specifications (updated 2026-10-12)",
+          "status": "readable",
+          "published_at": "2026-10-12"
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Arm reach is listed; payload and repeated-cycle load are not established in this table.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "PM01 EDU: approximate two-hour battery life and approximate two-hour full charge; loaded task and initial charge state not established.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Open developer control does not establish autonomous task success or MTBI.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Education/research application positioning does not establish paid industrial operation.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "kepler-forerunner-k2-215",
+      "catalogue_id": 215,
+      "canonical_name": "Kepler Forerunner K2",
+      "url": "https://whyhumanoid.com/humanoids/kepler-forerunner-k2-215/",
+      "country": "China",
+      "hardware_generation": "Forerunner K2",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://www.gotokepler.com/productDetailK2?id=2",
+          "checked_at": "2026-11-27",
+          "locator": "Forerunner K2 product route",
+          "status": "javascript_required",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Product requires JavaScript; source text does not establish payload or conditions.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Source text does not establish loaded endurance or charging.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "A task-level autonomy classification is not established by the retrieved page.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "No HRL gate is considered satisfied from a JavaScript placeholder.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "pal-talos-61",
+      "catalogue_id": 61,
+      "canonical_name": "PAL Talos",
+      "url": "https://whyhumanoid.com/humanoids/pal-talos-61/",
+      "country": "Spain",
+      "hardware_generation": "TALOS",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://pal-robotics.com/robot/talos/",
+          "checked_at": "2026-11-27",
+          "locator": "6kg Payload per arm; Specifications",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://pal-robotics.com/wp-content/uploads/2025/09/TALOS-DataSheet-1.pdf",
+          "checked_at": "2026-11-27",
+          "locator": "Page 2, Arm/Gripper payload",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "oem_claim_reviewed",
+          "finding": "OEM states 6 kg for each fully extended arm; a sustained thermal-duty protocol is not supplied.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "Source separates 3 h standby and 1.5 h walking; neither is a rated-manipulation cycle.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Open research software and control rates are not task-level autonomy evidence.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Research availability is distinct from a paid industrial pilot.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "neura-4ne1-gen-4-announced-58",
+      "catalogue_id": 58,
+      "canonical_name": "Neura 4NE1 (Gen 4 announced)",
+      "url": "https://whyhumanoid.com/humanoids/neura-4ne1-gen-4-announced-58/",
+      "country": "Germany",
+      "hardware_generation": "4NE1; Gen 4 mapping unresolved",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://neura-robotics.com/products/4ne1/",
+          "checked_at": "2026-11-27",
+          "locator": "The Next Generation of Industrial Work; Different Models",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://neurarobotics.px.media/plk/cE/NEURA_Robotics_4NE1_Datasheet_Web.pdf",
+          "checked_at": "2026-11-27",
+          "locator": "Pages1-2, V7/05.06.2026; application-dependent payload footnote",
+          "status": "readable",
+          "published_at": "2026-06-05"
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "oem_claim_reviewed",
+          "finding": "Current page gives10-20kg; formalV7 datasheet gives20kg arms and says load depends on location, end effector and configuration. Leg-supported100kg is a different condition. Gen4 mapping remains unresolved.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Version-specific loaded endurance and charge conditions are not established here.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Remote operation and autonomous/cognitive positioning coexist; intervention rate is not established.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Current generic 4NE1 page does not independently validate Gen 4 paid deployment.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "hexagon-aeon-40",
+      "catalogue_id": 40,
+      "canonical_name": "Hexagon AEON",
+      "url": "https://whyhumanoid.com/humanoids/hexagon-aeon-40/",
+      "country": "Sweden",
+      "hardware_generation": "AEON launch version",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://hexagon.com/about/news-media/press-releases/2340225/hexagon-launches-aeon-a-humanoid-built-for-industry",
+          "checked_at": "2026-11-27",
+          "locator": "17 June 2025 announcement; AEON capabilities and pilots",
+          "status": "readable",
+          "published_at": "2025-06-17"
+        },
+        {
+          "url": "https://www.volvocars.com/uk/media/press-releases/5B712552CE36E240/",
+          "checked_at": "2026-11-27",
+          "locator": "26 November 2026: AEON training and validation in Ghent",
+          "status": "readable",
+          "published_at": "2026-11-26"
+        },
+        {
+          "url": "https://robotics.hexagon.com/product/",
+          "checked_at": "2026-11-27",
+          "locator": "Spec sheet: Strong",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://hexagon.com/about/news-media/press-releases/2026/hexagon-schaeffler-deploy-aeon-humanoids-across-global-factory-network",
+          "checked_at": "2026-11-27",
+          "locator": "Pilot completed in 2025; multi-year future deployment plan",
+          "status": "readable",
+          "published_at": "2026-04-22"
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "OEM: 15 kg short-term and 8 kg constant carry. Volvo: 10 kg carry without conditions. These contexts remain unresolved and are not ranked together.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "OEM claims 5 h and a one-minute self-change; workload and uninterrupted-power evidence are insufficient for rated-load runtime or autonomous-hot-swap normalization.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Mission-control and autonomy capabilities are OEM descriptions, not task evaluation results.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "hrl_3_corroborated",
+          "finding": "Volvo confirms AEON training/validation in Ghent on 2026-11-26; its factory pilot is planned for 2027. HRL3 is supported; announced fleet plans do not prove operating scale or paid status.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "wandercraft-calvin-40-97",
+      "catalogue_id": 97,
+      "canonical_name": "Wandercraft Calvin-40",
+      "url": "https://whyhumanoid.com/humanoids/wandercraft-calvin-40-97/",
+      "country": "France",
+      "hardware_generation": "Calvin-40 launch version",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://www.youtube.com/watch?v=YddS-aI097Q",
+          "checked_at": "2026-11-27",
+          "locator": "Wandercraft official: Introducing Calvin-40, description published 2025-06-05",
+          "status": "readable",
+          "published_at": "2025-06-05"
+        },
+        {
+          "url": "https://en.wandercraft.eu/calvin",
+          "checked_at": "2026-11-27",
+          "locator": "Current manufacturer product route",
+          "status": "http_502",
+          "published_at": null
+        },
+        {
+          "url": "https://www.wandercraft.eu/about-us",
+          "checked_at": "2026-11-27",
+          "locator": "Timeline 2026: Calvin goes to work",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://www.renaultgroup.com/en/magazine/technology/calvin-a-new-generation-robot-is-born/",
+          "checked_at": "2026-11-27",
+          "locator": "Current tests at Douai; range of carrying claims; version mapping requires confirmation",
+          "status": "readable",
+          "published_at": "2026-06-26"
+        },
+        {
+          "url": "https://www.wandercraft.eu/calvin",
+          "checked_at": "2026-11-27",
+          "locator": "Current Calvin40 product page; first series delivery expected H1 2027",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "oem_claim_reviewed",
+          "finding": "Renault describes roughly30kg tyre handling and broader40-50kg carrying claims. Exact hardware revision and duration are unresolved, so no maximum is normalized across versions.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Loaded endurance and charging conditions are not established in this source.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Autonomous and voice-control descriptions do not define intervention frequency.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "hrl_3_source_assessed",
+          "finding": "Wandercraft names Calvin40 at Douai, and Renault documents current tests. HRL3 covers these bounded activities; investor/co-development relationship is disclosed. Future fleet and series-delivery targets are not deliveries.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "pollen-reachy-2-67",
+      "catalogue_id": 67,
+      "canonical_name": "Pollen Reachy 2",
+      "url": "https://whyhumanoid.com/humanoids/pollen-reachy-2-67/",
+      "country": "France",
+      "hardware_generation": "Reachy 2",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://pollen-robotics.com/reachy-2/",
+          "checked_at": "2026-11-27",
+          "locator": "Manipulation; Payload per arm; VR teleoperation",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://docs.pollen-robotics.com/hardware-guide/specifications/general/",
+          "checked_at": "2026-11-27",
+          "locator": "Formal architecture and configuration documentation; AI processing is customer supplied",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Approximately 3 kg per arm is stated; duration and extension conditions are not established.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "pending_audit",
+          "finding": "Rated-load endurance and charging are not established in this page.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "VR teleoperation and Python control are explicit; autonomy depends on the installed application.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Research-lab offering does not establish paid industrial operation.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "the-humanoid-hmnd-01-alpha-wheeled-bipedal-88",
+      "catalogue_id": 88,
+      "canonical_name": "The Humanoid HMND 01 (Alpha Wheeled / Bipedal)",
+      "url": "https://whyhumanoid.com/humanoids/the-humanoid-hmnd-01-alpha-wheeled-bipedal-88/",
+      "country": "UK",
+      "hardware_generation": "HMND 01 Alpha Wheeled; bipedal excluded",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://thehumanoid.ai/",
+          "checked_at": "2026-11-27",
+          "locator": "Core Product; proven-in-the-field case-study headlines",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Alpha Wheeled advertises up to 15 kg; sustained/peak distinction is not established.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "Average runtime is advertised as up to four hours; duty task and load are not specified.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "KinetIQ and fleet orchestration do not establish trial success or intervention frequency.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "POC and commercial-deal headlines need primary case evidence before HRL4+; wheeled/bipedal versions kept separate.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "rainbow-rb-y1-162",
+      "catalogue_id": 162,
+      "canonical_name": "Rainbow RB-Y1",
+      "url": "https://whyhumanoid.com/humanoids/rainbow-rb-y1-162/",
+      "country": "South Korea",
+      "hardware_generation": "RB-Y1; A/M configurations separate",
+      "review_status": "cross_source_documentary_review",
+      "sources": [
+        {
+          "url": "https://rainbow-robotics.com/en/products/rb-y1/",
+          "checked_at": "2026-11-27",
+          "locator": "Arm Payload; research platform description; Battery Capacity",
+          "status": "readable",
+          "published_at": null
+        },
+        {
+          "url": "https://rainbowrobotics.github.io/rby1-dev/",
+          "checked_at": "2026-11-27",
+          "locator": "Official developer manual; control architecture and configuration",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Current page states 3 kg per arm; load duration and reach test are not established.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "Battery capacities differ by A/M configuration; Wh is not a duration.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "Open SDK, leader/VR teaching and researcher-defined control prevent a single platform-wide autonomy assignment.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Research-platform delivery does not establish industrial paid-pilot operation.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    },
+    {
+      "entity_id": "addverb-elixis-105",
+      "catalogue_id": 105,
+      "canonical_name": "Addverb Elixis",
+      "url": "https://whyhumanoid.com/humanoids/addverb-elixis-105/",
+      "country": "India",
+      "hardware_generation": "Elixis biped only; Elixis-W excluded",
+      "review_status": "initial_source_review",
+      "sources": [
+        {
+          "url": "https://addverb.ai/humanoid-robot-elixis",
+          "checked_at": "2026-11-27",
+          "locator": "Technical Specifications: Elixis versus Elixis-W",
+          "status": "readable",
+          "published_at": null
+        }
+      ],
+      "areas": {
+        "payload": {
+          "status": "pending_audit",
+          "finding": "Elixis biped lists 5 kg per arm; do not transfer the wheeled 10 kg claim. Duration/extension test not established.",
+          "comparison_eligible": false
+        },
+        "runtime": {
+          "status": "oem_claim_reviewed",
+          "finding": "60-90 min battery backup is explicitly targeted; this is not measured runtime. Elixis-W battery figures remain separate.",
+          "comparison_eligible": false
+        },
+        "autonomy": {
+          "status": "pending_audit",
+          "finding": "VLA, reinforcement learning and control-stack descriptions do not establish task autonomy or MTBI.",
+          "comparison_eligible": false
+        },
+        "hrl": {
+          "status": "pending_audit",
+          "finding": "Product and brochure marketing do not establish paid pilot or external fleet gates.",
+          "comparison_eligible": false
+        }
+      },
+      "next_action": "Obtain version-specific test conditions and first-hand operational evidence; preserve the source before any upgrade."
+    }
+  ]
+}

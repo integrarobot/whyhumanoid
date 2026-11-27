@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "as_of": "2026-11-27",
+  "title": "Verification coverage baseline: November 2026",
+  "report_kind": "initial_baseline",
+  "period": {
+    "start": "2026-11-27",
+    "end": "2026-11-27",
+    "complete_quarter": false
+  },
+  "catalogue_models": 213,
+  "cohort_models": 25,
+  "source_screenings": 25,
+  "deep_audits_completed": 0,
+  "claims_recorded": 39,
+  "claims_by_tier": {
+    "V0_Unverified": 0,
+    "V1_OEM_Claim": 30,
+    "V2_Technical_Doc": 7,
+    "V3_Corroborated": 2,
+    "V4_Audited": 0
+  },
+  "claims_by_field": {
+    "payload_test_conditions": 11,
+    "runtime_unclassified_claim_hours": 11,
+    "payload_unclassified_claim_kg": 4,
+    "battery_swap_mechanism": 1,
+    "swap_time_minutes": 2,
+    "runtime_idle_hours": 3,
+    "payload_single_arm_kg": 3,
+    "hrl_status": 4
+  },
+  "hrl_assigned_models": 4,
+  "hrl_4_plus_confirmed_models": 0,
+  "hrl_unassessed_models": 21,
+  "loaded_runtime_protocols_validated": 0,
+  "sustained_bilateral_protocols_validated": 0,
+  "task_success_protocols_validated": 0,
+  "archive_capture_status": "partial",
+  "interpretation": "Unassigned HRL and zero confirmed HRL4+ mean insufficient evidence reviewed under these gates; they do not establish that no such deployments exist. This editorial cohort is not a statistical sample, and its counts cannot be generalized to the sector.",
+  "limitations": [
+    "A source review is not an independent audit.",
+    "Not established means absent or unresolved in the inspected sources, not absent everywhere.",
+    "A product-page claim remains V1 even when the page calls a section Technical Specifications.",
+    "Existing catalogue values are preserved; this overlay does not silently replace the data source.",
+    "HRL assessments cover only their named source-backed activity. No HRL4+, rated-load duty cycle or independent physical audit is claimed."
+  ],
+  "cohort_path": "/data/verification/audit-cohort.json",
+  "next_report": "A quarterly comparison requires another dated evidence review; this launch baseline does not claim a completed quarter."
+}

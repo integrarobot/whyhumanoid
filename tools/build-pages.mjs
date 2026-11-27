@@ -43,11 +43,20 @@ import { readStore as readEditorialStore } from './editorial-model.mjs';
 import { chartOffered, deskIndex, readDesk, readFundamentals, renderCompanyChart, renderInvestmentDesk, renderListingResearch, renderAgilityThesisSample, renderTheses, renderThesisOffer } from './investment-view.mjs';
 import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
 import { agentDiscoveryFiles, robotMarkdownPath, renderRobotMarkdown } from './agent-discovery.mjs';
+import { buildVerificationView, validateLedger } from '../server/src/verification/standard.js';
+import { renderVerificationProfile, renderVerificationComparison, renderVerificationStandard, renderVerificationMarkdown, renderVerificationReport } from './verification-view.mjs';
 
 export const SITE = 'https://whyhumanoid.com';
 const APP = `${SITE}/app/`;
 const root = new URL('../', import.meta.url);
 const read = (p) => JSON.parse(readFileSync(new URL(p, root), 'utf8'));
+const VERIFICATION = existsSync(new URL('data/verification/claims.json', root)) ? read('data/verification/claims.json') : { schema_version: '1.0.0', as_of: '2026-11-27', events: [] };
+validateLedger(VERIFICATION);
+const VERIFICATION_ARCHIVES = existsSync(new URL('data/verification/archives.json', root)) ? read('data/verification/archives.json') : { schema_version: '1.0.0', captures: [] };
+const verificationDate = () => VERIFICATION.as_of ?? '2026-11-27';
+const verificationView = (rb) => buildVerificationView(rb.path.split('/')[2], VERIFICATION.events, verificationDate());
+const verificationHead = () => `<link rel="stylesheet" href="/assets/verification.css?v=${assetVersion('assets/verification.css')}">\n`;
+const verificationTail = () => `\n<script src="/assets/verification.js?v=${assetVersion('assets/verification.js')}" defer></script>`;
 const REGISTRY = 'tools/permalinks.json';
 // Visit counts without cookies (approved split, phase 3): Cloudflare Web Analytics, free; the token is a public site id.
 const ANALYTICS = `<!-- Cloudflare Web Analytics: visit counts without cookies (approved split, phase 3) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76de8d3b4a534b91bd808e724f9c1594"}'></script><!-- End Cloudflare Web Analytics -->`;
@@ -397,7 +406,7 @@ function robotSummary(rb) {
   const parts = [`${rb.name} is a humanoid robot by ${rb.lab}${known(r.Country) ? ` (${r.Country})` : ''}.`];
   if (known(r['Platform / mobility'])) parts.push(`Platform: ${r['Platform / mobility']}.`);
   // Only plain numbers go into the summary sentence; every value, as recorded, is in Key facts.
-  const nums = [['height', 'Height (cm)', 'cm'], ['weight', 'Weight (kg)', 'kg'], ['payload', 'Payload/carry (kg)', 'kg'], ['runtime', 'Power (hours)', 'h']]
+  const nums = [['height', 'Height (cm)', 'cm'], ['weight', 'Weight (kg)', 'kg']]
     .filter(([, f]) => /^~?\d+(\.\d+)?$/.test(String(r[f] ?? '').trim())).map(([l, f, u]) => `${l} ${String(r[f]).trim()} ${u}`);
   if (nums.length) parts.push(`Recorded ${list(nums)}.`);
   if (known(r['Price / availability'])) parts.push(`Price and availability: ${r['Price / availability']}.`);
@@ -430,7 +439,8 @@ function robotPage(rb, model) {
 <article class="entity">
 ${robotHead(rb, m, summary)}
 ${known(r['Buyer checks']) ? `<p class="note"><b>Before comparing:</b> ${text(r['Buyer checks'])}</p>` : ''}
-<section><h2>Key facts</h2>${kv(SPEC_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
+<section><h2>Key facts</h2>${kv(SPEC_FIELDS.map(([l, f]) => [f === 'Payload/carry (kg)' ? 'Legacy payload or carry claim (unclassified)' : f === 'Power (hours)' ? 'Legacy runtime claim (unclassified)' : l, text(r[f])]))}<p class="key">Imported specification claims remain pending attribute-level audit unless the structured evidence below identifies the relevant value, source and conditions.</p></section>
+${renderVerificationProfile(rb, verificationView(rb), VERIFICATION_ARCHIVES)}
 <section><h2>Market</h2>${kv(MARKET_FIELDS.map(([l, f]) => [l, text(r[f])]))}</section>
 <section><h2>Company</h2>${kv([['Maker', m ? `<a href="${m.path}">${esc(rb.lab)}</a>` : esc(rb.lab)], ...COMPANY_FIELDS.map(([l, f]) => [l, f === 'Valuation' ? fundingValue(r[f]) : text(r[f])])])}${links.length ? `<p class="links">${links.join(' ')}</p>` : ''}</section>
 <section><h2>Deployment records</h2>${rb.summary ? summaryHtml(rb.summary, model, { head: `${rb.summary.records} deployment record${rb.summary.records === 1 ? '' : 's'} in the database ${rb.summary.records === 1 ? 'names' : 'name'} ${rb.summary.model_line_only ? 'the model line of this robot, not necessarily this version' : 'this robot or its model line'}.`, otherLabel: 'Organisation' }) + RECORDS_NOTE : '<p>No deployment record in the database names this robot or its model line. The database records only deployments with a public source reviewed by Integrarobot, so this is not evidence that the robot has no deployments.</p>'}</section>
@@ -441,7 +451,7 @@ ${renderNamedBy(model.integrators.providers.filter((p) => p.links.robots.some((x
 <p class="meta">Values as recorded in the free Humanoids catalogue, data as of ${esc(String(model.snapshot).slice(0, 10))}. Also on the <a href="/#${esc(rb.slug)}">catalogue page</a>.</p>
 </article>`;
   const markdown = robotMarkdownPath(rb);
-  return page({ title: `${rb.name} by ${rb.lab}: specifications and sources · Why Humanoid?`, description: clip(`${summary} Specifications, sources and deployment cases.`), path: rb.path, body, type: 'article', section: 'humanoids', head: `<link rel="alternate" type="text/markdown" href="${esc(markdown)}">\n` });
+  return page({ title: `${rb.name} by ${rb.lab}: specifications and sources · Why Humanoid?`, description: clip(`${summary} Specifications, sources and deployment cases.`), path: rb.path, body, type: 'article', section: 'humanoids', head: `<link rel="alternate" type="text/markdown" href="${esc(markdown)}">\n${verificationHead()}`, tail: verificationTail() });
 }
 
 function publicRobotMarkdown(rb, model) {
@@ -460,7 +470,7 @@ function publicRobotMarkdown(rb, model) {
     ],
     links: LINK_FIELDS.map(([label, field]) => [label, r[field]]),
     cases: rb.cases.map((c) => [c.organisations.map((o) => o.name).filter(Boolean).join(' and ') || c.slug, casePath(c)]),
-  });
+  }) + '\n' + renderVerificationMarkdown(verificationView(rb));
 }
 
 // ---------- company page ----------
@@ -655,11 +665,12 @@ function humanoidsCategory(model) {
     `<tr><td><a href="${rb.path}">${esc(rb.name)}</a>${classificationOf(rb) ? ` <span class="dim">(${esc(classificationOf(rb).label.toLowerCase())})</span>` : ''}</td><td>${rb.maker ? `<a href="${rb.maker.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</td><td>${esc(rb.facet.c.join(' / ') || '')}</td><td>${esc(rb.record['Platform / mobility'] || '')}</td></tr>`).join('');
   const body = `${categoryHead(c, model)}
 <p>All ${model.robots.length} entries of the catalogue are free, each with its own page: specifications, maker, funding, sources and a summary of its deployment records. ${model.robots.length - software.length - uncertain.length} are humanoid robot models${uncertain.length ? `; ${uncertain.length} ${uncertain.length === 1 ? 'is' : 'are'} listed with an uncertain scope (${uncertain.map((rb) => `${esc(rb.name)} by ${esc(rb.lab)}: ${esc(classificationOf(rb).label.toLowerCase())}`).join('; ')})` : ''}${software.length ? `; ${software.length} are software or AI models recorded in the Humanoids catalogue, listed apart below and not counted as robots` : ''}. ${movedList.length} former entries were reclassified into other categories and keep a page at their address (listed below). The <a href="/#humanoids">interactive catalogue</a> adds search, filters and charts.</p>
+${renderVerificationComparison(sorted.filter((rb) => !classificationOf(rb)), new Map(sorted.map((rb) => [rb.id, verificationView(rb)])), verificationDate())}
 <div class="scroll"><table><thead><tr><th scope="col">Robot</th><th scope="col">Maker</th><th scope="col">Company country</th><th scope="col">Platform</th></tr></thead><tbody>${rows}</tbody></table></div>
 ${software.length ? `<section><h2>Software and AI models in the Humanoids catalogue <span class="dim">(${software.length})</span></h2><p>Recorded in the Humanoids catalogue but, by their own records, software or AI models rather than robots. Their pages and addresses stay; they are not counted as humanoid robots.</p><div class="scroll"><table><thead><tr><th scope="col">Entry</th><th scope="col">Maker</th><th scope="col">What its record says</th></tr></thead><tbody>${software.map((rb) => `<tr><td><a href="${rb.path}">${esc(rb.name)}</a></td><td>${rb.maker ? `<a href="${rb.maker.path}">${esc(rb.lab)}</a>` : esc(rb.lab)}</td><td>${classificationOf(rb).excerpts.map((e) => `${esc(e.field)}: “${esc(e.text)}”`).join('; ')}</td></tr>`).join('')}</tbody></table></div></section>` : ''}
 <section><h2>Moved to other categories <span class="dim">(${movedList.length})</span></h2><p>Former catalogue entries now reclassified in another category. Their pages stay at the same address as historical records with their last values; they are not counted here.</p><ul>${movedList.map((m) => `<li><a href="/humanoids/${esc((read('tools/permalinks.json').robots[m.id] ?? [])[0] ?? '')}/">${esc(m.record.Robot)}</a> by ${esc(m.record.Lab)}: now in <a href="${esc(m.to.path)}">${esc(m.to.label)}</a> as “${esc(m.to.name)}”</li>`).join('')}</ul></section>
 <p class="meta">Free catalogue snapshot ${esc(model.snapshot)}.</p>`;
-  return catPage(c, model, body, `All ${model.robots.length} humanoid robots in the free Why Humanoid? catalogue, each with specifications, maker, funding, sources and a deployment summary.`);
+  return catPage(c, model, body, `All ${model.robots.length} humanoid robots in the free Why Humanoid? catalogue, each with specifications, maker, funding, sources and a deployment summary.`, { head: verificationHead(), tail: verificationTail() });
 }
 
 // Deployments (Javier, 24 Nov 2026): every case public with its summary, filters and adoption views
@@ -1074,15 +1085,17 @@ function comparatorMethod() {
 function methodPage(model) {
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, 'Method']])}
 <article class="entity">
-<p class="kicker">Method and sources</p>
-<h1>How Why Humanoid? records robots and deployments</h1>
-<p class="lede">Why Humanoid? records what named sources say about humanoid robots and the robots around them, the companies that make them and the organisations that test or use them. Every value is shown as recorded, with its source; a record is a claim, not a verified fact.</p>
+<p class="kicker">Method, evidence and editorial governance</p>
+<h1>Why Humanoid? Verification Standard <em>v1.0</em></h1>
+<p class="lede">Understand what a robotics claim means, which conditions it covers and what evidence supports it. Verification is recorded per attribute. A source-linked catalogue entry is not an independently verified robot.</p>
+${renderVerificationStandard()}
+<p><a href="/reports/verification/">Read the first verification coverage report and its 25-model evidence review →</a></p>
 <section><h2>Robots</h2><p>The catalogue holds ${model.robots.length} humanoid robots with their specifications, company and market fields, links and the date their sources were last checked. All of it is free. A value the sources do not give is shown as not published or not disclosed, never estimated.</p></section>
 <section id="deployments"><h2>Deployment records and cases</h2><p>A deployment record is one claim from one source about an organisation, a robot and a task. One deployment, a <b>case</b>, can have several records: an announcement, a pilot, a later report. Each record keeps who made the claim and when, its status as recorded, a verification label and its source. Most cases concern humanoid robots; some concern adjacent platforms (for example legged or wheeled robots) where the source names them, and none is reclassified by guesswork.</p>
 <p><b>Current status of a case.</b> The status recorded by its most recent dated source. A source date is a period: a day is itself, a month or a year covers the whole period, and an impossible date is not a date. When the latest sources cannot be ordered (a year and a day inside it) or share the same day and disagree, the most advanced of their statuses is shown and the case says so: a tie-break, not new evidence. The order is in operation, then pilot or trial, then a vendor's unconfirmed claim of operation, then announced. A later source that records less, such as a planned expansion or a paused pilot, is what the case shows now. A case whose sources are all undated is grouped apart, with the most advanced status its records state.</p>
 <p><b>The evolution chart</b> follows a different rule on purpose: by each date, the most advanced status documented so far. It shows the history of the evidence, so its totals differ from today's status.</p>
 ${kv([['In operation', 'The source says the robot is working in operation.'], ['Pilot or trial', 'The source describes a pilot, trial or test.'], ['Announced', 'Planned or agreed, not evidence of work.'], ['Unconfirmed', 'Claimed by a vendor, or unresolved.']])}
-<p>Verification labels say who reported the claim, as recorded: customer confirmed, partner reported, vendor reported, media reported or unresolved. They describe the source, not an independent check: a record is a claim as recorded.</p>
+<p><b>Legacy reporting labels.</b> These are not V0–V4 attribute grades and do not assign an HRL level. They say who reported the claim, as recorded: customer confirmed, partner reported, vendor reported, media reported or unresolved. They describe the source, not an independent check: a record is a claim as recorded.</p>
 <p><b>Legacy evidence codes.</b> Some complete subscriber records carry a code from E0 to E5. No definition of these codes exists in the research workbook or in the project's documentation, so they are not a quality scale: Why Humanoid? does not rank, filter, count or summarise records by them, and a code implies no confidence and no independent verification. The complete record keeps the code exactly as recorded, labelled as an undefined legacy code. What tells you how far to rely on a record is what it shows: its source and publication date, who reported it, its status as recorded and the review scope stated with it.</p></section>
 <section><h2>Selected evidence</h2><p>Each robot and company page shows one of its records with its status as recorded, who reported it (its verification label), its source and publication date. The record is chosen by a fixed rule among those with a source link and a verification other than unresolved: the most advanced status as recorded (in operation, then pilot or trial, then a vendor's claim of operation, then announced), then a primary source (customer, maker or partner) before the press, then customer confirmation, then the latest publication, then a record with a metric. The claim text, notes and the other records stay with the Deployments subscription.</p></section>
 <section><h2>Robots, companies and records</h2><p>A record is linked to a catalogue robot only when it names that model or its model line, never because it names the maker alone. When it names the model line, the page says the record may concern another version. Companies are identified by the organisation identifier in our research or by the maker's name; no corporate data is added.</p></section>
@@ -1095,7 +1108,7 @@ ${comparatorMethod()}
     ['Data subscription', `Complete Deployments and complete Components, ${esc(price())} billed annually: each case's site, commercial relationship, task description, workflow, integration, timeline, every claim, metrics, evidence relations, confidence, review notes and open questions; each product's full technical passport with the source of every field; detailed search and comparisons. Research and data, not a personalised recommendation.`],
   ])}<p>Public counts never reveal a single record: the report groups anything under ${model.aggregates.min_cell} records.</p></section>
 </article>`;
-  return page({ title: 'Method and sources · Why Humanoid?', description: 'How Why Humanoid? records humanoid robots and deployment records: statuses as recorded, verification labels, links between robots and companies, updates and public data.', path: '/method/', body, type: 'article' });
+  return page({ title: 'Verification Standard v1.0, method and sources · Why Humanoid?', description: 'Why Humanoid? Verification Standard v1.0: evidence tiers V0–V4, industrial readiness HRL, comparable specifications, source history, corrections and editorial independence.', path: '/method/', body, type: 'article', head: verificationHead(), tail: verificationTail() });
 }
 
 export function sitemapUrls(model) {
@@ -1103,7 +1116,7 @@ export function sitemapUrls(model) {
   return [...sitemapCore(model), ...editorialUrls(readEditorialStore(root))];
 }
 function sitemapCore(model) {
-  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/agents/demo/', '/about/', '/terms/', '/privacy/', '/reports/deployment-records/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
+  return ['/', ...CATEGORIES.map((c) => c.path), '/companies/', '/subscribe/', '/agents/', '/agents/demo/', '/about/', '/terms/', '/privacy/', '/reports/deployment-records/', '/reports/verification/', '/method/', ...model.robots.map((r) => r.path), ...model.companies.map((c) => c.path), ...model.otherRobots.map((r) => r.path), ...REPORTS.map(reportPath), ...[...model.cm.products, ...model.cm.software].map((r) => `/components/${r.component_id.toLowerCase()}/`), ...model.cases.map(casePath)];
 }
 function sitemap(model) {
   const lastmod = String(model.snapshot).slice(0, 10);
@@ -1162,6 +1175,7 @@ export function buildPages(registry = readRegistry()) {
   files.set('robots/index.html', redirectPage('/humanoids/', 'the humanoid robots'));
   files.set('companies/index.html', companiesIndex(model));
   files.set('reports/deployment-records/index.html', reportPage(model));
+  files.set('reports/verification/index.html', page({ title: 'Verification coverage baseline: November 2026 · Why Humanoid?', description: 'The first 25-model source review under Why Humanoid? Verification Standard v1.0, with per-attribute evidence coverage, source links and open questions.', path: '/reports/verification/', type: 'article', head: verificationHead(), body: `${crumbs([['/', 'Why Humanoid?'], ['/reports/', 'Reports'], [null, 'Verification coverage']])}<article class="entity"><h1>Verification coverage <em>November 2026</em></h1><p class="lede">An initial primary-source review of 25 selected humanoid models. This baseline makes the evidence gaps visible; it does not certify their performance.</p><p><a href="/method/#verification-standard">Read Verification Standard v1.0</a></p>${renderVerificationReport(read('data/verification/report-quarterly.json'), read('data/verification/audit-cohort.json'), VERIFICATION_ARCHIVES)}</article>` }));
   files.set('method/index.html', methodPage(model));
   files.set('sitemap.xml', sitemap(model));
   files.set('404.html', notFound());

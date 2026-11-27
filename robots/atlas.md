@@ -61,3 +61,47 @@ IP67; −20 to 40 °C claimed; distinguish instantaneous/sustained loads and spe
 - <https://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf>
 - <https://bostondynamics.com/products/atlas/>
 - <https://bostondynamics.com/news/boston-dynamics-globalfoundries-expand-robotics-collaboration/>
+
+## Per-attribute verification
+
+Standard: 1.0.0. The whole profile is not certified. Legacy payload and runtime strings remain unclassified until evidence establishes the metric and conditions.
+
+HRL: HRL_3.
+
+- **Sustained bilateral payload**: not_disclosed kg; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Peak bilateral payload**: not_disclosed kg; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Single-arm payload**: 20 kg; verification_tier=V2_Technical_Doc; verified_at=2026-11-27; conditions=One-handed capacity; exact reach, duration and thermal protocol not disclosed.; source=<https://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf>.
+
+- **Unclassified payload claim**: not_disclosed kg; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Payload test conditions**: 30 kg sustained; 50 kg instantaneous; 20 kg one-handed text; verification_tier=V2_Technical_Doc; verified_at=2026-11-27; conditions=Document distinguishes load categories; bilateral configuration, repeated-duty cycle and thermal limits not disclosed.; source=<https://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf>.
+
+- **Idle or light-duty runtime**: not_disclosed h; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Runtime under rated load**: not_disclosed h; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Unclassified runtime claim**: 4 h; verification_tier=V2_Technical_Doc; verified_at=2026-11-27; conditions=General battery life; task and load unspecified. Separate heavy-lifting statement is two hours, without a load percentage.; source=<https://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf>.
+
+- **Charging time**: not_disclosed h; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Battery swap mechanism**: not_disclosed; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Battery swap time**: 3 min; verification_tier=V2_Technical_Doc; verified_at=2026-11-27; conditions=Published autonomous-change duration; station and workload test protocol not disclosed; this does not establish hot swapping.; source=<https://bostondynamics.com/wp-content/uploads/2026/01/atlas-spec-sheet.pdf>.
+
+- **Task autonomy level**: not_disclosed; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Task success rate**: not_disclosed %; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Number of trials**: not_disclosed trials; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Task environment**: not_disclosed; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Mean time between interventions**: not_disclosed min; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Speed relative to a human**: not_disclosed ratio; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+- **Source video speed multiplier**: not_disclosed x; verification_tier=Pending_Audit; verified_at=null; conditions=not_disclosed.
+
+Comparison caveats: Do not compare peak, single-arm or unclassified payload directly with sustained bilateral payload. Only sustained bilateral payload is eligible for the default payload comparison; undisclosed values are excluded. Runtime requires the same workload and charging interval; a battery figure alone is not shift availability. Success rates require the same task, environment, autonomy level, protocol and sample-size context. A grade describes one source-backed attribute, never the entire robot. Missing evidence is not evidence of absence.

@@ -14,6 +14,7 @@ import { search } from './search/index.js';
 import { readGraph } from './relations/store.js';
 import { SUPPORT_EMAIL } from './support.js';
 import { USAGE_LIMITS } from './usage.js';
+import { publicVerificationStandard, verificationForRows } from './verification/snapshot.js';
 
 // Published snapshots of the categories that are not database tables (free, public files of the site).
 export const ATLASES = Object.freeze({
@@ -47,7 +48,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
       instructions:
         'Why Humanoid? research catalogue of humanoid robots, deployments, components, integrators, software, datasets, benchmarks, investment, other robots and reports. ' +
         `This connection reads ${entitled ? 'the full catalogue (active data subscription)' : 'the public catalogue: free categories in full, Deployments and Components at their public fields'}. ` +
-        'Records are claims as recorded from public sources, not verified facts. ' +
+        'Records are claims as recorded from public sources. Humanoid row responses include attribute-scoped verification metadata and comparison caveats. Pending_Audit is not verified; never infer an entire robot is verified from one attribute. ' +
         `Fair use: ${USAGE_LIMITS.perMinute} requests a minute and ${USAGE_LIMITS.perDay} a day per API key. Support: ${SUPPORT_EMAIL}.`,
     },
   );
@@ -61,6 +62,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
     tables: publicDatasetList().filter((d) => d.offer).map((d) => ({ ...d, readable_here: d.access.full === 'public' || entitled ? 'all fields' : d.access.preview_rows === 'none' ? 'count only' : 'public fields' })),
     atlases: Object.entries(ATLASES).map(([id, a]) => ({ id, title: a.title, access: 'public' })),
     support: SUPPORT_EMAIL,
+    verification_standard: publicVerificationStandard(),
   }));
 
   server.registerTool('search_catalogue', {
@@ -89,7 +91,7 @@ export async function handleMcp(request, { db, now, authed, isEntitledAccount, f
     const q = (query ?? '').trim() || null;
     if (entitled || canReadFull(spec.id, { entitled: false })) {
       const page = await queryDatasetRows(db, spec.id, { limit, offset, q, publicValues: !entitled });
-      return text({ table: spec.id, fields: entitled ? 'all' : 'public', ...page, limit, offset });
+      return text({ table: spec.id, fields: entitled ? 'all' : 'public', ...page, limit, offset, ...(spec.id === 'humanoids' ? { verification: verificationForRows(page.rows, new Date(now * 1000).toISOString().slice(0, 10)) } : {}) });
     }
     // No subscription: exactly the public rows the preview route serves, never the stored full values.
     if (publicRowLimit(spec) === 0) return text({ table: spec.id, fields: 'none', note: 'This table is counted only; its rows come with the data subscription.' });

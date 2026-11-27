@@ -11,6 +11,7 @@
 import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
 import { JSDOM } from 'jsdom';
 import { existsSync, readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { SITE, buildPages, publishedReports, reportPath, sitemapUrls } from './build-pages.mjs';
 import { CATEGORIES, PREVIEW_ROWS } from '../server/src/access/matrix.js';
 import { projectionProblems } from './export-public.mjs';
@@ -352,3 +353,5 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(`Public pages check passed: ${CATEGORIES.length} category pages, ${model.robots.length} humanoid, ${model.otherRobots.length} other-robot and ${model.companies.length} company pages readable without JavaScript, unique titles, descriptions and canonical URLs, links both ways, public values only, sitemap of ${locs.size} URLs, retired addresses redirect, 404 resolves robot ids.`);
+// Attribute history, identity joins, comparison filtering and live freshness are part of page verification.
+execFileSync(process.execPath,['--test','tools/test-verification-ui.mjs'],{cwd:root,stdio:'inherit'});
