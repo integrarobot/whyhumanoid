@@ -55,7 +55,15 @@
   "publication": {
     "write_receipt": "Codex, 2026-11-27T14:20:18.271Z: Humanoids!A219:AF219 written in one atomic batch after a fresh preflight (32 pending, 0 conflicts, 0 duplicates); readback 32 values and 32 formats exact; all 6,976 cells of the 218 preceding rows unchanged; native table extended to row 219",
     "independent_readback": "Claude, fresh download: readback with the pre-write export as --previous gives 32 cells, 0 differences, 0 unexpected changes (59 live Investment values); the export equals the simulated write outside Investment",
-    "catalogue": "free catalogue 213 records: public id 216 (Simplexity Robotics iX, sheet row 219) with the corrected funding; company page /companies/simplexity-robotics/; Ubtech Walker S1 (id 91) Valuation kept as the sheet and API display it (the xlsx export rounds it, see PR 214)"
+    "catalogue": "free catalogue 213 records: public id 216 (Simplexity Robotics iX, sheet row 219) with the corrected funding; company page /companies/simplexity-robotics/; Ubtech Walker S1 (id 91) Valuation kept as the sheet and API display it (the xlsx export rounds it, see PR 214)",
+    "pr": 222,
+    "merge_commit": "23af2e85e33b8b4e8aa7dc11b3a3129df053bfb2",
+    "pages_run": 46018590057,
+    "import_run": 46018804182,
+    "import_scope": "stocks-humanoids",
+    "import_result": "HTTP 200; humanoids 213 (added 1, changed 1, removed 0), stocks 277 (no change); identities inserted 1, updated 202; search upserted 4, unchanged 976; estimated_rows_written 721",
+    "production_snapshot": "2026-11-27T14:45:56.000Z",
+    "verified": "MCP catalogue: Humanoids iX (Simplexity Robotics) with the 32 written values including the corrected funding, search finds it (robot 216, tags China, Wheeled); Walker S1 Valuation 23,815,219,952.60; Deployments 207 and Components 51 unchanged"
   },
   "funding_correction": {
     "date": "2026-11-27",

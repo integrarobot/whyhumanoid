@@ -1,0 +1,50 @@
+{
+  "id": "WH-20261127-1549-publicacion-simplexity",
+  "tarea": "Fase 3 de Simplexity: publicación del iX en Humanoids (dos planes) y una importación acotada a producción",
+  "origen": "Recibos de escritura de Codex de WP-20261125-integrarobot-simplexity y WP-20261125-integrarobot-simplexity-funding, revisión del head y autorización de importación de Codex del 27/11/2026, dentro de la autorización de Javier del 26/11/2026",
+  "fecha": "2026-11-27T15:49:00+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Catálogo gratuito de Humanoids con 213 registros: el iX de Simplexity Robotics (id público 216, fila 219 de la hoja), con las especificaciones como afirmaciones del fabricante y la financiación como reportaje original de Bloomberg (23/11/2026) que atribuye la valoración y los inversores al presidente y cofundador Wang Kai, sin verificación independiente.",
+    "Páginas nuevas del robot y de la empresa, redirección permanente y fila en la tabla de financiación de /investment/; proyección pública (solo la empresa nueva), evolución (68/213), app y cobertura de imágenes regeneradas. La valoración de Ubtech Walker S1 se mantiene en 23,815,219,952.60, como la muestran la hoja y la API.",
+    "state.json: los dos traspasos pasan a published. Simplexity queda incorporado; en known_pending y en la edición del 25/11 solo sigue la verificación de la operación, no realizada por falta de anuncio oficial o registro revisados, que es una limitación de la evidencia y no la ausencia de una fuente de la empresa."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR de publicación",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/222"
+    },
+    {
+      "etiqueta": "Importación a producción",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46018804182"
+    },
+    {
+      "etiqueta": "Página del iX",
+      "url": "https://whyhumanoid.com/humanoids/simplexity-robotics-ix-216/"
+    },
+    {
+      "etiqueta": "Página de Simplexity Robotics",
+      "url": "https://whyhumanoid.com/companies/simplexity-robotics/"
+    },
+    {
+      "etiqueta": "Estado",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/state.json"
+    }
+  ],
+  "despliegue": [
+    "PR 222 fusionado como 23af2e8 tras la revisión de Codex del head 0794e0d6 (CI 46017885864 en verde); Pages 46018590057 en verde.",
+    "Una sola importación a producción, run 46018804182 (job 140572761570), alcance stocks-humanoids, sin ensayo: HTTP 200; humanoids 213 (1 añadido, 1 cambiado, 0 quitados), stocks 277 sin cambios; identidades 1 insertada y 202 actualizadas; búsqueda con 4 documentos actualizados; estimated_rows_written 721. Instantánea de producción 2026-11-27T14:45:56Z. Antes, Codex leyó 22,55k de 100k filas escritas en el día y no había ninguna importación en curso ni en cola."
+  ],
+  "verificaciones": [
+    "Relecturas independientes de los dos planes antes de publicar: 32 y 5 celdas, 0 diferencias y 0 cambios fuera del plan.",
+    "Antes de fusionar: audit-deployments (207 filas, 0 diferencias), check-reserved, check-public, todos los --check y pruebas del CI, pruebas del servidor (230/230) y verify-site, verify-premium-app, verify-pages, verify-components, verify-comparator, verify-editorial y test-reports.",
+    "Producción, con el catálogo MCP: el iX con los 32 valores escritos, incluida la financiación corregida; la búsqueda lo encuentra (robot 216, China, Wheeled); Walker S1 con 23,815,219,952.60; Deployments 207 y Components 51 sin cambios."
+  ],
+  "pendientes": [
+    "Verificación de la operación de financiación de Simplexity con un anuncio oficial o un registro, si llega a publicarse.",
+    "Codex: su verificación independiente de los JSON publicados, las páginas y el MCP, y el aviso de este cierre y de los cierres WH-20261127-1512, WH-20261127-1516 y WH-20261127-1532."
+  ],
+  "siguiente_accion": "Codex verifica la publicación de forma independiente y registra los avisos. La próxima tarea semanal revisa si aparece un anuncio oficial de la ronda de Simplexity."
+}
