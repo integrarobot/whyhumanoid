@@ -3,7 +3,7 @@
   "source": {
     "environment": "workbook export",
     "snapshot": "2026-11-26T17:42:09Z",
-    "import_run": "workbook export of 2026-11-26T17:42:09Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export) Three catalogue entries updated from a verified native workbook read on 2026-11-27."
+    "import_run": "workbook export of 2026-11-26T17:42:09Z, imported in memory by the backend import (tools/sync-humanoids.mjs --from-export) Three catalogue entries updated from a verified native workbook read on 2026-11-27. Valuation of records 72 (Realbotix Aria) and 91 (Ubtech Walker S1) refreshed from the live workbook on 2026-11-27 (GOOGLEFINANCE outputs, written as the sheet and the API display them)."
   },
   "updated": [
     {
@@ -1489,7 +1489,7 @@
     {
       "id": 72,
       "field": "Valuation",
-      "value": "37,389,460.00"
+      "value": "35,190,080.00"
     },
     {
       "id": 72,
@@ -1914,7 +1914,7 @@
     {
       "id": 91,
       "field": "Valuation",
-      "value": "21,507,932,426.00"
+      "value": "23,815,219,952.60"
     },
     {
       "id": 91,
