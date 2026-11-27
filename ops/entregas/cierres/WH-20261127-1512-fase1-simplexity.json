@@ -1,0 +1,58 @@
+{
+  "id": "WH-20261127-1512-fase1-simplexity",
+  "tarea": "Fase 1 del último pendiente de la edición del 25/11/2026 (Simplexity Robotics) con la nueva evidencia primaria: plan con el contrato workbook-plan@1, sin escribir ni publicar",
+  "origen": "Latido de Codex del 27/11/2026 a las 15:10 (Europe/Madrid), dentro de la autorización de Javier del 26/11/2026",
+  "fecha": "2026-11-27T15:12:16+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "No hay edición nueva: la última sigue siendo la del 25/11/2026. Orbit y Playground ya estaban cerrados y no se repiten.",
+    "Plan WP-20261125-integrarobot-simplexity sobre main ab17db4 y el libro descargado de nuevo (11:46 UTC): una operación, la fila 219 de Humanoids (32 celdas, ninguna privada) para el iX de Simplexity Robotics. En el maestro no había ningún registro de Simplexity, iX ni i7 Pro.",
+    "La fila recoge solo lo que dice la página oficial del producto, como afirmaciones del fabricante: humanoide sobre ruedas, 24 grados de libertad activos sin contar las manos, 160 kg, altura de 106 a 170 cm, 1,5 m/s, 3 kg de carga nominal del brazo, Orin NX en la versión estándar y Thor en la Pro. No se deduce ningún despliegue en operación y el resto de campos queda como no verificado.",
+    "La ronda de USD 100M liderada por Ant Group y la valoración de USD 1.600M quedan anotadas como información secundaria (Bloomberg) y no confirmada por la empresa; la página oficial de noticias no anuncia ninguna ronda. El i7 Pro, enlazado desde la web oficial, no se ha revisado y no tiene fila.",
+    "Humanoids es una pestaña gratuita: todos los valores van en el plan público y no hay carga privada ni fichero de Drive.",
+    "state.json: Simplexity pasa a planned, con el traspaso en awaiting_write. Fichero de la ejecución con las fuentes y lo que no se ha incorporado."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Plan",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/plans/WP-20261125-integrarobot-simplexity.json"
+    },
+    {
+      "etiqueta": "Fichero de la ejecución",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/runs/2026-11-27-simplexity.json"
+    },
+    {
+      "etiqueta": "Estado",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/state.json"
+    },
+    {
+      "etiqueta": "Fuente: página oficial del iX",
+      "url": "https://www.simplexityrobotics.com/products/ix"
+    },
+    {
+      "etiqueta": "Fuente: noticias oficiales de Simplexity",
+      "url": "https://www.simplexityrobotics.com/news"
+    },
+    {
+      "etiqueta": "Fuente secundaria: The Japan Times (Bloomberg)",
+      "url": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/"
+    }
+  ],
+  "despliegue": [
+    "No aplica: fase 1, sin escritura en el libro, sin publicación y sin importación. El PR solo lleva ficheros de ops/, que Pages no publica."
+  ],
+  "verificaciones": [
+    "La página oficial del iX se genera con JavaScript: la lectura estática de Claude solo devolvió metadatos, así que los valores proceden de la lectura de Codex en un navegador y Codex los vuelve a confirmar en la página antes de escribir.",
+    "Una base de datos de terceros, con fecha anterior a la presentación del iX que publica la prensa (23/11), da otras cifras (altura de 118 a 172 cm, 6 kg en el efector final y Jetson Thor) sin fuente por dato; no se ha usado.",
+    "workbook-plan check (los tres planes), preflight sobre el libro actual (32 celdas por escribir, 0 conflictos), escritura simulada y readback (0 diferencias, 0 cambios fuera del plan), check-public y entregas --check en verde."
+  ],
+  "pendientes": [
+    "Codex: confirmar los valores en la página oficial renderizada, escribir y releer Humanoids!A219:AF219 y dar el recibo.",
+    "Claude: publicar (sincronización de Humanoids y páginas) y una importación, solo tras el recibo de Codex y una lectura nueva de la cuota y la cola de D1.",
+    "La ronda de noviembre sigue pendiente de un anuncio primario para poder darla por confirmada.",
+    "Codex: registrar el aviso de este cierre."
+  ],
+  "siguiente_accion": "Codex confirma los valores del iX en la página oficial, escribe la fila 219 de Humanoids con su conector nativo, la relee y envía el recibo a esta conversación."
+}

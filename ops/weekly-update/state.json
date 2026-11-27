@@ -23,14 +23,14 @@
   "known_pending": [
     {
       "edition": "https://www.integrarobot.com/p/why-humanoid",
-      "item": "Simplexity Robotics: USD 100M pre-Series A led by Ant Group at USD 1.6B (newsletter, citing Bloomberg via The Japan Times); not verified, no named robot model, no row",
+      "item": "Simplexity Robotics: USD 100M pre-Series A led by Ant Group at USD 1.6B (newsletter, citing Bloomberg via The Japan Times); the round stays secondary. The official site names the iX wheeled humanoid",
       "source": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
       "source_date": "2026-11-23",
       "found": "2026-11-25",
-      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-why-humanoid.json",
-      "outcome": "pending_verification",
-      "needs": "a primary source for the round and a named model",
-      "rechecked": "2026-11-26: still no primary source for the round and no named model"
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity.json",
+      "outcome": "planned (op-001, Humanoids row 219: iX with manufacturer specifications; funding recorded as secondary)",
+      "needs": "Codex write and readback, then publication and one import; the round itself still needs a primary announcement to be recorded as confirmed",
+      "rechecked": "2026-11-27: official product page names iX (Codex, rendered); official news page has no funding announcement"
     }
   ],
   "runs": [
@@ -117,6 +117,17 @@
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-known-pending.json",
       "file": "ops/weekly-update/runs/2026-11-26-pendientes.json",
       "close": "WH-20261126-1548-publicacion-pendientes-25-11"
+    },
+    {
+      "date": "2026-11-27",
+      "kind": "phase 1 (known_pending)",
+      "subject": "Simplexity: iX wheeled humanoid planned as a Humanoids row from the official product page; funding stays secondary",
+      "editions": [
+        "https://www.integrarobot.com/p/why-humanoid"
+      ],
+      "result": "awaiting_write",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity.json",
+      "file": "ops/weekly-update/runs/2026-11-27-simplexity.json"
     }
   ],
   "handoffs": [
@@ -343,6 +354,21 @@
         "search": "full 2005, preview 1938, 7 unmapped values",
         "verified": "MCP catalogue: Orbit in Software (general block, no group); the 198 Deployments rows equal the published preview field by field (125 cases, the Mercedes-Benz evidence row included); search finds both; the Reports atlas served is identical to main (13 reports, RPT-013 with its 8 findings)"
       }
+    },
+    {
+      "plan_id": "WP-20261125-integrarobot-simplexity",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity.json",
+      "editions": [
+        "integrarobot:2026-11-25:why-humanoid"
+      ],
+      "status": "awaiting_write",
+      "operations": 1,
+      "cells": 32,
+      "private_cells": 0,
+      "public_plan_sha256": "7b2a70bb67768e220cbed45976fd5b6913e7baa9d5b2e1e51be5a5e6fb14910a",
+      "private_payload": null,
+      "note": "Humanoids is a free tab: every value is in the public plan and there is no private payload or Drive file",
+      "next": "Codex confirms each value on the rendered official page, preflight, writes Humanoids!A219:AF219 and reads back; then Claude publishes (Humanoids sync, pages) and imports once after a fresh Codex quota and queue check"
     }
   ]
 }
