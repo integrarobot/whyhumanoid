@@ -199,5 +199,37 @@
     }
   ],
   "kept_reviewed": "Rows whose description names robots they make are robot entries and stay: e.g. Hiopos (HIOBOT), Norma (ElRobot arm), Ati Motors (autonomous mobile robots), Dyna Robotics (mobile dexterous robots). Hand makers (Shadow, Proception, Linkerbot) are left for a separate review: a robotic hand may be a component product or a robot, and that is not clear from the record alone.",
-  "after_receipt": "Claude re-downloads the master, regenerates the Other Robots and Software previews, adds the seven retired /other-robots/<slug>/ addresses to tools/permalinks.json as redirects to the destinations above (realtime, harmonic-drive, robonomics, bumerania, intrinsic, mujin, eka), checks counts and pages, and publishes by PR. No row is deleted on the web without its redirect."
+  "after_receipt": "Claude re-downloads the master, regenerates the Other Robots and Software previews, adds the seven retired /other-robots/<slug>/ addresses to tools/permalinks.json as redirects to the destinations above (realtime, harmonic-drive, robonomics, bumerania, intrinsic, mujin, eka), checks counts and pages, and publishes by PR. No row is deleted on the web without its redirect.",
+  "review_proposals": [
+    {
+      "row": 21,
+      "name": "Shadow",
+      "finding": "Maker of dexterous robotic hands; two of its hands are already Components products (Components rows 29-30, Shadow Robot Company).",
+      "proposal": "Same treatment as Harmonic Drive: clear A21:C21 and redirect /other-robots/shadow/ to the company page. Needs a check first: /companies/shadow/ and /companies/shadow-robot-company/ both exist and must not be conflated without a reviewed identity."
+    },
+    {
+      "row": 71,
+      "name": "Linkerbot",
+      "finding": "Its entry describes dexterous hands (Linker Hand series); the company also makes Linker Humanoid, listed in Humanoids, and has /companies/linkerbot/.",
+      "proposal": "Clear A71:C71 and redirect to /companies/linkerbot/ only if Javier agrees a hand line is a component line; adding Linker Hand products to Components needs a sourced passport, not this plan."
+    },
+    {
+      "row": 60,
+      "name": "Proception",
+      "finding": "Hands and motion-capture gloves; no other home in the master.",
+      "proposal": "Same decision as Ailos and Seeed Studio: a company home first (Clean Entities or a companies list)."
+    },
+    {
+      "row": 76,
+      "name": "coprod",
+      "finding": "Modular robot components with named products (co:motion, co:sense, co:power, co:battery); not in Components.",
+      "proposal": "Leave until Components products are researched with sources; never a fabricated product."
+    },
+    {
+      "row": 28,
+      "name": "Lirio",
+      "finding": "Bionic (robotic) hand prostheses.",
+      "proposal": "Keep: a robotic prosthesis is a robotic device, not a component or software; flag only if Javier wants medical devices apart."
+    }
+  ]
 }
