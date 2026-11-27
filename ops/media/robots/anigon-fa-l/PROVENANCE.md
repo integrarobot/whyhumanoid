@@ -22,7 +22,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 2, scope 
 
 Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 2, PR not yet merged)
+## Published files (image batch 2, PR 202, merge 14dedcd, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/anigon-fa-l/anigon-fa-l-full-body.png`, 753 × 2044 px, lossless, sha256 `1c356c4592f138ee3246c076f0d774a7015b4cc0640d18978638d071217b8451`.
 - **WebP:** `assets/robots/anigon-fa-l/anigon-fa-l-full-body.webp`, made with `python3 ops/media/robots/to-webp.py`, sha256 `0cf67d6af4d8539cc9adfaeb91b390f99558495aa1316b3a8dee9b1b6a30720f`.

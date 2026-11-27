@@ -48,7 +48,7 @@
     {
       "batch": 2,
       "opened": "2026-11-27",
-      "state": "integrated_awaiting_review",
+      "state": "published",
       "target": 10,
       "scope": "A/B makers",
       "candidates": [
@@ -66,8 +66,10 @@
       "reserves": [],
       "notes": [
         "Definitive batch 2 (Codex, 27 Nov 2026): six Agibot, Booster T2 and K1, ALICE 4 and Anigon FA-L. Booster T1 and Agile ONE move to the next batch.",
-        "Sources, masks and prepared files on transport branch codex/image-sources-ab (28fef87), kept in ops/media/intake-ab-2026-11-27/batch-02/."
-      ]
+        "Sources, masks and prepared files on transport branch codex/image-sources-ab (28fef87), kept in ops/media/intake-ab-2026-11-27/batch-02/.",
+        "Published with PR 202 (head 4e5d946, merge 14dedcd, 27 Nov 2026) after Pages run 45994978120 succeeded; production verified by Claude and Codex (Codex receipt, 27 Nov 2026), no cache purge needed."
+      ],
+      "published": "2026-11-27"
     },
     {
       "batch": 3,
@@ -206,7 +208,7 @@
         "Lab": "Booster",
         "Robot": "T2"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.booster.tech/booster-t2",
       "sources": [
         {
@@ -235,7 +237,7 @@
         "Lab": "Booster",
         "Robot": "K1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.booster.tech/booster-k1",
       "sources": [
         {
@@ -616,7 +618,7 @@
         "Lab": "Agibot",
         "Robot": "A2 (A2 Ultra / A2 Lite)"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.agibot.com/products/A2_Ultra",
       "notes": "Family record A2 Ultra / A2 Lite: one included variant may illustrate it, named in the alt text and provenance; the same look is not attributed to both.",
       "sources": [
@@ -637,7 +639,7 @@
         "Lab": "Agibot",
         "Robot": "X2 (X2 Neo / X2 Ultra)"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.agibot.com/products/X2",
       "notes": "Family record X2 Neo / X2 Ultra: one included variant may illustrate it, named in the alt text and provenance.",
       "sources": [
@@ -798,7 +800,7 @@
           "detail": "Mask cutout (isnet-general-use), RGB exact. Alpha levels refined by Claude (halo and haze)."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.agibot.com/",
       "notes": "AGIBOT X1 (Lingxi X1); not X2 (145), A2 (143) nor G2 (146)."
     },
@@ -819,7 +821,7 @@
           "detail": "Mask cutout (isnet-general-use), RGB exact."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.agibot.com/products/A3",
       "notes": "AGIBOT A3; not A2 (143)."
     },
@@ -840,7 +842,7 @@
           "detail": "Mask cutout (isnet-general-use), RGB exact. Alpha levels refined by Claude (halo and haze). Linked to /products/G2 with the label \"AGIBOT G2\" in the official navigation (first downloaded from that navigation on the X1 page)."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.agibot.com/products/G2",
       "notes": "AGIBOT G2; not G1 (147)."
     },
@@ -861,7 +863,7 @@
           "detail": "Native alpha; cropped. Hero of /products/G1, titled \"AGIBOT G1\"; the CMS folder name pro-A2D is historical."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.agibot.com/products/G1",
       "notes": "AGIBOT G1, wheeled dual-arm robot; not Unitree G1 (138) nor Galbot G1 (35)."
     },
@@ -900,7 +902,7 @@
           "detail": "Native alpha; cropped."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://eng.arobot4all.com/",
       "research": [
         {
@@ -1125,7 +1127,7 @@
           "detail": "Native alpha; cropped."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://anigon.ch/"
     }
   },
