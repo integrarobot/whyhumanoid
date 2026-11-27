@@ -6,7 +6,8 @@
     "checked_at": "2026-11-27",
     "page": "https://arx-x.com/",
     "status": "deferred-no-accepted-source",
-    "reason": "Official X7 and X7-2025 release posters show the base and arms behind work tables, with robot parts occluded. No complete unoccluded still identified; do not fill missing pixels."
+    "reason": "Official X7 and X7-2025 release posters show the base and arms behind work tables, with robot parts occluded. No complete unoccluded still identified; do not fill missing pixels.",
+    "additional_review": "Official release video https://arx-x.com/assets/video/x7.mp4 (41.5s) reviewed through sampled frames across full duration; work table occludes lower-body regions throughout those frames."
   },
   {
     "id": 10,
@@ -33,7 +34,8 @@
     "checked_at": "2026-11-27",
     "page": "https://www.beyondimagination.com/",
     "status": "deferred-no-accepted-source",
-    "reason": "Official homepage stills are cropped upper-body/application photos. The model generation is not specified by this catalogue record; no complete matching original approved."
+    "reason": "Official homepage stills are cropped upper-body/application photos. The model generation is not specified by this catalogue record; no complete matching original approved.",
+    "additional_review": "Manufacturer-credited press imagery (Designboom,2022-01-04) also reviewed: all source photos cropped at waist/base or occluded by task furniture; no complete body selected."
   },
   {
     "id": 13,
@@ -42,7 +44,8 @@
     "checked_at": "2026-11-27",
     "page": "https://boardwalkrobotics.com/",
     "status": "deferred-no-accepted-source",
-    "reason": "The Alex official hero still is cropped to the upper torso and arms. Do not invent a lower body or use another model."
+    "reason": "The Alex official hero still is cropped to the upper torso and arms. Do not invent a lower body or use another model.",
+    "additional_review": "Official product hero clip https://boardwalkrobotics.com/_assets/2775af333e9ee60ae48d.mp4 is a6sloop cropped to torso; no complete robot source."
   },
   {
     "id": 15,
