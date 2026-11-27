@@ -6,6 +6,7 @@
 //   node tools/robot-presentation.mjs --check     every entry matches its catalogue record; files and URLs are sound
 
 import { existsSync, readFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 
 const root = new URL('../', import.meta.url);
 const read = (p) => JSON.parse(readFileSync(new URL(p, root), 'utf8'));
@@ -73,7 +74,9 @@ export function robotPresentation() {
   return out;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Run as a script, also from a checkout whose path has spaces or other characters a URL escapes ("Why Humanoid?");
+// imported as a module (no argv[1], or another entry point), nothing runs.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const problems = presentationProblems();
   if (problems.length) { console.error(`Robot presentation check FAILED:\n- ${problems.join('\n- ')}`); process.exit(1); }
   const n = Object.keys(read('tools/robot-presentation.json').robots ?? {}).length;

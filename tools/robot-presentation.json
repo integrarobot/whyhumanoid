@@ -68,6 +68,21 @@
         "provenance": "ops/media/robots/boston-dynamics-atlas-industrial-electric/PROVENANCE.md"
       }
     },
+    "27": {
+      "recorded": {
+        "Lab": "Engineai",
+        "Robot": "SE01"
+      },
+      "image": {
+        "src": "/assets/robots/engineai-se01/se01-full-body.webp",
+        "fallback": "/assets/robots/engineai-se01/se01-full-body.png",
+        "width": 282,
+        "height": 797,
+        "alt": "SE01 by EngineAI, full body, front view, standing",
+        "credit": "Image: EngineAI",
+        "provenance": "ops/media/robots/engineai-se01/PROVENANCE.md"
+      }
+    },
     "30": {
       "recorded": {
         "Lab": "Figure",
@@ -81,6 +96,21 @@
         "alt": "Figure 03 by Figure, full body, side view, mid-stride",
         "credit": "Image: Figure",
         "provenance": "ops/media/robots/figure-03/PROVENANCE.md"
+      }
+    },
+    "61": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "Talos"
+      },
+      "image": {
+        "src": "/assets/robots/pal-talos/talos-full-body.webp",
+        "fallback": "/assets/robots/pal-talos/talos-full-body.png",
+        "width": 578,
+        "height": 851,
+        "alt": "TALOS by PAL Robotics, full body, front view, standing with arms slightly apart",
+        "credit": "Image: PAL Robotics",
+        "provenance": "ops/media/robots/pal-talos/PROVENANCE.md"
       }
     },
     "86": {
@@ -111,6 +141,126 @@
         "alt": "H1 by Unitree, full body, front view, standing with one arm raised",
         "credit": "Image: Unitree",
         "provenance": "ops/media/robots/unitree-h1/PROVENANCE.md"
+      }
+    },
+    "138": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "G1"
+      },
+      "image": {
+        "src": "/assets/robots/unitree-g1/unitree-g1-full-body.webp",
+        "fallback": "/assets/robots/unitree-g1/unitree-g1-full-body.png",
+        "width": 288,
+        "height": 765,
+        "alt": "G1 by Unitree, full body, front view, standing with knees slightly bent",
+        "credit": "Image: Unitree",
+        "provenance": "ops/media/robots/unitree-g1/PROVENANCE.md"
+      }
+    },
+    "140": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "H2-X"
+      },
+      "image": {
+        "src": "/assets/robots/unitree-h2-x/h2-x-full-body.webp",
+        "fallback": "/assets/robots/unitree-h2-x/h2-x-full-body.png",
+        "width": 222,
+        "height": 681,
+        "alt": "H2-X by Unitree, full body, three-quarter view, standing",
+        "credit": "Image: Unitree",
+        "provenance": "ops/media/robots/unitree-h2-x/PROVENANCE.md"
+      }
+    },
+    "150": {
+      "recorded": {
+        "Lab": "Engineai",
+        "Robot": "PM01"
+      },
+      "image": {
+        "src": "/assets/robots/engineai-pm01/pm01-full-body.webp",
+        "fallback": "/assets/robots/engineai-pm01/pm01-full-body.png",
+        "width": 317,
+        "height": 800,
+        "alt": "PM01 by EngineAI, full body, front view, standing",
+        "credit": "Image: EngineAI",
+        "provenance": "ops/media/robots/engineai-pm01/PROVENANCE.md"
+      }
+    },
+    "152": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "ARI"
+      },
+      "image": {
+        "src": "/assets/robots/pal-ari/ari-full-body.webp",
+        "fallback": "/assets/robots/pal-ari/ari-full-body.png",
+        "width": 526,
+        "height": 1016,
+        "alt": "ARI by PAL Robotics, full body on its wheeled base, three-quarter view, waving",
+        "credit": "Image: PAL Robotics",
+        "provenance": "ops/media/robots/pal-ari/PROVENANCE.md"
+      }
+    },
+    "153": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "TIAGo Pro"
+      },
+      "image": {
+        "src": "/assets/robots/pal-tiago-pro/tiago-pro-full-body.webp",
+        "fallback": "/assets/robots/pal-tiago-pro/tiago-pro-full-body.png",
+        "width": 548,
+        "height": 956,
+        "alt": "TIAGo Pro by PAL Robotics, whole robot on its omnidirectional wheeled base, three-quarter view",
+        "credit": "Image: PAL Robotics",
+        "provenance": "ops/media/robots/pal-tiago-pro/PROVENANCE.md"
+      }
+    },
+    "154": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "Kangaroo"
+      },
+      "image": {
+        "src": "/assets/robots/pal-kangaroo/kangaroo-full-body.webp",
+        "fallback": "/assets/robots/pal-kangaroo/kangaroo-full-body.png",
+        "width": 558,
+        "height": 945,
+        "alt": "KANGAROO by PAL Robotics, the whole platform as PAL presents it, without a head, front view, standing",
+        "credit": "Image: PAL Robotics",
+        "provenance": "ops/media/robots/pal-kangaroo/PROVENANCE.md"
+      }
+    },
+    "162": {
+      "recorded": {
+        "Lab": "Rainbow",
+        "Robot": "RB-Y1"
+      },
+      "image": {
+        "src": "/assets/robots/rainbow-rb-y1/rb-y1-full-body.webp",
+        "fallback": "/assets/robots/rainbow-rb-y1/rb-y1-full-body.png",
+        "width": 350,
+        "height": 880,
+        "alt": "RB-Y1 by Rainbow Robotics, whole robot on its wheeled base, front view",
+        "credit": "Image: Rainbow Robotics",
+        "provenance": "ops/media/robots/rainbow-rb-y1/PROVENANCE.md"
+      }
+    },
+    "196": {
+      "recorded": {
+        "Lab": "PsiBot",
+        "Robot": "PsiBot V1"
+      },
+      "image": {
+        "src": "/assets/robots/psibot-v1/psibot-v1-full-body.webp",
+        "fallback": "/assets/robots/psibot-v1/psibot-v1-full-body.png",
+        "width": 998,
+        "height": 2444,
+        "alt": "PsiBot V1, dual-arm humanoid upper body on its wheeled base, whole robot, front view",
+        "credit": "Image: PsiBot",
+        "provenance": "ops/media/robots/psibot-v1/PROVENANCE.md"
       }
     }
   }
