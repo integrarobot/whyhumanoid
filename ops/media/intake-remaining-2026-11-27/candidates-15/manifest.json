@@ -1,0 +1,65 @@
+[
+  {
+    "id": 51,
+    "slug": "limx-oli-hu-d04-hand",
+    "manufacturer": "LimX",
+    "model": "Oli",
+    "credit": "LimXDynamics",
+    "public_page": "https://whyhumanoid.com/humanoids/limx-oli-51/",
+    "source_page": "https://github.com/limxdynamics/humanoid-description/blob/master/README.md",
+    "source_url": "https://raw.githubusercontent.com/limxdynamics/humanoid-description/master/docs/images/hu_d04_hand.png",
+    "original": "original.png",
+    "original_size": [
+      800,
+      800
+    ],
+    "original_sha256": "5f92c8b212960c0100ea8c41748ab51a1330d5c532e1a00188a45a395f80e4e4",
+    "source_context": "Existing official repository technicalrender HU_D04+DEXTEROUSHAND, native800x800, not newlyrenderedURDF. READMEexplicitlyidentifiesOli(HU_D04)andthisexactimage. Wholeforefrontleftfigure, bothfeet/head/handscomplete, bodyabout640pxhigh, no resizing. Exclude title,handdetailcircleandbluefloorhalo/reflection withmaskonly; preserveactualbluecastofrobotRGB. Caption OliHU_D04dexterous-handconfiguration, technicalrender. NotLuna,notHU_D03,notclaimphysicalhardwarephoto.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source. Creditowner,noopenphotolicenceassumed,nooutreachsent."
+  },
+  {
+    "id": 76,
+    "slug": "robotera-star1-pdf",
+    "manufacturer": "Robotera",
+    "model": "Star 1",
+    "credit": "ROBOTERA",
+    "public_page": "https://whyhumanoid.com/humanoids/robotera-star-1-76/",
+    "source_page": "https://www.robotera.com/upload/goods/20241208/f56791f6bd7fdd069e2c8552f4d3aeed.pdf",
+    "source_url": "https://www.robotera.com/upload/goods/20241208/f56791f6bd7fdd069e2c8552f4d3aeed.pdf",
+    "original": "original.png",
+    "original_size": [
+      2380,
+      3368
+    ],
+    "original_sha256": "1f78326fd3bada5d791b127d4421f69777c889187a3586b5a94e27f4f427afe1",
+    "source_context": "OfficialSTAR1brochurePDFpage1embeddedrasterimage0, native2380x3368. WholefrontthreequarterSTAR1, completehelmet/handsfoldedtogether/twofeetwithmarginbelow. IsolateONLYfigureonright; exclude title,QRcontactblockandtexturednavybackground. Existingmanufacturerproductimage/render;caption STAR1manufacturerbrochureimage,notnewrender. Page2seatedalternateexistsbutprefercompletefrontstandingpage1.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source. Creditowner,noopenphotolicenceassumed,nooutreachsent.",
+    "pdf_page": 1,
+    "pdf_image_index": 0,
+    "source_document_sha256": "f6a4fc7cfcedb77ca81862bcc9fbbbfc7ef44729f9a41ab24336384d9b8ab687"
+  },
+  {
+    "id": 99,
+    "slug": "westwood-themis",
+    "manufacturer": "Westwood",
+    "model": "Themis",
+    "credit": "WestwoodRobotics",
+    "public_page": "https://whyhumanoid.com/humanoids/westwood-themis-99/",
+    "source_page": "https://www.westwoodrobotics.io/themis/",
+    "source_url": "https://www.westwoodrobotics.io/wp-content/uploads/2025/04/2-scaled.png",
+    "original": "original.png",
+    "original_size": [
+      1920,
+      2560
+    ],
+    "original_sha256": "df922a8fc9c248c0b080c166bd767a10ccd979abc9132f0fa54d75ebf3611070",
+    "source_context": "ExactTHEMISproductpage, native1920x2560PNG frontstandingwholebiped withheadbothgripper-likehandsandbothfeetcomplete, ownalpha. The source webpage associatesitwithTHEMIS,notBRUCE; catalogueTHEMISfamily. Nativealpha/interiorgapsmustbereviewed; do notautomaticallytrustnativealpha. Preserveactualgrippers,noreconstructedhumanfingers. No model3Drendercreated. Alternativeviews99-35side/99-41threequarteralsocompletebutonlyoneimageperrecord.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source. Creditowner,noopenphotolicenceassumed,nooutreachsent."
+  }
+]

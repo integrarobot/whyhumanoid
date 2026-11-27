@@ -1,0 +1,23 @@
+{
+  "id": 76,
+  "slug": "robotera-star1-pdf",
+  "manufacturer": "Robotera",
+  "model": "Star 1",
+  "credit": "ROBOTERA",
+  "public_page": "https://whyhumanoid.com/humanoids/robotera-star-1-76/",
+  "source_page": "https://www.robotera.com/upload/goods/20241208/f56791f6bd7fdd069e2c8552f4d3aeed.pdf",
+  "source_url": "https://www.robotera.com/upload/goods/20241208/f56791f6bd7fdd069e2c8552f4d3aeed.pdf",
+  "original": "original.png",
+  "original_size": [
+    2380,
+    3368
+  ],
+  "original_sha256": "1f78326fd3bada5d791b127d4421f69777c889187a3586b5a94e27f4f427afe1",
+  "source_context": "OfficialSTAR1brochurePDFpage1embeddedrasterimage0, native2380x3368. WholefrontthreequarterSTAR1, completehelmet/handsfoldedtogether/twofeetwithmarginbelow. IsolateONLYfigureonright; exclude title,QRcontactblockandtexturednavybackground. Existingmanufacturerproductimage/render;caption STAR1manufacturerbrochureimage,notnewrender. Page2seatedalternateexistsbutprefercompletefrontstandingpage1.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source. Creditowner,noopenphotolicenceassumed,nooutreachsent.",
+  "pdf_page": 1,
+  "pdf_image_index": 0,
+  "source_document_sha256": "f6a4fc7cfcedb77ca81862bcc9fbbbfc7ef44729f9a41ab24336384d9b8ab687"
+}
