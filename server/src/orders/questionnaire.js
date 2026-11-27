@@ -14,6 +14,8 @@
 // An estimate, a range or "Unknown" is a valid answer wherever `unknown` is true: required means "answered", not
 // "measured". No field asks for balance sheets or forces a monetary figure.
 
+import { INVESTMENT_THESIS_ID } from './services.js';
+
 export const QUESTIONNAIRE_VERSION = '2026-11-25.1';
 
 const LIMITS = { text: 200, url: 300, paragraph: 4000 };
@@ -80,6 +82,14 @@ export const ACKNOWLEDGEMENT = { id: 'acknowledgement', label: 'I have reviewed 
 export const QUESTIONNAIRES = Object.freeze({
   'humanoid-adoption-assessment': [...SHARED_FIELDS, ...INTEGRATION, ACKNOWLEDGEMENT],
   'component-manufacturing-study': [...SHARED_FIELDS, ...DIVERSIFICATION, ACKNOWLEDGEMENT],
+  [INVESTMENT_THESIS_ID]: [
+    { id: 'company_name', label: 'Company name as listed in Investment', kind: 'text', required: true },
+    { id: 'security', label: 'Ticker and exchange', kind: 'text', required: true, hint: 'Include the share class if the company has more than one.' },
+    { id: 'research_question', label: 'Research question you want the report to address', kind: 'paragraph', required: false, hint: 'For example, how much revenue is linked to robotics, or how credible are the announced customer orders?' },
+    { id: 'source_links', label: 'Public sources or existing theses to consider', kind: 'paragraph', required: false, hint: 'One link per line. Share public material only.' },
+    { id: 'report_language', label: 'Report language', kind: 'select', required: true, options: LANGUAGES },
+    ACKNOWLEDGEMENT,
+  ],
 });
 
 const flat = (fields) => fields.flatMap((f) => (f.extra ? [f, f.extra] : [f]));
