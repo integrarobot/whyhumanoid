@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 9, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 9, PR not yet merged)
+## Published files (image batch 9, PR 230, merge 98b6aa5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/sharpa-droid-d01/sharpa-droid-d01-full-body.png`, 860 × 2041 px, sha256 `e7f900b6f34d2e4661d91af4ac27ecc7fbe79679cb0e73b7b003bc9f6979f46f` (= the prepared.png).
 - **WebP:** `assets/robots/sharpa-droid-d01/sharpa-droid-d01-full-body.webp`, sha256 `ebbaebf255af9b06952833be469ce80c573abe1e53c2a6bc9f34997d7f44bf7b`.

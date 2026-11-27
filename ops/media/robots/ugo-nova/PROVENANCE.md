@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 9, All mi
 
 - **Quality:** Small source: 355 × 824 px as prepared.
 
-## Files integrated (image batch 9, PR not yet merged)
+## Published files (image batch 9, PR 230, merge 98b6aa5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/ugo-nova/ugo-nova-full-body.png`, 355 × 824 px, sha256 `cbce470d3ceba895b49eabcded5f192655426e801fa74c36abfc95589a354be1` (= the prepared.png).
 - **WebP:** `assets/robots/ugo-nova/ugo-nova-full-body.webp`, sha256 `431361918788516a991506041496569b56d9c6c7943a70c563e19cf97d16e86d`.

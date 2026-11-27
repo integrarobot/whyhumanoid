@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 9, All mi
 
 - **Quality:** Small source: 350 × 690 px as prepared.
 
-## Files integrated (image batch 9, PR not yet merged)
+## Published files (image batch 9, PR 230, merge 98b6aa5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/switchbot-onero-h1/switchbot-onero-h1-full-body.png`, 350 × 690 px, sha256 `9767b1cf3de23deaf4a18ed528414692eef1d05f893fab6273cecfe62a3ff3dd` (= the prepared.png).
 - **WebP:** `assets/robots/switchbot-onero-h1/switchbot-onero-h1-full-body.webp`, sha256 `1a523ed7699b126fd05882911214e22d10f95887a3db68aaaa393eb4c65c7680`.

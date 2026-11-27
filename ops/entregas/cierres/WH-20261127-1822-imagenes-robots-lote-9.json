@@ -1,0 +1,70 @@
+{
+  "id": "WH-20261127-1822-imagenes-robots-lote-9",
+  "tarea": "Imágenes de robots, lote 9 del alcance «todas las imágenes que faltan»: Sharpa D01, onero H1, HMND 01 Alpha Wheeled, Wanda 2.0, Isaac 0, Aria Series 1, MABEL, Linker Humanoid, Asimov 1 y ugo Nova, con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T18:22:57+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 230 (cabeza revisada 92e6e83, merge 98b6aa5): imagen en las fichas 81 Sharpa (D01, no las manos Wave), 84 SwitchBot onero H1, 88 The Humanoid (HMND 01 Alpha Wheeled; las especificaciones antiguas de la ficha no se atribuyen a esta plataforma), 94 UniX AI (Wanda 2.0), 98 Weave (Isaac 0, no Isaac 1; las ruedecillas de la base no se toman como locomoción), 72 Realbotix (Aria Series 1), 133 MABEL, 189 Linker Humanoid, 192 Menlo Asimov 1 y 203 ugo Nova, solo mediante tools/robot-presentation.json; las 78 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con la variante: «Image: Sharpa, D01», «Image: Humanoid, HMND 01 Alpha Wheeled», «Image: UniX AI, Wanda 2.0», «Image: Weave Robotics, Isaac 0» e «Image: Realbotix, Aria Series 1». Las especificaciones de las fichas no cambian y las dudas de identidad constan en cada PROVENANCE.md.",
+    "Fuentes y recortes de Codex (codex/image-sources-remaining, batch-09 en 330772e), copiados de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-09/. La revisión de Claude encontró fondo opaco en huecos de Sharpa D01, Isaac 0 y Linker (Codex corrigió el alfa en 39823da y 6a6dc12) y, tras esa corrección, fondo semitransparente en Aria (entre las perneras, en la cintura, junto al brazo de la izquierda de la imagen y un halo a lo largo de la manga de la derecha) y restos opacos dentro del lazo de cables de la muñeca de Isaac 0.",
+    "Con la autorización de Codex, Claude corrigió Aria e Isaac 0 solo en el alfa con la herramienta nueva ops/media/robots/key-gaps.py (actúa solo dentro de rectángulos dados y nunca sube el alfa): en Aria, máscara BiRefNet dentro de cuatro rectángulos, guardada junto al original; en Isaac 0, clave de luminancia dentro del lazo. El RGB no cambia.",
+    "Voxel Series-1 (131) se retiró porque su foto termina en las espinillas, sin pies; sigue en cola. Las fichas 81 y 88, antes en needs_decision, se resuelven por indicación de Codex mostrando D01 y Alpha Wheeled, nombradas en la leyenda.",
+    "Herramientas: key-gaps.py (nueva) y prepare-cutout.py con --mask-file para reutilizar una máscara ya calculada del original.",
+    "Cobertura: lote 9 publicado con 10 fichas; en todo el catálogo, 88 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 230",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/230"
+    },
+    {
+      "etiqueta": "CI de la cabeza 92e6e83",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46039277179"
+    },
+    {
+      "etiqueta": "Pages de 98b6aa5",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46039676330"
+    },
+    {
+      "etiqueta": "Ficha Realbotix Aria",
+      "url": "https://whyhumanoid.com/humanoids/realbotix-aria-72/"
+    },
+    {
+      "etiqueta": "Ficha Weave Isaac",
+      "url": "https://whyhumanoid.com/humanoids/weave-isaac-98/"
+    },
+    {
+      "etiqueta": "Ficha Sharpa D01",
+      "url": "https://whyhumanoid.com/humanoids/sharpa-droid-d01-wave-hands-81/"
+    },
+    {
+      "etiqueta": "Ficha HMND 01",
+      "url": "https://whyhumanoid.com/humanoids/the-humanoid-hmnd-01-alpha-wheeled-bipedal-88/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 98b6aa5 (run 46039676330, correcto); CI de la cabeza 92e6e83 (run 46039277179, correcto). Fusión hecha solo en esa cabeza, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 10/10 tras las correcciones; la única zona a inspeccionar es el brillo cian del anillo de la base de Aria, aceptado como luz de la base; aviso de fondo plano sin marcas en D01 y Linker tras la corrección; revisión a escala nativa sobre fondo claro y oscuro.",
+    "Codex, cabeza 92e6e83: revisión independiente aprobada; diff de 90 archivos, 10 PNG iguales a los preparados, RGB, alfa, tamaño nativo y margen de 20 px correctos, 213 registros y 78 presentaciones anteriores idénticos, textos alternativos y leyendas de variante, key-gaps.py y manifiesto revisados; review-intake independiente 10/10.",
+    "Claude, producción: las 20 URL canónicas (10 WebP y 10 PNG) con los mismos bytes que 98b6aa5 (20/20); las 10 fichas y la portada idénticas a 98b6aa5 salvo las etiquetas meta agent:* que añade Cloudflare; navegador real en iPhone 13 y 1366 × 900, las diez cargan su imagen con su leyenda y sin desbordamiento lateral (20/20).",
+    "Codex, verificación pública independiente tras Pages 46039676330: 30/30 URL canónicas con 200, hashes y alfa exactos en los 20 activos; 20/20 vistas reales a 390 y 1366 de ancho efectivo, contain, sin desbordamiento y leyendas correctas; además revalidó las 20 vistas del lote 8 en esas dimensiones (40/40 entre los dos lotes).",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (88) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Voxel Series-1 (131), Kuavo (49) y R-Noid (77) siguen en cola hasta encontrar una fuente oficial con el robot completo.",
+    "Lote 10 en preparación por Claude (Quanta X2 y H2 rehechos con BiRefNet; Luna con fuente alternativa en evaluación); lote 11 con fuentes de Codex por revisar. Ninguno está integrado.",
+    "Quedan 125 fichas sin imagen; el alcance sigue abierto por lotes de hasta 10."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Claude sigue con los lotes 10 y 11 sin fusionar nada antes de la revisión de Codex."
+}

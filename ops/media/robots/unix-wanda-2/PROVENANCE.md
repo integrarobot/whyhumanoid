@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 9, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 9, PR not yet merged)
+## Published files (image batch 9, PR 230, merge 98b6aa5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/unix-wanda-2/unix-wanda-2-full-body.png`, 446 × 1081 px, sha256 `8a24cae993c911eef956ab5c2d2e5f303d2d7a7adaa2527f55b5ac0d561603e9` (= the prepared.png).
 - **WebP:** `assets/robots/unix-wanda-2/unix-wanda-2-full-body.webp`, sha256 `e2a73f43eebaa9b9d037120becff71cb9f0c1adfdbcdf5ae0fe59988d1100b1b`.
