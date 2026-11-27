@@ -1,0 +1,18 @@
+{
+  "id": 202,
+  "slug": "tlibot-t1pro-brochure",
+  "credit": "TLIBOT",
+  "source_page": "https://www.worldrobotconference.com/profile/robot/download/2025/06/30/%E5%A4%A9%E9%93%BE%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%BA%A7%E5%93%81%E6%A0%B7%E5%86%8C-%E4%B8%AD%E8%8B%B1%E6%96%87%E7%89%8820250519_20250630141622A201.pdf",
+  "source_url": "https://www.worldrobotconference.com/profile/robot/download/2025/06/30/%E5%A4%A9%E9%93%BE%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%BA%A7%E5%93%81%E6%A0%B7%E5%86%8C-%E4%B8%AD%E8%8B%B1%E6%96%87%E7%89%8820250519_20250630141622A201.pdf",
+  "original": "original.png",
+  "original_size": [
+    858,
+    1812
+  ],
+  "original_sha256": "403139cdc5180c5227793a7deebd7bb05ed51772cfc15ae0fdc2e59da1bbe7c6",
+  "source_context": "Manufacturer authored bilingual product catalogue2025-05-19, hosted WorldRobotConference; logicalPDFpage4 (spread), left page productoverview explicitly T1Pro continued from productintro spreadpage3. Embedded nativeRGB image858x1812 + originalPDF softmask same dimensions object153, extracted with pdfimages, combined ownalpha ONLY, nopage rendering or upscale. Original RGBunderalpha contains repeatedrobotstrobe; originalPDFmask itself selects ONLY single completeforeground walkingfigure. Whole head, actualgripperhands, bothfeet including raisedrearfoot, margins. Alpha bbox137,82,731,1729, noopaqueimageedgepixels. Preserve maker ownalpha/nativeRGB; do not treat repeatedimagesoutsideoriginalmaskaspartofrobot. Caption TLIBOT, T1Pro manufacturer brochure image (2025), via WorldRobotConference. Specific variant T1Pro, notTianzhenZ1 orY1; catalogue202genericT1 name unchanged, no specificationchanges. Root originalRGB/softmask/compositechecked atnative. Existing technical product render, do notclaim hardwarephoto. Needs independentreview then crop/pad only.",
+  "source_document_sha256": "3fa7134bc23c05b2290a62a6046c51a68743bd08c4a069a9fa189a9b2dfa3101",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer-authored product catalogue hosted conference. Credit required, no open licence assumed or outreach sent."
+}
