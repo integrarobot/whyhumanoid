@@ -2653,12 +2653,12 @@
   "license": null,
   "files": {
     "humanoids-catalogue.json": {
-      "sha256": "48a41d8eef6540362458e80fe21c3e1f4c995591ea41d4e4ef1655dcf6aaae16",
-      "bytes": 402878
+      "sha256": "81f1080a12715e9ac62492714cc82731c221344da91b08e2975f5d796660d64a",
+      "bytes": 403019
     },
     "humanoids-catalogue.csv": {
-      "sha256": "3b680ed7d107e6cff125a478910191e106e3568b5e21812437eb2e8d1d43ce0d",
-      "bytes": 250720
+      "sha256": "f2319fa2a9f13b9d6ffa6e6c9d2086861a51d2f2af650e7fdf13a3a38778319a",
+      "bytes": 250861
     }
   }
 }
