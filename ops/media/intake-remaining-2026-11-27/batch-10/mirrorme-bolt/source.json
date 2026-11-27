@@ -1,0 +1,42 @@
+{
+  "id": 193,
+  "slug": "mirrorme-bolt",
+  "manufacturer": "MirrorMe",
+  "model": "Bolt",
+  "credit": "MirrorMe",
+  "public_page": "https://whyhumanoid.com/humanoids/mirrorme-bolt-193/",
+  "source_page": "https://www.mirrormetech.com/cn/product_5.html",
+  "source_url": "https://www.mirrormetech.com/static/img/people-bolt.png",
+  "source_context": "Official product5 Bolt page exact people-bolt.png, complete biped wearing03jersey. This is Bolt, not other quadrupeds on same page. Native source alpha has floor shadows; ISNET used.",
+  "original": "original.png",
+  "original_size": [
+    1270,
+    808
+  ],
+  "original_sha256": "a2a46b3e41a0540e81fa90ea83a2c7d22202c2137447a3da338c7e4e14995093",
+  "prepared_sha256": "1978257dd5f74d0d7af848aff0b119edc521a76718bec7af706c6a1ef7cde3f7",
+  "mask_sha256": "c1cd7605f6d23e7fcd3d6901cd62163833218865d85549a18210b17a42ba8f29",
+  "roi": [
+    0,
+    0,
+    1270,
+    808
+  ],
+  "bbox": [
+    539,
+    12,
+    799,
+    781
+  ],
+  "border": 20,
+  "size": [
+    300,
+    809
+  ],
+  "native_alpha": false,
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.",
+  "status": "candidate_requires_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+}

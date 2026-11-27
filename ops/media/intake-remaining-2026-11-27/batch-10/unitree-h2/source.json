@@ -1,0 +1,42 @@
+{
+  "id": 139,
+  "slug": "unitree-h2",
+  "manufacturer": "Unitree",
+  "model": "H2",
+  "credit": "Unitree",
+  "public_page": "https://whyhumanoid.com/humanoids/unitree-h2-139/",
+  "source_page": "https://www.unitree.com/H2/",
+  "source_url": "https://www.unitree.com/images/32686742408341c5af3b5dc2f4c85b0e_3840x2160.jpg",
+  "source_context": "Official exact H2 page source139-10 full factory demonstration still, not generic shared header R1/G1 image. Both feet and head present.",
+  "original": "original.jpg",
+  "original_size": [
+    3840,
+    2160
+  ],
+  "original_sha256": "26a69275e647b734d2ac42c0550332f4d8407d965ee55457f3f3626c903dd4e2",
+  "prepared_sha256": "8732e1ed6ed4b087cfe8adb4f9b5240862479ace755e7761911187f7e20737ba",
+  "mask_sha256": "729d8d67f8e650f55d1deac4f6bf9e54d5885c36e3b4938c23d292846fa48e67",
+  "roi": [
+    950,
+    0,
+    2450,
+    2160
+  ],
+  "bbox": [
+    338,
+    255,
+    1255,
+    2103
+  ],
+  "border": 20,
+  "size": [
+    957,
+    1888
+  ],
+  "native_alpha": false,
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.",
+  "status": "candidate_requires_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+}

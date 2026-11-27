@@ -27,9 +27,6 @@
       "reserves": [
         142,
         215,
-        139,
-        141,
-        155,
         104,
         51,
         102,
@@ -40,7 +37,9 @@
         "Several other makers' PNG files named as background-free still hold interior backgrounds: rejected (Codex, 27 Nov 2026).",
         "Generative images are never used: Codex discarded a T2 trial that recreated details (27 Nov 2026).",
         "Published with PR 196 (merge 4011f1e, 27 Nov 2026) and verified in production by Claude and Codex (Codex receipt 10:53:52 Madrid) after a selective Cloudflare purge of the 20 image URLs: 404 responses requested before Pages finished deploying had been cached. Next time, new asset URLs are not requested without a query string until the Pages deployment has succeeded.",
-        "Reserves 32 (Fourier GR-1) and 151 (Engineai T800) moved to batch 6, scope \"E/F makers\" (27 Nov 2026)."
+        "Reserves 32 (Fourier GR-1) and 151 (Engineai T800) moved to batch 6, scope \"E/F makers\" (27 Nov 2026).",
+        "Reserves H2 (139) and R1 (141) move to batch 10 (27 Nov 2026).",
+        "Reserve D9 (155) back to the queue: its only whole official source so far is under the minimum height (27 Nov 2026)."
       ],
       "published": "2026-11-27"
     },
@@ -251,6 +250,29 @@
         "Voxel Series-1 (131) withdrawn: its source photo ends at the shins, without feet; Aria (72) takes its place.",
         "Variants named in the visible captions: Sharpa D01 (not the Wave hands), HMND 01 Alpha Wheeled, Wanda 2.0, Isaac 0 (not Isaac 1), Aria Series 1. Records' specifications unchanged."
       ]
+    },
+    {
+      "batch": 10,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        90,
+        101,
+        193,
+        197,
+        139,
+        141,
+        40
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex on codex/image-sources-remaining (batch-10 at f7d1436; Luna replacement at c3ca72e), copied selectively into ops/media/intake-remaining-2026-11-27/batch-10/ (D9 and Luna prepared there too, not integrated).",
+        "Claude's review: Codex's cutouts of Torobo, DEX-M and AEON kept unchanged; Quanta X2, H2, R1 and Bolt redone by Claude from BiRefNet masks of the originals (kept beside them): Quanta X2's dark face had been removed and a scan-grid line kept, H2's raised arm was missing and a spectator kept between the legs, R1 kept a grass fringe and Bolt a dark haze in the arm gap.",
+        "Left out: D9 (155) and Luna (156) are complete and clean but under the 500 px minimum height (208 × 475 and 300 × 371, not enlarged); Igris (79) until its identity is established. Seven images, not ten forced.",
+        "Visible captions name variants and animation stills (DEX-M, Quanta X2, AEON animation still). Records' specifications unchanged."
+      ]
     }
   ],
   "robots": {
@@ -287,7 +309,7 @@
         "Lab": "Unitree",
         "Robot": "H2"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.unitree.com/H2/",
       "notes": "Not H2-X (id 140).",
       "sources": [
@@ -298,6 +320,16 @@
           "transparent_original": false,
           "verdict": "rejected",
           "detail": "Infographic with lettering and background."
+        },
+        {
+          "file": "https://www.unitree.com/images/32686742408341c5af3b5dc2f4c85b0e_3840x2160.jpg",
+          "page": "https://www.unitree.com/H2/",
+          "sha256": "26a69275e647b734d2ac42c0550332f4d8407d965ee55457f3f3626c903dd4e2",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 961 × 1887 with 20 px padding."
         }
       ]
     },
@@ -306,7 +338,7 @@
         "Lab": "Unitree",
         "Robot": "R1"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.unitree.com/R1/",
       "notes": "Record covers R1, R1 AIR and R1 EDU; R1-A and R1-A-D are other variants. Not Galaxea R1 (id 34) nor #sudo R1 (id 111).",
       "sources": [
@@ -317,6 +349,16 @@
           "transparent_original": false,
           "verdict": "rejected",
           "detail": "Infographic with lettering and background."
+        },
+        {
+          "file": "https://www.unitree.com/images/f74777897620408abc9201ffed371895_1400x788.jpg",
+          "page": "https://www.unitree.com/R1/",
+          "sha256": "0ec219000c5f9e46f47692304e6c358fe75081ec437114bf5800521c85cac34d",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 509 × 670 with 20 px padding."
         }
       ]
     },
@@ -508,7 +550,7 @@
         "Lab": "Pudu",
         "Robot": "D9"
       },
-      "status": "reserve",
+      "status": "queued",
       "page": "https://www.pudurobotics.com/en/products/d9",
       "notes": "Not D7 (id 68).",
       "sources": [
@@ -520,7 +562,8 @@
           "verdict": "rejected",
           "detail": "Small (400 × 480) and opaque."
         }
-      ]
+      ],
+      "result": "Source received 27 Nov 2026 (official D9 product page image d9.webp, 400 × 480): whole and clean, but the prepared cutout is 208 × 475, under the 500 px minimum height; not enlarged. A larger exact official source is still sought."
     },
     "154": {
       "recorded": {
@@ -2322,10 +2365,22 @@
         "Lab": "Hexagon",
         "Robot": "AEON"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://hexagon.com/company/newsroom/press-releases/2025/hexagon-launches-aeon-a-humanoid-built-for-industry",
       "notes": "Hexagon AEON: wheeled humanoid from Hexagon's official launch material; shown whole.",
-      "result": "Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources."
+      "sources": [
+        {
+          "file": "https://robotics.hexagon.com/wp-content/uploads/2026/10/On-Wheels.mp4",
+          "page": "https://robotics.hexagon.com/product/",
+          "sha256": "8f70a1d9b1d608dc5cbc5aadc492c7da52412505b4284fe89c69bc75cfbf5a7f",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 209 × 517 with 20 px padding."
+        }
+      ],
+      "quality_note": "Animation still at native size: 209 × 517 px as prepared, not enlarged."
     },
     "21": {
       "recorded": {
@@ -2718,7 +2773,7 @@
       },
       "status": "queued",
       "page": "https://robros.co.kr/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Source received 27 Nov 2026 (Robros homepage image ai-solution-04.jpg, whole biped directing parking): which Robros robot it shows is not established from the manufacturer's text; left out of batch 10 until the identity is confirmed."
     },
     "80": {
       "recorded": {
@@ -2782,9 +2837,20 @@
         "Lab": "Tokyo",
         "Robot": "Torobo"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://robotics.tokyo/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://robotics.tokyo/_astro/torobo_move_task.B568ZBLp_sttoz.webp",
+          "page": "https://robotics.tokyo/",
+          "sha256": "d0ad1ba39f38ec08ec558ca94e347154249e10b13cf27ec38576cb41828a0617",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 632 × 1132 with 20 px padding."
+        }
+      ]
     },
     "91": {
       "recorded": {
@@ -2894,9 +2960,20 @@
         "Lab": "X Square",
         "Robot": "Quanta X2"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://x2robot.com/en/product/quantum2",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://x2robot-open.oss-cn-shenzhen.aliyuncs.com/quantum2_qiepian/x2_en/8.png",
+          "page": "https://x2robot.com/en/product/quantum2",
+          "sha256": "573cfedb275b36ae6b123987685f5ad3350a5467ac2bc1d975c5745c3de6a222",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 473 × 911 with 20 px padding."
+        }
+      ]
     },
     "108": {
       "recorded": {
@@ -3042,7 +3119,7 @@
       },
       "status": "queued",
       "page": "https://www.limxdynamics.com/en/products/luna",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Sources received 27 Nov 2026: the product illustration luna-6-2.png carries a glow halo that is part of the artwork; frame 203 of the official gymnastics animation gives a whole, clean robot but only 300 × 371 px, under the 500 px minimum height (frame 81 overlaps a second robot). A larger whole source is still sought."
     },
     "160": {
       "recorded": {
@@ -3180,9 +3257,20 @@
         "Lab": "MirrorMe",
         "Robot": "Bolt"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.mirrormetech.com/cn/product_5.html",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.mirrormetech.com/static/img/people-bolt.png",
+          "page": "https://www.mirrormetech.com/cn/product_5.html",
+          "sha256": "a2a46b3e41a0540e81fa90ea83a2c7d22202c2137447a3da338c7e4e14995093",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 298 × 807 with 20 px padding."
+        }
+      ]
     },
     "194": {
       "recorded": {
@@ -3207,9 +3295,20 @@
         "Lab": "Richtech Robotics",
         "Robot": "Dex"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://richtechrobotics.com/solutions/dex",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.richtechrobotics.com/hubfs/richtech/renders/dex-trimmed-4.png",
+          "page": "https://www.richtechrobotics.com/solutions/dex",
+          "sha256": "8244f666ce45fbe992c2fbaadee2b992859c1c26e67b269d10cc13b34b2f3190",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1153 × 1388 with 20 px padding."
+        }
+      ]
     },
     "198": {
       "recorded": {

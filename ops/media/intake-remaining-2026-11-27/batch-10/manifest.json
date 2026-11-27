@@ -1,0 +1,377 @@
+[
+  {
+    "id": 90,
+    "slug": "tokyo-robotics-torobo",
+    "manufacturer": "Tokyo",
+    "model": "Torobo",
+    "credit": "TokyoRobotics",
+    "public_page": "https://whyhumanoid.com/humanoids/tokyo-torobo-90/",
+    "source_page": "https://robotics.tokyo/",
+    "source_url": "https://robotics.tokyo/_astro/torobo_move_task.B568ZBLp_sttoz.webp",
+    "source_context": "Official Torobo page, full wheeled platform carrying sacks; preserve payload and grippers. Visible exact Torobo name on page.",
+    "original": "original.webp",
+    "original_size": [
+      2470,
+      1380
+    ],
+    "original_sha256": "d0ad1ba39f38ec08ec558ca94e347154249e10b13cf27ec38576cb41828a0617",
+    "prepared_sha256": "6be643d84fd046dd45f6bbaee6a75bfd3789cc975d961584d889610cd5074a85",
+    "mask_sha256": "98d9523a7966cc945d43fa5993b16cf74e824a1488b10d103338c15bf7264d81",
+    "roi": [
+      350,
+      100,
+      1250,
+      1380
+    ],
+    "bbox": [
+      121,
+      142,
+      713,
+      1234
+    ],
+    "border": 20,
+    "size": [
+      632,
+      1132
+    ],
+    "native_alpha": false,
+    "mask_method": "ISNET non-generative segmentation",
+    "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.",
+    "status": "candidate_requires_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+  },
+  {
+    "id": 101,
+    "slug": "x-square-quanta-x2",
+    "manufacturer": "X Square",
+    "model": "Quanta X2",
+    "credit": "XSquare",
+    "public_page": "https://whyhumanoid.com/humanoids/x-square-quanta-x2-101/",
+    "source_page": "https://x2robot.com/en/product/quantum2",
+    "source_url": "https://x2robot-open.oss-cn-shenzhen.aliyuncs.com/quantum2_qiepian/x2_en/8.png",
+    "source_context": "Exact Quantum2 product page navigation illustration. Whole platform. WARNING prepared alpha still removes part of actual dark face and retains a scan-grid line beside wrist; must correct alpha against original, or replace source. No invented RGB.",
+    "original": "original.png",
+    "original_size": [
+      2760,
+      1600
+    ],
+    "original_sha256": "573cfedb275b36ae6b123987685f5ad3350a5467ac2bc1d975c5745c3de6a222",
+    "prepared_sha256": "1ecb463cbde5f0143cfcd33f7243d515facd3f4218137837d82289f0f2cca17d",
+    "mask_sha256": "8dc87ab532484b678e9319e2cce342dfe1dd561d425bc3efa8ca3841241c4403",
+    "roi": [
+      900,
+      600,
+      1450,
+      1590
+    ],
+    "bbox": [
+      35,
+      47,
+      468,
+      918
+    ],
+    "border": 20,
+    "size": [
+      473,
+      911
+    ],
+    "native_alpha": false,
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; replaces Codex's ISNET cutout (dark face removed and a scan-grid line kept)",
+    "status": "candidate_requires_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+  },
+  {
+    "id": 155,
+    "slug": "pudu-d9",
+    "manufacturer": "Pudu",
+    "model": "D9",
+    "credit": "PuduRobotics",
+    "public_page": "https://whyhumanoid.com/humanoids/pudu-d9-155/",
+    "source_page": "https://www.pudurobotics.com/en/products/d9",
+    "source_url": "https://cdn.pudutech.com/official-website/d9/d9.webp",
+    "source_context": "Official exact D9 product page d9.webp. Complete body and both feet. Native400x480; prepared208x475. Quality debt, no enlargement: decide if sufficient or find larger exact source. Do not use running hero: foreground cuts left foot.",
+    "original": "original.png",
+    "original_size": [
+      400,
+      480
+    ],
+    "original_sha256": "501c1a5681b5712adb8f0a1257e026d903d4e55cd41581cc266f2cca83cc3f07",
+    "prepared_sha256": "2937de3140c169807eb58b7e779f9f1e84666dd32da400a2bf97aa7aa5e02446",
+    "mask_sha256": "405dd4e7f916886fe512533e911cc7515ac2bbd7b0596a344bd8b0d9fdfdf5d1",
+    "roi": [
+      0,
+      0,
+      400,
+      480
+    ],
+    "bbox": [
+      136,
+      25,
+      304,
+      460
+    ],
+    "border": 20,
+    "size": [
+      208,
+      475
+    ],
+    "native_alpha": false,
+    "mask_method": "ISNET non-generative segmentation",
+    "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.",
+    "status": "candidate_requires_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+  },
+  {
+    "id": 156,
+    "slug": "limx-luna",
+    "manufacturer": "LimX Dynamics",
+    "model": "Luna",
+    "original": "original.png",
+    "original_size": [
+      1280,
+      720
+    ],
+    "original_sha256": "0b8433dafa02ff35742a1c26f0dc94630252f04ffc76134112922cbb610dfdb7",
+    "prepared_sha256": "24525f459a82172855f83151e3de6e24ac56ca8c8970011142b5e6736a6dd092",
+    "mask_sha256": "6fb1453b24326491718ba3e23dda7ddcebe0140d418aaa7cbef7add95d792d0b",
+    "roi": [
+      180,
+      250,
+      620,
+      660
+    ],
+    "bbox": [
+      75,
+      43,
+      335,
+      374
+    ],
+    "border": 20,
+    "size": [
+      300,
+      371
+    ],
+    "native_alpha": false,
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; frame 203 of the official gymnastics animation replaces the haloed product illustration (Codex, c3ca72e)",
+    "credit": "LimX Dynamics",
+    "source_page": "https://www.limxdynamics.com/en/products/luna",
+    "source_url": "https://limx-video-oss.limxdynamics.com/limx-website/products/luna/%E4%BD%93%E6%93%8D.mp4 (frame 203 of 225 at 30 fps, 6.77 s; extracted by Codex, sha256 0b8433da…)",
+    "source_context": "Official Luna product page gymnastics animation (existing official animation, not a hardware photograph). Only the complete foreground robot on the left is kept; the second robot, the ribbons and the floor are excluded by the alpha mask. Frame 81 was not used: its foreground robot overlaps the robot behind it.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 193,
+    "slug": "mirrorme-bolt",
+    "manufacturer": "MirrorMe",
+    "model": "Bolt",
+    "credit": "MirrorMe",
+    "public_page": "https://whyhumanoid.com/humanoids/mirrorme-bolt-193/",
+    "source_page": "https://www.mirrormetech.com/cn/product_5.html",
+    "source_url": "https://www.mirrormetech.com/static/img/people-bolt.png",
+    "source_context": "Official product5 Bolt page exact people-bolt.png, complete biped wearing03jersey. This is Bolt, not other quadrupeds on same page. Native source alpha has floor shadows; ISNET used.",
+    "original": "original.png",
+    "original_size": [
+      1270,
+      808
+    ],
+    "original_sha256": "a2a46b3e41a0540e81fa90ea83a2c7d22202c2137447a3da338c7e4e14995093",
+    "prepared_sha256": "87df5aa333b36cffd7794e8bb12d08df1577155d03cc7fa6c805fbdc01020c25",
+    "mask_sha256": "c5923ca89686e3f91ca2cd1c003d51f911c12cc33f4b8d7fa3e00d6bff791057",
+    "roi": [
+      0,
+      0,
+      1270,
+      808
+    ],
+    "bbox": [
+      540,
+      14,
+      798,
+      781
+    ],
+    "border": 20,
+    "size": [
+      298,
+      807
+    ],
+    "native_alpha": true,
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; limited by the original alpha; levels 85..230; replaces Codex's ISNET cutout (dark haze in the arm gap)",
+    "status": "candidate_requires_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+  },
+  {
+    "id": 197,
+    "slug": "richtech-dex-m",
+    "manufacturer": "Richtech Robotics",
+    "model": "Dex",
+    "credit": "RichtechRobotics",
+    "public_page": "https://whyhumanoid.com/humanoids/richtech-robotics-dex-197/",
+    "source_page": "https://www.richtechrobotics.com/solutions/dex",
+    "source_url": "https://www.richtechrobotics.com/hubfs/richtech/renders/dex-trimmed-4.png",
+    "source_context": "Official DEX product page dex-trimmed-4.png corresponding DEX-M mobile wheeled chassis, not ADAM or fixed DEX-S. Label DEX-M configuration. Native alpha adjusted70..245 for faint floor shadow.",
+    "original": "original.png",
+    "original_size": [
+      1142,
+      1377
+    ],
+    "original_sha256": "8244f666ce45fbe992c2fbaadee2b992859c1c26e67b269d10cc13b34b2f3190",
+    "prepared_sha256": "0a497f028d6a189d92cd11d385068174b448c9e8b06e1290e493676e11a03c64",
+    "mask_sha256": "18fdb4e51fee77ee035fca8a6f94ee4e8fc3fc629e28d20e579c92f8a7aea67c",
+    "roi": [
+      0,
+      0,
+      1142,
+      1377
+    ],
+    "bbox": [
+      14,
+      19,
+      1127,
+      1367
+    ],
+    "border": 20,
+    "size": [
+      1153,
+      1388
+    ],
+    "native_alpha": true,
+    "mask_method": "Native alpha",
+    "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.; Quanta source replaced with unobstructed whole navigation illustration; Dex native alpha70..245 removes faint floor shadow.",
+    "status": "candidate_requires_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+  },
+  {
+    "id": 139,
+    "slug": "unitree-h2",
+    "manufacturer": "Unitree",
+    "model": "H2",
+    "credit": "Unitree",
+    "public_page": "https://whyhumanoid.com/humanoids/unitree-h2-139/",
+    "source_page": "https://www.unitree.com/H2/",
+    "source_url": "https://www.unitree.com/images/32686742408341c5af3b5dc2f4c85b0e_3840x2160.jpg",
+    "source_context": "Official exact H2 page source139-10 full factory demonstration still, not generic shared header R1/G1 image. Both feet and head present.",
+    "original": "original.jpg",
+    "original_size": [
+      3840,
+      2160
+    ],
+    "original_sha256": "26a69275e647b734d2ac42c0550332f4d8407d965ee55457f3f3626c903dd4e2",
+    "prepared_sha256": "d8a079857f3a5f8f968f5af162c256ea130ce6ce9f2c8ccfc4d6af534da3ea0e",
+    "mask_sha256": "4b08150db4b9a56925278e991c3b6d2abfed9a20643ee1cde299257b71e6ea38",
+    "roi": [
+      950,
+      0,
+      2450,
+      2160
+    ],
+    "bbox": [
+      339,
+      256,
+      1260,
+      2103
+    ],
+    "border": 20,
+    "size": [
+      961,
+      1887
+    ],
+    "native_alpha": false,
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; replaces Codex's ISNET cutout (raised arm missing and a spectator kept between the legs)",
+    "status": "candidate_requires_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+  },
+  {
+    "id": 141,
+    "slug": "unitree-r1",
+    "manufacturer": "Unitree",
+    "model": "R1",
+    "credit": "Unitree",
+    "public_page": "https://whyhumanoid.com/humanoids/unitree-r1-141/",
+    "source_page": "https://www.unitree.com/R1/",
+    "source_url": "https://www.unitree.com/images/f74777897620408abc9201ffed371895_1400x788.jpg",
+    "source_context": "Official exact R1 page source141-14 full robot running on grass. Both feet visible, including raised foot. No catalogue change.",
+    "original": "original.jpg",
+    "original_size": [
+      1400,
+      788
+    ],
+    "original_sha256": "0ec219000c5f9e46f47692304e6c358fe75081ec437114bf5800521c85cac34d",
+    "prepared_sha256": "21962cc255966c7f8906d4c8b70a7fca0575e600165a97fea67d19fba3de564a",
+    "mask_sha256": "a6cb944b9967cf58381e42a4200885da5f9542b1b138db8c76b75ebfceccf891",
+    "roi": [
+      350,
+      0,
+      1000,
+      788
+    ],
+    "bbox": [
+      85,
+      48,
+      554,
+      678
+    ],
+    "border": 20,
+    "size": [
+      509,
+      670
+    ],
+    "native_alpha": false,
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; replaces Codex's ISNET cutout (grass fringe between arm and leg)",
+    "status": "candidate_requires_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+  },
+  {
+    "id": 40,
+    "slug": "hexagon-aeon",
+    "manufacturer": "Hexagon",
+    "model": "AEON",
+    "credit": "Hexagon",
+    "public_page": "https://whyhumanoid.com/humanoids/hexagon-aeon-40/",
+    "source_page": "https://robotics.hexagon.com/product/",
+    "source_url": "https://robotics.hexagon.com/wp-content/uploads/2026/10/On-Wheels.mp4",
+    "source_context": "Existing official product animation On-Wheels.mp4, frame105 at4.2seconds,1280x720 native. Full AEON on wheels side view. This is an official animation still/render, not hardware photograph. Source frame unchanged, no generated anatomy.",
+    "original": "original.png",
+    "original_size": [
+      1280,
+      720
+    ],
+    "original_sha256": "8f70a1d9b1d608dc5cbc5aadc492c7da52412505b4284fe89c69bc75cfbf5a7f",
+    "prepared_sha256": "266383e4ed1116f37628f56e4327290a18f6a6daa02918193369dca7d403e486",
+    "mask_sha256": "5f7910d5a47dfaa86bf6e0c0ec20b537542dd297e0bee03edea2bfa7cd28f26a",
+    "roi": [
+      450,
+      0,
+      900,
+      720
+    ],
+    "bbox": [
+      61,
+      52,
+      230,
+      529
+    ],
+    "border": 20,
+    "size": [
+      209,
+      517
+    ],
+    "native_alpha": false,
+    "mask_method": "ISNET non-generative segmentation",
+    "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.",
+    "status": "candidate_requires_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+  }
+]
