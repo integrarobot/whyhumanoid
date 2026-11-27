@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 8, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 8, PR not yet merged)
+## Published files (image batch 8, PR 228, merge db579f7, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/holiday-friday/holiday-friday-full-body.png`, 636 × 1817 px, sha256 `b3b2afe8358530b661c2d79238cfd61b72a2e21e766c6092330e97e2b6b6f3bd` (= the prepared.png).
 - **WebP:** `assets/robots/holiday-friday/holiday-friday-full-body.webp`, sha256 `625ee13ca13872fefdc0f0ed53d0d1268ea86ca1d71705645971838b160c53f1`.

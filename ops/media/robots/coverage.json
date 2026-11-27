@@ -198,7 +198,7 @@
     {
       "batch": 8,
       "opened": "2026-11-27",
-      "state": "integrated",
+      "state": "published",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026); G/H/I first",
       "candidates": [
@@ -221,8 +221,10 @@
         "Codex's packages on codex/image-sources-remaining (3096468 and 299a0d7, candidates-08) plus Adam (66) from PNDbotics' official GitHub repository pndbotics/pnd_models. Cutouts prepared by Claude (alpha only, original RGB, native resolution) in ops/media/intake-remaining-2026-11-27/batch-08/, with a light and dark contact sheet, for Codex's review before integration (27 Nov 2026).",
         "Kuavo (49) and R-Noid (77): the transparent originals reach the top edge of the file at the head, so the whole head cannot be shown to be present; both stay queued rather than being forced into the batch. Nadia uses the complete crouching photograph (43-detail14) because the frontal PNG reaches the bottom and side edges.",
         "180, 37, 38, 39, 40 and 44 leave the batch: no source for them was in these packages; they stay queued for Codex's sweep (nothing concluded about their sources).",
-        "Codex reviewed the prepared package at c191fdb (27 Nov 2026) and approved integrating all ten, Adam included as the ADAM standard simulation model (the record does not fix a variant). Visible captions name the variant or the kind of image: LUS2, MenteeBot v3, RoBee Series R, pib#5 and \"ADAM standard simulation model\"; the records' specifications are unchanged and the identity caveats are in each PROVENANCE.md."
-      ]
+        "Codex reviewed the prepared package at c191fdb (27 Nov 2026) and approved integrating all ten, Adam included as the ADAM standard simulation model (the record does not fix a variant). Visible captions name the variant or the kind of image: LUS2, MenteeBot v3, RoBee Series R, pib#5 and \"ADAM standard simulation model\"; the records' specifications are unchanged and the identity caveats are in each PROVENANCE.md.",
+        "Published with PR 228 (reviewed head 6f9a76e, CI 46036203912; merge db579f7), 27 Nov 2026; Pages 46036629734 and production verification by Claude and Codex recorded in the batch closeout."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -2289,7 +2291,7 @@
         "Lab": "Holiday",
         "Robot": "Friday"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://holiday-robotics.com/",
       "sources": [
         {
@@ -2309,7 +2311,7 @@
         "Lab": "Igus",
         "Robot": "Iggy Rob"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.igus.com/automation/news/humanoid-robot",
       "sources": [
         {
@@ -2330,7 +2332,7 @@
         "Lab": "IHMC Robotics",
         "Robot": "Nadia"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://robots.ihmc.us/nadia",
       "sources": [
         {
@@ -2359,7 +2361,7 @@
         "Lab": "IntBot",
         "Robot": "Nylo"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://intbot.ai",
       "sources": [
         {
@@ -2397,7 +2399,7 @@
         "Lab": "Kinisi",
         "Robot": "Kinisi (Bear Robotics offering)"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.bearrobotics.ai/kinisi",
       "sources": [
         {
@@ -2435,7 +2437,7 @@
         "Lab": "Lumos",
         "Robot": "LUS"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.lumosbot.tech/",
       "sources": [
         {
@@ -2464,7 +2466,7 @@
         "Lab": "Mentee",
         "Robot": "MenteeBot"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.menteebot.com/bot/",
       "sources": [
         {
@@ -2493,7 +2495,7 @@
         "Lab": "Oversonic",
         "Robot": "RoBee"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.oversonicrobotics.com/",
       "sources": [
         {
@@ -2531,7 +2533,7 @@
         "Lab": "Pib",
         "Robot": "pib"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://pib.rocks/",
       "sources": [
         {
@@ -2551,7 +2553,7 @@
         "Lab": "PNDbotics",
         "Robot": "Adam"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.pndbotics.com/",
       "sources": [
         {

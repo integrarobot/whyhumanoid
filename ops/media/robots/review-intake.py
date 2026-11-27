@@ -9,6 +9,11 @@
 #     fails (batch 7: R1 chassis about 100,000 px, Eno base halo, GENE.01 hand, Kengo floor, all over 1,400 px);
 #     regions of 150 to 1000 px are listed as warnings to inspect on the review images (soft natural edges, such as a
 #     shoe's shadow, were accepted after inspection in batch 7);
+#   - a WARNING only, never a failure and never an edit: opaque regions (alpha > 200, over 300 px) whose colour equals,
+#     within 1 per channel, the flat background of an original with an opaque border (the colour of at least half of its
+#     border pixels). Batch 9: background left opaque inside a gap (Sharpa D01 between shoulder and neck, 6,869 px at
+#     exactly 238). A saturated highlight on the robot (Nadia's carbon fibre, RoBee's chrome in batch 8) can also match:
+#     each region is to be looked at on the review images, not assumed to be a defect;
 # and writes <out>/review-<slug>.png on light and dark grounds plus one sheet for the whole package.
 #   python3 review-intake.py <intake dir> <out dir>
 # Exit code 1 if any check fails. Thick regions are reported with their box (x0, y0, x1, y1) in prepared.png.
@@ -45,9 +50,23 @@ for m in json.load(open(f'{src}/manifest.json')):
         'corners_transparent': all(al[y, x] == 0 for y in (0, H - 1) for x in (0, W - 1)),
         'no_thick_semi_transparent': not thick,
     }
+    flat = []  # warning: opaque regions of the original's flat background colour (see above)
+    Oa = np.asarray(Image.open(orig).convert('RGBA')).astype(int)
+    edge = np.concatenate([Oa[0], Oa[-1], Oa[:, 0], Oa[:, -1]]); edge = edge[edge[:, 3] > 200]
+    if len(edge) >= 50:
+        cols, cnt = np.unique(edge[:, :3], axis=0, return_counts=True)
+        if cnt.max() >= 0.5 * len(edge):
+            bgc = cols[cnt.argmax()]
+            fl = (np.abs(a[..., :3].astype(int) - bgc).max(-1) <= 1) & (al > 200)
+            flab, fn = ndimage.label(fl)
+            if fn:
+                fs = ndimage.sum(fl, flab, range(1, fn + 1))
+                flat = [(int(v), (o[1].start, o[0].start, o[1].stop, o[0].stop), (o[1].start + x0, o[0].start + y0, o[1].stop + x0, o[0].stop + y0))
+                        for v, o in zip(fs, ndimage.find_objects(flab)) if v > 300]
     bad = [k for k, v in checks.items() if not v]
     ok_all &= not bad
-    print(m['id'], m['slug'], P.size, 'OK' if not bad else f'FAIL {bad}', f'thick={sorted(thick, reverse=True)[:4]}' if thick else '', f'inspect={sorted(warn, reverse=True)[:4]}' if warn else '')
+    print(m['id'], m['slug'], P.size, 'OK' if not bad else f'FAIL {bad}', f'thick={sorted(thick, reverse=True)[:4]}' if thick else '', f'inspect={sorted(warn, reverse=True)[:4]}' if warn else '',
+          f'flat_background_warning={sorted(flat, reverse=True)[:4]} (px, prepared box, original box)' if flat else '')
     row = []
     for bg in ((238, 238, 238), (34, 34, 36)):
         c = Image.new('RGBA', P.size, bg + (255,)); c.alpha_composite(P); row.append(c.convert('RGB'))

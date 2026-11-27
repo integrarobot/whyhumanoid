@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 8, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 8, PR not yet merged)
+## Published files (image batch 8, PR 228, merge db579f7, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/kinisi/kinisi-full-body.png`, 612 × 1175 px, sha256 `14039419fad60fb28d7e1bb785ce39bba8a57f4a0163db382b970a4f572a81e3` (= the prepared.png).
 - **WebP:** `assets/robots/kinisi/kinisi-full-body.webp`, sha256 `71f7bfe7fc5890fee9cc363e05dfe6839bb8772ae17a229347232295f2d49397`.

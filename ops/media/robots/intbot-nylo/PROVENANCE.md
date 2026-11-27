@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 8, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 8, PR not yet merged)
+## Published files (image batch 8, PR 228, merge db579f7, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/intbot-nylo/intbot-nylo-full-body.png`, 498 × 1392 px, sha256 `3a419571e5b52624b506e572e9d9882fbff1cd574fd218ae8e93d875d6c28b8a` (= the prepared.png).
 - **WebP:** `assets/robots/intbot-nylo/intbot-nylo-full-body.webp`, sha256 `ffd3b8d6f38577fa889fcc919d2dd55331887acbb83ed2ff8bb56b2772d642f9`.

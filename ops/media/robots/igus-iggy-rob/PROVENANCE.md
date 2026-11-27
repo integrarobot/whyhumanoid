@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 8, All mi
 
 - **Quality:** Small source: 514 × 687 px as prepared, from a 1018 × 688 illustration.
 
-## Files integrated (image batch 8, PR not yet merged)
+## Published files (image batch 8, PR 228, merge db579f7, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/igus-iggy-rob/igus-iggy-rob-full-body.png`, 514 × 687 px, sha256 `e1fc0b7c95e6b4a7734d82f67a0ebfd09d899102ae002897c7c582d80c6fce1d` (= the prepared.png).
 - **WebP:** `assets/robots/igus-iggy-rob/igus-iggy-rob-full-body.webp`, sha256 `68af6a88dd330ffb8c783f594fd7090bea4150118fc1748c4cb9352f19be6eea`.

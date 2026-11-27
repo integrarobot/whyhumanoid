@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 8, All mi
 
 - **Quality:** Simulation model rendering, not a hardware photograph; small source (368 × 1151 px as prepared).
 
-## Files integrated (image batch 8, PR not yet merged)
+## Published files (image batch 8, PR 228, merge db579f7, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/pndbotics-adam/pndbotics-adam-full-body.png`, 368 × 1151 px, sha256 `515f7f10dcf8c480d96ac8bab0d85cc71d0da2b6fcc1dc3f03c41428989e1dea` (= the prepared.png).
 - **WebP:** `assets/robots/pndbotics-adam/pndbotics-adam-full-body.webp`, sha256 `8a5686d0b621bebe90dc9d05dccca18a1c84e00322de96011db603be1faf4924`.

@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 8, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 8, PR not yet merged)
+## Published files (image batch 8, PR 228, merge db579f7, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/ihmc-nadia/ihmc-nadia-full-body.png`, 2062 × 2471 px, sha256 `1c902c1197f0977cb8e3be757732df9587c5f888a794c1486a23012c9a85b0d4` (= the prepared.png).
 - **WebP:** `assets/robots/ihmc-nadia/ihmc-nadia-full-body.webp`, sha256 `d868814296f048417487fb2ea23e37c2de45d8ac62b04b0f39b390c0374584b3`.

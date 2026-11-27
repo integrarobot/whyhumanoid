@@ -1,0 +1,70 @@
+{
+  "id": "WH-20261127-1756-imagenes-robots-lote-8",
+  "tarea": "Imágenes de robots, lote 8 del alcance «todas las imágenes que faltan»: Friday, Iggy Rob, Nadia, Nylo, Kinisi, LUS2, MenteeBot v3, RoBee Series R, pib#5 y el modelo de simulación ADAM standard, con robot o plataforma completos y fondo transparente; cola pública de todos los pendientes y herramientas de revisión e integración",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T17:56:58+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 228 (cabeza revisada 6f9a76e, merge db579f7): imagen en las fichas 41 Holiday Friday, 42 igus Iggy Rob (solo el robot de la izquierda con bandeja, botella y vasos; el otro robot y su caja quedan fuera por máscara), 43 IHMC Nadia (foto completa agachada de la sección Nadia, no de Alex), 45 IntBot Nylo, 48 Kinisi (vista frontal), 52 Lumos (variante LUS2), 55 MenteeBot (v3), 60 Oversonic RoBee (Series R), 65 pib (pib#5) y 66 PNDbotics Adam (render del modelo de simulación adam_standard del repositorio oficial pnd_models, preexistente; no es foto del hardware ni acredita las carcasas actuales), solo mediante tools/robot-presentation.json; las 68 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con la variante o el tipo de imagen: «Image: Lumos, LUS2», «Image: Mentee Robotics, MenteeBot v3», «Image: Oversonic Robotics, RoBee Series R», «Image: pib, pib#5» e «Image: PNDbotics, ADAM standard simulation model». Las especificaciones de las fichas no cambian y las dudas de identidad constan en cada PROVENANCE.md.",
+    "Recortes no generativos preparados por Claude (solo alfa, RGB original, resolución nativa, margen de 20 px) con ops/media/robots/prepare-cutout.py, a partir de los paquetes de Codex (codex/image-sources-remaining 3096468 y 299a0d7) y del repositorio oficial de PNDbotics; paquete, manifiesto, mapping y hoja de contacto clara/oscura en ops/media/intake-remaining-2026-11-27/batch-08/, revisado por Codex en c191fdb. El alfa propio de MenteeBot traía un halo violeta (se nivela 175..250); la máscara suave extraída del PDF de RoBee era opaca, por lo que su alfa sale de un modelo de segmentación sobre la imagen RGB extraída.",
+    "Kuavo (49) y R-Noid (77) quedan en cola: en su original la cabeza llega al borde superior del archivo y no se puede demostrar que esté completa. Los candidatos planeados 180, 37, 38, 39, 40 y 44 vuelven a la cola porque no venían fuentes para ellos.",
+    "Cola pública: el estado queued con resultado obligatorio cubre todos los registros pendientes en ops/media/robots/coverage.json y COVERAGE.md; una petición rechazada por el proxy de red de Claude nunca se registra como resultado sobre las fuentes.",
+    "Herramientas: ops/media/robots/prepare-cutout.py, review-intake.py (ahora con un aviso, solo advertencia, de regiones opacas del color plano del fondo del original, para revisión visual; ni falla ni borra) e integrate-batch.py (leyenda y origen por registro).",
+    "Cobertura: lote 8 publicado con 10 fichas; en todo el catálogo, 78 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 228",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/228"
+    },
+    {
+      "etiqueta": "CI de la cabeza 6f9a76e",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46036203912"
+    },
+    {
+      "etiqueta": "Pages de db579f7",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46036629734"
+    },
+    {
+      "etiqueta": "Ficha PNDbotics Adam",
+      "url": "https://whyhumanoid.com/humanoids/pndbotics-adam-66/"
+    },
+    {
+      "etiqueta": "Ficha Lumos LUS",
+      "url": "https://whyhumanoid.com/humanoids/lumos-lus-52/"
+    },
+    {
+      "etiqueta": "Ficha IHMC Nadia",
+      "url": "https://whyhumanoid.com/humanoids/ihmc-robotics-nadia-43/"
+    },
+    {
+      "etiqueta": "Ficha Oversonic RoBee",
+      "url": "https://whyhumanoid.com/humanoids/oversonic-robee-60/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main db579f7 (run 46036629734, correcto); CI de la cabeza 6f9a76e (run 46036203912, correcto). Fusión hecha solo en esa cabeza, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 10/10 (SHA, tamaño nativo, RGB visible igual al original, esquinas transparentes, sin zonas gruesas semitransparentes); las regiones a inspeccionar (sombra tenue bajo los pies de LUS2 y borde suave del brazo de MenteeBot) se aceptaron tras verlas; prueba de integración en seco en un worktree aparte.",
+    "Codex, paquete c191fdb y cabeza 6f9a76e: revisión independiente aprobada; diez PNG iguales a los preparados, RGB visible exacto, alfa de PNG y WebP idéntica, bordes de 20 px transparentes, dimensiones nativas, los 213 modelos sin cambios, la portada solo añade presentaciones, 68 anteriores idénticas; leyendas, textos alternativos y variantes revisados.",
+    "Claude, producción: las 20 URL canónicas (10 WebP y 10 PNG) con los mismos bytes que db579f7 (20/20); las 10 fichas y la portada idénticas a db579f7 salvo las etiquetas meta agent:* que añade Cloudflare; navegador real en iPhone 13 y 1366 × 900, las diez cargan su imagen con su leyenda y sin desbordamiento lateral (20/20).",
+    "Codex, verificación pública independiente tras Pages 46036629734: 30/30 URL canónicas con 200 y hashes exactos; 20/20 vistas a 390 × 844 y 1366 × 900 con imagen natural, contain, sin desbordamiento y créditos de variante correctos (Nadia tuvo una carrera de decodificación en la primera lectura y se revalidó cargada).",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (78) y entregas --check. El aviso nuevo de review-intake marca, en el lote 9 antes de su corrección, el hueco de Sharpa D01 y el de Linker, y en el lote 8 tres brillos auténticos de la fibra de carbono de Nadia (por eso es advertencia y no fallo); no marca el hueco de Isaac 0, cuyo original no tiene un fondo plano dominante en el borde."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Kuavo (49) y R-Noid (77) siguen en cola hasta encontrar una fuente oficial con el robot completo.",
+    "Lote 9 (Codex, codex/image-sources-remaining) en revisión de Claude; no está integrado.",
+    "Quedan 135 fichas sin imagen; el alcance sigue abierto por lotes de hasta 10."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Claude revisa e integra el lote 9 en un PR aparte y espera la revisión de Codex antes de fusionar."
+}
