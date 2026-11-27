@@ -33,6 +33,39 @@
     "mask_sha256": "c9cf36fc6fb7aaedb89f4513d9c7ff7007baf47b832f220d0a08641c3d0ac6dc"
   },
   {
+    "id": 35,
+    "slug": "galbot-g1-award-native",
+    "credit": "Galbot",
+    "source_page": "https://www.productdesignaward.eu/winners/epda/2026/12837/",
+    "source_url": "https://s3-us-west-2.amazonaws.com/productdesignaward/upload/3264595/22895726/full/64529c2e68d22e7f7759126043cee614.png",
+    "source_context": "Manufacturer-submitted GALBOT G1 award entry 2026, Company Galbot, Client Galbot, visible Photo Credit Galbot, official project link galbot.com. Third-party award hosting explicitly acknowledged, not open licence assumed. Native4500x3375 existing manufacturer product render, two complete separated configurations. Choose LEFT standing figure ONLY, entire head, both actual articulated hands, lift leg, complete base and wheels. Approx ROI[800,200,2400,3000] but independently determine exact native geometry. Both figures are separated, no body overlap. Remove floor shadow and right crouching robot. Caption Galbot, G1 manufacturer product render via European Product Design Award (2026). Whole selected figure root inspected at native scale. NOT another company Unitree G1 tennis footage, no new capabilities/specs. Needs independent alpha-only mask/review, no RGB edits or upscale.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining a7c0ffb, candidates-31",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; largest region kept; levels 150..240; the largest region kept, which drops the fingertips of the crouching robot on the right that reach into the region; the original alpha (218..255) lies only off the robot and is not used",
+    "roi": [
+      880,
+      230,
+      2340,
+      3000
+    ],
+    "bbox": [
+      81,
+      109,
+      1421,
+      2707
+    ],
+    "border": 20,
+    "size": [
+      1380,
+      2638
+    ],
+    "native_alpha": false,
+    "original_sha256": "51f6711b14a65954ab429d6ae9aca1635edfe45c68edd22210ceddf517014426",
+    "prepared_sha256": "934eda69b45a424d6f9ff0c23dd23a7f2d95fe0df9674280792bc066655ce7d1",
+    "mask_sha256": "2320624ecada7696879d9fc2815518472d057e53f47f0fccdac8edffd0a70996"
+  },
+  {
     "id": 70,
     "slug": "rainbow-hubo2-front",
     "credit": "Rainbow Robotics, via Rainbow Robotics Vietnam",

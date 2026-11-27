@@ -2167,6 +2167,21 @@
         "credit": "Image: Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam",
         "provenance": "ops/media/robots/rainbow-robotics-hubo2/PROVENANCE.md"
       }
+    },
+    "35": {
+      "recorded": {
+        "Lab": "Galbot",
+        "Robot": "G1"
+      },
+      "image": {
+        "src": "/assets/robots/galbot-g1/galbot-g1-full-body.webp",
+        "fallback": "/assets/robots/galbot-g1/galbot-g1-full-body.png",
+        "width": 1380,
+        "height": 2638,
+        "alt": "G1 by Galbot, full body, standing on its lift leg and wheeled base, one hand held out, manufacturer product render",
+        "credit": "Image: Galbot, G1 manufacturer product render via European Product Design Award (2026)",
+        "provenance": "ops/media/robots/galbot-g1/PROVENANCE.md"
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
   "batch": 15,
   "intake": "ops/media/intake-remaining-2026-11-27/batch-15",
   "branch": "codex/image-sources-remaining",
-  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27), 62f03ab (candidates-28) and 26e018a (candidates-30)",
+  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27), 62f03ab (candidates-28), 26e018a (candidates-30) and a7c0ffb (candidates-31)",
   "scope": "All missing images (Javier, 27 Nov 2026)",
   "items": {
     "166": {
@@ -45,6 +45,13 @@
       "alt": "HUBO2 by Rainbow Robotics, full body, front view, standing, manufacturer product image",
       "credit": "Image: Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam",
       "identity": "The HUBO2 product image on the HUBO2 page of Rainbow Robotics Vietnam, a regional site that hosts the maker's product material (native 1206 × 1658): the whole robot with head, both hands and both feet, the chest marked HUBO, KAIST and Rainbow. The page's alt text says RBQ, but the page title, the text and the visible robot are HUBO2. The white studio and the floor shadow are excluded by the alpha mask; the original's own alpha is only an opaque rectangle and is not used.",
+      "quality": null
+    },
+    "35": {
+      "slug": "galbot-g1",
+      "alt": "G1 by Galbot, full body, standing on its lift leg and wheeled base, one hand held out, manufacturer product render",
+      "credit": "Image: Galbot, G1 manufacturer product render via European Product Design Award (2026)",
+      "identity": "The left, standing figure of the G1 render that Galbot submitted to the European Product Design Award 2026 (native 4500 × 3375; the entry names Galbot as company and client and credits the photo to Galbot): the whole robot with head, both articulated hands, the lift leg and the complete wheeled base. The crouching second G1 on the right, the white studio and the floor shadow are excluded by the alpha mask. It is Galbot's G1, not Unitree's G1.",
       "quality": null
     }
   }
