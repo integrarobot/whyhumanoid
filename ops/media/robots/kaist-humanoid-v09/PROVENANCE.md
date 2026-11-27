@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 16, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 16, PR not yet merged)
+## Published files (image batch 16, PR 251, merge 43d8984, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/kaist-humanoid-v09/kaist-humanoid-v09-full-body.png`, 391 × 889 px, sha256 `dc5ef11efa8162a39422b83e36b919d0fb51c56e596835801954ce64e239c8e5` (= the prepared.png).
 - **WebP:** `assets/robots/kaist-humanoid-v09/kaist-humanoid-v09-full-body.webp`, sha256 `eb319a19891fdd6c5a6e04c963f8eb7e447d2a0fc18915badc96ac1e97212c31`.

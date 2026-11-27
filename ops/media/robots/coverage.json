@@ -417,7 +417,7 @@
     {
       "batch": 16,
       "opened": "2026-11-27",
-      "state": "integrated",
+      "state": "published",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026)",
       "candidates": [
@@ -436,8 +436,10 @@
       "notes": [
         "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-16/: candidates-35 (8ba9356: TLIBOT T1 Pro, brochure image with its PDF soft mask), candidates-36 and 37 (91a9ac1: Lightberry Lumi photograph; X-Humanoid TianYi 2.0 brochure render), candidates-38 (feb3c3e: Pudu D9, brochure image with its PDF soft mask), candidates-39 (e0d60a7: Vanar Generation 1 render), candidates-40 (5168cc8: NEURA 4NE1 Gen 4 and KAIST Humanoid v0.9 video frames), candidates-41 (7a9d62e: JAKA π video frame) candidates-42 (1c2c9a0: ZJ Humanoid i3 video frame) and candidates-43 (efea6c9: GAC GoMate 2024 render, video still via Gasgoo Auto News). Every cutout prepared by Claude, alpha only: the PDF soft mask (T1 Pro, D9) or BiRefNet masks kept beside the originals; Vanar with the six bracket and elbow openings removed by distance to the flat studio grey (reviewed by Codex); KAIST with the dark left bar of its head handle completed from the mask and its own luminance.",
         "Left out: Jingchu Elf (183, candidates-41): in the Changjiang Daily photograph the left gripper hangs in front of a dark green tablecloth of the same colour as the robot's dark parts; neither the model nor a luminance key separates it without losing gripper parts, so it is not used and nothing is reconstructed. Qinglong (69), T230A (89), R-Noid (77) and IGRIS (79) stay out with their reasons; D9 (155) now has a source.",
-        "GAC GoMate (33) replaces Jingchu Elf as the tenth record. Captions name the kind of image and the variant: T1 Pro brochure image (2025) and TianYi 2.0 brochure render (2025), both via World Robot Conference; Lumi manufacturer photograph, rooftop configuration; D9 brochure render (2025); Vanar Generation 1 render; NEURA 4NE1 Gen 4 reveal video still (October 2026); KAIST Humanoid v0.9 video still (October 2026); JAKA π video still (July 2026); i3 product video still, walking configuration (2026); GoMate manufacturer product render (2024), video still via Gasgoo Auto News. Records' specifications unchanged."
-      ]
+        "GAC GoMate (33) replaces Jingchu Elf as the tenth record. Captions name the kind of image and the variant: T1 Pro brochure image (2025) and TianYi 2.0 brochure render (2025), both via World Robot Conference; Lumi manufacturer photograph, rooftop configuration; D9 brochure render (2025); Vanar Generation 1 render; NEURA 4NE1 Gen 4 reveal video still (October 2026); KAIST Humanoid v0.9 video still (October 2026); JAKA π video still (July 2026); i3 product video still, walking configuration (2026); GoMate manufacturer product render (2024), video still via Gasgoo Auto News. Records' specifications unchanged.",
+        "Published with PR 251 (reviewed head eaf3afd, CI 46064317211; merge 43d8984), 27 Nov 2026; Pages 46064669376 and production verification by Claude and Codex recorded in the batch closeout."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -749,7 +751,7 @@
         "Lab": "Pudu",
         "Robot": "D9"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.pudurobotics.com/en/products/d9",
       "notes": "Not D7 (id 68). Batch 12 (27 Nov 2026): official D9 video frame 31 (1920 × 1080) prepared, but the dark background panel beside the torso cannot be separated from the dark torso by alpha alone; left out by Codex's decision. Still queued for another official source.",
       "sources": [
@@ -1109,7 +1111,7 @@
         "Lab": "Neura",
         "Robot": "4NE1 (Gen 4 announced)"
       },
-      "status": "integrated",
+      "status": "published",
       "reason": "The record's page combines generations; which generation to show must be decided first.",
       "sources": [
         {
@@ -2371,7 +2373,7 @@
         "Lab": "GAC Group",
         "Robot": "GoMate"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.gac.com.cn/",
       "notes": "GAC GoMate (third-generation embodied humanoid unveiled 26 Dec 2024): wheel-legged, variable four- or two-wheel mobility; shown whole in a configuration the official source identifies as GoMate, no other GAC robot.",
       "research": [
@@ -3423,7 +3425,7 @@
         "Lab": "Vanar",
         "Robot": "Generation 1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "http://vanarrobots.com/",
       "sources": [
         {
@@ -3657,7 +3659,7 @@
         "Lab": "Lightberry",
         "Robot": "Lumi"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://lightberry.com/lumi",
       "sources": [
         {
@@ -3802,7 +3804,7 @@
         "Lab": "JAKA Robotics",
         "Robot": "JAKA π"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.jaka.com/",
       "sources": [
         {
@@ -3822,7 +3824,7 @@
         "Lab": "KAIST DRCD Lab",
         "Robot": "KAIST Humanoid"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.dynamicrobot.kaist.ac.kr/new-page",
       "sources": [
         {
@@ -4122,7 +4124,7 @@
         "Lab": "Tlibot",
         "Robot": "TLIBOT T1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.tlibot.com/cpzx/6.html",
       "sources": [
         {
@@ -4183,7 +4185,7 @@
         "Lab": "X-Humanoid",
         "Robot": "Tian Yi 2.0"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.x-humanoid.com/detail/tianyi.html",
       "sources": [
         {
@@ -4252,7 +4254,7 @@
         "Lab": "ZJ Humanoid",
         "Robot": "NAVIAI i3"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.zj-humanoid.com/zujian/2",
       "sources": [
         {

@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 16, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 16, PR not yet merged)
+## Published files (image batch 16, PR 251, merge 43d8984, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/lightberry-lumi/lightberry-lumi-full-body.png`, 766 × 1689 px, sha256 `acbd3a1a6956fa159a298cf6ec7ad5f5e97e67588e8f302051f3e5f8d9340fd7` (= the prepared.png).
 - **WebP:** `assets/robots/lightberry-lumi/lightberry-lumi-full-body.webp`, sha256 `fe4b234a9f45bb43ecbaeea1ac218f1937aa2adf490e2867a786bc1fb2607cd0`.

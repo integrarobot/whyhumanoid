@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 16, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 16, PR not yet merged)
+## Published files (image batch 16, PR 251, merge 43d8984, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/jaka-pi/jaka-pi-full-body.png`, 290 × 735 px, sha256 `fc6993e3d36c9387df4f838129f1f824bcf84d327afa4493396af2fe325b9658` (= the prepared.png).
 - **WebP:** `assets/robots/jaka-pi/jaka-pi-full-body.webp`, sha256 `6a181498e4ab4231b3cc3cee59bf2305b7b465145ebd7b0228c68d6b54092d53`.
