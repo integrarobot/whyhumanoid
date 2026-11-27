@@ -1,0 +1,23 @@
+{
+  "id": 198,
+  "slug": "roboscience-rex-g1",
+  "manufacturer": "RoboScience",
+  "model": "REX-G1",
+  "credit": "RoboScience",
+  "public_page": "https://whyhumanoid.com/humanoids/roboscience-rex-g1-198/",
+  "source_page": "https://www.robosci.com/rex-g1/",
+  "source_url": "https://www.robosci.com/wp-content/uploads/2026/10/REX-G1%E4%BA%A7%E5%93%81%E8%A7%86%E9%A2%91.mp4",
+  "original": "original-frame-0.png",
+  "original_size": [
+    3840,
+    2160
+  ],
+  "original_sha256": "489d86af7c1f53ac5f4fd495ad0b8ccba7acbe275fc2fd2a11e14d6cebc95526",
+  "video_frame": 0,
+  "video_fps": 25.0,
+  "video_time_seconds": 0,
+  "source_context": "Exact manufacturer REX-G1 product video, first title frame explicitly names REX G1 beside the whole wheeled humanoid, both hands and entire chassis/wheels visible. Source is an existing product illustration/video still, label manufacturer video still; not new rendering or hardware demonstration claim. Native decoded frame preserved,1920x1080 or actual manifest dimensions. Isolate only whole right-hand robot, excluding title/logo/backdrop/ground shadow. Independent visual/native mask review needed.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary video, no open licence assumed; credit source. No outreach sent."
+}
