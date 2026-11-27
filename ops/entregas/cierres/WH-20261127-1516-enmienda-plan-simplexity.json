@@ -1,0 +1,52 @@
+{
+  "id": "WH-20261127-1516-enmienda-plan-simplexity",
+  "tarea": "Enmienda del plan sin escribir de Simplexity (iX en Humanoids) tras la revisión de Codex del PR 217, antes de la escritura nativa",
+  "origen": "Revisión independiente de Codex del 27/11/2026 sobre el head 0681d9b4 del PR 217, dentro de la autorización de Javier del 26/11/2026",
+  "fecha": "2026-11-27T15:16:54+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Plan WP-20261125-integrarobot-simplexity enmendado en su sitio, sin haberse escrito: SHA-256 nuevo 6a939e33… (amended_from 7b2a70bb…). Sigue siendo una operación, la fila 219 de Humanoids, con 32 celdas y ninguna privada.",
+    "Enlaces oficiales en lugar de «Not found»: X y LinkedIn (pie de la web oficial) y la página de empleo (enlazada desde About).",
+    "Datos que la página oficial del producto sí da, siempre como afirmaciones del fabricante: autonomía de unas 4 a 5 horas, software SimpleAgent, tabla de sensores, Orin NX 16 GB (157 TOPS) o Thor 64 GB (730 TOPS), desglose de los 24 grados de libertad (7 por brazo, cuello 2, cintura y elevación 5, base 3; manos diestras de serie) y dos baterías de 1.650 Wh en total con cambio en caliente y base de carga opcional.",
+    "Rounds solo conserva la ronda de USD 100M de la newsletter como información secundaria; se quita la financiación anterior de RMB 2.000M, ajena a este pendiente. Buyer checks enumera los límites prácticos: confirmar con el fabricante la configuración, el ciclo de trabajo, el espacio de carga, la autonomía y el grado de supervisión; ninguna prueba independiente ni despliegue del iX verificado en las fuentes revisadas.",
+    "created_at con la hora real; la página About como fuente; el fichero de la ejecución y state.json recogen la enmienda, la comprobación de la newsletter (última edición, la del 25/11) y que Codex añade una fila nativa ampliando la tabla hasta la 219 sin tocar las 218 anteriores."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Plan",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/plans/WP-20261125-integrarobot-simplexity.json"
+    },
+    {
+      "etiqueta": "Fichero de la ejecución",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/runs/2026-11-27-simplexity.json"
+    },
+    {
+      "etiqueta": "PR 217 (plan original)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/217"
+    },
+    {
+      "etiqueta": "Fuente: página oficial del iX",
+      "url": "https://www.simplexityrobotics.com/products/ix"
+    },
+    {
+      "etiqueta": "Fuente: About de Simplexity",
+      "url": "https://www.simplexityrobotics.com/about"
+    }
+  ],
+  "despliegue": [
+    "No aplica: sin escritura en el libro, sin publicación y sin importación. El PR solo lleva ficheros de ops/."
+  ],
+  "verificaciones": [
+    "workbook-plan check (los tres planes), preflight sobre el libro descargado a las 11:46 UTC (32 celdas por escribir, 0 conflictos), escritura simulada y readback (0 diferencias, 0 cambios fuera del plan), check-public y entregas --check en verde.",
+    "Los valores nuevos proceden de la lectura de Codex en el navegador; la lectura estática de Claude de esa página solo devuelve metadatos. Codex vuelve a hacer el preflight y confirma cada valor antes de escribir."
+  ],
+  "pendientes": [
+    "Codex: preflight sobre el libro actual, escritura nativa de Humanoids!A219:AF219 (ampliando la tabla) y relectura, con su recibo.",
+    "Claude: publicación y una importación, solo tras el recibo y una lectura nueva de la cuota y la cola de D1.",
+    "La ronda de noviembre sigue pendiente de un anuncio primario.",
+    "Codex: registrar el aviso de este cierre y del cierre WH-20261127-1512-fase1-simplexity."
+  ],
+  "siguiente_accion": "Codex descarga el plan enmendado de main, hace el preflight, escribe y relee la fila 219 de Humanoids y envía el recibo a esta conversación."
+}

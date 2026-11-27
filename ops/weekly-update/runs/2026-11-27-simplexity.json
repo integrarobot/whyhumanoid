@@ -11,11 +11,15 @@
     "item_id": "simplexity",
     "edition_id": "integrarobot:2026-11-25:why-humanoid",
     "order": 8,
-    "decision": "one Humanoids row for the iX wheeled humanoid (op-001, Humanoids row 219) with the manufacturer's stated specifications; funding recorded only as secondary reports, never as confirmed",
+    "decision": "one Humanoids row for the iX wheeled humanoid (op-001, Humanoids row 219) with the specifications and official links stated on the official product and About pages, all as manufacturer claims; funding recorded only as the secondary USD 100M report, never as confirmed",
     "evidence": [
       {
         "url": "https://www.simplexityrobotics.com/products/ix",
-        "reading": "Codex, rendered browser, 2026-11-27: explicitly a wheeled humanoid; 24 active DoF excluding hands; 160 kg; height 1060-1700 mm; 1.5 m/s; 3 kg arm rated load; Orin NX in the standard version, Thor in the Pro version. Claude's static fetch of the same page returned only metadata (JavaScript-rendered), so each value is confirmed again by Codex on the rendered page before writing"
+        "reading": "Codex, rendered browser, 2026-11-27: wheeled humanoid; height 106-170 cm; 160 kg; 1.5 m/s; 3 kg straight-arm rated load; 24 active DoF excluding hands (7 per arm, neck 2, waist/lifting 5, base 3), dexterous hands standard; head 1 wide-angle + 3 fisheye cameras, chest 1 RGB-D, wrists 2 wide-angle, 2 LiDAR, 8 ultrasonic, IMU; Orin NX 16 GB 157 TOPS (standard) or Thor 64 GB 730 TOPS (Pro); two batteries, 1,650 Wh, about 4-5 h, direct charging or hot swap, optional dock, up to 2 h per bay; SimpleAgent skills. Claude's static fetch of the same page returned only metadata (JavaScript-rendered), so Codex confirms each value on the rendered page before writing"
+      },
+      {
+        "url": "https://www.simplexityrobotics.com/about",
+        "reading": "Codex, rendered: links the careers page (https://www.simplexityrobotics.com/recruitment); the official footer links https://x.com/Simplexity2025 and https://www.linkedin.com/company/simplexityrobotics/"
       },
       {
         "url": "https://www.simplexityrobotics.com/news",
@@ -32,10 +36,20 @@
     ],
     "not_entered": [
       "i7 Pro (linked from the official site, not reviewed)",
-      "any operating deployment",
+      "any operating deployment (none verified in the reviewed sources)",
       "release date (only reported by secondary press)",
-      "battery, runtime, sensors and software"
+      "voice, clothing, autonomy and price",
+      "earlier financing (outside this item)"
     ]
   },
-  "d1": "phase 3 needs one production import (Humanoids is in the backend); it waits for the Codex write receipt and a fresh quota and queue check"
+  "d1": "phase 3 needs one production import (Humanoids is in the backend); it waits for the Codex write receipt and a fresh quota and queue check",
+  "feed_check": "Codex, 2026-11-27: feed downloaded and parsed; latest edition 2026-11-25 (11:04:05 GMT), no newer edition",
+  "amendment": {
+    "date": "2026-11-27",
+    "by": "claude after the Codex review of PR 217 (head 0681d9b4)",
+    "amended_from": "7b2a70bb67768e220cbed45976fd5b6913e7baa9d5b2e1e51be5a5e6fb14910a",
+    "public_plan_sha256": "6a939e33e00427721c76cc255b6aade9e27c9e626b9fb0b893b903e476c225fd",
+    "changes": "official X, LinkedIn and careers links instead of Not found; runtime, software, sensors and compute, DoF breakdown and battery from the official page instead of Not verified; Rounds keeps only the secondary USD 100M report (earlier RMB 2B financing removed); Buyer checks lists the practical limits; created_at set to the real clock; About page added as a source",
+    "written": false
+  }
 }

@@ -28,7 +28,7 @@
       "source_date": "2026-11-23",
       "found": "2026-11-25",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity.json",
-      "outcome": "planned (op-001, Humanoids row 219: iX with manufacturer specifications; funding recorded as secondary)",
+      "outcome": "planned (op-001, Humanoids row 219: iX with the specifications and official links of the official pages; funding recorded as secondary)",
       "needs": "Codex write and readback, then publication and one import; the round itself still needs a primary announcement to be recorded as confirmed",
       "rechecked": "2026-11-27: official product page names iX (Codex, rendered); official news page has no funding announcement"
     }
@@ -365,10 +365,11 @@
       "operations": 1,
       "cells": 32,
       "private_cells": 0,
-      "public_plan_sha256": "7b2a70bb67768e220cbed45976fd5b6913e7baa9d5b2e1e51be5a5e6fb14910a",
+      "public_plan_sha256": "6a939e33e00427721c76cc255b6aade9e27c9e626b9fb0b893b903e476c225fd",
       "private_payload": null,
-      "note": "Humanoids is a free tab: every value is in the public plan and there is no private payload or Drive file",
-      "next": "Codex confirms each value on the rendered official page, preflight, writes Humanoids!A219:AF219 and reads back; then Claude publishes (Humanoids sync, pages) and imports once after a fresh Codex quota and queue check"
+      "note": "Humanoids is a free tab: every value is in the public plan and there is no private payload or Drive file. Amended in place before any write after the Codex review of PR 217. The native Humanoids grid and table fill A1:AF218: Codex appends one native row and extends the table to row 219.",
+      "next": "Codex confirms each value on the rendered official page, preflight, writes Humanoids!A219:AF219 and reads back; then Claude publishes (Humanoids sync, pages) and imports once after a fresh Codex quota and queue check",
+      "amended_from": "7b2a70bb67768e220cbed45976fd5b6913e7baa9d5b2e1e51be5a5e6fb14910a"
     }
   ]
 }
