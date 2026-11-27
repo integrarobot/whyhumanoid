@@ -1,0 +1,66 @@
+{
+  "id": "WH-20261127-1617-imagenes-robots-lote-7",
+  "tarea": "Imágenes de robots, lote 7 (orden alfabético tras E/F): R1, Kengo, S1, ET1, GENE.01, Eno, NE01 Ultra, Gento Luna, Laborer C1 y Lumen H1, con imagen oficial de robot o plataforma completos y fondo transparente",
+  "origen": "Javier («venga sigue con 10 más», 27/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T16:17:33+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 225 (cabeza revisada f305081, merge 8b33837): imagen en las fichas 34 Galaxea R1 (R1 estándar de la sección R1 de la guía oficial, no R1 Pro ni R1 Lite; sostiene su caja y el dispositivo R1-Teleop queda fuera del recorte), 161 Galaxea Kengo (vista frontal), 157 Galbot S1 (no el G1), 158 Galbot ET1 (sin edición atribuida), 36 Generative Bionics GENE.01 (plataforma de julio de 2026 del kit de prensa oficial, no el concepto del CES; iluminación oscura original), 117 Genesis Eno (plataforma completa sin cabeza), 177 GENISOM NE01 (variante NE01 Ultra, nombrada en el texto alternativo), 178 Gento Luna, 179 Glroad Laborer C1 (no M1) y 181 Guanggu Dongzhi Lumen H1, solo mediante tools/robot-presentation.json; las 58 presentaciones anteriores, sin cambios.",
+    "Originales, máscaras, preparados y manifiesto de Codex (codex/image-sources-07, 8133830) guardados sin cambios en ops/media/intake-07-2026-11-27/batch-07/; preparados usados tal cual (margen de 20 px, resolución nativa, sin reescalar); color de cada píxel visible igual al original. El alfa de R1, Eno, GENE.01 y Kengo se corrigió en 8133830 tras la revisión de Claude de zonas interiores semitransparentes (chasis de R1, halo de la base de Eno, mano y entrepierna de GENE.01, reflejo bajo el pie de Kengo); las otras seis, idénticas a 886396f.",
+    "Las reservas Gento Luna (178), Laborer C1 (179) y Lumen H1 (181) sustituyen a GoMate (33), Galbot G1 (35) y Gino 1 (213), que quedan sin fuente válida entre las revisadas: la web oficial de GAC redirige a sus coches y la nota oficial no fue accesible; la única imagen completa de la página oficial del G1 está rotulada por su propio texto alternativo como render provisional del S1; la miniatura oficial de Gino 1 corta la base. No se afirma que sus fuentes estén agotadas.",
+    "Cobertura: lote 7 publicado con 10 fichas; en todo el catálogo, 68 de 213 fichas tienen imagen publicada. No se cierra el alcance G/H ni se inicia otro lote; Laborer M1, GBLN-01, Sophia, A.D.A.M. y AEON siguen como reservas."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 225",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/225"
+    },
+    {
+      "etiqueta": "CI de la cabeza f305081",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46022897299"
+    },
+    {
+      "etiqueta": "Pages de 8b33837",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46023149863"
+    },
+    {
+      "etiqueta": "Ficha Galaxea R1",
+      "url": "https://whyhumanoid.com/humanoids/galaxea-r1-34/"
+    },
+    {
+      "etiqueta": "Ficha GENE.01",
+      "url": "https://whyhumanoid.com/humanoids/generative-bionics-gene-01-36/"
+    },
+    {
+      "etiqueta": "Ficha NE01",
+      "url": "https://whyhumanoid.com/humanoids/genisom-ne01-177/"
+    },
+    {
+      "etiqueta": "Ficha Lumen H1",
+      "url": "https://whyhumanoid.com/humanoids/guanggu-dongzhi-lumen-h1-181/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 8b33837 (run 46023149863, correcto); CI de la cabeza f305081 (run 46022897299, correcto). Fusión hecha solo en esa cabeza, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Claude, paquete: SHA de originales, máscaras y preparados iguales al manifiesto; RGB visible igual al original y esquinas transparentes en los diez; búsqueda de zonas gruesas de alfa intermedio y revisión sobre fondo claro y oscuro, que detectó los cuatro defectos corregidos por Codex en 8133830.",
+    "Codex, cabeza f305081: revisión independiente aprobada; 10 PNG iguales a los preparados, RGB visible exacto, alfa de PNG y WebP idéntica, dimensiones correctas, 58 presentaciones anteriores idénticas, solo diez ids nuevos y los 213 modelos y datos de la portada sin cambios; textos alternativos, procedencia e identidades revisados.",
+    "Claude, producción: las 20 URL canónicas (10 WebP y 10 PNG) con los mismos bytes que 8b33837 (20/20); navegador real en iPhone 13 y 1366 × 900, las diez fichas cargan su imagen con texto alternativo y crédito y sin desbordamiento lateral (20/20); GoMate, G1 y Gino 1 sin imagen.",
+    "Codex, verificación pública independiente tras Pages 46023149863 correcto: 30/30 URL canónicas con 200, hashes de PNG y WebP exactos respecto al repositorio, alfa 0–255 y esquinas transparentes, 10 HTML con imagen, alt y crédito; 20/20 vistas en Chrome a 390 × 844 y 1366 × 900 con imagen completa, contain, proporción conservada y sin desbordamiento; GENE.01 revisado en escritorio, foto oscura original sin filtros ni máscaras CSS.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (68) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "GoMate (33), Galbot G1 (35) y Gino 1 (213) siguen sin imagen hasta que aparezca una fuente oficial fiel del robot completo.",
+    "El alcance G/H no está cerrado: Holiday Friday (41) e HIRO Origin (137) no se han tratado, y Laborer M1, GBLN-01, Sophia, A.D.A.M. y AEON siguen como reservas."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. No se inicia otro lote sin indicación."
+}

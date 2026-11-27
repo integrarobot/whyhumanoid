@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 7, alphab
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 7, PR not yet merged)
+## Published files (image batch 7, PR 225, merge 8b33837, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/guanggu-dongzhi-lumen-h1/guanggu-dongzhi-lumen-h1-full-body.png`, 755 × 1887 px, sha256 `59c3fe4e40518363bac40a20dba1f3d2fe2b6435a734465071056db9a2df4db5` (= Codex's prepared.png).
 - **WebP:** `assets/robots/guanggu-dongzhi-lumen-h1/guanggu-dongzhi-lumen-h1-full-body.webp`, sha256 `ca4c94d7fa9d51ff7eeab625ccbdb8143b371ba8e769f968f58bc2d54a0ee554`.

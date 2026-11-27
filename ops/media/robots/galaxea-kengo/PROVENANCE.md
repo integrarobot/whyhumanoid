@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 7, alphab
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 7, PR not yet merged)
+## Published files (image batch 7, PR 225, merge 8b33837, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/galaxea-kengo/galaxea-kengo-full-body.png`, 808 × 2434 px, sha256 `12253e050b58a10bba4ff82fcdafcae85bb4f9bf25d07c40589c0aa8b88a158b` (= Codex's prepared.png).
 - **WebP:** `assets/robots/galaxea-kengo/galaxea-kengo-full-body.webp`, sha256 `9e9b3138d7fcdbce24344fcf451cb6a50b503d06b5839d7f65a48d9951f591db`.

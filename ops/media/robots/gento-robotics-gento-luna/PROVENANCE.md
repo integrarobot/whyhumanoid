@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 7, alphab
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 7, PR not yet merged)
+## Published files (image batch 7, PR 225, merge 8b33837, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/gento-robotics-gento-luna/gento-robotics-gento-luna-full-body.png`, 541 × 1267 px, sha256 `d00ad907468f062c74094298a4ff2cc3196b41f5c919b824189e9634c0d15729` (= Codex's prepared.png).
 - **WebP:** `assets/robots/gento-robotics-gento-luna/gento-robotics-gento-luna-full-body.webp`, sha256 `c9300b7be9e75d85a8fc7acccb6542cfcc31e76c61201353c45d66edfc10a907`.
