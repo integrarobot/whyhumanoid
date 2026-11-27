@@ -1,0 +1,17 @@
+{
+  "id": 109,
+  "slug": "khameleon-manufacturer-complete-platform",
+  "credit": "Khameleon",
+  "source_page": "https://www.khameleonrobotics.com/",
+  "source_url": "https://www.khameleonrobotics.com/media/trash.jpg",
+  "original": "original.jpg",
+  "original_size": [
+    1200,
+    900
+  ],
+  "original_sha256": "bda9159775d1fdc4b648578685f1897f4c14fd578f0cf501df884a3a5d2d9ecb",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer official public product media, credit required; no open licence assumed or outreach sent.",
+  "source_context": "Official maker homepage identifies Khameleon multifunctional dual-arm commercial platform, although catalogue does not yet disclose a model name. Native 1200x900 image shows complete top sensor pillar, both arms, actual end effectors, whole mobile base and all visible wheels. Approximate ROI x150..670 y5..820. Keep actual attached tools, central docked mop and cables. Left gripper holds small clear bottle: preserve held bottle as photographed rather than reconstruct fingers; caption must identify task configuration with tools/bottle. Bottle does not hide torso/base. External round table begins below bottle with visible gap, do not include table or right external bin. Compare thin cables against original carefully. No human head/legs by design; no new anatomy. If mask cannot preserve complete hardware reject and investigate hero.mp4 for clean whole stance. Merely lacking model name is not grounds for exception when actual platform is identified. Do not change master/name/specs."
+}
