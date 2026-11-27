@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 10, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 10, PR not yet merged)
+## Published files (image batch 10, PR 232, merge 4db495d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/mirrorme-bolt/mirrorme-bolt-full-body.png`, 298 × 807 px, sha256 `87df5aa333b36cffd7794e8bb12d08df1577155d03cc7fa6c805fbdc01020c25` (= the prepared.png).
 - **WebP:** `assets/robots/mirrorme-bolt/mirrorme-bolt-full-body.webp`, sha256 `55ec9975ac77c219b360695c7a5e0b2729b655a32bde57ea85dfb2cc3db5506b`.

@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 10, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 10, PR not yet merged)
+## Published files (image batch 10, PR 232, merge 4db495d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/roboscience-rex-g1/roboscience-rex-g1-full-body.png`, 904 × 1731 px, sha256 `7972793f9637ad1fd2b3e87dc98ce946e67ddc4ce01ea768df8203c86d5e90fa` (= the prepared.png).
 - **WebP:** `assets/robots/roboscience-rex-g1/roboscience-rex-g1-full-body.webp`, sha256 `f5157d4dd76a429a9e519c0bf0e9a932a2c2ae607e9d40fdf349d3adb04c3802`.

@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 10, All m
 
 - **Quality:** Animation still at native size: 209 × 517 px as prepared, not enlarged.
 
-## Files integrated (image batch 10, PR not yet merged)
+## Published files (image batch 10, PR 232, merge 4db495d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/hexagon-aeon/hexagon-aeon-full-body.png`, 209 × 517 px, sha256 `266383e4ed1116f37628f56e4327290a18f6a6daa02918193369dca7d403e486` (= the prepared.png).
 - **WebP:** `assets/robots/hexagon-aeon/hexagon-aeon-full-body.webp`, sha256 `1645ca59961258734da362a6aa89afb0b983e6dba43390a86f0a17e6d5d35941`.

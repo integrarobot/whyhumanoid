@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 10, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 10, PR not yet merged)
+## Published files (image batch 10, PR 232, merge 4db495d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/tokyo-robotics-torobo/tokyo-robotics-torobo-full-body.png`, 632 × 1132 px, sha256 `6be643d84fd046dd45f6bbaee6a75bfd3789cc975d961584d889610cd5074a85` (= the prepared.png).
 - **WebP:** `assets/robots/tokyo-robotics-torobo/tokyo-robotics-torobo-full-body.webp`, sha256 `659579c77df8e3f711d45fd25fa727bee249e49a0e814abedad7023fc7d326c8`.

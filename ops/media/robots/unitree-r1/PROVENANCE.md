@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 10, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 10, PR not yet merged)
+## Published files (image batch 10, PR 232, merge 4db495d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/unitree-r1/unitree-r1-full-body.png`, 509 × 670 px, sha256 `21962cc255966c7f8906d4c8b70a7fca0575e600165a97fea67d19fba3de564a` (= the prepared.png).
 - **WebP:** `assets/robots/unitree-r1/unitree-r1-full-body.webp`, sha256 `8fdfc14d31aaec3130b605b76b502edc7112c633656e9469643a2b60a4cdc14a`.

@@ -1,0 +1,69 @@
+{
+  "id": "WH-20261127-1854-imagenes-robots-lote-10",
+  "tarea": "Imágenes de robots, lote 10 del alcance «todas las imágenes que faltan»: Torobo, Quanta X2, Bolt, DEX-M, H2, R1, AEON (fotograma de animación), Calvin-40, Zerith H1 y REX G1 (fotograma de vídeo), con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026; alcance confirmado solo para Humanoids), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T18:54:28+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 232 (cabeza revisada 5da90c9, merge 4db495d): imagen en las fichas 90 Tokyo Robotics Torobo, 101 X Square Quanta X2, 193 MirrorMe Bolt, 197 Richtech Robotics (DEX-M), 139 Unitree H2, 141 Unitree R1, 40 Hexagon AEON (fotograma de la animación oficial), 97 Wandercraft Calvin-40 (sin efectores finales), 207 Zerith H1 y 198 RoboScience REX G1 (fotograma del vídeo oficial), solo mediante tools/robot-presentation.json; las 88 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con la variante o el tipo de imagen: «X Square Robot, Quanta X2», «Richtech Robotics, DEX-M», «Hexagon, AEON animation still», «Wandercraft, Calvin-40 without end effectors» y «RoboScience, REX G1 video still». Las especificaciones de las fichas no cambian.",
+    "Fuentes de Codex (codex/image-sources-remaining: batch-10 en f7d1436, Luna en c3ca72e, Calvin-40 y Zerith H1 en 7496b6e, REX G1 en d1e4d2f), copiadas de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-10/. La revisión de Claude rehízo con máscaras BiRefNet (guardadas junto a cada original) Quanta X2 (el recorte previo quitaba la cara negra y dejaba una línea de la rejilla), H2 (perdía el brazo levantado y dejaba a un espectador entre las piernas), R1 (reborde de césped) y Bolt (neblina oscura en el hueco del brazo); preparó REX G1, Calvin-40 (alfa original nivelado 120..250) y Zerith H1; los recortes de Torobo, DEX-M y AEON de Codex se conservan.",
+    "D9 (155) y Luna (156) quedan en cola por estar por debajo del mínimo de 500 px de alto (208 × 475 y 300 × 371, sin reescalar); su preparación se conserva solo como investigación. Igris (79) queda pendiente de identidad.",
+    "README del paquete del lote 10 actualizado: estado publicado, tabla de los diez integrados y cómo se recortó cada uno, los no integrados con su motivo y el README de transporte de Codex conservado como nota histórica superada.",
+    "Cobertura: lote 10 publicado con 10 fichas; en todo el catálogo, 98 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 232",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/232"
+    },
+    {
+      "etiqueta": "CI de la cabeza 5da90c9",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46043204343"
+    },
+    {
+      "etiqueta": "Pages de 4db495d",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46044425860"
+    },
+    {
+      "etiqueta": "Ficha Unitree H2",
+      "url": "https://whyhumanoid.com/humanoids/unitree-h2-139/"
+    },
+    {
+      "etiqueta": "Ficha Quanta X2",
+      "url": "https://whyhumanoid.com/humanoids/x-square-quanta-x2-101/"
+    },
+    {
+      "etiqueta": "Ficha REX G1",
+      "url": "https://whyhumanoid.com/humanoids/roboscience-rex-g1-198/"
+    },
+    {
+      "etiqueta": "Ficha Calvin-40",
+      "url": "https://whyhumanoid.com/humanoids/wandercraft-calvin-40-97/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 4db495d (run 46044425860, correcto); CI de la cabeza 5da90c9 (run 46043204343, correcto). Fusión hecha solo en esa cabeza, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 10/10; el aviso de fondo plano en REX G1 (853 px en el frontal del chasis alrededor del sensor) se revisó: es la superficie blanca del robot; prueba en navegador local de las diez fichas sin desbordamiento y con su leyenda.",
+    "Codex, cabeza 5da90c9: revisión independiente aprobada; 98 archivos frente a main 62e311d, 10 presentaciones nuevas y 88 anteriores idénticas, catálogo de 213 y data, server y .github sin cambios; los diez del mapping con PNG igual al preparado, hash del original, RGB visible exacto, alfa de PNG y WebP igual, margen de 20 px y tamaño nativo; review-intake independiente 10/10; Quanta con la cabeza íntegra y H2 con el brazo completo y sin persona entre las piernas.",
+    "Claude, producción: las 20 URL canónicas (10 WebP y 10 PNG) con los mismos bytes que 4db495d (20/20); las 10 fichas y la portada idénticas a 4db495d salvo las etiquetas meta agent:* que añade Cloudflare (11/11); navegador real en iPhone 13 y 1366 × 900 sin desbordamiento (20/20).",
+    "Codex, verificación pública independiente tras Pages 46044425860: 30/30 URL canónicas con 200, hashes y alfa exactos en los 20 activos; 20/20 vistas reales a 390 × 844 y 1366 × 900, contain, sin desbordamiento y leyendas correctas; la portada contiene exactamente 98 presentaciones iguales al merge y REX G1 se abre desde su buscador con la imagen a 904 × 1731.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (98) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "D9 (155) y Luna (156) siguen en cola hasta encontrar una fuente oficial completa de al menos 500 px de alto; Igris (79) hasta confirmar su identidad.",
+    "Lote 11 integrado en el PR 233, pendiente de revisión de Codex; lote 12 en preparación (Vibe 01, Noble y ROBOTO Origin ya recortados).",
+    "Quedan 115 fichas de Humanoids sin imagen; Other Robots queda fuera del alcance por decisión de Javier."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Claude sigue con los lotes 11 y 12 sin fusionar nada antes de la revisión de Codex."
+}
