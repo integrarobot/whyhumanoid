@@ -399,13 +399,14 @@
         199,
         200,
         191,
-        74
+        74,
+        70
       ],
       "reserves": [],
       "notes": [
-        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-15/: candidates-25 (66c596a: Avatar Robotics video frame 755), candidates-26 (b07ffac: StarBot Astra and Flex, one product illustration), candidates-27 (dc11021: MATRIX-1 page poster) and candidates-28 (62f03ab: REVOBOTS TASKBOT SCOUT video frame 292). Every cutout prepared by Claude, alpha only, from BiRefNet masks kept beside the originals: Flex adds its two black casters from the original luminance; MATRIX-1 drops every row below the contact line of the soles with their floor reflection; SCOUT uses levels 150..240 so the soft tyre edge carries no asphalt rim.",
-        "Five records, not ten: the sources Codex has transported so far. Jingchu Elf (183) still waits for another source; T230A (89), D9 (155), R-Noid (77) and IGRIS (79) stay out with their reasons.",
-        "Captions name the kind of image and the variant: Avatar Robotics mobile lift-column configuration, official video still (no model name, as the maker gives none); StarBot Astra and Flex manufacturer product illustrations; MATRIX-1 manufacturer product image; TASKBOT SCOUT mobile configuration, official video still (no arms or head, not humanoid hardware). Records' specifications unchanged."
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-15/: candidates-25 (66c596a: Avatar Robotics video frame 755), candidates-26 (b07ffac: StarBot Astra and Flex, one product illustration), candidates-27 (dc11021: MATRIX-1 page poster), candidates-28 (62f03ab: REVOBOTS TASKBOT SCOUT video frame 292) and candidates-30 (26e018a: HUBO2 product image hosted by Rainbow Robotics Vietnam). Every cutout prepared by Claude, alpha only, from BiRefNet masks kept beside the originals: Flex adds its two black casters from the original luminance; MATRIX-1 drops every row below the contact line of the soles with their floor reflection; SCOUT and HUBO2 use levels 150..240 so their soft edges carry no background rim.",
+        "Left out: Qinglong (69), candidates-29 (88f804b): in frame 841 and in every later frame of the official walking GIF where the robot is at least 500 px tall, a black office chair or a seated person stands right behind the right side of the black torso and upper arm; the model mask takes the chair in, and black against black in a dithered GIF cannot be separated by alpha alone. Not reconstructed. Jingchu Elf (183) still waits for another source; T230A (89), D9 (155), R-Noid (77) and IGRIS (79) stay out with their reasons.",
+        "Captions name the kind of image and the variant: Avatar Robotics mobile lift-column configuration, official video still (no model name, as the maker gives none); StarBot Astra and Flex manufacturer product illustrations; MATRIX-1 manufacturer product image; TASKBOT SCOUT mobile configuration, official video still (no arms or head, not humanoid hardware); HUBO2 product image via Rainbow Robotics Vietnam (regional host; no claim about its relation to the maker). Records' specifications unchanged."
       ]
     }
   ],
@@ -3067,9 +3068,20 @@
         "Lab": "Rainbow",
         "Robot": "Hubo"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.rainbow-robotics.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://rainbow-robotics.vn/images/ckeditor/images/202209151451348f46d5423a109969fc003dfe17608f03b56a3b10.png",
+          "page": "https://rainbow-robotics.vn/hubo2/",
+          "sha256": "38fe5cc3103b3785f3d6a36ebe3927195a19d8e0a4e1982802fd00288889a979",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1115 × 1633 with 20 px padding."
+        }
+      ]
     },
     "72": {
       "recorded": {

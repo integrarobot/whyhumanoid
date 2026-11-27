@@ -2,7 +2,7 @@
   "batch": 15,
   "intake": "ops/media/intake-remaining-2026-11-27/batch-15",
   "branch": "codex/image-sources-remaining",
-  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27) and 62f03ab (candidates-28)",
+  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27), 62f03ab (candidates-28) and 26e018a (candidates-30)",
   "scope": "All missing images (Javier, 27 Nov 2026)",
   "items": {
     "166": {
@@ -38,6 +38,13 @@
       "alt": "REVOBOTS TASKBOT SCOUT, full platform, sensor mast on a four-wheeled mobile base, still from the official video",
       "credit": "Image: REVOBOTS, TASKBOT SCOUT mobile configuration, official video still",
       "identity": "Frame 292 (9.73 s) of the video on REVOBOTS' homepage, at its native 1920 × 1080 encoding: the TASKBOT SCOUT configuration, whole, with its sensor mast and dome and the complete four-wheeled base. This configuration has no arms or head, and none are added; it is the mobile platform the record lists, not humanoid hardware. The street, the car and the logos are excluded by the alpha mask; the dome is transparent, so what shows through it is the scene behind, as filmed.",
+      "quality": null
+    },
+    "70": {
+      "slug": "rainbow-robotics-hubo2",
+      "alt": "HUBO2 by Rainbow Robotics, full body, front view, standing, manufacturer product image",
+      "credit": "Image: Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam",
+      "identity": "The HUBO2 product image on the HUBO2 page of Rainbow Robotics Vietnam, a regional site that hosts the maker's product material (native 1206 × 1658): the whole robot with head, both hands and both feet, the chest marked HUBO, KAIST and Rainbow. The page's alt text says RBQ, but the page title, the text and the visible robot are HUBO2. The white studio and the floor shadow are excluded by the alpha mask; the original's own alpha is only an opaque rectangle and is not used.",
       "quality": null
     }
   }

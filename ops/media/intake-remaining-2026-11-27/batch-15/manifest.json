@@ -33,6 +33,39 @@
     "mask_sha256": "c9cf36fc6fb7aaedb89f4513d9c7ff7007baf47b832f220d0a08641c3d0ac6dc"
   },
   {
+    "id": 70,
+    "slug": "rainbow-hubo2-front",
+    "credit": "Rainbow Robotics, via Rainbow Robotics Vietnam",
+    "source_page": "https://rainbow-robotics.vn/hubo2/",
+    "source_url": "https://rainbow-robotics.vn/images/ckeditor/images/202209151451348f46d5423a109969fc003dfe17608f03b56a3b10.png",
+    "source_context": "Existing HUBO2 manufacturer product image hosted on Rainbow Robotics Vietnam regional/reseller product page, NOT falsely presented as downloaded from global manufacturer server. ExactpageHUBO2, 120cm43kg38DOF technical text matches global legacy page https://rainbowrobotics1.cafe24.com/hubo2 which is currently DNSunreachable here but searchindexed. Native1206x1658 whole head, hands, feet with margins; chest branding HUBO/KIST/Rainbow. The alt attribute RBQ is a mistakengenericreusedalt on this page; visible biped and HUBO chest plus exact page title/body identify HUBO2, not a quadruped. Caption explicitly Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam; record70Hubofamily, no spec change. Rootinspectedwholebodycontactsheet. RegionalsitehasRPMEC contact; do not assert it is a wholly owned subsidiary or newly verified authorized partner. Treat as third-party-hosted maker product image, analogous to archived maker brochures. Alpha-only segmentation, preserve RGB/native20pxpadding; exclude whitebackground/floor shadow.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 26e018a, candidates-30",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; largest region kept; levels 150..240; the original carries an alpha channel, but it is an opaque white rectangle around the robot, so the cutout is computed from the model mask",
+    "roi": [
+      0,
+      0,
+      1140,
+      1658
+    ],
+    "bbox": [
+      7,
+      20,
+      1082,
+      1613
+    ],
+    "border": 20,
+    "size": [
+      1115,
+      1633
+    ],
+    "native_alpha": false,
+    "original_sha256": "38fe5cc3103b3785f3d6a36ebe3927195a19d8e0a4e1982802fd00288889a979",
+    "prepared_sha256": "9b0c118cf89fe9f2d69510dab140d5f7963889d64cedb088301b7caca5edcd88",
+    "mask_sha256": "463249e3c4c096f1be2e909ca1f6440108d6ae5c6bb55be787e3b9d9597e5746"
+  },
+  {
     "id": 74,
     "slug": "revobots-taskbot-scout",
     "credit": "REVOBOTS",

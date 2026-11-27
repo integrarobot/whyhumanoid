@@ -2152,6 +2152,21 @@
         "credit": "Image: REVOBOTS, TASKBOT SCOUT mobile configuration, official video still",
         "provenance": "ops/media/robots/revobots-taskbot-scout/PROVENANCE.md"
       }
+    },
+    "70": {
+      "recorded": {
+        "Lab": "Rainbow",
+        "Robot": "Hubo"
+      },
+      "image": {
+        "src": "/assets/robots/rainbow-robotics-hubo2/rainbow-robotics-hubo2-full-body.webp",
+        "fallback": "/assets/robots/rainbow-robotics-hubo2/rainbow-robotics-hubo2-full-body.png",
+        "width": 1115,
+        "height": 1633,
+        "alt": "HUBO2 by Rainbow Robotics, full body, front view, standing, manufacturer product image",
+        "credit": "Image: Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam",
+        "provenance": "ops/media/robots/rainbow-robotics-hubo2/PROVENANCE.md"
+      }
     }
   }
 }
