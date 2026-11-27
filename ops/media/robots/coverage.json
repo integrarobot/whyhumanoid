@@ -1928,7 +1928,14 @@
       },
       "status": "candidate",
       "page": "https://galaxea-dynamics.com/",
-      "notes": "Galaxea R1: wheeled two-arm mobile manipulator, shown whole with its base; the record says \"R1\": name a sub-variant (R1 Pro, R1 Lite) only if the official source names it."
+      "notes": "Galaxea R1: wheeled two-arm mobile manipulator, shown whole with its base; the record says \"R1\": name a sub-variant (R1 Pro, R1 Lite) only if the official source names it.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Official Galaxea user guide (public repository userguide-galaxea/Product_User_Guide, R1 section, not R1 Pro or R1 Lite): docs/en/Guide/R1/R1_Overview.md, section \"Teleoperation / R1-Teleop\", shows assets/R1_R1T.png (6000 × 2800, opaque white render, sha256 6aa086ea8a85d7543e14dbef2bca90b3ac4681f2876dfaec77859f6a23cde65b, commit aca4275 of 21 May 2025): the whole R1 on its wheeled base holding a box, next to the separate R1-Teleop arm device (to be left out by the crop, not erased). The R1 hardware guide in the same section gives 1695 mm standing height, 675 mm width and 96 kg. The floor reflection under the wheels must stay outside the mask."
+        }
+      ]
     },
     "161": {
       "recorded": {
@@ -1946,7 +1953,14 @@
       },
       "status": "candidate",
       "page": "https://www.galbot.com/",
-      "notes": "Galbot G1: wheeled humanoid on its four-wheel omnidirectional chassis, shown whole with the chassis; not S1 or ET1."
+      "notes": "Galbot G1: wheeled humanoid on its four-wheel omnidirectional chassis, shown whole with the chassis; not S1 or ET1.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Codex found a complete render on galbot.com/g1 (g1-spec-robot.BYUAn6RQ.jpg) whose own alt text reads \"S1 render placeholder, waiting replacement by G1 full robot render\": the maker's page itself labels it a placeholder S1 image, so it is not usable for G1 even if it looks similar; a G1 image must be one the official source presents as G1."
+        }
+      ]
     },
     "157": {
       "recorded": {
