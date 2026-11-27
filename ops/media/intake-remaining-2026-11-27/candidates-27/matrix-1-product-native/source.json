@@ -1,0 +1,17 @@
+{
+  "id": 191,
+  "slug": "matrix-1-product-native",
+  "credit": "Matrix Robotics",
+  "source_page": "https://matrixrobotics.ai/matrix-1",
+  "source_url": "https://matrixrobotics.ai/hero_video.jpg",
+  "original": "original.jpg",
+  "original_size": [
+    3840,
+    2160
+  ],
+  "original_sha256": "c4d582c016cd6e58e39108d8071bec913dc30979b35f57056b460cde6876d733",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "source_context": "Exact /matrix-1 page title MATRIX-1 | Humanoids. Hero video poster /hero_video.jpg appears immediately before h1 MATRIX-1 Next-generation AI humanoid robot for real-world applications, accompanying https://matrixrobotics.ai/hero.mp4. This is NOT homepage MATRIX-3; explicit model1 page and hardware white slender biped rather than MATRIX3. Existing maker image/technical render native3840x2160 showing whole head, both hands and both feet with margins in a plain studio. Root inspected full source contact sheet. Caption MATRIX-1 manufacturer product image (or render after visual review), no capability claims/spec changes. Alpha-only segmentation, exclude floor/reflection/walls, retain originalRGB/native20px padding.",
+  "license_note": "Manufacturer primary source, credit; no open licence assumed or outreach."
+}
