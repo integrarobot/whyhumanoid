@@ -79,8 +79,70 @@ function head(cm, c) {
 </dl>
 <p class="cx-ev">${reviewLine(cm)} Values are shown as the sources state them.</p>
 <p class="cx-access" id="cx-access" data-public="${pub}" data-total="${n.products}"><b>All ${n.products} products</b> are listed with a public summary: family, maker, country, year, status, what the part does, the kind of evidence behind its record and the main source. The full technical passports (every specification with its unit, conditions, source and check date, integration requirements, limitations, prices and the source of each claim) and the side-by-side comparison of figures come with the <a href="/subscribe/">subscription</a>.</p>
-<nav class="views" aria-label="Components views"><a href="#families">Families</a><a href="#catalogue">Catalogue</a><a href="#approaches">Touch sensing approaches</a><a href="#compare">Compare</a><a href="#software">Related software</a><a href="#method">Coverage and method</a></nav>
+<nav class="views" aria-label="Components views"><a href="#explore">Explore</a><a href="#families">Families</a><a href="#catalogue">Catalogue</a><a href="#approaches">Touch sensing approaches</a><a href="#compare">Compare</a><a href="#software">Related software</a><a href="#method">Coverage and method</a></nav>
 </header>`;
+}
+
+// The five functional areas of the explorer (27 Nov 2026, Javier via Codex): each groups families of the reviewed
+// vocabulary (W.FAMILIES); counts come from the catalogue's coverage counts at build time, never from a list here.
+export const EXPLORER_AREAS = Object.freeze([
+  { key: 'perception', label: 'Perception', sub: 'Vision and depth sensors', families: ['vision_sensor'],
+    text: 'Cameras and depth sensors that let the robot see its surroundings and the objects it handles.' },
+  { key: 'manipulation', label: 'Manipulation and touch', sub: 'Hands, grippers and tactile sensors', families: ['dexterous_hand', 'gripper', 'tactile_sensor', 'tactile_hand'],
+    text: 'Hands and grippers that hold and use objects, and the tactile sensors that feel contact.' },
+  { key: 'motion', label: 'Motion and feedback', sub: 'Actuators, reducers, encoders, force-torque sensing and controllers', families: ['actuator', 'motor_drive', 'reducer', 'encoder', 'force_torque_sensor', 'motion_controller'],
+    text: 'Actuators, motors, drives and reducers that move each joint; encoders, force-torque sensors and controllers that measure the motion and close the loop.' },
+  { key: 'compute', label: 'Onboard compute', sub: 'Compute modules', families: ['compute_module'],
+    text: 'The processors that run perception, planning and control on the robot itself.' },
+  { key: 'energy', label: 'Energy', sub: 'Cells, battery parts and power electronics', families: ['power_battery'],
+    text: 'Cells, battery parts and power electronics that store and supply the robot\'s energy.' },
+]);
+
+// An original, schematic humanoid: one shape group per area. Pointer and touch select an area; the labelled HTML
+// buttons beside it are the keyboard and screen-reader controls, so the drawing itself takes no focus.
+const explorerSvg = () => `<svg class="hx-fig" viewBox="0 0 220 400" role="img" aria-labelledby="hx-fig-t" focusable="false">
+<title id="hx-fig-t">Schematic humanoid marking five functional areas: perception at the head, manipulation and touch at the hands, motion and feedback at the joints, onboard compute in the chest and energy in the torso</title>
+<g class="hx-body" aria-hidden="true">
+<path d="M110 74 L110 92"/><rect x="74" y="92" width="72" height="128" rx="18"/>
+<path d="M74 104 L48 150 L40 206"/><path d="M146 104 L172 150 L180 206"/>
+<path d="M90 220 L86 292 L84 366"/><path d="M130 220 L134 292 L136 366"/>
+<path d="M70 372 L96 372"/><path d="M124 372 L150 372"/>
+</g>
+<g class="hx-z" data-area="perception"><rect x="84" y="20" width="52" height="56" rx="20"/><path class="hx-d" d="M94 46 L126 46"/></g>
+<g class="hx-z" data-area="manipulation"><circle cx="38" cy="218" r="13"/><circle cx="182" cy="218" r="13"/></g>
+<g class="hx-z" data-area="motion"><circle cx="76" cy="104" r="8"/><circle cx="144" cy="104" r="8"/><circle cx="48" cy="150" r="7"/><circle cx="172" cy="150" r="7"/><circle cx="90" cy="220" r="8"/><circle cx="130" cy="220" r="8"/><circle cx="86" cy="292" r="7"/><circle cx="134" cy="292" r="7"/><circle cx="84" cy="362" r="6"/><circle cx="136" cy="362" r="6"/></g>
+<g class="hx-z" data-area="compute"><rect x="94" y="112" width="32" height="30" rx="3"/><path class="hx-d" d="M100 120 L120 120 M100 127 L120 127 M100 134 L114 134"/></g>
+<g class="hx-z" data-area="energy"><rect x="92" y="156" width="36" height="48" rx="4"/><path class="hx-d" d="M104 152 L116 152"/></g>
+</svg>`;
+
+function explorer(cm) {
+  const counts = famCounts(cm);
+  const panel = (a) => {
+    const fams = a.families.map((k) => {
+      const n = counts[k] ?? 0;
+      return n
+        ? `<li><a href="/components/?fam=${k}#catalogue"><b>${n}</b><span>${esc(W.FAMILIES[k][n === 1 ? 'label' : 'plural'])}</span></a></li>`
+        : `<li class="gap"><b aria-hidden="true">–</b><span>${esc(W.FAMILIES[k].plural)}</span><small>No entries yet</small></li>`;
+    }).join('');
+    const total = a.families.reduce((s, k) => s + (counts[k] ?? 0), 0);
+    return `<div class="hx-p" id="hx-p-${a.key}" data-area="${a.key}" role="region" aria-labelledby="hx-h-${a.key}">
+<h3 id="hx-h-${a.key}">${esc(a.label)} <small>${total} ${total === 1 ? 'product' : 'products'}</small></h3>
+<p>${esc(a.text)}</p>
+<ul class="hx-fams">${fams}</ul></div>`;
+  };
+  return `<section class="hx" id="explore" aria-labelledby="hx-h">
+<div class="sec-h"><h2 id="hx-h">Explore the building blocks of a humanoid</h2>
+<p>Choose an area to see its component families in the catalogue, with the number of products recorded in each. Each family opens the filtered catalogue, its passports and the comparison.</p></div>
+<div class="hx-grid">
+<div class="hx-art">${explorerSvg()}</div>
+<div class="hx-ui">
+<div class="hx-ctl" role="group" aria-label="Functional areas">
+${EXPLORER_AREAS.map((a) => `<button type="button" class="hx-b" data-area="${a.key}" aria-controls="hx-p-${a.key}" aria-pressed="false"><span class="hx-bl">${esc(a.label)}</span><span class="hx-bs">${esc(a.sub)}</span></button>`).join('\n')}
+</div>
+<div class="hx-ps">${EXPLORER_AREAS.map(panel).join('\n')}</div>
+</div></div>
+<p class="hx-note">A functional overview, not the design of any robot: where each part sits varies from one robot to another, and a product listed here is shown neither to be compatible with nor to be used in any particular robot.</p>
+</section>`;
 }
 
 function families(cm) {
@@ -198,6 +260,7 @@ export function renderComponentsCategory(cm, c, companyPath, apiOrigin) {
   const json = JSON.stringify({ products: cm.products, software: cm.software, makers: cm.makers, total: cm.total }).replace(/</g, '\\u003c');
   return `<div class="cx" id="cx" data-api="${esc(apiOrigin)}">
 ${head(cm, c)}
+${explorer(cm)}
 ${families(cm)}
 ${approaches(cm, companyPath)}
 ${catalogue(cm, companyPath)}
