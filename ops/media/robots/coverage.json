@@ -1661,7 +1661,14 @@
       },
       "status": "candidate",
       "page": "https://www.codroid.ai/en/",
-      "notes": "Estun Codroid Codroid 02: must be identified as Codroid 02 in the official source, not Codroid 01."
+      "notes": "Estun Codroid Codroid 02: must be identified as Codroid 02 in the official source, not Codroid 01.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: third-party catalogues report Codroid 02 in both bipedal and wheeled configurations (first batch to customers, August 2025); an image must say which configuration it shows, from Estun Codroid's own source (codroid.ai)."
+        }
+      ]
     },
     "31": {
       "recorded": {
@@ -1679,7 +1686,14 @@
       },
       "status": "candidate",
       "page": "https://faunarobotics.com/",
-      "notes": "Fauna Robotics Sprout: the record says \"Sprout\"; name an edition (for example Sprout Creator) only if the official source shows and names it."
+      "notes": "Fauna Robotics Sprout: the record says \"Sprout\"; name an edition (for example Sprout Creator) only if the official source shows and names it.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: the shipping version is the Sprout \"Creator Edition\" (Fauna launch news on faunarobotics.com and the arXiv paper 2601.18963); the edition is named only as the official source names it."
+        }
+      ]
     },
     "106": {
       "recorded": {
@@ -1688,7 +1702,14 @@
       },
       "status": "candidate",
       "page": "https://robotics.ff.com/us/ff-futurist/",
-      "notes": "Faraday Future FF Futurist: identified as FF Futurist in the official robotics page; no other FF robot."
+      "notes": "Faraday Future FF Futurist: identified as FF Futurist in the official robotics page; no other FF robot.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: FF Futurist was launched in February 2026 (NADA Show) and an \"All-New Futurist\" redesign was shown at Automate in June 2026; the record says \"FF Futurist\", so an image must state which version it shows, from Faraday Future's own robotics page or release."
+        }
+      ]
     },
     "126": {
       "recorded": {
@@ -1697,7 +1718,14 @@
       },
       "status": "candidate",
       "page": "https://feather.dev/",
-      "notes": "Feather: the robot the maker presents as Feather, shown whole."
+      "notes": "Feather: the robot the maker presents as Feather, shown whole.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: Feather Robotics (San Francisco) presents a wheeled, two-armed robot with a telescoping torso; shown whole with its wheeled base, from feather.dev."
+        }
+      ]
     },
     "176": {
       "recorded": {
@@ -1706,7 +1734,14 @@
       },
       "status": "candidate",
       "page": "https://www.elibot.com/product/wheeled",
-      "notes": "Elite Robots Centaur-G1 (wheeled): never a Unitree G1 or AgiBot G1 image; identified as Centaur-G1 in the official source."
+      "notes": "Elite Robots Centaur-G1 (wheeled): never a Unitree G1 or AgiBot G1 image; identified as Centaur-G1 in the official source.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: Elite Robots unveiled Centaur-G1 in Hangzhou (Chinese press release, 21 May 2026): two arms on an omnidirectional wheeled base; official page elibot.com/product/wheeled. Never a Unitree G1 or AgiBot G1."
+        }
+      ]
     }
   },
   "scopes": [
