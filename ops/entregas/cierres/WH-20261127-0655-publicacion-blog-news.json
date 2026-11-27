@@ -1,0 +1,59 @@
+{
+  "id": "WH-20261127-0655-publicacion-blog-news",
+  "tarea": "Publicar en whyhumanoid.com las secciones editoriales en inglés Blog (/blog/, antes Newsletter) y News (/news/) con el corpus de Integrarobot de 2025 y 2026, con las direcciones /newsletter/ como alias y Blog y News en la navegación compartida",
+  "origen": "Javier (27/11/2026: «adelante publica la sección news y la newsletter llamalo mejor blog»), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T06:55:45+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 177 (fusionado como 0f4c8d3): la sección Newsletter pasa a llamarse Blog en /blog/ (índice, años y artículos); las direcciones /newsletter/ quedan como redirecciones noindex a su dirección de /blog/; los ID de edición conservan el prefijo nl-. Publicación activada (published true, en vivo desde el 27/11/2026, Europe/Madrid). Blog y News encabezan el pie compartido (portada, páginas generadas y app) y la línea Also de la portada; las diez categorías no cambian. AGENTS.md recoge las secciones y el pie.",
+    "Corpus: paquete editorial-package-public.json (SHA-256 120bd157…3429) preparado por Codex e importado con tools/editorial.mjs: 121 artículos en inglés (2025: 54; 2026: 67), 89 con bloque de noticias y 32 sin él, 780 noticias en el orden de la fuente (2025: 281; 2026: 499), 84 originales en español archivados y todas las traducciones revisadas con revisor y evidencia. Inventario completo declarado por Codex: 7 páginas del archivo público leídas hasta el final, 121 URL canónicas. La procedencia conserva los hashes de los dos documentos fuente en inglés.",
+    "Enlaces: solo http(s) y el mailto de la dirección comercial del autor (server/src/support.js); los enlaces a documentos de Google se rechazan al importar. Diez notas editoriales en inglés señalan la adaptación de enlaces que el sitio no puede publicar (9 al catálogo actual https://whyhumanoid.com/ y 1 al artículo original de la encuesta); los nueve originales en español afectados no se archivan en Git. Ningún identificador del libro maestro ni enlace a documentos de Google en Git ni en la web.",
+    "PR 178 (fusionado como 6f1eaf8): los resúmenes del Blog y de News toman el primer párrafo con texto y se saltan títulos, bloques de solo imagen y el marcador de vídeo incrustado; en producción 62 de 121 tarjetas mostraban solo «Image». Los artículos, imágenes, enlaces y registros no cambian.",
+    "Sin cambios en suscripciones, pagos, el Worker ni D1: son páginas estáticas."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Blog",
+      "url": "https://whyhumanoid.com/blog/"
+    },
+    {
+      "etiqueta": "News",
+      "url": "https://whyhumanoid.com/news/"
+    },
+    {
+      "etiqueta": "PR 177",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/177"
+    },
+    {
+      "etiqueta": "PR 178",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/178"
+    },
+    {
+      "etiqueta": "Commit de fusión 0f4c8d3",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/0f4c8d342a7fc69bade140f353a3762d42bd93a6"
+    },
+    {
+      "etiqueta": "Commit de fusión 6f1eaf8",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/6f1eaf801c8cebc8b79b12984c413b5144acf52e"
+    }
+  ],
+  "despliegue": [
+    "PR 177 fusionado como 0f4c8d3 desde 92fcfb8 (CI 45947693637 en verde); CI de main 45947956361 y Pages 45947954089 completados con éxito.",
+    "PR 178 fusionado como 6f1eaf8 desde 75977b4 (CI 45948398440 en verde); Pages 45948549869 publicado (comprobado en producción).",
+    "Sitemap con 2.484 URL: 124 de /blog/, 783 de /news/ y ninguna de /newsletter/."
+  ],
+  "verificaciones": [
+    "Claude, local: test-editorial 22/22, verify-editorial (búsqueda poblada con y sin JavaScript), editorial check (121 listadas, 121 importadas, 121 listas), importación repetida sin cambios, build-pages, build-site y build-app --check, check-public (3.482 archivos) y verify-pages en verde.",
+    "Claude, Chromium: 33 vistas a 320, 390 y 1366 px de portada, índices, años, artículos y noticias sin desbordamiento, errores de script ni noindex, con Blog y News en el pie; /newsletter/ redirige a /blog/; la búsqueda sobre los 121 artículos funciona.",
+    "Claude, producción: /blog/ con 121 artículos y /news/ con 780 noticias, años 2025 (54 y 281) y 2026 (67 y 499); las 901 páginas de detalle responden 200 y 898 son idénticas al build, las otras 3 solo difieren por reescrituras de Cloudflare en el borde (ofuscación de correo en dos y http a https en una), además de las metaetiquetas agent:* que Cloudflare añade a todo el sitio; alias /newsletter/ con noindex; pie con Blog y News en portada y app. Tras el PR 178: 0 resúmenes «Image» en /blog/ y sus años, y el último artículo (Why Humanoid?, 25/11/2026) muestra un resumen en prosa.",
+    "Codex, independiente: 33 pruebas (21 editoriales, 6 de marco y 6 de coherencia), auditoría de paridad del paquete para los 121 artículos, 780 noticias, 84 originales, hashes de los documentos fuente y la procedencia de 7 páginas, 907 páginas editoriales canónicas y 124 alias; revisión de los 3.482 archivos sin identificadores del maestro; 65 rutas en vivo y pruebas de búsqueda en navegador; revisión del PR 178 con 22 pruebas editoriales y sin cambios en editorial/, server/ ni data/."
+  ],
+  "pendientes": [
+    "Límites de la fuente: el vídeo y el audio no están transcritos (queda el marcador del vídeo incrustado); las 28 descripciones de pago son las traducciones completas desde la sesión del autor y sus vistas previas públicas truncadas no se archivan como originales; los nueve originales con enlaces adaptados quedan solo en el archivo local.",
+    "El texto de prensa citado del 16/04/2025 conserva la dirección comercial genérica de Pollen Robotics, tal como se publicó; no es un contacto personal ni un campo del catálogo.",
+    "Alimentación semanal: la tarea de Codex feed-newsletter-and-news (miércoles 16:00, Europe/Madrid) sigue separada de la actualización del catálogo."
+  ],
+  "siguiente_accion": "Codex registra su aviso de esta entrega; Javier confirma la recepción."
+}
