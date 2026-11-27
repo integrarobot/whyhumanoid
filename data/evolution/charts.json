@@ -1232,7 +1232,7 @@
    "precision": "day",
    "domain": {
     "start": "2024-01-01",
-    "end": "2026-11-26"
+    "end": "2026-11-27"
    },
    "rows": [
     {
@@ -1482,7 +1482,7 @@
    "status_note": "12 of 28 providers have dated evidence; 16 have none on their reviewed pages.",
    "sources": [
     {
-     "label": "Integrators atlas, snapshot 2026-11-26",
+     "label": "Integrators atlas, snapshot 2026-11-27",
      "url": "/data/integrators/atlas.json"
     }
    ],
