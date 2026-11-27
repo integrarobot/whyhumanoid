@@ -699,7 +699,7 @@ function componentsCategory(model) {
   const companyPath = (name) => model.makerPath.get(name)?.path ?? null;
   const body = `${crumbs([['/', 'Why Humanoid?'], [null, c.label]])}
 <article class="entity atlas-page">
-${renderComponentsCategory(cm, { index: CATEGORIES.indexOf(c) + 1, total: CATEGORIES.length, badge: accessBadge(c) }, companyPath, API_ORIGIN).replace('</header>', `</header>\n${offerHtml({ heading: 'Go further with Components', id: 'offer' })}`)}
+${renderComponentsCategory(cm, { index: CATEGORIES.indexOf(c) + 1, total: CATEGORIES.length, badge: accessBadge(c) }, companyPath, API_ORIGIN, `${offerHtml({ heading: 'Go further with Components', id: 'offer' })}\n`)}
 <section class="atlas-sec"><h2>With the subscription</h2><p>The full technical passport of all ${cm.total} products with every field and its source, technical filters, the full side-by-side comparison, and the same view in the subscriber app.</p>${subscriptionCta('Complete Components')}</section>
 ${serviceHtml(c.service)}`;
   return catPage(c, model, body, `Components: the building blocks of embodied intelligence. All ${cm.total} tactile sensing products and related software listed free with maker, status, sensing approach, what they measure and main source; full technical passports with the data subscription.`, {

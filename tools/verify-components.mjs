@@ -4,6 +4,7 @@
 //   2. On a product page, a subscriber's session (the app's wh_session) fetches the complete rows from that API with the
 //      session as Bearer, and the public summary is replaced by the full passport: specifications, sources, no lock.
 //   3. Without a session nothing is fetched and the public summary stays.
+//   4. /components/ shows the evolution chart, then the explorer, then the offer.
 import { JSDOM } from 'jsdom';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { API_ORIGIN } from './build-app.mjs';
@@ -20,6 +21,14 @@ for (const u of pages) {
   const m = html.match(/<div class="cx cx-prod[^"]*" id="cx"[^>]*>/);
   if (!m) { fail(`${u.pathname}: no product root`); continue; }
   if (!m[0].includes(`data-api="${API_ORIGIN}"`)) fail(`${u.pathname}: product root does not name the API (${m[0]})`);
+}
+
+// 4. The category page keeps its order (27 Nov 2026): evolution chart, then the explorer, then the offer.
+{
+  const html = readFileSync(new URL('components/index.html', root), 'utf8');
+  const at = (id) => html.indexOf(`id="${id}"`);
+  const [evo, exp, off] = ['evolution', 'explore', 'offer'].map(at);
+  if (evo < 0 || exp < 0 || off < 0 || !(evo < exp && exp < off)) fail(`components/index.html: order must be evolution < explore < offer (${evo}, ${exp}, ${off})`);
 }
 
 const core = readFileSync(new URL('assets/components-core.js', root), 'utf8');

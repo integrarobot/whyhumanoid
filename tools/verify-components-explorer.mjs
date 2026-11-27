@@ -1,7 +1,7 @@
 // Browser check of the Components explorer (27 Nov 2026): node tools/verify-components-explorer.mjs [base] [shots dir]
 // At 1366 x 900 and 390 x 844 (effective viewport recorded): the five area buttons each show their own panel and
 // mark their drawing area; a drawing area selects its button; keyboard (Tab, Space) works; every family link opens
-// the filtered catalogue with that family's products; counts equal data/components/coverage.json; no horizontal
+// the filtered catalogue with that family's products; the order is evolution chart, explorer, offer; counts equal data/components/coverage.json; no horizontal
 // overflow; the evolution chart, the comparison and the passports' links are still on the page. Exit 1 on failure.
 import { createRequire } from 'node:module';
 import { readFileSync } from 'node:fs';
@@ -15,9 +15,10 @@ for (const [label, vp] of [['desktop', { width: 1366, height: 900 }], ['phone', 
   const ctx = await b.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: vp.isMobile, hasTouch: vp.hasTouch, deviceScaleFactor: 1 });
   const p = await ctx.newPage(); const errs = []; p.on('pageerror', (e) => errs.push(String(e)));
   await p.goto(`${base}/components/`, { waitUntil: 'networkidle' });
-  const eff = await p.evaluate(() => ({ width: innerWidth, height: innerHeight, overflow: document.documentElement.scrollWidth - innerWidth, evolutionFirst: document.getElementById('evolution')?.compareDocumentPosition(document.getElementById('explore')) === 4, compare: !!document.getElementById('cmp-out'), passports: document.querySelectorAll('a[href^="/components/cmp-"]').length }));
+  const eff = await p.evaluate(() => ({ width: innerWidth, height: innerHeight, overflow: document.documentElement.scrollWidth - innerWidth, evolutionFirst: document.getElementById('evolution')?.compareDocumentPosition(document.getElementById('explore')) === 4, offerAfter: document.getElementById('explore')?.compareDocumentPosition(document.getElementById('offer')) === 4, compare: !!document.getElementById('cmp-out'), passports: document.querySelectorAll('a[href^="/components/cmp-"]').length }));
   if (eff.overflow > 0) problems.push(`${label}: horizontal overflow ${eff.overflow}px`);
   if (!eff.evolutionFirst) problems.push(`${label}: the evolution chart is not above the explorer`);
+  if (!eff.offerAfter) problems.push(`${label}: the offer is not below the explorer (order must be evolution, explorer, offer)`);
   if (!eff.compare || !eff.passports) problems.push(`${label}: comparison or passport links missing`);
   const links = [];
   for (const a of AREAS) {

@@ -256,12 +256,13 @@ function method(cm) {
 </div></section>`;
 }
 
-export function renderComponentsCategory(cm, c, companyPath, apiOrigin) {
+// afterExplorer: HTML placed right after the explorer (the page's offer), so the order is evolution chart, explorer, offer.
+export function renderComponentsCategory(cm, c, companyPath, apiOrigin, afterExplorer = '') {
   const json = JSON.stringify({ products: cm.products, software: cm.software, makers: cm.makers, total: cm.total }).replace(/</g, '\\u003c');
   return `<div class="cx" id="cx" data-api="${esc(apiOrigin)}">
 ${head(cm, c)}
 ${explorer(cm)}
-${families(cm)}
+${afterExplorer}${families(cm)}
 ${approaches(cm, companyPath)}
 ${catalogue(cm, companyPath)}
 ${compare(cm)}
