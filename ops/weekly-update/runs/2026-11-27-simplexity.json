@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-27",
+  "kind": "phase 1 (known_pending: Simplexity)",
+  "trigger": "Codex heartbeat of 2026-11-27, 15:10 Madrid: no newer edition than 2026-11-25; new primary evidence for the Simplexity item",
+  "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity.json",
+  "basis": {
+    "workbook_modified_time": "2026-11-27T11:46:30.739Z",
+    "note": "fresh download; no Simplexity, iX or i7 Pro record in Humanoids or Other Robots (the name appears only inside a Reports cell)"
+  },
+  "item": {
+    "item_id": "simplexity",
+    "edition_id": "integrarobot:2026-11-25:why-humanoid",
+    "order": 8,
+    "decision": "one Humanoids row for the iX wheeled humanoid (op-001, Humanoids row 219) with the manufacturer's stated specifications; funding recorded only as secondary reports, never as confirmed",
+    "evidence": [
+      {
+        "url": "https://www.simplexityrobotics.com/products/ix",
+        "reading": "Codex, rendered browser, 2026-11-27: explicitly a wheeled humanoid; 24 active DoF excluding hands; 160 kg; height 1060-1700 mm; 1.5 m/s; 3 kg arm rated load; Orin NX in the standard version, Thor in the Pro version. Claude's static fetch of the same page returned only metadata (JavaScript-rendered), so each value is confirmed again by Codex on the rendered page before writing"
+      },
+      {
+        "url": "https://www.simplexityrobotics.com/news",
+        "reading": "Codex, rendered: latest items 2026-11-23 (CNC-cell demo) and 2026-11-06 (sorting line with Hangcha); no funding announcement; footer names the Hangzhou legal entity and links iX and i7 Pro"
+      },
+      {
+        "url": "https://www.behindrobotics.com/robot/simplexity-ix",
+        "reading": "Claude: third-party database dated 2026-10-28, before the reported unveiling; gives other figures (height 1182-1722 mm, 6 kg end-effector load, Jetson Thor) and no sources per figure; not used for values"
+      },
+      {
+        "url": "https://en.wowtale.net/2026/11/25/236156/",
+        "reading": "Claude: secondary report of the USD 100M pre-Series A led by Ant Group at USD 1.6B, citing Bloomberg; iX unveiled 2026-11-23 as the company's second humanoid; early customers named by the company (Tsinghua University, Hangcha Group, RLWRLD) without deployment details"
+      }
+    ],
+    "not_entered": [
+      "i7 Pro (linked from the official site, not reviewed)",
+      "any operating deployment",
+      "release date (only reported by secondary press)",
+      "battery, runtime, sensors and software"
+    ]
+  },
+  "d1": "phase 3 needs one production import (Humanoids is in the backend); it waits for the Codex write receipt and a fresh quota and queue check"
+}

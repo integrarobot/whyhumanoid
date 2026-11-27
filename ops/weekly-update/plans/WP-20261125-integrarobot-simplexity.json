@@ -1,0 +1,510 @@
+{
+  "contract": "whyhumanoid/workbook-plan@1",
+  "plan_id": "WP-20261125-integrarobot-simplexity",
+  "created_at": "2026-11-27T14:40:00Z",
+  "created_by": "claude/opus-5.5 (Codex heartbeat of 2026-11-27, 15:10 Madrid)",
+  "note": "Follow-up of WP-20261125-integrarobot-known-pending for the last item left in known_pending (Simplexity Robotics). One Humanoids row for the iX wheeled humanoid from the official product page; the reported round stays secondary.",
+  "basis": {
+    "workbook_modified_time": "2026-11-27T11:46:30.739Z"
+  },
+  "editions": [
+    {
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "url": "https://www.integrarobot.com/p/why-humanoid",
+      "title": "Why Humanoid?",
+      "published": "2026-11-25",
+      "section": "Más noticias sobre IA y robótica",
+      "item_count": 16
+    }
+  ],
+  "items": [
+    {
+      "item_id": "humyn-labs",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 1,
+      "title": "Humyn Labs",
+      "link": "https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a",
+      "new_information": "Series A of USD 47M (USD 26M equity led by Accel, USD 21M venture debt led by Lighthouse Canton), 2026-11-18; records human work and sells labelled training data.",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "hiro-origin",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 2,
+      "title": "HIRO Industries Origin",
+      "link": "https://hiroindustries.com/reserve/",
+      "new_information": "Reservations: USD 9,950 total, USD 1,450 refundable deposit, Spring 2027 delivery, US only.",
+      "entity": {
+        "exists": true,
+        "where": "Humanoids row 140"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Humanoids row 140 already holds these values (checked 2026-11-19); the reserve page was unchanged on 2026-11-25. (unchanged since WP-20261125-integrarobot-why-humanoid)."
+    },
+    {
+      "item_id": "axis-skills-atlas",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 3,
+      "title": "AXIS Skills Atlas",
+      "link": "https://skills.axisrobotics.ai/",
+      "new_information": "11,199 LeRobot-format tasks and 14.6 TB of public simulation data.",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "boston-dynamics-spot-orbit",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 4,
+      "title": "Boston Dynamics: Spot and Orbit",
+      "link": "https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/",
+      "new_information": "Unnamed customers connect Spot and Orbit to plant systems; an MCP layer lets AI agents start Spot missions.",
+      "entity": {
+        "exists": true,
+        "where": "Spot: 8 GlobalFoundries records in Deployments; Boston Dynamics Orbit software absent from Software (not Orbit Robotics, the space-robotics company in Other Robots)"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-known-pending (PR #163, import run 45842226852)."
+    },
+    {
+      "item_id": "viam",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 5,
+      "title": "Viam",
+      "link": "https://www.viam.com/",
+      "new_information": "Platform for AI agents to program and operate robots; open-source viam-server; MCP server.",
+      "entity": {
+        "exists": false,
+        "where": "absent ('Viam Rover' in Other Robots is another product)"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "john-deere-orchard-ai",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 6,
+      "title": "John Deere acquires Orchard AI",
+      "link": "https://www.deere.com/en-us/john-deere-news/john-deere-acquires-orchard-ai",
+      "new_information": "Acquisition of Orchard AI (FruitScope, plant-by-plant crop imaging).",
+      "entity": {
+        "exists": true,
+        "where": "Deere & Co in Investment; Orchard AI absent"
+      },
+      "outcome": "out_of_scope",
+      "ops": [],
+      "reason": "Crop imaging, not robots; the Deere page renders only with JavaScript (title and description read). (unchanged since WP-20261125-integrarobot-why-humanoid)."
+    },
+    {
+      "item_id": "felis",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 7,
+      "title": "Felis",
+      "link": "https://frank-zy-dou.github.io/blog/felis/index.html",
+      "new_information": "Cat-inspired legged robot with an actuated spine and six motors, 2026-11-19.",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "simplexity",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 8,
+      "title": "Simplexity Robotics",
+      "link": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
+      "new_information": "USD 100M pre-Series A led by Ant Group at a USD 1.6B valuation (Bloomberg via The Japan Times).",
+      "entity": {
+        "exists": false,
+        "where": "absent from Humanoids and Other Robots (only mentioned inside a Reports cell)"
+      },
+      "outcome": "planned",
+      "ops": [
+        "op-001"
+      ],
+      "note": "New primary evidence of 2026-11-27: the official site names the iX model, a wheeled humanoid, with its specifications. The row records those manufacturer claims; the funding stays secondary (no primary announcement on the official news page)."
+    },
+    {
+      "item_id": "wall-oss-1-0",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 9,
+      "title": "X Square Robot WALL-OSS-1.0",
+      "link": "https://x2robot.com/blogs/wall-oss-1-en/",
+      "new_information": "VLA model of 2026-11-23: 55.1% zero-shot over 312 tasks, 4B and 2B variants; parcel-sorting case with about 10 hours of task data.",
+      "entity": {
+        "exists": true,
+        "where": "X Square in Humanoids row 103; the parcel-sorting case already in Deployments rows 193-196 (only the Software row is planned)"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "aheadance",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 10,
+      "title": "AHEADance",
+      "link": "https://ihcr.github.io/AHEADance/",
+      "new_information": "Unitree G1 dancing to live audio: 29 joints at 30 Hz, eight songs in seven styles (arXiv 2611.13370).",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "mahdi-hand",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 11,
+      "title": "Mahdi's robotic hand",
+      "link": "https://hackaday.com/2026/11/21/building-a-robotic-hand-on-a-budget/",
+      "new_information": "18-DoF hand with forearm under USD 300 in parts.",
+      "entity": {
+        "exists": false,
+        "where": "absent"
+      },
+      "outcome": "out_of_scope",
+      "ops": [],
+      "reason": "Individual hobby build reported by Hackaday (secondary); design files not released; no product. (unchanged since WP-20261125-integrarobot-why-humanoid)."
+    },
+    {
+      "item_id": "play2perfect",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 12,
+      "title": "Play2Perfect",
+      "link": "https://play2perfect.github.io/",
+      "new_information": "Two-stage RL for precise assembly with multi-fingered hands, zero-shot to real hardware (CoRL 2026).",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "coprod",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 13,
+      "title": "coprod",
+      "link": "https://coprod.co/blog/pre-seed-round",
+      "new_information": "USD 6M pre-seed led by Founderful and PROTOTYPE, 2026-11-23; modular robot hardware components.",
+      "entity": {
+        "exists": false,
+        "where": "absent before this plan"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "evobot",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 14,
+      "title": "Fraunhofer IML evoBOT",
+      "link": "https://www.iml.fraunhofer.de/en/projects/2020/evobot-autonomous-transport-robot-logistics.html",
+      "new_information": "Self-balancing two-wheel prototype with two arms; digital twin; first Munich Airport test in June 2023.",
+      "entity": {
+        "exists": true,
+        "where": "only as Deployments row 198 (the 2023 Munich test, already incorporated); the robot itself absent from Other Robots"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-why-humanoid (PR #130, groups corrected in PR #132)."
+    },
+    {
+      "item_id": "playground",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 15,
+      "title": "Playground: The Robot Frontier Is Accelerating",
+      "link": "https://www.withplayground.ai/research/robot-frontier-accelerating",
+      "new_information": "Own Robot Intelligence Index: tasks at 80% or more rose from 25% to 43% in three months, real robots flat at 31%; own forecasts to end-2027.",
+      "entity": {
+        "exists": false,
+        "where": "absent from Reports"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Published under WP-20261125-integrarobot-known-pending (PR #163, import run 45842226852)."
+    },
+    {
+      "item_id": "ca3",
+      "edition_id": "integrarobot:2026-11-25:why-humanoid",
+      "order": 16,
+      "title": "CA3 multi-user test",
+      "link": "https://ca3.si/case_robot",
+      "new_information": "MolmoAct2 in simulation: 90% on new tasks, ten retained, 12 tampered demonstrations blocked, one user erased on request.",
+      "entity": {
+        "exists": true,
+        "where": "Integrators int_ca3"
+      },
+      "outcome": "already_incorporated",
+      "ops": [],
+      "reason": "Integrators already cites this page and these results (results 2026-10-28, reviewed 2026-11-24). (unchanged since WP-20261125-integrarobot-why-humanoid)."
+    }
+  ],
+  "operations": [
+    {
+      "op_id": "op-001",
+      "item_id": "simplexity",
+      "kind": "append_row",
+      "sheet": "Humanoids",
+      "row": 219,
+      "record": {
+        "key": {
+          "column": "B",
+          "header": "Robot",
+          "value": "iX"
+        },
+        "unique": [
+          {
+            "column": "A",
+            "header": "Lab",
+            "value": "Simplexity Robotics"
+          },
+          {
+            "column": "C",
+            "header": "Web",
+            "value": "https://www.simplexityrobotics.com/products/ix"
+          }
+        ]
+      },
+      "cells": [
+        {
+          "column": "A",
+          "header": "Lab",
+          "expected_previous": "",
+          "proposed": "Simplexity Robotics"
+        },
+        {
+          "column": "B",
+          "header": "Robot",
+          "expected_previous": "",
+          "proposed": "iX"
+        },
+        {
+          "column": "C",
+          "header": "Web",
+          "expected_previous": "",
+          "proposed": "https://www.simplexityrobotics.com/products/ix"
+        },
+        {
+          "column": "D",
+          "header": "X",
+          "expected_previous": "",
+          "proposed": "Not found"
+        },
+        {
+          "column": "E",
+          "header": "Linkedin",
+          "expected_previous": "",
+          "proposed": "Not found"
+        },
+        {
+          "column": "F",
+          "header": "Youtube",
+          "expected_previous": "",
+          "proposed": "Not found"
+        },
+        {
+          "column": "G",
+          "header": "Country",
+          "expected_previous": "",
+          "proposed": "China"
+        },
+        {
+          "column": "H",
+          "header": "Careers",
+          "expected_previous": "",
+          "proposed": "Not found"
+        },
+        {
+          "column": "I",
+          "header": "B2B Client",
+          "expected_previous": "",
+          "proposed": "Not disclosed for iX"
+        },
+        {
+          "column": "J",
+          "header": "Stock",
+          "expected_previous": "",
+          "proposed": "Private"
+        },
+        {
+          "column": "K",
+          "header": "Valuation",
+          "expected_previous": "",
+          "proposed": "Not confirmed by the company (USD 1.6B reported by Bloomberg, 2026-11-23; secondary)"
+        },
+        {
+          "column": "L",
+          "header": "Investors",
+          "expected_previous": "",
+          "proposed": "Not verified from primary sources (secondary press names Ant Group as lead of the November 2026 round)"
+        },
+        {
+          "column": "M",
+          "header": "Rounds",
+          "expected_previous": "",
+          "proposed": "USD 100M pre-Series A led by Ant Group, reported by Bloomberg (2026-11-23), not confirmed by the company; earlier, RMB 2B across five rounds reported by Yicai (2026-03); both secondary"
+        },
+        {
+          "column": "N",
+          "header": "Release",
+          "expected_previous": "",
+          "proposed": "Not verified"
+        },
+        {
+          "column": "O",
+          "header": "Height (cm)",
+          "expected_previous": "",
+          "proposed": "106–170 (adjustable; company)"
+        },
+        {
+          "column": "P",
+          "header": "Weight (kg)",
+          "expected_previous": "",
+          "proposed": "160"
+        },
+        {
+          "column": "Q",
+          "header": "Walk (km/h)",
+          "expected_previous": "",
+          "proposed": "Not applicable (wheeled)"
+        },
+        {
+          "column": "R",
+          "header": "Run (km/h)",
+          "expected_previous": "",
+          "proposed": "Not applicable (wheeled)"
+        },
+        {
+          "column": "S",
+          "header": "Payload/carry (kg)",
+          "expected_previous": "",
+          "proposed": "3 (arm rated load; company)"
+        },
+        {
+          "column": "T",
+          "header": "Power (hours)",
+          "expected_previous": "",
+          "proposed": "Not verified"
+        },
+        {
+          "column": "U",
+          "header": "Software",
+          "expected_previous": "",
+          "proposed": "Not verified"
+        },
+        {
+          "column": "V",
+          "header": "Voice",
+          "expected_previous": "",
+          "proposed": "Not verified"
+        },
+        {
+          "column": "W",
+          "header": "Clothed?",
+          "expected_previous": "",
+          "proposed": "Not verified"
+        },
+        {
+          "column": "X",
+          "header": "Model checked",
+          "expected_previous": "",
+          "proposed": "iX wheeled humanoid (Simplexity Robotics), official product page read in a rendered browser on 2026-11-27; manufacturer claims"
+        },
+        {
+          "column": "Y",
+          "header": "Platform / mobility",
+          "expected_previous": "",
+          "proposed": "Wheeled humanoid; max speed 1.5 m/s (company)"
+        },
+        {
+          "column": "Z",
+          "header": "DoF / grippers",
+          "expected_previous": "",
+          "proposed": "24 active DoF excluding hands (company)"
+        },
+        {
+          "column": "AA",
+          "header": "Sensors / compute",
+          "expected_previous": "",
+          "proposed": "NVIDIA Orin NX in the standard version, Thor in the Pro version (company); sensors not verified"
+        },
+        {
+          "column": "AB",
+          "header": "Battery / charging",
+          "expected_previous": "",
+          "proposed": "Not verified"
+        },
+        {
+          "column": "AC",
+          "header": "Price / availability",
+          "expected_previous": "",
+          "proposed": "Price not disclosed"
+        },
+        {
+          "column": "AD",
+          "header": "Autonomy / supervision",
+          "expected_previous": "",
+          "proposed": "Not verified"
+        },
+        {
+          "column": "AE",
+          "header": "Buyer checks",
+          "expected_previous": "",
+          "proposed": "Manufacturer claims, no deployment shown for iX; a third-party database dated before the reported 2026-11-23 unveiling gives other height, arm-load and compute figures, not entered; funding only from secondary press"
+        },
+        {
+          "column": "AF",
+          "header": "Sources / checked",
+          "expected_previous": "",
+          "proposed": "2026-11-27 | New row: iX identity and specifications from the official product page (rendered); funding from secondary press, not confirmed by the company\nhttps://www.simplexityrobotics.com/products/ix\nhttps://www.simplexityrobotics.com/news\nhttps://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.simplexityrobotics.com/products/ix",
+          "publisher": "Simplexity Robotics (至简动力)",
+          "published": "product page, undated",
+          "reviewed": "2026-11-27",
+          "note": "JavaScript-rendered page: read by Codex in a rendered browser on 2026-11-27 (wheeled humanoid, 24 active DoF excluding hands, 160 kg, height 1060-1700 mm, 1.5 m/s, 3 kg arm rated load, Orin NX standard / Thor Pro); Claude's static fetch returned page metadata only. Codex confirms each value on the rendered page before writing."
+        },
+        {
+          "url": "https://www.simplexityrobotics.com/news",
+          "publisher": "Simplexity Robotics (至简动力)",
+          "published": "latest item 2026-11-23",
+          "reviewed": "2026-11-27",
+          "note": "Official news list (rendered by Codex): no funding announcement; items of 2026-11-23 (CNC-cell demo) and 2026-11-06 (sorting line with Hangcha); footer names the legal entity in Hangzhou and links the iX and i7 Pro models."
+        },
+        {
+          "url": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
+          "publisher": "The Japan Times (Bloomberg)",
+          "published": "2026-11-23",
+          "reviewed": "2026-11-27",
+          "note": "Secondary source for the USD 100M round and the USD 1.6B valuation; not confirmed by the company."
+        }
+      ],
+      "note": "Cautious row: only what the official product page states, labelled as company claims; no operating deployment inferred; the round and the valuation are recorded as secondary reports, never as confirmed. i7 Pro is linked from the official site but not reviewed here and gets no row."
+    }
+  ]
+}
