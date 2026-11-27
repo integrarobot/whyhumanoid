@@ -1,0 +1,432 @@
+[
+  {
+    "id": 81,
+    "slug": "sharpa-droid-d01",
+    "manufacturer": "Sharpa",
+    "model": "Droid D01 / Wave (hands)",
+    "public_page": "https://whyhumanoid.com/humanoids/sharpa-droid-d01-wave-hands-81/",
+    "page": "https://www.sharpa.com/",
+    "source_url": "https://www.sharpa.com/cdn/shop/files/D01_3b6bb232-4d68-43d6-b003-11aedfc3f716.png?v=1791431568&width=2000",
+    "original": "original.png",
+    "original_size": [
+      2000,
+      2222
+    ],
+    "original_sha256": "22dee1c14cec5b79ce569179feb48acc4ac4e34f3dce23eaa28237ac68ee4fbf",
+    "mask_sha256": "3650b451148b0c48d4a3360d7c7d8c27a053e354e9e95dbefa8a3161eb22dc60",
+    "prepared_sha256": "e7f900b6f34d2e4661d91af4ac27ecc7fbe79679cb0e73b7b003bc9f6979f46f",
+    "roi": [
+      0,
+      0,
+      2000,
+      2222
+    ],
+    "bbox": [
+      670,
+      170,
+      1490,
+      2171
+    ],
+    "border": 20,
+    "size": [
+      860,
+      2041
+    ],
+    "context": "The official Sharpa homepage explicitly labels this exact asset D01, next to separate Wave hand products. Shows the whole D01 platform; not the Wave hands. Grey rounded-rectangle background was opaque despite native alpha; ISNET used to exclude it.",
+    "mask_method": "ISNET non-generative segmentation",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Alpha-only removal of visually verified background colour (+/-1 RGB) in specific interior gaps, no global colour deletion. Regions: [([862, 648, 942, 905], [238, 238, 238])]; Verified gap edges receive1px expansion with0.45px alpha antialias; body colours untouched.",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Sharpa",
+    "source_page": "https://www.sharpa.com/",
+    "source_context": "The official Sharpa homepage explicitly labels this exact asset D01, next to separate Wave hand products. Shows the whole D01 platform; not the Wave hands. Grey rounded-rectangle background was opaque despite native alpha; ISNET used to exclude it.",
+    "native_alpha": false
+  },
+  {
+    "id": 84,
+    "slug": "switchbot-onero-h1",
+    "manufacturer": "Switch",
+    "model": "Onero H1",
+    "public_page": "https://whyhumanoid.com/humanoids/switch-onero-h1-84/",
+    "page": "https://eu.switch-bot.com/",
+    "source_url": "https://cdn.shopify.com/s/files/1/0610/2843/4085/files/H1_1x_1.png?v=1767594175",
+    "original": "original.png",
+    "original_size": [
+      871,
+      870
+    ],
+    "original_sha256": "2ae42be7dd5af04ad25eb67eea0fd990b79aca960e8273d2c75031581e763df5",
+    "mask_sha256": "60e9651c27708a9e24a72ee59c5f4c49a201472a8c11ef25d92c4d6541c88e0e",
+    "prepared_sha256": "9767b1cf3de23deaf4a18ed528414692eef1d05f893fab6273cecfe62a3ff3dd",
+    "roi": [
+      0,
+      0,
+      871,
+      870
+    ],
+    "bbox": [
+      240,
+      117,
+      550,
+      767
+    ],
+    "border": 20,
+    "size": [
+      350,
+      690
+    ],
+    "context": "Official SwitchBot homepage onero H1 card, exact alt onero H1. Full wheeled robot including whole base. Native figure, not the separate robotic arm or fan.",
+    "mask_method": "native alpha",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "SwitchBot",
+    "source_page": "https://eu.switch-bot.com/",
+    "source_context": "Official SwitchBot homepage onero H1 card, exact alt onero H1. Full wheeled robot including whole base. Native figure, not the separate robotic arm or fan.",
+    "native_alpha": true
+  },
+  {
+    "id": 88,
+    "slug": "humanoid-hmnd-01-alpha-wheeled",
+    "manufacturer": "The Humanoid",
+    "model": "HMND 01 (Alpha Wheeled / Bipedal)",
+    "public_page": "https://whyhumanoid.com/humanoids/the-humanoid-hmnd-01-alpha-wheeled-bipedal-88/",
+    "page": "https://thehumanoid.ai/",
+    "source_url": "https://thehumanoid.ai/wp-content/themes/SKLTech/src/assets/images/redisign/reliability-robot.png",
+    "original": "original.png",
+    "original_size": [
+      1420,
+      2584
+    ],
+    "original_sha256": "9134211d4229ef124eebdf08150a7749824df92cb6e0689377b17bdc8a765288",
+    "mask_sha256": "9a634b9547932bc95404176b6957ffc6eb1766a83a13fdf877799a8e2bea3704",
+    "prepared_sha256": "48d235dfe14870c60d783def6d71c4b4d181543500f4f2ae53a0826f276ebf9e",
+    "roi": [
+      0,
+      0,
+      1420,
+      2584
+    ],
+    "bbox": [
+      35,
+      39,
+      1348,
+      2536
+    ],
+    "border": 20,
+    "size": [
+      1353,
+      2537
+    ],
+    "context": "Humanoid homepage reliability-robot.png full wheeled platform. Catalogue explicitly allows Alpha Wheeled and Alpha Bipedal, not interchangeable; this depicts the wheeled configuration, which alt/provenance must name. Independently check identification against source page.",
+    "mask_method": "native alpha",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Humanoid",
+    "source_page": "https://thehumanoid.ai/",
+    "source_context": "Humanoid homepage reliability-robot.png full wheeled platform. Catalogue explicitly allows Alpha Wheeled and Alpha Bipedal, not interchangeable; this depicts the wheeled configuration, which alt/provenance must name. Independently check identification against source page.",
+    "native_alpha": true
+  },
+  {
+    "id": 94,
+    "slug": "unix-wanda-2",
+    "manufacturer": "UniX",
+    "model": "Wanda",
+    "public_page": "https://whyhumanoid.com/humanoids/unix-wanda-94/",
+    "page": "https://www.unix-group.ai/",
+    "source_url": "https://www.unix-group.ai/public/uploads/images/20250428/120f27d4e16f0da237540cb2d3c36cac.png",
+    "original": "original.png",
+    "original_size": [
+      408,
+      1128
+    ],
+    "original_sha256": "420251d152066e74277b0e1601bf59296820ec8c934d697b2304fe5f83a4e66f",
+    "mask_sha256": "22f4e7051b07996dae00ab768470e65767793a958f4cc60df4157b4ec83aa2ad",
+    "prepared_sha256": "8a24cae993c911eef956ab5c2d2e5f303d2d7a7adaa2527f55b5ac0d561603e9",
+    "roi": [
+      0,
+      0,
+      408,
+      1128
+    ],
+    "bbox": [
+      1,
+      1,
+      407,
+      1042
+    ],
+    "border": 20,
+    "size": [
+      446,
+      1081
+    ],
+    "context": "Official UniX homepage product image explicitly labelled Wanda 2.0. Generic Wanda family catalogue, separate Martian biped not used. Name 2.0 shown in alt/provenance; not an assertion all Wanda generations look identical.",
+    "mask_method": "native alpha",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "UniX AI",
+    "source_page": "https://www.unix-group.ai/",
+    "source_context": "Official UniX homepage product image explicitly labelled Wanda 2.0. Generic Wanda family catalogue, separate Martian biped not used. Name 2.0 shown in alt/provenance; not an assertion all Wanda generations look identical.",
+    "native_alpha": true
+  },
+  {
+    "id": 98,
+    "slug": "weave-isaac-0",
+    "manufacturer": "Weave",
+    "model": "Isaac",
+    "public_page": "https://whyhumanoid.com/humanoids/weave-isaac-98/",
+    "page": "https://www.weaverobotics.com/",
+    "source_url": "https://www.weaverobotics.com/_next/image?url=%2Fimages%2Fproducts%2Fisaac-0-front.webp&w=3840&q=75",
+    "original": "original.img",
+    "original_size": [
+      1200,
+      1600
+    ],
+    "original_sha256": "c7641c7fc3f087b5ce103b2271a74d72c4a23d536ebc04d48fd6a22829ee840b",
+    "mask_sha256": "71a37b51a71772cc6e1ca217a08842c3ad8412729a677a7587be6b77e6181a88",
+    "prepared_sha256": "1cfec8651a14b4c8ff5257cc4310c4002b39ca2b391d59ae53814a8984c1173a",
+    "roi": [
+      0,
+      0,
+      1200,
+      1600
+    ],
+    "bbox": [
+      279,
+      177,
+      892,
+      1500
+    ],
+    "border": 20,
+    "size": [
+      653,
+      1363
+    ],
+    "context": "Official Weave homepage exact file isaac-0-front.webp with alt Isaac0. Generic catalogue Isaac has unresolved generation/mobility caveat; name Isaac0 shown, do not call Isaac1 or infer powered locomotion. Whole two-arm column platform and caster/base remain. No catalogue data change.",
+    "mask_method": "ISNET non-generative segmentation",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.; Alpha-only removal of visually verified background colour (+/-1 RGB) in specific interior gaps, no global colour deletion. Regions: [([754, 715, 784, 765], [236, 236, 236]), ([804, 636, 829, 652], [236, 236, 236])]; Verified gap edges receive1px expansion with0.45px alpha antialias; body colours untouched.; Claude, alpha only: luminance key (white 228) in prepared rect [496, 559, 523, 608]",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Weave Robotics",
+    "source_page": "https://www.weaverobotics.com/",
+    "source_context": "Official Weave homepage exact file isaac-0-front.webp with alt Isaac0. Generic catalogue Isaac has unresolved generation/mobility caveat; name Isaac0 shown, do not call Isaac1 or infer powered locomotion. Whole two-arm column platform and caster/base remain. No catalogue data change.",
+    "native_alpha": false
+  },
+  {
+    "id": 72,
+    "slug": "realbotix-aria",
+    "manufacturer": "Realbotix",
+    "model": "Aria",
+    "public_page": "https://whyhumanoid.com/humanoids/realbotix-aria-72/",
+    "page": "https://www.realbotix.com/",
+    "source_url": "https://www.realbotix.com/_next/image?url=%2Frobots%2Faria-full-body.jpg&w=3840&q=75&dpl=dpl_CvS1HghmeWVK3z4WA2ULrC68dwiS",
+    "original": "original.img",
+    "original_size": [
+      1599,
+      2132
+    ],
+    "original_sha256": "814b9618d3070c559274ea465d410852a511fc8f6c77a9b9a82003e4d3a07a6e",
+    "mask_sha256": "22438331d88b7d3b2f68bd7e94de3922aa57b4b3d299271b7f402d2f3fb68850",
+    "prepared_sha256": "4fd378323611015b291c95253f39ec147c480f897325183c45aa70f16dd6656f",
+    "roi": [
+      0,
+      0,
+      1599,
+      2132
+    ],
+    "bbox": [
+      426,
+      99,
+      1209,
+      2025
+    ],
+    "border": 20,
+    "size": [
+      823,
+      1966
+    ],
+    "context": "Official Realbotix homepage exact image aria-full-body.jpg, alt Aria, a full-body Series1, standing on its lit base. Whole named robot, both hands and feet and entire circular display base. Name Aria Series1 shown. Source RGB retained; grey studio background/floor masked.",
+    "mask_method": "ISNET non-generative segmentation",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Claude, alpha only: segmentation mask segmentation-birefnet-mask.png (BiRefNet general via rembg, mask only, on the original; kept beside it) levelled 85..230 in prepared rect [398, 1100, 436, 1540]; segmentation mask segmentation-birefnet-mask.png (BiRefNet general via rembg, mask only, on the original; kept beside it) levelled 85..230 in prepared rect [550, 575, 640, 900]; segmentation mask segmentation-birefnet-mask.png (BiRefNet general via rembg, mask only, on the original; kept beside it) levelled 85..230 in prepared rect [228, 595, 286, 770]; segmentation mask segmentation-birefnet-mask.png (BiRefNet general via rembg, mask only, on the original; kept beside it) levelled 85..230 in prepared rect [585, 300, 750, 830]",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Realbotix",
+    "source_page": "https://www.realbotix.com/",
+    "source_context": "Official Realbotix homepage exact image aria-full-body.jpg, alt Aria, a full-body Series1, standing on its lit base. Whole named robot, both hands and feet and entire circular display base. Name Aria Series1 shown. Source RGB retained; grey studio background/floor masked.",
+    "native_alpha": false
+  },
+  {
+    "id": 133,
+    "slug": "mabel",
+    "manufacturer": "Mabel",
+    "model": "Mabel",
+    "public_page": "https://whyhumanoid.com/humanoids/mabel-mabel-133/",
+    "page": "https://robotmabel.github.io/website/index.html",
+    "source_url": "https://robotmabel.github.io/website/assets/wild/w-curtain.jpg",
+    "original": "original.jpg",
+    "original_size": [
+      1200,
+      1600
+    ],
+    "original_sha256": "3af3cf078462eada5cca1e6ea99e9f4ed1e8bf419ff23669e7d85b1ffea08b00",
+    "mask_sha256": "726d5dd7f1a21be58c93777e7f0dc671d4124b2fb9a31b4a1f8cdfd6e5d70bc1",
+    "prepared_sha256": "18ab188a991e7d3630e0ce4b824ae08deff9280adebfc59eafbbe639d4642e90",
+    "roi": [
+      0,
+      0,
+      1200,
+      1600
+    ],
+    "bbox": [
+      174,
+      198,
+      1012,
+      1519
+    ],
+    "border": 20,
+    "size": [
+      878,
+      1361
+    ],
+    "context": "Official MABEL project website image caption MABEL standing in front of a grey curtain. Whole robot with both antennas, manipulators, support column, cables and base. Curtain masked; source RGB/native scale retained.",
+    "mask_method": "ISNET non-generative segmentation",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "MABEL project",
+    "source_page": "https://robotmabel.github.io/website/index.html",
+    "source_context": "Official MABEL project website image caption MABEL standing in front of a grey curtain. Whole robot with both antennas, manipulators, support column, cables and base. Curtain masked; source RGB/native scale retained.",
+    "native_alpha": false
+  },
+  {
+    "id": 189,
+    "slug": "linkerbot-humanoid",
+    "manufacturer": "Linkerbot",
+    "model": "Linker Humanoid",
+    "public_page": "https://whyhumanoid.com/humanoids/linkerbot-linker-humanoid-189/",
+    "page": "https://www.linkerbot.cn/details/LinkerHumanoid/",
+    "source_url": "https://botdata.oss-cn-beijing.aliyuncs.com/afterSales/linkerbot_img/products/linker-humanoid/detail-2.png",
+    "original": "original.png",
+    "original_size": [
+      919,
+      859
+    ],
+    "original_sha256": "5513a66459a32f2ae02b0e37bc337aa4015a6a76b2ab92ab7835b5e10a260bc8",
+    "mask_sha256": "d69d7d6c0fb8228d684d16b9e12b5ffac95dbeb6be37b8f3a98675a2a9224b8f",
+    "prepared_sha256": "d28ed1fdf27d1e86ff1949c323a4ebcddaa60c11bde10fddced8d397913b44b1",
+    "roi": [
+      0,
+      0,
+      919,
+      859
+    ],
+    "bbox": [
+      310,
+      103,
+      610,
+      826
+    ],
+    "border": 20,
+    "size": [
+      340,
+      763
+    ],
+    "context": "Official exact Linker Humanoid page image detail-2.png. Whole wheeled platform, not cropped living-room torso. Native alpha had grey opaque background; ISNET plus interior opacity correction excludes it without RGB edits.",
+    "mask_method": "ISNET non-generative segmentation",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.; Alpha-only removal of visually verified background colour (+/-1 RGB) in specific interior gaps, no global colour deletion. Regions: [([500, 316, 513, 364], [243, 243, 243]), ([518, 679, 552, 687], [243, 243, 243])]; Verified gap edges receive1px expansion with0.45px alpha antialias; body colours untouched.",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Linkerbot",
+    "source_page": "https://www.linkerbot.cn/details/LinkerHumanoid/",
+    "source_context": "Official exact Linker Humanoid page image detail-2.png. Whole wheeled platform, not cropped living-room torso. Native alpha had grey opaque background; ISNET plus interior opacity correction excludes it without RGB edits.",
+    "native_alpha": false
+  },
+  {
+    "id": 192,
+    "slug": "menlo-asimov-1",
+    "manufacturer": "Menlo",
+    "model": "Asimov 1",
+    "public_page": "https://whyhumanoid.com/humanoids/menlo-asimov-1-192/",
+    "page": "https://menlo.ai/asimov-1",
+    "source_url": "https://menlo.ai/images/asimov/asimov-orange-full-front-cutout.webp",
+    "original": "original.webp",
+    "original_size": [
+      727,
+      2045
+    ],
+    "original_sha256": "fb8176a434409abe6844c893cac2c4bada428cfc8765086eb40ac67546cbbc64",
+    "mask_sha256": "bba2f5270eb73504db08f38a9fa3f36e32794030a8dfc88128633240bbb07c72",
+    "prepared_sha256": "eb816d411053edeb69dc5295b1243c318cdeb64a935f04e4c0cd6d924b23ca92",
+    "roi": [
+      0,
+      0,
+      727,
+      2045
+    ],
+    "bbox": [
+      44,
+      44,
+      684,
+      1970
+    ],
+    "border": 20,
+    "size": [
+      680,
+      1966
+    ],
+    "context": "Official Menlo Asimov1 page exact image asimov-orange-full-front-cutout.webp, alt Asimov1 humanoid robot, front view. Whole orange finished model with both feet, not exploded kit/build stages or chair accessory.",
+    "mask_method": "native alpha",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Menlo",
+    "source_page": "https://menlo.ai/asimov-1",
+    "source_context": "Official Menlo Asimov1 page exact image asimov-orange-full-front-cutout.webp, alt Asimov1 humanoid robot, front view. Whole orange finished model with both feet, not exploded kit/build stages or chair accessory.",
+    "native_alpha": true
+  },
+  {
+    "id": 203,
+    "slug": "ugo-nova",
+    "manufacturer": "ugo",
+    "model": "ugo Nova",
+    "public_page": "https://whyhumanoid.com/humanoids/ugo-ugo-nova-203/",
+    "page": "https://ugo.plus/ai/ugo-nova/",
+    "source_url": "https://ugo.plus/wp-content/uploads/2026/09/img_nova_spec.png",
+    "original": "original.png",
+    "original_size": [
+      588,
+      1080
+    ],
+    "original_sha256": "3b88f5cc1551a5aefdbb75da3d4ab12eb99dc135b969fdabf875838b60062354",
+    "mask_sha256": "95d784b964bcd28e042b6a8b5481bca4633f3c3ce0f9252642edecefd2ea1f3b",
+    "prepared_sha256": "cbce470d3ceba895b49eabcded5f192655426e801fa74c36abfc95589a354be1",
+    "roi": [
+      0,
+      0,
+      588,
+      1080
+    ],
+    "bbox": [
+      140,
+      223,
+      455,
+      1007
+    ],
+    "border": 20,
+    "size": [
+      355,
+      824
+    ],
+    "context": "Official ugo Nova product page exact img_nova_spec.png in specification section. Complete wheeled platform with grippers and base. No human legs added.",
+    "mask_method": "native alpha",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+    "checked_at": "2026-11-27",
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "ugo",
+    "source_page": "https://ugo.plus/ai/ugo-nova/",
+    "source_context": "Official ugo Nova product page exact img_nova_spec.png in specification section. Complete wheeled platform with grippers and base. No human legs added.",
+    "native_alpha": true
+  }
+]

@@ -1177,6 +1177,156 @@
         "credit": "Image: PNDbotics, ADAM standard simulation model",
         "provenance": "ops/media/robots/pndbotics-adam/PROVENANCE.md"
       }
+    },
+    "81": {
+      "recorded": {
+        "Lab": "Sharpa",
+        "Robot": "Droid D01 / Wave (hands)"
+      },
+      "image": {
+        "src": "/assets/robots/sharpa-droid-d01/sharpa-droid-d01-full-body.webp",
+        "fallback": "/assets/robots/sharpa-droid-d01/sharpa-droid-d01-full-body.png",
+        "width": 860,
+        "height": 2041,
+        "alt": "Droid D01 by Sharpa, full body, standing",
+        "credit": "Image: Sharpa, D01",
+        "provenance": "ops/media/robots/sharpa-droid-d01/PROVENANCE.md"
+      }
+    },
+    "84": {
+      "recorded": {
+        "Lab": "Switch",
+        "Robot": "Onero H1"
+      },
+      "image": {
+        "src": "/assets/robots/switchbot-onero-h1/switchbot-onero-h1-full-body.webp",
+        "fallback": "/assets/robots/switchbot-onero-h1/switchbot-onero-h1-full-body.png",
+        "width": 350,
+        "height": 690,
+        "alt": "onero H1 by SwitchBot, full body, waving, on its wheeled base",
+        "credit": "Image: SwitchBot",
+        "provenance": "ops/media/robots/switchbot-onero-h1/PROVENANCE.md"
+      }
+    },
+    "88": {
+      "recorded": {
+        "Lab": "The Humanoid",
+        "Robot": "HMND 01 (Alpha Wheeled / Bipedal)"
+      },
+      "image": {
+        "src": "/assets/robots/humanoid-hmnd-01-alpha-wheeled/humanoid-hmnd-01-alpha-wheeled-full-body.webp",
+        "fallback": "/assets/robots/humanoid-hmnd-01-alpha-wheeled/humanoid-hmnd-01-alpha-wheeled-full-body.png",
+        "width": 1353,
+        "height": 2537,
+        "alt": "HMND 01 Alpha Wheeled by Humanoid, full body, on its wheeled base",
+        "credit": "Image: Humanoid, HMND 01 Alpha Wheeled",
+        "provenance": "ops/media/robots/humanoid-hmnd-01-alpha-wheeled/PROVENANCE.md"
+      }
+    },
+    "94": {
+      "recorded": {
+        "Lab": "UniX",
+        "Robot": "Wanda"
+      },
+      "image": {
+        "src": "/assets/robots/unix-wanda-2/unix-wanda-2-full-body.webp",
+        "fallback": "/assets/robots/unix-wanda-2/unix-wanda-2-full-body.png",
+        "width": 446,
+        "height": 1081,
+        "alt": "Wanda 2.0 by UniX AI, full body, front view, on its wheeled base",
+        "credit": "Image: UniX AI, Wanda 2.0",
+        "provenance": "ops/media/robots/unix-wanda-2/PROVENANCE.md"
+      }
+    },
+    "98": {
+      "recorded": {
+        "Lab": "Weave",
+        "Robot": "Isaac"
+      },
+      "image": {
+        "src": "/assets/robots/weave-isaac-0/weave-isaac-0-full-body.webp",
+        "fallback": "/assets/robots/weave-isaac-0/weave-isaac-0-full-body.png",
+        "width": 653,
+        "height": 1363,
+        "alt": "Isaac 0 by Weave Robotics, full body, front view, two arms on a column and base",
+        "credit": "Image: Weave Robotics, Isaac 0",
+        "provenance": "ops/media/robots/weave-isaac-0/PROVENANCE.md"
+      }
+    },
+    "72": {
+      "recorded": {
+        "Lab": "Realbotix",
+        "Robot": "Aria"
+      },
+      "image": {
+        "src": "/assets/robots/realbotix-aria/realbotix-aria-full-body.webp",
+        "fallback": "/assets/robots/realbotix-aria/realbotix-aria-full-body.png",
+        "width": 823,
+        "height": 1966,
+        "alt": "Aria, a full-body Series 1, standing on its lit base",
+        "credit": "Image: Realbotix, Aria Series 1",
+        "provenance": "ops/media/robots/realbotix-aria/PROVENANCE.md"
+      }
+    },
+    "133": {
+      "recorded": {
+        "Lab": "Mabel",
+        "Robot": "Mabel"
+      },
+      "image": {
+        "src": "/assets/robots/mabel/mabel-full-body.webp",
+        "fallback": "/assets/robots/mabel/mabel-full-body.png",
+        "width": 878,
+        "height": 1361,
+        "alt": "MABEL, the open-source mobile bimanual robot, full body, on its column and base",
+        "credit": "Image: MABEL project",
+        "provenance": "ops/media/robots/mabel/PROVENANCE.md"
+      }
+    },
+    "189": {
+      "recorded": {
+        "Lab": "Linkerbot",
+        "Robot": "Linker Humanoid"
+      },
+      "image": {
+        "src": "/assets/robots/linkerbot-humanoid/linkerbot-humanoid-full-body.webp",
+        "fallback": "/assets/robots/linkerbot-humanoid/linkerbot-humanoid-full-body.png",
+        "width": 340,
+        "height": 763,
+        "alt": "Linker Humanoid by Linkerbot, full body, on its wheeled base",
+        "credit": "Image: Linkerbot",
+        "provenance": "ops/media/robots/linkerbot-humanoid/PROVENANCE.md"
+      }
+    },
+    "192": {
+      "recorded": {
+        "Lab": "Menlo",
+        "Robot": "Asimov 1"
+      },
+      "image": {
+        "src": "/assets/robots/menlo-asimov-1/menlo-asimov-1-full-body.webp",
+        "fallback": "/assets/robots/menlo-asimov-1/menlo-asimov-1-full-body.png",
+        "width": 680,
+        "height": 1966,
+        "alt": "Asimov 1 by Menlo, full body, front view, standing",
+        "credit": "Image: Menlo",
+        "provenance": "ops/media/robots/menlo-asimov-1/PROVENANCE.md"
+      }
+    },
+    "203": {
+      "recorded": {
+        "Lab": "ugo",
+        "Robot": "ugo Nova"
+      },
+      "image": {
+        "src": "/assets/robots/ugo-nova/ugo-nova-full-body.webp",
+        "fallback": "/assets/robots/ugo-nova/ugo-nova-full-body.png",
+        "width": 355,
+        "height": 824,
+        "alt": "ugo Nova by ugo, full body, front view, on its wheeled base",
+        "credit": "Image: ugo",
+        "provenance": "ops/media/robots/ugo-nova/PROVENANCE.md"
+      }
     }
   }
 }

@@ -225,6 +225,32 @@
         "Published with PR 228 (reviewed head 6f9a76e, CI 46036203912; merge db579f7), 27 Nov 2026; Pages 46036629734 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 9,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        81,
+        84,
+        88,
+        94,
+        98,
+        72,
+        133,
+        189,
+        192,
+        203
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources and cutouts prepared by Codex on codex/image-sources-remaining (batch-09 at 330772e: alpha of D01, Isaac 0 and Linker corrected in 39823da and 6a6dc12 after Claude's review), copied selectively into ops/media/intake-remaining-2026-11-27/batch-09/.",
+        "Claude's review found background left semi-opaque in Aria (between the trouser legs, at the waist, beside the right-hand arm of the picture and a halo along that sleeve) and opaque inside Isaac 0's wrist cable loop; with Codex's authorisation Claude corrected both, alpha only, with ops/media/robots/key-gaps.py (Aria: BiRefNet mask, kept beside the original, inside four rectangles; Isaac 0: luminance key inside the loop). RGB unchanged.",
+        "Voxel Series-1 (131) withdrawn: its source photo ends at the shins, without feet; Aria (72) takes its place.",
+        "Variants named in the visible captions: Sharpa D01 (not the Wave hands), HMND 01 Alpha Wheeled, Wanda 2.0, Isaac 0 (not Isaac 1), Aria Series 1. Records' specifications unchanged."
+      ]
     }
   ],
   "robots": {
@@ -759,16 +785,40 @@
         "Lab": "Sharpa",
         "Robot": "Droid D01 / Wave (hands)"
       },
-      "status": "needs_decision",
-      "reason": "One record for a humanoid and a hand family; only the D01 humanoid could be shown, by decision."
+      "status": "integrated",
+      "decision": "Codex, 27 Nov 2026 (scope authorised by Javier): show the D01 humanoid, named in the caption; the Wave hands are not shown.",
+      "sources": [
+        {
+          "file": "https://www.sharpa.com/cdn/shop/files/D01_3b6bb232-4d68-43d6-b003-11aedfc3f716.png?v=1791431568&width=2000",
+          "page": "https://www.sharpa.com/",
+          "sha256": "22dee1c14cec5b79ce569179feb48acc4ac4e34f3dce23eaa28237ac68ee4fbf",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 860 × 2041 with 20 px padding."
+        }
+      ]
     },
     "88": {
       "recorded": {
         "Lab": "The Humanoid",
         "Robot": "HMND 01 (Alpha Wheeled / Bipedal)"
       },
-      "status": "needs_decision",
-      "reason": "Two platforms (wheeled and bipedal) in one record."
+      "status": "integrated",
+      "decision": "Codex, 27 Nov 2026 (scope authorised by Javier): show the Alpha Wheeled platform, named in the caption; the bipedal platform is not shown and the record's old specifications are not attributed to it.",
+      "sources": [
+        {
+          "file": "https://thehumanoid.ai/wp-content/themes/SKLTech/src/assets/images/redisign/reliability-robot.png",
+          "page": "https://thehumanoid.ai/",
+          "sha256": "9134211d4229ef124eebdf08150a7749824df92cb6e0689377b17bdc8a765288",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1353 × 2537 with 20 px padding."
+        }
+      ]
     },
     "128": {
       "recorded": {
@@ -2610,9 +2660,20 @@
         "Lab": "Realbotix",
         "Robot": "Aria"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.realbotix.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.realbotix.com/_next/image?url=%2Frobots%2Faria-full-body.jpg&w=3840&q=75&dpl=dpl_CvS1HghmeWVK3z4WA2ULrC68dwiS",
+          "page": "https://www.realbotix.com/",
+          "sha256": "814b9618d3070c559274ea465d410852a511fc8f6c77a9b9a82003e4d3a07a6e",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 823 × 1966 with 20 px padding."
+        }
+      ]
     },
     "73": {
       "recorded": {
@@ -2682,9 +2743,21 @@
         "Lab": "Switch",
         "Robot": "Onero H1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://eu.switch-bot.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://cdn.shopify.com/s/files/1/0610/2843/4085/files/H1_1x_1.png?v=1767594175",
+          "page": "https://eu.switch-bot.com/",
+          "sha256": "2ae42be7dd5af04ad25eb67eea0fd990b79aca960e8273d2c75031581e763df5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 350 × 690 with 20 px padding."
+        }
+      ],
+      "quality_note": "Small source: 350 × 690 px as prepared."
     },
     "85": {
       "recorded": {
@@ -2736,9 +2809,20 @@
         "Lab": "UniX",
         "Robot": "Wanda"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.unix-group.ai",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.unix-group.ai/public/uploads/images/20250428/120f27d4e16f0da237540cb2d3c36cac.png",
+          "page": "https://www.unix-group.ai/",
+          "sha256": "420251d152066e74277b0e1601bf59296820ec8c934d697b2304fe5f83a4e66f",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 446 × 1081 with 20 px padding."
+        }
+      ]
     },
     "95": {
       "recorded": {
@@ -2772,9 +2856,20 @@
         "Lab": "Weave",
         "Robot": "Isaac"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.weaverobotics.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.weaverobotics.com/_next/image?url=%2Fimages%2Fproducts%2Fisaac-0-front.webp&w=3840&q=75",
+          "page": "https://www.weaverobotics.com/",
+          "sha256": "c7641c7fc3f087b5ce103b2271a74d72c4a23d536ebc04d48fd6a22829ee840b",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 653 × 1363 with 20 px padding."
+        }
+      ]
     },
     "99": {
       "recorded": {
@@ -2909,16 +3004,27 @@
       },
       "status": "queued",
       "page": "https://tuesdaylabs.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Source received 27 Nov 2026 (Tuesday Labs homepage portrait): the photo ends at the shins, without feet, so it is not a whole robot; withdrawn from batch 9. Another official whole-body source is still sought."
     },
     "133": {
       "recorded": {
         "Lab": "Mabel",
         "Robot": "Mabel"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://robotmabel.github.io/website/index.html",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://robotmabel.github.io/website/assets/wild/w-curtain.jpg",
+          "page": "https://robotmabel.github.io/website/index.html",
+          "sha256": "3af3cf078462eada5cca1e6ea99e9f4ed1e8bf419ff23669e7d85b1ffea08b00",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 878 × 1361 with 20 px padding."
+        }
+      ]
     },
     "136": {
       "recorded": {
@@ -3015,9 +3121,21 @@
         "Lab": "Linkerbot",
         "Robot": "Linker Humanoid"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.linkerbot.cn/details/LinkerHumanoid",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://botdata.oss-cn-beijing.aliyuncs.com/afterSales/linkerbot_img/products/linker-humanoid/detail-2.png",
+          "page": "https://www.linkerbot.cn/details/LinkerHumanoid/",
+          "sha256": "5513a66459a32f2ae02b0e37bc337aa4015a6a76b2ab92ab7835b5e10a260bc8",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 340 × 763 with 20 px padding."
+        }
+      ],
+      "quality_note": "Small source: 340 × 763 px as prepared."
     },
     "190": {
       "recorded": {
@@ -3042,9 +3160,20 @@
         "Lab": "Menlo",
         "Robot": "Asimov 1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://menlo.ai/asimov-1",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://menlo.ai/images/asimov/asimov-orange-full-front-cutout.webp",
+          "page": "https://menlo.ai/asimov-1",
+          "sha256": "fb8176a434409abe6844c893cac2c4bada428cfc8765086eb40ac67546cbbc64",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 680 × 1966 with 20 px padding."
+        }
+      ]
     },
     "193": {
       "recorded": {
@@ -3132,9 +3261,21 @@
         "Lab": "ugo",
         "Robot": "ugo Nova"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://ugo.plus/ai/ugo-nova/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://ugo.plus/wp-content/uploads/2026/09/img_nova_spec.png",
+          "page": "https://ugo.plus/ai/ugo-nova/",
+          "sha256": "3b88f5cc1551a5aefdbb75da3d4ab12eb99dc135b969fdabf875838b60062354",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 355 × 824 with 20 px padding."
+        }
+      ],
+      "quality_note": "Small source: 355 × 824 px as prepared."
     },
     "204": {
       "recorded": {

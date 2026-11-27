@@ -1,0 +1,43 @@
+{
+  "id": 94,
+  "slug": "unix-wanda-2",
+  "manufacturer": "UniX",
+  "model": "Wanda",
+  "public_page": "https://whyhumanoid.com/humanoids/unix-wanda-94/",
+  "page": "https://www.unix-group.ai/",
+  "source_url": "https://www.unix-group.ai/public/uploads/images/20250428/120f27d4e16f0da237540cb2d3c36cac.png",
+  "original": "original.png",
+  "original_size": [
+    408,
+    1128
+  ],
+  "original_sha256": "420251d152066e74277b0e1601bf59296820ec8c934d697b2304fe5f83a4e66f",
+  "mask_sha256": "22f4e7051b07996dae00ab768470e65767793a958f4cc60df4157b4ec83aa2ad",
+  "prepared_sha256": "8a24cae993c911eef956ab5c2d2e5f303d2d7a7adaa2527f55b5ac0d561603e9",
+  "roi": [
+    0,
+    0,
+    408,
+    1128
+  ],
+  "bbox": [
+    1,
+    1,
+    407,
+    1042
+  ],
+  "border": 20,
+  "size": [
+    446,
+    1081
+  ],
+  "context": "Official UniX homepage product image explicitly labelled Wanda 2.0. Generic Wanda family catalogue, separate Martian biped not used. Name 2.0 shown in alt/provenance; not an assertion all Wanda generations look identical.",
+  "mask_method": "native alpha",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "credit": "UniX AI",
+  "source_page": "https://www.unix-group.ai/",
+  "source_context": "Official UniX homepage product image explicitly labelled Wanda 2.0. Generic Wanda family catalogue, separate Martian biped not used. Name 2.0 shown in alt/provenance; not an assertion all Wanda generations look identical.",
+  "native_alpha": true
+}
