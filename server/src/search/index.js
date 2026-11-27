@@ -9,6 +9,7 @@ import { FACETS, FACET_LABELS, SYNONYMS, STOPWORDS, isKnownTag, tagLabel, tagsFo
 import { STATUS_LABELS } from '../public/projection.js';
 import { REPORTS_CATEGORY, matchesTerms, reportSearchDocs } from '../reports/search.js';
 import { readerValues } from './display.js';
+import { verificationForRow } from '../verification/snapshot.js';
 
 export const PAGE_SIZE = 20;
 const MAX_TERMS = 8;
@@ -332,6 +333,7 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
       // may still hold retired tags until the next import.
       tags: doc.tags.split('|').filter(isKnownTag).map((t) => ({ id: t, label: tagLabel(t), facet: FACET_LABELS[t.split(':')[0]] })),
       snippet: data ? snippet(doc.dataset, data, terms, doc.tags.split('|').filter(isKnownTag).map((t) => [FACET_LABELS[t.split(':')[0]], tagLabel(t)])) : null,
+      ...(doc.dataset === 'humanoids' ? { verification: verificationForRow(dataOf.get(`${doc.dataset}|${doc.row_id}`) ?? {}) } : {}),
     };
   });
   return {

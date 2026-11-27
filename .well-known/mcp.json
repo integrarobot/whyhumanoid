@@ -235,9 +235,10 @@
         },
         "payload": {
           "mode": "client-side",
-          "field": "Payload/carry (kg)",
+          "field": "payload_sustained_bilateral_kg",
+          "path": "verification.by_row_id[<row.id>].metrics.payload_sustained_bilateral_kg",
           "unit": "kg",
-          "description": "Read the public humanoid rows and inspect the recorded Payload/carry (kg) field. Apply numeric thresholds in your client after checking whether the value is sustained, peak, one-handed or subject to other conditions. The server has no numeric payload filter."
+          "description": "Humanoid row responses include verification.by_row_id keyed by the unchanged row id. Read metrics.payload_sustained_bilateral_kg for sustained bilateral payload; Pending_Audit and not_disclosed are not zero. Do not parse the legacy Payload/carry (kg) string into this metric. Apply client-side thresholds only to this exact metric with its evidence tier, freshness and conditions; compare only matching reviewed comparison_group values. Peak, single-arm and unclassified payload remain separate. The server has no numeric payload filter."
         }
       },
       "examples": [

@@ -14,6 +14,7 @@ import { publicProjection } from '../public/projection.js';
 import { atlasProblems } from '../benchmarks/atlas.js';
 import { atlasProblems as dataAtlasProblems } from '../data-atlas/atlas.js';
 import { componentProblems } from '../components/catalogue.js';
+import { ledgerFromWorkbook } from '../verification/standard.js';
 
 export async function runImport(db, valuesByTab, now, { relationsConfig = null } = {}) {
   const runId = newId('imp');
@@ -25,6 +26,9 @@ export async function runImport(db, valuesByTab, now, { relationsConfig = null }
   const review = [];
   const reconciliation = {};
   try {
+    // Optional additive verification tabs are a separate append-only ledger. Validate them if present, without
+    // converting them into replace-on-import premium rows or changing the existing catalogue access matrix.
+    try { ledgerFromWorkbook(valuesByTab); } catch (error) { throw new ImportError(error.message); }
     for (const spec of DATASETS) {
       const result = normalizeTab(spec, tabValues(valuesByTab, spec));
       normalised.push({ spec, rows: result.rows });

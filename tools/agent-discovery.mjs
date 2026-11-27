@@ -10,7 +10,7 @@ const fence = '```';
 const tagExample = 'platform:bipedal,hq:united_states';
 const searchArgs = { query: '', category: 'humanoids', tags: tagExample, page: 1 };
 const rowArgs = { table: 'humanoids', query: 'Atlas', limit: 10, offset: 0 };
-const payloadField = 'Payload/carry (kg)';
+const payloadField = 'payload_sustained_bilateral_kg';
 const searchableTags = {
   companyCountry: 'hq:united_states',
   deploymentCountry: 'site:united_states',
@@ -19,7 +19,7 @@ const searchableTags = {
 
 const publicAccess = 'Public access needs no account or key. The free catalogue is available in full. Deployments and Components expose only their public summaries and sources to visitors. An active data subscription and an API key provide the complete records.';
 const evidence = 'Catalogue entries report what their sources say. Check the original source, date, model and test conditions. Missing values are left blank or marked as unknown.';
-const payloadNote = `Read the public humanoid rows and inspect the recorded ${payloadField} field. Apply numeric thresholds in your client after checking whether the value is sustained, peak, one-handed or subject to other conditions. The server has no numeric payload filter.`;
+const payloadNote = `Humanoid row responses include verification.by_row_id keyed by the unchanged row id. Read metrics.${payloadField} for sustained bilateral payload; Pending_Audit and not_disclosed are not zero. Do not parse the legacy Payload/carry (kg) string into this metric. Apply client-side thresholds only to this exact metric with its evidence tier, freshness and conditions; compare only matching reviewed comparison_group values. Peak, single-arm and unclassified payload remain separate. The server has no numeric payload filter.`;
 const tagNote = 'Use comma-separated IDs from earlier search facets in tags. The hq: prefix filters company country, site: filters deployment country, and platform: filters robot mobility. Only records with the corresponding tags can match.';
 
 function llms(site, api, mcp) {
@@ -68,6 +68,7 @@ ${entries(additional)}
 ## Optional
 
 - [Method](${site}/method/): Sources, evidence, and interpretation.
+- [Verification coverage baseline](${site}/reports/verification/): Initial 25-model source review and open evidence gaps, not independent robot audits.
 - [Terms of use](${site}/terms/): Terms for the catalogue and MCP connection.
 - [Subscriptions](${site}/subscribe/): Access to complete Deployments and Components.
 `;
@@ -104,9 +105,14 @@ curl -fsS '${api}/v1/datasets'
 curl -fsS '${search}'
 curl -fsS '${api}/v1/datasets/humanoids?q=Atlas&limit=10'
 curl -fsS '${api}/v1/datasets/deployments/preview'
+curl -fsS '${api}/v1/verification'
 ${fence}
 
 ${tagNote} Send free text as \`q\` over HTTP and \`query\` in MCP. Search returns paginated results and the available facets. ${payloadNote}
+
+## Attribute verification
+
+The public \`/v1/verification\` endpoint describes Verification Standard v1.0. Add \`?entity=<canonical-humanoid-slug>\` for a robot's structured attributes and append-only history. Optional \`valid_at=YYYY-MM-DD\` and \`known_at=YYYY-MM-DD\` distinguish the specification period from the information recorded by that date. Unknown effective dates are not backdated. Each metric includes \`verification_tier\`, \`verified_at\`, \`conditions\` and \`freshness\`; the response adds \`comparison_caveats\`. The whole profile remains \`Pending_Audit\`. V1 records a manufacturer claim, V2 documents a scoped attribute, and V3/V4 require the independent evidence in [the standard](${site}/method/#verification-standard).
 
 ## CLI
 
@@ -149,7 +155,7 @@ export function agentDiscoveryFiles(site, api) {
         tools,
         filters: {
           tags: { description: tagNote, examples: searchableTags },
-          payload: { mode: 'client-side', field: payloadField, unit: 'kg', description: payloadNote },
+          payload: { mode: 'client-side', field: payloadField, path: 'verification.by_row_id[<row.id>].metrics.payload_sustained_bilateral_kg', unit: 'kg', description: payloadNote },
         },
         examples: [
           { method: 'tools/call', params: { name: 'search_catalogue', arguments: searchArgs } },

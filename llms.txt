@@ -36,5 +36,6 @@ Public access needs no account or key. The free catalogue is available in full. 
 ## Optional
 
 - [Method](https://whyhumanoid.com/method/): Sources, evidence, and interpretation.
+- [Verification coverage baseline](https://whyhumanoid.com/reports/verification/): Initial 25-model source review and open evidence gaps, not independent robot audits.
 - [Terms of use](https://whyhumanoid.com/terms/): Terms for the catalogue and MCP connection.
 - [Subscriptions](https://whyhumanoid.com/subscribe/): Access to complete Deployments and Components.
