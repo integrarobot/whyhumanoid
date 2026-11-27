@@ -1432,6 +1432,36 @@
         "credit": "Image: Hexagon, AEON animation still",
         "provenance": "ops/media/robots/hexagon-aeon/PROVENANCE.md"
       }
+    },
+    "97": {
+      "recorded": {
+        "Lab": "Wandercraft",
+        "Robot": "Calvin-40"
+      },
+      "image": {
+        "src": "/assets/robots/wandercraft-calvin-40/wandercraft-calvin-40-full-body.webp",
+        "fallback": "/assets/robots/wandercraft-calvin-40/wandercraft-calvin-40-full-body.png",
+        "width": 556,
+        "height": 1118,
+        "alt": "Calvin-40 by Wandercraft, full body, front view, without end effectors",
+        "credit": "Image: Wandercraft, Calvin-40 without end effectors",
+        "provenance": "ops/media/robots/wandercraft-calvin-40/PROVENANCE.md"
+      }
+    },
+    "207": {
+      "recorded": {
+        "Lab": "Zerith Robotics",
+        "Robot": "Zerith H1"
+      },
+      "image": {
+        "src": "/assets/robots/zerith-h1/zerith-h1-full-body.webp",
+        "fallback": "/assets/robots/zerith-h1/zerith-h1-full-body.png",
+        "width": 345,
+        "height": 802,
+        "alt": "Zerith H1 by Zerith Robotics, full body, side view, on its wheeled column",
+        "credit": "Image: Zerith Robotics",
+        "provenance": "ops/media/robots/zerith-h1/PROVENANCE.md"
+      }
     }
   }
 }

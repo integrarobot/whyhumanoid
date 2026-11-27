@@ -373,5 +373,85 @@
     "status": "candidate_requires_independent_review",
     "checked_at": "2026-11-27",
     "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+  },
+  {
+    "id": 97,
+    "slug": "wandercraft-calvin-40",
+    "manufacturer": "Wandercraft",
+    "model": "Calvin-40",
+    "original": "original.png",
+    "original_size": [
+      625,
+      1131
+    ],
+    "credit": "Wandercraft",
+    "source_page": "https://www.wandercraft.eu/de/calvin",
+    "source_url": "https://cdn.prod.website-files.com/6a5e1730e4dc3d8a81f2d73d/6a5e1a62e73bc247efda6671_calvin-05-front-no-end-effector-3434-ligthroom-1.png",
+    "source_context": "Official exact Calvin product page front view, filename explicitly calvin-05-front-no-end-effector. Whole actual headless robot without end effectors. No invented head/hands. Caption configuration without end effectors; catalogue Calvin40. NativeRGBA625x1131, inspect its alpha rather than assuming transparent interior.",
+    "checked_at": "2026-11-27",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha; original alpha levels 120..250 (drops a faint alpha haze, the soft floor shadow and a light matte fringe)",
+    "transported": "codex/image-sources-remaining 7496b6e, candidates-11",
+    "roi": [
+      0,
+      0,
+      625,
+      1131
+    ],
+    "bbox": [
+      54,
+      1,
+      570,
+      1079
+    ],
+    "border": 20,
+    "size": [
+      556,
+      1118
+    ],
+    "native_alpha": true,
+    "prepared_sha256": "e9fc07d2e5b286ed5cca6000d49cbf73f47cc2b18fdff2dfc0c8e299db5ed8b1",
+    "mask_sha256": "52af5416a34db6efa877abf6c35cc90f6a74785f703205dc5f65e18934727864",
+    "original_sha256": "2c71dda2f80291c9908b0b8bd24239424cebce6c5184717bb4c8a907219ac817"
+  },
+  {
+    "id": 207,
+    "slug": "zerith-h1",
+    "manufacturer": "Zerith Robotics",
+    "model": "Zerith H1",
+    "original": "original.png",
+    "original_size": [
+      945,
+      945
+    ],
+    "credit": "Zerith",
+    "source_page": "https://www.zerith.com/product/ZerithH1/",
+    "source_url": "https://www.zerith.com/dist/images/img_201.png",
+    "source_context": "Official exact H1 product page img_201.png945x945, whole side view of wheeled column, full base/hands/head. Not cropped torso cards. Inspect native alpha/background and full wheels.",
+    "checked_at": "2026-11-27",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha",
+    "transported": "codex/image-sources-remaining 7496b6e, candidates-11",
+    "roi": [
+      0,
+      0,
+      945,
+      945
+    ],
+    "bbox": [
+      320,
+      79,
+      625,
+      841
+    ],
+    "border": 20,
+    "size": [
+      345,
+      802
+    ],
+    "native_alpha": true,
+    "prepared_sha256": "66af3721332236d26ecd0128b82d5d6688cae978835d54653905dfacc0324641",
+    "mask_sha256": "50bb2a573d32e39d96d22260e2df320bd9b69d18b4b2887fad07e4525dc3f313",
+    "original_sha256": "6eb2326058d6d99196428e297534e82870bce089ea55ae5b2b248502f9c071ae"
   }
 ]

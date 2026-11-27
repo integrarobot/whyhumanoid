@@ -2,7 +2,7 @@
  "batch": 10,
  "intake": "ops/media/intake-remaining-2026-11-27/batch-10",
  "branch": "codex/image-sources-remaining",
- "commit": "f7d1436 (Luna: c3ca72e)",
+ "commit": "f7d1436 (Luna: c3ca72e; Calvin-40 and Zerith H1: 7496b6e)",
  "scope": "All missing images (Javier, 27 Nov 2026)",
  "items": {
   "90": {
@@ -53,6 +53,20 @@
    "credit": "Image: Hexagon, AEON animation still",
    "identity": "Frame 105 (4.2 s at 25 fps) of Hexagon's official product animation On-Wheels.mp4, 1280 × 720: the whole AEON on wheels. It is an official animation still, not a hardware photograph. The record is AEON with wheeled mobility.",
    "quality": "Animation still at native size: 209 × 517 px as prepared, not enlarged."
+  },
+  "97": {
+   "slug": "wandercraft-calvin-40",
+   "alt": "Calvin-40 by Wandercraft, full body, front view, without end effectors",
+   "credit": "Image: Wandercraft, Calvin-40 without end effectors",
+   "identity": "Wandercraft's official Calvin page, front view whose file name reads calvin-05-front-no-end-effector: the whole robot, which has no head by design, shown without end effectors. The record is Calvin-40; nothing is added (no head, no hands).",
+   "quality": null
+  },
+  "207": {
+   "slug": "zerith-h1",
+   "alt": "Zerith H1 by Zerith Robotics, full body, side view, on its wheeled column",
+   "credit": "Image: Zerith Robotics",
+   "identity": "Zerith's official H1 product page image img_201.png: the whole robot in side view on its wheeled column, with base, hands and head; not the cropped torso cards. The record is Zerith H1.",
+   "quality": null
   }
  }
 }

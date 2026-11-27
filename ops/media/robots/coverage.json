@@ -264,14 +264,17 @@
         197,
         139,
         141,
-        40
+        40,
+        97,
+        207
       ],
       "reserves": [],
       "notes": [
         "Sources from Codex on codex/image-sources-remaining (batch-10 at f7d1436; Luna replacement at c3ca72e), copied selectively into ops/media/intake-remaining-2026-11-27/batch-10/ (D9 and Luna prepared there too, not integrated).",
         "Claude's review: Codex's cutouts of Torobo, DEX-M and AEON kept unchanged; Quanta X2, H2, R1 and Bolt redone by Claude from BiRefNet masks of the originals (kept beside them): Quanta X2's dark face had been removed and a scan-grid line kept, H2's raised arm was missing and a spectator kept between the legs, R1 kept a grass fringe and Bolt a dark haze in the arm gap.",
         "Left out: D9 (155) and Luna (156) are complete and clean but under the 500 px minimum height (208 × 475 and 300 × 371, not enlarged); Igris (79) until its identity is established. Seven images, not ten forced.",
-        "Visible captions name variants and animation stills (DEX-M, Quanta X2, AEON animation still). Records' specifications unchanged."
+        "Visible captions name variants and animation stills (DEX-M, Quanta X2, AEON animation still). Records' specifications unchanged.",
+        "Calvin-40 (97) and Zerith H1 (207) promoted from Codex's batch-11 sources (7496b6e) to complete batch 10 (Codex, 27 Nov 2026), prepared by Claude from their own transparency; REX G1 (198) to follow."
       ]
     }
   ],
@@ -2913,9 +2916,20 @@
         "Lab": "Wandercraft",
         "Robot": "Calvin-40"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://en.wandercraft.eu/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://cdn.prod.website-files.com/6a5e1730e4dc3d8a81f2d73d/6a5e1a62e73bc247efda6671_calvin-05-front-no-end-effector-3434-ligthroom-1.png",
+          "page": "https://www.wandercraft.eu/de/calvin",
+          "sha256": "2c71dda2f80291c9908b0b8bd24239424cebce6c5184717bb4c8a907219ac817",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 556 × 1118 with 20 px padding."
+        }
+      ]
     },
     "98": {
       "recorded": {
@@ -3408,9 +3422,20 @@
         "Lab": "Zerith Robotics",
         "Robot": "Zerith H1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.zerith.com/product/ZerithH1/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.zerith.com/dist/images/img_201.png",
+          "page": "https://www.zerith.com/product/ZerithH1/",
+          "sha256": "6eb2326058d6d99196428e297534e82870bce089ea55ae5b2b248502f9c071ae",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 345 × 802 with 20 px padding."
+        }
+      ]
     },
     "208": {
       "recorded": {
