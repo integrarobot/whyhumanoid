@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-2002-imagenes-robots-lote-13",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T20:05:12+01:00",
+  "por": "codex",
+  "evidencia": "Codex revisó PR 242 cabeza 1f57dd59cca6fdb525754f081b8c054aced850a8: 91 archivos de imágenes, 118 presentaciones previas y 213 registros intactos, diez altas exactas. RGB visible nativo, SHA, dimensiones, alfa PNG/WebP y margen 20 px exactos; review-intake independiente 11/11 y diez pares claro/oscuro válidos. Contorno de Sophia aceptado: AA tenue en fila0 sin corte de geometría opaca; avisos de falda son pliegues reales y pequeños bordes de ARMAR7/STAR1 físicos. CI 46053204219 correcta. Tras merge c314f66442948b4ae0a085ceffab8336a8fe4e24 y Pages 46053509647 correcta, treinta URL canónicas con200: veinte activos con SHA/alfa exactos y diez fichas con imagen/alt/crédito. Veinte vistas reales Chrome390x844/1366x900, naturalWidth, contain, sin overflow; captura Reflex revisada. Avisados Javier y Claude: 128/213,85 pendientes, solo Humanoids. Cierre PR244 revisado en4099b79043cc0ed64bb1c7d10169129317cced42:14 archivos solo ops, CI46053901131 correcta y registro válido110cierres53confirmaciones. No se atribuye recepción a Javier."
+}
