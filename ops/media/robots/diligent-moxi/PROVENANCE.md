@@ -26,3 +26,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 - **PNG:** `assets/robots/diligent-moxi/diligent-moxi-full-body.png`, 583 × 1528 px, sha256 `476a24010ec9abafed9761da5a2d6f5fb193fdbb1896f6d4b981060e91fcaae9` (= Codex's prepared.png).
 - **WebP:** `assets/robots/diligent-moxi/diligent-moxi-full-body.webp`, sha256 `2beb2b25aa663e2e4dab2dea8b8b77263b9bb7118446c3482177ebb848f4f739`.
 - **Display:** the robot page shows it with `object-fit: contain` at its own proportions, with alt text and credit.
+
+## Held object
+
+The raised hand holds a marker in the official photograph. Accepted by Codex on 27 Nov 2026 as an exception to the preference for images without accessories: the object is present in the source, no limb is cropped, and nothing is erased or reconstructed.

@@ -25,3 +25,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 - **PNG:** `assets/robots/duatic-dxtr/duatic-dxtr-full-body.png`, 860 × 1368 px, sha256 `a538e53406e559089aca9b2fadfa78424b411dd0f12d5640c01fbc0d2f5b3aad` (= Codex's prepared.png).
 - **WebP:** `assets/robots/duatic-dxtr/duatic-dxtr-full-body.webp`, sha256 `3275ef20c5a4a7a6f4b452e31ca48735bd936ba1051ddf5c1f4bb0743bd40cf6`.
 - **Display:** the robot page shows it with `object-fit: contain` at its own proportions, with alt text and credit.
+
+## Held object
+
+The robot carries a box in the official image. Accepted by Codex on 27 Nov 2026 as an exception to the preference for images without accessories: the object is present in the source, no limb is cropped, and nothing is erased or reconstructed.

@@ -1332,7 +1332,7 @@
       },
       "status": "integrated",
       "page": "https://www.diligentrobots.com/",
-      "notes": "Diligent Moxi, wheeled hospital mobile manipulator; shown whole.",
+      "notes": "Diligent Moxi, wheeled hospital mobile manipulator; shown whole. Holds a marker in the raised hand in the official image: accepted as a held object present in the source (Codex, 27 Nov 2026); not erased.",
       "sources": [
         {
           "file": "https://static1.squarespace.com/static/606f1bb0f7e05e3329035ff8/t/6ad002df1bb6e83f260d6a50/1792017119252/Diligent_Shannon_Health_Case_Study2.pdf",
@@ -1370,7 +1370,7 @@
       },
       "status": "integrated",
       "page": "https://www.duatic.com/dxtr",
-      "notes": "Duatic DXTR = DuaTorso upper body on the DuaRover base: shown as the whole half-humanoid on its base, not the torso alone.",
+      "notes": "Duatic DXTR = DuaTorso upper body on the DuaRover base: shown as the whole half-humanoid on its base, not the torso alone. Carries a box in the official image: accepted as a held object present in the source (Codex, 27 Nov 2026); not erased.",
       "sources": [
         {
           "file": "https://www.duatic.com/web/image/7946-ba79d6a1/duatic_alpha_2.webp",
@@ -1562,7 +1562,8 @@
         "Batches of up to 10 new records; batch 4 then batch 5 with the rest that has a valid source. Models are never mixed to fill a batch.",
         "Non-generative mask cutouts only, RGB faithful; no part generated.",
         "Wheeled platforms and modules are shown whole, as the record identifies them, with no anatomy invented. A photo cropped to a bust or torso does not meet the whole-robot requirement.",
-        "Every record ends published and verified, or with a concrete stated limitation."
+        "Every record ends published and verified, or with a concrete stated limitation.",
+        "Exception to the no-props preference (Codex, 27 Nov 2026): an object the robot is holding in the official source stays as it is (DXTR carrying a box, Moxi holding a marker). Nothing is erased from the image or reconstructed, and no limb is cropped."
       ]
     }
   ]
