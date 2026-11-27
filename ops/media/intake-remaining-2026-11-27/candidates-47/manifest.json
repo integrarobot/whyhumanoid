@@ -1,0 +1,25 @@
+[
+  {
+    "id": 213,
+    "slug": "geekplus-gino1-native-rear-view",
+    "credit": "Geekplus",
+    "source_page": "https://www.youtube.com/watch?v=GFYhyjurf_U",
+    "source_url": "https://www.youtube.com/watch?v=GFYhyjurf_U",
+    "source_title": "Introducing Gino 1: Geek+ General-Purpose Warehouse Robot",
+    "source_published_at": "2026-04-13",
+    "original": "original.png",
+    "original_size": [
+      1920,
+      1080
+    ],
+    "original_sha256": "0cb64e184eaa56896c015a554b4edae472bbfa7e37b701a0f77c092a3695c02d",
+    "source_video_sha256": "2b1926a154002cfad2962b7c8ceb65300c2aad970af973bfc5aaf0e48b1154b2",
+    "frame_index_zero_based": 4238,
+    "fps": 25,
+    "time_seconds": 169.52,
+    "source_context": "Official Geekplus Logistics & Warehouse Automation channel video. Select single complete robot in REAR VIEW at nativeframe4238 (169.52seconds/25fps,1920x1080), approximateROI x1000..1390 y160..930. Head, both real hands, whole column and wheeled base complete, without another object/person overlapping outline. Keep white slotted BACKPACK BASKET attached to back as part of this actual configuration; never pretend frontview or erase basket/reconstruct hidden back. Nativeframe examined: wholebody~720px high, no upscaling. Remove floor/reflection/LEDglow spill and all shelf/otherrobot/text, preserving actual chassis lights and supportcaster hardware. Shelf bolt/rail at left elbow is background; actual black basket-side cable near right elbow belongs to robot, inspect carefully at native. Mandatory caption Geekplus, Gino1 official video still, rear view with backpack basket (2026). Video identifies exact Gino1; no inference of autonomy/performance from image. Frontviews in this video generally clip base; aerial frontframe4069 whole but~354px body and not enough native resolution, so not selected. This solves previously cropped still; no specs/modelcategory changes.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer official public video, credit required; no open licence assumed or outreach sent."
+  }
+]
