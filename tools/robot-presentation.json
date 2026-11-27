@@ -1027,6 +1027,156 @@
         "credit": "Image: Guanggu Dongzhi / HECBOT",
         "provenance": "ops/media/robots/guanggu-dongzhi-lumen-h1/PROVENANCE.md"
       }
+    },
+    "41": {
+      "recorded": {
+        "Lab": "Holiday",
+        "Robot": "Friday"
+      },
+      "image": {
+        "src": "/assets/robots/holiday-friday/holiday-friday-full-body.webp",
+        "fallback": "/assets/robots/holiday-friday/holiday-friday-full-body.png",
+        "width": 636,
+        "height": 1817,
+        "alt": "FRIDAY by Holiday Robotics, full body, front view, on its wheeled base",
+        "credit": "Image: Holiday Robotics",
+        "provenance": "ops/media/robots/holiday-friday/PROVENANCE.md"
+      }
+    },
+    "42": {
+      "recorded": {
+        "Lab": "Igus",
+        "Robot": "Iggy Rob"
+      },
+      "image": {
+        "src": "/assets/robots/igus-iggy-rob/igus-iggy-rob-full-body.webp",
+        "fallback": "/assets/robots/igus-iggy-rob/igus-iggy-rob-full-body.png",
+        "width": 514,
+        "height": 687,
+        "alt": "Iggy Rob by igus, full body, front view, carrying a tray with a bottle and glasses, on its wheeled base",
+        "credit": "Image: igus",
+        "provenance": "ops/media/robots/igus-iggy-rob/PROVENANCE.md"
+      }
+    },
+    "43": {
+      "recorded": {
+        "Lab": "IHMC Robotics",
+        "Robot": "Nadia"
+      },
+      "image": {
+        "src": "/assets/robots/ihmc-nadia/ihmc-nadia-full-body.webp",
+        "fallback": "/assets/robots/ihmc-nadia/ihmc-nadia-full-body.png",
+        "width": 2062,
+        "height": 2471,
+        "alt": "Nadia by IHMC, full body, crouching with knees bent, gripper end effectors",
+        "credit": "Image: IHMC",
+        "provenance": "ops/media/robots/ihmc-nadia/PROVENANCE.md"
+      }
+    },
+    "45": {
+      "recorded": {
+        "Lab": "IntBot",
+        "Robot": "Nylo"
+      },
+      "image": {
+        "src": "/assets/robots/intbot-nylo/intbot-nylo-full-body.webp",
+        "fallback": "/assets/robots/intbot-nylo/intbot-nylo-full-body.png",
+        "width": 498,
+        "height": 1392,
+        "alt": "Nylo by IntBot, full body, front view, standing, dressed in a cream jacket, trousers and a beanie",
+        "credit": "Image: IntBot",
+        "provenance": "ops/media/robots/intbot-nylo/PROVENANCE.md"
+      }
+    },
+    "48": {
+      "recorded": {
+        "Lab": "Kinisi",
+        "Robot": "Kinisi (Bear Robotics offering)"
+      },
+      "image": {
+        "src": "/assets/robots/kinisi/kinisi-full-body.webp",
+        "fallback": "/assets/robots/kinisi/kinisi-full-body.png",
+        "width": 612,
+        "height": 1175,
+        "alt": "Kinisi robot offered by Bear Robotics, full body, front view, two arms on a wheeled base",
+        "credit": "Image: Kinisi",
+        "provenance": "ops/media/robots/kinisi/PROVENANCE.md"
+      }
+    },
+    "52": {
+      "recorded": {
+        "Lab": "Lumos",
+        "Robot": "LUS"
+      },
+      "image": {
+        "src": "/assets/robots/lumos-lus2/lumos-lus2-full-body.webp",
+        "fallback": "/assets/robots/lumos-lus2/lumos-lus2-full-body.png",
+        "width": 1228,
+        "height": 3317,
+        "alt": "LUS2 by Lumos, full body, front view, standing",
+        "credit": "Image: Lumos, LUS2",
+        "provenance": "ops/media/robots/lumos-lus2/PROVENANCE.md"
+      }
+    },
+    "55": {
+      "recorded": {
+        "Lab": "Mentee",
+        "Robot": "MenteeBot"
+      },
+      "image": {
+        "src": "/assets/robots/mentee-menteebot-v3/mentee-menteebot-v3-full-body.webp",
+        "fallback": "/assets/robots/mentee-menteebot-v3/mentee-menteebot-v3-full-body.png",
+        "width": 929,
+        "height": 2769,
+        "alt": "MenteeBot v3 by Mentee Robotics, full body, front view, standing",
+        "credit": "Image: Mentee Robotics, MenteeBot v3",
+        "provenance": "ops/media/robots/mentee-menteebot-v3/PROVENANCE.md"
+      }
+    },
+    "60": {
+      "recorded": {
+        "Lab": "Oversonic",
+        "Robot": "RoBee"
+      },
+      "image": {
+        "src": "/assets/robots/oversonic-robee-r/oversonic-robee-r-full-body.webp",
+        "fallback": "/assets/robots/oversonic-robee-r/oversonic-robee-r-full-body.png",
+        "width": 1950,
+        "height": 3147,
+        "alt": "RoBee Series R by Oversonic Robotics, full body, front view, on its wheeled base",
+        "credit": "Image: Oversonic Robotics, RoBee Series R",
+        "provenance": "ops/media/robots/oversonic-robee-r/PROVENANCE.md"
+      }
+    },
+    "65": {
+      "recorded": {
+        "Lab": "Pib",
+        "Robot": "pib"
+      },
+      "image": {
+        "src": "/assets/robots/pib-5/pib-5-full-body.webp",
+        "fallback": "/assets/robots/pib-5/pib-5-full-body.png",
+        "width": 1553,
+        "height": 1931,
+        "alt": "pib#5, the whole robot: torso, head and both arms on its stand, one hand raised",
+        "credit": "Image: pib, pib#5",
+        "provenance": "ops/media/robots/pib-5/PROVENANCE.md"
+      }
+    },
+    "66": {
+      "recorded": {
+        "Lab": "PNDbotics",
+        "Robot": "Adam"
+      },
+      "image": {
+        "src": "/assets/robots/pndbotics-adam/pndbotics-adam-full-body.webp",
+        "fallback": "/assets/robots/pndbotics-adam/pndbotics-adam-full-body.png",
+        "width": 368,
+        "height": 1151,
+        "alt": "Adam by PNDbotics, adam_standard simulation model rendering, full body; not a photograph of the hardware",
+        "credit": "Image: PNDbotics, ADAM standard simulation model",
+        "provenance": "ops/media/robots/pndbotics-adam/PROVENANCE.md"
+      }
     }
   }
 }
