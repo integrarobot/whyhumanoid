@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 10, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 10, PR not yet merged)
+## Published files (image batch 10, PR 232, merge 4db495d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/richtech-dex-m/richtech-dex-m-full-body.png`, 1153 × 1388 px, sha256 `0a497f028d6a189d92cd11d385068174b448c9e8b06e1290e493676e11a03c64` (= the prepared.png).
 - **WebP:** `assets/robots/richtech-dex-m/richtech-dex-m-full-body.webp`, sha256 `206e43a536287025d58cd3f9277c68f7a41aea074eff6ab02c0b3363aad051d1`.

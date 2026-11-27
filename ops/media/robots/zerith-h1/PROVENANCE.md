@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 10, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 10, PR not yet merged)
+## Published files (image batch 10, PR 232, merge 4db495d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/zerith-h1/zerith-h1-full-body.png`, 345 × 802 px, sha256 `66af3721332236d26ecd0128b82d5d6688cae978835d54653905dfacc0324641` (= the prepared.png).
 - **WebP:** `assets/robots/zerith-h1/zerith-h1-full-body.webp`, sha256 `da482ccfde2bb74447e8105b1e849ae6c39d8001c000408d8553082492635a13`.
