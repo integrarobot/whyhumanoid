@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 5, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 5, PR not yet merged)
+## Published files (image batch 5, PR 212, merge c1f79be, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/donut-robotics-cinnamon-1/donut-robotics-cinnamon-1-full-body.png`, 403 × 922 px, sha256 `221c03a62b748ec562d571dadc4f602fc59e3700e01d82001933fc34e2c394a7` (= Codex's prepared.png).
 - **WebP:** `assets/robots/donut-robotics-cinnamon-1/donut-robotics-cinnamon-1-full-body.webp`, sha256 `2b216e2afbaa68a86b8ff296916451f16b4337e33372ee7b137e0da35a6d44cb`.

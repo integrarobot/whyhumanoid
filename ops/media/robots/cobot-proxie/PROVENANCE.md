@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 5, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 5, PR not yet merged)
+## Published files (image batch 5, PR 212, merge c1f79be, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/cobot-proxie/cobot-proxie-full-body.png`, 1263 × 2265 px, sha256 `270de8f681e107ac3ed40af3fc60dbdf0f17980c7dfe83236286dac31772fcfe` (= Codex's prepared.png).
 - **WebP:** `assets/robots/cobot-proxie/cobot-proxie-full-body.webp`, sha256 `63d78b9944a708e2626f27847a310322f18306a14ae5cc757ce7f993855e6a96`.

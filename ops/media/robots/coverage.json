@@ -122,7 +122,7 @@
     {
       "batch": 5,
       "opened": "2026-11-27",
-      "state": "integrated_awaiting_review",
+      "state": "published",
       "target": 10,
       "scope": "C/D makers",
       "candidates": [
@@ -135,8 +135,10 @@
       "reserves": [],
       "notes": [
         "Sources from Codex, transport branch codex/image-sources-cd (cc1923c), kept unchanged in ops/media/intake-cd-2026-11-27/batch-05/; prepared PNGs used as delivered.",
-        "Three C/D records without a valid source after review: Yogi (17), Darwin-0 (134), Moya (174)."
-      ]
+        "Three C/D records without a valid source after review: Yogi (17), Darwin-0 (134), Moya (174).",
+        "Published with PR 212 (reviewed head a894ef5, CI 46003117235; merge c1f79be), 27 Nov 2026; Pages and production verification recorded in the batch closeout. DR01 (20) is published with a resolution debt."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -1210,7 +1212,7 @@
         "Lab": "Dobot",
         "Robot": "Atom"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.dobot-robots.com/",
       "notes": "DOBOT Atom, original walking configuration; not ATOM-W nor ATOM D.",
       "sources": [
@@ -1281,7 +1283,7 @@
         "Lab": "Deep",
         "Robot": "DR01"
       },
-      "status": "integrated",
+      "status": "quality_debt",
       "page": "https://www.deeprobotics.cn/en/index/humanoid.html",
       "notes": "DEEP Robotics DR01; not DR02 (159).",
       "sources": [
@@ -1303,7 +1305,8 @@
           "note": "Search only: DEEP Robotics published a DR01 debut article on its own site (deeprobotics.cn/en/wap/article/id/237.html, photo credited \"Handout\") and a humanoid page (deeprobotics.cn/en/wap/humanoid.html); the corporate brochure Codex found (pdf.dfcfw.com, unreachable here) must be checked for a caption naming DR01, not DR02."
         }
       ],
-      "quality_note": "Modest resolution: from a 1280 × 720 official video thumbnail; replace when a larger faithful DR01 image is found."
+      "quality_note": "Modest resolution: from a 1280 × 720 official video thumbnail; replace when a larger faithful DR01 image is found.",
+      "reason": "Published at 404 × 696 px from a 1280 × 720 official video thumbnail (DEEP Robotics, 28 Oct 2024); replace with a larger faithful DR01 image (not DR02) when one is found. No detail simulated."
     },
     "159": {
       "recorded": {
@@ -1435,7 +1438,7 @@
         "Lab": "Cobot",
         "Robot": "Proxie"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.co.bot/",
       "notes": "Cobot Proxie: wheeled mobile manipulator with swerve-drive base; shown whole as presented.",
       "sources": [
@@ -1523,7 +1526,7 @@
         "Lab": "Digit Robotics",
         "Robot": "Xialan R03"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.digit.com.cn/ProductsDetail/250.html",
       "notes": "Digit Robotics (数字华夏) Xialan R03; not Agility Robotics Digit (6). Not XiaQi X02 (172).",
       "sources": [
@@ -1565,7 +1568,7 @@
         "Lab": "Donut Robotics",
         "Robot": "Cinnamon 1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.donutrobotics.com/en",
       "notes": "Donut Robotics Cinnamon 1: the record notes form details are not published and Cinnamon 2 was announced; an image must be identified as Cinnamon 1, never Cinnamon 2.",
       "sources": [
@@ -1622,7 +1625,10 @@
         "Wheeled platforms and modules are shown whole, as the record identifies them, with no anatomy invented. A photo cropped to a bust or torso does not meet the whole-robot requirement.",
         "Every record ends published and verified, or with a concrete stated limitation.",
         "Exception to the no-props preference (Codex, 27 Nov 2026): an object the robot is holding in the official source stays as it is (DXTR carrying a box, Moxi holding a marker). Nothing is erased from the image or reconstructed, and no limb is cropped."
-      ]
+      ],
+      "state": "closed_with_pending_sources",
+      "closed": "2026-11-27",
+      "summary": "18 C/D records reviewed: 15 with an image (10 in batch 4, 5 in batch 5, DR01 with a resolution debt), 3 still without a valid image after source review (no_valid_source: Yogi 17, Darwin-0 134, Moya 174). Not every C/D record has an image."
     }
   ]
 }

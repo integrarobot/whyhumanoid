@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 5, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 5, PR not yet merged)
+## Published files (image batch 5, PR 212, merge c1f79be, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/dobot-atom/dobot-atom-full-body.png`, 727 × 1897 px, sha256 `c79952583ba1290728e932f9ec613b8a2f0f9ecbf9c17dbe9283ac7052572afb` (= Codex's prepared.png).
 - **WebP:** `assets/robots/dobot-atom/dobot-atom-full-body.webp`, sha256 `139d9a9d203721e2ddf00b1df0f670eb03e2503f72350291c050c6bb9ea1efa7`.
