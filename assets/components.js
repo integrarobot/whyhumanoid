@@ -176,3 +176,22 @@
     }
   } catch (e) { fail(e); }
 }());
+
+// Explorer (27 Nov 2026): the five area buttons choose one panel; the drawing's areas do the same on click or touch.
+// Without this script every panel stays visible, so nothing depends on it.
+(function () {
+  var root = document.getElementById('explore');
+  if (!root) return;
+  var buttons = Array.prototype.slice.call(root.querySelectorAll('.hx-b'));
+  var panels = Array.prototype.slice.call(root.querySelectorAll('.hx-p'));
+  var zones = Array.prototype.slice.call(root.querySelectorAll('.hx-z'));
+  if (!buttons.length || !panels.length) return;
+  function choose(area) {
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-area') === area)); });
+    panels.forEach(function (p) { p.hidden = p.getAttribute('data-area') !== area; });
+    zones.forEach(function (z) { z.classList.toggle('on', z.getAttribute('data-area') === area); });
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { choose(b.getAttribute('data-area')); }); });
+  zones.forEach(function (z) { z.addEventListener('click', function () { var a = z.getAttribute('data-area'); choose(a); var b = root.querySelector('.hx-b[data-area="' + a + '"]'); if (b) b.focus({ preventScroll: true }); }); });
+  choose(buttons[0].getAttribute('data-area'));
+}());

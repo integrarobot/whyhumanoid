@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap">
 <link rel="stylesheet" href="/assets/pages.css?v=05f0e248b3">
 <link rel="stylesheet" href="/assets/atlas.css?v=d42cdb780d">
-<link rel="stylesheet" href="/assets/components.css?v=faad700a56">
+<link rel="stylesheet" href="/assets/components.css?v=c51124077b">
 <link rel="stylesheet" href="/assets/deployments.css?v=eebf2ecde0">
 <link rel="stylesheet" href="/assets/evolution.css?v=b332277658">
 </head>
@@ -46,7 +46,7 @@
 </dl>
 <p class="cx-ev"><span class="ev ev-partial">50 of 51 checked against primary sources</span> Of the 51 records, 32 checked against their primary sources; 18 checked for their identity and selected figures only, with the rest of their imported claims still pending; 1 still imported research awaiting review. Each passport states its own review scope and date. A figure checked against the maker's document is the maker's statement, not an independent test. Values are shown as the sources state them.</p>
 <p class="cx-access" id="cx-access" data-public="51" data-total="51"><b>All 51 products</b> are listed with a public summary: family, maker, country, year, status, what the part does, the kind of evidence behind its record and the main source. The full technical passports (every specification with its unit, conditions, source and check date, integration requirements, limitations, prices and the source of each claim) and the side-by-side comparison of figures come with the <a href="/subscribe/">subscription</a>.</p>
-<nav class="views" aria-label="Components views"><a href="#families">Families</a><a href="#catalogue">Catalogue</a><a href="#approaches">Touch sensing approaches</a><a href="#compare">Compare</a><a href="#software">Related software</a><a href="#method">Coverage and method</a></nav>
+<nav class="views" aria-label="Components views"><a href="#explore">Explore</a><a href="#families">Families</a><a href="#catalogue">Catalogue</a><a href="#approaches">Touch sensing approaches</a><a href="#compare">Compare</a><a href="#software">Related software</a><a href="#method">Coverage and method</a></nav>
 </header>
 <section class="evo evo-sec" id="evolution" aria-labelledby="evo-h-components">
 <div class="evo-head"><p class="lbl">Evolution · replay of dated records, not live activity</p><h2 id="evo-h-components">When each tactile sensing product first appeared</h2><p class="evo-sub">17 of 19 touch-sensing products by the date of their first paper, preprint or launch, grouped by sensing principle. The 32 products of other families are not placed.</p></div>
@@ -91,6 +91,55 @@
 <p class="op-act"><a class="op-btn" href="/app/#reports">Order a report</a> <a class="op-link" href="/subscribe/#reports">How reports work</a></p>
 </article>
 </div>
+</section>
+<section class="hx" id="explore" aria-labelledby="hx-h">
+<div class="sec-h"><h2 id="hx-h">Explore the building blocks of a humanoid</h2>
+<p>Choose an area to see its component families in the catalogue, with the number of products recorded in each. Each family opens the filtered catalogue, its passports and the comparison.</p></div>
+<div class="hx-grid">
+<div class="hx-art"><svg class="hx-fig" viewBox="0 0 220 400" role="img" aria-labelledby="hx-fig-t" focusable="false">
+<title id="hx-fig-t">Schematic humanoid marking five functional areas: perception at the head, manipulation and touch at the hands, motion and feedback at the joints, onboard compute in the chest and energy in the torso</title>
+<g class="hx-body" aria-hidden="true">
+<path d="M110 74 L110 92"/><rect x="74" y="92" width="72" height="128" rx="18"/>
+<path d="M74 104 L48 150 L40 206"/><path d="M146 104 L172 150 L180 206"/>
+<path d="M90 220 L86 292 L84 366"/><path d="M130 220 L134 292 L136 366"/>
+<path d="M70 372 L96 372"/><path d="M124 372 L150 372"/>
+</g>
+<g class="hx-z" data-area="perception"><rect x="84" y="20" width="52" height="56" rx="20"/><path class="hx-d" d="M94 46 L126 46"/></g>
+<g class="hx-z" data-area="manipulation"><circle cx="38" cy="218" r="13"/><circle cx="182" cy="218" r="13"/></g>
+<g class="hx-z" data-area="motion"><circle cx="76" cy="104" r="8"/><circle cx="144" cy="104" r="8"/><circle cx="48" cy="150" r="7"/><circle cx="172" cy="150" r="7"/><circle cx="90" cy="220" r="8"/><circle cx="130" cy="220" r="8"/><circle cx="86" cy="292" r="7"/><circle cx="134" cy="292" r="7"/><circle cx="84" cy="362" r="6"/><circle cx="136" cy="362" r="6"/></g>
+<g class="hx-z" data-area="compute"><rect x="94" y="112" width="32" height="30" rx="3"/><path class="hx-d" d="M100 120 L120 120 M100 127 L120 127 M100 134 L114 134"/></g>
+<g class="hx-z" data-area="energy"><rect x="92" y="156" width="36" height="48" rx="4"/><path class="hx-d" d="M104 152 L116 152"/></g>
+</svg></div>
+<div class="hx-ui">
+<div class="hx-ctl" role="group" aria-label="Functional areas">
+<button type="button" class="hx-b" data-area="perception" aria-controls="hx-p-perception" aria-pressed="false"><span class="hx-bl">Perception</span><span class="hx-bs">Vision and depth sensors</span></button>
+<button type="button" class="hx-b" data-area="manipulation" aria-controls="hx-p-manipulation" aria-pressed="false"><span class="hx-bl">Manipulation and touch</span><span class="hx-bs">Hands, grippers and tactile sensors</span></button>
+<button type="button" class="hx-b" data-area="motion" aria-controls="hx-p-motion" aria-pressed="false"><span class="hx-bl">Motion and feedback</span><span class="hx-bs">Actuators, reducers, encoders, force-torque sensing and controllers</span></button>
+<button type="button" class="hx-b" data-area="compute" aria-controls="hx-p-compute" aria-pressed="false"><span class="hx-bl">Onboard compute</span><span class="hx-bs">Compute modules</span></button>
+<button type="button" class="hx-b" data-area="energy" aria-controls="hx-p-energy" aria-pressed="false"><span class="hx-bl">Energy</span><span class="hx-bs">Cells, battery parts and power electronics</span></button>
+</div>
+<div class="hx-ps"><div class="hx-p" id="hx-p-perception" data-area="perception" role="region" aria-labelledby="hx-h-perception">
+<h3 id="hx-h-perception">Perception <small>6 products</small></h3>
+<p>Cameras and depth sensors that let the robot see its surroundings and the objects it handles.</p>
+<ul class="hx-fams"><li><a href="/components/?fam=vision_sensor#catalogue"><b>6</b><span>Vision and depth sensors</span></a></li></ul></div>
+<div class="hx-p" id="hx-p-manipulation" data-area="manipulation" role="region" aria-labelledby="hx-h-manipulation">
+<h3 id="hx-h-manipulation">Manipulation and touch <small>27 products</small></h3>
+<p>Hands and grippers that hold and use objects, and the tactile sensors that feel contact.</p>
+<ul class="hx-fams"><li><a href="/components/?fam=dexterous_hand#catalogue"><b>6</b><span>Dexterous hands</span></a></li><li><a href="/components/?fam=gripper#catalogue"><b>2</b><span>Grippers</span></a></li><li><a href="/components/?fam=tactile_sensor#catalogue"><b>18</b><span>Tactile sensors</span></a></li><li><a href="/components/?fam=tactile_hand#catalogue"><b>1</b><span>Tactile robotic hand</span></a></li></ul></div>
+<div class="hx-p" id="hx-p-motion" data-area="motion" role="region" aria-labelledby="hx-h-motion">
+<h3 id="hx-h-motion">Motion and feedback <small>13 products</small></h3>
+<p>Actuators, motors, drives and reducers that move each joint; encoders, force-torque sensors and controllers that measure the motion and close the loop.</p>
+<ul class="hx-fams"><li><a href="/components/?fam=actuator#catalogue"><b>3</b><span>Actuators</span></a></li><li class="gap"><b aria-hidden="true">–</b><span>Motors and drives</span><small>No entries yet</small></li><li><a href="/components/?fam=reducer#catalogue"><b>4</b><span>Reducers</span></a></li><li><a href="/components/?fam=encoder#catalogue"><b>2</b><span>Encoders</span></a></li><li><a href="/components/?fam=force_torque_sensor#catalogue"><b>3</b><span>Force-torque sensors</span></a></li><li><a href="/components/?fam=motion_controller#catalogue"><b>1</b><span>Motion controller</span></a></li></ul></div>
+<div class="hx-p" id="hx-p-compute" data-area="compute" role="region" aria-labelledby="hx-h-compute">
+<h3 id="hx-h-compute">Onboard compute <small>3 products</small></h3>
+<p>The processors that run perception, planning and control on the robot itself.</p>
+<ul class="hx-fams"><li><a href="/components/?fam=compute_module#catalogue"><b>3</b><span>Compute modules</span></a></li></ul></div>
+<div class="hx-p" id="hx-p-energy" data-area="energy" role="region" aria-labelledby="hx-h-energy">
+<h3 id="hx-h-energy">Energy <small>2 products</small></h3>
+<p>Cells, battery parts and power electronics that store and supply the robot&#39;s energy.</p>
+<ul class="hx-fams"><li><a href="/components/?fam=power_battery#catalogue"><b>2</b><span>Batteries, cells and power parts</span></a></li></ul></div></div>
+</div></div>
+<p class="hx-note">A functional overview, not the design of any robot: where each part sits varies from one robot to another, and a product listed here is shown neither to be compatible with nor to be used in any particular robot.</p>
 </section>
 <section class="cx-fam" id="families" aria-labelledby="fam-h"><h2 id="fam-h" class="sr">Component families</h2>
 <ul class="fams"><li class="fam on"><a href="/components/?fam=tactile_sensor#catalogue"><b>18</b><span>Tactile sensors</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=tactile_hand#catalogue"><b>1</b><span>Tactile robotic hand</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=dexterous_hand#catalogue"><b>6</b><span>Dexterous hands</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=gripper#catalogue"><b>2</b><span>Grippers</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=actuator#catalogue"><b>3</b><span>Actuators</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=reducer#catalogue"><b>4</b><span>Reducers</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=encoder#catalogue"><b>2</b><span>Encoders</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=force_torque_sensor#catalogue"><b>3</b><span>Force-torque sensors</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=vision_sensor#catalogue"><b>6</b><span>Vision and depth sensors</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=compute_module#catalogue"><b>3</b><span>Compute modules</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=motion_controller#catalogue"><b>1</b><span>Motion controller</span></a><small>Researched</small></li><li class="fam on"><a href="/components/?fam=power_battery#catalogue"><b>2</b><span>Batteries, cells and power parts</span></a><small>Researched</small></li><li class="fam gap"><b aria-hidden="true">–</b><span>Motors and drives</span><small>Not yet researched: no entries</small></li></ul></section>
@@ -175,7 +224,7 @@
 </article>
 </main>
 <script src="/assets/components-core.js?v=75cc70190b" defer></script>
-<script src="/assets/components.js?v=05ef052035" defer></script>
+<script src="/assets/components.js?v=74d740e5d2" defer></script>
 <script src="/assets/evolution.js?v=005971685f" defer></script>
 <script src="/assets/nav.js?v=b04ddeb126" defer></script>
 <script>(function(){var a=document.querySelector('nav.cats [aria-current]');if(a&&a.parentNode.scrollWidth>a.parentNode.clientWidth)a.parentNode.scrollLeft=a.offsetLeft-a.parentNode.offsetLeft-16;})();</script>

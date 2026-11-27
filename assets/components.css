@@ -194,3 +194,50 @@ table.specs small{display:block;font-size:12.5px;color:var(--bone-3)}
   table.specs th,table.specs td{border:0;padding:3px 10px}
 }
 .pp-main a,.pp a,.srcs a,.pc a{overflow-wrap:anywhere;word-break:break-word}
+
+/* Explorer (27 Nov 2026): a schematic humanoid with five functional areas. The labelled buttons are the controls;
+   the drawing answers pointer and touch too. Without JavaScript every panel is shown. */
+.hx{margin:40px 0 0}
+.hx .sec-h h2{font-family:var(--f-serif);font-weight:400;font-size:var(--fs-feature);line-height:1.1;margin:0}
+.hx .sec-h p{color:var(--bone-2);margin:6px 0 0;max-width:68ch}
+.hx-grid{display:grid;grid-template-columns:minmax(200px,300px) minmax(0,1fr);gap:28px;align-items:start;margin-top:14px}
+.hx-art{border:1px solid var(--line);background:var(--ink-1);padding:16px 10px;display:flex;justify-content:center}
+.hx-fig{width:100%;max-width:240px;height:auto;display:block}
+.hx-body *{fill:none;stroke:var(--bone-3);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.hx-body rect{fill:var(--ink-2);stroke-width:3}
+.hx-z{cursor:pointer}
+.hx-z rect,.hx-z circle{fill:var(--ink-3);stroke:var(--bone-2);stroke-width:2.5;transition:fill .15s,stroke .15s}
+.hx-z .hx-d{fill:none;stroke:var(--bone-2);stroke-width:2.5;stroke-linecap:round}
+.hx-z.on rect,.hx-z.on circle{fill:var(--amber);stroke:var(--amber-hi)}
+.hx-z.on .hx-d{stroke:var(--ink-0)}
+.hx-ui{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;min-width:0}
+.hx-ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:6px}
+.hx-b{display:grid;gap:2px;text-align:left;min-height:48px;padding:10px 12px;background:var(--ink-1);color:var(--bone);border:1px solid var(--line-2);border-radius:0;font:inherit;cursor:pointer}
+.hx-b .hx-bl{font-size:15px;line-height:1.2}
+.hx-b .hx-bs{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.02em;color:var(--bone-3);line-height:1.35}
+.hx-b:hover{border-color:var(--bone-3)}
+.hx-b:focus-visible{outline:2px solid var(--amber-hi);outline-offset:2px}
+.hx-b[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-3)}
+.hx-b[aria-pressed="true"] .hx-bl{color:var(--amber-hi)}
+.hx-ps{display:grid;gap:12px}
+.hx-p{border:1px solid var(--line);padding:14px 16px}
+.hx-p h3{font-family:var(--f-serif);font-weight:400;font-size:24px;margin:0;line-height:1.15}
+.hx-p h3 small{font-family:var(--f-mono);font-size:11px;letter-spacing:.03em;color:var(--bone-3);margin-left:6px}
+.hx-p p{color:var(--bone-2);margin:6px 0 10px;max-width:70ch}
+.hx-fams{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:6px}
+.hx-fams li{border:1px solid var(--line)}
+.hx-fams a,.hx-fams li.gap{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:baseline;padding:10px 12px;min-height:48px;color:inherit;text-decoration:none}
+.hx-fams b{font-family:var(--f-serif);font-size:24px;font-weight:400;color:var(--bone);grid-row:span 2}
+.hx-fams span{color:var(--bone);font-size:14px;line-height:1.25}
+.hx-fams a:hover span,.hx-fams a:focus-visible span{color:var(--amber-hi);text-decoration:underline}
+.hx-fams a:focus-visible{outline:2px solid var(--amber-hi);outline-offset:-2px}
+.hx-fams li.gap span{color:var(--bone-3)}
+.hx-fams li.gap small{grid-column:2;font-family:var(--f-mono);font-size:10.5px;color:var(--bone-3)}
+.hx-note{color:var(--bone-3);font-size:var(--fs-small);margin:12px 0 0;max-width:80ch}
+@media (max-width:760px){
+  .hx-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .hx-art{padding:10px}
+  .hx-fig{max-width:150px}
+  .hx-ctl{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.hx-z rect,.hx-z circle{transition:none}}
