@@ -1,16 +1,44 @@
 {
   "plan_id": "other-robots-entity-types-2026-11-27",
+  "status": "awaiting_preparation",
   "prepared_by": "claude",
   "prepared_at": "2026-11-27",
   "master_read": {
     "xlsx_sha256": "2c84e109bdfcf560a11f24c9082c692da9f4c99c7aa5bd8753d6741a952a013a",
     "read_on": "2026-11-27"
   },
-  "rule": "Only rows whose own recorded description says they are software, a component maker or a service provider, and only where the entity already has a home elsewhere in the master or the move is to the Software list. Columns E:G (Edubots) of the same rows are untouched. Cleared cells keep their row (no row deletion), so no other row moves. Nothing is inferred beyond the recorded text.",
+  "rule": "Only rows whose own recorded description says they are software, a component maker or a service provider, and whose entity already has a home elsewhere in the master or moves into the first Software block. Nothing is inferred beyond the recorded text. Cleared cells keep their row; columns E:G (Edubots) of those rows are untouched.",
+  "preparation_request": {
+    "contract": "ops/weekly-update/plan-contract.md, Making space in a list",
+    "tab": "Software",
+    "columns": "A:C",
+    "block": {
+      "group": null,
+      "description": "first block (general software, no section title)",
+      "first_row": 2,
+      "last_row": 81,
+      "last_entry": "Orbit (Boston Dynamics)",
+      "next_section_title": {
+        "row": 82,
+        "text": "SOFTWARE FOR UNITREE"
+      }
+    },
+    "empty_slots": 3,
+    "placement": "at the end of the first block, just above the SOFTWARE FOR UNITREE title (today rows 82-84 once the block below moves down by 3 in A:C)",
+    "must_not_move": [
+      "Software E:F (WORLD MODEL list)",
+      "every other tab"
+    ],
+    "reason": "Rows 136-138 are empty but belong to SIMULATORS (title A122, headers A123): Robonomics, Mujin and Eka there would be listed as simulators. The first block is full up to row 81."
+  },
+  "after_preparation": "Claude downloads the master afresh, checks the receipt (same non-empty rows in their new positions, 3 empty slots in the first block, E:F and other tabs unchanged), rebases the three Software writes to the slots (expected 82:84) with group_expected null and its own re-read, and only then marks the plan ready for writing. Nothing is published or imported for the preparation alone.",
   "writes": [
     {
+      "op": "write_prepared_slot",
       "tab": "Software",
-      "range": "A136:C136",
+      "range": "A<slot 1>:C<slot 1>",
+      "row_after_preparation": null,
+      "group_expected": null,
       "old": [
         "",
         "",
@@ -25,8 +53,11 @@
       "public_source": "https://robonomics.network/"
     },
     {
+      "op": "write_prepared_slot",
       "tab": "Software",
-      "range": "A137:C137",
+      "range": "A<slot 2>:C<slot 2>",
+      "row_after_preparation": null,
+      "group_expected": null,
       "old": [
         "",
         "",
@@ -41,8 +72,11 @@
       "public_source": "https://mujin-corp.com/"
     },
     {
+      "op": "write_prepared_slot",
       "tab": "Software",
-      "range": "A138:C138",
+      "range": "A<slot 3>:C<slot 3>",
+      "row_after_preparation": null,
+      "group_expected": null,
       "old": [
         "",
         "",
@@ -57,6 +91,7 @@
       "public_source": "https://ekarobotics.com/"
     },
     {
+      "op": "clear_list_cells",
       "tab": "Other Robots",
       "range": "A2:C2",
       "old": [
@@ -71,9 +106,14 @@
       ],
       "reason": "Duplicate: already in Software row 17 (same name and https://rtr.ai/); its own description: \"motion-planning and simulation software\".",
       "public_source": "https://rtr.ai/",
-      "web_redirect": "/software/"
+      "untouched": "E2:G2 must stay identical",
+      "web_redirect": {
+        "from": "/other-robots/realtime/",
+        "to": "/software/"
+      }
     },
     {
+      "op": "clear_list_cells",
       "tab": "Other Robots",
       "range": "A3:C3",
       "old": [
@@ -86,11 +126,16 @@
         "",
         ""
       ],
-      "reason": "Component maker (\"manufacturer of high-precision, zero-backlash strain wave gears and rotary actuators\"); its products are already in Components (Harmonic Drive LLC catalogue rows) and the company has /companies/harmonic-drive-llc/. Not conflated with Harmonic Drive Systems (Investment).",
+      "reason": "Component maker (\"manufacturer of high-precision, zero-backlash strain wave gears and rotary actuators\"); its products are in Components (Harmonic Drive LLC catalogue rows) and the company page is /companies/harmonic-drive-llc/. Not conflated with Harmonic Drive Systems (Investment).",
       "public_source": "https://www.harmonicdrive.net/",
-      "web_redirect": "/companies/harmonic-drive-llc/"
+      "untouched": "E3:G3 must stay identical",
+      "web_redirect": {
+        "from": "/other-robots/harmonic-drive/",
+        "to": "/companies/harmonic-drive-llc/"
+      }
     },
     {
+      "op": "clear_list_cells",
       "tab": "Other Robots",
       "range": "A5:C5",
       "old": [
@@ -103,11 +148,16 @@
         "",
         ""
       ],
-      "reason": "Moved to Software row 136 (write 1).",
+      "reason": "Moves to the first Software block (slot 1).",
       "public_source": "https://robonomics.network/",
-      "web_redirect": "/software/"
+      "untouched": "E5:G5 must stay identical",
+      "web_redirect": {
+        "from": "/other-robots/robonomics/",
+        "to": "/software/"
+      }
     },
     {
+      "op": "clear_list_cells",
       "tab": "Other Robots",
       "range": "A16:C16",
       "old": [
@@ -120,11 +170,38 @@
         "",
         ""
       ],
-      "reason": "Service-robot provider already in Integrators row 2 and Clean Entities (org_integrator_bumerania), with /companies/bumerania/.",
+      "reason": "Service-robot provider already in Integrators row 2 and Clean Entities (org_integrator_bumerania), company page /companies/bumerania/.",
       "public_source": "https://bumerania.com/",
-      "web_redirect": "/companies/bumerania/"
+      "untouched": "E16:G16 must stay identical",
+      "web_redirect": {
+        "from": "/other-robots/bumerania/",
+        "to": "/companies/bumerania/"
+      }
     },
     {
+      "op": "clear_list_cells",
+      "tab": "Other Robots",
+      "range": "A21:C21",
+      "old": [
+        "Shadow",
+        "https://www.shadowrobot.com/",
+        "Shadow Robot: maker of dexterous robotic hands (Shadow Dexterous Hand, DEX-EE series) and teleoperation systems for research and mission-critical work."
+      ],
+      "new": [
+        "",
+        "",
+        ""
+      ],
+      "reason": "Hand maker (\"maker of dexterous robotic hands (Shadow Dexterous Hand, DEX-EE series)\"); two of its hands are Components products (rows 29-30, Shadow Robot Company) and the company page is /companies/shadow-robot-company/ (registry identity cmp_shadowrobot.com, which already redirects /companies/shadow/ there).",
+      "public_source": "https://www.shadowrobot.com/",
+      "untouched": "E21:G21 must stay identical",
+      "web_redirect": {
+        "from": "/other-robots/shadow/",
+        "to": "/companies/shadow-robot-company/"
+      }
+    },
+    {
+      "op": "clear_list_cells",
       "tab": "Other Robots",
       "range": "A33:C33",
       "old": [
@@ -139,9 +216,14 @@
       ],
       "reason": "Duplicate: already in Software row 21 (Intrinsic (Google), https://www.intrinsic.ai/).",
       "public_source": "https://www.intrinsic.ai/",
-      "web_redirect": "/software/"
+      "untouched": "E33:G33 must stay identical",
+      "web_redirect": {
+        "from": "/other-robots/intrinsic/",
+        "to": "/software/"
+      }
     },
     {
+      "op": "clear_list_cells",
       "tab": "Other Robots",
       "range": "A37:C37",
       "old": [
@@ -154,11 +236,16 @@
         "",
         ""
       ],
-      "reason": "Moved to Software row 137 (write 2).",
+      "reason": "Moves to the first Software block (slot 2).",
       "public_source": "https://mujin-corp.com/",
-      "web_redirect": "/software/"
+      "untouched": "E37:G37 must stay identical",
+      "web_redirect": {
+        "from": "/other-robots/mujin/",
+        "to": "/software/"
+      }
     },
     {
+      "op": "clear_list_cells",
       "tab": "Other Robots",
       "range": "A53:C53",
       "old": [
@@ -171,65 +258,72 @@
         "",
         ""
       ],
-      "reason": "Moved to Software row 138 (write 3).",
+      "reason": "Moves to the first Software block (slot 3).",
       "public_source": "https://ekarobotics.com/",
-      "web_redirect": "/software/"
+      "untouched": "E53:G53 must stay identical",
+      "web_redirect": {
+        "from": "/other-robots/eka/",
+        "to": "/software/"
+      }
     }
   ],
-  "not_written_decision_needed": [
+  "documented_uncertain": [
     {
-      "tab": "Other Robots",
       "row": 24,
+      "name": "Ailos",
       "values": [
         "Ailos",
         "https://ailos-robotics.com/",
         "AILOS Robotics: developer of high-precision gearboxes for robotics and automation, from robot arms to healthcare, agriculture and manufacturing."
       ],
-      "issue": "Component maker (gearboxes) with no named product and no other home in the master. A company needs a home before it can leave Other Robots: either a Clean Entities row (identity register, as Bumerania has) or a future companies list. Kept as is until Javier decides; never turned into an invented Components product."
+      "finding": "Gearbox maker, no named product, no other home in the master.",
+      "why_not_written": "Leaving Other Robots needs a company home the site renders; an identity-register row (Clean Entities) is possible but its effect on company pages is not yet checked. Never an invented Components product."
     },
     {
-      "tab": "Other Robots",
       "row": 51,
+      "name": "Seed Studio",
       "values": [
         "Seed Studio",
         "https://www.seeedstudio.com/",
         "Seeed Studio: open-source hardware provider focused on edge AI, robotics and smart sensors, supplying electronics and manufacturing services to makers and engineers."
       ],
-      "issue": "Electronics and hardware supplier (\"open-source hardware provider … supplying electronics\"), no robot named. Same decision as row 24."
-    }
-  ],
-  "kept_reviewed": "Rows whose description names robots they make are robot entries and stay: e.g. Hiopos (HIOBOT), Norma (ElRobot arm), Ati Motors (autonomous mobile robots), Dyna Robotics (mobile dexterous robots). Hand makers (Shadow, Proception, Linkerbot) are left for a separate review: a robotic hand may be a component product or a robot, and that is not clear from the record alone.",
-  "after_receipt": "Claude re-downloads the master, regenerates the Other Robots and Software previews, adds the seven retired /other-robots/<slug>/ addresses to tools/permalinks.json as redirects to the destinations above (realtime, harmonic-drive, robonomics, bumerania, intrinsic, mujin, eka), checks counts and pages, and publishes by PR. No row is deleted on the web without its redirect.",
-  "review_proposals": [
-    {
-      "row": 21,
-      "name": "Shadow",
-      "finding": "Maker of dexterous robotic hands; two of its hands are already Components products (Components rows 29-30, Shadow Robot Company).",
-      "proposal": "Same treatment as Harmonic Drive: clear A21:C21 and redirect /other-robots/shadow/ to the company page. Needs a check first: /companies/shadow/ and /companies/shadow-robot-company/ both exist and must not be conflated without a reviewed identity."
-    },
-    {
-      "row": 71,
-      "name": "Linkerbot",
-      "finding": "Its entry describes dexterous hands (Linker Hand series); the company also makes Linker Humanoid, listed in Humanoids, and has /companies/linkerbot/.",
-      "proposal": "Clear A71:C71 and redirect to /companies/linkerbot/ only if Javier agrees a hand line is a component line; adding Linker Hand products to Components needs a sourced passport, not this plan."
+      "finding": "Electronics and hardware supplier, no robot named.",
+      "why_not_written": "Same as Ailos."
     },
     {
       "row": 60,
       "name": "Proception",
-      "finding": "Hands and motion-capture gloves; no other home in the master.",
-      "proposal": "Same decision as Ailos and Seeed Studio: a company home first (Clean Entities or a companies list)."
+      "values": [
+        "Proception",
+        "https://www.proception.ai/",
+        "Proception: builds advanced dexterous humanoid robot hands and motion-capture gloves for research, teleoperation and real-world manipulation."
+      ],
+      "finding": "Hands and motion-capture gloves, not in Components, no other home.",
+      "why_not_written": "Same as Ailos."
+    },
+    {
+      "row": 71,
+      "name": "Linkerbot",
+      "values": [
+        "Linkerbot",
+        "https://www.linkerbot.cn/",
+        "Dexterous robot hands (Linker Hand series: tendon, linkage and direct-drive) and LinkerSkillStore; also listed in Humanoids for Linker Humanoid. LinkerArm A7 not confirmed on the site. Checked 2026-11-19 on linkerbot.cn."
+      ],
+      "finding": "The entry describes the Linker Hand series; the maker also has Linker Humanoid in Humanoids and /companies/linkerbot/.",
+      "why_not_written": "Whether the hand line is a component line or a robot entry is not established by the record; adding Linker Hand products to Components needs a sourced passport."
     },
     {
       "row": 76,
       "name": "coprod",
-      "finding": "Modular robot components with named products (co:motion, co:sense, co:power, co:battery); not in Components.",
-      "proposal": "Leave until Components products are researched with sources; never a fabricated product."
-    },
-    {
-      "row": 28,
-      "name": "Lirio",
-      "finding": "Bionic (robotic) hand prostheses.",
-      "proposal": "Keep: a robotic prosthesis is a robotic device, not a component or software; flag only if Javier wants medical devices apart."
+      "values": [
+        "coprod",
+        "https://coprod.co/blog/pre-seed-round",
+        "coprod: Swiss robotics hardware start-up (Lausanne) making modular components for motion, sensing, power and batteries (co:motion, co:sense, co:power, co:battery) on one real-time EtherCAT control plane with a C++ and Python API; USD 6M pre-seed led by Founderful and PROTOTYPE (2026-11-23); market launch planned for early 2027."
+      ],
+      "finding": "Named modular components (co:motion, co:sense, co:power, co:battery), not in Components.",
+      "why_not_written": "Components products need sourced research first."
     }
-  ]
+  ],
+  "kept": "Robot makers whose entry names their robots stay: Hiopos (HIOBOT), Norma (ElRobot), Ati Motors, Dyna Robotics, AgileX, RealMan. Lirio (bionic hand prostheses) is a robotic device and stays.",
+  "after_receipt": "After Codex writes and gives its receipt, Claude re-downloads the master, regenerates the Other Robots and Software previews, adds the eight retired /other-robots/<slug>/ addresses to tools/permalinks.json as redirects to the destinations above, checks counts and pages, and publishes by PR. No web entry disappears without its redirect."
 }
