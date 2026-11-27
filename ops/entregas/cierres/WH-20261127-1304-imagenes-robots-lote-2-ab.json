@@ -1,0 +1,57 @@
+{
+  "id": "WH-20261127-1304-imagenes-robots-lote-2-ab",
+  "tarea": "Imágenes de robots, lote 2 del alcance A/B: seis AgiBot, Booster T2 y K1, ALICE 4 y Anigon FA-L, con imagen oficial de cuerpo completo y fondo transparente",
+  "origen": "Javier (27/11/2026: «haz Agibot y todos los que quedan con la A y B»; recorte no generativo por máscara autorizado), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T13:04:31+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 202 (cabeza revisada 4e5d946, merge 14dedcd): imagen en las fichas 4 X1, 143 A2 (se muestra A2 Ultra), 144 A3, 145 X2 (se muestra X2 Ultra), 146 G2, 147 G1, 148 T2, 149 K1, 2 Alice (se muestra ALICE 4) y 165 FA-L Series, solo mediante tools/robot-presentation.json, sin columnas nuevas.",
+    "Originales, máscaras y preparados de Codex (rama de transporte codex/image-sources-ab, 28fef87) guardados sin cambios en ops/media/intake-ab-2026-11-27/batch-02/, con SHA-256 iguales al manifiesto.",
+    "Cinco con alfa nativa (solo recorte) y cinco con máscara no generativa de Codex; ajuste solo de alfa en X1 y G2 para quitar halo y bruma; el color de cada píxel visible es el del original y no hay reescalado.",
+    "Herramientas: mask.py (BiRefNet, solo máscara) y apply-mask.py (máscara pura, RGB intacto); la cobertura sigue el alcance A/B y exige que cada ficha A/B esté trazada.",
+    "Este cierre pasa las diez fichas de integrated a published en la cobertura: 27 de 212 fichas con imagen."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 202",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/202"
+    },
+    {
+      "etiqueta": "CI de la cabeza 4e5d946",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45994750232"
+    },
+    {
+      "etiqueta": "Pages de 14dedcd",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45994978120"
+    },
+    {
+      "etiqueta": "Ficha AgiBot G1",
+      "url": "https://whyhumanoid.com/humanoids/agibot-g1-147/"
+    },
+    {
+      "etiqueta": "Ficha Booster T2",
+      "url": "https://whyhumanoid.com/humanoids/booster-t2-148/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 14dedcd (run 45994978120, correcto); CI de la cabeza 4e5d946 (run 45994750232, correcto). Sin cambios de maestro, Worker ni D1.",
+    "Las URL de los activos nuevos no se pidieron hasta que Pages terminó en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Codex, cabeza 4e5d946: originales y preparados con SHA exactos, color de todos los píxeles visibles igual al original, alfa de WebP igual a la del PNG, revisión visual en claro y oscuro.",
+    "Claude, producción: las 20 URL canónicas dan 200 con los mismos bytes que el commit revisado; navegador real en iPhone 13 y 1366 × 900, las diez fichas cargan con texto alternativo y crédito, sin desbordamiento lateral.",
+    "Codex, verificación pública independiente: 30/30 comprobaciones canónicas y 20/20 vistas en 390 × 844 y 1366 × 900, con caché ordinaria."
+  ],
+  "pendientes": [
+    "Booster T2 (148): mano izquierda algo translúcida, tal como la deja la máscara; robot completo en salto.",
+    "Alcance A/B: lote 3 (Agile ONE, Argon One, Axol, AIDOL, Booster T1 y Elixis) en PR aparte; diez fichas A/B sin fuente válida todavía (aeo, ARX X7, Astribot S1, Axibo, Beomni, Alex, Borg 01, Gallop, Elf·Xuan 2.0 y Avatar).",
+    "Siguen las deudas anteriores: contraste de KANGAROO, H1 y Figure 03, y los 13 scripts que no se ejecutan desde rutas con espacios."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Revisión y publicación del lote 3 A/B."
+}
