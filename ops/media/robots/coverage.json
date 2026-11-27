@@ -122,22 +122,20 @@
     {
       "batch": 5,
       "opened": "2026-11-27",
-      "state": "planned",
+      "state": "integrated_awaiting_review",
       "target": 10,
       "scope": "C/D makers",
       "candidates": [
-        17,
         19,
         20,
         24,
-        134,
         171,
-        173,
-        174
+        173
       ],
       "reserves": [],
       "notes": [
-        "The rest of the C/D scope with a valid source; records without one end as no_valid_source."
+        "Sources from Codex, transport branch codex/image-sources-cd (cc1923c), kept unchanged in ops/media/intake-cd-2026-11-27/batch-05/; prepared PNGs used as delivered.",
+        "Three C/D records without a valid source after review: Yogi (17), Darwin-0 (134), Moya (174)."
       ]
     }
   ],
@@ -1212,7 +1210,7 @@
         "Lab": "Dobot",
         "Robot": "Atom"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.dobot-robots.com/",
       "notes": "DOBOT Atom, original walking configuration; not ATOM-W nor ATOM D.",
       "sources": [
@@ -1223,6 +1221,16 @@
           "transparent_original": false,
           "verdict": "rejected",
           "detail": "Circles and text drawn over the robot; not reconstructed."
+        },
+        {
+          "file": "https://a.storyblok.com/f/298593/x/9971361e2e/atom-brochure.pdf",
+          "page": "https://www.dobot-robots.com/products/humanoid-robots/atom.html",
+          "sha256": "6bc6effb469790b75384c2b41c530d18332f8030e2c71e9d5e73e89024bdbc68",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 727 × 1897 with 20 px padding."
         }
       ]
     },
@@ -1273,17 +1281,29 @@
         "Lab": "Deep",
         "Robot": "DR01"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.deeprobotics.cn/en/index/humanoid.html",
       "notes": "DEEP Robotics DR01; not DR02 (159).",
-      "sources": [],
+      "sources": [
+        {
+          "file": "https://i.ytimg.com/vi/lCFyfh3mLOQ/maxresdefault.jpg",
+          "page": "https://www.youtube.com/watch?v=lCFyfh3mLOQ",
+          "sha256": "de978e6adc7b1a450c2cd3bd55ae4cab9fa90ac30c23649176255699a2c64eb9",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Alpha-only manual polygons restore both feet missed by automatic mask; RGB exact; prepared 404 × 696 with 20 px padding."
+        }
+      ],
       "research": [
         {
           "by": "claude",
           "date": "2026-11-27",
           "note": "Search only: DEEP Robotics published a DR01 debut article on its own site (deeprobotics.cn/en/wap/article/id/237.html, photo credited \"Handout\") and a humanoid page (deeprobotics.cn/en/wap/humanoid.html); the corporate brochure Codex found (pdf.dfcfw.com, unreachable here) must be checked for a caption naming DR01, not DR02."
         }
-      ]
+      ],
+      "quality_note": "Modest resolution: from a 1280 × 720 official video thumbnail; replace when a larger faithful DR01 image is found."
     },
     "159": {
       "recorded": {
@@ -1353,7 +1373,7 @@
         "Lab": "DroidUp",
         "Robot": "Moya"
       },
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://www.droidup.com/product/7",
       "notes": "DroidUp Moya, full-body tendon-driven bionic humanoid.",
       "sources": [],
@@ -1363,7 +1383,8 @@
           "date": "2026-11-27",
           "note": "Search only: Moya (DroidUp, also called Zhuohide Robotics), unveiled in late January 2026, 1.65 m; press photos are not official sources here. Codex reports the official /product/7 images crop the legs or hide the feet: no whole-robot official image yet."
         }
-      ]
+      ],
+      "reason": "DroidUp Moya: the official homepage photo (49) crops the feet; the dressed photo (42) crops the feet; the stage photo (48) mixes robots of five makers and the back-facing robot cannot be identified as Moya. No faithful whole-robot image. Reviewed by Codex (27 Nov 2026); not a claim that no photo exists. Nothing is reconstructed."
     },
     "175": {
       "recorded": {
@@ -1391,7 +1412,7 @@
         "Lab": "Cartwheel",
         "Robot": "Yogi"
       },
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://www.cartwheelrobotics.com/",
       "notes": "Cartwheel Yogi: the record notes the original website returns content unrelated to robot specifications; identity and source to be established.",
       "sources": [],
@@ -1406,17 +1427,29 @@
           "date": "2026-11-27",
           "note": "Search only: Humanoid Global's 16 Oct 2025 release on Yogi carries only a logo; it aimed to show a full-body walking prototype in December 2025. No official whole-body Yogi image found; press photos (Automate.org) are editorial."
         }
-      ]
+      ],
+      "reason": "Cartwheel Yogi: the current official Cartwheel site is unrelated to the robot, and the investor releases of Humanoid Global (parent) carry only logos; press photos are editorial, not official. No official whole-robot image found. Reviewed by Codex (27 Nov 2026); not a claim that no photo exists. Nothing is reconstructed."
     },
     "19": {
       "recorded": {
         "Lab": "Cobot",
         "Robot": "Proxie"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.co.bot/",
       "notes": "Cobot Proxie: wheeled mobile manipulator with swerve-drive base; shown whole as presented.",
-      "sources": [],
+      "sources": [
+        {
+          "file": "https://cdn.sanity.io/images/3qpw73bq/yellow/35a24ba9acf5df1582187b7e6837a18f2de02f0b-2160x3840.jpg",
+          "page": "https://www.co.bot/",
+          "sha256": "2aab9ba4ffa816a93795145424ba116cf93d52e70f76d94ec563fcd7a5cfda68",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Alpha-only polygon excludes ground shadow and floor stripe; RGB exact; prepared 1263 × 2265 with 20 px padding."
+        }
+      ],
       "research": [
         {
           "by": "claude",
@@ -1430,7 +1463,7 @@
         "Lab": "Darwin",
         "Robot": "Darwin-0"
       },
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://darwinrobotics.ai/",
       "notes": "Darwin-0: the record states the company publishes no form or mobility; the only image is two arms on a stand at a server rack. Do not assume humanoid form; likely limitation unless an official whole-robot image identifies Darwin-0.",
       "sources": [],
@@ -1440,7 +1473,8 @@
           "date": "2026-11-27",
           "note": "Search only: press describes Darwin Robotics as building dual-arm robot technicians for data centres, in stealth; directory listings name DARWIN-01 or Darwin One, not consistently Darwin-0, with deployments targeted for early 2027. No whole-robot image found; likely no_valid_source."
         }
-      ]
+      ],
+      "reason": "Darwin-0: the official scene shows only two arms at a server rack; the whole platform is not identified, and press and directories give other names (DARWIN-01, Darwin One). No faithful whole-robot image. Reviewed by Codex (27 Nov 2026); not a claim that no photo exists. Nothing is reconstructed."
     },
     "169": {
       "recorded": {
@@ -1489,10 +1523,21 @@
         "Lab": "Digit Robotics",
         "Robot": "Xialan R03"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.digit.com.cn/ProductsDetail/250.html",
       "notes": "Digit Robotics (数字华夏) Xialan R03; not Agility Robotics Digit (6). Not XiaQi X02 (172).",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://www.digit.com.cn/UserFiles/ueditor/6393020077779566971161026.jpg",
+          "page": "https://www.digit.com.cn/ProductsDetail/250.html",
+          "sha256": "e12c54ee39ba290097a192f5c29d5c59ffc5140e6808044d3edba094f5e4068a",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Alpha-only manual polygon restores mechanical left arm missed by segmentation; source RGB unchanged.; RGB exact; prepared 255 × 861 with 20 px padding."
+        }
+      ]
     },
     "172": {
       "recorded": {
@@ -1520,10 +1565,21 @@
         "Lab": "Donut Robotics",
         "Robot": "Cinnamon 1"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.donutrobotics.com/en",
       "notes": "Donut Robotics Cinnamon 1: the record notes form details are not published and Cinnamon 2 was announced; an image must be identified as Cinnamon 1, never Cinnamon 2.",
-      "sources": [],
+      "sources": [
+        {
+          "file": "https://static.wixstatic.com/media/47f0f3_624de109facb4d7b86a5642b8d4ea2bc~mv2.jpg",
+          "page": "https://www.donutrobotics.com/en",
+          "sha256": "2a7c9d3ade0e0d4f24013085997ef3ba751a452717b85dc6a69417c5e42f8ab4",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 403 × 922 with 20 px padding."
+        }
+      ],
       "research": [
         {
           "by": "claude",

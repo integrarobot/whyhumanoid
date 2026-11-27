@@ -1,0 +1,32 @@
+{
+  "id": 171,
+  "slug": "xialan-r03",
+  "original": "171-6.jpg",
+  "roi": [
+    230,
+    15,
+    465,
+    850
+  ],
+  "bbox": [
+    12,
+    10,
+    227,
+    831
+  ],
+  "border": 20,
+  "size": [
+    255,
+    861
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha-only manual polygon restores mechanical left arm missed by segmentation; source RGB unchanged.",
+  "source_page": "https://www.digit.com.cn/ProductsDetail/250.html",
+  "source_url": "https://www.digit.com.cn/UserFiles/ueditor/6393020077779566971161026.jpg",
+  "original_sha256": "e12c54ee39ba290097a192f5c29d5c59ffc5140e6808044d3edba094f5e4068a",
+  "prepared_sha256": "6fd497e65ecbcc8193e03dabbb96c55d5bac48f59ea6e2b17dfa2ba6eaf550a5",
+  "mask_sha256": "d45387dc976c3c98fbf9b0a6c984fd40b1fda22c6b2cb162404ccabb1c575696",
+  "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+  "checked_at": "2026-11-27",
+  "source_context": "Central full-body R03 in cream clothing from its official specifications infographic. Annotations remain outside robot; alpha-only left mechanical arm restoration."
+}

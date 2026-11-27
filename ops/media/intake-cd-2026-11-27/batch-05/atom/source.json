@@ -1,0 +1,32 @@
+{
+  "id": 24,
+  "slug": "atom",
+  "original": "dobot-pdf-x63.jpeg",
+  "roi": [
+    0,
+    0,
+    3376,
+    2110
+  ],
+  "bbox": [
+    1262,
+    156,
+    1949,
+    2013
+  ],
+  "border": 20,
+  "size": [
+    727,
+    1897
+  ],
+  "native_alpha": false,
+  "source_page": "https://www.dobot-robots.com/products/humanoid-robots/atom.html",
+  "source_url": "https://a.storyblok.com/f/298593/x/9971361e2e/atom-brochure.pdf",
+  "original_sha256": "6bc6effb469790b75384c2b41c530d18332f8030e2c71e9d5e73e89024bdbc68",
+  "prepared_sha256": "c79952583ba1290728e932f9ec613b8a2f0f9ecbf9c17dbe9283ac7052572afb",
+  "mask_sha256": "e195458efd77b0e7ed8589f6d0397a67293cbbdf4090f714afcf0668a67ef2fb",
+  "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+  "checked_at": "2026-11-27",
+  "extraction": "Official DOBOT ATOM brochure page3 xref63 native3376x2110, biped ATOM Max; not wheeled ATOM-W xref64.",
+  "pdf_sha256": "f344875042c2b2cc30d8b816b5f557e33099a749780d32b45f3e161b8b225f2f"
+}
