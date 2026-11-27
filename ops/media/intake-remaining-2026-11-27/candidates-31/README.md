@@ -1,3 +1,3 @@
 # Galbot G1 manufacturer award-entry image
 
-Simplexity iX whole platform with original alpha, PHYBOT M1 complete existing manufacturer render, MagicBot Z1 native video still. Exact page/product JS identity checked; source context includes selected view/frame and rejected alternatives. Alpha only, native visible RGB unchanged, whole platform, honest variant/type captions. Every candidate still needs preparation and independent review. Copy selectively; never merge transport branch.
+Manufacturer-submitted product render hosted by European Product Design Award. Select the complete standing figure at left. Native visible RGB must remain unchanged; remove only the background, shadow and separate crouching figure using alpha. Honest render and third-party hosting credit required. Copy selectively; do not merge this transport branch. See source.json for identity and provenance.
