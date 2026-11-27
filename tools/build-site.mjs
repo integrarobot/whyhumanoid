@@ -21,6 +21,7 @@ import { pageLinks } from './build-pages.mjs';
 import { CATEGORIES, SERVICES, SUBSCRIPTION } from '../server/src/access/matrix.js';
 import { BEFORE_PAYMENT, REPORTS_LIVE_OPEN } from '../server/src/orders/services.js';
 import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
+import { countryNames } from '../server/src/search/vocabulary.js';
 import { renderAdoption } from './adoption-view.mjs';
 import { renderEvolutionCarousel } from './evolution-view.mjs';
 import { robotPresentation } from './robot-presentation.mjs';
@@ -50,7 +51,6 @@ const FACET_SOURCE = {
   chk: 'Sources / checked',
 };
 
-const COUNTRY_NAMES = { USA: 'United States', US: 'United States', UK: 'United Kingdom' };
 
 function splitClauses(text) {
   const out = [];
@@ -71,9 +71,15 @@ function splitClauses(text) {
 export const RULES = {
   lab: (v) => v ?? '',
   robot: (v) => v || 'Unnamed',
+  // Country facet (27 Nov 2026): the country only, by the same reading as the search tags (server/src/search/
+  // vocabulary.js), so "China (Beijing)" and "China (Shanghai)" count as China; the locality stays in the recorded
+  // Country value of the record. A part that names no known country stops the build rather than becoming a country.
   c: (v) => {
     if (!v || /^(not disclosed|not found|no data|unknown)$/i.test(v)) return [];
-    return v.split(/\s*[;/]\s*/).filter(Boolean).map((x) => COUNTRY_NAMES[x] ?? x);
+    const unmapped = [];
+    const names = countryNames(v, unmapped);
+    if (unmapped.length) throw new Error(`Country "${v}": ${unmapped.map(([, k]) => k).join(', ')} is not a known country; add it to COUNTRY_LIST in server/src/search/vocabulary.js`);
+    return names;
   },
   mob: (v) => {
     const t = (v ?? '').split(';')[0].toLowerCase();
@@ -150,7 +156,7 @@ const changedFields = (manifest) =>
   ]);
 const insertedRecords = (manifest) => new Map((manifest.verified_import?.inserted ?? []).map((i) => [i.id, i.sheet_row]));
 
-export function parity(built, legacy, manifest) {
+export function parity(built, legacy, manifest, overrides = {}) {
   const cleaned = changedFields(manifest);
   const inserted = insertedRecords(manifest);
   const legacyById = new Map(legacy.models.map((m) => [m.id, m]));
@@ -172,7 +178,11 @@ export function parity(built, legacy, manifest) {
       continue;
     }
     for (const key of ['row', ...Object.keys(FACET_SOURCE)]) {
-      if (!isDeepStrictEqual(m[key], old[key])) {
+      // The legacy country facet kept localities ("China (Beijing)"); it is compared after the same normalisation.
+      const before = key === 'c' && Array.isArray(old.c) ? [...new Set(old.c.flatMap((x) => countryNames(x)))] : old[key];
+      // A reviewed override (with its reason) is an expected, documented difference from the legacy page.
+      if (!isDeepStrictEqual(m[key], before) && overrides?.[m.id]?.[key]?.reason) { expected.push(`record ${m.id} ${key} (reviewed override)`); continue; }
+      if (!isDeepStrictEqual(m[key], before)) {
         const field = FACET_SOURCE[key];
         (cleaned.has(`${m.id}|${field}`) ? expected : unexpected).push(`record ${m.id} ${key}`);
       }
@@ -327,7 +337,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const records = new Map(exported.records.map((r) => [r.id, r]));
     for (const m of rulesOnly.models) {
       for (const [facet, field] of Object.entries(FACET_SOURCE)) {
-        const old = legacyById.get(m.id)?.[facet];
+        const raw = legacyById.get(m.id)?.[facet];
+        const old = facet === 'c' && Array.isArray(raw) ? [...new Set(raw.flatMap((x) => countryNames(x)))] : raw;
         if (!isDeepStrictEqual(m[facet], old) && !cleaned.has(`${m.id}|${field}`)) {
           fresh[m.id] ??= {};
           fresh[m.id][facet] = { value: old, source_hash: sha(records.get(m.id)[field]) };
@@ -371,7 +382,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const classification = JSON.parse(readFileSync(new URL('tools/catalogue-classification.json', root), 'utf8')).records;
   data.not_robots = classification.filter((c) => c.kind === 'software').map((c) => c.id);
   data.uncertain = classification.filter((c) => c.kind === 'uncertain').map((c) => c.id);
-  const { unexpected, expected } = parity(data, legacy, manifest);
+  const { unexpected, expected } = parity(data, legacy, manifest, overrides);
   if (unexpected.length) {
     console.error(`Parity FAILED (${unexpected.length}):\n- ${unexpected.slice(0, 40).join('\n- ')}`);
     process.exit(1);

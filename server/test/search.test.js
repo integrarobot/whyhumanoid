@@ -55,7 +55,7 @@ test('normalisation folds case, accents and punctuation; the map points back to 
 test('tags come only from the controlled vocabulary: company country apart from deployment country', () => {
   const unmapped = [];
   const t = tagsFor('deployments', DEP(2), unmapped);
-  assert.deepEqual(t, ['evidence:e2', 'hq:germany', 'site:germany', 'site:hungary', 'status:pilot', 'task:material_handling', 'type:customer_operator', 'sector:logistics', 'sector:retail'].sort());
+  assert.deepEqual(t, ['hq:germany', 'site:germany', 'site:hungary', 'status:pilot', 'task:material_handling', 'type:customer_operator', 'sector:logistics', 'sector:retail'].sort());
   // A partner country with an unconfirmed site names no deployment country.
   assert.ok(!tagsFor('deployments', DEP(5)).some((x) => x.startsWith('site:')));
   assert.deepEqual(tagsFor('deployments', { ...DEP(1), organization_role: 'customer_investor' }).filter((x) => x.startsWith('type:')), ['type:customer_operator', 'type:investor']);
@@ -188,4 +188,22 @@ test('a listed company result shows reviewed English labels and no raw identifie
   // The stored row keeps the recorded values: only the result display uses the reviewed wording.
   const row = (await ctx.call('GET', '/v1/datasets/stocks/preview').then((r) => r.json())).rows.find((r) => r.ticker === 'EXLG');
   assert.equal(row.segment, 'Robótica / automatización (ROBO)');
+});
+
+// Evidence codes E0-E5 have no documented definition (27 Nov 2026): no tag, facet, filter or count, for anyone; the
+// complete subscriber record still holds the code exactly as recorded.
+test('undefined E0-E5 codes are never a tag, facet or filter; the subscriber record keeps the code as recorded', async () => {
+  const ctx = await setup({ workbook: workbook() });
+  const session = await subscriber(ctx);
+  const get = async (qs) => (await ctx.call('GET', `/v1/search?${qs}`, { token: session })).json();
+  const all = await get('q=acme');
+  assert.ok(all.total > 0);
+  assert.ok(!all.facets.some((f) => f.id === 'evidence'), 'no evidence facet');
+  assert.ok(all.results.every((r) => r.tags.every((t) => !t.id.startsWith('evidence:'))), 'no evidence tag on any result');
+  const filtered = await get('q=acme&tags=evidence:e2');
+  assert.equal(filtered.total, all.total, 'an evidence tag filters nothing');
+  assert.deepEqual(filtered.active, []);
+  const rows = (await (await ctx.call('GET', '/v1/datasets/deployments?limit=20', { token: session })).json()).rows;
+  assert.ok(rows.some((r) => r.evidence_level === 'E5') && rows.some((r) => r.evidence_level === 'E2'), 'the legacy code is kept in the complete record');
+  assert.deepEqual(tagsFor('deployments', { evidence_level: 'E5' }), []);
 });

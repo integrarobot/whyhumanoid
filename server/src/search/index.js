@@ -327,8 +327,10 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
       title: doc.title,
       subtitle: doc.dataset === 'stocks' && data ? describe('stocks', data).subtitle : doc.subtitle,
       link: doc.link,
-      tags: doc.tags.split('|').filter(Boolean).map((t) => ({ id: t, label: tagLabel(t), facet: FACET_LABELS[t.split(':')[0]] })),
-      snippet: data ? snippet(doc.dataset, data, terms, doc.tags.split('|').filter(Boolean).map((t) => [FACET_LABELS[t.split(':')[0]], tagLabel(t)])) : null,
+      // Only tags of the current vocabulary: an index written before a vocabulary change (the E0-E5 codes, 27 Nov 2026)
+      // may still hold retired tags until the next import.
+      tags: doc.tags.split('|').filter(isKnownTag).map((t) => ({ id: t, label: tagLabel(t), facet: FACET_LABELS[t.split(':')[0]] })),
+      snippet: data ? snippet(doc.dataset, data, terms, doc.tags.split('|').filter(isKnownTag).map((t) => [FACET_LABELS[t.split(':')[0]], tagLabel(t)])) : null,
     };
   });
   return {

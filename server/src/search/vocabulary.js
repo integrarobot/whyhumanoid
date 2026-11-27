@@ -13,7 +13,6 @@ export const FACETS = [
   ['hq', 'Company country'],
   ['type', 'Type or role'],
   ['status', 'Deployment status'],
-  ['evidence', 'Evidence level'],
   ['platform', 'Robot platform'],
 ];
 export const FACET_LABELS = Object.fromEntries(FACETS);
@@ -34,7 +33,8 @@ const TYPES = {
   integrator: 'Integrator', listed_company: 'Listed company', software: 'Software', world_model: 'World model', dataset: 'Dataset', hardware: 'Hardware',
 };
 const PLATFORMS = { bipedal: 'Bipedal', wheeled: 'Wheeled', bipedal_or_wheeled: 'Bipedal or wheeled', torso_or_arms: 'Torso or arms' };
-const EVIDENCE = Object.fromEntries(['E0', 'E1', 'E2', 'E3', 'E4', 'E5'].map((e) => [e.toLowerCase(), e]));
+// Evidence codes E0-E5 (27 Nov 2026): no definition exists in the workbook or the project documentation, so they are
+// neither a tag, a filter nor a count. The value stays in the complete subscriber record as an undefined legacy code.
 
 // Country names as the sheet writes them (English and Spanish), normalised, to one English name.
 const COUNTRY_LIST = [
@@ -48,6 +48,7 @@ const COUNTRY_LIST = [
   ['Uruguay', 'uruguay'], ['Hungary', 'hungary', 'hungria'], ['Hong Kong', 'hong kong'], ['Luxembourg', 'luxembourg', 'luxemburgo'],
   ['Singapore', 'singapore', 'singapur'], ['Vietnam', 'vietnam'], ['India', 'india'], ['Denmark', 'denmark', 'dinamarca'],
   ['Austria', 'austria'], ['Belgium', 'belgium', 'belgica'], ['Portugal', 'portugal'], ['Ireland', 'ireland', 'irlanda'],
+  ['Russia', 'russia', 'rusia'],
 ];
 const COUNTRY = new Map();
 const COUNTRY_NAME = {};
@@ -59,7 +60,7 @@ for (const [name, ...keys] of COUNTRY_LIST) {
 
 export function tagLabel(tag) {
   const [facet, value] = tag.split(':');
-  const table = { sector: SECTORS, task: TASKS, status: STATUS, type: TYPES, platform: PLATFORMS, evidence: EVIDENCE, hq: COUNTRY_NAME, site: COUNTRY_NAME }[facet];
+  const table = { sector: SECTORS, task: TASKS, status: STATUS, type: TYPES, platform: PLATFORMS, hq: COUNTRY_NAME, site: COUNTRY_NAME }[facet];
   return table?.[value] ?? null;
 }
 export const isKnownTag = (tag) => /^[a-z]+:[a-z0-9_]+$/.test(tag) && tagLabel(tag) !== null;
@@ -77,7 +78,15 @@ function countries(value, unmapped) {
     if (slug) out.push(slug);
     else unmapped.push(['country', key]);
   }
-  return out;
+  return [...new Set(out)];
+}
+
+// The same reading as English country names, for every surface that filters or counts by country (the Humanoids
+// explorer of the site, 27 Nov 2026): "China (Beijing)" is China, "USA / UK" is two countries, a locality in
+// parentheses is kept only in the recorded value. unmapped receives the parts that name no known country, so callers
+// can refuse to guess; a value that names no country (not disclosed, claimed, partner country) gives none.
+export function countryNames(value, unmapped = []) {
+  return countries(value, unmapped).map((slug) => COUNTRY_NAME[slug]);
 }
 
 const SECTOR_OF = {
@@ -141,7 +150,6 @@ export function tagsFor(datasetId, d, unmapped = []) {
       add('hq', countries(d.organization_country, unmapped));
       add('type', known(ROLE, 'role', d.organization_role));
       add('status', known(Object.fromEntries(Object.keys(STATUS).map((k) => [k, k])), 'status', d.operational_status));
-      add('evidence', known(Object.fromEntries(Object.keys(EVIDENCE).map((k) => [k.toUpperCase(), k])), 'evidence', d.evidence_level));
       break;
     case 'evidence-links':
       add('status', known(Object.fromEntries(Object.keys(STATUS).map((k) => [k, k])), 'status', d.stage_at_source_date));

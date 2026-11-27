@@ -3,11 +3,10 @@
   "overrides": {
     "39": {
       "c": {
-        "value": [
-          "China",
-          "United States"
-        ],
-        "source_hash": "662b9cc77cbc29ae"
+        "value": [],
+        "source_hash": "662b9cc77cbc29ae",
+        "excerpt": "claimed algorithms / manufacturing locations",
+        "reason": "Reviewed 27 Nov 2026: the record gives claimed locations of algorithms and manufacturing, not a recorded country; the shared country reading (server/src/search/vocabulary.js) gives none, so the country stays unknown. The recorded Country value is unchanged."
       }
     },
     "58": {
@@ -16,14 +15,6 @@
         "source_hash": "c6941d50da03ee89",
         "excerpt": "bipedal and wheeled variants",
         "reason": "Reviewed 25 Nov 2026: the record names bipedal and wheeled variants."
-      }
-    },
-    "119": {
-      "c": {
-        "value": [
-          "United States"
-        ],
-        "source_hash": "4548bef0d8674edb"
       }
     },
     "126": {
@@ -48,21 +39,7 @@
         "source_hash": "73ce8e1d3ccfe53d"
       }
     },
-    "131": {
-      "c": {
-        "value": [
-          "United States"
-        ],
-        "source_hash": "ce3edb7e6b4106a2"
-      }
-    },
     "132": {
-      "c": {
-        "value": [
-          "China"
-        ],
-        "source_hash": "5b4d9f22486cff71"
-      },
       "mob": {
         "value": "Wheeled",
         "source_hash": "f101ba0ce71ad5da",

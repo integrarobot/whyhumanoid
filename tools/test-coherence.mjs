@@ -116,3 +116,40 @@ test('freshness: every category card names its own date and kind; no blanket exp
   assert.ok(!/Humanoids free · exported/.test(home));
   assert.match(home, /<b>13<\/b> external reports \+ 1 Why Humanoid\? analysis/);
 });
+
+// Countries (27 Nov 2026): the Humanoids country filter counts countries, not localities, with the same reading as the
+// search tags; the recorded Country value, locality included, stays in each record; unknown stays unknown.
+test('the Humanoids country facet is the shared country reading; localities stay in the recorded value', async () => {
+  const { countryNames } = await import('../server/src/search/vocabulary.js');
+  const catalogue = json('data/humanoids-catalogue.json');
+  const facets = new Map();
+  for (const x of home.match(/"id":\d+,"row":\d+,[^]*?"c":\[[^\]]*\]/g) ?? []) {
+    const id = Number(/"id":(\d+)/.exec(x)[1]);
+    facets.set(id, JSON.parse(/"c":(\[[^\]]*\])/.exec(x)[1]));
+  }
+  assert.ok(facets.size > 200, `facets read for ${facets.size} records`);
+  const names = new Set([...facets.values()].flat());
+  assert.ok([...names].every((n) => !/[()]/.test(n)), `no locality in a country: ${[...names].filter((n) => /[()]/.test(n))}`);
+  for (const r of catalogue.records) {
+    if (!facets.has(r.id)) continue;
+    assert.deepEqual(facets.get(r.id), countryNames(r.Country), `record ${r.id} "${r.Country}"`);
+  }
+  const beijing = catalogue.records.find((r) => r.Country === 'China (Beijing)');
+  assert.deepEqual(facets.get(beijing.id), ['China']);
+  assert.ok(home.includes('China (Beijing)'), 'the recorded value, locality included, is still in the record');
+  const undisclosed = catalogue.records.find((r) => r.Country === 'Not disclosed');
+  assert.deepEqual(facets.get(undisclosed.id), [], 'unknown stays unknown');
+  const claimed = catalogue.records.find((r) => /claimed/.test(r.Country ?? ''));
+  assert.deepEqual(facets.get(claimed.id), [], 'a claimed location is not a recorded country');
+  assert.equal(names.size, 22, [...names].sort().join(', '));
+});
+
+// Method (27 Nov 2026): E0-E5 have no documented definition; they are not presented as a quality scale anywhere public.
+test('Method names E0-E5 as undefined legacy codes, never as a scale; no public page ranks by them', () => {
+  const method = read('method/index.html');
+  assert.match(method, /No definition of these codes exists in the research workbook or in the project's documentation, so they are not a quality scale/);
+  assert.match(method, /a code implies no confidence and no independent verification/);
+  assert.doesNotMatch(method, /an evidence level\.|metric, evidence level, verification label/);
+  assert.doesNotMatch(read('app/premium.js'), /Evidence level \$\{/);
+  assert.match(read('app/premium.js'), /legacy evidence code \(undefined, not a quality rank\)/);
+});
