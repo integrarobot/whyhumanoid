@@ -1,0 +1,53 @@
+{
+  "id": "WH-20261127-0738-editorial-sin-imagenes",
+  "tarea": "Quitar las imágenes del Blog y de News sin poner nada en su lugar (ni imagen, ni enlace «Image: Image», ni elementos vacíos), sin tocar los datos guardados",
+  "origen": "Javier (27/11/2026: quitar las imágenes del Blog y de News; autorizada la publicación de esta corrección), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T07:38:54+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 182 (fusionado como 7c040c4 desde 3a7e18f), solo en el generador (tools/editorial-view.mjs), las páginas regeneradas y el contrato (ops/editorial/README.md y AGENTS.md).",
+    "Auditoría previa de los datos: las 146 imágenes guardadas tienen todas la forma ![Image](url) y ocupan cada una un bloque propio (140 en artículos y 6 en noticias). El texto «Image: Image» no estaba en los datos: lo producía el renderizador. El ejemplo de Javier (eda01e4f…, «Humanoid robot frenzy») era el primer bloque de su artículo.",
+    "El renderizador, con withoutImages(), quita las imágenes en todas sus formas: en bloque propio, dentro de prosa (se queda el texto de alrededor), en listas, citas y títulos, y enlazadas (con su enlace). Se eliminan las líneas, entradas y bloques que se quedan vacíos.",
+    "No se pone nada en lugar de la imagen: ni texto alternativo, ni pie, ni enlace «Image:».",
+    "Se conservan los enlaces normales con su propio texto, aunque apunten a un archivo de imagen.",
+    "Los datos de editorial/ y los originales archivados no cambian: siguen guardadas las 146 imágenes. Se mantienen los 121 artículos, las 780 noticias, su orden y todas las direcciones, así como el contrato de News del PR 180.",
+    "No afecta a las imágenes del catálogo ni a precios, acceso, Worker o D1."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Humanoid robot frenzy",
+      "url": "https://whyhumanoid.com/blog/nl-2026-11-04-furor-con-los-robots-humanoides/"
+    },
+    {
+      "etiqueta": "Blog",
+      "url": "https://whyhumanoid.com/blog/"
+    },
+    {
+      "etiqueta": "News",
+      "url": "https://whyhumanoid.com/news/"
+    },
+    {
+      "etiqueta": "PR 182",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/182"
+    },
+    {
+      "etiqueta": "Commit de fusión 7c040c4",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/7c040c4e1f1d75adec91b85373a36b55c3757c7f"
+    }
+  ],
+  "despliegue": [
+    "PR 182 fusionado como 7c040c4 con comprobación del head exacto 3a7e18f, tras la aprobación de Codex y con el CI 45952847708 en verde sobre ese head.",
+    "Pages 45953011523 completado con éxito; CI de main 45953011658: completado con éxito.",
+    "El sitemap no cambia: 2.484 URL."
+  ],
+  "verificaciones": [
+    "Claude, local: test-editorial 25/25, con una prueba de regresión nueva que cubre bloque inicial solo de imagen, texto alternativo informativo, imagen en prosa junto a emoji, negrita y un enlace con texto a un .png, imágenes en listas, citas y títulos, imagen enlazada y el artículo real «Humanoid robot frenzy». También pasan check-public, verify-editorial, editorial check, build-pages, build-site y build-app --check, verify-pages, test-frame, test-coherence, export-public --check y entregas --check.",
+    "Claude, Chromium a 1366 y 390 px en «Humanoid robot frenzy», una noticia que tenía imagen y /news/2026/: sin imágenes, sin enlaces «Image:», sin elementos vacíos y sin desbordamiento.",
+    "Claude, producción: las 907 páginas editoriales canónicas (índices y años de Blog y News, 121 artículos y 780 noticias) son idénticas al build, quitando las metaetiquetas agent:* y la ofuscación de correo de Cloudflare. Dos dieron un fallo pasajero en la primera pasada y respondieron 200, idénticas, al reintentar. Ninguna contiene <img>, Markdown de imagen, «Image: », la URL de las imágenes de origen ni párrafos o entradas vacíos.",
+    "Codex, independiente: revisión del renderizador y comprobación de que editorial/, data/, server/ y sitemap.xml no cambian. Pasan 25 pruebas editoriales, la búsqueda en JSDOM, la validación del almacén y build-pages --check. Su comparación del DOM con la versión anterior cubre 907 páginas y 2.461 cuerpos: solo desaparecen los enlaces de imagen generados (146), y se conservan la prosa, los 2.730 enlaces a fuentes, las negritas y el orden, sin sustitutos ni elementos vacíos. Codex ha actualizado la automatización semanal y la wiki con la regla de solo texto."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Codex registra su aviso de esta entrega tras su verificación en vivo; Javier confirma la recepción."
+}
