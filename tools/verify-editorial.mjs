@@ -1,4 +1,4 @@
-// Headless check of the Newsletter and News search (26 Nov 2026). Run from tools/: node verify-editorial.mjs
+// Headless check of the Blog and News search (26 Nov 2026). Run from tools/: node verify-editorial.mjs
 // Builds the list pages from the synthetic fixture package (in memory, never written) with the real stylesheets and
 // assets/editorial.js in JSDOM. Without JavaScript the search form stays hidden and every entry is listed; with it
 // the form appears, filters entries and hides empty month groups.
@@ -22,7 +22,7 @@ const page = ({ body }) => `<!doctype html><html><head><style>${css}</style></he
 const pages = editorialPages(next, { page, crumbs: () => '', assetVersion: () => 'x', today: '2026-11-26' });
 const script = read('assets/editorial.js');
 
-for (const [file, entries] of [['newsletter/index.html', 2], ['news/index.html', 3]]) {
+for (const [file, entries] of [['blog/index.html', 2], ['news/index.html', 3]]) {
   const html = pages.get(file);
   const off = new JSDOM(html).window;
   const form = off.document.querySelector('.ed-search');
@@ -49,4 +49,4 @@ for (const [file, entries] of [['newsletter/index.html', 2], ['news/index.html',
 }
 
 if (failures.length) { console.error(`Editorial search check FAILED:\n- ${failures.join('\n- ')}`); process.exit(1); }
-console.log('Editorial search check passed: hidden and listed without JavaScript; shown, filtering and counting with it, on the Newsletter and News lists of the synthetic fixture.');
+console.log('Editorial search check passed: hidden and listed without JavaScript; shown, filtering and counting with it, on the Blog and News lists of the synthetic fixture.');

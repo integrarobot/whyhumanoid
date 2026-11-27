@@ -1,9 +1,11 @@
 // The shared site footer links (Javier, 25 Nov 2026): one renderer for the home page (tools/build-site.mjs), every
 // generated page (tools/build-pages.mjs) and the subscriber app (tools/build-app.mjs), so the footer never differs
-// between them. Links only, and no email address (Javier, 25 Nov 2026): About, For agents, Method, Contact (the About
-// page's contact section) and Integrarobot.
+// between them. Links only, and no email address (Javier, 25 Nov 2026): Blog and News (the editorial sections, Javier,
+// 27 Nov 2026), About, For agents, Method, Contact (the About page's contact section) and Integrarobot.
 
 export const FOOTER_LINKS = Object.freeze([
+  ['Blog', '/blog/'],
+  ['News', '/news/'],
   ['About', '/about/'],
   ['For agents', '/agents/'],
   ['Method', '/method/'],

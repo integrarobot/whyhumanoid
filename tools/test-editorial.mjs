@@ -20,12 +20,14 @@ const ingested = (pkg = fixture()) => {
 // A page frame like build-pages' own, enough to inspect what the editorial view puts in it.
 const page = ({ title, path, body, noindex }) => `<title>${title}</title>${noindex ? '<meta name="robots" content="noindex">' : ''}<link rel="canonical" href="https://whyhumanoid.com${path}"><main>${body}</main>`;
 const crumbs = (items) => `<nav class="crumbs">${items.map(([h, l]) => (h ? `<a href="${h}">${l}</a>` : `<span>${l}</span>`)).join('/')}</nav>`;
-const views = (store, today = '2026-11-26') => editorialPages(store, { page, crumbs, assetVersion: () => 'test', today });
+const redirect = (to, label) => `<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${to}"><a href="${to}">${label}</a>`;
+const views = (store, today = '2026-11-26', withRedirects = false) => editorialPages(store, { page, crumbs, assetVersion: () => 'test', today, ...(withRedirects ? { redirect } : {}) });
 
-test('the committed store holds no editorial record yet, is valid, and claims no completeness', () => {
+test('the committed store holds no editorial record yet, is valid, published from the embargo date, and claims no completeness', () => {
   const store = readStore(root);
-  assert.deepEqual(storeProblems(store), []);
-  assert.equal(store.config.published, false, 'embargo: the sections are not published');
+  assert.deepEqual(storeProblems(store, { today: '2026-11-27' }), []);
+  assert.equal(store.config.published, true, 'publication authorised by Javier on 2026-11-27');
+  assert.equal(store.config.embargo_until, '2026-11-27');
   assert.equal(store.editions.size, 0);
   assert.equal(store.originals.size, 0);
   assert.equal(store.inventory.editions.length, 0);
@@ -38,21 +40,39 @@ test('the committed store holds no editorial record yet, is valid, and claims no
 test('no synthetic fixture text reaches the store or the generated pages', () => {
   const files = [];
   const walk = (dir) => { for (const e of readdirSync(new URL(dir, root), { withFileTypes: true })) { const p = `${dir}${e.name}`; if (e.isDirectory()) walk(`${p}/`); else files.push(p); } };
-  for (const d of ['editorial/', 'newsletter/', 'news/']) walk(d);
+  for (const d of ['editorial/', 'blog/', 'newsletter/', 'news/']) walk(d);
   for (const f of files) assert.doesNotMatch(read(f), /SYNTHETIC FIXTURE|example\.com|Synthetic fixture/i, f);
 });
 
-test('the generated pages are honest empty pages, noindex, outside the sitemap while unpublished', () => {
-  const built = views(readStore(root));
-  assert.deepEqual([...built.keys()].sort(), ['news/2025/index.html', 'news/2026/index.html', 'news/index.html', 'newsletter/2025/index.html', 'newsletter/2026/index.html', 'newsletter/index.html']);
-  for (const html of built.values()) {
-    assert.match(html, /name="robots" content="noindex"/);
-    assert.match(html, /are published here yet\. They appear once their English text has been reviewed\./);
+test('live sections: Blog and News pages are indexable, in the sitemap and linked from the home page and every footer', () => {
+  const store = readStore(root);
+  const built = views(store, '2026-11-27', true);
+  const pages = [...built.keys()].filter((f) => !f.startsWith('newsletter/')).sort();
+  assert.deepEqual(pages, ['blog/2025/index.html', 'blog/2026/index.html', 'blog/index.html', 'news/2025/index.html', 'news/2026/index.html', 'news/index.html']);
+  for (const f of pages) {
+    assert.doesNotMatch(built.get(f), /noindex/, `${f} is indexable once live`);
+    assert.match(built.get(f), /are published here yet\. They appear once their English text has been reviewed\./, `${f}: honest while no edition is ready`);
   }
-  assert.deepEqual(editorialUrls(readStore(root)), []);
+  assert.match(built.get('blog/index.html'), /<h1>Blog<\/h1>/);
+  assert.deepEqual(editorialUrls(store, { today: '2026-11-27' }), ['/blog/', '/news/', '/blog/2025/', '/news/2025/', '/blog/2026/', '/news/2026/']);
+  assert.deepEqual(editorialUrls(store, { today: '2026-11-26' }), [], 'nothing before the embargo date');
   const sitemap = read('sitemap.xml');
-  assert.doesNotMatch(sitemap, /\/newsletter\/|\/news\//, 'no editorial URL in the sitemap');
-  for (const f of ['index.html', 'about/index.html', 'method/index.html']) assert.doesNotMatch(read(f), /href="\/(newsletter|news)\/"/, `${f} does not link the sections yet`);
+  for (const u of ['/blog/', '/news/', '/blog/2025/', '/news/2026/']) assert.ok(sitemap.includes(`<loc>https://whyhumanoid.com${u}</loc>`), `${u} in the sitemap`);
+  assert.doesNotMatch(sitemap, /\/newsletter\//, 'the former addresses are not in the sitemap');
+  for (const f of ['index.html', 'about/index.html', 'method/index.html', 'blog/index.html', 'companies/tesla/index.html', 'app/index.html']) {
+    assert.match(read(f), /<nav class="site-foot" aria-label="Site"><a href="\/blog\/">Blog<\/a><a href="\/news\/">News<\/a><a href="\/about\/">About<\/a>/, `${f}: Blog and News lead the shared footer`);
+  }
+  assert.match(read('index.html'), /Also: <a href="\/blog\/">Blog<\/a> · <a href="\/news\/">News<\/a>/, 'the home page points to both sections');
+});
+
+test('the former /newsletter/ addresses redirect to /blog/, noindex, and only for the Blog', () => {
+  const built = views(ingested(), '2026-11-27', true);
+  assert.match(built.get('newsletter/index.html'), /url=\/blog\/"/);
+  assert.match(built.get('newsletter/2025/index.html'), /url=\/blog\/2025\/"/);
+  assert.match(built.get('newsletter/nl-2025-03-12-synthetic-first/index.html'), /noindex[\s\S]*url=\/blog\/nl-2025-03-12-synthetic-first\/"/);
+  assert.equal(built.has('newsletter/nl-2026-01-20-synthetic-second/index.html'), false, 'no alias for an unpublished article');
+  assert.equal([...built.keys()].filter((f) => f.startsWith('newsletter/')).length, 4);
+  for (const f of ['newsletter/index.html', 'newsletter/2025/index.html', 'newsletter/2026/index.html']) assert.match(read(f), /<meta http-equiv="refresh" content="0; url=\/blog\//, `${f} committed as a redirect`);
 });
 
 test('the existing company headlines (assets/news.js, GET /v1/news) are a separate feature, untouched', () => {
@@ -158,21 +178,21 @@ test('the renderer escapes everything and only builds safe links', () => {
 test('pages: original and translation dates apart, source links, items in order with their parent, search markup', () => {
   const store = ingested();
   const built = views(store);
-  const edition = built.get('newsletter/nl-2025-03-12-synthetic-first/index.html');
+  const edition = built.get('blog/nl-2025-03-12-synthetic-first/index.html');
   assert.match(edition, /First published in Spanish on <time datetime="2025-03-12">12 March 2025<\/time> · English translation dated <time datetime="2026-11-20">20 November 2026<\/time>/);
   assert.match(edition, /<a href="https:\/\/newsletter\.example\.com\/p\/synthetic-first" rel="noopener noreferrer">Original edition<\/a>/);
   assert.match(edition, /<ol class="ed-items"><li value="1"><a href="\/news\/nl-2025-03-12-synthetic-first\/01\/">Same headline in two editions<\/a><\/li><li value="2">/);
   assert.doesNotMatch(edition, /Edición sintética|FIXTURE SINTÉTICO/, 'the Spanish original is never rendered');
   const item = built.get('news/nl-2025-03-12-synthetic-first/02/index.html');
   assert.match(item, /News · item 2 of 2/);
-  assert.match(item, /From the newsletter <a href="\/newsletter\/nl-2025-03-12-synthetic-first\/">Synthetic fixture edition one<\/a>/);
+  assert.match(item, /From the Blog article <a href="\/blog\/nl-2025-03-12-synthetic-first\/">Synthetic fixture edition one<\/a>/);
   assert.match(item, /rel="prev">Previous item<\/a><span><\/span>/);
-  assert.equal(built.has('newsletter/nl-2026-01-20-synthetic-second/index.html'), false, 'a draft translation is not published');
-  const list = built.get('newsletter/index.html');
+  assert.equal(built.has('blog/nl-2026-01-20-synthetic-second/index.html'), false, 'a draft translation is not published');
+  const list = built.get('blog/index.html');
   assert.match(list, /<form class="ed-search" role="search" hidden/);
   assert.match(list, /<h3 id="m-2025-03">March 2025<\/h3>/);
   assert.match(list, /data-ed-text="synthetic fixture edition one/);
-  assert.match(built.get('newsletter/2026/index.html'), /No newsletter editions are published here yet/);
+  assert.match(built.get('blog/2026/index.html'), /No blog articles are published here yet/);
   assert.match(built.get('news/2025/index.html'), /<ol class="ed-items"><li value="1" data-ed-text=/);
   for (const html of built.values()) assert.match(html, /noindex/);
   assert.deepEqual(editorialUrls(store), []);
@@ -193,14 +213,15 @@ test('coverage counts by year, exceptions included, and never declares completen
 
 test('embargo: the switch is refused before embargo_until (Europe/Madrid) and the date must be valid', () => {
   const store = readStore(root);
-  assert.deepEqual(storeProblems(store, { today: '2026-11-26' }), []);
+  assert.ok(storeProblems(store, { today: '2026-11-26' }).some((p) => /published before the embargo date/.test(p)), 'the committed switch would be refused a day early');
   const on = { ...store, config: { ...store.config, published: true } };
   assert.ok(storeProblems(on, { today: '2026-11-26' }).some((p) => /published before the embargo date 2026-11-27/.test(p)));
   assert.deepEqual(storeProblems(on, { today: '2026-11-27' }), []);
   assert.ok(storeProblems({ ...store, config: { ...store.config, embargo_until: '27/11/2026' } }).some((p) => /embargo_until must be YYYY-MM-DD/.test(p)));
   assert.equal(isLive(on.config, '2026-11-26'), false);
   assert.equal(isLive(on.config, '2026-11-27'), true);
-  assert.equal(isLive(store.config, '2030-01-01'), false, 'the committed switch stays off');
+  assert.equal(isLive(store.config, '2026-11-26'), false, 'the committed switch waits for the embargo date');
+  assert.equal(isLive(store.config, '2026-11-27'), true, 'and is live from it');
   assert.equal(madridToday(new Date('2026-11-26T23:30:00Z')), '2026-11-27', 'midnight in Madrid, not UTC');
 });
 
@@ -257,7 +278,7 @@ test('the year scope is configurable from 2025 onwards; the historical default i
   const wider = { ...emptyStore(), config: { ...emptyStore().config, scope: { years: [2025, 2026, 2027] } } };
   assert.deepEqual(planIngest(wider, pkg).problems, []);
   assert.ok(Object.keys(coverage(planIngest(wider, pkg).next).years).includes('2027'));
-  assert.ok(views(planIngest(wider, pkg).next).has('newsletter/2027/index.html'));
+  assert.ok(views(planIngest(wider, pkg).next).has('blog/2027/index.html'));
   const bad = { ...emptyStore(), config: { ...emptyStore().config, scope: { years: [2025, 2027] } } };
   assert.ok(storeProblems(bad).some((p) => /scope\.years must be consecutive years from 2025/.test(p)));
 });

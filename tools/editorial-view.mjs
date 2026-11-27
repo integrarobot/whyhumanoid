@@ -1,4 +1,6 @@
-// Newsletter (/newsletter/) and News (/news/) pages, built by tools/build-pages.mjs with its own page frame.
+// Blog (/blog/) and News (/news/) pages, built by tools/build-pages.mjs with its own page frame. The Blog holds the
+// articles of the Integrarobot newsletter (named Blog on the site, Javier, 27 Nov 2026); /newsletter/ addresses are
+// kept as noindex redirects to the matching /blog/ address. Edition ids keep their nl- prefix.
 // Input: the editions readyEditions() returns (English, reviewed). Spanish originals never reach this module.
 //
 // Markdown is rendered by a small safe renderer: every character of the source is escaped, and only a fixed set of
@@ -70,7 +72,8 @@ export function excerpt(markdown, max = 220) {
 }
 
 // ---------- paths ----------
-export const editionPath = (id) => `/newsletter/${id}/`;
+export const editionPath = (id) => `/blog/${id}/`;
+export const legacyEditionPath = (id) => `/newsletter/${id}/`;
 export const itemPath = (item) => `/news/${item.id}/`;
 export const yearPath = (section, y) => `/${section}/${y}/`;
 
@@ -89,18 +92,18 @@ function editionCards(editions) {
 }
 function itemGroups(editions) {
   return byMonth(editions.filter((e) => e.items.length), (e) => e.published_on).map(([ym, list]) => `<section class="ed-month" data-ed-group><h3 id="m-${ym}">${esc(monthLabel(ym))}</h3>
-${list.map((e) => `<div class="ed-edition" data-ed-group><p class="meta">From the newsletter <a href="${editionPath(e.id)}">${esc(e.title)}</a>, first published in Spanish on ${esc(longDate(e.published_on))}</p>
+${list.map((e) => `<div class="ed-edition" data-ed-group><p class="meta">From the Blog article <a href="${editionPath(e.id)}">${esc(e.title)}</a>, first published in Spanish on ${esc(longDate(e.published_on))}</p>
 <ol class="ed-items">${e.items.map((it) => `<li value="${it.position}" data-ed-text="${esc(`${it.headline} ${excerpt(it.body_markdown, 600)}`.toLowerCase())}"><a href="${itemPath(it)}">${esc(it.headline)}</a>${it.body_markdown ? `<span>${esc(excerpt(it.body_markdown, 180))}</span>` : ''}</li>`).join('')}</ol></div>`).join('\n')}</section>`).join('\n');
 }
 
-const NEWSLETTER_LEDE = 'The Integrarobot newsletter on humanoid robots and physical AI, in English: every article from 2025 and 2026, each with the date it first appeared in Spanish and a link to the original.';
-const NEWS_LEDE = 'Each item from the news roundup of the Integrarobot newsletter, in English, in the order its edition gave it, with a link to that edition and to its sources.';
+const BLOG_LEDE = 'Integrarobot on humanoid robots and physical AI, in English: every article of the Integrarobot newsletter from 2025 and 2026, each with the date it first appeared in Spanish and a link to the original.';
+const NEWS_LEDE = 'Each item from the news roundup of the Integrarobot newsletter, in English, in the order its article gave it, with a link to that article on the Blog and to its sources.';
 const NONE = (what) => `<p class="note">No ${what} are published here yet. They appear once their English text has been reviewed.</p>`;
 
-// Every editorial page: path (repository-relative file) -> HTML. page, crumbs and assetVersion come from
-// tools/build-pages.mjs.
+// Every editorial page: path (repository-relative file) -> HTML. page, crumbs, assetVersion and redirect (the moved-page
+// template) come from tools/build-pages.mjs.
 // While the sections are not live (switch off, or before the embargo date in Europe/Madrid) every page is noindex.
-export function editorialPages(store, { page, crumbs, assetVersion, today = madridToday() }) {
+export function editorialPages(store, { page, crumbs, assetVersion, redirect = null, today = madridToday() }) {
   const noindex = !isLive(store.config, today);
   const years = yearsOf(store.config);
   const editions = readyEditions(store);
@@ -113,16 +116,16 @@ export function editorialPages(store, { page, crumbs, assetVersion, today = madr
     const list = year ? editions.filter((e) => e.published_on.startsWith(String(year))) : editions;
     const isNews = section === 'news';
     const shown = isNews ? list.filter((e) => e.items.length) : list;
-    const title = isNews ? 'Robotics and physical AI news' : 'Integrarobot newsletter';
-    const body = `${year ? crumbs([[`/${section}/`, isNews ? 'News' : 'Newsletter'], [null, String(year)]]) : ''}<p class="kicker">${isNews ? 'News' : 'Newsletter'}</p>
+    const title = isNews ? 'Robotics and physical AI news' : 'Blog';
+    const body = `${year ? crumbs([[`/${section}/`, isNews ? 'News' : 'Blog'], [null, String(year)]]) : ''}<p class="kicker">${isNews ? 'News' : 'Blog'}</p>
 <h1>${esc(year ? `${title}, ${year}` : title)}</h1>
-<p class="lede">${esc(isNews ? NEWS_LEDE : NEWSLETTER_LEDE)}</p>
+<p class="lede">${esc(isNews ? NEWS_LEDE : BLOG_LEDE)}</p>
 ${yearNav(years, section, year)}
-${shown.length ? `${searchForm(isNews ? 'Search the news' : 'Search the newsletter')}\n${isNews ? itemGroups(shown) : editionCards(shown)}` : NONE(isNews ? 'news items' : 'newsletter editions')}`;
+${shown.length ? `${searchForm(isNews ? 'Search the news' : 'Search the blog')}\n${isNews ? itemGroups(shown) : editionCards(shown)}` : NONE(isNews ? 'news items' : 'blog articles')}`;
     const path = year ? yearPath(section, year) : `/${section}/`;
-    return page({ title: `${year ? `${title}, ${year}` : title} · Why Humanoid?`, description: isNews ? NEWS_LEDE : NEWSLETTER_LEDE, path, body, noindex, head: head(), tail });
+    return page({ title: `${year ? `${title}, ${year}` : title} · Why Humanoid?`, description: isNews ? NEWS_LEDE : BLOG_LEDE, path, body, noindex, head: head(), tail });
   };
-  for (const section of ['newsletter', 'news']) {
+  for (const section of ['blog', 'news']) {
     files.set(`${section}/index.html`, listPage(section, null));
     for (const y of years) files.set(`${section}/${y}/index.html`, listPage(section, y));
   }
@@ -134,8 +137,8 @@ ${shown.length ? `${searchForm(isNews ? 'Search the news' : 'Search the newslett
       : e.more_news_status === 'inaccessible'
         ? `<section class="ed-news"><h2>News in this edition</h2><p class="meta">The news roundup of this edition could not be read from the source${e.more_news_note ? `: ${esc(e.more_news_note)}` : ''}.</p></section>`
         : `<section class="ed-news"><h2>News in this edition</h2><p class="meta">This edition has no news roundup.</p></section>`;
-    const body = `${crumbs([['/newsletter/', 'Newsletter'], [yearPath('newsletter', year), year], [null, e.title]])}<article class="ed-article">
-<p class="kicker">Newsletter</p>
+    const body = `${crumbs([['/blog/', 'Blog'], [yearPath('blog', year), year], [null, e.title]])}<article class="ed-article">
+<p class="kicker">Blog</p>
 <h1>${esc(e.title)}</h1>
 ${e.subtitle ? `<p class="lede">${esc(e.subtitle)}</p>\n` : ''}<p class="meta">By ${esc(e.author)} · First published in Spanish on <time datetime="${e.published_on}">${esc(longDate(e.published_on))}</time> · English translation dated <time datetime="${e.translated_on}">${esc(longDate(e.translated_on))}</time> · <a href="${esc(e.source_url)}" rel="noopener noreferrer">Original edition</a></p>
 <div class="ed-body">
@@ -143,7 +146,7 @@ ${renderMarkdown(e.body_markdown)}
 </div>
 ${news}
 </article>`;
-    files.set(`newsletter/${e.id}/index.html`, page({ title: `${e.title} · Newsletter · Why Humanoid?`, description: excerpt(e.subtitle || e.body_markdown, 155) || NEWSLETTER_LEDE, path: editionPath(e.id), body, type: 'article', noindex, head: head() }));
+    files.set(`blog/${e.id}/index.html`, page({ title: `${e.title} · Blog · Why Humanoid?`, description: excerpt(e.subtitle || e.body_markdown, 155) || BLOG_LEDE, path: editionPath(e.id), body, type: 'article', noindex, head: head() }));
   }
 
   for (const it of items) {
@@ -154,10 +157,16 @@ ${news}
     const body = `${crumbs([['/news/', 'News'], [yearPath('news', year), year], [editionPath(e.id), e.title], [null, `Item ${it.position}`]])}<article class="ed-article">
 <p class="kicker">News · item ${it.position} of ${e.items.length}</p>
 <h1>${esc(it.headline)}</h1>
-<p class="meta">From the newsletter <a href="${editionPath(e.id)}">${esc(e.title)}</a> by ${esc(e.author)}, first published in Spanish on <time datetime="${e.published_on}">${esc(longDate(e.published_on))}</time> · English translation dated <time datetime="${e.translated_on}">${esc(longDate(e.translated_on))}</time> · <a href="${esc(e.source_url)}" rel="noopener noreferrer">Original edition</a></p>
+<p class="meta">From the Blog article <a href="${editionPath(e.id)}">${esc(e.title)}</a> by ${esc(e.author)}, first published in Spanish on <time datetime="${e.published_on}">${esc(longDate(e.published_on))}</time> · English translation dated <time datetime="${e.translated_on}">${esc(longDate(e.translated_on))}</time> · <a href="${esc(e.source_url)}" rel="noopener noreferrer">Original edition</a></p>
 ${it.body_markdown ? `<div class="ed-body">\n${renderMarkdown(it.body_markdown)}\n</div>\n` : ''}<nav class="ed-pager" aria-label="Items in this edition">${prev ? `<a href="${itemPath(prev)}" rel="prev">Previous item</a>` : '<span></span>'}${next ? `<a href="${itemPath(next)}" rel="next">Next item</a>` : '<span></span>'}</nav>
 </article>`;
-    files.set(`news/${it.id}/index.html`, page({ title: `${it.headline} · News · Why Humanoid?`, description: excerpt(it.body_markdown, 155) || `News item ${it.position} of the newsletter ${e.title}.`, path: itemPath(it), body, type: 'article', noindex, head: head() }));
+    files.set(`news/${it.id}/index.html`, page({ title: `${it.headline} · News · Why Humanoid?`, description: excerpt(it.body_markdown, 155) || `News item ${it.position} of the Blog article ${e.title}.`, path: itemPath(it), body, type: 'article', noindex, head: head() }));
+  }
+  // Former /newsletter/ addresses: noindex redirects to the matching /blog/ address, never in the sitemap.
+  if (redirect) {
+    files.set('newsletter/index.html', redirect('/blog/', 'the Blog'));
+    for (const y of years) files.set(`newsletter/${y}/index.html`, redirect(yearPath('blog', y), `the Blog, ${y}`));
+    for (const e of editions) files.set(`${legacyEditionPath(e.id).slice(1)}index.html`, redirect(editionPath(e.id), e.title));
   }
   return files;
 }
@@ -167,5 +176,5 @@ export function editorialUrls(store, { today = madridToday() } = {}) {
   if (!isLive(store.config, today)) return [];
   const years = yearsOf(store.config);
   const editions = readyEditions(store);
-  return ['/newsletter/', '/news/', ...years.flatMap((y) => [yearPath('newsletter', y), yearPath('news', y)]), ...editions.map((e) => editionPath(e.id)), ...editions.flatMap((e) => e.items.map(itemPath))];
+  return ['/blog/', '/news/', ...years.flatMap((y) => [yearPath('blog', y), yearPath('news', y)]), ...editions.map((e) => editionPath(e.id)), ...editions.flatMap((e) => e.items.map(itemPath))];
 }

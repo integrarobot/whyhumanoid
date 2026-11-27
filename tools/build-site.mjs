@@ -269,7 +269,7 @@ export function renderCategories(data) {
     <section class="cats-sec" id="categories" aria-labelledby="cats-h">
       <div class="cats-head"><h2 class="h2" id="cats-h">Ten <em>categories</em></h2><p class="lbl">Free to browse · Deployments and Components list every entry, with their detail in the subscription</p></div>
       <ul class="catgrid">${items}</ul>
-      <p class="lbl">Also: <a href="#database">browse every category as a table</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>
+      <p class="lbl">Also: <a href="/blog/">Blog</a> · <a href="/news/">News</a> · <a href="#database">browse every category as a table</a> · <a href="/companies/">every company</a> · <a href="/reports/deployment-records/">deployment records report</a> · <a href="/method/">method</a></p>
     </section>
     <!-- categories:end -->`;
 }

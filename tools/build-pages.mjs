@@ -56,8 +56,9 @@ const CSS_VERSION = createHash('sha256').update(readFileSync(new URL('assets/pag
 if (!readFileSync(new URL('assets/pages.css', root), 'utf8').includes(FOOTER_CSS)) throw new Error('assets/pages.css lacks the shared footer rule (FOOTER_CSS in tools/footer-view.mjs)');
 // Robotics Evaluation Atlas assets, loaded on /benchmarks/ only (their own cache keys, so other pages do not change).
 const assetVersion = (f) => createHash('sha256').update(readFileSync(new URL(f, root))).digest('hex').slice(0, 10);
-// newsletter and news: the editorial sections (tools/editorial-view.mjs), outside the ten categories.
-const GENERATED_DIRS = ['robots', 'companies', 'reports', 'method', 'subscribe', 'newsletter', 'news', ...CATEGORIES.map((c) => c.path.slice(1, -1))];
+// blog and news: the editorial sections (tools/editorial-view.mjs), outside the ten categories; newsletter holds the
+// redirects of the Blog's former addresses.
+const GENERATED_DIRS = ['robots', 'companies', 'reports', 'method', 'subscribe', 'blog', 'newsletter', 'news', ...CATEGORIES.map((c) => c.path.slice(1, -1))];
 
 // ---------- helpers ----------
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -1104,8 +1105,9 @@ export function buildPages(registry = readRegistry()) {
   for (const rb of model.robots) files.set(`${rb.path.slice(1)}index.html`, robotPage(rb, model));
   for (const c of model.companies) files.set(`${c.path.slice(1)}index.html`, companyPage(c, model));
   for (const r of model.otherRobots) files.set(`${r.path.slice(1)}index.html`, otherRobotPage(r, model));
-  // Newsletter and News (editorial/, tools/editorial-view.mjs): noindex and outside the sitemap until published.
-  for (const [f, html] of editorialPages(readEditorialStore(root), { page, crumbs, assetVersion })) files.set(f, html);
+  // Blog and News (editorial/, tools/editorial-view.mjs): noindex and outside the sitemap until live; /newsletter/
+  // addresses redirect to the Blog.
+  for (const [f, html] of editorialPages(readEditorialStore(root), { page, crumbs, assetVersion, redirect: redirectPage })) files.set(f, html);
   // The ten categories, in the confirmed order (access matrix, 23 Nov 2026).
   files.set('humanoids/index.html', humanoidsCategory(model));
   files.set('deployments/index.html', deploymentsCategory(model));
