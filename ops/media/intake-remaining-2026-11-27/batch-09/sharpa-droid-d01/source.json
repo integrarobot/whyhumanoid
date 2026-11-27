@@ -35,5 +35,9 @@
   "mask_method": "ISNET non-generative segmentation",
   "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
   "checked_at": "2026-11-27",
-  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "credit": "Sharpa",
+  "source_page": "https://www.sharpa.com/",
+  "source_context": "The official Sharpa homepage explicitly labels this exact asset D01, next to separate Wave hand products. Shows the whole D01 platform; not the Wave hands. Grey rounded-rectangle background was opaque despite native alpha; ISNET used to exclude it.",
+  "native_alpha": false
 }

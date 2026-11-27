@@ -31,9 +31,10 @@
     1349,
     1722
   ],
-  "context": "Official Tuesday Labs robot portrait, exact alt White Tuesday Labs home robot with square LED eyes and its hands behind its head. Whole actual biped including feet. Review full top/feet; preserve actual phone-like head and hands pose, no added anatomy.",
+  "context": "Official Tuesday Labs portrait. REJECTED: the image ends at the shins and has no complete feet; Codex initial description of full feet was incorrect, detected by independent Claude review before integration.",
   "mask_method": "ISNET non-generative segmentation",
   "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
   "checked_at": "2026-11-27",
-  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "status": "rejected_cropped_shins"
 }

@@ -36,7 +36,11 @@
     "mask_method": "ISNET non-generative segmentation",
     "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Sharpa",
+    "source_page": "https://www.sharpa.com/",
+    "source_context": "The official Sharpa homepage explicitly labels this exact asset D01, next to separate Wave hand products. Shows the whole D01 platform; not the Wave hands. Grey rounded-rectangle background was opaque despite native alpha; ISNET used to exclude it.",
+    "native_alpha": false
   },
   {
     "id": 84,
@@ -75,7 +79,11 @@
     "mask_method": "native alpha",
     "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "SwitchBot",
+    "source_page": "https://eu.switch-bot.com/",
+    "source_context": "Official SwitchBot homepage onero H1 card, exact alt onero H1. Full wheeled robot including whole base. Native figure, not the separate robotic arm or fan.",
+    "native_alpha": true
   },
   {
     "id": 88,
@@ -114,7 +122,11 @@
     "mask_method": "native alpha",
     "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Humanoid",
+    "source_page": "https://thehumanoid.ai/",
+    "source_context": "Humanoid homepage reliability-robot.png full wheeled platform. Catalogue explicitly allows Alpha Wheeled and Alpha Bipedal, not interchangeable; this depicts the wheeled configuration, which alt/provenance must name. Independently check identification against source page.",
+    "native_alpha": true
   },
   {
     "id": 94,
@@ -153,7 +165,11 @@
     "mask_method": "native alpha",
     "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "UniX AI",
+    "source_page": "https://www.unix-group.ai/",
+    "source_context": "Official UniX homepage product image explicitly labelled Wanda 2.0. Generic Wanda family catalogue, separate Martian biped not used. Name 2.0 shown in alt/provenance; not an assertion all Wanda generations look identical.",
+    "native_alpha": true
   },
   {
     "id": 98,
@@ -192,46 +208,54 @@
     "mask_method": "ISNET non-generative segmentation",
     "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Weave Robotics",
+    "source_page": "https://www.weaverobotics.com/",
+    "source_context": "Official Weave homepage exact file isaac-0-front.webp with alt Isaac0. Generic catalogue Isaac has unresolved generation/mobility caveat; name Isaac0 shown, do not call Isaac1 or infer powered locomotion. Whole two-arm column platform and caster/base remain. No catalogue data change.",
+    "native_alpha": false
   },
   {
-    "id": 131,
-    "slug": "tuesday-labs-voxel-series-1",
-    "manufacturer": "Tuesday Labs",
-    "model": "Voxel Series-1",
-    "public_page": "https://whyhumanoid.com/humanoids/tuesday-labs-voxel-series-1-131/",
-    "page": "https://tuesdaylabs.com/",
-    "source_url": "https://tuesdaylabs.com/_next/image?url=%2Fimages%2Fhome%2Frobot-portrait.jpg&w=3840&q=75&dpl=dpl_9W1G1tixftkcXvw18tsyTsH4hTAi",
+    "id": 72,
+    "slug": "realbotix-aria",
+    "manufacturer": "Realbotix",
+    "model": "Aria",
+    "public_page": "https://whyhumanoid.com/humanoids/realbotix-aria-72/",
+    "page": "https://www.realbotix.com/",
+    "source_url": "https://www.realbotix.com/_next/image?url=%2Frobots%2Faria-full-body.jpg&w=3840&q=75&dpl=dpl_CvS1HghmeWVK3z4WA2ULrC68dwiS",
     "original": "original.img",
     "original_size": [
-      1500,
-      2000
+      1599,
+      2132
     ],
-    "original_sha256": "88a71d026c8c904cb9de1a1b1120e7936c125379554bcf9ab2d14a10fe63195c",
-    "mask_sha256": "a4253c151978e2cbd4076cf14bd956287e1a24575b2dadb5d2fd96c3bd839237",
-    "prepared_sha256": "4114ce11c5a14447e2719ec713fc485ff38d6a0f391773c30fa1409fbb5d6e7f",
+    "original_sha256": "814b9618d3070c559274ea465d410852a511fc8f6c77a9b9a82003e4d3a07a6e",
+    "mask_sha256": "dc9767f10342202739f23f3ae6a7da5ad1c3ede18837794f8f0e0cb639bd420a",
+    "prepared_sha256": "bb511aa5a58186d793313626046acb81e7d365a1cee9c34514cb80bce9d4a889",
     "roi": [
       0,
       0,
-      1500,
-      2000
+      1599,
+      2132
     ],
     "bbox": [
-      143,
-      318,
-      1452,
-      2000
+      426,
+      99,
+      1209,
+      2025
     ],
     "border": 20,
     "size": [
-      1349,
-      1722
+      823,
+      1966
     ],
-    "context": "Official Tuesday Labs robot portrait, exact alt White Tuesday Labs home robot with square LED eyes and its hands behind its head. Whole actual biped including feet. Review full top/feet; preserve actual phone-like head and hands pose, no added anatomy.",
+    "context": "Official Realbotix homepage exact image aria-full-body.jpg, alt Aria, a full-body Series1, standing on its lit base. Whole named robot, both hands and feet and entire circular display base. Name Aria Series1 shown. Source RGB retained; grey studio background/floor masked.",
     "mask_method": "ISNET non-generative segmentation",
-    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Realbotix",
+    "source_page": "https://www.realbotix.com/",
+    "source_context": "Official Realbotix homepage exact image aria-full-body.jpg, alt Aria, a full-body Series1, standing on its lit base. Whole named robot, both hands and feet and entire circular display base. Name Aria Series1 shown. Source RGB retained; grey studio background/floor masked.",
+    "native_alpha": false
   },
   {
     "id": 133,
@@ -270,7 +294,11 @@
     "mask_method": "ISNET non-generative segmentation",
     "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "MABEL project",
+    "source_page": "https://robotmabel.github.io/website/index.html",
+    "source_context": "Official MABEL project website image caption MABEL standing in front of a grey curtain. Whole robot with both antennas, manipulators, support column, cables and base. Curtain masked; source RGB/native scale retained.",
+    "native_alpha": false
   },
   {
     "id": 189,
@@ -309,7 +337,11 @@
     "mask_method": "ISNET non-generative segmentation",
     "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Linkerbot",
+    "source_page": "https://www.linkerbot.cn/details/LinkerHumanoid/",
+    "source_context": "Official exact Linker Humanoid page image detail-2.png. Whole wheeled platform, not cropped living-room torso. Native alpha had grey opaque background; ISNET plus interior opacity correction excludes it without RGB edits.",
+    "native_alpha": false
   },
   {
     "id": 192,
@@ -348,7 +380,11 @@
     "mask_method": "native alpha",
     "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "Menlo",
+    "source_page": "https://menlo.ai/asimov-1",
+    "source_context": "Official Menlo Asimov1 page exact image asimov-orange-full-front-cutout.webp, alt Asimov1 humanoid robot, front view. Whole orange finished model with both feet, not exploded kit/build stages or chair accessory.",
+    "native_alpha": true
   },
   {
     "id": 203,
@@ -387,6 +423,10 @@
     "mask_method": "native alpha",
     "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
     "checked_at": "2026-11-27",
-    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+    "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+    "credit": "ugo",
+    "source_page": "https://ugo.plus/ai/ugo-nova/",
+    "source_context": "Official ugo Nova product page exact img_nova_spec.png in specification section. Complete wheeled platform with grippers and base. No human legs added.",
+    "native_alpha": true
   }
 ]

@@ -35,5 +35,9 @@
   "mask_method": "ISNET non-generative segmentation",
   "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
   "checked_at": "2026-11-27",
-  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "credit": "Linkerbot",
+  "source_page": "https://www.linkerbot.cn/details/LinkerHumanoid/",
+  "source_context": "Official exact Linker Humanoid page image detail-2.png. Whole wheeled platform, not cropped living-room torso. Native alpha had grey opaque background; ISNET plus interior opacity correction excludes it without RGB edits.",
+  "native_alpha": false
 }

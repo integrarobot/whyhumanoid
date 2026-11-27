@@ -35,5 +35,9 @@
   "mask_method": "native alpha",
   "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
   "checked_at": "2026-11-27",
-  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "credit": "UniX AI",
+  "source_page": "https://www.unix-group.ai/",
+  "source_context": "Official UniX homepage product image explicitly labelled Wanda 2.0. Generic Wanda family catalogue, separate Martian biped not used. Name 2.0 shown in alt/provenance; not an assertion all Wanda generations look identical.",
+  "native_alpha": true
 }

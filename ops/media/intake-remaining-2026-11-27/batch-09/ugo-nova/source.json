@@ -35,5 +35,9 @@
   "mask_method": "native alpha",
   "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
   "checked_at": "2026-11-27",
-  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "credit": "ugo",
+  "source_page": "https://ugo.plus/ai/ugo-nova/",
+  "source_context": "Official ugo Nova product page exact img_nova_spec.png in specification section. Complete wheeled platform with grippers and base. No human legs added.",
+  "native_alpha": true
 }

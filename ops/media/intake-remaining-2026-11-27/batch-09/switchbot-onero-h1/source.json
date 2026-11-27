@@ -35,5 +35,9 @@
   "mask_method": "native alpha",
   "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
   "checked_at": "2026-11-27",
-  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "credit": "SwitchBot",
+  "source_page": "https://eu.switch-bot.com/",
+  "source_context": "Official SwitchBot homepage onero H1 card, exact alt onero H1. Full wheeled robot including whole base. Native figure, not the separate robotic arm or fan.",
+  "native_alpha": true
 }

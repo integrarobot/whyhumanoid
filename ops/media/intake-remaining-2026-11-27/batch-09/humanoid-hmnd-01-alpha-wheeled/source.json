@@ -35,5 +35,9 @@
   "mask_method": "native alpha",
   "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
   "checked_at": "2026-11-27",
-  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent."
+  "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
+  "credit": "Humanoid",
+  "source_page": "https://thehumanoid.ai/",
+  "source_context": "Humanoid homepage reliability-robot.png full wheeled platform. Catalogue explicitly allows Alpha Wheeled and Alpha Bipedal, not interchangeable; this depicts the wheeled configuration, which alt/provenance must name. Independently check identification against source page.",
+  "native_alpha": true
 }
