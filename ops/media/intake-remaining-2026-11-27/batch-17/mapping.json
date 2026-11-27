@@ -1,0 +1,37 @@
+{
+  "batch": 17,
+  "intake": "ops/media/intake-remaining-2026-11-27/batch-17",
+  "branch": "codex/image-sources-remaining",
+  "commit": "c21bf62 (candidates-44), 56c65d0 (candidates-45), 5c11af4 (candidates-46) and acda4f4 (candidates-47)",
+  "scope": "All missing images (Javier, 27 Nov 2026)",
+  "items": {
+    "122": {
+      "slug": "xyz-deux",
+      "alt": "DEUX by XYZ, full platform, front view, two arms on a column and base, manufacturer product render",
+      "credit": "Image: XYZ, DEUX manufacturer product render, mobile dual-arm platform",
+      "identity": "The front product render on XYZ's DEUX page (native 682 × 914, with its own transparency): the whole mobile dual-arm platform, with the sensor crossbar on top, both three-finger hands, the column and the complete base. It has no head or legs, and none are added. Cropped and padded only.",
+      "quality": null
+    },
+    "12": {
+      "slug": "beyond-imagination-beomni",
+      "alt": "Beomni by Beyond Imagination, full body, three-quarter view, on its wheeled base, manufacturer press image",
+      "credit": "Image: Beyond Imagination, Beomni manufacturer press image (2023), via Newswire",
+      "identity": "The press image that Beyond Imagination's News page embeds with its release of 7 August 2023, served by Newswire (native 1200 × 628): the whole Beomni, with head and its two thin antennas, both white hands, the black chassis and its two large and two small wheels. The white background is excluded by the alpha mask.",
+      "quality": null
+    },
+    "156": {
+      "slug": "limx-luna",
+      "alt": "Luna by LimX Dynamics, full body, walking, manufacturer brochure render",
+      "credit": "Image: LimX Dynamics, Luna manufacturer brochure render (June 2026), walking configuration",
+      "identity": "The large walking figure on page 2 of LimX Dynamics' Luna brochure of 29 June 2026 (embedded page image, native 3509 × 2482): the whole robot with head, both open hands and both feet, the rear one raised. The LIMX Luna lettering behind it, the smaller figures, the page graphics and the shadow are excluded by the alpha mask.",
+      "quality": null
+    },
+    "213": {
+      "slug": "geekplus-gino-1",
+      "alt": "Gino 1 by Geekplus, full body, rear view, with its backpack basket, on its column and wheeled base, still from the official video",
+      "credit": "Image: Geekplus, Gino 1 official video still, rear view with backpack basket (2026)",
+      "identity": "Frame 4238 (169.52 s) of Geekplus' video of 13 April 2026, at its native 1920 × 1080: the whole Gino 1 seen from behind, with head, both hands, the white slotted backpack basket and its side cable, the column and the complete wheeled base. It is a rear view; the hidden front is not reconstructed. The warehouse shelving, the floor and its reflection are excluded by the alpha mask, and the subtitles lie below the figure.",
+      "quality": null
+    }
+  }
+}

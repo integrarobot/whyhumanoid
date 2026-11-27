@@ -2377,6 +2377,66 @@
         "credit": "Image: GAC Group, GoMate manufacturer product render (2024), video still via Gasgoo Auto News",
         "provenance": "ops/media/robots/gac-gomate/PROVENANCE.md"
       }
+    },
+    "122": {
+      "recorded": {
+        "Lab": "XYZ",
+        "Robot": "Deux"
+      },
+      "image": {
+        "src": "/assets/robots/xyz-deux/xyz-deux-full-body.webp",
+        "fallback": "/assets/robots/xyz-deux/xyz-deux-full-body.png",
+        "width": 382,
+        "height": 785,
+        "alt": "DEUX by XYZ, full platform, front view, two arms on a column and base, manufacturer product render",
+        "credit": "Image: XYZ, DEUX manufacturer product render, mobile dual-arm platform",
+        "provenance": "ops/media/robots/xyz-deux/PROVENANCE.md"
+      }
+    },
+    "12": {
+      "recorded": {
+        "Lab": "Beyond Imagination",
+        "Robot": "Beomni"
+      },
+      "image": {
+        "src": "/assets/robots/beyond-imagination-beomni/beyond-imagination-beomni-full-body.webp",
+        "fallback": "/assets/robots/beyond-imagination-beomni/beyond-imagination-beomni-full-body.png",
+        "width": 306,
+        "height": 567,
+        "alt": "Beomni by Beyond Imagination, full body, three-quarter view, on its wheeled base, manufacturer press image",
+        "credit": "Image: Beyond Imagination, Beomni manufacturer press image (2023), via Newswire",
+        "provenance": "ops/media/robots/beyond-imagination-beomni/PROVENANCE.md"
+      }
+    },
+    "156": {
+      "recorded": {
+        "Lab": "LimX",
+        "Robot": "Luna"
+      },
+      "image": {
+        "src": "/assets/robots/limx-luna/limx-luna-full-body.webp",
+        "fallback": "/assets/robots/limx-luna/limx-luna-full-body.png",
+        "width": 317,
+        "height": 919,
+        "alt": "Luna by LimX Dynamics, full body, walking, manufacturer brochure render",
+        "credit": "Image: LimX Dynamics, Luna manufacturer brochure render (June 2026), walking configuration",
+        "provenance": "ops/media/robots/limx-luna/PROVENANCE.md"
+      }
+    },
+    "213": {
+      "recorded": {
+        "Lab": "Geek+",
+        "Robot": "Gino 1"
+      },
+      "image": {
+        "src": "/assets/robots/geekplus-gino-1/geekplus-gino-1-full-body.webp",
+        "fallback": "/assets/robots/geekplus-gino-1/geekplus-gino-1-full-body.png",
+        "width": 354,
+        "height": 757,
+        "alt": "Gino 1 by Geekplus, full body, rear view, with its backpack basket, on its column and wheeled base, still from the official video",
+        "credit": "Image: Geekplus, Gino 1 official video still, rear view with backpack basket (2026)",
+        "provenance": "ops/media/robots/geekplus-gino-1/PROVENANCE.md"
+      }
     }
   }
 }

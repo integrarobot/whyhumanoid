@@ -1,0 +1,134 @@
+[
+  {
+    "id": 122,
+    "slug": "xyz-deux-complete-original-alpha",
+    "credit": "XYZ",
+    "source_page": "https://xyzcorp.imweb.me/DEUX",
+    "source_url": "https://cdn.imweb.me/thumbnail/20260622/8549da12deb75.png",
+    "source_context": "Exact DEUX maker product page, native682x914 existing clean frontal manufacturer product render with TRUE original alpha. Whole mobile dual-arm platform, top crossbar with two sensors, both original three-finger grippers and full pedestal/base intact with margins. No separate human-style head or legs by design: never add these. Root examined whole original native image; no callout annotations, floor or people. Use original alpha, crop/pad20px only, keep native RGB/resolution. Caption XYZ, DEUX manufacturer product render, mobile dual-arm platform. Do not use adjacent cartoon hospitality scenes/illustrations, technicalwireframe boundingbox or humancomparison drawings. This source is direct linked PNG in final product section, not a newly generated URDF render. No model/spec/category change.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining c21bf62, candidates-44",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha; the PNG linked by the maker carries its own alpha; cropped and padded only",
+    "roi": [
+      0,
+      0,
+      682,
+      914
+    ],
+    "bbox": [
+      168,
+      89,
+      510,
+      834
+    ],
+    "border": 20,
+    "size": [
+      382,
+      785
+    ],
+    "native_alpha": true,
+    "original_sha256": "1af44aa098a80026ec303f8b281a294b173df0223a4891a60b5935f0a8e13502",
+    "prepared_sha256": "f9345a1c06923a73ea7f732e4d583486db89d49400bfc2cd8015581fefd9a0f5",
+    "mask_sha256": "78f2093f96a3df77083c4d65df99673cb4f7f1634220129db5abb30079f3d78a"
+  },
+  {
+    "id": 12,
+    "slug": "beomni-2023-manufacturer-press-image",
+    "credit": "Beyond Imagination via Newswire",
+    "source_page": "https://www.beyondimagination.com/news/",
+    "source_url": "https://cdn.nwe.io/files/x/df/40/30c398e3ff7354e861425fbbd458.jpg",
+    "source_context": "Maker News page directly embeds this Newswire CDN image alongside its own manufacturing-partnership release dated2023-08-07. Native1200x628 single complete blue Beomni on white. Whole actual head incl two thin blue antennae, both real white hands, full original black wheeled chassis including side wheels and two small supportcasters. Body spans approximatelyy50..578 (~528px), so native crop plus20px margin meets500 minimum without enlargement. Root visually examined original full resolution. No person/prop overlaps robot, no table hiding base, no extraneous brand text on background. Alpha only, keep narrow antennae/wheelspokes and native RGB; avoid chopping fingertips and supportcasterarm, remove white background without perforating white hands. Honest caption BeyondImagination, Beomni manufacturer press image (2023), via Newswire. Historicalmakerconfiguration, no claim currenthardwareversion or autonomousdeployment. Different from lowquality homepagecollage/teddyface sources, allparts are visible here.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 56c65d0, candidates-45",
+    "mask_method": "BiRefNet general (rembg, mask only), with an alpha-only correction above the head, Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-keyed-mask.png; levels 85..230; the thin blue antennas and head arcs carried a white rim of the press-photo background; inside x 580..680, y 40..92 of the original the alpha is lowered by distance to white (transparent at 8 or less, kept at 26 or more), except over the white LED on top of the head (x 626..648, y 69..87), which is left as masked; segmentation-birefnet-keyed-mask.png is the mask used. The arcs are one or two pixels wide in the JPEG and keep a faint light edge",
+    "roi": [
+      430,
+      30,
+      760,
+      600
+    ],
+    "bbox": [
+      33,
+      20,
+      299,
+      547
+    ],
+    "border": 20,
+    "size": [
+      306,
+      567
+    ],
+    "native_alpha": false,
+    "original_sha256": "f63e0b5d741ca2efe7a14408705cdbafe121c251728333bdb0318c27cb51f3bf",
+    "prepared_sha256": "af5f376d79476cbfd251d2ab1c29a36c40bf439258f4904028ce18345c41d2d2",
+    "mask_sha256": "ead0465482d71eae18f5d301fb837c47187af7ad3981bde1d73b4aee5be56242"
+  },
+  {
+    "id": 156,
+    "slug": "limx-luna-brochure-whole-walk",
+    "credit": "LimX Dynamics",
+    "source_page": "https://www.limxdynamics.com/en/products/luna/download",
+    "source_url": "https://www.limxdynamics.com/pdf/LimX_Luna_Brochure_20260629.pdf",
+    "source_context": "Manufacturer official Luna brochure2026-06-29, logicalpage2 RGB native3509x2482 imageobject7 (wholepage flattened; do not rasterize/rescale). Select ONLY large single full Luna walking render in UPPER RIGHT of page, approximateROI x2350..3000,y200..1200. Root inspected native crop: complete head, both actual palm-shaped hand models, both entire feet including raised rearfoot; no annotations painted ON body and no other robot overlaps this figure. White LIMXLUNA lettering behind/above head remains OUTSIDE robot contour, remove via alpha with all graphics/floor/shadow. Body~880px high, qualifies native without enlargement. Caption LimXDynamics, Luna manufacturer brochure render (June2026), walking configuration. Preserve original fabric/lightmetal RGB and actual smooth palm-shaped hands, do not add dexterousfingers. Lowerleft small front, dancing montage, torso and partiallyoverlapping frontcoverfigures are not selected. This solves earlier lowresolution nativevideo frames; no data/spec changes.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 5c11af4, candidates-46",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240",
+    "roi": [
+      2330,
+      180,
+      3020,
+      1230
+    ],
+    "bbox": [
+      154,
+      83,
+      431,
+      962
+    ],
+    "border": 20,
+    "size": [
+      317,
+      919
+    ],
+    "native_alpha": false,
+    "original_sha256": "e988ae54e7f090757060282e7f43caee0b5681740f2f78899ecdffc4640af5ac",
+    "prepared_sha256": "a1fb229923cfcb1d311c213035e4ec503b9d868e7b1460263b4a374b7c90ce2d",
+    "mask_sha256": "c7d6ce45ebe2dc86251a272cffa257a830070e28f1307be642d214f3f75c863d"
+  },
+  {
+    "id": 213,
+    "slug": "geekplus-gino1-native-rear-view",
+    "credit": "Geekplus",
+    "source_page": "https://www.youtube.com/watch?v=GFYhyjurf_U",
+    "source_url": "https://www.youtube.com/watch?v=GFYhyjurf_U",
+    "source_context": "Official Geekplus Logistics & Warehouse Automation channel video. Select single complete robot in REAR VIEW at nativeframe4238 (169.52seconds/25fps,1920x1080), approximateROI x1000..1390 y160..930. Head, both real hands, whole column and wheeled base complete, without another object/person overlapping outline. Keep white slotted BACKPACK BASKET attached to back as part of this actual configuration; never pretend frontview or erase basket/reconstruct hidden back. Nativeframe examined: wholebody~720px high, no upscaling. Remove floor/reflection/LEDglow spill and all shelf/otherrobot/text, preserving actual chassis lights and supportcaster hardware. Shelf bolt/rail at left elbow is background; actual black basket-side cable near right elbow belongs to robot, inspect carefully at native. Mandatory caption Geekplus, Gino1 official video still, rear view with backpack basket (2026). Video identifies exact Gino1; no inference of autonomy/performance from image. Frontviews in this video generally clip base; aerial frontframe4069 whole but~354px body and not enough native resolution, so not selected. This solves previously cropped still; no specs/modelcategory changes.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining acda4f4, candidates-47",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240",
+    "roi": [
+      990,
+      150,
+      1400,
+      940
+    ],
+    "bbox": [
+      40,
+      38,
+      354,
+      755
+    ],
+    "border": 20,
+    "size": [
+      354,
+      757
+    ],
+    "native_alpha": false,
+    "original_sha256": "0cb64e184eaa56896c015a554b4edae472bbfa7e37b701a0f77c092a3695c02d",
+    "prepared_sha256": "51a56f075fcf83528c91fdca4ff477e81f9c8022bbe832acf7433497e8dd0037",
+    "mask_sha256": "183ef018c91ea66040438041041ee6d5d8157da667b37db73fef7fbe17e096f0"
+  }
+]
