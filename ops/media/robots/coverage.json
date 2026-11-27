@@ -440,6 +440,25 @@
         "Published with PR 251 (reviewed head eaf3afd, CI 46064317211; merge 43d8984), 27 Nov 2026; Pages 46064669376 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 17,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        122,
+        12,
+        156,
+        213
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-17/: candidates-44 (c21bf62: XYZ DEUX product render with its own alpha), candidates-45 (56c65d0: Beomni 2023 press image via Newswire), candidates-46 (5c11af4: LimX Luna brochure render, June 2026) and candidates-47 (acda4f4: Geekplus Gino 1 video still, rear view). Every cutout prepared by Claude, alpha only: DEUX from its own alpha; the others from BiRefNet masks kept beside the originals, Beomni with the white rim of its antennas and head arcs lowered by distance to white.",
+        "Four records, not ten: the valid sources of the latest sweep. The records still without an image are not resolved by this batch; Codex keeps an individual note of the limits found for each, which does not mean that no image of them exists.",
+        "Captions name the kind of image and the variant: DEUX manufacturer product render, mobile dual-arm platform (no head or legs added); Beomni manufacturer press image (2023), via Newswire; Luna manufacturer brochure render (June 2026), walking configuration; Gino 1 official video still, rear view with backpack basket (2026). Records' specifications unchanged."
+      ]
     }
   ],
   "robots": {
@@ -1587,8 +1606,19 @@
         "Lab": "Beyond Imagination",
         "Robot": "Beomni"
       },
-      "sources": [],
-      "status": "no_valid_source",
+      "sources": [
+        {
+          "file": "https://cdn.nwe.io/files/x/df/40/30c398e3ff7354e861425fbbd458.jpg",
+          "page": "https://www.beyondimagination.com/news/",
+          "sha256": "f63e0b5d741ca2efe7a14408705cdbafe121c251728333bdb0318c27cb51f3bf",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 306 × 567 with 20 px padding."
+        }
+      ],
+      "status": "integrated",
       "page": "https://www.beyondimagination.com/",
       "research": [
         {
@@ -2522,7 +2552,7 @@
         "Lab": "Geek+",
         "Robot": "Gino 1"
       },
-      "status": "no_valid_source",
+      "status": "integrated",
       "page": "https://www.geekplus.com/en",
       "notes": "Geek+ (Geekplus) Gino 1: wheeled warehouse humanoid, identified as Gino 1 in Geekplus's own news or product page; shown whole with its base.",
       "research": [
@@ -2532,7 +2562,19 @@
           "note": "Search only: Geek+ (Geekplus, HKEX 2590) launched Gino 1 on 10 Feb 2026 as a wheeled warehouse humanoid and showed it at LogiMAT 2026 (Stuttgart); no PR Newswire launch release found (Geekplus's 31 Mar 2026 results release mentions humanoids). The official source would be geekplus.com/en news or its HKEX announcements (for example hkexnews 2026/0205/2026020502224.pdf, to be checked for images)."
         }
       ],
-      "reason": "The official Gino 1 thumbnail found crops the wheeled base; no complete official image found among the sources reviewed (Codex, 27 Nov 2026)."
+      "reason": "The official Gino 1 thumbnail found crops the wheeled base; no complete official image found among the sources reviewed (Codex, 27 Nov 2026).",
+      "sources": [
+        {
+          "file": "https://www.youtube.com/watch?v=GFYhyjurf_U",
+          "page": "https://www.youtube.com/watch?v=GFYhyjurf_U",
+          "sha256": "0cb64e184eaa56896c015a554b4edae472bbfa7e37b701a0f77c092a3695c02d",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 354 × 757 with 20 px padding."
+        }
+      ]
     },
     "36": {
       "recorded": {
@@ -3650,9 +3692,20 @@
         "Lab": "XYZ",
         "Robot": "Deux"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://xyzcorp.imweb.me/DEUX",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://cdn.imweb.me/thumbnail/20260622/8549da12deb75.png",
+          "page": "https://xyzcorp.imweb.me/DEUX",
+          "sha256": "1af44aa098a80026ec303f8b281a294b173df0223a4891a60b5935f0a8e13502",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 382 × 785 with 20 px padding."
+        }
+      ]
     },
     "123": {
       "recorded": {
@@ -3746,9 +3799,20 @@
         "Lab": "LimX",
         "Robot": "Luna"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.limxdynamics.com/en/products/luna",
-      "result": "Sources received 27 Nov 2026: the product illustration luna-6-2.png carries a glow halo that is part of the artwork; frame 203 of the official gymnastics animation gives a whole, clean robot but only 300 × 371 px, under the 500 px minimum height (frame 81 overlaps a second robot). A larger whole source is still sought."
+      "sources": [
+        {
+          "file": "https://www.limxdynamics.com/pdf/LimX_Luna_Brochure_20260629.pdf",
+          "page": "https://www.limxdynamics.com/en/products/luna/download",
+          "sha256": "e988ae54e7f090757060282e7f43caee0b5681740f2f78899ecdffc4640af5ac",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 317 × 919 with 20 px padding."
+        }
+      ]
     },
     "160": {
       "recorded": {
