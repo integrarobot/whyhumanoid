@@ -23,6 +23,36 @@
         "note": "On 1X's website. Price, availability and delivery are set there."
       }
     },
+    "2": {
+      "recorded": {
+        "Lab": "AeiROBOT",
+        "Robot": "Alice"
+      },
+      "image": {
+        "src": "/assets/robots/aeirobot-alice/aeirobot-alice-full-body.webp",
+        "fallback": "/assets/robots/aeirobot-alice/aeirobot-alice-full-body.png",
+        "width": 1295,
+        "height": 3249,
+        "alt": "ALICE 4 by AeiROBOT, full body, front view, standing",
+        "credit": "Image: AeiROBOT",
+        "provenance": "ops/media/robots/aeirobot-alice/PROVENANCE.md"
+      }
+    },
+    "4": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "X1"
+      },
+      "image": {
+        "src": "/assets/robots/agibot-x1/agibot-x1-full-body.webp",
+        "fallback": "/assets/robots/agibot-x1/agibot-x1-full-body.png",
+        "width": 331,
+        "height": 687,
+        "alt": "X1 by AgiBot, full body, front view, standing",
+        "credit": "Image: AgiBot",
+        "provenance": "ops/media/robots/agibot-x1/PROVENANCE.md"
+      }
+    },
     "6": {
       "recorded": {
         "Lab": "Agility",
@@ -173,6 +203,111 @@
         "provenance": "ops/media/robots/unitree-h2-x/PROVENANCE.md"
       }
     },
+    "143": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "A2 (A2 Ultra / A2 Lite)"
+      },
+      "image": {
+        "src": "/assets/robots/agibot-a2/agibot-a2-full-body.webp",
+        "fallback": "/assets/robots/agibot-a2/agibot-a2-full-body.png",
+        "width": 804,
+        "height": 1736,
+        "alt": "A2 Ultra by AgiBot (A2 family), full body, front view, standing with one hand raised",
+        "credit": "Image: AgiBot",
+        "provenance": "ops/media/robots/agibot-a2/PROVENANCE.md"
+      }
+    },
+    "144": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "A3"
+      },
+      "image": {
+        "src": "/assets/robots/agibot-a3/agibot-a3-full-body.webp",
+        "fallback": "/assets/robots/agibot-a3/agibot-a3-full-body.png",
+        "width": 230,
+        "height": 696,
+        "alt": "A3 by AgiBot, full body, three-quarter view, standing",
+        "credit": "Image: AgiBot",
+        "provenance": "ops/media/robots/agibot-a3/PROVENANCE.md"
+      }
+    },
+    "145": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "X2 (X2 Neo / X2 Ultra)"
+      },
+      "image": {
+        "src": "/assets/robots/agibot-x2/agibot-x2-full-body.webp",
+        "fallback": "/assets/robots/agibot-x2/agibot-x2-full-body.png",
+        "width": 454,
+        "height": 920,
+        "alt": "X2 Ultra by AgiBot (X2 family), full body, front view, standing",
+        "credit": "Image: AgiBot",
+        "provenance": "ops/media/robots/agibot-x2/PROVENANCE.md"
+      }
+    },
+    "146": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "G2"
+      },
+      "image": {
+        "src": "/assets/robots/agibot-g2/agibot-g2-full-body.webp",
+        "fallback": "/assets/robots/agibot-g2/agibot-g2-full-body.png",
+        "width": 309,
+        "height": 821,
+        "alt": "G2 by AgiBot, whole robot on its wheeled base, front view",
+        "credit": "Image: AgiBot",
+        "provenance": "ops/media/robots/agibot-g2/PROVENANCE.md"
+      }
+    },
+    "147": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "G1"
+      },
+      "image": {
+        "src": "/assets/robots/agibot-g1/agibot-g1-full-body.webp",
+        "fallback": "/assets/robots/agibot-g1/agibot-g1-full-body.png",
+        "width": 775,
+        "height": 1203,
+        "alt": "G1 by AgiBot, whole robot on its wheeled base, three-quarter view, one arm extended",
+        "credit": "Image: AgiBot",
+        "provenance": "ops/media/robots/agibot-g1/PROVENANCE.md"
+      }
+    },
+    "148": {
+      "recorded": {
+        "Lab": "Booster",
+        "Robot": "T2"
+      },
+      "image": {
+        "src": "/assets/robots/booster-t2/booster-t2-full-body.webp",
+        "fallback": "/assets/robots/booster-t2/booster-t2-full-body.png",
+        "width": 874,
+        "height": 755,
+        "alt": "T2 by Booster Robotics, full body, mid-jump",
+        "credit": "Image: Booster Robotics",
+        "provenance": "ops/media/robots/booster-t2/PROVENANCE.md"
+      }
+    },
+    "149": {
+      "recorded": {
+        "Lab": "Booster",
+        "Robot": "K1"
+      },
+      "image": {
+        "src": "/assets/robots/booster-k1/booster-k1-full-body.webp",
+        "fallback": "/assets/robots/booster-k1/booster-k1-full-body.png",
+        "width": 744,
+        "height": 776,
+        "alt": "K1 by Booster Robotics, full body, one leg raised in a kick",
+        "credit": "Image: Booster Robotics",
+        "provenance": "ops/media/robots/booster-k1/PROVENANCE.md"
+      }
+    },
     "150": {
       "recorded": {
         "Lab": "Engineai",
@@ -246,6 +381,21 @@
         "alt": "RB-Y1 by Rainbow Robotics, whole robot on its wheeled base, front view",
         "credit": "Image: Rainbow Robotics",
         "provenance": "ops/media/robots/rainbow-rb-y1/PROVENANCE.md"
+      }
+    },
+    "165": {
+      "recorded": {
+        "Lab": "Anigon",
+        "Robot": "FA-L Series"
+      },
+      "image": {
+        "src": "/assets/robots/anigon-fa-l/anigon-fa-l-full-body.webp",
+        "fallback": "/assets/robots/anigon-fa-l/anigon-fa-l-full-body.png",
+        "width": 753,
+        "height": 2044,
+        "alt": "FA-L Series robot by Anigon, whole robot on its wheeled base, front view, one arm raised",
+        "credit": "Image: Anigon",
+        "provenance": "ops/media/robots/anigon-fa-l/PROVENANCE.md"
       }
     },
     "196": {

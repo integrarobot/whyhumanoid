@@ -1,0 +1,29 @@
+{
+  "id": 144,
+  "slug": "agibot-a3",
+  "mask_model": "isnet-general-use",
+  "roi": null,
+  "crop_bbox": [
+    301,
+    61,
+    511,
+    737
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "pending-visual-review",
+  "asset_url": "https://store.agibot.com/cdn/shop/files/1_1.png?v=1786349615",
+  "source_page": "https://store.agibot.com/products/a3",
+  "original_sha256": "9b1af46a6b3cc368bc29332cd24e051bb0e7f7ddf0bf9ece09d7332534983cd5",
+  "prepared_sha256": "83e488a3ba6973ccd3a1b2892926d438fb7507e63bb06d2ec025eac25945f38c",
+  "dimensions": [
+    250,
+    716
+  ],
+  "rgb_verified": true,
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "retrieved_at": "2026-11-27",
+  "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+  "licence": "Official-source editorial image; no open licence asserted"
+}

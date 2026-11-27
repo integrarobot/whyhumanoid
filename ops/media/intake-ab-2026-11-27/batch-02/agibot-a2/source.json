@@ -1,0 +1,27 @@
+{
+  "id": 143,
+  "slug": "agibot-a2",
+  "mask_model": "native-alpha",
+  "crop_bbox": [
+    608,
+    144,
+    1392,
+    1860
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "asset_url": "https://store.agibot.com/cdn/shop/files/2_ff0f068b-3ddd-497c-91dc-341a24cdc2c2.png?v=1766128167",
+  "source_page": "https://store.agibot.com/products/a2-ultra",
+  "original_sha256": "8c3003338111504b746680e859d90c6717d8f0ab88c12a1d89722b17f4762e59",
+  "prepared_sha256": "4a4e069ae4a62084ce73fcd5154c296020d67ace3b8904cfa259a8a44b0b18c8",
+  "dimensions": [
+    824,
+    1756
+  ],
+  "rgb_verified": true,
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "retrieved_at": "2026-11-27",
+  "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+  "licence": "Official-source editorial image; no open licence asserted"
+}

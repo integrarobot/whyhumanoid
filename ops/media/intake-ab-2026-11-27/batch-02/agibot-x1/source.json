@@ -1,0 +1,29 @@
+{
+  "id": 4,
+  "slug": "agibot-x1",
+  "mask_model": "isnet-general-use",
+  "roi": null,
+  "crop_bbox": [
+    54,
+    52,
+    368,
+    722
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "pending-visual-review",
+  "asset_url": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/static/index/en/images/prolx1One-img.png",
+  "source_page": "https://www.agibot.com/products/X1",
+  "original_sha256": "78b8d30bad0ebb0984865a5c0a85a6a92f24eda6b34f4f666ab2887d222389b3",
+  "prepared_sha256": "5a7c86d1072c8613a73c32e8caa1202d1d7b3b3588f13f3df749b9d81fec7840",
+  "dimensions": [
+    354,
+    710
+  ],
+  "rgb_verified": true,
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "retrieved_at": "2026-11-27",
+  "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+  "licence": "Official-source editorial image; no open licence asserted"
+}

@@ -48,7 +48,7 @@
     {
       "batch": 2,
       "opened": "2026-11-27",
-      "state": "collecting_sources",
+      "state": "integrated_awaiting_review",
       "target": 10,
       "scope": "A/B makers",
       "candidates": [
@@ -58,14 +58,15 @@
         145,
         146,
         147,
-        14,
         148,
         149,
-        10
+        2,
+        165
       ],
       "reserves": [],
       "notes": [
-        "Agibot first (6), then Booster (3) and one further A record (Astribot S1 proposed; swappable for another eligible A record)."
+        "Definitive batch 2 (Codex, 27 Nov 2026): six Agibot, Booster T2 and K1, ALICE 4 and Anigon FA-L. Booster T1 and Agile ONE move to the next batch.",
+        "Sources, masks and prepared files on transport branch codex/image-sources-ab (28fef87), kept in ops/media/intake-ab-2026-11-27/batch-02/."
       ]
     },
     {
@@ -75,16 +76,16 @@
       "target": 10,
       "scope": "A/B makers",
       "candidates": [
-        2,
-        3,
+        14,
         5,
+        3,
         8,
         9,
+        10,
         12,
         13,
         15,
-        105,
-        116
+        105
       ],
       "reserves": []
     },
@@ -95,10 +96,10 @@
       "target": 10,
       "scope": "A/B makers",
       "candidates": [
+        116,
         135,
         163,
-        164,
-        165
+        164
       ],
       "reserves": []
     }
@@ -206,7 +207,7 @@
         "Lab": "Booster",
         "Robot": "T2"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.booster.tech/booster-t2",
       "sources": [
         {
@@ -216,6 +217,16 @@
           "transparent_original": false,
           "verdict": "rejected",
           "detail": "1200×1448 RGB, opaque, robot jumping (not standing)."
+        },
+        {
+          "file": "https://fe-cdn.booster.tech/booster-official-website/release-0.1.22/_astro/robot-t2.DZUi1Dbz.webp",
+          "page": "https://www.booster.tech/booster-t2",
+          "sha256": "58db7797638ac1ff2d79512675188aa917794bdcaa930ab4898c159009e7e604",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact."
         }
       ],
       "notes": "Booster T2; the navigation image robot-t2.DZUi1Dbz.webp was rejected (opaque, jumping)."
@@ -225,7 +236,7 @@
         "Lab": "Booster",
         "Robot": "K1"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.booster.tech/booster-k1",
       "sources": [
         {
@@ -235,6 +246,16 @@
           "transparent_original": false,
           "verdict": "rejected",
           "detail": "Opaque, with a ball."
+        },
+        {
+          "file": "https://fe-cdn.booster.tech/booster-official-website/release-0.1.22/_astro/robot-k1.Bjwl1Psx.webp",
+          "page": "https://www.booster.tech/booster-k1",
+          "sha256": "e23869dc8c56b34946d797ce73bcb66fdecece09fa67fe27f602c3f0721470f9",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact."
         }
       ],
       "notes": "Booster K1; the navigation image robot-k1.Bjwl1Psx.webp was rejected (opaque, with a ball)."
@@ -604,18 +625,42 @@
         "Lab": "Agibot",
         "Robot": "A2 (A2 Ultra / A2 Lite)"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.agibot.com/products/A2_Ultra",
-      "notes": "Family record A2 Ultra / A2 Lite: one included variant may illustrate it, named in the alt text and provenance; the same look is not attributed to both."
+      "notes": "Family record A2 Ultra / A2 Lite: one included variant may illustrate it, named in the alt text and provenance; the same look is not attributed to both.",
+      "sources": [
+        {
+          "file": "https://store.agibot.com/cdn/shop/files/2_ff0f068b-3ddd-497c-91dc-341a24cdc2c2.png?v=1766128167",
+          "page": "https://store.agibot.com/products/a2-ultra",
+          "sha256": "8c3003338111504b746680e859d90c6717d8f0ab88c12a1d89722b17f4762e59",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped."
+        }
+      ]
     },
     "145": {
       "recorded": {
         "Lab": "Agibot",
         "Robot": "X2 (X2 Neo / X2 Ultra)"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.agibot.com/products/X2",
-      "notes": "Family record X2 Neo / X2 Ultra: one included variant may illustrate it, named in the alt text and provenance."
+      "notes": "Family record X2 Neo / X2 Ultra: one included variant may illustrate it, named in the alt text and provenance.",
+      "sources": [
+        {
+          "file": "https://cms-tos.agibot.com/content/x2-refresh-20261111/19b63d0568b73e7e7f385f49.webp",
+          "page": "https://www.agibot.com/products/X2",
+          "sha256": "19b63d0568b73e7e7f385f49a9a01cd7e1d76a1084cc68ecf399bd1cbf60ec1d",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped."
+        }
+      ]
     },
     "93": {
       "recorded": {
@@ -750,8 +795,19 @@
         "Lab": "Agibot",
         "Robot": "X1"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/static/index/en/images/prolx1One-img.png",
+          "page": "https://www.agibot.com/products/X1",
+          "sha256": "78b8d30bad0ebb0984865a5c0a85a6a92f24eda6b34f4f666ab2887d222389b3",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact. Alpha levels refined by Claude (halo and haze)."
+        }
+      ],
+      "status": "integrated",
       "page": "https://www.agibot.com/",
       "notes": "AGIBOT X1 (Lingxi X1); not X2 (145), A2 (143) nor G2 (146)."
     },
@@ -760,8 +816,19 @@
         "Lab": "Agibot",
         "Robot": "A3"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://store.agibot.com/cdn/shop/files/1_1.png?v=1786349615",
+          "page": "https://store.agibot.com/products/a3",
+          "sha256": "9b1af46a6b3cc368bc29332cd24e051bb0e7f7ddf0bf9ece09d7332534983cd5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact."
+        }
+      ],
+      "status": "integrated",
       "page": "https://www.agibot.com/products/A3",
       "notes": "AGIBOT A3; not A2 (143)."
     },
@@ -770,8 +837,19 @@
         "Lab": "Agibot",
         "Robot": "G2"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/uploads/images/20251031/afa47f3a6d43c28b95a1534ed8310ad7.png",
+          "page": "https://www.agibot.com/products/X1",
+          "sha256": "a64e93dc03f304505c4fa01e5f55d43886ee48221d854d09b33813662775e2d5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact. Alpha levels refined by Claude (halo and haze)."
+        }
+      ],
+      "status": "integrated",
       "page": "https://www.agibot.com/products/G2",
       "notes": "AGIBOT G2; not G1 (147)."
     },
@@ -780,8 +858,19 @@
         "Lab": "Agibot",
         "Robot": "G1"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/static/index/en/images/pro-A2D/proA2DOne-img.png",
+          "page": "https://www.agibot.com/products/G1",
+          "sha256": "fc0a4c3735ed0a7df65ff13c574f3ecbcf27e461c4ea1d06e59ebf71328911ea",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped."
+        }
+      ],
+      "status": "integrated",
       "page": "https://www.agibot.com/products/G1",
       "notes": "AGIBOT G1, wheeled dual-arm robot; not Unitree G1 (138) nor Galbot G1 (35)."
     },
@@ -807,8 +896,19 @@
         "Lab": "AeiROBOT",
         "Robot": "Alice"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://cdn.imweb.me/thumbnail/20251107/1f679c6ba92e9.png",
+          "page": "https://eng.arobot4all.com/ALICE4",
+          "sha256": "7b5fbfaa5ef57e16e11758061d8a6fbeb22b1546636442a5a057b05f961ab846",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped."
+        }
+      ],
+      "status": "integrated",
       "page": "https://eng.arobot4all.com/",
       "research": [
         {
@@ -959,8 +1059,19 @@
         "Lab": "Anigon",
         "Robot": "FA-L Series"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://anigon.ch/images/robot-front.png",
+          "page": "https://anigon.ch/",
+          "sha256": "5c4bba4b7cf8556c7af342ae096ec7b3ac47f7e507c5fae23f734fb1bd487150",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped."
+        }
+      ],
+      "status": "integrated",
       "page": "https://anigon.ch/"
     }
   },

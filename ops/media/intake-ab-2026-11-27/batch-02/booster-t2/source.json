@@ -1,0 +1,27 @@
+{
+  "id": 148,
+  "slug": "booster-t2",
+  "mask_model": "isnet-general-use",
+  "crop_bbox": [
+    150,
+    215,
+    1004,
+    950
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "asset_url": "https://fe-cdn.booster.tech/booster-official-website/release-0.1.22/_astro/robot-t2.DZUi1Dbz.webp",
+  "source_page": "https://www.booster.tech/booster-t2",
+  "original_sha256": "58db7797638ac1ff2d79512675188aa917794bdcaa930ab4898c159009e7e604",
+  "prepared_sha256": "f531b554927c669fb6c12ec09540c703addab70782b618d039fa76bc3d054874",
+  "dimensions": [
+    894,
+    775
+  ],
+  "rgb_verified": true,
+  "original": "original.webp",
+  "prepared": "prepared.png",
+  "retrieved_at": "2026-11-27",
+  "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+  "licence": "Official-source editorial image; no open licence asserted"
+}
