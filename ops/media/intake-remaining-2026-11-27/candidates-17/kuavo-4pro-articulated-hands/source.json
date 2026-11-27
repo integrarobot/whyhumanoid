@@ -1,0 +1,19 @@
+{
+  "id": 49,
+  "slug": "kuavo-4pro-articulated-hands",
+  "manufacturer": "Leju",
+  "model": "Kuavo",
+  "public_page": "https://whyhumanoid.com/humanoids/leju-kuavo-49/",
+  "source_page": "https://github.com/LejuRobotics/kuavo-ros-opensource/blob/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro.png",
+  "source_url": "https://raw.githubusercontent.com/LejuRobotics/kuavo-ros-opensource/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro.png",
+  "original": "original.png",
+  "original_size": [
+    5000,
+    2813
+  ],
+  "original_sha256": "3cf9f2e12b09244f2cf798a59c8ec6dcca0842aeb8f4f1bf2aeb2d4cf7552ed1",
+  "source_context": "Existing manufacturer technical render, native RGBA 5000x2813 with original alpha bbox [2065,142,3342,2675]. Whole head, both articulated hands and both feet. Open side/head cavities are the depicted CAD configuration, preserve them, do not invent panels. This replaces rejected 520x1170 standard image with flat gray placeholder hands. Use original alpha/native pixels and trim/pad only if valid. Credit Kuavo 4Pro technical render with articulated hands/open-frame configuration, not hardware photo; no master/spec changes.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Attribution required in product credit. No open licence assumed; no outreach sent."
+}

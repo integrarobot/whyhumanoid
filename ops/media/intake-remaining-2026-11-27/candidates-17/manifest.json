@@ -1,0 +1,68 @@
+[
+  {
+    "id": 49,
+    "slug": "kuavo-4pro-articulated-hands",
+    "manufacturer": "Leju",
+    "model": "Kuavo",
+    "public_page": "https://whyhumanoid.com/humanoids/leju-kuavo-49/",
+    "source_page": "https://github.com/LejuRobotics/kuavo-ros-opensource/blob/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro.png",
+    "source_url": "https://raw.githubusercontent.com/LejuRobotics/kuavo-ros-opensource/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro.png",
+    "original": "original.png",
+    "original_size": [
+      5000,
+      2813
+    ],
+    "original_sha256": "3cf9f2e12b09244f2cf798a59c8ec6dcca0842aeb8f4f1bf2aeb2d4cf7552ed1",
+    "source_context": "Existing manufacturer technical render, native RGBA 5000x2813 with original alpha bbox [2065,142,3342,2675]. Whole head, both articulated hands and both feet. Open side/head cavities are the depicted CAD configuration, preserve them, do not invent panels. This replaces rejected 520x1170 standard image with flat gray placeholder hands. Use original alpha/native pixels and trim/pad only if valid. Credit Kuavo 4Pro technical render with articulated hands/open-frame configuration, not hardware photo; no master/spec changes.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Attribution required in product credit. No open licence assumed; no outreach sent."
+  },
+  {
+    "id": 186,
+    "slug": "kit-armar-7",
+    "manufacturer": "KIT H²T",
+    "model": "ARMAR-7",
+    "public_page": "https://whyhumanoid.com/humanoids/kit-h-t-armar-7-186/",
+    "source_page": "https://pasta.place/Informatik/Robotik_1_%5BHIS%5D/Folien/WS_24-25/Robotics-I-Chapter-00-Introduction.pdf",
+    "source_url": "https://pasta.place/Informatik/Robotik_1_%5BHIS%5D/Folien/WS_24-25/Robotics-I-Chapter-00-Introduction.pdf",
+    "original": "original.png",
+    "original_size": [
+      300,
+      640
+    ],
+    "original_sha256": "1400e7f6c3f279e98841441cf08fbc89a7c232c4844638c659352526d989e1c4",
+    "source_context": "KIT/H2T authored Robotics I lecture PDF, hosted on third-party student archive pasta.place, not maker-hosted. Page 32 The Active ARMARs explicitly labels white complete robot at right ARMAR-7 (root viewed full rendered slide). Extracted embedded RGB image003 native300x640 plus original grayscale soft mask004 same dimensions. Whole head, both hands and circular wheeled base; original resolution max640 qualifies. Other green robots are ARMAR-6/ARMAR-DE, do not substitute. Preserve source RGB and original soft mask; trim/pad only after alpha review. Credit KIT/H2T ARMAR-7 lecture photograph, honest hosted-copy provenance; no open licence asserted.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Attribution required in product credit. No open licence assumed; no outreach sent.",
+    "source_mask": "source-mask.png",
+    "source_mask_sha256": "b14c991099ad3204a85d74cad44d690ee3bef8b571afe68fb0c76e272a17b747",
+    "pdf_mask_index": 4,
+    "pdf_page": 32,
+    "pdf_image_index": 3,
+    "source_document_sha256": "5fa1a9833f486e2e44e87603852908415f3d1f30887fdcc2da3c4274924e65c5"
+  },
+  {
+    "id": 187,
+    "slug": "keenon-xman-r1",
+    "manufacturer": "KEENON Robotics",
+    "model": "XMAN-R1",
+    "public_page": "https://whyhumanoid.com/humanoids/keenon-robotics-xman-r1-187/",
+    "source_page": "https://universalsystems.com.au/wp-content/uploads/2026/02/KEENON-Robotics-Company-Introduction-Copy.pdf",
+    "source_url": "https://universalsystems.com.au/wp-content/uploads/2026/02/KEENON-Robotics-Company-Introduction-Copy.pdf",
+    "original": "original.png",
+    "original_size": [
+      2673,
+      1612
+    ],
+    "original_sha256": "836dba1888d81f473c8baa37877964c5e6543bed99436589d6244e8ade7cfeda",
+    "source_context": "KEENON authored company introduction PDF, hosted by distributor Universal Systems, not maker-hosted. PDF page11 explicitly XMAN-R1: ENGINEERED TO SERVE; embedded image002 native2673x1612 shows whole XMAN-R1 head, both arms/hands and compact wheeled base, isolated from empty science-fiction corridor scene by non-generative mask. Existing manufacturer product render, not hardware photo. Robot occupies central figure about1200px tall. Exclude circular wall lamp behind head, bright floor border and floor shadow/reflection; preserve all robot parts/native RGB. Maker website CDN originals returned403, this brochure copy is independently readable alternative. No open licence or capability evidence asserted.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Attribution required in product credit. No open licence assumed; no outreach sent.",
+    "pdf_page": 11,
+    "pdf_image_index": 2,
+    "source_document_sha256": "ae91b017838c9bae2531e6e4ebfc11a7a1af32c058a613d5357f3ccaaae6b114"
+  }
+]

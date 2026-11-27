@@ -1,0 +1,25 @@
+{
+  "id": 186,
+  "slug": "kit-armar-7",
+  "manufacturer": "KIT H²T",
+  "model": "ARMAR-7",
+  "public_page": "https://whyhumanoid.com/humanoids/kit-h-t-armar-7-186/",
+  "source_page": "https://pasta.place/Informatik/Robotik_1_%5BHIS%5D/Folien/WS_24-25/Robotics-I-Chapter-00-Introduction.pdf",
+  "source_url": "https://pasta.place/Informatik/Robotik_1_%5BHIS%5D/Folien/WS_24-25/Robotics-I-Chapter-00-Introduction.pdf",
+  "original": "original.png",
+  "original_size": [
+    300,
+    640
+  ],
+  "original_sha256": "1400e7f6c3f279e98841441cf08fbc89a7c232c4844638c659352526d989e1c4",
+  "source_context": "KIT/H2T authored Robotics I lecture PDF, hosted on third-party student archive pasta.place, not maker-hosted. Page 32 The Active ARMARs explicitly labels white complete robot at right ARMAR-7 (root viewed full rendered slide). Extracted embedded RGB image003 native300x640 plus original grayscale soft mask004 same dimensions. Whole head, both hands and circular wheeled base; original resolution max640 qualifies. Other green robots are ARMAR-6/ARMAR-DE, do not substitute. Preserve source RGB and original soft mask; trim/pad only after alpha review. Credit KIT/H2T ARMAR-7 lecture photograph, honest hosted-copy provenance; no open licence asserted.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Attribution required in product credit. No open licence assumed; no outreach sent.",
+  "source_mask": "source-mask.png",
+  "source_mask_sha256": "b14c991099ad3204a85d74cad44d690ee3bef8b571afe68fb0c76e272a17b747",
+  "pdf_mask_index": 4,
+  "pdf_page": 32,
+  "pdf_image_index": 3,
+  "source_document_sha256": "5fa1a9833f486e2e44e87603852908415f3d1f30887fdcc2da3c4274924e65c5"
+}

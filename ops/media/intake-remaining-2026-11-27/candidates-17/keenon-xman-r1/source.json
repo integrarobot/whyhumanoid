@@ -1,0 +1,22 @@
+{
+  "id": 187,
+  "slug": "keenon-xman-r1",
+  "manufacturer": "KEENON Robotics",
+  "model": "XMAN-R1",
+  "public_page": "https://whyhumanoid.com/humanoids/keenon-robotics-xman-r1-187/",
+  "source_page": "https://universalsystems.com.au/wp-content/uploads/2026/02/KEENON-Robotics-Company-Introduction-Copy.pdf",
+  "source_url": "https://universalsystems.com.au/wp-content/uploads/2026/02/KEENON-Robotics-Company-Introduction-Copy.pdf",
+  "original": "original.png",
+  "original_size": [
+    2673,
+    1612
+  ],
+  "original_sha256": "836dba1888d81f473c8baa37877964c5e6543bed99436589d6244e8ade7cfeda",
+  "source_context": "KEENON authored company introduction PDF, hosted by distributor Universal Systems, not maker-hosted. PDF page11 explicitly XMAN-R1: ENGINEERED TO SERVE; embedded image002 native2673x1612 shows whole XMAN-R1 head, both arms/hands and compact wheeled base, isolated from empty science-fiction corridor scene by non-generative mask. Existing manufacturer product render, not hardware photo. Robot occupies central figure about1200px tall. Exclude circular wall lamp behind head, bright floor border and floor shadow/reflection; preserve all robot parts/native RGB. Maker website CDN originals returned403, this brochure copy is independently readable alternative. No open licence or capability evidence asserted.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Attribution required in product credit. No open licence assumed; no outreach sent.",
+  "pdf_page": 11,
+  "pdf_image_index": 2,
+  "source_document_sha256": "ae91b017838c9bae2531e6e4ebfc11a7a1af32c058a613d5357f3ccaaae6b114"
+}
