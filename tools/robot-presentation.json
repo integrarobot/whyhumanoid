@@ -1462,6 +1462,21 @@
         "credit": "Image: Zerith Robotics",
         "provenance": "ops/media/robots/zerith-h1/PROVENANCE.md"
       }
+    },
+    "198": {
+      "recorded": {
+        "Lab": "RoboScience",
+        "Robot": "REX G1"
+      },
+      "image": {
+        "src": "/assets/robots/roboscience-rex-g1/roboscience-rex-g1-full-body.webp",
+        "fallback": "/assets/robots/roboscience-rex-g1/roboscience-rex-g1-full-body.png",
+        "width": 904,
+        "height": 1731,
+        "alt": "REX G1 by RoboScience, full body, front view, on its wheeled chassis, still from the official product video",
+        "credit": "Image: RoboScience, REX G1 video still",
+        "provenance": "ops/media/robots/roboscience-rex-g1/PROVENANCE.md"
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
  "batch": 10,
  "intake": "ops/media/intake-remaining-2026-11-27/batch-10",
  "branch": "codex/image-sources-remaining",
- "commit": "f7d1436 (Luna: c3ca72e; Calvin-40 and Zerith H1: 7496b6e)",
+ "commit": "f7d1436 (Luna: c3ca72e; Calvin-40 and Zerith H1: 7496b6e; REX G1: d1e4d2f)",
  "scope": "All missing images (Javier, 27 Nov 2026)",
  "items": {
   "90": {
@@ -66,6 +66,13 @@
    "alt": "Zerith H1 by Zerith Robotics, full body, side view, on its wheeled column",
    "credit": "Image: Zerith Robotics",
    "identity": "Zerith's official H1 product page image img_201.png: the whole robot in side view on its wheeled column, with base, hands and head; not the cropped torso cards. The record is Zerith H1.",
+   "quality": null
+  },
+  "198": {
+   "slug": "roboscience-rex-g1",
+   "alt": "REX G1 by RoboScience, full body, front view, on its wheeled chassis, still from the official product video",
+   "credit": "Image: RoboScience, REX G1 video still",
+   "identity": "Frame 0 of RoboScience's official REX-G1 product video, whose title card names REX G1 beside the robot (an existing manufacturer video still, not a new rendering): the whole wheeled humanoid with both hands and the entire chassis and wheels. The title, logo, backdrop and ground shadow are excluded by the alpha mask. The record is REX-G1.",
    "quality": null
   }
  }

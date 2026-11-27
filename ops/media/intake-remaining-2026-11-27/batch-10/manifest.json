@@ -453,5 +453,45 @@
     "prepared_sha256": "66af3721332236d26ecd0128b82d5d6688cae978835d54653905dfacc0324641",
     "mask_sha256": "50bb2a573d32e39d96d22260e2df320bd9b69d18b4b2887fad07e4525dc3f313",
     "original_sha256": "6eb2326058d6d99196428e297534e82870bce089ea55ae5b2b248502f9c071ae"
+  },
+  {
+    "id": 198,
+    "slug": "roboscience-rex-g1",
+    "manufacturer": "RoboScience",
+    "model": "REX-G1",
+    "original": "original.png",
+    "original_size": [
+      3840,
+      2160
+    ],
+    "credit": "RoboScience",
+    "source_page": "https://www.robosci.com/rex-g1/",
+    "source_url": "https://www.robosci.com/wp-content/uploads/2026/10/REX-G1%E4%BA%A7%E5%93%81%E8%A7%86%E9%A2%91.mp4 (frame 0 at 25 fps, extracted by Codex as original-frame-0.png)",
+    "source_context": "Exact manufacturer REX-G1 product video, first title frame explicitly names REX G1 beside the whole wheeled humanoid, both hands and entire chassis/wheels visible. Source is an existing product illustration/video still, label manufacturer video still; not new rendering or hardware demonstration claim. Native decoded frame preserved,1920x1080 or actual manifest dimensions. Isolate only whole right-hand robot, excluding title/logo/backdrop/ground shadow. Independent visual/native mask review needed.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining d1e4d2f, candidates-10-rex-g1",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; title, logo, backdrop and ground shadow excluded",
+    "roi": [
+      1950,
+      150,
+      3050,
+      2080
+    ],
+    "bbox": [
+      120,
+      148,
+      984,
+      1839
+    ],
+    "border": 20,
+    "size": [
+      904,
+      1731
+    ],
+    "native_alpha": false,
+    "original_sha256": "489d86af7c1f53ac5f4fd495ad0b8ccba7acbe275fc2fd2a11e14d6cebc95526",
+    "prepared_sha256": "7972793f9637ad1fd2b3e87dc98ce946e67ddc4ce01ea768df8203c86d5e90fa",
+    "mask_sha256": "c15cab5198c21aa18adb1879d252cec433912f46029b5214de076aba006ebb9f"
   }
 ]

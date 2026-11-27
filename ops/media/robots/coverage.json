@@ -266,15 +266,16 @@
         141,
         40,
         97,
-        207
+        207,
+        198
       ],
       "reserves": [],
       "notes": [
         "Sources from Codex on codex/image-sources-remaining (batch-10 at f7d1436; Luna replacement at c3ca72e), copied selectively into ops/media/intake-remaining-2026-11-27/batch-10/ (D9 and Luna prepared there too, not integrated).",
         "Claude's review: Codex's cutouts of Torobo, DEX-M and AEON kept unchanged; Quanta X2, H2, R1 and Bolt redone by Claude from BiRefNet masks of the originals (kept beside them): Quanta X2's dark face had been removed and a scan-grid line kept, H2's raised arm was missing and a spectator kept between the legs, R1 kept a grass fringe and Bolt a dark haze in the arm gap.",
-        "Left out: D9 (155) and Luna (156) are complete and clean but under the 500 px minimum height (208 × 475 and 300 × 371, not enlarged); Igris (79) until its identity is established. Seven images, not ten forced.",
+        "Left out: D9 (155) and Luna (156) are complete and clean but under the 500 px minimum height (208 × 475 and 300 × 371, not enlarged); Igris (79) until its identity is established. ",
         "Visible captions name variants and animation stills (DEX-M, Quanta X2, AEON animation still). Records' specifications unchanged.",
-        "Calvin-40 (97) and Zerith H1 (207) promoted from Codex's batch-11 sources (7496b6e) to complete batch 10 (Codex, 27 Nov 2026), prepared by Claude from their own transparency; REX G1 (198) to follow."
+        "Calvin-40 (97) and Zerith H1 (207) promoted from Codex's batch-11 sources (7496b6e) to complete batch 10 (Codex, 27 Nov 2026), prepared by Claude from their own transparency; REX G1 (198) from frame 0 of its official product video (d1e4d2f), cut out by Claude from a BiRefNet mask."
       ]
     }
   ],
@@ -3329,9 +3330,20 @@
         "Lab": "RoboScience",
         "Robot": "REX G1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.robosci.com/rex-g1/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.robosci.com/wp-content/uploads/2026/10/REX-G1%E4%BA%A7%E5%93%81%E8%A7%86%E9%A2%91.mp4 (frame 0 at 25 fps, extracted by Codex as original-frame-0.png)",
+          "page": "https://www.robosci.com/rex-g1/",
+          "sha256": "489d86af7c1f53ac5f4fd495ad0b8ccba7acbe275fc2fd2a11e14d6cebc95526",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 904 × 1731 with 20 px padding."
+        }
+      ]
     },
     "199": {
       "recorded": {
