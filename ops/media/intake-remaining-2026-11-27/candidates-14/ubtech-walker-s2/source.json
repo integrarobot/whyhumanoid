@@ -1,0 +1,20 @@
+{
+  "id": 142,
+  "slug": "ubtech-walker-s2",
+  "manufacturer": "Ubtech",
+  "model": "Walker S2",
+  "credit": "UBTECH",
+  "public_page": "https://whyhumanoid.com/humanoids/ubtech-walker-s2-142/",
+  "source_page": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
+  "source_url": "https://owebsite-cdn.ubtrobot.com/resources/image/2025/07/22/700558958612549.jpg",
+  "original": "original.jpg",
+  "original_size": [
+    1080,
+    1530
+  ],
+  "original_sha256": "9c9c3939c3b8ad57bb217af43e7e780d6467287aa5fb44c9ea4f1a60e5419af8",
+  "source_context": "Exact WalkerS2productpage manufacturer render1080x1530, robotstandingbesidebatterybank. Wholeheadbothhandsandbothfeet withfloorabovebottom, actualrobotbody~900px. IsolateONLYrobot, excludebatterybank(stagebackground,notattachedtoforeground), floormirror/shadowandbluewhitebackground. Rightarmvisibleseparatedfrombank, do notincludeitsleftborder. Other sources technicaldiagram74/75 touchtopheadborderandcarryannotationlinesONbody: do NOT substitute those. Caption manufacturer render, no proofbatteryperformance.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source/product page/pressroom. Credit owner; no open photograph licence assumed, no outreach sent."
+}

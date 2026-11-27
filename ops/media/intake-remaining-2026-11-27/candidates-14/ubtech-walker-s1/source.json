@@ -1,0 +1,20 @@
+{
+  "id": 91,
+  "slug": "ubtech-walker-s1",
+  "manufacturer": "Ubtech",
+  "model": "Walker S1",
+  "credit": "UBTECH",
+  "public_page": "https://whyhumanoid.com/humanoids/ubtech-walker-s1-91/",
+  "source_page": "https://www.ubtrobot.com/en/humanoid/products/walker-s1",
+  "source_url": "https://owebsite-cdn.ubtrobot.com/resources/image/2024/10/13/600678134571077.jpg",
+  "original": "original.jpg",
+  "original_size": [
+    1080,
+    1920
+  ],
+  "original_sha256": "bc70bd554c8960a14f4437fc152798f25828977e87e499b1310525ab54fea62a",
+  "source_context": "Exact WalkerS1productpage native1080x1920 tallmanufacturerproductimage, robotcarryingblacktote. Wholeheadhandsasvisiblebehindheldbin, bothfeetandfloormargin. Preserveentiretoteasheldpayload, noinventedoccludedfingers. Isolatefromfactoryandfloorreflection; noRGBbrightness/coloradjustment. CaptionWalkerS1withtote, manufacturerproductimage/render. Never useWalkerS2navigationimageforthisrecord.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source/product page/pressroom. Credit owner; no open photograph licence assumed, no outreach sent."
+}
