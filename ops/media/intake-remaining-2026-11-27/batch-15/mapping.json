@@ -2,7 +2,7 @@
   "batch": 15,
   "intake": "ops/media/intake-remaining-2026-11-27/batch-15",
   "branch": "codex/image-sources-remaining",
-  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27), 62f03ab (candidates-28), 26e018a (candidates-30), a7c0ffb (candidates-31) and 31e0eb7 (candidates-32)",
+  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27), 62f03ab (candidates-28), 26e018a (candidates-30), a7c0ffb (candidates-31), 31e0eb7 (candidates-32), bbf9ddd (candidates-33) and 17d1e6e (candidates-34)",
   "scope": "All missing images (Javier, 27 Nov 2026)",
   "items": {
     "166": {
@@ -59,6 +59,20 @@
       "alt": "CyberOne by Xiaomi, full body, front view, standing, 2024 display photograph",
       "credit": "Image: Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI",
       "identity": "The photograph in the official Beijing Yizhuang report of 5 June 2024 republished by NCSTI (native 1080 × 1620), captioned as the full-size humanoid bionic robot CyberOne: the original white 2022 design, whole with head, both grippers and both feet. It stood on a round display plinth, which is not part of the robot; the plinth, the wall, the floor and the tripod are excluded by the alpha mask, cut at the soles. It is not a Xiaomi-hosted image and says nothing about later versions.",
+      "quality": null
+    },
+    "96": {
+      "slug": "vinmotion-motion1",
+      "alt": "Motion1 by VinMotion, full body, front view, standing, one hand raised, event photograph at VEC 2025",
+      "credit": "Image: VinMotion, Motion1 at VEC 2025, event photograph by Nguyen Le",
+      "identity": "A photograph from the event producer Nguyen Le's report of 22 September 2025 on the Motion1 launch at VEC, Hanoi, on 28 August 2025 (native 854 × 1280): the real robot in the foreground, whole, with head, the raised open hand, the other hand curled as posed, both feet and the cable loops at the hips. The billboard behind it, with its drawn robot, the tents and the asphalt are excluded by the alpha mask. It is not a maker-hosted image, and it shows Motion1, not the later Motion2.",
+      "quality": null
+    },
+    "50": {
+      "slug": "kist-kapex",
+      "alt": "KAPEX, full body, three-quarter front view, standing, concept render by KIST",
+      "credit": "Image: KIST, KAPEX concept render (2025), via Herald Economy",
+      "identity": "The render KIST supplied for the press on 30 September 2025, published by Herald Economy with the caption 'KIST provided' (native 1280 × 821); a contemporary ChosunBiz report calls the same image an artist rendering. It shows the whole robot with head, both hands and both feet. It is a concept render, not a photograph of hardware, and says nothing about later versions. The KIST, LG and KAPEX logos, the grey studio and the floor reflection are excluded by the alpha mask.",
       "quality": null
     }
   }

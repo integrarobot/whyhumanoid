@@ -401,13 +401,15 @@
         74,
         70,
         35,
-        102
+        102,
+        96,
+        50
       ],
       "reserves": [],
       "notes": [
-        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-15/: candidates-25 (66c596a: Avatar Robotics video frame 755), candidates-26 (b07ffac: StarBot Astra and Flex, one product illustration), candidates-27 (dc11021: MATRIX-1 page poster), candidates-28 (62f03ab: REVOBOTS TASKBOT SCOUT video frame 292) candidates-30 (26e018a: HUBO2 product image hosted by Rainbow Robotics Vietnam) and candidates-31 (a7c0ffb: Galbot G1 render from the maker's European Product Design Award 2026 entry, left standing figure) and candidates-32 (31e0eb7: CyberOne photograph in the official Beijing Yizhuang report of 5 June 2024, via NCSTI). Every cutout prepared by Claude, alpha only, from BiRefNet masks kept beside the originals: Flex adds its two black casters from the original luminance; MATRIX-1 drops every row below the contact line of the soles with their floor reflection; SCOUT, HUBO2 and G1 use levels 150..240 so their soft edges carry no background rim; CyberOne combines a whole-figure pass with a feet-only pass so the display plinth stays out.",
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-15/: candidates-25 (66c596a: Avatar Robotics video frame 755), candidates-26 (b07ffac: StarBot Astra and Flex, one product illustration), candidates-27 (dc11021: MATRIX-1 page poster), candidates-28 (62f03ab: REVOBOTS TASKBOT SCOUT video frame 292) candidates-30 (26e018a: HUBO2 product image hosted by Rainbow Robotics Vietnam) and candidates-31 (a7c0ffb: Galbot G1 render from the maker's European Product Design Award 2026 entry, left standing figure) and candidates-32 (31e0eb7: CyberOne photograph in the official Beijing Yizhuang report of 5 June 2024, via NCSTI), candidates-33 (bbf9ddd: Motion1 at VEC 2025, event photograph by Nguyen Le) and candidates-34 (17d1e6e: KAPEX concept render supplied by KIST, via Herald Economy). Every cutout prepared by Claude, alpha only, from BiRefNet masks kept beside the originals: Flex adds its two black casters from the original luminance; MATRIX-1 drops every row below the contact line of the soles with their floor reflection; SCOUT, HUBO2 and G1 use levels 150..240 so their soft edges carry no background rim; CyberOne combines a whole-figure pass with a feet-only pass so the display plinth stays out; Motion1 uses levels 170..240 for its thin cable loops against the blue billboard.",
         "Left out: Qinglong (69), candidates-29 (88f804b): in frame 841 and in every later frame of the official walking GIF where the robot is at least 500 px tall, a black office chair or a seated person stands right behind the right side of the black torso and upper arm; the model mask takes the chair in, and black against black in a dithered GIF cannot be separated by alpha alone. Not reconstructed. Jingchu Elf (183) still waits for another source; T230A (89), D9 (155), R-Noid (77) and IGRIS (79) stay out with their reasons.",
-        "Captions name the kind of image and the variant: Avatar Robotics mobile lift-column configuration, official video still (no model name, as the maker gives none); StarBot Astra and Flex manufacturer product illustrations; MATRIX-1 manufacturer product image; TASKBOT SCOUT mobile configuration, official video still (no arms or head, not humanoid hardware); HUBO2 product image via Rainbow Robotics Vietnam (regional host; no claim about its relation to the maker); Galbot G1 manufacturer product render via European Product Design Award (2026); Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI (the original 2022 design; nothing said about later versions). Records' specifications unchanged."
+        "Captions name the kind of image and the variant: Avatar Robotics mobile lift-column configuration, official video still (no model name, as the maker gives none); StarBot Astra and Flex manufacturer product illustrations; MATRIX-1 manufacturer product image; TASKBOT SCOUT mobile configuration, official video still (no arms or head, not humanoid hardware); HUBO2 product image via Rainbow Robotics Vietnam (regional host; no claim about its relation to the maker); Galbot G1 manufacturer product render via European Product Design Award (2026); Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI (the original 2022 design; nothing said about later versions); VinMotion Motion1 at VEC 2025, event photograph by Nguyen Le (not Motion2); KIST KAPEX concept render (2025), via Herald Economy (not hardware). Records' specifications unchanged."
       ]
     }
   ],
@@ -2875,9 +2877,20 @@
         "Lab": "LG",
         "Robot": "KAPEX (co-developed with KIST and LG AI Research)"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://solutions.lg.com/us/robots",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://wimg.heraldcorp.com/news/cms/2025/09/30/news-p.v1.20250930.43fac76f89e5451f9477688352a3cc56_P1.png",
+          "page": "https://biz.heraldcorp.com/article/10586718",
+          "sha256": "83b4bb23290c2333c9a5150dfff7625c7b22702649d9c85b7c9a44912d419aa5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 259 × 750 with 20 px padding."
+        }
+      ]
     },
     "52": {
       "recorded": {
@@ -3359,9 +3372,20 @@
         "Lab": "VinMotion",
         "Robot": "Motion"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://vinmotion.net/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://nguyenle.com.vn/wp-content/uploads/2025/09/image-30.jpg",
+          "page": "https://nguyenle.com.vn/event/vinmotion-dau-an-viet-nam-tren-hanh-trinh-chinh-phuc-tuong-lai/",
+          "sha256": "31aaba89befac25e876a9058be540a298c2bee93b45bb174fd4b67ea5a6dff6d",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 383 × 765 with 20 px padding."
+        }
+      ]
     },
     "97": {
       "recorded": {

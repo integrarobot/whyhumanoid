@@ -2197,6 +2197,36 @@
         "credit": "Image: Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI",
         "provenance": "ops/media/robots/xiaomi-cyberone/PROVENANCE.md"
       }
+    },
+    "96": {
+      "recorded": {
+        "Lab": "VinMotion",
+        "Robot": "Motion"
+      },
+      "image": {
+        "src": "/assets/robots/vinmotion-motion1/vinmotion-motion1-full-body.webp",
+        "fallback": "/assets/robots/vinmotion-motion1/vinmotion-motion1-full-body.png",
+        "width": 383,
+        "height": 765,
+        "alt": "Motion1 by VinMotion, full body, front view, standing, one hand raised, event photograph at VEC 2025",
+        "credit": "Image: VinMotion, Motion1 at VEC 2025, event photograph by Nguyen Le",
+        "provenance": "ops/media/robots/vinmotion-motion1/PROVENANCE.md"
+      }
+    },
+    "50": {
+      "recorded": {
+        "Lab": "LG",
+        "Robot": "KAPEX (co-developed with KIST and LG AI Research)"
+      },
+      "image": {
+        "src": "/assets/robots/kist-kapex/kist-kapex-full-body.webp",
+        "fallback": "/assets/robots/kist-kapex/kist-kapex-full-body.png",
+        "width": 259,
+        "height": 750,
+        "alt": "KAPEX, full body, three-quarter front view, standing, concept render by KIST",
+        "credit": "Image: KIST, KAPEX concept render (2025), via Herald Economy",
+        "provenance": "ops/media/robots/kist-kapex/PROVENANCE.md"
+      }
     }
   }
 }
