@@ -1,0 +1,19 @@
+[
+  {
+    "id": 50,
+    "slug": "kapex-concept-render-2025",
+    "credit": "KIST via Herald Economy",
+    "source_page": "https://biz.heraldcorp.com/article/10586718",
+    "source_url": "https://wimg.heraldcorp.com/news/cms/2025/09/30/news-p.v1.20250930.43fac76f89e5451f9477688352a3cc56_P1.png",
+    "original": "original.png",
+    "original_size": [
+      1280,
+      821
+    ],
+    "original_sha256": "83b4bb23290c2333c9a5150dfff7625c7b22702649d9c85b7c9a44912d419aa5",
+    "source_context": "KIST-supplied original press concept render, 2025-09-30, hosted by Herald Economy with explicit imagecaption KIST provided and exactKAPEXname. Existing maker/research-institute illustration, NOT actual hardware photograph. Independent contemporaneous ChosunBiz caption explicitly calls same scene artist rendering (https://biz.chosun.com/en/en-science/2025/09/30/KO76AWDKYZGXVCDY55A4UDOU24/?outputType=amp). Native1280x821, complete head/hands/feet, approximately710bodyheight, ample margins. No graphic annotations overbody, KIST/LG logos outside silhouette remove with alpha. Exact originalrecord50KAPEX, do not ascribe depiction as current2026hardwareversion or change anyspecs. Mandatory caption KIST, KAPEX concept render (2025), via Herald Economy. Root native original inspected. Remove floor/reflection/shadows byalpha; visible robot RGB native unchanged. Grey background can require precise mask atfeet but no original clipping.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+  }
+]
