@@ -277,14 +277,10 @@
         "Claude's review: Codex's cutouts of Torobo, DEX-M and AEON kept unchanged; Quanta X2, H2, R1 and Bolt redone by Claude from BiRefNet masks of the originals (kept beside them): Quanta X2's dark face had been removed and a scan-grid line kept, H2's raised arm was missing and a spectator kept between the legs, R1 kept a grass fringe and Bolt a dark haze in the arm gap.",
         "Left out: D9 (155) and Luna (156) are complete and clean but under the 500 px minimum height (208 × 475 and 300 × 371, not enlarged); Igris (79) until its identity is established. ",
         "Visible captions name variants and animation stills (DEX-M, Quanta X2, AEON animation still). Records' specifications unchanged.",
-<<<<<<< HEAD
         "Calvin-40 (97) and Zerith H1 (207) promoted from Codex's batch-11 sources (7496b6e) to complete batch 10 (Codex, 27 Nov 2026), prepared by Claude from their own transparency; REX G1 (198) from frame 0 of its official product video (d1e4d2f), cut out by Claude from a BiRefNet mask.",
         "Published with PR 232 (reviewed head 5da90c9, CI 46043204343; merge 4db495d), 27 Nov 2026; Pages 46044425860 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
-=======
-        "Calvin-40 (97) and Zerith H1 (207) promoted from Codex's batch-11 sources (7496b6e) to complete batch 10 (Codex, 27 Nov 2026), prepared by Claude from their own transparency; REX G1 (198) from frame 0 of its official product video (d1e4d2f), cut out by Claude from a BiRefNet mask."
-      ]
     },
     {
       "batch": 11,
@@ -311,7 +307,6 @@
         "Prepared and held for batch 12: Vibe 01 (118), Noble Machines platform (107), ROBOTO Origin (128).",
         "Captions name the kind of image and the variant: K-Bot technical render, WA2 manufacturer diagram, AI Sapiens K0 cowboy-hat configuration, QTrobot render (record 53 keeps its name), D7 video still, MATRIX-3 video poster, S1 video still. Records' specifications unchanged."
       ]
->>>>>>> origin/main
     }
   ],
   "robots": {
