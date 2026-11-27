@@ -1,0 +1,39 @@
+{
+  "id": "WH-20261127-0932-muse-reto-y-evidencias",
+  "tarea": "Bloque 2 de la orden del 27/11: reto de dominio de Muse desde el host MCP y paquete de evidencias de proveedores para el cuestionario",
+  "origen": "Javier (27/11/2026), coordinado por Codex",
+  "fecha": "2026-11-27T09:32:54+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "El reto del PR 175 responde 200 con el cuerpo exacto en TEST y PROD desde el despliegue de Codex del 27/11; Muse lo da por verificado.",
+    "PR 186 (8353f73 desde 0cc75e5): ops/muse/provider-evidence.md con fuentes primarias marcadas, sin controles ni certificaciones inventados; D1 en la UE confirmado en el panel.",
+    "PR 190: los cuatro procedimientos ante autoridades que confirmó Javier (legalidad, impugnación, mínima divulgación y registro), sin afirmar nada sobre peticiones recibidas."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 186",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/186"
+    },
+    {
+      "etiqueta": "PR 190",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/190"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "Sin despliegue propio: el reto llegó con los despliegues de Codex."
+  ],
+  "verificaciones": [
+    "Codex, portal de Muse: verificación de empresa Approved, reto Verified, prueba Passed con 6 herramientas, credenciales Submitted, revisión técnica In review."
+  ],
+  "pendientes": [
+    "Revisión técnica de Muse en curso (In review); las credenciales ya están enviadas (Submitted).",
+    "Cuestionario 7/7 guardado sin enviar: la respuesta Q11 depende de cuatro programas que Javier pidió implantar y acreditar como trabajo futuro, y que hoy no existen como tales: un programa de privacidad, salvaguardas organizativas, seguridad de red y una evaluación externa periódica de proveedores."
+  ],
+  "siguiente_accion": "Implantar y acreditar los cuatro programas antes de responder la Q11; después Javier decide el envío del cuestionario. Codex registra su aviso; Javier confirma la recepción."
+}

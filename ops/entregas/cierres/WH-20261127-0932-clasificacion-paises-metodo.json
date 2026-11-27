@@ -1,0 +1,42 @@
+{
+  "id": "WH-20261127-0932-clasificacion-paises-metodo",
+  "tarea": "Bloque 4 de la orden del 27/11: tipos de entidad en Other Robots, países normalizados y E0-E5 como códigos heredados sin definición",
+  "origen": "Javier (27/11/2026), revisado por Codex",
+  "fecha": "2026-11-27T09:32:54+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 188 (4e968ed desde c836198): una lectura de países compartida por web, app y etiquetas (en Humanoids, 36 etiquetas pasan a 22 países; se añaden Russia, Malta, Indonesia y South Africa); E0-E5 sin etiqueta, faceta, filtro ni recuento y presentados como códigos heredados sin definición; Method corregido.",
+    "PR 189 (64ccd65) y escrituras de Codex: tres huecos preparados en Software A82:C84 y once rangos escritos y releídos.",
+    "PR 191 (afa947c desde 66835df): Other Robots pasa de 563 a 555 entradas; Software tiene 146 entradas canónicas en 149 filas; ocho direcciones antiguas redirigen a Software o a la página de la empresa.",
+    "La importación completa (bloque 1) llevó la reclasificación a D1."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 188",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/188"
+    },
+    {
+      "etiqueta": "PR 191",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/191"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "Worker con el PR 188 en producción (PROD ff0eb084); Pages tras el PR 191."
+  ],
+  "verificaciones": [
+    "Claude: las ocho redirecciones en producción; Software con Robonomics, Mujin y Eka; API con Other Robots 555 y Software 149; sin faceta de evidencia en la búsqueda.",
+    "Codex: revisión semántica independiente del PR 191 y verificación web (8 meta-refresh correctos, ninguna entrada retirada sigue en Other Robots)."
+  ],
+  "pendientes": [
+    "Sin escritura, documentados como dudosos: Ailos, Seeed Studio y Proception (empresas sin otro sitio en el libro), Linkerbot (línea de manos) y coprod (componentes con nombre sin pasaporte).",
+    "Alias de Genie G2 con el AgiBot G2 del catálogo: pendiente de una fuente revisada.",
+    "Sectores semiconductors y automotive de Deployments sin etiqueta: necesitan un cambio de vocabulario en el Worker."
+  ],
+  "siguiente_accion": "Claude y Codex investigan con fuentes los casos pendientes (Ailos, Seeed Studio, Proception, Linkerbot, coprod, el alias Genie G2 y el vocabulario de sectores) y los proponen por plan o PR; Codex registra su aviso; Javier confirma la recepción."
+}
