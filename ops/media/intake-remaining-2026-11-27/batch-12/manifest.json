@@ -328,5 +328,104 @@
     "original_sha256": "887bfa7f18a42f8224a774924aa75c021192a57a5e7a20cffb2efca8680a9310",
     "prepared_sha256": "31394db5689fbe350fd345983ba2baeffd9ce8f07721dcd786a68fc155c2c0d4",
     "mask_sha256": "321b0bbca21ff3e2cf9dbe9b04dc48785ffaef5a56494949b3b2ed8d81323fa7"
+  },
+  {
+    "id": 99,
+    "slug": "westwood-themis",
+    "credit": "WestwoodRobotics",
+    "source_page": "https://www.westwoodrobotics.io/themis/",
+    "source_url": "https://www.westwoodrobotics.io/wp-content/uploads/2025/04/2-scaled.png",
+    "source_context": "ExactTHEMISproductpage, native1920x2560PNG frontstandingwholebiped withheadbothgripper-likehandsandbothfeetcomplete, ownalpha. The source webpage associatesitwithTHEMIS,notBRUCE; catalogueTHEMISfamily. Nativealpha/interiorgapsmustbereviewed; do notautomaticallytrustnativealpha. Preserveactualgrippers,noreconstructedhumanfingers. No model3Drendercreated. Alternativeviews99-35side/99-41threequarteralsocompletebutonlyoneimageperrecord.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 54f4cf5, candidates-15",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha",
+    "roi": [
+      0,
+      0,
+      1920,
+      2560
+    ],
+    "bbox": [
+      491,
+      191,
+      1379,
+      2369
+    ],
+    "border": 20,
+    "size": [
+      928,
+      2218
+    ],
+    "native_alpha": true,
+    "original_sha256": "df922a8fc9c248c0b080c166bd767a10ccd979abc9132f0fa54d75ebf3611070",
+    "prepared_sha256": "38070e65620308332bb59c5a0dc0e3a55c4bc070141a5779e7db3feb8e52c69e",
+    "mask_sha256": "f7e97880f33aabf407c77ef0d3d8db3dcfd91352ee6a2c5894addaa9081c5363"
+  },
+  {
+    "id": 142,
+    "slug": "ubtech-walker-s2",
+    "credit": "UBTECH",
+    "source_page": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
+    "source_url": "https://owebsite-cdn.ubtrobot.com/resources/image/2025/07/22/700558958612549.jpg",
+    "source_context": "Exact WalkerS2productpage manufacturer render1080x1530, robotstandingbesidebatterybank. Wholeheadbothhandsandbothfeet withfloorabovebottom, actualrobotbody~900px. IsolateONLYrobot, excludebatterybank(stagebackground,notattachedtoforeground), floormirror/shadowandbluewhitebackground. Rightarmvisibleseparatedfrombank, do notincludeitsleftborder. Other sources technicaldiagram74/75 touchtopheadborderandcarryannotationlinesONbody: do NOT substitute those. Caption manufacturer render, no proofbatteryperformance.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 6d1eb96, candidates-14",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      240,
+      500,
+      680,
+      1480
+    ],
+    "bbox": [
+      46,
+      39,
+      384,
+      954
+    ],
+    "border": 20,
+    "size": [
+      378,
+      955
+    ],
+    "native_alpha": false,
+    "original_sha256": "9c9c3939c3b8ad57bb217af43e7e780d6467287aa5fb44c9ea4f1a60e5419af8",
+    "prepared_sha256": "d6714a61c68a26ee8521d74c615e75d8131b6baa47372b0fc1590a13398fb62e",
+    "mask_sha256": "446111ab4832377b0d4784dbed4fc7a4e3ed92082924022a7b7e9d84264c0629"
+  },
+  {
+    "id": 91,
+    "slug": "ubtech-walker-s1",
+    "credit": "UBTECH",
+    "source_page": "https://www.ubtrobot.com/en/humanoid/products/walker-s1",
+    "source_url": "https://owebsite-cdn.ubtrobot.com/resources/image/2024/10/13/600678134571077.jpg",
+    "source_context": "Exact WalkerS1productpage native1080x1920 tallmanufacturerproductimage, robotcarryingblacktote. Wholeheadhandsasvisiblebehindheldbin, bothfeetandfloormargin. Preserveentiretoteasheldpayload, noinventedoccludedfingers. Isolatefromfactoryandfloorreflection; noRGBbrightness/coloradjustment. CaptionWalkerS1withtote, manufacturerproductimage/render. Never useWalkerS2navigationimageforthisrecord.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 6d1eb96, candidates-14",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      200,
+      80,
+      900,
+      1500
+    ],
+    "bbox": [
+      77,
+      65,
+      622,
+      1335
+    ],
+    "border": 20,
+    "size": [
+      585,
+      1310
+    ],
+    "native_alpha": false,
+    "original_sha256": "bc70bd554c8960a14f4437fc152798f25828977e87e499b1310525ab54fea62a",
+    "prepared_sha256": "b76b4060576ac7c553497991dfc3fbb3ae1d2d3cf9971ea8859b535e3f82fb21",
+    "mask_sha256": "6d482c96f3bddb6e0f72f51380e01e83ecf90413b844d1534f43ba2101316e04"
   }
 ]

@@ -25,8 +25,6 @@
         196
       ],
       "reserves": [
-        142,
-        215,
         104,
         51,
         102,
@@ -39,7 +37,8 @@
         "Published with PR 196 (merge 4011f1e, 27 Nov 2026) and verified in production by Claude and Codex (Codex receipt 10:53:52 Madrid) after a selective Cloudflare purge of the 20 image URLs: 404 responses requested before Pages finished deploying had been cached. Next time, new asset URLs are not requested without a query string until the Pages deployment has succeeded.",
         "Reserves 32 (Fourier GR-1) and 151 (Engineai T800) moved to batch 6, scope \"E/F makers\" (27 Nov 2026).",
         "Reserves H2 (139) and R1 (141) move to batch 10 (27 Nov 2026).",
-        "Reserve D9 (155) back to the queue: its only whole official source so far is under the minimum height (27 Nov 2026)."
+        "Reserve D9 (155) back to the queue: its only whole official source so far is under the minimum height (27 Nov 2026).",
+        "Walker S2 (142) and Forerunner K2 (215) moved from these reserves to batch 12 (27 Nov 2026), with new official sources from Codex."
       ],
       "published": "2026-11-27"
     },
@@ -309,6 +308,31 @@
         "Published with PR 233 (reviewed head 2590573, CI 46045148477; merge e8e5f40), 27 Nov 2026; Pages 46046491073 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 12,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        67,
+        215,
+        47,
+        32,
+        118,
+        107,
+        128,
+        99,
+        142,
+        91
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-12/: candidates-12 (864fcbc: Vibe 01, Noble Machines platform, ROBOTO Origin, the reserves of batch 11), candidates-13 (c4c8edb: Reachy 2 single-arm, K2, K1, GR-1), candidates-14 (6d1eb96: Walker S2, Walker S1) and candidates-15 (54f4cf5: THEMIS). Every cutout prepared by Claude, alpha only: the original's own alpha (K1, THEMIS), the manufacturer's PDF soft mask (Reachy 2) or BiRefNet masks kept beside the originals.",
+        "Codex's decisions (27 Nov 2026): D9 (155) left out, the dark background beside the torso cannot be told from the torso by alpha alone (replaced by Walker S2); Kuavo 4Pro (49) left out, its forearms and hands are flat grey placeholders in the source (a new official image is in candidates-17); R-Noid (77) frame 847 left out, a cyan line of the R-Kiwi lid and a reddish fringe of the door behind remain at the gripper and wrist (replaced by Walker S1; frame 908 to be examined); K1 accepted with only its faint antialiased outline at the file's edges.",
+        "Captions name the kind of image and the variant: Reachy 2 single-arm configuration technical render, K2 bipedal development version, K1, Walker S2 manufacturer renders, Walker S1 with tote, GR-1 RoboCup 2024 hardware-specification render, Vibe 01 render, unnamed Noble Machines platform, ROBOTO Origin repository render. Records' specifications unchanged."
+      ]
     }
   ],
   "robots": {
@@ -555,31 +579,65 @@
         "Lab": "Ubtech",
         "Robot": "Walker S2"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
       "notes": "Not Walker S1 (id 91).",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://owebsite-cdn.ubtrobot.com/resources/image/2025/07/22/700558958612549.jpg",
+          "page": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
+          "sha256": "9c9c3939c3b8ad57bb217af43e7e780d6467287aa5fb44c9ea4f1a60e5419af8",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 378 × 955 with 20 px padding."
+        }
+      ]
     },
     "32": {
       "recorded": {
         "Lab": "Fourier",
         "Robot": "GR-1"
       },
-      "status": "no_valid_source",
+      "status": "integrated",
       "page": "https://fftai.com/",
       "notes": "Standard GR-1 only: never a GR-2 or GR-3 photo (Codex, 27 Nov 2026); L and Pro variants are separate.",
-      "sources": [],
-      "reason": "The only complete image found is a 210 × 533 render in a RoboCup 2024 team specification sheet; it labels the robot \"GR-1\" but gives 34 DoF and 52 kg. That figure coincides with the one listed for the separate GR-1L, while the standard GR-1 has 44 actuators and weighs 55 kg, so the variant shown is not established and the image is not assigned to the standard GR-1 (this does not conclude that it shows a GR-1L). Fourier's own specification sheet cited in the record downloads as a blank page and its product pages show no verifiable photo (Codex and Claude, 27 Nov 2026)."
+      "sources": [
+        {
+          "file": "https://humanoid.robocup.org/wp-content/uploads/2024-th-mos-adult-specs.pdf",
+          "page": "https://humanoid.robocup.org/wp-content/uploads/2024-th-mos-adult-specs.pdf",
+          "sha256": "d79df6353db206860964608c2b363037985b437a0971a52ca9425fca71a2fbb9",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 193 × 518 with 20 px padding."
+        }
+      ],
+      "reason": "The only complete image found is a 210 × 533 render in a RoboCup 2024 team specification sheet; it labels the robot \"GR-1\" but gives 34 DoF and 52 kg. That figure coincides with the one listed for the separate GR-1L, while the standard GR-1 has 44 actuators and weighs 55 kg, so the variant shown is not established and the image is not assigned to the standard GR-1 (this does not conclude that it shows a GR-1L). Fourier's own specification sheet cited in the record downloads as a blank page and its product pages show no verifiable photo (Codex and Claude, 27 Nov 2026).",
+      "quality_note": "Small native source: 193 × 518 px as prepared, not enlarged."
     },
     "215": {
       "recorded": {
         "Lab": "Kepler",
         "Robot": "Forerunner K2"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.gotokepler.com/productDetailK2",
       "notes": "Bipedal version, not the wheeled development version; not Forerunner K1 (id 47).",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://img.gotokepler.com/image/gotokepler/productDetail_K2/pc/intro1_en.png",
+          "page": "https://www.gotokepler.com/productDetailK2",
+          "sha256": "263314b19964a446ceb3fc2d4e7cae7073130e8d9af3b80b5f1c7844630d65b6",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1088 × 2354 with 20 px padding."
+        }
+      ]
     },
     "155": {
       "recorded": {
@@ -588,7 +646,7 @@
       },
       "status": "queued",
       "page": "https://www.pudurobotics.com/en/products/d9",
-      "notes": "Not D7 (id 68).",
+      "notes": "Not D7 (id 68). Batch 12 (27 Nov 2026): official D9 video frame 31 (1920 × 1080) prepared, but the dark background panel beside the torso cannot be separated from the dark torso by alpha alone; left out by Codex's decision. Still queued for another official source.",
       "sources": [
         {
           "file": "pudurobotics.com d9.webp",
@@ -785,8 +843,20 @@
         "Lab": "Noble Machines",
         "Robot": "Not disclosed"
       },
-      "status": "exception",
-      "reason": "No exact model in the record."
+      "status": "integrated",
+      "reason": "No exact model in the record.",
+      "sources": [
+        {
+          "file": "https://www.noblemachines.ai/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fwg3g1rbz%2Fproduction%2F0ca8a6a5eb8003f5da1f2dd5160556135aec7443-1526x1552.jpg&w=3840&q=75",
+          "page": "https://www.noblemachines.ai/",
+          "sha256": "a6f35d3c5c166f3c082de296add01c52fd3ecd44fdf39d8ec3728dfeaba865ef",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 972 × 1135 with 20 px padding."
+        }
+      ]
     },
     "109": {
       "recorded": {
@@ -917,8 +987,20 @@
         "Lab": "RoboParty",
         "Robot": "ROBOTO 01 / ROBOTO Origin"
       },
-      "status": "needs_decision",
-      "reason": "Two families in one record."
+      "status": "integrated",
+      "reason": "Two families in one record.",
+      "sources": [
+        {
+          "file": "https://raw.githubusercontent.com/Roboparty/roboto_origin/main/assets/1280X1280.PNG",
+          "page": "https://github.com/Roboparty/roboto_origin/blob/main/assets/1280X1280.PNG",
+          "sha256": "887bfa7f18a42f8224a774924aa75c021192a57a5e7a20cffb2efca8680a9310",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 558 × 1004 with 20 px padding."
+        }
+      ]
     },
     "143": {
       "recorded": {
@@ -2577,9 +2659,20 @@
         "Lab": "Kepler",
         "Robot": "Forerunner K1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.gotokepler.com/home",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://img.gotokepler.com/image/gotokepler/productDetail_k1/P3-en.png",
+          "page": "https://www.gotokepler.com/productDetailK1",
+          "sha256": "46ec07ff69e55e8c53bd7226a65701fe799bf2b2004f0d0f3601f13de0fbfd8a",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 748 × 2116 with 20 px padding."
+        }
+      ]
     },
     "48": {
       "recorded": {
@@ -2608,7 +2701,8 @@
       },
       "status": "queued",
       "page": "https://www.lejurobot.com/en",
-      "result": "Source received 27 Nov 2026 (Leju homepage, General Humanoid Robot series image, 902 × 1554 with its own transparency): the robot's head reaches the top edge of the file (25 px of the top row opaque) and the left fingertips the left edge, so a complete head cannot be shown; left pending rather than published (Codex's rule: no cut head or feet). Another official whole-body source is still sought."
+      "result": "Source received 27 Nov 2026 (Leju homepage, General Humanoid Robot series image, 902 × 1554 with its own transparency): the robot's head reaches the top edge of the file (25 px of the top row opaque) and the left fingertips the left edge, so a complete head cannot be shown; left pending rather than published (Codex's rule: no cut head or feet). Another official whole-body source is still sought.",
+      "notes": "Batch 12 (27 Nov 2026): the Kuavo 4Pro Standard render (520 × 1170) has flat grey placeholder forearms and hands; left out by Codex's decision. A new official image with articulated hands is in Codex's candidates-17."
     },
     "50": {
       "recorded": {
@@ -2761,9 +2855,20 @@
         "Lab": "Pollen",
         "Robot": "Reachy 2"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://pollen-robotics.com/reachy-2/",
-      "result": "Queued. Official GitHub pollen-robotics/reachy2-sdk and reachy2_core hold only a logo; Codex's sweep of the official Reachy 2 page pending."
+      "sources": [
+        {
+          "file": "https://pollen-robotics.com/assets/reachy2/datasheets/reachy2-single-arm-mobile-base.pdf",
+          "page": "https://pollen-robotics.com/assets/reachy2/datasheets/reachy2-single-arm-mobile-base.pdf",
+          "sha256": "358ff418b55219a8490da80fe29c8983b46a6187ad9ad06371f2c08fa3d2c439",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 786 × 1864 with 20 px padding."
+        }
+      ]
     },
     "68": {
       "recorded": {
@@ -2848,7 +2953,8 @@
       },
       "status": "queued",
       "page": "https://www.robot.com/r-noid",
-      "result": "Source received 27 Nov 2026 (robot.com R-Noid technical specifications figure, 741 × 2165 with its own transparency): the top of the head reaches the top edge of the file (105 px of the top row opaque), so a complete head cannot be shown; left pending rather than published. Another official whole-body source is still sought."
+      "result": "Source received 27 Nov 2026 (robot.com R-Noid technical specifications figure, 741 × 2165 with its own transparency): the top of the head reaches the top edge of the file (105 px of the top row opaque), so a complete head cannot be shown; left pending rather than published. Another official whole-body source is still sought.",
+      "notes": "Batch 12 (27 Nov 2026): frame 847 of the official video was prepared, but a cyan line of the R-Kiwi lid and a reddish fringe of the door behind remain at the gripper and wrist; left out by Codex's decision. Frame 908 to be examined."
     },
     "78": {
       "recorded": {
@@ -2961,9 +3067,20 @@
         "Lab": "Ubtech",
         "Robot": "Walker S1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.ubtrobot.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://owebsite-cdn.ubtrobot.com/resources/image/2024/10/13/600678134571077.jpg",
+          "page": "https://www.ubtrobot.com/en/humanoid/products/walker-s1",
+          "sha256": "bc70bd554c8960a14f4437fc152798f25828977e87e499b1310525ab54fea62a",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 585 × 1310 with 20 px padding."
+        }
+      ]
     },
     "92": {
       "recorded": {
@@ -3057,9 +3174,20 @@
         "Lab": "Westwood",
         "Robot": "Themis"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.westwoodrobotics.io/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.westwoodrobotics.io/wp-content/uploads/2025/04/2-scaled.png",
+          "page": "https://www.westwoodrobotics.io/themis/",
+          "sha256": "df922a8fc9c248c0b080c166bd767a10ccd979abc9132f0fa54d75ebf3611070",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 928 × 2218 with 20 px padding."
+        }
+      ]
     },
     "100": {
       "recorded": {
@@ -3131,9 +3259,20 @@
         "Lab": "Vibe Robotics",
         "Robot": "Vibe 01"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.viberobotics.co/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.viberobotics.co/media/room1501-first.webp",
+          "page": "https://www.viberobotics.co/",
+          "sha256": "07b5bfaba10d56e1b14fc5905786e27626821e0524bd90063235c21219f727cc",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 464 × 786 with 20 px padding."
+        }
+      ]
     },
     "119": {
       "recorded": {

@@ -1627,6 +1627,156 @@
         "credit": "Image: Astribot, S1 video still",
         "provenance": "ops/media/robots/astribot-s1/PROVENANCE.md"
       }
+    },
+    "67": {
+      "recorded": {
+        "Lab": "Pollen",
+        "Robot": "Reachy 2"
+      },
+      "image": {
+        "src": "/assets/robots/pollen-reachy-2-single-arm/pollen-reachy-2-single-arm-full-body.webp",
+        "fallback": "/assets/robots/pollen-reachy-2-single-arm/pollen-reachy-2-single-arm-full-body.png",
+        "width": 786,
+        "height": 1864,
+        "alt": "Reachy 2 by Pollen Robotics, full body, single-arm configuration on its mobile base, manufacturer technical render",
+        "credit": "Image: Pollen Robotics, Reachy 2 single-arm mobile-base configuration, technical render",
+        "provenance": "ops/media/robots/pollen-reachy-2-single-arm/PROVENANCE.md"
+      }
+    },
+    "215": {
+      "recorded": {
+        "Lab": "Kepler",
+        "Robot": "Forerunner K2"
+      },
+      "image": {
+        "src": "/assets/robots/kepler-forerunner-k2-biped/kepler-forerunner-k2-biped-full-body.webp",
+        "fallback": "/assets/robots/kepler-forerunner-k2-biped/kepler-forerunner-k2-biped-full-body.png",
+        "width": 1088,
+        "height": 2354,
+        "alt": "Forerunner K2 by Kepler, full body, front view, bipedal development version, manufacturer render",
+        "credit": "Image: Kepler, K2 bipedal development version, manufacturer render",
+        "provenance": "ops/media/robots/kepler-forerunner-k2-biped/PROVENANCE.md"
+      }
+    },
+    "47": {
+      "recorded": {
+        "Lab": "Kepler",
+        "Robot": "Forerunner K1"
+      },
+      "image": {
+        "src": "/assets/robots/kepler-forerunner-k1/kepler-forerunner-k1-full-body.webp",
+        "fallback": "/assets/robots/kepler-forerunner-k1/kepler-forerunner-k1-full-body.png",
+        "width": 748,
+        "height": 2116,
+        "alt": "Forerunner K1 by Kepler, full body, front view, manufacturer render",
+        "credit": "Image: Kepler, Forerunner K1 manufacturer render",
+        "provenance": "ops/media/robots/kepler-forerunner-k1/PROVENANCE.md"
+      }
+    },
+    "32": {
+      "recorded": {
+        "Lab": "Fourier",
+        "Robot": "GR-1"
+      },
+      "image": {
+        "src": "/assets/robots/fourier-gr1-robocup/fourier-gr1-robocup-full-body.webp",
+        "fallback": "/assets/robots/fourier-gr1-robocup/fourier-gr1-robocup-full-body.png",
+        "width": 193,
+        "height": 518,
+        "alt": "GR-1 by Fourier, full body, front view, technical render from a RoboCup 2024 hardware specification",
+        "credit": "Image: RoboCup 2024 team hardware specification, Fourier GR-1 technical render",
+        "provenance": "ops/media/robots/fourier-gr1-robocup/PROVENANCE.md"
+      }
+    },
+    "118": {
+      "recorded": {
+        "Lab": "Vibe Robotics",
+        "Robot": "Vibe 01"
+      },
+      "image": {
+        "src": "/assets/robots/vibe-robotics-vibe-01/vibe-robotics-vibe-01-full-body.webp",
+        "fallback": "/assets/robots/vibe-robotics-vibe-01/vibe-robotics-vibe-01-full-body.png",
+        "width": 464,
+        "height": 786,
+        "alt": "Vibe 01 by Vibe Robotics, full body, on its wheeled base carrying bags in a hotel corridor, manufacturer render",
+        "credit": "Image: Vibe Robotics, Vibe 01 render",
+        "provenance": "ops/media/robots/vibe-robotics-vibe-01/PROVENANCE.md"
+      }
+    },
+    "107": {
+      "recorded": {
+        "Lab": "Noble Machines",
+        "Robot": "Not disclosed"
+      },
+      "image": {
+        "src": "/assets/robots/noble-machines-platform/noble-machines-platform-full-body.webp",
+        "fallback": "/assets/robots/noble-machines-platform/noble-machines-platform-full-body.png",
+        "width": 972,
+        "height": 1135,
+        "alt": "Noble Machines humanoid platform, full body, bent-knee biped carrying a translucent tote in a warehouse",
+        "credit": "Image: Noble Machines, unnamed platform",
+        "provenance": "ops/media/robots/noble-machines-platform/PROVENANCE.md"
+      }
+    },
+    "128": {
+      "recorded": {
+        "Lab": "RoboParty",
+        "Robot": "ROBOTO 01 / ROBOTO Origin"
+      },
+      "image": {
+        "src": "/assets/robots/roboparty-roboto-origin/roboparty-roboto-origin-full-body.webp",
+        "fallback": "/assets/robots/roboparty-roboto-origin/roboparty-roboto-origin-full-body.png",
+        "width": 558,
+        "height": 1004,
+        "alt": "ROBOTO Origin by RoboParty, full body, walking, repository render",
+        "credit": "Image: RoboParty, ROBOTO Origin repository render",
+        "provenance": "ops/media/robots/roboparty-roboto-origin/PROVENANCE.md"
+      }
+    },
+    "99": {
+      "recorded": {
+        "Lab": "Westwood",
+        "Robot": "Themis"
+      },
+      "image": {
+        "src": "/assets/robots/westwood-themis/westwood-themis-full-body.webp",
+        "fallback": "/assets/robots/westwood-themis/westwood-themis-full-body.png",
+        "width": 928,
+        "height": 2218,
+        "alt": "THEMIS by Westwood Robotics, full body, front view, standing",
+        "credit": "Image: Westwood Robotics",
+        "provenance": "ops/media/robots/westwood-themis/PROVENANCE.md"
+      }
+    },
+    "142": {
+      "recorded": {
+        "Lab": "Ubtech",
+        "Robot": "Walker S2"
+      },
+      "image": {
+        "src": "/assets/robots/ubtech-walker-s2/ubtech-walker-s2-full-body.webp",
+        "fallback": "/assets/robots/ubtech-walker-s2/ubtech-walker-s2-full-body.png",
+        "width": 378,
+        "height": 955,
+        "alt": "Walker S2 by UBTECH, full body, three-quarter view, standing, manufacturer render",
+        "credit": "Image: UBTECH, Walker S2 render",
+        "provenance": "ops/media/robots/ubtech-walker-s2/PROVENANCE.md"
+      }
+    },
+    "91": {
+      "recorded": {
+        "Lab": "Ubtech",
+        "Robot": "Walker S1"
+      },
+      "image": {
+        "src": "/assets/robots/ubtech-walker-s1/ubtech-walker-s1-full-body.webp",
+        "fallback": "/assets/robots/ubtech-walker-s1/ubtech-walker-s1-full-body.png",
+        "width": 585,
+        "height": 1310,
+        "alt": "Walker S1 by UBTECH, full body, front three-quarter view, walking and carrying a black tote, manufacturer product image",
+        "credit": "Image: UBTECH, Walker S1 with tote, manufacturer product image",
+        "provenance": "ops/media/robots/ubtech-walker-s1/PROVENANCE.md"
+      }
     }
   }
 }
