@@ -1,0 +1,79 @@
+{
+  "batch": 12,
+  "intake": "ops/media/intake-remaining-2026-11-27/batch-12",
+  "branch": "codex/image-sources-remaining",
+  "commit": "864fcbc (candidates-12), c4c8edb (candidates-13), 6d1eb96 (candidates-14) and 54f4cf5 (candidates-15)",
+  "scope": "All missing images (Javier, 27 Nov 2026)",
+  "items": {
+    "67": {
+      "slug": "pollen-reachy-2-single-arm",
+      "alt": "Reachy 2 by Pollen Robotics, full body, single-arm configuration on its mobile base, manufacturer technical render",
+      "credit": "Image: Pollen Robotics, Reachy 2 single-arm mobile-base configuration, technical render",
+      "identity": "The image on page 1 of Pollen Robotics' own datasheet for the Reachy 2 single-arm mobile-base configuration (an existing manufacturer render, extracted at its native 1920 × 1920 with the datasheet's own soft mask): the whole robot with one arm by design, both antennae, the gripper and the complete open mobile base. No second arm is added and the open chassis is not hidden. The record is Reachy 2; this image shows its single-arm configuration only.",
+      "quality": null
+    },
+    "215": {
+      "slug": "kepler-forerunner-k2-biped",
+      "alt": "Forerunner K2 by Kepler, full body, front view, bipedal development version, manufacturer render",
+      "credit": "Image: Kepler, K2 bipedal development version, manufacturer render",
+      "identity": "The intro image of Kepler's K2 product page, which the page's own code maps to the Bipedal Development Version (an existing manufacturer render, native 5760 × 2814): the whole yellow and black biped with head, both hands and both feet. The annotation dots and lines, which stop outside the body, and the black background are excluded by the alpha mask. Not the wheeled or basic K2 versions.",
+      "quality": null
+    },
+    "47": {
+      "slug": "kepler-forerunner-k1",
+      "alt": "Forerunner K1 by Kepler, full body, front view, manufacturer render",
+      "credit": "Image: Kepler, Forerunner K1 manufacturer render",
+      "identity": "The product diagram of Kepler's K1 page (an existing manufacturer render with its own transparency, native 3313 × 2076): the whole white and silver K1 with both hands and both feet; the annotation labels around it are left out with their lines. The helmet top and the soles reach the edges of the publisher's file only with their faint antialiased outline (no opaque pixel in either edge row: alpha at most 136 at the top and 176 at the bottom), so the whole rounded contour is shown; nothing is extended or redrawn.",
+      "quality": null
+    },
+    "32": {
+      "slug": "fourier-gr1-robocup",
+      "alt": "GR-1 by Fourier, full body, front view, technical render from a RoboCup 2024 hardware specification",
+      "credit": "Image: RoboCup 2024 team hardware specification, Fourier GR-1 technical render",
+      "identity": "The image on page 1 of a RoboCup 2024 team's hardware specification for the Fourier GR-1 (an existing technical render embedded at its native 210 × 533, not a photograph and not a new rendering): the whole robot from head to feet with both hands. No newer Fourier generation is implied.",
+      "quality": "Small native source: 193 × 518 px as prepared, not enlarged."
+    },
+    "118": {
+      "slug": "vibe-robotics-vibe-01",
+      "alt": "Vibe 01 by Vibe Robotics, full body, on its wheeled base carrying bags in a hotel corridor, manufacturer render",
+      "credit": "Image: Vibe Robotics, Vibe 01 render",
+      "identity": "The poster of Vibe Robotics' homepage video, which the publisher labels as rendered (Vibe 01 carrying a bag down a hotel corridor): the whole unit with both caster-wheel ends and the bags it holds. It is a manufacturer render, not a hardware demonstration.",
+      "quality": null
+    },
+    "107": {
+      "slug": "noble-machines-platform",
+      "alt": "Noble Machines humanoid platform, full body, bent-knee biped carrying a translucent tote in a warehouse",
+      "credit": "Image: Noble Machines, unnamed platform",
+      "identity": "Noble Machines' official warehouse photograph: the whole bent-knee biped with both feet, arms and its upper sensor and motor assembly, carrying a translucent tote. The record names no product and none is given here. Seen through the translucent tote, the robot and the warehouse keep the colours they have in the photograph: nothing behind the tote is removed or repainted.",
+      "quality": null
+    },
+    "128": {
+      "slug": "roboparty-roboto-origin",
+      "alt": "ROBOTO Origin by RoboParty, full body, walking, repository render",
+      "credit": "Image: RoboParty, ROBOTO Origin repository render",
+      "identity": "The 1280 × 1280 render in RoboParty's official roboto_origin repository, linked from the maker's site (an existing render, not a new one): the whole walking figure with head, both feet and its two round end-effectors by design. The logo and floor shadow are excluded by the alpha mask. The record covers the ROBOTO 01 / ROBOTO Origin family; no ROBOTO 01 capability is inferred from it.",
+      "quality": null
+    },
+    "99": {
+      "slug": "westwood-themis",
+      "alt": "THEMIS by Westwood Robotics, full body, front view, standing",
+      "credit": "Image: Westwood Robotics",
+      "identity": "The image on Westwood Robotics' THEMIS product page, with its own transparency (native 1920 × 2560): the whole biped with head, both gripper-like hands and both feet. The page associates it with THEMIS, not BRUCE. Nothing is reconstructed.",
+      "quality": null
+    },
+    "142": {
+      "slug": "ubtech-walker-s2",
+      "alt": "Walker S2 by UBTECH, full body, three-quarter view, standing, manufacturer render",
+      "credit": "Image: UBTECH, Walker S2 render",
+      "identity": "The render on UBTECH's Walker S2 product page (native 1080 × 1530), where the robot stands beside a battery-swap cabinet: only the robot is kept, with head, both hands and both feet; the cabinet, its border, the floor reflection and the sky background are excluded by the alpha mask, and the right elbow that passes in front of the cabinet is kept whole. It is a manufacturer render and shows nothing about battery performance.",
+      "quality": null
+    },
+    "91": {
+      "slug": "ubtech-walker-s1",
+      "alt": "Walker S1 by UBTECH, full body, front three-quarter view, walking and carrying a black tote, manufacturer product image",
+      "credit": "Image: UBTECH, Walker S1 with tote, manufacturer product image",
+      "identity": "The tall product image on UBTECH's Walker S1 page (native 1080 × 1920): the whole robot with head and both feet, carrying a black tote that is kept as its payload; the fingers hidden behind the tote are not invented. The factory background and the floor reflection are excluded by the alpha mask; colours and brightness are unchanged. Not the Walker S2 image (record 142).",
+      "quality": null
+    }
+  }
+}

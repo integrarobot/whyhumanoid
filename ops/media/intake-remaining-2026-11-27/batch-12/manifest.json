@@ -1,0 +1,431 @@
+[
+  {
+    "id": 49,
+    "slug": "leju-kuavo-4pro",
+    "credit": "LejuRobotics",
+    "source_page": "https://github.com/LejuRobotics/kuavo-ros-opensource/blob/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro%E6%A0%87%E5%87%86%E7%89%88.png",
+    "source_url": "https://raw.githubusercontent.com/LejuRobotics/kuavo-ros-opensource/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro%E6%A0%87%E5%87%86%E7%89%88.png",
+    "source_context": "Exact official Kuavo ROS opensource repository, docs/1产品介绍/images/kuavo_4pro标准版.png. Whole Kuavo4Pro Standard biped with complete helmet, hands and feet, native520x1170. NOT earlier native902x1554 websitephoto whose head is cropped. Use caption Kuavo4Pro Standard configuration on generic Kuavo family record. No assertion that specs from another generation apply.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining c4c8edb, candidates-13",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      0,
+      0,
+      520,
+      1170
+    ],
+    "bbox": [
+      25,
+      9,
+      505,
+      1155
+    ],
+    "border": 20,
+    "size": [
+      520,
+      1186
+    ],
+    "native_alpha": false,
+    "original_sha256": "4ebae2301ff8d0c8b859c9ec4b0484fbcc83f513744be586c0a72662828295b2",
+    "prepared_sha256": "ce314afb8b0e931a526b2e52015c7ab26037feec0379835991f2200c5e17ba20",
+    "mask_sha256": "5e4095fb4a2b5aaa9bb0afbda77c3e18e0c256d899b04280a7c4834e1328dd21"
+  },
+  {
+    "id": 67,
+    "slug": "pollen-reachy2-single-arm",
+    "credit": "PollenRobotics",
+    "source_page": "https://pollen-robotics.com/assets/reachy2/datasheets/reachy2-single-arm-mobile-base.pdf",
+    "source_url": "https://pollen-robotics.com/assets/reachy2/datasheets/reachy2-single-arm-mobile-base.pdf",
+    "source_context": "Manufacturer Reachy2 Single Arm mobile Datasheet, PDFpage1, embeddednative1920x1920image008 and native softmask009. Whole mobile platform with one arm BY DESIGN, all antennae/gripper and complete open mobile chassis; existing manufacturer technical render. Apply supplied source-mask only; do not invent secondarm or hide actual open chassis. Caption explicitly Reachy2 single-arm mobile-base configuration, technical render. Do NOT use repo reachy-mobile.png (looks legacyReachy1) or straight_posture.jpg whose base is cropped.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining c4c8edb, candidates-13",
+    "mask_method": "manufacturer's PDF soft mask, Claude",
+    "refinement": "Claude: manufacturer's own soft mask of the image (source-mask.png, PDF page 1, image 9), unlevelled 0..255; largest region kept",
+    "roi": [
+      465,
+      36,
+      1248,
+      1897
+    ],
+    "bbox": [
+      19,
+      19,
+      765,
+      1843
+    ],
+    "border": 20,
+    "size": [
+      786,
+      1864
+    ],
+    "native_alpha": false,
+    "original_sha256": "358ff418b55219a8490da80fe29c8983b46a6187ad9ad06371f2c08fa3d2c439",
+    "prepared_sha256": "14dbabcd610dc34b27232f8e1db2839d81bc3cd0165321e17965ca239255fae4",
+    "mask_sha256": "09d743a30d3dc2d45f14b734f053d92c490df5f0ee8a584ae1174d421724c519"
+  },
+  {
+    "id": 155,
+    "slug": "pudu-d9-video",
+    "credit": "PuduRobotics",
+    "source_page": "https://www.pudurobotics.com/en/products/d9",
+    "source_url": "https://cdn.pudutech.com/official-website/d9/section2_bg.mp4",
+    "source_context": "Exact D9 product page observed section2_bg.mp4, native1920x1080, frame31 at1.0333s/30fps. Whole front biped, complete head/bothhands/twofeet withfloor margin. Body is dark but has genuine geometry; no brightening/recolouring. Mask only robot, exclude huge backgroundletters and stage/floorshadow. Replaces rejected small400x480still, no enlarging. Existing manufacturer video still; independent segmentationinterior review required.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining c4c8edb, candidates-13",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      760,
+      60,
+      1210,
+      1070
+    ],
+    "bbox": [
+      53,
+      52,
+      393,
+      967
+    ],
+    "border": 20,
+    "size": [
+      380,
+      955
+    ],
+    "native_alpha": false,
+    "original_sha256": "0b189a0d6131b03a00cae399ec574a5c41c91275df7f8384e3aa2e4d33562147",
+    "prepared_sha256": "942689f7726f2daf68a5bed6a0c8bfb84f414c12b7fc1348d8fe02b495b04830",
+    "mask_sha256": "8dd0e86f07eef52aff76e96bc89f8aa5965fc35d42543f188ec9e2dd0514b528"
+  },
+  {
+    "id": 77,
+    "slug": "robotcom-rnoid-outdoor",
+    "credit": "Robot.com",
+    "source_page": "https://www.robot.com/r-noid",
+    "source_url": "https://www.datocms-assets.com/166246/1782092956-compressed-noid-2.mp4",
+    "source_context": "Manufacturer R-Noid introduction video, frame847 at35.32616s/23.976fps. Original1920x1080 fullframeSHA recorded; ONLYnativecrop[960,450,1480,1020] transported to exclude bystander/carplate. Robot whole fromheadtoentirewheeledbase; both black grippers present. Left grippercontacts separate R-Kiwi lid: carefully isolate only actual R-Noid foreground, do not remove fingerpixels or keep secondrobot. No RGB edits/scaling/reconstruction. Native robotabout490high+40pad around530; verifyactualpreparedmin500. Other casevideos fashion/carry cutbase and remain rejected.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining c4c8edb, candidates-13",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; alpha-only exclusion [0, 327, 200, 570]; alpha-only exclusion [0, 150, 42, 327]; Claude, alpha only: background-distance key (background [85, 42, 52], 30..70) in prepared rect [66, 279, 106, 313]",
+    "roi": [
+      0,
+      0,
+      520,
+      570
+    ],
+    "bbox": [
+      42,
+      37,
+      497,
+      517
+    ],
+    "border": 20,
+    "size": [
+      495,
+      520
+    ],
+    "native_alpha": false,
+    "original_sha256": "7b4f982b5e59c71d9fd62b478d9e3d81e0dea48a2b10a27604926cd5bf89d2dd",
+    "prepared_sha256": "8b5081c8a587a91e07a18a720676900d44a02ea335dbb44919360d4d07db5067",
+    "mask_sha256": "f20e674e3a83c792e94f8d8c250a1f7d6e1976c1aba9fa087399c51129d77034"
+  },
+  {
+    "id": 215,
+    "slug": "kepler-k2-biped",
+    "credit": "KeplerRobotics",
+    "source_page": "https://www.gotokepler.com/productDetailK2",
+    "source_url": "https://img.gotokepler.com/image/gotokepler/productDetail_K2/pc/intro1_en.png",
+    "source_context": "Manufacturer K2 page JS chunk-3e8ff8ce.2264ca8b.js explicitlymapsintro1_en.png to Bipedal Development Version, notwheeledintro2/basicintro3. Native5760x2814 existingmanufacturer diagram/render, fullheadhandsfeet. Blueannotationdots/lines stopOUTSIDEbody, so exclude bymaskwithoutbodyRGBalteration. CurrentfileportraitROIrootpreviewshowedallannotationmarkersoutside; inspectinteriors. Caption K2 Bipedal Development Version, manufacturer render, no specschange.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining c4c8edb, candidates-13",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      2300,
+      200,
+      3500,
+      2650
+    ],
+    "bbox": [
+      73,
+      53,
+      1121,
+      2367
+    ],
+    "border": 20,
+    "size": [
+      1088,
+      2354
+    ],
+    "native_alpha": false,
+    "original_sha256": "263314b19964a446ceb3fc2d4e7cae7073130e8d9af3b80b5f1c7844630d65b6",
+    "prepared_sha256": "7be3d73ece8c9ac09ac3ef7cf4f25b6f6b945ed518191755706137f441bac5cf",
+    "mask_sha256": "7de61fbc3f860f1ae4d34c221bf6bfdaafe4eafe4923b6b763dbf86757c5ea9e"
+  },
+  {
+    "id": 47,
+    "slug": "kepler-k1",
+    "credit": "KeplerRobotics",
+    "source_page": "https://www.gotokepler.com/productDetailK1",
+    "source_url": "https://img.gotokepler.com/image/gotokepler/productDetail_k1/P3-en.png",
+    "source_context": "Manufacturer exactK1page chunk-465a62fa.6567f29a.js mapsP3-en.png productdiagram. Native3313x2076RGBAfullstandingwhiteK1 withbothhandsandfeet. Annotationlinesstopoutsidebody. Helmettop touches imageborder ONLYantialias(maxalpha136onrow0,noopaque topcrop); fullroundedcontourvisiblebutindependentlyreviewwhetherwholeheadcanbecredited. Preservetoprim, do notmakeup margin/body; ifactuallycroppedrejectandseekother. Existingmanufacturer render notnew3D.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining c4c8edb, candidates-13",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha; largest region kept",
+    "roi": [
+      1280,
+      0,
+      2050,
+      2076
+    ],
+    "bbox": [
+      22,
+      0,
+      730,
+      2076
+    ],
+    "border": 20,
+    "size": [
+      748,
+      2116
+    ],
+    "native_alpha": true,
+    "original_sha256": "46ec07ff69e55e8c53bd7226a65701fe799bf2b2004f0d0f3601f13de0fbfd8a",
+    "prepared_sha256": "8d44aeb47bbb8a945668c5c22dc89d2895afbdb287898cfec759d18b76604a8d",
+    "mask_sha256": "8e30dabb0171c539e8fad1fb0e770561320a73c296a970189f115ab492c60e9e"
+  },
+  {
+    "id": 32,
+    "slug": "fourier-gr1-robocup",
+    "credit": "RoboCupGR1hardware-specification",
+    "source_page": "https://humanoid.robocup.org/wp-content/uploads/2024-th-mos-adult-specs.pdf",
+    "source_url": "https://humanoid.robocup.org/wp-content/uploads/2024-th-mos-adult-specs.pdf",
+    "source_context": "RoboCup2024 team hardware specification forGR1, PDFpage1embeddedimage0, native210x533 completefronttechnicalrender with marginabovehead/belowfeet, handscomplete. Existingprojecthardware-spectechnicalrender, notnewURDF. Caption specifically RoboCup2024GR1hardware-specification technicalrender; no claimphotoornewFouriergeneration. Nativefigheightabout485+40pad>500; independentlyverifyqualitywithoutupscaling. Otherembedded2160x3840photo hasfootballoccludingfoot, rejected; FourierGitHubrenders havecoordinateaxespaintedoverbody, rejected.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining c4c8edb, candidates-13",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      0,
+      0,
+      210,
+      533
+    ],
+    "bbox": [
+      25,
+      13,
+      178,
+      491
+    ],
+    "border": 20,
+    "size": [
+      193,
+      518
+    ],
+    "native_alpha": false,
+    "original_sha256": "d79df6353db206860964608c2b363037985b437a0971a52ca9425fca71a2fbb9",
+    "prepared_sha256": "ce6ec5edf0f5dfa7eb2436b9f691725dd239fe5f1ba7061b0df55a36c6723065",
+    "mask_sha256": "1770ed6a9ab2455e7bb8dab9c2cad26464320bd21577b298ee4bdc9885c96ae1"
+  },
+  {
+    "id": 118,
+    "slug": "vibe-01",
+    "credit": "VibeRobotics",
+    "source_page": "https://www.viberobotics.co/",
+    "source_url": "https://www.viberobotics.co/media/room1501-first.webp",
+    "source_context": "Official homepage video poster room1501-first.webp720x900. Publisher aria-label explicitly says Rendered,2am: Vibe01 carries a bag down a hotel corridor and hangs it on a room door handle. Whole front unit including BOTH caster-wheel extremities, lower floor margin visible; preserve both held bags. Unlike cropped og.jpg previously rejected. Label concept/manufacturer render, no hardware demonstration claim.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      0,
+      0,
+      720,
+      900
+    ],
+    "bbox": [
+      133,
+      131,
+      557,
+      877
+    ],
+    "border": 20,
+    "size": [
+      464,
+      786
+    ],
+    "native_alpha": false,
+    "original_sha256": "07b5bfaba10d56e1b14fc5905786e27626821e0524bd90063235c21219f727cc",
+    "prepared_sha256": "0693919659c292a0bdf3474bfc64ae6922604ac4a6ff2f507f45116fc285914e",
+    "mask_sha256": "5878b312f206885d9621f8200815851a2def93519ff25149dedc40ad85aa010f"
+  },
+  {
+    "id": 107,
+    "slug": "noble-machines-platform",
+    "credit": "NobleMachines",
+    "source_page": "https://www.noblemachines.ai/",
+    "source_url": "https://www.noblemachines.ai/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fwg3g1rbz%2Fproduction%2F0ca8a6a5eb8003f5da1f2dd5160556135aec7443-1526x1552.jpg&w=3840&q=75",
+    "source_context": "Catalogue record107 explicitly says Noble Machines platform; product name unconfirmed. Official manufacturer warehouse photo1526x1552 shows the whole actual bent-knee biped, two feet, arms and upper sensor/motor assembly carrying a translucent tote. Keep cargo and all robot parts; no invented human head or name such as Moby. Caption unnamed NobleMachines platform. Source optical appearance through tote is preserved; no RGB/background decontamination. Independently inspect cargo/foreground matting and actual whole figure.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      350,
+      100,
+      1450,
+      1500
+    ],
+    "bbox": [
+      90,
+      250,
+      1022,
+      1345
+    ],
+    "border": 20,
+    "size": [
+      972,
+      1135
+    ],
+    "native_alpha": false,
+    "original_sha256": "a6f35d3c5c166f3c082de296add01c52fd3ecd44fdf39d8ec3728dfeaba865ef",
+    "prepared_sha256": "8b3dccdf73f2026537a6d4068dba2ac48bf34a40c158b9fc5b1e1191c905abe4",
+    "mask_sha256": "621a155869a74c93e7cedcf27dccbd7c0b1d921d0d7458e5df1bc1fb1fc6770f"
+  },
+  {
+    "id": 128,
+    "slug": "roboparty-roboto-origin",
+    "credit": "RoboParty",
+    "source_page": "https://github.com/Roboparty/roboto_origin/blob/main/assets/1280X1280.PNG",
+    "source_url": "https://raw.githubusercontent.com/Roboparty/roboto_origin/main/assets/1280X1280.PNG",
+    "source_context": "Official Roboparty GitHub organisation links from manufacturer site; repository roboto_origin, existing assets/1280X1280.PNG manufacturer render1280square. Whole walking figure, both complete feet/head and two round end-effector forms by design. Caption ROBOTO Origin repository render / ROBOTO family, not newly rendered URDF and not inferred ROBOTO01 capabilities. Catalogue explicitly allows ROBOTO01 / ROBOTOOrigin family. Prefer this large source to previous homepage stair image with small native figure. Exclude logo and floor shadow using mask only.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 864fcbc, candidates-12",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      100,
+      0,
+      820,
+      1280
+    ],
+    "bbox": [
+      98,
+      169,
+      616,
+      1133
+    ],
+    "border": 20,
+    "size": [
+      558,
+      1004
+    ],
+    "native_alpha": false,
+    "original_sha256": "887bfa7f18a42f8224a774924aa75c021192a57a5e7a20cffb2efca8680a9310",
+    "prepared_sha256": "31394db5689fbe350fd345983ba2baeffd9ce8f07721dcd786a68fc155c2c0d4",
+    "mask_sha256": "321b0bbca21ff3e2cf9dbe9b04dc48785ffaef5a56494949b3b2ed8d81323fa7"
+  },
+  {
+    "id": 99,
+    "slug": "westwood-themis",
+    "credit": "WestwoodRobotics",
+    "source_page": "https://www.westwoodrobotics.io/themis/",
+    "source_url": "https://www.westwoodrobotics.io/wp-content/uploads/2025/04/2-scaled.png",
+    "source_context": "ExactTHEMISproductpage, native1920x2560PNG frontstandingwholebiped withheadbothgripper-likehandsandbothfeetcomplete, ownalpha. The source webpage associatesitwithTHEMIS,notBRUCE; catalogueTHEMISfamily. Nativealpha/interiorgapsmustbereviewed; do notautomaticallytrustnativealpha. Preserveactualgrippers,noreconstructedhumanfingers. No model3Drendercreated. Alternativeviews99-35side/99-41threequarteralsocompletebutonlyoneimageperrecord.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 54f4cf5, candidates-15",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha",
+    "roi": [
+      0,
+      0,
+      1920,
+      2560
+    ],
+    "bbox": [
+      491,
+      191,
+      1379,
+      2369
+    ],
+    "border": 20,
+    "size": [
+      928,
+      2218
+    ],
+    "native_alpha": true,
+    "original_sha256": "df922a8fc9c248c0b080c166bd767a10ccd979abc9132f0fa54d75ebf3611070",
+    "prepared_sha256": "38070e65620308332bb59c5a0dc0e3a55c4bc070141a5779e7db3feb8e52c69e",
+    "mask_sha256": "f7e97880f33aabf407c77ef0d3d8db3dcfd91352ee6a2c5894addaa9081c5363"
+  },
+  {
+    "id": 142,
+    "slug": "ubtech-walker-s2",
+    "credit": "UBTECH",
+    "source_page": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
+    "source_url": "https://owebsite-cdn.ubtrobot.com/resources/image/2025/07/22/700558958612549.jpg",
+    "source_context": "Exact WalkerS2productpage manufacturer render1080x1530, robotstandingbesidebatterybank. Wholeheadbothhandsandbothfeet withfloorabovebottom, actualrobotbody~900px. IsolateONLYrobot, excludebatterybank(stagebackground,notattachedtoforeground), floormirror/shadowandbluewhitebackground. Rightarmvisibleseparatedfrombank, do notincludeitsleftborder. Other sources technicaldiagram74/75 touchtopheadborderandcarryannotationlinesONbody: do NOT substitute those. Caption manufacturer render, no proofbatteryperformance.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 6d1eb96, candidates-14",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      240,
+      500,
+      680,
+      1480
+    ],
+    "bbox": [
+      46,
+      39,
+      384,
+      954
+    ],
+    "border": 20,
+    "size": [
+      378,
+      955
+    ],
+    "native_alpha": false,
+    "original_sha256": "9c9c3939c3b8ad57bb217af43e7e780d6467287aa5fb44c9ea4f1a60e5419af8",
+    "prepared_sha256": "d6714a61c68a26ee8521d74c615e75d8131b6baa47372b0fc1590a13398fb62e",
+    "mask_sha256": "446111ab4832377b0d4784dbed4fc7a4e3ed92082924022a7b7e9d84264c0629"
+  },
+  {
+    "id": 91,
+    "slug": "ubtech-walker-s1",
+    "credit": "UBTECH",
+    "source_page": "https://www.ubtrobot.com/en/humanoid/products/walker-s1",
+    "source_url": "https://owebsite-cdn.ubtrobot.com/resources/image/2024/10/13/600678134571077.jpg",
+    "source_context": "Exact WalkerS1productpage native1080x1920 tallmanufacturerproductimage, robotcarryingblacktote. Wholeheadhandsasvisiblebehindheldbin, bothfeetandfloormargin. Preserveentiretoteasheldpayload, noinventedoccludedfingers. Isolatefromfactoryandfloorreflection; noRGBbrightness/coloradjustment. CaptionWalkerS1withtote, manufacturerproductimage/render. Never useWalkerS2navigationimageforthisrecord.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 6d1eb96, candidates-14",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      200,
+      80,
+      900,
+      1500
+    ],
+    "bbox": [
+      77,
+      65,
+      622,
+      1335
+    ],
+    "border": 20,
+    "size": [
+      585,
+      1310
+    ],
+    "native_alpha": false,
+    "original_sha256": "bc70bd554c8960a14f4437fc152798f25828977e87e499b1310525ab54fea62a",
+    "prepared_sha256": "b76b4060576ac7c553497991dfc3fbb3ae1d2d3cf9971ea8859b535e3f82fb21",
+    "mask_sha256": "6d482c96f3bddb6e0f72f51380e01e83ecf90413b844d1534f43ba2101316e04"
+  }
+]
