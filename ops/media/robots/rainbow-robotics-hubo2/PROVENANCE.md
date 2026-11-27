@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 15, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 15, PR not yet merged)
+## Published files (image batch 15, PR 249, merge 672539d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/rainbow-robotics-hubo2/rainbow-robotics-hubo2-full-body.png`, 1115 × 1633 px, sha256 `9b0c118cf89fe9f2d69510dab140d5f7963889d64cedb088301b7caca5edcd88` (= the prepared.png).
 - **WebP:** `assets/robots/rainbow-robotics-hubo2/rainbow-robotics-hubo2-full-body.webp`, sha256 `b4166332a8cb371deb9d9fd6aca9931129aa5f944660d6f0bab55d879e5f07e6`.

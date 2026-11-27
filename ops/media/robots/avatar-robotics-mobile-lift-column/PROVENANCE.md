@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 15, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 15, PR not yet merged)
+## Published files (image batch 15, PR 249, merge 672539d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/avatar-robotics-mobile-lift-column/avatar-robotics-mobile-lift-column-full-body.png`, 491 × 719 px, sha256 `2a3dfffb71091eeedbca87ebab67bf2ad3829af36e52194cca1e8254646638d1` (= the prepared.png).
 - **WebP:** `assets/robots/avatar-robotics-mobile-lift-column/avatar-robotics-mobile-lift-column-full-body.webp`, sha256 `dd8e6a269094a880ac78e0e00a12a04146e8c7d7e47563514767c59ae86af81d`.

@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-2102-imagenes-robots-lote-15",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T21:07:28+01:00",
+  "por": "codex",
+  "evidencia": "Codex revisó PR249 cabeza3a4fcb2776263f292c7c8ab97cb77eabd1e1d7ae contra2c728aa:88 archivos solo imágenes/ops/páginas generadas,138 presentaciones previas y213 datos intactos. Diez RGB nativos exactos, SHA, alfaPNG/WebP, dimensiones y margen20px correctos; diez pares claro/oscuro examinados. CI46060419988 correcta. Fusión672539d275bd458dfcad760d18548336ada8b25a y Pages46060653520 correctos antes de solicitar nuevas canónicas.30/30 URL200,20 activos con SHA/alfa exactos,10 fichas conimagen/alt/crédito.20/20 vistasChrome390×844/1366×900,loaded,contain,sin overflow; capturaMATRIX1 escritorio revisada. Avisados Javier yClaude:148/213 publicadas,65 pendientes, soloHumanoids. CierrePR250 revisado en5290fa12a20c850d3eb62911c4d53a077575b332:catorce archivos soloops,CI46060955449 correcta,registroválido113cierres55confirmaciones. No se atribuye recepción aJavier."
+}

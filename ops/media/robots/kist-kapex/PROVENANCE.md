@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 15, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 15, PR not yet merged)
+## Published files (image batch 15, PR 249, merge 672539d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/kist-kapex/kist-kapex-full-body.png`, 259 × 750 px, sha256 `44505868ca17a8c9f95459dafdd654dc7d1a79882d059c194741b4a547a17e1a` (= the prepared.png).
 - **WebP:** `assets/robots/kist-kapex/kist-kapex-full-body.webp`, sha256 `9bb5c62f54d593ef35cef57f0a3f01d129e53b0beb447ac6005014f0e17530db`.

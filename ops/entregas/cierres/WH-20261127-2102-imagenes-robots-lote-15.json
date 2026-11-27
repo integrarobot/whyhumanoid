@@ -1,0 +1,60 @@
+{
+  "id": "WH-20261127-2102-imagenes-robots-lote-15",
+  "tarea": "Imágenes de robots, lote 15 del alcance «todas las imágenes que faltan»: Avatar Robotics (configuración móvil con columna elevadora), StarBot Astra y Flex, MATRIX-1, TASKBOT SCOUT, HUBO2, Galbot G1, Xiaomi CyberOne, VinMotion Motion1 y KAPEX, con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026; alcance confirmado solo para Humanoids), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T21:02:51+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 249 (cabeza revisada 3a4fcb2, merge 672539d): imagen en las fichas 166 Avatar Robotics, 199 StarBot Astra, 200 StarBot Flex, 191 Matrix Robotics MATRIX-1, 74 Revobots Taskbot, 70 Rainbow Hubo, 35 Galbot G1, 102 Xiaomi Cyber One, 96 VinMotion Motion y 50 KAPEX, solo mediante tools/robot-presentation.json; las 138 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con el tipo de imagen, la variante y la procedencia: «Avatar Robotics, mobile lift-column configuration, official video still», «StarBot, Astra manufacturer product illustration», «StarBot, Flex manufacturer product illustration», «Matrix Robotics, MATRIX-1 manufacturer product image», «REVOBOTS, TASKBOT SCOUT mobile configuration, official video still», «Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam», «Galbot, G1 manufacturer product render via European Product Design Award (2026)», «Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI», «VinMotion, Motion1 at VEC 2025, event photograph by Nguyen Le» y «KIST, KAPEX concept render (2025), via Herald Economy». Las especificaciones de las fichas no cambian.",
+    "Fuentes de Codex (codex/image-sources-remaining: candidates-25 en 66c596a, 26 en b07ffac, 27 en dc11021, 28 en 62f03ab, 30 en 26e018a, 31 en a7c0ffb, 32 en 31e0eb7, 33 en bbf9ddd y 34 en 17d1e6e), copiadas de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-15/. Todos los recortes, de Claude y solo de alfa, a tamaño nativo, con máscaras BiRefNet guardadas junto a cada original: Flex añade sus dos ruedas locas negras desde la luminancia del original; MATRIX-1 corta el reflejo del suelo en la línea de contacto de las suelas; CyberOne combina una pasada de la figura y otra de los pies para dejar fuera la peana; SCOUT, HUBO2, G1 y KAPEX con niveles 150..240 y Motion1 con 170..240.",
+    "Fuera del lote: Qinglong (69, candidates-29), porque en todos los fotogramas útiles del GIF oficial una silla negra o una persona sentada queda justo detrás del costado derecho del torso negro y no se separa solo con alfa (Codex: apartado, sin reconstrucción). Jingchu Elf (183) sigue pendiente de otra fuente. CyberOne (102) sale de las reservas del lote 1.",
+    "Cobertura: lote 15 publicado con 10 fichas; en todo el catálogo, 148 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 249",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/249"
+    },
+    {
+      "etiqueta": "CI de la cabeza 3a4fcb2",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46060419988"
+    },
+    {
+      "etiqueta": "Pages de 672539d",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46060653520"
+    },
+    {
+      "etiqueta": "Ficha Galbot G1",
+      "url": "https://whyhumanoid.com/humanoids/galbot-g1-35/"
+    },
+    {
+      "etiqueta": "Ficha Xiaomi CyberOne",
+      "url": "https://whyhumanoid.com/humanoids/xiaomi-cyber-one-102/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 672539d (run 46060653520, correcto); CI de la cabeza 3a4fcb2 (run 46060419988, correcto). Fusión hecha solo en esa cabeza contra main 2c728aa, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga (x-cache MISS en la primera petición)."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 10/10; los avisos de fondo plano de HUBO2 y G1 son brillos del metal y el reflejo del visor del propio robot; navegador local de las diez fichas a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
+    "Codex, cabeza 3a4fcb2 contra 2c728aa: revisión independiente aprobada; 88 archivos solo de imágenes, ops y páginas generadas; las 138 presentaciones anteriores y el catálogo de 213 idénticos; RGB nativo, hashes, alfa de PNG y WebP y margen de 20 px correctos en los diez; pares claro y oscuro revisados (reflejo del visor de G1 y metal de HUBO2 reales, rendija de la pinza de HUBO2 conservada sin perforar el metal, pies de CyberOne sin peana, cables de Motion1, ruedas de Flex, configuración de SCOUT).",
+    "Claude, producción tras Pages 46060653520: las 20 URL canónicas (10 PNG y 10 WebP) con los mismos bytes que 672539d (20/20); las 10 fichas y la portada idénticas a 672539d salvo las etiquetas meta agent:* que añade Cloudflare (11/11); navegador real a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 148 presentaciones. La espera de Pages se hizo consultando la portada existente con un parámetro de consulta único, nunca URL de activos nuevos.",
+    "Codex, verificación pública independiente tras Pages 46060653520 en merge 672539d: 30/30 URL canónicas con 200 (20 activos PNG y WebP con SHA y alfa exactos y 10 fichas con imagen, texto alternativo y crédito); 20/20 vistas reales en Chrome con innerWidth efectivo de 390 × 844 y 1366 × 900, cargadas, contain, sin desbordamiento y con créditos correctos; captura de escritorio de MATRIX-1 revisada. Cobertura 148/213, 65 pendientes.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (148) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Lote 16 en preparación: T1 Pro (202, candidates-35) ya recortado con el alfa propio del folleto; Jingchu Elf (183) pendiente de otra fuente.",
+    "Qinglong (69), T230A (89), D9 (155), R-Noid (77) e IGRIS (79) siguen fuera con su motivo.",
+    "Quedan 65 fichas de Humanoids sin imagen; Other Robots queda fuera del alcance por decisión de Javier."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Claude sigue con el lote 16 (T1 Pro primero) en rama propia, sin mezclarlo con el 15 y sin fusionar nada antes de la revisión de Codex."
+}
