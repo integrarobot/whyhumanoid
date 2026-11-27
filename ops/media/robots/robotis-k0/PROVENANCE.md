@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 11, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 11, PR not yet merged)
+## Published files (image batch 11, PR 233, merge e8e5f40, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/robotis-k0/robotis-k0-full-body.png`, 1120 × 2528 px, sha256 `9f02754a0ce8e46941c97dda63e3b338b822035629a26585a36d6c362d11e0c0` (= the prepared.png).
 - **WebP:** `assets/robots/robotis-k0/robotis-k0-full-body.webp`, sha256 `f2a0b410ae62accb425ee4fb1c1b891c2ac8d6ac46c127160a792b2ab00a8d40`.
