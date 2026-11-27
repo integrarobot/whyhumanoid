@@ -22,8 +22,12 @@ Humanoid? / Integrarobot.
 
 - Muse fetches this from the MCP host: `https://whyhumanoid-premium.javier-198.workers.dev/.well-known/muse-challenge/0f4b178779974ebde7e015a3353e0c0167fbf88f0afa2ca08aa90379b8c09dcb`
 - It must get back exactly `muse-challenge=0f4b…9dcb`. The route is already in the reviewed code (PR 175, `server/src/app.js`).
-- It answers 404 today only because production still runs the Worker version from before PR 175.
-- Deploying the reviewed bundle fixes it. See `ops/worker-deploy.md` (step 4 has the check). No new challenge is needed.
+- State observed by Codex on 27 Nov 2026, after deploying the reviewed bundles (PROD version 8171c73c, TEST 1ac00a70):
+  - the challenge answers 200 with the exact body on both;
+  - in the Muse portal: company verification Approved, challenge Verified, connector test Passed with 6 tools;
+  - credentials Submitted, technical review In review.
+  
+  The check command is in `ops/worker-deploy.md`, section 4. No new challenge was needed.
 - The challenge expires on 3 Dec 2026 at 19:32 Europe/Madrid.
 
 ## Hosting, location and transfers (Cloudflare)
@@ -37,7 +41,8 @@ Humanoid? / Integrarobot.
   `server/wrangler.toml` and `DEPLOYMENT.md`). [V] "Jurisdictions are used to create D1 databases that only run and
   store data within a region"; "Workers may still access the database … from anywhere in the world"; it can only be
   set when the database is created (developers.cloudflare.com/d1/configuration/data-location/).
-  - Confirm `eu` on the database itself in the dashboard (D1, the database).
+  - Confirmed in the dashboard (Codex, 27 Nov 2026): the production D1 database, under Settings, shows Jurisdiction The
+    European Union, Region Eastern Europe, Read replication Disabled.
 - **Encryption at rest.** [V] D1: "All objects stored in D1 … are encrypted at rest", AES-256 (GCM), with keys
   managed by Cloudflare (developers.cloudflare.com/d1/reference/data-security/).
   - Worker secrets are encrypted bindings (developers.cloudflare.com/workers/configuration/secrets/).
@@ -54,13 +59,18 @@ Humanoid? / Integrarobot.
   the GDPR FAQ (www.cloudflare.com/trust-hub/gdpr/) describes as incorporated into the self-serve agreement.
   - Transfers: the EU-U.S. Data Privacy Framework, with SCCs as a fallback (www.cloudflare.com/cloudflare-customer-scc/).
   - Subprocessors: www.cloudflare.com/gdpr/subprocessors/.
-- **Cloudflare's certifications, not the operator's.** [V] D1 "is covered by Cloudflare's SOC 2 and ISO 27001
-  compliance certifications" (D1 data-security page).
-  - The reports can be downloaded in the dashboard under Compliance Documents
+- **Cloudflare's certifications, not the operator's.** Do not name a specific certification as checked.
+  - On 27 Nov 2026, the live D1 data-security page links to the Trust Hub. It no longer carries the SOC 2 and ISO
+    27001 sentence of an earlier documentation commit.
+  - [U] Cloudflare's list: www.cloudflare.com/trust-hub/compliance-resources/. Reports can be downloaded in the
+    dashboard under Compliance Documents
     (developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/).
-  - [U] Full list: www.cloudflare.com/trust-hub/compliance-resources/.
-- **Government requests.** [U] Cloudflare publishes a transparency report (www.cloudflare.com/transparency/). The
-  operator has received no requests and publishes no report of its own.
+  - Cite a certification only after reading it there on the day of the answer.
+- **Government requests.** [U] Cloudflare publishes a transparency report (www.cloudflare.com/transparency/).
+  - The operator publishes no report of its own.
+  - Javier confirmed on 27 Nov 2026 that **no disclosures** were made to authorities in response to national-security
+    requests in the past 12 months. That is not a statement that no requests were received, and none is made here.
+  - His answer on procedures for such requests is still pending.
 
 ## Logs
 
@@ -97,7 +107,6 @@ Humanoid? / Integrarobot.
 - MFA on the Cloudflare, Stripe, Resend, GitHub and Google accounts.
 - Whether Workers Logs is on, and its retention.
 - The Workers plan: Free or Paid.
-- D1 jurisdiction `eu` on the database itself.
 - Who has access: account members and roles.
 - Which DPA version applies on each provider.
 
