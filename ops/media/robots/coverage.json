@@ -1010,7 +1010,7 @@
       "sources": [],
       "status": "no_valid_source",
       "page": "https://boardwalkrobotics.com/",
-      "notes": "Alex is a torso with a configurable base: shown as Boardwalk presents it; no lower body added.",
+      "notes": "Alex is a torso with a configurable base; only a source showing the whole platform the record identifies would qualify. A photo cropped to the torso does not meet the whole-robot requirement, and no lower body is added.",
       "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://boardwalkrobotics.com/): The Alex official hero still is cropped to the upper torso and arms. Do not invent a lower body or use another model. Additional review: Official product hero clip https://boardwalkrobotics.com/_assets/2775af333e9ee60ae48d.mp4 is a6sloop cropped to torso; no complete robot source. Not a claim that no photo exists."
     },
     "15": {
@@ -1073,7 +1073,7 @@
       "sources": [],
       "status": "no_valid_source",
       "page": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
-      "notes": "Gallop: fixed base with two arms today; shown as ASUS presents it.",
+      "notes": "Gallop: fixed base with two arms today; only a source showing the whole platform would qualify; cropped upper-body stills do not, and nothing is reconstructed.",
       "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot): The ASUS press page shows Gallop upper body and hands; all available stills are cropped. No lower body should be reconstructed. Not a claim that no photo exists."
     },
     "163": {
@@ -1084,7 +1084,7 @@
       "sources": [],
       "status": "no_valid_source",
       "page": "https://www.aheadform.com/",
-      "notes": "Elf·Xuan 2.0 is an upper-body bionic robot (head and torso): shown as AheadForm presents it; no body added.",
+      "notes": "Elf·Xuan 2.0 is presented by AheadForm as an upper-body bionic robot; a bust illustration does not meet the whole-robot requirement, so no image is accepted, and no body is added.",
       "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://www.aheadform.com/): Official Elf·Xuan2.0 product illustration is a bust. No matching complete body is supplied by the source. Not a claim that no photo exists."
     },
     "164": {
@@ -1141,7 +1141,7 @@
       "rules": [
         "Batches of up to 10 new records, Agibot first.",
         "Non-generative mask cutouts are authorised (Javier, 27 Nov 2026): alpha only, the robot's pixels kept; no part recreated, no generative image.",
-        "A bust, torso or arms-only product is shown as the maker presents it; no body is added. No model is assigned to a company record without one.",
+        "The whole platform or module the record identifies is shown, as the maker presents it (for example Axol's two-arm module), with no part added. A photo cropped to a bust or torso does not meet the whole-robot requirement. No model is assigned to a company record without one.",
         "For a family record (A2, X2) one included variant may illustrate it, named in the alt text and provenance."
       ]
     }
