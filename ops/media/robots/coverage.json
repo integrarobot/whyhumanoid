@@ -434,7 +434,7 @@
     "92": {
       "recorded": {
         "Lab": "UMA",
-        "Robot": "Not disclosed"
+        "Robot": "Version 0"
       },
       "status": "exception",
       "reason": "No exact model in the record."
