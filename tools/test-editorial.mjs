@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { DEFAULT_YEARS, contentHash, coverage, editionProblems, findLinks, inventoryProblems, isLive, itemId, madridToday, markdownProblems, readStore, readyEditions, storeProblems, urlsIn } from './editorial-model.mjs';
 import { planIngest, storeFiles, stateOf } from './editorial.mjs';
-import { editorialPages, editorialUrls, inline, renderMarkdown } from './editorial-view.mjs';
+import { editorialPages, editorialUrls, excerpt, inline, renderMarkdown } from './editorial-view.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
@@ -330,4 +330,21 @@ test('links: the author business mailto is allowed and rendered; any other mailt
   const source = fixture();
   source.editions[0].source_url = 'mailto:javier@integrarobot.com';
   assert.ok(planIngest(emptyStore(), source).problems.some((p) => /source_url must be the canonical https URL/.test(p)), 'source URLs stay https only');
+});
+
+test('teasers skip a leading image, headings and the embedded-video placeholder, and keep the article whole', () => {
+  const md = '![Image](https://example.com/cover.png)\n\n[Video embedded in the original article]\n\n## A heading\n\nToday I explain why this **matters**, with a [source](https://example.com/s).\n\nSecond paragraph.';
+  assert.equal(excerpt(md), 'Today I explain why this matters, with a source.');
+  assert.equal(excerpt('![Image](https://example.com/a.png) ![Image](https://example.com/b.png)\n\nText after two images.'), 'Text after two images.');
+  assert.equal(excerpt('![A chart of shipments](https://example.com/c.png)'), '', 'an article made only of an image has no teaser, not its alt text');
+  assert.equal(excerpt('A [Video](https://example.com/v) worth seeing.'), 'A Video worth seeing.', 'prose mentioning a video is kept');
+  const html = renderMarkdown(md);
+  assert.match(html, /<a href="https:\/\/example\.com\/cover\.png" rel="noopener noreferrer">Image: Image<\/a>/, 'the image itself is still rendered in the article');
+  assert.match(html, /<p>\[Video embedded in the original article\]<\/p>/, 'and the placeholder too');
+  const pkg = fixture();
+  pkg.editions[0].body_markdown = `![Image](https://example.com/cover.png)\n\n${pkg.editions[0].body_markdown}`;
+  pkg.editions[0].original.body_markdown = `![Imagen](https://example.com/cover.png)\n\n${pkg.editions[0].original.body_markdown}`;
+  const list = views(ingested(pkg)).get('blog/index.html');
+  assert.match(list, /<span>SYNTHETIC FIXTURE\. This paragraph tests bold text and a link to the example\.<\/span>/);
+  assert.doesNotMatch(list, /<span>Image<\/span>/);
 });

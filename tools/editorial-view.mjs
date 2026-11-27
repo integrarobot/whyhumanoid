@@ -61,13 +61,22 @@ export function renderMarkdown(markdown) {
     return `<p>${inline(lines.join(' '))}</p>`;
   }).join('\n');
 }
-// First paragraph as plain text, for lists and descriptions.
-export function excerpt(markdown, max = 220) {
-  const first = String(markdown ?? '').split(/\n\s*\n/).map((b) => b.trim()).find((b) => b && !/^#{1,6}\s/.test(b)) ?? '';
+// The first substantive paragraph as plain text, for lists and descriptions. Headings, blocks made only of images
+// (whose alt text, often just "Image", is no teaser) and the placeholder left where a video was embedded are skipped;
+// the article itself is rendered whole elsewhere.
+const VIDEO_PLACEHOLDER = /^\[[^\]]*\b(?:video|audio)\b[^\]]*\]$/i;
+const plainText = (block) => {
   let plain = '';
   let last = 0;
-  for (const l of findLinks(first)) { plain += first.slice(last, l.start) + l.label; last = l.end; }
-  const text = (plain + first.slice(last)).replace(/[*_`>#]/g, '').replace(/\s+/g, ' ').trim();
+  for (const l of findLinks(block)) { plain += block.slice(last, l.start) + (l.image ? ' ' : l.label); last = l.end; }
+  return (plain + block.slice(last)).replace(/[*_`>#]/g, '').replace(/\s+/g, ' ').trim();
+};
+export function excerpt(markdown, max = 220) {
+  const blocks = String(markdown ?? '').split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+  const text = blocks
+    .filter((b) => !/^#{1,6}\s/.test(b) && !VIDEO_PLACEHOLDER.test(b))
+    .map(plainText)
+    .find((t) => /\p{L}/u.test(t)) ?? '';
   return text.length > max ? `${text.slice(0, max - 1).replace(/\s+\S*$/, '')}…` : text;
 }
 
