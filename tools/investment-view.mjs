@@ -1,3 +1,4 @@
+import { INVESTMENT_THESIS, INVESTMENT_THESIS_BEFORE_PAYMENT, INVESTMENT_THESIS_LIMITS } from '../server/src/orders/services.js';
 // Investment research desk views (26 Nov 2026): the /investment/ directory (search, filters, sorting, counters,
 // watchlist, comparison, every thesis record) and, on each listed company's page, its market data (TradingView widgets
 // per capability, recent headlines through GET /v1/news, outside links) and its dated, attributed thesis cards. From
@@ -203,6 +204,26 @@ export function renderListingResearch(l, x, theses, { apiOrigin, snapshot, chart
   ].map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join('')}</dl>
 ${chart}${fin}${prof}${news}${stories}
 <p class="key">Quotes, charts, financials, profiles and stories are TradingView widgets loaded from TradingView in your browser, with the delay TradingView shows; Why Humanoid? does not store them. Recent headlines come from Yahoo Finance's public feed through our server, which keeps a shared copy for up to 30 minutes. None of it is Why Humanoid? research, and nothing here is investment advice. Listing details from the Investment category, snapshot ${esc(String(snapshot).slice(0, 10))}.</p>
+</section>`;
+}
+
+export function renderThesisOffer() {
+  return `<section class="service" id="investment-thesis" aria-labelledby="investment-thesis-heading">
+<h2 id="investment-thesis-heading">${esc(INVESTMENT_THESIS.name)}</h2>
+<p>${esc(INVESTMENT_THESIS.summary)}</p>
+<p><strong>${esc(INVESTMENT_THESIS_BEFORE_PAYMENT)}</strong></p>
+<p class="key">${esc(INVESTMENT_THESIS_LIMITS)}</p>
+<p class="links"><a href="/app/#reports?service=investment-thesis">View ordering options</a> <a href="/companies/agility-robotics/#agility-thesis-sample">See the Agility Robotics sample</a></p>
+</section>`;
+}
+
+export function renderAgilityThesisSample() {
+  return `<section id="agility-thesis-sample" aria-labelledby="agility-thesis-heading">
+<h2 id="agility-thesis-heading">Agility Robotics investment thesis · sample</h2>
+<p class="key">Research as of 27 November 2026 · Nasdaq: AGLT common stock</p>
+<p>Can Agility turn a commercial warehouse deployment into a fleet business with repeatable margins? GXO confirmed its Georgia deployment and announced two additional sites for 2027. Legacy Agility reported US$361,000 in net sales and US$131.6 million in operating cash outflow for the nine months ended 30 September 2026. Agility reported more than US$300 million in multi-year Digit 5 orders subject to contractual milestones or product requirements.</p>
+<p>The research tracks customer acceptance, paid fleet growth, service costs and cash consumption. It tests what adoption and margins would be required to support a given valuation.</p>
+<p class="links"><a href="https://investors.gxo.com/news-releases/news-release-details/gxo-and-agility-robotics-expand-partnership-accelerate">GXO announcement</a> <a href="https://www.sec.gov/Archives/edgar/data/2074973/000121390026120842/ea0312344-s1a1_agility.htm">SEC filing</a> <a href="/investment/#investment-thesis">About the on-demand report</a></p>
 </section>`;
 }
 

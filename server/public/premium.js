@@ -703,6 +703,7 @@
     if ((m = /^robot\/(\d+)$/.exec(h))) return { view: 'robot', id: Number(m[1]) };
     if ((m = /^company\/([A-Za-z0-9_.-]+)$/.exec(h))) return { view: 'company', id: m[1] };
     if (h === 'reports') return { view: 'reports' };
+    if (h === 'reports?service=investment-thesis') return { view: 'reports', service: 'investment-thesis' };
     if ((m = /^reports\/(ord_[A-Za-z0-9_-]+)$/.exec(h))) return { view: 'order', id: m[1] };
     if (h === 'keys') return { view: 'keys' };
     if (h === 'ops') return { view: 'ops' };
@@ -728,7 +729,7 @@
     else if (r.view === 'company') await showCompany(r.id);
     else if (r.view === 'record') await showRecord(r.dataset, r.id);
     else if (r.view === 'search') await renderSearch(r);
-    else if (r.view === 'reports') await showReports();
+    else if (r.view === 'reports') await showReports(r.service);
     else if (r.view === 'order') await showOrder(r.id);
     else if (r.view === 'keys') await showKeys();
     else if (r.view === 'ops') await showOps(r.id);
@@ -786,7 +787,7 @@
     return ORD.forms[service];
   }
 
-  async function showReports() {
+  async function showReports(service) {
     const panel = $('db-panel');
     mark('reports');
     const t = claim('Custom reports');
@@ -797,13 +798,18 @@
     if (state.session) { const r = await api('/v1/reports/orders'); if (r.status === 200) orders = r.data.orders; }
     if (stale(t)) return;
     loaded();
+    const services = service ? svc.services.filter((s) => s.id === service) : svc.services;
+    if (services.length === 0) {
+      panel.innerHTML = '<h2 id="db-title">Investment thesis on demand</h2><p>Orders are currently closed.</p>';
+      return;
+    }
     panel.innerHTML =
-      `<div class="db-panel-head"><div><h2 id="db-title">Custom reports</h2><p>Our analysis applied to your company's decision, as a private PDF report. Separate from the data subscription: no subscription needed, and the subscription does not include them.</p>` +
-      `<p class="db-hint"><b>${esc(svc.before_payment)}</b></p><p class="db-hint">${esc(svc.limits)}</p></div></div>` +
-      `<div class="ord-grid">${svc.services.map((s) => `<article class="panel ord-card"><h3>${esc(s.name)}</h3><p>${esc(s.summary)}</p><p class="lbl">${esc(s.price)} · one-off payment · no subscription required</p>` +
-        (!state.session ? '<p>Sign in with your email above to order. Your order and questionnaire stay in your account.</p>'
-          : s.checkout_available ? `<button class="btn ord-buy" type="button" data-service="${esc(s.id)}">Pay ${esc(s.price)} and open the questionnaire</button>`
-            : '<p><b>Not available to order yet.</b> Ordering opens after the payment flow has been tested.</p>') + '</article>').join('')}</div>` +
+      `<div class="db-panel-head"><div><h2 id="db-title">Custom reports</h2><p>Private PDF reports from Integrarobot. Each order is a one-off payment.</p>` +
+      `</div></div>` +
+      `<div class="ord-grid">${services.map((s) => `<article class="panel ord-card"><h3>${esc(s.name)}</h3><p>${esc(s.summary)}</p><p class="lbl">${esc(s.before_payment ?? svc.before_payment)}</p><p class="db-hint">${esc(s.limits ?? svc.limits)}</p>` +
+        (!s.checkout_available ? '<p><b>Orders are currently closed.</b></p>'
+          : !state.session ? '<p>Sign in with your email above to order. Your order and questionnaire stay in your account.</p>'
+            : `<button class="btn ord-buy" type="button" data-service="${esc(s.id)}">Pay ${esc(s.price)} and open the questionnaire</button>`) + '</article>').join('')}</div>` +
       (state.session ? `<h3>Your orders</h3>${orders.length ? `<ul class="ord-list">${orders.map((o) => `<li><a href="#reports/${esc(o.id)}">${esc(o.service_name)}</a> ${statusBadge(o.status)} <span class="lbl">ordered ${when(o.created_at)}${o.due_at ? ' · report due by ' + esc(o.due_utc) : ''}</span></li>`).join('')}</ul>` : '<p>No orders yet.</p>'}` : '');
     panel.querySelectorAll('.ord-buy').forEach((b) => b.addEventListener('click', async () => {
       b.disabled = true;
@@ -874,7 +880,10 @@
     const form = await formFor(o.service);
     if (stale(t)) return;
     loaded();
-    const head = `<p class="lbl"><a href="#reports">Custom reports</a> / ${esc(o.service_name)}</p><h2 id="db-title">${esc(o.service_name)}</h2><p>${statusBadge(o.status)} <span class="lbl">Order ${esc(o.id)} · US$1,000 · ordered ${when(o.created_at)}</span></p>`;
+    const hours = o.delivery_hours ?? 24;
+    const amount = new Intl.NumberFormat('en-GB', { style: 'currency', currency: o.currency, minimumFractionDigits: 0 }).format(o.amount / 100);
+    const brief = o.service === 'investment-thesis' ? 'about the company you want us to research. Share public sources and a company research question if you have one.' : 'about your company. Estimates, ranges and "Unknown" count as answers.';
+    const head = `<p class="lbl"><a href="#reports">Custom reports</a> / ${esc(o.service_name)}</p><h2 id="db-title">${esc(o.service_name)}</h2><p>${statusBadge(o.status)} <span class="lbl">Order ${esc(o.id)} · ${esc(amount)} · ordered ${when(o.created_at)}</span></p>`;
     // The order help line appears only once the report is paid (Javier, 25 Nov 2026), not on the catalogue or while
     // payment is pending; error messages keep their own support address.
     const help = `<p class="lbl">Questions about an order: <a href="mailto:${SUPPORT}">${SUPPORT}</a></p>`;
@@ -900,7 +909,7 @@
     if (review) {
       const missing = req.filter((f) => !answered(f, values[f.id]));
       panel.innerHTML = `${head}<h3>Review your answers</h3>` +
-        (missing.length ? `<div class="notice error" role="alert">${missing.length} required ${missing.length === 1 ? 'answer is' : 'answers are'} missing: ${missing.map((f) => esc(f.label)).join('; ')}.</div>` : '<p>Every required answer is there. Submitting starts the 24 hours: we will email your report within 24 hours of receiving it. You cannot edit the answers afterwards.</p>') +
+        (missing.length ? `<div class="notice error" role="alert">${missing.length} required ${missing.length === 1 ? 'answer is' : 'answers are'} missing: ${missing.map((f) => esc(f.label)).join('; ')}.</div>` : `<p>Submitting starts the ${hours}-hour delivery period. You can review your submitted answers in your account.</p>`) +
         `<dl class="db-kv">${allFields(form).filter((f) => answered(f, values[f.id])).map((f) => `<dt>${esc(f.label)}</dt><dd>${esc(Array.isArray(values[f.id]) ? values[f.id].join('\n\n') : values[f.id] === true ? 'Yes' : values[f.id])}</dd>`).join('')}</dl>` +
         `<div class="row"><button class="btn ghost" id="q-back" type="button">Back to editing</button>${missing.length ? '' : ' <button class="btn" id="q-submit" type="button">Submit the questionnaire</button>'}</div>${help}`;
       $('q-back').addEventListener('click', () => showOrder(o.id));
@@ -914,7 +923,7 @@
       });
       return;
     }
-    panel.innerHTML = `${head}<p>Payment received. Complete this private questionnaire about your company; answers in English or Spanish. Estimates, ranges and "Unknown" count as answers: we do not need financial statements. Answers are saved in your account as you type, so you can leave and come back. <b>We will email your report within 24 hours of receiving your completed questionnaire</b>; the 24 hours start when you submit it.</p>` +
+    panel.innerHTML = `${head}<p>Payment received. Complete this private questionnaire ${esc(brief)} Answers can be in English or Spanish. Answers are saved in your account as you type, so you can leave and come back. <b>We will email your report within ${hours} hours of receiving your completed questionnaire</b>.</p>` +
       `<p class="lbl">The report goes to ${esc(state.me?.email || 'your account address')}. To use another address, write to ${SUPPORT}. Do not include other people's personal contact details. We use your answers only to prepare and deliver this report. Documents can follow by email after you submit; there is no upload here.</p>` +
       `<p class="q-progress" id="q-progress" aria-live="polite">${done} of ${req.length} required answers · <span id="q-saved">${o.draft_saved_at ? 'saved ' + when(o.draft_saved_at) : 'not saved yet'}</span></p><p class="lbl"><span class="req">*</span> required</p>` +
       `<form id="q-form" novalidate>${form.fields.map((f) => fieldHtml(f, values[f.id], problems) + (f.extra ? fieldHtml(f.extra, values[f.extra.id], problems) : '')).join('')}` +
@@ -1043,6 +1052,10 @@
       $('confirm-login').hidden = false;
     }
     const params = new URLSearchParams(location.search);
+    if (login && params.get('service') === 'investment-thesis') {
+      history.replaceState(null, '', location.pathname + '#reports?service=investment-thesis');
+      params.delete('service');
+    }
     // The home page's search form sends /app/?q=...: open the search with it.
     if (params.has('q') && !location.hash) history.replaceState(null, '', `${location.pathname}#${searchHash({ q: params.get('q').trim(), tags: [], category: '', page: 1 })}`);
     const [list, plan] = await Promise.all([api('/v1/datasets', { auth: false }), api('/v1/billing/plan', { auth: false })]);
@@ -1088,7 +1101,7 @@
 
   $('signin-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const { status, data } = await api('/v1/auth/magic-link', { method: 'POST', body: { email: $('email').value }, auth: false });
+    const { status, data } = await api('/v1/auth/magic-link', { method: 'POST', body: { email: $('email').value, return_to: parseHash()?.service }, auth: false });
     if (status === 202) notice('Check your email for a sign-in link. It works once and expires in 15 minutes.');
     else if (data.error === 'too_many_login_requests') notice('Too many requests. Try again later.', true);
     else if (data.error === 'email_not_configured') notice('Sign-in is not available yet.', true);

@@ -10,6 +10,7 @@ import { fetchWorkbookValues } from './import/google-sheets.js';
 import { runImport } from './import/run.js';
 import { SCOPED_DATASETS, runScopedImport } from './import/scoped.js';
 import { deliverOutbox } from './orders/orders.js';
+import { INVESTMENT_THESIS_ID } from './orders/services.js';
 
 export function configFromEnv(env) {
   return {
@@ -34,7 +35,9 @@ export function configFromEnv(env) {
     // replaced by the subscription price. Report checkout needs REPORTS_CHECKOUT_ENABLED=true, and live mode also
     // REPORTS_LIVE_OPEN in server/src/orders/services.js.
     reportsCheckoutEnabled: env.REPORTS_CHECKOUT_ENABLED === 'true',
+    investmentThesisCheckoutEnabled: env.INVESTMENT_THESIS_CHECKOUT_ENABLED === 'true',
     reportPriceIds: {
+      [INVESTMENT_THESIS_ID]: env.REPORT_PRICE_ID_INVESTMENT_THESIS || null,
       'humanoid-adoption-assessment': env.REPORT_PRICE_ID_INTEGRATION || null,
       'component-manufacturing-study': env.REPORT_PRICE_ID_DIVERSIFICATION || null,
     },
