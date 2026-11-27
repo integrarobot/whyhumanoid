@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 16, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 16, PR not yet merged)
+## Published files (image batch 16, PR 251, merge 43d8984, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/zj-humanoid-i3/zj-humanoid-i3-full-body.png`, 434 × 1044 px, sha256 `7b3ae22038ee06556eeefffb711367e00fded807a8ecced127d8c43cc8c6b554` (= the prepared.png).
 - **WebP:** `assets/robots/zj-humanoid-i3/zj-humanoid-i3-full-body.webp`, sha256 `35563cb547b8b223f816a062128027c10b2abab7bceb099ce8dc3c692368707f`.

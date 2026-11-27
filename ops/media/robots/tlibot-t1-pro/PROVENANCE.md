@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 16, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 16, PR not yet merged)
+## Published files (image batch 16, PR 251, merge 43d8984, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/tlibot-t1-pro/tlibot-t1-pro-full-body.png`, 634 × 1687 px, sha256 `0e3042fe7cb4a70aa37186bc097dcf761fa1bd4d67b683a5f77104023d894e16` (= the prepared.png).
 - **WebP:** `assets/robots/tlibot-t1-pro/tlibot-t1-pro-full-body.webp`, sha256 `da81aa949950e2e7265bbb0b4f503a6dd5da4888097a3333d96472b9e2fdf226`.

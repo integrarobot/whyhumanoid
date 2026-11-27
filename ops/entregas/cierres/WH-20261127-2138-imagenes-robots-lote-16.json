@@ -1,0 +1,61 @@
+{
+  "id": "WH-20261127-2138-imagenes-robots-lote-16",
+  "tarea": "Imágenes de robots, lote 16 del alcance «todas las imágenes que faltan»: TLIBOT T1 Pro, Lightberry Lumi, TianYi 2.0, PUDU D9, Vanar Generation 1, NEURA 4NE1 Gen 4, KAIST Humanoid v0.9, JAKA π, ZJ Humanoid i3 y GAC GoMate, con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026; alcance confirmado solo para Humanoids), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T21:38:49+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 251 (cabeza revisada eaf3afd, merge 43d8984): imagen en las fichas 202 Tlibot TLIBOT T1, 123 Lightberry Lumi, 205 X-Humanoid Tian Yi 2.0, 155 Pudu D9, 95 Vanar Generation 1, 58 Neura 4NE1, 185 KAIST DRCD Lab KAIST Humanoid, 184 JAKA Robotics JAKA π, 209 ZJ Humanoid NAVIAI i3 y 33 GAC Group GoMate, solo mediante tools/robot-presentation.json; las 148 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con el tipo de imagen, la variante y la procedencia: «TLIBOT, T1 Pro manufacturer brochure image (2025), via World Robot Conference», «Lightberry, Lumi manufacturer photograph, rooftop configuration», «X-Humanoid, TianYi 2.0 manufacturer brochure render (2025), via World Robot Conference», «Pudu Robotics, D9 manufacturer brochure render (2025)», «Vanar Robots, Generation 1 manufacturer product render», «NEURA Robotics, 4NE1 Gen 4 reveal, manufacturer video still (October 2026)», «KAIST DRCD Lab, KAIST Humanoid v0.9 official video still (October 2026)», «JAKA Robotics, JAKA π official video still (July 2026)», «ZJ Humanoid, i3 official product video still, walking configuration (2026)» y «GAC Group, GoMate manufacturer product render (2024), video still via Gasgoo Auto News». Las especificaciones de las fichas no cambian.",
+    "Fuentes de Codex (codex/image-sources-remaining: candidates-35 en 8ba9356, 36 y 37 en 91a9ac1, 38 en feb3c3e, 39 en e0d60a7, 40 en 5168cc8, 41 en 7a9d62e, 42 en 1c2c9a0 y 43 en efea6c9), copiadas de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-16/. Todos los recortes, de Claude y solo de alfa, a tamaño nativo: softmask propia del PDF (T1 Pro y D9, con la rendija de T1 Pro y las ranuras de la rejilla de D9 tal como las dejó el fabricante) o máscaras BiRefNet guardadas junto a cada original.",
+    "Correcciones de alfa revisadas por Codex: en Vanar, seis aberturas de los soportes en U y de los codos se vuelven transparentes por distancia al gris plano del estudio, y cuatro zonas grises dudosas se conservan opacas; en KAIST se excluyen dos varillas de fondo junto al cuello y se recupera en alfa, desde la máscara y la luminancia del original, la barra izquierda del asa de la cabeza que Codex confirmó en fotogramas vecinos. Nada se dibuja ni se cambia el RGB.",
+    "Fuera del lote: Jingchu Elf (183, candidates-41), porque su pinza izquierda está delante de un mantel verde oscuro del mismo color que las piezas oscuras del robot y no se separa sin perder partes (sin reconstrucción); GAC GoMate (33, candidates-43) entra en su lugar. NEURA (58) pasa de «needs_decision» a Gen 4, la generación elegida por Codex.",
+    "Cobertura: lote 16 publicado con 10 fichas; en todo el catálogo, 158 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 251",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/251"
+    },
+    {
+      "etiqueta": "CI de la cabeza eaf3afd",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46064317211"
+    },
+    {
+      "etiqueta": "Pages de 43d8984",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46064669376"
+    },
+    {
+      "etiqueta": "Ficha KAIST Humanoid",
+      "url": "https://whyhumanoid.com/humanoids/kaist-drcd-lab-kaist-humanoid-185/"
+    },
+    {
+      "etiqueta": "Ficha Vanar Generation 1",
+      "url": "https://whyhumanoid.com/humanoids/vanar-generation-1-95/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 43d8984 (run 46064669376, correcto); CI de la cabeza eaf3afd (run 46064317211, correcto). Fusión hecha solo en esa cabeza contra main 9674d66, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga (x-cache MISS en la primera petición)."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 10/10 (aviso de inspección en la rendija de la softmask de T1 Pro y cuatro avisos de fondo plano en las zonas dudosas de Vanar, conservadas a propósito); navegador local de las diez fichas a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
+    "Codex, cabeza eaf3afd contra 9674d66: revisión independiente aprobada; 92 archivos de imágenes, ops y páginas generadas; las 148 presentaciones anteriores y el catálogo de 213 idénticos; RGB nativo, SHA, alfa de PNG y WebP y margen de 20 px correctos en los diez; los diez pares claro y oscuro revisados uno a uno (rendija de T1 Pro y rejilla de D9 con su alfa original, asa de KAIST completa desde la fuente, cables de i3 y ruedas de GoMate enteros, versión Gen 4 y render de GoMate 2024 bien indicados; Vanar revisado a resolución nativa).",
+    "Claude, producción tras Pages 46064669376: las 20 URL canónicas (10 PNG y 10 WebP) con los mismos bytes que 43d8984 (20/20); las 10 fichas y la portada idénticas a 43d8984 salvo las etiquetas meta agent:* que añade Cloudflare (11/11); navegador real a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 158 presentaciones. La espera de Pages se hizo consultando la portada existente con un parámetro de consulta único, nunca URL de activos nuevos.",
+    "Codex, verificación pública independiente tras Pages 46064669376 en merge 43d8984: 30/30 URL canónicas con 200 (20 activos con SHA y alfa exactos y 10 fichas con imagen, texto alternativo y crédito); 20/20 vistas reales en Chrome con innerWidth efectivo de 390 × 844 y 1366 × 900, contain, cargadas, sin desbordamiento y con créditos exactos (D9 en móvil, observado de nuevo completo tras la carga); captura de escritorio de GoMate revisada. Cobertura 158/213, 55 pendientes.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (158) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Lote 17 en preparación: XYZ DEUX (122) con su alfa original y Beomni (12) de la foto de prensa de 2023, ya recortados.",
+    "Jingchu Elf (183), Qinglong (69), T230A (89), R-Noid (77) e IGRIS (79) siguen fuera con su motivo.",
+    "Quedan 55 fichas de Humanoids sin imagen; Other Robots queda fuera del alcance por decisión de Javier."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Claude sigue con el lote 17 (DEUX y Beomni ya recortados) en rama propia, sin fusionar nada antes de la revisión de Codex."
+}

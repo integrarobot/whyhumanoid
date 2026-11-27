@@ -1,6 +1,6 @@
-# Robot image batch 16: integrated package
+# Robot image batch 16: published package
 
-This batch is integrated in this PR and not yet published. `mapping.json` lists the ten integrated images.
+Published with PR 251 (reviewed head eaf3afd, CI 46064317211; merge 43d8984, Pages 46064669376, 27 Nov 2026) and verified in production by Claude and Codex. `mapping.json` lists the ten integrated images.
 
 ## Integrated (ten)
 
