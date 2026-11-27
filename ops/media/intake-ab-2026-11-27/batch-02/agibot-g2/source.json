@@ -1,0 +1,29 @@
+{
+  "id": 146,
+  "slug": "agibot-g2",
+  "mask_model": "isnet-general-use",
+  "roi": null,
+  "crop_bbox": [
+    90,
+    11,
+    382,
+    815
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "pending-visual-review",
+  "asset_url": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/uploads/images/20251031/afa47f3a6d43c28b95a1534ed8310ad7.png",
+  "source_page": "https://www.agibot.com/products/X1",
+  "original_sha256": "a64e93dc03f304505c4fa01e5f55d43886ee48221d854d09b33813662775e2d5",
+  "prepared_sha256": "d108314cb6093f9bcbefa89779773ba61079e80a1291c3107592a7ce7add20ca",
+  "dimensions": [
+    332,
+    844
+  ],
+  "rgb_verified": true,
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "retrieved_at": "2026-11-27",
+  "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+  "licence": "Official-source editorial image; no open licence asserted"
+}

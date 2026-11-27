@@ -31,14 +31,11 @@
         151,
         139,
         141,
-        148,
-        14,
         155,
         104,
         51,
         102,
-        76,
-        149
+        76
       ],
       "notes": [
         "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
@@ -47,6 +44,64 @@
         "Published with PR 196 (merge 4011f1e, 27 Nov 2026) and verified in production by Claude and Codex (Codex receipt 10:53:52 Madrid) after a selective Cloudflare purge of the 20 image URLs: 404 responses requested before Pages finished deploying had been cached. Next time, new asset URLs are not requested without a query string until the Pages deployment has succeeded."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 2,
+      "opened": "2026-11-27",
+      "state": "integrated_awaiting_review",
+      "target": 10,
+      "scope": "A/B makers",
+      "candidates": [
+        4,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        2,
+        165
+      ],
+      "reserves": [],
+      "notes": [
+        "Definitive batch 2 (Codex, 27 Nov 2026): six Agibot, Booster T2 and K1, ALICE 4 and Anigon FA-L. Booster T1 and Agile ONE move to the next batch.",
+        "Sources, masks and prepared files on transport branch codex/image-sources-ab (28fef87), kept in ops/media/intake-ab-2026-11-27/batch-02/."
+      ]
+    },
+    {
+      "batch": 3,
+      "opened": "2026-11-27",
+      "state": "planned",
+      "target": 10,
+      "scope": "A/B makers",
+      "candidates": [
+        14,
+        5,
+        3,
+        8,
+        9,
+        10,
+        12,
+        13,
+        15,
+        105
+      ],
+      "reserves": []
+    },
+    {
+      "batch": 4,
+      "opened": "2026-11-27",
+      "state": "planned",
+      "target": 10,
+      "scope": "A/B makers",
+      "candidates": [
+        116,
+        135,
+        163,
+        164
+      ],
+      "reserves": []
     }
   ],
   "robots": {
@@ -142,9 +197,9 @@
         "Lab": "Booster",
         "Robot": "T1"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://www.boosterobotics.com/",
-      "notes": "Standard T1. Not T2 (id 148), K1 (id 149) nor Tlibot T1 (id 202). T1 no longer appears on Booster's current home page (Codex, 27 Nov 2026): take the next candidate if no faithful T1 original is found.",
+      "notes": "Standard T1. Not T2 (id 148), K1 (id 149) nor Tlibot T1 (id 202). T1 no longer appears on Booster's current home page (Codex, 27 Nov 2026): take the next candidate if no faithful T1 original is found. Standard T1; not T2 (148), K1 (149) nor Tlibot T1 (202). T1 no longer appears on Booster's current home page.",
       "sources": []
     },
     "148": {
@@ -152,7 +207,7 @@
         "Lab": "Booster",
         "Robot": "T2"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.booster.tech/booster-t2",
       "sources": [
         {
@@ -162,15 +217,26 @@
           "transparent_original": false,
           "verdict": "rejected",
           "detail": "1200×1448 RGB, opaque, robot jumping (not standing)."
+        },
+        {
+          "file": "https://fe-cdn.booster.tech/booster-official-website/release-0.1.22/_astro/robot-t2.DZUi1Dbz.webp",
+          "page": "https://www.booster.tech/booster-t2",
+          "sha256": "58db7797638ac1ff2d79512675188aa917794bdcaa930ab4898c159009e7e604",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact."
         }
-      ]
+      ],
+      "notes": "Booster T2; the navigation image robot-t2.DZUi1Dbz.webp was rejected (opaque, jumping)."
     },
     "149": {
       "recorded": {
         "Lab": "Booster",
         "Robot": "K1"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.booster.tech/booster-k1",
       "sources": [
         {
@@ -180,8 +246,19 @@
           "transparent_original": false,
           "verdict": "rejected",
           "detail": "Opaque, with a ball."
+        },
+        {
+          "file": "https://fe-cdn.booster.tech/booster-official-website/release-0.1.22/_astro/robot-k1.Bjwl1Psx.webp",
+          "page": "https://www.booster.tech/booster-k1",
+          "sha256": "e23869dc8c56b34946d797ce73bcb66fdecece09fa67fe27f602c3f0721470f9",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact."
         }
-      ]
+      ],
+      "notes": "Booster K1; the navigation image robot-k1.Bjwl1Psx.webp was rejected (opaque, with a ball)."
     },
     "150": {
       "recorded": {
@@ -540,16 +617,42 @@
         "Lab": "Agibot",
         "Robot": "A2 (A2 Ultra / A2 Lite)"
       },
-      "status": "needs_decision",
-      "reason": "Two variants in one record; an image must show one that both share or be decided."
+      "status": "integrated",
+      "page": "https://www.agibot.com/products/A2_Ultra",
+      "notes": "Family record A2 Ultra / A2 Lite: one included variant may illustrate it, named in the alt text and provenance; the same look is not attributed to both.",
+      "sources": [
+        {
+          "file": "https://store.agibot.com/cdn/shop/files/2_ff0f068b-3ddd-497c-91dc-341a24cdc2c2.png?v=1766128167",
+          "page": "https://store.agibot.com/products/a2-ultra",
+          "sha256": "8c3003338111504b746680e859d90c6717d8f0ab88c12a1d89722b17f4762e59",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped."
+        }
+      ]
     },
     "145": {
       "recorded": {
         "Lab": "Agibot",
         "Robot": "X2 (X2 Neo / X2 Ultra)"
       },
-      "status": "needs_decision",
-      "reason": "Two variants in one record."
+      "status": "integrated",
+      "page": "https://www.agibot.com/products/X2",
+      "notes": "Family record X2 Neo / X2 Ultra: one included variant may illustrate it, named in the alt text and provenance.",
+      "sources": [
+        {
+          "file": "https://cms-tos.agibot.com/content/x2-refresh-20261111/19b63d0568b73e7e7f385f49.webp",
+          "page": "https://www.agibot.com/products/X2",
+          "sha256": "19b63d0568b73e7e7f385f49a9a01cd7e1d76a1084cc68ecf399bd1cbf60ec1d",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped."
+        }
+      ]
     },
     "93": {
       "recorded": {
@@ -678,6 +781,307 @@
           "detail": "2820 × 2812, alpha 0–255; whole robot with base, fingers and wheels; clean transparency on light and dark, no props or text (Codex). Carried without recompression on branch codex/psibot-v1-original (commit 438d1de), SHA-256 matches; trimmed only, native resolution kept (under the 2600 px cap). An earlier chat attachment arrived re-encoded (2000 × 1994 WebP, sha256 d0f783b7…a9fc) and was not used."
         }
       ]
+    },
+    "4": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "X1"
+      },
+      "sources": [
+        {
+          "file": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/static/index/en/images/prolx1One-img.png",
+          "page": "https://www.agibot.com/products/X1",
+          "sha256": "78b8d30bad0ebb0984865a5c0a85a6a92f24eda6b34f4f666ab2887d222389b3",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact. Alpha levels refined by Claude (halo and haze)."
+        }
+      ],
+      "status": "integrated",
+      "page": "https://www.agibot.com/",
+      "notes": "AGIBOT X1 (Lingxi X1); not X2 (145), A2 (143) nor G2 (146)."
+    },
+    "144": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "A3"
+      },
+      "sources": [
+        {
+          "file": "https://store.agibot.com/cdn/shop/files/1_1.png?v=1786349615",
+          "page": "https://store.agibot.com/products/a3",
+          "sha256": "9b1af46a6b3cc368bc29332cd24e051bb0e7f7ddf0bf9ece09d7332534983cd5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact."
+        }
+      ],
+      "status": "integrated",
+      "page": "https://www.agibot.com/products/A3",
+      "notes": "AGIBOT A3; not A2 (143)."
+    },
+    "146": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "G2"
+      },
+      "sources": [
+        {
+          "file": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/uploads/images/20251031/afa47f3a6d43c28b95a1534ed8310ad7.png",
+          "page": "https://www.agibot.com/products/G2",
+          "sha256": "a64e93dc03f304505c4fa01e5f55d43886ee48221d854d09b33813662775e2d5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Mask cutout (isnet-general-use), RGB exact. Alpha levels refined by Claude (halo and haze). Linked to /products/G2 with the label \"AGIBOT G2\" in the official navigation (first downloaded from that navigation on the X1 page)."
+        }
+      ],
+      "status": "integrated",
+      "page": "https://www.agibot.com/products/G2",
+      "notes": "AGIBOT G2; not G1 (147)."
+    },
+    "147": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "G1"
+      },
+      "sources": [
+        {
+          "file": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/static/index/en/images/pro-A2D/proA2DOne-img.png",
+          "page": "https://www.agibot.com/products/G1",
+          "sha256": "fc0a4c3735ed0a7df65ff13c574f3ecbcf27e461c4ea1d06e59ebf71328911ea",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped. Hero of /products/G1, titled \"AGIBOT G1\"; the CMS folder name pro-A2D is historical."
+        }
+      ],
+      "status": "integrated",
+      "page": "https://www.agibot.com/products/G1",
+      "notes": "AGIBOT G1, wheeled dual-arm robot; not Unitree G1 (138) nor Galbot G1 (35)."
+    },
+    "10": {
+      "recorded": {
+        "Lab": "Astribot",
+        "Robot": "S1"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://astribot.com/",
+      "notes": "Astribot S1, manipulation platform; whole robot as Astribot presents it.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: an Astribot-branded S1 specification sheet is hosted at https://a.storyblok.com/f/298593/x/d5cf3ddd99/astribot-s1_eng.pdf (not yet checked for a whole-robot image); product page astribot.com/en/product. Third-party \"media cards\" (Origin of Bots) are not official and are not used."
+        }
+      ]
+    },
+    "2": {
+      "recorded": {
+        "Lab": "AeiROBOT",
+        "Robot": "Alice"
+      },
+      "sources": [
+        {
+          "file": "https://cdn.imweb.me/thumbnail/20251107/1f679c6ba92e9.png",
+          "page": "https://eng.arobot4all.com/ALICE4",
+          "sha256": "7b5fbfaa5ef57e16e11758061d8a6fbeb22b1546636442a5a057b05f961ab846",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped."
+        }
+      ],
+      "status": "integrated",
+      "page": "https://eng.arobot4all.com/",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: AeiROBOT names several robots Alice: ALICE 3, ALICE 4 (bipedal, 160 cm, 41 DoF) and ALICE M1 (wheeled semi-humanoid, Oct 2025). The record describes the bipedal ALICE 4/5: an image must show one of those, named, and never ALICE M1. Maker site eng.arobot4all.com not reachable here."
+        }
+      ]
+    },
+    "3": {
+      "recorded": {
+        "Lab": "Aeolus",
+        "Robot": "aeo"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://aeolusbot.com/",
+      "notes": "aeo, wheeled dual-arm service humanoid."
+    },
+    "5": {
+      "recorded": {
+        "Lab": "Agile",
+        "Robot": "One"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.agile-robots.com/",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only (maker site not reachable from Claude's session): Agile Robots publishes an Agile ONE media kit under https://www.agile-robots.com/media/files/New_website/Solutions/Agile_ONE/Agile_ONE_Media_Kit/ (a 01_Press_Release folder is indexed; image folders not confirmed). Product page https://www.agile-robots.com/en/products/agile-one/. Agile ONE SN (Oct 2026) is a separate compact research variant: not this record."
+        }
+      ]
+    },
+    "8": {
+      "recorded": {
+        "Lab": "Argon",
+        "Robot": "One"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.argonmech.com/"
+    },
+    "9": {
+      "recorded": {
+        "Lab": "ARX",
+        "Robot": "X7"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://arx-x.com/",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: the X7 found is sold as a dual-arm (bimanual) arm platform, not a humanoid; no arx-x.com page was indexed. If the maker shows it only as arms, it is shown as presented or recorded as an exception; the catalogue classification is not changed here."
+        }
+      ]
+    },
+    "12": {
+      "recorded": {
+        "Lab": "Beyond Imagination",
+        "Robot": "Beomni"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.beyondimagination.com/",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: no official image gallery found; 2021–2022 press coverage (Designboom, Built In) carries photos credited to Beyond Imagination, which are not official sources here. The current Beomni may differ from Beomni 1.0. Without an official whole-robot image it becomes an exception."
+        }
+      ]
+    },
+    "13": {
+      "recorded": {
+        "Lab": "Boardwalk",
+        "Robot": "Alex"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://boardwalkrobotics.com/",
+      "notes": "Alex is a torso with a configurable base: shown as Boardwalk presents it; no lower body added."
+    },
+    "15": {
+      "recorded": {
+        "Lab": "Borg",
+        "Robot": "Borg 01"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.borgrobotic.com/"
+    },
+    "105": {
+      "recorded": {
+        "Lab": "Addverb",
+        "Robot": "Elixis"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://addverb.ai/elixis",
+      "notes": "Elixis, bipedal; Elixis-W (wheeled) is a separate variant."
+    },
+    "116": {
+      "recorded": {
+        "Lab": "Almond",
+        "Robot": "Axol"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.almond.bot/",
+      "notes": "Bimanual Axol (arms for table or cart): shown as Almond presents it; no body added."
+    },
+    "135": {
+      "recorded": {
+        "Lab": "ASUS",
+        "Robot": "Gallop"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
+      "notes": "Gallop: fixed base with two arms today; shown as ASUS presents it."
+    },
+    "163": {
+      "recorded": {
+        "Lab": "AheadForm",
+        "Robot": "Elf·Xuan 2.0"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.aheadform.com/",
+      "notes": "Elf·Xuan 2.0 is an upper-body bionic robot (head and torso): shown as AheadForm presents it; no body added."
+    },
+    "164": {
+      "recorded": {
+        "Lab": "AIDOL",
+        "Robot": "AIDOL (walking version)"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://aidoltech.ru/",
+      "notes": "Walking version only; the desktop (upper-body) version is not this record."
+    },
+    "165": {
+      "recorded": {
+        "Lab": "Anigon",
+        "Robot": "FA-L Series"
+      },
+      "sources": [
+        {
+          "file": "https://anigon.ch/images/robot-front.png",
+          "page": "https://anigon.ch/",
+          "sha256": "5c4bba4b7cf8556c7af342ae096ec7b3ac47f7e507c5fae23f734fb1bd487150",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "Native alpha; cropped."
+        }
+      ],
+      "status": "integrated",
+      "page": "https://anigon.ch/"
     }
-  }
+  },
+  "scopes": [
+    {
+      "name": "A/B makers",
+      "lab_initials": [
+        "A",
+        "B"
+      ],
+      "opened": "2026-11-27",
+      "by": "Javier (\"Agibot and all the remaining makers with A and B\")",
+      "rules": [
+        "Batches of up to 10 new records, Agibot first.",
+        "Non-generative mask cutouts are authorised (Javier, 27 Nov 2026): alpha only, the robot's pixels kept; no part recreated, no generative image.",
+        "A bust, torso or arms-only product is shown as the maker presents it; no body is added. No model is assigned to a company record without one.",
+        "For a family record (A2, X2) one included variant may illustrate it, named in the alt text and provenance."
+      ]
+    }
+  ]
 }

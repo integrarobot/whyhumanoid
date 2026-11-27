@@ -1,0 +1,29 @@
+{
+  "id": 2,
+  "slug": "aeirobot-alice",
+  "mask_model": "native-alpha",
+  "roi": null,
+  "crop_bbox": [
+    1,
+    4,
+    1276,
+    3233
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "pending-visual-review",
+  "asset_url": "https://cdn.imweb.me/thumbnail/20251107/1f679c6ba92e9.png",
+  "source_page": "https://eng.arobot4all.com/ALICE4",
+  "original_sha256": "7b5fbfaa5ef57e16e11758061d8a6fbeb22b1546636442a5a057b05f961ab846",
+  "prepared_sha256": "064f7c3661aeb4b16097f119de3d0a21ec6aa6be0d58c794ec58feca0bad8e98",
+  "dimensions": [
+    1315,
+    3269
+  ],
+  "rgb_verified": true,
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "retrieved_at": "2026-11-27",
+  "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+  "licence": "Official-source editorial image; no open licence asserted"
+}

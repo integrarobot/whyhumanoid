@@ -1,0 +1,27 @@
+{
+  "id": 149,
+  "slug": "booster-k1",
+  "mask_model": "isnet-general-use",
+  "crop_bbox": [
+    322,
+    209,
+    1046,
+    965
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "asset_url": "https://fe-cdn.booster.tech/booster-official-website/release-0.1.22/_astro/robot-k1.Bjwl1Psx.webp",
+  "source_page": "https://www.booster.tech/booster-k1",
+  "original_sha256": "e23869dc8c56b34946d797ce73bcb66fdecece09fa67fe27f602c3f0721470f9",
+  "prepared_sha256": "3aa284721c59b15d94ce281d3bd572b678bc6cdb4d681c0ba8e4046573b83e82",
+  "dimensions": [
+    764,
+    796
+  ],
+  "rgb_verified": true,
+  "original": "original.webp",
+  "prepared": "prepared.png",
+  "retrieved_at": "2026-11-27",
+  "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+  "licence": "Official-source editorial image; no open licence asserted"
+}
