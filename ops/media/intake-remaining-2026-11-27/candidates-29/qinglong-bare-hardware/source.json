@@ -1,0 +1,17 @@
+{
+  "id": 69,
+  "slug": "qinglong-bare-hardware",
+  "credit": "OpenLoong / Humanoid Robotics Shanghai",
+  "source_page": "https://github.com/loongOpen/OpenLoong-Dyn-Control",
+  "source_url": "https://raw.githubusercontent.com/loongOpen/OpenLoong-Dyn-Control/main/assets/%E8%A1%8C%E8%B5%B0.gif",
+  "original": "original.png",
+  "original_size": [
+    640,
+    744
+  ],
+  "original_sha256": "0a172d618ea7a96e63359447bde636f656885f222713dec139a6f5e0384129e1",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "source_context": "Official project README explicitly identifies Qinglong platform and physical prototype; links this walking GIF under Project Features. Frame841 of902, cumulative GIF time28.03s, native640x744. This is the 2024 BARE HARDWARE HEADLESS PROTOTYPE CONFIGURATION, not the dressed silver finished perception-head version. Entire actual prototype platform, both hands and both feet with margin; NO HEAD is present in this hardware configuration, do not generate/add one. Root inspectednative frame841. Caption explicitly Qinglong prototype, bare-hardware configuration, official repository video still (2024). Preserve native GIF dither/RGB, maskonly. Actual exposed cables belongtorobot, distinguish from labbackground. SourceGIF SHA256 42fd7f5ad6171ab168c98969f99e6908be719f011570f7c2cfa3e48090167219. SelecteddecodedPNG included. Alternative demo.png existing simulation render has mousecursor ON wrist, so not used. No new render fromURDF. A currentdressedfullhead source would be preferable; this candidate requires independent completeness/identity review.",
+  "license_note": "Official open-source project media. README documents project and repo licence; do not assume every third-party image has the code licence. Credit source, no outreach."
+}
