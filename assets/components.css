@@ -202,12 +202,14 @@ table.specs small{display:block;font-size:12.5px;color:var(--bone-3)}
 .hx .sec-h p{color:var(--bone-2);margin:6px 0 0;max-width:68ch}
 .hx-grid{display:grid;grid-template-columns:minmax(200px,300px) minmax(0,1fr);gap:28px;align-items:start;margin-top:14px}
 .hx-art{border:1px solid var(--line);background:var(--ink-1);padding:16px 10px;display:flex;justify-content:center}
-.hx-fig{width:100%;max-width:240px;height:auto;display:block}
-.hx-body *{fill:none;stroke:var(--bone-3);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
-.hx-body rect{fill:var(--ink-2);stroke-width:3}
+.hx-fig{width:100%;max-width:240px;height:auto;display:block;overflow:visible}
+.hx-s0{stop-color:var(--ink-3)}.hx-s1{stop-color:var(--ink-2)}.hx-s2{stop-color:var(--ink-1)}
+.hx-body rect,.hx-body path,.hx-body polygon{fill:url(#hx-sh);stroke:var(--bone-3);stroke-width:1.5;stroke-linejoin:round}
+.hx-body .hx-l{fill:none;stroke:var(--line-2);stroke-width:1.5;stroke-linecap:round}
 .hx-z{cursor:pointer}
-.hx-z rect,.hx-z circle{fill:var(--ink-3);stroke:var(--bone-2);stroke-width:2.5;transition:fill .15s,stroke .15s}
-.hx-z .hx-d{fill:none;stroke:var(--bone-2);stroke-width:2.5;stroke-linecap:round}
+.hx-z rect,.hx-z circle{fill:var(--ink-3);stroke:var(--bone-2);stroke-width:2;transition:fill .15s,stroke .15s}
+.hx-z:hover rect,.hx-z:hover circle{stroke:var(--amber-hi)}
+.hx-z .hx-d{fill:none;stroke:var(--bone-3);stroke-width:2;stroke-linecap:round}
 .hx-z.on rect,.hx-z.on circle{fill:var(--amber);stroke:var(--amber-hi)}
 .hx-z.on .hx-d{stroke:var(--ink-0)}
 .hx-ui{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;min-width:0}

@@ -100,19 +100,33 @@ export const EXPLORER_AREAS = Object.freeze([
 
 // An original, schematic humanoid: one shape group per area. Pointer and touch select an area; the labelled HTML
 // buttons beside it are the keyboard and screen-reader controls, so the drawing itself takes no focus.
-const explorerSvg = () => `<svg class="hx-fig" viewBox="0 0 220 400" role="img" aria-labelledby="hx-fig-t" focusable="false">
-<title id="hx-fig-t">Schematic humanoid marking five functional areas: perception at the head, manipulation and touch at the hands, motion and feedback at the joints, onboard compute in the chest and energy in the torso</title>
+// A full-size biped in the proportions of an industrial humanoid (27 Nov 2026, Javier's reference): a broad torso with
+// an integrated top sensor instead of a head, round shoulder and hip joints, articulated limbs and complete feet. Original
+// drawing; it depicts no particular robot and no bill of materials. Zones (.hx-z) are the clickable functional areas.
+const side = (f) => f(1) + f(-1);
+const mx = (x, s) => (s === 1 ? x : 240 - x);
+// A polygon given by its left-side points, mirrored for the right side when s = -1.
+const poly = (pts, s, cls = '') => `<polygon${cls ? ` class="${cls}"` : ''} points="${pts.map(([x, y]) => `${mx(x, s)},${y}`).join(' ')}"/>`;
+const explorerSvg = () => `<svg class="hx-fig" viewBox="0 0 240 430" role="img" aria-labelledby="hx-fig-t" focusable="false">
+<title id="hx-fig-t">Schematic full-size humanoid marking five functional areas: perception at the top sensor, manipulation and touch at the hands, motion and feedback at the joints, onboard compute in the upper chest and energy in the lower torso</title>
+<defs><linearGradient id="hx-sh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="hx-s0"/><stop offset=".55" class="hx-s1"/><stop offset="1" class="hx-s2"/></linearGradient></defs>
 <g class="hx-body" aria-hidden="true">
-<path d="M110 74 L110 92"/><rect x="74" y="92" width="72" height="128" rx="18"/>
-<path d="M74 104 L48 150 L40 206"/><path d="M146 104 L172 150 L180 206"/>
-<path d="M90 220 L86 292 L84 366"/><path d="M130 220 L134 292 L136 366"/>
-<path d="M70 372 L96 372"/><path d="M124 372 L150 372"/>
+<path d="M48 50 Q50 32 72 30 L168 30 Q190 32 192 50 L190 70 Q176 80 160 80 L80 80 Q64 80 50 70 Z"/>
+<path d="M76 74 L164 74 L166 160 Q164 182 146 186 L94 186 Q76 182 74 160 Z"/>
+<rect x="102" y="184" width="36" height="16" rx="5"/>
+<path d="M78 196 Q120 184 162 196 L160 214 Q120 204 80 214 Z"/>
+${side((s) => poly([[36, 78], [62, 78], [59, 168], [39, 168]], s)
+  + poly([[39, 182], [59, 182], [57, 282], [41, 282]], s)
+  + poly([[75, 222], [109, 222], [104, 296], [80, 296]], s)
+  + poly([[86, 314], [98, 314], [97, 386], [87, 386]], s)
+  + poly([[70, 398], [112, 398], [116, 410], [68, 410]], s)
+  + `<path class="hx-l" d="M${mx(49, s)} 96 L${mx(49, s)} 156 M${mx(92, s)} 232 L${mx(92, s)} 288"/>`)}
 </g>
-<g class="hx-z" data-area="perception"><rect x="84" y="20" width="52" height="56" rx="20"/><path class="hx-d" d="M94 46 L126 46"/></g>
-<g class="hx-z" data-area="manipulation"><circle cx="38" cy="218" r="13"/><circle cx="182" cy="218" r="13"/></g>
-<g class="hx-z" data-area="motion"><circle cx="76" cy="104" r="8"/><circle cx="144" cy="104" r="8"/><circle cx="48" cy="150" r="7"/><circle cx="172" cy="150" r="7"/><circle cx="90" cy="220" r="8"/><circle cx="130" cy="220" r="8"/><circle cx="86" cy="292" r="7"/><circle cx="134" cy="292" r="7"/><circle cx="84" cy="362" r="6"/><circle cx="136" cy="362" r="6"/></g>
-<g class="hx-z" data-area="compute"><rect x="94" y="112" width="32" height="30" rx="3"/><path class="hx-d" d="M100 120 L120 120 M100 127 L120 127 M100 134 L114 134"/></g>
-<g class="hx-z" data-area="energy"><rect x="92" y="156" width="36" height="48" rx="4"/><path class="hx-d" d="M104 152 L116 152"/></g>
+<g class="hx-z" data-area="perception"><rect x="94" y="38" width="52" height="20" rx="8"/><path class="hx-d" d="M104 48 L136 48"/></g>
+<g class="hx-z" data-area="compute"><rect x="88" y="86" width="64" height="44" rx="7"/><path class="hx-d" d="M99 99 L141 99 M99 108 L141 108 M99 117 L127 117"/></g>
+<g class="hx-z" data-area="energy"><rect x="90" y="136" width="60" height="38" rx="6"/><path class="hx-d" d="M102 147 L102 163 M115 147 L115 163 M128 147 L128 163 M141 147 L141 163"/></g>
+<g class="hx-z" data-area="manipulation">${side((s) => `<rect x="${s === 1 ? 37 : 240 - 37 - 24}" y="284" width="24" height="34" rx="9"/>`)}</g>
+<g class="hx-z" data-area="motion">${side((s) => `<circle cx="${mx(49, s)}" cy="62" r="20"/><circle cx="${mx(49, s)}" cy="175" r="10"/><circle cx="${mx(92, s)}" cy="212" r="17"/><circle cx="${mx(92, s)}" cy="305" r="11"/><circle cx="${mx(92, s)}" cy="392" r="6"/>`)}</g>
 </svg>`;
 
 function explorer(cm) {
