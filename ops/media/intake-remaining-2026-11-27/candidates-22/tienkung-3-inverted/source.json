@@ -1,0 +1,17 @@
+{
+  "id": 204,
+  "slug": "tienkung-3-inverted",
+  "credit": "Beijing Humanoid Robot Innovation Center",
+  "source_page": "https://www.x-humanoid.com/m/news-view-251.html",
+  "source_url": "https://www.x-humanoid.com/storage/website/2026/10-14/6acf3d66d7f11-1-55178.jpg",
+  "original": "original.jpg",
+  "original_size": [
+    1920,
+    1280
+  ],
+  "original_sha256": "f9bd647a1260404724814fd5aab7871be290ad2630f5080e544327e7bcd4620a",
+  "source_context": "Exact maker launch article on TienKung 3.0, image7 native1920x1280, full robot in inverted handstand pose, head/hands/feet all visible with margin. Preserve original inverted pose, DO NOT rotate to simulate standing or invent parts. Caption TienKung 3.0 manufacturer demonstration image, inverted pose; no claim autonomy from image. White-on-white segmentation needs careful mask of head near arms. Root inspected native, all actual robot complete. Other candidates rejected: cropped hero jstg.png footcut, kneeling image6 basket occludes foot, jumping image4 step occludes foot. Common footer MP4 predates launch, not version evidence; do not use it.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primary source; credit, no open licence assumed or outreach."
+}

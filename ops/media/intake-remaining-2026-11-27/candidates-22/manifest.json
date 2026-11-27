@@ -1,0 +1,53 @@
+[
+  {
+    "id": 211,
+    "slug": "westlake-titan-o1",
+    "credit": "Westlake Robotics",
+    "source_page": "https://wlrobo.com/module2",
+    "source_url": "https://wlrobo.com/figma/o1/0b5f5.png",
+    "original": "original.png",
+    "original_size": [
+      2162,
+      3844
+    ],
+    "original_sha256": "87ccd7a2e3758b25f1e993965cdd29424e5e922f6d2b8a5520da8e0d783dc1d6",
+    "source_context": "Exact maker O1Page-B3ZLw0hp.js references this native2162x3844 PNG for TITAN O1. Catalogue Westlake o1 family. Existing maker technical render, running pose with whole head, both hands and both feet. CAUTION original has translucent motion-trail duplicate geometry to right of foreground figure. Isolate only solid foreground full robot by alpha mask, preserve every visible RGB value and native size, no generation/repainting. If trails overlap body in a way that cannot be isolated cleanly, reject and use a primary whole video frame instead; videos referenced by same product chunk /videos/o1-1.mp4, /videos/o1-2.mp4, /videos/o1-3.mp4. Caption TITAN O1 manufacturer render, running pose; no specifications change. Root inspected native preview.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source; credit, no open licence assumed or outreach."
+  },
+  {
+    "id": 79,
+    "slug": "robros-igris-2025",
+    "credit": "ROBROS",
+    "source_page": "https://www.robros.co.kr/en/news/62a18152-3813-47f5-a346-daccfb95c739",
+    "source_url": "https://robros-homepage-v2-public.s3.ap-northeast-2.amazonaws.com/news/357f4e10-b3a1-4393-9d22-97f5299021b6.png",
+    "original": "original.png",
+    "original_size": [
+      537,
+      933
+    ],
+    "original_sha256": "023000a0094e52c854a472f68b03b1265313647d34a61e4349d359afe1a93d68",
+    "source_context": "Maker February19 2025 first IGRIS announcement (KRoC) photograph, native537x933. Entire original grey-face prototype, exposed mechanisms, both hands and feet. Suspension crane behind/right, white straps above shoulder and frame below feet need non-generative alpha isolation. Do not erase actual robot wiring, no invented occluded pieces. Caption explicitly IGRIS 2025 suspended prototype photograph, not IGRIS-C or newer product, no autonomy implication. Root inspected native. Current factory-scene ROBROS media may be AI-edited, do NOT substitute those images.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source; credit, no open licence assumed or outreach."
+  },
+  {
+    "id": 204,
+    "slug": "tienkung-3-inverted",
+    "credit": "Beijing Humanoid Robot Innovation Center",
+    "source_page": "https://www.x-humanoid.com/m/news-view-251.html",
+    "source_url": "https://www.x-humanoid.com/storage/website/2026/10-14/6acf3d66d7f11-1-55178.jpg",
+    "original": "original.jpg",
+    "original_size": [
+      1920,
+      1280
+    ],
+    "original_sha256": "f9bd647a1260404724814fd5aab7871be290ad2630f5080e544327e7bcd4620a",
+    "source_context": "Exact maker launch article on TienKung 3.0, image7 native1920x1280, full robot in inverted handstand pose, head/hands/feet all visible with margin. Preserve original inverted pose, DO NOT rotate to simulate standing or invent parts. Caption TienKung 3.0 manufacturer demonstration image, inverted pose; no claim autonomy from image. White-on-white segmentation needs careful mask of head near arms. Root inspected native, all actual robot complete. Other candidates rejected: cropped hero jstg.png footcut, kneeling image6 basket occludes foot, jumping image4 step occludes foot. Common footer MP4 predates launch, not version evidence; do not use it.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source; credit, no open licence assumed or outreach."
+  }
+]

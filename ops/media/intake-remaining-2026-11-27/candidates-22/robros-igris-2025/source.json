@@ -1,0 +1,17 @@
+{
+  "id": 79,
+  "slug": "robros-igris-2025",
+  "credit": "ROBROS",
+  "source_page": "https://www.robros.co.kr/en/news/62a18152-3813-47f5-a346-daccfb95c739",
+  "source_url": "https://robros-homepage-v2-public.s3.ap-northeast-2.amazonaws.com/news/357f4e10-b3a1-4393-9d22-97f5299021b6.png",
+  "original": "original.png",
+  "original_size": [
+    537,
+    933
+  ],
+  "original_sha256": "023000a0094e52c854a472f68b03b1265313647d34a61e4349d359afe1a93d68",
+  "source_context": "Maker February19 2025 first IGRIS announcement (KRoC) photograph, native537x933. Entire original grey-face prototype, exposed mechanisms, both hands and feet. Suspension crane behind/right, white straps above shoulder and frame below feet need non-generative alpha isolation. Do not erase actual robot wiring, no invented occluded pieces. Caption explicitly IGRIS 2025 suspended prototype photograph, not IGRIS-C or newer product, no autonomy implication. Root inspected native. Current factory-scene ROBROS media may be AI-edited, do NOT substitute those images.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primary source; credit, no open licence assumed or outreach."
+}

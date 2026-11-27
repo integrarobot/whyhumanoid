@@ -1,0 +1,17 @@
+{
+  "id": 211,
+  "slug": "westlake-titan-o1",
+  "credit": "Westlake Robotics",
+  "source_page": "https://wlrobo.com/module2",
+  "source_url": "https://wlrobo.com/figma/o1/0b5f5.png",
+  "original": "original.png",
+  "original_size": [
+    2162,
+    3844
+  ],
+  "original_sha256": "87ccd7a2e3758b25f1e993965cdd29424e5e922f6d2b8a5520da8e0d783dc1d6",
+  "source_context": "Exact maker O1Page-B3ZLw0hp.js references this native2162x3844 PNG for TITAN O1. Catalogue Westlake o1 family. Existing maker technical render, running pose with whole head, both hands and both feet. CAUTION original has translucent motion-trail duplicate geometry to right of foreground figure. Isolate only solid foreground full robot by alpha mask, preserve every visible RGB value and native size, no generation/repainting. If trails overlap body in a way that cannot be isolated cleanly, reject and use a primary whole video frame instead; videos referenced by same product chunk /videos/o1-1.mp4, /videos/o1-2.mp4, /videos/o1-3.mp4. Caption TITAN O1 manufacturer render, running pose; no specifications change. Root inspected native preview.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primary source; credit, no open licence assumed or outreach."
+}
