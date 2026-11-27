@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 18, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 18, PR not yet merged)
+## Published files (image batch 18, PR 255, merge 6df3a84, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/khameleon-platform/khameleon-platform-full-body.png`, 537 × 833 px, sha256 `dfd55e82473fdc2f95ec8e9fb2d7c65e1161c6a7c869b3dea72a834e3ec8a913` (= the prepared.png).
 - **WebP:** `assets/robots/khameleon-platform/khameleon-platform-full-body.webp`, sha256 `c9836d3651fd941ef67dfec6e33e81cdef077372925763cc9b7d0cf521e0f0e6`.

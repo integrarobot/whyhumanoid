@@ -465,7 +465,7 @@
     {
       "batch": 18,
       "opened": "2026-11-27",
-      "state": "integrated",
+      "state": "published",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026)",
       "candidates": [
@@ -479,8 +479,10 @@
       "notes": [
         "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-18/: candidates-48 (5083e8a: Khameleon manufacturer photograph), candidates-49 (2021f8c: Persona AI and Nucleus official video stills) and candidates-51 (6f9b29e: Eden Robotics official demo still and Techman TM Xplore I product animation via SSI). Every cutout prepared by Claude, alpha only, from BiRefNet masks kept beside the originals: Persona AI without the ceiling duct behind the head; Nucleus without the shelf beam behind the left arm and the box edge behind the right elbow, its black cables kept.",
         "Left out: Rhoda (75), candidates-50 (69e22a1), the Mobile DVA thumbnail: the left gripper sits inside a blue crate, partly hidden by its walls, and the official videos have subtitles over the base; Codex also checked 480 native frames without a clean alternative. Rejected for occlusion and on-screen text; no fingers are completed.",
-        "Five records, not ten: the valid sources of the final sweep. The records still without an image are not resolved by this batch; Codex keeps an individual note of the limits found for each, which does not mean that no image of them exists. Captions say what the platforms are without naming undisclosed models or makers: Khameleon task configuration with tools and bottle; Persona AI full humanoid prototype; Nucleus service platform shown in its video, rear view (no OEM or model claimed); Eden Robotics prototype platform on caster base; Techman TM Xplore I product animation (2025), via SSI. Records' specifications unchanged."
-      ]
+        "Five records, not ten: the valid sources of the final sweep. The records still without an image are not resolved by this batch; Codex keeps an individual note of the limits found for each, which does not mean that no image of them exists. Captions say what the platforms are without naming undisclosed models or makers: Khameleon task configuration with tools and bottle; Persona AI full humanoid prototype; Nucleus service platform shown in its video, rear view (no OEM or model claimed); Eden Robotics prototype platform on caster base; Techman TM Xplore I product animation (2025), via SSI. Records' specifications unchanged.",
+        "Published with PR 255 (reviewed head c7f8000, CI 46069011828; merge 6df3a84), 27 Nov 2026; Pages 46069254164 and production verification by Claude and Codex recorded in the batch closeout."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -1012,7 +1014,7 @@
         "Lab": "Persona Inc",
         "Robot": "Not disclosed"
       },
-      "status": "integrated",
+      "status": "published",
       "reason": "No exact model in the record.",
       "sources": [
         {
@@ -1076,7 +1078,7 @@
         "Lab": "Khameleon",
         "Robot": "Not disclosed"
       },
-      "status": "integrated",
+      "status": "published",
       "reason": "No exact model in the record.",
       "sources": [
         {
@@ -1104,7 +1106,7 @@
         "Lab": "Eden",
         "Robot": null
       },
-      "status": "integrated",
+      "status": "published",
       "reason": "No model in the record, and Eden's official website shows no identifiable robot body; nothing is assigned (Codex, 27 Nov 2026).",
       "sources": [
         {
@@ -1132,7 +1134,7 @@
         "Lab": "Nucleus",
         "Robot": "Humanoid service (model unconfirmed)"
       },
-      "status": "integrated",
+      "status": "published",
       "reason": "No exact model in the record.",
       "sources": [
         {
@@ -4457,7 +4459,7 @@
         "Lab": "Techman Robot",
         "Robot": "TM Xplore I"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.tm-robot.com/en/",
       "sources": [
         {

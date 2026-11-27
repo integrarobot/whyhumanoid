@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 18, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 18, PR not yet merged)
+## Published files (image batch 18, PR 255, merge 6df3a84, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/techman-tm-xplore-i/techman-tm-xplore-i-full-body.png`, 344 × 788 px, sha256 `f11af6fd4c89273fd7396f5da04ed23a6982f3b5f6821579331ce15c6d56f0a6` (= the prepared.png).
 - **WebP:** `assets/robots/techman-tm-xplore-i/techman-tm-xplore-i-full-body.webp`, sha256 `61d3460d8202d172f91e35ad0de6271f199920e933d8572b74be2b412307c061`.

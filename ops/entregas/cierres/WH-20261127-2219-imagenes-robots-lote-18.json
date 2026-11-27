@@ -1,0 +1,61 @@
+{
+  "id": "WH-20261127-2219-imagenes-robots-lote-18",
+  "tarea": "Imágenes de robots, lote 18 del alcance «todas las imágenes que faltan»: Khameleon, Persona AI, Nucleus, Eden y Techman TM Xplore I, con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026; alcance confirmado solo para Humanoids), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T22:19:04+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 255 (cabeza revisada c7f8000, merge 6df3a84): imagen en las fichas 109 Khameleon, 62 Persona Inc, 125 Nucleus, 114 Eden y 214 Techman Robot TM Xplore I, solo mediante tools/robot-presentation.json; las 162 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con el tipo de imagen, la configuración y la procedencia, sin nombres de modelo ni fabricantes no declarados: «Khameleon, platform in task configuration with tools and bottle, manufacturer photograph», «Persona AI, full humanoid prototype, official video still (2026)», «Nucleus, service platform shown in official video, rear view (2026)», «Eden Robotics, complete prototype platform on caster base, official demo still (2026)» y «Techman Robot, TM Xplore I product animation still (2025), via SSI». Las especificaciones de las fichas no cambian.",
+    "Fuentes de Codex (codex/image-sources-remaining: candidates-48 en 5083e8a, 49 en 2021f8c y 51 en 6f9b29e), copiadas de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-18/. Todos los recortes, de Claude y solo de alfa, a tamaño nativo, con máscaras BiRefNet guardadas junto a cada original: en Persona AI se quita el conducto del techo que entra en la cabeza por detrás; en Nucleus se quitan la franja de estantería tras el brazo izquierdo y el borde de una caja tras el codo derecho, y se conservan sus cables negros y el controlador blanco de la base; en Khameleon el hueco oscuro ambiguo de la base queda opaco.",
+    "Fuera del lote: Rhoda (75, candidates-50), porque la pinza izquierda está dentro de una caja y los vídeos oficiales llevan subtítulos sobre la base (Codex revisó 480 fotogramas nativos sin alternativa limpia); rechazada por oclusión y rotulación, sin completar dedos.",
+    "Cinco fichas, no diez: las fuentes válidas del barrido final. El objetivo de las 213 fichas no está terminado: con este lote, 167 de 213 fichas tienen imagen publicada y 46 siguen abiertas; este lote no las resuelve.",
+    "Registro de investigación de las 46 fichas abiertas, entregado por Codex y copiado sin editar (8921b0327, SHA-256 c188a5abc2144bcb8057afed6439091a16a008274685ed83dfa844f509e2fb18) en ops/media/robots/pending-source-review-2026-11-27.json y enlazado desde el README del lote 18: para cada ficha, la fuente revisada, el motivo concreto y sus límites. Es solo trazabilidad: no resuelve fichas, no cambia datos del maestro ni añade imágenes, y sus motivos describen el material revisado, no prueban que no existan imágenes. Sus rutas evidence_root apuntan al archivo local de investigación del proyecto, no necesariamente a archivos publicados."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 255",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/255"
+    },
+    {
+      "etiqueta": "CI de la cabeza c7f8000",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46069011828"
+    },
+    {
+      "etiqueta": "Pages de 6df3a84",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46069254164"
+    },
+    {
+      "etiqueta": "Ficha Nucleus",
+      "url": "https://whyhumanoid.com/humanoids/nucleus-humanoid-service-model-unconfirmed-125/"
+    },
+    {
+      "etiqueta": "Ficha Techman TM Xplore I",
+      "url": "https://whyhumanoid.com/humanoids/techman-robot-tm-xplore-i-214/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 6df3a84 (run 46069254164, correcto); CI de la cabeza c7f8000 (run 46069011828, correcto). Fusión hecha solo en esa cabeza contra main a289179, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga (x-cache MISS en la primera petición)."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 5/5; navegador local de las cinco fichas a 390 × 844 y 1366 × 900, 10/10 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
+    "Codex, cabeza c7f8000 contra a289179: revisión independiente aprobada; 50 archivos de imágenes, ops y páginas generadas; las 162 presentaciones anteriores y el catálogo de 213 preservados (cotejadas también las 68 presentaciones de partida, idénticas, y las 99 nuevas desde entonces); SHA, RGB visible exacto, alfa de PNG y WebP idéntico, resolución nativa y margen de 20 px correctos en las cinco; los cinco pares claro y oscuro vistos uno a uno, con los detalles nativos del techo y la cabeza de Persona AI, los brazos y cables de Nucleus y las manos negras de Techman.",
+    "Claude, producción tras Pages 46069254164: las 10 URL canónicas (5 PNG y 5 WebP) con los mismos bytes que 6df3a84 (10/10); las 5 fichas y la portada idénticas a 6df3a84 salvo las etiquetas meta agent:* que añade Cloudflare (6/6); navegador real a 390 × 844 y 1366 × 900, 10/10 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 167 presentaciones. La espera de Pages se hizo consultando la portada existente con un parámetro de consulta único, nunca URL de activos nuevos.",
+    "Codex, verificación pública independiente tras Pages 46069254164 en merge 6df3a84: 15/15 URL canónicas con 200 (10 activos con SHA y alfa exactos y 5 fichas con imagen, texto alternativo y crédito); 10/10 vistas reales en Chrome a 390 × 844 y 1366 × 900, cargadas, contain, sin desbordamiento y con dimensiones y créditos correctos; captura de escritorio de Techman revisada. Total 167/213: 99 imágenes nuevas sobre 68 intactas.",
+    "Codex, verificación adicional: además de las 68 presentaciones de partida, los 136 archivos PNG y WebP de partida siguen idénticos byte a byte respecto de dcdf518.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (167) y entregas --check; las 46 fichas del registro de Codex coinciden exactamente con las fichas sin presentación de la cobertura y ninguna tiene imagen."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Las 46 fichas abiertas siguen sin imagen; su registro de investigación queda en ops como trazabilidad y no las resuelve.",
+    "Rhoda (75), Jingchu Elf (183), Qinglong (69), T230A (89), R-Noid (77) e IGRIS (79) siguen fuera con su motivo; Other Robots queda fuera del alcance por decisión de Javier."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. El objetivo de las 213 fichas sigue abierto: 167 publicadas y 46 pendientes de una fuente aprobada, de confirmar la identidad o de permiso."
+}

@@ -1,6 +1,6 @@
-# Robot image batch 18: integrated package
+# Robot image batch 18: published package
 
-This batch is integrated in this PR and not yet published. `mapping.json` lists the five integrated images: the valid sources of the final sweep. The records still without an image are not resolved by this batch.
+Published with PR 255 (reviewed head c7f8000, CI 46069011828; merge 6df3a84, Pages 46069254164, 27 Nov 2026) and verified in production by Claude and Codex. `mapping.json` lists the five integrated images: the valid sources of the final sweep. The records still without an image are not resolved by this batch.
 
 ## Integrated (five)
 
@@ -24,5 +24,9 @@ Notes for review (coordinates in each original):
 ## Not in this batch
 
 - **Rhoda (75)**, candidates-50 (69e22a1), the Mobile DVA thumbnail: the left gripper (x 580..635, y 410..512) sits inside a blue crate, partly hidden by its walls, and the official videos have subtitles over the base; Codex checked 480 native frames without a clean alternative. Rejected for occlusion and on-screen text; no fingers are completed and no files are kept.
+
+## Records still open
+
+`ops/media/robots/pending-source-review-2026-11-27.json` (Codex, copied unedited) is the research record of the 46 records that still have no image after this batch: for each, the source reviewed, the concrete reason and its limits. It is research traceability only: it resolves no record, changes no catalogue data, and its reasons describe the material reviewed, not proof that no image exists. The 213-record goal is not reached (167 published, 46 open). Its `evidence_root` paths point to the local project research archive, not necessarily to files published in this repository.
 
 Sources: Codex's `candidates-48` (5083e8a), `candidates-49` (2021f8c) and `candidates-51` (6f9b29e) on `codex/image-sources-remaining`, copied selectively.

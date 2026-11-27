@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 18, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 18, PR not yet merged)
+## Published files (image batch 18, PR 255, merge 6df3a84, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/persona-ai-prototype/persona-ai-prototype-full-body.png`, 475 × 870 px, sha256 `fdf18ff989f9b03bccf83c392bd457c437b34ea0c8bde3d976c66febbe2b0da4` (= the prepared.png).
 - **WebP:** `assets/robots/persona-ai-prototype/persona-ai-prototype-full-body.webp`, sha256 `3c1fd1009844c10e18cd6bdeeca91dfd2fc6b582eb1c60ba1c105f3ef72ee828`.
