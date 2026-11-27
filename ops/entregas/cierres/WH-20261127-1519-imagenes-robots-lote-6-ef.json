@@ -1,0 +1,67 @@
+{
+  "id": "WH-20261127-1519-imagenes-robots-lote-6-ef",
+  "tarea": "Imágenes de robots, lote 6 del alcance E/F: OpenArm 2.0, Mirokaï, Ameca, Codroid 02, Sprout, FF Futurist, Feather, robot de Flourish, T800 y Centaur-G1, con imagen oficial de robot o plataforma completos y fondo transparente; cierre del alcance E/F con fuentes pendientes",
+  "origen": "Javier («añade más imágenes», 27/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T15:19:49+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 216 (cabeza revisada 437d29c, merge b24a276): imagen en las fichas 25 OpenArm 2.0 (módulo completo de dos brazos, sin cuerpo añadido), 26 Mirokai (Miroki, personaje amarillo de la familia Mirokai, con esfera y aro), 28 Ameca (tamaño completo con su base, no Desktop), 29 Codroid 02 (versión bípeda), 103 Sprout (Creator Edition, tal como la presenta la página oficial), 106 FF Futurist (diseño inicial, no el All-New/A3), 126 Feather (plataforma completa con ruedas), 129 robot de Flourish (sin nombre de modelo), 151 T800 (sin edición atribuida) y 176 Centaur-G1 (plataforma completa con la taza y el utensilio de la fuente; no un G1 de Unitree ni de AgiBot), solo mediante tools/robot-presentation.json; las 48 presentaciones anteriores, sin cambios.",
+    "Originales, máscaras, preparados y manifiesto de Codex (codex/image-sources-ef, 195020a; las nueve primeras idénticas a 2daba0a) guardados sin cambios en ops/media/intake-ef-2026-11-27/batch-06/; preparados usados tal cual (margen de 20 px, resolución nativa, sin reescalar); color de cada píxel visible igual al original. Oreja derecha de Mirokai recuperada por Codex solo en el alfa.",
+    "Mirokai: la sala de prensa permite fotos con crédito y pide aviso; con la autorización expresa de Javier, Codex avisó al fabricante por el formulario oficial y vio la confirmación. El aviso no afirma afiliación. Crédito exacto «Enchanted Tools - Mirokaï robot».",
+    "Sin fuente válida tras revisión, con su límite concreto: Phantom MK1 (31), las fuentes oficiales muestran el MKII; GR-1 (32), la única imagen completa es de un documento de un equipo de RoboCup que da 34 DoF, cifra que coincide con la del GR-1L, así que la variante queda sin acreditar y no se asigna al estándar (no se concluye que sea un GR-1L); Eden (114), la web oficial no muestra un robot identificable. No se afirma que no exista foto y no se reconstruye nada.",
+    "Cobertura: lote 6 publicado con 10 fichas; Ameca (250 × 769), FF Futurist (375 × 728) y Centaur-G1 (444 × 539) publicadas con deuda de resolución. Alcance E/F cerrado con fuentes pendientes: 16 fichas, 13 con imagen (3 previas y 10 del lote 6) y 3 sin fuente válida. En todo el catálogo, 58 de 212 fichas tienen imagen publicada. No es el 100 % de imágenes."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 216",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/216"
+    },
+    {
+      "etiqueta": "CI de la cabeza 437d29c",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46014108222"
+    },
+    {
+      "etiqueta": "Pages de b24a276",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46014425958"
+    },
+    {
+      "etiqueta": "Ficha Mirokai",
+      "url": "https://whyhumanoid.com/humanoids/enchanted-mirokai-26/"
+    },
+    {
+      "etiqueta": "Ficha Ameca",
+      "url": "https://whyhumanoid.com/humanoids/engineered-arts-ameca-28/"
+    },
+    {
+      "etiqueta": "Ficha Sprout",
+      "url": "https://whyhumanoid.com/humanoids/fauna-sprout-103/"
+    },
+    {
+      "etiqueta": "Ficha Centaur-G1",
+      "url": "https://whyhumanoid.com/humanoids/elite-robots-centaur-g1-176/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main b24a276 (run 46014425958, correcto); CI de la cabeza 437d29c (run 46014108222, correcto). Fusión hecha solo en esa cabeza, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1 ni precios, ni de otras letras.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Codex, cabeza 437d29c: revisión independiente aprobada; 10/10 PNG idénticos a los preparados, todos los RGB visibles iguales al origen, alfa de WebP igual a PNG, dimensiones nativas, 48 presentaciones anteriores idénticas y solo registros de cobertura E/F cambiados; robot-presentation --check (58) y robot-images-coverage --check (212).",
+    "Claude, producción: las 20 URL canónicas (10 WebP y 10 PNG) dan 200 con los mismos bytes que b24a276 (20/20).",
+    "Claude, navegador real en iPhone 13 y 1366 × 900: las diez fichas cargan su imagen a tamaño natural, con texto alternativo y crédito y sin desbordamiento lateral (20/20); GR-1, Phantom MK1 y Eden siguen sin imagen.",
+    "Codex, verificación pública independiente tras Pages 46014425958 correcto: 30/30 URL canónicas (10 fichas HTML, 10 PNG y 10 WebP) con 200, hashes exactos respecto al repositorio, alfa 0–255 y esquinas transparentes, alt y crédito exactos en el HTML; 20/20 vistas en Chrome a 390 × 844 y 1366 × 900 con dimensiones naturales correctas, object-fit contain y sin desbordamiento.",
+    "Comprobaciones locales: robot-images-coverage --check (212 registros; alcance E/F con 13 publicadas y 3 sin fuente válida), robot-presentation --check (58) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Phantom MK1 (31), GR-1 (32) y Eden (114) siguen sin imagen hasta que aparezca una fuente oficial fiel de robot completo y del modelo exacto.",
+    "Ameca (28), FF Futurist (106) y Centaur-G1 (176): sustituir por imágenes fieles más grandes cuando existan; la deuda de Figure 03 (30) sigue fuera de este conteo."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. No se empieza ninguna otra letra sin indicación."
+}

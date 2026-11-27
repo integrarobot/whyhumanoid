@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 6, scope 
 
 - **Quality:** Modest resolution: 375 × 728 native cutout; no upscaling. Replace when a larger faithful image of this design is found.
 
-## Files integrated (image batch 6, PR not yet merged)
+## Published files (image batch 6, PR 216, merge b24a276, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/faraday-future-ff-futurist/faraday-future-ff-futurist-full-body.png`, 375 × 728 px, sha256 `cdfa1f149cf724dfb07dccd2d455a21dd4860aadc2a0f9fcc8db3042a31be940` (= Codex's prepared.png).
 - **WebP:** `assets/robots/faraday-future-ff-futurist/faraday-future-ff-futurist-full-body.webp`, sha256 `4956f093148af908f3cb2144bde202eb0cc135da459c0b71867001ad47bcb91b`.

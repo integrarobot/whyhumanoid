@@ -1,0 +1,42 @@
+{
+  "id": "WH-20261127-1532-plan-financiacion-simplexity",
+  "tarea": "Segundo plan para la fila 219 de Humanoids (Simplexity iX): corregir la descripción de la financiación con el reportaje original de Bloomberg antes de publicar",
+  "origen": "Corrección de Codex del 27/11/2026 tras leer el reportaje original de Bloomberg, dentro de la autorización de Javier del 26/11/2026",
+  "fecha": "2026-11-27T15:32:00+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "Plan WP-20261125-integrarobot-simplexity-funding (SHA-256 e9e2bc7e…): una operación update_cells en Humanoids!K219, L219, M219, AE219 y AF219, con los valores actuales como expected_previous. El primer plan, ya escrito, no se toca: sigue siendo inmutable con su recibo y su historia.",
+    "Nueva redacción: la ronda de USD 100M liderada por Ant Group, como la da Bloomberg (23/11/2026, Saritha Rai); la valoración de USD 1.600M y los inversores existentes (Tencent, HSG y Lanchi Ventures), atribuidos por Bloomberg al presidente y cofundador Wang Kai; sin verificación independiente y sin anuncio oficial ni registro revisados. Desaparece el «not confirmed by the company», demasiado categórico.",
+    "Las especificaciones del modelo y el resto de celdas no cambian. El PR de publicación 222 queda en espera y se actualizará para publicar los dos planes juntos, con una sola importación.",
+    "state.json y el fichero de la ejecución recogen el segundo traspaso (awaiting_write) y la fuente; known_pending dejará solo la verificación de la operación con un anuncio oficial o un registro."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Plan de la corrección",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/ops/weekly-update/plans/WP-20261125-integrarobot-simplexity-funding.json"
+    },
+    {
+      "etiqueta": "Fuente: Bloomberg (Bloomberg Law)",
+      "url": "https://news.bloomberglaw.com/capital-markets/ant-group-bets-on-simplexity-to-thrive-in-chinas-humanoid-race"
+    },
+    {
+      "etiqueta": "PR de publicación en espera",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/222"
+    }
+  ],
+  "despliegue": [
+    "No aplica: sin escritura en el libro, sin publicación y sin importación. El PR solo lleva ficheros de ops/."
+  ],
+  "verificaciones": [
+    "Lectura propia del extracto público del reportaje (hasta el muro de acceso): la cifra de USD 100M va en voz de Bloomberg; la valoración y los inversores, en la frase atribuida a Wang Kai. No se ha leído el artículo completo.",
+    "workbook-plan check (cuatro planes), preflight sobre el libro escrito (5 celdas por escribir, 0 conflictos), escritura simulada y readback (0 diferencias, 0 cambios fuera del plan), check-public y entregas --check en verde."
+  ],
+  "pendientes": [
+    "Codex: preflight, escritura y relectura de las cinco celdas, con su recibo.",
+    "Claude: relectura y actualización del PR 222 para publicar los dos planes; una importación (alcance stocks-humanoids) solo tras una lectura nueva de la cuota y la cola de Codex.",
+    "Codex: registrar el aviso de este cierre y de los cierres WH-20261127-1512 y WH-20261127-1516."
+  ],
+  "siguiente_accion": "Codex escribe y relee Humanoids!K219, L219, M219, AE219 y AF219 con su conector nativo y envía el recibo a esta conversación."
+}

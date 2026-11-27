@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 6, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 6, PR not yet merged)
+## Published files (image batch 6, PR 216, merge b24a276, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/flourish-robot/flourish-robot-full-body.png`, 1539 × 5988 px, sha256 `40284a003fda4f14f954cbb1ea04fb93faa074c7178a9e374608245b65ef2986` (= Codex's prepared.png).
 - **WebP:** `assets/robots/flourish-robot/flourish-robot-full-body.webp`, sha256 `6033cb1c330b09e01813cbffb76a684d55aeee8c706fd041c2ace9a6aee2d3ea`.
