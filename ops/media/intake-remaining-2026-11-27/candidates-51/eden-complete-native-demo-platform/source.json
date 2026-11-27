@@ -1,0 +1,21 @@
+{
+  "id": 114,
+  "slug": "eden-complete-native-demo-platform",
+  "credit": "Eden Robotics",
+  "source_page": "https://edenrobotics.ai/",
+  "source_url": "https://edenrobotics.ai/assets/videos/plug-and-play.mp4",
+  "original": "original.png",
+  "original_size": [
+    1920,
+    1080
+  ],
+  "original_sha256": "eeaeee27d480a9899abc53bd1de04d802b9b7721ea010a729fa2d39224d9a0c6",
+  "source_video_sha256": "f8b42b47d433e0267389f738b7ee5aa422c5227e974906e80ec5139f02ef57fd",
+  "frame_index_zero_based": 184,
+  "fps": 23.976023976023978,
+  "time_seconds": 7.674333333333333,
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "source_context": "Official Eden product homepage video shows a physical complete dual-arm prototype on its small rectangular caster base in a plug-and-play demonstration. Frame184 at184/(24000/1001)=7.6743s,1920x1080, approximateROI x780..1080 y365..980. Actual tilted screen/sensor head, both arms and real black pinch hands, central column and whole rectangular white base with visible small casters. No head/legs invented and base is actual supporting platform shown, not studio floor. Person to right and case to left are separated from robot, exclude. Preserve real black cables looping between arms/waist and tiny casters, remove floor shadow only via alpha. Native body about580px high plus padding meets minimum. Caption Eden Robotics, complete prototype platform on caster base, official demo still (2026). Exact model name/OEM remains unconfirmed in master; no specifications/identity reclassification. This completes a source previously assumed only unknown model; no copying website design or text involved.",
+  "license_note": "Official company/distributor public product media with credit; no open licence assumed or outreach sent."
+}

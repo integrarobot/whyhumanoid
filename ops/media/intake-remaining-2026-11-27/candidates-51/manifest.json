@@ -1,0 +1,44 @@
+[
+  {
+    "id": 114,
+    "slug": "eden-complete-native-demo-platform",
+    "credit": "Eden Robotics",
+    "source_page": "https://edenrobotics.ai/",
+    "source_url": "https://edenrobotics.ai/assets/videos/plug-and-play.mp4",
+    "original": "original.png",
+    "original_size": [
+      1920,
+      1080
+    ],
+    "original_sha256": "eeaeee27d480a9899abc53bd1de04d802b9b7721ea010a729fa2d39224d9a0c6",
+    "source_video_sha256": "f8b42b47d433e0267389f738b7ee5aa422c5227e974906e80ec5139f02ef57fd",
+    "frame_index_zero_based": 184,
+    "fps": 23.976023976023978,
+    "time_seconds": 7.674333333333333,
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "source_context": "Official Eden product homepage video shows a physical complete dual-arm prototype on its small rectangular caster base in a plug-and-play demonstration. Frame184 at184/(24000/1001)=7.6743s,1920x1080, approximateROI x780..1080 y365..980. Actual tilted screen/sensor head, both arms and real black pinch hands, central column and whole rectangular white base with visible small casters. No head/legs invented and base is actual supporting platform shown, not studio floor. Person to right and case to left are separated from robot, exclude. Preserve real black cables looping between arms/waist and tiny casters, remove floor shadow only via alpha. Native body about580px high plus padding meets minimum. Caption Eden Robotics, complete prototype platform on caster base, official demo still (2026). Exact model name/OEM remains unconfirmed in master; no specifications/identity reclassification. This completes a source previously assumed only unknown model; no copying website design or text involved.",
+    "license_note": "Official company/distributor public product media with credit; no open licence assumed or outreach sent."
+  },
+  {
+    "id": 214,
+    "slug": "techman-tm-xplore-i-2025-product-animation",
+    "credit": "Techman Robot / SSI",
+    "source_page": "https://ssi-robot.co.jp/次世代ヒューマノイド「tm-xplore-i」動画公開/",
+    "source_url": "https://www.youtube.com/watch?v=b9-bPE_NKcI",
+    "original": "original.png",
+    "original_size": [
+      1920,
+      1080
+    ],
+    "original_sha256": "7b74380e12f6bb2a1149b6d97757cd686426c67b42482e6982c5b6a79fb87bc8",
+    "source_video_sha256": "acedf7673a03b233ef153d26d048776eec88126bce3e6416c1ddaa6eb2f9512d",
+    "frame_index_zero_based": 315,
+    "fps": 29.97002997002997,
+    "time_seconds": 10.5105,
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "source_context": "SSI CO.,LTD official distributor primary post dated2025-09-02 explicitly introduces Techman Robot TM Xplore I and embeds this product video. Native1920x1080 frame315,10.5105s at30000/1001fps: title overlay has fully disappeared and camera approaches exact complete robot. This is an EXISTING PRODUCT ANIMATION, not newly generated render or physical photograph. Caption Techman Robot, TM Xplore I product animation still (2025), via SSI. ApproximateROI x800..1130 y125..900; head, both articulated fingers/hands, actual mast/knee mechanism and entire wheelbase complete. Both black hand shapes must be preserved against dark green background; top/side head is glossy black real product render, not transparency. Remove background/floor/shadow/reflection only with alpha, no colour brighten/upscaling/rendering. Earlier frame266 has text ON hands and is not selected; frame315 is clean and native robot about750px high. Do not relabel as 2026 hardware/photo or assert version specs based on animation.",
+    "license_note": "Official company/distributor public product media with credit; no open licence assumed or outreach sent."
+  }
+]
