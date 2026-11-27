@@ -1,0 +1,52 @@
+{
+  "id": "WH-20261127-2231-components-explorador-robot",
+  "tarea": "Components: nuevo dibujo de robot de cuerpo entero en el explorador de /components/, a partir de la referencia de Javier («me gusta como ha quedado, pero el robot se puede mejorar»)",
+  "origen": "Javier, transmitido por Codex (27/11/2026), con la referencia del bípedo industrial que eligió",
+  "fecha": "2026-11-27T22:31:05+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 243 (cabeza revisada fcbc879, merge 993282f): explorerSvg() en tools/components-view.mjs dibuja un humanoide original de cuerpo entero (torso ancho con sensor superior en lugar de cabeza, articulaciones redondas en hombros y caderas, extremidades articuladas, muñecas cilíndricas, espinillas largas y pies completos), sombreado con un degradado de las tintas del sitio; no representa ningún robot concreto ni lista de materiales, y el texto público no nombra ningún robot.",
+    "Sin cambios en las cinco zonas pulsables (percepción en el sensor superior, manipulación en las manos, movimiento en hombros, codos, caderas, rodillas y tobillos, cómputo en el pecho y energía en el torso inferior), los botones, el resaltado, los enlaces y recuentos de familias, el acceso por teclado y táctil, la nota de vista funcional y el orden gráfico de evolución, explorador y oferta.",
+    "assets/components.css: sombreado del cuerpo y contorno al pasar el puntero por las zonas; components/**/index.html regenerado (en las páginas de producto solo cambia la clave de caché del CSS, v4fb25d8192).",
+    "Sin cambios de datos, Worker, importación, precios ni pagos. La pregunta de PX-6AX sigue aparte y abierta."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 243",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/243"
+    },
+    {
+      "etiqueta": "CI de la cabeza fcbc879",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46053491793"
+    },
+    {
+      "etiqueta": "Pages que publicó el cambio (cc20361, incluye 993282f)",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46070342821"
+    },
+    {
+      "etiqueta": "Components",
+      "url": "https://whyhumanoid.com/components/#explore"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "Fusión solo en la cabeza fcbc879, con la aprobación expresa de Codex y sin rebase: GitHub y git merge-tree daban la fusión limpia con main 6df3a84, y main no había tocado components/, el CSS ni el generador desde la base del PR. Merge 993282f.",
+    "La compilación de Pages de 993282f (run 46070323543) quedó cancelada al sustituirla la del merge siguiente, cc20361, que incluye 993282f; esa compilación (run 46070342821) terminó en verde y publicó el cambio."
+  ],
+  "verificaciones": [
+    "Claude, antes de fusionar (servidor local): verify-components-explorer.mjs a 1366 × 900 y 390 × 844 con viewport efectivo, sin desbordamiento, 12 rutas de familia por tamaño con recuentos iguales a la cobertura, selección en el dibujo, teclado y orden gráfico, explorador, oferta; verify-components.mjs, build-site, build-pages, build-app --check, check-public y test-coherence en verde.",
+    "Codex, cabeza fcbc879: revisión independiente de los 55 archivos aprobada (SVG y CSS correctos, las 52 fichas de producto solo cambian la clave de caché del CSS, sin cambios de datos ni servidor); capturas locales a 1366 × 900 y 390 × 844 revisadas.",
+    "Claude, producción tras Pages 46070342821: /components/ y assets/components.css idénticos a main salvo las etiquetas meta agent:* de Cloudflare; el HTML publicado lleva el dibujo nuevo (viewBox 240 × 430, degradados hx-s0, hx-s1 y hx-s2) con sus cinco zonas; verify-components-explorer.mjs contra producción pasa a 1366 × 900 y 390 × 844 sin desbordamiento y con las 12 rutas de familia; verify-components.mjs pasa con las 52 páginas.",
+    "Codex, verificación pública independiente: SVG publicado idéntico byte a byte a fcbc879 (SHA-256 0b909c47d0eeda10a3ad0b98525adca0d81c3620806c16c7dd6d6816b30e205f) y CSS publicado exacto (v4fb25d8192, SHA-256 4fb25d8192518519a6b125d4097c0b66c7a7cd6664e01144ebd21c5679828795); en navegador real a 390 × 844 y 1366 × 900, 10/10 selecciones por botón sincronizan un único panel y forma, 10/10 selecciones en el dibujo activan y enfocan su botón, Tab y Espacio funcionan, sin desbordamiento y con el orden evolución, explorador, oferta; capturas públicas revisadas con el robot entero y los pies visibles."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "La pregunta de PX-6AX y la importación de datos de Components siguen aparte, a la espera de la respuesta de Javier."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción del diseño publicado."
+}
