@@ -1,0 +1,44 @@
+{
+  "id": "roundup-2026-11-27-humanoid-robots",
+  "title": "Humanoid robot news, 21–27 November 2026",
+  "publication": "Integrarobot",
+  "published_on": "2026-11-27",
+  "language": "en",
+  "review": {
+    "status": "reviewed",
+    "by": "Codex",
+    "evidence": "Compared all six items with the Spanish roundup supplied by Javier Martín and checked the links and status claims. The Huesca item also reflects the official announcements from the Government of Aragón and NEURA Robotics."
+  },
+  "items": [
+    {
+      "position": 1,
+      "headline": "AGIBOT trials Genie G2 on JCET’s semiconductor test line",
+      "body_markdown": "**23 November · AGIBOT trials Genie G2 on JCET’s semiconductor test line.** AGIBOT says its wheeled Genie G2 robots completed a trial on JCET’s chip-test line in Lingang, Shanghai. They were connected to the plant’s manufacturing and equipment systems to load and unload trays and route parts by test outcome. Trial duration, throughput and the intervention rate are still undisclosed.\n\n[First report, 23 November](https://finance.eastmoney.com/a/202611233937150179.html) · [Securities Daily, with comments from AGIBOT](https://finance.eastmoney.com/a/202611243938690461.html)"
+    },
+    {
+      "position": 2,
+      "headline": "Bigwave validates a bipedal humanoid at a South Korean factory",
+      "body_markdown": "**24 November · Bigwave validates a bipedal humanoid at a South Korean factory.** The integrator says the robot loaded engine parts into a straightening machine, walked about 10 metres and stacked finished parts on a cart. It coordinated the sequence with the machine’s PLC. The customer, robot model, trial duration and cycle time remain undisclosed.\n\n[Bigwave Robotics](https://us.bigwaverobotics.com/investors/news/RKGuvR96jlmIkTbVccTq)"
+    },
+    {
+      "position": 3,
+      "headline": "NEURA and Costa Group plan a robot training centre in Huesca",
+      "body_markdown": "**26 November · NEURA and Costa Group plan a robot training centre in Huesca.** NEURA Robotics, Costa Group and public-sector partners signed a memorandum at Walqa Technology Park to establish NEURA Gym Aragón, where companies could train robots and test applications. The signatories are targeting a mid-2027 opening and envisage an investment of several tens of millions of euros. The memorandum establishes the agreement and those figures remain plans.\n\n[Government of Aragón](https://pro.aragonhoy.es/presidencia-de-gobierno/neura-robotics-desarrollara-aragon-nuevo-motor-crecimiento-industrial-puesta-marcha-neura-gym-107206) · [NEURA Robotics](https://neura-robotics.com/neura-robotics-aragon-government-costa-group-physical-ai/) · [Radio Huesca](https://cadenaser.com/aragon/2026/11/26/neura-robotics-llega-a-walqa-con-un-gran-centro-de-entrenamiento-de-robots-radio-huesca/) · [Aragón TV](https://www.aragonplay.es/aragonnoticias/huesca/gimnasio-robots-humanoides-llega-parque-tecnologico-walqa-huesca.html)"
+    },
+    {
+      "position": 4,
+      "headline": "Bleckmann prepares to introduce two humanoids at European warehouses",
+      "body_markdown": "**24 November · Bleckmann prepares to introduce two humanoids at European warehouses.** The logistics operator says it has invested in two humanoids and expects delivery within weeks. Its first phase will focus on training and collecting operational data. The individual sites, robot model and first task assignments remain undisclosed.\n\n[Bleckmann](https://www.bleckmann.com/press/bleckmann-humanoid-robots-warehouses)"
+    },
+    {
+      "position": 5,
+      "headline": "XPENG sets out its timetable for IRON in its stores",
+      "body_markdown": "**25 November · XPENG sets out its timetable for IRON in its stores.** XPENG presented an advanced version of IRON at its AI Day. The company plans to begin training it as a store assistant at its own shops in Q1 2027 and separately targets Q2 2027 for the robot’s public release. Both dates are company targets.\n\n[XPENG](https://www.xpeng.com/pressroom/news/01a212b0d830a1e838d68a02a2110174)"
+    },
+    {
+      "position": 6,
+      "headline": "NIOSH requests input on occupational safety and humanoid robots",
+      "body_markdown": "**23 November · NIOSH requests input on occupational safety and humanoid robots.** The US National Institute for Occupational Safety and Health is asking for information about workplace hazards, incidents and methods for testing robots in real working conditions. Comments are due by 22 February 2027. The request will inform research priorities and injury prevention.\n\n[Federal Register notice](https://www.cdc.gov/niosh/docket/review/docket366/pdfs/2026-23799-11-23-2026.pdf)"
+    }
+  ]
+}

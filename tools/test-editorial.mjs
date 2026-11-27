@@ -47,7 +47,7 @@ test('live sections: Blog and News pages are indexable, in the sitemap and linke
   const store = readStore(root);
   const built = views(store, '2026-11-27', true);
   const ready = readyEditions(store);
-  const items = ready.reduce((n, e) => n + e.items.length, 0);
+  const items = [...ready, ...store.roundups.values()].reduce((n, e) => n + e.items.length, 0);
   const pages = [...built.keys()].filter((f) => !f.startsWith('newsletter/')).sort();
   assert.equal(pages.length, 6 + ready.length + items, 'index and year pages, one page per article and per news item');
   for (const f of pages) assert.doesNotMatch(built.get(f), /noindex/, `${f} is indexable once live`);
@@ -392,16 +392,42 @@ test('real corpus: no Blog article carries a news section, list or count; every 
   for (const f of lists) assert.doesNotMatch(built.get(f), /<ol|<li value=|class="ed-items"/, `${f}: no numbered list`);
   const all = built.get('news/index.html');
   const perYear = built.get('news/2025/index.html') + built.get('news/2026/index.html');
-  for (const e of ready) for (const it of e.items) {
-    const path = `/news/${it.id}/`;
+  const groups = [...ready, ...store.roundups.values()];
+  for (const e of groups) for (const it of e.items) {
+    const id = itemId(e.id, it.position);
+    const path = `/news/${id}/`;
     assert.equal(all.split(`class="ed-permalink" href="${path}"`).length - 1, 1, `${path} listed once on /news/`);
     assert.equal(perYear.split(`class="ed-permalink" href="${path}"`).length - 1, 1, `${path} listed once in its year`);
-    assert.ok(built.has(`news/${it.id}/index.html`), `${path} has its page`);
+    assert.ok(built.has(`news/${id}/index.html`), `${path} has its page`);
     const body = renderMarkdown(it.body_markdown);
     assert.ok(all.includes(body), `${path}: whole body on /news/, untruncated`);
   }
-  assert.equal((all.match(/<article class="ed-entry" data-ed-text="[^"]+"/g) ?? []).length, 780, 'every entry searchable');
+  assert.equal((all.match(/<article class="ed-entry" data-ed-text="[^"]+"/g) ?? []).length, groups.reduce((total, group) => total + group.items.length, 0), 'every entry searchable');
   for (const alias of ['newsletter/index.html', 'newsletter/2025/index.html', `newsletter/${ready[0].id}/index.html`]) assert.match(built.get(alias), /http-equiv="refresh"/, `${alias} still redirects`);
+});
+
+test('standalone roundups keep their source order and can be published without a Blog article', () => {
+  const store = readStore(root);
+  const id = 'roundup-2026-11-27-humanoid-robots';
+  const roundup = store.roundups.get(id);
+  const pages = views(store, '2026-11-27', true);
+  assert.deepEqual(roundup.items.map((item) => item.headline.split(' ').slice(0, 2).join(' ')), [
+    'AGIBOT trials', 'Bigwave validates', 'NEURA and', 'Bleckmann prepares', 'XPENG sets', 'NIOSH requests',
+  ]);
+  const list = pages.get('news/2026/index.html');
+  let last = -1;
+  for (const item of roundup.items) {
+    const path = `/news/${itemId(id, item.position)}/`;
+    const location = list.indexOf(`href="${path}"`, last + 1);
+    assert.ok(location > last, `item ${item.position} is listed in order`);
+    last = location;
+    const details = pages.get(`${path.slice(1)}index.html`);
+    assert.ok(details.includes(renderMarkdown(item.body_markdown)), 'the whole item and its source links are visible');
+    assert.ok(editorialUrls(store, { today: '2026-11-27' }).includes(path), 'includes the item in the sitemap');
+  }
+  assert.doesNotMatch(list, new RegExp(`href="/blog/${id}/"`));
+  assert.equal(pages.has(`blog/${id}/index.html`), false);
+  assert.equal(views(store, '2026-11-26').has(`news/${id}/01/index.html`), false);
 });
 
 // Javier, 27 Nov 2026: no images in the Blog or News, and nothing in their place.
