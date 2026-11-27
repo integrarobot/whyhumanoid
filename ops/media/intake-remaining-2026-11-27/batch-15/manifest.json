@@ -33,6 +33,39 @@
     "mask_sha256": "c9cf36fc6fb7aaedb89f4513d9c7ff7007baf47b832f220d0a08641c3d0ac6dc"
   },
   {
+    "id": 102,
+    "slug": "xiaomi-cyberone-government-photo",
+    "credit": "Beijing Yizhuang via NCSTI",
+    "source_page": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/t20240605_159440.html",
+    "source_url": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/W020240605332139251140.jpg",
+    "source_context": "Official government press photograph in report of Xiaomi Robotics move to Yizhuang factory, published2024-06-05, source explicitly Beijing Yizhuang official WeChat. NOT a Xiaomi-hosted image or open licence. Caption under this exact photo explicitly full-size humanoid bionic robot CyberOne, white chest CyberOne visible, matches original2022 design. Whole head, both genuine gripper hands, both feet visible, standing on round CyberDog-branded showroom display plinth. Native1080x1620, body >1100px; leave complete robot, optionally full circular display stand only if caption explicitly says on display stand, but stand NOT robot morphology. Preferred mask robot alone at sole contact, no leg creation. Remove orange wall, floor, external black tripod left, stand if can cleanly separate. No occlusion of robot geometry. Root native source inspected. Caption Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI. Do not imply current2026generation orassign later specs.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 31e0eb7, candidates-32",
+    "mask_method": "BiRefNet general (rembg, mask only), two passes, Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-two-pass-mask.png; levels 85..230; the whole-figure pass took in the round display plinth under the feet; a second pass on the feet alone (x 400..740, y 1180..1470 of the original) separates the shoes from the plinth, and the combined mask uses the first pass above y = 1250 and the second from y = 1250 down (the two agree within 0.3 on average in the ten rows above the join), so the plinth, the wall, the floor and the tripod are out",
+    "roi": [
+      330,
+      180,
+      810,
+      1480
+    ],
+    "bbox": [
+      44,
+      33,
+      431,
+      1272
+    ],
+    "border": 20,
+    "size": [
+      427,
+      1279
+    ],
+    "native_alpha": false,
+    "original_sha256": "bcf7d9b8185de88c6f7edfbb29323707fc6bd8313d5b199a65587968281f6184",
+    "prepared_sha256": "85f1a1ec3c809ec83471b2f4a22e63d3be8240e1b1fbb33c7c21714de6df2211",
+    "mask_sha256": "7dc085337fe164f1502dae6814a0863e9a1b7334244e8dd295b8d9f92c5601ea"
+  },
+  {
     "id": 35,
     "slug": "galbot-g1-award-native",
     "credit": "Galbot",

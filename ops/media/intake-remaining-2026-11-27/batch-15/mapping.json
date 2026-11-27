@@ -2,7 +2,7 @@
   "batch": 15,
   "intake": "ops/media/intake-remaining-2026-11-27/batch-15",
   "branch": "codex/image-sources-remaining",
-  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27), 62f03ab (candidates-28), 26e018a (candidates-30) and a7c0ffb (candidates-31)",
+  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27), 62f03ab (candidates-28), 26e018a (candidates-30), a7c0ffb (candidates-31) and 31e0eb7 (candidates-32)",
   "scope": "All missing images (Javier, 27 Nov 2026)",
   "items": {
     "166": {
@@ -52,6 +52,13 @@
       "alt": "G1 by Galbot, full body, standing on its lift leg and wheeled base, one hand held out, manufacturer product render",
       "credit": "Image: Galbot, G1 manufacturer product render via European Product Design Award (2026)",
       "identity": "The left, standing figure of the G1 render that Galbot submitted to the European Product Design Award 2026 (native 4500 × 3375; the entry names Galbot as company and client and credits the photo to Galbot): the whole robot with head, both articulated hands, the lift leg and the complete wheeled base. The crouching second G1 on the right, the white studio and the floor shadow are excluded by the alpha mask. It is Galbot's G1, not Unitree's G1.",
+      "quality": null
+    },
+    "102": {
+      "slug": "xiaomi-cyberone",
+      "alt": "CyberOne by Xiaomi, full body, front view, standing, 2024 display photograph",
+      "credit": "Image: Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI",
+      "identity": "The photograph in the official Beijing Yizhuang report of 5 June 2024 republished by NCSTI (native 1080 × 1620), captioned as the full-size humanoid bionic robot CyberOne: the original white 2022 design, whole with head, both grippers and both feet. It stood on a round display plinth, which is not part of the robot; the plinth, the wall, the floor and the tripod are excluded by the alpha mask, cut at the soles. It is not a Xiaomi-hosted image and says nothing about later versions.",
       "quality": null
     }
   }

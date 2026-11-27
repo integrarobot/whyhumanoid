@@ -2182,6 +2182,21 @@
         "credit": "Image: Galbot, G1 manufacturer product render via European Product Design Award (2026)",
         "provenance": "ops/media/robots/galbot-g1/PROVENANCE.md"
       }
+    },
+    "102": {
+      "recorded": {
+        "Lab": "Xiaomi",
+        "Robot": "Cyber One"
+      },
+      "image": {
+        "src": "/assets/robots/xiaomi-cyberone/xiaomi-cyberone-full-body.webp",
+        "fallback": "/assets/robots/xiaomi-cyberone/xiaomi-cyberone-full-body.png",
+        "width": 427,
+        "height": 1279,
+        "alt": "CyberOne by Xiaomi, full body, front view, standing, 2024 display photograph",
+        "credit": "Image: Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI",
+        "provenance": "ops/media/robots/xiaomi-cyberone/PROVENANCE.md"
+      }
     }
   }
 }

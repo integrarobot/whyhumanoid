@@ -24,9 +24,7 @@
         162,
         196
       ],
-      "reserves": [
-        102
-      ],
+      "reserves": [],
       "notes": [
         "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
         "Several other makers' PNG files named as background-free still hold interior backgrounds: rejected (Codex, 27 Nov 2026).",
@@ -36,7 +34,8 @@
         "Reserves H2 (139) and R1 (141) move to batch 10 (27 Nov 2026).",
         "Reserve D9 (155) back to the queue: its only whole official source so far is under the minimum height (27 Nov 2026).",
         "Walker S2 (142) and Forerunner K2 (215) moved from these reserves to batch 12 (27 Nov 2026), with new official sources from Codex.",
-        "104, 51, 76 moved from these reserves to batch 13 (27 Nov 2026), with new official sources from Codex."
+        "104, 51, 76 moved from these reserves to batch 13 (27 Nov 2026), with new official sources from Codex.",
+        "CyberOne (102) moved from these reserves to batch 15 (27 Nov 2026), with a new official source from Codex."
       ],
       "published": "2026-11-27"
     },
@@ -401,13 +400,14 @@
         191,
         74,
         70,
-        35
+        35,
+        102
       ],
       "reserves": [],
       "notes": [
-        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-15/: candidates-25 (66c596a: Avatar Robotics video frame 755), candidates-26 (b07ffac: StarBot Astra and Flex, one product illustration), candidates-27 (dc11021: MATRIX-1 page poster), candidates-28 (62f03ab: REVOBOTS TASKBOT SCOUT video frame 292) candidates-30 (26e018a: HUBO2 product image hosted by Rainbow Robotics Vietnam) and candidates-31 (a7c0ffb: Galbot G1 render from the maker's European Product Design Award 2026 entry, left standing figure). Every cutout prepared by Claude, alpha only, from BiRefNet masks kept beside the originals: Flex adds its two black casters from the original luminance; MATRIX-1 drops every row below the contact line of the soles with their floor reflection; SCOUT, HUBO2 and G1 use levels 150..240 so their soft edges carry no background rim.",
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-15/: candidates-25 (66c596a: Avatar Robotics video frame 755), candidates-26 (b07ffac: StarBot Astra and Flex, one product illustration), candidates-27 (dc11021: MATRIX-1 page poster), candidates-28 (62f03ab: REVOBOTS TASKBOT SCOUT video frame 292) candidates-30 (26e018a: HUBO2 product image hosted by Rainbow Robotics Vietnam) and candidates-31 (a7c0ffb: Galbot G1 render from the maker's European Product Design Award 2026 entry, left standing figure) and candidates-32 (31e0eb7: CyberOne photograph in the official Beijing Yizhuang report of 5 June 2024, via NCSTI). Every cutout prepared by Claude, alpha only, from BiRefNet masks kept beside the originals: Flex adds its two black casters from the original luminance; MATRIX-1 drops every row below the contact line of the soles with their floor reflection; SCOUT, HUBO2 and G1 use levels 150..240 so their soft edges carry no background rim; CyberOne combines a whole-figure pass with a feet-only pass so the display plinth stays out.",
         "Left out: Qinglong (69), candidates-29 (88f804b): in frame 841 and in every later frame of the official walking GIF where the robot is at least 500 px tall, a black office chair or a seated person stands right behind the right side of the black torso and upper arm; the model mask takes the chair in, and black against black in a dithered GIF cannot be separated by alpha alone. Not reconstructed. Jingchu Elf (183) still waits for another source; T230A (89), D9 (155), R-Noid (77) and IGRIS (79) stay out with their reasons.",
-        "Captions name the kind of image and the variant: Avatar Robotics mobile lift-column configuration, official video still (no model name, as the maker gives none); StarBot Astra and Flex manufacturer product illustrations; MATRIX-1 manufacturer product image; TASKBOT SCOUT mobile configuration, official video still (no arms or head, not humanoid hardware); HUBO2 product image via Rainbow Robotics Vietnam (regional host; no claim about its relation to the maker); Galbot G1 manufacturer product render via European Product Design Award (2026). Records' specifications unchanged."
+        "Captions name the kind of image and the variant: Avatar Robotics mobile lift-column configuration, official video still (no model name, as the maker gives none); StarBot Astra and Flex manufacturer product illustrations; MATRIX-1 manufacturer product image; TASKBOT SCOUT mobile configuration, official video still (no arms or head, not humanoid hardware); HUBO2 product image via Rainbow Robotics Vietnam (regional host; no claim about its relation to the maker); Galbot G1 manufacturer product render via European Product Design Award (2026); Xiaomi CyberOne, 2024 display photograph via Beijing Yizhuang / NCSTI (the original 2022 design; nothing said about later versions). Records' specifications unchanged."
       ]
     }
   ],
@@ -838,9 +838,20 @@
         "Lab": "Xiaomi",
         "Robot": "Cyber One"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.mi.com/global/discover/article?id=2754",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/W020240605332139251140.jpg",
+          "page": "https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202406/t20240605_159440.html",
+          "sha256": "bcf7d9b8185de88c6f7edfbb29323707fc6bd8313d5b199a65587968281f6184",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 427 × 1279 with 20 px padding."
+        }
+      ]
     },
     "76": {
       "recorded": {
