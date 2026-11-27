@@ -93,6 +93,47 @@
         "Published with PR 206 (head 2f856a6, CI 45996304572; merge c015cef, Pages 45996560022), 27 Nov 2026; production verified by Claude and independently by Codex; no cache purge needed."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 4,
+      "opened": "2026-11-27",
+      "state": "collecting_sources",
+      "target": 10,
+      "scope": "C/D makers",
+      "candidates": [
+        18,
+        24,
+        167,
+        168,
+        20,
+        159,
+        22,
+        23,
+        174,
+        175
+      ],
+      "reserves": []
+    },
+    {
+      "batch": 5,
+      "opened": "2026-11-27",
+      "state": "planned",
+      "target": 10,
+      "scope": "C/D makers",
+      "candidates": [
+        17,
+        19,
+        134,
+        169,
+        170,
+        171,
+        172,
+        173
+      ],
+      "reserves": [],
+      "notes": [
+        "The rest of the C/D scope with a valid source; records without one end as no_valid_source."
+      ]
     }
   ],
   "robots": {
@@ -1132,6 +1173,186 @@
       ],
       "status": "published",
       "page": "https://anigon.ch/"
+    },
+    "18": {
+      "recorded": {
+        "Lab": "Clone",
+        "Robot": "Clone"
+      },
+      "status": "candidate",
+      "page": "https://www.clonerobotics.com/",
+      "notes": "Clone: the record names the robot \"Clone\" (musculoskeletal android). Do not substitute another Clone Robotics product name or prototype (e.g. a torso, a hand or \"Protoclone\") unless the official source identifies it as this record.",
+      "sources": []
+    },
+    "24": {
+      "recorded": {
+        "Lab": "Dobot",
+        "Robot": "Atom"
+      },
+      "status": "candidate",
+      "page": "https://www.dobot-robots.com/",
+      "notes": "DOBOT Atom, original walking configuration; not ATOM-W nor ATOM D.",
+      "sources": []
+    },
+    "167": {
+      "recorded": {
+        "Lab": "CASBOT",
+        "Robot": "CASBOT 02"
+      },
+      "status": "candidate",
+      "page": "https://casbot.tech/product/02",
+      "notes": "CASBOT 02, bipedal; not CASBOT W1 (168).",
+      "sources": []
+    },
+    "168": {
+      "recorded": {
+        "Lab": "CASBOT",
+        "Robot": "CASBOT W1"
+      },
+      "status": "candidate",
+      "page": "https://casbot.tech/product/w1",
+      "notes": "CASBOT W1, wheeled with lifting column; shown whole; not CASBOT 02 (167).",
+      "sources": []
+    },
+    "20": {
+      "recorded": {
+        "Lab": "Deep",
+        "Robot": "DR01"
+      },
+      "status": "candidate",
+      "page": "https://www.deeprobotics.cn/en/index/humanoid.html",
+      "notes": "DEEP Robotics DR01; not DR02 (159).",
+      "sources": []
+    },
+    "159": {
+      "recorded": {
+        "Lab": "Deep",
+        "Robot": "DR02"
+      },
+      "status": "candidate",
+      "page": "https://www.deeprobotics.cn/en/products/detail/5.html",
+      "notes": "DEEP Robotics DR02 (record covers DR02 and DR02 Pro: name the variant shown); not DR01 (20).",
+      "sources": []
+    },
+    "22": {
+      "recorded": {
+        "Lab": "Dexmate",
+        "Robot": "Vega"
+      },
+      "status": "candidate",
+      "page": "https://www.dexmate.ai/",
+      "notes": "Dexmate Vega, mobile configuration; not the bench-mounted Vega 1 U.",
+      "sources": []
+    },
+    "23": {
+      "recorded": {
+        "Lab": "Diligent",
+        "Robot": "Moxi"
+      },
+      "status": "candidate",
+      "page": "https://www.diligentrobots.com/",
+      "notes": "Diligent Moxi, wheeled hospital mobile manipulator; shown whole.",
+      "sources": []
+    },
+    "174": {
+      "recorded": {
+        "Lab": "DroidUp",
+        "Robot": "Moya"
+      },
+      "status": "candidate",
+      "page": "https://www.droidup.com/product/7",
+      "notes": "DroidUp Moya, full-body tendon-driven bionic humanoid.",
+      "sources": []
+    },
+    "175": {
+      "recorded": {
+        "Lab": "Duatic",
+        "Robot": "DXTR"
+      },
+      "status": "candidate",
+      "page": "https://www.duatic.com/dxtr",
+      "notes": "Duatic DXTR = DuaTorso upper body on the DuaRover base: shown as the whole half-humanoid on its base, not the torso alone.",
+      "sources": []
+    },
+    "17": {
+      "recorded": {
+        "Lab": "Cartwheel",
+        "Robot": "Yogi"
+      },
+      "status": "candidate",
+      "page": "https://www.cartwheelrobotics.com/",
+      "notes": "Cartwheel Yogi: the record notes the original website returns content unrelated to robot specifications; identity and source to be established.",
+      "sources": []
+    },
+    "19": {
+      "recorded": {
+        "Lab": "Cobot",
+        "Robot": "Proxie"
+      },
+      "status": "candidate",
+      "page": "https://www.co.bot/",
+      "notes": "Cobot Proxie: wheeled mobile manipulator with swerve-drive base; shown whole as presented.",
+      "sources": []
+    },
+    "134": {
+      "recorded": {
+        "Lab": "Darwin",
+        "Robot": "Darwin-0"
+      },
+      "status": "candidate",
+      "page": "https://darwinrobotics.ai/",
+      "notes": "Darwin-0: the record states the company publishes no form or mobility; the only image is two arms on a stand at a server rack. Do not assume humanoid form; likely limitation unless an official whole-robot image identifies Darwin-0.",
+      "sources": []
+    },
+    "169": {
+      "recorded": {
+        "Lab": "Cyborg Robotics",
+        "Robot": "CYBORG-R01"
+      },
+      "status": "candidate",
+      "page": "https://www.cyb-org.cn/",
+      "notes": "CYBORG-R01, bipedal; not CYBORG-W01 (170).",
+      "sources": []
+    },
+    "170": {
+      "recorded": {
+        "Lab": "Cyborg Robotics",
+        "Robot": "CYBORG-W01"
+      },
+      "status": "candidate",
+      "page": "https://www.cyb-org.cn/",
+      "notes": "CYBORG-W01, wheeled; not CYBORG-R01 (169).",
+      "sources": []
+    },
+    "171": {
+      "recorded": {
+        "Lab": "Digit Robotics",
+        "Robot": "Xialan R03"
+      },
+      "status": "candidate",
+      "page": "https://www.digit.com.cn/ProductsDetail/250.html",
+      "notes": "Digit Robotics (数字华夏) Xialan R03; not Agility Robotics Digit (6). Not XiaQi X02 (172).",
+      "sources": []
+    },
+    "172": {
+      "recorded": {
+        "Lab": "Digit Robotics",
+        "Robot": "XiaQi X02"
+      },
+      "status": "candidate",
+      "page": "https://www.digit.com.cn/ProductsDetail/93.html",
+      "notes": "Digit Robotics (数字华夏) XiaQi X02; not Agility Robotics Digit (6). Not Xialan R03 (171).",
+      "sources": []
+    },
+    "173": {
+      "recorded": {
+        "Lab": "Donut Robotics",
+        "Robot": "Cinnamon 1"
+      },
+      "status": "candidate",
+      "page": "https://www.donutrobotics.com/en",
+      "notes": "Donut Robotics Cinnamon 1: the record notes form details are not published and Cinnamon 2 was announced; an image must be identified as Cinnamon 1, never Cinnamon 2.",
+      "sources": []
     }
   },
   "scopes": [
@@ -1152,6 +1373,21 @@
       "state": "closed_with_pending_sources",
       "closed": "2026-11-27",
       "summary": "29 A/B records: 19 with an image (3 earlier, 16 new in batches 2 and 3), 10 still without a valid image after source review (no_valid_source). Not every A/B record has an image."
+    },
+    {
+      "name": "C/D makers",
+      "lab_initials": [
+        "C",
+        "D"
+      ],
+      "opened": "2026-11-27",
+      "by": "Javier (\"sigue con los fabricantes de la C y la D, en lotes de 10, con fondo transparente y el robot de cuerpo completo\")",
+      "rules": [
+        "Batches of up to 10 new records; batch 4 then batch 5 with the rest that has a valid source. Models are never mixed to fill a batch.",
+        "Non-generative mask cutouts only, RGB faithful; no part generated.",
+        "Wheeled platforms and modules are shown whole, as the record identifies them, with no anatomy invented. A photo cropped to a bust or torso does not meet the whole-robot requirement.",
+        "Every record ends published and verified, or with a concrete stated limitation."
+      ]
     }
   ]
 }
