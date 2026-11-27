@@ -112,6 +112,21 @@
         "credit": "Image: Unitree",
         "provenance": "ops/media/robots/unitree-h1/PROVENANCE.md"
       }
+    },
+    "138": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "G1"
+      },
+      "image": {
+        "src": "/assets/robots/unitree-g1/unitree-g1-full-body.webp",
+        "fallback": "/assets/robots/unitree-g1/unitree-g1-full-body.png",
+        "width": 288,
+        "height": 765,
+        "alt": "G1 by Unitree, full body, front view, standing with knees slightly bent",
+        "credit": "Image: Unitree",
+        "provenance": "ops/media/robots/unitree-g1/PROVENANCE.md"
+      }
     }
   }
 }

@@ -1,0 +1,497 @@
+{
+  "note": "Coverage plan for full-body robot images (Javier, 27 Nov 2026: batches of 10, transparent background, whole robot head to feet). One entry per Humanoids catalogue id that is in a batch, a reserve, an exception or a quality debt; every other id is pending. Published images live only in tools/robot-presentation.json, which this file never replaces. 'recorded' must equal the catalogue's Lab and Robot. 'sources' records each file looked at, by whom and the verdict, so no cutout is made twice. Rights: the images are the makers'; no open licence is presumed; credit 'Image: <maker>'; authorised by Javier for popular robots (23 Nov 2026). Codex prepares and reviews sources and files; Claude integrates by reviewed PR. Checked by node tools/robot-images-coverage.mjs --check.",
+  "rules": [
+    "Exact catalogue model only: never a sibling model, a later generation, an application variant or a robot of the same name by another maker.",
+    "Prefer an original that already carries real transparency; use it without repainting. Otherwise a cutout computes alpha only.",
+    "Whole robot, head to feet, standing; no props, people, lettering or infographic panels over the robot.",
+    "No part is invented, extended or regenerated; a source without a faithful whole robot is recorded and the next candidate is taken."
+  ],
+  "batches": [
+    {
+      "batch": 1,
+      "opened": "2026-11-27",
+      "state": "collecting_sources",
+      "target": 10,
+      "candidates": [
+        138,
+        139,
+        141,
+        14,
+        148,
+        150,
+        151,
+        142,
+        32,
+        215
+      ],
+      "reserves": [
+        140,
+        155,
+        154,
+        61,
+        104,
+        51,
+        102,
+        76,
+        149
+      ]
+    }
+  ],
+  "robots": {
+    "138": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "G1"
+      },
+      "status": "published",
+      "page": "https://www.unitree.com/g1/",
+      "notes": "Not Galbot G1 (id 35) nor Agibot G1 (id 147). Record covers G1 base and G1 EDU; G1-A, G1-D, G1+, G1-Comp and G1-Boxing are other variants. The alt text makes no claim about the hand configuration shown.",
+      "sources": [
+        {
+          "file": "https://cdn.shopify.com/s/files/1/0620/4932/1193/files/1_968fd08b-9aaf-4f32-b895-5c786285ee52.jpg?v=1717575256",
+          "page": "https://shop.unitree.com/products/unitree-g1",
+          "by": "codex",
+          "date": "2026-11-23",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Opaque JPEG; Codex cutout kept as ops/media/robots/unitree-g1/unitree-g1-codex-cutout-as-received.png (sha256 41ca0246…7a77), alpha-only refinement reproduced byte for byte on 27 Nov 2026. Claude checked identity visually (visor with LED ring, 'Unitree' torso, whole body to the feet). Original not yet in the repository."
+        }
+      ]
+    },
+    "139": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "H2"
+      },
+      "status": "candidate",
+      "page": "https://www.unitree.com/H2/",
+      "notes": "Not H2-X (id 140).",
+      "sources": [
+        {
+          "file": "unitree.com H2 page image a89249…",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "rejected",
+          "detail": "Infographic with lettering and background."
+        }
+      ]
+    },
+    "141": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "R1"
+      },
+      "status": "candidate",
+      "page": "https://www.unitree.com/R1/",
+      "notes": "Record covers R1, R1 AIR and R1 EDU; R1-A and R1-A-D are other variants. Not Galaxea R1 (id 34) nor #sudo R1 (id 111).",
+      "sources": [
+        {
+          "file": "unitree.com R1 page image 33afe…",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "rejected",
+          "detail": "Infographic with lettering and background."
+        }
+      ]
+    },
+    "140": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "H2-X"
+      },
+      "status": "reserve",
+      "page": "https://www.unitree.com/H2-X/",
+      "notes": "Not H2 (id 139).",
+      "sources": [
+        {
+          "file": "Unitree header image 627867c4198c4796b0e474f953b8f903_800x800.png",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "identity_pending",
+          "detail": "Whole humanoid with palette alpha 0–255; identity being established from the page markup around it (possibly H2-X). Not assigned to any record until confirmed."
+        }
+      ]
+    },
+    "14": {
+      "recorded": {
+        "Lab": "Booster",
+        "Robot": "T1"
+      },
+      "status": "candidate",
+      "page": "https://www.boosterobotics.com/",
+      "notes": "Standard T1. Not T2 (id 148), K1 (id 149) nor Tlibot T1 (id 202). T1 no longer appears on Booster's current home page (Codex, 27 Nov 2026): take the next candidate if no faithful T1 original is found.",
+      "sources": []
+    },
+    "148": {
+      "recorded": {
+        "Lab": "Booster",
+        "Robot": "T2"
+      },
+      "status": "candidate",
+      "page": "https://www.booster.tech/booster-t2",
+      "sources": [
+        {
+          "file": "booster.tech navigation image robot-t2.DZUi1Dbz.webp",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "rejected",
+          "detail": "1200×1448 RGB, opaque, robot jumping (not standing)."
+        }
+      ]
+    },
+    "149": {
+      "recorded": {
+        "Lab": "Booster",
+        "Robot": "K1"
+      },
+      "status": "reserve",
+      "page": "https://www.booster.tech/booster-k1",
+      "sources": [
+        {
+          "file": "booster.tech navigation image robot-k1.Bjwl1Psx.webp",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "rejected",
+          "detail": "Opaque, with a ball."
+        }
+      ]
+    },
+    "150": {
+      "recorded": {
+        "Lab": "Engineai",
+        "Robot": "PM01"
+      },
+      "status": "candidate",
+      "page": "https://en.engineai.com.cn/product-pm01",
+      "notes": "Not SE01 (id 27) nor T800 (id 151).",
+      "sources": []
+    },
+    "151": {
+      "recorded": {
+        "Lab": "Engineai",
+        "Robot": "T800"
+      },
+      "status": "candidate",
+      "page": "https://en.engineai.com.cn/product-t800",
+      "notes": "Record covers Basic, Open Source, Pro and Max editions: an image of the T800 itself, no edition claimed.",
+      "sources": []
+    },
+    "142": {
+      "recorded": {
+        "Lab": "Ubtech",
+        "Robot": "Walker S2"
+      },
+      "status": "candidate",
+      "page": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
+      "notes": "Not Walker S1 (id 91).",
+      "sources": []
+    },
+    "32": {
+      "recorded": {
+        "Lab": "Fourier",
+        "Robot": "GR-1"
+      },
+      "status": "candidate",
+      "page": "https://fftai.com/",
+      "notes": "Standard GR-1 only: never a GR-2 or GR-3 photo (Codex, 27 Nov 2026); L and Pro variants are separate.",
+      "sources": []
+    },
+    "215": {
+      "recorded": {
+        "Lab": "Kepler",
+        "Robot": "Forerunner K2"
+      },
+      "status": "candidate",
+      "page": "https://www.gotokepler.com/productDetailK2",
+      "notes": "Bipedal version, not the wheeled development version; not Forerunner K1 (id 47).",
+      "sources": []
+    },
+    "155": {
+      "recorded": {
+        "Lab": "Pudu",
+        "Robot": "D9"
+      },
+      "status": "reserve",
+      "page": "https://www.pudurobotics.com/en/products/d9",
+      "notes": "Not D7 (id 68).",
+      "sources": []
+    },
+    "154": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "Kangaroo"
+      },
+      "status": "reserve",
+      "page": "https://pal-robotics.com/robot/kangaroo/",
+      "sources": []
+    },
+    "61": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "Talos"
+      },
+      "status": "reserve",
+      "page": "https://pal-robotics.com/robot/talos/",
+      "sources": []
+    },
+    "104": {
+      "recorded": {
+        "Lab": "Xpeng",
+        "Robot": "Next-Gen IRON"
+      },
+      "status": "reserve",
+      "page": "https://www.pxing.com/en/index",
+      "notes": "The 2025 Next-Gen IRON, not the 2024 IRON.",
+      "sources": []
+    },
+    "51": {
+      "recorded": {
+        "Lab": "LimX",
+        "Robot": "Oli"
+      },
+      "status": "reserve",
+      "page": "https://www.limxdynamics.com/en",
+      "notes": "Not Luna (id 156).",
+      "sources": []
+    },
+    "102": {
+      "recorded": {
+        "Lab": "Xiaomi",
+        "Robot": "Cyber One"
+      },
+      "status": "reserve",
+      "page": "https://www.mi.com/global/discover/article?id=2754",
+      "sources": []
+    },
+    "76": {
+      "recorded": {
+        "Lab": "Robotera",
+        "Robot": "Star 1"
+      },
+      "status": "reserve",
+      "page": "https://www.robotera.com/",
+      "sources": []
+    },
+    "137": {
+      "recorded": {
+        "Lab": "HIRO Industries",
+        "Robot": "Origin"
+      },
+      "status": "exception",
+      "reason": "Blocked (Codex, 27 Nov 2026)."
+    },
+    "11": {
+      "recorded": {
+        "Lab": "Axibo",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "53": {
+      "recorded": {
+        "Lab": "Lux",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "56": {
+      "recorded": {
+        "Lab": "MindOn",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "57": {
+      "recorded": {
+        "Lab": "Model",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "62": {
+      "recorded": {
+        "Lab": "Persona Inc",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "71": {
+      "recorded": {
+        "Lab": "Rapid",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "75": {
+      "recorded": {
+        "Lab": "Rhoda",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "87": {
+      "recorded": {
+        "Lab": "The Bot Company",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "92": {
+      "recorded": {
+        "Lab": "UMA",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "107": {
+      "recorded": {
+        "Lab": "Noble Machines",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "109": {
+      "recorded": {
+        "Lab": "Khameleon",
+        "Robot": "Not disclosed"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "110": {
+      "recorded": {
+        "Lab": "Mind",
+        "Robot": "Industrial platform (model unconfirmed)"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "114": {
+      "recorded": {
+        "Lab": "Eden",
+        "Robot": null
+      },
+      "status": "exception",
+      "reason": "No model in the record (Robot cell empty)."
+    },
+    "121": {
+      "recorded": {
+        "Lab": "Walden",
+        "Robot": "General-purpose platform (name unconfirmed)"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "125": {
+      "recorded": {
+        "Lab": "Nucleus",
+        "Robot": "Humanoid service (model unconfirmed)"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "129": {
+      "recorded": {
+        "Lab": "Flourish",
+        "Robot": "Flourish robot (model name unconfirmed)"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "132": {
+      "recorded": {
+        "Lab": "PokeBot",
+        "Robot": "Home robot (model name not disclosed)"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record; no product released."
+    },
+    "166": {
+      "recorded": {
+        "Lab": "Avatar Robotics",
+        "Robot": "Avatar humanoid (model name not disclosed)"
+      },
+      "status": "exception",
+      "reason": "No exact model in the record."
+    },
+    "58": {
+      "recorded": {
+        "Lab": "Neura",
+        "Robot": "4NE1 (Gen 4 announced)"
+      },
+      "status": "needs_decision",
+      "reason": "The record's page combines generations; which generation to show must be decided first."
+    },
+    "81": {
+      "recorded": {
+        "Lab": "Sharpa",
+        "Robot": "Droid D01 / Wave (hands)"
+      },
+      "status": "needs_decision",
+      "reason": "One record for a humanoid and a hand family; only the D01 humanoid could be shown, by decision."
+    },
+    "88": {
+      "recorded": {
+        "Lab": "The Humanoid",
+        "Robot": "HMND 01 (Alpha Wheeled / Bipedal)"
+      },
+      "status": "needs_decision",
+      "reason": "Two platforms (wheeled and bipedal) in one record."
+    },
+    "128": {
+      "recorded": {
+        "Lab": "RoboParty",
+        "Robot": "ROBOTO 01 / ROBOTO Origin"
+      },
+      "status": "needs_decision",
+      "reason": "Two families in one record."
+    },
+    "143": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "A2 (A2 Ultra / A2 Lite)"
+      },
+      "status": "needs_decision",
+      "reason": "Two variants in one record; an image must show one that both share or be decided."
+    },
+    "145": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "X2 (X2 Neo / X2 Ultra)"
+      },
+      "status": "needs_decision",
+      "reason": "Two variants in one record."
+    },
+    "93": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "H1"
+      },
+      "status": "quality_debt",
+      "reason": "Published at 251 × 505 px from a small official image; replace with a larger faithful original of the original H1 (not H1-2). Outside the count of 10 (Codex, 27 Nov 2026)."
+    },
+    "30": {
+      "recorded": {
+        "Lab": "Figure",
+        "Robot": "Figure 03"
+      },
+      "status": "quality_debt",
+      "reason": "Published from a video frame and looks soft; replace with a sharper faithful original. Outside the count of 10 (Codex, 27 Nov 2026)."
+    }
+  }
+}

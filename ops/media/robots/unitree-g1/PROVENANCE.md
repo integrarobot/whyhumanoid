@@ -21,18 +21,23 @@ Not published from here: `ops/` is excluded from the site.
 
 ## Refinement here (alpha only)
 
-Matte levels 0.35 to 0.9: interior alpha set to opaque, soft edge tightened. The result is kept here as `unitree-g1-refined-not-published.png`.
+Matte levels 0.35 to 0.9: interior alpha set to opaque, soft edge tightened. Reproduced byte for byte on 27 Nov 2026.
 
 - **Recipe:** `python3 ops/media/robots/refine.py unitree-g1-codex-cutout-as-received.png out.png <args>`, with the args in `refine-args.txt`.
 - **Log:** `refine-log.json`.
 - **What it does not do:** no robot pixel is repainted, nothing is generated, and no colour threshold is applied to the whole image.
 
-## Not published: no catalogue identity
+## Catalogue identity (27 Nov 2026)
 
-Unitree G1 is not a row of the published catalogue (snapshot of 17 Nov 2026), so there is no robot page to attach the image to.
+- **Record:** catalogue id 138, Lab "Unitree", Robot "G1" (master row 141), web unitree.com/g1/. The record covers G1 base and G1 EDU; G1-A, G1-D, G1+, G1-Comp and G1-Boxing are separate variants.
+- **Visual check (Claude):** the visor with its LED ring, the silver torso marked "Unitree", the compact proportions and the whole body down to the feet match the G1.
+- **Not these robots:** Galbot G1 (id 35) and Agibot G1 (id 147) are wheeled robots by other makers. The H1 page (id 93) keeps its own image.
+- **Hands:** the right hand looks articulated. The alt text claims no hand configuration.
 
-- **In the current master (23 Nov):** it appears as row 141 (Unitree | G1), which has not been reviewed or published yet.
-- **Same name, other makers:** "G1" is also the name of a Galbot robot (catalogue id 35) and of an Agibot one.
-- **Not a substitute for H1:** the image must not go on the H1 page.
+## Published files (image batch 1, pending review)
 
-Activate it in `tools/robot-presentation.json` only once Unitree G1 has its own catalogue id. The entry is then checked against Lab "Unitree" and Robot "G1".
+- **Location:** `assets/robots/unitree-g1/`.
+- **PNG:** `unitree-g1-full-body.png`, 288 × 765 px, lossless, the refined file above (sha256 `66735252e54ca175eec0c61a086dc95711b94bc06722a6489b9d9b2a9ad66e0f`).
+- **WebP:** `unitree-g1-full-body.webp`, made with `python3 ops/media/robots/to-webp.py` (quality 90, lossless alpha), sha256 `bc6d84df56b32c424c105f6d23773adce1247351b545b6b4f2e76c46404f49a8`.
+- **Display:** the robot page shows it with `object-fit: contain` at its own proportions, with alt text and credit "Image: Unitree".
+- **Still pending:** the original JPEG in this folder, and confirmation that the shop page still serves it. If Codex finds a faithful official G1 original that already carries transparency, it replaces this cutout.
