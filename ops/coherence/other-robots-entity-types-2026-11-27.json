@@ -1,0 +1,203 @@
+{
+  "plan_id": "other-robots-entity-types-2026-11-27",
+  "prepared_by": "claude",
+  "prepared_at": "2026-11-27",
+  "master_read": {
+    "xlsx_sha256": "2c84e109bdfcf560a11f24c9082c692da9f4c99c7aa5bd8753d6741a952a013a",
+    "read_on": "2026-11-27"
+  },
+  "rule": "Only rows whose own recorded description says they are software, a component maker or a service provider, and only where the entity already has a home elsewhere in the master or the move is to the Software list. Columns E:G (Edubots) of the same rows are untouched. Cleared cells keep their row (no row deletion), so no other row moves. Nothing is inferred beyond the recorded text.",
+  "writes": [
+    {
+      "tab": "Software",
+      "range": "A136:C136",
+      "old": [
+        "",
+        "",
+        ""
+      ],
+      "new": [
+        "Robonomics",
+        "https://robonomics.network/",
+        "Robonomics: open-source, decentralised cloud and IoT platform that stores digital twins of robots and IoT devices and enables machine-to-human economic communication; software infrastructure, not a robot maker."
+      ],
+      "reason": "Its own description: \"software infrastructure, not a robot maker\".",
+      "public_source": "https://robonomics.network/"
+    },
+    {
+      "tab": "Software",
+      "range": "A137:C137",
+      "old": [
+        "",
+        "",
+        ""
+      ],
+      "new": [
+        "Mujin",
+        "https://mujin-corp.com/",
+        "Mujin: intelligent robotics software (MujinOS) for no-code deployment of palletising, picking and fleet automation in factories and warehouses."
+      ],
+      "reason": "Its own description: \"intelligent robotics software (MujinOS)\".",
+      "public_source": "https://mujin-corp.com/"
+    },
+    {
+      "tab": "Software",
+      "range": "A138:C138",
+      "old": [
+        "",
+        "",
+        ""
+      ],
+      "new": [
+        "Eka",
+        "https://ekarobotics.com/",
+        "Eka Robotics: developing a Vision-Force-Action (VFA) foundation model that uses force as a core signal to make robots general, fast and safe."
+      ],
+      "reason": "Its own description: \"developing a Vision-Force-Action (VFA) foundation model\"; AI software, no robot named.",
+      "public_source": "https://ekarobotics.com/"
+    },
+    {
+      "tab": "Other Robots",
+      "range": "A2:C2",
+      "old": [
+        "Realtime",
+        "https://rtr.ai/",
+        "Realtime Robotics: motion-planning and simulation software (Resolver, RapidPlan) to design, test and optimise multi-robot industrial automation cells faster."
+      ],
+      "new": [
+        "",
+        "",
+        ""
+      ],
+      "reason": "Duplicate: already in Software row 17 (same name and https://rtr.ai/); its own description: \"motion-planning and simulation software\".",
+      "public_source": "https://rtr.ai/",
+      "web_redirect": "/software/"
+    },
+    {
+      "tab": "Other Robots",
+      "range": "A3:C3",
+      "old": [
+        "Harmonic Drive",
+        "https://www.harmonicdrive.net/",
+        "Harmonic Drive: manufacturer of high-precision, zero-backlash strain wave gears and rotary actuators, precision components used in robots and automation."
+      ],
+      "new": [
+        "",
+        "",
+        ""
+      ],
+      "reason": "Component maker (\"manufacturer of high-precision, zero-backlash strain wave gears and rotary actuators\"); its products are already in Components (Harmonic Drive LLC catalogue rows) and the company has /companies/harmonic-drive-llc/. Not conflated with Harmonic Drive Systems (Investment).",
+      "public_source": "https://www.harmonicdrive.net/",
+      "web_redirect": "/companies/harmonic-drive-llc/"
+    },
+    {
+      "tab": "Other Robots",
+      "range": "A5:C5",
+      "old": [
+        "Robonomics",
+        "https://robonomics.network/",
+        "Robonomics: open-source, decentralised cloud and IoT platform that stores digital twins of robots and IoT devices and enables machine-to-human economic communication; software infrastructure, not a robot maker."
+      ],
+      "new": [
+        "",
+        "",
+        ""
+      ],
+      "reason": "Moved to Software row 136 (write 1).",
+      "public_source": "https://robonomics.network/",
+      "web_redirect": "/software/"
+    },
+    {
+      "tab": "Other Robots",
+      "range": "A16:C16",
+      "old": [
+        "Bumerania",
+        "https://bumerania.com/",
+        "Bumerania Robotics: provider of service-robot solutions and robot fleet-management software for hospitality, healthcare and agriculture."
+      ],
+      "new": [
+        "",
+        "",
+        ""
+      ],
+      "reason": "Service-robot provider already in Integrators row 2 and Clean Entities (org_integrator_bumerania), with /companies/bumerania/.",
+      "public_source": "https://bumerania.com/",
+      "web_redirect": "/companies/bumerania/"
+    },
+    {
+      "tab": "Other Robots",
+      "range": "A33:C33",
+      "old": [
+        "Intrinsic",
+        "https://www.intrinsic.ai/",
+        "Intrinsic: Alphabet software and AI robotics company building the Flowstate platform for developing intelligent industrial automation."
+      ],
+      "new": [
+        "",
+        "",
+        ""
+      ],
+      "reason": "Duplicate: already in Software row 21 (Intrinsic (Google), https://www.intrinsic.ai/).",
+      "public_source": "https://www.intrinsic.ai/",
+      "web_redirect": "/software/"
+    },
+    {
+      "tab": "Other Robots",
+      "range": "A37:C37",
+      "old": [
+        "Mujin",
+        "https://mujin-corp.com/",
+        "Mujin: intelligent robotics software (MujinOS) for no-code deployment of palletising, picking and fleet automation in factories and warehouses."
+      ],
+      "new": [
+        "",
+        "",
+        ""
+      ],
+      "reason": "Moved to Software row 137 (write 2).",
+      "public_source": "https://mujin-corp.com/",
+      "web_redirect": "/software/"
+    },
+    {
+      "tab": "Other Robots",
+      "range": "A53:C53",
+      "old": [
+        "Eka",
+        "https://ekarobotics.com/",
+        "Eka Robotics: developing a Vision-Force-Action (VFA) foundation model that uses force as a core signal to make robots general, fast and safe."
+      ],
+      "new": [
+        "",
+        "",
+        ""
+      ],
+      "reason": "Moved to Software row 138 (write 3).",
+      "public_source": "https://ekarobotics.com/",
+      "web_redirect": "/software/"
+    }
+  ],
+  "not_written_decision_needed": [
+    {
+      "tab": "Other Robots",
+      "row": 24,
+      "values": [
+        "Ailos",
+        "https://ailos-robotics.com/",
+        "AILOS Robotics: developer of high-precision gearboxes for robotics and automation, from robot arms to healthcare, agriculture and manufacturing."
+      ],
+      "issue": "Component maker (gearboxes) with no named product and no other home in the master. A company needs a home before it can leave Other Robots: either a Clean Entities row (identity register, as Bumerania has) or a future companies list. Kept as is until Javier decides; never turned into an invented Components product."
+    },
+    {
+      "tab": "Other Robots",
+      "row": 51,
+      "values": [
+        "Seed Studio",
+        "https://www.seeedstudio.com/",
+        "Seeed Studio: open-source hardware provider focused on edge AI, robotics and smart sensors, supplying electronics and manufacturing services to makers and engineers."
+      ],
+      "issue": "Electronics and hardware supplier (\"open-source hardware provider … supplying electronics\"), no robot named. Same decision as row 24."
+    }
+  ],
+  "kept_reviewed": "Rows whose description names robots they make are robot entries and stay: e.g. Hiopos (HIOBOT), Norma (ElRobot arm), Ati Motors (autonomous mobile robots), Dyna Robotics (mobile dexterous robots). Hand makers (Shadow, Proception, Linkerbot) are left for a separate review: a robotic hand may be a component product or a robot, and that is not clear from the record alone.",
+  "after_receipt": "Claude re-downloads the master, regenerates the Other Robots and Software previews, adds the seven retired /other-robots/<slug>/ addresses to tools/permalinks.json as redirects to the destinations above (realtime, harmonic-drive, robonomics, bumerania, intrinsic, mujin, eka), checks counts and pages, and publishes by PR. No row is deleted on the web without its redirect."
+}
