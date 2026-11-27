@@ -7,7 +7,7 @@
 // constructs becomes markup (paragraphs, ## and ### headings, lists, quotes, bold, italic, code, http(s) links).
 // Raw HTML is refused by validation before it gets here; anything else that slips through is shown as text.
 // Images are never shown (Javier, 27 Nov 2026): no picture, alt text, caption or fallback link. The store keeps them.
-import { BARE_URL, findLinks, isLive, linkTarget, madridToday, readyEditions, trimUrl, yearsOf } from './editorial-model.mjs';
+import { BARE_URL, findLinks, isLive, linkTarget, madridToday, readyEditions, readyNewsGroups, trimUrl, yearsOf } from './editorial-model.mjs';
 
 export const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -125,7 +125,9 @@ function editionCards(editions) {
 }
 function itemGroups(editions) {
   return byMonth(editions.filter((e) => e.items.length), (e) => e.published_on).map(([ym, list]) => `<section class="ed-month" data-ed-group><h3 id="m-${ym}">${esc(monthLabel(ym))}</h3>
-${list.map((e) => `<div class="ed-edition" data-ed-group><p class="meta">From the Blog article <a href="${editionPath(e.id)}">${esc(e.title)}</a>, first published in Spanish on ${esc(longDate(e.published_on))}</p>
+${list.map((e) => `<div class="ed-edition"${e.publication ? ` id="${esc(e.id)}"` : ''} data-ed-group><p class="meta">${e.publication
+    ? `${esc(e.title)} · ${esc(e.publication)} · ${esc(longDate(e.published_on))}`
+    : `From the Blog article <a href="${editionPath(e.id)}">${esc(e.title)}</a>, first published in Spanish on ${esc(longDate(e.published_on))}`}</p>
 ${e.items.map((it) => newsEntry(it, e)).join('\n')}</div>`).join('\n')}</section>`).join('\n');
 }
 // One News entry in a list: the whole English body once, as written, with its own source links, and a small separate
@@ -140,7 +142,7 @@ ${renderMarkdown(newsText(it))}
 }
 
 const BLOG_LEDE = 'Integrarobot on humanoid robots and physical AI, in English: every article of the Integrarobot newsletter from 2025 and 2026, each with the date it first appeared in Spanish and a link to the original.';
-const NEWS_LEDE = 'Each item from the news roundup of the Integrarobot newsletter, in English, in the order its article gave it, with a link to that article on the Blog and to its sources.';
+const NEWS_LEDE = 'Integrarobot news on robotics and physical AI, in English. Each roundup keeps its original order and links to its sources.';
 const NONE = (what) => `<p class="note">No ${what} are published here yet. They appear once their English text has been reviewed.</p>`;
 
 // Every editorial page: path (repository-relative file) -> HTML. page, crumbs, assetVersion and redirect (the moved-page
@@ -150,14 +152,16 @@ export function editorialPages(store, { page, crumbs, assetVersion, redirect = n
   const noindex = !isLive(store.config, today);
   const years = yearsOf(store.config);
   const editions = readyEditions(store);
+  const news = readyNewsGroups(store, editions, today);
   const files = new Map();
   const head = () => `<link rel="stylesheet" href="/assets/editorial.css?v=${assetVersion('assets/editorial.css')}">\n`;
   const tail = `\n<script src="/assets/editorial.js?v=${assetVersion('assets/editorial.js')}" defer></script>`;
-  const items = editions.flatMap((e) => e.items.map((it) => ({ ...it, edition: e })));
+  const items = news.flatMap((e) => e.items.map((it) => ({ ...it, edition: e })));
 
   const listPage = (section, year) => {
-    const list = year ? editions.filter((e) => e.published_on.startsWith(String(year))) : editions;
     const isNews = section === 'news';
+    const groups = isNews ? news : editions;
+    const list = year ? groups.filter((e) => e.published_on.startsWith(String(year))) : groups;
     const shown = isNews ? list.filter((e) => e.items.length) : list;
     const title = isNews ? 'Robotics and physical AI news' : 'Blog';
     const body = `${year ? crumbs([[`/${section}/`, isNews ? 'News' : 'Blog'], [null, String(year)]]) : ''}<p class="kicker">${isNews ? 'News' : 'Blog'}</p>
@@ -192,16 +196,21 @@ ${renderMarkdown(e.body_markdown)}
     const year = e.published_on.slice(0, 4);
     const prev = e.items[it.position - 2];
     const next = e.items[it.position];
-    const body = `${crumbs([['/news/', 'News'], [yearPath('news', year), year], [editionPath(e.id), e.title], [null, `Item ${it.position}`]])}<article class="ed-article">
+    const trail = [['/news/', 'News'], [yearPath('news', year), year]];
+    if (!e.publication) trail.push([editionPath(e.id), e.title]);
+    trail.push([null, `Item ${it.position}`]);
+    const body = `${crumbs(trail)}<article class="ed-article">
 <p class="kicker">News</p>
 <h1>News, ${esc(longDate(e.published_on))}</h1>
-<p class="meta">Item ${it.position} of ${e.items.length} from the Blog article <a href="${editionPath(e.id)}">${esc(e.title)}</a> by ${esc(e.author)}, first published in Spanish on <time datetime="${e.published_on}">${esc(longDate(e.published_on))}</time> · English translation dated <time datetime="${e.translated_on}">${esc(longDate(e.translated_on))}</time> · <a href="${esc(e.source_url)}" rel="noopener noreferrer">Original edition</a></p>
+<p class="meta">${e.publication
+    ? `${esc(e.title)} · ${esc(e.publication)} · <time datetime="${e.published_on}">${esc(longDate(e.published_on))}</time>`
+    : `Item ${it.position} of ${e.items.length} from the Blog article <a href="${editionPath(e.id)}">${esc(e.title)}</a> by ${esc(e.author)}, first published in Spanish on <time datetime="${e.published_on}">${esc(longDate(e.published_on))}</time> · English translation dated <time datetime="${e.translated_on}">${esc(longDate(e.translated_on))}</time> · <a href="${esc(e.source_url)}" rel="noopener noreferrer">Original edition</a>`}</p>
 <div class="ed-body">
 ${renderMarkdown(newsText(it))}
 </div>
 <nav class="ed-pager" aria-label="Items in this edition">${prev ? `<a href="${itemPath(prev)}" rel="prev">Previous item</a>` : '<span></span>'}${next ? `<a href="${itemPath(next)}" rel="next">Next item</a>` : '<span></span>'}</nav>
 </article>`;
-    files.set(`news/${it.id}/index.html`, page({ title: `${it.headline} · News · Why Humanoid?`, description: excerpt(it.body_markdown, 155) || `News item ${it.position} of the Blog article ${e.title}.`, path: itemPath(it), body, type: 'article', noindex, head: head() }));
+    files.set(`news/${it.id}/index.html`, page({ title: `${it.headline} · News · Why Humanoid?`, description: excerpt(it.body_markdown, 155) || `News item ${it.position} of ${e.publication ? 'the roundup' : 'the Blog article'} ${e.title}.`, path: itemPath(it), body, type: 'article', noindex, head: head() }));
   }
   // Former /newsletter/ addresses: noindex redirects to the matching /blog/ address, never in the sitemap.
   if (redirect) {
@@ -217,5 +226,5 @@ export function editorialUrls(store, { today = madridToday() } = {}) {
   if (!isLive(store.config, today)) return [];
   const years = yearsOf(store.config);
   const editions = readyEditions(store);
-  return ['/blog/', '/news/', ...years.flatMap((y) => [yearPath('blog', y), yearPath('news', y)]), ...editions.map((e) => editionPath(e.id)), ...editions.flatMap((e) => e.items.map(itemPath))];
+  return ['/blog/', '/news/', ...years.flatMap((y) => [yearPath('blog', y), yearPath('news', y)]), ...editions.map((e) => editionPath(e.id)), ...readyNewsGroups(store, editions, today).flatMap((e) => e.items.map(itemPath))];
 }

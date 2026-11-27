@@ -77,6 +77,7 @@ export function planIngest(store, pkg, { accept = [], acceptItems = [] } = {}) {
     inventory: { ...store.inventory, source: { publication: pkg.source.publication ?? null, listing_url: pkg.source.listing_url ?? null, retrieved_on: pkg.source.retrieved_on ?? null, files: pkg.source.files ?? null }, pagination: pkg.source.pagination, complete: pkg.complete === true, completeness: pkg.completeness ?? null },
     editions: new Map(store.editions),
     originals: new Map(store.originals),
+    roundups: store.roundups,
   };
   const entries = new Map(store.inventory.editions.map((e) => [e.edition_id, e]));
   for (const e of pkg.inventory) entries.set(e.edition_id, { edition_id: e.edition_id, source_url: e.source_url, published_on: e.published_on, status: e.status, note: e.note ?? null });

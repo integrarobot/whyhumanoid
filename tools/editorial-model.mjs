@@ -25,6 +25,7 @@ export const madridToday = (now = new Date()) => new Intl.DateTimeFormat('en-CA'
 // The sections are live only when the switch is on AND the embargo date (Europe/Madrid) has been reached.
 export const isLive = (config, today = madridToday()) => config?.published === true && isDate(config?.embargo_until) && today >= config.embargo_until;
 export const EDITION_ID = /^nl-(\d{4})-(\d{2})-(\d{2})-[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const ROUNDUP_ID = /^roundup-(\d{4}-\d{2}-\d{2})-[a-z0-9]+(?:-[a-z0-9]+)*$/;
 export const INVENTORY_STATUS = ['ingested', 'pending', 'inaccessible'];
 export const MORE_NEWS_STATUS = ['present', 'absent', 'inaccessible'];
 export const TRANSLATION_STATUS = ['draft', 'reviewed'];
@@ -287,8 +288,28 @@ export function readStore(root, dir = EDITORIAL_DIR) {
   const inventory = readJson(root, `${dir}/inventory.json`);
   const editions = new Map(listJson(root, `${dir}/editions`).map((f) => [f.replace(/\.json$/, ''), readJson(root, `${dir}/editions/${f}`)]));
   const originals = new Map(listJson(root, `${dir}/originals`).map((f) => [f.replace(/\.json$/, ''), readJson(root, `${dir}/originals/${f}`)]));
+  const roundups = new Map(listJson(root, `${dir}/roundups`).map((f) => [f.replace(/\.json$/, ''), readJson(root, `${dir}/roundups/${f}`)]));
   const state = existsSync(new URL(`${dir}/state.json`, root)) ? readJson(root, `${dir}/state.json`) : null;
-  return { config, inventory, editions, originals, state };
+  return { config, inventory, editions, originals, roundups, state };
+}
+
+function roundupProblems(id, roundup, years, today) {
+  const at = `roundups/${id}`;
+  const p = [];
+  const date = roundup?.published_on;
+  if (id !== roundup?.id || ROUNDUP_ID.exec(id)?.[1] !== date || !isDate(date)) p.push(`${at}: id and publication date must match the file name`);
+  if (!isDate(date) || !years.includes(Number(date.slice(0, 4))) || date > today) p.push(`${at}: publication date is outside the live scope`);
+  if (!nonEmpty(roundup?.title) || !nonEmpty(roundup?.publication)) p.push(`${at}: title and publication are required`);
+  if (roundup?.language !== 'en' || roundup?.review?.status !== 'reviewed' || !nonEmpty(roundup?.review?.by) || !nonEmpty(roundup?.review?.evidence)) p.push(`${at}: English text and a named review with evidence are required`);
+  const items = roundup?.items;
+  p.push(...itemsProblems(items, at, { english: true }));
+  if (!items?.length) p.push(`${at}: the roundup must contain news items`);
+  if (Array.isArray(items)) {
+    items.forEach((item, i) => {
+      if (!nonEmpty(item?.body_markdown) || !urlsIn(item.body_markdown).some(webUrl)) p.push(`${at} item ${i + 1}: text and a web source are required`);
+    });
+  }
+  return p;
 }
 
 // Every problem of a store: config, inventory, editions, originals and the links between them.
@@ -321,7 +342,20 @@ export function storeProblems(store, { today = madridToday() } = {}) {
     p.push(...originalProblems(o));
   }
   for (const e of entries.values()) if (e.status === 'ingested' && !editions.has(e.edition_id)) p.push(`inventory ${e.edition_id}: marked ingested but has no edition`);
+  for (const [id, roundup] of store.roundups ?? []) p.push(...roundupProblems(id, roundup, years, today));
   return p;
+}
+
+export function readyNewsGroups(store, editions, today) {
+  const roundups = [];
+  for (const [id, roundup] of store.roundups ?? []) {
+    if (roundupProblems(id, roundup, yearsOf(store.config), today).length) continue;
+    roundups.push({
+      ...roundup,
+      items: roundup.items.map((item) => ({ ...item, id: itemId(id, item.position) })),
+    });
+  }
+  return [...editions, ...roundups].sort((a, b) => b.published_on.localeCompare(a.published_on) || a.id.localeCompare(b.id));
 }
 
 // Editions ready to publish: valid, translation reviewed, original (if archived) unchanged. Newest first.
