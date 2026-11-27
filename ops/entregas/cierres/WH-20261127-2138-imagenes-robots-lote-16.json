@@ -48,13 +48,14 @@
     "Claude, paquete: review-intake 10/10 (aviso de inspección en la rendija de la softmask de T1 Pro y cuatro avisos de fondo plano en las zonas dudosas de Vanar, conservadas a propósito); navegador local de las diez fichas a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
     "Codex, cabeza eaf3afd contra 9674d66: revisión independiente aprobada; 92 archivos de imágenes, ops y páginas generadas; las 148 presentaciones anteriores y el catálogo de 213 idénticos; RGB nativo, SHA, alfa de PNG y WebP y margen de 20 px correctos en los diez; los diez pares claro y oscuro revisados uno a uno (rendija de T1 Pro y rejilla de D9 con su alfa original, asa de KAIST completa desde la fuente, cables de i3 y ruedas de GoMate enteros, versión Gen 4 y render de GoMate 2024 bien indicados; Vanar revisado a resolución nativa).",
     "Claude, producción tras Pages 46064669376: las 20 URL canónicas (10 PNG y 10 WebP) con los mismos bytes que 43d8984 (20/20); las 10 fichas y la portada idénticas a 43d8984 salvo las etiquetas meta agent:* que añade Cloudflare (11/11); navegador real a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 158 presentaciones. La espera de Pages se hizo consultando la portada existente con un parámetro de consulta único, nunca URL de activos nuevos.",
+    "Codex, verificación pública independiente tras Pages 46064669376 en merge 43d8984: 30/30 URL canónicas con 200 (20 activos con SHA y alfa exactos y 10 fichas con imagen, texto alternativo y crédito); 20/20 vistas reales en Chrome con innerWidth efectivo de 390 × 844 y 1366 × 900, contain, cargadas, sin desbordamiento y con créditos exactos (D9 en móvil, observado de nuevo completo tras la carga); captura de escritorio de GoMate revisada. Cobertura 158/213, 55 pendientes.",
     "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (158) y entregas --check."
   ],
   "pendientes": [
-    "Aviso de Codex para este cierre, con su verificación pública independiente.",
+    "Aviso de Codex para este cierre.",
     "Lote 17 en preparación: XYZ DEUX (122) con su alfa original y Beomni (12) de la foto de prensa de 2023, ya recortados.",
     "Jingchu Elf (183), Qinglong (69), T230A (89), R-Noid (77) e IGRIS (79) siguen fuera con su motivo.",
     "Quedan 55 fichas de Humanoids sin imagen; Other Robots queda fuera del alcance por decisión de Javier."
   ],
-  "siguiente_accion": "Codex verifica producción y registra su aviso; Javier confirma la recepción. Claude sigue con el lote 17 en rama propia, sin fusionar nada antes de la revisión de Codex."
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Claude sigue con el lote 17 (DEUX y Beomni ya recortados) en rama propia, sin fusionar nada antes de la revisión de Codex."
 }
