@@ -1,0 +1,23 @@
+{
+  "id": 58,
+  "slug": "neura-4ne1-gen4-native-video",
+  "credit": "NEURA Robotics",
+  "source_page": "https://www.youtube.com/watch?v=_76mR2pA0mA",
+  "source_url": "https://www.youtube.com/watch?v=_76mR2pA0mA",
+  "source_title": "TUM RoboGym Opening & 4NE1 Gen4 Reveal",
+  "source_published_at": "2026-10-26",
+  "original": "original.png",
+  "original_size": [
+    1920,
+    1080
+  ],
+  "original_sha256": "0c525e68c876d16db2dfb3cf0e0ce3c88d838485828013a28e13a5669b7782f1",
+  "source_video_sha256": "1d7bc84a60a3093aa49e63618e3c9662c61dc9ae29c9f5e3c941b702efe183e6",
+  "frame_index_zero_based": 542,
+  "fps": 25,
+  "time_seconds": 21.68,
+  "source_context": "Select ONLY the whole left foreground robot in side/three-quarter pose, approximate original ROI x310..530 y110..1020. Native head, both actual hands and both feet are complete, without person or ribbon crossing the body. The front right robot has head/feet clipped and MUST NOT be used; center distant robot has ribbon crossing and is rejected. Keep native black textile, blue head light and white cuff. Remove camera operator, stage truss, other robots, ribbon, floor and shadow by alpha only. No brighter RGB or invented front pose. Mandatory caption manufacturer video still, 4NE1 Gen4 reveal, October 2026. This is the new textile Gen4, not older chrome Gen3.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Official manufacturer/research-lab public video. Credit required; no open licence assumed and no outreach sent. Native public video downloaded without login or cookies using yt-dlp 2026.11.23; decoded sequentially with OpenCV; original selected RGB frame unedited."
+}
