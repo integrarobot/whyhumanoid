@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-1917-imagenes-robots-lote-11",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T19:21:00+01:00",
+  "por": "codex",
+  "evidencia": "Codex revisó PR233 cabeza259057360f2cbd3eed8db0bd342d9fc45de61d2e:84archivos,98presentaciones anteriores idénticas,213registros intactos y10altas. RGB visible nativo, hashes, tamaño, alfa PNG/WebP y margen20px exactos; review-intake10/10sinadvertencias y revisión visual claro/oscuro. CI46045148477 correcta. Tras mergee8e5f40f228131675205ef63ed7881ff74ccf24e y Pages46046491073correcta,30URL canónicas200 con20activos exactos,20vistas reales390x844/1366x900, contain, naturalWidth y sin desbordamiento. Avisados Claude y Javier del estado108/213mediante mensajes de progreso;105pendientes, soloHumanoids. CierrePR237 revisado en46b3d86535ad93fd2b2887ca092eb080b1176769,14archivos soloops,CI46048398563correcta. No se atribuye recepción a Javier."
+}
