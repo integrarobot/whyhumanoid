@@ -13,15 +13,16 @@
       "state": "integrating",
       "target": 10,
       "candidates": [
+        27,
+        61,
         138,
         140,
         150,
-        61,
         152,
         153,
         154,
         162,
-        27
+        196
       ],
       "reserves": [
         142,
@@ -42,7 +43,7 @@
       "notes": [
         "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
         "Several other makers' PNG files named as background-free still hold interior backgrounds: rejected (Codex, 27 Nov 2026).",
-        "Tenth candidate still being sought by Codex (27 Nov 2026)."
+        "Generative images are never used: Codex discarded a T2 trial that recreated details (27 Nov 2026)."
       ]
     }
   ],
@@ -660,6 +661,27 @@
           "transparent_original": true,
           "verdict": "usable_original",
           "detail": "800 × 800, alpha 0–255 (Codex). Received with matching SHA-256; trimmed only."
+        }
+      ]
+    },
+    "196": {
+      "recorded": {
+        "Lab": "PsiBot",
+        "Robot": "PsiBot V1"
+      },
+      "status": "candidate",
+      "page": "https://www.psibot.ai/en/products/product_psibot-v1/",
+      "notes": "Dual-arm humanoid upper body on a wheeled base. Trim with --max-height 2600 (Codex), keeping the native visible pixels.",
+      "sources": [
+        {
+          "file": "https://psibot-data.oss-us-west-1.aliyuncs.com/website/Websource/Products/Introduction/PsiBot_V1/PsiBot_SynRobot.png",
+          "page": "https://www.psibot.ai/en/products/product_psibot-v1/",
+          "sha256": "8d5b4fb67e34f6961b82f8ff140a372e270fe93423b91c53c72345decd9d6cdc",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "2820 × 2812, alpha 0–255, figure box [968, 204, 1946, 2628]; whole robot with base, fingers and wheels; clean transparency on light and dark, no props or text (Codex). Not yet received byte for byte here: the chat attachment arrived re-encoded as a 2000 × 1994 WebP (sha256 d0f783b7…a9fc), which is not the original and is not used."
         }
       ]
     }

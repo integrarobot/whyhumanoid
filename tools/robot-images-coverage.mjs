@@ -8,6 +8,7 @@
 //   node tools/robot-images-coverage.mjs --check    plan consistent with the catalogue and COVERAGE.md current
 
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 
 const root = new URL('../', import.meta.url);
 const read = (p) => JSON.parse(readFileSync(new URL(p, root), 'utf8'));
@@ -78,7 +79,9 @@ export function coverage(plan = read('ops/media/robots/coverage.json'), presenta
   return { problems, md, rows };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Run as a script, also from a checkout whose path has spaces or other characters a URL escapes ("Why Humanoid?");
+// imported as a module (no argv[1], or another entry point), nothing runs.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const { problems, md, rows } = coverage();
   if (problems.length) { console.error(`Robot image coverage FAILED:\n- ${problems.join('\n- ')}`); process.exit(1); }
   const file = new URL(OUT, root);
