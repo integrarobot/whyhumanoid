@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 17, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 17, PR not yet merged)
+## Published files (image batch 17, PR 253, merge 36ea0eb, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/beyond-imagination-beomni/beyond-imagination-beomni-full-body.png`, 306 × 567 px, sha256 `af5f376d79476cbfd251d2ab1c29a36c40bf439258f4904028ce18345c41d2d2` (= the prepared.png).
 - **WebP:** `assets/robots/beyond-imagination-beomni/beyond-imagination-beomni-full-body.webp`, sha256 `b2131ca1e95c7655fdea8d1f042fb98ab4fddfb84aecef299f3d7bad7c3de215`.

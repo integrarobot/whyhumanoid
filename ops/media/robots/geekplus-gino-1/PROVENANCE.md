@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 17, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 17, PR not yet merged)
+## Published files (image batch 17, PR 253, merge 36ea0eb, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/geekplus-gino-1/geekplus-gino-1-full-body.png`, 354 × 757 px, sha256 `51a56f075fcf83528c91fdca4ff477e81f9c8022bbe832acf7433497e8dd0037` (= the prepared.png).
 - **WebP:** `assets/robots/geekplus-gino-1/geekplus-gino-1-full-body.webp`, sha256 `4d3a7436e7f0f9da933016355b7b35798eb472abc5bc440fb22d905877c02fb9`.
