@@ -1,0 +1,28 @@
+{
+  "id": "WH-20261127-0932-reports-buscador",
+  "tarea": "Bloque 3 de la orden del 27/11: Reports encontrable en la app, la API y el MCP, con etiquetas de resultados legibles",
+  "origen": "Javier (27/11/2026), revisado por Codex",
+  "fecha": "2026-11-27T09:32:54+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 187 (560502b desde 093dada): 13 informes y 124 hallazgos comprobados del atlas público revisado, incluidos en el Worker sin pasar por D1; enlaces /reports/<slug>/ y #f-<id>; atribución de citas; misma respuesta para visitantes y suscriptores; grupo Research en la app.",
+    "Los identificadores (gf_symbol, ISIN, ticker, *_id) ya no salen como fragmento; segmento, país y descripción de empresas cotizadas con la redacción revisada en inglés."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 187",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/187"
+    }
+  ],
+  "despliegue": [
+    "En producción con main 64ccd65 (PROD ff0eb084, TEST 9e507e1b)."
+  ],
+  "verificaciones": [
+    "Claude, API de producción: «Goldman Sachs» da 12 resultados con el informe primero; GXO con subtítulo en inglés y sin etiqueta gf symbol.",
+    "Codex: MCP con Goldman en Reports (12), app con navegación de Reports, etiquetas Source/Scope/Forecast y enlaces a anclas correctos."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción."
+}

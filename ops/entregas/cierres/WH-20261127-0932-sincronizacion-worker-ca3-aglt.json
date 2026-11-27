@@ -1,0 +1,50 @@
+{
+  "id": "WH-20261127-0932-sincronizacion-worker-ca3-aglt",
+  "tarea": "Bloque 1 de la orden del 27/11: Worker con el código revisado, CA3 publicado y una sola importación completa con AGLT, CA3 y la reclasificación",
+  "origen": "Javier (27/11/2026, puntos 1 a 4 de la revisión web de Codex), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T09:32:54+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 184 (550c54b desde 37da302): las ocho celdas de CA3 en la web (revisión 2026-11-26); se mantienen la excepción de especialista, el grupo de simulación y la exclusión de los recuentos.",
+    "PR 185 (e1ca309 desde 4692a58): ámbitos integrators y stocks-humanoids-integrators; build-dashboard con rutas reales y prueba con 'Why Humanoid? Ñandú'.",
+    "PR 190, 192 y la guía de este cierre: bundles registrados, runtime real (2026-11-13, sin flags) y procedimiento Wrangler versions.",
+    "Despliegue de Codex con Wrangler (OAuth autorizado por Javier, sin billing ni D1 write) de main 64ccd65: TEST 9e507e1b y PROD ff0eb084, con runtime y bindings idénticos.",
+    "Importación completa única, run 45964988399 (scope all): HTTP 200, 207 deployments, 277 stocks, 28 integrators, 149 software, 555 other-robots; búsqueda 2013/1946.",
+    "Incidencia: entre la relectura de las 07:54 y la importación, la automatización de radar de Codex añadió cuatro filas de Deployments (A205:AU208). Entraron en D1 con la importación; Codex confirmó autoría, recibo y fuentes, y el PR 193 (bb7f2b7 desde db3d085) llevó la web a 207."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Importación",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45964988399"
+    },
+    {
+      "etiqueta": "PR 184",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/184"
+    },
+    {
+      "etiqueta": "PR 185",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/185"
+    },
+    {
+      "etiqueta": "PR 193",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/193"
+    }
+  ],
+  "despliegue": [
+    "Bundles de main 64ccd65: PROD 1.150.891 B 047622e3…; TEST 1.036.845 B af83093b…, reproducidos por Claude y por Codex.",
+    "Activaciones de Codex por CLI: TEST despliegue 14e71f5d (08:16:41 UTC) y PROD despliegue 3e75ccf0 (08:19:43 UTC).",
+    "Cuota D1 tras la importación (lectura de Codex en el panel): unas 21,5k filas escritas de 100k; TEST sin escrituras."
+  ],
+  "verificaciones": [
+    "Claude, API de producción tras la importación: stocks 277 con AGLT, Agility con NASDAQ:AGLT, CA3 reviewed_at 2026-11-26, Other Robots 555, Software 149 filas (146 entradas canónicas), Deployments 207.",
+    "Claude, web: vista previa de Deployments con 207 filas y páginas nuevas 200 tras el PR 193; audit-deployments 207 × 47, 0 diferencias.",
+    "Codex, independiente: comparación nativa de Deployments A1:AU208 (8343 valores no vacíos, 3726 celdas públicas en la API, 0 diferencias); CA3 26 campos, 0 diferencias; fichas de suscriptor a 390, 768 y 1440 px sin desbordamiento; fuentes de las cuatro filas contrastadas."
+  ],
+  "pendientes": [
+    "El libro maestro aparece en Drive publicado en la web con publicación automática y visible fuera del dominio: Javier o Codex deben revisarlo.",
+    "Antes de cada importación completa, descargar y comparar el libro justo antes de lanzarla, no solo comprobar importaciones en curso."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción."
+}
