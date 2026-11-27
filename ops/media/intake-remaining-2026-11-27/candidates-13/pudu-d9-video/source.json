@@ -1,0 +1,23 @@
+{
+  "id": 155,
+  "slug": "pudu-d9-video",
+  "manufacturer": "Pudu",
+  "model": "D9",
+  "credit": "PuduRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/pudu-d9-155/",
+  "source_page": "https://www.pudurobotics.com/en/products/d9",
+  "source_url": "https://cdn.pudutech.com/official-website/d9/section2_bg.mp4",
+  "original": "original.png",
+  "original_size": [
+    1920,
+    1080
+  ],
+  "original_sha256": "0b189a0d6131b03a00cae399ec574a5c41c91275df7f8384e3aa2e4d33562147",
+  "source_context": "Exact D9 product page observed section2_bg.mp4, native1920x1080, frame31 at1.0333s/30fps. Whole front biped, complete head/bothhands/twofeet withfloor margin. Body is dark but has genuine geometry; no brightening/recolouring. Mask only robot, exclude huge backgroundletters and stage/floorshadow. Replaces rejected small400x480still, no enlarging. Existing manufacturer video still; independent segmentationinterior review required.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source. No open photograph licence assumed; credit owner. No outreach sent.",
+  "frame": 31,
+  "time": 1.0333333333333334,
+  "fps": 30.0
+}

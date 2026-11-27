@@ -1,0 +1,34 @@
+{
+  "id": 77,
+  "slug": "robotcom-rnoid-outdoor",
+  "manufacturer": "Robot.com",
+  "model": "R-Noid",
+  "credit": "Robot.com",
+  "public_page": "https://whyhumanoid.com/humanoids/robot-com-r-noid-77/",
+  "source_page": "https://www.robot.com/r-noid",
+  "source_url": "https://www.datocms-assets.com/166246/1782092956-compressed-noid-2.mp4",
+  "original": "original.png",
+  "original_size": [
+    520,
+    570
+  ],
+  "original_sha256": "7b4f982b5e59c71d9fd62b478d9e3d81e0dea48a2b10a27604926cd5bf89d2dd",
+  "source_context": "Manufacturer R-Noid introduction video, frame847 at35.32616s/23.976fps. Original1920x1080 fullframeSHA recorded; ONLYnativecrop[960,450,1480,1020] transported to exclude bystander/carplate. Robot whole fromheadtoentirewheeledbase; both black grippers present. Left grippercontacts separate R-Kiwi lid: carefully isolate only actual R-Noid foreground, do not remove fingerpixels or keep secondrobot. No RGB edits/scaling/reconstruction. Native robotabout490high+40pad around530; verifyactualpreparedmin500. Other casevideos fashion/carry cutbase and remain rejected.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source. No open photograph licence assumed; credit owner. No outreach sent.",
+  "frame": 847,
+  "time": 35.32695833333333,
+  "fps": 23.976023976023978,
+  "full_frame_size": [
+    1920,
+    1080
+  ],
+  "full_frame_sha256": "4e8ffed6e9d1c6baf8504794fd0aa9d5227ea1685672e4f3211d7986bbed3895",
+  "source_crop": [
+    960,
+    450,
+    1480,
+    1020
+  ]
+}

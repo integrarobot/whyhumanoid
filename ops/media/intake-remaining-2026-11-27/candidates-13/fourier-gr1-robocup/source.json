@@ -1,0 +1,22 @@
+{
+  "id": 32,
+  "slug": "fourier-gr1-robocup",
+  "manufacturer": "Fourier",
+  "model": "GR-1",
+  "credit": "RoboCupGR1hardware-specification",
+  "public_page": "https://whyhumanoid.com/humanoids/fourier-gr-1-32/",
+  "source_page": "https://humanoid.robocup.org/wp-content/uploads/2024-th-mos-adult-specs.pdf",
+  "source_url": "https://humanoid.robocup.org/wp-content/uploads/2024-th-mos-adult-specs.pdf",
+  "original": "original.png",
+  "original_size": [
+    210,
+    533
+  ],
+  "original_sha256": "d79df6353db206860964608c2b363037985b437a0971a52ca9425fca71a2fbb9",
+  "source_context": "RoboCup2024 team hardware specification forGR1, PDFpage1embeddedimage0, native210x533 completefronttechnicalrender with marginabovehead/belowfeet, handscomplete. Existingprojecthardware-spectechnicalrender, notnewURDF. Caption specifically RoboCup2024GR1hardware-specification technicalrender; no claimphotoornewFouriergeneration. Nativefigheightabout485+40pad>500; independentlyverifyqualitywithoutupscaling. Otherembedded2160x3840photo hasfootballoccludingfoot, rejected; FourierGitHubrenders havecoordinateaxespaintedoverbody, rejected.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source. No open photograph licence assumed; credit owner. No outreach sent.",
+  "pdf_page": 1,
+  "pdf_image_index": 0
+}

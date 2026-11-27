@@ -1,0 +1,20 @@
+{
+  "id": 49,
+  "slug": "leju-kuavo-4pro",
+  "manufacturer": "Leju",
+  "model": "Kuavo",
+  "credit": "LejuRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/leju-kuavo-49/",
+  "source_page": "https://github.com/LejuRobotics/kuavo-ros-opensource/blob/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro%E6%A0%87%E5%87%86%E7%89%88.png",
+  "source_url": "https://raw.githubusercontent.com/LejuRobotics/kuavo-ros-opensource/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro%E6%A0%87%E5%87%86%E7%89%88.png",
+  "original": "original.png",
+  "original_size": [
+    520,
+    1170
+  ],
+  "original_sha256": "4ebae2301ff8d0c8b859c9ec4b0484fbcc83f513744be586c0a72662828295b2",
+  "source_context": "Exact official Kuavo ROS opensource repository, docs/1产品介绍/images/kuavo_4pro标准版.png. Whole Kuavo4Pro Standard biped with complete helmet, hands and feet, native520x1170. NOT earlier native902x1554 websitephoto whose head is cropped. Use caption Kuavo4Pro Standard configuration on generic Kuavo family record. No assertion that specs from another generation apply.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source. No open photograph licence assumed; credit owner. No outreach sent."
+}

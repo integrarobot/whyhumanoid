@@ -1,0 +1,23 @@
+{
+  "id": 67,
+  "slug": "pollen-reachy2-single-arm",
+  "manufacturer": "Pollen",
+  "model": "Reachy 2",
+  "credit": "PollenRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/pollen-reachy-2-67/",
+  "source_page": "https://pollen-robotics.com/assets/reachy2/datasheets/reachy2-single-arm-mobile-base.pdf",
+  "source_url": "https://pollen-robotics.com/assets/reachy2/datasheets/reachy2-single-arm-mobile-base.pdf",
+  "original": "original.png",
+  "original_size": [
+    1920,
+    1920
+  ],
+  "original_sha256": "358ff418b55219a8490da80fe29c8983b46a6187ad9ad06371f2c08fa3d2c439",
+  "source_context": "Manufacturer Reachy2 Single Arm mobile Datasheet, PDFpage1, embeddednative1920x1920image008 and native softmask009. Whole mobile platform with one arm BY DESIGN, all antennae/gripper and complete open mobile chassis; existing manufacturer technical render. Apply supplied source-mask only; do not invent secondarm or hide actual open chassis. Caption explicitly Reachy2 single-arm mobile-base configuration, technical render. Do NOT use repo reachy-mobile.png (looks legacyReachy1) or straight_posture.jpg whose base is cropped.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source. No open photograph licence assumed; credit owner. No outreach sent.",
+  "pdf_page": 1,
+  "pdf_image_index": 8,
+  "pdf_mask_index": 9
+}
