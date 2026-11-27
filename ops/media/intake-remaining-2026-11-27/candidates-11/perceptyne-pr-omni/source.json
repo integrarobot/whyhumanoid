@@ -1,0 +1,20 @@
+{
+  "id": 194,
+  "slug": "perceptyne-pr-omni",
+  "manufacturer": "Perceptyne",
+  "model": "PR-OMNI",
+  "credit": "Perceptyne",
+  "public_page": "https://whyhumanoid.com/humanoids/perceptyne-pr-omni-194/",
+  "source_page": "https://www.perceptyne.com/product/omni",
+  "source_url": "https://cdn.prod.website-files.com/68c3c8db9f41332d34b592dd/6904e2cbeab16ef558f67bc4_bcd2ac0df70392a3c5d54885612da132_Perceptyne%20Wings%20Chat%20Image.webp",
+  "original": "original.png",
+  "original_size": [
+    3840,
+    2160
+  ],
+  "original_sha256": "b57226c90c5ae8d3749505b4bea51b18e1fd6c27fc24e83685e87ffa21c8d3a3",
+  "source_context": "Exact PR-OMNI product page hero manufacturing-scene render3840x2160. Need independently confirm whole mobile base/hands and exact PR-OMNI identity from page. Exclude warehouse backdrop and props without obscuring actual robot; label official render.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+}

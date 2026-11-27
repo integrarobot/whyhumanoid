@@ -1,0 +1,20 @@
+{
+  "id": 119,
+  "slug": "nori",
+  "manufacturer": "Nori",
+  "model": "NORI A3",
+  "credit": "NoriRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/nori-nori-a3-119/",
+  "source_page": "https://www.norirobotics.com/",
+  "source_url": "https://www.norirobotics.com/images/hero-still.44381e82.png",
+  "original": "original.png",
+  "original_size": [
+    1600,
+    1340
+  ],
+  "original_sha256": "5885cdfa4060ba65cea04099a36cdba8527c87e82db5d9707b15ef91c0987cb5",
+  "source_context": "Official homepage hero-still.44381e82.png, full wheeled NORI robot, both manipulators, head, column and entire caster base. Not torso-only preview. Verify same named family; no claim of production maturity.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+}

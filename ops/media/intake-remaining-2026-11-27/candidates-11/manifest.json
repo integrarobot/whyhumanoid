@@ -1,0 +1,202 @@
+[
+  {
+    "id": 119,
+    "slug": "nori",
+    "manufacturer": "Nori",
+    "model": "NORI A3",
+    "credit": "NoriRobotics",
+    "public_page": "https://whyhumanoid.com/humanoids/nori-nori-a3-119/",
+    "source_page": "https://www.norirobotics.com/",
+    "source_url": "https://www.norirobotics.com/images/hero-still.44381e82.png",
+    "original": "original.png",
+    "original_size": [
+      1600,
+      1340
+    ],
+    "original_sha256": "5885cdfa4060ba65cea04099a36cdba8527c87e82db5d9707b15ef91c0987cb5",
+    "source_context": "Official homepage hero-still.44381e82.png, full wheeled NORI robot, both manipulators, head, column and entire caster base. Not torso-only preview. Verify same named family; no claim of production maturity.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  },
+  {
+    "id": 188,
+    "slug": "lanxin-vb1",
+    "manufacturer": "Lanxin Robotics",
+    "model": "VB1",
+    "credit": "Lanxin",
+    "public_page": "https://whyhumanoid.com/humanoids/lanxin-robotics-vb1-188/",
+    "source_page": "https://www.lanxinrobotics.com/humanoid-robots/vb1/",
+    "source_url": "https://www.lanxinrobotics.com/wp-content/uploads/2026/01/English-scaled.jpg",
+    "original": "original.jpg",
+    "original_size": [
+      2560,
+      1616
+    ],
+    "original_sha256": "5b79a5202cf5369a44016031f62764c68359e8226e616f1a182ec6837e0a154c",
+    "source_context": "Official exact VB1 page specification illustration2560x1616, whole wheeledplatform. Source has callouts; extract only complete body, preserve actual body pixels. If labels overlap body or mask cannot isolate it cleanly seek better source; do not erase body content. Render/diagram, not photo.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  },
+  {
+    "id": 194,
+    "slug": "perceptyne-pr-omni",
+    "manufacturer": "Perceptyne",
+    "model": "PR-OMNI",
+    "credit": "Perceptyne",
+    "public_page": "https://whyhumanoid.com/humanoids/perceptyne-pr-omni-194/",
+    "source_page": "https://www.perceptyne.com/product/omni",
+    "source_url": "https://cdn.prod.website-files.com/68c3c8db9f41332d34b592dd/6904e2cbeab16ef558f67bc4_bcd2ac0df70392a3c5d54885612da132_Perceptyne%20Wings%20Chat%20Image.webp",
+    "original": "original.png",
+    "original_size": [
+      3840,
+      2160
+    ],
+    "original_sha256": "b57226c90c5ae8d3749505b4bea51b18e1fd6c27fc24e83685e87ffa21c8d3a3",
+    "source_context": "Exact PR-OMNI product page hero manufacturing-scene render3840x2160. Need independently confirm whole mobile base/hands and exact PR-OMNI identity from page. Exclude warehouse backdrop and props without obscuring actual robot; label official render.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  },
+  {
+    "id": 205,
+    "slug": "x-humanoid-tianyi-2",
+    "manufacturer": "X-Humanoid",
+    "model": "Tian Yi 2.0",
+    "credit": "XHumanoid",
+    "public_page": "https://whyhumanoid.com/humanoids/x-humanoid-tian-yi-2-0-205/",
+    "source_page": "https://www.x-humanoid.com/detail/tianyi.html",
+    "source_url": "https://www.x-humanoid.com/img/m_tianyi.png",
+    "original": "original.png",
+    "original_size": [
+      1065,
+      900
+    ],
+    "original_sha256": "a6039d1b03ffadb7c355d1de7f7539ec5e3fd8613f6caf66667a8e3c22b9a196",
+    "source_context": "Official exact TianYi2.0 page m_tianyi.png1065x900, full named wheeledplatform in specification section. Exclude text/callout lines only outside actual silhouette; no body pixel changes. Label manufacturer illustration and TianYi2.0.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  },
+  {
+    "id": 207,
+    "slug": "zerith-h1",
+    "manufacturer": "Zerith Robotics",
+    "model": "Zerith H1",
+    "credit": "Zerith",
+    "public_page": "https://whyhumanoid.com/humanoids/zerith-robotics-zerith-h1-207/",
+    "source_page": "https://www.zerith.com/product/ZerithH1/",
+    "source_url": "https://www.zerith.com/dist/images/img_201.png",
+    "original": "original.png",
+    "original_size": [
+      945,
+      945
+    ],
+    "original_sha256": "6eb2326058d6d99196428e297534e82870bce089ea55ae5b2b248502f9c071ae",
+    "source_context": "Official exact H1 product page img_201.png945x945, whole side view of wheeled column, full base/hands/head. Not cropped torso cards. Inspect native alpha/background and full wheels.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  },
+  {
+    "id": 208,
+    "slug": "zeroth-jupiter",
+    "manufacturer": "Zeroth Robotics",
+    "model": "Jupiter",
+    "credit": "ZerothRobotics",
+    "public_page": "https://whyhumanoid.com/humanoids/zeroth-robotics-jupiter-208/",
+    "source_page": "https://www.zeroth0.com/products/jupiter",
+    "source_url": "https://www.zeroth0.com/cdn/shop/files/2.jpg?v=1768379093",
+    "original": "original.png",
+    "original_size": [
+      1438,
+      2556
+    ],
+    "original_sha256": "e4b23885a62ffd1fdf41969bcb8dd2f91d174ed409c82b066a0aa287791ae8dd",
+    "source_context": "Exact Jupiter product page photo2.jpg1438x2556, side view beside a woman holding flowers. Whole robot down to feet, needs independent hand/body/base completeness check and clean robot-only mask. Do not include person or invent occluded parts; reject if cannot satisfy actual whole figure.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  },
+  {
+    "id": 209,
+    "slug": "naviai-i3",
+    "manufacturer": "ZJ Humanoid",
+    "model": "NAVIAI i3",
+    "credit": "NAVIAI",
+    "public_page": "https://whyhumanoid.com/humanoids/zj-humanoid-naviai-i3-209/",
+    "source_page": "https://www.zj-humanoid.com/zujian/2",
+    "source_url": "https://www.zj-humanoid.com/uploads/upload/images/20260720/e84bc15a5fdfbbdea413df9abe7dcf4d.png",
+    "original": "original.png",
+    "original_size": [
+      750,
+      2685
+    ],
+    "original_sha256": "bf9f4c6714b420fa2970455d71f825129d70d7e12b9dce5a939fbf3e08b1aa13",
+    "source_context": "Official exact i3 product page technical specification image750x2685, includes multiple full robot drawings. Choose one complete front/side actual diagram at native scale, exclude other views and text. Inspect labels/body overlap, and ensure not WA2. Existing manufacturer illustration only; no new render.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  },
+  {
+    "id": 210,
+    "slug": "naviai-wa2",
+    "manufacturer": "ZJ Humanoid",
+    "model": "NAVIAI WA2",
+    "credit": "NAVIAI",
+    "public_page": "https://whyhumanoid.com/humanoids/zj-humanoid-naviai-wa2-210/",
+    "source_page": "https://www.zj-humanoid.com/zujian/10",
+    "source_url": "https://www.zj-humanoid.com/uploads/upload/images/20260814/fe30a0cd6d532ee432849aae6dd95ded.png",
+    "original": "original.png",
+    "original_size": [
+      750,
+      2867
+    ],
+    "original_sha256": "dcb836112157146d16b661a58eaa56cb61a0cb1000c874eba158b21d5d89e088",
+    "source_context": "Official exact WA2 product page technical specification image750x2867. Choose one complete actual WA2 platform at native scale, exclude other views/text. Do not confuse with i3 or crop base, inspect annotations. Manufacturer diagram, not hardware photograph.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  },
+  {
+    "id": 97,
+    "slug": "wandercraft-calvin-40",
+    "manufacturer": "Wandercraft",
+    "model": "Calvin-40",
+    "credit": "Wandercraft",
+    "public_page": "https://whyhumanoid.com/humanoids/wandercraft-calvin-40-97/",
+    "source_page": "https://www.wandercraft.eu/de/calvin",
+    "source_url": "https://cdn.prod.website-files.com/6a5e1730e4dc3d8a81f2d73d/6a5e1a62e73bc247efda6671_calvin-05-front-no-end-effector-3434-ligthroom-1.png",
+    "original": "original.png",
+    "original_size": [
+      625,
+      1131
+    ],
+    "original_sha256": "2c71dda2f80291c9908b0b8bd24239424cebce6c5184717bb4c8a907219ac817",
+    "source_context": "Official exact Calvin product page front view, filename explicitly calvin-05-front-no-end-effector. Whole actual headless robot without end effectors. No invented head/hands. Caption configuration without end effectors; catalogue Calvin40. NativeRGBA625x1131, inspect its alpha rather than assuming transparent interior.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  },
+  {
+    "id": 46,
+    "slug": "kscale-kbot",
+    "manufacturer": "K-Scale Labs",
+    "model": "K-bot",
+    "credit": "KScaleLabs",
+    "public_page": "https://whyhumanoid.com/humanoids/k-scale-labs-k-bot-46/",
+    "source_page": "https://github.com/kscalelabs/kbot/blob/master/assets/pics/f.webp",
+    "source_url": "https://raw.githubusercontent.com/kscalelabs/kbot/master/assets/pics/f.webp",
+    "original": "original.webp",
+    "original_size": [
+      1462,
+      1235
+    ],
+    "original_sha256": "b05e7dddc1db9cbc27153bcc9f1ff9acfdfdda8a4fe544bd3f1132a438285975",
+    "source_context": "Existing official technical render composite f.webp in manufacturer kbot repo. Top-left panel shows complete robot including hands and feet, ROI suggested[0,0,730,620] from native1462x1235. Use only this one full figure, exclude other panels. Label technical render, not photo. No new rendering or inferred anatomy.",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "checked_at": "2026-11-27",
+    "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+  }
+]

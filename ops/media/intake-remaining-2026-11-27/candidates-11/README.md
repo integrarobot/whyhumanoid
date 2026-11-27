@@ -1,0 +1,3 @@
+# Remaining robot image candidates11
+
+Ten original sources, no publication approval or approved masks. Prepare non-generative native masks only and independently review every identity and actual whole robot/platform. Some are existing manufacturer technical illustrations, which must be visibly identified and may fail clean silhouette constraints. No body pixel editing, no enlarging, no generated/added limbs. Keep full original for audit; only extracted figure and20px alpha pad go public. Use <=10 per productPR, oldimages intact, Codex exacthead+CI then Pages then independent canonical/browser verification and closure. Source transport branch is not to merge wholesale. No master/Worker/D1/import/pricing modifications.

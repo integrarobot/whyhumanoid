@@ -1,0 +1,20 @@
+{
+  "id": 205,
+  "slug": "x-humanoid-tianyi-2",
+  "manufacturer": "X-Humanoid",
+  "model": "Tian Yi 2.0",
+  "credit": "XHumanoid",
+  "public_page": "https://whyhumanoid.com/humanoids/x-humanoid-tian-yi-2-0-205/",
+  "source_page": "https://www.x-humanoid.com/detail/tianyi.html",
+  "source_url": "https://www.x-humanoid.com/img/m_tianyi.png",
+  "original": "original.png",
+  "original_size": [
+    1065,
+    900
+  ],
+  "original_sha256": "a6039d1b03ffadb7c355d1de7f7539ec5e3fd8613f6caf66667a8e3c22b9a196",
+  "source_context": "Official exact TianYi2.0 page m_tianyi.png1065x900, full named wheeledplatform in specification section. Exclude text/callout lines only outside actual silhouette; no body pixel changes. Label manufacturer illustration and TianYi2.0.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+}

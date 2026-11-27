@@ -1,0 +1,20 @@
+{
+  "id": 207,
+  "slug": "zerith-h1",
+  "manufacturer": "Zerith Robotics",
+  "model": "Zerith H1",
+  "credit": "Zerith",
+  "public_page": "https://whyhumanoid.com/humanoids/zerith-robotics-zerith-h1-207/",
+  "source_page": "https://www.zerith.com/product/ZerithH1/",
+  "source_url": "https://www.zerith.com/dist/images/img_201.png",
+  "original": "original.png",
+  "original_size": [
+    945,
+    945
+  ],
+  "original_sha256": "6eb2326058d6d99196428e297534e82870bce089ea55ae5b2b248502f9c071ae",
+  "source_context": "Official exact H1 product page img_201.png945x945, whole side view of wheeled column, full base/hands/head. Not cropped torso cards. Inspect native alpha/background and full wheels.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+}

@@ -1,0 +1,20 @@
+{
+  "id": 46,
+  "slug": "kscale-kbot",
+  "manufacturer": "K-Scale Labs",
+  "model": "K-bot",
+  "credit": "KScaleLabs",
+  "public_page": "https://whyhumanoid.com/humanoids/k-scale-labs-k-bot-46/",
+  "source_page": "https://github.com/kscalelabs/kbot/blob/master/assets/pics/f.webp",
+  "source_url": "https://raw.githubusercontent.com/kscalelabs/kbot/master/assets/pics/f.webp",
+  "original": "original.webp",
+  "original_size": [
+    1462,
+    1235
+  ],
+  "original_sha256": "b05e7dddc1db9cbc27153bcc9f1ff9acfdfdda8a4fe544bd3f1132a438285975",
+  "source_context": "Existing official technical render composite f.webp in manufacturer kbot repo. Top-left panel shows complete robot including hands and feet, ROI suggested[0,0,730,620] from native1462x1235. Use only this one full figure, exclude other panels. Label technical render, not photo. No new rendering or inferred anatomy.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+}

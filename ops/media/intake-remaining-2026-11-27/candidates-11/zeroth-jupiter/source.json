@@ -1,0 +1,20 @@
+{
+  "id": 208,
+  "slug": "zeroth-jupiter",
+  "manufacturer": "Zeroth Robotics",
+  "model": "Jupiter",
+  "credit": "ZerothRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/zeroth-robotics-jupiter-208/",
+  "source_page": "https://www.zeroth0.com/products/jupiter",
+  "source_url": "https://www.zeroth0.com/cdn/shop/files/2.jpg?v=1768379093",
+  "original": "original.png",
+  "original_size": [
+    1438,
+    2556
+  ],
+  "original_sha256": "e4b23885a62ffd1fdf41969bcb8dd2f91d174ed409c82b066a0aa287791ae8dd",
+  "source_context": "Exact Jupiter product page photo2.jpg1438x2556, side view beside a woman holding flowers. Whole robot down to feet, needs independent hand/body/base completeness check and clean robot-only mask. Do not include person or invent occluded parts; reject if cannot satisfy actual whole figure.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+}

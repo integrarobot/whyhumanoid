@@ -1,0 +1,20 @@
+{
+  "id": 210,
+  "slug": "naviai-wa2",
+  "manufacturer": "ZJ Humanoid",
+  "model": "NAVIAI WA2",
+  "credit": "NAVIAI",
+  "public_page": "https://whyhumanoid.com/humanoids/zj-humanoid-naviai-wa2-210/",
+  "source_page": "https://www.zj-humanoid.com/zujian/10",
+  "source_url": "https://www.zj-humanoid.com/uploads/upload/images/20260814/fe30a0cd6d532ee432849aae6dd95ded.png",
+  "original": "original.png",
+  "original_size": [
+    750,
+    2867
+  ],
+  "original_sha256": "dcb836112157146d16b661a58eaa56cb61a0cb1000c874eba158b21d5d89e088",
+  "source_context": "Official exact WA2 product page technical specification image750x2867. Choose one complete actual WA2 platform at native scale, exclude other views/text. Do not confuse with i3 or crop base, inspect annotations. Manufacturer diagram, not hardware photograph.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+}

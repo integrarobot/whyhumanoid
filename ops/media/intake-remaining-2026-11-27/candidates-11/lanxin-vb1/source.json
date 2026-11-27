@@ -1,0 +1,20 @@
+{
+  "id": 188,
+  "slug": "lanxin-vb1",
+  "manufacturer": "Lanxin Robotics",
+  "model": "VB1",
+  "credit": "Lanxin",
+  "public_page": "https://whyhumanoid.com/humanoids/lanxin-robotics-vb1-188/",
+  "source_page": "https://www.lanxinrobotics.com/humanoid-robots/vb1/",
+  "source_url": "https://www.lanxinrobotics.com/wp-content/uploads/2026/01/English-scaled.jpg",
+  "original": "original.jpg",
+  "original_size": [
+    2560,
+    1616
+  ],
+  "original_sha256": "5b79a5202cf5369a44016031f62764c68359e8226e616f1a182ec6837e0a154c",
+  "source_context": "Official exact VB1 page specification illustration2560x1616, whole wheeledplatform. Source has callouts; extract only complete body, preserve actual body pixels. If labels overlap body or mask cannot isolate it cleanly seek better source; do not erase body content. Render/diagram, not photo.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+}

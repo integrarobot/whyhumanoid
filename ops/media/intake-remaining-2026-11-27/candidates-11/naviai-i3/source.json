@@ -1,0 +1,20 @@
+{
+  "id": 209,
+  "slug": "naviai-i3",
+  "manufacturer": "ZJ Humanoid",
+  "model": "NAVIAI i3",
+  "credit": "NAVIAI",
+  "public_page": "https://whyhumanoid.com/humanoids/zj-humanoid-naviai-i3-209/",
+  "source_page": "https://www.zj-humanoid.com/zujian/2",
+  "source_url": "https://www.zj-humanoid.com/uploads/upload/images/20260720/e84bc15a5fdfbbdea413df9abe7dcf4d.png",
+  "original": "original.png",
+  "original_size": [
+    750,
+    2685
+  ],
+  "original_sha256": "bf9f4c6714b420fa2970455d71f825129d70d7e12b9dce5a939fbf3e08b1aa13",
+  "source_context": "Official exact i3 product page technical specification image750x2685, includes multiple full robot drawings. Choose one complete front/side actual diagram at native scale, exclude other views and text. Inspect labels/body overlap, and ensure not WA2. Existing manufacturer illustration only; no new render.",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Primary manufacturer/project source, no open photo licence assumed. Credit source. No outreach sent."
+}
