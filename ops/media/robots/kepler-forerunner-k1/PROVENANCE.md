@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 12, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 12, PR not yet merged)
+## Published files (image batch 12, PR 240, merge fa0b12c, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/kepler-forerunner-k1/kepler-forerunner-k1-full-body.png`, 748 × 2116 px, sha256 `8d44aeb47bbb8a945668c5c22dc89d2895afbdb287898cfec759d18b76604a8d` (= the prepared.png).
 - **WebP:** `assets/robots/kepler-forerunner-k1/kepler-forerunner-k1-full-body.webp`, sha256 `ba1cb5d458b844f83616f7d3487980e6f44cede653e48ba6458d07aa26eb96b3`.

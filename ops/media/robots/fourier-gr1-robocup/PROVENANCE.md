@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 12, All m
 
 - **Quality:** Small native source: 193 × 518 px as prepared, not enlarged.
 
-## Files integrated (image batch 12, PR not yet merged)
+## Published files (image batch 12, PR 240, merge fa0b12c, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/fourier-gr1-robocup/fourier-gr1-robocup-full-body.png`, 193 × 518 px, sha256 `ce6ec5edf0f5dfa7eb2436b9f691725dd239fe5f1ba7061b0df55a36c6723065` (= the prepared.png).
 - **WebP:** `assets/robots/fourier-gr1-robocup/fourier-gr1-robocup-full-body.webp`, sha256 `ec0e06751e00e5061b9e6a44a541f17ef52f48d4f80338ce88c271f693d65e8b`.

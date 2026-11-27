@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 12, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 12, PR not yet merged)
+## Published files (image batch 12, PR 240, merge fa0b12c, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/vibe-robotics-vibe-01/vibe-robotics-vibe-01-full-body.png`, 464 × 786 px, sha256 `0693919659c292a0bdf3474bfc64ae6922604ac4a6ff2f507f45116fc285914e` (= the prepared.png).
 - **WebP:** `assets/robots/vibe-robotics-vibe-01/vibe-robotics-vibe-01-full-body.webp`, sha256 `3f33823955a240426cf95b3519fe9de728d392e2a9385d197218e174393c2154`.
