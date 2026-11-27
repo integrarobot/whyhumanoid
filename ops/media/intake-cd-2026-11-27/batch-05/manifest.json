@@ -1,0 +1,161 @@
+[
+  {
+    "id": 20,
+    "slug": "dr01",
+    "original": "dr01-youtube.jpg",
+    "roi": [
+      280,
+      0,
+      700,
+      710
+    ],
+    "bbox": [
+      36,
+      22,
+      400,
+      678
+    ],
+    "border": 20,
+    "size": [
+      404,
+      696
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha-only manual polygons restore both feet missed by automatic mask",
+    "source_page": "https://www.youtube.com/watch?v=lCFyfh3mLOQ",
+    "source_url": "https://i.ytimg.com/vi/lCFyfh3mLOQ/maxresdefault.jpg",
+    "original_sha256": "de978e6adc7b1a450c2cd3bd55ae4cab9fa90ac30c23649176255699a2c64eb9",
+    "prepared_sha256": "d0ff825fe81632907d64ae2c34db68c8c3965ec533a34802b5b5333cac360d00",
+    "mask_sha256": "20d557f07c1cd2cf0cfd2fbb2bd2fc32eddd16b245a4722f890a9bee62fb188c",
+    "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+    "checked_at": "2026-11-27",
+    "source_context": "DEEPRobotics official DR01 Humanoid Robot Outdoor Test, published2024-10-28; complete original thumbnail body isolated from text; do not use DR02."
+  },
+  {
+    "id": 19,
+    "slug": "proxie",
+    "original": "proxie-main-vertical.jpg",
+    "roi": [
+      0,
+      0,
+      2160,
+      3840
+    ],
+    "bbox": [
+      489,
+      736,
+      1712,
+      2961
+    ],
+    "border": 20,
+    "size": [
+      1263,
+      2265
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha-only polygon excludes ground shadow and floor stripe",
+    "source_page": "https://www.co.bot/",
+    "source_url": "https://cdn.sanity.io/images/3qpw73bq/yellow/35a24ba9acf5df1582187b7e6837a18f2de02f0b-2160x3840.jpg",
+    "original_sha256": "2aab9ba4ffa816a93795145424ba116cf93d52e70f76d94ec563fcd7a5cfda68",
+    "prepared_sha256": "270de8f681e107ac3ed40af3fc60dbdf0f17980c7dfe83236286dac31772fcfe",
+    "mask_sha256": "3753e0a6d8167bf1378def2caf133117f5848c97ceb8aa069fff816d3a366b46",
+    "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+    "checked_at": "2026-11-27",
+    "source_context": "Current manufacturer homepage main vertical photograph of complete Proxie mobile platform, seen from above; manufacturer family record, not assertion that this configuration has Gen2 bimanual arms."
+  },
+  {
+    "id": 24,
+    "slug": "atom",
+    "original": "dobot-pdf-x63.jpeg",
+    "roi": [
+      0,
+      0,
+      3376,
+      2110
+    ],
+    "bbox": [
+      1262,
+      156,
+      1949,
+      2013
+    ],
+    "border": 20,
+    "size": [
+      727,
+      1897
+    ],
+    "native_alpha": false,
+    "source_page": "https://www.dobot-robots.com/products/humanoid-robots/atom.html",
+    "source_url": "https://a.storyblok.com/f/298593/x/9971361e2e/atom-brochure.pdf",
+    "original_sha256": "6bc6effb469790b75384c2b41c530d18332f8030e2c71e9d5e73e89024bdbc68",
+    "prepared_sha256": "c79952583ba1290728e932f9ec613b8a2f0f9ecbf9c17dbe9283ac7052572afb",
+    "mask_sha256": "e195458efd77b0e7ed8589f6d0397a67293cbbdf4090f714afcf0668a67ef2fb",
+    "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+    "checked_at": "2026-11-27",
+    "extraction": "Official DOBOT ATOM brochure page3 xref63 native3376x2110, biped ATOM Max; not wheeled ATOM-W xref64.",
+    "pdf_sha256": "f344875042c2b2cc30d8b816b5f557e33099a749780d32b45f3e161b8b225f2f"
+  },
+  {
+    "id": 171,
+    "slug": "xialan-r03",
+    "original": "171-6.jpg",
+    "roi": [
+      230,
+      15,
+      465,
+      850
+    ],
+    "bbox": [
+      12,
+      10,
+      227,
+      831
+    ],
+    "border": 20,
+    "size": [
+      255,
+      861
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha-only manual polygon restores mechanical left arm missed by segmentation; source RGB unchanged.",
+    "source_page": "https://www.digit.com.cn/ProductsDetail/250.html",
+    "source_url": "https://www.digit.com.cn/UserFiles/ueditor/6393020077779566971161026.jpg",
+    "original_sha256": "e12c54ee39ba290097a192f5c29d5c59ffc5140e6808044d3edba094f5e4068a",
+    "prepared_sha256": "6fd497e65ecbcc8193e03dabbb96c55d5bac48f59ea6e2b17dfa2ba6eaf550a5",
+    "mask_sha256": "d45387dc976c3c98fbf9b0a6c984fd40b1fda22c6b2cb162404ccabb1c575696",
+    "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+    "checked_at": "2026-11-27",
+    "source_context": "Central full-body R03 in cream clothing from its official specifications infographic. Annotations remain outside robot; alpha-only left mechanical arm restoration."
+  },
+  {
+    "id": 173,
+    "slug": "cinnamon-1",
+    "original": "173-28.jpg",
+    "roi": [
+      860,
+      100,
+      1280,
+      1030
+    ],
+    "bbox": [
+      21,
+      35,
+      384,
+      917
+    ],
+    "border": 20,
+    "size": [
+      403,
+      922
+    ],
+    "native_alpha": false,
+    "source_page": "https://www.donutrobotics.com/en",
+    "source_url": "https://static.wixstatic.com/media/47f0f3_624de109facb4d7b86a5642b8d4ea2bc~mv2.jpg",
+    "original_sha256": "2a7c9d3ade0e0d4f24013085997ef3ba751a452717b85dc6a69417c5e42f8ab4",
+    "prepared_sha256": "221c03a62b748ec562d571dadc4f602fc59e3700e01d82001933fc34e2c394a7",
+    "mask_sha256": "da9751acd36dd4e73f5f7f47042bb1e184aced5682da85e3e163969979d6c21f",
+    "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+    "checked_at": "2026-11-27",
+    "source_context": "Manufacturer homepage explicitly captions photo28 as Cinnamon1 Silent Gesture Control; top-photo robot isolated without person. Do not call this Cinnamon2 or assert Donut manufactured the OEM body."
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "id": 173,
+  "slug": "cinnamon-1",
+  "original": "173-28.jpg",
+  "roi": [
+    860,
+    100,
+    1280,
+    1030
+  ],
+  "bbox": [
+    21,
+    35,
+    384,
+    917
+  ],
+  "border": 20,
+  "size": [
+    403,
+    922
+  ],
+  "native_alpha": false,
+  "source_page": "https://www.donutrobotics.com/en",
+  "source_url": "https://static.wixstatic.com/media/47f0f3_624de109facb4d7b86a5642b8d4ea2bc~mv2.jpg",
+  "original_sha256": "2a7c9d3ade0e0d4f24013085997ef3ba751a452717b85dc6a69417c5e42f8ab4",
+  "prepared_sha256": "221c03a62b748ec562d571dadc4f602fc59e3700e01d82001933fc34e2c394a7",
+  "mask_sha256": "da9751acd36dd4e73f5f7f47042bb1e184aced5682da85e3e163969979d6c21f",
+  "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+  "checked_at": "2026-11-27",
+  "source_context": "Manufacturer homepage explicitly captions photo28 as Cinnamon1 Silent Gesture Control; top-photo robot isolated without person. Do not call this Cinnamon2 or assert Donut manufactured the OEM body."
+}
