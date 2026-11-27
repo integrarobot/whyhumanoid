@@ -1,0 +1,23 @@
+{
+  "id": 195,
+  "slug": "pl-universe-prowhite-2",
+  "manufacturer": "PL-Universe",
+  "model": "ProWhite",
+  "credit": "PL-Universe",
+  "public_page": "https://whyhumanoid.com/humanoids/pl-universe-prowhite-195/",
+  "source_page": "https://www.hannovermesse.de/apollo/hannover_messe_2026/obs/Binary/A1506799/PL-UNIVERSE%20FILE.pdf",
+  "source_url": "https://www.hannovermesse.de/apollo/hannover_messe_2026/obs/Binary/A1506799/PL-UNIVERSE%20FILE.pdf",
+  "original": "original.png",
+  "original_size": [
+    1242,
+    1684
+  ],
+  "original_sha256": "b00fcbd20cd20d0461b326f64880e54e70b59d79823ca80c0f7bcc643df87590",
+  "source_context": "ManufacturerProWhiteRobot2.0brochurehostedbyHannoverMesse2026,PDFpage1embeddedimage0,native1242x1684. Completeplatformcameraheadtwoactualmulti-gripperhands,wheeledchassisandlevelingpads; allvisiblewithspacearound. IsolateONLYrobotfrombluebackground/floorshadow/reflection. CaptionexplicitProWhiteRobot2.0manufacturerbrochureimage/renderonrecordProWhitefamily, no assertionearliermetricsapplyto2.0,no master/name/specchanges. Currentwebsite1000x1400raisedarmPNGwasREJECTEDbecauseelbow/rightarm/basecropanddamagedalpha; donotreuse. Thisbrochurefulldifferentrectangularchassisconfigurationisidentified2.0byitsowntitle.",
+  "pdf_page": 1,
+  "pdf_image_index": 0,
+  "source_document_sha256": "d610d0a51424d425a3494512a3732c55e6868be740aab6dcd2fa80ee67bfa046",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturerprimarybrochure; creditowner,noopenphotolicenceassumed,nooutreachsent."
+}

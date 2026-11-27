@@ -1,0 +1,23 @@
+{
+  "id": 89,
+  "slug": "ti5-t230a",
+  "manufacturer": "Ti5robot",
+  "model": "T230A",
+  "credit": "Ti5Robot",
+  "public_page": "https://whyhumanoid.com/humanoids/ti5robot-t230a-89/",
+  "source_page": "https://26813350.s21i.faiusr.com/61/ABUIABA9GAAgnJOsxAYoxOnT4QM.pdf",
+  "source_url": "https://26813350.s21i.faiusr.com/61/ABUIABA9GAAgnJOsxAYoxOnT4QM.pdf",
+  "original": "original.png",
+  "original_size": [
+    1587,
+    2245
+  ],
+  "original_sha256": "1b57aa5e03659dab6a542f20478e2b248ed0121f5b0f4aae4a5d142d8256c2d0",
+  "source_context": "ManufacturerTi5brochurePDFpage10embeddedfullpageimage18,native1587x2245. ProductlineupwithEXPLICITindividualmodelnameT230Aabovewhitebipedfifthfromleft. Wholeheadtwohandsfeetvisibleunoccluded, robotheightabout620px. UseONLYT230A, NOTneighborT170V2.1orwheeledT230C. RecommendednativeROIroughly[1010,1000,1300,1770], independentlycheckextremitiesbeforemask. Isolaterobot, excludeuppermodeltextandfloorreflection. Existingmanufacturerproductrender,captionT230Abrochurerender. No specs/mobility/masteredits; recordtechnicalspecsremainunknown.",
+  "pdf_page": 10,
+  "pdf_image_index": 18,
+  "source_document_sha256": "29ff942e4e8cda270f772d03f0c58ee2586685ac4314b2774d92c32fc30563cc",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturerprimarybrochure; creditowner,noopenphotolicenceassumed,nooutreachsent."
+}
