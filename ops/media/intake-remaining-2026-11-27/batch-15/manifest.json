@@ -1,0 +1,167 @@
+[
+  {
+    "id": 166,
+    "slug": "avatar-mobile-profile",
+    "credit": "Avatar Robotics",
+    "source_page": "https://www.avatarrobotics.com/",
+    "source_url": "https://framerusercontent.com/assets/ufET1Ro5uqxXNvjaYYsMJUotv7k.webm",
+    "source_context": "Exact maker homepage video native1920x1080, frame755 at31.4896s /23.976fps. Complete mobile humanoid side profile, black/white head, both actual arms/grippers (self-overlapping in pose but all actual tips visible before rackpost), tray with silver packets, whole rear lift column, complete mobilebase including central side wheel. Root inspected native. Right rack post beyond hand, does not obscure robot; no invented fingers/feet. Caption Avatar Robotics, mobile lift-column configuration, official video still. Preserve tray/contents as platform, exclude racks/floor. Inspect thin black robot cables accurately, no background pieces or reconstructed parts. Suggested safeROI[820,280,1345,1040], independently widen as needed. Other front frame830 external rack occludes leftarm and is rejected; frame755 specifically selected.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 66c596a, candidates-25",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      820,
+      280,
+      1345,
+      1040
+    ],
+    "bbox": [
+      48,
+      48,
+      499,
+      727
+    ],
+    "border": 20,
+    "size": [
+      491,
+      719
+    ],
+    "native_alpha": false,
+    "original_sha256": "d77fa6b385baa49786e6b3e554e876755864971e2e6f0fcd7200115dfc0cc570",
+    "prepared_sha256": "2a3dfffb71091eeedbca87ebab67bf2ad3829af36e52194cca1e8254646638d1",
+    "mask_sha256": "c9cf36fc6fb7aaedb89f4513d9c7ff7007baf47b832f220d0a08641c3d0ac6dc"
+  },
+  {
+    "id": 74,
+    "slug": "revobots-taskbot-scout",
+    "credit": "REVOBOTS",
+    "source_page": "https://revobots.ai/",
+    "source_url": "https://revobots.ai/_assets/video/9cde64a553bd519ee408b99fd8340690.mp4",
+    "source_context": "Official homepage embedded Canva video VAG4Ru9-e18. Native1920x1080 encoded rendition explicitly referenced in dashVideoFiles metadata. This is NOT a newly upscaled1280 frame; source media directly fetched1080 (same628frames30fps). Frame292 at9.7333s; whole sensor mast/cap and complete four-wheeledmobileplatform, margin below tyres. No arms/head invented, this SCOUT configuration has sensor mast by design. Crucially current record74 Platform and mobility explicitly includes TASKBOT SCOUT autonomous mobile robot (patrol, inspection), so exact configuration matches owning catalogue. Homepage labels same configuration TASKBOT SCOUT. Caption REVOBOTS, TASKBOT SCOUT mobile configuration, official video still; do not silently label it humanoid hardware or payload evidence. Alpha-only, exclude street/car/logos, preserve RGB/native20padding. Root inspected native1080 frame292, all physical platform whole. ApproxROI[1020,340,1490,1080], independently widen enough toretainwholewheels.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 62f03ab, candidates-28",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; levels 150..240 instead of the usual 85..230 so the soft video edge of the white tyres does not carry a dark rim of asphalt",
+    "roi": [
+      1000,
+      330,
+      1510,
+      1080
+    ],
+    "bbox": [
+      47,
+      72,
+      455,
+      743
+    ],
+    "border": 20,
+    "size": [
+      448,
+      711
+    ],
+    "native_alpha": false,
+    "original_sha256": "bdc96b561581682c97d6ff694f1b50fa55d559a0d35b52b0fa36d5c4e08174e2",
+    "prepared_sha256": "109bd22d0f96b7c53380e7fbcbf6dba8c4dd55235c89d05989b7749d5ba1cffc",
+    "mask_sha256": "5ba3580eed580c68dcd0303ca2187ed5eb3a6b0071f1e99690eee986075badaa"
+  },
+  {
+    "id": 199,
+    "slug": "starbot-astra",
+    "credit": "StarBot",
+    "source_page": "https://www.starbotusa.com/",
+    "source_url": "https://www.starbotusa.com/starbot_three_robot_platforms_v2.png",
+    "source_context": "Exact homepage image alt: StarBot Spark, StarBot Astra, and StarBot Flex. Source original decoded from Next/image URL, NOT optimized/upscaled3840 response. Native1536x1024 manufacturer PRODUCT ILLUSTRATION/RENDER, not a hardware photograph or performance evidence. Homepage textual lineup/release sections map Spark3ft smallbiped, Astra5ft biped, Flex5ft9 foldable wheeled configuration. Astra is CENTER biped. Spark left smaller is not the record. ApproxROI[480,0,1000,970], independently widen if needed. Both hands and feet whole, no external occlusion. Keep exact native visibleRGB. Remove other two figures, floor/reflection/shadow with alpha-only mask; caption explicitly StarBot, [model] manufacturer product illustration. Do not claim independent evidence or change specs. Root inspected full original.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining b07ffac, candidates-26",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      470,
+      0,
+      1010,
+      1000
+    ],
+    "bbox": [
+      79,
+      38,
+      420,
+      942
+    ],
+    "border": 20,
+    "size": [
+      381,
+      944
+    ],
+    "native_alpha": false,
+    "original_sha256": "dc3ee48adce174ad587fe1510f3aa548e2254a4c432dfa068ff099e4ca43d18e",
+    "prepared_sha256": "392d9fbc41e58f2bb003cd88ef50ffdc95ab4bf3fb11a102369670953704ae1a",
+    "mask_sha256": "a0bae99dc10500e1bb9a2b7b9e971a51162006f18b6693f5e7982cd89b55179c"
+  },
+  {
+    "id": 200,
+    "slug": "starbot-flex",
+    "credit": "StarBot",
+    "source_page": "https://www.starbotusa.com/",
+    "source_url": "https://www.starbotusa.com/starbot_three_robot_platforms_v2.png",
+    "source_context": "Exact homepage image alt: StarBot Spark, StarBot Astra, and StarBot Flex. Source original decoded from Next/image URL, NOT optimized/upscaled3840 response. Native1536x1024 manufacturer PRODUCT ILLUSTRATION/RENDER, not a hardware photograph or performance evidence. Homepage textual lineup/release sections map Spark3ft smallbiped, Astra5ft biped, Flex5ft9 foldable wheeled configuration. Flex is RIGHT wheeled foldable platform, not middle biped. ApproxROI[1010,0,1536,980], independently widen if needed. Whole head, both hands, entire folding column and mobilebase/wheels visible. Keep exact native visibleRGB. Remove other two figures, floor/reflection/shadow with alpha-only mask; caption explicitly StarBot, [model] manufacturer product illustration. Do not claim independent evidence or change specs. Root inspected full original.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining b07ffac, candidates-26",
+    "mask_method": "BiRefNet general (rembg, mask only), plus the two black casters from the original luminance, Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-casters-mask.png; levels 85..230; the BiRefNet mask left the two black casters under the base partly transparent or out; inside two small rectangles around them (x 1182..1237, y 943..959 and x 1372..1425, y 932..944 of the original) the mask takes the larger of the model value and a luminance value (opaque below 20, none above 50), so the casters are whole and their mirror reflection and the grey contact shadow stay out",
+    "roi": [
+      1040,
+      0,
+      1536,
+      1000
+    ],
+    "bbox": [
+      28,
+      19,
+      433,
+      960
+    ],
+    "border": 20,
+    "size": [
+      445,
+      981
+    ],
+    "native_alpha": false,
+    "original_sha256": "dc3ee48adce174ad587fe1510f3aa548e2254a4c432dfa068ff099e4ca43d18e",
+    "prepared_sha256": "a0d2264215c0f75c45de7623868d0e3d0aacd54f084b58355f7a7a2f11a2f3cb",
+    "mask_sha256": "4087a5575a8c81448d5930a9446c61a4a2c3da131f02eae49b5524f808665a47"
+  },
+  {
+    "id": 191,
+    "slug": "matrix-1-product-native",
+    "credit": "Matrix Robotics",
+    "source_page": "https://matrixrobotics.ai/matrix-1",
+    "source_url": "https://matrixrobotics.ai/hero_video.jpg",
+    "source_context": "Exact /matrix-1 page title MATRIX-1 | Humanoids. Hero video poster /hero_video.jpg appears immediately before h1 MATRIX-1 Next-generation AI humanoid robot for real-world applications, accompanying https://matrixrobotics.ai/hero.mp4. This is NOT homepage MATRIX-3; explicit model1 page and hardware white slender biped rather than MATRIX3. Existing maker image/technical render native3840x2160 showing whole head, both hands and both feet with margins in a plain studio. Root inspected full source contact sheet. Caption MATRIX-1 manufacturer product image (or render after visual review), no capability claims/spec changes. Alpha-only segmentation, exclude floor/reflection/walls, retain originalRGB/native20px padding.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining dc11021, candidates-27",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; alpha-only exclusion [0, 1821, 860, 1960]; the soles meet their own reflection in the glossy floor; the brightness profile under both shoes is mirror-symmetric about y = 1980 of the original, so every row from 1981 down is set to alpha 0 (alpha only)",
+    "roi": [
+      1500,
+      160,
+      2360,
+      2120
+    ],
+    "bbox": [
+      130,
+      86,
+      725,
+      1821
+    ],
+    "border": 20,
+    "size": [
+      635,
+      1775
+    ],
+    "native_alpha": false,
+    "original_sha256": "c4d582c016cd6e58e39108d8071bec913dc30979b35f57056b460cde6876d733",
+    "prepared_sha256": "19b07d2a01608cc70a44d1f4c27bbd9f9a731355fc36c77d23dd971354ef116b",
+    "mask_sha256": "9a3b650a36d02345dc412ec5dc2abad576998a2e2000210b7cf508d090296164"
+  }
+]

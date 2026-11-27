@@ -2077,6 +2077,81 @@
         "credit": "Image: Jingchu Humanoid, JingChu 1 manufacturer render",
         "provenance": "ops/media/robots/jingchu-1/PROVENANCE.md"
       }
+    },
+    "166": {
+      "recorded": {
+        "Lab": "Avatar Robotics",
+        "Robot": "Avatar humanoid (model name not disclosed)"
+      },
+      "image": {
+        "src": "/assets/robots/avatar-robotics-mobile-lift-column/avatar-robotics-mobile-lift-column-full-body.webp",
+        "fallback": "/assets/robots/avatar-robotics-mobile-lift-column/avatar-robotics-mobile-lift-column-full-body.png",
+        "width": 491,
+        "height": 719,
+        "alt": "Avatar Robotics mobile robot, full platform, side view, on its lift column and wheeled base with a tray, still from the official video",
+        "credit": "Image: Avatar Robotics, mobile lift-column configuration, official video still",
+        "provenance": "ops/media/robots/avatar-robotics-mobile-lift-column/PROVENANCE.md"
+      }
+    },
+    "199": {
+      "recorded": {
+        "Lab": "StarBot",
+        "Robot": "StarBot Astra"
+      },
+      "image": {
+        "src": "/assets/robots/starbot-astra/starbot-astra-full-body.webp",
+        "fallback": "/assets/robots/starbot-astra/starbot-astra-full-body.png",
+        "width": 381,
+        "height": 944,
+        "alt": "StarBot Astra, full body, front view, standing, manufacturer product illustration",
+        "credit": "Image: StarBot, Astra manufacturer product illustration",
+        "provenance": "ops/media/robots/starbot-astra/PROVENANCE.md"
+      }
+    },
+    "200": {
+      "recorded": {
+        "Lab": "StarBot",
+        "Robot": "StarBot Flex"
+      },
+      "image": {
+        "src": "/assets/robots/starbot-flex/starbot-flex-full-body.webp",
+        "fallback": "/assets/robots/starbot-flex/starbot-flex-full-body.png",
+        "width": 445,
+        "height": 981,
+        "alt": "StarBot Flex, full body, three-quarter view, upper body on a folding leg over a wheeled base, manufacturer product illustration",
+        "credit": "Image: StarBot, Flex manufacturer product illustration",
+        "provenance": "ops/media/robots/starbot-flex/PROVENANCE.md"
+      }
+    },
+    "191": {
+      "recorded": {
+        "Lab": "Matrix Robotics",
+        "Robot": "MATRIX-1"
+      },
+      "image": {
+        "src": "/assets/robots/matrix-robotics-matrix-1/matrix-robotics-matrix-1-full-body.webp",
+        "fallback": "/assets/robots/matrix-robotics-matrix-1/matrix-robotics-matrix-1-full-body.png",
+        "width": 635,
+        "height": 1775,
+        "alt": "MATRIX-1 by Matrix Robotics, full body, front view, standing, manufacturer product image",
+        "credit": "Image: Matrix Robotics, MATRIX-1 manufacturer product image",
+        "provenance": "ops/media/robots/matrix-robotics-matrix-1/PROVENANCE.md"
+      }
+    },
+    "74": {
+      "recorded": {
+        "Lab": "Revobots",
+        "Robot": "Taskbot"
+      },
+      "image": {
+        "src": "/assets/robots/revobots-taskbot-scout/revobots-taskbot-scout-full-body.webp",
+        "fallback": "/assets/robots/revobots-taskbot-scout/revobots-taskbot-scout-full-body.png",
+        "width": 448,
+        "height": 711,
+        "alt": "REVOBOTS TASKBOT SCOUT, full platform, sensor mast on a four-wheeled mobile base, still from the official video",
+        "credit": "Image: REVOBOTS, TASKBOT SCOUT mobile configuration, official video still",
+        "provenance": "ops/media/robots/revobots-taskbot-scout/PROVENANCE.md"
+      }
     }
   }
 }

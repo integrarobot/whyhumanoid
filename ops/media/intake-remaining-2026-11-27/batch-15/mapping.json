@@ -1,0 +1,44 @@
+{
+  "batch": 15,
+  "intake": "ops/media/intake-remaining-2026-11-27/batch-15",
+  "branch": "codex/image-sources-remaining",
+  "commit": "66c596a (candidates-25), b07ffac (candidates-26), dc11021 (candidates-27) and 62f03ab (candidates-28)",
+  "scope": "All missing images (Javier, 27 Nov 2026)",
+  "items": {
+    "166": {
+      "slug": "avatar-robotics-mobile-lift-column",
+      "alt": "Avatar Robotics mobile robot, full platform, side view, on its lift column and wheeled base with a tray, still from the official video",
+      "credit": "Image: Avatar Robotics, mobile lift-column configuration, official video still",
+      "identity": "Frame 755 (31.49 s) of the video on Avatar Robotics' homepage, decoded at its native 1920 × 1080: the whole platform in side view, with the black and white head, both arms and grippers, the tray with its packets, the rear lift column and the complete wheeled base. The shelving rack and the floor are excluded by the alpha mask; the tray and its contents are kept as part of the platform. The maker does not disclose a model name, and none is given here.",
+      "quality": null
+    },
+    "199": {
+      "slug": "starbot-astra",
+      "alt": "StarBot Astra, full body, front view, standing, manufacturer product illustration",
+      "credit": "Image: StarBot, Astra manufacturer product illustration",
+      "identity": "The centre figure of the three-robot illustration on StarBot's homepage (native 1536 × 1024): Astra, the full-size biped, whole with head, both hands and both feet. It is a product illustration, not a photograph of hardware. The smaller Spark on the left, the wheeled Flex on the right and the floor reflection are excluded by the alpha mask.",
+      "quality": null
+    },
+    "200": {
+      "slug": "starbot-flex",
+      "alt": "StarBot Flex, full body, three-quarter view, upper body on a folding leg over a wheeled base, manufacturer product illustration",
+      "credit": "Image: StarBot, Flex manufacturer product illustration",
+      "identity": "The right-hand figure of the three-robot illustration on StarBot's homepage (native 1536 × 1024): Flex, the wheeled configuration, whole with head, both hands, the folding leg and the wheeled base with its two black casters. It is a product illustration, not a photograph of hardware. The other two figures, the floor reflection and the contact shadow are excluded by the alpha mask.",
+      "quality": null
+    },
+    "191": {
+      "slug": "matrix-robotics-matrix-1",
+      "alt": "MATRIX-1 by Matrix Robotics, full body, front view, standing, manufacturer product image",
+      "credit": "Image: Matrix Robotics, MATRIX-1 manufacturer product image",
+      "identity": "The poster image of the hero video on Matrix Robotics' MATRIX-1 page (native 3840 × 2160): the whole robot with head, both hands and both feet, in a plain studio. The walls, the glossy floor and the reflection under the soles are excluded by the alpha mask. It is MATRIX-1, not the MATRIX-3 shown on the maker's homepage.",
+      "quality": null
+    },
+    "74": {
+      "slug": "revobots-taskbot-scout",
+      "alt": "REVOBOTS TASKBOT SCOUT, full platform, sensor mast on a four-wheeled mobile base, still from the official video",
+      "credit": "Image: REVOBOTS, TASKBOT SCOUT mobile configuration, official video still",
+      "identity": "Frame 292 (9.73 s) of the video on REVOBOTS' homepage, at its native 1920 × 1080 encoding: the TASKBOT SCOUT configuration, whole, with its sensor mast and dome and the complete four-wheeled base. This configuration has no arms or head, and none are added; it is the mobile platform the record lists, not humanoid hardware. The street, the car and the logos are excluded by the alpha mask; the dome is transparent, so what shows through it is the scene behind, as filmed.",
+      "quality": null
+    }
+  }
+}
