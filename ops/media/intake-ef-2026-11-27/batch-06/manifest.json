@@ -34,6 +34,49 @@
     "checked_at": "2026-11-27"
   },
   {
+    "id": 26,
+    "slug": "mirokai",
+    "original": "mirokai-studio.jpg",
+    "roi": [
+      480,
+      0,
+      1050,
+      1152
+    ],
+    "bbox": [
+      47,
+      62,
+      467,
+      1077
+    ],
+    "border": 20,
+    "size": [
+      460,
+      1055
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha-only mask, right ear restored by manual alpha polygon after automatic mask omitted it. Original RGB unchanged.",
+    "source_page": "https://enchanted-tools.notion.site/Miroka-Explorer-Suit-Studio-247d56e2479680e2a63ad584350fb015?pvs=25",
+    "source_url": "https://enchanted-tools.notion.site/image/attachment%3A688035d6-41a6-408e-9072-92314262218b%3AStill_2025-08-06_101409_1.1.20.jpg?table=block&id=247d56e2-4796-804f-81a9-e834d18efc6e&spaceId=214cc2c7-3563-4ada-955b-928c5c369400&width=1410&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "credit": "Enchanted Tools - Mirokaï robot",
+    "source_context": "Miroki (yellow character) of the Mirokai robot family, from the official Mirokai Explorer Suit Studio gallery. Complete robot including rolling sphere and protective ring. Not a different unnamed humanoid.",
+    "original_sha256": "228ea6908575dcbced3c6d768c3f9bd2201214743dd1c9728d14086a2ab4d242",
+    "prepared_sha256": "77fedd1a9a1fa8ce91cadaf0984814bb6fd031999167d24fa73bfcbf09f9202c",
+    "mask_sha256": "01c29215249f9c203666f06fce57763a48b21dad5dce9e247a2cb595c018eca1",
+    "processing": "Non-generative alpha-only mask with manual right-ear restoration. Original RGB pixels and native resolution preserved.20px transparent padding.",
+    "checked_at": "2026-11-27",
+    "reuse_conditions": "Official media room allows photo use with credit and requests notification. User explicitly authorised manufacturer contact in this chat on2026-11-27. Codex submitted notification through https://enchanted.tools/contact and observed Thank you for contacting us. plus cleared form. Credit exact gallery wording: Enchanted Tools - Mirokaï robot.",
+    "notification": {
+      "channel": "Official contact form",
+      "url": "https://enchanted.tools/contact",
+      "date": "2026-11-27",
+      "result": "Thank you for contacting us.",
+      "authorised_by": "Javier in current chat",
+      "sent_by": "Codex",
+      "public_page": "https://whyhumanoid.com/humanoids/enchanted-mirokai-26/"
+    }
+  },
+  {
     "id": 28,
     "slug": "ameca",
     "original": "ameca-18535.jpg",
