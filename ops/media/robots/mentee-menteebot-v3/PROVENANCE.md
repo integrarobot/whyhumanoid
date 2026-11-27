@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 8, All mi
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 8, PR not yet merged)
+## Published files (image batch 8, PR 228, merge db579f7, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/mentee-menteebot-v3/mentee-menteebot-v3-full-body.png`, 929 × 2769 px, sha256 `19d3318aaec26039052a3a9d1ee29ea0e5eb1d19ed2707482522fc3d89876211` (= the prepared.png).
 - **WebP:** `assets/robots/mentee-menteebot-v3/mentee-menteebot-v3-full-body.webp`, sha256 `37a7625e11e4ccc289045dcd6bfc07a48ff1d49686ae5871d0f42cacb3eab73f`.
