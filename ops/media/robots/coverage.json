@@ -25,10 +25,7 @@
         196
       ],
       "reserves": [
-        104,
-        51,
-        102,
-        76
+        102
       ],
       "notes": [
         "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
@@ -38,7 +35,8 @@
         "Reserves 32 (Fourier GR-1) and 151 (Engineai T800) moved to batch 6, scope \"E/F makers\" (27 Nov 2026).",
         "Reserves H2 (139) and R1 (141) move to batch 10 (27 Nov 2026).",
         "Reserve D9 (155) back to the queue: its only whole official source so far is under the minimum height (27 Nov 2026).",
-        "Walker S2 (142) and Forerunner K2 (215) moved from these reserves to batch 12 (27 Nov 2026), with new official sources from Codex."
+        "Walker S2 (142) and Forerunner K2 (215) moved from these reserves to batch 12 (27 Nov 2026), with new official sources from Codex.",
+        "104, 51, 76 moved from these reserves to batch 13 (27 Nov 2026), with new official sources from Codex."
       ],
       "published": "2026-11-27"
     },
@@ -335,6 +333,31 @@
         "Published with PR 240 (reviewed head 2db1146, CI 46051688623; merge fa0b12c), 27 Nov 2026; Pages 46051942119 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 13,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        49,
+        186,
+        187,
+        104,
+        51,
+        76,
+        54,
+        195,
+        38,
+        73
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-13/: candidates-14 (6d1eb96: IRON), candidates-15 (54f4cf5: Oli, STAR1, MagicBot Gen1), candidates-16 (23aba3a: ProWhite 2.0), candidates-17 (164cfaf: Kuavo 4Pro with articulated hands, ARMAR-7, XMAN-R1), candidates-18 (617be62: Sophia Utility) and candidates-19 (639618b: Reflex). Every cutout prepared by Claude, alpha only: the original's own alpha (Kuavo), the source's own soft mask (ARMAR-7; Sophia, levelled 215..240 to drop the feathered white fringe) or BiRefNet masks kept beside the originals.",
+        "Left out and kept in the package as research: T230A (89), because the brochure's white light beams behind the robot cannot be separated from its white body without artificial straight edges. Sanctuary Phoenix Gen6 (80) is prepared for the next batch.",
+        "Captions name the kind of image and the variant: Kuavo 4Pro technical render with articulated hands, ARMAR-7 lecture photograph (third-party hosted copy), XMAN-R1 manufacturer render, IRON September 2026 production-line photograph, Oli HU_D04 dexterous-hand technical render, STAR1 brochure image, MagicBot Gen1 video still, ProWhite Robot 2.0 brochure image, Sophia Utility skirted configuration, Reflex video still with snow shovel. Records' specifications unchanged."
+      ]
     }
   ],
   "robots": {
@@ -715,20 +738,42 @@
         "Lab": "Xpeng",
         "Robot": "Next-Gen IRON"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.pxing.com/en/index",
       "notes": "The 2025 Next-Gen IRON, not the 2024 IRON.",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://d21buns5ku92am.cloudfront.net/70277/images/699713-XPENG%20IRON_04-f7eb9d-original-1788864320.jpeg",
+          "page": "https://xpeng-newsroom.pr.co/de-AT-AT/270304-xpengs-humanoider-roboter-iron-verlasst-auf-eigenen-fussen-seine-produktionslinie/",
+          "sha256": "a541946201f796db3a7ce98ee134f8eee28eb37a3db0a2d19a1d7df1703c0a7c",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 733 × 2121 with 20 px padding."
+        }
+      ]
     },
     "51": {
       "recorded": {
         "Lab": "LimX",
         "Robot": "Oli"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.limxdynamics.com/en",
       "notes": "Not Luna (id 156).",
-      "sources": [],
+      "sources": [
+        {
+          "file": "https://raw.githubusercontent.com/limxdynamics/humanoid-description/master/docs/images/hu_d04_hand.png",
+          "page": "https://github.com/limxdynamics/humanoid-description/blob/master/README.md",
+          "sha256": "5f92c8b212960c0100ea8c41748ab51a1330d5c532e1a00188a45a395f80e4e4",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 515 × 678 with 20 px padding."
+        }
+      ],
       "research": [
         {
           "by": "claude",
@@ -751,9 +796,20 @@
         "Lab": "Robotera",
         "Robot": "Star 1"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.robotera.com/",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://www.robotera.com/upload/goods/20241208/f56791f6bd7fdd069e2c8552f4d3aeed.pdf",
+          "page": "https://www.robotera.com/upload/goods/20241208/f56791f6bd7fdd069e2c8552f4d3aeed.pdf",
+          "sha256": "1f78326fd3bada5d791b127d4421f69777c889187a3586b5a94e27f4f427afe1",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1014 × 3210 with 20 px padding."
+        }
+      ]
     },
     "137": {
       "recorded": {
@@ -2500,10 +2556,21 @@
         "Lab": "Hanson",
         "Robot": "Sophia"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.hansonrobotics.com/",
       "notes": "Hanson Robotics Sophia: whole robot only; a bust or head-and-torso Sophia does not meet the whole-robot requirement.",
-      "result": "Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources."
+      "sources": [
+        {
+          "file": "https://www.european-lotteries.org/system/files/inline-files/Hanson_2023-06-14.pdf",
+          "page": "https://www.european-lotteries.org/system/files/inline-files/Hanson_2023-06-14.pdf",
+          "sha256": "1f9d48f5e406589f66e3aad04d27141fc7f379f3deeb44ab0590d39365815fbb",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 510 × 1017 with 20 px padding."
+        }
+      ]
     },
     "39": {
       "recorded": {
@@ -2701,10 +2768,21 @@
         "Lab": "Leju",
         "Robot": "Kuavo"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.lejurobot.com/en",
-      "result": "Source received 27 Nov 2026 (Leju homepage, General Humanoid Robot series image, 902 × 1554 with its own transparency): the robot's head reaches the top edge of the file (25 px of the top row opaque) and the left fingertips the left edge, so a complete head cannot be shown; left pending rather than published (Codex's rule: no cut head or feet). Another official whole-body source is still sought.",
-      "notes": "Batch 12 (27 Nov 2026): the Kuavo 4Pro Standard render (520 × 1170) has flat grey placeholder forearms and hands; left out by Codex's decision. A new official image with articulated hands is in Codex's candidates-17."
+      "notes": "Batch 12 (27 Nov 2026): the Kuavo 4Pro Standard render (520 × 1170) has flat grey placeholder forearms and hands; left out by Codex's decision. A new official image with articulated hands is in Codex's candidates-17.",
+      "sources": [
+        {
+          "file": "https://raw.githubusercontent.com/LejuRobotics/kuavo-ros-opensource/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro.png",
+          "page": "https://github.com/LejuRobotics/kuavo-ros-opensource/blob/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro.png",
+          "sha256": "3cf9f2e12b09244f2cf798a59c8ec6dcca0842aeb8f4f1bf2aeb2d4cf7552ed1",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1317 × 2573 with 20 px padding."
+        }
+      ]
     },
     "50": {
       "recorded": {
@@ -2740,9 +2818,20 @@
         "Lab": "Magiclab",
         "Robot": "Magicbot"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://magiclab.top",
-      "result": "Queued. Official GitHub MagiclabRobotics/Magiclab_GMR has no product image; Codex's sweep pending."
+      "sources": [
+        {
+          "file": "https://oss-cdn.magiclab.top/file/videos/z1/8f7cf6/89fceeddb859c6e9a66efb62b5ee0a3f.mp4",
+          "page": "https://www.magiclab.top/en/human",
+          "sha256": "1c179ffbd106ddf941505bb2976ce853002f8741ea38d9060f6c0a4c881871bf",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 316 × 867 with 20 px padding."
+        }
+      ]
     },
     "55": {
       "recorded": {
@@ -2935,9 +3024,20 @@
         "Lab": "Reflex",
         "Robot": "Reflex"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.reflexrobotics.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://image.mux.com/aWwI02dxncxiVnlB42nzktdNdVaT8Ie701cZNIuGJSLfo/thumbnail.png?time=12",
+          "page": "https://www.reflexrobotics.com/",
+          "sha256": "5528989a03b1d57edb0f66c5d3ab2b08bbe57393c922654581a318375aa0712a",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 566 × 1404 with 20 px padding."
+        }
+      ]
     },
     "74": {
       "recorded": {
@@ -3042,7 +3142,8 @@
       },
       "status": "queued",
       "page": "https://www.ti5robot.com/en/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet.",
+      "notes": "Batch 13 (27 Nov 2026): the official Ti5 brochure lineup image (T230A explicitly labelled) was prepared, but the white light beams behind the robot cannot be separated from its white body without artificial straight edges; left out, still queued."
     },
     "90": {
       "recorded": {
@@ -3449,18 +3550,41 @@
         "Lab": "KIT H²T",
         "Robot": "ARMAR-7"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://h2t.iar.kit.edu/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://pasta.place/Informatik/Robotik_1_%5BHIS%5D/Folien/WS_24-25/Robotics-I-Chapter-00-Introduction.pdf",
+          "page": "https://pasta.place/Informatik/Robotik_1_%5BHIS%5D/Folien/WS_24-25/Robotics-I-Chapter-00-Introduction.pdf",
+          "sha256": "1400e7f6c3f279e98841441cf08fbc89a7c232c4844638c659352526d989e1c4",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 313 × 664 with 20 px padding."
+        }
+      ],
+      "quality_note": "Small native source: 313 × 664 px as prepared, not enlarged."
     },
     "187": {
       "recorded": {
         "Lab": "KEENON Robotics",
         "Robot": "XMAN-R1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.keenon.com/en/product/XMAN-R1",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://universalsystems.com.au/wp-content/uploads/2026/02/KEENON-Robotics-Company-Introduction-Copy.pdf",
+          "page": "https://universalsystems.com.au/wp-content/uploads/2026/02/KEENON-Robotics-Company-Introduction-Copy.pdf",
+          "sha256": "836dba1888d81f473c8baa37877964c5e6543bed99436589d6244e8ade7cfeda",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 428 × 1294 with 20 px padding."
+        }
+      ]
     },
     "188": {
       "recorded": {
@@ -3575,9 +3699,20 @@
         "Lab": "PL-Universe",
         "Robot": "ProWhite"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://en.pl-universe.com/Products/ProWhiteRobot",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.hannovermesse.de/apollo/hannover_messe_2026/obs/Binary/A1506799/PL-UNIVERSE%20FILE.pdf",
+          "page": "https://www.hannovermesse.de/apollo/hannover_messe_2026/obs/Binary/A1506799/PL-UNIVERSE%20FILE.pdf",
+          "sha256": "b00fcbd20cd20d0461b326f64880e54e70b59d79823ca80c0f7bcc643df87590",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 682 × 1075 with 20 px padding."
+        }
+      ]
     },
     "197": {
       "recorded": {
