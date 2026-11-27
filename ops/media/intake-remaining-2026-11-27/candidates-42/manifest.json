@@ -1,0 +1,23 @@
+[
+  {
+    "id": 209,
+    "slug": "zj-humanoid-i3-native-video",
+    "credit": "ZJ Humanoid / NAVIAI",
+    "source_page": "https://www.zj-humanoid.com/zujian/2",
+    "source_url": "https://www.zj-humanoid.com/uploads/upload/video/20260715/26bfc3d74321a2f63f7fcdbfb52c0865.mp4",
+    "original": "original.png",
+    "original_size": [
+      1920,
+      1080
+    ],
+    "original_sha256": "a060626d9695047263f4b8ce4eedc438b72305ffa0058387146b691d64b08136",
+    "source_video_sha256": "2bc5f835bd546731ec40f58cbe75630f1c976eaba27e02f8bf34c4eacc96a121",
+    "frame_index_zero_based": 57,
+    "fps": 30,
+    "time_seconds": 1.9,
+    "source_context": "Exact i3 official product page, feature video labelled 威猛身躯 刚柔并济. Native1920x1080, frame57 after dissolve has ended, whole single robot three-quarter walking pose. Native head and both feet whole; forefoot lowermost pixel aroundy1067 leaves13px original margin. Keep original hands/dexterous fingers and self-occlusion of far hand by thigh. Actual waist/leg black cables and loops must remain; remove sky, buildings, trees, ground, shadow via alpha only. ApproxROI x630..1090 y40..1080, independently widen to full figure, no rescale or RGB changes. Mandatory credit i3 official product video still, walking configuration,2026. Do not use earlierframe44 because foot is clipped at bottom, or dissolveframe31 with ghost body. Do not archive source HTML, which contains unrelated exposed debug configuration; this package contains public image provenance only. No model specs/capability claims changed.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Official manufacturer public product video, credit required; no open licence assumed or outreach sent."
+  }
+]
