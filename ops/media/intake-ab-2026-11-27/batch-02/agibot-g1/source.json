@@ -1,0 +1,29 @@
+{
+  "id": 147,
+  "slug": "agibot-g1",
+  "mask_model": "native-alpha",
+  "roi": null,
+  "crop_bbox": [
+    9,
+    17,
+    764,
+    1200
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "pending-visual-review",
+  "asset_url": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/static/index/en/images/pro-A2D/proA2DOne-img.png",
+  "source_page": "https://www.agibot.com/products/G1",
+  "original_sha256": "fc0a4c3735ed0a7df65ff13c574f3ecbcf27e461c4ea1d06e59ebf71328911ea",
+  "prepared_sha256": "f4baed89b34c9606fb52d9960fc241d723d5bc97d722359bf0262b7c8c3dc0b4",
+  "dimensions": [
+    795,
+    1223
+  ],
+  "rgb_verified": true,
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "retrieved_at": "2026-11-27",
+  "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+  "licence": "Official-source editorial image; no open licence asserted"
+}

@@ -1,0 +1,29 @@
+{
+  "id": 165,
+  "slug": "anigon-fa-l",
+  "mask_model": "native-alpha",
+  "roi": null,
+  "crop_bbox": [
+    41,
+    8,
+    774,
+    2032
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "pending-visual-review",
+  "asset_url": "https://anigon.ch/images/robot-front.png",
+  "source_page": "https://anigon.ch/",
+  "original_sha256": "5c4bba4b7cf8556c7af342ae096ec7b3ac47f7e507c5fae23f734fb1bd487150",
+  "prepared_sha256": "d4eb356c0f72b96b8569c90219a5876bc994593e33041e4c5a24792f7238bf7e",
+  "dimensions": [
+    773,
+    2064
+  ],
+  "rgb_verified": true,
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "retrieved_at": "2026-11-27",
+  "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+  "licence": "Official-source editorial image; no open licence asserted"
+}

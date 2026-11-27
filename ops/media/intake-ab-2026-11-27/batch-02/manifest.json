@@ -1,0 +1,286 @@
+[
+  {
+    "id": 4,
+    "slug": "agibot-x1",
+    "mask_model": "isnet-general-use",
+    "roi": null,
+    "crop_bbox": [
+      54,
+      52,
+      368,
+      722
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "pending-visual-review",
+    "asset_url": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/static/index/en/images/prolx1One-img.png",
+    "source_page": "https://www.agibot.com/products/X1",
+    "original_sha256": "78b8d30bad0ebb0984865a5c0a85a6a92f24eda6b34f4f666ab2887d222389b3",
+    "prepared_sha256": "5a7c86d1072c8613a73c32e8caa1202d1d7b3b3588f13f3df749b9d81fec7840",
+    "dimensions": [
+      354,
+      710
+    ],
+    "rgb_verified": true,
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  },
+  {
+    "id": 144,
+    "slug": "agibot-a3",
+    "mask_model": "isnet-general-use",
+    "roi": null,
+    "crop_bbox": [
+      301,
+      61,
+      511,
+      737
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "pending-visual-review",
+    "asset_url": "https://store.agibot.com/cdn/shop/files/1_1.png?v=1786349615",
+    "source_page": "https://store.agibot.com/products/a3",
+    "original_sha256": "9b1af46a6b3cc368bc29332cd24e051bb0e7f7ddf0bf9ece09d7332534983cd5",
+    "prepared_sha256": "83e488a3ba6973ccd3a1b2892926d438fb7507e63bb06d2ec025eac25945f38c",
+    "dimensions": [
+      250,
+      716
+    ],
+    "rgb_verified": true,
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  },
+  {
+    "id": 145,
+    "slug": "agibot-x2",
+    "mask_model": "native-alpha",
+    "roi": null,
+    "crop_bbox": [
+      33,
+      20,
+      467,
+      920
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "pending-visual-review",
+    "asset_url": "https://cms-tos.agibot.com/content/x2-refresh-20261111/19b63d0568b73e7e7f385f49.webp",
+    "source_page": "https://www.agibot.com/products/X2",
+    "original_sha256": "19b63d0568b73e7e7f385f49a9a01cd7e1d76a1084cc68ecf399bd1cbf60ec1d",
+    "prepared_sha256": "689a18d8eda5c2ec40f9e4aedac73b33286582d6c2b5963491f889eb86431067",
+    "dimensions": [
+      474,
+      940
+    ],
+    "rgb_verified": true,
+    "original": "original.webp",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  },
+  {
+    "id": 146,
+    "slug": "agibot-g2",
+    "mask_model": "isnet-general-use",
+    "roi": null,
+    "crop_bbox": [
+      90,
+      11,
+      382,
+      815
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "pending-visual-review",
+    "asset_url": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/uploads/images/20251031/afa47f3a6d43c28b95a1534ed8310ad7.png",
+    "source_page": "https://www.agibot.com/products/X1",
+    "original_sha256": "a64e93dc03f304505c4fa01e5f55d43886ee48221d854d09b33813662775e2d5",
+    "prepared_sha256": "d108314cb6093f9bcbefa89779773ba61079e80a1291c3107592a7ce7add20ca",
+    "dimensions": [
+      332,
+      844
+    ],
+    "rgb_verified": true,
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  },
+  {
+    "id": 147,
+    "slug": "agibot-g1",
+    "mask_model": "native-alpha",
+    "roi": null,
+    "crop_bbox": [
+      9,
+      17,
+      764,
+      1200
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "pending-visual-review",
+    "asset_url": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/static/index/en/images/pro-A2D/proA2DOne-img.png",
+    "source_page": "https://www.agibot.com/products/G1",
+    "original_sha256": "fc0a4c3735ed0a7df65ff13c574f3ecbcf27e461c4ea1d06e59ebf71328911ea",
+    "prepared_sha256": "f4baed89b34c9606fb52d9960fc241d723d5bc97d722359bf0262b7c8c3dc0b4",
+    "dimensions": [
+      795,
+      1223
+    ],
+    "rgb_verified": true,
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  },
+  {
+    "id": 165,
+    "slug": "anigon-fa-l",
+    "mask_model": "native-alpha",
+    "roi": null,
+    "crop_bbox": [
+      41,
+      8,
+      774,
+      2032
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "pending-visual-review",
+    "asset_url": "https://anigon.ch/images/robot-front.png",
+    "source_page": "https://anigon.ch/",
+    "original_sha256": "5c4bba4b7cf8556c7af342ae096ec7b3ac47f7e507c5fae23f734fb1bd487150",
+    "prepared_sha256": "d4eb356c0f72b96b8569c90219a5876bc994593e33041e4c5a24792f7238bf7e",
+    "dimensions": [
+      773,
+      2064
+    ],
+    "rgb_verified": true,
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  },
+  {
+    "id": 2,
+    "slug": "aeirobot-alice",
+    "mask_model": "native-alpha",
+    "roi": null,
+    "crop_bbox": [
+      1,
+      4,
+      1276,
+      3233
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "pending-visual-review",
+    "asset_url": "https://cdn.imweb.me/thumbnail/20251107/1f679c6ba92e9.png",
+    "source_page": "https://eng.arobot4all.com/ALICE4",
+    "original_sha256": "7b5fbfaa5ef57e16e11758061d8a6fbeb22b1546636442a5a057b05f961ab846",
+    "prepared_sha256": "064f7c3661aeb4b16097f119de3d0a21ec6aa6be0d58c794ec58feca0bad8e98",
+    "dimensions": [
+      1315,
+      3269
+    ],
+    "rgb_verified": true,
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  },
+  {
+    "id": 143,
+    "slug": "agibot-a2",
+    "mask_model": "native-alpha",
+    "crop_bbox": [
+      608,
+      144,
+      1392,
+      1860
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "asset_url": "https://store.agibot.com/cdn/shop/files/2_ff0f068b-3ddd-497c-91dc-341a24cdc2c2.png?v=1766128167",
+    "source_page": "https://store.agibot.com/products/a2-ultra",
+    "original_sha256": "8c3003338111504b746680e859d90c6717d8f0ab88c12a1d89722b17f4762e59",
+    "prepared_sha256": "4a4e069ae4a62084ce73fcd5154c296020d67ace3b8904cfa259a8a44b0b18c8",
+    "dimensions": [
+      824,
+      1756
+    ],
+    "rgb_verified": true,
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  },
+  {
+    "id": 148,
+    "slug": "booster-t2",
+    "mask_model": "isnet-general-use",
+    "crop_bbox": [
+      150,
+      215,
+      1004,
+      950
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "asset_url": "https://fe-cdn.booster.tech/booster-official-website/release-0.1.22/_astro/robot-t2.DZUi1Dbz.webp",
+    "source_page": "https://www.booster.tech/booster-t2",
+    "original_sha256": "58db7797638ac1ff2d79512675188aa917794bdcaa930ab4898c159009e7e604",
+    "prepared_sha256": "f531b554927c669fb6c12ec09540c703addab70782b618d039fa76bc3d054874",
+    "dimensions": [
+      894,
+      775
+    ],
+    "rgb_verified": true,
+    "original": "original.webp",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  },
+  {
+    "id": 149,
+    "slug": "booster-k1",
+    "mask_model": "isnet-general-use",
+    "crop_bbox": [
+      322,
+      209,
+      1046,
+      965
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "asset_url": "https://fe-cdn.booster.tech/booster-official-website/release-0.1.22/_astro/robot-k1.Bjwl1Psx.webp",
+    "source_page": "https://www.booster.tech/booster-k1",
+    "original_sha256": "e23869dc8c56b34946d797ce73bcb66fdecece09fa67fe27f602c3f0721470f9",
+    "prepared_sha256": "3aa284721c59b15d94ce281d3bd572b678bc6cdb4d681c0ba8e4046573b83e82",
+    "dimensions": [
+      764,
+      796
+    ],
+    "rgb_verified": true,
+    "original": "original.webp",
+    "prepared": "prepared.png",
+    "retrieved_at": "2026-11-27",
+    "review": "Codex: full body and alpha preview reviewed; final light/dark and published checks pending",
+    "licence": "Official-source editorial image; no open licence asserted"
+  }
+]
