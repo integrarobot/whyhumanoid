@@ -1,0 +1,17 @@
+{
+  "id": 95,
+  "slug": "vanar-generation1-product-render",
+  "credit": "Vanar Robots",
+  "source_page": "https://www.vanarrobots.com/Gen1",
+  "source_url": "https://www.vanarrobots.com/images/Renders/WebP/File100Full.webp",
+  "original": "original.webp",
+  "original_size": [
+    6675,
+    4702
+  ],
+  "original_sha256": "fed5ca2bfacffb433ea165da090f148281caccf5708f187bfb98ab838c8c708a",
+  "source_context": "Exact maker Generation1 page and alt VanarGeneration1; native6675x4702 existing technical/product render, whole single biped in center spotlight. Head, actual black hands, both feet whole, ample margins. Native RGB image path explicitly Renders; mandatory caption VanarRobots, Generation1 manufacturer product render. Darkbody on darkgrey studio background, careful alpha mask required; isolate robot only, no floor/shadow/glow orRGBbrightening. ApproxROI2600,700..4100,4200 root examined atnative, independentadjustwholefigure. Exposed mechanical body and simple openheadneck configuration are original, do not add shells orfingers. CurrentofficialGen1 details andphoto corroborate same design, notanotherfuturegeneration. No capability/spec changes or copyof aspirationalmarketing.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primary source. Credit required; no open licence assumed or outreach sent."
+}
