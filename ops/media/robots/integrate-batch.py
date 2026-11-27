@@ -33,11 +33,12 @@ for i, it in cfg['items'].items():
     if not np.array_equal(np.asarray(Image.open(png).convert('RGBA'))[..., 3], np.asarray(Image.open(webp).convert('RGBA'))[..., 3]):
         sys.exit(f'{i}: WebP alpha differs from PNG')
     W, H = Image.open(png).size
+    credit = it.get('credit') or f'Image: {m["credit"]}'  # a visible caption override names the variant or the kind of image
     if [W, H] != list(m['size']) or sha(png) != m['prepared_sha256']:
         sys.exit(f'{i}: copied PNG differs from the manifest')
     pres['robots'][str(i)] = {'recorded': {'Lab': r['Lab'], 'Robot': r.get('Robot')},
         'image': {'src': f'/{webp}', 'fallback': f'/{png}', 'width': W, 'height': H, 'alt': it['alt'],
-                  'credit': f'Image: {m["credit"]}', 'provenance': f'ops/media/robots/{slug}/PROVENANCE.md'}}
+                  'credit': credit, 'provenance': f'ops/media/robots/{slug}/PROVENANCE.md'}}
     orig = glob.glob(f'{src}/original.*')[0]; O = Image.open(orig)
     os.makedirs(f'ops/media/robots/{slug}', exist_ok=True)
     q = f"\n\n- **Quality:** {it['quality']}" if it.get('quality') else ''
@@ -47,7 +48,7 @@ Not published from here: `ops/` is excluded from the site. Image batch {cfg['bat
 
 ## Source
 
-- **Image:** {m['credit']}'s. No open licence is presumed. The site credits it as "Image: {m['credit']}".
+- **Image:** {m['credit']}'s. No open licence is presumed. The site credits it as "{credit}".
 - **Page:** {m['source_page']}
 - **File:** {m['source_url']}
 - **Context{'' if it.get('downloaded') else ' (Codex)'}:** {m['source_context']}

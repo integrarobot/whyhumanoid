@@ -198,7 +198,7 @@
     {
       "batch": 8,
       "opened": "2026-11-27",
-      "state": "under_review",
+      "state": "integrated",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026); G/H/I first",
       "candidates": [
@@ -220,7 +220,8 @@
         "HIRO Origin (137) keeps its block. No maker is contacted without new authorisation. Non-generative alpha-only cutouts, original RGB at native resolution; the 68 current presentations stay unchanged.",
         "Codex's packages on codex/image-sources-remaining (3096468 and 299a0d7, candidates-08) plus Adam (66) from PNDbotics' official GitHub repository pndbotics/pnd_models. Cutouts prepared by Claude (alpha only, original RGB, native resolution) in ops/media/intake-remaining-2026-11-27/batch-08/, with a light and dark contact sheet, for Codex's review before integration (27 Nov 2026).",
         "Kuavo (49) and R-Noid (77): the transparent originals reach the top edge of the file at the head, so the whole head cannot be shown to be present; both stay queued rather than being forced into the batch. Nadia uses the complete crouching photograph (43-detail14) because the frontal PNG reaches the bottom and side edges.",
-        "180, 37, 38, 39, 40 and 44 leave the batch: no source for them was in these packages; they stay queued for Codex's sweep (nothing concluded about their sources)."
+        "180, 37, 38, 39, 40 and 44 leave the batch: no source for them was in these packages; they stay queued for Codex's sweep (nothing concluded about their sources).",
+        "Codex reviewed the prepared package at c191fdb (27 Nov 2026) and approved integrating all ten, Adam included as the ADAM standard simulation model (the record does not fix a variant). Visible captions name the variant or the kind of image: LUS2, MenteeBot v3, RoBee Series R, pib#5 and \"ADAM standard simulation model\"; the records' specifications are unchanged and the identity caveats are in each PROVENANCE.md."
       ]
     }
   ],
@@ -2288,24 +2289,61 @@
         "Lab": "Holiday",
         "Robot": "Friday"
       },
-      "status": "candidate",
-      "page": "https://holiday-robotics.com/"
+      "status": "integrated",
+      "page": "https://holiday-robotics.com/",
+      "sources": [
+        {
+          "file": "https://public.hday.io/site/robots/friday.webp",
+          "page": "https://holiday-robotics.com/",
+          "sha256": "88499f8275996964efe1f05ae4c9dcd8cfc28e5254ee1431aae2d18d4f4a47b1",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 636 × 1817 with 20 px padding."
+        }
+      ]
     },
     "42": {
       "recorded": {
         "Lab": "Igus",
         "Robot": "Iggy Rob"
       },
-      "status": "candidate",
-      "page": "https://www.igus.com/automation/news/humanoid-robot"
+      "status": "integrated",
+      "page": "https://www.igus.com/automation/news/humanoid-robot",
+      "sources": [
+        {
+          "file": "https://igus.widen.net/content/vx4ay9rleh/webp/LCA_GEN_Humanoid_robot_News_DE_1.jpeg",
+          "page": "https://www.igus.com/automation/news/humanoid-robot",
+          "sha256": "b07850efc9d1e90eaa94cd0022267996ca5946519d4fab97f13a17f4832ad30e",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 514 × 687 with 20 px padding."
+        }
+      ],
+      "quality_note": "Small source: 514 × 687 px as prepared, from a 1018 × 688 illustration."
     },
     "43": {
       "recorded": {
         "Lab": "IHMC Robotics",
         "Robot": "Nadia"
       },
-      "status": "candidate",
-      "page": "https://robots.ihmc.us/nadia"
+      "status": "integrated",
+      "page": "https://robots.ihmc.us/nadia",
+      "sources": [
+        {
+          "file": "https://images.squarespace-cdn.com/content/v1/699a1168fe7b8b3bc64df4db/6e41edc9-513b-45a2-9bbc-5cc728319aa6/20220208_Crouching_TouchingGround_02.jpg",
+          "page": "https://robots.ihmc.us/humanoid-design",
+          "sha256": "1befb37b313bc0d1c0b42a627a25fb50cbd01e68ddcb795641f33e0eedde4ce1",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 2062 × 2471 with 20 px padding."
+        }
+      ]
     },
     "44": {
       "recorded": {
@@ -2321,8 +2359,20 @@
         "Lab": "IntBot",
         "Robot": "Nylo"
       },
-      "status": "candidate",
-      "page": "https://intbot.ai"
+      "status": "integrated",
+      "page": "https://intbot.ai",
+      "sources": [
+        {
+          "file": "https://intbot.ai/assets/nylo_fullbody.png",
+          "page": "https://intbot.ai",
+          "sha256": "6bce217d68863ddf42a252bdc3824d342a861e044f54fcc07e2cec9a36c6a683",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 498 × 1392 with 20 px padding."
+        }
+      ]
     },
     "46": {
       "recorded": {
@@ -2347,8 +2397,20 @@
         "Lab": "Kinisi",
         "Robot": "Kinisi (Bear Robotics offering)"
       },
-      "status": "candidate",
-      "page": "https://www.bearrobotics.ai/kinisi"
+      "status": "integrated",
+      "page": "https://www.bearrobotics.ai/kinisi",
+      "sources": [
+        {
+          "file": "https://static1.squarespace.com/static/652cbb3fb1f91809d4610dc0/t/6a61e0e34ba5343f74277a04/1784799459455/kinisi-robot-front-back-specifications.webp",
+          "page": "https://www.bearrobotics.ai/kinisi",
+          "sha256": "9042439920f90d2dce7ff2a8cd0c3cf4bac852aac7342af3df34a0ffa24f507b",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 612 × 1175 with 20 px padding."
+        }
+      ]
     },
     "49": {
       "recorded": {
@@ -2373,8 +2435,20 @@
         "Lab": "Lumos",
         "Robot": "LUS"
       },
-      "status": "candidate",
-      "page": "https://www.lumosbot.tech/"
+      "status": "integrated",
+      "page": "https://www.lumosbot.tech/",
+      "sources": [
+        {
+          "file": "https://delivery.lumosbot.tech/www/lumos-website/images/products/lus2/front.webp",
+          "page": "https://www.lumosbot.tech/products/lus2",
+          "sha256": "f2f23e4bf321466a24e9e44bde93cd38b9a51663de5987897ad849150c2a00a3",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1228 × 3317 with 20 px padding."
+        }
+      ]
     },
     "54": {
       "recorded": {
@@ -2390,8 +2464,20 @@
         "Lab": "Mentee",
         "Robot": "MenteeBot"
       },
-      "status": "candidate",
-      "page": "https://www.menteebot.com/bot/"
+      "status": "integrated",
+      "page": "https://www.menteebot.com/bot/",
+      "sources": [
+        {
+          "file": "https://www.menteebot.com/demo-videos/MenteeBot_v3.png",
+          "page": "https://www.menteebot.com/bot/",
+          "sha256": "c3a8ae2ab69db08476ee7df04656e0806002d8fc85c0b36c8338c30ac369f047",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 929 × 2769 with 20 px padding."
+        }
+      ]
     },
     "59": {
       "recorded": {
@@ -2407,8 +2493,20 @@
         "Lab": "Oversonic",
         "Robot": "RoBee"
       },
-      "status": "candidate",
-      "page": "https://www.oversonicrobotics.com/"
+      "status": "integrated",
+      "page": "https://www.oversonicrobotics.com/",
+      "sources": [
+        {
+          "file": "https://www.oversonicrobotics.com/download/Oversonic_Robee-R-2026-eng.pdf (page 2, image object 242, extracted with pdfimages; PDF sha256 9bf0547bcb0daac94f4462d3d74eb46c023841c51b528cd87606f7abbc61f8b1)",
+          "page": "https://www.oversonicrobotics.com/media/",
+          "sha256": "7545ae21a5b13e51e0dc3a9a22b8f3f9c586d31beaa18b49a8505c061dd41405",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1950 × 3147 with 20 px padding."
+        }
+      ]
     },
     "63": {
       "recorded": {
@@ -2433,16 +2531,41 @@
         "Lab": "Pib",
         "Robot": "pib"
       },
-      "status": "candidate",
-      "page": "https://pib.rocks/"
+      "status": "integrated",
+      "page": "https://pib.rocks/",
+      "sources": [
+        {
+          "file": "https://pib.rocks/wp-content/uploads/2026/09/pib5-Rocks.png",
+          "page": "https://pib.rocks/press/",
+          "sha256": "80468486d9b6a24b4b664d0570ac82a6941cdc371096387dbd7f7a2389ce80cc",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1553 × 1931 with 20 px padding."
+        }
+      ]
     },
     "66": {
       "recorded": {
         "Lab": "PNDbotics",
         "Robot": "Adam"
       },
-      "status": "candidate",
-      "page": "https://www.pndbotics.com/"
+      "status": "integrated",
+      "page": "https://www.pndbotics.com/",
+      "sources": [
+        {
+          "file": "https://github.com/pndbotics/pnd_models/blob/38420a65d20219b095e9a78e22f0f9af7256c23f/adam_standard/imgs/adam_standard.png",
+          "page": "https://github.com/pndbotics/pnd_models (README, models table, row adam_standard)",
+          "sha256": "c913e70b28a3e4fa3dd2d79a257aaf75ed5dfadbf8b81e2f6872f59312532af6",
+          "by": "claude",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 368 × 1151 with 20 px padding."
+        }
+      ],
+      "quality_note": "Simulation model rendering, not a hardware photograph; small source (368 × 1151 px as prepared)."
     },
     "67": {
       "recorded": {

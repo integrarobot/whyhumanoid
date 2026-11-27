@@ -39,32 +39,37 @@
       "slug": "lumos-lus2",
       "alt": "LUS2 by Lumos, full body, front view, standing",
       "identity": "The image is LUS2 (official /products/lus2 page, front.webp). The catalogue record is LUS, a family whose exact generation is unspecified in the master; the image is named LUS2 and is not presented as the first LUS generation, nor are the record's figures attributed to LUS2.",
-      "quality": null
+      "quality": null,
+      "credit": "Image: Lumos, LUS2"
     },
     "55": {
       "slug": "mentee-menteebot-v3",
       "alt": "MenteeBot v3 by Mentee Robotics, full body, front view, standing",
       "identity": "Official /bot/ page file MenteeBot_v3.png. The catalogue record is MenteeBot, whose public specifications the master says are not automatically gen 3; the image is named v3 and the record's figures are not attributed to it. The original's alpha carries a semi-transparent violet glow behind the robot (alpha up to about 170); it is removed by mapping the original alpha 175..250, without a segmentation model.",
-      "quality": null
+      "quality": null,
+      "credit": "Image: Mentee Robotics, MenteeBot v3"
     },
     "60": {
       "slug": "oversonic-robee-r",
       "alt": "RoBee Series R by Oversonic Robotics, full body, front view, on its wheeled base",
       "identity": "RoBee Series R product sheet (October 2026), page 2: the raster image extracted from the PDF with pdfimages, without re-rendering or scaling. The soft mask extracted with it is fully opaque, so the alpha comes from a segmentation mask only; the RGB is the extracted image's. Not RoBee M or F. The catalogue record is RoBee, in its industrial mobile-base configuration.",
-      "quality": null
+      "quality": null,
+      "credit": "Image: Oversonic Robotics, RoBee Series R"
     },
     "65": {
       "slug": "pib-5",
       "alt": "pib#5, the whole robot: torso, head and both arms on its stand, one hand raised",
       "identity": "pib's official press page labels this image pib#5. pib is an upper-body robot on a stand with no legs by design; the whole robot, its stand and both hands are shown. The catalogue record is pib, a printable platform of variable configuration; the image is named pib#5.",
-      "quality": null
+      "quality": null,
+      "credit": "Image: pib, pib#5"
     },
     "66": {
       "slug": "pndbotics-adam",
       "alt": "Adam by PNDbotics, adam_standard simulation model rendering, full body; not a photograph of the hardware",
       "identity": "Pre-existing file in PNDbotics' official repository github.com/pndbotics/pnd_models (adam_standard/imgs/adam_standard.png, added in commit 71eaac7 on 9 May 2025, unchanged since), shown in the README's models table on the adam_standard row. It is a rendering of the simulation (description) model, not a photograph, and need not reflect the current covers. The repository also holds adam_lite, adam_sp, adam_u and adam_inspire; which variant the catalogue record Adam (167 cm, 62 kg, specifications pending) describes is not established.",
       "quality": "Simulation model rendering, not a hardware photograph; small source (368 × 1151 px as prepared).",
-      "downloaded": "by Claude with git clone of github.com/pndbotics/pnd_models; the file is byte-identical to the repository blob (sha256 c913e70b…), nothing rendered here"
+      "downloaded": "by Claude with git clone of github.com/pndbotics/pnd_models; the file is byte-identical to the repository blob (sha256 c913e70b…), nothing rendered here",
+      "credit": "Image: PNDbotics, ADAM standard simulation model"
     }
   }
 }
