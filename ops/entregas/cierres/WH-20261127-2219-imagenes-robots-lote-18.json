@@ -47,12 +47,13 @@
     "Claude, paquete: review-intake 5/5; navegador local de las cinco fichas a 390 × 844 y 1366 × 900, 10/10 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
     "Codex, cabeza c7f8000 contra a289179: revisión independiente aprobada; 50 archivos de imágenes, ops y páginas generadas; las 162 presentaciones anteriores y el catálogo de 213 preservados (cotejadas también las 68 presentaciones de partida, idénticas, y las 99 nuevas desde entonces); SHA, RGB visible exacto, alfa de PNG y WebP idéntico, resolución nativa y margen de 20 px correctos en las cinco; los cinco pares claro y oscuro vistos uno a uno, con los detalles nativos del techo y la cabeza de Persona AI, los brazos y cables de Nucleus y las manos negras de Techman.",
     "Claude, producción tras Pages 46069254164: las 10 URL canónicas (5 PNG y 5 WebP) con los mismos bytes que 6df3a84 (10/10); las 5 fichas y la portada idénticas a 6df3a84 salvo las etiquetas meta agent:* que añade Cloudflare (6/6); navegador real a 390 × 844 y 1366 × 900, 10/10 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 167 presentaciones. La espera de Pages se hizo consultando la portada existente con un parámetro de consulta único, nunca URL de activos nuevos.",
+    "Codex, verificación pública independiente tras Pages 46069254164 en merge 6df3a84: 15/15 URL canónicas con 200 (10 activos con SHA y alfa exactos y 5 fichas con imagen, texto alternativo y crédito); 10/10 vistas reales en Chrome a 390 × 844 y 1366 × 900, cargadas, contain, sin desbordamiento y con dimensiones y créditos correctos; captura de escritorio de Techman revisada. Total 167/213: 99 imágenes nuevas sobre 68 intactas.",
     "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (167) y entregas --check."
   ],
   "pendientes": [
-    "Aviso de Codex para este cierre, con su verificación pública independiente.",
+    "Aviso de Codex para este cierre.",
     "Registro final de las 46 fichas abiertas que aportará Codex, para copiarlo solo como trazabilidad de investigación en ops; no resuelve fichas, no cambia el maestro y no prueba que no existan imágenes.",
     "Rhoda (75), Jingchu Elf (183), Qinglong (69), T230A (89), R-Noid (77) e IGRIS (79) siguen fuera con su motivo; Other Robots queda fuera del alcance por decisión de Javier."
   ],
-  "siguiente_accion": "Codex verifica producción, entrega el registro de las 46 fichas abiertas y registra su aviso; Javier confirma la recepción. El objetivo de las 213 fichas sigue abierto."
+  "siguiente_accion": "Codex entrega el registro de las 46 fichas abiertas y registra su aviso; Javier confirma la recepción. El objetivo de las 213 fichas sigue abierto."
 }
