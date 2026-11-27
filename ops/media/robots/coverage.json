@@ -142,7 +142,7 @@
     {
       "batch": 6,
       "opened": "2026-11-27",
-      "state": "integrated_awaiting_review",
+      "state": "published",
       "target": 10,
       "scope": "E/F makers",
       "candidates": [
@@ -161,8 +161,10 @@
       "notes": [
         "Sources from Codex, transport branch codex/image-sources-ef (195020a; first nine at 2daba0a, unchanged), kept unchanged in ops/media/intake-ef-2026-11-27/batch-06/; prepared PNGs used as delivered.",
         "Ten eligible records: Centaur-G1 (176) joined from the former batch 7, Flourish (129) is eligible as the maker's robot without a model name, and Mirokai (26) joined after Javier expressly authorised the maker notification its media kit asks for, which Codex sent and saw confirmed (27 Nov 2026). No separate batch 7.",
-        "Without a valid source after review: GR-1 (32), Phantom MK1 (31), Eden (114)."
-      ]
+        "Without a valid source after review: GR-1 (32), Phantom MK1 (31), Eden (114).",
+        "Published with PR 216 (reviewed head 437d29c, CI 46014108222; merge b24a276), 27 Nov 2026; Pages 46014425958 and production verification by Claude and Codex recorded in the batch closeout. Ameca (28), FF Futurist (106) and Centaur-G1 (176) are published with a resolution debt."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -360,7 +362,7 @@
         "Lab": "Engineai",
         "Robot": "T800"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://en.engineai.com.cn/product-t800",
       "notes": "Record covers Basic, Open Source, Pro and Max editions: an image of the T800 itself, no edition claimed.",
       "sources": [
@@ -403,7 +405,7 @@
       "page": "https://fftai.com/",
       "notes": "Standard GR-1 only: never a GR-2 or GR-3 photo (Codex, 27 Nov 2026); L and Pro variants are separate.",
       "sources": [],
-      "reason": "The only complete image found (RoboCup 2024 team specification sheet, render 210 × 533) labels the robot \"GR-1\" but gives 34 DoF and 52 kg, which matches the separate GR-1L figure (34) rather than the standard GR-1 (44 actuators, 55 kg); Fourier's own specification sheet cited in the record downloads as a blank page and its product pages show no verifiable photo. Not assigned to the standard GR-1 (Codex and Claude, 27 Nov 2026)."
+      "reason": "The only complete image found is a 210 × 533 render in a RoboCup 2024 team specification sheet; it labels the robot \"GR-1\" but gives 34 DoF and 52 kg. That figure coincides with the one listed for the separate GR-1L, while the standard GR-1 has 44 actuators and weighs 55 kg, so the variant shown is not established and the image is not assigned to the standard GR-1 (this does not conclude that it shows a GR-1L). Fourier's own specification sheet cited in the record downloads as a blank page and its product pages show no verifiable photo (Codex and Claude, 27 Nov 2026)."
     },
     "215": {
       "recorded": {
@@ -646,7 +648,7 @@
         "Lab": "Flourish",
         "Robot": "Flourish robot (model name unconfirmed)"
       },
-      "status": "integrated",
+      "status": "published",
       "reason": "No exact model in the record (model name unconfirmed). An image may be considered only if Flourish's official source shows a single robot presented as its product, without assigning a model name by resemblance; to be decided by Codex before any batch (27 Nov 2026).",
       "sources": [
         {
@@ -1643,7 +1645,7 @@
         "Lab": "Enactic",
         "Robot": "OpenArm 2.0 (arms)"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://openarm.dev/",
       "notes": "Enactic OpenArm 2.0: an arms platform; shown whole as the maker presents it (both arms and their mount), with no body or legs added; OpenArm 2.0, not an earlier version.",
       "sources": [
@@ -1664,7 +1666,7 @@
         "Lab": "Enchanted",
         "Robot": "Mirokai"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://enchanted.tools/",
       "notes": "Enchanted Tools Mirokai: wheeled (rolling-base) robot shown whole, including its base.",
       "research": [
@@ -1697,7 +1699,7 @@
         "Lab": "Engineered Arts",
         "Robot": "Ameca"
       },
-      "status": "integrated",
+      "status": "quality_debt",
       "page": "https://engineeredarts.com/tritium/robots/ameca",
       "notes": "Engineered Arts Ameca: full-body Ameca only, never Ameca Desktop or a head-and-torso unit (Codex, 27 Nov 2026).",
       "sources": [
@@ -1712,14 +1714,15 @@
           "detail": "alpha mask; RGB exact; prepared 250 × 769 with 20 px padding."
         }
       ],
-      "quality_note": "Modest resolution: 250 × 769 from a 666 × 999 official photograph; no upscaling. Replace when a larger faithful full-body Ameca image is found."
+      "quality_note": "Modest resolution: 250 × 769 from a 666 × 999 official photograph; no upscaling. Replace when a larger faithful full-body Ameca image is found.",
+      "reason": "Published at 250 × 769 px from a 666 × 999 official Engineered Arts photograph; replace with a larger faithful full-body Ameca image (not Desktop) when one is found. No detail simulated."
     },
     "29": {
       "recorded": {
         "Lab": "Estun Codroid",
         "Robot": "Codroid 02"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.codroid.ai/en/",
       "notes": "Estun Codroid Codroid 02: must be identified as Codroid 02 in the official source, not Codroid 01.",
       "research": [
@@ -1757,7 +1760,7 @@
         "Lab": "Fauna",
         "Robot": "Sprout"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://faunarobotics.com/",
       "notes": "Fauna Robotics Sprout: the record says \"Sprout\"; name an edition (for example Sprout Creator) only if the official source shows and names it.",
       "research": [
@@ -1785,7 +1788,7 @@
         "Lab": "Faraday Future",
         "Robot": "FF Futurist"
       },
-      "status": "integrated",
+      "status": "quality_debt",
       "page": "https://robotics.ff.com/us/ff-futurist/",
       "notes": "Faraday Future FF Futurist: identified as FF Futurist in the official robotics page; no other FF robot.",
       "research": [
@@ -1807,14 +1810,15 @@
           "detail": "alpha mask; RGB exact; prepared 375 × 728 with 20 px padding."
         }
       ],
-      "quality_note": "Modest resolution: 375 × 728 native cutout; no upscaling. Replace when a larger faithful image of this design is found."
+      "quality_note": "Modest resolution: 375 × 728 native cutout; no upscaling. Replace when a larger faithful image of this design is found.",
+      "reason": "Published at 375 × 728 px, the native size of the official comparison image of the initial FF Futurist design; replace with a larger faithful image of this design when one is found. No detail simulated."
     },
     "126": {
       "recorded": {
         "Lab": "Feather",
         "Robot": "Feather"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://feather.dev/",
       "notes": "Feather: the robot the maker presents as Feather, shown whole.",
       "research": [
@@ -1842,7 +1846,7 @@
         "Lab": "Elite Robots",
         "Robot": "Centaur-G1"
       },
-      "status": "integrated",
+      "status": "quality_debt",
       "page": "https://www.elibot.com/product/wheeled",
       "notes": "Elite Robots Centaur-G1 (wheeled): never a Unitree G1 or AgiBot G1 image; identified as Centaur-G1 in the official source.",
       "research": [
@@ -1864,7 +1868,8 @@
           "detail": "alpha mask; RGB exact; prepared 444 × 539 with 20 px padding."
         }
       ],
-      "quality_note": "Modest resolution: 444 × 539 native cutout; no upscaling."
+      "quality_note": "Modest resolution: 444 × 539 native cutout; no upscaling.",
+      "reason": "Published at 444 × 539 px, the native size of the official Elite Robots illustration; replace with a larger faithful Centaur-G1 image when one is found. No detail simulated."
     }
   },
   "scopes": [
@@ -1922,7 +1927,10 @@
         "Every record ends published and verified, or with a concrete stated limitation.",
         "Objects a robot holds in the official source stay as they are (Centaur-G1 holding a cup and a utensil); nothing is erased or reconstructed (as in scope C/D).",
         "Flourish (129) is shown as the maker's robot without a model name. Mirokai (26) is published only after the maker notification its media kit asks for, sent with Javier's express authorisation; the notice claims no affiliation."
-      ]
+      ],
+      "state": "closed_with_pending_sources",
+      "closed": "2026-11-27",
+      "summary": "16 E/F records: 13 with an image (3 earlier: SE01, Figure 03, PM01; 10 in batch 6, of which Ameca, FF Futurist and Centaur-G1 carry a resolution debt), 3 still without a valid image after source review (no_valid_source: Phantom MK1 31, GR-1 32, Eden 114). Not every E/F record has an image."
     }
   ]
 }

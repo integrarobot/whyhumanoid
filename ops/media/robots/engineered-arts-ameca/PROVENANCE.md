@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 6, scope 
 
 - **Quality:** Modest resolution: 250 × 769 from a 666 × 999 official photograph; no upscaling. Replace when a larger faithful full-body Ameca image is found.
 
-## Files integrated (image batch 6, PR not yet merged)
+## Published files (image batch 6, PR 216, merge b24a276, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/engineered-arts-ameca/engineered-arts-ameca-full-body.png`, 250 × 769 px, sha256 `32d7870117e6e266bd7c6d1372703a73fecfd0f0fe9b2356726bc34a5c3ce098` (= Codex's prepared.png).
 - **WebP:** `assets/robots/engineered-arts-ameca/engineered-arts-ameca-full-body.webp`, sha256 `3dbb114d4f23a1b7239b46f003f3be6be2206ef184ba3fb735b77c7672cfb8b2`.

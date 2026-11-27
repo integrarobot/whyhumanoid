@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 6, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 6, PR not yet merged)
+## Published files (image batch 6, PR 216, merge b24a276, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/estun-codroid-02/estun-codroid-02-full-body.png`, 439 × 1101 px, sha256 `7bccfcd6feac881aeb5d5eaa5a5ed36778ff0eb2f89cfb3e1eec8cc7ddae164d` (= Codex's prepared.png).
 - **WebP:** `assets/robots/estun-codroid-02/estun-codroid-02-full-body.webp`, sha256 `7abe7e31414260f5983396209a24269be5b3427828cdb877da5318a4edef7da5`.

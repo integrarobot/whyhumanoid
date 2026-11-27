@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 6, scope 
 
 - **Quality:** Modest resolution: 444 × 539 native cutout; no upscaling.
 
-## Files integrated (image batch 6, PR not yet merged)
+## Published files (image batch 6, PR 216, merge b24a276, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/elite-robots-centaur-g1/elite-robots-centaur-g1-full-body.png`, 444 × 539 px, sha256 `3b97ba1ae475c23193b53e30218dcf34951d8e549d2da25e5904533f23ed17a1` (= Codex's prepared.png).
 - **WebP:** `assets/robots/elite-robots-centaur-g1/elite-robots-centaur-g1-full-body.webp`, sha256 `7371fef100dc57e25a6195dff37415f0485189624ff410843fe7c18c9c8315f3`.

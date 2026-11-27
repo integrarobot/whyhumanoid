@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 6, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 6, PR not yet merged)
+## Published files (image batch 6, PR 216, merge b24a276, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/fauna-sprout/fauna-sprout-full-body.png`, 857 × 2001 px, sha256 `dec0516d9fbb058e6bd5267399e605017761487f461da5ebc9b2df04a590ec38` (= Codex's prepared.png).
 - **WebP:** `assets/robots/fauna-sprout/fauna-sprout-full-body.webp`, sha256 `6492f68b7bbd6b25bb33048be73a04f93272332f949020e384f6c04809dfa032`.
