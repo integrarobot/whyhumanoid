@@ -208,6 +208,29 @@ Publication (authorised by Javier on 2026-11-27, done in PR 177):
 
 The sitemap entries follow automatically.
 
+## Display contract (Javier, 27 Nov 2026)
+
+Fixed in `tools/editorial-view.mjs` and `assets/editorial.css`; `tools/test-editorial.mjs` fails if it regresses.
+The weekly feed changes data only and never this display.
+
+- **Blog article** (`/blog/<edition_id>/`): the main body alone, with title, subtitle, dates and the link to the
+  original. No generated "News in this edition" section, list, count or note about the roundup, whatever
+  `more_news.status` says. Blog cards carry no news count.
+- **News index and year archives** (`/news/`, `/news/<year>/`): grouped by month and edition, in source order. Each
+  item shows its whole `body_markdown` once, through the safe renderer, with its own source links (the company or
+  source words link to the source URL, never to our item page).
+  - No heading generated from the first sentence, no excerpt, no truncation, no numbered list.
+  - The only internal link is a small separate "Permalink" to `/news/<edition_id>/<NN>/`, which does not repeat the
+    text. The paragraph is never wrapped in an internal link.
+  - An item with an empty body shows its headline as its text.
+  - The search indexes the whole text of each item.
+- **News item page** (`/news/<edition_id>/<NN>/`): a neutral heading "News, <date of the edition>", the metadata
+  (item N of M, parent Blog article, dates, original edition), the whole body once with its source links, and
+  previous and next. The stored `headline` may title the page (`<title>`), never the visible heading.
+- Bold and links in the body are kept as written. The text is never edited in the HTML: a wrong text is corrected in
+  the store, through the reviewed ingest.
+- Addresses never change: 121 Blog articles, 780 News item pages, the year archives and the `/newsletter/` aliases.
+
 Never part of this stream:
 - workbook or Sheets schema changes;
 - subscription, payments or the catalogue;

@@ -1,4 +1,10 @@
 /* Newsletter and News (tools/editorial-view.mjs). The page frame, type scale and colours come from pages.css. */
+/* Year selector: the shared .jump pattern of investment.css, which these pages do not load. */
+.jump{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0 0 18px}
+.jump a,.jump [aria-current]{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid var(--line-2);color:var(--bone-2);text-decoration:none;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:.06em;text-transform:uppercase}
+.jump [aria-current]{border-color:var(--amber);color:var(--amber-hi)}
+@media (max-width:760px){.jump a,.jump [aria-current]{min-height:38px;padding:0 10px;font-size:var(--fs-caption)}}
+.jump a:hover,.jump a:focus-visible{border-color:var(--amber);color:var(--amber-hi)}
 .ed-search{margin:18px 0 8px;display:grid;gap:6px;max-width:520px}
 .ed-search[hidden]{display:none}
 .ed-search label{font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3)}
@@ -8,17 +14,19 @@
 .ed-month{margin:28px 0 0}
 .ed-month h3{font-family:var(--f-mono);font-size:var(--fs-section);font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3);margin:0 0 10px}
 .ed-edition{margin:0 0 18px}
-.ed-items{margin:8px 0 0;padding-left:26px;display:grid;gap:8px}
-.ed-items li span{display:block;color:var(--bone-2);font-size:var(--fs-card-body);line-height:1.5;margin-top:2px}
+.ed-entry{margin:0;padding:14px 0;border-top:1px solid var(--line);max-width:72ch}
+.ed-entry:last-child{border-bottom:1px solid var(--line)}
+.ed-entry .ed-body p:last-child,.ed-entry .ed-body ul:last-child,.ed-entry .ed-body ol:last-child,.ed-entry .ed-body blockquote:last-child{margin-bottom:0}
+.ed-permalink{display:inline-block;margin-top:6px;font-family:var(--f-mono);font-size:var(--fs-label);letter-spacing:.06em;text-transform:uppercase;color:var(--bone-3)}
+.ed-permalink:hover,.ed-permalink:focus-visible{color:var(--amber)}
 .ed-article{max-width:72ch}
 .ed-body{font-size:17px;line-height:1.65;color:var(--bone)}
 .ed-body p,.ed-body ul,.ed-body ol,.ed-body blockquote{margin:0 0 1em}
 .ed-body h2,.ed-body h3{font-family:var(--f-serif);font-weight:400;text-transform:none;letter-spacing:0;color:var(--bone);margin:1.6em 0 .5em}
 .ed-body h2{font-size:var(--fs-card)}
 .ed-body h3{font-size:var(--fs-card-sub)}
-.ed-body a,.ed-items a,.ed-article .meta a{overflow-wrap:anywhere}
+.ed-body a,.ed-article .meta a{overflow-wrap:anywhere}
 .ed-body blockquote{border-left:2px solid var(--line-2);padding-left:14px;color:var(--bone-2)}
 .ed-body code{font-family:var(--f-mono);font-size:.9em}
-.ed-news{margin:32px 0 0}
 .ed-pager{display:flex;justify-content:space-between;gap:16px;margin:28px 0 0;font-family:var(--f-mono);font-size:var(--fs-label)}
 [data-ed-hidden]{display:none}

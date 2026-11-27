@@ -182,11 +182,11 @@ test('pages: original and translation dates apart, source links, items in order 
   const edition = built.get('blog/nl-2025-03-12-synthetic-first/index.html');
   assert.match(edition, /First published in Spanish on <time datetime="2025-03-12">12 March 2025<\/time> · English translation dated <time datetime="2026-11-20">20 November 2026<\/time>/);
   assert.match(edition, /<a href="https:\/\/newsletter\.example\.com\/p\/synthetic-first" rel="noopener noreferrer">Original edition<\/a>/);
-  assert.match(edition, /<ol class="ed-items"><li value="1"><a href="\/news\/nl-2025-03-12-synthetic-first\/01\/">Same headline in two editions<\/a><\/li><li value="2">/);
+  assert.doesNotMatch(edition, /ed-news|News in this edition|news roundup|Same headline in two editions|\/news\//, 'the Blog article carries no generated news section or list');
   assert.doesNotMatch(edition, /Edición sintética|FIXTURE SINTÉTICO/, 'the Spanish original is never rendered');
   const item = built.get('news/nl-2025-03-12-synthetic-first/02/index.html');
-  assert.match(item, /News · item 2 of 2/);
-  assert.match(item, /From the Blog article <a href="\/blog\/nl-2025-03-12-synthetic-first\/">Synthetic fixture edition one<\/a>/);
+  assert.match(item, /<h1>News, 12 March 2025<\/h1>/, 'a neutral News and date heading, not the item text');
+  assert.match(item, /Item 2 of 2 from the Blog article <a href="\/blog\/nl-2025-03-12-synthetic-first\/">Synthetic fixture edition one<\/a>/);
   assert.match(item, /rel="prev">Previous item<\/a><span><\/span>/);
   assert.equal(built.has('blog/nl-2026-01-20-synthetic-second/index.html'), false, 'a draft translation is not published');
   const list = built.get('blog/index.html');
@@ -194,7 +194,11 @@ test('pages: original and translation dates apart, source links, items in order 
   assert.match(list, /<h3 id="m-2025-03">March 2025<\/h3>/);
   assert.match(list, /data-ed-text="synthetic fixture edition one/);
   assert.match(built.get('blog/2026/index.html'), /No blog articles are published here yet/);
-  assert.match(built.get('news/2025/index.html'), /<ol class="ed-items"><li value="1" data-ed-text=/);
+  const news = built.get('news/2025/index.html');
+  assert.doesNotMatch(news, /<ol|<li value=|ed-items/, 'no automatic numbered list');
+  assert.match(news, /<article class="ed-entry" data-ed-text="synthetic fixture item with a source\."><div class="ed-body">\n<p>SYNTHETIC FIXTURE item with a <a href="https:\/\/example\.com\/item-a" rel="noopener noreferrer">source<\/a>\.<\/p>\n<\/div><a class="ed-permalink" href="\/news\/nl-2025-03-12-synthetic-first\/01\/" aria-label="Permalink to news item 1 of 2, 12 March 2025">Permalink<\/a><\/article>/, 'the full body once, its source link, a separate permalink');
+  assert.doesNotMatch(news, /Same headline in two editions/, 'the stored headline is not repeated over its body');
+  assert.match(news, /<p>Second synthetic item<\/p>/, 'an item with no body shows its headline as its text');
   for (const html of built.values()) assert.match(html, /noindex/);
   assert.deepEqual(editorialUrls(store), []);
   const published = { ...store, config: { ...store.config, published: true } };
@@ -347,4 +351,55 @@ test('teasers skip a leading image, headings and the embedded-video placeholder,
   const list = views(ingested(pkg)).get('blog/index.html');
   assert.match(list, /<span>SYNTHETIC FIXTURE\. This paragraph tests bold text and a link to the example\.<\/span>/);
   assert.doesNotMatch(list, /<span>Image<\/span>/);
+});
+
+// Javier, 27 Nov 2026: News shows each item's own text once, with its source links; the Blog shows the article alone.
+test('real corpus: Humyn Labs is one paragraph with its source link and bold, untruncated, in lists and on its page', () => {
+  const store = readStore(root);
+  const built = views(store, '2026-11-27', true);
+  const ready = readyEditions(store);
+  assert.equal(ready.length, 121, '121 Blog articles');
+  assert.equal(ready.reduce((n, e) => n + e.items.length, 0), 780, '780 News items');
+  const href = 'https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a';
+  const para = '<p>💸 <a href="https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a" rel="noopener noreferrer">Humyn Labs</a> has announced a <strong>47 million dollar Series A</strong>, with 26 million in equity led by Accel and 21 million in debt led by Lighthouse Canton. The company records how people work in factories, warehouses, farms and homes, and turns those observations into labelled data for training robots.</p>';
+  for (const f of ['news/index.html', 'news/2026/index.html', 'news/nl-2026-11-25-why-humanoid/01/index.html']) {
+    const html = built.get(f).match(/<main>[\s\S]*<\/main>/)[0];
+    assert.equal(html.split(para).length - 1, 1, `${f}: the Humyn Labs paragraph appears exactly once, whole`);
+    assert.equal(html.split('Humyn Labs has announced').length + html.split('Humyn Labs</a> has announced').length - 2, 1, `${f}: its text is never repeated as a heading or excerpt`);
+    assert.equal(html.split(href).length - 1, 1, `${f}: the source link once, on the company name`);
+  }
+  const entry = built.get('news/index.html').match(/<article class="ed-entry"[^>]*>(?:(?!<\/article>)[\s\S])*humynlabs\.ai(?:(?!<\/article>)[\s\S])*<\/article>/)[0];
+  assert.equal(entry.match(/<p>/g).length, 1, 'one paragraph in the news body');
+  assert.match(entry, /<a class="ed-permalink" href="\/news\/nl-2026-11-25-why-humanoid\/01\/" aria-label="[^"]+">Permalink<\/a><\/article>$/, 'a small permalink that does not repeat the sentence');
+  assert.doesNotMatch(entry, /<a href="\/news\/[^"]*">[^<]*Humyn/, 'the sentence is never wrapped in an internal link');
+  const item = built.get('news/nl-2026-11-25-why-humanoid/01/index.html');
+  assert.match(item, /<h1>News, 25 November 2026<\/h1>/);
+  assert.match(item, /<title>💸 Humyn Labs has announced a 47 million dollar Series A/, 'the stored headline may still title the page');
+  assert.match(item, /rel="next">Next item<\/a>/);
+});
+
+test('real corpus: no Blog article carries a news section, list or count; every News item is listed once with its whole text', () => {
+  const store = readStore(root);
+  const built = views(store, '2026-11-27', true);
+  const ready = readyEditions(store);
+  for (const e of ready) {
+    const html = built.get(`blog/${e.id}/index.html`);
+    assert.doesNotMatch(html, /ed-news|News in this edition|This edition has no news roundup|could not be read from the source|href="\/news\//, `${e.id}: no generated news section`);
+    assert.doesNotMatch(e.body_markdown, /^#{1,6}\s*(?:\S+\s+)?(?:m[aá]s noticias|more news)/im, `${e.id}: no More news block left in the body`);
+  }
+  for (const f of ['blog/index.html', 'blog/2025/index.html', 'blog/2026/index.html']) assert.doesNotMatch(built.get(f), /news items?</, `${f}: no news count on the cards`);
+  const lists = ['news/index.html', 'news/2025/index.html', 'news/2026/index.html'];
+  for (const f of lists) assert.doesNotMatch(built.get(f), /<ol|<li value=|class="ed-items"/, `${f}: no numbered list`);
+  const all = built.get('news/index.html');
+  const perYear = built.get('news/2025/index.html') + built.get('news/2026/index.html');
+  for (const e of ready) for (const it of e.items) {
+    const path = `/news/${it.id}/`;
+    assert.equal(all.split(`class="ed-permalink" href="${path}"`).length - 1, 1, `${path} listed once on /news/`);
+    assert.equal(perYear.split(`class="ed-permalink" href="${path}"`).length - 1, 1, `${path} listed once in its year`);
+    assert.ok(built.has(`news/${it.id}/index.html`), `${path} has its page`);
+    const body = renderMarkdown(it.body_markdown);
+    assert.ok(all.includes(body), `${path}: whole body on /news/, untruncated`);
+  }
+  assert.equal((all.match(/<article class="ed-entry" data-ed-text="[^"]+"/g) ?? []).length, 780, 'every entry searchable');
+  for (const alias of ['newsletter/index.html', 'newsletter/2025/index.html', `newsletter/${ready[0].id}/index.html`]) assert.match(built.get(alias), /http-equiv="refresh"/, `${alias} still redirects`);
 });
