@@ -1,3 +1,3 @@
-# Three whole native source candidates
+# CyberOne whole display photograph
 
-Simplexity iX whole platform with original alpha, PHYBOT M1 complete existing manufacturer render, MagicBot Z1 native video still. Exact page/product JS identity checked; source context includes selected view/frame and rejected alternatives. Alpha only, native visible RGB unchanged, whole platform, honest variant/type captions. Every candidate still needs preparation and independent review. Copy selectively; never merge transport branch.
+Official Beijing Yizhuang government reporting, mirrored by NCSTI. Exact caption identifies CyberOne. Historical 2024 photograph, original design. Honest government-source and date caption required. Whole robot can be separated from showroom plinth using alpha only; no RGB changes, upscaling, or invented limbs. Copy selectively; no branch merge.
