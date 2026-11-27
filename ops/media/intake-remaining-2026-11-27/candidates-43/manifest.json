@@ -1,0 +1,25 @@
+[
+  {
+    "id": 33,
+    "slug": "gac-gomate-2024-product-render",
+    "credit": "GAC Group via Gasgoo Auto News",
+    "source_page": "https://autonews.gasgoo.com/articles/video/70035551",
+    "source_url": "https://www.youtube.com/watch?v=LIfXrjzm0AA",
+    "source_title": "GAC Group introduces humanoid robot GoMate",
+    "source_published_at": "2024-12-27",
+    "original": "original.png",
+    "original_size": [
+      1920,
+      1080
+    ],
+    "original_sha256": "3dbbe9eb1bbe9e89198ec78c226ef4eb5958fada6994a1f9aa6ddff534503e20",
+    "source_video_sha256": "f8fe8c3bcbfc10722426fa846bdbe1cb65c5c93d430f2fd89b613b65dcf221ac",
+    "frame_index_zero_based": 1142,
+    "fps": 25,
+    "time_seconds": 45.68,
+    "source_context": "Gasgoo editorial video explicitly labels Credit:GACGroup on screen. Last native frame shows whole single original2024GoMate manufacturer product render, head, both actual articulated hands, all wheel-leg assemblies intact, generous margins, no subtitles crossing body. This is NOT the2025/2026GoMateMini. Corroboration of exact2024robot identity from GAC official launch2024-12-27 baseid18961 and annual2024report. Alpha only; remove grey studio and floor/shadow, keep source RGB, exact native1920x1080. Mandatory caption GACGroup, GoMate manufacturer product render (2024), video still via GasgooAutoNews. Nativebody~850px high meetsminimum; earlier annualreportembeddedphoto under500was rejected, not upscaled. Do not copy specifications/performanceclaims or infer hardwaredeployment from render.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer credited product render carried in publisher video, credit required; no open licence assumed or outreach sent."
+  }
+]
