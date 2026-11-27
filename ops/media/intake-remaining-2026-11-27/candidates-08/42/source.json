@@ -1,0 +1,23 @@
+{
+  "id": 42,
+  "manufacturer": "Igus",
+  "catalogue_model": "Iggy Rob",
+  "public_page": "https://whyhumanoid.com/humanoids/igus-iggy-rob-42/",
+  "page": "https://www.igus.com/automation/news/humanoid-robot",
+  "checked_at": "2026-11-27",
+  "context": "Official Iggy Rob news illustration contains TWO robots; use only full LEFT robot with tray, glass and bottle; isolate from right cropped robot/crate. Do not cut tray. Source1018x688; useful body height ~650px, native.",
+  "files": [
+    {
+      "original": "42-2.jpeg",
+      "url": "https://igus.widen.net/content/vx4ay9rleh/webp/LCA_GEN_Humanoid_robot_News_DE_1.jpeg",
+      "size": [
+        1018,
+        688
+      ],
+      "mode": "RGB",
+      "sha256": "b07850efc9d1e90eaa94cd0022267996ca5946519d4fab97f13a17f4832ad30e"
+    }
+  ],
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+}

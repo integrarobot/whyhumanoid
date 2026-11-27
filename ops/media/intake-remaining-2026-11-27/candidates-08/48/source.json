@@ -1,0 +1,23 @@
+{
+  "id": 48,
+  "manufacturer": "Kinisi",
+  "catalogue_model": "Kinisi (Bear Robotics offering)",
+  "public_page": "https://whyhumanoid.com/humanoids/kinisi-kinisi-bear-robotics-offering-48/",
+  "page": "https://www.bearrobotics.ai/kinisi",
+  "checked_at": "2026-11-27",
+  "context": "Official Kinisi specifications image has front and back views. Isolate complete LEFT front figure; preserve whole base and wheels. Source includes opaque white internal background even though external alpha is native, so alpha alone is not automatically clean.",
+  "files": [
+    {
+      "original": "48-24.webp",
+      "url": "https://static1.squarespace.com/static/652cbb3fb1f91809d4610dc0/t/6a61e0e34ba5343f74277a04/1784799459455/kinisi-robot-front-back-specifications.webp",
+      "size": [
+        1488,
+        1434
+      ],
+      "mode": "RGBA",
+      "sha256": "9042439920f90d2dce7ff2a8cd0c3cf4bac852aac7342af3df34a0ffa24f507b"
+    }
+  ],
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+}

@@ -1,0 +1,23 @@
+{
+  "id": 45,
+  "manufacturer": "IntBot",
+  "catalogue_model": "Nylo",
+  "public_page": "https://whyhumanoid.com/humanoids/intbot-nylo-45/",
+  "page": "https://intbot.ai",
+  "checked_at": "2026-11-27",
+  "context": "Official IntBot app JavaScript (index-jEtWzNKI.js) explicitly maps slug nylo, name Nylo, to /assets/nylo_fullbody.png. Other bots Kai/Nemi are separate. Native alpha, white clothes, whole body incl both feet.",
+  "files": [
+    {
+      "original": "45-extra0.png",
+      "url": "https://intbot.ai/assets/nylo_fullbody.png",
+      "size": [
+        550,
+        1378
+      ],
+      "mode": "RGBA",
+      "sha256": "6bce217d68863ddf42a252bdc3824d342a861e044f54fcc07e2cec9a36c6a683"
+    }
+  ],
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+}

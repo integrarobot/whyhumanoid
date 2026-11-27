@@ -1,0 +1,33 @@
+{
+  "id": 43,
+  "manufacturer": "IHMC Robotics",
+  "catalogue_model": "Nadia",
+  "public_page": "https://whyhumanoid.com/humanoids/ihmc-robotics-nadia-43/",
+  "page": "https://robots.ihmc.us/humanoid-design",
+  "checked_at": "2026-11-27",
+  "context": "Official IHMC Humanoid Design page has separate Alex and Nadia (Legacy) sections. These two images are within Nadia section, not Alex. Full white-background crouching photo14 or native-alpha frontal photo15. Review exact full limbs/feet and stray alpha.",
+  "files": [
+    {
+      "original": "43-detail14.jpg",
+      "url": "https://images.squarespace-cdn.com/content/v1/699a1168fe7b8b3bc64df4db/6e41edc9-513b-45a2-9bbc-5cc728319aa6/20220208_Crouching_TouchingGround_02.jpg",
+      "size": [
+        2170,
+        2893
+      ],
+      "mode": "RGB",
+      "sha256": "1befb37b313bc0d1c0b42a627a25fb50cbd01e68ddcb795641f33e0eedde4ce1"
+    },
+    {
+      "original": "43-detail15.png",
+      "url": "https://images.squarespace-cdn.com/content/v1/699a1168fe7b8b3bc64df4db/825a9adb-951a-44c1-951a-742b3f523bba/20231004_ArmBend.png",
+      "size": [
+        2500,
+        2890
+      ],
+      "mode": "RGBA",
+      "sha256": "f04ed08ec2391ada0448e59117331e631093aae53068b5f436bfceb8e21d18e4"
+    }
+  ],
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+}

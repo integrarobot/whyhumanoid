@@ -1,0 +1,23 @@
+{
+  "id": 52,
+  "manufacturer": "Lumos",
+  "catalogue_model": "LUS",
+  "public_page": "https://whyhumanoid.com/humanoids/lumos-lus-52/",
+  "page": "https://www.lumosbot.tech/products/lus2",
+  "checked_at": "2026-11-27",
+  "context": "Official /products/lus2 identifies this full front view as LUS2, native-alpha1200x3380. Catalogue is generic LUS; MUST review whether family illustration is valid and name LUS2 variant explicitly; do not silently present as original LUS generation.",
+  "files": [
+    {
+      "original": "52-p7.webp",
+      "url": "https://delivery.lumosbot.tech/www/lumos-website/images/products/lus2/front.webp",
+      "size": [
+        1200,
+        3380
+      ],
+      "mode": "RGBA",
+      "sha256": "f2f23e4bf321466a24e9e44bde93cd38b9a51663de5987897ad849150c2a00a3"
+    }
+  ],
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+}

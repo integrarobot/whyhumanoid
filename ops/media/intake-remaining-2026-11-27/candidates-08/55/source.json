@@ -1,0 +1,23 @@
+{
+  "id": 55,
+  "manufacturer": "Mentee",
+  "catalogue_model": "MenteeBot",
+  "public_page": "https://whyhumanoid.com/humanoids/mentee-menteebot-55/",
+  "page": "https://www.menteebot.com/bot/",
+  "checked_at": "2026-11-27",
+  "context": "Official MenteeBot /bot/ uses /demo-videos/MenteeBot_v3.png, whole native-alpha1920x3072. Name shown v3 in provenance/alt; do not assert every MenteeBot configuration same.",
+  "files": [
+    {
+      "original": "55-8.png",
+      "url": "https://www.menteebot.com/demo-videos/MenteeBot_v3.png",
+      "size": [
+        1920,
+        3072
+      ],
+      "mode": "RGBA",
+      "sha256": "c3a8ae2ab69db08476ee7df04656e0806002d8fc85c0b36c8338c30ac369f047"
+    }
+  ],
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+}

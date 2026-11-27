@@ -1,0 +1,5 @@
+# Remaining robot image source intake, first candidates
+
+Javier authorised ALL missing robot images on2026-11-27. Batches remain <=10. This transport holds nine catalogue candidates with ten original files; combine with the independently identified PNDbotics Adam source from official GitHub if suitable to reach ten. Source candidates are NOT automatically accepted. Inspect identity, named variant and full body/platform before masking. Sources are unchanged bytes at native resolution. Prepare alpha-only masks, archive mapping and SHA, review light/dark incl opacity interiors. Never change RGB or invent limbs. Preserve existing68 presentations and213 model data. No master/D1/Worker/import/pricing changes. Review PR head and CI with Codex before merging, then Pages and independent production verification and closeout. Do not merge source transport branch wholesale.
+
+LUS2 is NOT silently identified as original LUS. MenteeBot v3 must be named. Kuavo is tightly trimmed; reject if clipped. Kinisi has opaque white background inside an RGBA. Iggy image has two robots: use full left robot and retain its held tray/glass/bottle, exclude right robot/crate by mask.

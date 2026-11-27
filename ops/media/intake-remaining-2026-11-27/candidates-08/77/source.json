@@ -1,0 +1,23 @@
+{
+  "id": 77,
+  "manufacturer": "Robot.com",
+  "catalogue_model": "R-Noid",
+  "public_page": "https://whyhumanoid.com/humanoids/robot-com-r-noid-77/",
+  "page": "https://www.robot.com/r-noid",
+  "checked_at": "2026-11-27",
+  "context": "Official R-noid page JSON labels this exact image R Noid robot figure under Technical Specifications;741x2165 native alpha whole biped, not cropped alternate torso accessories.",
+  "files": [
+    {
+      "original": "77-26.png",
+      "url": "https://www.datocms-assets.com/166246/1782017293-productspecs-robot.png",
+      "size": [
+        741,
+        2165
+      ],
+      "mode": "RGBA",
+      "sha256": "9ef5a86c64a6efeb20cf5215457cf12782a7d25fba16dde3c26dbe16d189ceaf"
+    }
+  ],
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+}

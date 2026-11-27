@@ -1,0 +1,23 @@
+{
+  "id": 49,
+  "manufacturer": "Leju",
+  "catalogue_model": "Kuavo",
+  "public_page": "https://whyhumanoid.com/humanoids/leju-kuavo-49/",
+  "page": "https://www.lejurobot.com/en",
+  "checked_at": "2026-11-27",
+  "context": "Official Leju homepage labels image within GENERAL HUMANOID ROBOT SERIES, links /en/products/kuavo-my. Generic catalogue Kuavo family. Check exact source version and full top/feet: source is tightly trimmed, opaque shadow extends right; remove shadow through mask, not RGB.",
+  "files": [
+    {
+      "original": "49-4.png",
+      "url": "https://website-file.lejugym.com/images/054138ca486e6d58f09da19d964772d6.png",
+      "size": [
+        902,
+        1554
+      ],
+      "mode": "RGBA",
+      "sha256": "5929cec117a66f5b0b6c3cdea6fe603c989ed7055c9a09ac96747430053f6d79"
+    }
+  ],
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+}

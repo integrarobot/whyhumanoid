@@ -1,0 +1,219 @@
+[
+  {
+    "id": 41,
+    "manufacturer": "Holiday",
+    "catalogue_model": "Friday",
+    "public_page": "https://whyhumanoid.com/humanoids/holiday-friday-41/",
+    "page": "https://holiday-robotics.com/",
+    "checked_at": "2026-11-27",
+    "context": "FRIDAY Robot image explicitly identified in official shipped JavaScript (index-kqjpRqLU.js); whole wheeled platform. Remove studio background/floor through alpha only.",
+    "files": [
+      {
+        "original": "41-extra0.webp",
+        "url": "https://public.hday.io/site/robots/friday.webp",
+        "size": [
+          1334,
+          2000
+        ],
+        "mode": "RGB",
+        "sha256": "88499f8275996964efe1f05ae4c9dcd8cfc28e5254ee1431aae2d18d4f4a47b1"
+      }
+    ],
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  },
+  {
+    "id": 42,
+    "manufacturer": "Igus",
+    "catalogue_model": "Iggy Rob",
+    "public_page": "https://whyhumanoid.com/humanoids/igus-iggy-rob-42/",
+    "page": "https://www.igus.com/automation/news/humanoid-robot",
+    "checked_at": "2026-11-27",
+    "context": "Official Iggy Rob news illustration contains TWO robots; use only full LEFT robot with tray, glass and bottle; isolate from right cropped robot/crate. Do not cut tray. Source1018x688; useful body height ~650px, native.",
+    "files": [
+      {
+        "original": "42-2.jpeg",
+        "url": "https://igus.widen.net/content/vx4ay9rleh/webp/LCA_GEN_Humanoid_robot_News_DE_1.jpeg",
+        "size": [
+          1018,
+          688
+        ],
+        "mode": "RGB",
+        "sha256": "b07850efc9d1e90eaa94cd0022267996ca5946519d4fab97f13a17f4832ad30e"
+      }
+    ],
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  },
+  {
+    "id": 43,
+    "manufacturer": "IHMC Robotics",
+    "catalogue_model": "Nadia",
+    "public_page": "https://whyhumanoid.com/humanoids/ihmc-robotics-nadia-43/",
+    "page": "https://robots.ihmc.us/humanoid-design",
+    "checked_at": "2026-11-27",
+    "context": "Official IHMC Humanoid Design page has separate Alex and Nadia (Legacy) sections. These two images are within Nadia section, not Alex. Full white-background crouching photo14 or native-alpha frontal photo15. Review exact full limbs/feet and stray alpha.",
+    "files": [
+      {
+        "original": "43-detail14.jpg",
+        "url": "https://images.squarespace-cdn.com/content/v1/699a1168fe7b8b3bc64df4db/6e41edc9-513b-45a2-9bbc-5cc728319aa6/20220208_Crouching_TouchingGround_02.jpg",
+        "size": [
+          2170,
+          2893
+        ],
+        "mode": "RGB",
+        "sha256": "1befb37b313bc0d1c0b42a627a25fb50cbd01e68ddcb795641f33e0eedde4ce1"
+      },
+      {
+        "original": "43-detail15.png",
+        "url": "https://images.squarespace-cdn.com/content/v1/699a1168fe7b8b3bc64df4db/825a9adb-951a-44c1-951a-742b3f523bba/20231004_ArmBend.png",
+        "size": [
+          2500,
+          2890
+        ],
+        "mode": "RGBA",
+        "sha256": "f04ed08ec2391ada0448e59117331e631093aae53068b5f436bfceb8e21d18e4"
+      }
+    ],
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  },
+  {
+    "id": 45,
+    "manufacturer": "IntBot",
+    "catalogue_model": "Nylo",
+    "public_page": "https://whyhumanoid.com/humanoids/intbot-nylo-45/",
+    "page": "https://intbot.ai",
+    "checked_at": "2026-11-27",
+    "context": "Official IntBot app JavaScript (index-jEtWzNKI.js) explicitly maps slug nylo, name Nylo, to /assets/nylo_fullbody.png. Other bots Kai/Nemi are separate. Native alpha, white clothes, whole body incl both feet.",
+    "files": [
+      {
+        "original": "45-extra0.png",
+        "url": "https://intbot.ai/assets/nylo_fullbody.png",
+        "size": [
+          550,
+          1378
+        ],
+        "mode": "RGBA",
+        "sha256": "6bce217d68863ddf42a252bdc3824d342a861e044f54fcc07e2cec9a36c6a683"
+      }
+    ],
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  },
+  {
+    "id": 48,
+    "manufacturer": "Kinisi",
+    "catalogue_model": "Kinisi (Bear Robotics offering)",
+    "public_page": "https://whyhumanoid.com/humanoids/kinisi-kinisi-bear-robotics-offering-48/",
+    "page": "https://www.bearrobotics.ai/kinisi",
+    "checked_at": "2026-11-27",
+    "context": "Official Kinisi specifications image has front and back views. Isolate complete LEFT front figure; preserve whole base and wheels. Source includes opaque white internal background even though external alpha is native, so alpha alone is not automatically clean.",
+    "files": [
+      {
+        "original": "48-24.webp",
+        "url": "https://static1.squarespace.com/static/652cbb3fb1f91809d4610dc0/t/6a61e0e34ba5343f74277a04/1784799459455/kinisi-robot-front-back-specifications.webp",
+        "size": [
+          1488,
+          1434
+        ],
+        "mode": "RGBA",
+        "sha256": "9042439920f90d2dce7ff2a8cd0c3cf4bac852aac7342af3df34a0ffa24f507b"
+      }
+    ],
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  },
+  {
+    "id": 49,
+    "manufacturer": "Leju",
+    "catalogue_model": "Kuavo",
+    "public_page": "https://whyhumanoid.com/humanoids/leju-kuavo-49/",
+    "page": "https://www.lejurobot.com/en",
+    "checked_at": "2026-11-27",
+    "context": "Official Leju homepage labels image within GENERAL HUMANOID ROBOT SERIES, links /en/products/kuavo-my. Generic catalogue Kuavo family. Check exact source version and full top/feet: source is tightly trimmed, opaque shadow extends right; remove shadow through mask, not RGB.",
+    "files": [
+      {
+        "original": "49-4.png",
+        "url": "https://website-file.lejugym.com/images/054138ca486e6d58f09da19d964772d6.png",
+        "size": [
+          902,
+          1554
+        ],
+        "mode": "RGBA",
+        "sha256": "5929cec117a66f5b0b6c3cdea6fe603c989ed7055c9a09ac96747430053f6d79"
+      }
+    ],
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  },
+  {
+    "id": 52,
+    "manufacturer": "Lumos",
+    "catalogue_model": "LUS",
+    "public_page": "https://whyhumanoid.com/humanoids/lumos-lus-52/",
+    "page": "https://www.lumosbot.tech/products/lus2",
+    "checked_at": "2026-11-27",
+    "context": "Official /products/lus2 identifies this full front view as LUS2, native-alpha1200x3380. Catalogue is generic LUS; MUST review whether family illustration is valid and name LUS2 variant explicitly; do not silently present as original LUS generation.",
+    "files": [
+      {
+        "original": "52-p7.webp",
+        "url": "https://delivery.lumosbot.tech/www/lumos-website/images/products/lus2/front.webp",
+        "size": [
+          1200,
+          3380
+        ],
+        "mode": "RGBA",
+        "sha256": "f2f23e4bf321466a24e9e44bde93cd38b9a51663de5987897ad849150c2a00a3"
+      }
+    ],
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  },
+  {
+    "id": 55,
+    "manufacturer": "Mentee",
+    "catalogue_model": "MenteeBot",
+    "public_page": "https://whyhumanoid.com/humanoids/mentee-menteebot-55/",
+    "page": "https://www.menteebot.com/bot/",
+    "checked_at": "2026-11-27",
+    "context": "Official MenteeBot /bot/ uses /demo-videos/MenteeBot_v3.png, whole native-alpha1920x3072. Name shown v3 in provenance/alt; do not assert every MenteeBot configuration same.",
+    "files": [
+      {
+        "original": "55-8.png",
+        "url": "https://www.menteebot.com/demo-videos/MenteeBot_v3.png",
+        "size": [
+          1920,
+          3072
+        ],
+        "mode": "RGBA",
+        "sha256": "c3a8ae2ab69db08476ee7df04656e0806002d8fc85c0b36c8338c30ac369f047"
+      }
+    ],
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  },
+  {
+    "id": 77,
+    "manufacturer": "Robot.com",
+    "catalogue_model": "R-Noid",
+    "public_page": "https://whyhumanoid.com/humanoids/robot-com-r-noid-77/",
+    "page": "https://www.robot.com/r-noid",
+    "checked_at": "2026-11-27",
+    "context": "Official R-noid page JSON labels this exact image R Noid robot figure under Technical Specifications;741x2165 native alpha whole biped, not cropped alternate torso accessories.",
+    "files": [
+      {
+        "original": "77-26.png",
+        "url": "https://www.datocms-assets.com/166246/1782017293-productspecs-robot.png",
+        "size": [
+          741,
+          2165
+        ],
+        "mode": "RGBA",
+        "sha256": "9ef5a86c64a6efeb20cf5215457cf12782a7d25fba16dde3c26dbe16d189ceaf"
+      }
+    ],
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  }
+]

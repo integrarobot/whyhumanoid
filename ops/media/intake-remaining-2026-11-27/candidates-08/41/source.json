@@ -1,0 +1,23 @@
+{
+  "id": 41,
+  "manufacturer": "Holiday",
+  "catalogue_model": "Friday",
+  "public_page": "https://whyhumanoid.com/humanoids/holiday-friday-41/",
+  "page": "https://holiday-robotics.com/",
+  "checked_at": "2026-11-27",
+  "context": "FRIDAY Robot image explicitly identified in official shipped JavaScript (index-kqjpRqLU.js); whole wheeled platform. Remove studio background/floor through alpha only.",
+  "files": [
+    {
+      "original": "41-extra0.webp",
+      "url": "https://public.hday.io/site/robots/friday.webp",
+      "size": [
+        1334,
+        2000
+      ],
+      "mode": "RGB",
+      "sha256": "88499f8275996964efe1f05ae4c9dcd8cfc28e5254ee1431aae2d18d4f4a47b1"
+    }
+  ],
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+}
