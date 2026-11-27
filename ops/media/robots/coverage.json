@@ -1229,7 +1229,14 @@
       "status": "candidate",
       "page": "https://www.deeprobotics.cn/en/index/humanoid.html",
       "notes": "DEEP Robotics DR01; not DR02 (159).",
-      "sources": []
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: DEEP Robotics published a DR01 debut article on its own site (deeprobotics.cn/en/wap/article/id/237.html, photo credited \"Handout\") and a humanoid page (deeprobotics.cn/en/wap/humanoid.html); the corporate brochure Codex found (pdf.dfcfw.com, unreachable here) must be checked for a caption naming DR01, not DR02."
+        }
+      ]
     },
     "159": {
       "recorded": {
@@ -1269,7 +1276,14 @@
       "status": "candidate",
       "page": "https://www.droidup.com/product/7",
       "notes": "DroidUp Moya, full-body tendon-driven bionic humanoid.",
-      "sources": []
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: Moya (DroidUp, also called Zhuohide Robotics), unveiled in late January 2026, 1.65 m; press photos are not official sources here. Codex reports the official /product/7 images crop the legs or hide the feet: no whole-robot official image yet."
+        }
+      ]
     },
     "175": {
       "recorded": {
@@ -1295,6 +1309,11 @@
           "by": "claude",
           "date": "2026-11-27",
           "note": "Search only: Yogi is a prototype with toddler-like proportions; widely shown in press (e.g. Automate.org, IEEE Spectrum), which are not official sources here. The record notes the maker's site does not describe Yogi; an official Cartwheel or Humanoid Global (parent) image would be needed."
+        },
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: Humanoid Global's 16 Oct 2025 release on Yogi carries only a logo; it aimed to show a full-body walking prototype in December 2025. No official whole-body Yogi image found; press photos (Automate.org) are editorial."
         }
       ]
     },
@@ -1306,7 +1325,14 @@
       "status": "candidate",
       "page": "https://www.co.bot/",
       "notes": "Cobot Proxie: wheeled mobile manipulator with swerve-drive base; shown whole as presented.",
-      "sources": []
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only (prweb.com unreachable from Claude's session): Cobot announced the second-generation Proxie on 22 Jun 2026, with an optional two-armed configuration; the record says only \"Proxie\". Any image must state which generation and arm configuration it shows. Republished copies (The Robot Report, Robotics Tomorrow) carry photos credited to Collaborative Robotics; the official source would be Cobot's own release or press kit."
+        }
+      ]
     },
     "134": {
       "recorded": {
@@ -1316,7 +1342,14 @@
       "status": "candidate",
       "page": "https://darwinrobotics.ai/",
       "notes": "Darwin-0: the record states the company publishes no form or mobility; the only image is two arms on a stand at a server rack. Do not assume humanoid form; likely limitation unless an official whole-robot image identifies Darwin-0.",
-      "sources": []
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: press describes Darwin Robotics as building dual-arm robot technicians for data centres, in stealth; directory listings name DARWIN-01 or Darwin One, not consistently Darwin-0, with deployments targeted for early 2027. No whole-robot image found; likely no_valid_source."
+        }
+      ]
     },
     "169": {
       "recorded": {
