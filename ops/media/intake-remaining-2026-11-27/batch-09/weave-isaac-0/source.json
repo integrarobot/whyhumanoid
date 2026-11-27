@@ -12,8 +12,8 @@
     1600
   ],
   "original_sha256": "c7641c7fc3f087b5ce103b2271a74d72c4a23d536ebc04d48fd6a22829ee840b",
-  "mask_sha256": "e7c5c7ab0a787b5893f98b61d880a5838fbb8abd7195c836428a5a655d902c8b",
-  "prepared_sha256": "a37dcdab8dd126e947a611a7782ae4d95653b1d4e3718263ee00f89ba0841165",
+  "mask_sha256": "5655c732fcc35bf958e719f35eb247b47f19d026f8834271d7cab2ba870bd613",
+  "prepared_sha256": "d2f894af47efdd17377900a0fe6abf57588190d3277fc722890cdd423b3f514f",
   "roi": [
     0,
     0,
@@ -33,7 +33,7 @@
   ],
   "context": "Official Weave homepage exact file isaac-0-front.webp with alt Isaac0. Generic catalogue Isaac has unresolved generation/mobility caveat; name Isaac0 shown, do not call Isaac1 or infer powered locomotion. Whole two-arm column platform and caster/base remain. No catalogue data change.",
   "mask_method": "ISNET non-generative segmentation",
-  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.; Alpha-only removal of visually verified background colour (+/-1 RGB) in specific interior gaps, no global colour deletion. Regions: [([754, 715, 784, 765], [236, 236, 236]), ([804, 636, 829, 652], [236, 236, 236])]",
   "checked_at": "2026-11-27",
   "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
   "credit": "Weave Robotics",

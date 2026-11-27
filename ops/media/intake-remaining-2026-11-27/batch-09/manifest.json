@@ -13,8 +13,8 @@
       2222
     ],
     "original_sha256": "22dee1c14cec5b79ce569179feb48acc4ac4e34f3dce23eaa28237ac68ee4fbf",
-    "mask_sha256": "2fc41bdccbb009e1033659a8bf3ecc7927029ee00a81f255c4aec20894042173",
-    "prepared_sha256": "a314fa6eb1bb22c6c2eba3b294f40d7eda76957f6bae6d26aa04d49054ae1f74",
+    "mask_sha256": "9f71e4abee7cec1a70f09c5fc51b9a20d13c3d84d3225daf5ed9bfcffcb31340",
+    "prepared_sha256": "1868e3ac3ae6fe0f1854402eceb7ce447886c6fef69075c51efb22c331c9eeb4",
     "roi": [
       0,
       0,
@@ -34,7 +34,7 @@
     ],
     "context": "The official Sharpa homepage explicitly labels this exact asset D01, next to separate Wave hand products. Shows the whole D01 platform; not the Wave hands. Grey rounded-rectangle background was opaque despite native alpha; ISNET used to exclude it.",
     "mask_method": "ISNET non-generative segmentation",
-    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Alpha-only removal of visually verified background colour (+/-1 RGB) in specific interior gaps, no global colour deletion. Regions: [([862, 648, 942, 905], [238, 238, 238])]",
     "checked_at": "2026-11-27",
     "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
     "credit": "Sharpa",
@@ -185,8 +185,8 @@
       1600
     ],
     "original_sha256": "c7641c7fc3f087b5ce103b2271a74d72c4a23d536ebc04d48fd6a22829ee840b",
-    "mask_sha256": "e7c5c7ab0a787b5893f98b61d880a5838fbb8abd7195c836428a5a655d902c8b",
-    "prepared_sha256": "a37dcdab8dd126e947a611a7782ae4d95653b1d4e3718263ee00f89ba0841165",
+    "mask_sha256": "5655c732fcc35bf958e719f35eb247b47f19d026f8834271d7cab2ba870bd613",
+    "prepared_sha256": "d2f894af47efdd17377900a0fe6abf57588190d3277fc722890cdd423b3f514f",
     "roi": [
       0,
       0,
@@ -206,7 +206,7 @@
     ],
     "context": "Official Weave homepage exact file isaac-0-front.webp with alt Isaac0. Generic catalogue Isaac has unresolved generation/mobility caveat; name Isaac0 shown, do not call Isaac1 or infer powered locomotion. Whole two-arm column platform and caster/base remain. No catalogue data change.",
     "mask_method": "ISNET non-generative segmentation",
-    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.; Alpha-only removal of visually verified background colour (+/-1 RGB) in specific interior gaps, no global colour deletion. Regions: [([754, 715, 784, 765], [236, 236, 236]), ([804, 636, 829, 652], [236, 236, 236])]",
     "checked_at": "2026-11-27",
     "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
     "credit": "Weave Robotics",
@@ -314,8 +314,8 @@
       859
     ],
     "original_sha256": "5513a66459a32f2ae02b0e37bc337aa4015a6a76b2ab92ab7835b5e10a260bc8",
-    "mask_sha256": "19b39625b42ac6d4476536386ca2640d39c0f40761e9fdec3792c23bbda15171",
-    "prepared_sha256": "674cebdb0cb1819ab649bd276f1340d11a4299eee430e88aa76b5b41ecf60d80",
+    "mask_sha256": "468b275378051a9635f2fe1f5cdaa3d7ddbacdb1b034da41ac36e8e40b3e7e9d",
+    "prepared_sha256": "c95181ead557794b81e30e34d2c010deb0dd73c21f62675da4b7ec9b2fb72019",
     "roi": [
       0,
       0,
@@ -335,7 +335,7 @@
     ],
     "context": "Official exact Linker Humanoid page image detail-2.png. Whole wheeled platform, not cropped living-room torso. Native alpha had grey opaque background; ISNET plus interior opacity correction excludes it without RGB edits.",
     "mask_method": "ISNET non-generative segmentation",
-    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+    "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.; Alpha-only removal of visually verified background colour (+/-1 RGB) in specific interior gaps, no global colour deletion. Regions: [([500, 316, 513, 364], [243, 243, 243]), ([518, 679, 552, 687], [243, 243, 243])]",
     "checked_at": "2026-11-27",
     "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
     "credit": "Linkerbot",

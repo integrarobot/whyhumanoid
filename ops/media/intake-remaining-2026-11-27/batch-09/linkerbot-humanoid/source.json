@@ -12,8 +12,8 @@
     859
   ],
   "original_sha256": "5513a66459a32f2ae02b0e37bc337aa4015a6a76b2ab92ab7835b5e10a260bc8",
-  "mask_sha256": "19b39625b42ac6d4476536386ca2640d39c0f40761e9fdec3792c23bbda15171",
-  "prepared_sha256": "674cebdb0cb1819ab649bd276f1340d11a4299eee430e88aa76b5b41ecf60d80",
+  "mask_sha256": "468b275378051a9635f2fe1f5cdaa3d7ddbacdb1b034da41ac36e8e40b3e7e9d",
+  "prepared_sha256": "c95181ead557794b81e30e34d2c010deb0dd73c21f62675da4b7ec9b2fb72019",
   "roi": [
     0,
     0,
@@ -33,7 +33,7 @@
   ],
   "context": "Official exact Linker Humanoid page image detail-2.png. Whole wheeled platform, not cropped living-room torso. Native alpha had grey opaque background; ISNET plus interior opacity correction excludes it without RGB edits.",
   "mask_method": "ISNET non-generative segmentation",
-  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.",
+  "refinement": "Alpha85..230, components<30px excluded; source visible RGB unchanged;20px transparent pad; Reviewed opaque robot interiors restored to255 inside eroded silhouette, originalRGB unchanged.; Alpha-only removal of visually verified background colour (+/-1 RGB) in specific interior gaps, no global colour deletion. Regions: [([500, 316, 513, 364], [243, 243, 243]), ([518, 679, 552, 687], [243, 243, 243])]",
   "checked_at": "2026-11-27",
   "license_note": "Manufacturer/project primary source. Credit source owner. No open licence assumed; no outreach sent.",
   "credit": "Linkerbot",
