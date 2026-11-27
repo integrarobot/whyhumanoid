@@ -1,0 +1,56 @@
+{
+  "id": "WH-20261127-0720-news-texto-completo",
+  "tarea": "Corregir la presentación de News y del Blog: cada noticia una sola vez, con su texto completo y sus enlaces a las fuentes; sin la sección de noticias generada en los artículos del Blog",
+  "origen": "Javier (27/11/2026: corrección del diseño de News, autorizado a corregir y publicar), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T07:20:29+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 180 (fusionado como 744f412 desde 8db9f37), solo en el generador (tools/editorial-view.mjs) y en assets/editorial.css. Los datos de editorial/, los 121 artículos, las 780 noticias y todas las direcciones no cambian.",
+    "Blog: los artículos ya no llevan la sección generada «News in this edition» en ninguna de sus tres variantes (con noticias, ilegible o sin bloque), y las tarjetas no muestran el número de noticias.",
+    "News (/news/, /news/2025/, /news/2026/): cada noticia muestra su body_markdown completo una sola vez, con el renderizador seguro, y conserva sus enlaces a las fuentes y sus negritas. Debajo lleva un enlace «Permalink» pequeño y aparte que no repite el texto. Ya no hay titular generado con la primera frase, extracto, recorte ni lista numerada. Se mantienen la agrupación por mes y artículo, el orden de la fuente y la búsqueda sobre el texto completo.",
+    "Página de cada noticia: el título visible es neutro («News, <fecha>») y la meta indica «Item N of M from the Blog article…». Lleva el texto una vez, con anterior y siguiente; el titular guardado solo queda en <title>.",
+    "El selector de años salía como «20252026» y ahora usa el patrón compartido .jump. Las entradas de News tienen la misma anchura de lectura que el artículo (72ch).",
+    "El contrato de presentación queda en ops/editorial/README.md («Display contract») y en AGENTS.md: la actualización semanal cambia datos, nunca esta presentación.",
+    "El ítem 3 de nl-2025-12-17 (Mercadolibre y Agility) conserva sus dos párrafos, como en el HTML original. No hubo ninguna edición de datos fuente.",
+    "Sin cambios en precios, acceso, el Worker ni D1."
+  ],
+  "urls": [
+    {
+      "etiqueta": "News",
+      "url": "https://whyhumanoid.com/news/"
+    },
+    {
+      "etiqueta": "Noticia de Humyn Labs",
+      "url": "https://whyhumanoid.com/news/nl-2026-11-25-why-humanoid/01/"
+    },
+    {
+      "etiqueta": "Blog",
+      "url": "https://whyhumanoid.com/blog/"
+    },
+    {
+      "etiqueta": "PR 180",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/180"
+    },
+    {
+      "etiqueta": "Commit de fusión 744f412",
+      "url": "https://github.com/integrarobot/whyhumanoid/commit/744f41263c9a8ca31b3af1237bb82b026746dd5a"
+    }
+  ],
+  "despliegue": [
+    "PR 180 fusionado como 744f412 con comprobación del head exacto 8db9f37, tras la aprobación de Codex y con el CI 45950604438 en verde sobre ese head.",
+    "Pages 45951040001 completado con éxito; CI de main 45951040521: completado con éxito.",
+    "El sitemap no cambia: 2.484 URL."
+  ],
+  "verificaciones": [
+    "Claude, local: test-editorial 24/24, con dos pruebas nuevas sobre el corpus real (Humyn Labs y 121/780). También pasan verify-editorial, editorial check, build-pages, build-site y build-app --check, verify-pages, test-frame, test-coherence, export-public --check, check-public, entregas --check, relations --check, robot-presentation --check y workbook-plan check.",
+    "Claude, Chromium a 1366, 390 y 320 px en /news/, /news/2025/, la noticia de Humyn Labs, un artículo del Blog y /blog/: sin desbordamiento horizontal, con 780 y 281 entradas; buscar «humyn» da 1 resultado.",
+    "Claude, producción: 131 rutas comprobadas (los 121 artículos, los índices y años de Blog y News, dos noticias y dos alias /newsletter/). Las 131 responden 200 y 129 son idénticas al build; las otras 2 solo difieren por la ofuscación de correo que añade Cloudflare en el borde, como antes, además de las metaetiquetas agent:*. Ninguna página en vivo tiene sección ed-news. /news/ tiene 780 entradas y ninguna lista numerada. El párrafo completo de Humyn Labs aparece una sola vez en /news/ y en su página, con el enlace directo a humynlabs.ai y la negrita «47 million dollar Series A»; el título de su página es «News, 25 November 2026».",
+    "Codex, independiente: revisión del generador, el CSS y la documentación, sin cambios en editorial/, data/, server/ ni sitemap.xml. Pasan 24 pruebas editoriales, 6 de marco, verify-editorial, build-pages --check y editorial check. Su auditoría del DOM cubre los 121 cuerpos del Blog y los 1.560 cuerpos de News en índices y años, con 1.600 enlaces a fuentes y 1.406 negritas, y el párrafo de Humyn aparece una vez en índice, año y detalle."
+  ],
+  "pendientes": [
+    "Las imágenes de los artículos se siguen mostrando como enlaces «Image: Image», como hasta ahora. Es un aspecto del renderizador que no toca esta corrección."
+  ],
+  "siguiente_accion": "Codex registra su aviso de esta entrega tras su verificación en vivo; Javier confirma la recepción."
+}
