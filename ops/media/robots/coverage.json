@@ -1182,7 +1182,14 @@
       "status": "candidate",
       "page": "https://www.clonerobotics.com/",
       "notes": "Clone: the record names the robot \"Clone\" (musculoskeletal android). Do not substitute another Clone Robotics product name or prototype (e.g. a torso, a hand or \"Protoclone\") unless the official source identifies it as this record.",
-      "sources": []
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only (maker site not reachable from Claude's session): press coverage (2025) describes Protoclone (V1) as the prototype of Clone Alpha, the planned production version, and reports it hanging from a support because it cannot stand or balance on its own. The record says only \"Clone\": an image must be one Clone Robotics presents for this robot; a suspended whole-body photo shows the support, which is not part of the robot, and must be judged before use."
+        }
+      ]
     },
     "24": {
       "recorded": {
@@ -1282,7 +1289,14 @@
       "status": "candidate",
       "page": "https://www.cartwheelrobotics.com/",
       "notes": "Cartwheel Yogi: the record notes the original website returns content unrelated to robot specifications; identity and source to be established.",
-      "sources": []
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: Yogi is a prototype with toddler-like proportions; widely shown in press (e.g. Automate.org, IEEE Spectrum), which are not official sources here. The record notes the maker's site does not describe Yogi; an official Cartwheel or Humanoid Global (parent) image would be needed."
+        }
+      ]
     },
     "19": {
       "recorded": {
@@ -1352,7 +1366,14 @@
       "status": "candidate",
       "page": "https://www.donutrobotics.com/en",
       "notes": "Donut Robotics Cinnamon 1: the record notes form details are not published and Cinnamon 2 was announced; an image must be identified as Cinnamon 1, never Cinnamon 2.",
-      "sources": []
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: a Japanese press release says Donut Robotics runs its own AI on a body supplied by an overseas OEM, so the hardware may match another maker's robot. An image must be Donut's own presentation of Cinnamon 1 (not cinnamon mini, not Cinnamon 2) and the alt text must not imply Donut built the body."
+        }
+      ]
     }
   },
   "scopes": [
