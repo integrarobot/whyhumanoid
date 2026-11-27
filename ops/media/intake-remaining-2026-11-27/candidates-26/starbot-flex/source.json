@@ -1,0 +1,17 @@
+{
+  "id": 200,
+  "slug": "starbot-flex",
+  "credit": "StarBot",
+  "source_page": "https://www.starbotusa.com/",
+  "source_url": "https://www.starbotusa.com/starbot_three_robot_platforms_v2.png",
+  "original": "original.png",
+  "original_size": [
+    1536,
+    1024
+  ],
+  "original_sha256": "dc3ee48adce174ad587fe1510f3aa548e2254a4c432dfa068ff099e4ca43d18e",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "source_context": "Exact homepage image alt: StarBot Spark, StarBot Astra, and StarBot Flex. Source original decoded from Next/image URL, NOT optimized/upscaled3840 response. Native1536x1024 manufacturer PRODUCT ILLUSTRATION/RENDER, not a hardware photograph or performance evidence. Homepage textual lineup/release sections map Spark3ft smallbiped, Astra5ft biped, Flex5ft9 foldable wheeled configuration. Flex is RIGHT wheeled foldable platform, not middle biped. ApproxROI[1010,0,1536,980], independently widen if needed. Whole head, both hands, entire folding column and mobilebase/wheels visible. Keep exact native visibleRGB. Remove other two figures, floor/reflection/shadow with alpha-only mask; caption explicitly StarBot, [model] manufacturer product illustration. Do not claim independent evidence or change specs. Root inspected full original.",
+  "license_note": "Manufacturer primary source, credit; no open licence assumed or outreach."
+}
