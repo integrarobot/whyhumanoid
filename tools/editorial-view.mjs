@@ -6,6 +6,7 @@
 // Markdown is rendered by a small safe renderer: every character of the source is escaped, and only a fixed set of
 // constructs becomes markup (paragraphs, ## and ### headings, lists, quotes, bold, italic, code, http(s) links).
 // Raw HTML is refused by validation before it gets here; anything else that slips through is shown as text.
+// Images are never shown (Javier, 27 Nov 2026): no picture, alt text, caption or fallback link. The store keeps them.
 import { BARE_URL, findLinks, isLive, linkTarget, madridToday, readyEditions, trimUrl, yearsOf } from './editorial-model.mjs';
 
 export const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -42,15 +43,36 @@ export function inline(text) {
   let last = 0;
   for (const { start, end, image, label, url } of findLinks(s)) {
     out.push(bare(s.slice(last, start)));
-    if (!linkTarget(url)) out.push(esc(s.slice(start, end)));
-    else out.push(anchor(url, image ? `Image: ${esc(label || url)}` : emphasis(esc(label || url))));
+    if (image) { /* never rendered: see withoutImages */ } else if (!linkTarget(url)) out.push(esc(s.slice(start, end)));
+    else out.push(anchor(url, emphasis(esc(label || url))));
     last = end;
   }
   out.push(bare(s.slice(last)));
   return out.join('');
 }
+// The Markdown without its images: a linked image goes with its link, an image inside prose goes and the prose stays,
+// and a line, list entry, quote or heading left with no text is dropped, then any block left empty. Ordinary links,
+// whatever their target, are kept.
+const LINKED_IMAGE = /\[\s*!\[[^\]]*\]\([^)\s]*(?:\s+"[^"]*")?\)\s*\]\([^)\s]*(?:\s+"[^"]*")?\)/g;
+const MARKER_ONLY = /^\s*(?:[-*+]|\d+[.)]|>|#{1,6})?\s*$/;
+export function withoutImages(markdown) {
+  return String(markdown ?? '').replace(/\r\n?/g, '\n').split(/\n\s*\n/).map((block) => block
+    .split('\n')
+    .map((line) => {
+      const bare = line.replace(LINKED_IMAGE, '\u0000');
+      let out = '';
+      let last = 0;
+      for (const l of findLinks(bare)) if (l.image) { out += bare.slice(last, l.start) + '\u0000'; last = l.end; }
+      out += bare.slice(last);
+      if (!out.includes('\u0000')) return line;
+      return out.replace(/[ \t]*\u0000[ \t]*/g, (m, i) => (i === 0 ? '' : ' ')).replace(/[ \t]+$/, '');
+    })
+    .filter((line) => !MARKER_ONLY.test(line))
+    .join('\n')
+    .trim()).filter(Boolean).join('\n\n');
+}
 export function renderMarkdown(markdown) {
-  const blocks = String(markdown ?? '').replace(/\r\n?/g, '\n').split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+  const blocks = withoutImages(markdown).split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
   return blocks.map((b) => {
     const lines = b.split('\n');
     const h = b.match(/^(#{1,6})\s+(.+)$/);

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { DEFAULT_YEARS, contentHash, coverage, editionProblems, findLinks, inventoryProblems, isLive, itemId, madridToday, markdownProblems, readStore, readyEditions, storeProblems, urlsIn } from './editorial-model.mjs';
 import { planIngest, storeFiles, stateOf } from './editorial.mjs';
-import { editorialPages, editorialUrls, excerpt, inline, renderMarkdown } from './editorial-view.mjs';
+import { editorialPages, editorialUrls, excerpt, inline, renderMarkdown, withoutImages } from './editorial-view.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = (p) => readFileSync(new URL(p, root), 'utf8');
@@ -170,7 +170,7 @@ test('the renderer escapes everything and only builds safe links', () => {
   assert.equal(inline('[t](javascript:alert(1))'), '[t](javascript:alert(1))');
   assert.match(inline('[a **b**](https://example.com/?q=1&r=2)'), /^<a href="https:\/\/example\.com\/\?q=1&amp;r=2" rel="noopener noreferrer">a <strong>b<\/strong><\/a>$/);
   assert.match(inline('see https://example.com/x.'), /<a href="https:\/\/example\.com\/x" rel="noopener noreferrer">https:\/\/example\.com\/x<\/a>\.$/);
-  assert.equal(inline('![alt](https://example.com/i.png)'), '<a href="https://example.com/i.png" rel="noopener noreferrer">Image: alt</a>');
+  assert.equal(inline('![alt](https://example.com/i.png)'), '', 'an image is never rendered, not even as a link');
   const html = renderMarkdown('# Top\n\ntext\n\n### Sub\n\n- a\n- b\n\n1. one\n2. two\n\n> quoted');
   assert.equal(html, '<h2>Top</h2>\n<p>text</p>\n<h3>Sub</h3>\n<ul><li>a</li><li>b</li></ul>\n<ol><li>one</li><li>two</li></ol>\n<blockquote><p>quoted</p></blockquote>');
   assert.doesNotMatch(renderMarkdown('<img src=x onerror=alert(1)>'), /<img/);
@@ -343,7 +343,7 @@ test('teasers skip a leading image, headings and the embedded-video placeholder,
   assert.equal(excerpt('![A chart of shipments](https://example.com/c.png)'), '', 'an article made only of an image has no teaser, not its alt text');
   assert.equal(excerpt('A [Video](https://example.com/v) worth seeing.'), 'A Video worth seeing.', 'prose mentioning a video is kept');
   const html = renderMarkdown(md);
-  assert.match(html, /<a href="https:\/\/example\.com\/cover\.png" rel="noopener noreferrer">Image: Image<\/a>/, 'the image itself is still rendered in the article');
+  assert.doesNotMatch(html, /cover\.png|Image/, 'the image is not rendered in the article');
   assert.match(html, /<p>\[Video embedded in the original article\]<\/p>/, 'and the placeholder too');
   const pkg = fixture();
   pkg.editions[0].body_markdown = `![Image](https://example.com/cover.png)\n\n${pkg.editions[0].body_markdown}`;
@@ -402,4 +402,40 @@ test('real corpus: no Blog article carries a news section, list or count; every 
   }
   assert.equal((all.match(/<article class="ed-entry" data-ed-text="[^"]+"/g) ?? []).length, 780, 'every entry searchable');
   for (const alias of ['newsletter/index.html', 'newsletter/2025/index.html', `newsletter/${ready[0].id}/index.html`]) assert.match(built.get(alias), /http-equiv="refresh"/, `${alias} still redirects`);
+});
+
+// Javier, 27 Nov 2026: no images in the Blog or News, and nothing in their place.
+test('images: never rendered; prose, emoji, bold and source links around them stay; no empty wrapper is left', () => {
+  const img = (alt = 'Image') => `![${alt}](https://cdn.example.com/a_2048x1177.png)`;
+  assert.equal(renderMarkdown(`${img()}\n\nFirst paragraph.`), '<p>First paragraph.</p>', 'a leading image-only block is omitted');
+  assert.equal(renderMarkdown(img('A humanoid robot folding laundry in a kitchen')), '', 'informative alt text is not turned into a caption');
+  assert.equal(renderMarkdown(`🤖 The ${img('chart')} **fleet** grew, says [the report](https://example.com/report.png).`),
+    '<p>🤖 The <strong>fleet</strong> grew, says <a href="https://example.com/report.png" rel="noopener noreferrer">the report</a>.</p>',
+    'inline image removed; prose, emoji, bold and an explicitly labelled link to an image file kept');
+  assert.equal(renderMarkdown(`${img()} Leading prose.`), '<p>Leading prose.</p>');
+  assert.equal(renderMarkdown(`- ${img()}\n- kept **item**\n- ${img()} with text`), '<ul><li>kept <strong>item</strong></li><li>with text</li></ul>', 'list entries left empty are dropped');
+  assert.equal(renderMarkdown(`> ${img()}\n> quoted`), '<blockquote><p>quoted</p></blockquote>');
+  assert.equal(renderMarkdown(`> ${img()}`), '', 'a quote of only an image disappears');
+  assert.equal(renderMarkdown(`## ${img()}\n\nText`), '<p>Text</p>', 'a heading of only an image disappears');
+  assert.equal(renderMarkdown(`[${img()}](https://example.com/page) then text`), '<p>then text</p>', 'a linked image goes with its link');
+  assert.equal(renderMarkdown('Line one\n' + img() + '\nline two'), '<p>Line one line two</p>');
+  assert.equal(withoutImages('No image [here](https://example.com/x).'), 'No image [here](https://example.com/x).', 'text without images is unchanged');
+
+  const store = readStore(root);
+  const raw = JSON.stringify([...store.editions.values()]);
+  assert.equal((raw.match(/!\[Image\]\(/g) ?? []).length, 146, 'the store keeps its 146 images: the data is not edited');
+  const built = views(store, '2026-11-27', true);
+  for (const [f, html] of built) {
+    if (f.startsWith('newsletter/')) continue;
+    const main = html.match(/<main>[\s\S]*<\/main>/)[0];
+    assert.doesNotMatch(main, /<img|!\[|Image: |substack-post-media|>Image</, `${f}: no image, image Markdown or fallback link`);
+    assert.doesNotMatch(main, /<p>\s*<\/p>|<li>\s*<\/li>|<h[23]>\s*<\/h[23]>|<blockquote><p>\s*<\/p><\/blockquote>|<ul><\/ul>|<ol><\/ol>/, `${f}: no empty wrapper`);
+  }
+  const frenzy = built.get('blog/nl-2026-11-04-furor-con-los-robots-humanoides/index.html');
+  assert.match(frenzy, /<h1>Humanoid robot frenzy<\/h1>/);
+  assert.doesNotMatch(frenzy, /eda01e4f-0702-47a5-a7eb-706add5075f2/, 'the reported image is gone');
+  assert.match(frenzy, /<div class="ed-body">\n<p>This weekend I felt we are living through a frenzy for humanoid robots/, 'the article opens with its prose');
+  assert.match(frenzy, /👆 <a href="https:\/\/x\.com\/aelluswamy\/status\/2116214488840183929\?s=46" rel="noopener noreferrer">Ashok Elluswamy<\/a>/, 'emoji and source links kept');
+  assert.equal(readyEditions(store).length, 121);
+  assert.equal(readyEditions(store).reduce((n, e) => n + e.items.length, 0), 780);
 });
