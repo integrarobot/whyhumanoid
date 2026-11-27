@@ -1,0 +1,66 @@
+{
+  "id": "WH-20261127-1949-imagenes-robots-lote-12",
+  "tarea": "Imágenes de robots, lote 12 del alcance «todas las imágenes que faltan»: Reachy 2 (configuración de un brazo), Forerunner K2 (versión bípeda de desarrollo), Forerunner K1, GR-1 (render técnico RoboCup 2024), Vibe 01, plataforma de Noble Machines, ROBOTO Origin, THEMIS, Walker S2 y Walker S1, con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026; alcance confirmado solo para Humanoids), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T19:49:06+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 240 (cabeza revisada 2db1146, merge fa0b12c): imagen en las fichas 67 Pollen Reachy 2, 215 Kepler Forerunner K2, 47 Kepler Forerunner K1, 32 Fourier GR-1, 118 Vibe Robotics Vibe 01, 107 Noble Machines, 128 RoboParty ROBOTO 01 / ROBOTO Origin, 99 Westwood THEMIS, 142 UBTECH Walker S2 y 91 UBTECH Walker S1, solo mediante tools/robot-presentation.json; las 108 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con el tipo de imagen o la variante: «Pollen Robotics, Reachy 2 single-arm mobile-base configuration, technical render», «Kepler, K2 bipedal development version, manufacturer render», «Kepler, Forerunner K1 manufacturer render», «RoboCup 2024 team hardware specification, Fourier GR-1 technical render», «Vibe Robotics, Vibe 01 render», «Noble Machines, unnamed platform», «RoboParty, ROBOTO Origin repository render», «UBTECH, Walker S2 render» y «UBTECH, Walker S1 with tote, manufacturer product image». Las especificaciones de las fichas no cambian.",
+    "Fuentes de Codex (codex/image-sources-remaining: candidates-12 en 864fcbc, candidates-13 en c4c8edb, candidates-14 en 6d1eb96 y candidates-15 en 54f4cf5), copiadas de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-12/. Todos los recortes, de Claude y solo de alfa, a tamaño nativo: alfa propio del original (K1 y THEMIS), la máscara suave del PDF del fabricante (Reachy 2) o máscaras BiRefNet guardadas junto a cada original. Walker S2 se rehízo con una región más ancha para conservar entero el codo derecho, que pasa por delante del armario de baterías; el armario queda fuera.",
+    "Decisiones de Codex: K1 aceptado con solo el contorno suavizado tenue en los bordes del archivo (sin píxeles opacos en las filas del borde), con nota en su procedencia; Noble conserva el RGB de la caja translúcida tal como se fotografió.",
+    "Fuera del lote y conservados en el paquete como investigación: D9 (155), porque el fondo oscuro junto al torso no se distingue del torso solo con alfa (sustituido por Walker S2); Kuavo 4Pro (49), porque la fuente tiene manos y antebrazos grises planos de marcador de posición (hay una imagen oficial nueva en candidates-17); R-Noid (77) fotograma 847, porque quedan una línea cian de la tapa de R-Kiwi y un halo rojizo de la puerta junto a la pinza y la muñeca (sustituido por Walker S1; queda por examinar el fotograma 908).",
+    "Walker S2 (142) y Forerunner K2 (215) salen de las reservas del lote 1. README del paquete del lote 12 con estado publicado; procedencias de los diez actualizadas como publicadas.",
+    "Cobertura: lote 12 publicado con 10 fichas; en todo el catálogo, 118 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 240",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/240"
+    },
+    {
+      "etiqueta": "CI de la cabeza 2db1146",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46051688623"
+    },
+    {
+      "etiqueta": "Pages de fa0b12c",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46051942119"
+    },
+    {
+      "etiqueta": "Ficha Walker S2",
+      "url": "https://whyhumanoid.com/humanoids/ubtech-walker-s2-142/"
+    },
+    {
+      "etiqueta": "Ficha Walker S1",
+      "url": "https://whyhumanoid.com/humanoids/ubtech-walker-s1-91/"
+    },
+    {
+      "etiqueta": "Ficha Reachy 2",
+      "url": "https://whyhumanoid.com/humanoids/pollen-reachy-2-67/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main fa0b12c (run 46051942119, correcto); CI de la cabeza 2db1146 (run 46051688623, correcto). Fusión hecha solo en esa cabeza, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 13/13 (los diez integrados y los tres apartados); el aviso de fondo plano en K2 apunta a las carcasas negras de los actuadores de cadera, que son del robot; navegador local de las diez fichas a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
+    "Codex, cabeza 2db1146: revisión independiente aprobada; 100 archivos solo de imágenes, las 108 presentaciones anteriores y el catálogo de 213 idénticos, las diez nuevas exactas al mapping; PNG igual al preparado, hash del original, RGB visible exacto, tamaño nativo, margen de 20 px y alfa de PNG y WebP iguales; pares claro y oscuro revisados (codo, manos y pies de Walker S2 enteros, caja de Walker S1 completa).",
+    "Claude, producción: las 20 URL canónicas (10 PNG y 10 WebP) con los mismos bytes que fa0b12c (20/20); las 10 fichas y la portada idénticas a fa0b12c salvo las etiquetas meta agent:* que añade Cloudflare (11/11); navegador real a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 118 presentaciones.",
+    "Codex, verificación pública independiente tras Pages 46051942119: 30/30 comprobaciones HTTP correctas (20 activos PNG y WebP con SHA y alfa exactos y 10 fichas con 200, imagen, texto alternativo y leyenda); 20/20 vistas en Chrome con innerWidth efectivo de 390 × 844 y 1366 × 900, imágenes cargadas con naturalWidth, contain, sin desbordamiento y leyendas correctas; captura de escritorio de Walker S1 revisada. Cobertura 118/213, 95 pendientes.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (118) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Lote 13 en preparación con candidates-14 a 18: Kuavo 4Pro con manos articuladas, ARMAR-7, KEENON XMAN-R1, IRON, Oli, STAR1, MagicBot Gen1, ProWhite 2.0 y Sophia (plataforma Utility). T230A (89) queda apartado: los haces de luz blancos del folleto detrás del robot no se separan del cuerpo blanco sin bordes artificiales.",
+    "D9 (155) y R-Noid (77) siguen en cola: D9 hasta una fuente oficial con el robot separable del fondo y R-Noid hasta revisar el fotograma 908.",
+    "Quedan 95 fichas de Humanoids sin imagen; Other Robots queda fuera del alcance por decisión de Javier."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Claude sigue con el lote 13 sin fusionar nada antes de la revisión de Codex."
+}

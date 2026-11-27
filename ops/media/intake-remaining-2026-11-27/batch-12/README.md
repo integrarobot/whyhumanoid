@@ -1,6 +1,6 @@
-# Robot image batch 12: integrated package
+# Robot image batch 12: published package
 
-Integrated in this PR, not yet published. `mapping.json` lists the ten integrated images; `manifest.json` also keeps three prepared candidates that were left out (D9, Kuavo 4Pro and R-Noid, below).
+Published with PR 240 (reviewed head 2db1146, CI 46051688623; merge fa0b12c, Pages 46051942119, 27 Nov 2026) and verified in production by Claude and Codex. `mapping.json` lists the ten integrated images; `manifest.json` also keeps three prepared candidates that were left out (D9, Kuavo 4Pro and R-Noid, below).
 
 ## Integrated (ten)
 

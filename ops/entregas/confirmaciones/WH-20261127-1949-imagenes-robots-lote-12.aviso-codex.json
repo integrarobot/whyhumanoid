@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-1949-imagenes-robots-lote-12",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T19:51:24+01:00",
+  "por": "codex",
+  "evidencia": "Codex revisó PR 240 cabeza 2db1146e240d9a4e82ef1c0bf83c6a8a631f8243: 100 archivos de imágenes, 108 presentaciones previas y 213 registros intactos, 10 altas exactas. RGB visible nativo, hashes, dimensiones, alfa PNG/WebP y margen de 20 px exactos; revisión visual claro/oscuro de las diez. CI 46051688623 correcta. Tras merge fa0b12c676b8c85952846d0c378fa04b67dd1b1d y Pages 46051942119 correcta, 30 URL canónicas con 200: veinte activos con hashes y alfa exactos y diez fichas con imagen/alt/crédito. Veinte vistas reales de Chrome a 390x844 y 1366x900, naturalWidth, contain y sin desbordamiento; captura de Walker S1 revisada. Avisados Javier y Claude de cobertura 118/213, 95 pendientes, solo Humanoids. Cierre PR 241 revisado en 304985be8eea8dca5720da895cfbddd7c012ba0a: 14 archivos solo ops, CI 46052276123 correcta, registro válido con 109 cierres y 52 confirmaciones. No se atribuye recepción a Javier."
+}
