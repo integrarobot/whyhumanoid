@@ -1252,11 +1252,12 @@ html.cats-compact{scroll-padding-top:calc(var(--hud-h) + 16px)}
         <div class="tags">${tagFor(m)}</div>
         ${presentHtml(m)}
       </div>
+      <p class="note" id="legacy-metric-caveat">Payload and runtime are legacy claims with conditions as recorded. They are not normalised sustained-load or rated-load measurements. <a href="/humanoids/#verification-comparison">Compare structured evidence</a> and read the <a href="/method/#verification-standard">verification standard</a>.</p>
       <div class="quad">
         ${readout('Height', F(m, 'Height (cm)'), 'cm')}
         ${readout('Mass', F(m, 'Weight (kg)'), 'kg')}
-        ${readout('Payload', F(m, 'Payload/carry (kg)'), 'kg')}
-        ${readout('Runtime', F(m, 'Power (hours)'), 'h')}
+        ${readout('Payload claim', F(m, 'Payload/carry (kg)'), 'kg')}
+        ${readout('Runtime claim', F(m, 'Power (hours)'), 'h')}
       </div>
       ${buyer && !isNA(buyer) ? `<div class="d-sec"><div class="note"><span class="lbl">Before comparing</span>${esc(buyer)}</div></div>` : ''}
       <div class="d-sec"><span class="lbl">Body and system</span>${kv([

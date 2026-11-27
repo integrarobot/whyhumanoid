@@ -29,9 +29,14 @@ curl -fsS 'https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets'
 curl -fsS 'https://whyhumanoid-premium.javier-198.workers.dev/v1/search?category=humanoids&tags=platform%3Abipedal%2Chq%3Aunited_states'
 curl -fsS 'https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets/humanoids?q=Atlas&limit=10'
 curl -fsS 'https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets/deployments/preview'
+curl -fsS 'https://whyhumanoid-premium.javier-198.workers.dev/v1/verification'
 ```
 
-Use comma-separated IDs from earlier search facets in tags. The hq: prefix filters company country, site: filters deployment country, and platform: filters robot mobility. Only records with the corresponding tags can match. Send free text as `q` over HTTP and `query` in MCP. Search returns paginated results and the available facets. Read the public humanoid rows and inspect the recorded Payload/carry (kg) field. Apply numeric thresholds in your client after checking whether the value is sustained, peak, one-handed or subject to other conditions. The server has no numeric payload filter.
+Use comma-separated IDs from earlier search facets in tags. The hq: prefix filters company country, site: filters deployment country, and platform: filters robot mobility. Only records with the corresponding tags can match. Send free text as `q` over HTTP and `query` in MCP. Search returns paginated results and the available facets. Humanoid row responses include verification.by_row_id keyed by the unchanged row id. Read metrics.payload_sustained_bilateral_kg for sustained bilateral payload; Pending_Audit and not_disclosed are not zero. Do not parse the legacy Payload/carry (kg) string into this metric. Apply client-side thresholds only to this exact metric with its evidence tier, freshness and conditions; compare only matching reviewed comparison_group values. Peak, single-arm and unclassified payload remain separate. The server has no numeric payload filter.
+
+## Attribute verification
+
+The public `/v1/verification` endpoint describes Verification Standard v1.0. Add `?entity=<canonical-humanoid-slug>` for a robot's structured attributes and append-only history. Optional `valid_at=YYYY-MM-DD` and `known_at=YYYY-MM-DD` distinguish the specification period from the information recorded by that date. Unknown effective dates are not backdated. Each metric includes `verification_tier`, `verified_at`, `conditions` and `freshness`; the response adds `comparison_caveats`. The whole profile remains `Pending_Audit`. V1 records a manufacturer claim, V2 documents a scoped attribute, and V3/V4 require the independent evidence in [the standard](https://whyhumanoid.com/method/#verification-standard).
 
 ## CLI
 

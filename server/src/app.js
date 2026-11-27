@@ -31,6 +31,7 @@ import { handleMcp } from './mcp.js';
 import { openaiAppsChallenge } from './openai-apps-challenge.js';
 import { MUSE_CHALLENGE_TOKEN, museChallenge } from './muse-challenge.js';
 import { companyNews } from './news/yahoo.js';
+import { publicVerificationStandard, verificationForEntity, verificationForRows } from './verification/snapshot.js';
 
 const MAX_API_KEYS = 5;
 
@@ -110,6 +111,21 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
     // The central access matrix (server/src/access/matrix.js): rules only, no data.
     ['GET', /^\/v1\/access$/, async () => json(200, publicMatrix(), { 'cache-control': 'public, max-age=300' })],
 
+    // Attribute-scoped public evidence. Never reads the paid deployment/component tables.
+    ['GET', /^\/v1\/verification$/, async (_request, now, _match, url) => {
+      const entity = url.searchParams.get('entity');
+      if (!entity) return json(200, publicVerificationStandard(), { 'cache-control': 'public, max-age=300' });
+      if (!/^[a-z0-9][a-z0-9-]{0,179}$/.test(entity)) throw new HttpError(400, 'invalid_entity');
+      const day = new Date(now * 1000).toISOString().slice(0, 10);
+      const validAt = url.searchParams.get('valid_at') ?? day;
+      const knownAt = url.searchParams.get('known_at') ?? day;
+      const validDate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s) && Number.isFinite(Date.parse(s)) && new Date(s).toISOString().slice(0, 10) === s;
+      if (!validDate(validAt) || !validDate(knownAt) || knownAt > day) throw new HttpError(400, 'invalid_verification_date');
+      const view = verificationForEntity(entity, validAt, knownAt);
+      if (!view) throw new HttpError(404, 'unknown_verification_entity');
+      return json(200, view, { 'cache-control': 'public, max-age=300' });
+    }],
+
     // Global search over the 13 categories with common tags (Javier, 17 Nov 2026). Visitors and accounts without a
     // subscription search the public values only (free tabs in full, Deployments and Components at their public
     // fields): results, snippets, tags and counts all come from that set.
@@ -148,13 +164,13 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
     [
       'GET',
       /^\/v1\/datasets\/([a-z0-9-]+)\/preview$/,
-      async (_request, _now, match) => {
+      async (_request, now, match) => {
         const spec = DATASETS_BY_ID.get(match[1]);
         if (!spec) throw new HttpError(404, 'unknown_dataset');
         const preview = await queryPreview(db, spec);
         return json(
           200,
-          { dataset: { id: spec.id, title: spec.title, description: spec.description }, preview_rows: publicRowLimit(spec) === 0 ? 'none' : 'all', public_fields: spec.publicFields ?? null, ...preview },
+          { dataset: { id: spec.id, title: spec.title, description: spec.description }, preview_rows: publicRowLimit(spec) === 0 ? 'none' : 'all', public_fields: spec.publicFields ?? null, ...preview, ...(spec.id === 'humanoids' ? { verification: verificationForRows(preview.rows, new Date(now * 1000).toISOString().slice(0, 10)) } : {}) },
           { 'cache-control': 'public, max-age=300' },
         );
       },
@@ -213,7 +229,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
         const offset = clampInt(url.searchParams.get('offset'), 0, 1_000_000, 0);
         const q = (url.searchParams.get('q') ?? '').trim().slice(0, 100) || null;
         const page = await queryDatasetRows(db, spec.id, { limit, offset, q, publicValues: !entitled });
-        const body = { dataset: { id: spec.id, title: spec.title, description: spec.description }, access: spec.access, ...page, limit, offset };
+        const body = { dataset: { id: spec.id, title: spec.title, description: spec.description }, access: spec.access, ...page, limit, offset, ...(spec.id === 'humanoids' ? { verification: verificationForRows(page.rows, new Date(now * 1000).toISOString().slice(0, 10)) } : {}) };
         return entitled ? privateJson(200, body) : json(200, body, { 'cache-control': 'public, max-age=60', vary: 'Authorization' });
       },
     ],

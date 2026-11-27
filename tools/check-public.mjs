@@ -8,6 +8,9 @@ import { isInternalField, readDatabase, validateDatabase } from './export-databa
 import { DATASETS, DATASETS_BY_ID } from '../server/src/datasets.js';
 import { buildPages } from './build-pages.mjs';
 import { projectionProblems } from './export-public.mjs';
+import { validateLedger } from '../server/src/verification/standard.js';
+import { checkPublicEntities, assertAppendOnly } from './verification-ledger.mjs';
+import { buildReport as verificationReport } from './export-verification-report.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = (path) => readFileSync(new URL(path, root), 'utf8');
@@ -77,7 +80,34 @@ for (const old of ['data/humanoids.json', 'data/humanoids.csv', 'data/humanoids-
 }
 for (const file of tracked.filter((f) => f.startsWith('data/'))) {
   const databaseFiles = ['index', ...database.index.tabs.map((t) => t.id)].map((n) => `data/preview/${n}.json`);
-  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/atlas.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', 'data/integrators/atlas.json', 'data/components/coverage.json', 'data/evolution/charts.json', 'data/investment/desk.json', 'data/investment/fundamentals.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+  if (!['data/humanoids-catalogue.json', 'data/humanoids-catalogue.csv', 'data/manifest.json', 'data/pages.json', 'data/public/projection.json', 'data/reports/atlas.json', 'data/benchmarks/atlas.json', 'data/datasets/atlas.json', 'data/integrators/atlas.json', 'data/components/coverage.json', 'data/evolution/charts.json', 'data/investment/desk.json', 'data/investment/fundamentals.json', 'data/verification/claims.json', 'data/verification/archives.json', 'data/verification/audit-cohort.json', 'data/verification/report-quarterly.json', ...databaseFiles].includes(file)) fail(file, 'unexpected public data file');
+}
+if (tracked.includes('data/verification/claims.json')) {
+  try {
+    const ledger = JSON.parse(read('data/verification/claims.json')); validateLedger(ledger); checkPublicEntities(ledger);
+    const event = process.env.GITHUB_EVENT_PATH ? JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')) : null;
+    const base = event?.pull_request?.base?.sha ?? event?.before;
+    if (base && /^[a-f0-9]{40}$/.test(base) && !/^0+$/.test(base)) {
+      const path = 'data/verification/claims.json';
+      const exists = execFileSync('git',['ls-tree','--name-only',base,path],{cwd:root}).toString().trim();
+      const previous = exists ? JSON.parse(execFileSync('git',['show',`${base}:${path}`],{cwd:root}).toString()) : {events:[]};
+      assertAppendOnly(previous,ledger);
+    }
+    const report = verificationReport(ledger,JSON.parse(read('data/verification/audit-cohort.json')),JSON.parse(read('data/humanoids-catalogue.json')),JSON.parse(read('data/verification/archives.json')));
+    if (JSON.stringify(report) !== JSON.stringify(JSON.parse(read('data/verification/report-quarterly.json')))) throw new Error('Verification coverage report is stale');
+    execFileSync(process.execPath,['--test','tools/test-verification-ledger.mjs'],{cwd:root,stdio:'pipe'});
+  }
+  catch (e) { fail('data/verification/claims.json', 'invalid verification ledger', e.message); }
+}
+if (tracked.includes('data/verification/archives.json')) {
+  const archives = JSON.parse(read('data/verification/archives.json'));
+  const keys = new Set(['source_url','status','captured_at','source_archive_url','final_url','mime_type','bytes','sha256','error']);
+  if (archives.schema_version !== '1.0.0' || !Array.isArray(archives.captures)) fail('data/verification/archives.json','invalid archive manifest');
+  for (const capture of archives.captures ?? []) {
+    if (Object.keys(capture).some(k=>!keys.has(k))) fail('data/verification/archives.json','unexpected archive field');
+    if (capture.status === 'captured' && (!/^[a-f0-9]{64}$/.test(capture.sha256 ?? '') || !(capture.bytes > 0))) fail('data/verification/archives.json','capture without bytes or digest');
+    if (capture.source_archive_url != null) fail('data/verification/archives.json','local preservation must not claim a public archive URL');
+  }
 }
 // Comparator revenue (26 Nov 2026): annual figures from SEC filings and issuer reports, each with its source; never a
 // quote, a market value or a ratio (those come only from TradingView's widgets in the reader's browser).
