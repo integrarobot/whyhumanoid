@@ -1,0 +1,365 @@
+[
+  {
+    "id": 49,
+    "slug": "kuavo-4pro-articulated-hands",
+    "source_page": "https://github.com/LejuRobotics/kuavo-ros-opensource/blob/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro.png",
+    "source_url": "https://raw.githubusercontent.com/LejuRobotics/kuavo-ros-opensource/main/docs/1%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D/images/kuavo_4pro.png",
+    "source_context": "Existing manufacturer technical render, native RGBA 5000x2813 with original alpha bbox [2065,142,3342,2675]. Whole head, both articulated hands and both feet. Open side/head cavities are the depicted CAD configuration, preserve them, do not invent panels. This replaces rejected 520x1170 standard image with flat gray placeholder hands. Use original alpha/native pixels and trim/pad only if valid. Credit Kuavo 4Pro technical render with articulated hands/open-frame configuration, not hardware photo; no master/spec changes.",
+    "checked_at": "2026-11-27",
+    "credit": "LejuRobotics",
+    "transported": "codex/image-sources-remaining 164cfaf, candidates-17",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha",
+    "roi": [
+      1950,
+      0,
+      3450,
+      2813
+    ],
+    "bbox": [
+      115,
+      142,
+      1392,
+      2675
+    ],
+    "border": 20,
+    "size": [
+      1317,
+      2573
+    ],
+    "native_alpha": true,
+    "original_sha256": "3cf9f2e12b09244f2cf798a59c8ec6dcca0842aeb8f4f1bf2aeb2d4cf7552ed1",
+    "prepared_sha256": "d5df66de9ae823ac101dd247bcfe1b826ce1b5e14e10faf90b40baeb18caea29",
+    "mask_sha256": "c05c9c6542a8dab7029c58b8e6e961946d7f1c928f4b331af8ba7d8ae3d41a6e"
+  },
+  {
+    "id": 186,
+    "slug": "kit-armar-7",
+    "source_page": "https://pasta.place/Informatik/Robotik_1_%5BHIS%5D/Folien/WS_24-25/Robotics-I-Chapter-00-Introduction.pdf",
+    "source_url": "https://pasta.place/Informatik/Robotik_1_%5BHIS%5D/Folien/WS_24-25/Robotics-I-Chapter-00-Introduction.pdf",
+    "source_context": "KIT/H2T authored Robotics I lecture PDF, hosted on third-party student archive pasta.place, not maker-hosted. Page 32 The Active ARMARs explicitly labels white complete robot at right ARMAR-7 (root viewed full rendered slide). Extracted embedded RGB image003 native300x640 plus original grayscale soft mask004 same dimensions. Whole head, both hands and circular wheeled base; original resolution max640 qualifies. Other green robots are ARMAR-6/ARMAR-DE, do not substitute. Preserve source RGB and original soft mask; trim/pad only after alpha review. Credit KIT/H2T ARMAR-7 lecture photograph, honest hosted-copy provenance; no open licence asserted.",
+    "checked_at": "2026-11-27",
+    "credit": "KIT H2T",
+    "transported": "codex/image-sources-remaining 164cfaf, candidates-17",
+    "mask_method": "the source's own soft mask (PDF image 004), Claude",
+    "refinement": "Claude: the source's own soft mask, source-mask.png; levels 0..255; largest region kept",
+    "roi": [
+      0,
+      0,
+      300,
+      640
+    ],
+    "bbox": [
+      12,
+      7,
+      285,
+      631
+    ],
+    "border": 20,
+    "size": [
+      313,
+      664
+    ],
+    "native_alpha": false,
+    "original_sha256": "1400e7f6c3f279e98841441cf08fbc89a7c232c4844638c659352526d989e1c4",
+    "prepared_sha256": "ef9001127bb4831c499a52edc60a644dfa1594b5ea546593fb51fc71561c5f78",
+    "mask_sha256": "c690d9a33625a3b3c7e0af4f2594a28c45c4dca1d2e2ee5e2a7230b4fd90aafc"
+  },
+  {
+    "id": 187,
+    "slug": "keenon-xman-r1",
+    "source_page": "https://universalsystems.com.au/wp-content/uploads/2026/02/KEENON-Robotics-Company-Introduction-Copy.pdf",
+    "source_url": "https://universalsystems.com.au/wp-content/uploads/2026/02/KEENON-Robotics-Company-Introduction-Copy.pdf",
+    "source_context": "KEENON authored company introduction PDF, hosted by distributor Universal Systems, not maker-hosted. PDF page11 explicitly XMAN-R1: ENGINEERED TO SERVE; embedded image002 native2673x1612 shows whole XMAN-R1 head, both arms/hands and compact wheeled base, isolated from empty science-fiction corridor scene by non-generative mask. Existing manufacturer product render, not hardware photo. Robot occupies central figure about1200px tall. Exclude circular wall lamp behind head, bright floor border and floor shadow/reflection; preserve all robot parts/native RGB. Maker website CDN originals returned403, this brochure copy is independently readable alternative. No open licence or capability evidence asserted.",
+    "checked_at": "2026-11-27",
+    "credit": "KEENON Robotics",
+    "transported": "codex/image-sources-remaining 164cfaf, candidates-17",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      950,
+      60,
+      1720,
+      1560
+    ],
+    "bbox": [
+      234,
+      127,
+      622,
+      1381
+    ],
+    "border": 20,
+    "size": [
+      428,
+      1294
+    ],
+    "native_alpha": false,
+    "original_sha256": "836dba1888d81f473c8baa37877964c5e6543bed99436589d6244e8ade7cfeda",
+    "prepared_sha256": "3504dc8a1cae8a5c569b1adb61623d6f06c2c19e91c81798d085720261d8293f",
+    "mask_sha256": "f6a6228df76b4925023a0bd2e52390912c80faf9483c029ad1d551e5230a4e42"
+  },
+  {
+    "id": 104,
+    "slug": "xpeng-iron-2026",
+    "credit": "XPENG",
+    "source_page": "https://xpeng-newsroom.pr.co/de-AT-AT/270304-xpengs-humanoider-roboter-iron-verlasst-auf-eigenen-fussen-seine-produktionslinie/",
+    "source_url": "https://d21buns5ku92am.cloudfront.net/70277/images/699713-XPENG%20IRON_04-f7eb9d-original-1788864320.jpeg",
+    "source_context": "OfficialXPENGpressroom articleSeptember2026, assetXPENGIRON_04, original6000x4000photo. Wholewhitebodysuitbipedwalkingaloneinproductionline, completeheadhandsandbothfeet, noocclusionfrompeople. Isolateforegroundrobot, exclfloorreflection/backgroundindustrialarms. CaptionIRON, September2026production-linephoto frommanufacturerpresskit. Thisisthenew2026form, notearlier2024hardware, noassertionproductionvolume/autonomy/specs. SourcePR.coisXPENGownedmanufacturerpressroom, notthirdpartyimagecatalogue.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 6d1eb96, candidates-14",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      1400,
+      450,
+      2900,
+      3700
+    ],
+    "bbox": [
+      297,
+      1038,
+      990,
+      3119
+    ],
+    "border": 20,
+    "size": [
+      733,
+      2121
+    ],
+    "native_alpha": false,
+    "original_sha256": "a541946201f796db3a7ce98ee134f8eee28eb37a3db0a2d19a1d7df1703c0a7c",
+    "prepared_sha256": "bc16ef10f211ab9db3d9dbe7b5517f796d394cfb239a46a496c9bdfbc286674c",
+    "mask_sha256": "2d591b7ca682c67d8b8c021725dd42e744200352df8b205200c1b423192d5f91"
+  },
+  {
+    "id": 51,
+    "slug": "limx-oli-hu-d04-hand",
+    "credit": "LimXDynamics",
+    "source_page": "https://github.com/limxdynamics/humanoid-description/blob/master/README.md",
+    "source_url": "https://raw.githubusercontent.com/limxdynamics/humanoid-description/master/docs/images/hu_d04_hand.png",
+    "source_context": "Existing official repository technicalrender HU_D04+DEXTEROUSHAND, native800x800, not newlyrenderedURDF. READMEexplicitlyidentifiesOli(HU_D04)andthisexactimage. Wholeforefrontleftfigure, bothfeet/head/handscomplete, bodyabout640pxhigh, no resizing. Exclude title,handdetailcircleandbluefloorhalo/reflection withmaskonly; preserveactualbluecastofrobotRGB. Caption OliHU_D04dexterous-handconfiguration, technicalrender. NotLuna,notHU_D03,notclaimphysicalhardwarephoto.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 54f4cf5, candidates-15",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; largest region kept",
+    "roi": [
+      0,
+      0,
+      800,
+      800
+    ],
+    "bbox": [
+      214,
+      81,
+      689,
+      719
+    ],
+    "border": 20,
+    "size": [
+      515,
+      678
+    ],
+    "native_alpha": false,
+    "original_sha256": "5f92c8b212960c0100ea8c41748ab51a1330d5c532e1a00188a45a395f80e4e4",
+    "prepared_sha256": "a183e5a19fc2d2b63f66bde682d5ca785b385865c46ca861078224d6565d7920",
+    "mask_sha256": "96c3f440c756d1b52ea75b1bed68aec73907e5a4635554ab45e979a19225668f"
+  },
+  {
+    "id": 76,
+    "slug": "robotera-star1-pdf",
+    "credit": "ROBOTERA",
+    "source_page": "https://www.robotera.com/upload/goods/20241208/f56791f6bd7fdd069e2c8552f4d3aeed.pdf",
+    "source_url": "https://www.robotera.com/upload/goods/20241208/f56791f6bd7fdd069e2c8552f4d3aeed.pdf",
+    "source_context": "OfficialSTAR1brochurePDFpage1embeddedrasterimage0, native2380x3368. WholefrontthreequarterSTAR1, completehelmet/handsfoldedtogether/twofeetwithmarginbelow. IsolateONLYfigureonright; exclude title,QRcontactblockandtexturednavybackground. Existingmanufacturerproductimage/render;caption STAR1manufacturerbrochureimage,notnewrender. Page2seatedalternateexistsbutprefercompletefrontstandingpage1.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 54f4cf5, candidates-15",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      1050,
+      100,
+      2380,
+      3368
+    ],
+    "bbox": [
+      157,
+      35,
+      1131,
+      3205
+    ],
+    "border": 20,
+    "size": [
+      1014,
+      3210
+    ],
+    "native_alpha": false,
+    "original_sha256": "1f78326fd3bada5d791b127d4421f69777c889187a3586b5a94e27f4f427afe1",
+    "prepared_sha256": "eeedc091fba6949ac12f73beb222088e78e5895b1cda8840732a963d4162390b",
+    "mask_sha256": "fd84053495e3f87621e507fd7b12d33e6a30aba372c249cb0104a25315eda658"
+  },
+  {
+    "id": 54,
+    "slug": "magiclab-magicbot-gen1",
+    "credit": "MagicLab",
+    "source_page": "https://www.magiclab.top/en/human",
+    "source_url": "https://oss-cdn.magiclab.top/file/videos/z1/8f7cf6/89fceeddb859c6e9a66efb62b5ee0a3f.mp4",
+    "source_context": "Official MagicBotGen1 exactproductpage/en/human embeds thisstraight-kneewalkingvideo withposterwalkGen.jpg. ThetechnicalURLdirectoryz1doesNOTidentifythepicturedrobotasZ1: pageheadingexplicitGen1, videoactualtallGen1hardware. Native1920x1080frame0at0s/25fps showswholeheadhandsandtwofeet, onefootraisedinactualwalkingpose, floormarginbelowplantedtoe. IsolateONLYrobot, nofloorshadow/backgroundbuilding/vehicle. Frame134wasREJECTEDbecauseapproachingfootcutsbottomedge; useframe0. CaptionMagicBotGen1officialvideostill. No claimautonomy/speedorinferredspecs. Needsindependentidentity/maskreview.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 54f4cf5, candidates-15",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      760,
+      80,
+      1240,
+      1080
+    ],
+    "bbox": [
+      99,
+      119,
+      375,
+      946
+    ],
+    "border": 20,
+    "size": [
+      316,
+      867
+    ],
+    "native_alpha": false,
+    "original_sha256": "1c179ffbd106ddf941505bb2976ce853002f8741ea38d9060f6c0a4c881871bf",
+    "prepared_sha256": "51f1574e6b11036b7599299010c7d948324b28b7d5b685fa728da40cd86f4122",
+    "mask_sha256": "21c35845febd3113fa7f0162c5097d1ff436192d52b7056f4841d77866e7eb93"
+  },
+  {
+    "id": 195,
+    "slug": "pl-universe-prowhite-2",
+    "credit": "PL-Universe",
+    "source_page": "https://www.hannovermesse.de/apollo/hannover_messe_2026/obs/Binary/A1506799/PL-UNIVERSE%20FILE.pdf",
+    "source_url": "https://www.hannovermesse.de/apollo/hannover_messe_2026/obs/Binary/A1506799/PL-UNIVERSE%20FILE.pdf",
+    "source_context": "ManufacturerProWhiteRobot2.0brochurehostedbyHannoverMesse2026,PDFpage1embeddedimage0,native1242x1684. Completeplatformcameraheadtwoactualmulti-gripperhands,wheeledchassisandlevelingpads; allvisiblewithspacearound. IsolateONLYrobotfrombluebackground/floorshadow/reflection. CaptionexplicitProWhiteRobot2.0manufacturerbrochureimage/renderonrecordProWhitefamily, no assertionearliermetricsapplyto2.0,no master/name/specchanges. Currentwebsite1000x1400raisedarmPNGwasREJECTEDbecauseelbow/rightarm/basecropanddamagedalpha; donotreuse. Thisbrochurefulldifferentrectangularchassisconfigurationisidentified2.0byitsowntitle.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 23aba3a, candidates-16",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      0,
+      0,
+      1242,
+      1684
+    ],
+    "bbox": [
+      291,
+      511,
+      933,
+      1546
+    ],
+    "border": 20,
+    "size": [
+      682,
+      1075
+    ],
+    "native_alpha": false,
+    "original_sha256": "b00fcbd20cd20d0461b326f64880e54e70b59d79823ca80c0f7bcc643df87590",
+    "prepared_sha256": "f8f339401f9f33c23d1f243dca2bb08004778e573a36825a4d1799dcb1c655cd",
+    "mask_sha256": "c8f2891ad40b0b14f5532166b41ae0b0f3d70e37e45b08cb2634f9bb6c68dac0"
+  },
+  {
+    "id": 38,
+    "slug": "hanson-sophia-utility",
+    "source_page": "https://www.european-lotteries.org/system/files/inline-files/Hanson_2023-06-14.pdf",
+    "source_url": "https://www.european-lotteries.org/system/files/inline-files/Hanson_2023-06-14.pdf",
+    "source_context": "Hanson Robotics authored presentation dated 2023-06-14 hosted on European Lotteries, not maker-hosted. Page22 explicitly Sophia Utility Platform. Embedded RGB004 native516x1003 plus original softmask005: complete head, articulated arms/hands, full long skirt covering original wheeled platform. Product image/configuration is skirted Utility, NOT biped and no invented feet or assertion hidden chassis is visible. Mask source has broad fading around skirt and white fringe in RGB; carefully refine alpha only if possible keeping whole garment, source RGB/native size unchanged. Caption Sophia Utility platform, skirted configuration, Hanson Robotics presentation. Top of head and skirt faint antialias touch boundaries; independently inspect whole opaque geometry before acceptance. This supplements next batch to10 after THEMIS99 used in batch12. No new specs/master changes, no licence inferred and no outreach.",
+    "checked_at": "2026-11-27",
+    "credit": "Hanson Robotics",
+    "transported": "codex/image-sources-remaining 617be62, candidates-18",
+    "mask_method": "the source's own soft mask (PDF image 005), levelled 215..240, Claude",
+    "refinement": "Claude: the source's own soft mask, source-mask.png; levels 215..240",
+    "roi": [
+      0,
+      0,
+      516,
+      1003
+    ],
+    "bbox": [
+      25,
+      1,
+      495,
+      978
+    ],
+    "border": 20,
+    "size": [
+      510,
+      1017
+    ],
+    "native_alpha": false,
+    "original_sha256": "1f9d48f5e406589f66e3aad04d27141fc7f379f3deeb44ab0590d39365815fbb",
+    "prepared_sha256": "b2338245489770b0a2022b5e8684c31116bf32a8563fdee061fdebb72c65b4d5",
+    "mask_sha256": "6f8277e078a13be54e558146b77fc0b61e3828735de220bfa814a98e7e449db7"
+  },
+  {
+    "id": 73,
+    "slug": "reflex-snow-video",
+    "source_page": "https://www.reflexrobotics.com/",
+    "source_url": "https://image.mux.com/aWwI02dxncxiVnlB42nzktdNdVaT8Ie701cZNIuGJSLfo/thumbnail.png?time=12",
+    "source_context": "Manufacturer homepage embeds this exact Mux playbackID for label Snow (rootreadhydration). Native1080x1920 video still at12s. Whole actual platform including tall rear mast rounded top, lowered humanoid head, both hands/arms, wheeled base visible with margins. Holding shovel; preserve visible held tool, original snow on tool as required, no invented hidden blade. Exclude distant scene/ground snow; foreground snow not part of robot. Native bodyroughbbox[220,170,760,1300], shovelextends[220,700,820,1560]. Frame0 has elbow cropped atleft and MUST NOT be used. Frame12chosenbecauseboth elbows inbounds and complete mast/base. Caption Reflex with snow shovel, official video still, not evidence of autonomous operation/capability. Prepare alpha non-generatively, no RGB changes.",
+    "checked_at": "2026-11-27",
+    "credit": "Reflex Robotics",
+    "transported": "codex/image-sources-remaining 639618b, candidates-19",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      180,
+      140,
+      860,
+      1620
+    ],
+    "bbox": [
+      44,
+      31,
+      570,
+      1395
+    ],
+    "border": 20,
+    "size": [
+      566,
+      1404
+    ],
+    "native_alpha": false,
+    "original_sha256": "5528989a03b1d57edb0f66c5d3ab2b08bbe57393c922654581a318375aa0712a",
+    "prepared_sha256": "00485ff4127529bdf487a445ee3cbbf2103239b60ba112a665a08ba14e0a0578",
+    "mask_sha256": "065edbe33e010c1ecc87cd9e5739c1e41a03821762086e4cb7456164e0f8958a"
+  },
+  {
+    "id": 89,
+    "slug": "ti5-t230a",
+    "credit": "Ti5Robot",
+    "source_page": "https://26813350.s21i.faiusr.com/61/ABUIABA9GAAgnJOsxAYoxOnT4QM.pdf",
+    "source_url": "https://26813350.s21i.faiusr.com/61/ABUIABA9GAAgnJOsxAYoxOnT4QM.pdf",
+    "source_context": "ManufacturerTi5brochurePDFpage10embeddedfullpageimage18,native1587x2245. ProductlineupwithEXPLICITindividualmodelnameT230Aabovewhitebipedfifthfromleft. Wholeheadtwohandsfeetvisibleunoccluded, robotheightabout620px. UseONLYT230A, NOTneighborT170V2.1orwheeledT230C. RecommendednativeROIroughly[1010,1000,1300,1770], independentlycheckextremitiesbeforemask. Isolaterobot, excludeuppermodeltextandfloorreflection. Existingmanufacturerproductrender,captionT230Abrochurerender. No specs/mobility/masteredits; recordtechnicalspecsremainunknown.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 23aba3a, candidates-16",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; alpha-only exclusion [117, 381, 150, 451]; alpha-only exclusion [195, 435, 223, 471]",
+    "roi": [
+      1020,
+      950,
+      1300,
+      2000
+    ],
+    "bbox": [
+      37,
+      119,
+      234,
+      746
+    ],
+    "border": 20,
+    "size": [
+      237,
+      667
+    ],
+    "native_alpha": false,
+    "original_sha256": "1b57aa5e03659dab6a542f20478e2b248ed0121f5b0f4aae4a5d142d8256c2d0",
+    "prepared_sha256": "20085d6282d889bcf32e14a87d236055fcb5d2084ec655f32e1649686b96df30",
+    "mask_sha256": "6362ecc72336707b6b97ec11be07d3c9943ee125512eb9ecba3e6bc2ebd7c08e"
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "batch": 13,
+  "intake": "ops/media/intake-remaining-2026-11-27/batch-13",
+  "branch": "codex/image-sources-remaining",
+  "commit": "6d1eb96 (candidates-14), 54f4cf5 (candidates-15), 23aba3a (candidates-16), 164cfaf (candidates-17), 617be62 (candidates-18) and 639618b (candidates-19)",
+  "scope": "All missing images (Javier, 27 Nov 2026)",
+  "items": {
+    "49": {
+      "slug": "leju-kuavo-4pro",
+      "alt": "Kuavo 4Pro by Leju, full body, three-quarter view, articulated hands, technical render",
+      "credit": "Image: Leju, Kuavo 4Pro technical render with articulated hands",
+      "identity": "An existing Leju technical render of the Kuavo 4Pro with its own transparency (native 5000 × 2813): the whole robot with head, both articulated hands and both feet. The open side and head cavities are part of the depicted configuration and are kept; nothing is added. It is a technical render, not a hardware photograph. The record is the Kuavo family; no specification of another generation is implied.",
+      "quality": null
+    },
+    "186": {
+      "slug": "kit-armar-7",
+      "alt": "ARMAR-7 by KIT H²T, full body, front view, on its round wheeled base",
+      "credit": "Image: KIT H²T, ARMAR-7, Robotics I lecture photograph",
+      "identity": "The photograph of ARMAR-7 on page 32 of KIT H²T's Robotics I lecture slides (\"The Active ARMARs\"), which label the white robot on the right as ARMAR-7; extracted at its native 300 × 640 with the slide's own soft mask. The copy read is hosted by a third-party student archive, not by KIT. The whole robot with head, both hands and the round wheeled base. Not ARMAR-6 or ARMAR-DE.",
+      "quality": "Small native source: 313 × 664 px as prepared, not enlarged."
+    },
+    "187": {
+      "slug": "keenon-xman-r1",
+      "alt": "XMAN-R1 by KEENON Robotics, full body, front view, on its wheeled base, manufacturer render",
+      "credit": "Image: KEENON Robotics, XMAN-R1 manufacturer render",
+      "identity": "The image on page 11 of KEENON's company introduction (\"XMAN-R1: Engineered to serve\"), a manufacturer render at its native 2673 × 1612; the copy read is hosted by a distributor. The whole robot with head, both arms and hands and its compact wheeled base. The corridor scene, the wall lamp behind the head, the floor border and the floor reflection are excluded by the alpha mask.",
+      "quality": null
+    },
+    "104": {
+      "slug": "xpeng-iron-2026",
+      "alt": "IRON by XPENG, full body, walking along a production line, photograph",
+      "credit": "Image: XPENG, IRON, September 2026 production-line photograph",
+      "identity": "A photograph from XPENG's own press room (article of September 2026, 6000 × 4000): the 2026 form of IRON walking alone along a production line, with head, both hands and both feet. The production line, the industrial arms and the floor reflection are excluded by the alpha mask. It shows the 2026 form, not the 2024 hardware, and says nothing about production volume or autonomy.",
+      "quality": null
+    },
+    "51": {
+      "slug": "limx-oli-hu-d04",
+      "alt": "Oli by LimX Dynamics, full body, front view, HU_D04 with dexterous hands, technical render",
+      "credit": "Image: LimX Dynamics, Oli HU_D04 dexterous-hand configuration, technical render",
+      "identity": "The HU_D04 + dexterous hand image in LimX Dynamics' official repository, whose README names it as Oli (HU_D04): an existing technical render at its native 800 × 800, not a new rendering. The whole figure with head, both hands and both feet; the title, the hand-detail circle and the floor halo are excluded by the alpha mask, and the robot keeps its blue cast. Not Luna and not HU_D03.",
+      "quality": null
+    },
+    "76": {
+      "slug": "robotera-star1",
+      "alt": "STAR1 by ROBOTERA, full body, three-quarter view, arms folded, manufacturer brochure image",
+      "credit": "Image: ROBOTERA, STAR1 manufacturer brochure image",
+      "identity": "The image on page 1 of ROBOTERA's STAR1 brochure (native 2380 × 3368): the whole robot in three-quarter view, with helmet, folded hands and both feet. The title, the contact block and the textured background are excluded by the alpha mask.",
+      "quality": null
+    },
+    "54": {
+      "slug": "magiclab-magicbot-gen1",
+      "alt": "MagicBot Gen1 by MagicLab, full body, walking outdoors, still from the official video",
+      "credit": "Image: MagicLab, MagicBot Gen1 video still",
+      "identity": "Frame 0 of the walking video on MagicLab's MagicBot Gen1 product page (native 1920 × 1080; the page heading names Gen1): the whole robot with head, both hands and both feet, one foot raised in its stride. The building, the street and the floor shadow are excluded by the alpha mask. It says nothing about autonomy or speed.",
+      "quality": null
+    },
+    "195": {
+      "slug": "pl-universe-prowhite-2",
+      "alt": "ProWhite Robot 2.0 by PL-Universe, full body, on its wheeled chassis with two multi-gripper arms, manufacturer brochure image",
+      "credit": "Image: PL-Universe, ProWhite Robot 2.0 brochure image",
+      "identity": "The image on page 1 of PL-Universe's ProWhite Robot 2.0 brochure, hosted by Hannover Messe 2026 (native 1242 × 1684): the whole platform with its camera head, two multi-gripper arms, the wheeled chassis and its levelling pads. The blue background and floor shadow are excluded by the alpha mask. The record is the ProWhite family; no earlier figure is applied to version 2.0.",
+      "quality": null
+    },
+    "38": {
+      "slug": "hanson-sophia-utility",
+      "alt": "Sophia by Hanson Robotics, full body, Utility platform in its skirted configuration",
+      "credit": "Image: Hanson Robotics, Sophia Utility platform, skirted configuration",
+      "identity": "The image of the Sophia Utility Platform on page 22 of a Hanson Robotics presentation dated 14 June 2023 (native 516 × 1003, extracted with its own soft mask; the copy read is hosted by the European Lotteries association). The whole robot with head, both articulated arms and hands and the long skirt that covers its wheeled platform; no feet are added and no chassis is shown. The soft mask's broad feathered edge, which carried a white fringe, is levelled to 215..240; RGB unchanged.",
+      "quality": null
+    },
+    "73": {
+      "slug": "reflex-snow",
+      "alt": "Reflex robot, full body, on its wheeled base with its tall mast, holding a snow shovel, still from the official video",
+      "credit": "Image: Reflex, video still with snow shovel",
+      "identity": "A still at 12 s of the video embedded on the maker's homepage under the label Snow (native 1080 × 1920): the whole platform with its tall rear mast, the lowered head, both arms and hands and the wheeled base, holding a snow shovel that is kept as its tool. The street, the ground snow and the building are excluded by the alpha mask; the hidden part of the blade is not invented. Frame 0 was not used because the left elbow is cut there. It is not evidence of autonomous operation.",
+      "quality": null
+    }
+  }
+}

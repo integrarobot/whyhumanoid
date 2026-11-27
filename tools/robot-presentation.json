@@ -1777,6 +1777,156 @@
         "credit": "Image: UBTECH, Walker S1 with tote, manufacturer product image",
         "provenance": "ops/media/robots/ubtech-walker-s1/PROVENANCE.md"
       }
+    },
+    "49": {
+      "recorded": {
+        "Lab": "Leju",
+        "Robot": "Kuavo"
+      },
+      "image": {
+        "src": "/assets/robots/leju-kuavo-4pro/leju-kuavo-4pro-full-body.webp",
+        "fallback": "/assets/robots/leju-kuavo-4pro/leju-kuavo-4pro-full-body.png",
+        "width": 1317,
+        "height": 2573,
+        "alt": "Kuavo 4Pro by Leju, full body, three-quarter view, articulated hands, technical render",
+        "credit": "Image: Leju, Kuavo 4Pro technical render with articulated hands",
+        "provenance": "ops/media/robots/leju-kuavo-4pro/PROVENANCE.md"
+      }
+    },
+    "186": {
+      "recorded": {
+        "Lab": "KIT H²T",
+        "Robot": "ARMAR-7"
+      },
+      "image": {
+        "src": "/assets/robots/kit-armar-7/kit-armar-7-full-body.webp",
+        "fallback": "/assets/robots/kit-armar-7/kit-armar-7-full-body.png",
+        "width": 313,
+        "height": 664,
+        "alt": "ARMAR-7 by KIT H²T, full body, front view, on its round wheeled base",
+        "credit": "Image: KIT H²T, ARMAR-7, Robotics I lecture photograph",
+        "provenance": "ops/media/robots/kit-armar-7/PROVENANCE.md"
+      }
+    },
+    "187": {
+      "recorded": {
+        "Lab": "KEENON Robotics",
+        "Robot": "XMAN-R1"
+      },
+      "image": {
+        "src": "/assets/robots/keenon-xman-r1/keenon-xman-r1-full-body.webp",
+        "fallback": "/assets/robots/keenon-xman-r1/keenon-xman-r1-full-body.png",
+        "width": 428,
+        "height": 1294,
+        "alt": "XMAN-R1 by KEENON Robotics, full body, front view, on its wheeled base, manufacturer render",
+        "credit": "Image: KEENON Robotics, XMAN-R1 manufacturer render",
+        "provenance": "ops/media/robots/keenon-xman-r1/PROVENANCE.md"
+      }
+    },
+    "104": {
+      "recorded": {
+        "Lab": "Xpeng",
+        "Robot": "Next-Gen IRON"
+      },
+      "image": {
+        "src": "/assets/robots/xpeng-iron-2026/xpeng-iron-2026-full-body.webp",
+        "fallback": "/assets/robots/xpeng-iron-2026/xpeng-iron-2026-full-body.png",
+        "width": 733,
+        "height": 2121,
+        "alt": "IRON by XPENG, full body, walking along a production line, photograph",
+        "credit": "Image: XPENG, IRON, September 2026 production-line photograph",
+        "provenance": "ops/media/robots/xpeng-iron-2026/PROVENANCE.md"
+      }
+    },
+    "51": {
+      "recorded": {
+        "Lab": "LimX",
+        "Robot": "Oli"
+      },
+      "image": {
+        "src": "/assets/robots/limx-oli-hu-d04/limx-oli-hu-d04-full-body.webp",
+        "fallback": "/assets/robots/limx-oli-hu-d04/limx-oli-hu-d04-full-body.png",
+        "width": 515,
+        "height": 678,
+        "alt": "Oli by LimX Dynamics, full body, front view, HU_D04 with dexterous hands, technical render",
+        "credit": "Image: LimX Dynamics, Oli HU_D04 dexterous-hand configuration, technical render",
+        "provenance": "ops/media/robots/limx-oli-hu-d04/PROVENANCE.md"
+      }
+    },
+    "76": {
+      "recorded": {
+        "Lab": "Robotera",
+        "Robot": "Star 1"
+      },
+      "image": {
+        "src": "/assets/robots/robotera-star1/robotera-star1-full-body.webp",
+        "fallback": "/assets/robots/robotera-star1/robotera-star1-full-body.png",
+        "width": 1014,
+        "height": 3210,
+        "alt": "STAR1 by ROBOTERA, full body, three-quarter view, arms folded, manufacturer brochure image",
+        "credit": "Image: ROBOTERA, STAR1 manufacturer brochure image",
+        "provenance": "ops/media/robots/robotera-star1/PROVENANCE.md"
+      }
+    },
+    "54": {
+      "recorded": {
+        "Lab": "Magiclab",
+        "Robot": "Magicbot"
+      },
+      "image": {
+        "src": "/assets/robots/magiclab-magicbot-gen1/magiclab-magicbot-gen1-full-body.webp",
+        "fallback": "/assets/robots/magiclab-magicbot-gen1/magiclab-magicbot-gen1-full-body.png",
+        "width": 316,
+        "height": 867,
+        "alt": "MagicBot Gen1 by MagicLab, full body, walking outdoors, still from the official video",
+        "credit": "Image: MagicLab, MagicBot Gen1 video still",
+        "provenance": "ops/media/robots/magiclab-magicbot-gen1/PROVENANCE.md"
+      }
+    },
+    "195": {
+      "recorded": {
+        "Lab": "PL-Universe",
+        "Robot": "ProWhite"
+      },
+      "image": {
+        "src": "/assets/robots/pl-universe-prowhite-2/pl-universe-prowhite-2-full-body.webp",
+        "fallback": "/assets/robots/pl-universe-prowhite-2/pl-universe-prowhite-2-full-body.png",
+        "width": 682,
+        "height": 1075,
+        "alt": "ProWhite Robot 2.0 by PL-Universe, full body, on its wheeled chassis with two multi-gripper arms, manufacturer brochure image",
+        "credit": "Image: PL-Universe, ProWhite Robot 2.0 brochure image",
+        "provenance": "ops/media/robots/pl-universe-prowhite-2/PROVENANCE.md"
+      }
+    },
+    "38": {
+      "recorded": {
+        "Lab": "Hanson",
+        "Robot": "Sophia"
+      },
+      "image": {
+        "src": "/assets/robots/hanson-sophia-utility/hanson-sophia-utility-full-body.webp",
+        "fallback": "/assets/robots/hanson-sophia-utility/hanson-sophia-utility-full-body.png",
+        "width": 510,
+        "height": 1017,
+        "alt": "Sophia by Hanson Robotics, full body, Utility platform in its skirted configuration",
+        "credit": "Image: Hanson Robotics, Sophia Utility platform, skirted configuration",
+        "provenance": "ops/media/robots/hanson-sophia-utility/PROVENANCE.md"
+      }
+    },
+    "73": {
+      "recorded": {
+        "Lab": "Reflex",
+        "Robot": "Reflex"
+      },
+      "image": {
+        "src": "/assets/robots/reflex-snow/reflex-snow-full-body.webp",
+        "fallback": "/assets/robots/reflex-snow/reflex-snow-full-body.png",
+        "width": 566,
+        "height": 1404,
+        "alt": "Reflex robot, full body, on its wheeled base with its tall mast, holding a snow shovel, still from the official video",
+        "credit": "Image: Reflex, video still with snow shovel",
+        "provenance": "ops/media/robots/reflex-snow/PROVENANCE.md"
+      }
     }
   }
 }
