@@ -1,0 +1,21 @@
+{
+  "id": 184,
+  "slug": "jaka-pi-native-video",
+  "credit": "JAKA Robotics",
+  "source_page": "https://www.youtube.com/watch?v=CYsgHnhwRY0",
+  "source_url": "https://www.youtube.com/watch?v=CYsgHnhwRY0",
+  "original": "original.png",
+  "original_size": [
+    1920,
+    1080
+  ],
+  "original_sha256": "1f42fa852d04e663d8ccbb3fc5885bfd13052bcd9decb058937c2e310624d284",
+  "source_context": "Select ONLY isolated central foreground robot, approximate native ROI x850..1150 y330..1050. Native head, both simple hands and both feet whole, no people/other robot crossing the contour. Hands are simple original grippers, not human fingers. Manufacturer video JAKA pi Humanoid Robots Show Dynamic Movement, published 2026-07-22; native 1920x1080, frame2707 at90.2333seconds/30fps. Black/white outdoor figure, keep source RGB and green chest light. Remove all other robots, asphalt, curb, buildings and shadow through alpha only. Honest caption JAKA Robotics, JAKA pi official video still, July2026. Different from watermarked running photograph on news1655, which was not selected. No claim of autonomy or performance from this image.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Official maker video / publisher newspaper source; credit required, no open licence assumed or outreach sent.",
+  "frame_index_zero_based": 2707,
+  "fps": 30,
+  "time_seconds": 90.23333333333333,
+  "source_video_sha256": "f96c6b0008c7a7bdfa0441343605138445ee9a55adc5195bbee9cdca599b99a9"
+}

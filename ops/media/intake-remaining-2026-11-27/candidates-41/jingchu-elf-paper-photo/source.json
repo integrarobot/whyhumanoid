@@ -1,0 +1,21 @@
+{
+  "id": 183,
+  "slug": "jingchu-elf-paper-photo",
+  "credit": "Changjiang Daily",
+  "source_page": "https://cjrb.cjn.cn/resfile/2025-09-17/3/17r03c.pdf",
+  "source_url": "https://cjrb.cjn.cn/resfile/2025-09-17/3/17r03c.pdf",
+  "original": "original.png",
+  "original_size": [
+    2953,
+    1840
+  ],
+  "original_sha256": "905702cc9cc58945863c4fed0e2c5eee583f0e014eefa86974b95b15b29307e3",
+  "source_context": "Original native embedded image object10 logicalPDFpage1/newspaperpage3, 2025-09-17 ChangjiangDaily. Caption explicitly identifies four robots LEFT TO RIGHT: Jingchu Elf, Jingchu Xiaochu, Jingchu2, Jingchu1. Select ONLY leftmost whole wheeled JingchuElf with head, both actual claws and complete round mobilebase; approximate native ROI x40..590 y320..1470. Unlike maker gallery this photograph leaves complete head and base with margins. Remove black curtain behind hands, servicehall wall, floor/reflection, other robots and supportstands by alpha only. Keep thin shoulder and gripper linkages, actual white fingertips and black sidewheel covers. Mandatory caption Jingchu Elf, September2025 photograph via ChangjiangDaily. This is historical photograph, not claim current2026updatedgeneration. Native CMYK PDF photo decoded to RGB by Poppler; no generative edits, resizing or color retouching.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Official maker video / publisher newspaper source; credit required, no open licence assumed or outreach sent.",
+  "source_pdf_sha256": "6e0e429adb75d44c118109709f3a6c1c368ff375a058dd0e9794c6732a852ef8",
+  "pdf_logical_page": 1,
+  "newspaper_page": 3,
+  "pdf_image_object": 10
+}
