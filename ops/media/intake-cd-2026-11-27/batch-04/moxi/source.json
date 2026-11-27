@@ -1,0 +1,34 @@
+{
+  "id": 23,
+  "slug": "moxi",
+  "original": "moxi-case-p1-x3.png",
+  "roi": [
+    0,
+    0,
+    1428,
+    2000
+  ],
+  "native_alpha": false,
+  "bbox": [
+    428,
+    350,
+    971,
+    1838
+  ],
+  "border": 20,
+  "size": [
+    583,
+    1528
+  ],
+  "refinement": "Alpha levels 85 to230, small background components removed, black base restored using manual alpha polygon; source RGB unchanged.",
+  "source_page": "https://www.diligentrobots.com/moxi",
+  "source_url": "https://static1.squarespace.com/static/606f1bb0f7e05e3329035ff8/t/6ad002df1bb6e83f260d6a50/1792017119252/Diligent_Shannon_Health_Case_Study2.pdf",
+  "source_alt": "",
+  "original_sha256": "e31dac3b64b5851f21cec735a7cf1a933c2cbfd613cb82e05359a3c2b7ce282c",
+  "prepared_sha256": "476a24010ec9abafed9761da5a2d6f5fb193fdbb1896f6d4b981060e91fcaae9",
+  "mask_sha256": "fa2095f838675a4b02ae569e68a586ce8f6fdf484591db03a6c41e9f0026a8d5",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27",
+  "extraction": "PDF page1 xref3, native1428x2000 image",
+  "pdf_sha256": "8aafa5d3a17591ff0ffd9b60d0e30bb36b6220e56f3893134b24863280791b3a"
+}

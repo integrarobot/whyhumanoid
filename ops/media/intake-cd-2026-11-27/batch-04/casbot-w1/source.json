@@ -1,0 +1,32 @@
+{
+  "id": 168,
+  "slug": "casbot-w1",
+  "original": "168-16.jpg",
+  "roi": [
+    1100,
+    100,
+    1930,
+    1030
+  ],
+  "native_alpha": false,
+  "bbox": [
+    29,
+    71,
+    812,
+    873
+  ],
+  "border": 20,
+  "size": [
+    823,
+    842
+  ],
+  "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+  "source_page": "https://casbot.tech/product/w1",
+  "source_url": "https://casbot.tech/images/w1/1.jpg",
+  "source_alt": "Hero",
+  "original_sha256": "20c48a33bc689a567028d0fc0c5086327f64a9661f995d36490536792de10c52",
+  "prepared_sha256": "edd560fbbc679bbd66d9c902f3bfa31ddec87d2e5950fa1df4c7c5177ca907da",
+  "mask_sha256": "e53a000265e853c4cf13321d4c5872fe23fdd71443697354c2b8fcf057e6d67f",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

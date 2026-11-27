@@ -1,0 +1,32 @@
+{
+  "id": 18,
+  "slug": "clone",
+  "original": "181-15.png",
+  "roi": [
+    2200,
+    100,
+    3900,
+    3400
+  ],
+  "native_alpha": false,
+  "bbox": [
+    298,
+    190,
+    1446,
+    3059
+  ],
+  "border": 20,
+  "size": [
+    1188,
+    2909
+  ],
+  "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+  "source_page": "https://www.clonerobotics.com/android/",
+  "source_url": "https://www.clonerobotics.com/assets/img/android/xray/muscles.png",
+  "source_alt": "",
+  "original_sha256": "ca8704d35a315029c16b4a65cbd4578bb5820d1fe1854329c9d39877de3092bc",
+  "prepared_sha256": "b4666360a64ef04d7dcbf0972a62ae1ed6ebab05ec838026723ff063d38b998b",
+  "mask_sha256": "c29fc711101a7217687b729e4e8e165941d82b49cb3a6b4e01f318d054af901a",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

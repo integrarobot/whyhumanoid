@@ -143,6 +143,51 @@
         "provenance": "ops/media/robots/boston-dynamics-atlas-industrial-electric/PROVENANCE.md"
       }
     },
+    "18": {
+      "recorded": {
+        "Lab": "Clone",
+        "Robot": "Clone"
+      },
+      "image": {
+        "src": "/assets/robots/clone-robotics-clone/clone-robotics-clone-full-body.webp",
+        "fallback": "/assets/robots/clone-robotics-clone/clone-robotics-clone-full-body.png",
+        "width": 1188,
+        "height": 2909,
+        "alt": "Clone by Clone Robotics, full-body render of the musculoskeletal android, front view",
+        "credit": "Image: Clone Robotics",
+        "provenance": "ops/media/robots/clone-robotics-clone/PROVENANCE.md"
+      }
+    },
+    "22": {
+      "recorded": {
+        "Lab": "Dexmate",
+        "Robot": "Vega"
+      },
+      "image": {
+        "src": "/assets/robots/dexmate-vega/dexmate-vega-full-body.webp",
+        "fallback": "/assets/robots/dexmate-vega/dexmate-vega-full-body.png",
+        "width": 586,
+        "height": 1366,
+        "alt": "Vega by Dexmate (Vega 1 Pro, mobile configuration), whole robot on its wheeled base",
+        "credit": "Image: Dexmate",
+        "provenance": "ops/media/robots/dexmate-vega/PROVENANCE.md"
+      }
+    },
+    "23": {
+      "recorded": {
+        "Lab": "Diligent",
+        "Robot": "Moxi"
+      },
+      "image": {
+        "src": "/assets/robots/diligent-moxi/diligent-moxi-full-body.webp",
+        "fallback": "/assets/robots/diligent-moxi/diligent-moxi-full-body.png",
+        "width": 583,
+        "height": 1528,
+        "alt": "Moxi by Diligent Robotics, whole robot on its wheeled base, three-quarter view, one arm raised",
+        "credit": "Image: Diligent Robotics",
+        "provenance": "ops/media/robots/diligent-moxi/PROVENANCE.md"
+      }
+    },
     "27": {
       "recorded": {
         "Lab": "Engineai",
@@ -443,6 +488,21 @@
         "provenance": "ops/media/robots/pal-kangaroo/PROVENANCE.md"
       }
     },
+    "159": {
+      "recorded": {
+        "Lab": "Deep",
+        "Robot": "DR02"
+      },
+      "image": {
+        "src": "/assets/robots/deep-robotics-dr02/deep-robotics-dr02-full-body.webp",
+        "fallback": "/assets/robots/deep-robotics-dr02/deep-robotics-dr02-full-body.png",
+        "width": 258,
+        "height": 692,
+        "alt": "DR02 by DEEP Robotics, full body, three-quarter view, standing",
+        "credit": "Image: DEEP Robotics",
+        "provenance": "ops/media/robots/deep-robotics-dr02/PROVENANCE.md"
+      }
+    },
     "162": {
       "recorded": {
         "Lab": "Rainbow",
@@ -486,6 +546,96 @@
         "alt": "FA-L Series robot by Anigon, whole robot on its wheeled base, front view, one arm raised",
         "credit": "Image: Anigon",
         "provenance": "ops/media/robots/anigon-fa-l/PROVENANCE.md"
+      }
+    },
+    "167": {
+      "recorded": {
+        "Lab": "CASBOT",
+        "Robot": "CASBOT 02"
+      },
+      "image": {
+        "src": "/assets/robots/casbot-02/casbot-02-full-body.webp",
+        "fallback": "/assets/robots/casbot-02/casbot-02-full-body.png",
+        "width": 478,
+        "height": 1573,
+        "alt": "CASBOT 02, full body, three-quarter view, standing",
+        "credit": "Image: CASBOT",
+        "provenance": "ops/media/robots/casbot-02/PROVENANCE.md"
+      }
+    },
+    "168": {
+      "recorded": {
+        "Lab": "CASBOT",
+        "Robot": "CASBOT W1"
+      },
+      "image": {
+        "src": "/assets/robots/casbot-w1/casbot-w1-full-body.webp",
+        "fallback": "/assets/robots/casbot-w1/casbot-w1-full-body.png",
+        "width": 823,
+        "height": 842,
+        "alt": "CASBOT W1, whole robot on its wheeled base with lifting column, three-quarter view",
+        "credit": "Image: CASBOT",
+        "provenance": "ops/media/robots/casbot-w1/PROVENANCE.md"
+      }
+    },
+    "169": {
+      "recorded": {
+        "Lab": "Cyborg Robotics",
+        "Robot": "CYBORG-R01"
+      },
+      "image": {
+        "src": "/assets/robots/cyborg-r01/cyborg-r01-full-body.webp",
+        "fallback": "/assets/robots/cyborg-r01/cyborg-r01-full-body.png",
+        "width": 686,
+        "height": 1471,
+        "alt": "CYBORG-R01 by Cyborg Robotics, full body, front view, standing",
+        "credit": "Image: Cyborg Robotics",
+        "provenance": "ops/media/robots/cyborg-r01/PROVENANCE.md"
+      }
+    },
+    "170": {
+      "recorded": {
+        "Lab": "Cyborg Robotics",
+        "Robot": "CYBORG-W01"
+      },
+      "image": {
+        "src": "/assets/robots/cyborg-w01/cyborg-w01-full-body.webp",
+        "fallback": "/assets/robots/cyborg-w01/cyborg-w01-full-body.png",
+        "width": 658,
+        "height": 1462,
+        "alt": "CYBORG-W01 by Cyborg Robotics, whole robot on its wheeled base, front view",
+        "credit": "Image: Cyborg Robotics",
+        "provenance": "ops/media/robots/cyborg-w01/PROVENANCE.md"
+      }
+    },
+    "172": {
+      "recorded": {
+        "Lab": "Digit Robotics",
+        "Robot": "XiaQi X02"
+      },
+      "image": {
+        "src": "/assets/robots/digit-robotics-xiaqi-x02/digit-robotics-xiaqi-x02-full-body.webp",
+        "fallback": "/assets/robots/digit-robotics-xiaqi-x02/digit-robotics-xiaqi-x02-full-body.png",
+        "width": 784,
+        "height": 1941,
+        "alt": "XiaQi X02 by Digit Robotics, full body, front view, standing",
+        "credit": "Image: Digit Robotics",
+        "provenance": "ops/media/robots/digit-robotics-xiaqi-x02/PROVENANCE.md"
+      }
+    },
+    "175": {
+      "recorded": {
+        "Lab": "Duatic",
+        "Robot": "DXTR"
+      },
+      "image": {
+        "src": "/assets/robots/duatic-dxtr/duatic-dxtr-full-body.webp",
+        "fallback": "/assets/robots/duatic-dxtr/duatic-dxtr-full-body.png",
+        "width": 860,
+        "height": 1368,
+        "alt": "DXTR by Duatic, the DuaTorso upper body on its DuaRover wheeled base, carrying a box",
+        "credit": "Image: Duatic",
+        "provenance": "ops/media/robots/duatic-dxtr/PROVENANCE.md"
       }
     },
     "196": {

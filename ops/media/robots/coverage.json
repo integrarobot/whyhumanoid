@@ -93,6 +93,50 @@
         "Published with PR 206 (head 2f856a6, CI 45996304572; merge c015cef, Pages 45996560022), 27 Nov 2026; production verified by Claude and independently by Codex; no cache purge needed."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 4,
+      "opened": "2026-11-27",
+      "state": "integrated_awaiting_review",
+      "target": 10,
+      "scope": "C/D makers",
+      "candidates": [
+        18,
+        22,
+        23,
+        167,
+        159,
+        168,
+        169,
+        170,
+        172,
+        175
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex, transport branch codex/image-sources-cd (a2f0241), kept unchanged in ops/media/intake-cd-2026-11-27/batch-04/; prepared PNGs used as delivered."
+      ]
+    },
+    {
+      "batch": 5,
+      "opened": "2026-11-27",
+      "state": "planned",
+      "target": 10,
+      "scope": "C/D makers",
+      "candidates": [
+        17,
+        19,
+        20,
+        24,
+        134,
+        171,
+        173,
+        174
+      ],
+      "reserves": [],
+      "notes": [
+        "The rest of the C/D scope with a valid source; records without one end as no_valid_source."
+      ]
     }
   ],
   "robots": {
@@ -1132,6 +1176,359 @@
       ],
       "status": "published",
       "page": "https://anigon.ch/"
+    },
+    "18": {
+      "recorded": {
+        "Lab": "Clone",
+        "Robot": "Clone"
+      },
+      "status": "integrated",
+      "page": "https://www.clonerobotics.com/",
+      "notes": "Clone: the record names the robot \"Clone\" (musculoskeletal android). Do not substitute another Clone Robotics product name or prototype (e.g. a torso, a hand or \"Protoclone\") unless the official source identifies it as this record.",
+      "sources": [
+        {
+          "file": "https://www.clonerobotics.com/assets/img/android/xray/muscles.png",
+          "page": "https://www.clonerobotics.com/android/",
+          "sha256": "ca8704d35a315029c16b4a65cbd4578bb5820d1fe1854329c9d39877de3092bc",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded; RGB exact; prepared 1188 × 2909 with 20 px padding."
+        }
+      ],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only (maker site not reachable from Claude's session): press coverage (2025) describes Protoclone (V1) as the prototype of Clone Alpha, the planned production version, and reports it hanging from a support because it cannot stand or balance on its own. The record says only \"Clone\": an image must be one Clone Robotics presents for this robot; a suspended whole-body photo shows the support, which is not part of the robot, and must be judged before use."
+        }
+      ]
+    },
+    "24": {
+      "recorded": {
+        "Lab": "Dobot",
+        "Robot": "Atom"
+      },
+      "status": "candidate",
+      "page": "https://www.dobot-robots.com/",
+      "notes": "DOBOT Atom, original walking configuration; not ATOM-W nor ATOM D.",
+      "sources": [
+        {
+          "file": "DOBOT JP Max.png",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "rejected",
+          "detail": "Circles and text drawn over the robot; not reconstructed."
+        }
+      ]
+    },
+    "167": {
+      "recorded": {
+        "Lab": "CASBOT",
+        "Robot": "CASBOT 02"
+      },
+      "status": "integrated",
+      "page": "https://casbot.tech/product/02",
+      "notes": "CASBOT 02, bipedal; not CASBOT W1 (168).",
+      "sources": [
+        {
+          "file": "https://casbot.tech/images/02/mobile/slice_2.png",
+          "page": "https://casbot.tech/product/02",
+          "sha256": "85af48fa37496445ee0c0f07bbf170b90b6965a8d0424d7d536149ba4c3bd767",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded; RGB exact; prepared 478 × 1573 with 20 px padding."
+        }
+      ]
+    },
+    "168": {
+      "recorded": {
+        "Lab": "CASBOT",
+        "Robot": "CASBOT W1"
+      },
+      "status": "integrated",
+      "page": "https://casbot.tech/product/w1",
+      "notes": "CASBOT W1, wheeled with lifting column; shown whole; not CASBOT 02 (167).",
+      "sources": [
+        {
+          "file": "https://casbot.tech/images/w1/1.jpg",
+          "page": "https://casbot.tech/product/w1",
+          "sha256": "20c48a33bc689a567028d0fc0c5086327f64a9661f995d36490536792de10c52",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded; RGB exact; prepared 823 × 842 with 20 px padding."
+        }
+      ]
+    },
+    "20": {
+      "recorded": {
+        "Lab": "Deep",
+        "Robot": "DR01"
+      },
+      "status": "candidate",
+      "page": "https://www.deeprobotics.cn/en/index/humanoid.html",
+      "notes": "DEEP Robotics DR01; not DR02 (159).",
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: DEEP Robotics published a DR01 debut article on its own site (deeprobotics.cn/en/wap/article/id/237.html, photo credited \"Handout\") and a humanoid page (deeprobotics.cn/en/wap/humanoid.html); the corporate brochure Codex found (pdf.dfcfw.com, unreachable here) must be checked for a caption naming DR01, not DR02."
+        }
+      ]
+    },
+    "159": {
+      "recorded": {
+        "Lab": "Deep",
+        "Robot": "DR02"
+      },
+      "status": "integrated",
+      "page": "https://www.deeprobotics.cn/en/products/detail/5.html",
+      "notes": "DEEP Robotics DR02 (record covers DR02 and DR02 Pro: name the variant shown); not DR01 (20).",
+      "sources": [
+        {
+          "file": "https://www.deeprobotics.cn/en/bocupload/2026/09/09/178894850308982e1dd.webp",
+          "page": "https://www.deeprobotics.cn/en/products/detail/5.html",
+          "sha256": "bdafe5987899efe5d75b5ba2a19c4591fa7d8f6fe643ce5b61db72d952585998",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded; RGB exact; prepared 258 × 692 with 20 px padding."
+        }
+      ]
+    },
+    "22": {
+      "recorded": {
+        "Lab": "Dexmate",
+        "Robot": "Vega"
+      },
+      "status": "integrated",
+      "page": "https://www.dexmate.ai/",
+      "notes": "Dexmate Vega, mobile configuration; not the bench-mounted Vega 1 U.",
+      "sources": [
+        {
+          "file": "https://cdn.sanity.io/images/b8xzly2c/production/345e4a1cd27c55f27ea4a88c873bb5af657d92cc-1500x1500.png",
+          "page": "https://www.dexmate.com/product/vega-1-pro",
+          "sha256": "b0949f4809eaeb47577da00c38e92643206488371f35909990a39d6ec3d5aedf",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded; RGB exact; prepared 586 × 1366 with 20 px padding."
+        }
+      ]
+    },
+    "23": {
+      "recorded": {
+        "Lab": "Diligent",
+        "Robot": "Moxi"
+      },
+      "status": "integrated",
+      "page": "https://www.diligentrobots.com/",
+      "notes": "Diligent Moxi, wheeled hospital mobile manipulator; shown whole. Holds a marker in the raised hand in the official image: accepted as a held object present in the source (Codex, 27 Nov 2026); not erased.",
+      "sources": [
+        {
+          "file": "https://static1.squarespace.com/static/606f1bb0f7e05e3329035ff8/t/6ad002df1bb6e83f260d6a50/1792017119252/Diligent_Shannon_Health_Case_Study2.pdf",
+          "page": "https://www.diligentrobots.com/moxi",
+          "sha256": "e31dac3b64b5851f21cec735a7cf1a933c2cbfd613cb82e05359a3c2b7ce282c",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Alpha levels 85 to230, small background components removed, black base restored using manual alpha polygon; source RGB unchanged.; RGB exact; prepared 583 × 1528 with 20 px padding."
+        }
+      ]
+    },
+    "174": {
+      "recorded": {
+        "Lab": "DroidUp",
+        "Robot": "Moya"
+      },
+      "status": "candidate",
+      "page": "https://www.droidup.com/product/7",
+      "notes": "DroidUp Moya, full-body tendon-driven bionic humanoid.",
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: Moya (DroidUp, also called Zhuohide Robotics), unveiled in late January 2026, 1.65 m; press photos are not official sources here. Codex reports the official /product/7 images crop the legs or hide the feet: no whole-robot official image yet."
+        }
+      ]
+    },
+    "175": {
+      "recorded": {
+        "Lab": "Duatic",
+        "Robot": "DXTR"
+      },
+      "status": "integrated",
+      "page": "https://www.duatic.com/dxtr",
+      "notes": "Duatic DXTR = DuaTorso upper body on the DuaRover base: shown as the whole half-humanoid on its base, not the torso alone. Carries a box in the official image: accepted as a held object present in the source (Codex, 27 Nov 2026); not erased.",
+      "sources": [
+        {
+          "file": "https://www.duatic.com/web/image/7946-ba79d6a1/duatic_alpha_2.webp",
+          "page": "https://www.duatic.com/dxtr",
+          "sha256": "3cddafb962755b36f948c0cee229402c6d7c70f436bd0e6ddd8f0499b61022ef",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded; RGB exact; prepared 860 × 1368 with 20 px padding."
+        }
+      ]
+    },
+    "17": {
+      "recorded": {
+        "Lab": "Cartwheel",
+        "Robot": "Yogi"
+      },
+      "status": "candidate",
+      "page": "https://www.cartwheelrobotics.com/",
+      "notes": "Cartwheel Yogi: the record notes the original website returns content unrelated to robot specifications; identity and source to be established.",
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: Yogi is a prototype with toddler-like proportions; widely shown in press (e.g. Automate.org, IEEE Spectrum), which are not official sources here. The record notes the maker's site does not describe Yogi; an official Cartwheel or Humanoid Global (parent) image would be needed."
+        },
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: Humanoid Global's 16 Oct 2025 release on Yogi carries only a logo; it aimed to show a full-body walking prototype in December 2025. No official whole-body Yogi image found; press photos (Automate.org) are editorial."
+        }
+      ]
+    },
+    "19": {
+      "recorded": {
+        "Lab": "Cobot",
+        "Robot": "Proxie"
+      },
+      "status": "candidate",
+      "page": "https://www.co.bot/",
+      "notes": "Cobot Proxie: wheeled mobile manipulator with swerve-drive base; shown whole as presented.",
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only (prweb.com unreachable from Claude's session): Cobot announced the second-generation Proxie on 22 Jun 2026, with an optional two-armed configuration; the record says only \"Proxie\". Any image must state which generation and arm configuration it shows. Republished copies (The Robot Report, Robotics Tomorrow) carry photos credited to Collaborative Robotics; the official source would be Cobot's own release or press kit."
+        }
+      ]
+    },
+    "134": {
+      "recorded": {
+        "Lab": "Darwin",
+        "Robot": "Darwin-0"
+      },
+      "status": "candidate",
+      "page": "https://darwinrobotics.ai/",
+      "notes": "Darwin-0: the record states the company publishes no form or mobility; the only image is two arms on a stand at a server rack. Do not assume humanoid form; likely limitation unless an official whole-robot image identifies Darwin-0.",
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: press describes Darwin Robotics as building dual-arm robot technicians for data centres, in stealth; directory listings name DARWIN-01 or Darwin One, not consistently Darwin-0, with deployments targeted for early 2027. No whole-robot image found; likely no_valid_source."
+        }
+      ]
+    },
+    "169": {
+      "recorded": {
+        "Lab": "Cyborg Robotics",
+        "Robot": "CYBORG-R01"
+      },
+      "status": "integrated",
+      "page": "https://www.cyb-org.cn/",
+      "notes": "CYBORG-R01, bipedal; not CYBORG-W01 (170).",
+      "sources": [
+        {
+          "file": "https://www.cyb-org.cn/res/202606/02/cf39546953c0e833.jpg",
+          "page": "https://www.cyb-org.cn/",
+          "sha256": "b34a0e7c2d1626551d57a18ab6781e6203dc5509ea2b879e32dec45a2f28f48b",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded; RGB exact; prepared 686 × 1471 with 20 px padding."
+        }
+      ]
+    },
+    "170": {
+      "recorded": {
+        "Lab": "Cyborg Robotics",
+        "Robot": "CYBORG-W01"
+      },
+      "status": "integrated",
+      "page": "https://www.cyb-org.cn/",
+      "notes": "CYBORG-W01, wheeled; not CYBORG-R01 (169).",
+      "sources": [
+        {
+          "file": "https://www.cyb-org.cn/res/202606/02/717d1878472dbb31.jpg",
+          "page": "https://www.cyb-org.cn/",
+          "sha256": "b199559b28dfb63adab56315db10bc32131425faca0c7f9b00a024f2d8b0eddc",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded; RGB exact; prepared 658 × 1462 with 20 px padding."
+        }
+      ]
+    },
+    "171": {
+      "recorded": {
+        "Lab": "Digit Robotics",
+        "Robot": "Xialan R03"
+      },
+      "status": "candidate",
+      "page": "https://www.digit.com.cn/ProductsDetail/250.html",
+      "notes": "Digit Robotics (数字华夏) Xialan R03; not Agility Robotics Digit (6). Not XiaQi X02 (172).",
+      "sources": []
+    },
+    "172": {
+      "recorded": {
+        "Lab": "Digit Robotics",
+        "Robot": "XiaQi X02"
+      },
+      "status": "integrated",
+      "page": "https://www.digit.com.cn/ProductsDetail/93.html",
+      "notes": "Digit Robotics (数字华夏) XiaQi X02; not Agility Robotics Digit (6). Not Xialan R03 (171).",
+      "sources": [
+        {
+          "file": "https://www.digit.com.cn/UserFiles/Article/children1/kdNcl2jh.png",
+          "page": "https://www.digit.com.cn/ProductsDetail/93.html",
+          "sha256": "11e72c61d5912623629fa55aa8730d35da4f7ab47e378341fa7318a4c17c33e2",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded; RGB exact; prepared 784 × 1941 with 20 px padding."
+        }
+      ]
+    },
+    "173": {
+      "recorded": {
+        "Lab": "Donut Robotics",
+        "Robot": "Cinnamon 1"
+      },
+      "status": "candidate",
+      "page": "https://www.donutrobotics.com/en",
+      "notes": "Donut Robotics Cinnamon 1: the record notes form details are not published and Cinnamon 2 was announced; an image must be identified as Cinnamon 1, never Cinnamon 2.",
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: a Japanese press release says Donut Robotics runs its own AI on a body supplied by an overseas OEM, so the hardware may match another maker's robot. An image must be Donut's own presentation of Cinnamon 1 (not cinnamon mini, not Cinnamon 2) and the alt text must not imply Donut built the body."
+        }
+      ]
     }
   },
   "scopes": [
@@ -1152,6 +1549,22 @@
       "state": "closed_with_pending_sources",
       "closed": "2026-11-27",
       "summary": "29 A/B records: 19 with an image (3 earlier, 16 new in batches 2 and 3), 10 still without a valid image after source review (no_valid_source). Not every A/B record has an image."
+    },
+    {
+      "name": "C/D makers",
+      "lab_initials": [
+        "C",
+        "D"
+      ],
+      "opened": "2026-11-27",
+      "by": "Javier (\"sigue con los fabricantes de la C y la D, en lotes de 10, con fondo transparente y el robot de cuerpo completo\")",
+      "rules": [
+        "Batches of up to 10 new records; batch 4 then batch 5 with the rest that has a valid source. Models are never mixed to fill a batch.",
+        "Non-generative mask cutouts only, RGB faithful; no part generated.",
+        "Wheeled platforms and modules are shown whole, as the record identifies them, with no anatomy invented. A photo cropped to a bust or torso does not meet the whole-robot requirement.",
+        "Every record ends published and verified, or with a concrete stated limitation.",
+        "Exception to the no-props preference (Codex, 27 Nov 2026): an object the robot is holding in the official source stays as it is (DXTR carrying a box, Moxi holding a marker). Nothing is erased from the image or reconstructed, and no limb is cropped."
+      ]
     }
   ]
 }
