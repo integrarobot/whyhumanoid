@@ -1,0 +1,44 @@
+{
+  "id": "WH-20261127-1352-investment-tesis-bajo-demanda",
+  "tarea": "Diseñar la tesis ideal, elaborar la de Agility y poner en marcha el servicio bajo demanda por 100 USD",
+  "origen": "Javier",
+  "fecha": "2026-11-27T13:52:02+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "bloqueado",
+  "ejecuta": "codex",
+  "cambios": [
+    "Oferta de pago único y muestra de Agility publicadas en Investment y la ficha de empresa.",
+    "Tesis completa entregada en el proyecto y método editorial para sintetizar tesis verificables o producir investigación original.",
+    "Pedido privado de US$100 integrado con Stripe, cuestionario, cola de operador y entrega a 72 horas desde el envío del brief."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Investment",
+      "url": "https://whyhumanoid.com/investment/#investment-thesis"
+    },
+    {
+      "etiqueta": "Muestra de Agility",
+      "url": "https://whyhumanoid.com/companies/agility-robotics/#agility-thesis-sample"
+    },
+    {
+      "etiqueta": "PR",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/209"
+    },
+    {
+      "etiqueta": "CI",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46001087790"
+    }
+  ],
+  "despliegue": [
+    "PR 209 fusionado en f045d68bada7468a99d001443dbec7585ddf07b7, dos páginas verificadas. Worker TEST 5eabe24d y PROD 9aeb71c3. Compra de tesis cerrada en PROD."
+  ],
+  "verificaciones": [
+    "230 pruebas de servidor correctas y CI en verde.",
+    "Compra Stripe TEST de 100 USD, cuestionario enviado, plazo de 72 horas, pedido en cola y cuatro correos recibidos.",
+    "Producción devuelve la nueva oferta, sin compra habilitada. Los dos informes existentes y la suscripción mantienen compra disponible."
+  ],
+  "pendientes": [
+    "Confirmar el tratamiento fiscal del servicio antes de configurar el precio live y habilitar la venta."
+  ],
+  "siguiente_accion": "Javier confirma el tratamiento fiscal. Codex configura el precio de producción y verifica el estado de compra con la configuración autorizada."
+}
