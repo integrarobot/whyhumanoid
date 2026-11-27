@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-07-03-curso-robotica-e-ia-fisica-comprender",
+  "source_url": "https://www.integrarobot.com/p/curso-robotica-e-ia-fisica-comprender",
+  "published_on": "2026-07-03",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robotics and Physical AI Course - Understanding the current state of development of robots",
+  "subtitle": "The transition from waiter robots to humanoid robots",
+  "body_markdown": "In this new video of the **Robotics and Physical AI course**, exclusive to members of the **Robot Pioneers Community**, we share our view of the current state of development of AI robotics.\n\nTo do so, we use the example of waiter robots as a prelude to the arrival of humanoid robots, and better still, a type of mobile robot equipped with robotic arms that increasingly resembles what humanoids will end up being.\n\nAs a reminder, the three phases on which we are focusing this new course are:\n\nPHASE 1. **Understand**: learn about the current state of development of physical AI and how it represents the transition from programmed robotics to new machines capable of perceiving, deciding and acting in the real world.\n\nPHASE 2. **Apply**: learn to translate everything happening in the robotics sector into real integration opportunities, identifying tasks, sectors, maturity criteria and conditions for deploying robots in companies, services, the home, ...\n\nPHASE 3. **Prototype**: imagine and represent through digital tools how the next robotic systems are programmed, trained and work, connecting sensors, models, decisions, actions, human supervision and business models.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 102; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

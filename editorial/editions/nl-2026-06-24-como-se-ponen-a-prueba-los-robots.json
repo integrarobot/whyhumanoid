@@ -1,0 +1,77 @@
+{
+  "edition_id": "nl-2026-06-24-como-se-ponen-a-prueba-los-robots",
+  "source_url": "https://www.integrarobot.com/p/como-se-ponen-a-prueba-los-robots",
+  "published_on": "2026-06-24",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "How are robots put to the test?",
+  "subtitle": "Systems for analyzing robots' capabilities will be very useful when the time comes to decide which robot to buy.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/e95efac8-816f-4f88-a505-9973425a6c7a_1982x2048.jpeg)\n\nOne of the keys to why **LLMs** are evolving so fast has been the great competition among AI labs to have the best models, which materialized in their position in evaluation rankings. For example, a model developed in Japan called Fugu has just been presented, putting the lab that develops it, Sakana, on the AI map thanks to having positioned itself very well in those LLM evaluation rankings. We have seen something similar before with other labs that are not usually among the first, as was the case with Deepseek and xAI with Grok.\n\nThe fact is that a quite similar situation could arise in robotics, but in this case it is not just about evaluating the cognitive capabilities of Physical AI models but also manual dexterity, movement capability and other skills, which makes evaluating robots a much bigger challenge than evaluating Generative AI models.\n\nYou should know, for example, that very famous scientists in AI, such as François Chollet, have devoted a large part of their research efforts to establishing the criteria needed to determine whether AI is really intelligent, through evaluation processes such as, in his case, the [ARC Prize](https://arcprize.org/).\n\nThus in robotics we are in a situation similar to the one with LLMs 3 years ago, when Google, Anthropic and others began releasing their own models and the competition began to unseat the pioneer of AI chatbots: ChatGPT.\n\nAnd in robotics we have been seeing for some time different attempts to create these systems for evaluating robot performance; for example, some of the most popular initiatives so far have been:\n\n- **RoboLab-120**: consists of a simulation-based performance test with experiments carried out by NVIDIA staff.\n\n- **RoboArena**: a distributed, simulation-based robotics ranking where experiments are carried out in reality.\n- **MolmoSpace**s: an open source platform for robotics development, compatible with multiple simulations and training methods, which offers a leaderboard of mobile robots with a variety of different tasks\n\nAnd now **NIST** (the US National Institute of Standards and Technology) has presented a comprehensive method for evaluating the minimum physical capabilities expected of humanoid robots, which aims to be the first performance standard for humanoid robots since the 2015 DARPA Robotics Challenge\n\n\"In a decade in which Optimus, Figure, Agility, Apptronik, Unitree and a dozen other humanoid platforms have attracted billions in investment, there is still no agreed way to measure what any of them can actually do. Marketing videos have filled this gap\". Aaron Prather, director of the Robotics and Autonomous Systems Program at ASTM International.\n\nNIST's intelligent systems division has made this proposal based on its previous collaboration with the Defense Advanced Research Projects Agency (DARPA) to evaluate the capabilities of humanoids in industry and academia, and to guide their future development.\n\nNIST proposes this performance reference model as a set of low-impact locomotion and manipulation tasks. To do so, they use previously defined and standardized test methods and performance metrics. These tasks are intended to represent the minimum capabilities of commercially available humanoid robots for industrial, domestic, healthcare and other applications.\n\nThe goal is for the results of these tests to establish measurement parameters for the sector's leading robots, as well as a common set of tasks for researchers and manufacturers, providing a performance baseline while the following tests are carried out:\n\n- Basic, domain-independent mobility and manipulation/dexterity capabilities of humanoid robots.\n- Coordinated capabilities combining locomotion and manipulation tasks.\n- Whole-body awareness and control through manipulation tasks in confined spaces.\n- Minimal reasoning, task and scene understanding, and decision-making.\n\nAnother initiative along the same lines in trying to evaluate robots' dexterity is the [COMPARE](https://www.robot-manipulation.org/home) ecosystem, a community backed by the National Science Foundation and focused on robotic manipulation. This ecosystem offers a case study for developing robot tests in which collaborators from industry, academia, government and standards organizations are already taking part.\n\nSimulators, such as **NVIDIA**'s **Cosmos**, are another useful tool in this robot evaluation challenge; in this case it has five synthetic datasets covering robotics, autonomous driving, physical interactions, digital humans and warehouse operations, and researchers can use them in simulation, generating examples that are scarce, dangerous or hard to test in the physical world.\n\n## Why is this important for us?\n\nSoon a time will come when we will have to make important decisions in robotics, because right now the range of possibilities is quite limited. If you dare to go for a humanoid, there is barely the option of **Unitree**, and if you don't go that far, you can settle for a cobot, a quadruped or any other robot format focused on education. But soon the main robot manufacturers will start putting them on sale, and then many people will have to make highly significant decisions. For example:\n\n- The company for which buying a single robot will not be enough, because what it really needs is a whole fleet to meet its labour needs. Deciding to invest 50,000 euros in one robot is not the same as multiplying that by 10, 100 or even 1,000.\n- Those who buy a robot not to use it themselves but to offer it to others, whether by selling it, renting it or in any other type of business model, where the initial investment may be significant and making a good decision may be critical for the future of the business.\n- Those who decide to specialize in offering robot-related services, whether software, maintenance, deployment, customization, … will also have to decide which company to marry initially and to what extent to learn about the subject to become real specialists in those robots.\n\nAs you can see, the subject of robot testing does not remain a matter for scientists; it is going to have enormous business implications, which is why it is important that we keep an eye on the evolution of this kind of testing system so that, when the time comes to decide which robots to buy, we can take into account the criteria derived from these evaluation systems.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦺 NVIDIA keeps giving us good news about its bet on robotics and has just launched Halos for Robotics, a safety system for physical AI that brings its functional safety approach…",
+        "body_markdown": "🦺 [NVIDIA](https://nvidianews.nvidia.com/news/nvidia-announces-halos-for-robotics-the-industrys-first-full-stack-safety-system-for-physical-ai) keeps giving us good news about its bet on robotics and has just launched Halos for Robotics, a **safety system for physical AI** that brings its functional safety approach from the self-driving car to the industrial robot. It includes safe compute with IGX Thor, specific software, an external safety blueprint and an accredited lab to prepare certifications. This tells us that robotics is starting to need a standard safety layer in order to really scale alongside humans."
+      },
+      {
+        "position": 2,
+        "headline": "🏭 Sanctuary AI changes strategy.",
+        "body_markdown": "🏭 [Sanctuary AI](https://sanctuary.ai/news/sanctuary-ai-expands-physical-ai-strategy-to-industrial-robotics-demonstrating-production-ready-ai-performance/) changes strategy. Instead of waiting for the perfect humanoid, it deploys its physical AI on existing **industrial robots**. The company claims to have achieved a 99.5% success rate on a complex cable connection task at 2.54 seconds per cycle at a global automotive supplier. What matters here is seeing that physical AI is starting to work on industrial robotic arms before the arrival of humanoids."
+      },
+      {
+        "position": 3,
+        "headline": "💰 Odyssey announces a 310 million dollar Series B at a valuation of 1.45 billion to accelerate its world models and its bet on general physical simulation.",
+        "body_markdown": "💰 [Odyssey](https://odyssey.ml/our-series-b) announces a 310 million dollar Series B at a valuation of 1.45 billion to accelerate its **world models** and its bet on general physical simulation. The round, led by Natural Capital and with **Amazon**, GV, AMD Ventures, EQT and IQT among the participants, reinforces the idea that world models are ceasing to be an academic experiment and becoming strategic infrastructure."
+      },
+      {
+        "position": 4,
+        "headline": "🤖 Qwen presents RobotSuite, a package with three base models for navigation, manipulation and world modelling in physical agents.",
+        "body_markdown": "🤖 [Qwen](https://qwen.ai/blog?id=qwen-robotsuite) presents **RobotSuite**, a package with three base models for navigation, manipulation and world modelling in physical agents. Qwen-RobotNav unifies five navigation tasks, Qwen-RobotManip tries to align heterogeneous data across robots, and Qwen-RobotWorld proposes a shared world model for more than 20 types of robots."
+      },
+      {
+        "position": 5,
+        "headline": "✋ Robotiq publishes the digital twin of its TSF-85 tactile sensor on NVIDIA Isaac Sim to train contact-rich manipulation policies in simulation.",
+        "body_markdown": "✋ [Robotiq](https://blog.robotiq.com/robotiq-releases-tsf-85-digital-twin-on-nvidia-isaac-sim) publishes the **digital twin** of its TSF-85 tactile sensor on NVIDIA Isaac Sim to train contact-rich manipulation policies in simulation. The strong point is not just the digital twin, but that it exports synthetic tactile maps and tackles the real problem of simulating deformable materials and contact with objects"
+      },
+      {
+        "position": 6,
+        "headline": "📦 Cobot presents Proxie Gen 2 with autotasking and bimanual mobile manipulation, seeking to move from directed tasks to identifying by itself what material needs to be moved and…",
+        "body_markdown": "📦 [Cobot](https://www.therobotreport.com/cobots-proxie-gen-2-robot-adds-autotasking-mobile-manipulation/) presents **Proxie Gen 2** with autotasking and bimanual mobile manipulation, seeking to move from directed tasks to identifying by itself what material needs to be moved and where. The company positions it for hospitals, warehouses, labs and factories, and offers it from 5,000 dollars a month according to coverage of the launch."
+      },
+      {
+        "position": 7,
+        "headline": "🩺 Channel Robotics raises 4.6 million dollars to develop an AI-assisted handheld endoscopy platform and move toward FDA approval in 2027.",
+        "body_markdown": "🩺 [Channel Robotics](https://robotica.es/salud/channel-robotics-endoscopia-robotica-financiacion/) raises 4.6 million dollars to develop an AI-assisted handheld endoscopy platform and move toward FDA approval in 2027. Its goal is to bring robotic dexterity into existing medical workflows and make it accessible to more **healthcare** centres."
+      },
+      {
+        "position": 8,
+        "headline": "🛠️ XDOF is devoted to building the least flashy and most necessary layer of physical AI: capturing, organizing and preparing data to train robots.",
+        "body_markdown": "🛠️ [XDOF](https://techcrunch.com/2026/06/17/collecting-robot-training-data-is-dirty-unglamorous-work-some-ai-labs-are-already-paying-xdof-to-do-it/) is devoted to building the least flashy and most necessary layer of physical AI: capturing, organizing and preparing **data to train robots**. Its proposal combines teleoperation, data collection networks and annotation work so that labs and companies don't have to set up all that infrastructure themselves."
+      },
+      {
+        "position": 9,
+        "headline": "🧬 Midjourney presents a new line of business in health, where it wants to turn recurring body scanning into new infrastructure for capturing biomedical data.",
+        "body_markdown": "🧬 [Midjourney](https://www.midjourney.com/medical/blogpost) presents a new line of business in **health**, where it wants to turn recurring **body scanning** into new infrastructure for capturing biomedical data. Its roadmap combines its own hardware, research trials, daily algorithmic iteration and a first \"research spa\" designed to generate body maps at scale before opening to the public in 2027."
+      },
+      {
+        "position": 10,
+        "headline": "🚗 Boston Dynamics becomes 100% controlled by Hyundai following the purchase of the stake SoftBank still held.",
+        "body_markdown": "🚗 [Boston Dynamics](https://www.xataka.com/robotica-e-ia/hyundai-toma-control-total-boston-dynamics-robot-atlas-ira-directo-a-fabrica-coches) becomes 100% controlled by **Hyundai** following the purchase of the stake **SoftBank** still held. The deal leaves Boston Dynamics completely integrated into the Korean group's industrial strategy, just as Atlas is being geared to manufacturing."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 99; 10 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "b6ef8499bf76912c4be689015587781e6ab8d4964f7fd614988371ce313a1dfd"
+}

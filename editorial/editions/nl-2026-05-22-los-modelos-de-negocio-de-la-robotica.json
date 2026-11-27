@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-05-22-los-modelos-de-negocio-de-la-robotica",
+  "source_url": "https://www.integrarobot.com/p/los-modelos-de-negocio-de-la-robotica",
+  "published_on": "2026-05-22",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robotics business models - Humanoid Robots Course -",
+  "subtitle": "Discover what the RaaS business model consists of, and other types of business that are going to emerge in robotics.",
+  "body_markdown": "The business models that will develop with the arrival of humanoid robots will probably not look much like those of classical industrial robotics, where a company buys a machine and amortizes it over years. Everything points to a model much closer to software and cloud computing. It is what has been called **Robot as a Service**. Instead of selling only hardware, many companies are starting to **sell robotic capacity**, that is, hours of work, completed tasks or automated productivity. This lowers the barrier to entry for companies and accelerates adoption, because it avoids large upfront investments and turns automation into a predictable operating expense.\n\nIn addition to the robot itself, a whole **economic ecosystem around physical AI** will appear: leasing and financing, maintenance, insurance, integration, training, marketplaces for robotic skills, training data and remote operation services. Just as happened with the Internet or with generative AI, much of the value will lie not only in manufacturing the technology, but in building the services, platforms and infrastructure that allow it to be deployed at large scale.\n\nIt is also important to understand that we are still at a very early stage. Many companies are experimenting with hybrid models combining hardware, software and managed service. That is why the market is still very dynamic, and we will probably see business models evolve over the coming years as robots become more capable, cheaper and more autonomous.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 93; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-02-27-retos-actuales-curso-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/retos-actuales-curso-robots-humanoides",
+  "published_on": "2026-02-27",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Current challenges - Humanoid Robots Course",
+  "subtitle": "Below we analyze the main challenges facing robotics and Physical AI during 2026.",
+  "body_markdown": "If in 2025 the buzzword in robotics was vision, language and action models, this year we keep hearing about world foundation models. This gives us to understand that robotics driven by Artificial Intelligence still faces technological challenges on which its future depends.\n\nBut in addition to these challenges on the technology side, specifically the software side, we must also look at two other large blocks: the economic and the social.\n\n**Will we manage to build robots so cheap that people can buy them en masse?** If robot manufacturers manage to build them for a price somewhere between that of a household appliance and that of a car, I predict humanoid robots will sell by the millions.\n\n**Will society accept the general-purpose robot model, or will it refuse to let them into the home?** It will all depend on the usefulness offered and on how well designed they are to minimize the possible risks that may arise when they interact with people.\n\nThat said, I encourage you to watch the video and share your view on the challenges facing this industry and how to contribute solutions so that the pace of development is not affected.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 72; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

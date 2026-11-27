@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-02-06-fabricantes-de-robots-curso-robots",
+  "source_url": "https://www.integrarobot.com/p/fabricantes-de-robots-curso-robots",
+  "published_on": "2026-02-06",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robot manufacturers - Humanoid Robots Course",
+  "subtitle": "How is it possible that there are so many companies manufacturing robots?",
+  "body_markdown": "You have surely often wondered why there are so many companies manufacturing **humanoid robots**. The answer is not very clear, but it can give us a clue that many people see a great opportunity in this business.\n\nSo in this class what we do is look at which companies are currently standing out in humanoid robot manufacturing and what strategies they are following. For example, there are companies that are very clear that the way forward is **vertical integration**, as opposed to others that choose to partner with software and hardware makers, such as **NVIDIA** and **Google**, in order to bring their robots to market as soon as possible.\n\nAnother thing that can be observed quite clearly is that robot manufacturing is not something isolated in a particular country or continent but a global phenomenon, with strong competition between the **USA** and **China**, but also with significant initiatives in **Europe**.\n\nWill more humanoid robot manufacturers keep appearing?\n\nIt seems so; for example, in recent weeks we have seen a company called Fauna appear with a fairly advanced humanoid.\n\nWe also see how some companies disappear or are bought by competitors. It is the law of the market, and in such an incipient business it is normal for there to be many fluctuations.\n\nWhat I am clear about is that so many companies pushing in the same direction at the same time must be one of the main catalysts for this technology to reach the market as soon as possible.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 64; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

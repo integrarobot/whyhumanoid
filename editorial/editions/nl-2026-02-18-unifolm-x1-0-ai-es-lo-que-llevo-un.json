@@ -1,0 +1,112 @@
+{
+  "edition_id": "nl-2026-02-18-unifolm-x1-0-ai-es-lo-que-llevo-un",
+  "source_url": "https://www.integrarobot.com/p/unifolm-x1-0-ai-es-lo-que-llevo-un",
+  "published_on": "2026-02-18",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "UnifoLM-X1-0 AI is what I've been waiting a year for",
+  "subtitle": "First demonstration of Unitree's robots working in factories. A great step toward real usefulness for general-purpose robotics.",
+  "body_markdown": "At last **Unitree** reveals its cards on Physical AI!\n\n> *🎉 You can't imagine how excited I was to discover that the manufacturer of the most popular robots on the market is taking its first steps toward giving its machines real usefulness. Because the little dances had their charm if it was about selling robots as entertainment, but solving real-world problems is another league.*\n\nUnitree's **demos** had until now been characterized more by dexterity of whole-body movement than by manual capability, but that has just changed.\n\nWell, we also keep seeing a lot of artistic demonstrations:\n\n> ❄️ On the occasion of the **Winter Olympics**, Unitree has shown that its robot is able to walk through snow for hours at more than 40º below zero. Which is great for when we want the robot to work in cold rooms or in other kinds of extreme situations.\n>\n> 🐴 To celebrate **Chinese New Year**, Unitree performed a truly spectacular choreography, very similar to those usually done with drones to simulate fireworks, which demonstrates its ability to make robots move cooperatively in a cluster.\n\n### What can be deduced from Unitree's factory work demonstration?\n\n1️⃣ I think it is very wise that the first demonstration by the company that makes the robots is of them manufacturing its own components. This is a direct message about manufacturing capacity, because robots manufacturing robots demonstrates scale, and that is what will make it possible to produce millions of robots to meet the market's future needs.\n\n2️⃣ The demo seems real, or at least shows no interest in excessively disguising reality. For example, if we look at the hands, they are not the robot's own, but grippers to which cameras have also been added, which requires much more visible cabling than the robot normally has. In addition, the video shows several robots working and how they are subjected to stress to show that they have some autonomy.\n\n3️⃣ Why has Unitree taken so long to demonstrate its Physical AI capabilities? Who knows, but the company's IPO later this year may be demanding that it demonstrate its own capability in software, not just hardware. Here we must look at the number of laboratories that use this robot to test their Physical AI developments, with Amazon, NVIDIA and Alibaba among many others.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/40f7d734-dee5-4aa0-9984-27369c100ec1_2048x773.png)\n\n### What will the next step be?\n\nUnitree has lowered the sale price in China of the most basic **G1** from 16,000 to **13,500** dollars, specifically indicating that software development cannot be done on this robot; for that it is necessary to purchase the **Edu** version, but this is not on sale directly on the company's website, from which one deduces there will be important changes in this regard.\n\nThe approach the company should take is to sell only robots with AI, because that is what really makes sense for being competitive. Otherwise we would not have seen so many Physical AI developments external to the company itself. So it is likely that in the coming weeks or months we will see a new offering of robots with built-in AI take shape that really solves the problems of people and companies.\n\nIn short, **Xingxing Wang**, CEO of Unitree, could not sit idly by watching his main competitors show off their AI capabilities one by one, so he had no choice but to show how advanced they are in this field. The level of manual dexterity seems quite high, but they are going to have to speed up so that it is matched by hardware that doesn't look so experimental.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🍕 Pazzi Pizza arrives in Spain and shows us the way for integrating robotics into shops, services, restaurants and hospitality.",
+        "body_markdown": "News is piling up in the sector; I think we've broken the record this week :)\n\n🍕 [Pazzi Pizza](https://www.pazzipizza.com/es) arrives in Spain and shows us the way for integrating robotics into shops, services, **restaurants** and hospitality. Business owners suffering from a lack of staff to serve their customers are in luck. Soon their growth problems will be solved thanks to robotics."
+      },
+      {
+        "position": 2,
+        "headline": "🧠 Alibaba presents RynnBrain, an AI model grounded in physical reality that anchors its understanding in the physical world through comprehensive egocentric cognition, precise s…",
+        "body_markdown": "🧠 [Alibaba](https://alibaba-damo-academy.github.io/RynnBrain.github.io/) presents **RynnBrain**, an AI model grounded in physical reality that anchors its understanding in the physical world through comprehensive egocentric cognition, precise spatio-temporal grounding and real-task planning, enabling active, physics-aware reasoning as well as the execution of complex tasks."
+      },
+      {
+        "position": 3,
+        "headline": "👀 Xiaomi has developed Robotics-0, a vision-language-action (VLA) model optimized for high performance and fast, fluid real-time execution, initially pre-trained on a large amou…",
+        "body_markdown": "👀 [Xiaomi](https://xiaomi-robotics-0.github.io/) has developed Robotics-0, a vision-language-action (**VLA**) model optimized for high performance and fast, fluid real-time execution, initially pre-trained on a large amount of cross-embodiment robot trajectories and vision-language data, which allows it to acquire broad and generalizable knowledge."
+      },
+      {
+        "position": 4,
+        "headline": "💰 Apptronik raises 935 million dollars at a valuation of more than 5 billion dollars.",
+        "body_markdown": "💰 [Apptronik](https://techcrunch.com/2026/02/11/humanoid-robot-startup-apptronik-has-now-raised-935m-at-a-5b-valuation/) raises 935 million dollars at a valuation of more than 5 billion dollars. The company again has the financial backing of major technology partners such as **Google** and Mercedes-Benz. Its Apolo robot is being developed for tasks such as unloading trailers, preparing warehouse inventory and handling machinery."
+      },
+      {
+        "position": 5,
+        "headline": "🚛 Bedrock raises 270 million dollars in a round in which NVIDIA took part.",
+        "body_markdown": "🚛 [Bedrock](https://www.prnewswire.com/news-releases/bedrock-robotics-raises-270-million-in-series-b-funding-to-accelerate-the-future-of-autonomous-construction-302679014.html) raises 270 million dollars in a round in which **NVIDIA** took part. This money will help the company drive the future of autonomous construction by transforming the way contractors build, from deploying individual autonomous machines to orchestrating fully connected fleets."
+      },
+      {
+        "position": 6,
+        "headline": "🚗 Waymo is using simulations powered by Genie 3, Google's AI, to create highly realistic virtual environments that help train its robotaxi fleet in unusual and complex scenarios…",
+        "body_markdown": "🚗 [Waymo](https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation) is using simulations powered by **Genie 3**, **Google**'s AI, to create highly realistic virtual environments that help train its robotaxi fleet in unusual and complex scenarios, which could reduce the risk of real-world testing and accelerate commercial launches."
+      },
+      {
+        "position": 7,
+        "headline": "🖐️ Humi is a portable framework for humanoid robots to learn whole-body manipulation from human movements captured on video without using the robot during data collection, which…",
+        "body_markdown": "🖐️ [Humi](https://humanoid-manipulation-interface.github.io/humi.pdf) is a portable framework for humanoid robots to learn whole-body manipulation from human movements captured on **video** without using the robot during data collection, which makes it possible to generate rich and diverse data with lightweight hardware, avoiding the complex logistics of traditional teleoperation."
+      },
+      {
+        "position": 8,
+        "headline": "🎓 Molmo Space, a large-scale open platform for the study of embodied learning.",
+        "body_markdown": "🎓 [Molmo Space](https://allenai.org/blog/molmospaces), a large-scale open platform for the study of embodied learning. It enables physics-based navigation and manipulation, unifying more than **230,000 indoor scenes** and more than **130,000 object models** (selected from Objaverse and THOR) with more than 42 million annotated robotic grasps."
+      },
+      {
+        "position": 9,
+        "headline": "👕 Weave Robotics' Isaac 0 is a stationary home robot designed to fold clothes.",
+        "body_markdown": "👕 **Weave Robotics**' [Isaac 0](https://x.com/weaverobotics/status/2021670358919917990) is a stationary home robot designed to fold clothes. It can be installed in an afternoon and starts working from day one. The company promises frequent updates to its AI models, software and hardware to continuously improve the customer experience."
+      },
+      {
+        "position": 10,
+        "headline": "🌐 Odyssey obtains funding from NVIDIA and Samsung to advance the development of its world models and accelerate its research to increase the duration, quality and interactivity…",
+        "body_markdown": "🌐 [Odyssey](https://odyssey.ml/investment-from-nvidia-and-samsung) obtains funding from **NVIDIA** and **Samsung** to advance the development of its world models and accelerate its research to increase the duration, quality and interactivity of simulation, as well as scaling the systems needed to train and serve next-generation world models."
+      },
+      {
+        "position": 11,
+        "headline": "🪢 Allonic raises 7.2 million dollars to advance the development of its 3D textile braiding technology, capable of producing advanced robotic limbs in a single, complete, fully a…",
+        "body_markdown": "🪢 [Allonic](https://www.linkedin.com/posts/allonic_big-news-were-excited-to-announce-our-72m-activity-7426943772091076608-9U6i) raises 7.2 million dollars to advance the development of its **3D textile** braiding technology, capable of producing advanced robotic limbs in a single, complete, fully automated process without assembly, in a fraction of the time and cost of conventional methods."
+      },
+      {
+        "position": 12,
+        "headline": "📹 Dream Dojo is a world model based on 44,000 hours of egocentric human videos, together with a foundation model for robotics that generalizes to diverse objects and environment…",
+        "body_markdown": "📹 [Dream Dojo](https://dreamdojo-world.github.io/) is a world model based on **44,000 hours of egocentric human videos**, together with a foundation model for robotics that generalizes to diverse objects and environments after post-training, and a distillation pipeline that enables long-horizon autoregressive generation with stable real-time interaction."
+      },
+      {
+        "position": 13,
+        "headline": "⚛️ Iter works with a robotic arm called Godzilla that is 4 metres tall and extends up to 5 metres.",
+        "body_markdown": "⚛️ [Iter](https://www.iter.org/node/20687/robots-tools-and-teams-playing-unison) works with a robotic arm called **Godzilla** that is 4 metres tall and extends up to 5 metres. It is the most powerful industrial robot available on the market, and for ITER it is a very useful tool for building its Tokamak-type nuclear fusion reactor."
+      },
+      {
+        "position": 14,
+        "headline": "🐘 Elephant presents its portable educational workstation as a ready-to-use solution for fast, practical learning of robotics.",
+        "body_markdown": "🐘 [Elephant](https://x.com/CobotMy/status/2021902112180015510) presents its portable educational workstation as a ready-to-use solution for fast, practical **learning** of robotics. It is designed for educators, eliminating technical friction and offering a zero-configuration environment that lets you go from unboxing to the first lesson in less than 10 minutes."
+      },
+      {
+        "position": 15,
+        "headline": "🔮 Faraday Future launches its robotics line with two humanoid robot models and a quadruped that can already be reserved.",
+        "body_markdown": "🔮 [Faraday Future](https://investors.ff.com/news-releases/news-release-details/faraday-future-launches-three-series-robot-products-las-vegas) launches its robotics line with two humanoid robot models and a quadruped that can already be reserved. **FF Futurist** is the most advanced model and has a brain powered by NVIDIA Jetson Orin. It is 169 centimetres tall, weighs 69 kilos, and its face mask works as a touch screen for configuration."
+      },
+      {
+        "position": 16,
+        "headline": "🏭 Machina Labs announces a 124 million dollar investment round to scale its manufacturing infrastructure.",
+        "body_markdown": "🏭 [Machina Labs](https://x.com/MachinaLabs_/status/2019058503479173219) announces a 124 million dollar investment round to scale its manufacturing infrastructure. They are devoted to building **factories** that create complex metal structures for defence and mobility. Their vision is that speed and adaptability are not features but the result of how the factory is designed."
+      },
+      {
+        "position": 17,
+        "headline": "🦾 Elixis is the name the company Addverb has given to its general-purpose humanoid robot, which supports logistics, warehousing, healthcare and retail teams by performing repeti…",
+        "body_markdown": "🦾 [Elixis](https://addverb.ai/elixis) is the name the company **Addverb** has given to its general-purpose humanoid robot, which supports logistics, warehousing, healthcare and retail teams by performing repetitive, physically demanding or dangerous tasks so that people can concentrate on higher value-added tasks."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 68; 17 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "ee52ce7faf7877b729f7e88d30a5335f30804fc5073e6f953062a58af19f310c"
+}

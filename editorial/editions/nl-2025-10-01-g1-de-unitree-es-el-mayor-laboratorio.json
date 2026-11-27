@@ -1,0 +1,57 @@
+{
+  "edition_id": "nl-2025-10-01-g1-de-unitree-es-el-mayor-laboratorio",
+  "source_url": "https://www.integrarobot.com/p/g1-de-unitree-es-el-mayor-laboratorio",
+  "published_on": "2025-10-01",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Unitree's robots chosen as the world's robotics laboratory",
+  "subtitle": "First security flaw detected in Unitree's robots",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/2023d59e-2d16-4ad8-a62c-491c447242e5_1600x900.png)\n\nWhile Western manufacturers such as Tesla, Figure, Apptronik, Agility, 1X, Neura, … focus on keeping the entire development process of their robots as controlled as possible, **Unitree** has chosen to open up to the world and embrace experimentation as its main competitive advantage. In this way its **G1 robot** has become the standard for humanoid robotics research, with hundreds of laboratories independent of the brand devising ways to get the most out of this technology.\n\nLet's look at some of these advances in action:\n\n- [VisualMimic](https://visualmimic.github.io/): visual locomotion through motion tracking and generation.\n- [HDMI](https://hdmi-humanoid.github.io/#/): Learning interactive whole-body control of a humanoid from human videos.\n- [HITTER](https://humanoid-table-tennis.github.io/): A HumanoId Table TEnnis Robot, through hierarchical planning and learning.\n- [PyRoki](https://pyroki-toolkit.github.io/): A modular toolkit for robot kinematic optimization.\n- [DreamControl](https://genrobo.github.io/DreamControl/): human-inspired whole-body humanoid control for scene interaction through guided diffusion.\n\nAlthough the titles of these research projects are not very descriptive, what they do show us is the scientific community's great interest in experimenting with these robots and giving them the intelligence needed to perform all kinds of functions in the real world.\n\nBecause that is what Unitree's G1 humanoid robot lacks: **Artificial Intelligence**. But since it has relatively well-executed hardware and software on which new utilities can be built, Physical AI developers have jumped at using it as an open-air laboratory.\n\n## Newton is the icing on the cake\n\nThat a company like [NVIDIA](https://nvidianews.nvidia.com/news/nvidia-accelerates-robotics-research-and-development-with-new-open-models-and-simulation-libraries) puts its sticker on Unitree's robot is very representative of the extent to which this robot has become the standard for experimentation in humanoid robotics.\n\nThe photo corresponds to the announcement of the presentation of **Newton**, which is an open source AI model for physics developed by **NVIDIA**, Google **DeepMind** and **Disney** Research, which can be accessed through NVIDIA Isaac Lab, the open source framework for robot training.\n\nThis is how the company presents its latest contributions to the field of robotics:\n\n> *Humanoids are the next frontier of physical AI, which requires the ability to reason, adapt and act safely in an unpredictable world. With the latest updates to NVIDIA Isaac Lab, developers now have three computers to take robots from research into everyday life: Isaac GR00T acts as the robot's brain, Newton simulates its body and NVIDIA Omniverse is the training ground*.\n\n## But suddenly the security flaw at Unitree came to light\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/ef6fb87d-780e-4e71-b051-d5f602497245_739x475.png)\n\nIn this context, with so much good news for Unitree, there are also negative things, because robotics security researchers Víctor Mayoral-Vilches, Andreas Makris and Kevin Finisterre have just published a vulnerability, which they have called [UniPwn](https://github.com/Bin4ry/UniPwn):\n\n> During our security research on Unitree robotic platforms, we discovered a critical vulnerability in the Bluetooth Low Energy (BLE) Wi-Fi configuration interface. This vulnerability affects several Unitree robot models, including the Go2, G1, H1 and B2 series robots, up to the most recent firmware as of today [20 September 2025]. This represents the first publicly disclosed exploit targeting humanoid robots. The vulnerability combines multiple security problems: hardcoded cryptographic keys, trivial authentication bypass and unsanitized command injection. What makes it particularly worrying is that it is completely wormable: infected robots can automatically compromise other robots within BLE range. This vulnerability allows the attacker to take full control of the device.\n\nFor its part, Unitree was quick to respond, thanking those responsible for this discovery for their contribution to improving the security of the robots and announcing that it has already started working to fix the vulnerability discovered.\n\nFrom this news I would like to take away two conclusions:\n\n1. The importance of starting to think in terms of **security**: I have no doubt that robot manufacturers are working on it, but it would not be good to leave them alone with this responsibility, which is why I find it so positive that there are people specializing specifically in it. In this regard, if you are interested in the subject, you can read this publication: [The Cybersecurity of a Humanoid Robot](https://arxiv.org/pdf/2509.14096).\n2. The meme with which they accompanied the publication of the vulnerability also gives food for thought about how many of the companies that manufacture humanoid robots place a lot of emphasis on **marketing** and on showcasing the design capability of their robots, but not so much on security-related aspects.\n\nIn general I think all this is good for the robotics sector, since it allows it to improve and get ever closer to meeting the needs of the market, which are many and pressing.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📹 Google Deepmind's VEO3 continues to make important contributions to robotics; in this case, through the Video Zero Shot research, it shows emergent zero-shot capabilities in m…",
+        "body_markdown": "📹 **Google Deepmind**'s [VEO3](https://video-zero-shot.github.io/) continues to make important contributions to robotics; in this case, through the Video Zero Shot research, it shows emergent zero-shot capabilities in many visual tasks, indicating that video models are on their way to becoming foundation models for vision, just as LLMs became foundation models for language."
+      },
+      {
+        "position": 2,
+        "headline": "🇺🇸 Andresseen Horowitz, the prestigious startup investment fund, has published a call for the United States not to be left out of the robotics race.",
+        "body_markdown": "🇺🇸 [Andresseen Horowitz](https://a16z.com/america-cannot-lose-the-robotics-race/), the prestigious startup investment fund, has published a call for the **United States** not to be left out of the robotics race. In this piece, LLMs, where the USA does lead, are called Soft AI, while robots, where **China** leads, are called Hard AI."
+      },
+      {
+        "position": 3,
+        "headline": "🏭 UBtech recently announced an order worth $4.21 million for humanoid robots from Miracle Automation, with delivery scheduled for 31 December this year.",
+        "body_markdown": "🏭 [UBtech](https://x.com/CyberRobooo/status/1972490925298569351) recently announced an order worth **$4.21 million** for humanoid robots from Miracle Automation, with delivery scheduled for 31 December this year."
+      },
+      {
+        "position": 4,
+        "headline": "🤸 OmniVLA is a Physical AI model for navigation conditioned on language, goal poses and images, based on OpenVLA, which leverages Internet-scale knowledge to offer robots solid…",
+        "body_markdown": "🤸 [OmniVLA](https://x.com/noriakihirose/status/1971011648229081482?s=46) is a Physical AI model for navigation conditioned on language, goal poses and images, based on **OpenVLA**, which leverages Internet-scale knowledge to offer robots solid performance."
+      },
+      {
+        "position": 5,
+        "headline": "🎯 RDT2 is the first foundation model that can achieve zero-shot deployment on embodiments unseen by robots for simple open-vocabulary tasks such as picking, placing, pressing, w…",
+        "body_markdown": "🎯 [RDT2](https://rdt-robotics.github.io/rdt2/) is the first foundation model that can achieve zero-shot deployment on embodiments unseen by robots for simple open-vocabulary tasks such as picking, placing, pressing, wiping, etc."
+      },
+      {
+        "position": 6,
+        "headline": "🎙️ Humanismo Digital is a podcast on leadership, talent, innovation and learning, hosted by Joan Clotet, … in which he interviewed me to talk about the present and future of hum…",
+        "body_markdown": "🎙️ [Humanismo Digital](https://www.youtube.com/watch?v=-9eBdNH5PIo) is a **podcast** on leadership, talent, innovation and learning, hosted by Joan Clotet, … in which he **interviewed** me to talk about the present and future of humanoid robot technology."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 36; 6 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "8e5b1a2318561bee489191aa72c76baa079ea427dd90f5f967fa148c8d3c354e"
+}

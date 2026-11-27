@@ -1,0 +1,122 @@
+{
+  "edition_id": "nl-2026-01-07-el-ces-de-la-robotica",
+  "source_url": "https://www.integrarobot.com/p/el-ces-de-la-robotica",
+  "published_on": "2026-01-07",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The CES of robotics",
+  "subtitle": "The robot companies' presentations at CES show us a very promising year in the Physical AI sector.",
+  "body_markdown": "If SIMO were still being held in Spain, in two or three years we could start to see the arrival of all the innovations now being presented at the CES event in Las Vegas.\n\nAnd of these new developments I would like to highlight three here, since they are very representative as a summary of the year that has just ended (the first year of life of this newsletter) and of the year now beginning.\n\n1. **LG** will bring robotics closer to the general public with CLOiD\n2. **NVIDIA** shows that robotics goes beyond humanoids\n3. **Boston Dynamics** presents the new Atlas and it is simply spectacular\n\nSo let's take it step by step:\n\n### **LG scores by presenting the first household robot 🏠**\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/2c5a7cb7-2fb8-4c90-99a7-f776d5a9e995_2048x1153.jpeg)\n\nI think this can be considered one of the most relevant pieces of news of the moment as far as robotics is concerned, because **LG**'s brand recognition is enormous in a very specific sector, that of home electronics, and therefore its ability to reach the market, in this case with a household robot, can be enormous.\n\nThe concept of the household robot should also be highlighted, because it positions it as a concept that can go a long way, and the company explains it like this: ***CLOiD** embodies LG Electronics' vision of a zero-labour home, introducing physical artificial intelligence to handle time-consuming daily household tasks.*\n\nThe fact that the [news release](https://www.lg.com/mx/acerca-de-lg/press-and-media/lg-cloid-robot-domestico-ces-2026/?srsltid=AfmBOopIHhFPRgqd4CSXpTO2JHq5LxNHsaGq_IfizX-ZGyddzFkgwgzy) published by the company talks directly about **Physical AI** gives us to understand that the ambitions for this product are significant, since it becomes the missing element in the home for connecting all the appliances the company itself sells.\n\nSo if this company's customers already trust the brand's products, why wouldn't they trust this new one that solves the problem of having to load the dishwasher, the washing machine, …\n\nI could say many other things about this news, but it would take up the whole newsletter, so what I recommend is reading the company's own publication, especially what it says about the AI models: **VLM** and **VLA**.\n\nNOTE: it is amazing to see how quickly the company has been able to launch its own robot after the [acquisition of Bear Robotics](https://www.lg.com/es/acerca-de-lg/comunicados-de-prensa/lg-adquiere-una-participacion-mayoritaria-de-bear-robotics-para-/?srsltid=AfmBOoo48cqrx3HZjA_2H3OEVlqie0bjYfcsx2leHLuKwQ_0YDKFVbbT) a year ago.\n\n### NVIDIA generalizes to Physical AI; it no longer thinks only of humanoids 🚚\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/6c561298-c9b0-4346-9f05-941ed8d7ce2c_2048x1082.png)\n\nIf you remember **NVIDIA**'s latest presentations on robotics and **Physical AI**, you will notice that the image from Jensen Huang's CES keynote is quite different, since he does not appear only with humanoid robots beside him; in this case there are drones, cobots, AMRs or AGVs, and even heavy machinery controlled by AI, as in the case of Caterpillar's machines.\n\nWhat this image represents is a reality we are also going to consider in this newsletter, since while humanoid robots continue to be developed until they can fulfil the promise of performing every kind of function, there is still a lot of work to be done with other types of robots that are already starting to take advantage of advances in Artificial Intelligence.\n\nThat is, until now we had seen that AI would have full application in the development of the humanoid that has to perform all kinds of jobs in very varied situations. But until this level of generalization becomes a reality, there are many other specific jobs where sufficiently developed software already exists, and if we add AI to it, it will perform much better.\n\nFor example, mobile robots, whether for warehouse work, parcel delivery or carrying orders in restaurants: what we are seeing is that the companies that make this type of robot now also have **NVIDIA**'s technology at their disposal to make their robots intelligent.\n\n### Boston Dynamics' new Atlas is an engineering beast ⚙️\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/3cc558dd-e76c-43d1-a39c-0bd29825d9b4_2048x1319.png)\n\nTake a moment to watch the presentation [video](https://www.youtube.com/watch?v=sd8ivhpjI6g) of the new version of **Atlas**, **Boston Dynamics**' humanoid robot. Beyond how exciting it is to see how the technology developed by this robotics pioneer has evolved, what stands out is how they explain, even if for now through a [simulation](https://x.com/SAldwais/status/2008332075200319979/video/1), the capabilities the robot is going to have.\n\nIn fact, I didn't expect to see the robot able to lift part of a car chassis and place it on the assembly line, which presents us with a new approach to the use of robots, because just when we had accepted the idea that the humanoid would do the light work and robotic arms the heavy work, they now present a completely different scenario.\n\nAnd continuing with this idea of versatility, the new Atlas stands out for the demonstration that it changes its own batteries, something we already saw UBtech's Walker robot do. In this case that flexibility is also reflected in the way the robot can move all its joints so as not to have to change position; instead it rotates on itself and thereby saves time and energy in moving around.\n\nIn short, a true engineering marvel that shows us that we still have a lot to see in the development of Physical AI and robotics.\n\nNote: another important piece of big news related to Boston Dynamics is the collaboration with [Deepmind](https://x.com/googledeepmind/status/2008283100254494916?s=46), which is becoming increasingly intense and reinforces the idea that Google also sees a great future ahead in robotics.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "Armstrong, a San Francisco-based robotics startup, has raised 12 million dollars to boost its artificial-intelligence-powered dishwashing robots, with backing from investors suc…",
+        "body_markdown": "Since we have gone a couple of weeks without publishing the newsletter (by the way, Happy New Year 2026 🙂), news has piled up, because this sector has not stopped growing and presenting all kinds of new developments.\n\n[Armstrong](https://armstrong.ai/), a San Francisco-based robotics startup, has raised 12 million dollars to boost its artificial-intelligence-powered dishwashing robots, with backing from investors such as Lerer Hippeau, Bloomberg Beta and Next Play Ventures."
+      },
+      {
+        "position": 2,
+        "headline": "Pantograph wants to solve robotics' data problem by building a \"preschool for robots\", developing AI systems capable of collecting data without supervision in the real world.",
+        "body_markdown": "[Pantograph](https://pantograph.com/blog/building-a-preschool-for-robots.html) wants to solve robotics' data problem by building a \"preschool for robots\", developing AI systems capable of collecting data without supervision in the real world."
+      },
+      {
+        "position": 3,
+        "headline": "CATL, the world's largest manufacturer of electric vehicle batteries, is starting to use humanoid robots in battery manufacturing.",
+        "body_markdown": "[CATL](https://www.linkedin.com/posts/javiermartinrobles_muy-importante-que-el-mayor-fabricante-de-activity-7407711350950580224-w7JN/?originalSubdomain=es), the world's largest manufacturer of electric vehicle batteries, is starting to use humanoid robots in battery manufacturing. CATL's customers include Tesla, Volkswagen, BMW, Mercedes-Benz, Hyundai, Honda, NIO, Li Auto and Xiaomi."
+      },
+      {
+        "position": 4,
+        "headline": "Hyundai presents MobED, the first mass-produced mobility robot platform, designed for various industrial applications with an innovative approach of Adaptive Mobility (H/W), Int…",
+        "body_markdown": "[Hyundai](https://www.hyundai.com/worldwide/en/newsroom/detail/hyundai-motor-group-unveils-production-ready-autonomous-mobility-robot-platform-%25E2%2580%2598mobed%25E2%2580%2599-at-irex-2025-0000001082?utm_source=substack&utm_medium=email) presents MobED, the first mass-produced mobility robot platform, designed for various industrial applications with an innovative approach of Adaptive Mobility (H/W), Intuitive Autonomy (S/W) and Infinite Journey."
+      },
+      {
+        "position": 5,
+        "headline": "AMC Robotics has successfully completed its business combination with AlphaVest Acquisition Corp and has begun trading on the Nasdaq, raising approximately 10.2 million dollars.",
+        "body_markdown": "[AMC Robotics](https://www.thenew.money/article/amc-robotics-completes-spac-deal) has successfully completed its business combination with AlphaVest Acquisition Corp and has begun trading on the Nasdaq, raising approximately 10.2 million dollars."
+      },
+      {
+        "position": 6,
+        "headline": "World Labs and NVIDIA Robotics begin collaborating to create realistic 3D environments for robotic simulation.",
+        "body_markdown": "[World Labs](https://developer.nvidia.com/blog/simulate-robotic-environments-faster-with-nvidia-isaac-sim-and-world-labs-marble/) and NVIDIA Robotics begin collaborating to create realistic 3D environments for robotic simulation. By combining the open source NVIDIA Isaac Sim robotics reference framework with World Labs' Marble generative models, complete 3D scenes for robotic development can be created from a text or image prompt."
+      },
+      {
+        "position": 7,
+        "headline": "Runway launches a world [model] called GWM-1, which works through frame-by-frame prediction, creating a simulation that understands physics and the real behaviour of the world o…",
+        "body_markdown": "[Runway](https://techcrunch.com/2025/12/11/runway-releases-its-first-world-model-adds-native-audio-to-latest-video-model/) launches a world [model] called GWM-1, which works through frame-by-frame prediction, creating a simulation that understands physics and the real behaviour of the world over time."
+      },
+      {
+        "position": 8,
+        "headline": "Medra has 52 million dollars for the development of Physical AI.",
+        "body_markdown": "[Medra](https://www.businesswire.com/news/home/20251211748411/en/Medra-Raises-%2452-Million-Series-A-to-Build-Physical-AI-Scientists?utm_source=robotnews.therundown.ai&utm_medium=newsletter&utm_campaign=1x-s-home-humanoid-gets-a-factory-job) has 52 million dollars for the development of Physical AI. Thanks to its technology, experiments can be carried out autonomously from start to finish, interacting with standard laboratory tools and instruments and allowing scientists to adapt workflows through natural language instructions."
+      },
+      {
+        "position": 9,
+        "headline": "Mujin raises 233 million dollars to drive the industrial adoption of MujinOS and keep developing orchestration technologies for manufacturing and logistics.",
+        "body_markdown": "[Mujin](https://www.automatedwarehouseonline.com/mujinos-raises-233m-advance-industrial-adoption/) raises 233 million dollars to drive the industrial adoption of MujinOS and keep developing orchestration technologies for manufacturing and logistics."
+      },
+      {
+        "position": 10,
+        "headline": "Astrobee is a fan-propelled cubic robot that can autonomously navigate the International Space Station with the aim of helping astronauts carry out different tasks in space.",
+        "body_markdown": "[Astrobee](https://news.stanford.edu/stories/2025/12/ai-robot-international-space-station-autonomous-missions) is a fan-propelled cubic robot that can autonomously navigate the International Space Station with the aim of helping astronauts carry out different tasks in space."
+      },
+      {
+        "position": 11,
+        "headline": "MMI obtains FDA clearance for robotic soft-tissue dissection tools.",
+        "body_markdown": "[MMI](https://www.therobotreport.com/mmi-earns-fda-clearance-for-robotic-soft-tissue-dissection-tools/) obtains FDA clearance for robotic soft-tissue dissection tools. These instruments allow MMI's Symani surgical system to perform critical steps in complex surgeries."
+      },
+      {
+        "position": 12,
+        "headline": "Galbot, the Chinese humanoid robot developer, has raised 300 million dollars in funding in a round that puts it at a valuation of 3 billion.",
+        "body_markdown": "[Galbot](https://www.dealstreetasia.com/stories/galbot-raises-over-300m-467245?utm_source=substack&utm_medium=email), the Chinese humanoid robot developer, has raised 300 million dollars in funding in a round that puts it at a valuation of 3 billion. China Mobile's investment fund led this investment round."
+      },
+      {
+        "position": 13,
+        "headline": "Fujitsu announces the development of spatial world model technology that allows artificial intelligence to predict the future behaviours and states of the different actors and o…",
+        "body_markdown": "[Fujitsu](https://www.fujitsu.com/es/about/resources/news/press-releases/2025/11-12-2025-fujitsu-desarrolla-una.html) announces the development of spatial world model technology that allows artificial intelligence to predict the future behaviours and states of the different actors and objects within a space, and facilitates seamless collaboration between people and robots."
+      },
+      {
+        "position": 14,
+        "headline": "Kawasaki presents version 9 of the Kaleido humanoid robot.",
+        "body_markdown": "[Kawasaki](https://x.com/mikekalilmfg/status/2005414963935072527?s=46) presents version 9 of the Kaleido humanoid robot. The robot is 190 tall and weighs 99 kg. It can be controlled autonomously or remotely with a VR headset"
+      },
+      {
+        "position": 15,
+        "headline": "Agibot presents Qingtian Rent, a rental platform for robots of different brands, not just its own, focused for now on using robots for activities such as events and other kinds…",
+        "body_markdown": "[Agibot](https://www.yicaiglobal.com/news/chinas-agibot-launches-robot-leasing-platform-with-daily-rates-up-to-usd14227?utm_source=robotnews.therundown.ai&utm_medium=newsletter&utm_campaign=world-s-smallest-autonomous-robots) presents Qingtian Rent, a rental platform for robots of different brands, not just its own, focused for now on using robots for activities such as events and other kinds of demonstrations."
+      },
+      {
+        "position": 16,
+        "headline": "Tencent has announced an important strategic partnership with Unitree with the aim of taking Unitree's robots out of the laboratory and into the real world, specifically tourism…",
+        "body_markdown": "[Tencent](https://x.com/xrobohub/status/2008152166037352864?s=46) has announced an important strategic partnership with Unitree with the aim of taking Unitree's robots out of the laboratory and into the real world, specifically tourism, shopping centres and corporate showrooms."
+      },
+      {
+        "position": 17,
+        "headline": "InterVLA is a new VLA with scene understanding capability: Image + text → task analysis; task imagination: Predict future frames → reason about dynamics; and guided control: Exe…",
+        "body_markdown": "[InterVLA](https://x.com/modelscope2022/status/2008137224575992238?s=46) is a new VLA with scene understanding capability: Image + text → task analysis; task imagination: Predict future frames → reason about dynamics; and guided control: Execute actions directed by visual foresight"
+      },
+      {
+        "position": 18,
+        "headline": "Alpamayo is a new family of open source AI models from NVIDIA with simulation tools and datasets designed to help autonomous vehicles reason in complex driving situations.",
+        "body_markdown": "[Alpamayo](https://techcrunch.com/2026/01/05/nvidia-launches-alpamayo-open-ai-models-that-allow-autonomous-vehicles-to-think-like-a-human/) is a new family of open source AI models from **NVIDIA** with simulation tools and datasets designed to help autonomous vehicles reason in complex driving situations."
+      },
+      {
+        "position": 19,
+        "headline": "NVIDIA is collaborating with Huggingface to integrate open source NVIDIA Isaac technologies into the LeRobot framework, making end-to-end robot development faster and more acces…",
+        "body_markdown": "[NVIDIA](https://x.com/NVIDIARobotics/status/2008636752651522152) is collaborating with Huggingface to integrate open source NVIDIA Isaac technologies into the LeRobot framework, making end-to-end robot development faster and more accessible."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 55; 19 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "18479764a7c9b1e56b23ee6a60b54e41992838f72869e57af013623130592030"
+}

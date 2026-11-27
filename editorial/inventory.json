@@ -1,15 +1,885 @@
 {
   "source": {
     "publication": "Integrarobot",
-    "listing_url": null,
-    "retrieved_on": null
+    "listing_url": "https://www.integrarobot.com/archive",
+    "retrieved_on": "2026-11-27",
+    "files": [
+      {
+        "name": "articulos-integrarobot-desde-2025.md",
+        "sha256": "bcfb85f46b5c072b3bc88f3cb405587792a75c583b448dd86d411967cadb403a"
+      },
+      {
+        "name": "mas-noticias-integrarobot-desde-2025.md",
+        "sha256": "0e5f489d025a79fd4423b0bb540c4e0d0e4dc31cfbad2f0870f6223989dca75a"
+      }
+    ]
   },
   "pagination": {
-    "pages": [],
-    "exhausted": false,
-    "note": "No source listing has been read into this store yet."
+    "pages": [
+      "https://www.integrarobot.com/api/v1/archive?sort=new&limit=20",
+      "https://www.integrarobot.com/api/v1/archive?sort=new&limit=20&cursor=eyJwb3N0X2RhdGUiOiIyMDI2LTA3LTAzVDEzOjM1OjU5LjAyOTY0N1oifQ%3D%3D",
+      "https://www.integrarobot.com/api/v1/archive?sort=new&limit=20&cursor=eyJwb3N0X2RhdGUiOiIyMDI2LTA0LTA4VDEwOjA0OjExLjgwMTAwMFoifQ%3D%3D",
+      "https://www.integrarobot.com/api/v1/archive?sort=new&limit=20&cursor=eyJwb3N0X2RhdGUiOiIyMDI2LTAxLTMwVDE2OjEwOjIxLjkxMzAwMFoifQ%3D%3D",
+      "https://www.integrarobot.com/api/v1/archive?sort=new&limit=20&cursor=eyJwb3N0X2RhdGUiOiIyMDI1LTExLTA2VDEwOjIxOjIzLjE1MjAwMFoifQ%3D%3D",
+      "https://www.integrarobot.com/api/v1/archive?sort=new&limit=20&cursor=eyJwb3N0X2RhdGUiOiIyMDI1LTA1LTI4VDEwOjMzOjU0LjM0OTAwMFoifQ%3D%3D",
+      "https://www.integrarobot.com/api/v1/archive?sort=new&limit=20&cursor=eyJwb3N0X2RhdGUiOiIyMDI1LTAxLTEwVDEwOjU4OjA3LjAzMzU0MFoifQ%3D%3D"
+    ],
+    "exhausted": true,
+    "note": "Seven archive pages reconciled against 121 canonical edition URLs on 2026-11-27. The extraction also checked sitemap-only static pages."
   },
-  "complete": false,
-  "completeness": null,
-  "editions": []
+  "complete": true,
+  "completeness": {
+    "declared_by": "Codex",
+    "declared_on": "2026-11-27",
+    "evidence": "Public archive independently read to exhaustion: 7 pages, 121 unique posts. Canonical URL sets match the extraction manifest exactly; every post is mapped to an English edition. Static non-post pages excluded; videos are not transcribed."
+  },
+  "editions": [
+    {
+      "edition_id": "nl-2025-01-07-por-que-ahora-asi-entraron-los-llm",
+      "source_url": "https://www.integrarobot.com/p/por-que-ahora-asi-entraron-los-llm",
+      "published_on": "2025-01-07",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-01-10-nvidia-hara-de-pegamento-entre-la",
+      "source_url": "https://www.integrarobot.com/p/nvidia-hara-de-pegamento-entre-la",
+      "published_on": "2025-01-10",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-01-15-lo-que-sabemos-hasta-ahora-del-robot",
+      "source_url": "https://www.integrarobot.com/p/lo-que-sabemos-hasta-ahora-del-robot",
+      "published_on": "2025-01-15",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-01-22-sorprendido-por-la-cantidad-de-empresas",
+      "source_url": "https://www.integrarobot.com/p/sorprendido-por-la-cantidad-de-empresas",
+      "published_on": "2025-01-22",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-01-29-estado-del-arte-de-la-robotica-humanoide",
+      "source_url": "https://www.integrarobot.com/p/estado-del-arte-de-la-robotica-humanoide",
+      "published_on": "2025-01-29",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-02-05-10-000-millones-de-robots",
+      "source_url": "https://www.integrarobot.com/p/10-000-millones-de-robots",
+      "published_on": "2025-02-05",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-02-12-donde-se-venden-los-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/donde-se-venden-los-robots-humanoides",
+      "published_on": "2025-02-12",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-02-19-necesitamos-agentes-inteligentes",
+      "source_url": "https://www.integrarobot.com/p/necesitamos-agentes-inteligentes",
+      "published_on": "2025-02-19",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-02-26-las-capacidades-de-los-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/las-capacidades-de-los-robots-humanoides",
+      "published_on": "2025-02-26",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-03-05-el-problema-de-las-baterias",
+      "source_url": "https://www.integrarobot.com/p/el-problema-de-las-baterias",
+      "published_on": "2025-03-05",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-03-12-manifiesto-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/manifiesto-robots-humanoides",
+      "published_on": "2025-03-12",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-03-19-la-llegada-de-los-vla",
+      "source_url": "https://www.integrarobot.com/p/la-llegada-de-los-vla",
+      "published_on": "2025-03-19",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-03-26-la-inevitable-llegada-de-los-robots",
+      "source_url": "https://www.integrarobot.com/p/la-inevitable-llegada-de-los-robots",
+      "published_on": "2025-03-26",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-04-02-ese-robot-no-es-lo-que-parece",
+      "source_url": "https://www.integrarobot.com/p/ese-robot-no-es-lo-que-parece",
+      "published_on": "2025-04-02",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-04-09-por-que-es-tan-importante-la-mano",
+      "source_url": "https://www.integrarobot.com/p/por-que-es-tan-importante-la-mano",
+      "published_on": "2025-04-09",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-04-16-abierto-o-cerrado",
+      "source_url": "https://www.integrarobot.com/p/abierto-o-cerrado",
+      "published_on": "2025-04-16",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-04-23-gemelos-digitales-de-robots",
+      "source_url": "https://www.integrarobot.com/p/gemelos-digitales-de-robots",
+      "published_on": "2025-04-23",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-04-30-el-brazo-robotico",
+      "source_url": "https://www.integrarobot.com/p/el-brazo-robotico",
+      "published_on": "2025-04-30",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-05-07-alguien-tendra-que-crear-las-apps",
+      "source_url": "https://www.integrarobot.com/p/alguien-tendra-que-crear-las-apps",
+      "published_on": "2025-05-07",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-05-14-la-gente-se-canso-de-hacer-el-trabajo",
+      "source_url": "https://www.integrarobot.com/p/la-gente-se-canso-de-hacer-el-trabajo",
+      "published_on": "2025-05-14",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-05-21-el-momento-chatgpt-de-la-robotica",
+      "source_url": "https://www.integrarobot.com/p/el-momento-chatgpt-de-la-robotica",
+      "published_on": "2025-05-21",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-05-28-el-precio-de-los-robots",
+      "source_url": "https://www.integrarobot.com/p/el-precio-de-los-robots",
+      "published_on": "2025-05-28",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-06-04-como-se-fabrican-los-robots",
+      "source_url": "https://www.integrarobot.com/p/como-se-fabrican-los-robots",
+      "published_on": "2025-06-04",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-06-11-las-demos-de-los-robots",
+      "source_url": "https://www.integrarobot.com/p/las-demos-de-los-robots",
+      "published_on": "2025-06-11",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-06-18-los-modelos-fundacionales-del-mundo",
+      "source_url": "https://www.integrarobot.com/p/los-modelos-fundacionales-del-mundo",
+      "published_on": "2025-06-18",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-06-25-la-geopolitica-beneficia-el-desarrollo",
+      "source_url": "https://www.integrarobot.com/p/la-geopolitica-beneficia-el-desarrollo",
+      "published_on": "2025-06-25",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-07-02-why-humaniod",
+      "source_url": "https://www.integrarobot.com/p/why-humaniod",
+      "published_on": "2025-07-02",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-07-09-la-noticia-del-ano-es-el-lanzamiento",
+      "source_url": "https://www.integrarobot.com/p/la-noticia-del-ano-es-el-lanzamiento",
+      "published_on": "2025-07-09",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-07-16-primero-aprender-y-luego-trabajar",
+      "source_url": "https://www.integrarobot.com/p/primero-aprender-y-luego-trabajar",
+      "published_on": "2025-07-16",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-07-23-los-10-robots-humanoides-que-sigo",
+      "source_url": "https://www.integrarobot.com/p/los-10-robots-humanoides-que-sigo",
+      "published_on": "2025-07-23",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-07-30-la-llegada-de-los-robots-sociales",
+      "source_url": "https://www.integrarobot.com/p/la-llegada-de-los-robots-sociales",
+      "published_on": "2025-07-30",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-09-03-estaba-equivocado-con-los-robots",
+      "source_url": "https://www.integrarobot.com/p/estaba-equivocado-con-los-robots",
+      "published_on": "2025-09-03",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-09-10-te-cuento-mis-planes-de-futuro-para",
+      "source_url": "https://www.integrarobot.com/p/te-cuento-mis-planes-de-futuro-para",
+      "published_on": "2025-09-10",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-09-17-que-se-necesita-para-escalar-la-fabricacion",
+      "source_url": "https://www.integrarobot.com/p/que-se-necesita-para-escalar-la-fabricacion",
+      "published_on": "2025-09-17",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-09-24-de-donde-salen-los-datos-para-entrenar",
+      "source_url": "https://www.integrarobot.com/p/de-donde-salen-los-datos-para-entrenar",
+      "published_on": "2025-09-24",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-10-01-g1-de-unitree-es-el-mayor-laboratorio",
+      "source_url": "https://www.integrarobot.com/p/g1-de-unitree-es-el-mayor-laboratorio",
+      "published_on": "2025-10-01",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-10-08-la-verdadera-leccion-amarga-para",
+      "source_url": "https://www.integrarobot.com/p/la-verdadera-leccion-amarga-para",
+      "published_on": "2025-10-08",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-10-15-figure-03-muestra-el-camino-de-la",
+      "source_url": "https://www.integrarobot.com/p/figure-03-muestra-el-camino-de-la",
+      "published_on": "2025-10-15",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-10-22-me-lanzo-con-la-comunidad-pioneros",
+      "source_url": "https://www.integrarobot.com/p/me-lanzo-con-la-comunidad-pioneros",
+      "published_on": "2025-10-22",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-10-29-neo-de-1x-ya-esta-a-la-venta-y-es",
+      "source_url": "https://www.integrarobot.com/p/neo-de-1x-ya-esta-a-la-venta-y-es",
+      "published_on": "2025-10-29",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-11-05-estas-preparado-para-la-salida-a",
+      "source_url": "https://www.integrarobot.com/p/estas-preparado-para-la-salida-a",
+      "published_on": "2025-11-05",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-11-06-presentacion-del-curso-de-robots",
+      "source_url": "https://www.integrarobot.com/p/presentacion-del-curso-de-robots",
+      "published_on": "2025-11-06",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-11-11-primera-clase-del-curso-de-robots",
+      "source_url": "https://www.integrarobot.com/p/primera-clase-del-curso-de-robots",
+      "published_on": "2025-11-11",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-11-12-gen-0-el-modelo-razonador-de-ia-para",
+      "source_url": "https://www.integrarobot.com/p/gen-0-el-modelo-razonador-de-ia-para",
+      "published_on": "2025-11-12",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-11-18-el-hardware-de-ia-tercera-clase-del",
+      "source_url": "https://www.integrarobot.com/p/el-hardware-de-ia-tercera-clase-del",
+      "published_on": "2025-11-18",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-11-19-avalancha-de-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/avalancha-de-robots-humanoides",
+      "published_on": "2025-11-19",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-11-26-el-desarrollo-de-software-para-la",
+      "source_url": "https://www.integrarobot.com/p/el-desarrollo-de-software-para-la",
+      "published_on": "2025-11-26",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-11-27-el-software-de-ia-cuarta-clase-del",
+      "source_url": "https://www.integrarobot.com/p/el-software-de-ia-cuarta-clase-del",
+      "published_on": "2025-11-27",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-12-03-la-combinacion-de-robotica-e-impresion",
+      "source_url": "https://www.integrarobot.com/p/la-combinacion-de-robotica-e-impresion",
+      "published_on": "2025-12-03",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-12-04-vision-y-lenguaje-curso-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/vision-y-lenguaje-curso-robots-humanoides",
+      "published_on": "2025-12-04",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-12-10-la-semana-que-viene-tenemos-curso",
+      "source_url": "https://www.integrarobot.com/p/la-semana-que-viene-tenemos-curso",
+      "published_on": "2025-12-10",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-12-12-el-brazo-y-la-mano-del-robot-curso",
+      "source_url": "https://www.integrarobot.com/p/el-brazo-y-la-mano-del-robot-curso",
+      "published_on": "2025-12-12",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-12-17-2026-el-ano-en-el-que-comenzara-la",
+      "source_url": "https://www.integrarobot.com/p/2026-el-ano-en-el-que-comenzara-la",
+      "published_on": "2025-12-17",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2025-12-19-las-baterias-para-robots-curso-robots",
+      "source_url": "https://www.integrarobot.com/p/las-baterias-para-robots-curso-robots",
+      "published_on": "2025-12-19",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-01-07-el-ces-de-la-robotica",
+      "source_url": "https://www.integrarobot.com/p/el-ces-de-la-robotica",
+      "published_on": "2026-01-07",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-01-09-motores-actuadores-y-refrigeracion",
+      "source_url": "https://www.integrarobot.com/p/motores-actuadores-y-refrigeracion",
+      "published_on": "2026-01-09",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-01-14-como-invertir-en-ia-fisica",
+      "source_url": "https://www.integrarobot.com/p/como-invertir-en-ia-fisica",
+      "published_on": "2026-01-14",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-01-16-piernas-y-pies-del-robot-curso-robots",
+      "source_url": "https://www.integrarobot.com/p/piernas-y-pies-del-robot-curso-robots",
+      "published_on": "2026-01-16",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-01-21-robots-que-salvan-vidas",
+      "source_url": "https://www.integrarobot.com/p/robots-que-salvan-vidas",
+      "published_on": "2026-01-21",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-01-22-ia-fisica-curso-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/ia-fisica-curso-robots-humanoides",
+      "published_on": "2026-01-22",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-01-28-una-comunidad-para-unir-a-los-apasionados",
+      "source_url": "https://www.integrarobot.com/p/una-comunidad-para-unir-a-los-apasionados",
+      "published_on": "2026-01-28",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-01-30-entrenamiento-de-robots-curso-de",
+      "source_url": "https://www.integrarobot.com/p/entrenamiento-de-robots-curso-de",
+      "published_on": "2026-01-30",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-04-openclaw-quiere-entrar-en-los-robots",
+      "source_url": "https://www.integrarobot.com/p/openclaw-quiere-entrar-en-los-robots",
+      "published_on": "2026-02-04",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-06-fabricantes-de-robots-curso-robots",
+      "source_url": "https://www.integrarobot.com/p/fabricantes-de-robots-curso-robots",
+      "published_on": "2026-02-06",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-11-tesla-dejara-de-fabricar-coches-para",
+      "source_url": "https://www.integrarobot.com/p/tesla-dejara-de-fabricar-coches-para",
+      "published_on": "2026-02-11",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-13-las-demos-de-los-robots-curso-robots",
+      "source_url": "https://www.integrarobot.com/p/las-demos-de-los-robots-curso-robots",
+      "published_on": "2026-02-13",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-16-en-2-anos-optimus-podria-comenzar",
+      "source_url": "https://www.integrarobot.com/p/en-2-anos-optimus-podria-comenzar",
+      "published_on": "2026-02-16",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-18-unifolm-x1-0-ai-es-lo-que-llevo-un",
+      "source_url": "https://www.integrarobot.com/p/unifolm-x1-0-ai-es-lo-que-llevo-un",
+      "published_on": "2026-02-18",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-20-estado-del-arte-curso-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/estado-del-arte-curso-robots-humanoides",
+      "published_on": "2026-02-20",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-23-unitree-g1-el-robot-mas-vendido-del",
+      "source_url": "https://www.integrarobot.com/p/unitree-g1-el-robot-mas-vendido-del",
+      "published_on": "2026-02-23",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-25-como-ginkgo-esta-robotizando-la-biologia",
+      "source_url": "https://www.integrarobot.com/p/como-ginkgo-esta-robotizando-la-biologia",
+      "published_on": "2026-02-25",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-02-27-retos-actuales-curso-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/retos-actuales-curso-robots-humanoides",
+      "published_on": "2026-02-27",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-03-04-como-subirse-a-la-ola-de-la-ia-fisica",
+      "source_url": "https://www.integrarobot.com/p/como-subirse-a-la-ola-de-la-ia-fisica",
+      "published_on": "2026-03-04",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-03-07-historia-de-la-robotica-curso-robots",
+      "source_url": "https://www.integrarobot.com/p/historia-de-la-robotica-curso-robots",
+      "published_on": "2026-03-07",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-03-11-los-robots-nos-llevaran-a-las-estrellas",
+      "source_url": "https://www.integrarobot.com/p/los-robots-nos-llevaran-a-las-estrellas",
+      "published_on": "2026-03-11",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-03-13-casos-de-uso-curso-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/casos-de-uso-curso-robots-humanoides",
+      "published_on": "2026-03-13",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-03-16-es-figure-el-robot-mas-avanzado-del",
+      "source_url": "https://www.integrarobot.com/p/es-figure-el-robot-mas-avanzado-del",
+      "published_on": "2026-03-16",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-03-18-abb-y-el-dilema-del-innovador",
+      "source_url": "https://www.integrarobot.com/p/abb-y-el-dilema-del-innovador",
+      "published_on": "2026-03-18",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-03-20-la-carrera-global-por-los-robots",
+      "source_url": "https://www.integrarobot.com/p/la-carrera-global-por-los-robots",
+      "published_on": "2026-03-20",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-03-25-la-industria-del-automovil-se-sube",
+      "source_url": "https://www.integrarobot.com/p/la-industria-del-automovil-se-sube",
+      "published_on": "2026-03-25",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-04-01-un-metodo-para-integrar-robots",
+      "source_url": "https://www.integrarobot.com/p/un-metodo-para-integrar-robots",
+      "published_on": "2026-04-01",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-04-08-nuevo-curso-en-directo-de-robotica",
+      "source_url": "https://www.integrarobot.com/p/nuevo-curso-en-directo-de-robotica",
+      "published_on": "2026-04-08",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-04-10-cuando-llegaran-los-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/cuando-llegaran-los-robots-humanoides",
+      "published_on": "2026-04-10",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-04-15-robots-al-rescate",
+      "source_url": "https://www.integrarobot.com/p/robots-al-rescate",
+      "published_on": "2026-04-15",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-04-17-volumen-de-mercado-curso-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/volumen-de-mercado-curso-robots-humanoides",
+      "published_on": "2026-04-17",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-04-22-lo-que-la-nueva-mano-de-optimus-puede",
+      "source_url": "https://www.integrarobot.com/p/lo-que-la-nueva-mano-de-optimus-puede",
+      "published_on": "2026-04-22",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-04-24-como-invertir-en-robotica",
+      "source_url": "https://www.integrarobot.com/p/como-invertir-en-robotica",
+      "published_on": "2026-04-24",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-04-29-ups-quiere-comprar-miles-de-robots",
+      "source_url": "https://www.integrarobot.com/p/ups-quiere-comprar-miles-de-robots",
+      "published_on": "2026-04-29",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-05-05-como-se-financian-las-empresas-de",
+      "source_url": "https://www.integrarobot.com/p/como-se-financian-las-empresas-de",
+      "published_on": "2026-05-05",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-05-06-el-mejor-momento-para-aprender-robotica",
+      "source_url": "https://www.integrarobot.com/p/el-mejor-momento-para-aprender-robotica",
+      "published_on": "2026-05-06",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-05-14-la-ia-fisica-esta-volando-de-los",
+      "source_url": "https://www.integrarobot.com/p/la-ia-fisica-esta-volando-de-los",
+      "published_on": "2026-05-14",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-05-20-lo-que-la-demo-de-figure-nos-ensena",
+      "source_url": "https://www.integrarobot.com/p/lo-que-la-demo-de-figure-nos-ensena",
+      "published_on": "2026-05-20",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-05-22-los-modelos-de-negocio-de-la-robotica",
+      "source_url": "https://www.integrarobot.com/p/los-modelos-de-negocio-de-la-robotica",
+      "published_on": "2026-05-22",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-05-27-4-formas-de-empezar-con-la-ia-fisica",
+      "source_url": "https://www.integrarobot.com/p/4-formas-de-empezar-con-la-ia-fisica",
+      "published_on": "2026-05-27",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-06-03-analisis-de-la-noticia-de-presentacion",
+      "source_url": "https://www.integrarobot.com/p/analisis-de-la-noticia-de-presentacion",
+      "published_on": "2026-06-03",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-06-10-datos-para-entrenar-robots-el-resurgir",
+      "source_url": "https://www.integrarobot.com/p/datos-para-entrenar-robots-el-resurgir",
+      "published_on": "2026-06-10",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-06-16-como-crear-tu-segundo-cerebro-digital",
+      "source_url": "https://www.integrarobot.com/p/como-crear-tu-segundo-cerebro-digital",
+      "published_on": "2026-06-16",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-06-17-te-enseno-a-usar-agentes-de-ia-como",
+      "source_url": "https://www.integrarobot.com/p/te-enseno-a-usar-agentes-de-ia-como",
+      "published_on": "2026-06-17",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-06-24-como-se-ponen-a-prueba-los-robots",
+      "source_url": "https://www.integrarobot.com/p/como-se-ponen-a-prueba-los-robots",
+      "published_on": "2026-06-24",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-06-25-curso-robotica-e-ia-fisica-como-usar",
+      "source_url": "https://www.integrarobot.com/p/curso-robotica-e-ia-fisica-como-usar",
+      "published_on": "2026-06-25",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-07-01-la-salida-a-bolsa-de-las-startups",
+      "source_url": "https://www.integrarobot.com/p/la-salida-a-bolsa-de-las-startups",
+      "published_on": "2026-07-01",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-07-03-curso-robotica-e-ia-fisica-comprender",
+      "source_url": "https://www.integrarobot.com/p/curso-robotica-e-ia-fisica-comprender",
+      "published_on": "2026-07-03",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-07-08-la-transicion-de-los-robots-camareros",
+      "source_url": "https://www.integrarobot.com/p/la-transicion-de-los-robots-camareros",
+      "published_on": "2026-07-08",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-07-15-por-que-anthropic-ha-empezado-a-experimentar",
+      "source_url": "https://www.integrarobot.com/p/por-que-anthropic-ha-empezado-a-experimentar",
+      "published_on": "2026-07-15",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-07-22-agente-un-framework-para-usar-la",
+      "source_url": "https://www.integrarobot.com/p/agente-un-framework-para-usar-la",
+      "published_on": "2026-07-22",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-07-29-encuentro-de-la-comunidad-pioneros",
+      "source_url": "https://www.integrarobot.com/p/encuentro-de-la-comunidad-pioneros",
+      "published_on": "2026-07-29",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-09-02-la-apuesta-de-china-por-la-robotica",
+      "source_url": "https://www.integrarobot.com/p/la-apuesta-de-china-por-la-robotica",
+      "published_on": "2026-09-02",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-09-09-toda-empresa-industrial-se-convertira",
+      "source_url": "https://www.integrarobot.com/p/toda-empresa-industrial-se-convertira",
+      "published_on": "2026-09-09",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-09-11-es-gpt-6-astra-el-momento-chatgpt",
+      "source_url": "https://www.integrarobot.com/p/es-gpt-6-astra-el-momento-chatgpt",
+      "published_on": "2026-09-11",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-09-16-donde-esta-la-seta-roja-del-robot",
+      "source_url": "https://www.integrarobot.com/p/donde-esta-la-seta-roja-del-robot",
+      "published_on": "2026-09-16",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-09-23-busco-patrocinadores-para-la-guia",
+      "source_url": "https://www.integrarobot.com/p/busco-patrocinadores-para-la-guia",
+      "published_on": "2026-09-23",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-09-25-que-pasa-con-optimus",
+      "source_url": "https://www.integrarobot.com/p/que-pasa-con-optimus",
+      "published_on": "2026-09-25",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-09-30-openai-busca-ingenieros-para-disenar",
+      "source_url": "https://www.integrarobot.com/p/openai-busca-ingenieros-para-disenar",
+      "published_on": "2026-09-30",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-10-07-que-es-la-fabricacion-por-vibraciones",
+      "source_url": "https://www.integrarobot.com/p/que-es-la-fabricacion-por-vibraciones",
+      "published_on": "2026-10-07",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-10-14-el-despliegue-de-los-robots",
+      "source_url": "https://www.integrarobot.com/p/el-despliegue-de-los-robots",
+      "published_on": "2026-10-14",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-10-21-por-que-es-importante-que-el-tesla",
+      "source_url": "https://www.integrarobot.com/p/por-que-es-importante-que-el-tesla",
+      "published_on": "2026-10-21",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-10-28-la-robotica-es-vocacional",
+      "source_url": "https://www.integrarobot.com/p/la-robotica-es-vocacional",
+      "published_on": "2026-10-28",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-11-04-furor-con-los-robots-humanoides",
+      "source_url": "https://www.integrarobot.com/p/furor-con-los-robots-humanoides",
+      "published_on": "2026-11-04",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-11-11-que-tiene-que-hacer-apple-en-robotica",
+      "source_url": "https://www.integrarobot.com/p/que-tiene-que-hacer-apple-en-robotica",
+      "published_on": "2026-11-11",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-11-18-si-aun-no-usas-agentes-de-ia-mejor",
+      "source_url": "https://www.integrarobot.com/p/si-aun-no-usas-agentes-de-ia-mejor",
+      "published_on": "2026-11-18",
+      "status": "ingested",
+      "note": null
+    },
+    {
+      "edition_id": "nl-2026-11-25-why-humanoid",
+      "source_url": "https://www.integrarobot.com/p/why-humanoid",
+      "published_on": "2026-11-25",
+      "status": "ingested",
+      "note": null
+    }
+  ]
 }

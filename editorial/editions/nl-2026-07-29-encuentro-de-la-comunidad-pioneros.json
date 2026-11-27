@@ -1,0 +1,82 @@
+{
+  "edition_id": "nl-2026-07-29-encuentro-de-la-comunidad-pioneros",
+  "source_url": "https://www.integrarobot.com/p/encuentro-de-la-comunidad-pioneros",
+  "published_on": "2026-07-29",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robot pioneers community meeting in September",
+  "subtitle": "At Integrarobot we are going on holiday, but before we do we are announcing activities for the next season.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/436536db-6f2c-41db-852e-0977e743f813_3000x3413.jpeg)\n\nThe end of the season is arriving at Integrarobot, and we are taking the opportunity to call a new meeting of the **robot pioneers community**. It will be on 30 September at 17:00, online, and it will be devoted to discussing the use of the [AGENTE](https://www.integrarobot.com/p/agente-un-framework-para-usar-la) framework among the different participants in the event.\n\nThe community meetings are an opportunity to meet other robotics enthusiasts, learn from their experience and share opportunities to collaborate on projects integrating robots into companies. We have been holding these meetings since 2025, and they complement the live courses we run several times a year to learn about the state of the art in robotics and Physical AI development, as well as how to incorporate all this into production systems.\n\nThe robot pioneers community currently has 41 members; it is still a small group, but we are convinced it will grow as the promise of general-purpose robotics becomes a reality. At Integrarobot we work with the certainty that this is going to happen, because we already saw it with AI before ChatGPT appeared, and it will happen with robotics. It is a matter of time.\n\nHerein lies the key to the work we do to set out the need for companies to start **generating data** on their activity that can be used to train robots. Just as those who worked on Big Data before Generative AI appeared are much better prepared to feed context to their AI Agents, companies that document their processes in video format will be ready when they come to incorporate humanoid robots into their operations.\n\nLet's look at an example to understand how important this is:\n\nGoogle recently presented an initiative, called [OKF](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing), to improve the way we provide context to AI agents, and they explained it as follows:\n\n> \"*As AI models continue to improve, the **lack of relevant context** often limits their functionality, especially when they are used to build agentic systems. While these models can help write code, summarize documents or analyze datasets, they still need the right information to generate accurate and useful results*\".\n\nThis \"*lack of relevant context often limits their functionality*\" is what companies will run into the day they can buy a humanoid, and now is the time to solve it.\n\nFor this we have two options, which we have discussed repeatedly in previous newsletter posts, but let's summarize them here now:\n\n1. [Record](https://www.integrarobot.com/p/datos-para-entrenar-robots-el-resurgir) the activity carried out by the company's operators in first person. This means explaining to workers the importance of doing so and having their collaboration, which is the best way to start involving them in the process of transforming manual activities into automated ones. Conflicts may well arise here, but the important thing is for workers to understand that robotics is not coming to eliminate people but to change roles so that workers can move into higher value-added jobs, which should be those involving intellectual rather than physical work.\n2. Incorporate robots (arms, AMRs, [waiter robots](https://www.integrarobot.com/p/la-transicion-de-los-robots-camareros?utm_source=publication-search)) before humanoids arrive, which will also help a lot in preparing the company's workers for this transition. Because we will need these people to do the work of deploying those robots, and they will also start seeing how they can live alongside them as part of their day-to-day work. Waiter robots may be the easiest to implement, because they can perform, for example, the transport of tools or supplies within the facilities, which means starting to design how robots will move and interact with people.\n\nThis plan may be disappointing for those who would like to buy a robot right now and put it to work, but we must be aware that, just as with AI Agents, where configuration work has to be done to automate administrative tasks, this process will also be necessary for physical tasks; the good news is that we are not alone in facing this challenge, since many people are working to solve the problem of robot training data.\n\nAnd one of the best examples is what [World Labs](https://www.worldlabs.ai/blog/real-to-sim-to-real) is doing; in case you don't know it yet, it is the Physical AI lab led by **Fei-fei Lee**, who in turn is one of the people who has contributed most to the development of AI, especially image recognition systems.\n\nSo her current challenge is based on developing world models for training robots, and she sets it out as follows:\n\n> \"*Preparing robots for the real world requires extensive **data collection** and repeated testing on physical hardware. Each new task or environment can demand considerable manual effort, while failures are slow to identify and costly to recover from*\".\n\nAnd this is where the circle closes with what was said earlier about Google's OKF system, because what World Labs is conveying is that they are going to take care of building the infrastructure to provide the data that improves robots' performance, but we will have to be the ones who contribute that data, because every company is a world of its own and every robot will have to learn to do its job with real data from the operation to be performed.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💰 Enigma raises 70 million dollars to simplify how humans control robots.",
+        "body_markdown": "💰 [Enigma](https://techcrunch.com/2026/07/27/enigma-raises-70m-to-make-controlling-a-robot-as-easy-as-adjusting-the-volume) raises **70 million dollars** to simplify how humans control robots. The company's bet is that the next critical layer is not just better hardware or better models, but a command interface so intuitive that operating a robot is more like adjusting a volume control than programming a machine."
+      },
+      {
+        "position": 2,
+        "headline": "🚶 VLK presents a humanoid loco-manipulation policy trained with synthetic interactions in reconstructed real scenes.",
+        "body_markdown": "🚶 [VLK](https://vision-language-kinematics.github.io/) presents a **humanoid loco-manipulation** policy trained with synthetic interactions in reconstructed real scenes. The system generates vision-language-kinematics supervision without large-scale labelled real data and shows zero-shot transfer to a real Unitree G1 in navigation and object transport."
+      },
+      {
+        "position": 3,
+        "headline": "🏭 Arrakis raises 38 million dollars to deploy AI agents in industrial operations.",
+        "body_markdown": "🏭 [Arrakis](https://x.com/RafaelFQL/status/2079943052261457977) raises **38 million dollars** to deploy AI agents in industrial operations. The company says it already works with listed companies, compresses cycle times by between 60% and 90%, and turns operational knowledge into agents that execute complex processes under human supervision."
+      },
+      {
+        "position": 4,
+        "headline": "🤖 Booster Robotics opens orders for T2, a 1.4-metre humanoid aimed at development, with 31 degrees of freedom, a 10-kilo bimanual payload and computing based on Jetson Thor.",
+        "body_markdown": "🤖 [Booster Robotics](https://robotica.es/humanoides/booster-t2-humanoide-jetson-thor-desarrollo/) opens orders for **T2**, a 1.4-metre humanoid aimed at development, with 31 degrees of freedom, a 10-kilo bimanual payload and computing based on **Jetson Thor**. The move positions it as a platform for developers who want to build on top of NVIDIA's new edge AI stack."
+      },
+      {
+        "position": 5,
+        "headline": "☁️ Microagi partners with Google Cloud and NVIDIA to train physical AI models on Blackwell infrastructure and Google's AI stack.",
+        "body_markdown": "☁️ [Microagi](https://www.microagi.ai/articles/google-cloud-nvidia) partners with Google Cloud and NVIDIA to train **physical AI** models on Blackwell infrastructure and Google's AI stack. The company wants to use that stack to scale multimodal models aimed at commercial and industrial robots and to offer software packages tailored to specific tasks on different robotic platforms."
+      },
+      {
+        "position": 6,
+        "headline": "🏥 Momentis Surgical obtains FDA clearance for the multiport configuration of the Anovo surgical robot.",
+        "body_markdown": "🏥 [Momentis Surgical](https://www.prnewswire.com/news-releases/fda-clears-momentis-surgicals-anovo-system-for-multiport-surgery-making-it-the-first-robotic-platform-to-support-three-surgical-approaches-302833131.html) obtains FDA clearance for the multiport configuration of the **Anovo** surgical robot. The company presents the system as the first robotic platform capable of supporting three different surgical approaches within the same architecture."
+      },
+      {
+        "position": 7,
+        "headline": "📱 Samsung Electronics creates the RX (Robotics eXperience) office to concentrate its next-generation robotics strategy.",
+        "body_markdown": "📱 [Samsung Electronics](https://m.ajupress.com/view/20260721100470895) creates the **RX (Robotics eXperience)** office to concentrate its next-generation robotics strategy. The reorganization makes robotics a priority corporate line and unifies capabilities that until now were scattered within the group."
+      },
+      {
+        "position": 8,
+        "headline": "🏗️ Atoms announces a 1.7 billion dollar investment led by a16z to unify its businesses and push its Industrial AI thesis.",
+        "body_markdown": "🏗️ [Atoms](https://atoms.co/unfinished-business) announces a **1.7 billion dollar** investment led by a16z to unify its businesses and push its **Industrial AI** thesis. The company places its focus on automating physical operations at scale by combining software, sensors, robotics and AI across entire industrial sectors."
+      },
+      {
+        "position": 9,
+        "headline": "🩺 Johnson & Johnson receives FDA clearance for OTTAVA, its integrated soft-tissue surgical robotic system.",
+        "body_markdown": "🩺 [Johnson & Johnson](https://www.jnj.com/media-center/press-releases/johnson-johnson-receives-fda-market-authorization-in-the-u-s-for-its-ottava-robotic-surgical-system?utm_source=robotnews.therundown.ai&utm_medium=newsletter&utm_campaign=travis-kalanick-s-1-7b-computer-for-the-physical-world) receives FDA clearance for **OTTAVA**, its integrated soft-tissue surgical robotic system. The system enters the US market with indications in general upper abdominal surgery and with an architecture designed to take up less space, expand operating room capacity and open the door to more connected, data-guided surgery."
+      },
+      {
+        "position": 10,
+        "headline": "🖐️ Generative Bionics presents GENE.01, a humanoid with tactile sensing distributed over its whole body.",
+        "body_markdown": "🖐️ [Generative Bionics](https://www.therobotreport.com/generative-bionics-unveils-humanoid-robot-with-full-body-tactile-sensing/) presents **GENE.01**, a humanoid with tactile sensing distributed over its whole body. The platform incorporates skin capable of detecting contact, temperature, proximity and force, and places touch as a central layer for safe collaboration and richer physical perception."
+      },
+      {
+        "position": 11,
+        "headline": "🧠 Encord and Zander Labs are exploring the use of brain waves as a new data modality for training physical AI models.",
+        "body_markdown": "🧠 [Encord and Zander Labs](https://techcrunch.com/2026/07/26/are-brain-waves-the-next-unlock-for-physical-ai) are exploring the use of **brain waves** as a new data modality for training physical AI models. The approach combines egocentric video, dense annotation, teleoperation and neural signals to measure intention, error or surprise, and suggests that robotics' bottleneck still lies in producing useful physical data, not just in scaling models."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 106; 11 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "82bf016d30148407388a6fdaf4fe971191c38589d82853ead9869a29d2980adc"
+}

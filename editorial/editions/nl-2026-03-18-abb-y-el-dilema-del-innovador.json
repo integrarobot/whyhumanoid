@@ -1,0 +1,82 @@
+{
+  "edition_id": "nl-2026-03-18-abb-y-el-dilema-del-innovador",
+  "source_url": "https://www.integrarobot.com/p/abb-y-el-dilema-del-innovador",
+  "published_on": "2026-03-18",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "ABB and the innovator's dilemma",
+  "subtitle": "Welcome to the era of physical AI, NVIDIA's new slogan, which traditional robotics companies must also gradually take on board.",
+  "body_markdown": "When a company like **Amazon** decides to spend all its money (200 billion dollars in 2026) to create **AWS** version 2.0, it is making clear to us that it is not falling victim to the innovator's dilemma. The company that practically invented **Cloud Computing** is going all in because it is convinced that with AI that infrastructure needs to be reinvented, whatever it costs.\n\nHowever, we are not seeing something similar in the **robotics** industry; although signs of some interest in evolving toward **Physical AI** are beginning to appear, there is still little news of companies in the sector betting decisively on this technology.\n\nWith the news of the [collaboration](https://www.abb.com/global/en/news/134030) between **ABB Robotics** and **NVIDIA** we are starting to see some change, but it still seems insufficient to me, and we could not yet say that this company is not falling prey to the innovator's dilemma.\n\nIts business of selling programmable industrial robots works; what reason would it have to take risks by investing in a new type of AI-driven general-purpose robot?\n\nFor decades, ABB has been synonymous with industrial robotics: precision arm, welding cell, assembly line. It has spent fifty years manufacturing the machines that move the world's factories, but that type of robotics is not capable of learning and therefore of improving by itself.\n\nThe collaboration between ABB and NVIDIA, in which the integration of the **NVIDIA Omniverse** libraries into the **ABB RobotStudio** platform has just been announced, should be a first step in that evolution from programmable robotics to Physical AI.\n\nThis collaboration seeks to solve the **sim-to-real** problem: the gap between what a robot learns in simulation and what it is able to execute in the physical world. A gap that, for years, has been the main bottleneck for deploying AI-based robotics at industrial scale.\n\nWhat ABB is doing is not just a software update. It is the search for a new positioning, because traditional robot manufacturers know the game has changed, and that they are staking everything on Physical AI, that is, artificial intelligence models that not only process data but act on the world with precision and generalization.\n\nThis transition has direct implications for the future of humanoid robots. Because the problems ABB is solving today in industrial arms, such as synthetic data generation, training in digital twins and reliable transfer to real hardware, are exactly the same problems humanoids need to solve to leave the laboratory and enter factories, performing tasks with precision and versatility.\n\n---\n\n### NVIDIA does not suffer from the innovator's dilemma\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/28d7bb98-689a-4cab-941f-2a04025cf6d4_2048x1027.png)\n\nHowever many years **NVIDIA** has now been ending its [events](https://www.youtube.com/live/jw_o0xr8MWU?si=O-56j1vC707E3H6e&t=7578) by talking about robotics, it is still exciting to see everything the world's most valuable company is contributing to this sector. And as can be seen in the image, humanoid robots occupy the central space because they are the priority for the future due to the business volume they may represent for the company.\n\nIt is worth mentioning here that in the GTC 2026 presentation, in addition to ABB, robotic arms from **FANUC** and **KUKA** also appeared, so it is clear that the bulk of the traditional industrial robotics industry is also working on Physical AI, taking advantage of NVIDIA's capabilities.\n\nAnd everything NVIDIA is doing in robotics can be summarized in the three layers Jensen Huang explained:\n\n1. Training software\n2. Synthetic data generation and simulation\n3. The robotic computer that goes inside the robot itself: Jetson Thor\n\nFor each of these levels the company has developed its own technology: software for the first two and hardware for the third.\n\nAs for software, the most important novelty was the presentation of [NVIDIA Newton](https://developer.nvidia.com/blog/newton-adds-contact-rich-manipulation-and-locomotion-capabilities-for-industrial-robotics), the **simulator** that adds highly interactive manipulation and locomotion capabilities for industrial robotics, and which fits into the complete stack the company offers as follows:\n\n- **Isaac Lab** for robot training and evaluation.\n- **Newton** for GPU-accelerated differentiable physics simulation.\n- **Cosmos**, a world model for neural simulation.\n- **Groot**, robotics foundation models for reasoning and action.\n\nThe final video shown at the event is quite a declaration of intent about how clear the company is that its future lies in Physical AI. I don't think it is simply because the robots look cute singing and playing instruments as if they were cartoons.\n\n**Welcome to the era of physical AI** is the representation of how NVIDIA perceives the future. It's true that we don't yet see it day to day in our streets, but if they don't make it possible, who will?\n\n---\n\nHave you already thought about how you are going to ride the Physical AI wave? If you are still not sure, I invite you to take part in the [webinar](https://www.youtube.com/live/XKPkbLEutJ8?si=4VKmafJgYtnj8d0I) I am going to hold on 25 March at 19:00.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🧠 AMI labs is the name chosen by Yann LeCun for his laboratory, in which to demonstrate his vision of how to scale AI through world models.",
+        "body_markdown": "🧠 [AMI labs](https://amilabs.xyz/) is the name chosen by **Yann LeCun** for his laboratory, in which to demonstrate his vision of how to scale AI through world models. And to achieve it he will have a golden path, because major investment funds have put more than a billion dollars on the table in what represents the largest investment round in history for a European startup, in which important technology figures such as Jeff Bezos, Tim Berners-Lee, Mark Cuban, Xavier Niel and Eric Schmidt also took part."
+      },
+      {
+        "position": 2,
+        "headline": "⚛️ Atoms is the new venture of Travis Kalanik, the founder of Uber, who has set himself the goal of digitizing the physical world, starting by building robots that can work in t…",
+        "body_markdown": "⚛️ [Atoms](https://x.com/travisk/status/2032527564774977703?s=46) is the new venture of **Travis Kalanik**, the founder of **Uber**, who has set himself the goal of digitizing the physical world, starting by building robots that can work in the mining and transport sectors. Although the type of robots he is going to build is not yet known, apparently his choice involves specialized robots for industrial tasks rather than generalist humanoid robots."
+      },
+      {
+        "position": 3,
+        "headline": "🦄 Rhoda AI has raised 450 million dollars in funding to develop a new AI model trained on millions of publicly available internet videos, with the aim of enabling industrial rob…",
+        "body_markdown": "🦄 [Rhoda AI](https://www.rhoda.ai/) has raised 450 million dollars in funding to develop a new AI model trained on millions of publicly available internet videos, with the aim of enabling **industrial robots** to perform all kinds of tasks, even in unfamiliar conditions. The funding round was led by Premji Invest and values the startup at 1.7 billion dollars."
+      },
+      {
+        "position": 4,
+        "headline": "🏭 Mind Robotics today announced a 500 million dollar funding round, co-led by Accel and Andreessen Horowitz, to develop and deploy AI-powered robotic systems at industrial scale.",
+        "body_markdown": "🏭 [Mind Robotics](https://www.businesswire.com/news/home/20260311414783/en/Mind-Robotics-Announces-%24500M-Financing-to-Support-Deployment-of-AI-Powered-Robots-at-Industrial-Scale) today announced a 500 million dollar funding round, co-led by Accel and Andreessen Horowitz, to develop and deploy **AI-powered robotic systems at industrial scale**. Sameer Gandhi, partner at Accel, will join Mind Robotics' Board of Directors. This funding adds to a 115 million dollar seed round led by Eclipse Capital at the end of 2025."
+      },
+      {
+        "position": 5,
+        "headline": "🏠 Sunday raises 165 million dollars and commits to doing no more demos.",
+        "body_markdown": "🏠 [Sunday](https://www.sunday.ai/journal/series-b) raises 165 million dollars and commits to doing no more demos. Oversubscribed and at a valuation of 1.15 billion dollars, its goal is to **set demonstrations aside** and bring the first autonomous household robot into homes this year. The public rollout will begin with a beta programme, to be rolled out to users this autumn."
+      },
+      {
+        "position": 6,
+        "headline": "🤝 Boston Dynamics and FieldAI partner to bring robots into dynamic and unexplored environments, such as construction and other complex, constantly evolving settings.",
+        "body_markdown": "🤝 [Boston Dynamics](https://bostondynamics.com/news/boston-dynamics-fieldai-partner-to-bring-robots-into-uncharted-dynamic-environments/) and **FieldAI** partner to bring robots into dynamic and unexplored environments, such as construction and other complex, constantly evolving settings. Thanks to this collaboration with FieldAI, a recognized leader in robotic AI and autonomous operations, Boston's robots will be able to enter a new era of general-purpose autonomy."
+      },
+      {
+        "position": 7,
+        "headline": "🛠️ FieldAI announces a collaboration with NVIDIA to accelerate AI adoption in industrial environments.",
+        "body_markdown": "🛠️ [FieldAI](https://www.fieldai.com/news/fieldai-accelerates-industrial-customers-adoption-of-ai-in-collaboration-with-nvidia) announces a collaboration with **NVIDIA** to accelerate AI adoption in industrial environments. The integration makes it possible to generate digital environments from sensor data and train robots with synthetic data. The goal is to improve the performance of systems deployed in real operations. Focus on data pipeline and simulation."
+      },
+      {
+        "position": 8,
+        "headline": "📚 Dell collaborates with Pollen Robotics, Hugging Face and NVIDIA to make practical robotics and local AI accessible to students, educators and hobbyists.",
+        "body_markdown": "📚 [Dell](https://www.dell.com/en-us/blog/from-kitchen-table-curiosity-to-educational-impact-why-this-robotics-pairing-matters/) collaborates with **Pollen Robotics**, **Hugging Face** and **NVIDIA** to make practical robotics and local AI accessible to students, educators and hobbyists. Reachy Mini, an affordable, open source robotics kit, is combined with Dell Pro Max with GB10 to run advanced language, vision and speech models entirely on the device, guaranteeing privacy and speed."
+      },
+      {
+        "position": 9,
+        "headline": "📦 Dexterity presents Foresight, a world model designed for industrial robotics.",
+        "body_markdown": "📦 [Dexterity](https://www.roboticstomorrow.com/news/2026/03/05/dexteritys-world-model-foresight-delivers-a-big-leap-for-physical-ai-powered-truck-loading/26215) presents Foresight, a **world model** designed for industrial robotics. The system allows robots to make real-time decisions in complex tasks such as truck loading, optimizing the placement of objects in space and time. It is trained on large volumes of real operational data. Focused on production, not research."
+      },
+      {
+        "position": 10,
+        "headline": "🔠 MIT introduces a system that combines visual language models with formal planning to solve complex tasks in 3D environments.",
+        "body_markdown": "🔠 [MIT](https://news.mit.edu/2026/better-method-planning-complex-visual-tasks-0311) introduces a system that combines **visual language models** with formal planning to solve complex tasks in 3D environments. One model interprets the scene and generates actions, while another translates those actions into structured representations that classical planners can execute. It improves performance in unseen scenarios. Hybrid architecture, not end-to-end."
+      },
+      {
+        "position": 11,
+        "headline": "👀 RealSense presents an autonomous navigation system for humanoid robots based on vision and SLAM.",
+        "body_markdown": "👀 [RealSense](https://www.therobotreport.com/realsense-unveils-autonomous-humanoid-navigation-gtc-2026) presents an **autonomous navigation system for humanoid robots** based on vision and SLAM. The solution enables real-time localization and obstacle avoidance, including dynamic environments with people. The system was trained in simulation before physical deployment. Geared to robust perception + navigation."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 78; 11 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "491a232bd6cb8c8f6c1af8091fe38e128a4af381508f283183ac622f0a99227e"
+}

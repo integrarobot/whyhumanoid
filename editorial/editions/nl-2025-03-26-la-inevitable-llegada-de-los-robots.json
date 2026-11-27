@@ -1,0 +1,52 @@
+{
+  "edition_id": "nl-2025-03-26-la-inevitable-llegada-de-los-robots",
+  "source_url": "https://www.integrarobot.com/p/la-inevitable-llegada-de-los-robots",
+  "published_on": "2025-03-26",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The inevitable arrival of Humanoid Robots",
+  "subtitle": "In the not too distant future, we may wonder why it took us so long to get into the humanoid robot business.",
+  "body_markdown": "It is a matter of time, but it will end up happening. **Humanoid robots** will be present in homes, shops and all kinds of places where there is someone who does not want to, or cannot, do a certain job and prefers a machine to do it.\n\n**Jensen Huang** put it very well when he said:\n\n> *By the end of this decade the world will have 50 million fewer workers, and we would be delighted to pay each of them **50,000 dollars** to come to work, so we will probably have to pay that money to robots, and that is why this will be a huge industry.*\n\n50,000 dollars is a fairly round number and may make sense if we compare it with the price of a medium-sized, mid-quality car. What this is trying to tell us is that, if many families can afford to own a vehicle, even two, the cost of having a robot that performs household services may more than pay off because of the usefulness it will offer us. Just as cars transport us quickly from one point to another, robots will do for us all those tedious tasks that must necessarily be done in homes.\n\n## Nobody wants to be left out of the AI-driven robotics party\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/befccf1a-7886-449c-83cd-3b6d9bb4d022_960x540.jpeg)\n\nGiven this landscape, it is logical to deduce why all the **Bigtech** companies have their own plans regarding robotics driven by Artificial Intelligence, specifically for the development of humanoid robots.\n\nIt might seem premeditated, but it is probably pure coincidence. While **Google** and co. were creating the software for what is now Generative Artificial Intelligence, many small robotics startups were getting on with their own thing, trying to develop the mechanical side with that humanoid structure. And now it seems that both strategies have converged. The former needed the **hardware** and the latter the **software**; it was a matter of starting to collaborate.\n\nAnother argument could be found in the model **NVIDIA** is following: once it has confirmed that Artificial Intelligence can bring great value to people, and in passing provide it with a great business, what it does is look for the next frontier, which is what they have called Physical AI.\n\nIn the case of **Tesla**, it may rather be part of Elon Musk's thinking regarding his plans to conquer Mars, or whatever he has in his head. But along the way he takes the opportunity to put robots to work in his factories and wherever else is needed. The question I ask myself in this respect is to what extent Tesla sets the trend or simply gets ahead because it is less afraid of failing, something the rest of the technology companies cannot afford. The videos of the times SpaceX rockets crashed before managing to land are good proof of this working philosophy.\n\n## And what about the other companies?\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/b90866ca-cd80-4fa8-9960-7146bc397b60_960x540.jpeg)\n\nHere it seems quite clear that nobody wants to be left out of the humanoid robotics party. What is interesting at this point is how not only software and hardware companies are entering this market, but also car manufacturers. There could be several reasons for this to consider:\n\n1. They are simply following in **Tesla**'s wake, which has already happened with electric cars, and the story has not ended well for many of these companies, which have seen their stock market valuations reduced to rubble.\n2. What they really fear is **Chinese** competition, because they see that in robots China has an even greater lead than in electric car manufacturing. The shake-up is so big that I wouldn't want to be in their shoes.\n3. On the good side of the scale, we could note that now they may actually be able to transform digitally. Cars have been the rehearsal, but the real transformation could come with robots. Because all these companies have been focused for too long on a single type of product, yet their engineering and industrial capabilities could serve for much more. If we have seen companies like **Xiaomi** go from smartphones to robots, we could perfectly well have Mercedes, VW, BMW and Volvo manufacturing electronics in the future.\n\n📎 Note: I asked ChatGPT to help me improve this article, and it suggested I finish with this sentence: \"*in the not too distant future, we may not ask ourselves whether we want to live with robots, but why it took us so long to do so*\". It occurred to me that the sentence could be adapted for decision-makers in the technology industry like this: \"*in the not too distant future, we may wonder why it took us so long to get into the humanoid robot business*\"",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🧊 Roblox Cube is the Generative AI model created by the video game company Roblox for 3D and 4D design.",
+        "body_markdown": "🧊 [Roblox Cube](https://corp.roblox.com/newsroom/2025/03/introducing-roblox-cube) is the Generative AI model created by the video game company Roblox for 3D and 4D design. Now imagine for a moment how useful it could be for creating synthetic data to be used for training robots."
+      },
+      {
+        "position": 2,
+        "headline": "🤑 The Bot Company raises 150 million dollars in funding at a valuation of 2 billion, when they have not even shown an image of their future robots focused on household services.",
+        "body_markdown": "🤑 [The Bot Company](https://www.reuters.com/technology/former-cruise-ceo-vogts-robotics-startup-valued-2-billion-new-funding-sources-2025-03-21) raises 150 million dollars in funding at a valuation of 2 billion, when they have not even shown an image of their future robots focused on household services. Bubble in sight?"
+      },
+      {
+        "position": 3,
+        "headline": "🧑‍💻 808 Robots is a fantastic research initiative for the development of software and hardware to help improve the manual dexterity of humanoid robots.",
+        "body_markdown": "🧑‍💻 [808 Robots](https://www.808robots.com/) is a fantastic research initiative for the development of software and hardware to help improve the manual dexterity of humanoid robots. It is worth spending a while watching its spectacular results."
+      },
+      {
+        "position": 4,
+        "headline": "🦾 Dexterity Mech has given the idea of robotic arms a twist by betting on super capabilities.",
+        "body_markdown": "🦾 [Dexterity Mech](https://www.dexterity.ai/mech) has given the idea of robotic arms a twist by betting on super capabilities. The question is whether we will also see this kind of development for full-body humanoids in the future."
+      },
+      {
+        "position": 5,
+        "headline": "🖼️ ChatGPT now knows how to create infographics and comics, that is, it can create images that include text, and the truth is it does it quite well.",
+        "body_markdown": "🖼️ [ChatGPT](https://openai.com/index/introducing-4o-image-generation/) now knows how to create infographics and comics, that is, it can create images that include text, and the truth is it does it quite well. This is something many of us had been waiting for and a great new advance for Generative AI. Here is the result:\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/2bb12e0d-0710-4c78-b2a9-111b030e0bb1_1536x1024.png)"
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 13; 5 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "3561b34d240dc1ec608eb5123570e6977ea75cfa91797d5bc39b1689e4321044"
+}

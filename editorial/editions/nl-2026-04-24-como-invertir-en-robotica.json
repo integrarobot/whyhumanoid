@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-04-24-como-invertir-en-robotica",
+  "source_url": "https://www.integrarobot.com/p/como-invertir-en-robotica",
+  "published_on": "2026-04-24",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "How to invest in robotics",
+  "subtitle": "Investing in robotics companies is a good opportunity, not only financially but also for learning as a shareholder in the companies.",
+  "body_markdown": "Investing in robotics is really investing in the next phase of AI. In recent years we have seen how AI has transformed the digital world. But now it is starting to leave the computer to interact with the physical world. That transition is what we call **physical AI**, and it may represent a great investment opportunity, as we are going to see below.\n\nInvestor interest in this sector is growing rapidly. For example, so far this year more than 20 Physical AI startups have closed rounds of more than 50 million dollars.\n\nHowever, it is worth understanding well what phase this technology is in, since we are at an early stage of the technology cycle, where the opportunity is enormous but there is also a lot of uncertainty.\n\nThat said, to understand how to invest in this sector it is good to think about the complete ecosystem, not just robots. A humanoid robot is really the integration of many different technologies: computing chips, sensors, cameras, actuators, batteries, control software and artificial intelligence models. This means the investment opportunity lies not only in robot manufacturers, but in the entire **supply chain that makes physical AI possible**.\n\nFor example, a significant part of the value may be captured by companies that manufacture sensors and computer vision systems, which allow robots to perceive their environment. Or by manufacturers of actuators and precision reducers, the mechanical components that make movement possible. Also by computing and semiconductor companies that provide the power needed to run the artificial intelligence models that control robots.\n\nIn fact, the history of other technological revolutions suggests that the greatest value is often captured not in the final product but in the infrastructure that makes it possible. On the internet there were great platforms such as Amazon or Google, but also network infrastructure and chip companies that generated enormous returns. In today's artificial intelligence we are seeing something similar with semiconductor and computing companies.\n\nAnother way to approach this investment is through listed funds specializing in robotics and automation. These **ETFs** group dozens of companies in the sector, from industrial robot manufacturers to companies making sensors, software, automation and the raw materials needed to build the robot's components. For many investors this can be a simple way to gain exposure to the sector's growth without having to bet on a specific company.\n\nWhat must be clear is that investing in robotics now is quite similar to investing in the internet in the mid-nineties. The path ahead is fairly clear: machines are going to take on more and more physical work in the economy. But what we still don't know for certain is which companies will dominate that new market.\n\nIn this class of the Humanoid Robots Course I analyze this topic in more detail: how the robotics ecosystem works, what types of listed companies are taking part in it and what strategies an investor who wants to position themselves in this new technological wave can follow.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 87; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

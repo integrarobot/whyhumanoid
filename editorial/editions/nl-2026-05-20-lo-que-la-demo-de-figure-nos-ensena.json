@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2026-05-20-lo-que-la-demo-de-figure-nos-ensena",
+  "source_url": "https://www.integrarobot.com/p/lo-que-la-demo-de-figure-nos-ensena",
+  "published_on": "2026-05-20",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "What Figure's demo teaches us about humanoid robots",
+  "subtitle": "193,000 packages processed in 155 hours of work. That is where the counter stands right now on the longest robotics demo in history.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/9d840b37-f886-48d0-bf24-06505142735a_2048x1603.png)\n\nThis article was going to be titled \"what **Figure**'s 8-hour demo teaches us about robots\", but I soon had to change it because the 8 hours became 24 and then an uninterrupted broadcast in which the robots are demonstrating their skill in the art of handling postal packages.\n\nThis kind of robotic Truman Show has a lot to teach us, and who knows, perhaps it will end up becoming that ChatGPT moment of robotics that has been talked about for a little over a year.\n\nBut beyond the fact itself of having some robots there working night and day, I think it is worth stopping for a while to understand what this means and how it could become an important milestone for the development of humanoid robots.\n\n1. 8 hours was the initial time planned for the robot demo, because it puts it on a par with a **working day**, which makes it possible to extract productivity metrics, but it is also related to the need for supervision. If the robot is there working, there are many other things people will have to do for the operation to work, at least for the moment.\n2. Comparing it directly with human productivity was not initially planned, but as Brett Adcock, Figure's founder, got carried away with the success the broadcast was having, he decided to do the exercise of putting a **human worker** to compete with the robots. In this first duel the human, named Aime, won, but I dare say there will soon be a rematch, and given how fast robots learn, I think the scoreboard will turn in their favour.\n3. Although the robots have been working there autonomously for more than 100 hours, there are people who don't trust it, and that's fine because it allows faults to be found, but sometimes they also get it wrong. For example, in this case they were assuming the robot was teleoperated because of a movement it made with its hand to protect its head when it came too close to the metal structure of the conveyor belt.\n4. Watch the video: at certain moments the company's workers are gathered back there, with a few robots around them, chatting in the most relaxed way. I'd love to know what they are talking about, but beyond that, I wonder whether these facilities where the conveyor belt is belong to Figure or to a customer. What is clear is that the package sorting [machine](https://www.savethepostoffice.com/a-tour-of-the-new-usps-package-sorting-machine/) is real and the work the robot does is important, because currently it means there have to be people doing that very tedious job.\n5. But beyond all these anecdotal aspects, what we should really take away is that we are witnessing live how humanoid robotics is trying to cross the chasm that until now has separated demos from operation in the real world. And that is what we are all waiting for: real cases where the quality of the technology can be evaluated. I don't know about you, but for me this clears up a lot of doubts.\n6. In any case, it is best not to confuse this spectacular broadcast with a closed industrial integration. We still lack data, such as the exact error rate, environmental conditions, the number of human interventions, maintenance between shifts, total cost, safety, integration with the customer's systems and behaviour in rare cases.\n\nNow for the final conclusion. I sense that demand for humanoid robots is going to far exceed supply. Here we have Figure showing off its capabilities, and a few days after learning the news that UPS wants to buy its robots by the thousands. But [production capacity](https://www.figure.ai/news/ramping-figure-03-production) is still very low: although it has gone from 1 robot/day to 1 robot/hour, there is still a long way to go to respond to the millions of companies and homes that are going to want this augmented productivity machine.\n\nAnd what about the supply chain? The tensions we have experienced in recent years in the electronics sector will seem insignificant when everyone wants their own humanoid robot to take the dirty work off their hands.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🏋️ NEURA Robotics and the Technical University of Munich launch the TUM RoboGym, Europe's largest scientific Physical AI training centre.",
+        "body_markdown": "🏋️ [NEURA Robotics](https://neura-robotics.com/europes-largest-physical-ai-training-center-neura-tum/) and the Technical University of Munich launch the TUM **RoboGym**, Europe's largest scientific Physical AI training centre. From mid-2026 a fleet of humanoids will train in real conditions in an initial space of 2,300 m², generating data for the Neuraverse and reinforcing the idea that the bottleneck is no longer just hardware, but access to quality physical data."
+      },
+      {
+        "position": 2,
+        "headline": "💰 Mind Robotics announces 400 million dollars of new funding led by Kleiner Perkins, bringing its total investment above 1 billion.",
+        "body_markdown": "💰 [Mind Robotics](https://www.businesswire.com/news/home/20260513731983/en/Mind-Robotics-Announces-%24400M-in-New-Funding-to-Expand-Industrial-Robotics-Deployment) announces 400 million dollars of new funding led by **Kleiner Perkins**, bringing its total investment above 1 billion. The company, born from the Rivian environment, wants to accelerate the deployment of industrial robots in manufacturing, signalling that big capital is starting to move toward robots that solve concrete production problems."
+      },
+      {
+        "position": 3,
+        "headline": "🚶 WIRobotics raises 68 million dollars after selling more than 3,000 units of WIM, its wearable walking-assistance robot.",
+        "body_markdown": "🚶 [WIRobotics](https://korthos.xyz/research/wirobotics-raises-68m-after-scaling-wearable-robots?v=3) raises 68 million dollars after selling more than **3,000 units** of WIM, its wearable walking-assistance robot. Now the Korean company wants to fund ALLEX, a modular humanoid platform with compliant hands, backdrivable arms and force control, turning the experience accumulated in real human movement into a basis for physical manipulation robots."
+      },
+      {
+        "position": 4,
+        "headline": "🏭 FANUC deepens its collaboration with Google to bring AI agents to industrial robots.",
+        "body_markdown": "🏭 [FANUC](https://www.fanuc.co.jp/en/profile/pr/newsrelease/2026/notice20260513.html) deepens its collaboration with **Google** to bring AI agents to industrial robots. Its new system combines FANUC robots, Gemini Enterprise, ROS, Intrinsic Flowstate and natural language control so that an agent can understand instructions, recognize objects and operate a robotic cell, an important sign that Physical AI is starting to enter traditional industrial automation."
+      },
+      {
+        "position": 5,
+        "headline": "🤖 Persona AI shows progress on its Gen1 humanoid and previews the arrival of Gen2.",
+        "body_markdown": "🤖 [Persona AI](https://x.com/nicolausradford/status/2055294455515648157) shows progress on its Gen1 humanoid and previews the arrival of Gen2. According to its CEO, in about 18 months the company has grown to 70 people, has built five Gen1 humanoids and already has **commercial traction**. Rapid progress for a startup focused on industrial humanoid robots for demanding environments."
+      },
+      {
+        "position": 6,
+        "headline": "💪 Seoul National University develops an intelligent artificial muscle that combines movement and sensors in the same structure.",
+        "body_markdown": "💪 [Seoul National University](https://interestingengineering.com/ai-robotics/smart-artificial-muscle-humanoid-robot-motion) develops an intelligent **artificial muscle** that combines movement and sensors in the same structure. The system uses liquid metal channels inside liquid crystal elastomers to contract, measure force and estimate deformation in real time, bringing robots closer to a form of physical intelligence embedded in the body itself."
+      },
+      {
+        "position": 7,
+        "headline": "🧪 Institute of Science Tokyo launches an automated medical laboratory where 10 robots work without human staff.",
+        "body_markdown": "🧪 [Institute of Science Tokyo](https://interestingengineering.com/ai-robotics/japan-unmanned-lab-robots-ai-automation-aist) launches an **automated medical laboratory** where 10 robots work without human staff. Among them is the Maholo LabDroid robot, capable of performing delicate laboratory procedures. The plan is to scale up to 2,000 robots by 2040 to automate much of the scientific process, from experiments to verification."
+      },
+      {
+        "position": 8,
+        "headline": "👕 Zhejiang Humanoid Robot Innovation Center signs an order with Jack Technology for 2,000 humanoids for textile manufacturing.",
+        "body_markdown": "👕 [Zhejiang Humanoid Robot Innovation Center](https://autonews.gasgoo.com/articles/news/zhejiang-humanoid-robot-innovation-center-signs-order-for-2000-humanoid-robots-2053868715219771392) signs an order with Jack Technology for **2,000 humanoids** for textile manufacturing. The goal is to automate tasks of fabric handling, cutting, alignment and machine feeding, an especially difficult environment because fabrics deform, wrinkle and demand millimetre precision."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 92; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "2a30e9854ea4f79ef242bc0127292188a98794b830d53c5f063652a87efa3380"
+}

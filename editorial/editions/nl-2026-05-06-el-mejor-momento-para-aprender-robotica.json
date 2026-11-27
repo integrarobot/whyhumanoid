@@ -1,0 +1,82 @@
+{
+  "edition_id": "nl-2026-05-06-el-mejor-momento-para-aprender-robotica",
+  "source_url": "https://www.integrarobot.com/p/el-mejor-momento-para-aprender-robotica",
+  "published_on": "2026-05-06",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The best time to learn robotics",
+  "subtitle": "There are so many opportunities that there will be no shortage of work for anyone who knows about robotics.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/5a765aac-d0f9-44f7-afd8-ba4c8eee22b2_1686x1524.png)\n\nI find it incredible how much is happening in **robotics** and how little we are moving in Spain and Latam to take advantage of it. It's as if we were lulled by the AI boom and unable to imagine that the wave to come is even bigger.\n\nBut this can change if we start studying how this new **Physical AI** sector is developing and get to work on one of the many opportunities appearing in our path.\n\nFor example, in recent days two reports have been spreading like wildfire on social networks, talking about the opportunity of working as part of the **value chain** that creates the components that will be needed to manufacture **humanoid robots**.\n\nIt turns out that Elon Musk has said that **actuators** represent the biggest cost in manufacturing **Optimus**, so consultants and investors have rushed to research the matter, and they tell us there is a gigantic opportunity in becoming suppliers in the supply chain for humanoid robot manufacturing.\n\nThis is how [McKinsey](https://www.mckinsey.com/industries/industrials/our-insights/turning-humanoid-supply-chain-constraints-into-billion-dollar-wins) explains it:\n\n> \"*The robotics supply chain is the most underestimated constraint on humanoid scale. But for companies that act now, it represents the most important opportunity of a generation*\".\n\nThey also talk about it in an article by [Citrini Research](https://www.citriniresearch.com/p/thematic-primer-humanoid-robots), which highlights the opportunity of Physical AI in general, but specifically explains how the supply chain, which until now has been devoted to the automotive and defence sectors, has the opportunity to retool to meet the growing demand for technology from robot manufacturers.\n\n---\n\n## The biggest opportunity in robotics is software\n\nBut if the opportunity to work in manufacturing robot components is big, imagine what will happen with **software**, because the key to all this is the level of specialization robots can reach once we give them the intelligence needed to do all kinds of tasks for which there is a need.\n\nFor example, the French startup [SquareMind](https://www.squaremind.com/) has just presented a **robotic arm** specialized in automating skin examinations thanks to **software** they have developed to secure the whole process by scanning the body and tracking every mole, capturing full-body dermoscopy images in minutes. In addition, it ensures that over time there is a record of how those skin spots evolve, which is the key to detecting possible cancer in time.\n\nSwan is the name of this robotic system, which has the following characteristics:\n\n- It discovers new and changing spots between visits.\n- It replaces spot-check examinations with full skin coverage.\n- It creates a time-series record for earlier detection of melanoma.\n- It integrates directly into dermatology clinics.\n\nThe company has just raised 18 million dollars in funding to drive its growth, and it is one of many examples of how robotics transforms entire sectors, in this case healthcare.\n\n---\n\n## Figure and 1X accelerating the manufacture of their robots\n\nIt seems that in the USA they got competitive on seeing that Chinese manufacturers were giving a lot of data about their robot sales, since companies such as **Unitree** and **Agibot** are preparing their IPOs. So **Figure** and **1X** have also set out to tell us how their work to scale robot manufacturing is progressing.\n\nThis is good news, because those of us who want to be an active part of this sector are in great need of data on how production is evolving in order to know when these machines will reach the market.\n\n- The [manufacture](https://www.1x.tech/manufacturing) of **1X**'s **NEO**, made in America. It leverages the interest the USA is showing in reindustrializing its economy. They won't find it easy, precisely because of dependence on Chinese component manufacturers. But just by trying they will surely achieve a lot of things; in fact, what we are seeing with AI datacenter infrastructure we will surely end up seeing with factories for robot components too. But anyway, here we were supposed to talk about NEO, and the good news is that it is selling like hot cakes: [10,000 orders](https://x.com/BerntBornich/status/2049857137250304478) in the first 5 days of the pre-sale.\n- And now let's move on to **Figure**, because the manufacturing figures it has published are very promising: in the last 120 days it scaled manufacturing 24-fold: from 1 robot/day to **1 robot/hour**, now manufacturing 55 humanoid robots a week. [Brett Adcok](https://x.com/adcock_brett/status/2049514372264055116) said so, and he has also shown a video of how this robot manufacturing is being carried out and has even given an interview almost two hours long where you can see much of what the company is doing to meet the demand it is receiving from its first customers.\n\nSo I can only say one more thing: the game has begun and it is time to take action. That is why I am launching the **robot pioneers community**, where I want to bring together those who want to be protagonists of this great opportunity with the companies that need robots right now to solve their staffing problems.\n\nMany companies are writing to me because they want to **integrate robots** into their operations, but I can't help them all; I need to create that meeting point between integrators and companies, and that is what I want the **Integrarobot** community to be.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🌐 Meta buys Assured Robot Intelligence, a startup focused on AI models for humanoid robots.",
+        "body_markdown": "🌐 [Meta](https://www.bloomberg.com/news/articles/2026-05-01/meta-acquires-assured-robot-intelligence-to-help-build-humanoid-technology) buys **Assured Robot Intelligence**, a startup focused on AI models for humanoid robots. The team will be integrated into Meta Superintelligence Labs, reinforcing the idea that big tech companies no longer see robotics as a distant category, but as a new frontier for bringing their models into the physical world."
+      },
+      {
+        "position": 2,
+        "headline": "🛠️ Tnkr wants to reduce one of the most common barriers to getting started in robotics: not knowing which parts to use, in what order to assemble them or with which software sta…",
+        "body_markdown": "🛠️ [Tnkr](http://tnkr.ai/explore) wants to reduce one of the most common barriers to getting started in robotics: not knowing which parts to use, in what order to assemble them or with which software stack to work. The platform brings together open source robotics projects with CAD, firmware and step-by-step guides, becoming a kind of practical GitHub for building real robots."
+      },
+      {
+        "position": 3,
+        "headline": "✋ Eka Robotics presents its Vision-Force-Action (VFA) model, arguing that forces are the language of the physical world.",
+        "body_markdown": "✋ [Eka Robotics](https://x.com/pulkitology/status/2049174121896894947) presents its **Vision-Force-Action** (VFA) model, arguing that forces are the language of the physical world. The signal is important because the next generation of robots will not only have to see and decide, but also feel contact, pressure and resistance in order to manipulate objects safely."
+      },
+      {
+        "position": 4,
+        "headline": "🏛️ Fujitsu launches, together with Carnegie Mellon University, an initiative to research action generation, spatial perception, multi-robot coordination, human-robot collaborati…",
+        "body_markdown": "🏛️ [Fujitsu](https://www.rrhhpress.com/organizaciones/63454-fujitsu-carnegie-mellon-centro-investigacion-ia-fisica) launches, together with **Carnegie Mellon University**, an initiative to research action generation, spatial perception, multi-robot coordination, human-robot collaboration and sim-to-real transfer, to accelerate the arrival of physical AI in sectors such as industry, logistics, construction, infrastructure and healthcare."
+      },
+      {
+        "position": 5,
+        "headline": "🤖 Unitree presents a dual-arm humanoid robot from 4,290 dollars.",
+        "body_markdown": "🤖 [Unitree](https://x.com/UnitreeRobotics/status/2049815158751678794) presents a dual-arm humanoid robot from **4,290 dollars**. The model integrates binocular vision, voice interaction, sensors and high-performance motors in a light, compact format, reinforcing a key trend: robotic hardware that is increasingly accessible for developers, labs and startups."
+      },
+      {
+        "position": 6,
+        "headline": "🧳 Japan Airlines is testing Unitree humanoid robots for ramp tasks at Haneda airport.",
+        "body_markdown": "🧳 [Japan Airlines](https://www.microsiervos.com/archivo/robots/robot-rampero-japon-vuelos.html) is testing **Unitree** humanoid robots for ramp tasks at Haneda airport. The robot can guide containers, help with suitcases, move levers and push cargo, with the aim of automating physically hard jobs at airports with staff shortages and very demanding safety protocols."
+      },
+      {
+        "position": 7,
+        "headline": "🏗️ SoftBank wants to take public Roze AI, a new company that would use autonomous robots to build data centres in the United States.",
+        "body_markdown": "🏗️ [SoftBank](https://techcrunch.com/2026/04/29/softbank-is-creating-a-robotics-company-that-builds-data-centers-and-already-eyeing-a-100b-ipo/) wants to take public **Roze AI**, a new company that would use autonomous robots to build data centres in the United States. Beyond the rumoured valuation of 100 billion dollars, the news shows how robotics is starting to enter AI's physical bottleneck: building the infrastructure that powers the models themselves."
+      },
+      {
+        "position": 8,
+        "headline": "🌍 Nano World Model publishes a minimalist, open source repository for training video world models based on diffusion-forcing.",
+        "body_markdown": "🌍 [Nano World Model](https://github.com/simchowitzlabpublic/nano-world-model) publishes a minimalist, open source repository for training video world models based on diffusion-forcing. It includes checkpoints, evaluation, long rollouts, 3D reconstruction from video and MPC-style planning, a very useful piece for researchers who want to experiment with predictive models of the physical world without setting up all the infrastructure from scratch."
+      },
+      {
+        "position": 9,
+        "headline": "🏭 ABB Robotics launches PoWa, a new family of cobots aimed at demanding industrial tasks.",
+        "body_markdown": "🏭 [ABB Robotics](https://www.therobotreport.com/abb-robotics-launches-powa-cobot-family-targeting-industrial-tasks) launches PoWa, a new family of **cobots** aimed at demanding industrial tasks. With payloads of 7 to 30 kg, speeds of up to 5.8 m/s and plug-and-play deployment, ABB is trying to close the gap between the easy-to-install cobot and the high-performance industrial robot."
+      },
+      {
+        "position": 10,
+        "headline": "🦾 Tutor Intelligence presents Data Factory 1, a fleet of 100 Sonny robots devoted to generating real data to train robot models.",
+        "body_markdown": "🦾 [Tutor Intelligence](https://tutorintelligence.com/blog/building-a-100-robot-data-factory-toward-factory-ready-ai?utm_source=substack&utm_medium=email) presents Data Factory 1, a fleet of 100 Sonny robots devoted to generating real data to train robot models. The key idea is to create an industrial improvement cycle: teleoperators teach and correct tasks, the robots produce data at scale, and that data trains increasingly capable policies for factories and warehouses."
+      },
+      {
+        "position": 11,
+        "headline": "🐶 Familiar Machines & Magic is the new startup of Colin Angle, co-founder of iRobot, the creators of the Roomba robot vacuum.",
+        "body_markdown": "🐶 [Familiar Machines & Magic](https://www.familiarmachines.com/) is the new startup of Colin Angle, co-founder of **iRobot**, the creators of the Roomba robot vacuum. The first product launched by the company is a furry quadruped robot they call \"Familiar\". The robot cannot climb stairs or grasp objects, and its communication with the user is non-verbal: it meows, purrs and expresses emotions through its body and face."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 90; 11 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "0d872d9dea65e28f4aac5b9ee83feeeec34f059be7cd4246eaaaf8fbd73e2f56"
+}

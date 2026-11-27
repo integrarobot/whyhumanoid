@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-02-13-las-demos-de-los-robots-curso-robots",
+  "source_url": "https://www.integrarobot.com/p/las-demos-de-los-robots-curso-robots",
+  "published_on": "2026-02-13",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robot demos - Humanoid Robots Course",
+  "subtitle": "How real are the robot demonstrations manufacturers make? In this class we review it in detail and share some big news.",
+  "body_markdown": "> Note: I am launching the Pioneros Robots group on **Linkedin**. If you haven't received the invitation yet, you can join [here](https://www.linkedin.com/groups/17265000/).\n\nThe current state of **humanoid robot demonstrations** reflects a moment of transition, from technological spectacle toward real validation in productive environments.\n\nDemos are still an important tool for robot manufacturers to attract attention, investment and talent. However, it is important to notice in these presentations that robots also fail, which is not a minor detail but a sign that in many cases we are still in a pre-industrial phase, where performance depends heavily on the controlled environment and prior preparation.\n\nThe underlying problem is the distribution of tasks. Current learning systems work reasonably well when the scenario is bounded: a tidy table, objects in predictable positions, controlled conditions. But when the environment is widened, variability increases, situations not seen before appear and the error rate grows. Demos, in many cases, are still optimized to show the best possible case, not statistical robustness.\n\nTherefore we should establish more demanding standards for evaluating the progress of robotics. First, greater transparency: showing the code and models that govern the robot's behaviour. Second, diversity of scenarios: avoiding tests in excessively simplified environments. Third, making failures visible as part of the process of technological maturation. And fourth, direct comparison with the best available state of the art\n\nA relevant element is the progressive shift toward logistics as a testing ground. This is no accident, since logistics offers repetitive tasks, clear performance metrics and semi-structured environments. It is a logical intermediate step before aspiring to total versatility in domestic or urban environments.\n\nSo the current state of demonstrations shows rapid progress in perception, manipulation and locomotion, but is still far from robust general autonomy. Demos are no longer simple technical tests; they are strategic instruments for the companies that make them. The question is not whether the robot can perform a task once in front of a camera, but how many times it can repeat it without human intervention under variable conditions. That is where the leap from demonstration to mass deployment will really be measured.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 66; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

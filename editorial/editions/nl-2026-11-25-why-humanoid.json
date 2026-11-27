@@ -1,0 +1,107 @@
+{
+  "edition_id": "nl-2026-11-25-why-humanoid",
+  "source_url": "https://www.integrarobot.com/p/why-humanoid",
+  "published_on": "2026-11-25",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Why Humanoid?",
+  "subtitle": "Let me introduce my new project within Integrarobot",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/459249fd-0ff4-4923-8964-ce3965112239_2938x1604.png)\n\nToday I'll tell you what I've been working on over the last week, because I think it may significantly change the work I have done over the last two years with Integrarobot.\n\nUntil now everything I've done has been outreach about the humanoid opportunity. I have also tried to create the community of humanoid robot pioneers, but I've had to pause it until I find a better way to scale, which I suppose will depend a lot on having a larger audience so that a small part of it decides to get more involved in the project. So, since I had been wanting for some time to create a more scalable service, I've launched [Why Humanoid?](https://whyhumanoid.com/), which I hope to turn into the world's reference source of information on humanoid robots.\n\nYes, it sounds ambitious, and I assure you that when I started with Integrarobot I couldn't have imagined creating something like this, but now, thanks to the power of **AI Agents**, I've realized that the only limit is my imagination.\n\nBecause what you can currently see if you visit **Why Humanoid?** is the result of 5 days of work. Admittedly, fed by the two years I've spent compiling information about this Physical AI sector.\n\nSo what I want to do today is tell you my plans for this project, through which I hope to contribute everything in my power so that more and more professionals and companies can take advantage of the great opportunity humanoid robots are going to offer in the coming decades.\n\n1. The first thing is what you see now: a kind of **database** with a lot of information about robots and their deployments in industry, as well as components, software, datasets, benchmarks, integrators, investments, … In short, everything or almost everything that currently makes up the humanoid robot industry.\n2. The second is who this is aimed at, and well, here I have to explain my vision of the future, because the target audience for this content is not people but **Agents**, since I believe that soon they will be the ones we ask to help us make decisions related to robots, and that is where they will need the knowledge I am generating here.\n3. The third is what you can't see: the business model. And this is where the experience of two years working with Integrarobot is bringing me the most value, because what has been coming my way has been, on the one hand, companies that want to integrate robots and, on the other, industries that want to diversify their business by working in this sector. And this is what I offer through **personalized reports**.\n4. And the fourth is what I hope will be the most important business in the long term: access to the data, especially for the Agents entrusted with the job of creating a robot integration or industrial diversification plan. Because these Agents could look for the info by themselves, but this would cost much more than a subscription to all the content I offer. So if those Agents are really intelligent, I hope they choose **Why Humanoid?** ;)\n\nThat said, let me tell you how I'm building this project, and I do so because I would love you to give me your opinion and tell me how I could improve it.\n\n1. I'm building it all with **ChatGPT** (Codex) and **Claude** (Code). The former coordinates and the latter executes. The two understand each other quite well, and it's incredible to see them work autonomously. Well, I've had to contribute a bit, because what I've done is create a folder on my computer with Karpathy's **LLM Wiki** to serve as the memory for the whole project and thus make all the agents' work easier. Also, if I run out of credits I sometimes turn to Grok Bot or Gemini to help me generate more content that the others then add to the database.\n2. The content is currently in a Google spreadsheet, which is what I started this robotics sector data collection project with. And the application is hosted on Github. I don't know whether all this is the best option when we come to scale, but it's what ChatGPT and Claude decided between them. So for now I'm relaxed, because I know that if we need to migrate to any other infrastructure they'll be able to do it without problems. Some developers surely have a different opinion here, but in my case that's what comes of being an AI fanatic.\n3. Not everything always goes well; that's what comes of working with something so new, but in the end things get fixed. As long as the token budget allows it, of course, because this week I've been on this project is the first time it has systematically exhausted all the tokens of all the AIs I subscribe to; in fact, I've had to move up to higher tiers, so I'd better start billing with this or I'll go broke :)\n\nAnd this is the story of how I'm building [whyhumanoid.com](http://whyhumanoid.com). What else can I tell you? Oh yes, it would be great if you shared it with your friends. Thank you very much, and see you next week.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💸 Humyn Labs has announced a 47 million dollar Series A, with 26 million in equity led by Accel and 21 million in debt led by Lighthouse Canton.",
+        "body_markdown": "💸 [Humyn Labs](https://humynlabs.ai/blog/humyn-labs-raises-usd-47m-in-series-a) has announced a **47 million dollar Series A**, with 26 million in equity led by Accel and 21 million in debt led by Lighthouse Canton. The company records how people work in factories, warehouses, farms and homes, and turns those observations into labelled data for training robots."
+      },
+      {
+        "position": 2,
+        "headline": "🦾 HIRO Industries is taking reservations for Origin, a stationary dual-arm robot designed to work at existing workstations.",
+        "body_markdown": "🦾 [HIRO Industries](https://hiroindustries.com/reserve/) is taking reservations for **Origin**, a stationary dual-arm robot designed to work at existing workstations. The complete unit costs **9,950 dollars**, with a refundable deposit of 1,450 dollars. Delivery is estimated for spring 2027, initially in the United States."
+      },
+      {
+        "position": 3,
+        "headline": "🗂️ AXIS Robotics brings together 11,199 tasks in Skills Atlas, a catalogue that makes it possible to filter by robot and by skills such as grasping or pushing.",
+        "body_markdown": "🗂️ [AXIS Robotics](https://skills.axisrobotics.ai/) brings together **11,199 tasks** in Skills Atlas, a catalogue that makes it possible to filter by robot and by skills such as grasping or pushing. The atlas links to **14.6 TB of public simulation data** in LeRobot format and allows task lists to be exported as CSV."
+      },
+      {
+        "position": 4,
+        "headline": "🏭 Boston Dynamics describes how its customers connect Spot and Orbit with sensors and factory systems.",
+        "body_markdown": "🏭 [Boston Dynamics](https://bostondynamics.com/blog/breaking-down-data-silos-in-the-physical-world/) describes how its customers connect **Spot and Orbit** with sensors and factory systems. In one facility, a humidity alert triggers an inspection to photograph the affected equipment. In another, an agent gathers data from Spot, industrial PLCs and mobile robots to generate daily reports per piece of equipment."
+      },
+      {
+        "position": 5,
+        "headline": "🛠️ Viam offers a platform for AI agents to program and operate robots with components from different manufacturers.",
+        "body_markdown": "🛠️ [Viam](https://www.viam.com/) offers a platform for AI agents to program and operate robots with components from different manufacturers. Its open source server runs on the device itself and applies **motion limits**. The platform makes it possible to test a skill in simulation, install it on a robot and then extend it to the rest of the fleet."
+      },
+      {
+        "position": 6,
+        "headline": "🌱 John Deere has acquired Orchard AI, the company that develops FruitScope for high-value crops.",
+        "body_markdown": "🌱 [John Deere](https://www.deere.com/en-us/john-deere-news/john-deere-acquires-orchard-ai) has acquired **Orchard AI**, the company that develops FruitScope for high-value crops. Its system captures images in the field and turns them into **plant-by-plant** information that farmers can consult to make management decisions. Deere plans to combine that information with its precision agriculture technology."
+      },
+      {
+        "position": 7,
+        "headline": "🐈 Felis is a cat-inspired quadruped design, with two motors in the articulated spine and one per leg.",
+        "body_markdown": "🐈 [Felis](https://frank-zy-dou.github.io/blog/felis/index.html) is a cat-inspired quadruped design, with two motors in the articulated spine and one per leg. In **simulation**, the robot uses that spine to twist in mid-air and land on its feet. The team also shows how it walks, turns, jumps and dances with **six motors**."
+      },
+      {
+        "position": 8,
+        "headline": "💰 Simplexity Robotics has raised 100 million dollars in a pre-Series A round led by Ant Group, as its co-founder Wang Kai explained to Bloomberg.",
+        "body_markdown": "💰 [Simplexity Robotics](https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/) has raised **100 million dollars** in a pre-Series A round led by Ant Group, as its co-founder Wang Kai explained to Bloomberg. The deal valued the Chinese company at **1.6 billion dollars** and included previous investors such as Alibaba, Tencent, HongShan Capital and Lanchi Ventures."
+      },
+      {
+        "position": 9,
+        "headline": "📦 X Square Robot presents WALL-OSS-1.0, a vision, language and action model.",
+        "body_markdown": "📦 [X Square Robot](https://x2robot.com/blogs/wall-oss-1-en/) presents **WALL-OSS-1.0**, a vision, language and action model. The company reports **55.1% success across 312 tasks** with physical robots, without task-specific fine-tuning. In a separate case, sorting packages on a production line, it did adapt the model with about 10 hours of task data."
+      },
+      {
+        "position": 10,
+        "headline": "🎵 AHEADance makes a Unitree G1 dance from the sound it receives live through a microphone or audio file.",
+        "body_markdown": "🎵 [AHEADance](https://ihcr.github.io/AHEADance/) makes a **Unitree G1** dance from the sound it receives live through a microphone or audio file. The model generates movements for its 29 joints **30 times per second**, and the team demonstrates it on the physical robot with eight songs in seven styles."
+      },
+      {
+        "position": 11,
+        "headline": "✋ Mahdi has built a robotic hand with forearm for less than 300 dollars in parts, according to Hackaday.",
+        "body_markdown": "✋ [Mahdi](https://hackaday.com/2026/11/21/building-a-robotic-hand-on-a-budget/) has built a robotic hand with forearm for **less than 300 dollars in parts**, according to Hackaday. The prototype has **18 degrees of freedom**, a 3D-printed skeleton and servomotors that move the fingers through steel tendons."
+      },
+      {
+        "position": 12,
+        "headline": "🔩 Play2Perfect first trains a robotic hand in simulation to manipulate varied objects with its fingers.",
+        "body_markdown": "🔩 [Play2Perfect](https://play2perfect.github.io/) first trains a robotic hand in simulation to manipulate varied objects with its fingers. It then specializes it in **precision assembly** tasks. The team shows the transfer to real hardware without retraining there, with examples of threading and inserting tight-fitting parts."
+      },
+      {
+        "position": 13,
+        "headline": "⚙️ coprod has raised 6 million dollars in a pre-seed round led by Founderful and PROTOTYPE.",
+        "body_markdown": "⚙️ [coprod](https://coprod.co/blog/pre-seed-round) has raised **6 million dollars** in a pre-seed round led by Founderful and PROTOTYPE. The Swiss company develops compatible motion, sensing, power and battery modules. It will use the funds to launch its first components and open a prototyping centre in Lausanne."
+      },
+      {
+        "position": 14,
+        "headline": "📦 Fraunhofer IML has created evoBOT, a logistics prototype that balances on two wheels and uses two gripping arms to pick up, carry and deliver loads.",
+        "body_markdown": "📦 [Fraunhofer IML](https://www.iml.fraunhofer.de/en/projects/2020/evobot-autonomous-transport-robot-logistics.html) has created **evoBOT**, a logistics prototype that balances on two wheels and uses two gripping arms to pick up, carry and deliver loads. The institute uses a digital twin to test how it responds to different surfaces and loads. Its first trial at Munich airport dates back to **June 2023**."
+      },
+      {
+        "position": 15,
+        "headline": "📊 Playground analyzes five robotic control benchmarks.",
+        "body_markdown": "📊 [Playground](https://www.withplayground.ai/research/robot-frontier-accelerating) analyzes five robotic control benchmarks. In three months, the proportion of tasks in which the best system reached at least 80% success rose from **25% to 43%**. The improvement came from simulation. In the three benchmarks with physical robots in that series, the proportion stayed at **31%**."
+      },
+      {
+        "position": 16,
+        "headline": "🧠 CA3 tested in simulation whether an arm with MolmoAct2 could learn from several users without losing previous skills.",
+        "body_markdown": "🧠 [CA3](https://ca3.si/case_robot) tested in simulation whether an arm with **MolmoAct2** could learn from several users without losing previous skills. In a single run, the system reached **90% success** on the new tasks and retained the previous ten. It also filtered out twelve tampered demonstrations and removed what it had learned from one user at that user's request."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 121; 16 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "5bf5aed82783572129223fe78a995c762dadb68dc62c57c44bf60eeed10373be"
+}

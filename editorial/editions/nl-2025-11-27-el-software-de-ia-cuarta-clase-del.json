@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2025-11-27-el-software-de-ia-cuarta-clase-del",
+  "source_url": "https://www.integrarobot.com/p/el-software-de-ia-cuarta-clase-del",
+  "published_on": "2025-11-27",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "AI software. Humanoid Robots Course",
+  "subtitle": "VLAs and World Foundation Models are the missing pieces for having fully functional robots working in the real world.",
+  "body_markdown": "**Artificial Intelligence software** for humanoid robots is one of the great limiting factors at the moment for us to have fully functional machines able to perform most human functions.\n\nBut fortunately there are more and more initiatives aimed at meeting this need. Many of them involve tech giants such as **NVIDIA** and **Google**. Many startups are also working to solve it.\n\nIn this class you will discover the main initiatives for developing vision-language-action models and world foundation models, as well as the earlier software for controlling robots and the sensors that allow them to interact with their environment.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 48; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

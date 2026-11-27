@@ -1,0 +1,92 @@
+{
+  "edition_id": "nl-2026-09-09-toda-empresa-industrial-se-convertira",
+  "source_url": "https://www.integrarobot.com/p/toda-empresa-industrial-se-convertira",
+  "published_on": "2026-09-09",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Every industrial company will become a robotics company",
+  "subtitle": "It would be very curious if the presentation of GPT-6 were the ChatGPT moment of robotics we had been waiting for.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/5a24cda4-1c13-424c-9ef0-55562ffee928_1718x978.png)\n\nSince I started working with **AI Agents**, I have been thinking about how to apply this technology in robotics, and I have found mainly three useful avenues:\n\n1. Robotics engineers use AI to improve their **productivity** 🧠. Like any other professional, they can use AI Agents to automate tasks, analyze data, design experiments or program robot software.\n2. AI Agents can be used to simulate how robots work when you ask them to access and configure one of the many robot **simulators** available online or for download 🌍. Example: NVIDIA's MuJoCo.\n3. What I didn't expect is that we would so soon see AI Agents directly controlling robots 🦾. I sensed it, but I didn't imagine it would be so fast, because this is what has just happened with the presentation of **GPT-6 Astra**.\n\nBecause this news may greatly condition the future of robotics, since a \"simple\" LLM has started to show high-level capabilities in **spatial reasoning**. At least according to this [ranking](https://spicylemonade.github.io/spatialbench/), OpenAI's GPT Astra AI model outperforms people on complex 3D and 2D spatial tasks, which has important implications for robotics, basically because it means that AI can now understand the situation of a physical scene and, thanks to its agentic capability, transmit to the robot the instructions to perform an action.\n\nNow, we shouldn't break out the champagne just yet, nor dismiss all the work Physical AI labs are doing developing VLAs and [WAMs](https://www.integrarobot.com/p/la-ia-fisica-esta-volando-de-los?utm_source=publication-search), because it must be made clear that we are at a very preliminary stage, as this [experiment](https://openai.robocurve.org/gpt-6-astra/) shows. But it must also be clear that this shows promise, and it could turn out that the famous ChatGPT moment of robotics is led by ChatGPT itself, but 3 versions later.\n\nYou know what happens: if we contrast this situation with everything happening with AI in general, the path being traced seems clear and looks more like a convergence toward the concept of **Physical AI**, where the distance between the digital and the physical keeps shrinking. If so, it is understandable that [OpenAI](https://www.humanoidsdaily.com/news/sam-altman-confirms-openai-will-definitely-do-a-humanoid) itself is working on developing its own humanoid robot, because once the intelligence part is solved, the robot's body will be a lesser problem.\n\nSo when the LLMs made by the world's most important AI labs, such as OpenAI, Anthropic and Google, without forgetting whatever SpaceX wants to do by putting Grok into Tesla's Optimus, as well as all the Chinese companies starting with Unitree's collaboration with DeepSeek, what we find is that Physical AI becomes an extension of Generative AI, and this is where we must recall Jensen Huang's phrase: ***everything that moves will be autonomous***.\n\nWhat's more, to this prediction we must add a more recent one, because when NVIDIA's CEO states that ***every industrial company will become a robotics company***, what he is showing us is the opportunity for companies that have the capacity to manufacture physical things to use AI to become robotics companies.\n\nTo understand it, the best thing is to give an example, which in this case is about excavators 🚜\n\n- **Caterpillar** and **FieldAI** [partner](https://www.caterpillar.com/en/news/corporate-press-releases/h/caterpillar-and-fieldai-advance-ai-powered-industrial-innovation.html) to drive physical AI, autonomy and robotics, so that construction sites and factories operate more safely and efficiently in the face of the growing labour shortage and the ever greater productivity demands industries face. To this end they will leverage robotics, digital twins and other technologies provided by **NVIDIA**.\n- **Gravis Robotics** [raises](https://www.gravisrobotics.com/series-a) 200 million dollars from **Softbank** for construction automation, with large-scale deployment of AI-powered autonomous heavy machinery on construction sites around the world. The AI takes physical information about the terrain and integrates it into the machine's telemetry, responding to underground forces and soil mechanics at microsecond speeds.\n\nAnd to finish, I share an idea underlying everything we have discussed in this article: data centres, which are now the main engine of construction development, at least in the United States, and which have a great growth vector in robotics. Gravis Robotics makes this clear: \"The expansion of the energy networks and data centres needed for the AI economy is generating unprecedented demand\", and it is also behind OpenAI's decision to get into robotics, since it said some time ago that a good place to test humanoid robots was data centre construction.\n\nBy the way, **Softbank** is an investor in both **OpenAI** and **Gravis**, so we see the circle closing, and at the centre of all this is an unstoppable movement that began with the presentation of GPT-3.5 on 22 November 2022 and now takes a new leap with the appearance of **GPT-6**, a model Jensen Huang has said is **AGI**.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🖥️ Nscale and Figure sign a multi-year alliance that includes an initial commitment of 3.5 billion dollars in compute, with the intention of exceeding 6 billion and potential ca…",
+        "body_markdown": "🖥️ [Nscale and Figure](https://www.nscale.com/press-releases/nscale-and-figure) sign a multi-year alliance that includes an initial commitment of **3.5 billion dollars in compute**, with the intention of exceeding 6 billion and potential capacity for up to 100,000 NVIDIA Vera Rubin GPUs. Nscale will also become a shareholder and preferred supplier of Figure; the first GPUs are expected in the second half of 2027, so the announced scale is in the future, but it reveals that training humanoids is starting to be treated as an infrastructure problem comparable to that of the large AI models."
+      },
+      {
+        "position": 2,
+        "headline": "🏭 Fujitsu, FANUC, Yaskawa and Kawasaki are exploring an open, standardized platform connecting business applications, AI models and robots from different manufacturers, relying…",
+        "body_markdown": "🏭 [Fujitsu, FANUC, Yaskawa and Kawasaki](https://www.laecuaciondigital.com/empresas/acuerdos/fujitsu-fabricantes-plataforma-ia-fisica/) are exploring an **open, standardized platform** connecting business applications, AI models and robots from different manufacturers, relying on NVIDIA Cosmos, Omniverse, Isaac and Newton. The goal covers factories, logistics, retail and healthcare, but there is still no timeline, investment or specific pilots: the opportunity lies in creating the common layer that avoids rebuilding every robotic integration from scratch."
+      },
+      {
+        "position": 3,
+        "headline": "🇪🇺 NEURA Robotics and SECO partner to design and manufacture in Europe computing modules with Qualcomm Dragonwing for NEURA's cognitive robots, including the 4NE1 humanoid.",
+        "body_markdown": "🇪🇺 [NEURA Robotics and SECO](https://www.seco.com/es/news/detalles/neura-robotics-y-seco-unen-fuerzas-para-escalar-la-physical-ai-desde-europa) partner to design and manufacture in Europe computing modules with Qualcomm Dragonwing for NEURA's cognitive robots, including the **4NE1** humanoid. They are also preparing a NEURA Gym in Italy and the collection of real industrial data; it is a bet on controlling the electronics, the edge and the learning around the robot, although the announcement does not yet provide production volumes or operational results."
+      },
+      {
+        "position": 4,
+        "headline": "💰 XDOF is negotiating, according to TechCrunch, a Series B led by 8VC at a valuation of nearly 1.2 billion dollars, just three months after emerging from stealth mode.",
+        "body_markdown": "💰 [XDOF](https://techcrunch.com/2026/09/04/xdof-just-three-months-out-of-stealth-is-in-talks-for-a-series-b-at-a-1-2b-valuation/) is negotiating, according to TechCrunch, a Series B led by 8VC at a valuation of nearly **1.2 billion dollars**, just three months after emerging from stealth mode. The deal is not closed, but the nearly 50 million dollars of annualized revenue and 20 customers reported turn robotic data (teleoperation, egocentric capture, cleaning and annotation) into a business category of its own, not just a by-product of the robot manufacturer."
+      },
+      {
+        "position": 5,
+        "headline": "🤖 LG and NVIDIA are preparing a biped based on Jetson Thor, Isaac GR00T and Halos for Robotics to be presented in the first quarter of 2027.",
+        "body_markdown": "🤖 [LG and NVIDIA](https://www.prnewswire.com/news-releases/lg-to-unveil-its-next-gen-humanoid-robot-built-on-nvidia-isaac-gr00t-302851652.html) are preparing a biped based on **Jetson Thor, Isaac GR00T and Halos for Robotics** to be presented in the first quarter of 2027. More concrete is the preliminary phase: LG plans to validate this year its wheeled CLOiD robot on a washing machine line in Tennessee and feed that data into its own foundation model; the value lies not only in showing another humanoid, but in closing the loop between factory, data, training and verification."
+      },
+      {
+        "position": 6,
+        "headline": "🧠 Dyna Robotics explains the infrastructure with which it trained Dyna-2 on more than one million hours of egocentric video and some 43 million episodes.",
+        "body_markdown": "🧠 [Dyna Robotics](https://www.dyna.co/research/dyna-2-infrastructure) explains the infrastructure with which it trained Dyna-2 on more than **one million hours of egocentric video** and some 43 million episodes. The company claims to have raised ingestion from 14,000 to 440,000 hours a week, reduced the start-up of the first batch from about 48 hours to less than a minute and kept GPUs at 98% utilization: a sign that, at large scale, the bottleneck is not just obtaining data and GPUs, but being able to store, curate and serve robotic experiences repeatably."
+      },
+      {
+        "position": 7,
+        "headline": "📹 RoboTok turns human internet videos into 3D hand trajectories relative to the torso and retrieves demonstrations with similar movements to train dexterous manipulation.",
+        "body_markdown": "📹 [RoboTok](https://rice-robotpi-lab.github.io/RoboTok/) turns human internet videos into 3D hand trajectories relative to the torso and retrieves demonstrations with similar movements to train dexterous manipulation. The work by Rice University and NVIDIA outperforms its retrieval baselines on a corpus of 100,000 clips and improves policies in simulation, but real-robot results are still pending; it is a promising way to take advantage of abundant video without confusing visual similarity with physically executable action."
+      },
+      {
+        "position": 8,
+        "headline": "🖐️ TwinDEX pairs a portable exoskeleton and a three-finger, nine-degree-of-freedom robotic hand so that demonstration and execution share kinematics, contact and sensing.",
+        "body_markdown": "🖐️ [TwinDEX](https://www.prnewswire.com/news-releases/twindex-introduces-a-scalable-path-from-robot-free-data-collection-to-real-world-dexterous-manipulation-302867559.html) pairs a portable exoskeleton and a **three-finger, nine-degree-of-freedom** robotic hand so that demonstration and execution share kinematics, contact and sensing. X Square Robot claims to multiply effective teleoperation throughput by 5.3 and to complete autonomously a 24-step chemistry practical using only a few hundred robot-free demonstrations; the advance attacks the cost of dexterous data, although the figures come from the company itself and need independent validation."
+      },
+      {
+        "position": 9,
+        "headline": "🧭 Foxglove shows agentic workflows for searching scenes in robot logs, modifying visualizations through natural language, comparing runs and connecting anomaly detection with Ji…",
+        "body_markdown": "🧭 [Foxglove](https://www.youtube.com/watch?v=UkTaIwLTT9A) shows agentic workflows for searching scenes in robot logs, modifying visualizations through natural language, comparing runs and connecting anomaly detection with Jira via MCP. The platform also works directly on cloud data and offers remote access and fleet dashboards; the important idea is that agents are starting to become a **research and operations interface**, while the demonstration itself acknowledges that deciding which anomaly matters and automating the process without an interface remain open problems."
+      },
+      {
+        "position": 10,
+        "headline": "🏗️ 1872 has opened Factory One in Cincinnati to automate the manufacture of steel frames for data centres and modular reactors, with 15 million dollars of seed funding and the g…",
+        "body_markdown": "🏗️ [1872](https://arstechnica.com/ai/2026/08/former-spacex-engineers-are-building-a-robotic-factory-for-making-steel-parts/) has opened Factory One in Cincinnati to automate the manufacture of steel frames for data centres and modular reactors, with 15 million dollars of seed funding and the goal of automating most of the process in 2027. Its founders, former SpaceX engineers, start from a manual workflow and integrate robotic welding, planning and orchestration; their willingness to stop at **80% autonomy** if it is economically sufficient is a useful lesson against the obsession with automating everything."
+      },
+      {
+        "position": 11,
+        "headline": "🛡️ RoboStore and Robo Inc.",
+        "body_markdown": "🛡️ [RoboStore and Robo Inc.](https://arstechnica.com/gadgets/2026/08/us-distributor-of-chinas-most-popular-humanoid-robots-pivots-after-us-ban/) move from distributing Unitree robots to developing and manufacturing equipment in the United States following FCC restrictions on new foreign models. The company plans a 66,000 square foot plant on Long Island for 2027 and specific robots for healthcare, security and education; geopolitics is turning **compliance, local manufacturing and support** into product attributes as decisive as technical capability."
+      },
+      {
+        "position": 12,
+        "headline": "🛰️ Northrop Grumman has put into orbit its Mission Robotic Vehicle and three MEP propulsion modules to extend the life of geostationary satellites.",
+        "body_markdown": "🛰️ [Northrop Grumman](https://techcrunch.com/2026/08/12/northrops-robot-space-mechanic-is-a-new-way-to-keep-satellites-at-work-longer/) has put into orbit its Mission Robotic Vehicle and three MEP propulsion modules to extend the life of geostationary satellites. The key manoeuvre is scheduled for 2027, when the MRV's two robotic arms attach a module to the Optus D3 satellite and can add about six years of service to it: space robotics oriented toward **maintenance as a service**, not just building and replacing machines."
+      },
+      {
+        "position": 13,
+        "headline": "📷 GoPro and Starman Optical sign a merger agreement to recapitalize GoPro and incorporate optical transceivers made in the United States, with closing expected before the end of…",
+        "body_markdown": "📷 [GoPro and Starman Optical](https://investor.gopro.com/press-releases/press-release-details/2026/GOPRO-ENTERS-INTO-DEFINITIVE-AGREEMENT-TO-MERGE-WITH-STARMAN-OPTICAL-INC-/default.aspx) sign a merger agreement to recapitalize GoPro and incorporate optical transceivers made in the United States, with closing expected before the end of 2026 and subject to approvals. The combined company wants to bring its imaging and photonics intellectual property to data centres, defence, aerospace and robotics; for now it is a **strategic intention**, not a new, already demonstrated robotics line."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 108; 13 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "697370911b064d7523575594ee8a080a33cd6f16bcb88de6acf3ae4f8a9472b9"
+}

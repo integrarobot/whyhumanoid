@@ -1,0 +1,72 @@
+{
+  "edition_id": "nl-2026-02-04-openclaw-quiere-entrar-en-los-robots",
+  "source_url": "https://www.integrarobot.com/p/openclaw-quiere-entrar-en-los-robots",
+  "published_on": "2026-02-04",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "OpenClaw wants to get into robots",
+  "subtitle": "The trendy AI can contribute a lot to improving robots' autonomy",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/43e755c9-04d9-4123-8e6b-ff1ed63bbdb2_2048x1459.png)\n\nIn recent weeks we have been seeing an important advance in AI development, not so much because of the invention of new models or training techniques, but because of the appearance of a new product that solves some of the problems AI **Assistants** have, which mean we cannot yet fully consider them **Agents**.\n\nAs I suppose you know, both ChatGPT and Claude have been gradually incorporating features that bring them closer to this idea of AI that acts with **autonomy**, without us having to give all the instructions about the work it has to do, so that what an agent receives is a goal, and it has the ability to execute it as a whole. For this, the agent must be able to interact with the Internet without our supervision and to execute actions in the software on our own computer.\n\nTo understand it with an example: when we use deep research or create applications in the canvas, what we are doing is stating a goal, not listing a series of tasks, since it is the AI itself that takes care of defining what needs to be done to satisfy the need we have expressed.\n\nBut AI assistants have so far had several problems that [OpenClaw](https://openclaw.ai/), the trendy initiative in the technology world, comes to solve. Namely:\n\n1. **It has persistent memory**. That is, it is able to remember the conversations we have throughout the day and connect them to better understand our needs, so that all those interactions enrich one another. For example, if you discussed a topic some time ago and now come back to it, it does not start from scratch, as with any other chatbot; instead it incorporates the conclusions reached previously.\n2. **It is proactive**. Which means it doesn't wait for you to ask it for things in order to help you; as it gets to know your interests and needs, it is able to propose things that can help you in your day-to-day life or in the work you are doing. This can be done thanks to persistent memory and its ability to connect with the rest of your digital life, which is the next point.\n3. **It can control other software**. If you give it access, it can use the software on your computer or browse the Internet to have the tools it needs to accomplish the goal you have set for it. This is the most controversial part of all this, because of the security problems it entails. But it is also super useful, because it can become a real virtual assistant when it is able to manage your email, calendar, files, … to take many low-value routine tasks off your hands.\n\nIn short, OpenClaw comes to offer us many of the utilities we miss when we use ChatGPT, Claude or Gemini, although as you can imagine it is not the ideal solution either, first because of the security compromise, which means having to be much more careful with what we do, as well as the cost of having an AI working for you all the time, which will affect the licence you use for the AI model the agent runs on.\n\nBut anyway, today we haven't come to talk only about AI; as you can imagine, this may have important implications for robotics, and the reason is simple: [we need intelligent agents to have humanoid robots](https://www.integrarobot.com/p/necesitamos-agentes-inteligentes).\n\nIn other words, to have fully functional robots, some aspects of AI still need to be improved, such as that ability to chain tasks without our having to give them all the instructions. Here reasoning models and **VLAs** have a lot to contribute, but there is still work to be done on **world models**, which allow the robot to anticipate the consequences of its actions once it is performing an action in the real world.\n\nAnd this is where the connection between AI Agents and robotics comes in, because if we manage to get the robot itself to be able to turn to different digital tools to extract the context needed to do a job, it will not be necessary to give it in training all the information about how to do every task it might come to perform.\n\nI sense this is the reason why [Brett Adcock](https://x.com/adcock_brett/status/2018417226895028414), founder of **Figure**, is also getting into the AI agent business. And why Elon Musk has been investing for so long in everything to do with AI, first as an investor in DeepMind, then as a promoter of OpenAI and now as founder of xAI.\n\nIn short, the proactivity that AI applications like OpenClaw can develop will be very useful for having robots with enough autonomy to carry out complete jobs, not just isolated tasks. And this is precisely what [Natalie Yeo](https://x.com/livinoffwater/status/2017827659074703604?s=46) is seeking to achieve as one of the first people to set out to install OpenClaw on a small robot, and later to try it also with a **Unitree** G1 robot.\n\nPerhaps it is still early to put forward the idea that these new AI initiatives will give robots greater autonomy, but there is no doubt that people are willing to try, because if we increasingly feel in need of AI support in the digital sphere, when we take that into the real world the need is even greater.\n\nBy the way, robotics initiatives by AI labs continue to increase. Some time ago we saw that Anthropic was already experimenting with robot training, and now it is [Mistral](https://x.com/inventorOli/status/2018719028462657922), the leader in LLMs in Europe, that has also started working in this sector.\n\n---\n\nToday we have the [Robot Pioneers Community](https://www.integrarobot.com/p/pioneros) meeting, and there is still time to take part. Signing up is easy: become a paid subscriber to the newsletter, and in addition to taking part in the monthly meetings with other robotics enthusiasts, you could take the Humanoid Robots Course and receive the Guide to the state of the art of robotics.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🤖 Fauna presents its humanoid Sprout, designed in New York and assembled in the United States.",
+        "body_markdown": "🤖 [Fauna](https://faunarobotics.com/) presents its humanoid **Sprout**, designed in New York and assembled in the United States. Its goal is to bring modern developer workflows to robotics so that teams can move from idea to prototype to deployment with less friction and more confidence."
+      },
+      {
+        "position": 2,
+        "headline": "💰 Matic raises 60 million dollars in funding to reinvent the Roomba.",
+        "body_markdown": "💰 [Matic](https://maticrobots.com/blog/the-usd60-million-bet-that-what-comes-after-roomba-is-matic) raises 60 million dollars in funding to reinvent the Roomba. And they announce it as the result of installing real robots in real homes and solving real problems. So far the company has sold 6,000 **robot vacuums**, which have cleaned more than 10 million square metres, saving more than 31 years of human time."
+      },
+      {
+        "position": 3,
+        "headline": "💲 RoboCo is a robotics company driven by physical AI that has raised 100 million dollars to expand robotics deployments in companies.",
+        "body_markdown": "💲 [RoboCo](https://finance.yahoo.com/news/robco-raises-100-million-scale-130000452.html) is a robotics company driven by **physical AI** that has raised 100 million dollars to expand robotics deployments in companies. Lightspeed Venture Partners and Lingotto Innovation took part in the round, together with Sequoia Capital, Greenfield Partners, Kindred Capital, Leitmotif and The Friedkin Group."
+      },
+      {
+        "position": 4,
+        "headline": "💸 LimX Dynamics completes a 200 million dollar Series B funding round.",
+        "body_markdown": "💸 [LimX Dynamics](https://medium.com/@limxdynamics/limx-dynamics-secures-200-million-in-series-b-financing-3006b8079901) completes a 200 million dollar Series B funding round. A broad group of prominent investors joined the round, such as Stone Venture, **JD**, Oriental Fortune Capital, CoStone Capital, Shangqi Capital (backed by SAIC Motor), **NIO** Capital and Future Capital."
+      },
+      {
+        "position": 5,
+        "headline": "🌍 NVIDIA continues improving its world models to tackle some of the hardest problems in robotics, autonomous vehicle development and industrial vision AI.",
+        "body_markdown": "🌍 [NVIDIA](https://huggingface.co/blog/nvidia/cosmos-policy-for-robot-control?linkId=100000405010941) continues improving its **world models** to tackle some of the hardest problems in robotics, autonomous vehicle development and industrial vision AI. Cosmos Policy is its latest research on advancing robot control and planning using Cosmos WFM."
+      },
+      {
+        "position": 6,
+        "headline": "🖲️ LingBot-VA, an autoregressive framework that unifies world modelling through video and policy learning, jointly learning future frame prediction and action execution.",
+        "body_markdown": "🖲️ [LingBot-VA](https://technology.robbyant.com/lingbot-va), an autoregressive framework that unifies world modelling through **video** and policy learning, jointly learning future frame prediction and action execution. Its evaluations highlight potential in long-horizon manipulation, data-efficient post-training and robust generalization to new configurations."
+      },
+      {
+        "position": 7,
+        "headline": "🍵 Real2Render2Real is a new development for generating data to train generalist manipulation policies, without dynamic simulation or teleoperation.",
+        "body_markdown": "🍵 [Real2Render2Real](https://real2render2real.com/) is a new development for generating data to train generalist **manipulation** policies, without dynamic simulation or teleoperation. They train modern RGB + proprioception-based imitation learning frameworks and VLA models (Vanilla Diffusion Policy, π 0 -FAST) without requiring any teleoperation data."
+      },
+      {
+        "position": 8,
+        "headline": "🕶️ Telexistence is a company from Japan that is testing a new labour model that could change the world of work.",
+        "body_markdown": "🕶️ [Telexistence](https://tx-inc.com/) is a company from **Japan** that is testing a new labour model that could change the world of work. Using robots, remote workers can restock shelves in Tokyo stores. The company pays a wage of $3.75 an hour to workers in countries with lower costs of living (such as the Philippines)."
+      },
+      {
+        "position": 9,
+        "headline": "And to finish, a couple of articles about training robots through video and teleoperation: first, Jim Fan, NVIDIA's director of robotics, says that 2026 will be the first year i…",
+        "body_markdown": "And to finish, a couple of articles about training robots through video and teleoperation: first, [Jim Fan](https://x.com/DrJimFan/status/2018754323141054786), **NVIDIA**'s director of robotics, says that 2026 will be the first year in which large world models lay real foundations for robotics; and second, [Vincent Liu](https://vincentliu.org/the-robotics-data-pareto-frontier), co-founder of **Mecha**, a robotics startup focused on scaling robot learning from real-world human data, sets out which are the most efficient ways of training robots at the moment."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 63; 9 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "6eda3330e0da5de119ceb2d359d9ad05c5d1b7f35d059e28ce6f92603f196425"
+}

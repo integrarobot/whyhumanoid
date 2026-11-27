@@ -1,0 +1,52 @@
+{
+  "edition_id": "nl-2026-05-20-lo-que-la-demo-de-figure-nos-ensena",
+  "language": "es",
+  "title": "Lo que la demo de Figure nos enseña sobre los robots humanoides",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/9d840b37-f886-48d0-bf24-06505142735a_2048x1603.png)\n\nEste artículo se iba a titular “lo que la demo de 8 horas de **Figure** nos enseña sobre los robots” pero pronto tuve que cambiarlo porque las 8 horas se convirtieron en 24 y posteriormente en una emisión ininterrumpida donde los robots están demostrando su capacidad en la arte de la manipulación de paquetes postales.\n\nEsta especie de Show de Truman robótico tiene mucho que enseñarnos y quién sabe, quizás se acabe convirtiendo en ese momento chatgpt de la robótica, del que se lleva hablando algo más de un año.\n\nPero más allá del hecho en sí, de tener a unos robots ahí trabajando noche y día, creo que vale la pena parar un rato para entender lo que esto supone y cómo puede convertirse en un hito importante para el desarrollo de los robots humanoides.\n\n1. 8 horas era el tiempo inicial previsto para hacer la demo del robot, porque supone equipararlo con una **jornada laboral**, lo cual permite sacar métricas de productividad, pero también está relacionado con la necesidad de supervisión. Si el robot está ahí trabajando hay muchas otras cosas que las personas tendrán que hacer para que la operativa funcione, al menos por el momento.\n2. Lo de compararlo directamente con la productividad humana no estaba previsto inicialmente, pero a medida que Brett Adcock, fundador de Figure, se fue calentando con el éxito que estaba teniendo la retransmisión, decidió hacer el ejercicio de poner a un **trabajador humano** a competir con los robots. En este primer duelo ganó el humano, llamado Aime, pero me atrevo a decir que pronto habrá revancha y con lo rápido que aprenden los robots creo que el marcador se dará la vuelta a su favor.\n3. Aunque los robots llevan ahí más de 100 horas trabajando de forma autónoma, hay gente que no se fía y eso está bien porque permite encontrar fallos, pero también a veces se columpian. Por ejemplo en este caso estaban suponiendo que el robot estaba teleoperado por un movimiento que hacía con la mano para proteger la cabeza cuando se aproximaba demasiado a la estructura metálica de la cinta transportadora.\n4. Mira el vídeo, en momentos determinados los trabajadores de la empresa andan ahí detrás reunidos, con unos cuantos robots a su alrededor y charlando de la forma más distendida. Me encantaría saber de qué están hablando, pero más allá de eso, me pregunto si estas instalaciones donde está la cinta transportadora son de Figure o de un cliente. Lo que está claro es que la [máquina](https://www.savethepostoffice.com/a-tour-of-the-new-usps-package-sorting-machine/) de clasificación de paquetes es real y el trabajo que hace el robot es importante porque actualmente implica que tenga que haber personas haciendo ese trabajo tan tedioso.\n5. Pero más allá de todos esos aspectos anecdóticos, con lo que realmente debemos quedarnos es que estamos presenciando en directo cómo la robótica humanoide intenta cruzar el abismo que hasta ahora ha separado las demos de la operación en el mundo real. Y eso es lo que todos estamos esperando, casos reales, donde se pueda evaluar la calidad de la tecnología. No se a ti pero esto a mi me quita muchas dudas de la cabeza.\n6. En todo caso, conviene no confundir esta retransmisión espectacular con una integración industrial cerrada. Todavía nos faltan datos, como por ejemplo la tasa exacta de error, las condiciones del entorno, el número de intervenciones humanas, el mantenimiento entre turnos, el coste total, la seguridad, la integración con sistemas del cliente y comportamiento ante casos raros.\n\nAhora vamos con la conclusión final. Intuyo que la demanda de robots humanoides va a superar con creces la de la oferta. Aquí tenemos a Figure haciendo un alarde de capacidades y pocos días después de conocer la noticia de que UPS quiere comprar sus robots por miles. Pero la [capacidad de producción](https://www.figure.ai/news/ramping-figure-03-production) aún es muy baja, aunque haya pasado de 1 robot/día a 1 robot/hora, aún queda mucho camino por recorrer para responder a los millones de empresas y hogares que van a querer esta máquina de productividad aumentada.\n\n¿Y qué decir de la cadena de suministro? las tensiones que hemos vivido en los últimos años en el sector de la electrónica nos va a parecer insignificantes cuando todo el mundo quiera tener su propio robot humanoide para que le quite de encima el trabajo sucio.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🏋️ NEURA Robotics y la Universidad Técnica de Múnich lanzan el TUM RoboGym, el mayor centro científico de entrenamiento de IA Física de Europa.",
+        "body_markdown": "🏋️ [NEURA Robotics](https://neura-robotics.com/europes-largest-physical-ai-training-center-neura-tum/) y la Universidad Técnica de Múnich lanzan el TUM **RoboGym**, el mayor centro científico de entrenamiento de IA Física de Europa. Desde mediados de 2026 una flota de humanoides entrenará en condiciones reales en un espacio inicial de 2.300 m², generando datos para el Neuraverse y reforzando la idea de que el cuello de botella ya no es solo el hardware, sino el acceso a datos físicos de calidad."
+      },
+      {
+        "position": 2,
+        "headline": "💰 Mind Robotics anuncia 400 millones de dólares de nueva financiación liderada por Kleiner Perkins, elevando su inversión total por encima de 1.000 millones.",
+        "body_markdown": "💰 [Mind Robotics](https://www.businesswire.com/news/home/20260513731983/en/Mind-Robotics-Announces-%24400M-in-New-Funding-to-Expand-Industrial-Robotics-Deployment) anuncia 400 millones de dólares de nueva financiación liderada por **Kleiner Perkins**, elevando su inversión total por encima de 1.000 millones. La compañía, nacida del entorno de Rivian, quiere acelerar el despliegue de robots industriales en fabricación, señalando que el gran capital empieza a moverse hacia robots que resuelven problemas productivos concretos."
+      },
+      {
+        "position": 3,
+        "headline": "🚶 WIRobotics levanta 68 millones de dólares tras vender más de 3.000 unidades de WIM, su robot wearable de asistencia a la marcha.",
+        "body_markdown": "🚶 [WIRobotics](https://korthos.xyz/research/wirobotics-raises-68m-after-scaling-wearable-robots?v=3) levanta 68 millones de dólares tras vender más de **3.000 unidades** de WIM, su robot wearable de asistencia a la marcha. Ahora la compañía coreana quiere financiar ALLEX, una plataforma humanoide modular con manos conformables, brazos backdrivable y control de fuerza, convirtiendo la experiencia acumulada en movimiento humano real en una base para robots de manipulación física."
+      },
+      {
+        "position": 4,
+        "headline": "🏭 FANUC profundiza su colaboración con Google para llevar agentes de IA a robots industriales.",
+        "body_markdown": "🏭 [FANUC](https://www.fanuc.co.jp/en/profile/pr/newsrelease/2026/notice20260513.html) profundiza su colaboración con **Google** para llevar agentes de IA a robots industriales. Su nuevo sistema combina robots FANUC, Gemini Enterprise, ROS, Intrinsic Flowstate y control en lenguaje natural para que un agente pueda entender instrucciones, reconocer objetos y operar una célula robótica, una señal importante de que la IA Física empieza a entrar en la automatización industrial tradicional."
+      },
+      {
+        "position": 5,
+        "headline": "🤖 Persona AI muestra avances de su humanoide Gen1 y adelanta la llegada de Gen2.",
+        "body_markdown": "🤖 [Persona AI](https://x.com/nicolausradford/status/2055294455515648157) muestra avances de su humanoide Gen1 y adelanta la llegada de Gen2. Según su CEO, en unos 18 meses la compañía ha crecido hasta 70 personas, ha construido cinco humanoides Gen1 y ya cuenta con **tracción comercial**. Un progreso rápido para una startup enfocada en robots humanoides industriales para entornos exigentes."
+      },
+      {
+        "position": 6,
+        "headline": "💪 Universidad Nacional de Seúl desarrolla un músculo artificial inteligente que combina movimiento y sensores en una misma estructura.",
+        "body_markdown": "💪 [Universidad Nacional de Seúl](https://interestingengineering.com/ai-robotics/smart-artificial-muscle-humanoid-robot-motion) desarrolla un **músculo artificial** inteligente que combina movimiento y sensores en una misma estructura. El sistema usa canales de metal líquido dentro de elastómeros de cristal líquido para contraerse, medir fuerza y estimar deformación en tiempo real, acercando a los robots a una forma de inteligencia física embebida en el propio cuerpo."
+      },
+      {
+        "position": 7,
+        "headline": "🧪 Instituto de Ciencias de Tokio pone en marcha un laboratorio médico automatizado donde trabajan 10 robots sin personal humano.",
+        "body_markdown": "🧪 [Instituto de Ciencias de Tokio](https://interestingengineering.com/ai-robotics/japan-unmanned-lab-robots-ai-automation-aist) pone en marcha un **laboratorio médico automatizado** donde trabajan 10 robots sin personal humano. Entre ellos está el robot Maholo LabDroid, capaz de realizar procedimientos delicados de laboratorio. El plan es escalar hasta 2.000 robots en 2040 para automatizar buena parte del proceso científico, desde experimentos hasta verificación."
+      },
+      {
+        "position": 8,
+        "headline": "👕 Zhejiang Humanoid Robot Innovation Center firma con Jack Technology un pedido de 2.000 humanoides para fabricación textil.",
+        "body_markdown": "👕 [Zhejiang Humanoid Robot Innovation Center](https://autonews.gasgoo.com/articles/news/zhejiang-humanoid-robot-innovation-center-signs-order-for-2000-humanoid-robots-2053868715219771392) firma con Jack Technology un pedido de **2.000 humanoides** para fabricación textil. El objetivo es automatizar tareas de manipulación de tejidos, corte, alineación y alimentación de máquinas, un entorno especialmente difícil porque las telas se deforman, se arrugan y exigen precisión milimétrica."
+      }
+    ]
+  }
+}

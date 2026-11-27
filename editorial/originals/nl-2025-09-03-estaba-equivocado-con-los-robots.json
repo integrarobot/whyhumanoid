@@ -1,0 +1,57 @@
+{
+  "edition_id": "nl-2025-09-03-estaba-equivocado-con-los-robots",
+  "language": "es",
+  "title": "Estaba equivocado con los robots chinos",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/39b50246-29f5-44b1-bca0-cc4f23f3e7aa_1600x1067.png)\n\nSi una cosa están demostrando los fabricantes de robots de **China** es **valentía**. Mientras en occidente las empresas se dedican a hacer demos que parecen bastante preparadas y donde no sabemos si los robots están teleoperados, en China se han atrevido a hacer unos juegos olímpicos donde exponer todo lo bueno (y lo malo) de sus robots.\n\nDe esta forma, mi percepción sobre cómo se va a configurar el negocio de la robótica humanoide ha ido cambiando, ya no pienso que los robots chinos vayan a ser de segunda categoría, sino que pienso que realmente alguno de ellos sí que puede estar al nivel que son capaces de alcanzar las empresas occidentales.\n\nLa razón principal de este cambio de opinión es que estoy convencido de que la experimentación en el mundo real es la mejor forma de llegar a soluciones lo más adecuadas para las necesidades de la gente. Los laboratorios están muy bien, pero cuando hablamos de resolver problemas de millones de personas cuanto antes nos enfrentemos a las dificultades del mundo real mucho mejor.\n\nY esto es lo que está ocurriendo con la empresa **Unitree**, que se ha convertido en un laboratorio andante, ya que sus robots empiezan a llegar a todo tipo de lugares, donde los ingenieros de robótica pueden empezar a experimentar con ellos y ponerlos en todo tipo de situaciones, en busca de soluciones y utilidades que puedan ofrecer a las personas.\n\nUno de los cientos de ejemplos de esta situación es el trabajo que ha realizado el científico [Zhi Su](https://humanoid-table-tennis.github.io/) para enseñar el robot Unitree G1 a **jugar al Tenis de Mesa**, una habilidad que va mucho más allá del entretenimiento, ya que las destrezas manuales que implican ese deporte se pueden extrapolar a todo tipo de actividades en el hogar, la industria, los servicios, …\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/08741954-84af-47da-8a2d-fbe1a95b3e77_2048x933.png)\n\nOtro ejemplo es el trabajo que realiza la startup [FieldAI](https://techcrunch.com/2025/08/20/fieldai-raises-405m-to-build-universal-robot-brains/) que ha recaudado 405 millones de dólares, por parte de inversores entre los que se encuentra Jeff Bezos, para el desarrollo de modelos de inteligencia artificial que puedan usarse en robots de propósito general. La misión de la empresa, igual que otras como Skild AI, es construir un cerebro robótico único que pueda generalizarse a diferentes tipos de robots y a una diversidad de entornos.\n\nEn la misma línea de trabajo nos encontramos a la empresa [OpenMind](https://openmind.org/), que tiene como objetivo crear el Android de la robótica, al que han llamado OM1 y que está diseñado para facilitar la integración de máquinas inteligentes en la vida cotidiana. La empresa ha realizado recientemente una ronda de inversión de 20 millones de dólares y en sus comunicados también aparece el robot G1 de Unitree que se está convirtiendo en el estándar de facto de este sector.\n\n## Nuevo Plan Maestro de Tesla tiene a Optimus entre sus pilares fundamentales\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/7e52e6e1-c7bb-4a5a-bde0-0c79935d3b52_1200x1200.png)\n\n**Optimus** ya forma parte del nuevo [Plan Maestro](https://x.com/Tesla/status/1962591324022153607) publicado por **Tesla** en su versión IV.\n\n> La **autonomía** debe beneficiar a toda la humanidad. Las herramientas que fabricamos en Tesla nos ayudan a crear los productos que impulsan la prosperidad humana. La forma en que desarrollamos y utilizamos la autonomía, y las nuevas capacidades que pone a nuestra disposición, debe basarse en su capacidad para mejorar la condición humana. Mejorar la vida cotidiana y hacerla más segura para todas las personas mediante nuestra tecnología autónoma siempre ha sido, y sigue siendo, nuestro objetivo. Un mayor acceso impulsa un mayor crecimiento. Crear productos tecnológicamente avanzados, asequibles y disponibles a gran escala es necesario para construir una sociedad próspera y sin restricciones. Sirve para democratizar aún más la sociedad, a la vez que mejora la calidad de vida de todos.\n\nDe esta forma los pilares sobre los que a partir de ahora se va a centrar el trabajo de Tesla son:\n\n🚘 Vehículos eléctricos\n\n🔋 Productos energéticos\n\n🦾 Robots humanoides.\n\nY aquí es donde aparece **Optimus**, el robot humanoide autónomo que no solo está cambiando la percepción del trabajo en sí, sino también su disponibilidad y capacidad. Los trabajos particularmente monótonos o peligrosos ahora pueden realizarse por otros medios. De este modo, la misión de Optimus es devolver a las personas más tiempo para hacer lo que aman.\n\n## NVIDIA presenta su GPU especialmente pensada para robots humanoides\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/0af85d85-5e54-45b0-97f7-24e3f4b76c5a_1280x720.png)\n\nUn cambio radical para la robótica humanoide es como han calificado desde [Apptronik](https://x.com/apptronik/status/1960013664846852128?s=46%20%E2%80%9C) la presentación de la **NVIDIA Jetson Thor AGX**, una **GPU** diseñada para servir de cerebro a los robots humanoides.\n\nEl propio Jensen Huang se ha encargado de protagonizar la campaña en la que la empresa enviaba como regalo esta máquina a un gran número de fabricantes de robots humanoides.\n\nHablamos de una computadora para robots impulsada por una GPU NVIDIA Blackwell que ofrece 2070 teraflops FP4, para abordar aplicaciones complejas que incluyen IA agéntica, procesamiento de sensores de alta velocidad y tareas robóticas generales.\n\nSu precio de salida es de **$3,499** y nos da a entender el orden de magnitud que puede llegar a tener del robot completo, sabiendo que ese es el precio de su \"cerebro\". Me atrevo a decir que con este movimiento en NVIDIA aspiran a capturar en torno al 10% del volumen de negocio que se genere en el sector de la IA Física y la robótica.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "ByteDance, los creadores de TikTok también están interesados en la robótica y han desarrollado Semilla GR-3 un modelo de IA generalizable y robusto de visión-lenguaje-acción (VL…",
+        "body_markdown": "Este mes de descanso que nos hemos tomado en Integrarobot es la viva representación de que el sector de la robótica está muy acelerado. Para demostrarlo, aquí os dejamos algunas de las incontables noticias que se han producido en el sector.\n\n[ByteDance](https://seed.bytedance.com/en/GR3), los creadores de TikTok también están interesados en la robótica y han desarrollado Semilla GR-3 un modelo de IA generalizable y robusto de visión-lenguaje-acción (VLA) para tareas de largo horizonte y destreza."
+      },
+      {
+        "position": 2,
+        "headline": "Fourier ha presentado GR-3, que ha sido diseñado pensando en poder brindar un cuidado cálido y receptivo a la vida cotidiana.",
+        "body_markdown": "[Fourier](https://x.com/FourierRobots/status/1949144879805992996) ha presentado GR-3, que ha sido diseñado pensando en poder brindar un cuidado cálido y receptivo a la vida cotidiana. Su carcasa exterior suave al tacto y su sistema multimodal de interacción emocional dan vida al concepto de \"cálida compañía tecnológica\"."
+      },
+      {
+        "position": 3,
+        "headline": "LimX ha presentado su robot humanoide llamado Oli con un tamaño de 165 cm de alto, un peso de 55 kg y cuenta con 31 grados de libertad (DoF), combinados con un rendimiento de mo…",
+        "body_markdown": "[LimX](https://x.com/LimX_Dynamics/status/1950541896977092721) ha presentado su robot humanoide llamado Oli con un tamaño de 165 cm de alto, un peso de 55 kg y cuenta con 31 grados de libertad (DoF), combinados con un rendimiento de movimiento excepcional."
+      },
+      {
+        "position": 4,
+        "headline": "WiRobotics presenta su robot Allex.",
+        "body_markdown": "[WiRobotics](https://humanoidroboticstechnology.com/industry-news/wirobotics-announces-allex-a-general-purpose-humanoid/) presenta su robot Allex. Gracias a sus capacidades de reconocimiento visual y el control de posición, responde a estímulos físicos como la fuerza, el contacto y el impacto en el mundo real para ofrecer capacidades de interacción similares a las humanas."
+      },
+      {
+        "position": 5,
+        "headline": "UBtech, otro de esos fabricantes chino de robots que vale la pena seguir de cerca acaba de lograr una línea de crédito por parte de Infini Capital de $1,000 millones para apoyar…",
+        "body_markdown": "[UBtech](https://x.com/XRoboHub/status/1962426892864368731), otro de esos fabricantes chino de robots que vale la pena seguir de cerca acaba de lograr una línea de crédito por parte de Infini Capital de $1,000 millones para apoyar su crecimiento y acelerar la comercialización en Oriente Medio."
+      },
+      {
+        "position": 6,
+        "headline": "Matrix-Game 2.0 es el primer modelo de mundo interactivo de código abierto, en tiempo real y de secuencia larga.",
+        "body_markdown": "[Matrix-Game 2.0](https://x.com/skywork_ai/status/1955237399912648842?s=46) es el primer modelo de mundo interactivo de código abierto, en tiempo real y de secuencia larga. Ha sido desarrollado por la empresa Skywork y está disponible tanto en Github como en Hugging Face."
+      },
+      {
+        "position": 7,
+        "headline": "Jarad Cannon, CTO de Humanoid: no existen instrucciones ni manuales para construir el futuro robótico; nadie lo ha hecho antes a escala comercial.",
+        "body_markdown": "[Jarad Cannon](https://ctomagazine.com/humanoid-robots-in-rise-in-conversation-with-jarad-cannon/), CTO de Humanoid: no existen instrucciones ni manuales para construir el futuro robótico; nadie lo ha hecho antes a escala comercial. Pero eso es precisamente lo que me gusta."
+      },
+      {
+        "position": 8,
+        "headline": "Large Behavior Models (LBMs) es como han denominado en el Toyota Research Institute a un nuevo tipo de modelos de IA para el control de robots que les permiten aprender de fuent…",
+        "body_markdown": "[Large Behavior Models](https://www.tri.global/our-work/large-behavior-models) (LBMs) es como han denominado en el Toyota Research Institute a un nuevo tipo de modelos de IA para el control de robots que les permiten aprender de fuentes de datos extensas y diversas en formato video."
+      },
+      {
+        "position": 9,
+        "headline": "Agibot ha llegado a un importante acuerdo con un fabricante de piezas de automóviles para implementar casi 100 de sus robots de uso general con ruedas A2-W en las fábricas de la…",
+        "body_markdown": "[Agibot](https://interestingengineering.com/innovation/start-up-car-parts-production-in-100-factory-robots) ha llegado a un importante acuerdo con un fabricante de piezas de automóviles para implementar casi 100 de sus robots de uso general con ruedas A2-W en las fábricas de la empresa."
+      }
+    ]
+  }
+}

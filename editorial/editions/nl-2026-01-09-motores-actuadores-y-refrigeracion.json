@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-01-09-motores-actuadores-y-refrigeracion",
+  "source_url": "https://www.integrarobot.com/p/motores-actuadores-y-refrigeracion",
+  "published_on": "2026-01-09",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Motors, actuators and cooling - Humanoid Robots Course",
+  "subtitle": "We move forward in the Humanoid Robots course by learning about motors, actuators and the much-needed cooling to avoid problems associated with the robot overheating.",
+  "body_markdown": "In humanoid robots, movement and interaction with the environment depend directly on motors and actuators, which are the elements responsible for transforming electrical energy into controlled physical action.\n\nA motor, by itself, only generates rotation and has no awareness of position, force or contact with the environment, whereas an actuator is a complete system that integrates motor, transmission, sensors, power electronics and control algorithms to produce useful, precise and repeatable movements.\n\nThe design of these actuators requires constant trade-offs between torque, speed, precision, smoothness, energy consumption, weight, cost and reliability, and it is not possible to optimize all these variables at once. For this reason, most current humanoid robots use **electric actuators**, since they offer good efficiency, fine control and natural integration with artificial intelligence systems, despite their thermal and force-density limitations compared with hydraulic or pneumatic solutions.\n\nSince electric motors spin very fast but joints need to move slowly and with a lot of torque, the use of **gear reducers** is unavoidable, which introduces an additional trade-off between force and sensitivity, especially relevant when the robot must interact with objects or people.\n\nAmong the different types of reducers, harmonic ones stand out for allowing high reduction ratios, great precision and a very compact size, although they require extreme manufacturing tolerances and careful control to avoid friction, backlash and premature wear.\n\nExamples such as **Tesla Optimus**, which uses inverted planetary roller screws to achieve compact and precise linear actuators, or **1X Neo**, which moves the motors to the torso and transmits force through cables to reduce mass and inertia in the limbs, show that there is no single correct architecture, but different solutions depending on the robot's goals.\n\nThis entire mechanical and electrical system is closely linked to the problem of **heat**, since converting energy into torque, movement and AI inference within small volumes generates unavoidable thermal losses. That is why cooling is not addressed at the end, but is decided from the design of the motor, the choice of reducer, the architecture of the actuators and the distribution of masses and power, even using the chassis itself as a heat-dissipating element.\n\nThermal control is also managed by software, adjusting torque, speed or computational load to avoid damage, which reinforces the idea that in a humanoid robot, movement, control and heat management form a single system that must be designed coherently from the start.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 56; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

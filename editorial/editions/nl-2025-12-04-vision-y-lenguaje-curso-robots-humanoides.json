@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2025-12-04-vision-y-lenguaje-curso-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/vision-y-lenguaje-curso-robots-humanoides",
+  "published_on": "2025-12-04",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Vision and Language - Humanoid Robots Course",
+  "subtitle": "Vision and language are the way the robot connects with",
+  "body_markdown": "[Video embedded in the original article]\n\n**Vision and language** are two of the two fundamental pillars that allow humanoid robots to function in real environments with a level of intelligence and naturalness that until now seemed unattainable.\n\nThanks to **vision** systems, capable of interpreting images, depth and the geometry of the environment, robots can recognize objects, understand scenes, follow movements and navigate safely through dynamic spaces.\n\nAt the same time, **language** models allow them to understand verbal commands, interpret complex instructions and hold fluent conversations with people.\n\nWhen both worlds are combined in vision-language models, the robot gains a much richer contextual understanding: it can associate words with elements of the environment, reason about what it sees and plan coherent actions to carry out tasks.\n\nThis integration turns humanoids into agents capable of perceiving, interpreting and acting adaptively, closing the loop between perception, reasoning and movement through **Language-Vision-Action models**, which are defining the new generation of **robots driven by artificial intelligence**.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 50; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

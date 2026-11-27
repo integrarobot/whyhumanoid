@@ -1,0 +1,92 @@
+{
+  "edition_id": "nl-2026-11-04-furor-con-los-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/furor-con-los-robots-humanoides",
+  "published_on": "2026-11-04",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Humanoid robot frenzy",
+  "subtitle": "What a week of good news for robotics and also for Integrarobot :)",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/eda01e4f-0702-47a5-a7eb-706add5075f2_2048x1177.png)\n\nThis weekend I felt we are living through a frenzy for humanoid robots, but unlike other occasions, when there were presentations by NVIDIA, Tesla or Google that made clear these companies' strategy of betting on general-purpose robots, this time we don't have such representative news; rather, it is an accumulation of things that makes me think this way.\n\nLet's start with **Artificial Intelligence**, because we have two pieces of news that tell us about the state of development of the technology that will allow robots to have **autonomy** in the real world, which is the biggest bottleneck at the moment, now that we have seen that the hardware side is considerably more solved.\n\nLet's begin:\n\n👆 [Ashok Elluswamy](https://x.com/aelluswamy/status/2116214488840183929?s=46), who is head of AI at **Tesla**, says that \"***Transformers can do anything***\", which, in the context we are in, and having seen that with the arrival of new LLMs such as GPT-6 Astra, Claude Opus 5.5 and Gemini 4 Argon, these are able to control robots without being robotics-specific AI models, makes it easy to think that Tesla is achieving similar results with **Grok**. So what Ashok is conveying is that, in terms of AI, the architectures we already have are enough, and where most focus is needed is on training data. Something that has also been much discussed this week regarding the effort Tesla is making to train robots.\n\n✌️ The arrival of **APIs** in the robotics sector, that is, the moment when companies devoted exclusively to developing AI software for robots decide to start commercializing their technology in the form of an API that robot manufacturers can access to give their robots intelligence. Specifically, three startups seem to have agreed to launch their services in a similar way: **Physical Intelligence**, **Generalist** and **PokeBot**, with very similar messages: *give natural language instructions to compatible robots through a simple API. No task-specific training*. To learn more about it, you can read the article by [Kai Williams](https://www.understandingrobots.org/p/why-the-emergence-of-robotics-apis).\n\nAnd now we leave the software side to move to the hardware side, because we have three very interesting pieces of news to discuss that show how quickly and strongly the humanoid field is advancing.\n\nLet's see:\n\n👆 [Lightberry](https://lightberry.com/press/dow-approval) claims to be the first and only US humanoid robot company **authorized by the government** of the United States. This needs a little explanation, since what has really happened is that its robot called **Lumi** has passed a national security review carried out by the US Department of War, obtaining an exemption from the FCC's Covered List that no other humanoid robot has received. Because in the rivalry between the USA and China over technological competition, months ago the USA decided to create a blacklist of robot components that could not come from China, but in this case Lightberry, which uses **Unitree**'s as the robot's body, has managed to slip around this ban.\n\n**✌️ Meta**, yes, the former Facebook, the company that some time ago decided to leap from the virtual to the physical by creating, together with Ray-Ban, augmented reality glasses that are proving quite successful, is now going one step further by partnering with humanoid manufacturer [Fourier](https://www.fftai.com/) to build its own **robot**, which could be called **Max**. The news comes from the outlet The Information and has not been confirmed by the company. Among the leaks, the following data about the robot have been published: it has an NVIDIA **Jetson Thor** chip, weighs approximately 48 kg and is about 1.5 metres tall; the prototype has a screen that displays facial expressions, a built-in speaker and hands designed to pick up small objects.\n\n🤟[MediaMarkt](https://www.mediamarkt.es/es/product/_robot-humanoide-agibot-a3-180908725.html) is now selling **Agibot** robots in Spain; although it has them in the toys section, it has on sale not only the X2 model, which does look more like a toy, but also the A3 model, which is much more advanced. So we see that humanoid robotics is gradually starting to reach the general public through the most relevant electronics retailers. Although costs still seem excessive, because this A3, for example, costs **85,000 euros**, what is clear is that the big European electronics retailer has its eye on robotics, and after putting **Unitree**'s robots on sale it is now also selling Agibot's. And perhaps not only that, because the distributor BIPEDAL GmbH also has agreements with other manufacturers such as Booster, LimX Dynamics, PNDbotics, Galbot and Kepler.\n\nSo you see, a week packed with new developments in the world of humanoid robots, which in turn is sending the number of investments in robotics companies soaring, as the analytics company **Pitchbook** highlights in one of its most recent reports. Specifically, in the last quarter 18.6 billion dollars were invested in robotics companies.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/d313b0b7-1fc0-4af5-ad86-f60980bf2330_2048x1280.jpeg)\n\n---\n\nAnd in addition to all this news, today I also wanted to tell you something important for me, since for the first time this newsletter has the support of a sponsor, specifically **UDIT**, which is going to help me boost the outreach work I do on humanoid robots in Spanish.\n\n# The next generation of robots is also designed with people in mind\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/ea5e2534-671e-4cf0-b1ce-9fbe787d08bb_2048x869.png)\n\n**Robotics** is entering a new stage. Advances in **Artificial Intelligence** are accelerating the development of robots capable of interacting with their environment and taking on new functions in areas such as health, education or assistance for people. But taking these technologies from the laboratory to the real world requires more than technical knowledge: professionals are needed who are able to design intelligent systems that are useful, safe and easy to use.\n\nUDIT's [Official Degree in Human-Centred Robotics](https://www.udit.es/grado-en-robotica/) is a qualification that combines robotics, programming, electronics, Artificial Intelligence, design and human-robot interaction. The degree is committed to practical training, based on developing real projects, experimentation and prototyping in specialized facilities.\n\nWould you like to see up close how the professionals who will lead the future of robotics are trained?\n\nOn **12 November**, UDIT is holding an **OpenDay** where you can learn about its educational offering and have all your questions answered.\n\n[Sign up and discover everything robotics can offer you](https://eventos.udit.es/events/udit/2449626)!",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📦 Walmart and Symbotic expand their agreement with an initial commitment of about 6 billion dollars over several years.",
+        "body_markdown": "📦 [Walmart and Symbotic](https://finance.yahoo.com/technology/ai/articles/walmart-symbotic-expand-commercial-agreement-200200909.html) expand their agreement with an initial commitment of about **6 billion dollars** over several years. The programme will add automation capabilities at 25 regional distribution centres in the United States to expand storage, manage e-commerce inventory and improve product movement."
+      },
+      {
+        "position": 2,
+        "headline": "🏭 Foundry Robotics announces it has raised 100 million dollars to develop autonomous factories, with Marlinspike leading the investors and support from Khosla Ventures.",
+        "body_markdown": "🏭 [Foundry Robotics](https://x.com/FoundryRobotics/status/2115567393716261250) announces it has raised **100 million dollars** to develop autonomous factories, with Marlinspike leading the investors and support from Khosla Ventures. According to the company, its facility of about 12,000 m² in Emeryville is already shipping products to customers in energy, telecommunications, autonomous vehicles and defence."
+      },
+      {
+        "position": 3,
+        "headline": "🧠 Machenta, spun out of Imperial College London, raises 40 million dollars in a seed round led by Creandum and Union Square Ventures.",
+        "body_markdown": "🧠 [Machenta](https://www.imperial.ac.uk/news/articles/2026/imperial-ai-spinout-machenta-raises-40-million-to-make-robots-instant-learners), spun out of Imperial College London, raises **40 million dollars** in a seed round led by Creandum and Union Square Ventures. The company develops a model pre-trained entirely in simulation which, according to its demonstrations, makes it possible to teach robots tasks with a single example, without retraining it for each new task."
+      },
+      {
+        "position": 4,
+        "headline": "🇪🇸 YK-Robotics closes a seed round of one million euros, co-led by Draper B1 and First Drop.",
+        "body_markdown": "🇪🇸 [YK-Robotics](https://www.yk-robotics.com/es/seed-round-2026) closes a seed round of **one million euros**, co-led by Draper B1 and First Drop. The funds will finance its expansion in Spain, its partner network and the development of YK-Platform so that the whole platform can be used through natural language. Its software coordinates robots of different brands, vision and other equipment in the cell."
+      },
+      {
+        "position": 5,
+        "headline": "🏗️ Audi and Agile Robots are working on a proof of concept at the Ingolstadt Production Lab: dual-arm robots on a mobile base pick parts from containers and sort them for assembly.",
+        "body_markdown": "🏗️ [Audi and Agile Robots](https://www.audi.com/en/media-releases/agile-robots-and-audi-to-transform-automotive-logistics-with-mobile-humanoids-supported-by-dassault-systemes-and-nvidia-18390) are working on a **proof of concept** at the Ingolstadt Production Lab: dual-arm robots on a mobile base pick parts from containers and sort them for assembly. Dassault Systèmes and NVIDIA provide the virtual twin and simulation to evaluate feasibility, cycle times, ergonomics and safety before integrating them into the plant's logistics."
+      },
+      {
+        "position": 6,
+        "headline": "📊 Unitree records quarterly net profit of 112.7 million yuan, 17.4% less than a year earlier, according to Reuters.",
+        "body_markdown": "📊 [Unitree](https://www.reuters.com/world/asia-pacific/unitrees-q3-profit-down-174-on-year-test-chinas-robotics-sector-2026-10-28/) records quarterly net profit of **112.7 million yuan**, 17.4% less than a year earlier, according to Reuters. Revenue grows around 70%, to 665 million yuan, while the company increases spending on research and development. These are its first results since its August IPO."
+      },
+      {
+        "position": 7,
+        "headline": "🔋 XPeng announces small-batch production of the solid-state batteries intended for IRON, while the humanoid remains in the pre-production phase.",
+        "body_markdown": "🔋 [XPeng](https://finance.biggo.com/news/1e8b6cea-51f2-4aaf-b6d0-fe02c09b3df3) announces small-batch production of the **solid-state batteries** intended for IRON, while the humanoid remains in the pre-production phase. The company maintains its goal of manufacturing it in volume at the end of 2026 and starting deliveries and commercial applications in 2027. According to [CnEVPost](https://cnevpost.com/2026/10/28/solid-state-batteries-xpeng-iron-small-batch-production/), the latest announcement does not clarify whether the battery is fully solid-state or semi-solid."
+      },
+      {
+        "position": 8,
+        "headline": "🗂️ Scale AI and Hugging Face publish FineART, an open set of 40,543 robotic episodes, 1,718 hours and 151 tasks.",
+        "body_markdown": "🗂️ [Scale AI and Hugging Face](https://labs.scale.com/blog/fineart) publish **FineART**, an open set of 40,543 robotic episodes, 1,718 hours and 151 tasks. It includes 533,913 annotated steps describing the subtasks of each sequence. It is accompanied by FineART-VLA, integrated into LeRobot, which combines planning those steps with generating the robot's actions."
+      },
+      {
+        "position": 9,
+        "headline": "✋ Origami Robotics explains how high-reduction transmissions make force control and transfer from simulation to real robots difficult.",
+        "body_markdown": "✋ [Origami Robotics](https://www.origami-robotics.com/blog/dexterity-deadlocks) explains how high-reduction transmissions make force control and transfer from simulation to real robots difficult. Its **21-degree-of-freedom** hand uses axial flux motors and a 15:1 ratio. The company shows initial qualitative results and leaves the quantitative transfer tests for another publication."
+      },
+      {
+        "position": 10,
+        "headline": "📚 Robotheca brings together 477 robots with designs shared by their creators and links to 3D files, code and bills of materials.",
+        "body_markdown": "📚 [Robotheca](https://robotheca.org/) brings together **477 robots** with designs shared by their creators and links to 3D files, code and bills of materials. The catalogue includes arms, quadrupeds, humanoids and household robots, with filters by cost, difficulty and compatibility. The platform classifies 36 projects as ready to build, with documentation, licence and known cost."
+      },
+      {
+        "position": 11,
+        "headline": "🎓 Brian Potter reviews where data for training robots comes from: teleoperation, simulation, human videos and portable manipulation interfaces.",
+        "body_markdown": "🎓 [Brian Potter](https://www.construction-physics.com/p/how-to-train-your-robot) reviews where **data for training robots** comes from: teleoperation, simulation, human videos and portable manipulation interfaces. The article compares their costs, diversity and correspondence with the robot's body, and examines how much is known — and how much remains open — about the amount of experience needed to learn physical tasks."
+      },
+      {
+        "position": 12,
+        "headline": "🐕 Dimensional offered 20 dollars an hour to walk quadruped robots around San Francisco and collect navigation data with human operators.",
+        "body_markdown": "🐕 [Dimensional](https://www.foxbusiness.com/technology/san-francisco-startup-offered-20-hour-walk-robot-dogs-ai-training-report) offered **20 dollars an hour** to walk quadruped robots around San Francisco and collect navigation data with human operators. The shifts lasted between four and six hours and used Unitree robots. Its founder explained that early tests had shown AI agents controlled the hardware worse than people. The walkers also had to be able to carry about 15 kilos if the robot broke down."
+      },
+      {
+        "position": 13,
+        "headline": "👁️ VisioSurgical Solutions begins, with Kaleidoscope Innovation, the development of a compact robot for retinal surgery, adaptable to the surgeon's microscope.",
+        "body_markdown": "👁️ [VisioSurgical Solutions](https://www.globenewswire.com/news-release/2026/10/29/3391574/0/en/retinal-robotics-pioneers-launch-visiosurgical-solutions-vss-to-bring-compact-surgical-robots-to-every-retina-surgeon.html) begins, with Kaleidoscope Innovation, the development of a **compact robot for retinal surgery**, adaptable to the surgeon's microscope. The design aims for precision of under ten micrometres, tremor filtering and permanent control by the specialist. The project is at an early stage of development and is not yet available for sale."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 118; 13 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "63fcc5d42890d80e1446af9dd874fd0a42ea6f623657e727e91dc46c7f7d81e3"
+}

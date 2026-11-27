@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-03-20-la-carrera-global-por-los-robots",
+  "source_url": "https://www.integrarobot.com/p/la-carrera-global-por-los-robots",
+  "published_on": "2026-03-20",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "🌍 The global race for humanoid robots",
+  "subtitle": "We analyze the state of competition between countries worldwide for leadership in the robotics business",
+  "body_markdown": "Competition in robotics is not only technological. It is an industrial and geopolitical dispute over controlling the next layer of automation of physical work. It is not about knowing who can build the best robot today, but about who will dominate the complete system that will allow them to be deployed at large scale.\n\nA clear divergence between two approaches can currently be observed. **China** is advancing strongly in hardware. Its advantage lies not in software sophistication, but in the ability to manufacture at large scale, reduce costs rapidly and control the supply chain. This includes actuators, batteries, power electronics and optimized industrial processes. The implicit hypothesis is that a good-enough robot, if it is much cheaper, can dominate the market.\n\nThe **United States**, by contrast, leads in artificial intelligence. The development of foundation models, especially in multimodal and end-to-end control systems, is allowing robots to go from being programmed machines to systems capable of learning tasks. This advance is decisive because it shifts the bottleneck from hardware to generalization capability. Recent evidence shows that incorporating AI is significantly accelerating the iteration and improvement of humanoid robots.\n\nHowever, framing this as a binary competition is too simple, because the winning system will not be the one that dominates only hardware or only intelligence, but the one that manages to integrate cost, cognitive capabilities and market deployment. The variable that really matters is not who has the best technology in the lab, but who manages to bring functional robots into productive environments first and in an economically viable way.\n\nThis change is being accelerated by three dynamics. The first is falling costs. In recent years, the cost of manufacturing humanoid robots has dropped significantly, which shortens payback periods and facilitates their entry into industrial environments. The second is the advance of end-to-end AI, which allows robots to learn complete tasks instead of executing them through programmed rules. The third is the structural pressure of the labour market, especially in dangerous, repetitive or unattractive tasks, where there is a clear willingness to replace human labour.\n\nBesides China and the United States, there are other relevant players. **Japan** maintains a solid position in industrial robotics and specific applications. **South Korea** combines hardware and electronics capabilities with a strong focus on automation. **Europe** stands out in high-precision components, although it struggles to scale and compete in software.\n\nThe key point is that competitive advantage does not lie in the robot as an isolated product, but in the complete value chain. This includes critical components, software, training data, manufacturing capacity and, above all, the ability to deploy robots in real environments. A country can lead in one of these layers and still lose the industry if it does not integrate the rest.\n\nTherefore, we are not facing a simple technological race, but a structural transformation of the economy. Humanoid robots are the vehicle, but the real change is the general automation of physical work. China competes on scale, the United States on capability, and the outcome will depend on who manages to close the complete cycle and capture the value in real deployment.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 79; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

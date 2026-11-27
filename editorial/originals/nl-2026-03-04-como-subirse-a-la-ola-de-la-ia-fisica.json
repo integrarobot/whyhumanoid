@@ -1,0 +1,87 @@
+{
+  "edition_id": "nl-2026-03-04-como-subirse-a-la-ola-de-la-ia-fisica",
+  "language": "es",
+  "title": "Cómo subirse a la ola de la IA Física",
+  "body_markdown": "Cuando me encuentro noticias cómo la creación de la empresa [Noble Machines](https://www.noblemachines.ai/) por parte de ingenieros de **Apple**, **SpaceX**, **NASA**, **DeepMind**, **Amazon** y **Tesla**, que dejan sus trabajos para emprender creando un nuevo robot humanoide no puedo pensar otra cosa que en ayudar a que cada vez haya más gente que, como estos valientes, se suba a la ola de la **IA Física**.\n\nSerá arriesgado, no cabe duda, pero valdrá la pena.\n\nEn estos momentos podría estar grabando un vídeo o escribiendo un artículo sobre lo último que he aprendido sobre Claude o lo último que he hecho con Lovable, pero aquí estoy, convocando un evento donde hablar de las oportunidades que va a ofrecer la IA Física.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/f36a3678-547b-43e8-9488-c6fcad3e5981_960x540.jpeg)\n\n[Cómo subirse a la ola de la IA Física](https://www.youtube.com/live/XKPkbLEutJ8?si=Al8y6CzygmBvVbuq) será un **evento online** que voy a realizar el **25 de marzo de 19 a 20h** y donde voy a compartir las oportunidades profesionales y de negocio que va a ofrecer la robótica de propósito general y cuáles deben ser los primeros pasos que hay que dar para entrar a formar parte de ello.\n\nEn este evento descubrirás las **oportunidades** que están surgiendo para trabajar, emprender e invertir con el desarrollo de la IA Física y la robótica de propósito general.\n\nSoy Javier Martín, fundador de Integrarobot y me dedico a divulgar la gran oportunidad que se presenta ante nosotros con la IA Física, para que cualquier profesional o empresa pueda subirse a esta gran ola, que va a ser aún mayor que la de la IA Generativa.\n\nEn este webinar podrás aprender:\n\n- Qué es la **IA Física**, qué son los robots de propósito general y en qué estado de desarrollo se encuentran en estos momentos.\n- Qué podemos **aprender** de las iniciativas más relevantes que se están llevando a cabo en este sector.\n- **Oportunidades** profesionales y de negocio que van a surgir en el sector de la robótica impulsada por IA.\n- **Primeros pasos** a dar en este campo, tanto a nivel profesional como en las empresas.\n- Sin olvidarnos de las **sinergias** que surgen como otro tipo de robots con IA como vehículos autónomos, drones, ...\n\nHa llegado el momento de pasar a la acción, que los fuegos artificiales de la IA Generativa no nos impidan ver la enorme oportunidad que supone la IA Física. No va a ser tan sencillo como pedirle a un chat que te haga la tarea, habrá que ensuciarse las manos, va a ser duro pero valdrá la pena.\n\n> Cuando comenzó el auge de las redes sociales Peter Thiel dijo “*queríamos coches voladores y nos dieron 140 caracteres*” que no nos pase lo mismo con la IA Física, “*queríamos robots humanoides y nos dieron los chatbots*”\n\nRealmente necesitamos que la IA llegue al mundo físico, hay tantos problemas por resolver: personas que sufren lesiones físicas por trabajos que les resultan lesivos, ancianos que no tienen compañía que les ayude con las tareas rutinarias, mucha gente que llega a casa tras un largo duro de trabajo y tienen que seguir trabajando para mantener su casa en orden, multitud de empresas que no pueden crecer por falta de personal, … Creo que no es necesario seguir, la sociedad y la economía han llegado a un punto donde necesitamos esta tecnología y tenemos que hacer lo posible para que llegue cuanto antes al mercado.\n\nLos fabricantes de hardware y software están haciendo la parte más importante, pero ahora nos toca el turno a los demás. Hay mil cosas por hacer, empezando por la divulgación que es en lo que me estoy centrando con Integrarobot, pero será necesario hacer formación, asesoramiento, entrenamiento de robots, planes de implantación en empresas, venta, alquiler, reparación, creación de aplicaciones, … y muchas otras cosas que irán surgiendo a medida que los robots vayan llegando al mercado.\n\nEs el momento de pasar a la acción, hay que subirse a la ola de la IA Física. Nos vemos el 25 de marzo en el evento online. Y si te lanzas a emprender en el sector de la robótica espero que lo puedas compartir conmigo para ayudarte con la difusión.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🤖 GEAR-SONIC es un modelo de control de cuerpo completo para robots humanoides que utiliza datos de seguimiento de movimientos y permite a un mismo sistema gobernar caminar, gat…",
+        "body_markdown": "🤖 [GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/) es un modelo de control de cuerpo completo para **robots humanoides** que utiliza datos de seguimiento de movimientos y permite a un mismo sistema gobernar caminar, gatear y teleoperación de forma fluid.a"
+      },
+      {
+        "position": 2,
+        "headline": "🎥 Egoscale es un marco de transferencia humano‑robot que se entrena con más de 25000 horas de vídeo egocéntrico y, tras un breve ajuste con datos robóticos, mejora hasta un 54 %…",
+        "body_markdown": "🎥 [Egoscale](https://www.egoscale.ai/) es un marco de transferencia humano‑robot que se entrena con más de **25000 horas de vídeo egocéntrico** y, tras un breve ajuste con datos robóticos, mejora hasta un 54 % en tareas de manipulación. También demuestra aprendizaje en un solo intento y se ha transferido con éxito a robots como el Unitree G1."
+      },
+      {
+        "position": 3,
+        "headline": "🦾 ElRobot es un brazo robótico altamente asequible, completamente impreso en 3D y Open Source.",
+        "body_markdown": "🦾 [ElRobot](https://x.com/norma_core_dev/status/2026313566077309247) es un brazo robótico altamente asequible, completamente impreso en **3D** y **Open Source**. Sus características principales son diseño completamente impreso en 3D, 7+1 GDL, ideal para investigación en IA física y aprendizaje por imitación, cero hardware personalizado necesario, solo imprime y agrega tu kit de servos."
+      },
+      {
+        "position": 4,
+        "headline": "🇪🇺 Deepmind presenta su programa de aceleración de tres meses para impulsar startups de robótica con alto potencial en sus etapas iniciales mediante los modelos de IA y Gemini R…",
+        "body_markdown": "🇪🇺 [Deepmind](https://deepmind.google/models/gemini-robotics/accelerator) presenta su programa de **aceleración** de tres meses para impulsar startups de robótica con alto potencial en sus etapas iniciales mediante los modelos de IA y Gemini Robotics de Google. Su objetivo es transformar nuevos descubrimientos en empresas líderes en el mercado e impulsar una era de IA física inteligente."
+      },
+      {
+        "position": 5,
+        "headline": "📱 Samsung presentó su visión para 2030 incorporando humanoides RB‑Y1 de Rainbow Robotics a sus líneas de producción y combinándolos con la IA agéntica para optimizar la fabricac…",
+        "body_markdown": "📱 [Samsung](https://humanoid.guide/samsung-targets-2030-global-factory-shift-with-humanoids/) presentó su visión para 2030 incorporando humanoides RB‑Y1 de **Rainbow** Robotics a sus líneas de producción y combinándolos con la IA agéntica para optimizar la fabricación y la logística."
+      },
+      {
+        "position": 6,
+        "headline": "💰 RLWRLD recaudó 26 millones de dólares en su ronda Seed 2, elevando su financiación total a 41 M$.",
+        "body_markdown": "💰 [RLWRLD](https://humanoidroboticstechnology.com/news/rlwrld-raises-26m-seed-2-bringing-total-funding-to-41m/) recaudó 26 millones de dólares en su ronda Seed 2, elevando su financiación total a 41 M$. Está desarrollando **modelos fundacionales** para robots entrenados directamente en fábricas y pretende presentar su primer modelo en la primera mitad de 2026"
+      },
+      {
+        "position": 7,
+        "headline": "🚗 BMW empezará a usar los humanoides AEON de Hexagon Robotics en su planta de Leipzig para ensamblar baterías de alta tensión.",
+        "body_markdown": "🚗 [BMW](https://noticias.autocosmos.com.mx/2026/02/27/bmw-comenzo-a-utilizar-robots-humanoides-en-su-planta-de-leipzig) empezará a usar los humanoides AEON de **Hexagon** Robotics en su planta de Leipzig para ensamblar baterías de alta tensión. Estos robots, probados ya con éxito en Spartanburg, asisten a los empleados en tareas repetitivas y de gran esfuerzo físico"
+      },
+      {
+        "position": 8,
+        "headline": "🔗 Intrinsic, la división de robótica de Alphabet, se integrará en Google para acelerar la IA física.",
+        "body_markdown": "🔗 [Intrinsic](https://www.intrinsic.ai/blog/posts/intrinsic-joins-google-to-accelerate-physical-ai?), la división de robótica de Alphabet, se integrará en Google para acelerar la IA física. Su plataforma Flowstate, descrita como el **Android** de los robots, se combinará con los modelos Gemini y la infraestructura Cloud para facilitar el desarrollo y despliegue de aplicaciones robóticas."
+      },
+      {
+        "position": 9,
+        "headline": "🔧 Hyundai presentó una estrategia de IA Robótica bajo el lema “Partnering Human Progress”.",
+        "body_markdown": "🔧 [Hyundai](https://www.hyundai.news/es/articles/press-releases/estrategia-de-robotica-con-ia-ces-2026.html) presentó una estrategia de IA Robótica bajo el lema “Partnering Human Progress”. La hoja de ruta incluye desplegar el nuevo Atlas de Boston Dynamics en su planta de Alabama en 2028 para tareas de ensamblado, reduciendo el esfuerzo humano; la estrategia se apoya en alianzas con **DeepMind** y **NVIDIA** para crear una cadena de valor de robótica y desarrollar servicios de robot as a service."
+      },
+      {
+        "position": 10,
+        "headline": "📱 Honor sorprende en el Mobile World Congress de Barcelona al presentar su primer robot humanoide.",
+        "body_markdown": "📱 [Honor](https://www.youtube.com/watch?v=_8POu8iwTOc) sorprende en el **Mobile World Congress** de Barcelona al presentar su primer robot humanoide. El robot caminó solo sobre el escenario, mostró equilibrio dinámico, gestos y un breve baile; aunque no se revelaron detalles técnicos ni fecha de comercialización, la demo marca la entrada de un fabricante de móviles en la IA Física."
+      },
+      {
+        "position": 11,
+        "headline": "🧑‍💻 Lenovo AI Workmate Concept es un asistente de escritorio con procesador propio y 64 GB de memoria.",
+        "body_markdown": "🧑‍💻 [Lenovo](https://news.lenovo.com/pressroom/press-releases/trusted-ai-powered-business-computing-modular-enterprise-mwc) AI Workmate Concept es un **asistente de escritorio** con procesador propio y 64 GB de memoria. Reconoce voz, escritura y gestos, puede escanear y resumir documentos, generar presentaciones y proyectar imágenes sobre la mesa. Le acompaña el AI Work Companion, un dispositivo tipo reloj de sobremesa para gestionar agendas mediante IA."
+      },
+      {
+        "position": 12,
+        "headline": "💾 Encord recauda 60 M$ en una Serie C liderada por Wellington Management, elevando su financiación total a 110 M$.",
+        "body_markdown": "💾 [Encord](https://encord.com/blog/encord-announces-60-million-series-c/) recauda 60 M$ en una Serie C liderada por Wellington Management, elevando su financiación total a 110 M$. Su plataforma gestiona y anota grandes conjuntos de datos multimodales, clave para entrenar **robots** y **vehículos autónomos**; los datos almacenados crecieron de 1 a más de 5 petabytes en un año."
+      },
+      {
+        "position": 13,
+        "headline": "🔩 Xiaomi despliega su robot humanoide en la fábrica de automóviles.",
+        "body_markdown": "🔩 [Xiaomi](https://cnevpost.com/2026/03/02/xiaomi-deploys-humanoid-robots-ev-factory) despliega su robot humanoide en la **fábrica** de automóviles. El robot operó 3 horas de forma autónoma en un puesto de instalación de tuercas autoperforantes con una tasa de éxito del 90,2 %. Está impulsado por su modelo VLA de 4,7 mil millones de parámetros y un control híbrido de optimización y aprendizaje reforzado."
+      },
+      {
+        "position": 14,
+        "headline": "🏡 RoboCasa amplía su simulador para entrenar robots generalistas: incluye 365 tareas cotidianas en 2500 cocinas distintas y ofrece más de 600 h de demostraciones humanas y 1600…",
+        "body_markdown": "🏡 [RoboCasa](https://robocasa.ai/) amplía su simulador para entrenar **robots generalistas**: incluye 365 tareas cotidianas en 2500 cocinas distintas y ofrece más de 600 h de demostraciones humanas y 1600 h de datos sintéticos. La plataforma, que utiliza IA generativa para crear entornos variados, permite evaluar y entrenar habilidades como coger objetos, abrir puertas o girar mandos"
+      },
+      {
+        "position": 15,
+        "headline": "🧪 Zeon Systems es una startup acelerada por Y Combinator que desarrolla sistemas robóticos para automatizar experimentos científicos.",
+        "body_markdown": "🧪 [Zeon Systems](https://www.zeonsystems.ai/) es una startup acelerada por Y Combinator que desarrolla sistemas robóticos para automatizar **experimentos científicos**. Su plataforma traduce protocolos escritos en lenguaje natural en código que se ejecuta en brazos robóticos, detecta el instrumental mediante visión por computador y controla el workflow del laboratorio."
+      }
+    ]
+  }
+}

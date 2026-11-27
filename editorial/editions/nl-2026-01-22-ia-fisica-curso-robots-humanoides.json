@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-01-22-ia-fisica-curso-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/ia-fisica-curso-robots-humanoides",
+  "published_on": "2026-01-22",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Physical AI - Humanoid Robots Course",
+  "subtitle": "When Artificial Intelligence finally leaves the screens",
+  "body_markdown": "In recent years we have experienced the explosion of generative AI, with language models (LLMs) capable of generating, interpreting and analyzing text with astonishing eloquence. However, this intelligence has lived confined to the world of words and screens. **Physical AI** represents the next great frontier: the leap from the digital world of bits to the real world of atoms.\n\n### What is Physical AI?\n\nUnlike traditional AI, **Physical AI** is an integrated hardware and software system designed to **perceive, understand, reason and act** in the physical world. Its goal is to interact with its environment through sensors and actuators to perform complex tasks autonomously.\n\nWhile a language model can explain what happens if you push an object, a physical AI must be able to identify where the object is, calculate the force needed to lift it and execute the movement without breaking it.\n\n### The pillars of this revolution\n\nFor a machine to function in our world, it needs more than data; it needs spatial intelligence and world models:\n\n1. **Spatial Intelligence:** it is the scaffolding on which our cognition is built. It allows AI to understand three-dimensional relationships, estimate distances and recognize how objects relate to each other in space and time.\n2. **World Models (WLM):** these are internal representations that allow AI to predict how the physical environment will evolve after an action. A world model doesn't just see a scene; it understands the laws of physics, such as gravity and causality, allowing the system to imagine possible futures before acting.\n3. **Vision-Language-Action Models (VLA):** These models unify visual perception, understanding of natural language instructions and the generation of robotic movements in a single system.\n\n### How does an AI learn to move?\n\nTraining these systems is extremely complex and uses a continuous learning cycle (flywheel):\n\n- **Simulation and synthetic data:** Since training robots in the real world is costly and dangerous, high-fidelity virtual environments (such as NVIDIA Omniverse) are used, where AI can fail thousands of times in milliseconds without physical consequences.\n- **Video data:** models such as 1XWM learn from huge volumes of internet video and egocentric human data to acquire \"common sense\" about how things move in reality.\n- **Reinforcement learning:** the AI receives rewards when it successfully completes a task in simulation, refining its fine and gross motor skills before being deployed on a physical robot.\n\nThus we see that physical AI is not just an incremental improvement on Generative AI, but a paradigm shift toward an **autonomous economy** in which intelligent systems operate with minimal human intervention. By giving AI a deep understanding of physics and space, we are moving from building machines that simply think to creating co-workers that can help us with the challenges of everyday life.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 60; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

@@ -1,0 +1,87 @@
+{
+  "edition_id": "nl-2026-09-16-donde-esta-la-seta-roja-del-robot",
+  "language": "es",
+  "title": "¿Dónde está la seta roja del robot humanoide?",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/286a0680-542c-47ee-bdc4-dfc4dd58a6c7_500x500.jpeg)\n\nSe acaba de presentar la [versión 5](https://www.agilityrobotics.com/solutions/digit-5) del robot humanoide **Digit** de la empresa de **Agility** y el mensaje principal que transmiten en su comunicación es la **seguridad** que ofrece el robot al trabajar en el mismo entorno que las personas.\n\nCuando una empresa con la trayectoria de Agility decide poner el foco en la seguridad es porque observa que puede ser un valor diferencial respecto de las cosas que está haciendo su competencia. Y es normal, porque en el caso de **Unitree** cuyos robots son los más conocidos, la estrategia es muy diferente, lo cual implica que se estén produciendo soluciones donde se observa que algunas acciones del robot pueden estar poniendo en riesgo la seguridad de las personas.\n\nEn este punto lo primero que hay que aclarar es que muchos de los vídeos que circulan por ahí con un robot realizando movimientos peligrosos, incluso donde parece que agreden a personas, pueden estar preparados o simulados, pero en todo caso, esto no quita para que nos preocupemos de que este tema de la seguridad esté bien resuelto.\n\nTambién aquí es necesario aclarar que si la mayoría de robots que ahora se pueden comprar, como son principalmente los de Unitree y Agibot, principalmente se controlan desde un **mando a distancia**, ahí es donde encontramos las opciones de seguridad para apagar el robot en caso de que ocurra algo inesperado. Pero en todo caso los expertos en robótica esperan que puedan existir otras opciones de seguridad más adecuadas o que no dependan de una sóla persona.\n\nAsí que volviendo a Digit, **la seguridad es parte del diseño del robot**, no un añadido que viene después una vez está todo lo demás resuelto.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/2e8b3dd5-ef53-4397-ac59-607dc6cb68e8_1816x1590.png)\n\nAsí lo presenta la propia empresa:\n\n> *“Tras una década de investigación y años de experiencia en su implementación, nuestro robot humanoide de quinta generación es la herramienta de automatización más potente que jamás hayamos creado. **Diseñado para la seguridad colaborativa**, para trabajar en estrecha proximidad con las personas y adaptable para gestionar flujos de trabajo completos”.*\n\nLo que ocurre es que “diseñado” para la seguridad implica tener que hacer algunas concesiones que a largo plazo parece que vayan a ser la forma en la que realmente funcionan los robots. Entiendo que es una situación transitoria hasta que esta industria esté mucho más desarrollada, pero no tendría sentido que cuando todo esté lleno de robots, estos se tengan que parar y agachar cuando una personas se acerca a ellos.\n\nHecha esta introducción al tema de la seguridad, lo que me gustaría comentar a continuación son dos cosas que están muy relacionadas y que no son directamente de robótica sino de IA.\n\n1️⃣ El drama mediático sobre la necesidad de bajar el ritmo de desarrollo de la IA se va a quedar en una anécdota cuando la **IA Física** esté a pleno rendimiento, porque si ya nos preocupa que un **Agente** vaya por Internet haciendo cosas sin control, ni te imaginas el problema que va a suponer cuando esto mismo lo haga un robot 😱. Pero no te preocupes, el ritmo de desarrollo no se va a parar porque la sociedad no quiere perder la oportunidad de que la IA nos ayude a curar las enfermedades u otro tipo de problemas que aún están por resolver, o más bien, el mercado no está dispuesto a perder esta gran oportunidad y las empresas seguirán avanzando en el desarrollo de esta tecnología que tanto beneficio puede aportar. Por el camino habrá disgustos, pero el viaje habrá valido la pena. Y si mi discurso no te convence, puedes leer [este](https://x.com/DeryaTR_/status/2099515006869962890) que es mucho mejor.\n\n2️⃣ El tema de la regulación, por mucho que nos empeñemos, no va a resolver nada 🥸. De hecho a estas alturas nada se resuelve con regulación, lo único que nos mantiene a flote como sociedad es la buena educación. Quiero decir, que aunque se intente a nivel institucional hemos cruzado una línea donde la tecnología va tan por delante de la regulación que cualquier intento de control estará completamente obsoleto. Por ejemplo, la ley de IA en Europa se centra en el control de los modelos y el uso que se hace de ellos, pero se deja fuera lo que ocurre con los robots, que para bien o para mal van a tener un impacto mucho mayor, por tratarse de una cosa física y no sólo digital. Y en este caso, igual que en el de la IA, los robots vienen a ayudarnos a resolver problemas, como el de la falta de mano de otra en la industria y los servicios, por lo tanto, es inevitable que acaben llegando.\n\nMi conclusión es que en lo que más deberíamos estar trabajando en estos momentos es en **educación**, pero no me refiero a la educación formal sino a la educación en valores. Hace tiempo que el sistema educativo no prepara a la gente para el futuro laboral, más vale entonces que al menos lo siga haciendo en lo que a **valores** de convivencia se refiere.\n\nSobrevivimos a la primera guerra fría en la era nuclear y sobreviviremos a la segunda en la era de la IA, pero no será gracias a la regulación, sino porque las empresas encuentren la forma de alinear la IA con los valores humanos y de colocar bien la seta roja en los robots.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💰 Skild AI afirma haber superado los 100 millones de dólares de ingresos recurrentes anuales, diez meses después de su primer despliegue comercial.",
+        "body_markdown": "💰 **[Skild AI](https://www.skild.ai/blogs/skild-crosses-100m-arr)** afirma haber superado los **100 millones de dólares de ingresos recurrentes anuales**, diez meses después de su primer despliegue comercial. La compañía asegura contar con más de 60 clientes de pago y señala que aproximadamente el 90% de sus ingresos procede de tareas de manipulación. Skild también trabaja con NVIDIA y Foxconn en aplicaciones de robots de doble brazo para fabricación."
+      },
+      {
+        "position": 2,
+        "headline": "🧠 GPT-6 Astra ha sido destacado por Max Zhaoshuo Li, responsable técnico de NVIDIA Cosmos, por sus resultados aplicados a robótica.",
+        "body_markdown": "🧠 **[GPT-6 Astra](https://x.com/mli0603/status/2099370170649333807)** ha sido destacado por Max Zhaoshuo Li, responsable técnico de **NVIDIA Cosmos**, por sus resultados aplicados a robótica. En su publicación, Li menciona el concepto de *Physical RSI* y enlaza resultados experimentales relacionados con el uso de modelos generalistas en tareas robóticas."
+      },
+      {
+        "position": 3,
+        "headline": "🦾 UniFoLM-WLA es un modelo para robótica presentado con 6.000 millones de parámetros y entrenado con aproximadamente 2.500 horas de datos de robots reales.",
+        "body_markdown": "🦾 **[UniFoLM-WLA](https://unigen-x.github.io/unifolm-wla.github.io/)** es un modelo para robótica presentado con 6.000 millones de parámetros y entrenado con aproximadamente 2.500 horas de datos de robots reales. Sus autores indican que un único modelo puede ejecutar 64 tareas de manipulación y trabajar con diferentes configuraciones de manos y movimientos de cuerpo completo. El proyecto publica modelos, datasets y código."
+      },
+      {
+        "position": 4,
+        "headline": "📦 Maven Robotics ha anunciado una ronda de financiación por 100 millones de dólares.",
+        "body_markdown": "📦 **[Maven Robotics](https://techcrunch.com/2026/09/10/maven-robotics-wants-to-steal-your-robot-deployment-deal/)** ha anunciado una ronda de financiación por **100 millones de dólares**. La empresa desarrolla robots móviles con dos brazos orientados a la automatización logística y a tareas como el paletizado. Según la compañía, algunos de sus sistemas trabajan hasta 16 horas al día."
+      },
+      {
+        "position": 5,
+        "headline": "🤖 Humanoid afirma acumular más de 34.000 pedidos anticipados, con un valor potencial de unos 2.400 millones de dólares.",
+        "body_markdown": "🤖 **[Humanoid](https://www.forbesargentina.com/innovacion/tiene-mas-34000-pedidos-anticipados-busca-hacerse-lugar-mercado-robots-humanoides-n97469)** afirma acumular más de **34.000 pedidos anticipados**, con un valor potencial de unos 2.400 millones de dólares. La compañía trabaja con Bosch en industrialización y con Schaeffler en componentes y actuadores, y plantea aumentar progresivamente su capacidad de producción."
+      },
+      {
+        "position": 6,
+        "headline": "💾 Mecka AI negocia una nueva ronda de financiación liderada por Sequoia que podría situar su valoración cerca de los 500 millones de dólares.",
+        "body_markdown": "💾 **[Mecka AI](https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data/)** negocia una nueva ronda de financiación liderada por **Sequoia** que podría situar su valoración cerca de los 500 millones de dólares. La empresa está especializada en recopilación y preparación de datos para entrenar sistemas robóticos."
+      },
+      {
+        "position": 7,
+        "headline": "📊 Robocurve ha anunciado una ronda semilla de 10 millones de dólares.",
+        "body_markdown": "📊 **[Robocurve](https://robocurve.org/blog/seed-raise/)** ha anunciado una ronda semilla de 10 millones de dólares. La compañía desarrolla herramientas y **benchmarks para evaluar modelos de robótica** sobre sistemas físicos reales. Su plataforma Inspect Robots permite ejecutar y comparar evaluaciones reproducibles de modelos robóticos."
+      },
+      {
+        "position": 8,
+        "headline": "🏗️ UBTECH Robotics ha mostrado nuevas capacidades de producción de robots humanoides en sus instalaciones industriales.",
+        "body_markdown": "🏗️ **[UBTECH Robotics](https://x.com/UBTECHRobotics/status/2099830594817646663)** ha mostrado nuevas capacidades de producción de robots humanoides en sus instalaciones industriales. La compañía está ampliando sus líneas de fabricación para aumentar el volumen de producción de sus robots **Walker** y otros sistemas destinados a aplicaciones industriales."
+      },
+      {
+        "position": 9,
+        "headline": "🖐️ Reward AI ha presentado OM-1, un sistema para recopilar datos de tareas realizadas por humanos y utilizarlos para entrenar robots.",
+        "body_markdown": "🖐️ **[Reward AI](https://www.rewardai.com/blog/OM-1/)** ha presentado OM-1, un sistema para recopilar datos de tareas realizadas por humanos y utilizarlos para entrenar robots. Su dispositivo Omnibody Hand registra información como movimiento, fuerza, tacto, proximidad y vídeo durante la ejecución de las tareas."
+      },
+      {
+        "position": 10,
+        "headline": "📈 Goldman Sachs ha actualizado sus previsiones sobre el mercado de robots humanoides.",
+        "body_markdown": "📈 **[Goldman Sachs](https://humanoid.guide/goldman-raises-2035-humanoid-robot-forecast-to-6-5-million)** ha actualizado sus previsiones sobre el mercado de robots humanoides. Según la información publicada, estima alrededor de **6,5 millones de unidades acumuladas para 2035** y un mercado potencial de aproximadamente 138.000 millones de dólares."
+      },
+      {
+        "position": 11,
+        "headline": "💾 XDOF negocia una ronda Serie B que podría valorar la compañía en unos 1.200 millones de dólares.",
+        "body_markdown": "💾 **[XDOF](https://techcrunch.com/2026/09/04/xdof-just-three-months-out-of-stealth-is-in-talks-for-a-series-b-at-a-1-2b-valuation)** negocia una ronda Serie B que podría valorar la compañía en unos **1.200 millones de dólares**. La empresa desarrolla sistemas de teleoperación y recopilación de datos destinados al entrenamiento de modelos de robótica."
+      },
+      {
+        "position": 12,
+        "headline": "🏭 FANUC ha anunciado junto a Google Cloud un sistema de IA para automatizar parte de la programación de procesos de soldadura.",
+        "body_markdown": "🏭 **[FANUC](https://www.fanuc.co.jp/en/profile/pr/newsrelease/2026/notice20260911.html)** ha anunciado junto a **Google Cloud** un sistema de IA para automatizar parte de la programación de procesos de soldadura. El sistema utiliza **Gemini Enterprise** para interpretar información de la pieza y generar parámetros y programas de movimiento para robots industriales."
+      },
+      {
+        "position": 13,
+        "headline": "🇰🇷 Samsung estaría preparando la presentación de un robot humanoide en CES 2027, según fuentes citadas por Tech in Asia.",
+        "body_markdown": "🇰🇷 **[Samsung](https://www.techinasia.com/news/samsung-plans-humanoid-robot-reveal-ces-2027)** estaría preparando la presentación de un robot humanoide en CES 2027, según fuentes citadas por Tech in Asia. La compañía ha reorganizado parte de sus actividades de robótica y mantiene además su participación en Rainbow Robotics."
+      },
+      {
+        "position": 14,
+        "headline": "🌍 Veeda AI está desarrollando modelos del mundo y entornos virtuales destinados al entrenamiento de sistemas de IA Física.",
+        "body_markdown": "🌍 **[Veeda AI](https://thelogic.co/news/exclusive/veeda-ai-sanja-fidler-nvidia)** está desarrollando **modelos del mundo** y entornos virtuales destinados al entrenamiento de sistemas de IA Física. La compañía ha sido fundada por antiguos investigadores de NVIDIA especializados en inteligencia espacial y simulación."
+      },
+      {
+        "position": 15,
+        "headline": "🧩 Corematter ha publicado un marco para analizar la cadena de valor de la IA Física.",
+        "body_markdown": "🧩 **[Corematter](https://corematter.substack.com/p/physical-ai-value-stack-framework)** ha publicado un marco para analizar la **cadena de valor de la IA Física**. El modelo divide el sector en diferentes capas, entre ellas hardware, actuadores, sensores, computación, modelos de IA, datos, simulación, herramientas de desarrollo e integración."
+      }
+    ]
+  }
+}

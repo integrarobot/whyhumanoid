@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2025-12-03-la-combinacion-de-robotica-e-impresion",
+  "source_url": "https://www.integrarobot.com/p/la-combinacion-de-robotica-e-impresion",
+  "published_on": "2025-12-03",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The combination of robotics and 3D printing will bring an explosion in productivity ⚙️",
+  "subtitle": "Robots working with 3D printers to take us to Mars.",
+  "body_markdown": "> *Optimus will be the Von Neumann probe*. Elon Musk\n\n**John Von Neumann** was obsessed with **self-replicating machines**. If you want to know why, I recommend reading the book [Maniac](https://amzn.to/48fGCIH); it's very good.\n\nThe Von Neumann probe is not only about self-replicating machines, but also about the **conquest of space**, and that is clearly **Elon Musk**'s obsession.\n\nSo with this combination we reach the point of understanding why **3D printing**, or digital fabrication, is going to be decisive for the future of robotics.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/e6a614b4-ea0a-4169-aa40-b0480d26a6a4_1536x2048.avif)\n\nImagine what it would be like to have to build habitats for astronauts on another planet; I don't think it is as simple as getting there and pitching tents. Then there is the problem of having to lift all that cargo off the Earth, fighting against **gravity**. So the most logical thing is for the materials to build the habitats to come not from Earth but from the planet to be inhabited itself. Then there is the matter of the machines that make things with those materials; I don't think we are going to take large machines like those used in industry up there either, which is why we will have to work with 3D printers, which can be much lighter and more versatile.\n\nIn short, the Von Neumann probe is not about a robot that builds itself, but about a robot that is able to operate machines to build other machines or parts of them.\n\nAnd this is precisely what the company [DHR](https://dhr.is/) does, a company that uses **robots** and **3D printers** with the aim of meeting the changing demands of modern industry and precision manufacturing.\n\nEspecially interesting is the application of robotics in **3D printing farms**. Thus we see how the fusion of 3D printers and **robotic arms** that DHR proposes seeks to solve the problem of industrial scaling caused by the absence of suitable automation models, since many industries still operate with manual processes typical of the last century: heavy handling, harsh environments and repetitive tasks, where the availability of workers keeps shrinking, costs keep rising and productivity has been stagnant for years.\n\nHowever, robotics driven by Artificial Intelligence proposes to transform this scenario because it combines accessible hardware with much more flexible software, which breaks with the traditional model of rigid robotics that only works properly on very stable industrial manufacturing lines.\n\nA custom robotic cell designed by DHR combines the following elements: 2D/3D perception, dynamic planning with digital twin validation, robotic arms and custom tooling, adapted transport flows, industrial control integrated with MES/ERP, and quality modules.\n\nTruly amazing, especially if we look at the videos of how the technology developed by the company operates.\n\n[Video embedded in the original article]\n\nEqually mind-blowing to me is the work of the company [GITAI](https://gitai.tech/), which in this case combines robots with other space exploration technologies, for example energy infrastructure and **satellites**.\n\nGITAI presents itself as a partner for **rocket** launch companies, providing **safe and affordable labour** to build space colonies and cities on the Moon and Mars.\n\n[Video embedded in the original article]\n\nPay attention, because it talks about labour to refer to its robotic arms, so it is taking for granted that it makes no sense to send people up there to do such risky jobs when a machine can be doing that very same work.\n\nBy the way, we should extrapolate this same idea to many other jobs that are just as dangerous or harmful for people; it is about time humanity applied all its intellect to building machines that solve this problem.\n\nThe technology is available; it is just a matter of scaling it. We have more than enough cases to confirm that it is only a matter of devoting more resources to it. One example is the work of [Kyber Labs](https://www.linkedin.com/posts/kyber-labs_heres-a-quick-look-at-something-weve-activity-7398825306343559168-oxqT/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAkl-q8Bq7hCLArMVBKy0zpfVK7tKl6V6vw): with this video, its **robotic hand** shows that incredible levels of manual dexterity can be reached, which debunks the myth that robots are clumsy and will not be able to do the jobs we people do.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🚘 NVIDIA is unstoppable with Physical AI.",
+        "body_markdown": "🚘 [NVIDIA](https://blogs.nvidia.com/blog/neurips-open-source-digital-physical-ai/) is unstoppable with **Physical AI**. One of its most recent contributions is DRIVE Alpamayo-R1, the world's first open industrial-scale reasoning, vision, language and action model for mobility and robotics."
+      },
+      {
+        "position": 2,
+        "headline": "🇫🇷 UMA is a promising robotics startup led by Rémi Cadene, who will apply his experience working on the development of Tesla Optimus and leading the open source robotics project…",
+        "body_markdown": "🇫🇷 [UMA](https://uma.bot/) is a promising robotics startup led by Rémi Cadene, who will apply his experience working on the development of Tesla Optimus and leading the open source robotics project **LeRobot** to creating a humanoid robot from France."
+      },
+      {
+        "position": 3,
+        "headline": "🇬🇧 HUMANOID is already walking.",
+        "body_markdown": "🇬🇧 [HUMANOID](https://x.com/TheHumanoidAI/status/1995840587870667036) is already walking. In just 5 months the English startup has built a robot with the following characteristics: 179 cm, 29 DoF, 15 kg bimanual payload, 12-DoF hands or parallel grippers, 3 h of runtime, RGB cameras, sensors, and end-to-end reasoning and skills powered by **NVIDIA** and KinetIQ (its own VLA)."
+      },
+      {
+        "position": 4,
+        "headline": "🇨🇳 RGMP (recurrent geometric-prior multimodal policy) is a new AI model designed to improve humanoid robots' object manipulation capability, developed at Wuhan University.",
+        "body_markdown": "🇨🇳 [RGMP](https://techxplore.com/news/2025-11-humanoid-robots-reliably-success-framework.html) (recurrent geometric-prior multimodal policy) is a new AI model designed to improve humanoid robots' object **manipulation** capability, developed at Wuhan University."
+      },
+      {
+        "position": 5,
+        "headline": "🕺 Bytadance (yes, the creators of TikTok) presents Seed GR-RL: a reinforcement learning framework for long-horizon dexterous manipulation that allows robots to stably execute mu…",
+        "body_markdown": "🕺 [Bytadance](https://seed.bytedance.com/en/gr_rl) (yes, the creators of **TikTok**) presents Seed GR-RL: a reinforcement learning framework for long-horizon dexterous manipulation that allows robots to stably execute multi-step, high-precision tasks in real-world environments."
+      },
+      {
+        "position": 6,
+        "headline": "💫 Yilun Chen leaves Apple and joins the Tesla Optimus AI team: humanoids are the ultimate dream of our generation.",
+        "body_markdown": "💫 [Yilun Chen](https://x.com/yilun_chen_/status/1995009665705676937?s=46) leaves Apple and joins the **Tesla Optimus** AI team: *humanoids are the ultimate dream of our generation. With the recent progress of LLMs and Physical AI, this dream is finally within reach, and it is up to us to make it a reality.*"
+      },
+      {
+        "position": 7,
+        "headline": "🧠 Scanford allows robots not only to rely on the data provided by AI models, but to generate valuable data while they work.",
+        "body_markdown": "🧠 [Scanford](https://scanford-robot.github.io/) allows robots not only to rely on the data provided by AI models, but to generate valuable data while they work. By deploying them in real tasks, a cycle of **continuous improvement** is created in which the robot acts, collects data from the environment, and that data makes it possible to refine the model to better adapt it to the domain and improve its generalization capability."
+      },
+      {
+        "position": 8,
+        "headline": "🧭 Legged Robotics is a repository that extends Isaac Lab with environments and tools for training Robotic World Model and other model-based reinforcement methods.",
+        "body_markdown": "🧭 [Legged Robotics](https://github.com/leggedrobotics/robotic_world_model) is a repository that extends **Isaac Lab** with environments and tools for training Robotic World Model and other model-based reinforcement methods. It makes it possible to jointly train policies and dynamics models, compare model-based and model-free policies, and visualize \"imagination\" rollouts generated by the learned dynamics."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 49; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "55e799e6808e70443b1b4016edc9bc126c2fb6fe983ce7921480154e73a665c8"
+}

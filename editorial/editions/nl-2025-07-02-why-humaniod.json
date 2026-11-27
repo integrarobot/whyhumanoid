@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2025-07-02-why-humaniod",
+  "source_url": "https://www.integrarobot.com/p/why-humaniod",
+  "published_on": "2025-07-02",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Why Humaniod?",
+  "subtitle": "One of the questions I have been asked most since I started Integrarobot, and one I now find easier to answer.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/14837d06-dd01-455a-84cd-07a7c8739df2_960x540.jpeg)\n\nAs **Integrarobot** reaches **6 months** since its launch, I would like to take the opportunity to take stock of how this time has gone in the sector of **robotics driven by Artificial Intelligence**, since there have been quite a few new developments and advances of great significance toward one day fulfilling the dream of having our own humanoid robot.\n\nThat said, I will start by sharing some of the conclusions I have reached in this time, most of them positive, although there will also be some negative ones to report.\n\n**🤔 Why Humanoid?** This is one of the questions I have been asked most, and it probably makes much more sense than it seems, but contrary to what many people think, what we should answer is **Why not?** Let me explain: one might think the human body is inefficient for certain tasks; for example, we would all love to have four arms so we could do many more things, or even 4 legs so we could run much faster, but we forget that the human body is the result of millions of years of evolution, and if we have ended up with this structure it is for a reason. For example, if the same brain has to coordinate 4 arms and 4 legs, the computing capacity and energy consumption would be much greater, so we had better make do with what we have, which has already been shown to work. To this we must add that we humans have designed our artificial environment to our own measure for thousands of years: tools, workshops, furniture, vehicles, household appliances, … so if we want robots to do the work for us, they will have to be adapted to the environment we ourselves have created to fit our bodies.\n\n👷 **There is a labour shortage**. In my conversations with business owners, this is the most notable conclusion I have reached. Thanks to the AI courses for companies, I have had the opportunity to work with the managers of hundreds of companies, and they have shared their frustration because they cannot grow or carry out their activity properly due to a lack of labour. I am not going to analyze here the different tensions that arise in the labour market, but I do see some situations that seem unsustainable to me and where humanoid robots should be the solution many are hoping for. I am referring to the kind of work people are often forced to do, which ends up causing them all kinds of injuries, and which in turn affects the company through the % of workers on sick leave relative to the active workforce, which sometimes makes its business model unviable. That is the reality: at this stage of human evolution it makes no sense for a person to spend 8 hours making exactly the same mechanical movement where no intellectual contribution of any kind is needed. So it is not that machines are going to take our jobs; it is that some people have been working like robots for too long.\n\n🚀 **The technology industry sees the opportunity very clearly**. This has been made clear in the presentations given by NVIDIA on Physical AI. Also in the presentation of Gemini for Robotics, where Google wants to repeat the move it made with Android for smartphones. To this we must add the progress of Tesla with its Optimus robot and Boston Dynamics with its Atlas robot, as well as the investments we have learned about in robotics startups by technology companies such as Amazon, Microsoft and Samsung, or automotive companies such as BMW, Volvo, Mercedes, … Not to mention the emergence of dozens of robotics companies in China, and also the notable progress of Western startups in integrating AI into robots. Of these companies we should highlight Figure, 1X, Neura, Agility and Apptronik as the most advanced, or at least those we have the most information about. And to finish this point, I also want to highlight the contribution of the open source community, which is another great catalyst for humanoid robots soon becoming a reality. See as an example the recent launch by [K-Scale](https://www.kscale.dev/).\n\n😞 That said, let's move on to the negative part: we still have hardly any options for buying a humanoid robot, and even fewer for it to be able, once bought, to fulfil a wide variety of functions in all kinds of environments. To illustrate it in some way, it would be like when in '95 I connected to the Internet for the first time, but you could barely do 4 things, and to do them you had to wait a very long time until the modem connected. But not many years had to pass before the network filled up with websites, portals, directories, forums, search engines, … which gave it great usefulness. In any case, I find it very important that more and more progress is being seen from developers who are already working with Unitree's G1 and H1 humanoid robots, as well as the great news, for me, that K-Scale's K-Bot can finally be ordered, which seems to me an example to follow in terms of the open source community's contribution to the development of robotics driven by Artificial Intelligence.\n\nIn any case, and as a final conclusion for this article, I find everything that has happened in such a short time amazing. I don't know whether you have been reading the newsletter since January, but every week important things have happened that were worth highlighting as an article, and in each publication I have also been able to include a large number of news items exclusively on robotics topics. I confess that when I started this I did not think everything was going to move so fast and have so much scope. So you can imagine how excited I am about the work at Integrarobot. I can't wait to tell you about the next steps I want to take from September onwards to help drive this fascinating world of humanoid robots even further.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "NVIDIA keeps releasing new developments in robotics; in this case it has put the focus on industrial robots, which it wants to help become more agile thanks to its Isaac Manipul…",
+        "body_markdown": "[NVIDIA](https://developer.nvidia.com/blog/making-industrial-robots-more-nimble-with-nvidia-isaac-manipulator-and-vention-machinemotion-ai/) keeps releasing new developments in robotics; in this case it has put the focus on **industrial robots**, which it wants to help become more agile thanks to its **Isaac Manipulator** software and Vention MachineMotion AI."
+      },
+      {
+        "position": 2,
+        "headline": "Apptronik has also set its sights on industrial robotics, and to that end it has presented the Elevate brand, through which it wants to apply its experience manufacturing humano…",
+        "body_markdown": "[Apptronik](https://apptronik.com/news-collection/apptronik-announces-creation-of-elevate-robotics) has also set its sights on **industrial robotics**, and to that end it has presented the Elevate brand, through which it wants to apply its experience manufacturing humanoids to performing heavy tasks"
+      },
+      {
+        "position": 3,
+        "headline": "KOID is the ETF created by the financial company Kraneshare to make it easier from now on to invest in the robotics sector, specifically in humanoids.",
+        "body_markdown": "[KOID](https://kraneshares.com/koid/) is the **ETF** created by the financial company **Kraneshare** to make it easier from now on to invest in the robotics sector, specifically in humanoids. As an anecdote, the bell on Wall Street was rung by a Unitree robot."
+      },
+      {
+        "position": 4,
+        "headline": "Neuralink and Optimus are starting to collaborate.",
+        "body_markdown": "[Neuralink](https://officechai.com/ai/neuralink-could-enable-people-to-inhabit-an-optimus-robot-elon-musk/) and **Optimus** are starting to collaborate. It was only a matter of time before **Elon Musk** put cross-pollination between his different companies into practice. In this case, the aim is for brain implants to help control robots."
+      },
+      {
+        "position": 5,
+        "headline": "Samsung joins LG in showing interest in entering the humanoid market as a supplier of robot cameras, where it hopes to apply the experience gained over years of creating camera…",
+        "body_markdown": "[Samsung](https://www.koreaherald.com/article/10516324) joins **LG** in showing interest in entering the humanoid market as a supplier of **robot cameras**, where it hopes to apply the experience gained over years of creating camera modules for smartphones and cars."
+      },
+      {
+        "position": 6,
+        "headline": "KAERI is the Korea Atomic Energy Research Institute, and it has developed a humanoid robot especially designed for use in disaster response situations, capable of lifting 40 kg…",
+        "body_markdown": "[KAERI](https://interestingengineering.com/innovation/humanoid-robot-nails-88lb-arm-curls) is the Korea Atomic Energy Research Institute, and it has developed a humanoid robot especially designed for use in **disaster response** situations, capable of lifting 40 kg in a bicep curl test."
+      },
+      {
+        "position": 7,
+        "headline": "SmolVLA is a new open source vision-language-action model that has been trained on data from the Lerobot community, which belongs to Hugging Face.",
+        "body_markdown": "[SmolVLA](https://huggingface.co/blog/smolvla) is a new open source **vision-language-action** model that has been trained on data from the Lerobot community, which belongs to Hugging Face. One more example of the great contribution this community is making to the development of robotics."
+      },
+      {
+        "position": 8,
+        "headline": "ARK is an open source Python-based framework that integrates modern imitation learning algorithms and seamless interactions between physical and simulated robots to simplify the…",
+        "body_markdown": "[ARK](https://huggingface.co/papers/2506.21628) is an open source **Python**-based framework that integrates modern imitation learning algorithms and seamless interactions between physical and simulated robots to simplify the development and deployment of robotics."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 27; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "8890058b2a1704e88bc8e3a5b4b7cbe5c73a56d7f5ece2e6d77b8608836a348c"
+}

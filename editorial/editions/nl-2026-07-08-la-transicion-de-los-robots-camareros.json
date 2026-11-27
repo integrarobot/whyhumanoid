@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2026-07-08-la-transicion-de-los-robots-camareros",
+  "source_url": "https://www.integrarobot.com/p/la-transicion-de-los-robots-camareros",
+  "published_on": "2026-07-08",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The transition from waiter robots to humanoids",
+  "subtitle": null,
+  "body_markdown": "> Note: today I wanted to **apologize** because on Monday I made a mistake by sending a newsletter automatically using AI. I was in a course teaching how to use Codex and gave a demonstration of how to carry out the complete process of writing a news item and publishing it automatically. I got so distracted by the explanation that I didn't manage to stop it in time and the news item ended up being sent. So my apologies, because I have no intention of publishing this newsletter with AI; it was simply an oversight.\n\n# The transition from waiter robots to humanoids\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/fdfa89dd-adf4-4528-9c7e-52e4ded5a0c4_2048x1192.png)\n\nAnd now let's get to today's topic, because recently we have been seeing a new trend in **robotics** that is starting to consolidate and will probably help give this sector a new boost. I mean that several new **startups** have decided to bring to market a new type of robot that is not yet quite a humanoid but is considerably more evolved than a waiter robot.\n\nSpecifically, we have three very recent cases worth knowing about, because they will probably set a trend and accelerate this transition we are experiencing from programmable robotics to **Physical AI**.\n\n- [Weave](https://www.weaverobotics.com/isaac-1) presents the robot **Issac**, a robot built specifically to work in homes. Orders can already be placed, with a subscription price of 499 dollars a month or 7,999 dollars if paid in full. According to the planned schedule, the robot will start being delivered to its first buyers in the autumn, and as you can see, it moves on a mobile platform to perform basic household tasks, such as tidying, putting away clothes and making beds. Little more for now, but enough for many early adopters to consider buying their first humanoid robot for the home.\n- [Nori](https://www.norirobotics.com/), for its part, presents a robot that also moves on wheels, but in this case its format is even more basic, since the robotic arms have their structure very much on view, which gives it a still rather unevolved look. In any case, the demonstrations on its website show good object manipulation capabilities. And the price is very affordable: 1,288 dollars for the small version and 1,322 for the large version. Sales seem to be going well, since the first manufacturing batch has sold out.\n- [Bracket Bot](https://www.bracketbot.com/) is the third startup following this same pattern, presenting a manipulator robot with hoverboard-type drive wheels and a tall, slim shape. The creators want to manufacture no less than \"a billion robots\" at a price below 3,000 dollars. The company plans to start selling the robot by the end of the summer, and its current efforts are focused on scaling data collection for training its Physical AI models.\n\nWith these introductions made, let's remember that a few months ago similar proposals such as Sunday and Tangible were presented, so we are not facing something totally new but one more step in the same direction.\n\nAnd now for the analysis, because the first interpretation leads us to think these robots are a transitional stage before the arrival of true humanoids, such as **Figure** and **Optimus**, but perhaps that's not it; perhaps this type of robot really makes sense in its own right. And I base this mainly on the question of price, because while estimates for the most advanced robots, with legs and great physical capabilities, speak of an amount that may be around 50,000 dollars, in these cases we are talking about some 10 times less.\n\nSo what could happen is that for a long time we see a situation similar to that of the mobility market. Those who don't want, or can't afford, a high-end vehicle opt for more affordable and simpler options; there are even those who prefer a motorbike or a bicycle. So if, in the use of machines for transport, the variety is very high, something similar could happen with humanoid robots.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/f6a885c4-9aa3-4872-ad46-b5a34e2fca87_609x411.jpeg)\n\nThat is the first option, because the second would point to an evolutionary process, where robots are now very simple, basically a waiter robot with arms, but in the future those same companies will create much more sophisticated products with more advanced capabilities.\n\nTime will tell, but in this case I lean more toward the first option: the market for proposals like Weave's and Nori's is enormous, so perhaps these companies don't need to devote their efforts to making big changes to their robot's hardware, but rather to giving them usefulness through AI and, above all, to manufacturing them en masse as the market demands them.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📊 ARK Invest publishes a new analysis of Physical AI in which it places humanoids as a leap in complexity far greater than that of robotaxis.",
+        "body_markdown": "📊 [ARK Invest](https://www.ark-invest.com/articles/analyst-research/robotaxis-to-humanoids-embodied-ai-represents-an-order-of-magnitude-leap) publishes a new analysis of Physical AI in which it places humanoids as a leap in complexity far greater than that of robotaxis. The report argues that **a generalist robot is about 200,000 times more complex than a robotaxi**, that humanoids' operational performance could approach that of current robotaxis by 2028, and that Tesla would need to invest some 50 billion dollars in operational compute to bring Optimus to near-human competence."
+      },
+      {
+        "position": 2,
+        "headline": "🏠 UBTech presents the UWorld U1 household series, a new line of humanoids for home use and companionship.",
+        "body_markdown": "🏠 [UBTech](https://humanoid.guide/ubtech-unveils-uworld-u1-humanoid-robots-for-home-use/) presents the UWorld U1 household series, a new line of humanoids for home use and **companionship**. The range includes U1 Lite, U1 Pro and U1 Ultra, with prices between 119,800 and 990,000 yuan, 88 biomimetic joints, flexible electronic skin and recognition of more than 20 emotional states. UBTech states that cumulative orders exceeded 13,361 units at launch."
+      },
+      {
+        "position": 3,
+        "headline": "📈 Unitree receives the green light for its IPO on Shanghai's STAR market and is preparing to become the first listed humanoid robot company in China.",
+        "body_markdown": "📈 [Unitree](http://spanish.china.org.cn/txt/2026-07/06/content_118585005.htm) receives the green light for **its IPO** on Shanghai's STAR market and is preparing to become the first listed humanoid robot company in China. The company plans to raise 4.202 billion yuan to expand production, strengthen R&D in embodied intelligence and build new factories, at a time when the country already has more than 140 humanoid manufacturers and 27 national data collection centres."
+      },
+      {
+        "position": 4,
+        "headline": "🧪 NVIDIA presents SimFoundry, a Real2Sim2Real system that generates digital twins and \"task cousins\" to improve the generalization of robotic policies.",
+        "body_markdown": "🧪 [NVIDIA](https://research.nvidia.com/labs/gear/simfoundry/) presents SimFoundry, a **Real2Sim2Real** system that generates digital twins and \"task cousins\" to improve the generalization of robotic policies. In the published results, SimFoundry's synthetic data raises the real-world performance of a fine-tuned VLA on 13 tasks from 28% to 46%, and on seven unseen tasks from 0% to 29%, in addition to outperforming SAM3D in mesh and object pose reconstruction."
+      },
+      {
+        "position": 5,
+        "headline": "🎪 China is showing a new phase of the market, with robots being rented for fairs, events, marriage proposals and promotional campaigns.",
+        "body_markdown": "🎪 [China](https://edition.cnn.com/2026/06/30/tech/china-humanoid-robot-ai-rental-intl-hnk-dst) is showing a new phase of the market, with robots being rented for fairs, events, marriage proposals and promotional campaigns. Rates are around 3,000 yuan a day, operator included, and the business has already generated thousands of orders in its first months. At the same time, this route makes clear that robots still need human supervision and remain far from replacing real autonomous work."
+      },
+      {
+        "position": 6,
+        "headline": "🖐️ Proception settles its legal dispute with Tesla and announces an 11 million dollar seed round led by First Round Capital.",
+        "body_markdown": "🖐️ [Proception](https://techcrunch.com/2026/06/29/robot-hand-company-settles-tesla-trade-secret-suit-and-announces-11m-raise/) settles its legal dispute with Tesla and announces an **11 million dollar** seed round led by First Round Capital. The startup, founded by Jay Li after his time at Optimus, develops ProHand and ProGlove with the aim of solving one of the hardest problems in robotics: achieving truly functional hands for fine dexterity tasks."
+      },
+      {
+        "position": 7,
+        "headline": "💸 X Square Robot completes four consecutive funding rounds up to a Series C and raises its valuation above 2.8 billion dollars.",
+        "body_markdown": "💸 [X Square Robot](https://www.therobotreport.com/x-square-robot-brings-valuation-2-8b-four-consecutive-funding-rounds/) completes four consecutive funding rounds up to a Series C and raises its valuation above **2.8 billion dollars**. The company will devote the new capital to developing foundation models for embodied AI, commercial deployments and integrated robotic infrastructure, consolidating itself as one of China's most highly valued embodied AI startups."
+      },
+      {
+        "position": 8,
+        "headline": "📡 OctoSense presents a new open multimodal perception platform for robots and vehicles, with RGB stereo cameras, event cameras, LiDAR, thermal, IMU, RTK GPS and proprioception.",
+        "body_markdown": "📡 [OctoSense](https://arxiv.org/abs/2606.27317) presents a new open multimodal perception platform for robots and vehicles, with RGB stereo cameras, event cameras, **LiDAR**, thermal, IMU, RTK GPS and proprioception. The associated dataset brings together 59 hours of synchronized driving in different environments and times of day, including situations with degraded sensors, and the work proposes a self-supervised framework for learning robotic perception with all those modalities at once."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 103; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "2eae05abf65224e8165e0c4eca545306ac9d134707e6306d517552b26b22830e"
+}

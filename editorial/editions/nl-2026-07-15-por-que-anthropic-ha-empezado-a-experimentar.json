@@ -1,0 +1,77 @@
+{
+  "edition_id": "nl-2026-07-15-por-que-anthropic-ha-empezado-a-experimentar",
+  "source_url": "https://www.integrarobot.com/p/por-que-anthropic-ha-empezado-a-experimentar",
+  "published_on": "2026-07-15",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Why has Anthropic started experimenting with robots?",
+  "subtitle": "The creators of Claude want their AI to transcend the virtual world into the physical world, and they are already testing it for controlling robots.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/495d2454-30ed-4ce6-b909-11a5086e80f4_2048x1024.png)\n\nOver this summer, scientists at the company **Anthropic**, creators of **Claude**, have renewed their interest in robotics and are starting to make very interesting progress that could represent a new boost for the arrival of general-purpose robotics.\n\nPay attention to this, which they published on [18 June](https://www.anthropic.com/research/project-fetch-phase-two):\n\n> *\"We observe a pattern in which, first, models help humans. Then, humans help models. Finally, models are able to perform tasks by themselves. We have seen this before in **cybersecurity**, and now the same dynamic is starting to take shape at the intersection of AI and the physical world.\"*\n\nThe cybersecurity point is important because this year Anthropic has had enormous prominence worldwide due to the development of the **Mythos** model, which has turned the entire IT security sector upside down with its ability to discover software vulnerabilities much more efficiently than people. This has even led the company to have political problems, with the United States' temporary ban on the Fable model, the general-public version of Mythos.\n\nIf the creators of Claude really achieve advances as important in applying AI to robotics as they have in cybersecurity, this will be a great boost for the development of Physical AI, which is why it is so important for us to know in detail what they have been doing and how it could evolve.\n\n**🗓️ August 2025**: Project **Fetch** begins, an experiment to test to what extent Claude could help Anthropic employees, who were not robotics experts, perform sophisticated tasks with a quadruped robot, and they found that being able to use the state-of-the-art model at the time (Claude Opus 4.1) allowed one team to far outperform the other, which could only rely on the Internet and its own ingenuity. The team that had Claude's help managed to do more, and faster.\n\n**🗓️ June 2026**: Project Fetch is resumed to see whether the most recent models could outperform the previous generation. Not only did they succeed, but Claude Opus 4.7, operating without human assistance, was about **20 times faster** than the fastest human team on all the tasks completed by participants in the experiment less than a year earlier.\n\nAs a conclusion of this Anthropic work, what we find is that generalist AI models used in robotics are improving rapidly, but their capability depends largely on the control method they use. When they have to control the joints themselves, they tend to fail. However, when they supervise a pre-trained controller or use simple guidance tools, they can complete real navigation and manipulation tasks. Some forms of robotics remain difficult to handle and control, but the most recent models are much more effective at adjusting their strategies and turning visual and sensory understanding into appropriate actions across different domains.\n\nThis is important for the development and safe deployment of language models in robotics. Current frontier models cannot control humanoid robots without a pre-trained policy, but the most recent models have made significant progress in direct manipulation and high-level policy control in humanoid and quadruped embodiments.\n\nFoundation models are beginning to be able to orchestrate robotic capabilities that already exist, so the agent's value will lie not in generating every movement, but in:\n\n- Understanding human intention\n- Breaking down a task\n- Choosing the right robotic capability\n- Supervising its execution\n- Detecting errors\n- Changing strategy\n- Learning from previous attempts\n\nSo what this Anthropic work is teaching us is that in the future the usual way of working in robotics will have the following structure:\n\n> **Person → AI agent → VLA → controller → robot**\n\nBut more importantly, what is going to happen in robotics is also going to happen in technology in general; that is, AI Agents are going to become the interface through which we interact with technology. What until now we have done through software or websites to manage things, communicate or get information, we will now do through Claude, ChatGPT, Gemini, … in natural language, without buttons, menus, links, … all through words, whether written or spoken. And it will be those agents that take charge of managing software for us or generating it \"on the fly\" if necessary.\n\n## Mistral is also keen on robotics\n\nNow that we know the latest **Anthropic** is doing in robotics, which we can add to the recent news of **OpenAI** searching for robotics engineers and the work **DeepMind** is doing in Physical AI to build the Android of robotics, let's also look at how other AI labs are setting their sights on robotics as one of the next milestones on their path.\n\nSpecifically, in Europe we have [Mistral](https://mistral.ai/news/robostral-navigate/) as the main LLM developer, and it is now also setting out to create its own autonomous navigation model for robots.\n\nRobostral Navigate allows robots to navigate autonomously in complex environments using only an RGB camera, achieving 76.6% success on unseen R2R-CE benchmarks and outperforming multi-sensor approaches. The model was developed entirely by Mistral with simulated data and token optimization techniques; it generalizes to different types of robots and adapts to real-world obstacles not seen during training. The model combines pointer-based navigation with reinforcement learning for continuous improvement, paving the way toward AI embedded in robotics.\n\nAs you can imagine, all these joint efforts by AI labs, added to those being made by robotics companies, are a new catalyst that will further accelerate the development of Physical AI.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "✋ 1X presents NEO's new hands with 25 degrees of freedom, tendon transmission, force control in all joints and distributed tactile sensors.",
+        "body_markdown": "✋ [1X](https://www.1x.tech/discover/neos-hands) presents **NEO's new hands** with 25 degrees of freedom, tendon transmission, force control in all joints and distributed tactile sensors. 1X claims ±0.2 mm precision, IP68 resistance, food-safe materials and the capacity to manufacture 10,000 hands this year on its own production line."
+      },
+      {
+        "position": 2,
+        "headline": "🧪 ABB Robotics signs a global collaboration with Roche Diagnostics to develop robotic solutions for clinical laboratories.",
+        "body_markdown": "🧪 [ABB Robotics](https://new.abb.com/news/detail/137375/abb-robotics-colabora-con-roche-para-llevar-la-ia-fisica-a-los-laboratorios) signs a global collaboration with **Roche Diagnostics** to develop robotic solutions for clinical laboratories. The first applications focus on handling and organizing pathology slides and on autonomous intralogistics in central laboratories using mobile robots and articulated arms."
+      },
+      {
+        "position": 3,
+        "headline": "🥋 RoboDojo presents a unified benchmark in simulation and the real world for evaluating generalist manipulation policies.",
+        "body_markdown": "🥋 [RoboDojo](https://robodojo-benchmark.com/) presents a unified **benchmark** in simulation and the real world for evaluating generalist manipulation policies. The platform brings together 42 simulation tasks, 18 real tasks and a public leaderboard to compare models and control systems for robotic manipulation on an equal footing."
+      },
+      {
+        "position": 4,
+        "headline": "🏭 Mitsubishi Motors signs a memorandum with Highlanders, a University of Tokyo robotics startup, to develop humanoids for its manufacturing operations and study their mass produ…",
+        "body_markdown": "🏭 [Mitsubishi Motors](https://www.automotiveworld.com/news/mitsubishi-motors-to-build-and-deploy-humanoid-robots/) signs a memorandum with **Highlanders**, a University of Tokyo robotics startup, to develop humanoids for its manufacturing operations and study their mass production at the Kyoto plant from early 2027. The agreement combines internal deployment and industrial capacity, and is presented as the first pact between a car manufacturer and a humanoid developer that includes series production."
+      },
+      {
+        "position": 5,
+        "headline": "🏆 Booster Robotics dominates RoboCup 2026 and takes all the titles in the small, medium and large divisions.",
+        "body_markdown": "🏆 [Booster Robotics](https://es.finance.yahoo.com/noticias/robots-humanoides-booster-robotics-llevan-012500469.html) dominates **RoboCup 2026** and takes all the titles in the small, medium and large divisions. Of the 59 participating teams, 38 competed with Booster robots, including champions on the T1, K1 and K1 Air platforms, while the company strengthens its ecosystem with Booster Studio and a new 3v3 tournament."
+      },
+      {
+        "position": 6,
+        "headline": "💰 Holiday Robotics closes a Series A of 155 billion won, equivalent to just over 100 million dollars, to accelerate its FRIDAY robot and its bet on industrial humanoids.",
+        "body_markdown": "💰 [Holiday Robotics](https://holiday-robotics.com/blog/series-a) closes a Series A of 155 billion won, equivalent to just over 100 million dollars, to accelerate its **FRIDAY** robot and its bet on industrial humanoids. The round has been described as the largest Series A for a South Korean startup and one of the largest individual financings for a humanoid company in Korea."
+      },
+      {
+        "position": 7,
+        "headline": "🛞 AI² Robotics raises 735 million to scale AlphaBot, its robot with a mobile base, humanoid torso, manipulator arms and five-fingered hands.",
+        "body_markdown": "🛞 [AI² Robotics](https://robotica.es/empresas/ai2-robotics-alphabot-735-millones-humanoide-ruedas/) raises 735 million to scale **AlphaBot**, its robot with a mobile base, humanoid torso, manipulator arms and five-fingered hands. The company links the system with Alpha Brain, its vision, language and action model, and maintains a focus on industrial deployments before opening up to broader public scenarios."
+      },
+      {
+        "position": 8,
+        "headline": "🌍 Xiaomi presents U0, a 38-billion-parameter multimodal autoregressive model for embodied synthesis with world foundation models.",
+        "body_markdown": "🌍 [Xiaomi](https://arxiv.org/abs/2607.11643) presents **U0**, a 38-billion-parameter multimodal autoregressive model for embodied synthesis with world foundation models. The system supports coherent multi-view generation across different embodiments, structured scene editing and embodied transfer, and reports an improvement in pi_0.5's out-of-distribution success rate from 36.9% to 63.2% on real manipulation tasks."
+      },
+      {
+        "position": 9,
+        "headline": "⚡ UBTECH partners with Shenhao Technology to develop humanoids for power grid operations in substations and distribution rooms.",
+        "body_markdown": "⚡ [UBTECH](https://humanoid.guide/ubtech-partners-with-shenhao-for-power-grid-humanoids) partners with Shenhao Technology to develop humanoids for **power grid** operations in substations and distribution rooms. The agreement includes a joint lab for electrical applications and targets tasks such as inspection with multimodal sensors, defect detection, switching operations and installation of grounding cables."
+      },
+      {
+        "position": 10,
+        "headline": "🚜 TerraFirma raises 115 million dollars to expand its remote operation technology for construction machinery.",
+        "body_markdown": "🚜 [TerraFirma](https://www.cnbc.com/2026/07/14/terrafirma-construction-tech-spacex.html) raises 115 million dollars to expand its remote operation technology for **construction machinery**. The company, founded by two former SpaceX engineers, plans to hire 300 people and build a factory in Texas and a mission control centre, while continuing to develop remote control interfaces for heavy equipment with a long-term eye on infrastructure for the space economy."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 104; 10 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "d28231519b0dc19427b6faf80390eb66f585a8530173d0ee5aabf73d7762cb45"
+}

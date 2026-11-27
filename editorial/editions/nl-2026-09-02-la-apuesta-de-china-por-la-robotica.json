@@ -1,0 +1,122 @@
+{
+  "edition_id": "nl-2026-09-02-la-apuesta-de-china-por-la-robotica",
+  "source_url": "https://www.integrarobot.com/p/la-apuesta-de-china-por-la-robotica",
+  "published_on": "2026-09-02",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "China's bet on robotics may make it the world's greatest power",
+  "subtitle": "I'm not one for making predictions, but in this case what China is doing with robotics is very remarkable.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/dd4b2455-c092-4923-91c0-70821e526ba3_800x708.jpeg)\n\nNow that it is time to resume activity on this newsletter, I wonder which can be considered the most important robotics news to come out during the month of August.\n\nAt first I thought it must be **Unitree**'s IPO, and then that **Agibot**'s success at the World Humanoid Robot Games was more important. In both cases the common denominator is that Chinese companies are taking much of the sector's spotlight, and we must keep a close eye on how other companies internationally react to this great push coming from the East.\n\n### Why is Unitree's IPO worth talking about?\n\nFirst, because ordinary mortals have not been able to take part in it. Especially those of us who are not Chinese citizens, which you can't imagine how much it has bothered me personally. And what must be said here is that the conditions of this IPO have been very restrictive and show the extent to which geopolitics can affect our sector.\n\nBy this I don't mean that politicians have meddled, only that, for example in this case, the absence of a free market can greatly harm those of us who want to take part in this business.\n\nWhat happened here is that Unitree began trading during August on **China's STAR Market**, and therefore the purchase of shares was reserved for institutional professional investors.\n\nSo although few people were able to take part in this operation, the data on what happened tells us about the market's great interest in participating in this company and, by extrapolation, in the robotics sector in general:\n\n- Start of trading: 19 August 2026\n- Percentage of shares issued: 10%\n- Total capital raised: $907M\n- Company valuation at the launch of the IPO: $9,077M\n- Company valuation on the first day of trading: $66,210M\n- Share price appreciation on the IPO: +629.4%\n- Share price appreciation as of 2 September 2026 +262.1%\n\nAs you can see, the success of the IPO has been brutal, but not for everyone who has invested so far: above all for those who were able to buy in the IPO (0.2% of those who tried) and not so much for those who bought once the company had already risen that 600%, who may now be losing almost 50% of their investment if they make the mistake of selling their shares.\n\nAnd I say selling the shares would be a mistake because becoming a Unitree shareholder seems to me a great opportunity. For several reasons, such as the total commitment of its **CEO** (now that is [putting skin in the game](https://www.youtube.com/watch?v=O7OkiZfIlS4) in every sense, as the demonstration videos of its robots show); the collaboration with **NVIDIA** to create a robot focused on Physical AI research; the investment by **DeepSeek** just before the IPO, which sounds like a masterstroke; and many other things you surely know if you follow this newsletter regularly.\n\nThe only objection we could raise at the moment is that it was not the company that won the most medals at the second World Humanoid Robot Games, which were also held in China during August.\n\n### We are going to keep a very close eye on Agibot from now on\n\nBecause at the robot olympics the company that really triumphed was **Agibot**, with a total of 46 medals: 18 gold, 16 silver and 12 bronze, compared with the 10 won by Unitree.\n\nSo Agibot is capturing part of the spotlight Unitree had held until now, and not only because of this, but also because the company is taking the lead in number of orders, as shown by the [Smart Analytics Global](https://smartanalyticsglobal.com/global-humanoid-robot-shipments-2026-agibot-unitree/?utm_source=chatgpt.com) report, according to which AgiBot delivered 8,400 robots during the first half of 2026, 44% of the market, with growth of 562, compared with Unitree with 5,900 units delivered and 31% of the market.\n\nFigures that put Agibot at the forefront of interest, especially considering that the company has announced it intends to start trading before the end of this year, and that if it does so it would be on the **Hong Kong stock exchange**, which could make it easier for any investor to take part in the operation.\n\nBut anyway, let's leave the stock market for a moment and go back to the robot olympics, because another wake-up call comes when we look at which robot won the most medals, since in this case it does not belong to a company but to a research centre backed by the Chinese State. Specifically, I mean the **Tien Kung** robot, developed and manufactured by the Beijing Innovation Center of Humanoid Robotics, which operates internationally under the brand **X-Humanoid**. It is an innovation centre backed by the Beijing Government and initially formed by **Xiaomi** Robotics, **UBTECH** and Beijing Jingcheng Machinery Electric.\n\nTherefore, taking into account these news items we have just discussed, I think the most notable thing about what happened in humanoid robotics during August is that it has become very clear that China currently leads the robotics industry, and that in the USA and Europe we had better get our act together, because these kinds of imbalances could leave us in a very bad position.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🧩 Anthropic presents the Model Hardware Standard (MHS), a specification for AI agents to discover and operate programmable equipment (from microscopes to robotic arms) through c…",
+        "body_markdown": "A month without publishing the newsletter and the news piles up, but it is welcome, because this sector is on fire :)\n\n🧩 [Anthropic](https://www.anthropic.com/news/model-hardware-standard-research-preview) presents the **Model Hardware Standard (MHS),** a specification for AI agents to discover and operate programmable equipment (from microscopes to robotic arms) through common controllers and MCP. With it, the aim is to turn custom physical integration into a reusable software layer, since the current limit remains expert supervision when the failure is physical rather than digital."
+      },
+      {
+        "position": 2,
+        "headline": "🟢 NVIDIA wants to buy Hugging Face in a 12.9 billion dollar deal, not yet confirmed.",
+        "body_markdown": "🟢 [NVIDIA](https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/) wants to buy **Hugging Face** in a 12.9 billion dollar deal, not yet confirmed. For robotics it would be much more than buying a model repository: NVIDIA would gain influence over the distribution of open models and data and over a physical ecosystem that already includes LeRobot and Pollen Robotics."
+      },
+      {
+        "position": 3,
+        "headline": "🐥 Hugging Face's Pollen Robotics opens the pre-sale of Microduck, an open 25-centimetre biped with 15 motors costing 399 dollars, designed for reinforcement learning and sim-to-…",
+        "body_markdown": "🐥 Hugging Face's [Pollen Robotics](https://pollen-robotics.com/microduck/) opens the pre-sale of **Microduck**, an open 25-centimetre biped with 15 motors costing 399 dollars, designed for reinforcement learning and sim-to-real. In the first days of reservations the company has already received orders by the thousands and raised millions of dollars."
+      },
+      {
+        "position": 4,
+        "headline": "🧠 Google DeepMind presents Gemini Robotics 2 as a family of models for controlling a robot's whole body, reasoning about physical tasks and coordinating several robots.",
+        "body_markdown": "🧠 [Google DeepMind](https://deepmind.google/models/gemini-robotics/) presents **Gemini Robotics 2** as a family of models for controlling a robot's whole body, reasoning about physical tasks and coordinating several robots. The combination of toe-to-finger control, embodied reasoning and local execution suggests that value is shifting from isolated skills toward intelligence transferable across bodies."
+      },
+      {
+        "position": 5,
+        "headline": "📹 Figure has created Index, its global network for collecting video of human tasks and training Helix, its robots' AI.",
+        "body_markdown": "📹 [Figure](https://www.figure.ai/news/introducing-index) has created **Index**, its global network for collecting video of human tasks and training Helix, its robots' AI. The company says it has gathered 16 million videos from 44,000 weekly active users and expects to spend more than 1 billion dollars on data and compute over twelve months: proof that the humanoid's competitive advantage may lie as much in the data loop as in the robot."
+      },
+      {
+        "position": 6,
+        "headline": "💰 Andreessen Horowitz creates a 1.1 billion dollar fund for the \"age of machines\", from chips, memory and networks to data centres, robotics and AI home devices.",
+        "body_markdown": "💰 [Andreessen Horowitz](https://www.a16z.news/p/the-machine-age-fund) creates a **1.1 billion dollar** fund for the \"age of machines\", from chips, memory and networks to data centres, **robotics** and AI home devices. It is a sign that venture capital no longer treats hardware as an accompaniment to software, but as the physical infrastructure that limits the next phase of AI."
+      },
+      {
+        "position": 7,
+        "headline": "🤖 XPENG Robotics raises more than 900 million dollars at a post-money valuation above 6.3 billion.",
+        "body_markdown": "🤖 [XPENG Robotics](https://roboticsandautomationnews.com/2026/08/26/xpengs-new-robotics-business-raises-900-million-at-6-3-billion-valuation/104463/) raises more than **900 million dollars** at a post-money valuation above 6.3 billion. The funding, backed by **IDG**, **Tencent** and **Alibaba**, will go to physical AI models, data and industrial capacity to bring the IRON robot to mass production and global commercialization."
+      },
+      {
+        "position": 8,
+        "headline": "🏠 SoftBank is negotiating the purchase of a majority stake in 1X, according to The Information, at a valuation of nearly 6 billion dollars.",
+        "body_markdown": "🏠 [SoftBank](https://www.theinformation.com/articles/softbank-talks-buy-majority-stake-humanoid-maker-1x-6-billion-valuation) is negotiating the purchase of a majority stake in **1X**, according to The Information, at a valuation of nearly 6 billion dollars. If closed, it would give SoftBank a controlling position in one of the most visible bets on the household humanoid and provide 1X with more capital to turn NEO into an operational product for homes."
+      },
+      {
+        "position": 9,
+        "headline": "🧠 Generalist adds nearly 200 million dollars and raises its reported valuation to 3 billion a few months after its previous round.",
+        "body_markdown": "🧠 [Generalist](https://robotico.market/news/generalist-raises-nearly-200m-at-3b-valuation) adds nearly **200 million dollars** and raises its reported valuation to 3 billion a few months after its previous round. The money once again rewards the \"robot brain\" layer: embodied models capable of learning tasks and operating on different bodies, without the company having to build its own robot."
+      },
+      {
+        "position": 10,
+        "headline": "📈 Counterpoint Research estimates that more than 22,000 humanoids were shipped in the first half of 2026, almost 300% more year on year.",
+        "body_markdown": "📈 [Counterpoint Research](https://counterpointresearch.com/en/insights/global-humanoid-robot-shipments-soar-nearly-300-percent-yoy-in-h1-2026) estimates that more than **22,000 humanoids** were shipped in the first half of 2026, almost 300% more year on year. The important point is that more than 60% of the robots are still destined for entertainment, research and data production, while manufacturing accounts for 13% and logistics for 5%: shipments are growing, but they do not yet amount to mass productive adoption."
+      },
+      {
+        "position": 11,
+        "headline": "📦 Amazon has launched Project Tetromino to automate delivery stations through AI and robotics.",
+        "body_markdown": "📦 [Amazon](https://www.businessinsider.com/amazon-tetromino-project-aims-to-fully-automate-delivery-stations-2026-8) has launched **Project Tetromino** to automate delivery stations through AI and robotics. An internal document proposed multiplying throughput by 2.5, although Amazon describes the project as an early concept and disputes its figures and timeline.."
+      },
+      {
+        "position": 12,
+        "headline": "🗄️ Meta is testing robots from Kinova, Watney and ABB to connect cables, restart servers and handle components inside its data centres.",
+        "body_markdown": "🗄️ [Meta](https://www.wired.com/story/inside-metas-experiments-with-data-center-robots/) is testing robots from Kinova, Watney and ABB to connect cables, restart servers and handle components inside its **data centres**. It is an attractive use case because of its controlled environment and the shortage of technicians."
+      },
+      {
+        "position": 13,
+        "headline": "🖐️ Project SuperDex appears as an open Meta platform for researching dexterous manipulation with a physics engine focused on complex contacts, robotic authoring tools and reinfo…",
+        "body_markdown": "🖐️ [Project SuperDex](https://projectsuperdex.com/) appears as an open **Meta** platform for researching **dexterous manipulation** with a physics engine focused on complex contacts, robotic authoring tools and reinforcement learning. Its preview combines simulation, virtual teleoperation and sim-to-real transfer, attacking one of robotics' hardest bottlenecks: learning to manipulate without paying for every mistake on real hardware."
+      },
+      {
+        "position": 14,
+        "headline": "🩸 Vitestro obtains FDA clearance for Aletta, the first autonomous blood-drawing robot.",
+        "body_markdown": "🩸 [Vitestro](https://www.fda.gov/news-events/press-announcements/fda-authorizes-first-its-kind-robotic-blood-draw-device) obtains **FDA** clearance for **Aletta**, the first autonomous blood-drawing robot. A trained professional can supervise up to three units, which locate the vein with infrared and ultrasound and carry out the complete process; it is specialized robotics that is already turning staff shortages into a regulated operating model."
+      },
+      {
+        "position": 15,
+        "headline": "🚇 AVITA, KDDI and Osaka Metro bring a humanoid with Gemini to Umeda and Tanimachi-kyuchome stations to guide travellers, explain transfers and assist in several languages.",
+        "body_markdown": "🚇 [AVITA, KDDI and Osaka Metro](https://avita.co.jp/news/MC3RbeTB) bring a humanoid with **Gemini** to Umeda and Tanimachi-kyuchome stations to guide travellers, explain transfers and assist in several languages. The pilot, to be carried out from 31 August to 15 September, will measure demand, acceptance and operational problems."
+      },
+      {
+        "position": 16,
+        "headline": "🏭 ABB Robotics and NVIDIA propose a digital-first methodology for implementing physical AI in manufacturing: robotic vision from the design stage, digital twins, synthetic data,…",
+        "body_markdown": "🏭 [ABB Robotics and NVIDIA](https://new.abb.com/news/es/detail/137886/abb-robotics-y-nvidia-publican-un-libro-blanco-sobre-el-impacto-transformador-de-la-ia-fisica-en-la-fabricacion) propose a **digital-first** methodology for implementing physical AI in manufacturing: robotic vision from the design stage, digital twins, synthetic data, prior validation and feedback from the plant floor. What is relevant is the way the concept of physical AI materializes, turning sim-to-real into a repeatable, traceable and verifiable industrial process."
+      },
+      {
+        "position": 17,
+        "headline": "🧱 Kinetic Blocks opens in beta a marketplace for data to train robots, with controlled access, documented provenance, a commercial licence and a common quality score for each da…",
+        "body_markdown": "🧱 [Kinetic Blocks](https://kineticblocks.com/news/beta-launch?mc_cid=5267a086fe&mc_eid=0e650fe101) opens in beta a marketplace for **data to train robots**, with controlled access, documented provenance, a commercial licence and a common quality score for each dataset. The strategic test is whether physical data can move from slow, opaque bilateral agreements to become a comparable, verifiable and purchasable asset."
+      },
+      {
+        "position": 18,
+        "headline": "🎮 Tesla adds Virtuix's Omni One Enterprise system to Optimus to expand its teleoperation tools.",
+        "body_markdown": "🎮 [Tesla](https://finance.yahoo.com/energy/articles/tesla-tsla-secures-long-term-011113160.html) adds Virtuix's **Omni One Enterprise** system to **Optimus** to expand its teleoperation tools. This news shows us that capturing human demonstrations and operating remotely remain basic infrastructure for generating data, supervising tasks and improving policies."
+      },
+      {
+        "position": 19,
+        "headline": "🐕 OpenCat offers an open framework for building and modifying Petoi quadrupeds with Arduino or Raspberry Pi, including Bittle and Nybble.",
+        "body_markdown": "🐕 [OpenCat](https://x.com/simplifyinai/status/2088376367289455006?s=46) offers an open framework for building and modifying Petoi **quadrupeds** with Arduino or Raspberry Pi, including Bittle and Nybble. It is not an industrial platform, but a practical and affordable gateway for understanding gait, balance, sensors and recovery after falls by reading and changing the robot's code."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 107; 19 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "2c1289646a8bc2cbbadb90acbbe2602037f1062ec29411191f1eac4c211399cd"
+}

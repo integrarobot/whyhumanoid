@@ -1,0 +1,62 @@
+{
+  "edition_id": "nl-2026-04-29-ups-quiere-comprar-miles-de-robots",
+  "language": "es",
+  "title": "UPS quiere comprar miles de robots",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/185272ce-f836-4d53-bfb8-6e26f39a1611_1200x579.jpeg)\n\n¿Qué puede llevar a [Brett Adcock](https://x.com/adcock_brett/status/2046975249686941711) a publicar un gráfico sobre el crecimiento de la fabricación de los robots **Figure** en el cual no aparecen los datos del eje Y?\n\nEstoy seguro de que sabía que esto le iba a generar muchas críticas e incluso desconfianza. No parece una actitud propia de un empresario que quiere mejorar el mundo a través de su tecnología.\n\nPero no voy a ser yo quien critique a uno de los empresarios que más esfuerzos está haciendo para hacer realidad el sueño de los robots humanoides, así que vamos con lo importante: las cifras de fabricación de los robots se están disparando.\n\nSi el gráfico es cierto, aunque incompleto, lo que parece claro es que en los últimos meses la fabricación se ha disparado, pasando de 0 o 1 robot en abril en 2025 a un número que debería ser de varios cientos de robots fabricados al mes en estos momentos, lo cual nos llevaría a una cifra de miles a lo largo de este año.\n\nEntonces, si nos remitimos a las cifras que publica la empresa, tenemos el dato de la capacidad de fabricación que tiene o tendrá la fábrica [BotQ](https://www.figure.ai/news/botq) “*con capacidad para producir hasta **12.000 robots humanoides al año***”.\n\n### 📦 UPS quiere comprar 10.000 robots a Figure\n\nAquí es donde la cosa se pone interesante, porque en una actividad tan nueva, donde hay tanta incertidumbre, lo normal sería ser prudente a la hora de lanzarse a producir en masa, no sea que el mercado no acepte aún el producto por su inmaduro estado de desarrollo.\n\nPero ya sabes, el que no arriesga no gana, y la recompensa es tan alta que muchas empresas se están lanzando a comprar los robots, aunque aún estén en una fase prematura de desarrollo. Recuerda lo que siempre digo, el primer iPhone no tenía GPS, pero la gente se lanzó en masa a comprarlo.\n\nVeamos otros ejemplos de cómo se están lanzando las empresas a comprar o al menos a encargar robots humanoides.\n\n- **Schaeffler** planea desplegar más de 1.000 humanoides robóticos AEON de [Hexagon](https://hexagon.com/company/newsroom/press-releases/2026/hexagon-schaeffler-deploy-aeon-humanoids-across-global-factory-network) en sus fábricas globales para 2032\n- Los operadores de la [red eléctrica de China](https://www.scmp.com/economy/china-economy/article/3351323/china-plans-invest-billions-robot-army-run-its-power-grid) planean comprar miles de robots solo en 2026, incluyendo dispositivos para inspeccionar y mantener infraestructuras vitales.\n- [ROBOTERA](https://www.robotera.com/en/), que está desplegando su robot humanoide L7 en más de 10 centros logísticos operados por China Post, SF Express Group y otras empresas del sector.\n\n[Vídeo insertado en el artículo original]\n\n### ¡Esto marcha!\n\nMi conclusión tras pensar en todo esto es que las cosas avanzan a su debido ritmo. Así tenemos tiempo para **prepararnos** y que no se nos venga todo encima como ha ocurrido con la IA Generativa, donde mucha gente anda aún paralizada porque no sabe cómo afrontar el gran cambio que se está produciendo.\n\nEn todo caso, tampoco me parece prudente quedarse esperando a que los robots estén por todos lados y por eso pienso que es el mejor momento para aprender de robótica. Así que he lanzado un **curso** en directo online donde contar todo lo que conozco sobre **IA Física** y robótica humanoide. Será los días 12, 13 y 14 de mayo de 18 a 20h y ya te puedes apuntar. Para hacerlo tienes que entrar a formar parte de la comunidad pioneros robots, que tiene un coste de 10 euros al mes o 100 euros al año. Además podrás participar en los encuentros mensuales de la comunidad y recibir contenido exclusivo.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦾 Sisteplant es una empresa española que ha creado R Bot, un software de automatización para actividades de inspección, mantenimiento, calidad, supervisión de producción y segur…",
+        "body_markdown": "🦾 [Sisteplant](https://sisteplant.com/que-ofrecemos/r-bot/) es una empresa española que ha creado **R Bot**, un software de automatización para actividades de inspección, mantenimiento, calidad, supervisión de producción y seguridad en plantas industriales, edificios e infraestructuras, que controla una flota de robots móviles que trabajan coordinados entre sí."
+      },
+      {
+        "position": 2,
+        "headline": "🧠 Sereact levanta 110 millones de dólares para escalar Cortex 2.0 y entrar en Estados Unidos.",
+        "body_markdown": "🧠 [Sereact](https://sereact.ai/posts/series-b) levanta 110 millones de dólares para escalar Cortex 2.0 y entrar en Estados Unidos. La compañía afirma tener más de 200 sistemas desplegados en Europa y más de 1.000 millones de picks reales, reforzando la idea de que el dato operativo en almacén puede convertirse en una ventaja acumulativa para la **IA física**."
+      },
+      {
+        "position": 3,
+        "headline": "🛞 Unitree demuestra que los humanoides no tienen por qué limitarse a caminar: también pueden incorporar ruedas cuando la tarea lo permita.",
+        "body_markdown": "🛞 [Unitree](https://x.com/UnitreeRobotics/status/2047257759473946705) demuestra que los humanoides no tienen por qué limitarse a caminar: también pueden incorporar **ruedas** cuando la tarea lo permita. La idea interesante no es el truco visual, sino el enfoque pragmático: si el objetivo es crear robots de propósito general, la forma humanoide puede combinarse con soluciones de movilidad más eficientes."
+      },
+      {
+        "position": 4,
+        "headline": "🧪 Siemens explica cómo combinar simulación y pruebas reales puede acelerar el entrenamiento de robots.",
+        "body_markdown": "🧪 [Siemens](https://blogs.sw.siemens.com/simcenter/the-future-of-robot-training/) explica cómo combinar simulación y pruebas reales puede acelerar el **entrenamiento de robots**. Su enfoque apunta a reducir el coste y el riesgo del aprendizaje físico, usando gemelos digitales y pequeñas cantidades de datos reales para ajustar el comportamiento del robot ante terrenos, fricción y condiciones cambiantes."
+      },
+      {
+        "position": 5,
+        "headline": "💸 Pudu Robotics capta cerca de 150 millones de dólares y supera una valoración de 1.500 millones.",
+        "body_markdown": "💸 [Pudu Robotics](https://www.pudurobotics.com/en/news/pudu-robotics-raises-150-million-exceeds-1-5-billion-valuation) capta cerca de **150 millones de dólares** y supera una valoración de 1.500 millones. La compañía china, conocida por robots de servicio, limpieza y logística, quiere usar el capital para avanzar en embodied AI, ampliar su catálogo y escalar fabricación y cadena de suministro global."
+      },
+      {
+        "position": 6,
+        "headline": "🛫 A&K Robotics consigue 8 millones de dólares canadienses para desplegar Cruz, su robot autónomo de movilidad para aeropuertos.",
+        "body_markdown": "🛫 [A&K Robotics](https://www.businesswire.com/news/home/20260421367847/en/AK-Robotics-Raises-%248-Million-to-Build-Autonomous-Mobility-Infrastructure-for-Airports) consigue 8 millones de dólares canadienses para desplegar Cruz, su robot autónomo de movilidad para **aeropuertos**. El caso es interesante porque lleva la autonomía a entornos interiores muy concurridos, donde la accesibilidad, la seguridad y la integración operativa pesan tanto como la navegación."
+      },
+      {
+        "position": 7,
+        "headline": "🏭 Vodafone junto con SAP y Accenture prueban humanoides en un almacén conectados con SAP Extended Warehouse Management.",
+        "body_markdown": "🏭 [Vodafone](https://newsroom.accenture.com/news/2026/accenture-vodafone-procure-connect-and-sap-pilot-humanoid-robotics-in-warehouse-operations) junto con **SAP** y **Accenture** prueban humanoides en un almacén conectados con SAP Extended Warehouse Management. El robot inspecciona productos, palés, espacio infrautilizado y riesgos de seguridad, mostrando cómo la robótica humanoide empieza a integrarse en procesos empresariales reales, no solo en demos aisladas."
+      },
+      {
+        "position": 8,
+        "headline": "🇬🇷 MARK One aparece como el primer humanoide industrial diseñado y construido en Grecia.",
+        "body_markdown": "🇬🇷 [MARK One](https://x.com/CyberRobooo/status/2048392629000573229) aparece como el primer humanoide industrial diseñado y construido en **Grecia**. Desarrollado por **AXL Imperial**, combina movilidad autónoma y brazos para tareas como paletizado, alimentación de máquinas, control de calidad y manipulación de materiales."
+      },
+      {
+        "position": 9,
+        "headline": "📚 NVIDIA publica un módulo práctico para construir el primer robot en Isaac Sim.",
+        "body_markdown": "📚 [NVIDIA](https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-sim/latest/building-your-first-robot-in-isaac-sim/index.html) publica un módulo práctico para construir el primer robot en **Isaac Sim**. La guía cubre creación del robot, físicas, sensores, control y conexión con ROS 2, reforzando el papel de Isaac Sim como puerta de entrada para formar talento y acelerar proyectos de simulación robótica."
+      },
+      {
+        "position": 10,
+        "headline": "🏓 Sony AI presenta Ace, un robot capaz de competir contra jugadores de élite en tenis de mesa.",
+        "body_markdown": "🏓 [Sony AI](https://ace.ai.sony/) presenta Ace, un robot capaz de competir contra jugadores de élite en **tenis de mesa**. El proyecto combina sensores de visión de baja latencia, aprendizaje por refuerzo y hardware de alta velocidad para responder en milisegundos, convirtiéndose en un hito de IA física en interacción dinámica y competitiva."
+      }
+    ]
+  }
+}

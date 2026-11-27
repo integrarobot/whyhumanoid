@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-03-13-casos-de-uso-curso-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/casos-de-uso-curso-robots-humanoides",
+  "published_on": "2026-03-13",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Use cases - Humanoid Robots Course",
+  "subtitle": null,
+  "body_markdown": "Where will we see humanoid robots first?\n\nIf we look at the demonstrations manufacturers make, we can imagine robots at home helping us with household chores. However, the market could evolve differently.\n\nThe first places where we will see humanoid robots should be the sectors where there is a direct economic need and where tasks are repetitive, dangerous or hard to staff.\n\nIndustry analyses indicate that the first big wave of adoption will occur in **logistics and manufacturing**, two sectors with worker shortages and relatively structured environments. In these contexts, robots can start performing tasks such as moving goods, preparing orders or handling parts on production lines.\n\nThe reason is simple: warehouses and factories are already designed for humans, so a humanoid-shaped robot can be integrated without having to redesign the entire infrastructure.\n\nAnother important category is the jobs known as **\"3D\"** (dirty, dangerous, dull): dirty, dangerous and boring. They include activities such as industrial maintenance, rescues, mining or handling hazardous materials. In these cases, the economic incentive to replace human labour is even greater, because it also reduces occupational risks and accidents.\n\nIn addition, there are three technological trends that are accelerating the development of these robots:\n\n- **Advances in multimodal AI and end-to-end control**, which allow robots to interpret language, vision and actions in an integrated way.\n- **Rapid reduction in component costs**, with drops of close to 40% in some key systems.\n- **Growing investment by manufacturers and governments** to develop this new industry.\n\nThanks to these factors, some analysts estimate that the global humanoid robot market could reach tens of billions of dollars in the next decade, with more than a million units deployed by the mid-2030s.\n\nThe adoption sequence will probably be this:\n\n1. Logistics and warehouses\n2. Manufacturing\n3. Retail\n4. Hospitality and services\n5. Healthcare and care\n6. Construction and agriculture\n7. Home\n\nIn all these contexts there is a cross-cutting function where robots can start working right now: surveillance tasks.\n\nThey would be moving alarm systems, to which all kinds of sensors can also be added to improve the function offered. And over time, these robots could also do other kinds of activities that are more practical and valuable for their owners.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 76; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

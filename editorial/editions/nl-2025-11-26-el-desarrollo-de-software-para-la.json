@@ -1,0 +1,77 @@
+{
+  "edition_id": "nl-2025-11-26-el-desarrollo-de-software-para-la",
+  "source_url": "https://www.integrarobot.com/p/el-desarrollo-de-software-para-la",
+  "published_on": "2025-11-26",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Software development for Physical AI is on fire 🔥",
+  "subtitle": "Today we present a VLA that learns from experience",
+  "body_markdown": "A new leap is taking place in the development of **humanoid robots**, and to understand it we would have to classify the existing initiatives in this sector into the following blocks:\n\n1. Companies that develop the complete robot, even if they have to turn to external suppliers for specific elements, whether software or hardware. Here are the best-known brands: **Tesla** (very keen to do everything itself), Figure, Boston Dynamics, Agility, Apptronik, 1X, …\n2. Companies that focus above all on the robot's body, although they also touch the software side somewhat, but are not yet very advanced on the Physical AI side because their robots are programmable or teleoperated. Here we would mainly find **Chinese** companies, with some exceptions.\n3. **NVIDIA** deserves a space of its own in this classification, because in addition to providing the physical brain of robots with Jetson Thor, it also has a great proposal on the software side with the Isaac suite for training and robot digital twins, as well as the Cosmos world model.\n4. As for **Physical AI software**, which is what we are going to deal with in this article, we are witnessing a great boom of companies, some of them very well funded and with very interesting proposals, which show us that we are getting ever closer to autonomous robots.\n\nSo let's look at which these companies are, and then dwell on one that has just presented the results of its work.\n\n1. **Google**, although it is not a startup, has a robotics lab within **Deepmind** where it is making great progress in building its [Gemini Robotics](https://deepmind.google/models/gemini-robotics/) operating system, with which it seeks to replicate the success achieved with Android. It also has another independent company devoted to AI for robots called [Intrinsic](https://www.intrinsic.ai/).\n2. [SkildAI](https://www.skild.ai/) is one of the first startups to focus exclusively on AI software for robots. It is valued at 4.5 billion dollars and has more than 400 million in funding from investors such as NVIDIA, Softbank, Samsung and Bezos Ventures.\n3. [Generalist](https://generalistai.com/), which we talked about last week, has raised 140 million dollars in funding from NVIDIA, Bezos Ventures and other venture capital investors. The videos it has published are worth watching again to see the great dexterity they have achieved for their robotic arms.\n4. [FieldAI](https://www.fieldai.com/) has raised more than 400 million dollars in funding, which puts it at a valuation of 2 billion. Interestingly, its investors also include NVIDIA, Samsung and Bezos, to which we must add Intel and Bill Gates on this occasion.\n5. [OpenMind](https://openmind.org/) also aims to create the Android for robots; it has much less funding than the others, because it has only raised 20 million so far, but it has just presented a very interesting novelty by creating a product consisting of a **Jetson Thor** computer with its software built in, which can be [attached](https://www.humanoidsdaily.com/feed/openmind-opens-pre-orders-for-brainpack-betting-on-a-universal-nervous-system-for-robots) to a Unitree G1 robot to give it \"intelligence\".\n6. [HuggingFace](https://huggingface.co/docs/lerobot/index), with its **LeRobot** initiative, also deserves special mention in this list; here we are not talking so much about funding but about the great work they are doing to facilitate the development of free software for robots, which is also essential for this technology to succeed.\n7. **Physical Intelligence** is the last in this brief list, because we are going to devote the rest of the article to it. But if you want to know more Physical AI software companies, you have them compiled in the software section of our [humanoid robot database](https://whyhumanoid.com/).\n\n## A VLA that learns from experience\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/ad1f8f4d-0a46-4a06-82e6-6f7706b6fa87_2048x839.png)\n\n**Physical Intelligence** has just joined the leading pack of the best-funded Physical AI startups by announcing a 600 million dollar investment round at a valuation of 5.6 billion dollars. The company, founded by **DeepMind** researchers, now has investors such as CapitalG (Alphabet), Lux Capital, Thrive Capital, Index Ventures and Jeff Bezos himself.\n\nBut the important thing is not that the company now has money to make all its ideas come true, but that its technology is starting to deliver important results, since they have presented a **VLA** that, in addition to learning from demonstrations and the feedback received, can learn through its own experience.\n\nIn this way the VLA [π*0.6](https://www.physicalintelligence.company/blog/pistar06) uses a robot training method they have called **R ecap** (RL with Experience and Corrections via Advantage-conditioned Policies), which implements three steps: training the robot with demonstrations, guiding it with corrections and allowing it to improve from autonomous experience.\n\nWhat this startup has achieved is truly impressive; for example, I know some companies that will love to see the video in which the robot is able to assemble cardboard boxes with spectacular dexterity.\n\nBut beyond that, I would like to highlight how they explain in full detail the conclusions they have reached in their research, because now the other robotics scientists who read it will be able to learn from this company's experience and incorporate it into their own work. We all undoubtedly gain a lot as advances such as Physical Intelligence's R ecap are published**.**\n\n*Editorial note, 27 November 2026: Links to the former robot spreadsheet now lead to the current Why Humanoid? catalogue.*",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🧑‍💻 Google presents nested learning to solve the problem of catastrophic forgetting.",
+        "body_markdown": "🧑‍💻 [Google](https://research.google/blog/introducing-nested-learning-a-new-ml-paradigm-for-continual-learning) presents nested learning to solve the problem of catastrophic forgetting. This way robots and other AI agents will be able to be deployed in real environments, being able to learn on the fly without forgetting everything else they have already learned."
+      },
+      {
+        "position": 2,
+        "headline": "🤝 Deepmind hires Boston Dynamics' CTO, yet another example of the importance Google is giving to robotics.",
+        "body_markdown": "🤝 [Deepmind](https://es.wired.com/articulos/google-reafirma-su-enfoque-en-robotica-y-contrata-al-exdirector-de-tecnologia-de-boston-dynamics) hires Boston Dynamics' CTO, yet another example of the importance Google is giving to robotics. And a concrete example of how busy the talent market is in this Physical AI sector."
+      },
+      {
+        "position": 3,
+        "headline": "🌅 Sunday, the trendy humanoid robotics startup, presents ACT-1, its AI software for robot training, which is able to generalize across different household tasks thanks to the ad…",
+        "body_markdown": "🌅 [Sunday](https://www.sunday.ai/journal/no-robot-data), the trendy humanoid robotics startup, presents ACT-1, its AI software for robot training, which is able to generalize across different household tasks thanks to the adaptation they have made for the robot's hand."
+      },
+      {
+        "position": 4,
+        "headline": "🚗 Figure publishes the first activity data of its robot working in the BMV factory: more than 90,000 parts loaded, more than 1,250 hours of runtime, and it contributed to the pr…",
+        "body_markdown": "🚗 [Figure](https://www.figure.ai/news/production-at-bmw) publishes the first activity data of its robot working in the BMV factory: more than 90,000 parts loaded, more than 1,250 hours of runtime, and it contributed to the production of more than 30,000 X3 vehicles."
+      },
+      {
+        "position": 5,
+        "headline": "🇨🇭 Flexión is a new Switzerland-based startup that has just announced a 50 million dollar round, with participation from NVIDIA, DST Global Partners, Redalpine, Prosus Ventures…",
+        "body_markdown": "🇨🇭 [Flexión](https://flexion.ai/news/flexion-raises-50m-to-build-the-brain-of-humanoid-robots-at-scale) is a new Switzerland-based startup that has just announced a 50 million dollar round, with participation from NVIDIA, DST Global Partners, Redalpine, Prosus Ventures and Moonfire, to build the brains of humanoid robots."
+      },
+      {
+        "position": 6,
+        "headline": "🪅 Neuraxón is a new computational unit design inspired by real neurons that replaces the typical binary scheme with trinary logic (1, 0, −1) and could help robots learn while ac…",
+        "body_markdown": "🪅 [Neuraxón](https://x.com/VivancosDavid/status/1991792069606768701) is a new computational unit design inspired by real neurons that replaces the typical binary scheme with trinary logic (1, 0, −1) and could help robots learn while acting, without static training cycles."
+      },
+      {
+        "position": 7,
+        "headline": "✈️ Unitree trained to act as a flight attendant on a Russian airline.",
+        "body_markdown": "✈️ [Unitree](https://x.com/liderarmente/status/1992847681207648423) trained to act as a flight attendant on a Russian airline. We are seeing this type of situation more and more, where a company uses the G1 for all kinds of situations, although for now it seems more marketing than real usefulness."
+      },
+      {
+        "position": 8,
+        "headline": "📹 In-N-On is yet another example, of the many we have been coming across lately, of research to improve robot training through human demonstrations.",
+        "body_markdown": "📹 [In-N-On](https://x.com/xiongyicai/status/1991930571271160049?s=12) is yet another example, of the many we have been coming across lately, of research to improve robot training through human demonstrations.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/8473ec76-4299-405e-8778-d45cc369ea9f_1200x675.jpeg)"
+      },
+      {
+        "position": 9,
+        "headline": "🇨🇳 China is unstoppable with humanoid robots.",
+        "body_markdown": "🇨🇳 [China](https://x.com/robo_tuo/status/1991882471156457894?s=46) is unstoppable with humanoid robots. It is clear that they don't want to lose the industrialization race there, and now that the population is not growing as before, they are going to need a lot of robots to maintain their frenetic pace of production.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/a3725f68-4c18-4573-8a79-cc379e24d8da_1200x675.jpeg)"
+      },
+      {
+        "position": 10,
+        "headline": "🇺🇸 USA is not standing still in the humanoid robot race either.",
+        "body_markdown": "🇺🇸 [USA](https://x.com/robo_tuo/status/1993324045409173751?s=46) is not standing still in the humanoid robot race either. Although in number of companies there are far fewer than in China, in terms of product quality I think they could end up prevailing."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 47; 10 news items; no audio/video transcription claimed. Public-edition adaptation: obsolete catalogue links now open the current website; a historical survey opens its original article. A labelled editorial note discloses the change. Unchanged originals remain in the local source archive, not Git."
+  },
+  "original_sha256": null
+}

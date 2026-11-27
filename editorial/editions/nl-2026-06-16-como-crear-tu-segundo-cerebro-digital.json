@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-06-16-como-crear-tu-segundo-cerebro-digital",
+  "source_url": "https://www.integrarobot.com/p/como-crear-tu-segundo-cerebro-digital",
+  "published_on": "2026-06-16",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "How to create your second digital brain about robotics",
+  "subtitle": "AI Agents are our best ally for working with robotics. You will take the robot out of the box and Codex will get it working.",
+  "body_markdown": "We are starting a new recorded online course devoted to robotics and Physical AI, and to begin with, what we are going to do is learn to use AI agents, such as Codex and Claude, to help us with everything related to working with robots.\n\nIn this course, to start, we are going to learn to analyze robots and robotics research, and then get into using robot simulators, designing robots, creating deployment plans and anything else we can think of.\n\nIn this first video I show you how to create a second digital brain through the idea of the [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) published by Andrej Karpathy, which will help AI assist us by doing its work much more precisely and without errors.\n\nThis is the content you will be able to see in the video:\n\n1. Download the [Codex](https://openai.com/es-ES/codex/) or [Claude](https://code.claude.com/docs/en/desktop-quickstart) app on your computer\n2. In Codex, create a project, name it robotics (or whatever you like) and open a new chat inside it\n3. In Claude, create a new chat\n4. Copy the text called [LLM Wiki](https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw/ac46de1ad27f92b28ac95459c782c07f6b8c964a/llm-wiki.md) written by Andrej Karpathy\n5. Paste the LLM Wiki text into the chat\n6. In Codex, check that a folder has been created on your computer\n7. In Claude Code you have to select the folder in which you want the files to be generated\n8. Check that it has created the files [Agents.md](http://agents.md), [Readme.md](http://readme.md), [Index.md](http://index.md), …\n9. Feed the Wiki (your second brain about robotics) with the following sources [Integrarobot](https://www.integrarobot.com?utm_source=substack&utm_campaign=publication_embed&utm_medium=web) [https://www.youtube.com/@Integrarobot](https://www.youtube.com/@Integrarobot)\n\n1. [Humanoid robot database](https://whyhumanoid.com/)\n2. Ask the AI some questions to check that it has internalized the knowledge from the sources\n3. Ask it to create a skill for evaluating robotics papers. Once it is created, give it a paper to analyze\n4. Tell it to upload the skill to your Github account\n\nIn the rest of the videos we will keep building our second digital brain about robotics through the following topics:\n\n1. Creating the 2nd Brain and a skill\n2. Creating HTML and automations\n3. Using Clade and visualizing with Obsidian\n4. Working with robot simulators\n5. Robotics designs with CAD\n6. Creating software applications\n7. Designing workflows\n\n*Editorial note, 27 November 2026: Links to the former robot spreadsheet now lead to the current Why Humanoid? catalogue.*",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 97; 0 news items; no audio/video transcription claimed. Public-edition adaptation: obsolete catalogue links now open the current website; a historical survey opens its original article. A labelled editorial note discloses the change. Unchanged originals remain in the local source archive, not Git."
+  },
+  "original_sha256": null
+}

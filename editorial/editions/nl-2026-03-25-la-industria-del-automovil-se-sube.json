@@ -1,0 +1,87 @@
+{
+  "edition_id": "nl-2026-03-25-la-industria-del-automovil-se-sube",
+  "source_url": "https://www.integrarobot.com/p/la-industria-del-automovil-se-sube",
+  "published_on": "2026-03-25",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The car industry rides the Physical AI wave",
+  "subtitle": null,
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/2a01e3df-9852-421e-a5ec-468546a14790_1536x1024.png)\n\nThis afternoon at 19:00 I am going to hold a [webinar on Youtube](https://www.youtube.com/live/XKPkbLEutJ8) where I will explain how you can ride the Physical AI wave. Don't miss it!\n\n---\n\n## Why Physical AI?\n\n**NVIDIA** is especially interested in promoting this term rather than robotics. There is no doubt that what is fashionable now is AI, and it is also what has made the company the most valuable in the world, so Physical AI is presented as a continuation. We are no longer talking about programmable robots but intelligent robots, so things change radically, because we go from limited machines to general-purpose robots, which scale much better.\n\n## The car industry rides the wave\n\nThe automotive sector is facing yet another transformation, but unlike what happened with combustion systems, in this case they seem to have learned the lesson and are not taking so long to start competing with **Tesla**.\n\nIt is true that none of the Western manufacturers has yet made a decision as radical as Tesla's in prioritizing robots over cars, but quite a few companies are already taking steps in robotics, even though it may still seem early to start investing in it.\n\nNow, what signs do we have for saying that the car industry is so interested in humanoid robots? Let's see:\n\n1. **BMW** has been taking steps in robotics for several years, for example with its stake in the mobile robot company [Idealworks](https://www.idealworks.com/), which later came to be owned by **Agile Robots**, and the collaboration between these companies. The car manufacturer is also working on pilots deploying humanoid robots from **Figue** and Hexagon, showing a clear interest in being an active part of this robotics sector.\n2. **Mercedes** has been working for some time with **Apptronik** to integrate Apollo humanoid robots into its production plants to perform repetitive and logistics tasks, such as transporting components and using tools. It is also one of the company's main partners, having taken part in the investment rounds that valued it at 5.5 billion, in which John Deere also took part.\n3. **Renault** has invested in the French startup **Wandercraft** and has also worked jointly with it on the development of the Calvin-40 robot, which can be trained to pick mixed parts from containers, but for now it is limited to lifting tyres and carrying panels in the body shop, since its limiting factors are speed and dexterity.\n4. **Rivian**, when it comes to robots, has not settled for doing what other companies do, investing in startups or collaborating with them; instead it has created a spin-off called **Mind Robotics**, which in a few months has [raised](https://techcrunch.com/2026/03/11/rivian-mind-robotics-series-a-500m-fund-raise-industrial-ai-powered-robots) more than 600 million dollars, with the aim of tackling a structural deficiency of current industrial automation solutions, that is, providing what classical robotics cannot do: human-like dexterity, adaptation and physical reasoning.\n5. **Volkswagen** works with humanoid robots through a Joint Venture it has with the Chinese manufacturer FAW, and it is through this collaboration that they work on the development of **UBTECH** humanoids, using the Walker S robot to perform tasks such as component assembly and handling automotive parts.\n6. **Hyundai** was one of the first car manufacturers to bet on humanoid robots when in 2021 it bought humanoid pioneer **Boston Dynamics** from Softbank. Since then it has not stopped advancing in robotics, because it also collaborates with other companies such as Persona AI on the development of welding robots.\n7. **Toyota** works actively in humanoid robotics through its R&D centre, Toyota Research Institute, where it has an alliance with **Boston Dynamics** to accelerate the development of general-purpose humanoids, combining TRI's Large Behavior Models with the Atlas robot. The company also collaborates with **Agility** to use its robots in its car factories in Canada.\n8. **Xpeng** is also very interested in the development of physical AI, as shown by the development of its own humanoid robot **Iron**, designed for industrial and service tasks, which stands out for its flexible skin, 82 degrees of freedom, bionic hands and solid-state battery. Its mass production is scheduled to begin during this year.\n9. **Ford** has collaborated for years with **Agility** on the development of the Digit robot, in last-mile logistics solutions combined with autonomous vehicle technology.\n\nAs you can see, a large part of the car industry is focused on this new physical AI technology, and the goal is clear: to deploy humanoid robots in factories to take care of routine tasks that are dangerous for people but which large robotic arms cannot tackle due to their lack of versatility.\n\nBut the most interesting thing about this is that the automotive industry is only the spearhead for other sectors to gradually ride this wave, for example logistics, as we will see later with Amazon and Zalando.\n\n---\n\nAnd speaking of cars, here is the **interview** I recently gave on the [Todos Eléctricos](https://www.youtube.com/watch?v=54ThFvWE9jo) channel, where we talked at length about this opportunity of humanoid robots and their relationship with the world of cars.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "Let's start this news roundup by talking about Amazon, because if last week we said it planned to invest 200 billion dollars, we are beginning to see that all that capex will no…",
+        "body_markdown": "Let's start this news roundup by talking about **Amazon**, because if last week we said it planned to invest 200 billion dollars, we are beginning to see that all that capex will not only go into expanding AWS data centres, but part of it will be devoted to **acquiring robotics startups**. Thus a few days ago we learned of the purchase of [Rivr](https://www.rivr.ai/), a manufacturer of delivery robots capable of climbing stairs, and just yesterday the big news of the purchase of [Fauna](https://techcrunch.com/2026/03/24/amazon-just-bought-a-startup-making-kid-size-humanoid-robots/), the manufacturer of the Sprout humanoid robot, which has become very popular since the beginning of the year.\n\n> \"*We are excited about Fauna's vision of creating capable, safe and fun robots for everyone. Together with Amazon's robotics expertise and decades of experience earning customers' trust in the home through our retail and devices businesses, we look forward to inventing new ways to improve and simplify our customers' lives*\".\n\nAnd now, on to the week's short news items"
+      },
+      {
+        "position": 2,
+        "headline": "🕹️ Ludo presents itself as \"the social humanoid brain company\" and seeks to advance Physical Intelligence by combining perception, learning and manipulation.",
+        "body_markdown": "🕹️ [Ludo](https://www.ludorobotics.ai/) presents itself as \"the social humanoid brain company\" and seeks to advance Physical Intelligence by combining perception, learning and manipulation. Its goal is to create generalist robotic intelligence systems through large-scale machine learning, backed by **video game** developer Krafton and with offices in San Francisco and Seoul."
+      },
+      {
+        "position": 3,
+        "headline": "🦾 LG makes a strategic investment in Dexmate to incorporate wheeled-base humanoid robots capable of carrying 15 kg and working more than 20 hours.",
+        "body_markdown": "🦾 [LG](https://biz.chosun.com/en/en-it/2026/03/10/7VZNE27G6BGDHKPQXLJO6CG6EI/) makes a strategic investment in **Dexmate** to incorporate wheeled-base humanoid robots capable of carrying 15 kg and working more than 20 hours. The Korean company aims to offer a \"full‑stack RX\" service combining hardware, foundation models and training platforms to accelerate robot adoption in logistics centres and industrial plants."
+      },
+      {
+        "position": 4,
+        "headline": "🚚 Oxa closed a $103M Series D round aimed at driving industrial transport automation.",
+        "body_markdown": "🚚 [Oxa](https://www.automatedwarehouseonline.com/oxa-raises-103m-to-automate-industrial-driving-tasks/) closed a $103M Series D round aimed at driving **industrial transport automation**. Its configurable Oxa Driver software allows existing vehicles to transport and monitor goods in ports, airports and factories, and the funding will be used to strengthen this system and expand globally."
+      },
+      {
+        "position": 5,
+        "headline": "✋ Samsung creates a unit devoted to developing high-dexterity robotic hands, one of the most complex challenges in humanoid robotics.",
+        "body_markdown": "✋ [Samsung](https://www.digitimes.com/news/a20260312PD214/samsung-robot-robotics-manufacturing-hardware.html) creates a unit devoted to developing **high-dexterity robotic hands**, one of the most complex challenges in humanoid robotics. The lab aims to build hands with numerous degrees of freedom to improve the manipulation capability of its robots, although the remaining details are restricted."
+      },
+      {
+        "position": 6,
+        "headline": "🧠 Memories.ai is collaborating with Nvidia to create a \"visual memory layer\" that allows wearables and robots to remember what they see.",
+        "body_markdown": "🧠 [Memories.ai](https://techcrunch.com/2026/03/16/memories-ai-is-building-the-visual-memory-layer-for-wearables-and-robotics/) is collaborating with Nvidia to create a \"visual memory layer\" that allows wearables and robots to remember what they see. The company, founded by former Meta engineers, launched its LVMM model in 2025 and has raised $16M; it develops devices to collect video and plans to use Qualcomm processors, convinced that **visual memory** will be crucial for robotics and wearables."
+      },
+      {
+        "position": 7,
+        "headline": "📦 Zalando will deploy up to 50 Nomagic Richard robots in European distribution centres after a pilot with 100,000 picks a day.",
+        "body_markdown": "📦 [Zalando](https://corporate.zalando.com/en/technology/zalando-install-50-ai-powered-nomagic-robots-its-european-fulfilment-centres) will deploy up to 50 **Nomagic** Richard robots in European distribution centres after a pilot with 100,000 picks a day. These robots use computer vision and precision grippers to handle shoeboxes and other products, enabling orders to be processed quickly and supporting employees; the deployment will cover facilities in Germany, Italy, the Netherlands, Sweden and France."
+      },
+      {
+        "position": 8,
+        "headline": "🦞 RoboClaw presents a robotic framework that unifies data collection, learning and execution through a vision‑language‑action controller.",
+        "body_markdown": "🦞 [RoboClaw](https://arxiv.org/abs/2603.11558v2) presents a robotic framework that unifies data collection, learning and execution through a **vision‑language‑action** controller. It introduces \"entangled action pairs\" that create self-reset cycles, reducing human intervention and improving the success rate on long-duration tasks by 25% while reducing the human time required by 53.7%."
+      },
+      {
+        "position": 9,
+        "headline": "🧭 Advanced Navigation obtained $110M in a Series C led by Airtree Ventures and the NRFC fund to develop resilient navigation systems that do not depend on GPS.",
+        "body_markdown": "🧭 [Advanced Navigation](https://www.advancednavigation.com/news/advanced-navigation-secures-us110m-series-c-to-catalyze-the-next-era-of-autonomous-systems/) obtained $110M in a Series C led by Airtree Ventures and the NRFC fund to develop resilient **navigation systems** that do not depend on GPS. Its approach combines deep learning software and high-precision hardware so that autonomous vehicles can operate at sea, on land and in the air; the investment will fund the creation of positioning, navigation and timing centres of excellence in the US and Europe."
+      },
+      {
+        "position": 10,
+        "headline": "📈 Unitree filed an IPO application in Shanghai to raise ¥4.2 billion (610 million USD).",
+        "body_markdown": "📈 [Unitree](https://www.reuters.com/world/asia-pacific/unitree-plans-shanghai-ipo-testing-interest-humanoid-robots-2026-03-20/) filed an **IPO** application in Shanghai to raise ¥4.2 billion (610 million USD). Its humanoid robots captured attention at the Spring Festival gala, and the company recorded growth of 335% in revenue and 674% in profit in 2025; humanoids already contribute more than half of its revenue, and Unitree holds 32% of the global market."
+      },
+      {
+        "position": 11,
+        "headline": "🦷 Dentronic obtained $1M in pre-seed funding through South Park Commons.",
+        "body_markdown": "🦷 [Dentronic](https://en.wowtale.net/2026/03/19/233707/) obtained $1M in pre-seed funding through South Park Commons. It is developing systems to automate repetitive tasks in **dentistry**, such as its six-degree-of-freedom Dexor arm, whose first run has already sold out; it plans to partner with large US clinics and, in the long term, extend the technology to other medical areas by incorporating physical intelligence."
+      },
+      {
+        "position": 12,
+        "headline": "🤝 Google DeepMind signs a strategic alliance to integrate Gemini Robotics models into Agile's industrial robotics platform.",
+        "body_markdown": "🤝 [Google DeepMind](https://www.agile-robots.com/en/news/detail/agile-robots-and-google-deepmind-partner-to-bring-intelligence-to-robotics/) signs a strategic alliance to integrate Gemini Robotics models into **Agile**'s industrial robotics platform. The collaboration aims to develop robots capable of reasoning and adapting in industrial environments, with more than 20,000 solutions already deployed, and the goal of creating an AI \"flywheel\" in which operational data continuously improves the models and expands their capabilities."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 80; 12 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "650c137560ddfdf7fdd98b7a40ae5a2e2fc5580baacca56609a4eb19256a3452"
+}

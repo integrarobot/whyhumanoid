@@ -1,0 +1,72 @@
+{
+  "edition_id": "nl-2026-10-28-la-robotica-es-vocacional",
+  "source_url": "https://www.integrarobot.com/p/la-robotica-es-vocacional",
+  "published_on": "2026-10-28",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robotics is a vocation",
+  "subtitle": "This is the reason why many entrepreneurs did not throw in the towel in the early days of robotics, even though they did not have AI as developed as it is now.",
+  "body_markdown": "I was reading the story of the French robotics startup [Wandercraft](https://www.wandercraft.eu/es) and thought it was worth sharing because I think it reflects very well the **vocation** many **entrepreneurs** who decide to devote themselves to **robotics** have.\n\nThis is how the company itself tells it:\n\n> *It all began with a question a young engineer couldn't get out of his head. At a university **robotics club**, **Nicolas Simon** watched a machine learn to walk and thought of his brother, who was losing that ability. If a robot can walk, why not create one that walks for him? Wandercraft was founded in Paris in 2012 to answer that question, and the answer required a decade of engineering: an exoskeleton that balances itself, so that the person wearing it doesn't have to. In 2019, Atalante became the first self-balancing walking exoskeleton to obtain CE marking in Europe. That same technology today accompanies people in their rehabilitation in more than 150 clinical and research centres, leaves the clinic to enter the home with Eve, and is present in Calvin, our family of humanoid robots designed for the toughest jobs in industry. Three products, two markets, one conviction: **robotics must help people achieve what they cannot do alone**.*\n\nThe **robotics club** Nicolas Simon was part of when he came up with the idea of creating an exoskeleton is not an exception, since there is no doubt that **universities** have, over the years, created the ideal **breeding ground** for many situations like this to arise. And though I'm not a fan of formal education, in this case we have to acknowledge the merit of those teachers and researchers who decided at the time to create this kind of space for students to experiment with small robots and other kinds of technology, such as Arduino, 3D printers, drones, … which has ended up leading many of those students to seek to fulfil the ultimate dream of every robot fan: **humanoids**.\n\nHow many more of the hundreds of entrepreneurs currently working on developing humanoids follow Nicolas Simon's pattern? I dare say many; what's more, every day that passes, the number of people who may develop that vocation increases as the concept of the general-purpose robot becomes known and studied, at universities and in a **self-taught** way.\n\nBut beyond vocation being behind many entrepreneurs' decision to set out to create new companies in this sector, what is beyond doubt is that there are enough **incentives** to want to work in robotics, because as society advances it becomes clearer that many of the jobs people now do should be done by a robot.\n\nIn my talks I usually use the example of the plough. Before tractors, the farmer had to exert force on the plough to get it to enter the soil. The horse or ox did the pulling, but the farmer was not exempt from having to make a great physical effort, something we would now consider inhumane.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/ea0fac61-233e-48bc-b969-c70483eef530_509x339.jpeg)\n\nSo I think that over time we will transfer this same situation to many other jobs that many people now have to do because they have no choice. And among those jobs, I think those that involve a person standing in front of a **conveyor belt** performing a repetitive task are among the first that should be delegated to a humanoid. That is precisely the use case Wandercraft is showing us in its collaboration with **Renault**.\n\nThe Renault use case seems quite representative to me because it puts on the table the problem robotics wants to solve. Because Wandercraft's founder wanted to solve the problem of someone who already had a mobility problem, but what he has ended up doing is creating a machine that can prevent many people from ending up injured from having to perform repetitive work throughout a whole working day, not just one day, but repeatedly like that for years.\n\n## Why is it so important that robotics be a vocation?\n\n**Robotics is harder than AI**. In fact, if it weren't for AI, I dare say we wouldn't be talking about robots now.\n\nAt this point I am going to venture an idea about which I may be wrong but which may reflect quite well the difference between robotics before and after **ChatGPT**. Unitree's own CEO put it this way recently: *the biggest mistake I have made in the last decade has been not believing enough in AI*. And what I saw of robotics before the arrival of Generative AI was a very different strategy from the one we see being pursued now, basically because the focus was on programming robots or developing a type of deterministic AI, but in both cases progress was slow and ended up in a dead end.\n\nBecause the robots we really need must be general-purpose, exactly as with AI. Because AI also advanced slowly before the arrival of **transformers**, and the good news for all those who have spent many years devoted to robotics is that it is being shown that what works for AI also works for robotics.\n\nThat is exactly what **Jim Fan**, **NVIDIA**'s director of robotics, expressed recently when he said: *now you too can feel the **Physical Bitter Lesson** at home, as we did on that fateful day ;)*\n\nHe is referring to the fact that the bitter lesson of Artificial Intelligence is also being fulfilled in Physical AI, that is, the greater the volume of data and the greater the computing capacity, the better the results, even if the algorithm has not improved.\n\nSo those who got into robotics years ago, when everything seemed impossible and it was vocation that allowed them to stand firm in the face of earlier difficulties, now have a clear path to advance, because it seems increasingly clear that the optimal conditions for it are in place.\n\n---\n\nIf you want to **learn** more about robotics and Physical AI, you can sign up for our **course** by upgrading your subscription",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🌍 Google DeepMind presents Genie 4, a world model that generates interactive environments with image, sound and dialogue, modifiable through real-time instructions.",
+        "body_markdown": "🌍 [Google DeepMind](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/) presents **Genie 4**, a world model that generates interactive environments with image, sound and dialogue, modifiable through real-time instructions. The experimental version is already being tested with selected collaborators; DeepMind is exploring its use with Gemini Robotics and shows a simulation of the Apollo humanoid playing draughts."
+      },
+      {
+        "position": 2,
+        "headline": "📦 GXO expands its agreement with Agility Robotics to bring Digit to its Statesville and Lebanon centres.",
+        "body_markdown": "📦 [GXO](https://www.agilityrobotics.com/content/gxo-and-agility-robotics-expand-partnership-to-accelerate-deployment-of-humanoids-in-u-s-operations) expands its agreement with **Agility Robotics** to bring **Digit** to its Statesville and Lebanon centres. The deployments are planned for early 2027, initially with Digit 4 and then with Digit 5. The companies state that the robot has already moved more than 100,000 containers at their Flowery Branch facility."
+      },
+      {
+        "position": 3,
+        "headline": "🏭 Agile Robots is carrying out a proof of concept with Audi in Ingolstadt: robots with two arms and a mobile base pick parts and sort them for assembly.",
+        "body_markdown": "🏭 [Agile Robots](https://www.agile-robots.com/en/news/detail/agile-robots-and-audi-to-transform-automotive-logistics) is carrying out a proof of concept with **Audi** in Ingolstadt: robots with two arms and a mobile base pick parts and sort them for assembly. Dassault Systèmes and NVIDIA provide the virtual twin and simulation tools to evaluate feasibility, cycle times, ergonomics and safety before deployment in the plant's logistics."
+      },
+      {
+        "position": 4,
+        "headline": "🏫 TUM inaugurates with NEURA Robotics the RoboGym centre at Munich airport.",
+        "body_markdown": "🏫 [TUM](https://www.tum.de/en/news-and-events/all-news/press-releases/details/making-robots-smarter) inaugurates with **NEURA Robotics** the **RoboGym** centre at Munich airport. Its initial programme foresees around a hundred humanoid and service robots in 48 training cells, with tasks such as folding boxes, assembling components and using tools. It combines physical experience, simulation and data to research industrial and logistics applications."
+      },
+      {
+        "position": 5,
+        "headline": "🧠 SenseNova evaluates GPT-6-Astra on twelve benchmarks and eight robotic platforms.",
+        "body_markdown": "🧠 [SenseNova](https://www.sensenova.ai/has-gpt-6-astra-achieved-embodied-intelligence) evaluates **GPT-6-Astra** on twelve benchmarks and **eight robotic platforms**. The study uses context prepared with demonstrations and, in some of the simulated tests, up to ten times more steps than the standard budget. Its authors observe manipulation and planning capabilities, but also difficulties with precise contact, long tasks and response time on real robots."
+      },
+      {
+        "position": 6,
+        "headline": "👷 Robert Scoble claims that Tesla uses suits with up to forty cameras and 3D sensors to collect data for Optimus.",
+        "body_markdown": "👷 [Robert Scoble](https://x.com/Scobleizer/status/2115275386963755067) claims that **Tesla** uses suits with up to forty cameras and 3D sensors to collect data for Optimus. He describes teams working three shifts recording household and industrial tasks in Palo Alto and Texas. It is an unconfirmed claim: Scoble does not identify the source of his information."
+      },
+      {
+        "position": 7,
+        "headline": "🩺 DASH presents adapters that make it possible to mount and operate da Vinci Classic and Xi surgical instruments on general-purpose robots, including the Unitree G1.",
+        "body_markdown": "🩺 [DASH](https://arxiv.org/abs/2610.05792) presents adapters that make it possible to mount and operate da Vinci Classic and Xi surgical instruments on general-purpose robots, including the **Unitree G1**. The researchers show **teleoperated trials** and automatic tool identification. The work does not yet validate a complete surgical intervention, sterilization conditions or use by a surgeon."
+      },
+      {
+        "position": 8,
+        "headline": "🔎 RoboJev publishes an open model that estimates whether a robot has completed a task from the instruction and ten frames, with auxiliary views when available.",
+        "body_markdown": "🔎 [RoboJev](https://huggingface.co/spaces/josefchen/RoboJev) publishes an open model that estimates whether a robot has completed a task from the instruction and ten frames, with auxiliary views when available. Its author reports **95.2%** balanced accuracy in distinguishing successes and failures on 268 held-out trials of the SO-101 arm. The project shares weights, code and evaluation results."
+      },
+      {
+        "position": 9,
+        "headline": "✈️ Reliable Robotics obtains an additional 115 million dollars, according to TechStartups: 90 million in equity and 25 in loans, at a valuation above one billion.",
+        "body_markdown": "✈️ [Reliable Robotics](https://techstartups.com/2026/10/20/reliable-robotics-raises-115m-in-new-funding-tops-1b-valuation-as-autonomous-aviation-takes-off) obtains an additional **115 million dollars**, according to TechStartups: 90 million in equity and 25 in loans, at a valuation above one billion. The company develops systems to automate existing aircraft, such as the Cessna 208B, and will use the funds to expand its fleet, production and team as it advances toward certification."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 117; 9 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "828ff063879ac6f0e590dbefbfdda95886a3fc64300ac3816d8390e02b057c0a"
+}

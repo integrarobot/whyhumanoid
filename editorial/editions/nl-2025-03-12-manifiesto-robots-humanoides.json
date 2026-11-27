@@ -1,0 +1,72 @@
+{
+  "edition_id": "nl-2025-03-12-manifiesto-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/manifiesto-robots-humanoides",
+  "published_on": "2025-03-12",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Humanoid Robots Manifesto",
+  "subtitle": "9 ideas, for now, about the present and future of the convergence between robotics and Artificial Intelligence.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/a2cbb97f-31a9-4824-909b-c1878fa29268_960x300.jpeg)\n\nIt has now been two months since I started this outreach project on **robotics driven by Artificial Intelligence**, and in this time I have had the opportunity to reflect on the implications that the arrival of this technology has for society and the economy. That is why, through this manifesto, I want to set down some of these ideas so that they can serve as a reference for the work to be done in the coming years to help Spanish, European and Latin American companies seize the opportunity to incorporate **humanoid robots** into their activity.\n\nBelow you can read the **Humanoid Robots Manifesto**. I hope it will be a living document that evolves to adapt to the changes that occur in this technology and to how society incorporates it.\n\n1. Robots are not going to take jobs away from humans. It is we humans who, for too long, have been doing the work that was meant for robots. It makes no sense for people to do jobs that are dangerous to their health, whether through short-term accidents or long-term physical harm. It is time to give back to robots what belongs to them.\n2. Generative Artificial Intelligence is a great gift; it is great that it can write texts, create images, videos and all kinds of content, but when we thought about intelligent machines we wanted them to do the work we don't like doing, such as loading the washing machine and the dishwasher, ironing clothes, …\n3. People want robots. Historically, many inventors have created robots to perform different types of tasks. Then science fiction brought us the idea that in the future humans will live alongside robots, not only as our servants, but also as our companions for all kinds of activities.\n4. Robots can now have a brain designed to work like that of humans, thanks to the development of language and image foundation models, and the next step in the development being taken in Artificial Intelligence is the evolution of these models so that they take action through Physical AI.\n5. Nobody wants to be left out of the AI-driven robotics revolution. The pioneering startups in this sector have gradually been joined by the big technology companies, starting with Tesla, followed by a multitude of Chinese companies and now accompanied by NVIDIA, Apple, Amazon, Google and Meta.\n6. Humanoid robots offer a great opportunity for any company that wants to improve and be more competitive. We must not let Chinese and US companies monopolize this entire market; in Spain, Europe and Latin America we have a lot to contribute and to take advantage of.\n7. A great opportunity is also emerging for professionals. When a new market opens up, such as AI-driven robotics, options arise to work helping to develop it. Just as computing and the Internet have generated a multitude of jobs we could not previously imagine, robots will also generate a lot of work for humans, and we must make sure it is quality work.\n8. The intellectual evolution of robots is an unknown, and we have to help ensure that when they have more advanced Artificial Intelligence capabilities they continue to live alongside humans in harmony. There will undoubtedly be wicked people who want to use them to do harm, but there will also be many of us working so that this great technological advance results in benefits for humanity.\n9. We want robots to replace us in doing the jobs we don't like, but once we give them intelligence they will also be able to do other kinds of work, as GenAI does now. Then robots' ability to perceive their environment and understand the real world will allow them to help us solve problems that AI cannot currently tackle because of its physical limitations.\n\n> What do you think of these points? Would you add or remove any? I would love to know your opinion, and I hope you can contribute your comments on it.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📱 AnySense is an iPhone app designed to easily collect real-world data and multisensory data that can be used to train robots.",
+        "body_markdown": "📱 [AnySense](https://anysense.app/) is an **iPhone** app designed to easily collect real-world data and multisensory data that can be used to train robots."
+      },
+      {
+        "position": 2,
+        "headline": "🖐️ Sanctuary has equipped the fingertips of its Phoenix robot with tactile sensors that will allow it to perform complex touch-based tasks with greater precision and accuracy.",
+        "body_markdown": "🖐️ [Sanctuary](https://www.iotworldtoday.com/robotics/robot-given-tactile-sensors-for-touch-at-fingertips) has equipped the fingertips of its **Phoenix** robot with tactile sensors that will allow it to perform complex touch-based tasks with greater precision and accuracy."
+      },
+      {
+        "position": 3,
+        "headline": "🛞 Vega is a dazzling new robot created by the company Dexmate that stands out for its impressive movement and synchronization capabilities.",
+        "body_markdown": "🛞 [Vega](https://x.com/DexmateAI/status/1896702023367893502) is a dazzling new robot created by the company **Dexmate** that stands out for its impressive movement and synchronization capabilities. The downside, for now, is that it runs on wheels."
+      },
+      {
+        "position": 4,
+        "headline": "🇨🇳 LimX Dynamics is a Chinese robotics company that has just announced it has raised 69 million dollars in funding, with participation from the tech giant Alibaba.",
+        "body_markdown": "🇨🇳 [LimX Dynamics](https://www.techinasia.com/news/alibaba-backed-robotics-firm-completes-69m-series-a) is a Chinese robotics company that has just announced it has raised 69 million dollars in funding, with participation from the tech giant **Alibaba**."
+      },
+      {
+        "position": 5,
+        "headline": "🚗 Xpeng seems to have major plans to mass-produce its Iron robot, and it also claims it is already using it to work in its own car and drone factories.",
+        "body_markdown": "🚗 [Xpeng](https://interestingengineering.com/innovation/xpeng-plans-flying-cars-robots-2026) seems to have major plans to mass-produce its **Iron robot**, and it also claims it is already using it to work in its own car and drone factories."
+      },
+      {
+        "position": 6,
+        "headline": "👋 MIT and NVIDIA are collaborating on research through which an operator can correct a robot's actions in real time, using the kind of movement-based feedback one would give ano…",
+        "body_markdown": "👋 [MIT](https://news.mit.edu/2025/robotic-helper-mistakes-nudging-in-right-direction-0307) and **NVIDIA** are collaborating on research through which an operator can correct a robot's actions in real time, using the kind of movement-based feedback one would give another human."
+      },
+      {
+        "position": 7,
+        "headline": "💻 Mujoco is an open-source physics engine developed by Google AI to facilitate research and development in robotics, biomechanics, graphics and animation, and other areas where…",
+        "body_markdown": "💻 [Mujoco](https://mujoco.org/) is an open-source physics engine developed by **Google AI** to facilitate research and development in robotics, biomechanics, graphics and animation, and other areas where fast and accurate simulation is needed."
+      },
+      {
+        "position": 8,
+        "headline": "💰 Aescape is a startup that has developed a robotic arm to perform massages and has attracted the interest of major investors, who took part in an 83 million dollar investment r…",
+        "body_markdown": "💰 [Aescape](https://www.businesswire.com/news/home/20250304931224/en/Aescape-Secures-83MM-in-Strategic-Funding-Announces-U.S.-Expansion-with-Equinox) is a startup that has developed a robotic arm to perform **massages** and has attracted the interest of major investors, who took part in an 83 million dollar investment round."
+      },
+      {
+        "position": 9,
+        "headline": "🌍 Demo3 is research led by the Spaniard Adrià López Escoriza with the aim of driving the development of foundation models of the world, which will be vitally important for the t…",
+        "body_markdown": "🌍 [Demo3](https://adrialopezescoriza.github.io/demo3/) is research led by the Spaniard Adrià López Escoriza with the aim of driving the development of **foundation models of the world**, which will be vitally important for the training and operation of robots."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 11; 9 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "a4e7b262cba6d76257fd752ce59227cfd2059d30a2ade005ea5071cfb435b2ac"
+}

@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-02-20-estado-del-arte-curso-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/estado-del-arte-curso-robots-humanoides",
+  "published_on": "2026-02-20",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "State of the art - Humanoid Robots Course",
+  "subtitle": "At this point in the course it is worth taking a snapshot of where the development of robots and Physical AI stands.",
+  "body_markdown": "The development of **humanoid robots** is ceasing to be an experimental, laboratory-centred field and becoming a new industry with strong investor traction and pre-commercial deployment. The dominant trend is the convergence between generative artificial intelligence and robotics, what we have been calling **Physical AI**. Within this framework, the robot stops being a system programmed task by task and becomes integrated with foundation models capable of perceiving, planning and acting in open environments.\n\nFrom a technological point of view, progress is structured in three layers.\n\n- Brain: with the integration of VLA-type foundation models and world models, massive simulation, and specialized chips that are accelerating autonomy.\n- Body: with improvements in actuators, harmonic and planetary reducers, force sensors and high-density batteries, weight, cost and complexity are being reduced.\n- Integration: manufacturers with experience in automotive, consumer electronics and industrial robotics are entering the development of complete humanoids.\n\nAt the level of the industrial ecosystem, [Morgan Stanley's Humanoid 100 report](https://advisor.morganstanley.com/john.howard/documents/field/j/jo/john-howard/The_Humanoid_100_-_Mapping_the_Humanoid_Robot_Value_Chain.pdf) shows a value chain already structured around semiconductor companies, mechanical components, sensors, batteries and final integrators.\n\nIn terms of maturity, the sector is still in a pre-mass phase. Current platforms demonstrate stable bipedal locomotion, basic manipulation and growing learning capabilities, but there are still limits in prolonged autonomy, robustness in unstructured environments and total system cost.\n\nThe trajectory, however, points to rapid iteration supported by economies of scale shared with electric vehicles and advanced electronics.\n\nTherefore, the state of the art of humanoid robotics is not that of a consolidated technology, but neither is it that of a distant promise. It is industrial infrastructure under construction, where competitive advantage depends not only on the visible robot, but on control of the complete stack: models, data, simulation, semiconductors and manufacturing.\n\nFor those of us taking this course, the question is no longer whether there will be humanoids, but who will capture the value in each layer of the chain.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 69; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

@@ -1,0 +1,102 @@
+{
+  "edition_id": "nl-2026-10-14-el-despliegue-de-los-robots",
+  "language": "es",
+  "title": "El despliegue de los robots",
+  "body_markdown": "Dice Jon Miller Schwartz, CEO de [Ultra Robotics](https://ultra.tech/) que ha llegado la hora de desplegar más robots y para conseguirlo cuenta con 50 millones de dólares de una nueva ronda de inversión liderada por Framework Ventures.\n\nSu visión, se aleja bastante de la dominante entre los fabricantes de robots humanoides, solo hay que ver lo raro que es su robot OP1 para darse cuenta de dónde han puesto el foco: **el despliegue**.\n\nEl despliegue, para esta empresa es el cuello de botella de la robótica y por eso dicen que solo piensan en poner el robot a trabajar en el mundo real, hacerlo útil, mantenerlo funcionando, ganarse la confianza de las personas que trabajan a su lado, y hacerlo una y otra y otra vez.\n\nDecirlo parece fácil, pero el que haya tan pocas empresas de robótica con este grado de desarrollo lo que a mi me hace pensar es que en Ultra Robotics han dado con una clave que la mayoría de fabricantes de robots humanoides aún no tienen: la **Inteligencia Artificial**.\n\nY lo interesante en este punto es que esa IA no la han desarrollado ellos, sino Physical Intelligence que es una de las startups de IA Física más avanzada del momento, por lo tanto aquí tenemos que hablar de un mérito compartido de dos empresas que realmente están a la vanguardia de la robótica: Ultra por poner los robots a trabajar y PI por dotarles de inteligencia para poder hacer el trabajo.\n\nLa pregunta en este punto es por qué hay tan pocas empresas con este nivel de implantación y dónde están poniendo el foco el resto de actores de la industria de la robótica humanoide.\n\nLa respuesta no es sencilla pero voy a atreverme a dar mi visión ya que llevo casi 2 años dedicado a estudiar este sector y poco a poco voy formándome una opinión que intento compartir semanalmente por aquí.\n\nLo que ocurre con los robots humanoides es que solo estamos viendo la punta del iceberg, ya que tenemos que basarnos en las demostraciones que vemos en la red, pero una vez que toda esa industria pase de estar en modo desarrollo a modo despliegue el impacto que vamos a ver en la economía va a ser increíble.\n\nEntonces, ¿Por qué el resto de empresas no han pasado aún a modo despliegue? bueno, en primer lugar lo que hay que aclarar es que lo que están demostrando desde Ultra es primero que no tienen vergüenza, de que su robot parezca un extraterrestre y en segundo lugar que este discurso es el que han elegido dentro de una campaña de marketing para darse a conocer, pero es normal que otras empresas decidan usar otros argumentos dentro de su estrategia.\n\nSin quitarle un ápice de mérito a Ultra Robotics, lo que quiero transmitir es que no es una excepción, sino que el sector está mucho más avanzado de lo que parece, lo que ocurre es que pocas son las empresas que se atreven a mostrar sus avances de una forma tan abierta.\n\n> «Poco a poco, y luego de repente»\n\nEsta frase, que pertenece a un libro de Ernest Hemingway, se ha usado mucho para representar cómo sucede el avance de la tecnología y en este caso, a riesgo de equivocarme, creo que representa bastante bien que una tecnología tan difícil como es la robótica humanoide no puede llegar a desplegarse de la misma forma que lo han hecho anteriormente otras tan populares como el iPhone y ChatGPT.\n\nWang Xingxing, el CEO de Unitree, lo ha expresado así recientemente:\n\n> *“Hemos implementado **GPT-6** en varios robots. Lo hemos probado en una variedad de tareas y los resultados han sido realmente muy buenos. Nuestra empresa y otras compañías de robótica ya están ejecutando implementaciones piloto en fábricas. Para lograr una adopción a gran escala, sin embargo, tanto la generalización como la eficiencia aún necesitan mejorar más. Pero creo que estos desafíos podrían resolverse muy bien en los próximos años. Mi fe en la IA se fortalece cada año. El mayor error que he cometido en la última década ha sido no creer lo suficiente en la IA. La implementación en servicios comerciales podría suceder incluso más rápido que en entornos industriales”.*\n\nEfectivamente la posibilidad de que GPT-6 Astra pueda controlar robots está resultando toda una revolución en el sector de la robótica, pero por si eso fuera poco, acaba de llegar Google de nuevo a la fiesta presentando [Gemini 4 Argon](https://developers.googleblog.com/gemini-4-argon-for-robotics/), que también destaca en capacidades de IA Física, hasta un punto que resulta sorprendente para sus propios desarrolladores. Al menos así lo ha contado Steven Hansen, que es líder en Agentes Físicos de Gemini y Razonamiento Encarnado en Google DeepMind:\n\n> *“Argon es tan bueno en robótica que todo nuestro equipo está teniendo una **crisis existencial** en este momento”.*\n\n¿Exagera o realmente estamos ante un nuevo salto en la aplicación de la IA a la robótica?\n\nAlgo me dice que puede ser un poco de todo, porque Google se estaba quedando atrás en la carrera de la IA frente a OpenAI y Anthropic, por lo que nuevamente tiene que demostrar su poderío tecnológico, pero por otro lado lo que vemos con el tiempo es que realmente es capaz de ponerse a la altura haciendo grandes aportaciones al sector.\n\nEn fin, que esto no para de acelerar y efectivamente parece que poco a poco va llegando el momento del despliegue de los robots.\n\n---\n\nPara aprender más sobre robótica e IA Física suscríbete a la comunidad de Integrarobot y podrás hacer nuestro [curso](https://www.integrarobot.com/p/curso).",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "Empezamos esta recopilación de noticias con una especialmente importante porque habla del crecimiento de las empresas de IA Física.",
+        "body_markdown": "Empezamos esta recopilación de noticias con una especialmente importante porque habla del crecimiento de las empresas de IA Física. Se trata del [hito de facturación](https://x.com/animesh_garg/status/2108597823193121240?s=20) logrado por Microagi que en 6 meses ha logrado 100 millones de dólares en ingresos recurrentes anuales, mucho más rápido aún que los logros recientes de las empresas de IA Generativa.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/79230cab-2764-429c-9cc8-12219b0eb975_2048x1130.jpeg)"
+      },
+      {
+        "position": 2,
+        "headline": "🧠 Physical Intelligence abre la beta de su API para adaptar sus modelos robóticos con datos propios y ejecutar inferencia desde la nube.",
+        "body_markdown": "🧠 [Physical Intelligence](https://www.pi.website/blog/api-beta) abre la beta de su **API** para adaptar sus modelos robóticos con datos propios y ejecutar inferencia desde la nube. La empresa aporta la infraestructura de entrenamiento y muestra aplicaciones en cocina, agricultura y maquinaria pesada. El paso acerca la inteligencia como servicio a la robótica y permite a los desarrolladores concentrarse en sus tareas, robots y datos."
+      },
+      {
+        "position": 3,
+        "headline": "🤖 Agility Robotics detalla las condiciones de su pedido de 300 millones de dólares para 1.000 Digit 5: cada caso de uso demostrado desbloquea otro tramo de robots.",
+        "body_markdown": "🤖 [Agility Robotics](https://www.humanoidsdaily.com/news/agility-investor-day-digit-5-launch-costs-and-a-300m-order-that-unlocks-skill-by-skill) detalla las condiciones de su pedido de **300 millones de dólares** para 1.000 Digit 5: cada caso de uso demostrado desbloquea otro tramo de robots. La disponibilidad general se sitúa entre finales de 2027 y principios de 2028. Una señal de cómo se construye la adopción industrial: capacidad demostrada, objetivos de productividad y despliegue progresivo."
+      },
+      {
+        "position": 4,
+        "headline": "🚗 XPeng prevé empezar a vender su humanoide Iron en el segundo semestre de 2027, después de probarlo en sus tiendas y oficinas.",
+        "body_markdown": "🚗 [XPeng](https://www.forbes.com/sites/janeho/2026/10/12/forbes-global-ceo-conference-2026-chinese-ev-maker-xpeng-to-launch-humanoid-robots/) prevé empezar a vender su humanoide **Iron** en el segundo semestre de 2027, después de probarlo en sus tiendas y oficinas. Su presidente, Brian Gu, plantea usos iniciales en recepción y apoyo comercial. La apuesta conecta vehículos inteligentes y humanoides mediante chips propios, software y cadena de suministro, aunque el calendario anunciado todavía debe materializarse."
+      },
+      {
+        "position": 5,
+        "headline": "🧬 Multiply Labs capta 75 millones de dólares en una ronda liderada por Patrick Soon-Shiong, con participación de AstraZeneca y Teradyne.",
+        "body_markdown": "🧬 [Multiply Labs](https://siliconangle.com/2026/10/06/multiply-labs-raises-75m-to-optimize-pharmaceutical-manufacturing-with-robots/) capta **75 millones de dólares** en una ronda liderada por Patrick Soon-Shiong, con participación de AstraZeneca y Teradyne. Sus sistemas robotizan pasos manuales de fabricación de terapias celulares y génicas utilizando los instrumentos existentes. La oportunidad está en escalar la fabricación de medicamentos: acelerar el descubrimiento con IA exige también resolver cómo producir los tratamientos."
+      },
+      {
+        "position": 6,
+        "headline": "⚙️ Atomic Machines se presenta tras seis años de desarrollo y 250 millones de dólares de financiación acumulada.",
+        "body_markdown": "⚙️ [Atomic Machines](https://www.businesswire.com/news/home/20261007902471/en/Atomic-Machines-Emerges-from-Stealth-with-%24250-Million-to-Launch-the-Matter-Compiler-an-AI-Native-Manufacturing-System-That-Builds-Micro-Machines-from-Code) se presenta tras seis años de desarrollo y **250 millones de dólares** de financiación acumulada. Su Matter Compiler busca fabricar micromáquinas funcionales directamente desde diseños digitales; su primer producto es PrimeSwitch, un relé para sistemas eléctricos de centros de datos. La propuesta une diseño y fabricación en un ciclo donde la IA experimenta, mide y corrige sobre hardware real."
+      },
+      {
+        "position": 7,
+        "headline": "🏭 Mujin incorpora a SK Square a su financiación, según la cobertura publicada.",
+        "body_markdown": "🏭 [Mujin](https://dealroom.co/news/161646-japans-mujin-raises-224m-series-d-as-sk-square-bets-on-physical-ai/) incorpora a SK Square a su financiación, según la cobertura publicada. Su plataforma MujinOS coordina robots y equipos de automatización en fábricas y almacenes, conectando manipulación, movilidad y planificación. La operación refuerza el interés por el software industrial que convierte máquinas de distintos fabricantes en un sistema capaz de trabajar de forma coordinada."
+      },
+      {
+        "position": 8,
+        "headline": "💰 Mecka anuncia una serie B de 60 millones de dólares liderada por Sequoia, con NVIDIA, M12 y Qualcomm Ventures entre los nuevos inversores.",
+        "body_markdown": "💰 [Mecka](https://mecka.help/news/series-b) anuncia una serie B de **60 millones de dólares** liderada por Sequoia, con NVIDIA, M12 y Qualcomm Ventures entre los nuevos inversores. La compañía combina captura de demostraciones humanas, preparación de datos e integración de robots en empresas. Su estrategia conecta datos y despliegue: aprender del trabajo real, adaptar los modelos y mantener los sistemas operando donde se genera la experiencia."
+      },
+      {
+        "position": 9,
+        "headline": "🛟 Minerva Humanoids se presenta con unos 10 millones de dólares de financiación inicial liderada por General Catalyst.",
+        "body_markdown": "🛟 [Minerva Humanoids](https://www.tectonicdefense.com/minerva-humanoids-emerges-from-stealth-with-10m-led-by-gc) se presenta con unos **10 millones de dólares** de financiación inicial liderada por General Catalyst. Su robot Roger combina control remoto por un especialista con IA para equilibrio y navegación, orientado a trabajos peligrosos en energía y seguridad pública. La autonomía compartida ofrece una vía de utilidad temprana: mantener el criterio profesional y trasladar al robot la exposición física al peligro."
+      },
+      {
+        "position": 10,
+        "headline": "📹 Pantheon afirma haber registrado más de un millón de tareas en ocho semanas con interfaces manuales UMI, a un coste de 10 dólares por hora de datos.",
+        "body_markdown": "📹 [Pantheon](https://pantheon.inc/research/diverse-umi) afirma haber registrado más de un millón de tareas en ocho semanas con interfaces manuales **UMI**, a un coste de 10 dólares por hora de datos. También anuncia una muestra de 100 horas e incluye errores y recuperaciones. La apuesta por datos diversos busca enseñar a los robots tanto a ejecutar acciones como a recuperarse cuando una manipulación sale mal."
+      },
+      {
+        "position": 11,
+        "headline": "🌍 RoboJEPA presenta un modelo del mundo entrenado con datos de 12 plataformas robóticas y versiones de hasta 8.000 millones de parámetros.",
+        "body_markdown": "🌍 [RoboJEPA](https://robojepa.github.io/) presenta un **modelo del mundo** entrenado con datos de 12 plataformas robóticas y versiones de hasta 8.000 millones de parámetros. Sus autores encuentran mejoras predecibles de predicción y planificación al aumentar la computación, con pruebas en robots reales. El trabajo aporta evidencia sobre el escalado de modelos que anticipan las consecuencias de una acción antes de ejecutarla."
+      },
+      {
+        "position": 12,
+        "headline": "🗂️ Interlatent presenta Dataroom, un espacio de trabajo donde agentes procesan vídeos, analizan telemetría y generan anotaciones que las personas pueden revisar y corregir.",
+        "body_markdown": "🗂️ [Interlatent](https://interlatent.com/blog/introducing-dataroom) presenta **Dataroom**, un espacio de trabajo donde agentes procesan vídeos, analizan telemetría y generan anotaciones que las personas pueden revisar y corregir. Los resultados se exportan como conjuntos de datos para entrenamiento y análisis. La propuesta aborda un cuello de botella práctico: convertir grabaciones dispersas en datos utilizables, con trazabilidad de las decisiones y las correcciones."
+      },
+      {
+        "position": 13,
+        "headline": "📱 PhoneBot propone un humanoide abierto que reutiliza un smartphone como unidad de percepción y computación, aprovechando su cámara, sensores y conectividad.",
+        "body_markdown": "📱 [PhoneBot](https://arxiv.org/abs/2610.08737) propone un humanoide abierto que reutiliza un **smartphone** como unidad de percepción y computación, aprovechando su cámara, sensores y conectividad. Su estructura incorpora 13 actuadores y el trabajo muestra locomoción, seguimiento de personas e interacción. Una vía para abaratar la experimentación en educación y prototipado mediante componentes de consumo que ya integran buena parte de la electrónica necesaria."
+      },
+      {
+        "position": 14,
+        "headline": "🔎 Robo Dir reúne más de 3.400 conjuntos de datos relacionados con robótica y permite buscarlos por necesidades como teleoperación, manipulación bimanual o información táctil.",
+        "body_markdown": "🔎 [Robo Dir](https://datasets.gurasees.com/) reúne más de **3.400 conjuntos de datos** relacionados con robótica y permite buscarlos por necesidades como teleoperación, manipulación bimanual o información táctil. También ofrece acceso mediante MCP para agentes de IA. El recurso facilita encontrar datos adecuados, aunque sus tamaños y licencias deben confirmarse en las fuentes originales antes de incorporarlos a un proyecto."
+      },
+      {
+        "position": 15,
+        "headline": "📊 Kai Williams analiza por qué evaluar modelos robóticos resulta especialmente difícil: pocas tareas, ensayos caros, reinicios manuales y diferencias entre simulación y realidad.",
+        "body_markdown": "📊 [Kai Williams](https://www.understandingrobots.org/p/why-testing-robot-models-is-even) analiza por qué evaluar modelos robóticos resulta especialmente difícil: pocas tareas, ensayos caros, reinicios manuales y diferencias entre simulación y realidad. Una clasificación puede cambiar mucho según qué capacidades se midan. La lectura ayuda a interpretar los **benchmarks** con criterio y a exigir pruebas sobre las tareas y condiciones concretas de cada despliegue."
+      },
+      {
+        "position": 16,
+        "headline": "✋ Chris Paxton identifica la destreza y la percepción táctil como grandes tendencias de IROS 2026.",
+        "body_markdown": "✋ [Chris Paxton](https://itcanthink.substack.com/p/dexterity-is-the-frontier-thoughts) identifica la **destreza** y la percepción táctil como grandes tendencias de IROS 2026. La mayor disponibilidad de manos y guantes de captura permite experimentar con manipulación de varios dedos, mientras el contacto queda cada vez más oculto a las cámaras. El avance desplaza la atención hacia sentir y controlar las fuerzas necesarias para trabajar con objetos reales."
+      },
+      {
+        "position": 17,
+        "headline": "🛠️ Anatomy propone una skill para crear explicaciones técnicas mediante máquinas e ilustraciones interactivas, desde mecanismos de relojería hasta motores.",
+        "body_markdown": "🛠️ [Anatomy](https://skills.wheresryan.sh/anatomy) propone una **skill** para crear explicaciones técnicas mediante máquinas e ilustraciones interactivas, desde mecanismos de relojería hasta motores. Su enfoque vincula el movimiento y las lecturas visuales a un mismo modelo de comportamiento. Un recurso interesante para la formación en robótica, donde observar cómo funciona un mecanismo puede hacer comprensibles ideas difíciles de explicar solo con texto."
+      },
+      {
+        "position": 18,
+        "headline": "🎙️ Detrás del Inversor me invita a conversar en el podcast sobre cómo posicionarse ante la IA Física.",
+        "body_markdown": "🎙️ [Detrás del Inversor](https://www.youtube.com/watch?v=JvDadi0eRik) me invita a conversar en el podcast sobre cómo posicionarse ante la **IA Física**. Hablamos de humanoides, datos, simulación, componentes, costes, la carrera entre China y Estados Unidos y los modelos de negocio alrededor de los robots. Una conversación para conectar la evolución tecnológica con las oportunidades profesionales y empresariales que empieza a abrir este sector."
+      }
+    ]
+  }
+}

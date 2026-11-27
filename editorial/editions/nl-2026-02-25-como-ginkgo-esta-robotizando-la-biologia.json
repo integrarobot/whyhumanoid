@@ -1,0 +1,72 @@
+{
+  "edition_id": "nl-2026-02-25-como-ginkgo-esta-robotizando-la-biologia",
+  "source_url": "https://www.integrarobot.com/p/como-ginkgo-esta-robotizando-la-biologia",
+  "published_on": "2026-02-25",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "How Ginkgo is robotizing biology",
+  "subtitle": "Can cells be manufactured the way chips are manufactured?",
+  "body_markdown": "Today I want to tell you about a company with a breathtaking story. It is [Ginko Bioworks](https://www.ginkgo.bio/), whose goal is to become *the TSMC of biotechnology*, for which, instead of manufacturing programmable chips, what it does is manufacture cells programmed to perform a specific new function.\n\nIn this way, Ginko works in the field of **synthetic biology**: designing cells that fulfil a specific function, such as bacteria optimized to produce therapeutic proteins, yeasts modified to manufacture complex molecules used in drugs, and cells designed to produce specific enzymes used in vaccines or therapies.\n\nAs I was saying, Ginko's story is breathtaking, but at the same time quite controversial, and not only because of how ambitious its mission is, but because of the ups and downs it has had since its founding as an MIT spin-off in 2028.\n\nFor example, among its main milestones, starting from the end: in **2026**, the collaboration with [OpenAI](https://openai.com/es-ES/index/gpt-5-lowers-protein-synthesis-cost/) to use the intelligence of **GPT-5** in its autonomous laboratory, so that it can propose experiments, run them at large scale, learn from the results and decide what to test next, thanks to which the cost of protein production can be reduced by 40%.\n\nAnd if we go much further back, we find news as interesting as the fact that in **2014** Ginko was the first biotech company to take part in the prestigious startup accelerator programme **Y Combinator**, in which mostly digital projects take part, which shows that the company has long had the goal of uniting biology with bits.\n\nLater, in **2018**, the company became a unicorn when it reached a valuation of **1 billion dollars** in one of its investment rounds. In **2019** it came to be worth **4.2 billion**, and in **2021** it went public through a merger with a SPAC at a valuation of about **20 billion dollars**, which positioned it as a dizzying success, at least from a financial point of view.\n\nThanks to that success, between 2017 and 2022 the company acquired 7 startups, incorporating their most important biotechnology capabilities and innovations.\n\nBut this is where things start to go wrong, because a few months after starting to trade on the stock exchange, the company was accused of being a fraud because it counted as revenue the contracts it had with the startups it invested in, which accounted for a significant part of its business volume.\n\nThat is when the company began its particular ordeal, because its share price plummeted more than 95%, and it currently has a valuation of about 500 million dollars.\n\nBut anyway, we haven't come here to talk about investments but about technology, and that is what we are going to look at next, because after sorting out its financial problems, the company has kept reaching agreements to drive its strategy of building robotized laboratories, and if we look at its collaborations with the pharmaceutical industry, it seems very clear that what matters is continuing with its mission of becoming the TSMC of biotechnology.\n\n- Ginkgo and **Bayer** are working on developing biological solutions for agriculture (nitrogen-fixing microbes and biological agricultural technologies).\n- Ginkgo and **Pfizer** have a collaboration agreement focused on discovering possible RNA-based medicines.\n- Ginkgo and **Boehringer Ingelheim** are working with a metagenomic database to accelerate the discovery of new therapeutic molecules.\n- Ginkgo and **Merck** have an agreement to design enzymes for use as biocatalysts in efforts to manufacture pharmaceutical ingredients.\n- Ginkgo and **Solvay** are working on sustainable biopolymers, expanding R&I capabilities in chemistry and synthetic biology.\n\nAnd now for the important part, robotic laboratories: what they are and what they are used for:\n\nWhen we talk about Ginkgo's **robotic laboratories**, we are referring to an automated infrastructure where biology is treated as a programmable industrial process and where **robotic arms** do most of the manual work that until now was done by people.\n\nA robotic laboratory is, in essence, a factory of experiments.\n\nIts function is not to execute thousands or millions of variations of a biological design systematically, measure the results and feed that data to computational models that decide what to test next.\n\nThe scheme followed to feed this process is as follows:\n\n- Digital design\n- Automated construction\n- Massive testing\n- Standardized measurement\n- Algorithmic learning\n\nAnd the cycle repeats continuously.\n\nIf we look at it through the prism of robotics, it is a closed perception-decision-action system applied to cells instead of electric motors.\n\nTherefore, Ginko's laboratories are automated platforms that handle substances, culture microorganisms, sequence results and generate structured data. Everything is designed to minimize human intervention and maximize reproducibility, with the aim of being able to scale the process.\n\nIn robotics we talk a lot about data, simulation, world models and large-scale training. Ginkgo is trying to do something equivalent in biology: turn every experiment into reusable data that improves the next one.\n\nIn this way, if you are able to turn biology into iterative engineering supported by automation and AI models, the speed of discovery increases exponentially.\n\nIn short, Ginko offers biotechnology and pharmaceutical companies the hardware and software infrastructure needed to develop their products, so that these companies only have to devote themselves to designing them, just as NVIDIA designs the GPUs that TSMC then manufactures.\n\nUndoubtedly a company that cannot leave us indifferent, because of how ambitious its mission is but also because of how controversial its track record has been so far.\n\nWe will keep an eye on its evolution, because what it aims to achieve could change the world or remain just a clever analogy: *the TSMC of biology*.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🌐 World Labs raises a billion dollars in new funding from AMD, Autodesk, NVIDIA and other financial partners to drive its development of world models, the fundamental piece for…",
+        "body_markdown": "🌐 [World Labs](https://www.worldlabs.ai/blog/funding-2026) raises a billion dollars in new funding from **AMD**, **Autodesk**, **NVIDIA** and other financial partners to drive its development of world models, the fundamental piece for training robots."
+      },
+      {
+        "position": 2,
+        "headline": "🚗 Toyota reaches a commercial agreement with Agility.",
+        "body_markdown": "🚗 [Toyota](https://www.agilityrobotics.com/content/agility-robotics-announces-commercial-agreement-with-toyota-motor-manufacturing-canada) reaches a commercial agreement with **Agility**. After a successful pilot programme, the car manufacturer plans to deploy the Digit robot in its facilities to support its employees in manufacturing, supply chain and logistics operations."
+      },
+      {
+        "position": 3,
+        "headline": "🔮 Barclays presents a report in which it estimates that humanoid robotics will become a 200 billion dollar market by 2035, and in which it explains how advances in AI, actuators…",
+        "body_markdown": "🔮 [Barclays](https://home.barclays/news/press-releases/20260/01/barclays-research-finds-humanoid-robotics-on-track-to-become-a--/) presents a report in which it estimates that humanoid robotics will become a **200 billion dollar market by 2035**, and in which it explains how advances in AI, actuators and batteries have reduced production costs 30-fold in the last decade, paving the way for commercial adoption"
+      },
+      {
+        "position": 4,
+        "headline": "🗺️ DreamDojo is NVIDIA's new development in world models for Physical AI.",
+        "body_markdown": "🗺️ [DreamDojo](https://x.com/drjimfan/status/2024895359236051274?s=46) is **NVIDIA**'s new development in world models for Physical AI. An open source, interactive world model that takes robots' motor controls and generates the future in pixels."
+      },
+      {
+        "position": 5,
+        "headline": "👀 Wang Xingxing, founder of Unitree, says the current level of robotics technology is comparable to that of a 10-year-old child, and adds that large-scale commercial adoption is…",
+        "body_markdown": "👀 [Wang Xingxing](https://technode.com/2026/02/21/unitree-ceo-says-robot-capability-comparable-to-10-year-old-large-scale-use-3-5-years-away), founder of **Unitree**, says the current level of robotics technology is comparable to that of a 10-year-old child, and adds that large-scale commercial adoption is still three to five years away, and no more than a decade at most."
+      },
+      {
+        "position": 6,
+        "headline": "💻 Sureform is a new startup backed by Y Combinator devoted to transforming physical experience into training data for world models and robotics, helping to build a future where…",
+        "body_markdown": "💻 [Sureform](https://www.ycombinator.com/launches/PVc-sureform-turning-physical-expertise-into-training-data-for-world-models-and-robotics) is a new startup backed by **Y Combinator** devoted to transforming physical experience into training data for world models and robotics, helping to build a future where robots can perform specialized tasks reliably."
+      },
+      {
+        "position": 7,
+        "headline": "🔌 OpenCastor is the universal open source adapter for robot software.",
+        "body_markdown": "🔌 [OpenCastor](https://www.opencastor.com/) is the universal open source adapter for robot **software**. Its goal is to normalize every AI provider into a standard interface that can be mapped to any robotic hardware through a single YAML configuration file."
+      },
+      {
+        "position": 8,
+        "headline": "🦾Amazon halts the Blue Jay robotics project after only six months of operation.",
+        "body_markdown": "🦾[Amazon](https://techcrunch.com/2026/02/18/amazon-halts-blue-jay-robotics-project-after-less-than-six-months/) halts the **Blue Jay** robotics project after only six months of operation. The company plans to use the core technology of this multi-arm robot designed to sort and move packages for other robotic manipulation programmes."
+      },
+      {
+        "position": 9,
+        "headline": "🚘 Mimic is working with Audi to apply AI-driven robotics to industrial production.",
+        "body_markdown": "🚘 [Mimic](https://x.com/mimicrobotics/status/2026208548481286154?s=46) is working with **Audi** to apply AI-driven robotics to industrial production. Its end-to-end pixel-to-action model, running on the bimanual platform, is able to perform a complex, long-horizon dexterous insertion task."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 71; 9 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "98a8833e279806eba524cc7143806fbf62751b90c259dce78c071b9ce51e9877"
+}

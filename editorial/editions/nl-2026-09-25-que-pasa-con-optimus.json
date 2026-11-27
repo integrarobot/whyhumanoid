@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-09-25-que-pasa-con-optimus",
+  "source_url": "https://www.integrarobot.com/p/que-pasa-con-optimus",
+  "published_on": "2026-09-25",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "What's going on with Optimus?",
+  "subtitle": "This year Tesla has said very little about new developments in the Optimus humanoid robot",
+  "body_markdown": "**Tesla**'s silence about the state of development of the **Optimus** humanoid robot raises many doubts, and in this video from the Integrarobot course I give my opinion about what may be happening.\n\nThe recent start of mass production of the **Tesla Semi** truck can give us quite a few clues about what may be happening with Optimus. Basically, **no factory, no robot**. And if Tesla's plan was to manufacture 1 million robots a year, it first had to dismantle the factory where the Model S was produced, and then move on to manufacturing the robot.\n\nSo I think that in this case the silence is not so bad. While the company makes the excuse that it doesn't want competitors to copy it, Tesla's share price remains fairly flat, and that gives us the opportunity to keep accumulating for when the market wakes up to this company's true potential.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 112; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

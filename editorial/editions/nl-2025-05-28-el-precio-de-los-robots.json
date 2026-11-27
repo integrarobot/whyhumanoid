@@ -1,0 +1,62 @@
+{
+  "edition_id": "nl-2025-05-28-el-precio-de-los-robots",
+  "source_url": "https://www.integrarobot.com/p/el-precio-de-los-robots",
+  "published_on": "2025-05-28",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The price of robots",
+  "subtitle": "There are already those who dare to say that a humanoid robot will cost as much as a household appliance. Here we think the price will be more like that of a car.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/75e8089d-f2bd-46e7-adf9-ea19b18db961_1536x1024.png)\n\nIn an interview with [Luis Sentis](https://www.linkedin.com/in/luis-sentis/), scientific advisor and co-founder of **Apptronik**, he surprised us with the statement that humanoid robots for the home will come to cost 1,500 dollars and industrial ones 5,000 dollars.\n\nThis is the first time I have heard such a low price, comparable to that of a household appliance rather than a car. And Sentis's argument is that, in the end, what makes a car expensive is the amount of metal used to manufacture it, so since the robot is much smaller its cost will be much lower.\n\nIt is true that equating the price of a humanoid robot with that of a household appliance would greatly simplify the market's perception of how widely this technology will be adopted, but I think the question here is not whether people will want to have a machine capable of taking care of the tedious household chores, but whether robot manufacturers will be able to give them the skills needed to do so with sufficient quality. That is, it is not so much about hardware and price, but about software.\n\nOn the other hand, the problem we face in getting the price of robots to become as low as that of a household appliance rather than as high as that of a car is the amortization of the **R&D** investment robotics companies are having to make to bring their products to market. When there are still hardly any humanoid robots [on sale](https://www.integrarobot.com/p/donde-se-venden-los-robots-humanoides) and none of them is really capable of performing the functions on which we have pinned our expectations, it is easy to think that affordable pricing may take many more years, as happened, for example, with **Tesla** cars, where the higher-cost models, or models for the rich, made it possible to finance the manufacture of utility models accessible to a greater number of people.\n\nThen there is the question of timing, because it is the question everyone asks me. Are we talking about the near or distant future? Less than 10 years or much more? This is where [Elon Musk](https://x.com/liderarmente/status/1926521533352063253) has once again stuck his neck out, saying that in **4 or 5 years** humanoid robots will have a significant effect on the gross domestic product of some country. Having said that, we have to consider to what extent this is a real expectation based on his knowledge of how the development of **Optimus** is progressing, or whether he is simply once again putting into his team's heads a date by which he would like to start seeing the results of all the engineering work they are doing.\n\nFinally, we have to discuss the issue of **competition**, because unlike what happened with electric cars, where for a few years Tesla had very few competitors, which allowed it to achieve significant market dominance until the arrival of Chinese companies, in the case of Humanoid Robots it is very noticeable that competition is going to be enormous.\n\nWe are talking about [more than 60 companies](https://whyhumanoid.com/) that we have located, to which many others would have to be added, especially from China, which for now remain under the radar or which we have not yet discovered. This means that prices may be significantly affected by this competition, especially if it comes from Asia, where they have clearly chosen to make the technology accessible first, in order to then move on to the monetization stage.\n\n*Editorial note, 27 November 2026: Links to the former robot spreadsheet now lead to the current Why Humanoid? catalogue.*",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🇩🇪 Neura, the most advanced German startup in the development of humanoid robots, is already working with NVIDIA's Isaac GR00T N1.5 software and the GR00T-Dreams blueprint, whic…",
+        "body_markdown": "Not a week goes by without plenty of interesting robotics news, so now the work is not in finding it but in deciding which to highlight here.\n\n🇩🇪 [Neura](https://www.linkedin.com/posts/neura-robotics_neurarobotics-nvidia-gr00t-activity-7331288863694336000-lvus?utm_source=share&utm_medium=member_desktop&rcm=ACoAAACUg4cBnZG9b9gtexR0B-xb1nwV3qvwQfY), the most advanced German startup in the development of humanoid robots, is already working with **NVIDIA**'s Isaac GR00T N1.5 software and the GR00T-Dreams blueprint, which allows its machines to understand what the real world is like and how it works through Physical AI."
+      },
+      {
+        "position": 2,
+        "headline": "✍️ MERPHI is a Swedish technology design studio working to contribute to a future where robots and humans coexist in harmony.",
+        "body_markdown": "✍️ [MERPHI](https://www.merphi.se/downloads/) is a Swedish technology design studio working to contribute to a future where robots and humans coexist in harmony. They also do interesting outreach work, creating all kinds of **infographics** on robotics topics."
+      },
+      {
+        "position": 3,
+        "headline": "🔮 Ray Kurzweil, one of the best-known futurologists and director of engineering at Google, is now embarking on the robotics adventure with the company Beyond Imagination, which…",
+        "body_markdown": "🔮 [Ray Kurzweil](https://www.fastcompany.com/91337758/beyond-imagination-raises-100-million-humanoid-robots), one of the best-known futurologists and director of engineering at Google, is now embarking on the robotics adventure with the company **Beyond Imagination**, which has just raised 100 million dollars to manufacture humanoid robots."
+      },
+      {
+        "position": 4,
+        "headline": "🚗 Figuere and BMW are working at full speed to integrate humanoid robots into the vehicle manufacturing process.",
+        "body_markdown": "🚗 [Figuere](https://x.com/adcock_brett/status/1925216191733502270) and **BMW** are working at full speed to integrate humanoid robots into the vehicle manufacturing process. So says Brett Adcock, who states that for the first time their robots have been working for a 20-hour shift in a row."
+      },
+      {
+        "position": 5,
+        "headline": "📹 Humanoid Policy ∼ Human Policy is one of the many research projects contributing to improving robot learning from real demonstrations performed by humans.",
+        "body_markdown": "📹 [Humanoid Policy ∼ Human Policy](https://arxiv.org/pdf/2503.13441) is one of the many research projects contributing to improving robot learning from real **demonstrations** performed by humans."
+      },
+      {
+        "position": 6,
+        "headline": "🚲 Pyroki is a modular, extensible, cross-platform toolkit developed in Python for optimizing inverse kinematics, trajectories and motion retargeting for robots.",
+        "body_markdown": "🚲 [Pyroki](https://pyroki-toolkit.github.io/) is a modular, extensible, cross-platform toolkit developed in Python for optimizing inverse **kinematics**, trajectories and motion retargeting for robots."
+      },
+      {
+        "position": 7,
+        "headline": "🪽 SPIDAR, a multi-limbed drone with vectorable rotors that allow it to hold large objects as if it were a robotic hand.",
+        "body_markdown": "🪽 [SPIDAR](https://x.com/lukas_m_ziegler/status/1926678636502864075), a multi-limbed drone with vectorable rotors that allow it to hold large objects as if it were a robotic hand. You have to watch the demonstration video, because it shows us the beginning of what **flying robots** will be like."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 22; 7 news items; no audio/video transcription claimed. Public-edition adaptation: obsolete catalogue links now open the current website; a historical survey opens its original article. A labelled editorial note discloses the change. Unchanged originals remain in the local source archive, not Git."
+  },
+  "original_sha256": null
+}

@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2026-04-22-lo-que-la-nueva-mano-de-optimus-puede",
+  "source_url": "https://www.integrarobot.com/p/lo-que-la-nueva-mano-de-optimus-puede",
+  "published_on": "2026-04-22",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "What Optimus's new hand can teach us 🖐️",
+  "subtitle": "Will Tesla achieve a manipulation milestone similar to the one Honor reached for locomotion?",
+  "body_markdown": "\"Those who don't run, fly\" may be a good way to represent what is happening with Physical AI technology and humanoid robots.\n\nToday I'm going to use two very topical pieces of news to illustrate it.\n\n1. The Beijing humanoid **robot** **half marathon**.\n2. **Optimus**'s new **hand**.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/2e3e10d9-6ff0-4030-a98a-586521494d21_1024x682.jpeg)\n\nOn 19 April 2026, more than 100 **Chinese**-made **humanoid robots** ran alongside 12,000 human runners on a 21-kilometre course in Beijing's E-Town district. What happened over those 21 kilometres can be described as amazing, chaotic and even hilarious all at once, but above all we must acknowledge that it is another of those milestones showing us the future of robotics.\n\n**Lightning** is the name of the robot that won the race; its manufacturer is **Honor**, and it completed the course in 50 minutes and 26 seconds, smashing the half marathon world record of 57 minutes, set by Ugandan Jacob Kiplimo, by almost seven minutes. Honor not only won the race, but its robots swept the podium, taking first, second and third place.\n\nFrom the race, a couple of aspects stand out that tell us how quickly this technology is evolving and improving:\n\n1. The winning robot of the same race last year finished in 2 hours and 40 minutes. Honor's Lightning completed the same course in 50 minutes. This indicates that we are entering full **exponentiality**.\n2. In this year's race 40% of the robots ran **autonomously**, compared with the previous year's race, where the percentage of **teleoperation** was much higher. This is very important because it tells us how software is improving, not just hardware.\n\nWell, now that we know robots run like the wind and that Honor is going all in on humanoids, let's look at the [new hand](https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2026080687&_cid=P21-MO1L3J-43110-1) **Tesla** has designed for **Optimus**.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/1e8664b7-fcda-44d5-b809-ec193098aef7_1254x1254.png)\n\nWhat Tesla is telling us with this new patent is that it is very serious about Optimus. Yes, it sounds strange, but looking at other companies' demos it might seem that a robot that just does things is enough for us. For example, in most **Physical AI** companies' demos, what we see are robotic arms with grippers that can manipulate all kinds of objects, apparently even quite precisely. But Tesla is thinking about something else.\n\nThe level of **excellence** Tesla is seeking with its robot is another story. If you have tried their cars, you'll know what I mean. And if they achieve something similar, we will be looking at a technology that will leave nobody indifferent.\n\nWhat I'm talking about is reinventing the concept of the robot. It is about comparing what other manufacturers are doing, which is seeking to offer the basics to handle the everyday activities that can be entrusted to the robot, with something totally different that seeks to go beyond immediate usefulness and even surpass human capabilities.\n\nAs an analogy, any robot's hand would be like mine, rather clumsy for most manual work, whereas Optimus's hand aspires to have dexterity equivalent to a surgeon's.\n\nI think this justifies the **manufacturing delays** of Tesla's robot. I don't like it being this way because I'd like to be able to buy the robot right now, but the difference in the final quality of the product will make the wait worthwhile.\n\n## Will Tesla achieve a manipulation milestone similar to the one Honor reached for locomotion?\n\nHaving fast, flexible and strong robots is fine, but above all we want skilful robots, and that is what the new Tesla Optimus hand patent conveys.\n\nA patent that describes a mechanical architecture quite different from what is usually seen in most current robots, which tend to be relatively simple. Basically a gripper or a system with few degrees of freedom that can grasp large objects but has considerable limitations when it comes to manipulating small or delicate things.\n\nSo Tesla is trying to solve that problem with a design closer to **human anatomy**.\n\nThe central idea of the patent is elegant from an engineering point of view: the motors that generate the movement are not inside the hand, but in the forearm. From there, movement is transmitted to the fingers through cables that work similarly to the tendons of the human arm.\n\nThis detail has several important consequences.\n\n1. **Lightness**: in robotics there is a principle showing that the more weight you place at the end of a joint, the harder it is to control movement precisely. By moving the actuators to the forearm, mass in the hand is reduced and fine control improves.\n2. **Mechanical density**: a human hand has many degrees of freedom, and replicating that complexity in a small volume is extremely difficult. Using cables makes it possible to introduce multiple joints in the fingers without having to put motors in each phalanx.\n3. **Precision**: the cables run inside the palm and wrist through channels and pulleys designed to reduce friction and maintain the right tension. This allows the force applied by each finger to be controlled more delicately.\n\nSo if we look closely at the design shown in the patent, the goal seems clear. It is not just about grasping objects, but about manipulating them with almost human dexterity. And this brings incalculable value because it expands the possibilities of where and how Optimus can work in all kinds of situations and places (the Moon and Mars included)",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦓 Skild AI buys Zebra Technologies with the aim of deploying its end-to-end artificial intelligence system in warehouses.",
+        "body_markdown": "🦓 [Skild AI](https://www.skild.ai/blogs/skild-zebra) buys **Zebra Technologies** with the aim of deploying its end-to-end artificial intelligence system in warehouses. This will allow a considerable increase in productivity and add a new element to its data cycle for robot training."
+      },
+      {
+        "position": 2,
+        "headline": "💻 Antioch wants to be \"the Cursor\" of Physical AI.",
+        "body_markdown": "💻 [Antioch](https://techcrunch.com/2026/04/16/this-simulation-startup-wants-to-be-the-cursor-for-physical-ai/) wants to be \"the Cursor\" of Physical AI. The startup develops simulation tools for robot developers, closing the gap between **simulation** and reality, making virtual environments realistic enough that robots trained in them can operate reliably in the physical world."
+      },
+      {
+        "position": 3,
+        "headline": "🤝 Neura Robotics and AWS reach a strategic agreement to accelerate Physical AI at scale, combining NEURA's cognitive robotics platform with AWS's cloud and AI infrastructure to…",
+        "body_markdown": "🤝 [Neura Robotics](https://neura-robotics.com/neura-robotics-and-amazon-web-services-enter-collaboration/) and **AWS** reach a strategic agreement to accelerate **Physical AI** at scale, combining NEURA's cognitive robotics platform with AWS's cloud and AI infrastructure to help train, validate and deploy the next generation of intelligent robots."
+      },
+      {
+        "position": 4,
+        "headline": "🧬 Anyscale presents Multiply Labs, where AI and robotics are used to drive high-throughput, contamination-free biomanufacturing.",
+        "body_markdown": "🧬 [Anyscale](https://www.anyscale.com/resources/case-study/multiply-labs) presents Multiply Labs, where AI and robotics are used to drive high-throughput, contamination-free **biomanufacturing**. By training larger and more complex physical AI models on the multi-cloud platform of [Anyscale], Multiply Labs enables robots to work in the biologics industry for medicines."
+      },
+      {
+        "position": 5,
+        "headline": "📹 Mimic-video is a novel video-action model (VAM) that combines an internet-scale pre-trained video model with a flow-matching-based action decoder conditioned on its latent rep…",
+        "body_markdown": "📹 [Mimic-video](https://mimic-video.github.io/) is a novel **video-action model** (VAM) that combines an internet-scale pre-trained video model with a flow-matching-based action decoder conditioned on its latent representations."
+      },
+      {
+        "position": 6,
+        "headline": "📷 URLab is a plugin for Unreal Engine that integrates the MuJoCo physics engine directly into the editor and runtime, which makes available an open source, high-fidelity robotic…",
+        "body_markdown": "📷 [URLab](https://github.com/URLab-Sim/UnrealRoboticsLab) is a plugin for **Unreal Engine** that integrates the **MuJoCo** physics engine directly into the editor and runtime, which makes available an open source, high-fidelity robotics simulator that combines Unreal Engine's photorealistic rendering with MuJoCo's precision physics."
+      },
+      {
+        "position": 7,
+        "headline": "🚘 Coco is turning its 10,000 delivery robots into a real-time sensor network in collaboration with BlindSquare, providing real-time hazard alerts to blind pedestrians in six cit…",
+        "body_markdown": "🚘 [Coco](https://finance.yahoo.com/sectors/technology/articles/coco-robotics-blindsquare-partner-city-150000740.html) is turning its 10,000 delivery robots into a real-time sensor network in collaboration with **BlindSquare**, providing real-time hazard alerts to blind pedestrians in six cities in the United States and Europe"
+      },
+      {
+        "position": 8,
+        "headline": "⚛️ Physical Intelligence presents its new Physical AI model π0.7, which for the first time shows early signs that a single generalist system can improvise, combining learned ski…",
+        "body_markdown": "⚛️ [Physical Intelligence](https://techcrunch.com/2026/04/16/physical-intelligence-a-hot-robotics-startup-says-its-new-robot-brain-can-figure-out-tasks-it-was-never-taught/?utm_source=robotnews.therundown.ai&utm_medium=newsletter&utm_campaign=humanoid-smokes-half-marathon-record) presents its new Physical AI model **π0.7**, which for the first time shows early signs that a single generalist system can improvise, combining learned skills and web-scale training to handle real-world tasks it was never explicitly taught."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 86; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "e1bf1162524dc0bcab491b13846b9491b9948af9a3a299f6fcf748f85775d7bc"
+}

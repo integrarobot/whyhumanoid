@@ -1,0 +1,42 @@
+{
+  "edition_id": "nl-2025-01-07-por-que-ahora-asi-entraron-los-llm",
+  "source_url": "https://www.integrarobot.com/p/por-que-ahora-asi-entraron-los-llm",
+  "published_on": "2025-01-07",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Why now? This is how LLMs entered the brains of robots",
+  "subtitle": "Perhaps you have wondered why people are talking about humanoid robots now? And if you haven't yet, I sense that in 2025 there will be quite a lot of talk about it.",
+  "body_markdown": "If you have asked yourself this question, as I have over the last few months, there may be a relatively simple answer: robots can now be **intelligent**, at least as an approximation, much more than they were just a few years ago. The key has been integration with **large language models** (LLMs), which have given them capabilities that used to be impossible with the programming systems that existed before the arrival of **Generative Artificial Intelligence**.\n\n**LLMs** have given robots the ability to:\n\n1. **Understand language**\n2. **Communicate naturally**\n3. **Recognize images**\n4. **Interpret their surroundings**\n5. **Make decisions**\n\nRobots built before this technology appeared could have been designed with the body structure of a human, but it was really impossible for them to act like one with the objects or people around them, because they did not have the cognitive skills to do so. But now this has changed, and that is why we say they can be intelligent.\n\nIn the same way that, when we use an assistant based on Artificial Intelligence, such as **ChatGPT**, we notice that there is a certain intelligence in the answers it gives us, when we integrate this capability into a robot's software, what happens is that it will understand our instructions much better and, when it carries them out, it will be able to execute them in a way that is closer to how we expect a human to do it.\n\nThe ability to **think step by step**, or to break a task down into smaller ones in order to execute them more precisely, is another of the great contributions of GenAI to the future development of humanoid robots. That is why today we are launching this newsletter and, more generally, the **Integrarobots** project, which aims to help companies integrate robots with Artificial Intelligence into their production processes.\n\nNeedless to say, another reason why we are launching this initiative now is that the company Tesla, led by Elon Musk, has made it very clear that its long-term priority is the development of humanoid robots, for which it has presented the **Optimus Robot**, which will be one of the regular protagonists of this newsletter. If they say you shouldn't bet against Elon, we, on the contrary, are going to fully join the trend he has started together with some startups that we will gradually tell you about here.\n\nSo now you know: if you want to keep up with everything that is brewing in the field of humanoid robotics and all kinds of robotics initiatives in general, now is the time to subscribe to Integrarobots.\n\n---\n\n## Nvidia confirms it\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/8a267932-5bc1-4921-aa81-f46667e7c01c_2756x1734.png)\n\nIt is not every day that one has the opportunity to feel with total clarity that one is living in the future. And for this we have to thank the company **NVIDIA** for telling us about it so clearly and, above all, for developing the tools that will make humanoid robots a tangible reality in a short time.\n\nSo this week we were able to witness the official debut of humanoid robotics in NVIDIA's presentation at the CES2025 event, where it became clear that the strategy of the world's most important company in terms of Artificial Intelligence holds that the next phase of development of this technology, after GenAI and Intelligent Agents, involves bringing all these developments into the physical world through **autonomous driving** and **general-purpose robots**.\n\n> \"*It all started with perception AI, which understood images, words and sounds. Then with generative AI, which created text, images and sounds. Now we are entering the era of **physical AI**, which can proceed, reason, plan and act*\". Jensen Huang\n\nTo this end, the company has presented several products that will help other companies make this prediction come true\n\n- [NVIDIA Cosmos](https://www.nvidia.com/en-eu/ai/cosmos/): drives physical AI with new models and video data processing pipelines for robots, autonomous vehicles and vision Artificial Intelligence.\n- [NVIDIA Isaac](https://developer.nvidia.com/isaac): a development platform for AI robots such as autonomous mobile robots (AMRs), arms and manipulators, and humanoids, consisting of libraries accelerated by the CUDA software.\n- [NVIDIA Ominverse](https://www.nvidia.com/en-us/omniverse/): offers an API, SDK and services that allow developers to integrate rendering and generative physical AI technologies into software tools and simulation workflows for industrial and robotics use cases.\n\nAs you can imagine, all developers of intelligent robots are now analyzing these tools and will soon integrate them into their products, so we are looking at a new lever for humanoid robots to become a reality very soon in factories, shops and homes.\n\n> \"The ChatGPT moment for general robotics is just around the corner\".\n>\n> Jensen Huang\n\nWhat can I say? To me, all of this seems like it is going to have such a big impact that we cannot sit around waiting for it to happen; we have to start working on it right now.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "📱Samsung Electronics will become the largest shareholder of Rainbow Robotics with the aim of accelerating the development of the robots of the future.",
+        "body_markdown": "Below we share the featured news from the sector\n\n📱[Samsung Electronics](https://news.samsung.com/cl/samsung-electronics-se-convertira-en-el-mayor-accionista-de-rainbow-robotics-y-acelerara-el-desarrollo-de-los-robots-del-futuro) will become the largest shareholder of **Rainbow Robotics** with the aim of accelerating the development of the robots of the future. Now that Apple has thrown in the towel on the autonomous car, will we soon see news of its interest in robotics?"
+      },
+      {
+        "position": 2,
+        "headline": "🤖 OpenAI is very tempted by humanoid robotics.",
+        "body_markdown": "🤖 [OpenAI](https://techcrunch.com/2024/12/24/openai-considered-building-a-humanoid-robot-report/) is very tempted by humanoid robotics. In addition to investing in the robotics startups X1 and Figure, there are signs that it could be working on its own humanoid robot, which would be as if ChatPGT were taking on a body."
+      },
+      {
+        "position": 3,
+        "headline": "🈵 Fourier, the Chinese startup that manufactures humanoid robots, has raised more than 100 million dollars in a funding round led by the Prosperity7 fund.",
+        "body_markdown": "🈵 [Fourier](https://www.dealstreetasia.com/stories/chinese-robotics-firm-fourier-books-nearly-109m-in-prosperity7-backed-series-e-round-425571), the Chinese startup that manufactures humanoid robots, has raised more than 100 million dollars in a funding round led by the Prosperity7 fund. We will soon talk about the Asian country's big bet on robotics."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 1; 3 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "da15644528fdfeecba2745df5ada54058f337296b4b03c30c594f0ba0bd1ae15"
+}

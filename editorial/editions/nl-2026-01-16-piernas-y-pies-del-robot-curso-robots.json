@@ -1,0 +1,26 @@
+{
+  "edition_id": "nl-2026-01-16-piernas-y-pies-del-robot-curso-robots",
+  "source_url": "https://www.integrarobot.com/p/piernas-y-pies-del-robot-curso-robots",
+  "published_on": "2026-01-16",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "The robot's legs and feet - Humanoid Robots Course",
+  "subtitle": "To finish the first module of the Humanoid Robots course, we ask why new robots glide on mobile platforms instead of having legs.",
+  "body_markdown": "Isn't it striking that many of the new robots being presented don't have legs? For example, the most recent ones from **Sunday**, **LG** and **Humanoid** glide on mobile platforms.\n\nThe truth is that locomotion in humanoid robots has undergone a profound paradigm shift. In classical robotics, walking was approached with detailed physical models, controllers and predefined trajectories, which gave rise to rigid movements that were very sensitive to any change in the environment. This approach worked in highly controlled conditions, but failed in the real world.\n\nRobotics native to Physical AI assumes that not everything can be modelled. Instead of programming each step, robots learn to walk through reinforcement learning, training policies in simulation that integrate perception, balance and motor control in real time. Thanks to millions of virtual trials and the variability introduced with synthetic data, humanoids gain stability and adaptability. That is why today walking is not programmed; it is now a matter of machine learning.\n\nSo wheels are an intermediate situation, and almost certainly in the future most robots will have legs and feet; it is a matter of time before bipedal humanoids end up prevailing in the market.",
+  "more_news": {
+    "status": "absent",
+    "note": null,
+    "items": []
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. This paid post was read and checked by Claude in the author’s signed-in session; its truncated public preview is not archived as the full original. Edition 58; 0 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": null
+}

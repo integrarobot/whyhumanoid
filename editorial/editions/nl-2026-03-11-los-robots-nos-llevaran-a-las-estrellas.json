@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2026-03-11-los-robots-nos-llevaran-a-las-estrellas",
+  "source_url": "https://www.integrarobot.com/p/los-robots-nos-llevaran-a-las-estrellas",
+  "published_on": "2026-03-11",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Robots will take us to the stars",
+  "subtitle": "Take a moment to look at GITAI's work; it's hypnotic.",
+  "body_markdown": "If **humanoid robots** have arrived to take care of dangerous jobs, when we send them to explore space they will feel like fish in water.\n\nAnd it won't be because there are no people who want to be astronauts. The problem is that space is a deeply hostile environment for the human body.\n\n- Cosmic radiation\n- Vacuum\n- Extreme temperatures\n- Reduced gravity\n\nYou could say that everything outside the Earth is, literally, designed to kill us.\n\nFor decades space exploration has tried to solve this problem by protecting astronauts with increasingly complex technology: suits, space stations, life support systems or pressurized capsules. But there is a much more direct solution. Don't send humans. Send robots.\n\n### The logical step for physical AI\n\nIf we look at recent technological evolution, the idea of sending robots into space is starting to become inevitable.\n\nArtificial intelligence is leaving the digital world to be integrated into physical machines capable of perceiving, deciding and acting in the real world. It is what we call **physical AI**.\n\nOn Earth, this translates into humanoid robots that will work in factories, warehouses, services and even homes.\n\nIn space, this idea makes even more sense: a robot needs no oxygen or food, only energy, and out there there is plenty of it in the form of solar radiation. Nor does it need radiation protection comparable to a human's.\n\nThis allows robots to work for weeks, months or years in environments where a person could only survive for minutes.\n\nThat is why it is to be expected that many of the next space missions, such as the upcoming colonization of the Moon, will be led not by astronauts but by robots.\n\n### The new space construction industry\n\nFor decades we have thought of space mainly as a place for exploration.\n\nBut what is now beginning to emerge is a **new space economy**.\n\n- Satellites\n- Orbital infrastructure\n- Datacenters in space\n- Commercial space stations\n- Lunar bases\n- Microgravity production\n\nAll of this requires something that did not exist until now and where robots will have a lot to contribute: construction capability in space.\n\nAnd this is where a couple of companies come into play that I think are doing extremely interesting work.\n\n### Gitai Robotics: startup for space development\n\nThe Japanese company [Gitai](https://gitai.tech/) is developing robots specifically designed to work off Earth.\n\nIts goal is very clear: to build and maintain space infrastructure without needing to rely on astronauts.\n\nIts developments include:\n\n- Humanoid robots for space station operations\n- Advanced robotic arms for in-orbit manipulation\n- Satellite maintenance and assembly systems\n- Robots capable of operating on the lunar surface\n\nThe logic behind this approach is simple: sending robots into space is much cheaper and more scalable than sending astronauts.\n\nIf robots can take care of the physical work, humans can focus on supervising, designing and making decisions from Earth.\n\n### Intuitive Machines: open access to the Moon for the progress of Humanity\n\nAnother company worth following is [Intuitive Machines](https://www.intuitivemachines.com/), a US company specializing in lunar missions, founded in 2013 and listed on the stock exchange since 2021.\n\nTo achieve its mission, they work on developing lunar landers, communication infrastructure and robotic systems for operations on the Moon.\n\n**NASA** has already contracted this company under the CLPS (Commercial Lunar Payload Services) programme to transport payloads to the lunar surface.\n\nIts goal is clear: to prepare the ground for a **sustained human presence on the Moon**.\n\nAnd once again, robots will play a fundamental role.\n\nBefore astronauts arrive, someone will have to install scientific instruments, prepare infrastructure, build platforms and carry out maintenance\n\nThat work will be done by robots.\n\n### Motiv Space Systems: building the future of space, extending your reach\n\nAnother company to follow is [Motiv Space Systems](https://motivss.com/), a US company specializing in robotic systems for space operations.\n\nUnlike Gitai, which is developing relatively complete robots to work on space stations or on the lunar surface, Motiv focuses on something more specific but equally important: **precision robotic manipulation in space**.\n\nThe company mainly develops:\n\n- Space robotic arms\n- Control systems and manipulation software\n- Human-machine interfaces for teleoperation\n- Capture and orbital assembly mechanisms\n\nThese systems make it possible to perform tasks that until now required astronaut spacewalks: handling instruments, assembling structures, repairing satellites or moving cargo in orbit.\n\nAnd here an important conceptual change appears.\n\nFor decades, space robotic arms, such as the famous Canadarm on the International Space Station, were relatively rigid tools designed for very specific tasks. The new generation of robotic systems is starting to incorporate greater autonomy, advanced sensors and perception capabilities, approaching the paradigm of physical AI: machines that perceive their environment, make decisions and act on it.\n\nThis fits with a broader trend in robotics.\n\nIn this way, and thanks to the work of companies like Motiv Space Systems, robots are beginning to abandon the classic model of rigid automation and move toward systems capable of interacting with the physical world more flexibly and autonomously, combining sensors, computer vision and learning algorithms.\n\n### First robots, then humans\n\nThe history of exploration has always followed the same pattern, and now with robotics it is going to intensify.\n\nFirst the machines arrive. Then the people go.\n\nSatellites preceded astronauts.\nRovers went ahead of the possible settlers of Mars.\n\nAnd the same will probably happen soon with the colonization of the Moon and the rest of the solar system.\n\nThe first great wave of space exploration of the 21st century will not be led by humans. It will be led by robots. Gitai and Intuitive Machines are already working to make it a reality.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "💰 Neura obtains 1 billion dollars in funding in a round in which the stablecoin company Tether stands out as an investor.",
+        "body_markdown": "💰 [Neura](https://www.bloomberg.com/news/articles/2026-03-04/neura-robotics-raising-1-billion-in-round-backed-by-tether) obtains 1 billion dollars in funding in a round in which the stablecoin company **Tether** stands out as an investor. This investment values the company at about 4 billion euros and is aimed at advancing the development of humanoid robots driven by artificial intelligence."
+      },
+      {
+        "position": 2,
+        "headline": "📜 Human Archive is a startup backed by Y Combinator whose goal is to capture the structure of how humans interact with the physical world in order to model sensorimotor intellig…",
+        "body_markdown": "📜 [Human Archive](https://www.ycombinator.com/launches/PeP-human-archive-large-scale-multimodal-datasets-for-robotics-and-world-modeling) is a startup backed by **Y Combinator** whose goal is to capture the structure of how humans interact with the physical world in order to model sensorimotor intelligence at scale."
+      },
+      {
+        "position": 3,
+        "headline": "🧠 Physical Intelligence continues to advance the development of its artificial intelligence for robots, and this time it presents its VLA with long-term memory, which allows rob…",
+        "body_markdown": "🧠 [Physical Intelligence](https://www.pi.website/research/memory) continues to advance the development of its artificial intelligence for robots, and this time it presents its **VLA with long-term memory**, which allows robots to perform complete jobs (such as cleaning the kitchen), not just one-off tasks (loading the dishwasher)."
+      },
+      {
+        "position": 4,
+        "headline": "🖐️ ManipulationNet is a new infrastructure designed to measure robots' ability to manipulate objects in the real world.",
+        "body_markdown": "🖐️ [ManipulationNet](https://arxiv.org/abs/2603.04363) is a new infrastructure designed to measure robots' ability to manipulate objects in the real world. This initiative seeks to solve one of the most persistent problems in robotics: the lack of a common benchmark for **dexterous manipulation**."
+      },
+      {
+        "position": 5,
+        "headline": "💻 Texas Instruments is also working on Physical AI.",
+        "body_markdown": "💻 [Texas Instruments](https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-03-05-ti-accelerates-the-next-generation-of-physical-ai-with-nvidia.html) is also working on Physical AI. TI is collaborating with **NVIDIA** with the aim of integrating its mmWave radar technology with NVIDIA Jetson Thor and NVIDIA Holoscan to enable low-latency 3D perception and safety awareness for physical AI applications."
+      },
+      {
+        "position": 6,
+        "headline": "🦾 Noble Machines is a startup created by engineers from Apple, SpaceX, NASA, DeepMind, AWS and Tesla which, in just 18 months, has created a general-purpose robot that performs…",
+        "body_markdown": "🦾 [Noble Machines](https://www.noblemachines.ai/) is a startup created by engineers from Apple, SpaceX, NASA, DeepMind, AWS and Tesla which, in just **18 months**, has created a general-purpose robot that performs dangerous and physically demanding industrial tasks, with the mission of helping to achieve a safer, more efficient and more productive world."
+      },
+      {
+        "position": 7,
+        "headline": "💫 Asimov opens pre-orders for its assembly kit of the open source humanoid robot, approximately 1.2 metres tall with more than 25 degrees of freedom.",
+        "body_markdown": "💫 [Asimov](https://asimov.inc/diy-kit) opens pre-orders for its **assembly kit** of the open source humanoid robot, approximately 1.2 metres tall with more than 25 degrees of freedom. It starts with a 499 dollar reservation, and they put a target price of 15,000 dollars on it."
+      },
+      {
+        "position": 8,
+        "headline": "🐛 Mercator is a tracked mobile robot designed for swarms.",
+        "body_markdown": "🐛 [Mercator](https://www.sciencedirect.com/science/article/pii/S2468067226000118) is a tracked mobile robot designed for swarms. The system runs on a **Raspberry Pi 4**, is ROS-compatible, and its price ranges from 800 to 1,200 euros. It integrates onboard object and person recognition, short- and long-range obstacle detection, ceiling tracking and local, decentralized communication"
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 75; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "ccc600a9eda0fa48f11cc8bdbcde2850348ffb2f86636f202b8051535ab48b97"
+}

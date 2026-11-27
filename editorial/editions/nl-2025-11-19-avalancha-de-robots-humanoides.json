@@ -1,0 +1,67 @@
+{
+  "edition_id": "nl-2025-11-19-avalancha-de-robots-humanoides",
+  "source_url": "https://www.integrarobot.com/p/avalancha-de-robots-humanoides",
+  "published_on": "2025-11-19",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Avalanche of Humanoid Robots 🌊",
+  "subtitle": "Today the Integrarobot newsletter comes loaded with good news: new humanoid robots, progress in world models and much more.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/f69f14f6-ada0-4a73-93dd-aed2ce47751f_2048x1369.png)\n\nThis **Humanoid Robots** sector is getting so lively that I would have to start writing the newsletter daily to tell you everything that is happening in it. But don't worry, because that is not my goal; rather, it is to act as a filter to give you the information as well processed as possible, so that little by little you can decide how you are going to be part of this new Physical AI phenomenon.\n\nIn this regard I wanted to remind you that next week I will hold the first live online edition of the **Humanoid Robots course**. It will be on Tuesday 25, Wednesday 26 and Thursday 27 from 18:00 to 20:00. To take part you have to subscribe to the [Pioneros Robots Humanoides Community](https://www.integrarobot.com/p/pioneros) by upgrading your newsletter subscription, which costs 100 euros a year. So now you know: if you want to know the state of the art of this technology, join the community.\n\nThat said, let's get to this week's news, especially regarding the presentation of new robots, which add to a trend that has been gaining more and more strength in recent months: robots specialized in providing services in the home.\n\nA reality that until now we had considered a means to an end, but which increasingly seems established as an end in itself. It is the evolution of the idea that the best place to train robots was in homes, since they are all different and very few things are standardized. As opposed to factories and warehouses, where everything is much better structured, which allows robots to perform better in them.\n\nBut what is interesting at this point has been seeing **Figure**'s plot twist with the presentation of version 3 of its robot, where all the demonstrations were household tasks, just as in the case of **1X**'s **NEO**, which is clearly a robot focused on keeping people company and performing simple chores in private homes.\n\nSo now what we find are two new robots that have been very well received by the community of professionals in this industry: [Sunday](https://x.com/sundayrobotics) and Eggie from [Tangible](https://x.com/tangiblerobots).\n\nIn both cases, from what appears in the videos, these are robots that move on a **wheeled platform**, that is, they have no legs, yet they show great **manual dexterity**, since they manipulate objects very precisely.\n\nWe also know that these companies are being driven by very relevant people in the robotics industry, as is the case of **Tony Zhao**, who is CEO of Sunday Robotics and previously worked at **Deepmind**, **Tesla** and GoogleX. So what we find as a dominant pattern is that the specialized robotics talent that has been working in the shadows as part of teams at research centres, universities and big tech companies is now setting out to **found companies** to bring their own ideas about what the ideal humanoid robot should be to market.\n\nIt is also worth looking at how two companies born at the same time with the same goal seek to achieve it with very different approaches; for this we can look, for example, at how they have used the robot's head to place the cameras and other sensors, as well as how different their hands are, because in Tangible's case it is a hand with 5 fingers like a human's, whereas Sunday has designed a special gripper to manipulate household objects, such as glass goblets.\n\nAnd speaking of different approaches, another new robotics company that has attracted a lot of media attention is **Genki Robotics**, but in this case not for having shown great capabilities in its robot, which for now are just a pair of walking legs, but because of who is creating this company, since it is **Andy Rubin**, one of the creators of the Android smartphone operating system.\n\nNow Andy Rubin is back on the attack with this company, which is based in **Japan** and whose mission is to accelerate the integration of intelligent humanoids into society, augmenting human capability and shaping the future of work and services. To achieve this, the company has the backing of **Andreessen Horowitz** and **AMD**, among others.\n\nSo you see, robotics is on fire, and it is about time those of us reading this started thinking about how to help that fire warm more and more people.\n\n---\n\n## Let's listen to Scott Adams 🫶\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/3473cff8-d046-4297-8d62-06fa9f3421b5_800x800.jpeg)\n\n> \"*Only robots can save us. A future without robots would lead us to suffocating debt and the total collapse of civilization. But a world with abundance produced by robots could solve the affordability problem of everything: healthcare, food, housing. I'm not even sure debt would still make sense in that scenario. Someone talented should graph it. It would look like ten years of crushing debt accumulation ahead, followed by a stage of robotic abundance and a rapid fall in living expenses*\"\n\nMoving words from [Scott Adams](https://x.com/scottadamssays/status/1989679477106855986?s=46), especially if you think public debt is unsustainable and we have to find, once and for all, a way to increase productivity worldwide.\n\nSo please, let's listen to the famous cartoonist of the Dilbert comic strip and work to make AI-driven robots a reality as soon as possible.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🐕 Anthropic is starting to play with robotics.",
+        "body_markdown": "🐕 [Anthropic](https://www.anthropic.com/research/project-fetch-robot-dog) is starting to play with robotics. For now with a quadruped, but who knows, perhaps this experiment, in which they tested how much **Claude** can help a robot perform complex tasks, is just the beginning of something much bigger."
+      },
+      {
+        "position": 2,
+        "headline": "🛞 Unitree finally stops with the pirouettes and starts showing us a robot that can offer real usefulness in the world.",
+        "body_markdown": "🛞 [Unitree](https://www.unitree.com/G1-D) finally stops with the pirouettes and starts showing us a robot that can offer real usefulness in the world. It is the **G1-D** platform, which has wheels rather than legs and comes ready with the robot's **training software**."
+      },
+      {
+        "position": 3,
+        "headline": "🗓️ Boston Dynamics, through its CEO Robert Playter, believes we will see robots in our homes within the next 5 to 10 years.",
+        "body_markdown": "🗓️ [Boston Dynamics](https://www.euronews.com/next/2025/11/13/robots-could-reach-our-homes-within-10-years-says-boston-dynamics-ceo), through its CEO Robert Playter, believes we will see robots in our homes within the next **5 to 10 years**. To this end, he acknowledges that AI is proving fundamental to achieving the goal of having dexterous and safe robots."
+      },
+      {
+        "position": 4,
+        "headline": "🦊 Foxglove, the startup devoted to developing physical AI infrastructure, raises 40 million dollars in investment to keep expanding its platform supporting the full data lifecyc…",
+        "body_markdown": "🦊 [Foxglove](https://foxglove.dev/blog/foxglove-series-b?utm_content=356902575), the startup devoted to developing **physical AI infrastructure**, raises 40 million dollars in investment to keep expanding its platform supporting the full data lifecycle in development, testing and operations in the physical world."
+      },
+      {
+        "position": 5,
+        "headline": "♻️ CircuBAT is a research project that uses a robotic system and an AI expert system to close the loop between the production, use and recycling of lithium-ion batteries for cars.",
+        "body_markdown": "♻️ [CircuBAT](https://interestingengineering.com/energy/ev-batteries-robotic-recycling) is a research project that uses a robotic system and an AI expert system to close the loop between the production, use and **recycling of lithium-ion batteries** for cars."
+      },
+      {
+        "position": 6,
+        "headline": "💥 Yann LeCun is leaving Meta to create a world model startup.",
+        "body_markdown": "💥 [Yann LeCun](https://entropytown.com/articles/2025-11-13-world-model-lecun-feifei-li) is leaving **Meta** to create a world model startup. It seems a movement is beginning among the great AI experts proposing that there will be no AGI until we have this type of model that understands the physical world."
+      },
+      {
+        "position": 7,
+        "headline": "🌍 Marble is the first world model the company World Labs, led by Fei-Fei Li, has brought to market, and it allows users to turn text, photos, videos, 3D designs or panoramas int…",
+        "body_markdown": "🌍 [Marble](https://marble.worldlabs.ai/) is the first world model the company World Labs, led by **Fei-Fei Li**, has brought to market, and it allows users to turn text, photos, videos, 3D designs or panoramas into editable and downloadable 3D environments."
+      },
+      {
+        "position": 8,
+        "headline": "🔮 Fei-Fei Li believes spatial intelligence will transform the way we create and interact with real and virtual worlds, revolutionizing storytelling, creativity, robotics, scient…",
+        "body_markdown": "🔮 [Fei-Fei Li](https://drfeifei.substack.com/p/from-words-to-worlds-spatial-intelligence) believes spatial intelligence will transform the way we create and interact with real and virtual worlds, revolutionizing storytelling, creativity, **robotics**, scientific discovery and much more. This is the next frontier of AI."
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 46; 8 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "9d15e1f992060daef1a76b71eb1ae2daf3eea57d2142028bf491803305ba0e4a"
+}

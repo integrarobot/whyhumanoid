@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Motors, actuators and cooling - Humanoid Robots Course · Blog · Why Humanoid?</title>
+<meta name="description" content="We move forward in the Humanoid Robots course by learning about motors, actuators and the much-needed cooling to avoid problems associated with the robot…">
+<link rel="canonical" href="https://whyhumanoid.com/blog/nl-2026-01-09-motores-actuadores-y-refrigeracion/">
+<meta name="theme-color" content="#0B0C0E">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Why Humanoid?">
+<meta property="og:url" content="https://whyhumanoid.com/blog/nl-2026-01-09-motores-actuadores-y-refrigeracion/">
+<meta property="og:title" content="Motors, actuators and cooling - Humanoid Robots Course · Blog · Why Humanoid?">
+<meta property="og:description" content="We move forward in the Humanoid Robots course by learning about motors, actuators and the much-needed cooling to avoid problems associated with the robot…">
+<meta property="og:image" content="https://whyhumanoid.com/assets/og/whyhumanoid-og-v1.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230B0C0E'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23F0A23B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap">
+<link rel="stylesheet" href="/assets/pages.css?v=05f0e248b3">
+<link rel="stylesheet" href="/assets/editorial.css?v=8bc12aeca7">
+</head>
+<body>
+<header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><button class="cat-toggle" id="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-menu" hidden>Categories<span class="chev" aria-hidden="true"></span></button><nav class="cats" id="cat-menu" aria-label="Categories"><a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a><a href="/reports/">Reports</a></nav></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/blog/">Blog</a> <span aria-hidden="true">/</span> <a href="/blog/2026/">2026</a> <span aria-hidden="true">/</span> <span aria-current="page">Motors, actuators and cooling - Humanoid Robots Course</span></nav><article class="ed-article">
+<p class="kicker">Blog</p>
+<h1>Motors, actuators and cooling - Humanoid Robots Course</h1>
+<p class="lede">We move forward in the Humanoid Robots course by learning about motors, actuators and the much-needed cooling to avoid problems associated with the robot overheating.</p>
+<p class="meta">By Javier Martín · First published in Spanish on <time datetime="2026-01-09">9 January 2026</time> · English translation dated <time datetime="2026-11-27">27 November 2026</time> · <a href="https://www.integrarobot.com/p/motores-actuadores-y-refrigeracion" rel="noopener noreferrer">Original edition</a></p>
+<div class="ed-body">
+<p>In humanoid robots, movement and interaction with the environment depend directly on motors and actuators, which are the elements responsible for transforming electrical energy into controlled physical action.</p>
+<p>A motor, by itself, only generates rotation and has no awareness of position, force or contact with the environment, whereas an actuator is a complete system that integrates motor, transmission, sensors, power electronics and control algorithms to produce useful, precise and repeatable movements.</p>
+<p>The design of these actuators requires constant trade-offs between torque, speed, precision, smoothness, energy consumption, weight, cost and reliability, and it is not possible to optimize all these variables at once. For this reason, most current humanoid robots use <strong>electric actuators</strong>, since they offer good efficiency, fine control and natural integration with artificial intelligence systems, despite their thermal and force-density limitations compared with hydraulic or pneumatic solutions.</p>
+<p>Since electric motors spin very fast but joints need to move slowly and with a lot of torque, the use of <strong>gear reducers</strong> is unavoidable, which introduces an additional trade-off between force and sensitivity, especially relevant when the robot must interact with objects or people.</p>
+<p>Among the different types of reducers, harmonic ones stand out for allowing high reduction ratios, great precision and a very compact size, although they require extreme manufacturing tolerances and careful control to avoid friction, backlash and premature wear.</p>
+<p>Examples such as <strong>Tesla Optimus</strong>, which uses inverted planetary roller screws to achieve compact and precise linear actuators, or <strong>1X Neo</strong>, which moves the motors to the torso and transmits force through cables to reduce mass and inertia in the limbs, show that there is no single correct architecture, but different solutions depending on the robot&#39;s goals.</p>
+<p>This entire mechanical and electrical system is closely linked to the problem of <strong>heat</strong>, since converting energy into torque, movement and AI inference within small volumes generates unavoidable thermal losses. That is why cooling is not addressed at the end, but is decided from the design of the motor, the choice of reducer, the architecture of the actuators and the distribution of masses and power, even using the chassis itself as a heat-dissipating element.</p>
+<p>Thermal control is also managed by software, adjusting torque, speed or computational load to avoid damage, which reinforces the idea that in a humanoid robot, movement, control and heat management form a single system that must be designed coherently from the start.</p>
+</div>
+<section class="ed-news"><h2>News in this edition</h2><p class="meta">This edition has no news roundup.</p></section>
+</article>
+</main>
+<script src="/assets/nav.js?v=b04ddeb126" defer></script>
+
+<footer class="foot"><nav class="site-foot" aria-label="Site"><a href="/blog/">Blog</a><a href="/news/">News</a><a href="/about/">About</a><a href="/agents/">For agents</a><a href="/method/">Method</a><a href="/about/#contact">Contact</a><a href="https://integrarobot.com">Integrarobot</a></nav><nav class="more" aria-label="More"><a href="/companies/">Companies</a><a href="/reports/deployment-records/">Deployment records</a><a href="/subscribe/">Subscription and reports</a><a href="/app/">Subscriber app</a><a href="/privacy/">Privacy</a></nav><p>Why Humanoid? by Integrarobot. Public values as recorded in the database, with their sources. Data snapshot and method on <a href="/">whyhumanoid.com</a>.</p></footer>
+<!-- Cloudflare Web Analytics: visit counts without cookies (approved split, phase 3) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "76de8d3b4a534b91bd808e724f9c1594"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

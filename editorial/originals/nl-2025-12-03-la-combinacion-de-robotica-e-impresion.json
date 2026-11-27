@@ -1,0 +1,52 @@
+{
+  "edition_id": "nl-2025-12-03-la-combinacion-de-robotica-e-impresion",
+  "language": "es",
+  "title": "La combinación de robótica e Impresión 3D traerá una explosión de la productividad ⚙️",
+  "body_markdown": "> *Optimus será la sonda Von Neumann*. Elon Musk\n\n**John Von Neumann** vivió obsesionado con las **máquinas autorreplicantes**. Si quieres saber por qué, te recomiendo leer el libro [Maniac](https://amzn.to/48fGCIH), es muy bueno.\n\nLa sonda Von Neumann no solo nos habla de máquinas autorreplicantes, también de la **conquista del espacio** y esa claramente es la obsesión de **Elon Musk**.\n\nAsí que con esta combinación llegamos al punto de entender por qué la **impresión 3D** o fabricación digital, va a ser determinante para el futuro de la robótica.\n\n![Image](https://substack-post-media.s3.amazonaws.com/public/images/e6a614b4-ea0a-4169-aa40-b0480d26a6a4_1536x2048.avif)\n\nImagina cómo sería tener que construir en otro planeta los hábitats para los astronautas, no creo que sea tan sencillo como llegar allí y montar tiendas de campaña. Además está el problema de tener que sacar toda esa carga de la Tierra luchando contra la **gravedad**. Por lo tanto lo más lógico es que los materiales para la construcción de los hábitats no salga de la Tierra sino del propio planeta a habitar. Por otro lado está el tema de las máquinas que fabrican cosas con esos materiales, tampoco creo que vayamos a llevar allí grandes máquinas como las que se usan en la industria, por eso habrá que trabajar con impresoras 3D que pueden ser mucho más ligeras y versátiles.\n\nEn definitiva, la sonda Von Neumann no nos habla de un robot que se fabrica a sí mismo, sino de un robot que es capaz de manejar máquinas para construir otras máquinas o piezas de las mismas.\n\nY esto es precisamente lo que realiza la empresa [DHR](https://dhr.is/), una empresa que usa **robots** e **impresoras 3D** con el objetivo de satisfacer las cambiantes demandas de la industria moderna y la fabricación de precisión.\n\nEspecialmente interesante es la aplicación de robótica en las **granjas de impresión 3D**. Así vemos cómo la fusión entre impresoras 3D y **brazos robóticos**, que propone DHR busca solucionar el problema del escalado industrial por la ausencia de modelos de automatización adecuados, ya que muchas industrias siguen operando con procesos manuales propios del siglo pasado: manipulación pesada, entornos duros y tareas repetitivas, donde la disponibilidad de trabajadores es cada vez menor, los costes no paran de aumentar y la productividad lleva años estancada.\n\nSin embargo la robótica impulsada por Inteligencia Artificial propone transformar este escenario porque combina hardware accesible con software mucho más flexible, lo cual rompe con el modelo tradicional de robótica rígida, que sólo funciona adecuadamente en líneas de fabricación industrial muy estables.\n\nUna célula robótica personalizada diseñada por DHR combina los siguientes elementos: percepción 2D/3D, planificación dinámica con validación por gemelo digital, brazos robóticos y utillajes a medida, flujos de transporte adaptados, control industrial integrado con MES/ERP y módulos de calidad.\n\nUna verdadera pasada, especialmente si nos fijamos en los vídeos de cómo opera la tecnología desarrollada por la empresa.\n\n[Vídeo insertado en el artículo original]\n\nIgual de alucinante me parece el trabajo que realiza la empresa [GITAI](https://gitai.tech/), que en este caso combina robots con otras tecnologías de exploración espacial, por ejemplo infraestructuras energéticas y **satélites**.\n\nGITAI se presenta como un socio para las empresas de lanzamiento de **cohetes**, proporcionando **mano de obra segura y asequible** para construir colonias y ciudades espaciales en la Luna y Marte.\n\n[Vídeo insertado en el artículo original]\n\nAtento porque habla de mano de obra para referirse a sus brazos robóticos, por lo tanto está dando por sentado que no tiene sentido mandar gente allí arriba para hacer trabajos tan arriesgados, cuando eso mismo lo puede estar haciendo una máquina.\n\nPor cierto, que esta misma idea la deberíamos extrapolar a otros muchos trabajos, que son igual de peligrosos o nocivos para las personas, ya va siendo hora de que la humanidad aplique todo su intelecto para construir máquinas que resuelvan este problema.\n\nLa tecnología está disponible, solo es cuestión de escalarla. Tenemos casos de sobra para comprobar que solo es cuestión de dedicarle más recursos. Un ejemplo de ello es el trabajo de [Kyber Labs](https://www.linkedin.com/posts/kyber-labs_heres-a-quick-look-at-something-weve-activity-7398825306343559168-oxqT/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAkl-q8Bq7hCLArMVBKy0zpfVK7tKl6V6vw) que con este vídeo la **mano robótica** demuestra que se pueden llegar a niveles increíbles a nivel de destreza manual, lo cual derriba el mito de que los robots son torpes y no podrán hacer los trabajos que hacemos las personas.",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🚘 NVIDIA está imparable con la IA Física.",
+        "body_markdown": "🚘 [NVIDIA](https://blogs.nvidia.com/blog/neurips-open-source-digital-physical-ai/) está imparable con la **IA Física**. Una de sus más recientes aportaciones es DRIVE Alpamayo-R1, el primer modelo de razonamiento, visión, lenguaje y acción a escala industrial abierto del mundo para movilidad y robótica."
+      },
+      {
+        "position": 2,
+        "headline": "🇫🇷 UMA es una prometedora startup de robótica liderada por Rémi Cadene que aplicará su experiencia trabajando en el desarrollo de Tesla Optimus y al frente del proyecto de robót…",
+        "body_markdown": "🇫🇷 [UMA](https://uma.bot/) es una prometedora startup de robótica liderada por Rémi Cadene que aplicará su experiencia trabajando en el desarrollo de Tesla Optimus y al frente del proyecto de robótica open source **LeRobot**, para la creación de un robot humanoide desde Francia."
+      },
+      {
+        "position": 3,
+        "headline": "🇬🇧 HUMANOID ya camina.",
+        "body_markdown": "🇬🇧 [HUMANOID](https://x.com/TheHumanoidAI/status/1995840587870667036) ya camina. En tan solo 5 meses la startup inglesa ha construido un robot con las siguientes características: 179 cm, 29 GDL, 15 kg de carga útil bimanual, manos de 12 GDL o pinzas paralelas, 3 h de tiempo de ejecución, cámaras RGB, sensores, razonamiento y habilidades de extremo a extremo impulsados por **NVIDIA** y KinetIQ (VLA propio)."
+      },
+      {
+        "position": 4,
+        "headline": "🇨🇳 RGMP (política multimodal de prioridad geométrica recurrente) es un nuevo modelo de IA diseñado para mejorar la capacidad de manipulación de objetos de los robots humanoides…",
+        "body_markdown": "🇨🇳 [RGMP](https://techxplore.com/news/2025-11-humanoid-robots-reliably-success-framework.html) (política multimodal de prioridad geométrica recurrente) es un nuevo modelo de IA diseñado para mejorar la capacidad de **manipulación** de objetos de los robots humanoides desarrollado en la Universidad de Wuhan."
+      },
+      {
+        "position": 5,
+        "headline": "🕺 Bytadance (si los creadores de TikTok) presenta Seed GR-RL: un marco de aprendizaje de refuerzo para la manipulación diestra de largo plazo, que permite a los robots ejecutar…",
+        "body_markdown": "🕺 [Bytadance](https://seed.bytedance.com/en/gr_rl) (si los creadores de **TikTok**) presenta Seed GR-RL: un marco de aprendizaje de refuerzo para la manipulación diestra de largo plazo, que permite a los robots ejecutar de forma estable tareas de múltiples pasos y alta precisión en entornos del mundo real."
+      },
+      {
+        "position": 6,
+        "headline": "💫 Yilun Chen, deja Apple y se une al equipo de IA de Tesla Optimus: los humanoides son el sueño definitivo de nuestra generación.",
+        "body_markdown": "💫 [Yilun Chen](https://x.com/yilun_chen_/status/1995009665705676937?s=46), deja Apple y se une al equipo de IA de **Tesla Optimus**: *los humanoides son el sueño definitivo de nuestra generación. Con el reciente avance de los LLMs y la IA Física, este sueño finalmente está al alcance y depende de nosotros hacerlo realidad.*"
+      },
+      {
+        "position": 7,
+        "headline": "🧠 Scanford permite que los robots no solo se basen en los datos proporcionados por los modelos de IA, sino que generan datos valiosos mientras trabajan.",
+        "body_markdown": "🧠 [Scanford](https://scanford-robot.github.io/) permite que los robots no solo se basen en los datos proporcionados por los modelos de IA, sino que generan datos valiosos mientras trabajan. Al desplegarlos en tareas reales, se crea un ciclo de **mejora continua** donde el robot actúa, recoge datos del entorno y esos datos permiten refinar el modelo para adaptarlo mejor al dominio y mejorar su capacidad de generalización."
+      },
+      {
+        "position": 8,
+        "headline": "🧭 Legged Robotics es un repositorio que amplía Isaac Lab con entornos y herramientas para entrenar Robotic World Model y otros métodos de refuerzo basados en modelos.",
+        "body_markdown": "🧭 [Legged Robotics](https://github.com/leggedrobotics/robotic_world_model) es un repositorio que amplía **Isaac Lab** con entornos y herramientas para entrenar Robotic World Model y otros métodos de refuerzo basados en modelos. Permite entrenar conjuntamente políticas y modelos de dinámica, comparar políticas con y sin modelo y visualizar rollouts de “imaginación” generados por la dinámica aprendida."
+      }
+    ]
+  }
+}

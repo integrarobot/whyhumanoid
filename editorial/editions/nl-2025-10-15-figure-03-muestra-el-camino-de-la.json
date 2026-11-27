@@ -1,0 +1,57 @@
+{
+  "edition_id": "nl-2025-10-15-figure-03-muestra-el-camino-de-la",
+  "source_url": "https://www.integrarobot.com/p/figure-03-muestra-el-camino-de-la",
+  "published_on": "2025-10-15",
+  "retrieved_on": "2026-11-27",
+  "source_language": "es",
+  "language": "en",
+  "author": "Javier Martín",
+  "title": "Figure 03 shows the way for humanoid robotics: more homes and fewer factories (for now)",
+  "subtitle": "How real are the demos of Figure's robot? It wouldn't hurt if they started showing it working in the real world.",
+  "body_markdown": "![Image](https://substack-post-media.s3.amazonaws.com/public/images/21e6bad2-a43b-41fc-940a-3266386a4aea_1470x1000.jpeg)\n\nI had planned to start the newsletter by talking about the presentation of the **Figure 03** robot, but seeing the news about the application of AI in Unitree's G1 robot, I was tempted to change the main topic.\n\nBut anyway, I'm going to hold back a bit. Let's start with Figure and then we'll talk about Unitree.\n\nThe most important news of the last week as far as **Humanoid Robots** are concerned would be the presentation of Figure 03, quite a declaration of intent by the company that tops the rankings in **Physical AI** capabilities, well, at least as far as the demonstrations the company itself makes are concerned, because the reality could be different.\n\nLet's see:\n\nWhat struck me most about the Figure 03 presentation is that all the demonstrations show the robot doing household chores. It is as if the company had completely changed its focus, because at the beginning of the year the videos showed it working in factories or in logistics, but now we mainly see it serving at the table, tidying the house, putting away the shopping, loading the dishwasher, folding clothes, …\n\nWell, it's true that they still leave room for other types of work, such as in restaurant and hospitality services, but the demonstration of capabilities in the home shows us versatility, the ability to adapt to all kinds of routine tasks. Although, if we think about the business model side, considering above all the big 1 billion investment round the company has just closed, I think what is happening is that Figure aspires to be the ChatGPT of robotics.\n\n## And what does it mean to be the ChatGPT of robotics?\n\nClearly, OpenAI's great achievement has been reaching 800 million weekly users with ChatGPT, becoming the most downloaded app, which guarantees it incredible distribution power for the future, placing it among the digital giants such as Meta, Google, Amazon, … So that decision to focus on B2C has been very wise, and it is probably also what they plan to do at Figure.\n\nIf I put myself in the shoes of **Brett Adcock**, CEO of Figure, I think of the amount of time large industrial companies must make him waste, as they surely demand a lot of customization before buying his robots en masse. And yet on the other side we find the possibility of selling robots by the millions, as long as he convinces individuals that what they most need in their lives is a robot.\n\nBut anyway, beyond this, let's look at some more interesting things from the Figure 03 presentation.\n\n> Note: Brett Adcock claims that the robots in the videos are not teleoperated. But what is clear is that the videos seem too staged. No failures at all, something we have seen in other demos, especially from other manufacturers, which generates a certain distrust.\n\n## Figure 03 hardware news\n\nHighlighted features:\n\n- Textile skin (natural appearance, uncanny effect).\n- Cameras in the palm of the hand (end-effector cameras).\n- Its own compact tactile sensor.\n- Inductive wireless charging in the foot.\n- Advantages: improved grip and object manipulation.\n- Limitations: placement still depends on vision from the head.\n- Comparison: other solutions (DexUMI, DexWild) prioritize offset vision, sacrificing the human form.\n- Trend: rise of new-generation tactile sensors (cheaper, more reliable, more compact).\n\nObserved limitations:\n\n- Locomotion: the robot keeps its legs fixed during manipulation tasks. Its walking gait seems not very advanced compared with competitors.\n- Whole-body interaction: lack of use of torso and limbs for complex manipulation.\n- Real environments: all videos recorded in controlled settings. Lack of demonstrations in the \"open world\" like Tesla's (diner, events) and Unitree's in all kinds of situations.\n- Robustness: they show no falls, pushes or adverse conditions.\n\nGeneralization of learning policies:\n\n- Risk of overfitting: imitation learning tends to memorize movements. Example: folding clothes with repetitive, even unnecessary, gestures.\n- Positive signs: some variation (e.g. folding clothes on tables of different heights).\n\n**In conclusion**: The Figure 03 presentation shows us high-quality hardware, with spectacular demonstrations and a well-thought-out design. But we urgently need to see the robot in uncontrolled settings, subjected to real stresses and using its whole body. I hope all the money the company raised in its latest round allows it to advance in research until it solves this.\n\n[Video embedded in the original article]",
+  "more_news": {
+    "status": "present",
+    "note": null,
+    "items": [
+      {
+        "position": 1,
+        "headline": "🦾 Humanoid Everyday is a large-scale and diverse humanoid manipulation dataset, characterized by a wide variety of tasks including dexterous object manipulation, human-humanoid…",
+        "body_markdown": "🦾 [Humanoid Everyday](https://humanoideveryday.github.io/) is a large-scale and diverse humanoid manipulation dataset, characterized by a wide variety of tasks including dexterous object manipulation, human-humanoid interaction and actions integrated into locomotion."
+      },
+      {
+        "position": 2,
+        "headline": "🔐 Openmind and Succinct are developing auditing technology for verifiable, fast and public robot training that maintains privacy without exposing sensitive data.",
+        "body_markdown": "🔐 [Openmind](https://openmind.org/news/succinct) and Succinct are developing auditing technology for verifiable, fast and public robot training that maintains privacy without exposing sensitive data. A topic that will take centre stage in the future as soon as regulators get to work on it."
+      },
+      {
+        "position": 3,
+        "headline": "🔢Pero Mimic has carried out a series of calculations and estimates on the production cost of humanoid robots, and the price he arrives at is 30,000 dollars.",
+        "body_markdown": "🔢[Pero Mimic](https://x.com/PeroMicic/status/1962267337236623423) has carried out a series of calculations and estimates on the production cost of humanoid robots, and the price he arrives at is 30,000 dollars. He then does another series of calculations on maintenance costs and compares them with current labour costs."
+      },
+      {
+        "position": 4,
+        "headline": "📦 Resmic is the research work of Amazon's FAR lab, showing us that Unitree's G1 robot is already capable of handling packages and carrying them.",
+        "body_markdown": "📦 [Resmic](https://resmimic.github.io/) is the research work of Amazon's FAR lab, showing us that Unitree's G1 robot is already capable of handling packages and carrying them. To do so, they used a technique called residual learning."
+      },
+      {
+        "position": 5,
+        "headline": "🧬 They develop a new type of artificial muscle that overcomes the limitations of previous materials, which are very elastic but weak, or strong but stiff.",
+        "body_markdown": "🧬 [They develop](https://techxplore.com/news/2025-10-artificial-muscle-soft-rigid-weight.html) a new type of artificial muscle that overcomes the limitations of previous materials, which are very elastic but weak, or strong but stiff. This new composite material opens the door to manufacturing more versatile soft robots."
+      },
+      {
+        "position": 6,
+        "headline": "🔊 Codemotion interviewed me about the humanoid robot market: robotics must represent a tangible improvement in people's lives, reducing the health problems that many physical jo…",
+        "body_markdown": "🔊 [Codemotion](https://www.codemotion.com/magazine/es/inteligencia-artificial/el-momento-chatgpt-de-la-robotica-y-el-futuro-de-los-humanoides/) interviewed me about the humanoid robot market: *robotics must represent a tangible improvement in people's lives, reducing the health problems that many physical jobs cause and giving us time to do what we humans do best: develop our intellect.*"
+      }
+    ]
+  },
+  "translation": {
+    "translated_on": "2026-11-27",
+    "translated_by": "Claude",
+    "status": "reviewed",
+    "reviewed_by": "Claude (translation); Codex (inventory, mapping and source links)",
+    "reviewed_on": "2026-11-27",
+    "review_evidence": "Claude translated and reviewed the full written text against the Spanish source, preserving paragraph, heading, list, image and link order. Codex reconciled the canonical archive inventory and mapped the complete English body and every news entry without rewriting. Codex additionally compared every body/item URL in order against the archived public Spanish source. Edition 38; 6 news items; no audio/video transcription claimed."
+  },
+  "original_sha256": "56d26086aa83239dc2dbcca053c76f5bda1c58b05fecd15f9e4eb55dbeffe268"
+}
