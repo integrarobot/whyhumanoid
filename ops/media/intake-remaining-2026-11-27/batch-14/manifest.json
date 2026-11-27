@@ -1,0 +1,365 @@
+[
+  {
+    "id": 80,
+    "slug": "sanctuary-phoenix-gen6",
+    "source_page": "https://sanctuary.ai/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/",
+    "source_url": "https://sanctuary.ai/wp-content/uploads/2023/05/main-image-phoenix-annoucement-1.webp",
+    "source_context": "Official Phoenix launch graphic explicitly Gen6, native1180x680 with whole robot head, both hands and feet at right; robot nativeheight~580. Callout lines and text are outside body (unlike rejected VB1/Tianyi) so may be excluded by alpha; inspect carefully no painted body marks. Isolate only robot, exclude black background, all text/orangeframe and floor glow. Preserve exact black body pixels, no brightening/reconstruction. Caption Phoenix Gen6 manufacturer launch graphic, historical2023configuration on Phoenix family record; do not label Gen7 or current hardware/spec proof. FigureapproxROI[660,30,890,650], independently check all extremities.",
+    "checked_at": "2026-11-27",
+    "credit": "Sanctuary AI",
+    "transported": "codex/image-sources-remaining 639618b, candidates-19",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      640,
+      20,
+      910,
+      670
+    ],
+    "bbox": [
+      46,
+      31,
+      240,
+      615
+    ],
+    "border": 20,
+    "size": [
+      234,
+      624
+    ],
+    "native_alpha": false,
+    "original_sha256": "400ff83a111118944cffff74d6d5b0efc857027604d0b0d137f21831d10fc44e",
+    "prepared_sha256": "1bb108ac5f55d9415b60e5ea3c7f0e1e58099fa81da10b187fddf205e09420e5",
+    "mask_sha256": "38d5f2ccafec899cb1c95d9eaf355b4d75700e7f570d466033d7248ccf1941f4"
+  },
+  {
+    "id": 216,
+    "slug": "simplexity-ix-complete",
+    "credit": "Simplexity Robotics",
+    "source_page": "https://www.simplexityrobotics.com/products/ix",
+    "source_url": "https://images.simplexityrobotics.com/official/img/products/ix/ix-fullbody-stand-dark.png",
+    "source_context": "Exact iX maker product JS Ix-Cj1_xAxG.js references @/assets/img/products/ix/ix-fullbody-stand-dark.png. Official index-Cas0Tc0v.js Ye() resolves assets prefix to https://images.simplexityrobotics.com/official/img. Downloaded original native4096x2304 palette PNG WITH TRUE alpha (BG RGBgreen71,112,76 has alpha0, not actual green background). Alpha bbox[1628,314,2418,2051]. Whole robot head, both dexterous hands (one raised over face in native pose), entire four-wheel chassis and wheels with margins. Existing maker technical render. Preserve ownalpha/RGB, crop/pad only as valid. Caption iX manufacturer render, raised-hand configuration. Different from old cropped torso hero; do not use nonexistent website/assets URL.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 33e84f4, candidates-20",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha; largest region kept",
+    "roi": [
+      1580,
+      280,
+      2470,
+      2100
+    ],
+    "bbox": [
+      48,
+      34,
+      838,
+      1771
+    ],
+    "border": 20,
+    "size": [
+      830,
+      1777
+    ],
+    "native_alpha": true,
+    "original_sha256": "fa718374dc103f2f9e71dd1b653c9d19bf6c6ccd772d85f4f57d7adc25445166",
+    "prepared_sha256": "06caea891c76561175c9b0efbbc5df86a6737d6fde8a4192b539935099cc4925",
+    "mask_sha256": "a3e7d9621e38cc6e2b82c7e56c618a414d0b5fc1c7c02066e41293f508976f2a"
+  },
+  {
+    "id": 63,
+    "slug": "phybot-m1-complete",
+    "credit": "PHYBOT",
+    "source_page": "https://www.phybot.tech/en/phybot-m1",
+    "source_url": "https://www.phybot.tech/assets/images/PHYBOT_M1_006252-KTn1Ppv6.png",
+    "source_context": "Maker M1 desktop product chunk BigRobotDetail-7A4jDJBI.js refers this existing manufacturer render native2280x1080, two full views. Choose ONLY FRONT/threequarter robot left of pair, approximateROI[450,80,1100,1000] (root native inspected complete head, both hands, bothfeet, raisedfoot pose). Independently widen to include margins. Blue curved dimension arcs and176cm text stand OUTSIDE body; remove all graphic text/lines/other rear view via alpha; no body labels/dots on this selected figure. Darkbody on darkgradient needs careful segmentation. Do not use other sourceimages with blue joint overlays or specificationcallout dots ON body. Caption M1 manufacturer render, no specs reassignment or capability claim.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 33e84f4, candidates-20",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      450,
+      80,
+      1100,
+      1000
+    ],
+    "bbox": [
+      167,
+      12,
+      589,
+      904
+    ],
+    "border": 20,
+    "size": [
+      462,
+      932
+    ],
+    "native_alpha": false,
+    "original_sha256": "974e994ee1749ca52d5cafc901894aefb5eba019f296a85cfb6036d3a0f5fcff",
+    "prepared_sha256": "5187e28e690ea702e520393ec6166b7bb52c6f8dcbd826573ac5169d7694ad1e",
+    "mask_sha256": "24fb7f7bd92ab5339e1d596d017927b42b84757d9a19053c91d372c86b7851fa"
+  },
+  {
+    "id": 160,
+    "slug": "magiclab-z1-video",
+    "credit": "MagicLab",
+    "source_page": "https://www.magiclab.top/en/z1",
+    "source_url": "https://oss-cdn.magiclab.top/file/videos/z1/ff1ce7/ecb2981116c2b3c8ece77f6df4347d61.mp4",
+    "source_context": "Exact Z1 maker page references this video; native1920x1080 frame153 at6.12s/25fps (178totalframes). Whole head, both actual rounded arm end caps, both feet in a walking pose, nativebodyheight~525px. No added human hands/fingers: this configuration has rounded closed end caps. Choose153 because balls separated from feet unlike59; exclude allballs, grass/floor, tree/city. ApproxROI[480,320,870,930] independently ensure wholebody/margins. Caption MagicBot Z1 official video still, round-ended-arm configuration. Existinghardwarefootage, no generative edits, no claim balancing/autonomy evidence. Page/staticimgs404, officialvideoaccessworks. This is NOT Gen1 video used for record54.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 33e84f4, candidates-20",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      440,
+      280,
+      910,
+      960
+    ],
+    "bbox": [
+      74,
+      79,
+      405,
+      601
+    ],
+    "border": 20,
+    "size": [
+      371,
+      562
+    ],
+    "native_alpha": false,
+    "original_sha256": "58b3c044b4b2407b7cee4ecc387fd11e3e41461b3272063dfd147a98d29cc236",
+    "prepared_sha256": "bc85e0ff4cefeff2866f855616bfec616c9f9f68382488266a3f57cdc70ed8f9",
+    "mask_sha256": "fda79f2486152d7745f1bbfc7e73bd733e883d6ddcdf17cde2c5f3653b0dc744"
+  },
+  {
+    "id": 206,
+    "slug": "xhumanoid-omni-front",
+    "credit": "X-Humanoid",
+    "source_page": "https://www.x-humanoid.com/detail/omni.html",
+    "source_url": "https://www.x-humanoid.com/oss/static/img/omni-three-view.png",
+    "source_context": "Exact TianGong Omni maker product page provides three-view PNG native2157x1212 with ownalpha. Select ONLY central FRONT figure, wholehead both actual openhands and both feet. ApproxROI[780,0,1450,1212], independently check handmargins; do not crop atx850 as thumbmaytouch. Exclude leftside/backview figures; no paintedcallouts. Existingmakertechnicalrender, captionTianGongOmnifront-viewmanufacturertechnicalrender. Ownalpha must be inspected; preserve sourceRGB/native. NotTienKung3.0orTianYi2.0. Hero/widegroup images either smalloroverlap, this frontfigureiscomplete ~1000px native.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 4d699a5, candidates-21",
+    "mask_method": "original alpha, Claude",
+    "refinement": "Claude: original alpha",
+    "roi": [
+      780,
+      0,
+      1450,
+      1212
+    ],
+    "bbox": [
+      70,
+      110,
+      482,
+      1120
+    ],
+    "border": 20,
+    "size": [
+      452,
+      1050
+    ],
+    "native_alpha": true,
+    "original_sha256": "7b2770506fb83f27c8be16802b96d648668392c546e6e2464b90b09b71faf8f3",
+    "prepared_sha256": "07cc05fdb9c66cb11ef1d4fa815ee7027598d112efc6c9cd9407e1188ad6a977",
+    "mask_sha256": "a2db1e408ce6f7640e1c8034acbd3f5e733c3c809b3bb43ef8ce8d539153d00d"
+  },
+  {
+    "id": 188,
+    "slug": "lanxin-vb01-brochure",
+    "credit": "Lanxin Robotics",
+    "source_page": "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-8fa3d198-57b0-4a17-8e9d-ef4a58dc5a12/product-documents/pro-02a38744-4ce5-4f2f-bafb-ca8d9269152e/0060ecac-8e94-4eed-9b50-7d64c604579d.pdf",
+    "source_url": "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-8fa3d198-57b0-4a17-8e9d-ef4a58dc5a12/product-documents/pro-02a38744-4ce5-4f2f-bafb-ca8d9269152e/0060ecac-8e94-4eed-9b50-7d64c604579d.pdf",
+    "source_context": "Manufacturer Lanxin brochure, cover explicitly VB-01 Humanoid Robot Versabot, page2 VersaBot VB-1, version V2024.7.18. Hosted on event exhibitor CDN, not maker web host. PDFpage1 embeddedimage002 native2997x1870, two complete product views; choose FRONT left figure, head/sensor, both grippers, full mast/base/allvisiblewheels. ApproxROI[550,250,1450,1870], independently widen enough so LEFT gripper not cut. Other figure and floor shadows excluded. RGB002 has no ownalpha; PDF softmask003 is4500x2807 (differentresolution), so do not directly apply without correct coordinate handling. Alpha-only BiRefNet okay. Caption VersaBot VB-01 (2024 brochure render) on genericVB1record, do not label VB1-I newer configuration. Newsource without redannotationdotsONbody, unlike rejectedcurrentwebgraphic.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 4d699a5, candidates-21",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      420,
+      200,
+      1520,
+      1870
+    ],
+    "bbox": [
+      221,
+      138,
+      961,
+      1592
+    ],
+    "border": 20,
+    "size": [
+      780,
+      1494
+    ],
+    "native_alpha": false,
+    "original_sha256": "7dae1f397c1a60718bc5e9acc39f741f468f5b0dd2d9963be6b35dd857bd1210",
+    "prepared_sha256": "1ba6e0ee1b4bed6c2e984591f20102befceef2b889ccfa7ee5587f672c9090f2",
+    "mask_sha256": "5455cf1d97fd07ed835b3cb9786af645d4af7c7cbab2a8696584d1e7b80cac9a"
+  },
+  {
+    "id": 211,
+    "slug": "westlake-titan-o1",
+    "credit": "Westlake Robotics",
+    "source_page": "https://wlrobo.com/module2",
+    "source_url": "https://wlrobo.com/figma/o1/0b5f5.png",
+    "source_context": "Exact maker O1Page-B3ZLw0hp.js references this native2162x3844 PNG for TITAN O1. Catalogue Westlake o1 family. Existing maker technical render, running pose with whole head, both hands and both feet. CAUTION original has translucent motion-trail duplicate geometry to right of foreground figure. Isolate only solid foreground full robot by alpha mask, preserve every visible RGB value and native size, no generation/repainting. If trails overlap body in a way that cannot be isolated cleanly, reject and use a primary whole video frame instead; videos referenced by same product chunk /videos/o1-1.mp4, /videos/o1-2.mp4, /videos/o1-3.mp4. Caption TITAN O1 manufacturer render, running pose; no specifications change. Root inspected native preview.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 8417c21, candidates-22",
+    "mask_method": "original alpha, levelled 110..240 to drop the translucent motion trail, Claude",
+    "refinement": "Claude: original alpha; original alpha levels 110..240",
+    "roi": [
+      0,
+      0,
+      2162,
+      3844
+    ],
+    "bbox": [
+      288,
+      532,
+      1910,
+      3630
+    ],
+    "border": 20,
+    "size": [
+      1662,
+      3138
+    ],
+    "native_alpha": true,
+    "original_sha256": "87ccd7a2e3758b25f1e993965cdd29424e5e922f6d2b8a5520da8e0d783dc1d6",
+    "prepared_sha256": "b344b8e610d56bbf384fff41813fcc133774854376da0a76560ef4ca47e32363",
+    "mask_sha256": "e7e9695c49334f8824de3ed665e74410ad5fbf0c148ed38033f69cbf6be3308b"
+  },
+  {
+    "id": 204,
+    "slug": "tienkung-3-inverted",
+    "credit": "Beijing Humanoid Robot Innovation Center",
+    "source_page": "https://www.x-humanoid.com/m/news-view-251.html",
+    "source_url": "https://www.x-humanoid.com/storage/website/2026/10-14/6acf3d66d7f11-1-55178.jpg",
+    "source_context": "Exact maker launch article on TienKung 3.0, image7 native1920x1280, full robot in inverted handstand pose, head/hands/feet all visible with margin. Preserve original inverted pose, DO NOT rotate to simulate standing or invent parts. Caption TienKung 3.0 manufacturer demonstration image, inverted pose; no claim autonomy from image. White-on-white segmentation needs careful mask of head near arms. Root inspected native, all actual robot complete. Other candidates rejected: cropped hero jstg.png footcut, kneeling image6 basket occludes foot, jumping image4 step occludes foot. Common footer MP4 predates launch, not version evidence; do not use it.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 8417c21, candidates-22",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      200,
+      300,
+      880,
+      1100
+    ],
+    "bbox": [
+      42,
+      50,
+      592,
+      755
+    ],
+    "border": 20,
+    "size": [
+      590,
+      745
+    ],
+    "native_alpha": false,
+    "original_sha256": "f9bd647a1260404724814fd5aab7871be290ad2630f5080e544327e7bcd4620a",
+    "prepared_sha256": "47af60887c9c1e9a19b9d1044cb26f661086a144753bf92bf8c1be9f720db49a",
+    "mask_sha256": "8ccd62d78ccbc56babbe6dcad72244c1115307a7a8ca030051d4ce5f03239e47"
+  },
+  {
+    "id": 120,
+    "slug": "sunday-memo-native-video",
+    "credit": "Sunday",
+    "source_page": "https://www.sunday.ai/",
+    "source_url": "https://stream.mux.com/xLLkokRSG7wrmPVmYfSE3Hz2TwlKI83Ohf8vHejgI4o.m3u8",
+    "source_context": "Exact Sunday homepage Next payload references mux playbackId xLLkokRSG7wrmPVmYfSE3Hz2TwlKI83Ohf8vHejgI4o. Manufacturer native1920x1080 HLS rendition, concatenated original TS segments without reencoding; frame1035 decoded SEQUENTIALLY (OpenCV seeking HLS TS gives decode errors, avoid seeking). FPS30000/1001=29.97002997, time34.5345s,1046frames. Whole Memo head with cap, both arms and both grippers, full mast and whole mobilebase with margin. Robot holds a plate, ENTIRE PLATE visible above dishwasher door (unlike earlier880/940/980). Preserve plate with hand, caption official video still with plate. Remove cabinetdoor, rack, floor/nearbyfurniture by alpha only; no robot occlusion. Nativebody~850px. Root inspected1035atnative, exactsource frame included. No autonomy/availability claim; no specification change. Mask only, preserve RGB/native and20px padding.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining b09a967, candidates-23",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230",
+    "roi": [
+      760,
+      150,
+      1300,
+      1070
+    ],
+    "bbox": [
+      36,
+      35,
+      489,
+      888
+    ],
+    "border": 20,
+    "size": [
+      493,
+      893
+    ],
+    "native_alpha": false,
+    "original_sha256": "1f859e257f6e57eb52a0c893aa6f7f434aaf9f94b5b53d8b36a20fbf9c7c5b9b",
+    "prepared_sha256": "db09e1b7a64a91146ccf2a6e7cde2d2437ce4359ba042acedcad7a29cb75d612",
+    "mask_sha256": "443285b34dbb97a46f5f3aac92aa3b60a83999e21103998cd7703e5ca5e79110"
+  },
+  {
+    "id": 182,
+    "slug": "jingchu-1",
+    "credit": "Jingchu Humanoid",
+    "source_page": "https://www.jingchurobot.cn/product_detail/1.html",
+    "source_url": "https://omo-oss-image1.thefastimg.com/portal-saas/pg2025073116424452690/cms/image/fdf4c32f-c70f-4f70-94ae-ad603983827a.png?vf=B7gH3s",
+    "source_context": "JingChu 1 manufacturer render, bipedal configuration. Exact product_detail/1.html identifies 荆楚1号, own native RGBA800x1205 with whole head, both articulated hands and feet. Preserve own alpha, crop20padding only. Not Elf wheeled model.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 421cfc1, candidates-24",
+    "mask_method": "original alpha, levelled 120..205 so the fade baked into the foot becomes opaque, Claude",
+    "refinement": "Claude: original alpha; original alpha levels 120..205; specks removed",
+    "roi": [
+      0,
+      0,
+      800,
+      1205
+    ],
+    "bbox": [
+      145,
+      3,
+      656,
+      1205
+    ],
+    "border": 20,
+    "size": [
+      551,
+      1242
+    ],
+    "native_alpha": true,
+    "original_sha256": "562c4735c992bbe7e9c7b5e8e81006036f94eb693b84a3a8ee1f63c2a3dcd9e5",
+    "prepared_sha256": "3855deb68f0cc8de8c71f74554dbcc7a1328e5d156bff323503bd584485a37ab",
+    "mask_sha256": "fa496a57ed631bb257cc09acc333068fd343146d00b8172d19b67e32aaad7377"
+  },
+  {
+    "id": 79,
+    "slug": "robros-igris-2025",
+    "credit": "ROBROS",
+    "source_page": "https://www.robros.co.kr/en/news/62a18152-3813-47f5-a346-daccfb95c739",
+    "source_url": "https://robros-homepage-v2-public.s3.ap-northeast-2.amazonaws.com/news/357f4e10-b3a1-4393-9d22-97f5299021b6.png",
+    "source_context": "Maker February19 2025 first IGRIS announcement (KRoC) photograph, native537x933. Entire original grey-face prototype, exposed mechanisms, both hands and feet. Suspension crane behind/right, white straps above shoulder and frame below feet need non-generative alpha isolation. Do not erase actual robot wiring, no invented occluded pieces. Caption explicitly IGRIS 2025 suspended prototype photograph, not IGRIS-C or newer product, no autonomy implication. Root inspected native. Current factory-scene ROBROS media may be AI-edited, do NOT substitute those images.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 8417c21, candidates-22",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 85..230; largest region kept; alpha-only exclusion [272, 0, 370, 158]; alpha-only exclusion [240, 0, 272, 152]; alpha-only exclusion [134, 0, 164, 42]; alpha-only exclusion [346, 158, 370, 853]; alpha-only exclusion [124, 788, 196, 825]; alpha-only exclusion [282, 765, 370, 853]; alpha-only exclusion [0, 815, 370, 853]",
+    "roi": [
+      80,
+      100,
+      430,
+      933
+    ],
+    "bbox": [
+      44,
+      39,
+      346,
+      815
+    ],
+    "border": 20,
+    "size": [
+      342,
+      816
+    ],
+    "native_alpha": false,
+    "original_sha256": "023000a0094e52c854a472f68b03b1265313647d34a61e4349d359afe1a93d68",
+    "prepared_sha256": "b049568c72de0fe5ecb5cc5ee56d2d48b5c565ee27a96d17e1529e13343f4d26",
+    "mask_sha256": "834f6e2cbe89c95eba51049d23b23dfe11ff5ce8a932f924694f809c6f6d158e"
+  }
+]
