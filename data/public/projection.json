@@ -1,17 +1,17 @@
 {
  "version": 1,
- "snapshot": "2026-11-26T15:20:44Z",
+ "snapshot": "2026-11-27T08:03:44Z",
  "totals": {
-  "records": 203,
-  "deployments": 125,
-  "organisations": 86
+  "records": 207,
+  "deployments": 128,
+  "organisations": 88
  },
  "aggregates": {
   "min_cell": 3,
   "by_status": {
    "op": 14,
-   "pilot": 86,
-   "ann": 43,
+   "pilot": 88,
+   "ann": 45,
    "unc": 60
   },
   "by_sector": [
@@ -21,7 +21,7 @@
    },
    {
     "key": "logistics",
-    "records": 24
+    "records": 25
    },
    {
     "key": "manufacturing",
@@ -37,7 +37,7 @@
    },
    {
     "key": "retail",
-    "records": 9
+    "records": 10
    },
    {
     "key": "electronics_manufacturing",
@@ -85,13 +85,13 @@
    },
    {
     "key": "other",
-    "records": 13
+    "records": 15
    }
   ],
   "by_country": [
    {
     "key": "China",
-    "records": 76
+    "records": 77
    },
    {
     "key": "United States",
@@ -103,7 +103,7 @@
    },
    {
     "key": "Multiple countries (not named)",
-    "records": 7
+    "records": 9
    },
    {
     "key": "Canada",
@@ -127,7 +127,7 @@
    },
    {
     "key": "other",
-    "records": 39
+    "records": 40
    }
   ],
   "by_year": [
@@ -149,7 +149,7 @@
    },
    {
     "key": "2026",
-    "records": 111
+    "records": 115
    },
    {
     "key": "other",
@@ -1280,6 +1280,39 @@
   },
   {
    "stage": "pilot",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": "org_jcet",
+    "name": "JCET Group"
+   },
+   "maker": {
+    "company": "mfr_agibot",
+    "name": "AgiBot"
+   },
+   "robot_recorded": "AGIBOT Genie G2",
+   "robot": null,
+   "level": null,
+   "sector": "semiconductors",
+   "countries": [
+    "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
    "dated": false,
    "tie": false,
    "status": {
@@ -1666,6 +1699,39 @@
    "sector": "pharmacy_retail",
    "countries": [
     "China"
+   ],
+   "country_notes": [],
+   "country_multiple": false,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "pilot",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 1,
+    "ann": 0,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
+    "company": null,
+    "name": "Not disclosed (South Korean automotive parts manufacturer)"
+   },
+   "maker": {
+    "company": null,
+    "name": "Not disclosed"
+   },
+   "robot_recorded": "Unnamed bipedal humanoid",
+   "robot": null,
+   "level": null,
+   "sector": "automotive",
+   "countries": [
+    "South Korea"
    ],
    "country_notes": [],
    "country_multiple": false,
@@ -3265,6 +3331,37 @@
    },
    "records": 1,
    "organisation": {
+    "company": "org_bleckmann",
+    "name": "Bleckmann"
+   },
+   "maker": {
+    "company": null,
+    "name": "Not disclosed"
+   },
+   "robot_recorded": null,
+   "robot": null,
+   "level": null,
+   "sector": "logistics",
+   "countries": [],
+   "country_notes": [],
+   "country_multiple": true,
+   "years": [
+    2026,
+    2026
+   ]
+  },
+  {
+   "stage": "ann",
+   "dated": true,
+   "tie": false,
+   "status": {
+    "op": 0,
+    "pilot": 0,
+    "ann": 1,
+    "unc": 0
+   },
+   "records": 1,
+   "organisation": {
     "company": "org_bosch",
     "name": "Bosch"
    },
@@ -4211,10 +4308,10 @@
    "status": {
     "op": 0,
     "pilot": 0,
-    "ann": 1,
+    "ann": 2,
     "unc": 0
    },
-   "records": 1,
+   "records": 2,
    "organisation": {
     "company": "mfr_xpeng",
     "name": "XPeng"
@@ -4391,7 +4488,7 @@
    "name": "AgiBot",
    "identity": "catalogue_lab",
    "roles": {
-    "maker": 12
+    "maker": 13
    },
    "countries": [],
    "robots": [
@@ -4405,10 +4502,10 @@
    "organization_ids": [],
    "entity": null,
    "as_maker": {
-    "records": 12,
+    "records": 13,
     "status": {
      "op": 1,
-     "pilot": 0,
+     "pilot": 1,
      "ann": 2,
      "unc": 9
     },
@@ -4416,7 +4513,8 @@
      "automotive_components",
      "consumer_electronics_manufacturing",
      "multiple",
-     "retail"
+     "retail",
+     "semiconductors"
     ],
     "site_countries": [
      "China"
@@ -4495,6 +4593,24 @@
       "years": [
        2025,
        2025
+      ],
+      "records": 1
+     },
+     {
+      "name": "JCET Group",
+      "company": "org_jcet",
+      "robot_recorded": "AGIBOT Genie G2",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 1,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
       ],
       "records": 1
      }
@@ -8564,8 +8680,8 @@
    "name": "XPeng",
    "identity": "catalogue_lab",
    "roles": {
-    "maker": 2,
-    "customer_operator": 2
+    "maker": 3,
+    "customer_operator": 3
    },
    "countries": [
     "China"
@@ -8578,11 +8694,11 @@
    ],
    "entity": null,
    "as_maker": {
-    "records": 2,
+    "records": 3,
     "status": {
      "op": 0,
      "pilot": 1,
-     "ann": 1,
+     "ann": 2,
      "unc": 0
     },
     "sectors": [
@@ -8606,14 +8722,14 @@
       "status": {
        "op": 0,
        "pilot": 0,
-       "ann": 1,
+       "ann": 2,
        "unc": 0
       },
       "years": [
        2026,
        2026
       ],
-      "records": 1
+      "records": 2
      },
      {
       "name": "XPeng",
@@ -16842,6 +16958,138 @@
     "source_publisher": "Fraunhofer IML",
     "source_url": "https://www.iml.fraunhofer.de/de/presse_medien/pressemitteilungen/evobot-muc.html",
     "publication_date": "2023-06-13"
+   }
+  },
+  {
+   "id": "org_jcet",
+   "slug": "jcet",
+   "name": "JCET Group",
+   "identity": "sheet_organization_id",
+   "roles": {
+    "customer_operator": 1
+   },
+   "countries": [
+    "China"
+   ],
+   "robots": [],
+   "organization_ids": [
+    "org_jcet"
+   ],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": {
+    "records": 1,
+    "status": {
+     "op": 0,
+     "pilot": 1,
+     "ann": 0,
+     "unc": 0
+    },
+    "sectors": [
+     "semiconductors"
+    ],
+    "site_countries": [
+     "China"
+    ],
+    "years": [
+     2026,
+     2026
+    ],
+    "counterparts": [
+     {
+      "name": "AgiBot",
+      "company": "mfr_agibot",
+      "robot_recorded": "AGIBOT Genie G2",
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 1,
+       "ann": 0,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     }
+    ]
+   },
+   "evidence": {
+    "organization_name": "JCET Group",
+    "robot_recorded": "AGIBOT Genie G2",
+    "country": "China",
+    "status": "pilot",
+    "verification_status": "media_reported",
+    "source_publisher": "Securities Daily, republished by Eastmoney",
+    "source_url": "https://finance.eastmoney.com/a/202611243938690461.html",
+    "publication_date": "2026-11-24"
+   }
+  },
+  {
+   "id": "org_bleckmann",
+   "slug": "bleckmann",
+   "name": "Bleckmann",
+   "identity": "sheet_organization_id",
+   "roles": {
+    "customer_operator": 1
+   },
+   "countries": [
+    "Netherlands"
+   ],
+   "robots": [],
+   "organization_ids": [
+    "org_bleckmann"
+   ],
+   "entity": null,
+   "as_maker": null,
+   "as_organisation": {
+    "records": 1,
+    "status": {
+     "op": 0,
+     "pilot": 0,
+     "ann": 1,
+     "unc": 0
+    },
+    "sectors": [
+     "logistics"
+    ],
+    "site_countries": [],
+    "years": [
+     2026,
+     2026
+    ],
+    "counterparts": [
+     {
+      "name": "Not disclosed",
+      "company": null,
+      "robot_recorded": null,
+      "robot": null,
+      "level": null,
+      "status": {
+       "op": 0,
+       "pilot": 0,
+       "ann": 1,
+       "unc": 0
+      },
+      "years": [
+       2026,
+       2026
+      ],
+      "records": 1
+     }
+    ]
+   },
+   "evidence": {
+    "organization_name": "Bleckmann",
+    "robot_recorded": null,
+    "country": "Multiple",
+    "status": "ann",
+    "verification_status": "customer_confirmed",
+    "source_publisher": "Bleckmann",
+    "source_url": "https://www.bleckmann.com/press/bleckmann-humanoid-robots-warehouses",
+    "publication_date": "2026-11-24"
    }
   }
  ],
