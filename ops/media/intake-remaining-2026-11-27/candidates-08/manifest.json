@@ -215,5 +215,55 @@
     ],
     "status": "candidate_for_independent_identity_and_alpha_review",
     "license_note": "Manufacturer source; no open licence presumed. Credit manufacturer. No manufacturer contact authorised here."
+  },
+  {
+    "id": 60,
+    "manufacturer": "Oversonic",
+    "catalogue_model": "RoBee",
+    "public_page": "https://whyhumanoid.com/humanoids/oversonic-robee-60/",
+    "page": "https://www.oversonicrobotics.com/media/",
+    "checked_at": "2026-11-27",
+    "context": "RoBee Series R, October2026 product sheet, page2 raster image2025x3200 and native PDF soft mask extracted using pdfimages. No re-render/upscale. Original extracted RGB image-000.png and smask image-001.png archived with full official PDF. Whole actual wheeled platform; not RoBee M or F. Catalogue generic RoBee; name SeriesR shown.",
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "files": [
+      {
+        "original": "image-000-rgba.png",
+        "url": "https://www.oversonicrobotics.com/download/Oversonic_Robee-R-2026-eng.pdf",
+        "size": [
+          2025,
+          3200
+        ],
+        "mode": "RGBA",
+        "sha256": "e5ffa01eabcddb937009e605badf25bf8f82527c9efcc62606b540c95dd4507f"
+      }
+    ],
+    "license_note": "Manufacturer press/product material. Credit manufacturer. No open licence presumed.",
+    "pdf_sha256": "9bf0547bcb0daac94f4462d3d74eb46c023841c51b528cd87606f7abbc61f8b1",
+    "pdf_page": 2,
+    "pdf_object": 242,
+    "pdf_soft_mask": true
+  },
+  {
+    "id": 65,
+    "manufacturer": "Pib",
+    "catalogue_model": "pib",
+    "public_page": "https://whyhumanoid.com/humanoids/pib-pib-65/",
+    "page": "https://pib.rocks/press/",
+    "checked_at": "2026-11-27",
+    "context": "Official press section explicitly labels pib#5. Complete bench/stand-based upper-body robot, its base and both hands; this platform has no legs to invent. Check right fingertips are complete and alpha-only remove white background. Generic pib catalogue; name pib#5 shown.",
+    "status": "candidate_for_independent_identity_and_alpha_review",
+    "files": [
+      {
+        "original": "65-press.png",
+        "url": "https://pib.rocks/wp-content/uploads/2026/09/pib5-Rocks.png",
+        "size": [
+          1920,
+          2006
+        ],
+        "mode": "P",
+        "sha256": "80468486d9b6a24b4b664d0570ac82a6941cdc371096387dbd7f7a2389ce80cc"
+      }
+    ],
+    "license_note": "Manufacturer press/product material. Credit manufacturer. No open licence presumed."
   }
 ]

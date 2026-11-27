@@ -1,0 +1,23 @@
+{
+  "id": 65,
+  "manufacturer": "Pib",
+  "catalogue_model": "pib",
+  "public_page": "https://whyhumanoid.com/humanoids/pib-pib-65/",
+  "page": "https://pib.rocks/press/",
+  "checked_at": "2026-11-27",
+  "context": "Official press section explicitly labels pib#5. Complete bench/stand-based upper-body robot, its base and both hands; this platform has no legs to invent. Check right fingertips are complete and alpha-only remove white background. Generic pib catalogue; name pib#5 shown.",
+  "status": "candidate_for_independent_identity_and_alpha_review",
+  "files": [
+    {
+      "original": "65-press.png",
+      "url": "https://pib.rocks/wp-content/uploads/2026/09/pib5-Rocks.png",
+      "size": [
+        1920,
+        2006
+      ],
+      "mode": "P",
+      "sha256": "80468486d9b6a24b4b664d0570ac82a6941cdc371096387dbd7f7a2389ce80cc"
+    }
+  ],
+  "license_note": "Manufacturer press/product material. Credit manufacturer. No open licence presumed."
+}
