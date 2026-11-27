@@ -1,0 +1,44 @@
+{
+  "id": "WH-20261127-1522-descarga-pdf-agility",
+  "tarea": "Publicar el PDF de Agility como muestra y adoptar su plantilla para todos los informes a medida",
+  "origen": "Javier",
+  "fecha": "2026-11-27T15:22:18+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "codex",
+  "cambios": [
+    "PDF editorial aprobado disponible para descargar desde Investment y la ficha de Agility.",
+    "Plantilla aprobada incorporada al procedimiento de diagnóstico, diversificación y tesis de inversión. Diseño editable preservado en el espacio de trabajo."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PDF publicado",
+      "url": "https://whyhumanoid.com/assets/investment/agility-robotics-investment-thesis-why-humanoid.pdf"
+    },
+    {
+      "etiqueta": "Investment",
+      "url": "https://whyhumanoid.com/investment/#investment-thesis"
+    },
+    {
+      "etiqueta": "Ficha de Agility",
+      "url": "https://whyhumanoid.com/companies/agility-robotics/#agility-thesis-sample"
+    },
+    {
+      "etiqueta": "PR 218",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/218"
+    },
+    {
+      "etiqueta": "Publicación",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46014835769"
+    }
+  ],
+  "despliegue": [
+    "PR 218 fusionado en 968b0f9f8. Pages 46014835769 correcto sobre b5cb83590, que incorpora la fusión. Purga puntual de la URL del PDF para retirar un 404 anterior almacenado."
+  ],
+  "verificaciones": [
+    "CI del PR correcta y 14 pruebas locales de Investment superadas.",
+    "PDF público HTTP 200 con tipo application/pdf. Los bytes coinciden con el original aprobado y ambos enlaces públicos se verifican."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Aplicar la plantilla aprobada al siguiente informe por encargo."
+}
