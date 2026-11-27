@@ -862,6 +862,21 @@
         "credit": "Image: Elite Robots",
         "provenance": "ops/media/robots/elite-robots-centaur-g1/PROVENANCE.md"
       }
+    },
+    "26": {
+      "recorded": {
+        "Lab": "Enchanted",
+        "Robot": "Mirokai"
+      },
+      "image": {
+        "src": "/assets/robots/enchanted-tools-mirokai/enchanted-tools-mirokai-full-body.webp",
+        "fallback": "/assets/robots/enchanted-tools-mirokai/enchanted-tools-mirokai-full-body.png",
+        "width": 460,
+        "height": 1055,
+        "alt": "Mirokai by Enchanted Tools (the yellow Miroki character), the whole robot on its rolling sphere and ring, front view",
+        "credit": "Image: Enchanted Tools - Mirokaï robot",
+        "provenance": "ops/media/robots/enchanted-tools-mirokai/PROVENANCE.md"
+      }
     }
   }
 }
