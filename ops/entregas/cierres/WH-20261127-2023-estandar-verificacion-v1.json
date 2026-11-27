@@ -1,0 +1,42 @@
+{
+  "id": "WH-20261127-2023-estandar-verificacion-v1",
+  "tarea": "Implantar el estándar de verificación v1.0 y publicar la primera revisión documental",
+  "origen": "Javier: implementar el plan aportado",
+  "fecha": "2026-11-27T20:23:37+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "codex",
+  "cambios": [
+    "Estándar público, historial por atributo, comparador protegido y metadatos API/MCP publicados.",
+    "Maestro ampliado y 39 eventos conservados; cohorte de 25 modelos revisada documentalmente.",
+    "Fuentes preservadas, correcciones por correo estructurado y procedimiento semanal actualizado."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Estándar",
+      "url": "https://whyhumanoid.com/method/"
+    },
+    {
+      "etiqueta": "Informe inicial",
+      "url": "https://whyhumanoid.com/reports/verification/"
+    },
+    {
+      "etiqueta": "Implementación",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/245"
+    }
+  ],
+  "despliegue": [
+    "PR245 fusionada; CI y Pages correctos, merge dd71d9ce68cd57d13d24120460a79b43f9969bd3.",
+    "Worker de producción 71a3fb77-912b-40d3-9b01-0be5a9aba679 activo; configuración conservada, sin importación general."
+  ],
+  "verificaciones": [
+    "251 pruebas del servidor, 7 de registro y archivo, 8 de interfaz y 3 de clientes correctas.",
+    "39 eventos coinciden en web y API; MCP oficial, navegación móvil y maestro comprobados."
+  ],
+  "pendientes": [
+    "Completar las auditorías profundas: la revisión inicial no acredita 25 auditorías independientes ni ningún V4.",
+    "25 borradores para 24 fabricantes preparados y sin enviar; contacto de Kepler pendiente.",
+    "Ampliar la verificación por caso en las demás categorías y producir la comparación trimestral con un nuevo corte temporal."
+  ],
+  "siguiente_accion": "Continuar la revisión por atributo desde el procedimiento editorial; incorporar evidencia nueva sin sobrescribir el historial."
+}
