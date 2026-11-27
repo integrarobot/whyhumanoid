@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-2138-imagenes-robots-lote-16",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T21:44:43+01:00",
+  "por": "codex",
+  "evidencia": "Codex revisó PR 251 en eaf3afd59086507164cef403adb8cb7004fa5b7a contra 9674d66bc17976b0842898f643719169be3dbf9e: 92 archivos de imágenes, ops y páginas generadas; las 148 presentaciones anteriores y los 213 datos idénticos. Diez RGB nativos, SHA, alfa PNG/WebP, tamaño y margen transparente de 20 px correctos; diez pares claros/oscuros examinados, detalles de Vanar y asa de KAIST revisados contra el original. CI 46064317211 correcta. Fusión 43d8984d7acbad70c129125b860c34d3c604cb46 y Pages 46064669376 correctos antes de solicitar nuevas canónicas. 30/30 URL con 200; veinte activos con SHA y alfa exactos, diez fichas con imagen, alt y crédito. 20/20 vistas reales de Chrome a 390×844 y 1366×900, contain, cargadas, sin desbordamiento; D9 móvil observado de nuevo tras finalizar la carga; captura de GoMate de escritorio revisada y overrides restablecidos. Avisados Javier y Claude: 158/213 publicadas, 55 pendientes, solo Humanoids. Cierre PR 252 revisado en 7214e4cdbeae04b750da8349b1de5ead4ab47a7c: catorce archivos solo ops, CI 46065090080 correcta; registro válido con 114 cierres y 56 confirmaciones antes de este aviso. No se atribuye recepción a Javier."
+}
