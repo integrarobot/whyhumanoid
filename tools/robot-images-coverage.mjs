@@ -46,7 +46,7 @@ export function coverage(plan = read('ops/media/robots/coverage.json'), presenta
         if (seen.has(id)) problems.push(`robot ${id}: listed twice in batches (${seen.get(id)} and batch ${b.batch} ${kind})`);
         seen.set(id, `batch ${b.batch} ${kind}`);
         // A candidate becomes published when its batch integrates it; a reserve is never published as a reserve.
-        const want = kind === 'candidates' ? ['candidate', 'integrated', 'published'] : ['reserve'];
+        const want = kind === 'candidates' ? ['candidate', 'integrated', 'published', 'quality_debt'] : ['reserve'];
         if (!want.includes(plan.robots?.[id]?.status)) problems.push(`robot ${id}: in batch ${b.batch} ${kind}, status must be ${want.join(' or ')}`);
       }
     }
@@ -65,7 +65,7 @@ export function coverage(plan = read('ops/media/robots/coverage.json'), presenta
     const tally = {};
     for (const id of members) tally[status(id)] = (tally[status(id)] ?? 0) + 1;
     const open = members.filter((id) => !['published', 'quality_debt', 'exception', 'no_valid_source'].includes(status(id)));
-    return { name: sc.name, total: members.length, tally, open, noSource: members.filter((id) => status(id) === 'no_valid_source') };
+    return { name: sc.name, state: sc.state, total: members.length, tally, open, noSource: members.filter((id) => status(id) === 'no_valid_source') };
   });
 
   const rows = catalogue.records.map((r) => {
@@ -87,7 +87,7 @@ export function coverage(plan = read('ops/media/robots/coverage.json'), presenta
     '',
     `Catalogue snapshot ${catalogue.snapshot}: ${rows.length} records. Published ${count('published')} (of which quality debt ${rows.filter((x) => x.status === 'published, quality debt').length}); integrated in an open PR, not live ${count('integrated')}; candidates ${count('candidate')}; reserves ${count('reserve')}; needs decision ${count('needs_decision')}; exceptions ${count('exception')}; no valid source yet ${count('no_valid_source')} (sources reviewed, still without a valid image); pending ${count('pending')}.`,
     '',
-    ...scopes.flatMap((sc) => [`Scope "${sc.name}": ${sc.total} records; ${Object.entries(sc.tally).sort().map(([k, v]) => `${k} ${v}`).join(', ')}. Still open: ${sc.open.length ? sc.open.join(', ') : 'none'}. Without a valid image after source review (no_valid_source): ${sc.noSource.length ? sc.noSource.join(', ') : 'none'}.`, '']),
+    ...scopes.flatMap((sc) => [`Scope "${sc.name}"${sc.state ? ` (${sc.state.replace(/_/g, ' ')})` : ''}: ${sc.total} records; ${Object.entries(sc.tally).sort().map(([k, v]) => `${k} ${v}`).join(', ')}. Still to integrate or publish: ${sc.open.length ? sc.open.join(', ') : 'none'}. Without a valid image after source review (no_valid_source): ${sc.noSource.length ? sc.noSource.join(', ') : 'none'}.`, '']),
     '| id | Lab | Robot | Status | Batch | Note |',
     '|---:|---|---|---|---|---|',
     ...rows.map((x) => `| ${x.id} | ${esc(x.lab)} | ${esc(x.robot)} | ${x.status} | ${x.where} | ${esc(x.note)} |`),

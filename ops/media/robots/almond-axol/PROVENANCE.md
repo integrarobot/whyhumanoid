@@ -22,7 +22,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 3, scope 
 
 Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 3, PR not yet merged)
+## Published files (image batch 3, PR 206, merge c015cef, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/almond-axol/almond-axol-full-body.png`, 487 × 824 px, lossless, sha256 `b82a8f0bfd47bf8fcff189a7ec61be60e759a57526ae09645976115d64ba41b2`.
 - **WebP:** `assets/robots/almond-axol/almond-axol-full-body.webp`, made with `python3 ops/media/robots/to-webp.py`, sha256 `4d7d5b66a40e9d576d868e06a5be70467f21c07f08a20a9bf6131c639004e7c5`.

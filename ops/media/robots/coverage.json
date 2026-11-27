@@ -74,7 +74,7 @@
     {
       "batch": 3,
       "opened": "2026-11-27",
-      "state": "integrated_awaiting_review",
+      "state": "published",
       "target": 10,
       "scope": "A/B makers",
       "candidates": [
@@ -89,8 +89,10 @@
       "notes": [
         "Sources from Codex, transport branch codex/image-sources-ab (eece0f8), kept in ops/media/intake-ab-2026-11-27/batch-03/.",
         "Booster T1: photo from the Tsinghua Hephaestus RoboCup team specification sheet, published at its modest native resolution (quality debt).",
-        "Nine records reviewed without a valid source and aeo (candidate failed) are traced as no_valid_source."
-      ]
+        "Nine records reviewed without a valid source and aeo (candidate failed) are traced as no_valid_source.",
+        "Published with PR 206 (head 2f856a6, CI 45996304572; merge c015cef, Pages 45996560022), 27 Nov 2026; production verified by Claude and independently by Codex; no cache purge needed."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -186,7 +188,7 @@
         "Lab": "Booster",
         "Robot": "T1"
       },
-      "status": "integrated",
+      "status": "quality_debt",
       "page": "https://www.boosterobotics.com/",
       "notes": "Standard T1. Not T2 (id 148), K1 (id 149) nor Tlibot T1 (id 202). T1 no longer appears on Booster's current home page (Codex, 27 Nov 2026): take the next candidate if no faithful T1 original is found. Standard T1; not T2 (148), K1 (149) nor Tlibot T1 (202). T1 no longer appears on Booster's current home page.",
       "sources": [
@@ -201,7 +203,8 @@
           "detail": "isnet-general-use; RGB exact; prepared 228 × 502."
         }
       ],
-      "quality_note": "Modest resolution: 228 × 502 (figure 188 × 462) from a 393 × 590 team photograph; replace when a larger faithful T1 image is found."
+      "quality_note": "Modest resolution: 228 × 502 (figure 188 × 462) from a 393 × 590 team photograph; replace when a larger faithful T1 image is found.",
+      "reason": "Published at a modest resolution: 228 × 502 (figure 188 × 462) from a 393 × 590 photograph of the Tsinghua Hephaestus RoboCup team; replace with a larger faithful T1 image when one is found. No detail simulated."
     },
     "148": {
       "recorded": {
@@ -940,7 +943,7 @@
           "detail": "native-alpha; distant ground shadow masked beyond x704,y780; RGB exact; prepared 285 × 776."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.agile-robots.com/",
       "research": [
         {
@@ -967,7 +970,7 @@
           "detail": "native-alpha; RGB exact; prepared 756 × 1729."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.argonmech.com/"
     },
     "9": {
@@ -1042,7 +1045,7 @@
           "detail": "native-alpha; RGB exact; prepared 343 × 1019."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://addverb.ai/elixis",
       "notes": "Elixis, bipedal; Elixis-W (wheeled) is a separate variant."
     },
@@ -1063,7 +1066,7 @@
           "detail": "native-alpha; RGB exact; prepared 507 × 844."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.almond.bot/",
       "notes": "Bimanual Axol (arms for table or cart): shown as Almond presents it; no body added."
     },
@@ -1106,7 +1109,7 @@
           "detail": "native-alpha; RGB exact; prepared 307 × 540."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://aidoltech.ru/",
       "notes": "Walking version only; the desktop (upper-body) version is not this record."
     },
@@ -1145,7 +1148,10 @@
         "Non-generative mask cutouts are authorised (Javier, 27 Nov 2026): alpha only, the robot's pixels kept; no part recreated, no generative image.",
         "The whole platform or module the record identifies is shown, as the maker presents it (for example Axol's two-arm module), with no part added. A photo cropped to a bust or torso does not meet the whole-robot requirement. No model is assigned to a company record without one.",
         "For a family record (A2, X2) one included variant may illustrate it, named in the alt text and provenance."
-      ]
+      ],
+      "state": "closed_with_pending_sources",
+      "closed": "2026-11-27",
+      "summary": "29 A/B records: 19 with an image (3 earlier, 16 new in batches 2 and 3), 10 still without a valid image after source review (no_valid_source). Not every A/B record has an image."
     }
   ]
 }

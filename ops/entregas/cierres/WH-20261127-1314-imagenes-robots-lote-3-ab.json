@@ -1,0 +1,61 @@
+{
+  "id": "WH-20261127-1314-imagenes-robots-lote-3-ab",
+  "tarea": "Imágenes de robots, lote 3 y cierre del alcance A/B: Agile ONE, Argon One, Axol, AIDOL (versión caminante), Booster T1 y Elixis, más el registro de las fichas A/B sin fuente válida",
+  "origen": "Javier (27/11/2026: «haz Agibot y todos los que quedan con la A y B»), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T13:14:12+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 206 (cabeza revisada 2f856a6, merge c015cef): imagen en las fichas 5 Agile ONE, 8 Argon One, 116 Axol (módulo de dos brazos tal como lo presenta Almond), 164 AIDOL versión caminante, 14 Booster T1 y 105 Elixis bípedo, solo mediante tools/robot-presentation.json.",
+    "Originales, máscaras y preparados de Codex (codex/image-sources-ab: lote en eece0f8, revisión de fuentes en 1c6c7c4) guardados sin cambios en ops/media/intake-ab-2026-11-27/batch-03/; color de cada píxel visible igual al original, sin reescalado.",
+    "Booster T1: foto del equipo Tsinghua Hephaestus de RoboCup (hoja técnica en PDF, página 1), con crédito al equipo y el fabricante en el texto alternativo; no se presenta como recurso de Booster.",
+    "Cobertura: estado nuevo no_valid_source para las fichas revisadas sin fuente válida; regla de alcance precisada: se muestra la plataforma o el módulo completo que identifica la ficha y una foto recortada a busto o torso no cumple.",
+    "Este cierre pasa las seis fichas de integrated a published (T1 como publicada con deuda de resolución) y cierra el alcance A/B con fuentes pendientes: 19 de 29 fichas con imagen (3 previas y 16 nuevas en los lotes 2 y 3) y 10 todavía sin imagen válida tras revisar fuentes. No todas las fichas A/B tienen imagen."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 206",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/206"
+    },
+    {
+      "etiqueta": "CI de la cabeza 2f856a6",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45996304572"
+    },
+    {
+      "etiqueta": "Pages de c015cef",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45996560022"
+    },
+    {
+      "etiqueta": "Ficha Booster T1",
+      "url": "https://whyhumanoid.com/humanoids/booster-t1-14/"
+    },
+    {
+      "etiqueta": "Ficha Addverb Elixis",
+      "url": "https://whyhumanoid.com/humanoids/addverb-elixis-105/"
+    },
+    {
+      "etiqueta": "Cierre del lote 2 A/B (PR 205)",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/205"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main c015cef (run 45996560022, correcto); CI de la cabeza 2f856a6 (run 45996304572, correcto). Sin cambios de maestro, Worker ni D1.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Codex, cabeza 2f856a6: color de todos los píxeles visibles igual al original, alfa de WebP igual a la del PNG, sin ampliación; presentación 33, cobertura 212 y entregas correctas; revisión visual en claro y oscuro.",
+    "Claude, producción: las 12 URL canónicas dan 200 con los mismos bytes que c015cef; navegador real en iPhone 13 y 1366 × 900, las seis fichas cargan con texto alternativo y crédito, sin desbordamiento lateral.",
+    "Codex, verificación pública independiente: 18/18 comprobaciones canónicas y 12/12 vistas en 390 y 1366 px con caché ordinaria; las 17 presentaciones anteriores siguen intactas."
+  ],
+  "pendientes": [
+    "Diez fichas A/B siguen sin imagen válida tras revisar fuentes (no se afirma que no exista foto): aeo (3, el mástil del lidar se pierde en la máscara), ARX X7 (9), Astribot S1 (10), Axibo (11), Beomni (12), Alex (13), Borg 01 (15), Gallop (135), Elf·Xuan 2.0 (163) y Avatar Robotics (166).",
+    "Booster T1 (14): resolución modesta (figura de 188 × 462); sustituir si aparece una imagen mayor y fiel.",
+    "Siguen las deudas anteriores: contraste de KANGAROO, H1 y Figure 03, y los 13 scripts que no se ejecutan desde rutas con espacios."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. El alcance A/B queda cerrado con 10 fichas pendientes de fuente válida; otras letras, solo por encargo nuevo."
+}

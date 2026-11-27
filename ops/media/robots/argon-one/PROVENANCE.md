@@ -22,7 +22,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 3, scope 
 
 Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 3, PR not yet merged)
+## Published files (image batch 3, PR 206, merge c015cef, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/argon-one/argon-one-full-body.png`, 736 × 1709 px, lossless, sha256 `1e0f7c7f9de86e11fedd79fabef875bb6eb50982c3ef9ba39e3912d020cac9a9`.
 - **WebP:** `assets/robots/argon-one/argon-one-full-body.webp`, made with `python3 ops/media/robots/to-webp.py`, sha256 `84259317018f0d0db20f7a0e69bf4dc00e9b12cf1d2ac0fa2d5956735ddec05a`.

@@ -22,7 +22,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 3, scope 
 
 Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 3, PR not yet merged)
+## Published files (image batch 3, PR 206, merge c015cef, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/addverb-elixis/addverb-elixis-full-body.png`, 323 × 999 px, lossless, sha256 `a318951fbb59db2c93029acd3c39c1241e2373192ee693deea639a0bfd230ccb`.
 - **WebP:** `assets/robots/addverb-elixis/addverb-elixis-full-body.webp`, made with `python3 ops/media/robots/to-webp.py`, sha256 `040e6b24adcbe5ee87c3f944d9d1e01d1e8e47c5dcd43686d5b8909c8ed3d952`.
