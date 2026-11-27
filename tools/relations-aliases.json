@@ -3,6 +3,13 @@
   "reviewed_at": "2026-11-17",
   "reviewed_by": "claude/opus-5.5",
   "makers": {
+    "Plim Robotics": {
+      "id": "mfr_devanthro",
+      "name": "Plim Robotics",
+      "names": [
+        "Devanthro"
+      ]
+    },
     "Agility": {
       "id": "org_agility_robotics",
       "entity_id": "org_agility_robotics",
@@ -123,6 +130,22 @@
     }
   },
   "robots": {
+    "21": {
+      "lab": "Plim Robotics",
+      "robot": "Plim",
+      "model": [
+        "Robody"
+      ]
+    },
+    "97": {
+      "lab": "Wandercraft",
+      "robot": "Calvin-40",
+      "family": [
+        "Calvin",
+        "Wandercraft Calvin"
+      ],
+      "note": "Calvin was the prior catalogue label and also names the broader family; generic evidence does not establish the version."
+    },
     "1": {
       "lab": "1X",
       "robot": "NEO (Home Robot)",

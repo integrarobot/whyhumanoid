@@ -431,14 +431,6 @@
       "status": "exception",
       "reason": "No exact model in the record."
     },
-    "92": {
-      "recorded": {
-        "Lab": "UMA",
-        "Robot": "Not disclosed"
-      },
-      "status": "exception",
-      "reason": "No exact model in the record."
-    },
     "107": {
       "recorded": {
         "Lab": "Noble Machines",
