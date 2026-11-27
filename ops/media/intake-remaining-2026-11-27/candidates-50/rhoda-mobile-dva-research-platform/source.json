@@ -1,0 +1,17 @@
+{
+  "id": 75,
+  "slug": "rhoda-mobile-dva-research-platform",
+  "credit": "Rhoda AI",
+  "source_page": "https://www.rhoda.ai/research/mobile-dva",
+  "source_url": "https://www.rhoda.ai/images/mobile-dva/research-thumbnail.png",
+  "original": "original.png",
+  "original_size": [
+    1672,
+    941
+  ],
+  "original_sha256": "c781ae0d19a75d5965bd0c129c3f3f653267512daef82e79d6c1f33f205c68f1",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Official company public research media with credit; no open licence assumed or outreach sent.",
+  "source_context": "Official Rhoda AI homepage research-thumbnail and Mobile DVA primary blog dated 2026-11-03 identify its actual dual-arm MOBILE RESEARCH TEST PLATFORM. Whole platform as designed: top camera bar/cable, two actual industrial arms with pinch end effectors, whole two-segment central mast and entire rectangular mobile base/wheels. No humanoid head/legs by design. Exact underlying OEM and commercial product name are not confirmed; DO NOT infer Rhoda original hardware manufacture or commercial own-model release. Required caption Rhoda AI, mobile research platform shown in Mobile DVA (November 2026). Approx ROI x490..1010 y225..885. Keep actual arm and mast cables, router/antennas on base and LEDs. Blue crate sits on separate external wood pallet at left below extended gripper; neither crate/pallet obscures torso/base. Inspect white/orange long pinch fingers near x580..635 y410..512: preserve actual fingers at native; remove crate/pallet/background only if contour genuinely separable without completing hidden geometry; if actual fingers disappear behind crate do not reconstruct and reject source. A carried object or self-occlusion is not absence of whole platform, but never erase a prop to invent hidden hardware. Alternative official video XrMAjpqmtNE shows this same test platform but most 1080 frames have subtitles on base; do not use text-overlaid body. Image is research platform, NOT a new commercial model; catalogue remains model undisclosed, no data/master changes."
+}
