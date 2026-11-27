@@ -1,0 +1,32 @@
+{
+  "id": 20,
+  "slug": "dr01",
+  "original": "dr01-youtube.jpg",
+  "roi": [
+    280,
+    0,
+    700,
+    710
+  ],
+  "bbox": [
+    36,
+    22,
+    400,
+    678
+  ],
+  "border": 20,
+  "size": [
+    404,
+    696
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha-only manual polygons restore both feet missed by automatic mask",
+  "source_page": "https://www.youtube.com/watch?v=lCFyfh3mLOQ",
+  "source_url": "https://i.ytimg.com/vi/lCFyfh3mLOQ/maxresdefault.jpg",
+  "original_sha256": "de978e6adc7b1a450c2cd3bd55ae4cab9fa90ac30c23649176255699a2c64eb9",
+  "prepared_sha256": "d0ff825fe81632907d64ae2c34db68c8c3965ec533a34802b5b5333cac360d00",
+  "mask_sha256": "20d557f07c1cd2cf0cfd2fbb2bd2fc32eddd16b245a4722f890a9bee62fb188c",
+  "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+  "checked_at": "2026-11-27",
+  "source_context": "DEEPRobotics official DR01 Humanoid Robot Outdoor Test, published2024-10-28; complete original thumbnail body isolated from text; do not use DR02."
+}

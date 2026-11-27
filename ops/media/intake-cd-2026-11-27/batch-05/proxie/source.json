@@ -1,0 +1,32 @@
+{
+  "id": 19,
+  "slug": "proxie",
+  "original": "proxie-main-vertical.jpg",
+  "roi": [
+    0,
+    0,
+    2160,
+    3840
+  ],
+  "bbox": [
+    489,
+    736,
+    1712,
+    2961
+  ],
+  "border": 20,
+  "size": [
+    1263,
+    2265
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha-only polygon excludes ground shadow and floor stripe",
+  "source_page": "https://www.co.bot/",
+  "source_url": "https://cdn.sanity.io/images/3qpw73bq/yellow/35a24ba9acf5df1582187b7e6837a18f2de02f0b-2160x3840.jpg",
+  "original_sha256": "2aab9ba4ffa816a93795145424ba116cf93d52e70f76d94ec563fcd7a5cfda68",
+  "prepared_sha256": "270de8f681e107ac3ed40af3fc60dbdf0f17980c7dfe83236286dac31772fcfe",
+  "mask_sha256": "3753e0a6d8167bf1378def2caf133117f5848c97ceb8aa069fff816d3a366b46",
+  "processing": "Non-generative alpha-only mask; original RGB pixels preserved; no scaling;20px transparent padding.",
+  "checked_at": "2026-11-27",
+  "source_context": "Current manufacturer homepage main vertical photograph of complete Proxie mobile platform, seen from above; manufacturer family record, not assertion that this configuration has Gen2 bimanual arms."
+}

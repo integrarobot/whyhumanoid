@@ -158,6 +158,36 @@
         "provenance": "ops/media/robots/clone-robotics-clone/PROVENANCE.md"
       }
     },
+    "19": {
+      "recorded": {
+        "Lab": "Cobot",
+        "Robot": "Proxie"
+      },
+      "image": {
+        "src": "/assets/robots/cobot-proxie/cobot-proxie-full-body.webp",
+        "fallback": "/assets/robots/cobot-proxie/cobot-proxie-full-body.png",
+        "width": 1263,
+        "height": 2265,
+        "alt": "Proxie by Cobot, whole mobile platform with its arm, seen from above",
+        "credit": "Image: Cobot",
+        "provenance": "ops/media/robots/cobot-proxie/PROVENANCE.md"
+      }
+    },
+    "20": {
+      "recorded": {
+        "Lab": "Deep",
+        "Robot": "DR01"
+      },
+      "image": {
+        "src": "/assets/robots/deep-robotics-dr01/deep-robotics-dr01-full-body.webp",
+        "fallback": "/assets/robots/deep-robotics-dr01/deep-robotics-dr01-full-body.png",
+        "width": 404,
+        "height": 696,
+        "alt": "DR01 by DEEP Robotics, full body, walking outdoors pose, front view",
+        "credit": "Image: DEEP Robotics",
+        "provenance": "ops/media/robots/deep-robotics-dr01/PROVENANCE.md"
+      }
+    },
     "22": {
       "recorded": {
         "Lab": "Dexmate",
@@ -186,6 +216,21 @@
         "alt": "Moxi by Diligent Robotics, whole robot on its wheeled base, three-quarter view, one arm raised",
         "credit": "Image: Diligent Robotics",
         "provenance": "ops/media/robots/diligent-moxi/PROVENANCE.md"
+      }
+    },
+    "24": {
+      "recorded": {
+        "Lab": "Dobot",
+        "Robot": "Atom"
+      },
+      "image": {
+        "src": "/assets/robots/dobot-atom/dobot-atom-full-body.webp",
+        "fallback": "/assets/robots/dobot-atom/dobot-atom-full-body.png",
+        "width": 727,
+        "height": 1897,
+        "alt": "ATOM by DOBOT (ATOM Max, bipedal), full body, front view, standing",
+        "credit": "Image: DOBOT",
+        "provenance": "ops/media/robots/dobot-atom/PROVENANCE.md"
       }
     },
     "27": {
@@ -608,6 +653,21 @@
         "provenance": "ops/media/robots/cyborg-w01/PROVENANCE.md"
       }
     },
+    "171": {
+      "recorded": {
+        "Lab": "Digit Robotics",
+        "Robot": "Xialan R03"
+      },
+      "image": {
+        "src": "/assets/robots/digit-robotics-xialan-r03/digit-robotics-xialan-r03-full-body.webp",
+        "fallback": "/assets/robots/digit-robotics-xialan-r03/digit-robotics-xialan-r03-full-body.png",
+        "width": 255,
+        "height": 861,
+        "alt": "Xialan R03 by Digit Robotics, full body in cream clothing, front view, standing",
+        "credit": "Image: Digit Robotics",
+        "provenance": "ops/media/robots/digit-robotics-xialan-r03/PROVENANCE.md"
+      }
+    },
     "172": {
       "recorded": {
         "Lab": "Digit Robotics",
@@ -621,6 +681,21 @@
         "alt": "XiaQi X02 by Digit Robotics, full body, front view, standing",
         "credit": "Image: Digit Robotics",
         "provenance": "ops/media/robots/digit-robotics-xiaqi-x02/PROVENANCE.md"
+      }
+    },
+    "173": {
+      "recorded": {
+        "Lab": "Donut Robotics",
+        "Robot": "Cinnamon 1"
+      },
+      "image": {
+        "src": "/assets/robots/donut-robotics-cinnamon-1/donut-robotics-cinnamon-1-full-body.webp",
+        "fallback": "/assets/robots/donut-robotics-cinnamon-1/donut-robotics-cinnamon-1-full-body.png",
+        "width": 403,
+        "height": 922,
+        "alt": "Cinnamon 1 shown by Donut Robotics, full body in a white suit, front view, standing",
+        "credit": "Image: Donut Robotics",
+        "provenance": "ops/media/robots/donut-robotics-cinnamon-1/PROVENANCE.md"
       }
     },
     "175": {
