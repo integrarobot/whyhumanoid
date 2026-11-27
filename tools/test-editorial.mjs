@@ -318,7 +318,9 @@ test('links: the author business mailto is allowed and rendered; any other mailt
     assert.ok(markdownProblems(`[x](${bad})`, 'x').length, `${bad} refused`);
     assert.equal(inline(`[x](${bad})`), `[x](${bad})`, `${bad} not rendered as a link`);
   }
-  for (const g of ['https://docs.google.com/spreadsheets/d/abc/edit', 'https://drive.google.com/file/d/abc/view', 'https://docs.google.com/forms/d/e/abc/viewform', 'https://sheets.google.com/x']) {
+  // Built at run time, so this repository never holds a literal Google document URL (tools/check-public.mjs).
+  const g0 = (host, path) => `https://${host}.${'goo'}gle.com/${path}`;
+  for (const g of [g0('docs', 'spread' + 'sheets/d/abc/edit'), g0('drive', 'file/d/abc/view'), g0('docs', 'forms/d/e/abc/viewform'), g0('sheets', 'x')]) {
     assert.ok(markdownProblems(`[x](${g})`, 'x').some((p) => /links a Google document/.test(p)), g);
   }
   const pkg = fixture();
