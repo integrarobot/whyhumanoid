@@ -1,0 +1,19 @@
+[
+  {
+    "id": 74,
+    "slug": "revobots-taskbot-scout",
+    "credit": "REVOBOTS",
+    "source_page": "https://revobots.ai/",
+    "source_url": "https://revobots.ai/_assets/video/9cde64a553bd519ee408b99fd8340690.mp4",
+    "original": "original.png",
+    "original_size": [
+      1920,
+      1080
+    ],
+    "original_sha256": "bdc96b561581682c97d6ff694f1b50fa55d559a0d35b52b0fa36d5c4e08174e2",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "source_context": "Official homepage embedded Canva video VAG4Ru9-e18. Native1920x1080 encoded rendition explicitly referenced in dashVideoFiles metadata. This is NOT a newly upscaled1280 frame; source media directly fetched1080 (same628frames30fps). Frame292 at9.7333s; whole sensor mast/cap and complete four-wheeledmobileplatform, margin below tyres. No arms/head invented, this SCOUT configuration has sensor mast by design. Crucially current record74 Platform and mobility explicitly includes TASKBOT SCOUT autonomous mobile robot (patrol, inspection), so exact configuration matches owning catalogue. Homepage labels same configuration TASKBOT SCOUT. Caption REVOBOTS, TASKBOT SCOUT mobile configuration, official video still; do not silently label it humanoid hardware or payload evidence. Alpha-only, exclude street/car/logos, preserve RGB/native20padding. Root inspected native1080 frame292, all physical platform whole. ApproxROI[1020,340,1490,1080], independently widen enough toretainwholewheels.",
+    "license_note": "Manufacturer primary source, credit; no open licence assumed or outreach."
+  }
+]
