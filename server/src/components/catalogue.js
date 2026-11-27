@@ -61,6 +61,9 @@ export const COMPONENT_CLASSES = Object.freeze({
   motion_controller: { prefix: 'CTL', label: 'Motion controller', metrics: ['control_loop_rate', 'axes'] },
   power_battery: { prefix: 'PWR', label: 'Battery, cell or power part', metrics: ['capacity', 'nominal_voltage', 'chemistry', 'max_discharge_current', 'cycle_life'] },
   encoder: { prefix: 'ENC', label: 'Encoder', metrics: ['resolution', 'accuracy', 'max_speed'] },
+  // Bearings (27 Nov 2026, Codex): rolling bearings sold as parts, such as cross-roller rings; dimensions and the maker's
+  // basic load ratings are compared within the class; nothing about life or rigidity is inferred.
+  bearing: { prefix: 'BRG', label: 'Bearing', metrics: ['inner_diameter', 'outer_diameter', 'width', 'dynamic_load_rating', 'static_load_rating'] },
 });
 export const EVIDENCE_SCOPES = Object.freeze(['manufacturer_datasheet', 'manufacturer_webpage', 'manufacturer_manual', 'peer_reviewed_paper', 'preprint', 'independent_test', 'distributor_listing']);
 // Columns that describe touch sensing only: a product of another class leaves them empty or "N/A".

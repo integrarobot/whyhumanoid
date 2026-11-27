@@ -86,6 +86,19 @@ test('family extension: class vocabulary, ID prefix, specification lines, source
   for (const [k, c] of Object.entries(COMPONENT_CLASSES)) assert.match(c.prefix, /^[A-Z]{3}$/, k);
 });
 
+test('bearing class (27 Nov 2026): BRG prefix, dimension and load-rating keys, never a tactile column', () => {
+  assert.deepEqual(COMPONENT_CLASSES.bearing, { prefix: 'BRG', label: 'Bearing', metrics: ['inner_diameter', 'outer_diameter', 'width', 'dynamic_load_rating', 'static_load_rating'] });
+  const brg = (over) => actuator({
+    component_id: 'CMP-BRG-001', name: 'Example cross-roller ring', family: 'Cross-roller ring', component_class: 'bearing', function: 'Carries the loads of a rotary joint.',
+    technical_specifications: 'inner_diameter | 20 | mm |  | https://maker.example.com/datasheet.pdf | p. 87 | 2026-11-27\ndynamic_load_rating | 4.0 | kN | basic dynamic load rating | https://maker.example.com/datasheet.pdf | p. 87 | 2026-11-27',
+    ...over,
+  });
+  assert.deepEqual(componentProblems([brg()]), []);
+  assert.deepEqual(componentProblems([brg({ component_id: 'CMP-BRG-002' })]), []);
+  assert.match(componentProblems([brg({ component_id: 'CMP-RED-005' })]).join(' '), /prefix does not match class bearing \(BRG\)/);
+  assert.match(componentProblems([brg({ force_range: '0-4 kN' })]).join(' '), /force_range is a touch-sensing column/);
+});
+
 test('family extension: the public projection carries class, function, evidence scope and date, never specifications', () => {
   const pub = PUBLIC_FIELDS.hardware;
   for (const f of ['component_class', 'function', 'evidence_scope', 'checked_at']) assert.ok(pub.includes(f), f);

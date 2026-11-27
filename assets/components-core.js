@@ -51,9 +51,10 @@
     motion_controller: { label: 'Motion controller', plural: 'Motion controllers', metrics: ['control_loop_rate', 'axes'] },
     power_battery: { label: 'Battery, cell or power part', plural: 'Batteries, cells and power parts', metrics: ['capacity', 'nominal_voltage', 'chemistry', 'max_discharge_current', 'cycle_life'],
       note: 'A cell or a battery-management chip is a part, not a ready robot battery pack: pack capacity, safety and certification depend on the pack design.' },
-    encoder: { label: 'Encoder', plural: 'Encoders', metrics: ['resolution', 'accuracy', 'max_speed'] }
+    encoder: { label: 'Encoder', plural: 'Encoders', metrics: ['resolution', 'accuracy', 'max_speed'] },
+    bearing: { label: 'Bearing', plural: 'Bearings', metrics: ['inner_diameter', 'outer_diameter', 'width', 'dynamic_load_rating', 'static_load_rating'] }
   };
-  var FAMILY_ORDER = ['tactile_sensor', 'tactile_hand', 'dexterous_hand', 'gripper', 'actuator', 'motor_drive', 'reducer', 'encoder', 'force_torque_sensor', 'vision_sensor', 'compute_module', 'motion_controller', 'power_battery'];
+  var FAMILY_ORDER = ['tactile_sensor', 'tactile_hand', 'dexterous_hand', 'gripper', 'actuator', 'motor_drive', 'reducer', 'bearing', 'encoder', 'force_torque_sensor', 'vision_sensor', 'compute_module', 'motion_controller', 'power_battery'];
   var LEGACY_FAMILY = { 'Tactile sensor': 'tactile_sensor', 'Tactile robotic hand': 'tactile_hand' };
   var familyOf = function (r) {
     if (r && r.component_class && FAMILIES[r.component_class]) return r.component_class;
@@ -76,7 +77,8 @@
     baseline: 'Stereo baseline', depth_accuracy: 'Depth accuracy', shutter: 'Shutter',
     ai_performance: 'AI performance', cpu: 'CPU', gpu: 'GPU', memory: 'Memory', power_range: 'Power range', control_loop_rate: 'Control loop rate', axes: 'Axes',
     capacity: 'Capacity', nominal_voltage: 'Nominal voltage', chemistry: 'Chemistry', max_discharge_current: 'Maximum discharge current', cycle_life: 'Cycle life',
-    resolution: 'Resolution', accuracy: 'Accuracy'
+    resolution: 'Resolution', accuracy: 'Accuracy',
+    inner_diameter: 'Inner diameter', outer_diameter: 'Outer diameter', width: 'Width', dynamic_load_rating: 'Basic dynamic load rating', static_load_rating: 'Basic static load rating'
   };
   var metricLabel = function (k) { return METRIC_LABEL[k] || String(k).replace(/_/g, ' ').replace(/^./, function (c) { return c.toUpperCase(); }); };
   // TECHNICAL_SPECIFICATIONS: "metric | value | unit | conditions | source_url | locator | checked_at", one per line.
