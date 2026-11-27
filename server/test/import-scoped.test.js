@@ -94,7 +94,7 @@ test('an unchanged tab rewrites no row and no search document', async () => {
 });
 
 test('only the Deployments graph tabs can be scoped; a bad tab or bad config changes nothing', async () => {
-  assert.deepEqual(SCOPED_DATASETS, ['deployments', 'entities', 'evidence-links', 'stocks', 'humanoids']);
+  assert.deepEqual(SCOPED_DATASETS, ['deployments', 'entities', 'evidence-links', 'stocks', 'humanoids', 'integrators']);
   assert.deepEqual(GRAPH_DATASETS, ['deployments', 'entities', 'evidence-links']);
   const db = createTestDb();
   await runImport(db, base(), T0, { relationsConfig: config });
@@ -168,7 +168,7 @@ test('a dry run can never become a full import: every other shape is refused bef
 test('the workflow stops a dry run outside the scoped import; the snapshot column is in no index', async () => {
   const { readFileSync } = await import('node:fs');
   const wf = readFileSync(new URL('../../.github/workflows/import-workbook.yml', import.meta.url), 'utf8');
-  assert.match(wf, /options: \[all, deployments, stocks, stocks-humanoids\]/);
+  assert.match(wf, /options: \[all, deployments, stocks, stocks-humanoids, integrators, stocks-humanoids-integrators\]/);
   assert.ok(wf.indexOf('unknown scope') < wf.indexOf('/v1/admin/import'), 'the guards run before the import request');
   const sql = ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql']
     .map((m) => readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8')).join('\n');
@@ -212,7 +212,7 @@ test('the workflow step that builds the request refuses unknown scopes and never
   const full = run({ SCOPE: 'all', DRY_RUN: 'false' });
   assert.equal(full.status, 0, full.stdout);
   assert.ok(!('datasets' in full.body) && !('dry_run' in full.body) && full.body.relations_config);
-  const expected = { deployments: ['deployments', 'entities', 'evidence-links'], stocks: ['stocks'], 'stocks-humanoids': ['stocks', 'humanoids'] };
+  const expected = { deployments: ['deployments', 'entities', 'evidence-links'], stocks: ['stocks'], 'stocks-humanoids': ['stocks', 'humanoids'], integrators: ['integrators'], 'stocks-humanoids-integrators': ['stocks', 'humanoids', 'integrators'] };
   for (const [SCOPE, datasets] of Object.entries(expected)) {
     for (const dry of [true, false]) {
       const r = run({ SCOPE, DRY_RUN: String(dry) });
@@ -331,4 +331,62 @@ test('a scoped Investment and Humanoids dry run plans the registry writes and wr
   assert.deepEqual(dry.changes.stocks, { added: 1, changed: 1, removed: 0, unchanged: 11 });
   assert.ok(dry.estimated_rows_written > 0 && dry.estimated_rows_written < 120, `estimate ${dry.estimated_rows_written}`);
   assert.deepEqual({ ...(await humState(db)), rest: await outside(db), runs: await table(db, 'SELECT id FROM import_runs') }, before);
+});
+
+// Scoped import of the Integrators catalogue (27 Nov 2026): one provider's reviewed cells change (as CA3's eight cells
+// did). Only that tab's rows and search documents change; graphs, projection, dossiers and other tabs stay as they were.
+const intSpec = DATASETS_BY_ID.get('integrators');
+const integratorsEdited = (values = base()) => {
+  const tab = values[intSpec.tab].map((r) => [...r]);
+  const h = intSpec.headers;
+  const row = tab.findIndex((r) => r[h.indexOf('PROVIDER ID')] === 'int_fx1');
+  tab[row] = tab[row].map((v, i) => ({ DESCRIPTION: 'Synthetic specialist exception, rechecked description.', 'REVIEWED AT': '2026-11-26', LIMITATIONS: 'Synthetic single-seed limitation.' }[h[i]] ?? v));
+  return { ...values, [intSpec.tab]: tab };
+};
+const outsideIntegrators = async (db) => ({
+  rows: await table(db, "SELECT dataset, row_id, position, data, preview_data, snapshot_id FROM premium_rows WHERE dataset <> 'integrators' ORDER BY dataset, row_id"),
+  docs: await table(db, "SELECT scope, dataset, row_id, position, title, subtitle, names, haystack, tags, link FROM search_docs WHERE dataset <> 'integrators' ORDER BY scope, dataset, row_id"),
+  graphs: await table(db, 'SELECT * FROM relation_graphs ORDER BY scope'),
+  config: await table(db, 'SELECT * FROM relation_config'),
+  identities: await table(db, 'SELECT * FROM identity_registry ORDER BY namespace, natural_key'),
+});
+
+test('a scoped Integrators import ends where a full import ends for that tab and touches nothing else', async () => {
+  const scoped = createTestDb();
+  assert.equal((await runImport(scoped, base(), T0, { relationsConfig: config })).ok, true);
+  const untouched = await outsideIntegrators(scoped);
+  const rows = (await rowsState(scoped, 'integrators')).length;
+  const result = await runScopedImport(scoped, integratorsEdited(), T0 + 60, { datasets: ['integrators'], relationsConfig: config });
+  assert.equal(result.ok, true, result.error);
+  assert.deepEqual(result.changes.integrators, { added: 0, changed: 1, removed: 0, unchanged: rows - 1 });
+  assert.equal(result.relations, null, 'no relation graph rebuilt');
+  assert.deepEqual(await outsideIntegrators(scoped), untouched);
+  const full = createTestDb();
+  assert.equal((await runImport(full, integratorsEdited(), T0 + 60, { relationsConfig: config })).ok, true);
+  assert.deepEqual(await rowsState(scoped, 'integrators'), await rowsState(full, 'integrators'));
+  assert.deepEqual(await docsState(scoped, 'integrators'), await docsState(full, 'integrators'));
+  const ca3 = (await table(scoped, "SELECT data FROM premium_rows WHERE dataset = 'integrators'")).map((r) => JSON.parse(r.data)).filter((d) => d.provider_id === 'int_fx1');
+  assert.deepEqual(ca3.map((d) => d.reviewed_at), ['2026-11-26'], 'the rechecked date is served');
+  assert.ok((await table(scoped, "SELECT row_id FROM search_docs WHERE dataset = 'integrators' AND scope = 'preview' AND haystack LIKE '%rechecked description%'")).length === 1, 'the public search sees the new text');
+});
+
+test('one scoped import covers Investment, Humanoids and Integrators together; its dry run writes nothing', async () => {
+  const db = createTestDb();
+  await runImport(db, base(), T0, { relationsConfig: config });
+  const values = integratorsEdited(listedEdit());
+  const before = { all: await table(db, 'SELECT dataset, row_id, data, snapshot_id FROM premium_rows ORDER BY dataset, row_id'), docs: await table(db, 'SELECT * FROM search_docs ORDER BY scope, dataset, row_id'), ids: await table(db, 'SELECT * FROM identity_registry ORDER BY namespace, natural_key'), runs: await table(db, 'SELECT id FROM import_runs') };
+  const dry = await runScopedImport(db, values, T0 + 60, { datasets: ['stocks', 'humanoids', 'integrators'], relationsConfig: config, dryRun: true });
+  assert.equal(dry.ok, true, dry.error);
+  assert.deepEqual(Object.keys(dry.changes).sort(), ['humanoids', 'integrators', 'stocks']);
+  assert.equal(dry.changes.integrators.changed, 1);
+  assert.ok(dry.estimated_rows_written > 0 && dry.estimated_rows_written < 200, `estimate ${dry.estimated_rows_written}`);
+  assert.deepEqual({ all: await table(db, 'SELECT dataset, row_id, data, snapshot_id FROM premium_rows ORDER BY dataset, row_id'), docs: await table(db, 'SELECT * FROM search_docs ORDER BY scope, dataset, row_id'), ids: await table(db, 'SELECT * FROM identity_registry ORDER BY namespace, natural_key'), runs: await table(db, 'SELECT id FROM import_runs') }, before);
+  const run = await runScopedImport(db, values, T0 + 60, { datasets: ['stocks', 'humanoids', 'integrators'], relationsConfig: config });
+  assert.equal(run.ok, true, run.error);
+  const full = createTestDb();
+  assert.equal((await runImport(full, values, T0 + 60, { relationsConfig: config })).ok, true);
+  for (const d of ['stocks', 'integrators']) assert.deepEqual(await rowsState(db, d), await rowsState(full, d), d);
+  // Humanoids ids come from each database's identity registry, so compare the rows without them.
+  const noIds = async (x) => (await rowsState(x, 'humanoids')).map(({ row_id, ...r }) => r).sort((a, b) => a.position - b.position);
+  assert.deepEqual(await noIds(db), await noIds(full), 'humanoids');
 });

@@ -1,0 +1,23 @@
+# Describes the PREBUILT single-file bundles (dist/worker.dashboard.js, dist/worker.staging.js) for Wrangler
+# (ops/worker-deploy.md, section 3). Checked with --dry-run only: the file Wrangler would upload is the bundle byte for
+# byte (no_bundle) and the only binding is D1. Not used for a live deployment: the proven path is the dashboard editor
+# with a full read-back. Dashboard vars would be kept with --keep-vars; secrets are not part of a deploy.
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+no_bundle = true
+
+[env.test]
+name = "whyhumanoid-premium-test"
+main = "../dist/worker.staging.js"
+workers_dev = true
+d1_databases = [
+  { binding = "DB", database_name = "whyhumanoid-premium-test", database_id = "4cadeb6e-56ca-48e9-9adf-e666c4d2befd" },
+]
+
+[env.production]
+name = "whyhumanoid-premium"
+main = "../dist/worker.dashboard.js"
+workers_dev = true
+d1_databases = [
+  { binding = "DB", database_name = "whyhumanoid-premium", database_id = "ba8ed181-22c6-40d4-b77d-f4bcbf238274" },
+]
