@@ -1,0 +1,60 @@
+{
+  "id": "WH-20261127-1917-imagenes-robots-lote-11",
+  "tarea": "Imágenes de robots, lote 11 del alcance «todas las imágenes que faltan»: NORI A3, K-Bot (render técnico), NAVIAI WA2 (diagrama del fabricante), aeo, AI Sapiens K0 (configuración con sombrero), QTrobot (render), PUDU D7 (fotograma de vídeo), MATRIX-3 (póster de vídeo), Voxel Series-1 y Astribot S1 (fotograma de vídeo), con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026; alcance confirmado solo para Humanoids), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T19:17:35+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 233 (cabeza revisada 2590573, merge e8e5f40): imagen en las fichas 119 NORI A3, 46 K-Scale K-Bot, 210 NAVIAI WA2, 3 Aeolus aeo, 78 ROBOTIS AI Sapiens K0, 53 LuxAI QTrobot, 68 PUDU D7, 190 MATRIX-3, 131 Tuesday Voxel Series-1 y 10 Astribot S1, solo mediante tools/robot-presentation.json; las 98 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con el tipo de imagen o la variante: «K-Scale Labs, K-Bot technical render», «NAVIAI, WA2 manufacturer diagram», «ROBOTIS, AI Sapiens K0, cowboy-hat configuration», «LuxAI, QTrobot render» (la ficha 53 conserva su nombre), «Pudu Robotics, D7 video still», «Matrix Robotics, MATRIX-3 video poster» y «Astribot, S1 video still». Las especificaciones de las fichas no cambian.",
+    "Fuentes de Codex (codex/image-sources-remaining: candidates-11 en 7496b6e y candidates-12 en 864fcbc), copiadas de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-11/. Todos los recortes, de Claude y solo de alfa: con el alfa propio del original (aeo, K0 y QTrobot) o con máscaras BiRefNet guardadas junto a cada original.",
+    "No integrados, con su motivo: VB1 (188) y TianYi 2.0 (205), por los puntos de anotación pintados sobre el cuerpo; i3 (209), porque los robots del dibujo se solapan; PR-OMNI (194), porque su columna no se distingue de un poste del almacén; Jupiter (208), porque la mano y el paraguas se funden con una persona y los pies tocan el borde. Calvin-40 y Zerith H1 pasaron al lote 10; Vibe 01, Noble y ROBOTO Origin quedan preparados para el lote 12.",
+    "README nuevo del paquete del lote 11 (estado publicado, tabla de los diez con su recorte y su leyenda, no integrados con su motivo); procedencias de los diez actualizadas como publicadas.",
+    "Cobertura: lote 11 publicado con 10 fichas; en todo el catálogo, 108 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 233",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/233"
+    },
+    {
+      "etiqueta": "CI de la cabeza 2590573",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46045148477"
+    },
+    {
+      "etiqueta": "Pages de e8e5f40",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46046491073"
+    },
+    {
+      "etiqueta": "Ficha Astribot S1",
+      "url": "https://whyhumanoid.com/humanoids/astribot-s1-10/"
+    },
+    {
+      "etiqueta": "Ficha NORI A3",
+      "url": "https://whyhumanoid.com/humanoids/nori-nori-a3-119/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main e8e5f40 (run 46046491073, correcto); CI de la cabeza 2590573 (run 46045148477, correcto). Fusión hecha solo en esa cabeza, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 10/10; prueba en navegador local de las diez fichas sin desbordamiento y con su leyenda.",
+    "Codex, cabeza 2590573: revisión independiente aprobada y autorización de fusión solo en esa cabeza.",
+    "Claude, producción: las 20 URL canónicas (10 WebP y 10 PNG) con los mismos bytes que e8e5f40 (20/20); las 10 fichas y la portada idénticas a e8e5f40 salvo las etiquetas meta agent:* que añade Cloudflare (11/11); navegador real a 390 × 844 y 1366 × 900 sin desbordamiento (20/20).",
+    "Codex, verificación pública independiente tras Pages 46046491073: 30/30 URL canónicas con 200 (10 páginas y 20 PNG y WebP con hash y alfa exactos); 20/20 vistas en Chrome real con innerWidth efectivo de 390 × 844 y 1366 × 900, imágenes completas con naturalWidth, contain, sin desbordamiento y leyendas correctas; captura de escritorio de S1 revisada. Cobertura 108/213, 105 pendientes.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (108) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Lote 12 en preparación: Vibe 01, Noble y ROBOTO Origin ya recortados, más los siete originales de candidates-13 (c4c8edb: Kuavo 4Pro, Reachy 2 de un brazo, D9, R-Noid, K2, K1 y GR1), pendientes de revisión de máscaras.",
+    "Quedan 105 fichas de Humanoids sin imagen; Other Robots queda fuera del alcance por decisión de Javier."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Claude sigue con el lote 12 sin fusionar nada antes de la revisión de Codex."
+}

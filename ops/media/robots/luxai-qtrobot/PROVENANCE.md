@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 11, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 11, PR not yet merged)
+## Published files (image batch 11, PR 233, merge e8e5f40, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/luxai-qtrobot/luxai-qtrobot-full-body.png`, 722 × 1586 px, sha256 `5d6687e2d0ee470a08e4f22ee3b163982e866d92d1d2ae8cc107df8c0f050d8c` (= the prepared.png).
 - **WebP:** `assets/robots/luxai-qtrobot/luxai-qtrobot-full-body.webp`, sha256 `1db2cabdd0f309d51c18da0404d82d54b9a98abecfd6f6fd99e535456be0370f`.

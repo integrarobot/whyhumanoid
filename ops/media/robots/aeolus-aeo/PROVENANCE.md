@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 11, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 11, PR not yet merged)
+## Published files (image batch 11, PR 233, merge e8e5f40, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/aeolus-aeo/aeolus-aeo-full-body.png`, 2019 × 2465 px, sha256 `efcb41f53f30c113edbb0a826cb93da56f7a91f8f76eed4e14b1fb1b9af300a3` (= the prepared.png).
 - **WebP:** `assets/robots/aeolus-aeo/aeolus-aeo-full-body.webp`, sha256 `8181595195ad652dc3a78646450b2b116193e7057ce7dd1c15ee685cad2d64d2`.

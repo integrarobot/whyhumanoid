@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 11, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 11, PR not yet merged)
+## Published files (image batch 11, PR 233, merge e8e5f40, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/pudu-d7/pudu-d7-full-body.png`, 705 × 1662 px, sha256 `f1e4b17360772988efc83b1695d66bf3e416a3c31075b505bcf77e6d7299d19c` (= the prepared.png).
 - **WebP:** `assets/robots/pudu-d7/pudu-d7-full-body.webp`, sha256 `3345956d325ec9e8d9d84017c9af3bd7d8bb89f393931a5fcf5be00136174008`.

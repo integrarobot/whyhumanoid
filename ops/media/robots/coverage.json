@@ -285,7 +285,7 @@
     {
       "batch": 11,
       "opened": "2026-11-27",
-      "state": "integrated",
+      "state": "published",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026)",
       "candidates": [
@@ -305,8 +305,10 @@
         "Sources from Codex on codex/image-sources-remaining (candidates-11 at 7496b6e: NORI, K-Bot, WA2; candidates-12 at 864fcbc: aeo, K0, QTrobot, D7, MATRIX-3, Voxel Series-1, S1), copied selectively into ops/media/intake-remaining-2026-11-27/batch-11/. Every cutout prepared by Claude: from the original's own alpha (aeo, K0, QTrobot) or from BiRefNet masks kept beside the originals.",
         "Not usable among candidates-11: VB1 (188) and Tianyi 2.0 (205), annotation dots painted on the body; i3 (209), the robots in its large drawing overlap; PR-OMNI (194), the robot's column cannot be told from a warehouse post; Jupiter (208), the hand and umbrella merge with the person and the feet reach the frame edge. Calvin-40 and Zerith H1 went to batch 10.",
         "Prepared and held for batch 12: Vibe 01 (118), Noble Machines platform (107), ROBOTO Origin (128).",
-        "Captions name the kind of image and the variant: K-Bot technical render, WA2 manufacturer diagram, AI Sapiens K0 cowboy-hat configuration, QTrobot render (record 53 keeps its name), D7 video still, MATRIX-3 video poster, S1 video still. Records' specifications unchanged."
-      ]
+        "Captions name the kind of image and the variant: K-Bot technical render, WA2 manufacturer diagram, AI Sapiens K0 cowboy-hat configuration, QTrobot render (record 53 keeps its name), D7 video still, MATRIX-3 video poster, S1 video still. Records' specifications unchanged.",
+        "Published with PR 233 (reviewed head 2590573, CI 46045148477; merge e8e5f40), 27 Nov 2026; Pages 46046491073 and production verification by Claude and Codex recorded in the batch closeout."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -714,7 +716,7 @@
         "Lab": "Lux",
         "Robot": "Not disclosed"
       },
-      "status": "integrated",
+      "status": "published",
       "previous_reason": "No exact model in the record.",
       "decision": "Codex, 27 Nov 2026: the record (Lux, model not disclosed) is shown with LuxAI's current QTrobot render, named QTrobot in the caption and alt text; the record's name and specifications are unchanged.",
       "sources": [
@@ -1189,7 +1191,7 @@
           "detail": "alpha mask; RGB exact; prepared 482 × 790 with 20 px padding."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://astribot.com/",
       "notes": "Astribot S1, manipulation platform; whole robot as Astribot presents it.",
       "research": [
@@ -1245,7 +1247,7 @@
           "detail": "alpha mask; RGB exact; prepared 2019 × 2465 with 20 px padding."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://aeolusbot.com/",
       "notes": "aeo, wheeled dual-arm service humanoid.",
       "previous_reason": "Candidate photo in the maker's official flyer (Hannover Messe 2026, PDF page 1, xref 80; kept in ops/media/intake-ab-2026-11-27/aeo-candidate/, unapproved): whole robot and its lidar mast visible, but neither Codex's isnet mask nor Claude's BiRefNet pure mask (ROI 530,300,1160,1800) keeps the white mast against the white wall, so the lidar floats detached. Not published; no edge is drawn by hand. The flyer's native cutouts crop at least one hand."
@@ -2555,7 +2557,7 @@
         "Lab": "K-Scale Labs",
         "Robot": "K-bot"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://shop.kscale.dev/",
       "sources": [
         {
@@ -2768,7 +2770,7 @@
         "Lab": "Pudu",
         "Robot": "D7"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.pudurobotics.com/it/news/917",
       "sources": [
         {
@@ -2853,7 +2855,7 @@
         "Lab": "Robotis",
         "Robot": "K0"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.robotis.us/",
       "sources": [
         {
@@ -3138,7 +3140,7 @@
         "Lab": "Nori",
         "Robot": "NORI A3"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.norirobotics.com/",
       "sources": [
         {
@@ -3203,7 +3205,7 @@
         "Lab": "Tuesday Labs",
         "Robot": "Voxel Series-1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://tuesdaylabs.com/",
       "sources": [
         {
@@ -3354,7 +3356,7 @@
         "Lab": "Matrix Robotics",
         "Robot": "MATRIX-3"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://matrixrobotics.ai/matrix-3",
       "sources": [
         {
@@ -3603,7 +3605,7 @@
         "Lab": "ZJ Humanoid",
         "Robot": "NAVIAI WA2"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.zj-humanoid.com/zujian/10",
       "sources": [
         {
