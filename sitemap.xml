@@ -40,7 +40,7 @@
   <url><loc>https://whyhumanoid.com/humanoids/clone-clone-18/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/cobot-proxie-19/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/deep-dr01-20/</loc><lastmod>2026-11-26</lastmod></url>
-  <url><loc>https://whyhumanoid.com/humanoids/devanthro-robody-21/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://whyhumanoid.com/humanoids/plim-robotics-plim-21/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/dexmate-vega-22/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/diligent-moxi-23/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/dobot-atom-24/</loc><lastmod>2026-11-26</lastmod></url>
@@ -110,12 +110,12 @@
   <url><loc>https://whyhumanoid.com/humanoids/ti5robot-t230a-89/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/tokyo-torobo-90/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/ubtech-walker-s1-91/</loc><lastmod>2026-11-26</lastmod></url>
-  <url><loc>https://whyhumanoid.com/humanoids/uma-undisclosed-model-92/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://whyhumanoid.com/humanoids/uma-version-0-92/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/unitree-h1-93/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/unix-wanda-94/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/vanar-generation-1-95/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/vinmotion-motion-96/</loc><lastmod>2026-11-26</lastmod></url>
-  <url><loc>https://whyhumanoid.com/humanoids/wandercraft-calvin-97/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://whyhumanoid.com/humanoids/wandercraft-calvin-40-97/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/weave-isaac-98/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/westwood-themis-99/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/humanoids/wirobotics-allex-100/</loc><lastmod>2026-11-26</lastmod></url>
@@ -363,7 +363,6 @@
   <url><loc>https://whyhumanoid.com/companies/deep/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/deere-and-co/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/delta-electronics/</loc><lastmod>2026-11-26</lastmod></url>
-  <url><loc>https://whyhumanoid.com/companies/devanthro/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/dexmate/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/digit-robotics/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/diligent/</loc><lastmod>2026-11-26</lastmod></url>
@@ -638,6 +637,7 @@
   <url><loc>https://whyhumanoid.com/companies/pink-robotics/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/pl-universe/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/planisware-sa/</loc><lastmod>2026-11-26</lastmod></url>
+  <url><loc>https://whyhumanoid.com/companies/devanthro/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/pndbotics/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/pokebot/</loc><lastmod>2026-11-26</lastmod></url>
   <url><loc>https://whyhumanoid.com/companies/pollen/</loc><lastmod>2026-11-26</lastmod></url>

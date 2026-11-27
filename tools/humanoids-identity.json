@@ -1,6 +1,9 @@
 {
   "note": "Reviewed identity of free Humanoids catalogue records across workbook changes (Javier, 25 Nov 2026: the free catalogue follows the current Humanoids tab). tools/sync-humanoids.mjs matches every current customer row to a catalogue id by Lab and Robot, then Web; a record renamed in place or moved out of the tab needs an entry here, with its evidence, or the sync stops. Moved records keep a labelled historical page at their address, pointing to where the record now lives; they are not counted in the catalogue.",
   "renamed": [
+    { "id": 21, "sheet_row": 22, "from": { "Lab": "Devanthro", "Robot": "Robody" }, "to": { "Lab": "Plim Robotics", "Robot": "Plim" }, "evidence": "Same sheet row and identity URL. Plim Robotics confirms the rebrand of both company and robot at https://www.plim.com/news." },
+    { "id": 92, "sheet_row": 94, "from": { "Lab": "UMA", "Robot": "Not disclosed" }, "to": { "Lab": "UMA", "Robot": "Version 0" }, "evidence": "Same sheet row and Web; UMA identifies Version 0 as its first physical prototype and Northstar as a separate design in its MACHINA Summit announcement." },
+    { "id": 97, "sheet_row": 99, "from": { "Lab": "Wandercraft", "Robot": "Calvin" }, "to": { "Lab": "Wandercraft", "Robot": "Calvin-40" }, "evidence": "Same sheet row and Web; Wandercraft names its industrial model Calvin-40 at https://en.wandercraft.eu/calvin." },
     { "id": 47, "sheet_row": 49, "from": { "Lab": "Kepler", "Robot": "Forerunner" }, "to": { "Lab": "Kepler", "Robot": "Forerunner K1" }, "evidence": "Same sheet row and same Web (gotokepler.com/home); the workbook now names the model K1 and lists Forerunner K2 as a new row (218)." },
     { "id": 104, "sheet_row": 106, "from": { "Lab": "Xpeng", "Robot": "Iron" }, "to": { "Lab": "Xpeng", "Robot": "Next-Gen IRON" }, "evidence": "Same sheet row and same Web (pxing.com/en/index); renamed in place." }
   ],

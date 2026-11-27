@@ -1794,7 +1794,7 @@
    },
    "robot_recorded": "Wandercraft Calvin",
    "robot": 97,
-   "level": "model",
+   "level": "family",
    "sector": "automotive_manufacturing",
    "countries": [
     "France"
@@ -5269,7 +5269,7 @@
   {
    "id": "mfr_devanthro",
    "slug": "devanthro",
-   "name": "Devanthro",
+   "name": "Plim Robotics",
    "identity": "catalogue_lab",
    "roles": {},
    "countries": [],
@@ -8497,7 +8497,7 @@
       "company": "org_renault_group",
       "robot_recorded": "Wandercraft Calvin",
       "robot": 97,
-      "level": "model",
+      "level": "family",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -12588,7 +12588,7 @@
       "company": "mfr_wandercraft",
       "robot_recorded": "Wandercraft Calvin",
       "robot": 97,
-      "level": "model",
+      "level": "family",
       "status": {
        "op": 0,
        "pilot": 1,
@@ -18536,7 +18536,7 @@
      "company": "org_renault_group",
      "robot_recorded": "Wandercraft Calvin",
      "robot": 97,
-     "level": "model",
+     "level": "family",
      "status": {
       "op": 0,
       "pilot": 1,
@@ -18550,7 +18550,7 @@
      "records": 1
     }
    ],
-   "model_line_only": false,
+   "model_line_only": true,
    "evidence": {
     "organization_name": "Renault Group",
     "robot_recorded": "Wandercraft Calvin",
