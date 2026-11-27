@@ -47,10 +47,11 @@
     "Claude, paquete: review-intake 4/4; navegador local de las cuatro fichas a 390 × 844 y 1366 × 900, 8/8 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
     "Codex, cabeza 1850c21: revisión independiente aprobada; 40 archivos solo de imágenes, ops y páginas generadas; las 158 presentaciones anteriores y el catálogo de 213 intactos; SHA, RGB nativo visible, alfa de PNG y WebP y margen de 20 px correctos en las cuatro; recortes vistos uno a uno en claro y oscuro (Beomni con arcos, antenas y LED; Gino 1 con cesta, cable y base; Luna con ambas manos y pies; DEUX con su alfa original).",
     "Claude, producción tras Pages 46066898699: las 8 URL canónicas (4 PNG y 4 WebP) con los mismos bytes que 36ea0eb (8/8); las 4 fichas y la portada idénticas a 36ea0eb salvo las etiquetas meta agent:* que añade Cloudflare (5/5); navegador real a 390 × 844 y 1366 × 900, 8/8 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 162 presentaciones. La espera de Pages se hizo consultando la portada existente con un parámetro de consulta único, nunca URL de activos nuevos.",
+    "Codex, verificación pública independiente tras Pages 46066898699 en merge 36ea0eb: 12/12 URL canónicas con 200 (8 activos con SHA y alfa exactos y 4 fichas con imagen, texto alternativo y leyenda); 8/8 vistas reales en Chrome a 390 × 844 y 1366 × 900, cargadas, contain, sin desbordamiento y con dimensiones y créditos correctos; captura de escritorio de Gino 1 revisada.",
     "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (162) y entregas --check."
   ],
   "pendientes": [
-    "Aviso de Codex para este cierre, con su verificación pública independiente.",
+    "Aviso de Codex para este cierre.",
     "Quedan 51 fichas de Humanoids sin imagen, con su registro individual de límites; Codex revisa las excepciones de modelo sin nombre (la falta de nombre por sí sola no impide una imagen si la plataforma está identificada) y los medios actuales de Walden y Khameleon antes de cerrar la lista pendiente.",
     "Jingchu Elf (183), Qinglong (69), T230A (89), R-Noid (77) e IGRIS (79) siguen fuera con su motivo; Other Robots queda fuera del alcance por decisión de Javier."
   ],
