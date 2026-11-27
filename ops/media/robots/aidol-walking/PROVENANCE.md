@@ -22,7 +22,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 3, scope 
 
 Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 3, PR not yet merged)
+## Published files (image batch 3, PR 206, merge c015cef, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/aidol-walking/aidol-walking-full-body.png`, 287 × 520 px, lossless, sha256 `9d901a47af1fec21fb060d9b4237ec11432d16ddd8188647585059238ae15494`.
 - **WebP:** `assets/robots/aidol-walking/aidol-walking-full-body.webp`, made with `python3 ops/media/robots/to-webp.py`, sha256 `1ea70266bb11132f9f23554a1e2f7de4ea460a7ac6abdbd6a06ef296b3cd48c5`.

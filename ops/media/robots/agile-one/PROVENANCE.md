@@ -22,7 +22,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 3, scope 
 
 Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 3, PR not yet merged)
+## Published files (image batch 3, PR 206, merge c015cef, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/agile-one/agile-one-full-body.png`, 265 × 756 px, lossless, sha256 `695abfbd5567af37952301a2fdb7407149fd26bebc30f3cd75f6f0dc7c31b70d`.
 - **WebP:** `assets/robots/agile-one/agile-one-full-body.webp`, made with `python3 ops/media/robots/to-webp.py`, sha256 `fffc114eb61acc1acfbe6d7e73d51ab4558411a7de82a1aae58c604225ca96d9`.
