@@ -1212,13 +1212,18 @@ export function buildPages(registry = readRegistry()) {
     }
   }
   const otherByKey = new Map(model.otherRobots.map((r) => [r.key, r]));
+  // Entries moved out of Other Robots by a reviewed workbook write (27 Nov 2026) redirect to where the entity now lives.
+  const moves = JSON.parse(readFileSync(new URL('tools/other-robots-moves.json', root), 'utf8')).moves;
   for (const [key, slugs] of Object.entries(next.other_robots)) {
     const r = otherByKey.get(key);
+    const move = r ? null : moves[key];
+    if (move && !files.has(`${move.to.slice(1)}index.html`)) throw new Error(`other-robots move ${key}: destination ${move.to} is not a page of this build`);
     for (const s of slugs) {
       if (r && r.slug === s) continue;
-      add(`other-robots/${s}/index.html`, r ? redirectPage(r.path, r.name) : gonePage(`/other-robots/${s}/`, 'other robot'));
+      add(`other-robots/${s}/index.html`, r ? redirectPage(r.path, r.name) : move ? redirectPage(move.to, move.label) : gonePage(`/other-robots/${s}/`, 'other robot'));
     }
   }
+  for (const key of Object.keys(moves)) if (otherByKey.has(key)) throw new Error(`other-robots move ${key}: the entry is still listed in Other Robots`);
   return { files, registry: next, model };
 }
 

@@ -281,15 +281,15 @@
   },
   {
    "id": "software",
-   "snapshot": "2026-11-26T14:21:54.716Z",
+   "snapshot": "2026-11-27T07:54:17Z",
    "title": "Software and world models",
    "description": "Robot foundation models, VLA models, world models and robotics software.",
-   "entries_total": 146,
-   "canonical_entries": 143,
+   "entries_total": 149,
+   "canonical_entries": 146,
    "memberships": 3,
-   "source_rows_total": 126,
-   "preview_entries": 146,
-   "preview_source_rows": 126,
+   "source_rows_total": 129,
+   "preview_entries": 149,
+   "preview_source_rows": 129,
    "fields": [
     "list",
     "name",
@@ -308,34 +308,34 @@
    "category": "software",
    "public": "all",
    "lists": {
-    "software": 126,
+    "software": 129,
     "world_model": 20
    },
    "reconciliation": {
-    "source_entries": 153,
-    "rows": 146,
-    "entries": 143,
+    "source_entries": 156,
+    "rows": 149,
+    "entries": 146,
     "excluded": [
      {
-      "sheet_row": 82,
+      "sheet_row": 85,
       "list": "software",
       "name": "SOFTWARE FOR UNITREE",
       "reason": "section heading: the rows below it are grouped as \"Software for Unitree\""
      },
      {
-      "sheet_row": 83,
+      "sheet_row": 86,
       "list": "software",
       "name": "SOFTWARE",
       "reason": "repeated header row"
      },
      {
-      "sheet_row": 122,
+      "sheet_row": 125,
       "list": "software",
       "name": "SIMULATORS",
       "reason": "section heading: the rows below it are grouped as \"Simulators\""
      },
      {
-      "sheet_row": 123,
+      "sheet_row": 126,
       "list": "software",
       "name": "SIMULATOR",
       "reason": "repeated header row"
@@ -355,7 +355,7 @@
       "reason": "same address and name as an earlier entry of the same list"
      },
      {
-      "sheet_row": 99,
+      "sheet_row": 102,
       "list": "software",
       "name": "PyRoki",
       "group": "Software for Unitree",
@@ -367,7 +367,7 @@
       "reason": "same address and name as an earlier entry of the same list"
      },
      {
-      "sheet_row": 116,
+      "sheet_row": 119,
       "list": "software",
       "name": "Latent",
       "group": "Software for Unitree",
@@ -419,7 +419,7 @@
         "url": "https://hub.docker.com/r/pollenrobotics/reachy2"
        },
        {
-        "sheet_row": 125,
+        "sheet_row": 128,
         "list": "software",
         "name": "Reachy",
         "url": "https://hub.docker.com/r/pollenrobotics/reachy2"
@@ -431,7 +431,7 @@
       "name": "NVIDIA DreamDojo",
       "entries": [
        {
-        "sheet_row": 86,
+        "sheet_row": 89,
         "list": "software",
         "name": "DreamDojo (NVIDIA)",
         "url": "https://dreamdojo-world.github.io/"
@@ -527,7 +527,7 @@
         "url": "https://arxiv.org/abs/2511.04679"
        },
        {
-        "sheet_row": 104,
+        "sheet_row": 107,
         "list": "software",
         "name": "GentleHumanoid",
         "url": "https://gentle-humanoid.axell.top/"
@@ -696,12 +696,12 @@
   },
   {
    "id": "other-robots",
-   "snapshot": "2026-11-26T06:38:00Z",
+   "snapshot": "2026-11-27T07:54:17Z",
    "title": "Other robots",
    "description": "Non-humanoid and educational robots tracked alongside the humanoid catalogue.",
-   "entries_total": 563,
+   "entries_total": 555,
    "source_rows_total": 488,
-   "preview_entries": 563,
+   "preview_entries": 555,
    "preview_source_rows": 488,
    "fields": [
     "list",
@@ -719,13 +719,13 @@
    "category": "other-robots",
    "public": "all",
    "lists": {
-    "other_robot": 75,
-    "edubot": 488
+    "edubot": 488,
+    "other_robot": 67
    },
    "reconciliation": {
-    "source_entries": 563,
-    "rows": 563,
-    "entries": 563,
+    "source_entries": 555,
+    "rows": 555,
+    "entries": 555,
     "excluded": [],
     "merged": [],
     "memberships": [],
