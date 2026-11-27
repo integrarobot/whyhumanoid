@@ -1,0 +1,40 @@
+{
+  "id": "WH-20261127-1148-automatizacion-radar-viernes",
+  "tarea": "Automatizar la publicación del radar de humanoides de los viernes en News",
+  "origen": "Javier Martín, petición directa",
+  "fecha": "2026-11-27T11:48:53+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "Codex",
+  "cambios": [
+    "Automatización existente ampliada y activa los viernes a las 09:00 de Madrid. Mantiene el informe español por chat y correo.",
+    "Una edición inglesa por fecha, con el orden del radar, revisión de fuentes y comprobación pública. El proceso coteja Deployments antes de escribir y conserva el identificador del caso.",
+    "El comando editorial reconoce reintentos idénticos, rechaza conflictos y prepara el archivo de un nuevo año."
+  ],
+  "urls": [
+    {
+      "etiqueta": "News",
+      "url": "https://whyhumanoid.com/news/"
+    },
+    {
+      "etiqueta": "Edición reproducida",
+      "url": "https://whyhumanoid.com/news/#roundup-2026-11-27-humanoid-robots"
+    },
+    {
+      "etiqueta": "PR de la automatización editorial",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/200"
+    }
+  ],
+  "despliegue": [
+    "Automatización actualizada y releída en el mismo identificador y chat.",
+    "PR 200 fusionado en main en 8eaec93765c244e9576934dcb173d4b83fbb589b tras CI 45984860433. Se mantuvo la edición pública existente."
+  ],
+  "verificaciones": [
+    "Reconstrucción aislada del radar del 27 de noviembre, resultado idéntico al original y cero escrituras al repetir. Las páginas coinciden con sus fuentes.",
+    "27 pruebas correctas, incluidas colisión de edición y rollover de 2027. News y sus seis páginas preexistentes verificadas de nuevo."
+  ],
+  "pendientes": [
+    "Primera ejecución automática prevista para el 4 de diciembre de 2026. Todavía no observada."
+  ],
+  "siguiente_accion": "El radar se ejecutará en su horario habitual cuando Codex esté disponible en el equipo."
+}
