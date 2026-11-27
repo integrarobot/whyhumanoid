@@ -19,6 +19,10 @@
     {
       "etiqueta": "PR 190",
       "url": "https://github.com/integrarobot/whyhumanoid/pull/190"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
     }
   ],
   "despliegue": [
@@ -28,8 +32,8 @@
     "Codex, portal de Muse: verificación de empresa Approved, reto Verified, prueba Passed con 6 herramientas, credenciales Submitted, revisión técnica In review."
   ],
   "pendientes": [
-    "Revisión técnica de Muse en curso (In review); las credenciales ya están enviadas.",
-    "Cuestionario 7/7 guardado sin enviar: la respuesta de seguridad Q11 depende de controles que Javier pidió añadir como trabajo futuro y que no están implantados."
+    "Revisión técnica de Muse en curso (In review); las credenciales ya están enviadas (Submitted).",
+    "Cuestionario 7/7 guardado sin enviar: la respuesta Q11 depende de cuatro programas que Javier pidió implantar y acreditar como trabajo futuro, y que hoy no existen como tales: un programa de privacidad, salvaguardas organizativas, seguridad de red y una evaluación externa periódica de proveedores."
   ],
-  "siguiente_accion": "Javier decide cuándo enviar el cuestionario con hechos confirmados; Muse resuelve la revisión técnica."
+  "siguiente_accion": "Implantar y acreditar los cuatro programas antes de responder la Q11; después Javier decide el envío del cuestionario. Codex registra su aviso; Javier confirma la recepción."
 }

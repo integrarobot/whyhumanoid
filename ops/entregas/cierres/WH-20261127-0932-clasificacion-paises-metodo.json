@@ -20,6 +20,10 @@
     {
       "etiqueta": "PR 191",
       "url": "https://github.com/integrarobot/whyhumanoid/pull/191"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
     }
   ],
   "despliegue": [
@@ -34,5 +38,5 @@
     "Alias de Genie G2 con el AgiBot G2 del catálogo: pendiente de una fuente revisada.",
     "Sectores semiconductors y automotive de Deployments sin etiqueta: necesitan un cambio de vocabulario en el Worker."
   ],
-  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción."
+  "siguiente_accion": "Claude y Codex investigan con fuentes los casos pendientes (Ailos, Seeed Studio, Proception, Linkerbot, coprod, el alias Genie G2 y el vocabulario de sectores) y los proponen por plan o PR; Codex registra su aviso; Javier confirma la recepción."
 }

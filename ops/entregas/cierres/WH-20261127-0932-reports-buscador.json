@@ -14,6 +14,10 @@
     {
       "etiqueta": "PR 187",
       "url": "https://github.com/integrarobot/whyhumanoid/pull/187"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
     }
   ],
   "despliegue": [

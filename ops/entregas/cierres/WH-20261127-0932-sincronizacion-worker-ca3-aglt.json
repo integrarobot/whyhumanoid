@@ -30,10 +30,14 @@
     {
       "etiqueta": "PR 193",
       "url": "https://github.com/integrarobot/whyhumanoid/pull/193"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
     }
   ],
   "despliegue": [
-    "Bundles de main 64ccd65: PROD 1.150.891 B 047622e3…; TEST 1.036.845 B af83093b…, reproducidos por Claude y por Codex.",
+    "Bundles de main 64ccd65: PROD 1.150.891 B 047622e3…; TEST 1.036.845 B af83093b…, reproducidos por Claude y por Codex; Codex comparó byte a byte el archivo del ensayo de Wrangler con el bundle revisado antes de subirlo.",
     "Activaciones de Codex por CLI: TEST despliegue 14e71f5d (08:16:41 UTC) y PROD despliegue 3e75ccf0 (08:19:43 UTC).",
     "Cuota D1 tras la importación (lectura de Codex en el panel): unas 21,5k filas escritas de 100k; TEST sin escrituras."
   ],

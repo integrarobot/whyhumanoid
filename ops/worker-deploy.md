@@ -31,10 +31,11 @@ Toolchain:
 
 The hashes must equal the row for that commit in the table at the end. If they differ, stop.
 
-## 2. Proven path for bundles over 1 MB: Wrangler versions (Codex, 27 Nov 2026)
+## 2. Proven path: Wrangler versions (Codex, 27 Nov 2026)
 
-The dashboard editor no longer accepts the bundles once they pass about 1 MB (since PR 187 embedded the Reports
-atlas). On 27 Nov 2026, with Javier's authorization, Codex deployed main 64ccd65 this way:
+On 27 Nov 2026 the dashboard editor failed repeatedly to take the bundles of about 1.1 MB built after PR 187 embedded
+the Reports atlas. That is what was observed on this upload; no general Cloudflare size limit has been established.
+With Javier's authorization, Codex deployed main 64ccd65 this way:
 - TEST version 9e507e1b, deployment 14e71f5d at 08:16:41 UTC;
 - PROD version ff0eb084, deployment 3e75ccf0 at 08:19:43 UTC.
 
@@ -47,22 +48,33 @@ Billing and D1 write were not granted.
 1. **Read the active version.** Use the CLI to read its runtime (compatibility date, flags, usage model) and its
    bindings. Make `server/deploy/prebuilt.toml` match it. On 27 Nov 2026 both Workers ran with
    `compatibility_date` 2026-11-13, no flags and usage model standard.
-2. **Upload a version without traffic.**
+2. **Check the bytes, then upload a version without traffic.** The dry run writes the exact file Wrangler would
+   send:
+
+   ```bash
+   npx -y wrangler@4.168.0 deploy --config deploy/prebuilt.toml --env test --keep-vars --dry-run --outdir /tmp/wr-test
+   ```
+
+   Compare that file byte for byte with the reviewed local bundle from section 1: same length and same SHA-256. Then
+   upload the same file; `no_bundle` sends it as built:
 
    ```bash
    npx -y wrangler@4.168.0 versions upload --config deploy/prebuilt.toml --env test --keep-vars --strict
    ```
 
    Wrangler 4.168.0 keeps secrets and sends no observability change on a version upload. It does not touch triggers.
-3. **Compare before activating.** Check that the new version's code hash matches the bundle (step 1 of this guide).
-   Check that its bindings, vars and runtime are identical to the active version. Wrangler should report "No
-   non-versioned settings to sync".
+3. **Compare before activating.** Check that the new version's bindings, vars and runtime are identical to the
+   active version. Wrangler should report "No non-versioned settings to sync".
+
+   The script tag or etag that `versions view` shows is Cloudflare's own identifier, not the SHA-256 of the file. This
+   path does not download or hash the remote code: the byte check is the dry-run file against the local bundle, before
+   the upload.
 4. **Activate.** `npx -y wrangler@4.168.0 versions deploy <version-id>@100% --config deploy/prebuilt.toml --env test`
 5. **Check.** Use the same checks as for the editor path, listed below.
 
 **Rollback.** `npx -y wrangler@4.168.0 rollback --config deploy/prebuilt.toml --env <env>`.
 
-## 3. Earlier path: dashboard editor, with a full read-back (bundles under about 1 MB)
+## 3. Earlier path: dashboard editor, with a full read-back
 
 Codex deployed TEST 1ac00a70 and PROD 8171c73c this way on 27 Nov 2026.
 
@@ -79,7 +91,8 @@ Checks after either path:
 - Reports search;
 - the Muse challenge (section 4).
 
-`/app/` on the Worker answers 404 by design: the app is served from whyhumanoid.com/app/.
+`/app/` on the PROD Worker answers 404 by design: the production app is served from whyhumanoid.com/app/. The TEST Worker
+serves its app on purpose.
 
 ## 4. Muse challenge
 
