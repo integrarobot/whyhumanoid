@@ -40,11 +40,12 @@
   "verificaciones": [
     "Relecturas independientes de los dos planes antes de publicar: 32 y 5 celdas, 0 diferencias y 0 cambios fuera del plan.",
     "Antes de fusionar: audit-deployments (207 filas, 0 diferencias), check-reserved, check-public, todos los --check y pruebas del CI, pruebas del servidor (230/230) y verify-site, verify-premium-app, verify-pages, verify-components, verify-comparator, verify-editorial y test-reports.",
-    "Producción, con el catálogo MCP: el iX con los 32 valores escritos, incluida la financiación corregida; la búsqueda lo encuentra (robot 216, China, Wheeled); Walker S1 con 23,815,219,952.60; Deployments 207 y Components 51 sin cambios."
+    "Producción, con el catálogo MCP: el iX con los 32 valores escritos, incluida la financiación corregida; la búsqueda lo encuentra (robot 216, China, Wheeled); Walker S1 con 23,815,219,952.60; Deployments 207 y Components 51 sin cambios.",
+    "Verificación independiente de Codex en producción: los JSON, CSV, manifiesto y proyección públicos, descargados en vivo, son idénticos byte a byte al head revisado; las páginas del robot, de la empresa y de inversión responden 200 con la atribución a Bloomberg y Wang Kai y su salvedad; el registro 216 tiene en el MCP los 32 valores finales y la búsqueda lo encuentra. De los 6.816 valores de las 213 filas de Humanoids, 6.815 coinciden con el JSON estático; la única diferencia es un valor de mercado en vivo permitido (la valoración de Tesla Optimus Gen 2, fórmula GOOGLEFINANCE), sin diferencias inesperadas. Deployments 207 y Components 51 sin cambios."
   ],
   "pendientes": [
     "Verificación de la operación de financiación de Simplexity con un anuncio oficial o un registro, si llega a publicarse.",
-    "Codex: su verificación independiente de los JSON publicados, las páginas y el MCP, y el aviso de este cierre y de los cierres WH-20261127-1512, WH-20261127-1516 y WH-20261127-1532."
+    "Codex: registrar el aviso de este cierre y de los cierres WH-20261127-1512, WH-20261127-1516 y WH-20261127-1532."
   ],
-  "siguiente_accion": "Codex verifica la publicación de forma independiente y registra los avisos. La próxima tarea semanal revisa si aparece un anuncio oficial de la ronda de Simplexity."
+  "siguiente_accion": "Codex añade sus avisos de los cuatro cierres. La próxima tarea semanal revisa si aparece un anuncio oficial de la ronda de Simplexity."
 }

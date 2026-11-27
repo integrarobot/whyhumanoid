@@ -435,7 +435,8 @@
         "site_snapshot": "2026-11-27T14:35:03.875Z",
         "production_snapshot": "2026-11-27T14:45:56.000Z",
         "d1_margin_before_import": "Codex at 14:43 UTC: 22.55k of 100k written today after one full import, two scoped writes and three dry runs; no import running or queued at dispatch",
-        "verified": "MCP catalogue: Humanoids iX (Simplexity Robotics) with the 32 written values including the corrected funding, search finds it (robot 216, tags China, Wheeled); Walker S1 Valuation 23,815,219,952.60; Deployments 207 and Components 51 unchanged"
+        "verified": "MCP catalogue: Humanoids iX (Simplexity Robotics) with the 32 written values including the corrected funding, search finds it (robot 216, tags China, Wheeled); Walker S1 Valuation 23,815,219,952.60; Deployments 207 and Components 51 unchanged",
+        "codex_verification": "Codex, 2026-11-27: live public JSON, CSV, manifest and projection byte-identical to the reviewed head; robot, company and investment pages 200 with the Bloomberg and Wang Kai attribution; MCP record 216 exact; 6,815 of 6,816 Humanoids values equal the static JSON, the one difference an allowed live market value (Tesla Optimus Gen 2 Valuation, GOOGLEFINANCE)"
       }
     },
     {
@@ -497,7 +498,8 @@
         "site_snapshot": "2026-11-27T14:35:03.875Z",
         "production_snapshot": "2026-11-27T14:45:56.000Z",
         "d1_margin_before_import": "Codex at 14:43 UTC: 22.55k of 100k written today after one full import, two scoped writes and three dry runs; no import running or queued at dispatch",
-        "verified": "MCP catalogue: Humanoids iX (Simplexity Robotics) with the 32 written values including the corrected funding, search finds it (robot 216, tags China, Wheeled); Walker S1 Valuation 23,815,219,952.60; Deployments 207 and Components 51 unchanged"
+        "verified": "MCP catalogue: Humanoids iX (Simplexity Robotics) with the 32 written values including the corrected funding, search finds it (robot 216, tags China, Wheeled); Walker S1 Valuation 23,815,219,952.60; Deployments 207 and Components 51 unchanged",
+        "codex_verification": "Codex, 2026-11-27: live public JSON, CSV, manifest and projection byte-identical to the reviewed head; robot, company and investment pages 200 with the Bloomberg and Wang Kai attribution; MCP record 216 exact; 6,815 of 6,816 Humanoids values equal the static JSON, the one difference an allowed live market value (Tesla Optimus Gen 2 Valuation, GOOGLEFINANCE)"
       }
     }
   ]
