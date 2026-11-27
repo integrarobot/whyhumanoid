@@ -39,6 +39,9 @@ El sistema guarda el pedido, verifica el pago, conserva las respuestas, fija el 
 
 1. Abre el pedido en la cola. Lee el brief enviado; la versión del formulario va con las respuestas.
 2. Prepara el informe en PDF, en el idioma elegido (`report_language`).
+   - Aplica la plantilla visual de Why Humanoid? al diagnóstico de integración, al informe de diversificación industrial y a la tesis de inversión. Referencia aprobada por Javier el 27/11/2026 en el [PDF de Agility Robotics](../assets/investment/agility-robotics-investment-thesis-why-humanoid.pdf).
+   - Conserva el fondo negro, el logotipo oficial, los acentos ámbar, el texto blanco cálido, Instrument Serif para títulos y JetBrains Mono para etiquetas y datos. Adapta la portada, las secciones y las visualizaciones a la pregunta del cliente.
+   - Revisa todas las páginas del PDF antes de enviar. Comprueba legibilidad, cifras, orden, paginación y enlaces.
    - Usa la investigación de Why Humanoid? y lo que el cliente ha contado.
    - Sin promesas de retorno ni de contratos.
    - Sin certificación de seguridad in situ.
