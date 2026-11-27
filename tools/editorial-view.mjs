@@ -6,7 +6,7 @@
 // Markdown is rendered by a small safe renderer: every character of the source is escaped, and only a fixed set of
 // constructs becomes markup (paragraphs, ## and ### headings, lists, quotes, bold, italic, code, http(s) links).
 // Raw HTML is refused by validation before it gets here; anything else that slips through is shown as text.
-import { BARE_URL, findLinks, isLive, madridToday, readyEditions, trimUrl, yearsOf } from './editorial-model.mjs';
+import { BARE_URL, findLinks, isLive, linkTarget, madridToday, readyEditions, trimUrl, yearsOf } from './editorial-model.mjs';
 
 export const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -42,7 +42,7 @@ export function inline(text) {
   let last = 0;
   for (const { start, end, image, label, url } of findLinks(s)) {
     out.push(bare(s.slice(last, start)));
-    if (!webUrl(url)) out.push(esc(s.slice(start, end)));
+    if (!linkTarget(url)) out.push(esc(s.slice(start, end)));
     else out.push(anchor(url, image ? `Image: ${esc(label || url)}` : emphasis(esc(label || url))));
     last = end;
   }

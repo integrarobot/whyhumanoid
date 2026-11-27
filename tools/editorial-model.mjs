@@ -13,6 +13,7 @@
 // Contract and procedure: ops/editorial/README.md.
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { SUPPORT_EMAIL } from '../server/src/support.js';
 
 export const EDITORIAL_DIR = 'editorial';
 // Historical scope: the editions of 2025 and 2026. A later year is added to editorial/config.json scope.years in a
@@ -82,6 +83,15 @@ export const SPANISH_RATIO_LIMIT = 0.04;
 export function isDate(s) { return typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s) && !Number.isNaN(Date.parse(`${s}T00:00:00Z`)) && new Date(`${s}T00:00:00Z`).toISOString().slice(0, 10) === s; }
 const nonEmpty = (s) => typeof s === 'string' && s.trim().length > 0;
 const webUrl = (u) => { try { const x = new URL(u); return x.protocol === 'https:' || x.protocol === 'http:'; } catch { return false; } };
+// Link targets an article may carry: http(s) URLs, and one mailto: the author's published business address, the
+// project's only public address (server/src/support.js), as in the 2026-09-23 sponsorship article. Any other mailto,
+// and every other scheme, is refused. Source URLs of editions stay https only.
+export const AUTHOR_MAILTO = `mailto:${SUPPORT_EMAIL}`;
+export const linkTarget = (u) => webUrl(u) || u === AUTHOR_MAILTO;
+// Google documents (Docs, Sheets, Drive, Forms) are never linked from the site: the project's rule forbids publishing
+// links or identifiers of the master workbook or of Drive (AGENTS.md), and verify-pages refuses them on every page.
+// An article that linked one needs a reviewed substitution before it is ingested.
+export const GOOGLE_FILE = /\b(?:docs|drive|sheets)\.google\.com\b|\/spreadsheets\/d\//i;
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 // Canonical JSON (keys sorted at every level) and its SHA-256: the identity of an original or an edition.
@@ -109,7 +119,8 @@ export function markdownProblems(markdown, where) {
   const p = [];
   const text = String(markdown ?? '');
   if (RAW_HTML.test(text)) p.push(`${where}: raw HTML is not accepted (write Markdown)`);
-  for (const l of findLinks(text)) if (!webUrl(l.url)) p.push(`${where}: link target is not an http(s) URL: ${l.url.slice(0, 60)}`);
+  for (const l of findLinks(text)) if (!linkTarget(l.url)) p.push(`${where}: link target is not an http(s) URL or the author's address: ${l.url.slice(0, 60)}`);
+  if (GOOGLE_FILE.test(text)) p.push(`${where}: links a Google document (Docs, Sheets, Drive or Forms), which the site never publishes; substitute it in a reviewed change first`);
   return p;
 }
 

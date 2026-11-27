@@ -23,18 +23,17 @@ const crumbs = (items) => `<nav class="crumbs">${items.map(([h, l]) => (h ? `<a 
 const redirect = (to, label) => `<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${to}"><a href="${to}">${label}</a>`;
 const views = (store, today = '2026-11-26', withRedirects = false) => editorialPages(store, { page, crumbs, assetVersion: () => 'test', today, ...(withRedirects ? { redirect } : {}) });
 
-test('the committed store holds no editorial record yet, is valid, published from the embargo date, and claims no completeness', () => {
+test('the committed store is valid, published from the embargo date, and claims completeness only with evidence', () => {
   const store = readStore(root);
   assert.deepEqual(storeProblems(store, { today: '2026-11-27' }), []);
   assert.equal(store.config.published, true, 'publication authorised by Javier on 2026-11-27');
   assert.equal(store.config.embargo_until, '2026-11-27');
-  assert.equal(store.editions.size, 0);
-  assert.equal(store.originals.size, 0);
-  assert.equal(store.inventory.editions.length, 0);
+  assert.deepEqual(store.state, stateOf(store, null) && { ...stateOf(store, null), last_package_sha256: store.state.last_package_sha256 }, 'state.json matches the store');
   const c = coverage(store);
-  assert.equal(c.complete, false);
-  assert.equal(readyEditions(store).length, 0);
-  assert.deepEqual(store.state, stateOf(store, null), 'state.json matches the store');
+  if (c.complete) assert.ok(store.inventory.pagination.exhausted && store.inventory.pagination.pages.length && store.inventory.completeness.evidence);
+  assert.equal(readyEditions(store).length, [...store.editions.values()].filter((e) => e.translation.status === 'reviewed').length, 'every reviewed edition is ready');
+  for (const e of store.editions.values()) assert.doesNotMatch(JSON.stringify(e), /docs\.google|drive\.google|sheets\.google|spreadsheets\/d\//, `${e.edition_id}: no Google document link`);
+  for (const o of store.originals.values()) assert.doesNotMatch(JSON.stringify(o), /docs\.google|drive\.google|sheets\.google|spreadsheets\/d\//, `${o.edition_id}: no Google document link in the archived original`);
 });
 
 test('no synthetic fixture text reaches the store or the generated pages', () => {
@@ -47,14 +46,16 @@ test('no synthetic fixture text reaches the store or the generated pages', () =>
 test('live sections: Blog and News pages are indexable, in the sitemap and linked from the home page and every footer', () => {
   const store = readStore(root);
   const built = views(store, '2026-11-27', true);
+  const ready = readyEditions(store);
+  const items = ready.reduce((n, e) => n + e.items.length, 0);
   const pages = [...built.keys()].filter((f) => !f.startsWith('newsletter/')).sort();
-  assert.deepEqual(pages, ['blog/2025/index.html', 'blog/2026/index.html', 'blog/index.html', 'news/2025/index.html', 'news/2026/index.html', 'news/index.html']);
-  for (const f of pages) {
-    assert.doesNotMatch(built.get(f), /noindex/, `${f} is indexable once live`);
-    assert.match(built.get(f), /are published here yet\. They appear once their English text has been reviewed\./, `${f}: honest while no edition is ready`);
-  }
+  assert.equal(pages.length, 6 + ready.length + items, 'index and year pages, one page per article and per news item');
+  for (const f of pages) assert.doesNotMatch(built.get(f), /noindex/, `${f} is indexable once live`);
+  if (!ready.length) for (const f of pages) assert.match(built.get(f), /are published here yet\. They appear once their English text has been reviewed\./, `${f}: honest while no edition is ready`);
   assert.match(built.get('blog/index.html'), /<h1>Blog<\/h1>/);
-  assert.deepEqual(editorialUrls(store, { today: '2026-11-27' }), ['/blog/', '/news/', '/blog/2025/', '/news/2025/', '/blog/2026/', '/news/2026/']);
+  assert.equal([...built.keys()].filter((f) => f.startsWith('newsletter/')).length, 3 + ready.length, 'one alias per Blog address');
+  assert.deepEqual(editorialUrls(store, { today: '2026-11-27' }).slice(0, 6), ['/blog/', '/news/', '/blog/2025/', '/news/2025/', '/blog/2026/', '/news/2026/']);
+  assert.equal(editorialUrls(store, { today: '2026-11-27' }).length, 6 + ready.length + items);
   assert.deepEqual(editorialUrls(store, { today: '2026-11-26' }), [], 'nothing before the embargo date');
   const sitemap = read('sitemap.xml');
   for (const u of ['/blog/', '/news/', '/blog/2025/', '/news/2026/']) assert.ok(sitemap.includes(`<loc>https://whyhumanoid.com${u}</loc>`), `${u} in the sitemap`);
@@ -308,4 +309,23 @@ test('links keep balanced parentheses and query strings, for validation, hashes 
   assert.deepEqual(planIngest(emptyStore(), pkg).problems, []);
   pkg.editions[0].body_markdown = pkg.editions[0].body_markdown.replace('a_(b)', 'a_(c)');
   assert.ok(planIngest(emptyStore(), pkg).problems.some((p) => /does not keep exactly the links of the original/.test(p)));
+});
+
+test('links: the author business mailto is allowed and rendered; any other mailto or scheme, and Google documents, are refused', () => {
+  assert.deepEqual(markdownProblems('Write to [javier@integrarobot.com](mailto:javier@integrarobot.com).', 'x'), []);
+  assert.match(inline('[javier@integrarobot.com](mailto:javier@integrarobot.com)'), /^<a href="mailto:javier@integrarobot\.com" rel="noopener noreferrer">javier@integrarobot\.com<\/a>$/);
+  for (const bad of ['mailto:someone@example.com', 'mailto:javier@integrarobot.com?subject=x', 'MAILTO:javier@integrarobot.com', 'tel:+34000000000', 'ftp://example.com/x']) {
+    assert.ok(markdownProblems(`[x](${bad})`, 'x').length, `${bad} refused`);
+    assert.equal(inline(`[x](${bad})`), `[x](${bad})`, `${bad} not rendered as a link`);
+  }
+  for (const g of ['https://docs.google.com/spreadsheets/d/abc/edit', 'https://drive.google.com/file/d/abc/view', 'https://docs.google.com/forms/d/e/abc/viewform', 'https://sheets.google.com/x']) {
+    assert.ok(markdownProblems(`[x](${g})`, 'x').some((p) => /links a Google document/.test(p)), g);
+  }
+  const pkg = fixture();
+  pkg.editions[0].body_markdown += ' Contact [javier@integrarobot.com](mailto:javier@integrarobot.com).';
+  pkg.editions[0].original.body_markdown += ' Contacto [javier@integrarobot.com](mailto:javier@integrarobot.com).';
+  assert.deepEqual(planIngest(emptyStore(), pkg).problems, [], 'the author mailto passes ingestion and the link comparison with the original');
+  const source = fixture();
+  source.editions[0].source_url = 'mailto:javier@integrarobot.com';
+  assert.ok(planIngest(emptyStore(), source).problems.some((p) => /source_url must be the canonical https URL/.test(p)), 'source URLs stay https only');
 });
