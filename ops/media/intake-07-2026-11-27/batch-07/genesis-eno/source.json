@@ -1,0 +1,34 @@
+{
+  "id": 117,
+  "slug": "genesis-eno",
+  "original": "eno-fullbody.jpg",
+  "roi": [
+    0,
+    0,
+    1920,
+    1080
+  ],
+  "bbox": [
+    735,
+    103,
+    1141,
+    991
+  ],
+  "border": 20,
+  "size": [
+    446,
+    928
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+  "source_page": "https://www.genesis.ai/press/meet-eno",
+  "source_url": "https://www.datocms-assets.com/199265/1781540929-genesis_fullbody_b_fhd_16x9.jpg",
+  "source_alt": "",
+  "credit": "Genesis AI",
+  "source_context": "Eno complete headless wheeled platform as shown in manufacturer Meet Eno announcement (June16,2026), three-quarter view. No head or legs added.",
+  "original_sha256": "2a99ac6a08f16880f6319ca1373ccfac0800642c9cf8a37b4ff74f943c7d916d",
+  "prepared_sha256": "685a2974db4d0cb7e55fd7de50875cffa405dc0c6413bdefa33c6d614520296c",
+  "mask_sha256": "782f27aa2454a55e8a13bf6d6abb5067318b027c536eb5ec9b13eceb69a8f7f6",
+  "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+  "checked_at": "2026-11-27"
+}

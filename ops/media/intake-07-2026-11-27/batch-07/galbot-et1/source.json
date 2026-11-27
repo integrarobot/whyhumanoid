@@ -1,0 +1,34 @@
+{
+  "id": 158,
+  "slug": "galbot-et1",
+  "original": "158-3.webp",
+  "roi": [
+    0,
+    0,
+    900,
+    1500
+  ],
+  "bbox": [
+    200,
+    175,
+    701,
+    1358
+  ],
+  "border": 20,
+  "size": [
+    541,
+    1223
+  ],
+  "native_alpha": true,
+  "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+  "source_page": "http://www.galbot.com/et1/",
+  "source_url": "https://oss-cn-beijing.galbot.com/online/portal/website/posters/et1-spec-robot-v3.webp",
+  "source_alt": "Galbot ET1 整机渲染图",
+  "credit": "Galbot",
+  "source_context": "ET1 entertainment humanoid complete product render from official ET1 page. No Standard/Pro/Flagship edition asserted.",
+  "original_sha256": "b3fb106a6aefd6d47f1284c838720fae3506418786f2fe47a7ee18b66ea97365",
+  "prepared_sha256": "25a714b8fcef3651086f8802f19468b2494f68dc190215b9a4f5f783b7e936c4",
+  "mask_sha256": "470d7b9890dad790373232e03eb8575f4a6ce495bcab731ce0aa951ce908a0a1",
+  "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+  "checked_at": "2026-11-27"
+}

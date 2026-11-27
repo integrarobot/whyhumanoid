@@ -1,0 +1,34 @@
+{
+  "id": 34,
+  "slug": "galaxea-r1",
+  "original": "r1-guide.png",
+  "roi": [
+    2500,
+    0,
+    4100,
+    2425
+  ],
+  "bbox": [
+    122,
+    38,
+    1507,
+    2398
+  ],
+  "border": 20,
+  "size": [
+    1425,
+    2400
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha levels85..230; small background components excluded; original RGB unchanged.",
+  "source_page": "https://github.com/userguide-galaxea/Product_User_Guide/blob/galaxea/main/docs/en/Guide/R1/R1_Overview.md",
+  "source_url": "https://raw.githubusercontent.com/userguide-galaxea/Product_User_Guide/galaxea/main/docs/en/Guide/R1/assets/R1_R1T.png",
+  "source_alt": "R1 with R1-Teleop, official R1 overview",
+  "credit": "Galaxea Dynamics",
+  "source_context": "Standard R1, full wheeled robot holding its box, isolated from separate R1-Teleop apparatus on left. Official user-guide R1 section separate from R1 Lite and R1 Pro. Preserve box; no hardware configuration inferred from appearance.",
+  "original_sha256": "6aa086ea8a85d7543e14dbef2bca90b3ac4681f2876dfaec77859f6a23cde65b",
+  "prepared_sha256": "1fdf1dda4a192b116444cfa50826f5a695a67d86c6565d97e9260d20096f2c95",
+  "mask_sha256": "3dd10156d49df42ae310db8c4d7189977a9f316cab0a377893423ae2d6fbff59",
+  "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+  "checked_at": "2026-11-27"
+}
