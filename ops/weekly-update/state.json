@@ -7,7 +7,7 @@
     "marked_processed": "2026-11-26",
     "status": "published and verified; unresolved items remain in known_pending",
     "unresolved": [
-      "Simplexity Robotics (pending_verification)"
+      "Simplexity Robotics: transaction verification not performed (no official funding announcement or filing reviewed)"
     ],
     "evidence": "Plan WP-20261125-integrarobot-why-humanoid written by Codex (receipt 2026-11-26) and read back independently; PR #130 merged as 77c6759 (import run 45771073245); Software groups corrected in the workbook by Codex and published in PR #132, merged as e58ede8 (import run 45772916684); production snapshot 2026-11-26T07:07:13.000Z with the ten planned records and the corrected groups.",
     "previous": {
@@ -17,7 +17,8 @@
     },
     "resolved_later": [
       "Playground report: Reports RPT-013 with 8 checked findings, published 2026-11-26 (PR #163, Pages only)",
-      "Boston Dynamics Orbit software: Software row in the general block, published and imported 2026-11-26 (PR #163, import run 45842226852)"
+      "Boston Dynamics Orbit software: Software row in the general block, published and imported 2026-11-26 (PR #163, import run 45842226852)",
+      "Simplexity Robotics: iX in Humanoids (public id 216) with manufacturer specifications and the funding as Bloomberg reporting attributed to chairman and co-founder Wang Kai, published 2026-11-27 (PR 222, import run 46018804182)"
     ]
   },
   "known_pending": [
@@ -27,9 +28,9 @@
       "source": "https://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/",
       "source_date": "2026-11-23",
       "found": "2026-11-25",
-      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity.json",
-      "outcome": "written in Humanoids row 219 (iX) with the funding as company-attributed original reporting (Bloomberg citing chairman and co-founder Wang Kai); publication in PR 222",
-      "needs": "after publication: incorporation complete; transaction verification not performed (no official funding announcement or filing reviewed). That is a limitation of the evidence, not a sign that no company source exists",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity-funding.json",
+      "outcome": "incorporated: Humanoids iX (public id 216), published and imported 2026-11-27 (PR 222, import run 46018804182)",
+      "needs": "transaction verification not performed: no official funding announcement or filing reviewed. A limitation of the evidence, not a sign that no company source exists (Bloomberg quotes chairman and co-founder Wang Kai)",
       "rechecked": "2026-11-27: official product page names iX (Codex, rendered); official news page has no funding announcement"
     }
   ],
@@ -125,7 +126,7 @@
       "editions": [
         "https://www.integrarobot.com/p/why-humanoid"
       ],
-      "result": "written",
+      "result": "published",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity.json",
       "file": "ops/weekly-update/runs/2026-11-27-simplexity.json"
     },
@@ -136,7 +137,18 @@
       "editions": [
         "https://www.integrarobot.com/p/why-humanoid"
       ],
-      "result": "written",
+      "result": "published",
+      "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity-funding.json",
+      "file": "ops/weekly-update/runs/2026-11-27-simplexity.json"
+    },
+    {
+      "date": "2026-11-27",
+      "kind": "publication (known_pending)",
+      "subject": "Simplexity iX: both plans published in PR 222 with one scoped production import (stocks-humanoids)",
+      "editions": [
+        "https://www.integrarobot.com/p/why-humanoid"
+      ],
+      "result": "published",
       "plan": "ops/weekly-update/plans/WP-20261125-integrarobot-simplexity-funding.json",
       "file": "ops/weekly-update/runs/2026-11-27-simplexity.json"
     }
@@ -372,14 +384,14 @@
       "editions": [
         "integrarobot:2026-11-25:why-humanoid"
       ],
-      "status": "written",
+      "status": "published",
       "operations": 1,
       "cells": 32,
       "private_cells": 0,
       "public_plan_sha256": "6a939e33e00427721c76cc255b6aade9e27c9e626b9fb0b893b903e476c225fd",
       "private_payload": null,
       "note": "Humanoids is a free tab: every value is in the public plan and there is no private payload or Drive file. Amended in place before any write after the Codex review of PR 217. The native Humanoids grid and table fill A1:AF218: Codex appends one native row and extends the table to row 219.",
-      "next": "Published together with WP-20261125-integrarobot-simplexity-funding in PR 222 (its five funding cells superseded by that plan); one production import with scope stocks-humanoids after Codex review and a fresh quota and queue check",
+      "next": "none",
       "amended_from": "7b2a70bb67768e220cbed45976fd5b6913e7baa9d5b2e1e51be5a5e6fb14910a",
       "write_receipt": {
         "by": "codex",
@@ -409,7 +421,23 @@
         "preflight_after_write": "32 already written, 0 pending",
         "other_tabs": "identical to the simulated write outside the live Investment values"
       },
-      "d1": "2026-11-27 UTC before this batch: one full import (45964988399, 08:21), two scoped writes (45993946460 stocks-humanoids, estimated 739 rows; 45994099480 deployments, estimated 274) and three scoped dry runs that write nothing (45993418326, 45993846011, 45994025716); Codex read 22.55k of 100k written at about 14:17 UTC. This batch changes only Humanoids (one new row) plus live Investment values: the scoped stocks-humanoids import fits it (estimate of the same order as the 11:52 run), after a fresh Codex quota and queue check"
+      "d1": "2026-11-27 UTC before this batch: one full import (45964988399, 08:21), two scoped writes (45993946460 stocks-humanoids, estimated 739 rows; 45994099480 deployments, estimated 274) and three scoped dry runs that write nothing (45993418326, 45993846011, 45994025716); Codex read 22.55k of 100k written at about 14:17 UTC. This batch changes only Humanoids (one new row) plus live Investment values: the scoped stocks-humanoids import fits it (estimate of the same order as the 11:52 run), after a fresh Codex quota and queue check",
+      "publication": {
+        "pr": 222,
+        "merge_commit": "23af2e85e33b8b4e8aa7dc11b3a3129df053bfb2",
+        "reviewed_head": "0794e0d68ad5caa2f709d92f074a6bb1ed6212b7",
+        "ci_run": 46017885864,
+        "pages_run": 46018590057,
+        "import_run": 46018804182,
+        "import_job": 140572761570,
+        "import_scope": "stocks-humanoids (dry_run false)",
+        "import_result": "HTTP 200; humanoids 213 (added 1, changed 1, removed 0), stocks 277 (no change); identities inserted 1, updated 202; search upserted 4, unchanged 976; estimated_rows_written 721",
+        "site_snapshot": "2026-11-27T14:35:03.875Z",
+        "production_snapshot": "2026-11-27T14:45:56.000Z",
+        "d1_margin_before_import": "Codex at 14:43 UTC: 22.55k of 100k written today after one full import, two scoped writes and three dry runs; no import running or queued at dispatch",
+        "verified": "MCP catalogue: Humanoids iX (Simplexity Robotics) with the 32 written values including the corrected funding, search finds it (robot 216, tags China, Wheeled); Walker S1 Valuation 23,815,219,952.60; Deployments 207 and Components 51 unchanged",
+        "codex_verification": "Codex, 2026-11-27: live public JSON, CSV, manifest and projection byte-identical to the reviewed head; robot, company and investment pages 200 with the Bloomberg and Wang Kai attribution; MCP record 216 exact; 6,815 of 6,816 Humanoids values equal the static JSON, the one difference an allowed live market value (Tesla Optimus Gen 2 Valuation, GOOGLEFINANCE)"
+      }
     },
     {
       "plan_id": "WP-20261125-integrarobot-simplexity-funding",
@@ -417,7 +445,7 @@
       "editions": [
         "integrarobot:2026-11-25:why-humanoid"
       ],
-      "status": "written",
+      "status": "published",
       "operations": 1,
       "cells": 5,
       "private_cells": 0,
@@ -425,7 +453,7 @@
       "private_payload": null,
       "follows": "WP-20261125-integrarobot-simplexity (written 2026-11-27T14:20:18Z, immutable)",
       "note": "Updates only Humanoids!K219, L219, M219, AE219 and AF219: the funding is original Bloomberg reporting (2026-11-23, Saritha Rai) that attributes the valuation and investors to chairman and co-founder Wang Kai, not independently verified; the model specifications are untouched",
-      "next": "Published with the first plan in PR 222; one production import with scope stocks-humanoids after Codex review and a fresh quota and queue check",
+      "next": "none",
       "write_receipt": {
         "by": "codex",
         "date": "2026-11-27",
@@ -456,6 +484,22 @@
           "Investment": 178
         },
         "preflight_after_write": "5 already written; the first plan now reports its 27 other cells written and these 5 superseded"
+      },
+      "publication": {
+        "pr": 222,
+        "merge_commit": "23af2e85e33b8b4e8aa7dc11b3a3129df053bfb2",
+        "reviewed_head": "0794e0d68ad5caa2f709d92f074a6bb1ed6212b7",
+        "ci_run": 46017885864,
+        "pages_run": 46018590057,
+        "import_run": 46018804182,
+        "import_job": 140572761570,
+        "import_scope": "stocks-humanoids (dry_run false)",
+        "import_result": "HTTP 200; humanoids 213 (added 1, changed 1, removed 0), stocks 277 (no change); identities inserted 1, updated 202; search upserted 4, unchanged 976; estimated_rows_written 721",
+        "site_snapshot": "2026-11-27T14:35:03.875Z",
+        "production_snapshot": "2026-11-27T14:45:56.000Z",
+        "d1_margin_before_import": "Codex at 14:43 UTC: 22.55k of 100k written today after one full import, two scoped writes and three dry runs; no import running or queued at dispatch",
+        "verified": "MCP catalogue: Humanoids iX (Simplexity Robotics) with the 32 written values including the corrected funding, search finds it (robot 216, tags China, Wheeled); Walker S1 Valuation 23,815,219,952.60; Deployments 207 and Components 51 unchanged",
+        "codex_verification": "Codex, 2026-11-27: live public JSON, CSV, manifest and projection byte-identical to the reviewed head; robot, company and investment pages 200 with the Bloomberg and Wang Kai attribution; MCP record 216 exact; 6,815 of 6,816 Humanoids values equal the static JSON, the one difference an allowed live market value (Tesla Optimus Gen 2 Valuation, GOOGLEFINANCE)"
       }
     }
   ]
