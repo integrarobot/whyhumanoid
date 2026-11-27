@@ -760,8 +760,8 @@
   {
    "id": 21,
    "sheet_row": 22,
-   "Lab": "Devanthro",
-   "Robot": "Robody",
+   "Lab": "Plim Robotics",
+   "Robot": "Plim",
    "Web": "https://www.devanthro.com/",
    "X": "https://x.com/robodies",
    "Linkedin": "https://www.linkedin.com/company/devanthro/",
@@ -783,7 +783,7 @@
    "Software": "Not found",
    "Voice": "Not disclosed",
    "Clothed?": "Not disclosed",
-   "Model checked": "Robody | technical specifications pending; partial website/funding review",
+   "Model checked": "Plim (formerly Robody), made by Plim Robotics (formerly Devanthro). The manufacturer presents Plim as a home robot with an omnidirectional wheeled base.",
    "Platform / mobility": "Unknown; mobility not verified for a specific robot model.",
    "DoF / grippers": null,
    "Sensors / compute": null,
@@ -791,7 +791,7 @@
    "Price / availability": null,
    "Autonomy / supervision": null,
    "Buyer checks": null,
-   "Sources / checked": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website captured\nhttps://www.devanthro.com/\n2026-11-19 | Corrected: Linkedin https://www.linkedin.com/company/robodies/ → https://www.linkedin.com/company/devanthro/ | https://devanthro.com/"
+   "Sources / checked": "2026-11-27 | Funding verification pending; Inherited specifications not revalidated; Identity and former names checked against the manufacturer's announcement | Website captured\nhttps://www.plim.com/news\nhttps://www.plim.com/meet-plim\n2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website captured\nhttps://www.devanthro.com/\n2026-11-19 | Corrected: Linkedin https://www.linkedin.com/company/robodies/ → https://www.linkedin.com/company/devanthro/ | https://devanthro.com/"
   },
   {
    "id": 22,
@@ -3281,7 +3281,7 @@
    "id": 92,
    "sheet_row": 94,
    "Lab": "UMA",
-   "Robot": "Not disclosed",
+   "Robot": "Version 0",
    "Web": "https://uma.bot/",
    "X": "https://x.com/UMA_Robots",
    "Linkedin": "https://www.linkedin.com/company/uma-robots/",
@@ -3303,7 +3303,7 @@
    "Software": "Not found",
    "Voice": "Not disclosed",
    "Clothed?": "Not disclosed",
-   "Model checked": "Not disclosed | technical specifications pending; partial website/funding review",
+   "Model checked": "Version 0 is UMA's first physical humanoid prototype, designed and assembled in Paris. Northstar is the separate robot design shown in the same announcement. Former catalogue label: Undisclosed model.",
    "Platform / mobility": "Unknown; mobility not verified for a specific robot model.",
    "DoF / grippers": null,
    "Sensors / compute": null,
@@ -3311,7 +3311,7 @@
    "Price / availability": null,
    "Autonomy / supervision": null,
    "Buyer checks": null,
-   "Sources / checked": "2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website captured\nhttps://uma.bot/\n2026-11-19 | Added: LinkedIn | https://uma.bot/"
+   "Sources / checked": "2026-11-27 | Funding verification pending; Inherited specifications not revalidated; Prototype identity checked against UMA's MACHINA Summit announcement | Website captured\nhttps://www.linkedin.com/posts/uma-robots_very-first-release-from-us-main-stage-at-activity-7480613398376910848-qOP5\nhttps://youtu.be/0vc-dAQDIQc\n2026-10-29 | Funding verification pending; Inherited specifications not revalidated | Website captured\nhttps://uma.bot/\n2026-11-19 | Added: LinkedIn | https://uma.bot/"
   },
   {
    "id": 93,
@@ -3461,7 +3461,7 @@
    "id": 97,
    "sheet_row": 99,
    "Lab": "Wandercraft",
-   "Robot": "Calvin",
+   "Robot": "Calvin-40",
    "Web": "https://en.wandercraft.eu/",
    "X": "https://x.com/WandercraftHQ",
    "Linkedin": "https://www.linkedin.com/company/wandercraft/",
@@ -3483,7 +3483,7 @@
    "Software": "Not found",
    "Voice": "Not disclosed",
    "Clothed?": "Not disclosed",
-   "Model checked": "Calvin | technical specifications pending; partial website/funding review",
+   "Model checked": "Calvin-40 is Wandercraft's industrial humanoid. Calvin is the former catalogue label and also the name Wandercraft uses for the broader family. Technical specifications pending verification.",
    "Platform / mobility": "Unknown; mobility not verified for a specific robot model.",
    "DoF / grippers": null,
    "Sensors / compute": null,
@@ -3491,7 +3491,7 @@
    "Price / availability": null,
    "Autonomy / supervision": null,
    "Buyer checks": null,
-   "Sources / checked": "2026-10-29 | Funding checked (scope in notes); Inherited specifications not revalidated | Website captured\nhttps://rss.globenewswire.com/news-release/2025/06/11/3097632/0/en/Wandercraft-announces-Series-D-Round-bringing-75M-in-total-funding-secured-for-global-acceleration-of-AI-powered-robotics.html\nhttps://en.wandercraft.eu/\n2026-11-19 | Added: YouTube | https://en.wandercraft.eu/\n2026-11-19 | Corrected: X https://x.com/exowandercraft → https://x.com/WandercraftHQ | https://www.wandercraft.eu/"
+   "Sources / checked": "2026-11-27 | Funding checked on 2026-10-29; Inherited specifications not revalidated; Model identity and former catalogue name checked | Website captured\nhttps://en.wandercraft.eu/calvin\nhttps://www.wandercraft.eu/fr/articles/renault-group-finalises-a-strategic-partnership-with-wandercraft\n2026-10-29 | Funding checked (scope in notes); Inherited specifications not revalidated | Website captured\nhttps://rss.globenewswire.com/news-release/2025/06/11/3097632/0/en/Wandercraft-announces-Series-D-Round-bringing-75M-in-total-funding-secured-for-global-acceleration-of-AI-powered-robotics.html\nhttps://en.wandercraft.eu/\n2026-11-19 | Added: YouTube | https://en.wandercraft.eu/\n2026-11-19 | Corrected: X https://x.com/exowandercraft → https://x.com/WandercraftHQ | https://www.wandercraft.eu/"
   },
   {
    "id": 98,

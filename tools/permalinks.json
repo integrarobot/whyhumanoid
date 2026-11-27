@@ -62,7 +62,8 @@
       "deep-dr01-20"
     ],
     "21": [
-      "devanthro-robody-21"
+      "devanthro-robody-21",
+      "plim-robotics-plim-21"
     ],
     "22": [
       "dexmate-vega-22"
@@ -276,7 +277,8 @@
       "ubtech-walker-s1-91"
     ],
     "92": [
-      "uma-undisclosed-model-92"
+      "uma-undisclosed-model-92",
+      "uma-version-0-92"
     ],
     "93": [
       "unitree-h1-93"
@@ -291,7 +293,8 @@
       "vinmotion-motion-96"
     ],
     "97": [
-      "wandercraft-calvin-97"
+      "wandercraft-calvin-97",
+      "wandercraft-calvin-40-97"
     ],
     "98": [
       "weave-isaac-98"
