@@ -277,10 +277,41 @@
         "Claude's review: Codex's cutouts of Torobo, DEX-M and AEON kept unchanged; Quanta X2, H2, R1 and Bolt redone by Claude from BiRefNet masks of the originals (kept beside them): Quanta X2's dark face had been removed and a scan-grid line kept, H2's raised arm was missing and a spectator kept between the legs, R1 kept a grass fringe and Bolt a dark haze in the arm gap.",
         "Left out: D9 (155) and Luna (156) are complete and clean but under the 500 px minimum height (208 × 475 and 300 × 371, not enlarged); Igris (79) until its identity is established. ",
         "Visible captions name variants and animation stills (DEX-M, Quanta X2, AEON animation still). Records' specifications unchanged.",
+<<<<<<< HEAD
         "Calvin-40 (97) and Zerith H1 (207) promoted from Codex's batch-11 sources (7496b6e) to complete batch 10 (Codex, 27 Nov 2026), prepared by Claude from their own transparency; REX G1 (198) from frame 0 of its official product video (d1e4d2f), cut out by Claude from a BiRefNet mask.",
         "Published with PR 232 (reviewed head 5da90c9, CI 46043204343; merge 4db495d), 27 Nov 2026; Pages 46044425860 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
+=======
+        "Calvin-40 (97) and Zerith H1 (207) promoted from Codex's batch-11 sources (7496b6e) to complete batch 10 (Codex, 27 Nov 2026), prepared by Claude from their own transparency; REX G1 (198) from frame 0 of its official product video (d1e4d2f), cut out by Claude from a BiRefNet mask."
+      ]
+    },
+    {
+      "batch": 11,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        119,
+        46,
+        210,
+        3,
+        78,
+        53,
+        68,
+        190,
+        131,
+        10
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex on codex/image-sources-remaining (candidates-11 at 7496b6e: NORI, K-Bot, WA2; candidates-12 at 864fcbc: aeo, K0, QTrobot, D7, MATRIX-3, Voxel Series-1, S1), copied selectively into ops/media/intake-remaining-2026-11-27/batch-11/. Every cutout prepared by Claude: from the original's own alpha (aeo, K0, QTrobot) or from BiRefNet masks kept beside the originals.",
+        "Not usable among candidates-11: VB1 (188) and Tianyi 2.0 (205), annotation dots painted on the body; i3 (209), the robots in its large drawing overlap; PR-OMNI (194), the robot's column cannot be told from a warehouse post; Jupiter (208), the hand and umbrella merge with the person and the feet reach the frame edge. Calvin-40 and Zerith H1 went to batch 10.",
+        "Prepared and held for batch 12: Vibe 01 (118), Noble Machines platform (107), ROBOTO Origin (128).",
+        "Captions name the kind of image and the variant: K-Bot technical render, WA2 manufacturer diagram, AI Sapiens K0 cowboy-hat configuration, QTrobot render (record 53 keeps its name), D7 video still, MATRIX-3 video poster, S1 video still. Records' specifications unchanged."
+      ]
+>>>>>>> origin/main
     }
   ],
   "robots": {
@@ -688,8 +719,21 @@
         "Lab": "Lux",
         "Robot": "Not disclosed"
       },
-      "status": "exception",
-      "reason": "No exact model in the record."
+      "status": "integrated",
+      "previous_reason": "No exact model in the record.",
+      "decision": "Codex, 27 Nov 2026: the record (Lux, model not disclosed) is shown with LuxAI's current QTrobot render, named QTrobot in the caption and alt text; the record's name and specifications are unchanged.",
+      "sources": [
+        {
+          "file": "https://luxai.com/wp-content/uploads/website-refactor/qt-robots/QT_big_hero.png",
+          "page": "https://luxai.com/humanoid-social-robot-for-research-and-teaching/",
+          "sha256": "605f621a98522efdc07bd0453cf108bb0c9395962260d7b44d448f599c7c687a",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 722 × 1586 with 20 px padding."
+        }
+      ]
     },
     "56": {
       "recorded": {
@@ -1138,8 +1182,19 @@
         "Lab": "Astribot",
         "Robot": "S1"
       },
-      "sources": [],
-      "status": "no_valid_source",
+      "sources": [
+        {
+          "file": "https://www.astribot.com/index/s2test/index-s2-test.webp",
+          "page": "https://www.astribot.com/",
+          "sha256": "a314d0a35f02d232631ca46463032a752cc976cdc480d2f092f87cdb6718a889",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 482 × 790 with 20 px padding."
+        }
+      ],
+      "status": "integrated",
       "page": "https://astribot.com/",
       "notes": "Astribot S1, manipulation platform; whole robot as Astribot presents it.",
       "research": [
@@ -1149,7 +1204,7 @@
           "note": "Search only: an Astribot-branded S1 specification sheet is hosted at https://a.storyblok.com/f/298593/x/d5cf3ddd99/astribot-s1_eng.pdf (not yet checked for a whole-robot image); product page astribot.com/en/product. Third-party \"media cards\" (Origin of Bots) are not official and are not used."
         }
       ],
-      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://astribot.com/): Official product and home stills show S1 behind a table, a faded diagram, or a group photo. No clean complete-body source has passed review. Not a claim that no photo exists."
+      "previous_reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://astribot.com/): Official product and home stills show S1 behind a table, a faded diagram, or a group photo. No clean complete-body source has passed review. Not a claim that no photo exists."
     },
     "2": {
       "recorded": {
@@ -1183,11 +1238,22 @@
         "Lab": "Aeolus",
         "Robot": "aeo"
       },
-      "sources": [],
-      "status": "no_valid_source",
+      "sources": [
+        {
+          "file": "https://www.aeolusbot.com/_next/static/media/meet-aeo.4d246794.png",
+          "page": "https://www.aeolusbot.com/meet-aeo",
+          "sha256": "a34bd62082d9d5e255fc531224f512d5210f5d26096970f97f4ea0f2a7f7339f",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 2019 × 2465 with 20 px padding."
+        }
+      ],
+      "status": "integrated",
       "page": "https://aeolusbot.com/",
       "notes": "aeo, wheeled dual-arm service humanoid.",
-      "reason": "Candidate photo in the maker's official flyer (Hannover Messe 2026, PDF page 1, xref 80; kept in ops/media/intake-ab-2026-11-27/aeo-candidate/, unapproved): whole robot and its lidar mast visible, but neither Codex's isnet mask nor Claude's BiRefNet pure mask (ROI 530,300,1160,1800) keeps the white mast against the white wall, so the lidar floats detached. Not published; no edge is drawn by hand. The flyer's native cutouts crop at least one hand."
+      "previous_reason": "Candidate photo in the maker's official flyer (Hannover Messe 2026, PDF page 1, xref 80; kept in ops/media/intake-ab-2026-11-27/aeo-candidate/, unapproved): whole robot and its lidar mast visible, but neither Codex's isnet mask nor Claude's BiRefNet pure mask (ROI 530,300,1160,1800) keeps the white mast against the white wall, so the lidar floats detached. Not published; no edge is drawn by hand. The flyer's native cutouts crop at least one hand."
     },
     "5": {
       "recorded": {
@@ -2494,9 +2560,20 @@
         "Lab": "K-Scale Labs",
         "Robot": "K-bot"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://shop.kscale.dev/",
-      "result": "Queued. Official GitHub kscalelabs/kbot holds only collages (assets/pics/a–f.webp: parts, dark full-body renders in multi-panel layouts, event photos); no single clean whole-robot image there. Codex's sweep pending."
+      "sources": [
+        {
+          "file": "https://raw.githubusercontent.com/kscalelabs/kbot/master/assets/pics/f.webp",
+          "page": "https://github.com/kscalelabs/kbot/blob/master/assets/pics/f.webp",
+          "sha256": "b05e7dddc1db9cbc27153bcc9f1ff9acfdfdda8a4fe544bd3f1132a438285975",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 228 × 598 with 20 px padding."
+        }
+      ]
     },
     "47": {
       "recorded": {
@@ -2696,9 +2773,20 @@
         "Lab": "Pudu",
         "Robot": "D7"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.pudurobotics.com/it/news/917",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://pudu-file-host.oss-cn-beijing.aliyuncs.com/official_website/PUDU%20D7%20Video_50MB_2024-09-19_16%3A53%3A24.mp4",
+          "page": "https://www.pudurobotics.com/it/news/917",
+          "sha256": "70ad69d73f07f1ebfa5902ae05a1332d1a4838476245b6997244d0a3ed125b0f",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 705 × 1662 with 20 px padding."
+        }
+      ]
     },
     "69": {
       "recorded": {
@@ -2770,9 +2858,20 @@
         "Lab": "Robotis",
         "Robot": "K0"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.robotis.us/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://ai.robotis.com/ai_sapiens/k0_no_background.png",
+          "page": "https://ai.robotis.com/ai_sapiens/introduction_ai_sapiens.html",
+          "sha256": "f27e259b0b06f2beb67808367cab06a14bae7983d17d7af17fc557c075eed086",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1120 × 2528 with 20 px padding."
+        }
+      ]
     },
     "79": {
       "recorded": {
@@ -3044,9 +3143,20 @@
         "Lab": "Nori",
         "Robot": "NORI A3"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.norirobotics.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.norirobotics.com/images/hero-still.44381e82.png",
+          "page": "https://www.norirobotics.com/",
+          "sha256": "5885cdfa4060ba65cea04099a36cdba8527c87e82db5d9707b15ef91c0987cb5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 418 × 1077 with 20 px padding."
+        }
+      ]
     },
     "120": {
       "recorded": {
@@ -3098,9 +3208,20 @@
         "Lab": "Tuesday Labs",
         "Robot": "Voxel Series-1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://tuesdaylabs.com/",
-      "result": "Source received 27 Nov 2026 (Tuesday Labs homepage portrait): the photo ends at the shins, without feet, so it is not a whole robot; withdrawn from batch 9. Another official whole-body source is still sought."
+      "sources": [
+        {
+          "file": "https://tuesdaylabs.com/_next/image?url=%2Fimages%2Fhome%2Fhero-kitchen.jpg&w=3840&q=75&dpl=dpl_9W1G1tixftkcXvw18tsyTsH4hTAi",
+          "page": "https://tuesdaylabs.com/robot",
+          "sha256": "c210ea4571a6f4e9c59db541f80b2a9bd4ebff921490e6c4fc7a1e661ae96ea1",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 410 × 817 with 20 px padding."
+        }
+      ]
     },
     "133": {
       "recorded": {
@@ -3210,7 +3331,7 @@
       },
       "status": "queued",
       "page": "https://www.lanxinrobotics.com/vb1/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Source received 27 Nov 2026 (official VB1 specification illustration): annotation dots are painted on the body, so a clean whole-robot image cannot be cut out; another official source is still sought."
     },
     "189": {
       "recorded": {
@@ -3238,9 +3359,20 @@
         "Lab": "Matrix Robotics",
         "Robot": "MATRIX-3"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://matrixrobotics.ai/matrix-3",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://matrixrobotics.ai/matrix-3/20260108_MATRIX03_EN_4k.jpg",
+          "page": "https://matrixrobotics.ai/matrix-3",
+          "sha256": "d3ddcc64a85023354ecc31b22c9984ac8e107674ef27335777660b84f9ba60d2",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 246 × 698 with 20 px padding."
+        }
+      ]
     },
     "191": {
       "recorded": {
@@ -3298,7 +3430,7 @@
       },
       "status": "queued",
       "page": "https://www.perceptyne.com/product/omni",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Source received 27 Nov 2026 (official PR-OMNI hero render in a warehouse): the robot's lifting column cannot be separated with confidence from a warehouse post behind it; another official source is still sought."
     },
     "195": {
       "recorded": {
@@ -3422,7 +3554,7 @@
       },
       "status": "queued",
       "page": "https://www.x-humanoid.com/detail/tianyi.html",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Source received 27 Nov 2026 (official TianYi 2.0 illustration with native alpha): callout dots are painted on the head, chest, elbow and column; another official source is still sought."
     },
     "206": {
       "recorded": {
@@ -3460,7 +3592,7 @@
       },
       "status": "queued",
       "page": "https://www.zeroth0.com/products/jupiter",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Source received 27 Nov 2026 (official Jupiter photograph with a person): the robot's hand and the umbrella merge with the person and the feet reach the frame edge; another official source is still sought."
     },
     "209": {
       "recorded": {
@@ -3469,16 +3601,27 @@
       },
       "status": "queued",
       "page": "https://www.zj-humanoid.com/zujian/2",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Source received 27 Nov 2026 (official i3 specification sheet): the large drawing shows two overlapping robots and the separate running figure is too small; another official source is still sought."
     },
     "210": {
       "recorded": {
         "Lab": "ZJ Humanoid",
         "Robot": "NAVIAI WA2"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.zj-humanoid.com/zujian/10",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.zj-humanoid.com/uploads/upload/images/20260814/fe30a0cd6d532ee432849aae6dd95ded.png",
+          "page": "https://www.zj-humanoid.com/zujian/10",
+          "sha256": "dcb836112157146d16b661a58eaa56cb61a0cb1000c874eba158b21d5d89e088",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 314 × 599 with 20 px padding."
+        }
+      ]
     },
     "211": {
       "recorded": {
