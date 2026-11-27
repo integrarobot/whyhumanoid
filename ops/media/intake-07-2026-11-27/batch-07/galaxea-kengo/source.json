@@ -20,15 +20,15 @@
     2434
   ],
   "native_alpha": false,
-  "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged. Alpha-only excludes floor reflection below source row2838.",
+  "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged. Alpha-only excludes floor reflection below source row2838. Review correction: remaining right shoe floor reflection excluded in alpha.",
   "source_page": "https://galaxea-dynamics.com/products/galaxea-kengo-proprietary-embodied-ai-bipedal-robot",
   "source_url": "https://galaxea-dynamics.com/cdn/shop/files/Kengo-Main-Blue.jpg",
   "source_alt": "Galaxea Kengo",
   "credit": "Galaxea Dynamics",
   "source_context": "Kengo blue-grey front view isolated from front/back comparison in official Kengo product gallery. Both hands and feet complete.",
   "original_sha256": "6868134b18702d9f31d021be56fefb75be8c7e4834c3bc9a7e20cb4a24c41e8c",
-  "prepared_sha256": "3551e085fad8a8dec2c75854ca313cba7f32f2604cad8b2e376b4c06b71c8106",
-  "mask_sha256": "5876a29643c0e702dd5cca56a047d2500c68b8258447a0eba2c8cee7f12937ac",
+  "prepared_sha256": "12253e050b58a10bba4ff82fcdafcae85bb4f9bf25d07c40589c0aa8b88a158b",
+  "mask_sha256": "988000bed0e32c94474e678ed9f18501cc4e6f60d67b208f7f3a74584fa21cfc",
   "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
   "checked_at": "2026-11-27"
 }
