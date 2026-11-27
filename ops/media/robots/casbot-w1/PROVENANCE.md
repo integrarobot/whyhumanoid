@@ -20,7 +20,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 4, PR not yet merged)
+## Published files (image batch 4, PR 208, merge e152f67, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/casbot-w1/casbot-w1-full-body.png`, 823 × 842 px, sha256 `edd560fbbc679bbd66d9c902f3bfa31ddec87d2e5950fa1df4c7c5177ca907da` (= Codex's prepared.png).
 - **WebP:** `assets/robots/casbot-w1/casbot-w1-full-body.webp`, sha256 `abe934e35bbc9b9d0bb4c97228a63c2a3fa6f05d1ba123d8ebbb92cafb17bf01`.

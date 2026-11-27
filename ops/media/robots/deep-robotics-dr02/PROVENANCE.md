@@ -20,7 +20,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 4, PR not yet merged)
+## Published files (image batch 4, PR 208, merge e152f67, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/deep-robotics-dr02/deep-robotics-dr02-full-body.png`, 258 × 692 px, sha256 `1865b268a06c428020ad2be42c2a956a46693824b3c719809f26f41b70ddabcd` (= Codex's prepared.png).
 - **WebP:** `assets/robots/deep-robotics-dr02/deep-robotics-dr02-full-body.webp`, sha256 `3add808dd0a0449570b2213ffe826aefe7b08619717f7f3e33f6beeb7689fd2b`.

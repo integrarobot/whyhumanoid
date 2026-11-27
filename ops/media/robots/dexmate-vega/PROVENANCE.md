@@ -20,7 +20,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 4, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 4, PR not yet merged)
+## Published files (image batch 4, PR 208, merge e152f67, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/dexmate-vega/dexmate-vega-full-body.png`, 586 × 1366 px, sha256 `659f5c8da5c3ad105903edaf0a219520fe6ae7460ad99c6f8bbc5418827f1c72` (= Codex's prepared.png).
 - **WebP:** `assets/robots/dexmate-vega/dexmate-vega-full-body.webp`, sha256 `d1bd3e0fe08f5fe04c98e22a942db4176741d7f6b2ec613b21b1810bc8804715`.
