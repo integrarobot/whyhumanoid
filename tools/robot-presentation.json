@@ -1327,6 +1327,156 @@
         "credit": "Image: ugo",
         "provenance": "ops/media/robots/ugo-nova/PROVENANCE.md"
       }
+    },
+    "90": {
+      "recorded": {
+        "Lab": "Tokyo",
+        "Robot": "Torobo"
+      },
+      "image": {
+        "src": "/assets/robots/tokyo-robotics-torobo/tokyo-robotics-torobo-full-body.webp",
+        "fallback": "/assets/robots/tokyo-robotics-torobo/tokyo-robotics-torobo-full-body.png",
+        "width": 632,
+        "height": 1132,
+        "alt": "Torobo by Tokyo Robotics, full body, carrying sacks, on its base",
+        "credit": "Image: Tokyo Robotics",
+        "provenance": "ops/media/robots/tokyo-robotics-torobo/PROVENANCE.md"
+      }
+    },
+    "101": {
+      "recorded": {
+        "Lab": "X Square",
+        "Robot": "Quanta X2"
+      },
+      "image": {
+        "src": "/assets/robots/x-square-quanta-x2/x-square-quanta-x2-full-body.webp",
+        "fallback": "/assets/robots/x-square-quanta-x2/x-square-quanta-x2-full-body.png",
+        "width": 473,
+        "height": 911,
+        "alt": "Quanta X2 by X Square Robot, full body, on its wheeled base",
+        "credit": "Image: X Square Robot, Quanta X2",
+        "provenance": "ops/media/robots/x-square-quanta-x2/PROVENANCE.md"
+      }
+    },
+    "193": {
+      "recorded": {
+        "Lab": "MirrorMe",
+        "Robot": "Bolt"
+      },
+      "image": {
+        "src": "/assets/robots/mirrorme-bolt/mirrorme-bolt-full-body.webp",
+        "fallback": "/assets/robots/mirrorme-bolt/mirrorme-bolt-full-body.png",
+        "width": 298,
+        "height": 807,
+        "alt": "Bolt by MirrorMe, full body, front view, standing in its 03 kit",
+        "credit": "Image: MirrorMe",
+        "provenance": "ops/media/robots/mirrorme-bolt/PROVENANCE.md"
+      }
+    },
+    "197": {
+      "recorded": {
+        "Lab": "Richtech Robotics",
+        "Robot": "Dex"
+      },
+      "image": {
+        "src": "/assets/robots/richtech-dex-m/richtech-dex-m-full-body.webp",
+        "fallback": "/assets/robots/richtech-dex-m/richtech-dex-m-full-body.png",
+        "width": 1153,
+        "height": 1388,
+        "alt": "DEX-M by Richtech Robotics, full body, two arms on its wheeled chassis",
+        "credit": "Image: Richtech Robotics, DEX-M",
+        "provenance": "ops/media/robots/richtech-dex-m/PROVENANCE.md"
+      }
+    },
+    "139": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "H2"
+      },
+      "image": {
+        "src": "/assets/robots/unitree-h2/unitree-h2-full-body.webp",
+        "fallback": "/assets/robots/unitree-h2/unitree-h2-full-body.png",
+        "width": 961,
+        "height": 1887,
+        "alt": "H2 by Unitree, full body, front view, standing in a fighting stance",
+        "credit": "Image: Unitree",
+        "provenance": "ops/media/robots/unitree-h2/PROVENANCE.md"
+      }
+    },
+    "141": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "R1"
+      },
+      "image": {
+        "src": "/assets/robots/unitree-r1/unitree-r1-full-body.webp",
+        "fallback": "/assets/robots/unitree-r1/unitree-r1-full-body.png",
+        "width": 509,
+        "height": 670,
+        "alt": "R1 by Unitree, full body, running",
+        "credit": "Image: Unitree",
+        "provenance": "ops/media/robots/unitree-r1/PROVENANCE.md"
+      }
+    },
+    "40": {
+      "recorded": {
+        "Lab": "Hexagon",
+        "Robot": "AEON"
+      },
+      "image": {
+        "src": "/assets/robots/hexagon-aeon/hexagon-aeon-full-body.webp",
+        "fallback": "/assets/robots/hexagon-aeon/hexagon-aeon-full-body.png",
+        "width": 209,
+        "height": 517,
+        "alt": "AEON by Hexagon, full body, side view, on wheels, still from the official animation",
+        "credit": "Image: Hexagon, AEON animation still",
+        "provenance": "ops/media/robots/hexagon-aeon/PROVENANCE.md"
+      }
+    },
+    "97": {
+      "recorded": {
+        "Lab": "Wandercraft",
+        "Robot": "Calvin-40"
+      },
+      "image": {
+        "src": "/assets/robots/wandercraft-calvin-40/wandercraft-calvin-40-full-body.webp",
+        "fallback": "/assets/robots/wandercraft-calvin-40/wandercraft-calvin-40-full-body.png",
+        "width": 556,
+        "height": 1118,
+        "alt": "Calvin-40 by Wandercraft, full body, front view, without end effectors",
+        "credit": "Image: Wandercraft, Calvin-40 without end effectors",
+        "provenance": "ops/media/robots/wandercraft-calvin-40/PROVENANCE.md"
+      }
+    },
+    "207": {
+      "recorded": {
+        "Lab": "Zerith Robotics",
+        "Robot": "Zerith H1"
+      },
+      "image": {
+        "src": "/assets/robots/zerith-h1/zerith-h1-full-body.webp",
+        "fallback": "/assets/robots/zerith-h1/zerith-h1-full-body.png",
+        "width": 345,
+        "height": 802,
+        "alt": "Zerith H1 by Zerith Robotics, full body, side view, on its wheeled column",
+        "credit": "Image: Zerith Robotics",
+        "provenance": "ops/media/robots/zerith-h1/PROVENANCE.md"
+      }
+    },
+    "198": {
+      "recorded": {
+        "Lab": "RoboScience",
+        "Robot": "REX G1"
+      },
+      "image": {
+        "src": "/assets/robots/roboscience-rex-g1/roboscience-rex-g1-full-body.webp",
+        "fallback": "/assets/robots/roboscience-rex-g1/roboscience-rex-g1-full-body.png",
+        "width": 904,
+        "height": 1731,
+        "alt": "REX G1 by RoboScience, full body, front view, on its wheeled chassis, still from the official product video",
+        "credit": "Image: RoboScience, REX G1 video still",
+        "provenance": "ops/media/robots/roboscience-rex-g1/PROVENANCE.md"
+      }
     }
   }
 }

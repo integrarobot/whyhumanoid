@@ -1,0 +1,79 @@
+{
+ "batch": 10,
+ "intake": "ops/media/intake-remaining-2026-11-27/batch-10",
+ "branch": "codex/image-sources-remaining",
+ "commit": "f7d1436 (Luna: c3ca72e; Calvin-40 and Zerith H1: 7496b6e; REX G1: d1e4d2f)",
+ "scope": "All missing images (Javier, 27 Nov 2026)",
+ "items": {
+  "90": {
+   "slug": "tokyo-robotics-torobo",
+   "alt": "Torobo by Tokyo Robotics, full body, carrying sacks, on its base",
+   "credit": "Image: Tokyo Robotics",
+   "identity": "Tokyo Robotics' official page image torobo_move_task, with the Torobo name on the page: the whole platform carrying sacks, with its payload and grippers. The record is Torobo (mobile-manipulator configuration in the product brochure).",
+   "quality": null
+  },
+  "101": {
+   "slug": "x-square-quanta-x2",
+   "alt": "Quanta X2 by X Square Robot, full body, on its wheeled base",
+   "credit": "Image: X Square Robot, Quanta X2",
+   "identity": "Navigation illustration of X Square Robot's Quantum 2 product page (the Quanta X2), the robot alone isolated from the scene. Alpha by Claude from a BiRefNet mask of the original (kept beside it), replacing a cutout that removed the dark face and kept a scan-grid line. The record is Quanta X2 (dexterous-hand configuration).",
+   "quality": null
+  },
+  "193": {
+   "slug": "mirrorme-bolt",
+   "alt": "Bolt by MirrorMe, full body, front view, standing in its 03 kit",
+   "credit": "Image: MirrorMe",
+   "identity": "Official Bolt product page image people-bolt.png: the complete biped wearing the 03 kit; not the quadrupeds on the same page. Alpha by Claude: the lower of a BiRefNet mask and the original's own transparency, which removes a dark haze in the arm gap. The record is Bolt.",
+   "quality": null
+  },
+  "197": {
+   "slug": "richtech-dex-m",
+   "alt": "DEX-M by Richtech Robotics, full body, two arms on its wheeled chassis",
+   "credit": "Image: Richtech Robotics, DEX-M",
+   "identity": "Official DEX product page render dex-trimmed-4.png, which corresponds to DEX-M on the mobile wheeled chassis, not ADAM or the fixed DEX-S. The record is Dex (mobile chassis); the caption names DEX-M.",
+   "quality": null
+  },
+  "139": {
+   "slug": "unitree-h2",
+   "alt": "H2 by Unitree, full body, front view, standing in a fighting stance",
+   "credit": "Image: Unitree",
+   "identity": "Official Unitree H2 page image (a still of the robot outdoors). Alpha by Claude from a BiRefNet mask of the original (kept beside it), replacing a cutout that lost the raised arm and kept a spectator between the legs. The record is H2 and H2 EDU; no edition is attributed.",
+   "quality": null
+  },
+  "141": {
+   "slug": "unitree-r1",
+   "alt": "R1 by Unitree, full body, running",
+   "credit": "Image: Unitree",
+   "identity": "Official Unitree R1 page image of the robot running on grass, both feet visible. Alpha by Claude from a BiRefNet mask of the original (kept beside it), without the grass fringe. The record is R1, R1 AIR and R1 EDU; no edition is attributed.",
+   "quality": null
+  },
+  "40": {
+   "slug": "hexagon-aeon",
+   "alt": "AEON by Hexagon, full body, side view, on wheels, still from the official animation",
+   "credit": "Image: Hexagon, AEON animation still",
+   "identity": "Frame 105 (4.2 s at 25 fps) of Hexagon's official product animation On-Wheels.mp4, 1280 × 720: the whole AEON on wheels. It is an official animation still, not a hardware photograph. The record is AEON with wheeled mobility.",
+   "quality": "Animation still at native size: 209 × 517 px as prepared, not enlarged."
+  },
+  "97": {
+   "slug": "wandercraft-calvin-40",
+   "alt": "Calvin-40 by Wandercraft, full body, front view, without end effectors",
+   "credit": "Image: Wandercraft, Calvin-40 without end effectors",
+   "identity": "Wandercraft's official Calvin page, front view whose file name reads calvin-05-front-no-end-effector: the whole robot, which has no head by design, shown without end effectors. The record is Calvin-40; nothing is added (no head, no hands).",
+   "quality": null
+  },
+  "207": {
+   "slug": "zerith-h1",
+   "alt": "Zerith H1 by Zerith Robotics, full body, side view, on its wheeled column",
+   "credit": "Image: Zerith Robotics",
+   "identity": "Zerith's official H1 product page image img_201.png: the whole robot in side view on its wheeled column, with base, hands and head; not the cropped torso cards. The record is Zerith H1.",
+   "quality": null
+  },
+  "198": {
+   "slug": "roboscience-rex-g1",
+   "alt": "REX G1 by RoboScience, full body, front view, on its wheeled chassis, still from the official product video",
+   "credit": "Image: RoboScience, REX G1 video still",
+   "identity": "Frame 0 of RoboScience's official REX-G1 product video, whose title card names REX G1 beside the robot (an existing manufacturer video still, not a new rendering): the whole wheeled humanoid with both hands and the entire chassis and wheels. The title, logo, backdrop and ground shadow are excluded by the alpha mask. The record is REX-G1.",
+   "quality": null
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+  "id": 155,
+  "slug": "pudu-d9",
+  "manufacturer": "Pudu",
+  "model": "D9",
+  "credit": "PuduRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/pudu-d9-155/",
+  "source_page": "https://www.pudurobotics.com/en/products/d9",
+  "source_url": "https://cdn.pudutech.com/official-website/d9/d9.webp",
+  "source_context": "Official exact D9 product page d9.webp. Complete body and both feet. Native400x480; prepared208x475. Quality debt, no enlargement: decide if sufficient or find larger exact source. Do not use running hero: foreground cuts left foot.",
+  "original": "original.png",
+  "original_size": [
+    400,
+    480
+  ],
+  "original_sha256": "501c1a5681b5712adb8f0a1257e026d903d4e55cd41581cc266f2cca83cc3f07",
+  "prepared_sha256": "2937de3140c169807eb58b7e779f9f1e84666dd32da400a2bf97aa7aa5e02446",
+  "mask_sha256": "405dd4e7f916886fe512533e911cc7515ac2bbd7b0596a344bd8b0d9fdfdf5d1",
+  "roi": [
+    0,
+    0,
+    400,
+    480
+  ],
+  "bbox": [
+    136,
+    25,
+    304,
+    460
+  ],
+  "border": 20,
+  "size": [
+    208,
+    475
+  ],
+  "native_alpha": false,
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.",
+  "status": "candidate_requires_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+}

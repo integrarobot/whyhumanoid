@@ -1,0 +1,42 @@
+{
+  "id": 197,
+  "slug": "richtech-dex-m",
+  "manufacturer": "Richtech Robotics",
+  "model": "Dex",
+  "credit": "RichtechRobotics",
+  "public_page": "https://whyhumanoid.com/humanoids/richtech-robotics-dex-197/",
+  "source_page": "https://www.richtechrobotics.com/solutions/dex",
+  "source_url": "https://www.richtechrobotics.com/hubfs/richtech/renders/dex-trimmed-4.png",
+  "source_context": "Official DEX product page dex-trimmed-4.png corresponding DEX-M mobile wheeled chassis, not ADAM or fixed DEX-S. Label DEX-M configuration. Native alpha adjusted70..245 for faint floor shadow.",
+  "original": "original.png",
+  "original_size": [
+    1142,
+    1377
+  ],
+  "original_sha256": "8244f666ce45fbe992c2fbaadee2b992859c1c26e67b269d10cc13b34b2f3190",
+  "prepared_sha256": "0a497f028d6a189d92cd11d385068174b448c9e8b06e1290e493676e11a03c64",
+  "mask_sha256": "18fdb4e51fee77ee035fca8a6f94ee4e8fc3fc629e28d20e579c92f8a7aea67c",
+  "roi": [
+    0,
+    0,
+    1142,
+    1377
+  ],
+  "bbox": [
+    14,
+    19,
+    1127,
+    1367
+  ],
+  "border": 20,
+  "size": [
+    1153,
+    1388
+  ],
+  "native_alpha": true,
+  "mask_method": "Native alpha",
+  "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.; Quanta source replaced with unobstructed whole navigation illustration; Dex native alpha70..245 removes faint floor shadow.",
+  "status": "candidate_requires_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+}
