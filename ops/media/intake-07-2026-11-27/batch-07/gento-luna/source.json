@@ -1,0 +1,34 @@
+{
+  "id": 178,
+  "slug": "gento-luna",
+  "original": "178-26.png",
+  "roi": [
+    0,
+    0,
+    1160,
+    1400
+  ],
+  "bbox": [
+    319,
+    93,
+    820,
+    1320
+  ],
+  "border": 20,
+  "size": [
+    541,
+    1267
+  ],
+  "native_alpha": true,
+  "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+  "source_page": "https://www.gentorobotics.ai/products/gento-luna/",
+  "source_url": "https://www.gentorobotics.ai/wp-content/uploads/2026/11/Rectangle-192-2.png",
+  "source_alt": "Gento Luna Specifications",
+  "credit": "Gento Robotics",
+  "source_context": "Gento Luna full specification image from exact product page, including foldable body, both arms and complete wheeled base. No Skye/Marvin substitution.",
+  "original_sha256": "235c2af40d2e7acd01517f1cdd4637b77053d7514b1fe4e173a057b088c6a046",
+  "prepared_sha256": "d00ad907468f062c74094298a4ff2cc3196b41f5c919b824189e9634c0d15729",
+  "mask_sha256": "d0583040cdbd8d4c07a4d8be82a3d3aabde62a2e25e353680514ec9e57cfadb7",
+  "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+  "checked_at": "2026-11-27"
+}

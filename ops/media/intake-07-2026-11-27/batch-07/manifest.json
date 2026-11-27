@@ -1,0 +1,346 @@
+[
+  {
+    "id": 34,
+    "slug": "galaxea-r1",
+    "original": "r1-guide.png",
+    "roi": [
+      2500,
+      0,
+      4100,
+      2425
+    ],
+    "bbox": [
+      122,
+      38,
+      1507,
+      2398
+    ],
+    "border": 20,
+    "size": [
+      1425,
+      2400
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small background components excluded; original RGB unchanged. Review correction: interior of right chassis and wheel made fully opaque (255), with exterior edge antialias preserved.",
+    "source_page": "https://github.com/userguide-galaxea/Product_User_Guide/blob/galaxea/main/docs/en/Guide/R1/R1_Overview.md",
+    "source_url": "https://raw.githubusercontent.com/userguide-galaxea/Product_User_Guide/galaxea/main/docs/en/Guide/R1/assets/R1_R1T.png",
+    "source_alt": "R1 with R1-Teleop, official R1 overview",
+    "credit": "Galaxea Dynamics",
+    "source_context": "Standard R1, full wheeled robot holding its box, isolated from separate R1-Teleop apparatus on left. Official user-guide R1 section separate from R1 Lite and R1 Pro. Preserve box; no hardware configuration inferred from appearance.",
+    "original_sha256": "6aa086ea8a85d7543e14dbef2bca90b3ac4681f2876dfaec77859f6a23cde65b",
+    "prepared_sha256": "474cb13df020e944108143a5af169e2da5d4bd78ca6957d9e9587d5914e57bac",
+    "mask_sha256": "b5e86ebdf7fe5987d5b51155f2dd580df872da09eae2c26bd935c6917e261ff9",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 161,
+    "slug": "galaxea-kengo",
+    "original": "161-19.jpg",
+    "roi": [
+      720,
+      400,
+      1630,
+      2890
+    ],
+    "bbox": [
+      70,
+      44,
+      838,
+      2438
+    ],
+    "border": 20,
+    "size": [
+      808,
+      2434
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged. Alpha-only excludes floor reflection below source row2838. Review correction: remaining right shoe floor reflection excluded in alpha.",
+    "source_page": "https://galaxea-dynamics.com/products/galaxea-kengo-proprietary-embodied-ai-bipedal-robot",
+    "source_url": "https://galaxea-dynamics.com/cdn/shop/files/Kengo-Main-Blue.jpg",
+    "source_alt": "Galaxea Kengo",
+    "credit": "Galaxea Dynamics",
+    "source_context": "Kengo blue-grey front view isolated from front/back comparison in official Kengo product gallery. Both hands and feet complete.",
+    "original_sha256": "6868134b18702d9f31d021be56fefb75be8c7e4834c3bc9a7e20cb4a24c41e8c",
+    "prepared_sha256": "12253e050b58a10bba4ff82fcdafcae85bb4f9bf25d07c40589c0aa8b88a158b",
+    "mask_sha256": "988000bed0e32c94474e678ed9f18501cc4e6f60d67b208f7f3a74584fa21cfc",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 157,
+    "slug": "galbot-s1",
+    "original": "157-5.webp",
+    "roi": [
+      0,
+      0,
+      900,
+      1506
+    ],
+    "bbox": [
+      81,
+      287,
+      725,
+      1291
+    ],
+    "border": 20,
+    "size": [
+      684,
+      1044
+    ],
+    "native_alpha": true,
+    "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+    "source_page": "http://www.galbot.com/s1/",
+    "source_url": "http://www.galbot.com/_nuxt/s1-spec-robot-v2.BSvgtlns.webp",
+    "source_alt": "Galbot S1",
+    "credit": "Galbot",
+    "source_context": "S1 industrial wheeled dual-arm robot from S1 specification illustration. Not the G1 record.",
+    "original_sha256": "4d7ce6bb8a1615f4599a53954e0a15cea70c28b987180b5831b85054fba4c1c9",
+    "prepared_sha256": "e11ed48c5ea906fbe8c818026c379d6d936c07e302bd9d97cab5e11bb8a4f928",
+    "mask_sha256": "3fe54533e805e55e0794297587e9b724fa755e15dc4e0e161d62ad50c6480132",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 158,
+    "slug": "galbot-et1",
+    "original": "158-3.webp",
+    "roi": [
+      0,
+      0,
+      900,
+      1500
+    ],
+    "bbox": [
+      200,
+      175,
+      701,
+      1358
+    ],
+    "border": 20,
+    "size": [
+      541,
+      1223
+    ],
+    "native_alpha": true,
+    "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+    "source_page": "http://www.galbot.com/et1/",
+    "source_url": "https://oss-cn-beijing.galbot.com/online/portal/website/posters/et1-spec-robot-v3.webp",
+    "source_alt": "Galbot ET1 整机渲染图",
+    "credit": "Galbot",
+    "source_context": "ET1 entertainment humanoid complete product render from official ET1 page. No Standard/Pro/Flagship edition asserted.",
+    "original_sha256": "b3fb106a6aefd6d47f1284c838720fae3506418786f2fe47a7ee18b66ea97365",
+    "prepared_sha256": "25a714b8fcef3651086f8802f19468b2494f68dc190215b9a4f5f783b7e936c4",
+    "mask_sha256": "470d7b9890dad790373232e03eb8575f4a6ce495bcab731ce0aa951ce908a0a1",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 36,
+    "slug": "gene-01",
+    "original": "gene-media-12.jpg",
+    "roi": [
+      0,
+      0,
+      3840,
+      2160
+    ],
+    "bbox": [
+      1547,
+      222,
+      2264,
+      2081
+    ],
+    "border": 20,
+    "size": [
+      757,
+      1899
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small background components excluded; original RGB unchanged. Alpha-only manual exclusion of dark background fused to right hip; original wrist/hand pixels preserved. Brightened diagnostic was used only to trace the alpha boundary; delivered RGB is unchanged. Right-hand alpha outline traced from original; rectangular background at hand excluded. Background gap between right arm and torso traced with alpha-only polygon. Review correction: partial-alpha background at left hand and crotch removed, preserving opaque source body and1px edge.",
+    "source_page": "https://news.gbionics.ai/?article=gene-01-comes-to-life&lang=en",
+    "source_url": "https://cms.gbionics.ai/uploads/GB_Gene01_Press_28599c665e.zip",
+    "source_alt": "",
+    "credit": "Generative Bionics",
+    "source_context": "July20,2026 GENE.01 platform, full studio photograph Media/1.jpg in the official July press kit. Not the CES concept, not a relabelled ergoCub. Original dark lighting retained. Alpha-only hand/hip boundary cleanup; no exposure, brightness, geometry or RGB edits to delivered image.",
+    "original_sha256": "a5316f93d9f908c42fe8fa7249f31a58a5241f3ca9a462def9986f495fb18275",
+    "prepared_sha256": "0d89a112a38386ca13a7dace20d59dbc84bc02f68e3d75b08af57652636500db",
+    "mask_sha256": "fb58974c3b3fee62381a3e3ca4eaf647220e6436671dfc1e0a525e46b626badf",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27",
+    "archive_member": "Media/1.jpg",
+    "archive_sha256": "8d900899ca8d97aabd39995398a02d9c6272b6bf8fea5a26c80c8f07867aa4e6",
+    "reuse_notes": "Manufacturer release explicitly links this ZIP as press release, media kit and media. No open licence or extra endorsement claimed. No manufacturer notification requirement found in reviewed kit."
+  },
+  {
+    "id": 117,
+    "slug": "genesis-eno",
+    "original": "eno-fullbody.jpg",
+    "roi": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "bbox": [
+      735,
+      103,
+      1141,
+      991
+    ],
+    "border": 20,
+    "size": [
+      446,
+      928
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged. Review correction: diffuse halo around base/column removed by localized alpha threshold200 and0.45px antialias.",
+    "source_page": "https://www.genesis.ai/press/meet-eno",
+    "source_url": "https://www.datocms-assets.com/199265/1781540929-genesis_fullbody_b_fhd_16x9.jpg",
+    "source_alt": "",
+    "credit": "Genesis AI",
+    "source_context": "Eno complete headless wheeled platform as shown in manufacturer Meet Eno announcement (June16,2026), three-quarter view. No head or legs added.",
+    "original_sha256": "2a99ac6a08f16880f6319ca1373ccfac0800642c9cf8a37b4ff74f943c7d916d",
+    "prepared_sha256": "a1562ce99828da62ccaa5275451d10ff3089c455edd6b95e281e334cde2ede26",
+    "mask_sha256": "49f07a222d914c9925bef279950edf6e6cd1d37a887fba9a9068b368f91c95d5",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 177,
+    "slug": "genisom-ne01",
+    "original": "ne01-ultra.webp",
+    "roi": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "bbox": [
+      817,
+      121,
+      1103,
+      938
+    ],
+    "border": 20,
+    "size": [
+      326,
+      857
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+    "source_page": "https://www.genisomai.com/product-robot/ne01",
+    "source_url": "https://qiniu.mfdemo.cn/zhishen/2026/08/17/5k5fyNizL77mu.webp",
+    "source_alt": "",
+    "credit": "GENISOM",
+    "source_context": "NE01 Ultra configuration as explicitly shown in the manufacturer NE01 family specifications; exact image is Ultra, not a claim that every NE01 configuration looks the same. Caption must name the shown variant. Entire robot and both feet included.",
+    "original_sha256": "674e48b1121c231e1c40fb578677245666e39540b28b9f83f35ad36971671200",
+    "prepared_sha256": "00c40ef32b1a9d582158742ec594a1c9e88787395fcb158dc32057e96c92ab63",
+    "mask_sha256": "568dc66bf786b58f63c821145b2d8435067ad0e8caa2ae175b4c3b1d1b162739",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27",
+    "shown_variant": "NE01 Ultra"
+  },
+  {
+    "id": 178,
+    "slug": "gento-luna",
+    "original": "178-26.png",
+    "roi": [
+      0,
+      0,
+      1160,
+      1400
+    ],
+    "bbox": [
+      319,
+      93,
+      820,
+      1320
+    ],
+    "border": 20,
+    "size": [
+      541,
+      1267
+    ],
+    "native_alpha": true,
+    "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+    "source_page": "https://www.gentorobotics.ai/products/gento-luna/",
+    "source_url": "https://www.gentorobotics.ai/wp-content/uploads/2026/11/Rectangle-192-2.png",
+    "source_alt": "Gento Luna Specifications",
+    "credit": "Gento Robotics",
+    "source_context": "Gento Luna full specification image from exact product page, including foldable body, both arms and complete wheeled base. No Skye/Marvin substitution.",
+    "original_sha256": "235c2af40d2e7acd01517f1cdd4637b77053d7514b1fe4e173a057b088c6a046",
+    "prepared_sha256": "d00ad907468f062c74094298a4ff2cc3196b41f5c919b824189e9634c0d15729",
+    "mask_sha256": "d0583040cdbd8d4c07a4d8be82a3d3aabde62a2e25e353680514ec9e57cfadb7",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 179,
+    "slug": "glroad-laborer-c1",
+    "original": "179-5.png",
+    "roi": [
+      0,
+      0,
+      570,
+      810
+    ],
+    "bbox": [
+      46,
+      19,
+      544,
+      789
+    ],
+    "border": 20,
+    "size": [
+      538,
+      810
+    ],
+    "native_alpha": true,
+    "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+    "source_page": "https://www.glroad.com/HumanoidRobots/index.aspx",
+    "source_url": "https://www.glroad.com/uploadfiles/2026/10/20261015134446741.png?5Lqn5ZOB5Y2h54mHLUMxLnBuZw==",
+    "source_alt": "C1",
+    "credit": "Glroad",
+    "source_context": "Laborer C1 identified by C1 product card in official Humanoid Robots catalogue. Full running-pose robot with both hands and feet. Not M1.",
+    "original_sha256": "a9b2f9f0dfab3a2e203762f5c962ea3147de515f75e051985eb45b8e2306b5c2",
+    "prepared_sha256": "b4f0b808ce1fb5879cf4406497dde5ec3483235c7f1358ccf1713e7be8017516",
+    "mask_sha256": "1d8e0fe831c04893c827fc1521f6f22e978bc8e5da35a983f117966baef772e2",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 181,
+    "slug": "lumen-h1",
+    "original": "181-6.webp",
+    "roi": [
+      0,
+      0,
+      1366,
+      2079
+    ],
+    "bbox": [
+      256,
+      60,
+      971,
+      1907
+    ],
+    "border": 20,
+    "size": [
+      755,
+      1887
+    ],
+    "native_alpha": true,
+    "refinement": "Alpha levels85..230; small background components excluded; original RGB unchanged.",
+    "source_page": "https://www.hecbot.cn/product.html?type=22",
+    "source_url": "https://www.hecbot.cn/ggdz/2026/05/20/5bGyi00nj43qu.webp",
+    "source_alt": "Lumen H1（交互服务型机器人）",
+    "credit": "Guanggu Dongzhi / HECBOT",
+    "source_context": "Lumen H1 complete yellow/grey robot explicitly labelled Lumen H1 interaction/service robot on official product page. No other H1 maker or model.",
+    "original_sha256": "912e069722e8d6bd9422925616d47eee6af4eb11e5056c016ca6ca703588d152",
+    "prepared_sha256": "59c3fe4e40518363bac40a20dba1f3d2fe2b6435a734465071056db9a2df4db5",
+    "mask_sha256": "b02ed84dc92b18e26140643ef2671cc523d87cfe6d3841f8d8360f6a4030eb84",
+    "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+    "checked_at": "2026-11-27"
+  }
+]

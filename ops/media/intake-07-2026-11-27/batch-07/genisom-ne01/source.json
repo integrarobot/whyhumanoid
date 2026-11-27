@@ -1,0 +1,35 @@
+{
+  "id": 177,
+  "slug": "genisom-ne01",
+  "original": "ne01-ultra.webp",
+  "roi": [
+    0,
+    0,
+    1920,
+    1080
+  ],
+  "bbox": [
+    817,
+    121,
+    1103,
+    938
+  ],
+  "border": 20,
+  "size": [
+    326,
+    857
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+  "source_page": "https://www.genisomai.com/product-robot/ne01",
+  "source_url": "https://qiniu.mfdemo.cn/zhishen/2026/08/17/5k5fyNizL77mu.webp",
+  "source_alt": "",
+  "credit": "GENISOM",
+  "source_context": "NE01 Ultra configuration as explicitly shown in the manufacturer NE01 family specifications; exact image is Ultra, not a claim that every NE01 configuration looks the same. Caption must name the shown variant. Entire robot and both feet included.",
+  "original_sha256": "674e48b1121c231e1c40fb578677245666e39540b28b9f83f35ad36971671200",
+  "prepared_sha256": "00c40ef32b1a9d582158742ec594a1c9e88787395fcb158dc32057e96c92ab63",
+  "mask_sha256": "568dc66bf786b58f63c821145b2d8435067ad0e8caa2ae175b4c3b1d1b162739",
+  "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+  "checked_at": "2026-11-27",
+  "shown_variant": "NE01 Ultra"
+}

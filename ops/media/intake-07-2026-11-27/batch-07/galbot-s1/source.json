@@ -1,0 +1,34 @@
+{
+  "id": 157,
+  "slug": "galbot-s1",
+  "original": "157-5.webp",
+  "roi": [
+    0,
+    0,
+    900,
+    1506
+  ],
+  "bbox": [
+    81,
+    287,
+    725,
+    1291
+  ],
+  "border": 20,
+  "size": [
+    684,
+    1044
+  ],
+  "native_alpha": true,
+  "refinement": "Alpha levels85..230; small isolated background components excluded; RGB unchanged.",
+  "source_page": "http://www.galbot.com/s1/",
+  "source_url": "http://www.galbot.com/_nuxt/s1-spec-robot-v2.BSvgtlns.webp",
+  "source_alt": "Galbot S1",
+  "credit": "Galbot",
+  "source_context": "S1 industrial wheeled dual-arm robot from S1 specification illustration. Not the G1 record.",
+  "original_sha256": "4d7ce6bb8a1615f4599a53954e0a15cea70c28b987180b5831b85054fba4c1c9",
+  "prepared_sha256": "e11ed48c5ea906fbe8c818026c379d6d936c07e302bd9d97cab5e11bb8a4f928",
+  "mask_sha256": "3fe54533e805e55e0794297587e9b724fa755e15dc4e0e161d62ad50c6480132",
+  "processing": "Non-generative alpha-only mask; every visible source RGB pixel preserved; native resolution;20px transparent padding; no part generated.",
+  "checked_at": "2026-11-27"
+}

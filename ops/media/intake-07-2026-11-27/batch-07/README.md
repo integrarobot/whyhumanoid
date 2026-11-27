@@ -1,0 +1,9 @@
+# Robot image batch07 source intake
+
+Ten faithful manufacturer-source cutouts prepared by Codex on2026-11-27. Change only alpha; native RGB and resolution retained. Whole robots/platforms with20px transparent padding. Original, alpha mask, exact crop mapping, prepared PNG and SHA256 per source. Review independently before integration. Transport only; do not merge this source branch wholesale.
+
+Selected: R1(34),Kengo(161),S1(157),ET1(158),GENE.01(36),Eno(117),NE01(177;Ultra shown),Gento Luna(178),Laborer C1(179),Lumen H1(181). NE01 caption must name Ultra; no standard-only identity asserted. GENE.01 is July2026 platform from official press ZIP, not CES concept. R1 is the standard in the manufacturer guide, not Pro or Lite; default branch is galaxea/main (the main-only raw URL is404). Preserve R1 held box. Kengo ground reflection excluded. GENE manual alpha excludes background merged with dark hip/hand; delivered RGB is untouched. Its original dark lighting remains.
+
+Initial candidates deferred from this batch: GoMate(33), reviewed catalogue URL redirects to European automotive homepage and historical official news fetch fails; Gino1(213), official video thumbnail crops the wheeled base; G1(35), official product image alt explicitly calls it an S1 placeholder. No identity is assigned from appearance. These are limitations of reviewed sources, not claims no valid source exists. Three eligible reserves178,179,181 enter the ten. M1 card is cropped; Goblin source fetch failed. Unused reserve entries remain for later, without closing all G/H.
+
+Preserve the58 existing presentations. No master,D1,Worker,imports,pricing,data or other-record image changes. Use prepared PNG bytes unchanged; generate only the WebP twin with identical alpha. Product PR head+CI review by Codex before merge; Pages success before requesting new canonical assets; production HTTP and mobile/desktop verification before closeout.
