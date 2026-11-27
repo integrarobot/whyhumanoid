@@ -14,7 +14,13 @@ Not published from here: `ops/` is excluded from the site. Image batch 1 (Javier
 ## Catalogue identity
 
 - **Record:** catalogue id 140, Lab "Unitree", Robot "H2-X".
-- Codex established the identity from the official page markup: on https://www.unitree.com/H2-X/ the image sits inside a link to /H2-X. The record covers H2-X and H2-X EDU. Not H2 (id 139).
+- **Manufacturer-declared identity (Codex, 27 Nov 2026):** on the official page https://www.unitree.com/H2-X/ the image is inside this link, the active product, whose own text names the model:
+
+  ```html
+  <a aria-current="page" href="/H2-X" class="router-link-active router-link-exact-active link hashover"><img src="https://www.unitree.com/images/627867c4198c4796b0e474f953b8f903_800x800.png"><p class="name">H2-X</p><p class="desc">Next-Generation Full-S...</p></a>
+  ```
+
+  The identity rests on that block, not on reading markings on the robot (the torso shows "02"). The record covers H2-X and H2-X EDU. Not H2 (id 139).
 
 ## Trim here (no alpha change)
 

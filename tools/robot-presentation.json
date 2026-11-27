@@ -68,6 +68,21 @@
         "provenance": "ops/media/robots/boston-dynamics-atlas-industrial-electric/PROVENANCE.md"
       }
     },
+    "27": {
+      "recorded": {
+        "Lab": "Engineai",
+        "Robot": "SE01"
+      },
+      "image": {
+        "src": "/assets/robots/engineai-se01/se01-full-body.webp",
+        "fallback": "/assets/robots/engineai-se01/se01-full-body.png",
+        "width": 282,
+        "height": 797,
+        "alt": "SE01 by EngineAI, full body, front view, standing",
+        "credit": "Image: EngineAI",
+        "provenance": "ops/media/robots/engineai-se01/PROVENANCE.md"
+      }
+    },
     "30": {
       "recorded": {
         "Lab": "Figure",
@@ -186,6 +201,51 @@
         "alt": "ARI by PAL Robotics, full body on its wheeled base, three-quarter view, waving",
         "credit": "Image: PAL Robotics",
         "provenance": "ops/media/robots/pal-ari/PROVENANCE.md"
+      }
+    },
+    "153": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "TIAGo Pro"
+      },
+      "image": {
+        "src": "/assets/robots/pal-tiago-pro/tiago-pro-full-body.webp",
+        "fallback": "/assets/robots/pal-tiago-pro/tiago-pro-full-body.png",
+        "width": 548,
+        "height": 956,
+        "alt": "TIAGo Pro by PAL Robotics, whole robot on its omnidirectional wheeled base, three-quarter view",
+        "credit": "Image: PAL Robotics",
+        "provenance": "ops/media/robots/pal-tiago-pro/PROVENANCE.md"
+      }
+    },
+    "154": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "Kangaroo"
+      },
+      "image": {
+        "src": "/assets/robots/pal-kangaroo/kangaroo-full-body.webp",
+        "fallback": "/assets/robots/pal-kangaroo/kangaroo-full-body.png",
+        "width": 558,
+        "height": 945,
+        "alt": "KANGAROO by PAL Robotics, the whole platform as PAL presents it, without a head, front view, standing",
+        "credit": "Image: PAL Robotics",
+        "provenance": "ops/media/robots/pal-kangaroo/PROVENANCE.md"
+      }
+    },
+    "162": {
+      "recorded": {
+        "Lab": "Rainbow",
+        "Robot": "RB-Y1"
+      },
+      "image": {
+        "src": "/assets/robots/rainbow-rb-y1/rb-y1-full-body.webp",
+        "fallback": "/assets/robots/rainbow-rb-y1/rb-y1-full-body.png",
+        "width": 350,
+        "height": 880,
+        "alt": "RB-Y1 by Rainbow Robotics, whole robot on its wheeled base, front view",
+        "credit": "Image: Rainbow Robotics",
+        "provenance": "ops/media/robots/rainbow-rb-y1/PROVENANCE.md"
       }
     }
   }

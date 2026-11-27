@@ -41,6 +41,7 @@
       ],
       "notes": [
         "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
+        "Several other makers' PNG files named as background-free still hold interior backgrounds: rejected (Codex, 27 Nov 2026).",
         "Tenth candidate still being sought by Codex (27 Nov 2026)."
       ]
     }
@@ -127,7 +128,7 @@
           "date": "2026-11-27",
           "transparent_original": true,
           "verdict": "usable_original",
-          "detail": "Palette alpha 0–255, 800 × 800. Identity from the official HTML: the image sits inside a link to /H2-X on https://www.unitree.com/H2-X/. Trimmed only.",
+          "detail": "Palette alpha 0–255, 800 × 800. Manufacturer-declared identity: on https://www.unitree.com/H2-X/ the image is inside the active-product link href=\"/H2-X\" whose text is <p class=\"name\">H2-X</p>. Trimmed only.",
           "page": "https://www.unitree.com/H2-X/",
           "sha256": "f2289b96103b1d0e9a123ee6b484277e825d06390a7eb6479fb2867e46e1a466"
         }
@@ -273,7 +274,7 @@
         "Lab": "PAL",
         "Robot": "Kangaroo"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://pal-robotics.com/robot/kangaroo/",
       "sources": [
         {
@@ -292,7 +293,7 @@
           "date": "2026-11-27",
           "transparent_original": true,
           "verdict": "usable_original",
-          "detail": "644 × 1024, alpha 0–255, without the rectangle (Codex). Bytes not yet received in Claude's session."
+          "detail": "644 × 1024, alpha 0–255, without the rectangle (Codex). Received with matching SHA-256; trimmed only."
         }
       ],
       "notes": "The whole platform as PAL presents it, without a head: no head is added."
@@ -597,7 +598,7 @@
         "Lab": "PAL",
         "Robot": "TIAGo Pro"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://pal-robotics.com/robot/tiago-pro/",
       "sources": [
         {
@@ -608,7 +609,7 @@
           "date": "2026-11-27",
           "transparent_original": true,
           "verdict": "usable_original",
-          "detail": "921 × 1024, alpha 0–255 (Codex). Bytes not yet received in Claude's session."
+          "detail": "921 × 1024, alpha 0–255 (Codex). Received with matching SHA-256; trimmed only."
         }
       ]
     },
@@ -617,7 +618,7 @@
         "Lab": "Rainbow",
         "Robot": "RB-Y1"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://rainbow-robotics.com/products/rb-y1/",
       "notes": "Not Hubo (id 70). Record covers the A and M versions; no version claimed.",
       "sources": [
@@ -629,7 +630,7 @@
           "date": "2026-11-27",
           "transparent_original": true,
           "verdict": "usable_original",
-          "detail": "1024 × 1024, alpha 0–255 (Codex). Bytes not yet received in Claude's session."
+          "detail": "1024 × 1024, alpha 0–255 (Codex). Received with matching SHA-256; trimmed only."
         }
       ]
     },
@@ -638,7 +639,7 @@
         "Lab": "Engineai",
         "Robot": "SE01"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://en.engineai.com.cn/product-se01",
       "notes": "The file is named Se02_00000.png, but the official page product-se01 is titled SE01 and that img has alt=SE01 (Codex): the file name is not the model. Not PM01 (id 150) nor T800 (id 151).",
       "sources": [
@@ -658,7 +659,7 @@
           "date": "2026-11-27",
           "transparent_original": true,
           "verdict": "usable_original",
-          "detail": "800 × 800, alpha 0–255 (Codex). Bytes not yet received in Claude's session."
+          "detail": "800 × 800, alpha 0–255 (Codex). Received with matching SHA-256; trimmed only."
         }
       ]
     }
