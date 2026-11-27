@@ -72,36 +72,23 @@
     {
       "batch": 3,
       "opened": "2026-11-27",
-      "state": "planned",
+      "state": "integrated_awaiting_review",
       "target": 10,
       "scope": "A/B makers",
       "candidates": [
-        14,
         5,
-        3,
         8,
-        9,
-        10,
-        12,
-        13,
-        15,
+        116,
+        164,
+        14,
         105
       ],
-      "reserves": []
-    },
-    {
-      "batch": 4,
-      "opened": "2026-11-27",
-      "state": "planned",
-      "target": 10,
-      "scope": "A/B makers",
-      "candidates": [
-        116,
-        135,
-        163,
-        164
-      ],
-      "reserves": []
+      "reserves": [],
+      "notes": [
+        "Sources from Codex, transport branch codex/image-sources-ab (eece0f8), kept in ops/media/intake-ab-2026-11-27/batch-03/.",
+        "Booster T1: photo from the Tsinghua Hephaestus RoboCup team specification sheet, published at its modest native resolution (quality debt).",
+        "Nine records reviewed without a valid source and aeo (candidate failed) are traced as no_valid_source."
+      ]
     }
   ],
   "robots": {
@@ -197,10 +184,22 @@
         "Lab": "Booster",
         "Robot": "T1"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://www.boosterobotics.com/",
       "notes": "Standard T1. Not T2 (id 148), K1 (id 149) nor Tlibot T1 (id 202). T1 no longer appears on Booster's current home page (Codex, 27 Nov 2026): take the next candidate if no faithful T1 original is found. Standard T1; not T2 (148), K1 (149) nor Tlibot T1 (202). T1 no longer appears on Booster's current home page.",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://humanoid.robocup.org/wp-content/uploads/Tsinghua_Hephaestus-specs-6788f79d3cf43.pdf",
+          "page": "https://humanoid.robocup.org/wp-content/uploads/Tsinghua_Hephaestus-specs-6788f79d3cf43.pdf",
+          "sha256": "1b386393cb355388f14d16a1d160d7231fa2de6b2239c41a0cdd3b1a44871887",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "isnet-general-use; RGB exact; prepared 228 × 502."
+        }
+      ],
+      "quality_note": "Modest resolution: 228 × 502 (figure 188 × 462) from a 393 × 590 team photograph; replace when a larger faithful T1 image is found."
     },
     "148": {
       "recorded": {
@@ -449,8 +448,8 @@
         "Lab": "Axibo",
         "Robot": "Not disclosed"
       },
-      "status": "exception",
-      "reason": "No exact model in the record."
+      "status": "no_valid_source",
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://www.axibo.ai/): The official site does not disclose an identifiable model and uses generic AI-concept silhouettes. No robot-specific full-body photo verified. Not a claim that no photo exists."
     },
     "53": {
       "recorded": {
@@ -577,8 +576,8 @@
         "Lab": "Avatar Robotics",
         "Robot": "Avatar humanoid (model name not disclosed)"
       },
-      "status": "exception",
-      "reason": "No exact model in the record."
+      "status": "no_valid_source",
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://www.avatarrobotics.com/): No disclosed model identity. Official implementation photos show several robots/platforms but do not identify a specific Avatar-manufactured humanoid; cannot assign another makers model. Not a claim that no photo exists."
     },
     "58": {
       "recorded": {
@@ -872,7 +871,7 @@
         "Robot": "S1"
       },
       "sources": [],
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://astribot.com/",
       "notes": "Astribot S1, manipulation platform; whole robot as Astribot presents it.",
       "research": [
@@ -881,7 +880,8 @@
           "date": "2026-11-27",
           "note": "Search only: an Astribot-branded S1 specification sheet is hosted at https://a.storyblok.com/f/298593/x/d5cf3ddd99/astribot-s1_eng.pdf (not yet checked for a whole-robot image); product page astribot.com/en/product. Third-party \"media cards\" (Origin of Bots) are not official and are not used."
         }
-      ]
+      ],
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://astribot.com/): Official product and home stills show S1 behind a table, a faded diagram, or a group photo. No clean complete-body source has passed review. Not a claim that no photo exists."
     },
     "2": {
       "recorded": {
@@ -916,17 +916,29 @@
         "Robot": "aeo"
       },
       "sources": [],
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://aeolusbot.com/",
-      "notes": "aeo, wheeled dual-arm service humanoid."
+      "notes": "aeo, wheeled dual-arm service humanoid.",
+      "reason": "Candidate photo in the maker's official flyer (Hannover Messe 2026, PDF page 1, xref 80; kept in ops/media/intake-ab-2026-11-27/aeo-candidate/, unapproved): whole robot and its lidar mast visible, but neither Codex's isnet mask nor Claude's BiRefNet pure mask (ROI 530,300,1160,1800) keeps the white mast against the white wall, so the lidar floats detached. Not published; no edge is drawn by hand. The flyer's native cutouts crop at least one hand."
     },
     "5": {
       "recorded": {
         "Lab": "Agile",
         "Robot": "One"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://www.agile-robots.com/media/_processed_/3/6/csm_AgileRobots-AgileONE-Content-Pose-Front_66a5404261.png",
+          "page": "https://www.agile-robots.com/en/products/humanoid-robots/agile-one/",
+          "sha256": "a7dcc93b04be39f21d6595281a9c36e461ddcdbf31ab36bd4c7ba4c5d64768de",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "native-alpha; distant ground shadow masked beyond x704,y780; RGB exact; prepared 285 × 776."
+        }
+      ],
+      "status": "integrated",
       "page": "https://www.agile-robots.com/",
       "research": [
         {
@@ -941,8 +953,19 @@
         "Lab": "Argon",
         "Robot": "One"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://cdn.prod.website-files.com/684893e9d670283aee10ad61/6a42e561679b4bd62e9e5b75_argon-one-render-website%201v3.png",
+          "page": "https://www.argonmech.com/",
+          "sha256": "ad1558f22ee2d7773b491677897226f77ff434d39f9abb1b192f3d3b98c7b6a5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "native-alpha; RGB exact; prepared 756 × 1729."
+        }
+      ],
+      "status": "integrated",
       "page": "https://www.argonmech.com/"
     },
     "9": {
@@ -951,7 +974,7 @@
         "Robot": "X7"
       },
       "sources": [],
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://arx-x.com/",
       "research": [
         {
@@ -959,7 +982,8 @@
           "date": "2026-11-27",
           "note": "Search only: the X7 found is sold as a dual-arm (bimanual) arm platform, not a humanoid; no arx-x.com page was indexed. If the maker shows it only as arms, it is shown as presented or recorded as an exception; the catalogue classification is not changed here."
         }
-      ]
+      ],
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://arx-x.com/): Official X7 and X7-2025 release posters show the base and arms behind work tables, with robot parts occluded. No complete unoccluded still identified; do not fill missing pixels. Additional review: Official release video https://arx-x.com/assets/video/x7.mp4 (41.5s) reviewed through sampled frames across full duration; work table occludes lower-body regions throughout those frames. Not a claim that no photo exists."
     },
     "12": {
       "recorded": {
@@ -967,7 +991,7 @@
         "Robot": "Beomni"
       },
       "sources": [],
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://www.beyondimagination.com/",
       "research": [
         {
@@ -975,7 +999,8 @@
           "date": "2026-11-27",
           "note": "Search only: no official image gallery found; 2021–2022 press coverage (Designboom, Built In) carries photos credited to Beyond Imagination, which are not official sources here. The current Beomni may differ from Beomni 1.0. Without an official whole-robot image it becomes an exception."
         }
-      ]
+      ],
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://www.beyondimagination.com/): Official homepage stills are cropped upper-body/application photos. The model generation is not specified by this catalogue record; no complete matching original approved. Additional review: Manufacturer-credited press imagery (Designboom,2022-01-04) also reviewed: all source photos cropped at waist/base or occluded by task furniture; no complete body selected. Not a claim that no photo exists."
     },
     "13": {
       "recorded": {
@@ -983,9 +1008,10 @@
         "Robot": "Alex"
       },
       "sources": [],
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://boardwalkrobotics.com/",
-      "notes": "Alex is a torso with a configurable base: shown as Boardwalk presents it; no lower body added."
+      "notes": "Alex is a torso with a configurable base: shown as Boardwalk presents it; no lower body added.",
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://boardwalkrobotics.com/): The Alex official hero still is cropped to the upper torso and arms. Do not invent a lower body or use another model. Additional review: Official product hero clip https://boardwalkrobotics.com/_assets/2775af333e9ee60ae48d.mp4 is a6sloop cropped to torso; no complete robot source. Not a claim that no photo exists."
     },
     "15": {
       "recorded": {
@@ -993,16 +1019,28 @@
         "Robot": "Borg 01"
       },
       "sources": [],
-      "status": "candidate",
-      "page": "https://www.borgrobotic.com/"
+      "status": "no_valid_source",
+      "page": "https://www.borgrobotic.com/",
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://www.borgrobotic.com/): Official public site exposes only brand marks in the fetched image assets. No identifiable complete Borg01 source approved. Not a claim that no photo exists."
     },
     "105": {
       "recorded": {
         "Lab": "Addverb",
         "Robot": "Elixis"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://framerusercontent.com/images/h7Dzkq6l1Squ3SEWzTYtF4NagR4.png?height=1080&width=1080",
+          "page": "https://addverb.ai/humanoid-robot-elixis",
+          "sha256": "eaa5b6e90a5cc6739521b5540583222adad6a77fc03f5b813a965286931c4229",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "native-alpha; RGB exact; prepared 343 × 1019."
+        }
+      ],
+      "status": "integrated",
       "page": "https://addverb.ai/elixis",
       "notes": "Elixis, bipedal; Elixis-W (wheeled) is a separate variant."
     },
@@ -1011,8 +1049,19 @@
         "Lab": "Almond",
         "Robot": "Axol"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://www.almond.bot/assets/axol.webp",
+          "page": "https://www.almond.bot/",
+          "sha256": "c048ec486f46c4897151dbb3fe6b856786a5501d2d2810f371e5f0cf780d1dcb",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "native-alpha; RGB exact; prepared 507 × 844."
+        }
+      ],
+      "status": "integrated",
       "page": "https://www.almond.bot/",
       "notes": "Bimanual Axol (arms for table or cart): shown as Almond presents it; no body added."
     },
@@ -1022,9 +1071,10 @@
         "Robot": "Gallop"
       },
       "sources": [],
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
-      "notes": "Gallop: fixed base with two arms today; shown as ASUS presents it."
+      "notes": "Gallop: fixed base with two arms today; shown as ASUS presents it.",
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot): The ASUS press page shows Gallop upper body and hands; all available stills are cropped. No lower body should be reconstructed. Not a claim that no photo exists."
     },
     "163": {
       "recorded": {
@@ -1032,17 +1082,29 @@
         "Robot": "Elf·Xuan 2.0"
       },
       "sources": [],
-      "status": "candidate",
+      "status": "no_valid_source",
       "page": "https://www.aheadform.com/",
-      "notes": "Elf·Xuan 2.0 is an upper-body bionic robot (head and torso): shown as AheadForm presents it; no body added."
+      "notes": "Elf·Xuan 2.0 is an upper-body bionic robot (head and torso): shown as AheadForm presents it; no body added.",
+      "reason": "No reviewed source yet gives a faithful whole-robot image (Codex, 2026-11-27, https://www.aheadform.com/): Official Elf·Xuan2.0 product illustration is a bust. No matching complete body is supplied by the source. Not a claim that no photo exists."
     },
     "164": {
       "recorded": {
         "Lab": "AIDOL",
         "Robot": "AIDOL (walking version)"
       },
-      "sources": [],
-      "status": "candidate",
+      "sources": [
+        {
+          "file": "https://static.tildacdn.com/tild6363-3666-4637-a534-633737613466/main-card-walk.png",
+          "page": "https://aidoltech.ru/",
+          "sha256": "9d97605cd2c93724220da1e212d021df8f2d8265601328f57c7565c76b9645a0",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "native-alpha; RGB exact; prepared 307 × 540."
+        }
+      ],
+      "status": "integrated",
       "page": "https://aidoltech.ru/",
       "notes": "Walking version only; the desktop (upper-body) version is not this record."
     },

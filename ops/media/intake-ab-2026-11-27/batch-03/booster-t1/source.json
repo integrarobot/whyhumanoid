@@ -1,0 +1,32 @@
+{
+  "id": 14,
+  "slug": "booster-t1",
+  "mask_model": "isnet-general-use",
+  "roi": null,
+  "crop_bbox": [
+    105,
+    81,
+    293,
+    543
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "source-prepared; publication pending",
+  "asset_url": "https://humanoid.robocup.org/wp-content/uploads/Tsinghua_Hephaestus-specs-6788f79d3cf43.pdf",
+  "source_page": "https://humanoid.robocup.org/wp-content/uploads/Tsinghua_Hephaestus-specs-6788f79d3cf43.pdf",
+  "pdf_page": 1,
+  "pdf_xref": 1,
+  "pdf_sha256": "60074d5fe83d305b00ae90a0692a9afbbf22c21609210f543077d7a826252e3d",
+  "source_type": "Primary RoboCup team technical datasheet; photograph of Booster T1. Not a manufacturer-hosted image.",
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "original_sha256": "1b386393cb355388f14d16a1d160d7231fa2de6b2239c41a0cdd3b1a44871887",
+  "prepared_sha256": "92fd4e13a0dfeb77cb41573ffe9ae03792a74f504775de3ce3ed1a254d009c85",
+  "dimensions": [
+    228,
+    502
+  ],
+  "rgb_verified": true,
+  "retrieved_at": "2026-11-27",
+  "licence": "No open licence presumed; preserve source credit"
+}

@@ -1,0 +1,174 @@
+[
+  {
+    "id": 5,
+    "slug": "agile-one",
+    "mask_model": "native-alpha; distant ground shadow masked beyond x704,y780",
+    "roi": null,
+    "crop_bbox": [
+      511,
+      83,
+      756,
+      819
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "source-prepared; publication pending",
+    "source_page": "https://www.agile-robots.com/en/products/humanoid-robots/agile-one/",
+    "asset_url": "https://www.agile-robots.com/media/_processed_/3/6/csm_AgileRobots-AgileONE-Content-Pose-Front_66a5404261.png",
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "original_sha256": "a7dcc93b04be39f21d6595281a9c36e461ddcdbf31ab36bd4c7ba4c5d64768de",
+    "prepared_sha256": "a4c94c3841b9f31fcc918dc09af01bd3af6c09fb0d42d1e2c219eae4bba198dd",
+    "dimensions": [
+      285,
+      776
+    ],
+    "rgb_verified": true,
+    "retrieved_at": "2026-11-27",
+    "licence": "No open licence presumed; preserve source credit"
+  },
+  {
+    "id": 8,
+    "slug": "argon-one",
+    "mask_model": "native-alpha",
+    "roi": null,
+    "crop_bbox": [
+      574,
+      85,
+      1290,
+      1774
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "source-prepared; publication pending",
+    "asset_url": "https://cdn.prod.website-files.com/684893e9d670283aee10ad61/6a42e561679b4bd62e9e5b75_argon-one-render-website%201v3.png",
+    "source_page": "https://www.argonmech.com/",
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "original_sha256": "ad1558f22ee2d7773b491677897226f77ff434d39f9abb1b192f3d3b98c7b6a5",
+    "prepared_sha256": "7dd9a4f88c820293d629c29674495ab5fa5d630ad117ea3876fe8585b3f94b1b",
+    "dimensions": [
+      756,
+      1729
+    ],
+    "rgb_verified": true,
+    "retrieved_at": "2026-11-27",
+    "licence": "No open licence presumed; preserve source credit"
+  },
+  {
+    "id": 116,
+    "slug": "almond-axol",
+    "mask_model": "native-alpha",
+    "roi": null,
+    "crop_bbox": [
+      212,
+      44,
+      679,
+      848
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "source-prepared; publication pending",
+    "asset_url": "https://www.almond.bot/assets/axol.webp",
+    "source_page": "https://www.almond.bot/",
+    "original": "original.webp",
+    "prepared": "prepared.png",
+    "original_sha256": "c048ec486f46c4897151dbb3fe6b856786a5501d2d2810f371e5f0cf780d1dcb",
+    "prepared_sha256": "bf7f76f87b9ccaee9b1df388e51ca936bf412260ebeb47eb7a8e272a6575d3d0",
+    "dimensions": [
+      507,
+      844
+    ],
+    "rgb_verified": true,
+    "retrieved_at": "2026-11-27",
+    "licence": "No open licence presumed; preserve source credit"
+  },
+  {
+    "id": 164,
+    "slug": "aidol-walking",
+    "mask_model": "native-alpha",
+    "roi": null,
+    "crop_bbox": [
+      86,
+      13,
+      353,
+      513
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "source-prepared; publication pending",
+    "asset_url": "https://static.tildacdn.com/tild6363-3666-4637-a534-633737613466/main-card-walk.png",
+    "source_page": "https://aidoltech.ru/",
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "original_sha256": "9d97605cd2c93724220da1e212d021df8f2d8265601328f57c7565c76b9645a0",
+    "prepared_sha256": "b0993547f280fd2725253231dbb45f02a52392892c03947f782bb2ee1e757c49",
+    "dimensions": [
+      307,
+      540
+    ],
+    "rgb_verified": true,
+    "retrieved_at": "2026-11-27",
+    "licence": "No open licence presumed; preserve source credit"
+  },
+  {
+    "id": 14,
+    "slug": "booster-t1",
+    "mask_model": "isnet-general-use",
+    "roi": null,
+    "crop_bbox": [
+      105,
+      81,
+      293,
+      543
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "status": "source-prepared; publication pending",
+    "asset_url": "https://humanoid.robocup.org/wp-content/uploads/Tsinghua_Hephaestus-specs-6788f79d3cf43.pdf",
+    "source_page": "https://humanoid.robocup.org/wp-content/uploads/Tsinghua_Hephaestus-specs-6788f79d3cf43.pdf",
+    "pdf_page": 1,
+    "pdf_xref": 1,
+    "pdf_sha256": "60074d5fe83d305b00ae90a0692a9afbbf22c21609210f543077d7a826252e3d",
+    "source_type": "Primary RoboCup team technical datasheet; photograph of Booster T1. Not a manufacturer-hosted image.",
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "original_sha256": "1b386393cb355388f14d16a1d160d7231fa2de6b2239c41a0cdd3b1a44871887",
+    "prepared_sha256": "92fd4e13a0dfeb77cb41573ffe9ae03792a74f504775de3ce3ed1a254d009c85",
+    "dimensions": [
+      228,
+      502
+    ],
+    "rgb_verified": true,
+    "retrieved_at": "2026-11-27",
+    "licence": "No open licence presumed; preserve source credit"
+  },
+  {
+    "id": 105,
+    "slug": "addverb-elixis",
+    "mask_model": "native-alpha",
+    "crop_bbox": [
+      405,
+      59,
+      708,
+      1038
+    ],
+    "padding": 20,
+    "rgb_preserved": true,
+    "asset_url": "https://framerusercontent.com/images/h7Dzkq6l1Squ3SEWzTYtF4NagR4.png?height=1080&width=1080",
+    "source_page": "https://addverb.ai/humanoid-robot-elixis",
+    "source_context": "Native-alpha image linked in technical comparison section, under ELIXIS biped. Not Elixis-W. Official page read by web lookup although direct curl returns403.",
+    "original": "original.png",
+    "prepared": "prepared.png",
+    "original_sha256": "eaa5b6e90a5cc6739521b5540583222adad6a77fc03f5b813a965286931c4229",
+    "prepared_sha256": "e9a12a5b7ef75f1fd92df5895daa75a829e6e9930df19ded0a4b9190df4bc103",
+    "dimensions": [
+      343,
+      1019
+    ],
+    "rgb_verified": true,
+    "retrieved_at": "2026-11-27",
+    "licence": "No open licence presumed; preserve source credit",
+    "status": "source-prepared; publication pending"
+  }
+]
