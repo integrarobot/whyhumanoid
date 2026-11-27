@@ -40,6 +40,9 @@ async function subscriber(ctx) {
   return session;
 }
 
+// Results from the synthetic database only: Reports documents come from the real public atlas bundled with the Worker.
+const dbTotal = (body) => body.total - (body.categories.find((c) => c.id === 'reports')?.count ?? 0);
+
 test('normalisation folds case, accents and punctuation; the map points back to the original text', () => {
   assert.equal(norm('Logística  EE. UU.'), 'logistica ee uu');
   const m = normMap('Almacén Ñ');
@@ -85,7 +88,7 @@ test('visitors search every case by its public values, never by a paid value: no
   // Public values of every case are findable, and their results carry public values only.
   for (const qs of ['q=zetacorp', 'q=japan', 'tags=sector:healthcare', 'tags=task:assembly', 'tags=status:operational']) {
     const { body } = await get(qs);
-    assert.equal(body.total, 4, qs);
+    assert.equal(dbTotal(body), 4, qs);
     assert.doesNotMatch(JSON.stringify(body), /zetaword|hidden plant|confidential workflow|evidence:e5/i, qs);
   }
   const { body } = await get('q=acme');
@@ -114,8 +117,8 @@ test('subscribers search every row, with tags, filters, counts, ranking, snippet
   assert.deepEqual(hit.snippet.marks.map(([a, b]) => hit.snippet.text.slice(a, b)), ['zetaword']);
 
   // Spanish words reach the vocabulary; filters combine across facets and add up within one.
-  assert.equal((await get('q=sanidad')).total, 4);
-  assert.equal((await get('q=almac%C3%A9n')).total, 5);
+  assert.equal(dbTotal(await get('q=sanidad')), 4);
+  assert.equal(dbTotal(await get('q=almac%C3%A9n')), 5);
   const both = await get('tags=sector:automotive,hq:germany');
   assert.equal(both.total, 5);
   assert.deepEqual(both.active.map((a) => a.id).sort(), ['hq:germany', 'sector:automotive']);
@@ -165,4 +168,24 @@ test('the import rebuilds both scopes and reports counts only', async () => {
   assert.equal((await search(db, { scope: 'preview', q: 'zetacorp' })).total, 4);
   assert.equal(await (await db.prepare("SELECT COUNT(*) AS n FROM search_docs WHERE scope = 'preview' AND dataset = 'evidence-links'").first()).n, 0, 'claim-to-evidence links: counted, never indexed publicly');
   await assert.rejects(() => search(db, { q: 'x' }), /scope/);
+});
+
+// Reader-facing labels (27 Nov 2026): a listed company found by its ticker shows the reviewed English segment and
+// description the site uses, and never a raw identifier field ("gf symbol", ISIN, *_id) as its snippet.
+test('a listed company result shows reviewed English labels and no raw identifier snippet', async () => {
+  const values = workbook();
+  const spec = DATASETS_BY_ID.get('stocks');
+  const h = spec.headers;
+  const es = 'Desarrolla robótica para inspección, seguridad y logística: cuadrúpedos, brazos y descarga de mercancías.';
+  values[spec.tab] = [h, h.map((f) => ({ NAME: 'Example Logistics Robotics', TICKER: 'EXLG', EXCHANGE: 'NYSE', COUNTRY: 'EE. UU.', SEGMENT: 'Robótica / automatización (ROBO)', DESCRIPTION: es, GF_SYMBOL: 'NYSE:EXLG', ISIN: 'US0000000001' }[f] ?? ''))];
+  const ctx = await setup({ workbook: values });
+  const body = await (await ctx.call('GET', '/v1/search?q=EXLG')).json();
+  const hit = body.results.find((r) => r.category === 'stocks');
+  assert.ok(hit, JSON.stringify(body.results.map((r) => r.category)));
+  assert.equal(hit.subtitle, 'NYSE · United States · Robotics / automation (ROBO)');
+  assert.ok(!hit.snippet || !/gf symbol|isin|NYSE:EXLG/i.test(`${hit.snippet.label} ${hit.snippet.text}`), JSON.stringify(hit.snippet));
+  assert.equal(hit.snippet?.text, 'Develops robotics for inspection, security and logistics: quadrupeds, arms and goods unloading.');
+  // The stored row keeps the recorded values: only the result display uses the reviewed wording.
+  const row = (await ctx.call('GET', '/v1/datasets/stocks/preview').then((r) => r.json())).rows.find((r) => r.ticker === 'EXLG');
+  assert.equal(row.segment, 'Robótica / automatización (ROBO)');
 });
