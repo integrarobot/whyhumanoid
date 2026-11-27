@@ -1,0 +1,34 @@
+{
+  "id": 28,
+  "slug": "ameca",
+  "original": "ameca-18535.jpg",
+  "roi": [
+    140,
+    200,
+    365,
+    945
+  ],
+  "bbox": [
+    11,
+    8,
+    221,
+    737
+  ],
+  "border": 20,
+  "size": [
+    250,
+    769
+  ],
+  "native_alpha": false,
+  "refinement": "ISNET alpha mask levels85..230.",
+  "source_page": "https://engineeredarts.com/tritium/robots/ameca",
+  "source_url": "https://media.engineeredarts.com/wp-content/uploads/2025/09/Ameca-Full-Size-Social-Humanoid-Robot-interview-at-Techsauce-Global-Summit-2024-Engineered-Arts.jpg",
+  "source_alt": "",
+  "credit": "Engineered Arts",
+  "source_context": "Ameca full-size at Techsauce Global Summit2024, both hands/feet and complete circular mounting base. Not Desktop. Native source666x999; robot crop250x769 including20px padding; modest resolution, no upscale.",
+  "original_sha256": "534fe09aebfa9f24e1a25e6fa807151dcfd47b73efdef93d49212ae7a1e1b394",
+  "prepared_sha256": "32d7870117e6e266bd7c6d1372703a73fecfd0f0fe9b2356726bc34a5c3ce098",
+  "mask_sha256": "648077ee8e6ae62327bb76f67f71b7b9279fa54fa6539f3431f8f817627ef0bf",
+  "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

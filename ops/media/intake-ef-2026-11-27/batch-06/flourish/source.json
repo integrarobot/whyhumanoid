@@ -1,0 +1,34 @@
+{
+  "id": 129,
+  "slug": "flourish",
+  "original": "129-36.jpg",
+  "roi": [
+    0,
+    0,
+    4320,
+    6464
+  ],
+  "bbox": [
+    1349,
+    8,
+    2848,
+    5956
+  ],
+  "border": 20,
+  "size": [
+    1539,
+    5988
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha levels85..230; small background components removed. Alpha-only boundary exclusion of wall halo above original row8.",
+  "source_page": "https://flourish-robots.com/",
+  "source_url": "https://framerusercontent.com/images/gDyKs7ERxGbJEVUpekIf1uznZeg.jpg",
+  "source_alt": "",
+  "credit": "Flourish",
+  "source_context": "Flourish robot as shown by its manufacturer; model name unconfirmed. Complete green wheeled platform from current official homepage. Do not invent a commercial model name or update catalogue data.",
+  "original_sha256": "857336605acbb53b599d02f3921828c8698d7075e3d1bc41d506d5aaa7ddc486",
+  "prepared_sha256": "40284a003fda4f14f954cbb1ea04fb93faa074c7178a9e374608245b65ef2986",
+  "mask_sha256": "2877fa85e9daa7831c3ad6e318c697530962de929b4694dc7f647113d9eff665",
+  "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+  "checked_at": "2026-11-27"
+}
