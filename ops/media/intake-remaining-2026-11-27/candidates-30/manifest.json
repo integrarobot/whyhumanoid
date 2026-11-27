@@ -1,0 +1,19 @@
+[
+  {
+    "id": 70,
+    "slug": "rainbow-hubo2-front",
+    "credit": "Rainbow Robotics, via Rainbow Robotics Vietnam",
+    "source_page": "https://rainbow-robotics.vn/hubo2/",
+    "source_url": "https://rainbow-robotics.vn/images/ckeditor/images/202209151451348f46d5423a109969fc003dfe17608f03b56a3b10.png",
+    "original": "original.png",
+    "original_size": [
+      1206,
+      1658
+    ],
+    "original_sha256": "38fe5cc3103b3785f3d6a36ebe3927195a19d8e0a4e1982802fd00288889a979",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "source_context": "Existing HUBO2 manufacturer product image hosted on Rainbow Robotics Vietnam regional/reseller product page, NOT falsely presented as downloaded from global manufacturer server. ExactpageHUBO2, 120cm43kg38DOF technical text matches global legacy page https://rainbowrobotics1.cafe24.com/hubo2 which is currently DNSunreachable here but searchindexed. Native1206x1658 whole head, hands, feet with margins; chest branding HUBO/KIST/Rainbow. The alt attribute RBQ is a mistakengenericreusedalt on this page; visible biped and HUBO chest plus exact page title/body identify HUBO2, not a quadruped. Caption explicitly Rainbow Robotics, HUBO2 product image via Rainbow Robotics Vietnam; record70Hubofamily, no spec change. Rootinspectedwholebodycontactsheet. RegionalsitehasRPMEC contact; do not assert it is a wholly owned subsidiary or newly verified authorized partner. Treat as third-party-hosted maker product image, analogous to archived maker brochures. Alpha-only segmentation, preserve RGB/native20pxpadding; exclude whitebackground/floor shadow.",
+    "license_note": "Maker product image hosted by a regional/reseller site. Credit manufacturer and hosting source; no open licence claimed, no contact or permission request sent."
+  }
+]
