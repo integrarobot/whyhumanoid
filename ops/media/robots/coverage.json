@@ -360,6 +360,31 @@
         "Published with PR 242 (reviewed head 1f57dd5, CI 46053204219; merge c314f66), 27 Nov 2026; Pages 46053509647 and production verification by Claude and Codex recorded in the batch closeout."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 14,
+      "opened": "2026-11-27",
+      "state": "integrated",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026)",
+      "candidates": [
+        80,
+        216,
+        63,
+        160,
+        206,
+        188,
+        211,
+        204,
+        120,
+        182
+      ],
+      "reserves": [],
+      "notes": [
+        "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-14/: candidates-19 (639618b: Phoenix Gen 6), candidates-20 (33e84f4: iX, PHYBOT M1, MagicBot Z1), candidates-21 (4d699a5: TianGong Omni, VB-01), candidates-22 (8417c21: TITAN O1, Tien Kung 3.0), candidates-23 (b09a967: Sunday Memo) and candidates-24 (421cfc1: JingChu 1). Every cutout prepared by Claude, alpha only: the original's own alpha (iX, TianGong Omni; TITAN O1 levelled to drop its translucent motion trail; JingChu 1 levelled to make its faded foot opaque) or BiRefNet masks kept beside the originals.",
+        "Left out: IGRIS 2025 (79), suspended on a crane whose strap passes in front of the shoulder (Codex: rejected, not reconstructed); kept in the package as research. R-Noid frame 908 (77) and the D9 section-2 frames (155) were examined by Codex and not used. Jingchu Elf (183) is kept for the next batch (its head reaches the top of the file with opaque pixels).",
+        "Captions name the kind of image and the variant: Phoenix Gen 6 launch graphic (2023), iX raised-hand render, M1 render, MagicBot Z1 video still with round-ended arms, TianGong Omni front-view technical render, VB-01 brochure image (2024), TITAN O1 running render, Tien Kung 3.0 inverted pose, Memo video still with plate, JingChu 1 render. Records' specifications unchanged."
+      ]
     }
   ],
   "robots": {
@@ -2889,9 +2914,20 @@
         "Lab": "Phybot",
         "Robot": "M1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.phybot.tech/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.phybot.tech/assets/images/PHYBOT_M1_006252-KTn1Ppv6.png",
+          "page": "https://www.phybot.tech/en/phybot-m1",
+          "sha256": "974e994ee1749ca52d5cafc901894aefb5eba019f296a85cfb6036d3a0f5fcff",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 462 × 932 with 20 px padding."
+        }
+      ]
     },
     "64": {
       "recorded": {
@@ -3087,16 +3123,28 @@
       },
       "status": "queued",
       "page": "https://robros.co.kr/",
-      "result": "Source received 27 Nov 2026 (Robros homepage image ai-solution-04.jpg, whole biped directing parking): which Robros robot it shows is not established from the manufacturer's text; left out of batch 10 until the identity is confirmed."
+      "result": "Source received 27 Nov 2026 (Robros homepage image ai-solution-04.jpg, whole biped directing parking): which Robros robot it shows is not established from the manufacturer's text; left out of batch 10 until the identity is confirmed.",
+      "notes": "Batch 14 (27 Nov 2026): the February 2025 IGRIS photograph shows the prototype suspended on a crane; a strap passes in front of the shoulder and the crane post meets the hand and feet, so it cannot be isolated by alpha alone. Rejected by Codex, not reconstructed; still queued."
     },
     "80": {
       "recorded": {
         "Lab": "Sanctuary AI",
         "Robot": "Phoenix"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://sanctuary.ai/resources/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://sanctuary.ai/wp-content/uploads/2023/05/main-image-phoenix-annoucement-1.webp",
+          "page": "https://sanctuary.ai/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/",
+          "sha256": "400ff83a111118944cffff74d6d5b0efc857027604d0b0d137f21831d10fc44e",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 234 × 624 with 20 px padding."
+        }
+      ]
     },
     "83": {
       "recorded": {
@@ -3404,9 +3452,20 @@
         "Lab": "Sunday",
         "Robot": "Memo"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.sunday.ai/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://stream.mux.com/xLLkokRSG7wrmPVmYfSE3Hz2TwlKI83Ohf8vHejgI4o.m3u8",
+          "page": "https://www.sunday.ai/",
+          "sha256": "1f859e257f6e57eb52a0c893aa6f7f434aaf9f94b5b53d8b36a20fbf9c7c5b9b",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 493 × 893 with 20 px padding."
+        }
+      ]
     },
     "122": {
       "recorded": {
@@ -3507,18 +3566,40 @@
         "Lab": "Magiclab",
         "Robot": "MagicBot Z1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.magiclab.top/en/z1",
-      "result": "Queued. Official GitHub MagiclabRobotics/Magiclab_GMR has no product image; Codex's sweep pending."
+      "sources": [
+        {
+          "file": "https://oss-cdn.magiclab.top/file/videos/z1/ff1ce7/ecb2981116c2b3c8ece77f6df4347d61.mp4",
+          "page": "https://www.magiclab.top/en/z1",
+          "sha256": "58b3c044b4b2407b7cee4ecc387fd11e3e41461b3272063dfd147a98d29cc236",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 371 × 562 with 20 px padding."
+        }
+      ]
     },
     "182": {
       "recorded": {
         "Lab": "Jingchu Humanoid",
         "Robot": "JingChu 1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.jingchurobot.cn/product_detail/1.html",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://omo-oss-image1.thefastimg.com/portal-saas/pg2025073116424452690/cms/image/fdf4c32f-c70f-4f70-94ae-ad603983827a.png?vf=B7gH3s",
+          "page": "https://www.jingchurobot.cn/product_detail/1.html",
+          "sha256": "562c4735c992bbe7e9c7b5e8e81006036f94eb693b84a3a8ee1f63c2a3dcd9e5",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 551 × 1242 with 20 px padding."
+        }
+      ]
     },
     "183": {
       "recorded": {
@@ -3593,9 +3674,20 @@
         "Lab": "Lanxin Robotics",
         "Robot": "VB1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.lanxinrobotics.com/vb1/",
-      "result": "Source received 27 Nov 2026 (official VB1 specification illustration): annotation dots are painted on the body, so a clean whole-robot image cannot be cut out; another official source is still sought."
+      "sources": [
+        {
+          "file": "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-8fa3d198-57b0-4a17-8e9d-ef4a58dc5a12/product-documents/pro-02a38744-4ce5-4f2f-bafb-ca8d9269152e/0060ecac-8e94-4eed-9b50-7d64c604579d.pdf",
+          "page": "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-8fa3d198-57b0-4a17-8e9d-ef4a58dc5a12/product-documents/pro-02a38744-4ce5-4f2f-bafb-ca8d9269152e/0060ecac-8e94-4eed-9b50-7d64c604579d.pdf",
+          "sha256": "7dae1f397c1a60718bc5e9acc39f741f468f5b0dd2d9963be6b35dd857bd1210",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 780 × 1494 with 20 px padding."
+        }
+      ]
     },
     "189": {
       "recorded": {
@@ -3818,9 +3910,20 @@
         "Lab": "X-Humanoid",
         "Robot": "Tien Kung 3.0"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.x-humanoid.com/detail/jstg.html",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.x-humanoid.com/storage/website/2026/10-14/6acf3d66d7f11-1-55178.jpg",
+          "page": "https://www.x-humanoid.com/m/news-view-251.html",
+          "sha256": "f9bd647a1260404724814fd5aab7871be290ad2630f5080e544327e7bcd4620a",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 590 × 745 with 20 px padding."
+        }
+      ]
     },
     "205": {
       "recorded": {
@@ -3836,9 +3939,20 @@
         "Lab": "X-Humanoid",
         "Robot": "TianGong Omni"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.x-humanoid.com/detail/omni.html",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://www.x-humanoid.com/oss/static/img/omni-three-view.png",
+          "page": "https://www.x-humanoid.com/detail/omni.html",
+          "sha256": "7b2770506fb83f27c8be16802b96d648668392c546e6e2464b90b09b71faf8f3",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 452 × 1050 with 20 px padding."
+        }
+      ]
     },
     "207": {
       "recorded": {
@@ -3903,9 +4017,20 @@
         "Lab": "Westlake Robotics",
         "Robot": "Westlake o1"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://wlrobo.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://wlrobo.com/figma/o1/0b5f5.png",
+          "page": "https://wlrobo.com/module2",
+          "sha256": "87ccd7a2e3758b25f1e993965cdd29424e5e922f6d2b8a5520da8e0d783dc1d6",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 1662 × 3138 with 20 px padding."
+        }
+      ]
     },
     "212": {
       "recorded": {
@@ -3930,9 +4055,20 @@
         "Lab": "Simplexity Robotics",
         "Robot": "iX"
       },
-      "status": "queued",
+      "status": "integrated",
       "page": "https://www.simplexityrobotics.com/products/ix",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "sources": [
+        {
+          "file": "https://images.simplexityrobotics.com/official/img/products/ix/ix-fullbody-stand-dark.png",
+          "page": "https://www.simplexityrobotics.com/products/ix",
+          "sha256": "fa718374dc103f2f9e71dd1b653c9d19bf6c6ccd772d85f4f57d7adc25445166",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_cutout",
+          "detail": "alpha mask; RGB exact; prepared 830 × 1777 with 20 px padding."
+        }
+      ]
     }
   },
   "scopes": [

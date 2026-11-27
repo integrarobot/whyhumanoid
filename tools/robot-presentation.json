@@ -1927,6 +1927,156 @@
         "credit": "Image: Reflex, video still with snow shovel",
         "provenance": "ops/media/robots/reflex-snow/PROVENANCE.md"
       }
+    },
+    "80": {
+      "recorded": {
+        "Lab": "Sanctuary AI",
+        "Robot": "Phoenix"
+      },
+      "image": {
+        "src": "/assets/robots/sanctuary-phoenix-gen6/sanctuary-phoenix-gen6-full-body.webp",
+        "fallback": "/assets/robots/sanctuary-phoenix-gen6/sanctuary-phoenix-gen6-full-body.png",
+        "width": 234,
+        "height": 624,
+        "alt": "Phoenix Gen 6 by Sanctuary AI, full body, front view, standing, manufacturer launch graphic",
+        "credit": "Image: Sanctuary AI, Phoenix Gen 6 launch graphic (2023)",
+        "provenance": "ops/media/robots/sanctuary-phoenix-gen6/PROVENANCE.md"
+      }
+    },
+    "216": {
+      "recorded": {
+        "Lab": "Simplexity Robotics",
+        "Robot": "iX"
+      },
+      "image": {
+        "src": "/assets/robots/simplexity-ix/simplexity-ix-full-body.webp",
+        "fallback": "/assets/robots/simplexity-ix/simplexity-ix-full-body.png",
+        "width": 830,
+        "height": 1777,
+        "alt": "iX by Simplexity Robotics, full body, on its four-wheel chassis, one hand raised, manufacturer render",
+        "credit": "Image: Simplexity Robotics, iX manufacturer render, raised-hand configuration",
+        "provenance": "ops/media/robots/simplexity-ix/PROVENANCE.md"
+      }
+    },
+    "63": {
+      "recorded": {
+        "Lab": "Phybot",
+        "Robot": "M1"
+      },
+      "image": {
+        "src": "/assets/robots/phybot-m1/phybot-m1-full-body.webp",
+        "fallback": "/assets/robots/phybot-m1/phybot-m1-full-body.png",
+        "width": 462,
+        "height": 932,
+        "alt": "M1 by PHYBOT, full body, three-quarter front view, one foot raised, manufacturer render",
+        "credit": "Image: PHYBOT, M1 manufacturer render",
+        "provenance": "ops/media/robots/phybot-m1/PROVENANCE.md"
+      }
+    },
+    "160": {
+      "recorded": {
+        "Lab": "Magiclab",
+        "Robot": "MagicBot Z1"
+      },
+      "image": {
+        "src": "/assets/robots/magiclab-magicbot-z1/magiclab-magicbot-z1-full-body.webp",
+        "fallback": "/assets/robots/magiclab-magicbot-z1/magiclab-magicbot-z1-full-body.png",
+        "width": 371,
+        "height": 562,
+        "alt": "MagicBot Z1 by MagicLab, full body, walking, round-ended arms, still from the official video",
+        "credit": "Image: MagicLab, MagicBot Z1 video still, round-ended-arm configuration",
+        "provenance": "ops/media/robots/magiclab-magicbot-z1/PROVENANCE.md"
+      }
+    },
+    "206": {
+      "recorded": {
+        "Lab": "X-Humanoid",
+        "Robot": "TianGong Omni"
+      },
+      "image": {
+        "src": "/assets/robots/x-humanoid-tiangong-omni/x-humanoid-tiangong-omni-full-body.webp",
+        "fallback": "/assets/robots/x-humanoid-tiangong-omni/x-humanoid-tiangong-omni-full-body.png",
+        "width": 452,
+        "height": 1050,
+        "alt": "TianGong Omni by X-Humanoid, full body, front view, manufacturer technical render",
+        "credit": "Image: X-Humanoid, TianGong Omni front-view technical render",
+        "provenance": "ops/media/robots/x-humanoid-tiangong-omni/PROVENANCE.md"
+      }
+    },
+    "188": {
+      "recorded": {
+        "Lab": "Lanxin Robotics",
+        "Robot": "VB1"
+      },
+      "image": {
+        "src": "/assets/robots/lanxin-vb-01/lanxin-vb-01-full-body.webp",
+        "fallback": "/assets/robots/lanxin-vb-01/lanxin-vb-01-full-body.png",
+        "width": 780,
+        "height": 1494,
+        "alt": "VB-01 VersaBot by Lanxin Robotics, full body, on its mast and wheeled base with two grippers, manufacturer brochure image",
+        "credit": "Image: Lanxin Robotics, VB-01 VersaBot brochure image (2024)",
+        "provenance": "ops/media/robots/lanxin-vb-01/PROVENANCE.md"
+      }
+    },
+    "211": {
+      "recorded": {
+        "Lab": "Westlake Robotics",
+        "Robot": "Westlake o1"
+      },
+      "image": {
+        "src": "/assets/robots/westlake-titan-o1/westlake-titan-o1-full-body.webp",
+        "fallback": "/assets/robots/westlake-titan-o1/westlake-titan-o1-full-body.png",
+        "width": 1662,
+        "height": 3138,
+        "alt": "TITAN O1 by Westlake Robotics, full body, running pose, manufacturer render",
+        "credit": "Image: Westlake Robotics, TITAN O1 manufacturer render, running pose",
+        "provenance": "ops/media/robots/westlake-titan-o1/PROVENANCE.md"
+      }
+    },
+    "204": {
+      "recorded": {
+        "Lab": "X-Humanoid",
+        "Robot": "Tien Kung 3.0"
+      },
+      "image": {
+        "src": "/assets/robots/x-humanoid-tienkung-3/x-humanoid-tienkung-3-full-body.webp",
+        "fallback": "/assets/robots/x-humanoid-tienkung-3/x-humanoid-tienkung-3-full-body.png",
+        "width": 590,
+        "height": 745,
+        "alt": "Tien Kung 3.0 by X-Humanoid, full body, inverted pose, manufacturer demonstration image",
+        "credit": "Image: Beijing Humanoid Robot Innovation Center, Tien Kung 3.0, inverted pose",
+        "provenance": "ops/media/robots/x-humanoid-tienkung-3/PROVENANCE.md"
+      }
+    },
+    "120": {
+      "recorded": {
+        "Lab": "Sunday",
+        "Robot": "Memo"
+      },
+      "image": {
+        "src": "/assets/robots/sunday-memo/sunday-memo-full-body.webp",
+        "fallback": "/assets/robots/sunday-memo/sunday-memo-full-body.png",
+        "width": 493,
+        "height": 893,
+        "alt": "Memo by Sunday, full body, on its mast and wheeled base, holding a plate, still from the official video",
+        "credit": "Image: Sunday, Memo official video still with plate",
+        "provenance": "ops/media/robots/sunday-memo/PROVENANCE.md"
+      }
+    },
+    "182": {
+      "recorded": {
+        "Lab": "Jingchu Humanoid",
+        "Robot": "JingChu 1"
+      },
+      "image": {
+        "src": "/assets/robots/jingchu-1/jingchu-1-full-body.webp",
+        "fallback": "/assets/robots/jingchu-1/jingchu-1-full-body.png",
+        "width": 551,
+        "height": 1242,
+        "alt": "JingChu 1 by Jingchu Humanoid, full body, walking, manufacturer render",
+        "credit": "Image: Jingchu Humanoid, JingChu 1 manufacturer render",
+        "provenance": "ops/media/robots/jingchu-1/PROVENANCE.md"
+      }
     }
   }
 }

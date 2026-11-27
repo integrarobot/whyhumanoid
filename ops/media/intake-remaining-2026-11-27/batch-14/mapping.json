@@ -1,0 +1,79 @@
+{
+  "batch": 14,
+  "intake": "ops/media/intake-remaining-2026-11-27/batch-14",
+  "branch": "codex/image-sources-remaining",
+  "commit": "639618b (candidates-19), 33e84f4 (candidates-20), 4d699a5 (candidates-21), 8417c21 (candidates-22), b09a967 (candidates-23) and 421cfc1 (candidates-24)",
+  "scope": "All missing images (Javier, 27 Nov 2026)",
+  "items": {
+    "80": {
+      "slug": "sanctuary-phoenix-gen6",
+      "alt": "Phoenix Gen 6 by Sanctuary AI, full body, front view, standing, manufacturer launch graphic",
+      "credit": "Image: Sanctuary AI, Phoenix Gen 6 launch graphic (2023)",
+      "identity": "The Phoenix Gen 6 launch graphic from Sanctuary AI (native 1160 × 680): the whole robot with head, both hands and both feet. The callout lines, text, orange frame, black background and floor glow are excluded by the alpha mask; no body pixel is brightened or reconstructed. It shows the 2023 Gen 6 configuration, not Gen 7 or current hardware.",
+      "quality": null
+    },
+    "216": {
+      "slug": "simplexity-ix",
+      "alt": "iX by Simplexity Robotics, full body, on its four-wheel chassis, one hand raised, manufacturer render",
+      "credit": "Image: Simplexity Robotics, iX manufacturer render, raised-hand configuration",
+      "identity": "The full-body iX render served by Simplexity Robotics' own image host (native 4096 × 2304, with its own transparency): the whole robot with head, both dexterous hands, one raised in front of the face as posed in the original, and the entire four-wheel chassis. Cropped and padded only; not the earlier cropped torso hero.",
+      "quality": null
+    },
+    "63": {
+      "slug": "phybot-m1",
+      "alt": "M1 by PHYBOT, full body, three-quarter front view, one foot raised, manufacturer render",
+      "credit": "Image: PHYBOT, M1 manufacturer render",
+      "identity": "The front three-quarter figure of the two-view render on PHYBOT's M1 product page (native 2280 × 1080): the whole robot with head, both hands and both feet, one foot raised. The second view, the blue dimension arcs and the text, which stand outside the body, are excluded by the alpha mask.",
+      "quality": null
+    },
+    "160": {
+      "slug": "magiclab-magicbot-z1",
+      "alt": "MagicBot Z1 by MagicLab, full body, walking, round-ended arms, still from the official video",
+      "credit": "Image: MagicLab, MagicBot Z1 video still, round-ended-arm configuration",
+      "identity": "Frame 153 (6.12 s) of the video on MagicLab's MagicBot Z1 page (native 1920 × 1080): the whole robot with head, both arms ending in their rounded end caps (no hands are added) and both feet in a walking pose. The balls, the grass and the background are excluded by the alpha mask. Not the Gen1 video used for record 54.",
+      "quality": null
+    },
+    "206": {
+      "slug": "x-humanoid-tiangong-omni",
+      "alt": "TianGong Omni by X-Humanoid, full body, front view, manufacturer technical render",
+      "credit": "Image: X-Humanoid, TianGong Omni front-view technical render",
+      "identity": "The front figure of the three-view render on X-Humanoid's TianGong Omni product page (native 2157 × 1212, with its own transparency): the whole robot with head, both open hands and both feet; the side and back views are left out. Not Tien Kung 3.0 or Tian Yi 2.0.",
+      "quality": null
+    },
+    "188": {
+      "slug": "lanxin-vb-01",
+      "alt": "VB-01 VersaBot by Lanxin Robotics, full body, on its mast and wheeled base with two grippers, manufacturer brochure image",
+      "credit": "Image: Lanxin Robotics, VB-01 VersaBot brochure image (2024)",
+      "identity": "The front figure on page 1 of Lanxin Robotics' 2024 VB-01 VersaBot brochure (native 2997 × 1870; the copy read is hosted by an event exhibitor platform): the whole robot with head, both grippers, mast and wheeled base. The second view and the floor shadows are excluded by the alpha mask. White arm parts flagged by the flat-background check are the robot's own surfaces.",
+      "quality": null
+    },
+    "211": {
+      "slug": "westlake-titan-o1",
+      "alt": "TITAN O1 by Westlake Robotics, full body, running pose, manufacturer render",
+      "credit": "Image: Westlake Robotics, TITAN O1 manufacturer render, running pose",
+      "identity": "The TITAN O1 render referenced by Westlake Robotics' O1 page (native 2162 × 3844, with its own transparency): the whole robot in a running pose with head, both hands and both feet. The translucent motion trail beside it, all below alpha 96 in the original, is dropped by levelling that alpha (110..240); RGB unchanged.",
+      "quality": null
+    },
+    "204": {
+      "slug": "x-humanoid-tienkung-3",
+      "alt": "Tien Kung 3.0 by X-Humanoid, full body, inverted pose, manufacturer demonstration image",
+      "credit": "Image: Beijing Humanoid Robot Innovation Center, Tien Kung 3.0, inverted pose",
+      "identity": "Image 7 of the maker's Tien Kung 3.0 launch article (native 1920 × 1280): the whole robot in an inverted pose, with head, hands and feet. The original orientation is kept; nothing is rotated or added. The white studio is excluded by the alpha mask. It is a demonstration image and says nothing about autonomy.",
+      "quality": null
+    },
+    "120": {
+      "slug": "sunday-memo",
+      "alt": "Memo by Sunday, full body, on its mast and wheeled base, holding a plate, still from the official video",
+      "credit": "Image: Sunday, Memo official video still with plate",
+      "identity": "Frame 1035 (34.53 s) of the video on Sunday's homepage, decoded at its native 1920 × 1080: the whole Memo with its cap, both arms and grippers, the mast and the wheeled base, holding a whole plate above a dishwasher door. The kitchen, the dishwasher door and rack and the floor are excluded by the alpha mask; the plate is kept. No availability or autonomy is implied.",
+      "quality": null
+    },
+    "182": {
+      "slug": "jingchu-1",
+      "alt": "JingChu 1 by Jingchu Humanoid, full body, walking, manufacturer render",
+      "credit": "Image: Jingchu Humanoid, JingChu 1 manufacturer render",
+      "identity": "The render on the maker's JingChu 1 product page (native 800 × 1205, with its own transparency): the whole biped with head, both articulated hands and both feet. The original alpha fades the front foot (from 242 down to about 207); it is levelled 120..205 so the foot is opaque, RGB unchanged. The sole reaches the bottom of the publisher's file only with its faint antialiased edge (alpha at most 131 in the last row). Not the wheeled Jingchu Elf.",
+      "quality": null
+    }
+  }
+}
