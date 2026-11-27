@@ -169,7 +169,7 @@
     {
       "batch": 7,
       "opened": "2026-11-27",
-      "state": "integrated_awaiting_review",
+      "state": "published",
       "target": 10,
       "scope": "Batch 7 (alphabetical after E/F; no letter scope opened)",
       "candidates": [
@@ -195,8 +195,10 @@
         "Javier (\"venga sigue con 10 más\"), via Codex, 27 Nov 2026: ten new images in alphabetical order after E/F; G/H is not closed as a scope and no further batch is opened.",
         "Sources from Codex, transport branch codex/image-sources-07 (8133830; alpha of R1, Eno, GENE.01 and Kengo corrected over 886396f, the other six byte-identical), kept unchanged in ops/media/intake-07-2026-11-27/batch-07/; prepared PNGs used as delivered.",
         "Reserves Gento Luna (178), Laborer C1 (179) and Lumen H1 (181) replace GoMate (33), Galbot G1 (35) and Gino 1 (213), which have no valid whole-robot source among those reviewed; this is not a claim that their sources are exhausted.",
-        "Non-generative alpha-only cutouts with original RGB at native resolution; no variant invented, nothing assigned by resemblance. The 58 earlier presentations are unchanged."
-      ]
+        "Non-generative alpha-only cutouts with original RGB at native resolution; no variant invented, nothing assigned by resemblance. The 58 earlier presentations are unchanged.",
+        "Published with PR 225 (reviewed head f305081, CI 46022897299; merge 8b33837), 27 Nov 2026; Pages 46023149863 and production verification by Claude and Codex recorded in the batch closeout. G/H is not closed as a scope."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -1925,7 +1927,7 @@
         "Lab": "Galaxea",
         "Robot": "R1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://galaxea-dynamics.com/",
       "notes": "Galaxea R1: wheeled two-arm mobile manipulator, shown whole with its base; the record says \"R1\": name a sub-variant (R1 Pro, R1 Lite) only if the official source names it.",
       "research": [
@@ -1953,7 +1955,7 @@
         "Lab": "Galaxea",
         "Robot": "Kengo"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://galaxea-dynamics.com/products/galaxea-kengo-proprietary-embodied-ai-bipedal-robot",
       "notes": "Galaxea Kengo: bipedal humanoid from Galaxea's official product page; not an R1 image.",
       "sources": [
@@ -1991,7 +1993,7 @@
         "Lab": "Galbot",
         "Robot": "S1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.galbot.com/s1",
       "notes": "Galbot S1: industrial heavy-load two-arm robot on a four-wheel-steer chassis, no legs; shown whole; not G1 or ET1.",
       "sources": [
@@ -2012,7 +2014,7 @@
         "Lab": "Galbot",
         "Robot": "ET1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.galbot.com/et1",
       "notes": "Galbot ET1: bipedal entertainment humanoid (Standard, Pro and Flagship editions): an image of the ET1 itself, no edition claimed unless the source names it; not G1 or S1.",
       "sources": [
@@ -2050,7 +2052,7 @@
         "Lab": "Generative Bionics",
         "Robot": "GENE.01"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://gbionics.ai/",
       "notes": "Generative Bionics GENE.01: the record does not establish the mobility; the image must be identified as GENE.01 in the official source and show the whole robot; nothing assigned by resemblance.",
       "research": [
@@ -2078,7 +2080,7 @@
         "Lab": "Genesis",
         "Robot": "Eno"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.genesis.ai/",
       "notes": "Genesis AI Eno: general-purpose robot; mechanical form not recorded; only an official image identified as Eno and showing the whole robot or platform.",
       "sources": [
@@ -2099,7 +2101,7 @@
         "Lab": "GENISOM",
         "Robot": "NE01"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.genisomai.com/",
       "notes": "GENISOM (智身科技) NE01 (银毅): humanoid listed in the official product menu; form not captured: the image must be identified as NE01 in the official source.",
       "sources": [
@@ -2120,7 +2122,7 @@
         "Lab": "Gento Robotics",
         "Robot": "Gento Luna"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.gentorobotics.ai/products/gento-luna/",
       "notes": "Gento Robotics Gento Luna: wheeled foldable humanoid on an omnidirectional chassis, shown whole.",
       "sources": [
@@ -2141,7 +2143,7 @@
         "Lab": "Glroad",
         "Robot": "Laborer C1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.glroad.com/HumanoidRobots/index.aspx",
       "notes": "Glroad Laborer C1 (劳动者 family): guide and reception humanoid; not M1.",
       "sources": [
@@ -2194,7 +2196,7 @@
         "Lab": "Guanggu Dongzhi",
         "Robot": "Lumen H1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.hecbot.cn/product.html?type=22",
       "notes": "Guanggu Dongzhi (光谷东智) Lumen H1: legged service humanoid from the official hecbot.cn product page.",
       "sources": [

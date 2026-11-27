@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 7, alphab
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 7, PR not yet merged)
+## Published files (image batch 7, PR 225, merge 8b33837, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/genisom-ne01/genisom-ne01-full-body.png`, 326 × 857 px, sha256 `00c40ef32b1a9d582158742ec594a1c9e88787395fcb158dc32057e96c92ab63` (= Codex's prepared.png).
 - **WebP:** `assets/robots/genisom-ne01/genisom-ne01-full-body.webp`, sha256 `873a2ef816abcae8a6dd848805a1beecb1d19931bab6db6db3bfed1f087b6bfa`.

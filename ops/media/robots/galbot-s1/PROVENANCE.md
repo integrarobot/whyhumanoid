@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 7, alphab
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 7, PR not yet merged)
+## Published files (image batch 7, PR 225, merge 8b33837, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/galbot-s1/galbot-s1-full-body.png`, 684 × 1044 px, sha256 `e11ed48c5ea906fbe8c818026c379d6d936c07e302bd9d97cab5e11bb8a4f928` (= Codex's prepared.png).
 - **WebP:** `assets/robots/galbot-s1/galbot-s1-full-body.webp`, sha256 `130f479ae5e91eeda67c3a85ddd1292467abc3c13edf0ea1dfd93a8baa10a927`.
