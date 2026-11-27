@@ -1,0 +1,59 @@
+{
+  "id": "WH-20261127-2157-imagenes-robots-lote-17",
+  "tarea": "Imágenes de robots, lote 17 del alcance «todas las imágenes que faltan»: XYZ DEUX, Beomni, LimX Luna y Geekplus Gino 1 (vista trasera), con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026; alcance confirmado solo para Humanoids), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T21:57:37+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 253 (cabeza revisada 1850c21, merge 36ea0eb): imagen en las fichas 122 XYZ Deux, 12 Beyond Imagination Beomni, 156 LimX Luna y 213 Geek+ Gino 1, solo mediante tools/robot-presentation.json; las 158 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con el tipo de imagen, la variante y la procedencia: «XYZ, DEUX manufacturer product render, mobile dual-arm platform», «Beyond Imagination, Beomni manufacturer press image (2023), via Newswire», «LimX Dynamics, Luna manufacturer brochure render (June 2026), walking configuration» y «Geekplus, Gino 1 official video still, rear view with backpack basket (2026)». Las especificaciones de las fichas no cambian.",
+    "Fuentes de Codex (codex/image-sources-remaining: candidates-44 en c21bf62, 45 en 56c65d0, 46 en 5c11af4 y 47 en acda4f4), copiadas de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-17/. Todos los recortes, de Claude y solo de alfa, a tamaño nativo: alfa propio del PNG en DEUX (solo recorte y margen, sin cabeza ni piernas añadidas) y máscaras BiRefNet guardadas junto a cada original en las demás; en Beomni, el halo blanco de las antenas y los arcos de la cabeza se rebaja por distancia al blanco sin tocar el LED; en Gino 1 se conservan la cesta y su cable y no se reconstruye el frente oculto.",
+    "Cuatro fichas, no diez: las fuentes válidas del último barrido. Las fichas que siguen sin imagen no quedan resueltas por este lote; Codex lleva un registro individual de los límites encontrados en cada una, que no supone que no existan imágenes.",
+    "Cobertura: lote 17 publicado con 4 fichas; en todo el catálogo, 162 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 253",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/253"
+    },
+    {
+      "etiqueta": "CI de la cabeza 1850c21",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46066494734"
+    },
+    {
+      "etiqueta": "Pages de 36ea0eb",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46066898699"
+    },
+    {
+      "etiqueta": "Ficha Gino 1",
+      "url": "https://whyhumanoid.com/humanoids/geek-gino-1-213/"
+    },
+    {
+      "etiqueta": "Ficha Beomni",
+      "url": "https://whyhumanoid.com/humanoids/beyond-imagination-beomni-12/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 36ea0eb (run 46066898699, correcto); CI de la cabeza 1850c21 (run 46066494734, correcto). Fusión hecha solo en esa cabeza contra main 898b3b0, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Las URL canónicas de los activos nuevos se pidieron solo después de que Pages terminara en verde: sin 404 en caché ni purga (x-cache MISS en la primera petición)."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 4/4; navegador local de las cuatro fichas a 390 × 844 y 1366 × 900, 8/8 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
+    "Codex, cabeza 1850c21: revisión independiente aprobada; 40 archivos solo de imágenes, ops y páginas generadas; las 158 presentaciones anteriores y el catálogo de 213 intactos; SHA, RGB nativo visible, alfa de PNG y WebP y margen de 20 px correctos en las cuatro; recortes vistos uno a uno en claro y oscuro (Beomni con arcos, antenas y LED; Gino 1 con cesta, cable y base; Luna con ambas manos y pies; DEUX con su alfa original).",
+    "Claude, producción tras Pages 46066898699: las 8 URL canónicas (4 PNG y 4 WebP) con los mismos bytes que 36ea0eb (8/8); las 4 fichas y la portada idénticas a 36ea0eb salvo las etiquetas meta agent:* que añade Cloudflare (5/5); navegador real a 390 × 844 y 1366 × 900, 8/8 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 162 presentaciones. La espera de Pages se hizo consultando la portada existente con un parámetro de consulta único, nunca URL de activos nuevos.",
+    "Codex, verificación pública independiente tras Pages 46066898699 en merge 36ea0eb: 12/12 URL canónicas con 200 (8 activos con SHA y alfa exactos y 4 fichas con imagen, texto alternativo y leyenda); 8/8 vistas reales en Chrome a 390 × 844 y 1366 × 900, cargadas, contain, sin desbordamiento y con dimensiones y créditos correctos; captura de escritorio de Gino 1 revisada.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (162) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Quedan 51 fichas de Humanoids sin imagen, con su registro individual de límites; Codex revisa las excepciones de modelo sin nombre (la falta de nombre por sí sola no impide una imagen si la plataforma está identificada) y los medios actuales de Walden y Khameleon antes de cerrar la lista pendiente.",
+    "Jingchu Elf (183), Qinglong (69), T230A (89), R-Noid (77) e IGRIS (79) siguen fuera con su motivo; Other Robots queda fuera del alcance por decisión de Javier."
+  ],
+  "siguiente_accion": "Codex verifica producción y registra su aviso; Javier confirma la recepción. Claude prepara nuevas fuentes que Codex entregue, en rama propia y sin fusionar nada antes de su revisión."
+}

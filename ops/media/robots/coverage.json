@@ -444,7 +444,7 @@
     {
       "batch": 17,
       "opened": "2026-11-27",
-      "state": "integrated",
+      "state": "published",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026)",
       "candidates": [
@@ -457,8 +457,10 @@
       "notes": [
         "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-17/: candidates-44 (c21bf62: XYZ DEUX product render with its own alpha), candidates-45 (56c65d0: Beomni 2023 press image via Newswire), candidates-46 (5c11af4: LimX Luna brochure render, June 2026) and candidates-47 (acda4f4: Geekplus Gino 1 video still, rear view). Every cutout prepared by Claude, alpha only: DEUX from its own alpha; the others from BiRefNet masks kept beside the originals, Beomni with the white rim of its antennas and head arcs lowered by distance to white.",
         "Four records, not ten: the valid sources of the latest sweep. The records still without an image are not resolved by this batch; Codex keeps an individual note of the limits found for each, which does not mean that no image of them exists.",
-        "Captions name the kind of image and the variant: DEUX manufacturer product render, mobile dual-arm platform (no head or legs added); Beomni manufacturer press image (2023), via Newswire; Luna manufacturer brochure render (June 2026), walking configuration; Gino 1 official video still, rear view with backpack basket (2026). Records' specifications unchanged."
-      ]
+        "Captions name the kind of image and the variant: DEUX manufacturer product render, mobile dual-arm platform (no head or legs added); Beomni manufacturer press image (2023), via Newswire; Luna manufacturer brochure render (June 2026), walking configuration; Gino 1 official video still, rear view with backpack basket (2026). Records' specifications unchanged.",
+        "Published with PR 253 (reviewed head 1850c21, CI 46066494734; merge 36ea0eb), 27 Nov 2026; Pages 46066898699 and production verification by Claude and Codex recorded in the batch closeout."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -1618,7 +1620,7 @@
           "detail": "alpha mask; RGB exact; prepared 306 × 567 with 20 px padding."
         }
       ],
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.beyondimagination.com/",
       "research": [
         {
@@ -2552,7 +2554,7 @@
         "Lab": "Geek+",
         "Robot": "Gino 1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.geekplus.com/en",
       "notes": "Geek+ (Geekplus) Gino 1: wheeled warehouse humanoid, identified as Gino 1 in Geekplus's own news or product page; shown whole with its base.",
       "research": [
@@ -3692,7 +3694,7 @@
         "Lab": "XYZ",
         "Robot": "Deux"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://xyzcorp.imweb.me/DEUX",
       "sources": [
         {
@@ -3799,7 +3801,7 @@
         "Lab": "LimX",
         "Robot": "Luna"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.limxdynamics.com/en/products/luna",
       "sources": [
         {

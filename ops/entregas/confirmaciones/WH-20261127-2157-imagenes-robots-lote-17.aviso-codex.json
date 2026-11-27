@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-2157-imagenes-robots-lote-17",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T22:02:16+01:00",
+  "por": "codex",
+  "evidencia": "Codex revisó PR 253 en 1850c21ed4e03287c593c96d3114a84e093dcb86 contra 898b3b079379f9cbb1aa646046ec40a1da85842a: 40 archivos de imágenes, ops y páginas generadas; las 158 presentaciones anteriores y los 213 datos intactos. Cuatro SHA, RGB visible nativo, alfa PNG/WebP y margen de 20 px correctos; cuatro pares claros/oscuros examinados individualmente. CI 46066494734 correcta. Fusión 36ea0eb1809d3e91b30b0fb96dcc5c9cfc71eebf y Pages 46066898699 correctos antes de solicitar nuevas canónicas. 12/12 URL 200, ocho assets con SHA y alfa exactos, cuatro HTML con imagen, alt y crédito. 8/8 vistas reales Chrome a 390×844 y 1366×900, contain, cargadas, sin desbordamiento; captura de Gino de escritorio revisada y override restablecido. Avisados Javier y Claude: 162/213 publicadas, 51 pendientes, solo Humanoids. Cierre PR 254 revisado en 551590ea88870240bb73793f1c572fcbf3a05535: ocho archivos solo ops, CI 46067343957 correcta; registro válido con 115 cierres y 57 confirmaciones antes de este aviso. No se atribuye recepción a Javier."
+}
