@@ -1,0 +1,16 @@
+{
+  "id": 73,
+  "slug": "reflex-snow-video",
+  "source_page": "https://www.reflexrobotics.com/",
+  "source_url": "https://image.mux.com/aWwI02dxncxiVnlB42nzktdNdVaT8Ie701cZNIuGJSLfo/thumbnail.png?time=12",
+  "original": "original.png",
+  "original_size": [
+    1080,
+    1920
+  ],
+  "original_sha256": "5528989a03b1d57edb0f66c5d3ab2b08bbe57393c922654581a318375aa0712a",
+  "source_context": "Manufacturer homepage embeds this exact Mux playbackID for label Snow (rootreadhydration). Native1080x1920 video still at12s. Whole actual platform including tall rear mast rounded top, lowered humanoid head, both hands/arms, wheeled base visible with margins. Holding shovel; preserve visible held tool, original snow on tool as required, no invented hidden blade. Exclude distant scene/ground snow; foreground snow not part of robot. Native bodyroughbbox[220,170,760,1300], shovelextends[220,700,820,1560]. Frame0 has elbow cropped atleft and MUST NOT be used. Frame12chosenbecauseboth elbows inbounds and complete mast/base. Caption Reflex with snow shovel, official video still, not evidence of autonomous operation/capability. Prepare alpha non-generatively, no RGB changes.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primary page; source credit required; no open licence assumed or outreach sent."
+}

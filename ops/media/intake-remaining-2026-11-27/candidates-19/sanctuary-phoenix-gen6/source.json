@@ -1,0 +1,16 @@
+{
+  "id": 80,
+  "slug": "sanctuary-phoenix-gen6",
+  "source_page": "https://sanctuary.ai/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/",
+  "source_url": "https://sanctuary.ai/wp-content/uploads/2023/05/main-image-phoenix-annoucement-1.webp",
+  "original": "original.webp",
+  "original_size": [
+    1160,
+    680
+  ],
+  "original_sha256": "400ff83a111118944cffff74d6d5b0efc857027604d0b0d137f21831d10fc44e",
+  "source_context": "Official Phoenix launch graphic explicitly Gen6, native1180x680 with whole robot head, both hands and feet at right; robot nativeheight~580. Callout lines and text are outside body (unlike rejected VB1/Tianyi) so may be excluded by alpha; inspect carefully no painted body marks. Isolate only robot, exclude black background, all text/orangeframe and floor glow. Preserve exact black body pixels, no brightening/reconstruction. Caption Phoenix Gen6 manufacturer launch graphic, historical2023configuration on Phoenix family record; do not label Gen7 or current hardware/spec proof. FigureapproxROI[660,30,890,650], independently check all extremities.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primary page; source credit required; no open licence assumed or outreach sent."
+}

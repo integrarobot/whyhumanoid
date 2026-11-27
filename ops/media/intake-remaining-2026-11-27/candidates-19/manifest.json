@@ -1,0 +1,34 @@
+[
+  {
+    "id": 80,
+    "slug": "sanctuary-phoenix-gen6",
+    "source_page": "https://sanctuary.ai/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/",
+    "source_url": "https://sanctuary.ai/wp-content/uploads/2023/05/main-image-phoenix-annoucement-1.webp",
+    "original": "original.webp",
+    "original_size": [
+      1160,
+      680
+    ],
+    "original_sha256": "400ff83a111118944cffff74d6d5b0efc857027604d0b0d137f21831d10fc44e",
+    "source_context": "Official Phoenix launch graphic explicitly Gen6, native1180x680 with whole robot head, both hands and feet at right; robot nativeheight~580. Callout lines and text are outside body (unlike rejected VB1/Tianyi) so may be excluded by alpha; inspect carefully no painted body marks. Isolate only robot, exclude black background, all text/orangeframe and floor glow. Preserve exact black body pixels, no brightening/reconstruction. Caption Phoenix Gen6 manufacturer launch graphic, historical2023configuration on Phoenix family record; do not label Gen7 or current hardware/spec proof. FigureapproxROI[660,30,890,650], independently check all extremities.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary page; source credit required; no open licence assumed or outreach sent."
+  },
+  {
+    "id": 73,
+    "slug": "reflex-snow-video",
+    "source_page": "https://www.reflexrobotics.com/",
+    "source_url": "https://image.mux.com/aWwI02dxncxiVnlB42nzktdNdVaT8Ie701cZNIuGJSLfo/thumbnail.png?time=12",
+    "original": "original.png",
+    "original_size": [
+      1080,
+      1920
+    ],
+    "original_sha256": "5528989a03b1d57edb0f66c5d3ab2b08bbe57393c922654581a318375aa0712a",
+    "source_context": "Manufacturer homepage embeds this exact Mux playbackID for label Snow (rootreadhydration). Native1080x1920 video still at12s. Whole actual platform including tall rear mast rounded top, lowered humanoid head, both hands/arms, wheeled base visible with margins. Holding shovel; preserve visible held tool, original snow on tool as required, no invented hidden blade. Exclude distant scene/ground snow; foreground snow not part of robot. Native bodyroughbbox[220,170,760,1300], shovelextends[220,700,820,1560]. Frame0 has elbow cropped atleft and MUST NOT be used. Frame12chosenbecauseboth elbows inbounds and complete mast/base. Caption Reflex with snow shovel, official video still, not evidence of autonomous operation/capability. Prepare alpha non-generatively, no RGB changes.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary page; source credit required; no open licence assumed or outreach sent."
+  }
+]
