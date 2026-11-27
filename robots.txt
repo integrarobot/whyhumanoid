@@ -1,3 +1,11 @@
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+Allow: /
+
 User-agent: *
 Allow: /
+
 Sitemap: https://whyhumanoid.com/sitemap.xml

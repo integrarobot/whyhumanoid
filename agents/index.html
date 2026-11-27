@@ -19,6 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..600&display=swap">
 <link rel="stylesheet" href="/assets/pages.css?v=05f0e248b3">
+<link rel="alternate" type="text/markdown" href="/agents.md">
 </head>
 <body>
 <header class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"></span>Why Humanoid?</a><button class="cat-toggle" id="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-menu" hidden>Categories<span class="chev" aria-hidden="true"></span></button><nav class="cats" id="cat-menu" aria-label="Categories"><a href="/humanoids/">Humanoids</a><a href="/deployments/">Deployments<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/components/">Components<span class="nav-lock" aria-label=" (subscription)" title="Complete data with the subscription"></span></a><a href="/integrators/">Integrators</a><a href="/software/">Software</a><a href="/datasets/">Datasets</a><a href="/benchmarks/">Benchmarks</a><a href="/investment/">Investment</a><a href="/other-robots/">Other Robots</a><a href="/reports/">Reports</a></nav></header>
@@ -28,6 +29,7 @@
 <p class="kicker">For your software agents</p>
 <h1>Use the catalogue from your agents</h1>
 <p class="lede">Your agents can read Why Humanoid? the way you do: the free catalogue without any key, and complete Deployments and Components with your subscription. Same account, same access, no extra charge.</p>
+<p><a href="/agents.md">Markdown setup guide</a> · <a href="/llms.txt">Catalogue index for agents</a> · <a href="/.well-known/mcp.json">MCP manifest</a></p>
 <p><a href="/agents/demo/">Watch a recorded ChatGPT session using the read-only connection →</a></p>
 <section id="start"><h2>Before you start</h2><ol><li>Free data needs nothing: the API, the MCP server and the command-line tool all work without a key, with public values.</li><li>For complete Deployments and Components, <a href="/subscribe/">subscribe</a> (US$100 per year), then create an API key in <a href="/app/#keys">the app, under Agent access</a>. The key is shown once; keep it like a password.</li><li>Revoke a key there at any time; it stops working at once. When the subscription ends, the paid data stops: the HTTP API and the command-line tool answer 403 on Deployments and Components rows, and MCP returns their public fields. Every public endpoint keeps working, with or without a key.</li></ol>
 <dl class="kv"><dt>Fair use</dt><dd>60 requests a minute and 5,000 a day per key. Over the limit, requests get HTTP 429 with a Retry-After header; nothing is charged.</dd><dt>What agents can read</dt><dd>The published catalogue: every category, and with a subscription every field of Deployments and Components. Not accounts, orders, custom reports or internal tables.</dd><dt>Help</dt><dd><a href="mailto:javier@integrarobot.com">javier@integrarobot.com</a></dd></dl></section>

@@ -45,6 +45,7 @@ async function mcp(key) {
 }
 const json = (r) => JSON.parse(r.content[0].text);
 const registryManifest = JSON.parse(readFileSync(new URL('../ops/mcp-registry/server.json', import.meta.url), 'utf8'));
+const discoveryManifest = JSON.parse(readFileSync(new URL('../.well-known/mcp.json', import.meta.url), 'utf8'));
 
 const buyer = await signIn(ctx, 'agent-owner@example.com');
 await sendWebhook(ctx, subscriptionEvent({ accountId: buyer.accountId }));
@@ -83,6 +84,9 @@ test('MCP tools/list: six read-only tools with their titles and annotations, for
     const client = await mcp(credential);
     const { tools } = await client.listTools();
     assert.deepEqual(tools.map((t) => t.name).sort(), Object.keys(expected).sort());
+    for (const field of ['name', 'title', 'description', 'inputSchema', 'annotations']) {
+      assert.deepEqual(tools.map((t) => t[field]), discoveryManifest._meta['com.whyhumanoid/catalogue'].tools.map((t) => t[field]), `public discovery manifest matches tools/list: ${field}`);
+    }
     // mcptry and other directories score argument documentation (26 Nov 2026): every input argument is described.
     assert.equal(client.getServerVersion()?.version, registryManifest.version, 'server version matches ops/mcp-registry/server.json');
     for (const t of tools) {
