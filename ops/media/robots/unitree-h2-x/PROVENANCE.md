@@ -30,7 +30,7 @@ The original already carries real transparency, so no cutout was made. `python3 
 - Fully transparent pixels have their colour set to 0.
 - Nothing is repainted, generated, extended or thresholded.
 
-## Files integrated (image batch 1, PR not yet merged)
+## Published files (image batch 1, PR 196, merge 4011f1e, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/unitree-h2-x/h2-x-full-body.png`, 222 × 681 px, lossless, sha256 `a850fd8eca99536c25662ddc5914f245c80acfa7b1377fe2b85eeef243e490df`.
 - **WebP:** `assets/robots/unitree-h2-x/h2-x-full-body.webp`, made with `python3 ops/media/robots/to-webp.py` (quality 90, lossless alpha), sha256 `3fde7dfc3c014327320749dd178ec4f61a60ba391cc00be34ac7479a2b229829`.

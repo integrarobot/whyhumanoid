@@ -24,7 +24,7 @@ The original already carries real transparency, so no cutout was made. `python3 
 - Fully transparent pixels have their colour set to 0.
 - Nothing is repainted, generated, extended or thresholded.
 
-## Files integrated (image batch 1, PR not yet merged)
+## Published files (image batch 1, PR 196, merge 4011f1e, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/engineai-se01/se01-full-body.png`, 282 × 797 px, lossless, sha256 `8f0ca32605d6a25276be8c7404dc4d940a15c5a806743f2ef3df79f5f0fdf434`.
 - **WebP:** `assets/robots/engineai-se01/se01-full-body.webp`, made with `python3 ops/media/robots/to-webp.py` (quality 90, lossless alpha), sha256 `4e80550eb7a966a6fbb8e0d0f7885f0eafcb6b19ef46ffcc28475a30334604d9`.

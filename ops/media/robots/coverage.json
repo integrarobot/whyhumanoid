@@ -10,7 +10,7 @@
     {
       "batch": 1,
       "opened": "2026-11-27",
-      "state": "integrated_awaiting_review",
+      "state": "published",
       "target": 10,
       "candidates": [
         27,
@@ -43,8 +43,10 @@
       "notes": [
         "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
         "Several other makers' PNG files named as background-free still hold interior backgrounds: rejected (Codex, 27 Nov 2026).",
-        "Generative images are never used: Codex discarded a T2 trial that recreated details (27 Nov 2026)."
-      ]
+        "Generative images are never used: Codex discarded a T2 trial that recreated details (27 Nov 2026).",
+        "Published with PR 196 (merge 4011f1e, 27 Nov 2026) and verified in production by Claude and Codex (Codex receipt 10:53:52 Madrid) after a selective Cloudflare purge of the 20 image URLs: 404 responses requested before Pages finished deploying had been cached. Next time, new asset URLs are not requested without a query string until the Pages deployment has succeeded."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -53,7 +55,7 @@
         "Lab": "Unitree",
         "Robot": "G1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.unitree.com/g1/",
       "notes": "Not Galbot G1 (id 35) nor Agibot G1 (id 147). Record covers G1 base and G1 EDU; G1-A, G1-D, G1+, G1-Comp and G1-Boxing are other variants. The alt text makes no claim about the hand configuration shown.",
       "sources": [
@@ -119,7 +121,7 @@
         "Lab": "Unitree",
         "Robot": "H2-X"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.unitree.com/H2-X/",
       "notes": "Not H2 (id 139).",
       "sources": [
@@ -186,7 +188,7 @@
         "Lab": "Engineai",
         "Robot": "PM01"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://en.engineai.com.cn/product-pm01",
       "notes": "Not SE01 (id 27) nor T800 (id 151).",
       "sources": [
@@ -275,7 +277,7 @@
         "Lab": "PAL",
         "Robot": "Kangaroo"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://pal-robotics.com/robot/kangaroo/",
       "sources": [
         {
@@ -304,7 +306,7 @@
         "Lab": "PAL",
         "Robot": "Talos"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://pal-robotics.com/robot/talos/",
       "sources": [
         {
@@ -578,7 +580,7 @@
         "Lab": "PAL",
         "Robot": "ARI"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://pal-robotics.com/robot/ari/",
       "notes": "Wheeled social humanoid.",
       "sources": [
@@ -599,7 +601,7 @@
         "Lab": "PAL",
         "Robot": "TIAGo Pro"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://pal-robotics.com/robot/tiago-pro/",
       "sources": [
         {
@@ -619,7 +621,7 @@
         "Lab": "Rainbow",
         "Robot": "RB-Y1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://rainbow-robotics.com/products/rb-y1/",
       "notes": "Not Hubo (id 70). Record covers the A and M versions; no version claimed.",
       "sources": [
@@ -640,7 +642,7 @@
         "Lab": "Engineai",
         "Robot": "SE01"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://en.engineai.com.cn/product-se01",
       "notes": "The file is named Se02_00000.png, but the official page product-se01 is titled SE01 and that img has alt=SE01 (Codex): the file name is not the model. Not PM01 (id 150) nor T800 (id 151).",
       "sources": [
@@ -669,7 +671,7 @@
         "Lab": "PsiBot",
         "Robot": "PsiBot V1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.psibot.ai/en/products/product_psibot-v1/",
       "notes": "Dual-arm humanoid upper body on a wheeled base. Trim with --max-height 2600 (Codex), keeping the native visible pixels.",
       "sources": [

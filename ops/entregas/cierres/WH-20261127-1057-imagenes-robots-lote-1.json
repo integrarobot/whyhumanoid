@@ -1,0 +1,52 @@
+{
+  "id": "WH-20261127-1057-imagenes-robots-lote-1",
+  "tarea": "Imágenes de robots, lote 1: diez fichas nuevas de Humanoids con imagen oficial de cuerpo completo y fondo transparente, más plan de cobertura y herramientas de recepción",
+  "origen": "Javier (27/11/2026), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T10:57:12+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 196 (cabeza revisada 6704dbf, merge 4011f1e): imagen en las fichas 27 SE01, 61 TALOS, 138 G1, 140 H2-X, 150 PM01, 152 ARI, 153 TIAGo Pro, 154 KANGAROO, 162 RB-Y1 y 196 PsiBot V1, solo mediante tools/robot-presentation.json, sin columnas nuevas.",
+    "Nueve originales oficiales con alfa propia, recortados solo en el margen transparente (alfa y color de cada píxel visible intactos; PsiBot a resolución nativa, 998 × 2444); G1 conserva el recorte revisado, con su JPEG original archivado.",
+    "Originales con SHA-256 igual al de la descarga de Codex y procedencia por robot en ops/media/robots/<slug>/; créditos del fabricante, sin licencia abierta presumida ni imágenes generativas.",
+    "Plan de cobertura (ops/media/robots/coverage.json y COVERAGE.md, comprobado en CI): 17 de 212 fichas con imagen; fuentes rechazadas registradas para no repetir recortes.",
+    "Herramientas: intake.py, trim.py y to-webp.py; robot-presentation.mjs y robot-images-coverage.mjs ya funcionan desde rutas con espacios.",
+    "Este cierre pasa las diez fichas de integrated a published en la cobertura."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 196",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/196"
+    },
+    {
+      "etiqueta": "Ficha PsiBot V1",
+      "url": "https://whyhumanoid.com/humanoids/psibot-psibot-v1-196/"
+    },
+    {
+      "etiqueta": "Ficha Unitree G1",
+      "url": "https://whyhumanoid.com/humanoids/unitree-g1-138/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main 4011f1e (despliegue 45976986321 correcto). Sin cambios de maestro, Worker ni D1.",
+    "Incidencia resuelta: Cloudflare guardó en caché respuestas 404 pedidas antes de que terminara el despliegue; Codex purgó selectivamente las 20 URL de imagen sin tocar reglas ni TTL."
+  ],
+  "verificaciones": [
+    "Codex, cabeza 6704dbf: SHA de los originales, píxeles visibles y alfa idénticos tras el recorte, alfa de WebP igual a la del PNG, esquinas transparentes; comprobaciones también desde una ruta con espacios.",
+    "Claude, producción: las 20 URL canónicas dan 200 con los mismos bytes que el repositorio; navegador real en iPhone 13 y 1366 × 900, las diez fichas cargan con texto alternativo, crédito, proporciones intactas y sin desbordamiento lateral.",
+    "Codex, recibo de producción (27/11/2026 10:53:52): 30/30 comprobaciones canónicas y 20/20 vistas en 390 × 844 y 1366 × 900."
+  ],
+  "pendientes": [
+    "KANGAROO (154): contraste bajo sobre el fondo oscuro, propio del original; aceptado sin alterar color ni diseño.",
+    "Deudas anteriores al lote: H1 (93) en baja resolución y Figure 03 (30) blanda, a sustituir por originales mejores.",
+    "Otros 13 scripts de tools/ con la misma entrada file://${process.argv[1]}: no ejecutan nada desde rutas con espacios; PR aparte.",
+    "verify-mobile local: 1 fallo previo también en main (acción principal a 674 px en 375 × 667), ajeno a este lote.",
+    "Lección: no pedir URL nuevas sin cadena de consulta hasta que el despliegue de Pages termine en verde."
+  ],
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Lote 2: diez fichas más desde las reservas, con los mismos criterios."
+}

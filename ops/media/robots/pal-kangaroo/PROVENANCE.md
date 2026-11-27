@@ -24,7 +24,7 @@ The original already carries real transparency, so no cutout was made. `python3 
 - Fully transparent pixels have their colour set to 0.
 - Nothing is repainted, generated, extended or thresholded.
 
-## Files integrated (image batch 1, PR not yet merged)
+## Published files (image batch 1, PR 196, merge 4011f1e, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/pal-kangaroo/kangaroo-full-body.png`, 558 × 945 px, lossless, sha256 `a0e8b3e8fa1e0e48eac51008e55b004e9274c3e751444a5ff5f1c50df7e1ab22`.
 - **WebP:** `assets/robots/pal-kangaroo/kangaroo-full-body.webp`, made with `python3 ops/media/robots/to-webp.py` (quality 90, lossless alpha), sha256 `11961db6e530da669b6b00301ed364e2591d9c466fb98983b8d61bd20871917a`.

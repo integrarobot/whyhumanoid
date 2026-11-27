@@ -24,7 +24,7 @@ The original already carries real transparency, so no cutout was made. `python3 
 - Fully transparent pixels have their colour set to 0.
 - Nothing is repainted, generated, extended or thresholded.
 
-## Files integrated (image batch 1, PR not yet merged)
+## Published files (image batch 1, PR 196, merge 4011f1e, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/pal-ari/ari-full-body.png`, 526 × 1016 px, lossless, sha256 `7f7bf280fe4d128f421937273044e6c5d712b726f8cb2dc8182a3072b4444547`.
 - **WebP:** `assets/robots/pal-ari/ari-full-body.webp`, made with `python3 ops/media/robots/to-webp.py` (quality 90, lossless alpha), sha256 `0080a292915e6147f6eae2551faaf5d17f7d7db792b446c2f6170d34437a60e6`.

@@ -24,7 +24,7 @@ The original already carries real transparency, so no cutout was made. `python3 
 - Fully transparent pixels have their colour set to 0.
 - Nothing is repainted, generated, extended or thresholded.
 
-## Files integrated (image batch 1, PR not yet merged)
+## Published files (image batch 1, PR 196, merge 4011f1e, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/pal-tiago-pro/tiago-pro-full-body.png`, 548 × 956 px, lossless, sha256 `7fcfca073eeca2e87ca7c004e7296e5333eae9d26cdbd867e0bc9eb4178e2dcc`.
 - **WebP:** `assets/robots/pal-tiago-pro/tiago-pro-full-body.webp`, made with `python3 ops/media/robots/to-webp.py` (quality 90, lossless alpha), sha256 `3aaa2fa2833069a2ec62a7b6f0b699d6fa1b57b0be3533b22dd2e65fd906d3d9`.
