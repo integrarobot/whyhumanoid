@@ -14,7 +14,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 2, scope 
 ## Catalogue identity
 
 - **Record:** catalogue id 148, Lab "Booster", Robot "T2".
-- Booster T2, the navigation image of the official T2 page (opaque original, earlier rejected as a source while no mask cutout was allowed). Mask cutout by Codex (isnet-general-use), colour unchanged. The robot is jumping, not standing; the left hand is partly translucent in the cutout, as the mask leaves it. Not T1 (14) nor K1 (149).
+- Booster T2, the navigation image of the official T2 page (opaque original, earlier rejected as a source while no mask cutout was allowed). Mask cutout by Codex (isnet-general-use), colour unchanged. The robot is shown whole in a jump; the current requirement is a whole robot with a transparent background, and the pose does not prevent its use (Codex, 27 Nov 2026); the left hand is partly translucent in the cutout, as the mask leaves it. Not T1 (14) nor K1 (149).
 
 ## Step here
 

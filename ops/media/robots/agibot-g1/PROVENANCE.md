@@ -14,7 +14,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 2, scope 
 ## Catalogue identity
 
 - **Record:** catalogue id 147, Lab "Agibot", Robot "G1".
-- AGIBOT G1, wheeled dual-arm robot, image of the official G1 product page; the file path names "pro-A2D" (to be confirmed by Codex as the G1 product image). Not Unitree G1 (138) nor Galbot G1 (35). In the original the robot reaches the right and bottom edges; the base is shown whole and no detail is added beyond the original.
+- AGIBOT G1, wheeled dual-arm robot, the hero image of the official G1 product page, titled "AGIBOT G1" (confirmed by Codex, 27 Nov 2026). The CMS folder name "pro-A2D" in the file path is historical and does not change the identity. Not Unitree G1 (138) nor Galbot G1 (35). In the original the robot reaches the right and bottom edges; the base is shown whole and no detail is added beyond the original.
 
 ## Step here
 

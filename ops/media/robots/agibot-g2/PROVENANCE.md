@@ -5,7 +5,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 2, scope 
 ## Source
 
 - **Image:** AgiBot's. No open licence is presumed. The site credits it as "Image: AgiBot".
-- **Page:** https://www.agibot.com/products/X1
+- **Page:** https://www.agibot.com/products/G2. The file is the render linked to G2 in the official site navigation: in the official HTML it sits inside a link `href=/products/G2` labelled "AGIBOT G2" (Codex, 27 Nov 2026). Codex first downloaded it from that global navigation while on the X1 page; the intake record keeps that history (`source_page` /products/X1), which is not the identity.
 - **File:** https://cms-tos.agibot.com/legacy/agibot-en/en/public/uploads/images/20251031/afa47f3a6d43c28b95a1534ed8310ad7.png
 - **Downloaded:** by Codex on 2026-11-27, carried without recompression on the transport branch `codex/image-sources-ab` (commit 28fef87) and kept in `ops/media/intake-ab-2026-11-27/batch-02/agibot-g2/`.
 - **Original:** `original.png`, 467 × 855 px, RGBA, 357,298 bytes, sha256 `a64e93dc03f304505c4fa01e5f55d43886ee48221d854d09b33813662775e2d5` (equal to Codex's manifest).
@@ -14,7 +14,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 2, scope 
 ## Catalogue identity
 
 - **Record:** catalogue id 146, Lab "Agibot", Robot "G2".
-- AGIBOT G2, large technical photograph. Not G1 (147). Codex recorded the source page as https://www.agibot.com/products/X1 (where the file was found); to be confirmed by Codex.
+- AGIBOT G2, large technical photograph. Not G1 (147). Identity confirmed by Codex from the G2 link and label in the official navigation.
 
 ## Step here
 

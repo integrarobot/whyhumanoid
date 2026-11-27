@@ -840,13 +840,13 @@
       "sources": [
         {
           "file": "https://cms-tos.agibot.com/legacy/agibot-en/en/public/uploads/images/20251031/afa47f3a6d43c28b95a1534ed8310ad7.png",
-          "page": "https://www.agibot.com/products/X1",
+          "page": "https://www.agibot.com/products/G2",
           "sha256": "a64e93dc03f304505c4fa01e5f55d43886ee48221d854d09b33813662775e2d5",
           "by": "codex",
           "date": "2026-11-27",
           "transparent_original": false,
           "verdict": "usable_cutout",
-          "detail": "Mask cutout (isnet-general-use), RGB exact. Alpha levels refined by Claude (halo and haze)."
+          "detail": "Mask cutout (isnet-general-use), RGB exact. Alpha levels refined by Claude (halo and haze). Linked to /products/G2 with the label \"AGIBOT G2\" in the official navigation (first downloaded from that navigation on the X1 page)."
         }
       ],
       "status": "integrated",
@@ -867,7 +867,7 @@
           "date": "2026-11-27",
           "transparent_original": true,
           "verdict": "usable_original",
-          "detail": "Native alpha; cropped."
+          "detail": "Native alpha; cropped. Hero of /products/G1, titled \"AGIBOT G1\"; the CMS folder name pro-A2D is historical."
         }
       ],
       "status": "integrated",
