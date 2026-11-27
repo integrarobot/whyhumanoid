@@ -1,0 +1,32 @@
+{
+  "id": 172,
+  "slug": "xiaqi-x02",
+  "original": "172-5.png",
+  "roi": [
+    0,
+    0,
+    1587,
+    2245
+  ],
+  "native_alpha": true,
+  "bbox": [
+    420,
+    176,
+    1164,
+    2077
+  ],
+  "border": 20,
+  "size": [
+    784,
+    1941
+  ],
+  "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+  "source_page": "https://www.digit.com.cn/ProductsDetail/93.html",
+  "source_url": "https://www.digit.com.cn/UserFiles/Article/children1/kdNcl2jh.png",
+  "source_alt": " 正面",
+  "original_sha256": "11e72c61d5912623629fa55aa8730d35da4f7ab47e378341fa7318a4c17c33e2",
+  "prepared_sha256": "59a1dfd46d782de2b9d58df5d471adb381ed60968acf855c5f75af765c4d5948",
+  "mask_sha256": "e2874f11b0eab81ed345c93a87d0fc4e854bde4fa81da83c0128869e0520e309",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

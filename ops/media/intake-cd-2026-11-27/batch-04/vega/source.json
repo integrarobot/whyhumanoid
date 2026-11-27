@@ -1,0 +1,32 @@
+{
+  "id": 22,
+  "slug": "vega",
+  "original": "221-12.png",
+  "roi": [
+    0,
+    0,
+    1500,
+    1500
+  ],
+  "native_alpha": false,
+  "bbox": [
+    483,
+    87,
+    1029,
+    1413
+  ],
+  "border": 20,
+  "size": [
+    586,
+    1366
+  ],
+  "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+  "source_page": "https://www.dexmate.com/product/vega-1-pro",
+  "source_url": "https://cdn.sanity.io/images/b8xzly2c/production/345e4a1cd27c55f27ea4a88c873bb5af657d92cc-1500x1500.png",
+  "source_alt": "Vega_01",
+  "original_sha256": "b0949f4809eaeb47577da00c38e92643206488371f35909990a39d6ec3d5aedf",
+  "prepared_sha256": "659f5c8da5c3ad105903edaf0a219520fe6ae7460ad99c6f8bbc5418827f1c72",
+  "mask_sha256": "c4aef09e5fab8a53b8ad5850a2e1a7833af7ca259987fe0b75c572f14bef1670",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

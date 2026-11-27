@@ -1,0 +1,32 @@
+{
+  "id": 167,
+  "slug": "casbot-02",
+  "original": "167-2.png",
+  "roi": [
+    0,
+    0,
+    1123,
+    1988
+  ],
+  "native_alpha": false,
+  "bbox": [
+    530,
+    318,
+    968,
+    1851
+  ],
+  "border": 20,
+  "size": [
+    478,
+    1573
+  ],
+  "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+  "source_page": "https://casbot.tech/product/02",
+  "source_url": "https://casbot.tech/images/02/mobile/slice_2.png",
+  "source_alt": "",
+  "original_sha256": "85af48fa37496445ee0c0f07bbf170b90b6965a8d0424d7d536149ba4c3bd767",
+  "prepared_sha256": "1633f1141f32dc6bf9954956d1ead74a9595909b868625e3a870ba6eff0acb92",
+  "mask_sha256": "ca103e07409ad3b37e86726a388e7862a6074152d343a06b9480aa7d45f6c483",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

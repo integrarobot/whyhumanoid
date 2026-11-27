@@ -1,0 +1,324 @@
+[
+  {
+    "id": 18,
+    "slug": "clone",
+    "original": "181-15.png",
+    "roi": [
+      2200,
+      100,
+      3900,
+      3400
+    ],
+    "native_alpha": false,
+    "bbox": [
+      298,
+      190,
+      1446,
+      3059
+    ],
+    "border": 20,
+    "size": [
+      1188,
+      2909
+    ],
+    "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+    "source_page": "https://www.clonerobotics.com/android/",
+    "source_url": "https://www.clonerobotics.com/assets/img/android/xray/muscles.png",
+    "source_alt": "",
+    "original_sha256": "ca8704d35a315029c16b4a65cbd4578bb5820d1fe1854329c9d39877de3092bc",
+    "prepared_sha256": "b4666360a64ef04d7dcbf0972a62ae1ed6ebab05ec838026723ff063d38b998b",
+    "mask_sha256": "c29fc711101a7217687b729e4e8e165941d82b49cb3a6b4e01f318d054af901a",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 22,
+    "slug": "vega",
+    "original": "221-12.png",
+    "roi": [
+      0,
+      0,
+      1500,
+      1500
+    ],
+    "native_alpha": false,
+    "bbox": [
+      483,
+      87,
+      1029,
+      1413
+    ],
+    "border": 20,
+    "size": [
+      586,
+      1366
+    ],
+    "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+    "source_page": "https://www.dexmate.com/product/vega-1-pro",
+    "source_url": "https://cdn.sanity.io/images/b8xzly2c/production/345e4a1cd27c55f27ea4a88c873bb5af657d92cc-1500x1500.png",
+    "source_alt": "Vega_01",
+    "original_sha256": "b0949f4809eaeb47577da00c38e92643206488371f35909990a39d6ec3d5aedf",
+    "prepared_sha256": "659f5c8da5c3ad105903edaf0a219520fe6ae7460ad99c6f8bbc5418827f1c72",
+    "mask_sha256": "c4aef09e5fab8a53b8ad5850a2e1a7833af7ca259987fe0b75c572f14bef1670",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 23,
+    "slug": "moxi",
+    "original": "moxi-case-p1-x3.png",
+    "roi": [
+      0,
+      0,
+      1428,
+      2000
+    ],
+    "native_alpha": false,
+    "bbox": [
+      428,
+      350,
+      971,
+      1838
+    ],
+    "border": 20,
+    "size": [
+      583,
+      1528
+    ],
+    "refinement": "Alpha levels 85 to230, small background components removed, black base restored using manual alpha polygon; source RGB unchanged.",
+    "source_page": "https://www.diligentrobots.com/moxi",
+    "source_url": "https://static1.squarespace.com/static/606f1bb0f7e05e3329035ff8/t/6ad002df1bb6e83f260d6a50/1792017119252/Diligent_Shannon_Health_Case_Study2.pdf",
+    "source_alt": "",
+    "original_sha256": "e31dac3b64b5851f21cec735a7cf1a933c2cbfd613cb82e05359a3c2b7ce282c",
+    "prepared_sha256": "476a24010ec9abafed9761da5a2d6f5fb193fdbb1896f6d4b981060e91fcaae9",
+    "mask_sha256": "fa2095f838675a4b02ae569e68a586ce8f6fdf484591db03a6c41e9f0026a8d5",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27",
+    "extraction": "PDF page1 xref3, native1428x2000 image",
+    "pdf_sha256": "8aafa5d3a17591ff0ffd9b60d0e30bb36b6220e56f3893134b24863280791b3a"
+  },
+  {
+    "id": 167,
+    "slug": "casbot-02",
+    "original": "167-2.png",
+    "roi": [
+      0,
+      0,
+      1123,
+      1988
+    ],
+    "native_alpha": false,
+    "bbox": [
+      530,
+      318,
+      968,
+      1851
+    ],
+    "border": 20,
+    "size": [
+      478,
+      1573
+    ],
+    "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+    "source_page": "https://casbot.tech/product/02",
+    "source_url": "https://casbot.tech/images/02/mobile/slice_2.png",
+    "source_alt": "",
+    "original_sha256": "85af48fa37496445ee0c0f07bbf170b90b6965a8d0424d7d536149ba4c3bd767",
+    "prepared_sha256": "1633f1141f32dc6bf9954956d1ead74a9595909b868625e3a870ba6eff0acb92",
+    "mask_sha256": "ca103e07409ad3b37e86726a388e7862a6074152d343a06b9480aa7d45f6c483",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 159,
+    "slug": "dr02",
+    "original": "159-15.webp",
+    "roi": [
+      0,
+      0,
+      750,
+      1334
+    ],
+    "native_alpha": false,
+    "bbox": [
+      295,
+      341,
+      513,
+      993
+    ],
+    "border": 20,
+    "size": [
+      258,
+      692
+    ],
+    "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+    "source_page": "https://www.deeprobotics.cn/en/products/detail/5.html",
+    "source_url": "https://www.deeprobotics.cn/en/bocupload/2026/09/09/178894850308982e1dd.webp",
+    "source_alt": "The World",
+    "original_sha256": "bdafe5987899efe5d75b5ba2a19c4591fa7d8f6fe643ce5b61db72d952585998",
+    "prepared_sha256": "1865b268a06c428020ad2be42c2a956a46693824b3c719809f26f41b70ddabcd",
+    "mask_sha256": "ff48e09cacc824a39a21e8854a0829afc73417d365f8353d9be2a590de0aaa30",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 168,
+    "slug": "casbot-w1",
+    "original": "168-16.jpg",
+    "roi": [
+      1100,
+      100,
+      1930,
+      1030
+    ],
+    "native_alpha": false,
+    "bbox": [
+      29,
+      71,
+      812,
+      873
+    ],
+    "border": 20,
+    "size": [
+      823,
+      842
+    ],
+    "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+    "source_page": "https://casbot.tech/product/w1",
+    "source_url": "https://casbot.tech/images/w1/1.jpg",
+    "source_alt": "Hero",
+    "original_sha256": "20c48a33bc689a567028d0fc0c5086327f64a9661f995d36490536792de10c52",
+    "prepared_sha256": "edd560fbbc679bbd66d9c902f3bfa31ddec87d2e5950fa1df4c7c5177ca907da",
+    "mask_sha256": "e53a000265e853c4cf13321d4c5872fe23fdd71443697354c2b8fcf057e6d67f",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 169,
+    "slug": "cyborg-r01",
+    "original": "169-bg0.jpg",
+    "roi": [
+      0,
+      0,
+      2400,
+      1568
+    ],
+    "native_alpha": false,
+    "bbox": [
+      878,
+      94,
+      1524,
+      1525
+    ],
+    "border": 20,
+    "size": [
+      686,
+      1471
+    ],
+    "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+    "source_page": "https://www.cyb-org.cn/",
+    "source_url": "https://www.cyb-org.cn/res/202606/02/cf39546953c0e833.jpg",
+    "source_alt": "",
+    "original_sha256": "b34a0e7c2d1626551d57a18ab6781e6203dc5509ea2b879e32dec45a2f28f48b",
+    "prepared_sha256": "cfaeb7a1ac8f939c30389e4161e202479e6c223d9a8f6c4a869d5cb4b54178b1",
+    "mask_sha256": "b7e5bfe10cfed4d5ff6700cdbe6c07ed5ec76a2c254aa7e5fa969df0bdedec14",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 170,
+    "slug": "cyborg-w01",
+    "original": "169-bg2.jpg",
+    "roi": [
+      0,
+      0,
+      2400,
+      1568
+    ],
+    "native_alpha": false,
+    "bbox": [
+      881,
+      110,
+      1499,
+      1532
+    ],
+    "border": 20,
+    "size": [
+      658,
+      1462
+    ],
+    "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+    "source_page": "https://www.cyb-org.cn/",
+    "source_url": "https://www.cyb-org.cn/res/202606/02/717d1878472dbb31.jpg",
+    "source_alt": "",
+    "original_sha256": "b199559b28dfb63adab56315db10bc32131425faca0c7f9b00a024f2d8b0eddc",
+    "prepared_sha256": "80141b61e90df5c6f3359549d49f927ec1da53e7dc7b883bf82ec33ed6f6b33f",
+    "mask_sha256": "870a56f839fd9134d903216ba564e62ebb3cba1a3bc779f423fb5bc21589d79f",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 172,
+    "slug": "xiaqi-x02",
+    "original": "172-5.png",
+    "roi": [
+      0,
+      0,
+      1587,
+      2245
+    ],
+    "native_alpha": true,
+    "bbox": [
+      420,
+      176,
+      1164,
+      2077
+    ],
+    "border": 20,
+    "size": [
+      784,
+      1941
+    ],
+    "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+    "source_page": "https://www.digit.com.cn/ProductsDetail/93.html",
+    "source_url": "https://www.digit.com.cn/UserFiles/Article/children1/kdNcl2jh.png",
+    "source_alt": " 正面",
+    "original_sha256": "11e72c61d5912623629fa55aa8730d35da4f7ab47e378341fa7318a4c17c33e2",
+    "prepared_sha256": "59a1dfd46d782de2b9d58df5d471adb381ed60968acf855c5f75af765c4d5948",
+    "mask_sha256": "e2874f11b0eab81ed345c93a87d0fc4e854bde4fa81da83c0128869e0520e309",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 175,
+    "slug": "dxtr",
+    "original": "dxtr-1.webp",
+    "roi": [
+      0,
+      0,
+      1440,
+      1440
+    ],
+    "native_alpha": true,
+    "bbox": [
+      340,
+      38,
+      1160,
+      1366
+    ],
+    "border": 20,
+    "size": [
+      860,
+      1368
+    ],
+    "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+    "source_page": "https://www.duatic.com/dxtr",
+    "source_url": "https://www.duatic.com/web/image/7946-ba79d6a1/duatic_alpha_2.webp",
+    "source_alt": "",
+    "original_sha256": "3cddafb962755b36f948c0cee229402c6d7c70f436bd0e6ddd8f0499b61022ef",
+    "prepared_sha256": "a538e53406e559089aca9b2fadfa78424b411dd0f12d5640c01fbc0d2f5b3aad",
+    "mask_sha256": "a850bbfbb816a251b7aefb9cbaf8f1a5d4d5e706ccf5a9643713459c26b78a32",
+    "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+    "checked_at": "2026-11-27"
+  }
+]
