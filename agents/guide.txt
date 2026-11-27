@@ -1,0 +1,51 @@
+---
+permalink: /agents.md
+layout: null
+---
+# Why Humanoid? agent setup
+
+Public access needs no account or key. The free catalogue is available in full. Deployments and Components expose only their public summaries and sources to visitors. An active data subscription and an API key provide the complete records. Catalogue entries report what their sources say. Check the original source, date, model and test conditions. Missing values are left blank or marked as unknown.
+
+## MCP
+
+Connect to https://whyhumanoid-premium.javier-198.workers.dev/mcp using Streamable HTTP. For public data, omit the Authorization header. Initialize the session and use `tools/list` to read the current tools and argument schemas. Then call `tools/call` with a tool name and its arguments.
+
+```json
+{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"search_catalogue","arguments":{"query":"","category":"humanoids","tags":"platform:bipedal,hq:united_states","page":1}}}
+```
+
+```json
+{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"get_rows","arguments":{"table":"humanoids","query":"Atlas","limit":10,"offset":0}}}
+```
+
+[Discovery manifest](https://whyhumanoid.com/.well-known/mcp.json) · [Domain AI Catalog](https://whyhumanoid.com/.well-known/ai-catalog.json)
+
+## HTTP API
+
+Base URL: https://whyhumanoid-premium.javier-198.workers.dev
+
+```sh
+curl -fsS 'https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets'
+curl -fsS 'https://whyhumanoid-premium.javier-198.workers.dev/v1/search?category=humanoids&tags=platform%3Abipedal%2Chq%3Aunited_states'
+curl -fsS 'https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets/humanoids?q=Atlas&limit=10'
+curl -fsS 'https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets/deployments/preview'
+```
+
+Use comma-separated IDs from earlier search facets in tags. The hq: prefix filters company country, site: filters deployment country, and platform: filters robot mobility. Only records with the corresponding tags can match. Send free text as `q` over HTTP and `query` in MCP. Search returns paginated results and the available facets. Read the public humanoid rows and inspect the recorded Payload/carry (kg) field. Apply numeric thresholds in your client after checking whether the value is sustained, peak, one-handed or subject to other conditions. The server has no numeric payload filter.
+
+## CLI
+
+Use Node.js 18 or later. [Read the source](https://whyhumanoid.com/agents/whyhumanoid.mjs) before running it.
+
+```sh
+curl -fsSLO 'https://whyhumanoid.com/agents/whyhumanoid.mjs'
+node whyhumanoid.mjs categories
+node whyhumanoid.mjs search '' --category humanoids --tags 'platform:bipedal,hq:united_states'
+node whyhumanoid.mjs rows humanoids --query Atlas --limit 10
+```
+
+## Subscriber access
+
+Create an API key in [Agent access](https://whyhumanoid.com/app/#keys). Send it as `Authorization: Bearer YOUR_API_KEY` to the API or MCP server, or set `WHYHUMANOID_API_KEY` for the CLI. Rates are 60 requests per minute and 5,000 per day per key. Follow `Retry-After` if you receive HTTP 429. The MCP tools are read-only.
+
+[Catalogue index](https://whyhumanoid.com/llms.txt) · [Atlas in Markdown](https://whyhumanoid.com/robots/atlas.md) · [Method](https://whyhumanoid.com/method/) · [Terms](https://whyhumanoid.com/terms/)

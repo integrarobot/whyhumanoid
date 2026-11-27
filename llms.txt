@@ -1,0 +1,40 @@
+# Why Humanoid?
+
+> Integrarobot's research catalogue on humanoid robots and the surrounding physical AI ecosystem, with source-linked specifications and evidence.
+
+Public access needs no account or key. The free catalogue is available in full. Deployments and Components expose only their public summaries and sources to visitors. An active data subscription and an API key provide the complete records. Catalogue entries report what their sources say. Check the original source, date, model and test conditions. Missing values are left blank or marked as unknown.
+
+## Agent access
+
+- [Setup guide in Markdown](https://whyhumanoid.com/agents.md): Public access, filters, examples, and subscriber authentication.
+- [MCP server](https://whyhumanoid-premium.javier-198.workers.dev/mcp): Streamable HTTP. Connect and call tools/list to discover the live schema.
+- [MCP discovery manifest](https://whyhumanoid.com/.well-known/mcp.json): Endpoint, tool schemas and example calls.
+- [AI Catalog](https://whyhumanoid.com/.well-known/ai-catalog.json): Domain discovery entry for the MCP server.
+- [HTTP API](https://whyhumanoid-premium.javier-198.workers.dev/v1/datasets): JSON table directory. Use /v1/search for search.
+- [Download the CLI](https://whyhumanoid.com/agents/whyhumanoid.mjs): Single JavaScript file for Node.js 18 or later.
+- [Atlas robot record in Markdown](https://whyhumanoid.com/robots/atlas.md): Example of a public robot specification.
+
+## Catalogue categories
+
+- [Humanoids](https://whyhumanoid.com/humanoids/): Public robot specifications, manufacturers, market information and links to sources where recorded.
+- [Deployments](https://whyhumanoid.com/deployments/): Reported use, pilots and announcements, with their sources and evidence.
+- [Components](https://whyhumanoid.com/components/): Hardware and software building blocks, specifications and documented constraints.
+- [Integrators](https://whyhumanoid.com/integrators/): Providers, supported platforms, territories and evidence of integration capabilities.
+- [Software](https://whyhumanoid.com/software/): Robot foundation models, vision-language-action models, world models, simulators and tools.
+- [Datasets](https://whyhumanoid.com/datasets/): Robot learning datasets, what they contain and their terms of use where known.
+- [Benchmarks](https://whyhumanoid.com/benchmarks/): Robotics evaluations, reported results and the evidence behind them.
+- [Investment](https://whyhumanoid.com/investment/): Listed companies with robotics exposure and recorded humanoid-maker funding.
+- [Other Robots](https://whyhumanoid.com/other-robots/): Service, industrial and educational robots beyond humanoids.
+- [Reports](https://whyhumanoid.com/reports/): Research findings, differences and assumptions across published reports.
+
+## Additional public collections
+
+- [Companies](https://whyhumanoid.com/companies/): Public company profiles with links to robots and deployment evidence.
+- [Blog](https://whyhumanoid.com/blog/): Integrarobot articles about humanoids and physical AI.
+- [News](https://whyhumanoid.com/news/): Dated news briefs with links to the original reporting.
+
+## Optional
+
+- [Method](https://whyhumanoid.com/method/): Sources, evidence, and interpretation.
+- [Terms of use](https://whyhumanoid.com/terms/): Terms for the catalogue and MCP connection.
+- [Subscriptions](https://whyhumanoid.com/subscribe/): Access to complete Deployments and Components.

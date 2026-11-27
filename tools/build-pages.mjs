@@ -42,6 +42,7 @@ import { editorialPages, editorialUrls } from './editorial-view.mjs';
 import { readStore as readEditorialStore } from './editorial-model.mjs';
 import { chartOffered, deskIndex, readDesk, readFundamentals, renderCompanyChart, renderInvestmentDesk, renderListingResearch, renderAgilityThesisSample, renderTheses, renderThesisOffer } from './investment-view.mjs';
 import { FOOTER_CSS, renderSiteFooterNav } from './footer-view.mjs';
+import { agentDiscoveryFiles, robotMarkdownPath, renderRobotMarkdown } from './agent-discovery.mjs';
 
 export const SITE = 'https://whyhumanoid.com';
 const APP = `${SITE}/app/`;
@@ -439,7 +440,27 @@ ${renderNamedBy(model.integrators.providers.filter((p) => p.links.robots.some((x
 <section><h2>Sources and checks</h2>${kv([['Last checked', text(chk.date)], ['Checks recorded', chk.statements.length ? esc(chk.statements.join('; ')) : '<span class="na">Not recorded</span>'], ['Model identity', text(r['Model checked'])]])}${sources ? `<ul class="sources">${sources}</ul>` : '<p class="na">No linked sources.</p>'}</section>
 <p class="meta">Values as recorded in the free Humanoids catalogue, data as of ${esc(String(model.snapshot).slice(0, 10))}. Also on the <a href="/#${esc(rb.slug)}">catalogue page</a>.</p>
 </article>`;
-  return page({ title: `${rb.name} by ${rb.lab}: specifications and sources · Why Humanoid?`, description: clip(`${summary} Specifications, sources and deployment cases.`), path: rb.path, body, type: 'article', section: 'humanoids' });
+  const markdown = robotMarkdownPath(rb);
+  return page({ title: `${rb.name} by ${rb.lab}: specifications and sources · Why Humanoid?`, description: clip(`${summary} Specifications, sources and deployment cases.`), path: rb.path, body, type: 'article', section: 'humanoids', head: `<link rel="alternate" type="text/markdown" href="${esc(markdown)}">\n` });
+}
+
+function publicRobotMarkdown(rb, model) {
+  const r = rb.record;
+  return renderRobotMarkdown({
+    site: SITE,
+    robot: rb,
+    classification: classificationOf(rb),
+    snapshot: String(model.snapshot).slice(0, 10),
+    checks: rb.facet.chk,
+    buyerChecks: known(r['Buyer checks']) ? r['Buyer checks'] : '',
+    sections: [
+      ['Specifications', SPEC_FIELDS.map(([label, field]) => [label, r[field]])],
+      ['Market', MARKET_FIELDS.map(([label, field]) => [label, r[field]])],
+      ['Company', COMPANY_FIELDS.map(([label, field]) => [label, field === 'Valuation' && BARE_AMOUNT.test(String(r[field] ?? '')) && /\d/.test(String(r[field])) ? BARE_AMOUNT_TEXT : r[field]])],
+    ],
+    links: LINK_FIELDS.map(([label, field]) => [label, r[field]]),
+    cases: rb.cases.map((c) => [c.organisations.map((o) => o.name).filter(Boolean).join(' and ') || c.slug, casePath(c)]),
+  });
 }
 
 // ---------- company page ----------
@@ -905,6 +926,7 @@ function agentsPage() {
 <p class="kicker">For your software agents</p>
 <h1>Use the catalogue from your agents</h1>
 <p class="lede">Your agents can read Why Humanoid? the way you do: the free catalogue without any key, and complete Deployments and Components with your subscription. Same account, same access, no extra charge.</p>
+<p><a href="/agents.md">Markdown setup guide</a> · <a href="/llms.txt">Catalogue index for agents</a> · <a href="/.well-known/mcp.json">MCP manifest</a></p>
 <p><a href="/agents/demo/">Watch a recorded ChatGPT session using the read-only connection →</a></p>
 <section id="start"><h2>Before you start</h2><ol><li>Free data needs nothing: the API, the MCP server and the command-line tool all work without a key, with public values.</li><li>For complete Deployments and Components, <a href="/subscribe/">subscribe</a> (${esc(price())}), then create an API key in <a href="/app/#keys">the app, under Agent access</a>. The key is shown once; keep it like a password.</li><li>Revoke a key there at any time; it stops working at once. When the subscription ends, the paid data stops: the HTTP API and the command-line tool answer 403 on Deployments and Components rows, and MCP returns their public fields. Every public endpoint keeps working, with or without a key.</li></ol>
 ${kv([['Fair use', `${USAGE_LIMITS.perMinute} requests a minute and ${USAGE_LIMITS.perDay.toLocaleString('en-GB')} a day per key. Over the limit, requests get HTTP 429 with a Retry-After header; nothing is charged.`], ['What agents can read', 'The published catalogue: every category, and with a subscription every field of Deployments and Components. Not accounts, orders, custom reports or internal tables.'], ['Help', `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`]])}</section>
@@ -919,7 +941,7 @@ ${code(`curl -fsSLO https://whyhumanoid.com/agents/whyhumanoid.mjs\nexport WHYHU
 <p>Output is JSON. Run <code>node whyhumanoid.mjs --help</code> for every option.</p></section>
 <section><h2>Good to know</h2><p>Records are claims as their sources state them, not verified facts; missing values stay missing. Custom company reports are ordered by people, in <a href="/subscribe/#reports">the app</a>, not through these tools.</p></section>
 </article>`;
-  return page({ title: 'Agents: API, MCP and command line · Why Humanoid?', description: `Use the Why Humanoid? catalogue from your agents: HTTP API, an MCP server and a command-line tool, with the same subscription (${price()}) and no extra charge. Fair use: ${USAGE_LIMITS.perMinute} requests a minute per key.`, path: '/agents/', body });
+  return page({ title: 'Agents: API, MCP and command line · Why Humanoid?', description: `Use the Why Humanoid? catalogue from your agents: HTTP API, an MCP server and a command-line tool, with the same subscription (${price()}) and no extra charge. Fair use: ${USAGE_LIMITS.perMinute} requests a minute per key.`, path: '/agents/', body, head: '<link rel="alternate" type="text/markdown" href="/agents.md">\n' });
 }
 
 // ---------- about (Javier, 25 Nov 2026): who makes the catalogue and what a record is; no counts or prices ----------
@@ -1103,8 +1125,14 @@ export function pageLinks(model = publicModel()) {
 
 export function buildPages(registry = readRegistry()) {
   const model = publicModel(registry);
-  const files = new Map();
-  for (const rb of model.robots) files.set(`${rb.path.slice(1)}index.html`, robotPage(rb, model));
+  const files = agentDiscoveryFiles(SITE, API_ORIGIN);
+  for (const rb of model.robots) {
+    files.set(`${rb.path.slice(1)}index.html`, robotPage(rb, model));
+    const markdown = publicRobotMarkdown(rb, model);
+    files.set(robotMarkdownPath(rb).slice(1), markdown);
+    // Keep the short discovery example anchored to the catalogue ID, even if the robot is renamed.
+    if (Number(rb.id) === 16) files.set('robots/atlas.md', markdown);
+  }
   for (const c of model.companies) files.set(`${c.path.slice(1)}index.html`, companyPage(c, model));
   for (const r of model.otherRobots) files.set(`${r.path.slice(1)}index.html`, otherRobotPage(r, model));
   // Blog and News (editorial/, tools/editorial-view.mjs): noindex and outside the sitemap until live; /newsletter/

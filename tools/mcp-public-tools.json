@@ -1,0 +1,191 @@
+[
+  {
+    "name": "list_categories",
+    "title": "List categories",
+    "description": "The catalogue categories and tables, what each holds, and what this connection can read from each.",
+    "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {}
+    },
+    "annotations": {
+      "title": "List categories",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "execution": {
+      "taskSupport": "forbidden"
+    }
+  },
+  {
+    "name": "search_catalogue",
+    "title": "Search the catalogue",
+    "description": "Full-text search across the categories, with common tags. Subscribers search every field; others search the public values.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Words to look for"
+        },
+        "category": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "Optional category id, e.g. deployments"
+        },
+        "tags": {
+          "type": "string",
+          "maxLength": 400,
+          "description": "Optional comma-separated tag ids from earlier results"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50,
+          "description": "Optional results page, from 1 to 50; default 1"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "Search the catalogue",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "execution": {
+      "taskSupport": "forbidden"
+    }
+  },
+  {
+    "name": "get_rows",
+    "title": "Read rows of a table",
+    "description": "Rows of one table (ids from list_categories), in catalogue order, optionally filtered by text. Free tables return every field; Deployments and Components return every field with an active subscription and their public fields otherwise.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "Table id, e.g. deployments, hardware, humanoids, software"
+        },
+        "query": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Optional text to search within row values, up to 100 characters; ignores case for A-Z letters"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Optional number of rows to return, from 1 to 100; default 25"
+        },
+        "offset": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100000,
+          "description": "Optional number of rows to skip before returning, from 0 to 100000; default 0"
+        }
+      },
+      "required": [
+        "table"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "Read rows of a table",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "execution": {
+      "taskSupport": "forbidden"
+    }
+  },
+  {
+    "name": "get_atlas",
+    "title": "Read a published atlas",
+    "description": "A published snapshot: datasets, benchmarks, reports (research conclusions), integrators or evolution (the seven charts). Public for everyone.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "datasets",
+            "benchmarks",
+            "reports",
+            "integrators",
+            "evolution"
+          ],
+          "description": "Atlas to read: datasets, benchmarks, reports, integrators, evolution"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "Read a published atlas",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "execution": {
+      "taskSupport": "forbidden"
+    }
+  },
+  {
+    "name": "get_relations",
+    "title": "Read the relations graph",
+    "description": "Links between deployment records, catalogue robots and companies. Subscribers get the full graph; others the graph built from public values.",
+    "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {}
+    },
+    "annotations": {
+      "title": "Read the relations graph",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "execution": {
+      "taskSupport": "forbidden"
+    }
+  },
+  {
+    "name": "account_status",
+    "title": "Account status",
+    "description": "Whether this connection has an active data subscription, and the fair-use limits.",
+    "inputSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {}
+    },
+    "annotations": {
+      "title": "Account status",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "execution": {
+      "taskSupport": "forbidden"
+    }
+  }
+]
