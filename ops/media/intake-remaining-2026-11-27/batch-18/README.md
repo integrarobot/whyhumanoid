@@ -1,6 +1,6 @@
-# Robot image batch 18: integrated package
+# Robot image batch 18: published package
 
-This batch is integrated in this PR and not yet published. `mapping.json` lists the five integrated images: the valid sources of the final sweep. The records still without an image are not resolved by this batch.
+Published with PR 255 (reviewed head c7f8000, CI 46069011828; merge 6df3a84, Pages 46069254164, 27 Nov 2026) and verified in production by Claude and Codex. `mapping.json` lists the five integrated images: the valid sources of the final sweep. The records still without an image are not resolved by this batch.
 
 ## Integrated (five)
 
