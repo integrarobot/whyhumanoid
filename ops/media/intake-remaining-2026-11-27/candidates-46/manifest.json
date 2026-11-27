@@ -1,0 +1,22 @@
+[
+  {
+    "id": 156,
+    "slug": "limx-luna-brochure-whole-walk",
+    "credit": "LimX Dynamics",
+    "source_page": "https://www.limxdynamics.com/en/products/luna/download",
+    "source_url": "https://www.limxdynamics.com/pdf/LimX_Luna_Brochure_20260629.pdf",
+    "original": "original.png",
+    "original_size": [
+      3509,
+      2482
+    ],
+    "original_sha256": "e988ae54e7f090757060282e7f43caee0b5681740f2f78899ecdffc4640af5ac",
+    "source_pdf_sha256": "a5efcf01907715c7547a82df7a5b9188f2abdc5756607109132b4e225f6a6831",
+    "pdf_logical_page": 2,
+    "pdf_image_object": 7,
+    "source_context": "Manufacturer official Luna brochure2026-06-29, logicalpage2 RGB native3509x2482 imageobject7 (wholepage flattened; do not rasterize/rescale). Select ONLY large single full Luna walking render in UPPER RIGHT of page, approximateROI x2350..3000,y200..1200. Root inspected native crop: complete head, both actual palm-shaped hand models, both entire feet including raised rearfoot; no annotations painted ON body and no other robot overlaps this figure. White LIMXLUNA lettering behind/above head remains OUTSIDE robot contour, remove via alpha with all graphics/floor/shadow. Body~880px high, qualifies native without enlargement. Caption LimXDynamics, Luna manufacturer brochure render (June2026), walking configuration. Preserve original fabric/lightmetal RGB and actual smooth palm-shaped hands, do not add dexterousfingers. Lowerleft small front, dancing montage, torso and partiallyoverlapping frontcoverfigures are not selected. This solves earlier lowresolution nativevideo frames; no data/spec changes.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer public product brochure. Credit required; no open licence assumed or outreach sent."
+  }
+]
