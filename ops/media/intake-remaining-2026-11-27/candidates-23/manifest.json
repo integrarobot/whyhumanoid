@@ -1,0 +1,19 @@
+[
+  {
+    "id": 120,
+    "slug": "sunday-memo-native-video",
+    "credit": "Sunday",
+    "source_page": "https://www.sunday.ai/",
+    "source_url": "https://stream.mux.com/xLLkokRSG7wrmPVmYfSE3Hz2TwlKI83Ohf8vHejgI4o.m3u8",
+    "original": "original.png",
+    "original_size": [
+      1920,
+      1080
+    ],
+    "original_sha256": "1f859e257f6e57eb52a0c893aa6f7f434aaf9f94b5b53d8b36a20fbf9c7c5b9b",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "source_context": "Exact Sunday homepage Next payload references mux playbackId xLLkokRSG7wrmPVmYfSE3Hz2TwlKI83Ohf8vHejgI4o. Manufacturer native1920x1080 HLS rendition, concatenated original TS segments without reencoding; frame1035 decoded SEQUENTIALLY (OpenCV seeking HLS TS gives decode errors, avoid seeking). FPS30000/1001=29.97002997, time34.5345s,1046frames. Whole Memo head with cap, both arms and both grippers, full mast and whole mobilebase with margin. Robot holds a plate, ENTIRE PLATE visible above dishwasher door (unlike earlier880/940/980). Preserve plate with hand, caption official video still with plate. Remove cabinetdoor, rack, floor/nearbyfurniture by alpha only; no robot occlusion. Nativebody~850px. Root inspected1035atnative, exactsource frame included. No autonomy/availability claim; no specification change. Mask only, preserve RGB/native and20px padding.",
+    "license_note": "Maker primary media, credit, no open licence assumed or outreach."
+  }
+]
