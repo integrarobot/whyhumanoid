@@ -1,0 +1,351 @@
+[
+  {
+    "id": 25,
+    "slug": "enactic-openarm-2",
+    "original": "openarm2.png",
+    "roi": [
+      1650,
+      20,
+      3000,
+      2323
+    ],
+    "bbox": [
+      113,
+      150,
+      1108,
+      2169
+    ],
+    "border": 20,
+    "size": [
+      1035,
+      2059
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small background components removed.",
+    "source_page": "https://docs.openarm.dev/hardware/openarm-2.0/general/",
+    "source_url": "https://docs.openarm.dev/assets/images/openarm-2.0-204d2c840e8094cb2a8152d065040902.png",
+    "source_alt": "OpenArm 2.0",
+    "credit": "Enactic",
+    "source_context": "OpenArm 2.0 bimanual arm platform, complete mounted module. Not a whole humanoid; do not add limbs or a head.",
+    "original_sha256": "66971cbc3b1ae9e7d31b78573fa94e92d68314b8dfe5c738407e43c29a792b19",
+    "prepared_sha256": "b565008f8b4b4c2e1790a1692652245551907441161e9ca90700b73840e3b5f5",
+    "mask_sha256": "aa9fcd62e1f91ee950d0c858da382c62eae73752d3ccc49246f150671c321fec",
+    "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 26,
+    "slug": "mirokai",
+    "original": "mirokai-studio.jpg",
+    "roi": [
+      480,
+      0,
+      1050,
+      1152
+    ],
+    "bbox": [
+      47,
+      62,
+      467,
+      1077
+    ],
+    "border": 20,
+    "size": [
+      460,
+      1055
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha-only mask, right ear restored by manual alpha polygon after automatic mask omitted it. Original RGB unchanged.",
+    "source_page": "https://enchanted-tools.notion.site/Miroka-Explorer-Suit-Studio-247d56e2479680e2a63ad584350fb015?pvs=25",
+    "source_url": "https://enchanted-tools.notion.site/image/attachment%3A688035d6-41a6-408e-9072-92314262218b%3AStill_2025-08-06_101409_1.1.20.jpg?table=block&id=247d56e2-4796-804f-81a9-e834d18efc6e&spaceId=214cc2c7-3563-4ada-955b-928c5c369400&width=1410&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    "credit": "Enchanted Tools - Mirokaï robot",
+    "source_context": "Miroki (yellow character) of the Mirokai robot family, from the official Mirokai Explorer Suit Studio gallery. Complete robot including rolling sphere and protective ring. Not a different unnamed humanoid.",
+    "original_sha256": "228ea6908575dcbced3c6d768c3f9bd2201214743dd1c9728d14086a2ab4d242",
+    "prepared_sha256": "77fedd1a9a1fa8ce91cadaf0984814bb6fd031999167d24fa73bfcbf09f9202c",
+    "mask_sha256": "01c29215249f9c203666f06fce57763a48b21dad5dce9e247a2cb595c018eca1",
+    "processing": "Non-generative alpha-only mask with manual right-ear restoration. Original RGB pixels and native resolution preserved.20px transparent padding.",
+    "checked_at": "2026-11-27",
+    "reuse_conditions": "Official media room allows photo use with credit and requests notification. User explicitly authorised manufacturer contact in this chat on2026-11-27. Codex submitted notification through https://enchanted.tools/contact and observed Thank you for contacting us. plus cleared form. Credit exact gallery wording: Enchanted Tools - Mirokaï robot.",
+    "notification": {
+      "channel": "Official contact form",
+      "url": "https://enchanted.tools/contact",
+      "date": "2026-11-27",
+      "result": "Thank you for contacting us.",
+      "authorised_by": "Javier in current chat",
+      "sent_by": "Codex",
+      "public_page": "https://whyhumanoid.com/humanoids/enchanted-mirokai-26/"
+    }
+  },
+  {
+    "id": 28,
+    "slug": "ameca",
+    "original": "ameca-18535.jpg",
+    "roi": [
+      140,
+      200,
+      365,
+      945
+    ],
+    "bbox": [
+      11,
+      8,
+      221,
+      737
+    ],
+    "border": 20,
+    "size": [
+      250,
+      769
+    ],
+    "native_alpha": false,
+    "refinement": "ISNET alpha mask levels85..230.",
+    "source_page": "https://engineeredarts.com/tritium/robots/ameca",
+    "source_url": "https://media.engineeredarts.com/wp-content/uploads/2025/09/Ameca-Full-Size-Social-Humanoid-Robot-interview-at-Techsauce-Global-Summit-2024-Engineered-Arts.jpg",
+    "source_alt": "",
+    "credit": "Engineered Arts",
+    "source_context": "Ameca full-size at Techsauce Global Summit2024, both hands/feet and complete circular mounting base. Not Desktop. Native source666x999; robot crop250x769 including20px padding; modest resolution, no upscale.",
+    "original_sha256": "534fe09aebfa9f24e1a25e6fa807151dcfd47b73efdef93d49212ae7a1e1b394",
+    "prepared_sha256": "32d7870117e6e266bd7c6d1372703a73fecfd0f0fe9b2356726bc34a5c3ce098",
+    "mask_sha256": "648077ee8e6ae62327bb76f67f71b7b9279fa54fa6539f3431f8f817627ef0bf",
+    "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 29,
+    "slug": "codroid-02",
+    "original": "29-0.png",
+    "roi": [
+      0,
+      0,
+      469,
+      1081
+    ],
+    "bbox": [
+      57,
+      20,
+      456,
+      1081
+    ],
+    "border": 20,
+    "size": [
+      439,
+      1101
+    ],
+    "native_alpha": true,
+    "refinement": "Alpha levels85..230; small background components removed.",
+    "source_page": "https://www.codroid.ai/en/",
+    "source_url": "https://www.codroid.ai/en/../uploads/c02.png",
+    "source_alt": "",
+    "credit": "Estun Codroid",
+    "source_context": "CODROID02 bipedal version with both legs and feet; not wheeled.",
+    "original_sha256": "c272849ac2a5bb3ae099858a164f0dd9e91e76cf109227876c50e196b8cc888c",
+    "prepared_sha256": "7bccfcd6feac881aeb5d5eaa5a5ed36778ff0eb2f89cfb3e1eec8cc7ddae164d",
+    "mask_sha256": "2af86b6626d2902f947786de16f5d92305f8b2c9b2da22514573fcfd2249c310",
+    "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 103,
+    "slug": "fauna-sprout",
+    "original": "1031-98.avif",
+    "roi": [
+      0,
+      0,
+      2295,
+      2150
+    ],
+    "bbox": [
+      649,
+      67,
+      1466,
+      2028
+    ],
+    "border": 20,
+    "size": [
+      857,
+      2001
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small background components removed.",
+    "source_page": "https://faunarobotics.com/product",
+    "source_url": "https://cdn.prod.website-files.com/693933367980a29f6ff36b6d/6968af350a9679264eb0d177_Shot%201.avif",
+    "source_alt": "",
+    "credit": "Fauna Robotics",
+    "source_context": "Sprout Creator Edition, complete green product render from official product page.",
+    "original_sha256": "8ecd9eedb0ad33ce0c871459ed61a2ecad2ade8e4743645eba494a68afcf6466",
+    "prepared_sha256": "dec0516d9fbb058e6bd5267399e605017761487f461da5ebc9b2df04a590ec38",
+    "mask_sha256": "68654b4f9bb5f9e62aff26650ae7e614dbb11670b05ac28c7aca43e49d1360f0",
+    "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 106,
+    "slug": "ff-futurist",
+    "original": "106-ref7.jpg",
+    "roi": [
+      0,
+      0,
+      800,
+      800
+    ],
+    "bbox": [
+      269,
+      78,
+      604,
+      766
+    ],
+    "border": 20,
+    "size": [
+      375,
+      728
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small background components removed.",
+    "source_page": "https://robotics.ff.com/us/ff-futurist/",
+    "source_url": "https://genesis-cdn.ff.com/robot-comparasion/futurist-draft-default.jpg",
+    "source_alt": "",
+    "credit": "Faraday Future",
+    "source_context": "FF Futurist initial design shown in official comparison futurist-draft-default.jpg. Not the June2026 All-New Futurist/A3 rendering. Native375x728 cutout, no upscale.",
+    "original_sha256": "06c726db87e694599aecaf66b02b9974c69683749a0417e0e3a9419ca5d1b6b5",
+    "prepared_sha256": "cdfa1f149cf724dfb07dccd2d455a21dd4860aadc2a0f9fcc8db3042a31be940",
+    "mask_sha256": "ed08236a1b74662fcd0d7019156d48343eb8d692484a418d339b59448df7e167",
+    "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 126,
+    "slug": "feather",
+    "original": "126-0.webp",
+    "roi": [
+      0,
+      0,
+      1080,
+      1080
+    ],
+    "bbox": [
+      375,
+      40,
+      705,
+      1016
+    ],
+    "border": 20,
+    "size": [
+      370,
+      1016
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small background components removed.",
+    "source_page": "https://feather.dev/",
+    "source_url": "https://feather.dev/hero/frames/0007.webp",
+    "source_alt": "",
+    "credit": "Feather",
+    "source_context": "Complete front view of wheeled bimanual platform with lift and base.",
+    "original_sha256": "5b6eaf7772d9e3dc22d2584ae1f1d22818238d22bb79e741d51a64c86c9d629c",
+    "prepared_sha256": "68776980871abdbbacdacc782a8fa6e30c36da90a303af80a3fff3e4878d0a6d",
+    "mask_sha256": "fbeaf2e2738234de8d5bb8d2052a736f3fe355e58f967a13fbf06960c69d2333",
+    "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 129,
+    "slug": "flourish",
+    "original": "129-36.jpg",
+    "roi": [
+      0,
+      0,
+      4320,
+      6464
+    ],
+    "bbox": [
+      1349,
+      8,
+      2848,
+      5956
+    ],
+    "border": 20,
+    "size": [
+      1539,
+      5988
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small background components removed. Alpha-only boundary exclusion of wall halo above original row8.",
+    "source_page": "https://flourish-robots.com/",
+    "source_url": "https://framerusercontent.com/images/gDyKs7ERxGbJEVUpekIf1uznZeg.jpg",
+    "source_alt": "",
+    "credit": "Flourish",
+    "source_context": "Flourish robot as shown by its manufacturer; model name unconfirmed. Complete green wheeled platform from current official homepage. Do not invent a commercial model name or update catalogue data.",
+    "original_sha256": "857336605acbb53b599d02f3921828c8698d7075e3d1bc41d506d5aaa7ddc486",
+    "prepared_sha256": "40284a003fda4f14f954cbb1ea04fb93faa074c7178a9e374608245b65ef2986",
+    "mask_sha256": "2877fa85e9daa7831c3ad6e318c697530962de929b4694dc7f647113d9eff665",
+    "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 151,
+    "slug": "engineai-t800",
+    "original": "1512-38.jpg",
+    "roi": [
+      0,
+      0,
+      1400,
+      833
+    ],
+    "bbox": [
+      740,
+      34,
+      1260,
+      813
+    ],
+    "border": 20,
+    "size": [
+      560,
+      819
+    ],
+    "native_alpha": false,
+    "refinement": "Alpha levels85..230; small background components removed. Alpha-only floor reflection exclusion below original row813.",
+    "source_page": "https://www.engineai.com.cn/product-t800",
+    "source_url": "https://cn-engineai-1304599088.cos.ap-guangzhou.myqcloud.com/uploads/upload/images/20251129/5ab0cb5e6f8ecf879a1c31d3cd0886ff.jpg",
+    "source_alt": "",
+    "credit": "EngineAI",
+    "source_context": "T800 complete running pose from Chinese official product page. Both feet present. Configuration not attributed to Basic/Pro/Max without further proof.",
+    "original_sha256": "a1e43baf54166865f5bf863c3d560308680d5e8e9d73c3da131fae16c060162d",
+    "prepared_sha256": "c53129fcada5aa5f3ee7b0ea89c37ef922e016079a1c05cd4fd3bcd2e206d74e",
+    "mask_sha256": "ebd04e839299220f6799dc78e0c6835ac09b7e3317bb0113021a19edb41ec81a",
+    "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 176,
+    "slug": "elite-centaur-g1",
+    "original": "176-142.jpg",
+    "roi": [
+      365,
+      0,
+      810,
+      540
+    ],
+    "bbox": [
+      7,
+      23,
+      411,
+      522
+    ],
+    "border": 20,
+    "size": [
+      444,
+      539
+    ],
+    "native_alpha": false,
+    "refinement": "ISNET mask, alpha levels85..230.",
+    "source_page": "https://www.elibot.com/product/wheeled",
+    "source_url": "https://www.elibot.com/Public/Uploads/uploadfile/images/20260521/b1img11.jpg",
+    "source_alt": "",
+    "credit": "Elite Robots",
+    "source_context": "Centaur-G1 complete wheeled dual-arm platform, manufacturer kitchen illustration, holding a cup and utensil. Native444x539 cutout; no upscale. Not Unitree/AgiBot G1. Render does not prove a deployment.",
+    "original_sha256": "d5434bff7a6bf2e74ce2ed6d0ba56e7b054ac397066eda4851298345d1281f49",
+    "prepared_sha256": "3b97ba1ae475c23193b53e30218dcf34951d8e549d2da25e5904533f23ed17a1",
+    "mask_sha256": "b541d320053d51216d7e63755322ff8238d9becd19c62aa8b8be20e9d50303ea",
+    "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+    "checked_at": "2026-11-27"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "id": 25,
+  "slug": "enactic-openarm-2",
+  "original": "openarm2.png",
+  "roi": [
+    1650,
+    20,
+    3000,
+    2323
+  ],
+  "bbox": [
+    113,
+    150,
+    1108,
+    2169
+  ],
+  "border": 20,
+  "size": [
+    1035,
+    2059
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha levels85..230; small background components removed.",
+  "source_page": "https://docs.openarm.dev/hardware/openarm-2.0/general/",
+  "source_url": "https://docs.openarm.dev/assets/images/openarm-2.0-204d2c840e8094cb2a8152d065040902.png",
+  "source_alt": "OpenArm 2.0",
+  "credit": "Enactic",
+  "source_context": "OpenArm 2.0 bimanual arm platform, complete mounted module. Not a whole humanoid; do not add limbs or a head.",
+  "original_sha256": "66971cbc3b1ae9e7d31b78573fa94e92d68314b8dfe5c738407e43c29a792b19",
+  "prepared_sha256": "b565008f8b4b4c2e1790a1692652245551907441161e9ca90700b73840e3b5f5",
+  "mask_sha256": "aa9fcd62e1f91ee950d0c858da382c62eae73752d3ccc49246f150671c321fec",
+  "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

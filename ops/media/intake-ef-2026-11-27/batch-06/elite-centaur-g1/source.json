@@ -1,0 +1,34 @@
+{
+  "id": 176,
+  "slug": "elite-centaur-g1",
+  "original": "176-142.jpg",
+  "roi": [
+    365,
+    0,
+    810,
+    540
+  ],
+  "bbox": [
+    7,
+    23,
+    411,
+    522
+  ],
+  "border": 20,
+  "size": [
+    444,
+    539
+  ],
+  "native_alpha": false,
+  "refinement": "ISNET mask, alpha levels85..230.",
+  "source_page": "https://www.elibot.com/product/wheeled",
+  "source_url": "https://www.elibot.com/Public/Uploads/uploadfile/images/20260521/b1img11.jpg",
+  "source_alt": "",
+  "credit": "Elite Robots",
+  "source_context": "Centaur-G1 complete wheeled dual-arm platform, manufacturer kitchen illustration, holding a cup and utensil. Native444x539 cutout; no upscale. Not Unitree/AgiBot G1. Render does not prove a deployment.",
+  "original_sha256": "d5434bff7a6bf2e74ce2ed6d0ba56e7b054ac397066eda4851298345d1281f49",
+  "prepared_sha256": "3b97ba1ae475c23193b53e30218dcf34951d8e549d2da25e5904533f23ed17a1",
+  "mask_sha256": "b541d320053d51216d7e63755322ff8238d9becd19c62aa8b8be20e9d50303ea",
+  "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

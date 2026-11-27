@@ -1,0 +1,34 @@
+{
+  "id": 151,
+  "slug": "engineai-t800",
+  "original": "1512-38.jpg",
+  "roi": [
+    0,
+    0,
+    1400,
+    833
+  ],
+  "bbox": [
+    740,
+    34,
+    1260,
+    813
+  ],
+  "border": 20,
+  "size": [
+    560,
+    819
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha levels85..230; small background components removed. Alpha-only floor reflection exclusion below original row813.",
+  "source_page": "https://www.engineai.com.cn/product-t800",
+  "source_url": "https://cn-engineai-1304599088.cos.ap-guangzhou.myqcloud.com/uploads/upload/images/20251129/5ab0cb5e6f8ecf879a1c31d3cd0886ff.jpg",
+  "source_alt": "",
+  "credit": "EngineAI",
+  "source_context": "T800 complete running pose from Chinese official product page. Both feet present. Configuration not attributed to Basic/Pro/Max without further proof.",
+  "original_sha256": "a1e43baf54166865f5bf863c3d560308680d5e8e9d73c3da131fae16c060162d",
+  "prepared_sha256": "c53129fcada5aa5f3ee7b0ea89c37ef922e016079a1c05cd4fd3bcd2e206d74e",
+  "mask_sha256": "ebd04e839299220f6799dc78e0c6835ac09b7e3317bb0113021a19edb41ec81a",
+  "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

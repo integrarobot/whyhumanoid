@@ -1,0 +1,34 @@
+{
+  "id": 103,
+  "slug": "fauna-sprout",
+  "original": "1031-98.avif",
+  "roi": [
+    0,
+    0,
+    2295,
+    2150
+  ],
+  "bbox": [
+    649,
+    67,
+    1466,
+    2028
+  ],
+  "border": 20,
+  "size": [
+    857,
+    2001
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha levels85..230; small background components removed.",
+  "source_page": "https://faunarobotics.com/product",
+  "source_url": "https://cdn.prod.website-files.com/693933367980a29f6ff36b6d/6968af350a9679264eb0d177_Shot%201.avif",
+  "source_alt": "",
+  "credit": "Fauna Robotics",
+  "source_context": "Sprout Creator Edition, complete green product render from official product page.",
+  "original_sha256": "8ecd9eedb0ad33ce0c871459ed61a2ecad2ade8e4743645eba494a68afcf6466",
+  "prepared_sha256": "dec0516d9fbb058e6bd5267399e605017761487f461da5ebc9b2df04a590ec38",
+  "mask_sha256": "68654b4f9bb5f9e62aff26650ae7e614dbb11670b05ac28c7aca43e49d1360f0",
+  "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

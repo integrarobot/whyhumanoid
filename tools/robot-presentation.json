@@ -727,6 +727,156 @@
         "credit": "Image: PsiBot",
         "provenance": "ops/media/robots/psibot-v1/PROVENANCE.md"
       }
+    },
+    "25": {
+      "recorded": {
+        "Lab": "Enactic",
+        "Robot": "OpenArm 2.0 (arms)"
+      },
+      "image": {
+        "src": "/assets/robots/enactic-openarm-2/enactic-openarm-2-full-body.webp",
+        "fallback": "/assets/robots/enactic-openarm-2/enactic-openarm-2-full-body.png",
+        "width": 1035,
+        "height": 2059,
+        "alt": "OpenArm 2.0 by Enactic, the complete two-arm module on its stand, front view",
+        "credit": "Image: Enactic",
+        "provenance": "ops/media/robots/enactic-openarm-2/PROVENANCE.md"
+      }
+    },
+    "28": {
+      "recorded": {
+        "Lab": "Engineered Arts",
+        "Robot": "Ameca"
+      },
+      "image": {
+        "src": "/assets/robots/engineered-arts-ameca/engineered-arts-ameca-full-body.webp",
+        "fallback": "/assets/robots/engineered-arts-ameca/engineered-arts-ameca-full-body.png",
+        "width": 250,
+        "height": 769,
+        "alt": "Ameca by Engineered Arts, full body on its round base, front view, standing",
+        "credit": "Image: Engineered Arts",
+        "provenance": "ops/media/robots/engineered-arts-ameca/PROVENANCE.md"
+      }
+    },
+    "29": {
+      "recorded": {
+        "Lab": "Estun Codroid",
+        "Robot": "Codroid 02"
+      },
+      "image": {
+        "src": "/assets/robots/estun-codroid-02/estun-codroid-02-full-body.webp",
+        "fallback": "/assets/robots/estun-codroid-02/estun-codroid-02-full-body.png",
+        "width": 439,
+        "height": 1101,
+        "alt": "Codroid 02 by Estun Codroid, bipedal version, full body, front view, walking",
+        "credit": "Image: Estun Codroid",
+        "provenance": "ops/media/robots/estun-codroid-02/PROVENANCE.md"
+      }
+    },
+    "103": {
+      "recorded": {
+        "Lab": "Fauna",
+        "Robot": "Sprout"
+      },
+      "image": {
+        "src": "/assets/robots/fauna-sprout/fauna-sprout-full-body.webp",
+        "fallback": "/assets/robots/fauna-sprout/fauna-sprout-full-body.png",
+        "width": 857,
+        "height": 2001,
+        "alt": "Sprout by Fauna Robotics (Creator Edition), full body, front view, standing",
+        "credit": "Image: Fauna Robotics",
+        "provenance": "ops/media/robots/fauna-sprout/PROVENANCE.md"
+      }
+    },
+    "106": {
+      "recorded": {
+        "Lab": "Faraday Future",
+        "Robot": "FF Futurist"
+      },
+      "image": {
+        "src": "/assets/robots/faraday-future-ff-futurist/faraday-future-ff-futurist-full-body.webp",
+        "fallback": "/assets/robots/faraday-future-ff-futurist/faraday-future-ff-futurist-full-body.png",
+        "width": 375,
+        "height": 728,
+        "alt": "FF Futurist by Faraday Future, initial design, full body, front view, standing",
+        "credit": "Image: Faraday Future",
+        "provenance": "ops/media/robots/faraday-future-ff-futurist/PROVENANCE.md"
+      }
+    },
+    "126": {
+      "recorded": {
+        "Lab": "Feather",
+        "Robot": "Feather"
+      },
+      "image": {
+        "src": "/assets/robots/feather/feather-full-body.webp",
+        "fallback": "/assets/robots/feather/feather-full-body.png",
+        "width": 370,
+        "height": 1016,
+        "alt": "Feather by Feather Robotics, the whole wheeled platform with two arms and its lift column, front view",
+        "credit": "Image: Feather",
+        "provenance": "ops/media/robots/feather/PROVENANCE.md"
+      }
+    },
+    "129": {
+      "recorded": {
+        "Lab": "Flourish",
+        "Robot": "Flourish robot (model name unconfirmed)"
+      },
+      "image": {
+        "src": "/assets/robots/flourish-robot/flourish-robot-full-body.webp",
+        "fallback": "/assets/robots/flourish-robot/flourish-robot-full-body.png",
+        "width": 1539,
+        "height": 5988,
+        "alt": "Robot shown by Flourish on its website (model name not confirmed), whole wheeled platform, front view",
+        "credit": "Image: Flourish",
+        "provenance": "ops/media/robots/flourish-robot/PROVENANCE.md"
+      }
+    },
+    "151": {
+      "recorded": {
+        "Lab": "Engineai",
+        "Robot": "T800"
+      },
+      "image": {
+        "src": "/assets/robots/engineai-t800/engineai-t800-full-body.webp",
+        "fallback": "/assets/robots/engineai-t800/engineai-t800-full-body.png",
+        "width": 560,
+        "height": 819,
+        "alt": "T800 by EngineAI, full body, running pose, front view",
+        "credit": "Image: EngineAI",
+        "provenance": "ops/media/robots/engineai-t800/PROVENANCE.md"
+      }
+    },
+    "176": {
+      "recorded": {
+        "Lab": "Elite Robots",
+        "Robot": "Centaur-G1"
+      },
+      "image": {
+        "src": "/assets/robots/elite-robots-centaur-g1/elite-robots-centaur-g1-full-body.webp",
+        "fallback": "/assets/robots/elite-robots-centaur-g1/elite-robots-centaur-g1-full-body.png",
+        "width": 444,
+        "height": 539,
+        "alt": "Centaur-G1 by Elite Robots, the whole wheeled platform with two arms, holding a cup and a utensil, side view",
+        "credit": "Image: Elite Robots",
+        "provenance": "ops/media/robots/elite-robots-centaur-g1/PROVENANCE.md"
+      }
+    },
+    "26": {
+      "recorded": {
+        "Lab": "Enchanted",
+        "Robot": "Mirokai"
+      },
+      "image": {
+        "src": "/assets/robots/enchanted-tools-mirokai/enchanted-tools-mirokai-full-body.webp",
+        "fallback": "/assets/robots/enchanted-tools-mirokai/enchanted-tools-mirokai-full-body.png",
+        "width": 460,
+        "height": 1055,
+        "alt": "Mirokai by Enchanted Tools (the yellow Miroki character), the whole robot on its rolling sphere and ring, front view",
+        "credit": "Image: Enchanted Tools - Mirokaï robot",
+        "provenance": "ops/media/robots/enchanted-tools-mirokai/PROVENANCE.md"
+      }
     }
   }
 }
