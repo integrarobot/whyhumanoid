@@ -1,0 +1,167 @@
+[
+  {
+    "id": 109,
+    "slug": "khameleon-manufacturer-complete-platform",
+    "credit": "Khameleon",
+    "source_page": "https://www.khameleonrobotics.com/",
+    "source_url": "https://www.khameleonrobotics.com/media/trash.jpg",
+    "source_context": "Official maker homepage identifies Khameleon multifunctional dual-arm commercial platform, although catalogue does not yet disclose a model name. Native 1200x900 image shows complete top sensor pillar, both arms, actual end effectors, whole mobile base and all visible wheels. Approximate ROI x150..670 y5..820. Keep actual attached tools, central docked mop and cables. Left gripper holds small clear bottle: preserve held bottle as photographed rather than reconstruct fingers; caption must identify task configuration with tools/bottle. Bottle does not hide torso/base. External round table begins below bottle with visible gap, do not include table or right external bin. Compare thin cables against original carefully. No human head/legs by design; no new anatomy. If mask cannot preserve complete hardware reject and investigate hero.mp4 for clean whole stance. Merely lacking model name is not grounds for exception when actual platform is identified. Do not change master/name/specs.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 5083e8a, candidates-48",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; the round side table and the bin on the right are out; the clear bottle held in the left gripper is kept. A dark slot under the right dispenser of the base (x 375..395, y 590..640 of the original) stays opaque as the mask left it: it has the colour of the robot's black parts and there is no clear evidence that it is background",
+    "roi": [
+      140,
+      0,
+      680,
+      820
+    ],
+    "bbox": [
+      22,
+      12,
+      519,
+      805
+    ],
+    "border": 20,
+    "size": [
+      537,
+      833
+    ],
+    "native_alpha": false,
+    "original_sha256": "bda9159775d1fdc4b648578685f1897f4c14fd578f0cf501df884a3a5d2d9ecb",
+    "prepared_sha256": "dfd55e82473fdc2f95ec8e9fb2d7c65e1161c6a7c869b3dea72a834e3ec8a913",
+    "mask_sha256": "cbc326db1ff82ea16082876413f6bd3052235e7f32416e553e7cb581955774f1"
+  },
+  {
+    "id": 62,
+    "slug": "persona-ai-whole-prototype-native",
+    "credit": "Persona AI",
+    "source_page": "https://persona.ai/",
+    "source_url": "https://persona.ai/wp-content/uploads/Q3-Jul-22-2026-Web-Hero-Video-v1_12.mp4",
+    "source_context": "Official manufacturer homepage embedded video. Select native frame 586 at 24.4167 seconds/24fps, complete actual humanoid prototype head, two real hands, both feet. Approximate ROI x740..1220 y155..1025. Whole hardware seen against grey lab, no suspension cable attached to body. Pipe above/behind head and orange hoist at upper right are BACKGROUND, exclude. Keep actual finger geometry, knee linkages, ankle cables and dark open regions as present in native source; do not convert actual black plates into transparency. Caption Persona AI, full humanoid prototype, official video still (2026). Do not assign an invented model name or generation from filename; catalogue record remains model undisclosed. No master/spec changes.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 2021f8c, candidates-49",
+    "mask_method": "BiRefNet general (rembg, mask only), with the ceiling duct excluded, Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-no-duct-mask.png; levels 150..240; the model mask took in the ceiling duct that runs into the top of the head from behind; it is not part of the robot, so every pixel above y = 180 within x 900..1019 of the original is set to alpha 0, where the grey top of the head begins; segmentation-birefnet-no-duct-mask.png is the mask used",
+    "roi": [
+      720,
+      140,
+      1240,
+      1045
+    ],
+    "bbox": [
+      45,
+      40,
+      480,
+      870
+    ],
+    "border": 20,
+    "size": [
+      475,
+      870
+    ],
+    "native_alpha": false,
+    "original_sha256": "fad19a64fa6b7a38f7d914ed435a7afc7f0361f4c8f3e02b65d88a1efd9ef308",
+    "prepared_sha256": "fdf18ff989f9b03bccf83c392bd457c437b34ea0c8bde3d976c66febbe2b0da4",
+    "mask_sha256": "8bdf39168f2583872a796dd70bedcaf9aa803e37feaabe5bd7e4f7138788f8b8"
+  },
+  {
+    "id": 125,
+    "slug": "nucleus-official-service-platform-rear",
+    "credit": "Nucleus",
+    "source_page": "https://nucleuslab.ai/",
+    "source_url": "https://nucleuslab.ai/assets/nucleus-hero-clean-20s.mp4",
+    "source_context": "Official Nucleus homepage video and linked /worker/ product page identify its mobile dual-arm service platform. Select LEFT single complete robot in REAR VIEW at native frame 193 (7.72 seconds/25fps). Approximate ROI x190..665 y270..950. Right foreground robot is clipped and is NOT selected. Complete head, both arms/end effectors, articulated column and entire mobile base. Hands at its waist have normal self-occlusion; no external bin covers selected robot. Keep actual black arm/back cables and white controller lead loop sitting on left of base, controller and emergency stop. Remove shelves, other robot and floor only via alpha. No reconstruction or new robot design. Caption Nucleus, service platform shown in official video, rear view (2026). DO NOT call Nucleus original hardware manufacturer or infer underlying OEM/model; exact OEM remains unconfirmed in catalogue. Official product /worker/ https://nucleuslab.ai/worker/ describes two arms and mobile base. This identifies platform as used/shown by service provider, not a new confirmed manufacturer/model.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 2021f8c, candidates-49",
+    "mask_method": "BiRefNet general (rembg, mask only), with two background strips removed, Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-background-removed-mask.png; levels 150..240; the model mask took in two pieces of background, removed by alpha only: the light shelf beam seen between the left arm and the back (x up to 357, y 452..477 of the original, right of the arm edge) and the dark edge and orange stub of a box behind the right elbow (x 583..606, y 414..450, above the arm and away from the black cable). The black cables of both arms, including the loop under the right wrist and the ones crossing the back and mast, and the white controller and cable on the base are kept; segmentation-birefnet-background-removed-mask.png is the mask used",
+    "roi": [
+      170,
+      250,
+      690,
+      970
+    ],
+    "bbox": [
+      39,
+      36,
+      464,
+      685
+    ],
+    "border": 20,
+    "size": [
+      465,
+      689
+    ],
+    "native_alpha": false,
+    "original_sha256": "5bdec4738efaacb776b240750149422c2f63ddde66f65e0cb3257c9d78cfdb82",
+    "prepared_sha256": "4dc4686236f3e4088285b11a539671dacf90e684719c14bb31fa0e2c19969ea1",
+    "mask_sha256": "645052054077d5483626b62998cf851a0785bc660a99ff2fab0d24a2fdc90638"
+  },
+  {
+    "id": 114,
+    "slug": "eden-complete-native-demo-platform",
+    "credit": "Eden Robotics",
+    "source_page": "https://edenrobotics.ai/",
+    "source_url": "https://edenrobotics.ai/assets/videos/plug-and-play.mp4",
+    "source_context": "Official Eden product homepage video shows a physical complete dual-arm prototype on its small rectangular caster base in a plug-and-play demonstration. Frame184 at184/(24000/1001)=7.6743s,1920x1080, approximateROI x780..1080 y365..980. Actual tilted screen/sensor head, both arms and real black pinch hands, central column and whole rectangular white base with visible small casters. No head/legs invented and base is actual supporting platform shown, not studio floor. Person to right and case to left are separated from robot, exclude. Preserve real black cables looping between arms/waist and tiny casters, remove floor shadow only via alpha. Native body about580px high plus padding meets minimum. Caption Eden Robotics, complete prototype platform on caster base, official demo still (2026). Exact model name/OEM remains unconfirmed in master; no specifications/identity reclassification. This completes a source previously assumed only unknown model; no copying website design or text involved.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 6f9b29e, candidates-51",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; largest region kept",
+    "roi": [
+      760,
+      345,
+      1100,
+      1000
+    ],
+    "bbox": [
+      36,
+      35,
+      302,
+      623
+    ],
+    "border": 20,
+    "size": [
+      306,
+      628
+    ],
+    "native_alpha": false,
+    "original_sha256": "eeaeee27d480a9899abc53bd1de04d802b9b7721ea010a729fa2d39224d9a0c6",
+    "prepared_sha256": "7246585eb3387c49e63aab870c7b35756543517975218363425908a6f2d61cf0",
+    "mask_sha256": "6e0710948617275fd7c01bcb84e94ae998ab37ef2dcfc8f069cb1e06413481e1"
+  },
+  {
+    "id": 214,
+    "slug": "techman-tm-xplore-i-2025-product-animation",
+    "credit": "Techman Robot / SSI",
+    "source_page": "https://ssi-robot.co.jp/次世代ヒューマノイド「tm-xplore-i」動画公開/",
+    "source_url": "https://www.youtube.com/watch?v=b9-bPE_NKcI",
+    "source_context": "SSI CO.,LTD official distributor primary post dated2025-09-02 explicitly introduces Techman Robot TM Xplore I and embeds this product video. Native1920x1080 frame315,10.5105s at30000/1001fps: title overlay has fully disappeared and camera approaches exact complete robot. This is an EXISTING PRODUCT ANIMATION, not newly generated render or physical photograph. Caption Techman Robot, TM Xplore I product animation still (2025), via SSI. ApproximateROI x800..1130 y125..900; head, both articulated fingers/hands, actual mast/knee mechanism and entire wheelbase complete. Both black hand shapes must be preserved against dark green background; top/side head is glossy black real product render, not transparency. Remove background/floor/shadow/reflection only with alpha, no colour brighten/upscaling/rendering. Earlier frame266 has text ON hands and is not selected; frame315 is clean and native robot about750px high. Do not relabel as 2026 hardware/photo or assert version specs based on animation.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 6f9b29e, candidates-51",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240; the black hands and head are kept against the dark green background; the fingers were checked at native scale",
+    "roi": [
+      780,
+      105,
+      1150,
+      920
+    ],
+    "bbox": [
+      33,
+      33,
+      337,
+      781
+    ],
+    "border": 20,
+    "size": [
+      344,
+      788
+    ],
+    "native_alpha": false,
+    "original_sha256": "7b74380e12f6bb2a1149b6d97757cd686426c67b42482e6982c5b6a79fb87bc8",
+    "prepared_sha256": "f11af6fd4c89273fd7396f5da04ed23a6982f3b5f6821579331ce15c6d56f0a6",
+    "mask_sha256": "af048c360718316d4e7169e1b1ffaefda17cd5b5e4f1088dfe5dd78b57fa42e0"
+  }
+]
