@@ -1,0 +1,21 @@
+{
+  "id": 125,
+  "slug": "nucleus-official-service-platform-rear",
+  "credit": "Nucleus",
+  "source_page": "https://nucleuslab.ai/",
+  "source_url": "https://nucleuslab.ai/assets/nucleus-hero-clean-20s.mp4",
+  "original": "original.png",
+  "original_size": [
+    1920,
+    1080
+  ],
+  "original_sha256": "5bdec4738efaacb776b240750149422c2f63ddde66f65e0cb3257c9d78cfdb82",
+  "source_video_sha256": "f0d7455271cd1797b65c25001f7ef03368df48262b20822ab37fb1264cede293",
+  "frame_index_zero_based": 193,
+  "fps": 25,
+  "time_seconds": 7.72,
+  "source_context": "Official Nucleus homepage video and linked /worker/ product page identify its mobile dual-arm service platform. Select LEFT single complete robot in REAR VIEW at native frame 193 (7.72 seconds/25fps). Approximate ROI x190..665 y270..950. Right foreground robot is clipped and is NOT selected. Complete head, both arms/end effectors, articulated column and entire mobile base. Hands at its waist have normal self-occlusion; no external bin covers selected robot. Keep actual black arm/back cables and white controller lead loop sitting on left of base, controller and emergency stop. Remove shelves, other robot and floor only via alpha. No reconstruction or new robot design. Caption Nucleus, service platform shown in official video, rear view (2026). DO NOT call Nucleus original hardware manufacturer or infer underlying OEM/model; exact OEM remains unconfirmed in catalogue. Official product /worker/ https://nucleuslab.ai/worker/ describes two arms and mobile base. This identifies platform as used/shown by service provider, not a new confirmed manufacturer/model.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Official company public media with credit; no open licence assumed or outreach sent."
+}
