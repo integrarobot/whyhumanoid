@@ -24,7 +24,7 @@ The original already carries real transparency, so no cutout was made. `python3 
 - Fully transparent pixels have their colour set to 0.
 - Nothing is repainted, generated, extended or thresholded.
 
-## Files integrated (image batch 1, PR not yet merged)
+## Published files (image batch 1, PR 196, merge 4011f1e, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/psibot-v1/psibot-v1-full-body.png`, 998 × 2444 px, lossless, sha256 `39e73de674190e87d32c86d6cee4d2890b0be72896d2cb894d4b208ca643c42f`.
 - **WebP:** `assets/robots/psibot-v1/psibot-v1-full-body.webp`, made with `python3 ops/media/robots/to-webp.py` (quality 90, lossless alpha; its alpha equals the PNG's), sha256 `b2e14746350c2e7ff09f0a7f9783672e4aeb034049a5e4ba084a86bb0a406aca`. The page loads the WebP; the PNG is the fallback.

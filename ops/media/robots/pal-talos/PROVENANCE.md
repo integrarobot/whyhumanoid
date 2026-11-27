@@ -24,7 +24,7 @@ The original already carries real transparency, so no cutout was made. `python3 
 - Fully transparent pixels have their colour set to 0.
 - Nothing is repainted, generated, extended or thresholded.
 
-## Files integrated (image batch 1, PR not yet merged)
+## Published files (image batch 1, PR 196, merge 4011f1e, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/pal-talos/talos-full-body.png`, 578 × 851 px, lossless, sha256 `c3ff530e72d872bfafcee691f73ac3f048463be4a598d0925c56f8582bd2f23c`.
 - **WebP:** `assets/robots/pal-talos/talos-full-body.webp`, made with `python3 ops/media/robots/to-webp.py` (quality 90, lossless alpha), sha256 `237659eaacaeb62a70963dca131e73515ec2071efcd3a0c11cd630322d7d0cd3`.

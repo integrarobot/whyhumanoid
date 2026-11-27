@@ -24,7 +24,7 @@ The original already carries real transparency, so no cutout was made. `python3 
 - Fully transparent pixels have their colour set to 0.
 - Nothing is repainted, generated, extended or thresholded.
 
-## Files integrated (image batch 1, PR not yet merged)
+## Published files (image batch 1, PR 196, merge 4011f1e, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/rainbow-rb-y1/rb-y1-full-body.png`, 350 × 880 px, lossless, sha256 `7600d06bee9b3741de2d842e7f39920e0c564abe7f9e7bd7ab0926c6460dd463`.
 - **WebP:** `assets/robots/rainbow-rb-y1/rb-y1-full-body.webp`, made with `python3 ops/media/robots/to-webp.py` (quality 90, lossless alpha), sha256 `307ba7d382c03ad7cbf2f5e3252053bff86a6ad7b2da61a0fcc255084f5c0ea9`.

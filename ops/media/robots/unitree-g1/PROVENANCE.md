@@ -33,7 +33,7 @@ Matte levels 0.35 to 0.9: interior alpha set to opaque, soft edge tightened. Rep
 - **Not these robots:** Galbot G1 (id 35) and Agibot G1 (id 147) are wheeled robots by other makers. The H1 page (id 93) keeps its own image.
 - **Hands:** the right hand looks articulated. The alt text claims no hand configuration.
 
-## Files integrated (image batch 1, PR not yet merged)
+## Published files (image batch 1, PR 196, merge 4011f1e, verified in production on 27 Nov 2026)
 
 - **Location:** `assets/robots/unitree-g1/`.
 - **PNG:** `unitree-g1-full-body.png`, 288 × 765 px, lossless, the refined file above (sha256 `66735252e54ca175eec0c61a086dc95711b94bc06722a6489b9d9b2a9ad66e0f`).
