@@ -20,7 +20,7 @@ import { verifyImportToken } from './import/github-oidc.js';
 import { readGraph } from './relations/store.js';
 import { search } from './search/index.js';
 import { SUPPORT_EMAIL } from './support.js';
-import { BEFORE_PAYMENT, REPORT_LIMITS, REPORT_PRICE, REPORT_SERVICES } from './orders/services.js';
+import { BEFORE_PAYMENT, INVESTMENT_THESIS_BEFORE_PAYMENT, INVESTMENT_THESIS_ID, INVESTMENT_THESIS_LIMITS, ORDER_SERVICES, REPORT_LIMITS, reportPrice } from './orders/services.js';
 import { questionnaireFor } from './orders/questionnaire.js';
 import {
   deliverOutbox, getOrder, listOrders, operatorOrder, operatorQueue, operatorUpdate, reconcileOrder, reportCheckoutState,
@@ -239,7 +239,11 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       'POST',
       /^\/v1\/auth\/magic-link$/,
       async (request, now) => {
-        const email = normaliseEmail((await readJson(request)).email);
+        const body = await readJson(request);
+        const email = normaliseEmail(body.email);
+        const loginUrl = body.return_to === INVESTMENT_THESIS_ID
+          ? `${config.appUrl}?service=${INVESTMENT_THESIS_ID}`
+          : config.premiumUrl;
         if (!mailer.configured) throw new HttpError(503, 'email_not_configured');
         const token = await createLoginToken(db, email, now, {
           ttlSeconds: config.loginTtlSeconds,
@@ -249,7 +253,7 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
           to: email,
           subject: 'Your Why Humanoid? sign-in link',
           text:
-            `Sign in to Why Humanoid? Premium:\n\n${config.premiumUrl}#login=${token}\n\n` +
+            `Sign in to Why Humanoid? Premium:\n\n${loginUrl}#login=${token}\n\n` +
             'The link works once and expires in 15 minutes. If you did not ask for it, ignore this email.\n\n' +
             `Help: ${SUPPORT_EMAIL}`,
         });
@@ -418,7 +422,17 @@ export function createApp({ db, config, gateway, mailer, importNow, importAuth =
       async () => {
         const state = reportCheckoutState({ config, gateway, mailer });
         return json(200, {
-          services: REPORT_SERVICES.map((s) => ({ ...s, price: REPORT_PRICE.display, currency: 'USD', unit_amount: REPORT_PRICE.unitAmount, included_in_subscription: false, subscription_required: false, checkout_available: state === 'ready' && Boolean(config.reportPriceIds?.[s.id]) })),
+          services: ORDER_SERVICES.map((s) => {
+            const terms = reportPrice(s.id);
+            const thesis = s.id === INVESTMENT_THESIS_ID;
+            return {
+              ...s, price: terms.display, currency: terms.currency.toUpperCase(), unit_amount: terms.unitAmount,
+              included_in_subscription: false, subscription_required: false,
+              before_payment: thesis ? INVESTMENT_THESIS_BEFORE_PAYMENT : BEFORE_PAYMENT,
+              limits: thesis ? INVESTMENT_THESIS_LIMITS : REPORT_LIMITS,
+              checkout_available: reportCheckoutState({ config, gateway, mailer, service: s.id }) === 'ready' && Boolean(config.reportPriceIds?.[s.id]),
+            };
+          }),
           before_payment: BEFORE_PAYMENT,
           limits: REPORT_LIMITS,
           checkout_state: state,

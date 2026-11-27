@@ -35,16 +35,18 @@ async function paidOrder(ctx, { email = 'buyer@example.com', service = INTEGRATI
   return { session, accountId, orderId: created.order_id, sessionId };
 }
 
-test('services: two one-off US$1,000 reports, no subscription needed, the wording before payment, the support address', async () => {
+test('services expose separate prices, terms and availability without requiring a subscription', async () => {
   const ctx = await setup();
   const body = await (await ctx.call('GET', '/v1/reports/services')).json();
   assert.deepEqual(body.services.map((s) => [s.id, s.name, s.unit_amount, s.currency, s.subscription_required, s.included_in_subscription]), [
     [INTEGRATION, 'Robot integration diagnostic', 100000, 'USD', false, false],
     [DIVERSIFICATION, 'Industrial diversification report', 100000, 'USD', false, false],
+    ['investment-thesis', 'Investment thesis on demand', 10000, 'USD', false, false],
   ]);
   assert.match(body.before_payment, /^US\$1,000 · one-off payment · no subscription required\. After payment, complete a private questionnaire about your company\. We will email your report within 24 hours of receiving your completed questionnaire\.$/);
   assert.equal(body.support_email, 'javier@integrarobot.com');
-  assert.ok(body.services.every((s) => s.checkout_available));
+  assert.deepEqual(body.services.map((s) => s.checkout_available), [true, true, false]);
+  assert.match(body.services[2].before_payment, /US\$100 · one-off.*within 72 hours/);
 });
 
 test('checkout: needs a session (not an API key or nothing), the exact one-off price, and is reused, not doubled', async () => {
@@ -456,4 +458,30 @@ test('when Stripe cannot be asked, or a payment is still processing, nothing is 
   const row = await ctx.db.prepare('SELECT status FROM report_orders WHERE id = ?').bind(first.order_id).first();
   assert.equal(row.status, 'pending_payment', 'the order is untouched');
   assert.equal(ctx.reportSessions.size, 1, 'no second session');
+});
+
+test('investment thesis: a wrong Stripe price is rejected before creating an order', async () => {
+  const service = 'investment-thesis';
+  const ctx = await setup({ investmentThesisCheckoutEnabled: true, reportPriceIds: { ...REPORT_PRICES, [service]: 'price_thesis_fixture' }, investmentThesisPrice: { active: true, type: 'one_time', unit_amount: 100000, currency: 'usd', livemode: false } });
+  const { session } = await signIn(ctx);
+  const r = await ctx.call('POST', '/v1/reports/orders', { token: session, body: { service } });
+  assert.equal(r.status, 503);
+  assert.equal((await r.json()).error, 'price_mismatch');
+  assert.equal(ctx.reportSessions.size, 0);
+});
+
+test('investment thesis: verified payment opens the company brief and a repeat submit preserves its 72-hour deadline', async () => {
+  const service = 'investment-thesis';
+  const ctx = await setup({ investmentThesisCheckoutEnabled: true, reportPriceIds: { ...REPORT_PRICES, [service]: 'price_thesis_fixture' } });
+  const { session, orderId } = await paidOrder(ctx, { service });
+  const route = `/v1/reports/orders/${orderId}`;
+  const { order } = await (await ctx.call('GET', route, { token: session })).json();
+  assert.deepEqual([order.status, order.amount, order.due_at, order.delivery_hours], ['awaiting_questionnaire', 10000, null, 72]);
+  const answers = { company_name: 'Agility Robotics', security: 'NASDAQ:AGLT', report_language: 'en', research_question: 'What would make Digit profitable?', acknowledgement: true };
+  const submitted = await (await ctx.call('POST', route + '/submit', { token: session, body: { answers } })).json();
+  assert.equal(submitted.order.due_at - submitted.order.submitted_at, 72 * 3600);
+  assert.deepEqual(submitted.order.answers, answers);
+  const repeated = await (await ctx.call('POST', route + '/submit', { token: session, body: { answers } })).json();
+  assert.equal(repeated.already, true);
+  assert.equal(repeated.order.due_at, submitted.order.due_at);
 });

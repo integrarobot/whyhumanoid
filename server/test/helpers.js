@@ -215,6 +215,8 @@ export async function setup({
   reportsCheckoutEnabled = true,
   reportPriceIds = REPORT_PRICES,
   reportPrice = VALID_REPORT_PRICE,
+  investmentThesisCheckoutEnabled = false,
+  investmentThesisPrice = { ...VALID_REPORT_PRICE, unit_amount: 10000 },
   adminToken = null,
 } = {}) {
   const db = createTestDb();
@@ -225,6 +227,7 @@ export async function setup({
   const priceLookups = [];
   gateway.retrievePrice = async (id) => {
     priceLookups.push(id);
+    if (id === reportPriceIds['investment-thesis']) return { ...investmentThesisPrice, id };
     if (Object.values(REPORT_PRICES).includes(id)) return reportPrice ? { ...reportPrice, id } : Promise.reject(new Error('No such price'));
     return price ? { ...price, id } : Promise.reject(new Error('No such price'));
   };
@@ -237,7 +240,7 @@ export async function setup({
     if (byKey.has(args.idempotencyKey)) return byKey.get(args.idempotencyKey);
     sessionSeq += 1;
     const id = `cs_test_report_${sessionSeq}`;
-    reportSessions.set(id, { id, object: 'checkout.session', mode: 'payment', status: 'open', payment_status: 'unpaid', amount_total: 100000, currency: 'usd', livemode: false, client_reference_id: args.accountId, metadata: { wh_order_id: args.orderId, wh_account_id: args.accountId, wh_service: args.service }, payment_intent: null, args });
+    reportSessions.set(id, { id, object: 'checkout.session', mode: 'payment', status: 'open', payment_status: 'unpaid', amount_total: args.service === 'investment-thesis' ? 10000 : 100000, currency: 'usd', livemode: false, client_reference_id: args.accountId, metadata: { wh_order_id: args.orderId, wh_account_id: args.accountId, wh_service: args.service }, payment_intent: null, args });
     const result = { id, url: `https://checkout.stripe.com/c/pay/${id}` };
     byKey.set(args.idempotencyKey, result);
     return result;
@@ -264,6 +267,7 @@ export async function setup({
     sessionTtlSeconds: 30 * 24 * 3600,
     appUrl: 'https://whyhumanoid.com/app/',
     reportsCheckoutEnabled,
+    investmentThesisCheckoutEnabled,
     reportPriceIds,
     operatorEmails: [OPERATOR_EMAIL],
     operatorNotifyEmail: NOTIFY_EMAIL,

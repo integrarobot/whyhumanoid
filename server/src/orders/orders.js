@@ -5,7 +5,7 @@
 
 import { HttpError } from '../http.js';
 import { newId } from '../crypto.js';
-import { REPORT_DEADLINE_SECONDS, REPORT_PRICE, REPORT_SERVICES_BY_ID, REPORTS_LIVE_OPEN, checkReportPrice } from './services.js';
+import { INVESTMENT_THESIS_ID, REPORT_SERVICES_BY_ID, REPORTS_LIVE_OPEN, checkReportPrice, reportDeliveryHours, reportPrice } from './services.js';
 import { QUESTIONNAIRE_VERSION, progress, validateAnswers } from './questionnaire.js';
 import { SUPPORT_EMAIL } from '../support.js';
 
@@ -20,8 +20,9 @@ const MAX_ANSWERS_BYTES = 120_000;
 // Report checkout state for a service: 'ready' or the reason it is closed. Never falls back to another price.
 // Fulfilment and recovery must work before anyone can pay (Codex review, 25 Nov 2026): email delivery, signed webhooks,
 // an operator notification address and an operator who can open the queue.
-export function reportCheckoutState({ config, gateway, mailer }) {
+export function reportCheckoutState({ config, gateway, mailer, service }) {
   if (!config.reportsCheckoutEnabled) return 'reports_checkout_disabled';
+  if (service === INVESTMENT_THESIS_ID && !config.investmentThesisCheckoutEnabled) return 'investment_thesis_checkout_disabled';
   if (!mailer?.configured) return 'email_not_configured';
   if (!gateway.webhookConfigured) return 'webhook_not_configured';
   if (!config.operatorNotifyEmail) return 'operator_notify_not_configured';
@@ -53,6 +54,7 @@ export function publicOrder(row, { withAnswers = false } = {}) {
     draft_saved_at: row.draft_saved_at,
     submitted_at: row.submitted_at,
     due_at: row.due_at,
+    delivery_hours: reportDeliveryHours(row.service),
     due_utc: row.due_at ? fmtUtc(row.due_at) : null,
     due_madrid: row.due_at ? fmtMadrid(row.due_at) : null,
     delivered_at: row.delivered_at,
@@ -81,13 +83,13 @@ export async function getOrder(db, accountId, orderId) {
 // server; the client sends only the service id.
 export async function startReportCheckout({ db, config, gateway, mailer, account, service, now, appUrl, notify }) {
   if (!REPORT_SERVICES_BY_ID.has(service)) throw new HttpError(400, 'unknown_service');
-  const state = reportCheckoutState({ config, gateway, mailer });
+  const state = reportCheckoutState({ config, gateway, mailer, service });
   if (state !== 'ready') throw new HttpError(503, state);
   const priceId = priceIdFor(config, service);
   if (!priceId) throw new HttpError(503, 'report_price_not_configured');
   let price;
   try { price = await gateway.retrievePrice(priceId); } catch { throw new HttpError(503, 'price_lookup_failed'); }
-  if (checkReportPrice(price, { mode: gateway.mode }).length) throw new HttpError(503, 'price_mismatch');
+  if (checkReportPrice(price, { mode: gateway.mode, service }).length) throw new HttpError(503, 'price_mismatch');
 
   // One unpaid order per account and service, enforced by the database (unique index report_orders_one_pending,
   // migration 0005), so two tabs or a double click get the same order and the same Checkout Session (Stripe
@@ -124,10 +126,11 @@ export async function startReportCheckout({ db, config, gateway, mailer, account
     order = null;
   }
   if (!order) {
+    const terms = reportPrice(service);
     await db
       .prepare(`INSERT OR IGNORE INTO report_orders (id, account_id, service, status, mode, price_id, amount, currency, created_at, updated_at)
                 VALUES (?, ?, ?, 'pending_payment', ?, ?, ?, ?, ?, ?)`)
-      .bind(newId('ord'), account.accountId, service, gateway.mode, priceId, REPORT_PRICE.unitAmount, REPORT_PRICE.currency, now, now)
+      .bind(newId('ord'), account.accountId, service, gateway.mode, priceId, terms.unitAmount, terms.currency, now, now)
       .run();
     // Whoever inserted, every concurrent request now reads the same single unpaid order.
     order = await pending();
@@ -200,17 +203,20 @@ export async function applyReportSession({ db, config, session, now, notify, eve
 // The emails of each step, from the stored order (so a repair writes what the original step would have written).
 function paidMessages(order, email, config) {
   const service = REPORT_SERVICES_BY_ID.get(order.service);
+  const hours = reportDeliveryHours(order.service);
+  const amount = new Intl.NumberFormat('en-GB', { style: 'currency', currency: order.currency, minimumFractionDigits: 0 }).format(order.amount / 100);
+  const brief = order.service === INVESTMENT_THESIS_ID ? 'for the company you want researched' : 'about your company';
   return [
     { orderId: order.id, kind: 'customer_paid', to: email,
       subject: `Payment received: your ${service.name} questionnaire is open`,
       body:
-        `Thank you. Your payment for the ${service.name} (US$1,000) has been received.\n\n` +
-        `Next step: complete the private questionnaire about your company. Sign in with this email address at ${config.appUrl}#reports to open it. Your answers are saved as you go.\n\n` +
-        'We will email your report within 24 hours of receiving your completed questionnaire. The 24 hours start when you submit it, not at payment.\n\n' +
+        `Thank you. Your payment for the ${service.name} (${amount}) has been received.\n\n` +
+        `Next step: complete the private questionnaire ${brief}. Sign in with this email address at ${config.appUrl}#reports to open it. Your answers are saved as you go.\n\n` +
+        `We will email your report within ${hours} hours of receiving your completed questionnaire. The ${hours} hours start when you submit it, not at payment.\n\n` +
         `Questions: ${SUPPORT_EMAIL}\nOrder reference: ${order.id}` },
     ...(config.operatorNotifyEmail ? [{ orderId: order.id, kind: 'operator_paid', to: config.operatorNotifyEmail,
       subject: `[Why Humanoid?] Paid order ${order.id}: ${service.name}`,
-      body: `A ${service.name} order was paid (${order.mode} mode). The questionnaire is open; the 24-hour clock starts when it is submitted.\n\nQueue: ${config.appUrl}#ops` }] : []),
+      body: `A ${service.name} order was paid (${order.mode} mode). The questionnaire is open; the ${hours}-hour clock starts when it is submitted.\n\nQueue: ${config.appUrl}#ops` }] : []),
   ];
 }
 function submittedMessages(order, email, config) {
@@ -289,7 +295,7 @@ export async function submitQuestionnaire({ db, config, accountId, orderId, answ
   if (result.error) return { submitted: false, problems: result.problems ?? [{ field: null, problem: result.error }] };
   const json = JSON.stringify(result.answers);
   if (json.length > MAX_ANSWERS_BYTES) throw new HttpError(413, 'answers_too_large');
-  const due = now + REPORT_DEADLINE_SECONDS;
+  const due = now + reportDeliveryHours(order.service) * 3600;
   const account = await db.prepare('SELECT email FROM accounts WHERE id = ?').bind(accountId).first();
   // One transaction: the submission (answers, form version, submitted_at, due_at) and its two emails. The emails are
   // written only by the request whose submission won (submitted_at = this request's time).
