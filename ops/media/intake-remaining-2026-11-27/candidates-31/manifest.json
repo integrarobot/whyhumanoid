@@ -1,0 +1,19 @@
+[
+  {
+    "id": 35,
+    "slug": "galbot-g1-award-native",
+    "credit": "Galbot",
+    "source_page": "https://www.productdesignaward.eu/winners/epda/2026/12837/",
+    "source_url": "https://s3-us-west-2.amazonaws.com/productdesignaward/upload/3264595/22895726/full/64529c2e68d22e7f7759126043cee614.png",
+    "original": "original.png",
+    "original_size": [
+      4500,
+      3375
+    ],
+    "original_sha256": "51f6711b14a65954ab429d6ae9aca1635edfe45c68edd22210ceddf517014426",
+    "source_context": "Manufacturer-submitted GALBOT G1 award entry 2026, Company Galbot, Client Galbot, visible Photo Credit Galbot, official project link galbot.com. Third-party award hosting explicitly acknowledged, not open licence assumed. Native4500x3375 existing manufacturer product render, two complete separated configurations. Choose LEFT standing figure ONLY, entire head, both actual articulated hands, lift leg, complete base and wheels. Approx ROI[800,200,2400,3000] but independently determine exact native geometry. Both figures are separated, no body overlap. Remove floor shadow and right crouching robot. Caption Galbot, G1 manufacturer product render via European Product Design Award (2026). Whole selected figure root inspected at native scale. NOT another company Unitree G1 tennis footage, no new capabilities/specs. Needs independent alpha-only mask/review, no RGB edits or upscale.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+  }
+]
