@@ -165,6 +165,40 @@
         "Published with PR 216 (reviewed head 437d29c, CI 46014108222; merge b24a276), 27 Nov 2026; Pages 46014425958 and production verification by Claude and Codex recorded in the batch closeout. Ameca (28), FF Futurist (106) and Centaur-G1 (176) are published with a resolution debt."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 7,
+      "opened": "2026-11-27",
+      "state": "awaiting_sources",
+      "target": 10,
+      "scope": "Batch 7 (alphabetical after E/F; no letter scope opened)",
+      "candidates": [
+        33,
+        34,
+        161,
+        35,
+        157,
+        158,
+        213,
+        36,
+        117,
+        177
+      ],
+      "reserves": [
+        178,
+        179,
+        180,
+        37,
+        181,
+        38,
+        39,
+        40
+      ],
+      "notes": [
+        "Javier (\"venga sigue con 10 más\"), via Codex, 27 Nov 2026: ten new images in alphabetical order after E/F; G/H is not closed as a scope and no further batch is opened.",
+        "Sources and masks from Codex on the transport branch codex/image-sources-07 (ops/media/intake-07-2026-11-27/batch-07/; no package yet); nothing is integrated before the package arrives. A reserve replaces a candidate only when the candidate has no faithful whole-robot or whole-platform source.",
+        "Non-generative alpha-only cutouts with original RGB at native resolution; no variant invented, nothing assigned by resemblance. The 58 current presentations stay unchanged."
+      ]
     }
   ],
   "robots": {
@@ -1870,6 +1904,189 @@
       ],
       "quality_note": "Modest resolution: 444 × 539 native cutout; no upscaling.",
       "reason": "Published at 444 × 539 px, the native size of the official Elite Robots illustration; replace with a larger faithful Centaur-G1 image when one is found. No detail simulated."
+    },
+    "33": {
+      "recorded": {
+        "Lab": "GAC Group",
+        "Robot": "GoMate"
+      },
+      "status": "candidate",
+      "page": "https://www.gac.com.cn/",
+      "notes": "GAC GoMate (third-generation embodied humanoid unveiled 26 Dec 2024): wheel-legged, variable four- or two-wheel mobility; shown whole in a configuration the official source identifies as GoMate, no other GAC robot.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only (no gac.com.cn page reachable): unveiled 26 Dec 2024 at the China Robotics Network conference, per GAC's WeChat account as reported by Gasgoo (autonews.gasgoo.com, article 70035533); formally launched on 9 Apr 2025 at a Guangdong press conference (China Daily, 14 Apr 2025). No separate redesign found for the April launch. 38 DoF, wheel-foot structure with four- and two-wheel modes; coverage (CnEVPost, 26 Dec 2024) credits its photos to GAC. The official source would be GAC's own release or WeChat post."
+        }
+      ]
+    },
+    "34": {
+      "recorded": {
+        "Lab": "Galaxea",
+        "Robot": "R1"
+      },
+      "status": "candidate",
+      "page": "https://galaxea-dynamics.com/",
+      "notes": "Galaxea R1: wheeled two-arm mobile manipulator, shown whole with its base; the record says \"R1\": name a sub-variant (R1 Pro, R1 Lite) only if the official source names it."
+    },
+    "161": {
+      "recorded": {
+        "Lab": "Galaxea",
+        "Robot": "Kengo"
+      },
+      "status": "candidate",
+      "page": "https://galaxea-dynamics.com/products/galaxea-kengo-proprietary-embodied-ai-bipedal-robot",
+      "notes": "Galaxea Kengo: bipedal humanoid from Galaxea's official product page; not an R1 image."
+    },
+    "35": {
+      "recorded": {
+        "Lab": "Galbot",
+        "Robot": "G1"
+      },
+      "status": "candidate",
+      "page": "https://www.galbot.com/",
+      "notes": "Galbot G1: wheeled humanoid on its four-wheel omnidirectional chassis, shown whole with the chassis; not S1 or ET1."
+    },
+    "157": {
+      "recorded": {
+        "Lab": "Galbot",
+        "Robot": "S1"
+      },
+      "status": "candidate",
+      "page": "https://www.galbot.com/s1",
+      "notes": "Galbot S1: industrial heavy-load two-arm robot on a four-wheel-steer chassis, no legs; shown whole; not G1 or ET1."
+    },
+    "158": {
+      "recorded": {
+        "Lab": "Galbot",
+        "Robot": "ET1"
+      },
+      "status": "candidate",
+      "page": "https://www.galbot.com/et1",
+      "notes": "Galbot ET1: bipedal entertainment humanoid (Standard, Pro and Flagship editions): an image of the ET1 itself, no edition claimed unless the source names it; not G1 or S1."
+    },
+    "213": {
+      "recorded": {
+        "Lab": "Geek+",
+        "Robot": "Gino 1"
+      },
+      "status": "candidate",
+      "page": "https://www.geekplus.com/en",
+      "notes": "Geek+ (Geekplus) Gino 1: wheeled warehouse humanoid, identified as Gino 1 in Geekplus's own news or product page; shown whole with its base.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: Geek+ (Geekplus, HKEX 2590) launched Gino 1 on 10 Feb 2026 as a wheeled warehouse humanoid and showed it at LogiMAT 2026 (Stuttgart); no PR Newswire launch release found (Geekplus's 31 Mar 2026 results release mentions humanoids). The official source would be geekplus.com/en news or its HKEX announcements (for example hkexnews 2026/0205/2026020502224.pdf, to be checked for images)."
+        }
+      ]
+    },
+    "36": {
+      "recorded": {
+        "Lab": "Generative Bionics",
+        "Robot": "GENE.01"
+      },
+      "status": "candidate",
+      "page": "https://gbionics.ai/",
+      "notes": "Generative Bionics GENE.01: the record does not establish the mobility; the image must be identified as GENE.01 in the official source and show the whole robot; nothing assigned by resemblance.",
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Search only: concept shown during AMD's CES 2026 keynote (January 2026); the \"fully functional\" GENE.01 platform was announced on 20 Jul 2026 (PR Newswire APAC release 302829069, \"Generative Bionics Introduces Gene.01, a Fully Functional Smart-Skin Humanoid Robot Platform…\"; also PRNAsia 541258). eWeek (27 Jul 2026) runs an image credited \"Generative Bionics\". An image must be the July 2026 platform named GENE.01, not the CES concept, from gbionics.ai or the release media."
+        }
+      ]
+    },
+    "117": {
+      "recorded": {
+        "Lab": "Genesis",
+        "Robot": "Eno"
+      },
+      "status": "candidate",
+      "page": "https://www.genesis.ai/",
+      "notes": "Genesis AI Eno: general-purpose robot; mechanical form not recorded; only an official image identified as Eno and showing the whole robot or platform."
+    },
+    "177": {
+      "recorded": {
+        "Lab": "GENISOM",
+        "Robot": "NE01"
+      },
+      "status": "candidate",
+      "page": "https://www.genisomai.com/",
+      "notes": "GENISOM (智身科技) NE01 (银毅): humanoid listed in the official product menu; form not captured: the image must be identified as NE01 in the official source."
+    },
+    "178": {
+      "recorded": {
+        "Lab": "Gento Robotics",
+        "Robot": "Gento Luna"
+      },
+      "status": "reserve",
+      "page": "https://www.gentorobotics.ai/products/gento-luna/",
+      "notes": "Gento Robotics Gento Luna: wheeled foldable humanoid on an omnidirectional chassis, shown whole."
+    },
+    "179": {
+      "recorded": {
+        "Lab": "Glroad",
+        "Robot": "Laborer C1"
+      },
+      "status": "reserve",
+      "page": "https://www.glroad.com/HumanoidRobots/index.aspx",
+      "notes": "Glroad Laborer C1 (劳动者 family): guide and reception humanoid; not M1."
+    },
+    "180": {
+      "recorded": {
+        "Lab": "Glroad",
+        "Robot": "Laborer M1"
+      },
+      "status": "reserve",
+      "page": "https://www.glroad.com/HumanoidRobots/index.aspx",
+      "notes": "Glroad Laborer M1 (劳动者 family): 50 kg-class heavy-load humanoid; not C1."
+    },
+    "37": {
+      "recorded": {
+        "Lab": "Goblin",
+        "Robot": "GBLN-01"
+      },
+      "status": "reserve",
+      "page": "https://www.goblinrobotics.com/",
+      "notes": "Goblin GBLN-01: mobility not recorded; only an official image identified as GBLN-01."
+    },
+    "181": {
+      "recorded": {
+        "Lab": "Guanggu Dongzhi",
+        "Robot": "Lumen H1"
+      },
+      "status": "reserve",
+      "page": "https://www.hecbot.cn/product.html?type=22",
+      "notes": "Guanggu Dongzhi (光谷东智) Lumen H1: legged service humanoid from the official hecbot.cn product page."
+    },
+    "38": {
+      "recorded": {
+        "Lab": "Hanson",
+        "Robot": "Sophia"
+      },
+      "status": "reserve",
+      "page": "https://www.hansonrobotics.com/",
+      "notes": "Hanson Robotics Sophia: whole robot only; a bust or head-and-torso Sophia does not meet the whole-robot requirement."
+    },
+    "39": {
+      "recorded": {
+        "Lab": "Heima",
+        "Robot": "A.D.A.M."
+      },
+      "status": "reserve",
+      "page": "https://www.heimarobotics.com/",
+      "notes": "Heima A.D.A.M.: full-body developer humanoid; identified as A.D.A.M. in the official source."
+    },
+    "40": {
+      "recorded": {
+        "Lab": "Hexagon",
+        "Robot": "AEON"
+      },
+      "status": "reserve",
+      "page": "https://hexagon.com/company/newsroom/press-releases/2025/hexagon-launches-aeon-a-humanoid-built-for-industry",
+      "notes": "Hexagon AEON: wheeled humanoid from Hexagon's official launch material; shown whole."
     }
   },
   "scopes": [
