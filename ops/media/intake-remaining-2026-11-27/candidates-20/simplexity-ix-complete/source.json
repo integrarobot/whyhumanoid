@@ -1,0 +1,17 @@
+{
+  "id": 216,
+  "slug": "simplexity-ix-complete",
+  "credit": "Simplexity Robotics",
+  "source_page": "https://www.simplexityrobotics.com/products/ix",
+  "source_url": "https://images.simplexityrobotics.com/official/img/products/ix/ix-fullbody-stand-dark.png",
+  "original": "original.png",
+  "original_size": [
+    4096,
+    2304
+  ],
+  "original_sha256": "fa718374dc103f2f9e71dd1b653c9d19bf6c6ccd772d85f4f57d7adc25445166",
+  "source_context": "Exact iX maker product JS Ix-Cj1_xAxG.js references @/assets/img/products/ix/ix-fullbody-stand-dark.png. Official index-Cas0Tc0v.js Ye() resolves assets prefix to https://images.simplexityrobotics.com/official/img. Downloaded original native4096x2304 palette PNG WITH TRUE alpha (BG RGBgreen71,112,76 has alpha0, not actual green background). Alpha bbox[1628,314,2418,2051]. Whole robot head, both dexterous hands (one raised over face in native pose), entire four-wheel chassis and wheels with margins. Existing maker technical render. Preserve ownalpha/RGB, crop/pad only as valid. Caption iX manufacturer render, raised-hand configuration. Different from old cropped torso hero; do not use nonexistent website/assets URL.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+}

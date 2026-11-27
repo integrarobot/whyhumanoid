@@ -1,0 +1,17 @@
+{
+  "id": 63,
+  "slug": "phybot-m1-complete",
+  "credit": "PHYBOT",
+  "source_page": "https://www.phybot.tech/en/phybot-m1",
+  "source_url": "https://www.phybot.tech/assets/images/PHYBOT_M1_006252-KTn1Ppv6.png",
+  "original": "original.png",
+  "original_size": [
+    2280,
+    1080
+  ],
+  "original_sha256": "974e994ee1749ca52d5cafc901894aefb5eba019f296a85cfb6036d3a0f5fcff",
+  "source_context": "Maker M1 desktop product chunk BigRobotDetail-7A4jDJBI.js refers this existing manufacturer render native2280x1080, two full views. Choose ONLY FRONT/threequarter robot left of pair, approximateROI[450,80,1100,1000] (root native inspected complete head, both hands, bothfeet, raisedfoot pose). Independently widen to include margins. Blue curved dimension arcs and176cm text stand OUTSIDE body; remove all graphic text/lines/other rear view via alpha; no body labels/dots on this selected figure. Darkbody on darkgradient needs careful segmentation. Do not use other sourceimages with blue joint overlays or specificationcallout dots ON body. Caption M1 manufacturer render, no specs reassignment or capability claim.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+}

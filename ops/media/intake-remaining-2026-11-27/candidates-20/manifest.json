@@ -1,0 +1,53 @@
+[
+  {
+    "id": 216,
+    "slug": "simplexity-ix-complete",
+    "credit": "Simplexity Robotics",
+    "source_page": "https://www.simplexityrobotics.com/products/ix",
+    "source_url": "https://images.simplexityrobotics.com/official/img/products/ix/ix-fullbody-stand-dark.png",
+    "original": "original.png",
+    "original_size": [
+      4096,
+      2304
+    ],
+    "original_sha256": "fa718374dc103f2f9e71dd1b653c9d19bf6c6ccd772d85f4f57d7adc25445166",
+    "source_context": "Exact iX maker product JS Ix-Cj1_xAxG.js references @/assets/img/products/ix/ix-fullbody-stand-dark.png. Official index-Cas0Tc0v.js Ye() resolves assets prefix to https://images.simplexityrobotics.com/official/img. Downloaded original native4096x2304 palette PNG WITH TRUE alpha (BG RGBgreen71,112,76 has alpha0, not actual green background). Alpha bbox[1628,314,2418,2051]. Whole robot head, both dexterous hands (one raised over face in native pose), entire four-wheel chassis and wheels with margins. Existing maker technical render. Preserve ownalpha/RGB, crop/pad only as valid. Caption iX manufacturer render, raised-hand configuration. Different from old cropped torso hero; do not use nonexistent website/assets URL.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+  },
+  {
+    "id": 63,
+    "slug": "phybot-m1-complete",
+    "credit": "PHYBOT",
+    "source_page": "https://www.phybot.tech/en/phybot-m1",
+    "source_url": "https://www.phybot.tech/assets/images/PHYBOT_M1_006252-KTn1Ppv6.png",
+    "original": "original.png",
+    "original_size": [
+      2280,
+      1080
+    ],
+    "original_sha256": "974e994ee1749ca52d5cafc901894aefb5eba019f296a85cfb6036d3a0f5fcff",
+    "source_context": "Maker M1 desktop product chunk BigRobotDetail-7A4jDJBI.js refers this existing manufacturer render native2280x1080, two full views. Choose ONLY FRONT/threequarter robot left of pair, approximateROI[450,80,1100,1000] (root native inspected complete head, both hands, bothfeet, raisedfoot pose). Independently widen to include margins. Blue curved dimension arcs and176cm text stand OUTSIDE body; remove all graphic text/lines/other rear view via alpha; no body labels/dots on this selected figure. Darkbody on darkgradient needs careful segmentation. Do not use other sourceimages with blue joint overlays or specificationcallout dots ON body. Caption M1 manufacturer render, no specs reassignment or capability claim.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+  },
+  {
+    "id": 160,
+    "slug": "magiclab-z1-video",
+    "credit": "MagicLab",
+    "source_page": "https://www.magiclab.top/en/z1",
+    "source_url": "https://oss-cdn.magiclab.top/file/videos/z1/ff1ce7/ecb2981116c2b3c8ece77f6df4347d61.mp4",
+    "original": "original.png",
+    "original_size": [
+      1920,
+      1080
+    ],
+    "original_sha256": "58b3c044b4b2407b7cee4ecc387fd11e3e41461b3272063dfd147a98d29cc236",
+    "source_context": "Exact Z1 maker page references this video; native1920x1080 frame153 at6.12s/25fps (178totalframes). Whole head, both actual rounded arm end caps, both feet in a walking pose, nativebodyheight~525px. No added human hands/fingers: this configuration has rounded closed end caps. Choose153 because balls separated from feet unlike59; exclude allballs, grass/floor, tree/city. ApproxROI[480,320,870,930] independently ensure wholebody/margins. Caption MagicBot Z1 official video still, round-ended-arm configuration. Existinghardwarefootage, no generative edits, no claim balancing/autonomy evidence. Page/staticimgs404, officialvideoaccessworks. This is NOT Gen1 video used for record54.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+  }
+]

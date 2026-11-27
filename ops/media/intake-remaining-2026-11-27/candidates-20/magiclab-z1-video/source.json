@@ -1,0 +1,17 @@
+{
+  "id": 160,
+  "slug": "magiclab-z1-video",
+  "credit": "MagicLab",
+  "source_page": "https://www.magiclab.top/en/z1",
+  "source_url": "https://oss-cdn.magiclab.top/file/videos/z1/ff1ce7/ecb2981116c2b3c8ece77f6df4347d61.mp4",
+  "original": "original.png",
+  "original_size": [
+    1920,
+    1080
+  ],
+  "original_sha256": "58b3c044b4b2407b7cee4ecc387fd11e3e41461b3272063dfd147a98d29cc236",
+  "source_context": "Exact Z1 maker page references this video; native1920x1080 frame153 at6.12s/25fps (178totalframes). Whole head, both actual rounded arm end caps, both feet in a walking pose, nativebodyheight~525px. No added human hands/fingers: this configuration has rounded closed end caps. Choose153 because balls separated from feet unlike59; exclude allballs, grass/floor, tree/city. ApproxROI[480,320,870,930] independently ensure wholebody/margins. Caption MagicBot Z1 official video still, round-ended-arm configuration. Existinghardwarefootage, no generative edits, no claim balancing/autonomy evidence. Page/staticimgs404, officialvideoaccessworks. This is NOT Gen1 video used for record54.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+}
