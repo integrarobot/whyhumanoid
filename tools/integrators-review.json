@@ -34,7 +34,7 @@
     "int_cosmicbrain": { "group": "offering", "basis": "Proposed pilot protocol; no measured deployment results published" },
     "int_saphai": { "group": "offering", "basis": "Product/service offering" },
     "int_generation_robots": { "group": "offering", "basis": "Commercial research-platform offering" },
-    "int_ca3": { "group": "simulation", "basis": "Provider-reported simulation; proposed pilot scope" },
+    "int_ca3": { "group": "simulation", "basis": "Provider-reported single-seed simulations" },
     "int_bumerania": { "group": "unconfirmed", "basis": "Adjacent service robotics offering" },
     "int_amerevo": { "group": "unconfirmed", "basis": "Adjacent service robotics offering" },
     "int_rh_bots": { "group": "unconfirmed", "basis": "Adjacent cleaning integration offering" }

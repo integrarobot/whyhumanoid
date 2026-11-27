@@ -333,7 +333,7 @@
         "row": "simulation",
         "label": "CA3 arm results in simulation",
         "excerpt": "Arm results: 2026-10-28",
-        "evidence_excerpt": "Provider-reported simulation"
+        "evidence_excerpt": "Provider-reported single-seed simulations"
       },
       {
         "id": "ca3-home",
@@ -344,7 +344,7 @@
         "row": "simulation",
         "label": "CA3 home-task results in simulation",
         "excerpt": "home results: 2026-11-05",
-        "evidence_excerpt": "Provider-reported simulation"
+        "evidence_excerpt": "Provider-reported single-seed simulations"
       },
       {
         "id": "novares-sesena",
