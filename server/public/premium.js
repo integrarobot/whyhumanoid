@@ -29,7 +29,9 @@
   const HIDDEN = new Set(['id']); // the backend row key; the API never sends importer bookkeeping
 
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-  const label = (k) => k.replace(/_/g, ' ');
+  // evidence_level holds E0-E5 codes no document defines (27 Nov 2026): shown as recorded, never as a quality rank.
+  const LABELS = { evidence_level: 'legacy evidence code (undefined, not a quality rank)' };
+  const label = (k) => LABELS[k] ?? k.replace(/_/g, ' ');
   const nz = (v) => v !== null && v !== undefined && String(v).trim() !== '';
   const human = (v) => String(v).replace(/_/g, ' ');
   const sub = (s) => (s ? `<span class="sub">${s}</span>` : '');
@@ -227,7 +229,7 @@
         const src = u ? link(u[0], (y.source_publisher || y.source_title || 'Source') + ' ↗') : `${esc(y.source_publisher || y.source_title || 'Source')} (no URL in the sheet)`;
         const facts = [
           `Robot as recorded: ${esc(recordedRobot(y) || 'not recorded')}`,
-          nz(y.evidence_level) ? `Evidence level ${esc(y.evidence_level)}` : 'Evidence level not recorded',
+          nz(y.evidence_level) ? `Legacy code ${esc(y.evidence_level)} (undefined)` : '',
           nz(y.verification_status) ? esc(human(y.verification_status)) : '',
           nz(y.observed_start) ? `Observed ${esc(y.observed_start)}${nz(y.observed_end) ? ' to ' + esc(y.observed_end) : ''}` : '',
           `Source: ${src}, ${nz(y.publication_date) ? 'published ' + esc(y.publication_date) : 'publication date not recorded'}`,

@@ -17,7 +17,8 @@ const NA = /^(not\b|n\/?a$|unknown$|unspecified$|not_disclosed$)/i;
 // Identifier fields: searchable by name or code, never shown to a reader as a snippet.
 const IDENTIFIER_FIELDS = new Set(['gf_symbol', 'isin', 'ticker', 'finance_url', 'record_id', 'deployment_id', 'organization_id', 'entity_id', 'provider_id', 'component_id', 'dataset_id', 'metric_id', 'link_id', 'model_id', 'task_id']);
 // Reader-facing names for fields whose column name is not English prose.
-const FIELD_LABELS = { source: 'Source', statement: 'Finding', limits: 'Limits', scope: 'Scope', etf_membership: 'ETF membership', etf_as_of: 'ETF membership as of', verified_at: 'Verified', country: 'Country as recorded', segment: 'Segment' };
+// evidence_level holds E0-E5 codes that no document defines: never labelled as a level or scale (27 Nov 2026).
+const FIELD_LABELS = { evidence_level: 'Legacy evidence code (undefined)', source: 'Source', statement: 'Finding', limits: 'Limits', scope: 'Scope', etf_membership: 'ETF membership', etf_as_of: 'ETF membership as of', verified_at: 'Verified', country: 'Country as recorded', segment: 'Segment' };
 const fieldLabel = (field) => FIELD_LABELS[field] ?? human(field);
 const nz = (v) => v !== null && v !== undefined && String(v).trim() !== '' && !NA.test(String(v).trim());
 const human = (v) => String(v ?? '').replace(/_/g, ' ');
@@ -327,8 +328,10 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
       title: doc.title,
       subtitle: doc.dataset === 'stocks' && data ? describe('stocks', data).subtitle : doc.subtitle,
       link: doc.link,
-      tags: doc.tags.split('|').filter(Boolean).map((t) => ({ id: t, label: tagLabel(t), facet: FACET_LABELS[t.split(':')[0]] })),
-      snippet: data ? snippet(doc.dataset, data, terms, doc.tags.split('|').filter(Boolean).map((t) => [FACET_LABELS[t.split(':')[0]], tagLabel(t)])) : null,
+      // Only tags of the current vocabulary: an index written before a vocabulary change (the E0-E5 codes, 27 Nov 2026)
+      // may still hold retired tags until the next import.
+      tags: doc.tags.split('|').filter(isKnownTag).map((t) => ({ id: t, label: tagLabel(t), facet: FACET_LABELS[t.split(':')[0]] })),
+      snippet: data ? snippet(doc.dataset, data, terms, doc.tags.split('|').filter(isKnownTag).map((t) => [FACET_LABELS[t.split(':')[0]], tagLabel(t)])) : null,
     };
   });
   return {
