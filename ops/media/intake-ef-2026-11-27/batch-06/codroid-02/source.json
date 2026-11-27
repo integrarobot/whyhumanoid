@@ -1,0 +1,34 @@
+{
+  "id": 29,
+  "slug": "codroid-02",
+  "original": "29-0.png",
+  "roi": [
+    0,
+    0,
+    469,
+    1081
+  ],
+  "bbox": [
+    57,
+    20,
+    456,
+    1081
+  ],
+  "border": 20,
+  "size": [
+    439,
+    1101
+  ],
+  "native_alpha": true,
+  "refinement": "Alpha levels85..230; small background components removed.",
+  "source_page": "https://www.codroid.ai/en/",
+  "source_url": "https://www.codroid.ai/en/../uploads/c02.png",
+  "source_alt": "",
+  "credit": "Estun Codroid",
+  "source_context": "CODROID02 bipedal version with both legs and feet; not wheeled.",
+  "original_sha256": "c272849ac2a5bb3ae099858a164f0dd9e91e76cf109227876c50e196b8cc888c",
+  "prepared_sha256": "7bccfcd6feac881aeb5d5eaa5a5ed36778ff0eb2f89cfb3e1eec8cc7ddae164d",
+  "mask_sha256": "2af86b6626d2902f947786de16f5d92305f8b2c9b2da22514573fcfd2249c310",
+  "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

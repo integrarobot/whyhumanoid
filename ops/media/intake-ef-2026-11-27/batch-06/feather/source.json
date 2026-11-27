@@ -1,0 +1,34 @@
+{
+  "id": 126,
+  "slug": "feather",
+  "original": "126-0.webp",
+  "roi": [
+    0,
+    0,
+    1080,
+    1080
+  ],
+  "bbox": [
+    375,
+    40,
+    705,
+    1016
+  ],
+  "border": 20,
+  "size": [
+    370,
+    1016
+  ],
+  "native_alpha": false,
+  "refinement": "Alpha levels85..230; small background components removed.",
+  "source_page": "https://feather.dev/",
+  "source_url": "https://feather.dev/hero/frames/0007.webp",
+  "source_alt": "",
+  "credit": "Feather",
+  "source_context": "Complete front view of wheeled bimanual platform with lift and base.",
+  "original_sha256": "5b6eaf7772d9e3dc22d2584ae1f1d22818238d22bb79e741d51a64c86c9d629c",
+  "prepared_sha256": "68776980871abdbbacdacc782a8fa6e30c36da90a303af80a3fff3e4878d0a6d",
+  "mask_sha256": "fbeaf2e2738234de8d5bb8d2052a736f3fe355e58f967a13fbf06960c69d2333",
+  "processing": "Non-generative alpha-only mask; original RGB preserved; native resolution; no synthesis;20px transparent padding.",
+  "checked_at": "2026-11-27"
+}
