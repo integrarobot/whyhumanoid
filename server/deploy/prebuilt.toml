@@ -1,9 +1,13 @@
 # Describes the PREBUILT single-file bundles (dist/worker.dashboard.js, dist/worker.staging.js) for Wrangler
-# (ops/worker-deploy.md, section 3). Checked with --dry-run only: the file Wrangler would upload is the bundle byte for
-# byte (no_bundle) and the only binding is D1. Not used for a live deployment: the proven path is the dashboard editor
-# with a full read-back. Dashboard vars would be kept with --keep-vars; secrets are not part of a deploy.
-compatibility_date = "2026-11-01"
-compatibility_flags = ["nodejs_compat"]
+# (ops/worker-deploy.md, section 3). Uploads them byte for byte (no_bundle); the only binding is D1. Dashboard vars are
+# kept with --keep-vars; secrets are not part of a deploy.
+# Runtime: the values the deployed versions actually run with, read by Codex with the Wrangler CLI on 27 Nov 2026
+# (TEST 1ac00a70, PROD 8171c73c): compatibility_date 2026-11-13, no compatibility flags, usage model standard. They
+# differ from server/wrangler.toml (2026-11-01, nodejs_compat), which describes the bundled local build, not the
+# dashboard Workers. Read the runtime of the active version again before every upload and keep these values equal to
+# it; a change of date or flags is a separate, reviewed decision.
+compatibility_date = "2026-11-13"
+compatibility_flags = []
 no_bundle = true
 
 [env.test]

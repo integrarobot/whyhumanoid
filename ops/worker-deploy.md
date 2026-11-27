@@ -67,6 +67,8 @@ npx -y wrangler@4.168.0 deploy --config deploy/prebuilt.toml --env production --
 sha256sum /tmp/wr-prod/worker.dashboard.js
 ```
 
+**Runtime settings.** Before any upload, read the runtime of the active version of each Worker with the Wrangler CLI (compatibility date, compatibility flags, usage model) and make the upload configuration match it. On 27 Nov 2026 both Workers ran with compatibility_date 2026-11-13, no compatibility flags and usage model standard (TEST 1ac00a70, PROD 8171c73c), and `prebuilt.toml` records those values. `server/wrangler.toml` (2026-11-01, `nodejs_compat`) describes the local build, not the dashboard Workers. Changing the date or the flags is a separate, reviewed decision.
+
 **A live upload has never been tried**, so it is not a supported path yet. A live upload would also need:
 - Wrangler authentication: `wrangler login` is an OAuth sign-in, and Wrangler stores its credentials on that machine
   until `wrangler logout`;
