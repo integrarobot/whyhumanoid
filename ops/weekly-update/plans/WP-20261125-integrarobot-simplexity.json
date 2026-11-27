@@ -1,9 +1,9 @@
 {
   "contract": "whyhumanoid/workbook-plan@1",
   "plan_id": "WP-20261125-integrarobot-simplexity",
-  "created_at": "2026-11-27T14:40:00Z",
-  "created_by": "claude/opus-5.5 (Codex heartbeat of 2026-11-27, 15:10 Madrid)",
-  "note": "Follow-up of WP-20261125-integrarobot-known-pending for the last item left in known_pending (Simplexity Robotics). One Humanoids row for the iX wheeled humanoid from the official product page; the reported round stays secondary.",
+  "created_at": "2026-11-27T14:17:00Z",
+  "created_by": "claude/opus-5.5 (Codex heartbeat of 2026-11-27, 15:10 Madrid; amended after the Codex review of PR 217)",
+  "note": "Follow-up of WP-20261125-integrarobot-known-pending for the last item left in known_pending (Simplexity Robotics). One Humanoids row for the iX wheeled humanoid from the official product and About pages; the reported round stays secondary. Amended in place before any write (Codex review of PR 217): official links and specifications listed on the official page instead of Not found or Not verified; the earlier RMB 2B financing removed.",
   "basis": {
     "workbook_modified_time": "2026-11-27T11:46:30.739Z"
   },
@@ -310,13 +310,13 @@
           "column": "D",
           "header": "X",
           "expected_previous": "",
-          "proposed": "Not found"
+          "proposed": "https://x.com/Simplexity2025"
         },
         {
           "column": "E",
           "header": "Linkedin",
           "expected_previous": "",
-          "proposed": "Not found"
+          "proposed": "https://www.linkedin.com/company/simplexityrobotics/"
         },
         {
           "column": "F",
@@ -334,13 +334,13 @@
           "column": "H",
           "header": "Careers",
           "expected_previous": "",
-          "proposed": "Not found"
+          "proposed": "https://www.simplexityrobotics.com/recruitment"
         },
         {
           "column": "I",
           "header": "B2B Client",
           "expected_previous": "",
-          "proposed": "Not disclosed for iX"
+          "proposed": "Not verified for iX in the reviewed sources"
         },
         {
           "column": "J",
@@ -364,7 +364,7 @@
           "column": "M",
           "header": "Rounds",
           "expected_previous": "",
-          "proposed": "USD 100M pre-Series A led by Ant Group, reported by Bloomberg (2026-11-23), not confirmed by the company; earlier, RMB 2B across five rounds reported by Yicai (2026-03); both secondary"
+          "proposed": "USD 100M pre-Series A led by Ant Group, reported by Bloomberg (2026-11-23); secondary, not confirmed by the company"
         },
         {
           "column": "N",
@@ -400,19 +400,19 @@
           "column": "S",
           "header": "Payload/carry (kg)",
           "expected_previous": "",
-          "proposed": "3 (arm rated load; company)"
+          "proposed": "3 (straight-arm rated load; company)"
         },
         {
           "column": "T",
           "header": "Power (hours)",
           "expected_previous": "",
-          "proposed": "Not verified"
+          "proposed": "Approx. 4–5 (company)"
         },
         {
           "column": "U",
           "header": "Software",
           "expected_previous": "",
-          "proposed": "Not verified"
+          "proposed": "SimpleAgent: configurable public-space reception, guidance, multilingual interpreting and service-manipulation skills (company claims)"
         },
         {
           "column": "V",
@@ -430,7 +430,7 @@
           "column": "X",
           "header": "Model checked",
           "expected_previous": "",
-          "proposed": "iX wheeled humanoid (Simplexity Robotics), official product page read in a rendered browser on 2026-11-27; manufacturer claims"
+          "proposed": "iX wheeled humanoid (Simplexity Robotics), official product and About pages read in a rendered browser on 2026-11-27; manufacturer claims"
         },
         {
           "column": "Y",
@@ -442,19 +442,19 @@
           "column": "Z",
           "header": "DoF / grippers",
           "expected_previous": "",
-          "proposed": "24 active DoF excluding hands (company)"
+          "proposed": "24 active DoF excluding hands: 7 per arm, neck 2, waist/lifting 5, base 3; dexterous hands standard (company)"
         },
         {
           "column": "AA",
           "header": "Sensors / compute",
           "expected_previous": "",
-          "proposed": "NVIDIA Orin NX in the standard version, Thor in the Pro version (company); sensors not verified"
+          "proposed": "Head: 1 wide-angle camera and 3 fisheye cameras; chest: 1 RGB-D camera; wrists: 2 wide-angle cameras; 2 LiDAR; 8 ultrasonic sensors; IMU. Compute: NVIDIA Orin NX 16 GB, 157 TOPS (standard) or NVIDIA Thor 64 GB, 730 TOPS (Pro) (company)"
         },
         {
           "column": "AB",
           "header": "Battery / charging",
           "expected_previous": "",
-          "proposed": "Not verified"
+          "proposed": "Two batteries, 1,650 Wh in total; direct charging or hot swap; optional autonomous charging with a dock; up to 2 h per battery bay (company)"
         },
         {
           "column": "AC",
@@ -472,13 +472,13 @@
           "column": "AE",
           "header": "Buyer checks",
           "expected_previous": "",
-          "proposed": "Manufacturer claims, no deployment shown for iX; a third-party database dated before the reported 2026-11-23 unveiling gives other height, arm-load and compute figures, not entered; funding only from secondary press"
+          "proposed": "Manufacturer claims throughout: confirm the exact configuration, duty cycle, payload workspace, runtime and autonomy with the vendor; no independent test or iX deployment verified in the reviewed sources; funding only from secondary press"
         },
         {
           "column": "AF",
           "header": "Sources / checked",
           "expected_previous": "",
-          "proposed": "2026-11-27 | New row: iX identity and specifications from the official product page (rendered); funding from secondary press, not confirmed by the company\nhttps://www.simplexityrobotics.com/products/ix\nhttps://www.simplexityrobotics.com/news\nhttps://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/"
+          "proposed": "2026-11-27 | New row: iX identity, specifications and official links from the official product and About pages (rendered); funding from secondary press, not confirmed by the company\nhttps://www.simplexityrobotics.com/products/ix\nhttps://www.simplexityrobotics.com/about\nhttps://www.simplexityrobotics.com/news\nhttps://www.japantimes.co.jp/business/2026/11/23/tech/ant-group-simplexity-china-humanoid/"
         }
       ],
       "sources": [
@@ -487,7 +487,14 @@
           "publisher": "Simplexity Robotics (至简动力)",
           "published": "product page, undated",
           "reviewed": "2026-11-27",
-          "note": "JavaScript-rendered page: read by Codex in a rendered browser on 2026-11-27 (wheeled humanoid, 24 active DoF excluding hands, 160 kg, height 1060-1700 mm, 1.5 m/s, 3 kg arm rated load, Orin NX standard / Thor Pro); Claude's static fetch returned page metadata only. Codex confirms each value on the rendered page before writing."
+          "note": "JavaScript-rendered page, read by Codex in a rendered browser on 2026-11-27: wheeled humanoid; height 106-170 cm; 160 kg; 1.5 m/s; 3 kg straight-arm rated load; 24 active DoF excluding hands (7 per arm, neck 2, waist/lifting 5, base 3), dexterous hands standard; sensor table; Orin NX 16 GB 157 TOPS (standard) or Thor 64 GB 730 TOPS (Pro); two batteries, 1,650 Wh, about 4-5 h, hot swap, optional dock, up to 2 h per bay; SimpleAgent skills. Claude's static fetch returned page metadata only; Codex confirms each value on the rendered page before writing."
+        },
+        {
+          "url": "https://www.simplexityrobotics.com/about",
+          "publisher": "Simplexity Robotics (至简动力)",
+          "published": "about page, undated",
+          "reviewed": "2026-11-27",
+          "note": "Rendered by Codex: links the careers page (/recruitment); the official footer links the X and LinkedIn profiles."
         },
         {
           "url": "https://www.simplexityrobotics.com/news",
@@ -504,7 +511,7 @@
           "note": "Secondary source for the USD 100M round and the USD 1.6B valuation; not confirmed by the company."
         }
       ],
-      "note": "Cautious row: only what the official product page states, labelled as company claims; no operating deployment inferred; the round and the valuation are recorded as secondary reports, never as confirmed. i7 Pro is linked from the official site but not reviewed here and gets no row."
+      "note": "Cautious row: what the official product and About pages state, labelled as manufacturer claims; no operating deployment verified in the reviewed sources; the round and the valuation are recorded as secondary reports, never as confirmed. i7 Pro is linked from the official site but not reviewed here and gets no row. The native Humanoids grid and table fill A1:AF218: Codex appends one native row and extends the table to row 219, keeping the 218 rows above."
     }
   ]
 }
