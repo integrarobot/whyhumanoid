@@ -1,0 +1,43 @@
+{
+  "id": "WH-20261127-1118-radar-humanoides-27-noviembre",
+  "tarea": "Publicar en Why Humanoid? las seis noticias del radar de Integrarobot del 21 al 27 de noviembre",
+  "origen": "Javier Martín, petición directa",
+  "fecha": "2026-11-27T11:18:47+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "Codex",
+  "cambios": [
+    "Seis noticias en inglés, en el orden original, con atribución a Integrarobot y un enlace permanente por noticia.",
+    "La noticia de Huesca incorpora el memorando y los objetivos de apertura e inversión de las fuentes oficiales.",
+    "Las cuatro evidencias de Deployments ya estaban en el maestro y el catálogo público."
+  ],
+  "urls": [
+    {
+      "etiqueta": "Radar en News",
+      "url": "https://whyhumanoid.com/news/#roundup-2026-11-27-humanoid-robots"
+    },
+    {
+      "etiqueta": "Noticia de Huesca",
+      "url": "https://whyhumanoid.com/news/roundup-2026-11-27-humanoid-robots/03/"
+    },
+    {
+      "etiqueta": "PR de publicación",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/198"
+    },
+    {
+      "etiqueta": "Publicación de GitHub Pages",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/45980785842"
+    }
+  ],
+  "despliegue": [
+    "PR 198 fusionado en main en 5bdb3885ecc2e6eb4ee02782c9ab52f1e88ad396 tras CI 45980507479 correcta.",
+    "GitHub Pages 45980785842 completó la publicación. Verificación del sitio el 27 de noviembre a las 11:18 CET."
+  ],
+  "verificaciones": [
+    "26 pruebas editoriales, validación de datos públicos y verificación de páginas correctas.",
+    "News y el archivo anual muestran las seis noticias en orden y las encuentran por búsqueda. Las seis páginas conservan cuerpo, negritas, fuentes, URL canónica y presencia en el sitemap.",
+    "Cuatro fichas de Deployments comprobadas mediante la web, la búsqueda MCP y el maestro."
+  ],
+  "pendientes": [],
+  "siguiente_accion": "Publicación verificada y cerrada."
+}
