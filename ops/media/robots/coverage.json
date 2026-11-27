@@ -184,21 +184,41 @@
         179,
         181
       ],
-      "reserves": [
-        180,
-        37,
-        38,
-        39,
-        40
-      ],
+      "reserves": [],
       "notes": [
         "Javier (\"venga sigue con 10 más\"), via Codex, 27 Nov 2026: ten new images in alphabetical order after E/F; G/H is not closed as a scope and no further batch is opened.",
         "Sources from Codex, transport branch codex/image-sources-07 (8133830; alpha of R1, Eno, GENE.01 and Kengo corrected over 886396f, the other six byte-identical), kept unchanged in ops/media/intake-07-2026-11-27/batch-07/; prepared PNGs used as delivered.",
         "Reserves Gento Luna (178), Laborer C1 (179) and Lumen H1 (181) replace GoMate (33), Galbot G1 (35) and Gino 1 (213), which have no valid whole-robot source among those reviewed; this is not a claim that their sources are exhausted.",
         "Non-generative alpha-only cutouts with original RGB at native resolution; no variant invented, nothing assigned by resemblance. The 58 earlier presentations are unchanged.",
-        "Published with PR 225 (reviewed head f305081, CI 46022897299; merge 8b33837), 27 Nov 2026; Pages 46023149863 and production verification by Claude and Codex recorded in the batch closeout. G/H is not closed as a scope."
+        "Published with PR 225 (reviewed head f305081, CI 46022897299; merge 8b33837), 27 Nov 2026; Pages 46023149863 and production verification by Claude and Codex recorded in the batch closeout. G/H is not closed as a scope.",
+        "Reserves 180, 37, 38, 39 and 40 move to batch 8 (27 Nov 2026)."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 8,
+      "opened": "2026-11-27",
+      "state": "awaiting_sources",
+      "target": 10,
+      "scope": "All missing images (Javier, 27 Nov 2026); G/H/I first",
+      "candidates": [
+        180,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "reserves": [],
+      "notes": [
+        "Javier (\"añade todas las imágenes que faltan de los robots\"), via Codex, 27 Nov 2026: every pending record, in batches of up to 10; Humanoids first, then identifiable models in Other Robots; a company with no model gets no image.",
+        "Sources from Codex's sweep (transport by Git, originals with their official pages and attributions); Claude reviews identity and mask and integrates. Candidates without a faithful whole-robot source are replaced by the next eligible records, not forced.",
+        "HIRO Origin (137) keeps its block. No maker is contacted without new authorisation. Non-generative alpha-only cutouts, original RGB at native resolution; the 68 current presentations stay unchanged."
+      ]
     }
   ],
   "robots": {
@@ -537,7 +557,14 @@
       "status": "reserve",
       "page": "https://www.limxdynamics.com/en",
       "notes": "Not Luna (id 156).",
-      "sources": []
+      "sources": [],
+      "research": [
+        {
+          "by": "claude",
+          "date": "2026-11-27",
+          "note": "Official GitHub limxdynamics/humanoid-description: README banner and docs/images/hu_d03.png, hu_d04.png, hu_d04_gripper.png, hu_d04_hand.png show the LimX Oli humanoid (HU_D04) and its gripper and hand variants as description-model renders; the variant shown must match the record before use."
+        }
+      ]
     },
     "102": {
       "recorded": {
@@ -2164,7 +2191,7 @@
         "Lab": "Glroad",
         "Robot": "Laborer M1"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://www.glroad.com/HumanoidRobots/index.aspx",
       "notes": "Glroad Laborer M1 (劳动者 family): 50 kg-class heavy-load humanoid; not C1.",
       "research": [
@@ -2180,7 +2207,7 @@
         "Lab": "Goblin",
         "Robot": "GBLN-01"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://www.goblinrobotics.com/",
       "notes": "Goblin GBLN-01: mobility not recorded; only an official image identified as GBLN-01.",
       "research": [
@@ -2217,7 +2244,7 @@
         "Lab": "Hanson",
         "Robot": "Sophia"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://www.hansonrobotics.com/",
       "notes": "Hanson Robotics Sophia: whole robot only; a bust or head-and-torso Sophia does not meet the whole-robot requirement."
     },
@@ -2226,7 +2253,7 @@
         "Lab": "Heima",
         "Robot": "A.D.A.M."
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://www.heimarobotics.com/",
       "notes": "Heima A.D.A.M.: full-body developer humanoid; identified as A.D.A.M. in the official source."
     },
@@ -2235,9 +2262,850 @@
         "Lab": "Hexagon",
         "Robot": "AEON"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://hexagon.com/company/newsroom/press-releases/2025/hexagon-launches-aeon-a-humanoid-built-for-industry",
       "notes": "Hexagon AEON: wheeled humanoid from Hexagon's official launch material; shown whole."
+    },
+    "21": {
+      "recorded": {
+        "Lab": "Plim Robotics",
+        "Robot": "Plim"
+      },
+      "status": "queued",
+      "page": "https://www.devanthro.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "41": {
+      "recorded": {
+        "Lab": "Holiday",
+        "Robot": "Friday"
+      },
+      "status": "candidate",
+      "page": "https://holiday-robotics.com/"
+    },
+    "42": {
+      "recorded": {
+        "Lab": "Igus",
+        "Robot": "Iggy Rob"
+      },
+      "status": "candidate",
+      "page": "https://www.igus.com/automation/news/humanoid-robot"
+    },
+    "43": {
+      "recorded": {
+        "Lab": "IHMC Robotics",
+        "Robot": "Nadia"
+      },
+      "status": "candidate",
+      "page": "https://robots.ihmc.us/nadia"
+    },
+    "44": {
+      "recorded": {
+        "Lab": "InMoov",
+        "Robot": "InMoov"
+      },
+      "status": "candidate",
+      "page": "https://inmoov.fr/"
+    },
+    "45": {
+      "recorded": {
+        "Lab": "IntBot",
+        "Robot": "Nylo"
+      },
+      "status": "candidate",
+      "page": "https://intbot.ai"
+    },
+    "46": {
+      "recorded": {
+        "Lab": "K-Scale Labs",
+        "Robot": "K-bot"
+      },
+      "status": "queued",
+      "page": "https://shop.kscale.dev/",
+      "result": "Queued. Official GitHub kscalelabs/kbot holds only collages (assets/pics/a–f.webp: parts, dark full-body renders in multi-panel layouts, event photos); no single clean whole-robot image there. Codex's sweep pending."
+    },
+    "47": {
+      "recorded": {
+        "Lab": "Kepler",
+        "Robot": "Forerunner K1"
+      },
+      "status": "queued",
+      "page": "https://www.gotokepler.com/home",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "48": {
+      "recorded": {
+        "Lab": "Kinisi",
+        "Robot": "Kinisi (Bear Robotics offering)"
+      },
+      "status": "queued",
+      "page": "https://www.bearrobotics.ai/kinisi",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "49": {
+      "recorded": {
+        "Lab": "Leju",
+        "Robot": "Kuavo"
+      },
+      "status": "queued",
+      "page": "https://www.lejurobot.com/en",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "50": {
+      "recorded": {
+        "Lab": "LG",
+        "Robot": "KAPEX (co-developed with KIST and LG AI Research)"
+      },
+      "status": "queued",
+      "page": "https://solutions.lg.com/us/robots",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "52": {
+      "recorded": {
+        "Lab": "Lumos",
+        "Robot": "LUS"
+      },
+      "status": "queued",
+      "page": "https://www.lumosbot.tech/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "54": {
+      "recorded": {
+        "Lab": "Magiclab",
+        "Robot": "Magicbot"
+      },
+      "status": "queued",
+      "page": "https://magiclab.top",
+      "result": "Queued. Official GitHub MagiclabRobotics/Magiclab_GMR has no product image; Codex's sweep pending."
+    },
+    "55": {
+      "recorded": {
+        "Lab": "Mentee",
+        "Robot": "MenteeBot"
+      },
+      "status": "queued",
+      "page": "https://www.menteebot.com/bot/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "59": {
+      "recorded": {
+        "Lab": "Noetix",
+        "Robot": "Dora"
+      },
+      "status": "queued",
+      "page": "https://en.noetixrobotics.com/products.html",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "60": {
+      "recorded": {
+        "Lab": "Oversonic",
+        "Robot": "RoBee"
+      },
+      "status": "queued",
+      "page": "https://www.oversonicrobotics.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "63": {
+      "recorded": {
+        "Lab": "Phybot",
+        "Robot": "M1"
+      },
+      "status": "queued",
+      "page": "https://www.phybot.tech/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "64": {
+      "recorded": {
+        "Lab": "Physical Robotics",
+        "Robot": "Pi (π)"
+      },
+      "status": "queued",
+      "page": "https://www.physicalrobotics.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "65": {
+      "recorded": {
+        "Lab": "Pib",
+        "Robot": "pib"
+      },
+      "status": "queued",
+      "page": "https://pib.rocks/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "66": {
+      "recorded": {
+        "Lab": "PNDbotics",
+        "Robot": "Adam"
+      },
+      "status": "queued",
+      "page": "https://www.pndbotics.com/",
+      "result": "Queued. Official GitHub pndbotics/pnd_models holds description-model renders (adam_standard/imgs/adam_standard.png, 1237 × 1230 RGBA, and Lite, SP and U variants); a simulation render, to be weighed against the official product page before use. Codex's sweep pending."
+    },
+    "67": {
+      "recorded": {
+        "Lab": "Pollen",
+        "Robot": "Reachy 2"
+      },
+      "status": "queued",
+      "page": "https://pollen-robotics.com/reachy-2/",
+      "result": "Queued. Official GitHub pollen-robotics/reachy2-sdk and reachy2_core hold only a logo; Codex's sweep of the official Reachy 2 page pending."
+    },
+    "68": {
+      "recorded": {
+        "Lab": "Pudu",
+        "Robot": "D7"
+      },
+      "status": "queued",
+      "page": "https://www.pudurobotics.com/it/news/917",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "69": {
+      "recorded": {
+        "Lab": "Qinglong",
+        "Robot": "Qinglong"
+      },
+      "status": "queued",
+      "page": "https://technode.com/2024/07/05/qinglong-chinas-first-full-sized-general-purpose-humanoid-robot-unveiled-at-world-artificial-intelligence-conference-2024/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "70": {
+      "recorded": {
+        "Lab": "Rainbow",
+        "Robot": "Hubo"
+      },
+      "status": "queued",
+      "page": "https://www.rainbow-robotics.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "72": {
+      "recorded": {
+        "Lab": "Realbotix",
+        "Robot": "Aria"
+      },
+      "status": "queued",
+      "page": "https://www.realbotix.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "73": {
+      "recorded": {
+        "Lab": "Reflex",
+        "Robot": "Reflex"
+      },
+      "status": "queued",
+      "page": "https://www.reflexrobotics.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "74": {
+      "recorded": {
+        "Lab": "Revobots",
+        "Robot": "Taskbot"
+      },
+      "status": "queued",
+      "page": "https://revobots.ai/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "77": {
+      "recorded": {
+        "Lab": "Robot.com",
+        "Robot": "R-Noid"
+      },
+      "status": "queued",
+      "page": "https://www.robot.com/r-noid",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "78": {
+      "recorded": {
+        "Lab": "Robotis",
+        "Robot": "K0"
+      },
+      "status": "queued",
+      "page": "https://www.robotis.us/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "79": {
+      "recorded": {
+        "Lab": "Robros",
+        "Robot": "Igris"
+      },
+      "status": "queued",
+      "page": "https://robros.co.kr/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "80": {
+      "recorded": {
+        "Lab": "Sanctuary AI",
+        "Robot": "Phoenix"
+      },
+      "status": "queued",
+      "page": "https://sanctuary.ai/resources/news/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "83": {
+      "recorded": {
+        "Lab": "Spirit",
+        "Robot": "Moz"
+      },
+      "status": "queued",
+      "page": "https://www.spirit-ai.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "84": {
+      "recorded": {
+        "Lab": "Switch",
+        "Robot": "Onero H1"
+      },
+      "status": "queued",
+      "page": "https://eu.switch-bot.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "85": {
+      "recorded": {
+        "Lab": "Tangible",
+        "Robot": "Eggie"
+      },
+      "status": "queued",
+      "page": "https://tangiblerobots.ai/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "89": {
+      "recorded": {
+        "Lab": "Ti5robot",
+        "Robot": "T230A"
+      },
+      "status": "queued",
+      "page": "https://www.ti5robot.com/en/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "90": {
+      "recorded": {
+        "Lab": "Tokyo",
+        "Robot": "Torobo"
+      },
+      "status": "queued",
+      "page": "https://robotics.tokyo/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "91": {
+      "recorded": {
+        "Lab": "Ubtech",
+        "Robot": "Walker S1"
+      },
+      "status": "queued",
+      "page": "https://www.ubtrobot.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "92": {
+      "recorded": {
+        "Lab": "UMA",
+        "Robot": "Version 0"
+      },
+      "status": "queued",
+      "page": "https://uma.bot/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "94": {
+      "recorded": {
+        "Lab": "UniX",
+        "Robot": "Wanda"
+      },
+      "status": "queued",
+      "page": "https://www.unix-group.ai",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "95": {
+      "recorded": {
+        "Lab": "Vanar",
+        "Robot": "Generation 1"
+      },
+      "status": "queued",
+      "page": "http://vanarrobots.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "96": {
+      "recorded": {
+        "Lab": "VinMotion",
+        "Robot": "Motion"
+      },
+      "status": "queued",
+      "page": "https://vinmotion.net/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "97": {
+      "recorded": {
+        "Lab": "Wandercraft",
+        "Robot": "Calvin-40"
+      },
+      "status": "queued",
+      "page": "https://en.wandercraft.eu/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "98": {
+      "recorded": {
+        "Lab": "Weave",
+        "Robot": "Isaac"
+      },
+      "status": "queued",
+      "page": "https://www.weaverobotics.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "99": {
+      "recorded": {
+        "Lab": "Westwood",
+        "Robot": "Themis"
+      },
+      "status": "queued",
+      "page": "https://www.westwoodrobotics.io/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "100": {
+      "recorded": {
+        "Lab": "Wirobotics",
+        "Robot": "Allex"
+      },
+      "status": "queued",
+      "page": "https://www.wirobotics.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "101": {
+      "recorded": {
+        "Lab": "X Square",
+        "Robot": "Quanta X2"
+      },
+      "status": "queued",
+      "page": "https://x2robot.com/en/product/quantum2",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "108": {
+      "recorded": {
+        "Lab": "Peritas",
+        "Robot": "Peri"
+      },
+      "status": "queued",
+      "page": "https://www.peritas.ai/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "111": {
+      "recorded": {
+        "Lab": "Sudo",
+        "Robot": "#sudo R1"
+      },
+      "status": "queued",
+      "page": "https://www.sudo.ai/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "112": {
+      "recorded": {
+        "Lab": "Kinetix",
+        "Robot": "Kaibot"
+      },
+      "status": "queued",
+      "page": "https://www.kinetixai.tech/en",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "115": {
+      "recorded": {
+        "Lab": "Twolabs",
+        "Robot": "Tobi"
+      },
+      "status": "queued",
+      "page": "https://www.twolabs.ai/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "118": {
+      "recorded": {
+        "Lab": "Vibe Robotics",
+        "Robot": "Vibe 01"
+      },
+      "status": "queued",
+      "page": "https://www.viberobotics.co/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "119": {
+      "recorded": {
+        "Lab": "Nori",
+        "Robot": "NORI A3"
+      },
+      "status": "queued",
+      "page": "https://www.norirobotics.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "120": {
+      "recorded": {
+        "Lab": "Sunday",
+        "Robot": "Memo"
+      },
+      "status": "queued",
+      "page": "https://www.sunday.ai/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "122": {
+      "recorded": {
+        "Lab": "XYZ",
+        "Robot": "Deux"
+      },
+      "status": "queued",
+      "page": "https://xyzcorp.imweb.me/DEUX",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "123": {
+      "recorded": {
+        "Lab": "Lightberry",
+        "Robot": "Lumi"
+      },
+      "status": "queued",
+      "page": "https://lightberry.com/lumi",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "124": {
+      "recorded": {
+        "Lab": "Pink Robotics",
+        "Robot": "P0"
+      },
+      "status": "queued",
+      "page": "https://www.pink-robotics.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "127": {
+      "recorded": {
+        "Lab": "O-ID",
+        "Robot": "O-ID modular platform"
+      },
+      "status": "queued",
+      "page": "https://o-id.net/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "131": {
+      "recorded": {
+        "Lab": "Tuesday Labs",
+        "Robot": "Voxel Series-1"
+      },
+      "status": "queued",
+      "page": "https://tuesdaylabs.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "133": {
+      "recorded": {
+        "Lab": "Mabel",
+        "Robot": "Mabel"
+      },
+      "status": "queued",
+      "page": "https://robotmabel.github.io/website/index.html",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "136": {
+      "recorded": {
+        "Lab": "LG",
+        "Robot": "CLOiD"
+      },
+      "status": "queued",
+      "page": "https://www.lg.com/global/newsroom/news/home-appliance-solution/lg-electronics-presents-lg-cloid-home-robot-to-demonstrate-zero-labor-home-at-ces-2026/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "156": {
+      "recorded": {
+        "Lab": "LimX",
+        "Robot": "Luna"
+      },
+      "status": "queued",
+      "page": "https://www.limxdynamics.com/en/products/luna",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "160": {
+      "recorded": {
+        "Lab": "Magiclab",
+        "Robot": "MagicBot Z1"
+      },
+      "status": "queued",
+      "page": "https://www.magiclab.top/en/z1",
+      "result": "Queued. Official GitHub MagiclabRobotics/Magiclab_GMR has no product image; Codex's sweep pending."
+    },
+    "182": {
+      "recorded": {
+        "Lab": "Jingchu Humanoid",
+        "Robot": "JingChu 1"
+      },
+      "status": "queued",
+      "page": "https://www.jingchurobot.cn/product_detail/1.html",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "183": {
+      "recorded": {
+        "Lab": "Jingchu Humanoid",
+        "Robot": "Jingchu Elf"
+      },
+      "status": "queued",
+      "page": "https://www.jingchurobot.cn/product_detail/3.html",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "184": {
+      "recorded": {
+        "Lab": "JAKA Robotics",
+        "Robot": "JAKA π"
+      },
+      "status": "queued",
+      "page": "https://www.jaka.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "185": {
+      "recorded": {
+        "Lab": "KAIST DRCD Lab",
+        "Robot": "KAIST Humanoid"
+      },
+      "status": "queued",
+      "page": "https://www.dynamicrobot.kaist.ac.kr/new-page",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "186": {
+      "recorded": {
+        "Lab": "KIT H²T",
+        "Robot": "ARMAR-7"
+      },
+      "status": "queued",
+      "page": "https://h2t.iar.kit.edu/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "187": {
+      "recorded": {
+        "Lab": "KEENON Robotics",
+        "Robot": "XMAN-R1"
+      },
+      "status": "queued",
+      "page": "https://www.keenon.com/en/product/XMAN-R1",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "188": {
+      "recorded": {
+        "Lab": "Lanxin Robotics",
+        "Robot": "VB1"
+      },
+      "status": "queued",
+      "page": "https://www.lanxinrobotics.com/vb1/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "189": {
+      "recorded": {
+        "Lab": "Linkerbot",
+        "Robot": "Linker Humanoid"
+      },
+      "status": "queued",
+      "page": "https://www.linkerbot.cn/details/LinkerHumanoid",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "190": {
+      "recorded": {
+        "Lab": "Matrix Robotics",
+        "Robot": "MATRIX-3"
+      },
+      "status": "queued",
+      "page": "https://matrixrobotics.ai/matrix-3",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "191": {
+      "recorded": {
+        "Lab": "Matrix Robotics",
+        "Robot": "MATRIX-1"
+      },
+      "status": "queued",
+      "page": "https://matrixrobotics.ai/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "192": {
+      "recorded": {
+        "Lab": "Menlo",
+        "Robot": "Asimov 1"
+      },
+      "status": "queued",
+      "page": "https://menlo.ai/asimov-1",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "193": {
+      "recorded": {
+        "Lab": "MirrorMe",
+        "Robot": "Bolt"
+      },
+      "status": "queued",
+      "page": "https://www.mirrormetech.com/cn/product_5.html",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "194": {
+      "recorded": {
+        "Lab": "Perceptyne",
+        "Robot": "PR-OMNI"
+      },
+      "status": "queued",
+      "page": "https://www.perceptyne.com/product/omni",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "195": {
+      "recorded": {
+        "Lab": "PL-Universe",
+        "Robot": "ProWhite"
+      },
+      "status": "queued",
+      "page": "https://en.pl-universe.com/Products/ProWhiteRobot",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "197": {
+      "recorded": {
+        "Lab": "Richtech Robotics",
+        "Robot": "Dex"
+      },
+      "status": "queued",
+      "page": "https://richtechrobotics.com/solutions/dex",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "198": {
+      "recorded": {
+        "Lab": "RoboScience",
+        "Robot": "REX G1"
+      },
+      "status": "queued",
+      "page": "https://www.robosci.com/rex-g1/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "199": {
+      "recorded": {
+        "Lab": "StarBot",
+        "Robot": "StarBot Astra"
+      },
+      "status": "queued",
+      "page": "https://www.starbotusa.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "200": {
+      "recorded": {
+        "Lab": "StarBot",
+        "Robot": "StarBot Flex"
+      },
+      "status": "queued",
+      "page": "https://www.starbotusa.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "201": {
+      "recorded": {
+        "Lab": "Svaya Robotics",
+        "Robot": "Bimanual Humanoid Robot"
+      },
+      "status": "queued",
+      "page": "https://svayarobotics.com/product/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "202": {
+      "recorded": {
+        "Lab": "Tlibot",
+        "Robot": "TLIBOT T1"
+      },
+      "status": "queued",
+      "page": "https://www.tlibot.com/cpzx/6.html",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "203": {
+      "recorded": {
+        "Lab": "ugo",
+        "Robot": "ugo Nova"
+      },
+      "status": "queued",
+      "page": "https://ugo.plus/ai/ugo-nova/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "204": {
+      "recorded": {
+        "Lab": "X-Humanoid",
+        "Robot": "Tien Kung 3.0"
+      },
+      "status": "queued",
+      "page": "https://www.x-humanoid.com/detail/jstg.html",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "205": {
+      "recorded": {
+        "Lab": "X-Humanoid",
+        "Robot": "Tian Yi 2.0"
+      },
+      "status": "queued",
+      "page": "https://www.x-humanoid.com/detail/tianyi.html",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "206": {
+      "recorded": {
+        "Lab": "X-Humanoid",
+        "Robot": "TianGong Omni"
+      },
+      "status": "queued",
+      "page": "https://www.x-humanoid.com/detail/omni.html",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "207": {
+      "recorded": {
+        "Lab": "Zerith Robotics",
+        "Robot": "Zerith H1"
+      },
+      "status": "queued",
+      "page": "https://www.zerith.com/product/ZerithH1/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "208": {
+      "recorded": {
+        "Lab": "Zeroth Robotics",
+        "Robot": "Jupiter"
+      },
+      "status": "queued",
+      "page": "https://www.zeroth0.com/products/jupiter",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "209": {
+      "recorded": {
+        "Lab": "ZJ Humanoid",
+        "Robot": "NAVIAI i3"
+      },
+      "status": "queued",
+      "page": "https://www.zj-humanoid.com/zujian/2",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "210": {
+      "recorded": {
+        "Lab": "ZJ Humanoid",
+        "Robot": "NAVIAI WA2"
+      },
+      "status": "queued",
+      "page": "https://www.zj-humanoid.com/zujian/10",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "211": {
+      "recorded": {
+        "Lab": "Westlake Robotics",
+        "Robot": "Westlake o1"
+      },
+      "status": "queued",
+      "page": "https://wlrobo.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "212": {
+      "recorded": {
+        "Lab": "Mirsee Robotics",
+        "Robot": "MH3"
+      },
+      "status": "queued",
+      "page": "https://www.mirsee.com/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "214": {
+      "recorded": {
+        "Lab": "Techman Robot",
+        "Robot": "TM Xplore I"
+      },
+      "status": "queued",
+      "page": "https://www.tm-robot.com/en/",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+    },
+    "216": {
+      "recorded": {
+        "Lab": "Simplexity Robotics",
+        "Robot": "iX"
+      },
+      "status": "queued",
+      "page": "https://www.simplexityrobotics.com/products/ix",
+      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
     }
   },
   "scopes": [
