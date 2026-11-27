@@ -1,0 +1,32 @@
+{
+  "id": 159,
+  "slug": "dr02",
+  "original": "159-15.webp",
+  "roi": [
+    0,
+    0,
+    750,
+    1334
+  ],
+  "native_alpha": false,
+  "bbox": [
+    295,
+    341,
+    513,
+    993
+  ],
+  "border": 20,
+  "size": [
+    258,
+    692
+  ],
+  "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+  "source_page": "https://www.deeprobotics.cn/en/products/detail/5.html",
+  "source_url": "https://www.deeprobotics.cn/en/bocupload/2026/09/09/178894850308982e1dd.webp",
+  "source_alt": "The World",
+  "original_sha256": "bdafe5987899efe5d75b5ba2a19c4591fa7d8f6fe643ce5b61db72d952585998",
+  "prepared_sha256": "1865b268a06c428020ad2be42c2a956a46693824b3c719809f26f41b70ddabcd",
+  "mask_sha256": "ff48e09cacc824a39a21e8854a0829afc73417d365f8353d9be2a590de0aaa30",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

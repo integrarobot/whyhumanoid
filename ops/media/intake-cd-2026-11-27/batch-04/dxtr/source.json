@@ -1,0 +1,32 @@
+{
+  "id": 175,
+  "slug": "dxtr",
+  "original": "dxtr-1.webp",
+  "roi": [
+    0,
+    0,
+    1440,
+    1440
+  ],
+  "native_alpha": true,
+  "bbox": [
+    340,
+    38,
+    1160,
+    1366
+  ],
+  "border": 20,
+  "size": [
+    860,
+    1368
+  ],
+  "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+  "source_page": "https://www.duatic.com/dxtr",
+  "source_url": "https://www.duatic.com/web/image/7946-ba79d6a1/duatic_alpha_2.webp",
+  "source_alt": "",
+  "original_sha256": "3cddafb962755b36f948c0cee229402c6d7c70f436bd0e6ddd8f0499b61022ef",
+  "prepared_sha256": "a538e53406e559089aca9b2fadfa78424b411dd0f12d5640c01fbc0d2f5b3aad",
+  "mask_sha256": "a850bbfbb816a251b7aefb9cbaf8f1a5d4d5e706ccf5a9643713459c26b78a32",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

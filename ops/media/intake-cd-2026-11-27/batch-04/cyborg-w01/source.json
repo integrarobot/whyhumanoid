@@ -1,0 +1,32 @@
+{
+  "id": 170,
+  "slug": "cyborg-w01",
+  "original": "169-bg2.jpg",
+  "roi": [
+    0,
+    0,
+    2400,
+    1568
+  ],
+  "native_alpha": false,
+  "bbox": [
+    881,
+    110,
+    1499,
+    1532
+  ],
+  "border": 20,
+  "size": [
+    658,
+    1462
+  ],
+  "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+  "source_page": "https://www.cyb-org.cn/",
+  "source_url": "https://www.cyb-org.cn/res/202606/02/717d1878472dbb31.jpg",
+  "source_alt": "",
+  "original_sha256": "b199559b28dfb63adab56315db10bc32131425faca0c7f9b00a024f2d8b0eddc",
+  "prepared_sha256": "80141b61e90df5c6f3359549d49f927ec1da53e7dc7b883bf82ec33ed6f6b33f",
+  "mask_sha256": "870a56f839fd9134d903216ba564e62ebb3cba1a3bc779f423fb5bc21589d79f",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27"
+}

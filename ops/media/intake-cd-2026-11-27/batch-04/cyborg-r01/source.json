@@ -1,0 +1,32 @@
+{
+  "id": 169,
+  "slug": "cyborg-r01",
+  "original": "169-bg0.jpg",
+  "roi": [
+    0,
+    0,
+    2400,
+    1568
+  ],
+  "native_alpha": false,
+  "bbox": [
+    878,
+    94,
+    1524,
+    1525
+  ],
+  "border": 20,
+  "size": [
+    686,
+    1471
+  ],
+  "refinement": "alpha levels 85 to 230; components >=80 pixels; Moxi below row1810 excluded",
+  "source_page": "https://www.cyb-org.cn/",
+  "source_url": "https://www.cyb-org.cn/res/202606/02/cf39546953c0e833.jpg",
+  "source_alt": "",
+  "original_sha256": "b34a0e7c2d1626551d57a18ab6781e6203dc5509ea2b879e32dec45a2f28f48b",
+  "prepared_sha256": "cfaeb7a1ac8f939c30389e4161e202479e6c223d9a8f6c4a869d5cb4b54178b1",
+  "mask_sha256": "b7e5bfe10cfed4d5ff6700cdbe6c07ed5ec76a2c254aa7e5fa969df0bdedec14",
+  "processing": "Non-generative alpha-only mask; no synthesis, no RGB edits, no scaling; 20px transparent padding.",
+  "checked_at": "2026-11-27"
+}
