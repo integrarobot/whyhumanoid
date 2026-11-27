@@ -1,0 +1,20 @@
+[
+  {
+    "id": 155,
+    "slug": "pudu-d9-brochure-original",
+    "credit": "Pudu Robotics",
+    "source_page": "https://www.pudurobotics.com/en/products/d9",
+    "source_url": "https://cdn.pudutech.com/PUDU_D9_20250103_CN_577d07e2ad.pdf",
+    "original": "original.png",
+    "original_size": [
+      548,
+      1572
+    ],
+    "original_sha256": "d80c6f6f6e822a10c71f1501450d929a8d8aabda6d6e76e2549efac1821c399c",
+    "source_document_sha256": "edafdb67605af908ecba35e23b2478495352b2b847dc8c815d62475d16b18216",
+    "source_context": "Official maker PDF D9singlepage Chinese bilingual brochure2025-01-03. PDFlogicalpage2 embeddedfront productimage548x1572 object28 + original softmask548x1572, extracted nativeRGBimage004 andsoftmask005 viaPDFimages, combinedownalphaONLY. Notpagerendered orupscaled. Cleancompletehead,bothactualhands,bothfeet. Brochurevectorcalloutsare outsideembeddedimage, NONEonbody, so this source solves old400x480 resolutionissue and darkvideoambiguousbackground. Alphabbox20,28,531,1542; noopaqueedges. Root nativeRGBAcompositeinspected. Existing manufacturer product render, caption PuduRobotics, D9 manufacturer brochure render(2025). D9NOTD7. Preserveownalpha/nativeRGB, crop/padonly. No specschanged,noclaimnavigationorautonomyfromphoto. Brochurenotesfeaturelimitations not taskscope; do notcopycapabilityclaims.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer official product brochure CDN. Credit required; no open licence assumed or outreach sent."
+  }
+]
