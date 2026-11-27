@@ -7,18 +7,26 @@ import { DATASETS, DATASETS_BY_ID, publicRowLimit, publicRowSql, publicValuesSql
 import { norm, normMap, likeEscape } from './normalize.js';
 import { FACETS, FACET_LABELS, SYNONYMS, STOPWORDS, isKnownTag, tagLabel, tagsFor } from './vocabulary.js';
 import { STATUS_LABELS } from '../public/projection.js';
+import { REPORTS_CATEGORY, matchesTerms, reportSearchDocs } from '../reports/search.js';
+import { readerValues } from './display.js';
 
 export const PAGE_SIZE = 20;
 const MAX_TERMS = 8;
 const INTERNAL = new Set(['identity_status', 'source_rows', 'id']);
 const NA = /^(not\b|n\/?a$|unknown$|unspecified$|not_disclosed$)/i;
+// Identifier fields: searchable by name or code, never shown to a reader as a snippet.
+const IDENTIFIER_FIELDS = new Set(['gf_symbol', 'isin', 'ticker', 'finance_url', 'record_id', 'deployment_id', 'organization_id', 'entity_id', 'provider_id', 'component_id', 'dataset_id', 'metric_id', 'link_id', 'model_id', 'task_id']);
+// Reader-facing names for fields whose column name is not English prose.
+const FIELD_LABELS = { source: 'Source', statement: 'Finding', limits: 'Limits', scope: 'Scope', etf_membership: 'ETF membership', etf_as_of: 'ETF membership as of', verified_at: 'Verified', country: 'Country as recorded', segment: 'Segment' };
+const fieldLabel = (field) => FIELD_LABELS[field] ?? human(field);
 const nz = (v) => v !== null && v !== undefined && String(v).trim() !== '' && !NA.test(String(v).trim());
 const human = (v) => String(v ?? '').replace(/_/g, ' ');
 const short = (v, n = 110) => { const s = String(v ?? '').replace(/\s+/g, ' ').trim(); return s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s; };
 const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return ''; } };
 // Company dossiers (approved split, phase 1) are a search category of their own, built from the public projection
 // only (server/src/public/projection.js), so the same allowlisted values serve visitors and subscribers.
-const CATEGORIES = [{ id: 'companies', title: 'Companies' }, ...DATASETS];
+// Reports (27 Nov 2026) is searched from the reviewed public atlas bundled with the Worker, not from D1.
+const CATEGORIES = [{ id: 'companies', title: 'Companies' }, ...DATASETS, REPORTS_CATEGORY];
 const CATEGORY_BY_ID = new Map(CATEGORIES.map((d) => [d.id, d]));
 const ORDER = new Map(CATEGORIES.map((d, i) => [d.id, i]));
 const ROLE_LABELS = { maker: 'Maker', customer_operator: 'Operator or customer', customer_investor: 'Customer and investor', technology_partner: 'Technology partner or integrator' };
@@ -96,6 +104,11 @@ function describe(datasetId, d) {
       const variants = String(d.canonical_name || '').split(/\s*[()/;]\s*/).map((x) => x.replace(/^legacy\s+/i, '').trim()).filter((x) => x.length > 1);
       return { title: display || host(d.url) || '', subtitle: join(d.roles, host(d.url)), names: [display, d.name, d.canonical_name, ...variants], context: 'description' };
     }
+    case 'reports':
+      // A report (publisher, scope) or a checked finding (statement, source): the title already shows the statement.
+      return d.statement
+        ? { title: d.statement, subtitle: d.source, names: [d.statement], context: 'limits' }
+        : { title: '', subtitle: d.publisher, names: [d.publisher, d.authors], context: 'scope' };
     case 'data-space':
       return { title: d.topic || d.record_id, subtitle: join(d.workstream, d.epistemic_status), names: [d.topic, d.record_id], context: 'finding_or_proposal' };
     default: {
@@ -199,9 +212,10 @@ function snippet(datasetId, data, terms, tagLabels = []) {
   const { context, names } = describe(datasetId, data);
   const nameSet = new Set(names.filter(nz).map(String));
   const usable = Object.entries(data).filter(([k, v]) => !INTERNAL.has(k) && nz(v) && !nameSet.has(String(v)) && !/^https?:\/\/\S+$/.test(String(v).trim()));
-  // Prose before identifiers: a field named *_id or holding a bare id is a last resort.
-  const isId = ([k, v]) => /(^|_)id$|_ids$/.test(k) || /^[a-z]+_[a-z0-9_]+$/.test(String(v).trim());
-  const entries = [...usable.filter((e) => !isId(e)), ...usable.filter(isId)];
+  // Identifiers are never shown as a snippet (27 Nov 2026): a field named *_id, a bare id, a listing symbol or an ISIN
+  // tells a reader nothing; when only an identifier matches, the category's context field is shown instead.
+  const isId = ([k, v]) => /(^|_)id$|_ids$/.test(k) || IDENTIFIER_FIELDS.has(k) || /^[a-z]+_[a-z0-9_]+$/.test(String(v).trim());
+  const entries = usable.filter((e) => !isId(e));
   const alts = terms.flatMap((t) => t.alts).sort((a, b) => b.length - a.length);
   if (tagLabels.length) entries.push(...tagLabels.map(([facet, labelText]) => [`tag:${facet}`, labelText]));
   for (const [field, value] of entries) {
@@ -223,10 +237,10 @@ function snippet(datasetId, data, terms, tagLabels = []) {
       const b = m.map[e - 1] + 1 + offset;
       if (a >= 0 && b <= text.length && !marks.some(([x, y]) => a < y && b > x)) marks.push([a, b]);
     }
-    return { field, label: field.startsWith('tag:') ? field.slice(4) : human(field), text, marks: marks.sort((p, q) => p[0] - q[0]) };
+    return { field, label: field.startsWith('tag:') ? field.slice(4) : fieldLabel(field), text, marks: marks.sort((p, q) => p[0] - q[0]) };
   }
   const v = data[context];
-  return nz(v) ? { field: context, label: human(context), text: short(v, 160), marks: [] } : null;
+  return nz(v) ? { field: context, label: fieldLabel(context), text: short(v, 160), marks: [] } : null;
 }
 
 // scope must come from the entitlement check. Returns results, facet counts and category counts of the accessible
@@ -254,10 +268,13 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
     // Words match from their start ("tend" finds "tending", not "attending"); words of up to 3 characters match whole.
     params.push(...t.alts.map((a) => (a.length <= 3 ? `% ${likeEscape(a)} %` : `% ${likeEscape(a)}%`)));
   }
-  const { results = [] } = await db
+  const { results: fromDb = [] } = await db
     .prepare(`SELECT dataset, row_id, position, title, subtitle, names, tags, link FROM search_docs WHERE ${where.join(' AND ')}`)
     .bind(...params)
     .all();
+  // Reports documents join before any filter, count, facet, snippet or page is computed: they are free and the same
+  // for both scopes, so they pass the access matrix as they are.
+  const results = [...fromDb, ...reportSearchDocs().filter((doc) => matchesTerms(doc, terms))];
 
   // Filters: categories and tags. Within one facet any chosen value matches; across facets all must match.
   const byFacet = new Map();
@@ -300,14 +317,15 @@ export async function search(db, { scope, q = '', tags = '', category = '', page
     const rows = (await db.prepare(sql).bind(spec.id, ...ids).all()).results ?? [];
     for (const r of rows) dataOf.set(`${spec.id}|${r.row_id}`, JSON.parse(r.data));
   }
+  for (const doc of slice) if (doc.dataset === 'reports') dataOf.set(`reports|${doc.row_id}`, doc.data);
   const out = slice.map((doc) => {
-    const data = dataOf.get(`${doc.dataset}|${doc.row_id}`);
+    const data = readerValues(doc.dataset, dataOf.get(`${doc.dataset}|${doc.row_id}`));
     return {
       category: doc.dataset,
       category_title: CATEGORY_BY_ID.get(doc.dataset).title,
       id: doc.row_id,
       title: doc.title,
-      subtitle: doc.subtitle,
+      subtitle: doc.dataset === 'stocks' && data ? describe('stocks', data).subtitle : doc.subtitle,
       link: doc.link,
       tags: doc.tags.split('|').filter(Boolean).map((t) => ({ id: t, label: tagLabel(t), facet: FACET_LABELS[t.split(':')[0]] })),
       snippet: data ? snippet(doc.dataset, data, terms, doc.tags.split('|').filter(Boolean).map((t) => [FACET_LABELS[t.split(':')[0]], tagLabel(t)])) : null,

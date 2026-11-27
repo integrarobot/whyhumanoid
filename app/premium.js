@@ -116,7 +116,10 @@
     $('db-index').innerHTML = groups.map(([name, ids]) => {
       const items = ids.filter((id) => by[id]).map((id) => `<a href="#${id}" data-id="${id}"${state.current === id ? ' aria-current="true"' : ''}>${esc(by[id].title)}${by[id].offer === false ? ' <span class="lbl">not in the subscription offer</span>' : ''}<span class="n" data-n="${id}">${totals[id] ?? ''}</span></a>`).join('');
       return items ? `<div class="grp"><span class="lbl">${esc(name)}</span>${items}</div>` : '';
-    }).join('');
+    }).join('') +
+      // Reports (27 Nov 2026) is a free category that is not a table: it is browsed and searched here through the
+      // global search, which indexes the reviewed public atlas, and read in full on its public pages.
+      `<div class="grp"><span class="lbl">Research</span><a href="#search?category=reports"${state.current === 'reports' ? ' aria-current="true"' : ''}>Reports: search reports and findings</a><a href="https://whyhumanoid.com/reports/" target="_blank" rel="noopener noreferrer">Research Conclusions Atlas ↗</a></div>`;
   }
 
   // Rows: every row for a subscriber (paged API); otherwise the public rows (free tabs in full, Deployments and
