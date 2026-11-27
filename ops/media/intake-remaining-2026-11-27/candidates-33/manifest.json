@@ -1,0 +1,19 @@
+[
+  {
+    "id": 96,
+    "slug": "vinmotion-motion1-event-2025",
+    "credit": "Nguyen Le",
+    "source_page": "https://nguyenle.com.vn/event/vinmotion-dau-an-viet-nam-tren-hanh-trinh-chinh-phuc-tuong-lai/",
+    "source_url": "https://nguyenle.com.vn/wp-content/uploads/2025/09/image-30.jpg",
+    "original": "original.jpg",
+    "original_size": [
+      854,
+      1280
+    ],
+    "original_sha256": "31aaba89befac25e876a9058be540a298c2bee93b45bb174fd4b67ea5a6dff6d",
+    "source_context": "Event producer Nguyen Le own portfolio/report dated2025-09-22, explicitly launch Motion1 on2025-08-28 VEC Hanoi. Gallery source9 native854x1280 complete real robot in foreground raising openhand, both feet visible with bottom margin. Source has another ROBOT ILLUSTRATION on billboard BEHIND and ABOVE real one: EXCLUDE entire billboard and illustration, do not segment the drawn robot. Foreground actual robot ROI roughly[330,480,720,1250], complete raised fingertips at~500, head at590, feet1220. Preserve visible exposed cable loops near waist/knees/shoulders. Real hand held atside is curled by originalpose, do not inventfingers. Body~720px qualifies. Exact Motion1 version fixed by historical event page and maker LinkedIn public announcement same2025-08-28, whose threephotos crop legs. Manufacturer currentMotion2/annual2025differentbody not substituted. Caption VinMotion, Motion1 at VEC2025, event photograph by NguyenLe. Credit photographer/event producer, NOT direct maker image or open licence. Whole selected real figure root native inspected; needs alpha-only mask and independent review.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source, credit required; no open licence assumed or outreach sent."
+  }
+]
