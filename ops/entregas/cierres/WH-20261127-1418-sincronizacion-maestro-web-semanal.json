@@ -54,11 +54,11 @@
     "Codex, cabeza d6aa345: revisión independiente sin hallazgos; de los 212 registros solo cambia Valuation de los ids 72 y 91; index.html igual a la base salvo esos dos literales; SHA-256 del manifiesto iguales a los ficheros generados; check-public, export-humanoids --check, build-site --check y robot-presentation --check (48 imágenes) reproducidos.",
     "Claude, local antes del PR: check-public, export-humanoids, build-site (paridad), build-app, build-pages, export-public y export-evolution en --check; relations, robot-presentation, robot-images-coverage, entregas y check-reserved contra la exportación en vivo; test-evolution, test-coherence, verify-site y verify-pages; ningún valor antiguo en el repositorio.",
     "Claude, producción: data/humanoids-catalogue.json, data/humanoids-catalogue.csv y data/manifest.json con los mismos bytes que a66a779; la portada, /humanoids/ y las fichas de Aria y Walker S1 dan 200 e iguales a a66a779 una vez quitadas las etiquetas meta agent:* que añade Cloudflare en el borde.",
-    "Claude, navegador real (1366 × 900): la portada muestra 35,190,080.00 y 23,815,219,952.60, ya no los valores antiguos, sin errores de JavaScript."
+    "Claude, navegador real (1366 × 900): la portada muestra 35,190,080.00 y 23,815,219,952.60, ya no los valores antiguos, sin errores de JavaScript.",
+    "Codex, producción tras Pages46005309712 correcto: JSON, CSV y manifiesto idénticos por SHA-256 a la cabeza revisada; portada igual salvo cuatro metadatos conocidos agent:* de Cloudflare; comparación completa de proyecciones públicas repetida sin diferencias. En sesión real de suscriptor, 328 registros y 12.735 campos servidos de seis tablas cotejados con el maestro, sin diferencias normalizadas."
   ],
   "pendientes": [
-    "Verificación independiente de Codex en producción y su aviso para este cierre.",
     "Las valoraciones de GOOGLEFINANCE cambian con el mercado: la web estática las fija en cada publicación, y la auditoría de los viernes seguirá detectando esta deriva."
   ],
-  "siguiente_accion": "Codex verifica producción y registra su aviso; Javier confirma la recepción."
+  "siguiente_accion": "Mantener la revisión programada de los viernes. El aviso propio de Codex queda adjunto; la recepción de Javier se registra solo si Javier la confirma."
 }
