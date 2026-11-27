@@ -1,11 +1,12 @@
 {
   "plan_id": "other-robots-entity-types-2026-11-27",
-  "status": "awaiting_preparation",
+  "status": "ready_for_writing",
   "prepared_by": "claude",
   "prepared_at": "2026-11-27",
   "master_read": {
-    "xlsx_sha256": "2c84e109bdfcf560a11f24c9082c692da9f4c99c7aa5bd8753d6741a952a013a",
-    "read_on": "2026-11-27"
+    "xlsx_sha256": "dd3c6413aa45d94da1bfb7cfd03ca8c3df85d88808d3127f8c8e5c10ea779e45",
+    "read_on": "2026-11-27",
+    "drive_modified_time": "2026-11-27T07:47:38.485Z"
   },
   "rule": "Only rows whose own recorded description says they are software, a component maker or a service provider, and whose entity already has a home elsewhere in the master or moves into the first Software block. Nothing is inferred beyond the recorded text. Cleared cells keep their row; columns E:G (Edubots) of those rows are untouched.",
   "preparation_request": {
@@ -31,13 +32,11 @@
     ],
     "reason": "Rows 136-138 are empty but belong to SIMULATORS (title A122, headers A123): Robonomics, Mujin and Eka there would be listed as simulators. The first block is full up to row 81."
   },
-  "after_preparation": "Claude downloads the master afresh, checks the receipt (same non-empty rows in their new positions, 3 empty slots in the first block, E:F and other tabs unchanged), rebases the three Software writes to the slots (expected 82:84) with group_expected null and its own re-read, and only then marks the plan ready for writing. Nothing is published or imported for the preparation alone.",
   "writes": [
     {
-      "op": "write_prepared_slot",
+      "op": "write_list_cells",
       "tab": "Software",
-      "range": "A<slot 1>:C<slot 1>",
-      "row_after_preparation": null,
+      "range": "A82:C82",
       "group_expected": null,
       "old": [
         "",
@@ -50,13 +49,13 @@
         "Robonomics: open-source, decentralised cloud and IoT platform that stores digital twins of robots and IoT devices and enables machine-to-human economic communication; software infrastructure, not a robot maker."
       ],
       "reason": "Its own description: \"software infrastructure, not a robot maker\".",
-      "public_source": "https://robonomics.network/"
+      "public_source": "https://robonomics.network/",
+      "row": 82
     },
     {
-      "op": "write_prepared_slot",
+      "op": "write_list_cells",
       "tab": "Software",
-      "range": "A<slot 2>:C<slot 2>",
-      "row_after_preparation": null,
+      "range": "A83:C83",
       "group_expected": null,
       "old": [
         "",
@@ -69,13 +68,13 @@
         "Mujin: intelligent robotics software (MujinOS) for no-code deployment of palletising, picking and fleet automation in factories and warehouses."
       ],
       "reason": "Its own description: \"intelligent robotics software (MujinOS)\".",
-      "public_source": "https://mujin-corp.com/"
+      "public_source": "https://mujin-corp.com/",
+      "row": 83
     },
     {
-      "op": "write_prepared_slot",
+      "op": "write_list_cells",
       "tab": "Software",
-      "range": "A<slot 3>:C<slot 3>",
-      "row_after_preparation": null,
+      "range": "A84:C84",
       "group_expected": null,
       "old": [
         "",
@@ -88,7 +87,8 @@
         "Eka Robotics: developing a Vision-Force-Action (VFA) foundation model that uses force as a core signal to make robots general, fast and safe."
       ],
       "reason": "Its own description: \"developing a Vision-Force-Action (VFA) foundation model\"; AI software, no robot named.",
-      "public_source": "https://ekarobotics.com/"
+      "public_source": "https://ekarobotics.com/",
+      "row": 84
     },
     {
       "op": "clear_list_cells",
@@ -325,5 +325,11 @@
     }
   ],
   "kept": "Robot makers whose entry names their robots stay: Hiopos (HIOBOT), Norma (ElRobot), Ati Motors, Dyna Robotics, AgileX, RealMan. Lirio (bionic hand prostheses) is a robotic device and stays.",
-  "after_receipt": "After Codex writes and gives its receipt, Claude re-downloads the master, regenerates the Other Robots and Software previews, adds the eight retired /other-robots/<slug>/ addresses to tools/permalinks.json as redirects to the destinations above, checks counts and pages, and publishes by PR. No web entry disappears without its redirect."
+  "after_receipt": "After Codex writes and gives its receipt, Claude re-downloads the master, regenerates the Other Robots and Software previews, adds the eight retired /other-robots/<slug>/ addresses to tools/permalinks.json as redirects to the destinations above, checks counts and pages, and publishes by PR. No web entry disappears without its redirect.",
+  "rebased": {
+    "from_master_sha256": "2c84e109bdfcf560a11f24c9082c692da9f4c99c7aa5bd8753d6741a952a013a",
+    "to_master_sha256": "dd3c6413aa45d94da1bfb7cfd03ca8c3df85d88808d3127f8c8e5c10ea779e45",
+    "preparation_receipt": "Codex, 27 Nov 2026: native permutation Software A82:C135 -> A85:C138 (A:C only); slots A82:C84 empty in the first block; SOFTWARE FOR UNITREE title 85, headers 86; SIMULATORS 125, headers 126; SoftwareCatalog A1:C138; WorldModelsCatalog E1:F22 intact; Drive modified_time 2026-11-27T07:47:38.485Z",
+    "claude_check": "Downloaded afresh and compared with the 2c84e109 master: Software A:C equals the expected permutation (rows 2-81 unchanged, 82-84 empty, 82-135 now at 85-138) with 0 differences; Software D:G identical; Other Robots and every other tab unchanged except live market values (Investment PRICE, CHANGE_PCT, MARKET_CAP, LAST_TRADE; Humanoids Valuation of UBTech, row 93). The 11 old values of the plan match the downloaded master; slots 82-84 have no section title above them inside the first block."
+  }
 }
