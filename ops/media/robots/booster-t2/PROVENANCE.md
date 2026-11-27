@@ -22,7 +22,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 2, scope 
 
 Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 2, PR not yet merged)
+## Published files (image batch 2, PR 202, merge 14dedcd, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/booster-t2/booster-t2-full-body.png`, 874 × 755 px, lossless, sha256 `08b1ed982c72a0a5326e3c268cc7f5597dd83bb4eb57055731853b6fc793bb6a`.
 - **WebP:** `assets/robots/booster-t2/booster-t2-full-body.webp`, made with `python3 ops/media/robots/to-webp.py`, sha256 `84e8e7f853595154036a0a7ff73227b75fefb86b66214dd03c9ff357b81b6dcf`.

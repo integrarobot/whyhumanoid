@@ -22,7 +22,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 2, scope 
 
 Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 2, PR not yet merged)
+## Published files (image batch 2, PR 202, merge 14dedcd, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/aeirobot-alice/aeirobot-alice-full-body.png`, 1295 × 3249 px, lossless, sha256 `56252aad88827d86c3c6845800335f46de02b2e0b623c82580ba52a1a950b711`.
 - **WebP:** `assets/robots/aeirobot-alice/aeirobot-alice-full-body.webp`, made with `python3 ops/media/robots/to-webp.py`, sha256 `6d103fdc0133d36e8f1e6fe37611a4d75b7a34ba2881718e5f6a5c38f7322b20`.

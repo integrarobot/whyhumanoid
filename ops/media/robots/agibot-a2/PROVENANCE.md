@@ -22,7 +22,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 2, scope 
 
 Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 2, PR not yet merged)
+## Published files (image batch 2, PR 202, merge 14dedcd, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/agibot-a2/agibot-a2-full-body.png`, 804 × 1736 px, lossless, sha256 `c78d211e580d6f47779c79f9d590c349e18959eea25174d03bc9a8d0917152a6`.
 - **WebP:** `assets/robots/agibot-a2/agibot-a2-full-body.webp`, made with `python3 ops/media/robots/to-webp.py`, sha256 `a705f4925caac35f584bbc23e256c05d982ada18068cea2237a01ab34495d7c9`.
