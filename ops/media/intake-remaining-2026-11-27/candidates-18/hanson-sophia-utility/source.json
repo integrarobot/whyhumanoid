@@ -1,0 +1,23 @@
+{
+  "id": 38,
+  "slug": "hanson-sophia-utility",
+  "manufacturer": "Hanson",
+  "model": "Sophia",
+  "source_page": "https://www.european-lotteries.org/system/files/inline-files/Hanson_2023-06-14.pdf",
+  "source_url": "https://www.european-lotteries.org/system/files/inline-files/Hanson_2023-06-14.pdf",
+  "pdf_page": 22,
+  "pdf_image_index": 4,
+  "pdf_mask_index": 5,
+  "original": "original.png",
+  "source_mask": "source-mask.png",
+  "original_size": [
+    516,
+    1003
+  ],
+  "original_sha256": "1f9d48f5e406589f66e3aad04d27141fc7f379f3deeb44ab0590d39365815fbb",
+  "source_mask_sha256": "cefdf3af3592a91042a8ede7ade93ed155e937a6235e259db95c5ef032ddf403",
+  "source_document_sha256": "7be871242a4c3ee258a02f845c554d23f0a45594bc46670c9ad2df2a170f08b4",
+  "source_context": "Hanson Robotics authored presentation dated 2023-06-14 hosted on European Lotteries, not maker-hosted. Page22 explicitly Sophia Utility Platform. Embedded RGB004 native516x1003 plus original softmask005: complete head, articulated arms/hands, full long skirt covering original wheeled platform. Product image/configuration is skirted Utility, NOT biped and no invented feet or assertion hidden chassis is visible. Mask source has broad fading around skirt and white fringe in RGB; carefully refine alpha only if possible keeping whole garment, source RGB/native size unchanged. Caption Sophia Utility platform, skirted configuration, Hanson Robotics presentation. Top of head and skirt faint antialias touch boundaries; independently inspect whole opaque geometry before acceptance. This supplements next batch to10 after THEMIS99 used in batch12. No new specs/master changes, no licence inferred and no outreach.",
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review"
+}
