@@ -153,3 +153,13 @@ test('Method names E0-E5 as undefined legacy codes, never as a scale; no public 
   assert.doesNotMatch(read('app/premium.js'), /Evidence level \$\{/);
   assert.match(read('app/premium.js'), /legacy evidence code \(undefined, not a quality rank\)/);
 });
+
+// Every country named in the public data is read by the shared country reading (27 Nov 2026): none is silently dropped
+// from the tags and filters of the web, the app and the agents.
+test('no country in the public data is unknown to the shared reading', async () => {
+  const { tagsFor } = await import('../server/src/search/vocabulary.js');
+  const unmapped = [];
+  for (const id of ['deployments', 'stocks', 'integrators', 'entities']) for (const r of json(`data/preview/${id}.json`).rows) tagsFor(id, r, unmapped);
+  for (const r of json('data/humanoids-catalogue.json').records) tagsFor('humanoids', r, unmapped);
+  assert.deepEqual([...new Set(unmapped.filter(([k]) => k === 'country').map(([, v]) => v))], []);
+});

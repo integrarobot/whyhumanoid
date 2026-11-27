@@ -48,7 +48,7 @@ const COUNTRY_LIST = [
   ['Uruguay', 'uruguay'], ['Hungary', 'hungary', 'hungria'], ['Hong Kong', 'hong kong'], ['Luxembourg', 'luxembourg', 'luxemburgo'],
   ['Singapore', 'singapore', 'singapur'], ['Vietnam', 'vietnam'], ['India', 'india'], ['Denmark', 'denmark', 'dinamarca'],
   ['Austria', 'austria'], ['Belgium', 'belgium', 'belgica'], ['Portugal', 'portugal'], ['Ireland', 'ireland', 'irlanda'],
-  ['Russia', 'russia', 'rusia'],
+  ['Russia', 'russia', 'rusia'], ['Malta', 'malta'], ['Indonesia', 'indonesia'], ['South Africa', 'south africa', 'sudafrica'],
 ];
 const COUNTRY = new Map();
 const COUNTRY_NAME = {};
