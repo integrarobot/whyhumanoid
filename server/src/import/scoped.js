@@ -3,7 +3,8 @@
 // within the D1 daily write allowance (100,000 rows on the free plan) where a full import (about 32,000 rows written,
 // because every tab and the whole search index are deleted and rewritten) would not fit. Since 26 Nov 2026 the Investment
 // tab (stocks) can be scoped too, alone: its rows and their search documents only, with the relation graphs, the public
-// projection and the company dossiers left untouched, because none of them reads it.
+// projection and the company dossiers left untouched, because none of them reads it. The same holds for Humanoids,
+// Integrators and (27 Nov 2026) the Components tab.
 //
 // Same rules as the full import (server/src/import/run.js): the same normalisation and validation per tab, the same
 // relation graphs (rebuilt from the imported Deployments and Clean Entities rows, the other one read from D1 when it is
@@ -20,13 +21,19 @@ import { loadConfig, relationStatements, validConfig } from '../relations/store.
 import { companyDocs, humanoidAliases, searchDoc } from '../search/index.js';
 import { resolveIdentities } from './identity.js';
 import { publicProjection } from '../public/projection.js';
+import { componentProblems } from '../components/catalogue.js';
 
 // Tabs a scoped import may replace: the inputs of the Deployments relation graph and its evidence links, and (26 Nov
 // 2026) the Investment tab of listed companies and the Humanoids catalogue, free tabs no graph or projection reads.
 // Since 27 Nov 2026 also the Integrators catalogue: a free tab that no relation graph, public projection or company
 // dossier reads either, so only its rows and its own search documents change.
 export const GRAPH_DATASETS = ['deployments', 'entities', 'evidence-links'];
-export const SCOPED_DATASETS = [...GRAPH_DATASETS, 'stocks', 'humanoids', 'integrators'];
+// Since 27 Nov 2026 also the Components tab: its product table (hardware) and its related software block
+// (component-software), the two datasets read from that one tab. No relation graph, public projection or company dossier
+// reads them; the import validates them together with componentProblems, exactly as the full import does, with the block
+// not in scope read from D1.
+export const COMPONENT_DATASETS = ['hardware', 'component-software'];
+export const SCOPED_DATASETS = [...GRAPH_DATASETS, 'stocks', 'humanoids', 'integrators', ...COMPONENT_DATASETS];
 
 // Rows D1 writes per statement, counting the table and each index (premium_rows: primary key and two indexes;
 // search_docs and relation_graphs: primary key). snapshot_id is in no index (premium_rows_order is dataset and
@@ -83,6 +90,17 @@ export async function runScopedImport(db, valuesByTab, now, { datasets, relation
   } catch (error) {
     if (error instanceof ImportError) return fail(error.message);
     throw error;
+  }
+
+  // 1b. Components: the product table and the related software are validated together, as in the full import
+  // (server/src/import/run.js): product ids and prefixes, the reviewed vocabularies, specification lines, sources and
+  // software kept out of the product table. A block not in scope is read from D1. Any problem stops here.
+  if (ids.some((id) => COMPONENT_DATASETS.includes(id))) {
+    const customer = async (id) => (imported.has(id)
+      ? imported.get(id).rows.filter((r) => r.visibility === 'customer').map((r) => r.data)
+      : ((await db.prepare("SELECT data FROM premium_rows WHERE dataset = ? AND visibility = 'customer' ORDER BY position").bind(id).all()).results ?? []).map((r) => JSON.parse(r.data)));
+    const problems = componentProblems(await customer('hardware'), await customer('component-software'));
+    if (problems.length) return fail(`Components: ${problems.slice(0, 5).join('; ')}${problems.length > 5 ? ` (and ${problems.length - 5} more)` : ''}`);
   }
 
   // 2. What D1 holds now for those tabs, and the changes row by row.

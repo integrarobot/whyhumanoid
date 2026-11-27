@@ -10,9 +10,9 @@ on:
         default: test
         required: true
       scope:
-        description: 'all = full import of every tab; deployments = only the Deployments graph tabs (Deployments, Clean Entities, Evidence Relations); stocks = only the Investment tab of listed companies; stocks-humanoids = the Investment and Humanoids tabs; integrators = only the Integrators tab; stocks-humanoids-integrators = Investment, Humanoids and Integrators in one import; the scoped ones write only what changed'
+        description: 'all = full import of every tab; deployments = only the Deployments graph tabs (Deployments, Clean Entities, Evidence Relations); stocks = only the Investment tab of listed companies; stocks-humanoids = the Investment and Humanoids tabs; integrators = only the Integrators tab; stocks-humanoids-integrators = Investment, Humanoids and Integrators in one import; components = only the Components tab (product table and related software); the scoped ones write only what changed'
         type: choice
-        options: [all, deployments, stocks, stocks-humanoids, integrators, stocks-humanoids-integrators]
+        options: [all, deployments, stocks, stocks-humanoids, integrators, stocks-humanoids-integrators, components]
         default: all
         required: true
       dry_run:
@@ -54,7 +54,8 @@ jobs:
         run: |
           # Only the scopes listed here exist; anything else stops before any request. The scoped ones name their tabs
           # (server/src/import/scoped.js): the Deployments graph tabs, the Investment tab, Investment with Humanoids, the
-          # Integrators tab, or Investment, Humanoids and Integrators together.
+          # Integrators tab, Investment, Humanoids and Integrators together, or the Components tab (its product table and
+          # its related software block, the two datasets of that one tab).
           case "$SCOPE" in
             all) datasets= ;;
             deployments) datasets='["deployments", "entities", "evidence-links"]' ;;
@@ -62,12 +63,13 @@ jobs:
             stocks-humanoids) datasets='["stocks", "humanoids"]' ;;
             integrators) datasets='["integrators"]' ;;
             stocks-humanoids-integrators) datasets='["stocks", "humanoids", "integrators"]' ;;
+            components) datasets='["hardware", "component-software"]' ;;
             *) echo "unknown scope '$SCOPE'; nothing was imported"; exit 1 ;;
           esac
           case "$DRY_RUN" in true|false) ;; *) echo "dry_run must be true or false; nothing was imported"; exit 1 ;; esac
           # A dry run exists only for the scoped import: never let it become a full import that writes.
           if [ "$DRY_RUN" = true ] && [ -z "$datasets" ]; then
-            echo "dry_run needs a scoped import (deployments, stocks, stocks-humanoids, integrators or stocks-humanoids-integrators); nothing was imported"; exit 1
+            echo "dry_run needs a scoped import (deployments, stocks, stocks-humanoids, integrators, stocks-humanoids-integrators or components); nothing was imported"; exit 1
           fi
           node tools/relations.mjs --config | jq -c '{relations_config: .}' > relations-body.json
           if [ -n "$datasets" ]; then

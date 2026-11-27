@@ -7,6 +7,7 @@ import { runImport } from '../src/import/run.js';
 import { GRAPH_DATASETS, runScopedImport, SCOPED_DATASETS } from '../src/import/scoped.js';
 import { createApp } from '../src/app.js';
 import { robotSlug } from '../src/relations/graph.js';
+import { PUBLIC_FIELDS } from '../src/access/fields.js';
 
 const catalogue = [
   { id: 1, Lab: 'Example Labs 1', Robot: 'Strider 5 (in development)' },
@@ -94,12 +95,12 @@ test('an unchanged tab rewrites no row and no search document', async () => {
 });
 
 test('only the Deployments graph tabs can be scoped; a bad tab or bad config changes nothing', async () => {
-  assert.deepEqual(SCOPED_DATASETS, ['deployments', 'entities', 'evidence-links', 'stocks', 'humanoids', 'integrators']);
+  assert.deepEqual(SCOPED_DATASETS, ['deployments', 'entities', 'evidence-links', 'stocks', 'humanoids', 'integrators', 'hardware', 'component-software']);
   assert.deepEqual(GRAPH_DATASETS, ['deployments', 'entities', 'evidence-links']);
   const db = createTestDb();
   await runImport(db, base(), T0, { relationsConfig: config });
   const before = await rowsState(db, 'deployments');
-  assert.equal((await runScopedImport(db, edited(), T0 + 60, { datasets: ['hardware'] })).error, 'invalid_scope');
+  assert.equal((await runScopedImport(db, edited(), T0 + 60, { datasets: ['benchmarks'] })).error, 'invalid_scope');
   assert.equal((await runScopedImport(db, edited(), T0 + 60, { datasets: [] })).error, 'invalid_scope');
   const drift = edited();
   drift[spec.tab][0] = drift[spec.tab][0].map((h, i) => (i === 3 ? 'RENAMED_COLUMN' : h));
@@ -168,7 +169,7 @@ test('a dry run can never become a full import: every other shape is refused bef
 test('the workflow stops a dry run outside the scoped import; the snapshot column is in no index', async () => {
   const { readFileSync } = await import('node:fs');
   const wf = readFileSync(new URL('../../.github/workflows/import-workbook.yml', import.meta.url), 'utf8');
-  assert.match(wf, /options: \[all, deployments, stocks, stocks-humanoids, integrators, stocks-humanoids-integrators\]/);
+  assert.match(wf, /options: \[all, deployments, stocks, stocks-humanoids, integrators, stocks-humanoids-integrators, components\]/);
   assert.ok(wf.indexOf('unknown scope') < wf.indexOf('/v1/admin/import'), 'the guards run before the import request');
   const sql = ['0001_init.sql', '0002_relations.sql', '0003_search.sql', '0004_report_orders.sql', '0005_report_orders_one_pending.sql']
     .map((m) => readFileSync(new URL(`../migrations/${m}`, import.meta.url), 'utf8')).join('\n');
@@ -204,7 +205,7 @@ test('the workflow step that builds the request refuses unknown scopes and never
     rmSync(dir, { recursive: true, force: true });
     return out;
   };
-  for (const [SCOPE, DRY_RUN] of [['deploy', 'true'], ['deploy', 'false'], ['Stocks', 'true'], ['', 'true'], ['all', 'true'], ['stocks', 'yes'], ['stocks;rm -rf /', 'true']]) {
+  for (const [SCOPE, DRY_RUN] of [['deploy', 'true'], ['deploy', 'false'], ['Stocks', 'true'], ['hardware', 'true'], ['Components', 'false'], ['', 'true'], ['all', 'true'], ['stocks', 'yes'], ['stocks;rm -rf /', 'true']]) {
     const r = run({ SCOPE, DRY_RUN });
     assert.equal(r.status, 1, `${SCOPE}/${DRY_RUN} must stop`);
     assert.equal(r.body, null, `${SCOPE}/${DRY_RUN} writes no request body`);
@@ -212,7 +213,7 @@ test('the workflow step that builds the request refuses unknown scopes and never
   const full = run({ SCOPE: 'all', DRY_RUN: 'false' });
   assert.equal(full.status, 0, full.stdout);
   assert.ok(!('datasets' in full.body) && !('dry_run' in full.body) && full.body.relations_config);
-  const expected = { deployments: ['deployments', 'entities', 'evidence-links'], stocks: ['stocks'], 'stocks-humanoids': ['stocks', 'humanoids'], integrators: ['integrators'], 'stocks-humanoids-integrators': ['stocks', 'humanoids', 'integrators'] };
+  const expected = { deployments: ['deployments', 'entities', 'evidence-links'], stocks: ['stocks'], 'stocks-humanoids': ['stocks', 'humanoids'], integrators: ['integrators'], 'stocks-humanoids-integrators': ['stocks', 'humanoids', 'integrators'], components: ['hardware', 'component-software'] };
   for (const [SCOPE, datasets] of Object.entries(expected)) {
     for (const dry of [true, false]) {
       const r = run({ SCOPE, DRY_RUN: String(dry) });
@@ -389,4 +390,77 @@ test('one scoped import covers Investment, Humanoids and Integrators together; i
   // Humanoids ids come from each database's identity registry, so compare the rows without them.
   const noIds = async (x) => (await rowsState(x, 'humanoids')).map(({ row_id, ...r }) => r).sort((a, b) => a.position - b.position);
   assert.deepEqual(await noIds(db), await noIds(full), 'humanoids');
+});
+
+// Scoped import of the Components tab (27 Nov 2026): its product table (hardware) and its related software block
+// (component-software). One product rechecked (a paid field changes), one product added after the last one, so the
+// notes and the software block move down, as when rows are inserted in the workbook's table.
+const cmpSpec = DATASETS_BY_ID.get('hardware');
+const PAID = cmpSpec.fields.find((f) => !PUBLIC_FIELDS.hardware.includes(f) && !(cmpSpec.withheld ?? []).includes(f) && /^Synthetic /.test(`Synthetic ${f}`) && !['source_workbook', 'sources', 'technical_specifications', 'component_class', 'checked_at', 'evidence_scope', 'review_status', 'no', 'name', 'group', 'component_id', 'family', 'function'].includes(f));
+const componentsEdited = (values = base(), { group = null } = {}) => {
+  const tab = values[cmpSpec.tab].map((r) => [...r]);
+  const f = cmpSpec.fields;
+  const end = tab.findIndex((r, i) => i > 0 && r.every((v) => String(v ?? '').trim() === ''));
+  tab[2] = tab[2].map((v, i) => (f[i] === PAID ? 'Rechecked paid value ZQX' : v));
+  const added = tab[1].map((v, i) => ({ no: String(end), name: 'Example sensor added', component_id: `CMP-TST-${String(end).padStart(3, '0')}`, ...(group ? { group } : {}) }[f[i]] ?? v));
+  tab.splice(end, 0, added);
+  return { ...values, [cmpSpec.tab]: tab };
+};
+const outsideComponents = async (db) => ({
+  rows: await table(db, "SELECT dataset, row_id, position, data, preview_data, snapshot_id FROM premium_rows WHERE dataset NOT IN ('hardware', 'component-software') ORDER BY dataset, row_id"),
+  docs: await table(db, "SELECT scope, dataset, row_id, position, title, subtitle, names, haystack, tags, link FROM search_docs WHERE dataset NOT IN ('hardware', 'component-software') ORDER BY scope, dataset, row_id"),
+  graphs: await table(db, 'SELECT * FROM relation_graphs ORDER BY scope'),
+  config: await table(db, 'SELECT * FROM relation_config'),
+  identities: await table(db, 'SELECT * FROM identity_registry ORDER BY namespace, natural_key'),
+});
+
+test('a scoped Components import ends where a full import ends for that tab, keeps paid fields out of the public scope and touches nothing else', async () => {
+  assert.ok(PAID, 'a paid Components field exists');
+  const scoped = createTestDb();
+  assert.equal((await runImport(scoped, base(), T0, { relationsConfig: config })).ok, true);
+  const untouched = await outsideComponents(scoped);
+  const products = (await rowsState(scoped, 'hardware')).length;
+  const result = await runScopedImport(scoped, componentsEdited(), T0 + 60, { datasets: ['hardware', 'component-software'], relationsConfig: config });
+  assert.equal(result.ok, true, result.error);
+  assert.deepEqual(result.changes.hardware, { added: 1, changed: 1, removed: 0, unchanged: products - 1 });
+  assert.equal(result.changes['component-software'].changed, 1, 'the software block moved down: its sheet row is rewritten');
+  assert.equal(result.relations, null, 'no relation graph rebuilt');
+  assert.deepEqual(await outsideComponents(scoped), untouched);
+  const full = createTestDb();
+  assert.equal((await runImport(full, componentsEdited(), T0 + 60, { relationsConfig: config })).ok, true);
+  for (const d of ['hardware', 'component-software']) {
+    assert.deepEqual(await rowsState(scoped, d), await rowsState(full, d), d);
+    assert.deepEqual(await docsState(scoped, d), await docsState(full, d), d);
+  }
+  // The paid value is in the subscriber's data and search, never in the public preview or the public search.
+  const marker = '%Rechecked paid value ZQX%';
+  assert.equal((await table(scoped, "SELECT row_id FROM premium_rows WHERE dataset = 'hardware' AND data LIKE ?", marker)).length, 1);
+  assert.equal((await table(scoped, "SELECT row_id FROM premium_rows WHERE dataset = 'hardware' AND preview_data LIKE ?", marker)).length, 0);
+  assert.equal((await table(scoped, "SELECT row_id FROM search_docs WHERE dataset = 'hardware' AND scope = 'preview' AND haystack LIKE ?", marker)).length, 0);
+  assert.equal((await table(scoped, "SELECT row_id FROM search_docs WHERE dataset = 'hardware' AND scope = 'preview' AND title = 'Example sensor added'")).length, 1, 'the new product is public at its public fields');
+});
+
+test('a Components dry run writes nothing; a product failing the Components contract stops the scoped import and changes nothing', async () => {
+  const db = createTestDb();
+  await runImport(db, base(), T0, { relationsConfig: config });
+  const snap = async () => ({ all: await table(db, 'SELECT dataset, row_id, position, sheet_row, data, preview_data, snapshot_id FROM premium_rows ORDER BY dataset, row_id'), docs: await table(db, 'SELECT * FROM search_docs ORDER BY scope, dataset, row_id'), ids: await table(db, 'SELECT * FROM identity_registry ORDER BY namespace, natural_key'), runs: await table(db, 'SELECT id, status FROM import_runs ORDER BY id') });
+  const before = await snap();
+  const dry = await runScopedImport(db, componentsEdited(), T0 + 60, { datasets: ['hardware', 'component-software'], relationsConfig: config, dryRun: true });
+  assert.equal(dry.ok, true, dry.error);
+  assert.equal(dry.dryRun, true);
+  assert.deepEqual(Object.keys(dry.changes).sort(), ['component-software', 'hardware']);
+  assert.equal(dry.changes.hardware.added, 1);
+  assert.ok(dry.estimated_rows_written > 0 && dry.estimated_rows_written < 200, `estimate ${dry.estimated_rows_written}`);
+  assert.deepEqual(await snap(), before, 'a dry run writes nothing, not even an import run');
+  // A new product outside the reviewed group vocabulary (only componentProblems checks it) is refused, as by the full import.
+  const bad = await runScopedImport(db, componentsEdited(base(), { group: 'Mystery group' }), T0 + 60, { datasets: ['hardware', 'component-software'], relationsConfig: config });
+  assert.equal(bad.ok, false);
+  assert.match(bad.error, /^Components: .*Group "Mystery group" is not in the reviewed vocabulary/);
+  assert.equal((await runImport(createTestDb(), componentsEdited(base(), { group: 'Mystery group' }), T0 + 60, { relationsConfig: config })).ok, false, 'the full import refuses the same rows');
+  const after = await snap();
+  assert.deepEqual({ ...after, runs: after.runs.filter((r) => r.status !== 'failed') }, before, 'only a failed import run is recorded');
+  // The product table alone is validated against the software block D1 holds.
+  const alone = await runScopedImport(db, componentsEdited(), T0 + 60, { datasets: ['hardware'], relationsConfig: config, dryRun: true });
+  assert.equal(alone.ok, true, alone.error);
+  assert.deepEqual(Object.keys(alone.changes), ['hardware']);
 });
