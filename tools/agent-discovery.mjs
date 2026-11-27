@@ -160,7 +160,8 @@ export function agentDiscoveryFiles(site, api) {
   };
   return new Map([
     ['llms.txt', llms(site, api, mcp)],
-    ['agents.md', setupGuide(site, api, mcp)],
+    // Jekyll publishes the plain text at /agents.md. Keep the source name distinct from AGENTS.md on macOS.
+    ['agents/guide.txt', `---\npermalink: /agents.md\nlayout: null\n---\n${setupGuide(site, api, mcp)}`],
     ['.well-known/mcp.json', json(manifest)],
     ['.well-known/ai-catalog.json', json({
       specVersion: '1.0',
