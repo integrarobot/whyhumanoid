@@ -1,3 +1,3 @@
-# Three whole native source candidates
+# KAPEX existing concept render, 2025
 
-Simplexity iX whole platform with original alpha, PHYBOT M1 complete existing manufacturer render, MagicBot Z1 native video still. Exact page/product JS identity checked; source context includes selected view/frame and rejected alternatives. Alpha only, native visible RGB unchanged, whole platform, honest variant/type captions. Every candidate still needs preparation and independent review. Copy selectively; never merge transport branch.
+KIST-supplied press concept image hosted by Herald Economy. Explicitly label concept render2025, not hardware photo or current generation. Whole head, hands, feet; alpha-only separation from floor/reflection, RGB native unchanged. Research source and third-party hosting credit required. Copy selectively, no branch merge.
