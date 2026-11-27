@@ -1,0 +1,7 @@
+{
+  "id": "WH-20261127-2029-imagenes-robots-lote-14",
+  "tipo": "aviso-codex",
+  "fecha": "2026-11-27T20:33:51+01:00",
+  "por": "codex",
+  "evidencia": "Codex revisó PR 246 en su cabeza final 0f052058f90ec585887fe895d5ea45be14e4feed contra main dd71d9c: 88 archivos solo de imágenes, 128 presentaciones anteriores y 213 registros intactos, diez altas exactas. SHA, RGB visible nativo, alfa PNG/WebP, dimensiones y margen de 20 px correctos. Once preparaciones revisadas y diez figuras válidas en claro y oscuro; IGRIS excluido por correa delante del hombro. CI 46056641327 correcta. Fusión 6fecfb59b65701038818f0ce24c1822fd7ed1991 y Pages 46056855660 correctos antes de solicitar las URL nuevas. Verificación independiente de 30 URL canónicas con 200, veinte activos con SHA y alfa exactos, diez fichas con imagen, texto alternativo y crédito. Veinte vistas reales Chrome a 390×844 y 1366×900, carga correcta, contain y sin desbordamiento; captura de escritorio de Memo revisada. Avisados Javier y Claude: 138/213 publicadas, 75 pendientes, solo Humanoids. Cierre PR 248 revisado en 6f453ff5b7d49dd29a81761ec7aa326c4c621832: catorce archivos solo ops, CI 46057304246 correcta y registro válido con 112 cierres y 54 confirmaciones. No se atribuye recepción a Javier."
+}
