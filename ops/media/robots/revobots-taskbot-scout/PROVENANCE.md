@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 15, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 15, PR not yet merged)
+## Published files (image batch 15, PR 249, merge 672539d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/revobots-taskbot-scout/revobots-taskbot-scout-full-body.png`, 448 × 711 px, sha256 `109bd22d0f96b7c53380e7fbcbf6dba8c4dd55235c89d05989b7749d5ba1cffc` (= the prepared.png).
 - **WebP:** `assets/robots/revobots-taskbot-scout/revobots-taskbot-scout-full-body.webp`, sha256 `b78d5de0947228c381aa125bad29b36fd57c2e41ce2fff75db86d25ad2061b7b`.

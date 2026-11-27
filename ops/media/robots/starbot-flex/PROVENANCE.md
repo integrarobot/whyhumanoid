@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 15, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 15, PR not yet merged)
+## Published files (image batch 15, PR 249, merge 672539d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/starbot-flex/starbot-flex-full-body.png`, 445 × 981 px, sha256 `a0d2264215c0f75c45de7623868d0e3d0aacd54f084b58355f7a7a2f11a2f3cb` (= the prepared.png).
 - **WebP:** `assets/robots/starbot-flex/starbot-flex-full-body.webp`, sha256 `bfed625cba59aadcf7e2070b56613cdef657448db8c2ab1daf453999b2d9a4f9`.

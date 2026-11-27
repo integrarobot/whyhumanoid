@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 15, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 15, PR not yet merged)
+## Published files (image batch 15, PR 249, merge 672539d, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/xiaomi-cyberone/xiaomi-cyberone-full-body.png`, 427 × 1279 px, sha256 `85f1a1ec3c809ec83471b2f4a22e63d3be8240e1b1fbb33c7c21714de6df2211` (= the prepared.png).
 - **WebP:** `assets/robots/xiaomi-cyberone/xiaomi-cyberone-full-body.webp`, sha256 `a879f13853b87656990e75dc2f08b802bf1ee419f089a8267d0663675cb70d41`.
