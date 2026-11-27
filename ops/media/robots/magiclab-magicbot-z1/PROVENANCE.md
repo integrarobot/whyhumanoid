@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 14, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 14, PR not yet merged)
+## Published files (image batch 14, PR 246, merge 6fecfb5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/magiclab-magicbot-z1/magiclab-magicbot-z1-full-body.png`, 371 × 562 px, sha256 `bc85e0ff4cefeff2866f855616bfec616c9f9f68382488266a3f57cdc70ed8f9` (= the prepared.png).
 - **WebP:** `assets/robots/magiclab-magicbot-z1/magiclab-magicbot-z1-full-body.webp`, sha256 `0ef45cae6677dc5249c55eae2319c29164ce103fd9d44b670ab405d731d26158`.

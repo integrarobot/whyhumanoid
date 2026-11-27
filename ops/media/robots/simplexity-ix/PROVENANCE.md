@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 14, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 14, PR not yet merged)
+## Published files (image batch 14, PR 246, merge 6fecfb5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/simplexity-ix/simplexity-ix-full-body.png`, 830 × 1777 px, sha256 `06caea891c76561175c9b0efbbc5df86a6737d6fde8a4192b539935099cc4925` (= the prepared.png).
 - **WebP:** `assets/robots/simplexity-ix/simplexity-ix-full-body.webp`, sha256 `cfab0c7b09a14f4b95ec6f7e73b31e300eb1e35c4e989a8ee24570871f4f806f`.

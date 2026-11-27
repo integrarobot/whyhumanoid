@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 14, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 14, PR not yet merged)
+## Published files (image batch 14, PR 246, merge 6fecfb5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/sanctuary-phoenix-gen6/sanctuary-phoenix-gen6-full-body.png`, 234 × 624 px, sha256 `1bb108ac5f55d9415b60e5ea3c7f0e1e58099fa81da10b187fddf205e09420e5` (= the prepared.png).
 - **WebP:** `assets/robots/sanctuary-phoenix-gen6/sanctuary-phoenix-gen6-full-body.webp`, sha256 `54bc416a79af6a2dbd1fdca844cc28e42207d83d2e8f7f86d8eb4b26085d4a02`.

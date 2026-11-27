@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 14, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 14, PR not yet merged)
+## Published files (image batch 14, PR 246, merge 6fecfb5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/westlake-titan-o1/westlake-titan-o1-full-body.png`, 1662 × 3138 px, sha256 `b344b8e610d56bbf384fff41813fcc133774854376da0a76560ef4ca47e32363` (= the prepared.png).
 - **WebP:** `assets/robots/westlake-titan-o1/westlake-titan-o1-full-body.webp`, sha256 `a9477bcb5832ce80aff49d403b45e362b71a45dae24ababc4f2c2129962d5390`.

@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 14, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 14, PR not yet merged)
+## Published files (image batch 14, PR 246, merge 6fecfb5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/sunday-memo/sunday-memo-full-body.png`, 493 × 893 px, sha256 `db09e1b7a64a91146ccf2a6e7cde2d2437ce4359ba042acedcad7a29cb75d612` (= the prepared.png).
 - **WebP:** `assets/robots/sunday-memo/sunday-memo-full-body.webp`, sha256 `18c391f550fe4cd9ce7feb86a7898dad5445a353dd93242be255f58391bdd832`.

@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 14, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 14, PR not yet merged)
+## Published files (image batch 14, PR 246, merge 6fecfb5, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/x-humanoid-tiangong-omni/x-humanoid-tiangong-omni-full-body.png`, 452 × 1050 px, sha256 `07cc05fdb9c66cb11ef1d4fa815ee7027598d112efc6c9cd9407e1188ad6a977` (= the prepared.png).
 - **WebP:** `assets/robots/x-humanoid-tiangong-omni/x-humanoid-tiangong-omni-full-body.webp`, sha256 `7e1e6b6b333b25fddc59b1678f546d59bb2d828079a5ef2b97c8bae7a1a73613`.
