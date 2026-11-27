@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 6, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 6, PR not yet merged)
+## Published files (image batch 6, PR 216, merge b24a276, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/enactic-openarm-2/enactic-openarm-2-full-body.png`, 1035 × 2059 px, sha256 `b565008f8b4b4c2e1790a1692652245551907441161e9ca90700b73840e3b5f5` (= Codex's prepared.png).
 - **WebP:** `assets/robots/enactic-openarm-2/enactic-openarm-2-full-body.webp`, sha256 `cf4bed812b83146db5ad0ecbb82423fe94275ae5132b14058cddc36f4597e3dc`.

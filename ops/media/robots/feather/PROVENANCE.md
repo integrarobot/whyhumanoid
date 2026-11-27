@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 6, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 6, PR not yet merged)
+## Published files (image batch 6, PR 216, merge b24a276, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/feather/feather-full-body.png`, 370 × 1016 px, sha256 `68776980871abdbbacdacc782a8fa6e30c36da90a303af80a3fff3e4878d0a6d` (= Codex's prepared.png).
 - **WebP:** `assets/robots/feather/feather-full-body.webp`, sha256 `28fb0c919f7ecfaeb5bdcf37ba3da5bb8586580dd285f620caf6f0f991a2ab73`.

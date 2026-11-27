@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 6, scope 
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked on 27 Nov 2026: every visible pixel's colour equals the original's at the same place; corners transparent; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 6, PR not yet merged)
+## Published files (image batch 6, PR 216, merge b24a276, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/enchanted-tools-mirokai/enchanted-tools-mirokai-full-body.png`, 460 × 1055 px, sha256 `77fedd1a9a1fa8ce91cadaf0984814bb6fd031999167d24fa73bfcbf09f9202c` (= Codex's prepared.png).
 - **WebP:** `assets/robots/enchanted-tools-mirokai/enchanted-tools-mirokai-full-body.webp`, sha256 `f2ca154c05fb6f0333294b14a9a60f0c57306dd3f9cf76291b7dc411a77e9a40`.
