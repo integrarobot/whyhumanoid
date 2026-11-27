@@ -10,30 +10,38 @@
     {
       "batch": 1,
       "opened": "2026-11-27",
-      "state": "collecting_sources",
+      "state": "integrating",
       "target": 10,
       "candidates": [
         138,
-        139,
-        141,
-        14,
-        148,
+        140,
         150,
-        151,
-        142,
-        32,
-        215
+        61,
+        152,
+        153,
+        154,
+        162,
+        27
       ],
       "reserves": [
-        140,
+        142,
+        32,
+        215,
+        151,
+        139,
+        141,
+        148,
+        14,
         155,
-        154,
-        61,
         104,
         51,
         102,
         76,
         149
+      ],
+      "notes": [
+        "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
+        "Tenth candidate still being sought by Codex (27 Nov 2026)."
       ]
     }
   ],
@@ -43,7 +51,7 @@
         "Lab": "Unitree",
         "Robot": "G1"
       },
-      "status": "published",
+      "status": "integrated",
       "page": "https://www.unitree.com/g1/",
       "notes": "Not Galbot G1 (id 35) nor Agibot G1 (id 147). Record covers G1 base and G1 EDU; G1-A, G1-D, G1+, G1-Comp and G1-Boxing are other variants. The alt text makes no claim about the hand configuration shown.",
       "sources": [
@@ -55,6 +63,14 @@
           "transparent_original": false,
           "verdict": "usable_cutout",
           "detail": "Opaque JPEG; Codex cutout kept as ops/media/robots/unitree-g1/unitree-g1-codex-cutout-as-received.png (sha256 41ca0246…7a77), alpha-only refinement reproduced byte for byte on 27 Nov 2026. Claude checked identity visually (visor with LED ring, 'Unitree' torso, whole body to the feet). Original not yet in the repository."
+        },
+        {
+          "file": "unitree-g1-original-as-received.jpg (archived original of the Shopify file above)",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "usable_cutout",
+          "detail": "Original handed over unmodified, kept in ops/media/robots/unitree-g1 (sha256 e5f2fdac…01d8); the kept cutout lines up with it (mean grey difference 2.4). Codex: keep the reviewed cutout."
         }
       ]
     },
@@ -63,7 +79,7 @@
         "Lab": "Unitree",
         "Robot": "H2"
       },
-      "status": "candidate",
+      "status": "reserve",
       "page": "https://www.unitree.com/H2/",
       "notes": "Not H2-X (id 140).",
       "sources": [
@@ -82,7 +98,7 @@
         "Lab": "Unitree",
         "Robot": "R1"
       },
-      "status": "candidate",
+      "status": "reserve",
       "page": "https://www.unitree.com/R1/",
       "notes": "Record covers R1, R1 AIR and R1 EDU; R1-A and R1-A-D are other variants. Not Galaxea R1 (id 34) nor #sudo R1 (id 111).",
       "sources": [
@@ -101,17 +117,19 @@
         "Lab": "Unitree",
         "Robot": "H2-X"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://www.unitree.com/H2-X/",
       "notes": "Not H2 (id 139).",
       "sources": [
         {
-          "file": "Unitree header image 627867c4198c4796b0e474f953b8f903_800x800.png",
+          "file": "https://www.unitree.com/images/627867c4198c4796b0e474f953b8f903_800x800.png",
           "by": "codex",
           "date": "2026-11-27",
           "transparent_original": true,
-          "verdict": "identity_pending",
-          "detail": "Whole humanoid with palette alpha 0–255; identity being established from the page markup around it (possibly H2-X). Not assigned to any record until confirmed."
+          "verdict": "usable_original",
+          "detail": "Palette alpha 0–255, 800 × 800. Identity from the official HTML: the image sits inside a link to /H2-X on https://www.unitree.com/H2-X/. Trimmed only.",
+          "page": "https://www.unitree.com/H2-X/",
+          "sha256": "f2289b96103b1d0e9a123ee6b484277e825d06390a7eb6479fb2867e46e1a466"
         }
       ]
     },
@@ -120,7 +138,7 @@
         "Lab": "Booster",
         "Robot": "T1"
       },
-      "status": "candidate",
+      "status": "reserve",
       "page": "https://www.boosterobotics.com/",
       "notes": "Standard T1. Not T2 (id 148), K1 (id 149) nor Tlibot T1 (id 202). T1 no longer appears on Booster's current home page (Codex, 27 Nov 2026): take the next candidate if no faithful T1 original is found.",
       "sources": []
@@ -130,7 +148,7 @@
         "Lab": "Booster",
         "Robot": "T2"
       },
-      "status": "candidate",
+      "status": "reserve",
       "page": "https://www.booster.tech/booster-t2",
       "sources": [
         {
@@ -166,27 +184,47 @@
         "Lab": "Engineai",
         "Robot": "PM01"
       },
-      "status": "candidate",
+      "status": "integrated",
       "page": "https://en.engineai.com.cn/product-pm01",
       "notes": "Not SE01 (id 27) nor T800 (id 151).",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://en-engineai-sv-1304599088.cos.na-siliconvalley.myqcloud.com/uploads/frame/PM01/PM01_00000.png",
+          "page": "https://en.engineai.com.cn/product-pm01",
+          "sha256": "bcf2e35125a6ba0daf176a24ebc06c1a7a26aaaed78c620ede86bc407862b4b1",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "RGBA 800 × 800, alpha 0–255. Trimmed only."
+        }
+      ]
     },
     "151": {
       "recorded": {
         "Lab": "Engineai",
         "Robot": "T800"
       },
-      "status": "candidate",
+      "status": "reserve",
       "page": "https://en.engineai.com.cn/product-t800",
       "notes": "Record covers Basic, Open Source, Pro and Max editions: an image of the T800 itself, no edition claimed.",
-      "sources": []
+      "sources": [
+        {
+          "file": "T800 page image ea8bf…",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "rejected",
+          "detail": "Opaque banner."
+        }
+      ]
     },
     "142": {
       "recorded": {
         "Lab": "Ubtech",
         "Robot": "Walker S2"
       },
-      "status": "candidate",
+      "status": "reserve",
       "page": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
       "notes": "Not Walker S1 (id 91).",
       "sources": []
@@ -196,7 +234,7 @@
         "Lab": "Fourier",
         "Robot": "GR-1"
       },
-      "status": "candidate",
+      "status": "reserve",
       "page": "https://fftai.com/",
       "notes": "Standard GR-1 only: never a GR-2 or GR-3 photo (Codex, 27 Nov 2026); L and Pro variants are separate.",
       "sources": []
@@ -206,7 +244,7 @@
         "Lab": "Kepler",
         "Robot": "Forerunner K2"
       },
-      "status": "candidate",
+      "status": "reserve",
       "page": "https://www.gotokepler.com/productDetailK2",
       "notes": "Bipedal version, not the wheeled development version; not Forerunner K1 (id 47).",
       "sources": []
@@ -219,25 +257,65 @@
       "status": "reserve",
       "page": "https://www.pudurobotics.com/en/products/d9",
       "notes": "Not D7 (id 68).",
-      "sources": []
+      "sources": [
+        {
+          "file": "pudurobotics.com d9.webp",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "rejected",
+          "detail": "Small (400 × 480) and opaque."
+        }
+      ]
     },
     "154": {
       "recorded": {
         "Lab": "PAL",
         "Robot": "Kangaroo"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://pal-robotics.com/robot/kangaroo/",
-      "sources": []
+      "sources": [
+        {
+          "file": "RobotFeatured-KANGAROO.webp",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "rejected",
+          "detail": "Opaque rectangle behind the body despite transparent corners."
+        },
+        {
+          "file": "https://pal-robotics.com/wp-content/uploads/2025/10/KOO-7DoF-1-644x1024.png",
+          "page": "https://pal-robotics.com/robot/kangaroo/",
+          "sha256": "d873a4e8defedb74523e7e352a5d4222f3e39a51635bd21301ae5ca13dd1a815",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "644 × 1024, alpha 0–255, without the rectangle (Codex). Bytes not yet received in Claude's session."
+        }
+      ],
+      "notes": "The whole platform as PAL presents it, without a head: no head is added."
     },
     "61": {
       "recorded": {
         "Lab": "PAL",
         "Robot": "Talos"
       },
-      "status": "reserve",
+      "status": "integrated",
       "page": "https://pal-robotics.com/robot/talos/",
-      "sources": []
+      "sources": [
+        {
+          "file": "https://pal-robotics.com/wp-content/uploads/2024/04/TALOS-Robot-918x1024.webp",
+          "page": "https://pal-robotics.com/robot/talos/",
+          "sha256": "4c08964faf4ee434da9e2186309c46b34a539a94cc835a70de0616261539a74c",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "RGBA WebP 918 × 1024, alpha 0–255. Trimmed only."
+        }
+      ]
     },
     "104": {
       "recorded": {
@@ -492,6 +570,97 @@
       },
       "status": "quality_debt",
       "reason": "Published from a video frame and looks soft; replace with a sharper faithful original. Outside the count of 10 (Codex, 27 Nov 2026)."
+    },
+    "152": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "ARI"
+      },
+      "status": "integrated",
+      "page": "https://pal-robotics.com/robot/ari/",
+      "notes": "Wheeled social humanoid.",
+      "sources": [
+        {
+          "file": "https://pal-robotics.com/wp-content/uploads/2024/05/ARI-header-918x1024.webp",
+          "page": "https://pal-robotics.com/robot/ari/",
+          "sha256": "9419c32a66839c38e7f3fcfc8b1c3d969df6c222b281e03df1949208ecc8944b",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "RGBA WebP 918 × 1024, alpha 0–255, soft contact shadow kept as in the original. Trimmed only."
+        }
+      ]
+    },
+    "153": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "TIAGo Pro"
+      },
+      "status": "candidate",
+      "page": "https://pal-robotics.com/robot/tiago-pro/",
+      "sources": [
+        {
+          "file": "https://pal-robotics.com/wp-content/uploads/2025/01/TIAGoPro_Sided1_Mobile-Manipulator_PAL-Robotics-921x1024.webp",
+          "page": "https://pal-robotics.com/robot/tiago-pro/",
+          "sha256": "066dacd25f40f95d1bca8eeb4444e431da06cc5a7afb9e9ab106ec6a87874711",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "921 × 1024, alpha 0–255 (Codex). Bytes not yet received in Claude's session."
+        }
+      ]
+    },
+    "162": {
+      "recorded": {
+        "Lab": "Rainbow",
+        "Robot": "RB-Y1"
+      },
+      "status": "candidate",
+      "page": "https://rainbow-robotics.com/products/rb-y1/",
+      "notes": "Not Hubo (id 70). Record covers the A and M versions; no version claimed.",
+      "sources": [
+        {
+          "file": "https://rainbow-robotics.com/wp-content/uploads/rainbow-media-kit/2026-08/rby-rb-y1-front-1024x1024.png",
+          "page": "https://rainbow-robotics.com/products/rb-y1/",
+          "sha256": "deb76698883b4b13aaf144365cee580f2d0e88c873fe4583001a3283eae3cce8",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "1024 × 1024, alpha 0–255 (Codex). Bytes not yet received in Claude's session."
+        }
+      ]
+    },
+    "27": {
+      "recorded": {
+        "Lab": "Engineai",
+        "Robot": "SE01"
+      },
+      "status": "candidate",
+      "page": "https://en.engineai.com.cn/product-se01",
+      "notes": "The file is named Se02_00000.png, but the official page product-se01 is titled SE01 and that img has alt=SE01 (Codex): the file name is not the model. Not PM01 (id 150) nor T800 (id 151).",
+      "sources": [
+        {
+          "file": "engfwqfimg1 (SE01 page image)",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": false,
+          "verdict": "rejected",
+          "detail": "Too small and opaque."
+        },
+        {
+          "file": "https://en-engineai-sv-1304599088.cos.na-siliconvalley.myqcloud.com/uploads/frame/Se2/Se02_00000.png",
+          "page": "https://en.engineai.com.cn/product-se01",
+          "sha256": "f72ee1a530861d94f1020d6a23efa4c2b551b35f5cbf075425955139dd3f3b26",
+          "by": "codex",
+          "date": "2026-11-27",
+          "transparent_original": true,
+          "verdict": "usable_original",
+          "detail": "800 × 800, alpha 0–255 (Codex). Bytes not yet received in Claude's session."
+        }
+      ]
     }
   }
 }

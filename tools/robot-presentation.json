@@ -83,6 +83,21 @@
         "provenance": "ops/media/robots/figure-03/PROVENANCE.md"
       }
     },
+    "61": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "Talos"
+      },
+      "image": {
+        "src": "/assets/robots/pal-talos/talos-full-body.webp",
+        "fallback": "/assets/robots/pal-talos/talos-full-body.png",
+        "width": 578,
+        "height": 851,
+        "alt": "TALOS by PAL Robotics, full body, front view, standing with arms slightly apart",
+        "credit": "Image: PAL Robotics",
+        "provenance": "ops/media/robots/pal-talos/PROVENANCE.md"
+      }
+    },
     "86": {
       "recorded": {
         "Lab": "Tesla",
@@ -126,6 +141,51 @@
         "alt": "G1 by Unitree, full body, front view, standing with knees slightly bent",
         "credit": "Image: Unitree",
         "provenance": "ops/media/robots/unitree-g1/PROVENANCE.md"
+      }
+    },
+    "140": {
+      "recorded": {
+        "Lab": "Unitree",
+        "Robot": "H2-X"
+      },
+      "image": {
+        "src": "/assets/robots/unitree-h2-x/h2-x-full-body.webp",
+        "fallback": "/assets/robots/unitree-h2-x/h2-x-full-body.png",
+        "width": 222,
+        "height": 681,
+        "alt": "H2-X by Unitree, full body, three-quarter view, standing",
+        "credit": "Image: Unitree",
+        "provenance": "ops/media/robots/unitree-h2-x/PROVENANCE.md"
+      }
+    },
+    "150": {
+      "recorded": {
+        "Lab": "Engineai",
+        "Robot": "PM01"
+      },
+      "image": {
+        "src": "/assets/robots/engineai-pm01/pm01-full-body.webp",
+        "fallback": "/assets/robots/engineai-pm01/pm01-full-body.png",
+        "width": 317,
+        "height": 800,
+        "alt": "PM01 by EngineAI, full body, front view, standing",
+        "credit": "Image: EngineAI",
+        "provenance": "ops/media/robots/engineai-pm01/PROVENANCE.md"
+      }
+    },
+    "152": {
+      "recorded": {
+        "Lab": "PAL",
+        "Robot": "ARI"
+      },
+      "image": {
+        "src": "/assets/robots/pal-ari/ari-full-body.webp",
+        "fallback": "/assets/robots/pal-ari/ari-full-body.png",
+        "width": 526,
+        "height": 1016,
+        "alt": "ARI by PAL Robotics, full body on its wheeled base, three-quarter view, waving",
+        "credit": "Image: PAL Robotics",
+        "provenance": "ops/media/robots/pal-ari/PROVENANCE.md"
       }
     }
   }
