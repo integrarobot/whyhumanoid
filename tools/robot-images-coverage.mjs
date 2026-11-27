@@ -52,6 +52,20 @@ export function coverage(plan = read('ops/media/robots/coverage.json'), presenta
   }
   for (const [id, p] of Object.entries(plan.robots ?? {})) if (['candidate', 'reserve'].includes(p.status) && !seen.has(id)) problems.push(`robot ${id}: ${p.status} but in no batch`);
 
+  // Scopes (Javier, 27 Nov 2026: "Agibot and all the remaining makers with A and B"): every record whose Lab starts with
+  // one of the scope's initials must be tracked in the plan (or already carry an image); the scope is resolved when each
+  // member is published or a justified exception.
+  const scopes = (plan.scopes ?? []).map((sc) => {
+    const re = new RegExp(`^[${(sc.lab_initials ?? []).join('')}]`, 'i');
+    const members = catalogue.records.filter((r) => re.test(r.Lab ?? '')).map((r) => String(r.id));
+    for (const id of members) if (!published.has(id) && !plan.robots?.[id]) problems.push(`scope ${sc.name}: robot ${id} (${byId.get(id).Lab} / ${byId.get(id).Robot}) is not tracked in the plan`);
+    const status = (id) => (published.has(id) ? (plan.robots?.[id]?.status === 'integrated' ? 'integrated' : 'published') : plan.robots?.[id]?.status ?? 'pending');
+    const tally = {};
+    for (const id of members) tally[status(id)] = (tally[status(id)] ?? 0) + 1;
+    const open = members.filter((id) => !['published', 'quality_debt', 'exception'].includes(status(id)));
+    return { name: sc.name, total: members.length, tally, open };
+  });
+
   const rows = catalogue.records.map((r) => {
     const id = String(r.id);
     const p = plan.robots?.[id];
@@ -71,12 +85,13 @@ export function coverage(plan = read('ops/media/robots/coverage.json'), presenta
     '',
     `Catalogue snapshot ${catalogue.snapshot}: ${rows.length} records. Published ${count('published')} (of which quality debt ${rows.filter((x) => x.status === 'published, quality debt').length}); integrated in an open PR, not live ${count('integrated')}; candidates ${count('candidate')}; reserves ${count('reserve')}; needs decision ${count('needs_decision')}; exceptions ${count('exception')}; pending ${count('pending')}.`,
     '',
+    ...scopes.flatMap((sc) => [`Scope "${sc.name}": ${sc.total} records; ${Object.entries(sc.tally).sort().map(([k, v]) => `${k} ${v}`).join(', ')}. Still open: ${sc.open.length ? sc.open.join(', ') : 'none'}.`, '']),
     '| id | Lab | Robot | Status | Batch | Note |',
     '|---:|---|---|---|---|---|',
     ...rows.map((x) => `| ${x.id} | ${esc(x.lab)} | ${esc(x.robot)} | ${x.status} | ${x.where} | ${esc(x.note)} |`),
     '',
   ].join('\n');
-  return { problems, md, rows };
+  return { problems, md, rows, scopes };
 }
 
 // Run as a script, also from a checkout whose path has spaces or other characters a URL escapes ("Why Humanoid?");

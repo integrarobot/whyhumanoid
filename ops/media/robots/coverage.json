@@ -31,14 +31,11 @@
         151,
         139,
         141,
-        148,
-        14,
         155,
         104,
         51,
         102,
-        76,
-        149
+        76
       ],
       "notes": [
         "Unitree navigation images of 428 × 404 px cut off the feet: rejected (Codex, 27 Nov 2026).",
@@ -47,6 +44,63 @@
         "Published with PR 196 (merge 4011f1e, 27 Nov 2026) and verified in production by Claude and Codex (Codex receipt 10:53:52 Madrid) after a selective Cloudflare purge of the 20 image URLs: 404 responses requested before Pages finished deploying had been cached. Next time, new asset URLs are not requested without a query string until the Pages deployment has succeeded."
       ],
       "published": "2026-11-27"
+    },
+    {
+      "batch": 2,
+      "opened": "2026-11-27",
+      "state": "collecting_sources",
+      "target": 10,
+      "scope": "A/B makers",
+      "candidates": [
+        4,
+        143,
+        144,
+        145,
+        146,
+        147,
+        14,
+        148,
+        149,
+        10
+      ],
+      "reserves": [],
+      "notes": [
+        "Agibot first (6), then Booster (3) and one further A record (Astribot S1 proposed; swappable for another eligible A record)."
+      ]
+    },
+    {
+      "batch": 3,
+      "opened": "2026-11-27",
+      "state": "planned",
+      "target": 10,
+      "scope": "A/B makers",
+      "candidates": [
+        2,
+        3,
+        5,
+        8,
+        9,
+        12,
+        13,
+        15,
+        105,
+        116
+      ],
+      "reserves": []
+    },
+    {
+      "batch": 4,
+      "opened": "2026-11-27",
+      "state": "planned",
+      "target": 10,
+      "scope": "A/B makers",
+      "candidates": [
+        135,
+        163,
+        164,
+        165
+      ],
+      "reserves": []
     }
   ],
   "robots": {
@@ -142,9 +196,9 @@
         "Lab": "Booster",
         "Robot": "T1"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://www.boosterobotics.com/",
-      "notes": "Standard T1. Not T2 (id 148), K1 (id 149) nor Tlibot T1 (id 202). T1 no longer appears on Booster's current home page (Codex, 27 Nov 2026): take the next candidate if no faithful T1 original is found.",
+      "notes": "Standard T1. Not T2 (id 148), K1 (id 149) nor Tlibot T1 (id 202). T1 no longer appears on Booster's current home page (Codex, 27 Nov 2026): take the next candidate if no faithful T1 original is found. Standard T1; not T2 (148), K1 (149) nor Tlibot T1 (202). T1 no longer appears on Booster's current home page.",
       "sources": []
     },
     "148": {
@@ -152,7 +206,7 @@
         "Lab": "Booster",
         "Robot": "T2"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://www.booster.tech/booster-t2",
       "sources": [
         {
@@ -163,14 +217,15 @@
           "verdict": "rejected",
           "detail": "1200×1448 RGB, opaque, robot jumping (not standing)."
         }
-      ]
+      ],
+      "notes": "Booster T2; the navigation image robot-t2.DZUi1Dbz.webp was rejected (opaque, jumping)."
     },
     "149": {
       "recorded": {
         "Lab": "Booster",
         "Robot": "K1"
       },
-      "status": "reserve",
+      "status": "candidate",
       "page": "https://www.booster.tech/booster-k1",
       "sources": [
         {
@@ -181,7 +236,8 @@
           "verdict": "rejected",
           "detail": "Opaque, with a ball."
         }
-      ]
+      ],
+      "notes": "Booster K1; the navigation image robot-k1.Bjwl1Psx.webp was rejected (opaque, with a ball)."
     },
     "150": {
       "recorded": {
@@ -548,16 +604,18 @@
         "Lab": "Agibot",
         "Robot": "A2 (A2 Ultra / A2 Lite)"
       },
-      "status": "needs_decision",
-      "reason": "Two variants in one record; an image must show one that both share or be decided."
+      "status": "candidate",
+      "page": "https://www.agibot.com/products/A2_Ultra",
+      "notes": "Family record A2 Ultra / A2 Lite: one included variant may illustrate it, named in the alt text and provenance; the same look is not attributed to both."
     },
     "145": {
       "recorded": {
         "Lab": "Agibot",
         "Robot": "X2 (X2 Neo / X2 Ultra)"
       },
-      "status": "needs_decision",
-      "reason": "Two variants in one record."
+      "status": "candidate",
+      "page": "https://www.agibot.com/products/X2",
+      "notes": "Family record X2 Neo / X2 Ultra: one included variant may illustrate it, named in the alt text and provenance."
     },
     "93": {
       "recorded": {
@@ -686,6 +744,206 @@
           "detail": "2820 × 2812, alpha 0–255; whole robot with base, fingers and wheels; clean transparency on light and dark, no props or text (Codex). Carried without recompression on branch codex/psibot-v1-original (commit 438d1de), SHA-256 matches; trimmed only, native resolution kept (under the 2600 px cap). An earlier chat attachment arrived re-encoded (2000 × 1994 WebP, sha256 d0f783b7…a9fc) and was not used."
         }
       ]
+    },
+    "4": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "X1"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.agibot.com/",
+      "notes": "AGIBOT X1 (Lingxi X1); not X2 (145), A2 (143) nor G2 (146)."
+    },
+    "144": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "A3"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.agibot.com/products/A3",
+      "notes": "AGIBOT A3; not A2 (143)."
+    },
+    "146": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "G2"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.agibot.com/products/G2",
+      "notes": "AGIBOT G2; not G1 (147)."
+    },
+    "147": {
+      "recorded": {
+        "Lab": "Agibot",
+        "Robot": "G1"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.agibot.com/products/G1",
+      "notes": "AGIBOT G1, wheeled dual-arm robot; not Unitree G1 (138) nor Galbot G1 (35)."
+    },
+    "10": {
+      "recorded": {
+        "Lab": "Astribot",
+        "Robot": "S1"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://astribot.com/",
+      "notes": "Astribot S1, manipulation platform; whole robot as Astribot presents it."
+    },
+    "2": {
+      "recorded": {
+        "Lab": "AeiROBOT",
+        "Robot": "Alice"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://eng.arobot4all.com/"
+    },
+    "3": {
+      "recorded": {
+        "Lab": "Aeolus",
+        "Robot": "aeo"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://aeolusbot.com/",
+      "notes": "aeo, wheeled dual-arm service humanoid."
+    },
+    "5": {
+      "recorded": {
+        "Lab": "Agile",
+        "Robot": "One"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.agile-robots.com/"
+    },
+    "8": {
+      "recorded": {
+        "Lab": "Argon",
+        "Robot": "One"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.argonmech.com/"
+    },
+    "9": {
+      "recorded": {
+        "Lab": "ARX",
+        "Robot": "X7"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://arx-x.com/"
+    },
+    "12": {
+      "recorded": {
+        "Lab": "Beyond Imagination",
+        "Robot": "Beomni"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.beyondimagination.com/"
+    },
+    "13": {
+      "recorded": {
+        "Lab": "Boardwalk",
+        "Robot": "Alex"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://boardwalkrobotics.com/",
+      "notes": "Alex is a torso with a configurable base: shown as Boardwalk presents it; no lower body added."
+    },
+    "15": {
+      "recorded": {
+        "Lab": "Borg",
+        "Robot": "Borg 01"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.borgrobotic.com/"
+    },
+    "105": {
+      "recorded": {
+        "Lab": "Addverb",
+        "Robot": "Elixis"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://addverb.ai/elixis",
+      "notes": "Elixis, bipedal; Elixis-W (wheeled) is a separate variant."
+    },
+    "116": {
+      "recorded": {
+        "Lab": "Almond",
+        "Robot": "Axol"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.almond.bot/",
+      "notes": "Bimanual Axol (arms for table or cart): shown as Almond presents it; no body added."
+    },
+    "135": {
+      "recorded": {
+        "Lab": "ASUS",
+        "Robot": "Gallop"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
+      "notes": "Gallop: fixed base with two arms today; shown as ASUS presents it."
+    },
+    "163": {
+      "recorded": {
+        "Lab": "AheadForm",
+        "Robot": "Elf·Xuan 2.0"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://www.aheadform.com/",
+      "notes": "Elf·Xuan 2.0 is an upper-body bionic robot (head and torso): shown as AheadForm presents it; no body added."
+    },
+    "164": {
+      "recorded": {
+        "Lab": "AIDOL",
+        "Robot": "AIDOL (walking version)"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://aidoltech.ru/",
+      "notes": "Walking version only; the desktop (upper-body) version is not this record."
+    },
+    "165": {
+      "recorded": {
+        "Lab": "Anigon",
+        "Robot": "FA-L Series"
+      },
+      "sources": [],
+      "status": "candidate",
+      "page": "https://anigon.ch/"
     }
-  }
+  },
+  "scopes": [
+    {
+      "name": "A/B makers",
+      "lab_initials": [
+        "A",
+        "B"
+      ],
+      "opened": "2026-11-27",
+      "by": "Javier (\"Agibot and all the remaining makers with A and B\")",
+      "rules": [
+        "Batches of up to 10 new records, Agibot first.",
+        "Non-generative mask cutouts are authorised (Javier, 27 Nov 2026): alpha only, the robot's pixels kept; no part recreated, no generative image.",
+        "A bust, torso or arms-only product is shown as the maker presents it; no body is added. No model is assigned to a company record without one.",
+        "For a family record (A2, X2) one included variant may illustrate it, named in the alt text and provenance."
+      ]
+    }
+  ]
 }
