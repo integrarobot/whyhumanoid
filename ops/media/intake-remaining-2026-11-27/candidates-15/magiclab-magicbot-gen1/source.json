@@ -1,0 +1,23 @@
+{
+  "id": 54,
+  "slug": "magiclab-magicbot-gen1",
+  "manufacturer": "Magiclab",
+  "model": "Magicbot",
+  "credit": "MagicLab",
+  "public_page": "https://whyhumanoid.com/humanoids/magiclab-magicbot-54/",
+  "source_page": "https://www.magiclab.top/en/human",
+  "source_url": "https://oss-cdn.magiclab.top/file/videos/z1/8f7cf6/89fceeddb859c6e9a66efb62b5ee0a3f.mp4",
+  "original": "original.png",
+  "original_size": [
+    1920,
+    1080
+  ],
+  "original_sha256": "1c179ffbd106ddf941505bb2976ce853002f8741ea38d9060f6c0a4c881871bf",
+  "source_context": "Official MagicBotGen1 exactproductpage/en/human embeds thisstraight-kneewalkingvideo withposterwalkGen.jpg. ThetechnicalURLdirectoryz1doesNOTidentifythepicturedrobotasZ1: pageheadingexplicitGen1, videoactualtallGen1hardware. Native1920x1080frame0at0s/25fps showswholeheadhandsandtwofeet, onefootraisedinactualwalkingpose, floormarginbelowplantedtoe. IsolateONLYrobot, nofloorshadow/backgroundbuilding/vehicle. Frame134wasREJECTEDbecauseapproachingfootcutsbottomedge; useframe0. CaptionMagicBotGen1officialvideostill. No claimautonomy/speedorinferredspecs. Needsindependentidentity/maskreview.",
+  "video_frame": 0,
+  "video_fps": 25,
+  "video_time_seconds": 0,
+  "checked_at": "2026-11-27",
+  "status": "candidate_requires_preparation_and_independent_review",
+  "license_note": "Manufacturerprimarysource. Creditowner,noopenphotolicenceassumed,nooutreachsent."
+}
