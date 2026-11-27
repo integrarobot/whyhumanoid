@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 13, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 13, PR not yet merged)
+## Published files (image batch 13, PR 242, merge c314f66, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/hanson-sophia-utility/hanson-sophia-utility-full-body.png`, 510 × 1017 px, sha256 `b2338245489770b0a2022b5e8684c31116bf32a8563fdee061fdebb72c65b4d5` (= the prepared.png).
 - **WebP:** `assets/robots/hanson-sophia-utility/hanson-sophia-utility-full-body.webp`, sha256 `e6c74193944c95fe012192788724360f4eac19bcb50e8027e6b48765bc097a6c`.

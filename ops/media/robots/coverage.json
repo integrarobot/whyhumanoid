@@ -337,7 +337,7 @@
     {
       "batch": 13,
       "opened": "2026-11-27",
-      "state": "integrated",
+      "state": "published",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026)",
       "candidates": [
@@ -356,8 +356,10 @@
       "notes": [
         "Sources from Codex on codex/image-sources-remaining, copied selectively into ops/media/intake-remaining-2026-11-27/batch-13/: candidates-14 (6d1eb96: IRON), candidates-15 (54f4cf5: Oli, STAR1, MagicBot Gen1), candidates-16 (23aba3a: ProWhite 2.0), candidates-17 (164cfaf: Kuavo 4Pro with articulated hands, ARMAR-7, XMAN-R1), candidates-18 (617be62: Sophia Utility) and candidates-19 (639618b: Reflex). Every cutout prepared by Claude, alpha only: the original's own alpha (Kuavo), the source's own soft mask (ARMAR-7; Sophia, levelled 215..240 to drop the feathered white fringe) or BiRefNet masks kept beside the originals.",
         "Left out and kept in the package as research: T230A (89), because the brochure's white light beams behind the robot cannot be separated from its white body without artificial straight edges. Sanctuary Phoenix Gen6 (80) is prepared for the next batch.",
-        "Captions name the kind of image and the variant: Kuavo 4Pro technical render with articulated hands, ARMAR-7 lecture photograph (third-party hosted copy), XMAN-R1 manufacturer render, IRON September 2026 production-line photograph, Oli HU_D04 dexterous-hand technical render, STAR1 brochure image, MagicBot Gen1 video still, ProWhite Robot 2.0 brochure image, Sophia Utility skirted configuration, Reflex video still with snow shovel. Records' specifications unchanged."
-      ]
+        "Captions name the kind of image and the variant: Kuavo 4Pro technical render with articulated hands, ARMAR-7 lecture photograph (third-party hosted copy), XMAN-R1 manufacturer render, IRON September 2026 production-line photograph, Oli HU_D04 dexterous-hand technical render, STAR1 brochure image, MagicBot Gen1 video still, ProWhite Robot 2.0 brochure image, Sophia Utility skirted configuration, Reflex video still with snow shovel. Records' specifications unchanged.",
+        "Published with PR 242 (reviewed head 1f57dd5, CI 46053204219; merge c314f66), 27 Nov 2026; Pages 46053509647 and production verification by Claude and Codex recorded in the batch closeout."
+      ],
+      "published": "2026-11-27"
     }
   ],
   "robots": {
@@ -738,7 +740,7 @@
         "Lab": "Xpeng",
         "Robot": "Next-Gen IRON"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.pxing.com/en/index",
       "notes": "The 2025 Next-Gen IRON, not the 2024 IRON.",
       "sources": [
@@ -759,7 +761,7 @@
         "Lab": "LimX",
         "Robot": "Oli"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.limxdynamics.com/en",
       "notes": "Not Luna (id 156).",
       "sources": [
@@ -796,7 +798,7 @@
         "Lab": "Robotera",
         "Robot": "Star 1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.robotera.com/",
       "sources": [
         {
@@ -2556,7 +2558,7 @@
         "Lab": "Hanson",
         "Robot": "Sophia"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.hansonrobotics.com/",
       "notes": "Hanson Robotics Sophia: whole robot only; a bust or head-and-torso Sophia does not meet the whole-robot requirement.",
       "sources": [
@@ -2768,7 +2770,7 @@
         "Lab": "Leju",
         "Robot": "Kuavo"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.lejurobot.com/en",
       "notes": "Batch 12 (27 Nov 2026): the Kuavo 4Pro Standard render (520 × 1170) has flat grey placeholder forearms and hands; left out by Codex's decision. A new official image with articulated hands is in Codex's candidates-17.",
       "sources": [
@@ -2818,7 +2820,7 @@
         "Lab": "Magiclab",
         "Robot": "Magicbot"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://magiclab.top",
       "sources": [
         {
@@ -3024,7 +3026,7 @@
         "Lab": "Reflex",
         "Robot": "Reflex"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.reflexrobotics.com/",
       "sources": [
         {
@@ -3550,7 +3552,7 @@
         "Lab": "KIT H²T",
         "Robot": "ARMAR-7"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://h2t.iar.kit.edu/",
       "sources": [
         {
@@ -3571,7 +3573,7 @@
         "Lab": "KEENON Robotics",
         "Robot": "XMAN-R1"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://www.keenon.com/en/product/XMAN-R1",
       "sources": [
         {
@@ -3699,7 +3701,7 @@
         "Lab": "PL-Universe",
         "Robot": "ProWhite"
       },
-      "status": "integrated",
+      "status": "published",
       "page": "https://en.pl-universe.com/Products/ProWhiteRobot",
       "sources": [
         {

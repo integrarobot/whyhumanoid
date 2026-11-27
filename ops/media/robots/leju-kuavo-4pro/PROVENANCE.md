@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 13, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 13, PR not yet merged)
+## Published files (image batch 13, PR 242, merge c314f66, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/leju-kuavo-4pro/leju-kuavo-4pro-full-body.png`, 1317 × 2573 px, sha256 `d5df66de9ae823ac101dd247bcfe1b826ce1b5e14e10faf90b40baeb18caea29` (= the prepared.png).
 - **WebP:** `assets/robots/leju-kuavo-4pro/leju-kuavo-4pro-full-body.webp`, sha256 `0d202a0ba982ceaede2088ee3b7cb942a72a12884f017d91c0de31d4d67332c6`.

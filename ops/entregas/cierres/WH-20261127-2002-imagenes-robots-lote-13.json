@@ -1,0 +1,62 @@
+{
+  "id": "WH-20261127-2002-imagenes-robots-lote-13",
+  "tarea": "Imágenes de robots, lote 13 del alcance «todas las imágenes que faltan»: Kuavo 4Pro (manos articuladas), ARMAR-7, XMAN-R1, IRON (2026), Oli HU_D04, STAR1, MagicBot Gen1, ProWhite 2.0, Sophia (plataforma Utility) y Reflex (con pala de nieve), con robot o plataforma completos y fondo transparente",
+  "origen": "Javier («añade todas las imágenes que faltan de los robots», 27/11/2026; alcance confirmado solo para Humanoids), coordinado y revisado por Codex",
+  "fecha": "2026-11-27T20:02:42+01:00",
+  "zona": "Europe/Madrid",
+  "estado": "completado",
+  "ejecuta": "claude/opus-5.5",
+  "cambios": [
+    "PR 242 (cabeza revisada 1f57dd5, merge c314f66): imagen en las fichas 49 Leju Kuavo, 186 KIT H²T ARMAR-7, 187 KEENON Robotics XMAN-R1, 104 XPENG Next-Gen IRON, 51 LimX Oli, 76 Robotera Star 1, 54 Magiclab MagicBot, 195 PL-Universe ProWhite, 38 Hanson Sophia y 73 Reflex, solo mediante tools/robot-presentation.json; las 118 presentaciones anteriores, sin cambios.",
+    "Leyendas visibles con el tipo de imagen o la variante: «Leju, Kuavo 4Pro technical render with articulated hands», «KIT H²T, ARMAR-7, Robotics I lecture photograph», «KEENON Robotics, XMAN-R1 manufacturer render», «XPENG, IRON, September 2026 production-line photograph», «LimX Dynamics, Oli HU_D04 dexterous-hand configuration, technical render», «ROBOTERA, STAR1 manufacturer brochure image», «MagicLab, MagicBot Gen1 video still», «PL-Universe, ProWhite Robot 2.0 brochure image», «Hanson Robotics, Sophia Utility platform, skirted configuration» y «Reflex, video still with snow shovel». Las especificaciones de las fichas no cambian.",
+    "Fuentes de Codex (codex/image-sources-remaining: candidates-14 en 6d1eb96, candidates-15 en 54f4cf5, candidates-16 en 23aba3a, candidates-17 en 164cfaf, candidates-18 en 617be62 y candidates-19 en 639618b), copiadas de forma selectiva en ops/media/intake-remaining-2026-11-27/batch-13/. Todos los recortes, de Claude y solo de alfa, a tamaño nativo: alfa propio del original (Kuavo), la máscara suave de la propia fuente (ARMAR-7; Sophia, nivelada 215..240 para quitar el borde difuminado y la franja blanca) o máscaras BiRefNet guardadas junto a cada original. IRON se rehízo con una región más ancha para conservar entera la mano izquierda.",
+    "Decisiones de Codex: el contorno de la cabeza de Sophia, que llega al borde del archivo solo con un suavizado tenue en la fila 0, se acepta; los avisos de Sophia son pliegues negros reales de la falda y los de ARMAR-7 y STAR1, bordes físicos de la base y de una mano.",
+    "Fuera del lote y conservado en el paquete como investigación: T230A (89), porque los haces de luz blancos del folleto detrás del robot no se separan de su cuerpo blanco sin bordes artificiales. Phoenix Gen6 (80) queda preparado para el lote siguiente.",
+    "IRON (104), Oli (51) y STAR1 (76) salen de las reservas del lote 1. README del paquete del lote 13 con estado publicado; procedencias de los diez actualizadas como publicadas.",
+    "Cobertura: lote 13 publicado con 10 fichas; en todo el catálogo, 128 de 213 fichas tienen imagen publicada."
+  ],
+  "urls": [
+    {
+      "etiqueta": "PR 242",
+      "url": "https://github.com/integrarobot/whyhumanoid/pull/242"
+    },
+    {
+      "etiqueta": "CI de la cabeza 1f57dd5",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46053204219"
+    },
+    {
+      "etiqueta": "Pages de c314f66",
+      "url": "https://github.com/integrarobot/whyhumanoid/actions/runs/46053509647"
+    },
+    {
+      "etiqueta": "Ficha Sophia",
+      "url": "https://whyhumanoid.com/humanoids/hanson-sophia-38/"
+    },
+    {
+      "etiqueta": "Ficha ARMAR-7",
+      "url": "https://whyhumanoid.com/humanoids/kit-h-t-armar-7-186/"
+    },
+    {
+      "etiqueta": "Skill de actualización y cierres",
+      "url": "https://github.com/integrarobot/whyhumanoid/blob/main/.claude/skills/whyhumanoid-weekly-update/SKILL.md"
+    }
+  ],
+  "despliegue": [
+    "GitHub Pages desde main c314f66 (run 46053509647, correcto); CI de la cabeza 1f57dd5 (run 46053204219, correcto). Fusión hecha solo en esa cabeza, con la autorización de Codex. Sin cambios de maestro, datos, Worker, D1, importación ni precios.",
+    "Mientras Pages terminaba, un bucle de espera de Claude consultó un activo de Reflex con un parámetro de consulta único (?probe=), no la URL canónica; tras Pages, la URL canónica respondió 200 con x-cache MISS, sin 404 en caché ni purga."
+  ],
+  "verificaciones": [
+    "Claude, paquete: review-intake 11/11 (los diez integrados y T230A apartado); navegador local de las diez fichas a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
+    "Codex, cabeza 1f57dd5: revisión independiente aprobada; 91 archivos solo de imágenes, las 118 presentaciones anteriores y el catálogo de 213 idénticos, las diez nuevas exactas al mapping; SHA de originales y preparados, RGB visible nativo exacto, alfa de PNG y WebP iguales y margen de 20 px en las diez; review-intake independiente 11/11; los diez pares claro y oscuro, válidos.",
+    "Claude, producción: las 20 URL canónicas (10 PNG y 10 WebP) con los mismos bytes que c314f66 (20/20); las 10 fichas y la portada idénticas a c314f66 salvo las etiquetas meta agent:* que añade Cloudflare (11/11); navegador real a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 128 presentaciones.",
+    "Codex, verificación pública independiente tras Pages 46053509647: 30/30 URL con HTTP 200 (20 PNG y WebP con SHA y alfa exactos y 10 fichas con imagen, texto alternativo y leyenda); 20/20 vistas en Chrome con innerWidth efectivo de 390 × 844 y 1366 × 900, cargadas con naturalWidth, contain, sin desbordamiento y leyendas precisas; captura de escritorio de Reflex revisada. Cobertura 128/213, 85 pendientes.",
+    "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (128) y entregas --check."
+  ],
+  "pendientes": [
+    "Aviso de Codex para este cierre.",
+    "Lote 14 en preparación: Phoenix Gen6 ya recortado; iX, PHYBOT M1 y MagicBot Z1 (candidates-20) con máscaras en curso.",
+    "T230A (89), D9 (155) y R-Noid (77) siguen en cola con su motivo.",
+    "Quedan 85 fichas de Humanoids sin imagen; Other Robots queda fuera del alcance por decisión de Javier."
+  ],
+  "siguiente_accion": "Codex verifica producción y registra su aviso; Javier confirma la recepción. Claude sigue con el lote 14 sin fusionar nada antes de la revisión de Codex."
+}

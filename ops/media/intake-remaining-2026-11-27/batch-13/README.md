@@ -1,6 +1,6 @@
-# Robot image batch 13: integrated package
+# Robot image batch 13: published package
 
-Integrated in this PR, not yet published. `mapping.json` lists the ten integrated images; `manifest.json` also keeps one prepared candidate that was left out (T230A, below).
+Published with PR 242 (reviewed head 1f57dd5, CI 46053204219; merge c314f66, Pages 46053509647, 27 Nov 2026) and verified in production by Claude and Codex. `mapping.json` lists the ten integrated images; `manifest.json` also keeps one prepared candidate that was left out (T230A, below).
 
 ## Integrated (ten)
 
@@ -19,7 +19,7 @@ Integrated in this PR, not yet published. `mapping.json` lists the ten integrate
 
 Every visible pixel keeps the original's RGB at native resolution, with a 20 px transparent margin; nothing is enlarged or generated. Checked with `ops/media/robots/review-intake.py` (11/11). `contact-sheet-light-dark.jpg` shows the ten on light and dark grounds.
 
-Notes for review: Sophia's head reaches the top of the source file (row 0 alpha at most 39 in the source mask, opaque from row 1), so at most a pixel or two of the outer edge of the cap may lie outside the file; ARMAR-7 is a small native source (313 × 664 as prepared).
+Review notes: Sophia's cap reaches the top of the source file with only a faint antialiased row 0 (source mask at most 39); Codex accepted the contour, with no opaque geometry cut. The review warnings on Sophia are the skirt's real black folds, and those on ARMAR-7 and STAR1 are physical edges of the base and a hand. ARMAR-7 is a small native source (313 × 664 as prepared).
 
 ## Left out (prepared, kept as research)
 

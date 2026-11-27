@@ -21,7 +21,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 13, All m
 
 `prepared.png` is used as delivered, at its native resolution (no trim, no scaling); only the WebP twin is made (`python3 ops/media/robots/to-webp.py`). Checked with `ops/media/robots/review-intake.py`: every visible pixel's colour equals the original's at the same place; corners transparent; no thick semi-transparent region inside the robot; the WebP's alpha equals the PNG's.
 
-## Files integrated (image batch 13, PR not yet merged)
+## Published files (image batch 13, PR 242, merge c314f66, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/xpeng-iron-2026/xpeng-iron-2026-full-body.png`, 733 × 2121 px, sha256 `bc16ef10f211ab9db3d9dbe7b5517f796d394cfb239a46a496c9bdfbc286674c` (= the prepared.png).
 - **WebP:** `assets/robots/xpeng-iron-2026/xpeng-iron-2026-full-body.webp`, sha256 `be7d32429bb9459f3c542dcf1ad4d7723dc5a2c7152527fbd6ec927486b35c55`.

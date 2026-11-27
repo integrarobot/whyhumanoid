@@ -23,7 +23,7 @@ Not published from here: `ops/` is excluded from the site. Image batch 13, All m
 
 - **Quality:** Small native source: 313 × 664 px as prepared, not enlarged.
 
-## Files integrated (image batch 13, PR not yet merged)
+## Published files (image batch 13, PR 242, merge c314f66, verified in production on 27 Nov 2026)
 
 - **PNG:** `assets/robots/kit-armar-7/kit-armar-7-full-body.png`, 313 × 664 px, sha256 `ef9001127bb4831c499a52edc60a644dfa1594b5ea546593fb51fc71561c5f78` (= the prepared.png).
 - **WebP:** `assets/robots/kit-armar-7/kit-armar-7-full-body.webp`, sha256 `510e2a655788764c71cba42c0023b3011ccca4ac8eb80d8980db75605681ff5e`.
