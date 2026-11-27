@@ -1,0 +1,36 @@
+[
+  {
+    "id": 182,
+    "slug": "jingchu-1",
+    "credit": "Jingchu Humanoid",
+    "source_page": "https://www.jingchurobot.cn/product_detail/1.html",
+    "source_url": "https://omo-oss-image1.thefastimg.com/portal-saas/pg2025073116424452690/cms/image/fdf4c32f-c70f-4f70-94ae-ad603983827a.png?vf=B7gH3s",
+    "original": "original.png",
+    "original_size": [
+      800,
+      1205
+    ],
+    "original_sha256": "562c4735c992bbe7e9c7b5e8e81006036f94eb693b84a3a8ee1f63c2a3dcd9e5",
+    "source_context": "JingChu 1 manufacturer render, bipedal configuration. Exact product_detail/1.html identifies 荆楚1号, own native RGBA800x1205 with whole head, both articulated hands and feet. Preserve own alpha, crop20padding only. Not Elf wheeled model.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source, credit; no open licence assumed or outreach."
+  },
+  {
+    "id": 183,
+    "slug": "jingchu-elf",
+    "credit": "Jingchu Humanoid",
+    "source_page": "https://www.jingchurobot.cn/product_detail/3.html",
+    "source_url": "https://omo-oss-image1.thefastimg.com/portal-saas/pg2025073116424452690/cms/image/d28b144e-8999-4b0d-bbf2-04b7d2ddb553.png?vf=B7gH3s",
+    "original": "original.png",
+    "original_size": [
+      770,
+      1923
+    ],
+    "original_sha256": "f327d8ec405447f7891c39970552df6f79dc4859a5f9d1c62bec932408ce6d00",
+    "source_context": "Jingchu Elf manufacturer render, wheeled configuration. Exact product_detail/3.html identifies 荆楚精灵, nativeRGBA770x1923 whole head, both parallel grippers and full mobile chassis including small bottom wheels; do not add finger hands. Preserve own alpha/native RGB, crop20padding only. Not biped JingChu1.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary source, credit; no open licence assumed or outreach."
+  }
+]
