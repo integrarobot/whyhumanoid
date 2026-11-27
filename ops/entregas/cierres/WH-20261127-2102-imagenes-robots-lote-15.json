@@ -47,13 +47,14 @@
     "Claude, paquete: review-intake 10/10; los avisos de fondo plano de HUBO2 y G1 son brillos del metal y el reflejo del visor del propio robot; navegador local de las diez fichas a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda.",
     "Codex, cabeza 3a4fcb2 contra 2c728aa: revisión independiente aprobada; 88 archivos solo de imágenes, ops y páginas generadas; las 138 presentaciones anteriores y el catálogo de 213 idénticos; RGB nativo, hashes, alfa de PNG y WebP y margen de 20 px correctos en los diez; pares claro y oscuro revisados (reflejo del visor de G1 y metal de HUBO2 reales, rendija de la pinza de HUBO2 conservada sin perforar el metal, pies de CyberOne sin peana, cables de Motion1, ruedas de Flex, configuración de SCOUT).",
     "Claude, producción tras Pages 46060653520: las 20 URL canónicas (10 PNG y 10 WebP) con los mismos bytes que 672539d (20/20); las 10 fichas y la portada idénticas a 672539d salvo las etiquetas meta agent:* que añade Cloudflare (11/11); navegador real a 390 × 844 y 1366 × 900, 20/20 vistas con la imagen cargada, sin desbordamiento y con su leyenda; la portada lleva 148 presentaciones. La espera de Pages se hizo consultando la portada existente con un parámetro de consulta único, nunca URL de activos nuevos.",
+    "Codex, verificación pública independiente tras Pages 46060653520 en merge 672539d: 30/30 URL canónicas con 200 (20 activos PNG y WebP con SHA y alfa exactos y 10 fichas con imagen, texto alternativo y crédito); 20/20 vistas reales en Chrome con innerWidth efectivo de 390 × 844 y 1366 × 900, cargadas, contain, sin desbordamiento y con créditos correctos; captura de escritorio de MATRIX-1 revisada. Cobertura 148/213, 65 pendientes.",
     "Comprobaciones locales: robot-images-coverage --check (213 registros), robot-presentation --check (148) y entregas --check."
   ],
   "pendientes": [
-    "Aviso de Codex para este cierre, con su verificación pública independiente.",
+    "Aviso de Codex para este cierre.",
     "Lote 16 en preparación: T1 Pro (202, candidates-35) ya recortado con el alfa propio del folleto; Jingchu Elf (183) pendiente de otra fuente.",
     "Qinglong (69), T230A (89), D9 (155), R-Noid (77) e IGRIS (79) siguen fuera con su motivo.",
     "Quedan 65 fichas de Humanoids sin imagen; Other Robots queda fuera del alcance por decisión de Javier."
   ],
-  "siguiente_accion": "Codex verifica producción y registra su aviso; Javier confirma la recepción. Claude sigue con el lote 16 en rama propia, sin mezclarlo con el 15 y sin fusionar nada antes de la revisión de Codex."
+  "siguiente_accion": "Codex registra su aviso; Javier confirma la recepción. Claude sigue con el lote 16 (T1 Pro primero) en rama propia, sin mezclarlo con el 15 y sin fusionar nada antes de la revisión de Codex."
 }
