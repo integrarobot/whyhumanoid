@@ -1,0 +1,28 @@
+{
+  "id": 5,
+  "slug": "agile-one",
+  "mask_model": "native-alpha; distant ground shadow masked beyond x704,y780",
+  "roi": null,
+  "crop_bbox": [
+    511,
+    83,
+    756,
+    819
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "status": "source-prepared; publication pending",
+  "source_page": "https://www.agile-robots.com/en/products/humanoid-robots/agile-one/",
+  "asset_url": "https://www.agile-robots.com/media/_processed_/3/6/csm_AgileRobots-AgileONE-Content-Pose-Front_66a5404261.png",
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "original_sha256": "a7dcc93b04be39f21d6595281a9c36e461ddcdbf31ab36bd4c7ba4c5d64768de",
+  "prepared_sha256": "a4c94c3841b9f31fcc918dc09af01bd3af6c09fb0d42d1e2c219eae4bba198dd",
+  "dimensions": [
+    285,
+    776
+  ],
+  "rgb_verified": true,
+  "retrieved_at": "2026-11-27",
+  "licence": "No open licence presumed; preserve source credit"
+}

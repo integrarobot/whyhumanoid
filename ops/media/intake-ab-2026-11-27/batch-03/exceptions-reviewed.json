@@ -1,0 +1,83 @@
+[
+  {
+    "id": 9,
+    "manufacturer": "ARX",
+    "model": "X7",
+    "checked_at": "2026-11-27",
+    "page": "https://arx-x.com/",
+    "status": "deferred-no-accepted-source",
+    "reason": "Official X7 and X7-2025 release posters show the base and arms behind work tables, with robot parts occluded. No complete unoccluded still identified; do not fill missing pixels."
+  },
+  {
+    "id": 10,
+    "manufacturer": "Astribot",
+    "model": "S1",
+    "checked_at": "2026-11-27",
+    "page": "https://astribot.com/",
+    "status": "deferred-no-accepted-source",
+    "reason": "Official product and home stills show S1 behind a table, a faded diagram, or a group photo. No clean complete-body source has passed review."
+  },
+  {
+    "id": 11,
+    "manufacturer": "Axibo",
+    "model": "Not disclosed",
+    "checked_at": "2026-11-27",
+    "page": "https://www.axibo.ai/",
+    "status": "deferred-no-accepted-source",
+    "reason": "The official site does not disclose an identifiable model and uses generic AI-concept silhouettes. No robot-specific full-body photo verified."
+  },
+  {
+    "id": 12,
+    "manufacturer": "Beyond Imagination",
+    "model": "Beomni",
+    "checked_at": "2026-11-27",
+    "page": "https://www.beyondimagination.com/",
+    "status": "deferred-no-accepted-source",
+    "reason": "Official homepage stills are cropped upper-body/application photos. The model generation is not specified by this catalogue record; no complete matching original approved."
+  },
+  {
+    "id": 13,
+    "manufacturer": "Boardwalk",
+    "model": "Alex",
+    "checked_at": "2026-11-27",
+    "page": "https://boardwalkrobotics.com/",
+    "status": "deferred-no-accepted-source",
+    "reason": "The Alex official hero still is cropped to the upper torso and arms. Do not invent a lower body or use another model."
+  },
+  {
+    "id": 15,
+    "manufacturer": "Borg",
+    "model": "Borg 01",
+    "checked_at": "2026-11-27",
+    "page": "https://www.borgrobotic.com/",
+    "status": "deferred-no-accepted-source",
+    "reason": "Official public site exposes only brand marks in the fetched image assets. No identifiable complete Borg01 source approved."
+  },
+  {
+    "id": 135,
+    "manufacturer": "ASUS",
+    "model": "Gallop",
+    "checked_at": "2026-11-27",
+    "page": "https://press.asus.com/blog/factory-proven-physical-ai-asus-gallop-humanoid-robot",
+    "status": "deferred-no-accepted-source",
+    "reason": "The ASUS press page shows Gallop upper body and hands; all available stills are cropped. No lower body should be reconstructed."
+  },
+  {
+    "id": 163,
+    "manufacturer": "AheadForm",
+    "model": "Elf·Xuan 2.0",
+    "checked_at": "2026-11-27",
+    "page": "https://www.aheadform.com/",
+    "status": "deferred-no-accepted-source",
+    "reason": "Official Elf·Xuan2.0 product illustration is a bust. No matching complete body is supplied by the source."
+  },
+  {
+    "id": 166,
+    "manufacturer": "Avatar Robotics",
+    "model": "Avatar humanoid (model name not disclosed)",
+    "checked_at": "2026-11-27",
+    "page": "https://www.avatarrobotics.com/",
+    "status": "deferred-no-accepted-source",
+    "reason": "No disclosed model identity. Official implementation photos show several robots/platforms but do not identify a specific Avatar-manufactured humanoid; cannot assign another makers model."
+  }
+]

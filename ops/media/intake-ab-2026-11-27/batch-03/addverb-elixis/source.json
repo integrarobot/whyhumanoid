@@ -1,0 +1,28 @@
+{
+  "id": 105,
+  "slug": "addverb-elixis",
+  "mask_model": "native-alpha",
+  "crop_bbox": [
+    405,
+    59,
+    708,
+    1038
+  ],
+  "padding": 20,
+  "rgb_preserved": true,
+  "asset_url": "https://framerusercontent.com/images/h7Dzkq6l1Squ3SEWzTYtF4NagR4.png?height=1080&width=1080",
+  "source_page": "https://addverb.ai/humanoid-robot-elixis",
+  "source_context": "Native-alpha image linked in technical comparison section, under ELIXIS biped. Not Elixis-W. Official page read by web lookup although direct curl returns403.",
+  "original": "original.png",
+  "prepared": "prepared.png",
+  "original_sha256": "eaa5b6e90a5cc6739521b5540583222adad6a77fc03f5b813a965286931c4229",
+  "prepared_sha256": "e9a12a5b7ef75f1fd92df5895daa75a829e6e9930df19ded0a4b9190df4bc103",
+  "dimensions": [
+    343,
+    1019
+  ],
+  "rgb_verified": true,
+  "retrieved_at": "2026-11-27",
+  "licence": "No open licence presumed; preserve source credit",
+  "status": "source-prepared; publication pending"
+}
