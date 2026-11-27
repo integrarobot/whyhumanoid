@@ -1,0 +1,5 @@
+# tianyi-2-brochure-scene
+
+Manufacturer corporate brochure18 onWorldRobotConference2025-07-11. PDFlogicalpage4 rightpage text explicit TianYi2.0, existing maker technical/product render embeddednative7933x2949, object682, image004. Fullrobot withhead,bothactualgrippers,liftcolumnandwholewheeledbase in center, noannotateddots/lines ON body. This solves priorannotatedspecdiagram. Nativecrop approximate[3300,700,4600,2600] independentlyadjust, bodyroughly1300px, allgeometrycomplete. Backgroundpavilion/glassfloor/shadow excluded viaalpha, nofloorreflectionretained. SourcePDFsmaskimage005 onlypageopacity, NOT bodysegmentation; needsmodelmask. Caption X-Humanoid, TianYi2.0 manufacturer brochure render(2025), viaWorldRobotConference. Do not ascribe2026version orchangeanyspecs. Root fullselectednativefigurechecked includinggrippersandwheels. ExtractedPDFimage, notpageupscale.
+
+Candidate only. Alpha-only, whole original platform, native visible RGB unchanged, no upscale. Independent review required. Copy selectively, never merge transport branch.

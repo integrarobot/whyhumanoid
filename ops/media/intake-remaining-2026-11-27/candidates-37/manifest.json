@@ -1,0 +1,20 @@
+[
+  {
+    "id": 205,
+    "slug": "tianyi-2-brochure-scene",
+    "credit": "X-Humanoid",
+    "source_page": "https://www.worldrobotconference.com/profile/robot/download/2025/07/11/18%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D%E6%89%8B%E5%86%8C%E5%8D%B0%E5%88%B7%E7%89%88_20250711192526A076.pdf",
+    "source_url": "https://www.worldrobotconference.com/profile/robot/download/2025/07/11/18%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D%E6%89%8B%E5%86%8C%E5%8D%B0%E5%88%B7%E7%89%88_20250711192526A076.pdf",
+    "original": "original.png",
+    "original_size": [
+      7933,
+      2949
+    ],
+    "original_sha256": "c7e29593a99eb521fd57de43920bd40d108377f235e037339122ef239a3ab199",
+    "source_context": "Manufacturer corporate brochure18 onWorldRobotConference2025-07-11. PDFlogicalpage4 rightpage text explicit TianYi2.0, existing maker technical/product render embeddednative7933x2949, object682, image004. Fullrobot withhead,bothactualgrippers,liftcolumnandwholewheeledbase in center, noannotateddots/lines ON body. This solves priorannotatedspecdiagram. Nativecrop approximate[3300,700,4600,2600] independentlyadjust, bodyroughly1300px, allgeometrycomplete. Backgroundpavilion/glassfloor/shadow excluded viaalpha, nofloorreflectionretained. SourcePDFsmaskimage005 onlypageopacity, NOT bodysegmentation; needsmodelmask. Caption X-Humanoid, TianYi2.0 manufacturer brochure render(2025), viaWorldRobotConference. Do not ascribe2026version orchangeanyspecs. Root fullselectednativefigurechecked includinggrippersandwheels. ExtractedPDFimage, notpageupscale.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary material; third-party hosting explicitly identified where relevant. No open licence assumed or outreach sent.",
+    "source_document_sha256": "5dd02af2f28bb7a0ef8e610afb0f53ea8eedaf2b0910ad28b38655f8ecdf54bf"
+  }
+]

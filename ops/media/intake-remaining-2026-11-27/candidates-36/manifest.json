@@ -1,0 +1,19 @@
+[
+  {
+    "id": 123,
+    "slug": "lightberry-lumi-rooftop",
+    "credit": "Lightberry",
+    "source_page": "https://lightberry.com/press/dow-approval",
+    "source_url": "https://cdn.ploy.ai/3245c4e2-1929-4ad1-b0ef-5b8c15535544/user/60fb2a78-w-1410.webp",
+    "original": "original.webp",
+    "original_size": [
+      1842,
+      2138
+    ],
+    "original_sha256": "8f6ccfd701e6b6caf2695a145f11e2a98a858c09f3854081e8610f2498bc46a5",
+    "source_context": "Exact maker press page, alt explicitly Lumi rooftopWashingtonDC. Native1842x2138 complete yellow robot head, both actual yellowgrippers, both feet, margins. Whole realphoto, root original inspected. Keepactual black/redneckcables, yellowgripperends (nohumanfingersinvented), remove railing/posts/trees/city/tiles/shadow. Nopeopleorpropsoccludingbody. Caption Lightberry, Lumi manufacturer photograph, rooftop configuration. Do not copy claims of governmentapproval, politicalstatus orpressstory into catalogue; only imagepresentation. Footer/productLumi identityexact, noUnitreeG1 genericreplacement.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer primary material; third-party hosting explicitly identified where relevant. No open licence assumed or outreach sent."
+  }
+]
