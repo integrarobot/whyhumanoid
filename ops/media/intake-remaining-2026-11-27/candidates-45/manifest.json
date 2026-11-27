@@ -1,0 +1,21 @@
+[
+  {
+    "id": 12,
+    "slug": "beomni-2023-manufacturer-press-image",
+    "credit": "Beyond Imagination via Newswire",
+    "source_page": "https://www.beyondimagination.com/news/",
+    "source_url": "https://cdn.nwe.io/files/x/df/40/30c398e3ff7354e861425fbbd458.jpg",
+    "press_release_page": "https://www.newswire.com/news/beyond-imagination-announces-landmark-manufacturing-partnership-with-22096171",
+    "source_published_at": "2023-08-07",
+    "original": "original.jpg",
+    "original_size": [
+      1200,
+      628
+    ],
+    "original_sha256": "f63e0b5d741ca2efe7a14408705cdbafe121c251728333bdb0318c27cb51f3bf",
+    "source_context": "Maker News page directly embeds this Newswire CDN image alongside its own manufacturing-partnership release dated2023-08-07. Native1200x628 single complete blue Beomni on white. Whole actual head incl two thin blue antennae, both real white hands, full original black wheeled chassis including side wheels and two small supportcasters. Body spans approximatelyy50..578 (~528px), so native crop plus20px margin meets500 minimum without enlargement. Root visually examined original full resolution. No person/prop overlaps robot, no table hiding base, no extraneous brand text on background. Alpha only, keep narrow antennae/wheelspokes and native RGB; avoid chopping fingertips and supportcasterarm, remove white background without perforating white hands. Honest caption BeyondImagination, Beomni manufacturer press image (2023), via Newswire. Historicalmakerconfiguration, no claim currenthardwareversion or autonomousdeployment. Different from lowquality homepagecollage/teddyface sources, allparts are visible here.",
+    "checked_at": "2026-11-27",
+    "status": "candidate_requires_preparation_and_independent_review",
+    "license_note": "Manufacturer public News page embeds its press image via publisher CDN. Credit required; no open licence assumed or outreach sent."
+  }
+]
