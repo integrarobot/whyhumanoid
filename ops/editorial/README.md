@@ -227,6 +227,10 @@ The weekly feed changes data only and never this display.
 - **News item page** (`/news/<edition_id>/<NN>/`): a neutral heading "News, <date of the edition>", the metadata
   (item N of M, parent Blog article, dates, original edition), the whole body once with its source links, and
   previous and next. The stored `headline` may title the page (`<title>`), never the visible heading.
+- **No images** (Javier, 27 Nov 2026), in the Blog or News: no picture, image Markdown, alt text, caption or fallback
+  link such as "Image: Image", and no empty paragraph, list entry, quote or heading left where one was. The renderer
+  drops them (`withoutImages`); the store and the archived originals keep them unchanged. Prose around an image stays,
+  and so do ordinary links, even to an image file, when they have their own label.
 - Bold and links in the body are kept as written. The text is never edited in the HTML: a wrong text is corrected in
   the store, through the reviewed ingest.
 - Addresses never change: 121 Blog articles, 780 News item pages, the year archives and the `/newsletter/` aliases.
