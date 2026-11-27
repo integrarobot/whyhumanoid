@@ -1,0 +1,312 @@
+[
+  {
+    "id": 41,
+    "slug": "holiday-friday",
+    "credit": "Holiday Robotics",
+    "roi": [
+      0,
+      0,
+      1334,
+      2000
+    ],
+    "bbox": [
+      356,
+      180,
+      952,
+      1957
+    ],
+    "border": 20,
+    "size": [
+      636,
+      1817
+    ],
+    "native_alpha": false,
+    "refinement": "birefnet-general mask (rembg, mask only); levels 85..230",
+    "original_sha256": "88499f8275996964efe1f05ae4c9dcd8cfc28e5254ee1431aae2d18d4f4a47b1",
+    "prepared_sha256": "b3b2afe8358530b661c2d79238cfd61b72a2e21e766c6092330e97e2b6b6f3bd",
+    "mask_sha256": "84d756608b9be739a6496dc6a952acd6ab8c0074f0415f62da19f7739d7129b5",
+    "source_page": "https://holiday-robotics.com/",
+    "source_url": "https://public.hday.io/site/robots/friday.webp",
+    "source_context": "FRIDAY Robot image explicitly identified in official shipped JavaScript (index-kqjpRqLU.js); whole wheeled platform. Remove studio background/floor through alpha only.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 42,
+    "slug": "igus-iggy-rob",
+    "credit": "igus",
+    "roi": [
+      0,
+      0,
+      515,
+      688
+    ],
+    "bbox": [
+      38,
+      30,
+      512,
+      677
+    ],
+    "border": 20,
+    "size": [
+      514,
+      687
+    ],
+    "native_alpha": false,
+    "refinement": "birefnet-general mask (rembg, mask only); levels 85..230; largest region kept",
+    "original_sha256": "b07850efc9d1e90eaa94cd0022267996ca5946519d4fab97f13a17f4832ad30e",
+    "prepared_sha256": "e1fc0b7c95e6b4a7734d82f67a0ebfd09d899102ae002897c7c582d80c6fce1d",
+    "mask_sha256": "f319b7e7ce68e84a2fcb8e7bbd19394d6a71ad780c727af8fbe785549e8ba58f",
+    "source_page": "https://www.igus.com/automation/news/humanoid-robot",
+    "source_url": "https://igus.widen.net/content/vx4ay9rleh/webp/LCA_GEN_Humanoid_robot_News_DE_1.jpeg",
+    "source_context": "Official Iggy Rob news illustration contains TWO robots; use only full LEFT robot with tray, glass and bottle; isolate from right cropped robot/crate. Do not cut tray. Source1018x688; useful body height ~650px, native.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 43,
+    "slug": "ihmc-nadia",
+    "credit": "IHMC",
+    "roi": [
+      0,
+      0,
+      2170,
+      2893
+    ],
+    "bbox": [
+      51,
+      253,
+      2073,
+      2684
+    ],
+    "border": 20,
+    "size": [
+      2062,
+      2471
+    ],
+    "native_alpha": false,
+    "refinement": "birefnet-general mask (rembg, mask only); levels 85..230",
+    "original_sha256": "1befb37b313bc0d1c0b42a627a25fb50cbd01e68ddcb795641f33e0eedde4ce1",
+    "prepared_sha256": "1c902c1197f0977cb8e3be757732df9587c5f888a794c1486a23012c9a85b0d4",
+    "mask_sha256": "3520e6434649d6fe63c70afab49f00c44aaa3059c421d42ec4226ec89adb46ac",
+    "source_page": "https://robots.ihmc.us/humanoid-design",
+    "source_url": "https://images.squarespace-cdn.com/content/v1/699a1168fe7b8b3bc64df4db/6e41edc9-513b-45a2-9bbc-5cc728319aa6/20220208_Crouching_TouchingGround_02.jpg",
+    "source_context": "Official IHMC Humanoid Design page has separate Alex and Nadia (Legacy) sections. These two images are within Nadia section, not Alex. Full white-background crouching photo14 or native-alpha frontal photo15. Review exact full limbs/feet and stray alpha.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 45,
+    "slug": "intbot-nylo",
+    "credit": "IntBot",
+    "roi": [
+      0,
+      0,
+      550,
+      1378
+    ],
+    "bbox": [
+      47,
+      12,
+      505,
+      1364
+    ],
+    "border": 20,
+    "size": [
+      498,
+      1392
+    ],
+    "native_alpha": true,
+    "refinement": "original alpha",
+    "original_sha256": "6bce217d68863ddf42a252bdc3824d342a861e044f54fcc07e2cec9a36c6a683",
+    "prepared_sha256": "3a419571e5b52624b506e572e9d9882fbff1cd574fd218ae8e93d875d6c28b8a",
+    "mask_sha256": "d0bc09641244e063d945f8ae640134540d9f6c0ae9859829b7565b47ca1d89a9",
+    "source_page": "https://intbot.ai",
+    "source_url": "https://intbot.ai/assets/nylo_fullbody.png",
+    "source_context": "Official IntBot app JavaScript (index-jEtWzNKI.js) explicitly maps slug nylo, name Nylo, to /assets/nylo_fullbody.png. Other bots Kai/Nemi are separate. Native alpha, white clothes, whole body incl both feet.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 48,
+    "slug": "kinisi",
+    "credit": "Kinisi",
+    "roi": [
+      0,
+      0,
+      740,
+      1434
+    ],
+    "bbox": [
+      122,
+      150,
+      694,
+      1285
+    ],
+    "border": 20,
+    "size": [
+      612,
+      1175
+    ],
+    "native_alpha": true,
+    "refinement": "birefnet-general mask (rembg, mask only); limited by the original alpha; levels 85..230",
+    "original_sha256": "9042439920f90d2dce7ff2a8cd0c3cf4bac852aac7342af3df34a0ffa24f507b",
+    "prepared_sha256": "14039419fad60fb28d7e1bb785ce39bba8a57f4a0163db382b970a4f572a81e3",
+    "mask_sha256": "fbade8b666de4c97964ee7025b5f6fe25b0dabd2c210cba1bd402a05e4c0a66f",
+    "source_page": "https://www.bearrobotics.ai/kinisi",
+    "source_url": "https://static1.squarespace.com/static/652cbb3fb1f91809d4610dc0/t/6a61e0e34ba5343f74277a04/1784799459455/kinisi-robot-front-back-specifications.webp",
+    "source_context": "Official Kinisi specifications image has front and back views. Isolate complete LEFT front figure; preserve whole base and wheels. Source includes opaque white internal background even though external alpha is native, so alpha alone is not automatically clean.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 52,
+    "slug": "lumos-lus2",
+    "credit": "Lumos",
+    "roi": [
+      0,
+      0,
+      1200,
+      3380
+    ],
+    "bbox": [
+      6,
+      37,
+      1194,
+      3314
+    ],
+    "border": 20,
+    "size": [
+      1228,
+      3317
+    ],
+    "native_alpha": true,
+    "refinement": "original alpha; specks removed",
+    "original_sha256": "f2f23e4bf321466a24e9e44bde93cd38b9a51663de5987897ad849150c2a00a3",
+    "prepared_sha256": "830f4a810efe6daec20bfac529279cd0228fc768658c8d2d225f9e637562d889",
+    "mask_sha256": "115b6bbd6b1460aa7fb3a71e8343000434e499fcdbd213b1220de1bd4f4504c1",
+    "source_page": "https://www.lumosbot.tech/products/lus2",
+    "source_url": "https://delivery.lumosbot.tech/www/lumos-website/images/products/lus2/front.webp",
+    "source_context": "Official /products/lus2 identifies this full front view as LUS2, native-alpha1200x3380. Catalogue is generic LUS; MUST review whether family illustration is valid and name LUS2 variant explicitly; do not silently present as original LUS generation.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 55,
+    "slug": "mentee-menteebot-v3",
+    "credit": "Mentee Robotics",
+    "roi": [
+      0,
+      0,
+      1920,
+      3072
+    ],
+    "bbox": [
+      452,
+      138,
+      1341,
+      2867
+    ],
+    "border": 20,
+    "size": [
+      929,
+      2769
+    ],
+    "native_alpha": true,
+    "refinement": "original alpha; original alpha levels 175..250",
+    "original_sha256": "c3a8ae2ab69db08476ee7df04656e0806002d8fc85c0b36c8338c30ac369f047",
+    "prepared_sha256": "19d3318aaec26039052a3a9d1ee29ea0e5eb1d19ed2707482522fc3d89876211",
+    "mask_sha256": "79c7ba2e59fedc5380d7854be196e520889a117ebbc623643e1ba7ca4c51e9f9",
+    "source_page": "https://www.menteebot.com/bot/",
+    "source_url": "https://www.menteebot.com/demo-videos/MenteeBot_v3.png",
+    "source_context": "Official MenteeBot /bot/ uses /demo-videos/MenteeBot_v3.png, whole native-alpha1920x3072. Name shown v3 in provenance/alt; do not assert every MenteeBot configuration same.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 60,
+    "slug": "oversonic-robee-r",
+    "credit": "Oversonic Robotics",
+    "roi": [
+      0,
+      0,
+      2025,
+      3200
+    ],
+    "bbox": [
+      71,
+      31,
+      1981,
+      3138
+    ],
+    "border": 20,
+    "size": [
+      1950,
+      3147
+    ],
+    "native_alpha": false,
+    "refinement": "birefnet-general mask (rembg, mask only) on the extracted RGB image; levels 85..230. The PDF soft mask extracted with it (image-001.png) is fully opaque, so it carries no cutout",
+    "original_sha256": "7545ae21a5b13e51e0dc3a9a22b8f3f9c586d31beaa18b49a8505c061dd41405",
+    "prepared_sha256": "0ded93b22dcb9d1b92d0ee50962192f754126f6fd17837ec8bd51178d25bca9f",
+    "mask_sha256": "3d428bf9e46b4cfba176e69b4716cbdd28a6964f74bf9a6435b8f52af70842e8",
+    "source_page": "https://www.oversonicrobotics.com/media/",
+    "source_url": "https://www.oversonicrobotics.com/download/Oversonic_Robee-R-2026-eng.pdf (page 2, image object 242, extracted with pdfimages; PDF sha256 9bf0547bcb0daac94f4462d3d74eb46c023841c51b528cd87606f7abbc61f8b1)",
+    "source_context": "RoBee Series R, October2026 product sheet, page2 raster image2025x3200 and native PDF soft mask extracted using pdfimages. No re-render/upscale. Original extracted RGB image-000.png and smask image-001.png archived with full official PDF. Whole actual wheeled platform; not RoBee M or F. Catalogue generic RoBee; name SeriesR shown.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 65,
+    "slug": "pib-5",
+    "credit": "pib",
+    "roi": [
+      0,
+      0,
+      1920,
+      2006
+    ],
+    "bbox": [
+      131,
+      93,
+      1644,
+      1984
+    ],
+    "border": 20,
+    "size": [
+      1553,
+      1931
+    ],
+    "native_alpha": true,
+    "refinement": "original alpha",
+    "original_sha256": "80468486d9b6a24b4b664d0570ac82a6941cdc371096387dbd7f7a2389ce80cc",
+    "prepared_sha256": "7e1e0d6ed2869e37224453b103a52f0a057113a0eb3a7d8a63502d8764abf02a",
+    "mask_sha256": "5aa2ba1ef2b9577f36f448e627e7c03512357b4d371d6f4961232c6126599242",
+    "source_page": "https://pib.rocks/press/",
+    "source_url": "https://pib.rocks/wp-content/uploads/2026/09/pib5-Rocks.png",
+    "source_context": "Official press section explicitly labels pib#5. Complete bench/stand-based upper-body robot, its base and both hands; this platform has no legs to invent. Check right fingertips are complete and alpha-only remove white background. Generic pib catalogue; name pib#5 shown.",
+    "checked_at": "2026-11-27"
+  },
+  {
+    "id": 66,
+    "slug": "pndbotics-adam",
+    "credit": "PNDbotics",
+    "roi": [
+      0,
+      0,
+      1237,
+      1230
+    ],
+    "bbox": [
+      454,
+      62,
+      782,
+      1173
+    ],
+    "border": 20,
+    "size": [
+      368,
+      1151
+    ],
+    "native_alpha": false,
+    "refinement": "birefnet-general mask (rembg, mask only); levels 85..230",
+    "original_sha256": "c913e70b28a3e4fa3dd2d79a257aaf75ed5dfadbf8b81e2f6872f59312532af6",
+    "prepared_sha256": "515f7f10dcf8c480d96ac8bab0d85cc71d0da2b6fcc1dc3f03c41428989e1dea",
+    "mask_sha256": "0ab2b7d0a1c590ae5b9f1c57350219401b5e8d54f4329b80ea6cdb7bcbc5ab06",
+    "source_page": "https://github.com/pndbotics/pnd_models (README, models table, row adam_standard)",
+    "source_url": "https://github.com/pndbotics/pnd_models/blob/38420a65d20219b095e9a78e22f0f9af7256c23f/adam_standard/imgs/adam_standard.png",
+    "source_context": "Official PNDbotics model repository: the README table shows this image for the adam_standard model (URDF/MJCF). It is a render from a simulation viewer of the description model, not a product photograph; the repository licence (adam_license.txt, BSD-style) covers the files.",
+    "checked_at": "2026-11-27"
+  }
+]

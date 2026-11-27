@@ -50,8 +50,8 @@ Not published from here: `ops/` is excluded from the site. Image batch {cfg['bat
 - **Image:** {m['credit']}'s. No open licence is presumed. The site credits it as "Image: {m['credit']}".
 - **Page:** {m['source_page']}
 - **File:** {m['source_url']}
-- **Context (Codex):** {m['source_context']}
-- **Downloaded:** by Codex, carried without recompression on the transport branch `{cfg['branch']}` (commit {cfg['commit']}) and kept in `{src}/`.
+- **Context{'' if it.get('downloaded') else ' (Codex)'}:** {m['source_context']}
+- **Downloaded:** {it.get('downloaded') or f"by Codex, carried without recompression on the transport branch `{cfg['branch']}` (commit {cfg['commit']})"}; kept in `{src}/`.
 - **Original:** `{os.path.basename(orig)}`, {O.size[0]} × {O.size[1]} px, {O.mode}, {os.path.getsize(orig):,} bytes, sha256 `{m['original_sha256']}` (equal to Codex's manifest).
 - **Preparation:** {'original with its own transparency' if m.get('native_alpha') else 'opaque original'}; non-generative alpha mask ({m.get('refinement', '')}); crop ROI {m['roi']}, alpha bounding box {m['bbox']}, {m['border']} px transparent padding; no RGB edit, no scaling. `prepared.png` sha256 `{m['prepared_sha256']}`, mask sha256 `{m['mask_sha256']}`.
 
@@ -72,7 +72,7 @@ Not published from here: `ops/` is excluded from the site. Image batch {cfg['bat
 ''')
     e = cov['robots'].setdefault(str(i), {'recorded': {'Lab': r['Lab'], 'Robot': r.get('Robot')}})
     e['status'] = 'integrated'; e.pop('result', None)
-    e.setdefault('sources', []).append({'file': m['source_url'], 'page': m['source_page'], 'sha256': m['original_sha256'], 'by': 'codex',
+    e.setdefault('sources', []).append({'file': m['source_url'], 'page': m['source_page'], 'sha256': m['original_sha256'], 'by': 'claude' if it.get('downloaded') else 'codex',
         'date': m.get('checked_at', ''), 'transparent_original': bool(m.get('native_alpha')), 'verdict': 'usable_cutout',
         'detail': f'alpha mask; RGB exact; prepared {W} × {H} with {m["border"]} px padding.'})
     if it.get('quality'): e['quality_note'] = it['quality']

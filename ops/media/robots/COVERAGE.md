@@ -48,36 +48,36 @@ Scope "E/F makers" (closed with pending sources): 16 records; no_valid_source 3,
 | 34 | Galaxea | R1 | published | batch 7 candidates | usable cutout (codex, 2026-11-27) |
 | 35 | Galbot | G1 | no_valid_source |  | The only complete image on Galbot's official G1 page is labelled by its own alt text as "S1 render placeholder, waiting replacement by G1 full robot render", so it is not used for G1; no other official full-robot G1 image found among the sources reviewed (Codex and Claude, 27 Nov 2026). |
 | 36 | Generative Bionics | GENE.01 | published | batch 7 candidates | usable cutout (codex, 2026-11-27) |
-| 37 | Goblin | GBLN-01 | candidate | batch 8 candidates |  |
-| 38 | Hanson | Sophia | candidate | batch 8 candidates |  |
-| 39 | Heima | A.D.A.M. | candidate | batch 8 candidates |  |
-| 40 | Hexagon | AEON | candidate | batch 8 candidates |  |
+| 37 | Goblin | GBLN-01 | queued |  | Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources. |
+| 38 | Hanson | Sophia | queued |  | Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources. |
+| 39 | Heima | A.D.A.M. | queued |  | Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources. |
+| 40 | Hexagon | AEON | queued |  | Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources. |
 | 41 | Holiday | Friday | candidate | batch 8 candidates |  |
 | 42 | Igus | Iggy Rob | candidate | batch 8 candidates |  |
 | 43 | IHMC Robotics | Nadia | candidate | batch 8 candidates |  |
-| 44 | InMoov | InMoov | candidate | batch 8 candidates |  |
+| 44 | InMoov | InMoov | queued |  | Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources. |
 | 45 | IntBot | Nylo | candidate | batch 8 candidates |  |
 | 46 | K-Scale Labs | K-bot | queued |  | Queued. Official GitHub kscalelabs/kbot holds only collages (assets/pics/a–f.webp: parts, dark full-body renders in multi-panel layouts, event photos); no single clean whole-robot image there. Codex's sweep pending. |
 | 47 | Kepler | Forerunner K1 | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
-| 48 | Kinisi | Kinisi (Bear Robotics offering) | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
-| 49 | Leju | Kuavo | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
+| 48 | Kinisi | Kinisi (Bear Robotics offering) | candidate | batch 8 candidates |  |
+| 49 | Leju | Kuavo | queued |  | Source received 27 Nov 2026 (Leju homepage, General Humanoid Robot series image, 902 × 1554 with its own transparency): the robot's head reaches the top edge of the file (25 px of the top row opaque) and the left fingertips the left edge, so a complete head cannot be shown; left pending rather than published (Codex's rule: no cut head or feet). Another official whole-body source is still sought. |
 | 50 | LG | KAPEX (co-developed with KIST and LG AI Research) | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
 | 51 | LimX | Oli | reserve | batch 1 reserves |  |
-| 52 | Lumos | LUS | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
+| 52 | Lumos | LUS | candidate | batch 8 candidates |  |
 | 53 | Lux | Not disclosed | exception |  | No exact model in the record. |
 | 54 | Magiclab | Magicbot | queued |  | Queued. Official GitHub MagiclabRobotics/Magiclab_GMR has no product image; Codex's sweep pending. |
-| 55 | Mentee | MenteeBot | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
+| 55 | Mentee | MenteeBot | candidate | batch 8 candidates |  |
 | 56 | MindOn | Not disclosed | exception |  | No exact model in the record. |
 | 57 | Model | Not disclosed | exception |  | No exact model in the record. |
 | 58 | Neura | 4NE1 (Gen 4 announced) | needs_decision |  | The record's page combines generations; which generation to show must be decided first. |
 | 59 | Noetix | Dora | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
-| 60 | Oversonic | RoBee | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
+| 60 | Oversonic | RoBee | candidate | batch 8 candidates |  |
 | 61 | PAL | Talos | published | batch 1 candidates | usable original (codex, 2026-11-27) |
 | 62 | Persona Inc | Not disclosed | exception |  | No exact model in the record. |
 | 63 | Phybot | M1 | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
 | 64 | Physical Robotics | Pi (π) | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
-| 65 | Pib | pib | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
-| 66 | PNDbotics | Adam | queued |  | Queued. Official GitHub pndbotics/pnd_models holds description-model renders (adam_standard/imgs/adam_standard.png, 1237 × 1230 RGBA, and Lite, SP and U variants); a simulation render, to be weighed against the official product page before use. Codex's sweep pending. |
+| 65 | Pib | pib | candidate | batch 8 candidates |  |
+| 66 | PNDbotics | Adam | candidate | batch 8 candidates |  |
 | 67 | Pollen | Reachy 2 | queued |  | Queued. Official GitHub pollen-robotics/reachy2-sdk and reachy2_core hold only a logo; Codex's sweep of the official Reachy 2 page pending. |
 | 68 | Pudu | D7 | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
 | 69 | Qinglong | Qinglong | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
@@ -88,7 +88,7 @@ Scope "E/F makers" (closed with pending sources): 16 records; no_valid_source 3,
 | 74 | Revobots | Taskbot | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
 | 75 | Rhoda | Not disclosed | exception |  | No exact model in the record. |
 | 76 | Robotera | Star 1 | reserve | batch 1 reserves |  |
-| 77 | Robot.com | R-Noid | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
+| 77 | Robot.com | R-Noid | queued |  | Source received 27 Nov 2026 (robot.com R-Noid technical specifications figure, 741 × 2165 with its own transparency): the top of the head reaches the top edge of the file (105 px of the top row opaque), so a complete head cannot be shown; left pending rather than published. Another official whole-body source is still sought. |
 | 78 | Robotis | K0 | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
 | 79 | Robros | Igris | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
 | 80 | Sanctuary AI | Phoenix | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
@@ -188,7 +188,7 @@ Scope "E/F makers" (closed with pending sources): 16 records; no_valid_source 3,
 | 177 | GENISOM | NE01 | published | batch 7 candidates | usable cutout (codex, 2026-11-27) |
 | 178 | Gento Robotics | Gento Luna | published | batch 7 candidates | usable cutout (codex, 2026-11-27) |
 | 179 | Glroad | Laborer C1 | published | batch 7 candidates | usable cutout (codex, 2026-11-27) |
-| 180 | Glroad | Laborer M1 | candidate | batch 8 candidates |  |
+| 180 | Glroad | Laborer M1 | queued |  | Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources. |
 | 181 | Guanggu Dongzhi | Lumen H1 | published | batch 7 candidates | usable cutout (codex, 2026-11-27) |
 | 182 | Jingchu Humanoid | JingChu 1 | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |
 | 183 | Jingchu Humanoid | Jingchu Elf | queued |  | Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet. |

@@ -1,0 +1,70 @@
+{
+  "batch": 8,
+  "intake": "ops/media/intake-remaining-2026-11-27/batch-08",
+  "branch": "codex/image-sources-remaining",
+  "commit": "299a0d7",
+  "scope": "All missing images (Javier, 27 Nov 2026)",
+  "items": {
+    "41": {
+      "slug": "holiday-friday",
+      "alt": "FRIDAY by Holiday Robotics, full body, front view, on its wheeled base",
+      "identity": "The official site's shipped JavaScript names this file (friday.webp) the FRIDAY robot image; the whole wheeled platform is shown. The catalogue record is Friday.",
+      "quality": null
+    },
+    "42": {
+      "slug": "igus-iggy-rob",
+      "alt": "Iggy Rob by igus, full body, front view, carrying a tray with a bottle and glasses, on its wheeled base",
+      "identity": "From igus's humanoid-robot news illustration, which shows two Iggy Rob units; only the left robot, with its tray, bottle and glasses, is kept. The right robot and its crate are removed by the alpha mask only (largest region kept).",
+      "quality": "Small source: 514 × 687 px as prepared, from a 1018 × 688 illustration."
+    },
+    "43": {
+      "slug": "ihmc-nadia",
+      "alt": "Nadia by IHMC, full body, crouching with knees bent, gripper end effectors",
+      "identity": "Photograph in the Nadia (Legacy) section of IHMC's Humanoid Design page, not the Alex section. Its file name begins 20220208, so it is taken to show Nadia's configuration around February 2022 (an inference from the file name, not a stated date). The frontal PNG in the same section was not used because it reaches the bottom and side edges of its file.",
+      "quality": null
+    },
+    "45": {
+      "slug": "intbot-nylo",
+      "alt": "Nylo by IntBot, full body, front view, standing, dressed in a cream jacket, trousers and a beanie",
+      "identity": "IntBot's official app JavaScript maps the slug nylo, name Nylo, to /assets/nylo_fullbody.png; IntBot's other robots (Kai, Nemi) are separate. The catalogue record is Nylo.",
+      "quality": null
+    },
+    "48": {
+      "slug": "kinisi",
+      "alt": "Kinisi robot offered by Bear Robotics, full body, front view, two arms on a wheeled base",
+      "identity": "From the official front-and-back specifications image on Bear Robotics' Kinisi page; only the front view is kept. The original's own transparency left opaque white inside the gaps, so its alpha is limited by a segmentation mask (the lower of the two). The catalogue record is Kinisi (Bear Robotics offering).",
+      "quality": null
+    },
+    "52": {
+      "slug": "lumos-lus2",
+      "alt": "LUS2 by Lumos, full body, front view, standing",
+      "identity": "The image is LUS2 (official /products/lus2 page, front.webp). The catalogue record is LUS, a family whose exact generation is unspecified in the master; the image is named LUS2 and is not presented as the first LUS generation, nor are the record's figures attributed to LUS2.",
+      "quality": null
+    },
+    "55": {
+      "slug": "mentee-menteebot-v3",
+      "alt": "MenteeBot v3 by Mentee Robotics, full body, front view, standing",
+      "identity": "Official /bot/ page file MenteeBot_v3.png. The catalogue record is MenteeBot, whose public specifications the master says are not automatically gen 3; the image is named v3 and the record's figures are not attributed to it. The original's alpha carries a semi-transparent violet glow behind the robot (alpha up to about 170); it is removed by mapping the original alpha 175..250, without a segmentation model.",
+      "quality": null
+    },
+    "60": {
+      "slug": "oversonic-robee-r",
+      "alt": "RoBee Series R by Oversonic Robotics, full body, front view, on its wheeled base",
+      "identity": "RoBee Series R product sheet (October 2026), page 2: the raster image extracted from the PDF with pdfimages, without re-rendering or scaling. The soft mask extracted with it is fully opaque, so the alpha comes from a segmentation mask only; the RGB is the extracted image's. Not RoBee M or F. The catalogue record is RoBee, in its industrial mobile-base configuration.",
+      "quality": null
+    },
+    "65": {
+      "slug": "pib-5",
+      "alt": "pib#5, the whole robot: torso, head and both arms on its stand, one hand raised",
+      "identity": "pib's official press page labels this image pib#5. pib is an upper-body robot on a stand with no legs by design; the whole robot, its stand and both hands are shown. The catalogue record is pib, a printable platform of variable configuration; the image is named pib#5.",
+      "quality": null
+    },
+    "66": {
+      "slug": "pndbotics-adam",
+      "alt": "Adam by PNDbotics, adam_standard simulation model rendering, full body; not a photograph of the hardware",
+      "identity": "Pre-existing file in PNDbotics' official repository github.com/pndbotics/pnd_models (adam_standard/imgs/adam_standard.png, added in commit 71eaac7 on 9 May 2025, unchanged since), shown in the README's models table on the adam_standard row. It is a rendering of the simulation (description) model, not a photograph, and need not reflect the current covers. The repository also holds adam_lite, adam_sp, adam_u and adam_inspire; which variant the catalogue record Adam (167 cm, 62 kg, specifications pending) describes is not established.",
+      "quality": "Simulation model rendering, not a hardware photograph; small source (368 × 1151 px as prepared).",
+      "downloaded": "by Claude with git clone of github.com/pndbotics/pnd_models; the file is byte-identical to the repository blob (sha256 c913e70b…), nothing rendered here"
+    }
+  }
+}

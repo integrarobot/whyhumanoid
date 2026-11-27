@@ -198,26 +198,29 @@
     {
       "batch": 8,
       "opened": "2026-11-27",
-      "state": "awaiting_sources",
+      "state": "under_review",
       "target": 10,
       "scope": "All missing images (Javier, 27 Nov 2026); G/H/I first",
       "candidates": [
-        180,
-        37,
-        38,
-        39,
-        40,
         41,
         42,
         43,
-        44,
-        45
+        45,
+        48,
+        52,
+        55,
+        60,
+        65,
+        66
       ],
       "reserves": [],
       "notes": [
         "Javier (\"añade todas las imágenes que faltan de los robots\"), via Codex, 27 Nov 2026: every pending record, in batches of up to 10; Humanoids first, then identifiable models in Other Robots; a company with no model gets no image.",
         "Sources from Codex's sweep (transport by Git, originals with their official pages and attributions); Claude reviews identity and mask and integrates. Candidates without a faithful whole-robot source are replaced by the next eligible records, not forced.",
-        "HIRO Origin (137) keeps its block. No maker is contacted without new authorisation. Non-generative alpha-only cutouts, original RGB at native resolution; the 68 current presentations stay unchanged."
+        "HIRO Origin (137) keeps its block. No maker is contacted without new authorisation. Non-generative alpha-only cutouts, original RGB at native resolution; the 68 current presentations stay unchanged.",
+        "Codex's packages on codex/image-sources-remaining (3096468 and 299a0d7, candidates-08) plus Adam (66) from PNDbotics' official GitHub repository pndbotics/pnd_models. Cutouts prepared by Claude (alpha only, original RGB, native resolution) in ops/media/intake-remaining-2026-11-27/batch-08/, with a light and dark contact sheet, for Codex's review before integration (27 Nov 2026).",
+        "Kuavo (49) and R-Noid (77): the transparent originals reach the top edge of the file at the head, so the whole head cannot be shown to be present; both stay queued rather than being forced into the batch. Nadia uses the complete crouching photograph (43-detail14) because the frontal PNG reaches the bottom and side edges.",
+        "180, 37, 38, 39, 40 and 44 leave the batch: no source for them was in these packages; they stay queued for Codex's sweep (nothing concluded about their sources)."
       ]
     }
   ],
@@ -2191,7 +2194,7 @@
         "Lab": "Glroad",
         "Robot": "Laborer M1"
       },
-      "status": "candidate",
+      "status": "queued",
       "page": "https://www.glroad.com/HumanoidRobots/index.aspx",
       "notes": "Glroad Laborer M1 (劳动者 family): 50 kg-class heavy-load humanoid; not C1.",
       "research": [
@@ -2200,14 +2203,15 @@
           "date": "2026-11-27",
           "note": "The official Laborer M1 product card crops the legs; stays a reserve."
         }
-      ]
+      ],
+      "result": "Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources."
     },
     "37": {
       "recorded": {
         "Lab": "Goblin",
         "Robot": "GBLN-01"
       },
-      "status": "candidate",
+      "status": "queued",
       "page": "https://www.goblinrobotics.com/",
       "notes": "Goblin GBLN-01: mobility not recorded; only an official image identified as GBLN-01.",
       "research": [
@@ -2216,7 +2220,8 @@
           "date": "2026-11-27",
           "note": "The official Goblin site could not be fetched; stays a reserve."
         }
-      ]
+      ],
+      "result": "Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources."
     },
     "181": {
       "recorded": {
@@ -2244,27 +2249,30 @@
         "Lab": "Hanson",
         "Robot": "Sophia"
       },
-      "status": "candidate",
+      "status": "queued",
       "page": "https://www.hansonrobotics.com/",
-      "notes": "Hanson Robotics Sophia: whole robot only; a bust or head-and-torso Sophia does not meet the whole-robot requirement."
+      "notes": "Hanson Robotics Sophia: whole robot only; a bust or head-and-torso Sophia does not meet the whole-robot requirement.",
+      "result": "Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources."
     },
     "39": {
       "recorded": {
         "Lab": "Heima",
         "Robot": "A.D.A.M."
       },
-      "status": "candidate",
+      "status": "queued",
       "page": "https://www.heimarobotics.com/",
-      "notes": "Heima A.D.A.M.: full-body developer humanoid; identified as A.D.A.M. in the official source."
+      "notes": "Heima A.D.A.M.: full-body developer humanoid; identified as A.D.A.M. in the official source.",
+      "result": "Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources."
     },
     "40": {
       "recorded": {
         "Lab": "Hexagon",
         "Robot": "AEON"
       },
-      "status": "candidate",
+      "status": "queued",
       "page": "https://hexagon.com/company/newsroom/press-releases/2025/hexagon-launches-aeon-a-humanoid-built-for-industry",
-      "notes": "Hexagon AEON: wheeled humanoid from Hexagon's official launch material; shown whole."
+      "notes": "Hexagon AEON: wheeled humanoid from Hexagon's official launch material; shown whole.",
+      "result": "Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources."
     },
     "21": {
       "recorded": {
@@ -2304,8 +2312,9 @@
         "Lab": "InMoov",
         "Robot": "InMoov"
       },
-      "status": "candidate",
-      "page": "https://inmoov.fr/"
+      "status": "queued",
+      "page": "https://inmoov.fr/",
+      "result": "Queued 27 Nov 2026: planned for batch 8, but no source for it was in Codex's batch-8 packages; still in his sweep of official sources. Nothing concluded about its sources."
     },
     "45": {
       "recorded": {
@@ -2338,9 +2347,8 @@
         "Lab": "Kinisi",
         "Robot": "Kinisi (Bear Robotics offering)"
       },
-      "status": "queued",
-      "page": "https://www.bearrobotics.ai/kinisi",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "status": "candidate",
+      "page": "https://www.bearrobotics.ai/kinisi"
     },
     "49": {
       "recorded": {
@@ -2349,7 +2357,7 @@
       },
       "status": "queued",
       "page": "https://www.lejurobot.com/en",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Source received 27 Nov 2026 (Leju homepage, General Humanoid Robot series image, 902 × 1554 with its own transparency): the robot's head reaches the top edge of the file (25 px of the top row opaque) and the left fingertips the left edge, so a complete head cannot be shown; left pending rather than published (Codex's rule: no cut head or feet). Another official whole-body source is still sought."
     },
     "50": {
       "recorded": {
@@ -2365,9 +2373,8 @@
         "Lab": "Lumos",
         "Robot": "LUS"
       },
-      "status": "queued",
-      "page": "https://www.lumosbot.tech/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "status": "candidate",
+      "page": "https://www.lumosbot.tech/"
     },
     "54": {
       "recorded": {
@@ -2383,9 +2390,8 @@
         "Lab": "Mentee",
         "Robot": "MenteeBot"
       },
-      "status": "queued",
-      "page": "https://www.menteebot.com/bot/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "status": "candidate",
+      "page": "https://www.menteebot.com/bot/"
     },
     "59": {
       "recorded": {
@@ -2401,9 +2407,8 @@
         "Lab": "Oversonic",
         "Robot": "RoBee"
       },
-      "status": "queued",
-      "page": "https://www.oversonicrobotics.com/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "status": "candidate",
+      "page": "https://www.oversonicrobotics.com/"
     },
     "63": {
       "recorded": {
@@ -2428,18 +2433,16 @@
         "Lab": "Pib",
         "Robot": "pib"
       },
-      "status": "queued",
-      "page": "https://pib.rocks/",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "status": "candidate",
+      "page": "https://pib.rocks/"
     },
     "66": {
       "recorded": {
         "Lab": "PNDbotics",
         "Robot": "Adam"
       },
-      "status": "queued",
-      "page": "https://www.pndbotics.com/",
-      "result": "Queued. Official GitHub pndbotics/pnd_models holds description-model renders (adam_standard/imgs/adam_standard.png, 1237 × 1230 RGBA, and Lite, SP and U variants); a simulation render, to be weighed against the official product page before use. Codex's sweep pending."
+      "status": "candidate",
+      "page": "https://www.pndbotics.com/"
     },
     "67": {
       "recorded": {
@@ -2511,7 +2514,7 @@
       },
       "status": "queued",
       "page": "https://www.robot.com/r-noid",
-      "result": "Queued 27 Nov 2026: official sources still to be swept (Codex is collecting the official pages and their image references from his own environment; maker sites are not reachable from Claude's). Nothing concluded about its sources yet."
+      "result": "Source received 27 Nov 2026 (robot.com R-Noid technical specifications figure, 741 × 2165 with its own transparency): the top of the head reaches the top edge of the file (105 px of the top row opaque), so a complete head cannot be shown; left pending rather than published. Another official whole-body source is still sought."
     },
     "78": {
       "recorded": {
