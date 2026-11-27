@@ -1,0 +1,42 @@
+{
+  "id": 141,
+  "slug": "unitree-r1",
+  "manufacturer": "Unitree",
+  "model": "R1",
+  "credit": "Unitree",
+  "public_page": "https://whyhumanoid.com/humanoids/unitree-r1-141/",
+  "source_page": "https://www.unitree.com/R1/",
+  "source_url": "https://www.unitree.com/images/f74777897620408abc9201ffed371895_1400x788.jpg",
+  "source_context": "Official exact R1 page source141-14 full robot running on grass. Both feet visible, including raised foot. No catalogue change.",
+  "original": "original.jpg",
+  "original_size": [
+    1400,
+    788
+  ],
+  "original_sha256": "0ec219000c5f9e46f47692304e6c358fe75081ec437114bf5800521c85cac34d",
+  "prepared_sha256": "b218eea5a636fb9ed2e6f209c19b5a79b20660deb6ee529a9c258701df68431d",
+  "mask_sha256": "c64b27fe644ee9db265b2056346e70caa34c3cfd2d28adc501ad81e41127894a",
+  "roi": [
+    350,
+    0,
+    1000,
+    788
+  ],
+  "bbox": [
+    85,
+    43,
+    554,
+    677
+  ],
+  "border": 20,
+  "size": [
+    509,
+    674
+  ],
+  "native_alpha": false,
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.",
+  "status": "candidate_requires_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+}

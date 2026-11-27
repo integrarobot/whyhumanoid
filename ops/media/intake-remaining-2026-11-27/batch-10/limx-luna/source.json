@@ -1,0 +1,42 @@
+{
+  "id": 156,
+  "slug": "limx-luna",
+  "manufacturer": "LimX",
+  "model": "Luna",
+  "credit": "LimXDynamics",
+  "public_page": "https://whyhumanoid.com/humanoids/limx-luna-156/",
+  "source_page": "https://www.limxdynamics.com/en/products/luna",
+  "source_url": "https://limx-video-oss.limxdynamics.com/limx-website/products/luna/luna-6-2.png",
+  "source_context": "Official exact Luna product page luna-6-2.png. Only the central opaque figure retained, other ghosted figures and floor excluded. Whole head,hands,feet.",
+  "original": "original.png",
+  "original_size": [
+    2880,
+    1232
+  ],
+  "original_sha256": "e89e31c9ce775b1db43b9fe165f4df5eb6ab2eb06c27b05642dc7c106f435a50",
+  "prepared_sha256": "03c9c8fb9bfc97b55e542721aa92a8e7d9b7b8c7dbbc1670d01b30b6870d436d",
+  "mask_sha256": "837e7daeb031d7787e3c288ad342e0861eb2d651ea644442c0ab0d08bcfd7073",
+  "roi": [
+    1250,
+    0,
+    2100,
+    1232
+  ],
+  "bbox": [
+    71,
+    162,
+    548,
+    1079
+  ],
+  "border": 20,
+  "size": [
+    517,
+    957
+  ],
+  "native_alpha": false,
+  "mask_method": "ISNET non-generative segmentation",
+  "refinement": "Alpha50..235;largest connected figure;20px transparent pad;source RGB/native resolution preserved. Independent visual review required.",
+  "status": "candidate_requires_independent_review",
+  "checked_at": "2026-11-27",
+  "license_note": "Manufacturer primary source, no open licence assumed; credit owner. No outreach authorised."
+}
