@@ -2227,6 +2227,156 @@
         "credit": "Image: KIST, KAPEX concept render (2025), via Herald Economy",
         "provenance": "ops/media/robots/kist-kapex/PROVENANCE.md"
       }
+    },
+    "202": {
+      "recorded": {
+        "Lab": "Tlibot",
+        "Robot": "TLIBOT T1"
+      },
+      "image": {
+        "src": "/assets/robots/tlibot-t1-pro/tlibot-t1-pro-full-body.webp",
+        "fallback": "/assets/robots/tlibot-t1-pro/tlibot-t1-pro-full-body.png",
+        "width": 634,
+        "height": 1687,
+        "alt": "T1 Pro by TLIBOT, full body, three-quarter view, walking with the rear foot raised, manufacturer brochure image",
+        "credit": "Image: TLIBOT, T1 Pro manufacturer brochure image (2025), via World Robot Conference",
+        "provenance": "ops/media/robots/tlibot-t1-pro/PROVENANCE.md"
+      }
+    },
+    "123": {
+      "recorded": {
+        "Lab": "Lightberry",
+        "Robot": "Lumi"
+      },
+      "image": {
+        "src": "/assets/robots/lightberry-lumi/lightberry-lumi-full-body.webp",
+        "fallback": "/assets/robots/lightberry-lumi/lightberry-lumi-full-body.png",
+        "width": 766,
+        "height": 1689,
+        "alt": "Lumi by Lightberry, full body, front view, standing, manufacturer photograph",
+        "credit": "Image: Lightberry, Lumi manufacturer photograph, rooftop configuration",
+        "provenance": "ops/media/robots/lightberry-lumi/PROVENANCE.md"
+      }
+    },
+    "205": {
+      "recorded": {
+        "Lab": "X-Humanoid",
+        "Robot": "Tian Yi 2.0"
+      },
+      "image": {
+        "src": "/assets/robots/x-humanoid-tianyi-2/x-humanoid-tianyi-2-full-body.webp",
+        "fallback": "/assets/robots/x-humanoid-tianyi-2/x-humanoid-tianyi-2-full-body.png",
+        "width": 631,
+        "height": 1333,
+        "alt": "TianYi 2.0 by X-Humanoid, full body, on its lifting leg and wheeled base, manufacturer brochure render",
+        "credit": "Image: X-Humanoid, TianYi 2.0 manufacturer brochure render (2025), via World Robot Conference",
+        "provenance": "ops/media/robots/x-humanoid-tianyi-2/PROVENANCE.md"
+      }
+    },
+    "155": {
+      "recorded": {
+        "Lab": "Pudu",
+        "Robot": "D9"
+      },
+      "image": {
+        "src": "/assets/robots/pudu-d9/pudu-d9-full-body.webp",
+        "fallback": "/assets/robots/pudu-d9/pudu-d9-full-body.png",
+        "width": 551,
+        "height": 1554,
+        "alt": "D9 by Pudu Robotics, full body, front view, standing, manufacturer brochure render",
+        "credit": "Image: Pudu Robotics, D9 manufacturer brochure render (2025)",
+        "provenance": "ops/media/robots/pudu-d9/PROVENANCE.md"
+      }
+    },
+    "95": {
+      "recorded": {
+        "Lab": "Vanar",
+        "Robot": "Generation 1"
+      },
+      "image": {
+        "src": "/assets/robots/vanar-generation-1/vanar-generation-1-full-body.webp",
+        "fallback": "/assets/robots/vanar-generation-1/vanar-generation-1-full-body.png",
+        "width": 1182,
+        "height": 2969,
+        "alt": "Generation 1 by Vanar Robots, full body, front view, standing, manufacturer product render",
+        "credit": "Image: Vanar Robots, Generation 1 manufacturer product render",
+        "provenance": "ops/media/robots/vanar-generation-1/PROVENANCE.md"
+      }
+    },
+    "58": {
+      "recorded": {
+        "Lab": "Neura",
+        "Robot": "4NE1 (Gen 4 announced)"
+      },
+      "image": {
+        "src": "/assets/robots/neura-4ne1-gen4/neura-4ne1-gen4-full-body.webp",
+        "fallback": "/assets/robots/neura-4ne1-gen4/neura-4ne1-gen4-full-body.png",
+        "width": 214,
+        "height": 925,
+        "alt": "4NE1 Gen 4 by NEURA Robotics, full body, side view, standing, still from the official reveal video",
+        "credit": "Image: NEURA Robotics, 4NE1 Gen 4 reveal, manufacturer video still (October 2026)",
+        "provenance": "ops/media/robots/neura-4ne1-gen4/PROVENANCE.md"
+      }
+    },
+    "185": {
+      "recorded": {
+        "Lab": "KAIST DRCD Lab",
+        "Robot": "KAIST Humanoid"
+      },
+      "image": {
+        "src": "/assets/robots/kaist-humanoid-v09/kaist-humanoid-v09-full-body.webp",
+        "fallback": "/assets/robots/kaist-humanoid-v09/kaist-humanoid-v09-full-body.png",
+        "width": 391,
+        "height": 889,
+        "alt": "KAIST Humanoid v0.9, full body, three-quarter view, walking, still from the official video",
+        "credit": "Image: KAIST DRCD Lab, KAIST Humanoid v0.9 official video still (October 2026)",
+        "provenance": "ops/media/robots/kaist-humanoid-v09/PROVENANCE.md"
+      }
+    },
+    "184": {
+      "recorded": {
+        "Lab": "JAKA Robotics",
+        "Robot": "JAKA π"
+      },
+      "image": {
+        "src": "/assets/robots/jaka-pi/jaka-pi-full-body.webp",
+        "fallback": "/assets/robots/jaka-pi/jaka-pi-full-body.png",
+        "width": 290,
+        "height": 735,
+        "alt": "JAKA π by JAKA Robotics, full body, front view, standing, still from the official video",
+        "credit": "Image: JAKA Robotics, JAKA π official video still (July 2026)",
+        "provenance": "ops/media/robots/jaka-pi/PROVENANCE.md"
+      }
+    },
+    "209": {
+      "recorded": {
+        "Lab": "ZJ Humanoid",
+        "Robot": "NAVIAI i3"
+      },
+      "image": {
+        "src": "/assets/robots/zj-humanoid-i3/zj-humanoid-i3-full-body.webp",
+        "fallback": "/assets/robots/zj-humanoid-i3/zj-humanoid-i3-full-body.png",
+        "width": 434,
+        "height": 1044,
+        "alt": "i3 by ZJ Humanoid, full body, three-quarter view, walking, still from the official product video",
+        "credit": "Image: ZJ Humanoid, i3 official product video still, walking configuration (2026)",
+        "provenance": "ops/media/robots/zj-humanoid-i3/PROVENANCE.md"
+      }
+    },
+    "33": {
+      "recorded": {
+        "Lab": "GAC Group",
+        "Robot": "GoMate"
+      },
+      "image": {
+        "src": "/assets/robots/gac-gomate/gac-gomate-full-body.webp",
+        "fallback": "/assets/robots/gac-gomate/gac-gomate-full-body.png",
+        "width": 410,
+        "height": 889,
+        "alt": "GoMate by GAC Group, full body, front view, on its wheel legs, manufacturer product render",
+        "credit": "Image: GAC Group, GoMate manufacturer product render (2024), video still via Gasgoo Auto News",
+        "provenance": "ops/media/robots/gac-gomate/PROVENANCE.md"
+      }
     }
   }
 }

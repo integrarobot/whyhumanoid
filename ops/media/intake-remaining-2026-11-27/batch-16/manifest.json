@@ -1,0 +1,332 @@
+[
+  {
+    "id": 202,
+    "slug": "tlibot-t1pro-brochure",
+    "credit": "TLIBOT",
+    "source_page": "https://www.worldrobotconference.com/profile/robot/download/2025/06/30/%E5%A4%A9%E9%93%BE%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%BA%A7%E5%93%81%E6%A0%B7%E5%86%8C-%E4%B8%AD%E8%8B%B1%E6%96%87%E7%89%8820250519_20250630141622A201.pdf",
+    "source_url": "https://www.worldrobotconference.com/profile/robot/download/2025/06/30/%E5%A4%A9%E9%93%BE%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%BA%A7%E5%93%81%E6%A0%B7%E5%86%8C-%E4%B8%AD%E8%8B%B1%E6%96%87%E7%89%8820250519_20250630141622A201.pdf",
+    "source_context": "Manufacturer authored bilingual product catalogue2025-05-19, hosted WorldRobotConference; logicalPDFpage4 (spread), left page productoverview explicitly T1Pro continued from productintro spreadpage3. Embedded nativeRGB image858x1812 + originalPDF softmask same dimensions object153, extracted with pdfimages, combined ownalpha ONLY, nopage rendering or upscale. Original RGBunderalpha contains repeatedrobotstrobe; originalPDFmask itself selects ONLY single completeforeground walkingfigure. Whole head, actualgripperhands, bothfeet including raisedrearfoot, margins. Alpha bbox137,82,731,1729, noopaqueimageedgepixels. Preserve maker ownalpha/nativeRGB; do not treat repeatedimagesoutsideoriginalmaskaspartofrobot. Caption TLIBOT, T1Pro manufacturer brochure image (2025), via WorldRobotConference. Specific variant T1Pro, notTianzhenZ1 orY1; catalogue202genericT1 name unchanged, no specificationchanges. Root originalRGB/softmask/compositechecked atnative. Existing technical product render, do notclaim hardwarephoto. Needs independentreview then crop/pad only.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 8ba9356, candidates-35",
+    "mask_method": "original alpha (the PDF soft mask), Claude",
+    "refinement": "Claude: original alpha; the original is the PDF image object with its own soft mask (pdf-native-rgb.png and pdf-native-softmask.png, combined without rendering the page); the soft mask selects the single foreground figure, so the repeated strobe figures in the RGB stay out; cropped and padded only. A 339 px slit between the rod and the shin of the standing leg is semi-transparent in that soft mask and is left as the maker drew it",
+    "roi": [
+      0,
+      0,
+      858,
+      1812
+    ],
+    "bbox": [
+      137,
+      82,
+      731,
+      1729
+    ],
+    "border": 20,
+    "size": [
+      634,
+      1687
+    ],
+    "native_alpha": true,
+    "original_sha256": "403139cdc5180c5227793a7deebd7bb05ed51772cfc15ae0fdc2e59da1bbe7c6",
+    "prepared_sha256": "0e3042fe7cb4a70aa37186bc097dcf761fa1bd4d67b683a5f77104023d894e16",
+    "mask_sha256": "551da592e92f861144370d449cebddd93c935ebb2a9b168d670245f08a6831e2"
+  },
+  {
+    "id": 123,
+    "slug": "lightberry-lumi-rooftop",
+    "credit": "Lightberry",
+    "source_page": "https://lightberry.com/press/dow-approval",
+    "source_url": "https://cdn.ploy.ai/3245c4e2-1929-4ad1-b0ef-5b8c15535544/user/60fb2a78-w-1410.webp",
+    "source_context": "Exact maker press page, alt explicitly Lumi rooftopWashingtonDC. Native1842x2138 complete yellow robot head, both actual yellowgrippers, both feet, margins. Whole realphoto, root original inspected. Keepactual black/redneckcables, yellowgripperends (nohumanfingersinvented), remove railing/posts/trees/city/tiles/shadow. Nopeopleorpropsoccludingbody. Caption Lightberry, Lumi manufacturer photograph, rooftop configuration. Do not copy claims of governmentapproval, politicalstatus orpressstory into catalogue; only imagepresentation. Footer/productLumi identityexact, noUnitreeG1 genericreplacement.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 91a9ac1, candidates-36",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240",
+    "roi": [
+      480,
+      360,
+      1360,
+      2110
+    ],
+    "bbox": [
+      80,
+      58,
+      806,
+      1707
+    ],
+    "border": 20,
+    "size": [
+      766,
+      1689
+    ],
+    "native_alpha": false,
+    "original_sha256": "8f6ccfd701e6b6caf2695a145f11e2a98a858c09f3854081e8610f2498bc46a5",
+    "prepared_sha256": "acbd3a1a6956fa159a298cf6ec7ad5f5e97e67588e8f302051f3e5f8d9340fd7",
+    "mask_sha256": "09f0ea243eee41757bcdb6675af2493cf799c4ce59261ec1e5cb87f3cecfe26a"
+  },
+  {
+    "id": 205,
+    "slug": "tianyi-2-brochure-scene",
+    "credit": "X-Humanoid",
+    "source_page": "https://www.worldrobotconference.com/profile/robot/download/2025/07/11/18%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D%E6%89%8B%E5%86%8C%E5%8D%B0%E5%88%B7%E7%89%88_20250711192526A076.pdf",
+    "source_url": "https://www.worldrobotconference.com/profile/robot/download/2025/07/11/18%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D%E6%89%8B%E5%86%8C%E5%8D%B0%E5%88%B7%E7%89%88_20250711192526A076.pdf",
+    "source_context": "Manufacturer corporate brochure18 onWorldRobotConference2025-07-11. PDFlogicalpage4 rightpage text explicit TianYi2.0, existing maker technical/product render embeddednative7933x2949, object682, image004. Fullrobot withhead,bothactualgrippers,liftcolumnandwholewheeledbase in center, noannotateddots/lines ON body. This solves priorannotatedspecdiagram. Nativecrop approximate[3300,700,4600,2600] independentlyadjust, bodyroughly1300px, allgeometrycomplete. Backgroundpavilion/glassfloor/shadow excluded viaalpha, nofloorreflectionretained. SourcePDFsmaskimage005 onlypageopacity, NOT bodysegmentation; needsmodelmask. Caption X-Humanoid, TianYi2.0 manufacturer brochure render(2025), viaWorldRobotConference. Do not ascribe2026version orchangeanyspecs. Root fullselectednativefigurechecked includinggrippersandwheels. ExtractedPDFimage, notpageupscale.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 91a9ac1, candidates-37",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240",
+    "roi": [
+      3400,
+      900,
+      4450,
+      2450
+    ],
+    "bbox": [
+      202,
+      149,
+      793,
+      1442
+    ],
+    "border": 20,
+    "size": [
+      631,
+      1333
+    ],
+    "native_alpha": false,
+    "original_sha256": "c7e29593a99eb521fd57de43920bd40d108377f235e037339122ef239a3ab199",
+    "prepared_sha256": "e116f32f60c5ec7f213d1d9dab1b696eca0fd9b6bc4943e17f458ee136266473",
+    "mask_sha256": "8fed84db218dc5bc7adb24c8fb825a403daa04af44e3f59387679015375ce052"
+  },
+  {
+    "id": 155,
+    "slug": "pudu-d9-brochure-original",
+    "credit": "Pudu Robotics",
+    "source_page": "https://www.pudurobotics.com/en/products/d9",
+    "source_url": "https://cdn.pudutech.com/PUDU_D9_20250103_CN_577d07e2ad.pdf",
+    "source_context": "Official maker PDF D9singlepage Chinese bilingual brochure2025-01-03. PDFlogicalpage2 embeddedfront productimage548x1572 object28 + original softmask548x1572, extracted nativeRGBimage004 andsoftmask005 viaPDFimages, combinedownalphaONLY. Notpagerendered orupscaled. Cleancompletehead,bothactualhands,bothfeet. Brochurevectorcalloutsare outsideembeddedimage, NONEonbody, so this source solves old400x480 resolutionissue and darkvideoambiguousbackground. Alphabbox20,28,531,1542; noopaqueedges. Root nativeRGBAcompositeinspected. Existing manufacturer product render, caption PuduRobotics, D9 manufacturer brochure render(2025). D9NOTD7. Preserveownalpha/nativeRGB, crop/padonly. No specschanged,noclaimnavigationorautonomyfromphoto. Brochurenotesfeaturelimitations not taskscope; do notcopycapabilityclaims.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining feb3c3e, candidates-38",
+    "mask_method": "original alpha (the PDF soft mask), Claude",
+    "refinement": "Claude: original alpha; the original is the PDF image object with its own soft mask (pdf-native-rgb.png and pdf-native-softmask.png, combined without rendering the page); cropped and padded only. The soft mask leaves the diagonal slots of the hip vent grille transparent, as the maker drew them; they are not filled",
+    "roi": [
+      0,
+      0,
+      548,
+      1572
+    ],
+    "bbox": [
+      20,
+      28,
+      531,
+      1542
+    ],
+    "border": 20,
+    "size": [
+      551,
+      1554
+    ],
+    "native_alpha": true,
+    "original_sha256": "d80c6f6f6e822a10c71f1501450d929a8d8aabda6d6e76e2549efac1821c399c",
+    "prepared_sha256": "5bb26a2aac4ed70eccb6c076ab721e55ec72ca556ebcb488354493826c6b83b1",
+    "mask_sha256": "f0dc18a3408fa25eef438b5391dcf1817c16e3139b4a1e688af622b5d43284d2"
+  },
+  {
+    "id": 95,
+    "slug": "vanar-generation1-product-render",
+    "credit": "Vanar Robots",
+    "source_page": "https://www.vanarrobots.com/Gen1",
+    "source_url": "https://www.vanarrobots.com/images/Renders/WebP/File100Full.webp",
+    "source_context": "Exact maker Generation1 page and alt VanarGeneration1; native6675x4702 existing technical/product render, whole single biped in center spotlight. Head, actual black hands, both feet whole, ample margins. Native RGB image path explicitly Renders; mandatory caption VanarRobots, Generation1 manufacturer product render. Darkbody on darkgrey studio background, careful alpha mask required; isolate robot only, no floor/shadow/glow orRGBbrightening. ApproxROI2600,700..4100,4200 root examined atnative, independentadjustwholefigure. Exposed mechanical body and simple openheadneck configuration are original, do not add shells orfingers. CurrentofficialGen1 details andphoto corroborate same design, notanotherfuturegeneration. No capability/spec changes or copyof aspirationalmarketing.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining e0d60a7, candidates-39",
+    "mask_method": "BiRefNet general (rembg, mask only), with an alpha-only correction reviewed by Codex, Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-keyed-mask.png; levels 85..230; the studio background is a flat grey of exactly 52; inside six rectangles of the original (the interiors of the four hip and knee U brackets, x 3045..3218 and 3436..3647 at y 2398..2466, x 3039..3240 and 3430..3647 at y 3113..3203, and the two forearm gaps at the elbows, x 2815..2934 at y 1973..2020 and x 3766..3860 at y 1973..2011) the alpha is lowered by the distance to grey 52 (transparent at 6 or less, kept at 16 or more), so the background seen through those openings is out; segmentation-birefnet-keyed-mask.png is the mask used. Four small flat-grey zones stay opaque because it is not shown that they are background: two hip slots (x 3412..3433 and 3237..3257, y 2229..2260), x 2922..2936 at y 2113..2200, and x 3414..3458 at y 2532..2563 (Codex, 27 Nov 2026: the six corrections accepted, not widened; the four zones kept opaque)",
+    "roi": [
+      2550,
+      800,
+      4100,
+      3960
+    ],
+    "bbox": [
+      216,
+      141,
+      1358,
+      3070
+    ],
+    "border": 20,
+    "size": [
+      1182,
+      2969
+    ],
+    "native_alpha": false,
+    "original_sha256": "fed5ca2bfacffb433ea165da090f148281caccf5708f187bfb98ab838c8c708a",
+    "prepared_sha256": "bde30d397f33aa719559c6cc10daf559d177a6809793157c57083419aab7b059",
+    "mask_sha256": "ab47e1930a3756699895128d78e64fa0be8130c321a7cc77fcdc24dc6e24981a"
+  },
+  {
+    "id": 58,
+    "slug": "neura-4ne1-gen4-native-video",
+    "credit": "NEURA Robotics",
+    "source_page": "https://www.youtube.com/watch?v=_76mR2pA0mA",
+    "source_url": "https://www.youtube.com/watch?v=_76mR2pA0mA",
+    "source_context": "Select ONLY the whole left foreground robot in side/three-quarter pose, approximate original ROI x310..530 y110..1020. Native head, both actual hands and both feet are complete, without person or ribbon crossing the body. The front right robot has head/feet clipped and MUST NOT be used; center distant robot has ribbon crossing and is rejected. Keep native black textile, blue head light and white cuff. Remove camera operator, stage truss, other robots, ribbon, floor and shadow by alpha only. No brighter RGB or invented front pose. Mandatory caption manufacturer video still, 4NE1 Gen4 reveal, October 2026. This is the new textile Gen4, not older chrome Gen3.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 5168cc8, candidates-40",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240",
+    "roi": [
+      290,
+      100,
+      560,
+      1040
+    ],
+    "bbox": [
+      53,
+      24,
+      227,
+      909
+    ],
+    "border": 20,
+    "size": [
+      214,
+      925
+    ],
+    "native_alpha": false,
+    "original_sha256": "0c525e68c876d16db2dfb3cf0e0ce3c88d838485828013a28e13a5669b7782f1",
+    "prepared_sha256": "eef64a0547d69376bcaf65080ee840880b9dbaa9ec995fced8aedd50ba9515f9",
+    "mask_sha256": "3753bd3122944cacaf680ddea70494bd89036188fa78d9b15e79160fe21e38dd"
+  },
+  {
+    "id": 185,
+    "slug": "kaist-humanoid-v09-native-video",
+    "credit": "KAIST DRCD Lab",
+    "source_page": "https://www.youtube.com/watch?v=HBFZ2a0Dj9s",
+    "source_url": "https://www.youtube.com/watch?v=HBFZ2a0Dj9s",
+    "source_context": "Whole robot in walking three-quarter pose, approximate original ROI x920..1310 y100..1000. Native head, both actual grippers and both feet are complete. No blue KAIST letter overlaps body in this selected frame; letters are separate left. Preserve real exposed metal members, neck cables/white ties and dark gripper geometry, including transparent gaps proven by background; no extra human fingers or shells. Remove track, white lane lines, trees/buildings, letters and shadow via alpha only. Mandatory caption KAIST Humanoid v0.9 official video still, October 2026. This is exact current v0.9 configuration, not an older lower-body prototype. Footage does not by itself establish autonomy.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 5168cc8, candidates-40",
+    "mask_method": "BiRefNet general (rembg, mask only), with the head handle completed alpha-only, Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-handle-mask.png; levels 150..240; largest region kept; alpha-only exclusion [112, 148, 134, 182]; two thin vertical background rods to the left of the neck are excluded (original x 1012..1034, y 228..262). The rectangular handle on top of the head shell belongs to the robot (Codex compared frames 4650 to 4850: it moves with the head); its dark left bar (original x 1030..1062, y 142..150) is weak in the model mask, so inside that rectangle only the alpha is raised from the model mask re-levelled 20..120 and from the luminance of the bar itself (opaque at 30 or darker, none at 60, where the foliage behind is 60 to 110); segmentation-birefnet-handle-mask.png is the mask used. Nothing is drawn: every visible pixel is the original's",
+    "roi": [
+      900,
+      80,
+      1340,
+      1010
+    ],
+    "bbox": [
+      44,
+      51,
+      395,
+      900
+    ],
+    "border": 20,
+    "size": [
+      391,
+      889
+    ],
+    "native_alpha": false,
+    "original_sha256": "61bbcca821d5a9543f4a193a420188d022887127e75dcc9e5e2cc9a675c86b09",
+    "prepared_sha256": "dc5ef11efa8162a39422b83e36b919d0fb51c56e596835801954ce64e239c8e5",
+    "mask_sha256": "700c3b9fd1fd0c65a63bc19153fc6cee3a38ce2ae86a66dbcc550fd7cf680474"
+  },
+  {
+    "id": 184,
+    "slug": "jaka-pi-native-video",
+    "credit": "JAKA Robotics",
+    "source_page": "https://www.youtube.com/watch?v=CYsgHnhwRY0",
+    "source_url": "https://www.youtube.com/watch?v=CYsgHnhwRY0",
+    "source_context": "Select ONLY isolated central foreground robot, approximate native ROI x850..1150 y330..1050. Native head, both simple hands and both feet whole, no people/other robot crossing the contour. Hands are simple original grippers, not human fingers. Manufacturer video JAKA pi Humanoid Robots Show Dynamic Movement, published 2026-07-22; native 1920x1080, frame2707 at90.2333seconds/30fps. Black/white outdoor figure, keep source RGB and green chest light. Remove all other robots, asphalt, curb, buildings and shadow through alpha only. Honest caption JAKA Robotics, JAKA pi official video still, July2026. Different from watermarked running photograph on news1655, which was not selected. No claim of autonomy or performance from this image.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 7a9d62e, candidates-41",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240",
+    "roi": [
+      840,
+      320,
+      1170,
+      1065
+    ],
+    "bbox": [
+      32,
+      22,
+      282,
+      717
+    ],
+    "border": 20,
+    "size": [
+      290,
+      735
+    ],
+    "native_alpha": false,
+    "original_sha256": "1f42fa852d04e663d8ccbb3fc5885bfd13052bcd9decb058937c2e310624d284",
+    "prepared_sha256": "fc6993e3d36c9387df4f838129f1f824bcf84d327afa4493396af2fe325b9658",
+    "mask_sha256": "bb3ec3b373078de13f23aec357aed4e0f51ebacbab1a461e3448a7c8c24de46d"
+  },
+  {
+    "id": 209,
+    "slug": "zj-humanoid-i3-native-video",
+    "credit": "ZJ Humanoid / NAVIAI",
+    "source_page": "https://www.zj-humanoid.com/zujian/2",
+    "source_url": "https://www.zj-humanoid.com/uploads/upload/video/20260715/26bfc3d74321a2f63f7fcdbfb52c0865.mp4",
+    "source_context": "Exact i3 official product page, feature video labelled 威猛身躯 刚柔并济. Native1920x1080, frame57 after dissolve has ended, whole single robot three-quarter walking pose. Native head and both feet whole; forefoot lowermost pixel aroundy1067 leaves13px original margin. Keep original hands/dexterous fingers and self-occlusion of far hand by thigh. Actual waist/leg black cables and loops must remain; remove sky, buildings, trees, ground, shadow via alpha only. ApproxROI x630..1090 y40..1080, independently widen to full figure, no rescale or RGB changes. Mandatory credit i3 official product video still, walking configuration,2026. Do not use earlierframe44 because foot is clipped at bottom, or dissolveframe31 with ghost body. Do not archive source HTML, which contains unrelated exposed debug configuration; this package contains public image provenance only. No model specs/capability claims changed.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining 1c2c9a0, candidates-42",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240",
+    "roi": [
+      620,
+      40,
+      1110,
+      1080
+    ],
+    "bbox": [
+      44,
+      23,
+      438,
+      1027
+    ],
+    "border": 20,
+    "size": [
+      434,
+      1044
+    ],
+    "native_alpha": false,
+    "original_sha256": "a060626d9695047263f4b8ce4eedc438b72305ffa0058387146b691d64b08136",
+    "prepared_sha256": "7b3ae22038ee06556eeefffb711367e00fded807a8ecced127d8c43cc8c6b554",
+    "mask_sha256": "4a32f846c0dc7a432dbf08f9a685b5249a2ee0dcdb2ae43559bd9101b459971d"
+  },
+  {
+    "id": 33,
+    "slug": "gac-gomate-2024-product-render",
+    "credit": "GAC Group via Gasgoo Auto News",
+    "source_page": "https://autonews.gasgoo.com/articles/video/70035551",
+    "source_url": "https://www.youtube.com/watch?v=LIfXrjzm0AA",
+    "source_context": "Gasgoo editorial video explicitly labels Credit:GACGroup on screen. Last native frame shows whole single original2024GoMate manufacturer product render, head, both actual articulated hands, all wheel-leg assemblies intact, generous margins, no subtitles crossing body. This is NOT the2025/2026GoMateMini. Corroboration of exact2024robot identity from GAC official launch2024-12-27 baseid18961 and annual2024report. Alpha only; remove grey studio and floor/shadow, keep source RGB, exact native1920x1080. Mandatory caption GACGroup, GoMate manufacturer product render (2024), video still via GasgooAutoNews. Nativebody~850px high meetsminimum; earlier annualreportembeddedphoto under500was rejected, not upscaled. Do not copy specifications/performanceclaims or infer hardwaredeployment from render.",
+    "checked_at": "2026-11-27",
+    "transported": "codex/image-sources-remaining efea6c9, candidates-43",
+    "mask_method": "BiRefNet general (rembg, mask only), Claude",
+    "refinement": "Claude: birefnet-general mask (rembg, mask only) of the whole original, segmentation-birefnet-mask.png; levels 150..240",
+    "roi": [
+      720,
+      70,
+      1200,
+      1010
+    ],
+    "bbox": [
+      53,
+      37,
+      423,
+      886
+    ],
+    "border": 20,
+    "size": [
+      410,
+      889
+    ],
+    "native_alpha": false,
+    "original_sha256": "3dbbe9eb1bbe9e89198ec78c226ef4eb5958fada6994a1f9aa6ddff534503e20",
+    "prepared_sha256": "ab182d2159849a1fcc54679730a35c15df84df089356b5a7e9f1af8ce28b65c3",
+    "mask_sha256": "128459b84b4360812985526f34970943192e012f4e784f7542e4060bca4d74ff"
+  }
+]

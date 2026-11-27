@@ -1,0 +1,79 @@
+{
+  "batch": 16,
+  "intake": "ops/media/intake-remaining-2026-11-27/batch-16",
+  "branch": "codex/image-sources-remaining",
+  "commit": "8ba9356 (candidates-35), 91a9ac1 (candidates-36 and 37), feb3c3e (candidates-38), e0d60a7 (candidates-39), 5168cc8 (candidates-40), 7a9d62e (candidates-41), 1c2c9a0 (candidates-42) and efea6c9 (candidates-43)",
+  "scope": "All missing images (Javier, 27 Nov 2026)",
+  "items": {
+    "202": {
+      "slug": "tlibot-t1-pro",
+      "alt": "T1 Pro by TLIBOT, full body, three-quarter view, walking with the rear foot raised, manufacturer brochure image",
+      "credit": "Image: TLIBOT, T1 Pro manufacturer brochure image (2025), via World Robot Conference",
+      "identity": "The T1 Pro product image in TLIBOT's bilingual product catalogue of 19 May 2025, hosted by the World Robot Conference (page 4, the embedded image with its own soft mask, native 858 × 1812): the whole robot with head, both grippers and both feet, the rear one raised. The repeated strobe figures in the image stay outside the maker's mask. It is a technical product render, not a photograph; the record keeps its generic T1 name.",
+      "quality": null
+    },
+    "123": {
+      "slug": "lightberry-lumi",
+      "alt": "Lumi by Lightberry, full body, front view, standing, manufacturer photograph",
+      "credit": "Image: Lightberry, Lumi manufacturer photograph, rooftop configuration",
+      "identity": "A photograph on Lightberry's press page (native 1842 × 2138): the whole Lumi with head, both yellow grippers, the neck cables and both feet. The railing, the gravel, the tiles, the trees and the city behind are excluded by the alpha mask. Nothing from the accompanying announcement is added to the record.",
+      "quality": null
+    },
+    "205": {
+      "slug": "x-humanoid-tianyi-2",
+      "alt": "TianYi 2.0 by X-Humanoid, full body, on its lifting leg and wheeled base, manufacturer brochure render",
+      "credit": "Image: X-Humanoid, TianYi 2.0 manufacturer brochure render (2025), via World Robot Conference",
+      "identity": "The TianYi 2.0 render in X-Humanoid's corporate brochure hosted by the World Robot Conference (page 4, embedded image, native 7933 × 2949): the whole robot with head, both grippers, the lifting leg and the complete wheeled base, with no annotation on the body. The pavilion, the glass floor and its reflection are excluded by the alpha mask. Not Tien Kung 3.0 or TianGong Omni.",
+      "quality": null
+    },
+    "155": {
+      "slug": "pudu-d9",
+      "alt": "D9 by Pudu Robotics, full body, front view, standing, manufacturer brochure render",
+      "credit": "Image: Pudu Robotics, D9 manufacturer brochure render (2025)",
+      "identity": "The front product image in Pudu Robotics' D9 brochure of 3 January 2025 (page 2, the embedded image with its own soft mask, native 548 × 1572): the whole robot with head, both hands and both feet. The brochure's callout lines are outside the image. The soft mask leaves the slots of the hip vent grille open, as drawn. It is D9, not D7, and nothing about navigation or autonomy is implied.",
+      "quality": null
+    },
+    "95": {
+      "slug": "vanar-generation-1",
+      "alt": "Generation 1 by Vanar Robots, full body, front view, standing, manufacturer product render",
+      "credit": "Image: Vanar Robots, Generation 1 manufacturer product render",
+      "identity": "The render on Vanar Robots' Generation 1 page (native 6675 × 4702): the whole robot with head, both hands and both feet, with its exposed mechanical body and open neck as designed. The studio, the floor and the spotlight are excluded by the alpha mask; the background seen through six openings of the hip, knee and elbow brackets is removed too (reviewed by Codex), and four small flat-grey zones whose nature cannot be shown are kept.",
+      "quality": null
+    },
+    "58": {
+      "slug": "neura-4ne1-gen4",
+      "alt": "4NE1 Gen 4 by NEURA Robotics, full body, side view, standing, still from the official reveal video",
+      "credit": "Image: NEURA Robotics, 4NE1 Gen 4 reveal, manufacturer video still (October 2026)",
+      "identity": "Frame 542 (21.68 s) of NEURA Robotics' 4NE1 Gen 4 reveal video, at its native 1920 × 1080: the whole left foreground robot in its black textile cover, with head and blue light, the near hand with its white cuff and both feet. The camera operator, the stage truss, the other robots, the ribbon and the floor are excluded by the alpha mask. It shows Gen 4, not the chrome Gen 3; the record's page mixes generations and Gen 4 is the one chosen (Codex).",
+      "quality": null
+    },
+    "185": {
+      "slug": "kaist-humanoid-v09",
+      "alt": "KAIST Humanoid v0.9, full body, three-quarter view, walking, still from the official video",
+      "credit": "Image: KAIST DRCD Lab, KAIST Humanoid v0.9 official video still (October 2026)",
+      "identity": "Frame 4750 (79.17 s) of the KAIST DRCD Lab video at its native 1920 × 1080: the whole v0.9 robot walking, with head and its top handle, the neck cables and white ties, both grippers and both feet. The track, the lane lines, the letters, the trees and the shadow are excluded by the alpha mask. The footage does not by itself show autonomy.",
+      "quality": null
+    },
+    "184": {
+      "slug": "jaka-pi",
+      "alt": "JAKA π by JAKA Robotics, full body, front view, standing, still from the official video",
+      "credit": "Image: JAKA Robotics, JAKA π official video still (July 2026)",
+      "identity": "Frame 2707 (90.23 s) of JAKA Robotics' video of 22 July 2026, at its native 1920 × 1080: the central foreground robot, whole, with head, both simple hands and both feet. The other robots, the asphalt, the kerb, the buildings and the shadow are excluded by the alpha mask.",
+      "quality": null
+    },
+    "209": {
+      "slug": "zj-humanoid-i3",
+      "alt": "i3 by ZJ Humanoid, full body, three-quarter view, walking, still from the official product video",
+      "credit": "Image: ZJ Humanoid, i3 official product video still, walking configuration (2026)",
+      "identity": "Frame 57 (1.9 s) of the video on ZJ Humanoid's i3 page, at its native 1920 × 1080: the whole robot walking, with head, both hands (the far one partly behind the thigh, as filmed), the waist and leg cables and both feet. The sky, the buildings, the trees, the road and the shadow are excluded by the alpha mask.",
+      "quality": null
+    },
+    "33": {
+      "slug": "gac-gomate",
+      "alt": "GoMate by GAC Group, full body, front view, on its wheel legs, manufacturer product render",
+      "credit": "Image: GAC Group, GoMate manufacturer product render (2024), video still via Gasgoo Auto News",
+      "identity": "Frame 1142 of Gasgoo Auto News' video of 27 December 2024, at its native 1920 × 1080, which credits GAC Group on screen: the maker's render of the original 2024 GoMate, whole, with head, both articulated hands and all its wheel-leg assemblies. The grey studio and the shadow are excluded by the alpha mask. It is the 2024 GoMate, not the later GoMate Mini.",
+      "quality": null
+    }
+  }
+}
